@@ -43,3 +43,26 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json`
+
+## Informatik
+
+Starting point:
+https://www.schulportal.sachsen.de/lplandb/lehrplan/630
+
+- `Informatik_Gymnasium_2022.pdf`:
+  https://www.schulportal.sachsen.de/lplandb/lehrplan/file/630/fTqTlkXseYZLUMB5l3pV
+
+Scope:
+
+- Sachsen
+- Gymnasium
+- Informatik
+- lower-secondary extraction target: Klassenstufen 7-10 from the official Gymnasium Informatik Lehrplan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SN/Informatik_Gymnasium_2022.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_INFORMATIK_SEKI_LEHRPLAN_2022.source-extraction.json`

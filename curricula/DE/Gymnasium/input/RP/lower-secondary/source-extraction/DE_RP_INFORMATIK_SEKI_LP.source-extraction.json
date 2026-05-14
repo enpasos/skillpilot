@@ -1,0 +1,1848 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-RP-INFORMATIK-SEKI-LP",
+  "sourceLandscapeId": "7d7e6393-6503-52f6-9bc3-eafd9500de7f",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-RP",
+  "subject": "Informatik",
+  "stage": "SekI",
+  "title": "Informatik Sekundarstufe I (Rheinland-Pfalz, Lehrplan Source-Extraction)",
+  "sourceDocument": {
+    "key": "RP-INFORMATIK-SEKI-LP",
+    "title": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz",
+    "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+    "url": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "RP-INFORMATIK-SEKI-LP",
+      "title": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz",
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "url": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "Official RP PDF passages were inspected from pdftotext -layout and transcribed by binding content tables.",
+    "sourceGoalExtraction": "One source goal per binding table item or semantically independent table sub-item; optional official deepenings are tagged optional, not discarded.",
+    "scopeNote": "Rheinland-Pfalz Sek I umfasst die drei Lehrplan-Inhaltsbereiche Informationsverarbeitung, algorithmisches Problemlösen und Datenbanken inklusive ausgewiesener optionaler Vertiefungen."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "DE-RP Sek I ist ein kompakter, thematisch stark gebuendelter Lehrplan. Die Extraktion zerlegt alle verbindlichen Tabelleninhalte sowie ausgewiesene optionale Vertiefungen in Source-Ziele; die Zielzahl ist fachlich plausibel und nicht auffaellig niedrig."
+    }
+  },
+  "expectedTopicCodes": [
+    "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+    "RP-INF-SEKI-2-1-RECHT-DATEN",
+    "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+    "RP-INF-SEKI-2-2-ALGORITHMEN",
+    "RP-INF-SEKI-2-3-DATENBANKEN"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-rp-informatik-seki-lp",
+            "label": "Amtliche RP-Informatik-Quelle liegt lokal vor: RP-INFORMATIK-SEKI-LP",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage",
+            "label": "Erwartete RP-Informatik-Abschnitte sind als Passagen vorhanden",
+            "passed": true,
+            "details": "5/5 Passagen."
+          },
+          {
+            "id": "passage-extraction-source",
+            "label": "Passage-Extraction basiert auf amtlichen PDF-Quellen statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den amtlichen RP-Informatik-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "53 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "53 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json"
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "title": "2.1 Grundlagen der Informationsverarbeitung: Information darstellen",
+      "text": "(1) Information formal mit Auszeichnungssprachen darstellen\n(2) Quelltexte einfacher Webseiten analysieren\n(3) Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen\n(4) Inhalt, Struktur und Formatierung trennen\n(5) CSS zur externen Formatierung strukturierter Webseiten verwenden\n(6) Syntaxregeln strukturierter Dokumente beachten\n(7) Strukturierte Dokumente mit Validierern prüfen",
+      "page": 14,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "sourceUrl": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "rawText": "Information formal mit Auszeichnungssprachen darstellen\nQuelltexte einfacher Webseiten analysieren\nStrukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen\nInhalt, Struktur und Formatierung trennen\nCSS zur externen Formatierung strukturierter Webseiten verwenden\nSyntaxregeln strukturierter Dokumente beachten\nStrukturierte Dokumente mit Validierern prüfen",
+      "sourceGoalIds": [
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-001-c9c800f8",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-002-5e89fc88",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-003-d78365b4",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-004-c4e5bb94",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-005-d77fe175",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-006-9b24137f",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-007-13c61791"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "title": "2.1 Grundlagen der Informationsverarbeitung: Recht und Daten",
+      "text": "(1) Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten\n(2) Lizenzierungsmöglichkeiten von Software einordnen\n(3) Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten\n(4) Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern\n(5) Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen\n(6) Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln\n(7) Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen\n(8) Bilder binär darstellen und Speicherbedarf untersuchen",
+      "page": 15,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "sourceUrl": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "rawText": "Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten\nLizenzierungsmöglichkeiten von Software einordnen\nPersönlichkeitsrechte bei der Verwendung persönlicher Daten beachten\nBit, Byte und Datei als Grundbegriffe binärer Daten erläutern\nNatürliche Zahlen im Dual- und Hexadezimalsystem darstellen\nEinfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln\nZeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen\nBilder binär darstellen und Speicherbedarf untersuchen",
+      "sourceGoalIds": [
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-001-7e334d61",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-002-0bd37681",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-003-1a4a9fcc",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-004-43b76073",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-005-fb2a361f",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-006-3f11cda5",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-007-191b1cf4",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-008-97572afa"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "title": "2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze",
+      "text": "(1) Bit-Werte als Wahrheitswerte interpretieren\n(2) AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben\n(3) Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben\n(4) Ausgewählte Gesetze der booleschen Algebra anwenden\n(5) Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln\n(6) Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben\n(7) Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen\n(8) Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären\n(9) Datensicherheitsprobleme im Internet erkennen\n(10) Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln\n(11) Vektorgrafik-Grundelemente erstellen und bearbeiten\n(12) Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden\n(13) Grundprinzip eines RS-Flipflops erläutern\n(14) Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "page": 16,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "sourceUrl": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "rawText": "Bit-Werte als Wahrheitswerte interpretieren\nAND, OR, NOT und XOR mit Wahrheitstabellen beschreiben\nBinäre Datenverarbeitung mit logischen Verknüpfungen beschreiben\nAusgewählte Gesetze der booleschen Algebra anwenden\nEinen einfachen Addierer als Funktionseinheit eines Rechners entwickeln\nEingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben\nSender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen\nClient-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären\nDatensicherheitsprobleme im Internet erkennen\nEinfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln\nVektorgrafik-Grundelemente erstellen und bearbeiten\nPixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden\nGrundprinzip eines RS-Flipflops erläutern\nEinen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "sourceGoalIds": [
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-001-36d274a6",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-002-3d2914e1",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-003-16871e4c",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-004-fd1a2a4d",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-005-5c3f9977",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-006-f22a13ec",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-007-dc0192a3",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-008-73023d33",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-009-f918cf8d",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-010-1942341c",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-011-e5723f2b",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-012-d3ef1d7f",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-013-192560c8",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-014-ce42527b"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "title": "2.2 Algorithmisches Problemlösen",
+      "text": "(1) Algorithmusbegriff und Anforderungen an Algorithmen erklären\n(2) Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen\n(3) Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden\n(4) Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen\n(5) Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen\n(6) Problemlösungen mit EVA strukturieren\n(7) Umfangreichere Probleme in Teilprobleme zerlegen\n(8) Programmaufbau und Syntaxregeln einer Programmiersprache nutzen\n(9) Quellcode verständlich gliedern und kommentieren\n(10) Programme mit Testdaten und Ablaufprotokollen prüfen\n(11) Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "page": 19,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "sourceUrl": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "rawText": "Algorithmusbegriff und Anforderungen an Algorithmen erklären\nBedeutung von Algorithmen vor und seit der Computerentwicklung einordnen\nSequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden\nVariablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen\nAlgorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen\nProblemlösungen mit EVA strukturieren\nUmfangreichere Probleme in Teilprobleme zerlegen\nProgrammaufbau und Syntaxregeln einer Programmiersprache nutzen\nQuellcode verständlich gliedern und kommentieren\nProgramme mit Testdaten und Ablaufprotokollen prüfen\nSystematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "sourceGoalIds": [
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-001-2fb75895",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-002-2241757f",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-003-587d0897",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-004-2fa01fda",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-005-1da2d88b",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-006-4e40a865",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-007-9d027bd0",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-008-38c6b02d",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-009-ea2b9055",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-010-2016a383",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-011-47381739"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "title": "2.3 Nutzung und Modellierung von Datenbanken",
+      "text": "(1) Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern\n(2) Technische Vorteile und Risiken von Datenbanksystemen bewerten\n(3) Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben\n(4) Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren\n(5) Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden\n(6) Tabellenmodelle in einem Datenbanksystem implementieren\n(7) Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen\n(8) Einfache SQL-Abfragen formulieren\n(9) Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten\n(10) Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen\n(11) Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern\n(12) Miniwelten mit Entity-Relationship-Diagrammen modellieren\n(13) ER-Modelle in Tabellenmodelle übersetzen",
+      "page": 23,
+      "sourcePath": "curricula/DE/Gymnasium/input/RP/lower-secondary/Informatik_LP_SekI.pdf",
+      "sourceUrl": "https://bildung.rlp.de/fileadmin/user_upload/informatik.bildung.rlp.de/Lehrplaene/Informatik_LP_SekI.pdf",
+      "rawText": "Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern\nTechnische Vorteile und Risiken von Datenbanksystemen bewerten\nDatenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben\nMiniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren\nRedundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden\nTabellenmodelle in einem Datenbanksystem implementieren\nSelektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen\nEinfache SQL-Abfragen formulieren\nSammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten\nMissbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen\nSchutz personenbezogener Daten und informationelle Selbstbestimmung erläutern\nMiniwelten mit Entity-Relationship-Diagrammen modellieren\nER-Modelle in Tabellenmodelle übersetzen",
+      "sourceGoalIds": [
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-001-be7a94eb",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-002-71ac31c8",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-003-1514866f",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-004-46391500",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-005-ceae0535",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-006-8d76eedb",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-007-61eeb905",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-008-d1c2f549",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-009-6334c4d5",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-010-7b012470",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-011-db15bf26",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-012-fc2e79c5",
+        "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-013-7e650b5b"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-001-c9c800f8",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Information formal mit Auszeichnungssprachen darstellen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Information formal mit Auszeichnungssprachen darstellen",
+      "sourceText": "Information formal mit Auszeichnungssprachen darstellen",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (1)",
+      "parentBulletText": "Information formal mit Auszeichnungssprachen darstellen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Information formal mit Auszeichnungssprachen darstellen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (1)",
+      "rawParentBulletText": "Information formal mit Auszeichnungssprachen darstellen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-002-5e89fc88",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Quelltexte einfacher Webseiten analysieren",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Quelltexte einfacher Webseiten analysieren",
+      "sourceText": "Quelltexte einfacher Webseiten analysieren",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (2)",
+      "parentBulletText": "Quelltexte einfacher Webseiten analysieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Quelltexte einfacher Webseiten analysieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (2)",
+      "rawParentBulletText": "Quelltexte einfacher Webseiten analysieren",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "53c7f69f-1956-518f-8349-4029edee268d"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-003-d78365b4",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "sourceText": "Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (3)",
+      "parentBulletText": "Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (3)",
+      "rawParentBulletText": "Strukturelemente wie Titel, Überschrift, Absatz, Verweis, Liste, Bild und Tabelle nutzen",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-004-c4e5bb94",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Inhalt, Struktur und Formatierung trennen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Inhalt, Struktur und Formatierung trennen",
+      "sourceText": "Inhalt, Struktur und Formatierung trennen",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (4)",
+      "parentBulletText": "Inhalt, Struktur und Formatierung trennen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Inhalt, Struktur und Formatierung trennen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (4)",
+      "rawParentBulletText": "Inhalt, Struktur und Formatierung trennen",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-005-d77fe175",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "sourceText": "CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (5)",
+      "parentBulletText": "CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (5)",
+      "rawParentBulletText": "CSS zur externen Formatierung strukturierter Webseiten verwenden",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-006-9b24137f",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Syntaxregeln strukturierter Dokumente beachten",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Syntaxregeln strukturierter Dokumente beachten",
+      "sourceText": "Syntaxregeln strukturierter Dokumente beachten",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (6)",
+      "parentBulletText": "Syntaxregeln strukturierter Dokumente beachten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Syntaxregeln strukturierter Dokumente beachten",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (6)",
+      "rawParentBulletText": "Syntaxregeln strukturierter Dokumente beachten",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c",
+        "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-inf-darstellung-007-13c61791",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-inf-darstellung",
+      "topicCode": "RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-INF-DARSTELLUNG: Strukturierte Dokumente mit Validierern prüfen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Information darstellen: Strukturierte Dokumente mit Validierern prüfen",
+      "sourceText": "Strukturierte Dokumente mit Validierern prüfen",
+      "sourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (7)",
+      "parentBulletText": "Strukturierte Dokumente mit Validierern prüfen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Information darstellen, S. 14.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-INF-DARSTELLUNG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Strukturierte Dokumente mit Validierern prüfen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-INF-DARSTELLUNG (7)",
+      "rawParentBulletText": "Strukturierte Dokumente mit Validierern prüfen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-001-7e334d61",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "sourceText": "Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (1)",
+      "parentBulletText": "Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (1)",
+      "rawParentBulletText": "Urheberrecht bei fremden Texten, Bildern, Musik und Filmen beachten",
+      "canonicalTargetIds": [
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-002-0bd37681",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Lizenzierungsmöglichkeiten von Software einordnen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Lizenzierungsmöglichkeiten von Software einordnen",
+      "sourceText": "Lizenzierungsmöglichkeiten von Software einordnen",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (2)",
+      "parentBulletText": "Lizenzierungsmöglichkeiten von Software einordnen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Lizenzierungsmöglichkeiten von Software einordnen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (2)",
+      "rawParentBulletText": "Lizenzierungsmöglichkeiten von Software einordnen",
+      "canonicalTargetIds": [
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-003-1a4a9fcc",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "sourceText": "Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (3)",
+      "parentBulletText": "Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (3)",
+      "rawParentBulletText": "Persönlichkeitsrechte bei der Verwendung persönlicher Daten beachten",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-004-43b76073",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "sourceText": "Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (4)",
+      "parentBulletText": "Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (4)",
+      "rawParentBulletText": "Bit, Byte und Datei als Grundbegriffe binärer Daten erläutern",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-005-fb2a361f",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "sourceText": "Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (5)",
+      "parentBulletText": "Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (5)",
+      "rawParentBulletText": "Natürliche Zahlen im Dual- und Hexadezimalsystem darstellen",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-006-3f11cda5",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "sourceText": "Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (6)",
+      "parentBulletText": "Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (6)",
+      "rawParentBulletText": "Einfache Umwandlungsalgorithmen zwischen Zahlensystemen entwickeln",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-007-191b1cf4",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "sourceText": "Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (7)",
+      "parentBulletText": "Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (7)",
+      "rawParentBulletText": "Zeichen mit standardisierten Codes wie ASCII, ISO-8859 oder Unicode darstellen",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-recht-daten-008-97572afa",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-recht-daten",
+      "topicCode": "RP-INF-SEKI-2-1-RECHT-DATEN",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-RECHT-DATEN: Bilder binär darstellen und Speicherbedarf untersuchen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten: Bilder binär darstellen und Speicherbedarf untersuchen",
+      "sourceText": "Bilder binär darstellen und Speicherbedarf untersuchen",
+      "sourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (8)",
+      "parentBulletText": "Bilder binär darstellen und Speicherbedarf untersuchen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Recht und Daten, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-RECHT-DATEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bilder binär darstellen und Speicherbedarf untersuchen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-RECHT-DATEN (8)",
+      "rawParentBulletText": "Bilder binär darstellen und Speicherbedarf untersuchen",
+      "canonicalTargetIds": [
+        "1d83ff25-9b5f-5bc5-9bd6-ba6218dc0aaa",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-001-36d274a6",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Bit-Werte als Wahrheitswerte interpretieren",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Bit-Werte als Wahrheitswerte interpretieren",
+      "sourceText": "Bit-Werte als Wahrheitswerte interpretieren",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (1)",
+      "parentBulletText": "Bit-Werte als Wahrheitswerte interpretieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bit-Werte als Wahrheitswerte interpretieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (1)",
+      "rawParentBulletText": "Bit-Werte als Wahrheitswerte interpretieren",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-002-3d2914e1",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "sourceText": "AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (2)",
+      "parentBulletText": "AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (2)",
+      "rawParentBulletText": "AND, OR, NOT und XOR mit Wahrheitstabellen beschreiben",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-003-16871e4c",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "sourceText": "Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (3)",
+      "parentBulletText": "Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (3)",
+      "rawParentBulletText": "Binäre Datenverarbeitung mit logischen Verknüpfungen beschreiben",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-004-fd1a2a4d",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "sourceText": "Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (4)",
+      "parentBulletText": "Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (4)",
+      "rawParentBulletText": "Ausgewählte Gesetze der booleschen Algebra anwenden",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-005-5c3f9977",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "sourceText": "Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (5)",
+      "parentBulletText": "Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (5)",
+      "rawParentBulletText": "Einen einfachen Addierer als Funktionseinheit eines Rechners entwickeln",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "9ab554ad-c308-50ed-a5d2-499dd06120ff"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-006-f22a13ec",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "sourceText": "Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (6)",
+      "parentBulletText": "Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (6)",
+      "rawParentBulletText": "Eingabe- und Ausgabegeräte, Prozessor und Arbeitsspeicher als Grundelemente eines Rechners beschreiben",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-007-dc0192a3",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "sourceText": "Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (7)",
+      "parentBulletText": "Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (7)",
+      "rawParentBulletText": "Sender, Empfänger, Nachricht und Protokoll als Netzkommunikationsbegriffe nutzen",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-008-73023d33",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "sourceText": "Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (8)",
+      "parentBulletText": "Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (8)",
+      "rawParentBulletText": "Client-Server-Struktur, Authentifizierung, paketorientierte Übertragung und Routing am Internet erklären",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-009-f918cf8d",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Datensicherheitsprobleme im Internet erkennen",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Datensicherheitsprobleme im Internet erkennen",
+      "sourceText": "Datensicherheitsprobleme im Internet erkennen",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (9)",
+      "parentBulletText": "Datensicherheitsprobleme im Internet erkennen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Datensicherheitsprobleme im Internet erkennen",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (9)",
+      "rawParentBulletText": "Datensicherheitsprobleme im Internet erkennen",
+      "canonicalTargetIds": [
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-010-1942341c",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "sourceText": "Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (10)",
+      "parentBulletText": "Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (10)",
+      "rawParentBulletText": "Einfache Verschlüsselungsverfahren als Sicherheitsansatz entwickeln",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-011-e5723f2b",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 11,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "sourceText": "Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (11)",
+      "parentBulletText": "Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (11)",
+      "rawParentBulletText": "Vektorgrafik-Grundelemente erstellen und bearbeiten",
+      "canonicalTargetIds": [
+        "1d83ff25-9b5f-5bc5-9bd6-ba6218dc0aaa"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-012-d3ef1d7f",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 12,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "sourceText": "Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (12)",
+      "parentBulletText": "Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (12)",
+      "rawParentBulletText": "Pixel- und Vektorgrafik hinsichtlich Skalierbarkeit und Speicherbedarf unterscheiden",
+      "canonicalTargetIds": [
+        "1d83ff25-9b5f-5bc5-9bd6-ba6218dc0aaa"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-013-192560c8",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 13,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Grundprinzip eines RS-Flipflops erläutern",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Grundprinzip eines RS-Flipflops erläutern",
+      "sourceText": "Grundprinzip eines RS-Flipflops erläutern",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (13)",
+      "parentBulletText": "Grundprinzip eines RS-Flipflops erläutern",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Grundprinzip eines RS-Flipflops erläutern",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (13)",
+      "rawParentBulletText": "Grundprinzip eines RS-Flipflops erläutern",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8",
+        "9ab554ad-c308-50ed-a5d2-499dd06120ff"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-1-logik-rechner-netz-014-ce42527b",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-1-logik-rechner-netz",
+      "topicCode": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+      "bulletIndex": 14,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ: Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "description": "Source-Ziel aus 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze: Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "sourceText": "Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "sourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (14)",
+      "parentBulletText": "Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.1 Grundlagen der Informationsverarbeitung: Logik, Rechner und Netze, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "rawSourceSpan": "RP-INF-SEKI-2-1-LOGIK-RECHNER-NETZ (14)",
+      "rawParentBulletText": "Einen 1-Bit-Speicher als Speicherbaustein entwickeln",
+      "canonicalTargetIds": [
+        "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-001-2fb75895",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "sourceText": "Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (1)",
+      "parentBulletText": "Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (1)",
+      "rawParentBulletText": "Algorithmusbegriff und Anforderungen an Algorithmen erklären",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-002-2241757f",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "sourceText": "Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (2)",
+      "parentBulletText": "Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (2)",
+      "rawParentBulletText": "Bedeutung von Algorithmen vor und seit der Computerentwicklung einordnen",
+      "canonicalTargetIds": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-003-587d0897",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "sourceText": "Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (3)",
+      "parentBulletText": "Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (3)",
+      "rawParentBulletText": "Sequenz, Fallunterscheidung und Wiederholung zur Ablaufmodellierung verwenden",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-004-2fa01fda",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "sourceText": "Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (4)",
+      "parentBulletText": "Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (4)",
+      "rawParentBulletText": "Variablen, Wertzuweisungen und Datentypen zur Datenspeicherung nutzen",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-005-1da2d88b",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "sourceText": "Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (5)",
+      "parentBulletText": "Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (5)",
+      "rawParentBulletText": "Algorithmen umgangssprachlich, mit Flussdiagrammen und Struktogrammen darstellen",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-006-4e40a865",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Problemlösungen mit EVA strukturieren",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Problemlösungen mit EVA strukturieren",
+      "sourceText": "Problemlösungen mit EVA strukturieren",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (6)",
+      "parentBulletText": "Problemlösungen mit EVA strukturieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Problemlösungen mit EVA strukturieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (6)",
+      "rawParentBulletText": "Problemlösungen mit EVA strukturieren",
+      "canonicalTargetIds": [
+        "04b1796d-6086-59b0-9499-e463a7f44bc4",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-007-9d027bd0",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Umfangreichere Probleme in Teilprobleme zerlegen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Umfangreichere Probleme in Teilprobleme zerlegen",
+      "sourceText": "Umfangreichere Probleme in Teilprobleme zerlegen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (7)",
+      "parentBulletText": "Umfangreichere Probleme in Teilprobleme zerlegen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Umfangreichere Probleme in Teilprobleme zerlegen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (7)",
+      "rawParentBulletText": "Umfangreichere Probleme in Teilprobleme zerlegen",
+      "canonicalTargetIds": [
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-008-38c6b02d",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "sourceText": "Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (8)",
+      "parentBulletText": "Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (8)",
+      "rawParentBulletText": "Programmaufbau und Syntaxregeln einer Programmiersprache nutzen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-009-ea2b9055",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Quellcode verständlich gliedern und kommentieren",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Quellcode verständlich gliedern und kommentieren",
+      "sourceText": "Quellcode verständlich gliedern und kommentieren",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (9)",
+      "parentBulletText": "Quellcode verständlich gliedern und kommentieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Quellcode verständlich gliedern und kommentieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (9)",
+      "rawParentBulletText": "Quellcode verständlich gliedern und kommentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-010-2016a383",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "sourceText": "Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (10)",
+      "parentBulletText": "Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (10)",
+      "rawParentBulletText": "Programme mit Testdaten und Ablaufprotokollen prüfen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "8f1a342c-5976-5473-b0ee-c0180afd5861"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-2-algorithmen-011-47381739",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-2-algorithmen",
+      "topicCode": "RP-INF-SEKI-2-2-ALGORITHMEN",
+      "bulletIndex": 11,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-2-ALGORITHMEN: Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "description": "Source-Ziel aus 2.2 Algorithmisches Problemlösen: Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "sourceText": "Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "sourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (11)",
+      "parentBulletText": "Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.2 Algorithmisches Problemlösen, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-2-ALGORITHMEN",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-2-ALGORITHMEN (11)",
+      "rawParentBulletText": "Systematische Problemlöseschritte von Problembeschreibung bis Dokumentation reflektieren",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-001-be7a94eb",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 1,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "sourceText": "Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (1)",
+      "parentBulletText": "Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (1)",
+      "rawParentBulletText": "Bedeutung von Datenbanksystemen an Alltagsbeispielen erläutern",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-002-71ac31c8",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 2,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "sourceText": "Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (2)",
+      "parentBulletText": "Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (2)",
+      "rawParentBulletText": "Technische Vorteile und Risiken von Datenbanksystemen bewerten",
+      "canonicalTargetIds": [
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-003-1514866f",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 3,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "sourceText": "Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (3)",
+      "parentBulletText": "Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (3)",
+      "rawParentBulletText": "Datenbanksysteme als Mehrbenutzersysteme mit Zugriffsrechten und Authentifizierung beschreiben",
+      "canonicalTargetIds": [
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-004-46391500",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 4,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "sourceText": "Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (4)",
+      "parentBulletText": "Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (4)",
+      "rawParentBulletText": "Miniwelten mit Tabellen, Feldern, Datentypen und Datensätzen modellieren",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-005-ceae0535",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 5,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "sourceText": "Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (5)",
+      "parentBulletText": "Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (5)",
+      "rawParentBulletText": "Redundanz und Inkonsistenz durch Aufteilung und Schlüsselattribute vermeiden",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-006-8d76eedb",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 6,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Tabellenmodelle in einem Datenbanksystem implementieren",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Tabellenmodelle in einem Datenbanksystem implementieren",
+      "sourceText": "Tabellenmodelle in einem Datenbanksystem implementieren",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (6)",
+      "parentBulletText": "Tabellenmodelle in einem Datenbanksystem implementieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Tabellenmodelle in einem Datenbanksystem implementieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (6)",
+      "rawParentBulletText": "Tabellenmodelle in einem Datenbanksystem implementieren",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-007-61eeb905",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 7,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "sourceText": "Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (7)",
+      "parentBulletText": "Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (7)",
+      "rawParentBulletText": "Selektion, Projektion und Tabellenverknüpfung als Grundoperationen von Abfragen nutzen",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-008-d1c2f549",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 8,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Einfache SQL-Abfragen formulieren",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Einfache SQL-Abfragen formulieren",
+      "sourceText": "Einfache SQL-Abfragen formulieren",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (8)",
+      "parentBulletText": "Einfache SQL-Abfragen formulieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einfache SQL-Abfragen formulieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (8)",
+      "rawParentBulletText": "Einfache SQL-Abfragen formulieren",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-009-6334c4d5",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 9,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "sourceText": "Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (9)",
+      "parentBulletText": "Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (9)",
+      "rawParentBulletText": "Sammlung personenbezogener Daten nach Zweck und Erhebungssituation bewerten",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-010-7b012470",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 10,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "sourceText": "Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (10)",
+      "parentBulletText": "Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (10)",
+      "rawParentBulletText": "Missbrauch personenbezogener Daten durch Zusammenführung von Datenbeständen beurteilen",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-011-db15bf26",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 11,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "sourceText": "Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (11)",
+      "parentBulletText": "Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (11)",
+      "rawParentBulletText": "Schutz personenbezogener Daten und informationelle Selbstbestimmung erläutern",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-012-fc2e79c5",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 12,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "sourceText": "Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (12)",
+      "parentBulletText": "Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (12)",
+      "rawParentBulletText": "Miniwelten mit Entity-Relationship-Diagrammen modellieren",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-rp-informatik-seki-lp-rp-inf-seki-2-3-datenbanken-013-7e650b5b",
+      "passageId": "de-rp-informatik-seki-lp:rp-inf-seki-2-3-datenbanken",
+      "topicCode": "RP-INF-SEKI-2-3-DATENBANKEN",
+      "bulletIndex": 13,
+      "aspectIndex": 1,
+      "title": "RP-INF-SEKI-2-3-DATENBANKEN: ER-Modelle in Tabellenmodelle übersetzen",
+      "description": "Source-Ziel aus 2.3 Nutzung und Modellierung von Datenbanken: ER-Modelle in Tabellenmodelle übersetzen",
+      "sourceText": "ER-Modelle in Tabellenmodelle übersetzen",
+      "sourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (13)",
+      "parentBulletText": "ER-Modelle in Tabellenmodelle übersetzen",
+      "sourceRef": "Lehrplan Informatik Sekundarstufe I Rheinland-Pfalz, 2.3 Nutzung und Modellierung von Datenbanken, S. 23.",
+      "courseLevel": "unspecified",
+      "granularity": "officialBindingContent",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-RP",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:RP-INF-SEKI-2-3-DATENBANKEN",
+        "courseLevel:unspecified",
+        "optional"
+      ],
+      "rawSourceText": "ER-Modelle in Tabellenmodelle übersetzen",
+      "rawSourceSpan": "RP-INF-SEKI-2-3-DATENBANKEN (13)",
+      "rawParentBulletText": "ER-Modelle in Tabellenmodelle übersetzen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    }
+  ]
+}

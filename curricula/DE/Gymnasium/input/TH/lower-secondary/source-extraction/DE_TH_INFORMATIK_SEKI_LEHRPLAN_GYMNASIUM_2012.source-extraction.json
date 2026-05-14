@@ -1,0 +1,3360 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-TH-INFORMATIK-SEKI-LEHRPLAN-GYMNASIUM-2012",
+  "sourceLandscapeId": "ef0c204d-798b-5c05-9912-dabc40b6bd73",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-TH",
+  "subject": "Informatik",
+  "stage": "SekI",
+  "title": "Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction)",
+  "sourceDocument": {
+    "key": "TH-INF-GYM-2012",
+    "title": "Lehrplan Informatik Gymnasium Thüringen 2012",
+    "path": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+    "url": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "TH-INF-GYM-2012",
+      "title": "Lehrplan Informatik Gymnasium Thüringen 2012",
+      "path": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "url": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "Source-Ziele wurden aus den verbindlichen Lernbereichen 2.1 bis 2.4 und den Wahlpflichtthemen 2.5 des amtlichen Thüringer Lehrplans Informatik Gymnasium 2012 extrahiert.",
+    "sourceGoalExtraction": "Source-Ziele wurden als fachlich atomare Kompetenzerwartungen aus den amtlichen Kompetenzpassagen formuliert und auf kanonische SkillPilot-Ziele gemappt.",
+    "scopeNote": "Sek I umfasst Klassenstufe 10 im Wahlpflichtfach Informatik mit Information/Systemen, Datenbanken, Algorithmen, Projektarbeit sowie Wahlpflichtthemen."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "105 Source-Ziele; Thüringen liegt im Korridor der bereits geprueften Informatik-Laender. Der Lehrplan ist kompakt, deckt aber Sek I, Brueckenphase und Q-Phase ab."
+    }
+  },
+  "expectedTopicCodes": [
+    "TH-INF-SEKI-10-INFO",
+    "TH-INF-SEKI-10-DB",
+    "TH-INF-SEKI-10-ALG",
+    "TH-INF-SEKI-10-PROJECT",
+    "TH-INF-SEKI-10-TECH",
+    "TH-INF-SEKI-10-GAMES",
+    "TH-INF-SEKI-10-IMG"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-th-informatik-seki",
+            "label": "Amtlicher Thüringer Lehrplan Informatik Gymnasium 2012 liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "official-passages-extracted-th-informatik-seki",
+            "label": "Lehrplanpassagen aus amtlicher Thüringen-Quelle extrahiert",
+            "passed": true,
+            "details": "7 Passagen aus Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction)."
+          },
+          {
+            "id": "source-extraction-not-legacy-th-informatik-seki",
+            "label": "Source-Extraction basiert auf amtlichem PDF statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-present-th-informatik-seki",
+            "label": "Source-Ziele aus amtlichen Kompetenzpassagen erzeugt",
+            "passed": true,
+            "details": "105 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-th-informatik-seki",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-passage-backed-th-informatik-seki",
+            "label": "Jedes Source-Ziel referenziert eine Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-decisions-complete-th-informatik-seki",
+            "label": "Alle Source-Ziele haben fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "105/105 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-content-covered-th-informatik-seki",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 105/105; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO",
+      "title": "Klassenstufe 10: Information und Informatiksysteme",
+      "text": "1. Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren\n2. Informationen wiedergeben\n3. Digitalisierung analoger Groessen erlaeutern\n4. Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen\n5. Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren\n6. Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen\n7. Arbeitsweise von Suchmaschinen beschreiben und darstellen\n8. verlustfreie und verlustbehaftete Datenkomprimierung beschreiben\n9. Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben\n10. Attributwerte aendern\n11. Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten\n12. Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben\n13. Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen\n14. ein Verschluesselungsverfahren als Algorithmus darstellen\n15. Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern\n16. Ver- und Entschluesseln von Nachrichten darstellen\n17. historische Aspekte der Kryptologie darstellen\n18. Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen\n19. Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "page": 13,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-001-nachrichten-interpretieren-db26ceae",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-002-informationen-wiedergeben-8cc9c505",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-003-digitalisierung-analoger-groessen-erklaeren-91dfd764",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-004-nachrichtenuebertragung-modellieren-50646833",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-005-e-mail-uebertragung-modellieren-caeb926a",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-006-www-client-server-kommunikation-modellieren-a9e2ae04",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-007-suchmaschinenarbeitsweise-darstellen-20569ad2",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-008-datenkomprimierung-unterscheiden-a98c6680",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-009-grafiken-objektorientiert-beschreiben-bc686576",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-010-attributwerte-aendern-4f0a9c8c",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-011-dateien-in-formaten-bearbeiten-8b6e4b3b",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-012-webdokumente-entwerfen-612ea8bb",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-013-handlungsanweisungen-als-algorithmus-bestimmen-2b32dde1",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-014-verschluesselungsverfahren-algorithmisch-darstellen-24f40590",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-015-kryptologische-grundbegriffe-erklaeren-eb441853",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-016-nachrichten-ver-und-entschluesseln-7119cdf9",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-017-kryptologie-historisch-einordnen-3b24cbe4",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-018-informationsdarstellungen-beurteilen-94d4a0fe",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-019-dokumentregeln-einhalten-87d26b8b"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB",
+      "title": "Klassenstufe 10: Datenmodellierung und Datenbanksysteme",
+      "text": "1. ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen\n2. Operationen auf Daten ausfuehren\n3. in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern\n4. Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen\n5. Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben\n6. durch Abfragen eine Sicht auf die Datenmenge darstellen\n7. Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden\n8. Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben\n9. Datenmodellierung als informatische Problemloesestrategie anwenden\n10. eine Datenbasis problembezogen entwickeln\n11. eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen\n12. eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren\n13. durch Abfragen Daten auswerten und Informationen geeignet darstellen\n14. eine Datenbasis umstrukturieren und Veraenderungen interpretieren\n15. Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "page": 15,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-001-relationales-datenmodell-entwerfen-0529365c",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-002-operationen-auf-daten-ausfuehren-1b7b65dd",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-003-tabellen-und-datensaetze-verwalten-a6563a18",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-004-tabellenbeziehungen-darstellen-e6556572",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-005-einfache-datenbank-eingeben-1c1a71d1",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-006-abfragen-als-datensicht-nutzen-ac2918c2",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-007-datenverarbeitung-in-db-begruenden-d6ec094d",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-008-entwickler-und-anwender-von-dbms-beschreiben-14279e09",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-009-datenmodellierung-als-strategie-anwenden-f0213191",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-010-datenbasis-problembezogen-entwickeln-248eeeb0",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-011-datenbasis-bewerten-27edf0d0",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-012-relationales-modell-im-dbms-realisieren-b260e22e",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-013-daten-durch-abfragen-auswerten-c0b3f8ba",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-014-datenbasis-umstrukturieren-c96e125d",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-015-datenschutz-und-datensicherheit-beachten-c21277d9"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG",
+      "title": "Klassenstufe 10: Algorithmen",
+      "text": "1. Eigenschaften von Algorithmen nennen und erlaeutern\n2. beschreiben, was Algorithmen leisten\n3. Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind\n4. algorithmische Grundbausteine verbal und grafisch darstellen\n5. Begriffe Syntax und Semantik erlaeutern\n6. Variablen und Wertzuweisungen verwenden\n7. eine Fehleranalyse durchfuehren\n8. Programme nach Vorgaben modifizieren und ergaenzen\n9. den Begriff Automat definieren\n10. Zustandsdiagramme beschreiben\n11. Algorithmen anhand ihrer Eigenschaften ueberpruefen\n12. Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden\n13. Algorithmen lesen und deren Ergebnisse ermitteln\n14. algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden\n15. Fehlermeldungen interpretieren und produktiv nutzen\n16. Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren\n17. aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "page": 16,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-001-algorithmuseigenschaften-erlaeutern-336a4d3d",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-002-leistung-von-algorithmen-beschreiben-348a2c39",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-003-nichtloesbare-probleme-beschreiben-bdd81f38",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-004-grundbausteine-darstellen-111c9a28",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-005-syntax-und-semantik-erlaeutern-1146922e",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-006-variablen-und-zuweisungen-verwenden-0293993b",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-007-fehleranalyse-durchfuehren-bc030fa9",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-008-programme-modifizieren-49b0ed29",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-009-automat-definieren-7fb8b8f8",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-010-zustandsdiagramme-beschreiben-78960f18",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-011-algorithmen-pruefen-784903ac",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-012-problemloesephasen-anwenden-3b7a5d38",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-013-algorithmen-lesen-407acb63",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-014-grundbausteine-implementieren-15268f85",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-015-fehlermeldungen-produktiv-nutzen-29470ec8",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-016-automaten-modellieren-9d2c35a9",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-017-algorithmusergebnisse-reflektieren-98e2c96b"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT",
+      "title": "Klassenstufe 10: Arbeit an Informatikprojekten",
+      "text": "1. Fragen zu informatischen Sachverhalten formulieren\n2. geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen\n3. informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen\n4. Problemloesungsstrategien fuer informatische Sachverhalte beschreiben\n5. Projektthema und Teilziele formulieren und abgrenzen\n6. Aufbau einer Projektdokumentation beschreiben\n7. einen Problemloesungsprozess initiieren und sachgerecht gestalten\n8. Teilziele und Produkt auf Konfliktfreiheit pruefen\n9. Problemloesungsstrategien auf informatische Sachverhalte anwenden\n10. ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen\n11. weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen\n12. Arbeitsablaeufe und Handlungsfolgen planen\n13. informatische Probleme analysieren, modifizieren und beschreiben\n14. Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten\n15. Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren\n16. Prozess und Produkt dokumentieren und praesentieren\n17. eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "page": 17,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-001-informatische-fragen-formulieren-4249de2e",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-002-werkzeuge-kompetent-bedienen-daeede4f",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-003-sachverhalte-fachsprachlich-darstellen-42b29534",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-004-problemloesungsstrategien-beschreiben-251e2e9f",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-005-projektthema-abgrenzen-2da333c6",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-006-projektdokumentation-beschreiben-db4df3db",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-007-problemloesungsprozess-initiieren-4c72be3b",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-008-konfliktfreiheit-pruefen-2f90153f",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-009-strategien-anwenden-73a525a2",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-010-werkzeuge-aus-alternativen-waehlen-e377ceb0",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-011-anwendung-von-werkzeugen-erschliessen-1b23300d",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-012-arbeitsablaeufe-planen-0fa6ddad",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-013-probleme-analysieren-und-modifizieren-726aa392",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-014-teilziele-bearbeiten-22f8c3cf",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-015-gesamtprodukt-zusammenfuehren-15475507",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-016-produkt-dokumentieren-und-praesentieren-c3e3ff73",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-017-projektergebnisse-bewerten-ee1a6e15"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH",
+      "title": "Klassenstufe 10: Wahlpflichtthema Technische Informatik",
+      "text": "1. Software klassifizieren\n2. Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten\n3. Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten\n4. Roboter und Automaten unterscheiden\n5. logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren\n6. Aufgabe von Sensoren und Aktoren beschreiben\n7. Schwellenwerte kalkulieren\n8. Roboter problemorientiert zusammenbauen\n9. Roboter anschliessen und Programme auf den Roboter herunterladen\n10. Programme fuer Roboter nach Vorgaben modifizieren\n11. Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen\n12. Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren\n13. Verhalten des Roboters beeinflussen\n14. logische Grundbausteine fuer einfache Problemloesungen anwenden\n15. Methoden zur Kalibrierung von Sensoren anwenden\n16. Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "page": 19,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-001-software-klassifizieren-f6e61e8a",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-002-softwarelizenzen-unterscheiden-9b39d69b",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-003-software-konfliktfrei-installieren-44988a40",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-004-roboter-und-automaten-unterscheiden-73068644",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-005-logische-grundbausteine-implementieren-cf0d58b5",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-006-sensoren-und-aktoren-beschreiben-f2a4b20a",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-007-schwellenwerte-kalkulieren-e99d7d44",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-008-roboter-zusammenbauen-08cb1a59",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-009-roboterprogramme-uebertragen-29fa2198",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-010-roboterprogramme-modifizieren-fb9a207c",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-011-technische-loesungsstrategien-nutzen-98a59442",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-012-robotermodelle-mit-zustandsdiagrammen-94dc4f2a",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-013-roboterverhalten-beeinflussen-adbc194f",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-014-logikbausteine-anwenden-6532a483",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-015-sensoren-kalibrieren-08643844",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-016-modelle-und-implementierungen-beurteilen-f5fe89a5"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES",
+      "title": "Klassenstufe 10: Wahlpflichtthema Computerspiele",
+      "text": "1. Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen\n2. Auswirkungen von Computerspielen auf Nutzer beschreiben\n3. Handlungsstrategien und Spielregeln beschreiben\n4. Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten\n5. eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren\n6. Publikation der Spielvariante gestalten und praesentieren\n7. Benutzeroberflaechen von Computerspielen analysieren\n8. Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten\n9. eine Spielidee modifizieren und daraus eine Spielvariante realisieren\n10. Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben\n11. Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "page": 20,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-001-spielgenres-einordnen-dd3bcd7d",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-002-auswirkungen-von-computerspielen-beschreiben-031b2404",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-003-handlungsstrategien-und-regeln-beschreiben-6865494a",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-004-spielfiguren-und-umgebung-modellieren-f62b6abe",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-005-spielvariante-implementieren-895da211",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-006-spielvariante-praesentieren-91f42b20",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-007-benutzeroberflaechen-analysieren-aeb830f8",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-008-spielmodellierung-betrachten-39517728",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-009-spielidee-modifizieren-d9bb7af3",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-010-virtuelle-und-reale-identitaet-reflektieren-831d54af",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-011-mediengebrauch-beurteilen-d625765f"
+      ]
+    },
+    {
+      "id": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG",
+      "title": "Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft",
+      "text": "1. Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben\n2. Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen\n3. historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben\n4. Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen\n5. Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen\n6. Einsatzmoeglichkeiten von Informatiksystemen darstellen\n7. Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen\n8. Auswirkungen der Automatisierung in der Arbeitswelt bewerten\n9. Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen\n10. zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "page": 22,
+      "sourcePath": "curricula/DE/Gymnasium/input/TH/Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceUrl": "https://www.schulportal-thueringen.de/tip/resources/medien/21770?dateiname=Lehrplan_inf_Gym_9_12_26112012.pdf",
+      "sourceGoalIds": [
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-001-einfluss-von-informatiksystemen-beschreiben-52b2c956",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-002-verantwortungsvollen-umgang-darstellen-c515bb2e",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-003-ikt-entwicklungen-beschreiben-e4f5c30f",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-004-persoenlichkeiten-der-informatik-einordnen-f3fbbe01",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-005-automatisierungsergebnisse-vergleichen-c9e4c301",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-006-einsatzmoeglichkeiten-darstellen-8d8c5fee",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-007-entwicklungstendenzen-einschaetzen-fac001df",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-008-automatisierung-in-arbeitswelt-bewerten-b41d09dc",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-009-elektronische-kommunikation-beurteilen-7e22fe98",
+        "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-010-chancen-und-risiken-argumentieren-04126893"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-001-nachrichten-interpretieren-db26ceae",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-INFO-1: Nachrichten interpretieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren",
+      "sourceText": "Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.1",
+      "parentBulletText": "Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.1",
+      "rawParentBulletText": "Sinn und Bedeutung einer in unterschiedlichen Darstellungsformen vorliegenden Nachricht interpretieren",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-002-informationen-wiedergeben-8cc9c505",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-INFO-2: Informationen wiedergeben",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Informationen wiedergeben",
+      "sourceText": "Informationen wiedergeben",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.2",
+      "parentBulletText": "Informationen wiedergeben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Informationen wiedergeben",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.2",
+      "rawParentBulletText": "Informationen wiedergeben",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-003-digitalisierung-analoger-groessen-erklaeren-91dfd764",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-INFO-3: Digitalisierung analoger Groessen erklaeren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Digitalisierung analoger Groessen erlaeutern",
+      "sourceText": "Digitalisierung analoger Groessen erlaeutern",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.3",
+      "parentBulletText": "Digitalisierung analoger Groessen erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Digitalisierung analoger Groessen erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.3",
+      "rawParentBulletText": "Digitalisierung analoger Groessen erlaeutern",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-004-nachrichtenuebertragung-modellieren-50646833",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-INFO-4: Nachrichtenuebertragung modellieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen",
+      "sourceText": "Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.4",
+      "parentBulletText": "Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.4",
+      "rawParentBulletText": "Nachrichtenuebertragung mit Sender, Codierung, Uebertragungsmedium, Decodierung und Empfaenger beschreiben und darstellen",
+      "canonicalTargetIds": [
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-005-e-mail-uebertragung-modellieren-caeb926a",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-INFO-5: E-Mail-Uebertragung modellieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren",
+      "sourceText": "Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.5",
+      "parentBulletText": "Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.5",
+      "rawParentBulletText": "Nachrichtenuebertragung beim Internetdienst E-Mail zwischen Sender und Empfaenger modellieren",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-006-www-client-server-kommunikation-modellieren-a9e2ae04",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-INFO-6: WWW-Client-Server-Kommunikation modellieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen",
+      "sourceText": "Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.6",
+      "parentBulletText": "Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.6",
+      "rawParentBulletText": "Kommunikation zwischen Client und Server des Internetdienstes WWW als Modell beschreiben und darstellen",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-007-suchmaschinenarbeitsweise-darstellen-20569ad2",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-INFO-7: Suchmaschinenarbeitsweise darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Arbeitsweise von Suchmaschinen beschreiben und darstellen",
+      "sourceText": "Arbeitsweise von Suchmaschinen beschreiben und darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.7",
+      "parentBulletText": "Arbeitsweise von Suchmaschinen beschreiben und darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Arbeitsweise von Suchmaschinen beschreiben und darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.7",
+      "rawParentBulletText": "Arbeitsweise von Suchmaschinen beschreiben und darstellen",
+      "canonicalTargetIds": [
+        "92f5ecc8-6d7f-50ce-99b9-080e21c894cc",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-008-datenkomprimierung-unterscheiden-a98c6680",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-INFO-8: Datenkomprimierung unterscheiden",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: verlustfreie und verlustbehaftete Datenkomprimierung beschreiben",
+      "sourceText": "verlustfreie und verlustbehaftete Datenkomprimierung beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.8",
+      "parentBulletText": "verlustfreie und verlustbehaftete Datenkomprimierung beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "verlustfreie und verlustbehaftete Datenkomprimierung beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.8",
+      "rawParentBulletText": "verlustfreie und verlustbehaftete Datenkomprimierung beschreiben",
+      "canonicalTargetIds": [
+        "859e875f-6730-5201-b8ed-60fb9374d27b",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-009-grafiken-objektorientiert-beschreiben-bc686576",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-INFO-9: Grafiken objektorientiert beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben",
+      "sourceText": "Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.9",
+      "parentBulletText": "Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.9",
+      "rawParentBulletText": "Grafiken auf Grundlage objektorientierter Modellierung mit Klasse, Objekt, Attribut, Attributwert und Methode beschreiben",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c5d04946-497e-5ede-84ec-2d019138e3a0"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-010-attributwerte-aendern-4f0a9c8c",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-INFO-10: Attributwerte aendern",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Attributwerte aendern",
+      "sourceText": "Attributwerte aendern",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.10",
+      "parentBulletText": "Attributwerte aendern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Attributwerte aendern",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.10",
+      "rawParentBulletText": "Attributwerte aendern",
+      "canonicalTargetIds": [
+        "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+        "c5d04946-497e-5ede-84ec-2d019138e3a0"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-011-dateien-in-formaten-bearbeiten-8b6e4b3b",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-INFO-11: Dateien in Formaten bearbeiten",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten",
+      "sourceText": "Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.11",
+      "parentBulletText": "Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.11",
+      "rawParentBulletText": "Grafik-, Video-, Audio- oder Datendateien in anwendungsspezifischen Formaten bearbeiten",
+      "canonicalTargetIds": [
+        "e7e4995a-9900-5d60-ba6a-c794c70411bb",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-012-webdokumente-entwerfen-612ea8bb",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKI-10-INFO-12: Webdokumente entwerfen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben",
+      "sourceText": "Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.12",
+      "parentBulletText": "Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.12",
+      "rawParentBulletText": "Webdokumente entwerfen und testen sowie Veroeffentlichungsmoeglichkeiten in Netzwerken beschreiben",
+      "canonicalTargetIds": [
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-013-handlungsanweisungen-als-algorithmus-bestimmen-2b32dde1",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKI-10-INFO-13: Handlungsanweisungen als Algorithmus bestimmen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen",
+      "sourceText": "Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.13",
+      "parentBulletText": "Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.13",
+      "rawParentBulletText": "Handlungsanweisungen anhand der Eigenschaften allgemeingueltig, ausfuehrbar, endlich und eindeutig als Algorithmus bestimmen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-014-verschluesselungsverfahren-algorithmisch-darstellen-24f40590",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKI-10-INFO-14: Verschluesselungsverfahren algorithmisch darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: ein Verschluesselungsverfahren als Algorithmus darstellen",
+      "sourceText": "ein Verschluesselungsverfahren als Algorithmus darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.14",
+      "parentBulletText": "ein Verschluesselungsverfahren als Algorithmus darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein Verschluesselungsverfahren als Algorithmus darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.14",
+      "rawParentBulletText": "ein Verschluesselungsverfahren als Algorithmus darstellen",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-015-kryptologische-grundbegriffe-erklaeren-eb441853",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKI-10-INFO-15: Kryptologische Grundbegriffe erklaeren",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern",
+      "sourceText": "Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.15",
+      "parentBulletText": "Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.15",
+      "rawParentBulletText": "Begriffe von Verschluesselungsalgorithmen wie Schluessel, Klartext und Geheimtext erlaeutern",
+      "canonicalTargetIds": [
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "7ef3293a-a614-50c4-b27b-fb49f3f04cf7"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-016-nachrichten-ver-und-entschluesseln-7119cdf9",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKI-10-INFO-16: Nachrichten ver- und entschluesseln",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Ver- und Entschluesseln von Nachrichten darstellen",
+      "sourceText": "Ver- und Entschluesseln von Nachrichten darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.16",
+      "parentBulletText": "Ver- und Entschluesseln von Nachrichten darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Ver- und Entschluesseln von Nachrichten darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.16",
+      "rawParentBulletText": "Ver- und Entschluesseln von Nachrichten darstellen",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-017-kryptologie-historisch-einordnen-3b24cbe4",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKI-10-INFO-17: Kryptologie historisch einordnen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: historische Aspekte der Kryptologie darstellen",
+      "sourceText": "historische Aspekte der Kryptologie darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.17",
+      "parentBulletText": "historische Aspekte der Kryptologie darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "historische Aspekte der Kryptologie darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.17",
+      "rawParentBulletText": "historische Aspekte der Kryptologie darstellen",
+      "canonicalTargetIds": [
+        "ae5ae291-aa50-5260-abf4-348a463e9974",
+        "7ef3293a-a614-50c4-b27b-fb49f3f04cf7"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-018-informationsdarstellungen-beurteilen-94d4a0fe",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-18",
+      "bulletIndex": 18,
+      "title": "TH-INF-SEKI-10-INFO-18: Informationsdarstellungen beurteilen",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen",
+      "sourceText": "Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.18",
+      "parentBulletText": "Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.18",
+      "rawParentBulletText": "Vor- und Nachteile unterschiedlicher Informationsdarstellungen beurteilen",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-info-019-dokumentregeln-einhalten-87d26b8b",
+      "passageId": "de-th-informatik:th-inf-10-info",
+      "topicCode": "TH-INF-SEKI-10-INFO-19",
+      "bulletIndex": 19,
+      "title": "TH-INF-SEKI-10-INFO-19: Dokumentregeln einhalten",
+      "description": "Source-Ziel aus Klassenstufe 10: Information und Informatiksysteme: Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "sourceText": "Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "sourceSpan": "TH-INF-SEKI-10-INFO.19",
+      "parentBulletText": "Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Information und Informatiksysteme, S. 13.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-INFO",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "rawSourceSpan": "TH-INF-SEKI-10-INFO.19",
+      "rawParentBulletText": "Regeln und Normen bei der Erstellung von Dokumenten einhalten",
+      "canonicalTargetIds": [
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-001-relationales-datenmodell-entwerfen-0529365c",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-DB-1: Relationales Datenmodell entwerfen",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen",
+      "sourceText": "ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen",
+      "sourceSpan": "TH-INF-SEKI-10-DB.1",
+      "parentBulletText": "ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.1",
+      "rawParentBulletText": "ein relationales Datenmodell entwerfen und beschreiben, um Daten zu Datensaetzen in einer Datenbasis zusammenzufassen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-002-operationen-auf-daten-ausfuehren-1b7b65dd",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-DB-2: Operationen auf Daten ausfuehren",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Operationen auf Daten ausfuehren",
+      "sourceText": "Operationen auf Daten ausfuehren",
+      "sourceSpan": "TH-INF-SEKI-10-DB.2",
+      "parentBulletText": "Operationen auf Daten ausfuehren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Operationen auf Daten ausfuehren",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.2",
+      "rawParentBulletText": "Operationen auf Daten ausfuehren",
+      "canonicalTargetIds": [
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-003-tabellen-und-datensaetze-verwalten-a6563a18",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-DB-3: Tabellen und Datensaetze verwalten",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern",
+      "sourceText": "in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern",
+      "sourceSpan": "TH-INF-SEKI-10-DB.3",
+      "parentBulletText": "in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.3",
+      "rawParentBulletText": "in einem Datenbankmanagementsystem Tabellen erstellen sowie Datensaetze anlegen, loeschen, einfuegen und veraendern",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-004-tabellenbeziehungen-darstellen-e6556572",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-DB-4: Tabellenbeziehungen darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen",
+      "sourceText": "Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-DB.4",
+      "parentBulletText": "Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.4",
+      "rawParentBulletText": "Beziehungen zwischen Tabellen erstellen und in geeigneter Form darstellen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-005-einfache-datenbank-eingeben-1c1a71d1",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-DB-5: Einfache Datenbank eingeben",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben",
+      "sourceText": "Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben",
+      "sourceSpan": "TH-INF-SEKI-10-DB.5",
+      "parentBulletText": "Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.5",
+      "rawParentBulletText": "Daten exemplarisch zur Erstellung einer einfachen Datenbank eingeben",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-006-abfragen-als-datensicht-nutzen-ac2918c2",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-DB-6: Abfragen als Datensicht nutzen",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: durch Abfragen eine Sicht auf die Datenmenge darstellen",
+      "sourceText": "durch Abfragen eine Sicht auf die Datenmenge darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-DB.6",
+      "parentBulletText": "durch Abfragen eine Sicht auf die Datenmenge darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "durch Abfragen eine Sicht auf die Datenmenge darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.6",
+      "rawParentBulletText": "durch Abfragen eine Sicht auf die Datenmenge darstellen",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-007-datenverarbeitung-in-db-begruenden-d6ec094d",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-DB-7: Datenverarbeitung in DB begruenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden",
+      "sourceText": "Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden",
+      "sourceSpan": "TH-INF-SEKI-10-DB.7",
+      "parentBulletText": "Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.7",
+      "rawParentBulletText": "Erfassung, Speicherung und Verarbeitung von Daten in Datenbanksystemen begruenden",
+      "canonicalTargetIds": [
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-008-entwickler-und-anwender-von-dbms-beschreiben-14279e09",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-DB-8: Entwickler und Anwender von DBMS beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben",
+      "sourceText": "Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-DB.8",
+      "parentBulletText": "Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.8",
+      "rawParentBulletText": "Rolle der Entwickler und Anwender von Datenbankmanagementsystemen beschreiben",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-009-datenmodellierung-als-strategie-anwenden-f0213191",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-DB-9: Datenmodellierung als Strategie anwenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Datenmodellierung als informatische Problemloesestrategie anwenden",
+      "sourceText": "Datenmodellierung als informatische Problemloesestrategie anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-DB.9",
+      "parentBulletText": "Datenmodellierung als informatische Problemloesestrategie anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Datenmodellierung als informatische Problemloesestrategie anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.9",
+      "rawParentBulletText": "Datenmodellierung als informatische Problemloesestrategie anwenden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-010-datenbasis-problembezogen-entwickeln-248eeeb0",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-DB-10: Datenbasis problembezogen entwickeln",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: eine Datenbasis problembezogen entwickeln",
+      "sourceText": "eine Datenbasis problembezogen entwickeln",
+      "sourceSpan": "TH-INF-SEKI-10-DB.10",
+      "parentBulletText": "eine Datenbasis problembezogen entwickeln",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Datenbasis problembezogen entwickeln",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.10",
+      "rawParentBulletText": "eine Datenbasis problembezogen entwickeln",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-011-datenbasis-bewerten-27edf0d0",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-DB-11: Datenbasis bewerten",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen",
+      "sourceText": "eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen",
+      "sourceSpan": "TH-INF-SEKI-10-DB.11",
+      "parentBulletText": "eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.11",
+      "rawParentBulletText": "eine Datenbasis und ein Datenmodell bewerten und kritisch beurteilen",
+      "canonicalTargetIds": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-012-relationales-modell-im-dbms-realisieren-b260e22e",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKI-10-DB-12: Relationales Modell im DBMS realisieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren",
+      "sourceText": "eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren",
+      "sourceSpan": "TH-INF-SEKI-10-DB.12",
+      "parentBulletText": "eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.12",
+      "rawParentBulletText": "eine Datenbasis in ein relationales Modell umsetzen und in einem Datenbankmanagementsystem realisieren",
+      "canonicalTargetIds": [
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-013-daten-durch-abfragen-auswerten-c0b3f8ba",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKI-10-DB-13: Daten durch Abfragen auswerten",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: durch Abfragen Daten auswerten und Informationen geeignet darstellen",
+      "sourceText": "durch Abfragen Daten auswerten und Informationen geeignet darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-DB.13",
+      "parentBulletText": "durch Abfragen Daten auswerten und Informationen geeignet darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "durch Abfragen Daten auswerten und Informationen geeignet darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.13",
+      "rawParentBulletText": "durch Abfragen Daten auswerten und Informationen geeignet darstellen",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-014-datenbasis-umstrukturieren-c96e125d",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKI-10-DB-14: Datenbasis umstrukturieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: eine Datenbasis umstrukturieren und Veraenderungen interpretieren",
+      "sourceText": "eine Datenbasis umstrukturieren und Veraenderungen interpretieren",
+      "sourceSpan": "TH-INF-SEKI-10-DB.14",
+      "parentBulletText": "eine Datenbasis umstrukturieren und Veraenderungen interpretieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Datenbasis umstrukturieren und Veraenderungen interpretieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.14",
+      "rawParentBulletText": "eine Datenbasis umstrukturieren und Veraenderungen interpretieren",
+      "canonicalTargetIds": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-db-015-datenschutz-und-datensicherheit-beachten-c21277d9",
+      "passageId": "de-th-informatik:th-inf-10-db",
+      "topicCode": "TH-INF-SEKI-10-DB-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKI-10-DB-15: Datenschutz und Datensicherheit beachten",
+      "description": "Source-Ziel aus Klassenstufe 10: Datenmodellierung und Datenbanksysteme: Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "sourceText": "Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "sourceSpan": "TH-INF-SEKI-10-DB.15",
+      "parentBulletText": "Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Datenmodellierung und Datenbanksysteme, S. 15.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-DB",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-DB.15",
+      "rawParentBulletText": "Datenschutzbestimmungen und Datensicherheit bei Erhebung und Speicherung von Daten beachten und Datenmissbrauch diskutieren",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-001-algorithmuseigenschaften-erlaeutern-336a4d3d",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-ALG-1: Algorithmuseigenschaften erlaeutern",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Eigenschaften von Algorithmen nennen und erlaeutern",
+      "sourceText": "Eigenschaften von Algorithmen nennen und erlaeutern",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.1",
+      "parentBulletText": "Eigenschaften von Algorithmen nennen und erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Eigenschaften von Algorithmen nennen und erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.1",
+      "rawParentBulletText": "Eigenschaften von Algorithmen nennen und erlaeutern",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-002-leistung-von-algorithmen-beschreiben-348a2c39",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-ALG-2: Leistung von Algorithmen beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: beschreiben, was Algorithmen leisten",
+      "sourceText": "beschreiben, was Algorithmen leisten",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.2",
+      "parentBulletText": "beschreiben, was Algorithmen leisten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "beschreiben, was Algorithmen leisten",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.2",
+      "rawParentBulletText": "beschreiben, was Algorithmen leisten",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-003-nichtloesbare-probleme-beschreiben-bdd81f38",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-ALG-3: Nichtloesbare Probleme beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind",
+      "sourceText": "Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.3",
+      "parentBulletText": "Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.3",
+      "rawParentBulletText": "Probleme beschreiben, die mit Hilfe von Algorithmen nicht loesbar sind",
+      "canonicalTargetIds": [
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
+        "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-004-grundbausteine-darstellen-111c9a28",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-ALG-4: Grundbausteine darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: algorithmische Grundbausteine verbal und grafisch darstellen",
+      "sourceText": "algorithmische Grundbausteine verbal und grafisch darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.4",
+      "parentBulletText": "algorithmische Grundbausteine verbal und grafisch darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "algorithmische Grundbausteine verbal und grafisch darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.4",
+      "rawParentBulletText": "algorithmische Grundbausteine verbal und grafisch darstellen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-005-syntax-und-semantik-erlaeutern-1146922e",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-ALG-5: Syntax und Semantik erlaeutern",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Begriffe Syntax und Semantik erlaeutern",
+      "sourceText": "Begriffe Syntax und Semantik erlaeutern",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.5",
+      "parentBulletText": "Begriffe Syntax und Semantik erlaeutern",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Begriffe Syntax und Semantik erlaeutern",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.5",
+      "rawParentBulletText": "Begriffe Syntax und Semantik erlaeutern",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-006-variablen-und-zuweisungen-verwenden-0293993b",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-ALG-6: Variablen und Zuweisungen verwenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Variablen und Wertzuweisungen verwenden",
+      "sourceText": "Variablen und Wertzuweisungen verwenden",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.6",
+      "parentBulletText": "Variablen und Wertzuweisungen verwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Variablen und Wertzuweisungen verwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.6",
+      "rawParentBulletText": "Variablen und Wertzuweisungen verwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-007-fehleranalyse-durchfuehren-bc030fa9",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-ALG-7: Fehleranalyse durchfuehren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: eine Fehleranalyse durchfuehren",
+      "sourceText": "eine Fehleranalyse durchfuehren",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.7",
+      "parentBulletText": "eine Fehleranalyse durchfuehren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Fehleranalyse durchfuehren",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.7",
+      "rawParentBulletText": "eine Fehleranalyse durchfuehren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-008-programme-modifizieren-49b0ed29",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-ALG-8: Programme modifizieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Programme nach Vorgaben modifizieren und ergaenzen",
+      "sourceText": "Programme nach Vorgaben modifizieren und ergaenzen",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.8",
+      "parentBulletText": "Programme nach Vorgaben modifizieren und ergaenzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Programme nach Vorgaben modifizieren und ergaenzen",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.8",
+      "rawParentBulletText": "Programme nach Vorgaben modifizieren und ergaenzen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-009-automat-definieren-7fb8b8f8",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-ALG-9: Automat definieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: den Begriff Automat definieren",
+      "sourceText": "den Begriff Automat definieren",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.9",
+      "parentBulletText": "den Begriff Automat definieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "den Begriff Automat definieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.9",
+      "rawParentBulletText": "den Begriff Automat definieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-010-zustandsdiagramme-beschreiben-78960f18",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-ALG-10: Zustandsdiagramme beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Zustandsdiagramme beschreiben",
+      "sourceText": "Zustandsdiagramme beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.10",
+      "parentBulletText": "Zustandsdiagramme beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Zustandsdiagramme beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.10",
+      "rawParentBulletText": "Zustandsdiagramme beschreiben",
+      "canonicalTargetIds": [
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-011-algorithmen-pruefen-784903ac",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-ALG-11: Algorithmen pruefen",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Algorithmen anhand ihrer Eigenschaften ueberpruefen",
+      "sourceText": "Algorithmen anhand ihrer Eigenschaften ueberpruefen",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.11",
+      "parentBulletText": "Algorithmen anhand ihrer Eigenschaften ueberpruefen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen anhand ihrer Eigenschaften ueberpruefen",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.11",
+      "rawParentBulletText": "Algorithmen anhand ihrer Eigenschaften ueberpruefen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-012-problemloesephasen-anwenden-3b7a5d38",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKI-10-ALG-12: Problemloesephasen anwenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden",
+      "sourceText": "Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.12",
+      "parentBulletText": "Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.12",
+      "rawParentBulletText": "Phasen des Problemloesens Entwerfen, Implementieren und Reflektieren anwenden",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-013-algorithmen-lesen-407acb63",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKI-10-ALG-13: Algorithmen lesen",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Algorithmen lesen und deren Ergebnisse ermitteln",
+      "sourceText": "Algorithmen lesen und deren Ergebnisse ermitteln",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.13",
+      "parentBulletText": "Algorithmen lesen und deren Ergebnisse ermitteln",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen lesen und deren Ergebnisse ermitteln",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.13",
+      "rawParentBulletText": "Algorithmen lesen und deren Ergebnisse ermitteln",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-014-grundbausteine-implementieren-15268f85",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKI-10-ALG-14: Grundbausteine implementieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden",
+      "sourceText": "algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.14",
+      "parentBulletText": "algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.14",
+      "rawParentBulletText": "algorithmische Grundbausteine bei der Implementierung zielgerichtet anwenden",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-015-fehlermeldungen-produktiv-nutzen-29470ec8",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKI-10-ALG-15: Fehlermeldungen produktiv nutzen",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Fehlermeldungen interpretieren und produktiv nutzen",
+      "sourceText": "Fehlermeldungen interpretieren und produktiv nutzen",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.15",
+      "parentBulletText": "Fehlermeldungen interpretieren und produktiv nutzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Fehlermeldungen interpretieren und produktiv nutzen",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.15",
+      "rawParentBulletText": "Fehlermeldungen interpretieren und produktiv nutzen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "df0210bf-735b-54f8-8a1b-8dfca5598ff1"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-016-automaten-modellieren-9d2c35a9",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKI-10-ALG-16: Automaten modellieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.16",
+      "parentBulletText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.16",
+      "rawParentBulletText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-017-algorithmusergebnisse-reflektieren-98e2c96b",
+      "passageId": "de-th-informatik:th-inf-10-alg",
+      "topicCode": "TH-INF-SEKI-10-ALG-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKI-10-ALG-17: Algorithmusergebnisse reflektieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Algorithmen: aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "sourceText": "aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "sourceSpan": "TH-INF-SEKI-10-ALG.17",
+      "parentBulletText": "aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Algorithmen, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-ALG.17",
+      "rawParentBulletText": "aus Ergebnissen von Algorithmen Schlussfolgerungen ziehen und den Problemloesungsprozess reflektieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-001-informatische-fragen-formulieren-4249de2e",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-PROJECT-1: Informatische Fragen formulieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Fragen zu informatischen Sachverhalten formulieren",
+      "sourceText": "Fragen zu informatischen Sachverhalten formulieren",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.1",
+      "parentBulletText": "Fragen zu informatischen Sachverhalten formulieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Fragen zu informatischen Sachverhalten formulieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.1",
+      "rawParentBulletText": "Fragen zu informatischen Sachverhalten formulieren",
+      "canonicalTargetIds": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-002-werkzeuge-kompetent-bedienen-daeede4f",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-PROJECT-2: Werkzeuge kompetent bedienen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen",
+      "sourceText": "geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.2",
+      "parentBulletText": "geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.2",
+      "rawParentBulletText": "geeignete Werkzeuge fuer ausgewaehlte Aufgaben kompetent bedienen",
+      "canonicalTargetIds": [
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-003-sachverhalte-fachsprachlich-darstellen-42b29534",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-PROJECT-3: Sachverhalte fachsprachlich darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen",
+      "sourceText": "informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.3",
+      "parentBulletText": "informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.3",
+      "rawParentBulletText": "informatische Sachverhalte mit Fachbegriffen sachgerecht darstellen",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-004-problemloesungsstrategien-beschreiben-251e2e9f",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-PROJECT-4: Problemloesungsstrategien beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Problemloesungsstrategien fuer informatische Sachverhalte beschreiben",
+      "sourceText": "Problemloesungsstrategien fuer informatische Sachverhalte beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.4",
+      "parentBulletText": "Problemloesungsstrategien fuer informatische Sachverhalte beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Problemloesungsstrategien fuer informatische Sachverhalte beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.4",
+      "rawParentBulletText": "Problemloesungsstrategien fuer informatische Sachverhalte beschreiben",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-005-projektthema-abgrenzen-2da333c6",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-PROJECT-5: Projektthema abgrenzen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Projektthema und Teilziele formulieren und abgrenzen",
+      "sourceText": "Projektthema und Teilziele formulieren und abgrenzen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.5",
+      "parentBulletText": "Projektthema und Teilziele formulieren und abgrenzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Projektthema und Teilziele formulieren und abgrenzen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.5",
+      "rawParentBulletText": "Projektthema und Teilziele formulieren und abgrenzen",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "df1a7c0c-68c4-5262-846d-67f983d79697"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-006-projektdokumentation-beschreiben-db4df3db",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-PROJECT-6: Projektdokumentation beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Aufbau einer Projektdokumentation beschreiben",
+      "sourceText": "Aufbau einer Projektdokumentation beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.6",
+      "parentBulletText": "Aufbau einer Projektdokumentation beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Aufbau einer Projektdokumentation beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.6",
+      "rawParentBulletText": "Aufbau einer Projektdokumentation beschreiben",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-007-problemloesungsprozess-initiieren-4c72be3b",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-PROJECT-7: Problemloesungsprozess initiieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: einen Problemloesungsprozess initiieren und sachgerecht gestalten",
+      "sourceText": "einen Problemloesungsprozess initiieren und sachgerecht gestalten",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.7",
+      "parentBulletText": "einen Problemloesungsprozess initiieren und sachgerecht gestalten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "einen Problemloesungsprozess initiieren und sachgerecht gestalten",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.7",
+      "rawParentBulletText": "einen Problemloesungsprozess initiieren und sachgerecht gestalten",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-008-konfliktfreiheit-pruefen-2f90153f",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-PROJECT-8: Konfliktfreiheit pruefen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Teilziele und Produkt auf Konfliktfreiheit pruefen",
+      "sourceText": "Teilziele und Produkt auf Konfliktfreiheit pruefen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.8",
+      "parentBulletText": "Teilziele und Produkt auf Konfliktfreiheit pruefen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Teilziele und Produkt auf Konfliktfreiheit pruefen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.8",
+      "rawParentBulletText": "Teilziele und Produkt auf Konfliktfreiheit pruefen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-009-strategien-anwenden-73a525a2",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-PROJECT-9: Strategien anwenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Problemloesungsstrategien auf informatische Sachverhalte anwenden",
+      "sourceText": "Problemloesungsstrategien auf informatische Sachverhalte anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.9",
+      "parentBulletText": "Problemloesungsstrategien auf informatische Sachverhalte anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Problemloesungsstrategien auf informatische Sachverhalte anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.9",
+      "rawParentBulletText": "Problemloesungsstrategien auf informatische Sachverhalte anwenden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-010-werkzeuge-aus-alternativen-waehlen-e377ceb0",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-PROJECT-10: Werkzeuge aus Alternativen waehlen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen",
+      "sourceText": "ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.10",
+      "parentBulletText": "ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.10",
+      "rawParentBulletText": "ein geeignetes Werkzeug aus mehreren Alternativen auswaehlen",
+      "canonicalTargetIds": [
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-011-anwendung-von-werkzeugen-erschliessen-1b23300d",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-PROJECT-11: Anwendung von Werkzeugen erschliessen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen",
+      "sourceText": "weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.11",
+      "parentBulletText": "weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.11",
+      "rawParentBulletText": "weitere Anwendungsmoeglichkeiten bekannter Werkzeuge erschliessen",
+      "canonicalTargetIds": [
+        "df0210bf-735b-54f8-8a1b-8dfca5598ff1",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-012-arbeitsablaeufe-planen-0fa6ddad",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKI-10-PROJECT-12: Arbeitsablaeufe planen",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Arbeitsablaeufe und Handlungsfolgen planen",
+      "sourceText": "Arbeitsablaeufe und Handlungsfolgen planen",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.12",
+      "parentBulletText": "Arbeitsablaeufe und Handlungsfolgen planen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Arbeitsablaeufe und Handlungsfolgen planen",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.12",
+      "rawParentBulletText": "Arbeitsablaeufe und Handlungsfolgen planen",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-013-probleme-analysieren-und-modifizieren-726aa392",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKI-10-PROJECT-13: Probleme analysieren und modifizieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: informatische Probleme analysieren, modifizieren und beschreiben",
+      "sourceText": "informatische Probleme analysieren, modifizieren und beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.13",
+      "parentBulletText": "informatische Probleme analysieren, modifizieren und beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "informatische Probleme analysieren, modifizieren und beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.13",
+      "rawParentBulletText": "informatische Probleme analysieren, modifizieren und beschreiben",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-014-teilziele-bearbeiten-22f8c3cf",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKI-10-PROJECT-14: Teilziele bearbeiten",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten",
+      "sourceText": "Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.14",
+      "parentBulletText": "Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.14",
+      "rawParentBulletText": "Teilziele nach Entwerfen, Implementieren und Reflektieren bearbeiten",
+      "canonicalTargetIds": [
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-015-gesamtprodukt-zusammenfuehren-15475507",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKI-10-PROJECT-15: Gesamtprodukt zusammenfuehren",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren",
+      "sourceText": "Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.15",
+      "parentBulletText": "Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.15",
+      "rawParentBulletText": "Ergebnisse von Teilzielen zum Gesamtprodukt zusammenfuehren",
+      "canonicalTargetIds": [
+        "d5056ca3-2a3d-5145-a28d-29038038a77f",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-016-produkt-dokumentieren-und-praesentieren-c3e3ff73",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKI-10-PROJECT-16: Produkt dokumentieren und praesentieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: Prozess und Produkt dokumentieren und praesentieren",
+      "sourceText": "Prozess und Produkt dokumentieren und praesentieren",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.16",
+      "parentBulletText": "Prozess und Produkt dokumentieren und praesentieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Prozess und Produkt dokumentieren und praesentieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.16",
+      "rawParentBulletText": "Prozess und Produkt dokumentieren und praesentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-project-017-projektergebnisse-bewerten-ee1a6e15",
+      "passageId": "de-th-informatik:th-inf-10-project",
+      "topicCode": "TH-INF-SEKI-10-PROJECT-17",
+      "bulletIndex": 17,
+      "title": "TH-INF-SEKI-10-PROJECT-17: Projektergebnisse bewerten",
+      "description": "Source-Ziel aus Klassenstufe 10: Arbeit an Informatikprojekten: eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "sourceText": "eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "sourceSpan": "TH-INF-SEKI-10-PROJECT.17",
+      "parentBulletText": "eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Arbeit an Informatikprojekten, S. 17.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-PROJECT",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "rawSourceSpan": "TH-INF-SEKI-10-PROJECT.17",
+      "rawParentBulletText": "eigene und fremde Projektergebnisse nach Regeln, Normen und Kriterien bewerten",
+      "canonicalTargetIds": [
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-001-software-klassifizieren-f6e61e8a",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-TECH-1: Software klassifizieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Software klassifizieren",
+      "sourceText": "Software klassifizieren",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.1",
+      "parentBulletText": "Software klassifizieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Software klassifizieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.1",
+      "rawParentBulletText": "Software klassifizieren",
+      "canonicalTargetIds": [
+        "e05d4e40-6267-598c-8c11-8ab6420afea8",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-002-softwarelizenzen-unterscheiden-9b39d69b",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-TECH-2: Softwarelizenzen unterscheiden",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten",
+      "sourceText": "Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.2",
+      "parentBulletText": "Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.2",
+      "rawParentBulletText": "Softwarelizenzen unterscheiden und Rechte und Pflichten einhalten",
+      "canonicalTargetIds": [
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-003-software-konfliktfrei-installieren-44988a40",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-TECH-3: Software konfliktfrei installieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten",
+      "sourceText": "Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.3",
+      "parentBulletText": "Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.3",
+      "rawParentBulletText": "Software benutzerdefiniert installieren und deinstallieren und konfliktfreie Funktion gewaehrleisten",
+      "canonicalTargetIds": [
+        "e05d4e40-6267-598c-8c11-8ab6420afea8",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-004-roboter-und-automaten-unterscheiden-73068644",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-TECH-4: Roboter und Automaten unterscheiden",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Roboter und Automaten unterscheiden",
+      "sourceText": "Roboter und Automaten unterscheiden",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.4",
+      "parentBulletText": "Roboter und Automaten unterscheiden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Roboter und Automaten unterscheiden",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.4",
+      "rawParentBulletText": "Roboter und Automaten unterscheiden",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-005-logische-grundbausteine-implementieren-cf0d58b5",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-TECH-5: Logische Grundbausteine implementieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren",
+      "sourceText": "logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.5",
+      "parentBulletText": "logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.5",
+      "rawParentBulletText": "logische Grundbausteine AND, OR, NOT, XOR, NAND und NOR darstellen und implementieren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-006-sensoren-und-aktoren-beschreiben-f2a4b20a",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-TECH-6: Sensoren und Aktoren beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Aufgabe von Sensoren und Aktoren beschreiben",
+      "sourceText": "Aufgabe von Sensoren und Aktoren beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.6",
+      "parentBulletText": "Aufgabe von Sensoren und Aktoren beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Aufgabe von Sensoren und Aktoren beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.6",
+      "rawParentBulletText": "Aufgabe von Sensoren und Aktoren beschreiben",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-007-schwellenwerte-kalkulieren-e99d7d44",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-TECH-7: Schwellenwerte kalkulieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Schwellenwerte kalkulieren",
+      "sourceText": "Schwellenwerte kalkulieren",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.7",
+      "parentBulletText": "Schwellenwerte kalkulieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Schwellenwerte kalkulieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.7",
+      "rawParentBulletText": "Schwellenwerte kalkulieren",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-008-roboter-zusammenbauen-08cb1a59",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-TECH-8: Roboter zusammenbauen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Roboter problemorientiert zusammenbauen",
+      "sourceText": "Roboter problemorientiert zusammenbauen",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.8",
+      "parentBulletText": "Roboter problemorientiert zusammenbauen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Roboter problemorientiert zusammenbauen",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.8",
+      "rawParentBulletText": "Roboter problemorientiert zusammenbauen",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-009-roboterprogramme-uebertragen-29fa2198",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-TECH-9: Roboterprogramme uebertragen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Roboter anschliessen und Programme auf den Roboter herunterladen",
+      "sourceText": "Roboter anschliessen und Programme auf den Roboter herunterladen",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.9",
+      "parentBulletText": "Roboter anschliessen und Programme auf den Roboter herunterladen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Roboter anschliessen und Programme auf den Roboter herunterladen",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.9",
+      "rawParentBulletText": "Roboter anschliessen und Programme auf den Roboter herunterladen",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-010-roboterprogramme-modifizieren-fb9a207c",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-TECH-10: Roboterprogramme modifizieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Programme fuer Roboter nach Vorgaben modifizieren",
+      "sourceText": "Programme fuer Roboter nach Vorgaben modifizieren",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.10",
+      "parentBulletText": "Programme fuer Roboter nach Vorgaben modifizieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Programme fuer Roboter nach Vorgaben modifizieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.10",
+      "rawParentBulletText": "Programme fuer Roboter nach Vorgaben modifizieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-011-technische-loesungsstrategien-nutzen-98a59442",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-TECH-11: Technische Loesungsstrategien nutzen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen",
+      "sourceText": "Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.11",
+      "parentBulletText": "Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.11",
+      "rawParentBulletText": "Loesungsstrategien nutzen, um technische Aufgabenstellungen zu loesen",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-012-robotermodelle-mit-zustandsdiagrammen-94dc4f2a",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-12",
+      "bulletIndex": 12,
+      "title": "TH-INF-SEKI-10-TECH-12: Robotermodelle mit Zustandsdiagrammen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.12",
+      "parentBulletText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.12",
+      "rawParentBulletText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-013-roboterverhalten-beeinflussen-adbc194f",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-13",
+      "bulletIndex": 13,
+      "title": "TH-INF-SEKI-10-TECH-13: Roboterverhalten beeinflussen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Verhalten des Roboters beeinflussen",
+      "sourceText": "Verhalten des Roboters beeinflussen",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.13",
+      "parentBulletText": "Verhalten des Roboters beeinflussen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Verhalten des Roboters beeinflussen",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.13",
+      "rawParentBulletText": "Verhalten des Roboters beeinflussen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-014-logikbausteine-anwenden-6532a483",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-14",
+      "bulletIndex": 14,
+      "title": "TH-INF-SEKI-10-TECH-14: Logikbausteine anwenden",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: logische Grundbausteine fuer einfache Problemloesungen anwenden",
+      "sourceText": "logische Grundbausteine fuer einfache Problemloesungen anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.14",
+      "parentBulletText": "logische Grundbausteine fuer einfache Problemloesungen anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "logische Grundbausteine fuer einfache Problemloesungen anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.14",
+      "rawParentBulletText": "logische Grundbausteine fuer einfache Problemloesungen anwenden",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-015-sensoren-kalibrieren-08643844",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-15",
+      "bulletIndex": 15,
+      "title": "TH-INF-SEKI-10-TECH-15: Sensoren kalibrieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Methoden zur Kalibrierung von Sensoren anwenden",
+      "sourceText": "Methoden zur Kalibrierung von Sensoren anwenden",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.15",
+      "parentBulletText": "Methoden zur Kalibrierung von Sensoren anwenden",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Methoden zur Kalibrierung von Sensoren anwenden",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.15",
+      "rawParentBulletText": "Methoden zur Kalibrierung von Sensoren anwenden",
+      "canonicalTargetIds": [
+        "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-016-modelle-und-implementierungen-beurteilen-f5fe89a5",
+      "passageId": "de-th-informatik:th-inf-10-tech",
+      "topicCode": "TH-INF-SEKI-10-TECH-16",
+      "bulletIndex": 16,
+      "title": "TH-INF-SEKI-10-TECH-16: Modelle und Implementierungen beurteilen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Technische Informatik: Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "sourceText": "Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "sourceSpan": "TH-INF-SEKI-10-TECH.16",
+      "parentBulletText": "Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Technische Informatik, S. 19.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-TECH",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "rawSourceSpan": "TH-INF-SEKI-10-TECH.16",
+      "rawParentBulletText": "Modelle und Implementierungen beurteilen und Alternativen begruendet auswaehlen",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "0ef581d1-c033-5a98-a65a-48ea7b80136f"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-001-spielgenres-einordnen-dd3bcd7d",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-GAMES-1: Spielgenres einordnen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen",
+      "sourceText": "Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.1",
+      "parentBulletText": "Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.1",
+      "rawParentBulletText": "Computerspiele und konventionelle Spiele anhand von Merkmalen Genres zuordnen",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-002-auswirkungen-von-computerspielen-beschreiben-031b2404",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-GAMES-2: Auswirkungen von Computerspielen beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Auswirkungen von Computerspielen auf Nutzer beschreiben",
+      "sourceText": "Auswirkungen von Computerspielen auf Nutzer beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.2",
+      "parentBulletText": "Auswirkungen von Computerspielen auf Nutzer beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Auswirkungen von Computerspielen auf Nutzer beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.2",
+      "rawParentBulletText": "Auswirkungen von Computerspielen auf Nutzer beschreiben",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-003-handlungsstrategien-und-regeln-beschreiben-6865494a",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-GAMES-3: Handlungsstrategien und Regeln beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Handlungsstrategien und Spielregeln beschreiben",
+      "sourceText": "Handlungsstrategien und Spielregeln beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.3",
+      "parentBulletText": "Handlungsstrategien und Spielregeln beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Handlungsstrategien und Spielregeln beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.3",
+      "rawParentBulletText": "Handlungsstrategien und Spielregeln beschreiben",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-004-spielfiguren-und-umgebung-modellieren-f62b6abe",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-GAMES-4: Spielfiguren und Umgebung modellieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten",
+      "sourceText": "Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.4",
+      "parentBulletText": "Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.4",
+      "rawParentBulletText": "Charaktereigenschaften von Spielfiguren festlegen und Spielumgebung entsprechend der Spielidee gestalten",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-005-spielvariante-implementieren-895da211",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-GAMES-5: Spielvariante implementieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren",
+      "sourceText": "eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.5",
+      "parentBulletText": "eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.5",
+      "rawParentBulletText": "eine Spielvariante mit informatischen Werkzeugen entwerfen und implementieren",
+      "canonicalTargetIds": [
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-006-spielvariante-praesentieren-91f42b20",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-GAMES-6: Spielvariante praesentieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Publikation der Spielvariante gestalten und praesentieren",
+      "sourceText": "Publikation der Spielvariante gestalten und praesentieren",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.6",
+      "parentBulletText": "Publikation der Spielvariante gestalten und praesentieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Publikation der Spielvariante gestalten und praesentieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.6",
+      "rawParentBulletText": "Publikation der Spielvariante gestalten und praesentieren",
+      "canonicalTargetIds": [
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d",
+        "00f23ea9-4b45-52ea-aef2-7e1314ea3b45"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-007-benutzeroberflaechen-analysieren-aeb830f8",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-GAMES-7: Benutzeroberflaechen analysieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Benutzeroberflaechen von Computerspielen analysieren",
+      "sourceText": "Benutzeroberflaechen von Computerspielen analysieren",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.7",
+      "parentBulletText": "Benutzeroberflaechen von Computerspielen analysieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Benutzeroberflaechen von Computerspielen analysieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.7",
+      "rawParentBulletText": "Benutzeroberflaechen von Computerspielen analysieren",
+      "canonicalTargetIds": [
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-008-spielmodellierung-betrachten-39517728",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-GAMES-8: Spielmodellierung betrachten",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten",
+      "sourceText": "Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.8",
+      "parentBulletText": "Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.8",
+      "rawParentBulletText": "Computerspiele unter dem Aspekt der zugrunde liegenden Modellierung betrachten",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-009-spielidee-modifizieren-d9bb7af3",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-GAMES-9: Spielidee modifizieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: eine Spielidee modifizieren und daraus eine Spielvariante realisieren",
+      "sourceText": "eine Spielidee modifizieren und daraus eine Spielvariante realisieren",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.9",
+      "parentBulletText": "eine Spielidee modifizieren und daraus eine Spielvariante realisieren",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "eine Spielidee modifizieren und daraus eine Spielvariante realisieren",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.9",
+      "rawParentBulletText": "eine Spielidee modifizieren und daraus eine Spielvariante realisieren",
+      "canonicalTargetIds": [
+        "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-010-virtuelle-und-reale-identitaet-reflektieren-831d54af",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-GAMES-10: Virtuelle und reale Identitaet reflektieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben",
+      "sourceText": "Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.10",
+      "parentBulletText": "Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.10",
+      "rawParentBulletText": "Unterschied zwischen realer und virtueller Identitaet erfassen und beschreiben",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "a2431bb5-6491-53fe-8dd3-309546a2cb97"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-games-011-mediengebrauch-beurteilen-d625765f",
+      "passageId": "de-th-informatik:th-inf-10-games",
+      "topicCode": "TH-INF-SEKI-10-GAMES-11",
+      "bulletIndex": 11,
+      "title": "TH-INF-SEKI-10-GAMES-11: Mediengebrauch beurteilen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Computerspiele: Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "sourceText": "Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "sourceSpan": "TH-INF-SEKI-10-GAMES.11",
+      "parentBulletText": "Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Computerspiele, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-GAMES",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "rawSourceSpan": "TH-INF-SEKI-10-GAMES.11",
+      "rawParentBulletText": "Chancen und Risiken eines kritiklosen Mediengebrauchs diskutieren und Schlussfolgerungen ziehen",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-001-einfluss-von-informatiksystemen-beschreiben-52b2c956",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-01",
+      "bulletIndex": 1,
+      "title": "TH-INF-SEKI-10-IMG-1: Einfluss von Informatiksystemen beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben",
+      "sourceText": "Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.1",
+      "parentBulletText": "Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.1",
+      "rawParentBulletText": "Einfluss von Informatiksystemen im Alltag und auf veraenderte Bedingungen der Arbeitswelt beschreiben",
+      "canonicalTargetIds": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-002-verantwortungsvollen-umgang-darstellen-c515bb2e",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-02",
+      "bulletIndex": 2,
+      "title": "TH-INF-SEKI-10-IMG-2: Verantwortungsvollen Umgang darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen",
+      "sourceText": "Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.2",
+      "parentBulletText": "Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.2",
+      "rawParentBulletText": "Notwendigkeit eines verantwortungsvollen Umgangs mit Informatiksystemen darstellen",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-003-ikt-entwicklungen-beschreiben-e4f5c30f",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-03",
+      "bulletIndex": 3,
+      "title": "TH-INF-SEKI-10-IMG-3: IKT-Entwicklungen beschreiben",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben",
+      "sourceText": "historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.3",
+      "parentBulletText": "historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.3",
+      "rawParentBulletText": "historische Entwicklungen von Informations- und Kommunikationstechnologie beschreiben",
+      "canonicalTargetIds": [
+        "ae5ae291-aa50-5260-abf4-348a463e9974"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-004-persoenlichkeiten-der-informatik-einordnen-f3fbbe01",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-04",
+      "bulletIndex": 4,
+      "title": "TH-INF-SEKI-10-IMG-4: Persoenlichkeiten der Informatik einordnen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen",
+      "sourceText": "Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.4",
+      "parentBulletText": "Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.4",
+      "rawParentBulletText": "Errungenschaften und Einfluss bedeutender Persoenlichkeiten auf Entwicklung und Einsatz von Informatiksystemen darstellen",
+      "canonicalTargetIds": [
+        "ae5ae291-aa50-5260-abf4-348a463e9974",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-005-automatisierungsergebnisse-vergleichen-c9e4c301",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-05",
+      "bulletIndex": 5,
+      "title": "TH-INF-SEKI-10-IMG-5: Automatisierungsergebnisse vergleichen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen",
+      "sourceText": "Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.5",
+      "parentBulletText": "Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.5",
+      "rawParentBulletText": "Ergebnisse automatisierter Vorgaenge mit Erwartungen vergleichen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-006-einsatzmoeglichkeiten-darstellen-8d8c5fee",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-06",
+      "bulletIndex": 6,
+      "title": "TH-INF-SEKI-10-IMG-6: Einsatzmoeglichkeiten darstellen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Einsatzmoeglichkeiten von Informatiksystemen darstellen",
+      "sourceText": "Einsatzmoeglichkeiten von Informatiksystemen darstellen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.6",
+      "parentBulletText": "Einsatzmoeglichkeiten von Informatiksystemen darstellen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einsatzmoeglichkeiten von Informatiksystemen darstellen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.6",
+      "rawParentBulletText": "Einsatzmoeglichkeiten von Informatiksystemen darstellen",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-007-entwicklungstendenzen-einschaetzen-fac001df",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-07",
+      "bulletIndex": 7,
+      "title": "TH-INF-SEKI-10-IMG-7: Entwicklungstendenzen einschaetzen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen",
+      "sourceText": "Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.7",
+      "parentBulletText": "Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.7",
+      "rawParentBulletText": "Entwicklungstendenzen von Informations- oder Kommunikationstechnologie einschaetzen",
+      "canonicalTargetIds": [
+        "ae5ae291-aa50-5260-abf4-348a463e9974",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-008-automatisierung-in-arbeitswelt-bewerten-b41d09dc",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-08",
+      "bulletIndex": 8,
+      "title": "TH-INF-SEKI-10-IMG-8: Automatisierung in Arbeitswelt bewerten",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Auswirkungen der Automatisierung in der Arbeitswelt bewerten",
+      "sourceText": "Auswirkungen der Automatisierung in der Arbeitswelt bewerten",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.8",
+      "parentBulletText": "Auswirkungen der Automatisierung in der Arbeitswelt bewerten",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Auswirkungen der Automatisierung in der Arbeitswelt bewerten",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.8",
+      "rawParentBulletText": "Auswirkungen der Automatisierung in der Arbeitswelt bewerten",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-009-elektronische-kommunikation-beurteilen-7e22fe98",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-09",
+      "bulletIndex": 9,
+      "title": "TH-INF-SEKI-10-IMG-9: Elektronische Kommunikation beurteilen",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen",
+      "sourceText": "Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.9",
+      "parentBulletText": "Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.9",
+      "rawParentBulletText": "Konsequenzen aus der Geschwindigkeit elektronischer Kommunikation beurteilen",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-img-010-chancen-und-risiken-argumentieren-04126893",
+      "passageId": "de-th-informatik:th-inf-10-img",
+      "topicCode": "TH-INF-SEKI-10-IMG-10",
+      "bulletIndex": 10,
+      "title": "TH-INF-SEKI-10-IMG-10: Chancen und Risiken argumentieren",
+      "description": "Source-Ziel aus Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft: zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "sourceText": "zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "sourceSpan": "TH-INF-SEKI-10-IMG.10",
+      "parentBulletText": "zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "sourceRef": "Lehrplan Informatik Gymnasium Thüringen 2012, Klassenstufe 10: Wahlpflichtthema Informatik-Mensch-Gesellschaft, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-TH",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:TH-INF-SEKI-10-IMG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "rawSourceSpan": "TH-INF-SEKI-10-IMG.10",
+      "rawParentBulletText": "zu Chancen und Risiken von Informatiksystemen argumentierend Stellung nehmen",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    }
+  ]
+}

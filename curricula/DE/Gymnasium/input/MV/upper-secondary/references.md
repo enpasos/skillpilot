@@ -16,7 +16,7 @@ Scope:
 
 Archived locally at:
 
-- `curricula/DE/Gymnasium/input/MV/Rahmenplan_Wirtschaft_Gymnasiale_Oberstufe.pdf`
+- `curricula/DE/Gymnasium/input/MV/Rahmenplan_Wirtschaft_GOS_MV.pdf`
 
 Generated source extraction:
 

@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-13T17:25:23.972Z
+Generated: 2026-05-14T04:54:14.263Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -8,12 +8,12 @@ Rules version: curriculum-quality-v1
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 16 |
+| M0 | 15 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
-| M5 | 5 |
+| M5 | 6 |
 
 ## Curricula
 
@@ -28,13 +28,13 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | M0 | 210 | 171 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M0 | 221 | 180 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Informatik (Gymnasium, DE) | M0 | 277 | 232 | 29/29 | 2/16 | 1 | 1 | 3 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M0 | 142 | 109 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M5 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
-| Politik und Wirtschaft (Gymnasium, DE) | M0 | 457 | 390 | 2/2 | 2/16 | 0 | 2 | 1 |
+| Politik und Wirtschaft (Gymnasium, DE) | M5 | 506 | 434 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -107,8 +107,35 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 13 | 182 | 182 | 0 | 100% |  |
 | Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 35 | 540 | 8 | 532 | 1% |  |
 | Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 8 | 170 | 170 | 0 | 100% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Brandenburg, GOST RLP 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 23 | 139 | 38 | 101 | 27% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 10 | 48 | 24 | 24 | 50% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 23 | 139 | 38 | 101 | 27% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 10 | 48 | 24 | 24 | 50% |  |
+| Informatik (Gymnasium, DE) | Informatik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 4/4 | - | 20 | 171 | 7 | 164 | 4% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 2/2 original source(s) | 4/4 | - | 8 | 57 | 1 | 56 | 2% |  |
 | Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 49 | 224 | 65 | 159 | 29% |  |
+| Informatik (Gymnasium, DE) | Informatik Gymnasiale Oberstufe (Bremen, Bildungsplan 2009 Source-Extraction) | DE-HB | 1/1 original source(s) | 4/4 | - | 9 | 60 | 8 | 52 | 13% |  |
 | Informatik (Gymnasium, DE) | Informatik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 35 | 155 | 155 | 0 | 100% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Hamburg, Bildungsplan Gymnasium Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 6 | 133 | 0 | 133 | 0% |  |
+| Informatik (Gymnasium, DE) | Informatik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 original source(s) | 4/4 | - | 9 | 136 | 10 | 126 | 7% |  |
+| Informatik (Gymnasium, DE) | Informatik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 17 | 140 | 71 | 69 | 51% |  |
+| Informatik (Gymnasium, DE) | Informatik und Medienbildung Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 original source(s) | 4/4 | - | 23 | 136 | 56 | 80 | 41% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 13 | 115 | 2 | 113 | 2% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Niedersachsen, KC Source-Extraction) | DE-NI | 1/1 original source(s) | 4/4 | - | 23 | 150 | 26 | 124 | 17% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 1/1 original source(s) | 4/4 | - | 17 | 189 | 11 | 178 | 6% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Nordrhein-Westfalen, KLP 2021/2023 Source-Extraction) | DE-NW | 2/2 original source(s) | 4/4 | - | 13 | 100 | 6 | 94 | 6% |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 15 | 168 | 22 | 146 | 13% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 5 | 53 | 9 | 44 | 17% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 4 | 96 | 15 | 81 | 16% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 4 | 123 | 10 | 113 | 8% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 4/4 original source(s) | 4/4 | - | 13 | 145 | 67 | 78 | 46% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Saarland, GOS 2006/2019 Source-Extraction) | DE-SL | 3/3 original source(s) | 4/4 | - | 11 | 75 | 48 | 27 | 64% |  |
+| Informatik (Gymnasium, DE) | Informatik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 27 | 257 | 8 | 249 | 3% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 1/1 original source(s) | 4/4 | - | 16 | 78 | 1 | 77 | 1% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 4 | 91 | 17 | 74 | 19% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 4/4 | - | 4 | 82 | 14 | 68 | 17% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 7 | 105 | 9 | 96 | 9% |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 original source(s) | 4/4 | - | 5 | 92 | 23 | 69 | 25% |  |
 | Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 60 | 832 | 9 | 823 | 1% |  |
 | Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 original source(s) | 3/3 | - | 33 | 94 | 94 | 0 | 100% |  |
@@ -170,8 +197,39 @@ Rules version: curriculum-quality-v1
 | Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 original source(s) | 3/3 | - | 30 | 575 | 0 | 575 | 0% |  |
 | Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 1/1 original source(s) | 3/3 | - | 7 | 220 | 0 | 220 | 0% |  |
 | Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012/2024 Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 11 | 257 | 0 | 257 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) | DE-BB | 2/2 original source(s) | 3/3 | - | 17 | 113 | 0 | 113 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Brandenburg, GOST FULL Source-Extraction) | DE-BB | 2/2 original source(s) | 3/3 | - | 32 | 156 | 2 | 154 | 1% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Berlin, RLP 2015 FULL Source-Extraction) | DE-BE | 2/2 original source(s) | 3/3 | - | 17 | 113 | 0 | 113 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Berlin, GOST FULL Source-Extraction) | DE-BE | 2/2 original source(s) | 3/3 | - | 32 | 156 | 2 | 154 | 1% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 22 | 145 | 13 | 132 | 9% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 13 | 81 | 0 | 81 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 5 | 43 | 9 | 34 | 21% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 7 | 58 | 16 | 42 | 28% |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Gesellschaft (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 46 | 345 | 277 | 68 | 80% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und WAT Sekundarstufe I (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 2/2 original source(s) | 3/3 | - | 11 | 71 | 0 | 71 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaftslehre Sekundarstufe II (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 2/2 original source(s) | 3/3 | - | 9 | 70 | 0 | 70 | 0% |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 2/2 original source(s) | 3/3 | - | 20 | 155 | 155 | 0 | 100% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 original source(s) | 3/3 | - | 11 | 71 | 29 | 42 | 41% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | PGW Sekundarstufe I (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 12 | 90 | 2 | 88 | 2% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | PGW Studienstufe (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 1/1 original source(s) | 3/3 | - | 11 | 150 | 0 | 150 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 1/1 original source(s) | 3/3 | - | 19 | 123 | 0 | 123 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe II (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 2/2 original source(s) | 3/3 | - | 16 | 128 | 0 | 128 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Oberstufe (Niedersachsen, KC 2018 FULL Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 18 | 130 | 0 | 130 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Sekundarstufe I (Niedersachsen, KC 2015 FULL Source-Extraction) | DE-NI | 1/1 original source(s) | 3/3 | - | 11 | 90 | 0 | 90 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialwissenschaften/Wirtschaft Oberstufe (Nordrhein-Westfalen, KLP GOSt Full Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 11 | 211 | 0 | 211 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft-Politik Sekundarstufe I (Nordrhein-Westfalen, KLP G9 2019 Full Source-Extraction) | DE-NW | 1/1 original source(s) | 3/3 | - | 14 | 100 | 0 | 100 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 FULL Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 10 | 90 | 0 | 90 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe II (Rheinland-Pfalz, Lehrplan 2022 FULL Source-Extraction) | DE-RP | 1/1 original source(s) | 3/3 | - | 16 | 158 | 0 | 158 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Oberstufe (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 24 | 168 | 0 | 168 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 1/1 original source(s) | 3/3 | - | 16 | 119 | 1 | 118 | 1% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe I (Saarland, Lehrplan FULL Source-Extraction) | DE-SL | 1/1 original source(s) | 3/3 | - | 7 | 52 | 0 | 52 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde, Politik und Wirtschaftslehre Sekundarstufe II (Saarland, GOS FULL Source-Extraction) | DE-SL | 4/4 original source(s) | 3/3 | - | 13 | 124 | 0 | 124 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe I (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 14 | 113 | 0 | 113 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe II (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 1/1 original source(s) | 3/3 | - | 19 | 131 | 0 | 131 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 2/2 original source(s) | 3/3 | - | 21 | 169 | 1 | 168 | 1% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 2/2 original source(s) | 3/3 | - | 14 | 129 | 2 | 127 | 2% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe I (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 9 | 109 | 0 | 109 | 0% |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe II (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 2/2 original source(s) | 3/3 | - | 23 | 208 | 0 | 208 | 0% |  |
 | Polnisch (Gymnasium, DE) | Polnisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Russisch (Gymnasium, DE) | Russisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
 | Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | 1/1 original source(s) | 3/3 | - | 1 | 6 | 1 | 5 | 17% |  |
@@ -181,8 +239,8 @@ Rules version: curriculum-quality-v1
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 original source(s) | 3/3 | - | 8 | 48 | 6 | 42 | 13% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 original source(s) | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 5 | 43 | 4 | 39 | 9% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 7 | 58 | 6 | 52 | 10% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 5 | 43 | 9 | 34 | 21% |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 original source(s) | 3/3 | - | 7 | 58 | 16 | 42 | 28% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 original source(s) | 3/3 | - | 35 | 184 | 172 | 12 | 93% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Arbeit-Technik Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 1/1 original source(s) | 3/3 | - | 4 | 29 | 0 | 29 | 0% |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Bremen, Bildungsplan 2008 Source-Extraction) | DE-HB | 1/1 original source(s) | 3/3 | - | 4 | 28 | 0 | 28 | 0% |  |
@@ -221,13 +279,13 @@ Rules version: curriculum-quality-v1
 | Geschichte (Gymnasium, DE) | 2/16 | 156 | 171 | 2 | 372 | 372 | 372 | 0 | 372 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 2/16 | 170 | 185 | 2 | 710 | 710 | 710 | 0 | 710 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
-| Informatik (Gymnasium, DE) | 2/16 | 161 | 180 | 2 | 379 | 379 | 379 | 0 | 379 | 0 | 0 | 0 | 0 | 0 | 161 (100%) |
+| Informatik (Gymnasium, DE) | 2/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 1467 | 0 | 0 | 14 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 2/16 | 94 | 109 | 2 | 926 | 926 | 926 | 0 | 926 | 0 | 0 | 0 | 0 | 0 | 94 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
-| Politik und Wirtschaft (Gymnasium, DE) | 2/16 | 370 | 390 | 2 | 500 | 500 | 500 | 0 | 500 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
+| Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 434 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 413 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Spanisch (Gymnasium, DE) | 2/16 | 44 | 59 | 2 | 50 | 50 | 50 | 0 | 50 | 0 | 0 | 0 | 0 | 0 | 44 (100%) |

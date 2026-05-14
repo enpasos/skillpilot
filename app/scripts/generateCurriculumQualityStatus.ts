@@ -696,7 +696,7 @@ interface RouteProfile {
   motivationAnchorGoalIds: string[]
   terminalGoalIds?: string[]
   terminalAutonomyClusterIds: string[]
-  compositionViewStage?: 'SekI' | 'SekII'
+  compositionViewStage?: 'SekI' | 'SekII' | 'CrossStage'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
 }
@@ -770,6 +770,26 @@ const CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS = [
   'a1c0e891-cb5b-56ef-9aa7-ac782e2099c3',
   '0fb8833c-4017-5052-819a-ecb5f6ebb36f',
   '5113c64b-405d-5f4b-bae9-70fe530b5e69',
+]
+const CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID = '51b60137-46e8-5498-973e-ea38bb32f327'
+const CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID = 'b76a024a-55a6-5c77-85cd-b37ef10e5197'
+const CANONICAL_GYM_POLITICS_ECONOMICS_PRACTICE_CLUSTER_IDS = [
+  '550f7c15-340e-57a9-9558-a928a0225041',
+  '9d8df353-53dd-53c2-a5b0-4a4086ac6da8',
+  'c12243ad-1477-53e9-b6f9-99d38b0c7868',
+  '0940abb4-7c9a-5419-926f-9bda8b8b580a',
+  '535895ed-659e-5dd2-90c2-8a34e8b96afe',
+  '54c26dc0-54d2-5067-a7c5-06b6fc5f43d5',
+]
+const CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID = '7d51b38c-a149-5407-bddc-d2ce7878b020'
+const CANONICAL_GYM_INFORMATICS_MOTIVATION_GOAL_ID = 'd848ceb9-cd73-5a13-9407-f3364764c223'
+const CANONICAL_GYM_INFORMATICS_PRACTICE_CLUSTER_IDS = [
+  'f05a9276-f27c-5d74-af65-588f12ab4de3',
+  '91c5be09-cc6b-5f57-bfe1-9f0038faf26a',
+  '6982b63a-c6c8-5a6f-b5cb-51568301ac1c',
+  '010651ba-ddd0-510b-8ed1-e3610031f6e1',
+  '70ef7a45-540a-5d8c-b970-19b9f740c40a',
+  '4d22b75a-c395-5785-9131-68a8a5e203c1',
 ]
 
 const ruleCatalog: QualityRuleDefinition[] = [
@@ -954,6 +974,46 @@ const routeProfiles: RouteProfile[] = [
       && (goal as { phase?: string }).phase !== 'Abitur'
       && !goal.tags?.includes('Abitur'),
   },
+  {
+    profileId: 'canonical-politics-economics-crossstage',
+    landscapeId: CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_POLITICS_ECONOMICS_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymPoliticsEconomicsGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation'),
+    clusterSelector: (goal) => isCanonicalGymPoliticsEconomicsGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
+  {
+    profileId: 'canonical-informatics-crossstage',
+    landscapeId: CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID,
+    label: 'Sekundarstufe I/II',
+    motivationAnchorGoalIds: [CANONICAL_GYM_INFORMATICS_MOTIVATION_GOAL_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_INFORMATICS_PRACTICE_CLUSTER_IDS,
+    compositionViewStage: 'CrossStage',
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymInformaticsGoal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && !goal.tags?.includes('Motivation')
+      && !goal.tags?.includes('Orientation')
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur',
+    clusterSelector: (goal) => isCanonicalGymInformaticsGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal)
+      && goal.dimensionTags?.phase !== 'Abitur'
+      && (goal as { phase?: string }).phase !== 'Abitur'
+      && !goal.tags?.includes('Abitur'),
+  },
 ]
 
 function toRepoPath(path: string): string {
@@ -1110,6 +1170,28 @@ function isCanonicalGymEconomicsGoal(goal: LearningGoal): boolean {
   if (goal.tags?.includes('subject:Wirtschaft')) return true
   const legacyPhase = (goal as { phase?: string }).phase
   return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'Katalog'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymPoliticsEconomicsGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-politics-economics') return true
+  if (goal.dimensionTags?.framework === 'hessen-kc-2024-politik-wirtschaft') return true
+  if (goal.tags?.includes('subject:politics_economics')) return true
+  if (goal.tags?.includes('subject:Politik und Wirtschaft')) return true
+  if (goal.tags?.includes('SekI') || goal.tags?.includes('SekII')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
+}
+
+function isCanonicalGymInformaticsGoal(goal: LearningGoal): boolean {
+  if (goal.id === CANONICAL_GYM_INFORMATICS_MOTIVATION_GOAL_ID) return true
+  if (goal.dimensionTags?.framework === 'canonical-gymnasium-informatics') return true
+  if (goal.dimensionTags?.framework === 'canonical-de-gymnasium-informatics') return true
+  if (goal.dimensionTags?.framework === 'hessen-kc-2024-informatics') return true
+  if (goal.tags?.includes('subject:informatics')) return true
+  if (goal.tags?.includes('SekI') || goal.tags?.includes('SekII')) return true
+  const legacyPhase = (goal as { phase?: string }).phase
+  return ['E', 'Q1', 'Q2', 'Q3', 'Q4', 'GLOBAL'].includes(goal.dimensionTags?.phase ?? legacyPhase ?? '')
 }
 
 function parseReference(raw: string, currentLandscapeId: string): { landscapeId: string; goalId: string } {
@@ -1938,6 +2020,8 @@ const compositionViewDirectoryByLandscapeId = new Map<string, string>([
   [CANONICAL_GYM_CHEMISTRY_LANDSCAPE_ID, 'chemie'],
   [CANONICAL_GYM_BIOLOGY_LANDSCAPE_ID, 'biologie'],
   [CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID, 'wirtschaft'],
+  [CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID, 'politik-und-wirtschaft'],
+  [CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID, 'informatik'],
 ])
 
 function readLandscapeForReport(report: CoverageReport): LearningLandscape | null {

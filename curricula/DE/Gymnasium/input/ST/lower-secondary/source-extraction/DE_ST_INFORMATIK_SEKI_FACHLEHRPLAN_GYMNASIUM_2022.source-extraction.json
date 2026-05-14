@@ -1,0 +1,2900 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-ST-INFORMATIK-SEKI-FACHLEHRPLAN-GYMNASIUM-2022",
+  "sourceLandscapeId": "f6308211-309f-58ea-b283-531349699cbd",
+  "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "jurisdiction": "DE-ST",
+  "subject": "Informatik",
+  "stage": "SekI",
+  "title": "Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)",
+  "sourceDocument": {
+    "key": "ST-INF-GYM-2022",
+    "title": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022",
+    "path": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+    "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "ST-INF-GYM-2022",
+      "title": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022",
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "Source-Ziele wurden aus den Kompetenzschwerpunkten der Schuljahrgaenge 9 und 10 des amtlichen Fachlehrplans Informatik Gymnasium Sachsen-Anhalt 2022 extrahiert.",
+    "sourceGoalExtraction": "Source-Ziele wurden als fachlich atomare Kompetenzerwartungen aus den amtlichen Kompetenzschwerpunkt-Passagen formuliert und auf kanonische SkillPilot-Ziele gemappt.",
+    "scopeNote": "Sek I umfasst Schuljahrgang 9 und Schuljahrgang 10/Einführungsphase mit Algorithmen, Codierung/Daten, OOP, Datenstrukturen, formalen Sprachen und Netzwerken."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "91 Source-Ziele; Sachsen-Anhalt liegt mit einem kompakten, aber vollstaendigen 2022-Fachlehrplan im Korridor der bereits geprueften Informatik-Laender."
+    }
+  },
+  "expectedTopicCodes": [
+    "ST-INF-SEKI-9-ALG",
+    "ST-INF-SEKI-9-DATA",
+    "ST-INF-SEKI-10-ALG",
+    "ST-INF-SEKI-10-THEORY"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-st-informatik-seki",
+            "label": "Amtlicher Sachsen-Anhalt-Fachlehrplan Informatik Gymnasium 2022 liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "official-passages-extracted-st-informatik-seki",
+            "label": "Lehrplanpassagen aus amtlicher Sachsen-Anhalt-Quelle extrahiert",
+            "passed": true,
+            "details": "4 Passagen aus Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction)."
+          },
+          {
+            "id": "source-extraction-not-legacy-st-informatik-seki",
+            "label": "Source-Extraction basiert auf amtlichem PDF statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-present-st-informatik-seki",
+            "label": "Source-Ziele aus amtlichen Kompetenzpassagen erzeugt",
+            "passed": true,
+            "details": "91 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-st-informatik-seki",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-passage-backed-st-informatik-seki",
+            "label": "Jedes Source-Ziel referenziert eine Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "m3-decisions-complete-st-informatik-seki",
+            "label": "Alle Source-Ziele haben fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "91/91 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-content-covered-st-informatik-seki",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 91/91; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG",
+      "title": "Schuljahrgang 9: Algorithmen interpretieren und entwickeln",
+      "text": "1. Handlungsablaeufe formulieren\n2. Algorithmen entwerfen und verbal darstellen\n3. Variable als Speicherplatz beschreiben und anwenden\n4. Algorithmen in einer visuellen Programmiersprache implementieren\n5. reale endliche Automaten analysieren\n6. zu realen Automaten zugehoerige Automatenmodelle entwerfen\n7. Algorithmen testen und weiterentwickeln\n8. zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten\n9. Entscheidungen im Rahmen eines Problemloesungszyklus begruenden\n10. Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren\n11. Algorithmen strukturieren\n12. Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen\n13. einen Problemloesungszyklus reflektieren\n14. Algorithmen diskutieren, dokumentieren und praesentieren\n15. Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren\n16. notwendige Ressourcen von Algorithmen diskutieren\n17. reale Automaten beschreiben\n18. Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren\n19. algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden\n20. Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen\n21. Eigenschaften von Algorithmen anwenden",
+      "page": 16,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-001-handlungsablaeufe-formulieren-2d7ce4e0",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-002-algorithmen-entwerfen-und-verbal-darstellen-aff79d3a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-003-variable-als-speicherplatz-anwenden-44f7a8de",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-004-algorithmen-visuell-implementieren-9ed506eb",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-005-reale-automaten-analysieren-6a9078c0",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-007-algorithmen-testen-und-weiterentwickeln-58d0b9c6",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-008-zustandsbasierte-systeme-bewerten-10f03831",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-009-problemloesungsentscheidungen-begruenden-abac8a21",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-010-problemstellungen-zerlegen-329c3c69",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-011-algorithmen-strukturieren-cf0847ad",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-012-algorithmuswirkungen-reflektieren-d082dced",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-013-problemloesungszyklus-reflektieren-ae651a84",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-014-algorithmen-dokumentieren-und-praesentieren-20a0cd3b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-015-nutzen-und-gefahren-von-algorithmen-reflektieren-7db60fb4",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-016-ressourcen-von-algorithmen-diskutieren-654a03cb",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-017-reale-automaten-beschreiben-0b02ec86",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-018-algorithmen-in-darstellungsformen-interpretieren-d120e968",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-019-algorithmische-bausteine-darstellen-719b4b04",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-021-algorithmuseigenschaften-nutzen-4a92755a"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA",
+      "title": "Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen",
+      "text": "1. Informationen auf Daten abbilden\n2. reale Rechner analysieren und ein Funktionsmodell erstellen\n3. Dateiformate benennen und analysieren sowie Anwendungen zuordnen\n4. Lebensdauer von Daten technisch und rechtlich beurteilen\n5. technische Parameter von Hardwarekomponenten bewerten\n6. korrekte Funktionsweise von Hardwarekomponenten beurteilen\n7. Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren\n8. Informatiksysteme im historischen Kontext einordnen\n9. logische Grundschaltungen analysieren und deren Funktionalitaet bewerten\n10. Zusammenhaenge zwischen Daten und Information darstellen\n11. wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern\n12. Informatiksysteme erkennen, benennen, untersuchen und anwenden\n13. Daten lokal und in Netzwerken verwalten\n14. Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten\n15. grundlegende Verhaltensnormen in Netzwerken beachten\n16. Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren\n17. Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden\n18. Betriebssysteme vergleichen und Grundfunktionen erlaeutern\n19. Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen\n20. Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "page": 18,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-001-informationen-auf-daten-abbilden-d9b0602b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-002-reale-rechner-analysieren-e6b931bc",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-003-dateiformate-analysieren-7ab8dc54",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-004-lebensdauer-von-daten-beurteilen-6cfd2c0a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-005-hardwareparameter-bewerten-dc62023b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-006-hardwarefunktion-beurteilen-1cc4edce",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-007-nachhaltigkeit-von-informatiksystemen-reflektieren-cdbad989",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-008-informatiksysteme-historisch-einordnen-65e1dd40",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-009-logische-grundschaltungen-analysieren-cc46cc42",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-010-daten-information-zusammenhaenge-darstellen-b0cfabd8",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-011-hardware-software-netzwerkkomponenten-erklaeren-41ca2b5d",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-012-informatiksysteme-untersuchen-und-anwenden-aebe2f65",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-013-daten-lokal-und-in-netzen-verwalten-659c463f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-014-netzwerke-kooperativ-nutzen-b7f975d9",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-015-verhaltensnormen-in-netzwerken-beachten-5a4e8dd6",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-016-logische-grundschaltungen-beschreiben-958b5842",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-017-datenmengen-anwenden-129d3b9d",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-018-betriebssysteme-vergleichen-40d94d0b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-019-von-neumann-modell-nutzen-3519a048",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-020-zahlensysteme-und-codierung-nutzen-3388667d"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG",
+      "title": "Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen",
+      "text": "1. Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen\n2. Instanzen von implementierten Klassen erzeugen\n3. Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden\n4. zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden\n5. das Variablenkonzept anwenden\n6. gewaehlte Klassenstrukturen begruenden\n7. Testergebnisse werten und daraus Veraenderungen ableiten\n8. Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten\n9. Klassen als Moeglichkeit der Datenstrukturierung nutzen\n10. Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben\n11. Problemloesungsstrategien strukturieren und beschreiben\n12. Algorithmen sachgerecht dokumentieren und praesentieren\n13. einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen\n14. Klasse, Objekt, Attribut und Methode mittels UML darstellen\n15. Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen\n16. Fehlermitteilungen interpretieren\n17. Syntax einer Programmiersprache und formale Beschreibungsformen nutzen\n18. Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen\n19. Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden\n20. ein Suchverfahren im Problemloesungszyklus umsetzen\n21. ein Sortierverfahren im Problemloesungszyklus umsetzen\n22. ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "page": 20,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-001-klassen-methoden-attribute-implementieren-54ded57e",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-002-instanzen-erzeugen-473bf096",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-003-daten-mit-datentypen-abbilden-38fa120e",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-004-einfache-und-strukturierte-datentypen-anwenden-68853808",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-005-variablenkonzept-anwenden-2d64cebd",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-006-klassenstrukturen-begruenden-226e1ebe",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-007-testergebnisse-auswerten-9c1d51c7",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-008-such-und-sortierentscheidungen-bewerten-1de6761f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-009-klassen-zur-datenstrukturierung-nutzen-83c3a603",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-010-objekte-als-instanzen-beschreiben-7de35551",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-011-problemloesungsstrategien-strukturieren-0c006c6b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-012-algorithmen-dokumentieren-eb42a402",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-013-fehlerbehandlung-nutzen-ff81f672",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-014-uml-fuer-klasse-objekt-attribut-methode-nutzen-e5ce9f8b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-015-algorithmen-grafisch-darstellen-7648a73e",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-016-fehlermeldungen-interpretieren-e32bc12a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-017-syntax-und-formale-beschreibungsformen-nutzen-a4c28d51",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-018-operatoren-in-programmen-nutzen-d26ab191",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-019-oop-grundbegriffe-anwenden-ec3e0b21",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-020-suchverfahren-projektartig-umsetzen-2364e2fa",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-021-sortierverfahren-projektartig-umsetzen-b7056fd3",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-022-verschluesselungsverfahren-projektartig-umsetzen-a8a9570a"
+      ]
+    },
+    {
+      "id": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY",
+      "title": "Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen",
+      "text": "1. Regeln fuer einfache formale Sprachen aufstellen\n2. einfache formale Sprachen als Akzeptor implementieren\n3. Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen\n4. Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren\n5. Heim- oder Schulnetzwerke simulieren\n6. ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen\n7. ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen\n8. Existenz von Fehlerzustaenden in Akzeptoren begruenden\n9. Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden\n10. Grenzen automatisierter Systeme exemplarisch benennen und reflektieren\n11. Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden\n12. Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten\n13. gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten\n14. zwischen natuerlichen und formalen Sprachen unterscheiden\n15. Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern\n16. TCP/IP-Netzwerke exemplarisch strukturieren und simulieren\n17. Dienste, Protokolle und Ports exemplarisch erlaeutern\n18. Anwendungsfaelle formaler Sprachen nennen\n19. Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern\n20. Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben\n21. lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden\n22. Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden\n23. formale Sprache, die ein endlicher Automat akzeptiert, darstellen\n24. einfache formale Sprachen mittels Syntaxdiagrammen darstellen\n25. Grenzen automatisierter Systeme am Beispiel Turing Test einordnen\n26. aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen\n27. Peer-to-Peer- und Client-Server-Netzwerke vergleichen\n28. Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "page": 22,
+      "sourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceUrl": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung_2022/FLP_Informatik_Gym_01082022_swd.pdf",
+      "sourceGoalIds": [
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-001-regeln-formaler-sprachen-aufstellen-4d2cb80f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-002-akzeptor-implementieren-32f7e26a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-003-woerter-aus-grammatik-erzeugen-6254bada",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-004-netzwerkinfrastruktur-modellieren-76d1ff57",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-005-netzwerke-simulieren-c4c132e9",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-006-netzwerkdienste-einrichten-c8b0951f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-007-wortzugehoerigkeit-entscheiden-3abe5a4a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-008-fehlerzustaende-in-akzeptoren-begruenden-6160e50b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-009-exakte-regeln-formaler-sprachen-begruenden-ed37c630",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-010-grenzen-automatisierter-systeme-reflektieren-ec7e1d69",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-011-schutzmassnahmen-in-netzwerken-anwenden-596c04d2",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-012-verhalten-in-netzen-reflektieren-cef3af4b",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-013-informatiksysteme-analysieren-7600398f",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-014-natuerliche-und-formale-sprachen-unterscheiden-a3b0ecdc",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-015-tcp-ip-netzwerke-erklaeren-885cedd8",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-016-tcp-ip-netzwerke-strukturieren-f161d6bd",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-017-dienste-protokolle-ports-erklaeren-91fcbf4c",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-018-anwendungsfaelle-formaler-sprachen-nennen-247bf426",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-019-vernetzung-digitaler-systeme-erlaeutern-f78c5b4a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-020-schichtenmodell-fuer-dienste-nutzen-e263ca6c",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-021-datenverwaltung-lokal-und-netzbasiert-vergleichen-9e6e3e66",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-022-informatiksysteme-diagrammatisch-abbilden-0c844c4a",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-023-automatensprache-darstellen-54f9aa50",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-024-syntaxdiagramme-darstellen-96d7224c",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-025-turing-test-als-grenze-nutzen-9ffc0dee",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-026-netzwerkkomponenten-und-routing-einordnen-0edfc538",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-027-p2p-und-client-server-vergleichen-b3fa4e73",
+        "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-028-firewall-virenschutz-backup-einordnen-a51737a6"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-001-handlungsablaeufe-formulieren-2d7ce4e0",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKI-9-ALG-1: Handlungsablaeufe formulieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Handlungsablaeufe formulieren",
+      "sourceText": "Handlungsablaeufe formulieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.1",
+      "parentBulletText": "Handlungsablaeufe formulieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Handlungsablaeufe formulieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.1",
+      "rawParentBulletText": "Handlungsablaeufe formulieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-002-algorithmen-entwerfen-und-verbal-darstellen-aff79d3a",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKI-9-ALG-2: Algorithmen entwerfen und verbal darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen entwerfen und verbal darstellen",
+      "sourceText": "Algorithmen entwerfen und verbal darstellen",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.2",
+      "parentBulletText": "Algorithmen entwerfen und verbal darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen entwerfen und verbal darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.2",
+      "rawParentBulletText": "Algorithmen entwerfen und verbal darstellen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-003-variable-als-speicherplatz-anwenden-44f7a8de",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKI-9-ALG-3: Variable als Speicherplatz anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Variable als Speicherplatz beschreiben und anwenden",
+      "sourceText": "Variable als Speicherplatz beschreiben und anwenden",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.3",
+      "parentBulletText": "Variable als Speicherplatz beschreiben und anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Variable als Speicherplatz beschreiben und anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.3",
+      "rawParentBulletText": "Variable als Speicherplatz beschreiben und anwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-004-algorithmen-visuell-implementieren-9ed506eb",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKI-9-ALG-4: Algorithmen visuell implementieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen in einer visuellen Programmiersprache implementieren",
+      "sourceText": "Algorithmen in einer visuellen Programmiersprache implementieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.4",
+      "parentBulletText": "Algorithmen in einer visuellen Programmiersprache implementieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen in einer visuellen Programmiersprache implementieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.4",
+      "rawParentBulletText": "Algorithmen in einer visuellen Programmiersprache implementieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-005-reale-automaten-analysieren-6a9078c0",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKI-9-ALG-5: Reale Automaten analysieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: reale endliche Automaten analysieren",
+      "sourceText": "reale endliche Automaten analysieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.5",
+      "parentBulletText": "reale endliche Automaten analysieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "reale endliche Automaten analysieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.5",
+      "rawParentBulletText": "reale endliche Automaten analysieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKI-9-ALG-6: Automatenmodelle entwerfen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: zu realen Automaten zugehoerige Automatenmodelle entwerfen",
+      "sourceText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.6",
+      "parentBulletText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.6",
+      "rawParentBulletText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-007-algorithmen-testen-und-weiterentwickeln-58d0b9c6",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKI-9-ALG-7: Algorithmen testen und weiterentwickeln",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen testen und weiterentwickeln",
+      "sourceText": "Algorithmen testen und weiterentwickeln",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.7",
+      "parentBulletText": "Algorithmen testen und weiterentwickeln",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen testen und weiterentwickeln",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.7",
+      "rawParentBulletText": "Algorithmen testen und weiterentwickeln",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-008-zustandsbasierte-systeme-bewerten-10f03831",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKI-9-ALG-8: Zustandsbasierte Systeme bewerten",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten",
+      "sourceText": "zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.8",
+      "parentBulletText": "zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.8",
+      "rawParentBulletText": "zustandsbasierte Systeme bezueglich Praxisrelevanz und ethischer Aspekte diskutieren und bewerten",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-009-problemloesungsentscheidungen-begruenden-abac8a21",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKI-9-ALG-9: Problemlösungsentscheidungen begruenden",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Entscheidungen im Rahmen eines Problemloesungszyklus begruenden",
+      "sourceText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.9",
+      "parentBulletText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.9",
+      "rawParentBulletText": "Entscheidungen im Rahmen eines Problemloesungszyklus begruenden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-010-problemstellungen-zerlegen-329c3c69",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKI-9-ALG-10: Problemstellungen zerlegen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren",
+      "sourceText": "Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.10",
+      "parentBulletText": "Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.10",
+      "rawParentBulletText": "Problemstellungen analysieren, in Teilprobleme zerlegen und Loesungsansaetze strukturieren",
+      "canonicalTargetIds": [
+        "d5056ca3-2a3d-5145-a28d-29038038a77f",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-011-algorithmen-strukturieren-cf0847ad",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKI-9-ALG-11: Algorithmen strukturieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen strukturieren",
+      "sourceText": "Algorithmen strukturieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.11",
+      "parentBulletText": "Algorithmen strukturieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen strukturieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.11",
+      "rawParentBulletText": "Algorithmen strukturieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-012-algorithmuswirkungen-reflektieren-d082dced",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKI-9-ALG-12: Algorithmuswirkungen reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen",
+      "sourceText": "Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.12",
+      "parentBulletText": "Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.12",
+      "rawParentBulletText": "Auswirkungen von Algorithmen auf die Lebenswelt erkennen und fuer Meinungsbildung nutzen",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-013-problemloesungszyklus-reflektieren-ae651a84",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKI-9-ALG-13: Problemlösungszyklus reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: einen Problemloesungszyklus reflektieren",
+      "sourceText": "einen Problemloesungszyklus reflektieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.13",
+      "parentBulletText": "einen Problemloesungszyklus reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "einen Problemloesungszyklus reflektieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.13",
+      "rawParentBulletText": "einen Problemloesungszyklus reflektieren",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-014-algorithmen-dokumentieren-und-praesentieren-20a0cd3b",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKI-9-ALG-14: Algorithmen dokumentieren und praesentieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen diskutieren, dokumentieren und praesentieren",
+      "sourceText": "Algorithmen diskutieren, dokumentieren und praesentieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.14",
+      "parentBulletText": "Algorithmen diskutieren, dokumentieren und praesentieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen diskutieren, dokumentieren und praesentieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.14",
+      "rawParentBulletText": "Algorithmen diskutieren, dokumentieren und praesentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-015-nutzen-und-gefahren-von-algorithmen-reflektieren-7db60fb4",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKI-9-ALG-15: Nutzen und Gefahren von Algorithmen reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren",
+      "sourceText": "Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.15",
+      "parentBulletText": "Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.15",
+      "rawParentBulletText": "Nutzen und Gefahren von Algorithmen in der eigenen Lebenswelt reflektieren",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-016-ressourcen-von-algorithmen-diskutieren-654a03cb",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKI-9-ALG-16: Ressourcen von Algorithmen diskutieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: notwendige Ressourcen von Algorithmen diskutieren",
+      "sourceText": "notwendige Ressourcen von Algorithmen diskutieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.16",
+      "parentBulletText": "notwendige Ressourcen von Algorithmen diskutieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "notwendige Ressourcen von Algorithmen diskutieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.16",
+      "rawParentBulletText": "notwendige Ressourcen von Algorithmen diskutieren",
+      "canonicalTargetIds": [
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
+        "bc46922d-d874-528b-a183-5a3eaef12e4d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-017-reale-automaten-beschreiben-0b02ec86",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKI-9-ALG-17: Reale Automaten beschreiben",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: reale Automaten beschreiben",
+      "sourceText": "reale Automaten beschreiben",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.17",
+      "parentBulletText": "reale Automaten beschreiben",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "reale Automaten beschreiben",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.17",
+      "rawParentBulletText": "reale Automaten beschreiben",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-018-algorithmen-in-darstellungsformen-interpretieren-d120e968",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKI-9-ALG-18: Algorithmen in Darstellungsformen interpretieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren",
+      "sourceText": "Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.18",
+      "parentBulletText": "Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.18",
+      "rawParentBulletText": "Algorithmen in unterschiedlichen Darstellungsformen erkennen und interpretieren",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "bf23fafe-423d-561a-b832-cb25a327a508"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-019-algorithmische-bausteine-darstellen-719b4b04",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKI-9-ALG-19: Algorithmische Bausteine darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden",
+      "sourceText": "algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.19",
+      "parentBulletText": "algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.19",
+      "rawParentBulletText": "algorithmische Bausteine benennen, digital darstellen und auf Handlungsablaeufe anwenden",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKI-9-ALG-20: Automatentafel und Zustandsdiagramm uebertragen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
+      "sourceText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.20",
+      "parentBulletText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.20",
+      "rawParentBulletText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-021-algorithmuseigenschaften-nutzen-4a92755a",
+      "passageId": "de-st-informatik:st-inf-9-alg",
+      "topicCode": "ST-INF-SEKI-9-ALG-21",
+      "bulletIndex": 21,
+      "title": "ST-INF-SEKI-9-ALG-21: Algorithmuseigenschaften nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Algorithmen interpretieren und entwickeln: Eigenschaften von Algorithmen anwenden",
+      "sourceText": "Eigenschaften von Algorithmen anwenden",
+      "sourceSpan": "ST-INF-SEKI-9-ALG.21",
+      "parentBulletText": "Eigenschaften von Algorithmen anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Algorithmen interpretieren und entwickeln, S. 16.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Eigenschaften von Algorithmen anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-ALG.21",
+      "rawParentBulletText": "Eigenschaften von Algorithmen anwenden",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-001-informationen-auf-daten-abbilden-d9b0602b",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKI-9-DATA-1: Informationen auf Daten abbilden",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Informationen auf Daten abbilden",
+      "sourceText": "Informationen auf Daten abbilden",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.1",
+      "parentBulletText": "Informationen auf Daten abbilden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Informationen auf Daten abbilden",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.1",
+      "rawParentBulletText": "Informationen auf Daten abbilden",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "19204609-90fd-57c1-aca4-9e1a6a1fea6c"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-002-reale-rechner-analysieren-e6b931bc",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKI-9-DATA-2: Reale Rechner analysieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: reale Rechner analysieren und ein Funktionsmodell erstellen",
+      "sourceText": "reale Rechner analysieren und ein Funktionsmodell erstellen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.2",
+      "parentBulletText": "reale Rechner analysieren und ein Funktionsmodell erstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "reale Rechner analysieren und ein Funktionsmodell erstellen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.2",
+      "rawParentBulletText": "reale Rechner analysieren und ein Funktionsmodell erstellen",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "04b1796d-6086-59b0-9499-e463a7f44bc4"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-003-dateiformate-analysieren-7ab8dc54",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKI-9-DATA-3: Dateiformate analysieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Dateiformate benennen und analysieren sowie Anwendungen zuordnen",
+      "sourceText": "Dateiformate benennen und analysieren sowie Anwendungen zuordnen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.3",
+      "parentBulletText": "Dateiformate benennen und analysieren sowie Anwendungen zuordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Dateiformate benennen und analysieren sowie Anwendungen zuordnen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.3",
+      "rawParentBulletText": "Dateiformate benennen und analysieren sowie Anwendungen zuordnen",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-004-lebensdauer-von-daten-beurteilen-6cfd2c0a",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKI-9-DATA-4: Lebensdauer von Daten beurteilen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Lebensdauer von Daten technisch und rechtlich beurteilen",
+      "sourceText": "Lebensdauer von Daten technisch und rechtlich beurteilen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.4",
+      "parentBulletText": "Lebensdauer von Daten technisch und rechtlich beurteilen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Lebensdauer von Daten technisch und rechtlich beurteilen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.4",
+      "rawParentBulletText": "Lebensdauer von Daten technisch und rechtlich beurteilen",
+      "canonicalTargetIds": [
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-005-hardwareparameter-bewerten-dc62023b",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKI-9-DATA-5: Hardwareparameter bewerten",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: technische Parameter von Hardwarekomponenten bewerten",
+      "sourceText": "technische Parameter von Hardwarekomponenten bewerten",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.5",
+      "parentBulletText": "technische Parameter von Hardwarekomponenten bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "technische Parameter von Hardwarekomponenten bewerten",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.5",
+      "rawParentBulletText": "technische Parameter von Hardwarekomponenten bewerten",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-006-hardwarefunktion-beurteilen-1cc4edce",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKI-9-DATA-6: Hardwarefunktion beurteilen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: korrekte Funktionsweise von Hardwarekomponenten beurteilen",
+      "sourceText": "korrekte Funktionsweise von Hardwarekomponenten beurteilen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.6",
+      "parentBulletText": "korrekte Funktionsweise von Hardwarekomponenten beurteilen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "korrekte Funktionsweise von Hardwarekomponenten beurteilen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.6",
+      "rawParentBulletText": "korrekte Funktionsweise von Hardwarekomponenten beurteilen",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "04b1796d-6086-59b0-9499-e463a7f44bc4"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-007-nachhaltigkeit-von-informatiksystemen-reflektieren-cdbad989",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKI-9-DATA-7: Nachhaltigkeit von Informatiksystemen reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren",
+      "sourceText": "Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.7",
+      "parentBulletText": "Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.7",
+      "rawParentBulletText": "Nachhaltigkeitsindikator eines Informatiksystems exemplarisch reflektieren",
+      "canonicalTargetIds": [
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-008-informatiksysteme-historisch-einordnen-65e1dd40",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKI-9-DATA-8: Informatiksysteme historisch einordnen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Informatiksysteme im historischen Kontext einordnen",
+      "sourceText": "Informatiksysteme im historischen Kontext einordnen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.8",
+      "parentBulletText": "Informatiksysteme im historischen Kontext einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Informatiksysteme im historischen Kontext einordnen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.8",
+      "rawParentBulletText": "Informatiksysteme im historischen Kontext einordnen",
+      "canonicalTargetIds": [
+        "ae5ae291-aa50-5260-abf4-348a463e9974",
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-009-logische-grundschaltungen-analysieren-cc46cc42",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKI-9-DATA-9: Logische Grundschaltungen analysieren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: logische Grundschaltungen analysieren und deren Funktionalitaet bewerten",
+      "sourceText": "logische Grundschaltungen analysieren und deren Funktionalitaet bewerten",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.9",
+      "parentBulletText": "logische Grundschaltungen analysieren und deren Funktionalitaet bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "logische Grundschaltungen analysieren und deren Funktionalitaet bewerten",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.9",
+      "rawParentBulletText": "logische Grundschaltungen analysieren und deren Funktionalitaet bewerten",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-010-daten-information-zusammenhaenge-darstellen-b0cfabd8",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKI-9-DATA-10: Daten-Information-Zusammenhaenge darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Zusammenhaenge zwischen Daten und Information darstellen",
+      "sourceText": "Zusammenhaenge zwischen Daten und Information darstellen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.10",
+      "parentBulletText": "Zusammenhaenge zwischen Daten und Information darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Zusammenhaenge zwischen Daten und Information darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.10",
+      "rawParentBulletText": "Zusammenhaenge zwischen Daten und Information darstellen",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-011-hardware-software-netzwerkkomponenten-erklaeren-41ca2b5d",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKI-9-DATA-11: Hardware Software Netzwerkkomponenten erklaeren",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern",
+      "sourceText": "wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.11",
+      "parentBulletText": "wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.11",
+      "rawParentBulletText": "wesentliche Hardware-, Software- und Netzwerkkomponenten benennen und Aufgaben erlaeutern",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-012-informatiksysteme-untersuchen-und-anwenden-aebe2f65",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKI-9-DATA-12: Informatiksysteme untersuchen und anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Informatiksysteme erkennen, benennen, untersuchen und anwenden",
+      "sourceText": "Informatiksysteme erkennen, benennen, untersuchen und anwenden",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.12",
+      "parentBulletText": "Informatiksysteme erkennen, benennen, untersuchen und anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Informatiksysteme erkennen, benennen, untersuchen und anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.12",
+      "rawParentBulletText": "Informatiksysteme erkennen, benennen, untersuchen und anwenden",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "a8206bfb-aaed-5502-9df1-55609f3d79b5"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-013-daten-lokal-und-in-netzen-verwalten-659c463f",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKI-9-DATA-13: Daten lokal und in Netzen verwalten",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Daten lokal und in Netzwerken verwalten",
+      "sourceText": "Daten lokal und in Netzwerken verwalten",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.13",
+      "parentBulletText": "Daten lokal und in Netzwerken verwalten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Daten lokal und in Netzwerken verwalten",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.13",
+      "rawParentBulletText": "Daten lokal und in Netzwerken verwalten",
+      "canonicalTargetIds": [
+        "e7e4995a-9900-5d60-ba6a-c794c70411bb",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-014-netzwerke-kooperativ-nutzen-b7f975d9",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKI-9-DATA-14: Netzwerke kooperativ nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten",
+      "sourceText": "Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.14",
+      "parentBulletText": "Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.14",
+      "rawParentBulletText": "Aufgaben gemeinsam innerhalb von Netzwerken bearbeiten",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-015-verhaltensnormen-in-netzwerken-beachten-5a4e8dd6",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKI-9-DATA-15: Verhaltensnormen in Netzwerken beachten",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: grundlegende Verhaltensnormen in Netzwerken beachten",
+      "sourceText": "grundlegende Verhaltensnormen in Netzwerken beachten",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.15",
+      "parentBulletText": "grundlegende Verhaltensnormen in Netzwerken beachten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "grundlegende Verhaltensnormen in Netzwerken beachten",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.15",
+      "rawParentBulletText": "grundlegende Verhaltensnormen in Netzwerken beachten",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-016-logische-grundschaltungen-beschreiben-958b5842",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKI-9-DATA-16: Logische Grundschaltungen beschreiben",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren",
+      "sourceText": "Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.16",
+      "parentBulletText": "Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.16",
+      "rawParentBulletText": "Funktionsweise einfacher logischer Grundschaltungen beschreiben und erklaeren",
+      "canonicalTargetIds": [
+        "ca39fae0-1b12-5982-a453-54d12602dde8"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-017-datenmengen-anwenden-129d3b9d",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKI-9-DATA-17: Datenmengen anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden",
+      "sourceText": "Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.17",
+      "parentBulletText": "Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.17",
+      "rawParentBulletText": "Einheiten fuer Datenmenge auf Speicherkapazitaet, Dateigroessen und Uebertragungsvolumen anwenden",
+      "canonicalTargetIds": [
+        "50d82e9f-737c-5693-90fe-3d534dc8683d",
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-018-betriebssysteme-vergleichen-40d94d0b",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKI-9-DATA-18: Betriebssysteme vergleichen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Betriebssysteme vergleichen und Grundfunktionen erlaeutern",
+      "sourceText": "Betriebssysteme vergleichen und Grundfunktionen erlaeutern",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.18",
+      "parentBulletText": "Betriebssysteme vergleichen und Grundfunktionen erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Betriebssysteme vergleichen und Grundfunktionen erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.18",
+      "rawParentBulletText": "Betriebssysteme vergleichen und Grundfunktionen erlaeutern",
+      "canonicalTargetIds": [
+        "e05d4e40-6267-598c-8c11-8ab6420afea8"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-019-von-neumann-modell-nutzen-3519a048",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKI-9-DATA-19: Von-Neumann-Modell nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen",
+      "sourceText": "Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.19",
+      "parentBulletText": "Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.19",
+      "rawParentBulletText": "Rechnermodell nach von Neumann als grundlegendes Funktionsmodell einordnen",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "04b1796d-6086-59b0-9499-e463a7f44bc4"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-data-020-zahlensysteme-und-codierung-nutzen-3388667d",
+      "passageId": "de-st-informatik:st-inf-9-data",
+      "topicCode": "ST-INF-SEKI-9-DATA-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKI-9-DATA-20: Zahlensysteme und Codierung nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen: Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "sourceText": "Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "sourceSpan": "ST-INF-SEKI-9-DATA.20",
+      "parentBulletText": "Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 9: Daten codieren und ihre Verarbeitung verstehen, S. 18.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-9-DATA",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-9-DATA.20",
+      "rawParentBulletText": "Masseinheiten und Codierung von Daten, insbesondere Zahlensysteme, nutzen",
+      "canonicalTargetIds": [
+        "70b8919e-8707-580f-9e13-0536c9e81476",
+        "50d82e9f-737c-5693-90fe-3d534dc8683d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-001-klassen-methoden-attribute-implementieren-54ded57e",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKI-10-ALG-1: Klassen Methoden Attribute implementieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen",
+      "sourceText": "Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.1",
+      "parentBulletText": "Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.1",
+      "rawParentBulletText": "Klassen, Methoden und Attribute in einer textbasierten Programmiersprache implementieren und testen",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-002-instanzen-erzeugen-473bf096",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKI-10-ALG-2: Instanzen erzeugen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Instanzen von implementierten Klassen erzeugen",
+      "sourceText": "Instanzen von implementierten Klassen erzeugen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.2",
+      "parentBulletText": "Instanzen von implementierten Klassen erzeugen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Instanzen von implementierten Klassen erzeugen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.2",
+      "rawParentBulletText": "Instanzen von implementierten Klassen erzeugen",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-003-daten-mit-datentypen-abbilden-38fa120e",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKI-10-ALG-3: Daten mit Datentypen abbilden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden",
+      "sourceText": "Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.3",
+      "parentBulletText": "Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.3",
+      "rawParentBulletText": "Daten mittels geeigneter Datentypen abbilden und zugehoerige Operationen anwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-004-einfache-und-strukturierte-datentypen-anwenden-68853808",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKI-10-ALG-4: Einfache und strukturierte Datentypen anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden",
+      "sourceText": "zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.4",
+      "parentBulletText": "zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.4",
+      "rawParentBulletText": "zwischen einfachen und strukturierten Datentypen unterscheiden und diese anwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "8522727c-8793-57ed-b314-eeff6d17f652",
+        "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-005-variablenkonzept-anwenden-2d64cebd",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKI-10-ALG-5: Variablenkonzept anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: das Variablenkonzept anwenden",
+      "sourceText": "das Variablenkonzept anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.5",
+      "parentBulletText": "das Variablenkonzept anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "das Variablenkonzept anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.5",
+      "rawParentBulletText": "das Variablenkonzept anwenden",
+      "canonicalTargetIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-006-klassenstrukturen-begruenden-226e1ebe",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKI-10-ALG-6: Klassenstrukturen begruenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: gewaehlte Klassenstrukturen begruenden",
+      "sourceText": "gewaehlte Klassenstrukturen begruenden",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.6",
+      "parentBulletText": "gewaehlte Klassenstrukturen begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "gewaehlte Klassenstrukturen begruenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.6",
+      "rawParentBulletText": "gewaehlte Klassenstrukturen begruenden",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-007-testergebnisse-auswerten-9c1d51c7",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKI-10-ALG-7: Testergebnisse auswerten",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Testergebnisse werten und daraus Veraenderungen ableiten",
+      "sourceText": "Testergebnisse werten und daraus Veraenderungen ableiten",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.7",
+      "parentBulletText": "Testergebnisse werten und daraus Veraenderungen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Testergebnisse werten und daraus Veraenderungen ableiten",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.7",
+      "rawParentBulletText": "Testergebnisse werten und daraus Veraenderungen ableiten",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-008-such-und-sortierentscheidungen-bewerten-1de6761f",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKI-10-ALG-8: Such- und Sortierentscheidungen bewerten",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten",
+      "sourceText": "Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.8",
+      "parentBulletText": "Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.8",
+      "rawParentBulletText": "Entscheidungen im Problemloesungszyklus am Beispiel eines Such- und Sortierverfahrens begruenden und bewerten",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb",
+        "82fe54dd-d29f-540c-9ef1-f4feb17845c6"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-009-klassen-zur-datenstrukturierung-nutzen-83c3a603",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKI-10-ALG-9: Klassen zur Datenstrukturierung nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Klassen als Moeglichkeit der Datenstrukturierung nutzen",
+      "sourceText": "Klassen als Moeglichkeit der Datenstrukturierung nutzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.9",
+      "parentBulletText": "Klassen als Moeglichkeit der Datenstrukturierung nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Klassen als Moeglichkeit der Datenstrukturierung nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.9",
+      "rawParentBulletText": "Klassen als Moeglichkeit der Datenstrukturierung nutzen",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-010-objekte-als-instanzen-beschreiben-7de35551",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKI-10-ALG-10: Objekte als Instanzen beschreiben",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben",
+      "sourceText": "Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.10",
+      "parentBulletText": "Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.10",
+      "rawParentBulletText": "Objekte als Instanzen einer Klasse mit konkreten Daten beschreiben",
+      "canonicalTargetIds": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+        "c5d04946-497e-5ede-84ec-2d019138e3a0"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-011-problemloesungsstrategien-strukturieren-0c006c6b",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKI-10-ALG-11: Problemlösungsstrategien strukturieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Problemloesungsstrategien strukturieren und beschreiben",
+      "sourceText": "Problemloesungsstrategien strukturieren und beschreiben",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.11",
+      "parentBulletText": "Problemloesungsstrategien strukturieren und beschreiben",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Problemloesungsstrategien strukturieren und beschreiben",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.11",
+      "rawParentBulletText": "Problemloesungsstrategien strukturieren und beschreiben",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "d5056ca3-2a3d-5145-a28d-29038038a77f"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-012-algorithmen-dokumentieren-eb42a402",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKI-10-ALG-12: Algorithmen dokumentieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Algorithmen sachgerecht dokumentieren und praesentieren",
+      "sourceText": "Algorithmen sachgerecht dokumentieren und praesentieren",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.12",
+      "parentBulletText": "Algorithmen sachgerecht dokumentieren und praesentieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen sachgerecht dokumentieren und praesentieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.12",
+      "rawParentBulletText": "Algorithmen sachgerecht dokumentieren und praesentieren",
+      "canonicalTargetIds": [
+        "bf23fafe-423d-561a-b832-cb25a327a508",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-013-fehlerbehandlung-nutzen-ff81f672",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKI-10-ALG-13: Fehlerbehandlung nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen",
+      "sourceText": "einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.13",
+      "parentBulletText": "einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.13",
+      "rawParentBulletText": "einfache Formen der Fehlerbehandlung in Programmen diskutieren und nutzen",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-014-uml-fuer-klasse-objekt-attribut-methode-nutzen-e5ce9f8b",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKI-10-ALG-14: UML fuer Klasse Objekt Attribut Methode nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Klasse, Objekt, Attribut und Methode mittels UML darstellen",
+      "sourceText": "Klasse, Objekt, Attribut und Methode mittels UML darstellen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.14",
+      "parentBulletText": "Klasse, Objekt, Attribut und Methode mittels UML darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Klasse, Objekt, Attribut und Methode mittels UML darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.14",
+      "rawParentBulletText": "Klasse, Objekt, Attribut und Methode mittels UML darstellen",
+      "canonicalTargetIds": [
+        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
+        "84af2e26-45c9-5075-80f7-7c6f37847e9d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-015-algorithmen-grafisch-darstellen-7648a73e",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKI-10-ALG-15: Algorithmen grafisch darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen",
+      "sourceText": "Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.15",
+      "parentBulletText": "Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.15",
+      "rawParentBulletText": "Algorithmen unter Verwendung algorithmischer Grundbausteine grafisch darstellen",
+      "canonicalTargetIds": [
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-016-fehlermeldungen-interpretieren-e32bc12a",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKI-10-ALG-16: Fehlermeldungen interpretieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Fehlermitteilungen interpretieren",
+      "sourceText": "Fehlermitteilungen interpretieren",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.16",
+      "parentBulletText": "Fehlermitteilungen interpretieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Fehlermitteilungen interpretieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.16",
+      "rawParentBulletText": "Fehlermitteilungen interpretieren",
+      "canonicalTargetIds": [
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "df0210bf-735b-54f8-8a1b-8dfca5598ff1"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-017-syntax-und-formale-beschreibungsformen-nutzen-a4c28d51",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKI-10-ALG-17: Syntax und formale Beschreibungsformen nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Syntax einer Programmiersprache und formale Beschreibungsformen nutzen",
+      "sourceText": "Syntax einer Programmiersprache und formale Beschreibungsformen nutzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.17",
+      "parentBulletText": "Syntax einer Programmiersprache und formale Beschreibungsformen nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Syntax einer Programmiersprache und formale Beschreibungsformen nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.17",
+      "rawParentBulletText": "Syntax einer Programmiersprache und formale Beschreibungsformen nutzen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "5ca1960e-6b02-5679-b271-043a5c29b189"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-018-operatoren-in-programmen-nutzen-d26ab191",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKI-10-ALG-18: Operatoren in Programmen nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen",
+      "sourceText": "Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.18",
+      "parentBulletText": "Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.18",
+      "rawParentBulletText": "Zuweisungs-, Vergleichs-, arithmetische und logische Operatoren nutzen",
+      "canonicalTargetIds": [
+        "56e5edb6-b883-50a0-92bb-732d5e44c781"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-019-oop-grundbegriffe-anwenden-ec3e0b21",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKI-10-ALG-19: OOP-Grundbegriffe anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden",
+      "sourceText": "Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.19",
+      "parentBulletText": "Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.19",
+      "rawParentBulletText": "Klasse, Objekt, Instanz, Attribut und Methode als Grundbegriffe der OOP anwenden",
+      "canonicalTargetIds": [
+        "6c284640-1f28-4837-aabd-445656ad7f54",
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-020-suchverfahren-projektartig-umsetzen-2364e2fa",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKI-10-ALG-20: Suchverfahren projektartig umsetzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: ein Suchverfahren im Problemloesungszyklus umsetzen",
+      "sourceText": "ein Suchverfahren im Problemloesungszyklus umsetzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.20",
+      "parentBulletText": "ein Suchverfahren im Problemloesungszyklus umsetzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein Suchverfahren im Problemloesungszyklus umsetzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.20",
+      "rawParentBulletText": "ein Suchverfahren im Problemloesungszyklus umsetzen",
+      "canonicalTargetIds": [
+        "2a87fb3c-394b-47b4-bda2-58c5f1403475",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-021-sortierverfahren-projektartig-umsetzen-b7056fd3",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-21",
+      "bulletIndex": 21,
+      "title": "ST-INF-SEKI-10-ALG-21: Sortierverfahren projektartig umsetzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: ein Sortierverfahren im Problemloesungszyklus umsetzen",
+      "sourceText": "ein Sortierverfahren im Problemloesungszyklus umsetzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.21",
+      "parentBulletText": "ein Sortierverfahren im Problemloesungszyklus umsetzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein Sortierverfahren im Problemloesungszyklus umsetzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.21",
+      "rawParentBulletText": "ein Sortierverfahren im Problemloesungszyklus umsetzen",
+      "canonicalTargetIds": [
+        "9bb399e1-fd49-5220-9c81-82efbeae47eb",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-alg-022-verschluesselungsverfahren-projektartig-umsetzen-a8a9570a",
+      "passageId": "de-st-informatik:st-inf-10-alg",
+      "topicCode": "ST-INF-SEKI-10-ALG-22",
+      "bulletIndex": 22,
+      "title": "ST-INF-SEKI-10-ALG-22: Verschluesselungsverfahren projektartig umsetzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen: ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "sourceText": "ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "sourceSpan": "ST-INF-SEKI-10-ALG.22",
+      "parentBulletText": "ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Algorithmen- und Datenstrukturen implementieren und testen, S. 20.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-ALG",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-ALG.22",
+      "rawParentBulletText": "ein Verschluesselungsverfahren im Problemloesungszyklus umsetzen",
+      "canonicalTargetIds": [
+        "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "8d21085b-9780-599e-ba0e-ccc0c31a5f01"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-001-regeln-formaler-sprachen-aufstellen-4d2cb80f",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-01",
+      "bulletIndex": 1,
+      "title": "ST-INF-SEKI-10-THEORY-1: Regeln formaler Sprachen aufstellen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Regeln fuer einfache formale Sprachen aufstellen",
+      "sourceText": "Regeln fuer einfache formale Sprachen aufstellen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.1",
+      "parentBulletText": "Regeln fuer einfache formale Sprachen aufstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Regeln fuer einfache formale Sprachen aufstellen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.1",
+      "rawParentBulletText": "Regeln fuer einfache formale Sprachen aufstellen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-002-akzeptor-implementieren-32f7e26a",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-02",
+      "bulletIndex": 2,
+      "title": "ST-INF-SEKI-10-THEORY-2: Akzeptor implementieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: einfache formale Sprachen als Akzeptor implementieren",
+      "sourceText": "einfache formale Sprachen als Akzeptor implementieren",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.2",
+      "parentBulletText": "einfache formale Sprachen als Akzeptor implementieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "einfache formale Sprachen als Akzeptor implementieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.2",
+      "rawParentBulletText": "einfache formale Sprachen als Akzeptor implementieren",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-003-woerter-aus-grammatik-erzeugen-6254bada",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-03",
+      "bulletIndex": 3,
+      "title": "ST-INF-SEKI-10-THEORY-3: Woerter aus Grammatik erzeugen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen",
+      "sourceText": "Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.3",
+      "parentBulletText": "Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.3",
+      "rawParentBulletText": "Worte einer formalen Sprache aus der Kenntnis ihrer Grammatik erzeugen",
+      "canonicalTargetIds": [
+        "fbd4561a-573e-5f8c-b363-338ee9774b5c",
+        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-004-netzwerkinfrastruktur-modellieren-76d1ff57",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-04",
+      "bulletIndex": 4,
+      "title": "ST-INF-SEKI-10-THEORY-4: Netzwerkinfrastruktur modellieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren",
+      "sourceText": "Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.4",
+      "parentBulletText": "Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.4",
+      "rawParentBulletText": "Infrastruktur von Heim- oder Schulnetzwerken unter Sicherheitsaspekten modellieren",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-005-netzwerke-simulieren-c4c132e9",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-05",
+      "bulletIndex": 5,
+      "title": "ST-INF-SEKI-10-THEORY-5: Netzwerke simulieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Heim- oder Schulnetzwerke simulieren",
+      "sourceText": "Heim- oder Schulnetzwerke simulieren",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.5",
+      "parentBulletText": "Heim- oder Schulnetzwerke simulieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Heim- oder Schulnetzwerke simulieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.5",
+      "rawParentBulletText": "Heim- oder Schulnetzwerke simulieren",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-006-netzwerkdienste-einrichten-c8b0951f",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-06",
+      "bulletIndex": 6,
+      "title": "ST-INF-SEKI-10-THEORY-6: Netzwerkdienste einrichten",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen",
+      "sourceText": "ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.6",
+      "parentBulletText": "ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.6",
+      "rawParentBulletText": "ausgewaehlte Netzwerkdienste unter Nutzung zugehoeriger Protokolle einrichten und nutzen",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-007-wortzugehoerigkeit-entscheiden-3abe5a4a",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-07",
+      "bulletIndex": 7,
+      "title": "ST-INF-SEKI-10-THEORY-7: Wortzugehoerigkeit entscheiden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen",
+      "sourceText": "ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.7",
+      "parentBulletText": "ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.7",
+      "rawParentBulletText": "ein Wort aus Terminalsymbolen als zu einer Sprache zugehoerig erkennen oder verneinen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+        "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-008-fehlerzustaende-in-akzeptoren-begruenden-6160e50b",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-08",
+      "bulletIndex": 8,
+      "title": "ST-INF-SEKI-10-THEORY-8: Fehlerzustaende in Akzeptoren begruenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Existenz von Fehlerzustaenden in Akzeptoren begruenden",
+      "sourceText": "Existenz von Fehlerzustaenden in Akzeptoren begruenden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.8",
+      "parentBulletText": "Existenz von Fehlerzustaenden in Akzeptoren begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Existenz von Fehlerzustaenden in Akzeptoren begruenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.8",
+      "rawParentBulletText": "Existenz von Fehlerzustaenden in Akzeptoren begruenden",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-009-exakte-regeln-formaler-sprachen-begruenden-ed37c630",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-09",
+      "bulletIndex": 9,
+      "title": "ST-INF-SEKI-10-THEORY-9: Exakte Regeln formaler Sprachen begruenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden",
+      "sourceText": "Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.9",
+      "parentBulletText": "Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.9",
+      "rawParentBulletText": "Notwendigkeit exakt regelbasierter maschinell ausfuehrbarer Sprachen begruenden",
+      "canonicalTargetIds": [
+        "4acfccb7-f38c-5fd4-b24d-b7b002373fde",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-010-grenzen-automatisierter-systeme-reflektieren-ec7e1d69",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-10",
+      "bulletIndex": 10,
+      "title": "ST-INF-SEKI-10-THEORY-10: Grenzen automatisierter Systeme reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Grenzen automatisierter Systeme exemplarisch benennen und reflektieren",
+      "sourceText": "Grenzen automatisierter Systeme exemplarisch benennen und reflektieren",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.10",
+      "parentBulletText": "Grenzen automatisierter Systeme exemplarisch benennen und reflektieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Grenzen automatisierter Systeme exemplarisch benennen und reflektieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.10",
+      "rawParentBulletText": "Grenzen automatisierter Systeme exemplarisch benennen und reflektieren",
+      "canonicalTargetIds": [
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-011-schutzmassnahmen-in-netzwerken-anwenden-596c04d2",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-11",
+      "bulletIndex": 11,
+      "title": "ST-INF-SEKI-10-THEORY-11: Schutzmassnahmen in Netzwerken anwenden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden",
+      "sourceText": "Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.11",
+      "parentBulletText": "Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.11",
+      "rawParentBulletText": "Notwendigkeit von Schutz- und Sicherheitsmassnahmen in Netzwerken begruenden und anwenden",
+      "canonicalTargetIds": [
+        "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-012-verhalten-in-netzen-reflektieren-cef3af4b",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-12",
+      "bulletIndex": 12,
+      "title": "ST-INF-SEKI-10-THEORY-12: Verhalten in Netzen reflektieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten",
+      "sourceText": "Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.12",
+      "parentBulletText": "Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.12",
+      "rawParentBulletText": "Verhaltensweisen in Netzwerken reflektieren und Schlussfolgerungen ableiten",
+      "canonicalTargetIds": [
+        "ff6b67e8-dc27-5755-8dab-23ed658194fd",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-013-informatiksysteme-analysieren-7600398f",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-13",
+      "bulletIndex": 13,
+      "title": "ST-INF-SEKI-10-THEORY-13: Informatiksysteme analysieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten",
+      "sourceText": "gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.13",
+      "parentBulletText": "gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.13",
+      "rawParentBulletText": "gegebene Informatiksysteme analysieren sowie Daten- und Funktionalitaetsstrukturen ableiten",
+      "canonicalTargetIds": [
+        "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
+        "c10e647b-2f51-5002-b352-830933a67214"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-014-natuerliche-und-formale-sprachen-unterscheiden-a3b0ecdc",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-14",
+      "bulletIndex": 14,
+      "title": "ST-INF-SEKI-10-THEORY-14: Natuerliche und formale Sprachen unterscheiden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: zwischen natuerlichen und formalen Sprachen unterscheiden",
+      "sourceText": "zwischen natuerlichen und formalen Sprachen unterscheiden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.14",
+      "parentBulletText": "zwischen natuerlichen und formalen Sprachen unterscheiden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "zwischen natuerlichen und formalen Sprachen unterscheiden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.14",
+      "rawParentBulletText": "zwischen natuerlichen und formalen Sprachen unterscheiden",
+      "canonicalTargetIds": [
+        "4acfccb7-f38c-5fd4-b24d-b7b002373fde"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-015-tcp-ip-netzwerke-erklaeren-885cedd8",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-15",
+      "bulletIndex": 15,
+      "title": "ST-INF-SEKI-10-THEORY-15: TCP/IP-Netzwerke erklaeren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern",
+      "sourceText": "Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.15",
+      "parentBulletText": "Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.15",
+      "rawParentBulletText": "Funktionsweise von TCP/IP-Netzwerken exemplarisch erlaeutern",
+      "canonicalTargetIds": [
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "e3e5c851-39d8-569f-9f0a-d516c729ed36"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-016-tcp-ip-netzwerke-strukturieren-f161d6bd",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-16",
+      "bulletIndex": 16,
+      "title": "ST-INF-SEKI-10-THEORY-16: TCP/IP-Netzwerke strukturieren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: TCP/IP-Netzwerke exemplarisch strukturieren und simulieren",
+      "sourceText": "TCP/IP-Netzwerke exemplarisch strukturieren und simulieren",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.16",
+      "parentBulletText": "TCP/IP-Netzwerke exemplarisch strukturieren und simulieren",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "TCP/IP-Netzwerke exemplarisch strukturieren und simulieren",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.16",
+      "rawParentBulletText": "TCP/IP-Netzwerke exemplarisch strukturieren und simulieren",
+      "canonicalTargetIds": [
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-017-dienste-protokolle-ports-erklaeren-91fcbf4c",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-17",
+      "bulletIndex": 17,
+      "title": "ST-INF-SEKI-10-THEORY-17: Dienste Protokolle Ports erklaeren",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Dienste, Protokolle und Ports exemplarisch erlaeutern",
+      "sourceText": "Dienste, Protokolle und Ports exemplarisch erlaeutern",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.17",
+      "parentBulletText": "Dienste, Protokolle und Ports exemplarisch erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Dienste, Protokolle und Ports exemplarisch erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.17",
+      "rawParentBulletText": "Dienste, Protokolle und Ports exemplarisch erlaeutern",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-018-anwendungsfaelle-formaler-sprachen-nennen-247bf426",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-18",
+      "bulletIndex": 18,
+      "title": "ST-INF-SEKI-10-THEORY-18: Anwendungsfaelle formaler Sprachen nennen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Anwendungsfaelle formaler Sprachen nennen",
+      "sourceText": "Anwendungsfaelle formaler Sprachen nennen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.18",
+      "parentBulletText": "Anwendungsfaelle formaler Sprachen nennen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Anwendungsfaelle formaler Sprachen nennen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.18",
+      "rawParentBulletText": "Anwendungsfaelle formaler Sprachen nennen",
+      "canonicalTargetIds": [
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-019-vernetzung-digitaler-systeme-erlaeutern-f78c5b4a",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-19",
+      "bulletIndex": 19,
+      "title": "ST-INF-SEKI-10-THEORY-19: Vernetzung digitaler Systeme erlaeutern",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern",
+      "sourceText": "Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.19",
+      "parentBulletText": "Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.19",
+      "rawParentBulletText": "Bedeutung der Vernetzung digitaler Systeme und deren Anwendungsfaelle erlaeutern",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-020-schichtenmodell-fuer-dienste-nutzen-e263ca6c",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-20",
+      "bulletIndex": 20,
+      "title": "ST-INF-SEKI-10-THEORY-20: Schichtenmodell fuer Dienste nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben",
+      "sourceText": "Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.20",
+      "parentBulletText": "Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.20",
+      "rawParentBulletText": "Funktionalitaet von Diensten unter Nutzung eines Schichtenmodells beschreiben",
+      "canonicalTargetIds": [
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-021-datenverwaltung-lokal-und-netzbasiert-vergleichen-9e6e3e66",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-21",
+      "bulletIndex": 21,
+      "title": "ST-INF-SEKI-10-THEORY-21: Datenverwaltung lokal und netzbasiert vergleichen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden",
+      "sourceText": "lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.21",
+      "parentBulletText": "lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.21",
+      "rawParentBulletText": "lokale und netzwerkbasierte Datenverwaltung unter Datensicherheit vergleichen und anwenden",
+      "canonicalTargetIds": [
+        "e7e4995a-9900-5d60-ba6a-c794c70411bb",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-022-informatiksysteme-diagrammatisch-abbilden-0c844c4a",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-22",
+      "bulletIndex": 22,
+      "title": "ST-INF-SEKI-10-THEORY-22: Informatiksysteme diagrammatisch abbilden",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden",
+      "sourceText": "Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.22",
+      "parentBulletText": "Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.22",
+      "rawParentBulletText": "Funktionalitaet von Informatiksystemen mittels geeigneter Diagramme abbilden",
+      "canonicalTargetIds": [
+        "c10e647b-2f51-5002-b352-830933a67214",
+        "f81be4d3-2445-54aa-b17e-2a27466e7e0d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-023-automatensprache-darstellen-54f9aa50",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-23",
+      "bulletIndex": 23,
+      "title": "ST-INF-SEKI-10-THEORY-23: Automatensprache darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: formale Sprache, die ein endlicher Automat akzeptiert, darstellen",
+      "sourceText": "formale Sprache, die ein endlicher Automat akzeptiert, darstellen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.23",
+      "parentBulletText": "formale Sprache, die ein endlicher Automat akzeptiert, darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "formale Sprache, die ein endlicher Automat akzeptiert, darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.23",
+      "rawParentBulletText": "formale Sprache, die ein endlicher Automat akzeptiert, darstellen",
+      "canonicalTargetIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-024-syntaxdiagramme-darstellen-96d7224c",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-24",
+      "bulletIndex": 24,
+      "title": "ST-INF-SEKI-10-THEORY-24: Syntaxdiagramme darstellen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: einfache formale Sprachen mittels Syntaxdiagrammen darstellen",
+      "sourceText": "einfache formale Sprachen mittels Syntaxdiagrammen darstellen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.24",
+      "parentBulletText": "einfache formale Sprachen mittels Syntaxdiagrammen darstellen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "einfache formale Sprachen mittels Syntaxdiagrammen darstellen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.24",
+      "rawParentBulletText": "einfache formale Sprachen mittels Syntaxdiagrammen darstellen",
+      "canonicalTargetIds": [
+        "37e57f89-22d8-5565-b9a4-cce151b209a1"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-025-turing-test-als-grenze-nutzen-9ffc0dee",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-25",
+      "bulletIndex": 25,
+      "title": "ST-INF-SEKI-10-THEORY-25: Turing-Test als Grenze nutzen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Grenzen automatisierter Systeme am Beispiel Turing Test einordnen",
+      "sourceText": "Grenzen automatisierter Systeme am Beispiel Turing Test einordnen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.25",
+      "parentBulletText": "Grenzen automatisierter Systeme am Beispiel Turing Test einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Grenzen automatisierter Systeme am Beispiel Turing Test einordnen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.25",
+      "rawParentBulletText": "Grenzen automatisierter Systeme am Beispiel Turing Test einordnen",
+      "canonicalTargetIds": [
+        "4525b77a-02de-5ef2-8e93-dc28cc5f6644",
+        "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-026-netzwerkkomponenten-und-routing-einordnen-0edfc538",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-26",
+      "bulletIndex": 26,
+      "title": "ST-INF-SEKI-10-THEORY-26: Netzwerkkomponenten und Routing einordnen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen",
+      "sourceText": "aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.26",
+      "parentBulletText": "aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.26",
+      "rawParentBulletText": "aktive und passive Netzwerkkomponenten, Adressierung, Adressaufloesung und Routing einordnen",
+      "canonicalTargetIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-027-p2p-und-client-server-vergleichen-b3fa4e73",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-27",
+      "bulletIndex": 27,
+      "title": "ST-INF-SEKI-10-THEORY-27: P2P und Client-Server vergleichen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Peer-to-Peer- und Client-Server-Netzwerke vergleichen",
+      "sourceText": "Peer-to-Peer- und Client-Server-Netzwerke vergleichen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.27",
+      "parentBulletText": "Peer-to-Peer- und Client-Server-Netzwerke vergleichen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Peer-to-Peer- und Client-Server-Netzwerke vergleichen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.27",
+      "rawParentBulletText": "Peer-to-Peer- und Client-Server-Netzwerke vergleichen",
+      "canonicalTargetIds": [
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3"
+      ]
+    },
+    {
+      "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-10-theory-028-firewall-virenschutz-backup-einordnen-a51737a6",
+      "passageId": "de-st-informatik:st-inf-10-theory",
+      "topicCode": "ST-INF-SEKI-10-THEORY-28",
+      "bulletIndex": 28,
+      "title": "ST-INF-SEKI-10-THEORY-28: Firewall Virenschutz Backup einordnen",
+      "description": "Source-Ziel aus Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen: Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "sourceText": "Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "sourceSpan": "ST-INF-SEKI-10-THEORY.28",
+      "parentBulletText": "Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "sourceRef": "Fachlehrplan Informatik Gymnasium Sachsen-Anhalt 2022, Schuljahrgang 10: Technische und theoretische Grundlagen von Informatiksystemen verstehen, S. 22.",
+      "courseLevel": "unspecified",
+      "granularity": "officialCompetencyAspect",
+      "stage": "SekI",
+      "tags": [
+        "jurisdiction:DE-ST",
+        "subject:Informatik",
+        "stage:SekI",
+        "topic:ST-INF-SEKI-10-THEORY",
+        "courseLevel:unspecified"
+      ],
+      "rawSourceText": "Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "rawSourceSpan": "ST-INF-SEKI-10-THEORY.28",
+      "rawParentBulletText": "Firewall, Virenschutz und Backup als Schutzmassnahmen einordnen",
+      "canonicalTargetIds": [
+        "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644"
+      ]
+    }
+  ]
+}

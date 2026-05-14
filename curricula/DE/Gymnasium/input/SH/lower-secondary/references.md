@@ -92,3 +92,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json`
+
+## Informatik
+
+Starting point:
+https://fachportal.lernnetz.de/sh/fachanforderungen/informatik.html
+
+- `Fachanforderungen_Informatik_Sekundarstufe_2021_barrierearm.pdf`:
+  https://fachportal.lernnetz.de/sh/fachanforderungen/informatik.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Informatik%20Sekundarstufe%20%282021%2C%20barrierearm%29.pdf&cid=16977
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Informatik
+- lower-secondary extraction target: official Sek-I content competencies D/I/A/N from the 2021 Fachanforderungen
+- note: the official provider source is one combined Sek-I/Sek-II informatics PDF
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Informatik_Sekundarstufe_2021_barrierearm.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_INFORMATIK_SEKI_FACHANFORDERUNGEN_2021.source-extraction.json`

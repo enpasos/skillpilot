@@ -43,3 +43,16 @@
 - **Offizielle Quelle**: [Bildungsplan Gymnasium Sekundarstufe I - Biologie](https://www.hamburg.de/resource/blob/123418/3f001f63072b1ee4259a0f2630229083/biologie-gym-seki-data.pdf)
 - **Aktive Source-Extraction**: `lower-secondary/source-extraction/DE_HH_BIOLOGIE_SEKI_BILDUNGSPLAN_2011.source-extraction.json`
 - **Hinweis**: Die Source-Extraction folgt den Hamburger Inhaltsbereichen `Zellen`, `Organismen`, `Lebensraeume`, `Vererbung`, `Stammesgeschichte` und `Biologie des Menschen` plus den prozessbezogenen Kompetenzbereichen.
+
+## Informatik
+### Sekundarstufe I (Wahlpflichtfach)
+- **Archivierte offizielle Quelle**: `informatik-gym-seki-data.pdf`
+- **Offizielle Quelle**: [Bildungsplan Gymnasium Sekundarstufe I - Informatik](https://www.hamburg.de/resource/blob/123456/3cdb416176a9efa4644942083736bab8/informatik-gym-seki-data.pdf)
+- **Aktive Source-Extraction**: `lower-secondary/source-extraction/DE_HH_INFORMATIK_SEKI_BILDUNGSPLAN.source-extraction.json`
+- **Hinweis**: Die Source-Extraction folgt den drei Hamburger Modulen `Information strukturieren und praesentieren`, `Prozesse analysieren und modellieren` sowie `Daten und Prozesse`.
+
+### Sekundarstufe II (Studienstufe)
+- **Archivierte offizielle Quelle**: `informatik-gyo-2022.pdf`
+- **Offizielle Quelle**: [Bildungsplan Studienstufe Informatik](https://www.hamburg.de/contentblob/16762768/154d25efc0dc8b08d1bd0e3a6df54392/data/informatik-gyo-2022.pdf)
+- **Aktive Source-Extraction**: `upper-secondary/source-extraction/DE_HH_INFORMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json`
+- **Hinweis**: Die Source-Extraction folgt den verbindlichen Themenfeldern Softwareentwicklung und Sicherheit in verteilten Systemen sowie den Wahlmodulen zu Moeglichkeiten und Grenzen von Informatiksystemen.

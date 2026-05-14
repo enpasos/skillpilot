@@ -52,3 +52,19 @@
   - `curricula/DE/Gymnasium/input/HB/upper-secondary/source-json/DE_BRE_S_GYM_2_PHYSIK.de.json.snapshot`
 - die Bremer Sek-I- und Sek-II-Physiklane ist damit im gemeinsamen Provenance-Scaffold auf `P2`
 - kein topic-spezifisches reviewed Mapping authoren, bevor die laufende bundesweite `P2`-Tranche fuer die weiteren neu archivierten Physiklaender ebenfalls abgeschlossen ist
+
+## Informatik
+### Sekundarstufe I
+- **Status**
+  - keine abgeschlossene Source-Extraction
+  - eine auffindbare Bremer Sek-I-Informatik-Fassung wird derzeit nur als Erprobungs-/Entwurfsfassung gewertet und nicht als finale amtliche Quelle in die M1-M3-Pipeline übernommen
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- **Archivierte offizielle PDFs**
+  - `GyO_Informatik_2009.pdf`
+- **Öffentliche Quellen**
+  - Lehrpläne: [LIS Bremen - Lehrpläne und Richtlinien](https://www.lis.bremen.de/schulqualitaet/lehrplaene-und-richtlinien-4384)
+  - Direkte PDF-Quelle: [LIS Bremen - Gymnasiale Oberstufe Informatik 2009](https://www.lis.bremen.de/sixcms/media.php/13/GyO_Informatik_2009.pdf)
+- **Source-Extraction**
+  - `upper-secondary/source-extraction/DE_HB_INFORMATIK_GYO_2009.source-extraction.json`
+  - Die Sek-II-Spur umfasst Themen/Inhalte, Eingangsvoraussetzungen, Standards und fachmethodische LK-Vertiefungen aus dem amtlichen Bildungsplan 2009.
