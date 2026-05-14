@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-14T20:01:47.263Z
+Generated: 2026-05-14T20:26:56.306Z
 Rules version: curriculum-quality-v1
 
 ## Summary
@@ -30,7 +30,7 @@ Rules version: curriculum-quality-v1
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
 | Informatik (Gymnasium, DE) | M5 | 277 | 232 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Latein (Gymnasium, DE) | M0 | 171 | 131 | 22/22 | 12/16 | 1 | 2 | 0 |
+| Latein (Gymnasium, DE) | M0 | 171 | 131 | 23/23 | 13/16 | 1 | 2 | 0 |
 | Mathematik (Gymnasium, DE) | M5 | 1037 | 825 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M5 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
@@ -217,6 +217,7 @@ Rules version: curriculum-quality-v1
 | Latein (Gymnasium, DE) | Latein Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2009 Source-Extraction) | DE-RP | 1/1 original source(s) | 4/4 | - | 24 | 620 | 0 | 620 | 0% |  |
 | Latein (Gymnasium, DE) | Latein Oberstufe (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 22 | 190 | 112 | 78 | 59% |  |
 | Latein (Gymnasium, DE) | Latein Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 1/1 original source(s) | 4/4 | - | 22 | 129 | 24 | 105 | 19% |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Saarland, amtliche G9/GOS Source-Extraction) | DE-SL | 19/19 original source(s) | 4/4 | - | 102 | 888 | 46 | 842 | 5% |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 14 | 196 | 40 | 156 | 20% |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 original source(s) | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 original source(s) | 4/4 | - | 15 | 195 | 18 | 177 | 9% |  |
@@ -359,7 +360,7 @@ Rules version: curriculum-quality-v1
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 232 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
-| Latein (Gymnasium, DE) | 12/16 | 115 | 131 | 12 | 5543 | 5543 | 5543 | 0 | 5543 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
+| Latein (Gymnasium, DE) | 13/16 | 115 | 131 | 13 | 6431 | 6431 | 6431 | 0 | 6431 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 825 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |

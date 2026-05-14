@@ -310,8 +310,8 @@ function parseG9Document(sourceDocument: SourceDocument): ParsedGoal[] {
   const lines = pdftotext(sourceDocument.path).split(/\r?\n/u);
   const goals: ParsedGoal[] = [];
   let area = 'Kompetenzbereiche';
-  let current: Array<string | null> = [null, null];
-  let currentSideLabel: Array<'fachlich' | 'methodisch'> = ['fachlich', 'methodisch'];
+  const current: Array<string | null> = [null, null];
+  const currentSideLabel: Array<'fachlich' | 'methodisch'> = ['fachlich', 'methodisch'];
   let enabled = false;
 
   const flush = (side: 0 | 1) => {
