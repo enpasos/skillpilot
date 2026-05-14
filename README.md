@@ -5,8 +5,10 @@
 
 > **Hinweis für Leser:innen von [Aifyer](https://aifyer.com/ki-lernbegleitung/):**
 > SkillPilot ist die Referenzimplementierung zum Konzept einer schulisch verantworteten KI-Lernbegleitung entlang der Lehrpläne.
-> Aktueller Stand: Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit als Source-Extraction, fachliches Mapping und bundeslandspezifische Sichten auf gemeinsame kanonische Curricula qualitätsgesichert (M5).
-> Die Wissenslandschaften können bereits mit dem SkillPilot Tutor genutzt werden; die M5-Fächer gehen jetzt in die fachliche Champion-Qualitätssicherung.
+> Aktueller Stand: Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit als Source-Extraction, fachliches Mapping und bundeslandspezifische Sichten auf gemeinsame kanonische Curricula in Phase 1 qualitätsgesichert (M5).
+> **M5** bedeutet hier: Die vollautomatisierte KI-/CI-Pipeline hat Originalquellen, Source-Ziele, fachliche Abdeckung durch SkillPilot-Ziele, Bundesland-Sichten, Graph-Invarianten, Composition Views und technische QA ohne offene Fehler geprüft.
+> Darauf folgt **Phase 2**: fachliche Qualitätssicherung durch Menschen, die als SkillPilot Champions idealerweise Lehrkräfte oder andere fachlich qualifizierte Personen sind.
+> Die Wissenslandschaften können bereits mit dem SkillPilot Tutor genutzt werden; die M5-Fächer gehen jetzt in diese fachliche Champion-Qualitätssicherung.
 > Weitere Fächer, insbesondere Fremdsprachen und Musik, werden schrittweise nachgezogen.
 
 SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
