@@ -1,0 +1,2092 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_MV_DEUTSCH_SEKII_RAHMENPLAN_2019",
+  "sourceLandscapeId": "13de044d-ab4d-5d26-11e3-51c129aa954f",
+  "targetLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+  "title": "DE-MV - Deutsch Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction)",
+  "jurisdiction": "DE-MV",
+  "subject": "Deutsch",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "MV-DEUTSCH-SEKII-GYO-2019",
+    "title": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019",
+    "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/RP_DEU_SEK2_2019.pdf",
+    "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_DEU_SEK2_2019.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "MV-DEUTSCH-SEKII-GYO-2019",
+      "title": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019",
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/RP_DEU_SEK2_2019.pdf",
+      "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_DEU_SEK2_2019.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -layout; MV Sek II wird aus den Kompetenzstandards und verbindlichen Kursthemen der amtlichen Rahmenplan-PDF extrahiert.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro fachlich prüfbarem amtlichem Bullet; rechte Hinweisspalten werden nicht als eigenständige Pflichtziele gewertet."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "status": "accepted",
+      "rationale": "64 MV-Sek-II-Source-Ziele aus den linken KMK-Standardspalten und verbindlichen Kursthemen; die kompakte reine Sek-II-Zahl ist akzeptiert, weil rechte Hinweis- und Beispielspalten bewusst nicht als Pflichtziele gewertet werden."
+    }
+  },
+  "expectedTopicCodes": [
+    "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK",
+    "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART-LK",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+    "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN-LK"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-mv-deutsch",
+            "label": "Amtliche MV-Deutsch-Rahmenplan-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/MV/upper-secondary/RP_DEU_SEK2_2019.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage-mv-deutsch",
+            "label": "Alle erwarteten MV-Deutsch-Passagegruppen wurden extrahiert",
+            "passed": true,
+            "details": "16/16 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction-mv-deutsch",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/MV/upper-secondary/RP_DEU_SEK2_2019.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created-mv-deutsch",
+            "label": "Source-Ziele aus amtlichen MV-Deutsch-Passagen erzeugt",
+            "passed": true,
+            "details": "64 Source-Ziele."
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen geprüfte Deutsch-Inventare plausibilisiert",
+            "passed": true,
+            "details": "64 Source-Ziele; Vergleichskorridor BW/HE/BY/BB/BE/NI/NW/SH/HB/HH = 559/257/434/379/379/273/417/221/226/392 Source-Ziele."
+          },
+          {
+            "id": "source-goal-ids-unique-mv-deutsch",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages-mv-deutsch",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-reviewed-mv-deutsch",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "64/64 reviewed."
+          },
+          {
+            "id": "source-goals-covered-mv-deutsch",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "64/64 inhaltlich abgedeckt; 1:n ist Zuordnungsform, keine Lücke."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "Qualifikationsphase - Literarische Texte",
+      "rawText": "(1) Inhalt, Aufbau und sprachliche Gestaltung literarischer Texte analysieren, Sinnzusammenhänge zwischen einzelnen Einheiten dieser Texte herstellen und sie als Geflechte innerer Bezüge und Abhängigkeiten erfassen\n(2) eigenständig ein Textverständnis formulieren, in das persönliche Leseerfahrungen und alternative Lesarten des Textes einbezogen werden, und auf der Basis eigener Analyseergebnisse begründen\n(3) das Textverständnis argumentativ durch gattungspoetologische und literaturgeschichtliche Kenntnisse über die Literaturepochen bis zur Gegenwart stützen\n(4) relevante Motive, Themen und Strukturen literarischer Schriften, die bis in die Antike zurückreichen können, vergleichen und in ihre Texterschließung einbeziehen Mehrdeutigkeit als konstitutives Merkmal literarischer Texte nachweisen\n(5) literarische Texte aller Gattungen als Produkte künstlerischer Gestaltung erschließen\n(6) die besondere ästhetische Qualität eines literarischen Produktes aufgrund eines breit angelegten literarischen Vorwissens erfassen und ihre Befunde in das Textverständnis einbeziehen\n(7) diachrone und synchrone Zusammenhänge zwischen literarischen Texten ermitteln und Bezüge zu weiteren Kontexten herstellen\n(8) die in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen kritisch zu eigenen Wertvorstellungen, Weltund Selbstkonzepten in Beziehung setzen\n(9) literarische Texte auf der Basis von nachvollziehbaren, sachlich fundierten Kriterien bewerten und dabei auch textexterne Bezüge wie Produktions-, Rezeptionsund Wirkungsbedingungen berücksichtigen\n(10) kreativ Texte im Sinne literarischen Probehandelns gestalten",
+      "sourceGoalIds": [
+        "164430b3-6c9f-5292-d91b-9596eb1f2020",
+        "91296750-7811-5907-0220-dab3aa0c9851",
+        "4258fe28-cf94-5cb7-470f-32a42acdaf38",
+        "abaeb64e-59c8-52d4-7eb6-aa8fe16e83ad",
+        "9068eb08-0b8b-5143-c64d-63d4ede2f819",
+        "ebeadedc-fb10-55ae-865e-6e7f8582139e",
+        "9ba17647-2599-544b-049f-2ae70855d118",
+        "680ac1b2-c84a-50b4-3994-72da87f33539",
+        "df6107af-ad70-520f-ffca-b5bceecdebd6",
+        "ae835697-fe1c-5b8e-65c1-56fa14231766"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+      "title": "Qualifikationsphase - Literarische Texte (LK)",
+      "rawText": "(1) in die Erörterung der in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen geistes-, kulturund sozialgeschichtliche Entwicklungen einbeziehen\n(2) literarische Wertungen differenziert begründen und dabei auf größeres und komplexeres Kontextwissen zurückgreifen\n(3) den besonderen poetischen Anspruch und die ästhetische Qualität literarischer Texte vor dem Hintergrund ihrer Kenntnisse in den Bereichen Poetologie und Ästhetik erläutern\n(4) Kenntnisse wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Kontextualisierung literarischer Werke einbeziehen",
+      "sourceGoalIds": [
+        "ff90fea0-5c2c-5663-9a6c-42af356d21e0",
+        "df5054fb-d4b0-563f-fe94-76f064993753",
+        "0cccec0c-4117-5c7f-e90e-94345cedccda",
+        "32b6d60f-0059-57b1-0d5a-c8bf5ad05ee2"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "Qualifikationsphase - Pragmatische Texte",
+      "rawText": "(1) den inhaltlichen Zusammenhang voraussetzungsreicher Texte sichern und diese Texte terminologisch präzise und sachgerecht zusammenfassen\n(2) ein umfassendes, Textfunktionen, Situationen und Adressaten beachtendes Textverständnis formulieren\n(3) die in pragmatischen Texten enthaltenen sprachlichen Handlungen ermitteln\n(4) die Funktionen eines pragmatischen Textes bestimmen und dessen mögliche Wirkungsabsichten beurteilen\n(5) die sprachlich-stilistische Gestaltung eines pragmatischen Textes fachgerecht beschreiben und deren Wirkungsweise erläutern\n(6) Elemente der Textgestaltung einschließlich nichtsprachlicher Bestandteile in ihrer Funktion analysieren\n(7) zielgerichtet Zusammenhänge zu weiteren ihnen bekannten Texten herstellen und hierfür passende Wissensbestände aktivieren\n(8) themengleiche Texte methodisch fachgerecht vergleichen\n(9) sich mittels pragmatischer Texte mit den eigenen Weltund Wertvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen",
+      "sourceGoalIds": [
+        "2306dc08-46a6-59d9-4d97-9c424b803d6e",
+        "2c226e53-8544-592c-7e4d-ad74779350bf",
+        "e1f6289a-4eae-5bde-2849-050121678898",
+        "b5766490-1fa6-5827-04a5-8184b2621580",
+        "9634dfcf-0e4b-5160-331a-0bd4b8e506c4",
+        "d7e30593-3707-511c-01b0-1dbb79a08ab6",
+        "8e015fa5-91da-5b7f-d900-454daf1ad4f0",
+        "a18f87dd-1dc2-5206-7559-2facf4617d85",
+        "43a0dae6-647c-5b4f-9f97-65be47f4a7e2"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK",
+      "title": "Qualifikationsphase - Pragmatische Texte (LK)",
+      "rawText": "(1) die Zuordnung von Texten zu Textformen und Textsorten reflektieren\n(2) die in argumentativen Texten enthaltenen Argumentations-strukturen theoriegestützt analysieren\n(3) die Beziehung zwischen pragmatischen Texten und ihren Produktionsbedingungen ermitteln",
+      "sourceGoalIds": [
+        "2be0e704-539c-56bc-c949-aa9c30fd2c75",
+        "49e4010d-8681-5671-f48a-64e7254883a9",
+        "5e0a0795-2d7a-5590-51b2-d6bf379692eb"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+      "title": "Qualifikationsphase - Medien und Theaterinszenierungen",
+      "rawText": "(1) Theaterinszenierungen und Literaturverfilmungen als Textinterpretationen erfassen und beurteilen\n(2) Theaterinszenierungen, Hörtexte und Filme sachgerecht analysieren\n(3) eigene Hörtexte, Filme oder andere audiovisuelle Präsentationsformen erstellen bzw. Textvorlagen szenisch umsetzen\n(4) sich bei der Rezeption oder Produktion von Hörtexten und Filmen und bei der Rezeption von Theaterinszenierungen mit den eigenen Wertund Weltvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen",
+      "sourceGoalIds": [
+        "9140e499-c42c-53ff-5530-bc15f9258fac",
+        "c6cc180b-6094-5f22-6788-06806fc72267",
+        "4dd17c9b-6a78-54c8-db3e-87e4e74c05bd",
+        "d5902e24-f150-5022-89b3-ab2b271f6f03"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK",
+      "title": "Qualifikationsphase - Medien und Theaterinszenierungen (LK)",
+      "rawText": "(1) die ästhetische Qualität von Theaterinszenierungen, Hörtexten oder Filmen beurteilen, auch vor dem Hintergrund ihrer kulturellen und historischen Dimension\n(2) sich mit Filmkritik und Aspekten der Filmtheorie auseinandersetzen",
+      "sourceGoalIds": [
+        "f5f41eb7-481a-5125-eedb-0c7c3926bc6e",
+        "d1fd00ac-b39f-5cfe-62cc-50c2f399239b"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "Qualifikationsphase - Reflexion und Sprachgebrauch",
+      "rawText": "(1) ein grundlegendes Verständnis der kognitiven und kommunikativen Funktion von Sprache formulieren\n(2) sprachliche Äußerungen kritikorientiert analysieren und ihre Einsichten in der Auseinandersetzung mit Texten und Sachverhalten dokumentieren\n(3) sprachliche Strukturen und Bedeutungen auf der Basis eines gesicherten Grammatikwissens und semantischer Kategorien erläutern\n(4) Strukturen und Funktionen von Sprachvarietäten beschreiben\n(5) Bedingungen gelingender Kommunikation analysieren, auch auf der Basis theoretischer Modelle\n(6) verbale, paraverbale und nonverbale Gestaltungsmittel in unterschiedlichen kommunikativen Zusammenhängen analysieren, ihre Funktion beschreiben und ihre Angemessenheit bewerten\n(7) verbale, paraverbale und nonverbale Signale für Machtund Dominanzverhältnisse identifizieren",
+      "sourceGoalIds": [
+        "7976bf7a-af3e-5479-9ff9-e93f9ddbb146",
+        "860e3e92-c4d0-57e8-eab5-517dc7f5ac96",
+        "f59d47c7-b927-5e90-a24f-520b2f269eea",
+        "81b82f62-1fc7-5460-672d-5dc238c94b0b",
+        "50642806-13a8-5a70-31ff-e7b20494fb44",
+        "5597cf9b-570b-5b7c-7837-0c16b587848d",
+        "fef24a17-fc61-5f29-93de-9f64e73bb0d2"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT",
+      "title": "Qualifikationsphase - Epochenumbruch 18./19. Jahrhundert",
+      "rawText": "(1) Weimarer Klassik im Kontext literarischer Vorbilder Merkmale des Romantischen in Auseinandersetzung mit bekannten Konzepten\n(2) Besonderheiten frührealistischer Literatur in Abgrenzung zur Romantik\n(3) Lektüre einer Ganzschrift Auseinandersetzen mit einer Literaturverfilmung oder Theaterinszenierung",
+      "sourceGoalIds": [
+        "c2734776-b435-5e82-7201-9b642eb25cd4",
+        "ec74d22c-72ce-5e8b-afca-625cb1b6f6ed",
+        "28c61c17-76f8-5f9a-3619-88fb6de2a909"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK",
+      "title": "Qualifikationsphase - Epochenumbruch 18./19. Jahrhundert (LK)",
+      "rawText": "(1) Einbeziehen wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Auseinandersetzung mit im Unterricht behandelten Texten und Konzepten\n(2) differenziertes Begründen literarischer Wertungen in Auseinandersetzung mit dem Material",
+      "sourceGoalIds": [
+        "e103ef95-5998-5bf8-ef7c-65a093db0849",
+        "92ffd94d-65a5-513e-1db0-bfa36632374b"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+      "title": "Qualifikationsphase - Epochenumbruch 19./20. Jahrhundert",
+      "rawText": "(1) Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit\n(2) Merkmale realistischen Erzählens\n(3) Merkmale des Expressionismus und einer weiteren literarischen Strömung\n(4) Auszüge einer Ganzschrift",
+      "sourceGoalIds": [
+        "c366dd1f-c438-5aaa-922a-cca0d2d5acd4",
+        "f8810daa-642b-5635-2997-b133907c80eb",
+        "67ac6458-af5c-5fb9-0d12-841e0c547ee0",
+        "85c4e1aa-8e5c-5572-64db-79585c903039"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK",
+      "title": "Qualifikationsphase - Epochenumbruch 19./20. Jahrhundert (LK)",
+      "rawText": "(1) Lektüre einer Ganzschrift\n(2) Einbeziehen literaturtheoretischer bzw. sprachwissenschaftlicher Sekundärtexte",
+      "sourceGoalIds": [
+        "50568639-27fd-56fa-3de7-cb97c17ae17d",
+        "4d246d4d-41c7-56d0-c433-718705c27da7"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+      "title": "Qualifikationsphase - Literatur von der Weimarer Republik bis in die Gegenwart",
+      "rawText": "(1) Literatur als Spiegel des Umbruchs Untergang der alten Weltordnung\n(2) Literatur der Weimarer Republik\n(3) Literatur im Exil Episches Theater Literatur nach 1945\n(4) das geteilte Deutschland Gegenwartsliteratur Literatur aus Mecklenburg-Vorpommern Lektüre einer Ganzschrift aus dem Bereich der Gegenwartsliteratur",
+      "sourceGoalIds": [
+        "4b527018-3a30-5335-96cb-6ba057540aa1",
+        "a1a6cf88-a1ad-5155-0eb8-1e2d48111166",
+        "1a1bf022-3da5-57ba-3350-3a9c9db66857",
+        "f9673c0e-e529-57e9-e6cb-0cb103908419"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART-LK",
+      "title": "Qualifikationsphase - Literatur von der Weimarer Republik bis in die Gegenwart (LK)",
+      "rawText": "(1) Vergleichen von aktuellen und historischen Reden Lektüre einer zweiten Ganzschrift",
+      "sourceGoalIds": [
+        "074bd9ca-81c8-5411-a7a1-3309d30f20f2"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-stoffe-und-motive",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE",
+      "title": "Qualifikationsphase - Stoffe und Motive",
+      "rawText": "(1) Differenzieren der Begriffe Stoff und Motiv\n(2) Analysieren und vergleichen der Gestaltung",
+      "sourceGoalIds": [
+        "5c5eeeb9-cb55-5451-c691-9e8b7e5d3920",
+        "73838022-52d9-589b-d088-285fee6d3e94"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Qualifikationsphase - Sprache und Medien",
+      "rawText": "(1) Kommunikationsstrategien und -modelle\n(2) Funktion von Sprache\n(3) Schriftlichkeit – Mündlichkeit\n(4) Mehrsprachigkeit als Phänomen Sprache und Rhetorik\n(5) Verfassen und Halten einer Rede\n(6) Anwenden verschiedener Analyseverfahren von Reden",
+      "sourceGoalIds": [
+        "11fcb270-e5df-5d68-6c71-fde311927215",
+        "df26c619-ff0b-5a72-65d4-ca93ab143599",
+        "09d7c881-ffed-5d67-b222-17e4e9dc149c",
+        "931fbc2f-0282-5fa0-c849-3187e42f9594",
+        "ae0aeb57-c8e8-570a-736d-f0762f48690e",
+        "9ded1e39-a0ac-5b60-b9d9-6ab1e57e9f7d"
+      ]
+    },
+    {
+      "id": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien-lk",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN-LK",
+      "title": "Qualifikationsphase - Sprache und Medien (LK)",
+      "rawText": "(1) Vertiefen und Vergleichen von Sprachtheorien sprachphilosophische Positionen zur Analyse von authentischen und fiktiven Kommunikationssituationen Theorien zum Spracherwerb",
+      "sourceGoalIds": [
+        "3a320070-2b8e-5a94-8f34-ead29ea2c90d"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "164430b3-6c9f-5292-d91b-9596eb1f2020",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "Inhalt, Aufbau und sprachliche Gestaltung literarischer Texte analysieren, Sinnzusammenhänge zwischen einzelnen Einhe...",
+      "description": "Die lernende Person kann inhalt, Aufbau und sprachliche Gestaltung literarischer Texte analysieren, Sinnzusammenhänge zwischen einzelnen Einheiten dieser Texte herstellen und sie als Geflechte innerer Bezüge und Abhängigkeiten erfassen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "Inhalt, Aufbau und sprachliche Gestaltung literarischer Texte analysieren, Sinnzusammenhänge zwischen einzelnen Einheiten dieser Texte herstellen und sie als Geflechte innerer Bezüge und Abhängigkeiten erfassen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#1"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "91296750-7811-5907-0220-dab3aa0c9851",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "eigenständig ein Textverständnis formulieren, in das persönliche Leseerfahrungen und alternative Lesarten des Textes...",
+      "description": "Die lernende Person kann eigenständig ein Textverständnis formulieren, in das persönliche Leseerfahrungen und alternative Lesarten des Textes einbezogen werden, und auf der Basis eigener Analyseergebnisse begründen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "eigenständig ein Textverständnis formulieren, in das persönliche Leseerfahrungen und alternative Lesarten des Textes einbezogen werden, und auf der Basis eigener Analyseergebnisse begründen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#2"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "4258fe28-cf94-5cb7-470f-32a42acdaf38",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "das Textverständnis argumentativ durch gattungspoetologische und literaturgeschichtliche Kenntnisse über die Literatu...",
+      "description": "Die lernende Person kann das Textverständnis argumentativ durch gattungspoetologische und literaturgeschichtliche Kenntnisse über die Literaturepochen bis zur Gegenwart stützen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "das Textverständnis argumentativ durch gattungspoetologische und literaturgeschichtliche Kenntnisse über die Literaturepochen bis zur Gegenwart stützen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#3"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "abaeb64e-59c8-52d4-7eb6-aa8fe16e83ad",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "relevante Motive, Themen und Strukturen literarischer Schriften, die bis in die Antike zurückreichen können, vergleic...",
+      "description": "Die lernende Person kann relevante Motive, Themen und Strukturen literarischer Schriften, die bis in die Antike zurückreichen können, vergleichen und in ihre Texterschließung einbeziehen Mehrdeutigkeit als konstitutives Merkmal literarischer Texte nachweisen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "relevante Motive, Themen und Strukturen literarischer Schriften, die bis in die Antike zurückreichen können, vergleichen und in ihre Texterschließung einbeziehen Mehrdeutigkeit als konstitutives Merkmal literarischer Texte nachweisen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#4"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "9068eb08-0b8b-5143-c64d-63d4ede2f819",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "literarische Texte aller Gattungen als Produkte künstlerischer Gestaltung erschließen",
+      "description": "Die lernende Person kann literarische Texte aller Gattungen als Produkte künstlerischer Gestaltung erschließen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "literarische Texte aller Gattungen als Produkte künstlerischer Gestaltung erschließen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#5"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "ebeadedc-fb10-55ae-865e-6e7f8582139e",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "die besondere ästhetische Qualität eines literarischen Produktes aufgrund eines breit angelegten literarischen Vorwis...",
+      "description": "Die lernende Person kann die besondere ästhetische Qualität eines literarischen Produktes aufgrund eines breit angelegten literarischen Vorwissens erfassen und ihre Befunde in das Textverständnis einbeziehen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "die besondere ästhetische Qualität eines literarischen Produktes aufgrund eines breit angelegten literarischen Vorwissens erfassen und ihre Befunde in das Textverständnis einbeziehen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#6"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "9ba17647-2599-544b-049f-2ae70855d118",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "diachrone und synchrone Zusammenhänge zwischen literarischen Texten ermitteln und Bezüge zu weiteren Kontexten herste...",
+      "description": "Die lernende Person kann diachrone und synchrone Zusammenhänge zwischen literarischen Texten ermitteln und Bezüge zu weiteren Kontexten herstellen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "diachrone und synchrone Zusammenhänge zwischen literarischen Texten ermitteln und Bezüge zu weiteren Kontexten herstellen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#7"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "680ac1b2-c84a-50b4-3994-72da87f33539",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "die in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen kritisch zu eigenen Wertvorstellu...",
+      "description": "Die lernende Person kann die in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen kritisch zu eigenen Wertvorstellungen, Weltund Selbstkonzepten in Beziehung setzen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "die in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen kritisch zu eigenen Wertvorstellungen, Weltund Selbstkonzepten in Beziehung setzen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#8"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "df6107af-ad70-520f-ffca-b5bceecdebd6",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "literarische Texte auf der Basis von nachvollziehbaren, sachlich fundierten Kriterien bewerten und dabei auch textext...",
+      "description": "Die lernende Person kann literarische Texte auf der Basis von nachvollziehbaren, sachlich fundierten Kriterien bewerten und dabei auch textexterne Bezüge wie Produktions-, Rezeptionsund Wirkungsbedingungen berücksichtigen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "literarische Texte auf der Basis von nachvollziehbaren, sachlich fundierten Kriterien bewerten und dabei auch textexterne Bezüge wie Produktions-, Rezeptionsund Wirkungsbedingungen berücksichtigen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#9"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "ae835697-fe1c-5b8e-65c1-56fa14231766",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE",
+      "title": "kreativ Texte im Sinne literarischen Probehandelns gestalten",
+      "description": "Die lernende Person kann kreativ Texte im Sinne literarischen Probehandelns gestalten.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "kreativ Texte im Sinne literarischen Probehandelns gestalten",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE#10"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "ff90fea0-5c2c-5663-9a6c-42af356d21e0",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+      "title": "in die Erörterung der in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen geistes-, kultu...",
+      "description": "Die lernende Person kann in die Erörterung der in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen geistes-, kulturund sozialgeschichtliche Entwicklungen einbeziehen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "in die Erörterung der in literarischen Werken enthaltenen Herausforderungen und Fremdheitserfahrungen geistes-, kulturund sozialgeschichtliche Entwicklungen einbeziehen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK#11"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "df5054fb-d4b0-563f-fe94-76f064993753",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+      "title": "literarische Wertungen differenziert begründen und dabei auf größeres und komplexeres Kontextwissen zurückgreifen",
+      "description": "Die lernende Person kann literarische Wertungen differenziert begründen und dabei auf größeres und komplexeres Kontextwissen zurückgreifen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "literarische Wertungen differenziert begründen und dabei auf größeres und komplexeres Kontextwissen zurückgreifen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK#12"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "0cccec0c-4117-5c7f-e90e-94345cedccda",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+      "title": "den besonderen poetischen Anspruch und die ästhetische Qualität literarischer Texte vor dem Hintergrund ihrer Kenntni...",
+      "description": "Die lernende Person kann den besonderen poetischen Anspruch und die ästhetische Qualität literarischer Texte vor dem Hintergrund ihrer Kenntnisse in den Bereichen Poetologie und Ästhetik erläutern.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "den besonderen poetischen Anspruch und die ästhetische Qualität literarischer Texte vor dem Hintergrund ihrer Kenntnisse in den Bereichen Poetologie und Ästhetik erläutern",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK#13"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "32b6d60f-0059-57b1-0d5a-c8bf5ad05ee2",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK",
+      "title": "Kenntnisse wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Kontextua...",
+      "description": "Die lernende Person kann kenntnisse wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Kontextualisierung literarischer Werke einbeziehen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literarische Texte",
+      "sourceText": "Kenntnisse wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Kontextualisierung literarischer Werke einbeziehen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-literarische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-LITERARISCHE-TEXTE-LK#14"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literarische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literarische Texte"
+      }
+    },
+    {
+      "id": "2306dc08-46a6-59d9-4d97-9c424b803d6e",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "den inhaltlichen Zusammenhang voraussetzungsreicher Texte sichern und diese Texte terminologisch präzise und sachgere...",
+      "description": "Die lernende Person kann den inhaltlichen Zusammenhang voraussetzungsreicher Texte sichern und diese Texte terminologisch präzise und sachgerecht zusammenfassen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "den inhaltlichen Zusammenhang voraussetzungsreicher Texte sichern und diese Texte terminologisch präzise und sachgerecht zusammenfassen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#15"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "2c226e53-8544-592c-7e4d-ad74779350bf",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "ein umfassendes, Textfunktionen, Situationen und Adressaten beachtendes Textverständnis formulieren",
+      "description": "Die lernende Person kann ein umfassendes, Textfunktionen, Situationen und Adressaten beachtendes Textverständnis formulieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "ein umfassendes, Textfunktionen, Situationen und Adressaten beachtendes Textverständnis formulieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#16"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "e1f6289a-4eae-5bde-2849-050121678898",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "die in pragmatischen Texten enthaltenen sprachlichen Handlungen ermitteln",
+      "description": "Die lernende Person kann die in pragmatischen Texten enthaltenen sprachlichen Handlungen ermitteln.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die in pragmatischen Texten enthaltenen sprachlichen Handlungen ermitteln",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#17"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "b5766490-1fa6-5827-04a5-8184b2621580",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "die Funktionen eines pragmatischen Textes bestimmen und dessen mögliche Wirkungsabsichten beurteilen",
+      "description": "Die lernende Person kann die Funktionen eines pragmatischen Textes bestimmen und dessen mögliche Wirkungsabsichten beurteilen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die Funktionen eines pragmatischen Textes bestimmen und dessen mögliche Wirkungsabsichten beurteilen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#18"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "9634dfcf-0e4b-5160-331a-0bd4b8e506c4",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "die sprachlich-stilistische Gestaltung eines pragmatischen Textes fachgerecht beschreiben und deren Wirkungsweise erl...",
+      "description": "Die lernende Person kann die sprachlich-stilistische Gestaltung eines pragmatischen Textes fachgerecht beschreiben und deren Wirkungsweise erläutern.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die sprachlich-stilistische Gestaltung eines pragmatischen Textes fachgerecht beschreiben und deren Wirkungsweise erläutern",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#19"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "d7e30593-3707-511c-01b0-1dbb79a08ab6",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "Elemente der Textgestaltung einschließlich nichtsprachlicher Bestandteile in ihrer Funktion analysieren",
+      "description": "Die lernende Person kann elemente der Textgestaltung einschließlich nichtsprachlicher Bestandteile in ihrer Funktion analysieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "Elemente der Textgestaltung einschließlich nichtsprachlicher Bestandteile in ihrer Funktion analysieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#20"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "8e015fa5-91da-5b7f-d900-454daf1ad4f0",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "zielgerichtet Zusammenhänge zu weiteren ihnen bekannten Texten herstellen und hierfür passende Wissensbestände aktivi...",
+      "description": "Die lernende Person kann zielgerichtet Zusammenhänge zu weiteren ihnen bekannten Texten herstellen und hierfür passende Wissensbestände aktivieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "zielgerichtet Zusammenhänge zu weiteren ihnen bekannten Texten herstellen und hierfür passende Wissensbestände aktivieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#21"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "a18f87dd-1dc2-5206-7559-2facf4617d85",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "themengleiche Texte methodisch fachgerecht vergleichen",
+      "description": "Die lernende Person kann themengleiche Texte methodisch fachgerecht vergleichen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "themengleiche Texte methodisch fachgerecht vergleichen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#22"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "43a0dae6-647c-5b4f-9f97-65be47f4a7e2",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE",
+      "title": "sich mittels pragmatischer Texte mit den eigenen Weltund Wertvorstellungen, auch in einer interkulturellen Perspektiv...",
+      "description": "Die lernende Person kann sich mittels pragmatischer Texte mit den eigenen Weltund Wertvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "sich mittels pragmatischer Texte mit den eigenen Weltund Wertvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE#23"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "2be0e704-539c-56bc-c949-aa9c30fd2c75",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK",
+      "title": "die Zuordnung von Texten zu Textformen und Textsorten reflektieren",
+      "description": "Die lernende Person kann die Zuordnung von Texten zu Textformen und Textsorten reflektieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die Zuordnung von Texten zu Textformen und Textsorten reflektieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK#24"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "49e4010d-8681-5671-f48a-64e7254883a9",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK",
+      "title": "die in argumentativen Texten enthaltenen Argumentations-strukturen theoriegestützt analysieren",
+      "description": "Die lernende Person kann die in argumentativen Texten enthaltenen Argumentations-strukturen theoriegestützt analysieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die in argumentativen Texten enthaltenen Argumentations-strukturen theoriegestützt analysieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK#25"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "5e0a0795-2d7a-5590-51b2-d6bf379692eb",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK",
+      "title": "die Beziehung zwischen pragmatischen Texten und ihren Produktionsbedingungen ermitteln",
+      "description": "Die lernende Person kann die Beziehung zwischen pragmatischen Texten und ihren Produktionsbedingungen ermitteln.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Pragmatische Texte",
+      "sourceText": "die Beziehung zwischen pragmatischen Texten und ihren Produktionsbedingungen ermitteln",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-pragmatische-texte-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-PRAGMATISCHE-TEXTE-LK#26"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:pragmatische-texte",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Pragmatische Texte"
+      }
+    },
+    {
+      "id": "9140e499-c42c-53ff-5530-bc15f9258fac",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+      "title": "Theaterinszenierungen und Literaturverfilmungen als Textinterpretationen erfassen und beurteilen",
+      "description": "Die lernende Person kann theaterinszenierungen und Literaturverfilmungen als Textinterpretationen erfassen und beurteilen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "Theaterinszenierungen und Literaturverfilmungen als Textinterpretationen erfassen und beurteilen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN#27"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "c6cc180b-6094-5f22-6788-06806fc72267",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+      "title": "Theaterinszenierungen, Hörtexte und Filme sachgerecht analysieren",
+      "description": "Die lernende Person kann theaterinszenierungen, Hörtexte und Filme sachgerecht analysieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "Theaterinszenierungen, Hörtexte und Filme sachgerecht analysieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN#28"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "4dd17c9b-6a78-54c8-db3e-87e4e74c05bd",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+      "title": "eigene Hörtexte, Filme oder andere audiovisuelle Präsentationsformen erstellen bzw. Textvorlagen szenisch umsetzen",
+      "description": "Die lernende Person kann eigene Hörtexte, Filme oder andere audiovisuelle Präsentationsformen erstellen bzw. Textvorlagen szenisch umsetzen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "eigene Hörtexte, Filme oder andere audiovisuelle Präsentationsformen erstellen bzw. Textvorlagen szenisch umsetzen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN#29"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "d5902e24-f150-5022-89b3-ab2b271f6f03",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN",
+      "title": "sich bei der Rezeption oder Produktion von Hörtexten und Filmen und bei der Rezeption von Theaterinszenierungen mit d...",
+      "description": "Die lernende Person kann sich bei der Rezeption oder Produktion von Hörtexten und Filmen und bei der Rezeption von Theaterinszenierungen mit den eigenen Wertund Weltvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "sich bei der Rezeption oder Produktion von Hörtexten und Filmen und bei der Rezeption von Theaterinszenierungen mit den eigenen Wertund Weltvorstellungen, auch in einer interkulturellen Perspektive, auseinandersetzen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN#30"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "f5f41eb7-481a-5125-eedb-0c7c3926bc6e",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK",
+      "title": "die ästhetische Qualität von Theaterinszenierungen, Hörtexten oder Filmen beurteilen, auch vor dem Hintergrund ihrer...",
+      "description": "Die lernende Person kann die ästhetische Qualität von Theaterinszenierungen, Hörtexten oder Filmen beurteilen, auch vor dem Hintergrund ihrer kulturellen und historischen Dimension.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "die ästhetische Qualität von Theaterinszenierungen, Hörtexten oder Filmen beurteilen, auch vor dem Hintergrund ihrer kulturellen und historischen Dimension",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK#31"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "d1fd00ac-b39f-5cfe-62cc-50c2f399239b",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen-lk",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK",
+      "title": "sich mit Filmkritik und Aspekten der Filmtheorie auseinandersetzen",
+      "description": "Die lernende Person kann sich mit Filmkritik und Aspekten der Filmtheorie auseinandersetzen.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Medien und Theaterinszenierungen",
+      "sourceText": "sich mit Filmkritik und Aspekten der Filmtheorie auseinandersetzen",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-medien-und-theaterinszenierungen-lk",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-MEDIEN-UND-THEATERINSZENIERUNGEN-LK#32"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:medien-und-theaterinszenierungen",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Medien und Theaterinszenierungen"
+      }
+    },
+    {
+      "id": "7976bf7a-af3e-5479-9ff9-e93f9ddbb146",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "ein grundlegendes Verständnis der kognitiven und kommunikativen Funktion von Sprache formulieren",
+      "description": "Die lernende Person kann ein grundlegendes Verständnis der kognitiven und kommunikativen Funktion von Sprache formulieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "ein grundlegendes Verständnis der kognitiven und kommunikativen Funktion von Sprache formulieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#33"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "860e3e92-c4d0-57e8-eab5-517dc7f5ac96",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "sprachliche Äußerungen kritikorientiert analysieren und ihre Einsichten in der Auseinandersetzung mit Texten und Sach...",
+      "description": "Die lernende Person kann sprachliche Äußerungen kritikorientiert analysieren und ihre Einsichten in der Auseinandersetzung mit Texten und Sachverhalten dokumentieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "sprachliche Äußerungen kritikorientiert analysieren und ihre Einsichten in der Auseinandersetzung mit Texten und Sachverhalten dokumentieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#34"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "f59d47c7-b927-5e90-a24f-520b2f269eea",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "sprachliche Strukturen und Bedeutungen auf der Basis eines gesicherten Grammatikwissens und semantischer Kategorien e...",
+      "description": "Die lernende Person kann sprachliche Strukturen und Bedeutungen auf der Basis eines gesicherten Grammatikwissens und semantischer Kategorien erläutern.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "sprachliche Strukturen und Bedeutungen auf der Basis eines gesicherten Grammatikwissens und semantischer Kategorien erläutern",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#35"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "81b82f62-1fc7-5460-672d-5dc238c94b0b",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "Strukturen und Funktionen von Sprachvarietäten beschreiben",
+      "description": "Die lernende Person kann strukturen und Funktionen von Sprachvarietäten beschreiben.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "Strukturen und Funktionen von Sprachvarietäten beschreiben",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#36"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "50642806-13a8-5a70-31ff-e7b20494fb44",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "Bedingungen gelingender Kommunikation analysieren, auch auf der Basis theoretischer Modelle",
+      "description": "Die lernende Person kann bedingungen gelingender Kommunikation analysieren, auch auf der Basis theoretischer Modelle.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "Bedingungen gelingender Kommunikation analysieren, auch auf der Basis theoretischer Modelle",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#37"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "5597cf9b-570b-5b7c-7837-0c16b587848d",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "verbale, paraverbale und nonverbale Gestaltungsmittel in unterschiedlichen kommunikativen Zusammenhängen analysieren,...",
+      "description": "Die lernende Person kann verbale, paraverbale und nonverbale Gestaltungsmittel in unterschiedlichen kommunikativen Zusammenhängen analysieren, ihre Funktion beschreiben und ihre Angemessenheit bewerten.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "verbale, paraverbale und nonverbale Gestaltungsmittel in unterschiedlichen kommunikativen Zusammenhängen analysieren, ihre Funktion beschreiben und ihre Angemessenheit bewerten",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#38"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "fef24a17-fc61-5f29-93de-9f64e73bb0d2",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+      "topicCode": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH",
+      "title": "verbale, paraverbale und nonverbale Signale für Machtund Dominanzverhältnisse identifizieren",
+      "description": "Die lernende Person kann verbale, paraverbale und nonverbale Signale für Machtund Dominanzverhältnisse identifizieren.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Reflexion und Sprachgebrauch",
+      "sourceText": "verbale, paraverbale und nonverbale Signale für Machtund Dominanzverhältnisse identifizieren",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-std-qualifikationsphase-reflexion-und-sprachgebrauch",
+        "label": "MV-SII-STD-QUALIFIKATIONSPHASE-REFLEXION-UND-SPRACHGEBRAUCH#39"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflexion-und-sprachgebrauch",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Reflexion und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "c2734776-b435-5e82-7201-9b642eb25cd4",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT",
+      "title": "Weimarer Klassik im Kontext literarischer Vorbilder Merkmale des Romantischen in Auseinandersetzung mit bekannten Kon...",
+      "description": "Die lernende Person kann weimarer Klassik im Kontext literarischer Vorbilder Merkmale des Romantischen in Auseinandersetzung mit bekannten Konzepten.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 18./19. Jahrhundert",
+      "sourceText": "Weimarer Klassik im Kontext literarischer Vorbilder Merkmale des Romantischen in Auseinandersetzung mit bekannten Konzepten",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT#40"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-18-19-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 18./19. Jahrhundert"
+      }
+    },
+    {
+      "id": "ec74d22c-72ce-5e8b-afca-625cb1b6f6ed",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT",
+      "title": "Besonderheiten frührealistischer Literatur in Abgrenzung zur Romantik",
+      "description": "Die lernende Person kann besonderheiten frührealistischer Literatur in Abgrenzung zur Romantik.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 18./19. Jahrhundert",
+      "sourceText": "Besonderheiten frührealistischer Literatur in Abgrenzung zur Romantik",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT#41"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-18-19-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 18./19. Jahrhundert"
+      }
+    },
+    {
+      "id": "28c61c17-76f8-5f9a-3619-88fb6de2a909",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT",
+      "title": "Lektüre einer Ganzschrift Auseinandersetzen mit einer Literaturverfilmung oder Theaterinszenierung",
+      "description": "Die lernende Person kann lektüre einer Ganzschrift Auseinandersetzen mit einer Literaturverfilmung oder Theaterinszenierung.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 18./19. Jahrhundert",
+      "sourceText": "Lektüre einer Ganzschrift Auseinandersetzen mit einer Literaturverfilmung oder Theaterinszenierung",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT#42"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-18-19-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 18./19. Jahrhundert"
+      }
+    },
+    {
+      "id": "e103ef95-5998-5bf8-ef7c-65a093db0849",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK",
+      "title": "Einbeziehen wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Auseinan...",
+      "description": "Die lernende Person kann einbeziehen wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Auseinandersetzung mit im Unterricht behandelten Texten und Konzepten.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 18./19. Jahrhundert",
+      "sourceText": "Einbeziehen wissenschaftlicher Sekundärtexte, philosophischer Schriften und historischer Abhandlungen in die Auseinandersetzung mit im Unterricht behandelten Texten und Konzepten",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK#43"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-18-19-jahrhundert",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 18./19. Jahrhundert"
+      }
+    },
+    {
+      "id": "92ffd94d-65a5-513e-1db0-bfa36632374b",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK",
+      "title": "differenziertes Begründen literarischer Wertungen in Auseinandersetzung mit dem Material",
+      "description": "Die lernende Person kann differenziertes Begründen literarischer Wertungen in Auseinandersetzung mit dem Material.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 18./19. Jahrhundert",
+      "sourceText": "differenziertes Begründen literarischer Wertungen in Auseinandersetzung mit dem Material",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-18-19-jahrhundert-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-18-19-JAHRHUNDERT-LK#44"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-18-19-jahrhundert",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 18./19. Jahrhundert"
+      }
+    },
+    {
+      "id": "c366dd1f-c438-5aaa-922a-cca0d2d5acd4",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+      "title": "Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit",
+      "description": "Die lernende Person kann aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Aspekte der literarischen Entwicklung um 1900 in ihrer gesellschaftlichen Bedingtheit",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT#45"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "f8810daa-642b-5635-2997-b133907c80eb",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+      "title": "Merkmale realistischen Erzählens",
+      "description": "Die lernende Person kann merkmale realistischen Erzählens.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Merkmale realistischen Erzählens",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT#46"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "67ac6458-af5c-5fb9-0d12-841e0c547ee0",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+      "title": "Merkmale des Expressionismus und einer weiteren literarischen Strömung",
+      "description": "Die lernende Person kann merkmale des Expressionismus und einer weiteren literarischen Strömung.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Merkmale des Expressionismus und einer weiteren literarischen Strömung",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT#47"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "85c4e1aa-8e5c-5572-64db-79585c903039",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT",
+      "title": "Auszüge einer Ganzschrift",
+      "description": "Die lernende Person kann auszüge einer Ganzschrift.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Auszüge einer Ganzschrift",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT#48"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "50568639-27fd-56fa-3de7-cb97c17ae17d",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK",
+      "title": "Lektüre einer Ganzschrift",
+      "description": "Die lernende Person kann lektüre einer Ganzschrift.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Lektüre einer Ganzschrift",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK#49"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "4d246d4d-41c7-56d0-c433-718705c27da7",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK",
+      "title": "Einbeziehen literaturtheoretischer bzw. sprachwissenschaftlicher Sekundärtexte",
+      "description": "Die lernende Person kann einbeziehen literaturtheoretischer bzw. sprachwissenschaftlicher Sekundärtexte.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Epochenumbruch 19./20. Jahrhundert",
+      "sourceText": "Einbeziehen literaturtheoretischer bzw. sprachwissenschaftlicher Sekundärtexte",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-epochenumbruch-19-20-jahrhundert-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-EPOCHENUMBRUCH-19-20-JAHRHUNDERT-LK#50"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:epochenumbruch-19-20-jahrhundert",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Epochenumbruch 19./20. Jahrhundert"
+      }
+    },
+    {
+      "id": "4b527018-3a30-5335-96cb-6ba057540aa1",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+      "title": "Literatur als Spiegel des Umbruchs Untergang der alten Weltordnung",
+      "description": "Die lernende Person kann literatur als Spiegel des Umbruchs Untergang der alten Weltordnung.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literatur von der Weimarer Republik bis in die Gegenwart",
+      "sourceText": "Literatur als Spiegel des Umbruchs Untergang der alten Weltordnung",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART#51"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literatur von der Weimarer Republik bis in die Gegenwart"
+      }
+    },
+    {
+      "id": "a1a6cf88-a1ad-5155-0eb8-1e2d48111166",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+      "title": "Literatur der Weimarer Republik",
+      "description": "Die lernende Person kann literatur der Weimarer Republik.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literatur von der Weimarer Republik bis in die Gegenwart",
+      "sourceText": "Literatur der Weimarer Republik",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART#52"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literatur von der Weimarer Republik bis in die Gegenwart"
+      }
+    },
+    {
+      "id": "1a1bf022-3da5-57ba-3350-3a9c9db66857",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+      "title": "Literatur im Exil Episches Theater Literatur nach 1945",
+      "description": "Die lernende Person kann literatur im Exil Episches Theater Literatur nach 1945.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literatur von der Weimarer Republik bis in die Gegenwart",
+      "sourceText": "Literatur im Exil Episches Theater Literatur nach 1945",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART#53"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literatur von der Weimarer Republik bis in die Gegenwart"
+      }
+    },
+    {
+      "id": "f9673c0e-e529-57e9-e6cb-0cb103908419",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART",
+      "title": "das geteilte Deutschland Gegenwartsliteratur Literatur aus Mecklenburg-Vorpommern Lektüre einer Ganzschrift aus dem B...",
+      "description": "Die lernende Person kann das geteilte Deutschland Gegenwartsliteratur Literatur aus Mecklenburg-Vorpommern Lektüre einer Ganzschrift aus dem Bereich der Gegenwartsliteratur.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literatur von der Weimarer Republik bis in die Gegenwart",
+      "sourceText": "das geteilte Deutschland Gegenwartsliteratur Literatur aus Mecklenburg-Vorpommern Lektüre einer Ganzschrift aus dem Bereich der Gegenwartsliteratur",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART#54"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literatur von der Weimarer Republik bis in die Gegenwart"
+      }
+    },
+    {
+      "id": "074bd9ca-81c8-5411-a7a1-3309d30f20f2",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART-LK",
+      "title": "Vergleichen von aktuellen und historischen Reden Lektüre einer zweiten Ganzschrift",
+      "description": "Die lernende Person kann vergleichen von aktuellen und historischen Reden Lektüre einer zweiten Ganzschrift.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Literatur von der Weimarer Republik bis in die Gegenwart",
+      "sourceText": "Vergleichen von aktuellen und historischen Reden Lektüre einer zweiten Ganzschrift",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-literatur-von-der-weimarer-republik-bis-in-die-gegenwart-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-LITERATUR-VON-DER-WEIMARER-REPUBLIK-BIS-IN-DIE-GEGENWART-LK#55"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:literatur-von-der-weimarer-republik-bis-in-die-gegenwart",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Literatur von der Weimarer Republik bis in die Gegenwart"
+      }
+    },
+    {
+      "id": "5c5eeeb9-cb55-5451-c691-9e8b7e5d3920",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-stoffe-und-motive",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE",
+      "title": "Differenzieren der Begriffe Stoff und Motiv",
+      "description": "Die lernende Person kann differenzieren der Begriffe Stoff und Motiv.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Stoffe und Motive",
+      "sourceText": "Differenzieren der Begriffe Stoff und Motiv",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-stoffe-und-motive",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE#56"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:stoffe-und-motive",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Stoffe und Motive"
+      }
+    },
+    {
+      "id": "73838022-52d9-589b-d088-285fee6d3e94",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-stoffe-und-motive",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE",
+      "title": "Analysieren und vergleichen der Gestaltung",
+      "description": "Die lernende Person kann analysieren und vergleichen der Gestaltung.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Stoffe und Motive",
+      "sourceText": "Analysieren und vergleichen der Gestaltung",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-stoffe-und-motive",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-STOFFE-UND-MOTIVE#57"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:stoffe-und-motive",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Stoffe und Motive"
+      }
+    },
+    {
+      "id": "11fcb270-e5df-5d68-6c71-fde311927215",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Kommunikationsstrategien und -modelle",
+      "description": "Die lernende Person kann kommunikationsstrategien und -modelle.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Kommunikationsstrategien und -modelle",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#58"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "df26c619-ff0b-5a72-65d4-ca93ab143599",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Funktion von Sprache",
+      "description": "Die lernende Person kann funktion von Sprache.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Funktion von Sprache",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#59"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "09d7c881-ffed-5d67-b222-17e4e9dc149c",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Schriftlichkeit – Mündlichkeit",
+      "description": "Die lernende Person kann schriftlichkeit – Mündlichkeit.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Schriftlichkeit – Mündlichkeit",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#60"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "931fbc2f-0282-5fa0-c849-3187e42f9594",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Mehrsprachigkeit als Phänomen Sprache und Rhetorik",
+      "description": "Die lernende Person kann mehrsprachigkeit als Phänomen Sprache und Rhetorik.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Mehrsprachigkeit als Phänomen Sprache und Rhetorik",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#61"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "ae0aeb57-c8e8-570a-736d-f0762f48690e",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Verfassen und Halten einer Rede",
+      "description": "Die lernende Person kann verfassen und Halten einer Rede.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Verfassen und Halten einer Rede",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#62"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "9ded1e39-a0ac-5b60-b9d9-6ab1e57e9f7d",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN",
+      "title": "Anwenden verschiedener Analyseverfahren von Reden",
+      "description": "Die lernende Person kann anwenden verschiedener Analyseverfahren von Reden.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Anwenden verschiedener Analyseverfahren von Reden",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN#63"
+      },
+      "courseLevel": "both",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:both"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    },
+    {
+      "id": "3a320070-2b8e-5a94-8f34-ead29ea2c90d",
+      "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien-lk",
+      "topicCode": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN-LK",
+      "title": "Vertiefen und Vergleichen von Sprachtheorien sprachphilosophische Positionen zur Analyse von authentischen und fiktiv...",
+      "description": "Die lernende Person kann vertiefen und Vergleichen von Sprachtheorien sprachphilosophische Positionen zur Analyse von authentischen und fiktiven Kommunikationssituationen Theorien zum Spracherwerb.",
+      "sourceDocumentKey": "MV-DEUTSCH-SEKII-GYO-2019",
+      "sourceRef": "Rahmenplan Deutsch Qualifikationsphase Gymnasiale Oberstufe Mecklenburg-Vorpommern 2019, Qualifikationsphase, Sprache und Medien",
+      "sourceText": "Vertiefen und Vergleichen von Sprachtheorien sprachphilosophische Positionen zur Analyse von authentischen und fiktiven Kommunikationssituationen Theorien zum Spracherwerb",
+      "sourceSpan": {
+        "passageId": "de_mv_deutsch_sekii_rahmenplan_2019:mv-sii-inhalt-qualifikationsphase-sprache-und-medien-lk",
+        "label": "MV-SII-INHALT-QUALIFIKATIONSPHASE-SPRACHE-UND-MEDIEN-LK#64"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-MV",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprache-und-medien",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-mv-sekii-standards-and-content-bullets",
+        "phase": "Qualifikationsphase",
+        "field": "Sprache und Medien"
+      }
+    }
+  ]
+}

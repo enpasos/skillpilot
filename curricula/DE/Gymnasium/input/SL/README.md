@@ -151,3 +151,33 @@ Operational note:
 - Saarland Chemistry composition views:
   - `active`
 - The next meaningful step is keeping Saarland Chemistry stable while Sachsen and Thueringen source onboarding continues.
+
+<!-- DE-SL-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Archived official source inputs on `2026-05-14`:
+
+### Sekundarstufe I
+
+- `LP_gymn9_Dt_5und6_2023.pdf` - Lehrplan Deutsch Klassenstufen 5 und 6 neunjähriges Gymnasium (Saarland, 2023)
+- `LP_gymn9_Dt_7_2023.pdf` - Lehrplan Deutsch Klassenstufe 7 neunjähriges Gymnasium (Saarland, 2023)
+- `LP_gymn9_Dt_8_2024.pdf` - Lehrplan Deutsch Klassenstufe 8 neunjähriges Gymnasium (Saarland, 2024)
+- `LP_gymn9_Dt_9_2024.pdf` - Lehrplan Deutsch Klassenstufe 9 neunjähriges Gymnasium (Saarland, 2024)
+- `LP_gymn9_Dt_10_2025.pdf` - Lehrplan Deutsch Klassenstufe 10 neunjähriges Gymnasium (Saarland, 2025)
+
+### Gymnasiale Oberstufe
+
+- `LP_De_EP_2019.pdf` - Lehrplan Deutsch Einführungsphase der gymnasialen Oberstufe (Saarland, 2019)
+- `LP_De_HP_GK_2019_2022.pdf` - Lehrplan Deutsch Hauptphase der gymnasialen Oberstufe Grundkurs (Saarland, 2019/2022)
+- `LP_De_HP_LK_2019_2022.pdf` - Lehrplan Deutsch Hauptphase der gymnasialen Oberstufe Leistungskurs (Saarland, 2019/2022)
+
+Official source anchors:
+
+- gymnasiale Sek-I landing page: https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasium
+- gymnasiale Oberstufe landing page: https://www.saarland.de/mbk/DE/portale/bildungsserver/unterricht-und-bildungsthemen/lehrplaenehandreichungen/lehrplaeneallgemeinbildende/gymnasiale-oberstufe-GOS/lehrplaene_GOS_node
+
+Generated source extractions:
+
+- `lower-secondary/source-extraction/DE_SL_DEUTSCH_SEKI_GYM9_2023_2025.source-extraction.json`
+- `upper-secondary/source-extraction/DE_SL_DEUTSCH_SEKII_GOS_2019_2022.source-extraction.json`
+<!-- DE-SL-DEUTSCH-SOURCE-EXTRACTION:end -->

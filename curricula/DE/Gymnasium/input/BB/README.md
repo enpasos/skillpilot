@@ -2,6 +2,31 @@
 
 Das LISUM gibt gemeinsame Rahmenlehrpläne für Berlin und Brandenburg heraus.
 
+## Deutsch
+### Sekundarstufe I (Jahrgangsstufen 7-10)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BB/lower-secondary/BB_RLP_2023_Teil_C_Deu_GenF_1.pdf`
+- Aktive Source-Extraction:
+  `curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_DEUTSCH_SEKI_RLP_2023.source-extraction.json`
+- Aktiver Umfang:
+  MAPPING-1 und MAPPING-2 aus dem amtlichen gemeinsamen BE/BB-RLP-Teil-C-PDF; 15 Passagen, 180 Source-Ziele aus Standards E-H sowie Themen/Inhalten 7/8 und 9/10
+- M3-Status:
+  abgeschlossen; 180/180 Source-Ziele reviewed und inhaltlich durch kanonische Deutsch-Ziele abgedeckt
+- Offizielle Quelle:
+  `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/Rahmenlehrplanprojekt/amtliche_Fassung/getrennt_2023/BB_RLP_2023_Teil_C_Deu_GenF_1.pdf`
+
+### Sekundarstufe II (Gymnasiale Oberstufe)
+- Archiviert:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Deutsch.pdf`
+- Aktive Source-Extraction:
+  `curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_DEUTSCH_SEKII_RLP_GOST_2022.source-extraction.json`
+- Aktiver Umfang:
+  MAPPING-1 und MAPPING-2 aus dem amtlichen BE/BB-RLP-GOST-Teil-C-PDF; 12 Passagen, 199 Source-Ziele aus Eingangsvoraussetzungen, abschlussorientierten Standards und Kurshalbjahren
+- M3-Status:
+  abgeschlossen; 199/199 Source-Ziele reviewed und inhaltlich durch kanonische Deutsch-Ziele abgedeckt
+- Offizielle Quelle:
+  `https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/gymnasiale_oberstufe/curricula/2022/Teil_C_RLP_GOST_2022_Deutsch.pdf`
+
 ## Mathematik
 ### Sekundarstufe I (Jahrgangsstufen 1-10)
 - Archiviert:

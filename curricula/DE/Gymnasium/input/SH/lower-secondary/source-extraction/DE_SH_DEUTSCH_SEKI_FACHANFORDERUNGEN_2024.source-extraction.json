@@ -1,0 +1,2962 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_SH_DEUTSCH_SEKI_FACHANFORDERUNGEN_2024",
+  "sourceLandscapeId": "402557d9-25c6-57d8-ac3d-b8f9f8e32dce",
+  "targetLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+  "title": "Deutsch Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction)",
+  "jurisdiction": "DE-SH",
+  "subject": "Deutsch",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "SH-DEUTSCH-FA2024",
+    "title": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024)",
+    "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf",
+    "url": "https://fachportal.lernnetz.de/sh/faecher/deutsch/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Deutsch%20Sekundarstufe%20%282024%2C%20barrierearm%29.pdf&cid=16956",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "SH-DEUTSCH-FA2024",
+      "title": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024)",
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf",
+      "url": "https://fachportal.lernnetz.de/sh/faecher/deutsch/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Deutsch%20Sekundarstufe%20%282024%2C%20barrierearm%29.pdf&cid=16956",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -layout; Kapitel II.2.1 bis II.2.5 wird nach KMK-Kompetenzunterbereichen segmentiert. Gezählt werden die linken KMK-Bildungsstandard-Zeilen; rechte Konkretisierungsspalten bleiben Belegkontext und werden nicht als eigene Source-Ziele gezählt.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro amtlicher KMK-Kompetenzzeile der Sek-I-Tabellen; Zeilenumbrüche innerhalb derselben linken Tabellenzelle werden zusammengeführt."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "status": "accepted",
+      "rationale": "100 Source-Ziele aus SH-Sek-I-KMK-Kompetenztabellen; auffällig kompakt gegenüber HE/NI/HH/BW, aber nach Gegenprüfung der linken KMK-Bildungsstandard-Spalte in Kapitel II.2.1-II.2.5 vollständig. Rechte Konkretisierungsspalten und Abschnittsprosa bleiben Belegkontext und werden nicht als eigene Lernziele gezählt."
+    }
+  },
+  "expectedTopicCodes": [
+    "SH-SI-ZU-ANDEREN-SPRECHEN",
+    "SH-SI-VERSTEHEND-ZUHOEREN",
+    "SH-SI-MIT-ANDEREN-SPRECHEN",
+    "SH-SI-VOR-ANDEREN-SPRECHEN",
+    "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN",
+    "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+    "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+    "SH-SI-TEXTE-FORMULIEREN",
+    "SH-SI-TEXTE-UEBERARBEITEN",
+    "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+    "SH-SI-LESEFERTIGKEITEN-UEBER-LESETECHNIKEN-VERFUEGEN",
+    "SH-SI-LESEFAEHIGKEITEN-LESEVERSTEHEN",
+    "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN",
+    "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN",
+    "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN",
+    "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+    "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+    "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+    "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+    "SH-SI-TEXTE-UND-GESPRAECHE",
+    "SH-SI-RESSOURCEN-ZUR-DEUTSCHEN-SPRACHE"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-sh-deutsch",
+            "label": "Amtliche SH-Deutsch-Fachanforderungen 2024 liegen lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage-sh-deutsch",
+            "label": "Alle erwarteten SH-Deutsch-Kompetenzpassagen wurden extrahiert",
+            "passed": true,
+            "details": "21/21 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction-sh-deutsch",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created-sh-deutsch",
+            "label": "Source-Ziele aus amtlichen SH-Deutsch-Kompetenzerwartungen erzeugt",
+            "passed": true,
+            "details": "100 Source-Ziele."
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen geprüfte Deutsch-Inventare plausibilisiert",
+            "passed": true,
+            "details": "100 Source-Ziele; niedriger SH-Sek-I-Korridor wurde manuell akzeptiert, weil nur die amtliche KMK-Bildungsstandard-Spalte gezählt wird."
+          },
+          {
+            "id": "source-goal-ids-unique-sh-deutsch",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages-sh-deutsch",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete-sh-deutsch",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "100 Source-Ziele liegen vor; MAPPING-3 wurde gegen diese Source-Extraction-IDs abgeschlossen."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_german_lower_secondary_source_extraction_to_canonical_german.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "100/100 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 100/100; 0 explizite Canonical-Gaps. 1:1 und 1:n sind gleichwertige Abdeckungsformen."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-zu-anderen-sprechen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-ZU-ANDEREN-SPRECHEN",
+      "title": "Zu anderen sprechen",
+      "rawText": "- äußern sich verständlich und situationsadäquat auch in der gesprochenen Standardsprache, verfügen über einen angemessenen Wortschatz, kommunizieren mit Blick auf Adressatinnen / Adressaten und Ziele situationsangemessen,",
+      "sourceGoalIds": [
+        "0ea18004-0109-52dc-5438-04704752f359"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "Verstehend zuhören",
+      "rawText": "- können in vertrauten und unvertrauten Kommunikationssituationen Gesprächsprozesse verfolgen, verstehen und Inhalte für die Kommunikation nutzen, Verstehen und Nicht-Verstehen zum Ausdruck bringen,\n- hören in vertrauten und unvertrauten Situationen sinnverstehend zu,\n- geben Informationen wieder und ziehen einfache / im Ansatz auch komplexe Schlussfolgerungen,\n- erfassen dem Lernstand entsprechende (komplexere) Hörtexte, Gesprächsphasen oder Gespräche (z. B. zentrale Aussagen sowie Sprechund Gesprächsabsichten),\n- beurteilen auch komplexe Aussagen zum Gehörten begründet,\n- zeigen Aufmerksamkeit für paraverbale und nonverbale Äußerungen,",
+      "sourceGoalIds": [
+        "74e46b0e-d87b-528e-7e57-538c1f50f894",
+        "3d751f88-006d-5739-fa10-88125117d6e5",
+        "f3619bdf-de12-5810-2cf7-735db83874bf",
+        "37fff610-744e-5ffc-4eaa-0e455f58dac8",
+        "76a61020-dd13-5b6c-10f9-ea04400d3a77",
+        "b6485ec2-3e07-5de3-e834-93e59b4c8f6e"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "Mit anderen sprechen",
+      "rawText": "- beteiligen sich in vertrauten und unvertrauten Gesprächssituationen mit verständlichen, zuhörerbezogenen, themenbezogenen und konstruktiven Beiträgen / gestalten vertraute und unvertraute Gesprächssituationen verständlich, zuhörerbezogen, themenbezogen und konstruktiv,\n- beachten gemeinsam entwickelte oder für öffentliche Kommunikation prototypische Gesprächsregeln; gestalten eine wertschätzende Gesprächsatmosphäre,\n- formulieren in vertrauten und unvertrauten Situationen angemessen; gehen auf die Gesprächspartnerin bzw. den Gesprächspartner und die jeweilige Situation ein,\n- nehmen in Gesprächen verschiedene Rollen (z. B. Diskutantin bzw. Diskutant) / (z. B. Moderation) ein und richten diese an den jeweiligen Zielen aus,\n- praktizieren ausgewählte Gesprächsund Lernformen,\n- wenden allgemeine / ein Spektrum von allgemeinen und für Gesprächsund Lernformen spezifische Strategien an,",
+      "sourceGoalIds": [
+        "1dca5be4-6b4a-57a3-c545-f334b0850e81",
+        "73c033ba-b66b-5d80-b376-7af6b203049c",
+        "bc4abd9d-cca3-569b-2952-2c5a20843d23",
+        "23e880a4-71f7-5674-2c21-ac4a66cb9ae9",
+        "fa3fa647-659e-58e5-14fb-5dd8de16da5c",
+        "94c265c7-1365-511c-ad16-dd48bd7f2b35"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-VOR-ANDEREN-SPRECHEN",
+      "title": "Vor anderen sprechen",
+      "rawText": "- leisten längere, auch freie Beiträge adressatenorientiert,\n- nutzen typische Werkzeuge für das Sprechen vor anderen,\n- planen, organisieren und gestalten typische Formen und Varianten des Präsentierens,\n- planen und gestalten Formen des szenischen Sprechens und Spielens.",
+      "sourceGoalIds": [
+        "6c88829c-63a0-58e2-588e-e2ab8a5a2b22",
+        "2853ee8d-7991-5c33-68a9-799e76d9094c",
+        "6bf39109-235e-5003-4b64-f9efd5e63a3d",
+        "fba1c17a-e51c-5814-d20d-56b9e248e52f"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-schreibfertigkeiten-verfuegen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN",
+      "title": "Über Schreibfertigkeiten verfügen",
+      "rawText": "- schreiben Wörter, Wortgruppen und Sätze flüssig, d. h. schnell, sicher und korrekt (automatisiert) und formulieren ihre Gedanken weitgehend flüssig,\n- schreiben Texte (handschriftlich leserlich und mithilfe digitaler Schreibwerkzeuge) in einem der Situation angemessenen Tempo,",
+      "sourceGoalIds": [
+        "8d125386-a2ec-5f20-8173-8b8906e1e603",
+        "ee8476d5-fa7e-5250-a1af-0e1f09489869"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "Orthografisch schreiben",
+      "rawText": "- kennen wortund satzbezogene Rechtschreibstrategien und wenden diese sicher an:\n- vergleichen Schreibungen von Wörtern und Sätzen und sprechen über Gemeinsamkeiten und Unterschiede,\n- erschließen sich die Struktur von Kernwörtern, prägen sich Merkwörter ein,\n- unterscheiden zwischen Kernwörtern und Fremdwörtern,\n- schreiben Kernwörter richtig (Inhaltsund Funktionswörter),\n- schreiben häufige Wörter, auch häufige Fachbegriffe und Fremdwörter / auch wichtige Fachbegriffe und Fremdwörter richtig,\n- schreiben Satzanfänge, Eigennamen und prototypische Kerne Strategien zur Bestimmung der Kerne von Nominalvon Nominalgruppen / Kerne von Nominalgruppen groß\n- kennen und nutzen die Interpunktionszeichen,\n- verfügen über Fehleraufmerksamkeit und nutzen Strategien zur Klärung orthografischer Fragen,\n- nutzen Rechtschreibhilfen,\n- überprüfen und korrigieren Texte auf orthografische Richtigkeit.",
+      "sourceGoalIds": [
+        "34ccba06-026f-531b-fa02-2751c6a08ff1",
+        "5fd8740c-bad3-5584-41bf-ecf98a8d7491",
+        "eccc8d47-72cb-56ac-432d-fba2dfa0dd90",
+        "79f65190-77c0-5ae5-dba1-241377096e44",
+        "7295a36b-0891-57d9-218a-6a8d8e06ca31",
+        "3f5c9c49-7c24-587b-7217-0fc4aa6c5017",
+        "6b02f527-5dd7-5744-5a67-a8c07d71e7b4",
+        "f4876b24-64de-51eb-bb64-2a035addb7e1",
+        "429dcb56-858f-53fa-4638-dcd27da42030",
+        "f6b51630-54d7-5d28-e513-a13ecafe65b6",
+        "e4ced89d-9fe4-532f-20e8-95b74c1f556b"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "Texte planen und strukturieren",
+      "rawText": "- sammeln Ideen, ordnen Informationen und fertigen eine Gliederung an,\n- sammeln vielfältige sprachliche und gestalterische Mittel,\n- stellen Überlegungen zu den Adressatinnen / Adressaten (unbekannt, verschiedene, abstrakt), deren unterschiedlichem Vorwissen und ihren Lesezielen an,\n- klären entsprechend dem Schreibziel die Schreibabsicht, Schreibsituation und Textfunktion,\n- entwickeln gemäß der Schreibaufgabe und der Zeitvorgabe einen Schreibplan, entscheiden sich für die angemessene Textsorte und konzipieren einen ziel-, adressatenund situationsbezogenen Text,\n- nutzen Informationsquellen unterschiedlicher Komplexität insbesondere Bibliotheken, Nachschlagewerke, Zeitungezielt und angemessen und reflektiert,",
+      "sourceGoalIds": [
+        "5fb9a85f-948e-5838-b5fe-2a691daf044c",
+        "0666f297-0bb2-5471-9a57-edc57286a657",
+        "93fe6289-c32e-511d-2168-95c593f64978",
+        "48d410b5-5729-5568-5025-7433e0745481",
+        "1353d030-d40c-521b-aa45-1bb6e9318502",
+        "aaa239b4-240e-5b73-21e9-74c5d0998659"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "Texte formulieren",
+      "rawText": "- formulieren Texte gedanklich geordnet, verständlich, kohärenzstiftend und strukturiert sowie sprachlich angemessen,\n- abwechslungsreich und differenziert,\n- formulieren Texte auch für unbekannte und unterschiedlimit Textmustern arbeiten che und abstrakte Adressatinnen / Adressaten angemessen,\n- realisieren sicher mit unterschiedlichen Textsorten / einem Spektrum unterschiedlicher Textsorten grundlegende und daraus sich entwickelnde komplexere kommunikative und personale und personalheuristische Schreibfunktionen.\n- nutzen unterschiedliche Schreibformen,\n- kennen und nutzen die Möglichkeiten digitaler Schreibwerkzeuge zur Formulierung und (formalen) Gestaltung von Arrangieren von Textbausteinen und Medienobjekten Texten,\n- erstellen Schaubilder, Diagramme und Tabellen und integrieren diese sprachlich in den eigenen – auch digitalen – Text,\n- nehmen Gedanken und deutlich markierte Positionen andeTextprozeduren (Textbausteine und Handlungen) rer in den eigenen Text auf und positionieren sich zu ihnen,\n- formulieren eigene Positionen und begründen diese,\n- integrieren Textbelege und andere Quellen formal richtig in zitieren, paraphrasieren (z. B. indirekte Rede, umformuden eigenen Text,\n- kennen Formulierungsstrategien und wenden diese (auch kooperativ) an. Sie reflektieren ihren Strategieeinsatz.",
+      "sourceGoalIds": [
+        "ea5273c6-d548-5a64-aa61-3f72cdb9d95a",
+        "e6757416-286d-526e-eb56-a5311d4de59b",
+        "0e857bf9-1e8a-53ad-bdb3-47055d0a502f",
+        "63ada5b9-d9bc-5988-b63a-0259918c5b27",
+        "b63f3257-99ed-55a2-355b-30e701316b38",
+        "de4533c7-7606-5dbb-76a9-414c0e455990",
+        "e2cf3379-9937-5e33-afca-d6d7a03e6c9a",
+        "c608615d-d7cc-5301-0af9-af353b95d0bc",
+        "62d9a09f-c875-5f44-6d99-ce0fb95264b6",
+        "7a546dc7-3981-5e38-8119-d1f1138dd416",
+        "4ab50886-e895-588e-ee6e-dc743d11a78a"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-ueberarbeiten",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-TEXTE-UEBERARBEITEN",
+      "title": "Texte überarbeiten",
+      "rawText": "- erkennen anhand vorgegebener Kriterienkataloge den Überarbeitungsbedarf von Texten, überlegen Schritte zur Textüberarbeitung und setzen diese um,",
+      "sourceGoalIds": [
+        "7bcfd5b4-87ed-5223-5359-2d5c8a9cc700"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+      "title": "Lesefertigkeiten: Flüssig lesen",
+      "rawText": "- nutzen die schriftsprachlichen Informationen beim Lesen,\n- verfügen über eine sichere Worterkennung (bei selteneren Wörtern mit Selbstkorrektur),\n- lesen komplexere Texte nach Vorbereitung sinngestaltend Vorlesen lyrischer Texte, erzählerischer Kurzformen, vor,\n- lesen in angemessenem Tempo.",
+      "sourceGoalIds": [
+        "477fa6a3-63f5-5ef6-9319-f3ad04dbffff",
+        "9bb5961b-27ae-5ff7-c6eb-c7d0e233f451",
+        "dc601dfe-28d0-5a4d-293f-7013afd95d37",
+        "8899efbc-99b6-55d0-9149-a9a474178543"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-ueber-lesetechniken-verfuegen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-UEBER-LESETECHNIKEN-VERFUEGEN",
+      "title": "Lesefertigkeiten: Über Lesetechniken verfügen",
+      "rawText": "- orientieren sich sicher in und zwischen Texten unterschiedlicher Komplexität und verschaffen sich auch mithilfe textueller Lesehilfen einen Überblick.",
+      "sourceGoalIds": [
+        "6d14137e-b827-5fbe-9b01-f80ee8220eef"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefaehigkeiten-leseverstehen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-LESEFAEHIGKEITEN-LESEVERSTEHEN",
+      "title": "Lesefähigkeiten: Leseverstehen",
+      "rawText": "- ermitteln explizite oder durch einfaches Schließen zu gewinnende Textinformationen auf lokaler Ebene und beachten dabei auch sprachliche Mittel zur Sicherung des Textzusammenhangs,",
+      "sourceGoalIds": [
+        "dc475d0f-b9ee-51b4-c369-80cb6b5bdcb1"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN",
+      "title": "Lesestrategien zum Leseverstehen",
+      "rawText": "- bereiten das Lesen vor,\n- lesen Texte organisierend, elaborierend und reflektierend,\n- bereiten das Lesen nach.",
+      "sourceGoalIds": [
+        "09364717-9095-5cc8-8b16-576abd75cf75",
+        "c00420ce-64d2-5b65-2ce0-9872f08cd97b",
+        "809dad32-e805-53c4-aba9-65c4f25af279"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN",
+      "title": "Über Textwissen verfügen",
+      "rawText": "- kennen Werke bedeutender Autorinnen und Autoren und berichten über ausgewählte Texte und ihre Leseerfahrungen / und setzen sich mit den Texten und ihren Leseerfahrungen auseinander\n- unterscheiden epische, lyrische und dramatische Texte, insbesondere epische Kleinformen,\n- kennen Merkmale medialer und szenischer Gestaltung und beschreiben an ausgewählten Beispielen ihre Wirkung,",
+      "sourceGoalIds": [
+        "803aa45c-9dde-5a88-cffd-2e8ca9ba40a3",
+        "d1435ce9-77da-52bf-7b0e-1d4515335370",
+        "03ce456f-1178-5a61-da27-7e7dfba5ec50"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sich-im-medienangebot-orientieren",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN",
+      "title": "Sich im Medienangebot orientieren",
+      "rawText": "- nutzen unterschiedliche Informationsangebote und Recherchemöglichkeiten,\n- bewerten Rechercheergebnisse (insbes. Internet) im Hinblick auf ihre thematische Relevanz und Verlässlichkeit.",
+      "sourceGoalIds": [
+        "66844a47-6aec-5931-4554-44ed772b02fc",
+        "c588e04f-1700-5d2e-fc79-4867fb088231"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "Texte und andere Medien erschließen und nutzen",
+      "rawText": "- nutzen zentrale / implizite und explizite Informationen zum zu Figuren und Figurenkonstellationen, zu Raumund Aufbau von Textverständnis und -deutung / zur Entwicklung einer differenzierten Deutung,\n- nutzen wichtige Fachbegriffe bei der Erschließung von epischen, dramatischen, lyrischen Texten, auch Filmen,\n- formulieren eigene Deutungen von Texten und belegen diese,\n- formulieren Wertungen von Texten und begründen sie differenziert,\n- vergleichen Texte im Hinblick auf Themen und Gestaltung und nehmen begründete Wertungen vor, stellen Bezüge zwischen literarischen Texten, Medien und deren Motiven her und nutzen Vergleiche für die Deutung und Wertung,\n- vergleichen Handlungen und Handlungsmotive von Figuren anhand ausgewählter Kriterien mit vertrauten Handlungen und Handlungsmotiven und nehmen begründete Wertungen vor,\n- überprüfen eigene Annahmen zu Textaussagen und vorgegebene Deutungsthesen, überprüfen eigene und fremde Deutungsthesen, erweitern ggf. ihre Thesen,\n- setzen ermittelte Aussagen und Deutungen kritisch zu eigenen Wertvorstellungen, Welt- und Selbstkonzepten sowie literarturgeschichtlichen Kontexten in Beziehung,\n- erschließen aus einem oder mehreren klar strukturierten Texten unterschiedlicher Komplexität zielgerichtet relevante Informationen, ordnen, selegieren und vergleichen diese und prüfen ihren Sachgehalt,\n- werten auch komplexere nichtlineare und multimodale Texte (Text-Bild-Bezüge) zielorientiert aus, z. B. um über ein Thema zu sprechen oder zu schreiben,\n- unterscheiden Information und Wertung in Texten,\n- unterscheiden informierende, erzählende und appellierende Elemente in Texten,\n- stellen an ausgewählten Beispielen Zusammenhänge zwischen Intentionen, Textmerkmalen, sprachlichen Gestaltungsmitteln und Wirkungen her,\n- beziehen an ausgewählten Beispielen Textaussagen auf eigene Welt- und Wertvorstellungen und überprüfen diese,\n- ermitteln an ausgewählten Beispielen die Wirkungsabsichten von Texten unterschiedlicher Komplexität und beurteilen diese.",
+      "sourceGoalIds": [
+        "9b5077ed-bef2-5e97-c18d-35fe6080ebb4",
+        "4f6d732b-b70a-5fb9-4c7c-c36ee76ba7ec",
+        "710e72e3-4d46-5f23-c0d9-b3ead64d8cd4",
+        "9678567d-c89d-5ffb-a653-64b810a365cb",
+        "53b7e502-6f7a-5406-de15-74fbc7666d7c",
+        "800d2de1-59f0-5ac1-5f54-b38b68ef2687",
+        "dee09270-92da-591c-127b-b0439919b135",
+        "4fe2f401-b548-5f9a-2204-4c62ba4300e8",
+        "141a022a-e9ac-5cd1-fbe3-753a24fec64d",
+        "fb0548ed-5d6a-5487-e252-1d69e9611494",
+        "73e51bf5-275a-550b-68d2-01ba06e9a98d",
+        "297e6dec-7901-540c-3dd4-62f2c4b320ab",
+        "2d4e0364-0bc4-5486-3d33-d9e94c21f5b7",
+        "33edea4c-376d-5066-0355-23a9c6700b1e",
+        "d72311a5-bc1e-59da-842e-bac0eedbc160"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "Digitale Formate und Umgebungen",
+      "rawText": "- kennen medienspezifische Gestaltungsmittel und beschreiben an ausgewählten Beispielen ihre Wirkung,\n- unterscheiden digitale Angebote in Bezug auf ihre Funktiu. a. informierend, unterhaltend, appellierend on und Wirkung,\n- unterscheiden Nutzungsformen digitaler Formate und Umgebungen und stellen Zusammenhänge zwischen Intentionen, Gestaltung und Wirkung her,\n- untersuchen am Beispiel den Zusammenhang von digitalen Nutzerprofilen, Algorithmen, Gestaltung und Wirkung digitaler Angebote und bewerten ihn / und nehmen kritisch Stellung,\n- nutzen digitale Werkzeuge zielgerichtet und reflektiert für z. B. für Präsentationen die Gestaltung eigener medialer Produkte.",
+      "sourceGoalIds": [
+        "040f20f9-adc0-53f6-4f66-ff6af1e75cc2",
+        "1a00ddba-f60d-5ae8-c955-3768c3786f81",
+        "1f7f599f-830f-519d-f323-1769313d8c17",
+        "fb2640d7-8cb3-5b38-237a-67b18570ae9b",
+        "ba23d173-2e06-5ef4-06a1-0b5a3b750979"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "Sprachliche Verständigung als Form des Handelns",
+      "rawText": "- kennen Grundbedingungen gelingender Kommunikation und Sprachfunktionen unterscheiden die Handlungs-, Inhaltsund Beziehungsebene,\n- unterscheiden beim Sprachhandeln die Handlungs-, Inhaltsund Beziehungsebene und untersuchen deren Zusammenwirken in Bezug auf gelingende vs. misslingende Kommunikation, öffentliche vs. private Kommunikationssituationen,\n- untersuchen monologische und interaktionale Formen des Sprechens und des Schreibens hinsichtlich ihrer Struktur und Organisation (ausgewählte Aspekte),\n- untersuchen die Anforderungen an die Rollen von Sprecherin / Sprecher / Schreiberin / Schreiber – Hörerin / Hörer / Leserin / Leser im Hinblick auf gelingende Kommunikation und werden diesen im eigenen sprachlichen Handeln gerecht,\n- unterscheiden an ausgewählten Beispielen grundlegende Textfunktionen und nutzen ihr Wissen über Textfunktionen reflektiert für das eigene Schreiben und für die Erschließung von Texten.\n- Ausprägungen und Bedingungen sprachlicher Variation und Vielfalt\n- unterscheiden angeleitet und an ausgewählten Beispielen Ausprägungen von Sprache und Sprachvariation und reflektieren Verwendungsweisen,",
+      "sourceGoalIds": [
+        "0e0654af-f22e-5976-3610-724cd5a2dffe",
+        "a7747f88-8308-5f84-10d9-d872507e1537",
+        "d305d008-1f1f-5748-981f-cadacbd2abdb",
+        "6e3abb42-f6ef-587e-d966-93380b6a7f99",
+        "3367e458-295a-5b1d-1a5e-3949cecbd0e1",
+        "2a0e8710-223d-56d0-48e9-99225ee40828",
+        "1824a01b-c5f4-59e5-6f8e-25ce4725cd52"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "Sprachliche Strukturen untersuchen und nutzen",
+      "rawText": "- untersuchen Wörter und Wendungen in ihrer Struktur und hinsichtlich ihrer Verwendungsbedingungen, ihrer Bedeutung und ihrer Beziehungen zu anderen Wörtern,\n- nutzen Wörter, Wendungen und Formulierungsmuster funktional und erweitern ihren Wortschatz,\n- nutzen grammatische Operationen und Fachbegriffe für die differenzierte Untersuchung sprachlicher Struktureinheiten,\n- untersuchen an ausgewählten Beispielen Satzstrukturen,\n- ermitteln an ausgewählten Beispielen den funktionalen Beitrag von Wörtern verschiedener Wortarten zum Aufbau von Sätzen,",
+      "sourceGoalIds": [
+        "3753cc86-acdf-5df6-a1ff-bb4d0fce2d8d",
+        "a29f7308-afa7-57ef-7dfc-252be974dc0a",
+        "c87f8eb8-9e13-59fa-34b9-51e71985a200",
+        "817c6823-08b8-5455-e5e7-99740849f156",
+        "38e6e9dc-c30f-5c62-a694-c85b391b0151"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "Texte und Gespräche",
+      "rawText": "- beschreiben und vergleichen / untersuchen vergleichend den Aufbau von Texten und / oder Gesprächen strukturell und funktional unter Anwendung von Fachbegriffen und ermitteln Gemeinsamkeiten und Unterschiede,\n- nutzen ihr Wissen zu sprachlichen Gestaltungsmitteln für die Beschreibung und Untersuchung von (auch literarischen) Texten, Reden, Gesprächen und Formen digitaler Kommunikation.\n- untersuchen Schreibweisen von Wörtern, Wortgruppen und Sätzen,\n- tauschen sich über die Schreibung von Wörtern und Sätzen, auch über orthografische Zweifelsfälle und die Interpunktion aus.\n- nutzen die Konventionen der gesprochenen Standardsprache weitgehend routiniert und situationsangemessen für die Gestaltung ihrer Äußerungen.",
+      "sourceGoalIds": [
+        "5fd31092-96f5-5119-5f98-632a04c0ec9b",
+        "86f6929b-128c-5c11-3798-d42a2fe0abd6",
+        "6f971ccb-4f09-50af-dcf2-1dbbbf9695fb",
+        "24fbd05b-9505-57aa-1b00-72c7ae1277ec",
+        "05cb12c7-324a-5d65-222e-518ac25de112"
+      ]
+    },
+    {
+      "id": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ressourcen-zur-deutschen-sprache",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "topicCode": "SH-SI-RESSOURCEN-ZUR-DEUTSCHEN-SPRACHE",
+      "title": "Ressourcen zur deutschen Sprache",
+      "rawText": "- nutzen Wörterbücher, Grammatiken, digitale Rechtschreibhilfen und Informationsangebote zum Deutschen für das Nachschlagen von Schreibungen, grammatischen Verwendungsweisen und Verwendungskontexten.",
+      "sourceGoalIds": [
+        "e04213f9-9c90-52db-992c-e8698d1bd4d3"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "0ea18004-0109-52dc-5438-04704752f359",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-zu-anderen-sprechen",
+      "topicCode": "SH-SI-ZU-ANDEREN-SPRECHEN",
+      "title": "äußern sich verständlich und situationsadäquat auch in der gesprochenen Standardsprache, verfügen über einen angemess...",
+      "description": "Die lernende Person kann äußern sich verständlich und situationsadäquat auch in der gesprochenen Standardsprache, verfügen über einen angemessenen Wortschatz, kommunizieren mit Blick auf Adressatinnen / Adressaten und Ziele situationsangemessen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Zu anderen sprechen",
+      "sourceText": "äußern sich verständlich und situationsadäquat auch in der gesprochenen Standardsprache, verfügen über einen angemessenen Wortschatz, kommunizieren mit Blick auf Adressatinnen / Adressaten und Ziele situationsangemessen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-zu-anderen-sprechen",
+        "label": "SH-SI-ZU-ANDEREN-SPRECHEN#1"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:zu-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Zu anderen sprechen"
+      }
+    },
+    {
+      "id": "74e46b0e-d87b-528e-7e57-538c1f50f894",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "können in vertrauten und unvertrauten Kommunikationssituationen Gesprächsprozesse verfolgen, verstehen und Inhalte fü...",
+      "description": "Die lernende Person kann können in vertrauten und unvertrauten Kommunikationssituationen Gesprächsprozesse verfolgen, verstehen und Inhalte für die Kommunikation nutzen, Verstehen und Nicht-Verstehen zum Ausdruck bringen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "können in vertrauten und unvertrauten Kommunikationssituationen Gesprächsprozesse verfolgen, verstehen und Inhalte für die Kommunikation nutzen, Verstehen und Nicht-Verstehen zum Ausdruck bringen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#2"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "3d751f88-006d-5739-fa10-88125117d6e5",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "hören in vertrauten und unvertrauten Situationen sinnverstehend zu",
+      "description": "Die lernende Person kann hören in vertrauten und unvertrauten Situationen sinnverstehend zu.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "hören in vertrauten und unvertrauten Situationen sinnverstehend zu,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#3"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "f3619bdf-de12-5810-2cf7-735db83874bf",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "geben Informationen wieder und ziehen einfache / im Ansatz auch komplexe Schlussfolgerungen",
+      "description": "Die lernende Person kann geben Informationen wieder und ziehen einfache / im Ansatz auch komplexe Schlussfolgerungen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "geben Informationen wieder und ziehen einfache / im Ansatz auch komplexe Schlussfolgerungen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#4"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "37fff610-744e-5ffc-4eaa-0e455f58dac8",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "erfassen dem Lernstand entsprechende (komplexere) Hörtexte, Gesprächsphasen oder Gespräche (z. B. zentrale Aussagen s...",
+      "description": "Die lernende Person kann erfassen dem Lernstand entsprechende (komplexere) Hörtexte, Gesprächsphasen oder Gespräche (z. B. zentrale Aussagen sowie Sprechund Gesprächsabsichten).",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "erfassen dem Lernstand entsprechende (komplexere) Hörtexte, Gesprächsphasen oder Gespräche (z. B. zentrale Aussagen sowie Sprechund Gesprächsabsichten),",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#5"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "76a61020-dd13-5b6c-10f9-ea04400d3a77",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "beurteilen auch komplexe Aussagen zum Gehörten begründet",
+      "description": "Die lernende Person kann beurteilen auch komplexe Aussagen zum Gehörten begründet.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "beurteilen auch komplexe Aussagen zum Gehörten begründet,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#6"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "b6485ec2-3e07-5de3-e834-93e59b4c8f6e",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+      "topicCode": "SH-SI-VERSTEHEND-ZUHOEREN",
+      "title": "zeigen Aufmerksamkeit für paraverbale und nonverbale Äußerungen",
+      "description": "Die lernende Person kann zeigen Aufmerksamkeit für paraverbale und nonverbale Äußerungen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Verstehend zuhören",
+      "sourceText": "zeigen Aufmerksamkeit für paraverbale und nonverbale Äußerungen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-verstehend-zuhoeren",
+        "label": "SH-SI-VERSTEHEND-ZUHOEREN#7"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:verstehend-zuhoeren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Verstehend zuhören"
+      }
+    },
+    {
+      "id": "1dca5be4-6b4a-57a3-c545-f334b0850e81",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "beteiligen sich in vertrauten und unvertrauten Gesprächssituationen mit verständlichen, zuhörerbezogenen, themenbezog...",
+      "description": "Die lernende Person kann beteiligen sich in vertrauten und unvertrauten Gesprächssituationen mit verständlichen, zuhörerbezogenen, themenbezogenen und konstruktiven Beiträgen / gestalten vertraute und unvertraute Gesprächssituationen verständlich, zuhörerbezogen, themenbezogen und konstruktiv.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "beteiligen sich in vertrauten und unvertrauten Gesprächssituationen mit verständlichen, zuhörerbezogenen, themenbezogenen und konstruktiven Beiträgen / gestalten vertraute und unvertraute Gesprächssituationen verständlich, zuhörerbezogen, themenbezogen und konstruktiv,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#8"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "73c033ba-b66b-5d80-b376-7af6b203049c",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "beachten gemeinsam entwickelte oder für öffentliche Kommunikation prototypische Gesprächsregeln; gestalten eine werts...",
+      "description": "Die lernende Person kann beachten gemeinsam entwickelte oder für öffentliche Kommunikation prototypische Gesprächsregeln; gestalten eine wertschätzende Gesprächsatmosphäre.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "beachten gemeinsam entwickelte oder für öffentliche Kommunikation prototypische Gesprächsregeln; gestalten eine wertschätzende Gesprächsatmosphäre,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#9"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "bc4abd9d-cca3-569b-2952-2c5a20843d23",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "formulieren in vertrauten und unvertrauten Situationen angemessen; gehen auf die Gesprächspartnerin bzw. den Gespräch...",
+      "description": "Die lernende Person kann formulieren in vertrauten und unvertrauten Situationen angemessen; gehen auf die Gesprächspartnerin bzw. den Gesprächspartner und die jeweilige Situation ein.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "formulieren in vertrauten und unvertrauten Situationen angemessen; gehen auf die Gesprächspartnerin bzw. den Gesprächspartner und die jeweilige Situation ein,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#10"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "23e880a4-71f7-5674-2c21-ac4a66cb9ae9",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "nehmen in Gesprächen verschiedene Rollen (z. B. Diskutantin bzw. Diskutant) / (z. B. Moderation) ein und richten dies...",
+      "description": "Die lernende Person kann nehmen in Gesprächen verschiedene Rollen (z. B. Diskutantin bzw. Diskutant) / (z. B. Moderation) ein und richten diese an den jeweiligen Zielen aus.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "nehmen in Gesprächen verschiedene Rollen (z. B. Diskutantin bzw. Diskutant) / (z. B. Moderation) ein und richten diese an den jeweiligen Zielen aus,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#11"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "fa3fa647-659e-58e5-14fb-5dd8de16da5c",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "praktizieren ausgewählte Gesprächsund Lernformen",
+      "description": "Die lernende Person kann praktizieren ausgewählte Gesprächsund Lernformen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "praktizieren ausgewählte Gesprächsund Lernformen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#12"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "94c265c7-1365-511c-ad16-dd48bd7f2b35",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+      "topicCode": "SH-SI-MIT-ANDEREN-SPRECHEN",
+      "title": "wenden allgemeine / ein Spektrum von allgemeinen und für Gesprächsund Lernformen spezifische Strategien an",
+      "description": "Die lernende Person kann wenden allgemeine / ein Spektrum von allgemeinen und für Gesprächsund Lernformen spezifische Strategien an.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Mit anderen sprechen",
+      "sourceText": "wenden allgemeine / ein Spektrum von allgemeinen und für Gesprächsund Lernformen spezifische Strategien an,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-mit-anderen-sprechen",
+        "label": "SH-SI-MIT-ANDEREN-SPRECHEN#13"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:mit-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Mit anderen sprechen"
+      }
+    },
+    {
+      "id": "6c88829c-63a0-58e2-588e-e2ab8a5a2b22",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+      "topicCode": "SH-SI-VOR-ANDEREN-SPRECHEN",
+      "title": "leisten längere, auch freie Beiträge adressatenorientiert",
+      "description": "Die lernende Person kann leisten längere, auch freie Beiträge adressatenorientiert.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Vor anderen sprechen",
+      "sourceText": "leisten längere, auch freie Beiträge adressatenorientiert,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+        "label": "SH-SI-VOR-ANDEREN-SPRECHEN#14"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:vor-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Vor anderen sprechen"
+      }
+    },
+    {
+      "id": "2853ee8d-7991-5c33-68a9-799e76d9094c",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+      "topicCode": "SH-SI-VOR-ANDEREN-SPRECHEN",
+      "title": "nutzen typische Werkzeuge für das Sprechen vor anderen",
+      "description": "Die lernende Person kann nutzen typische Werkzeuge für das Sprechen vor anderen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Vor anderen sprechen",
+      "sourceText": "nutzen typische Werkzeuge für das Sprechen vor anderen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+        "label": "SH-SI-VOR-ANDEREN-SPRECHEN#15"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:vor-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Vor anderen sprechen"
+      }
+    },
+    {
+      "id": "6bf39109-235e-5003-4b64-f9efd5e63a3d",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+      "topicCode": "SH-SI-VOR-ANDEREN-SPRECHEN",
+      "title": "planen, organisieren und gestalten typische Formen und Varianten des Präsentierens",
+      "description": "Die lernende Person kann planen, organisieren und gestalten typische Formen und Varianten des Präsentierens.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Vor anderen sprechen",
+      "sourceText": "planen, organisieren und gestalten typische Formen und Varianten des Präsentierens,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+        "label": "SH-SI-VOR-ANDEREN-SPRECHEN#16"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:vor-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Vor anderen sprechen"
+      }
+    },
+    {
+      "id": "fba1c17a-e51c-5814-d20d-56b9e248e52f",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+      "topicCode": "SH-SI-VOR-ANDEREN-SPRECHEN",
+      "title": "planen und gestalten Formen des szenischen Sprechens und Spielens",
+      "description": "Die lernende Person kann planen und gestalten Formen des szenischen Sprechens und Spielens.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Vor anderen sprechen",
+      "sourceText": "planen und gestalten Formen des szenischen Sprechens und Spielens.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-vor-anderen-sprechen",
+        "label": "SH-SI-VOR-ANDEREN-SPRECHEN#17"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:vor-anderen-sprechen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Vor anderen sprechen"
+      }
+    },
+    {
+      "id": "8d125386-a2ec-5f20-8173-8b8906e1e603",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-schreibfertigkeiten-verfuegen",
+      "topicCode": "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN",
+      "title": "schreiben Wörter, Wortgruppen und Sätze flüssig, d. h. schnell, sicher und korrekt (automatisiert) und formulieren ih...",
+      "description": "Die lernende Person kann schreiben Wörter, Wortgruppen und Sätze flüssig, d. h. schnell, sicher und korrekt (automatisiert) und formulieren ihre Gedanken weitgehend flüssig.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Über Schreibfertigkeiten verfügen",
+      "sourceText": "schreiben Wörter, Wortgruppen und Sätze flüssig, d. h. schnell, sicher und korrekt (automatisiert) und formulieren ihre Gedanken weitgehend flüssig,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-schreibfertigkeiten-verfuegen",
+        "label": "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN#18"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ueber-schreibfertigkeiten-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Über Schreibfertigkeiten verfügen"
+      }
+    },
+    {
+      "id": "ee8476d5-fa7e-5250-a1af-0e1f09489869",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-schreibfertigkeiten-verfuegen",
+      "topicCode": "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN",
+      "title": "schreiben Texte (handschriftlich leserlich und mithilfe digitaler Schreibwerkzeuge) in einem der Situation angemessen...",
+      "description": "Die lernende Person kann schreiben Texte (handschriftlich leserlich und mithilfe digitaler Schreibwerkzeuge) in einem der Situation angemessenen Tempo.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Über Schreibfertigkeiten verfügen",
+      "sourceText": "schreiben Texte (handschriftlich leserlich und mithilfe digitaler Schreibwerkzeuge) in einem der Situation angemessenen Tempo,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-schreibfertigkeiten-verfuegen",
+        "label": "SH-SI-UEBER-SCHREIBFERTIGKEITEN-VERFUEGEN#19"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ueber-schreibfertigkeiten-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Über Schreibfertigkeiten verfügen"
+      }
+    },
+    {
+      "id": "34ccba06-026f-531b-fa02-2751c6a08ff1",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "kennen wortund satzbezogene Rechtschreibstrategien und wenden diese sicher an:",
+      "description": "Die lernende Person kann kennen wortund satzbezogene Rechtschreibstrategien und wenden diese sicher an:.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "kennen wortund satzbezogene Rechtschreibstrategien und wenden diese sicher an:",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#20"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "5fd8740c-bad3-5584-41bf-ecf98a8d7491",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "vergleichen Schreibungen von Wörtern und Sätzen und sprechen über Gemeinsamkeiten und Unterschiede",
+      "description": "Die lernende Person kann vergleichen Schreibungen von Wörtern und Sätzen und sprechen über Gemeinsamkeiten und Unterschiede.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "vergleichen Schreibungen von Wörtern und Sätzen und sprechen über Gemeinsamkeiten und Unterschiede,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#21"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "eccc8d47-72cb-56ac-432d-fba2dfa0dd90",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "erschließen sich die Struktur von Kernwörtern, prägen sich Merkwörter ein",
+      "description": "Die lernende Person kann erschließen sich die Struktur von Kernwörtern, prägen sich Merkwörter ein.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "erschließen sich die Struktur von Kernwörtern, prägen sich Merkwörter ein,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#22"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "79f65190-77c0-5ae5-dba1-241377096e44",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "unterscheiden zwischen Kernwörtern und Fremdwörtern",
+      "description": "Die lernende Person kann unterscheiden zwischen Kernwörtern und Fremdwörtern.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "unterscheiden zwischen Kernwörtern und Fremdwörtern,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#23"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "7295a36b-0891-57d9-218a-6a8d8e06ca31",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "schreiben Kernwörter richtig (Inhaltsund Funktionswörter)",
+      "description": "Die lernende Person kann schreiben Kernwörter richtig (Inhaltsund Funktionswörter).",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "schreiben Kernwörter richtig (Inhaltsund Funktionswörter),",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#24"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "3f5c9c49-7c24-587b-7217-0fc4aa6c5017",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "schreiben häufige Wörter, auch häufige Fachbegriffe und Fremdwörter / auch wichtige Fachbegriffe und Fremdwörter richtig",
+      "description": "Die lernende Person kann schreiben häufige Wörter, auch häufige Fachbegriffe und Fremdwörter / auch wichtige Fachbegriffe und Fremdwörter richtig.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "schreiben häufige Wörter, auch häufige Fachbegriffe und Fremdwörter / auch wichtige Fachbegriffe und Fremdwörter richtig,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#25"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "6b02f527-5dd7-5744-5a67-a8c07d71e7b4",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "schreiben Satzanfänge, Eigennamen und prototypische Kerne Strategien zur Bestimmung der Kerne von Nominalvon Nominalg...",
+      "description": "Die lernende Person kann schreiben Satzanfänge, Eigennamen und prototypische Kerne Strategien zur Bestimmung der Kerne von Nominalvon Nominalgruppen / Kerne von Nominalgruppen groß.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "schreiben Satzanfänge, Eigennamen und prototypische Kerne Strategien zur Bestimmung der Kerne von Nominalvon Nominalgruppen / Kerne von Nominalgruppen groß",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#26"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "f4876b24-64de-51eb-bb64-2a035addb7e1",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "kennen und nutzen die Interpunktionszeichen",
+      "description": "Die lernende Person kann kennen und nutzen die Interpunktionszeichen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "kennen und nutzen die Interpunktionszeichen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#27"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "429dcb56-858f-53fa-4638-dcd27da42030",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "verfügen über Fehleraufmerksamkeit und nutzen Strategien zur Klärung orthografischer Fragen",
+      "description": "Die lernende Person kann verfügen über Fehleraufmerksamkeit und nutzen Strategien zur Klärung orthografischer Fragen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "verfügen über Fehleraufmerksamkeit und nutzen Strategien zur Klärung orthografischer Fragen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#28"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "f6b51630-54d7-5d28-e513-a13ecafe65b6",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "nutzen Rechtschreibhilfen",
+      "description": "Die lernende Person kann nutzen Rechtschreibhilfen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "nutzen Rechtschreibhilfen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#29"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "e4ced89d-9fe4-532f-20e8-95b74c1f556b",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+      "topicCode": "SH-SI-ORTHOGRAFISCH-SCHREIBEN",
+      "title": "überprüfen und korrigieren Texte auf orthografische Richtigkeit",
+      "description": "Die lernende Person kann überprüfen und korrigieren Texte auf orthografische Richtigkeit.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Orthografisch schreiben",
+      "sourceText": "überprüfen und korrigieren Texte auf orthografische Richtigkeit.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-orthografisch-schreiben",
+        "label": "SH-SI-ORTHOGRAFISCH-SCHREIBEN#30"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:orthografisch-schreiben",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Orthografisch schreiben"
+      }
+    },
+    {
+      "id": "5fb9a85f-948e-5838-b5fe-2a691daf044c",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "sammeln Ideen, ordnen Informationen und fertigen eine Gliederung an",
+      "description": "Die lernende Person kann sammeln Ideen, ordnen Informationen und fertigen eine Gliederung an.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "sammeln Ideen, ordnen Informationen und fertigen eine Gliederung an,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#31"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "0666f297-0bb2-5471-9a57-edc57286a657",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "sammeln vielfältige sprachliche und gestalterische Mittel",
+      "description": "Die lernende Person kann sammeln vielfältige sprachliche und gestalterische Mittel.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "sammeln vielfältige sprachliche und gestalterische Mittel,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#32"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "93fe6289-c32e-511d-2168-95c593f64978",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "stellen Überlegungen zu den Adressatinnen / Adressaten (unbekannt, verschiedene, abstrakt), deren unterschiedlichem V...",
+      "description": "Die lernende Person kann stellen Überlegungen zu den Adressatinnen / Adressaten (unbekannt, verschiedene, abstrakt), deren unterschiedlichem Vorwissen und ihren Lesezielen an.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "stellen Überlegungen zu den Adressatinnen / Adressaten (unbekannt, verschiedene, abstrakt), deren unterschiedlichem Vorwissen und ihren Lesezielen an,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#33"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "48d410b5-5729-5568-5025-7433e0745481",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "klären entsprechend dem Schreibziel die Schreibabsicht, Schreibsituation und Textfunktion",
+      "description": "Die lernende Person kann klären entsprechend dem Schreibziel die Schreibabsicht, Schreibsituation und Textfunktion.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "klären entsprechend dem Schreibziel die Schreibabsicht, Schreibsituation und Textfunktion,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#34"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "1353d030-d40c-521b-aa45-1bb6e9318502",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "entwickeln gemäß der Schreibaufgabe und der Zeitvorgabe einen Schreibplan, entscheiden sich für die angemessene Texts...",
+      "description": "Die lernende Person kann entwickeln gemäß der Schreibaufgabe und der Zeitvorgabe einen Schreibplan, entscheiden sich für die angemessene Textsorte und konzipieren einen ziel-, adressatenund situationsbezogenen Text.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "entwickeln gemäß der Schreibaufgabe und der Zeitvorgabe einen Schreibplan, entscheiden sich für die angemessene Textsorte und konzipieren einen ziel-, adressatenund situationsbezogenen Text,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#35"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "aaa239b4-240e-5b73-21e9-74c5d0998659",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+      "topicCode": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN",
+      "title": "nutzen Informationsquellen unterschiedlicher Komplexität insbesondere Bibliotheken, Nachschlagewerke, Zeitungezielt u...",
+      "description": "Die lernende Person kann nutzen Informationsquellen unterschiedlicher Komplexität insbesondere Bibliotheken, Nachschlagewerke, Zeitungezielt und angemessen und reflektiert.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte planen und strukturieren",
+      "sourceText": "nutzen Informationsquellen unterschiedlicher Komplexität insbesondere Bibliotheken, Nachschlagewerke, Zeitungezielt und angemessen und reflektiert,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-planen-und-strukturieren",
+        "label": "SH-SI-TEXTE-PLANEN-UND-STRUKTURIEREN#36"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-planen-und-strukturieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte planen und strukturieren"
+      }
+    },
+    {
+      "id": "ea5273c6-d548-5a64-aa61-3f72cdb9d95a",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "formulieren Texte gedanklich geordnet, verständlich, kohärenzstiftend und strukturiert sowie sprachlich angemessen",
+      "description": "Die lernende Person kann formulieren Texte gedanklich geordnet, verständlich, kohärenzstiftend und strukturiert sowie sprachlich angemessen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "formulieren Texte gedanklich geordnet, verständlich, kohärenzstiftend und strukturiert sowie sprachlich angemessen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#37"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "e6757416-286d-526e-eb56-a5311d4de59b",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "abwechslungsreich und differenziert",
+      "description": "Die lernende Person kann abwechslungsreich und differenziert.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "abwechslungsreich und differenziert,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#38"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "0e857bf9-1e8a-53ad-bdb3-47055d0a502f",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "formulieren Texte auch für unbekannte und unterschiedlimit Textmustern arbeiten che und abstrakte Adressatinnen / Adr...",
+      "description": "Die lernende Person kann formulieren Texte auch für unbekannte und unterschiedlimit Textmustern arbeiten che und abstrakte Adressatinnen / Adressaten angemessen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "formulieren Texte auch für unbekannte und unterschiedlimit Textmustern arbeiten che und abstrakte Adressatinnen / Adressaten angemessen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#39"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "63ada5b9-d9bc-5988-b63a-0259918c5b27",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "realisieren sicher mit unterschiedlichen Textsorten / einem Spektrum unterschiedlicher Textsorten grundlegende und da...",
+      "description": "Die lernende Person kann realisieren sicher mit unterschiedlichen Textsorten / einem Spektrum unterschiedlicher Textsorten grundlegende und daraus sich entwickelnde komplexere kommunikative und personale und personalheuristische Schreibfunktionen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "realisieren sicher mit unterschiedlichen Textsorten / einem Spektrum unterschiedlicher Textsorten grundlegende und daraus sich entwickelnde komplexere kommunikative und personale und personalheuristische Schreibfunktionen.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#40"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "b63f3257-99ed-55a2-355b-30e701316b38",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "nutzen unterschiedliche Schreibformen",
+      "description": "Die lernende Person kann nutzen unterschiedliche Schreibformen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "nutzen unterschiedliche Schreibformen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#41"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "de4533c7-7606-5dbb-76a9-414c0e455990",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "kennen und nutzen die Möglichkeiten digitaler Schreibwerkzeuge zur Formulierung und (formalen) Gestaltung von Arrangi...",
+      "description": "Die lernende Person kann kennen und nutzen die Möglichkeiten digitaler Schreibwerkzeuge zur Formulierung und (formalen) Gestaltung von Arrangieren von Textbausteinen und Medienobjekten Texten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "kennen und nutzen die Möglichkeiten digitaler Schreibwerkzeuge zur Formulierung und (formalen) Gestaltung von Arrangieren von Textbausteinen und Medienobjekten Texten,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#42"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "e2cf3379-9937-5e33-afca-d6d7a03e6c9a",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "erstellen Schaubilder, Diagramme und Tabellen und integrieren diese sprachlich in den eigenen – auch digitalen – Text",
+      "description": "Die lernende Person kann erstellen Schaubilder, Diagramme und Tabellen und integrieren diese sprachlich in den eigenen – auch digitalen – Text.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "erstellen Schaubilder, Diagramme und Tabellen und integrieren diese sprachlich in den eigenen – auch digitalen – Text,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#43"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "c608615d-d7cc-5301-0af9-af353b95d0bc",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "nehmen Gedanken und deutlich markierte Positionen andeTextprozeduren (Textbausteine und Handlungen) rer in den eigene...",
+      "description": "Die lernende Person kann nehmen Gedanken und deutlich markierte Positionen andeTextprozeduren (Textbausteine und Handlungen) rer in den eigenen Text auf und positionieren sich zu ihnen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "nehmen Gedanken und deutlich markierte Positionen andeTextprozeduren (Textbausteine und Handlungen) rer in den eigenen Text auf und positionieren sich zu ihnen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#44"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "62d9a09f-c875-5f44-6d99-ce0fb95264b6",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "formulieren eigene Positionen und begründen diese",
+      "description": "Die lernende Person kann formulieren eigene Positionen und begründen diese.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "formulieren eigene Positionen und begründen diese,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#45"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "7a546dc7-3981-5e38-8119-d1f1138dd416",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "integrieren Textbelege und andere Quellen formal richtig in zitieren, paraphrasieren (z. B. indirekte Rede, umformude...",
+      "description": "Die lernende Person kann integrieren Textbelege und andere Quellen formal richtig in zitieren, paraphrasieren (z. B. indirekte Rede, umformuden eigenen Text.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "integrieren Textbelege und andere Quellen formal richtig in zitieren, paraphrasieren (z. B. indirekte Rede, umformuden eigenen Text,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#46"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "4ab50886-e895-588e-ee6e-dc743d11a78a",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+      "topicCode": "SH-SI-TEXTE-FORMULIEREN",
+      "title": "kennen Formulierungsstrategien und wenden diese (auch kooperativ) an. Sie reflektieren ihren Strategieeinsatz",
+      "description": "Die lernende Person kann kennen Formulierungsstrategien und wenden diese (auch kooperativ) an. Sie reflektieren ihren Strategieeinsatz.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte formulieren",
+      "sourceText": "kennen Formulierungsstrategien und wenden diese (auch kooperativ) an. Sie reflektieren ihren Strategieeinsatz.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-formulieren",
+        "label": "SH-SI-TEXTE-FORMULIEREN#47"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-formulieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte formulieren"
+      }
+    },
+    {
+      "id": "7bcfd5b4-87ed-5223-5359-2d5c8a9cc700",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-ueberarbeiten",
+      "topicCode": "SH-SI-TEXTE-UEBERARBEITEN",
+      "title": "erkennen anhand vorgegebener Kriterienkataloge den Überarbeitungsbedarf von Texten, überlegen Schritte zur Textüberar...",
+      "description": "Die lernende Person kann erkennen anhand vorgegebener Kriterienkataloge den Überarbeitungsbedarf von Texten, überlegen Schritte zur Textüberarbeitung und setzen diese um.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte überarbeiten",
+      "sourceText": "erkennen anhand vorgegebener Kriterienkataloge den Überarbeitungsbedarf von Texten, überlegen Schritte zur Textüberarbeitung und setzen diese um,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-ueberarbeiten",
+        "label": "SH-SI-TEXTE-UEBERARBEITEN#48"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-ueberarbeiten",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte überarbeiten"
+      }
+    },
+    {
+      "id": "477fa6a3-63f5-5ef6-9319-f3ad04dbffff",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+      "title": "nutzen die schriftsprachlichen Informationen beim Lesen",
+      "description": "Die lernende Person kann nutzen die schriftsprachlichen Informationen beim Lesen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefertigkeiten: Flüssig lesen",
+      "sourceText": "nutzen die schriftsprachlichen Informationen beim Lesen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+        "label": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN#49"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefertigkeiten-fluessig-lesen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefertigkeiten: Flüssig lesen"
+      }
+    },
+    {
+      "id": "9bb5961b-27ae-5ff7-c6eb-c7d0e233f451",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+      "title": "verfügen über eine sichere Worterkennung (bei selteneren Wörtern mit Selbstkorrektur)",
+      "description": "Die lernende Person kann verfügen über eine sichere Worterkennung (bei selteneren Wörtern mit Selbstkorrektur).",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefertigkeiten: Flüssig lesen",
+      "sourceText": "verfügen über eine sichere Worterkennung (bei selteneren Wörtern mit Selbstkorrektur),",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+        "label": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN#50"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefertigkeiten-fluessig-lesen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefertigkeiten: Flüssig lesen"
+      }
+    },
+    {
+      "id": "dc601dfe-28d0-5a4d-293f-7013afd95d37",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+      "title": "lesen komplexere Texte nach Vorbereitung sinngestaltend Vorlesen lyrischer Texte, erzählerischer Kurzformen, vor",
+      "description": "Die lernende Person kann lesen komplexere Texte nach Vorbereitung sinngestaltend Vorlesen lyrischer Texte, erzählerischer Kurzformen, vor.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefertigkeiten: Flüssig lesen",
+      "sourceText": "lesen komplexere Texte nach Vorbereitung sinngestaltend Vorlesen lyrischer Texte, erzählerischer Kurzformen, vor,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+        "label": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN#51"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefertigkeiten-fluessig-lesen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefertigkeiten: Flüssig lesen"
+      }
+    },
+    {
+      "id": "8899efbc-99b6-55d0-9149-a9a474178543",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN",
+      "title": "lesen in angemessenem Tempo",
+      "description": "Die lernende Person kann lesen in angemessenem Tempo.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefertigkeiten: Flüssig lesen",
+      "sourceText": "lesen in angemessenem Tempo.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-fluessig-lesen",
+        "label": "SH-SI-LESEFERTIGKEITEN-FLUESSIG-LESEN#52"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefertigkeiten-fluessig-lesen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefertigkeiten: Flüssig lesen"
+      }
+    },
+    {
+      "id": "6d14137e-b827-5fbe-9b01-f80ee8220eef",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-ueber-lesetechniken-verfuegen",
+      "topicCode": "SH-SI-LESEFERTIGKEITEN-UEBER-LESETECHNIKEN-VERFUEGEN",
+      "title": "orientieren sich sicher in und zwischen Texten unterschiedlicher Komplexität und verschaffen sich auch mithilfe textu...",
+      "description": "Die lernende Person kann orientieren sich sicher in und zwischen Texten unterschiedlicher Komplexität und verschaffen sich auch mithilfe textueller Lesehilfen einen Überblick.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefertigkeiten: Über Lesetechniken verfügen",
+      "sourceText": "orientieren sich sicher in und zwischen Texten unterschiedlicher Komplexität und verschaffen sich auch mithilfe textueller Lesehilfen einen Überblick.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefertigkeiten-ueber-lesetechniken-verfuegen",
+        "label": "SH-SI-LESEFERTIGKEITEN-UEBER-LESETECHNIKEN-VERFUEGEN#53"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefertigkeiten-ueber-lesetechniken-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefertigkeiten: Über Lesetechniken verfügen"
+      }
+    },
+    {
+      "id": "dc475d0f-b9ee-51b4-c369-80cb6b5bdcb1",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefaehigkeiten-leseverstehen",
+      "topicCode": "SH-SI-LESEFAEHIGKEITEN-LESEVERSTEHEN",
+      "title": "ermitteln explizite oder durch einfaches Schließen zu gewinnende Textinformationen auf lokaler Ebene und beachten dab...",
+      "description": "Die lernende Person kann ermitteln explizite oder durch einfaches Schließen zu gewinnende Textinformationen auf lokaler Ebene und beachten dabei auch sprachliche Mittel zur Sicherung des Textzusammenhangs.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesefähigkeiten: Leseverstehen",
+      "sourceText": "ermitteln explizite oder durch einfaches Schließen zu gewinnende Textinformationen auf lokaler Ebene und beachten dabei auch sprachliche Mittel zur Sicherung des Textzusammenhangs,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesefaehigkeiten-leseverstehen",
+        "label": "SH-SI-LESEFAEHIGKEITEN-LESEVERSTEHEN#54"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesefaehigkeiten-leseverstehen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesefähigkeiten: Leseverstehen"
+      }
+    },
+    {
+      "id": "09364717-9095-5cc8-8b16-576abd75cf75",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+      "topicCode": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN",
+      "title": "bereiten das Lesen vor",
+      "description": "Die lernende Person kann bereiten das Lesen vor.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesestrategien zum Leseverstehen",
+      "sourceText": "bereiten das Lesen vor,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+        "label": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN#55"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesestrategien-zum-leseverstehen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesestrategien zum Leseverstehen"
+      }
+    },
+    {
+      "id": "c00420ce-64d2-5b65-2ce0-9872f08cd97b",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+      "topicCode": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN",
+      "title": "lesen Texte organisierend, elaborierend und reflektierend",
+      "description": "Die lernende Person kann lesen Texte organisierend, elaborierend und reflektierend.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesestrategien zum Leseverstehen",
+      "sourceText": "lesen Texte organisierend, elaborierend und reflektierend,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+        "label": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN#56"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesestrategien-zum-leseverstehen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesestrategien zum Leseverstehen"
+      }
+    },
+    {
+      "id": "809dad32-e805-53c4-aba9-65c4f25af279",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+      "topicCode": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN",
+      "title": "bereiten das Lesen nach",
+      "description": "Die lernende Person kann bereiten das Lesen nach.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Lesestrategien zum Leseverstehen",
+      "sourceText": "bereiten das Lesen nach.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-lesestrategien-zum-leseverstehen",
+        "label": "SH-SI-LESESTRATEGIEN-ZUM-LESEVERSTEHEN#57"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:lesestrategien-zum-leseverstehen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Lesestrategien zum Leseverstehen"
+      }
+    },
+    {
+      "id": "803aa45c-9dde-5a88-cffd-2e8ca9ba40a3",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+      "topicCode": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN",
+      "title": "kennen Werke bedeutender Autorinnen und Autoren und berichten über ausgewählte Texte und ihre Leseerfahrungen / und s...",
+      "description": "Die lernende Person kann kennen Werke bedeutender Autorinnen und Autoren und berichten über ausgewählte Texte und ihre Leseerfahrungen / und setzen sich mit den Texten und ihren Leseerfahrungen auseinander.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Über Textwissen verfügen",
+      "sourceText": "kennen Werke bedeutender Autorinnen und Autoren und berichten über ausgewählte Texte und ihre Leseerfahrungen / und setzen sich mit den Texten und ihren Leseerfahrungen auseinander",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+        "label": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN#58"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ueber-textwissen-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Über Textwissen verfügen"
+      }
+    },
+    {
+      "id": "d1435ce9-77da-52bf-7b0e-1d4515335370",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+      "topicCode": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN",
+      "title": "unterscheiden epische, lyrische und dramatische Texte, insbesondere epische Kleinformen",
+      "description": "Die lernende Person kann unterscheiden epische, lyrische und dramatische Texte, insbesondere epische Kleinformen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Über Textwissen verfügen",
+      "sourceText": "unterscheiden epische, lyrische und dramatische Texte, insbesondere epische Kleinformen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+        "label": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN#59"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ueber-textwissen-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Über Textwissen verfügen"
+      }
+    },
+    {
+      "id": "03ce456f-1178-5a61-da27-7e7dfba5ec50",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+      "topicCode": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN",
+      "title": "kennen Merkmale medialer und szenischer Gestaltung und beschreiben an ausgewählten Beispielen ihre Wirkung",
+      "description": "Die lernende Person kann kennen Merkmale medialer und szenischer Gestaltung und beschreiben an ausgewählten Beispielen ihre Wirkung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Über Textwissen verfügen",
+      "sourceText": "kennen Merkmale medialer und szenischer Gestaltung und beschreiben an ausgewählten Beispielen ihre Wirkung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ueber-textwissen-verfuegen",
+        "label": "SH-SI-UEBER-TEXTWISSEN-VERFUEGEN#60"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ueber-textwissen-verfuegen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Über Textwissen verfügen"
+      }
+    },
+    {
+      "id": "66844a47-6aec-5931-4554-44ed772b02fc",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sich-im-medienangebot-orientieren",
+      "topicCode": "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN",
+      "title": "nutzen unterschiedliche Informationsangebote und Recherchemöglichkeiten",
+      "description": "Die lernende Person kann nutzen unterschiedliche Informationsangebote und Recherchemöglichkeiten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sich im Medienangebot orientieren",
+      "sourceText": "nutzen unterschiedliche Informationsangebote und Recherchemöglichkeiten,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sich-im-medienangebot-orientieren",
+        "label": "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN#61"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sich-im-medienangebot-orientieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sich im Medienangebot orientieren"
+      }
+    },
+    {
+      "id": "c588e04f-1700-5d2e-fc79-4867fb088231",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sich-im-medienangebot-orientieren",
+      "topicCode": "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN",
+      "title": "bewerten Rechercheergebnisse (insbes. Internet) im Hinblick auf ihre thematische Relevanz und Verlässlichkeit",
+      "description": "Die lernende Person kann bewerten Rechercheergebnisse (insbes. Internet) im Hinblick auf ihre thematische Relevanz und Verlässlichkeit.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sich im Medienangebot orientieren",
+      "sourceText": "bewerten Rechercheergebnisse (insbes. Internet) im Hinblick auf ihre thematische Relevanz und Verlässlichkeit.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sich-im-medienangebot-orientieren",
+        "label": "SH-SI-SICH-IM-MEDIENANGEBOT-ORIENTIEREN#62"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sich-im-medienangebot-orientieren",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sich im Medienangebot orientieren"
+      }
+    },
+    {
+      "id": "9b5077ed-bef2-5e97-c18d-35fe6080ebb4",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "nutzen zentrale / implizite und explizite Informationen zum zu Figuren und Figurenkonstellationen, zu Raumund Aufbau...",
+      "description": "Die lernende Person kann nutzen zentrale / implizite und explizite Informationen zum zu Figuren und Figurenkonstellationen, zu Raumund Aufbau von Textverständnis und -deutung / zur Entwicklung einer differenzierten Deutung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "nutzen zentrale / implizite und explizite Informationen zum zu Figuren und Figurenkonstellationen, zu Raumund Aufbau von Textverständnis und -deutung / zur Entwicklung einer differenzierten Deutung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#63"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "4f6d732b-b70a-5fb9-4c7c-c36ee76ba7ec",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "nutzen wichtige Fachbegriffe bei der Erschließung von epischen, dramatischen, lyrischen Texten, auch Filmen",
+      "description": "Die lernende Person kann nutzen wichtige Fachbegriffe bei der Erschließung von epischen, dramatischen, lyrischen Texten, auch Filmen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "nutzen wichtige Fachbegriffe bei der Erschließung von epischen, dramatischen, lyrischen Texten, auch Filmen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#64"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "710e72e3-4d46-5f23-c0d9-b3ead64d8cd4",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "formulieren eigene Deutungen von Texten und belegen diese",
+      "description": "Die lernende Person kann formulieren eigene Deutungen von Texten und belegen diese.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "formulieren eigene Deutungen von Texten und belegen diese,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#65"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "9678567d-c89d-5ffb-a653-64b810a365cb",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "formulieren Wertungen von Texten und begründen sie differenziert",
+      "description": "Die lernende Person kann formulieren Wertungen von Texten und begründen sie differenziert.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "formulieren Wertungen von Texten und begründen sie differenziert,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#66"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "53b7e502-6f7a-5406-de15-74fbc7666d7c",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "vergleichen Texte im Hinblick auf Themen und Gestaltung und nehmen begründete Wertungen vor, stellen Bezüge zwischen...",
+      "description": "Die lernende Person kann vergleichen Texte im Hinblick auf Themen und Gestaltung und nehmen begründete Wertungen vor, stellen Bezüge zwischen literarischen Texten, Medien und deren Motiven her und nutzen Vergleiche für die Deutung und Wertung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "vergleichen Texte im Hinblick auf Themen und Gestaltung und nehmen begründete Wertungen vor, stellen Bezüge zwischen literarischen Texten, Medien und deren Motiven her und nutzen Vergleiche für die Deutung und Wertung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#67"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "800d2de1-59f0-5ac1-5f54-b38b68ef2687",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "vergleichen Handlungen und Handlungsmotive von Figuren anhand ausgewählter Kriterien mit vertrauten Handlungen und Ha...",
+      "description": "Die lernende Person kann vergleichen Handlungen und Handlungsmotive von Figuren anhand ausgewählter Kriterien mit vertrauten Handlungen und Handlungsmotiven und nehmen begründete Wertungen vor.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "vergleichen Handlungen und Handlungsmotive von Figuren anhand ausgewählter Kriterien mit vertrauten Handlungen und Handlungsmotiven und nehmen begründete Wertungen vor,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#68"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "dee09270-92da-591c-127b-b0439919b135",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "überprüfen eigene Annahmen zu Textaussagen und vorgegebene Deutungsthesen, überprüfen eigene und fremde Deutungsthese...",
+      "description": "Die lernende Person kann überprüfen eigene Annahmen zu Textaussagen und vorgegebene Deutungsthesen, überprüfen eigene und fremde Deutungsthesen, erweitern ggf. ihre Thesen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "überprüfen eigene Annahmen zu Textaussagen und vorgegebene Deutungsthesen, überprüfen eigene und fremde Deutungsthesen, erweitern ggf. ihre Thesen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#69"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "4fe2f401-b548-5f9a-2204-4c62ba4300e8",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "setzen ermittelte Aussagen und Deutungen kritisch zu eigenen Wertvorstellungen, Welt- und Selbstkonzepten sowie liter...",
+      "description": "Die lernende Person kann setzen ermittelte Aussagen und Deutungen kritisch zu eigenen Wertvorstellungen, Welt- und Selbstkonzepten sowie literarturgeschichtlichen Kontexten in Beziehung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "setzen ermittelte Aussagen und Deutungen kritisch zu eigenen Wertvorstellungen, Welt- und Selbstkonzepten sowie literarturgeschichtlichen Kontexten in Beziehung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#70"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "141a022a-e9ac-5cd1-fbe3-753a24fec64d",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "erschließen aus einem oder mehreren klar strukturierten Texten unterschiedlicher Komplexität zielgerichtet relevante...",
+      "description": "Die lernende Person kann erschließen aus einem oder mehreren klar strukturierten Texten unterschiedlicher Komplexität zielgerichtet relevante Informationen, ordnen, selegieren und vergleichen diese und prüfen ihren Sachgehalt.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "erschließen aus einem oder mehreren klar strukturierten Texten unterschiedlicher Komplexität zielgerichtet relevante Informationen, ordnen, selegieren und vergleichen diese und prüfen ihren Sachgehalt,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#71"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "fb0548ed-5d6a-5487-e252-1d69e9611494",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "werten auch komplexere nichtlineare und multimodale Texte (Text-Bild-Bezüge) zielorientiert aus, z. B. um über ein Th...",
+      "description": "Die lernende Person kann werten auch komplexere nichtlineare und multimodale Texte (Text-Bild-Bezüge) zielorientiert aus, z. B. um über ein Thema zu sprechen oder zu schreiben.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "werten auch komplexere nichtlineare und multimodale Texte (Text-Bild-Bezüge) zielorientiert aus, z. B. um über ein Thema zu sprechen oder zu schreiben,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#72"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "73e51bf5-275a-550b-68d2-01ba06e9a98d",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "unterscheiden Information und Wertung in Texten",
+      "description": "Die lernende Person kann unterscheiden Information und Wertung in Texten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "unterscheiden Information und Wertung in Texten,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#73"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "297e6dec-7901-540c-3dd4-62f2c4b320ab",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "unterscheiden informierende, erzählende und appellierende Elemente in Texten",
+      "description": "Die lernende Person kann unterscheiden informierende, erzählende und appellierende Elemente in Texten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "unterscheiden informierende, erzählende und appellierende Elemente in Texten,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#74"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "2d4e0364-0bc4-5486-3d33-d9e94c21f5b7",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "stellen an ausgewählten Beispielen Zusammenhänge zwischen Intentionen, Textmerkmalen, sprachlichen Gestaltungsmitteln...",
+      "description": "Die lernende Person kann stellen an ausgewählten Beispielen Zusammenhänge zwischen Intentionen, Textmerkmalen, sprachlichen Gestaltungsmitteln und Wirkungen her.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "stellen an ausgewählten Beispielen Zusammenhänge zwischen Intentionen, Textmerkmalen, sprachlichen Gestaltungsmitteln und Wirkungen her,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#75"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "33edea4c-376d-5066-0355-23a9c6700b1e",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "beziehen an ausgewählten Beispielen Textaussagen auf eigene Welt- und Wertvorstellungen und überprüfen diese",
+      "description": "Die lernende Person kann beziehen an ausgewählten Beispielen Textaussagen auf eigene Welt- und Wertvorstellungen und überprüfen diese.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "beziehen an ausgewählten Beispielen Textaussagen auf eigene Welt- und Wertvorstellungen und überprüfen diese,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#76"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "d72311a5-bc1e-59da-842e-bac0eedbc160",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+      "topicCode": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN",
+      "title": "ermitteln an ausgewählten Beispielen die Wirkungsabsichten von Texten unterschiedlicher Komplexität und beurteilen diese",
+      "description": "Die lernende Person kann ermitteln an ausgewählten Beispielen die Wirkungsabsichten von Texten unterschiedlicher Komplexität und beurteilen diese.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und andere Medien erschließen und nutzen",
+      "sourceText": "ermitteln an ausgewählten Beispielen die Wirkungsabsichten von Texten unterschiedlicher Komplexität und beurteilen diese.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-andere-medien-erschliessen-und-nutzen",
+        "label": "SH-SI-TEXTE-UND-ANDERE-MEDIEN-ERSCHLIESSEN-UND-NUTZEN#77"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-andere-medien-erschliessen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und andere Medien erschließen und nutzen"
+      }
+    },
+    {
+      "id": "040f20f9-adc0-53f6-4f66-ff6af1e75cc2",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "kennen medienspezifische Gestaltungsmittel und beschreiben an ausgewählten Beispielen ihre Wirkung",
+      "description": "Die lernende Person kann kennen medienspezifische Gestaltungsmittel und beschreiben an ausgewählten Beispielen ihre Wirkung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Digitale Formate und Umgebungen",
+      "sourceText": "kennen medienspezifische Gestaltungsmittel und beschreiben an ausgewählten Beispielen ihre Wirkung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+        "label": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN#78"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:digitale-formate-und-umgebungen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Digitale Formate und Umgebungen"
+      }
+    },
+    {
+      "id": "1a00ddba-f60d-5ae8-c955-3768c3786f81",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "unterscheiden digitale Angebote in Bezug auf ihre Funktiu. a. informierend, unterhaltend, appellierend on und Wirkung",
+      "description": "Die lernende Person kann unterscheiden digitale Angebote in Bezug auf ihre Funktiu. a. informierend, unterhaltend, appellierend on und Wirkung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Digitale Formate und Umgebungen",
+      "sourceText": "unterscheiden digitale Angebote in Bezug auf ihre Funktiu. a. informierend, unterhaltend, appellierend on und Wirkung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+        "label": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN#79"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:digitale-formate-und-umgebungen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Digitale Formate und Umgebungen"
+      }
+    },
+    {
+      "id": "1f7f599f-830f-519d-f323-1769313d8c17",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "unterscheiden Nutzungsformen digitaler Formate und Umgebungen und stellen Zusammenhänge zwischen Intentionen, Gestalt...",
+      "description": "Die lernende Person kann unterscheiden Nutzungsformen digitaler Formate und Umgebungen und stellen Zusammenhänge zwischen Intentionen, Gestaltung und Wirkung her.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Digitale Formate und Umgebungen",
+      "sourceText": "unterscheiden Nutzungsformen digitaler Formate und Umgebungen und stellen Zusammenhänge zwischen Intentionen, Gestaltung und Wirkung her,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+        "label": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN#80"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:digitale-formate-und-umgebungen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Digitale Formate und Umgebungen"
+      }
+    },
+    {
+      "id": "fb2640d7-8cb3-5b38-237a-67b18570ae9b",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "untersuchen am Beispiel den Zusammenhang von digitalen Nutzerprofilen, Algorithmen, Gestaltung und Wirkung digitaler...",
+      "description": "Die lernende Person kann untersuchen am Beispiel den Zusammenhang von digitalen Nutzerprofilen, Algorithmen, Gestaltung und Wirkung digitaler Angebote und bewerten ihn / und nehmen kritisch Stellung.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Digitale Formate und Umgebungen",
+      "sourceText": "untersuchen am Beispiel den Zusammenhang von digitalen Nutzerprofilen, Algorithmen, Gestaltung und Wirkung digitaler Angebote und bewerten ihn / und nehmen kritisch Stellung,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+        "label": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN#81"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:digitale-formate-und-umgebungen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Digitale Formate und Umgebungen"
+      }
+    },
+    {
+      "id": "ba23d173-2e06-5ef4-06a1-0b5a3b750979",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+      "topicCode": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN",
+      "title": "nutzen digitale Werkzeuge zielgerichtet und reflektiert für z. B. für Präsentationen die Gestaltung eigener medialer...",
+      "description": "Die lernende Person kann nutzen digitale Werkzeuge zielgerichtet und reflektiert für z. B. für Präsentationen die Gestaltung eigener medialer Produkte.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Digitale Formate und Umgebungen",
+      "sourceText": "nutzen digitale Werkzeuge zielgerichtet und reflektiert für z. B. für Präsentationen die Gestaltung eigener medialer Produkte.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-digitale-formate-und-umgebungen",
+        "label": "SH-SI-DIGITALE-FORMATE-UND-UMGEBUNGEN#82"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:digitale-formate-und-umgebungen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Digitale Formate und Umgebungen"
+      }
+    },
+    {
+      "id": "0e0654af-f22e-5976-3610-724cd5a2dffe",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "kennen Grundbedingungen gelingender Kommunikation und Sprachfunktionen unterscheiden die Handlungs-, Inhaltsund Bezie...",
+      "description": "Die lernende Person kann kennen Grundbedingungen gelingender Kommunikation und Sprachfunktionen unterscheiden die Handlungs-, Inhaltsund Beziehungsebene.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "kennen Grundbedingungen gelingender Kommunikation und Sprachfunktionen unterscheiden die Handlungs-, Inhaltsund Beziehungsebene,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#83"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "a7747f88-8308-5f84-10d9-d872507e1537",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "unterscheiden beim Sprachhandeln die Handlungs-, Inhaltsund Beziehungsebene und untersuchen deren Zusammenwirken in B...",
+      "description": "Die lernende Person kann unterscheiden beim Sprachhandeln die Handlungs-, Inhaltsund Beziehungsebene und untersuchen deren Zusammenwirken in Bezug auf gelingende vs. misslingende Kommunikation, öffentliche vs. private Kommunikationssituationen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "unterscheiden beim Sprachhandeln die Handlungs-, Inhaltsund Beziehungsebene und untersuchen deren Zusammenwirken in Bezug auf gelingende vs. misslingende Kommunikation, öffentliche vs. private Kommunikationssituationen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#84"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "d305d008-1f1f-5748-981f-cadacbd2abdb",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "untersuchen monologische und interaktionale Formen des Sprechens und des Schreibens hinsichtlich ihrer Struktur und O...",
+      "description": "Die lernende Person kann untersuchen monologische und interaktionale Formen des Sprechens und des Schreibens hinsichtlich ihrer Struktur und Organisation (ausgewählte Aspekte).",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "untersuchen monologische und interaktionale Formen des Sprechens und des Schreibens hinsichtlich ihrer Struktur und Organisation (ausgewählte Aspekte),",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#85"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "6e3abb42-f6ef-587e-d966-93380b6a7f99",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "untersuchen die Anforderungen an die Rollen von Sprecherin / Sprecher / Schreiberin / Schreiber – Hörerin / Hörer / L...",
+      "description": "Die lernende Person kann untersuchen die Anforderungen an die Rollen von Sprecherin / Sprecher / Schreiberin / Schreiber – Hörerin / Hörer / Leserin / Leser im Hinblick auf gelingende Kommunikation und werden diesen im eigenen sprachlichen Handeln gerecht.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "untersuchen die Anforderungen an die Rollen von Sprecherin / Sprecher / Schreiberin / Schreiber – Hörerin / Hörer / Leserin / Leser im Hinblick auf gelingende Kommunikation und werden diesen im eigenen sprachlichen Handeln gerecht,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#86"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "3367e458-295a-5b1d-1a5e-3949cecbd0e1",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "unterscheiden an ausgewählten Beispielen grundlegende Textfunktionen und nutzen ihr Wissen über Textfunktionen reflek...",
+      "description": "Die lernende Person kann unterscheiden an ausgewählten Beispielen grundlegende Textfunktionen und nutzen ihr Wissen über Textfunktionen reflektiert für das eigene Schreiben und für die Erschließung von Texten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "unterscheiden an ausgewählten Beispielen grundlegende Textfunktionen und nutzen ihr Wissen über Textfunktionen reflektiert für das eigene Schreiben und für die Erschließung von Texten.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#87"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "2a0e8710-223d-56d0-48e9-99225ee40828",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "Ausprägungen und Bedingungen sprachlicher Variation und Vielfalt",
+      "description": "Die lernende Person kann ausprägungen und Bedingungen sprachlicher Variation und Vielfalt.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "Ausprägungen und Bedingungen sprachlicher Variation und Vielfalt",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#88"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "1824a01b-c5f4-59e5-6f8e-25ce4725cd52",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+      "topicCode": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS",
+      "title": "unterscheiden angeleitet und an ausgewählten Beispielen Ausprägungen von Sprache und Sprachvariation und reflektieren...",
+      "description": "Die lernende Person kann unterscheiden angeleitet und an ausgewählten Beispielen Ausprägungen von Sprache und Sprachvariation und reflektieren Verwendungsweisen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Verständigung als Form des Handelns",
+      "sourceText": "unterscheiden angeleitet und an ausgewählten Beispielen Ausprägungen von Sprache und Sprachvariation und reflektieren Verwendungsweisen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-verstaendigung-als-form-des-handelns",
+        "label": "SH-SI-SPRACHLICHE-VERSTAENDIGUNG-ALS-FORM-DES-HANDELNS#89"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-verstaendigung-als-form-des-handelns",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Verständigung als Form des Handelns"
+      }
+    },
+    {
+      "id": "3753cc86-acdf-5df6-a1ff-bb4d0fce2d8d",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "untersuchen Wörter und Wendungen in ihrer Struktur und hinsichtlich ihrer Verwendungsbedingungen, ihrer Bedeutung und...",
+      "description": "Die lernende Person kann untersuchen Wörter und Wendungen in ihrer Struktur und hinsichtlich ihrer Verwendungsbedingungen, ihrer Bedeutung und ihrer Beziehungen zu anderen Wörtern.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Strukturen untersuchen und nutzen",
+      "sourceText": "untersuchen Wörter und Wendungen in ihrer Struktur und hinsichtlich ihrer Verwendungsbedingungen, ihrer Bedeutung und ihrer Beziehungen zu anderen Wörtern,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+        "label": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN#90"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-strukturen-untersuchen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Strukturen untersuchen und nutzen"
+      }
+    },
+    {
+      "id": "a29f7308-afa7-57ef-7dfc-252be974dc0a",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "nutzen Wörter, Wendungen und Formulierungsmuster funktional und erweitern ihren Wortschatz",
+      "description": "Die lernende Person kann nutzen Wörter, Wendungen und Formulierungsmuster funktional und erweitern ihren Wortschatz.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Strukturen untersuchen und nutzen",
+      "sourceText": "nutzen Wörter, Wendungen und Formulierungsmuster funktional und erweitern ihren Wortschatz,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+        "label": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN#91"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-strukturen-untersuchen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Strukturen untersuchen und nutzen"
+      }
+    },
+    {
+      "id": "c87f8eb8-9e13-59fa-34b9-51e71985a200",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "nutzen grammatische Operationen und Fachbegriffe für die differenzierte Untersuchung sprachlicher Struktureinheiten",
+      "description": "Die lernende Person kann nutzen grammatische Operationen und Fachbegriffe für die differenzierte Untersuchung sprachlicher Struktureinheiten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Strukturen untersuchen und nutzen",
+      "sourceText": "nutzen grammatische Operationen und Fachbegriffe für die differenzierte Untersuchung sprachlicher Struktureinheiten,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+        "label": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN#92"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-strukturen-untersuchen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Strukturen untersuchen und nutzen"
+      }
+    },
+    {
+      "id": "817c6823-08b8-5455-e5e7-99740849f156",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "untersuchen an ausgewählten Beispielen Satzstrukturen",
+      "description": "Die lernende Person kann untersuchen an ausgewählten Beispielen Satzstrukturen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Strukturen untersuchen und nutzen",
+      "sourceText": "untersuchen an ausgewählten Beispielen Satzstrukturen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+        "label": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN#93"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-strukturen-untersuchen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Strukturen untersuchen und nutzen"
+      }
+    },
+    {
+      "id": "38e6e9dc-c30f-5c62-a694-c85b391b0151",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+      "topicCode": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN",
+      "title": "ermitteln an ausgewählten Beispielen den funktionalen Beitrag von Wörtern verschiedener Wortarten zum Aufbau von Sätzen",
+      "description": "Die lernende Person kann ermitteln an ausgewählten Beispielen den funktionalen Beitrag von Wörtern verschiedener Wortarten zum Aufbau von Sätzen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Sprachliche Strukturen untersuchen und nutzen",
+      "sourceText": "ermitteln an ausgewählten Beispielen den funktionalen Beitrag von Wörtern verschiedener Wortarten zum Aufbau von Sätzen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-sprachliche-strukturen-untersuchen-und-nutzen",
+        "label": "SH-SI-SPRACHLICHE-STRUKTUREN-UNTERSUCHEN-UND-NUTZEN#94"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:sprachliche-strukturen-untersuchen-und-nutzen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Sprachliche Strukturen untersuchen und nutzen"
+      }
+    },
+    {
+      "id": "5fd31092-96f5-5119-5f98-632a04c0ec9b",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "beschreiben und vergleichen / untersuchen vergleichend den Aufbau von Texten und / oder Gesprächen strukturell und fu...",
+      "description": "Die lernende Person kann beschreiben und vergleichen / untersuchen vergleichend den Aufbau von Texten und / oder Gesprächen strukturell und funktional unter Anwendung von Fachbegriffen und ermitteln Gemeinsamkeiten und Unterschiede.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und Gespräche",
+      "sourceText": "beschreiben und vergleichen / untersuchen vergleichend den Aufbau von Texten und / oder Gesprächen strukturell und funktional unter Anwendung von Fachbegriffen und ermitteln Gemeinsamkeiten und Unterschiede,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+        "label": "SH-SI-TEXTE-UND-GESPRAECHE#95"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-gespraeche",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und Gespräche"
+      }
+    },
+    {
+      "id": "86f6929b-128c-5c11-3798-d42a2fe0abd6",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "nutzen ihr Wissen zu sprachlichen Gestaltungsmitteln für die Beschreibung und Untersuchung von (auch literarischen) T...",
+      "description": "Die lernende Person kann nutzen ihr Wissen zu sprachlichen Gestaltungsmitteln für die Beschreibung und Untersuchung von (auch literarischen) Texten, Reden, Gesprächen und Formen digitaler Kommunikation.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und Gespräche",
+      "sourceText": "nutzen ihr Wissen zu sprachlichen Gestaltungsmitteln für die Beschreibung und Untersuchung von (auch literarischen) Texten, Reden, Gesprächen und Formen digitaler Kommunikation.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+        "label": "SH-SI-TEXTE-UND-GESPRAECHE#96"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-gespraeche",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und Gespräche"
+      }
+    },
+    {
+      "id": "6f971ccb-4f09-50af-dcf2-1dbbbf9695fb",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "untersuchen Schreibweisen von Wörtern, Wortgruppen und Sätzen",
+      "description": "Die lernende Person kann untersuchen Schreibweisen von Wörtern, Wortgruppen und Sätzen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und Gespräche",
+      "sourceText": "untersuchen Schreibweisen von Wörtern, Wortgruppen und Sätzen,",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+        "label": "SH-SI-TEXTE-UND-GESPRAECHE#97"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-gespraeche",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und Gespräche"
+      }
+    },
+    {
+      "id": "24fbd05b-9505-57aa-1b00-72c7ae1277ec",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "tauschen sich über die Schreibung von Wörtern und Sätzen, auch über orthografische Zweifelsfälle und die Interpunktio...",
+      "description": "Die lernende Person kann tauschen sich über die Schreibung von Wörtern und Sätzen, auch über orthografische Zweifelsfälle und die Interpunktion aus.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und Gespräche",
+      "sourceText": "tauschen sich über die Schreibung von Wörtern und Sätzen, auch über orthografische Zweifelsfälle und die Interpunktion aus.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+        "label": "SH-SI-TEXTE-UND-GESPRAECHE#98"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-gespraeche",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und Gespräche"
+      }
+    },
+    {
+      "id": "05cb12c7-324a-5d65-222e-518ac25de112",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+      "topicCode": "SH-SI-TEXTE-UND-GESPRAECHE",
+      "title": "nutzen die Konventionen der gesprochenen Standardsprache weitgehend routiniert und situationsangemessen für die Gesta...",
+      "description": "Die lernende Person kann nutzen die Konventionen der gesprochenen Standardsprache weitgehend routiniert und situationsangemessen für die Gestaltung ihrer Äußerungen.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Texte und Gespräche",
+      "sourceText": "nutzen die Konventionen der gesprochenen Standardsprache weitgehend routiniert und situationsangemessen für die Gestaltung ihrer Äußerungen.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-texte-und-gespraeche",
+        "label": "SH-SI-TEXTE-UND-GESPRAECHE#99"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:texte-und-gespraeche",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Texte und Gespräche"
+      }
+    },
+    {
+      "id": "e04213f9-9c90-52db-992c-e8698d1bd4d3",
+      "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ressourcen-zur-deutschen-sprache",
+      "topicCode": "SH-SI-RESSOURCEN-ZUR-DEUTSCHEN-SPRACHE",
+      "title": "nutzen Wörterbücher, Grammatiken, digitale Rechtschreibhilfen und Informationsangebote zum Deutschen für das Nachschl...",
+      "description": "Die lernende Person kann nutzen Wörterbücher, Grammatiken, digitale Rechtschreibhilfen und Informationsangebote zum Deutschen für das Nachschlagen von Schreibungen, grammatischen Verwendungsweisen und Verwendungskontexten.",
+      "sourceDocumentKey": "SH-DEUTSCH-FA2024",
+      "sourceRef": "Fachanforderungen Deutsch Allgemeinbildende Schulen Sekundarstufe I und II (Schleswig-Holstein, 2024), Kapitel II.2 Kompetenzbereiche, Ressourcen zur deutschen Sprache",
+      "sourceText": "nutzen Wörterbücher, Grammatiken, digitale Rechtschreibhilfen und Informationsangebote zum Deutschen für das Nachschlagen von Schreibungen, grammatischen Verwendungsweisen und Verwendungskontexten.",
+      "sourceSpan": {
+        "passageId": "de_sh_deutsch_seki_fachanforderungen_2024:sh-si-ressourcen-zur-deutschen-sprache",
+        "label": "SH-SI-RESSOURCEN-ZUR-DEUTSCHEN-SPRACHE#100"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "stage:SekI",
+        "field:ressourcen-zur-deutschen-sprache",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-kmk-left-column",
+        "field": "Ressourcen zur deutschen Sprache"
+      }
+    }
+  ]
+}

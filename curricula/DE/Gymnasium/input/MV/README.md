@@ -92,3 +92,21 @@
   stabil halten
 - die Aktivierung ist dokumentiert in `curricula/DE/Gymnasium/provenance/mv-physics-onboarding.md`
 - vor jedem topic-spezifischen MV-Physik-Mapping erst die restlichen neu archivierten Bundeslaender ebenfalls auf `P2` bringen
+
+<!-- DE-MV-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Official Bildungsserver MV source page:
+
+- https://www.bildung-mv.de/unterricht/rahmenplaene/rahmenplaene-fuer-die-allgemein-bildenden-faecher/deutsch/
+
+Archived official PDFs:
+
+- `lower-secondary/RP_AB_Deu_Sek_I_Gym_Ges_2025.pdf`
+- `upper-secondary/RP_DEU_SEK2_2019.pdf`
+
+Generated source extractions:
+
+- `lower-secondary/source-extraction/DE_MV_DEUTSCH_SEKI_RAHMENPLAN_2025.source-extraction.json`
+- `upper-secondary/source-extraction/DE_MV_DEUTSCH_SEKII_RAHMENPLAN_2019.source-extraction.json`
+<!-- DE-MV-DEUTSCH-SOURCE-EXTRACTION:end -->

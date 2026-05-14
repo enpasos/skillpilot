@@ -1,0 +1,1900 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE_HB_DEUTSCH_SEKII_GYO_2008",
+  "sourceLandscapeId": "76570744-50d0-50b0-423c-f8b1aea1e0bc",
+  "targetLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+  "title": "Deutsch Oberstufe (Bremen, GyO Bildungsplan 2008 Source-Extraction)",
+  "jurisdiction": "DE-HB",
+  "subject": "Deutsch",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "HB-DEUTSCH-GYO-2008",
+    "title": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008)",
+    "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/GyO_Deutsch_2008.pdf",
+    "url": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Deutsch_2008.pdf",
+    "official": true
+  },
+  "sourceDocuments": [
+    {
+      "key": "HB-DEUTSCH-GYO-2008",
+      "title": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008)",
+      "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/GyO_Deutsch_2008.pdf",
+      "url": "https://www.lis.bremen.de/sixcms/media.php/13/GyO_Deutsch_2008.pdf",
+      "official": true
+    }
+  ],
+  "method": {
+    "passageExtraction": "pdftotext -layout; Abschnitt 3 Standards wird nach vier Kompetenzbereichen sowie GK/LK-Anforderungsniveau segmentiert.",
+    "sourceGoalExtraction": "Ein Source-Ziel pro amtlichem Bullet in den Grundkurs- und zusätzlichen Leistungskurs-Standards."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "status": "accepted",
+      "rationale": "60 Source-Ziele aus HB-Sek-II-GK/LK-Standards; Bremen ist hier deutlich kompakter als HE/NI/HH, weil der Bildungsplan nur vier übergreifende Kompetenzbereiche statt textsortenspezifischer Domänentabellen ausweist."
+    }
+  },
+  "expectedTopicCodes": [
+    "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+    "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+    "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+    "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+    "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+    "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+    "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+    "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "ORIGINALQUELLEN",
+        "label": "Originalquellen bereitgestellt",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "official-source-document-present-hb-deutsch",
+            "label": "Amtliche HB-Deutsch-Bildungsplan-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/upper-secondary/GyO_Deutsch_2008.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [
+          "ORIGINALQUELLEN"
+        ],
+        "checks": [
+          {
+            "id": "expected-topic-coverage-hb-deutsch",
+            "label": "Alle erwarteten HB-Deutsch-Kompetenzpassagen wurden extrahiert",
+            "passed": true,
+            "details": "8/8 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction-hb-deutsch",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HB/upper-secondary/GyO_Deutsch_2008.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created-hb-deutsch",
+            "label": "Source-Ziele aus amtlichen HB-Deutsch-Standards erzeugt",
+            "passed": true,
+            "details": "60 Source-Ziele."
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen geprüfte Deutsch-Inventare plausibilisiert",
+            "passed": true,
+            "details": "60 Source-Ziele; kompakte HB Sek II wurde akzeptiert, weil der offizielle Plan nur vier GK/LK-Kompetenzbereiche ausweist."
+          },
+          {
+            "id": "source-goal-ids-unique-hb-deutsch",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages-hb-deutsch",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-reviewed-hb-deutsch",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "60/60 reviewed."
+          },
+          {
+            "id": "source-goals-covered-hb-deutsch",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "60/60 inhaltlich abgedeckt; 1:n ist Zuordnungsform, keine Lücke."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "Qualifikationsphase - Lesen – Erschließen – Bewerten (GK)",
+      "rawText": "(1) erschließen und verstehen zeichenhaft strukturierte Sachverhalte in linearen und nicht linearen Texten und Medien sachgerecht auf der Grundlage gesicherter Kenntnisse,\n(2) erschließen die Funktion und Wirkung von Textund Medienstrategien und reflektieren sie mit Bezug auf die eigene Rezeption,\n(3) interpretieren die Ergebnisse der Analyse und begründen diese am Werk,\n(4) kennen unterschiedliche (medien-)theoretische Zugriffe auf ein Werk und wenden diese an,\n(5) wenden Verfahren des gestaltenden Interpretierens zur Erschließung von Texten und Medien an,\n(6) wenden Verfahren des erörternden Erschließens an,\n(7) bewerten die in Texten und Medien sich manifestierenden Standpunkte und verstehen deren intentionalen Charakter,\n(8) vergleichen themenverwandte und motivgleiche Texte und Medien aus verschiedenen mediengeschichtlichen Epochen,\n(9) setzen sich mit der Rezeptionsgeschichte ausgewählter Werke auseinander,\n(10) begründen ihre Lesart durch die Reflexion des eigenen (Lektüreund Werte-) Hintergrundes,\n(11) nutzen sachgerecht und prüfend weitere Informationsquellen zum vertieften Verständnis von Sachverhalten, Texten und Medien.",
+      "sourceGoalIds": [
+        "53eafed3-4ab9-5ee2-fbbf-fffefd088f10",
+        "a6c88429-468d-5352-0f5b-8a36c6fc2650",
+        "7a606451-692a-578f-879a-81e4a5163713",
+        "9af8df60-ff99-52fe-f700-5108b7a37ee6",
+        "e10a215e-7985-5d93-bf2b-e25ca6c063a0",
+        "99b4878f-35fc-5f06-362c-86d3160d71bd",
+        "92879150-5781-5536-5068-fba8e6d18345",
+        "7238e13a-3f2e-5302-5d53-94ee491a0d45",
+        "836919e7-8ae7-500a-94e9-eb19cf82a1bb",
+        "b734769c-fe80-5e75-c93c-b938ce33e33b",
+        "9dc9a717-c5dd-5d86-f368-789ca48b5b65"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "Qualifikationsphase - Lesen – Erschließen – Bewerten (LK)",
+      "rawText": "(1) verstehen auch komplexe sprachliche, akustische oder optische Gestaltungsmittel in ihrer ästhetischen Qualität,\n(2) untersuchen die Funktion und Gestaltung von Texten und Medien in ihren kulturellen, gesellschaftlichen und historischen Wirkungszusammenhängen und unter Berücksichtigung gattungspoetologischer Konzepte,\n(3) erweitern ihre Lektürenerfahrung durch intertextuelle und / oder intermediale Bezüge,\n(4) kennen die historische und wissenschaftstheoretische Bedingtheit ausgewählter Rezeptionsmethoden, erproben ihre Leistungsfähigkeit an Beispielen, nutzen sie beim Erschließen von Texten und Medien,\n(5) beziehen grundlegende wissenschaftliche Fragestellungen und aktuelle Diskussionen in ihre Interpretation ein.",
+      "sourceGoalIds": [
+        "9d52bb77-8f34-5d7b-1d02-f6f87900c807",
+        "4c093b37-1b3d-50ec-d44a-9d2e5017d5da",
+        "308b04d3-f0dc-5cc4-bcf2-7427350a04ae",
+        "2323eba2-6034-53e1-c954-58657b490be6",
+        "190d0250-0cf4-5f0f-325e-829af625b7c3"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "Qualifikationsphase - Schreiben – Darstellen – Gestalten (GK)",
+      "rawText": "(1) beherrschen informierende, argumentierende, appellierende, untersuchende und gestaltende Textarten in ihren jeweiligen kommunikativen Funktionen und ihren Anforderungen,\n(2) beherrschen in Grundzügen Darstellungsmöglichkeiten weiterer Medien,\n(3) konzipieren zielund adressatenbezogen sowie materialorientiert ihr Darstellungsziel und gliedern es,\n(4) entscheiden sich in Abhängigkeit von Adressat, Aufgabe und Zeit für einen Darstellungsmodus, entwerfen einen entsprechenden Durchführungsplan und berücksichtigen dabei Aufgabenstellung und Zeitvorgabe,\n(5) erstellen aufgabenadäquat, konzeptgeleitet und normgerecht Texte oder andere gewählte Medien,\n(6) reflektieren die Schritte des Darstellungsprozesses und deren Ergebnisse und Wirkungsintentionen unter Einbeziehung präziser und adäquater Begrifflichkeiten,\n(7) beherrschen Methoden des Überarbeitens von medialen Produkten und wenden sie kriterienorientiert an,\n(8) gestalten ihre Produkte sprachlich variabel und stilistisch stimmig, setzen in Grundzügen ästhetische Gestaltungsmittel ein,\n(9) können sich produktionsorientiert mit Problemzusammenhängen auseinander setzen,\n(10) wenden in Grundzügen sowie aufgabenund adressatengerecht kontemporäre Möglichkeiten der Textverarbeitung, der Präsentation oder der Mediengestaltung an.",
+      "sourceGoalIds": [
+        "2d41bcb6-748e-5aa5-4518-31cc9e9bc21a",
+        "8bfea0ab-da62-5c70-f27e-88949d6cee1c",
+        "e26951b8-3281-5efb-b001-805325054d06",
+        "7bce1617-9569-505c-6840-8f6fe4487049",
+        "8b3652d7-e59d-561d-92bc-063898f2b714",
+        "342083a8-80e7-5b0f-7155-28d213708877",
+        "374b482e-f4c9-5ff8-e024-2ff11ae98ede",
+        "2fbd9f99-15e3-522c-8454-e0e69529db7c",
+        "283169b6-4789-5054-c06b-49a704223d1b",
+        "fede5423-7fdd-5db4-ffdc-297bdae82f73"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+      "title": "Qualifikationsphase - Schreiben – Darstellen – Gestalten (LK)",
+      "rawText": "(1) entscheiden sich vor einem komplexeren Horizont methodischer Ansätze oder offener Aufgabenstellungen selbstständig für geeignete Darstellungsmodi,\n(2) reflektieren Wirkungsmöglichkeiten und Grenzen stilistischer Mittel und wenden sie in unterschiedlichen Schreibsituationen angemessen an,\n(3) nutzen verschiedene Medien zur Konstruktion von Meinungen, Unterhaltung und zur Kommunikation,\n(4) entwerfen eigene mediale Produkte und lösen sich zunehmend kreativ von Vorlagen und Mustern.",
+      "sourceGoalIds": [
+        "91a3bea8-8bc8-5d46-c1aa-1626c0b3c953",
+        "06952928-6459-5731-722d-366b77c4313d",
+        "fe5b1bc2-b8c9-5894-95e8-bf40a26a7f37",
+        "065d7885-12c7-5283-1f61-ab52743456bc"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "Qualifikationsphase - Sprechen – Präsentieren – Zuhören (GK)",
+      "rawText": "(1) nutzen und bewerten verschiedene Möglichkeiten der Beschaffung und Aufbereitung von Informationen,\n(2) kennen unterschiedliche Redeund Gesprächsformen und können diese in ihren Funktionen und Anforderungen unterscheiden und reflektieren, 16 Deutsch – Gymnasium Qualifikationsphase\n(3) wenden unterschiedliche Techniken von Mitschriften an und nutzen diese für das Reproduzieren von Gehörtem,\n(4) planen, entwerfen und formulieren den geforderten Text oder Beitrag aufgabengerecht sowie hörerwirksam und beachten dabei zeitliche Vorgaben,\n(5) bezeichnen Sachverhalte, Normen, Wertvorstellungen oder Lesarten präzise und fassen deren Inhalte unter Verwendung einer adäquaten Begrifflichkeit zusammen,\n(6) können in diskursiven Zusammenhängen eigene Standpunkte vertreten und fremde Standpunkte würdigen und ihren Beitrag durch unterschiedliche Mittel verbal und nonverbal situationsangemessen unterstützen,\n(7) diskutieren und beurteilen künstlerische Darbietungen in ihrer ästhetischen Qualität,\n(8) setzen Präsentationstechniken funktional und begründet ein,\n(9) übernehmen Gesprächsleitungsund Moderationsaufgaben,\n(10) werten Gesprächsund Diskussionsergebnisse aus.",
+      "sourceGoalIds": [
+        "aae48a80-6407-5ed3-4d94-fc8bd407a524",
+        "bf9b63fe-bc94-52b2-ebb0-b151a9433418",
+        "2fe6aaba-5e85-543d-8518-769e36cd94a2",
+        "e94c5769-dbe9-5a03-fc47-f5c3347e843e",
+        "3ef155ab-d7eb-500c-391b-a72996503372",
+        "5ef5a534-8e3c-5912-3796-a18dd980fc93",
+        "b8162c60-901f-5e32-921c-86ed61a76137",
+        "fe040de6-14ba-5a0d-b8d4-c016e935b5aa",
+        "2384b435-9b2f-50b7-768a-2edae1879e1b",
+        "fad9da28-cc8c-5eba-6d2d-2327510bd6c8"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+      "title": "Qualifikationsphase - Sprechen – Präsentieren – Zuhören (LK)",
+      "rawText": "(1) entfalten Begründungszusammenhänge besonders schlüssig und anschaulich,\n(2) verwenden rhetorische Mittel und Stilfiguren in komplexeren Redebeiträgen und reflektieren über deren Wirkung,\n(3) korrigieren Sprechverhalten und entwerfen Varianten für die Gestaltung von Sprechakten,\n(4) erkennen und reflektieren Ursachen kommunikativer Störungen und entscheiden sich für angemessene Vermittlungsmöglichkeiten.",
+      "sourceGoalIds": [
+        "b04a736b-e745-542b-f2cf-9fa050498328",
+        "04ef1e42-1b46-532a-c143-03a60cb3baa0",
+        "6f5f7eb1-17f7-52c7-0201-6ee0851113a7",
+        "91187214-dfb5-5412-6d2b-eb3e1330c1bc"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "Qualifikationsphase - Reflektieren über Sprache und Sprachgebrauch (GK)",
+      "rawText": "(1) ordnen einfache sprachliche Phänomene den verschiedenen Ebenen der Sprachbetrachtung zu, explizit darunter Semiotik, Morphologie, Phonologie, Syntax, Semantik und Pragmatik,\n(2) verwenden schulgrammatische Fachbegriffe sicher und reflektierend,\n(3) können ihre fremdsprachigen Kompetenzen nutzen zur Sensibilität gegenüber sowie zur Erkenntnis der deutschen Sprache (language awareness),\n(4) können semantische Mehrdeutigkeit, Denotation und Konnotation erkennen und verwenden,\n(5) kennen Grundzüge anderer mediensprachlicher Darstellungen,\n(6) untersuchen Textstrukturen auf der thematisch-gegenständlichen, intentionalen und sprachstilistischen Ebene und verwenden dabei terminologisch korrekte Bezeichnungen,\n(7) erkennen Möglichkeiten und Formen einer Beeinflussung durch Sprache in unterschiedlichen medialen und kommunikativen Zusammenhängen und erschließen sie in ihren Wirkungsmöglichkeiten,\n(8) kennen Aspekte der historischen Bedingtheit von Sprache und Medien sowie aktuelle Tendenzen ihrer Entwicklung,\n(9) erkennen und erschließen Varietäten in ihrer kommunikativen Funktion,\n(10) verfügen über ein Bewusstsein von der Funktion der Sprache als Bedingungsfaktor für Erkenntnis und zur Reflexion der Wirklichkeit.",
+      "sourceGoalIds": [
+        "07ce2123-f24e-58c8-2d50-6b53c993b646",
+        "c238916c-d1ce-5a19-ed51-df9a70e5930a",
+        "5a342552-d512-51a8-26bb-4420673a4ebc",
+        "da1aeb5c-94ab-5d65-f2b9-e793aee17efc",
+        "b5c2bf66-5667-5dfd-f945-c3a34d2b77a6",
+        "75eb005a-16b6-5871-51e6-ff104cc152cd",
+        "280b5186-d57a-5f8d-1e99-d57c71380ea1",
+        "b9452c17-0fe2-517d-87ba-59efcf4bf40b",
+        "00725436-ebf6-5ab8-10eb-b93f7b95a49e",
+        "7598b842-f98e-5f16-7540-a4bbfc319292"
+      ]
+    },
+    {
+      "id": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "Qualifikationsphase - Reflektieren über Sprache und Sprachgebrauch (LK)",
+      "rawText": "(1) können Sprachbeschreibungssysteme kritisch reflektieren und als abhängig von wissenschaftlichen Modellbildungen erkennen,\n(2) kennen die historische Bedingtheit von sprachlichen und medialen Konventionen und beurteilen ihre gesellschaftliche Bedeutung,\n(3) können Bezüge zur Kognitionspsychologie und zu sprachphilosophischen Positionen herstellen,\n(4) kennen Bereiche der Sprachkritik und ausgewählte sprachkritische Positionen,\n(5) kennen medientheoretische Positionen und können diese auf die eigene Mediennutzung beziehen,\n(6) reflektieren die Auswirkungen aktueller Kommunikationstechnologien auf die Wahrnehmung und auf menschliches Zusammenleben.",
+      "sourceGoalIds": [
+        "d49b22f8-0b1f-572e-f0f0-cd7768649564",
+        "0b00d945-e05c-54c4-b295-ebfd4f8cdb8d",
+        "1f3c75ba-0206-5abd-277e-54a33f1b119c",
+        "465b436e-0551-500a-804a-fbfe60224630",
+        "624331df-0868-5ac8-e818-106fecd2f3d9",
+        "5ea4c0cd-11e9-52cb-4b68-bad141f12538"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "53eafed3-4ab9-5ee2-fbbf-fffefd088f10",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "erschließen und verstehen zeichenhaft strukturierte Sachverhalte in linearen und nicht linearen Texten und Medien sac...",
+      "description": "Die lernende Person kann erschließen und verstehen zeichenhaft strukturierte Sachverhalte in linearen und nicht linearen Texten und Medien sachgerecht auf der Grundlage gesicherter Kenntnisse.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "erschließen und verstehen zeichenhaft strukturierte Sachverhalte in linearen und nicht linearen Texten und Medien sachgerecht auf der Grundlage gesicherter Kenntnisse,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#1"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "a6c88429-468d-5352-0f5b-8a36c6fc2650",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "erschließen die Funktion und Wirkung von Textund Medienstrategien und reflektieren sie mit Bezug auf die eigene Rezep...",
+      "description": "Die lernende Person kann erschließen die Funktion und Wirkung von Textund Medienstrategien und reflektieren sie mit Bezug auf die eigene Rezeption.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "erschließen die Funktion und Wirkung von Textund Medienstrategien und reflektieren sie mit Bezug auf die eigene Rezeption,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#2"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "7a606451-692a-578f-879a-81e4a5163713",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "interpretieren die Ergebnisse der Analyse und begründen diese am Werk",
+      "description": "Die lernende Person kann interpretieren die Ergebnisse der Analyse und begründen diese am Werk.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "interpretieren die Ergebnisse der Analyse und begründen diese am Werk,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#3"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "9af8df60-ff99-52fe-f700-5108b7a37ee6",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "kennen unterschiedliche (medien-)theoretische Zugriffe auf ein Werk und wenden diese an",
+      "description": "Die lernende Person kann kennen unterschiedliche (medien-)theoretische Zugriffe auf ein Werk und wenden diese an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "kennen unterschiedliche (medien-)theoretische Zugriffe auf ein Werk und wenden diese an,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#4"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "e10a215e-7985-5d93-bf2b-e25ca6c063a0",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "wenden Verfahren des gestaltenden Interpretierens zur Erschließung von Texten und Medien an",
+      "description": "Die lernende Person kann wenden Verfahren des gestaltenden Interpretierens zur Erschließung von Texten und Medien an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "wenden Verfahren des gestaltenden Interpretierens zur Erschließung von Texten und Medien an,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#5"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "99b4878f-35fc-5f06-362c-86d3160d71bd",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "wenden Verfahren des erörternden Erschließens an",
+      "description": "Die lernende Person kann wenden Verfahren des erörternden Erschließens an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "wenden Verfahren des erörternden Erschließens an,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#6"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "92879150-5781-5536-5068-fba8e6d18345",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "bewerten die in Texten und Medien sich manifestierenden Standpunkte und verstehen deren intentionalen Charakter",
+      "description": "Die lernende Person kann bewerten die in Texten und Medien sich manifestierenden Standpunkte und verstehen deren intentionalen Charakter.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "bewerten die in Texten und Medien sich manifestierenden Standpunkte und verstehen deren intentionalen Charakter,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#7"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "7238e13a-3f2e-5302-5d53-94ee491a0d45",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "vergleichen themenverwandte und motivgleiche Texte und Medien aus verschiedenen mediengeschichtlichen Epochen",
+      "description": "Die lernende Person kann vergleichen themenverwandte und motivgleiche Texte und Medien aus verschiedenen mediengeschichtlichen Epochen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "vergleichen themenverwandte und motivgleiche Texte und Medien aus verschiedenen mediengeschichtlichen Epochen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#8"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "836919e7-8ae7-500a-94e9-eb19cf82a1bb",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "setzen sich mit der Rezeptionsgeschichte ausgewählter Werke auseinander",
+      "description": "Die lernende Person kann setzen sich mit der Rezeptionsgeschichte ausgewählter Werke auseinander.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "setzen sich mit der Rezeptionsgeschichte ausgewählter Werke auseinander,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#9"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "b734769c-fe80-5e75-c93c-b938ce33e33b",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "begründen ihre Lesart durch die Reflexion des eigenen (Lektüreund Werte-) Hintergrundes",
+      "description": "Die lernende Person kann begründen ihre Lesart durch die Reflexion des eigenen (Lektüreund Werte-) Hintergrundes.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "begründen ihre Lesart durch die Reflexion des eigenen (Lektüreund Werte-) Hintergrundes,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#10"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "9dc9a717-c5dd-5d86-f368-789ca48b5b65",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK",
+      "title": "nutzen sachgerecht und prüfend weitere Informationsquellen zum vertieften Verständnis von Sachverhalten, Texten und M...",
+      "description": "Die lernende Person kann nutzen sachgerecht und prüfend weitere Informationsquellen zum vertieften Verständnis von Sachverhalten, Texten und Medien.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "nutzen sachgerecht und prüfend weitere Informationsquellen zum vertieften Verständnis von Sachverhalten, Texten und Medien.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-GK#11"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "9d52bb77-8f34-5d7b-1d02-f6f87900c807",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "verstehen auch komplexe sprachliche, akustische oder optische Gestaltungsmittel in ihrer ästhetischen Qualität",
+      "description": "Die lernende Person kann verstehen auch komplexe sprachliche, akustische oder optische Gestaltungsmittel in ihrer ästhetischen Qualität.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "verstehen auch komplexe sprachliche, akustische oder optische Gestaltungsmittel in ihrer ästhetischen Qualität,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK#12"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "4c093b37-1b3d-50ec-d44a-9d2e5017d5da",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "untersuchen die Funktion und Gestaltung von Texten und Medien in ihren kulturellen, gesellschaftlichen und historisch...",
+      "description": "Die lernende Person kann untersuchen die Funktion und Gestaltung von Texten und Medien in ihren kulturellen, gesellschaftlichen und historischen Wirkungszusammenhängen und unter Berücksichtigung gattungspoetologischer Konzepte.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "untersuchen die Funktion und Gestaltung von Texten und Medien in ihren kulturellen, gesellschaftlichen und historischen Wirkungszusammenhängen und unter Berücksichtigung gattungspoetologischer Konzepte,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK#13"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "308b04d3-f0dc-5cc4-bcf2-7427350a04ae",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "erweitern ihre Lektürenerfahrung durch intertextuelle und / oder intermediale Bezüge",
+      "description": "Die lernende Person kann erweitern ihre Lektürenerfahrung durch intertextuelle und / oder intermediale Bezüge.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "erweitern ihre Lektürenerfahrung durch intertextuelle und / oder intermediale Bezüge,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK#14"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "2323eba2-6034-53e1-c954-58657b490be6",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "kennen die historische und wissenschaftstheoretische Bedingtheit ausgewählter Rezeptionsmethoden, erproben ihre Leist...",
+      "description": "Die lernende Person kann kennen die historische und wissenschaftstheoretische Bedingtheit ausgewählter Rezeptionsmethoden, erproben ihre Leistungsfähigkeit an Beispielen, nutzen sie beim Erschließen von Texten und Medien.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "kennen die historische und wissenschaftstheoretische Bedingtheit ausgewählter Rezeptionsmethoden, erproben ihre Leistungsfähigkeit an Beispielen, nutzen sie beim Erschließen von Texten und Medien,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK#15"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "190d0250-0cf4-5f0f-325e-829af625b7c3",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK",
+      "title": "beziehen grundlegende wissenschaftliche Fragestellungen und aktuelle Diskussionen in ihre Interpretation ein",
+      "description": "Die lernende Person kann beziehen grundlegende wissenschaftliche Fragestellungen und aktuelle Diskussionen in ihre Interpretation ein.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Lesen – Erschließen – Bewerten",
+      "sourceText": "beziehen grundlegende wissenschaftliche Fragestellungen und aktuelle Diskussionen in ihre Interpretation ein.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-lesen-erschliessen-bewerten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-LESEN-ERSCHLIESSEN-BEWERTEN-LK#16"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:lesen-erschliessen-bewerten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Lesen – Erschließen – Bewerten"
+      }
+    },
+    {
+      "id": "2d41bcb6-748e-5aa5-4518-31cc9e9bc21a",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "beherrschen informierende, argumentierende, appellierende, untersuchende und gestaltende Textarten in ihren jeweilige...",
+      "description": "Die lernende Person kann beherrschen informierende, argumentierende, appellierende, untersuchende und gestaltende Textarten in ihren jeweiligen kommunikativen Funktionen und ihren Anforderungen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "beherrschen informierende, argumentierende, appellierende, untersuchende und gestaltende Textarten in ihren jeweiligen kommunikativen Funktionen und ihren Anforderungen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#17"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "8bfea0ab-da62-5c70-f27e-88949d6cee1c",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "beherrschen in Grundzügen Darstellungsmöglichkeiten weiterer Medien",
+      "description": "Die lernende Person kann beherrschen in Grundzügen Darstellungsmöglichkeiten weiterer Medien.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "beherrschen in Grundzügen Darstellungsmöglichkeiten weiterer Medien,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#18"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "e26951b8-3281-5efb-b001-805325054d06",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "konzipieren zielund adressatenbezogen sowie materialorientiert ihr Darstellungsziel und gliedern es",
+      "description": "Die lernende Person kann konzipieren zielund adressatenbezogen sowie materialorientiert ihr Darstellungsziel und gliedern es.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "konzipieren zielund adressatenbezogen sowie materialorientiert ihr Darstellungsziel und gliedern es,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#19"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "7bce1617-9569-505c-6840-8f6fe4487049",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "entscheiden sich in Abhängigkeit von Adressat, Aufgabe und Zeit für einen Darstellungsmodus, entwerfen einen entsprec...",
+      "description": "Die lernende Person kann entscheiden sich in Abhängigkeit von Adressat, Aufgabe und Zeit für einen Darstellungsmodus, entwerfen einen entsprechenden Durchführungsplan und berücksichtigen dabei Aufgabenstellung und Zeitvorgabe.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "entscheiden sich in Abhängigkeit von Adressat, Aufgabe und Zeit für einen Darstellungsmodus, entwerfen einen entsprechenden Durchführungsplan und berücksichtigen dabei Aufgabenstellung und Zeitvorgabe,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#20"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "8b3652d7-e59d-561d-92bc-063898f2b714",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "erstellen aufgabenadäquat, konzeptgeleitet und normgerecht Texte oder andere gewählte Medien",
+      "description": "Die lernende Person kann erstellen aufgabenadäquat, konzeptgeleitet und normgerecht Texte oder andere gewählte Medien.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "erstellen aufgabenadäquat, konzeptgeleitet und normgerecht Texte oder andere gewählte Medien,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#21"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "342083a8-80e7-5b0f-7155-28d213708877",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "reflektieren die Schritte des Darstellungsprozesses und deren Ergebnisse und Wirkungsintentionen unter Einbeziehung p...",
+      "description": "Die lernende Person kann reflektieren die Schritte des Darstellungsprozesses und deren Ergebnisse und Wirkungsintentionen unter Einbeziehung präziser und adäquater Begrifflichkeiten.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "reflektieren die Schritte des Darstellungsprozesses und deren Ergebnisse und Wirkungsintentionen unter Einbeziehung präziser und adäquater Begrifflichkeiten,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#22"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "374b482e-f4c9-5ff8-e024-2ff11ae98ede",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "beherrschen Methoden des Überarbeitens von medialen Produkten und wenden sie kriterienorientiert an",
+      "description": "Die lernende Person kann beherrschen Methoden des Überarbeitens von medialen Produkten und wenden sie kriterienorientiert an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "beherrschen Methoden des Überarbeitens von medialen Produkten und wenden sie kriterienorientiert an,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#23"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "2fbd9f99-15e3-522c-8454-e0e69529db7c",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "gestalten ihre Produkte sprachlich variabel und stilistisch stimmig, setzen in Grundzügen ästhetische Gestaltungsmitt...",
+      "description": "Die lernende Person kann gestalten ihre Produkte sprachlich variabel und stilistisch stimmig, setzen in Grundzügen ästhetische Gestaltungsmittel ein.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "gestalten ihre Produkte sprachlich variabel und stilistisch stimmig, setzen in Grundzügen ästhetische Gestaltungsmittel ein,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#24"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "283169b6-4789-5054-c06b-49a704223d1b",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "können sich produktionsorientiert mit Problemzusammenhängen auseinander setzen",
+      "description": "Die lernende Person kann können sich produktionsorientiert mit Problemzusammenhängen auseinander setzen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "können sich produktionsorientiert mit Problemzusammenhängen auseinander setzen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#25"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "fede5423-7fdd-5db4-ffdc-297bdae82f73",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK",
+      "title": "wenden in Grundzügen sowie aufgabenund adressatengerecht kontemporäre Möglichkeiten der Textverarbeitung, der Präsent...",
+      "description": "Die lernende Person kann wenden in Grundzügen sowie aufgabenund adressatengerecht kontemporäre Möglichkeiten der Textverarbeitung, der Präsentation oder der Mediengestaltung an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "wenden in Grundzügen sowie aufgabenund adressatengerecht kontemporäre Möglichkeiten der Textverarbeitung, der Präsentation oder der Mediengestaltung an.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-GK#26"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "91a3bea8-8bc8-5d46-c1aa-1626c0b3c953",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+      "title": "entscheiden sich vor einem komplexeren Horizont methodischer Ansätze oder offener Aufgabenstellungen selbstständig fü...",
+      "description": "Die lernende Person kann entscheiden sich vor einem komplexeren Horizont methodischer Ansätze oder offener Aufgabenstellungen selbstständig für geeignete Darstellungsmodi.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "entscheiden sich vor einem komplexeren Horizont methodischer Ansätze oder offener Aufgabenstellungen selbstständig für geeignete Darstellungsmodi,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK#27"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "06952928-6459-5731-722d-366b77c4313d",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+      "title": "reflektieren Wirkungsmöglichkeiten und Grenzen stilistischer Mittel und wenden sie in unterschiedlichen Schreibsituat...",
+      "description": "Die lernende Person kann reflektieren Wirkungsmöglichkeiten und Grenzen stilistischer Mittel und wenden sie in unterschiedlichen Schreibsituationen angemessen an.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "reflektieren Wirkungsmöglichkeiten und Grenzen stilistischer Mittel und wenden sie in unterschiedlichen Schreibsituationen angemessen an,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK#28"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "fe5b1bc2-b8c9-5894-95e8-bf40a26a7f37",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+      "title": "nutzen verschiedene Medien zur Konstruktion von Meinungen, Unterhaltung und zur Kommunikation",
+      "description": "Die lernende Person kann nutzen verschiedene Medien zur Konstruktion von Meinungen, Unterhaltung und zur Kommunikation.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "nutzen verschiedene Medien zur Konstruktion von Meinungen, Unterhaltung und zur Kommunikation,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK#29"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "065d7885-12c7-5283-1f61-ab52743456bc",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK",
+      "title": "entwerfen eigene mediale Produkte und lösen sich zunehmend kreativ von Vorlagen und Mustern",
+      "description": "Die lernende Person kann entwerfen eigene mediale Produkte und lösen sich zunehmend kreativ von Vorlagen und Mustern.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Schreiben – Darstellen – Gestalten",
+      "sourceText": "entwerfen eigene mediale Produkte und lösen sich zunehmend kreativ von Vorlagen und Mustern.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-schreiben-darstellen-gestalten-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SCHREIBEN-DARSTELLEN-GESTALTEN-LK#30"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:schreiben-darstellen-gestalten",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Schreiben – Darstellen – Gestalten"
+      }
+    },
+    {
+      "id": "aae48a80-6407-5ed3-4d94-fc8bd407a524",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "nutzen und bewerten verschiedene Möglichkeiten der Beschaffung und Aufbereitung von Informationen",
+      "description": "Die lernende Person kann nutzen und bewerten verschiedene Möglichkeiten der Beschaffung und Aufbereitung von Informationen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "nutzen und bewerten verschiedene Möglichkeiten der Beschaffung und Aufbereitung von Informationen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#31"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "bf9b63fe-bc94-52b2-ebb0-b151a9433418",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "kennen unterschiedliche Redeund Gesprächsformen und können diese in ihren Funktionen und Anforderungen unterscheiden...",
+      "description": "Die lernende Person kann kennen unterschiedliche Redeund Gesprächsformen und können diese in ihren Funktionen und Anforderungen unterscheiden und reflektieren, 16 Deutsch – Gymnasium Qualifikationsphase.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "kennen unterschiedliche Redeund Gesprächsformen und können diese in ihren Funktionen und Anforderungen unterscheiden und reflektieren, 16 Deutsch – Gymnasium Qualifikationsphase",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#32"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "2fe6aaba-5e85-543d-8518-769e36cd94a2",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "wenden unterschiedliche Techniken von Mitschriften an und nutzen diese für das Reproduzieren von Gehörtem",
+      "description": "Die lernende Person kann wenden unterschiedliche Techniken von Mitschriften an und nutzen diese für das Reproduzieren von Gehörtem.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "wenden unterschiedliche Techniken von Mitschriften an und nutzen diese für das Reproduzieren von Gehörtem,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#33"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "e94c5769-dbe9-5a03-fc47-f5c3347e843e",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "planen, entwerfen und formulieren den geforderten Text oder Beitrag aufgabengerecht sowie hörerwirksam und beachten d...",
+      "description": "Die lernende Person kann planen, entwerfen und formulieren den geforderten Text oder Beitrag aufgabengerecht sowie hörerwirksam und beachten dabei zeitliche Vorgaben.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "planen, entwerfen und formulieren den geforderten Text oder Beitrag aufgabengerecht sowie hörerwirksam und beachten dabei zeitliche Vorgaben,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#34"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "3ef155ab-d7eb-500c-391b-a72996503372",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "bezeichnen Sachverhalte, Normen, Wertvorstellungen oder Lesarten präzise und fassen deren Inhalte unter Verwendung ei...",
+      "description": "Die lernende Person kann bezeichnen Sachverhalte, Normen, Wertvorstellungen oder Lesarten präzise und fassen deren Inhalte unter Verwendung einer adäquaten Begrifflichkeit zusammen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "bezeichnen Sachverhalte, Normen, Wertvorstellungen oder Lesarten präzise und fassen deren Inhalte unter Verwendung einer adäquaten Begrifflichkeit zusammen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#35"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "5ef5a534-8e3c-5912-3796-a18dd980fc93",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "können in diskursiven Zusammenhängen eigene Standpunkte vertreten und fremde Standpunkte würdigen und ihren Beitrag d...",
+      "description": "Die lernende Person kann können in diskursiven Zusammenhängen eigene Standpunkte vertreten und fremde Standpunkte würdigen und ihren Beitrag durch unterschiedliche Mittel verbal und nonverbal situationsangemessen unterstützen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "können in diskursiven Zusammenhängen eigene Standpunkte vertreten und fremde Standpunkte würdigen und ihren Beitrag durch unterschiedliche Mittel verbal und nonverbal situationsangemessen unterstützen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#36"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "b8162c60-901f-5e32-921c-86ed61a76137",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "diskutieren und beurteilen künstlerische Darbietungen in ihrer ästhetischen Qualität",
+      "description": "Die lernende Person kann diskutieren und beurteilen künstlerische Darbietungen in ihrer ästhetischen Qualität.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "diskutieren und beurteilen künstlerische Darbietungen in ihrer ästhetischen Qualität,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#37"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "fe040de6-14ba-5a0d-b8d4-c016e935b5aa",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "setzen Präsentationstechniken funktional und begründet ein",
+      "description": "Die lernende Person kann setzen Präsentationstechniken funktional und begründet ein.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "setzen Präsentationstechniken funktional und begründet ein,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#38"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "2384b435-9b2f-50b7-768a-2edae1879e1b",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "übernehmen Gesprächsleitungsund Moderationsaufgaben",
+      "description": "Die lernende Person kann übernehmen Gesprächsleitungsund Moderationsaufgaben.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "übernehmen Gesprächsleitungsund Moderationsaufgaben,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#39"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "fad9da28-cc8c-5eba-6d2d-2327510bd6c8",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK",
+      "title": "werten Gesprächsund Diskussionsergebnisse aus",
+      "description": "Die lernende Person kann werten Gesprächsund Diskussionsergebnisse aus.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "werten Gesprächsund Diskussionsergebnisse aus.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-GK#40"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "b04a736b-e745-542b-f2cf-9fa050498328",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+      "title": "entfalten Begründungszusammenhänge besonders schlüssig und anschaulich",
+      "description": "Die lernende Person kann entfalten Begründungszusammenhänge besonders schlüssig und anschaulich.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "entfalten Begründungszusammenhänge besonders schlüssig und anschaulich,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK#41"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "04ef1e42-1b46-532a-c143-03a60cb3baa0",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+      "title": "verwenden rhetorische Mittel und Stilfiguren in komplexeren Redebeiträgen und reflektieren über deren Wirkung",
+      "description": "Die lernende Person kann verwenden rhetorische Mittel und Stilfiguren in komplexeren Redebeiträgen und reflektieren über deren Wirkung.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "verwenden rhetorische Mittel und Stilfiguren in komplexeren Redebeiträgen und reflektieren über deren Wirkung,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK#42"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "6f5f7eb1-17f7-52c7-0201-6ee0851113a7",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+      "title": "korrigieren Sprechverhalten und entwerfen Varianten für die Gestaltung von Sprechakten",
+      "description": "Die lernende Person kann korrigieren Sprechverhalten und entwerfen Varianten für die Gestaltung von Sprechakten.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "korrigieren Sprechverhalten und entwerfen Varianten für die Gestaltung von Sprechakten,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK#43"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "91187214-dfb5-5412-6d2b-eb3e1330c1bc",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK",
+      "title": "erkennen und reflektieren Ursachen kommunikativer Störungen und entscheiden sich für angemessene Vermittlungsmöglichk...",
+      "description": "Die lernende Person kann erkennen und reflektieren Ursachen kommunikativer Störungen und entscheiden sich für angemessene Vermittlungsmöglichkeiten.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Sprechen – Präsentieren – Zuhören",
+      "sourceText": "erkennen und reflektieren Ursachen kommunikativer Störungen und entscheiden sich für angemessene Vermittlungsmöglichkeiten.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-sprechen-praesentieren-zuhoeren-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-SPRECHEN-PRAESENTIEREN-ZUHOEREN-LK#44"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:sprechen-praesentieren-zuhoeren",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Sprechen – Präsentieren – Zuhören"
+      }
+    },
+    {
+      "id": "07ce2123-f24e-58c8-2d50-6b53c993b646",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "ordnen einfache sprachliche Phänomene den verschiedenen Ebenen der Sprachbetrachtung zu, explizit darunter Semiotik,...",
+      "description": "Die lernende Person kann ordnen einfache sprachliche Phänomene den verschiedenen Ebenen der Sprachbetrachtung zu, explizit darunter Semiotik, Morphologie, Phonologie, Syntax, Semantik und Pragmatik.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "ordnen einfache sprachliche Phänomene den verschiedenen Ebenen der Sprachbetrachtung zu, explizit darunter Semiotik, Morphologie, Phonologie, Syntax, Semantik und Pragmatik,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#45"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "c238916c-d1ce-5a19-ed51-df9a70e5930a",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "verwenden schulgrammatische Fachbegriffe sicher und reflektierend",
+      "description": "Die lernende Person kann verwenden schulgrammatische Fachbegriffe sicher und reflektierend.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "verwenden schulgrammatische Fachbegriffe sicher und reflektierend,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#46"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "5a342552-d512-51a8-26bb-4420673a4ebc",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "können ihre fremdsprachigen Kompetenzen nutzen zur Sensibilität gegenüber sowie zur Erkenntnis der deutschen Sprache...",
+      "description": "Die lernende Person kann können ihre fremdsprachigen Kompetenzen nutzen zur Sensibilität gegenüber sowie zur Erkenntnis der deutschen Sprache (language awareness).",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "können ihre fremdsprachigen Kompetenzen nutzen zur Sensibilität gegenüber sowie zur Erkenntnis der deutschen Sprache (language awareness),",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#47"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "da1aeb5c-94ab-5d65-f2b9-e793aee17efc",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "können semantische Mehrdeutigkeit, Denotation und Konnotation erkennen und verwenden",
+      "description": "Die lernende Person kann können semantische Mehrdeutigkeit, Denotation und Konnotation erkennen und verwenden.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "können semantische Mehrdeutigkeit, Denotation und Konnotation erkennen und verwenden,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#48"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "b5c2bf66-5667-5dfd-f945-c3a34d2b77a6",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "kennen Grundzüge anderer mediensprachlicher Darstellungen",
+      "description": "Die lernende Person kann kennen Grundzüge anderer mediensprachlicher Darstellungen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "kennen Grundzüge anderer mediensprachlicher Darstellungen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#49"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "75eb005a-16b6-5871-51e6-ff104cc152cd",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "untersuchen Textstrukturen auf der thematisch-gegenständlichen, intentionalen und sprachstilistischen Ebene und verwe...",
+      "description": "Die lernende Person kann untersuchen Textstrukturen auf der thematisch-gegenständlichen, intentionalen und sprachstilistischen Ebene und verwenden dabei terminologisch korrekte Bezeichnungen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "untersuchen Textstrukturen auf der thematisch-gegenständlichen, intentionalen und sprachstilistischen Ebene und verwenden dabei terminologisch korrekte Bezeichnungen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#50"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "280b5186-d57a-5f8d-1e99-d57c71380ea1",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "erkennen Möglichkeiten und Formen einer Beeinflussung durch Sprache in unterschiedlichen medialen und kommunikativen...",
+      "description": "Die lernende Person kann erkennen Möglichkeiten und Formen einer Beeinflussung durch Sprache in unterschiedlichen medialen und kommunikativen Zusammenhängen und erschließen sie in ihren Wirkungsmöglichkeiten.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "erkennen Möglichkeiten und Formen einer Beeinflussung durch Sprache in unterschiedlichen medialen und kommunikativen Zusammenhängen und erschließen sie in ihren Wirkungsmöglichkeiten,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#51"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "b9452c17-0fe2-517d-87ba-59efcf4bf40b",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "kennen Aspekte der historischen Bedingtheit von Sprache und Medien sowie aktuelle Tendenzen ihrer Entwicklung",
+      "description": "Die lernende Person kann kennen Aspekte der historischen Bedingtheit von Sprache und Medien sowie aktuelle Tendenzen ihrer Entwicklung.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "kennen Aspekte der historischen Bedingtheit von Sprache und Medien sowie aktuelle Tendenzen ihrer Entwicklung,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#52"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "00725436-ebf6-5ab8-10eb-b93f7b95a49e",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "erkennen und erschließen Varietäten in ihrer kommunikativen Funktion",
+      "description": "Die lernende Person kann erkennen und erschließen Varietäten in ihrer kommunikativen Funktion.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "erkennen und erschließen Varietäten in ihrer kommunikativen Funktion,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#53"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "7598b842-f98e-5f16-7540-a4bbfc319292",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK",
+      "title": "verfügen über ein Bewusstsein von der Funktion der Sprache als Bedingungsfaktor für Erkenntnis und zur Reflexion der...",
+      "description": "Die lernende Person kann verfügen über ein Bewusstsein von der Funktion der Sprache als Bedingungsfaktor für Erkenntnis und zur Reflexion der Wirklichkeit.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "verfügen über ein Bewusstsein von der Funktion der Sprache als Bedingungsfaktor für Erkenntnis und zur Reflexion der Wirklichkeit.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-gk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-GK#54"
+      },
+      "courseLevel": "GK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:GK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "d49b22f8-0b1f-572e-f0f0-cd7768649564",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "können Sprachbeschreibungssysteme kritisch reflektieren und als abhängig von wissenschaftlichen Modellbildungen erkennen",
+      "description": "Die lernende Person kann können Sprachbeschreibungssysteme kritisch reflektieren und als abhängig von wissenschaftlichen Modellbildungen erkennen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "können Sprachbeschreibungssysteme kritisch reflektieren und als abhängig von wissenschaftlichen Modellbildungen erkennen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#55"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "0b00d945-e05c-54c4-b295-ebfd4f8cdb8d",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "kennen die historische Bedingtheit von sprachlichen und medialen Konventionen und beurteilen ihre gesellschaftliche B...",
+      "description": "Die lernende Person kann kennen die historische Bedingtheit von sprachlichen und medialen Konventionen und beurteilen ihre gesellschaftliche Bedeutung.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "kennen die historische Bedingtheit von sprachlichen und medialen Konventionen und beurteilen ihre gesellschaftliche Bedeutung,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#56"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "1f3c75ba-0206-5abd-277e-54a33f1b119c",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "können Bezüge zur Kognitionspsychologie und zu sprachphilosophischen Positionen herstellen",
+      "description": "Die lernende Person kann können Bezüge zur Kognitionspsychologie und zu sprachphilosophischen Positionen herstellen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "können Bezüge zur Kognitionspsychologie und zu sprachphilosophischen Positionen herstellen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#57"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "465b436e-0551-500a-804a-fbfe60224630",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "kennen Bereiche der Sprachkritik und ausgewählte sprachkritische Positionen",
+      "description": "Die lernende Person kann kennen Bereiche der Sprachkritik und ausgewählte sprachkritische Positionen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "kennen Bereiche der Sprachkritik und ausgewählte sprachkritische Positionen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#58"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "624331df-0868-5ac8-e818-106fecd2f3d9",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "kennen medientheoretische Positionen und können diese auf die eigene Mediennutzung beziehen",
+      "description": "Die lernende Person kann kennen medientheoretische Positionen und können diese auf die eigene Mediennutzung beziehen.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "kennen medientheoretische Positionen und können diese auf die eigene Mediennutzung beziehen,",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#59"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    },
+    {
+      "id": "5ea4c0cd-11e9-52cb-4b68-bad141f12538",
+      "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+      "topicCode": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK",
+      "title": "reflektieren die Auswirkungen aktueller Kommunikationstechnologien auf die Wahrnehmung und auf menschliches Zusammenl...",
+      "description": "Die lernende Person kann reflektieren die Auswirkungen aktueller Kommunikationstechnologien auf die Wahrnehmung und auf menschliches Zusammenleben.",
+      "sourceDocumentKey": "HB-DEUTSCH-GYO-2008",
+      "sourceRef": "Bremen Bildungsplan Deutsch Gymnasiale Oberstufe - Qualifikationsphase (2008), Qualifikationsphase, Reflektieren über Sprache und Sprachgebrauch",
+      "sourceText": "reflektieren die Auswirkungen aktueller Kommunikationstechnologien auf die Wahrnehmung und auf menschliches Zusammenleben.",
+      "sourceSpan": {
+        "passageId": "de_hb_deutsch_sekii_gyo_2008:hb-sii-qualifikationsphase-reflektieren-ueber-sprache-und-sprachgebrauch-lk",
+        "label": "HB-SII-QUALIFIKATIONSPHASE-REFLEKTIEREN-UEBER-SPRACHE-UND-SPRACHGEBRAUCH-LK#60"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "jurisdiction:DE-HB",
+        "stage:SekII",
+        "phase:qualifikationsphase",
+        "field:reflektieren-ueber-sprache-und-sprachgebrauch",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-bullet-standards-gk-lk",
+        "phase": "Qualifikationsphase",
+        "field": "Reflektieren über Sprache und Sprachgebrauch"
+      }
+    }
+  ]
+}

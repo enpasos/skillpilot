@@ -66,3 +66,23 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_INFORMATIK_SEKI_LEHRPLAN_2022.source-extraction.json`
+
+<!-- DE-SN-DEUTSCH-SEKI-SOURCE-EXTRACTION:start -->
+## lower-secondary extraction target: verbindliche Pflicht-Lernbereiche from the official Sachsen Gymnasium Deutsch PDF
+
+Official source page:
+
+- https://www.schulportal.sachsen.de/lplandb/lehrplan/135
+
+Official source document:
+
+- https://www.schulportal.sachsen.de/lplandb/lehrplan/file/135/f3QLnBqlLcQXq3XngWT5
+
+Local archive path:
+
+- `curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-deutsch-sachsen-2022.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2022.source-extraction.json`
+<!-- DE-SN-DEUTSCH-SEKI-SOURCE-EXTRACTION:end -->

@@ -116,3 +116,27 @@ Archived locally at:
 Generated source extraction:
 
 - `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_INFORMATIK_SEKI_FACHANFORDERUNGEN_2021.source-extraction.json`
+
+## Deutsch
+
+Starting point:
+https://fachportal.lernnetz.de/sh/faecher/deutsch/fachanforderungen.html
+
+- `Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf`:
+  https://fachportal.lernnetz.de/sh/faecher/deutsch/fachanforderungen.html?file=files/Fachanforderungen%20und%20Leitf%C3%A4den/Sekundarstufe/Fachanforderungen/Fachanforderungen%20Deutsch%20Sekundarstufe%20%282024%2C%20barrierearm%29.pdf&cid=16956
+
+Scope:
+
+- Schleswig-Holstein
+- Gymnasium
+- Deutsch
+- lower-secondary extraction target: Sek-I KMK competency tables in chapter II.2 of the official 2024 Fachanforderungen
+- note: the official provider source is one combined Sek-I/Sek-II German PDF
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/SH/Fachanforderungen_Deutsch_Sekundarstufe_2024_barrierearm.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_DEUTSCH_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json`

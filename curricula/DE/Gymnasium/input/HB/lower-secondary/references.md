@@ -28,3 +28,23 @@ Archived locally at:
 - `curricula/DE/Gymnasium/input/HB/Gy_Mathe_2006_inhalt_Einschraenkungen.pdf`
 - `curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_10_2006.pdf`
 - `curricula/DE/Gymnasium/input/HB/Naturwissenschaften_Gymnasium_5_9_Einschraenkungen_2022.pdf`
+
+## Deutsch
+
+Starting point:
+https://www.lis.bremen.de/schulqualitaet/bildungsplaene/sekundarbereich-i-21953
+
+Scope:
+
+- Bremen
+- Gymnasium
+- Deutsch
+- lower-secondary extraction target: standards at the end of grades 6, 8 and 10 in the official Bremen Gymnasium German plan
+
+Archived locally at:
+
+- `curricula/DE/Gymnasium/input/HB/lower-secondary/Gy_Deutsch_2007.pdf`
+
+Generated source extraction:
+
+- `curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_DEUTSCH_SEKI_BILDUNGSPLAN_2007.source-extraction.json`

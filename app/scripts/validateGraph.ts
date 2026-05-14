@@ -8,6 +8,7 @@ type Issue = { level: 'error' | 'warn'; message: string }
 const allowedPhases = new Set([
   'GLOBAL', 'E', 'Q1', 'Q2', 'Q3', 'Q4',
   'Abitur',
+  'SekI', 'SekII',
   'S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14',
   'Pflichtbereich', 'Wahlpflichtbereich', 'Wahlbereich', 'Bachelorarbeit', 'Programm',
   'Modul', 'Module',
@@ -327,6 +328,14 @@ function refsIncludeGoal(refs: string[], goalId: string): boolean {
   return refs.some((ref) => refMatchesGoal(ref, goalId))
 }
 
+function isYearLevelPhase(phase: string): boolean {
+  return /^([5-9]|1[0-3])(?:\.[1-9]\d*)?$/.test(phase)
+}
+
+function isAllowedPhase(phase: string): boolean {
+  return allowedPhases.has(phase) || isYearLevelPhase(phase)
+}
+
 function getComparablePhaseRank(phase: string): number | null {
   const upper = phase.toUpperCase()
   const sMatch = upper.match(/^S(\d{1,2})$/)
@@ -334,6 +343,15 @@ function getComparablePhaseRank(phase: string): number | null {
 
   const jMatch = upper.match(/^J(\d{1,2})$/)
   if (jMatch) return 200 + Number(jMatch[1])
+
+  const yearLevelMatch = upper.match(/^(\d{1,2})(?:\.(\d{1,2}))?$/)
+  if (yearLevelMatch) {
+    const year = Number(yearLevelMatch[1])
+    if (year >= 5 && year <= 13) {
+      const part = yearLevelMatch[2] ? Number(yearLevelMatch[2]) / 100 : 0
+      return 200 + year + part
+    }
+  }
 
   // In mixed school landscapes, late Sek-I year buckets must come before
   // upper-secondary phases so J8/J9/J10 -> E/Q/Abitur bridge edges stay valid.
@@ -467,7 +485,7 @@ function validateLandscape(landscape: ParsedLandscape) {
       )
     }
 
-    if (!allowedPhases.has(goal.phase)) {
+    if (!isAllowedPhase(goal.phase)) {
       addIssue('error', landscape.landscapeId, `Goal ${goal.id} has invalid phase ${goal.phase}`)
     }
     // courseLevel check removed as it does not exist on UiGoal

@@ -122,3 +122,22 @@
 - die frueher eingefrorenen RP-Reste auf Planck-Abschaetzung, LF-Atommodell-Anwendungen, `Paarerzeugung`, `Offene Fragen`, Relativitaetsdynamik, Astrophysik, Kosmologie, Chaos und Stroemungsphysik jetzt konservativ auf shared Canonical-Ziele bzw. -Cluster ziehen
 - die RP-Physik-Lane damit auf dem aktuellen reviewed Cut semantisch schliessen; offene Wiedereroeffnung nur noch bei spaeteren sichtbaren Source-Revisionen oder neuen genuinely shared Physics gaps
 - keinen Rheinland-Pfalz-spezifischen kanonischen Physik-Atom erzwingen, solange die bestehende shared Q1-Flaeche die RP-Quelle noch konservativ tragen kann
+
+<!-- DE-RP-DEUTSCH-SOURCE-EXTRACTION:start -->
+## Deutsch
+
+Official Bildungsserver Rheinland-Pfalz source page:
+
+- https://bildung.rlp.de/lehrplaene
+
+Archived official PDFs:
+
+- `lower-secondary/Deutsch_Sekundarstufe_I_Klassen_5_10_2022.pdf`
+- `upper-secondary/Deutsch_MSS_Bildungsstandards_Anpassung_2014.pdf`
+- `upper-secondary/Deutsch_LP_SekII_MSS_1998.pdf`
+
+Generated source extractions:
+
+- `lower-secondary/source-extraction/DE_RP_DEUTSCH_SEKI_LEHRPLAN_2022.source-extraction.json`
+- `upper-secondary/source-extraction/DE_RP_DEUTSCH_SEKII_MSS_2014.source-extraction.json`
+<!-- DE-RP-DEUTSCH-SOURCE-EXTRACTION:end -->
