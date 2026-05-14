@@ -3,13 +3,10 @@
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-> **Hinweis für Leser:innen von [Aifyer](https://aifyer.com/ki-lernbegleitung/):**
-> SkillPilot ist die Referenzimplementierung zum Konzept einer schulisch verantworteten KI-Lernbegleitung entlang der Lehrpläne.
-> Aktueller Stand: Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit als Source-Extraction, fachliches Mapping und bundeslandspezifische Sichten auf gemeinsame kanonische Curricula in Phase 1 qualitätsgesichert (M5).
-> **M5** bedeutet hier: Die vollautomatisierte KI-/CI-Pipeline hat Originalquellen, Source-Ziele, fachliche Abdeckung durch SkillPilot-Ziele, Bundesland-Sichten, Graph-Invarianten, Composition Views und technische QA ohne offene Fehler geprüft.
-> Darauf folgt **Phase 2**: fachliche Qualitätssicherung durch Menschen, die als SkillPilot Champions idealerweise Lehrkräfte oder andere fachlich qualifizierte Personen sind.
-> Die Wissenslandschaften können bereits mit dem SkillPilot Tutor genutzt werden; die M5-Fächer gehen jetzt in diese fachliche Champion-Qualitätssicherung.
-> Weitere Fächer, insbesondere Fremdsprachen und Musik, werden schrittweise nachgezogen.
+> **Hinweis für Leser:innen von [Aifyer](https://aifyer.com):**
+> SkillPilot ist die Referenzimplementierung für schulisch verantwortete KI-Lernbegleitung entlang der Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M5 qualitätsgesichert.
+>
+> **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Wissenslandschaften sind bereits mit dem SkillPilot Tutor nutzbar; weitere Fächer werden schrittweise ergänzt.
 
 SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
 
