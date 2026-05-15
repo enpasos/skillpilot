@@ -3,8 +3,8 @@
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-> **Hinweis für Leser:innen von [Aifyer](https://aifyer.com):**
-> SkillPilot ist die Referenzimplementierung für schulisch verantwortete KI-Lernbegleitung entlang der Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M5 qualitätsgesichert.
+> **Hinweis für Leser:innen des Aifyer-Konzepts [„KI-Lernbegleitung“](https://aifyer.com/ki-lernbegleitung/):**
+> SkillPilot ist die technische Referenzimplementierung zu diesem Konzept: eine offene Implementierung curriculumsgestützter KI-Lernbegleitung entlang schulischer Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M5 qualitätsgesichert.
 >
 > **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Wissenslandschaften sind bereits mit dem SkillPilot Tutor nutzbar; weitere Fächer werden schrittweise ergänzt.
 
