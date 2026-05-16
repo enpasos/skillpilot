@@ -239,8 +239,8 @@ Ein Curriculum kann `M0` bis `M5` erreichen.
 
 | Curriculum-Reife | Exakte Bedingung |
 | --- | --- |
-| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder die Source-Snapshot-Erfassung (`CQR-000`) ist noch nicht sauber. |
-| `M1` | Source-Snapshots sind lesbar und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
+| `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder die Source-Snapshot-Erfassung inklusive amtlicher HTTP(S)-Originalquellenlinks (`CQR-000`) ist noch nicht sauber. |
+| `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
 | `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
 | `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
@@ -253,17 +253,20 @@ Es bedeutet:
 
 > Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
 
+`M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
+
 ## CQR-Regeln im Detail
 
 ### `CQR-000` - Source snapshot ingestion
 
 Ziel:
 
-> Die Originalziele bzw. Source-Snapshot-Ziele eines Bundeslands sind zuerst ueberhaupt vollstaendig erfasst.
+> Die Originalziele bzw. Source-Snapshot-Ziele eines Bundeslands sind zuerst ueberhaupt vollstaendig erfasst und auf amtliche Originalquellenlinks zurueckfuehrbar.
 
 Geprueft wird:
 
 - Der Generator liest die registrierten Source-Snapshots aus `source-landscape-registry.json`.
+- Jede persistierte Source-Extraction muss strukturierte `sourceDocument`/`sourceDocuments`-Metadaten mit einer amtlichen HTTP(S)-`url` enthalten.
 - Aus jedem lesbaren Source-Snapshot werden alle Source-Ziele sowie die atomaren Source-Ziele bestimmt.
 - `source-goal-membership-registry.json` und `source-goal-closure-registry.json` muessen diese extrahierten Ziele registrieren.
 - Wenn ein Source-Snapshot nicht lesbar ist, aber bereits Source-Originalziele registriert sind, gilt die Ingestion als nicht sauber.
@@ -277,12 +280,13 @@ Metriken:
 - `sourceExtractedAtomicGoals`: aus Source-Snapshots gelesene atomare Source-Ziele.
 - `sourceUnregisteredAtomicGoals`: extrahierte atomare Source-Ziele, die nicht registriert sind.
 - `completeSourceJurisdictions`: Bundeslaender, deren Source-Snapshots lesbar und vollstaendig registriert sind.
+- `originalSourceUrlIssues`: fehlende oder nicht verwendbare amtliche HTTP(S)-Originalquellenlinks in persistierten Source-Extractions.
 
 Status:
 
-- `pass`, wenn alle deklarierten Bundeslaender lesbare Source-Snapshots haben und keine extrahierten Ziele unregistriert sind.
+- `pass`, wenn alle deklarierten Bundeslaender lesbare Source-Snapshots haben, alle Source-Extractions amtliche HTTP(S)-Originalquellenlinks enthalten, und keine extrahierten Ziele unregistriert sind.
 - `warn`, wenn mindestens ein Bundesland noch gar keine Source-Snapshot-Ziele hat, aber keine bereits extrahierten Ziele fehlen.
-- `fail`, wenn ein registrierter Source-Snapshot nicht lesbar ist oder extrahierte Ziele nicht in Membership/Closure registriert sind.
+- `fail`, wenn ein registrierter Source-Snapshot nicht lesbar ist, amtliche HTTP(S)-Originalquellenlinks fehlen, oder extrahierte Ziele nicht in Membership/Closure registriert sind.
 
 Reifeziel:
 

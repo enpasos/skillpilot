@@ -126,8 +126,11 @@ interface MappingPipelineSourceDocumentStatus {
   key?: string
   title: string
   path?: string
+  url?: string
+  landingUrl?: string
   official?: boolean
   available: boolean
+  hasUsableUrl: boolean
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -655,6 +658,15 @@ interface SourceExtractionGoal {
   contains?: string[]
 }
 
+interface SourceExtractionSourceDocument {
+  key?: string
+  title?: string
+  path?: string
+  url?: string
+  landingUrl?: string
+  official?: boolean
+}
+
 interface SourceLandscapeRegistryEntry {
   landscapeId?: string
   title?: string
@@ -674,14 +686,11 @@ interface SourceExtractionDocument {
     key?: string
     title?: string
     path?: string
+    url?: string
+    landingUrl?: string
     official?: boolean
-  }
-  sourceDocuments?: Array<{
-    key?: string
-    title?: string
-    path?: string
-    official?: boolean
-  }>
+  } | string
+  sourceDocuments?: SourceExtractionSourceDocument[]
   passages?: unknown[]
   sourceGoals?: SourceExtractionGoal[]
   qualityReview?: {
@@ -841,7 +850,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     label: 'Source inventory ingestion',
     category: 'applicability',
     maturityTarget: 'M1',
-    description: 'Original source inventories are readable and their extracted goals are registered in the source membership/closure ledger.',
+    description: 'Original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered in the source membership/closure ledger.',
   },
   {
     id: 'CQR-001',
@@ -1139,6 +1148,24 @@ function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T
 }
 
+function hasUsableOriginalSourceUrl(value: unknown): value is string {
+  if (typeof value !== 'string' || !value.trim()) return false
+  try {
+    const parsed = new URL(value.trim())
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return false
+    const hostname = parsed.hostname.toLowerCase()
+    return ![
+      'localhost',
+      '127.0.0.1',
+      '0.0.0.0',
+    ].includes(hostname)
+      && !hostname.endsWith('.local')
+      && !hostname.includes('example.')
+  } catch {
+    return false
+  }
+}
+
 function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): MappingPipelineSourceDocumentStatus[] {
   const rawDocuments = Array.isArray(extraction.sourceDocuments) && extraction.sourceDocuments.length > 0
     ? extraction.sourceDocuments
@@ -1148,24 +1175,38 @@ function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): Map
 
   return rawDocuments
     .map((document) => {
-      const title = typeof document.title === 'string' && document.title.trim()
-        ? document.title.trim()
-        : typeof document.key === 'string' && document.key.trim()
-          ? document.key.trim()
-          : typeof document.path === 'string' && document.path.trim()
-            ? document.path.trim()
-            : ''
+      const documentRecord = isRecord(document) ? document : null
+      const title = typeof document === 'string' && document.trim()
+        ? document.trim()
+        : typeof documentRecord?.title === 'string' && documentRecord.title.trim()
+          ? documentRecord.title.trim()
+          : typeof documentRecord?.key === 'string' && documentRecord.key.trim()
+            ? documentRecord.key.trim()
+            : typeof documentRecord?.path === 'string' && documentRecord.path.trim()
+              ? documentRecord.path.trim()
+              : ''
       if (!title) return null
-      const sourcePath = typeof document.path === 'string' && document.path.trim()
-        ? document.path.trim().replace(/\\/g, '/')
+      const sourcePath = typeof document === 'string' && document.trim()
+        ? document.trim().replace(/\\/g, '/')
+        : typeof documentRecord?.path === 'string' && documentRecord.path.trim()
+          ? documentRecord.path.trim().replace(/\\/g, '/')
+          : undefined
+      const rawUrl = typeof documentRecord?.url === 'string' && documentRecord.url.trim()
+        ? documentRecord.url.trim()
+        : undefined
+      const landingUrl = typeof documentRecord?.landingUrl === 'string' && documentRecord.landingUrl.trim()
+        ? documentRecord.landingUrl.trim()
         : undefined
       const absolutePath = sourcePath ? resolve(repoRoot, sourcePath) : undefined
       return {
-        key: typeof document.key === 'string' && document.key.trim() ? document.key.trim() : undefined,
+        key: typeof documentRecord?.key === 'string' && documentRecord.key.trim() ? documentRecord.key.trim() : undefined,
         title,
         path: absolutePath ? toRepoPath(absolutePath) : undefined,
-        official: document.official,
+        url: rawUrl,
+        landingUrl,
+        official: typeof documentRecord?.official === 'boolean' ? documentRecord.official : undefined,
         available: absolutePath ? existsSync(absolutePath) : false,
+        hasUsableUrl: hasUsableOriginalSourceUrl(rawUrl),
       }
     })
     .filter((document): document is MappingPipelineSourceDocumentStatus => document !== null)
@@ -3582,11 +3623,32 @@ function evaluateApplicabilityWarnings(
   )
 }
 
-function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefined): RuleResult {
+function sourceOriginalUrlIssues(mappingPipeline: MappingPipelineStatus | undefined): string[] {
+  if (!mappingPipeline) return []
+
+  return mappingPipeline.sources
+    .filter((source) => source.sourceKind === 'source-extraction')
+    .flatMap((source) => {
+      const documents = source.sourceDocuments ?? []
+      if (documents.length === 0) {
+        return [`${source.jurisdiction} ${source.title}: no structured original source document metadata is present`]
+      }
+      return documents
+        .filter((document) => !document.hasUsableUrl)
+        .map((document) =>
+          `${source.jurisdiction} ${source.title}: original source document "${document.title}" has no usable official HTTP(S) URL`)
+    })
+}
+
+function evaluateSourceSnapshotIngestion(
+  coverage: JurisdictionCoverage | undefined,
+  mappingPipeline: MappingPipelineStatus | undefined,
+): RuleResult {
   if (!coverage) {
     return makeRule('CQR-000', 'not_configured', 'No source-ingestion projection is available for this curriculum.')
   }
 
+  const urlIssues = sourceOriginalUrlIssues(mappingPipeline)
   const missingSourceInventories = coverage.jurisdictions.filter((entry) =>
     entry.sourceOriginalGoals > 0 && entry.sourceExtractedGoals === 0)
   const unregistered = coverage.jurisdictions.filter((entry) =>
@@ -3597,7 +3659,7 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
     entry.sourceExtractedGoals > 0
       && entry.sourceUnregisteredGoals === 0
       && entry.sourceUnregisteredAtomicGoals === 0).length
-  const status: RuleStatus = missingSourceInventories.length > 0 || unregistered.length > 0
+  const status: RuleStatus = missingSourceInventories.length > 0 || unregistered.length > 0 || urlIssues.length > 0
     ? 'fail'
     : completeJurisdictions < coverage.totalJurisdictions
       ? 'warn'
@@ -3607,13 +3669,14 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
     'CQR-000',
     status,
     status === 'pass'
-      ? `All ${coverage.totalJurisdictions} declared Bundesland source inventories are readable and fully registered.`
-      : `${completeJurisdictions}/${coverage.totalJurisdictions} declared Bundesland source inventories are readable and fully registered.`,
+      ? `All ${coverage.totalJurisdictions} declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.`
+      : `${completeJurisdictions}/${coverage.totalJurisdictions} declared Bundesland source inventories are readable and fully registered; ${urlIssues.length} original source URL issue(s).`,
     {
       totalJurisdictions: coverage.totalJurisdictions,
       completeSourceJurisdictions: completeJurisdictions,
       emptySourceJurisdictions: empty.length,
       missingReadableSourceInventoryJurisdictions: missingSourceInventories.length,
+      originalSourceUrlIssues: urlIssues.length,
       sourceExtractedGoals: coverage.sourceExtractedGoals,
       sourceOriginalGoals: coverage.sourceOriginalGoals,
       sourceUnregisteredGoals: coverage.sourceUnregisteredGoals,
@@ -3626,6 +3689,7 @@ function evaluateSourceSnapshotIngestion(coverage: JurisdictionCoverage | undefi
       ...unregistered.map((entry) =>
         `${entry.jurisdiction}: ${entry.sourceUnregisteredGoals} extracted source goal(s) and ${entry.sourceUnregisteredAtomicGoals} extracted source atom(s) are not registered in membership/closure`),
       ...empty.map((entry) => `${entry.jurisdiction}: no source inventory goals are registered or extracted`),
+      ...urlIssues,
     ],
   )
 }
@@ -3789,7 +3853,8 @@ function renderMarkdown(status: StatusDocument): string {
     if (source.sourceKind === 'source-extraction') {
       const documents = source.sourceDocuments ?? []
       const available = documents.filter((document) => document.available).length
-      return documents.length > 0 ? `${available}/${documents.length} original source(s)` : '0 original source(s)'
+      const linked = documents.filter((document) => document.hasUsableUrl).length
+      return documents.length > 0 ? `${available}/${documents.length} local, ${linked}/${documents.length} URL` : '0 original source(s)'
     }
     if (source.sourceKind === 'legacy-snapshot') return 'Snapshot diagnostic'
     return 'No extraction'
@@ -3890,7 +3955,7 @@ function main() {
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
-        evaluateSourceSnapshotIngestion(jurisdictionCoverage),
+        evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSourceGoalCountPlausibility(mappingPipeline),

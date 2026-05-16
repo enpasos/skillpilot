@@ -6,9 +6,23 @@
   "subject": "Mathematik",
   "stage": "SekII",
   "sourceDocument": {
+    "key": "KC_GOS_2024",
     "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
-    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "role": "binding-upper-secondary-core-2024",
+    "official": true,
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
   },
+  "sourceDocuments": [
+    {
+      "key": "KC_GOS_2024",
+      "title": "Kerncurriculum gymnasiale Oberstufe - Mathematik",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+      "role": "binding-upper-secondary-core-2024",
+      "official": true,
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf"
+    }
+  ],
   "method": {
     "passageExtraction": "pdftotext -layout, segmented by official topic-field headings E.*, Q1.* to Q4.*",
     "sourceGoalExtraction": "one source goal per literal official aspect inside each bullet paragraph; original bullet text retained in sourceText"

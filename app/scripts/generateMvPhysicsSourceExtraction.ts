@@ -747,7 +747,7 @@ const configs: ExtractionConfig[] = [
     title: 'DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction)',
     sourceLandscapeId: '27da5587-bef3-49ad-9fec-3907253b85bd',
     sourcePdfPath: 'curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf',
-    sourcePdfUrl: 'https://www.bildung-mv.de/export/sites/bildungsserver/downloads/unterricht/rahmenplaene_allgemeinbildende_schulen/physik/Physik_Gymnasium_7_10_2022.pdf',
+    sourcePdfUrl: 'https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_Gym_Ges_7_10.pdf',
     sourceDocumentTitle: 'Rahmenplan für die Jahrgangsstufen 7 bis 10 Gymnasium Physik Mecklenburg-Vorpommern',
     extractionPath:
       'curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json',
@@ -764,7 +764,7 @@ const configs: ExtractionConfig[] = [
     title: 'DE-MV - Physik Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction)',
     sourceLandscapeId: 'f66821d1-64a5-428d-a826-36990b6f1e0f',
     sourcePdfPath: 'curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_11_12_2022.pdf',
-    sourcePdfUrl: 'https://www.bildung-mv.de/export/sites/bildungsserver/downloads/unterricht/rahmenplaene_allgemeinbildende_schulen/physik/Physik_Gymnasium_11_12_2022.pdf',
+    sourcePdfUrl: 'https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_SEK2_Erprobungsfassung.pdf',
     sourceDocumentTitle: 'Rahmenplan für die Qualifikationsphase der gymnasialen Oberstufe Physik Mecklenburg-Vorpommern',
     extractionPath:
       'curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_PHYSIK_SEKII_RAHMENPLAN_2022.source-extraction.json',
