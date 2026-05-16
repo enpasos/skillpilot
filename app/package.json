@@ -33,6 +33,8 @@
     "export:m5-subject-packages:check-reproducible": "tsx scripts/checkM5SubjectExportPackageReproducibility.ts",
     "roundtrip:mem-fwu": "tsx scripts/memFwuRoundtrip.ts",
     "roundtrip:mem-fwu:to-rdf": "tsx scripts/memFwuRoundtrip.ts --mode to-rdf",
+    "roundtrip:mem-fwu:slim": "tsx scripts/memFwuRoundtrip.ts --mode to-slim-rdf",
+    "roundtrip:mem-fwu:semantic": "tsx scripts/memFwuRoundtrip.ts --mode to-slim-rdf && tsx scripts/semanticMemFwuRoundtrip.ts",
     "roundtrip:mem-fwu:from-rdf": "tsx scripts/memFwuRoundtrip.ts --mode from-rdf",
     "roundtrip:mem-fwu:validate": "tsx scripts/memFwuRoundtrip.ts --mode validate",
     "roundtrip:mem-fwu:visualize": "tsx scripts/visualizeMemFwuSubgraph.ts",
