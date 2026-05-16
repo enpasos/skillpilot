@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -1148,6 +1149,35 @@ function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T
 }
 
+let trackedRepoPathsCache: Set<string> | null | undefined
+
+function trackedRepoPaths(): Set<string> | null {
+  if (trackedRepoPathsCache !== undefined) return trackedRepoPathsCache
+  try {
+    const output = execFileSync('git', ['ls-files', '-z'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+    trackedRepoPathsCache = new Set(
+      output
+        .split('\0')
+        .filter((entry) => entry.trim().length > 0)
+        .map((entry) => entry.replace(/\\/g, '/')),
+    )
+  } catch {
+    trackedRepoPathsCache = null
+  }
+  return trackedRepoPathsCache
+}
+
+function isRepoAvailableSourcePath(repoPath: string): boolean {
+  const normalizedPath = repoPath.replace(/\\/g, '/')
+  const trackedPaths = trackedRepoPaths()
+  if (trackedPaths) return trackedPaths.has(normalizedPath)
+  return existsSync(resolve(repoRoot, normalizedPath))
+}
+
 function hasUsableOriginalSourceUrl(value: unknown): value is string {
   if (typeof value !== 'string' || !value.trim()) return false
   try {
@@ -1198,14 +1228,15 @@ function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): Map
         ? documentRecord.landingUrl.trim()
         : undefined
       const absolutePath = sourcePath ? resolve(repoRoot, sourcePath) : undefined
+      const repoPath = absolutePath ? toRepoPath(absolutePath) : undefined
       return {
         key: typeof documentRecord?.key === 'string' && documentRecord.key.trim() ? documentRecord.key.trim() : undefined,
         title,
-        path: absolutePath ? toRepoPath(absolutePath) : undefined,
+        path: repoPath,
         url: rawUrl,
         landingUrl,
         official: typeof documentRecord?.official === 'boolean' ? documentRecord.official : undefined,
-        available: absolutePath ? existsSync(absolutePath) : false,
+        available: repoPath ? isRepoAvailableSourcePath(repoPath) : false,
         hasUsableUrl: hasUsableOriginalSourceUrl(rawUrl),
       }
     })
@@ -1807,6 +1838,31 @@ function stableJson(value: unknown): string {
       .join(',')}}`
   }
   return JSON.stringify(value)
+}
+
+function statusWithoutGeneratedAt(status: StatusDocument): Omit<StatusDocument, 'generatedAt'> {
+  const rest: Partial<StatusDocument> = { ...status }
+  delete rest.generatedAt
+  return rest as Omit<StatusDocument, 'generatedAt'>
+}
+
+function comparableStatusPayload(status: StatusDocument): unknown {
+  return JSON.parse(JSON.stringify(statusWithoutGeneratedAt(status)))
+}
+
+function reusableGeneratedAt(nextStatus: StatusDocument): string | null {
+  if (!existsSync(statusJsonPath)) return null
+  try {
+    const existingStatus = loadJson<StatusDocument>(statusJsonPath)
+    if (stableJson(comparableStatusPayload(existingStatus)) !== stableJson(comparableStatusPayload(nextStatus))) {
+      return null
+    }
+    return typeof existingStatus.generatedAt === 'string' && existingStatus.generatedAt.trim()
+      ? existingStatus.generatedAt
+      : null
+  } catch {
+    return null
+  }
 }
 
 function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
@@ -4004,7 +4060,7 @@ function main() {
     ruleStatus[rule.status] += 1
   })
 
-  const status: StatusDocument = {
+  const statusDraft: StatusDocument = {
     schemaVersion: 1,
     rulesVersion: 'curriculum-quality-v1',
     generatedAt: new Date().toISOString(),
@@ -4027,6 +4083,10 @@ function main() {
     },
     ruleCatalog,
     curricula,
+  }
+  const status: StatusDocument = {
+    ...statusDraft,
+    generatedAt: reusableGeneratedAt(statusDraft) ?? statusDraft.generatedAt,
   }
 
   mkdirSync(statusDir, { recursive: true })
