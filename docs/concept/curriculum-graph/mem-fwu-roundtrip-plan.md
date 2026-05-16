@@ -13,6 +13,10 @@ The practical question is:
 
 SkillPilot can serve as an open-source reference implementation and test bench for this question.
 
+Reference concept paper:
+
+<https://aifyer.com/ki-lernbegleitung/versions/v1.0/schulisch-verantwortete-ki-lernbegleitung-v1.0.pdf>
+
 ## Framing
 
 MEM and the FWU Lehrplan Ontology are understood as important infrastructure for:
@@ -48,6 +52,24 @@ SkillPilot validation
 ```
 
 The second transformation must reconstruct the SkillPilot landscape from the RDF/OWL representation without reading or relying on the original SkillPilot ZIP input.
+
+## First Quality Goal
+
+The first quality goal is a semantically lossless MEM/FWU roundtrip for the mathematics Gymnasium publication package:
+
+```text
+skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+    ->
+FWU/MEM-first RDF representation with a minimal SkillPilot profile
+    ->
+reconstructed SkillPilot knowledge-landscape data
+    ->
+semantic validation
+```
+
+The goal is not to reconstruct the ZIP byte-for-byte. The goal is to reconstruct all content that is required to use, validate, and independently inspect the SkillPilot knowledge landscape.
+
+This makes the roundtrip a concrete quality gate and a concrete MEM/FWU compatibility probe. If the remaining SkillPilot profile terms point to reusable ontology gaps, the result should be turned into a focused issue and, where feasible, a small PR in `FWU-DE/lehrplan-ontologie`.
 
 ## Initial Scope
 
@@ -92,6 +114,13 @@ The current FWU Lehrplan Ontology already covers many curriculum metadata concep
 
 The roundtrip will likely require a small SkillPilot profile or extension vocabulary aligned with the FWU ontology.
 
+The first profile focus should be the two graph relations that are explicit in the concept paper's learning-goal graph:
+
+- `requires` / didactic prerequisite
+- `contains` / learning-goal composition
+
+Mappings from learner-facing views to the canonical graph are a later extension layer. They should be added once the core graph relations roundtrip cleanly.
+
 Candidate terms:
 
 ```text
@@ -100,6 +129,7 @@ skillpilot:AtomicGoal
 skillpilot:ClusterGoal
 skillpilot:didacticRequires
 skillpilot:containsGoal
+skillpilot:hasCurricularPart
 skillpilot:masteryWeight
 skillpilot:core
 skillpilot:shortKey
@@ -114,6 +144,8 @@ Important modeling constraint:
 
 A curriculum reference is not automatically a didactic prerequisite. SkillPilot needs an explicit prerequisite relation for frontier and learning-path logic.
 
+Likewise, plain parthood must be checked for domain fit. SkillPilot `contains` should be preserved as application graph containment. It may be materialized as `BFO_0000051` / `hat Teil` only through a stricter relation such as `skillpilot:hasCurricularPart`, and only when the relation is a genuine curricular part-whole relation: a cluster or goal comprises subgoals that are semantic parts of that cluster or goal. It must not be used for UI placement, ordering, loose topic association, state visibility, memorization/practice nodes, or view mappings. If FWU/MEM treats `hat Teil` as the intended relation for this strict pattern, the roundtrip should document this explicitly; otherwise a curriculum-specific relation should be discussed before being introduced.
+
 ## Deliverables
 
 1. SkillPilot ZIP export format for the selected Gymnasium scope.
@@ -123,6 +155,7 @@ A curriculum reference is not automatically a didactic prerequisite. SkillPilot 
 5. RDF/OWL profile documentation for the SkillPilot-specific terms.
 6. Roundtrip comparison report.
 7. List of ontology gaps or candidate relation additions for discussion in the FWU GitHub project.
+8. Draft issue or PR text backed by the current roundtrip evidence, if the test reveals a generally useful MEM/FWU modeling improvement.
 
 ## Success Criteria
 
@@ -148,4 +181,3 @@ Findings that concern modeling, interfaces, validation, or missing relations sho
 The intended stance is collaborative:
 
 > SkillPilot is not a counter-model to MEM. It is a concrete test bench for checking which information a MEM-compatible structure must carry so that curriculum-aware AI tutoring can derive traceable next learning steps.
-
