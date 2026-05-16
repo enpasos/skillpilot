@@ -1,7 +1,7 @@
 # Saarland Informatik Einführungsphase GOS, 2006
 
 Official source URL:
-https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3
+https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrpl%C3%A4ne/Lehrplaene_GOS_ab_2019_2020/Informatik/INEinfphFeb2006.pdf?__blob=publicationFile&v=3
 
 Local note:
 Direct scripted PDF download from saarland.de is blocked by the site protection layer. The official source was inspected through the web extraction path and the Saarland Informatik-Monitor references it as the Einführungsphase curriculum.

@@ -1,0 +1,128 @@
+name: Subject Export Release Gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      audit_source_links:
+        description: 'Run live official-source URL reachability checks.'
+        required: false
+        default: false
+        type: boolean
+      strict_source_links:
+        description: 'Fail the gate if live official-source URL checks find broken links.'
+        required: false
+        default: false
+        type: boolean
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/subject_export_release_gate.yml'
+      - 'app/package-lock.json'
+      - 'app/package.json'
+      - 'app/scripts/auditSubjectExportSourceLinks.ts'
+      - 'app/scripts/buildSubjectExportPublicationIndex.ts'
+      - 'app/scripts/buildSkillpilotExportPackage.ts'
+      - 'app/scripts/buildM5SubjectExportPackages.ts'
+      - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
+      - 'app/scripts/runSubjectExportReleaseGate.ts'
+      - 'app/scripts/validateSubjectExportPackages.ts'
+      - 'app/scripts/generateCurriculumQualityStatus.ts'
+      - 'app/public/data/**'
+      - 'curricula/DE/Gymnasium/canonical/**'
+      - 'curricula/DE/Gymnasium/composition-views/**'
+      - 'curricula/DE/Gymnasium/input/**/source-extraction/**'
+      - 'curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/**'
+      - 'curricula/DE/Gymnasium/mapping/**'
+      - 'curricula/DE/Gymnasium/provenance/**'
+      - 'curricula/DE/Gymnasium/quality/**'
+      - 'docs/landscape-runtime.schema.json'
+      - 'docs/qa-ci/status/curriculum-quality-status.json'
+      - 'docs/qa-ci/status/curriculum-quality-status.md'
+      - 'docs/production-pipelines/skillpilot-subject-export-package.md'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/subject_export_release_gate.yml'
+      - 'app/package-lock.json'
+      - 'app/package.json'
+      - 'app/scripts/auditSubjectExportSourceLinks.ts'
+      - 'app/scripts/buildSubjectExportPublicationIndex.ts'
+      - 'app/scripts/buildSkillpilotExportPackage.ts'
+      - 'app/scripts/buildM5SubjectExportPackages.ts'
+      - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
+      - 'app/scripts/runSubjectExportReleaseGate.ts'
+      - 'app/scripts/validateSubjectExportPackages.ts'
+      - 'app/scripts/generateCurriculumQualityStatus.ts'
+      - 'app/public/data/**'
+      - 'curricula/DE/Gymnasium/canonical/**'
+      - 'curricula/DE/Gymnasium/composition-views/**'
+      - 'curricula/DE/Gymnasium/input/**/source-extraction/**'
+      - 'curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/**'
+      - 'curricula/DE/Gymnasium/mapping/**'
+      - 'curricula/DE/Gymnasium/provenance/**'
+      - 'curricula/DE/Gymnasium/quality/**'
+      - 'docs/landscape-runtime.schema.json'
+      - 'docs/qa-ci/status/curriculum-quality-status.json'
+      - 'docs/qa-ci/status/curriculum-quality-status.md'
+      - 'docs/production-pipelines/skillpilot-subject-export-package.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  subject-export-release-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run subject export release gate
+        env:
+          AUDIT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.audit_source_links == true && 'true' || 'false' }}
+          STRICT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.strict_source_links == true && 'true' || 'false' }}
+        run: |
+          args=(--version 0.1.0 --enforce-committed-quality-status --enforce-clean-source-tree)
+          if [ "$AUDIT_SOURCE_LINKS" = "true" ]; then
+            args+=(--audit-source-links)
+          fi
+          if [ "$STRICT_SOURCE_LINKS" = "true" ]; then
+            args+=(--strict-source-links)
+          fi
+          npm run export:subject-release-gate -- "${args[@]}"
+
+      - name: Upload release-gate reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: subject-export-release-gate-reports
+          path: |
+            tmp/exports/*-release-report.md
+            tmp/exports/m5-subject-export-summary.json
+            tmp/exports/m5-subject-export-summary.md
+            tmp/exports/validation/subject-export-package-validation-report.json
+            tmp/exports/validation/subject-export-package-validation-report.md
+            tmp/exports/link-audit/subject-export-source-link-audit.json
+            tmp/exports/link-audit/subject-export-source-link-audit.md
+            tmp/exports/reproducibility/m5-export-reproducibility-report.json
+            tmp/exports/reproducibility/m5-export-reproducibility-report.md
+            tmp/exports/publication/subject-export-publication-index.json
+            tmp/exports/publication/subject-export-publication-index.md
+            tmp/exports/release-gate/subject-export-release-gate-report.json
+            tmp/exports/release-gate/subject-export-release-gate-report.md
