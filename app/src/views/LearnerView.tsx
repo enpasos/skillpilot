@@ -5,7 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -44,6 +44,7 @@ import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { getNextVisibleLearnerGoalSelection } from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
+import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import {
   buildDirectChildrenMap,
   buildVisibleChildrenMap,
@@ -256,6 +257,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
+  const [memoryPracticeGoalId, setMemoryPracticeGoalId] = useState<string | null>(null)
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -563,6 +565,57 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     (goal: Pick<UiGoal, 'title'>) => currentLandscapeHasMatchedCompositionView ? goal.title : getAudienceGoalTitle(goal),
     [currentLandscapeHasMatchedCompositionView],
   )
+
+  useEffect(() => {
+    setMemoryPracticeGoalId(null)
+  }, [currentGoal?.id])
+
+  const buildVerifiedRecallStartPrompt = useCallback((goal: UiGoal) => {
+    const title = getLearnerGoalTitle(goal)
+    if (localizedLanguage === 'en') {
+      return [
+        `SkillPilot ID: ${skillpilotId}`,
+        `Active learning goal: ${goal.id} - ${title}`,
+        '',
+        'Please start hard flashcard verification for this active memorization goal.',
+        'Use the SkillPilot verified-recall tools: first get the next prompt, let me answer without help, fetch the expected answer only after I have submitted my answer, then save passed/failed for the card.',
+      ].join('\n')
+    }
+    return [
+      `SkillPilot-ID: ${skillpilotId}`,
+      `Aktives Lernziel: ${goal.id} - ${title}`,
+      '',
+      'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
+      'Nutze die SkillPilot-Werkzeuge für verified recall: zuerst die nächste Frage holen, mich ohne Hilfe antworten lassen, die erwartete Antwort erst nach meiner Antwort abrufen und danach passed/failed für die Karte speichern.',
+    ].join('\n')
+  }, [getLearnerGoalTitle, localizedLanguage, skillpilotId])
+
+  const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
+    const prompt = buildVerifiedRecallStartPrompt(goal)
+    window.open(getSkillpilotGptUrl(language), '_blank', 'noopener,noreferrer')
+    let copied = false
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(prompt)
+        copied = true
+      }
+    } catch {
+      copied = false
+    }
+
+    onNotify?.(
+      copied ? 'success' : 'info',
+      copied
+        ? learnerViewCopy.memoryVerifiedRecallPromptCopied
+        : learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
+    )
+  }, [
+    buildVerifiedRecallStartPrompt,
+    language,
+    learnerViewCopy.memoryVerifiedRecallPromptCopied,
+    learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
+    onNotify,
+  ])
 
   const visibleGoals = useMemo(() => {
     if (isPersonalConfigHydrating) {
@@ -2283,24 +2336,85 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       <p className="text-text-secondary">{currentGoal.description}</p>
                     ) : null}
                   </div>
-                  <FlashcardDrill
-                    key={currentGoal.id}
-                    goalId={currentGoal.id}
-                    dataSourceUrl={getSrsSource(currentGoal)}
-                    skillPilotId={skillpilotId}
-                    readOnly={isCompatibilityAuditOnly}
-                    titleOverride={getLearnerGoalTitle(currentGoal)}
-                    onSync={syncClientData}
-                    reloadSignal={srsReloadCounter}
-                    filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                    onStateChange={({ goalId, mastery }) => {
-                      setOptimisticSrsMasteryByGoal((current) => {
-                        if (current[goalId] === mastery) return current
-                        return { ...current, [goalId]: mastery }
-                      })
-                      setSrsMasteryTick(c => c + 1)
-                    }}
-                  />
+                  {memoryPracticeGoalId === currentGoal.id ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setMemoryPracticeGoalId(null)}
+                        className="mb-4 inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+                      >
+                        <MoveRight size={16} className="rotate-180" />
+                        {learnerViewCopy.memoryPracticeBackAction}
+                      </button>
+                      <FlashcardDrill
+                        key={currentGoal.id}
+                        goalId={currentGoal.id}
+                        dataSourceUrl={getSrsSource(currentGoal)}
+                        skillPilotId={skillpilotId}
+                        readOnly={isCompatibilityAuditOnly}
+                        titleOverride={getLearnerGoalTitle(currentGoal)}
+                        onSync={syncClientData}
+                        reloadSignal={srsReloadCounter}
+                        filterTags={getSrsFilterTagsForGoal(currentGoal)}
+                        onStartVerifiedRecall={isCompatibilityAuditOnly ? undefined : () => handleStartVerifiedRecall(currentGoal)}
+                        onStateChange={({ goalId, mastery }) => {
+                          setOptimisticSrsMasteryByGoal((current) => {
+                            if (current[goalId] === mastery) return current
+                            return { ...current, [goalId]: mastery }
+                          })
+                          setSrsMasteryTick(c => c + 1)
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <div className="space-y-5">
+                      <div>
+                        <div className="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+                          {learnerViewCopy.memoryGoalModeTitle}
+                        </div>
+                        <p className="mt-2 max-w-3xl text-sm text-text-secondary">
+                          {learnerViewCopy.memoryGoalModeBody}
+                        </p>
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <button
+                          type="button"
+                          onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
+                          className="flex min-h-32 items-start gap-4 rounded-xl border border-border-color bg-slate-50/70 p-5 text-left transition-colors hover:border-sky-300 hover:bg-sky-50/80 dark:bg-slate-950/30 dark:hover:border-sky-800 dark:hover:bg-sky-950/30"
+                        >
+                          <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                            <BookOpen size={22} />
+                          </span>
+                          <span>
+                            <span className="block text-base font-semibold text-text-primary">
+                              {learnerViewCopy.memoryPracticeAction}
+                            </span>
+                            <span className="mt-2 block text-sm text-text-secondary">
+                              {learnerViewCopy.memoryPracticeBody}
+                            </span>
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleStartVerifiedRecall(currentGoal)}
+                          disabled={isCompatibilityAuditOnly}
+                          className="flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors hover:border-sky-400 hover:bg-sky-100/80 disabled:cursor-not-allowed disabled:opacity-55 dark:border-sky-900/60 dark:bg-sky-950/20 dark:hover:border-sky-700 dark:hover:bg-sky-950/40"
+                        >
+                          <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
+                            <ClipboardCheck size={22} />
+                          </span>
+                          <span>
+                            <span className="block text-base font-semibold text-text-primary">
+                              {learnerViewCopy.memoryVerifiedRecallAction}
+                            </span>
+                            <span className="mt-2 block text-sm text-text-secondary">
+                              {learnerViewCopy.memoryVerifiedRecallBody}
+                            </span>
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <GoalCard

@@ -17,6 +17,12 @@ import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
@@ -192,6 +198,83 @@ class LearnerAiControllerTest {
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verify(learnerService).setMastery(eq(skillpilotId), any(MasteryUpdateRequest.class));
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void startVerifiedRecall_usesActiveRouteReadAccessAndDelegatesToService() {
+        String skillpilotId = "learner-1";
+        VerifiedRecallStartRequest request = new VerifiedRecallStartRequest("goal-1", false);
+        VerifiedRecallPromptResponse expected = new VerifiedRecallPromptResponse(
+                "ready",
+                "ask prompt",
+                skillpilotId,
+                "goal-1",
+                "Goal",
+                3,
+                1,
+                2,
+                "card-1",
+                "Prompt",
+                "Formeln");
+
+        when(learnerService.startVerifiedRecall(skillpilotId, "de", request)).thenReturn(expected);
+
+        VerifiedRecallPromptResponse response = controller.startVerifiedRecall("de", skillpilotId, request);
+
+        assertThat(response).isSameAs(expected);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).startVerifiedRecall(skillpilotId, "de", request);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void getVerifiedRecallAnswer_usesActiveRouteReadAccessAndDelegatesToService() {
+        String skillpilotId = "learner-1";
+        VerifiedRecallAnswerRequest request = new VerifiedRecallAnswerRequest("goal-1", "card-1");
+        VerifiedRecallAnswerResponse expected = new VerifiedRecallAnswerResponse(
+                "compare",
+                "goal-1",
+                "card-1",
+                "Prompt",
+                "Expected answer",
+                "Formeln");
+
+        when(learnerService.getVerifiedRecallAnswer(skillpilotId, "de", request)).thenReturn(expected);
+
+        VerifiedRecallAnswerResponse response = controller.getVerifiedRecallAnswer("de", skillpilotId, request);
+
+        assertThat(response).isSameAs(expected);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getVerifiedRecallAnswer(skillpilotId, "de", request);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void recordVerifiedRecallResult_usesWritableSessionAndDelegatesToService() {
+        String skillpilotId = "learner-1";
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true, "ok");
+        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+                "complete",
+                "done",
+                skillpilotId,
+                "goal-1",
+                "Goal",
+                1,
+                1,
+                0,
+                null,
+                null,
+                null);
+        VerifiedRecallResultResponse expected = new VerifiedRecallResultResponse("card-1", true, 1, 0, next);
+
+        when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request)).thenReturn(expected);
+
+        VerifiedRecallResultResponse response = controller.recordVerifiedRecallResult("de", skillpilotId, request);
+
+        assertThat(response).isSameAs(expected);
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
         verifyNoMoreInteractions(learnerService);
     }
 

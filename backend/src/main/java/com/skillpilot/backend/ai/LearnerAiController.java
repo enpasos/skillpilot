@@ -8,6 +8,12 @@ import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.validation.Valid;
@@ -218,6 +224,36 @@ public class LearnerAiController {
             }
         }
         return null;
+    }
+
+    @PostMapping("/{skillpilotId}/verified-recall/start")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallPromptResponse startVerifiedRecall(
+            @PathVariable String lang,
+            @PathVariable String skillpilotId,
+            @RequestBody(required = false) VerifiedRecallStartRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecall(skillpilotId, lang, request);
+    }
+
+    @PostMapping("/{skillpilotId}/verified-recall/answer")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
+            @PathVariable String lang,
+            @PathVariable String skillpilotId,
+            @RequestBody VerifiedRecallAnswerRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
+    }
+
+    @PostMapping("/{skillpilotId}/verified-recall/result")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallResultResponse recordVerifiedRecallResult(
+            @PathVariable String lang,
+            @PathVariable String skillpilotId,
+            @RequestBody VerifiedRecallResultRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.recordVerifiedRecallResult(skillpilotId, lang, request);
     }
 
     @PostMapping("/{skillpilotId}/curriculum")

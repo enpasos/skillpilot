@@ -15,6 +15,10 @@ type VocabData = {
 
 type SrsReviewState = {
   nextReview?: number | string
+  verifiedRecall?: {
+    status?: string
+    passedAt?: string
+  }
 }
 
 type ClientStateSnapshot = {
@@ -34,6 +38,13 @@ const parseNextReview = (value: unknown): number => {
     return Number.isFinite(parsed) ? parsed : Number.NaN
   }
   return Number.NaN
+}
+
+const isVerifiedRecallPassed = (state: SrsReviewState | undefined): boolean => {
+  const verified = state?.verifiedRecall
+  return verified?.status === 'passed'
+    && typeof verified.passedAt === 'string'
+    && verified.passedAt.length > 0
 }
 
 export function useSrsMastery(
@@ -146,11 +157,19 @@ export function useSrsMastery(
         srsState = {}
       }
 
-      if (Object.keys(srsState).length === 0) {
-        const snapshot = await loadClientState(goal.id)
-        if (runId !== runRef.current) return
-        const serverState = snapshot?.srsState
-        if (serverState && Object.keys(serverState).length > 0) {
+      const snapshot = await loadClientState(goal.id)
+      if (runId !== runRef.current) return
+      const serverState = snapshot?.srsState
+      if (serverState && Object.keys(serverState).length > 0) {
+        const serverUpdatedAt = snapshot.updatedAt ? Date.parse(snapshot.updatedAt) : 0
+        const localLast = localStorage.getItem(lastSyncKey)
+        const localLastAt = localLast ? Date.parse(localLast) : 0
+        if (
+          Object.keys(srsState).length === 0
+          || !serverUpdatedAt
+          || !localLastAt
+          || serverUpdatedAt > localLastAt
+        ) {
           srsState = serverState
           try {
             localStorage.setItem(storageKey, JSON.stringify(serverState))
@@ -165,9 +184,13 @@ export function useSrsMastery(
 
       let dueCount = 0
       let nextDueAt = Number.POSITIVE_INFINITY
+      let verifiedCount = 0
 
       for (const card of cards) {
         const state = srsState[card.id]
+        if (isVerifiedRecallPassed(state)) {
+          verifiedCount += 1
+        }
         const nextReview = parseNextReview(state?.nextReview)
         if (!state || !Number.isFinite(nextReview)) {
           dueCount += 1
@@ -180,7 +203,7 @@ export function useSrsMastery(
         if (nextReview < nextDueAt) nextDueAt = nextReview
       }
 
-      results[goal.id] = cards.length > 0 && dueCount === 0 ? 1 : 0
+      results[goal.id] = cards.length > 0 && dueCount === 0 && verifiedCount === cards.length ? 1 : 0
       if (dueCount === 0 && nextDueAt < earliestNextDue) {
         earliestNextDue = nextDueAt
       }

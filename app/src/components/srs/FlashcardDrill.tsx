@@ -1,7 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, ClipboardCheck } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { calculateReview, INITIAL_DECK_STATE, type ReviewItem } from './srsLogic'
+import {
+    calculateReview,
+    INITIAL_DECK_STATE,
+    isVerifiedRecallPassed,
+    type ReviewItem,
+} from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
 import { getFlashcardDrillCopy } from '../../utils/flashcardDrillCopy'
@@ -21,18 +26,32 @@ interface FlashcardDrillProps {
         due: number
         total: number
     }) => void
+    onStartVerifiedRecall?: () => void
 }
 
 interface VocabData {
     deckId: string
     title: string
-    cards: Array<{
-        id: string
-        front: string
-        back: string
-        category: string
-        tags?: string[]
-    }>
+    cards: Flashcard[]
+}
+
+type Flashcard = {
+    id: string
+    front: string
+    back: string
+    category: string
+    tags?: string[]
+}
+
+type FlashcardStats = {
+    total: number
+    box0: number
+    box1: number
+    box2: number
+    box3: number
+    due: number
+    verifiedPassed: number
+    verifiedPending: number
 }
 
 const parseNextReview = (value: unknown): number => {
@@ -57,6 +76,59 @@ const shuffle = <T,>(items: T[]): T[] => {
     return copy
 }
 
+const isCardDue = (state: ReviewItem | undefined, now: number): boolean => {
+    const interval = state ? Number(state.interval) : Number.NaN
+    const nextReview = parseNextReview(state?.nextReview)
+    return !state || !Number.isFinite(interval) || !Number.isFinite(nextReview) || nextReview <= now
+}
+
+const calculateStats = (
+    cards: Flashcard[],
+    stateByCardId: Record<string, ReviewItem>,
+    now = Date.now()
+): FlashcardStats => {
+    let box0 = 0
+    let box1 = 0
+    let box2 = 0
+    let box3 = 0
+    let due = 0
+    let verifiedPassed = 0
+
+    cards.forEach((card) => {
+        const state = stateByCardId[card.id]
+        const interval = state ? Number(state.interval) : Number.NaN
+        const nextReview = parseNextReview(state?.nextReview)
+
+        if (!state || !Number.isFinite(interval) || !Number.isFinite(nextReview)) {
+            box0 += 1
+        } else if (interval < 3) {
+            box1 += 1
+        } else if (interval <= 10) {
+            box2 += 1
+        } else {
+            box3 += 1
+        }
+
+        if (isCardDue(state, now)) {
+            due += 1
+        }
+        if (isVerifiedRecallPassed(state?.verifiedRecall)) {
+            verifiedPassed += 1
+        }
+    })
+
+    return {
+        total: cards.length,
+        box0,
+        box1,
+        box2,
+        box3,
+        due,
+        verifiedPassed,
+        verifiedPending: Math.max(0, cards.length - verifiedPassed),
+    }
+}
+
 export function FlashcardDrill({
     dataSourceUrl,
     skillPilotId,
@@ -66,7 +138,8 @@ export function FlashcardDrill({
     readOnly = false,
     onSync,
     reloadSignal,
-    onStateChange
+    onStateChange,
+    onStartVerifiedRecall
 }: FlashcardDrillProps) {
     const { language } = useLanguage()
     const t = getFlashcardDrillCopy(language === 'en' ? 'en' : 'de')
@@ -89,13 +162,15 @@ export function FlashcardDrill({
     const lastMasteryRef = useRef<number | null>(null)
     const sessionInitialDueRef = useRef<number | null>(null)
 
-    const [stats, setStats] = useState({
+    const [stats, setStats] = useState<FlashcardStats>({
         total: 0,
         box0: 0,
         box1: 0,
         box2: 0,
         box3: 0,
-        due: 0
+        due: 0,
+        verifiedPassed: 0,
+        verifiedPending: 0
     })
 
     const [error, setError] = useState<string | null>(null)
@@ -236,53 +311,22 @@ export function FlashcardDrill({
 
                 setSrsState(loadedState)
 
-                // Process Queue
                 const now = Date.now()
-                const totalCards = data.cards.length
-                let b0 = 0, b1 = 0, b2 = 0, b3 = 0
-                let dueCardsCount = 0
-
-                const dueCards = data.cards.filter(card => {
-                    const state = loadedState[card.id]
-                    const interval = state ? Number(state.interval) : Number.NaN
-                    const nextReview = parseNextReview(state?.nextReview)
-
-                    if (!state || !Number.isFinite(interval) || !Number.isFinite(nextReview)) {
-                        b0++
-                        dueCardsCount++
-                        return true
-                    }
-
-                    if (interval < 3) b1++
-                    else if (interval <= 10) b2++
-                    else b3++
-
-                    if (nextReview <= now) {
-                        dueCardsCount++
-                        return true
-                    }
-                    return false
-                })
-
-                setStats({
-                    total: totalCards,
-                    box0: b0,
-                    box1: b1,
-                    box2: b2,
-                    box3: b3,
-                    due: dueCardsCount
-                })
+                const nextStats = calculateStats(data.cards, loadedState, now)
+                const dueCards = data.cards.filter(card => isCardDue(loadedState[card.id], now))
+                setStats(nextStats)
 
                 if (sessionInitialDueRef.current === null) {
-                    sessionInitialDueRef.current = dueCardsCount
+                    sessionInitialDueRef.current = nextStats.due
                 }
 
                 const shuffled = shuffle(dueCards)
                 setQueue(shuffled.slice(0, 20))
 
                 if (
-                    dueCardsCount === 0
-                    && totalCards > 0
+                    nextStats.due === 0
+                    && nextStats.verifiedPending === 0
+                    && nextStats.total > 0
                     && onSync
                     && !syncedAllCaughtUpRef.current
                 ) {
@@ -324,7 +368,7 @@ export function FlashcardDrill({
     useEffect(() => {
         if (!onStateChange) return
         if (stats.total <= 0) return
-        const mastery = stats.due === 0 ? 1 : 0
+        const mastery = stats.due === 0 && stats.verifiedPending === 0 ? 1 : 0
         if (lastMasteryRef.current === mastery) return
         lastMasteryRef.current = mastery
         onStateChange({
@@ -333,7 +377,7 @@ export function FlashcardDrill({
             due: stats.due,
             total: stats.total,
         })
-    }, [goalId, stats.due, stats.total, onStateChange])
+    }, [goalId, stats.due, stats.total, stats.verifiedPending, onStateChange])
 
     useEffect(() => {
         if (!isFinished) {
@@ -347,13 +391,11 @@ export function FlashcardDrill({
         void triggerSync()
     }, [isFinished, onSync, triggerSync])
 
-    const handleRate = (quality: number) => {
-        if (!currentCard) return
-
-        const rawState = srsState[currentCard.id]
+    const reviewStateForCard = (cardId: string, quality: number): ReviewItem => {
+        const rawState = srsState[cardId]
         const previousState = rawState
             ? {
-                id: currentCard.id,
+                id: cardId,
                 nextReview: parseNextReview(rawState.nextReview),
                 interval: Number.isFinite(Number(rawState.interval))
                     ? Number(rawState.interval)
@@ -361,9 +403,10 @@ export function FlashcardDrill({
                 repetition: Number.isFinite(Number(rawState.repetition))
                     ? Number(rawState.repetition)
                     : INITIAL_DECK_STATE.repetition,
-                ef: Number.isFinite(Number(rawState.ef)) ? Number(rawState.ef) : INITIAL_DECK_STATE.ef
+                ef: Number.isFinite(Number(rawState.ef)) ? Number(rawState.ef) : INITIAL_DECK_STATE.ef,
+                verifiedRecall: rawState.verifiedRecall
             }
-            : { ...INITIAL_DECK_STATE, id: currentCard.id, nextReview: 0 }
+            : { ...INITIAL_DECK_STATE, id: cardId, nextReview: 0 }
 
         const result = calculateReview(
             quality,
@@ -375,17 +418,31 @@ export function FlashcardDrill({
         // Calculate next review date
         const nextReviewDate = Date.now() + result.interval * 24 * 60 * 60 * 1000
 
-        const newState: ReviewItem = {
-            id: currentCard.id,
+        return {
+            id: cardId,
             nextReview: nextReviewDate,
+            verifiedRecall: previousState.verifiedRecall,
             ...result
         }
+    }
 
-        const updatedSrsState = { ...srsState, [currentCard.id]: newState }
+    const persistSrsState = (updatedSrsState: Record<string, ReviewItem>) => {
         setSrsState(updatedSrsState)
+        if (vocabData) {
+            setStats(calculateStats(vocabData.cards, updatedSrsState))
+        }
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
         pendingSyncRef.current = true
+    }
+
+    const handleRate = (quality: number) => {
+        if (!currentCard) return
+
+        const newState = reviewStateForCard(currentCard.id, quality)
+
+        const updatedSrsState = { ...srsState, [currentCard.id]: newState }
+        persistSrsState(updatedSrsState)
         const willFinish = currentCardIndex + 1 >= queue.length
         if (willFinish) {
             void triggerSync()
@@ -396,33 +453,6 @@ export function FlashcardDrill({
         if (onSync && nextReviewed % 20 === 0) {
             void triggerSync()
         }
-
-        // Optimistic Update for UI Feedback
-        setStats(prev => {
-            const newDue = Math.max(0, prev.due - 1)
-
-            // Calculate Box Movement
-            const isNew = !srsState[currentCard.id]
-
-            const getBox = (interval: number) => {
-                if (interval < 3) return 1
-                if (interval <= 10) return 2
-                return 3
-            }
-
-            const oldBox = isNew ? 0 : getBox(previousState.interval)
-            const newBox = getBox(result.interval)
-
-            // Don't update if box hasn't changed (unlikely for New cards, but possible for others)
-            if (oldBox === newBox) return { ...prev, due: newDue }
-
-            return {
-                ...prev,
-                due: newDue,
-                [`box${oldBox}`]: prev[`box${oldBox}` as keyof typeof prev] - 1,
-                [`box${newBox}`]: prev[`box${newBox}` as keyof typeof prev] + 1
-            }
-        })
 
         // Move to next
         setIsFlipped(false)
@@ -436,12 +466,13 @@ export function FlashcardDrill({
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
     const allCaughtUp = stats.total > 0 && stats.due === 0
+    const verificationComplete = stats.total > 0 && stats.verifiedPending === 0
 
     if (allCaughtUp) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{t.allCaughtUp}</h2>
+                <h2 className="text-2xl font-bold mb-2">{verificationComplete ? t.allCaughtUp : t.practiceCaughtUp}</h2>
                 <div className="flex gap-2 my-8 justify-center w-full max-w-sm">
                     {/* Mini Box View for Summary */}
                     <div className="flex flex-col items-center p-2 bg-gray-50 rounded dark:bg-slate-800 flex-1">
@@ -461,7 +492,20 @@ export function FlashcardDrill({
                         <span className="font-bold text-green-700 dark:text-green-300">{stats.box3}</span>
                     </div>
                 </div>
-                <p className="text-gray-500 mb-6">{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
+                <div className="mb-6 flex flex-col items-center gap-2 text-gray-500">
+                    <p>{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
+                    <p className="text-sm">{interpolateTemplate(t.verifiedProgress, [stats.verifiedPassed, stats.total])}</p>
+                </div>
+                {onStartVerifiedRecall ? (
+                    <button
+                        type="button"
+                        onClick={onStartVerifiedRecall}
+                        className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-700"
+                    >
+                        <ClipboardCheck className="h-4 w-4" />
+                        {verificationComplete ? t.retestVerification : t.startVerification}
+                    </button>
+                ) : null}
             </div>
         )
     }
@@ -585,6 +629,27 @@ export function FlashcardDrill({
                     <span className="text-[10px] text-gray-400">
                         {interpolateTemplate(t.readyForReview, [stats.due])}
                     </span>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-sky-100 bg-sky-50/60 px-3 py-3 dark:border-sky-900/40 dark:bg-sky-950/20">
+                    <div className="group relative cursor-help">
+                        <div className="text-[10px] font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-300">
+                            {interpolateTemplate(t.verifiedProgress, [stats.verifiedPassed, stats.total])}
+                        </div>
+                        <div className="absolute bottom-full left-0 mb-1 hidden w-max max-w-64 rounded bg-black px-2 py-1 text-[10px] text-white group-hover:block">
+                            {interpolateTemplate(t.verifiedProgressTooltip, [stats.verifiedPassed, stats.total])}
+                        </div>
+                    </div>
+                    {onStartVerifiedRecall ? (
+                        <button
+                            type="button"
+                            onClick={onStartVerifiedRecall}
+                            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700"
+                        >
+                            <ClipboardCheck className="h-4 w-4" />
+                            {verificationComplete ? t.retestVerification : t.startVerification}
+                        </button>
+                    ) : null}
                 </div>
             </div>
 

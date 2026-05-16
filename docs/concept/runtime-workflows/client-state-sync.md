@@ -1,6 +1,6 @@
-# Client-State Sync (SRS Progress)
+# Client-State Sync (SRS and Verified Recall Progress)
 
-This document defines the backend contract for syncing **local SRS flashcard progress** from the browser to the backend. The goal is to provide **intermediate backups** between full exports.
+This document defines the backend contract for syncing **flashcard progress** to the backend. The browser uses it for local SRS backups; Trainer/GPT verification also writes its per-card `verifiedRecall` results into the same node state.
 
 ## Endpoint
 
@@ -9,8 +9,18 @@ GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
+Trainer/GPT hard-recall tools use the AI-facing endpoints:
+
+```
+POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/start
+POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/answer
+POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/result
+```
+
+`start` returns the next prompt but not the answer. It may receive `goalId` or use the active goal; `retest: true` can request a fresh card even when all cards are already verified. `answer` returns the expected answer only after the learner has submitted their response. `result` stores `passed`/`failed`, updates SRS scheduling, and returns the next prompt status.
+
 ## Purpose
-- Persist **local SRS progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards) or on-demand.
+- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after Trainer/GPT hard-recall decisions.
 - Keep the backend **PII-free**; the only identifier is the pseudonymous `skillpilotId`.
 - Allow later recovery or cross-device continuity via **export/import**.
 
@@ -30,14 +40,28 @@ PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
       "easeFactor": 2.4,
       "repetitions": 2,
       "nextReview": 1706892870000,
-      "lastReviewed": 1706806470000
+      "lastReviewed": 1706806470000,
+      "verifiedRecall": {
+        "status": "passed",
+        "attempts": 1,
+        "failures": 0,
+        "lastTestedAt": "2026-02-02T19:28:00.000Z",
+        "passedAt": "2026-02-02T19:28:00.000Z"
+      }
     },
     "hes_funbas_c02": {
       "id": "hes_funbas_c02",
       "interval": 1,
       "easeFactor": 2.3,
       "repetitions": 1,
-      "nextReview": 1706806500000
+      "nextReview": 1706806500000,
+      "verifiedRecall": {
+        "status": "failed",
+        "attempts": 2,
+        "failures": 1,
+        "lastTestedAt": "2026-02-02T19:29:00.000Z",
+        "lastFailedAt": "2026-02-02T19:29:00.000Z"
+      }
     }
   }
 }
@@ -45,8 +69,9 @@ PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 
 Notes:
 - `nodeId` is the memorization node (learning goal) ID.
-- The `srsState` object mirrors the **per-node** local storage entry and is treated as **opaque** by the backend.
-- Fields inside each entry follow the SRS model (`interval`, `easeFactor`, `repetitions`, `nextReview`, optional `lastReviewed`).
+- The `srsState` object mirrors the **per-node** card-state entry and is stored as a JSON blob by the backend.
+- Fields inside each card entry follow the SRS model (`interval`, `ef`/`easeFactor`, `repetition`/`repetitions`, `nextReview`, optional `lastReviewed`) plus optional `verifiedRecall` hard-test metadata.
+- The verified recall lane is stored inside the card entry to keep the persistence shape backward-compatible. The backend may still inspect this lane for mastery calculation and Trainer/GPT verification tools.
 
 ## Read (GET)
 
@@ -92,5 +117,6 @@ Notes:
 
 ## Client Behavior
 - Auto-sync after every **20** reviewed cards.
-- Manual **Save** button available in the UI.
+- Trainer/GPT verification writes after each hard-test decision.
+- Manual **Save** button available in the UI where exposed.
 - On sync failure, UI indicates an error but continues to work locally.
