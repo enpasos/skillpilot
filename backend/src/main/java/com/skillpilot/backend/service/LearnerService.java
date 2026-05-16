@@ -67,6 +67,12 @@ import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import javax.crypto.Mac;
@@ -250,12 +256,24 @@ public class LearnerService {
 
     private static final class SrsCard {
         private final String id;
+        private final String front;
+        private final String back;
+        private final String category;
         private final List<String> tags;
 
-        private SrsCard(String id, List<String> tags) {
+        private SrsCard(String id, String front, String back, String category, List<String> tags) {
             this.id = id;
+            this.front = front;
+            this.back = back;
+            this.category = category;
             this.tags = tags;
         }
+    }
+
+    private record VerifiedRecallContext(
+            LearningGoal goal,
+            List<SrsCard> cards,
+            Map<String, Object> srsState) {
     }
 
     private static Long parseNextReview(Object value) {
@@ -398,6 +416,10 @@ public class LearnerService {
     }
 
     private String getVocabularySource(LearningGoal goal) {
+        return getVocabularySource(goal, null);
+    }
+
+    private String getVocabularySource(LearningGoal goal, String language) {
         if (goal == null) {
             return null;
         }
@@ -406,7 +428,14 @@ public class LearnerService {
             return null;
         }
         Object source = extended.get("vocabularySource");
-        return source instanceof String ? (String) source : null;
+        Object sourceEn = extended.get("vocabularySourceEn");
+        boolean preferEnglish = language != null && language.trim().toLowerCase(Locale.ROOT).startsWith("en");
+        Object preferred = preferEnglish ? sourceEn : source;
+        Object fallback = preferEnglish ? source : sourceEn;
+        if (preferred instanceof String text && !text.isBlank()) {
+            return text;
+        }
+        return fallback instanceof String text && !text.isBlank() ? text : null;
     }
 
     private List<String> getSrsFilterTags(LearningGoal goal) {
@@ -466,6 +495,9 @@ public class LearnerService {
                     continue;
                 }
                 String id = String.valueOf(idObj);
+                String front = stringValue(cardMap.get("front"));
+                String back = stringValue(cardMap.get("back"));
+                String category = stringValue(cardMap.get("category"));
                 Object tagsObj = cardMap.get("tags");
                 List<String> tags = null;
                 if (tagsObj instanceof List<?> tagList) {
@@ -477,12 +509,16 @@ public class LearnerService {
                     }
                     tags = collected;
                 }
-                cards.add(new SrsCard(id, tags));
+                cards.add(new SrsCard(id, front, back, category, tags));
             }
             return cards;
         } catch (Exception e) {
             return Collections.emptyList();
         }
+    }
+
+    private static String stringValue(Object value) {
+        return value instanceof String text ? text : null;
     }
 
     private Map<String, Object> loadSrsState(String skillpilotId, String nodeId) {
@@ -518,8 +554,20 @@ public class LearnerService {
             if (nextReview == null || nextReview <= now) {
                 return false;
             }
+            if (!isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+                return false;
+            }
         }
         return true;
+    }
+
+    private boolean isVerifiedRecallPassed(Object value) {
+        if (!(value instanceof Map<?, ?> verified)) {
+            return false;
+        }
+        Object status = verified.get("status");
+        Object passedAt = verified.get("passedAt");
+        return "passed".equals(status) && passedAt instanceof String text && !text.isBlank();
     }
 
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
@@ -727,6 +775,342 @@ public class LearnerService {
 
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CLIENT_STATE_UPDATED", nodeId));
         return new ClientStateResponse("ok", Instant.now(), storedKeys);
+    }
+
+    @Transactional(readOnly = true)
+    public VerifiedRecallPromptResponse startVerifiedRecall(
+            String skillpilotId,
+            String language,
+            VerifiedRecallStartRequest request) {
+        VerifiedRecallContext context = resolveVerifiedRecallContext(
+                skillpilotId,
+                request != null ? request.goalId() : null,
+                language);
+        return buildVerifiedRecallPromptResponse(
+                skillpilotId,
+                language,
+                context,
+                request != null && Boolean.TRUE.equals(request.retest()));
+    }
+
+    @Transactional(readOnly = true)
+    public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
+            String skillpilotId,
+            String language,
+            VerifiedRecallAnswerRequest request) {
+        if (request == null || request.cardId() == null || request.cardId().isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall answer requires cardId.");
+        }
+        VerifiedRecallContext context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language);
+        SrsCard card = findSrsCard(context.cards(), request.cardId());
+        if (card == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Card is not part of this memorization goal.");
+        }
+        return new VerifiedRecallAnswerResponse(
+                verifiedRecallAnswerInstruction(language),
+                context.goal().getId(),
+                card.id,
+                card.front,
+                card.back,
+                card.category);
+    }
+
+    @Transactional
+    public VerifiedRecallResultResponse recordVerifiedRecallResult(
+            String skillpilotId,
+            String language,
+            VerifiedRecallResultRequest request) {
+        if (request == null || request.cardId() == null || request.cardId().isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall result requires cardId.");
+        }
+        if (request.passed() == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "verified-recall result requires passed=true or passed=false.");
+        }
+
+        VerifiedRecallContext context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language);
+        SrsCard card = findSrsCard(context.cards(), request.cardId());
+        if (card == null) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Card is not part of this memorization goal.");
+        }
+
+        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
+        Map<String, Object> cardState = toMutableStringObjectMap(nextState.get(card.id));
+        cardState.put("id", card.id);
+
+        Instant testedAt = Instant.now();
+        applyVerifiedRecallScheduling(cardState, request.passed(), testedAt, request.feedback());
+        nextState.put(card.id, cardState);
+
+        upsertClientState(skillpilotId, context.goal().getId(), new ClientStateRequest(testedAt, nextState));
+
+        VerifiedRecallContext updatedContext = new VerifiedRecallContext(
+                context.goal(),
+                context.cards(),
+                nextState);
+        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(skillpilotId, language, updatedContext, false);
+        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        return new VerifiedRecallResultResponse(
+                card.id,
+                request.passed(),
+                verifiedCards,
+                Math.max(0, updatedContext.cards().size() - verifiedCards),
+                next);
+    }
+
+    private VerifiedRecallContext resolveVerifiedRecallContext(String skillpilotId, String requestedGoalId, String language) {
+        Learner learner = getLearner(skillpilotId);
+        String goalId = requestedGoalId != null && !requestedGoalId.isBlank()
+                ? requestedGoalId.trim()
+                : learner.getActiveGoalId();
+        if (goalId == null || goalId.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No active memorization goal. Set an active goal or provide goalId.");
+        }
+
+        LearningGoal goal = landscapeService.getGoalDefinition(goalId);
+        if (goal == null) {
+            throw new ResponseStatusException(NOT_FOUND, "Goal not found");
+        }
+        if (!isSrsGoal(goal)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "The selected goal is not a memorization/SRS goal.");
+        }
+        String source = getVocabularySource(goal, language);
+        if (source == null || source.isBlank()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "The memorization goal has no vocabulary source.");
+        }
+
+        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(source));
+        if (cards.isEmpty()) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "No cards match this memorization goal.");
+        }
+        return new VerifiedRecallContext(goal, cards, loadSrsState(skillpilotId, goal.getId()));
+    }
+
+    private List<SrsCard> filterSrsCards(LearningGoal goal, List<SrsCard> cards) {
+        if (cards == null || cards.isEmpty()) {
+            return Collections.emptyList();
+        }
+        List<String> filterTags = getSrsFilterTags(goal);
+        if (filterTags.isEmpty()) {
+            return cards;
+        }
+        return cards.stream()
+                .filter(card -> card.tags != null && card.tags.stream().anyMatch(filterTags::contains))
+                .collect(Collectors.toList());
+    }
+
+    private VerifiedRecallPromptResponse buildVerifiedRecallPromptResponse(
+            String skillpilotId,
+            String language,
+            VerifiedRecallContext context,
+            boolean retest) {
+        int verifiedCards = countVerifiedRecall(context.cards(), context.srsState());
+        SrsCard nextCard = selectNextVerifiedRecallCard(context.cards(), context.srsState());
+        if (nextCard == null && retest && !context.cards().isEmpty()) {
+            nextCard = context.cards().get(0);
+        }
+        if (nextCard == null) {
+            return new VerifiedRecallPromptResponse(
+                    "complete",
+                    verifiedRecallCompleteInstruction(language),
+                    skillpilotId,
+                    context.goal().getId(),
+                    context.goal().getTitle(),
+                    context.cards().size(),
+                    verifiedCards,
+                    0,
+                    null,
+                    null,
+                    null);
+        }
+        return new VerifiedRecallPromptResponse(
+                "ready",
+                verifiedRecallPromptInstruction(language),
+                skillpilotId,
+                context.goal().getId(),
+                context.goal().getTitle(),
+                context.cards().size(),
+                verifiedCards,
+                Math.max(0, context.cards().size() - verifiedCards),
+                nextCard.id,
+                nextCard.front,
+                nextCard.category);
+    }
+
+    private int countVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
+        if (cards == null || cards.isEmpty() || srsState == null || srsState.isEmpty()) {
+            return 0;
+        }
+        int count = 0;
+        for (SrsCard card : cards) {
+            Object rawState = srsState.get(card.id);
+            if (rawState instanceof Map<?, ?> stateMap && isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState) {
+        for (SrsCard card : cards) {
+            Object rawState = srsState != null ? srsState.get(card.id) : null;
+            if (!(rawState instanceof Map<?, ?> stateMap) || !isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    private SrsCard findSrsCard(List<SrsCard> cards, String cardId) {
+        if (cards == null || cardId == null) {
+            return null;
+        }
+        String normalized = cardId.trim();
+        return cards.stream()
+                .filter(card -> normalized.equals(card.id))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private void applyVerifiedRecallScheduling(
+            Map<String, Object> cardState,
+            boolean passed,
+            Instant testedAt,
+            String feedback) {
+        Map<String, Object> previousVerified = toMutableStringObjectMap(cardState.get("verifiedRecall"));
+        int attempts = Math.max(0, numberValue(previousVerified.get("attempts"), 0).intValue()) + 1;
+        int failures = Math.max(0, numberValue(previousVerified.get("failures"), 0).intValue()) + (passed ? 0 : 1);
+
+        int previousRepetition = Math.max(0, numberValue(firstPresent(cardState, "repetition", "repetitions"), 0).intValue());
+        double previousEf = Math.max(1.3, numberValue(firstPresent(cardState, "ef", "easeFactor"), 2.5).doubleValue());
+        int previousInterval = Math.max(0, numberValue(cardState.get("interval"), 0).intValue());
+
+        long now = testedAt.toEpochMilli();
+        if (passed) {
+            SrsReviewResult review = calculateSrsReview(5, previousInterval, previousEf, previousRepetition);
+            cardState.put("interval", review.interval());
+            cardState.put("repetition", review.repetition());
+            cardState.put("ef", review.ef());
+            cardState.put("nextReview", now + review.interval() * 24L * 60L * 60L * 1000L);
+        } else {
+            cardState.put("interval", 0);
+            cardState.put("repetition", 0);
+            cardState.put("ef", previousEf);
+            cardState.put("nextReview", now);
+        }
+        cardState.put("lastReviewed", now);
+
+        Map<String, Object> verified = new LinkedHashMap<>();
+        verified.put("status", passed ? "passed" : "failed");
+        verified.put("attempts", attempts);
+        verified.put("failures", failures);
+        verified.put("lastTestedAt", testedAt.toString());
+        if (passed) {
+            verified.put("passedAt", testedAt.toString());
+            Object lastFailedAt = previousVerified.get("lastFailedAt");
+            if (lastFailedAt instanceof String text && !text.isBlank()) {
+                verified.put("lastFailedAt", text);
+            }
+        } else {
+            verified.put("lastFailedAt", testedAt.toString());
+        }
+        if (feedback != null && !feedback.isBlank()) {
+            verified.put("lastFeedback", feedback.trim());
+        }
+        cardState.put("verifiedRecall", verified);
+    }
+
+    private record SrsReviewResult(int interval, int repetition, double ef) {
+    }
+
+    private SrsReviewResult calculateSrsReview(
+            int quality,
+            int lastInterval,
+            double lastEf,
+            int lastRepetition) {
+        int interval;
+        int repetition;
+        double ef;
+        if (quality >= 3) {
+            if (lastRepetition == 0) {
+                interval = 1;
+            } else if (lastRepetition == 1) {
+                interval = 6;
+            } else {
+                interval = Math.max(1, (int) Math.round(lastInterval * lastEf));
+            }
+            repetition = lastRepetition + 1;
+            ef = lastEf + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+            if (ef < 1.3) {
+                ef = 1.3;
+            }
+        } else {
+            interval = 0;
+            repetition = 0;
+            ef = lastEf;
+        }
+        return new SrsReviewResult(interval, repetition, ef);
+    }
+
+    private Map<String, Object> toMutableStringObjectMap(Object value) {
+        Map<String, Object> result = new LinkedHashMap<>();
+        if (value instanceof Map<?, ?> map) {
+            for (Map.Entry<?, ?> entry : map.entrySet()) {
+                if (entry.getKey() != null) {
+                    result.put(String.valueOf(entry.getKey()), entry.getValue());
+                }
+            }
+        }
+        return result;
+    }
+
+    private Object firstPresent(Map<String, Object> map, String firstKey, String secondKey) {
+        Object first = map.get(firstKey);
+        return first != null ? first : map.get(secondKey);
+    }
+
+    private Number numberValue(Object value, double fallback) {
+        if (value instanceof Number number) {
+            return number;
+        }
+        if (value instanceof String text) {
+            try {
+                return Double.parseDouble(text.trim());
+            } catch (Exception ignored) {
+                return fallback;
+            }
+        }
+        return fallback;
+    }
+
+    private boolean isEnglish(String language) {
+        return language != null && language.trim().toLowerCase(Locale.ROOT).startsWith("en");
+    }
+
+    private String verifiedRecallPromptInstruction(String language) {
+        return isEnglish(language)
+                ? "Ask the learner only this prompt. Do not reveal the expected answer before the learner has answered without help. Then call the answer tool and save passed or failed with the result tool."
+                : "Stelle dem Lernenden nur diese Frage. Verrate die erwartete Antwort nicht, bevor die Antwort ohne Hilfe abgegeben wurde. Rufe danach das Antwort-Werkzeug auf und speichere passed oder failed mit dem Ergebnis-Werkzeug.";
+    }
+
+    private String verifiedRecallAnswerInstruction(String language) {
+        return isEnglish(language)
+                ? "Compare the learner answer with the expected answer. Accept equivalent wording when the substance is correct. Then call the result tool with passed=true or passed=false."
+                : "Vergleiche die Lernendenantwort mit der erwarteten Antwort. Akzeptiere gleichwertige Formulierungen, wenn die Sache stimmt. Rufe danach das Ergebnis-Werkzeug mit passed=true oder passed=false auf.";
+    }
+
+    private String verifiedRecallCompleteInstruction(String language) {
+        return isEnglish(language)
+                ? "All required cards for this memorization goal are verified. Offer a retest only if the learner explicitly wants one."
+                : "Alle erforderlichen Karten dieses Memorize-Ziels sind hart geprüft. Biete eine erneute Prüfung nur an, wenn der Lernende sie ausdrücklich möchte.";
     }
 
     @Transactional(readOnly = true)

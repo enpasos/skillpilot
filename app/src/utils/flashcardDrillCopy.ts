@@ -4,6 +4,7 @@ export interface FlashcardDrillCopy {
     configError: string
     loading: string
     allCaughtUp: string
+    practiceCaughtUp: string
     noCardsForFilter: string
     new: string
     learn: string
@@ -29,6 +30,10 @@ export interface FlashcardDrillCopy {
     box3Tooltip: string
     speedMemorization: string
     progressTooltip: string
+    verifiedProgress: string
+    verifiedProgressTooltip: string
+    startVerification: string
+    retestVerification: string
     readyForReview: string
     tapToFlip: string
     showAnswer: string
@@ -48,6 +53,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             configError: 'Configuration Error: Missing Vocabulary Source.',
             loading: 'Loading Data...',
             allCaughtUp: 'All Caught Up!',
+            practiceCaughtUp: 'Practice caught up',
             noCardsForFilter: 'No flashcards found for the current filter.',
             new: 'New',
             learn: 'Learn',
@@ -73,6 +79,10 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             box3Tooltip: 'Mastered. Repeat > 10 days.',
             speedMemorization: 'Speed Memorization – Be honest with yourself!',
             progressTooltip: 'Session Progress: {0}/{1}',
+            verifiedProgress: 'Verified: {0}/{1}',
+            verifiedProgressTooltip: 'Hard recall passed for {0} of {1} cards.',
+            startVerification: 'Check with Trainer GPT',
+            retestVerification: 'Check with Trainer GPT',
             readyForReview: 'Cards for today: {0}. Doing 20 of them is great!',
             tapToFlip: 'Tap to flip',
             showAnswer: 'Show Answer',
@@ -89,6 +99,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             configError: 'Konfigurationsfehler: Fehlende Vokabelquelle.',
             loading: 'Lade Daten...',
             allCaughtUp: 'Alles erledigt!',
+            practiceCaughtUp: 'Übung erledigt',
             noCardsForFilter: 'Keine Karteikarten für den aktuellen Filter gefunden.',
             new: 'Neu',
             learn: 'Lernen',
@@ -114,6 +125,10 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             box3Tooltip: 'Gemeistert. Wdh. > 10 Tage.',
             speedMemorization: 'Speed Memorization – Sei ehrlich zu Dir selbst!',
             progressTooltip: 'Sitzungsfortschritt: {0}/{1}',
+            verifiedProgress: 'Geprüft: {0}/{1}',
+            verifiedProgressTooltip: 'Harter Abruf bestanden für {0} von {1} Karten.',
+            startVerification: 'Mit Trainer GPT prüfen',
+            retestVerification: 'Mit Trainer GPT prüfen',
             readyForReview: 'Bereit für heute: {0}.',
             tapToFlip: 'Zum Umdrehen tippen',
             showAnswer: 'Antwort zeigen',

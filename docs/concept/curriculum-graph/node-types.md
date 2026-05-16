@@ -76,20 +76,32 @@ Authoring note:
 
 **Purpose:** Spaced-repetition style knowledge items (facts, vocabulary, formulas).
 
-**Goal:** Maximize retention while minimizing time-on-task.
+**Goal:** Maximize retention while minimizing time-on-task, while still requiring a hard recall check before the graph treats the memorization goal as complete.
 
 **Key principles:**
 1. **SM-2 scheduling:** Reviews follow the SuperMemo-2 algorithm.
 2. **Stateful per card:** Each card stores its current interval, repetition count, easiness factor, and next review date.
 3. **Quality-driven:** User ratings map to quality scores and directly update the SM-2 state.
+4. **Verified recall gate:** SRS practice is not by itself a mastery proof. A memorization node is complete only after every required card has been answered correctly in a Trainer/GPT-led hard recall test.
+5. **Learner-triggered testing:** The learner can start this hard recall test at any time from the active memorization goal, not only when the SRS queue is empty.
 
 ### State model
 
-Each card stores a compact review state:
+Each card stores two related state lanes.
+
+The SRS practice lane stores:
 - `interval`: days until next review
 - `repetition`: consecutive successful reviews
 - `ef`: easiness factor
 - `nextReview`: timestamp (ms) for the next scheduled review
+
+The verified recall lane stores the hard-test result:
+- `verifiedRecall.status`: `passed` or `failed`
+- `verifiedRecall.attempts`: number of hard-test attempts for this card
+- `verifiedRecall.failures`: number of failed hard-test attempts
+- `verifiedRecall.lastTestedAt`: timestamp of the last hard-test decision
+- `verifiedRecall.passedAt`: timestamp of the latest passing hard-test decision, present only when the card currently counts as verified
+- `verifiedRecall.lastFailedAt`: timestamp of the latest failed hard-test decision, present after failures
 
 ### Scheduling logic (SM-2)
 
@@ -101,11 +113,37 @@ Rules applied on each review:
 ### Due and mastery semantics
 
 - A card is **due** if `nextReview <= now` or if it has no stored state yet.
-- A memorization goal is treated as **mastered** when **no cards are due today**.
+- SRS progress and verified recall progress are shown separately.
+- A memorization goal is treated as **mastered** only when:
+  - no required cards are currently due in the SRS lane, and
+  - every required card has `verifiedRecall.status = passed`.
+- Passing a hard recall test also updates the card's SRS lane as a strong successful retrieval.
+- Failing a hard recall test removes verified status for that card, schedules it back into practice, and keeps the memorization node incomplete until the card is passed in a later hard test.
+
+This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
+
+### Trainer/GPT-led hard recall
+
+The normal flashcard drill remains a Cockpit practice surface. The hard recall check is conducted by the Trainer/GPT because it needs a controlled dialog: prompt first, learner answer without card help, then answer lookup and persisted pass/fail decision.
+
+When a memorization goal is active, the runtime should expose two learner actions:
+- **Practice:** open the Cockpit SRS drill for normal spaced repetition.
+- **Verify:** hand over to the Trainer/GPT for hard recall of the current active memory goal.
+
+Runtime behavior:
+- Prefer cards that are not yet verified.
+- If all cards are already verified, allow a retest over the deck; a failed retest reopens that card.
+- The Trainer/GPT first retrieves only the card prompt.
+- The learner answers without help, preferably in writing when the check is meant to be strict.
+- Only after the learner has submitted an answer does the Trainer/GPT retrieve the expected answer.
+- The Trainer/GPT evaluates the answer and records `passed` or `failed`.
+- Passed cards count as verified immediately and are scheduled as a strong successful retrieval in SRS.
+- Failed cards remain unverified and re-enter SRS practice as due.
 
 ### Queue order
 
 Due cards are **shuffled per session** before taking up to 20 cards for a drill.
+Hard-test cards should prefer unverified cards. Retests are optional and learner-triggered.
 
 ## Exam
 

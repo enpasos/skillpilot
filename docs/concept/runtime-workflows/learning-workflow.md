@@ -66,7 +66,12 @@ Progress is stored as **mastery** on atomic goals and aggregated upward for clus
 - Atomic mastery is tracked per goal UUID on a `0.0` to `1.0` scale.
 - Cluster mastery is aggregated from contained descendants using goal weights.
 - Memorization/SRS goals are a special case.
-  - Their mastery is derived from review state rather than manually set.
+  - Their mastery is derived from card state rather than manually set.
+  - SRS scheduling shows whether cards are currently due.
+  - Verified recall records whether each required card has been answered correctly in a Trainer/GPT-led hard test.
+  - A memorization goal counts as mastered only after all required cards are verified and no required card is currently due.
+  - The learner may start the hard recall test at any time while the memorization node is the active goal.
+  - In the Cockpit, a memorization node offers practice in the SRS drill and a handoff to Trainer/GPT verification; the Cockpit itself does not grade the hard recall.
 
 When mastery changes:
 

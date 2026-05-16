@@ -4,9 +4,19 @@ export interface ReviewResult {
     ef: number; // easiness factor
 }
 
+export interface VerifiedRecallState {
+    status: 'passed' | 'failed';
+    attempts: number;
+    failures: number;
+    lastTestedAt: string;
+    passedAt?: string;
+    lastFailedAt?: string;
+}
+
 export interface ReviewItem extends ReviewResult {
     id: string;
     nextReview: number; // timestamp
+    verifiedRecall?: VerifiedRecallState;
 }
 
 /**
@@ -55,4 +65,10 @@ export const INITIAL_DECK_STATE = {
     interval: 0,
     repetition: 0,
     ef: 2.5
+}
+
+export function isVerifiedRecallPassed(value: unknown): boolean {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+    const state = value as Partial<VerifiedRecallState>;
+    return state.status === 'passed' && typeof state.passedAt === 'string' && state.passedAt.length > 0;
 }
