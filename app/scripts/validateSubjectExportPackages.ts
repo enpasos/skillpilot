@@ -42,6 +42,10 @@ type ManifestFileRecord = {
   licenseCategory: string
 }
 
+type ManifestSourceSelection = {
+  memoryCardReviewAuditCount?: number
+}
+
 type GoalRecord = {
   id: string
   requires: string[]
@@ -438,6 +442,12 @@ const validationReportHasPassed = (validationReport: JsonValue) => {
     })
 }
 
+const packageRelativePathFromManifestValue = (value: JsonValue) => (
+  typeof value === 'string' && value.trim() && !value.includes('\\') && !value.startsWith('/') && !value.split('/').includes('..')
+    ? value.trim()
+    : null
+)
+
 const validatePackage = (zipPath: string): PackageValidationResult => {
   const checks: CheckResult[] = []
   const errors: string[] = []
@@ -480,6 +490,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     const manifestPath = packageEntryPath(archiveRoot, 'metadata/manifest.json')
     const manifest = jsonObject(readZipEntryJson(zipPath, manifestPath), 'manifest')
     check(checks, 'manifest-archive-root-matches', manifest.archiveRoot === archiveRoot, String(manifest.archiveRoot ?? '(missing)'))
+    const sourceSelection = jsonObject(manifest.sourceSelection ?? {}, 'manifest.sourceSelection') as ManifestSourceSelection
 
     const manifestFiles = Array.isArray(manifest.files)
       ? manifest.files.map(parseManifestFileRecord)
@@ -611,7 +622,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
 
     const forbiddenDataEntries = entries
       .filter((entry) => entry.startsWith(`${archiveRoot}/data/`) || entry.startsWith(`${archiveRoot}/metadata/`))
-      .filter((entry) => entry.endsWith('.json') || entry.endsWith('.md'))
+      .filter((entry) => entry.endsWith('.json') || entry.endsWith('.jsonl') || entry.endsWith('.md'))
       .flatMap((entry) => {
         const text = readZipEntryText(zipPath, entry)
         return INTERNAL_DATA_PATTERNS
@@ -710,6 +721,41 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     })
     counts.cardIndexDecks = cardIndexDecks.length
     check(checks, 'card-index-package-paths-resolve', missingCardIndexEntries.length === 0, missingCardIndexEntries.join(' | ') || `${cardIndexDecks.length} deck(s)`)
+
+    const memoryAuditRoot = `${archiveRoot}/metadata/quality/memory-card-review/`
+    const memoryAuditEntries = entries.filter((entry) => entry.startsWith(memoryAuditRoot))
+    const memoryAuditReports = memoryAuditEntries.filter((entry) => entry.endsWith('.md'))
+    const memoryAuditConfigs = memoryAuditEntries.filter((entry) => entry.endsWith('.config.json'))
+    const expectedMemoryAuditCount = typeof sourceSelection.memoryCardReviewAuditCount === 'number'
+      ? sourceSelection.memoryCardReviewAuditCount
+      : 0
+    counts.memoryCardReviewAuditReports = memoryAuditReports.length
+    counts.memoryCardReviewAuditConfigs = memoryAuditConfigs.length
+    check(
+      checks,
+      'memory-card-review-audit-count-matches-manifest',
+      memoryAuditReports.length === expectedMemoryAuditCount && memoryAuditConfigs.length === expectedMemoryAuditCount,
+      `${memoryAuditReports.length} report(s), ${memoryAuditConfigs.length} config(s), manifest expects ${expectedMemoryAuditCount}`,
+    )
+
+    const memoryAuditReferenceIssues = memoryAuditConfigs.flatMap((entry) => {
+      const config = jsonObject(readZipEntryJson(zipPath, entry), 'memory-card review config')
+      return ['landscapePackagePath', 'goalLedgerPackagePath', 'cardLedgerPackagePath', 'reportPackagePath']
+        .flatMap((key) => {
+          const relativePath = packageRelativePathFromManifestValue(config[key])
+          if (!relativePath) {
+            return [`${entry}: invalid ${key}`]
+          }
+          const referencedEntry = packageEntryPath(archiveRoot, relativePath)
+          return entrySet.has(referencedEntry) ? [] : [`${entry}: missing ${key} ${referencedEntry}`]
+        })
+    })
+    check(
+      checks,
+      'memory-card-review-audit-references-resolve',
+      memoryAuditReferenceIssues.length === 0,
+      memoryAuditReferenceIssues.slice(0, 5).join(' | ') || `${memoryAuditConfigs.length} audit config(s)`,
+    )
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     errors.push(message)
@@ -732,7 +778,7 @@ const buildMarkdownReport = (params: {
   results: PackageValidationResult[]
 }) => {
   const rows = params.results
-    .map((result) => `| \`${result.zipPath}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
+    .map((result) => `| \`${result.zipPath}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
     .join('\n')
   const failedChecks = params.results.flatMap((result) => result.checks
     .filter((checkResult) => !checkResult.passed)
@@ -750,8 +796,8 @@ ${params.results.every((result) => result.passed)
 
 ## Packages
 
-| ZIP | Status | Files | Goals | State lanes | Source URLs | Source-goal refs | Review source refs | External refs | Max path |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ZIP | Status | Files | Goals | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 ${rows}
 
 ## Failed Checks

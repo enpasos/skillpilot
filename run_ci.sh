@@ -16,6 +16,9 @@ npm run validate:view-filters
 echo "--> Running Composition-View Validation"
 npm run validate:composition-views
 
+echo "--> Running Memory-Card Review Check"
+npm run quality:memory-card-review:check:all
+
 echo "--> Running Learner Goal Selection Validation"
 npm run validate:learner-goal-selection
 

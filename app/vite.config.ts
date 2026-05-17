@@ -21,6 +21,7 @@ const GYMNASIUM_MAPPING_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', '
 const SOURCE_LANDSCAPE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
 const SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-membership-registry.json')
 const SOURCE_GOAL_CLOSURE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-closure-registry.json')
+const QUALITY_STATUS_ROOT = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status')
 const QUALITY_STATUS_PATH = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status', 'curriculum-quality-status.json')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
 const execFileAsync = promisify(execFile)
@@ -1703,6 +1704,22 @@ const sendJson = (res: ServerResponse, statusCode: number, payload: unknown): vo
   res.end(JSON.stringify(payload))
 }
 
+const sendText = (res: ServerResponse, statusCode: number, body: string, contentType = 'text/plain; charset=utf-8'): void => {
+  res.statusCode = statusCode
+  res.setHeader('Content-Type', contentType)
+  res.end(body)
+}
+
+const resolveQualityStatusFilePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('docs/qa-ci/status/')) return null
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, QUALITY_STATUS_ROOT)) return null
+  const extension = path.extname(absolutePath).toLowerCase()
+  if (extension !== '.md' && extension !== '.json') return null
+  return absolutePath
+}
+
 const readJsonBody = async (req: IncomingMessage): Promise<unknown> => {
   const rawBody = await new Promise<string>((resolve, reject) => {
     let body = ''
@@ -1759,6 +1776,37 @@ const deckEditorDevPlugin = {
             path: toPosixPath(path.relative(REPO_ROOT, QUALITY_STATUS_PATH)),
             status,
           })
+          return
+        }
+
+        if (requestUrl.pathname === '/__quality-dashboard/file') {
+          if (req.method !== 'GET' && req.method !== 'HEAD') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const requestedPath = requestUrl.searchParams.get('path') ?? ''
+          const absolutePath = resolveQualityStatusFilePath(requestedPath)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid quality status file path.' })
+            return
+          }
+          if (!existsSync(absolutePath)) {
+            sendJson(res, 404, { error: 'Quality status file not found.' })
+            return
+          }
+
+          const extension = path.extname(absolutePath).toLowerCase()
+          if (req.method === 'HEAD') {
+            sendText(res, 200, '', extension === '.md' ? 'text/markdown; charset=utf-8' : 'application/json; charset=utf-8')
+            return
+          }
+          sendText(
+            res,
+            200,
+            await fs.readFile(absolutePath, 'utf8'),
+            extension === '.md' ? 'text/markdown; charset=utf-8' : 'application/json; charset=utf-8',
+          )
           return
         }
 

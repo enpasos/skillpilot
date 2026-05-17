@@ -15,6 +15,14 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
   Fachliche Kontrolle der BW-Kursstufen-Abdeckung gegen Hessen Sek II.
 - [Current Curriculum Quality Status](status/curriculum-quality-status.md)
   Generated snapshot consumed by the dashboard.
+- [Memory-Card Review Rollout](status/memory-card-review-rollout.md)
+  Generated triage view for the remaining `CQR-302` rollout.
+- [Mathematik Memory-Card Review](status/memory-card-review-canonical-math-full.md)
+  Generated audit view for the completed Mathematik `CQR-302` review.
+- [Physik Memory-Card Review](status/memory-card-review-canonical-physics-full.md)
+  Generated audit view for the completed Physik `CQR-302` review.
+- [Chemie Memory-Card Review](status/memory-card-review-canonical-chemistry-full.md)
+  Generated audit view for the completed Chemie `CQR-302` review.
 
 ## Graph Validation
 

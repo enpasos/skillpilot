@@ -243,15 +243,15 @@ Ein Curriculum kann `M0` bis `M5` erreichen.
 | `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
 | `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
-| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
-| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. |
+| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Review-Regel (`CQR-301`, `CQR-302`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
+| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-302`, `CQR-401` und `CQR-501` sind `pass`; fehlende Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen. |
 
 Wichtige Konsequenz:
 
 `M5` bedeutet nicht, dass es keine fachliche Verbesserung mehr geben kann.
 Es bedeutet:
 
-> Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
+> Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, Memory-Card-Reviews sind nachvollziehbar entschieden, und die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
 
 `M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
 
@@ -629,6 +629,67 @@ Reifeziel:
 
 - Teil von `M5`.
 
+### `CQR-302` - Memory-card decision trace
+
+Ziel:
+
+> Fuer normale atomare Lernziele ist explizit entschieden, ob Memory-Lernen fachlich gerechtfertigt ist; jede behaltene primaere Karte muss aus einer solchen Entscheidung rueckverfolgbar sein, und vorhandene Memory-Knoten/SRS-Decks muessen eng bleiben.
+
+Geprueft wird:
+
+- Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.
+- Ohne Memory-Card-Review-Konfiguration unter `curricula/DE/Gymnasium/quality/memory-card-review/` ist der Status `not_configured`; das blockiert `M5`.
+- Alle relevanten normalen atomaren Ziele im konfigurierten Scope haben einen Review-Datensatz.
+- Der gespeicherte Fingerprint des Review-Datensatzes passt zum aktuellen Zieltext und relevanten Metadaten.
+- Der Review-Status ist `no_memory_needed`, `memory_required` oder `needs_developer_review`.
+- `memory_required` muss mindestens einen existierenden Memory-Knoten und mindestens eine von diesem Knoten bereitgestellte `srs-deck:*`-ID referenzieren.
+- Jeder vorhandene Memory-Knoten im Scope muss durch mindestens einen aktuellen `memory_required`-Datensatz begruendet sein.
+- Die von den Memory-Knoten referenzierten Deckdateien muessen auffindbar und lesbar sein.
+- Primaere Karten werden separat unter `*.cards.review.jsonl` geprueft.
+- Jede behaltene Karte muss `kept`, `necessary: true` und mindestens ein konkretes `originGoalId` haben.
+- Jedes `originGoalId` einer behaltenen Karte muss ein aktuelles `memory_required`-Ziel sein und das passende Deck referenzieren.
+- Karten mit `remove` duerfen als Audit-Spur im Kartenledger bleiben, muessen aber aus den aktiven Deckdateien entfernt sein.
+- Optional erzeugt `npm run quality:memory-card-review:report` daraus einen lesbaren Markdown-Audit-Report. Der Report ist keine zweite Wahrheit, sondern eine reproduzierbare Sicht auf dieselben Ledger-Daten.
+- Kanonische Memory-Decks fuer deutsche Gymnasialfaecher liegen unter `curricula/DE/Gymnasium/memory-decks/`. Sie liegen absichtlich nicht unter `curricula/DE/Gymnasium/canonical/`, weil dieser Ordner den `LearningLandscape`-JSON-Dateien vorbehalten ist. Oeffentliche Deck-IDs, aktive Karten-IDs und Runtime-Dateinamen verwenden kanonische DE/Gymnasium-Namen wie `de_gymnasium_math_*`, nicht Bundesland- oder Pilotpraefixe wie `he`, `hes` oder `DE-HE`.
+- Bundesland-Auswahl wird ueber Composition Views, Applicability, Provenance und die Review-Ledger entschieden. Sie wird nicht durch bundeslandspezifische Deck-Duplikate oder Decknamen modelliert.
+
+Ausgeschlossen sind unter anderem:
+
+- Motivation und Orientierung,
+- Practice und Assessment,
+- Memorization- oder SRS-Ziele selbst,
+- Ziele mit `examData`.
+
+Metriken:
+
+- `reviewedGoals`: Anzahl normaler atomarer Ziele im Review-Scope.
+- `noMemoryNeeded`: Ziele, bei denen Memory-Lernen bewusst nicht angesetzt wird.
+- `memoryRequired`: Ziele, bei denen ein knapper Memory-Anteil gerechtfertigt ist.
+- `needsDeveloperReview`: offene fachliche Entscheidung.
+- `missing`, `stale`, `obsolete`: fehlende, veraltete oder nicht mehr passende Datensaetze.
+- `memoryGoals`, `tracedMemoryGoals`, `untracedMemoryGoals`: Rueckverfolgung der vorhandenen Memory-Knoten.
+- `deckIds`, `deckFiles`, `cardRows`: technische Deck-Sichtbarkeit fuer die referenzierten SRS-Daten.
+- `primaryCards`, `keptCards`, `cardsMarkedRemove`, `cardNeedsDeveloperReview`: Karten-Level-Pruefung der primaeren Decksprache.
+- `missingCardReviews`, `staleCardReviews`, `obsoleteCardReviews`, `duplicateCardReviewRecords`, `invalidCardReviewRecords`: offener Kartenledger-Aufwand.
+- `untracedMemoryRequiredGoals`: `memory_required`-Ziele, zu denen keine behaltene Karte mehr fuehrt.
+
+Status:
+
+- `pass`, wenn alle offenen Zaehlwerte `0` sind und alle Memory-Knoten getraced sind.
+- `warn`, wenn mindestens ein offener Zaehlwert groesser als `0` ist.
+
+Reifeziel:
+
+- Teil von `M5`; `not_configured`, `warn` und `fail` blockieren `M5`.
+
+Interpretation:
+
+- Memory-Lernen ist nicht der Standardfall. Die Default-Entscheidung ist `no_memory_needed`.
+- `memory_required` ist nur fuer abrufpflichtige Formeln, Begriffe, Notation, Vokabeln oder vergleichbare harte Merkelemente gedacht.
+- Die Regel ist bewusst streng: Erst die semantische Entscheidung pro Lernziel und pro Karte zaehlt, danach kommt die technische Buchhaltung.
+- Ein Memory-Deck ist dann fachlich sauber benannt, wenn es den kanonischen Lernkontext beschreibt. Herkunft aus Hessen oder einem anderen Bundesland gehoert in Provenance und Source-Ledger, nicht in die oeffentliche SRS-ID.
+- Eine initialisierte Review-Queue ohne fachliche Entscheidungen ist kein Pass. Sie macht den offenen Zustand sichtbar (`warn`), damit ein Curriculum nicht durch fehlende Konfiguration unsichtbar an `CQR-302` vorbeilaeuft.
+
 ### `CQR-401` - Composition view availability
 
 Ziel:
@@ -694,19 +755,36 @@ Interpretation:
 - `acceptedWarnings` sind keine offenen Fehler. Sie dokumentieren bewusst akzeptierte, weiterhin aktuelle Warnungen.
 - `obsoleteAcceptedWarnings` sind dagegen Qualitaetsschuld, weil die Registry dann nicht mehr zur aktuellen Compilerlage passt.
 
-## Was `M4` bei Mathematik aktuell bedeutet
+## Was `M5` bei Mathematik aktuell bedeutet
 
-Bei `Mathematik (Gymnasium, DE)` bedeutet `M4` im aktuellen Dashboard:
+Bei `Mathematik (Gymnasium, DE)` bedeutet `M5` im aktuellen Dashboard:
 
 - Sek I und Sek II sind als Pflicht-QA-Scopes registriert.
 - Sek I prueft 218 atomare Ziele.
 - Sek II prueft 397 atomare Ziele.
 - Beide Scopes haben `CQR-101`, `CQR-102`, `CQR-103` und `CQR-201` auf `pass`.
-- Die globale Review-Schicht hat `CQR-301`, `CQR-401` und `CQR-501` auf `pass`.
+- Die globale Review-Schicht hat `CQR-301`, `CQR-302`, `CQR-401` und `CQR-501` auf `pass`.
+- `CQR-302` prueft fuer den Mathematik-Piloten 750 normale atomare Ziele, davon 713 mit `no_memory_needed` und 37 mit `memory_required`; 50 aktive primaere Karten sind jeweils auf konkrete `memory_required`-Ziele zurueckgefuehrt, und alle 5 vorhandenen Memory-Knoten sind dadurch rueckverfolgt.
 
 Damit ist die Aussage:
 
-> Das gesamte kanonische Mathematik-Curriculum ist in seinen beiden konfigurierten Stufen Sek I und Sek II route- und assessment-seitig geprueft; die zusaetzlichen M4-Review- und Sichtbarkeitsregeln sind aktuell gruen.
+> Das gesamte kanonische Mathematik-Curriculum ist in seinen beiden konfigurierten Stufen Sek I und Sek II route- und assessment-seitig geprueft; die zusaetzlichen M5-Review- und Sichtbarkeitsregeln sind aktuell gruen, inklusive eines konservativen Memory-Card-Entscheidungstracings.
+
+Bei `Physik (Gymnasium, DE)` ist `CQR-302` ebenfalls konfiguriert:
+
+- Der Physik-Review prueft 425 normale atomare Ziele.
+- Davon sind 298 mit `no_memory_needed` und 127 mit `memory_required` entschieden.
+- 148 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- 15 aeltere E-Phase-Zusatzkarten sind aus den aktiven Decks entfernt und bleiben im Card-Ledger als negative Entscheidung dokumentiert.
+- Alle 5 vorhandenen Physik-Memory-Knoten sind dadurch rueckverfolgt.
+
+Bei `Chemie (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Chemie-Review prueft 376 normale atomare Ziele.
+- Davon sind 322 mit `no_memory_needed` und 54 mit `memory_required` entschieden.
+- 55 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 6 vorhandenen Chemie-Memory-Knoten sind dadurch rueckverfolgt.
+- Die Applicability der Chemie-Memory-Knoten ist konservativ auf die vom Compiler belegten Bundeslaender begrenzt; dadurch bleibt `CQR-501` ohne aktive Warnungen.
 
 Nicht gemeint ist:
 

@@ -271,6 +271,17 @@ public class GoalMappingService {
 
     private boolean isGoalMapFile(Path path) {
         String filename = path.getFileName() != null ? path.getFileName().toString().toLowerCase(Locale.ROOT) : "";
-        return filename.endsWith(FILE_SUFFIX);
+        if (!filename.endsWith(FILE_SUFFIX)) {
+            return false;
+        }
+        if (filename.endsWith(".review" + FILE_SUFFIX)) {
+            return false;
+        }
+        for (Path segment : path) {
+            if ("mapping".equals(segment.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

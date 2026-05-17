@@ -27,6 +27,9 @@ on:
       - 'app/scripts/runSubjectExportReleaseGate.ts'
       - 'app/scripts/validateSubjectExportPackages.ts'
       - 'app/scripts/generateCurriculumQualityStatus.ts'
+      - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
+      - 'app/scripts/memoryCardReview.ts'
+      - 'app/scripts/runMemoryCardReviewConfigs.ts'
       - 'app/public/data/**'
       - 'curricula/DE/Gymnasium/canonical/**'
       - 'curricula/DE/Gymnasium/composition-views/**'
@@ -38,6 +41,7 @@ on:
       - 'docs/landscape-runtime.schema.json'
       - 'docs/qa-ci/status/curriculum-quality-status.json'
       - 'docs/qa-ci/status/curriculum-quality-status.md'
+      - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
   pull_request:
     branches: [ main ]
@@ -53,6 +57,9 @@ on:
       - 'app/scripts/runSubjectExportReleaseGate.ts'
       - 'app/scripts/validateSubjectExportPackages.ts'
       - 'app/scripts/generateCurriculumQualityStatus.ts'
+      - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
+      - 'app/scripts/memoryCardReview.ts'
+      - 'app/scripts/runMemoryCardReviewConfigs.ts'
       - 'app/public/data/**'
       - 'curricula/DE/Gymnasium/canonical/**'
       - 'curricula/DE/Gymnasium/composition-views/**'
@@ -64,6 +71,7 @@ on:
       - 'docs/landscape-runtime.schema.json'
       - 'docs/qa-ci/status/curriculum-quality-status.json'
       - 'docs/qa-ci/status/curriculum-quality-status.md'
+      - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
 
 permissions:

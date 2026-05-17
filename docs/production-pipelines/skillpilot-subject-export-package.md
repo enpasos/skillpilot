@@ -40,7 +40,7 @@ cd app
 npm run export:subject-packages:validate -- --dir tmp/exports
 ```
 
-The validator treats the ZIPs as external handoff artifacts. It verifies archive integrity, package checksums, manifest file records, required layout, embedded export checks, canonical graph references, composition-view references, packaged card references, state-mapping lanes, source-index HTTP(S) links, source-goal reference resolution for review mappings, Windows-safe paths, and the absence of repository-local paths. It writes:
+The validator treats the ZIPs as external handoff artifacts. It verifies archive integrity, package checksums, manifest file records, required layout, embedded export checks, canonical graph references, composition-view references, packaged card references, memory-card review audit references where configured, state-mapping lanes, source-index HTTP(S) links, source-goal reference resolution for review mappings, Windows-safe paths, and the absence of repository-local paths. It writes:
 
 - `tmp/exports/validation/subject-export-package-validation-report.json`
 - `tmp/exports/validation/subject-export-package-validation-report.md`
@@ -71,7 +71,18 @@ data/mappings/*.review.json legacyGoalId/reviewDecisionId
 
 Official curriculum documents are referenced by URL. Repository-local source paths and learner state are outside the release artifact.
 
-Each ZIP also contains `metadata/provenance-report.md`. This is the reviewer-facing summary of the same source-trace contract: review mapping IDs resolve through `data/sources/source-goal-references.json`, and the report records the package-local counts for source-goal references, review mapping source references, unresolved references, URL issues, and text issues.
+Each ZIP also contains `metadata/provenance-report.md`. This is the reviewer-facing summary of the same source-trace contract: review mapping IDs resolve through `data/sources/source-goal-references.json`, and the report records the package-local counts for source-goal references, review mapping source references, unresolved references, URL issues, text issues, and memory-card review audits.
+
+## Memory-Card Review Audit
+
+For subjects with a configured memory-card review, the ZIP carries the package-local audit bundle under `metadata/quality/memory-card-review/`:
+
+- `*.md`: readable report for reviewer handoff.
+- `*.config.json`: package-local pointers to the canonical landscape, report, and ledgers.
+- `*.review.jsonl`: semantic decision ledger for ordinary atomic goals.
+- `*.cards.review.jsonl`: semantic decision ledger for active and removed primary cards.
+
+The package copy uses only archive-local paths such as `data/canonical/...` and `metadata/quality/...`; repository-local paths are excluded. For Mathematik, Physik, and Chemie this audit is the `CQR-302` evidence chain behind the dashboard status: every ordinary atomic goal is classified as `no_memory_needed`, `memory_required`, or `needs_developer_review`, and every primary card is classified as `kept`, `remove`, or `needs_developer_review`.
 
 For reviewer handoff, use the trace helper on any finished ZIP:
 
@@ -100,7 +111,7 @@ cd app
 npm run export:subject-release-gate -- --version 0.1.0
 ```
 
-In CI the same command is run with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if `npm run quality:curriculum-status` regenerates `docs/qa-ci/status/curriculum-quality-status.json` or `.md` differently from the committed files, or if the release package would be built from a dirty source tree.
+In CI the same command is run with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if the regenerated curriculum quality status or configured memory-card review reports differ from the committed files, if a configured memory-card review ledger fails `quality:memory-card-review:check`, or if the release package would be built from a dirty source tree.
 
 For a publication candidate, include the live source-link audit in the release gate:
 
@@ -166,6 +177,7 @@ Important paths:
 - `data/sources/source-goal-references.json`: source-goal reference index for review mapping IDs, source text anchors, source locators, source text hashes, and official document URLs.
 - `licenses/APACHE-2.0.txt`: SkillPilot repository license text.
 - `schemas/`: JSON schemas for the exported structures.
+- `metadata/quality/memory-card-review/`: package-local memory-card review reports and JSONL decision ledgers where configured.
 - `metadata/manifest.json`: package metadata, source commit, coverage, checksums, file categories, and license categories.
 - `metadata/validation-report.json`: export-time checks and counts.
 - `metadata/provenance-report.md`: readable source-trace contract and package-local provenance counts for reviewers.
@@ -186,7 +198,7 @@ Handling stays file-based and automatic:
 Current categories:
 
 - `skillpilot-software-apache-2.0`: SkillPilot software/tooling or software-facing schemas.
-- `skillpilot-data-cc-by-4.0`: SkillPilot-authored curriculum graph, views, mappings, dependency declarations, and cards.
+- `skillpilot-data-cc-by-4.0`: SkillPilot-authored curriculum graph, views, mappings, dependency declarations, cards, and memory-card review decisions.
 - `official-source-provenance-only`: source references, source index records, and source-goal reference material attributable to the original official publishers.
 - `generated-package-metadata`: generated manifest, checksums, package README, license, notice, and legal notes.
 
@@ -200,6 +212,7 @@ For each preset the selected data includes:
 - all subject composition views,
 - subject state-to-canonical mapping and review files for the 16 German states,
 - the card decks referenced by memorization/SRS goals,
+- memory-card review audit data where configured,
 - source index records and source-goal references for review mapping IDs,
 - explicit cross-subject dependency declarations when a subject graph references goals outside the package.
 

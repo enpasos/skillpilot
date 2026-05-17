@@ -69,6 +69,8 @@ jobs:
         run: npm run validate:view-filters
       - name: Validate Composition Views
         run: npm run validate:composition-views
+      - name: Check Memory-Card Reviews
+        run: npm run quality:memory-card-review:check:all
       - name: Set up Python
         uses: actions/setup-python@v6
         with:

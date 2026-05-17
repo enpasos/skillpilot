@@ -34,8 +34,8 @@ POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/result
 {
   "updatedAt": "2026-02-02T19:30:00.000Z",
   "srsState": {
-    "hes_analysis_c01": {
-      "id": "hes_analysis_c01",
+    "math_analysis_c01": {
+      "id": "math_analysis_c01",
       "interval": 3,
       "easeFactor": 2.4,
       "repetitions": 2,
@@ -49,8 +49,8 @@ POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/result
         "passedAt": "2026-02-02T19:28:00.000Z"
       }
     },
-    "hes_funbas_c02": {
-      "id": "hes_funbas_c02",
+    "math_funbas_c02": {
+      "id": "math_funbas_c02",
       "interval": 1,
       "easeFactor": 2.3,
       "repetitions": 1,
@@ -80,8 +80,8 @@ Notes:
 {
   "updatedAt": "2026-02-02T19:30:00.000Z",
   "srsState": {
-    "hes_analysis_c01": {
-      "id": "hes_analysis_c01",
+    "math_analysis_c01": {
+      "id": "math_analysis_c01",
       "interval": 3,
       "easeFactor": 2.4,
       "repetitions": 2,

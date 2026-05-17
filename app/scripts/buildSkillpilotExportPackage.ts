@@ -10,6 +10,10 @@ import {
 } from 'node:fs'
 import { basename, dirname, extname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  defaultMemoryCardReviewConfigDir,
+  discoverMemoryCardReviewConfigs,
+} from './memoryCardReviewConfigDiscovery'
 
 type JsonValue =
   | null
@@ -608,7 +612,8 @@ const licenseCategoryForRepoSource = (sourcePath: string, category: string) => {
     || category === 'composition-view'
     || category === 'mapping'
     || category === 'provenance'
-    || category === 'card-deck') {
+    || category === 'card-deck'
+    || category === 'memory-card-review-audit') {
     return 'skillpilot-data-cc-by-4.0'
   }
 
@@ -1226,6 +1231,7 @@ const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
 
   const searchDirectories = [
     resolveRepoPath('app/public/data'),
+    resolveRepoPath('curricula/DE/Gymnasium/memory-decks'),
     resolveRepoPath('curricula/DE/Gymnasium/input/HE/upper-secondary/source-json'),
   ]
 
@@ -1243,6 +1249,135 @@ const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
   })
 
   return [...selected.values()].sort((left, right) => basename(left).localeCompare(basename(right)))
+}
+
+type MemoryCardReviewAudit = {
+  reviewId: string
+  ruleVersion: string | null
+  configPath: string
+  reviewPath: string
+  cardReviewPath: string
+  reportPath: string
+  scope: JsonValue
+}
+
+const memoryCardReviewPackageBase = (reviewId: string) => `metadata/quality/memory-card-review/${slugify(reviewId)}`
+
+const selectMemoryCardReviewAudits = (landscapeId: string | undefined, errors: string[]) => {
+  if (!landscapeId) {
+    return [] as MemoryCardReviewAudit[]
+  }
+
+  return discoverMemoryCardReviewConfigs(defaultMemoryCardReviewConfigDir, { allowEmpty: true })
+    .flatMap((configPath): MemoryCardReviewAudit[] => {
+      const absoluteConfigPath = resolveRepoPath(configPath.configPath)
+      const config = jsonObject(readJson(absoluteConfigPath))
+      if (config.landscapeId !== landscapeId) {
+        return []
+      }
+
+      const reviewId = optionalString(config.reviewId)
+      const reviewPath = optionalString(config.reviewPath)
+      const reportPath = optionalString(config.reportPath)
+      const cardReviewPath = optionalString(config.cardReviewPath)
+        ?? reviewPath?.replace(/\.review\.jsonl$/iu, '.cards.review.jsonl')
+
+      if (!reviewId || !reviewPath || !reportPath || !cardReviewPath) {
+        errors.push(`Incomplete memory-card review config: ${repoRelative(absoluteConfigPath)}`)
+        return []
+      }
+
+      const resolvedReviewPath = resolveRepoPath(reviewPath)
+      const resolvedCardReviewPath = resolveRepoPath(cardReviewPath)
+      const resolvedReportPath = resolveRepoPath(reportPath)
+      ;[
+        ['goal ledger', resolvedReviewPath],
+        ['card ledger', resolvedCardReviewPath],
+        ['audit report', resolvedReportPath],
+      ].forEach(([label, absolutePath]) => {
+        if (!existsSync(absolutePath) || !statSync(absolutePath).isFile()) {
+          errors.push(`Missing memory-card review ${label} for ${reviewId}: ${repoRelative(absolutePath)}`)
+        }
+      })
+
+      return [{
+        reviewId,
+        ruleVersion: optionalString(config.ruleVersion),
+        configPath: absoluteConfigPath,
+        reviewPath: resolvedReviewPath,
+        cardReviewPath: resolvedCardReviewPath,
+        reportPath: resolvedReportPath,
+        scope: config.scope ?? null,
+      }]
+    })
+    .sort((left, right) => left.reviewId.localeCompare(right.reviewId))
+}
+
+const memoryCardReviewPackagePaths = (audit: MemoryCardReviewAudit) => {
+  const base = memoryCardReviewPackageBase(audit.reviewId)
+  return {
+    config: `${base}.config.json`,
+    goalLedger: `${base}.review.jsonl`,
+    cardLedger: `${base}.cards.review.jsonl`,
+    report: `${base}.md`,
+  }
+}
+
+const packageMemoryCardReviewReport = (
+  audit: MemoryCardReviewAudit,
+  subjectSlug: string,
+) => {
+  const paths = memoryCardReviewPackagePaths(audit)
+  return readFileSync(audit.reportPath, 'utf8')
+    .replace(
+      'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die verbindlichen Prüfdaten bleiben die JSONL-Ledger; dieser Report wird daraus reproduzierbar erzeugt.',
+      'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die paketbezogenen Prüfdaten liegen direkt neben diesem Report und werden reproduzierbar aus dem SkillPilot-Review erzeugt.',
+    )
+    .replace(/- Landscape: `[^`]+`/u, `- Landscape: \`data/canonical/${subjectSlug}.landscape.json\``)
+    .replace(/- Goal ledger: `[^`]+`/u, `- Goal ledger: \`${paths.goalLedger}\``)
+    .replace(/- Card ledger: `[^`]+`/u, `- Card ledger: \`${paths.cardLedger}\``)
+}
+
+const addMemoryCardReviewAuditEntries = (
+  entriesByPath: Map<string, PackageEntry>,
+  packageRoot: string,
+  audit: MemoryCardReviewAudit,
+  subjectSlug: string,
+) => {
+  const paths = memoryCardReviewPackagePaths(audit)
+  const category = 'memory-card-review-audit'
+  const licenseCategory = 'skillpilot-data-cc-by-4.0'
+  addEntry(entriesByPath, generatedEntry(packageRoot, paths.config, {
+    schemaVersion: 1,
+    reviewId: audit.reviewId,
+    ruleVersion: audit.ruleVersion,
+    landscapePackagePath: `data/canonical/${subjectSlug}.landscape.json`,
+    goalLedgerPackagePath: paths.goalLedger,
+    cardLedgerPackagePath: paths.cardLedger,
+    reportPackagePath: paths.report,
+    scope: audit.scope,
+  }, category, licenseCategory))
+  addEntry(entriesByPath, generatedEntry(
+    packageRoot,
+    paths.goalLedger,
+    readFileSync(audit.reviewPath, 'utf8'),
+    category,
+    licenseCategory,
+  ))
+  addEntry(entriesByPath, generatedEntry(
+    packageRoot,
+    paths.cardLedger,
+    readFileSync(audit.cardReviewPath, 'utf8'),
+    category,
+    licenseCategory,
+  ))
+  addEntry(entriesByPath, generatedEntry(
+    packageRoot,
+    paths.report,
+    packageMemoryCardReviewReport(audit, subjectSlug),
+    category,
+    licenseCategory,
+  ))
 }
 
 const cardDeckIndexRecord = (absolutePath: string) => {
@@ -1504,12 +1639,13 @@ const buildReadme = (params: {
   createdAt: string
   mappingStates: string[]
   cardDeckCount: number
+  memoryCardReviewAuditCount: number
   sourceGoalReferenceCount: number
 }) => `# ${params.packageId}
 
 SkillPilot subject export package for ${params.subject}.
 
-This package is a reproducible release artifact for the SkillPilot Gymnasium knowledge landscape. It contains the canonical subject landscape, learner-facing composition views, state-to-canonical mapping files, declared cross-subject goal references, referenced card decks, source references with text anchors, schemas, a manifest, a validation report, and SHA-256 checksums.
+This package is a reproducible release artifact for the SkillPilot Gymnasium knowledge landscape. It contains the canonical subject landscape, learner-facing composition views, state-to-canonical mapping files, declared cross-subject goal references, referenced card decks, memory-card review audit data where configured, source references with text anchors, schemas, a manifest, a validation report, and SHA-256 checksums.
 
 ## Package metadata
 
@@ -1522,6 +1658,7 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - Canonical landscape: \`data/canonical/\`
 - Covered mapping jurisdictions: ${params.mappingStates.join(', ')}
 - Included card decks: ${params.cardDeckCount}
+- Memory-card review audits: ${params.memoryCardReviewAuditCount}
 - Source-goal references: ${params.sourceGoalReferenceCount}
 
 ## Layout
@@ -1533,6 +1670,7 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - \`data/dependencies/external-goal-references.json\` declares cross-subject goal references outside this subject scope.
 - \`data/sources/source-index.json\` lists the referenced official source documents and URLs.
 - \`data/sources/source-goal-references.json\` resolves review mapping source IDs to official source-goal text, source anchors, source locators, and document URLs.
+- \`metadata/quality/memory-card-review/\` contains package-local memory-card review reports and JSONL decision ledgers where configured.
 - \`schemas/\` contains the JSON schema files needed to interpret the exported data.
 - \`metadata/manifest.json\` lists every exported file with byte size, checksum, category, and license category.
 - \`metadata/validation-report.json\` records export-time coverage checks.
@@ -1605,6 +1743,7 @@ const buildNotice = (params: {
   mappingStates: string[]
   git: GitInfo
   cardDeckCount: number
+  memoryCardReviewAuditCount: number
 }) => `# Notice
 
 Package: ${params.packageId}
@@ -1618,6 +1757,8 @@ Represented mapping jurisdictions:
 - ${params.mappingStates.join(', ')}
 
 Included card decks: ${params.cardDeckCount}
+
+Included memory-card review audits: ${params.memoryCardReviewAuditCount}
 
 Official curriculum documents are referenced by URL. No learner state and no personally identifying learner data are included.
 `
@@ -1682,6 +1823,7 @@ For each review mapping source ID, the package contains the matching source-goal
 | Unresolved review mapping source references | ${counts.unresolvedReviewMappingSourceGoalReferences ?? 0} |
 | Source-goal URL issues | ${counts.sourceGoalReferenceUrlIssues ?? 0} |
 | Source-goal text issues | ${counts.sourceGoalReferenceTextIssues ?? 0} |
+| Memory-card review audits | ${counts.memoryCardReviewAudits ?? 0} |
 
 ## Export-Time Checks
 
@@ -1747,6 +1889,7 @@ const buildReleaseReport = (params: {
 | Unresolved review mapping source references | ${params.validationReport.counts.unresolvedReviewMappingSourceGoalReferences ?? 0} |
 | Source URL issues | ${params.validationReport.counts.sourceOriginalUrlIssues ?? 0} |
 | Card decks | ${params.validationReport.counts.cardDeckFiles ?? 0} |
+| Memory-card review audits | ${params.validationReport.counts.memoryCardReviewAudits ?? 0} |
 | Max archive path length | ${params.validationReport.counts.maxPackagePathLength ?? 0} |
 
 ## Validation Checks
@@ -1798,6 +1941,7 @@ const main = () => {
   const sourceExtractionJsonFiles = sourceExtractionFiles
     .filter((file) => basename(file).endsWith('.source-extraction.json'))
   const cardDeckFiles = selectCardDeckFiles(canonicalData, errors)
+  const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
   const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
   errors.push(...sourceOriginalUrlIssues)
@@ -1841,6 +1985,7 @@ const main = () => {
   mappingFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'mapping', options.subjectSlug))
   provenanceFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'provenance', options.subjectSlug))
   cardDeckFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'card-deck', options.subjectSlug))
+  memoryCardReviewAudits.forEach((audit) => addMemoryCardReviewAuditEntries(entriesByPath, archiveRoot, audit, options.subjectSlug))
 
   addEntry(entriesByPath, generatedEntry(
     archiveRoot,
@@ -1929,6 +2074,8 @@ const main = () => {
       canonicalLandscapes: 1,
       canonicalGoals: goals.length,
       cardDeckFiles: cardDeckFiles.length,
+      memoryCardReviewAudits: memoryCardReviewAudits.length,
+      memoryCardReviewAuditFiles: memoryCardReviewAudits.length * 4,
       compositionFiles: compositionFiles.length,
       mappingFiles: mappingFiles.length,
       provenanceFiles: provenanceFiles.length,
@@ -2009,6 +2156,16 @@ const main = () => {
         details: `${cardDeckFiles.length} card deck file(s)`,
       },
       {
+        id: 'memory-card-review-audits-present',
+        passed: memoryCardReviewAudits.every((audit) => {
+          const paths = Object.values(memoryCardReviewPackagePaths(audit))
+          return paths.every((packagePath) => entriesByPath.has(`${archiveRoot}/${packagePath}`))
+        }),
+        details: memoryCardReviewAudits.length === 0
+          ? 'No memory-card review audit is configured for this subject.'
+          : `${memoryCardReviewAudits.length} audit(s), ${memoryCardReviewAudits.length * 4} package file(s)`,
+      },
+      {
         id: 'windows-safe-archive-path-lengths',
         passed: maxPackagePathLength <= WINDOWS_SAFE_ARCHIVE_PATH_LIMIT,
         details: `Longest archive path has ${maxPackagePathLength} characters: ${longestPackagePath}`,
@@ -2046,6 +2203,7 @@ const main = () => {
     createdAt,
     mappingStates,
     cardDeckCount: cardDeckFiles.length,
+    memoryCardReviewAuditCount: memoryCardReviewAudits.length,
     sourceGoalReferenceCount: sourceGoalReferences.sourceGoalReferenceCount,
   }), 'package-documentation'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'LICENSE.md', buildPackageLicense({
@@ -2058,6 +2216,7 @@ const main = () => {
     mappingStates,
     git,
     cardDeckCount: cardDeckFiles.length,
+    memoryCardReviewAuditCount: memoryCardReviewAudits.length,
   }), 'package-documentation'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'LEGAL.md', buildLegal(options.publicationProfile), 'package-documentation'))
 
@@ -2101,6 +2260,17 @@ const main = () => {
     sourceSelection: {
       canonicalLandscapePackagePath: `${archiveRoot}/data/canonical/${options.subjectSlug}.landscape.json`,
       cardDeckCount: cardDeckFiles.length,
+      memoryCardReviewAuditCount: memoryCardReviewAudits.length,
+      memoryCardReviewAuditPackagePaths: memoryCardReviewAudits.map((audit) => {
+        const paths = memoryCardReviewPackagePaths(audit)
+        return {
+          reviewId: audit.reviewId,
+          config: `${archiveRoot}/${paths.config}`,
+          goalLedger: `${archiveRoot}/${paths.goalLedger}`,
+          cardLedger: `${archiveRoot}/${paths.cardLedger}`,
+          report: `${archiveRoot}/${paths.report}`,
+        }
+      }),
       compositionScope: options.compositionDir ?? null,
       mappingTokens: options.mappingTokens,
       provenanceRecordCount: provenanceFiles.length,

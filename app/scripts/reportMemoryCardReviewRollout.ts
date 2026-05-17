@@ -1,0 +1,259 @@
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+
+type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+
+interface RuleResult {
+  id: string
+  status: RuleStatus
+  metrics?: Record<string, number>
+}
+
+interface CurriculumStatus {
+  title: string
+  maturity: MaturityLevel
+  path: string
+  rules: RuleResult[]
+}
+
+interface StatusDocument {
+  generatedAt: string
+  curricula: CurriculumStatus[]
+}
+
+interface Args {
+  statusPath: string
+  outputPath: string
+}
+
+const scriptDir = dirname(fileURLToPath(import.meta.url))
+const repoRoot = resolve(scriptDir, '../..')
+
+const defaultStatusPath = 'docs/qa-ci/status/curriculum-quality-status.json'
+const defaultOutputPath = 'docs/qa-ci/status/memory-card-review-rollout.md'
+
+const memoryCandidatePatterns: RegExp[] = [
+  /begriff/i,
+  /definition/i,
+  /definier/i,
+  /benenn/i,
+  /nenn/i,
+  /formel/i,
+  /notation/i,
+  /merk/i,
+  /regel/i,
+  /symbol/i,
+  /fachbegriff/i,
+  /vokab/i,
+  /grammatik/i,
+  /deklination/i,
+  /konjugation/i,
+  /tempus/i,
+  /kasus/i,
+  /operator/i,
+  /kennzeichen/i,
+  /merkmale/i,
+  /ordnung/i,
+  /gesetz/i,
+]
+
+function parseArgs(argv: string[]): Args {
+  const args: Args = {
+    statusPath: defaultStatusPath,
+    outputPath: defaultOutputPath,
+  }
+
+  argv.forEach((arg) => {
+    if (arg.startsWith('--status=')) {
+      args.statusPath = arg.slice('--status='.length)
+    } else if (arg.startsWith('--output=')) {
+      args.outputPath = arg.slice('--output='.length)
+    } else {
+      throw new Error(`Unknown argument: ${arg}`)
+    }
+  })
+
+  return args
+}
+
+function readJson<T>(repoPath: string): T {
+  return JSON.parse(readFileSync(resolve(repoRoot, repoPath), 'utf8')) as T
+}
+
+function isAtomicGoal(goal: LearningGoal): boolean {
+  return !Array.isArray(goal.contains) || goal.contains.length === 0
+}
+
+function isMemoryGoal(goal: LearningGoal): boolean {
+  const tags = goal.tags ?? []
+  return goal.nodeKind === 'memory'
+    || tags.includes('memorization')
+    || tags.some((tag) => tag.startsWith('srs-deck:'))
+}
+
+function isReviewRelevantGoal(goal: LearningGoal): boolean {
+  const tags = new Set(goal.tags ?? [])
+  if (tags.has('Practice') || tags.has('Assessment')) return false
+  if (tags.has('Motivation') || tags.has('Orientation')) return false
+  if (isMemoryGoal(goal)) return false
+  if ((goal as { examData?: unknown }).examData) return false
+  return true
+}
+
+function goalText(goal: LearningGoal): string {
+  return [
+    goal.title,
+    (goal as { titleEn?: string }).titleEn,
+    goal.description,
+    (goal as { descriptionEn?: string }).descriptionEn,
+  ].filter(Boolean).join(' ')
+}
+
+function isHeuristicMemoryCandidate(goal: LearningGoal): boolean {
+  const text = goalText(goal)
+  return memoryCandidatePatterns.some((pattern) => pattern.test(text))
+}
+
+function markdownCell(value: string | number): string {
+  return String(value)
+    .replace(/\|/g, '\\|')
+    .replace(/\n+/g, '<br>')
+}
+
+function markdownTable(headers: string[], rows: Array<Array<string | number>>): string[] {
+  return [
+    `| ${headers.map(markdownCell).join(' | ')} |`,
+    `| ${headers.map(() => '---').join(' | ')} |`,
+    ...rows.map((row) => `| ${row.map(markdownCell).join(' | ')} |`),
+  ]
+}
+
+function recommendationFor(title: string, candidateCount: number, memoryGoals: number): string {
+  if (memoryGoals > 0) return 'Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten.'
+  if (/Latein/.test(title)) return 'Nicht pauschal freigeben; Vokabel- und Grammatik-Memory braucht eigene Source- und Deck-Entscheidung.'
+  if (/Chemie|Biologie|Informatik/.test(title) && candidateCount > 0) {
+    return 'Fachreview vor M5; harte Begriffe/Formeln/Symbole wahrscheinlich punktuell relevant.'
+  }
+  if (/Deutsch|Geschichte|Politik|Wirtschaft/.test(title) && candidateCount > 0) {
+    return 'Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig.'
+  }
+  return 'Kann erst nach explizitem No-Memory-Review auf M5.'
+}
+
+function renderReport(status: StatusDocument): string {
+  const rows = status.curricula
+    .filter((curriculum) => {
+      const rule = curriculum.rules.find((candidate) => candidate.id === 'CQR-302')
+      return curriculum.maturity === 'M4' || rule?.status === 'pass' || rule?.status === 'warn'
+    })
+    .map((curriculum) => {
+      const landscape = readJson<LearningLandscape>(curriculum.path)
+      const reviewGoals = landscape.goals.filter((goal) => isAtomicGoal(goal) && isReviewRelevantGoal(goal))
+      const heuristicCandidates = reviewGoals.filter(isHeuristicMemoryCandidate)
+      const memoryGoals = landscape.goals.filter(isMemoryGoal)
+      const cqr302 = curriculum.rules.find((rule) => rule.id === 'CQR-302')
+      return {
+        title: curriculum.title,
+        maturity: curriculum.maturity,
+        cqr302: cqr302?.status ?? 'missing',
+        reviewGoals: reviewGoals.length,
+        heuristicCandidates: heuristicCandidates.length,
+        memoryGoals: memoryGoals.length,
+        primaryCards: cqr302?.metrics?.primaryCards ?? 0,
+        recommendation: recommendationFor(curriculum.title, heuristicCandidates.length, memoryGoals.length),
+        examples: heuristicCandidates
+          .slice(0, 5)
+          .map((goal) => goal.title)
+          .join('; ') || '-',
+      }
+    })
+    .sort((left, right) => {
+      const statusRank = { warn: 0, not_configured: 1, missing: 2, pass: 3, fail: 4 } as Record<string, number>
+      return (statusRank[left.cqr302] ?? 9) - (statusRank[right.cqr302] ?? 9)
+        || right.heuristicCandidates - left.heuristicCandidates
+        || left.title.localeCompare(right.title, 'de')
+    })
+
+  const passCount = rows.filter((row) => row.cqr302 === 'pass').length
+  const configuredCount = rows.filter((row) => row.cqr302 !== 'not_configured' && row.cqr302 !== 'missing').length
+  const notConfiguredCount = rows.filter((row) => row.cqr302 === 'not_configured' || row.cqr302 === 'missing').length
+  const openCount = rows.length - passCount
+
+  const lines: string[] = []
+  lines.push('# Memory-Card Review Rollout')
+  lines.push('')
+  lines.push(`Generated from \`${defaultStatusPath}\`; status snapshot generated at ${status.generatedAt}.`)
+  lines.push('')
+  lines.push('This report is a reproducible triage view, not a semantic decision ledger. It helps decide which curricula need real CQR-302 work next.')
+  lines.push('')
+  lines.push('Only configured memory-card reviews are enforced by CI and the subject export release gate. A heuristic candidate count is just a work queue signal; it is never a pass or fail decision by itself.')
+  lines.push('')
+  lines.push('## Current Gate')
+  lines.push('')
+  lines.push(...markdownTable(
+    ['Metric', 'Value'],
+    [
+      ['CQR-302 pass in this rollout table', passCount],
+      ['CQR-302 open in this rollout table', openCount],
+      ['Configured CQR-302 reviews', configuredCount],
+      ['Missing CQR-302 configuration', notConfiguredCount],
+    ],
+  ))
+  lines.push('')
+  lines.push('## Principles')
+  lines.push('')
+  lines.push('- Do not restore `M5` by bulk-generating `no_memory_needed` ledgers.')
+  lines.push('- `memory_required` is allowed only for compact facts, formulas, vocabulary, notation, definitions, or similar hard recall items.')
+  lines.push('- A `memory_required` goal needs an active memory node, a deck, and kept cards that trace back to that exact goal.')
+  lines.push('- Subjects without active memory decks still need an explicit semantic no-memory review before they can pass CQR-302.')
+  lines.push('')
+  lines.push('## Curriculum Triage')
+  lines.push('')
+  lines.push(...markdownTable(
+    [
+      'Curriculum',
+      'Maturity',
+      'CQR-302',
+      'Review goals',
+      'Heuristic candidates',
+      'Memory nodes',
+      'Primary cards',
+      'Recommendation',
+    ],
+    rows.map((row) => [
+      row.title,
+      row.maturity,
+      row.cqr302,
+      row.reviewGoals,
+      row.heuristicCandidates,
+      row.memoryGoals,
+      row.primaryCards,
+      row.recommendation,
+    ]),
+  ))
+  lines.push('')
+  lines.push('## Candidate Examples')
+  lines.push('')
+  rows.forEach((row) => {
+    lines.push(`### ${row.title}`)
+    lines.push('')
+    lines.push(row.examples)
+    lines.push('')
+  })
+  return `${lines.join('\n')}\n`
+}
+
+function main() {
+  const args = parseArgs(process.argv.slice(2))
+  const status = readJson<StatusDocument>(args.statusPath)
+  const outputPath = resolve(repoRoot, args.outputPath)
+  const outputDir = dirname(outputPath)
+  if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true })
+  writeFileSync(outputPath, renderReport(status), 'utf8')
+  console.log(`Wrote ${args.outputPath}`)
+}
+
+main()

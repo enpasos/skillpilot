@@ -23,7 +23,7 @@ TEXT_EXTENSIONS = {".txt", ".md", ".json", ".html", ".snapshot"}
 PDF_EXTENSION = ".pdf"
 MATH_KEYWORDS = ("mathematik", "mathe", "math")
 EXCLUDED_PATH_SEGMENTS = ("/abi/",)
-EXCLUDED_BASENAME_PREFIXES = ("hes_math_flashcards_",)
+EXCLUDED_BASENAME_PREFIXES = ("de_gymnasium_math_flashcards_",)
 MAX_FLAT_FILENAME_LENGTH = 220
 
 

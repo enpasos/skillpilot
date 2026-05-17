@@ -256,6 +256,7 @@ const COPY = {
     jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
     jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
     mappingPipeline: 'Passage-Extraction',
+    memoryReview: 'Memory-Review',
     nextMaturityGate: 'Nächster Meilenstein',
     blockedBy: 'Blockiert durch',
     openBlockers: 'offen',
@@ -297,6 +298,27 @@ const COPY = {
     routeScopes: 'QA-Scopes',
     rules: 'Regeln',
     details: 'Details',
+    m5ReviewGates: {
+      title: 'M5-Review-Gates',
+      hint: 'Diese Gates erklären den M5-Zähler: Ein Curriculum bleibt nur dann M5, wenn jede M5-Review-Regel bestanden ist; nicht konfigurierte Pflicht-Reviews zählen als offen.',
+      configured: 'bewertet',
+      passed: 'bestanden',
+      open: 'offen',
+    },
+    memoryTrace: {
+      title: 'Memory-Review',
+      auditReport: 'Audit-Report',
+      goalDecisions: 'Zielentscheidungen',
+      requiredGoals: 'Memory-Ziele',
+      noMemoryNeeded: 'ohne Memory',
+      required: 'erforderlich',
+      activeCards: 'aktive Karten',
+      keptWithOriginTraces: 'mit Herkunftsspur behalten',
+      openCardIssues: 'offene Kartenpunkte',
+      tracedDecks: 'Decks getraced',
+      noOpenIssues: 'Keine offenen Karten- oder Herkunftspunkte.',
+      openIssues: 'Offene Punkte in Karten- oder Herkunftsprüfung.',
+    },
     noData: 'Kein Status geladen.',
     generateHint: 'Status mit npm run quality:curriculum-status erzeugen.',
     labels: {
@@ -360,6 +382,7 @@ const COPY = {
     jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
     jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
     mappingPipeline: 'Passage extraction',
+    memoryReview: 'Memory review',
     nextMaturityGate: 'Next milestone',
     blockedBy: 'Blocked by',
     openBlockers: 'open',
@@ -401,6 +424,27 @@ const COPY = {
     routeScopes: 'QA scopes',
     rules: 'Rules',
     details: 'Details',
+    m5ReviewGates: {
+      title: 'M5 review gates',
+      hint: 'These gates explain the M5 count: a curriculum stays M5 only when every M5 review rule passes; missing required review configuration counts as open.',
+      configured: 'evaluated',
+      passed: 'passed',
+      open: 'open',
+    },
+    memoryTrace: {
+      title: 'Memory review',
+      auditReport: 'Audit report',
+      goalDecisions: 'goal decisions',
+      requiredGoals: 'memory goals',
+      noMemoryNeeded: 'no memory',
+      required: 'required',
+      activeCards: 'active cards',
+      keptWithOriginTraces: 'kept with origin traces',
+      openCardIssues: 'open card issues',
+      tracedDecks: 'decks traced',
+      noOpenIssues: 'No open card or origin-trace issues.',
+      openIssues: 'Open issues in card or origin-trace review.',
+    },
     noData: 'No status loaded.',
     generateHint: 'Generate status with npm run quality:curriculum-status.',
     labels: {
@@ -437,6 +481,7 @@ const maturityClass: Record<MaturityLevel, string> = {
 
 const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5']
 const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
+const m5ReviewRuleIds = ['CQR-301', 'CQR-302', 'CQR-401', 'CQR-501']
 
 const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
   covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
@@ -492,6 +537,69 @@ function countStatus(curriculum: CurriculumStatus, status: RuleStatus): number {
   return collectRules(curriculum).filter((rule) => rule.status === status).length
 }
 
+function memoryReviewRule(curriculum: CurriculumStatus): RuleResult | null {
+  return collectRules(curriculum).find((rule) => rule.id === 'CQR-302') ?? null
+}
+
+function memoryReviewOpenIssues(rule: RuleResult): number {
+  return [
+    'needsDeveloperReview',
+    'missing',
+    'stale',
+    'obsolete',
+    'duplicateRecords',
+    'invalidRecords',
+    'untracedMemoryRequiredGoals',
+    'cardsMarkedRemove',
+    'cardNeedsDeveloperReview',
+    'missingCardReviews',
+    'staleCardReviews',
+    'obsoleteCardReviews',
+    'duplicateCardReviewRecords',
+    'invalidCardReviewRecords',
+    'untracedMemoryGoals',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+}
+
+function qualityStatusFileHref(repoPath: string): string {
+  return `/__quality-dashboard/file?path=${encodeURIComponent(repoPath)}`
+}
+
+function memoryAuditReportPath(rule: RuleResult): string | null {
+  for (const detail of rule.details ?? []) {
+    const match = detail.match(/\baudit report (docs\/qa-ci\/status\/[^\s]+\.md)\b/)
+    if (match?.[1]) return match[1]
+  }
+  return null
+}
+
+function m5ReviewGateStats(status: QualityStatusDocument) {
+  const catalogById = new Map(status.ruleCatalog.map((rule) => [rule.id, rule]))
+  const allRules = status.curricula.flatMap(collectRules)
+
+  return m5ReviewRuleIds.map((ruleId) => {
+    const rules = allRules.filter((rule) => rule.id === ruleId)
+    const counts: Record<RuleStatus, number> = {
+      pass: 0,
+      warn: 0,
+      fail: 0,
+      not_configured: 0,
+    }
+    rules.forEach((rule) => {
+      counts[rule.status] += 1
+    })
+    const open = counts.warn + counts.fail + counts.not_configured
+    return {
+      id: ruleId,
+      label: catalogById.get(ruleId)?.label ?? ruleId,
+      configured: rules.length,
+      pass: counts.pass,
+      open,
+      status: rules.length > 0 && open === 0 ? 'pass' as const : open > 0 ? 'warn' as const : 'not_configured' as const,
+    }
+  })
+}
+
 function getMaturityGate(curriculum: CurriculumStatus, ruleCatalog: RuleCatalogEntry[]) {
   const currentIndex = maturityOrder.indexOf(curriculum.maturity)
   if (currentIndex < 0 || currentIndex >= maturityOrder.length - 1) return null
@@ -538,6 +646,16 @@ const MaturityBadge: React.FC<{ level: MaturityLevel }> = ({ level }) => (
     {level}
   </span>
 )
+
+type DashboardCopy = (typeof COPY)[keyof typeof COPY]
+
+function metricValue(rule: RuleResult, key: string): number {
+  return rule.metrics?.[key] ?? 0
+}
+
+function percent(value: number, total: number): number {
+  return total > 0 ? Math.round((value / total) * 100) : 0
+}
 
 export const CurriculumQualityDashboardView: React.FC = () => {
   const { language } = useLanguage()
@@ -601,6 +719,8 @@ export const CurriculumQualityDashboardView: React.FC = () => {
     if (!payload || !selectedCurriculum) return null
     return getMaturityGate(selectedCurriculum, payload.status.ruleCatalog)
   }, [payload, selectedCurriculum])
+  const selectedMemoryReviewRule = selectedCurriculum ? memoryReviewRule(selectedCurriculum) : null
+  const m5GateStats = useMemo(() => payload ? m5ReviewGateStats(payload.status) : [], [payload])
 
   const summary = payload?.status.summary
   const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
@@ -703,6 +823,46 @@ export const CurriculumQualityDashboardView: React.FC = () => {
           </section>
         ) : null}
 
+        {m5GateStats.length > 0 ? (
+          <section className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+              <div>
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-text-secondary">{copy.m5ReviewGates.title}</h2>
+                <p className="mt-1 max-w-3xl text-xs text-text-secondary">{copy.m5ReviewGates.hint}</p>
+              </div>
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+              {m5GateStats.map((gate) => (
+                <div
+                  key={gate.id}
+                  className={`rounded-xl border p-3 ${
+                    gate.status === 'pass'
+                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                      : gate.status === 'warn'
+                        ? 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                        : 'border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="font-mono text-xs font-semibold">{gate.id}</div>
+                      <div className="mt-1 truncate text-sm font-semibold" title={gate.label}>{gate.label}</div>
+                    </div>
+                    <span className="shrink-0 rounded-full border border-current/20 px-2 py-0.5 text-xs font-semibold tabular-nums">
+                      {gate.pass}/{gate.configured}
+                    </span>
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                    <span>{gate.configured} {copy.m5ReviewGates.configured}</span>
+                    <span>{gate.pass} {copy.m5ReviewGates.passed}</span>
+                    <span>{gate.open} {copy.m5ReviewGates.open}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="grid grid-cols-1 gap-4 xl:grid-cols-[1.45fr_1fr]">
           <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
             <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -734,7 +894,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[1120px] text-left text-sm">
+              <table className="w-full min-w-[1200px] text-left text-sm">
                 <thead className="border-b border-border-color text-xs uppercase tracking-wide text-text-secondary">
                   <tr>
                     <th className="py-2 pr-3">{copy.curricula}</th>
@@ -742,6 +902,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     <th className="py-2 pr-3">{copy.nextMaturityGate}</th>
                     <th className="py-2 pr-3 text-right">{copy.goals}</th>
                     <th className="py-2 pr-3 text-right">{copy.atomic}</th>
+                    <th className="py-2 pr-3 text-right">{copy.memoryReview}</th>
                     <th className="py-2 pr-3 text-right">{copy.mappingPipeline}</th>
                     <th className="py-2 pr-3 text-right">{copy.jurisdictions}</th>
                     <th className="py-2 pr-3 text-right">{copy.routeScopes}</th>
@@ -754,6 +915,8 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                     const rowMaturityGate = payload ? getMaturityGate(curriculum, payload.status.ruleCatalog) : null
                     const blockerIds = rowMaturityGate?.blockers.map((rule) => rule.id) ?? []
                     const visibleBlockerIds = blockerIds.slice(0, 3)
+                    const rowMemoryReviewRule = memoryReviewRule(curriculum)
+                    const rowMemoryOpenIssues = rowMemoryReviewRule ? memoryReviewOpenIssues(rowMemoryReviewRule) : 0
 
                     return (
                       <tr
@@ -799,6 +962,22 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         </td>
                         <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
                         <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
+                        <td className="py-3 pr-3 text-right tabular-nums">
+                          {rowMemoryReviewRule?.metrics ? (
+                            <span
+                              className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold ${
+                                rowMemoryReviewRule.status === 'pass' && rowMemoryOpenIssues === 0
+                                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                  : rowMemoryReviewRule.status === 'fail'
+                                    ? 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300'
+                                    : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                              }`}
+                              title={rowMemoryReviewRule.summary}
+                            >
+                              {metricValue(rowMemoryReviewRule, 'keptCards')}/{metricValue(rowMemoryReviewRule, 'primaryCards')}
+                            </span>
+                          ) : '—'}
+                        </td>
                         <td className="py-3 pr-3 text-right tabular-nums">
                           {curriculum.mappingPipeline
                             ? (() => {
@@ -896,12 +1075,28 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                       <div className="mt-3 space-y-2">
                         <div className="text-xs font-semibold uppercase tracking-wide">{copy.blockedBy}</div>
                         {selectedMaturityGate.blockers.map((rule) => (
-                          <RuleRow key={`maturity-gate-${rule.id}`} rule={rule} labels={copy.labels} />
+                          <RuleRow key={`maturity-gate-${rule.id}`} rule={rule} labels={copy.labels} copy={copy} />
                         ))}
                       </div>
                     ) : (
                       <div className="mt-3 text-xs font-semibold">{copy.gateReady}</div>
                     )}
+                  </div>
+                ) : null}
+
+                {selectedMemoryReviewRule?.metrics ? (
+                  <div className="rounded-xl border border-border-color p-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-secondary">
+                          <ListChecks size={15} />
+                          <span>{copy.memoryReview}</span>
+                        </h3>
+                        <p className="mt-1 text-xs text-text-secondary">{selectedMemoryReviewRule.summary}</p>
+                      </div>
+                      <StatusBadge status={selectedMemoryReviewRule.status} label={copy.labels[selectedMemoryReviewRule.status]} />
+                    </div>
+                    <MemoryCardTrace rule={selectedMemoryReviewRule} copy={copy} />
                   </div>
                 ) : null}
 
@@ -1254,7 +1449,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                           </div>
                           <div className="space-y-2">
                             {scope.rules.map((rule) => (
-                              <RuleRow key={`${scope.scopeId}-${rule.id}`} rule={rule} labels={copy.labels} />
+                              <RuleRow key={`${scope.scopeId}-${rule.id}`} rule={rule} labels={copy.labels} copy={copy} />
                             ))}
                           </div>
                         </div>
@@ -1270,7 +1465,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                   </h3>
                   <div className="space-y-2">
                     {selectedCurriculum.rules.map((rule) => (
-                      <RuleRow key={rule.id} rule={rule} labels={copy.labels} />
+                      <RuleRow key={rule.id} rule={rule} labels={copy.labels} copy={copy} />
                     ))}
                   </div>
                 </div>
@@ -1285,7 +1480,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
   )
 }
 
-const RuleRow: React.FC<{ rule: RuleResult; labels: Record<RuleStatus, string> }> = ({ rule, labels }) => {
+const RuleRow: React.FC<{ rule: RuleResult; labels: Record<RuleStatus, string>; copy: DashboardCopy }> = ({ rule, labels, copy }) => {
   const [expanded, setExpanded] = useState(false)
   const metricEntries = Object.entries(rule.metrics ?? {})
 
@@ -1307,6 +1502,7 @@ const RuleRow: React.FC<{ rule: RuleResult; labels: Record<RuleStatus, string> }
           ))}
         </div>
       ) : null}
+      {rule.id === 'CQR-302' && rule.metrics ? <MemoryCardTrace rule={rule} copy={copy} /> : null}
       {rule.details && rule.details.length > 0 ? (
         <div className="mt-3">
           <button
@@ -1325,6 +1521,90 @@ const RuleRow: React.FC<{ rule: RuleResult; labels: Record<RuleStatus, string> }
           ) : null}
         </div>
       ) : null}
+    </div>
+  )
+}
+
+const MemoryCardTrace: React.FC<{ rule: RuleResult; copy: DashboardCopy }> = ({ rule, copy }) => {
+  const auditReportPath = memoryAuditReportPath(rule)
+  const reviewedGoals = metricValue(rule, 'reviewedGoals')
+  const noMemoryNeeded = metricValue(rule, 'noMemoryNeeded')
+  const memoryRequired = metricValue(rule, 'memoryRequired')
+  const primaryCards = metricValue(rule, 'primaryCards')
+  const keptCards = metricValue(rule, 'keptCards')
+  const memoryGoals = metricValue(rule, 'memoryGoals')
+  const tracedMemoryGoals = metricValue(rule, 'tracedMemoryGoals')
+  const openGoalIssues = [
+    'needsDeveloperReview',
+    'missing',
+    'stale',
+    'obsolete',
+    'duplicateRecords',
+    'invalidRecords',
+    'untracedMemoryRequiredGoals',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+  const openCardIssues = [
+    'cardsMarkedRemove',
+    'cardNeedsDeveloperReview',
+    'missingCardReviews',
+    'staleCardReviews',
+    'obsoleteCardReviews',
+    'duplicateCardReviewRecords',
+    'invalidCardReviewRecords',
+  ].reduce((sum, key) => sum + metricValue(rule, key), 0)
+  const openIssues = openGoalIssues + openCardIssues + metricValue(rule, 'untracedMemoryGoals')
+
+  const rows = [
+    {
+      label: copy.memoryTrace.goalDecisions,
+      value: `${reviewedGoals}`,
+      detail: `${noMemoryNeeded} ${copy.memoryTrace.noMemoryNeeded} · ${memoryRequired} ${copy.memoryTrace.required} (${percent(memoryRequired, reviewedGoals)}%)`,
+    },
+    {
+      label: copy.memoryTrace.activeCards,
+      value: `${keptCards}/${primaryCards}`,
+      detail: `${percent(keptCards, primaryCards)}% ${copy.memoryTrace.keptWithOriginTraces}`,
+    },
+    {
+      label: copy.memoryTrace.tracedDecks,
+      value: `${tracedMemoryGoals}/${memoryGoals}`,
+      detail: copy.memoryTrace.requiredGoals,
+    },
+    {
+      label: copy.memoryTrace.openCardIssues,
+      value: `${openIssues}`,
+      detail: openIssues === 0 ? copy.memoryTrace.noOpenIssues : copy.memoryTrace.openIssues,
+    },
+  ]
+
+  return (
+    <div className="mt-3 border-t border-border-color pt-3">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">
+          {copy.memoryTrace.title}
+        </div>
+        {auditReportPath ? (
+          <a
+            href={qualityStatusFileHref(auditReportPath)}
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs font-semibold text-sky-700 hover:text-sky-500 dark:text-sky-300"
+          >
+            {copy.memoryTrace.auditReport}
+          </a>
+        ) : null}
+      </div>
+      <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:grid-cols-4">
+        {rows.map((row) => (
+          <div key={row.label} className="min-w-0">
+            <div className="text-text-secondary">{row.label}</div>
+            <div className={`mt-0.5 text-base font-semibold tabular-nums ${row.label === copy.memoryTrace.openCardIssues && openIssues > 0 ? 'text-amber-600 dark:text-amber-300' : 'text-text-primary'}`}>
+              {row.value}
+            </div>
+            <div className="mt-0.5 text-text-secondary">{row.detail}</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
