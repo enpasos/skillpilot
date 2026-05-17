@@ -85,6 +85,31 @@ class GoalMappingServiceTest {
     }
 
     @Test
+    void doesNotParseJsonFilesOutsideMappingDirectories() throws IOException {
+        writeJson(tempDir.resolve("json/broken.json"), "{");
+        writeJson(tempDir.resolve("input/HE/source-json/source-extraction.json"), "{");
+        writeJson(tempDir.resolve("mapping/runtime.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-1",
+                      "canonicalGoalId": "canon-1",
+                      "matchType": "exact"
+                    }
+                  ]
+                }
+                """);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).hasSize(1);
+        assertThat(service.findByLegacyGoalId("legacy-1")).isPresent();
+    }
+
+    @Test
     void rejectsConflictingMappingsForSameLegacyGoalId() throws IOException {
         writeJson(tempDir.resolve("mapping/one.json"), """
                 {
@@ -204,6 +229,30 @@ class GoalMappingServiceTest {
         assertThat(service.getAllMappings()).hasSize(1);
         assertThat(service.findByLegacyGoalId("legacy-runtime")).isPresent();
         assertThat(service.findByLegacyGoalId("source-goal-1")).isEmpty();
+    }
+
+    @Test
+    void doesNotParseReviewJsonFilesAsRuntimeMappings() throws IOException {
+        writeJson(tempDir.resolve("mapping/source_extraction.review.json"), "{");
+        writeJson(tempDir.resolve("mapping/runtime.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-runtime",
+                      "canonicalGoalId": "canon-runtime",
+                      "matchType": "exact"
+                    }
+                  ]
+                }
+                """);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).hasSize(1);
+        assertThat(service.findByLegacyGoalId("legacy-runtime")).isPresent();
     }
 
     @Test

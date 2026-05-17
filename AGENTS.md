@@ -338,6 +338,41 @@ Process:
 * The local Workbench route `/semantic-atomicity-review` is only an algorithmic ledger editor. Semantic bulk review decisions are made from the Codex command line and then written back to the ledger.
 * The pilot documentation is `docs/qa-ci/semantic-atomicity-review.md`.
 
+### 7.2 Memory-card review
+
+Memory/SRS cards are not a default learning strategy. They are justified only where a learner must reliably recall compact facts, formulas, vocabulary, notation, definitions, or similar hard memory items. Ordinary mathematical understanding should remain anchored in explanation, worked examples, problem solving, `requires`, and assessment nodes.
+
+Rule:
+
+* Normal SkillPilot learning goals must exist first.
+* Then all relevant ordinary atomic goals in the configured scope are reviewed for memory-card suitability.
+* The review is tracked under `curricula/DE/Gymnasium/quality/memory-card-review/`.
+* Review records use `no_memory_needed`, `memory_required`, or `needs_developer_review`.
+* `memory_required` records must reference concrete `memoryGoalIds` and `deckIds`.
+* Every active primary card must also be reviewed in the matching `*.cards.review.jsonl` ledger.
+* A kept card needs `kept`, `necessary: true`, and at least one concrete `originGoalId`.
+* Each `originGoalId` of a kept card must be a current `memory_required` ordinary atomic goal and must reference the card's deck.
+* Cards marked `remove` may stay in the card ledger as an audit trail, but they must be removed from active deck files.
+* Every existing `nodeKind: "memory"` / `memorization` / `srs-deck:*` goal in the configured scope must be traced back through kept cards and at least one `memory_required` decision.
+* Review records include a fingerprint of semantic goal fields, so goal text changes make the decision stale.
+* Human-readable audit reports under `docs/qa-ci/status/memory-card-review-*.md` are generated from the ledgers; they must not be edited as a second source of truth.
+* `CQR-302` is the M5 dashboard rule for memory-card decision tracing. Missing memory-card review configuration counts as open and blocks `M5`; it is currently completed for `Mathematik (Gymnasium, DE)`, `Physik (Gymnasium, DE)`, and `Chemie (Gymnasium, DE)`.
+
+Naming and ownership:
+
+* Public memory decks for canonical German Gymnasium subjects are owned by the DE/Gymnasium canonical layer, not by a Bundesland source lane.
+* Deck IDs, active card IDs, and public deck filenames must not encode source-state prefixes such as `he`, `hes`, or `DE-HE`; use canonical scope names such as `de_gymnasium_math_*`, `de_gymnasium_physics_*`, and `de_gymnasium_chemistry_*`.
+* Canonical deck source files live under `curricula/DE/Gymnasium/memory-decks/` and are deployed to runtime `/data/...` files. They intentionally do not live below `curricula/DE/Gymnasium/canonical/`, because that directory is reserved for `LearningLandscape` JSON files scanned by validators.
+* Bundesland-specific visibility is handled by composition views, applicability, provenance, and review ledgers. It must not be encoded by duplicating decks or by naming a canonical deck after one source state.
+* Source-state information may remain in provenance and retained source assets, but not in learner-facing SRS deck identifiers.
+
+Interpretation:
+
+* `no_memory_needed` is the conservative default.
+* A deck should stay narrow and should not become a second curriculum hidden inside flashcards.
+* Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, and no unresolved/removal debt in active decks.
+* Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
+
 ---
 
 ## 8. Ideas for future work (for agents and humans)

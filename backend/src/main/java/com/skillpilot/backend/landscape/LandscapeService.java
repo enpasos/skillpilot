@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
@@ -110,6 +111,7 @@ public class LandscapeService {
     private volatile Map<String, String> sourceLandscapeIdByGoalId = Collections.emptyMap();
     private volatile Map<String, Map<String, Object>> canonicalGoalProvenanceByGoalId = Collections.emptyMap();
     private volatile Map<String, Map<String, List<String>>> canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
+    private volatile ConcurrentHashMap<String, Map<String, List<String>>> canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
     private volatile Map<String, LandscapeSummary> compatibilityArchiveSummariesById = Collections.emptyMap();
     private volatile Map<String, List<TopicSummary>> compatibilityArchiveTopicsById = Collections.emptyMap();
     private volatile Set<String> curriculumManifest = Collections.emptySet();
@@ -237,7 +239,9 @@ public class LandscapeService {
         copy.setDescriptionEn(original.getDescriptionEn());
 
         Map<String, List<String>> derivedJurisdictionsByGoalId = isCanonicalGymnasiumLandscape(original)
-                ? buildCanonicalJurisdictionApplicability(original.getGoals())
+                ? canonicalJurisdictionApplicabilityByLandscapeId.computeIfAbsent(
+                        original.getLandscapeId(),
+                        ignored -> buildCanonicalJurisdictionApplicability(original.getGoals()))
                 : Collections.emptyMap();
 
         // Localize Goals
@@ -636,6 +640,7 @@ public class LandscapeService {
             sourceLandscapeIdByGoalId = Collections.emptyMap();
             canonicalGoalProvenanceByGoalId = Collections.emptyMap();
             canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
+            canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
             compatibilityArchiveSummariesById = Collections.emptyMap();
             compatibilityArchiveTopicsById = Collections.emptyMap();
             curriculumManifest = Collections.emptySet();
@@ -768,6 +773,7 @@ public class LandscapeService {
         canonicalGoalProvenanceByGoalId = Collections.unmodifiableMap(loadCanonicalGoalProvenanceRegistry(dir));
         canonicalGoalApplicabilityOverridesByGoalId = Collections.unmodifiableMap(
                 loadCanonicalGoalApplicabilityOverrideRegistry(dir));
+        canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
         compatibilityArchiveSummariesById = Collections.unmodifiableMap(loadCompatibilityArchiveRegistry(dir));
         compatibilityArchiveTopicsById = Collections.unmodifiableMap(loadCompatibilityTopicRegistry(dir));
         Set<String> knownRootIds = new LinkedHashSet<>(cachedById.keySet());

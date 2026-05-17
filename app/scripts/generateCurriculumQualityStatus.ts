@@ -11,10 +11,16 @@ import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
 import { buildDirectChildrenMap, getRenderedChildIds } from '../src/utils/treeProjectionRuntime'
 import type { ApplicabilityCompilationResult, ApplicabilityEvidence, ApplicabilityFinding } from './applicabilityCompiler'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import {
+  defaultMemoryCardReviewConfigDir,
+  discoverMemoryCardReviewConfigs,
+} from './memoryCardReviewConfigDiscovery'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
 type SemanticReviewStatus = 'atomic' | 'needs_developer_review' | 'non_atomic'
+type MemoryCardReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
+type MemoryCardReviewCardStatus = 'kept' | 'remove' | 'needs_developer_review'
 
 interface QualityRuleDefinition {
   id: string
@@ -558,6 +564,7 @@ interface StatusDocument {
     canonicalRoot: string
     sourceExtractionRoot: string
     semanticAtomicityRoot: string
+    memoryCardReviewRoot: string
     compositionViewRoot: string
     acceptedWarningsPath: string
     sourceLandscapeRegistryPath: string
@@ -597,6 +604,54 @@ interface ReviewRecord {
   fingerprint: string
   status: SemanticReviewStatus
   semanticAtomic: boolean | null
+  reviewedAt: string
+  reviewer: string
+  reason: string
+}
+
+interface MemoryCardReviewConfig {
+  schemaVersion: 1
+  reviewId: string
+  ruleVersion: string
+  landscapeId: string
+  landscapePath: string
+  reviewPath: string
+  cardReviewPath?: string
+  reportPath?: string
+  scope: {
+    label: string
+    rootGoalIds?: string[]
+    leafGoalIds?: string[]
+  }
+}
+
+interface MemoryCardReviewRecord {
+  schemaVersion: 1
+  reviewId: string
+  ruleVersion: string
+  landscapeId: string
+  goalId: string
+  fingerprint: string
+  status: MemoryCardReviewStatus
+  memoryUseful: boolean | null
+  memoryGoalIds?: string[]
+  deckIds?: string[]
+  reviewedAt: string
+  reviewer: string
+  reason: string
+}
+
+interface MemoryCardReviewCardRecord {
+  schemaVersion: 1
+  reviewId: string
+  ruleVersion: string
+  landscapeId: string
+  deckId: string
+  cardId: string
+  fingerprint: string
+  status: MemoryCardReviewCardStatus
+  necessary: boolean | null
+  originGoalIds?: string[]
   reviewedAt: string
   reviewer: string
   reason: string
@@ -739,6 +794,7 @@ const repoRoot = resolve(scriptDir, '../..')
 const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const sourceExtractionRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/input')
 const semanticAtomicityRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/semantic-atomicity')
+const memoryCardReviewRoot = resolve(repoRoot, defaultMemoryCardReviewConfigDir)
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
 const acceptedWarningsPath = resolve(repoRoot, 'docs/qa-ci/applicability-accepted-warnings.json')
 const sourceLandscapeRegistryPath = resolve(repoRoot, 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json')
@@ -929,6 +985,13 @@ const ruleCatalog: QualityRuleDefinition[] = [
     category: 'review',
     maturityTarget: 'M5',
     description: 'Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries.',
+  },
+  {
+    id: 'CQR-302',
+    label: 'Memory-card decision trace',
+    category: 'review',
+    maturityTarget: 'M5',
+    description: 'Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, and every existing memory deck remains traced.',
   },
   {
     id: 'CQR-401',
@@ -1276,6 +1339,10 @@ function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
   if (isMemoryGoal(goal)) return false
   if ((goal as { examData?: unknown }).examData) return false
   return true
+}
+
+function isMemoryCardReviewRelevantGoal(goal: LearningGoal): boolean {
+  return isSemanticAtomicityRelevantGoal(goal)
 }
 
 function isMemoryGoal(goal: LearningGoal): boolean {
@@ -1915,8 +1982,291 @@ function parseReviewRecords(path: string): { records: ReviewRecord[]; parseError
         parseErrors.push(`Line ${lineNumber}: ${(error as Error).message}`)
         return []
       }
+  })
+  return { records, parseErrors }
+}
+
+function parseMemoryCardReviewRecords(path: string): { records: MemoryCardReviewRecord[]; parseErrors: string[] } {
+  if (!existsSync(path)) return { records: [], parseErrors: [`Missing review file: ${toRepoPath(path)}`] }
+
+  const parseErrors: string[] = []
+  const records = readFileSync(path, 'utf8')
+    .split(/\r?\n/)
+    .map((line, index) => ({ line: line.trim(), lineNumber: index + 1 }))
+    .filter(({ line }) => line.length > 0)
+    .flatMap(({ line, lineNumber }) => {
+      try {
+        return [JSON.parse(line) as MemoryCardReviewRecord]
+      } catch (error) {
+        parseErrors.push(`Line ${lineNumber}: ${(error as Error).message}`)
+        return []
+      }
     })
   return { records, parseErrors }
+}
+
+function parseMemoryCardReviewCardRecords(path: string): { records: MemoryCardReviewCardRecord[]; parseErrors: string[] } {
+  if (!existsSync(path)) return { records: [], parseErrors: [`Missing card review file: ${toRepoPath(path)}`] }
+
+  const parseErrors: string[] = []
+  const records = readFileSync(path, 'utf8')
+    .split(/\r?\n/)
+    .map((line, index) => ({ line: line.trim(), lineNumber: index + 1 }))
+    .filter(({ line }) => line.length > 0)
+    .flatMap(({ line, lineNumber }) => {
+      try {
+        return [JSON.parse(line) as MemoryCardReviewCardRecord]
+      } catch (error) {
+        parseErrors.push(`Line ${lineNumber}: ${(error as Error).message}`)
+        return []
+      }
+    })
+  return { records, parseErrors }
+}
+
+function memoryDeckIdsFromGoal(goal: LearningGoal): string[] {
+  return (goal.tags ?? [])
+    .filter((tag) => tag.startsWith('srs-deck:'))
+    .map((tag) => tag.slice('srs-deck:'.length))
+    .filter(Boolean)
+}
+
+function memoryVocabularySources(goal: LearningGoal): string[] {
+  const extendedData = (goal as { extendedData?: Record<string, unknown> }).extendedData
+  if (!extendedData) return []
+  return [extendedData.vocabularySource, extendedData.vocabularySourceEn]
+    .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+}
+
+function resolveVocabularySourcePath(source: string): string {
+  if (source.startsWith('/data/')) {
+    return resolve(repoRoot, 'app/public', source.replace(/^\//, ''))
+  }
+  return resolve(repoRoot, source.replace(/^\//, ''))
+}
+
+function isPrimaryMemoryDeckSource(source: string): boolean {
+  return !/(^|[._-])en(?=\.json$|[._-])/i.test(source)
+}
+
+function fingerprintMemoryCard(card: MemoryDeckCard, ruleVersion: string): string {
+  const payload = stableJson({
+    ruleVersion,
+    deckId: card.deckId,
+    cardId: card.cardId,
+    front: card.front,
+    back: card.back,
+    category: card.category,
+    tags: card.tags,
+  })
+  return `sha256:${createHash('sha256').update(payload).digest('hex')}`
+}
+
+function memoryCardKey(deckId: string, cardId: string): string {
+  return `${deckId}::${cardId}`
+}
+
+interface MemoryDeckEvidence {
+  memoryGoalIds: Set<string>
+  deckIdsByMemoryGoalId: Map<string, Set<string>>
+  knownDeckIds: Set<string>
+  deckFiles: number
+  cardRows: number
+  primaryCards: MemoryDeckCard[]
+  errors: string[]
+}
+
+interface MemoryDeckCard {
+  deckId: string
+  cardId: string
+  source: string
+  front: string
+  back: string
+  category: string
+  tags: string[]
+}
+
+function collectMemoryDeckEvidence(landscape: LearningLandscape): MemoryDeckEvidence {
+  const evidence: MemoryDeckEvidence = {
+    memoryGoalIds: new Set(),
+    deckIdsByMemoryGoalId: new Map(),
+    knownDeckIds: new Set(),
+    deckFiles: 0,
+    cardRows: 0,
+    primaryCards: [],
+    errors: [],
+  }
+
+  landscape.goals.filter(isMemoryGoal).forEach((goal) => {
+    evidence.memoryGoalIds.add(goal.id)
+    const deckIds = new Set(memoryDeckIdsFromGoal(goal))
+    memoryVocabularySources(goal).forEach((source) => {
+      const sourcePath = resolveVocabularySourcePath(source)
+      if (!existsSync(sourcePath)) {
+        evidence.errors.push(`${formatGoal(goal, goal.id)}: missing deck file ${source}`)
+        return
+      }
+      try {
+        const parsed = loadJson<{ deckId?: unknown, cards?: unknown[] }>(sourcePath)
+        evidence.deckFiles += 1
+        if (typeof parsed.deckId !== 'string' || parsed.deckId.trim().length === 0) {
+          evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} has no deckId`)
+        } else {
+          deckIds.add(parsed.deckId)
+        }
+        if (!Array.isArray(parsed.cards)) {
+          evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} has no cards array`)
+        } else {
+          evidence.cardRows += parsed.cards.length
+          if (typeof parsed.deckId === 'string' && parsed.deckId.trim().length > 0 && isPrimaryMemoryDeckSource(source)) {
+            parsed.cards.forEach((card, index) => {
+              if (!card || typeof card !== 'object') {
+                evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} card ${index + 1} is not an object`)
+                return
+              }
+              const row = card as Record<string, unknown>
+              const cardId = typeof row.id === 'string' ? row.id.trim() : ''
+              if (!cardId) {
+                evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} card ${index + 1} has no id`)
+                return
+              }
+              evidence.primaryCards.push({
+                deckId: parsed.deckId,
+                cardId,
+                source,
+                front: normalizeText(row.front),
+                back: normalizeText(row.back),
+                category: normalizeText(row.category),
+                tags: Array.isArray(row.tags) ? row.tags.map((tag) => normalizeText(tag)).filter(Boolean) : [],
+              })
+            })
+          }
+        }
+      } catch (error) {
+        evidence.errors.push(`${formatGoal(goal, goal.id)}: cannot parse deck file ${source}: ${(error as Error).message}`)
+      }
+    })
+    if (deckIds.size === 0) {
+      evidence.errors.push(`${formatGoal(goal, goal.id)}: memory goal has no srs-deck tag or readable deck file`)
+    }
+    evidence.deckIdsByMemoryGoalId.set(goal.id, deckIds)
+    deckIds.forEach((deckId) => evidence.knownDeckIds.add(deckId))
+  })
+
+  return evidence
+}
+
+const memoryCardReviewStatuses: MemoryCardReviewStatus[] = [
+  'no_memory_needed',
+  'memory_required',
+  'needs_developer_review',
+]
+
+const memoryCardReviewCardStatuses: MemoryCardReviewCardStatus[] = [
+  'kept',
+  'remove',
+  'needs_developer_review',
+]
+
+function validateMemoryCardRecordShape(
+  record: MemoryCardReviewRecord,
+  config: MemoryCardReviewConfig,
+  goalById: Map<string, LearningGoal>,
+  deckEvidence: MemoryDeckEvidence,
+): string[] {
+  const errors: string[] = []
+  if (record.schemaVersion !== 1) errors.push(`${record.goalId}: schemaVersion must be 1`)
+  if (record.reviewId !== config.reviewId) errors.push(`${record.goalId}: reviewId does not match ${config.reviewId}`)
+  if (record.ruleVersion !== config.ruleVersion) errors.push(`${record.goalId}: ruleVersion does not match ${config.ruleVersion}`)
+  if (record.landscapeId !== config.landscapeId) errors.push(`${record.goalId}: landscapeId does not match ${config.landscapeId}`)
+  if (!memoryCardReviewStatuses.includes(record.status)) {
+    errors.push(`${record.goalId}: status ${String(record.status)} is not supported`)
+  }
+  if (!record.reason?.trim()) errors.push(`${record.goalId}: reason is required`)
+
+  const memoryGoalIds = record.memoryGoalIds ?? []
+  const deckIds = record.deckIds ?? []
+  if (record.status === 'no_memory_needed') {
+    if (record.memoryUseful !== false) errors.push(`${record.goalId}: no_memory_needed requires memoryUseful false`)
+    if (memoryGoalIds.length > 0 || deckIds.length > 0) {
+      errors.push(`${record.goalId}: no_memory_needed must not reference memory goals or decks`)
+    }
+  }
+  if (record.status === 'memory_required') {
+    if (record.memoryUseful !== true) errors.push(`${record.goalId}: memory_required requires memoryUseful true`)
+    if (memoryGoalIds.length === 0) errors.push(`${record.goalId}: memory_required requires at least one memoryGoalId`)
+    if (deckIds.length === 0) errors.push(`${record.goalId}: memory_required requires at least one deckId`)
+  }
+  if (record.status === 'needs_developer_review' && record.memoryUseful !== null) {
+    errors.push(`${record.goalId}: needs_developer_review requires memoryUseful null`)
+  }
+
+  memoryGoalIds.forEach((memoryGoalId) => {
+    const memoryGoal = goalById.get(memoryGoalId)
+    if (!memoryGoal || !isMemoryGoal(memoryGoal)) {
+      errors.push(`${record.goalId}: memoryGoalId ${memoryGoalId} does not reference a memory goal`)
+    }
+  })
+
+  deckIds.forEach((deckId) => {
+    if (!deckEvidence.knownDeckIds.has(deckId)) {
+      errors.push(`${record.goalId}: deckId ${deckId} is not exposed by any memory goal deck`)
+      return
+    }
+    const linkedByReferencedGoal = memoryGoalIds.some((memoryGoalId) =>
+      deckEvidence.deckIdsByMemoryGoalId.get(memoryGoalId)?.has(deckId) === true)
+    if (memoryGoalIds.length > 0 && !linkedByReferencedGoal) {
+      errors.push(`${record.goalId}: deckId ${deckId} is not exposed by the referenced memoryGoalIds`)
+    }
+  })
+
+  return errors
+}
+
+function validateMemoryCardReviewCardRecordShape(
+  record: MemoryCardReviewCardRecord,
+  config: MemoryCardReviewConfig,
+  goalById: Map<string, LearningGoal>,
+  currentGoalRecordsById: Map<string, MemoryCardReviewRecord>,
+): string[] {
+  const errors: string[] = []
+  if (record.schemaVersion !== 1) errors.push(`${record.deckId}/${record.cardId}: schemaVersion must be 1`)
+  if (record.reviewId !== config.reviewId) errors.push(`${record.deckId}/${record.cardId}: reviewId does not match ${config.reviewId}`)
+  if (record.ruleVersion !== config.ruleVersion) errors.push(`${record.deckId}/${record.cardId}: ruleVersion does not match ${config.ruleVersion}`)
+  if (record.landscapeId !== config.landscapeId) errors.push(`${record.deckId}/${record.cardId}: landscapeId does not match ${config.landscapeId}`)
+  if (!memoryCardReviewCardStatuses.includes(record.status)) {
+    errors.push(`${record.deckId}/${record.cardId}: status ${String(record.status)} is not supported`)
+  }
+  if (!record.reason?.trim()) errors.push(`${record.deckId}/${record.cardId}: reason is required`)
+
+  const originGoalIds = record.originGoalIds ?? []
+  if (record.status === 'kept') {
+    if (record.necessary !== true) errors.push(`${record.deckId}/${record.cardId}: kept requires necessary true`)
+    if (originGoalIds.length === 0) errors.push(`${record.deckId}/${record.cardId}: kept requires at least one originGoalId`)
+  }
+  if (record.status === 'remove') {
+    if (record.necessary !== false) errors.push(`${record.deckId}/${record.cardId}: remove requires necessary false`)
+  }
+  if (record.status === 'needs_developer_review' && record.necessary !== null) {
+    errors.push(`${record.deckId}/${record.cardId}: needs_developer_review requires necessary null`)
+  }
+
+  originGoalIds.forEach((goalId) => {
+    const goal = goalById.get(goalId)
+    if (!goal || !isAtomicGoal(goal) || !isMemoryCardReviewRelevantGoal(goal)) {
+      errors.push(`${record.deckId}/${record.cardId}: originGoalId ${goalId} does not reference an ordinary atomic review goal`)
+      return
+    }
+    const goalRecord = currentGoalRecordsById.get(goalId)
+    if (!goalRecord || goalRecord.status !== 'memory_required') {
+      errors.push(`${record.deckId}/${record.cardId}: originGoalId ${goalId} is not currently marked memory_required`)
+    }
+    if (record.status === 'kept' && !(goalRecord?.deckIds ?? []).includes(record.deckId)) {
+      errors.push(`${record.deckId}/${record.cardId}: originGoalId ${goalId} does not reference deck ${record.deckId}`)
+    }
+  })
+
+  return errors
 }
 
 function evaluateSemanticAtomicity(landscape: LearningLandscape, configs: ReviewConfig[]): RuleResult {
@@ -1998,6 +2348,260 @@ function readSemanticConfigs(): Map<string, ReviewConfig[]> {
   const configsByLandscapeId = new Map<string, ReviewConfig[]>()
   collectFiles(semanticAtomicityRoot, (fileName) => /\.config\.json$/i.test(fileName)).forEach((file) => {
     const config = loadJson<ReviewConfig>(file)
+    const existing = configsByLandscapeId.get(config.landscapeId) ?? []
+    existing.push(config)
+    configsByLandscapeId.set(config.landscapeId, existing)
+  })
+  return configsByLandscapeId
+}
+
+function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryCardReviewConfig[]): RuleResult {
+  if (configs.length === 0) {
+    return makeRule('CQR-302', 'not_configured', 'No memory-card review config is registered for this curriculum.')
+  }
+
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const deckEvidence = collectMemoryDeckEvidence(landscape)
+  let reviewedGoals = 0
+  let noMemoryNeeded = 0
+  let memoryRequired = 0
+  let needsDeveloperReview = 0
+  let missing = 0
+  let stale = 0
+  let obsolete = 0
+  let duplicateRecords = 0
+  let invalidRecords = 0
+  let primaryCards = 0
+  let keptCards = 0
+  let cardsMarkedRemove = 0
+  let cardNeedsDeveloperReview = 0
+  let missingCardReviews = 0
+  let staleCardReviews = 0
+  let obsoleteCardReviews = 0
+  let duplicateCardReviewRecords = 0
+  let invalidCardReviewRecords = 0
+  let untracedMemoryRequiredGoals = 0
+  const tracedMemoryGoalIds = new Set<string>()
+  const scopedMemoryGoalIds = new Set<string>()
+  const details: string[] = []
+
+  configs.forEach((config) => {
+    if (config.reportPath && details.length < 30) {
+      details.push(`${config.reviewId}: audit report ${config.reportPath}`)
+    }
+    const scopeGoalIds = Array.isArray(config.scope.leafGoalIds) && config.scope.leafGoalIds.length > 0
+      ? new Set(config.scope.leafGoalIds)
+      : collectScopeGoalIds(config.scope.rootGoalIds ?? [], goalById)
+    const configScopedMemoryGoalIds = new Set<string>()
+    Array.from(scopeGoalIds)
+      .map((goalId) => goalById.get(goalId))
+      .filter((goal): goal is LearningGoal => !!goal && isMemoryGoal(goal))
+      .forEach((goal) => {
+        configScopedMemoryGoalIds.add(goal.id)
+        scopedMemoryGoalIds.add(goal.id)
+      })
+
+    const scopedReviewGoals = Array.from(scopeGoalIds)
+      .map((goalId) => goalById.get(goalId))
+      .filter((goal): goal is LearningGoal => !!goal && isAtomicGoal(goal) && isMemoryCardReviewRelevantGoal(goal))
+    const scopedReviewGoalIds = new Set(scopedReviewGoals.map((goal) => goal.id))
+    const fingerprintsByGoalId = new Map(scopedReviewGoals.map((goal) => [goal.id, fingerprintGoal(goal, config.ruleVersion)]))
+    const reviewPath = resolve(repoRoot, config.reviewPath)
+    const { records, parseErrors } = parseMemoryCardReviewRecords(reviewPath)
+    const seenRecordGoalIds = new Set<string>()
+    const duplicateGoalIds = new Set<string>()
+    records.forEach((record) => {
+      if (seenRecordGoalIds.has(record.goalId)) duplicateGoalIds.add(record.goalId)
+      seenRecordGoalIds.add(record.goalId)
+    })
+    duplicateRecords += duplicateGoalIds.size
+    const shapeErrors = records.flatMap((record) => validateMemoryCardRecordShape(record, config, goalById, deckEvidence))
+    invalidRecords += parseErrors.length + shapeErrors.length
+    parseErrors.forEach((issue) => {
+      if (details.length < 30) details.push(`${config.reviewId}: ${issue}`)
+    })
+    shapeErrors.forEach((issue) => {
+      if (details.length < 30) details.push(`${config.reviewId}: ${issue}`)
+    })
+    duplicateGoalIds.forEach((goalId) => {
+      if (details.length < 30) details.push(`${config.reviewId}: duplicate review record for ${goalId}`)
+    })
+
+    const recordsByGoalId = new Map(records.map((record) => [record.goalId, record]))
+    reviewedGoals += scopedReviewGoals.length
+    const currentGoalRecordsById = new Map<string, MemoryCardReviewRecord>()
+
+    scopedReviewGoals.forEach((goal) => {
+      const record = recordsByGoalId.get(goal.id)
+      if (!record) {
+        missing += 1
+        if (details.length < 30) details.push(`${config.reviewId}: missing ${formatGoal(goal, goal.id)}`)
+        return
+      }
+      const expectedFingerprint = fingerprintsByGoalId.get(goal.id)
+      if (record.fingerprint !== expectedFingerprint) {
+        stale += 1
+        if (details.length < 30) details.push(`${config.reviewId}: stale ${formatGoal(goal, goal.id)}`)
+        return
+      }
+      currentGoalRecordsById.set(goal.id, record)
+      if (record.status === 'no_memory_needed') noMemoryNeeded += 1
+      if (record.status === 'needs_developer_review') needsDeveloperReview += 1
+      if (record.status === 'memory_required') {
+        memoryRequired += 1
+        record.memoryGoalIds?.forEach((memoryGoalId) => tracedMemoryGoalIds.add(memoryGoalId))
+      }
+    })
+
+    records.forEach((record) => {
+      if (!scopedReviewGoalIds.has(record.goalId)) obsolete += 1
+    })
+
+    const scopedDeckIds = new Set<string>()
+    configScopedMemoryGoalIds.forEach((memoryGoalId) => {
+      deckEvidence.deckIdsByMemoryGoalId.get(memoryGoalId)?.forEach((deckId) => scopedDeckIds.add(deckId))
+    })
+    const scopedPrimaryCards = deckEvidence.primaryCards
+      .filter((card) => scopedDeckIds.has(card.deckId))
+    const scopedPrimaryCardKeys = new Set(scopedPrimaryCards.map((card) => memoryCardKey(card.deckId, card.cardId)))
+    const cardFingerprintsByKey = new Map(scopedPrimaryCards.map((card) => [
+      memoryCardKey(card.deckId, card.cardId),
+      fingerprintMemoryCard(card, config.ruleVersion),
+    ]))
+    primaryCards += scopedPrimaryCards.length
+
+    const cardReviewPath = resolve(repoRoot, config.cardReviewPath
+      ?? config.reviewPath.replace(/\.review\.jsonl$/i, '.cards.review.jsonl'))
+    const { records: cardRecords, parseErrors: cardParseErrors } = parseMemoryCardReviewCardRecords(cardReviewPath)
+    const seenCardKeys = new Set<string>()
+    const duplicateCardKeys = new Set<string>()
+    cardRecords.forEach((record) => {
+      const key = memoryCardKey(record.deckId, record.cardId)
+      if (seenCardKeys.has(key)) duplicateCardKeys.add(key)
+      seenCardKeys.add(key)
+    })
+    duplicateCardReviewRecords += duplicateCardKeys.size
+    const cardRecordsByKey = new Map(cardRecords.map((record) => [memoryCardKey(record.deckId, record.cardId), record]))
+    cardParseErrors.forEach((issue) => {
+      if (details.length < 30) details.push(`${config.reviewId}: ${issue}`)
+    })
+    invalidCardReviewRecords += cardParseErrors.length
+    duplicateCardKeys.forEach((key) => {
+      if (details.length < 30) details.push(`${config.reviewId}: duplicate card review record for ${key}`)
+    })
+
+    const tracedMemoryRequiredGoalIds = new Set<string>()
+    scopedPrimaryCards.forEach((card) => {
+      const key = memoryCardKey(card.deckId, card.cardId)
+      const record = cardRecordsByKey.get(key)
+      if (!record) {
+        missingCardReviews += 1
+        if (details.length < 30) details.push(`${config.reviewId}: missing card review ${card.deckId}/${card.cardId}`)
+        return
+      }
+      const expectedFingerprint = cardFingerprintsByKey.get(key)
+      if (record.fingerprint !== expectedFingerprint) {
+        staleCardReviews += 1
+        if (details.length < 30) details.push(`${config.reviewId}: stale card review ${card.deckId}/${card.cardId}`)
+        return
+      }
+      const cardShapeErrors = validateMemoryCardReviewCardRecordShape(record, config, goalById, currentGoalRecordsById)
+      invalidCardReviewRecords += cardShapeErrors.length
+      cardShapeErrors.forEach((issue) => {
+        if (details.length < 30) details.push(`${config.reviewId}: ${issue}`)
+      })
+      if (record.status === 'kept') {
+        keptCards += 1
+        record.originGoalIds?.forEach((goalId) => tracedMemoryRequiredGoalIds.add(goalId))
+      }
+      if (record.status === 'remove') cardsMarkedRemove += 1
+      if (record.status === 'needs_developer_review') cardNeedsDeveloperReview += 1
+    })
+
+    cardRecords.forEach((record) => {
+      if (!scopedPrimaryCardKeys.has(memoryCardKey(record.deckId, record.cardId)) && record.status !== 'remove') {
+        obsoleteCardReviews += 1
+      }
+    })
+
+    currentGoalRecordsById.forEach((record) => {
+      if (record.status === 'memory_required' && !tracedMemoryRequiredGoalIds.has(record.goalId)) {
+        untracedMemoryRequiredGoals += 1
+        if (details.length < 30) {
+          details.push(`${config.reviewId}: memory-required goal is not traced by a kept card: ${formatGoal(goalById.get(record.goalId), record.goalId)}`)
+        }
+      }
+    })
+  })
+
+  deckEvidence.errors.forEach((issue) => {
+    if (details.length < 30) details.push(issue)
+  })
+
+  const untracedMemoryGoalIds = Array.from(scopedMemoryGoalIds)
+    .filter((goalId) => !tracedMemoryGoalIds.has(goalId))
+  untracedMemoryGoalIds.forEach((goalId) => {
+    if (details.length < 30) details.push(`untraced memory goal: ${formatGoal(goalById.get(goalId), goalId)}`)
+  })
+
+  const unresolved = missing
+    + stale
+    + needsDeveloperReview
+    + obsolete
+    + duplicateRecords
+    + invalidRecords
+    + missingCardReviews
+    + staleCardReviews
+    + obsoleteCardReviews
+    + duplicateCardReviewRecords
+    + invalidCardReviewRecords
+    + cardsMarkedRemove
+    + cardNeedsDeveloperReview
+    + untracedMemoryRequiredGoals
+    + deckEvidence.errors.length
+    + untracedMemoryGoalIds.length
+  return makeRule(
+    'CQR-302',
+    unresolved === 0 ? 'pass' : 'warn',
+    unresolved === 0
+      ? `Memory-card review is current: ${memoryRequired}/${reviewedGoals} ordinary atomic goals intentionally use memorization support, ${keptCards}/${primaryCards} primary cards are kept with origin traces, and all ${scopedMemoryGoalIds.size} memory goals are traced.`
+      : 'Memory-card review still has missing, stale, invalid, or untraced entries.',
+    {
+      configs: configs.length,
+      reviewedGoals,
+      noMemoryNeeded,
+      memoryRequired,
+      needsDeveloperReview,
+      missing,
+      stale,
+      obsolete,
+      duplicateRecords,
+      invalidRecords,
+      primaryCards,
+      keptCards,
+      cardsMarkedRemove,
+      cardNeedsDeveloperReview,
+      missingCardReviews,
+      staleCardReviews,
+      obsoleteCardReviews,
+      duplicateCardReviewRecords,
+      invalidCardReviewRecords,
+      untracedMemoryRequiredGoals,
+      memoryGoals: scopedMemoryGoalIds.size,
+      tracedMemoryGoals: tracedMemoryGoalIds.size,
+      untracedMemoryGoals: untracedMemoryGoalIds.length,
+      deckIds: deckEvidence.knownDeckIds.size,
+      deckFiles: deckEvidence.deckFiles,
+      cardRows: deckEvidence.cardRows,
+    },
+    details,
+  )
+}
+
+function readMemoryCardReviewConfigs(): Map<string, MemoryCardReviewConfig[]> {
+  const configsByLandscapeId = new Map<string, MemoryCardReviewConfig[]>()
+  discoverMemoryCardReviewConfigs(defaultMemoryCardReviewConfigDir, { allowEmpty: true }).forEach(({ configPath }) => {
+    const config = loadJson<MemoryCardReviewConfig>(resolve(repoRoot, configPath))
     const existing = configsByLandscapeId.get(config.landscapeId) ?? []
     existing.push(config)
     configsByLandscapeId.set(config.landscapeId, existing)
@@ -3898,6 +4502,7 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
   if (!routeScopes.every((scope) => scope.maturity === 'M3')) return 'M3'
 
   const m4Ready = curriculumRules.find((rule) => rule.id === 'CQR-301')?.status === 'pass'
+    && curriculumRules.find((rule) => rule.id === 'CQR-302')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-401')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-501')?.status === 'pass'
   return m4Ready ? 'M5' : 'M4'
@@ -3991,6 +4596,7 @@ function renderMarkdown(status: StatusDocument): string {
 function main() {
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
+  const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -4008,6 +4614,7 @@ function main() {
       const atomicGoals = landscape.goals.filter(isAtomicGoal).length
       const jurisdictionCoverage = jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)
       const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
+      const memoryCardReviewConfigs = memoryCardReviewConfigsByLandscapeId.get(landscape.landscapeId) ?? []
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, globalGoalIds),
         evaluateTypeConsistency(landscape),
@@ -4016,9 +4623,12 @@ function main() {
         evaluateCourseLevelMappingConsistency(landscape),
         evaluateSourceGoalCountPlausibility(mappingPipeline),
         evaluateSemanticAtomicity(landscape, semanticConfigsByLandscapeId.get(landscape.landscapeId) ?? []),
+      ]
+      curriculumRules.push(
+        evaluateMemoryCardReview(landscape, memoryCardReviewConfigs),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
-      ]
+      )
       const scopedProfiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
       const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(landscape, profile))
       if (scopes.length === 0) {
@@ -4069,6 +4679,7 @@ function main() {
       canonicalRoot: toRepoPath(canonicalRoot),
       sourceExtractionRoot: toRepoPath(sourceExtractionRoot),
       semanticAtomicityRoot: toRepoPath(semanticAtomicityRoot),
+      memoryCardReviewRoot: toRepoPath(memoryCardReviewRoot),
       compositionViewRoot: toRepoPath(compositionViewRoot),
       acceptedWarningsPath: toRepoPath(acceptedWarningsPath),
       sourceLandscapeRegistryPath: toRepoPath(sourceLandscapeRegistryPath),

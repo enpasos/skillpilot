@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 type JsonValue =
   | null
@@ -32,9 +33,22 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const appRoot = resolve(scriptDir, '..')
 const repoRoot = resolve(scriptDir, '../..')
 
+const toPosixPath = (path: string) => path.split(sep).join('/')
+
+const repoRelative = (absolutePath: string) => {
+  const relativePath = toPosixPath(relative(repoRoot, absolutePath))
+  if (relativePath === '' || relativePath.startsWith('..')) {
+    throw new Error(`Path is outside the repository: ${absolutePath}`)
+  }
+  return relativePath
+}
+
+const MEMORY_CARD_REVIEW_CONFIGS = discoverMemoryCardReviewConfigs()
+
 const QUALITY_STATUS_PATHS = [
   'docs/qa-ci/status/curriculum-quality-status.json',
   'docs/qa-ci/status/curriculum-quality-status.md',
+  ...MEMORY_CARD_REVIEW_CONFIGS.map((config) => config.reportPath),
 ]
 
 const usage = () => `Usage:
@@ -124,16 +138,6 @@ const parseArgs = (argv: string[]): CliOptions => {
   return options
 }
 
-const toPosixPath = (path: string) => path.split(sep).join('/')
-
-const repoRelative = (absolutePath: string) => {
-  const relativePath = toPosixPath(relative(repoRoot, absolutePath))
-  if (relativePath === '' || relativePath.startsWith('..')) {
-    throw new Error(`Path is outside the repository: ${absolutePath}`)
-  }
-  return relativePath
-}
-
 const stableSortJson = (value: JsonValue): JsonValue => {
   if (Array.isArray(value)) {
     return value.map(stableSortJson)
@@ -179,8 +183,8 @@ const enforceCommittedQualityStatus = () => {
       ? String((error as { stdout?: string }).stdout ?? '')
       : ''
     throw new Error([
-      'Regenerated curriculum quality status differs from the committed files.',
-      'Run `cd app && npm run quality:curriculum-status`, review the status files, and commit them.',
+      'Regenerated curriculum quality or memory-card review status differs from the committed files.',
+      'Run `npm run quality:memory-card-review:report:all` and `npm run quality:curriculum-status`, review the status files, and commit them.',
       diff.trim(),
     ].filter(Boolean).join('\n\n'))
   }
@@ -243,6 +247,21 @@ const main = () => {
   const steps: StepResult[] = []
   const generatedAt = new Date().toISOString()
 
+  MEMORY_CARD_REVIEW_CONFIGS.forEach(({ configPath, reviewId }) => {
+    const reviewSlug = reviewId
+    steps.push(runStep(`refresh-memory-card-review-report:${reviewSlug}`, 'npm', [
+      'run',
+      'quality:memory-card-review:report',
+      '--',
+      `--config=${configPath}`,
+    ]))
+    steps.push(runStep(`check-memory-card-review:${reviewSlug}`, 'npm', [
+      'run',
+      'quality:memory-card-review:check',
+      '--',
+      `--config=${configPath}`,
+    ]))
+  })
   steps.push(runStep('refresh-curriculum-quality-status', 'npm', ['run', 'quality:curriculum-status']))
   if (options.enforceCommittedQualityStatus) {
     enforceCommittedQualityStatus()

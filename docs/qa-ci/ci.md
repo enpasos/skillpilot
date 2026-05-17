@@ -33,15 +33,16 @@ Steps:
 2. `npm run validate:graph`
 3. `npm run validate:view-filters`
 4. `npm run validate:composition-views`
-5. `python scripts/validate_schemas.py`
-6. `python scripts/validate_goal_ids_uuid.py`
-7. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
-8. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-9. `python scripts/validate_chemistry_exam_pipeline.py`
-10. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-11. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-12. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-13. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+5. `npm run quality:memory-card-review:check:all`
+6. `python scripts/validate_schemas.py`
+7. `python scripts/validate_goal_ids_uuid.py`
+8. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
+9. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
+10. `python scripts/validate_chemistry_exam_pipeline.py`
+11. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+12. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+13. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+14. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -59,6 +60,7 @@ Current scope note:
 - this job validates the full authored landscapes as committed
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
 - it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
+- it additionally enforces all configured memory-card review ledgers via `quality:memory-card-review:check:all`; in the dashboard, missing `CQR-302` review configuration now blocks `M5`
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
 - it also enforces the Hessen Oberstufe repo-handoff boundary: the retired legacy tree must stay absent from the active repo, and active tooling/runtime/test surfaces may mention it only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
 - it validates the Hessen 2026 chemistry exam pipeline artifacts (`slot_matrix.json`, `coverage_requirements.json`, `task_bank.json`, and source-landscape release anchors)
@@ -99,6 +101,6 @@ bash run_ci.sh
 
 This runs:
 
-1. app checks (`validate:graph`, `validate:view-filters`, `validate:composition-views`, `lint`, `build`)
+1. app checks (`validate:graph`, `validate:view-filters`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
 2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_chemistry_exam_pipeline.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)
