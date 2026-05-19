@@ -29,7 +29,7 @@ type FindingCode =
   | 'APV-202'
   | 'APV-203'
 
-type EvidenceKind = 'provenance' | 'mapping' | 'override' | 'child-union' | 'requires-closure'
+type EvidenceKind = 'provenance' | 'mapping' | 'override' | 'child-union' | 'requires-closure' | 'memory-review-origin'
 
 interface GoalMappingEntry {
   legacyGoalId?: string
@@ -111,6 +111,12 @@ interface LoadedCanonicalGoalProvenanceRegistry {
 interface LoadedCanonicalGoalApplicabilityOverrideRegistry {
   file: string
   entriesByGoalId: Map<string, Record<string, unknown>>
+}
+
+interface MemoryReviewOriginReference {
+  reviewId: string
+  reviewPath: string
+  originGoalId: string
 }
 
 interface GoalRef {
@@ -258,6 +264,13 @@ function goalKey(landscapeId: string, goalId: string): string {
 
 function isAtomicGoal(goal: LearningGoal): boolean {
   return !Array.isArray(goal.contains) || goal.contains.length === 0
+}
+
+function isMemoryGoal(goal: LearningGoal): boolean {
+  const tags = goal.tags ?? []
+  return goal.nodeKind === 'memory'
+    || tags.includes('memorization')
+    || tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
 function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
@@ -415,6 +428,61 @@ function loadCanonicalGoalApplicabilityOverrideRegistry(): LoadedCanonicalGoalAp
     file: canonicalGoalApplicabilityOverrideRegistryFile,
     entriesByGoalId,
   }
+}
+
+function loadMemoryReviewOriginReferences(): Map<string, MemoryReviewOriginReference[]> {
+  const referencesByMemoryGoalKey = new Map<string, MemoryReviewOriginReference[]>()
+  const reviewDir = join(curriculaDir, 'DE', 'Gymnasium', 'quality', 'memory-card-review')
+  const configFiles = readdirSync(reviewDir, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.config.json'))
+    .map((entry) => join(reviewDir, entry.name))
+    .sort((left, right) => left.localeCompare(right))
+
+  for (const configFile of configFiles) {
+    const config = JSON.parse(readFileSync(configFile, 'utf8')) as {
+      reviewId?: unknown
+      landscapeId?: unknown
+      reviewPath?: unknown
+    }
+    if (
+      typeof config.reviewId !== 'string'
+      || typeof config.landscapeId !== 'string'
+      || typeof config.reviewPath !== 'string'
+    ) {
+      continue
+    }
+
+    const reviewPath = resolve(repoRoot, config.reviewPath)
+    const lines = readFileSync(reviewPath, 'utf8')
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+
+    for (const line of lines) {
+      const record = JSON.parse(line) as {
+        status?: unknown
+        goalId?: unknown
+        memoryGoalIds?: unknown
+      }
+      if (record.status !== 'memory_required' || typeof record.goalId !== 'string') continue
+      if (!Array.isArray(record.memoryGoalIds)) continue
+
+      record.memoryGoalIds
+        .filter((memoryGoalId): memoryGoalId is string => typeof memoryGoalId === 'string' && memoryGoalId.length > 0)
+        .forEach((memoryGoalId) => {
+          const key = goalKey(config.landscapeId, memoryGoalId)
+          const references = referencesByMemoryGoalKey.get(key) ?? []
+          references.push({
+            reviewId: config.reviewId,
+            reviewPath: config.reviewPath,
+            originGoalId: record.goalId,
+          })
+          referencesByMemoryGoalKey.set(key, references)
+        })
+    }
+  }
+
+  return referencesByMemoryGoalKey
 }
 
 function loadCanonicalLandscapes(): LoadedCanonicalLandscape[] {
@@ -660,6 +728,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
   const sourceLandscapeRegistry = loadSourceLandscapeRegistry()
   const canonicalGoalProvenanceRegistry = loadCanonicalGoalProvenanceRegistry()
   const canonicalGoalApplicabilityOverrideRegistry = loadCanonicalGoalApplicabilityOverrideRegistry()
+  const memoryReviewOriginReferencesByMemoryGoalKey = loadMemoryReviewOriginReferences()
   const mappingEvidenceByTarget = new Map<string, Map<string, LoadedMappingFile[]>>()
   const canonicalGoalToLandscapeId = new Map<string, string>()
   const ambiguousCanonicalGoalIds = new Set<string>()
@@ -767,7 +836,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       const descendants = new Set<string>()
 
       if (goal) {
-        if (isAtomicGoal(goal)) {
+        if (isAtomicGoal(goal) && !isMemoryGoal(goal)) {
           descendants.add(key)
         } else {
           for (const childRef of getGoalChildRefs(sourceLandscape, landscapeId, goal)) {
@@ -1025,6 +1094,21 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         })
       }
 
+      for (const reference of memoryReviewOriginReferencesByMemoryGoalKey.get(key) ?? []) {
+        const originApplicability = compileGoal(landscapeId, reference.originGoalId, visiting)
+        for (const rawValue of originApplicability[SUPPORTED_DIMENSION] ?? []) {
+          const jurisdiction = normalizeJurisdictionCode(rawValue)
+          if (!jurisdiction || !isSupportedJurisdiction(jurisdiction)) continue
+          jurisdictions.add(jurisdiction)
+          evidence.push({
+            dimension: SUPPORTED_DIMENSION,
+            value: jurisdiction,
+            kind: 'memory-review-origin',
+            source: `${reference.reviewId}:${reference.originGoalId} (${reference.reviewPath})`,
+          })
+        }
+      }
+
       for (const jurisdiction of Array.from(jurisdictions).sort()) {
         const matchingEvidence = evidence.filter((entry) => entry.value === jurisdiction)
         if (
@@ -1137,6 +1221,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
 
       for (const goal of canonical.landscape.goals) {
         if (!isAtomicGoal(goal)) continue
+        if (isMemoryGoal(goal)) continue
         const currentApplicability = compiledByGoalId.get(goalKey(canonical.landscape.landscapeId, goal.id))
         const jurisdictions = currentApplicability?.[SUPPORTED_DIMENSION] ?? []
         if (jurisdictions.length === 0) continue
@@ -1204,7 +1289,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
           }
         }
 
-        if (isAtomicGoal(goal)) {
+        if (isAtomicGoal(goal) && !isMemoryGoal(goal)) {
           for (const rawReq of goal.requires ?? []) {
             const req = resolveCanonicalReference(rawReq)
             const targetApplicability = compiledByGoalId.get(goalKey(req.landscapeId, req.goalId))

@@ -1,0 +1,84 @@
+# Englisch M0 Remediation Pilot
+
+Generated from `docs/qa-ci/status/curriculum-quality-status.json`; status snapshot generated at 2026-05-17T21:05:48.979Z.
+
+This pilot is the first concrete follow-up to the generated M0 remediation plan. Its purpose is to move `Englisch (Gymnasium, DE)` out of the vague M0 bucket by defining a reproducible source-expansion slice before any semantic atomicity or memory-card review is introduced.
+
+Important boundary: this document does not claim a maturity increase. English should remain `M0` until source inventories, source-to-canonical mappings, composition views, route profiles, and semantic atomicity review are complete enough for the dashboard rules to pass.
+
+## Current Dashboard State
+
+| Metric | Value |
+| --- | --- |
+| Curriculum | Englisch (Gymnasium, DE) |
+| Path | curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json |
+| Current maturity | M0 |
+| Goals | 130 |
+| Atomic goals | 104 |
+| Cluster goals | 26 |
+| Complete source jurisdictions | 2/16 |
+| Registered original source goals | 103 |
+| Fully covered original source goals | 103 |
+| Mapping sources | 2/2 |
+| Missing source jurisdictions | DE-BW, DE-BB, DE-BE, DE-NI, DE-NW, DE-SH, DE-HB, DE-HH, DE-MV, DE-RP, DE-SL, DE-SN, DE-ST, DE-TH |
+
+## Blocking Rules
+
+| Rule | Status | Summary |
+| --- | --- | --- |
+| CQR-000 | warn | 2/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s). |
+| CQR-003 | warn | 2/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping. |
+| CQR-101 | not_configured | No explicit route-coverage profile is registered for this curriculum. |
+| CQR-301 | not_configured | No semantic atomicity review config is registered for this curriculum. |
+| CQR-302 | not_configured | No memory-card review config is registered for this curriculum. |
+| CQR-401 | not_configured | No composition view is registered for this curriculum. |
+| CQR-501 | pass | No active applicability warning debt is visible. |
+
+## Existing Source Base
+
+| Jurisdiction | Stage | Source | Source goals | Passages | Mapped | Exact/partial | URL |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| DE-BY | SekI+SekII | Englisch (Gymnasium) | 9 | 1 | 9/9 | 1/8 | https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/englisch |
+| DE-HE | SekII | Englisch Oberstufe (Hessen, KC 2024) | 94 | 21 | 94/94 | 94/0 | https://kultus.hessen.de/unterricht/kerncurricula/gymnasiale-oberstufe/englisch |
+
+Interpretation: Hessen and Bayern are complete as currently registered source lanes. They are not enough to leave M0 because 14 declared Bundesländer still have no registered source inventory and there is no learner-facing composition view for English.
+
+## Verified Candidate Sources For The First Slice
+
+| Role | Jurisdictions | Stage | Title | HTTP | Content type | Bytes | Last modified | URL |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Primary candidate source | DE-BB, DE-BE | Sek I | Rahmenlehrplan Jahrgangsstufen 1-10, Teil C Moderne Fremdsprachen | 200 OK | application/pdf | 1209775 | Tue, 17 Nov 2015 12:48:57 GMT | https://bildungsserver.berlin-brandenburg.de/fileadmin/bbb/unterricht/rahmenlehrplaene/Rahmenlehrplanprojekt/amtliche_Fassung/Teil_C_Mod_Fremdsprachen_2015_11_16.pdf |
+| Candidate source | DE-BE | Sek II | Rahmenlehrplan gymnasiale Oberstufe, Teil C Englisch | 200 OK | application/pdf | 198672 | Wed, 16 Jul 2025 16:03:12 +0200 | https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/rahmenlehrplan-englisch-go-teil-c.pdf?ts=1705017673 |
+| Official index page | DE-BE | Sek I | Berlin Rahmenlehrplaene Klassen 1-10 | 200 OK | text/html | - | - | https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/klasse-1-10/ |
+| Official index page | DE-BE | Sek II | Berlin Rahmenlehrplaene Oberstufe | 200 OK | text/html | - | - | https://www.berlin.de/sen/bildung/unterricht/faecher-rahmenlehrplaene/rahmenlehrplaene/oberstufe/ |
+
+These links were checked on 2026-05-17. The report stores the check result as evidence for planning only; normal CI should not depend on live network access.
+
+## Pilot Slice
+
+Recommended first implementation slice: Berlin/Brandenburg English, starting with the shared Sek I modern-foreign-languages source and the Berlin Sek II English source.
+
+1. Create source-extraction artifacts for the verified official sources. Use explicit `sourceDocuments.url` references; do not bundle PDFs.
+2. Keep generic modern-foreign-language standards semantically generic in extraction, then decide during mapping whether and how they justify English canonical goals.
+3. Emit separate jurisdiction evidence for `DE-BB` and `DE-BE` where the official source genuinely applies to both; do not infer Brandenburg upper-secondary coverage from the Berlin PDF without official confirmation.
+4. Map source goals to the existing canonical CEFR x skill graph. Add canonical goals only if a source obligation is real and cannot be represented by an existing goal.
+5. Add composition views and route profiles only after source mappings are reviewable. `CQR-302` remains out of scope for this pilot.
+
+## Expected Dashboard Behavior
+
+- After only this planning report: no maturity change is expected.
+- After source-extraction files alone: English may still remain M0, because source goals are not enough without reviewed mappings and views.
+- After completed BB/BE extraction plus reviewed mappings: `CQR-000` and `CQR-003` should show a smaller gap, but the subject can still remain M0 until the declared 16-jurisdiction coverage model is satisfied or an explicitly reviewed narrower scope is introduced.
+- After composition views, route profiles, semantic atomicity, and all source jurisdictions are resolved: English can move through M1-M5. Memory review belongs to M6 only.
+
+## Risks To Keep Visible
+
+- The Berlin-Brandenburg Sek I document is a modern-foreign-languages framework; treating every generic statement as an English-specific content claim would overstate the evidence.
+- The upper-secondary Berlin PDF is verified as a Berlin source. Brandenburg applicability must be checked before using it for `DE-BB`.
+- The current Bayern source lane is very coarse: 9 source goals with 8 partial mappings. It is accepted today, but English remediation should not copy that granularity if a better source extraction is possible.
+- CEFR tags in SkillPilot are modeling decisions. Source texts may use Kompetenzbereiche or standards rather than the same CEFR labels, so mapping must stay semantic rather than string-based.
+
+## Next Concrete Implementation Task
+
+Build a small BB/BE English source-extraction generator by following the existing German/Latin BB/BE generator pattern, but stop after extraction and review scaffolding if the source text cannot be mapped defensibly in one pass.
+

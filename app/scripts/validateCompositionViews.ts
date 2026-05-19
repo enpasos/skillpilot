@@ -464,7 +464,6 @@ const canonicalFiles = collectFiles(canonicalRoot, (fileName) => extname(fileNam
 const compositionViewFiles = collectFiles(compositionViewRoot, (fileName) => /\.view\.json$/i.test(fileName))
 
 const canonicalByLandscapeId = new Map<string, { path: string, landscape: CanonicalAuthoringLandscape }>()
-const canonicalUniverseGoals: CanonicalAuthoringLandscape['goals'] = []
 
 for (const canonicalPath of canonicalFiles) {
   try {
@@ -474,7 +473,6 @@ for (const canonicalPath of canonicalFiles) {
       path: canonicalPath,
       landscape: normalized,
     })
-    canonicalUniverseGoals.push(...normalized.goals)
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unbekannter Fehler'
     console.error(`❌ [canonical-load] ${canonicalPath} konnte nicht geladen werden: ${message}`)
@@ -482,17 +480,6 @@ for (const canonicalPath of canonicalFiles) {
   }
 }
 
-const canonicalGoalUniverse: CanonicalAuthoringLandscape = normalizeCanonicalLandscape({
-  landscapeId: '__composition-view-goal-universe__',
-  frameworkId: '__composition-view-goal-universe__',
-  title: 'Composition View Goal Universe',
-  locale: 'de-DE',
-  country: 'DE',
-  region: 'DEU',
-  schoolType: 'Gymnasium',
-  subject: 'Canonical Goal Universe',
-  goals: canonicalUniverseGoals,
-})
 const canonicalLandscapeUniverseById = new Map(
   Array.from(canonicalByLandscapeId.entries()).map(([landscapeId, match]) => [landscapeId, match.landscape]),
 )
@@ -508,7 +495,7 @@ for (const viewPath of compositionViewFiles) {
     const result = compileCompositionView(
       normalizedView,
       canonicalMatch?.landscape ?? null,
-      canonicalGoalUniverse,
+      null,
       canonicalLandscapeUniverseById,
     )
     const additionalFindings = [

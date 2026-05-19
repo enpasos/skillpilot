@@ -115,6 +115,7 @@ In the **Aktionen** section:
 End-to-end flow for a typical learner session:
 
 1.  **Init:** The GPT checks for a `skillpilotId`. If one is provided, it calls `getLearnerState()` immediately. If none is provided and the user explicitly wants a new profile, it calls `createLearner()`.
+1a. **Mobile handoff:** If `createLearner()` returns `mobileImportUrl`, show it to mobile users as "Auf diesem Handy speichern". Explain briefly: the learner can answer the tutor by dictating into the normal ChatGPT text input, typing briefly, or sending an image of their written solution; do not switch into the separate Voice Mode because GPT Actions cannot use the SkillPilot backend there.
 2.  **Bootstrap:** It reads `stateMachine.requiredAction` from `createLearner` / `getLearnerState`. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
 3.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
 4.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.

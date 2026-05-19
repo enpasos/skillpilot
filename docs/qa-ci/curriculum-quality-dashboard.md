@@ -17,8 +17,12 @@ Detailed semantics for maturity levels, QA scopes, route coverage, and every `CQ
 - Memory-card review config runner: `app/scripts/runMemoryCardReviewConfigs.ts`
 - Memory-card rollout triage: `app/scripts/reportMemoryCardReviewRollout.ts`
 - Memory-card review ledgers: `curricula/DE/Gymnasium/quality/memory-card-review/*.review.jsonl` and `*.cards.review.jsonl`
-- Memory-card review audit reports: `docs/qa-ci/status/memory-card-review-canonical-math-full.md`, `docs/qa-ci/status/memory-card-review-canonical-physics-full.md`, `docs/qa-ci/status/memory-card-review-canonical-chemistry-full.md`
+- Memory-card review audit reports: `docs/qa-ci/status/memory-card-review-canonical-math-full.md`, `docs/qa-ci/status/memory-card-review-canonical-physics-full.md`, `docs/qa-ci/status/memory-card-review-canonical-chemistry-full.md`, `docs/qa-ci/status/memory-card-review-canonical-biology-full.md`, `docs/qa-ci/status/memory-card-review-canonical-german-full.md`, `docs/qa-ci/status/memory-card-review-canonical-history-full.md`, `docs/qa-ci/status/memory-card-review-canonical-informatics-full.md`, `docs/qa-ci/status/memory-card-review-canonical-latin-full.md`, `docs/qa-ci/status/memory-card-review-canonical-politics-economics-full.md`, `docs/qa-ci/status/memory-card-review-canonical-economics-full.md`
 - Memory-card rollout report: `docs/qa-ci/status/memory-card-review-rollout.md`
+- M0 remediation report generator: `app/scripts/reportM0RemediationPlan.ts`
+- M0 remediation report: `docs/qa-ci/status/m0-remediation-plan.md`
+- Englisch M0 remediation pilot generator: `app/scripts/reportEnglishRemediationPilot.ts`
+- Englisch M0 remediation pilot report: `docs/qa-ci/status/english-remediation-pilot.md`
 - Source-coverage audit generator: `app/scripts/generateCurriculumSourceCoverageAudit.ts`
 - Source-coverage audit JSON: `docs/qa-ci/status/curriculum-source-coverage-audit.json`
 - Source-coverage audit Markdown: `docs/qa-ci/status/curriculum-source-coverage-audit.md`
@@ -34,10 +38,15 @@ npm run quality:curriculum-status
 npm run quality:memory-card-review:report:all
 npm run quality:memory-card-review:check:all
 npm run quality:memory-card-review:rollout
+npm run quality:memory-card-review:pilot-dossier
+npm run quality:m0-remediation
+npm run quality:english-remediation-pilot
 npm run quality:source-coverage-audit
 ```
 
-`quality:memory-card-review:*:all` discovers all `*.config.json` files in `curricula/DE/Gymnasium/quality/memory-card-review/`. Add a config only when the CQR-302 ledger is meant to be enforced; Mathematik, Physik, and Chemie are currently completed and enforced in CI.
+`quality:memory-card-review:*:all` discovers all `*.config.json` files in `curricula/DE/Gymnasium/quality/memory-card-review/`. Add a config only when the CQR-302 ledger is meant to be enforced; Mathematik, Physik, Chemie, Biologie, Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft, and Wirtschaftswissenschaften are currently completed and enforced in CI.
+
+`quality:memory-card-review:pilot-dossier` is a non-enforced preparation step for subject-level pilots. It writes a semantic triage dossier without creating or changing the enforced `CQR-302` config or ledger.
 
 To initialize a new visible-but-open queue for a curriculum, create the config file first and then run:
 
@@ -51,8 +60,8 @@ The bootstrap mode writes only `needs_developer_review` records for missing ordi
 ## Maturity Levels
 
 The dashboard reports one conservative maturity level per curriculum and, where available, per configured route scope.
-The top-level M0-M5 cards are aggregate maturity counts. They change only when at least one curriculum changes maturity.
-To make that explicit, the dashboard also shows an `M5 review gates` strip for `CQR-301`, `CQR-302`, `CQR-401`, and `CQR-501`; these gate cards show how many rule instances pass and how many are still open. For required M5 reviews such as `CQR-302`, missing configuration counts as open.
+The top-level M0-M6 cards are aggregate maturity counts. They change only when at least one curriculum changes maturity.
+To make that explicit, the dashboard also shows an `M5/M6 review gates` strip for `CQR-301`, `CQR-401`, `CQR-501`, and `CQR-302`; these gate cards show how many rule instances pass and how many are still open. The first three rules carry the core `M5` level. `CQR-302` is the additional `M6` memory layer, so missing memory-card configuration blocks `M6`, not `M5`.
 
 | Level | Meaning |
 | --- | --- |
@@ -61,13 +70,14 @@ To make that explicit, the dashboard also shows an `M5 review gates` strip for `
 | `M2` | Bundesland composition-view atoms are fully source-backed, and registered source original goals are fully covered by the Bundesland view. |
 | `M3` | Every configured learner-facing QA scope has a clean route from motivation through atomic learning goals to terminal autonomy. |
 | `M4` | Terminal autonomy goals in every configured QA scope are exam-mode-capable via `examData` or an explicit reviewed exception convention. |
-| `M5` | Review/readiness layer is clean: semantic atomicity is current, memory-card decision tracing is current or explicitly reviewed, composition views exist, and no active or obsolete applicability warning debt remains. |
+| `M5` | Core review/readiness layer is clean: semantic atomicity is current, composition views exist, and no active or obsolete applicability warning debt remains. |
+| `M6` | `M5` plus reviewed memory-card layer: memory-card decision tracing is current or explicitly reviewed, every kept primary card is traced, and configured learner-facing views expose required memory nodes. |
 
-`M5` is intentionally strict. Most curricula will remain below it until source ingestion, route profiles, assessment data, and review ledgers exist.
+`M5` is intentionally strict for the core curriculum layer. `M6` is stricter again and is reserved for curricula whose optional memory-card layer has also been semantically reviewed.
 
 ## Rule Families
 
-The first rule catalog is versioned as `curriculum-quality-v1`.
+The current rule catalog is versioned as `curriculum-quality-v2`.
 
 | Rule | Target | Meaning |
 | --- | --- | --- |
@@ -81,7 +91,7 @@ The first rule catalog is versioned as `curriculum-quality-v1`.
 | `CQR-103` | `M3` | No route-scope cluster-level `requires` remain for ordinary sequencing. |
 | `CQR-201` | `M4` | Terminal autonomy goals have `examData`. |
 | `CQR-301` | `M5` | Semantic atomicity review ledgers for content leaf goals are complete, current, and resolved. |
-| `CQR-302` | `M5` | Memory-card review ledgers explicitly decide whether ordinary atomic goals justify memorization support; every kept primary card must trace to such a goal-level decision, and every memory deck must remain traceable. Missing review configuration blocks `M5`. |
+| `CQR-302` | `M6` | Memory-card review ledgers explicitly decide whether ordinary atomic goals justify memorization support; every kept primary card must trace to such a goal-level decision, every memory deck must remain traceable, and configured learner-facing views must expose the referenced memory nodes. Missing review configuration blocks `M6`, but not `M5`. |
 | `CQR-401` | `M5` | At least one learner-facing composition view exists for the curriculum. |
 | `CQR-501` | `M5` | Applicability warnings are split into active, accepted-current, and obsolete-accepted counts. |
 
@@ -90,7 +100,7 @@ The first rule catalog is versioned as `curriculum-quality-v1`.
 ## Mapping Pipeline Visibility
 
 The dashboard also renders the curriculum-mapping processing pipeline when persisted `source-extraction` artifacts provide `pipelineStatus`.
-This is separate from the M0-M5 rule calculation: it shows how far the source-to-SkillPilot implementation has progressed without pretending that a later step is complete.
+This is separate from the M0-M6 rule calculation: it shows how far the source-to-SkillPilot implementation has progressed without pretending that a later step is complete.
 
 The pipeline is reported per canonical curriculum and per source landscape:
 

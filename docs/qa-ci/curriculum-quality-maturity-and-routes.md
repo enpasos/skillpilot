@@ -218,7 +218,7 @@ Die Dashboard-Spalten `Warnungen` und `Fehler` zaehlen alle Regeln mit diesem St
 - globale Curriculumregeln,
 - plus alle Regeln der zugehoerigen QA-Scopes.
 
-## Reifegrade M0 bis M5
+## Reifegrade M0 bis M6
 
 Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle relevanten niedrigeren Bedingungen voraus.
 
@@ -235,7 +235,7 @@ Ein einzelner QA-Scope kann maximal `M3` erreichen.
 
 ### Curriculum-Reife
 
-Ein Curriculum kann `M0` bis `M5` erreichen.
+Ein Curriculum kann `M0` bis `M6` erreichen.
 
 | Curriculum-Reife | Exakte Bedingung |
 | --- | --- |
@@ -243,15 +243,18 @@ Ein Curriculum kann `M0` bis `M5` erreichen.
 | `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
 | `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
-| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Review-Regel (`CQR-301`, `CQR-302`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
-| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-302`, `CQR-401` und `CQR-501` sind `pass`; fehlende Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen. |
+| `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
+| `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
+| `M6` | `M5` ist erreicht und zusaetzlich ist `CQR-302` `pass`; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen und blockiert nur `M6`. |
 
 Wichtige Konsequenz:
 
 `M5` bedeutet nicht, dass es keine fachliche Verbesserung mehr geben kann.
 Es bedeutet:
 
-> Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, Memory-Card-Reviews sind nachvollziehbar entschieden, und die Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
+> Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Kern-Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
+
+`M6` bedeutet darueber hinaus, dass die optionale Memory-Layer fachlich eng begruendet ist: normale atomare Ziele wurden semantisch auf Memory-Notwendigkeit geprueft, aktive Karten sind auf diese Entscheidungen zurueckgefuehrt, und noetige Memory-Knoten sind in den konfigurierten Lernenden-Sichten sichtbar.
 
 `M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
 
@@ -633,16 +636,17 @@ Reifeziel:
 
 Ziel:
 
-> Fuer normale atomare Lernziele ist explizit entschieden, ob Memory-Lernen fachlich gerechtfertigt ist; jede behaltene primaere Karte muss aus einer solchen Entscheidung rueckverfolgbar sein, und vorhandene Memory-Knoten/SRS-Decks muessen eng bleiben.
+> Fuer normale atomare Lernziele ist explizit entschieden, ob Memory-Lernen fachlich gerechtfertigt ist; jede behaltene primaere Karte muss aus einer solchen Entscheidung rueckverfolgbar sein, vorhandene Memory-Knoten/SRS-Decks muessen eng bleiben, und konfigurierte Lernenden-Sichten muessen die benoetigten Memory-Knoten wirklich sichtbar machen.
 
 Geprueft wird:
 
 - Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.
-- Ohne Memory-Card-Review-Konfiguration unter `curricula/DE/Gymnasium/quality/memory-card-review/` ist der Status `not_configured`; das blockiert `M5`.
+- Ohne Memory-Card-Review-Konfiguration unter `curricula/DE/Gymnasium/quality/memory-card-review/` ist der Status `not_configured`; das blockiert `M6`, aber nicht den Kern-QS-Stand `M5`.
 - Alle relevanten normalen atomaren Ziele im konfigurierten Scope haben einen Review-Datensatz.
 - Der gespeicherte Fingerprint des Review-Datensatzes passt zum aktuellen Zieltext und relevanten Metadaten.
 - Der Review-Status ist `no_memory_needed`, `memory_required` oder `needs_developer_review`.
 - `memory_required` muss mindestens einen existierenden Memory-Knoten und mindestens eine von diesem Knoten bereitgestellte `srs-deck:*`-ID referenzieren.
+- Wenn `visibilityScopes` konfiguriert sind, muss jedes dort sichtbare `memory_required`-Ziel mindestens einen seiner referenzierten Memory-Knoten in derselben Composition View sichtbar haben.
 - Jeder vorhandene Memory-Knoten im Scope muss durch mindestens einen aktuellen `memory_required`-Datensatz begruendet sein.
 - Die von den Memory-Knoten referenzierten Deckdateien muessen auffindbar und lesbar sein.
 - Primaere Karten werden separat unter `*.cards.review.jsonl` geprueft.
@@ -680,7 +684,7 @@ Status:
 
 Reifeziel:
 
-- Teil von `M5`; `not_configured`, `warn` und `fail` blockieren `M5`.
+- Teil von `M6`; `not_configured`, `warn` und `fail` blockieren `M6`, aber nicht `M5`.
 
 Interpretation:
 
@@ -755,7 +759,7 @@ Interpretation:
 - `acceptedWarnings` sind keine offenen Fehler. Sie dokumentieren bewusst akzeptierte, weiterhin aktuelle Warnungen.
 - `obsoleteAcceptedWarnings` sind dagegen Qualitaetsschuld, weil die Registry dann nicht mehr zur aktuellen Compilerlage passt.
 
-## Was `M5` bei Mathematik aktuell bedeutet
+## Was `M5` und `M6` bei Mathematik aktuell bedeuten
 
 Bei `Mathematik (Gymnasium, DE)` bedeutet `M5` im aktuellen Dashboard:
 
@@ -763,12 +767,15 @@ Bei `Mathematik (Gymnasium, DE)` bedeutet `M5` im aktuellen Dashboard:
 - Sek I prueft 218 atomare Ziele.
 - Sek II prueft 397 atomare Ziele.
 - Beide Scopes haben `CQR-101`, `CQR-102`, `CQR-103` und `CQR-201` auf `pass`.
-- Die globale Review-Schicht hat `CQR-301`, `CQR-302`, `CQR-401` und `CQR-501` auf `pass`.
-- `CQR-302` prueft fuer den Mathematik-Piloten 750 normale atomare Ziele, davon 713 mit `no_memory_needed` und 37 mit `memory_required`; 50 aktive primaere Karten sind jeweils auf konkrete `memory_required`-Ziele zurueckgefuehrt, und alle 5 vorhandenen Memory-Knoten sind dadurch rueckverfolgt.
+- Die globale Kern-Review-Schicht hat `CQR-301`, `CQR-401` und `CQR-501` auf `pass`.
+
+`M6` bedeutet zusaetzlich:
+
+- `CQR-302` prueft fuer den Mathematik-Piloten 750 normale atomare Ziele, davon 713 mit `no_memory_needed` und 37 mit `memory_required`; 64 aktive primaere Karten sind jeweils auf konkrete `memory_required`-Ziele zurueckgefuehrt, alle 6 vorhandenen Memory-Knoten sind dadurch rueckverfolgt, und die konfigurierten Sek-I-Sichten loesen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten auf.
 
 Damit ist die Aussage:
 
-> Das gesamte kanonische Mathematik-Curriculum ist in seinen beiden konfigurierten Stufen Sek I und Sek II route- und assessment-seitig geprueft; die zusaetzlichen M5-Review- und Sichtbarkeitsregeln sind aktuell gruen, inklusive eines konservativen Memory-Card-Entscheidungstracings.
+> Das gesamte kanonische Mathematik-Curriculum ist in seinen beiden konfigurierten Stufen Sek I und Sek II route- und assessment-seitig geprueft; die Kern-Review- und Sichtbarkeitsregeln sind aktuell gruen. Der zusaetzliche M6-Memory-Layer ist ebenfalls gruen, inklusive eines konservativen Memory-Card-Entscheidungstracings.
 
 Bei `Physik (Gymnasium, DE)` ist `CQR-302` ebenfalls konfiguriert:
 
@@ -785,6 +792,68 @@ Bei `Chemie (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und ak
 - 55 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
 - Alle 6 vorhandenen Chemie-Memory-Knoten sind dadurch rueckverfolgt.
 - Die Applicability der Chemie-Memory-Knoten ist konservativ auf die vom Compiler belegten Bundeslaender begrenzt; dadurch bleibt `CQR-501` ohne aktive Warnungen.
+
+Bei `Biologie (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Biologie-Review prueft 355 normale atomare Ziele.
+- Davon sind 348 mit `no_memory_needed` und 7 mit `memory_required` entschieden.
+- 17 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Der eine vorhandene Biologie-Memory-Knoten ist dadurch rueckverfolgt.
+- Die konfigurierte Biologie-GK-Composition-View zeigt den Memory-Knoten dort sichtbar an, wo sichtbare `memory_required`-Ziele auf ihn verweisen.
+
+Bei `Informatik (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Informatik-Review prueft 207 normale atomare Ziele.
+- Davon sind 198 mit `no_memory_needed` und 9 mit `memory_required` entschieden.
+- 28 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Informatik-Memory-Knoten sind dadurch rueckverfolgt.
+- Alle 18 konfigurierten Informatik-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.
+- Die Applicability der Informatik-Memory-Knoten ist konservativ auf die vom Compiler belegten Bundeslaender begrenzt; dadurch bleibt `CQR-501` ohne aktive Warnungen.
+
+Bei `Latein (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Latein-Review prueft 115 normale atomare Ziele.
+- Davon sind 82 mit `no_memory_needed` und 33 mit `memory_required` entschieden.
+- 34 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Latein-Memory-Knoten sind dadurch rueckverfolgt.
+- Die konfigurierte Latein-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare `memory_required`-Ziele auf sie verweisen.
+- Die Decks bleiben bewusst schmal: Sie sichern Wortschatz-/Wortbildungsroutinen, Formenlehre, Satzkonstruktionen, Stilmittel/Rhetorik sowie wenige Kultur- und Philosophiebegriffe; Uebersetzen, Analysieren, Interpretieren und Vergleichen bleiben die fuehrende Lernarbeit.
+
+Bei `Deutsch (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Deutsch-Review prueft 268 normale atomare Ziele.
+- Davon sind 194 mit `no_memory_needed` und 74 mit `memory_required` entschieden.
+- 48 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Deutsch-Memory-Knoten sind dadurch rueckverfolgt.
+- Die konfigurierte Deutsch-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare `memory_required`-Ziele auf sie verweisen.
+- Die Decks bleiben bewusst schmal: Sie sichern Grammatik/Rechtschreibung, Textsorten/Argumentation, Gattungs- und Formbegriffe, Epochenorientierung sowie Rhetorik-, Medien- und Sprachmodellbegriffe; Lesen, Schreiben, Analysieren, Interpretieren und Diskutieren bleiben die fuehrende Lernarbeit.
+
+Bei `Geschichte (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Geschichte-Review prueft 156 normale atomare Ziele.
+- Davon sind 100 mit `no_memory_needed` und 56 mit `memory_required` entschieden.
+- 57 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Geschichte-Memory-Knoten sind dadurch rueckverfolgt.
+- Die konfigurierte Geschichte-CrossStage-Composition-View zeigt die Memory-Knoten dort sichtbar an, wo sichtbare `memory_required`-Ziele auf sie verweisen.
+- Die Decks bleiben bewusst schmal: Sie sichern Zeitleistenanker und Begriffe zu Vormoderne/Revolution, 19. Jahrhundert, Demokratie und Diktatur 1917-1945, Kaltem Krieg/Gegenwart sowie Erinnerungskultur; Quellenarbeit, Erklaeren, Vergleichen und historisches Urteilen bleiben die fuehrende Lernarbeit.
+
+Bei `Politik und Wirtschaft (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Politik-und-Wirtschaft-Review prueft 413 normale atomare Ziele.
+- Davon sind 306 mit `no_memory_needed` und 107 mit `memory_required` entschieden.
+- 62 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Politik-und-Wirtschaft-Memory-Knoten sind dadurch rueckverfolgt.
+- Alle 14 konfigurierten Bundesland-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.
+- Die Decks bleiben bewusst schmal: Sie sichern Demokratie/Rechtsstaat, Beteiligung/Medien, Markt/Geld/Sozialstaat, internationale Politik/Global Governance sowie EU-Integration; Fallanalyse, Quellenarbeit, Interessenvergleich, Argumentation und politisch-oekonomisches Urteil bleiben die fuehrende Lernarbeit.
+
+Bei `Wirtschaftswissenschaften (Gymnasium, DE)` ist `CQR-302` ebenfalls fachlich entschieden und aktuell:
+
+- Der Wirtschaftswissenschaften-Review prueft 303 normale atomare Ziele.
+- Davon sind 250 mit `no_memory_needed` und 53 mit `memory_required` entschieden.
+- 51 aktive primaere Karten sind auf konkrete `memory_required`-Ziele zurueckgefuehrt.
+- Alle 5 vorhandenen Wirtschaftswissenschaften-Memory-Knoten sind dadurch rueckverfolgt.
+- Beide konfigurierten GK/LK-Composition-Views zeigen sichtbare Memory-Pflichten auf sichtbare Memory-Knoten.
+- Die Decks bleiben bewusst schmal: Sie sichern Marktordnung/Wettbewerb/Sozialstaat, Unternehmen/Rechnungswesen/Finanzierung, Makrooekonomie/Geldpolitik, Aussenwirtschaft/Entwicklung sowie Wirtschaftsrecht/Falltechnik; Rechnen, Modellkritik, Fallsubsumtion, Materialanalyse und Urteil bleiben die fuehrende Lernarbeit.
 
 Nicht gemeint ist:
 
