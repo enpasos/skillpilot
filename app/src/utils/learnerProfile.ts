@@ -1,7 +1,10 @@
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
-import { normalizeTrainerLandscapeId } from './trainerLandscapeContext'
+import { mapLegacyGymnasiumLandscapeIdToCanonical, normalizeTrainerLandscapeId } from './trainerLandscapeContext'
 
 type Role = 'learner' | 'trainer' | 'explorer'
+
+export const normalizeLearnerLandscapeId = (landscapeId?: string | null) =>
+  mapLegacyGymnasiumLandscapeIdToCanonical(landscapeId)
 
 export const getStoredLandscapeIdForRole = (role: Role | null | undefined) => {
   if (typeof window === 'undefined') return ''
@@ -10,7 +13,12 @@ export const getStoredLandscapeIdForRole = (role: Role | null | undefined) => {
       return normalizeTrainerLandscapeId(window.localStorage.getItem('skillpilot_trainer_landscape'))
     }
     if (role === 'learner') {
-      return window.localStorage.getItem('skillpilot_learner_landscape') || ''
+      const stored = window.localStorage.getItem('skillpilot_learner_landscape') || ''
+      const normalized = normalizeLearnerLandscapeId(stored)
+      if (stored && normalized !== stored) {
+        window.localStorage.setItem('skillpilot_learner_landscape', normalized)
+      }
+      return normalized
     }
   } catch {
     return ''
@@ -39,7 +47,7 @@ export const getLearnerSelectedLandscapeId = (data: Record<string, unknown>) => 
     }
   }
 
-  return selectedCurriculum
+  return normalizeLearnerLandscapeId(selectedCurriculum)
 }
 
 export const getLearnerPathToken = (pathname: string) => {

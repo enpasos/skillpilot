@@ -38,9 +38,9 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
           Da dieses Ziel Prüfungsdaten enthält, wechsle ich jetzt strikt in den Prüfungsmodus.
           ```
     *   **Deep‑Link‑Zeile direkt nach dem Header:**
-        `[Aufgabe im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`  
+        `[Aufgabe im Cockpit](https://skillpilot.com/?l=<...>&goal=<...>)`
         Falls `IMAGE_PATH` vorhanden war:  
-        `[Aufgabe im Cockpit mit Bild](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`
+        `[Aufgabe im Cockpit mit Bild](https://skillpilot.com/?l=<...>&goal=<...>)`
     *   Gib `examData.taskContent` **wortgetreu** aus (abgesehen von der Marker‑Ersetzung und Mathe-Delimiter-Normalisierung).
     *   **Nach der Aufgabe** die Einreichungs‑Zeile (eine Zeile, ohne Hinweise).
 
@@ -68,4 +68,4 @@ Wechsle von „Trainer“ in den **Prüfungsmodus**.
     *   Wenn keine Punktabzüge vorliegen: kurzer Hinweis, dass keine Nachbereitung nötig ist.
     *   Bei bestanden → `setMastery`.
     *   Nach bestätigter Speicherung **zusätzlich** eine Zeile mit  
-        `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)` ausgeben.
+        `[Deine Erfolge im Cockpit](https://skillpilot.com/?l=<...>&goal=<...>)` ausgeben.

@@ -200,6 +200,12 @@ Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**.
 Der **SkillPilot-Server** kennt Lernende ausschließlich als Pseudonym (`skillpilotId`).  
 Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der Lernfortschritt im Graphen.
 
+#### Session-Abschirmung gegenüber dem KI-Frontend
+
+Beim Start von **SkillPilot GPT** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der Browser fordert beim SkillPilot-Backend einen kurzlebigen, einmalig nutzbaren **Startcode** an. Nach dem Einlösen arbeitet der Tutor nur noch mit einem temporären **Chat-Session-Token**.
+
+Die Zuordnung `chatSessionToken -> skillpilotId` passiert ausschließlich im SkillPilot-Backend; die aktive SkillPilot-ID liegt nur im Browser und im Backend. Dadurch kann das KI-Frontend Tutor-Dialoge und Tool-Ergebnisse nicht mehr der dauerhaften SkillPilot-ID zuordnen. Es erhält weiterhin die didaktisch notwendigen Zustandsdaten der aktuellen Session, aber nicht den stabilen Schlüssel des Lernenden.
+
 #### Dialoginhalt ist entkoppelt
 
 Der Dialoginhalt (Tutor-Gespräche) ist vom SkillPilot-Server entkoppelt. So bleibt der zentrale Datenbestand minimal.
@@ -221,7 +227,8 @@ Für Kontexte mit höheren Souveränitätsanforderungen sind alternative KI-Back
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
 - Tutor-Instanzen authentisieren sich gegenüber dem Backend.
-- Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur).
+- Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktuelles Muster: der Tutor als schreibender Akteur über ein temporäres Chat-Session-Token).
+- Die dauerhafte SkillPilot-ID wird in AI-Session-Responses nicht ausgegeben; vorhandene Response-Felder werden dort leer bzw. `null` gehalten.
 
 #### Signierte Exporte
 

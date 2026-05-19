@@ -9,19 +9,19 @@ GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
-Trainer/GPT hard-recall tools use the AI-facing endpoints:
+Browser and trainer tools can use the UI-facing endpoints above. GPT hard-recall tools use session-based AI endpoints; the GPT never receives the permanent SkillPilot ID in the normal flow:
 
 ```
-POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/start
-POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/answer
-POST /api/ai/{lang}/learners/{skillpilotId}/verified-recall/result
+POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/start
+POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/answer
+POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/result
 ```
 
 `start` returns the next prompt but not the answer. It may receive `goalId` or use the active goal; `retest: true` can request a fresh card even when all cards are already verified. `answer` returns the expected answer only after the learner has submitted their response. `result` stores `passed`/`failed`, updates SRS scheduling, and returns the next prompt status.
 
 ## Purpose
-- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after Trainer/GPT hard-recall decisions.
-- Keep the backend **PII-free**; the only identifier is the pseudonymous `skillpilotId`.
+- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after trainer/GPT hard-recall decisions.
+- Keep the backend **PII-free**. Browser/UI routes use the pseudonymous `skillpilotId`; GPT routes use only a temporary `chatSessionToken`, which the backend resolves internally.
 - Allow later recovery or cross-device continuity via **export/import**.
 
 ## Request

@@ -10,44 +10,54 @@ import org.junit.jupiter.api.Test;
 class AiPromptContractTest {
 
     @Test
-    void systemInstructions_requireStateLoadForUuid() throws Exception {
-        assertContainsUuidContract(
+    void systemInstructions_requireStartCodeRedeemAndSessionToken() throws Exception {
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
-                "getLearnerState",
-                "UUID");
-        assertContainsUuidContract(
+                "redeemStartCode",
+                "chatSessionToken",
+                "SkillPilot-Startcode",
+                "nicht nach der SkillPilot-ID fragen");
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
-                "getLearnerState",
-                "UUID");
+                "redeemStartCode",
+                "chatSessionToken",
+                "SkillPilot start code",
+                "do not ask for the SkillPilot ID");
     }
 
     @Test
-    void setupGuides_warnAgainstCockpitDetoursForExistingIds() throws Exception {
+    void setupGuides_requireBrowserStartCodesInsteadOfGptProfiles() throws Exception {
         assertContainsSetupSanityRule(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
-                "UUID",
-                "cockpit");
+                "Startcode",
+                "redeemStartCode",
+                "chatSessionToken",
+                "No question for a SkillPilot-ID",
+                "No `createLearner`");
         assertContainsSetupSanityRule(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
-                "UUID",
-                "cockpit");
+                "start code",
+                "redeemStartCode",
+                "chatSessionToken",
+                "No question for a SkillPilot ID",
+                "No `createLearner`");
     }
 
     @Test
     void prompts_defineTeachActiveGoalAsConversationalNotMasteryWrite() throws Exception {
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
                 "teachActiveGoal",
                 "kein Tool");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
                 "teachActiveGoal",
                 "not a tool");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
                 "teachActiveGoal",
                 "niemals direkt");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
                 "teachActiveGoal",
                 "never directly");
@@ -55,29 +65,29 @@ class AiPromptContractTest {
 
     @Test
     void prompts_reconstructUnusualSolutionsBeforeCorrecting() throws Exception {
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
                 "zuerst rekonstruieren",
                 "Kreative",
                 "falsche oder unbegründete Schritte");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
                 "reconstruct first",
                 "creative strategies",
                 "wrong or unjustified steps");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.de.md"),
                 "Ungewöhnliche Lösungswege",
                 "Korrigiere nur den tatsächlich falschen Schritt",
                 "lehne ihn klar ab");
-        assertContainsUuidContract(
+        assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.en.md"),
                 "Unusual solution paths",
                 "Correct only the actually wrong step",
                 "reject it clearly");
     }
 
-    private static void assertContainsUuidContract(Path path, String... fragments) throws IOException {
+    private static void assertContainsFragments(Path path, String... fragments) throws IOException {
         String text = Files.readString(path);
         for (String fragment : fragments) {
             assertThat(text).containsIgnoringCase(fragment);

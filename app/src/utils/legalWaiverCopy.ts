@@ -29,17 +29,17 @@ export const getLegalWaiverCopy = (language: LabelLanguage): LegalWaiverCopy => 
       }
     : {
         shortDisclaimer: `
-# Bitte bestätigen Sie die folgenden Punkte, um SkillPilot zu nutzen:
+# Bitte bestätige kurz die Nutzungshinweise:
 
-* **Modellcharakter**: Mir ist bewusst, dass die Lerninhalte und Lernziele in SkillPilot Modelle sind und keinen Anspruch auf Vollständigkeit erheben.
-* **KI-Grenzen**: Ich weiß, dass KI-Bewertungen fehlerhaft sein können und nicht prüfungs- oder rechtsverbindlich sind.
-* **Datenintegrität**: Mir ist klar, dass Angaben von Nutzenden (z. B. zu Fähigkeiten und Lernfortschritten) manipuliert oder unzutreffend sein können.
-* **Verfügbarkeit**: Ich akzeptiere, dass die Verfügbarkeit des Dienstes nicht garantiert ist und Daten verloren gehen können.
-* **Haftung**: Ich nutze SkillPilot auf eigenes Risiko; eine Haftung des Betreibers ist im gesetzlich zulässigen Umfang ausgeschlossen.
+* **Modellcharakter**: Lerninhalte und Lernziele sind Modelle und nicht garantiert vollständig.
+* **KI-Grenzen**: KI-Bewertungen können falsch sein und sind nicht prüfungs- oder rechtsverbindlich.
+* **Datenintegrität**: Lernstände können durch falsche Eingaben unzutreffend sein.
+* **Verfügbarkeit**: Der Dienst kann ausfallen; Daten können verloren gehen.
+* **Haftung**: Die Nutzung erfolgt auf eigenes Risiko im gesetzlich zulässigen Umfang.
 `,
         detailsPrefix: 'Die ausführlichen ',
         detailsLinkLabel: 'Rechtlichen Hinweise und den Haftungsausschluss',
-        detailsSuffix: ' finden Sie hier.',
+        detailsSuffix: ' findest du hier.',
         acceptanceLabel: 'Ich habe die Hinweise gelesen und akzeptiere den Haftungsausschluss.',
         confirmButton: 'Bestätigen & Fortfahren',
       }

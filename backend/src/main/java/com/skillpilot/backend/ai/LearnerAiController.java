@@ -3,6 +3,8 @@ package com.skillpilot.backend.ai;
 import com.skillpilot.backend.api.CreateLearnerResponse;
 import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.RedeemStartCodeRequest;
+import com.skillpilot.backend.api.RedeemStartCodeResponse;
 import com.skillpilot.backend.api.UpdateCurriculumRequest;
 import com.skillpilot.backend.api.CreateLearnerRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
@@ -15,6 +17,7 @@ import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,28 +33,28 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RestController
-@RequestMapping(value = "/api/ai/{lang}/learners", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/ai/{lang}", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LearnerAiController {
 
     private final LearnerService learnerService;
+    private final ChatSessionService chatSessionService;
     private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
 
     @Value("${skillpilot.public-base-url:https://skillpilot.com}")
     private String publicBaseUrl;
 
-    public LearnerAiController(LearnerService learnerService) {
+    public LearnerAiController(LearnerService learnerService, ChatSessionService chatSessionService) {
         this.learnerService = learnerService;
+        this.chatSessionService = chatSessionService;
     }
 
-    @PostMapping
+    @PostMapping("/learners")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public CreateLearnerResponse createLearner(@RequestBody(required = false) CreateLearnerRequest request) {
         Learner learner = learnerService.createLearner(request);
@@ -67,18 +70,17 @@ public class LearnerAiController {
 
         return new CreateLearnerResponse(
                 state,
-                available,
-                buildMobileImportUrl(learner.getSkillpilotId()));
+                available);
     }
 
-    @GetMapping("/{skillpilotId}/state")
+    @GetMapping("/learners/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
-    @PostMapping("/{skillpilotId}/scope")
+    @PostMapping("/learners/{skillpilotId}/scope")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
@@ -87,10 +89,17 @@ public class LearnerAiController {
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
-    @PostMapping("/{skillpilotId}/active-goal")
+    @PostMapping("/learners/{skillpilotId}/active-goal")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
+        return setActiveGoalForLearner(skillpilotId, request, false);
+    }
+
+    private UnifiedLearnerStateResponse setActiveGoalForLearner(
+            String skillpilotId,
+            ActiveGoalRequest request,
+            boolean hideSkillpilotId) {
         learnerService.assertWritableLearningSession(skillpilotId);
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
@@ -105,14 +114,123 @@ public class LearnerAiController {
             }
         }
         learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+        return prepareLearnerState(skillpilotId, hideSkillpilotId);
     }
 
-    @PostMapping("/{skillpilotId}/mastery")
+    @PostMapping("/learners/{skillpilotId}/mastery")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
+        return setMasteryForLearner(skillpilotId, request, false);
+    }
+
+    @PostMapping("/chat-start/redeem")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public RedeemStartCodeResponse redeemStartCode(
+            @PathVariable String lang,
+            @RequestBody RedeemStartCodeRequest request) {
+        ChatSessionService.RedeemedSession session = chatSessionService.redeemStartCode(
+                request == null ? null : request.startCode(),
+                lang);
+        return new RedeemStartCodeResponse(
+                session.chatSessionToken(),
+                session.expiresAt(),
+                prepareLearnerState(session.skillpilotId(), true));
+    }
+
+    @GetMapping("/sessions/{chatSessionToken}/state")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse getSessionState(@PathVariable String chatSessionToken) {
+        return prepareLearnerState(resolveSessionLearnerId(chatSessionToken), true);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/scope")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setSessionScope(
+            @PathVariable String chatSessionToken,
+            @RequestBody ScopeRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setScope(skillpilotId, request.goalIds());
+        return prepareLearnerState(skillpilotId, true);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/active-goal")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setSessionActiveGoal(
+            @PathVariable String chatSessionToken,
+            @Valid @RequestBody ActiveGoalRequest request) {
+        return setActiveGoalForLearner(resolveSessionLearnerId(chatSessionToken), request, true);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/mastery")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public org.springframework.http.ResponseEntity<?> setSessionMastery(
+            @PathVariable String chatSessionToken,
+            @RequestBody(required = false) MasteryUpdateRequest request) {
+        return setMasteryForLearner(resolveSessionLearnerId(chatSessionToken), request, true);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallPromptResponse startSessionVerifiedRecall(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody(required = false) VerifiedRecallStartRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecall(skillpilotId, lang, request);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/verified-recall/answer")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallAnswerResponse getSessionVerifiedRecallAnswer(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody VerifiedRecallAnswerRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/verified-recall/result")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public VerifiedRecallResultResponse recordSessionVerifiedRecallResult(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody VerifiedRecallResultRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.recordVerifiedRecallResult(skillpilotId, lang, request);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/curriculum")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setSessionCurriculum(
+            @PathVariable String chatSessionToken,
+            @RequestBody UpdateCurriculumRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+        return prepareLearnerState(skillpilotId, true);
+    }
+
+    @PostMapping("/sessions/{chatSessionToken}/personalization")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public UnifiedLearnerStateResponse setSessionPersonalization(
+            @PathVariable String chatSessionToken,
+            @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
+        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
+        return prepareLearnerState(skillpilotId, true);
+    }
+
+    private org.springframework.http.ResponseEntity<?> setMasteryForLearner(
+            String skillpilotId,
+            MasteryUpdateRequest request,
+            boolean hideSkillpilotId) {
         learnerService.assertWritableLearningSession(skillpilotId);
 
         org.springframework.http.ResponseEntity<?> validationError = validateAiMasteryRequest(request);
@@ -140,7 +258,7 @@ public class LearnerAiController {
                             UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
                             return org.springframework.http.ResponseEntity
                                     .status(org.springframework.http.HttpStatus.CONFLICT)
-                                    .body(withAbsoluteExamAssetUrls(conflictState));
+                                    .body(prepareLearnerState(conflictState, hideSkillpilotId));
                         }
                         throw e;
                     }
@@ -149,7 +267,7 @@ public class LearnerAiController {
             if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
                 return org.springframework.http.ResponseEntity
                         .status(org.springframework.http.HttpStatus.CONFLICT)
-                        .body(withAbsoluteExamAssetUrls(state));
+                        .body(prepareLearnerState(state, hideSkillpilotId));
             }
         }
 
@@ -161,7 +279,7 @@ public class LearnerAiController {
                 UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
                 return org.springframework.http.ResponseEntity
                         .status(org.springframework.http.HttpStatus.CONFLICT)
-                        .body(withAbsoluteExamAssetUrls(conflictState));
+                        .body(prepareLearnerState(conflictState, hideSkillpilotId));
             }
             throw e;
         }
@@ -229,7 +347,7 @@ public class LearnerAiController {
         return null;
     }
 
-    @PostMapping("/{skillpilotId}/verified-recall/start")
+    @PostMapping("/learners/{skillpilotId}/verified-recall/start")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startVerifiedRecall(
             @PathVariable String lang,
@@ -239,7 +357,7 @@ public class LearnerAiController {
         return learnerService.startVerifiedRecall(skillpilotId, lang, request);
     }
 
-    @PostMapping("/{skillpilotId}/verified-recall/answer")
+    @PostMapping("/learners/{skillpilotId}/verified-recall/answer")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             @PathVariable String lang,
@@ -249,7 +367,7 @@ public class LearnerAiController {
         return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
     }
 
-    @PostMapping("/{skillpilotId}/verified-recall/result")
+    @PostMapping("/learners/{skillpilotId}/verified-recall/result")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallResultResponse recordVerifiedRecallResult(
             @PathVariable String lang,
@@ -259,7 +377,7 @@ public class LearnerAiController {
         return learnerService.recordVerifiedRecallResult(skillpilotId, lang, request);
     }
 
-    @PostMapping("/{skillpilotId}/curriculum")
+    @PostMapping("/learners/{skillpilotId}/curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
@@ -268,7 +386,7 @@ public class LearnerAiController {
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
     }
 
-    @PostMapping("/{skillpilotId}/personalization")
+    @PostMapping("/learners/{skillpilotId}/personalization")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
 
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
@@ -276,6 +394,40 @@ public class LearnerAiController {
         learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
         return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+    }
+
+    private String resolveSessionLearnerId(String chatSessionToken) {
+        String skillpilotId = chatSessionService.resolveSkillpilotId(chatSessionToken);
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return skillpilotId;
+    }
+
+    private UnifiedLearnerStateResponse prepareLearnerState(String skillpilotId, boolean hideSkillpilotId) {
+        return prepareLearnerState(learnerService.getLearnerState(skillpilotId), hideSkillpilotId);
+    }
+
+    private UnifiedLearnerStateResponse prepareLearnerState(
+            UnifiedLearnerStateResponse state,
+            boolean hideSkillpilotId) {
+        UnifiedLearnerStateResponse prepared = withAbsoluteExamAssetUrls(state);
+        return hideSkillpilotId ? withoutSkillpilotId(prepared) : prepared;
+    }
+
+    private UnifiedLearnerStateResponse withoutSkillpilotId(UnifiedLearnerStateResponse state) {
+        if (state == null) {
+            return null;
+        }
+        return new UnifiedLearnerStateResponse(
+                null,
+                state.curriculum(),
+                state.frontier(),
+                state.goals(),
+                state.nextAllowedActions(),
+                state.activeFilters(),
+                state.copySources(),
+                state.learningState(),
+                state.activeGoal(),
+                state.stateMachine());
     }
 
     private UnifiedLearnerStateResponse withAbsoluteExamAssetUrls(UnifiedLearnerStateResponse state) {
@@ -586,15 +738,6 @@ public class LearnerAiController {
             baseUrl = publicBaseUrl == null ? "" : publicBaseUrl.trim().replaceAll("/+$", "");
         }
         return baseUrl;
-    }
-
-    private String buildMobileImportUrl(String skillpilotId) {
-        String encodedId = URLEncoder.encode(skillpilotId, StandardCharsets.UTF_8);
-        String baseUrl = resolveBaseUrl();
-        if (baseUrl == null || baseUrl.isBlank()) {
-            return "/mobi#id=" + encodedId;
-        }
-        return baseUrl + "/mobi#id=" + encodedId;
     }
 
 }

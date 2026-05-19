@@ -45,6 +45,7 @@ import { getNextVisibleLearnerGoalSelection } from '../utils/learnerGoalSelectio
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
+import { requestChatStart } from '../utils/chatStart'
 import {
   buildDirectChildrenMap,
   buildVisibleChildrenMap,
@@ -570,11 +571,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setMemoryPracticeGoalId(null)
   }, [currentGoal?.id])
 
-  const buildVerifiedRecallStartPrompt = useCallback((goal: UiGoal) => {
+  const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal) => {
     const title = getLearnerGoalTitle(goal)
     if (localizedLanguage === 'en') {
       return [
-        `SkillPilot ID: ${skillpilotId}`,
         `Active learning goal: ${goal.id} - ${title}`,
         '',
         'Please start hard flashcard verification for this active memorization goal.',
@@ -582,24 +582,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ].join('\n')
     }
     return [
-      `SkillPilot-ID: ${skillpilotId}`,
       `Aktives Lernziel: ${goal.id} - ${title}`,
       '',
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
       'Nutze die SkillPilot-Werkzeuge für verified recall: zuerst die nächste Frage holen, mich ohne Hilfe antworten lassen, die erwartete Antwort erst nach meiner Antwort abrufen und danach passed/failed für die Karte speichern.',
     ].join('\n')
-  }, [getLearnerGoalTitle, localizedLanguage, skillpilotId])
+  }, [getLearnerGoalTitle, localizedLanguage])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
-    const prompt = buildVerifiedRecallStartPrompt(goal)
-    window.open(getSkillpilotGptUrl(language), '_blank', 'noopener,noreferrer')
+    const chatWindow = window.open('', '_blank')
     let copied = false
     try {
+      const chatStart = await requestChatStart({
+        skillpilotId,
+        language,
+        selectedCurriculum: rootLandscapeId || landscapeId,
+        promptContext: buildVerifiedRecallPromptContext(goal),
+        client: 'verified-recall',
+      })
+      const url = getSkillpilotGptUrl(language, chatStart.prompt)
+      if (chatWindow) {
+        chatWindow.opener = null
+        chatWindow.location.href = url
+      } else {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(prompt)
+        await navigator.clipboard.writeText(chatStart.prompt)
         copied = true
       }
     } catch {
+      if (chatWindow) {
+        chatWindow.close()
+      }
       copied = false
     }
 
@@ -610,11 +625,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         : learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
     )
   }, [
-    buildVerifiedRecallStartPrompt,
+    buildVerifiedRecallPromptContext,
+    landscapeId,
     language,
     learnerViewCopy.memoryVerifiedRecallPromptCopied,
     learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
     onNotify,
+    rootLandscapeId,
+    skillpilotId,
   ])
 
   const visibleGoals = useMemo(() => {

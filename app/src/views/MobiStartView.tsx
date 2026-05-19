@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   AlertTriangle,
@@ -20,14 +20,15 @@ import {
 import { useLanguage } from '../contexts/LanguageContext'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
-import { SKILLPILOT_GPT_URL_DE } from '../utils/skillpilotGpt'
+import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
+import { requestChatStart } from '../utils/chatStart'
 
 const STORAGE_KEY = 'skillpilot_id'
 const ROLE_STORAGE_KEY = 'skillpilot_role'
 const LANGUAGE_STORAGE_KEY = 'skillpilot_lang'
 const MOBI_IMPORTED_AT_KEY = 'skillpilot_mobi_imported_at'
 
-type CopyState = 'idle' | 'prompt' | 'id' | 'importLink' | 'failed'
+type CopyState = 'idle' | 'prompt' | 'id' | 'failed'
 
 const readStoredSkillpilotId = () => {
   try {
@@ -68,8 +69,6 @@ const extractSkillpilotIdFromValue = (value: string) => {
   )
 }
 
-const extractSkillpilotIdFromHash = () => extractSkillpilotIdFromValue(window.location.hash.replace(/^#/, ''))
-
 const saveSkillpilotIdLocally = (id: string) => {
   const sanitizedId = sanitizeSkillpilotId(id)
   if (!sanitizedId) return ''
@@ -101,57 +100,23 @@ const maskId = (id: string) => {
   return `${id.slice(0, 8)}...${id.slice(-6)}`
 }
 
-const buildStartPrompt = (id: string) => `Meine SkillPilot-ID ist: ${id}
-
-Bitte verbinde dich mit meinem SkillPilot-Lernstand.
-Ich lerne am Gymnasium in Deutschland und möchte SkillPilot für Mathematik oder Physik nutzen. Weitere Fächer sind in Arbeit.
-
-Wichtig: Ich nutze den normalen ChatGPT-Textchat. Ich darf dem Tutor per Diktat, kurzem Text oder mit einem Bild meiner Rechnung antworten, aber ich wechsle nicht in den separaten Voice Mode.`
-
-const buildImportLink = (id: string) => {
-  const origin = window.location.origin
-  return `${origin}/mobi#id=${encodeURIComponent(id)}`
-}
-
 export const MobiStartView: React.FC = () => {
   const { setLanguage } = useLanguage()
   const [skillpilotId, setSkillpilotId] = useState(() => readStoredSkillpilotId())
   const [manualId, setManualId] = useState('')
   const [showId, setShowId] = useState(false)
   const [copyState, setCopyState] = useState<CopyState>('idle')
-  const [importedFromLink, setImportedFromLink] = useState(false)
-
-  const startPrompt = useMemo(
-    () => (skillpilotId ? buildStartPrompt(skillpilotId) : ''),
-    [skillpilotId],
-  )
-  const importLink = useMemo(
-    () => (skillpilotId ? buildImportLink(skillpilotId) : ''),
-    [skillpilotId],
-  )
+  const [startPrompt, setStartPrompt] = useState('')
+  const [startLoading, setStartLoading] = useState(false)
+  const [idLoading, setIdLoading] = useState(false)
 
   useEffect(() => {
     setLanguage('de')
   }, [setLanguage])
 
   useEffect(() => {
-    trackCampaignEvent('page_view', { start: 'mobi', surface: 'mobile-start' }, skillpilotId || undefined)
+    trackCampaignEvent('page_view', { start: 'mobi', surface: 'mobile-start' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    const importedId = extractSkillpilotIdFromHash()
-    if (!window.location.hash) return
-
-    if (importedId) {
-      const storedId = saveSkillpilotIdLocally(importedId)
-      setSkillpilotId(storedId)
-      setManualId('')
-      setImportedFromLink(true)
-    }
-
-    const cleanUrl = `${window.location.pathname}${window.location.search}`
-    window.history.replaceState(null, '', cleanUrl)
   }, [])
 
   const handleSaveManualId = () => {
@@ -159,14 +124,39 @@ export const MobiStartView: React.FC = () => {
     if (!storedId) return
     setSkillpilotId(storedId)
     setManualId('')
-    setImportedFromLink(false)
+  }
+
+  const handleCreateId = async () => {
+    setIdLoading(true)
+    setCopyState('idle')
+    try {
+      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+      const url = apiBase ? `${apiBase}/api/ui/learners` : '/api/ui/learners'
+      const res = await fetch(url, { method: 'POST' })
+      if (!res.ok) throw new Error(`Server ${res.status}`)
+      const data = await res.json()
+      const id = sanitizeSkillpilotId(String(data?.state?.skillpilotId || data?.skillpilotId || data?.learnerId || data?.id || ''))
+      const storedId = saveSkillpilotIdLocally(id)
+      if (storedId) {
+        setSkillpilotId(storedId)
+        setManualId('')
+      }
+    } catch {
+      setCopyState('failed')
+    } finally {
+      setIdLoading(false)
+    }
   }
 
   const handleCopyPrompt = async () => {
-    const copied = await copyText(startPrompt)
-    setCopyState(copied ? 'prompt' : 'failed')
-    if (copied) {
-      trackCampaignEvent('gpt_prompt_copied', { start: 'mobi', location: 'mobile-start' }, skillpilotId)
+    try {
+      const prompt = await createStartPrompt()
+      const copied = await copyText(prompt)
+      setCopyState(copied ? 'prompt' : 'failed')
+      if (!copied) return
+      trackCampaignEvent('gpt_prompt_copied', { start: 'mobi', location: 'mobile-start' })
+    } catch {
+      setCopyState('failed')
     }
   }
 
@@ -175,13 +165,41 @@ export const MobiStartView: React.FC = () => {
     setCopyState(copied ? 'id' : 'failed')
   }
 
-  const handleCopyImportLink = async () => {
-    const copied = await copyText(importLink)
-    setCopyState(copied ? 'importLink' : 'failed')
+  const createStartPrompt = async () => {
+    if (!skillpilotId) return ''
+    setStartLoading(true)
+    setCopyState('idle')
+    try {
+      const chatStart = await requestChatStart({
+        skillpilotId,
+        language: 'de',
+        client: 'mobi-start',
+      })
+      setStartPrompt(chatStart.prompt)
+      return chatStart.prompt
+    } finally {
+      setStartLoading(false)
+    }
   }
 
-  const handleOpenGpt = () => {
-    trackCampaignEvent('gpt_start_clicked', { start: 'mobi', location: 'mobile-start' }, skillpilotId || undefined)
+  const handleOpenGpt = async () => {
+    trackCampaignEvent('gpt_start_clicked', { start: 'mobi', location: 'mobile-start' })
+    const chatWindow = window.open('', '_blank')
+    try {
+      const prompt = await createStartPrompt()
+      const url = getSkillpilotGptUrl('de', prompt)
+      if (chatWindow) {
+        chatWindow.opener = null
+        chatWindow.location.href = url
+      } else {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
+    } catch {
+      if (chatWindow) {
+        chatWindow.close()
+      }
+      setCopyState('failed')
+    }
   }
 
   const handleDeleteId = () => {
@@ -190,7 +208,8 @@ export const MobiStartView: React.FC = () => {
     setManualId('')
     setShowId(false)
     setCopyState('idle')
-    setImportedFromLink(false)
+    setStartPrompt('')
+    setIdLoading(false)
   }
 
   const hasManualId = extractSkillpilotIdFromValue(manualId).length > 0
@@ -272,12 +291,6 @@ export const MobiStartView: React.FC = () => {
                 </div>
               </div>
 
-              {importedFromLink && (
-                <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-3 text-sm text-emerald-950 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-100">
-                  SkillPilot-ID wurde auf diesem Handy gespeichert.
-                </div>
-              )}
-
               {skillpilotId ? (
                 <div className="mt-4 space-y-3">
                   <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/50">
@@ -329,7 +342,7 @@ export const MobiStartView: React.FC = () => {
                     onChange={(event) => setManualId(event.target.value)}
                     rows={3}
                     className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-950 outline-none transition-colors focus:border-sky-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                    placeholder="SkillPilot-ID oder /mobi#id=... hier einfügen"
+                    placeholder="SkillPilot-ID hier einfügen"
                   />
                   <button
                     type="button"
@@ -352,7 +365,7 @@ export const MobiStartView: React.FC = () => {
                 <div>
                   <h2 className="text-lg font-black">SkillPilotGPT starten</h2>
                   <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    Am einfachsten: Starttext kopieren, GPT öffnen, Text einfügen. Danach antwortest du dem Tutor
+                    Am einfachsten: GPT starten. Deine SkillPilot-ID bleibt im Browser, ChatGPT bekommt nur einen kurzlebigen Startcode. Danach antwortest du dem Tutor
                     per Diktat, kurzem Text oder mit einem Bild deiner Rechnung.
                   </p>
                 </div>
@@ -367,21 +380,21 @@ export const MobiStartView: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleCopyPrompt}
+                      disabled={startLoading}
                       className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-sky-600 px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-sky-500"
                     >
                       <Copy size={15} />
-                      Starttext kopieren
+                      Startcode kopieren
                     </button>
-                    <a
-                      href={SKILLPILOT_GPT_URL_DE}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
                       onClick={handleOpenGpt}
-                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-4 text-sm font-bold text-slate-950 hover:border-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                      disabled={startLoading}
+                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-4 text-sm font-bold text-slate-950 hover:border-sky-400 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                     >
-                      GPT öffnen
+                      GPT starten
                       <ExternalLink size={15} />
-                    </a>
+                    </button>
                   </div>
                   <Link
                     to="/learner"
@@ -390,45 +403,28 @@ export const MobiStartView: React.FC = () => {
                     <Smartphone size={15} />
                     Cockpit auf diesem Handy öffnen
                   </Link>
-                  <button
-                    type="button"
-                    onClick={handleCopyImportLink}
-                    className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-xs font-semibold text-slate-700 hover:border-sky-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
-                  >
-                    <Copy size={14} />
-                    Privaten Handy-Speicherlink kopieren
-                  </button>
-                  <p className="text-xs leading-5 text-slate-500 dark:text-slate-400">
-                    Der Speicherlink enthält deine echte SkillPilot-ID. Nicht in Gruppen teilen.
-                  </p>
                 </div>
               ) : (
                 <div className="mt-4 space-y-3">
-                  <a
-                    href={SKILLPILOT_GPT_URL_DE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleOpenGpt}
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-sky-600 px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-sky-500"
+                  <button
+                    type="button"
+                    onClick={handleCreateId}
+                    disabled={idLoading}
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-sky-600 px-4 text-sm font-bold text-white shadow-sm transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    SkillPilotGPT öffnen
-                    <ExternalLink size={15} />
-                  </a>
+                    SkillPilot-ID erstellen
+                  </button>
                   <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    Wenn der GPT dir eine SkillPilot-ID oder einen Link mit <span className="font-mono">/mobi#id=...</span> gibt,
-                    kommst du hierher zurück und speicherst sie auf dem Handy.
+                    Danach erzeugt SkillPilot hier einen kurzlebigen Startcode für den GPT.
                   </p>
                 </div>
               )}
 
               {copyState === 'prompt' && (
-                <p className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">Starttext kopiert.</p>
+                <p className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">Startcode kopiert.</p>
               )}
               {copyState === 'id' && (
                 <p className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">ID kopiert.</p>
-              )}
-              {copyState === 'importLink' && (
-                <p className="mt-3 text-sm font-semibold text-emerald-700 dark:text-emerald-300">Speicherlink kopiert.</p>
               )}
               {copyState === 'failed' && (
                 <p className="mt-3 text-sm font-semibold text-amber-700 dark:text-amber-300">

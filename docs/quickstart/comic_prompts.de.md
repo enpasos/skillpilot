@@ -26,7 +26,7 @@ comic01.de.png
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Start bei SkillPilot".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT-Account hat er schon. Er tippt ‚skillpilot.com‘ im Browser ein und klickt auf ‚SkillPilot GPT starten‘.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT-Account hat er schon. Er tippt ‚skillpilot.com‘ im Browser ein und klickt auf ‚Einloggen oder ID erstellen‘.".
 
 **Schriftstil & Typografie:**
 
@@ -50,12 +50,12 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 **Rechter Bereich (Blau-Grauer Hintergrund):**
 
 - **Charakter:** Der kleine, schwebende weiße und blaue Roboter mit leuchtenden blauen Augen und einem blauen Kreis auf der Brust.
-- **Aktion & Objekt:** Der Roboter hält mit seiner rechten Hand eine leuchtende, blaue, rechteckige holografische Karte hoch. Auf der Karte steht in leuchtender weiß-blauer Schrift: "SKILLPILOT-ID: X7F9-G2".
+- **Aktion & Objekt:** Der Roboter hält mit seiner rechten Hand eine leuchtende, blaue, rechteckige holografische Karte hoch. Auf der Karte steht in leuchtender weiß-blauer Schrift: "STARTCODE: SP-7KQ9".
 
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Tutor".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max chattet mit seinem KI-Tutor, sagt sein Lernziel, bekommt eine SkillPilot-ID als geheimes Pseudonym – dann startet der Lernchat.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Tutor aus dem Browser. Seine SkillPilot-ID bleibt dort; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
 
 **Schriftstil & Typografie:**
 
@@ -143,8 +143,8 @@ comic05.de.png
 
 **Texte & Rahmen:**
 
-- **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Meine Erfolge".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will genau sehen, was er schon gelernt hat: Er gibt wieder ‚skillpilot.com‘ im Browser ein und klickt diesmal auf ‚Meine Erfolge‘.".
+- **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Cockpit".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will genau sehen, was er schon gelernt hat: Er gibt wieder ‚skillpilot.com‘ im Browser ein und öffnet sein Cockpit.".
 
 **Schriftstil & Typografie:**
 
@@ -160,17 +160,17 @@ comic06.de.png
 **Szenerie & Charaktere:**
 
 - **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
-- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist ein Eingabefeld mit der ID "[PASTED-ID-X7F9]" und einem Mauszeiger zu sehen.
+- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist der SkillPilot Login zu sehen: "ID erstellen", "Gespeicherten Login laden" und "ID eingeben".
 - **Verbindung:** Vom PC-Monitor ist per Kabel verbunden mit einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
 - **Server-Rack:** Das Rack ist beschriftet mit "MISSION CONTROL" in blauen Großbuchstaben. Es hat mehrere Einschübe mit blinkenden blauen Leuchten.
 
 **Texte & Sprechblasen:**
 
-- **Sprechblase von Max:** Eine Sprechblase über Max' Kopf enthält den Text "... ID eingegeben ... verbunden.". 
+- **Sprechblase von Max:** Eine Sprechblase über Max' Kopf enthält den Text "... Login geladen ... verbunden.".
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Verbindung mit Mission Control".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max gibt noch seine SkillPilot-ID ein und verbindet sich direkt mit Mission Control.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max nutzt seinen SkillPilot Login und verbindet sich direkt mit Mission Control.".
 
 **Schriftstil & Typografie:**
 

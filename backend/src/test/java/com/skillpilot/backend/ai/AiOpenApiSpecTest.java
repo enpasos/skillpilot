@@ -46,7 +46,10 @@ class AiOpenApiSpecTest {
     private static void assertMasteryWriteIsGuardedButAlwaysAllowable(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         String lang = path.getFileName().toString().contains(".de.") ? "de" : "en";
-        JsonNode operation = root.path("paths").path("/api/ai/" + lang + "/learners/{skillpilotId}/mastery")
+        JsonNode paths = root.path("paths");
+        assertThat(paths.has("/api/ai/" + lang + "/learners/{skillpilotId}/mastery")).isFalse();
+
+        JsonNode operation = paths.path("/api/ai/" + lang + "/sessions/{chatSessionToken}/mastery")
                 .path("post");
         assertThat(operation.path("x-openai-isConsequential").asBoolean()).isFalse();
         assertThat(operation.path("requestBody").path("required").asBoolean()).isTrue();

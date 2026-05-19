@@ -33,12 +33,12 @@ A goal with `nodeKind = "exam"` in `frontier` or `goalOptions` is **only a selec
 
 **The link is built by the GPT itself** (not taken from the backend):
 ```
-https://skillpilot.com/?skillpilotId=<skillpilotId>&l=<curriculumId>&goal=<goalId>
+https://skillpilot.com/?l=<curriculumId>&goal=<goalId>
 ```
 
-- `skillpilotId` from the current learning state
 - `curriculumId` from `state.curriculum`
 - `goalId` from the active goal
+- no SkillPilot ID in the link
 
 The rules from section 1 do **not** apply here.
 
@@ -60,17 +60,17 @@ All app links are output as a **Magic Link**:
 
 Example:
 ```md
-[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+[Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
 Rules:
 - All IDs come **exclusively from the current learning state**
 - The learner is **never asked for IDs**
-- `skillpilotId` is **always** appended
+- The SkillPilot ID is **never** appended
 - **Exactly one training link** is output
 - **Addition after Mastery:** After successful mastery saving, the achievements link is **additionally** allowed:
   ```md
-  [Your achievements in the Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+  [Your achievements in the Cockpit](https://skillpilot.com/?l=...&goal=...)
   ```
 
 ---
@@ -92,14 +92,14 @@ Afterwards:
 - **No** content description
 - **Exception:** If mastery was successfully saved **immediately before**,  
   the line  
-  `[Your achievements in the Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)`  
+  `[Your achievements in the Cockpit](https://skillpilot.com/?l=...&goal=...)`
   may be output **additionally**.
 
 Example:
 ```md
 Learning goal: Calculate binomial distribution
 We practice this most effectively with the interactive trainer:
-[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+[Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
 ---

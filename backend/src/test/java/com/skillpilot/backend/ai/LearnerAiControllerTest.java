@@ -24,6 +24,7 @@ import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
+import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -41,12 +42,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 class LearnerAiControllerTest {
 
     private LearnerService learnerService;
+    private ChatSessionService chatSessionService;
     private LearnerAiController controller;
 
     @BeforeEach
     void setUp() {
         learnerService = mock(LearnerService.class);
-        controller = new LearnerAiController(learnerService);
+        chatSessionService = mock(ChatSessionService.class);
+        controller = new LearnerAiController(learnerService, chatSessionService);
 
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setScheme("https");

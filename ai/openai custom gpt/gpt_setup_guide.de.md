@@ -2,7 +2,7 @@
 
 This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot trainer**.
 
-The goal: a GPT that guides learners through the SkillPilot competence graph, calls `getLearnerState` to find the frontier, and updates mastery via `setMastery`.
+The goal: a GPT that starts from a browser-generated SkillPilot start code, redeems it into a chat session, guides learners through the SkillPilot competence graph, and updates mastery via `setMastery`.
 
 ---
 
@@ -33,7 +33,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system_instructions.de.md` into **Hinweise** (plain text, unchanged).
 
-*Note: These instructions are critical for ensuring the AI uses UUIDs correctly and understands the difference between Frontier and Planned goals.*
+*Note: These instructions are critical for ensuring the AI uses start codes and chat session tokens correctly and understands the difference between Frontier and Planned goals.*
 
 -----
 
@@ -45,7 +45,7 @@ Ich möchte mit Mathe in der Oberstufe starten.
 
 
 ```text
-Ich will weiterlernen mit der ID ...
+Starte SkillPilot mit Startcode: SP-ABCD-EFGH
 ```
 
 ```text
@@ -64,12 +64,14 @@ Ich will Jura auf Uni Niveau lernen.
 
 ### 2.4 Quick sanity check
 
-After setup, send a message that contains a UUID.
+After setup, send a message that contains a start code, e.g. `Starte SkillPilot mit Startcode: SP-ABCD-EFGH`.
 
 Expected behavior:
-- The assistant **calls the backend immediately** and only responds **after** the result is available.
+- The assistant **calls `redeemStartCode` immediately** and only responds **after** the result is available.
 - No placeholder text like "Ich lade..." or a follow-up nudge from the user.
-- No detour like "Oeffne zuerst das Cockpit", "schreib bereit", or "mit der ID allein kann ich nicht laden".
+- No question for a SkillPilot-ID.
+- No `createLearner` call inside the GPT.
+- Follow-up calls use the returned `chatSessionToken`.
 
 If it waits for a "ping", the system instructions or actions are not correctly wired.
 
@@ -95,7 +97,7 @@ In the **Aktionen** section:
 
 1.  Click **"Create new action"**.
 2.  **Authentication:** API Key (Bearer). Use the same value as `skillpilot.ai.api-key` on the backend.
-3.  **Schema:** **Do not use the URL import.** Instead, copy and paste the **Optimized JSON** below directly into the schema box. This version contains specific instructions for the AI (like "Use UUIDs") that are missing from the raw server export.
+3.  **Schema:** **Do not use the URL import.** Instead, copy and paste the **Optimized JSON** below directly into the schema box. This version contains specific instructions for the AI (start code -> chat session token -> learner state) that are missing from the raw server export.
 
 *(See Section 7 for the JSON content)*
 
@@ -104,7 +106,7 @@ In the **Aktionen** section:
 ## 5. Model choice
 
   - **Empfohlenes Modell:** **GPT-4o** (oder **GPT-5.1**, falls verfuegbar).
-      - Diese Modelle folgen dem mehrstufigen Tool-Flow fuer UUID -> State -> Mastery -> neues Active Goal deutlich stabiler.
+      - Diese Modelle folgen dem mehrstufigen Tool-Flow fuer Startcode -> Chat-Session -> State -> Mastery -> neues Active Goal deutlich stabiler.
   - **Nicht empfohlen fuer diesen Flow:** schnelle Instant-/Mini-Modelle wie **GPT-5.3 Instant**.
       - Typischer Fehler: Das Modell formuliert ein „naechstes Lernziel“ nur textlich, statt vorab den erforderlichen Tool-Call auszufuehren.
 
@@ -114,17 +116,18 @@ In the **Aktionen** section:
 
 End-to-end flow for a typical learner session:
 
-1.  **Init:** The GPT checks for a `skillpilotId`. If one is provided, it calls `getLearnerState()` immediately. If none is provided and the user explicitly wants a new profile, it calls `createLearner()`.
-1a. **Mobile handoff:** If `createLearner()` returns `mobileImportUrl`, show it to mobile users as "Auf diesem Handy speichern". Explain briefly: the learner can answer the tutor by dictating into the normal ChatGPT text input, typing briefly, or sending an image of their written solution; do not switch into the separate Voice Mode because GPT Actions cannot use the SkillPilot backend there.
-2.  **Bootstrap:** It reads `stateMachine.requiredAction` from `createLearner` / `getLearnerState`. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
-3.  **Context:** It calls `getLearnerState` (or uses the state from `createLearner`) to get the Curriculum, Frontier, Goals, and `stateMachine` immediately.
-4.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
-5.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
-6.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
-7.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
-8.  **Teaching:** If `stateMachine.requiredAction` is `teachActiveGoal`, this is a conversational teaching/checking step, not a tool call. It teaches the locked goal and does exercises, but without front-loading the exact sample solution for the very next task. Unusual learner solutions must be reconstructed before correction so valid creative strategies are not missed; wrong or unjustified steps remain wrong and must be rejected clearly. At least one answer must require transfer or a second independent check. If the goal has multiple clearly named aspects, all of them must be checked.
-9.  **Mastery:** Only after demonstrated competence in the current dialogue, it calls `setMastery` with the `goalId` of the active goal. If competence is not verified, it must **not** call `setMastery`. Mere repetition of the trainer's own wording is not enough, and partial coverage of a multi-aspect goal is not enough either. This returns the **new** frontier immediately.
-10. **Loop:** It follows the returned state. If a new active goal is already present, introduce it and ask the learner; never mark it mastered without fresh evidence.
+1.  **Init:** The learner starts on `skillpilot.com`. The browser creates or loads the local SkillPilot-ID and asks the backend for a short-lived start code.
+2.  **Redeem:** The GPT receives a prompt like `Starte SkillPilot mit Startcode: SP-ABCD-EFGH` and immediately calls `redeemStartCode`.
+3.  **Session:** The GPT stores the returned `chatSessionToken` internally and uses it for every later action. It does not ask for or display the real SkillPilot-ID.
+4.  **Bootstrap:** It reads `stateMachine.requiredAction` from the redeemed state. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
+5.  **Context:** It uses the state returned by `redeemStartCode` or `getLearnerState` to get Curriculum, Frontier, Goals, and `stateMachine` immediately.
+6.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.
+7.  **Personalization:** If `stateMachine.requiredAction` is `setPersonalization` (e.g. GK/LK or subject/level filters are needed), ask for the missing preference and call `setPersonalization`.
+8.  **Scope:** If the user has a specific topic goal ("I want to learn Stochastik/Analysis"), call `setScope` to focus the plan.
+9.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
+10. **Teaching:** If `stateMachine.requiredAction` is `teachActiveGoal`, this is a conversational teaching/checking step, not a tool call. It teaches the locked goal and does exercises, but without front-loading the exact sample solution for the very next task. Unusual learner solutions must be reconstructed before correction so valid creative strategies are not missed; wrong or unjustified steps remain wrong and must be rejected clearly. At least one answer must require transfer or a second independent check. If the goal has multiple clearly named aspects, all of them must be checked.
+11. **Mastery:** Only after demonstrated competence in the current dialogue, it calls `setMastery` with the `goalId` of the active goal. If competence is not verified, it must **not** call `setMastery`. Mere repetition of the trainer's own wording is not enough, and partial coverage of a multi-aspect goal is not enough either. This returns the **new** frontier immediately.
+12. **Loop:** It follows the returned state. If a new active goal is already present, introduce it and ask the learner; never mark it mastered without fresh evidence.
 
 -----
 

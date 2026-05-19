@@ -204,6 +204,12 @@ A central pillar of SkillPilot is **data separation**.
 The **SkillPilot server** knows learners only as a pseudonym (`skillpilotId`).  
 On the server, only technically necessary metadata are stored, e.g., learning progress in the graph.
 
+#### Session Shielding Toward the AI Frontend
+
+When **SkillPilot GPT** is started, the permanent SkillPilot ID is no longer passed to ChatGPT. The browser asks the SkillPilot backend for a short-lived, one-time **start code**. After redeeming it, the tutor works only with a temporary **chat session token**.
+
+The mapping `chatSessionToken -> skillpilotId` happens exclusively in the SkillPilot backend; the active SkillPilot ID stays in the browser and in the backend. This means the AI frontend can no longer associate tutor dialogs and tool results with the permanent SkillPilot ID. It still receives the didactically required state for the current session, but not the learner's stable key.
+
 #### Dialog Content Is Decoupled
 
 The dialog content (tutor conversations) is decoupled from the SkillPilot server, keeping the central data store minimal.
@@ -225,7 +231,8 @@ For contexts with higher sovereignty requirements, alternative AI backends up to
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
 - Tutor instances authenticate to the backend.
-- Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor).
+- Write access for progress updates is granted only to **authorized actors** (current pattern: the tutor as the writing actor through a temporary chat session token).
+- The permanent SkillPilot ID is not returned in AI session responses; existing response fields are blanked or set to `null` there.
 
 #### Signed Exports
 

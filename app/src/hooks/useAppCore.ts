@@ -16,7 +16,7 @@ import { getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
-import { getStoredLandscapeIdForRole } from '../utils/learnerProfile'
+import { getStoredLandscapeIdForRole, normalizeLearnerLandscapeId } from '../utils/learnerProfile'
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
@@ -45,7 +45,7 @@ const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => 
   if (role === 'trainer') {
     return normalizeTrainerLandscapeId(landscapeId)
   }
-  return landscapeId
+  return normalizeLearnerLandscapeId(landscapeId)
 }
 
 export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOptions & { skillpilotId: string }) {
@@ -104,8 +104,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   // Update URL when selection changes
   useEffect(() => {
-    const current = searchParams.get('l')
-    const next = new URLSearchParams(searchParams)
+    const currentParams = new URLSearchParams(currentSearchString)
+    const current = currentParams.get('l')
+    const next = new URLSearchParams(currentParams)
     if (!selectedLandscapeId) {
       if (!current) return
       next.delete('l')
@@ -115,7 +116,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (current === selectedLandscapeId) return
     next.set('l', selectedLandscapeId)
     replaceSearchParamsIfNeeded(next)
-  }, [replaceSearchParamsIfNeeded, searchParams, selectedLandscapeId])
+  }, [currentSearchString, replaceSearchParamsIfNeeded, selectedLandscapeId])
 
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
@@ -174,12 +175,13 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
-    const nextFilter = normalizeActiveFilter(searchParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
+    const currentParams = new URLSearchParams(currentSearchString)
+    const nextFilter = normalizeActiveFilter(currentParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
       pendingFilterFromUrlRef.current = nextFilter
       setActiveFilter(nextFilter)
     }
-  }, [activeFilter, currentLandscapeEntry, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, currentSearchString, setActiveFilter])
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
@@ -198,8 +200,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       return
     }
 
-    const currentFilterParam = searchParams.get('f')
-    const next = new URLSearchParams(searchParams)
+    const currentParams = new URLSearchParams(currentSearchString)
+    const currentFilterParam = currentParams.get('f')
+    const next = new URLSearchParams(currentParams)
     if (isWildcardFilter(normalizedFilter)) {
       if (!currentFilterParam) return
       next.delete('f')
@@ -208,7 +211,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       next.set('f', normalizedFilter)
     }
     replaceSearchParamsIfNeeded(next)
-  }, [activeFilter, currentLandscapeEntry, replaceSearchParamsIfNeeded, searchParams, setActiveFilter])
+  }, [activeFilter, currentLandscapeEntry, currentSearchString, replaceSearchParamsIfNeeded, setActiveFilter])
 
   useEffect(() => {
     if (role !== 'learner' || !skillpilotId) {
@@ -259,7 +262,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   useEffect(() => {
     if (role !== 'learner' || runtimeCompositionScopes.size === 0) {
-      setMatchedCompositionViewsByLandscapeId({})
+      setMatchedCompositionViewsByLandscapeId((current) =>
+        Object.keys(current).length === 0 ? current : {},
+      )
       setLoadingMatchedCompositionViews(false)
       return
     }

@@ -33,12 +33,12 @@ Ein Ziel mit `nodeKind = "exam"` in `frontier` oder `goalOptions` ist **nur eine
 
 **Der Link wird vom GPT selbst gebaut** (nicht aus dem Backend übernommen):
 ```
-https://skillpilot.com/?skillpilotId=<skillpilotId>&l=<curriculumId>&goal=<goalId>
+https://skillpilot.com/?l=<curriculumId>&goal=<goalId>
 ```
 
-- `skillpilotId` aus dem aktuellen Lernzustand
 - `curriculumId` aus `state.curriculum`
 - `goalId` aus dem aktiven Ziel
+- keine SkillPilot-ID im Link
 
 Die Regeln aus Abschnitt 1 gelten hier **nicht**.
 
@@ -60,18 +60,18 @@ Alle App-Links werden als **Magic Link** ausgegeben:
 
 Beispiel:
 ```md
-[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+[Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
 Regeln:
 - Alle IDs stammen **ausschließlich aus dem aktuellen Lernzustand**
 - Die lernende Person wird **niemals nach IDs gefragt**
-- `skillpilotId` wird **immer** angehängt
+- Die SkillPilot-ID wird **niemals** angehängt
 - Es wird **genau ein Trainings-Link** ausgegeben
 - **Zusatz nach Mastery:** Nach erfolgreicher Mastery-Speicherung ist **zusätzlich** der  
   Erfolge-Link erlaubt:
   ```md
-  [Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+  [Deine Erfolge im Cockpit](https://skillpilot.com/?l=...&goal=...)
   ```
 
 ---
@@ -93,14 +93,14 @@ Danach:
 - **keine** Inhaltsbeschreibung
 - **Ausnahme:** Wenn **unmittelbar zuvor** Mastery erfolgreich gespeichert wurde,  
   darf die Zeile  
-  `[Deine Erfolge im Cockpit](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)`  
+  `[Deine Erfolge im Cockpit](https://skillpilot.com/?l=...&goal=...)`
   **zusätzlich** ausgegeben werden.
 
 Beispiel:
 ```md
 Lernziel: Binomische Verteilung berechnen
 Das üben wir am effektivsten mit dem interaktiven Trainer:
-[Start Exercise](https://skillpilot.com/?skillpilotId=...&l=...&goal=...)
+[Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
 ---

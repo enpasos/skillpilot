@@ -68,6 +68,44 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ compact = false }) => 
     setProgress(percent * 100)
   }
 
+  if (compact) {
+    return (
+      <div className="w-full h-full">
+        <audio ref={audioRef} src={AUDIO_SOURCES[language]} preload="metadata" />
+
+        <div className="group relative h-full overflow-hidden rounded-xl border border-border-color bg-white/50 p-5 transition-all duration-300 hover:border-violet-300/70 hover:shadow-md dark:bg-slate-800/50 dark:hover:border-violet-500/40">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h3 className="min-w-0 text-lg font-semibold text-text-primary transition-colors group-hover:text-violet-600 dark:group-hover:text-violet-400">
+                {copy.notebookLabel}
+              </h3>
+              <button
+                onClick={togglePlay}
+                className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-violet-300 text-violet-600 transition-colors hover:border-violet-500 hover:bg-violet-50 dark:border-violet-500/40 dark:text-violet-300 dark:hover:bg-violet-950/40"
+                aria-label={isPlaying ? copy.pauseLabel : copy.playLabel}
+              >
+                {isPlaying ? <Pause size={15} fill="currentColor" /> : <Play size={15} fill="currentColor" className="ml-0.5" />}
+              </button>
+            </div>
+            <p className="mt-1 text-sm text-text-secondary">
+              {copy.subtitle}
+            </p>
+
+            <div
+              className="mt-3 h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"
+              onClick={handleSeek}
+            >
+              <div
+                className="h-full rounded-full bg-violet-500 transition-all duration-100"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={compact ? 'w-full h-full' : 'w-full max-w-lg mb-8 animate-in fade-in slide-in-from-bottom-2 duration-700'}>
       <audio ref={audioRef} src={AUDIO_SOURCES[language]} preload="metadata" />

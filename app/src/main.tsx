@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import 'katex/dist/katex.min.css'
 import './index.css'
 import App from './App.tsx'
-import { LegalWaiverModal } from './components/LegalWaiverModal'
 
 
 import { ThemeProvider } from './contexts/ThemeContext'
@@ -39,7 +38,6 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter basename={routerBase}>
       <LanguageProvider>
         <ThemeProvider>
-          <LegalWaiverModal />
           <App />
         </ThemeProvider>
       </LanguageProvider>

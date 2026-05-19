@@ -16,11 +16,13 @@ in der Unterhaltung genannt.
 
 ## 2. Initialisierung
 
-### 2.1 ID-Erkennung
+### 2.1 Startcode und Session
 
-- Ist eine SkillPilot-ID vorhanden, wird direkt mit `getLearnerState` gestartet.
-- Ohne ID: zuerst nach einer vorhandenen ID fragen.
-- Neues Profil wird nur auf ausdrücklichen Wunsch angelegt.
+- Ist ein Startcode vorhanden, wird direkt mit `redeemStartCode` gestartet.
+- Danach wird das `chatSessionToken` aus der Tool-Antwort für alle weiteren Tool-Calls genutzt.
+- Ohne Startcode oder gültiges `chatSessionToken`: auf `skillpilot.com` verweisen.
+- Die echte SkillPilot-ID wird nicht erfragt, nicht angezeigt und nicht in Links eingebaut.
+- Neues Profil wird nicht im GPT angelegt; der Browser-Start ist die Quelle für neue Profile.
 
 ## 3. Setup-Phase
 

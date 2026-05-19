@@ -1,0 +1,124 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-add-chat-start-codes
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: chat_start_code
+      changes:
+        - createTable:
+            tableName: chat_start_code
+            columns:
+              - column:
+                  name: code_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: learner_skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: redeemed_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: redeemed_session_token_hash
+                  type: VARCHAR(128)
+              - column:
+                  name: client
+                  type: VARCHAR(64)
+              - column:
+                  name: language
+                  type: VARCHAR(16)
+        - addForeignKeyConstraint:
+            baseTableName: chat_start_code
+            baseColumnNames: learner_skillpilot_id
+            constraintName: fk_chat_start_code_learner
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            onDelete: CASCADE
+        - createIndex:
+            tableName: chat_start_code
+            indexName: idx_chat_start_code_expires_at
+            columns:
+              - column:
+                  name: expires_at
+
+  - changeSet:
+      id: 007-add-chat-sessions
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            - tableExists:
+                tableName: chat_session
+      changes:
+        - createTable:
+            tableName: chat_session
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: learner_skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: revoked_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: last_used_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: source_start_code_hash
+                  type: VARCHAR(128)
+              - column:
+                  name: language
+                  type: VARCHAR(16)
+        - addForeignKeyConstraint:
+            baseTableName: chat_session
+            baseColumnNames: learner_skillpilot_id
+            constraintName: fk_chat_session_learner
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            onDelete: CASCADE
+        - createIndex:
+            tableName: chat_session
+            indexName: idx_chat_session_expires_at
+            columns:
+              - column:
+                  name: expires_at
+        - createIndex:
+            tableName: chat_session
+            indexName: idx_chat_session_learner
+            columns:
+              - column:
+                  name: learner_skillpilot_id
