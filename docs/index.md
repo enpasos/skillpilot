@@ -31,6 +31,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Whitepaper (EN)](whitepaper/whitepaper.en.md)
 -   [Whitepaper (DE)](whitepaper/whitepaper.de.md)
 -   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
+-   [ChatGPT startcode/session flow](concept/runtime-workflows/chatgpt-startcode-session-flow.md)
 
 ## Inside this documentation
 

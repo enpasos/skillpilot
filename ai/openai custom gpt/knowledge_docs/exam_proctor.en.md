@@ -38,9 +38,9 @@ Switch from "Trainer" to **Exam Mode**.
           Since this goal contains exam data, I am now strictly switching to Exam Mode.
           ```
     *   **Deep-Link line right after the header:**
-        `[Task in Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`  
+        `[Task in Cockpit](https://skillpilot.com/?l=<...>&goal=<...>)`
         If `IMAGE_PATH` was present:  
-        `[Task in Cockpit with Image](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`
+        `[Task in Cockpit with Image](https://skillpilot.com/?l=<...>&goal=<...>)`
     *   Output `examData.taskContent` **verbatim** (apart from marker replacement and math delimiter normalization).
     *   **After the task**, the submission line (one line, no hints).
 
@@ -69,4 +69,4 @@ Switch from "Trainer" to **Exam Mode**.
     *   If there are no point deductions: short note that no post-processing is necessary.
     *   If passed → `setMastery`.
     *   After confirmed saving, **additionally** output a line with  
-        `[Your achievements in the Cockpit](https://skillpilot.com/?skillpilotId=<...>&l=<...>&goal=<...>)`.
+        `[Your achievements in the Cockpit](https://skillpilot.com/?l=<...>&goal=<...>)`.

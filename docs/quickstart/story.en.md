@@ -1,19 +1,19 @@
 # SkillPilot: How I Learn.
 
-**Status:** January 11, 2026
+**Status:** May 19, 2026
 
 > 💡 **Tip:** If something does not work in the ChatGPT app, use the **web browser**.  
-> 🔑 **Important:** Your **SkillPilot ID** is your key to your learning progress.  
+> 🔑 **Important:** Your **SkillPilot ID** is your key to your learning progress. In the normal start flow, ChatGPT does not see it; SkillPilot starts the tutor with a short-lived start code.
 
 ---
 
 ## Quick start in 5 steps
 
 1. Open `https://skillpilot.com` (best in the browser).
-2. Click **Start SkillPilot GPT**.
-3. Choose **Start new** or **Continue with ID**.
-4. **Save your ID** (notes/password manager).
-5. Learn -> goals are **mastered** -> see progress in **My Achievements** in the cockpit.
+2. Click **Log in or create ID**.
+3. Create a new SkillPilot ID, load a saved login, or enter your existing ID.
+4. Choose your curriculum and start **SkillPilot GPT** or open your **Cockpit**.
+5. Learn -> goals are **mastered** -> see progress in the cockpit.
 
 ---
 
@@ -24,26 +24,26 @@
 
 | <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
 | --- |
-| *On the homepage you will find "Start SkillPilot GPT" and "My Achievements".* |
+| *On the homepage you will find the SkillPilot Login. You do not need to register; you only need a SkillPilot ID.* |
 
 ---
 
-## 2) Open SkillPilot GPT (start the tutor)
+## 2) Log in and choose a curriculum
 
 | <img src="../screenshot_02.en.png" alt="SkillPilot GPT start screen" width="700" /> |
 | --- |
-| *In SkillPilot GPT you can start new or continue with your ID.* |
+| *SkillPilot starts in the browser: create a SkillPilot ID, load a saved login, or enter an existing ID.* |
 
 | <img src="../comic02.en.png" alt="Chat with the AI tutor" width="650" /> |
 | --- |
 
 ---
 
-## 3) Get and save your ID
+## 3) Open SkillPilot GPT with a start code
 
-| <img src="../screenshot_03.en.png" alt="SkillPilot GPT creates a profile and ID" width="700" /> |
+| <img src="../screenshot_03.en.png" alt="SkillPilot GPT starts with a temporary start code" width="700" /> |
 | --- |
-| *If you start new, SkillPilot creates a profile and shows your SkillPilot ID.* |
+| *When you start SkillPilot GPT, the browser creates a short-lived start code. The permanent SkillPilot ID stays in the browser and backend.* |
 
 **Remember:** Without the ID you cannot reopen your progress later.
 
@@ -83,14 +83,14 @@
 
 ---
 
-## 6) View progress: "My Achievements" (cockpit)
+## 6) View progress: Cockpit
 
-| <img src="../comic05.en.png" alt="My Achievements" width="650" /> |
+| <img src="../comic05.en.png" alt="Cockpit" width="650" /> |
 | --- |
 
-| <img src="../screenshot_09.en.png" alt="My Achievements: enter ID" width="700" /> |
+| <img src="../screenshot_09.en.png" alt="Cockpit with SkillPilot Login" width="700" /> |
 | --- |
-| *Under "My Achievements" you enter your SkillPilot ID.* |
+| *In the cockpit, you are connected through your SkillPilot Login. There you see progress, goals, and next steps.* |
 
 | <img src="../comic06.en.png" alt="Connection to Mission Control" width="650" /> |
 | --- |

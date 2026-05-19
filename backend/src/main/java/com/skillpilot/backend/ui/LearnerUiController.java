@@ -5,6 +5,8 @@ import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
+import com.skillpilot.backend.api.ChatStartRequest;
+import com.skillpilot.backend.api.ChatStartResponse;
 import com.skillpilot.backend.api.CompatibilityArchiveResponse;
 import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverRequest;
 import com.skillpilot.backend.api.BulkCanonicalGymnasiumCutoverResponse;
@@ -21,6 +23,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.UpdatePersonalCurriculumRequest;
 import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
@@ -40,9 +43,11 @@ import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
 public class LearnerUiController {
 
     private final LearnerService learnerService;
+    private final ChatSessionService chatSessionService;
 
-    public LearnerUiController(LearnerService learnerService) {
+    public LearnerUiController(LearnerService learnerService, ChatSessionService chatSessionService) {
         this.learnerService = learnerService;
+        this.chatSessionService = chatSessionService;
     }
 
     @PostMapping
@@ -153,6 +158,14 @@ public class LearnerUiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public Learner getLearner(@PathVariable String skillpilotId) {
         return learnerService.getLearner(skillpilotId);
+    }
+
+    @PostMapping("/{skillpilotId}/chat-start")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ChatStartResponse createChatStart(@PathVariable String skillpilotId,
+            @RequestBody(required = false) ChatStartRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return chatSessionService.createStartCode(skillpilotId, request);
     }
 
     @PutMapping("/{skillpilotId}/curriculum")

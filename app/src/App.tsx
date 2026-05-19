@@ -14,6 +14,7 @@ import {
   getLearnerPathToken,
   getLearnerSelectedLandscapeId,
   getStoredLandscapeIdForRole,
+  normalizeLearnerLandscapeId,
 } from './utils/learnerProfile'
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -228,8 +229,9 @@ const App: React.FC = () => {
 
     params.delete('skillpilotId')
     params.delete('id')
-    const fallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
-    if (fallbackLandscapeId && !params.get('l')) {
+    const rawFallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
+    const fallbackLandscapeId = normalizeLearnerLandscapeId(rawFallbackLandscapeId)
+    if (fallbackLandscapeId && params.get('l') !== fallbackLandscapeId) {
       params.set('l', fallbackLandscapeId)
     }
     if (fallbackLandscapeId) {
@@ -278,7 +280,9 @@ const App: React.FC = () => {
         if (signal.aborted) return
 
         rejectedLearnerPathTokenRef.current = null
-        const landscapeId = params.get('l') || getLearnerSelectedLandscapeId(data) || getStoredLandscapeIdForRole('learner')
+        const landscapeId = normalizeLearnerLandscapeId(
+          params.get('l') || getLearnerSelectedLandscapeId(data) || getStoredLandscapeIdForRole('learner'),
+        )
 
         setSkillpilotId(learnerPathToken)
         setHasSession(true)
@@ -589,6 +593,8 @@ const App: React.FC = () => {
     logoutInProgressRef.current = true
     localStorage.removeItem('skillpilot_id')
     localStorage.removeItem('skillpilot_role')
+    localStorage.removeItem('skillpilot_learner_landscape')
+    sessionStorage.removeItem('skillpilot_ui_session_id')
     setHasSession(false)
     setSkillpilotId('')
     setPendingLandscapeId(null)
@@ -675,8 +681,9 @@ const App: React.FC = () => {
 
   if (hasActiveSession && normalizedPath === '/' && !pendingLandscapeId) {
     const params = new URLSearchParams(location.search)
-    const fallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
-    if (fallbackLandscapeId && !params.get('l')) {
+    const rawFallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
+    const fallbackLandscapeId = normalizeLearnerLandscapeId(rawFallbackLandscapeId)
+    if (fallbackLandscapeId && params.get('l') !== fallbackLandscapeId) {
       params.set('l', fallbackLandscapeId)
     }
     const nextSearch = params.toString()
@@ -700,11 +707,14 @@ const App: React.FC = () => {
           setRole(activeRole) // Explicitly set role to avoid redirect race
           localStorage.setItem('skillpilot_id', sanitizedId)
           localStorage.setItem('skillpilot_role', activeRole)
-          if (landscapeId) {
-            setPendingLandscapeId(landscapeId)
-            core.setSelectedLandscapeId(landscapeId)
+          const effectiveLandscapeId = activeRole === 'trainer'
+            ? landscapeId
+            : normalizeLearnerLandscapeId(landscapeId)
+          if (effectiveLandscapeId) {
+            setPendingLandscapeId(effectiveLandscapeId)
+            core.setSelectedLandscapeId(effectiveLandscapeId)
           }
-          const search = landscapeId ? `?l=${landscapeId}` : ''
+          const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
           const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))
@@ -745,11 +755,14 @@ const App: React.FC = () => {
           setRole(activeRole) // Explicitly set role to avoid redirect race
           localStorage.setItem('skillpilot_id', sanitizedId)
           localStorage.setItem('skillpilot_role', activeRole)
-          if (landscapeId) {
-            setPendingLandscapeId(landscapeId)
-            core.setSelectedLandscapeId(landscapeId)
+          const effectiveLandscapeId = activeRole === 'trainer'
+            ? landscapeId
+            : normalizeLearnerLandscapeId(landscapeId)
+          if (effectiveLandscapeId) {
+            setPendingLandscapeId(effectiveLandscapeId)
+            core.setSelectedLandscapeId(effectiveLandscapeId)
           }
-          const search = landscapeId ? `?l=${landscapeId}` : ''
+          const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks)
           const params = new URLSearchParams(location.search)
           const queryLearnerId = sanitizeSkillpilotId(params.get('skillpilotId') || params.get('id'))

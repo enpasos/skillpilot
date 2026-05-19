@@ -5,7 +5,6 @@ import {
   ABI26_CAMPAIGN_SLUG,
   ABI26_FEEDBACK_URL,
   ABI26_FOCUS_GOAL_BY_LEVEL,
-  ABI26_GPT_URL,
   ABI26_ROOT_CURRICULUM_ID,
   ABI26_ROOT_FILTER_ID,
   ABI26_SCOPE_BY_LEVEL,
@@ -20,6 +19,8 @@ import { trackCampaignEvent } from '../utils/campaignTracking'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import { requestChatStart } from '../utils/chatStart'
+import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -50,6 +51,8 @@ export const Abi26MatheStartView: React.FC = () => {
   const [skillpilotId, setSkillpilotId] = useState<string>('')
   const [copiedState, setCopiedState] = useState<'none' | 'id' | 'prompt'>('none')
   const [cockpitUrl, setCockpitUrl] = useState<string>('')
+  const [startPrompt, setStartPrompt] = useState('')
+  const [startLoading, setStartLoading] = useState(false)
 
   const context = useMemo(
     () => ({
@@ -59,10 +62,6 @@ export const Abi26MatheStartView: React.FC = () => {
     [initialContext, courseLevel],
   )
 
-  const startPrompt = useMemo(
-    () => (skillpilotId ? buildAbi26StartPrompt(skillpilotId, context) : ''),
-    [skillpilotId, context],
-  )
   const courseLevelLabel = courseLevel === 'LK' ? 'Leistungskurs' : 'Grundkurs'
 
   useEffect(() => {
@@ -178,7 +177,24 @@ export const Abi26MatheStartView: React.FC = () => {
 
   const handleCopyPrompt = async () => {
     if (!skillpilotId) return
-    const copied = await copyText(startPrompt)
+    setStartLoading(true)
+    let prompt = ''
+    try {
+      const chatStart = await requestChatStart({
+        skillpilotId,
+        language: 'de',
+        selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
+        promptContext: buildAbi26StartPrompt(context),
+        client: ABI26_CAMPAIGN_SLUG,
+      })
+      prompt = chatStart.prompt
+      setStartPrompt(prompt)
+    } catch {
+      setStartLoading(false)
+      return
+    }
+    setStartLoading(false)
+    const copied = await copyText(prompt)
     if (!copied) return
     setCopiedState('prompt')
     trackCampaignEvent('gpt_prompt_copied', {
@@ -191,7 +207,8 @@ export const Abi26MatheStartView: React.FC = () => {
     }, skillpilotId)
   }
 
-  const handleGptStartClicked = () => {
+  const handleGptStartClicked = async () => {
+    if (!skillpilotId) return
     trackCampaignEvent('gpt_start_clicked', {
       start: ABI26_CAMPAIGN_SLUG,
       source: context.source,
@@ -200,6 +217,31 @@ export const Abi26MatheStartView: React.FC = () => {
       courseLevel: context.courseLevel,
       location: 'start-page',
     }, skillpilotId || undefined)
+    const chatWindow = window.open('', '_blank')
+    setStartLoading(true)
+    try {
+      const chatStart = await requestChatStart({
+        skillpilotId,
+        language: 'de',
+        selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
+        promptContext: buildAbi26StartPrompt(context),
+        client: ABI26_CAMPAIGN_SLUG,
+      })
+      setStartPrompt(chatStart.prompt)
+      const url = getSkillpilotGptUrl('de', chatStart.prompt)
+      if (chatWindow) {
+        chatWindow.opener = null
+        chatWindow.location.href = url
+      } else {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
+    } catch {
+      if (chatWindow) {
+        chatWindow.close()
+      }
+    } finally {
+      setStartLoading(false)
+    }
   }
 
   const handleCockpitStartClicked = () => {
@@ -252,7 +294,7 @@ export const Abi26MatheStartView: React.FC = () => {
           </div>
 
           <p className="mt-5 text-sm text-text-secondary">
-            Beide Ansichten nutzen dieselbe anonyme Start-ID, damit Cockpit und Chat denselben Stand sehen.
+            Cockpit und Chat nutzen denselben anonymen Lernstand. ChatGPT bekommt dafuer nur einen kurzlebigen Startcode.
           </p>
           {hasInvalidTrack && (
             <p className="mt-3 rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-900/20 dark:text-amber-200">
@@ -409,43 +451,44 @@ export const Abi26MatheStartView: React.FC = () => {
               SkillPilot Chat öffnen
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-              Der Chat kennt deinen Lernstand erst, wenn du ihm deine Start-ID gibst. Kopiere dafür den Text unten,
-              öffne den SkillPilot Chat und füge ihn dort ein.
+              Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.
             </p>
-            <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
-              <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
-            </div>
+            {startPrompt && (
+              <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
+                <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
+              </div>
+            )}
             <div className="mt-4 flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={handleCopyPrompt}
+                disabled={startLoading}
                 className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
               >
                 <Copy size={14} />
-                Startprompt kopieren
+                Startcode kopieren
               </button>
-              <a
-                href={ABI26_GPT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
                 onClick={handleGptStartClicked}
-                className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary hover:border-sky-400 dark:bg-slate-800"
+                disabled={startLoading}
+                className="inline-flex items-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary hover:border-sky-400 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-slate-800"
               >
-                ChatGPT öffnen
+                ChatGPT starten
                 <ExternalLink size={14} />
-              </a>
+              </button>
             </div>
             <p className="mt-2 text-xs text-text-secondary">
               Im Chat kannst du dir Hinweise geben lassen, Teilaufgaben üben oder ein Foto deiner Rechnung hochladen.
             </p>
             {copiedState === 'prompt' && (
-              <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startprompt wurde kopiert.</p>
+              <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startcode wurde kopiert.</p>
             )}
           </div>
         )}
 
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border-color bg-white/80 p-4 text-xs text-text-secondary dark:bg-slate-900/70">
-          <span>Ohne Registrierung. Deine Start-ID enthält keinen Namen und keine E-Mail-Adresse.</span>
+          <span>Ohne Registrierung. Deine SkillPilot-ID enthält keinen Namen und keine E-Mail-Adresse.</span>
           <div className="flex items-center gap-3">
             <a href={ABI26_FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-sky-500">
               Problem melden

@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Skillpilot AI Interface",
-    "description": "Skillpilot learner-state API for loading learner context, selecting goals, and saving mastery updates.",
-    "version": "v2-ai-optimized-unified"
+    "description": "Skillpilot AI API for ChatGPT: redeem a start code, load learner state, select goals, and save mastery. The GPT uses only a short-lived chat session token, never the real SkillPilot ID.",
+    "version": "v3-ai-startcode-session"
   },
   "servers": [
     {
@@ -16,46 +16,56 @@
     }
   ],
   "paths": {
-    "/api/ai/en/learners": {
+    "/api/ai/en/chat-start/redeem": {
       "post": {
-        "operationId": "createLearner",
-        "summary": "Initialize a new learner session",
-        "description": "Creates a new learner entity.",
+        "operationId": "redeemStartCode",
+        "summary": "Redeem start code and start chat session",
+        "description": "Must be the first tool call when the conversation starts with a SkillPilot start code. Returns a chatSessionToken and the initial learner state. Keep the token internal and do not display it to the learner.",
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateLearnerRequest"
+                "$ref": "#/components/schemas/RedeemStartCodeRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Learner created",
+            "description": "Start code redeemed. Contains chat session token and initial learner state.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateLearnerResponse"
+                  "$ref": "#/components/schemas/RedeemStartCodeResponse"
                 }
               }
             }
+          },
+          "404": {
+            "description": "Start code not found"
+          },
+          "409": {
+            "description": "Start code has already been used."
+          },
+          "410": {
+            "description": "Start code has expired."
           }
         },
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/learners/{skillpilotId}/state": {
+    "/api/ai/en/sessions/{chatSessionToken}/state": {
       "get": {
         "operationId": "getLearnerState",
         "summary": "Get unified learner state",
-        "description": "Returns current learner state for a known `skillpilotId`.",
+        "description": "Loads current learner state for the chat session. Do not ask for a SkillPilot ID.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -63,7 +73,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Unified state",
+            "description": "Current learner state. skillpilotId is intentionally null on session routes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -76,16 +86,17 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/learners/{skillpilotId}/scope": {
+    "/api/ai/en/sessions/{chatSessionToken}/scope": {
       "post": {
         "operationId": "setScope",
         "summary": "Set learning scope/focus",
-        "description": "Sets learning focus with Goal IDs from the latest loaded state and returns updated state.",
+        "description": "Sets learning focus based on goal IDs from the latest loaded state and returns the updated state.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -116,16 +127,17 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/learners/{skillpilotId}/active-goal": {
+    "/api/ai/en/sessions/{chatSessionToken}/active-goal": {
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
-        "description": "Locks one atomic goal from the latest loaded state as the active goal and returns the new learner state.",
+        "description": "Locks an atomic goal from the latest loaded state as the active goal and returns the updated state.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -156,16 +168,17 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/learners/{skillpilotId}/mastery": {
+    "/api/ai/en/sessions/{chatSessionToken}/mastery": {
       "post": {
         "operationId": "setMastery",
         "summary": "Update mastery and get next steps",
-        "description": "Persists mastery only for the active atomic goal after sufficient evidence in the current dialog. Do not call directly after state load or setActiveGoal. Request needs the active goalId.",
+        "description": "Persists mastery only for the active atomic goal after sufficient evidence in the current dialogue. Do not call directly after state load or setActiveGoal. Request needs the active goalId.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -206,35 +219,17 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/landscapes": {
-      "get": {
-        "operationId": "listLandscapes",
-        "summary": "List available curriculums",
-        "responses": {
-          "200": {
-            "description": "List of available landscapes/curriculums",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LandscapeOverviewResponse"
-                }
-              }
-            }
-          }
-        },
-        "x-openai-isConsequential": false
-      }
-    },
-    "/api/ai/en/learners/{skillpilotId}/curriculum": {
+    "/api/ai/en/sessions/{chatSessionToken}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
         "summary": "Set current curriculum/landscape",
-        "description": "Sets the active curriculum and returns updated learner state.",
+        "description": "Sets the active curriculum for this chat session and returns the updated state.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -268,16 +263,17 @@
         "x-openai-isConsequential": false
       }
     },
-    "/api/ai/en/learners/{skillpilotId}/personalization": {
+    "/api/ai/en/sessions/{chatSessionToken}/personalization": {
       "post": {
         "operationId": "setPersonalization",
         "summary": "Personalize the curriculum",
-        "description": "Stores learner preferences and filters and returns updated learner state.",
+        "description": "Stores personal preferences and filters for this chat session, then returns the updated state.",
         "parameters": [
           {
-            "name": "skillpilotId",
+            "name": "chatSessionToken",
             "in": "path",
             "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
             "schema": {
               "type": "string"
             }
@@ -307,6 +303,25 @@
         },
         "x-openai-isConsequential": false
       }
+    },
+    "/api/ai/en/landscapes": {
+      "get": {
+        "operationId": "listLandscapes",
+        "summary": "List available curriculums",
+        "responses": {
+          "200": {
+            "description": "List of available landscapes/curriculums",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LandscapeOverviewResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
     }
   },
   "components": {
@@ -318,30 +333,15 @@
       }
     },
     "schemas": {
-      "CreateLearnerRequest": {
-        "type": "object",
-        "properties": {}
-      },
-      "CreateLearnerResponse": {
-        "type": "object",
-        "properties": {
-          "state": {
-            "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
-          },
-          "availableCurricula": {
-            "type": "array",
-            "description": "List of available curricula to choose from if none was auto-selected.",
-            "items": {
-              "$ref": "#/components/schemas/LandscapeSummary"
-            }
-          }
-        }
-      },
       "UnifiedLearnerStateResponse": {
         "type": "object",
         "properties": {
           "skillpilotId": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Internal SkillPilot ID. Intentionally null on chat session routes; the GPT must not ask for, display, or put this ID into links."
           },
           "curriculum": {
             "$ref": "#/components/schemas/LandscapeSummary"
@@ -629,18 +629,6 @@
           }
         }
       },
-      "Learner": {
-        "type": "object",
-        "properties": {
-          "skillpilotId": {
-            "type": "string"
-          },
-          "selectedCurriculum": {
-            "type": "string",
-            "description": "ID of the current landscape"
-          }
-        }
-      },
       "MasteryUpdateRequest": {
         "type": "object",
         "properties": {
@@ -858,8 +846,41 @@
             "$ref": "#/components/schemas/ExamScoring"
           }
         }
+      },
+      "RedeemStartCodeRequest": {
+        "type": "object",
+        "required": [
+          "startCode"
+        ],
+        "properties": {
+          "startCode": {
+            "type": "string",
+            "description": "Short-lived start code from skillpilot.com, e.g. SP-7KQ9-M2PA. Not a SkillPilot ID."
+          }
+        }
+      },
+      "RedeemStartCodeResponse": {
+        "type": "object",
+        "required": [
+          "chatSessionToken",
+          "expiresAt",
+          "state"
+        ],
+        "properties": {
+          "chatSessionToken": {
+            "type": "string",
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiry time of the chat session."
+          },
+          "state": {
+            "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+          }
+        }
       }
     }
   }
 }
-

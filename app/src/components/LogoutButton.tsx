@@ -10,7 +10,7 @@ interface LogoutButtonProps {
 
 export const LogoutButton: React.FC<LogoutButtonProps> = ({
   onLogout,
-  title = 'Abmelden / Startseite',
+  title = 'Logout / Startseite',
   className = 'text-text-secondary hover:text-rose-400',
   size = 'icon',
 }) => {

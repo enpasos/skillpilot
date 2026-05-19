@@ -1,0 +1,220 @@
+package com.skillpilot.backend.service;
+
+import com.skillpilot.backend.api.ChatStartRequest;
+import com.skillpilot.backend.api.ChatStartResponse;
+import com.skillpilot.backend.domain.ChatSession;
+import com.skillpilot.backend.domain.ChatStartCode;
+import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.repository.ChatSessionRepository;
+import com.skillpilot.backend.repository.ChatStartCodeRepository;
+import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Base64;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+@Service
+public class ChatSessionService {
+
+    public record RedeemedSession(String chatSessionToken, Instant expiresAt, String skillpilotId) {
+    }
+
+    private static final String START_CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+    private static final int START_CODE_RANDOM_CHARS = 8;
+    private static final int SESSION_TOKEN_BYTES = 32;
+    private static final String HMAC_ALGORITHM = "HmacSHA256";
+
+    private final ChatStartCodeRepository startCodeRepository;
+    private final ChatSessionRepository sessionRepository;
+    private final LearnerService learnerService;
+    private final SecureRandom secureRandom = new SecureRandom();
+    private final Duration startCodeTtl;
+    private final Duration sessionTtl;
+    private final byte[] hashSecret;
+
+    public ChatSessionService(
+            ChatStartCodeRepository startCodeRepository,
+            ChatSessionRepository sessionRepository,
+            LearnerService learnerService,
+            @Value("${skillpilot.chat.start-code-ttl:PT5M}") Duration startCodeTtl,
+            @Value("${skillpilot.chat.session-ttl:PT24H}") Duration sessionTtl,
+            @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
+        this.startCodeRepository = startCodeRepository;
+        this.sessionRepository = sessionRepository;
+        this.learnerService = learnerService;
+        this.startCodeTtl = startCodeTtl;
+        this.sessionTtl = sessionTtl;
+        this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
+    }
+
+    @Transactional
+    public ChatStartResponse createStartCode(String skillpilotId, ChatStartRequest request) {
+        if (skillpilotId == null || skillpilotId.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "skillpilotId must not be empty.");
+        }
+        Learner learner = learnerService.getLearner(skillpilotId);
+        String selectedCurriculum = trimToNull(request == null ? null : request.selectedCurriculum());
+        if (selectedCurriculum != null && !selectedCurriculum.equals(learner.getSelectedCurriculum())) {
+            learnerService.assertWritableLearningSession(skillpilotId);
+            learnerService.setCurriculum(skillpilotId, selectedCurriculum);
+            learner = learnerService.getLearner(skillpilotId);
+        }
+
+        Instant now = Instant.now();
+        String startCode = null;
+        String codeHash = null;
+        for (int attempt = 0; attempt < 5; attempt++) {
+            String candidate = generateStartCode();
+            String candidateHash = hashSecretValue(normalizeStartCode(candidate));
+            if (!startCodeRepository.existsById(candidateHash)) {
+                startCode = candidate;
+                codeHash = candidateHash;
+                break;
+            }
+        }
+        if (startCode == null || codeHash == null) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Could not create a unique start code.");
+        }
+
+        ChatStartCode entity = new ChatStartCode();
+        entity.setCodeHash(codeHash);
+        entity.setLearner(learner);
+        entity.setCreatedAt(now);
+        entity.setExpiresAt(now.plus(startCodeTtl));
+        entity.setClient(trimToNull(request == null ? null : request.client()));
+        entity.setLanguage(normalizeLanguage(request == null ? null : request.language()));
+        startCodeRepository.save(entity);
+
+        return new ChatStartResponse(startCode, entity.getExpiresAt(), buildPrompt(startCode, request));
+    }
+
+    @Transactional
+    public RedeemedSession redeemStartCode(String startCode, String language) {
+        String normalizedCode = normalizeStartCode(startCode);
+        if (normalizedCode.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "startCode must not be empty.");
+        }
+
+        String codeHash = hashSecretValue(normalizedCode);
+        ChatStartCode code = startCodeRepository.findByCodeHashForUpdate(codeHash)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Start code not found."));
+
+        Instant now = Instant.now();
+        if (code.getRedeemedAt() != null) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Start code has already been used.");
+        }
+        if (!code.getExpiresAt().isAfter(now)) {
+            throw new ResponseStatusException(HttpStatus.GONE, "Start code has expired.");
+        }
+
+        String token = generateSessionToken();
+        String tokenHash = hashSecretValue(token);
+
+        ChatSession session = new ChatSession();
+        session.setTokenHash(tokenHash);
+        session.setLearner(code.getLearner());
+        session.setCreatedAt(now);
+        session.setExpiresAt(now.plus(sessionTtl));
+        session.setLastUsedAt(now);
+        session.setSourceStartCodeHash(codeHash);
+        session.setLanguage(normalizeLanguage(language != null ? language : code.getLanguage()));
+        sessionRepository.save(session);
+
+        code.setRedeemedAt(now);
+        code.setRedeemedSessionTokenHash(tokenHash);
+        startCodeRepository.save(code);
+
+        return new RedeemedSession(token, session.getExpiresAt(), code.getLearner().getSkillpilotId());
+    }
+
+    @Transactional
+    public String resolveSkillpilotId(String chatSessionToken) {
+        String token = trimToNull(chatSessionToken);
+        if (token == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing chat session token.");
+        }
+
+        String tokenHash = hashSecretValue(token);
+        ChatSession session = sessionRepository.findByTokenHash(tokenHash)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid chat session token."));
+
+        Instant now = Instant.now();
+        if (session.getRevokedAt() != null || !session.getExpiresAt().isAfter(now)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Chat session has expired.");
+        }
+
+        session.setLastUsedAt(now);
+        sessionRepository.save(session);
+        return session.getLearner().getSkillpilotId();
+    }
+
+    private String generateStartCode() {
+        StringBuilder sb = new StringBuilder("SP-");
+        for (int i = 0; i < START_CODE_RANDOM_CHARS; i++) {
+            if (i == 4) {
+                sb.append('-');
+            }
+            sb.append(START_CODE_ALPHABET.charAt(secureRandom.nextInt(START_CODE_ALPHABET.length())));
+        }
+        return sb.toString();
+    }
+
+    private String generateSessionToken() {
+        byte[] bytes = new byte[SESSION_TOKEN_BYTES];
+        secureRandom.nextBytes(bytes);
+        return "sps_" + Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
+    }
+
+    private String normalizeStartCode(String value) {
+        String compact = (value == null ? "" : value)
+                .toUpperCase()
+                .replaceAll("[^A-Z0-9]", "");
+        if (compact.startsWith("SP") && compact.length() == 10) {
+            return "SP-" + compact.substring(2, 6) + "-" + compact.substring(6);
+        }
+        return compact;
+    }
+
+    private String buildPrompt(String startCode, ChatStartRequest request) {
+        String language = normalizeLanguage(request == null ? null : request.language());
+        String context = trimToNull(request == null ? null : request.promptContext());
+        String base = "en".equals(language)
+                ? "Start SkillPilot with start code: " + startCode
+                : "Starte SkillPilot mit Startcode: " + startCode;
+        if (context == null) {
+            return base;
+        }
+        return base + "\n\n" + context.substring(0, Math.min(context.length(), 2000));
+    }
+
+    private String normalizeLanguage(String value) {
+        String normalized = (value == null ? "" : value).trim().toLowerCase();
+        return normalized.startsWith("en") ? "en" : "de";
+    }
+
+    private String trimToNull(String value) {
+        if (value == null) {
+            return null;
+        }
+        String trimmed = value.trim();
+        return trimmed.isEmpty() ? null : trimmed;
+    }
+
+    private String hashSecretValue(String value) {
+        try {
+            Mac mac = Mac.getInstance(HMAC_ALGORITHM);
+            mac.init(new SecretKeySpec(hashSecret, HMAC_ALGORITHM));
+            byte[] digest = mac.doFinal(value.getBytes(StandardCharsets.UTF_8));
+            return Base64.getUrlEncoder().withoutPadding().encodeToString(digest);
+        } catch (Exception e) {
+            throw new IllegalStateException("Could not hash chat credential.", e);
+        }
+    }
+}

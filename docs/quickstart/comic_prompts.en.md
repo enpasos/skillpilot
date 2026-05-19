@@ -25,7 +25,7 @@ comic01.en.png
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Start at SkillPilot".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to study for his advanced math course (LK). He already has a free ChatGPT account. He types \"skillpilot.com\" in the browser and clicks \"Start SkillPilot GPT\".".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to study for his advanced math course (LK). He already has a free ChatGPT account. He types \"skillpilot.com\" in the browser and clicks \"Log in or create ID\".".
 
 **Font Style & Typography:**
 
@@ -49,12 +49,12 @@ The image is divided by a thick black diagonal line from top left to bottom righ
 **Right area (blue-gray background):**
 
 - **Character:** The small, floating white-and-blue robot with glowing blue eyes and a blue circle on its chest.
-- **Action & Object:** The robot holds up a glowing, blue rectangular holographic card in its right hand. On the card, in glowing white-blue lettering, it says: "SKILLPILOT ID: X7F9-G2".
+- **Action & Object:** The robot holds up a glowing, blue rectangular holographic card in its right hand. On the card, in glowing white-blue lettering, it says: "START CODE: SP-7KQ9".
 
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Chat with the AI tutor".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max chats with his AI tutor, states his learning goal, receives a SkillPilot ID as a secret pseudonym - then the learning chat starts.".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the tutor from the browser. His SkillPilot ID stays there; ChatGPT receives only a short-lived start code - then the learning chat begins.".
 
 **Font Style & Typography:**
 
@@ -141,8 +141,8 @@ comic05.en.png
 
 **Text & Frames:**
 
-- **Top left:** A yellow rectangular text box with a black border and the black headline: "My Achievements".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to see exactly what he has already learned: he enters \"skillpilot.com\" in the browser again and this time clicks \"My Achievements\".".
+- **Top left:** A yellow rectangular text box with a black border and the black headline: "Cockpit".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to see exactly what he has already learned: he enters \"skillpilot.com\" in the browser again and opens his cockpit.".
 
 **Font Style & Typography:**
 
@@ -158,18 +158,18 @@ comic06.en.png
 **Scene & Characters:**
 
 - **Max:** A boy with brown, spiky hair, a red T-shirt, blue jeans, and red sneakers sits smiling at a wooden desk. He points with his right index finger at the computer screen.
-- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is an input field with the ID "[PASTED-ID-X7F9]" and a mouse cursor.
+- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is the SkillPilot Login with "Create ID", "Load saved login", and "Enter ID".
 - **Connection:** The PC monitor is connected by cable to a large gray server rack standing to the right of the desk.
 - **Server rack:** The rack is labeled "MISSION CONTROL" in blue capital letters. It has multiple bays with blinking blue lights.
 
 **Text & Speech Bubbles:**
 
-- **Speech bubble (Max):** A speech bubble over Max's head contains the text: "... ID entered ... connected.".
+- **Speech bubble (Max):** A speech bubble over Max's head contains the text: "... login loaded ... connected.".
 
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Connection to Mission Control".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max enters his SkillPilot ID and connects directly to Mission Control.".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max uses his SkillPilot Login and connects directly to Mission Control.".
 
 **Font Style & Typography:**
 

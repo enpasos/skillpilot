@@ -139,7 +139,7 @@ export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId
   return `/learner/${focusGoalId}?${params.toString()}`
 }
 
-export const buildAbi26StartPrompt = (skillpilotId: string, context: Abi26CampaignContext) => {
+export const buildAbi26StartPrompt = (context: Abi26CampaignContext) => {
   const levelLabel = context.courseLevel === 'LK' ? 'Leistungskurs (LK)' : 'Grundkurs (GK)'
   const focus = context.courseLevel === 'LK'
     ? 'Abiturprüfung Mathematik (LK)'
@@ -149,7 +149,6 @@ export const buildAbi26StartPrompt = (skillpilotId: string, context: Abi26Campai
     : 'B1 (Analysis - "Das Algenwachstum")'
   return [
     'Bitte arbeite mit mir in meinem persönlichen SkillPilot-Kontext:',
-    `- SkillPilot-ID: ${skillpilotId}`,
     '- Bundesland: Hessen',
     '- Schulbereich: Gymnasiale Oberstufe',
     '- Fach: Mathematik',

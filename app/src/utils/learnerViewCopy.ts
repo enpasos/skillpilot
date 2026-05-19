@@ -36,7 +36,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerifiedRecallAction: 'Mit Trainer GPT prüfen',
         memoryVerifiedRecallBody: 'Starte die harte Abfrage für dieses aktive Lernziel.',
         memoryPracticeBackAction: 'Zur Auswahl',
-        memoryVerifiedRecallPromptCopied: 'Starttext für den Trainer GPT wurde kopiert.',
+        memoryVerifiedRecallPromptCopied: 'Startcode für den Trainer GPT wurde kopiert.',
         memoryVerifiedRecallPromptCopyFailed: 'Trainer GPT wurde geöffnet. Bitte starte dort die harte Kartenprüfung für das aktive Lernziel.',
       }
     : {
@@ -54,7 +54,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerifiedRecallAction: 'Verify with Trainer GPT',
         memoryVerifiedRecallBody: 'Start hard recall for this active goal.',
         memoryPracticeBackAction: 'Back to choices',
-        memoryVerifiedRecallPromptCopied: 'Trainer GPT start text was copied.',
+        memoryVerifiedRecallPromptCopied: 'Trainer GPT start code was copied.',
         memoryVerifiedRecallPromptCopyFailed: 'Trainer GPT was opened. Please start hard flashcard verification for the active goal there.',
       }
 )
