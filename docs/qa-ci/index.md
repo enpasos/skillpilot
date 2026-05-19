@@ -6,7 +6,7 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
 ## Curriculum Quality
 
 - [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
-  Detailed meaning of `M0` to `M5`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
+  Detailed meaning of `M0` to `M6`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
 - [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
@@ -17,10 +17,30 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
   Generated snapshot consumed by the dashboard.
 - [Memory-Card Review Rollout](status/memory-card-review-rollout.md)
   Generated triage view for the remaining `CQR-302` rollout.
+- [M0 Remediation Plan](status/m0-remediation-plan.md)
+  Generated work queue for curricula that still need source coverage, QA scopes, and reviews before they can leave `M0`.
+- [Englisch M0 Remediation Pilot](status/english-remediation-pilot.md)
+  Reproducible first source-expansion slice for bringing Englisch out of `M0` without weakening the maturity rules.
+- [Biologie Memory-Card Pilot Dossier](status/memory-card-pilot-biologie.md)
+  Reproducible semantic preparation artifact for the Biologie `CQR-302` pilot.
+- [Biologie Memory-Card Review](status/memory-card-review-canonical-biology-full.md)
+  Generated audit view for the completed Biologie `CQR-302` review.
+- [Deutsch Memory-Card Review](status/memory-card-review-canonical-german-full.md)
+  Generated audit view for the completed Deutsch `CQR-302` review.
+- [Geschichte Memory-Card Review](status/memory-card-review-canonical-history-full.md)
+  Generated audit view for the completed Geschichte `CQR-302` review.
+- [Informatik Memory-Card Review](status/memory-card-review-canonical-informatics-full.md)
+  Generated audit view for the completed Informatik `CQR-302` review.
+- [Latein Memory-Card Review](status/memory-card-review-canonical-latin-full.md)
+  Generated audit view for the completed Latein `CQR-302` review.
 - [Mathematik Memory-Card Review](status/memory-card-review-canonical-math-full.md)
   Generated audit view for the completed Mathematik `CQR-302` review.
 - [Physik Memory-Card Review](status/memory-card-review-canonical-physics-full.md)
   Generated audit view for the completed Physik `CQR-302` review.
+- [Politik und Wirtschaft Memory-Card Review](status/memory-card-review-canonical-politics-economics-full.md)
+  Generated audit view for the completed Politik und Wirtschaft `CQR-302` review.
+- [Wirtschaftswissenschaften Memory-Card Review](status/memory-card-review-canonical-economics-full.md)
+  Generated audit view for the completed Wirtschaftswissenschaften `CQR-302` review.
 - [Chemie Memory-Card Review](status/memory-card-review-canonical-chemistry-full.md)
   Generated audit view for the completed Chemie `CQR-302` review.
 

@@ -17,7 +17,7 @@ import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
 
 interface RuleResult {
   id: string
@@ -218,7 +218,8 @@ const COPY = {
       M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
       M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
       M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
-      M5: 'Schulgeeigneter QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
+      M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
+      M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
     },
     all: 'Alle',
     generated: 'Generiert',
@@ -261,7 +262,7 @@ const COPY = {
     blockedBy: 'Blockiert durch',
     openBlockers: 'offen',
     gateClearShort: 'bereit',
-    gateNoNext: 'M5 erreicht',
+    gateNoNext: 'M6 erreicht',
     gateHint: 'Der Reifegrad steigt erst, wenn alle Regeln der nächsten Stufe bestanden sind. Grüne Regeln aus späteren Stufen zählen erst nach den offenen Vorstufen.',
     gateReady: 'Für die nächste Stufe ist kein offener Blocker sichtbar.',
     pipelineProgress: 'Passage-Extraction bereit',
@@ -298,9 +299,10 @@ const COPY = {
     routeScopes: 'QA-Scopes',
     rules: 'Regeln',
     details: 'Details',
-    m5ReviewGates: {
-      title: 'M5-Review-Gates',
-      hint: 'Diese Gates erklären den M5-Zähler: Ein Curriculum bleibt nur dann M5, wenn jede M5-Review-Regel bestanden ist; nicht konfigurierte Pflicht-Reviews zählen als offen.',
+    reviewGates: {
+      title: 'M5/M6-Review-Gates',
+      hint: 'Diese Gates trennen Kern-QS und Karten-QS: CQR-301, CQR-401 und CQR-501 tragen M5; CQR-302 ist der zusätzliche M6-Memory-Layer.',
+      total: 'gesamt',
       configured: 'bewertet',
       passed: 'bestanden',
       open: 'offen',
@@ -308,6 +310,7 @@ const COPY = {
     memoryTrace: {
       title: 'Memory-Review',
       auditReport: 'Audit-Report',
+      notConfigured: 'M6 offen',
       goalDecisions: 'Zielentscheidungen',
       requiredGoals: 'Memory-Ziele',
       noMemoryNeeded: 'ohne Memory',
@@ -344,7 +347,8 @@ const COPY = {
       M2: 'Source goals are extracted and traceable.',
       M3: 'Source goals are covered by SkillPilot goals.',
       M4: 'Jurisdiction views and QA scopes are validated.',
-      M5: 'School-ready QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
+      M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
+      M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
     },
     all: 'All',
     generated: 'Generated',
@@ -387,7 +391,7 @@ const COPY = {
     blockedBy: 'Blocked by',
     openBlockers: 'open',
     gateClearShort: 'ready',
-    gateNoNext: 'M5 reached',
+    gateNoNext: 'M6 reached',
     gateHint: 'Maturity only advances when every rule in the next level passes. Green rules from later levels count after open earlier gates are closed.',
     gateReady: 'No open blocker is visible for the next level.',
     pipelineProgress: 'passage extraction ready',
@@ -424,9 +428,10 @@ const COPY = {
     routeScopes: 'QA scopes',
     rules: 'Rules',
     details: 'Details',
-    m5ReviewGates: {
-      title: 'M5 review gates',
-      hint: 'These gates explain the M5 count: a curriculum stays M5 only when every M5 review rule passes; missing required review configuration counts as open.',
+    reviewGates: {
+      title: 'M5/M6 review gates',
+      hint: 'These gates separate core QA from card QA: CQR-301, CQR-401, and CQR-501 carry M5; CQR-302 is the additional M6 memory layer.',
+      total: 'total',
       configured: 'evaluated',
       passed: 'passed',
       open: 'open',
@@ -434,6 +439,7 @@ const COPY = {
     memoryTrace: {
       title: 'Memory review',
       auditReport: 'Audit report',
+      notConfigured: 'M6 open',
       goalDecisions: 'goal decisions',
       requiredGoals: 'memory goals',
       noMemoryNeeded: 'no memory',
@@ -477,11 +483,12 @@ const maturityClass: Record<MaturityLevel, string> = {
   M3: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
   M4: 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-violet-300',
   M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
+  M6: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
 }
 
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5']
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
 const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
-const m5ReviewRuleIds = ['CQR-301', 'CQR-302', 'CQR-401', 'CQR-501']
+const reviewGateRuleIds = ['CQR-301', 'CQR-401', 'CQR-501', 'CQR-302']
 
 const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
   covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
@@ -573,11 +580,12 @@ function memoryAuditReportPath(rule: RuleResult): string | null {
   return null
 }
 
-function m5ReviewGateStats(status: QualityStatusDocument) {
+function reviewGateStats(status: QualityStatusDocument) {
   const catalogById = new Map(status.ruleCatalog.map((rule) => [rule.id, rule]))
   const allRules = status.curricula.flatMap(collectRules)
 
-  return m5ReviewRuleIds.map((ruleId) => {
+  return reviewGateRuleIds.map((ruleId) => {
+    const catalogEntry = catalogById.get(ruleId)
     const rules = allRules.filter((rule) => rule.id === ruleId)
     const counts: Record<RuleStatus, number> = {
       pass: 0,
@@ -591,8 +599,10 @@ function m5ReviewGateStats(status: QualityStatusDocument) {
     const open = counts.warn + counts.fail + counts.not_configured
     return {
       id: ruleId,
-      label: catalogById.get(ruleId)?.label ?? ruleId,
-      configured: rules.length,
+      label: catalogEntry?.label ?? ruleId,
+      target: catalogEntry?.maturityTarget ?? 'M5',
+      total: rules.length,
+      evaluated: rules.length - counts.not_configured,
       pass: counts.pass,
       open,
       status: rules.length > 0 && open === 0 ? 'pass' as const : open > 0 ? 'warn' as const : 'not_configured' as const,
@@ -720,7 +730,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
     return getMaturityGate(selectedCurriculum, payload.status.ruleCatalog)
   }, [payload, selectedCurriculum])
   const selectedMemoryReviewRule = selectedCurriculum ? memoryReviewRule(selectedCurriculum) : null
-  const m5GateStats = useMemo(() => payload ? m5ReviewGateStats(payload.status) : [], [payload])
+  const gateStats = useMemo(() => payload ? reviewGateStats(payload.status) : [], [payload])
 
   const summary = payload?.status.summary
   const pipelineStatusLabel = (status: MappingPipelineStepState) => ({
@@ -797,7 +807,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
         ) : null}
 
         {summary ? (
-          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-10">
+          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-[repeat(11,minmax(0,1fr))]">
             <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.curricula}</div>
               <div className="mt-2 text-2xl font-bold">{summary.curricula}</div>
@@ -814,7 +824,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.notConfigured}</div>
               <div className="mt-2 text-2xl font-bold text-slate-600 dark:text-slate-300">{summary.ruleStatus.not_configured}</div>
             </div>
-            {(['M0', 'M1', 'M2', 'M3', 'M4', 'M5'] as MaturityLevel[]).map((level) => (
+            {maturityOrder.map((level) => (
               <div key={level} className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
                 <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{level}</div>
                 <div className="mt-2 text-2xl font-bold">{summary.maturity[level] ?? 0}</div>
@@ -823,16 +833,16 @@ export const CurriculumQualityDashboardView: React.FC = () => {
           </section>
         ) : null}
 
-        {m5GateStats.length > 0 ? (
+        {gateStats.length > 0 ? (
           <section className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70 md:p-5">
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-text-secondary">{copy.m5ReviewGates.title}</h2>
-                <p className="mt-1 max-w-3xl text-xs text-text-secondary">{copy.m5ReviewGates.hint}</p>
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-text-secondary">{copy.reviewGates.title}</h2>
+                <p className="mt-1 max-w-3xl text-xs text-text-secondary">{copy.reviewGates.hint}</p>
               </div>
             </div>
             <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-              {m5GateStats.map((gate) => (
+              {gateStats.map((gate) => (
                 <div
                   key={gate.id}
                   className={`rounded-xl border p-3 ${
@@ -845,17 +855,21 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <div className="font-mono text-xs font-semibold">{gate.id}</div>
+                      <div className="flex items-center gap-2 font-mono text-xs font-semibold">
+                        <span>{gate.id}</span>
+                        <span className="rounded-full border border-current/20 px-1.5 py-0 text-[10px]">{gate.target}</span>
+                      </div>
                       <div className="mt-1 truncate text-sm font-semibold" title={gate.label}>{gate.label}</div>
                     </div>
                     <span className="shrink-0 rounded-full border border-current/20 px-2 py-0.5 text-xs font-semibold tabular-nums">
-                      {gate.pass}/{gate.configured}
+                      {gate.pass}/{gate.total}
                     </span>
                   </div>
                   <div className="mt-2 flex flex-wrap gap-2 text-xs">
-                    <span>{gate.configured} {copy.m5ReviewGates.configured}</span>
-                    <span>{gate.pass} {copy.m5ReviewGates.passed}</span>
-                    <span>{gate.open} {copy.m5ReviewGates.open}</span>
+                    <span>{gate.total} {copy.reviewGates.total}</span>
+                    <span>{gate.evaluated} {copy.reviewGates.configured}</span>
+                    <span>{gate.pass} {copy.reviewGates.passed}</span>
+                    <span>{gate.open} {copy.reviewGates.open}</span>
                   </div>
                 </div>
               ))}
@@ -963,7 +977,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                         <td className="py-3 pr-3 text-right tabular-nums">{curriculum.goals}</td>
                         <td className="py-3 pr-3 text-right tabular-nums">{curriculum.atomicGoals}</td>
                         <td className="py-3 pr-3 text-right tabular-nums">
-                          {rowMemoryReviewRule?.metrics ? (
+                          {rowMemoryReviewRule ? (
                             <span
                               className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold ${
                                 rowMemoryReviewRule.status === 'pass' && rowMemoryOpenIssues === 0
@@ -974,7 +988,11 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                               }`}
                               title={rowMemoryReviewRule.summary}
                             >
-                              {metricValue(rowMemoryReviewRule, 'keptCards')}/{metricValue(rowMemoryReviewRule, 'primaryCards')}
+                              {rowMemoryReviewRule.metrics
+                                ? `${metricValue(rowMemoryReviewRule, 'keptCards')}/${metricValue(rowMemoryReviewRule, 'primaryCards')}`
+                                : rowMemoryReviewRule.status === 'not_configured'
+                                  ? copy.memoryTrace.notConfigured
+                                  : copy.labels[rowMemoryReviewRule.status]}
                             </span>
                           ) : '—'}
                         </td>

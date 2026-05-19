@@ -69,7 +69,7 @@ Options:
   --source-date-epoch <timestamp>  Fixed ZIP/source timestamp. Default: 1767225600.
   --output-dir <path>              Output directory inside the repository. Default: tmp/exports/reproducibility.
   --status <path>                  Quality status JSON. Default: docs/qa-ci/status/curriculum-quality-status.json.
-  --subject <name>                 Optional M5 subject filter. Can be repeated or comma-separated.
+  --subject <name>                 Optional M5+ subject filter. Can be repeated or comma-separated.
   --help                           Show this help.
 `
 
@@ -349,7 +349,7 @@ const buildMarkdownReport = (params: {
     ? 'No warnings.'
     : params.warnings.map((warning) => `- ${warning}`).join('\n')
 
-  return `# M5 Export Reproducibility Report
+  return `# M5+ Export Reproducibility Report
 
 Generated at: ${params.generatedAt}
 

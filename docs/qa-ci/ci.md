@@ -60,7 +60,7 @@ Current scope note:
 - this job validates the full authored landscapes as committed
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
 - it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
-- it additionally enforces all configured memory-card review ledgers via `quality:memory-card-review:check:all`; in the dashboard, missing `CQR-302` review configuration now blocks `M5`
+- it additionally enforces all configured memory-card review ledgers via `quality:memory-card-review:check:all`; in the dashboard, missing `CQR-302` review configuration blocks `M6`, while `M5` remains the core curriculum QA level
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
 - it also enforces the Hessen Oberstufe repo-handoff boundary: the retired legacy tree must stay absent from the active repo, and active tooling/runtime/test surfaces may mention it only from the explicit allowlist in `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`
 - it validates the Hessen 2026 chemistry exam pipeline artifacts (`slot_matrix.json`, `coverage_requirements.json`, `task_bank.json`, and source-landscape release anchors)

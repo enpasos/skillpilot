@@ -895,7 +895,7 @@
       "description": "Gemeinsame Wurzel für Mathematik am Gymnasium in Deutschland. Die Baseline bündelt einen kanonischen Mathematik-Graphen über Sekundarstufe I und II mit Jahrgangsankern, fachlichen Korridoren und anschlussfähigen Oberstufenzielen.",
       "descriptionEn": "Shared root for mathematics at Gymnasium in Germany. The baseline bundles one canonical mathematics graph across lower and upper secondary with year anchors, content corridors, and upper-secondary continuation goals.",
       "core": true,
-      "weight": 640,
+      "weight": 641,
       "tags": [
         "root",
         "canonical",
@@ -8877,7 +8877,7 @@
       "description": "Cluster für den sichtbaren Sek-I-Korridor zu Variablen, Termen und äquivalenten Umformungen. Der Korridor verbindet Variablenbedeutung, Termaufbau, Termdeutung und systematische Umformungen als algebraische Basissprache vor dem späteren Gleichungsarbeiten.",
       "descriptionEn": "Cluster for the visible lower-secondary corridor on variables, expressions, and equivalent transformations. The corridor connects variable meaning, expression building, interpretation, and systematic transformations as the algebraic base language before later equation work.",
       "core": true,
-      "weight": 7,
+      "weight": 8,
       "tags": [
         "canonical",
         "phase:SekI",
@@ -26059,12 +26059,15 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
+          "DE-HB",
           "DE-HE",
           "DE-HH",
           "DE-MV",
           "DE-NI",
           "DE-NW",
           "DE-RP",
+          "DE-SH",
           "DE-SL",
           "DE-SN",
           "DE-ST",
@@ -26102,11 +26105,73 @@
         "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
         "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
         "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
-        "30b62966-80d0-45f1-bdd9-b4fb815c7111"
+        "30b62966-80d0-45f1-bdd9-b4fb815c7111",
+        "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
       ],
       "requires": [],
       "phase": "GLOBAL",
       "type": "cluster"
+    },
+    {
+      "id": "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+      "title": "Lernkarten - Sek I Kernformeln",
+      "titleEn": "Flashcards - Lower Secondary Core Formulas",
+      "description": "Schmaler Memory-Knoten für wenige fachlich begründete Sek-I-Formeln, Definitionen und Notationen. Der Knoten sichert Abrufwissen; Verstehen, Herleiten und Aufgabenübung bleiben führend.",
+      "descriptionEn": "Narrow memorization node for a small set of justified lower-secondary formulas, definitions, and notation. The node secures recall knowledge; understanding, derivation, and problem practice remain primary.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "srs-deck:de_gymnasium_math_seki_core",
+        "memorization",
+        "phase:SekI"
+      ],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "sourceRef": "Canonical lower-secondary memory-card deck for Gymnasium mathematics in Germany",
+      "extendedData": {
+        "vocabularySource": "/data/de_gymnasium_math_flashcards_seki_core.de.json",
+        "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_seki_core.en.json"
+      },
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-math",
+        "demandLevel": "AB1",
+        "processCompetencies": [
+          "K5"
+        ],
+        "guidingIdeas": [
+          "L1",
+          "L4",
+          "L5"
+        ],
+        "phase": "SekI",
+        "area": "Mathematik",
+        "topicCode": "CANONICAL.MATH.SEK1.MEMORY"
+      },
+      "nodeKind": "memory",
+      "type": "atomic"
     },
     {
       "id": "81c8da58-9258-488e-9ab8-48500ab31652",
@@ -49276,6 +49341,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -49332,6 +49398,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -49339,6 +49406,7 @@
           "DE-NI",
           "DE-NW",
           "DE-RP",
+          "DE-SH",
           "DE-SL",
           "DE-SN",
           "DE-ST",
@@ -49388,6 +49456,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -49395,6 +49464,7 @@
           "DE-NI",
           "DE-NW",
           "DE-RP",
+          "DE-SH",
           "DE-SL",
           "DE-SN",
           "DE-ST",
@@ -49444,6 +49514,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",

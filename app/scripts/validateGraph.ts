@@ -374,6 +374,13 @@ function isWarumGoal(goal: UiGoal): boolean {
   return /^\s*(warum|why)\b/i.test(title)
 }
 
+function isMemoryGoal(goal: UiGoal): boolean {
+  const tags = goal.tags ?? []
+  return (goal as { nodeKind?: string }).nodeKind === 'memory'
+    || tags.includes('memorization')
+    || tags.some((tag) => tag.startsWith('srs-deck:'))
+}
+
 function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
   if (goal.id === CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID) return true
   if (goal.tags?.includes('phase:SekI')) return true
@@ -386,7 +393,7 @@ function isCanonicalGymMathSek1Goal(goal: UiGoal): boolean {
 }
 
 function isCanonicalGymMathSek1AtomicGoal(goal: UiGoal): boolean {
-  return isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal)
+  return isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal) && !isMemoryGoal(goal)
 }
 
 const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [

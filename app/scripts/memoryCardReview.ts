@@ -16,11 +16,17 @@ interface ReviewConfig {
   reviewPath: string
   cardReviewPath?: string
   reportPath?: string
+  visibilityScopes?: MemoryVisibilityScope[]
   scope: {
     label: string
     rootGoalIds?: string[]
     leafGoalIds?: string[]
   }
+}
+
+interface MemoryVisibilityScope {
+  label: string
+  viewPath: string
 }
 
 interface ReviewRecord {
@@ -81,6 +87,20 @@ interface MemoryDeckCard {
   back: string
   category: string
   tags: string[]
+}
+
+interface MemoryVisibilityReport {
+  scopes: Array<{
+    label: string
+    viewPath: string
+    visibleGoals: number
+    visibleMemoryGoals: number
+    checkedMemoryRequiredGoals: number
+    missingVisibleMemoryGoals: number
+  }>
+  checkedMemoryRequiredGoals: number
+  missingVisibleMemoryGoals: number
+  errors: string[]
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -225,6 +245,122 @@ function collectConfiguredScopeGoalIds(config: ReviewConfig, goalById: Map<strin
     return new Set(config.scope.leafGoalIds)
   }
   return collectScopeGoalIds(config.scope.rootGoalIds ?? [], goalById)
+}
+
+function collectCompositionViewVisibleGoalIds(
+  viewPath: string,
+  goalById: Map<string, LearningGoal>,
+): { visibleGoalIds: Set<string>; errors: string[] } {
+  const errors: string[] = []
+  const visibleGoalIds = new Set<string>()
+  const absoluteViewPath = resolveRepoPath(viewPath)
+  if (!existsSync(absoluteViewPath)) {
+    return {
+      visibleGoalIds,
+      errors: [`Composition view missing: ${viewPath}`],
+    }
+  }
+
+  const addSubtree = (goalId: string, visiting = new Set<string>()) => {
+    if (visibleGoalIds.has(goalId) || visiting.has(goalId)) return
+    const goal = goalById.get(goalId)
+    if (!goal) {
+      errors.push(`${viewPath}: references missing goal ${goalId}`)
+      return
+    }
+    visiting.add(goalId)
+    visibleGoalIds.add(goalId)
+    for (const childId of goal.contains ?? []) addSubtree(childId, visiting)
+    visiting.delete(goalId)
+  }
+
+  const visitNode = (node: unknown) => {
+    if (!node || typeof node !== 'object') return
+    const row = node as { kind?: unknown; goalId?: unknown; children?: unknown }
+    if (row.kind === 'canonicalSubtree') {
+      if (typeof row.goalId === 'string' && row.goalId.trim()) {
+        addSubtree(row.goalId)
+      } else {
+        errors.push(`${viewPath}: canonicalSubtree without goalId`)
+      }
+      return
+    }
+    if (row.kind === 'goalEntry') {
+      if (typeof row.goalId === 'string' && row.goalId.trim()) {
+        if (goalById.has(row.goalId)) {
+          visibleGoalIds.add(row.goalId)
+        } else {
+          errors.push(`${viewPath}: goalEntry references missing goal ${row.goalId}`)
+        }
+      } else {
+        errors.push(`${viewPath}: goalEntry without goalId`)
+      }
+      return
+    }
+    if (Array.isArray(row.children)) {
+      row.children.forEach(visitNode)
+    }
+  }
+
+  try {
+    const parsed = loadJson<{ rootNodes?: unknown[] }>(absoluteViewPath)
+    if (!Array.isArray(parsed.rootNodes)) {
+      errors.push(`${viewPath}: rootNodes must be an array`)
+      return { visibleGoalIds, errors }
+    }
+    parsed.rootNodes.forEach(visitNode)
+  } catch (error) {
+    errors.push(`${viewPath}: cannot parse composition view (${(error as Error).message})`)
+  }
+
+  return { visibleGoalIds, errors }
+}
+
+function collectMemoryVisibilityReport(
+  config: ReviewConfig,
+  goalById: Map<string, LearningGoal>,
+  currentRecords: ReviewRecord[],
+): MemoryVisibilityReport {
+  const report: MemoryVisibilityReport = {
+    scopes: [],
+    checkedMemoryRequiredGoals: 0,
+    missingVisibleMemoryGoals: 0,
+    errors: [],
+  }
+
+  ;(config.visibilityScopes ?? []).forEach((scope) => {
+    const { visibleGoalIds, errors } = collectCompositionViewVisibleGoalIds(scope.viewPath, goalById)
+    const visibleMemoryGoalIds = new Set(Array.from(visibleGoalIds)
+      .filter((goalId) => {
+        const goal = goalById.get(goalId)
+        return !!goal && isMemoryGoal(goal)
+      }))
+    const memoryRequiredInView = currentRecords
+      .filter((record) => record.status === 'memory_required')
+      .filter((record) => visibleGoalIds.has(record.goalId))
+    const missingVisibleMemoryGoalRecords = memoryRequiredInView
+      .filter((record) => !(record.memoryGoalIds ?? []).some((memoryGoalId) => visibleMemoryGoalIds.has(memoryGoalId)))
+
+    errors.forEach((error) => report.errors.push(error))
+    missingVisibleMemoryGoalRecords.forEach((record) => {
+      report.errors.push(
+        `${scope.label}: ${formatGoal(goalById.get(record.goalId), record.goalId)} is visible, but none of its referenced memoryGoalIds is visible in ${scope.viewPath}`,
+      )
+    })
+
+    report.checkedMemoryRequiredGoals += memoryRequiredInView.length
+    report.missingVisibleMemoryGoals += missingVisibleMemoryGoalRecords.length
+    report.scopes.push({
+      label: scope.label,
+      viewPath: scope.viewPath,
+      visibleGoals: visibleGoalIds.size,
+      visibleMemoryGoals: visibleMemoryGoalIds.size,
+      checkedMemoryRequiredGoals: memoryRequiredInView.length,
+      missingVisibleMemoryGoals: missingVisibleMemoryGoalRecords.length,
+    })
+  })
+
+  return report
 }
 
 function parseReviewRecords(path: string): { records: ReviewRecord[]; errors: string[] } {
@@ -512,6 +648,7 @@ function buildMarkdownReport(input: {
   primaryCards: MemoryDeckCard[]
   memoryGoalIdsInScope: Set<string>
   tracedMemoryGoalIds: Set<string>
+  visibilityReport: MemoryVisibilityReport
   blockingErrors: string[]
 }): string {
   const {
@@ -524,6 +661,7 @@ function buildMarkdownReport(input: {
     primaryCards,
     memoryGoalIdsInScope,
     tracedMemoryGoalIds,
+    visibilityReport,
     blockingErrors,
   } = input
   const cardByKey = new Map(primaryCards.map((card) => [memoryCardKey(card.deckId, card.cardId), card]))
@@ -573,9 +711,30 @@ function buildMarkdownReport(input: {
       ['kept primary cards with origin trace', String(keptCardRecords.length)],
       ['cards removed from active decks', String(removedCardRecords.length)],
       ['memory goals traced', `${tracedMemoryGoalIds.size}/${memoryGoalIdsInScope.size}`],
+      ['composition visibility scopes', String(visibilityReport.scopes.length)],
+      ['memory-required goals checked in views', String(visibilityReport.checkedMemoryRequiredGoals)],
+      ['memory-required goals without visible memory node', String(visibilityReport.missingVisibleMemoryGoals)],
       ['blocking issues', String(blockingErrors.length)],
     ],
   ))
+  lines.push('')
+  lines.push('## Composition Visibility')
+  lines.push('')
+  if (visibilityReport.scopes.length === 0) {
+    lines.push('Keine view-spezifische Memory-Erreichbarkeitsprüfung konfiguriert.')
+  } else {
+    lines.push(...markdownTable(
+      ['Scope', 'View', 'Visible goals', 'Visible memory goals', 'Checked memory-required goals', 'Missing visible memory goals'],
+      visibilityReport.scopes.map((scope) => [
+        scope.label,
+        `\`${scope.viewPath}\``,
+        String(scope.visibleGoals),
+        String(scope.visibleMemoryGoals),
+        String(scope.checkedMemoryRequiredGoals),
+        String(scope.missingVisibleMemoryGoals),
+      ]),
+    ))
+  }
   lines.push('')
   lines.push('## Memory-Required Goals')
   lines.push('')
@@ -781,6 +940,7 @@ function main() {
   })
   const untracedMemoryRequiredGoalRecords = currentRecords
     .filter((record) => record.status === 'memory_required' && !tracedMemoryRequiredGoalIds.has(record.goalId))
+  const visibilityReport = collectMemoryVisibilityReport(config, goalById, currentRecords)
 
   if (args.writeFingerprints) {
     const updatedRecords = records.map((record) => {
@@ -820,6 +980,9 @@ function main() {
   console.log(`Missing card review records: ${missingCardRecords.length}`)
   console.log(`Stale card review records: ${staleCardRecords.length}`)
   console.log(`Obsolete card review records: ${obsoleteCardRecords.length}`)
+  console.log(`Composition visibility scopes: ${visibilityReport.scopes.length}`)
+  console.log(`Memory-required goals checked in views: ${visibilityReport.checkedMemoryRequiredGoals}`)
+  console.log(`Memory-required goals without visible memory node: ${visibilityReport.missingVisibleMemoryGoals}`)
 
   const printGoalList = (title: string, goals: LearningGoal[]) => {
     if (goals.length === 0) return
@@ -870,6 +1033,10 @@ function main() {
       console.log(`- ${formatGoal(goalById.get(record.goalId), record.goalId)}`)
     })
   }
+  if (visibilityReport.errors.length > 0) {
+    console.log('\nMemory visibility issues')
+    visibilityReport.errors.forEach((issue) => console.log(`- ${issue}`))
+  }
 
   const blockingErrors = [
     ...parseErrors,
@@ -890,6 +1057,7 @@ function main() {
     ...(byStatus.get('needs_developer_review') ?? []).map((record) => `Unresolved memory review for ${record.goalId}`),
     ...untracedMemoryRequiredGoalRecords.map((record) => `Memory-required goal has no kept card trace ${record.goalId}`),
     ...untracedMemoryGoals.map((goalId) => `Untraced memory goal ${goalId}`),
+    ...visibilityReport.errors,
   ]
 
   if (blockingErrors.length > 0) {
@@ -912,6 +1080,7 @@ function main() {
       primaryCards,
       memoryGoalIdsInScope,
       tracedMemoryGoalIds,
+      visibilityReport,
       blockingErrors,
     }), 'utf8')
     console.log(`\nWrote ${args.reportPath ?? config.reportPath ?? `docs/qa-ci/status/memory-card-review-${config.reviewId}.md`}`)

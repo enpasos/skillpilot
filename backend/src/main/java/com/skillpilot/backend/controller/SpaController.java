@@ -28,6 +28,8 @@ public class SpaController {
             "/quickstart/**",
             "/start",
             "/start/**",
+            "/mobi",
+            "/mobi/**",
             "/legal",
             "/legal/**",
             "/privacy",

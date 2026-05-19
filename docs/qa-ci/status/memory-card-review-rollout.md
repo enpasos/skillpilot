@@ -1,6 +1,6 @@
 # Memory-Card Review Rollout
 
-Generated from `docs/qa-ci/status/curriculum-quality-status.json`; status snapshot generated at 2026-05-17T10:27:04.501Z.
+Generated from `docs/qa-ci/status/curriculum-quality-status.json`; status snapshot generated at 2026-05-17T21:05:48.979Z.
 
 This report is a reproducible triage view, not a semantic decision ledger. It helps decide which curricula need real CQR-302 work next.
 
@@ -10,34 +10,52 @@ Only configured memory-card reviews are enforced by CI and the subject export re
 
 | Metric | Value |
 | --- | --- |
-| CQR-302 pass in this rollout table | 3 |
-| CQR-302 open in this rollout table | 7 |
-| Configured CQR-302 reviews | 3 |
-| Missing CQR-302 configuration | 7 |
+| CQR-302 pass in this rollout table | 10 |
+| CQR-302 open in this rollout table | 0 |
+| Configured CQR-302 reviews | 10 |
+| Missing CQR-302 configuration | 0 |
 
 ## Principles
 
-- Do not restore `M5` by bulk-generating `no_memory_needed` ledgers.
+- Do not restore `M6` by bulk-generating `no_memory_needed` ledgers; `M5` is the separate core-QA level.
 - `memory_required` is allowed only for compact facts, formulas, vocabulary, notation, definitions, or similar hard recall items.
 - A `memory_required` goal needs an active memory node, a deck, and kept cards that trace back to that exact goal.
-- Subjects without active memory decks still need an explicit semantic no-memory review before they can pass CQR-302.
+- Subjects without active memory decks still need an explicit semantic no-memory review before they can pass CQR-302 and reach `M6`.
+- Do not add incomplete `*.config.json` files just to make a work queue visible. Configured CQR-302 ledgers are CI-enforced; draft rollout planning belongs in this report until semantic review is ready.
+
+## Suggested Pilot Order
+
+| Order | Subject | Lane | Candidate share | Reason |
+| --- | --- | --- | --- | --- |
 
 ## Curriculum Triage
 
-| Curriculum | Maturity | CQR-302 | Review goals | Heuristic candidates | Memory nodes | Primary cards | Recommendation |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Politik und Wirtschaft (Gymnasium, DE) | M4 | not_configured | 413 | 49 | 0 | 0 | Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig. |
-| Biologie (Gymnasium, DE) | M4 | not_configured | 355 | 37 | 0 | 0 | Fachreview vor M5; harte Begriffe/Formeln/Symbole wahrscheinlich punktuell relevant. |
-| Geschichte (Gymnasium, DE) | M4 | not_configured | 156 | 36 | 0 | 0 | Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig. |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M4 | not_configured | 303 | 30 | 0 | 0 | Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig. |
-| Deutsch (Gymnasium, DE) | M4 | not_configured | 268 | 20 | 0 | 0 | Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig. |
-| Informatik (Gymnasium, DE) | M4 | not_configured | 207 | 17 | 0 | 0 | Fachreview vor M5; harte Begriffe/Formeln/Symbole wahrscheinlich punktuell relevant. |
-| Latein (Gymnasium, DE) | M4 | not_configured | 115 | 5 | 0 | 0 | Nicht pauschal freigeben; Vokabel- und Grammatik-Memory braucht eigene Source- und Deck-Entscheidung. |
-| Mathematik (Gymnasium, DE) | M5 | pass | 750 | 180 | 5 | 50 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
-| Physik (Gymnasium, DE) | M5 | pass | 425 | 78 | 5 | 148 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
-| Chemie (Gymnasium, DE) | M5 | pass | 376 | 62 | 6 | 55 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Curriculum | Maturity | CQR-302 | Review goals | Heuristic candidates | Candidate share | Lane | Memory nodes | Primary cards | Recommendation |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Mathematik (Gymnasium, DE) | M6 | pass | 750 | 180 | 24% | M6 halten | 6 | 64 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Physik (Gymnasium, DE) | M6 | pass | 425 | 78 | 18% | M6 halten | 5 | 148 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Chemie (Gymnasium, DE) | M6 | pass | 376 | 62 | 16% | M6 halten | 6 | 55 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Politik und Wirtschaft (Gymnasium, DE) | M6 | pass | 413 | 49 | 12% | M6 halten | 5 | 62 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Biologie (Gymnasium, DE) | M6 | pass | 355 | 37 | 10% | M6 halten | 1 | 17 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Geschichte (Gymnasium, DE) | M6 | pass | 156 | 36 | 23% | M6 halten | 5 | 57 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M6 | pass | 303 | 30 | 10% | M6 halten | 5 | 51 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Deutsch (Gymnasium, DE) | M6 | pass | 268 | 20 | 7% | M6 halten | 5 | 48 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Informatik (Gymnasium, DE) | M6 | pass | 207 | 17 | 8% | M6 halten | 5 | 28 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
+| Latein (Gymnasium, DE) | M6 | pass | 115 | 5 | 4% | M6 halten | 5 | 34 | Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten. |
 
 ## Candidate Examples
+
+### Mathematik (Gymnasium, DE)
+
+Natürliche Zahlen ordnen und vergleichen; Lagebeziehungen geometrischer Objekte beschreiben; Winkel messen, zeichnen und fachsprachlich beschreiben; Natürliche und ganze Zahlen multiplizieren und dividieren; Natürliche Zahlen als unbegrenzt fortsetzbar verstehen und große Zahlbezeichnungen verwenden
+
+### Physik (Gymnasium, DE)
+
+Temperatur und Wärme unterscheiden; Entstehung und Zerlegung von Farben erklären; Schallquellen und Schallempfänger beschreiben; Kern und Hülle des Atoms qualitativ beschreiben; Radioaktive Strahlung nachweisen und Wirkungen einordnen
+
+### Chemie (Gymnasium, DE)
+
+Allgemeine Sicherheitsregeln im Chemielabor anwenden; Stoffe und Eigenschaften beschreiben; Gefahrstoffsymbole und Kennzeichnungen deuten; Umgang und Entsorgung von Chemikalien begründen; Stoffe nach Struktur und Eigenschaften ordnen
 
 ### Politik und Wirtschaft (Gymnasium, DE)
 
@@ -66,16 +84,4 @@ Aufbau von Rechnernetzen erklären; Graphbegriffe kennen; Recht auf informatione
 ### Latein (Gymnasium, DE)
 
 Lektürespezifische Grammatikphänomene analysieren; Lateinische Wörter aussprechen und sicher lernen; Unregelmäßige und lektürerelevante Formen mit Grammatikmitteln sichern; Kasusfunktionen, Tempus/Modus und pronominale Bezüge deuten; Wortschatz- und Grammatiklernen selbstständig organisieren
-
-### Mathematik (Gymnasium, DE)
-
-Natürliche Zahlen ordnen und vergleichen; Lagebeziehungen geometrischer Objekte beschreiben; Winkel messen, zeichnen und fachsprachlich beschreiben; Natürliche und ganze Zahlen multiplizieren und dividieren; Natürliche Zahlen als unbegrenzt fortsetzbar verstehen und große Zahlbezeichnungen verwenden
-
-### Physik (Gymnasium, DE)
-
-Temperatur und Wärme unterscheiden; Entstehung und Zerlegung von Farben erklären; Schallquellen und Schallempfänger beschreiben; Kern und Hülle des Atoms qualitativ beschreiben; Radioaktive Strahlung nachweisen und Wirkungen einordnen
-
-### Chemie (Gymnasium, DE)
-
-Allgemeine Sicherheitsregeln im Chemielabor anwenden; Stoffe und Eigenschaften beschreiben; Gefahrstoffsymbole und Kennzeichnungen deuten; Umgang und Entsorgung von Chemikalien begründen; Stoffe nach Struktur und Eigenschaften ordnen
 

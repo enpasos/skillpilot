@@ -30,6 +30,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -65,7 +67,8 @@ public class LearnerAiController {
 
         return new CreateLearnerResponse(
                 state,
-                available);
+                available,
+                buildMobileImportUrl(learner.getSkillpilotId()));
     }
 
     @GetMapping("/{skillpilotId}/state")
@@ -583,6 +586,15 @@ public class LearnerAiController {
             baseUrl = publicBaseUrl == null ? "" : publicBaseUrl.trim().replaceAll("/+$", "");
         }
         return baseUrl;
+    }
+
+    private String buildMobileImportUrl(String skillpilotId) {
+        String encodedId = URLEncoder.encode(skillpilotId, StandardCharsets.UTF_8);
+        String baseUrl = resolveBaseUrl();
+        if (baseUrl == null || baseUrl.isBlank()) {
+            return "/mobi#id=" + encodedId;
+        }
+        return baseUrl + "/mobi#id=" + encodedId;
     }
 
 }

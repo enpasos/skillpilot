@@ -1,0 +1,79 @@
+# Memory-Card Review: canonical-biology-full
+
+Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die verbindlichen Prüfdaten bleiben die JSONL-Ledger; dieser Report wird daraus reproduzierbar erzeugt.
+
+## Scope
+
+- Scope: Canonical biology full landscape
+- Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json`
+- Goal ledger: `curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.review.jsonl`
+- Card ledger: `curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.cards.review.jsonl`
+- Rule version: `memory-card-review-v1`
+
+## Summary
+
+| Metric | Value |
+| --- | --- |
+| ordinary atomic goals reviewed | 355 |
+| goals without memory need | 348 |
+| goals with intentional memory support | 7 |
+| goals needing developer review | 0 |
+| primary cards in scope | 17 |
+| kept primary cards with origin trace | 17 |
+| cards removed from active decks | 0 |
+| memory goals traced | 1/1 |
+| composition visibility scopes | 1 |
+| memory-required goals checked in views | 7 |
+| memory-required goals without visible memory node | 0 |
+| blocking issues | 0 |
+
+## Composition Visibility
+
+| Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
+| --- | --- | --- | --- | --- | --- |
+| Biologie Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json` | 405 | 1 | 7 | 0 |
+
+## Memory-Required Goals
+
+| Lernziel | Decks | Begründung |
+| --- | --- | --- |
+| E: Kennzeichen des Lebens erläutern (`11e90f71-a9a4-5a57-b619-ad5d81e81f96`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| E: RGT-Regel anwenden (`e566ae2f-1294-55c0-ba4c-6aeb4954118c`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| GLOBAL: Bau der Pflanzenzelle beschreiben (`e0d04e58-1591-5230-bfa6-5c685b56d25b`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| GLOBAL: Bau des Blutes (`480146f6-4749-52e3-a5e5-d08629e0c38f`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| GLOBAL: Blütenaufbau und Funktion (`be06115e-96e8-537e-b18a-313056e6cbe8`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| GLOBAL: Karyogramm und Chromosomenfehler (`74740709-fc77-5a54-88a6-bb14c3777941`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+| GLOBAL: Kennzeichen von Lebewesen ordnen (`55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba`) | `de_gymnasium_biology_core` | Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels. |
+
+## Kept Cards
+
+| Deck | Card | Front | Answer | Origin goals | Begründung |
+| --- | --- | --- | --- | --- | --- |
+| `de_gymnasium_biology_core` | `biology_core_001` | Nenne sechs häufig verwendete Kennzeichen des Lebens. | Zellulärer Aufbau, Stoffwechsel, Wachstum und Entwicklung, Reizbarkeit, Fortpflanzung sowie Vererbung und Angepasstheit. | GLOBAL: Kennzeichen von Lebewesen ordnen (`55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba`)<br>E: Kennzeichen des Lebens erläutern (`11e90f71-a9a4-5a57-b619-ad5d81e81f96`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_002` | Ordne die Organisationsebenen vom Kleinen zum Großen. | Zelle - Gewebe - Organ - Organsystem - Organismus. | E: Kennzeichen des Lebens erläutern (`11e90f71-a9a4-5a57-b619-ad5d81e81f96`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_003` | Nenne zentrale Bestandteile einer Pflanzenzelle. | Zellwand, Zellmembran, Cytoplasma, Zellkern, Chloroplasten, Vakuole und Mitochondrien. | GLOBAL: Bau der Pflanzenzelle beschreiben (`e0d04e58-1591-5230-bfa6-5c685b56d25b`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_004` | Welche Grundfunktion hat die Zellwand einer Pflanzenzelle? | Sie gibt der Zelle Form, Stabilität und Schutz. | GLOBAL: Bau der Pflanzenzelle beschreiben (`e0d04e58-1591-5230-bfa6-5c685b56d25b`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_005` | Welche Grundfunktion haben Chloroplasten? | In Chloroplasten findet Fotosynthese statt; dort wird Lichtenergie für den Aufbau energiereicher Stoffe genutzt. | GLOBAL: Bau der Pflanzenzelle beschreiben (`e0d04e58-1591-5230-bfa6-5c685b56d25b`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_006` | Welche Grundfunktion hat der Zellkern? | Der Zellkern enthält die Erbinformation und steuert viele Zellvorgänge. | GLOBAL: Bau der Pflanzenzelle beschreiben (`e0d04e58-1591-5230-bfa6-5c685b56d25b`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_007` | Was besagt die RGT-Regel bei enzymatischen Reaktionen? | Eine Temperaturerhöhung um 10 °C steigert die Reaktionsgeschwindigkeit oft etwa auf das Zwei- bis Dreifache, solange kein Temperaturmaximum oder Denaturierung erreicht ist. | E: RGT-Regel anwenden (`e566ae2f-1294-55c0-ba4c-6aeb4954118c`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_008` | Nenne vier Grundbestandteile einer Blüte. | Kelchblätter, Kronblätter, Staubblätter und Fruchtblatt beziehungsweise Stempel. | GLOBAL: Blütenaufbau und Funktion (`be06115e-96e8-537e-b18a-313056e6cbe8`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_009` | Welche Funktion haben Staubblätter? | Staubblätter bilden den Pollen. | GLOBAL: Blütenaufbau und Funktion (`be06115e-96e8-537e-b18a-313056e6cbe8`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_010` | Welche Funktion hat das Fruchtblatt beziehungsweise der Stempel? | Es enthält die Samenanlagen und nimmt über die Narbe Pollen auf. | GLOBAL: Blütenaufbau und Funktion (`be06115e-96e8-537e-b18a-313056e6cbe8`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_011` | Nenne die wichtigsten Bestandteile des Blutes. | Blutplasma, rote Blutkörperchen, weiße Blutkörperchen und Blutplättchen. | GLOBAL: Bau des Blutes (`480146f6-4749-52e3-a5e5-d08629e0c38f`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_012` | Welche Hauptaufgabe haben rote Blutkörperchen? | Sie transportieren vor allem Sauerstoff. | GLOBAL: Bau des Blutes (`480146f6-4749-52e3-a5e5-d08629e0c38f`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_013` | Welche Hauptaufgabe haben weiße Blutkörperchen? | Sie gehören zur Immunabwehr. | GLOBAL: Bau des Blutes (`480146f6-4749-52e3-a5e5-d08629e0c38f`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_014` | Welche Hauptaufgabe haben Blutplättchen? | Sie sind wichtig für die Blutgerinnung. | GLOBAL: Bau des Blutes (`480146f6-4749-52e3-a5e5-d08629e0c38f`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_015` | Was zeigt ein Karyogramm? | Ein Karyogramm zeigt die Chromosomen einer Zelle geordnet nach Größe, Form und Paaren. | GLOBAL: Karyogramm und Chromosomenfehler (`74740709-fc77-5a54-88a6-bb14c3777941`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_016` | Wie viele Chromosomen besitzt eine normale menschliche Körperzelle? | 46 Chromosomen, geordnet in 23 Paaren. | GLOBAL: Karyogramm und Chromosomenfehler (`74740709-fc77-5a54-88a6-bb14c3777941`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+| `de_gymnasium_biology_core` | `biology_core_017` | Was bedeutet Trisomie 21? | Das Chromosom 21 liegt dreifach statt zweifach vor. | GLOBAL: Karyogramm und Chromosomenfehler (`74740709-fc77-5a54-88a6-bb14c3777941`) | Behalten: kompakter biologischer Kernbegriff, Bestandteil oder Regelbaustein mit kanonischer Lernzielherkunft; Erklärung, Modellierung und Anwendung bleiben außerhalb der Karte fachlich führend. |
+
+## Removed Cards
+
+Entfernte Karten bleiben im Card-Ledger als negative Entscheidung erhalten. Sie dürfen nicht mehr in einem aktiven Primärdeck vorkommen.
+
+Keine.
+
+## Blocking Issues
+
+Keine.
+

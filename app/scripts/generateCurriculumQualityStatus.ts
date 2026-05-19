@@ -17,7 +17,7 @@ import {
 } from './memoryCardReviewConfigDiscovery'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
 type SemanticReviewStatus = 'atomic' | 'needs_developer_review' | 'non_atomic'
 type MemoryCardReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type MemoryCardReviewCardStatus = 'kept' | 'remove' | 'needs_developer_review'
@@ -557,7 +557,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v1'
+  rulesVersion: 'curriculum-quality-v2'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -618,11 +618,17 @@ interface MemoryCardReviewConfig {
   reviewPath: string
   cardReviewPath?: string
   reportPath?: string
+  visibilityScopes?: MemoryVisibilityScope[]
   scope: {
     label: string
     rootGoalIds?: string[]
     leafGoalIds?: string[]
   }
+}
+
+interface MemoryVisibilityScope {
+  label: string
+  viewPath: string
 }
 
 interface MemoryCardReviewRecord {
@@ -990,8 +996,8 @@ const ruleCatalog: QualityRuleDefinition[] = [
     id: 'CQR-302',
     label: 'Memory-card decision trace',
     category: 'review',
-    maturityTarget: 'M5',
-    description: 'Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, and every existing memory deck remains traced.',
+    maturityTarget: 'M6',
+    description: 'Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible.',
   },
   {
     id: 'CQR-401',
@@ -1018,7 +1024,7 @@ const routeProfiles: RouteProfile[] = [
     terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
     terminalAutonomyClusterIds: [CANONICAL_GYM_MATH_SEK1_PRACTICE_CLUSTER_ID],
     compositionViewStage: 'SekI',
-    goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal),
+    goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal) && !isMemoryGoal(goal),
     clusterSelector: isCanonicalGymMathSek1Goal,
   },
   {
@@ -1800,7 +1806,7 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
     .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
     .map((goalId) => goalById.get(goalId))
     .filter((goal): goal is LearningGoal => !!goal)
-    .filter(isAtomicGoal)
+    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
   const terminalGoalIds = profile.terminalGoalIds && profile.terminalGoalIds.length > 0
     ? profile.terminalGoalIds
     : terminalAutonomyGoals.map((goal) => goal.id)
@@ -2086,6 +2092,13 @@ interface MemoryDeckCard {
   tags: string[]
 }
 
+interface MemoryVisibilityReport {
+  scopes: number
+  checkedMemoryRequiredGoals: number
+  missingVisibleMemoryGoals: number
+  errors: string[]
+}
+
 function collectMemoryDeckEvidence(landscape: LearningLandscape): MemoryDeckEvidence {
   const evidence: MemoryDeckEvidence = {
     memoryGoalIds: new Set(),
@@ -2154,6 +2167,114 @@ function collectMemoryDeckEvidence(landscape: LearningLandscape): MemoryDeckEvid
   })
 
   return evidence
+}
+
+function collectCompositionViewVisibleGoalIds(
+  viewPath: string,
+  goalById: Map<string, LearningGoal>,
+): { visibleGoalIds: Set<string>; errors: string[] } {
+  const errors: string[] = []
+  const visibleGoalIds = new Set<string>()
+  const absoluteViewPath = resolve(repoRoot, viewPath)
+  if (!existsSync(absoluteViewPath)) {
+    return {
+      visibleGoalIds,
+      errors: [`Composition view missing: ${viewPath}`],
+    }
+  }
+
+  const addSubtree = (goalId: string, visiting = new Set<string>()) => {
+    if (visibleGoalIds.has(goalId) || visiting.has(goalId)) return
+    const goal = goalById.get(goalId)
+    if (!goal) {
+      errors.push(`${viewPath}: references missing goal ${goalId}`)
+      return
+    }
+    visiting.add(goalId)
+    visibleGoalIds.add(goalId)
+    ;(goal.contains ?? []).forEach((childId) => addSubtree(childId, visiting))
+    visiting.delete(goalId)
+  }
+
+  const visitNode = (node: unknown) => {
+    if (!node || typeof node !== 'object') return
+    const row = node as { kind?: unknown; goalId?: unknown; children?: unknown }
+    if (row.kind === 'canonicalSubtree') {
+      if (typeof row.goalId === 'string' && row.goalId.trim()) {
+        addSubtree(row.goalId)
+      } else {
+        errors.push(`${viewPath}: canonicalSubtree without goalId`)
+      }
+      return
+    }
+    if (row.kind === 'goalEntry') {
+      if (typeof row.goalId === 'string' && row.goalId.trim()) {
+        if (goalById.has(row.goalId)) {
+          visibleGoalIds.add(row.goalId)
+        } else {
+          errors.push(`${viewPath}: goalEntry references missing goal ${row.goalId}`)
+        }
+      } else {
+        errors.push(`${viewPath}: goalEntry without goalId`)
+      }
+      return
+    }
+    if (Array.isArray(row.children)) {
+      row.children.forEach(visitNode)
+    }
+  }
+
+  try {
+    const parsed = loadJson<{ rootNodes?: unknown[] }>(absoluteViewPath)
+    if (!Array.isArray(parsed.rootNodes)) {
+      errors.push(`${viewPath}: rootNodes must be an array`)
+      return { visibleGoalIds, errors }
+    }
+    parsed.rootNodes.forEach(visitNode)
+  } catch (error) {
+    errors.push(`${viewPath}: cannot parse composition view (${(error as Error).message})`)
+  }
+
+  return { visibleGoalIds, errors }
+}
+
+function collectMemoryVisibilityReport(
+  config: MemoryCardReviewConfig,
+  goalById: Map<string, LearningGoal>,
+  currentRecords: MemoryCardReviewRecord[],
+): MemoryVisibilityReport {
+  const report: MemoryVisibilityReport = {
+    scopes: 0,
+    checkedMemoryRequiredGoals: 0,
+    missingVisibleMemoryGoals: 0,
+    errors: [],
+  }
+
+  ;(config.visibilityScopes ?? []).forEach((scope) => {
+    report.scopes += 1
+    const { visibleGoalIds, errors } = collectCompositionViewVisibleGoalIds(scope.viewPath, goalById)
+    const visibleMemoryGoalIds = new Set(Array.from(visibleGoalIds)
+      .filter((goalId) => {
+        const goal = goalById.get(goalId)
+        return !!goal && isMemoryGoal(goal)
+      }))
+    const memoryRequiredInView = currentRecords
+      .filter((record) => record.status === 'memory_required')
+      .filter((record) => visibleGoalIds.has(record.goalId))
+    const missingVisibleMemoryGoalRecords = memoryRequiredInView
+      .filter((record) => !(record.memoryGoalIds ?? []).some((memoryGoalId) => visibleMemoryGoalIds.has(memoryGoalId)))
+
+    errors.forEach((error) => report.errors.push(`${config.reviewId}: ${error}`))
+    missingVisibleMemoryGoalRecords.forEach((record) => {
+      report.errors.push(
+        `${config.reviewId}: ${scope.label}: ${formatGoal(goalById.get(record.goalId), record.goalId)} is visible, but none of its referenced memoryGoalIds is visible in ${scope.viewPath}`,
+      )
+    })
+    report.checkedMemoryRequiredGoals += memoryRequiredInView.length
+    report.missingVisibleMemoryGoals += missingVisibleMemoryGoalRecords.length
+  })
+
+  return report
 }
 
 const memoryCardReviewStatuses: MemoryCardReviewStatus[] = [
@@ -2381,6 +2502,10 @@ function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryC
   let duplicateCardReviewRecords = 0
   let invalidCardReviewRecords = 0
   let untracedMemoryRequiredGoals = 0
+  let visibilityScopes = 0
+  let visibilityCheckedMemoryRequiredGoals = 0
+  let visibilityMissingVisibleMemoryGoals = 0
+  let visibilityErrors = 0
   const tracedMemoryGoalIds = new Set<string>()
   const scopedMemoryGoalIds = new Set<string>()
   const details: string[] = []
@@ -2532,6 +2657,19 @@ function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryC
         }
       }
     })
+
+    const visibilityReport = collectMemoryVisibilityReport(
+      config,
+      goalById,
+      Array.from(currentGoalRecordsById.values()),
+    )
+    visibilityScopes += visibilityReport.scopes
+    visibilityCheckedMemoryRequiredGoals += visibilityReport.checkedMemoryRequiredGoals
+    visibilityMissingVisibleMemoryGoals += visibilityReport.missingVisibleMemoryGoals
+    visibilityErrors += visibilityReport.errors.length
+    visibilityReport.errors.forEach((issue) => {
+      if (details.length < 30) details.push(issue)
+    })
   })
 
   deckEvidence.errors.forEach((issue) => {
@@ -2558,13 +2696,14 @@ function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryC
     + cardsMarkedRemove
     + cardNeedsDeveloperReview
     + untracedMemoryRequiredGoals
+    + visibilityErrors
     + deckEvidence.errors.length
     + untracedMemoryGoalIds.length
   return makeRule(
     'CQR-302',
     unresolved === 0 ? 'pass' : 'warn',
     unresolved === 0
-      ? `Memory-card review is current: ${memoryRequired}/${reviewedGoals} ordinary atomic goals intentionally use memorization support, ${keptCards}/${primaryCards} primary cards are kept with origin traces, and all ${scopedMemoryGoalIds.size} memory goals are traced.`
+      ? `Memory-card review is current: ${memoryRequired}/${reviewedGoals} ordinary atomic goals intentionally use memorization support, ${keptCards}/${primaryCards} primary cards are kept with origin traces, all ${scopedMemoryGoalIds.size} memory goals are traced, and ${visibilityCheckedMemoryRequiredGoals} view-visible memory-required goals resolve to visible memory nodes.`
       : 'Memory-card review still has missing, stale, invalid, or untraced entries.',
     {
       configs: configs.length,
@@ -2587,6 +2726,10 @@ function evaluateMemoryCardReview(landscape: LearningLandscape, configs: MemoryC
       duplicateCardReviewRecords,
       invalidCardReviewRecords,
       untracedMemoryRequiredGoals,
+      visibilityScopes,
+      visibilityCheckedMemoryRequiredGoals,
+      visibilityMissingVisibleMemoryGoals,
+      visibilityErrors,
       memoryGoals: scopedMemoryGoalIds.size,
       tracedMemoryGoals: tracedMemoryGoalIds.size,
       untracedMemoryGoals: untracedMemoryGoalIds.length,
@@ -4501,11 +4644,12 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
   if (!routeScopes.every((scope) => scope.maturity === 'M2' || scope.maturity === 'M3')) return 'M2'
   if (!routeScopes.every((scope) => scope.maturity === 'M3')) return 'M3'
 
-  const m4Ready = curriculumRules.find((rule) => rule.id === 'CQR-301')?.status === 'pass'
-    && curriculumRules.find((rule) => rule.id === 'CQR-302')?.status === 'pass'
+  const m5Ready = curriculumRules.find((rule) => rule.id === 'CQR-301')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-401')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-501')?.status === 'pass'
-  return m4Ready ? 'M5' : 'M4'
+  if (!m5Ready) return 'M4'
+
+  return curriculumRules.find((rule) => rule.id === 'CQR-302')?.status === 'pass' ? 'M6' : 'M5'
 }
 
 function renderMarkdown(status: StatusDocument): string {
@@ -4661,7 +4805,7 @@ function main() {
     ...curriculum.rules,
     ...curriculum.scopes.flatMap((scope) => scope.rules),
   ])
-  const maturity: Record<MaturityLevel, number> = { M0: 0, M1: 0, M2: 0, M3: 0, M4: 0, M5: 0 }
+  const maturity: Record<MaturityLevel, number> = { M0: 0, M1: 0, M2: 0, M3: 0, M4: 0, M5: 0, M6: 0 }
   curricula.forEach((curriculum) => {
     maturity[curriculum.maturity] += 1
   })
@@ -4672,7 +4816,7 @@ function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v1',
+    rulesVersion: 'curriculum-quality-v2',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {

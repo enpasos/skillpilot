@@ -2,7 +2,7 @@
 
 This pipeline builds a reproducible release ZIP artifact for one SkillPilot subject landscape.
 
-Supported `DE/Gymnasium` presets currently cover the M5-ready subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.
+Supported `DE/Gymnasium` presets currently cover the M5-or-better subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.
 
 The artifact is intended as the first handoff format for later MEM/FWU roundtrip experiments:
 
@@ -21,7 +21,7 @@ npm run export:subject-package -- --subject Mathematik --version 0.1.0
 
 The ZIP is written to `tmp/exports/` with the school-context prefix, for example `skillpilot-de-gymnasium-mathematik-v0.1.0.zip`. The builder also writes a sibling `*-release-report.md` with the ZIP checksum, coverage counts, and export-time validation checks. `tmp/` is intentionally not committed; both files are build artifacts.
 
-To rebuild every subject that is currently rated `M5` in `docs/qa-ci/status/curriculum-quality-status.json`, use the batch command:
+To rebuild every subject that is currently rated `M5` or `M6` in `docs/qa-ci/status/curriculum-quality-status.json`, use the batch command:
 
 ```bash
 cd app

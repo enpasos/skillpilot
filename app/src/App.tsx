@@ -29,6 +29,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
+  '/mobi',
   '/workbench',
   '/flashcard-editor',
   '/graph-editor',
@@ -54,6 +55,7 @@ const UsersView = lazy(() => import('./views/UsersView').then((module) => ({ def
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
 const Abi26MatheStartView = lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
+const MobiStartView = lazy(() => import('./views/MobiStartView').then((module) => ({ default: module.MobiStartView })))
 const WorkbenchView = lazy(() => import('./views/WorkbenchView').then((module) => ({ default: module.WorkbenchView })))
 const FlashcardEditorView = lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
 const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
@@ -143,6 +145,8 @@ const App: React.FC = () => {
     normalizedActualPath === '/quickstart' || normalizedActualPath.startsWith('/quickstart/')
   const isStartRoute = normalizedPath === '/start' || normalizedPath.startsWith('/start/') ||
     normalizedActualPath === '/start' || normalizedActualPath.startsWith('/start/')
+  const isMobiRoute = normalizedPath === '/mobi' || normalizedPath.startsWith('/mobi/') ||
+    normalizedActualPath === '/mobi' || normalizedActualPath.startsWith('/mobi/')
 
   // Allow public routes to render without session
   // Check both React Router location AND actual window.location for reliability after OAuth redirects
@@ -151,7 +155,8 @@ const App: React.FC = () => {
     PUBLIC_PATHS.has(normalizedActualPath) ||
     isWhitepaperRoute ||
     isQuickstartRoute ||
-    isStartRoute
+    isStartRoute ||
+    isMobiRoute
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
@@ -446,7 +451,8 @@ const App: React.FC = () => {
     const isPublicPath = PUBLIC_PATHS.has(path) ||
       path === '/whitepaper' || path.startsWith('/whitepaper/') ||
       path === '/quickstart' || path.startsWith('/quickstart/') ||
-      path === '/start' || path.startsWith('/start/')
+      path === '/start' || path.startsWith('/start/') ||
+      path === '/mobi' || path.startsWith('/mobi/')
     const isGoalView = GOAL_VIEWS.has(view)
     const hasAccess = hasActiveSession || isPublicPath || path === '/'
     const baseTitle = 'SkillPilot'
@@ -535,6 +541,9 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Create your free SkillPilot ID and start directly in your Abitur cockpit.'
           : 'Kostenlose SkillPilot-ID erstellen und direkt im Abi-Cockpit starten.'
+      } else if (path === '/mobi' || path.startsWith('/mobi/')) {
+        title = `Mathe- und Physik-Tutor fürs Handy | ${baseTitle}`
+        description = 'SkillPilotGPT für Gymnasium Mathe und Physik auf dem Handy: antworten per Diktat, kurzem Text oder Bild der Rechnung.'
       } else if (path === '/privacy') {
         title = `${t.startPage.footer.privacy} | ${baseTitle}`
         description = privacyDescription
@@ -650,6 +659,7 @@ const App: React.FC = () => {
           <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
           <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
           <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+          <Route path="/mobi/*" element={<MobiStartView />} />
         </Routes>
       </Suspense>
     )
@@ -869,6 +879,7 @@ const App: React.FC = () => {
         <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
         <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
         <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+        <Route path="/mobi/*" element={<MobiStartView />} />
 
         <Route path="/" element={<Navigate to={role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'} replace />} />
       </Routes>

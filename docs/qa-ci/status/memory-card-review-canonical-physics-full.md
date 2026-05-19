@@ -22,7 +22,14 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | kept primary cards with origin trace | 148 |
 | cards removed from active decks | 15 |
 | memory goals traced | 5/5 |
+| composition visibility scopes | 0 |
+| memory-required goals checked in views | 0 |
+| memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
+
+## Composition Visibility
+
+Keine view-spezifische Memory-Erreichbarkeitsprüfung konfiguriert.
 
 ## Memory-Required Goals
 

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
 
 interface RuleResult {
   id: string
@@ -13,6 +13,7 @@ interface RuleResult {
 }
 
 interface CurriculumStatus {
+  subject?: string
   title: string
   maturity: MaturityLevel
   path: string
@@ -131,23 +132,77 @@ function markdownTable(headers: string[], rows: Array<Array<string | number>>): 
   ]
 }
 
+type M6PilotLane = 'maintain' | 'high-memory-potential' | 'language-specific' | 'concept-vocabulary-risk' | 'low-memory-potential'
+
+interface RolloutRow {
+  title: string
+  subject: string
+  maturity: MaturityLevel
+  cqr302: string
+  reviewGoals: number
+  heuristicCandidates: number
+  candidateShare: number
+  memoryGoals: number
+  primaryCards: number
+  lane: M6PilotLane
+  pilotRank: number
+  recommendation: string
+  examples: string
+}
+
+function laneFor(title: string, memoryGoals: number, candidateShare: number): M6PilotLane {
+  if (memoryGoals > 0) return 'maintain'
+  if (/Biologie|Informatik/.test(title) && candidateShare >= 5) return 'high-memory-potential'
+  if (/Latein/.test(title)) return 'language-specific'
+  if (/Deutsch|Geschichte|Politik|Wirtschaft/.test(title) && candidateShare >= 5) return 'concept-vocabulary-risk'
+  return 'low-memory-potential'
+}
+
+function pilotRankFor(lane: M6PilotLane, title: string): number {
+  if (lane === 'maintain') return 90
+  if (/Biologie/.test(title)) return 10
+  if (/Informatik/.test(title)) return 20
+  if (lane === 'language-specific') return 30
+  if (lane === 'concept-vocabulary-risk') return 40
+  return 80
+}
+
 function recommendationFor(title: string, candidateCount: number, memoryGoals: number): string {
   if (memoryGoals > 0) return 'Aktive Memory-Knoten vorhanden; Ledger und Karten strikt aktuell halten.'
   if (/Latein/.test(title)) return 'Nicht pauschal freigeben; Vokabel- und Grammatik-Memory braucht eigene Source- und Deck-Entscheidung.'
   if (/Chemie|Biologie|Informatik/.test(title) && candidateCount > 0) {
-    return 'Fachreview vor M5; harte Begriffe/Formeln/Symbole wahrscheinlich punktuell relevant.'
+    return 'Fachreview vor M6; harte Begriffe/Formeln/Symbole wahrscheinlich punktuell relevant.'
   }
   if (/Deutsch|Geschichte|Politik|Wirtschaft/.test(title) && candidateCount > 0) {
-    return 'Fachreview vor M5; Begriffslernen möglich, aber nicht automatisch deckpflichtig.'
+    return 'Fachreview vor M6; Begriffslernen möglich, aber nicht automatisch deckpflichtig.'
   }
-  return 'Kann erst nach explizitem No-Memory-Review auf M5.'
+  return 'Kann erst nach explizitem No-Memory-Review auf M6.'
+}
+
+function laneLabel(lane: M6PilotLane): string {
+  switch (lane) {
+    case 'maintain':
+      return 'M6 halten'
+    case 'high-memory-potential':
+      return 'Pilotkandidat'
+    case 'language-specific':
+      return 'Sprachspezifisch'
+    case 'concept-vocabulary-risk':
+      return 'Begriffsrisiko'
+    case 'low-memory-potential':
+      return 'Niedrige Priorität'
+  }
 }
 
 function renderReport(status: StatusDocument): string {
-  const rows = status.curricula
+  const rows: RolloutRow[] = status.curricula
     .filter((curriculum) => {
       const rule = curriculum.rules.find((candidate) => candidate.id === 'CQR-302')
-      return curriculum.maturity === 'M4' || rule?.status === 'pass' || rule?.status === 'warn'
+      return curriculum.maturity === 'M4'
+        || curriculum.maturity === 'M5'
+        || curriculum.maturity === 'M6'
+        || rule?.status === 'pass'
+        || rule?.status === 'warn'
     })
     .map((curriculum) => {
       const landscape = readJson<LearningLandscape>(curriculum.path)
@@ -155,14 +210,22 @@ function renderReport(status: StatusDocument): string {
       const heuristicCandidates = reviewGoals.filter(isHeuristicMemoryCandidate)
       const memoryGoals = landscape.goals.filter(isMemoryGoal)
       const cqr302 = curriculum.rules.find((rule) => rule.id === 'CQR-302')
+      const candidateShare = reviewGoals.length > 0
+        ? Math.round((heuristicCandidates.length / reviewGoals.length) * 100)
+        : 0
+      const lane = laneFor(curriculum.title, memoryGoals.length, candidateShare)
       return {
         title: curriculum.title,
+        subject: curriculum.subject ?? curriculum.title,
         maturity: curriculum.maturity,
         cqr302: cqr302?.status ?? 'missing',
         reviewGoals: reviewGoals.length,
         heuristicCandidates: heuristicCandidates.length,
+        candidateShare,
         memoryGoals: memoryGoals.length,
         primaryCards: cqr302?.metrics?.primaryCards ?? 0,
+        lane,
+        pilotRank: pilotRankFor(lane, curriculum.title),
         recommendation: recommendationFor(curriculum.title, heuristicCandidates.length, memoryGoals.length),
         examples: heuristicCandidates
           .slice(0, 5)
@@ -172,7 +235,8 @@ function renderReport(status: StatusDocument): string {
     })
     .sort((left, right) => {
       const statusRank = { warn: 0, not_configured: 1, missing: 2, pass: 3, fail: 4 } as Record<string, number>
-      return (statusRank[left.cqr302] ?? 9) - (statusRank[right.cqr302] ?? 9)
+      return left.pilotRank - right.pilotRank
+        || (statusRank[left.cqr302] ?? 9) - (statusRank[right.cqr302] ?? 9)
         || right.heuristicCandidates - left.heuristicCandidates
         || left.title.localeCompare(right.title, 'de')
     })
@@ -205,10 +269,27 @@ function renderReport(status: StatusDocument): string {
   lines.push('')
   lines.push('## Principles')
   lines.push('')
-  lines.push('- Do not restore `M5` by bulk-generating `no_memory_needed` ledgers.')
+  lines.push('- Do not restore `M6` by bulk-generating `no_memory_needed` ledgers; `M5` is the separate core-QA level.')
   lines.push('- `memory_required` is allowed only for compact facts, formulas, vocabulary, notation, definitions, or similar hard recall items.')
   lines.push('- A `memory_required` goal needs an active memory node, a deck, and kept cards that trace back to that exact goal.')
-  lines.push('- Subjects without active memory decks still need an explicit semantic no-memory review before they can pass CQR-302.')
+  lines.push('- Subjects without active memory decks still need an explicit semantic no-memory review before they can pass CQR-302 and reach `M6`.')
+  lines.push('- Do not add incomplete `*.config.json` files just to make a work queue visible. Configured CQR-302 ledgers are CI-enforced; draft rollout planning belongs in this report until semantic review is ready.')
+  lines.push('')
+  lines.push('## Suggested Pilot Order')
+  lines.push('')
+  const pilotRows = rows
+    .filter((row) => row.maturity === 'M5' && row.cqr302 === 'not_configured')
+    .sort((left, right) => left.pilotRank - right.pilotRank || right.candidateShare - left.candidateShare)
+  lines.push(...markdownTable(
+    ['Order', 'Subject', 'Lane', 'Candidate share', 'Reason'],
+    pilotRows.map((row, index) => [
+      index + 1,
+      row.subject,
+      laneLabel(row.lane),
+      `${row.candidateShare}% (${row.heuristicCandidates}/${row.reviewGoals})`,
+      row.recommendation,
+    ]),
+  ))
   lines.push('')
   lines.push('## Curriculum Triage')
   lines.push('')
@@ -219,6 +300,8 @@ function renderReport(status: StatusDocument): string {
       'CQR-302',
       'Review goals',
       'Heuristic candidates',
+      'Candidate share',
+      'Lane',
       'Memory nodes',
       'Primary cards',
       'Recommendation',
@@ -229,6 +312,8 @@ function renderReport(status: StatusDocument): string {
       row.cqr302,
       row.reviewGoals,
       row.heuristicCandidates,
+      `${row.candidateShare}%`,
+      laneLabel(row.lane),
       row.memoryGoals,
       row.primaryCards,
       row.recommendation,

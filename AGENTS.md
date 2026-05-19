@@ -352,11 +352,12 @@ Rule:
 * Every active primary card must also be reviewed in the matching `*.cards.review.jsonl` ledger.
 * A kept card needs `kept`, `necessary: true`, and at least one concrete `originGoalId`.
 * Each `originGoalId` of a kept card must be a current `memory_required` ordinary atomic goal and must reference the card's deck.
+* Configured `visibilityScopes` must prove that when a `memory_required` goal is visible in a learner-facing composition view, at least one of its referenced memory goals is visible in that same view.
 * Cards marked `remove` may stay in the card ledger as an audit trail, but they must be removed from active deck files.
 * Every existing `nodeKind: "memory"` / `memorization` / `srs-deck:*` goal in the configured scope must be traced back through kept cards and at least one `memory_required` decision.
 * Review records include a fingerprint of semantic goal fields, so goal text changes make the decision stale.
 * Human-readable audit reports under `docs/qa-ci/status/memory-card-review-*.md` are generated from the ledgers; they must not be edited as a second source of truth.
-* `CQR-302` is the M5 dashboard rule for memory-card decision tracing. Missing memory-card review configuration counts as open and blocks `M5`; it is currently completed for `Mathematik (Gymnasium, DE)`, `Physik (Gymnasium, DE)`, and `Chemie (Gymnasium, DE)`.
+* `CQR-302` is the M6 dashboard rule for memory-card decision tracing. `M5` stays the core curriculum QA level and does not depend on memory-card review configuration. Missing or open memory-card review configuration counts as open for `M6`; it is currently completed for `Mathematik (Gymnasium, DE)`, `Physik (Gymnasium, DE)`, and `Chemie (Gymnasium, DE)`.
 
 Naming and ownership:
 
@@ -370,7 +371,7 @@ Interpretation:
 
 * `no_memory_needed` is the conservative default.
 * A deck should stay narrow and should not become a second curriculum hidden inside flashcards.
-* Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, and no unresolved/removal debt in active decks.
+* Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, configured learner-facing visibility for required memory nodes, and no unresolved/removal debt in active decks. It upgrades a curriculum from core-ready `M5` to memory-layer-ready `M6`.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 
 ---

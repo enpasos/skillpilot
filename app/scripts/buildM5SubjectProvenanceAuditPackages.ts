@@ -68,7 +68,7 @@ Options:
   --version <version>      Package version. Default: 0.1.0.
   --output-dir <path>      Output directory inside the repository. Default: tmp/exports/provenance-audits.
   --status <path>          Quality status JSON. Default: docs/qa-ci/status/curriculum-quality-status.json.
-  --subject <name>         Optional M5 subject filter. Can be repeated or comma-separated.
+  --subject <name>         Optional M5+ subject filter. Can be repeated or comma-separated.
   --help                   Show this help.
 `
 
@@ -227,6 +227,8 @@ const parseSummary = (stdout: string): AuditPackageSummary => {
   }
 }
 
+const isM5OrBetter = (entry: CurriculumStatusEntry) => entry.maturity === 'M5' || entry.maturity === 'M6'
+
 const selectedM5Subjects = (statusPath: string, filters: string[]) => {
   if (!existsSync(statusPath)) {
     throw new Error(`Quality status file does not exist: ${repoRelative(statusPath)}`)
@@ -237,7 +239,7 @@ const selectedM5Subjects = (statusPath: string, filters: string[]) => {
   const normalizedFilters = filters.map(normalizeToken)
   const seen = new Set<string>()
   return curricula
-    .filter((entry) => entry.maturity === 'M5')
+    .filter(isM5OrBetter)
     .filter((entry) => typeof entry.subject === 'string')
     .filter((entry) => normalizedFilters.length === 0 || normalizedFilters.includes(normalizeToken(entry.subject ?? '')))
     .map((entry) => entry.subject as string)
@@ -292,7 +294,7 @@ const buildMarkdownSummary = (params: {
   statusPath: string
   packages: AuditPackageSummary[]
   failures: BatchFailure[]
-}) => `# M5 Subject Provenance Audit Summary
+}) => `# M5+ Subject Provenance Audit Summary
 
 Generated at: ${params.generatedAt}
 
@@ -337,8 +339,8 @@ const main = () => {
   const subjects = selectedM5Subjects(options.statusPath, options.subjects)
   if (subjects.length === 0) {
     throw new Error(options.subjects.length === 0
-      ? 'No M5 subjects found in the quality status file.'
-      : `No requested subject is currently M5: ${options.subjects.join(', ')}`)
+      ? 'No M5+ subjects found in the quality status file.'
+      : `No requested subject is currently M5 or M6: ${options.subjects.join(', ')}`)
   }
 
   mkdirSync(options.outputDir, { recursive: true })

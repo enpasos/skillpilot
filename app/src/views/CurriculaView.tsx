@@ -25,7 +25,7 @@ interface ChampionEntry {
   registeredAt?: string
 }
 
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
 
 interface CurriculumSubjectQuality {
   subject: string
@@ -86,7 +86,7 @@ type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
 
 const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5']
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
 
 const maturityClass: Record<MaturityLevel, string> = {
   M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
@@ -95,6 +95,7 @@ const maturityClass: Record<MaturityLevel, string> = {
   M3: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
   M4: 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-violet-300',
   M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
+  M6: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
 }
 
 const maturityCopy = {
@@ -105,14 +106,15 @@ const maturityCopy = {
     atomicGoals: 'atomar',
     warnings: 'Warnungen',
     failures: 'Fehler',
-    legendTitle: 'Was bedeuten M0-M5?',
+    legendTitle: 'Was bedeuten M0-M6?',
     legend: {
       M0: 'Noch kein belastbarer QA-Stand.',
       M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
       M2: 'Source-Ziele sind extrahiert und rückverfolgbar.',
       M3: 'Source-Ziele sind fachlich durch SkillPilot-Ziele abgedeckt.',
       M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
-      M5: 'Schulgeeigneter QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
+      M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
+      M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
     },
   },
   en: {
@@ -122,14 +124,15 @@ const maturityCopy = {
     atomicGoals: 'atomic',
     warnings: 'warnings',
     failures: 'failures',
-    legendTitle: 'What do M0-M5 mean?',
+    legendTitle: 'What do M0-M6 mean?',
     legend: {
       M0: 'No reliable QA baseline yet.',
       M1: 'Sources and processing pipeline are visible.',
       M2: 'Source goals are extracted and traceable.',
       M3: 'Source goals are covered by SkillPilot goals.',
       M4: 'Jurisdiction views and QA scopes are validated.',
-      M5: 'School-ready QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
+      M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
+      M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
     },
   },
 } as const

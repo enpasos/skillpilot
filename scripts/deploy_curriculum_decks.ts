@@ -13,6 +13,8 @@ const TARGET_DIRS = [
 ]
 
 const MATH_DECK_FILES = [
+  'de_gymnasium_math_flashcards_seki_core.de.json',
+  'de_gymnasium_math_flashcards_seki_core.en.json',
   'de_gymnasium_math_flashcards_functions_basics.de.json',
   'de_gymnasium_math_flashcards_functions_basics.en.json',
   'de_gymnasium_math_flashcards_analysis_core.de.json',
@@ -43,10 +45,70 @@ const CHEMISTRY_DECK_FILES = [
   'de_gymnasium_chemistry_flashcards_energy_q4.de.json',
 ]
 
+const BIOLOGY_DECK_FILES = [
+  'de_gymnasium_biology_flashcards_core.de.json',
+  'de_gymnasium_biology_flashcards_core.en.json',
+]
+
+const INFORMATICS_DECK_FILES = [
+  'de_gymnasium_informatics_flashcards_network_oop.de.json',
+  'de_gymnasium_informatics_flashcards_graphs.de.json',
+  'de_gymnasium_informatics_flashcards_databases.de.json',
+  'de_gymnasium_informatics_flashcards_formal_languages.de.json',
+  'de_gymnasium_informatics_flashcards_logic_programming.de.json',
+]
+
+const LATIN_DECK_FILES = [
+  'de_gymnasium_latin_flashcards_vocabulary_word_formation.de.json',
+  'de_gymnasium_latin_flashcards_morphology_core.de.json',
+  'de_gymnasium_latin_flashcards_syntax_constructions.de.json',
+  'de_gymnasium_latin_flashcards_rhetoric_style.de.json',
+  'de_gymnasium_latin_flashcards_culture_philosophy_terms.de.json',
+]
+
+const GERMAN_DECK_FILES = [
+  'de_gymnasium_german_flashcards_grammar_orthography.de.json',
+  'de_gymnasium_german_flashcards_text_argumentation.de.json',
+  'de_gymnasium_german_flashcards_literary_forms.de.json',
+  'de_gymnasium_german_flashcards_literary_periods.de.json',
+  'de_gymnasium_german_flashcards_rhetoric_media_language.de.json',
+]
+
+const HISTORY_DECK_FILES = [
+  'de_gymnasium_history_flashcards_premodern_revolution.de.json',
+  'de_gymnasium_history_flashcards_19th_century.de.json',
+  'de_gymnasium_history_flashcards_democracy_dictatorship.de.json',
+  'de_gymnasium_history_flashcards_cold_war_present.de.json',
+  'de_gymnasium_history_flashcards_memory_culture.de.json',
+]
+
+const POLITICS_ECONOMICS_DECK_FILES = [
+  'de_gymnasium_politics_economics_flashcards_democracy_law.de.json',
+  'de_gymnasium_politics_economics_flashcards_participation_media.de.json',
+  'de_gymnasium_politics_economics_flashcards_market_social_policy.de.json',
+  'de_gymnasium_politics_economics_flashcards_global_security.de.json',
+  'de_gymnasium_politics_economics_flashcards_europe_integration.de.json',
+]
+
+const ECONOMICS_DECK_FILES = [
+  'de_gymnasium_economics_flashcards_market_order_policy.de.json',
+  'de_gymnasium_economics_flashcards_accounting_business_finance.de.json',
+  'de_gymnasium_economics_flashcards_macro_money_policy.de.json',
+  'de_gymnasium_economics_flashcards_international_development.de.json',
+  'de_gymnasium_economics_flashcards_business_law.de.json',
+]
+
 const CURRICULUM_DECK_FILES = [
   ...MATH_DECK_FILES,
   ...PHYSICS_DECK_FILES,
   ...CHEMISTRY_DECK_FILES,
+  ...BIOLOGY_DECK_FILES,
+  ...INFORMATICS_DECK_FILES,
+  ...LATIN_DECK_FILES,
+  ...GERMAN_DECK_FILES,
+  ...HISTORY_DECK_FILES,
+  ...POLITICS_ECONOMICS_DECK_FILES,
+  ...ECONOMICS_DECK_FILES,
 ]
 
 const LEGACY_CURRICULUM_DECK_FILES = [
