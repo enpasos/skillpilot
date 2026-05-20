@@ -486,7 +486,7 @@ Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learne
   - `mastery_ℓ[g] ∈ [0,1]` as in Section 4 (0, 0.5, 1 currently in the UI).
 - **SRS/memorization goals** are an exception:  
   their mastery is **computed from the SRS state** (no cards due today)  
-  and **not** manually set by a tutor or LLM.
+  and **not** manually set by a learning coach or LLM.
 - Optional:
   - history of visited goals, tasks, timestamps,
   - teacher comments / annotations,
@@ -651,7 +651,7 @@ Guiding principle:
 - Does **not** store:
   - names, nicknames, e‑mails, or other PII.
 
-**Language model / Trainer GPT**
+**Language model / learning coach GPT**
 
 - May ask for:
   - a *nickname* to address the learner in the conversation,
@@ -679,9 +679,9 @@ When designing tools (MCP or OpenAPI) on top of this model:
   - `GET /learners/{skillpilotId}/state` → returns unified state (Curriculum + Frontier + Goals + `stateMachine`),
   - `POST /learners/{skillpilotId}/mastery` → updates mastery and returns **new frontier** immediately,
   - `POST /learners/{skillpilotId}/scope` → sets focus (e.g. "Stochastik") and updates planned goals,
-  - `POST /learners/{skillpilotId}/active-goal` → locks the current atomic goal for the tutoring loop.
+  - `POST /learners/{skillpilotId}/active-goal` → locks the current atomic goal for the learning-coach loop.
 
-LLM/trainer prompts should reinforce that:
+LLM/learning-coach prompts should reinforce that:
 
 - Nicknames are for **conversation only**.
 - All persistence and tools operate exclusively on the `skillpilotId`.

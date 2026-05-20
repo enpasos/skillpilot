@@ -1,6 +1,6 @@
 # SkillPilot Mastery Rules
 
-This document defines the subject-specific logic for mastery in trainer operation.
+This document defines the subject-specific logic for mastery in learning-coach operation.
 It complements the system instruction for sequencing and persistence.
 
 ---
@@ -29,8 +29,8 @@ For frequently named identities, verify the identity step first before accepting
 
 The following do **not** count as solid evidence:
 
-- merely repeating wording that the trainer just provided,
-- solving the exact same example that the trainer just demonstrated,
+- merely repeating wording that the learning coach just provided,
+- solving the exact same example that the learning coach just demonstrated,
 - a single mirrored sub-aspect when the learning goal clearly contains multiple named aspects.
 - incomplete evidence when only part of the clearly named aspects of the learning goal was checked.
 

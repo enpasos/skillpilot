@@ -4,13 +4,13 @@ Status: updated for the browser-first ChatGPT startcode/session flow on 2026-05-
 
 ## 1. Core Philosophy: Privacy by Design
 
-SkillPilot separates **identity**, **persistent learning state**, and **AI tutoring context**.
+SkillPilot separates **identity**, **persistent learning state**, and **AI learning coaching context**.
 
 - The **SkillPilot backend** knows learning progress only under a random SkillPilot ID. It stores no names, email addresses, or passwords for learners.
 - The **browser** is the user's login surface. It may hold the active SkillPilot ID locally and can optionally store it encrypted with a user-chosen password.
 - The **AI layer** receives only a short-lived start code and then a temporary chat session token. It does not receive the permanent SkillPilot ID in the normal GPT flow.
 
-This is a material privacy improvement over the old direct-ID AI flow: tutor conversations and tool results can no longer be associated by the LLM with the stable SkillPilot ID. The mapping from temporary chat session token to SkillPilot ID happens only in the SkillPilot backend; the active SkillPilot ID exists only in the browser and backend.
+This is a material privacy improvement over the old direct-ID AI flow: learning-coach conversations and tool results can no longer be associated by the LLM with the stable SkillPilot ID. The mapping from temporary chat session token to SkillPilot ID happens only in the SkillPilot backend; the active SkillPilot ID exists only in the browser and backend.
 
 ## 2. Data Partitioning
 
@@ -57,13 +57,13 @@ Startcodes and chat session tokens should be stored only as hashes. Logs must no
 
 ### C. AI Layer (e.g. ChatGPT Custom GPT)
 
-**Status:** temporary processor for the current tutoring session.
+**Status:** temporary processor for the current learning-coach session.
 
 In the normal GPT flow, the AI layer sees:
 
 - **Start code:** a short-lived, one-time code such as `SP-7KQ9-M2PA`.
 - **Chat session token:** a temporary token returned after redeeming the start code.
-- **Session learner state:** curriculum, frontier, active goal, mastery summaries, and action results needed for the current tutoring session.
+- **Session learner state:** curriculum, frontier, active goal, mastery summaries, and action results needed for the current learning-coach session.
 - **Curriculum content:** definitions of learning goals and relevant task context.
 - **Conversation content:** what the learner types, dictates into the normal text field, or uploads in ChatGPT.
 
@@ -90,7 +90,7 @@ AI session responses intentionally return `skillpilotId: null` where compatibili
 4. Learner selects a curriculum. The backend stores that selection for the SkillPilot ID.
 5. Learner opens either the browser cockpit or SkillPilot GPT.
 
-### Scenario: ChatGPT Tutoring Session
+### Scenario: ChatGPT Learning-Coach Session
 
 1. Browser already has the active SkillPilot ID.
 2. Browser calls `POST /api/ui/learners/{skillpilotId}/chat-start`.
@@ -101,7 +101,7 @@ AI session responses intentionally return `skillpilotId: null` where compatibili
 7. GPT uses only session routes such as `GET /api/ai/{lang}/sessions/{chatSessionToken}/state` and `POST /api/ai/{lang}/sessions/{chatSessionToken}/mastery`.
 8. Backend resolves `chatSessionToken -> skillpilotId` internally and applies existing learner-state logic.
 
-Privacy consequence: the LLM can work with the current tutoring state but cannot attach the private tutor data to the learner's permanent SkillPilot ID.
+Privacy consequence: the LLM can work with the current learning-coach state but cannot attach the private learning-coach data to the learner's permanent SkillPilot ID.
 
 ### Scenario: Progress Review in the Browser Cockpit
 
@@ -130,7 +130,7 @@ Because the backend does not know real-world identities, the user or institution
 
 ## 5. Residual Risks and Rules
 
-- Learners can still type personal information into ChatGPT. SkillPilot should continue to give clear usage guidance: do not enter sensitive private data into tutor chats.
+- Learners can still type personal information into ChatGPT. SkillPilot should continue to give clear usage guidance: do not enter sensitive private data into learning-coach chats.
 - The AI provider processes the actual conversation according to its own operating and privacy terms.
 - Session tokens are temporary but still bearer tokens. They must be treated as secrets, stored hashed server-side, and avoided in logs.
 - Legacy AI routes with `skillpilotId` in the path may exist for compatibility/debugging, but they must not be advertised in the Custom GPT schema or normal user documentation.

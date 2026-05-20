@@ -1,8 +1,8 @@
 ### **SkillPilot KI Agent In Ausbildung Comic**
 
 **Panel 1: Die richtige Tonart (Chat Persona)**
-- **Bild:** Der kleine schwebende SkillPilot-Roboter sitzt auf einer Schulbank. Ein menschlicher Trainer zeigt ihm zwei Sprechblasen. Eine mit technischem Binärcode "010100" wirft der Roboter in einen Papierkorb. Die andere mit "Hallo! Wie kann ich dir helfen?" hält er stolz hoch.
-- **Text:** *"Lektion 1: Die Sprache der Lernenden. Ein guter Trainer rattert keine Daten herunter, sondern motiviert, hört zu und erklärt geduldig auf Augenhöhe."*
+- **Bild:** Der kleine schwebende SkillPilot-Roboter sitzt auf einer Schulbank. Ein menschlicher Lerncoach zeigt ihm zwei Sprechblasen. Eine mit technischem Binärcode "010100" wirft der Roboter in einen Papierkorb. Die andere mit "Hallo! Wie kann ich dir helfen?" hält er stolz hoch.
+- **Text:** *"Lektion 1: Die Sprache der Lernenden. Ein guter Lerncoach rattert keine Daten herunter, sondern motiviert, hört zu und erklärt geduldig auf Augenhöhe."*
 
 **Panel 2: Der Draht zur Basis (Backend)**
 - **Bild:** Der Roboter funkt "Habe mit SkillPilot.com gesprochen!" an einen großen Server-Turm ("Mission Control"). Der Turm sendet ein leuchtendes Paket zurück, beschriftet mit "Lernstand" und "Frontier". Der Roboter nickt verstehend.

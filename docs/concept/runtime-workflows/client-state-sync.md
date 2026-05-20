@@ -1,6 +1,6 @@
 # Client-State Sync (SRS and Verified Recall Progress)
 
-This document defines the backend contract for syncing **flashcard progress** to the backend. The browser uses it for local SRS backups; Trainer/GPT verification also writes its per-card `verifiedRecall` results into the same node state.
+This document defines the backend contract for syncing **flashcard progress** to the backend. The browser uses it for local SRS backups; learning-coach/GPT verification also writes its per-card `verifiedRecall` results into the same node state.
 
 ## Endpoint
 
@@ -9,7 +9,7 @@ GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
-Browser and trainer tools can use the UI-facing endpoints above. GPT hard-recall tools use session-based AI endpoints; the GPT never receives the permanent SkillPilot ID in the normal flow:
+Browser and learning-coach tools can use the UI-facing endpoints above. GPT hard-recall tools use session-based AI endpoints; the GPT never receives the permanent SkillPilot ID in the normal flow:
 
 ```
 POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/start
@@ -20,7 +20,7 @@ POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/result
 `start` returns the next prompt but not the answer. It may receive `goalId` or use the active goal; `retest: true` can request a fresh card even when all cards are already verified. `answer` returns the expected answer only after the learner has submitted their response. `result` stores `passed`/`failed`, updates SRS scheduling, and returns the next prompt status.
 
 ## Purpose
-- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after trainer/GPT hard-recall decisions.
+- Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after learning-coach/GPT hard-recall decisions.
 - Keep the backend **PII-free**. Browser/UI routes use the pseudonymous `skillpilotId`; GPT routes use only a temporary `chatSessionToken`, which the backend resolves internally.
 - Allow later recovery or cross-device continuity via **export/import**.
 
@@ -71,7 +71,7 @@ Notes:
 - `nodeId` is the memorization node (learning goal) ID.
 - The `srsState` object mirrors the **per-node** card-state entry and is stored as a JSON blob by the backend.
 - Fields inside each card entry follow the SRS model (`interval`, `ef`/`easeFactor`, `repetition`/`repetitions`, `nextReview`, optional `lastReviewed`) plus optional `verifiedRecall` hard-test metadata.
-- The verified recall lane is stored inside the card entry to keep the persistence shape backward-compatible. The backend may still inspect this lane for mastery calculation and Trainer/GPT verification tools.
+- The verified recall lane is stored inside the card entry to keep the persistence shape backward-compatible. The backend may still inspect this lane for mastery calculation and learning-coach/GPT verification tools.
 
 ## Read (GET)
 
@@ -117,6 +117,6 @@ Notes:
 
 ## Client Behavior
 - Auto-sync after every **20** reviewed cards.
-- Trainer/GPT verification writes after each hard-test decision.
+- learning-coach/GPT verification writes after each hard-test decision.
 - Manual **Save** button available in the UI where exposed.
 - On sync failure, UI indicates an error but continues to work locally.

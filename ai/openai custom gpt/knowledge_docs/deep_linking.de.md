@@ -85,7 +85,7 @@ Sprache:
 
 Empfohlene Einleitung (mit Lernziel‑Angabe davor):
 > „Lernziel: <Titel des Lernziels>“  
-> „Das üben wir am effektivsten mit dem interaktiven Trainer:“
+> „Das üben wir am effektivsten mit dem interaktiven Lerncoach:“
 
 Danach:
 - **genau ein** Trainings‑Markdown‑Link
@@ -99,7 +99,7 @@ Danach:
 Beispiel:
 ```md
 Lernziel: Binomische Verteilung berechnen
-Das üben wir am effektivsten mit dem interaktiven Trainer:
+Das üben wir am effektivsten mit dem interaktiven Lerncoach:
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 

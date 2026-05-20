@@ -82,7 +82,7 @@ Authoring note:
 1. **SM-2 scheduling:** Reviews follow the SuperMemo-2 algorithm.
 2. **Stateful per card:** Each card stores its current interval, repetition count, easiness factor, and next review date.
 3. **Quality-driven:** User ratings map to quality scores and directly update the SM-2 state.
-4. **Verified recall gate:** SRS practice is not by itself a mastery proof. A memorization node is complete only after every required card has been answered correctly in a Trainer/GPT-led hard recall test.
+4. **Verified recall gate:** SRS practice is not by itself a mastery proof. A memorization node is complete only after every required card has been answered correctly in a learning-coach/GPT-led hard recall test.
 5. **Learner-triggered testing:** The learner can start this hard recall test at any time from the active memorization goal, not only when the SRS queue is empty.
 
 ### State model
@@ -122,21 +122,21 @@ Rules applied on each review:
 
 This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
 
-### Trainer/GPT-led hard recall
+### learning-coach/GPT-led hard recall
 
-The normal flashcard drill remains a Cockpit practice surface. The hard recall check is conducted by the Trainer/GPT because it needs a controlled dialog: prompt first, learner answer without card help, then answer lookup and persisted pass/fail decision.
+The normal flashcard drill remains a Cockpit practice surface. The hard recall check is conducted by the learning-coach/GPT because it needs a controlled dialog: prompt first, learner answer without card help, then answer lookup and persisted pass/fail decision.
 
 When a memorization goal is active, the runtime should expose two learner actions:
 - **Practice:** open the Cockpit SRS drill for normal spaced repetition.
-- **Verify:** hand over to the Trainer/GPT for hard recall of the current active memory goal.
+- **Verify:** hand over to the learning-coach/GPT for hard recall of the current active memory goal.
 
 Runtime behavior:
 - Prefer cards that are not yet verified.
 - If all cards are already verified, allow a retest over the deck; a failed retest reopens that card.
-- The Trainer/GPT first retrieves only the card prompt.
+- The learning-coach/GPT first retrieves only the card prompt.
 - The learner answers without help, preferably in writing when the check is meant to be strict.
-- Only after the learner has submitted an answer does the Trainer/GPT retrieve the expected answer.
-- The Trainer/GPT evaluates the answer and records `passed` or `failed`.
+- Only after the learner has submitted an answer does the learning-coach/GPT retrieve the expected answer.
+- The learning-coach/GPT evaluates the answer and records `passed` or `failed`.
 - Passed cards count as verified immediately and are scheduled as a strong successful retrieval in SRS.
 - Failed cards remain unverified and re-enter SRS practice as due.
 
@@ -229,7 +229,7 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 
 ### Exam Mode (AI exam supervisor)
 
-In Exam Mode, the AI acts as a strict but fair exam supervisor. The tutor role begins only after grading.
+In Exam Mode, the AI acts as a strict but fair exam supervisor. The learning coach role begins only after grading.
 
 **Persona:**
 - Neutral, precise, no hints during solving.
@@ -246,7 +246,7 @@ In Exam Mode, the AI acts as a strict but fair exam supervisor. The tutor role b
    - If the user gives up, treat it as a submission and proceed to grading.
 3. **Grade:** Iterate through `scoring.steps`, assign points.
 4. **Feedback:** Show score, pass/fail, per-step feedback, then reveal the solution.
-   Then switch back to Trainer mode and go through the findings.
+   Then switch back to learning-coach mode and go through the findings.
 
 **Prompt contract (summary):**
 - Display the exam header, then `taskContent` verbatim, then the fixed submission instruction (no extra text beyond those).

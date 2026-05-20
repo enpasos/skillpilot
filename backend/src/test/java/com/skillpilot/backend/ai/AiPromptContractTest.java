@@ -76,12 +76,12 @@ class AiPromptContractTest {
                 "creative strategies",
                 "wrong or unjustified steps");
         assertContainsFragments(
-                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.de.md"),
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "lerncoach.de.md"),
                 "Ungewöhnliche Lösungswege",
                 "Korrigiere nur den tatsächlich falschen Schritt",
                 "lehne ihn klar ab");
         assertContainsFragments(
-                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "trainer.en.md"),
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "learning_coach.en.md"),
                 "Unusual solution paths",
                 "Correct only the actually wrong step",
                 "reject it clearly");

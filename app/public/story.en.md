@@ -2,8 +2,8 @@
 
 **Status:** May 19, 2026
 
-> 💡 **Tip:** If something does not work in the ChatGPT app, use the **web browser**.  
-> 🔑 **Important:** Your **SkillPilot ID** is your key to your learning progress. In the normal start flow, ChatGPT does not see it; SkillPilot starts the tutor with a short-lived start code.
+> 💡 **Tip:** Voice mode in the ChatGPT app currently does not work with SkillPilot: after you use it once, the ChatGPT app can no longer talk to the backend. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Until then, use the **web browser**.
+> 🔑 **Important:** Your **SkillPilot ID** is your key to your learning progress. ChatGPT never sees it: SkillPilot starts the learning coach with a start code that is valid for 5 minutes. After redeeming it, ChatGPT receives a session ID from the backend that is valid for 24 hours.
 
 ---
 
@@ -34,7 +34,7 @@
 | --- |
 | *SkillPilot starts in the browser: create a SkillPilot ID, load a saved login, or enter an existing ID.* |
 
-| <img src="../comic02.en.png" alt="Chat with the AI tutor" width="650" /> |
+| <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
 | --- |
 
 ---

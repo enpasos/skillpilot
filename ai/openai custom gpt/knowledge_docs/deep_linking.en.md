@@ -84,7 +84,7 @@ Language:
 
 Recommended introduction (with learning goal indicated beforehand):
 > "Learning goal: <Title of the learning goal>"  
-> "We practice this most effectively with the interactive trainer:"
+> "We practice this most effectively with the interactive learning coach:"
 
 Afterwards:
 - **Exactly one** training markdown link
@@ -98,7 +98,7 @@ Afterwards:
 Example:
 ```md
 Learning goal: Calculate binomial distribution
-We practice this most effectively with the interactive trainer:
+We practice this most effectively with the interactive learning coach:
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 

@@ -1,31 +1,31 @@
-# Trainer View Stability Analysis Request
+# Teacher View Stability Analysis Request
 
 ## Purpose
 
-This document is an external analysis request for the current instability of the SkillPilot trainer UI.
+This document is an external analysis request for the current instability of the SkillPilot teacher UI.
 
-The goal is not another superficial patch, but a clean technical diagnosis of why the trainer experience is currently unstable and sluggish, plus a concrete stabilization plan.
+The goal is not another superficial patch, but a clean technical diagnosis of why the teacher experience is currently unstable and sluggish, plus a concrete stabilization plan.
 
 ## Problem Summary
 
-The trainer UI is currently unstable enough to be considered a release blocker.
+The teacher UI is currently unstable enough to be considered a release blocker.
 
 Observed symptoms:
 
-- The trainer view intermittently jumps between:
+- The teacher view intermittently jumps between:
   - the class detail view, and
-  - the trainer dashboard / empty class overview.
+  - the teacher dashboard / empty class overview.
 - The middle learning-context tree sometimes disappears completely although a class is selected.
 - The structure switch (`Inhalte` / `Kompetenzen`) has shown oscillating behavior and inconsistent state.
 - The UI feels sluggish and unstable overall.
 - The class creation flow has shown context mismatch behavior:
-  - after choosing a high-level curriculum such as `Gymnasium (DE)`, the trainer still saw the full global landscape list instead of the subject list inside that curriculum.
+  - after choosing a high-level curriculum such as `Gymnasium (DE)`, the teacher still saw the full global landscape list instead of the subject list inside that curriculum.
 - Historical state stored in browser local storage has repeatedly interfered with current behavior.
 - PWA/service-worker caching may amplify the perception because outdated bundles remain active after fixes.
 
 In short:
 
-- the trainer UI currently has state management problems,
+- the teacher UI currently has state management problems,
 - context resolution problems,
 - and likely redundant or conflicting synchronization paths.
 
@@ -35,10 +35,10 @@ Severity: High
 
 Why this is critical:
 
-- The trainer cannot reliably trust what is shown on screen.
+- The teacher cannot reliably trust what is shown on screen.
 - The screen state can change unexpectedly.
 - Core workflows such as opening a class, seeing the tree, switching student, or switching structure become unreliable.
-- This undermines the usability of the trainer cockpit as a professional tool.
+- This undermines the usability of the teacher cockpit as a professional tool.
 
 ## Main Suspected Problem Class
 
@@ -50,12 +50,12 @@ The more likely class of issue is:
 - remount/hydration effects,
 - URL synchronization side effects,
 - localStorage restoration races,
-- trainer-context migration logic,
+- teacher-context migration logic,
 - and PWA stale-bundle behavior.
 
 The likely core architectural smell is:
 
-> the same trainer context is influenced by too many channels at once.
+> the same teacher context is influenced by too many channels at once.
 
 Relevant channels include:
 
@@ -63,7 +63,7 @@ Relevant channels include:
 - URL search params,
 - route params,
 - localStorage,
-- migrated stored trainer class sessions,
+- migrated stored teacher class sessions,
 - active landscape selection in app core,
 - active goal selection,
 - active student selection,
@@ -88,46 +88,46 @@ Secondary context:
 
 ## Recent Changes That May Be Relevant
 
-The trainer area has recently undergone several changes, including:
+The teacher area has recently undergone several changes, including:
 
 - migration from legacy/compatibility curriculum IDs toward canonical Gymnasium subject landscapes,
-- class-session migration logic based on old saved trainer state,
+- class-session migration logic based on old saved teacher state,
 - root-goal selection fallback logic,
-- trainer learner selection rewiring,
+- teacher learner selection rewiring,
 - class setup landscape scoping,
 - local removal of the structure-mode toggle from learner view,
 - localization and notification cleanup,
 - partial movement from client-side filtering toward server-side scoped learner graph loading,
 - placement-based structural projections and competency-axis projections.
 
-This means the trainer view is currently sitting on top of a moving architecture.
+This means the teacher view is currently sitting on top of a moving architecture.
 
 ## Reproduction Examples
 
 Typical reproduction paths that have shown unstable behavior:
 
-1. Open trainer role.
+1. Open teacher role.
 2. Open an existing class such as `Mathe LK`.
 3. Observe:
    - no tree appears in the middle panel, or
-   - the UI jumps back to the trainer dashboard.
+   - the UI jumps back to the teacher dashboard.
 
 Other repros:
 
-1. Open trainer role.
+1. Open teacher role.
 2. Switch between `Alle` and a specific student.
 3. Observe inconsistent content pane / tree behavior.
 
 Another repro:
 
-1. Open trainer role.
+1. Open teacher role.
 2. Use class setup.
 3. Expect subject choices inside `Gymnasium (DE)`.
 4. Observe global landscape list instead.
 
 Another repro:
 
-1. Open trainer class with math.
+1. Open teacher class with math.
 2. Toggle `Inhalte` / `Kompetenzen`.
 3. Observe oscillation, wrong active state, or empty view.
 
@@ -135,15 +135,15 @@ Another repro:
 
 Several local fixes have already been attempted, including:
 
-- mapping legacy trainer landscape IDs to canonical IDs,
-- migrating stored trainer class sessions,
-- reconstructing missing trainer `landscapeId` values from class names,
-- moving trainer classes/active class restoration into initial state to reduce visible dashboard/detail flicker,
+- mapping legacy teacher landscape IDs to canonical IDs,
+- migrating stored teacher class sessions,
+- reconstructing missing teacher `landscapeId` values from class names,
+- moving teacher classes/active class restoration into initial state to reduce visible dashboard/detail flicker,
 - removing the learner-facing structure toggle,
-- removing global URL synchronization of structure mode and keeping it local to trainer view,
+- removing global URL synchronization of structure mode and keeping it local to teacher view,
 - narrowing class setup landscape choices to the current curriculum context.
 
-These changes improved individual symptoms, but the trainer area is still perceived as too unstable.
+These changes improved individual symptoms, but the teacher area is still perceived as too unstable.
 
 ## What We Need From The External Expert
 
@@ -153,7 +153,7 @@ We need a focused technical analysis with the following outputs.
 
 Please identify the real causes behind:
 
-- trainer view/dashboard jumping,
+- teacher view/dashboard jumping,
 - missing middle tree,
 - structure-mode instability,
 - sluggishness,
@@ -165,7 +165,7 @@ Please do not stop at symptoms. We need the actual state-flow failure modes.
 
 Please answer:
 
-- Which component or hook should be the single source of truth for trainer context?
+- Which component or hook should be the single source of truth for teacher context?
 - Which state should live:
   - in route params,
   - in search params,
@@ -180,7 +180,7 @@ We need a crisp ownership model, not a best-effort sync mesh.
 
 Please inspect whether the instability is caused by:
 
-- trainer remounts,
+- teacher remounts,
 - localStorage hydration after initial render,
 - route transitions,
 - context updates triggering selection resets,
@@ -189,7 +189,7 @@ Please inspect whether the instability is caused by:
 
 ### 4. Simplification Recommendations
 
-Please propose the minimal architecture that makes the trainer cockpit stable.
+Please propose the minimal architecture that makes the teacher cockpit stable.
 
 We are explicitly open to removing behavior if it reduces instability.
 
@@ -197,7 +197,7 @@ We are explicitly open to removing behavior if it reduces instability.
 
 Please assess:
 
-- whether the trainer tree does too much work on mount,
+- whether the teacher tree does too much work on mount,
 - whether tree projection/filtering is still too expensive,
 - whether repeated projection or recomputation causes UI lag,
 - and whether large graph state is being recalculated unnecessarily.
@@ -221,7 +221,7 @@ Please do **not** spend time primarily on:
 
 Those are not the blocker here.
 
-The blocker is trainer UI stability.
+The blocker is teacher UI stability.
 
 ## Desired Deliverables
 
@@ -242,12 +242,12 @@ Please deliver:
 
 The analysis should explicitly answer these questions:
 
-- Why can the trainer land in dashboard state although a class is selected?
+- Why can the teacher land in dashboard state although a class is selected?
 - Why can a selected class still end up with no visible tree?
-- Which side effect can overwrite trainer context after the user has already made a selection?
-- Which parts of trainer context are currently duplicated?
+- Which side effect can overwrite teacher context after the user has already made a selection?
+- Which parts of teacher context are currently duplicated?
 - Which sync path should be deleted instead of repaired?
-- Is the structure-mode toggle fundamentally worth keeping in trainer view in its current form?
+- Is the structure-mode toggle fundamentally worth keeping in teacher view in its current form?
 - How much of the current sluggishness is due to rendering cost vs. state churn?
 
 ## Practical Expectation
@@ -256,7 +256,7 @@ We are not looking for “one more patch”.
 
 We want an expert to tell us:
 
-- what the stable trainer architecture should be,
+- what the stable teacher architecture should be,
 - what must be removed,
 - what should remain,
-- and in which order the trainer cockpit should be simplified and stabilized.
+- and in which order the teacher cockpit should be simplified and stabilized.

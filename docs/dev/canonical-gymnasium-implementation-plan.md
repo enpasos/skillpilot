@@ -474,7 +474,7 @@ WP4 result:
   - persistence stays lightweight: no bulk migration of stored learner state is required for the pilot
 - practical effect:
   - canonical pilot views no longer leak mapped legacy IDs into planned goals or active-goal state
-  - `setMastery` can complete successfully even if the stored active goal is still a legacy ID but the visible tutoring loop is canonical
+  - `setMastery` can complete successfully even if the stored active goal is still a legacy ID but the visible learning-coach loop is canonical
   - UI/GPT flows keep one coherent learner-state contract
 - targeted verification now covers:
   - projected planned-goal IDs in canonical view

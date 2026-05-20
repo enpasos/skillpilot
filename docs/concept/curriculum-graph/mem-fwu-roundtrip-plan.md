@@ -180,4 +180,4 @@ Findings that concern modeling, interfaces, validation, or missing relations sho
 
 The intended stance is collaborative:
 
-> SkillPilot is not a counter-model to MEM. It is a concrete test bench for checking which information a MEM-compatible structure must carry so that curriculum-aware AI tutoring can derive traceable next learning steps.
+> SkillPilot is not a counter-model to MEM. It is a concrete test bench for checking which information a MEM-compatible structure must carry so that curriculum-aware AI learning coaching can derive traceable next learning steps.
