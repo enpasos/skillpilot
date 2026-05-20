@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { MarkdownDocumentH1 } from '../components/MarkdownDocumentHeading'
 import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
 
 type LoadState = 'loading' | 'ready' | 'error'
@@ -101,6 +102,7 @@ export const StoryView: React.FC = () => {
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
+                                h1: MarkdownDocumentH1,
                                 img: ({ title, ...props }) => {
                                     const widthMatch = typeof title === 'string'
                                         ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)

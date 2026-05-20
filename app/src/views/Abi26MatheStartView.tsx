@@ -287,7 +287,7 @@ export const Abi26MatheStartView: React.FC = () => {
               <div>
                 <h2 className="text-sm font-bold text-slate-800 dark:text-slate-100">SkillPilot Chat</h2>
                 <p className="mt-1 text-sm leading-relaxed text-text-secondary">
-                  Der KI-Trainer in ChatGPT: Fragen stellen, Rechenwege erklären lassen oder ein Foto deiner Lösung hochladen.
+                  Der SkillPilot Lerncoach in ChatGPT: Fragen stellen, Rechenwege erklären lassen oder ein Foto deiner Lösung hochladen.
                 </p>
               </div>
             </div>

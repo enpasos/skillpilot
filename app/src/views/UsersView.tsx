@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
+import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { Users, ArrowLeft } from 'lucide-react'
@@ -346,17 +347,16 @@ export const UsersView: React.FC = () => {
       </div>
 
       <div className="max-w-5xl mx-auto p-6 space-y-8 pt-20">
-        <header className="text-center space-y-3 pt-10 md:pt-0">
-          <div className="inline-flex items-center justify-center p-4 rounded-full bg-sky-100/50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 mb-4 animate-in zoom-in duration-500">
-            <Users size={48} strokeWidth={1.5} />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-            {pageT.title}
-          </h1>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {pageT.subtitle}
-          </p>
-        </header>
+        <PublicPageHeader
+          className="pt-10 md:pt-0"
+          title={pageT.title}
+          subtitle={pageT.subtitle}
+          icon={(
+            <span className="inline-flex items-center justify-center rounded-full bg-sky-100/50 p-4 text-sky-600 dark:bg-sky-900/30 dark:text-sky-400">
+              <Users size={40} strokeWidth={1.5} />
+            </span>
+          )}
+        />
 
         {/* Filter Controls */}
         <div className="flex justify-center">

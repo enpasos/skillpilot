@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { CurriculumDropdown, type LandscapeSummary } from '../components/CurriculumDropdown'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
+import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
@@ -650,14 +651,11 @@ export const CurriculaView: React.FC = () => {
       </div>
 
       <div className="max-w-5xl mx-auto p-6 space-y-10">
-        <header className="text-center space-y-4 pt-10 md:pt-0">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-            {t.startPage.cards.curricula?.title || 'Curricula'}
-          </h1>
-          <p className="text-text-secondary max-w-2xl mx-auto">
-            {t.curriculaPage.subtitle}
-          </p>
-        </header>
+        <PublicPageHeader
+          className="pt-10 md:pt-0"
+          title={t.startPage.cards.curricula?.title || 'Curricula'}
+          subtitle={t.curriculaPage.subtitle}
+        />
 
         <section className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-md rounded-3xl border border-border-color p-6 md:p-8 shadow-xl">
           <div className="flex flex-col gap-6">

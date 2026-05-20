@@ -653,7 +653,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
           {confirmation.message}
         </ConfirmModal>
         <header className="max-w-4xl mx-auto mb-12 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-sky-600 dark:text-sky-400">{t.dashboard}</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-700 dark:text-slate-200 sm:text-4xl">{t.dashboard}</h1>
           <div className="flex gap-3">
             <button onClick={() => fileInputRef.current?.click()} className="border border-border-color hover:bg-gray-200 dark:hover:bg-slate-800 px-4 py-2 rounded-lg text-text-secondary transition-colors">{t.import}</button>
             <input type="file" ref={fileInputRef} onChange={handleImportClass} hidden accept=".json" />

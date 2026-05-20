@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { MarkdownDocumentH1 } from '../components/MarkdownDocumentHeading'
 import { getMarkdownDocumentViewCopy } from '../utils/markdownDocumentViewCopy'
 
 type LoadState = 'loading' | 'ready' | 'error'
@@ -100,6 +101,7 @@ export const WhitepaperView: React.FC = () => {
           <div className="prose dark:prose-invert max-w-none text-text-primary">
             <ReactMarkdown
               components={{
+                h1: MarkdownDocumentH1,
                 img: ({ title, ...props }) => {
                   const widthMatch = typeof title === 'string'
                     ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)

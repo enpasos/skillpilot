@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { LanguageToggle } from '../components/LanguageToggle'
+import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useLanguage } from '../contexts/LanguageContext'
 import { Trophy, ArrowLeft } from 'lucide-react'
 
@@ -118,17 +119,15 @@ export const SuccessView: React.FC = () => {
             </div>
 
             <div className="max-w-5xl mx-auto p-6 space-y-8 pt-20">
-                <header className="text-center space-y-3">
-                    <div className="inline-flex items-center justify-center p-4 rounded-full bg-amber-100/50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 mb-4 animate-in zoom-in duration-500">
-                        <Trophy size={48} strokeWidth={1.5} />
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-700 dark:text-slate-200">
-                        Learning Successes
-                    </h1>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
-                        Cumulative number of mastered learning goals.
-                    </p>
-                </header>
+                <PublicPageHeader
+                    title="Learning Successes"
+                    subtitle="Cumulative number of mastered learning goals."
+                    icon={(
+                        <span className="inline-flex items-center justify-center rounded-full bg-amber-100/50 p-4 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+                            <Trophy size={40} strokeWidth={1.5} />
+                        </span>
+                    )}
+                />
 
                 <section className="text-center py-6">
                     <div className="text-6xl font-black tracking-tighter">
