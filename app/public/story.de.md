@@ -12,7 +12,7 @@
 1. Öffne `https://skillpilot.com` (am besten im Browser).
 2. Klicke **Einloggen oder ID erstellen**.
 3. Erstelle eine neue SkillPilot-ID, lade einen gespeicherten Login oder gib deine vorhandene ID ein.
-4. Wähle dein Curriculum und starte **SkillPilot GPT** oder öffne dein **Cockpit**.
+4. Wähle dein Curriculum und starte **SkillPilot Lerncoach** oder öffne dein **Cockpit**.
 5. Lernen -> Ziele werden **gemeistert** -> im Cockpit Fortschritt sehen.
 
 ---
@@ -30,7 +30,7 @@
 
 ## 2) Einloggen und Curriculum wählen
 
-| <img src="../screenshot_02.de.png" alt="SkillPilot GPT Startscreen" width="700" /> |
+| <img src="../screenshot_02.de.png" alt="SkillPilot Lerncoach Startscreen" width="700" /> |
 | --- |
 | *SkillPilot startet im Browser: SkillPilot-ID erstellen, gespeicherten Login laden oder vorhandene ID eingeben.* |
 
@@ -39,11 +39,11 @@
 
 ---
 
-## 3) SkillPilot GPT mit Startcode öffnen
+## 3) SkillPilot Lerncoach mit Startcode öffnen
 
-| <img src="../screenshot_03.de.png" alt="SkillPilot GPT startet mit temporaerem Startcode" width="700" /> |
+| <img src="../screenshot_03.de.png" alt="SkillPilot Lerncoach startet mit temporaerem Startcode" width="700" /> |
 | --- |
-| *Wenn du SkillPilot GPT startest, erzeugt der Browser einen kurzlebigen Startcode. Die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
+| *Wenn du den SkillPilot Lerncoach startest, erzeugt der Browser einen kurzlebigen Startcode. Die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
 
 **Merke:** Ohne ID kannst du deinen Fortschritt später nicht wieder öffnen.
 

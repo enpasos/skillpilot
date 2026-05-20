@@ -12,7 +12,7 @@
 1. Open `https://skillpilot.com` (best in the browser).
 2. Click **Log in or create ID**.
 3. Create a new SkillPilot ID, load a saved login, or enter your existing ID.
-4. Choose your curriculum and start **SkillPilot GPT** or open your **Cockpit**.
+4. Choose your curriculum and start **SkillPilot Learning Coach** or open your **Cockpit**.
 5. Learn -> goals are **mastered** -> see progress in the cockpit.
 
 ---
@@ -30,7 +30,7 @@
 
 ## 2) Log in and choose a curriculum
 
-| <img src="../screenshot_02.en.png" alt="SkillPilot GPT start screen" width="700" /> |
+| <img src="../screenshot_02.en.png" alt="SkillPilot Learning Coach start screen" width="700" /> |
 | --- |
 | *SkillPilot starts in the browser: create a SkillPilot ID, load a saved login, or enter an existing ID.* |
 
@@ -39,11 +39,11 @@
 
 ---
 
-## 3) Open SkillPilot GPT with a start code
+## 3) Open SkillPilot Learning Coach with a start code
 
-| <img src="../screenshot_03.en.png" alt="SkillPilot GPT starts with a temporary start code" width="700" /> |
+| <img src="../screenshot_03.en.png" alt="SkillPilot Learning Coach starts with a temporary start code" width="700" /> |
 | --- |
-| *When you start SkillPilot GPT, the browser creates a short-lived start code. The permanent SkillPilot ID stays in the browser and backend.* |
+| *When you start the SkillPilot Learning Coach, the browser creates a short-lived start code. The permanent SkillPilot ID stays in the browser and backend.* |
 
 **Remember:** Without the ID you cannot reopen your progress later.
 

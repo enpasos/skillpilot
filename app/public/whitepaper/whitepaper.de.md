@@ -54,7 +54,7 @@ Stand **Dezember 2025** sind KIs damit fachlich und sprachlich vielen Themen gew
 
 Um die für **SkillPilot** benötigte algorithmische **Präzision** bei der Navigation auf den Lernzielen zu sichern, kommt uns ein weiterer Trend zugute: Die Kopplung von Sprach-KIs an klassische Software. Es etablieren sich Standards, die es KIs wie ChatGPT ermöglichen, gezielt Schnittstellen (APIs) klassischer Programme aufzurufen.
 
-Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht als hybride Anwendung. Eine klassische, exakte Software übernimmt im Hintergrund die präzise „Buchführung“ und Navigation der Skill-Ziele. Führende Sprach-KIs werden so instruiert (als SkillPilot GPT), dass sie als einfühlsame Lerncoaches mit den Lernenden sprechen, für den Lernfortschritt aber die exakte Logik der Software im Hintergrund nutzen.
+Daraus ergibt sich der Ansatz für **SkillPilot** fast von selbst: Es entsteht als hybride Anwendung. Eine klassische, exakte Software übernimmt im Hintergrund die präzise „Buchführung“ und Navigation der Skill-Ziele. Führende Sprach-KIs werden so instruiert (als SkillPilot Lerncoach), dass sie als einfühlsame Lerncoaches mit den Lernenden sprechen, für den Lernfortschritt aber die exakte Logik der Software im Hintergrund nutzen.
 
 ---
 
@@ -115,7 +115,7 @@ Die **Frontier ist keine KI-Empfehlung**, sondern die mathematisch berechnete Me
 
 ### 3.2 Der Interaktions-Layer: Der KI-Lerncoach
 
-Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **KI-Lerncoach** (SkillPilot GPT). Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
+Der Skill-Graph liefert die Route, doch Lernende interagieren nicht mit Datensätzen, sondern brauchen einen Reiseleiter. Diese Rolle übernimmt der **SkillPilot Lerncoach** als KI-Lerncoach. Er dient als intuitive Schnittstelle, die die abstrakten Instruktionen des Graphen in natürliche, motivierende Sprache übersetzt.
 
 Der Lerncoach ist dabei keine „Black Box“, sondern agiert strikt auf Basis der Backend-Logik: Er empfängt vom Backend den aktiven Scope, die Frontier, das nächste Ziel und die erlaubten Übergänge, verpackt diese aber in einen didaktisch sinnvollen Dialog. So wird aus der „exakten Buchhaltung“ ein persönliches Lernerlebnis.
 
@@ -200,7 +200,7 @@ Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der L
 
 #### Session-Abschirmung gegenüber dem KI-Frontend
 
-Beim Start von **SkillPilot GPT** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der Browser fordert beim SkillPilot-Backend einen kurzlebigen, einmalig nutzbaren **Startcode** an. Nach dem Einlösen arbeitet der Lerncoach nur noch mit einem temporären **Chat-Session-Token**.
+Beim Start des **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der Browser fordert beim SkillPilot-Backend einen kurzlebigen, einmalig nutzbaren **Startcode** an. Nach dem Einlösen arbeitet der Lerncoach nur noch mit einem temporären **Chat-Session-Token**.
 
 Die Zuordnung `chatSessionToken -> skillpilotId` passiert ausschließlich im SkillPilot-Backend; die aktive SkillPilot-ID liegt nur im Browser und im Backend. Dadurch kann das KI-Frontend Lerncoach-Dialoge und Tool-Ergebnisse nicht mehr der dauerhaften SkillPilot-ID zuordnen. Es erhält weiterhin die didaktisch notwendigen Zustandsdaten der aktuellen Session, aber nicht den stabilen Schlüssel des Lernenden.
 

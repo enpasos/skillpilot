@@ -1,4 +1,4 @@
-# SkillPilot GPT Setup Guide
+# SkillPilot Lerncoach Setup Guide
 
 This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot Lerncoach**.
 
@@ -13,7 +13,7 @@ The goal: a GPT that starts from a browser-generated SkillPilot start code, rede
 
 ---
 
-## 2. Creating the SkillPilot Lerncoach GPT
+## 2. Creating the SkillPilot Lerncoach in the GPT builder
 
 Open **Create → New GPT → Konfigurieren** and fill out the fields as follows.
 
@@ -21,7 +21,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
 - **Name**
   ```text
-  SkillPilot GPT
+  SkillPilot Lerncoach
   ```
 
   - **Beschreibung**
@@ -92,7 +92,7 @@ In the **Aktionen** section:
 
 -----
 
-## 6. How the GPT and SkillPilot API work together
+## 6. How the SkillPilot Lerncoach and SkillPilot API work together
 
 End-to-end flow for a typical learner session:
 

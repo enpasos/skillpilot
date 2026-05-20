@@ -54,7 +54,7 @@ As of **December 2025**, leading AI systems are thus professionally and linguist
 
 To ensure the algorithmic **precision** required for **SkillPilot** in navigating learning goals, another trend benefits us: coupling language models to classical software. Standards are being established that allow systems like ChatGPT to specifically call interfaces (APIs) of classical programs.
 
-The approach for **SkillPilot** follows almost automatically: it emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language models are instructed (as SkillPilot GPT) to speak with learners as empathetic learning coaches, but use the software's exact logic in the background for learning progress.
+The approach for **SkillPilot** follows almost automatically: it emerges as a hybrid application. Classical, exact software handles the precise "bookkeeping" and navigation of skill goals in the background. Leading language models are instructed (as the SkillPilot Learning Coach) to speak with learners as empathetic learning coaches, but use the software's exact logic in the background for learning progress.
 
 ---
 
@@ -117,7 +117,7 @@ The **frontier is not an AI recommendation**, but the mathematically computed se
 
 ### 3.2 The Interaction Layer: The AI learning coach
 
-The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **AI learning coach** (SkillPilot GPT). It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
+The skill graph provides the route, but learners do not interact with datasets; they need a guide. This role is taken by the **SkillPilot Learning Coach** as the AI learning coach. It serves as an intuitive interface that translates the abstract instructions of the graph into natural, motivating language.
 
 The learning coach is not a "black box" but acts strictly based on backend logic: it receives the active scope, frontier, next goal, and allowed transitions from the backend, and turns them into a didactically meaningful dialogue. This turns "exact bookkeeping" into a personal learning experience.
 
@@ -206,7 +206,7 @@ On the server, only technically necessary metadata are stored, e.g., learning pr
 
 #### Session Shielding Toward the AI Frontend
 
-When **SkillPilot GPT** is started, the permanent SkillPilot ID is no longer passed to ChatGPT. The browser asks the SkillPilot backend for a short-lived, one-time **start code**. After redeeming it, the learning coach works only with a temporary **chat session token**.
+When the **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is no longer passed to ChatGPT. The browser asks the SkillPilot backend for a short-lived, one-time **start code**. After redeeming it, the learning coach works only with a temporary **chat session token**.
 
 The mapping `chatSessionToken -> skillpilotId` happens exclusively in the SkillPilot backend; the active SkillPilot ID stays in the browser and in the backend. This means the AI frontend can no longer associate learning-coach dialogs and tool results with the permanent SkillPilot ID. It still receives the didactically required state for the current session, but not the learner's stable key.
 
