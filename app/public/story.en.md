@@ -2,7 +2,7 @@
 
 **Status:** May 20, 2026
 
-💡 **Tip:** Voice mode in ChatGPT currently does not work with SkillPilot: after you use it once, ChatGPT can no longer talk to the backend. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Until then, do not use voice mode in the web app; use the normal text chat.
+💡 **Tip:** Voice mode in ChatGPT currently does not work with SkillPilot: after you use it once, ChatGPT can no longer talk to the backend. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Do not use voice mode in the ChatGPT web app for now. You can still work with the SkillPilot Learning Coach in chat, upload photos of tasks or paper solutions, and dictate text with your device; just avoid ChatGPT voice mode.
 
 🔑 **Important:** Your **SkillPilot ID** is the permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser. ChatGPT never sees the SkillPilot ID: when you start the SkillPilot Learning Coach, SkillPilot creates a start code that is valid for 5 minutes. After redeeming it, the learning coach in ChatGPT receives a backend session ID that is valid for 24 hours.
 
@@ -10,8 +10,8 @@
 
 ## Quick start in 5 steps
 
-1. Open `https://skillpilot.com`.
-2. Click **Log in or create ID**.
+1. Open https://skillpilot.com.
+2. Click **Login**.
 3. Accept the notice and choose your login path: create a new SkillPilot ID, load a saved login, or enter your existing ID.
 4. Choose your curriculum. Optionally save your SkillPilot ID as an encrypted local login on this device.
 5. Open your **Cockpit** or start the **SkillPilot Learning Coach** with a start code. Learn -> goals are **mastered** -> see progress in the cockpit.
