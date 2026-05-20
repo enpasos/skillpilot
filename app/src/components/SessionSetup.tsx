@@ -102,6 +102,31 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [chatPromptCopyState, setChatPromptCopyState] = useState<'idle' | 'failed'>('idle')
   const [chatStartLoading, setChatStartLoading] = useState(false)
 
+  const curriculumPanelCopy = React.useMemo(() => {
+    if (role === 'trainer') {
+      return {
+        title: t.startPage.login.trainerCurriculumStepTitle,
+        text: t.startPage.login.trainerCurriculumStepText,
+        button: t.startPage.login.trainerDashboardButton,
+        showStepNumber: false,
+      }
+    }
+    if (role === 'explorer') {
+      return {
+        title: t.startPage.login.explorerCurriculumStepTitle,
+        text: t.startPage.login.explorerCurriculumStepText,
+        button: t.startPage.login.explorerDashboardButton,
+        showStepNumber: false,
+      }
+    }
+    return {
+      title: t.startPage.login.curriculumStepTitle,
+      text: t.startPage.login.curriculumStepText,
+      button: t.startPage.login.dashboardButton,
+      showStepNumber: true,
+    }
+  }, [role, t])
+
   const refreshSavedLoginProfiles = () => {
     const profiles = listLocalSkillpilotLogins()
     setSavedLoginProfiles(profiles)
@@ -751,16 +776,17 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                   </div>
                 )}
 
-                {/* Step 2: Curriculum Selection */}
                 {role && (role !== 'learner' || (skillpilotId.length > 0 && hasCheckedId)) && (
                   <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
-                        2
-                      </div>
+                      {curriculumPanelCopy.showStepNumber && (
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
+                          2
+                        </div>
+                      )}
                       <div>
-                        <h2 className="text-base font-bold text-text-primary">{t.startPage.login.curriculumStepTitle}</h2>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">{t.startPage.login.curriculumStepText}</p>
+                        <h2 className="text-base font-bold text-text-primary">{curriculumPanelCopy.title}</h2>
+                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">{curriculumPanelCopy.text}</p>
                       </div>
                     </div>
                     <label className="text-[11px] text-text-secondary block mb-1">
@@ -780,7 +806,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           disabled={!selectedLandscapeId}
                           className="w-full rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 hover:border-sky-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          {t.startPage.login.dashboardButton}
+                          {curriculumPanelCopy.button}
                         </button>
                       </div>
                     )}

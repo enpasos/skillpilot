@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
+import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useLanguage } from '../contexts/LanguageContext'
 
 interface WorkbenchTool {
@@ -232,8 +233,11 @@ export const WorkbenchView: React.FC = () => {
                 <Wrench size={14} />
                 <span>{copy.badge}</span>
               </div>
-              <h1 className="text-3xl font-bold text-sky-600 dark:text-sky-400">{copy.title}</h1>
-              <p className="mt-2 text-sm text-text-secondary md:text-base">{copy.subtitle}</p>
+              <PublicPageHeader
+                align="left"
+                title={copy.title}
+                subtitle={copy.subtitle}
+              />
             </div>
 
             <div className="flex items-center gap-2 self-start">

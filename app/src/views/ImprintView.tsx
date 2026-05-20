@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getImprintViewCopy } from '../utils/imprintViewCopy';
+import { PublicPageHeader } from '../components/PublicPageHeader';
 
 export const ImprintView: React.FC = () => {
     const { language } = useLanguage();
@@ -16,9 +17,11 @@ export const ImprintView: React.FC = () => {
                     {copy.backToApp}
                 </Link>
 
-                <h1 className="text-3xl font-bold mb-8 border-b border-border-color pb-4 text-text-primary">
-                    {copy.title}
-                </h1>
+                <PublicPageHeader
+                    align="left"
+                    className="mb-8 border-b border-border-color pb-6"
+                    title={copy.title}
+                />
 
                 <div className="prose dark:prose-invert max-w-none text-text-primary">
                     <p>

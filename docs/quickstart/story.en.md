@@ -4,7 +4,7 @@
 
 💡 **Tip:** Voice mode in ChatGPT currently does not work with SkillPilot: after you use it once, ChatGPT can no longer talk to the backend. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Until then, do not use voice mode in the web app; use the normal text chat.
 
-🔑 **Important:** Your **SkillPilot ID** is your key to your learning progress. ChatGPT never sees it: SkillPilot starts the learning coach with a start code that is valid for 5 minutes. After redeeming it, ChatGPT receives a session ID from the backend that is valid for 24 hours.
+🔑 **Important:** Your **SkillPilot ID** is the permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser. ChatGPT never sees the SkillPilot ID: when you start the SkillPilot Learning Coach, SkillPilot creates a start code that is valid for 5 minutes. After redeeming it, the learning coach in ChatGPT receives a backend session ID that is valid for 24 hours.
 
 ---
 
@@ -12,9 +12,9 @@
 
 1. Open `https://skillpilot.com`.
 2. Click **Log in or create ID**.
-3. Create a new SkillPilot ID, load a saved login, or enter your existing ID.
-4. Choose your curriculum and start **SkillPilot Learning Coach** or open your **Cockpit**.
-5. Learn -> goals are **mastered** -> see progress in the cockpit.
+3. Accept the notice and choose your login path: create a new SkillPilot ID, load a saved login, or enter your existing ID.
+4. Choose your curriculum. Optionally save your SkillPilot ID as an encrypted local login on this device.
+5. Open your **Cockpit** or start the **SkillPilot Learning Coach** with a start code. Learn -> goals are **mastered** -> see progress in the cockpit.
 
 ---
 
@@ -25,28 +25,28 @@
 
 | <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
 | --- |
-| *On the homepage you will find the SkillPilot Login. You do not need to register; you only need a SkillPilot ID.* |
+| *On the homepage, the main start button takes you to the SkillPilot Login. You do not need to register with a name or email address; your learning progress is linked to your SkillPilot ID.* |
 
 ---
 
-## 2) Log in and choose a curriculum
+## 2) Log in: create, load, or enter an ID
 
 | <img src="../screenshot_02.en.png" alt="SkillPilot Learning Coach start screen" width="700" /> |
 | --- |
-| *SkillPilot starts in the browser: create a SkillPilot ID, load a saved login, or enter an existing ID.* |
+| *In the login, choose a path: create a new SkillPilot ID, load a saved local login, or enter an existing ID directly. After the ID is checked, you choose your curriculum.* |
 
 | <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
 | --- |
 
 ---
 
-## 3) Open SkillPilot Learning Coach with a start code
+## 3) Start the cockpit or learning coach
 
-| <img src="../screenshot_03.en.png" alt="SkillPilot Learning Coach starts with a temporary start code" width="700" /> |
+| <img src="../screenshot_03.en.png" alt="SkillPilot start with cockpit and learning coach" width="700" /> |
 | --- |
-| *When you start the SkillPilot Learning Coach, the browser creates a short-lived start code. The permanent SkillPilot ID stays in the browser and backend.* |
+| *After choosing the curriculum, you have two paths: open the cockpit directly or start the SkillPilot Learning Coach. For the learning coach, the browser creates a short-lived start code; the permanent SkillPilot ID stays in the browser and backend.* |
 
-**Remember:** Without the ID you cannot reopen your progress later.
+**Remember:** If you do not save a local login, keep your SkillPilot ID safe. Without it, you cannot reopen your progress later.
 
 ---
 
@@ -91,14 +91,14 @@
 
 | <img src="../screenshot_09.en.png" alt="Cockpit with SkillPilot Login" width="700" /> |
 | --- |
-| *In the cockpit, you are connected through your SkillPilot Login. There you see progress, goals, and next steps.* |
+| *In the cockpit, you are connected through your SkillPilot ID. If you saved a local login, you load it with your password on the next visit; otherwise you enter the ID directly again.* |
 
 | <img src="../comic06.en.png" alt="Connection to Mission Control" width="650" /> |
 | --- |
 
 | <img src="../screenshot_10.en.png" alt="Select curriculum and start" width="700" /> |
 | --- |
-| *Select curriculum -> "Start" -> you land in the cockpit.* |
+| *Select curriculum -> open the cockpit or start the learning coach -> continue with the same learning state.* |
 
 ---
 

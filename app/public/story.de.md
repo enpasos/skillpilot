@@ -4,7 +4,7 @@
 
 💡 **Tipp:** Der Voice-Mode in ChatGPT funktioniert aktuell nicht mit SkillPilot: Wenn du ihn einmal benutzt, kann ChatGPT danach nicht mehr mit dem Backend sprechen. Wir haben dazu ein Ticket bei ChatGPT/OpenAI eröffnet und warten auf den Fix. Verwende bis dahin in der Web-App keinen Voice-Mode; nutze den normalen Textchat.
 
-🔑 **Wichtig:** Deine **SkillPilot-ID** ist dein Schlüssel zu deinem Lernfortschritt. ChatGPT sieht sie nie: SkillPilot startet den Lerncoach mit einem Startcode, der 5 Minuten gültig ist. Nach dem Einlösen erhält ChatGPT vom Backend eine Session-ID, die 24 Stunden gültig ist.
+🔑 **Wichtig:** Deine **SkillPilot-ID** ist der dauerhafte Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern. ChatGPT sieht die SkillPilot-ID nie: Wenn du den SkillPilot Lerncoach startest, erzeugt SkillPilot einen Startcode, der 5 Minuten gültig ist. Nach dem Einlösen erhält der Lerncoach in ChatGPT vom Backend eine Session-ID, die 24 Stunden gültig ist.
 
 ---
 
@@ -12,9 +12,9 @@
 
 1. Öffne `https://skillpilot.com`.
 2. Klicke **Einloggen oder ID erstellen**.
-3. Erstelle eine neue SkillPilot-ID, lade einen gespeicherten Login oder gib deine vorhandene ID ein.
-4. Wähle dein Curriculum und starte **SkillPilot Lerncoach** oder öffne dein **Cockpit**.
-5. Lernen -> Ziele werden **gemeistert** -> im Cockpit Fortschritt sehen.
+3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, gespeicherten Login laden oder vorhandene ID eingeben.
+4. Wähle dein Curriculum. Optional speicherst du deine SkillPilot-ID als verschlüsselten lokalen Login auf diesem Gerät.
+5. Öffne dein **Cockpit** oder starte den **SkillPilot Lerncoach** per Startcode. Lernen -> Ziele werden **gemeistert** -> Fortschritt im Cockpit sehen.
 
 ---
 
@@ -25,28 +25,28 @@
 
 | <img src="../screenshot_01.de.png" alt="SkillPilot Startseite mit Kacheln" width="700" /> |
 | --- |
-| *Auf der Startseite findest du den SkillPilot Login. Du brauchst keine Registrierung, sondern nur eine SkillPilot-ID.* |
+| *Auf der Startseite führt der Hauptstart in den SkillPilot Login. Du brauchst keine Registrierung mit Namen oder E-Mail; dein Lernstand hängt an deiner SkillPilot-ID.* |
 
 ---
 
-## 2) Einloggen und Curriculum wählen
+## 2) Einloggen: ID erstellen, laden oder eingeben
 
 | <img src="../screenshot_02.de.png" alt="SkillPilot Lerncoach Startscreen" width="700" /> |
 | --- |
-| *SkillPilot startet im Browser: SkillPilot-ID erstellen, gespeicherten Login laden oder vorhandene ID eingeben.* |
+| *Im Login wählst du einen Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene ID direkt eingeben. Erst nach geprüfter ID wählst du dein Curriculum.* |
 
 | <img src="../comic02.de.png" alt="Chat mit dem KI-Lerncoach" width="650" /> |
 | --- |
 
 ---
 
-## 3) SkillPilot Lerncoach mit Startcode öffnen
+## 3) Cockpit oder Lerncoach starten
 
-| <img src="../screenshot_03.de.png" alt="SkillPilot Lerncoach startet mit temporaerem Startcode" width="700" /> |
+| <img src="../screenshot_03.de.png" alt="SkillPilot Start mit Cockpit und Lerncoach" width="700" /> |
 | --- |
-| *Wenn du den SkillPilot Lerncoach startest, erzeugt der Browser einen kurzlebigen Startcode. Die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
+| *Nach dem Curriculum hast du zwei Wege: Cockpit direkt öffnen oder den SkillPilot Lerncoach starten. Für den Lerncoach erzeugt der Browser einen kurzlebigen Startcode; die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
 
-**Merke:** Ohne ID kannst du deinen Fortschritt später nicht wieder öffnen.
+**Merke:** Wenn du keinen lokalen Login speicherst, bewahre deine SkillPilot-ID gut auf. Ohne sie kannst du deinen Fortschritt später nicht wieder öffnen.
 
 ---
 
@@ -91,14 +91,14 @@
 
 | <img src="../screenshot_09.de.png" alt="Cockpit mit SkillPilot Login" width="700" /> |
 | --- |
-| *Im Cockpit bist du über deinen SkillPilot Login verbunden. Dort siehst du Lernstand, Ziele und nächste Schritte.* |
+| *Im Cockpit bist du über deine SkillPilot-ID verbunden. Wenn du einen lokalen Login gespeichert hast, lädst du ihn beim nächsten Besuch mit deinem Passwort; sonst gibst du die ID wieder direkt ein.* |
 
 | <img src="../comic06.de.png" alt="Verbindung mit Mission Control" width="650" /> |
 | --- |
 
 | <img src="../screenshot_10.de.png" alt="Curriculum wählen und starten" width="700" /> |
 | --- |
-| *Curriculum auswählen → „Starten“ → du landest im Cockpit.* |
+| *Curriculum auswählen → Cockpit öffnen oder Lerncoach starten → du arbeitest mit demselben Lernstand weiter.* |
 
 ---
 
