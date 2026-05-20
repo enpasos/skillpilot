@@ -26,7 +26,7 @@ Open **Create → New GPT → Configure** and fill out the fields as follows.
 
   - **Description**
     ```text
-    Learning trainer ... https://skillpilot.com
+    I'm your learning trainer. To start, send the pre-filled prompt.
     ```
 
 ### 2.2 Instructions (System Instructions)
@@ -39,15 +39,7 @@ In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system
 
 ### 2.3 Conversation Starters
 
-```text
-I want to learn Linear Algebra (MIT OCW). 
-```
-
-```text
-Start SkillPilot with start code: SP-ABCD-EFGH
-```
-
- 
+Do not configure conversation starters. The session starts only via the prompt with start code pre-filled by `skillpilot.com`.
 -----  
 
 ### 2.4 Quick sanity check
