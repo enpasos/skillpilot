@@ -13,8 +13,8 @@
 1. Öffne https://skillpilot.com.
 2. Klicke **Login**.
 3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, gespeicherten Login laden oder vorhandene ID eingeben.
-4. Wähle dein Curriculum. Optional speicherst du deine SkillPilot-ID als verschlüsselten lokalen Login auf diesem Gerät.
-5. Öffne dein **Cockpit** oder starte den **SkillPilot Lerncoach** per Startcode. Lernen -> Ziele werden **gemeistert** -> Fortschritt im Cockpit sehen.
+4. Wähle dein Curriculum und danach **SkillPilot Lerncoach starten** oder **Cockpit öffnen**.
+5. Im ChatGPT-Fenster sendest du nur den vorbereiteten Startcode ab. Deine SkillPilot-ID taucht im GPT nicht auf.
 
 ---
 
@@ -29,32 +29,40 @@
 
 ---
 
-## 2) Einloggen: ID erstellen, laden oder eingeben
+## 2) Login: SkillPilot-ID erstellen, laden oder eingeben
 
-| <img src="../screenshot_02.de.png" alt="SkillPilot Lerncoach Startscreen" width="700" /> |
+| <img src="../screenshot_02.de.png" alt="SkillPilot Login mit ID-Erstellung und direkter ID-Eingabe" width="700" /> |
 | --- |
-| *Im Login wählst du einen Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene ID direkt eingeben. Erst nach geprüfter ID wählst du dein Curriculum.* |
+| *Im Login wählst du einen Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene ID direkt eingeben. Diese ID bleibt in SkillPilot; sie wird nicht an ChatGPT übergeben.* |
 
 | <img src="../comic02.de.png" alt="Chat mit dem KI-Lerncoach" width="650" /> |
 | --- |
 
 ---
 
-## 3) Cockpit oder Lerncoach starten
+## 3) Curriculum wählen und Start vorbereiten
 
-| <img src="../screenshot_03.de.png" alt="SkillPilot Start mit Cockpit und Lerncoach" width="700" /> |
+| <img src="../screenshot_03.de.png" alt="Curriculum wählen und SkillPilot Lerncoach oder Cockpit starten" width="700" /> |
 | --- |
-| *Nach dem Curriculum hast du zwei Wege: Cockpit direkt öffnen oder den SkillPilot Lerncoach starten. Für den Lerncoach erzeugt der Browser einen kurzlebigen Startcode; die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
+| *Nach dem Login wählst du dein Curriculum. Danach öffnest du entweder direkt das Cockpit oder startest den SkillPilot Lerncoach. Für den Lerncoach erzeugt SkillPilot einen kurzlebigen Startcode; die dauerhafte SkillPilot-ID bleibt im Browser und Backend.* |
 
 **Merke:** Wenn du keinen lokalen Login speicherst, bewahre deine SkillPilot-ID gut auf. Ohne sie kannst du deinen Fortschritt später nicht wieder öffnen.
 
 ---
 
-## 4) Lernpfad wählen und loslegen
+## 4) Lerncoach in ChatGPT starten
 
-| <img src="../screenshot_04.de.png" alt="Einrichtung Mathe LK + Themenvorschläge" width="700" /> |
+| <img src="../screenshot_04.de.png" alt="ChatGPT mit vorbereitetem Startcode für SkillPilot" width="700" /> |
 | --- |
-| *SkillPilot richtet deinen Lernpfad ein und schlägt passende Startthemen vor.* |
+| *Im ChatGPT-Fenster steht nur der vorbereitete Startcode. Schicke diese Nachricht ab; der SkillPilot Lerncoach löst den Startcode beim Backend ein und erhält danach eine temporäre Session-ID. Die SkillPilot-ID erscheint im GPT nicht.* |
+
+---
+
+## 5) Erste Lerneinheit beginnen
+
+| <img src="../screenshot_05.de.png" alt="Einstieg ins Lernziel" width="700" /> |
+| --- |
+| *Der SkillPilot Lerncoach startet mit einem Lernziel und prüft dein Verständnis Schritt für Schritt.* |
 
 | <img src="../comic03.de.png" alt="Mission Control" width="650" /> |
 | --- |
@@ -64,11 +72,7 @@
 
 ---
 
-## 5) So läuft eine Lerneinheit ab (Beispiel)
-
-| <img src="../screenshot_05.de.png" alt="Einstieg ins Lernziel" width="700" /> |
-| --- |
-| *Du startest mit einem Lernziel und beantwortest kurze Fragen.* |
+## 6) So läuft eine Lerneinheit ab (Beispiel)
 
 | <img src="../screenshot_06.de.png" alt="Vertiefung und Anwendungscheck" width="700" /> |
 | --- |
@@ -84,7 +88,7 @@
 
 ---
 
-## 6) Fortschritt ansehen: Cockpit
+## 7) Fortschritt ansehen: Cockpit
 
 | <img src="../comic05.de.png" alt="Cockpit" width="650" /> |
 | --- |
@@ -102,7 +106,7 @@
 
 ---
 
-## 7) Überblick behalten und weitermachen
+## 8) Überblick behalten und weitermachen
 
 | <img src="../screenshot_11.de.png" alt="Cockpit: Lernziele und nächste Schritte" width="900" /> |
 | --- |

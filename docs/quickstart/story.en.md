@@ -13,8 +13,8 @@
 1. Open https://skillpilot.com.
 2. Click **Login**.
 3. Accept the notice and choose your login path: create a new SkillPilot ID, load a saved login, or enter your existing ID.
-4. Choose your curriculum. Optionally save your SkillPilot ID as an encrypted local login on this device.
-5. Open your **Cockpit** or start the **SkillPilot Learning Coach** with a start code. Learn -> goals are **mastered** -> see progress in the cockpit.
+4. Choose your curriculum, then select **Start SkillPilot Learning Coach** or **Open Cockpit**.
+5. In the ChatGPT window, send only the prepared start code. Your SkillPilot ID does not appear in the GPT.
 
 ---
 
@@ -29,32 +29,40 @@
 
 ---
 
-## 2) Log in: create, load, or enter an ID
+## 2) Login: create, load, or enter a SkillPilot ID
 
-| <img src="../screenshot_02.en.png" alt="SkillPilot Learning Coach start screen" width="700" /> |
+| <img src="../screenshot_02.en.png" alt="SkillPilot Login with ID creation and direct ID entry" width="700" /> |
 | --- |
-| *In the login, choose a path: create a new SkillPilot ID, load a saved local login, or enter an existing ID directly. After the ID is checked, you choose your curriculum.* |
+| *In the login, choose a path: create a new SkillPilot ID, load a saved local login, or enter an existing ID directly. This ID stays in SkillPilot; it is not passed to ChatGPT.* |
 
 | <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
 | --- |
 
 ---
 
-## 3) Start the cockpit or learning coach
+## 3) Choose curriculum and prepare start
 
-| <img src="../screenshot_03.en.png" alt="SkillPilot start with cockpit and learning coach" width="700" /> |
+| <img src="../screenshot_03.en.png" alt="Choose curriculum and start the SkillPilot Learning Coach or Cockpit" width="700" /> |
 | --- |
-| *After choosing the curriculum, you have two paths: open the cockpit directly or start the SkillPilot Learning Coach. For the learning coach, the browser creates a short-lived start code; the permanent SkillPilot ID stays in the browser and backend.* |
+| *After login, choose your curriculum. Then either open the cockpit directly or start the SkillPilot Learning Coach. For the learning coach, SkillPilot creates a short-lived start code; the permanent SkillPilot ID stays in the browser and backend.* |
 
 **Remember:** If you do not save a local login, keep your SkillPilot ID safe. Without it, you cannot reopen your progress later.
 
 ---
 
-## 4) Choose a learning path and get started
+## 4) Start the learning coach in ChatGPT
 
-| <img src="../screenshot_04.en.png" alt="Setup: Math LK and topic suggestions" width="700" /> |
+| <img src="../screenshot_04.en.png" alt="ChatGPT with prepared SkillPilot start code" width="700" /> |
 | --- |
-| *SkillPilot sets up your learning path and suggests suitable starter topics.* |
+| *The ChatGPT window contains only the prepared start code. Send this message; the SkillPilot Learning Coach redeems the start code with the backend and then receives a temporary session ID. The SkillPilot ID does not appear in the GPT.* |
+
+---
+
+## 5) Start the first learning session
+
+| <img src="../screenshot_05.en.png" alt="Entry into the learning goal" width="700" /> |
+| --- |
+| *The SkillPilot Learning Coach starts with a learning goal and checks your understanding step by step.* |
 
 | <img src="../comic03.en.png" alt="Mission Control" width="650" /> |
 | --- |
@@ -64,11 +72,7 @@
 
 ---
 
-## 5) How a learning session works (example)
-
-| <img src="../screenshot_05.en.png" alt="Entry into the learning goal" width="700" /> |
-| --- |
-| *You start with a learning goal and answer short questions.* |
+## 6) How a learning session works (example)
 
 | <img src="../screenshot_06.en.png" alt="Deepening and application check" width="700" /> |
 | --- |
@@ -84,7 +88,7 @@
 
 ---
 
-## 6) View progress: Cockpit
+## 7) View progress: Cockpit
 
 | <img src="../comic05.en.png" alt="Cockpit" width="650" /> |
 | --- |
@@ -102,7 +106,7 @@
 
 ---
 
-## 7) Keep the overview and continue
+## 8) Keep the overview and continue
 
 | <img src="../screenshot_11.en.png" alt="Cockpit: learning goals and next steps" width="900" /> |
 | --- |

@@ -25,7 +25,7 @@ comic01.en.png
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Start at SkillPilot".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to study for his advanced math course (LK). He already has a free ChatGPT account. He types \"skillpilot.com\" in the browser and clicks \"Log in or create ID\".".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max wants to study for his advanced math course (LK). He already has a free ChatGPT account. He types \"skillpilot.com\" in the browser and clicks \"Login\".".
 
 **Font Style & Typography:**
 
@@ -54,7 +54,7 @@ The image is divided by a thick black diagonal line from top left to bottom righ
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Chat with the AI learning coach".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the learning coach from the browser. His SkillPilot ID stays there; ChatGPT receives only a short-lived start code - then the learning chat begins.".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the learning coach from SkillPilot. His SkillPilot ID stays in SkillPilot; ChatGPT receives only a short-lived start code - then the learning chat begins.".
 
 **Font Style & Typography:**
 
@@ -158,7 +158,7 @@ comic06.en.png
 **Scene & Characters:**
 
 - **Max:** A boy with brown, spiky hair, a red T-shirt, blue jeans, and red sneakers sits smiling at a wooden desk. He points with his right index finger at the computer screen.
-- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is the SkillPilot Login with "Create ID", "Load saved login", and "Enter ID".
+- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is the SkillPilot Login with "Create new SkillPilot ID", "Load saved login", and "Enter SkillPilot ID directly".
 - **Connection:** The PC monitor is connected by cable to a large gray server rack standing to the right of the desk.
 - **Server rack:** The rack is labeled "MISSION CONTROL" in blue capital letters. It has multiple bays with blinking blue lights.
 

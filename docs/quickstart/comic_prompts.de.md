@@ -26,7 +26,7 @@ comic01.de.png
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Start bei SkillPilot".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT-Account hat er schon. Er tippt ‚skillpilot.com‘ im Browser ein und klickt auf ‚Einloggen oder ID erstellen‘.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max will für seinen Mathe-LK lernen. Einen kostenlosen ChatGPT-Account hat er schon. Er tippt ‚skillpilot.com‘ im Browser ein und klickt auf ‚Login‘.".
 
 **Schriftstil & Typografie:**
 
@@ -55,7 +55,7 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Lerncoach".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Lerncoach aus dem Browser. Seine SkillPilot-ID bleibt dort; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Lerncoach aus SkillPilot. Seine SkillPilot-ID bleibt in SkillPilot; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
 
 **Schriftstil & Typografie:**
 
@@ -160,7 +160,7 @@ comic06.de.png
 **Szenerie & Charaktere:**
 
 - **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
-- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist der SkillPilot Login zu sehen: "ID erstellen", "Gespeicherten Login laden" und "ID eingeben".
+- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist der SkillPilot Login zu sehen: "Neue SkillPilot-ID erstellen", "Gespeicherten Login laden" und "SkillPilot-ID direkt eingeben".
 - **Verbindung:** Vom PC-Monitor ist per Kabel verbunden mit einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
 - **Server-Rack:** Das Rack ist beschriftet mit "MISSION CONTROL" in blauen Großbuchstaben. Es hat mehrere Einschübe mit blinkenden blauen Leuchten.
 
