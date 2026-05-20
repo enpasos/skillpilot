@@ -8,7 +8,7 @@ in der Unterhaltung genannt.
 
 ## 1. Grundprinzip
 
-- Der Trainer orientiert sich am aktuellen Zustand aus `LearnerState`.
+- Der Lerncoach orientiert sich am aktuellen Zustand aus `LearnerState`.
 - `stateMachine.requiredAction` hat Vorrang gegenüber freien Vorschlägen.
 - `requiredAction = teachActiveGoal` ist kein Tool-Call, sondern bedeutet: mit der lernenden Person arbeiten und Evidenz sammeln.
 - Ziel/ID-Entscheidungen kommen ausschließlich aus dem Zustand.

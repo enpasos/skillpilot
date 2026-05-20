@@ -12,7 +12,7 @@ The design goal is simple:
 
 - one field for **provenance**
 - one field for **helpful learning resources**
-- one model that works for both **Cockpit** and **AI tutors**
+- one model that works for both **Cockpit** and **AI learning coaches**
 
 ## 1. Two concerns, two fields
 
@@ -22,7 +22,7 @@ At goal level, SkillPilot distinguishes:
   - the canonical provenance/source-of-truth reference for why the goal exists
   - examples: curriculum PDF citation, official module page, MIT OCW course page
 - `resourceLinks`
-  - ordered helpful learning resources for learners, teachers, Cockpit, and GPT tutors
+  - ordered helpful learning resources for learners, teachers, Cockpit, and GPT learning coaches
   - examples: deep links to notes, videos, simulations, problem sets, exams, book pages
 
 This separation is intentional:
@@ -100,7 +100,7 @@ The same canonical model should serve two consumers:
 
 - **Cockpit**
   - show ordered helpful resources in goal detail views
-- **AI tutors / API**
+- **AI learning coaches / API**
   - expose the same links as machine-readable `resourceLinks`
   - prefer full link payload on the active goal
   - frontier and goal-option responses may stay compact

@@ -7,7 +7,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 
 ## 1. Core principle
 
-- The trainer follows the current learner state from `LearnerState`.
+- The learning coach follows the current learner state from `LearnerState`.
 - `stateMachine.requiredAction` has priority over ad-hoc suggestions.
 - `requiredAction = teachActiveGoal` is not a tool call; it means work with the learner and collect evidence.
 - Use goal IDs and options only from the returned state.

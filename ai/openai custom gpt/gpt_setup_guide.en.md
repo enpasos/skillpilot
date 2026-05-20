@@ -1,6 +1,6 @@
 # SkillPilot GPT Setup Guide
 
-This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot trainer**.
+This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot learning coach**.
 
 The goal: a GPT that starts from a browser-generated SkillPilot start code, redeems it into a chat session, guides learners through the SkillPilot competence graph, and updates mastery via `setMastery`.
 
@@ -13,7 +13,7 @@ The goal: a GPT that starts from a browser-generated SkillPilot start code, rede
 
 ---
 
-## 2. Creating the SkillPilot Trainer GPT
+## 2. Creating the SkillPilot Learning Coach GPT
 
 Open **Create → New GPT → Configure** and fill out the fields as follows.
 
@@ -26,7 +26,7 @@ Open **Create → New GPT → Configure** and fill out the fields as follows.
 
   - **Description**
     ```text
-    I'm your learning trainer. To start, send the pre-filled prompt.
+    I'm your learning coach. To start, send the pre-filled prompt.
     ```
 
 ### 2.2 Instructions (System Instructions)
@@ -106,7 +106,7 @@ End-to-end flow for a typical learner session:
 8.  **Scope:** If the user has a specific topic goal ("I want to learn Calculus/Analysis"), call `setScope` to focus the plan.
 9.  **Lock Goal:** It calls `setActiveGoal` for the chosen atomic goal.
 10. **Teaching:** If `stateMachine.requiredAction` is `teachActiveGoal`, this is a conversational teaching/checking step, not a tool call. It teaches the locked goal and does exercises, but without front-loading the exact sample solution for the very next task. Unusual learner solutions must be reconstructed before correction so valid creative strategies are not missed; wrong or unjustified steps remain wrong and must be rejected clearly. At least one answer must require transfer or a second independent check. If the goal has multiple clearly named aspects, all of them must be checked.
-11. **Mastery:** Only after demonstrated competence in the current dialogue, it calls `setMastery` with the `goalId` of the active goal. If competence is not verified, it must **not** call `setMastery`. Mere repetition of the trainer's own wording is not enough, and partial coverage of a multi-aspect goal is not enough either. This returns the **new** frontier immediately.
+11. **Mastery:** Only after demonstrated competence in the current dialogue, it calls `setMastery` with the `goalId` of the active goal. If competence is not verified, it must **not** call `setMastery`. Mere repetition of the learning coach's own wording is not enough, and partial coverage of a multi-aspect goal is not enough either. This returns the **new** frontier immediately.
 12. **Loop:** It follows the returned state. If a new active goal is already present, introduce it and ask the learner; never mark it mastered without fresh evidence.
 
 -----

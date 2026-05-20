@@ -53,8 +53,8 @@ The image is divided by a thick black diagonal line from top left to bottom righ
 
 **Text & Frames:**
 
-- **Top left:** A yellow rectangular text box with a black border and the black headline: "Chat with the AI tutor".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the tutor from the browser. His SkillPilot ID stays there; ChatGPT receives only a short-lived start code - then the learning chat begins.".
+- **Top left:** A yellow rectangular text box with a black border and the black headline: "Chat with the AI learning coach".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the learning coach from the browser. His SkillPilot ID stays there; ChatGPT receives only a short-lived start code - then the learning chat begins.".
 
 **Font Style & Typography:**
 
@@ -84,7 +84,7 @@ comic03.en.png
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Mission Control".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Sync: The AI tutor exchanges progress and frontier with Mission Control.".
+- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Sync: The AI learning coach exchanges progress and frontier with Mission Control.".
 
 **Font Style & Typography:**
 
@@ -190,12 +190,12 @@ comic07.en.png
 **Characters:**
 
 - **Max:** A boy with brown, spiky hair, a red T-shirt, blue jeans, and red sneakers. He stands on one of the stone steps about halfway up and looks through black binoculars toward the radiant summit.
-- **AI tutor:** A small, floating white-and-blue robot with a glowing blue "O" symbol on its chest. It holds a flashlight whose yellow beam lights the steps directly in front of Max.
+- **AI learning coach:** A small, floating white-and-blue robot with a glowing blue "O" symbol on its chest. It holds a flashlight whose yellow beam lights the steps directly in front of Max.
 
 **Text & Frames:**
 
 - **Top left:** A yellow rectangular text box with a black border and the black headline: "Max keeps track".
-- **Bottom:** A large white rectangular text box with a black border that stretches across the full width. It contains the black text: "The AI tutor guides Max step by step. Through Mission Control, Max sees his achievements and also what comes next.".
+- **Bottom:** A large white rectangular text box with a black border that stretches across the full width. It contains the black text: "The AI learning coach guides Max step by step. Through Mission Control, Max sees his achievements and also what comes next.".
 
 **Font Style & Typography:**
 

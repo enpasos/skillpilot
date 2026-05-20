@@ -56,11 +56,11 @@ Ich mache **keine inhaltlichen Änderungen**, sondern:
 
 ---
 
-## 🧠 SYSTEM INSTRUCTION — *SkillPilot Trainer*
+## 🧠 SYSTEM INSTRUCTION — *SkillPilot Lerncoach*
 
 **Rolle & Haltung**
 
-Du bist ein **geduldiger SkillPilot-Trainer**.
+Du bist ein **geduldiger SkillPilot-Lerncoach**.
 Du behandelst jede Person **immer als Lernende:n**, nie als Kund:in oder Befehlgeber:in.
 
 Dein Ziel ist **nachhaltiges Verständnis** und **systematischer Kompetenzaufbau**, nicht Geschwindigkeit oder das Ausspucken von Lösungen.
@@ -151,13 +151,13 @@ Das GPT nutzt sie als **verbindliche Referenz**, ohne sie jemals zu zitieren ode
 
 ---
 
-## 📄 Dokument 1: `trainer.md`
+## 📄 Dokument 1: `lerncoach.md`
 
 **(Didaktik & Trainingslogik)**
 
 **Inhalt:**
 
-* Rolle & Mindset des Trainers
+* Rolle & Mindset des Lerncoachs
 * Lernmodus (Scaffolding statt Lösungen)
 * Diagnose → Übung → Feedback-Schleife
 * Evidence-Bar für Mastery
@@ -167,7 +167,7 @@ Das GPT nutzt sie als **verbindliche Referenz**, ohne sie jemals zu zitieren ode
 
 ➡️ **Dieses Dokument regelt das *Wie* des Unterrichts.**
 
-*(Dein vorhandenes `trainer.md` ist bereits sehr gut – so kann es direkt genutzt werden.)*
+*(Dein vorhandenes `lerncoach.md` ist bereits sehr gut – so kann es direkt genutzt werden.)*
 
 ---
 
@@ -235,11 +235,11 @@ Das GPT nutzt sie als **verbindliche Referenz**, ohne sie jemals zu zitieren ode
 # 🧩 3. EMPFOHLENE STRUKTUR IM GPT BUILDER
 
 **System Instruction:**
-→ *Nur* der Abschnitt **„SYSTEM INSTRUCTION — SkillPilot Trainer“**
+→ *Nur* der Abschnitt **„SYSTEM INSTRUCTION — SkillPilot Lerncoach“**
 
 **Knowledge Files:**
 
-1. `trainer.md`
+1. `lerncoach.md`
 2. `state_machine.md`
 3. `mastery_rules.md`
 4. `deep_linking.md`

@@ -211,7 +211,7 @@ top level and per goal for future layers and exports.
 The project distinguishes two different metadata concerns at goal level:
 
 - `sourceRef` = the canonical provenance/source-of-truth reference for why the goal exists
-- `resourceLinks` = ordered helpful learning resources for Cockpit and AI tutors
+- `resourceLinks` = ordered helpful learning resources for Cockpit and AI learning coaches
 
 Concept note:
 
@@ -246,7 +246,7 @@ Design intent:
 - Example: `https://ocw.mit.edu/courses/18-06-introduction-to-algorithms-spring-2020/` or `KC2024, S.58, Q3.5`
 - Used by:
   - provenance display and API export in the backend learner state
-  - fallback canonical source reference for AI tutors
+  - fallback canonical source reference for AI learning coaches
 - Status: used in backend/API; still only lightly surfaced in the current Cockpit UI
 - Notes:
   - `sourceRef` should point to the primary provenance anchor when possible.

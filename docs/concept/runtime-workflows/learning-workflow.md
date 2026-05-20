@@ -34,7 +34,7 @@ The learner can define focus at two different levels.
 - **Planned goals / scope roots:** one or more goals can be marked as planned.
   - Their descendants define the learner's current focus scope.
   - If no planned goals are set, the whole personal curriculum remains in scope.
-- **Active goal:** one goal can be active as the immediate working target in the UI/tutor loop.
+- **Active goal:** one goal can be active as the immediate working target in the UI/learning-coach loop.
   - The active goal should normally come from the frontier, but the system can still diagnose blockers for non-frontier selections.
 
 ### Step 4: Frontier Calculation and Navigation Loop
@@ -57,7 +57,7 @@ SkillPilot supports two evaluation modes for filtered learning:
 Runtime loop:
 
 1. Calculate the frontier inside the current filtered/planned scope.
-2. Let the tutor or UI select an active goal from that frontier.
+2. Let the learning coach or UI select an active goal from that frontier.
 3. If the learner wants a non-frontier goal, trace the missing effective prerequisites and redirect to the blockers.
 
 ### Step 5: Mastery, Aggregation, and Feedback
@@ -68,10 +68,10 @@ Progress is stored as **mastery** on atomic goals and aggregated upward for clus
 - Memorization/SRS goals are a special case.
   - Their mastery is derived from card state rather than manually set.
   - SRS scheduling shows whether cards are currently due.
-  - Verified recall records whether each required card has been answered correctly in a Trainer/GPT-led hard test.
+  - Verified recall records whether each required card has been answered correctly in a learning-coach/GPT-led hard test.
   - A memorization goal counts as mastered only after all required cards are verified and no required card is currently due.
   - The learner may start the hard recall test at any time while the memorization node is the active goal.
-  - In the Cockpit, a memorization node offers practice in the SRS drill and a handoff to Trainer/GPT verification; the Cockpit itself does not grade the hard recall.
+  - In the Cockpit, a memorization node offers practice in the SRS drill and a handoff to learning-coach/GPT verification; the Cockpit itself does not grade the hard recall.
 
 When mastery changes:
 

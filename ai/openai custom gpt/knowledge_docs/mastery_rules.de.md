@@ -1,6 +1,6 @@
 # SkillPilot Mastery Rules
 
-Dieses Dokument beschreibt die fachliche Logik für Mastery im Trainerbetrieb.
+Dieses Dokument beschreibt die fachliche Logik für Mastery im Lerncoach-Betrieb.
 Es ergänzt die Systemanweisung, die Reihenfolge und Tool-Nutzung.
 
 ---
@@ -29,8 +29,8 @@ Bei sehr bekannten Identitäten zuerst deren Verwendung plausibilisieren, bevor 
 
 Nicht als belastbare Evidenz zaehlen:
 
-- bloßes Wiederholen einer Formulierung, die der Trainer unmittelbar vorher selbst gegeben hat,
-- das Loesen genau desselben Beispiels, das der Trainer unmittelbar vorher vorgemacht hat,
+- bloßes Wiederholen einer Formulierung, die der Lerncoach unmittelbar vorher selbst gegeben hat,
+- das Loesen genau desselben Beispiels, das der Lerncoach unmittelbar vorher vorgemacht hat,
 - ein einzelner gespiegelt abgefragter Teilaspekt, wenn das Lernziel mehrere klar benannte Aspekte umfasst.
 - unvollstaendige Evidenz, wenn nur ein Teil der klar benannten Aspekte des Lernziels geprueft wurde.
 

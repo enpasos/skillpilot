@@ -2,8 +2,8 @@
 
 **Stand:** 19. Mai 2026
 
-> 💡 **Tipp:** Wenn in der ChatGPT-App etwas nicht richtig funktioniert, nutze den **Webbrowser**.  
-> 🔑 **Wichtig:** Deine **SkillPilot-ID** ist dein Schlüssel zu deinem Lernfortschritt. ChatGPT bekommt sie im normalen Start aber nicht zu sehen; SkillPilot startet den Tutor mit einem kurzlebigen Startcode.
+> 💡 **Tipp:** Der Voice-Mode der ChatGPT-App funktioniert aktuell nicht mit SkillPilot: Wenn du ihn einmal benutzt, kann die ChatGPT-App danach nicht mehr mit dem Backend sprechen. Wir haben dazu ein Ticket bei ChatGPT/OpenAI eröffnet und warten auf den Fix. Nutze bis dahin den **Webbrowser**.
+> 🔑 **Wichtig:** Deine **SkillPilot-ID** ist dein Schlüssel zu deinem Lernfortschritt. ChatGPT sieht sie nie: SkillPilot startet den Lerncoach mit einem Startcode, der 5 Minuten gültig ist. Nach dem Einlösen erhält ChatGPT vom Backend eine Session-ID, die 24 Stunden gültig ist.
 
 ---
 
@@ -34,7 +34,7 @@
 | --- |
 | *SkillPilot startet im Browser: SkillPilot-ID erstellen, gespeicherten Login laden oder vorhandene ID eingeben.* |
 
-| <img src="../comic02.de.png" alt="Chat mit dem KI-Tutor" width="650" /> |
+| <img src="../comic02.de.png" alt="Chat mit dem KI-Lerncoach" width="650" /> |
 | --- |
 
 ---

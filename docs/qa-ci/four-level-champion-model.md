@@ -46,7 +46,7 @@ This level is **forward-looking**. A static agent should check structural and se
 
 This level is also **forward-looking**. A dynamic agent should walk through curricula like a simulated learner and test frontier logic, filters, and node types in practical runtime conditions.
 
-- Focus: runtime behavior, dead ends, hidden blockers, tutor/exam mechanics
+- Focus: runtime behavior, dead ends, hidden blockers, learning-coach/exam mechanics
 - Examples:
   - simulation of filters and modes
   - exam simulation with intentionally incomplete or incorrect answers
@@ -57,7 +57,7 @@ This level is also **forward-looking**. A dynamic agent should walk through curr
 This level provides the practical didactic assessment in a real usage context.
 
 - Focus: tone, age appropriateness, motivation, subject fit, and UX
-- Task: The champion works through the curriculum in the UI or through the AI tutor and judges whether it holds up in a real learning context.
+- Task: The champion works through the curriculum in the UI or through the AI learning coach and judges whether it holds up in a real learning context.
 - Outcome: Findings are recorded as issues or tickets; once the didactic quality is strong enough, this can lead to the existing visible QA signal for the curriculum.
 
 ## Workflow and governance

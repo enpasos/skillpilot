@@ -13,7 +13,7 @@
 **Panel 3: Die Übersetzung (Frontend/Teaching)**
 -   **Bild:** Der Roboter wendet sich nun dem Schüler zu. Er hält jetzt eine leuchtende Landkarte (den Graphen) in der Hand, zeigt aber mit dem Finger auf *einen* konkreten Punkt. Sprechblase des Roboters: *"Lass uns heute Vektoren üben! Ich erkläre es dir ganz einfach."*
 -   **Text:** *„Lektion 3: Die Übersetzung. Der Agent nutzt seine Sprachkraft. Er übersetzt die trockene Logik der 'Frontier' (nächster Schritt) in einen einfühlsamen Dialog. Er ist der 'Reiseleiter' auf der Karte.“*
--   **Kontext:** Das ist die Kernfunktion des Tutors: Logik im Backend, Empathie im Frontend.
+-   **Kontext:** Das ist die Kernfunktion des Lerncoachs: Logik im Backend, Empathie im Frontend.
 
 **Panel 4: Der Erfolgs-Ping (Update/Write-Back)**
 -   **Bild:** Der Schüler strahlt und hält ein gelöstes Rätsel hoch. Der Roboter drückt einen grünen "Mastery"-Stempel auf sein Klemmbrett und funkt gleichzeitig ein "OK"-Signal zurück an den Server-Turm. Im Turm leuchtet ein Licht auf.

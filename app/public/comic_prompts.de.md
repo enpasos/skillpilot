@@ -54,8 +54,8 @@ Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unte
 
 **Texte & Rahmen:**
 
-- **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Tutor".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Tutor aus dem Browser. Seine SkillPilot-ID bleibt dort; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
+- **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Lerncoach".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Lerncoach aus dem Browser. Seine SkillPilot-ID bleibt dort; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
 
 **Schriftstil & Typografie:**
 
@@ -85,7 +85,7 @@ comic03.de.png
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Mission Control".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Sync: Der KI-Tutor tauscht Lernstand und Frontier mit Mission Control aus.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Sync: Der KI-Lerncoach tauscht Lernstand und Frontier mit Mission Control aus.".
 
 **Schriftstil & Typografie:**
 
@@ -191,12 +191,12 @@ comic07.de.png
 **Charaktere:**
 
 - **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und grauen Turnschuhen mit weißer Sohle. Er steht auf einer der Steinstufen, etwa auf halber Höhe, und blickt durch ein schwarzes Fernglas in Richtung des strahlenden Gipfels.
-- **KI-Tutor:** Ein kleiner, schwebender, weißer und blauer Roboter mit einem leuchtenden blauen 'O'-Symbol auf der Brust. Er hält eine Taschenlampe, deren gelber Lichtkegel die Stufen direkt vor Max beleuchtet.
+- **KI-Lerncoach:** Ein kleiner, schwebender, weißer und blauer Roboter mit einem leuchtenden blauen 'O'-Symbol auf der Brust. Er hält eine Taschenlampe, deren gelber Lichtkegel die Stufen direkt vor Max beleuchtet.
 
 **Texte & Rahmen:**
 
 - **Oben links:** Ein gelbes rechteckiges Textfeld mit einem schwarzen Rahmen. Darin steht die schwarze Überschrift: "Max behält den Überblick".
-- **Unten:** Ein großes weißes rechteckiges Textfeld mit einem schwarzen Rahmen, das sich über die gesamte Breite erstreckt. Darin steht der schwarze Text: "Der KI-Tutor führt Max Schritt für Schritt. Über Mission Control sieht Max neben seinen Erfolgen auch, was später noch kommt.".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit einem schwarzen Rahmen, das sich über die gesamte Breite erstreckt. Darin steht der schwarze Text: "Der KI-Lerncoach führt Max Schritt für Schritt. Über Mission Control sieht Max neben seinen Erfolgen auch, was später noch kommt.".
 
 **Schriftstil & Typografie:**
 
