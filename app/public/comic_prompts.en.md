@@ -32,37 +32,6 @@ comic01.en.png
 - **Consistent typeface:** Use for all text (headlines, speech bubbles, description boxes, digital displays) a **hand-drawn, sans-serif, clear, friendly, slightly irregular print typeface in comic style**, exactly like the font shown in `image_8.png`.
 - **Application:** This specific typeface must be used consistently for all written content across the entire image to ensure a uniform comic look.
 
----
-
-comic02.en.png
-
-**Style:** 2D cartoon illustration in comic style with bold black outline lines and flat, clear colors.
-
-**Layout & Composition:**
-The image is divided by a thick black diagonal line from top left to bottom right into two areas.
-
-**Left area (yellow background):**
-
-- **Character:** Max, a boy with brown, spiky hair, a red T-shirt, blue jeans, and red sneakers, sits on a blue office chair at a wooden desk.
-- **Action:** He types with focus on a black keyboard and looks at the black computer screen in front of him.
-
-**Right area (blue-gray background):**
-
-- **Character:** The small, floating white-and-blue robot with glowing blue eyes and a blue circle on its chest.
-- **Action & Object:** The robot holds up a glowing, blue rectangular holographic card in its right hand. On the card, in glowing white-blue lettering, it says: "START CODE: SP-7KQ9".
-
-**Text & Frames:**
-
-- **Top left:** A yellow rectangular text box with a black border and the black headline: "Chat with the AI learning coach".
-- **Bottom:** A large white rectangular text box with a black border. It contains the black text: "Max starts the learning coach from SkillPilot. His SkillPilot ID stays in SkillPilot; ChatGPT receives only a short-lived start code - then the learning chat begins.".
-
-**Font Style & Typography:**
-
-- **Consistent typeface:** Use for all text (headlines, speech bubbles, description boxes, digital displays) a **hand-drawn, sans-serif, clear, friendly, slightly irregular print typeface in comic style**, exactly like the font shown in `image_8.png`.
-- **Application:** This specific typeface must be used consistently for all written content across the entire image to ensure a uniform comic look.
-
----
-
 comic03.en.png
 
 
@@ -158,7 +127,7 @@ comic06.en.png
 **Scene & Characters:**
 
 - **Max:** A boy with brown, spiky hair, a red T-shirt, blue jeans, and red sneakers sits smiling at a wooden desk. He points with his right index finger at the computer screen.
-- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is the SkillPilot Login with "Create new SkillPilot ID", "Load saved login", and "Enter SkillPilot ID directly".
+- **Computer setup:** On the desk is a PC monitor and a keyboard. A web browser is open on the monitor. In the address bar is "https://skillpilot.com". Below it is the SkillPilot Login with the available access options.
 - **Connection:** The PC monitor is connected by cable to a large gray server rack standing to the right of the desk.
 - **Server rack:** The rack is labeled "MISSION CONTROL" in blue capital letters. It has multiple bays with blinking blue lights.
 
