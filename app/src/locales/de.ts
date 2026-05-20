@@ -1,92 +1,92 @@
 export const de = {
     startPage: {
-        subtitle: "so lerne ich ...",
+        subtitle: "So startest du in 5 Minuten.",
         cards: {
             whitepaper: {
-                title: "Whitepaper lesen",
-                description: "Erfahre mehr über das Konzept und die Vision."
+                title: "Konzept",
+                description: "Warum SkillPilot Lernen anders begleitet."
             },
             gpt: {
-                title: "SkillPilot Login",
-                badge: "Hauptstart",
-                description: "Log dich zum Lernen ein. Du musst dich dafür nicht registrieren. Du brauchst nur eine SkillPilot-ID, die du dir jederzeit erstellen lassen kannst. Zu ihr werden deine persönlichen Lernerfolge gespeichert.",
-                cta: "Einloggen oder ID erstellen"
+                title: "Lernen starten",
+                badge: "Start",
+                description: "Wähle dein Curriculum und starte deinen KI-Lerncoach. Dein Fortschritt bleibt erhalten.",
+                cta: "Jetzt starten"
             },
             explorer: {
                 title: "Cockpit",
-                description: "Fortschritt und Lernstand ansehen.",
+                description: "Sieh deinen Fortschritt und wähle nächste Lernziele.",
                 cta: "Cockpit öffnen"
             },
             curricula: {
-                title: "Curriculum-Champions",
-                description: "Curricula praktisch machen und voranbringen."
+                title: "Curricula",
+                description: "Lehrpläne ansehen und weiterentwickeln."
             }
         },
         login: {
-            back: "Zurück zur Auswahl",
+            back: "Zurück",
             roles: {
-                learner: "Lernerfolge",
-                trainer: "Kursorganisation (Lehrer)",
-                explorer: "Inhalte erkunden (Experten)"
+                learner: "Lernen",
+                trainer: "Lehrkräfte",
+                explorer: "Erkunden"
             },
-            loginTitle: "Login",
-            loginText: "Wähle deine SkillPilot-ID. Sie ist dein dauerhafter Schlüssel; die eigentliche Arbeit startet danach über eine temporäre Session.",
-            newLoginTitle: "Ich habe noch keinen Login",
+            loginTitle: "Lernen starten",
+            loginText: "Erstelle eine SkillPilot-ID oder lade deinen gespeicherten Zugang.",
+            newLoginTitle: "Neu starten",
             storedLoginTitle: "Gespeicherten Login laden",
-            storedProfileLabel: "Gespeicherter Login",
-            directIdTitle: "SkillPilot-ID direkt eingeben",
+            storedProfileLabel: "Gespeicherter Zugang",
+            directIdTitle: "Vorhandene SkillPilot-ID eingeben",
             loginNameLabel: "Name auf diesem Gerät",
             passwordLabel: "Passwort",
-            loadStoredLogin: "Login laden",
-            loadingStoredLogin: "Login wird geladen...",
-            deleteStoredLogin: "Gespeicherten Login löschen",
-            saveLocalLoginTitle: "Diesen Login auf diesem Gerät speichern",
-            saveLocalLoginHint: "Die SkillPilot-ID wird nur lokal im Browser gespeichert und mit deinem Passwort verschlüsselt. Das Passwort wird nicht gespeichert.",
-            saveLocalLogin: "Verschlüsselt speichern",
+            loadStoredLogin: "Zugang laden",
+            loadingStoredLogin: "Lade...",
+            deleteStoredLogin: "Zugang löschen",
+            saveLocalLoginTitle: "Zugang auf diesem Gerät merken",
+            saveLocalLoginHint: "Deine SkillPilot-ID wird verschlüsselt im Browser gespeichert.",
+            saveLocalLogin: "Speichern",
             savingLocalLogin: "Speichere...",
-            localLoginSaved: "Login wurde lokal verschlüsselt gespeichert.",
-            localLoginLoaded: "Login wurde geladen.",
-            localLoginFailed: "Login konnte nicht verarbeitet werden.",
+            localLoginSaved: "Zugang gespeichert.",
+            localLoginLoaded: "Zugang geladen.",
+            localLoginFailed: "Zugang konnte nicht geladen werden.",
             idLabel: "SkillPilot-ID",
-            requestNewId: "Neue SkillPilot-ID erstellen",
-            idWarning: "Wichtig: Diese ID ist dein dauerhafter Zugang. Teile sie nicht öffentlich.",
+            requestNewId: "Neue ID erstellen",
+            idWarning: "Bewahre diese ID gut auf. Sie öffnet deinen Lernstand.",
             checkButton: "Weiter",
             checking: "Prüfe...",
             startButton: "Starten",
             cockpitButton: "Cockpit öffnen",
-            startPromptLabel: "Startcode für SkillPilot Lerncoach",
-            startPromptHint: "Deine SkillPilot-ID bleibt im Browser. ChatGPT bekommt nur einen eindeutigen, einmalig nutzbaren Startcode.",
+            startPromptLabel: "Startcode",
+            startPromptHint: "Kopiere den Startcode in ChatGPT, um deinen Lerncoach zu starten.",
             copyStartPrompt: "Startcode kopieren",
-            openChatGpt: "SkillPilot Lerncoach starten",
-            startPromptCopied: "Startcode wurde kopiert.",
-            startPromptCopyFailed: "Startcode konnte nicht erzeugt oder an ChatGPT übergeben werden. Bitte versuche es erneut.",
-            dashboardButton: "Dashboard öffnen",
-            curriculumStepTitle: "Curriculum",
-            curriculumStepText: "Wähle, womit diese SkillPilot-ID arbeiten soll. Diese Auswahl wird zu deinem Lernstand gespeichert.",
-            trainerCurriculumStepTitle: "Kursorganisation einrichten",
-            trainerCurriculumStepText: "Wähle das Curriculum für deine Kursansicht. Die Auswahl wird nur lokal auf diesem Gerät gespeichert.",
+            openChatGpt: "Lerncoach starten",
+            startPromptCopied: "Startcode kopiert.",
+            startPromptCopyFailed: "Der Startcode konnte nicht erzeugt werden. Bitte versuche es erneut.",
+            dashboardButton: "Cockpit öffnen",
+            curriculumStepTitle: "Curriculum wählen",
+            curriculumStepText: "Wähle, womit du lernen möchtest.",
+            trainerCurriculumStepTitle: "Kurs vorbereiten",
+            trainerCurriculumStepText: "Wähle das Curriculum für deine Kursansicht.",
             trainerDashboardButton: "Kursorganisation öffnen",
-            explorerCurriculumStepTitle: "Inhalte erkunden",
-            explorerCurriculumStepText: "Wähle ein Curriculum, um Lernziele, Themen und Zusammenhänge ohne Lernenden-Login zu erkunden.",
+            explorerCurriculumStepTitle: "Curriculum erkunden",
+            explorerCurriculumStepText: "Wähle ein Curriculum und sieh dir Lernziele und Zusammenhänge an.",
             explorerDashboardButton: "Explorer öffnen",
-            startStepTitle: "Start",
-            startStepText: "Intern wird eine temporäre Session vorbereitet. Das Cockpit startet direkt; der SkillPilot Lerncoach startet mit einem kurzlebigen Startcode.",
+            startStepTitle: "Los geht’s",
+            startStepText: "Starte den Lerncoach in ChatGPT oder arbeite im Cockpit weiter.",
             curriculumLabel: {
                 select: "Curriculum wählen",
                 yours: "Dein Curriculum"
             },
             trainerInfo: {
-                title: "Lokale Datenhaltung",
-                text: "Ihre Daten werden nur lokal gespeichert."
+                title: "Lokal gespeichert",
+                text: "Kursdaten bleiben auf diesem Gerät."
             }
         },
         banner: {
-            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account.\nNutze SkillPilot im Browser oder im ChatGPT-Textchat. In der App kannst du deine Antwort diktieren, als Text senden und Fotos von handschriftlichen Lösungen hochladen. Voice Chat funktioniert dafür leider noch nicht."
+            text: "**Kostenlos.** Du brauchst nur einen ChatGPT-Account. Bitte nutze den normalen ChatGPT-Textchat."
         },
         links: {
             statistics: "Statistiken",
             workbench: "Workbench",
-            whitepaper: "Whitepaper"
+            whitepaper: "Konzept"
         },
         footer: {
             privacy: "Datenschutz",
