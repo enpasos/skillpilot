@@ -2,7 +2,7 @@
 
 **Stand:** 20. Mai 2026
 
-💡 **Tipp:** Der Voice-Mode in ChatGPT funktioniert aktuell nicht mit SkillPilot: Wenn du ihn einmal benutzt, kann ChatGPT danach in diesem Chat nicht mehr mit dem Backend sprechen. Wir haben dazu ein Ticket bei ChatGPT/OpenAI eröffnet und warten auf den Fix. Verwende deshalb auch in der ChatGPT-Web-App keinen Voice-Mode. Du kannst weiterhin im Chat mit dem SkillPilot Lerncoach arbeiten, Fotos deiner Aufgaben oder Papierlösungen hochladen und Text per Sprachdiktat eingeben; nur den ChatGPT-Voice-Mode solltest du nicht verwenden.
+💡 **Tipp:** Der Voice-Mode in ChatGPT funktioniert aktuell nicht mit SkillPilot: Wenn du ihn einmal benutzt, kann ChatGPT danach in diesem Chat nicht mehr mit dem Backend sprechen. Wir haben dazu ein Ticket bei ChatGPT/OpenAI eröffnet und warten auf den Fix. Du kannst weiterhin im Chat mit dem SkillPilot Lerncoach arbeiten, Fotos deiner Aufgaben oder Papierlösungen hochladen und Text per Sprachdiktat eingeben; nur den ChatGPT-Voice-Mode solltest du nicht verwenden.
 
 🔑 **Wichtig:** Deine **SkillPilot-ID** ist der dauerhafte Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern. ChatGPT sieht die SkillPilot-ID nie.
 
