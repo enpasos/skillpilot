@@ -18,8 +18,8 @@ export const en = {
                 cta: "Open Cockpit"
             },
             curricula: {
-                title: "Curricula",
-                description: "View and further develop curricula."
+                title: "Curriculum Champions",
+                description: "Contribute and make curricula practical."
             }
         },
         login: {
