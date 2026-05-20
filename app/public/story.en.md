@@ -4,17 +4,19 @@
 
 💡 **Tip:** Voice mode in ChatGPT currently does not work with SkillPilot: after you use it once, ChatGPT can no longer talk to the backend. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Do not use voice mode in the ChatGPT web app for now. You can still work with the SkillPilot Learning Coach in chat, upload photos of tasks or paper solutions, and dictate text with your device; just avoid ChatGPT voice mode.
 
-🔑 **Important:** Your **SkillPilot ID** is the permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser. ChatGPT never sees the SkillPilot ID: when you start the SkillPilot Learning Coach, SkillPilot creates a start code that is valid for 5 minutes. After redeeming it, the learning coach in ChatGPT receives a backend session ID that is valid for 24 hours.
+🔑 **Important:** The SkillPilot Learning Coach starts through a short-lived start code. After redeeming it, ChatGPT works with a temporary session; persistent access details are not shown in the learning chat.
 
 ---
 
-## Quick start in 5 steps
+## Quick Start: Shared Start, Then Two Paths
 
 1. Open https://skillpilot.com.
 2. Click **Login**.
-3. Accept the notice and choose your login path: create a new SkillPilot ID, load a saved login, or enter your existing ID.
-4. Choose your curriculum, then select **Start SkillPilot Learning Coach** or **Open Cockpit**.
-5. In the ChatGPT window, send only the prepared start code. Your SkillPilot ID does not appear in the GPT.
+3. Accept the notice, choose your login path, then choose your curriculum.
+4. Choose one of the two paths:
+   - **Path A: Start SkillPilot Learning Coach** - SkillPilot creates a short-lived start code for the chat.
+   - **Path B: Open Cockpit** - you go directly to the overview with learning progress and next goals.
+5. You can switch between Cockpit and Learning Coach later.
 
 ---
 
@@ -25,40 +27,41 @@
 
 | <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
 | --- |
-| *On the homepage, the main start button takes you to the SkillPilot Login. You do not need to register with a name or email address; your learning progress is linked to your SkillPilot ID.* |
+| *On the homepage, the main start button takes you to the SkillPilot Login. You do not need to register with a name or email address.* |
 
 ---
 
-## 2) Login: create, load, or enter a SkillPilot ID
+## 2) Choose login
 
-| <img src="../screenshot_02.en.png" alt="SkillPilot Login with ID creation and direct ID entry" width="700" /> |
-| --- |
-| *In the login, choose a path: create a new SkillPilot ID, load a saved local login, or enter an existing ID directly. This ID stays in SkillPilot; it is not passed to ChatGPT.* |
-
-| <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
-| --- |
+| *In the login, choose your access path. Starting the learning coach then uses a short-lived start code.* |
 
 ---
 
-## 3) Choose curriculum and prepare start
+## 3) Choose Curriculum: Chat or Cockpit
 
 | <img src="../screenshot_03.en.png" alt="Choose curriculum and start the SkillPilot Learning Coach or Cockpit" width="700" /> |
 | --- |
-| *After login, choose your curriculum. Then either open the cockpit directly or start the SkillPilot Learning Coach. For the learning coach, SkillPilot creates a short-lived start code; the permanent SkillPilot ID stays in the browser and backend.* |
+| *After login, choose your curriculum. Then decide: start the Learning Coach or open the Cockpit.* |
 
-**Remember:** If you do not save a local login, keep your SkillPilot ID safe. Without it, you cannot reopen your progress later.
+**Path A: Start the Learning Coach**  
+SkillPilot creates a short-lived start code. Then you continue in the ChatGPT window.
+
+**Path B: Open the Cockpit**  
+You go directly to the overview and see learning progress, next goals, and content.
+
+**Remember:** If you do not save a local login, use your chosen access path again on your next visit.
 
 ---
 
-## 4) Start the learning coach in ChatGPT
+## 4A) Path A: Start the Learning Coach in ChatGPT
 
 | <img src="../screenshot_04.en.png" alt="ChatGPT with prepared SkillPilot start code" width="700" /> |
 | --- |
-| *The ChatGPT window contains only the prepared start code. Send this message; the SkillPilot Learning Coach redeems the start code with the backend and then receives a temporary session ID. The SkillPilot ID does not appear in the GPT.* |
+| *The ChatGPT window contains only the prepared start code. Send this message; the SkillPilot Learning Coach redeems the start code with the backend and then receives a temporary session.* |
 
 ---
 
-## 5) Start the first learning session
+## 5A) Path A: Start the First Learning Session
 
 | <img src="../screenshot_05.en.png" alt="Entry into the learning goal" width="700" /> |
 | --- |
@@ -72,7 +75,7 @@
 
 ---
 
-## 6) How a learning session works (example)
+## 6A) Path A: How a Learning Session Works (Example)
 
 | <img src="../screenshot_06.en.png" alt="Deepening and application check" width="700" /> |
 | --- |
@@ -88,14 +91,12 @@
 
 ---
 
-## 7) View progress: Cockpit
+## 4B) Path B: Open the Cockpit
 
 | <img src="../comic05.en.png" alt="Cockpit" width="650" /> |
 | --- |
 
-| <img src="../screenshot_09.en.png" alt="Cockpit with SkillPilot Login" width="700" /> |
-| --- |
-| *In the cockpit, you are connected through your SkillPilot ID. If you saved a local login, you load it with your password on the next visit; otherwise you enter the ID directly again.* |
+| *In the cockpit, you are connected to your learning progress. If you saved a local login, you load it with your password on the next visit.* |
 
 | <img src="../comic06.en.png" alt="Connection to Mission Control" width="650" /> |
 | --- |
@@ -106,7 +107,7 @@
 
 ---
 
-## 8) Keep the overview and continue
+## 5B) Path B: Keep the Overview and Continue
 
 | <img src="../screenshot_11.en.png" alt="Cockpit: learning goals and next steps" width="900" /> |
 | --- |
