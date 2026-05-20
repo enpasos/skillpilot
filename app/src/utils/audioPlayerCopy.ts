@@ -10,14 +10,14 @@ export interface AudioPlayerCopy {
 export const getAudioPlayerCopy = (language: LabelLanguage): AudioPlayerCopy => (
   language === 'en'
     ? {
-        notebookLabel: 'Listen to the SkillPilot Deep Dive',
-        subtitle: 'Deep Dive, generated with NotebookLM',
+        notebookLabel: 'Listen to the SkillPilot Podcast',
+        subtitle: 'The idea behind SkillPilot, explained briefly.',
         playLabel: 'Play',
         pauseLabel: 'Pause',
       }
     : {
-        notebookLabel: 'SkillPilot Deep Dive anhören',
-        subtitle: 'Deep Dive, generiert mit NotebookLM',
+        notebookLabel: 'SkillPilot Podcast anhören',
+        subtitle: 'Die Idee hinter SkillPilot kompakt erklärt.',
         playLabel: 'Abspielen',
         pauseLabel: 'Pause',
       }
