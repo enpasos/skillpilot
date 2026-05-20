@@ -18,8 +18,8 @@ export const de = {
                 cta: "Cockpit öffnen"
             },
             curricula: {
-                title: "Curricula",
-                description: "Lehrpläne ansehen und weiterentwickeln."
+                title: "Curriculum-Champions",
+                description: "Mitmachen und Curricula praxistauglich machen."
             }
         },
         login: {
