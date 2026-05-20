@@ -33,7 +33,7 @@
 
 | <img src="../screenshot_02.en.png" alt="SkillPilot Login with ID creation and direct ID entry" width="700" /> |
 | --- |
-| *In the login, choose a path: create a new SkillPilot ID, load a saved local login, or enter an existing ID directly. This ID stays in SkillPilot; it is not passed to ChatGPT.* |
+| *This is where your SkillPilot ID is created or reused: if you do not have a login yet, SkillPilot generates a new pseudonymous ID for you. If you already have an ID, you enter it directly or load a saved local login. This ID is your permanent access key to your learning state. Later, the SkillPilot Learning Coach only receives a short-lived start code; ChatGPT never sees the SkillPilot ID.* |
 
 | <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
 | --- |
