@@ -25,7 +25,7 @@
 
 | <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
 | --- |
-| *On the homepage, the main start button takes you to the SkillPilot Login. You do not need to register with a name or email address; your learning progress is linked to your SkillPilot ID.* |
+| *To learn, simply log in from the homepage. It costs nothing and you do not need to register with a name or email address. Your learning progress is stored under a pseudonymous SkillPilot ID generated for you. The SkillPilot AI Learning Coach does not know this SkillPilot ID. ChatGPT currently acts as the SkillPilot AI Learning Coach; you need a ChatGPT account for that, and a free account is enough.* |
 
 ---
 

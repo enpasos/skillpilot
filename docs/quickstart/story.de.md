@@ -25,7 +25,7 @@
 
 | <img src="../screenshot_01.de.png" alt="SkillPilot Startseite mit Kacheln" width="700" /> |
 | --- |
-| *Auf der Startseite führt der Hauptstart in den SkillPilot Login. Du brauchst keine Registrierung mit Namen oder E-Mail; dein Lernstand hängt an deiner SkillPilot-ID.* |
+| *Zum Lernen loggst du dich einfach auf der Startseite ein. Das kostet nichts und du musst dich nicht mit Namen oder E-Mail registrieren. Deine Lernerfolge werden unter einer pseudonymen SkillPilot-ID gespeichert, die für dich generiert wird. Der SkillPilot KI-Lerncoach kennt diese SkillPilot-ID nicht. Als SkillPilot KI-Lerncoach fungiert derzeit ChatGPT; dafür brauchst du einen ChatGPT-Zugang, ein kostenloser Account reicht.* |
 
 ---
 
