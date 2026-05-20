@@ -2,7 +2,7 @@
 
 **Status:** May 20, 2026
 
-SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and keep track of your progress in the cockpit.
+SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
 All you need is a browser and a ChatGPT account. A free ChatGPT account is enough.
 
@@ -130,10 +130,6 @@ The SkillPilot Learning Coach redeems the start code with the backend and starts
 | --- |
 | *In the cockpit, you keep track of learning goals, progress, and next steps.* |
 
-| <img src="../screenshot_09.en.png" alt="Cockpit with SkillPilot Login" width="700" /> |
-| --- |
-| *In the cockpit, you are connected through your SkillPilot ID. If you saved a local login, you load it with your password on your next visit. Otherwise, you enter your SkillPilot ID directly again.* |
-
 | <img src="../comic06.en.png" alt="Connection with Mission Control" width="650" /> |
 | --- |
 | *Cockpit and learning coach work with the same learning state. This lets you switch between overview and learning.* |
@@ -169,6 +165,10 @@ No. Your SkillPilot ID stays with SkillPilot. To start in ChatGPT, only a short-
 ### Do I Need ChatGPT Plus?
 
 No. A free ChatGPT account is enough.
+
+### Do I Need a Computer?
+
+No. A phone is enough. You can write on paper as usual, then take a photo with your phone and upload it to the chat.
 
 ### Can I Use ChatGPT Voice Mode?
 

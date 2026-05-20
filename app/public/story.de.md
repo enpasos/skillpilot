@@ -2,7 +2,7 @@
 
 **Stand:** 20. Mai 2026
 
-SkillPilot begleitet dich Schritt für Schritt durch dein Curriculum. Du startest einen KI-Lerncoach, arbeitest an passenden Lernzielen und behältst deinen Fortschritt im Cockpit.
+SkillPilot begleitet dich Schritt für Schritt durch dein Curriculum. Du startest einen KI-Lerncoach, arbeitest an passenden Lernzielen und verfolgst deinen Fortschritt im Cockpit.
 
 Du brauchst nur einen Browser und einen ChatGPT-Account. Ein kostenloser ChatGPT-Account reicht.
 
@@ -130,10 +130,6 @@ Der SkillPilot Lerncoach löst den Startcode beim Backend ein und startet deine 
 | --- |
 | *Im Cockpit behältst du den Überblick über Lernziele, Fortschritt und nächste Schritte.* |
 
-| <img src="../screenshot_09.de.png" alt="Cockpit mit SkillPilot Login" width="700" /> |
-| --- |
-| *Im Cockpit bist du über deine SkillPilot-ID verbunden. Wenn du einen lokalen Login gespeichert hast, lädst du ihn beim nächsten Besuch mit deinem Passwort. Sonst gibst du deine SkillPilot-ID wieder direkt ein.* |
-
 | <img src="../comic06.de.png" alt="Verbindung mit Mission Control" width="650" /> |
 | --- |
 | *Cockpit und Lerncoach arbeiten mit demselben Lernstand. So kannst du zwischen Überblick und Lernen wechseln.* |
@@ -169,6 +165,10 @@ Nein. Deine SkillPilot-ID bleibt bei SkillPilot. Für den Start in ChatGPT wird 
 ### Brauche ich ChatGPT Plus?
 
 Nein. Ein kostenloser ChatGPT-Account reicht.
+
+### Brauche ich einen Computer?
+
+Nein. Ein Handy reicht. Du kannst wie gewohnt auf Papier schreiben, dann mit dem Handy ein Foto machen und es in den Chat hochladen.
 
 ### Kann ich den ChatGPT-Voice-Mode verwenden?
 
