@@ -1,87 +1,87 @@
 export const en = {
     startPage: {
-        subtitle: "how I learn ...",
+        subtitle: "Start in 5 minutes.",
         cards: {
             whitepaper: {
-                title: "Read Whitepaper",
-                description: "Learn more about the concept and vision."
+                title: "Concept",
+                description: "Why SkillPilot supports learning differently."
             },
             gpt: {
-                title: "SkillPilot Login",
-                badge: "Main start",
-                description: "Log in to learn. You do not need to register. You only need a SkillPilot ID, which you can create at any time. Your personal learning progress is saved to that ID.",
-                cta: "Log in or create ID"
+                title: "Start Learning",
+                badge: "Start",
+                description: "Choose your curriculum and start your AI learning coach. Your progress is preserved.",
+                cta: "Start now"
             },
             explorer: {
                 title: "Cockpit",
-                description: "View your progress and learning status.",
+                description: "View your progress and choose next learning goals.",
                 cta: "Open Cockpit"
             },
             curricula: {
-                title: "Curriculum Champions",
-                description: "Drive curricula forward with the community."
+                title: "Curricula",
+                description: "View and further develop curricula."
             }
         },
         login: {
-            back: "Back to Selection",
+            back: "Back",
             roles: {
-                learner: "My Progress",
-                trainer: "Course Management (Teachers)",
-                explorer: "Explore Content (Experts)"
+                learner: "Learning",
+                trainer: "Teachers",
+                explorer: "Explore"
             },
-            loginTitle: "Login",
-            loginText: "Choose your SkillPilot ID. It is your permanent key; actual work starts through a temporary session afterwards.",
-            newLoginTitle: "I do not have a login yet",
+            loginTitle: "Start Learning",
+            loginText: "Create a SkillPilot ID or load your saved access.",
+            newLoginTitle: "Start new",
             storedLoginTitle: "Load saved login",
-            storedProfileLabel: "Saved login",
-            directIdTitle: "Enter SkillPilot ID directly",
+            storedProfileLabel: "Saved access",
+            directIdTitle: "Enter existing SkillPilot ID",
             loginNameLabel: "Name on this device",
             passwordLabel: "Password",
-            loadStoredLogin: "Load login",
-            loadingStoredLogin: "Loading login...",
-            deleteStoredLogin: "Delete saved login",
-            saveLocalLoginTitle: "Save this login on this device",
-            saveLocalLoginHint: "The SkillPilot ID is stored only in this browser and encrypted with your password. The password is not stored.",
-            saveLocalLogin: "Save encrypted",
+            loadStoredLogin: "Load access",
+            loadingStoredLogin: "Loading...",
+            deleteStoredLogin: "Delete access",
+            saveLocalLoginTitle: "Remember access on this device",
+            saveLocalLoginHint: "Your SkillPilot ID is stored encrypted in the browser.",
+            saveLocalLogin: "Save",
             savingLocalLogin: "Saving...",
-            localLoginSaved: "Login was saved locally with encryption.",
-            localLoginLoaded: "Login was loaded.",
-            localLoginFailed: "Login could not be processed.",
+            localLoginSaved: "Access saved.",
+            localLoginLoaded: "Access loaded.",
+            localLoginFailed: "Access could not be loaded.",
             idLabel: "SkillPilot ID",
-            requestNewId: "Create new SkillPilot ID",
-            idWarning: "Important: This ID is your permanent access key. Do not share it publicly.",
+            requestNewId: "Create new ID",
+            idWarning: "Keep this ID safe. It opens your learning state.",
             checkButton: "Continue",
             checking: "Checking...",
             startButton: "Start",
             cockpitButton: "Open Cockpit",
-            startPromptLabel: "Start code for SkillPilot Learning Coach",
-            startPromptHint: "Your SkillPilot ID stays in the browser. ChatGPT only receives a unique, one-time start code.",
+            startPromptLabel: "Start code",
+            startPromptHint: "Copy the start code into ChatGPT to start your learning coach.",
             copyStartPrompt: "Copy start code",
-            openChatGpt: "Start SkillPilot Learning Coach",
+            openChatGpt: "Start learning coach",
             startPromptCopied: "Start code copied.",
-            startPromptCopyFailed: "Could not create the start code or pass it to ChatGPT. Please try again.",
-            dashboardButton: "Open Dashboard",
-            curriculumStepTitle: "Curriculum",
-            curriculumStepText: "Choose what this SkillPilot ID should work with. This selection is stored with your learner state.",
-            trainerCurriculumStepTitle: "Set up course management",
-            trainerCurriculumStepText: "Choose the curriculum for your course view. The selection is stored only locally on this device.",
-            trainerDashboardButton: "Open course management",
-            explorerCurriculumStepTitle: "Explore content",
-            explorerCurriculumStepText: "Choose a curriculum to explore goals, topics, and relationships without a learner login.",
+            startPromptCopyFailed: "The start code could not be created. Please try again.",
+            dashboardButton: "Open Cockpit",
+            curriculumStepTitle: "Choose curriculum",
+            curriculumStepText: "Choose what you want to learn with.",
+            trainerCurriculumStepTitle: "Prepare course",
+            trainerCurriculumStepText: "Choose the curriculum for your course view.",
+            trainerDashboardButton: "Open course organization",
+            explorerCurriculumStepTitle: "Explore curriculum",
+            explorerCurriculumStepText: "Choose a curriculum and view learning goals and relationships.",
             explorerDashboardButton: "Open explorer",
-            startStepTitle: "Start",
-            startStepText: "A temporary session is prepared internally. The cockpit opens directly; the SkillPilot Learning Coach starts with a short-lived start code.",
+            startStepTitle: "Let’s go",
+            startStepText: "Start the learning coach in ChatGPT or continue in the cockpit.",
             curriculumLabel: {
-                select: "Select Curriculum",
-                yours: "Your Curriculum"
+                select: "Choose curriculum",
+                yours: "Your curriculum"
             },
             trainerInfo: {
-                title: "Local Data Storage",
-                text: "Your data is stored locally only."
+                title: "Stored locally",
+                text: "Course data stays on this device."
             }
         },
         banner: {
-            text: "**Free.** You only need a ChatGPT account.\nUse SkillPilot in the browser or in ChatGPT text chat. In the app, you can dictate your answer, send it as text, and upload photos of handwritten solutions. Voice Chat unfortunately does not work for this yet."
+            text: "**Free.** You only need a ChatGPT account. Please use the normal ChatGPT text chat."
         },
         links: {
             statistics: "Statistics",
