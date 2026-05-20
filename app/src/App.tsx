@@ -153,6 +153,11 @@ const App: React.FC = () => {
     isWhitepaperRoute ||
     isQuickstartRoute ||
     isStartRoute
+  const isSetupOnlyRoleRoute =
+    normalizedPath === '/trainer' ||
+    normalizedPath.startsWith('/trainer/') ||
+    normalizedPath === '/explorer' ||
+    normalizedPath.startsWith('/explorer/')
 
   const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
@@ -676,12 +681,18 @@ const App: React.FC = () => {
     if (fallbackLandscapeId && params.get('l') !== fallbackLandscapeId) {
       params.set('l', fallbackLandscapeId)
     }
-    const nextSearch = params.toString()
-    const targetPath = role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
-    return <Navigate to={`${targetPath}${nextSearch ? `?${nextSearch}` : ''}`} replace />
+    if (fallbackLandscapeId) {
+      const nextSearch = params.toString()
+      const targetPath = role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
+      return <Navigate to={`${targetPath}${nextSearch ? `?${nextSearch}` : ''}`} replace />
+    }
   }
 
   if (!hasActiveSession) {
+    if (isSetupOnlyRoleRoute) {
+      return <Navigate to="/" replace />
+    }
+
     return (
       <SessionSetup
         role={role}
@@ -730,6 +741,10 @@ const App: React.FC = () => {
   // If we have a session but no landscape selected (and not pending), show SessionSetup to let user pick one.
   // This effectively acts as the "Login/Start" screen when context is missing.
   if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId) {
+    if (isSetupOnlyRoleRoute) {
+      return <Navigate to="/" replace />
+    }
+
     return (
       <SessionSetup
         role={role}
