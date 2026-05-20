@@ -33,6 +33,37 @@ comic01.de.png
 - **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
 - **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
 
+---
+
+comic02.de.png
+
+**Stil:** 2D-Cartoon-Illustration im Comic-Stil mit kräftigen schwarzen Konturlinien und flächigen, klaren Farben.
+
+**Layout & Komposition:**
+Das Bild ist durch eine dicke, schwarze diagonale Linie von oben links nach unten rechts in zwei Bereiche geteilt.
+
+**Linker Bereich (Gelber Hintergrund):**
+
+- **Charakter:** Max, ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt auf einem blauen Bürostuhl an einem Holzschreibtisch.
+- **Aktion:** Er tippt konzentriert auf einer schwarzen Tastatur und blickt auf den schwarzen Computerbildschirm vor ihm.
+
+**Rechter Bereich (Blau-Grauer Hintergrund):**
+
+- **Charakter:** Der kleine, schwebende weiße und blaue Roboter mit leuchtenden blauen Augen und einem blauen Kreis auf der Brust.
+- **Aktion & Objekt:** Der Roboter hält mit seiner rechten Hand eine leuchtende, blaue, rechteckige holografische Karte hoch. Auf der Karte steht in leuchtender weiß-blauer Schrift: "STARTCODE: SP-7KQ9".
+
+**Texte & Rahmen:**
+
+- **Oben links:** Ein gelbes rechteckiges Textfeld mit schwarzem Rahmen und der schwarzen Überschrift: "Chat mit dem KI-Lerncoach".
+- **Unten:** Ein großes weißes rechteckiges Textfeld mit schwarzem Rahmen. Darin steht der schwarze Text: "Max startet den Lerncoach aus SkillPilot. Seine SkillPilot-ID bleibt in SkillPilot; ChatGPT bekommt nur einen kurzlebigen Startcode – dann startet der Lernchat.".
+
+**Schriftstil & Typografie:**
+
+- **Konsistente Schriftart:** Verwende für alle Texte (Überschriften, Sprechblasen, Beschreibungsfelder, digitale Anzeigen) eine **handgezeichnete, serifenlose, klare, freundliche und leicht unregelmäßige Druckschrift im Comic-Stil** Schriftart.
+- **Anwendung:** Diese spezifische Schriftart muss für alle geschriebenen Inhalte im gesamten Bild konsistent verwendet werden, um einen einheitlichen Comic-Look zu gewährleisten.
+
+---
+
 comic03.de.png
  
 
@@ -129,7 +160,7 @@ comic06.de.png
 **Szenerie & Charaktere:**
 
 - **Max:** Ein Junge mit braunen, stacheligen Haaren, rotem T-Shirt, blauen Jeans und roten Turnschuhen, sitzt lächelnd an einem Holzschreibtisch. Er zeigt mit dem rechten Zeigefinger auf den Computerbildschirm.
-- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist der SkillPilot Login mit den verfügbaren Zugangsoptionen zu sehen.
+- **Computer-Setup:** Auf dem Schreibtisch steht ein PC-Monitor, eine Tastatur. Auf dem Monitor ist ein Webbrowser geöffnet. In der Adressleiste steht "https://skillpilot.com". Darunter ist der SkillPilot Login zu sehen: "Neue SkillPilot-ID erstellen", "Gespeicherten Login laden" und "SkillPilot-ID direkt eingeben".
 - **Verbindung:** Vom PC-Monitor ist per Kabel verbunden mit einem großen, grauen Server-Rack, das rechts neben dem Schreibtisch steht.
 - **Server-Rack:** Das Rack ist beschriftet mit "MISSION CONTROL" in blauen Großbuchstaben. Es hat mehrere Einschübe mit blinkenden blauen Leuchten.
 

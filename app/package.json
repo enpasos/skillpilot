@@ -8,7 +8,7 @@
     "build": "npm run deploy:assets && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts",
+    "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py",
     "validate:graph": "tsx scripts/validateGraph.ts",
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
