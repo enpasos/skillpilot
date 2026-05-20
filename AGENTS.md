@@ -651,18 +651,18 @@ Guiding principle:
 - Does **not** store:
   - names, nicknames, e‑mails, or other PII.
 
-**Language model / learning coach GPT**
+**Language model / SkillPilot Learning Coach**
 
 - May ask for:
   - a *nickname* to address the learner in the conversation,
   - the `skillpilotId` to access their state via tools.
-- For all tool/API calls, the GPT must use **only the `skillpilotId`** (or a parameter clearly documented as such), never the nickname or other PII.
+- For all tool/API calls, the learning coach must use **only the documented pseudonymous/session parameter**, never the nickname or other PII.
 
 **User-local (browser / ChatGPT UI)**
 
 - The learner is responsible for:
   - keeping their `skillpilotId` somewhere safe (e.g. in the browser, a notes file),
-  - deciding which nickname they share with the GPT or teacher.
+  - deciding which nickname they share with the learning coach or teacher.
 - Local frontends (web GUI, notebooks, etc.) may:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.

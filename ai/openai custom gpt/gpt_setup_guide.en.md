@@ -1,6 +1,6 @@
-# SkillPilot GPT Setup Guide
+# SkillPilot Learning Coach Setup Guide
 
-This file documents how to configure a custom GPT in ChatGPT so it can act as a **SkillPilot learning coach**.
+This file documents how to configure a custom GPT in ChatGPT so it can act as the **SkillPilot Learning Coach**.
 
 The goal: a GPT that starts from a browser-generated SkillPilot start code, redeems it into a chat session, guides learners through the SkillPilot competence graph, and updates mastery via `setMastery`.
 
@@ -13,7 +13,7 @@ The goal: a GPT that starts from a browser-generated SkillPilot start code, rede
 
 ---
 
-## 2. Creating the SkillPilot Learning Coach GPT
+## 2. Creating the SkillPilot Learning Coach in the GPT builder
 
 Open **Create → New GPT → Configure** and fill out the fields as follows.
 
@@ -21,7 +21,7 @@ Open **Create → New GPT → Configure** and fill out the fields as follows.
 
 - **Name**
   ```text
-  SkillPilot GPT
+  SkillPilot Learning Coach
   ```
 
   - **Description**
@@ -92,7 +92,7 @@ In the **Actions** section:
 
 -----
 
-## 6. How the GPT and SkillPilot API work together
+## 6. How the SkillPilot Learning Coach and SkillPilot API work together
 
 End-to-end flow for a typical learner session:
 

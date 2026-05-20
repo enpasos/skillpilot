@@ -1,8 +1,8 @@
-# SkillPilot ChatGPT-Start mit Startcode und Session-Token
+# SkillPilot Lerncoach: ChatGPT-Start mit Startcode und Session-Token
 
 Status: Implementiert als erster Web-Startcode-Flow am 2026-05-19.
 
-Dieses Dokument beschreibt den Browser-first-Flow fuer den Start von SkillPilot GPT. Ziel ist, dass Lernende auf `skillpilot.com` starten, waehrend ChatGPT nur kurzlebige Start- und Session-Schluessel sieht. Die dauerhafte SkillPilot-ID bleibt im Browser und serverseitig im SkillPilot-Backend.
+Dieses Dokument beschreibt den Browser-first-Flow fuer den Start des SkillPilot Lerncoachs in ChatGPT. Ziel ist, dass Lernende auf `skillpilot.com` starten, waehrend ChatGPT nur kurzlebige Start- und Session-Schluessel sieht. Die dauerhafte SkillPilot-ID bleibt im Browser und serverseitig im SkillPilot-Backend.
 
 Implementierungsstand:
 
@@ -18,13 +18,13 @@ Implementierungsstand:
 Der normale Einstieg ist immer:
 
 ```text
-skillpilot.com -> SkillPilot Backend -> SkillPilot GPT -> SkillPilot Backend
+skillpilot.com -> SkillPilot Backend -> SkillPilot Lerncoach (ChatGPT) -> SkillPilot Backend
 ```
 
 Nicht vorgesehen fuer den normalen Launch:
 
 ```text
-SkillPilot GPT -> neue SkillPilot-ID erzeugen -> User muss ID selbst sichern
+SkillPilot Lerncoach -> neue SkillPilot-ID erzeugen -> User muss ID selbst sichern
 ```
 
 Die SkillPilot-ID bleibt das dauerhafte Sicherheits- und Wiedererkennungsmerkmal eines Lernenden. Sie soll aber nicht in ChatGPT-URLs, ChatGPT-Prompts oder ChatGPT-Antworten transportiert werden.
@@ -59,7 +59,7 @@ Eigenschaften:
 
 ### Chat-Session-Token
 
-Das Chat-Session-Token ist der Schluessel, mit dem SkillPilot GPT nach dem Startcode-Redeem weiterarbeitet.
+Das Chat-Session-Token ist der Schluessel, mit dem der SkillPilot Lerncoach nach dem Startcode-Redeem weiterarbeitet.
 
 Eigenschaften:
 
@@ -82,25 +82,25 @@ Eigenschaften:
 3. Der Browser speichert die aktive SkillPilot-ID nur lokal fuer diese Browser-Session. Optional kann sie lokal passwortverschluesselt als benannter Login gesichert werden.
 4. Der Lernende waehlt eine Lernlandschaft bzw. bestaetigt die vorhandene Auswahl. Diese Curriculum-Auswahl wird zur SkillPilot-ID gespeichert.
 5. Der Browser bereitet intern eine temporaere Browser-Session vor.
-6. Fuer den Start von SkillPilot GPT ruft der Browser das Backend auf, um einen eindeutigen Einmal-Startcode zu erzeugen.
+6. Fuer den Start des SkillPilot Lerncoachs ruft der Browser das Backend auf, um einen eindeutigen Einmal-Startcode zu erzeugen.
 7. Das Backend erzeugt den Startcode, speichert ihn serverseitig gehasht und gibt ihn an den Browser zurueck.
-8. Der Browser oeffnet SkillPilot GPT mit einem Startprompt, der nur den Startcode enthaelt.
-9. SkillPilot GPT ruft die Startcode-Redeem-Action auf.
+8. Der Browser oeffnet den SkillPilot Lerncoach mit einem Startprompt, der nur den Startcode enthaelt.
+9. Der SkillPilot Lerncoach ruft die Startcode-Redeem-Action auf.
 10. Das Backend loest den Startcode ein, erzeugt ein Chat-Session-Token und gibt dieses zusammen mit dem initialen Lernstand zurueck.
-11. SkillPilot GPT verwendet ab dann nur noch das Chat-Session-Token fuer Backend-Actions.
+11. Der SkillPilot Lerncoach verwendet ab dann nur noch das Chat-Session-Token fuer Backend-Actions.
 
 Aus Nutzersicht sind sichtbar:
 
 1. **Login**: neue SkillPilot-ID erstellen, gespeicherten Login laden oder SkillPilot-ID eingeben.
 2. **Curriculum**: Lernlandschaft auswaehlen.
-3. **Start**: Cockpit oeffnen oder SkillPilot GPT mit Startcode starten.
+3. **Start**: Cockpit oeffnen oder SkillPilot Lerncoach mit Startcode starten.
 
-Die technische Session-ID bleibt intern. Der Startcode fuer SkillPilot GPT wird erklaert, weil er sichtbar im ChatGPT-Startprompt landet.
+Die technische Session-ID bleibt intern. Der Startcode fuer den SkillPilot Lerncoach wird erklaert, weil er sichtbar im ChatGPT-Startprompt landet.
 
 ## Sequenz
 
 ```text
-Browser                 Backend                  SkillPilot GPT
+Browser                 Backend                  SkillPilot Lerncoach
    |                       |                            |
    | GET skillpilot.com    |                            |
    |---------------------->|                            |
@@ -227,7 +227,7 @@ chatSessionToken -> SkillPilot-ID -> bestehende LearnerService-Logik
 
 ## Sanitizing der AI-Responses
 
-Wenn SkillPilot GPT session-basiert arbeitet, sollen AI-Responses die echte SkillPilot-ID nicht enthalten.
+Wenn der SkillPilot Lerncoach session-basiert arbeitet, sollen AI-Responses die echte SkillPilot-ID nicht enthalten.
 
 Aktuelle Response-Typen koennen intern weiterverwendet werden, muessen aber fuer AI-Session-Routen gesanitized werden:
 
@@ -370,9 +370,9 @@ Empfohlener Ablauf:
 3. Optional: `Diesen Login auf diesem Geraet speichern` mit Name und Passwort. Die SkillPilot-ID wird lokal verschluesselt; das Passwort wird nicht gespeichert.
 4. Curriculum bzw. Startscope anzeigen.
 5. Buttons:
-   - `SkillPilot GPT starten`
+   - `SkillPilot Lerncoach starten`
    - `Cockpit oeffnen`
-6. Beim Button `SkillPilot GPT starten`:
+6. Beim Button `SkillPilot Lerncoach starten`:
    - Startcode erzeugen
    - ChatGPT mit Prompt-Parameter oeffnen
    - bei Browserblockade eine klare Fehlermeldung anzeigen oder eine Diagnose-/Fallback-Ansicht anbieten
@@ -386,9 +386,9 @@ Logout:
 - entfernt nicht automatisch passwortverschluesselte gespeicherte Logins
 - fuehrt zur Start-/Login-Oberflaeche zurueck
 
-## GPT-Verhalten
+## Lerncoach-Verhalten
 
-SkillPilot GPT soll:
+Der SkillPilot Lerncoach soll:
 
 - Startcodes erkennen
 - bei Startcode zuerst `redeemStartCode` aufrufen

@@ -88,17 +88,17 @@ AI session responses intentionally return `skillpilotId: null` where compatibili
    - enter an existing SkillPilot ID directly.
 3. Browser stores the active SkillPilot ID locally for the current use and optionally encrypted as a named local login.
 4. Learner selects a curriculum. The backend stores that selection for the SkillPilot ID.
-5. Learner opens either the browser cockpit or SkillPilot GPT.
+5. Learner opens either the browser cockpit or the SkillPilot Learning Coach.
 
 ### Scenario: ChatGPT Learning-Coach Session
 
 1. Browser already has the active SkillPilot ID.
 2. Browser calls `POST /api/ui/learners/{skillpilotId}/chat-start`.
 3. Backend creates a one-time start code, stores only its hash, and binds it internally to the SkillPilot ID.
-4. Browser opens SkillPilot GPT with a prompt containing only the start code.
-5. GPT calls `POST /api/ai/{lang}/chat-start/redeem`.
+4. Browser opens the SkillPilot Learning Coach with a prompt containing only the start code.
+5. The learning coach calls `POST /api/ai/{lang}/chat-start/redeem`.
 6. Backend validates the start code, creates a temporary chat session token, and returns initial learner state with no real SkillPilot ID.
-7. GPT uses only session routes such as `GET /api/ai/{lang}/sessions/{chatSessionToken}/state` and `POST /api/ai/{lang}/sessions/{chatSessionToken}/mastery`.
+7. The learning coach uses only session routes such as `GET /api/ai/{lang}/sessions/{chatSessionToken}/state` and `POST /api/ai/{lang}/sessions/{chatSessionToken}/mastery`.
 8. Backend resolves `chatSessionToken -> skillpilotId` internally and applies existing learner-state logic.
 
 Privacy consequence: the LLM can work with the current learning-coach state but cannot attach the private learning-coach data to the learner's permanent SkillPilot ID.

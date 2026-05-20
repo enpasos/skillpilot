@@ -2,7 +2,7 @@
 
 ## 1. Kontext
 
-SkillPilot nutzt heute fuer den Chat zwischen Lernenden und dem SkillPilot-Backend einen **Custom GPT** in ChatGPT (siehe `ai/openai custom gpt/`). Dieser Custom GPT enthaelt:
+SkillPilot nutzt heute fuer den Chat zwischen Lernenden und dem SkillPilot-Backend den **SkillPilot Lerncoach als Custom GPT** in ChatGPT (siehe `ai/openai custom gpt/`). Dieser Custom GPT enthaelt:
 
 - **System Instructions** (Didaktik + Steuerlogik)
 - **Knowledge Files** (Training-Loop, State Machine, Mastery-Regeln, Deep Linking, Fehlerbehandlung)
