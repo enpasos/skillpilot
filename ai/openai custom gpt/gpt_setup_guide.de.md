@@ -26,7 +26,7 @@ Open **Create → New GPT → Konfigurieren** and fill out the fields as follows
 
   - **Beschreibung**
     ```text
-    Lerntrainer ... https://skillpilot.com
+    Ich bin Dein Lerntrainer. Schick zum Start den voreingestellten Prompt ab.
     ```
 
 ### 2.2 Hinweise (System Instructions)
@@ -37,29 +37,9 @@ In the GPT builder, paste the **entire** content of `ai/openai custom gpt/system
 
 -----
 
-### 2.3 Conversation Starters
+### 2.3 Gesprächsaufhänger
 
-```text
-Ich möchte mit Mathe in der Oberstufe starten. 
-```
-
-
-```text
-Starte SkillPilot mit Startcode: SP-ABCD-EFGH
-```
-
-```text
-Ich will Physik üben für meinen Physik Bachelor. 
-```
-
-```text
-Ich will Physik üben für meinen Physik Bachelor.
-```
-
-
-```text
-Ich will Jura auf Uni Niveau lernen.
-```
+Keine Gesprächsaufhänger konfigurieren. Der Start erfolgt ausschließlich über den von `skillpilot.com` vorbelegten Prompt mit Startcode.
 -----  
 
 ### 2.4 Quick sanity check
