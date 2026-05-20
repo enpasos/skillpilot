@@ -33,7 +33,9 @@
 
 ## 2) Login wählen
 
-| *Im Login wählst du deinen Zugang. Der Lerncoach-Start läuft danach über einen kurzlebigen Startcode.* |
+| <img src="../screenshot_02.de.png" alt="SkillPilot Login mit ID-Erstellung und direkter ID-Eingabe" width="700" /> |
+| --- |
+| *Hier entsteht oder erscheint deine SkillPilot-ID: Wenn du noch keinen Login hast, erzeugt SkillPilot eine neue pseudonyme ID für dich. Wenn du schon eine ID hast, gibst du sie direkt ein oder lädst einen gespeicherten lokalen Login. Diese ID ist dein dauerhafter Zugang zu deinem Lernstand. Für den SkillPilot Lerncoach wird später nur ein kurzlebiger Startcode erzeugt; ChatGPT sieht die SkillPilot-ID nicht.* |
 
 ---
 
