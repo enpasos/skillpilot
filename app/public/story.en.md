@@ -4,7 +4,7 @@
 
 💡 **Tip:** Voice mode in ChatGPT currently does not work with SkillPilot: after you use it once, ChatGPT can no longer talk to the backend in that chat. We opened a ticket with ChatGPT/OpenAI and are waiting for the fix. Do not use voice mode in the ChatGPT web app for now. You can still work with the SkillPilot Learning Coach in chat, upload photos of tasks or paper solutions, and dictate text with your device; just avoid ChatGPT voice mode.
 
-🔑 **Important:** Your **SkillPilot ID** is the permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser. ChatGPT never sees the SkillPilot ID: when you start the SkillPilot Learning Coach, SkillPilot creates a start code that is valid for 5 minutes. After redeeming it, the learning coach in ChatGPT receives a backend session ID that is valid for 24 hours.
+🔑 **Important:** Your **SkillPilot ID** is the permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser. ChatGPT never sees the SkillPilot ID.
 
 ---
 
@@ -25,7 +25,7 @@
 
 | <img src="../screenshot_01.en.png" alt="SkillPilot homepage with tiles" width="700" /> |
 | --- |
-| *To learn, simply log in from the homepage. It costs nothing and you do not need to register with a name or email address. Your learning progress is stored under a pseudonymous SkillPilot ID generated for you. The SkillPilot AI Learning Coach does not know this SkillPilot ID. ChatGPT currently acts as the SkillPilot AI Learning Coach; you need a ChatGPT account for that, and a free account is enough.* |
+| *To learn, simply log in from the homepage. It costs nothing and you do not need to register with a name or email address. Your learning progress is stored under a pseudonymous SkillPilot ID generated for you. The SkillPilot AI Learning Coach does not know this SkillPilot ID: when you start it, SkillPilot creates a start code that is valid for 5 minutes. After redeeming it, the learning coach in ChatGPT receives a backend session ID that is valid for 24 hours. ChatGPT currently acts as the SkillPilot AI Learning Coach; you need a ChatGPT account for that, and a free account is enough.* |
 
 ---
 
@@ -34,9 +34,6 @@
 | <img src="../screenshot_02.en.png" alt="SkillPilot Login with ID creation and direct ID entry" width="700" /> |
 | --- |
 | *This is where your SkillPilot ID is created or reused: if you do not have a login yet, SkillPilot generates a new pseudonymous ID for you. If you already have an ID, you enter it directly or load a saved local login. This ID is your permanent access key to your learning state. Later, the SkillPilot Learning Coach only receives a short-lived start code; ChatGPT never sees the SkillPilot ID.* |
-
-| <img src="../comic02.en.png" alt="Chat with the AI learning coach" width="650" /> |
-| --- |
 
 ---
 

@@ -4,7 +4,7 @@
 
 💡 **Tipp:** Der Voice-Mode in ChatGPT funktioniert aktuell nicht mit SkillPilot: Wenn du ihn einmal benutzt, kann ChatGPT danach in diesem Chat nicht mehr mit dem Backend sprechen. Wir haben dazu ein Ticket bei ChatGPT/OpenAI eröffnet und warten auf den Fix. Verwende deshalb auch in der ChatGPT-Web-App keinen Voice-Mode. Du kannst weiterhin im Chat mit dem SkillPilot Lerncoach arbeiten, Fotos deiner Aufgaben oder Papierlösungen hochladen und Text per Sprachdiktat eingeben; nur den ChatGPT-Voice-Mode solltest du nicht verwenden.
 
-🔑 **Wichtig:** Deine **SkillPilot-ID** ist der dauerhafte Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern. ChatGPT sieht die SkillPilot-ID nie: Wenn du den SkillPilot Lerncoach startest, erzeugt SkillPilot einen Startcode, der 5 Minuten gültig ist. Nach dem Einlösen erhält der Lerncoach in ChatGPT vom Backend eine Session-ID, die 24 Stunden gültig ist.
+🔑 **Wichtig:** Deine **SkillPilot-ID** ist der dauerhafte Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern. ChatGPT sieht die SkillPilot-ID nie.
 
 ---
 
@@ -25,7 +25,7 @@
 
 | <img src="../screenshot_01.de.png" alt="SkillPilot Startseite mit Kacheln" width="700" /> |
 | --- |
-| *Zum Lernen loggst du dich einfach auf der Startseite ein. Das kostet nichts und du musst dich nicht mit Namen oder E-Mail registrieren. Deine Lernerfolge werden unter einer pseudonymen SkillPilot-ID gespeichert, die für dich generiert wird. Der SkillPilot KI-Lerncoach kennt diese SkillPilot-ID nicht. Als SkillPilot KI-Lerncoach fungiert derzeit ChatGPT; dafür brauchst du einen ChatGPT-Zugang, ein kostenloser Account reicht.* |
+| *Zum Lernen loggst du dich einfach auf der Startseite ein. Das kostet nichts und du musst dich nicht mit Namen oder E-Mail registrieren. Deine Lernerfolge werden unter einer pseudonymen SkillPilot-ID gespeichert, die für dich generiert wird. Der SkillPilot KI-Lerncoach kennt diese SkillPilot-ID nicht: Wenn du ihn startest, erzeugt SkillPilot einen Startcode, der 5 Minuten gültig ist. Nach dem Einlösen erhält der Lerncoach in ChatGPT vom Backend eine Session-ID, die 24 Stunden gültig ist. Als SkillPilot KI-Lerncoach fungiert derzeit ChatGPT; dafür brauchst du einen ChatGPT-Zugang, ein kostenloser Account reicht.* |
 
 ---
 
@@ -34,9 +34,6 @@
 | <img src="../screenshot_02.de.png" alt="SkillPilot Login mit ID-Erstellung und direkter ID-Eingabe" width="700" /> |
 | --- |
 | *Hier entsteht oder erscheint deine SkillPilot-ID: Wenn du noch keinen Login hast, erzeugt SkillPilot eine neue pseudonyme ID für dich. Wenn du schon eine ID hast, gibst du sie direkt ein oder lädst einen gespeicherten lokalen Login. Diese ID ist dein dauerhafter Zugang zu deinem Lernstand. Für den SkillPilot Lerncoach wird später nur ein kurzlebiger Startcode erzeugt; ChatGPT sieht die SkillPilot-ID nicht.* |
-
-| <img src="../comic02.de.png" alt="Chat mit dem KI-Lerncoach" width="650" /> |
-| --- |
 
 ---
 
