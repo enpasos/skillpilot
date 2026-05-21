@@ -205,6 +205,18 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void handleChatSessionExpired_returnsActionableRecoveryBody() {
+        var response = controller.handleChatSessionExpired();
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.GONE);
+        assertThat(response.getBody()).containsEntry("error", "chat_session_expired");
+        assertThat(response.getBody().get("recovery"))
+                .contains("skillpilot.com")
+                .contains("new start code")
+                .contains("Do not ask for the SkillPilot ID");
+    }
+
+    @Test
     void startVerifiedRecall_usesActiveRouteReadAccessAndDelegatesToService() {
         String skillpilotId = "learner-1";
         VerifiedRecallStartRequest request = new VerifiedRecallStartRequest("goal-1", false);

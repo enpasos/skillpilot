@@ -23,6 +23,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -52,6 +53,16 @@ public class LearnerAiController {
     public LearnerAiController(LearnerService learnerService, ChatSessionService chatSessionService) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
+    }
+
+    @ExceptionHandler(ChatSessionService.ChatSessionExpiredException.class)
+    public org.springframework.http.ResponseEntity<Map<String, String>> handleChatSessionExpired() {
+        return org.springframework.http.ResponseEntity
+                .status(org.springframework.http.HttpStatus.GONE)
+                .body(Map.of(
+                        "error", "chat_session_expired",
+                        "message", "The SkillPilot chat session has expired.",
+                        "recovery", "Ask the learner to return to skillpilot.com, load their saved access or enter their SkillPilot ID there, and start the learning coach again to get a new start code for ChatGPT. Do not ask for the SkillPilot ID inside ChatGPT."));
     }
 
     @PostMapping("/learners")

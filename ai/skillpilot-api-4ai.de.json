@@ -81,6 +81,16 @@
                 }
               }
             }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
           }
         },
         "x-openai-isConsequential": false
@@ -122,6 +132,16 @@
                 }
               }
             }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
           }
         },
         "x-openai-isConsequential": false
@@ -160,6 +180,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
                 }
               }
             }
@@ -214,6 +244,16 @@
                 }
               }
             }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
           }
         },
         "x-openai-isConsequential": false
@@ -258,6 +298,16 @@
           },
           "404": {
             "description": "Learner or Curriculum not found"
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
           }
         },
         "x-openai-isConsequential": false
@@ -296,6 +346,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
                 }
               }
             }
@@ -878,6 +938,26 @@
           },
           "state": {
             "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+          }
+        }
+      },
+      "SessionExpiredResponse": {
+        "type": "object",
+        "description": "Antwort, wenn die temporäre Chat-Session abgelaufen ist. Der GPT muss die lernende Person zum Neustart über skillpilot.com anleiten und darf nicht nach der SkillPilot-ID fragen.",
+        "properties": {
+          "error": {
+            "type": "string",
+            "enum": [
+              "chat_session_expired"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "Kurze technische Kategorie für die Tool-Antwort. Nicht wörtlich an Lernende weitergeben."
+          },
+          "recovery": {
+            "type": "string",
+            "description": "Handlungsanweisung für den GPT: Neustart über skillpilot.com erklären, keine SkillPilot-ID im Chat erfragen."
           }
         }
       }

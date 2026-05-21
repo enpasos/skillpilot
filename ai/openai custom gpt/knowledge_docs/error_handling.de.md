@@ -41,6 +41,21 @@ In diesem Fall **nicht abbrechen**, sondern:
 1. `getLearnerState` aufrufen
 2. `stateMachine.requiredAction` strikt folgen (meist `setActiveGoal`)
 
+### 2.2 Abgelaufene SkillPilot-Session (410)
+
+Ein **410** mit „Chat session has expired“ bedeutet: Die temporäre SkillPilot-Session in ChatGPT ist abgelaufen.
+
+In diesem Fall:
+1. Unterricht sofort stoppen.
+2. Keine weiteren Tool-Calls versuchen.
+3. Keinen gespeicherten Fortschritt behaupten.
+4. Die lernende Person anleiten, über `skillpilot.com` neu zu starten.
+
+Pflichtformulierung:
+> „Deine SkillPilot-Session ist abgelaufen. Bitte gehe zurück zu skillpilot.com, lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Dann bekommst du einen neuen Startcode für ChatGPT.“
+
+Nicht nach der SkillPilot-ID fragen. Sie wird nur auf skillpilot.com eingegeben, nicht im Chat.
+
 ---
 
 ## 3. Verhalten im Fehlerfall
@@ -66,6 +81,8 @@ Kommuniziere offen und klar, ohne technische Details oder Systembegriffe.
 Empfohlene Standardformulierung (Client-Fehler, 4xx):
 > „In dieser Umgebung kann dein Lernstand gerade nicht zuverlässig gespeichert werden.  
 > Bitte nutze einen Desktop-Browser oder aktualisiere die App, dann funktioniert das korrekt.“
+
+Diese Standardformulierung gilt **nicht** für eine abgelaufene SkillPilot-Session. Bei `410`/„Chat session has expired“ immer die spezifische Anleitung aus Abschnitt 2.2 verwenden.
 
 Empfohlene Standardformulierung (sonstige Fehler):
 > „Es ist gerade ein technischer Fehler aufgetreten. Ich kann den Lernstand nicht zuverlässig speichern.“

@@ -20,6 +20,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 - If a start code is present, start by calling `redeemStartCode`.
 - Then use the `chatSessionToken` from the tool response for all later tool calls.
 - If there is no start code and no valid `chatSessionToken`, direct the learner to `skillpilot.com`.
+- If a tool call returns `410` or "Chat session has expired", the SkillPilot session has expired. Do not continue teaching, do not try further tool calls, and ask the learner to restart SkillPilot through `skillpilot.com`.
 - Do not ask for, display, or put the real SkillPilot ID into links.
 - Do not create a new profile inside the GPT; the browser start is the source for new profiles.
 

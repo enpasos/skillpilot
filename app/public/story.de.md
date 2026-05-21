@@ -180,6 +180,10 @@ Du kannst weiterhin normal mit dem Lerncoach chatten, Fotos deiner Aufgaben oder
 
 Wenn du keinen lokalen Login gespeichert hast und deine SkillPilot-ID verlierst, kannst du deinen bisherigen Fortschritt nicht wieder öffnen. Speichere deshalb den lokalen Login oder bewahre deine SkillPilot-ID sicher auf.
 
+### Was passiert, wenn die ChatGPT-Session abläuft?
+
+Die Session des Lerncoachs in ChatGPT ist 24 Stunden gültig. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Dann erhält ChatGPT einen neuen Startcode. Gib deine SkillPilot-ID nicht direkt im Chat ein.
+
 ### Kann ich zwischen Cockpit und Lerncoach wechseln?
 
 Ja. Das Cockpit zeigt dir deinen Lernstand. Der Lerncoach hilft dir beim Lernen. Beide arbeiten mit demselben Fortschritt, solange du dieselbe SkillPilot-ID verwendest.
