@@ -99,6 +99,7 @@ End-to-end flow for a typical learner session:
 1.  **Init:** The learner starts on `skillpilot.com`. The browser creates or loads the local SkillPilot-ID and asks the backend for a short-lived start code.
 2.  **Redeem:** The GPT receives a prompt like `Starte SkillPilot mit Startcode: SP-ABCD-EFGH` and immediately calls `redeemStartCode`.
 3.  **Session:** The GPT stores the returned `chatSessionToken` internally and uses it for every later action. It does not ask for or display the real SkillPilot-ID.
+    If a later session call returns `410` / "Chat session has expired", the GPT must stop and tell the learner to restart through `skillpilot.com` to get a new start code.
 4.  **Bootstrap:** It reads `stateMachine.requiredAction` from the redeemed state. If `setCurriculum` is required, it asks the user to choose from `stateMachine.curriculumOptions` and calls `setCurriculum`.
 5.  **Context:** It uses the state returned by `redeemStartCode` or `getLearnerState` to get Curriculum, Frontier, Goals, and `stateMachine` immediately.
 6.  **Discovery:** It looks at `frontier` and selects goals with `type=atomic`. If only clusters are present, call `setScope` to drill down.

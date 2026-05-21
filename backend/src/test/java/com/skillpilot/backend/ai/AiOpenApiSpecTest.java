@@ -33,6 +33,12 @@ class AiOpenApiSpecTest {
         assertAllActionsAreAlwaysAllowable(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
     }
 
+    @Test
+    void aiSpecs_documentExpiredChatSessionRecovery() throws Exception {
+        assertExpiredSessionResponseIsDocumented(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
+        assertExpiredSessionResponseIsDocumented(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+    }
+
     private static void assertSpecIsAiMinimal(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         JsonNode schemas = root.path("components").path("schemas");
@@ -79,6 +85,31 @@ class AiOpenApiSpecTest {
                     .as(actionName)
                     .isFalse();
         }));
+    }
+
+    private static void assertExpiredSessionResponseIsDocumented(Path path) throws IOException {
+        JsonNode root = MAPPER.readTree(Files.readString(path));
+        JsonNode schemas = root.path("components").path("schemas");
+        assertThat(schemas.path("SessionExpiredResponse").path("properties").path("error").path("enum").toString())
+                .contains("chat_session_expired");
+
+        JsonNode paths = root.path("paths");
+        paths.fields().forEachRemaining(pathEntry -> {
+            if (!pathEntry.getKey().contains("/sessions/{chatSessionToken}")) {
+                return;
+            }
+            pathEntry.getValue().fields().forEachRemaining(methodEntry -> {
+                JsonNode response = methodEntry.getValue().path("responses").path("410");
+                assertThat(response.isMissingNode())
+                        .as(methodEntry.getKey() + " " + pathEntry.getKey())
+                        .isFalse();
+                assertThat(response.path("description").asText())
+                        .as(methodEntry.getKey() + " " + pathEntry.getKey())
+                        .contains("skillpilot.com");
+                assertThat(response.path("content").path("application/json").path("schema").path("$ref").asText())
+                        .isEqualTo("#/components/schemas/SessionExpiredResponse");
+            });
+        });
     }
 
     private static boolean containsFieldNamed(JsonNode node, String fieldName) {

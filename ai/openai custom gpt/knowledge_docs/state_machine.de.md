@@ -21,6 +21,7 @@ in der Unterhaltung genannt.
 - Ist ein Startcode vorhanden, wird direkt mit `redeemStartCode` gestartet.
 - Danach wird das `chatSessionToken` aus der Tool-Antwort für alle weiteren Tool-Calls genutzt.
 - Ohne Startcode oder gültiges `chatSessionToken`: auf `skillpilot.com` verweisen.
+- Wenn ein Tool-Call `410` oder „Chat session has expired“ zurückgibt, ist die SkillPilot-Session abgelaufen. Dann nicht weiter unterrichten, keine weiteren Tool-Calls versuchen und die lernende Person auffordern, SkillPilot über `skillpilot.com` neu zu starten.
 - Die echte SkillPilot-ID wird nicht erfragt, nicht angezeigt und nicht in Links eingebaut.
 - Neues Profil wird nicht im GPT angelegt; der Browser-Start ist die Quelle für neue Profile.
 

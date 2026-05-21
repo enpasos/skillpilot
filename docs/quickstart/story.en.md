@@ -180,6 +180,10 @@ You can still chat normally with the learning coach, upload photos of your tasks
 
 If you have not saved a local login and lose your SkillPilot ID, you cannot reopen your previous progress. Save the local login or keep your SkillPilot ID in a safe place.
 
+### What Happens If the ChatGPT Session Expires?
+
+The learning coach session in ChatGPT is valid for 24 hours. If it expires, return to [skillpilot.com](https://skillpilot.com), load your saved access or enter your SkillPilot ID there, and start the learning coach again. ChatGPT will receive a new start code. Do not enter your SkillPilot ID directly in chat.
+
 ### Can I Switch Between Cockpit and Learning Coach?
 
 Yes. The cockpit shows your learning state. The learning coach helps you learn. Both work with the same progress as long as you use the same SkillPilot ID.

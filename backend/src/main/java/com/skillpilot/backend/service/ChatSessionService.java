@@ -26,6 +26,14 @@ public class ChatSessionService {
     public record RedeemedSession(String chatSessionToken, Instant expiresAt, String skillpilotId) {
     }
 
+    public static class ChatSessionExpiredException extends ResponseStatusException {
+        public ChatSessionExpiredException() {
+            super(
+                    HttpStatus.GONE,
+                    "Chat session has expired. Ask the learner to return to skillpilot.com and start the SkillPilot learning coach again. Do not ask for the SkillPilot ID inside ChatGPT.");
+        }
+    }
+
     private static final String START_CODE_ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
     private static final int START_CODE_RANDOM_CHARS = 8;
     private static final int SESSION_TOKEN_BYTES = 32;
@@ -147,7 +155,7 @@ public class ChatSessionService {
 
         Instant now = Instant.now();
         if (session.getRevokedAt() != null || !session.getExpiresAt().isAfter(now)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Chat session has expired.");
+            throw new ChatSessionExpiredException();
         }
 
         session.setLastUsedAt(now);
