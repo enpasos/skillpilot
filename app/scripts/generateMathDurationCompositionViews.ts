@@ -1,0 +1,798 @@
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+type DurationModel = 'G8' | 'G9'
+
+type CompositionNode =
+  | {
+      kind: 'structure'
+      id: string
+      label: string
+      children: CompositionNode[]
+    }
+  | {
+      kind: 'canonicalSubtree'
+      goalId: string
+      displayLabel?: string
+    }
+  | {
+      kind: 'goalEntry'
+      goalId: string
+      displayLabel?: string
+    }
+  | {
+      kind: 'landscapeEntry'
+      landscapeId: string
+      displayLabel?: string
+    }
+
+interface CompositionView {
+  viewId: string
+  landscapeId: string
+  scope: Record<string, string>
+  rootNodes: CompositionNode[]
+  [key: string]: unknown
+}
+
+interface LearningGoal {
+  id?: string
+  title?: string
+  contains?: string[]
+  tags?: string[]
+}
+
+interface SourceGoal {
+  id?: string
+  tags?: string[]
+}
+
+interface MappingEntry {
+  legacyGoalId?: string
+  canonicalGoalId?: string
+}
+
+const scriptDir = dirname(fileURLToPath(import.meta.url))
+const repoRoot = resolve(scriptDir, '../..')
+const shouldWrite = process.argv.includes('--write')
+const shouldCheck = process.argv.includes('--check')
+const durationModels: DurationModel[] = ['G8', 'G9']
+const yearLabelsByDuration: Record<DurationModel, string[]> = {
+  G8: ['5', '6', '7', '8', '9'],
+  G9: ['5', '6', '7', '8', '9', '10'],
+}
+
+const canonicalMathPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+)
+const sourceExtractionPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json',
+)
+const mappingPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json',
+)
+const rpSourceExtractionPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json',
+)
+const rpMappingPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json',
+)
+const shSourceJsonPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/input/SH/lower-secondary/source-json/DE_SHL_S_GYM_1_MATHEMATIK.de.json.snapshot',
+)
+const shMappingPath = resolve(
+  repoRoot,
+  'curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json',
+)
+const compositionViewDir = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/mathematik')
+
+const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
+const SEK1_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
+
+const GENERATED_VIEW_PATHS = [
+  'de-he-seki-g8.view.json',
+  'de-he-seki-g9.view.json',
+  'de-he-gk-g8.view.json',
+  'de-he-gk-g9.view.json',
+  'de-he-lk-g8.view.json',
+  'de-he-lk-g9.view.json',
+  'de-rp-seki-g8.view.json',
+  'de-rp-seki-g9.view.json',
+  'de-rp-gk-g8.view.json',
+  'de-rp-gk-g9.view.json',
+  'de-rp-lk-g8.view.json',
+  'de-rp-lk-g9.view.json',
+  'de-sh-seki-g8.view.json',
+  'de-sh-seki-g9.view.json',
+  'de-sh-gk-g8.view.json',
+  'de-sh-gk-g9.view.json',
+  'de-sh-lk-g8.view.json',
+  'de-sh-lk-g9.view.json',
+]
+
+const readJson = <T>(path: string): T => JSON.parse(readFileSync(path, 'utf8')) as T
+
+const normalizeDurationModel = (value?: string): DurationModel | null => {
+  const normalized = value?.trim().toUpperCase()
+  return normalized === 'G8' || normalized === 'G9' ? normalized : null
+}
+
+const extractTagValue = (tags: string[] | undefined, prefix: string): string | null => {
+  const tag = tags?.find((entry) => entry.startsWith(prefix))
+  return tag ? tag.slice(prefix.length) : null
+}
+
+const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value)) as T
+
+const sortGoalIdsByTitle = (goalIds: Iterable<string>, goalById: Map<string, LearningGoal>) =>
+  Array.from(goalIds).sort((left, right) => {
+    const leftTitle = goalById.get(left)?.title ?? ''
+    const rightTitle = goalById.get(right)?.title ?? ''
+    const titleCompare = leftTitle.localeCompare(rightTitle, 'de', { numeric: true, sensitivity: 'base' })
+    return titleCompare || left.localeCompare(right)
+  })
+
+const collectReferencedGoalIds = (node: CompositionNode, target: Set<string>) => {
+  if (node.kind === 'canonicalSubtree' || node.kind === 'goalEntry') {
+    target.add(node.goalId)
+    return
+  }
+  if (node.kind === 'structure') {
+    node.children.forEach((child) => collectReferencedGoalIds(child, target))
+  }
+}
+
+const collectGoalEntriesFromStructure = (rootNodes: CompositionNode[], structureId: string) => {
+  const entries: string[] = []
+  const visit = (node: CompositionNode): boolean => {
+    if (node.kind !== 'structure') return false
+    if (node.id === structureId) {
+      const collect = (child: CompositionNode) => {
+        if (child.kind === 'goalEntry') {
+          entries.push(child.goalId)
+          return
+        }
+        if (child.kind === 'structure') {
+          child.children.forEach(collect)
+        }
+      }
+      node.children.forEach(collect)
+      return true
+    }
+    return node.children.some(visit)
+  }
+  rootNodes.some(visit)
+  return entries
+}
+
+const collectExpandedReferencedGoalIds = (nodes: CompositionNode[]) => {
+  const referencedGoalIds = new Set<string>()
+  nodes.forEach((node) => collectReferencedGoalIds(node, referencedGoalIds))
+
+  const expanded = new Set<string>()
+  referencedGoalIds.forEach((goalId) => {
+    expanded.add(goalId)
+    collectAtomicDescendantIds(goalId).forEach((atomicGoalId) => expanded.add(atomicGoalId))
+  })
+  return expanded
+}
+
+const removeStructureById = (nodes: CompositionNode[], structureId: string): CompositionNode[] =>
+  nodes.flatMap((node) => {
+    if (node.kind !== 'structure') return [node]
+    if (node.id === structureId) return []
+    return [
+      {
+        ...node,
+        children: removeStructureById(node.children, structureId),
+      },
+    ]
+  })
+
+const replaceStructureById = (
+  nodes: CompositionNode[],
+  structureId: string,
+  replacement: CompositionNode,
+): { nodes: CompositionNode[]; replaced: boolean } => {
+  let replaced = false
+  const nextNodes = nodes.map((node) => {
+    if (node.kind !== 'structure') return node
+    if (node.id === structureId) {
+      replaced = true
+      return replacement
+    }
+    const childResult = replaceStructureById(node.children, structureId, replacement)
+    if (childResult.replaced) {
+      replaced = true
+      return {
+        ...node,
+        children: childResult.nodes,
+      }
+    }
+    return node
+  })
+  return { nodes: nextNodes, replaced }
+}
+
+const canonicalMath = readJson<{ goals?: LearningGoal[] }>(canonicalMathPath)
+const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
+const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
+const baseGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-gk.view.json'))
+const baseLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-lk.view.json'))
+const rpSourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(rpSourceExtractionPath)
+const rpMappingReview = readJson<{ mappings?: MappingEntry[] }>(rpMappingPath)
+const baseRpGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-rp-gk.view.json'))
+const baseRpLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-rp-lk.view.json'))
+const shSourceJson = readJson<{ goals?: LearningGoal[] }>(shSourceJsonPath)
+const shMappingReview = readJson<{ mappings?: MappingEntry[] }>(shMappingPath)
+const baseShGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-gk.view.json'))
+const baseShLkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-sh-lk.view.json'))
+
+const goalById = new Map(
+  (canonicalMath.goals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
+)
+const sourceGoalById = new Map(
+  (sourceExtraction.sourceGoals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
+)
+const rpSourceGoalById = new Map(
+  (rpSourceExtraction.sourceGoals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
+)
+const shSourceGoalById = new Map(
+  (shSourceJson.goals ?? []).flatMap((goal) => goal.id ? [[goal.id, goal]] as const : []),
+)
+
+const atomicDescendantCache = new Map<string, string[]>()
+const collectAtomicDescendantIds = (goalId: string, visiting: Set<string> = new Set()): string[] => {
+  const cached = atomicDescendantCache.get(goalId)
+  if (cached) return cached
+  if (visiting.has(goalId)) return []
+
+  const goal = goalById.get(goalId)
+  if (!goal) return []
+  const children = goal.contains ?? []
+  if (children.length === 0) {
+    atomicDescendantCache.set(goalId, [goalId])
+    return [goalId]
+  }
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+  const atomicIds = Array.from(new Set(children.flatMap((childId) => collectAtomicDescendantIds(childId, nextVisiting))))
+  atomicDescendantCache.set(goalId, atomicIds)
+  return atomicIds
+}
+
+const evidenceAtomicIdsByDuration = Object.fromEntries(
+  durationModels.map((durationModel) => [durationModel, new Set<string>()]),
+) as Record<DurationModel, Set<string>>
+const evidenceDurationsByAtomicId = new Map<string, Set<DurationModel>>()
+const rawBuckets = Object.fromEntries(
+  durationModels.map((durationModel) => [
+    durationModel,
+    Object.fromEntries(yearLabelsByDuration.G9.map((year) => [year, new Set<string>()])),
+  ]),
+) as Record<DurationModel, Record<string, Set<string>>>
+
+for (const mapping of mappingReview.mappings ?? []) {
+  if (!mapping.legacyGoalId || !mapping.canonicalGoalId) continue
+
+  const sourceGoal = sourceGoalById.get(mapping.legacyGoalId)
+  const durationModel = normalizeDurationModel(extractTagValue(sourceGoal?.tags, 'durationModel:') ?? undefined)
+  const grade = extractTagValue(sourceGoal?.tags, 'grade:')
+  if (!sourceGoal || !durationModel || !grade || !rawBuckets[durationModel][grade]) continue
+
+  collectAtomicDescendantIds(mapping.canonicalGoalId).forEach((atomicGoalId) => {
+    rawBuckets[durationModel][grade].add(atomicGoalId)
+    evidenceAtomicIdsByDuration[durationModel].add(atomicGoalId)
+    const durations = evidenceDurationsByAtomicId.get(atomicGoalId) ?? new Set<DurationModel>()
+    durations.add(durationModel)
+    evidenceDurationsByAtomicId.set(atomicGoalId, durations)
+  })
+}
+
+const assignPrimaryGradeBuckets = (durationModel: DurationModel, excludedGoalIds: Set<string> = new Set()) => {
+  const assigned = new Set<string>()
+  return Object.fromEntries(
+    yearLabelsByDuration[durationModel].map((year) => {
+      const yearGoalIds = sortGoalIdsByTitle(rawBuckets[durationModel][year] ?? [], goalById)
+        .filter((goalId) => {
+          if (excludedGoalIds.has(goalId)) return false
+          if (assigned.has(goalId)) return false
+          assigned.add(goalId)
+          return true
+        })
+      return [year, yearGoalIds]
+    }),
+  ) as Record<string, string[]>
+}
+
+const baseSek1SupplementIds = Array.from(new Set([
+  ...collectGoalEntriesFromStructure(baseGkView.rootNodes, 'he-g8-g9-supplements'),
+  ...collectGoalEntriesFromStructure(baseGkView.rootNodes, 'he-source-extraction-supplements-seki'),
+]))
+
+const createGoalEntry = (goalId: string): CompositionNode => ({
+  kind: 'goalEntry',
+  goalId,
+})
+
+const createYearNode = (durationModel: DurationModel, year: string, goalIds: string[]): CompositionNode | null => {
+  if (goalIds.length === 0) return null
+  return {
+    kind: 'structure',
+    id: `j${year}-${durationModel.toLowerCase()}`,
+    label: `Jahrgangsstufe ${year}`,
+    children: [
+      {
+        kind: 'structure',
+        id: `j${year}-${durationModel.toLowerCase()}-kompetenzen`,
+        label: 'Weitere Kompetenzen',
+        children: goalIds.map(createGoalEntry),
+      },
+    ],
+  }
+}
+
+const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<string> = new Set()): CompositionNode => {
+  const buckets = assignPrimaryGradeBuckets(durationModel, excludedGoalIds)
+  const assignedGoalIds = new Set(Object.values(buckets).flat())
+  const extraGoalIds = baseSek1SupplementIds.filter((goalId) => {
+    if (excludedGoalIds.has(goalId)) return false
+    if (assignedGoalIds.has(goalId)) return false
+    const evidenceDurations = evidenceDurationsByAtomicId.get(goalId)
+    return !evidenceDurations || evidenceDurations.has(durationModel)
+  })
+
+  const children: CompositionNode[] = [
+    { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+    ...yearLabelsByDuration[durationModel]
+      .map((year) => createYearNode(durationModel, year, buckets[year] ?? []))
+      .filter((node): node is CompositionNode => node !== null),
+    ...(extraGoalIds.length > 0
+      ? [{
+          kind: 'structure' as const,
+          id: `sek1-${durationModel.toLowerCase()}-weitere-lehrplanbelegte-ziele`,
+          label: 'Weitere lehrplanbelegte Sek-I-Ziele',
+          children: sortGoalIdsByTitle(extraGoalIds, goalById).map(createGoalEntry),
+        }]
+      : []),
+    { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+  ]
+
+  return {
+    kind: 'structure',
+    id: `sek1-${durationModel.toLowerCase()}`,
+    label: 'Sekundarstufe I',
+    children,
+  }
+}
+
+const createSek1View = (durationModel: DurationModel): CompositionView => ({
+  viewId: `de-he-gym-seki-math-${durationModel.toLowerCase()}`,
+  landscapeId: CANONICAL_MATH_LANDSCAPE_ID,
+  scope: {
+    jurisdiction: 'DE-HE',
+    schoolForm: 'Gymnasium',
+    stage: 'SekI',
+    durationModel,
+  },
+  rootNodes: [createSek1Node(durationModel)],
+})
+
+const createCrossStageView = (
+  baseView: CompositionView,
+  courseProfile: 'GK' | 'LK',
+  durationModel: DurationModel,
+): CompositionView => {
+  const view = clone(baseView)
+  view.viewId = `de-he-gym-math-${courseProfile.toLowerCase()}-${durationModel.toLowerCase()}`
+  view.scope = {
+    ...view.scope,
+    durationModel,
+  }
+
+  const replacement = createSek1Node(durationModel)
+  const replaced = replaceStructureById(view.rootNodes, 'sek1', replacement)
+  if (!replaced.replaced) {
+    throw new Error(`Could not replace Sek-I structure in ${baseView.viewId}`)
+  }
+
+  const withoutLowerSupplements = removeStructureById(replaced.nodes, 'he-source-extraction-supplements-seki')
+  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
+    removeStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`),
+  )
+  const scopedReplacement = createSek1Node(durationModel, crossStageReservedGoalIds)
+  const scopedReplaced = replaceStructureById(withoutLowerSupplements, `sek1-${durationModel.toLowerCase()}`, scopedReplacement)
+  if (!scopedReplaced.replaced) {
+    throw new Error(`Could not apply scoped Sek-I replacement in ${baseView.viewId}`)
+  }
+
+  view.rootNodes = scopedReplaced.nodes
+  return view
+}
+
+const rpStages = ['orientierungsstufe', 'klasse7-8', 'klasse9-10-msa'] as const
+type RpStage = typeof rpStages[number]
+
+const rpStageLabelsByDuration: Record<DurationModel, Record<RpStage, string>> = {
+  G8: {
+    orientierungsstufe: 'Orientierungsstufe 5/6',
+    'klasse7-8': 'Klassenstufen 7/8',
+    'klasse9-10-msa': 'Klassenstufe 9 (G8)',
+  },
+  G9: {
+    orientierungsstufe: 'Orientierungsstufe 5/6',
+    'klasse7-8': 'Klassenstufen 7/8',
+    'klasse9-10-msa': 'Klassenstufe 10 (G9)',
+  },
+}
+
+const isRpStage = (value: string | null): value is RpStage =>
+  rpStages.some((stage) => stage === value)
+
+const rpRawBuckets = Object.fromEntries(
+  rpStages.map((stage) => [stage, new Set<string>()]),
+) as Record<RpStage, Set<string>>
+const rpUngradedSourceAtomicIds = new Set<string>()
+
+for (const mapping of rpMappingReview.mappings ?? []) {
+  if (!mapping.legacyGoalId || !mapping.canonicalGoalId) continue
+
+  const sourceGoal = rpSourceGoalById.get(mapping.legacyGoalId)
+  const rpStage = extractTagValue(sourceGoal?.tags, 'rpStage:')
+  const target = isRpStage(rpStage) ? rpRawBuckets[rpStage] : rpUngradedSourceAtomicIds
+
+  collectAtomicDescendantIds(mapping.canonicalGoalId).forEach((atomicGoalId) => target.add(atomicGoalId))
+}
+
+const baseRpSek1SupplementIds = Array.from(new Set([
+  ...collectGoalEntriesFromStructure(baseRpGkView.rootNodes, 'rp-source-extraction-supplements-seki'),
+  ...rpUngradedSourceAtomicIds,
+]))
+
+const assignRpStageBuckets = (excludedGoalIds: Set<string> = new Set()) => {
+  const assigned = new Set<string>()
+  return Object.fromEntries(
+    rpStages.map((stage) => {
+      const goalIds = sortGoalIdsByTitle(rpRawBuckets[stage], goalById)
+        .filter((goalId) => {
+          if (excludedGoalIds.has(goalId)) return false
+          if (assigned.has(goalId)) return false
+          assigned.add(goalId)
+          return true
+        })
+      return [stage, goalIds]
+    }),
+  ) as Record<RpStage, string[]>
+}
+
+const createRpStageNode = (
+  durationModel: DurationModel,
+  rpStage: RpStage,
+  goalIds: string[],
+): CompositionNode | null => {
+  if (goalIds.length === 0) return null
+  return {
+    kind: 'structure',
+    id: `rp-${rpStage}-${durationModel.toLowerCase()}`,
+    label: rpStageLabelsByDuration[durationModel][rpStage],
+    children: [
+      {
+        kind: 'structure',
+        id: `rp-${rpStage}-${durationModel.toLowerCase()}-kompetenzen`,
+        label: 'Lehrplanbelegte Kompetenzen',
+        children: goalIds.map(createGoalEntry),
+      },
+    ],
+  }
+}
+
+const createRpSek1Node = (
+  durationModel: DurationModel,
+  excludedGoalIds: Set<string> = new Set(),
+): CompositionNode => {
+  const buckets = assignRpStageBuckets(excludedGoalIds)
+  const assignedGoalIds = new Set(Object.values(buckets).flat())
+  const supplementGoalIds = sortGoalIdsByTitle(baseRpSek1SupplementIds, goalById)
+    .filter((goalId) => !excludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
+
+  const children: CompositionNode[] = [
+    { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+    ...rpStages
+      .map((rpStage) => createRpStageNode(durationModel, rpStage, buckets[rpStage]))
+      .filter((node): node is CompositionNode => node !== null),
+    ...(supplementGoalIds.length > 0
+      ? [{
+          kind: 'structure' as const,
+          id: `rp-sek1-${durationModel.toLowerCase()}-prozesskompetenzen`,
+          label: 'Übergreifende Prozesskompetenzen',
+          children: supplementGoalIds.map(createGoalEntry),
+        }]
+      : []),
+    { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+  ]
+
+  return {
+    kind: 'structure',
+    id: `rp-sek1-${durationModel.toLowerCase()}`,
+    label: 'Sekundarstufe I',
+    children,
+  }
+}
+
+const createRpSek1View = (durationModel: DurationModel): CompositionView => ({
+  viewId: `de-rp-gym-seki-math-${durationModel.toLowerCase()}`,
+  landscapeId: CANONICAL_MATH_LANDSCAPE_ID,
+  scope: {
+    jurisdiction: 'DE-RP',
+    schoolForm: 'Gymnasium',
+    stage: 'SekI',
+    durationModel,
+  },
+  rootNodes: [createRpSek1Node(durationModel)],
+})
+
+const createRpCrossStageView = (
+  baseView: CompositionView,
+  courseProfile: 'GK' | 'LK',
+  durationModel: DurationModel,
+): CompositionView => {
+  const view = clone(baseView)
+  view.viewId = `de-rp-gym-math-${courseProfile.toLowerCase()}-${durationModel.toLowerCase()}`
+  view.scope = {
+    ...view.scope,
+    durationModel,
+  }
+
+  const replacement = createRpSek1Node(durationModel)
+  const replaced = replaceStructureById(view.rootNodes, 'sek1', replacement)
+  if (!replaced.replaced) {
+    throw new Error(`Could not replace Sek-I structure in ${baseView.viewId}`)
+  }
+
+  const withoutLowerSupplements = removeStructureById(replaced.nodes, 'rp-source-extraction-supplements-seki')
+  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
+    removeStructureById(withoutLowerSupplements, `rp-sek1-${durationModel.toLowerCase()}`),
+  )
+  const scopedReplacement = createRpSek1Node(durationModel, crossStageReservedGoalIds)
+  const scopedReplaced = replaceStructureById(withoutLowerSupplements, `rp-sek1-${durationModel.toLowerCase()}`, scopedReplacement)
+  if (!scopedReplaced.replaced) {
+    throw new Error(`Could not apply scoped RP Sek-I replacement in ${baseView.viewId}`)
+  }
+
+  view.rootNodes = scopedReplaced.nodes
+  return view
+}
+
+const shBands = ['jg5-6', 'jg7-9', 'jg10'] as const
+type ShBand = typeof shBands[number]
+
+const shBandLabelsByDuration: Record<DurationModel, Record<ShBand, string>> = {
+  G8: {
+    'jg5-6': 'Jahrgangsband 5/6',
+    'jg7-9': 'Jahrgangsband 6/7/8 (G8)',
+    jg10: 'Jahrgangsstufe 9 (G8)',
+  },
+  G9: {
+    'jg5-6': 'Jahrgangsband 5/6',
+    'jg7-9': 'Jahrgangsband 7/8/9',
+    jg10: 'Jahrgangsstufe 10',
+  },
+}
+
+const getShBand = (sourceGoalId: string): ShBand | null => {
+  const sourceGoal = shSourceGoalById.get(sourceGoalId)
+  const tags = sourceGoal?.tags ?? []
+  if (tags.includes('Jg5-6') || sourceGoalId.includes('jg5-6')) return 'jg5-6'
+  if (tags.includes('Jg7-9') || sourceGoalId.includes('jg7-9')) return 'jg7-9'
+  if (tags.includes('Jg10') || sourceGoalId.includes('jg10')) return 'jg10'
+  return null
+}
+
+const shRawBuckets = Object.fromEntries(
+  shBands.map((band) => [band, new Set<string>()]),
+) as Record<ShBand, Set<string>>
+
+for (const mapping of shMappingReview.mappings ?? []) {
+  if (!mapping.legacyGoalId || !mapping.canonicalGoalId) continue
+  const shBand = getShBand(mapping.legacyGoalId)
+  if (!shBand) continue
+
+  collectAtomicDescendantIds(mapping.canonicalGoalId).forEach((atomicGoalId) => {
+    shRawBuckets[shBand].add(atomicGoalId)
+  })
+}
+
+const assignShBandBuckets = (excludedGoalIds: Set<string> = new Set()) => {
+  const assigned = new Set<string>()
+  return Object.fromEntries(
+    shBands.map((band) => {
+      const goalIds = sortGoalIdsByTitle(shRawBuckets[band], goalById)
+        .filter((goalId) => {
+          if (excludedGoalIds.has(goalId)) return false
+          if (assigned.has(goalId)) return false
+          assigned.add(goalId)
+          return true
+        })
+      return [band, goalIds]
+    }),
+  ) as Record<ShBand, string[]>
+}
+
+const createShBandNode = (
+  durationModel: DurationModel,
+  band: ShBand,
+  goalIds: string[],
+): CompositionNode | null => {
+  if (goalIds.length === 0) return null
+  return {
+    kind: 'structure',
+    id: `sh-${band}-${durationModel.toLowerCase()}`,
+    label: shBandLabelsByDuration[durationModel][band],
+    children: [
+      {
+        kind: 'structure',
+        id: `sh-${band}-${durationModel.toLowerCase()}-kompetenzen`,
+        label: 'Lehrplanbelegte Kompetenzen',
+        children: goalIds.map(createGoalEntry),
+      },
+    ],
+  }
+}
+
+const createShSek1Node = (
+  durationModel: DurationModel,
+  excludedGoalIds: Set<string> = new Set(),
+): CompositionNode => {
+  const buckets = assignShBandBuckets(excludedGoalIds)
+  return {
+    kind: 'structure',
+    id: `sh-sek1-${durationModel.toLowerCase()}`,
+    label: 'Sekundarstufe I',
+    children: [
+      { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+      ...shBands
+        .map((band) => createShBandNode(durationModel, band, buckets[band]))
+        .filter((node): node is CompositionNode => node !== null),
+      { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+    ],
+  }
+}
+
+const createShSek1View = (durationModel: DurationModel): CompositionView => ({
+  viewId: `de-sh-gym-seki-math-${durationModel.toLowerCase()}`,
+  landscapeId: CANONICAL_MATH_LANDSCAPE_ID,
+  scope: {
+    jurisdiction: 'DE-SH',
+    schoolForm: 'Gymnasium',
+    stage: 'SekI',
+    durationModel,
+  },
+  rootNodes: [createShSek1Node(durationModel)],
+})
+
+const createShCrossStageView = (
+  baseView: CompositionView,
+  courseProfile: 'GK' | 'LK',
+  durationModel: DurationModel,
+): CompositionView => {
+  const view = clone(baseView)
+  view.viewId = `de-sh-gym-math-${courseProfile.toLowerCase()}-${durationModel.toLowerCase()}`
+  view.scope = {
+    ...view.scope,
+    durationModel,
+  }
+
+  const replacement = createShSek1Node(durationModel)
+  const replaced = replaceStructureById(view.rootNodes, 'sek1', replacement)
+  if (!replaced.replaced) {
+    throw new Error(`Could not replace Sek-I structure in ${baseView.viewId}`)
+  }
+
+  const crossStageReservedGoalIds = collectExpandedReferencedGoalIds(
+    removeStructureById(replaced.nodes, `sh-sek1-${durationModel.toLowerCase()}`),
+  )
+  const scopedReplacement = createShSek1Node(durationModel, crossStageReservedGoalIds)
+  const scopedReplaced = replaceStructureById(replaced.nodes, `sh-sek1-${durationModel.toLowerCase()}`, scopedReplacement)
+  if (!scopedReplaced.replaced) {
+    throw new Error(`Could not apply scoped SH Sek-I replacement in ${baseView.viewId}`)
+  }
+
+  view.rootNodes = scopedReplaced.nodes
+  return view
+}
+
+const generatedViews = new Map<string, CompositionView>([
+  ['de-he-seki-g8.view.json', createSek1View('G8')],
+  ['de-he-seki-g9.view.json', createSek1View('G9')],
+  ['de-he-gk-g8.view.json', createCrossStageView(baseGkView, 'GK', 'G8')],
+  ['de-he-gk-g9.view.json', createCrossStageView(baseGkView, 'GK', 'G9')],
+  ['de-he-lk-g8.view.json', createCrossStageView(baseLkView, 'LK', 'G8')],
+  ['de-he-lk-g9.view.json', createCrossStageView(baseLkView, 'LK', 'G9')],
+  ['de-rp-seki-g8.view.json', createRpSek1View('G8')],
+  ['de-rp-seki-g9.view.json', createRpSek1View('G9')],
+  ['de-rp-gk-g8.view.json', createRpCrossStageView(baseRpGkView, 'GK', 'G8')],
+  ['de-rp-gk-g9.view.json', createRpCrossStageView(baseRpGkView, 'GK', 'G9')],
+  ['de-rp-lk-g8.view.json', createRpCrossStageView(baseRpLkView, 'LK', 'G8')],
+  ['de-rp-lk-g9.view.json', createRpCrossStageView(baseRpLkView, 'LK', 'G9')],
+  ['de-sh-seki-g8.view.json', createShSek1View('G8')],
+  ['de-sh-seki-g9.view.json', createShSek1View('G9')],
+  ['de-sh-gk-g8.view.json', createShCrossStageView(baseShGkView, 'GK', 'G8')],
+  ['de-sh-gk-g9.view.json', createShCrossStageView(baseShGkView, 'GK', 'G9')],
+  ['de-sh-lk-g8.view.json', createShCrossStageView(baseShLkView, 'LK', 'G8')],
+  ['de-sh-lk-g9.view.json', createShCrossStageView(baseShLkView, 'LK', 'G9')],
+])
+
+const serialize = (view: CompositionView) => `${JSON.stringify(view, null, 2)}\n`
+
+let differences = 0
+for (const fileName of GENERATED_VIEW_PATHS) {
+  const generatedView = generatedViews.get(fileName)
+  if (!generatedView) {
+    throw new Error(`Missing generator output for ${fileName}`)
+  }
+
+  const targetPath = resolve(compositionViewDir, fileName)
+  const generated = serialize(generatedView)
+  const current = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : null
+  const changed = current !== generated
+
+  if (changed) {
+    differences += 1
+    if (shouldWrite) {
+      writeFileSync(targetPath, generated)
+    }
+  }
+
+  const findStructure = (nodes: CompositionNode[], structureId: string): CompositionNode | null => {
+    for (const node of nodes) {
+      if (node.kind !== 'structure') continue
+      if (node.id === structureId) return node
+      const childMatch = findStructure(node.children, structureId)
+      if (childMatch) return childMatch
+    }
+    return null
+  }
+  const countPrimaryEntries = (node: CompositionNode | null) =>
+    node?.kind === 'structure' && node.children[0]?.kind === 'structure'
+      ? node.children[0].children.length
+      : 0
+  const durationModel = generatedView.scope.durationModel as DurationModel
+  const assignedCounts = generatedView.viewId.startsWith('de-rp-')
+    ? Object.fromEntries(
+        rpStages.map((rpStage) => [
+          rpStage,
+          countPrimaryEntries(findStructure(generatedView.rootNodes, `rp-${rpStage}-${durationModel.toLowerCase()}`)),
+        ]),
+      )
+    : generatedView.viewId.startsWith('de-sh-')
+      ? Object.fromEntries(
+          shBands.map((band) => [
+            band,
+            countPrimaryEntries(findStructure(generatedView.rootNodes, `sh-${band}-${durationModel.toLowerCase()}`)),
+          ]),
+        )
+    : Object.fromEntries(
+        yearLabelsByDuration[durationModel].map((year) => [
+          year,
+          countPrimaryEntries(findStructure(generatedView.rootNodes, `j${year}-${durationModel.toLowerCase()}`)),
+        ]),
+      )
+  console.log(`${changed ? 'changed' : 'ok'} ${fileName} ${JSON.stringify(assignedCounts)}`)
+}
+
+if (shouldCheck && differences > 0) {
+  console.error(`${differences} generated Mathematik G8/G9 composition view file(s) are not up to date. Run npm run generate:math-duration-composition-views.`)
+  process.exitCode = 1
+}
+
+if (!shouldCheck && !shouldWrite) {
+  console.log('Dry run only. Use --write to update generated views or --check to enforce reproducibility.')
+}

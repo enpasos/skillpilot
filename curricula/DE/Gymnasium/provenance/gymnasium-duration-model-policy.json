@@ -1,0 +1,1911 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-22",
+  "description": "Reviewed Gymnasium G8/G9 duration-model decisions for SkillPilot source-extraction scopes. The policy is about source/projection semantics; canonical goals remain shared.",
+  "decisions": [
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "dual-duration-different-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-specific-composition-views",
+      "compositionViewIds": [
+        "de-he-gym-seki-math-g8",
+        "de-he-gym-seki-math-g9",
+        "de-he-gym-math-gk-g8",
+        "de-he-gym-math-gk-g9",
+        "de-he-gym-math-lk-g8",
+        "de-he-gym-math-lk-g9"
+      ],
+      "rationale": "The Hessen Sek-I mathematics source extraction carries reviewed G8/G9 evidence with different grade placements; learner-facing G8/G9 composition views are generated from that evidence."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Brandenburg mathematics source is the Berlin-Brandenburg Rahmenlehrplan Jahrgangsstufen 1-10 with Niveau-based standards; it does not encode separate G8/G9 learner-facing grade projections."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Berlin mathematics source is the Berlin-Brandenburg Rahmenlehrplan Jahrgangsstufen 1-10 with Niveau-based standards; it does not encode separate G8/G9 learner-facing grade projections."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Bayern LehrplanPLUS mathematics source extraction covers Gymnasium Jahrgangsstufen 5-13; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://km.baden-wuerttemberg.de/de/schule/gymnasium/bildungsplan-2016-faecher-und-kontingentstundentafel"
+      ],
+      "rationale": "Baden-Wuerttemberg now has G8 and G9 Gymnasium structures, but the local BP2016 mathematics extraction encodes shared Kompetenzbaender 5/6, 7/8 and 9/10 rather than separate G8/G9 source placements. SkillPilot therefore keeps one learner-facing projection for this source until source evidence justifies separate views."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.bildung.bremen.de/gymnasium-3739"
+      ],
+      "rationale": "Bremen Gymnasien lead to the Abitur after 12 school years; the local mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.hamburg.de/resource/blob/1129092/a778d8f9e4a354bc5d3f92893a4cfe20/vorbemerkungenzumverzeichnisausbildungssaetten-bafoeg-data.pdf"
+      ],
+      "rationale": "Hamburg Gymnasium uses the eight-year path to the Abitur; the local mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.regierung-mv.de/Landesregierung/bm/Schule/Schulorganisation/Schulsystem-im-%C3%9Cberblick/"
+      ],
+      "rationale": "Mecklenburg-Vorpommern Gymnasium leads from Jahrgangsstufen 7-12 to the Abitur after the orientation stage; the local mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.mk.niedersachsen.de/startseite/schule/unsere_schulen/allgemein_bildende_schulen/gymnasium/gymnasium-6319.html"
+      ],
+      "rationale": "Niedersachsen Gymnasium is again structured as Schuljahrgaenge 5-13 (G9); no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction references the Nordrhein-Westfalen Kernlehrplan Mathematik Sekundarstufe I Gymnasium G9 2019; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "status": "reviewed",
+      "decision": "dual-duration-different-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-specific-composition-views",
+      "compositionViewIds": [
+        "de-rp-gym-seki-math-g8",
+        "de-rp-gym-seki-math-g9",
+        "de-rp-gym-math-gk-g8",
+        "de-rp-gym-math-gk-g9",
+        "de-rp-gym-math-lk-g8",
+        "de-rp-gym-math-lk-g9"
+      ],
+      "evidenceSources": [
+        "https://bm.rlp.de/schule/bildungswege/gymnasium"
+      ],
+      "rationale": "Rheinland-Pfalz has both nine-year Gymnasium and G8GTS Gymnasium paths. The local mathematics source extraction uses reviewed rpStage bands for Orientierungsstufe, Klassenstufen 7/8 and Klassenstufen 9/10; SkillPilot exposes explicit G8/G9 learner-facing projections from those bands without duplicating canonical goals."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "dual-duration-different-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-specific-composition-views",
+      "compositionViewIds": [
+        "de-sh-gym-seki-math-g8",
+        "de-sh-gym-seki-math-g9",
+        "de-sh-gym-math-gk-g8",
+        "de-sh-gym-math-gk-g9",
+        "de-sh-gym-math-lk-g8",
+        "de-sh-gym-math-lk-g9"
+      ],
+      "evidenceSources": [
+        "https://www.schleswig-holstein.de/DE/fachinhalte/S/schulsystem/gymnasium"
+      ],
+      "rationale": "Schleswig-Holstein is predominantly G9 but still has G8 and Y-model Gymnasien. The retained SH mathematics source-json snapshot preserves the official source-native year bands 5/6, 7/8/9 and 10; SkillPilot exposes explicit G8/G9 learner-facing projections by shifting the source bands 7-10 to 6-9 for G8, while keeping canonical goals shared."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction is titled as Saarland Gymnasium G9 2023-2026; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.schule.sachsen.de/gymnasiale-oberstufe-6950.html"
+      ],
+      "rationale": "Sachsen Gymnasium has classes 5-10 and gymnasiale Oberstufe Jahrgangsstufen 11-12; the local mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://mb.sachsen-anhalt.de/themen/schulsystem/allgemeinbildende-schulen/gymnasium"
+      ],
+      "rationale": "Sachsen-Anhalt Gymnasium comprises Schuljahrgaenge 5-12; the local mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Mathematik",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "evidenceSources": [
+        "https://www.schulportal-thueringen.de/seminarfach"
+      ],
+      "rationale": "Thueringen Gymnasium is organized around Abitur after 12 years; the local mixed 2018/2025 mathematics source is treated as one G8 projection."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_BIOLOGIE_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source document explicitly identifies Gymnasium Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_CHEMIE_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source document explicitly identifies Gymnasium Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_CHEMIE_SEKI_GYM9_2024_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction and source document identify Saarland Gymnasium G9 / neunjahriges Gymnasium; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_PHYSIK_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source document explicitly identifies Gymnasium Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_PHYSIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction and source document identify Saarland Gymnasium G9 / neunjahriges Gymnasium; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_BIOLOGIE_SEKI_BP2016_V2.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_BIOLOGIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_BIOLOGIE_SEKI_KC2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_BIOLOGIE_SEKI_NW_5_6_2012.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This source covers Naturwissenschaften in grades 5/6; these entry grades do not require a separate G8/G9 learner-facing projection."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_CHEMIE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_CHEMIE_SEKI_RAHMENPLAN_2021.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_CHEMIE_SEKI_KC2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_CHEMIE_SEKI_KLP2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_CHEMIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_CHEMIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_PHYSIK_SEKI_BP2016_V2.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_PHYSIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PHYSIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_PHYSIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Physik",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_BIOLOGIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local BCP 2014 source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_CHEMIE_SEKI_RAHMENLEHRPLAN_2014.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local BCP 2014 source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_CHEMIE_SEKI_FACHANFORDERUNGEN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen 2022 source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_DEUTSCH_SEKI_RLP_2023.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_DEUTSCH_SEKI_RLP_2023.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_DEUTSCH_SEKI_BP2016_V2.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_DEUTSCH_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_DEUTSCH_SEKI_BILDUNGSPLAN_2007.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_DEUTSCH_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_DEUTSCH_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_DEUTSCH_SEKI_RAHMENPLAN_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_DEUTSCH_SEKI_KC2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_DEUTSCH_SEKI_KLP2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_DEUTSCH_SEKI_LEHRPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_DEUTSCH_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_DEUTSCH_SEKI_GYM9_2023_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Saarland Gymnasium G9 / neunjahriges Gymnasium; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_DEUTSCH_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Deutsch",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_DEUTSCH_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_GESCHICHTE_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_GESCHICHTE_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_GESCHICHTE_SEKI_BP2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_GESCHICHTE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_GESCHICHTE_SEKI_BILDUNGSPLAN_2006.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_GESCHICHTE_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_GESCHICHTE_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_OS_RAHMENPLAN_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_GESCHICHTE_SEKI_GYM_RAHMENPLAN_2023.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_GESCHICHTE_SEKI_KC2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_GESCHICHTE_SEKI_KLP_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_GESCHICHTE_SEKI_LEHRPLAN_2021.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_GESCHICHTE_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_GESCHICHTE_SEKI_GYM9_2023_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Saarland Gymnasium G9 / neunjahriges Gymnasium; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_GESCHICHTE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Geschichte",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_GESCHICHTE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_INFORMATIK_SEKI_RLP2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_INFORMATIK_SEKI_RLP2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_INFORMATIK_SEKI_BP2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_INFORMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_INFORMATIK_SEKI_BILDUNGSPLAN.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_INFORMATIK_MEDIENBILDUNG_SEKI_RAHMENPLAN_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_INFORMATIK_SEKI_KC2014.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_INFORMATIK_SEKI_KLP2021_2023.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_INFORMATIK_SEKI_LP.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_INFORMATIK_SEKI_FACHANFORDERUNGEN_2021.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_INFORMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Saarland Gymnasium G9 / neunjahriges Gymnasium; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_INFORMATIK_SEKI_LEHRPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_INFORMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Informatik",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_INFORMATIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB-BE/latein/source-extraction/DE_BB_LATEIN_SEKI_RLP2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB-BE/latein/source-extraction/DE_BE_LATEIN_SEKI_RLP2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/latein/source-extraction/DE_BW_LATEIN_GYMNASIUM_BP2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local BP2016 source is represented as one Gymnasium projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_LATEIN_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/latein/source-extraction/DE_HB_LATEIN_SEKI_GYM_2FS_2007.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/latein/source-extraction/DE_HB_LATEIN_SEKI_GYM_3FS_2007.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/latein/source-extraction/DE_HH_LATEIN_SEKI_BILDUNGSPLAN_2011.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/latein/source-extraction/DE_MV_LATEIN_SEKI_GYM_2025.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/latein/source-extraction/DE_NI_LATEIN_SEKI_KC2017.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/latein/source-extraction/DE_NW_LATEIN_SEKI_KLP2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/latein/source-extraction/DE_RP_LATEIN_SEKI_GYM_2009.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/latein/source-extraction/DE_SH_LATEIN_SEKI_FACHANFORDERUNGEN_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/latein/source-extraction/DE_SL_LATEIN_GYMNASIUM_OFFICIAL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The active official Saarland Latin extraction uses G9 Sek-I and GOS source documents; older G8 transition documents remain retained as inactive originals and are not modeled as a separate learner-facing projection."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/latein/source-extraction/DE_SN_LATEIN_GYMNASIUM_2019.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/latein/source-extraction/DE_ST_LATEIN_GYMNASIUM_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Latein",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/latein/source-extraction/DE_TH_LATEIN_GYMNASIUM_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_POLITISCHE_BILDUNG_WAT_SEKI_RLP2015_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_POLITISCHE_BILDUNG_WAT_SEKI_RLP2015_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_POLITIK_WAT_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_POLITIKWIRTSCHAFT_SEKI_G9.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source extraction identifies Hessen G9; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_BILDUNGSPLAN_2022_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_SOZIALKUNDE_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_WIRTSCHAFT_POLITIK_SEKI_KLP2019_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_SOZIALKUNDE_SEKI_LEHRPLAN_2021_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_SOZIALKUNDE_WIRTSCHAFT_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The retained Saarland lower-secondary Sozialkunde/Wirtschaft source is treated as a legacy single G8 projection; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_SOZIALKUNDE_WIRTSCHAFTSLEHRE_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_SOZIALKUNDE_WIRTSCHAFT_RECHT_SEKI_FULL.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_WAT_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The Berlin-Brandenburg RLP source is modeled as one shared Sek-I projection; no separate G8/G9 learner-facing projection is required for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BY",
+      "stage": "SekI+SekII",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_WIRTSCHAFT_UND_RECHT_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bayern Gymnasium/LehrplanPLUS is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_WAT_SEKI_GYMNASIUM_2006.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Bremen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Hamburg Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_SOZIALKUNDE_SEKI_WIRTSCHAFT_RAHMENPLAN_2023.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Mecklenburg-Vorpommern Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NI",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKI_WIRTSCHAFT.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Niedersachsen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_WIRTSCHAFT_POLITIK_SEKI_KLP2019_WIRTSCHAFT.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Nordrhein-Westfalen Gymnasium is treated as a single G9 projection in the reviewed Gymnasium duration policy; no separate G8 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-RP",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_SOZIALKUNDE_SEKI_WIRTSCHAFT_2021.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SL",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_SOZIALKUNDE_9_WIRTSCHAFT_UND_ARBEITSWELT_2012.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The retained Saarland lower-secondary Sozialkunde/Wirtschaft source is treated as a legacy single G8 projection; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-ST",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKI_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Sachsen-Anhalt Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "Thueringen Gymnasium is treated as a single G8 projection in the reviewed Gymnasium duration policy; no separate G9 learner-facing projection is modeled for this source."
+    }
+  ]
+}

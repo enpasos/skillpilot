@@ -2,6 +2,8 @@ package com.skillpilot.backend.config;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,15 +22,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
+import java.util.HexFormat;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 
 @Component
 public class RequestLoggingFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(RequestLoggingFilter.class);
     private static final Object AI_TRACE_LOCK = new Object();
+    private static final String REDACTED = "<redacted>";
+    private static final int OPERATIONAL_LOG_MAX_BODY_CHARS = 4000;
 
     private final ObjectMapper objectMapper;
 
@@ -73,17 +83,15 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             String responseBody = new String(responseWrapper.getContentAsByteArray(), StandardCharsets.UTF_8);
 
             logger.info("API Request: {} {} | Status: {} | Duration: {}ms",
-                    request.getMethod(), request.getRequestURI(), response.getStatus(), duration);
+                    request.getMethod(), sanitizeUriForOperationalLog(request.getRequestURI()), response.getStatus(), duration);
 
-            if (!requestBody.isBlank()) {
-                logger.info("Request Body: {}", requestBody);
-            }
-
-            if (!responseBody.isBlank()) {
-                // Limit response logging to avoid flooding logs with huge JSONs if needed,
-                // but for debugging purposes we log it all or a reasonable prefix.
-                // For now, let's log it all as requested.
-                logger.info("Response Body: {}", responseBody);
+            if (logger.isDebugEnabled()) {
+                if (!requestBody.isBlank()) {
+                    logger.debug("Request Body: {}", formatBodyForOperationalLog(requestBody));
+                }
+                if (!responseBody.isBlank()) {
+                    logger.debug("Response Body: {}", formatBodyForOperationalLog(responseBody));
+                }
             }
 
             if (aiTraceEnabled && request.getRequestURI().startsWith("/api/ai")) {
@@ -101,21 +109,22 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             String responseBody) {
         Path path = resolveAiTracePath();
         String skillpilotId = resolveSkillpilotId(request.getRequestURI(), requestBody, responseBody);
+        String skillpilotRef = stableSensitiveRef(skillpilotId);
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("ts", Instant.now().toString());
         entry.put("method", request.getMethod());
-        entry.put("path", request.getRequestURI());
-        entry.put("query", request.getQueryString());
+        entry.put("path", sanitizeUriForOperationalLog(request.getRequestURI()));
+        entry.put("query", sanitizeQueryForTrace(request.getQueryString()));
         entry.put("status", response.getStatus());
         entry.put("durationMs", duration);
-        entry.put("skillpilotId", skillpilotId);
+        entry.put("skillpilotRef", skillpilotRef);
         entry.put("requestBody", formatBodyForTrace(requestBody));
         entry.put("responseBody", formatBodyForTrace(responseBody));
 
         try {
             String line = objectMapper.writeValueAsString(entry) + System.lineSeparator();
             writeTraceLine(path, line);
-            writeTraceLine(resolvePerLearnerTracePath(path, skillpilotId), line);
+            writeTraceLine(resolvePerLearnerTracePath(path, skillpilotRef), line);
         } catch (IOException e) {
             logger.warn("Failed to serialize AI trace entry", e);
         }
@@ -128,16 +137,15 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return Paths.get(pathValue);
     }
 
-    private Path resolvePerLearnerTracePath(Path basePath, String skillpilotId) {
-        if (skillpilotId == null || skillpilotId.isBlank()) {
+    private Path resolvePerLearnerTracePath(Path basePath, String skillpilotRef) {
+        if (skillpilotRef == null || skillpilotRef.isBlank()) {
             return null;
         }
-        String safeId = sanitizeSkillpilotId(skillpilotId);
         Path parent = basePath.getParent();
         if (parent == null) {
             parent = Paths.get("tmp");
         }
-        return parent.resolve("ai-trace-" + safeId + ".jsonl");
+        return parent.resolve("ai-trace-" + skillpilotRef + ".jsonl");
     }
 
     private void writeTraceLine(Path path, String line) {
@@ -167,18 +175,135 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return value.substring(0, aiTraceMaxBodyChars) + "...(truncated)";
     }
 
-    private Object formatBodyForTrace(String body) {
+    Object formatBodyForTrace(String body) {
         if (body == null || body.isBlank()) {
             return "";
         }
         if (body.length() > aiTraceMaxBodyChars) {
-            return truncate(body);
+            return truncate(redactPlainText(body));
         }
         try {
-            return objectMapper.readTree(body);
+            return redactJsonNode(objectMapper.readTree(body));
         } catch (IOException e) {
-            return body;
+            return redactPlainText(body);
         }
+    }
+
+    String formatBodyForOperationalLog(String body) {
+        if (body == null || body.isBlank()) {
+            return "";
+        }
+        try {
+            String serialized = objectMapper.writeValueAsString(redactJsonNode(objectMapper.readTree(body)));
+            return truncateOperationalLogBody(serialized);
+        } catch (IOException e) {
+            return "<non-json body omitted>";
+        }
+    }
+
+    String sanitizeUriForOperationalLog(String uri) {
+        if (uri == null || uri.isBlank()) {
+            return "";
+        }
+        return uri
+                .replaceAll("(/api/(?:ui|ai/[^/]+)/learners/)[^/]+", "$1<skillpilotId>")
+                .replaceAll("(/api/ui/updates/)[^/]+", "$1<skillpilotId>")
+                .replaceAll("(/api/ai/[^/]+/sessions/)[^/]+", "$1<chatSessionToken>");
+    }
+
+    String stableSensitiveRef(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        try {
+            byte[] digest = MessageDigest.getInstance("SHA-256").digest(value.getBytes(StandardCharsets.UTF_8));
+            return HexFormat.of().formatHex(digest, 0, 8);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-256 is not available.", e);
+        }
+    }
+
+    private String sanitizeQueryForTrace(String query) {
+        if (query == null || query.isBlank()) {
+            return "";
+        }
+        String[] pairs = query.split("&");
+        StringBuilder sanitized = new StringBuilder();
+        for (String pair : pairs) {
+            if (sanitized.length() > 0) {
+                sanitized.append('&');
+            }
+            int separator = pair.indexOf('=');
+            String key = separator >= 0 ? pair.substring(0, separator) : pair;
+            String value = separator >= 0 ? pair.substring(separator + 1) : "";
+            sanitized.append(key);
+            if (separator >= 0) {
+                sanitized.append('=')
+                        .append(isSensitiveFieldName(key) ? REDACTED : redactPlainText(value));
+            }
+        }
+        return sanitized.toString();
+    }
+
+    private JsonNode redactJsonNode(JsonNode node) {
+        if (node == null || node.isNull()) {
+            return node;
+        }
+        if (node.isObject()) {
+            ObjectNode redacted = objectMapper.createObjectNode();
+            Iterator<Entry<String, JsonNode>> fields = node.fields();
+            while (fields.hasNext()) {
+                Entry<String, JsonNode> field = fields.next();
+                if (isSensitiveFieldName(field.getKey())) {
+                    redacted.put(field.getKey(), REDACTED);
+                } else {
+                    redacted.set(field.getKey(), redactJsonNode(field.getValue()));
+                }
+            }
+            return redacted;
+        }
+        if (node.isArray()) {
+            ArrayNode redacted = objectMapper.createArrayNode();
+            for (JsonNode item : node) {
+                redacted.add(redactJsonNode(item));
+            }
+            return redacted;
+        }
+        if (node.isTextual()) {
+            return objectMapper.getNodeFactory().textNode(redactPlainText(node.asText()));
+        }
+        return node;
+    }
+
+    private boolean isSensitiveFieldName(String fieldName) {
+        String normalized = fieldName == null
+                ? ""
+                : fieldName.replaceAll("[^A-Za-z0-9]", "").toLowerCase(Locale.ROOT);
+        return normalized.contains("skillpilotid")
+                || normalized.contains("learnerid")
+                || normalized.contains("chatsessiontoken")
+                || normalized.contains("startcode")
+                || normalized.equals("authorization")
+                || normalized.equals("password")
+                || normalized.endsWith("password")
+                || normalized.endsWith("token")
+                || normalized.endsWith("secret");
+    }
+
+    private String redactPlainText(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        return value
+                .replaceAll("sps_[A-Za-z0-9_-]+", "<chatSessionToken>")
+                .replaceAll("SP-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}-[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}", "<startCode>");
+    }
+
+    private String truncateOperationalLogBody(String value) {
+        if (value.length() <= OPERATIONAL_LOG_MAX_BODY_CHARS) {
+            return value;
+        }
+        return value.substring(0, OPERATIONAL_LOG_MAX_BODY_CHARS) + "...(truncated)";
     }
 
     private String resolveSkillpilotId(String uri, String requestBody, String responseBody) {
@@ -229,7 +354,4 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return "";
     }
 
-    private String sanitizeSkillpilotId(String value) {
-        return value.replaceAll("[^A-Za-z0-9._-]", "_");
-    }
 }

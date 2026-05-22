@@ -23,6 +23,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
@@ -5657,6 +5658,264 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
+        String[][] scopes = {
+                { "DE-BB", "182", "182" },
+                { "DE-BE", "182", "182" },
+                { "DE-BW", "198", "198" },
+                { "DE-BY", "175", "175" },
+                { "DE-HB", "161", "161" },
+                { "DE-HE", "238", "261" },
+                { "DE-HH", "182", "182" },
+                { "DE-MV", "182", "182" },
+                { "DE-NI", "182", "182" },
+                { "DE-NW", "182", "182" },
+                { "DE-RP", "122", "122" },
+                { "DE-SH", "179", "179" },
+                { "DE-SL", "182", "182" },
+                { "DE-SN", "182", "182" },
+                { "DE-ST", "182", "182" },
+                { "DE-TH", "182", "182" }
+        };
+
+        for (String[] scope : scopes) {
+            String jurisdiction = scope[0];
+            Learner learner = new Learner();
+            learner.setSkillpilotId("duration-composition-" + jurisdiction.toLowerCase(Locale.ROOT));
+            learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    CANONICAL_MATH_ID, jurisdiction, "G8", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g8State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    CANONICAL_MATH_ID, jurisdiction, "G9", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g9State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
+            assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
+            assertThat(g9Total).as(jurisdiction + " G9 total").isEqualTo(Integer.parseInt(scope[2]));
+        }
+    }
+
+    @Test
+    void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
+        String[][] scopes = {
+                { "DE-HE", "GK", "645", "647" },
+                { "DE-HE", "LK", "750", "752" },
+                { "DE-RP", "GK", "529", "529" },
+                { "DE-RP", "LK", "624", "624" },
+                { "DE-SH", "GK", "567", "567" },
+                { "DE-SH", "LK", "650", "650" }
+        };
+
+        for (String[] scope : scopes) {
+            String jurisdiction = scope[0];
+            String courseProfile = scope[1];
+            Learner learner = new Learner();
+            learner.setSkillpilotId("duration-crossstage-" + jurisdiction.toLowerCase(Locale.ROOT) + "-"
+                    + courseProfile.toLowerCase(Locale.ROOT));
+            learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    CANONICAL_MATH_ID, jurisdiction, "G8", courseProfile, true, true));
+            learnerRepository.save(learner);
+
+            JsonNode g8State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    CANONICAL_MATH_ID, jurisdiction, "G9", courseProfile, true, true));
+            learnerRepository.save(learner);
+
+            JsonNode g9State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", courseProfile);
+            assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", courseProfile);
+            assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 total")
+                    .isEqualTo(Integer.parseInt(scope[2]));
+            assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 total")
+                    .isEqualTo(Integer.parseInt(scope[3]));
+        }
+    }
+
+    @Test
+    void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
+        String[][] scopes = {
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "80", "80" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "129", "129" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "97", "97" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "129", "129" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "88", "88" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "77", "77" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "60", "60" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BY", "89", "89" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HB", "74", "74" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HE", "89", "89" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HH", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-MV", "57", "57" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NI", "78", "78" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NW", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-RP", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SH", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SL", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "55", "55" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "64", "64" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "64", "64" }
+        };
+
+        for (String[] scope : scopes) {
+            String subject = scope[0];
+            String subjectLandscapeId = scope[1];
+            String jurisdiction = scope[2];
+            Learner learner = new Learner();
+            learner.setSkillpilotId("duration-science-" + subject.toLowerCase(Locale.ROOT) + "-"
+                    + jurisdiction.toLowerCase(Locale.ROOT));
+            learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G8", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g8State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g9State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
+            assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
+                    .isEqualTo(Integer.parseInt(scope[3]));
+            assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
+                    .isEqualTo(Integer.parseInt(scope[4]));
+        }
+    }
+
+    @Test
+    void learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals() throws Exception {
+        String[][] scopes = {
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BB", "25", "25" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BE", "25", "25" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BW", "4", "4" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BY", "34", "34" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-HH", "21", "21" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-MV", "24", "24" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NI", "21", "21" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NW", "19", "19" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-RP", "17", "17" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SH", "26", "26" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SL", "28", "28" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SN", "28", "28" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-ST", "21", "21" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-TH", "23", "23" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-BB", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-BE", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-BW", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-BY", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-HB", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-HH", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-MV", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-NI", "27", "27" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-NW", "27", "27" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-RP", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-SH", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-SL", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-SN", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-ST", "28", "28" },
+                { "Latein", CANONICAL_LATIN_ID, "DE-TH", "28", "28" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-BB", "19", "19" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-BE", "19", "19" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-HB", "14", "14" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-HE", "30", "30" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-HH", "21", "21" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-MV", "17", "17" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-NW", "27", "27" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-RP", "18", "18" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-SH", "34", "34" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-SL", "18", "18" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-SN", "19", "19" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-ST", "19", "19" },
+                { "Politik und Wirtschaft", CANONICAL_POLITICS_ECONOMICS_ID, "DE-TH", "18", "18" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BB", "86", "86" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BE", "86", "86" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-BY", "128", "128" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HB", "41", "41" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-HH", "38", "38" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-MV", "26", "26" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-NI", "47", "47" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-NW", "48", "48" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-RP", "40", "40" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-SH", "46", "46" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-SL", "40", "40" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-SN", "37", "37" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-ST", "37", "37" },
+                { "Wirtschaftswissenschaften", CANONICAL_ECONOMICS_ID, "DE-TH", "78", "78" }
+        };
+
+        for (String[] scope : scopes) {
+            String subject = scope[0];
+            String subjectLandscapeId = scope[1];
+            String jurisdiction = scope[2];
+            Learner learner = new Learner();
+            learner.setSkillpilotId("duration-m6-"
+                    + subject.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "-")
+                    + "-" + jurisdiction.toLowerCase(Locale.ROOT));
+            learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G8", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g8State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
+                    subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
+            learnerRepository.save(learner);
+
+            JsonNode g9State = objectMapper.readTree(getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+
+            assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
+            assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
+                    .isEqualTo(Integer.parseInt(scope[3]));
+            assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
+                    .isEqualTo(Integer.parseInt(scope[4]));
+        }
+    }
+
+    @Test
     void compatibilityCurriculumTopicsUseFrozenArchiveRegistry() throws Exception {
         HttpResponse<String> response = getRequest("/api/ui/curricula/" + HESSEN_GYMNASIUM_UPPER_MATH_ID + "/topics");
 
@@ -5755,6 +6014,23 @@ public class LearnerControllerIntegrationTest {
                 HttpResponse.BodyHandlers.ofString());
     }
 
+    private String canonicalGymnasiumSubjectPersonalCurriculum(
+            String subjectLandscapeId,
+            String jurisdiction,
+            String durationModel,
+            String courseProfile,
+            boolean sek1Selected,
+            boolean sek2Selected) {
+        return """
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "%s", "durationModel": "%s"},
+                  "__skillpilot_stage_scope_sek1__": {"selected": %s},
+                  "__skillpilot_stage_scope_sek2__": {"selected": %s},
+                  "%s": {"selected": true, "filterId": "%s"}
+                }
+                """.formatted(jurisdiction, durationModel, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile);
+    }
+
     private String findResultStatus(JsonNode results, String skillpilotId) {
         for (JsonNode result : results) {
             if (skillpilotId.equals(result.path("skillpilotId").asText())) {
@@ -5773,6 +6049,17 @@ public class LearnerControllerIntegrationTest {
             ids.add(node.path("id").asText());
         }
         return ids;
+    }
+
+    private List<String> jsonTextValues(JsonNode nodes) {
+        List<String> values = new ArrayList<>();
+        if (nodes == null || !nodes.isArray()) {
+            return values;
+        }
+        for (JsonNode node : nodes) {
+            values.add(node.asText());
+        }
+        return values;
     }
 
     private boolean containsNodeWithTag(JsonNode nodes, String tag) {

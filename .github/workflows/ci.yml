@@ -67,6 +67,8 @@ jobs:
         run: npm run validate:graph
       - name: Validate View Filters
         run: npm run validate:view-filters
+      - name: Check Source Landscape Registry
+        run: npm run check:source-landscape-registry
       - name: Check Hessen Math G8/G9 Projection
         run: npm run check:he-math-duration-projection
       - name: Check Curriculum Source Coverage
