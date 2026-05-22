@@ -13,8 +13,26 @@ npm run validate:graph
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 
+echo "--> Checking Source Landscape Registry"
+npm run check:source-landscape-registry
+
 echo "--> Running Hessen Math G8/G9 Projection Check"
 npm run check:he-math-duration-projection
+
+echo "--> Checking generated Math G8/G9 Composition Views"
+npm run check:math-duration-composition-views
+
+echo "--> Checking Canonical Math Scope Coverage"
+npm run check:canonical-math-scope-coverage
+
+echo "--> Checking Gymnasium G8/G9 Duration Readiness Report"
+npm run check:gymnasium-duration-readiness
+
+echo "--> Checking Mathematics G8/G9 Duration Policy Readiness"
+npm run check:math-duration-policy-readiness
+
+echo "--> Checking M6 G8/G9 Duration Policy Readiness"
+npm run check:m6-duration-policy-readiness
 
 echo "--> Running Curriculum Source Coverage Check"
 npm run quality:source-coverage-audit:check

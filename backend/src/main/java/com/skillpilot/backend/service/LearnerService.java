@@ -116,6 +116,8 @@ public class LearnerService {
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
     private static final Set<String> DURATION_MODEL_FILTER_IDS = Set.of("G8", "G9");
     private static final String DEFAULT_DURATION_MODEL_FILTER_ID = "G9";
+    private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
+    private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
     private static final String APPLICABILITY_DIMENSION_DURATION_MODEL = "durationModel";
     private static final String HESSEN_JURISDICTION_FILTER_ID = "DE-HE";
@@ -4619,7 +4621,303 @@ public class LearnerService {
                 }
             }
         }
+        if (!ignoreCourseFilters) {
+            return applyCompositionViewScope(curriculumId, allGoals, config, closure);
+        }
         return allGoals;
+    }
+
+    private Map<String, LearningGoal> applyCompositionViewScope(
+            String curriculumId,
+            Map<String, LearningGoal> allGoals,
+            Map<String, Map<String, Object>> config,
+            List<LearningLandscape> closure) {
+        if (compositionViewService == null
+                || curriculumId == null
+                || curriculumId.isBlank()
+                || allGoals == null
+                || allGoals.isEmpty()
+                || config == null
+                || config.isEmpty()
+                || closure == null
+                || closure.isEmpty()
+                || !hasExplicitDurationModelScope(config)) {
+            return allGoals;
+        }
+
+        LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+        for (LearningLandscape landscape : closure) {
+            if (!isCompositionViewCandidate(curriculumId, landscape, config)) {
+                continue;
+            }
+            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), config);
+            if (requestedScope.isEmpty()) {
+                continue;
+            }
+            Map<String, Object> matchedView =
+                    compositionViewService.findMatchingView(landscape.getLandscapeId(), requestedScope);
+            if (matchedView == null || matchedView.isEmpty()) {
+                continue;
+            }
+            collectCompositionViewGoalReferences(matchedView.get("rootNodes"), referencedGoalIds);
+        }
+
+        if (referencedGoalIds.isEmpty()) {
+            return allGoals;
+        }
+
+        LinkedHashSet<String> visibleGoalIds = new LinkedHashSet<>();
+        for (String referencedGoalId : referencedGoalIds) {
+            collectCompositionGoalAndDescendants(referencedGoalId, allGoals, visibleGoalIds, new HashSet<>());
+        }
+        if (visibleGoalIds.isEmpty()) {
+            return allGoals;
+        }
+        addCompositionAncestors(allGoals, visibleGoalIds);
+
+        Map<String, LearningGoal> scopedGoals = new LinkedHashMap<>();
+        for (Map.Entry<String, LearningGoal> entry : allGoals.entrySet()) {
+            if (visibleGoalIds.contains(entry.getKey())) {
+                scopedGoals.put(entry.getKey(), entry.getValue());
+            }
+        }
+        return scopedGoals.isEmpty() ? allGoals : scopedGoals;
+    }
+
+    private boolean hasExplicitDurationModelScope(Map<String, Map<String, Object>> config) {
+        for (Map<String, Object> entry : config.values()) {
+            if (entry == null) {
+                continue;
+            }
+            Object durationModel = entry.get("durationModel");
+            if (durationModel instanceof String text && normalizeDurationModelScope(text) != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isCompositionViewCandidate(
+            String curriculumId,
+            LearningLandscape landscape,
+            Map<String, Map<String, Object>> config) {
+        if (!isCanonicalGymnasiumLandscape(landscape)) {
+            return false;
+        }
+        String landscapeId = landscape.getLandscapeId();
+        if (landscapeId == null || landscapeId.isBlank() || CANONICAL_GYMNASIUM_ROOT_ID.equals(landscapeId)) {
+            return false;
+        }
+        if (landscapeId.equals(curriculumId)) {
+            return true;
+        }
+        if (!config.containsKey(landscapeId)) {
+            return false;
+        }
+        return readSelectedFlag(config, landscapeId);
+    }
+
+    private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config) {
+        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
+        String landscapeFilterId = readFilterId(config, landscapeId);
+        String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
+        String stage = inferCompositionStageScope(config);
+        String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
+        String durationModel = resolveDurationModelScope(
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
+                readScopeValue(config, landscapeId, "durationModel"),
+                rootFilterId,
+                landscapeFilterId,
+                config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID) || config.containsKey(landscapeId)
+                        ? DEFAULT_DURATION_MODEL_FILTER_ID
+                        : null);
+
+        if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, String> scope = new LinkedHashMap<>();
+        scope.put("schoolForm", "Gymnasium");
+        if (jurisdiction != null) {
+            scope.put("jurisdiction", jurisdiction);
+        }
+        if (stage != null) {
+            scope.put("stage", stage);
+        }
+        if (courseProfile != null && !"SekI".equals(stage)) {
+            scope.put("courseProfile", courseProfile);
+        }
+        if (durationModel != null) {
+            scope.put("durationModel", durationModel);
+        }
+        return scope;
+    }
+
+    private String readFilterId(Map<String, Map<String, Object>> config, String landscapeId) {
+        Map<String, Object> entry = config.get(landscapeId);
+        if (entry == null) {
+            return null;
+        }
+        Object filterId = entry.get("filterId");
+        return filterId instanceof String textFilterId ? normalizeFilterId(textFilterId) : null;
+    }
+
+    private String readScopeValue(Map<String, Map<String, Object>> config, String landscapeId, String key) {
+        Map<String, Object> entry = config.get(landscapeId);
+        if (entry == null) {
+            return null;
+        }
+        Object value = entry.get(key);
+        return value instanceof String textValue ? normalizeFilterId(textValue) : null;
+    }
+
+    private String resolveJurisdictionFilter(String... filterCandidates) {
+        for (String filterCandidate : filterCandidates) {
+            String jurisdiction = BundeslandCodeNormalizer.normalize(filterCandidate);
+            if (jurisdiction != null && !jurisdiction.isBlank()) {
+                return jurisdiction;
+            }
+        }
+        return null;
+    }
+
+    private String resolveDurationModelScope(String... candidates) {
+        for (String candidate : candidates) {
+            String durationModel = normalizeDurationModelScope(candidate);
+            if (durationModel != null) {
+                return durationModel;
+            }
+        }
+        return null;
+    }
+
+    private String normalizeDurationModelScope(String value) {
+        String normalized = normalizeFilterId(value);
+        if ("DURATIONMODEL:G8".equals(normalized) || "DURATION-MODEL:G8".equals(normalized)) {
+            return "G8";
+        }
+        if ("DURATIONMODEL:G9".equals(normalized) || "DURATION-MODEL:G9".equals(normalized)) {
+            return "G9";
+        }
+        return DURATION_MODEL_FILTER_IDS.contains(normalized) ? normalized : null;
+    }
+
+    private String normalizeCourseProfileScope(String filterId) {
+        String normalized = normalizeFilterId(filterId);
+        if ("ALL".equals(normalized) || "GK+LK".equals(normalized)) {
+            return "GK+LK";
+        }
+        return COURSE_FILTER_IDS.contains(normalized) ? normalized : null;
+    }
+
+    private String inferCompositionStageScope(Map<String, Map<String, Object>> config) {
+        boolean sek1Selected = readSelectedFlag(config, STAGE_SCOPE_SEK1_ID, true);
+        boolean sek2Selected = readSelectedFlag(config, STAGE_SCOPE_SEK2_ID, true);
+        if (sek1Selected && sek2Selected) {
+            return "CrossStage";
+        }
+        if (sek1Selected) {
+            return "SekI";
+        }
+        if (sek2Selected) {
+            return "SekII";
+        }
+        return null;
+    }
+
+    private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String configId, boolean defaultValue) {
+        if (config == null || config.isEmpty()) {
+            return defaultValue;
+        }
+        Map<String, Object> entry = config.get(configId);
+        if (entry == null) {
+            return defaultValue;
+        }
+        Object selected = entry.get("selected");
+        return selected instanceof Boolean selectedFlag ? selectedFlag : defaultValue;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void collectCompositionViewGoalReferences(Object rawNodes, Set<String> goalIds) {
+        if (!(rawNodes instanceof List<?> nodeList)) {
+            return;
+        }
+        for (Object rawNode : nodeList) {
+            if (!(rawNode instanceof Map<?, ?> node)) {
+                continue;
+            }
+            Object kind = node.get("kind");
+            if (!(kind instanceof String kindText)) {
+                continue;
+            }
+            switch (kindText) {
+                case "structure" -> collectCompositionViewGoalReferences(node.get("children"), goalIds);
+                case "canonicalSubtree", "goalEntry" -> {
+                    Object goalId = node.get("goalId");
+                    if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
+                        goalIds.add(goalIdText);
+                    }
+                }
+                case "landscapeEntry" -> {
+                    Object landscapeId = node.get("landscapeId");
+                    if (landscapeId instanceof String landscapeIdText && !landscapeIdText.isBlank()) {
+                        LearningLandscape landscape = landscapeService.getById(landscapeIdText);
+                        if (landscape != null && landscape.getGoals() != null) {
+                            landscape.getGoals().stream()
+                                    .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
+                                    .findFirst()
+                                    .map(LearningGoal::getId)
+                                    .ifPresent(goalIds::add);
+                        }
+                    }
+                }
+                default -> {
+                }
+            }
+        }
+    }
+
+    private void collectCompositionGoalAndDescendants(
+            String goalRef,
+            Map<String, LearningGoal> allGoals,
+            Set<String> visibleGoalIds,
+            Set<String> visiting) {
+        String goalId = resolveGoalRef(goalRef, allGoals);
+        if (goalId == null || goalId.isBlank() || !visiting.add(goalId)) {
+            return;
+        }
+        LearningGoal goal = allGoals.get(goalId);
+        if (goal == null) {
+            visiting.remove(goalId);
+            return;
+        }
+        visibleGoalIds.add(goalId);
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                collectCompositionGoalAndDescendants(childRef, allGoals, visibleGoalIds, visiting);
+            }
+        }
+        visiting.remove(goalId);
+    }
+
+    private void addCompositionAncestors(Map<String, LearningGoal> allGoals, Set<String> visibleGoalIds) {
+        boolean changed;
+        do {
+            changed = false;
+            for (LearningGoal goal : allGoals.values()) {
+                if (goal == null || visibleGoalIds.contains(goal.getId()) || goal.getContains() == null) {
+                    continue;
+                }
+                for (String childRef : goal.getContains()) {
+                    String childId = resolveGoalRef(childRef, allGoals);
+                    if (childId != null && visibleGoalIds.contains(childId)) {
+                        visibleGoalIds.add(goal.getId());
+                        changed = true;
+                        break;
+                    }
+                }
+            }
+        } while (changed);
     }
 
     private boolean matchesAllEffectiveFilters(LearningGoal goal, LearningLandscape landscape, List<String> effectiveFilterIds,

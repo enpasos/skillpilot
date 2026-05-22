@@ -74,7 +74,7 @@ export const COMPATIBILITY_ONLY_BAVARIA_GYMNASIUM_IDS = new Set([
   '12322e3f-f351-5d40-b4ea-4a13d7e15854',
   '9f01e236-829e-5603-bc8d-b9ca55c273e0',
   '39c8fa53-a1b9-5398-ab74-fe96d7c361d1',
-  '04c7656b-7335-5de5-87d9-51a35c78047a',
+  '55e02c7e-ddca-4b30-a895-dc27c5f107ca',
   '4f5ae12a-6f64-5430-8c5a-35e5d895864a',
   '5aef1568-f6c9-5d82-bfdb-678d86800b93',
   '20c7d57c-42e2-5e7c-95af-7ccfa729c805',

@@ -135,37 +135,43 @@ const jurisdictions = [
     .filter((filterId): filterId is string => !!filterId && filterId !== 'ALL')),
 ]
 
+const durationVariants = <T extends Scope>(scope: T): T[] => [
+  scope,
+  { ...scope, durationModel: 'G8' },
+  { ...scope, durationModel: 'G9' },
+]
+
 const requestedScopes: Scope[] = [
-  ...jurisdictions.map((jurisdiction) => ({
+  ...jurisdictions.flatMap((jurisdiction) => durationVariants({
     schoolForm: 'Gymnasium',
     ...(jurisdiction ? { jurisdiction } : {}),
     stage: 'SekI',
   })),
   ...jurisdictions.flatMap((jurisdiction) => ([
-    {
+    ...durationVariants({
       schoolForm: 'Gymnasium',
       ...(jurisdiction ? { jurisdiction } : {}),
       stage: 'SekII',
       courseProfile: 'GK',
-    },
-    {
+    }),
+    ...durationVariants({
       schoolForm: 'Gymnasium',
       ...(jurisdiction ? { jurisdiction } : {}),
       stage: 'SekII',
       courseProfile: 'LK',
-    },
-    {
+    }),
+    ...durationVariants({
       schoolForm: 'Gymnasium',
       ...(jurisdiction ? { jurisdiction } : {}),
       stage: 'CrossStage',
       courseProfile: 'GK',
-    },
-    {
+    }),
+    ...durationVariants({
       schoolForm: 'Gymnasium',
       ...(jurisdiction ? { jurisdiction } : {}),
       stage: 'CrossStage',
       courseProfile: 'LK',
-    },
+    }),
   ])),
 ]
 
@@ -209,6 +215,9 @@ const results = requestedScopes.map((scope) => {
   const bestMatch = matches[0]
   const approvedFallback = scope.jurisdiction && !bestMatch?.scope.jurisdiction
     ? approvedFallbacksByScopeKey.get(composeScopeKey(scope))
+      ?? (scope.durationModel
+        ? approvedFallbacksByScopeKey.get(composeScopeKey({ ...scope, durationModel: undefined }))
+        : undefined)
     : undefined
   const resolutionKind = !bestMatch
     ? 'missing'

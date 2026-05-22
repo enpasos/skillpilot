@@ -104,12 +104,36 @@ const REQUIRED_CANONICAL_MATH_SCOPES: RequiredCanonicalMathScope[] = [
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'LK' },
   },
   {
+    expectedViewId: 'de-he-gym-seki-math-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekI', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-he-gym-seki-math-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekI', durationModel: 'G9' },
+  },
+  {
     expectedViewId: 'de-he-gym-math-gk',
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'GK' },
   },
   {
     expectedViewId: 'de-he-gym-math-lk',
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-he-gym-math-gk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-he-gym-math-gk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G9' },
+  },
+  {
+    expectedViewId: 'de-he-gym-math-lk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-he-gym-math-lk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G9' },
   },
   {
     expectedViewId: 'de-by-gym-sekii-math-gk',
@@ -168,12 +192,76 @@ const REQUIRED_CANONICAL_MATH_SCOPES: RequiredCanonicalMathScope[] = [
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'SekII', courseProfile: 'LK' },
   },
   {
+    expectedViewId: 'de-sh-gym-seki-math-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'SekI', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-seki-math-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'SekI', durationModel: 'G9' },
+  },
+  {
     expectedViewId: 'de-sh-gym-math-gk',
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'GK' },
   },
   {
     expectedViewId: 'de-sh-gym-math-lk',
     scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-gk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-gk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G9' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-lk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-sh-gym-math-lk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-SH', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G9' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-sekii-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'SekII', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-sekii-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'SekII', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-seki-math-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'SekI', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-seki-math-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'SekI', durationModel: 'G9' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-gk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'GK' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-lk',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'LK' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-gk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-gk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'GK', durationModel: 'G9' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-lk-g8',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G8' },
+  },
+  {
+    expectedViewId: 'de-rp-gym-math-lk-g9',
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-RP', stage: 'CrossStage', courseProfile: 'LK', durationModel: 'G9' },
   },
   {
     expectedViewId: 'de-be-gym-sekii-math-gk',
