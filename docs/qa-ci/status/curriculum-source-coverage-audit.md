@@ -1,54 +1,64 @@
 # Curriculum Source Coverage Audit
 
-Generated: 2026-05-17T10:48:25.287Z
+Generated: 2026-05-21T18:28:27.990Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
+
+`Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` only evaluates the currently visible projection.
+
+Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from the source-coverage denominator; memory traceability is handled by the separate memory-card review.
 
 This file is a raw Applicability compiler audit. The Workbench `Curriculum Quality` cards use the composition-view based counters in `curriculum-quality-status.json`, including extracted source atoms and fully covered source original goals.
 
 ## Mathematik (Gymnasium, DE)
 
-Atomic goals: 825
+Source-coverage atomic goals: 750
+Global status: 13/16 covered, 3 partial, 0 error.
+View status: 16/16 covered, 0 partial, 0 error.
+Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 221.
 
-| Bundesland | Status | Source-backed | Surrogate | Missing | Visible | Unsupported visible | Partial source links | Warnings | Errors |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 632 | 0 | 0 |
-| DE-HE | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
-| DE-BY | error | 567/825 (68.7%) | 0 | 258 | 600 | 33 | 366 | 0 | 0 |
-| DE-BB | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
-| DE-BE | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 0 | 0 | 0 |
-| DE-NI | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 758 | 0 | 0 |
-| DE-NW | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 688 | 0 | 0 |
-| DE-SH | error | 733/825 (88.8%) | 0 | 92 | 742 | 9 | 521 | 0 | 0 |
-| DE-HB | error | 758/825 (91.9%) | 0 | 67 | 768 | 10 | 678 | 0 | 0 |
-| DE-HH | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 687 | 0 | 0 |
-| DE-MV | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 763 | 0 | 0 |
-| DE-RP | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 778 | 0 | 0 |
-| DE-SL | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 772 | 0 | 0 |
-| DE-SN | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 764 | 0 | 0 |
-| DE-ST | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 776 | 0 | 0 |
-| DE-TH | covered | 825/825 (100%) | 0 | 0 | 825 | 0 | 790 | 0 | 0 |
+| Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| DE-BW | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 559 | 0 | 0 |
+| DE-HE | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 0 | 0 | 0 |
+| DE-BY | partial | covered | 585/750 (78%) | 553 | 32 | 165 | 585 | 585 | 0 | 353 | 0 | 0 |
+| DE-BB | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 0 | 0 | 0 |
+| DE-BE | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 0 | 0 | 0 |
+| DE-NI | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 689 | 0 | 0 |
+| DE-NW | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 619 | 0 | 0 |
+| DE-SH | partial | covered | 717/750 (95.6%) | 708 | 9 | 33 | 717 | 717 | 0 | 499 | 0 | 0 |
+| DE-HB | partial | covered | 727/750 (96.9%) | 717 | 10 | 23 | 727 | 727 | 0 | 643 | 0 | 0 |
+| DE-HH | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 614 | 0 | 0 |
+| DE-MV | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 693 | 0 | 0 |
+| DE-RP | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 709 | 0 | 0 |
+| DE-SL | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 703 | 0 | 0 |
+| DE-SN | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 695 | 0 | 0 |
+| DE-ST | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 706 | 0 | 0 |
+| DE-TH | covered | covered | 750/750 (100%) | 750 | 0 | 0 | 750 | 750 | 0 | 720 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 
-Atomic goals: 497
+Source-coverage atomic goals: 425
+Global status: 15/16 covered, 1 partial, 0 error.
+View status: 16/16 covered, 0 partial, 0 error.
+Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 56.
 
-| Bundesland | Status | Source-backed | Surrogate | Missing | Visible | Unsupported visible | Partial source links | Warnings | Errors |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 420 | 0 | 0 |
-| DE-HE | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 0 | 0 | 0 |
-| DE-BY | error | 331/497 (66.6%) | 0 | 166 | 380 | 49 | 298 | 0 | 0 |
-| DE-BB | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 494 | 0 | 0 |
-| DE-BE | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 494 | 0 | 0 |
-| DE-NI | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 274 | 0 | 0 |
-| DE-NW | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 438 | 0 | 0 |
-| DE-SH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 326 | 0 | 0 |
-| DE-HB | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 241 | 0 | 0 |
-| DE-HH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 309 | 0 | 0 |
-| DE-MV | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 487 | 0 | 0 |
-| DE-RP | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 496 | 0 | 0 |
-| DE-SL | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 487 | 0 | 0 |
-| DE-SN | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 420 | 0 | 0 |
-| DE-ST | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 497 | 0 | 0 |
-| DE-TH | covered | 497/497 (100%) | 0 | 0 | 497 | 0 | 497 | 0 | 0 |
+| Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| DE-BW | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 349 | 0 | 0 |
+| DE-HE | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 0 | 0 | 0 |
+| DE-BY | partial | covered | 369/425 (86.8%) | 320 | 49 | 56 | 369 | 369 | 0 | 288 | 0 | 0 |
+| DE-BB | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 423 | 0 | 0 |
+| DE-BE | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 423 | 0 | 0 |
+| DE-NI | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 206 | 0 | 0 |
+| DE-NW | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 369 | 0 | 0 |
+| DE-SH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 256 | 0 | 0 |
+| DE-HB | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 171 | 0 | 0 |
+| DE-HH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 239 | 0 | 0 |
+| DE-MV | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 415 | 0 | 0 |
+| DE-RP | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
+| DE-SL | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 415 | 0 | 0 |
+| DE-SN | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 349 | 0 | 0 |
+| DE-ST | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
+| DE-TH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
 

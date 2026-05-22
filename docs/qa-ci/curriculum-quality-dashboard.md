@@ -84,7 +84,7 @@ The current rule catalog is versioned as `curriculum-quality-v2`.
 | `CQR-000` | `M1` | Source inventory ingestion: original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered. |
 | `CQR-001` | `M0` | Basic graph integrity: IDs, local/global references, self-reference guards, and direct DAG checks. |
 | `CQR-002` | `M0` | Explicit `type` metadata matches structural atomic/cluster classification. |
-| `CQR-003` | `M2` | Bundesland atomic coverage: every declared jurisdiction view has full source-backed atomic coverage, no unsupported assigned atom, and no registered source original goal missing from the view mapping. |
+| `CQR-003` | `M2` | Bundesland atomic coverage: every declared jurisdiction view has full source-backed coverage for its source-coverage atoms, no unsupported assigned source-coverage atom, and no registered source original goal missing from the view mapping. |
 | `CQR-004` | `M2` | Course-level mapping consistency: source goals marked `GK_LK`, `LK`, or `unspecified` map only to canonical SkillPilot goals with compatible `GK`/`LK` tags; `unspecified` defaults to `GK_LK` unless an LK-only decision is explicitly reviewed. |
 | `CQR-101` | `M3` | Effective full route coverage through `R_eff`: motivation anchor -> selected atomic goals -> terminal autonomy. |
 | `CQR-102` | `M3` | Direct atomic route coverage through authored atomic `requires`. |
@@ -135,8 +135,8 @@ The dashboard persists and renders Bundesland coverage for learner-facing compos
 For each canonical curriculum and each declared jurisdiction, the snapshot stores:
 
 - raw atomic goals: all leaf nodes in the canonical JSON file,
-- DE view atoms: the union of atomic nodes rendered by the Germany-wide `de-de-*` composition views,
-- Bundesland view atoms: the union of atomic nodes rendered by the matching Bundesland composition views,
+- DE source-view atoms: the union of source-coverage-relevant atomic nodes rendered by the Germany-wide `de-de-*` composition views,
+- Bundesland source-view atoms: the union of source-coverage-relevant atomic nodes rendered by the matching Bundesland composition views,
 - source-backed Bundesland view atoms,
 - Bundesland view atoms without sufficient Lehrplan evidence,
 - registered source Lehrplan atoms,
@@ -148,14 +148,14 @@ For each canonical curriculum and each declared jurisdiction, the snapshot store
 - registered source original goals fully covered by Bundesland view atoms,
 - projection errors and warnings.
 
-Atomic nodes include ordinary content goals and explicitly also practice, memory, and assessment nodes when those nodes are atomic and rendered in the relevant composition view. Cluster nodes do not count for the `CQR-003` numerator or denominator.
+Atomic nodes count for `CQR-003` only when they are relevant for curriculum source coverage. Memory/SRS, practice, assessment, motivation, orientation, and `examData` goals are excluded from this numerator and denominator; they are checked by their own QA lanes. Cluster nodes do not count for the `CQR-003` numerator or denominator.
 
-`DE view atoms` is the national reference maximum for the current canonical view set. For example, mathematics currently has more raw atomic leaves in the JSON than DE view atoms because not every raw leaf is part of the learner-facing national view.
+`DE source-view atoms` is the national reference maximum for the current canonical view set after this source-coverage filter. For example, mathematics currently has more raw atomic leaves in the JSON than DE source-view atoms because not every raw leaf is part of source-coverage QA or the learner-facing national view.
 
 The table value `Bundeslaender` is `cleanJurisdictions / totalJurisdictions`. A jurisdiction is complete only when all checks are clean:
 
-- every Bundesland view atom is backed by accepted Lehrplan evidence,
-- no Bundesland view atom is assigned without such evidence,
+- every Bundesland source-view atom is backed by accepted Lehrplan evidence,
+- no Bundesland source-view atom is assigned without such evidence,
 - every registered source original goal is fully covered by canonical atoms rendered in that Bundesland view,
 - every extracted source atom from available source inventories is registered in the source membership/closure ledger.
 

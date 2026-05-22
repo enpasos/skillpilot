@@ -13,6 +13,12 @@ npm run validate:graph
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 
+echo "--> Running Hessen Math G8/G9 Projection Check"
+npm run check:he-math-duration-projection
+
+echo "--> Running Curriculum Source Coverage Check"
+npm run quality:source-coverage-audit:check
+
 echo "--> Running Composition-View Validation"
 npm run validate:composition-views
 

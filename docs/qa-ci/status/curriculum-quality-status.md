@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-17T21:05:48.979Z
+Generated: 2026-05-21T18:33:05.796Z
 Rules version: curriculum-quality-v2
 
 ## Summary
@@ -44,314 +44,314 @@ Rules version: curriculum-quality-v2
 
 ## Mapping Pipeline
 
-| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |
-| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 0 | 33 | 0 | 0 | 0% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 0 | 33 | 0 | 0 | 0% |  |
-| Biologie (Gymnasium, DE) | DE-BW - Biologie Sekundarstufe I (Bildungsplan 2016 Gymnasium, V2 2022 Source-Extraction) | DE-BW | 0/2 local, 2/2 URL | 3/3 | - | 15 | 111 | 1 | 110 | 1% |  |
-| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 32 | 222 | 192 | 30 | 86% |  |
-| Biologie (Gymnasium, DE) | DE-HB - Biologie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 6 | 70 | 2 | 68 | 3% |  |
-| Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 19 | 150 | 150 | 0 | 100% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 16 | 66 | 66 | 0 | 100% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 7 | 0 | 7 | 0% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 0 | 12 | 0 | 12 | 0% |  |
-| Biologie (Gymnasium, DE) | DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 124 | 4 | 120 | 3% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 0 | 11 | 0 | 0 | 0% |  |
-| Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 12 | 47 | 2 | 45 | 4% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 9 | 0 | 0 | 0% |  |
-| Biologie (Gymnasium, DE) | DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 3/3 | - | 9 | 75 | 1 | 74 | 1% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 0 | 10 | 0 | 10 | 0% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 0 | 11 | 0 | 11 | 0% |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 8 | 0 | 8 | 0% |  |
-| Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
-| Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 12 | 68 | 0 | 68 | 0% |  |
-| Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 23 | 203 | 100 | 103 | 49% |  |
-| Chemie (Gymnasium, DE) | DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 68 | 0 | 68 | 0% |  |
-| Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 126 | 64 | 62 | 51% |  |
-| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 6 | 65 | 27 | 38 | 42% |  |
-| Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 14 | 52 | 52 | 0 | 100% |  |
-| Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 54 | 332 | 277 | 55 | 83% |  |
-| Chemie (Gymnasium, DE) | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 18 | 88 | 6 | 82 | 7% |  |
-| Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 4 | 42 | 0 | 42 | 0% |  |
-| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 22 | 202 | 134 | 68 | 66% |  |
-| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 9 | 122 | 67 | 55 | 55% |  |
-| Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 65 | 40 | 25 | 62% |  |
-| Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 12 | 97 | 18 | 79 | 19% |  |
-| Chemie (Gymnasium, DE) | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 12 | 122 | 18 | 104 | 15% |  |
-| Chemie (Gymnasium, DE) | DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 11 | 114 | 34 | 80 | 30% |  |
-| Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 21 | 333 | 82 | 251 | 25% |  |
-| Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 14 | 196 | 23 | 173 | 12% |  |
-| Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 154 | 2 | 152 | 1% |  |
-| Chemie (Gymnasium, DE) | DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 79 | 1 | 78 | 1% |  |
-| Chemie (Gymnasium, DE) | DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 63 | 325 | 97 | 228 | 30% |  |
-| Chemie (Gymnasium, DE) | DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 12 | 65 | 23 | 42 | 35% |  |
-| Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 165 | 46 | 119 | 28% |  |
-| Chemie (Gymnasium, DE) | DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 156 | 27 | 129 | 17% |  |
-| Chemie (Gymnasium, DE) | DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 3/3 | - | 160 | 712 | 137 | 575 | 19% |  |
-| Chemie (Gymnasium, DE) | DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction) | DE-SL | 0/2 local, 2/2 URL | 3/3 | - | 28 | 190 | 62 | 128 | 33% |  |
-| Chemie (Gymnasium, DE) | DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 33 | 302 | 38 | 264 | 13% |  |
-| Chemie (Gymnasium, DE) | DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 28 | 176 | 48 | 128 | 27% |  |
-| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 12 | 270 | 55 | 215 | 20% |  |
-| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 15 | 324 | 40 | 284 | 12% |  |
-| Chemie (Gymnasium, DE) | DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 55 | 225 | 39 | 186 | 17% |  |
-| Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 24 | 224 | 56 | 168 | 25% |  |
-| Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 19 | 229 | 14 | 215 | 6% |  |
-| Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 6 | 170 | 170 | 0 | 100% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 12 | 199 | 0 | 199 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Brandenburg, RLP 2023 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 15 | 180 | 0 | 180 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 199 | 0 | 199 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Berlin, RLP 2023 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 15 | 180 | 0 | 180 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 10 | 225 | 0 | 225 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 15 | 334 | 0 | 334 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 49 | 434 | 11 | 423 | 3% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Bremen, GyO Bildungsplan 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 8 | 60 | 0 | 60 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Bremen, Gymnasium Bildungsplan 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 31 | 166 | 2 | 164 | 1% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 33 | 116 | 116 | 0 | 100% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hessen, G9) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 18 | 141 | 141 | 0 | 100% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 19 | 273 | 60 | 213 | 22% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 16 | 119 | 6 | 113 | 5% |  |
-| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 16 | 64 | 3 | 61 | 5% |  |
-| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 24 | 316 | 36 | 280 | 11% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Niedersachsen, KC 2016 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 12 | 121 | 5 | 116 | 4% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 152 | 24 | 128 | 16% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 191 | 10 | 181 | 5% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 26 | 226 | 16 | 210 | 7% |  |
-| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Oberstufe (Rheinland-Pfalz, MSS/BiSta-Synopse 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 10 | 89 | 1 | 88 | 1% |  |
-| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 56 | 244 | 6 | 238 | 2% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 21 | 100 | 5 | 95 | 5% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 19 | 121 | 5 | 116 | 4% |  |
-| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 4/4 | - | 4 | 188 | 12 | 176 | 6% |  |
-| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Sekundarstufe I (Saarland, Gymnasium G9 Source-Extraction) | DE-SL | 0/5 local, 5/5 URL | 4/4 | - | 25 | 412 | 37 | 375 | 9% |  |
-| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 17 | 84 | 2 | 82 | 2% |  |
-| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 26 | 244 | 39 | 205 | 16% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 8 | 108 | 0 | 108 | 0% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 20 | 239 | 18 | 221 | 8% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 5 | 144 | 13 | 131 | 9% |  |
-| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 15 | 553 | 78 | 475 | 14% |  |
-| Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 9 | 1 | 8 | 11% |  |
-| Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 21 | 94 | 94 | 0 | 100% |  |
-| Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 9 | 7 | 2 | 78% |  |
-| Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 8 | 152 | 152 | 0 | 100% |  |
-| Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 43 | 108 | 108 | 0 | 100% |  |
-| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 5 | 235 | 0 | 235 | 0% |  |
-| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 7 | 100 | 0 | 100 | 0% |  |
-| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 5 | 235 | 0 | 235 | 0% |  |
-| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 7 | 100 | 0 | 100 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 9 | 72 | 0 | 72 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 21 | 88 | 0 | 88 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 36 | 190 | 0 | 190 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 13 | 104 | 0 | 104 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 13 | 182 | 182 | 0 | 100% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 4/4 | - | 20 | 78 | 0 | 78 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 29 | 354 | 0 | 354 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 134 | 0 | 134 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Orientierungsstufe 5/6 (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 7 | 57 | 0 | 57 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I Gymnasium 7-10 (Mecklenburg-Vorpommern, Rahmenplan 2023 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 4 | 62 | 0 | 62 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte und Politische Bildung Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 5 | 97 | 0 | 97 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 8 | 253 | 0 | 253 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 4 | 59 | 0 | 59 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Nordrhein-Westfalen, KLP GOSt 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 14 | 223 | 0 | 223 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 13 | 137 | 0 | 137 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 33 | 132 | 0 | 132 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 32 | 126 | 0 | 126 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 12 | 87 | 0 | 87 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 7 | 110 | 0 | 110 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 4/4 | - | 13 | 179 | 0 | 179 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Saarland, G9 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 4/4 | - | 19 | 197 | 0 | 197 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 10 | 116 | 0 | 116 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 29 | 162 | 0 | 162 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 11 | 90 | 0 | 90 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 27 | 234 | 0 | 234 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 4/4 | - | 23 | 143 | 0 | 143 | 0% |  |
-| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 4/4 | - | 30 | 182 | 0 | 182 | 0% |  |
-| Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 35 | 540 | 8 | 532 | 1% |  |
-| Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 8 | 170 | 170 | 0 | 100% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Brandenburg, GOST RLP 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 23 | 139 | 38 | 101 | 27% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 10 | 48 | 24 | 24 | 50% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 23 | 139 | 38 | 101 | 27% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 10 | 48 | 24 | 24 | 50% |  |
-| Informatik (Gymnasium, DE) | Informatik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 4/4 | - | 20 | 171 | 7 | 164 | 4% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/2 local, 2/2 URL | 4/4 | - | 8 | 57 | 1 | 56 | 2% |  |
-| Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 49 | 224 | 65 | 159 | 29% |  |
-| Informatik (Gymnasium, DE) | Informatik Gymnasiale Oberstufe (Bremen, Bildungsplan 2009 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 9 | 60 | 8 | 52 | 13% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 35 | 155 | 155 | 0 | 100% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Hamburg, Bildungsplan Gymnasium Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 6 | 133 | 0 | 133 | 0% |  |
-| Informatik (Gymnasium, DE) | Informatik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 9 | 136 | 10 | 126 | 7% |  |
-| Informatik (Gymnasium, DE) | Informatik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 17 | 140 | 71 | 69 | 51% |  |
-| Informatik (Gymnasium, DE) | Informatik und Medienbildung Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 23 | 136 | 56 | 80 | 41% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 13 | 115 | 2 | 113 | 2% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Niedersachsen, KC Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 23 | 150 | 26 | 124 | 17% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 17 | 189 | 11 | 178 | 6% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Nordrhein-Westfalen, KLP 2021/2023 Source-Extraction) | DE-NW | 0/2 local, 2/2 URL | 4/4 | - | 13 | 100 | 6 | 94 | 6% |  |
-| Informatik (Gymnasium, DE) | Informatik Oberstufe (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 15 | 168 | 22 | 146 | 13% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 5 | 53 | 9 | 44 | 17% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 96 | 15 | 81 | 16% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 123 | 10 | 113 | 8% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 2/4 local, 4/4 URL | 4/4 | - | 13 | 145 | 67 | 78 | 46% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Saarland, GOS 2006/2019 Source-Extraction) | DE-SL | 3/3 local, 3/3 URL | 4/4 | - | 11 | 75 | 48 | 27 | 64% |  |
-| Informatik (Gymnasium, DE) | Informatik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 27 | 257 | 8 | 249 | 3% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 16 | 78 | 1 | 77 | 1% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 4 | 91 | 17 | 74 | 19% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 4 | 82 | 14 | 68 | 17% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 7 | 105 | 9 | 96 | 9% |  |
-| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 5 | 92 | 23 | 69 | 25% |  |
-| Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Latein (Gymnasium, DE) | DE-BB · Latein Oberstufe (Brandenburg, GOST 2025 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 21 | 140 | 79 | 61 | 56% |  |
-| Latein (Gymnasium, DE) | DE-BB · Latein Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 8 | 176 | 18 | 158 | 10% |  |
-| Latein (Gymnasium, DE) | DE-BE · Latein Oberstufe (Berlin, GOST 2025 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 21 | 140 | 79 | 61 | 56% |  |
-| Latein (Gymnasium, DE) | DE-BE · Latein Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 8 | 176 | 18 | 158 | 10% |  |
-| Latein (Gymnasium, DE) | Latein Gymnasium (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/4 local, 4/4 URL | 4/4 | - | 87 | 807 | 0 | 807 | 0% |  |
-| Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 60 | 832 | 9 | 823 | 1% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Bremen, GyO Qualifikationsphase 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 12 | 64 | 55 | 9 | 86% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 2. Fremdsprache 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 21 | 73 | 0 | 73 | 0% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 3. Fremdsprache 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 11 | 32 | 0 | 32 | 0% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 33 | 94 | 94 | 0 | 100% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Hamburg, Bildungsplan 2011 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 51 | 252 | 22 | 230 | 9% |  |
-| Latein (Gymnasium, DE) | Latein Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 62 | 326 | 24 | 302 | 7% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 9 | 93 | 74 | 19 | 80% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 17 | 168 | 0 | 168 | 0% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Niedersachsen, KC 2018 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 15 | 345 | 82 | 263 | 24% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 10 | 395 | 113 | 282 | 29% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 18 | 94 | 0 | 94 | 0% |  |
-| Latein (Gymnasium, DE) | Lateinisch Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 36 | 204 | 0 | 204 | 0% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Rheinland-Pfalz, Lehrplan 1998 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 20 | 193 | 159 | 34 | 82% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2009 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 24 | 620 | 0 | 620 | 0% |  |
-| Latein (Gymnasium, DE) | Latein Oberstufe (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 22 | 190 | 112 | 78 | 59% |  |
-| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 22 | 129 | 24 | 105 | 19% |  |
-| Latein (Gymnasium, DE) | Latein Gymnasium (Saarland, amtliche G9/GOS Source-Extraction) | DE-SL | 0/19 local, 19/19 URL | 4/4 | - | 102 | 888 | 46 | 842 | 5% |  |
-| Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen, Lehrplan 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 95 | 880 | 185 | 695 | 21% |  |
-| Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen-Anhalt, Fachlehrplan 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 48 | 264 | 60 | 204 | 23% |  |
-| Latein (Gymnasium, DE) | Latein Gymnasium (Thueringen, Lehrplan 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 159 | 906 | 258 | 648 | 28% |  |
-| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 14 | 196 | 40 | 156 | 20% |  |
-| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
-| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 15 | 195 | 18 | 177 | 9% |  |
-| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 19 | 289 | 45 | 244 | 16% |  |
-| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 16 | 221 | 71 | 150 | 32% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 20 | 278 | 95 | 183 | 34% |  |
-| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 0/12 local, 12/12 URL | 3/3 | - | 66 | 468 | 262 | 206 | 56% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 122 | 275 | 0 | 275 | 0% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 11 | 256 | 76 | 180 | 30% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 25 | 316 | 316 | 0 | 100% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G9) | DE-HE | 0/3 local, 3/3 URL | 3/3 | - | 72 | 426 | 426 | 0 | 100% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 43 | 437 | 137 | 300 | 31% |  |
-| Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 15 | 189 | 0 | 189 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 15 | 219 | 0 | 219 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 0/2 local, 2/2 URL | 3/3 | - | 33 | 369 | 131 | 238 | 36% |  |
-| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 25 | 220 | 0 | 220 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 28 | 361 | 112 | 249 | 31% |  |
-| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 235 | 0 | 235 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 17 | 207 | 38 | 169 | 18% |  |
-| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 23 | 192 | 0 | 192 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 25 | 253 | 61 | 192 | 24% |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 6 | 274 | 74 | 200 | 27% |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 6 | 346 | 128 | 218 | 37% |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 3/3 | - | 23 | 743 | 0 | 743 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 0/5 local, 5/5 URL | 3/3 | - | 37 | 818 | 175 | 643 | 21% |  |
-| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 31 | 241 | 0 | 241 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 47 | 327 | 75 | 252 | 23% |  |
-| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 15 | 188 | 0 | 188 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 32 | 424 | 137 | 287 | 32% |  |
-| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 8 | 189 | 0 | 189 | 0% |  |
-| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 17 | 356 | 83 | 273 | 23% |  |
-| Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 48 | 204 | 9 | 195 | 4% |  |
-| Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 24 | 38 | 38 | 0 | 100% |  |
-| Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
-| Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 20 | 175 | 0 | 175 | 0% |  |
-| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 24 | 164 | 64 | 100 | 39% |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 14 | 101 | 39 | 62 | 39% |  |
-| Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 42 | 296 | 21 | 275 | 7% |  |
-| Physik (Gymnasium, DE) | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 7 | 68 | 35 | 33 | 51% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 10 | 214 | 146 | 68 | 68% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 21 | 274 | 198 | 76 | 72% |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 48 | 39 | 9 | 81% |  |
-| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 128 | 65 | 63 | 51% |  |
-| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 10 | 154 | 91 | 63 | 59% |  |
-| Physik (Gymnasium, DE) | DE-MV - Physik Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 12 | 143 | 5 | 138 | 3% |  |
-| Physik (Gymnasium, DE) | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 17 | 142 | 4 | 138 | 3% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 19 | 154 | 92 | 62 | 60% |  |
-| Physik (Gymnasium, DE) | DE-NW - Physik Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 187 | 8 | 179 | 4% |  |
-| Physik (Gymnasium, DE) | DE-RP - Physik Sekundarstufe II (Rheinland-Pfalz, MSS Source-Extraction Draft) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 46 | 193 | 1 | 192 | 1% |  |
-| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 15 | 169 | 90 | 79 | 53% |  |
-| Physik (Gymnasium, DE) | DE-SL - Physik Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 3/3 | - | 88 | 854 | 78 | 776 | 9% |  |
-| Physik (Gymnasium, DE) | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 3/3 | - | 72 | 670 | 86 | 584 | 13% |  |
-| Physik (Gymnasium, DE) | DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 39 | 318 | 6 | 312 | 2% |  |
-| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 35 | 276 | 21 | 255 | 8% |  |
-| Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 18 | 387 | 0 | 387 | 0% |  |
-| Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 30 | 575 | 0 | 575 | 0% |  |
-| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 220 | 0 | 220 | 0% |  |
-| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012/2024 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 11 | 257 | 0 | 257 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) | DE-BB | 0/2 local, 2/2 URL | 3/3 | - | 17 | 113 | 0 | 113 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Brandenburg, GOST FULL Source-Extraction) | DE-BB | 0/2 local, 2/2 URL | 3/3 | - | 32 | 156 | 2 | 154 | 1% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Berlin, RLP 2015 FULL Source-Extraction) | DE-BE | 0/2 local, 2/2 URL | 3/3 | - | 17 | 113 | 0 | 113 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Berlin, GOST FULL Source-Extraction) | DE-BE | 0/2 local, 2/2 URL | 3/3 | - | 32 | 156 | 2 | 154 | 1% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 22 | 145 | 13 | 132 | 9% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 81 | 0 | 81 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 5 | 43 | 9 | 34 | 21% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 58 | 16 | 42 | 28% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Gesellschaft (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 46 | 345 | 277 | 68 | 80% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und WAT Sekundarstufe I (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 11 | 71 | 0 | 71 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaftslehre Sekundarstufe II (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 9 | 70 | 0 | 70 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/2 local, 2/2 URL | 3/3 | - | 20 | 155 | 155 | 0 | 100% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 11 | 71 | 29 | 42 | 41% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | PGW Sekundarstufe I (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 12 | 90 | 2 | 88 | 2% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | PGW Studienstufe (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 11 | 150 | 0 | 150 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 19 | 123 | 0 | 123 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe II (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 0/2 local, 2/2 URL | 3/3 | - | 16 | 128 | 0 | 128 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Oberstufe (Niedersachsen, KC 2018 FULL Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 130 | 0 | 130 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Sekundarstufe I (Niedersachsen, KC 2015 FULL Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 11 | 90 | 0 | 90 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialwissenschaften/Wirtschaft Oberstufe (Nordrhein-Westfalen, KLP GOSt Full Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 11 | 211 | 0 | 211 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft-Politik Sekundarstufe I (Nordrhein-Westfalen, KLP G9 2019 Full Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 14 | 100 | 0 | 100 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 FULL Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 10 | 90 | 0 | 90 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe II (Rheinland-Pfalz, Lehrplan 2022 FULL Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 16 | 158 | 0 | 158 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Oberstufe (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 24 | 168 | 0 | 168 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 16 | 119 | 1 | 118 | 1% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe I (Saarland, Lehrplan FULL Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 3/3 | - | 7 | 52 | 0 | 52 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde, Politik und Wirtschaftslehre Sekundarstufe II (Saarland, GOS FULL Source-Extraction) | DE-SL | 1/4 local, 4/4 URL | 3/3 | - | 13 | 124 | 0 | 124 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe I (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 14 | 113 | 0 | 113 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe II (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 19 | 131 | 0 | 131 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 21 | 169 | 1 | 168 | 1% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 14 | 129 | 2 | 127 | 2% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe I (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 9 | 109 | 0 | 109 | 0% |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe II (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 23 | 208 | 0 | 208 | 0% |  |
-| Polnisch (Gymnasium, DE) | Polnisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Russisch (Gymnasium, DE) | Russisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 6 | 1 | 5 | 17% |  |
-| Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 24 | 44 | 44 | 0 | 100% |  |
-| Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 8 | 48 | 6 | 42 | 13% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 24 | 100 | 33 | 67 | 33% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 8 | 48 | 6 | 42 | 13% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 24 | 100 | 33 | 67 | 33% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 5 | 43 | 9 | 34 | 21% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 58 | 16 | 42 | 28% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 35 | 184 | 172 | 12 | 93% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Arbeit-Technik Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 4 | 29 | 0 | 29 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Bremen, Bildungsplan 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 4 | 28 | 0 | 28 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | 1/2 local, 2/2 URL | 3/3 | - | 20 | 173 | 173 | 0 | 100% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | PGW Sekundarstufe I - wirtschaftliche Inhaltsfelder (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 4 | 30 | 0 | 30 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | PGW Studienstufe - wirtschaftliche Module (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 3 | 60 | 0 | 60 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Mecklenburg-Vorpommern, Rahmenplan Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 6 | 61 | 0 | 61 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Gymnasiale Oberstufe (Mecklenburg-Vorpommern, Rahmenplan Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 8 | 82 | 0 | 82 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Politik-Wirtschaft Oberstufe - wirtschaftliche Inhaltsbereiche (Niedersachsen, KC 2018 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 9 | 56 | 0 | 56 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Politik-Wirtschaft Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 5 | 30 | 0 | 30 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialwissenschaften/Wirtschaft Oberstufe - wirtschaftliche Inhaltsbereiche (Nordrhein-Westfalen, KLP GOSt Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 120 | 0 | 120 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Politik Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Nordrhein-Westfalen, KLP G9 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 8 | 60 | 0 | 60 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe I - Wirtschaft (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 2 | 15 | 0 | 15 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe II - Wirtschaftliche Transformation (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 4 | 46 | 0 | 46 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft/Politik Oberstufe (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 78 | 0 | 78 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft/Politik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 4 | 50 | 0 | 50 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde 9 - Wirtschaft und Arbeitswelt (Saarland, Gymnasium Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 4/4 | - | 3 | 20 | 0 | 20 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 4/4 | - | 5 | 35 | 0 | 35 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | GRW Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Sachsen, Lehrplan Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 7 | 63 | 0 | 63 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | GRW Sekundarstufe II - wirtschaftliche Inhaltsbereiche (Sachsen, Lehrplan Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 10 | 67 | 0 | 67 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 8 | 94 | 0 | 94 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 11 | 113 | 0 | 113 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht Qualifikationsphase (Thueringen, Lehrplan 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 14 | 145 | 0 | 145 | 0% |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht Sekundarstufe I (Thueringen, Lehrplan 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 73 | 0 | 73 | 0% |  |
+| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Duration projection | Evidence note |
+| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 0 | 33 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 0 | 33 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE-BW - Biologie Sekundarstufe I (Bildungsplan 2016 Gymnasium, V2 2022 Source-Extraction) | DE-BW | 0/2 local, 2/2 URL | 3/3 | - | 15 | 111 | 1 | 110 | 1% | - |  |
+| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 32 | 222 | 192 | 30 | 86% | - |  |
+| Biologie (Gymnasium, DE) | DE-HB - Biologie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 6 | 70 | 2 | 68 | 3% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 19 | 150 | 150 | 0 | 100% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 16 | 66 | 66 | 0 | 100% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 7 | 0 | 7 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 0 | 12 | 0 | 12 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 124 | 4 | 120 | 3% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 0 | 11 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 12 | 47 | 2 | 45 | 4% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 9 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 3/3 | - | 9 | 75 | 1 | 74 | 1% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 0 | 10 | 0 | 10 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 0 | 11 | 0 | 11 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 0 | 8 | 0 | 8 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-BB - Chemie Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 23 | 203 | 100 | 103 | 49% | - |  |
+| Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
+| Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 23 | 203 | 100 | 103 | 49% | - |  |
+| Chemie (Gymnasium, DE) | DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 126 | 64 | 62 | 51% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 6 | 65 | 27 | 38 | 42% | - |  |
+| Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 14 | 52 | 52 | 0 | 100% | - |  |
+| Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 54 | 332 | 277 | 55 | 83% | - |  |
+| Chemie (Gymnasium, DE) | DE-HB - Chemie Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 18 | 88 | 6 | 82 | 7% | - |  |
+| Chemie (Gymnasium, DE) | DE-HB - Chemie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 4 | 42 | 0 | 42 | 0% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 22 | 202 | 134 | 68 | 66% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 9 | 122 | 67 | 55 | 55% | - |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 65 | 40 | 25 | 62% | - |  |
+| Chemie (Gymnasium, DE) | DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 12 | 97 | 18 | 79 | 19% | - |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2022 Erprobungsfassung Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 12 | 122 | 18 | 104 | 15% | - |  |
+| Chemie (Gymnasium, DE) | DE-MV - Chemie Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2021 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 11 | 114 | 34 | 80 | 30% | - |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 21 | 333 | 82 | 251 | 25% | - |  |
+| Chemie (Gymnasium, DE) | DE-NI - Chemie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 14 | 196 | 23 | 173 | 12% | - |  |
+| Chemie (Gymnasium, DE) | DE-NW - Chemie Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 154 | 2 | 152 | 1% | - |  |
+| Chemie (Gymnasium, DE) | DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 79 | 1 | 78 | 1% | - |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Mainzer Studienstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 63 | 325 | 97 | 228 | 30% | - |  |
+| Chemie (Gymnasium, DE) | DE-RP - Chemie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 12 | 65 | 23 | 42 | 35% | - |  |
+| Chemie (Gymnasium, DE) | DE-SH - Chemie Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 165 | 46 | 119 | 28% | - |  |
+| Chemie (Gymnasium, DE) | DE-SH - Chemie Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 156 | 27 | 129 | 17% | - |  |
+| Chemie (Gymnasium, DE) | DE-SL - Chemie Gymnasiale Oberstufe (Saarland, GOS 2023/2025 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 3/3 | - | 160 | 712 | 137 | 575 | 19% | - |  |
+| Chemie (Gymnasium, DE) | DE-SL - Chemie Sekundarstufe I (Saarland, Gymnasium G9 2024/2025 Source-Extraction) | DE-SL | 0/2 local, 2/2 URL | 3/3 | - | 28 | 190 | 62 | 128 | 33% | - |  |
+| Chemie (Gymnasium, DE) | DE-SN - Chemie Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 33 | 302 | 38 | 264 | 13% | - |  |
+| Chemie (Gymnasium, DE) | DE-SN - Chemie Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 28 | 176 | 48 | 128 | 27% | - |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 12 | 270 | 55 | 215 | 20% | - |  |
+| Chemie (Gymnasium, DE) | DE-ST - Chemie Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 15 | 324 | 40 | 284 | 12% | - |  |
+| Chemie (Gymnasium, DE) | DE-TH - Chemie Qualifikationsphase (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 55 | 225 | 39 | 186 | 17% | - |  |
+| Chemie (Gymnasium, DE) | DE-TH - Chemie Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 24 | 224 | 56 | 168 | 25% | - |  |
+| Chinesisch (Gymnasium, DE) | Chinesisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 19 | 229 | 14 | 215 | 6% | - |  |
+| Chinesisch (Gymnasium, DE) | Chinesisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 6 | 170 | 170 | 0 | 100% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 12 | 199 | 0 | 199 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Brandenburg, RLP 2023 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 15 | 180 | 0 | 180 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 199 | 0 | 199 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Berlin, RLP 2023 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 15 | 180 | 0 | 180 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 10 | 225 | 0 | 225 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 15 | 334 | 0 | 334 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 49 | 434 | 11 | 423 | 3% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Bremen, GyO Bildungsplan 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 8 | 60 | 0 | 60 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Bremen, Gymnasium Bildungsplan 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 31 | 166 | 2 | 164 | 1% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 33 | 116 | 116 | 0 | 100% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hessen, G9) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 18 | 141 | 141 | 0 | 100% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 19 | 273 | 60 | 213 | 22% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 16 | 119 | 6 | 113 | 5% | - |  |
+| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 16 | 64 | 3 | 61 | 5% | - |  |
+| Deutsch (Gymnasium, DE) | DE-MV - Deutsch Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 24 | 316 | 36 | 280 | 11% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Niedersachsen, KC 2016 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 12 | 121 | 5 | 116 | 4% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 152 | 24 | 128 | 16% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 191 | 10 | 181 | 5% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 26 | 226 | 16 | 210 | 7% | - |  |
+| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Oberstufe (Rheinland-Pfalz, MSS/BiSta-Synopse 2014 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 10 | 89 | 1 | 88 | 1% | - |  |
+| Deutsch (Gymnasium, DE) | DE-RP - Deutsch Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 56 | 244 | 6 | 238 | 2% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 21 | 100 | 5 | 95 | 5% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 19 | 121 | 5 | 116 | 4% | - |  |
+| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 4/4 | - | 4 | 188 | 12 | 176 | 6% | - |  |
+| Deutsch (Gymnasium, DE) | DE-SL - Deutsch Sekundarstufe I (Saarland, Gymnasium G9 Source-Extraction) | DE-SL | 0/5 local, 5/5 URL | 4/4 | - | 25 | 412 | 37 | 375 | 9% | - |  |
+| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 17 | 84 | 2 | 82 | 2% | - |  |
+| Deutsch (Gymnasium, DE) | DE-SN - Deutsch Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 26 | 244 | 39 | 205 | 16% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 8 | 108 | 0 | 108 | 0% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 20 | 239 | 18 | 221 | 8% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Oberstufe (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 5 | 144 | 13 | 131 | 9% | - |  |
+| Deutsch (Gymnasium, DE) | Deutsch Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 15 | 553 | 78 | 475 | 14% | - |  |
+| Englisch (Gymnasium, DE) | Englisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 9 | 1 | 8 | 11% | - |  |
+| Englisch (Gymnasium, DE) | Englisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 21 | 94 | 94 | 0 | 100% | - |  |
+| Französisch (Gymnasium, DE) | Französisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 9 | 7 | 2 | 78% | - |  |
+| Französisch (Gymnasium, DE) | Französisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 8 | 152 | 152 | 0 | 100% | - |  |
+| Französisch (Gymnasium, DE) | Französisch Sekundarstufe I (Hessen, G9) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 43 | 108 | 108 | 0 | 100% | - |  |
+| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 5 | 235 | 0 | 235 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | DE-BB - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 7 | 100 | 0 | 100 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Oberstufe (Berlin-Brandenburg, RLP GOST 2025 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 5 | 235 | 0 | 235 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | DE-BE - Geschichte Sekundarstufe I (Berlin-Brandenburg, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 7 | 100 | 0 | 100 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 9 | 72 | 0 | 72 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 21 | 88 | 0 | 88 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 36 | 190 | 0 | 190 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 13 | 104 | 0 | 104 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 13 | 182 | 182 | 0 | 100% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 4/4 | - | 20 | 78 | 0 | 78 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 29 | 354 | 0 | 354 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 134 | 0 | 134 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Orientierungsstufe 5/6 (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 7 | 57 | 0 | 57 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I Gymnasium 7-10 (Mecklenburg-Vorpommern, Rahmenplan 2023 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 4 | 62 | 0 | 62 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte und Politische Bildung Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 5 | 97 | 0 | 97 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 8 | 253 | 0 | 253 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 4 | 59 | 0 | 59 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Nordrhein-Westfalen, KLP GOSt 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 14 | 223 | 0 | 223 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 13 | 137 | 0 | 137 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 33 | 132 | 0 | 132 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 32 | 126 | 0 | 126 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 12 | 87 | 0 | 87 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 7 | 110 | 0 | 110 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Saarland, GOS Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 4/4 | - | 13 | 179 | 0 | 179 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Saarland, G9 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 4/4 | - | 19 | 197 | 0 | 197 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 10 | 116 | 0 | 116 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen, Lehrplan Gymnasium Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 29 | 162 | 0 | 162 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 11 | 90 | 0 | 90 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 27 | 234 | 0 | 234 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Oberstufe (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 4/4 | - | 23 | 143 | 0 | 143 | 0% | - |  |
+| Geschichte (Gymnasium, DE) | Geschichte Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 4/4 | - | 30 | 182 | 0 | 182 | 0% | - |  |
+| Griechisch (Gymnasium, DE) | Griechisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 35 | 540 | 8 | 532 | 1% | - |  |
+| Griechisch (Gymnasium, DE) | Griechisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 8 | 170 | 170 | 0 | 100% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Brandenburg, GOST RLP 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 23 | 139 | 38 | 101 | 27% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 10 | 48 | 24 | 24 | 50% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 23 | 139 | 38 | 101 | 27% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 10 | 48 | 24 | 24 | 50% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 4/4 | - | 20 | 171 | 7 | 164 | 4% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/2 local, 2/2 URL | 4/4 | - | 8 | 57 | 1 | 56 | 2% | - |  |
+| Informatik (Gymnasium, DE) | Informatik (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 49 | 224 | 65 | 159 | 29% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Gymnasiale Oberstufe (Bremen, Bildungsplan 2009 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 9 | 60 | 8 | 52 | 13% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 35 | 155 | 155 | 0 | 100% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Hamburg, Bildungsplan Gymnasium Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 6 | 133 | 0 | 133 | 0% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 9 | 136 | 10 | 126 | 7% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 17 | 140 | 71 | 69 | 51% | - |  |
+| Informatik (Gymnasium, DE) | Informatik und Medienbildung Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 23 | 136 | 56 | 80 | 41% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 13 | 115 | 2 | 113 | 2% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Niedersachsen, KC Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 23 | 150 | 26 | 124 | 17% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 17 | 189 | 11 | 178 | 6% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Nordrhein-Westfalen, KLP 2021/2023 Source-Extraction) | DE-NW | 0/2 local, 2/2 URL | 4/4 | - | 13 | 100 | 6 | 94 | 6% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Oberstufe (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 15 | 168 | 22 | 146 | 13% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Rheinland-Pfalz, Lehrplan Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 5 | 53 | 9 | 44 | 17% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 96 | 15 | 81 | 16% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Schleswig-Holstein, Fachanforderungen 2021 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 123 | 10 | 113 | 8% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 2/4 local, 4/4 URL | 4/4 | - | 13 | 145 | 67 | 78 | 46% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Saarland, GOS 2006/2019 Source-Extraction) | DE-SL | 3/3 local, 3/3 URL | 4/4 | - | 11 | 75 | 48 | 27 | 64% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 27 | 257 | 8 | 249 | 3% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2022 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 16 | 78 | 1 | 77 | 1% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 4 | 91 | 17 | 74 | 19% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 4 | 82 | 14 | 68 | 17% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 7 | 105 | 9 | 96 | 9% | - |  |
+| Informatik (Gymnasium, DE) | Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 5 | 92 | 23 | 69 | 25% | - |  |
+| Italienisch (Gymnasium, DE) | Italienisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Latein (Gymnasium, DE) | DE-BB · Latein Oberstufe (Brandenburg, GOST 2025 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 21 | 140 | 79 | 61 | 56% | - |  |
+| Latein (Gymnasium, DE) | DE-BB · Latein Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 8 | 176 | 18 | 158 | 10% | - |  |
+| Latein (Gymnasium, DE) | DE-BE · Latein Oberstufe (Berlin, GOST 2025 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 21 | 140 | 79 | 61 | 56% | - |  |
+| Latein (Gymnasium, DE) | DE-BE · Latein Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 8 | 176 | 18 | 158 | 10% | - |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/4 local, 4/4 URL | 4/4 | - | 87 | 807 | 0 | 807 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 60 | 832 | 9 | 823 | 1% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Bremen, GyO Qualifikationsphase 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 12 | 64 | 55 | 9 | 86% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 2. Fremdsprache 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 21 | 73 | 0 | 73 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Bremen, Gymnasium 3. Fremdsprache 2007 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 4/4 | - | 11 | 32 | 0 | 32 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 33 | 94 | 94 | 0 | 100% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Hamburg, Bildungsplan 2011 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 51 | 252 | 22 | 230 | 9% | - |  |
+| Latein (Gymnasium, DE) | Latein Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 4/4 | - | 62 | 326 | 24 | 302 | 7% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 9 | 93 | 74 | 19 | 80% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2025 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 17 | 168 | 0 | 168 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Niedersachsen, KC 2018 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 15 | 345 | 82 | 263 | 24% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Niedersachsen, KC 2017 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 4/4 | - | 10 | 395 | 113 | 282 | 29% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 18 | 94 | 0 | 94 | 0% | - |  |
+| Latein (Gymnasium, DE) | Lateinisch Oberstufe (Nordrhein-Westfalen, KLP 2013 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 4/4 | - | 36 | 204 | 0 | 204 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Rheinland-Pfalz, Lehrplan 1998 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 20 | 193 | 159 | 34 | 82% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2009 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 24 | 620 | 0 | 620 | 0% | - |  |
+| Latein (Gymnasium, DE) | Latein Oberstufe (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 22 | 190 | 112 | 78 | 59% | - |  |
+| Latein (Gymnasium, DE) | Latein Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2015 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 4/4 | - | 22 | 129 | 24 | 105 | 19% | - |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Saarland, amtliche G9/GOS Source-Extraction) | DE-SL | 0/19 local, 19/19 URL | 4/4 | - | 102 | 888 | 46 | 842 | 5% | - |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen, Lehrplan 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 95 | 880 | 185 | 695 | 21% | - |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen-Anhalt, Fachlehrplan 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 48 | 264 | 60 | 204 | 23% | - |  |
+| Latein (Gymnasium, DE) | Latein Gymnasium (Thueringen, Lehrplan 2024 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 159 | 906 | 258 | 648 | 28% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 14 | 196 | 40 | 156 | 20% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 15 | 195 | 18 | 177 | 9% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 16 | 221 | 71 | 150 | 32% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 20 | 278 | 95 | 183 | 34% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 0/12 local, 12/12 URL | 3/3 | - | 66 | 468 | 262 | 206 | 56% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 11 | 256 | 76 | 180 | 30% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 25 | 316 | 316 | 0 | 100% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 0/4 local, 4/4 URL | 4/4 | - | 89 | 601 | 601 | 0 | 100% | 598/598; diff 118; open 0 |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 43 | 437 | 137 | 300 | 31% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 15 | 219 | 0 | 219 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 0/2 local, 2/2 URL | 3/3 | - | 33 | 369 | 131 | 238 | 36% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 25 | 220 | 0 | 220 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 28 | 361 | 112 | 249 | 31% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 235 | 0 | 235 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 17 | 207 | 38 | 169 | 18% | - |  |
+| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 23 | 192 | 0 | 192 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 25 | 253 | 61 | 192 | 24% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 6 | 274 | 74 | 200 | 27% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 6 | 346 | 128 | 218 | 37% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 3/3 | - | 23 | 743 | 0 | 743 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 0/5 local, 5/5 URL | 3/3 | - | 37 | 818 | 175 | 643 | 21% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 31 | 241 | 0 | 241 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 47 | 327 | 75 | 252 | 23% | - |  |
+| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 15 | 188 | 0 | 188 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 32 | 424 | 137 | 287 | 32% | - |  |
+| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 8 | 189 | 0 | 189 | 0% | - |  |
+| Mathematik (Gymnasium, DE) | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 17 | 356 | 83 | 273 | 23% | - |  |
+| Musik (Gymnasium, DE) | Musik (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 48 | 204 | 9 | 195 | 4% | - |  |
+| Musik (Gymnasium, DE) | Musik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 24 | 38 | 38 | 0 | 100% | - |  |
+| Physik (Gymnasium, DE) | DE-BB - Physik Oberstufe (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
+| Physik (Gymnasium, DE) | DE-BE - Physik Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 20 | 175 | 0 | 175 | 0% | - |  |
+| Physik (Gymnasium, DE) | Physik Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 24 | 164 | 64 | 100 | 39% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 14 | 101 | 39 | 62 | 39% | - |  |
+| Physik (Gymnasium, DE) | DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 42 | 296 | 21 | 275 | 7% | - |  |
+| Physik (Gymnasium, DE) | DE-HB - Physik Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 7 | 68 | 35 | 33 | 51% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 10 | 214 | 146 | 68 | 68% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Hessen, KC 2024) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 21 | 274 | 198 | 76 | 72% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hessen, G9) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 12 | 48 | 39 | 9 | 81% | - |  |
+| Physik (Gymnasium, DE) | Physik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 128 | 65 | 63 | 51% | - |  |
+| Physik (Gymnasium, DE) | Physik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 10 | 154 | 91 | 63 | 59% | - |  |
+| Physik (Gymnasium, DE) | DE-MV - Physik Oberstufe (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 12 | 143 | 5 | 138 | 3% | - |  |
+| Physik (Gymnasium, DE) | DE-MV - Physik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan 2022 Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 17 | 142 | 4 | 138 | 3% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Niedersachsen, KC 2022 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 19 | 154 | 92 | 62 | 60% | - |  |
+| Physik (Gymnasium, DE) | DE-NW - Physik Oberstufe (Nordrhein-Westfalen, KLP 2022 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 30 | 187 | 8 | 179 | 4% | - |  |
+| Physik (Gymnasium, DE) | DE-RP - Physik Sekundarstufe II (Rheinland-Pfalz, MSS Source-Extraction Draft) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 46 | 193 | 1 | 192 | 1% | - |  |
+| Physik (Gymnasium, DE) | Physik Oberstufe (Schleswig-Holstein, Fachanforderungen 2022 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 15 | 169 | 90 | 79 | 53% | - |  |
+| Physik (Gymnasium, DE) | DE-SL - Physik Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 0/3 local, 3/3 URL | 3/3 | - | 88 | 854 | 78 | 776 | 9% | - |  |
+| Physik (Gymnasium, DE) | DE-SL - Physik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 0/4 local, 4/4 URL | 3/3 | - | 72 | 670 | 86 | 584 | 13% | - |  |
+| Physik (Gymnasium, DE) | DE-SN - Physik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 39 | 318 | 6 | 312 | 2% | - |  |
+| Physik (Gymnasium, DE) | DE-SN - Physik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 35 | 276 | 21 | 255 | 8% | - |  |
+| Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 18 | 387 | 0 | 387 | 0% | - |  |
+| Physik (Gymnasium, DE) | DE-ST - Physik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 3/3 | - | 30 | 575 | 0 | 575 | 0% | - |  |
+| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 3/3 | - | 7 | 220 | 0 | 220 | 0% | - |  |
+| Physik (Gymnasium, DE) | DE-TH - Physik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012/2024 Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 11 | 257 | 0 | 257 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Brandenburg, RLP 2015 FULL Source-Extraction) | DE-BB | 0/2 local, 2/2 URL | 3/3 | - | 17 | 113 | 0 | 113 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Brandenburg, GOST FULL Source-Extraction) | DE-BB | 0/2 local, 2/2 URL | 3/3 | - | 32 | 156 | 2 | 154 | 1% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Berlin, RLP 2015 FULL Source-Extraction) | DE-BE | 0/2 local, 2/2 URL | 3/3 | - | 17 | 113 | 0 | 113 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Berlin, GOST FULL Source-Extraction) | DE-BE | 0/2 local, 2/2 URL | 3/3 | - | 32 | 156 | 2 | 154 | 1% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 22 | 145 | 13 | 132 | 9% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 13 | 81 | 0 | 81 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 5 | 43 | 9 | 34 | 21% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 58 | 16 | 42 | 28% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Gesellschaft (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 46 | 345 | 277 | 68 | 80% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und WAT Sekundarstufe I (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 11 | 71 | 0 | 71 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaftslehre Sekundarstufe II (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 0/2 local, 2/2 URL | 3/3 | - | 9 | 70 | 0 | 70 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/2 local, 2/2 URL | 3/3 | - | 20 | 155 | 155 | 0 | 100% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 0/1 local, 1/1 URL | 3/3 | - | 11 | 71 | 29 | 42 | 41% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | PGW Sekundarstufe I (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 12 | 90 | 2 | 88 | 2% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | PGW Studienstufe (Hamburg, Bildungsplan 2022 FULL Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 11 | 150 | 0 | 150 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 3/3 | - | 19 | 123 | 0 | 123 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe II (Mecklenburg-Vorpommern, Rahmenplan FULL Source-Extraction) | DE-MV | 0/2 local, 2/2 URL | 3/3 | - | 16 | 128 | 0 | 128 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Oberstufe (Niedersachsen, KC 2018 FULL Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 18 | 130 | 0 | 130 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Politik-Wirtschaft Sekundarstufe I (Niedersachsen, KC 2015 FULL Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 11 | 90 | 0 | 90 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialwissenschaften/Wirtschaft Oberstufe (Nordrhein-Westfalen, KLP GOSt Full Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 11 | 211 | 0 | 211 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft-Politik Sekundarstufe I (Nordrhein-Westfalen, KLP G9 2019 Full Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 14 | 100 | 0 | 100 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe I (Rheinland-Pfalz, Lehrplan 2021 FULL Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 10 | 90 | 0 | 90 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde Sekundarstufe II (Rheinland-Pfalz, Lehrplan 2022 FULL Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 3/3 | - | 16 | 158 | 0 | 158 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Oberstufe (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 24 | 168 | 0 | 168 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft/Politik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Full Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 16 | 119 | 1 | 118 | 1% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft Sekundarstufe I (Saarland, Lehrplan FULL Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 3/3 | - | 7 | 52 | 0 | 52 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde, Politik und Wirtschaftslehre Sekundarstufe II (Saarland, GOS FULL Source-Extraction) | DE-SL | 1/4 local, 4/4 URL | 3/3 | - | 13 | 124 | 0 | 124 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe I (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 14 | 113 | 0 | 113 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | GRW Sekundarstufe II (Sachsen, Lehrplan FULL Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 3/3 | - | 19 | 131 | 0 | 131 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 21 | 169 | 1 | 168 | 1% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaftslehre Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan FULL Source-Extraction) | DE-ST | 0/2 local, 2/2 URL | 3/3 | - | 14 | 129 | 2 | 127 | 2% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe I (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 9 | 109 | 0 | 109 | 0% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Sozialkunde und Wirtschaft/Recht Sekundarstufe II (Thueringen, Lehrplan FULL Source-Extraction) | DE-TH | 0/2 local, 2/2 URL | 3/3 | - | 23 | 208 | 0 | 208 | 0% | - |  |
+| Polnisch (Gymnasium, DE) | Polnisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Russisch (Gymnasium, DE) | Russisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Spanisch (Gymnasium, DE) | Spanisch (Gymnasium) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 1 | 6 | 1 | 5 | 17% | - |  |
+| Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 local, 1/1 URL | 3/3 | - | 24 | 44 | 44 | 0 | 100% | - |  |
+| Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 8 | 48 | 6 | 42 | 13% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 0/1 local, 1/1 URL | 3/3 | - | 24 | 100 | 33 | 67 | 33% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Berlin, RLP 2015 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 8 | 48 | 6 | 42 | 13% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 0/1 local, 1/1 URL | 3/3 | - | 24 | 100 | 33 | 67 | 33% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 5 | 43 | 9 | 34 | 21% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 58 | 16 | 42 | 28% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 local, 1/1 URL | 3/3 | - | 35 | 184 | 172 | 12 | 93% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Arbeit-Technik Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 4 | 29 | 0 | 29 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Bremen, Bildungsplan 2008 Source-Extraction) | DE-HB | 0/1 local, 1/1 URL | 3/3 | - | 4 | 28 | 0 | 28 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | 1/2 local, 2/2 URL | 3/3 | - | 20 | 173 | 173 | 0 | 100% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | PGW Sekundarstufe I - wirtschaftliche Inhaltsfelder (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 4 | 30 | 0 | 30 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | PGW Studienstufe - wirtschaftliche Module (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 0/1 local, 1/1 URL | 3/3 | - | 3 | 60 | 0 | 60 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Mecklenburg-Vorpommern, Rahmenplan Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 6 | 61 | 0 | 61 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Gymnasiale Oberstufe (Mecklenburg-Vorpommern, Rahmenplan Source-Extraction) | DE-MV | 0/1 local, 1/1 URL | 4/4 | - | 8 | 82 | 0 | 82 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Politik-Wirtschaft Oberstufe - wirtschaftliche Inhaltsbereiche (Niedersachsen, KC 2018 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 9 | 56 | 0 | 56 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Politik-Wirtschaft Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 0/1 local, 1/1 URL | 3/3 | - | 5 | 30 | 0 | 30 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialwissenschaften/Wirtschaft Oberstufe - wirtschaftliche Inhaltsbereiche (Nordrhein-Westfalen, KLP GOSt Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 7 | 120 | 0 | 120 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Politik Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Nordrhein-Westfalen, KLP G9 2019 Source-Extraction) | DE-NW | 0/1 local, 1/1 URL | 3/3 | - | 8 | 60 | 0 | 60 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe I - Wirtschaft (Rheinland-Pfalz, Lehrplan 2021 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 2 | 15 | 0 | 15 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe II - Wirtschaftliche Transformation (Rheinland-Pfalz, Lehrplan 2022 Source-Extraction) | DE-RP | 0/1 local, 1/1 URL | 4/4 | - | 4 | 46 | 0 | 46 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft/Politik Oberstufe (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 8 | 78 | 0 | 78 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft/Politik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2016 Source-Extraction) | DE-SH | 0/1 local, 1/1 URL | 3/3 | - | 4 | 50 | 0 | 50 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde 9 - Wirtschaft und Arbeitswelt (Saarland, Gymnasium Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 4/4 | - | 3 | 20 | 0 | 20 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Saarland, GOS 2023 Source-Extraction) | DE-SL | 0/1 local, 1/1 URL | 4/4 | - | 5 | 35 | 0 | 35 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | GRW Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Sachsen, Lehrplan Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 7 | 63 | 0 | 63 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | GRW Sekundarstufe II - wirtschaftliche Inhaltsbereiche (Sachsen, Lehrplan Source-Extraction) | DE-SN | 0/1 local, 1/1 URL | 4/4 | - | 10 | 67 | 0 | 67 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 8 | 94 | 0 | 94 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Source-Extraction) | DE-ST | 0/1 local, 1/1 URL | 4/4 | - | 11 | 113 | 0 | 113 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht Qualifikationsphase (Thueringen, Lehrplan 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 14 | 145 | 0 | 145 | 0% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht Sekundarstufe I (Thueringen, Lehrplan 2012 Source-Extraction) | DE-TH | 0/1 local, 1/1 URL | 4/4 | - | 4 | 73 | 0 | 73 | 0% | - |  |
 
 ## Bundesland Coverage
 
-| Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
+| Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 16/16 | 357 | 379 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 405 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
@@ -365,7 +365,7 @@ Rules version: curriculum-quality-v2
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 648 | 826 | 16 | 9797 | 9797 | 9797 | 0 | 9797 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 648 | 826 | 16 | 9972 | 9972 | 9972 | 0 | 9972 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 413 (100%) |
@@ -382,7 +382,7 @@ Rules version: curriculum-quality-v2
 | CQR-000 | M1 | applicability | Original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered in the source membership/closure ledger. |
 | CQR-001 | M0 | graph | Goal IDs, local references, self-reference guards, and direct DAG checks are clean. |
 | CQR-002 | M0 | graph | Stored type metadata agrees with structural atomic/cluster classification. |
-| CQR-003 | M2 | applicability | Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms. |
+| CQR-003 | M2 | applicability | Bundesland composition-view source-coverage atoms are source-backed and registered source original goals are fully covered by view atoms. |
 | CQR-004 | M2 | applicability | Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed. |
 | CQR-005 | M2 | applicability | Source-extraction goal counts are plausible against the reviewed HE/BW peer baseline or explicitly reviewed when they deviate strongly. |
 | CQR-101 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires. |

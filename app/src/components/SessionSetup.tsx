@@ -54,29 +54,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   React.useEffect(() => {
     const params = new URLSearchParams(location.search)
     const deepLinkCurriculum = params.get('curriculum') || params.get('landscape') || params.get('l')
-    const deepLinkId = params.get('skillpilotId') || params.get('id')
-    const pathToken = sanitizeSkillpilotId(getLearnerPathToken(location.pathname))
-    const sanitizedDeepLinkId = sanitizeSkillpilotId(deepLinkId)
-    const deepLinkGoal = params.get('goal') || params.get('g') || (pathToken && pathToken !== sanitizedDeepLinkId ? pathToken : '')
+    const pathToken = getLearnerPathToken(location.pathname)
+    const deepLinkGoal = params.get('goal') || params.get('g') || pathToken
 
     if (deepLinkCurriculum && deepLinkCurriculum !== selectedLandscapeId) {
       setSelectedLandscapeId(role === 'trainer'
         ? normalizeTrainerLandscapeId(deepLinkCurriculum)
         : normalizeLearnerLandscapeId(deepLinkCurriculum))
     }
-
-    if (deepLinkId) {
-      const id = sanitizedDeepLinkId;
-      if (skillpilotId !== id) {
-        setSkillpilotId(id);
-      }
-      setRole('learner');
-      checkLearner(id);
-      setShowLogin(true);
-
-      if (deepLinkCurriculum) {
-        onStart(id, normalizeLearnerLandscapeId(deepLinkCurriculum), 'learner', deepLinkGoal || undefined);
-      }
+    if (deepLinkGoal && role !== 'learner') {
+      setRole('learner')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search])

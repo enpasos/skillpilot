@@ -8,13 +8,14 @@ import {
   type CompositionViewNode,
 } from './authoring/compositionViewAuthoring'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
+import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './personalCurriculumStageScope'
 
 const ROOT_TAG = 'root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
-type PersonalCurriculumConfig = Record<string, { selected?: boolean; filterId?: string }>
+type PersonalCurriculumConfig = Record<string, { selected?: boolean; filterId?: string; durationModel?: string }>
 
 export interface RuntimeCompositionScope extends GoalPlacementContext {
   landscapeId: string
@@ -271,6 +272,7 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
       config[key] = {
         selected: typeof record.selected === 'boolean' ? record.selected : undefined,
         filterId: typeof record.filterId === 'string' ? record.filterId : undefined,
+        durationModel: typeof record.durationModel === 'string' ? record.durationModel : undefined,
       }
     })
     return config
@@ -287,6 +289,47 @@ const inferStageFromPersonalCurriculum = (config: PersonalCurriculumConfig): str
   if (sek1Selected && !sek2Selected) return 'SekI'
   if (sek1Selected && sek2Selected) return 'CrossStage'
   return undefined
+}
+
+const pushScopedFilter = (filters: string[], value?: string | null) => {
+  const normalized = value?.trim()
+  if (!normalized || normalized.toLowerCase() === 'all') return
+  if (!filters.includes(normalized)) {
+    filters.push(normalized)
+  }
+}
+
+export const deriveRuntimeGoalPlacementFilters = ({
+  landscapeId,
+  activeFilter,
+  learnerPersonalCurriculum,
+}: {
+  landscapeId: string
+  activeFilter?: string
+  learnerPersonalCurriculum?: string | null
+}) => {
+  const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
+  const rootConfig = personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]
+  const landscapeConfig = personalCurriculum[landscapeId]
+  const filters: string[] = []
+
+  pushScopedFilter(filters, rootConfig?.filterId)
+  pushScopedFilter(filters, landscapeConfig?.filterId)
+  pushScopedFilter(filters, activeFilter)
+
+  const durationModel = [
+    rootConfig?.durationModel,
+    landscapeConfig?.durationModel,
+    rootConfig || landscapeConfig ? DEFAULT_DURATION_MODEL : undefined,
+  ]
+    .map((value) => normalizeDurationModel(value))
+    .find((value): value is NonNullable<typeof value> => !!value)
+
+  if (durationModel && !filters.includes(durationModel)) {
+    filters.push(durationModel)
+  }
+
+  return filters
 }
 
 export const deriveRuntimeCompositionScope = ({
@@ -313,8 +356,18 @@ export const deriveRuntimeCompositionScope = ({
   const stage = inferStageFromPersonalCurriculum(personalCurriculum)
   const courseProfileCandidate = [landscapeFilterId, activeFilter].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
+  const durationModel = [
+    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.durationModel,
+    personalCurriculum[landscapeId]?.durationModel,
+    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID] || personalCurriculum[landscapeId] ? DEFAULT_DURATION_MODEL : undefined,
+    rootFilterId,
+    landscapeFilterId,
+    activeFilter,
+  ]
+    .map((value) => normalizeDurationModel(value))
+    .find((value): value is NonNullable<typeof value> => !!value)
 
-  if (!jurisdiction && !stage && !courseProfile) {
+  if (!jurisdiction && !stage && !courseProfile && !durationModel) {
     return null
   }
 
@@ -324,6 +377,7 @@ export const deriveRuntimeCompositionScope = ({
       schoolForm: 'Gymnasium',
       ...(jurisdiction ? { jurisdiction } : {}),
       stage,
+      ...(durationModel ? { durationModel } : {}),
     }
   }
 
@@ -333,6 +387,7 @@ export const deriveRuntimeCompositionScope = ({
     ...(jurisdiction ? { jurisdiction } : {}),
     ...(stage ? { stage } : {}),
     ...(courseProfile ? { courseProfile } : {}),
+    ...(durationModel ? { durationModel } : {}),
   }
 }
 

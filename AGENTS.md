@@ -590,7 +590,7 @@ Practical rollout rules:
 - Use a **small mapping layer** from legacy goal IDs to canonical goal IDs instead of introducing a large new abstraction stack too early.
 - When a Bundesland must be represented explicitly in metadata, filters, overlays, or APIs, use ISO 3166-2 codes such as `DE-HE` and `DE-BY`.
 - Place canonical Gymnasium subject landscapes on a Germany-level path, not under a single Bundesland subtree; source ownership and canonical ownership should stay visibly separate in the repository layout.
-- When different Bundeslaender need different learner-facing upper tree shapes for the same canonical subject graph, prefer separate scope-specific composition-view files over runtime reparenting or duplicated atomic goals.
+- When different Bundeslaender or duration models (`G8`/`G9`) need different learner-facing upper tree shapes for the same canonical subject graph, prefer separate scope-specific composition-view files over runtime reparenting or duplicated atomic goals. Use `scope.durationModel` only as a projection discriminator; do not create separate canonical G8/G9 goal sets.
 - Use a didactically closed **subtree** as the primary migration unit; operational states are `legacy_frozen`, `subtree_adopted`, `cutover_ready`, and `legacy_view_retained`.
 - The existing repository directory layout such as `curricula/DE/HE/...` may remain unchanged during transition; path segments are not the canonical public identifier contract.
 - Keep Custom GPT / MCP / API contracts as stable as possible; translation between legacy and canonical layers should happen in backend/runtime logic, not in prompt logic.
@@ -605,7 +605,7 @@ Operational consequence for Sek I:
 
 - Preserve the original source labels such as `G8`, `G9`, or state-specific year naming in provenance, mapping files, and archived input material.
 - But keep the first canonical authoring and migration target aligned to year levels `5`, `6`, `7`, `8`, `9`, `10`.
-- Only introduce a separate duration-aware overlay later if concrete learner/runtime use cases require it.
+- Where G8/G9 matters for a learner-facing Bundesland view, carry it as `durationModel`/`durationModels` in source-extraction metadata and source registries, and as `durationModel` in goal placement contexts and composition-view scopes.
 
 Operational consequence for retained assets:
 

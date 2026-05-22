@@ -121,7 +121,7 @@ export const buildAbi26PersonalCurriculumConfig = (
   return next
 }
 
-export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId: string) => {
+export const buildAbi26CockpitUrl = (context: Abi26CampaignContext) => {
   const focusGoalId = ABI26_FOCUS_GOAL_BY_LEVEL[context.courseLevel]
   const params = new URLSearchParams()
   params.set('l', ABI26_ROOT_CURRICULUM_ID)
@@ -135,7 +135,6 @@ export const buildAbi26CockpitUrl = (context: Abi26CampaignContext, skillpilotId
   params.set('utm_campaign', context.campaign)
   params.set('utm_medium', context.medium)
   params.set('start', ABI26_CAMPAIGN_SLUG)
-  params.set('skillpilotId', skillpilotId)
   return `/learner/${focusGoalId}?${params.toString()}`
 }
 

@@ -2,6 +2,7 @@
 
 Starting point: https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene/lehrplaene/gymnasium-9
 
+- g8-mathematik.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf
 - g9-biologie.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-biologie.pdf
 - g9-chemie.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-chemie.pdf
 - g9-deutsch.pdf: https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-deutsch.pdf

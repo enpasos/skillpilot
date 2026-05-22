@@ -140,6 +140,15 @@ interface MappingPipelineSourceDocumentStatus {
   hasUsableUrl: boolean
 }
 
+interface DurationProjectionAuditStatus {
+  evidenceLinks: number
+  evidenceByDuration?: Record<string, number>
+  canonicalGoalsWithDurationEvidence?: number
+  canonicalGoalsWithDifferentG8G9Evidence?: number
+  coveredEvidenceLinks: number
+  uncoveredEvidenceLinks: number
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
@@ -288,6 +297,7 @@ interface MappingPipelineSourceStatus {
   jurisdiction: string
   subject?: string
   stage?: string
+  durationModels?: string[]
   path: string
   sourceKind: 'source-extraction' | 'legacy-snapshot' | 'missing-extraction'
   sourceDocuments?: MappingPipelineSourceDocumentStatus[]
@@ -304,6 +314,7 @@ interface MappingPipelineSourceStatus {
   otherMappings?: number
   sourceGoalCountPeerBaselineReview?: SourceGoalCountPeerBaselineReview
   sourceGoalGranularity?: SourceGoalGranularitySummary
+  durationProjectionAudit?: DurationProjectionAuditStatus
   steps: MappingPipelineStep[]
 }
 
@@ -371,6 +382,49 @@ function normalizeSourceGoalCountPeerBaselineReview(
     rationale: review.rationale,
     assessment: review.assessment,
   }
+}
+
+function normalizeDurationProjectionAudit(value: unknown): DurationProjectionAuditStatus | undefined {
+  if (!isRecord(value)) return undefined
+  if (
+    typeof value.evidenceLinks !== 'number'
+    || typeof value.coveredEvidenceLinks !== 'number'
+    || typeof value.uncoveredEvidenceLinks !== 'number'
+  ) {
+    return undefined
+  }
+
+  const evidenceByDuration = isRecord(value.evidenceByDuration)
+    ? Object.fromEntries(
+        Object.entries(value.evidenceByDuration)
+          .filter((entry): entry is [string, number] => typeof entry[1] === 'number'),
+      )
+    : undefined
+
+  return {
+    evidenceLinks: value.evidenceLinks,
+    evidenceByDuration,
+    canonicalGoalsWithDurationEvidence: typeof value.canonicalGoalsWithDurationEvidence === 'number'
+      ? value.canonicalGoalsWithDurationEvidence
+      : undefined,
+    canonicalGoalsWithDifferentG8G9Evidence: typeof value.canonicalGoalsWithDifferentG8G9Evidence === 'number'
+      ? value.canonicalGoalsWithDifferentG8G9Evidence
+      : undefined,
+    coveredEvidenceLinks: value.coveredEvidenceLinks,
+    uncoveredEvidenceLinks: value.uncoveredEvidenceLinks,
+  }
+}
+
+function normalizeDurationModels(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined
+  const durationModels = value
+    .filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
+    .map((entry) => entry.trim().toUpperCase())
+  return durationModels.length > 0 ? Array.from(new Set(durationModels)).sort() : undefined
+}
+
+function isMultiDurationModelSource(source: MappingPipelineSourceStatus): boolean {
+  return (source.durationModels?.length ?? 0) > 1
 }
 
 function summarizeSourceGoalGranularity(sourceGoals: SourceExtractionGoal[]): SourceGoalGranularitySummary {
@@ -459,6 +513,7 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
     .filter((source) =>
       source.currentStep === ''
       && source.completedSteps === source.totalSteps
+      && !isMultiDurationModelSource(source)
       && SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS.has(source.jurisdiction))
     .forEach((source) => {
       const key = sourceGoalCountGroupKey(source)
@@ -470,6 +525,7 @@ function appendSourceGoalCountPeerChecks(sources: Map<string, MappingPipelineSou
 
   sourceExtractionStatuses
     .filter((source) => !SOURCE_GOAL_COUNT_BASELINE_JURISDICTIONS.has(source.jurisdiction))
+    .filter((source) => !isMultiDurationModelSource(source))
     .forEach((source) => {
       const stageKeys = sourceGoalCountStageKeys(source.stage)
       const baselineParts = sourceGoalCountBaselineParts(source, baselineByGroup)
@@ -744,6 +800,7 @@ interface SourceExtractionDocument {
   subject?: string
   jurisdiction?: string
   stage?: string
+  durationModels?: unknown
   sourceDocument?: {
     key?: string
     title?: string
@@ -758,6 +815,7 @@ interface SourceExtractionDocument {
   qualityReview?: {
     sourceGoalCountPeerBaseline?: SourceGoalCountPeerBaselineReview
   }
+  durationProjectionAudit?: unknown
   pipelineStatus?: {
     currentStep?: string
     steps?: unknown[]
@@ -934,7 +992,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     label: 'Bundesland atomic coverage',
     category: 'applicability',
     maturityTarget: 'M2',
-    description: 'Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms.',
+    description: 'Bundesland composition-view source-coverage atoms are source-backed and registered source original goals are fully covered by view atoms.',
   },
   {
     id: 'CQR-004',
@@ -3659,6 +3717,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         jurisdiction: normalizeJurisdiction(registryEntry?.jurisdiction ?? extraction.jurisdiction) ?? String(registryEntry?.jurisdiction ?? extraction.jurisdiction ?? ''),
         subject: typeof extraction.subject === 'string' ? extraction.subject : undefined,
         stage: typeof extraction.stage === 'string' ? extraction.stage : undefined,
+        durationModels: normalizeDurationModels(extraction.durationModels),
         path: repoPath,
         sourceKind: 'source-extraction',
         sourceDocuments: sourceDocumentsForExtraction(extraction),
@@ -3675,6 +3734,7 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
         otherMappings,
         sourceGoalCountPeerBaselineReview: normalizeSourceGoalCountPeerBaselineReview(extraction.qualityReview?.sourceGoalCountPeerBaseline),
         sourceGoalGranularity: summarizeSourceGoalGranularity(sourceGoals),
+        durationProjectionAudit: normalizeDurationProjectionAudit(extraction.durationProjectionAudit),
         steps: normalizedSteps,
       })
     } catch {
@@ -4703,22 +4763,25 @@ function renderMarkdown(status: StatusDocument): string {
   lines.push('')
   lines.push('## Mapping Pipeline')
   lines.push('')
-  lines.push('| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Evidence note |')
-  lines.push('| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |')
+  lines.push('| Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Duration projection | Evidence note |')
+  lines.push('| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |')
   status.curricula.forEach((curriculum) => {
     curriculum.mappingPipeline?.sources.forEach((source) => {
       const evidenceNote = source.sourceKind === 'legacy-snapshot' ? 'not pipeline-capable: no passage extraction' : ''
+      const durationProjection = source.durationProjectionAudit
+        ? `${source.durationProjectionAudit.coveredEvidenceLinks}/${source.durationProjectionAudit.evidenceLinks}; diff ${source.durationProjectionAudit.canonicalGoalsWithDifferentG8G9Evidence ?? 0}; open ${source.durationProjectionAudit.uncoveredEvidenceLinks}`
+        : '-'
       const mappedSourceGoals = source.mappedSourceGoals ?? Math.max(0, source.sourceGoals - (source.unmappedSourceGoals ?? 0))
       const exactShare = mappedSourceGoals > 0
         ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
         : 0
-      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceEvidenceLabel(source)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${evidenceNote} |`)
+      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceEvidenceLabel(source)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${durationProjection} | ${evidenceNote} |`)
     })
   })
   lines.push('')
   lines.push('## Bundesland Coverage')
   lines.push('')
-  lines.push('| Curriculum | Complete | DE view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |')
+  lines.push('| Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |')
   lines.push('| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |')
   status.curricula.forEach((curriculum) => {
     const coverage = curriculum.jurisdictionCoverage

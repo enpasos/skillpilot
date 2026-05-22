@@ -193,6 +193,7 @@ function buildExtraction(topicsToExtract: ParsedTopic[]) {
         tags: [
           'jurisdiction:DE-HE',
           'stage:SekI',
+          'durationModel:G9',
           `grade:${gradeForTopic(topic.code)}`,
           `topic:${topic.code}`,
           'courseLevel:unspecified',
@@ -221,6 +222,7 @@ function buildExtraction(topicsToExtract: ParsedTopic[]) {
     jurisdiction: 'DE-HE',
     subject: 'Geschichte',
     stage,
+    durationModel: 'G9',
     sourceDocument,
     sourceDocuments: [sourceDocument],
     method: {
@@ -706,6 +708,7 @@ function updateRegistry(): void {
     jurisdiction: 'DE-HE',
     subject: 'Geschichte',
     stage: 'Sekundarstufe I',
+    durationModel: 'G9',
     sourcePath: sourceDocument.path,
     archiveSourcePath: sourceDocument.path,
     archivePath,

@@ -1,8 +1,9 @@
 import type { UiGoal } from '../goalTypes'
+import { normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability'>
-type FilterDimension = 'courseProfile' | 'jurisdiction' | 'generic'
+type FilterDimension = 'courseProfile' | 'durationModel' | 'jurisdiction' | 'generic'
 
 const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
 
@@ -16,6 +17,7 @@ const normalizeFilterToken = (value?: string) => value?.trim().toUpperCase() ?? 
 const inferFilterDimension = (filterId: string): FilterDimension => {
   const normalized = normalizeFilterToken(filterId)
   if (COURSE_FILTER_VALUES.has(normalized)) return 'courseProfile'
+  if (normalizeDurationModel(normalized)) return 'durationModel'
   if (normalizeJurisdictionCode(normalized)) return 'jurisdiction'
   return 'generic'
 }
@@ -85,6 +87,24 @@ const getExplicitJurisdictionValues = (goal: FilterableGoal) => {
   return values
 }
 
+const getExplicitDurationModelValues = (goal: FilterableGoal) => {
+  const values = new Set<string>()
+  const normalizedTags = getNormalizedTagValues(goal)
+  const normalizedApplicabilityValues = getNormalizedApplicabilityValues(goal)
+
+  normalizedTags.forEach((value) => {
+    const durationModel = normalizeDurationModel(value)
+    if (durationModel) values.add(durationModel)
+  })
+
+  normalizedApplicabilityValues.forEach((value) => {
+    const durationModel = normalizeDurationModel(value)
+    if (durationModel) values.add(durationModel)
+  })
+
+  return values
+}
+
 const getGenericFilterValues = (goal: FilterableGoal) => {
   const values = new Set<string>()
   getNormalizedTagValues(goal).forEach((value) => values.add(value))
@@ -110,6 +130,14 @@ export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): bool
     const explicitJurisdictionValues = getExplicitJurisdictionValues(goal)
     if (explicitJurisdictionValues.size === 0) return true
     return explicitJurisdictionValues.has(normalizedJurisdiction)
+  }
+
+  if (dimension === 'durationModel') {
+    const normalizedDurationModel = normalizeDurationModel(normalizedFilterId)
+    if (!normalizedDurationModel) return true
+    const explicitDurationModelValues = getExplicitDurationModelValues(goal)
+    if (explicitDurationModelValues.size === 0) return true
+    return explicitDurationModelValues.has(normalizedDurationModel)
   }
 
   const genericValues = getGenericFilterValues(goal)

@@ -125,7 +125,7 @@ interface TreeNodeProps {
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
-  personalConfig?: Record<string, { selected: boolean; filterId?: string }>
+  personalConfig?: Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
   hasActivePlan?: boolean
   isInPlannedSubtree?: boolean
   activeGoalId?: string
@@ -482,7 +482,7 @@ interface CompetenceTreeProps {
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
-  personalConfig?: Record<string, { selected: boolean; filterId?: string }>
+  personalConfig?: Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
   activeGoalId?: string
   expandedGoalIds?: Set<string>
   onToggleExpanded?: (goalId: string) => void

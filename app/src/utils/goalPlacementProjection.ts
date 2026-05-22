@@ -1,5 +1,6 @@
 import type { UiGoal } from '../goalTypes'
 import type { GoalPlacement, GoalPlacementContext, LearningLandscape, ProgramUnit } from '../landscapeTypes'
+import { normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 export interface ProjectableLandscapeEntry {
@@ -135,7 +136,7 @@ const inferPlacementFilterDimension = (filterId?: string): keyof GoalPlacementCo
 
   if (normalizeJurisdictionCode(normalized)) return 'jurisdiction'
   if (/^(GK|LK|GK\+LK)$/i.test(normalized)) return 'courseProfile'
-  if (/^G[89]$/i.test(normalized)) return 'durationModel'
+  if (normalizeDurationModel(normalized)) return 'durationModel'
   if (/^Sek ?I{1,2}$/i.test(normalized)) return 'stage'
   if (/^Gymnasium$/i.test(normalized)) return 'schoolForm'
   return undefined
@@ -159,6 +160,11 @@ const contextValueMatchesFilter = (
   if (dimension === 'jurisdiction') {
     const normalizedContextValue = normalizeJurisdictionCode(contextValue)
     const normalizedFilterId = normalizeJurisdictionCode(filterId)
+    return normalizedContextValue !== null && normalizedContextValue === normalizedFilterId
+  }
+  if (dimension === 'durationModel') {
+    const normalizedContextValue = normalizeDurationModel(contextValue)
+    const normalizedFilterId = normalizeDurationModel(filterId)
     return normalizedContextValue !== null && normalizedContextValue === normalizedFilterId
   }
   return contextValue.trim().toLocaleLowerCase('de-DE') === filterId.trim().toLocaleLowerCase('de-DE')
@@ -185,7 +191,7 @@ const placementMatchesFilters = (
 const placementIsDefaultSafe = (placement: GoalPlacement): boolean => {
   const context = placement.context
   if (!context) return true
-  return !context.jurisdiction && !context.courseProfile
+  return !context.jurisdiction && !context.courseProfile && !context.durationModel
 }
 
 const createSyntheticProgramUnitAnchor = (

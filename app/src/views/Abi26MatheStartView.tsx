@@ -149,7 +149,7 @@ export const Abi26MatheStartView: React.FC = () => {
       localStorage.setItem('skillpilot_lang', 'de')
       saveAbi26CampaignContext({ ...context, skillpilotId: id })
 
-      const url = buildAbi26CockpitUrl(context, id)
+      const url = buildAbi26CockpitUrl(context)
       setSkillpilotId(id)
       setCockpitUrl(url)
 

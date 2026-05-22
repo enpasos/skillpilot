@@ -7,6 +7,7 @@ const APPLICABILITY_DIMENSION_LABELS: Record<string, { de: string; en: string }>
   courseLevel: { de: 'Kursniveau', en: 'Course level' },
   gradeBand: { de: 'Jahrgangsband', en: 'Grade band' },
   track: { de: 'Zweig', en: 'Track' },
+  durationModel: { de: 'Dauer-Modell', en: 'Duration model' },
   language: { de: 'Sprache', en: 'Language' },
 }
 
@@ -14,6 +15,8 @@ const FILTER_VALUE_LABELS: Record<string, { de: string; en: string }> = {
   ...JURISDICTION_LABELS,
   GK: { de: 'GK', en: 'GK' },
   LK: { de: 'LK', en: 'LK' },
+  G8: { de: 'G8', en: 'G8' },
+  G9: { de: 'G9', en: 'G9' },
 }
 
 const humanizeKey = (value: string): string => {

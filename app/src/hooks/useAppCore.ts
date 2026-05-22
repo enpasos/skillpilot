@@ -20,6 +20,7 @@ import { getStoredLandscapeIdForRole, normalizeLearnerLandscapeId } from '../uti
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
+  deriveRuntimeGoalPlacementFilters,
   deriveRuntimeCompositionScope,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
@@ -281,6 +282,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
           jurisdiction: scope.jurisdiction ?? '',
           stage: scope.stage ?? '',
           courseProfile: scope.courseProfile ?? '',
+          durationModel: scope.durationModel ?? '',
         })
         // Keep composition-view matching same-origin so local dev middleware and proxying
         // can serve the current repo state instead of bypassing it via an absolute API base.
@@ -338,7 +340,16 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       return !loadingMatchedCompositionViews
     })
 
-    const placementProjectedEntries = applyGoalPlacementProjection(entriesNeedingPlacementProjection, activeFilter)
+    const placementProjectedEntries = entriesNeedingPlacementProjection.map((entry) => (
+      applyGoalPlacementProjection(
+        [entry],
+        deriveRuntimeGoalPlacementFilters({
+          landscapeId: entry.meta.landscapeId,
+          activeFilter,
+          learnerPersonalCurriculum,
+        }),
+      )[0] ?? entry
+    ))
     const projectedByLandscapeId = new Map<string, (typeof graphSourceLandscapeEntries)[number]>()
 
     placementProjectedEntries.forEach((entry) => {
@@ -368,6 +379,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     effectiveMatchedCompositionViewsByLandscapeId,
     graphSourceLandscapeEntries,
     goalId,
+    learnerPersonalCurriculum,
     loadingMatchedCompositionViews,
     role,
     runtimeCompositionScopes,

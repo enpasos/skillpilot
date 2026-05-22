@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 class CompositionViewServiceTest {
 
@@ -657,6 +658,51 @@ class CompositionViewServiceTest {
                     .withFailMessage("Unexpected view resolution for %s via %s", viewId, viewFile.getFileName())
                     .isEqualTo(viewId);
         }
+    }
+
+    @Test
+    void findMatchingView_prefersDurationSpecificScopeOverDurationAgnosticFallback(@TempDir Path tempDir)
+            throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        Files.writeString(viewDir.resolve("default.view.json"), """
+                {
+                  "viewId": "default-seki",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekI"
+                  },
+                  "rootNodes": []
+                }
+                """);
+        Files.writeString(viewDir.resolve("g8.view.json"), """
+                {
+                  "viewId": "g8-seki",
+                  "landscapeId": "test-landscape",
+                  "scope": {
+                    "schoolForm": "Gymnasium",
+                    "stage": "SekI",
+                    "durationModel": "G8"
+                  },
+                  "rootNodes": []
+                }
+                """);
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        CompositionViewService service = new CompositionViewService(properties, new ObjectMapper());
+
+        Map<String, Object> g8Match = service.findMatchingView(
+                "test-landscape",
+                Map.of("schoolForm", "Gymnasium", "stage", "SekI", "durationModel", "G8"));
+        Map<String, Object> g9Match = service.findMatchingView(
+                "test-landscape",
+                Map.of("schoolForm", "Gymnasium", "stage", "SekI", "durationModel", "G9"));
+
+        assertThat(g8Match).isNotNull();
+        assertThat(g8Match.get("viewId")).isEqualTo("g8-seki");
+        assertThat(g9Match).isNotNull();
+        assertThat(g9Match.get("viewId")).isEqualTo("default-seki");
     }
 
     @Test

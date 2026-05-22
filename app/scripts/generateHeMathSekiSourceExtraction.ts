@@ -8,11 +8,12 @@ const repoRoot = path.resolve(appRoot, '..')
 const sourceLandscapeId = 'b167b4cd-4b78-4c84-a721-6b2adbbcab3c'
 
 const kcPdfPath = path.resolve(repoRoot, 'curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf')
+const g8PdfPath = path.resolve(repoRoot, 'curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf')
 const g9PdfPath = path.resolve(repoRoot, 'curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf')
 const leitfadenPdfPath = path.resolve(repoRoot, 'curricula/DE/Gymnasium/input/HE/lower-secondary/leitfaden_mathematik_sekundarstufe_i.pdf')
 const outputPath = path.resolve(
   repoRoot,
-  'curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G9.source-extraction.json',
+  'curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json',
 )
 const canonicalMathPath = path.resolve(
   repoRoot,
@@ -25,7 +26,8 @@ const mappingReviewPath = path.resolve(
 
 type PipelineState = 'complete' | 'incomplete' | 'blocked'
 
-type SourceDocumentKey = 'KC' | 'G9' | 'LEITFADEN'
+type SourceDocumentKey = 'KC' | 'G8' | 'G9' | 'LEITFADEN'
+type DurationModel = 'G8' | 'G9'
 
 type Passage = {
   id: string
@@ -63,7 +65,7 @@ type PipelineCheck = {
 }
 
 type PipelineStep = {
-  id: 'MAPPING-1' | 'MAPPING-2' | 'MAPPING-3'
+  id: 'MAPPING-1' | 'MAPPING-2' | 'MAPPING-3' | 'MAPPING-4'
   label: string
   status: PipelineState
   dependsOn: string[]
@@ -105,6 +107,16 @@ type MappingReviewDocument = {
 type CanonicalMathDocument = {
   goals?: Array<{
     id?: unknown
+    title?: unknown
+    phase?: unknown
+    tags?: unknown
+    contains?: unknown
+  }>
+  goalPlacements?: Array<{
+    goalId?: unknown
+    unitId?: unknown
+    relation?: unknown
+    context?: unknown
   }>
 }
 
@@ -126,6 +138,29 @@ const asStringArray = (value: unknown): string[] =>
     ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
     : []
 
+const asRecord = (value: unknown): Record<string, unknown> | null =>
+  typeof value === 'object' && value !== null && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : null
+
+const asOptionalString = (value: unknown): string | undefined =>
+  typeof value === 'string' && value.trim().length > 0 ? value : undefined
+
+const extractTagValue = (tags: string[], prefix: string): string | null => {
+  const tag = tags.find((entry) => entry.startsWith(prefix))
+  return tag ? tag.slice(prefix.length) : null
+}
+
+const normalizeDurationModel = (value?: string | null): DurationModel | null => {
+  const normalized = value?.trim().toUpperCase()
+  return normalized === 'G8' || normalized === 'G9' ? normalized : null
+}
+
+const extractYearFromUnitId = (unitId?: string): string | null => {
+  const match = /^de-gym-math-j([5-9]|10)$/u.exec(unitId ?? '')
+  return match?.[1] ?? null
+}
+
 const sourceDocuments = [
   {
     key: 'KC',
@@ -135,10 +170,19 @@ const sourceDocuments = [
     url: 'https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf',
   },
   {
+    key: 'G8',
+    title: 'Lehrplan Gymnasium G8 Mathematik',
+    path: repoPath(g8PdfPath),
+    role: 'legacy-grade-sequencing-reference',
+    durationModel: 'G8',
+    url: 'https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf',
+  },
+  {
     key: 'G9',
     title: 'Lehrplan Gymnasium G9 Mathematik',
     path: repoPath(g9PdfPath),
     role: 'legacy-grade-sequencing-reference',
+    durationModel: 'G9',
     url: 'https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g9-mathematik.pdf',
   },
   {
@@ -928,17 +972,26 @@ const buildKcCompetencySourceGoals = (): SourceGoal[] =>
     })
   })
 
-const isG9SourceGoalLine = (line: string): boolean =>
+const sourceDocument = (key: SourceDocumentKey): (typeof sourceDocuments)[number] => {
+  const document = sourceDocuments.find((entry) => entry.key === key)
+  if (!document) throw new Error(`Unknown source document key: ${key}`)
+  return document
+}
+
+const isLegacyGradePlanSourceGoalLine = (line: string): boolean =>
   line.length >= 14
   && !line.includes('Bildungsgang Gymnasium')
   && !line.includes('Unterrichtsfach Mathematik')
-  && !g9ChromeLinePattern.test(line)
+  && !legacyGradePlanChromeLinePattern.test(line)
 
-const compactG9SourceGoalLines = (text: string): string[] => {
+const compactLegacyGradePlanSourceGoalLines = (
+  text: string,
+  options: { joinConnectorContinuations?: boolean } = {},
+): string[] => {
   const lines = text
     .split(/\n/u)
     .map(normalizeLine)
-    .filter(isG9SourceGoalLine)
+    .filter(isLegacyGradePlanSourceGoalLine)
   const chunks: string[] = []
 
   for (const line of lines) {
@@ -949,6 +1002,8 @@ const compactG9SourceGoalLines = (text: string): string[] => {
         || /^[-–]/u.test(line)
         || line.length < 22
         || /[,(/-]\s*$/u.test(previous ?? '')
+        || (options.joinConnectorContinuations === true
+          && /\b(?:als|wie|und|oder|von|mit|bei|zur|zum|in|im|am|an|auf|aus|für|zu|bzw\.?)$/u.test(previous ?? ''))
       )
     if (shouldJoin) {
       chunks[chunks.length - 1] = `${previous} ${line}`
@@ -960,28 +1015,34 @@ const compactG9SourceGoalLines = (text: string): string[] => {
   return chunks
 }
 
-const buildG9SourceGoals = (passagesToExtract: Passage[]): SourceGoal[] =>
+const buildLegacyGradePlanSourceGoals = (
+  passagesToExtract: Passage[],
+  durationModel: DurationModel,
+): SourceGoal[] =>
   passagesToExtract.flatMap((passage) => {
-    const grade = passage.topicCode.match(/^G9-(\d+)/u)?.[1] ?? 'unknown'
-    return compactG9SourceGoalLines(passage.text).map((line, index) => {
+    const grade = passage.topicCode.match(new RegExp(`^${durationModel}-(\\d+)`, 'u'))?.[1] ?? 'unknown'
+    return compactLegacyGradePlanSourceGoalLines(passage.text, {
+      joinConnectorContinuations: durationModel === 'G8',
+    }).map((line, index) => {
       const renderedLine = latexify(line)
       return {
         id: stableSourceGoalId(passage.id, index, line),
         passageId: passage.id,
         topicCode: passage.topicCode,
         title: compactTitle(line),
-        description: `Die lernende Person kann den im G9-Lehrplan ausgewiesenen Schwerpunkt "${renderedLine}" im Kontext ${passage.title} fachgerecht bearbeiten.`,
+        description: `Die lernende Person kann den im ${durationModel}-Lehrplan ausgewiesenen Schwerpunkt "${renderedLine}" im Kontext ${passage.title} fachgerecht bearbeiten.`,
         sourceText: renderedLine,
         sourceSpan: renderedLine,
         parentBulletText: renderedLine,
-        sourceRef: `Lehrplan Gymnasium G9 Mathematik, ${passage.title}`,
+        sourceRef: `Lehrplan Gymnasium ${durationModel} Mathematik, ${passage.title}`,
         granularity: 'legacyGradeTopicFocus',
         tags: [
           'source:DE-HE',
-          'sourceDocument:G9',
+          `sourceDocument:${durationModel}`,
           'subject:Mathematik',
           'stage:SekI',
-          'legacy:G9',
+          `legacy:${durationModel}`,
+          `durationModel:${durationModel}`,
           `grade:${grade}`,
         ],
         requires: [],
@@ -991,10 +1052,10 @@ const buildG9SourceGoals = (passagesToExtract: Passage[]): SourceGoal[] =>
     })
   })
 
-const g9HeadingPattern = /^\s*((?:[5-9]|10)\.\d+)\s+(.+?)\s+Std\.\s*:\s*(\d+)\s*$/u
-const g9ChromeLinePattern = /^(?:Bildungsgang Gymnasium|Unterrichtsfach Mathematik|\d+)$/u
+const legacyGradePlanHeadingPattern = /^\s*((?:[5-9]G|[5-9]|10)\.\d+)\s+(.+?)\s+Std\.\s*:\s*(\d+)\s*$/u
+const legacyGradePlanChromeLinePattern = /^(?:Bildungsgang Gymnasium|Unterrichtsfach Mathematik|\d+)$/u
 
-const cleanG9TopicText = (lines: string[]): string => {
+const cleanLegacyGradePlanTopicText = (lines: string[]): string => {
   const normalizedLines = lines
     .map((line) => line.replace(/\r/gu, ''))
     .map((line) => normalizeGermanText(line))
@@ -1012,27 +1073,36 @@ const cleanG9TopicText = (lines: string[]): string => {
     .replace(/(\p{L})-\s*\n\s*(\p{Ll})/gu, '$1$2')
     .split(/\n/u)
     .map(normalizeLine)
-    .filter((line) => line && !g9ChromeLinePattern.test(line))
+    .filter((line) => line && !legacyGradePlanChromeLinePattern.test(line))
 
   return relevant.join('\n')
 }
 
-const extractG9Passages = (pdfText: string): Passage[] => {
+const extractLegacyGradePlanPassages = (
+  pdfText: string,
+  config: {
+    idPrefix: string
+    topicCodePrefix: DurationModel
+    titlePrefix: DurationModel
+    pdfPath: string
+    sourceDocumentKey: DurationModel
+  },
+): Passage[] => {
   const passages: Passage[] = []
   let current: { topicCode: string; title: string; page: number; lines: string[] } | null = null
 
   const flush = () => {
     if (!current) return
-    const text = cleanG9TopicText(current.lines)
+    const text = cleanLegacyGradePlanTopicText(current.lines)
     if (text.length > 80) {
       passages.push({
-        id: `g9-${current.topicCode.replace(/\./gu, '-')}`,
-        topicCode: `G9-${current.topicCode}`,
-        title: `G9 ${current.topicCode} ${current.title}`,
+        id: `${config.idPrefix}-${current.topicCode.replace(/\./gu, '-').toLowerCase()}`,
+        topicCode: `${config.topicCodePrefix}-${current.topicCode}`,
+        title: `${config.titlePrefix} ${current.topicCode} ${current.title}`,
         text,
         page: current.page,
-        sourcePath: repoPath(g9PdfPath),
-        sourceDocumentKey: 'G9',
+        sourcePath: repoPath(config.pdfPath),
+        sourceDocumentKey: config.sourceDocumentKey,
         goalBearing: true,
       })
     }
@@ -1041,7 +1111,7 @@ const extractG9Passages = (pdfText: string): Passage[] => {
 
   pdfText.split(/\f/u).forEach((page, pageIndex) => {
     for (const line of page.split(/\n/u)) {
-      const match = line.match(g9HeadingPattern)
+      const match = line.match(legacyGradePlanHeadingPattern)
       if (match) {
         flush()
         current = {
@@ -1157,21 +1227,55 @@ const buildCheck = (id: string, label: string, passed: boolean, details: string)
   details,
 })
 
-const kcText = readPdfText(kcPdfPath, sourceDocuments[0].url)
-const g9Text = readPdfText(g9PdfPath, sourceDocuments[1].url)
-const leitfadenText = readPdfText(leitfadenPdfPath, sourceDocuments[2].url)
+const kcText = readPdfText(kcPdfPath, sourceDocument('KC').url)
+const g8Text = readPdfText(g8PdfPath, sourceDocument('G8').url)
+const g9Text = readPdfText(g9PdfPath, sourceDocument('G9').url)
+const leitfadenText = readPdfText(leitfadenPdfPath, sourceDocument('LEITFADEN').url)
 
 const kcContentPassages = buildKcContentPassages()
 const kcCompetencyPassages = buildKcCompetencyPassages()
-const g9Passages = extractG9Passages(g9Text)
+const g8Passages = extractLegacyGradePlanPassages(g8Text, {
+  idPrefix: 'g8',
+  topicCodePrefix: 'G8',
+  titlePrefix: 'G8',
+  pdfPath: g8PdfPath,
+  sourceDocumentKey: 'G8',
+})
+const g9Passages = extractLegacyGradePlanPassages(g9Text, {
+  idPrefix: 'g9',
+  topicCodePrefix: 'G9',
+  titlePrefix: 'G9',
+  pdfPath: g9PdfPath,
+  sourceDocumentKey: 'G9',
+})
 const leitfadenPassages = buildLeitfadenPassages()
 const sourceGoals = [
   ...buildKcContentSourceGoals(),
   ...buildKcCompetencySourceGoals(),
-  ...buildG9SourceGoals(g9Passages),
+  ...buildLegacyGradePlanSourceGoals(g8Passages, 'G8'),
+  ...buildLegacyGradePlanSourceGoals(g9Passages, 'G9'),
 ]
-const passages = [...kcContentPassages, ...kcCompetencyPassages, ...g9Passages, ...leitfadenPassages]
+const passages = [...kcContentPassages, ...kcCompetencyPassages, ...g8Passages, ...g9Passages, ...leitfadenPassages]
 
+const expectedG8TopicCodes = [
+  'G8-5G.1',
+  'G8-5G.2',
+  'G8-5G.3',
+  'G8-6G.1',
+  'G8-6G.2',
+  'G8-6G.3',
+  'G8-7G.1',
+  'G8-7G.2',
+  'G8-7G.3',
+  'G8-7G.4',
+  'G8-7G.5',
+  'G8-8G.1',
+  'G8-8G.2',
+  'G8-8G.3',
+  'G8-9G.1',
+  'G8-9G.2',
+  'G8-9G.3',
+]
 const expectedG9TopicCodes = [
   'G9-5.1',
   'G9-5.2',
@@ -1203,6 +1307,7 @@ const expectedKcContentTopicCodes = kcContentSpecs.map(kcTopicCode)
 const expectedKcCompetencyTopicCodes = kcCompetencySpecs.map(kcCompetencyTopicCode)
 const expectedKcTopicCodes = [...expectedKcContentTopicCodes, ...expectedKcCompetencyTopicCodes]
 const passageTopicCodes = new Set(passages.map((passage) => passage.topicCode))
+const missingG8TopicCodes = expectedG8TopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
 const missingG9TopicCodes = expectedG9TopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
 const missingKcContentTopicCodes = expectedKcContentTopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
 const missingKcCompetencyTopicCodes = expectedKcCompetencyTopicCodes.filter((topicCode) => !passageTopicCodes.has(topicCode))
@@ -1213,7 +1318,8 @@ const passageIds = new Set(passages.map((passage) => passage.id))
 const sourceGoalsWithoutPassage = sourceGoals.filter((goal) => !passageIds.has(goal.passageId)).map((goal) => goal.id)
 const kcContentSourceGoals = sourceGoals.filter((goal) => goal.granularity === 'officialContentFocus')
 const kcCompetencySourceGoals = sourceGoals.filter((goal) => goal.granularity === 'competencyExpectation')
-const g9SourceGoals = sourceGoals.filter((goal) => goal.granularity === 'legacyGradeTopicFocus')
+const g8SourceGoals = sourceGoals.filter((goal) => goal.granularity === 'legacyGradeTopicFocus' && goal.tags.includes('durationModel:G8'))
+const g9SourceGoals = sourceGoals.filter((goal) => goal.granularity === 'legacyGradeTopicFocus' && goal.tags.includes('durationModel:G9'))
 const goalBearingPassagesWithoutSourceGoals = passages
   .filter((passage) => passage.goalBearing)
   .filter((passage) => !sourceGoals.some((goal) => goal.passageId === passage.id))
@@ -1233,7 +1339,7 @@ const encodingArtifacts = [
   ...sourceGoals.filter((goal) => hasEncodingArtifact(`${goal.title}\n${goal.description}\n${goal.sourceText}`)).map((goal) => goal.id),
 ]
 
-const sourceDocumentsPresent = [kcPdfPath, g9PdfPath, leitfadenPdfPath].every((pdfPath) => existsSync(pdfPath))
+const sourceDocumentsPresent = [kcPdfPath, g8PdfPath, g9PdfPath, leitfadenPdfPath].every((pdfPath) => existsSync(pdfPath))
 const leitfadenPolicyPresent = normalizeForSearch(leitfadenText).includes('Kerncurriculum – hessenweit verbindlich')
   || normalizeForSearch(leitfadenText).includes('Kerncurriculum - hessenweit verbindlich')
 
@@ -1255,6 +1361,12 @@ const mapping1Checks = [
     'KC 7.1/7.2/6 Kompetenzerwartungen sind als Passagen erfasst',
     missingKcCompetencyTopicCodes.length === 0,
     `Erfasst: ${expectedKcCompetencyTopicCodes.length - missingKcCompetencyTopicCodes.length}/${expectedKcCompetencyTopicCodes.length}; fehlend: ${missingKcCompetencyTopicCodes.join(', ') || '-'}`,
+  ),
+  buildCheck(
+    'g8-topic-passages-present',
+    'G8-Jahrgangsthemen 5G.1 bis 9G.3 sind als Originalpassagen erfasst',
+    missingG8TopicCodes.length === 0,
+    `Erfasst: ${expectedG8TopicCodes.length - missingG8TopicCodes.length}/${expectedG8TopicCodes.length}; fehlend: ${missingG8TopicCodes.join(', ') || '-'}`,
   ),
   buildCheck(
     'g9-topic-passages-present',
@@ -1307,6 +1419,12 @@ const mapping2Checks = [
     'KC-Source-Ziele sind im Kerncurriculum-Text wiederauffindbar',
     sourceGoalsMissingInKcText.length === 0,
     `Nicht wiedergefunden: ${sourceGoalsMissingInKcText.slice(0, 8).join('; ') || '-'}`,
+  ),
+  buildCheck(
+    'g8-source-goals-created',
+    'Aus G8-Jahrgangspassagen wurden granulare Source-Ziele erzeugt',
+    goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g8-')).length === 0 && g8SourceGoals.length > 0,
+    `G8-Source-Ziele: ${g8SourceGoals.length}; Passagen ohne Source-Ziele: ${goalBearingPassagesWithoutSourceGoals.filter((id) => id.startsWith('g8-')).slice(0, 12).join(', ') || '-'}`,
   ),
   buildCheck(
     'g9-source-goals-created',
@@ -1379,6 +1497,164 @@ const invalidMappingEntryTargetGoalIds = Array.from(new Set(
     .map((entry) => String(entry.canonicalGoalId ?? ''))
     .filter((goalId) => !canonicalGoalIdSet.has(goalId)),
 ))
+
+const canonicalGoalEntries = (canonicalMath?.goals ?? [])
+  .map((goal) => ({
+    id: asOptionalString(goal.id),
+    title: asOptionalString(goal.title),
+    phase: asOptionalString(goal.phase),
+    tags: asStringArray(goal.tags),
+    contains: asStringArray(goal.contains),
+  }))
+  .filter((goal): goal is {
+    id: string
+    title?: string
+    phase?: string
+    tags: string[]
+    contains: string[]
+  } => !!goal.id)
+const canonicalGoalById = new Map(canonicalGoalEntries.map((goal) => [goal.id, goal] as const))
+const parentIdsByGoalId = new Map<string, string[]>()
+
+for (const goal of canonicalGoalEntries) {
+  for (const childId of goal.contains) {
+    const parentIds = parentIdsByGoalId.get(childId) ?? []
+    parentIds.push(goal.id)
+    parentIdsByGoalId.set(childId, parentIds)
+  }
+}
+
+const containsCache = new Map<string, boolean>()
+const containsTransitively = (ancestorId: string, targetId: string, visiting: Set<string> = new Set()): boolean => {
+  const cacheKey = `${ancestorId}\0${targetId}`
+  const cached = containsCache.get(cacheKey)
+  if (cached !== undefined) return cached
+  if (ancestorId === targetId) {
+    containsCache.set(cacheKey, true)
+    return true
+  }
+  if (visiting.has(ancestorId)) {
+    containsCache.set(cacheKey, false)
+    return false
+  }
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(ancestorId)
+  const ancestor = canonicalGoalById.get(ancestorId)
+  const result = (ancestor?.contains ?? []).some((childId) =>
+    containsTransitively(childId, targetId, nextVisiting),
+  )
+  containsCache.set(cacheKey, result)
+  return result
+}
+
+const extractYearFromCanonicalGoal = (
+  goal: { title?: string; phase?: string; tags: string[] } | undefined,
+): string | null => {
+  if (!goal) return null
+
+  for (const tag of goal.tags) {
+    const match = /^phase:J([5-9]|10)$/u.exec(tag)
+    if (match) return match[1]
+  }
+
+  const phaseMatch = /^J([5-9]|10)$/iu.exec(goal.phase ?? '')
+  if (phaseMatch) return phaseMatch[1]
+
+  const titleMatch = /^Jahrgang(?:sstufe)?\s+([5-9]|10)\b/iu.exec(goal.title ?? '')
+  return titleMatch?.[1] ?? null
+}
+
+const authoredYearAncestorsCache = new Map<string, Set<string>>()
+const getAuthoredYearAncestors = (goalId: string, visiting: Set<string> = new Set()): Set<string> => {
+  const cached = authoredYearAncestorsCache.get(goalId)
+  if (cached) return cached
+  if (visiting.has(goalId)) return new Set()
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+
+  const years = new Set<string>()
+  for (const parentId of parentIdsByGoalId.get(goalId) ?? []) {
+    const year = extractYearFromCanonicalGoal(canonicalGoalById.get(parentId))
+    if (year) years.add(year)
+    getAuthoredYearAncestors(parentId, nextVisiting).forEach((entry) => years.add(entry))
+  }
+
+  authoredYearAncestorsCache.set(goalId, years)
+  return years
+}
+
+const sourceGoalById = new Map(sourceGoals.map((goal) => [goal.id, goal] as const))
+const durationProjectionEvidenceKeys = new Set<string>()
+const durationProjectionGradeEvidenceByCanonicalGoal = new Map<string, Record<DurationModel, Set<string>>>()
+
+for (const entry of mappingEntries) {
+  const legacyGoalId = asOptionalString(entry.legacyGoalId)
+  const canonicalGoalId = asOptionalString(entry.canonicalGoalId)
+  if (!legacyGoalId || !canonicalGoalId) continue
+
+  const sourceGoal = sourceGoalById.get(legacyGoalId)
+  const durationModel = normalizeDurationModel(extractTagValue(sourceGoal?.tags ?? [], 'durationModel:'))
+  const grade = extractTagValue(sourceGoal?.tags ?? [], 'grade:')
+  if (!sourceGoal || !durationModel || !grade) continue
+
+  durationProjectionEvidenceKeys.add(`${canonicalGoalId}\0${durationModel}\0${grade}`)
+  const byDuration = durationProjectionGradeEvidenceByCanonicalGoal.get(canonicalGoalId) ?? {
+    G8: new Set<string>(),
+    G9: new Set<string>(),
+  }
+  byDuration[durationModel].add(grade)
+  durationProjectionGradeEvidenceByCanonicalGoal.set(canonicalGoalId, byDuration)
+}
+
+const durationSpecificPlacements = (canonicalMath?.goalPlacements ?? [])
+  .map((placement) => {
+    const context = asRecord(placement.context)
+    return {
+      goalId: asOptionalString(placement.goalId),
+      unitId: asOptionalString(placement.unitId),
+      relation: asOptionalString(placement.relation),
+      durationModel: normalizeDurationModel(asOptionalString(context?.durationModel)),
+      grade: extractYearFromUnitId(asOptionalString(placement.unitId)),
+    }
+  })
+  .filter((placement): placement is {
+    goalId: string
+    unitId: string
+    relation: string
+    durationModel: DurationModel
+    grade: string
+  } => !!placement.goalId && !!placement.unitId && !!placement.relation && !!placement.durationModel && !!placement.grade)
+
+const uncoveredDurationProjectionEvidence = Array.from(durationProjectionEvidenceKeys)
+  .map((key) => key.split('\0') as [string, DurationModel, string])
+  .filter(([canonicalGoalId, durationModel, grade]) => {
+    const coveredByAuthoredYear = getAuthoredYearAncestors(canonicalGoalId).has(grade)
+    if (coveredByAuthoredYear) return false
+
+    return !durationSpecificPlacements.some((placement) =>
+      placement.durationModel === durationModel
+      && placement.grade === grade
+      && containsTransitively(placement.goalId, canonicalGoalId),
+    )
+  })
+
+const durationDifferentCanonicalGoalIds = Array.from(durationProjectionGradeEvidenceByCanonicalGoal.entries())
+  .filter(([, byDuration]) => {
+    if (byDuration.G8.size === 0 || byDuration.G9.size === 0) return false
+    const g8 = Array.from(byDuration.G8).sort((left, right) => Number(left) - Number(right)).join(',')
+    const g9 = Array.from(byDuration.G9).sort((left, right) => Number(left) - Number(right)).join(',')
+    return g8 !== g9
+  })
+  .map(([canonicalGoalId]) => canonicalGoalId)
+
+const durationProjectionEvidenceByDuration: Record<DurationModel, number> = { G8: 0, G9: 0 }
+for (const key of durationProjectionEvidenceKeys) {
+  const [, durationModel] = key.split('\0') as [string, DurationModel, string]
+  durationProjectionEvidenceByDuration[durationModel] += 1
+}
+
 const mapping3Checks = [
   buildCheck(
     'mapping-2-complete',
@@ -1428,6 +1704,37 @@ const mapping3Checks = [
   ),
 ]
 const mapping3Complete = mapping2Complete && mapping3Checks.every((check) => check.passed)
+const mapping4Checks = [
+  buildCheck(
+    'mapping-3-complete',
+    'MAPPING-3 ist vollständig abgeschlossen',
+    mapping3Complete,
+    mapping3Complete
+      ? 'G8/G9-Jahrgangsprojektion kann gegen die kanonische SkillPilot-Landschaft geprüft werden.'
+      : 'G8/G9-Jahrgangsprojektion bleibt blockiert, bis die Source-Ziele vollständig gemappt sind.',
+  ),
+  buildCheck(
+    'm4-duration-projection-evidence-present',
+    'G8/G9-Jahrgangsevidenz wurde aus Lehrplan-Mapping abgeleitet',
+    durationProjectionEvidenceKeys.size > 0
+      && durationProjectionEvidenceByDuration.G8 > 0
+      && durationProjectionEvidenceByDuration.G9 > 0,
+    `Evidence: ${durationProjectionEvidenceKeys.size}; G8: ${durationProjectionEvidenceByDuration.G8}; G9: ${durationProjectionEvidenceByDuration.G9}; Canonical-Ziele: ${durationProjectionGradeEvidenceByCanonicalGoal.size}`,
+  ),
+  buildCheck(
+    'm4-g8-g9-differences-detected',
+    'G8/G9 erzeugt unterschiedliche Jahrgangsprojektionen',
+    durationDifferentCanonicalGoalIds.length > 0,
+    `Unterschiedliche G8/G9-Jahrgangsevidenz bei ${durationDifferentCanonicalGoalIds.length} Canonical-Zielen`,
+  ),
+  buildCheck(
+    'm4-duration-projection-covered',
+    'G8/G9-Jahrgangsevidenz ist durch Jahrgangsstruktur oder goalPlacements abgedeckt',
+    uncoveredDurationProjectionEvidence.length === 0,
+    `Abgedeckt: ${durationProjectionEvidenceKeys.size - uncoveredDurationProjectionEvidence.length}/${durationProjectionEvidenceKeys.size}; offen: ${uncoveredDurationProjectionEvidence.slice(0, 8).map(([goalId, durationModel, grade]) => `${durationModel} J${grade} ${goalId}`).join('; ') || '-'}`,
+  ),
+]
+const mapping4Complete = mapping3Complete && mapping4Checks.every((check) => check.passed)
 
 const pipelineSteps: PipelineStep[] = [
   {
@@ -1451,22 +1758,45 @@ const pipelineSteps: PipelineStep[] = [
     dependsOn: ['MAPPING-1', 'MAPPING-2'],
     checks: mapping3Checks,
   },
+  {
+    id: 'MAPPING-4',
+    label: 'G8/G9-Jahrgangsprojektion in SkillPilot abgedeckt',
+    status: mapping3Complete ? (mapping4Complete ? 'complete' : 'incomplete') : 'blocked',
+    dependsOn: ['MAPPING-1', 'MAPPING-2', 'MAPPING-3'],
+    checks: mapping4Checks,
+  },
 ]
 
 const output = {
   schemaVersion: 1,
-  extractionId: 'DE-HE-MATHEMATIK-SEKI-KC-G9',
+  extractionId: 'DE-HE-MATHEMATIK-SEKI-KC-G8-G9',
   sourceLandscapeId,
   jurisdiction: 'DE-HE',
   subject: 'Mathematik',
   stage: 'SekI',
+  durationModels: ['G8', 'G9'],
   sourceDocument: sourceDocuments[0],
   sourceDocuments,
   method: {
-    passageExtraction: 'pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; Leitfaden passages document the processing policy.',
-    sourceGoalExtraction: 'extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G9 topic lines.',
+    passageExtraction: 'pdftotext -layout; KC 7.3 content-field cells are persisted as goal-bearing original passages; G8 topic blocks 5G.1-9G.3 and G9 topic blocks 5.1-10.5 are extracted from verbindliche Unterrichtsinhalte; Leitfaden passages document the processing policy.',
+    sourceGoalExtraction: 'extracts one source goal per literal KC 7.3 content focus, one source goal per KC 7.1/7.2/6 competency expectation bullet, and granular source goals from the verbindliche G8/G9 topic lines.',
+    projectionAudit: 'derives canonical-duration-grade evidence from G8/G9 source goals and M3 mappings, then checks that each evidence link is represented by authored year structure or duration-specific goalPlacements.',
   },
-  expectedTopicCodes: [...expectedKcTopicCodes, ...expectedG9TopicCodes],
+  expectedTopicCodes: [...expectedKcTopicCodes, ...expectedG8TopicCodes, ...expectedG9TopicCodes],
+  durationProjectionAudit: {
+    evidenceLinks: durationProjectionEvidenceKeys.size,
+    evidenceByDuration: durationProjectionEvidenceByDuration,
+    canonicalGoalsWithDurationEvidence: durationProjectionGradeEvidenceByCanonicalGoal.size,
+    canonicalGoalsWithDifferentG8G9Evidence: durationDifferentCanonicalGoalIds.length,
+    coveredEvidenceLinks: durationProjectionEvidenceKeys.size - uncoveredDurationProjectionEvidence.length,
+    uncoveredEvidenceLinks: uncoveredDurationProjectionEvidence.length,
+    uncoveredSamples: uncoveredDurationProjectionEvidence.slice(0, 25).map(([canonicalGoalId, durationModel, grade]) => ({
+      canonicalGoalId,
+      title: canonicalGoalById.get(canonicalGoalId)?.title,
+      durationModel,
+      grade,
+    })),
+  },
   pipelineStatus: {
     version: 1,
     currentStep: pipelineSteps.find((step) => step.status !== 'complete')?.id ?? '',

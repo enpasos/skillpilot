@@ -32,17 +32,19 @@ Steps:
 1. `npm ci` (in `app/`)
 2. `npm run validate:graph`
 3. `npm run validate:view-filters`
-4. `npm run validate:composition-views`
-5. `npm run quality:memory-card-review:check:all`
-6. `python scripts/validate_schemas.py`
-7. `python scripts/validate_goal_ids_uuid.py`
-8. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
-9. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-10. `python scripts/validate_chemistry_exam_pipeline.py`
-11. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-12. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-13. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-14. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+4. `npm run check:he-math-duration-projection`
+5. `npm run quality:source-coverage-audit:check`
+6. `npm run validate:composition-views`
+7. `npm run quality:memory-card-review:check:all`
+8. `python scripts/validate_schemas.py`
+9. `python scripts/validate_goal_ids_uuid.py`
+10. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
+11. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
+12. `python scripts/validate_chemistry_exam_pipeline.py`
+13. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+14. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+15. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+16. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -59,6 +61,8 @@ Current scope note:
 
 - this job validates the full authored landscapes as committed
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
+- it additionally enforces the Hessen Mathematik Sek-I G8/G9 duration projection via `check:he-math-duration-projection`; the check fails if G8/G9 evidence is missing, no G8/G9 differences are detected, or any canonical-duration-grade evidence link is not represented by authored year structure or duration-specific `goalPlacements`
+- it additionally enforces visible curriculum source coverage for the canonical Mathematik/Physik projections via `quality:source-coverage-audit:check`; global missing source-backed goals may remain as non-visible rollout backlog, but visible atomic goals must have direct source/mapping evidence or explicitly accepted surrogate evidence
 - it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
 - it additionally enforces all configured memory-card review ledgers via `quality:memory-card-review:check:all`; in the dashboard, missing `CQR-302` review configuration blocks `M6`, while `M5` remains the core curriculum QA level
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
@@ -101,6 +105,6 @@ bash run_ci.sh
 
 This runs:
 
-1. app checks (`validate:graph`, `validate:view-filters`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
+1. app checks (`validate:graph`, `validate:view-filters`, `check:he-math-duration-projection`, `quality:source-coverage-audit:check`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
 2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_chemistry_exam_pipeline.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)
