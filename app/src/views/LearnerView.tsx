@@ -432,25 +432,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
-  const learnerScopeBadges = useMemo(() => {
-    if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) return []
-
-    const rootConfig = personalConfig[rootLandscapeId]
-    const landscapeConfig = personalConfig[landscapeId]
-    const jurisdictionFilter = rootConfig?.filterId ?? effectiveActiveFilter
-    const durationModel = normalizeDurationModel(rootConfig?.durationModel ?? landscapeConfig?.durationModel)
-      ?? (rootConfig || landscapeConfig ? DEFAULT_DURATION_MODEL : null)
-    const badges: string[] = []
-
-    if (jurisdictionFilter && !isWildcardFilter(jurisdictionFilter)) {
-      badges.push(formatFilterDisplayLabel(jurisdictionFilter, localizedLanguage))
-    }
-    if (durationModel) {
-      badges.push(durationModel)
-    }
-
-    return badges
-  }, [effectiveActiveFilter, landscapeId, localizedLanguage, personalConfig, rootLandscapeId])
   const learnerVisibleChildrenByParent = useMemo(
     () => {
       if (currentLandscapeHasMatchedCompositionView) {
@@ -2190,18 +2171,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </button>
               </ProgressPopover>
             </div>
-            {learnerScopeBadges.length > 0 && (
-              <div className="mt-2 flex flex-wrap gap-1">
-                {learnerScopeBadges.map((badge) => (
-                  <span
-                    key={badge}
-                    className="rounded border border-border-color bg-input-bg px-1.5 py-0.5 text-[10px] font-semibold text-text-secondary"
-                  >
-                    {badge}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
           <div className="flex items-center gap-1 shrink-0">
 
