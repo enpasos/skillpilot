@@ -4,6 +4,8 @@ This is the single source of truth for algorithmic graph validation in CI.
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Filter-projection validator: `app/scripts/validateViewFilters.ts`
 - Filter-projection CI entrypoint: `npm run validate:view-filters` in `.github/workflows/ci.yml` (`graph-validation` job)
+- Hessen Mathematik G8/G9 duration-projection validator: `app/scripts/reportHeMathDurationProjection.ts --check`
+- Hessen Mathematik G8/G9 CI entrypoint: `npm run check:he-math-duration-projection` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Composition-view validator: `app/scripts/validateCompositionViews.ts`
 - Composition-view CI entrypoint: `npm run validate:composition-views` in `.github/workflows/ci.yml` (`graph-validation` job)
 - Hessen Oberstufe archive-boundary validator: `scripts/validate_hessen_upper_secondary_archive_paths.py`
@@ -80,6 +82,7 @@ These checks are already implemented and treated as `error`:
 - Didactic quality checks (sequencing quality, granularity, redundancy of meanings, etc.) remain part of manual QA (`curricula/QA/*`).
 - Learner-state semantics from the concept spec such as atomic mastery, frontier computation, and optimistic/pessimistic filter evaluation are currently **not** validated in CI.
 - Projected filtered learner graphs derived from compiled `applicability` are now validated by the separate `validate:view-filters` path.
+- Hessen Mathematik Sek-I G8/G9 duration-model projection is validated by `check:he-math-duration-projection`; it derives canonical-duration-grade evidence from the Hessen G8/G9 source extraction plus M3 mapping review, then requires every evidence link to be represented by authored year structure or duration-specific `goalPlacements`.
 - Explicit learner-facing composition views under `curricula/DE/Gymnasium/composition-views/` are validated by the separate `validate:composition-views` path.
 - The current CI enforcement scope for `validate:view-filters` covers the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
 - Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.

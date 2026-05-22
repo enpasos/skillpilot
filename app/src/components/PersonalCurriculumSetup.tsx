@@ -9,6 +9,7 @@ import {
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
     getGlobalStageScopeOptions,
 } from '../utils/personalCurriculumStageScope'
+import { DEFAULT_DURATION_MODEL, getDurationModelOptions, normalizeDurationModel } from '../utils/durationModel'
 import {
     formatJurisdictionScopedTitle,
     getDisplayCourseProfileFilters,
@@ -28,6 +29,7 @@ interface PersonalCurriculumConfig {
     [landscapeId: string]: {
         selected: boolean
         filterId?: string
+        durationModel?: string
     }
 }
 
@@ -105,7 +107,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             const defaultFilterId = l.filters && l.filters.length > 0 ? l.filters[0].id : undefined
             initial[l.landscapeId] = {
                 selected: existing?.selected ?? defaultSelected,
-                ...(existing?.filterId ? { filterId: existing.filterId } : defaultFilterId ? { filterId: defaultFilterId } : {})
+                ...(existing?.filterId ? { filterId: existing.filterId } : defaultFilterId ? { filterId: defaultFilterId } : {}),
+                ...(existing?.durationModel ? { durationModel: existing.durationModel } : {})
             }
         })
         Object.entries(initialConfig).forEach(([landscapeId, value]) => {
@@ -114,7 +117,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
         })
         if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
-            return applyDefaultGlobalStageScope(initial).config
+            const stageScoped = applyDefaultGlobalStageScope(initial).config
+            stageScoped[rootLandscapeId] = {
+                ...stageScoped[rootLandscapeId],
+                selected: stageScoped[rootLandscapeId]?.selected ?? true,
+                durationModel: normalizeDurationModel(stageScoped[rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL,
+            }
+            return stageScoped
         }
         return initial
     }, [availableLandscapes, initialConfig, rootLandscapeId])
@@ -141,6 +150,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [isApplying, setIsApplying] = useState(false)
     const stageScopeOptions = React.useMemo(
         () => getGlobalStageScopeOptions(localizedLanguage),
+        [localizedLanguage],
+    )
+    const durationModelOptions = React.useMemo(
+        () => getDurationModelOptions(localizedLanguage),
         [localizedLanguage],
     )
     const currentLandscape = availableLandscapes.find((landscape) => landscape.landscapeId === currentLandscapeId)
@@ -209,6 +222,18 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
         }
         setConfig(next)
+    }
+
+    const setDurationModel = (landscapeId: string, durationModel: string) => {
+        const normalizedDurationModel = normalizeDurationModel(durationModel) ?? DEFAULT_DURATION_MODEL
+        setConfig(prev => ({
+            ...prev,
+            [landscapeId]: {
+                ...prev[landscapeId],
+                selected: prev[landscapeId]?.selected ?? true,
+                durationModel: normalizedDurationModel,
+            },
+        }))
     }
 
     const toggleExpand = (landscapeId: string) => {
@@ -283,6 +308,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const globalStageSelection = getGlobalStageScopeSelection(config)
         const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        const shouldShowDurationModelScope = shouldShowGlobalStageScope && globalStageSelection.sek1Selected
+        const currentDurationModel = normalizeDurationModel(config[landscape.landscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL
         const effectiveFilters = getDisplayCourseProfileFilters(landscape.filters, localizedLanguage)
         const displayFilters = isRoot
             ? getDisplayFiltersForSelection(effectiveFilters, localizedLanguage)
@@ -375,6 +402,35 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                         </label>
                                     )
                                 })}
+                            </>
+                        )}
+                        {shouldShowDurationModelScope && (
+                            <>
+                                <div className="mt-4 mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                    {setupCopy.durationModelLabel}
+                                </div>
+                                <p className="mb-2 text-xs text-text-secondary">
+                                    {setupCopy.durationModelHint}
+                                </p>
+                                {durationModelOptions.map(option => (
+                                    <label
+                                        key={option.id}
+                                        className={`flex items-start gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${currentDurationModel === option.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
+                                            }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name={`duration-${landscape.landscapeId}`}
+                                            checked={currentDurationModel === option.id}
+                                            onChange={() => setDurationModel(landscape.landscapeId, option.id)}
+                                            className="mt-0.5 w-3.5 h-3.5 border-border-color bg-input-bg text-sky-500 focus:ring-sky-500 focus:ring-offset-sidebar-bg"
+                                        />
+                                        <span className="flex flex-col">
+                                            <span className="text-sm font-medium">{option.label}</span>
+                                            <span className="text-xs text-text-secondary">{option.description}</span>
+                                        </span>
+                                    </label>
+                                ))}
                             </>
                         )}
                     </div>

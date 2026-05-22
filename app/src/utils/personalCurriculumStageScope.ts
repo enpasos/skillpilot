@@ -1,4 +1,5 @@
 import type { UiGoal } from '../goalTypes'
+import { isDurationModelFilterId } from './durationModel'
 
 export const GLOBAL_STAGE_SCOPE_CONFIG_IDS = {
   sek1: '__skillpilot_stage_scope_sek1__',
@@ -30,7 +31,7 @@ export const getGlobalStageScopeOptions = (language: 'de' | 'en') =>
     label: formatGlobalStageScopeLabel(option.id, language),
   }))
 
-type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string }>
+type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
 
 const normalizeComparableText = (value?: string) =>
   (value ?? '').trim().toUpperCase()
@@ -80,6 +81,8 @@ export const isCourseProfileFilterId = (filterId?: string) => {
   const normalized = (filterId ?? '').trim().toUpperCase()
   return normalized === 'GK' || normalized === 'LK' || normalized === 'ALL' || normalized === 'GK+LK'
 }
+
+export { isDurationModelFilterId }
 
 export const getGlobalStageScopeSelection = (config: PersonalCurriculumConfigLike) => ({
   sek1Selected: config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected ?? true,

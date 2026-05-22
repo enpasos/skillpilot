@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-17T10:48:25.287Z",
+  "generatedAt": "2026-05-21T18:28:27.990Z",
   "generatedBy": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
   "evidencePolicy": {
     "sourceBackedEvidenceKinds": [
@@ -21,19 +21,33 @@
       "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
       "title": "Mathematik (Gymnasium, DE)",
       "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
-      "totalAtomicGoals": 825,
+      "totalAtomicGoals": 750,
+      "summary": {
+        "jurisdictions": 16,
+        "coveredJurisdictions": 13,
+        "partialJurisdictions": 3,
+        "errorJurisdictions": 0,
+        "coveredViews": 16,
+        "partialViews": 0,
+        "errorViews": 0,
+        "unsupportedVisibleAtomicGoals": 0,
+        "nonVisibleMissingSourceBackedAtomicGoals": 221
+      },
       "jurisdictions": [
         {
           "jurisdiction": "DE-BW",
           "labelDe": "Baden-Württemberg",
           "labelEn": "Baden-Wuerttemberg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 632,
+          "partialSourceLinkedAtomicGoals": 559,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -44,10 +58,13 @@
           "labelDe": "Hessen",
           "labelEn": "Hesse",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 0,
           "projectionWarnings": 0,
@@ -59,32 +76,19 @@
           "jurisdiction": "DE-BY",
           "labelDe": "Bayern",
           "labelEn": "Bavaria",
-          "status": "error",
-          "sourceBackedAtomicGoals": 567,
-          "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 258,
-          "visibleAtomicGoals": 600,
-          "unsupportedAssignedAtomicGoals": 33,
-          "partialSourceLinkedAtomicGoals": 366,
+          "status": "partial",
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 585,
+          "surrogateBackedAtomicGoals": 32,
+          "missingSourceBackedAtomicGoals": 165,
+          "visibleAtomicGoals": 585,
+          "visibleCoveredAtomicGoals": 585,
+          "nonVisibleMissingSourceBackedAtomicGoals": 165,
+          "unsupportedAssignedAtomicGoals": 0,
+          "partialSourceLinkedAtomicGoals": 353,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
-            {
-              "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
-              "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen"
-            },
-            {
-              "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
-              "title": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben"
-            },
-            {
-              "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
-              "title": "Parallele und senkrechte Geraden konstruieren"
-            },
-            {
-              "goalId": "cba4cad7-926d-5035-a7dd-d450afccccb3",
-              "title": "Halbierende Geraden mit Geodreieck und Zirkel konstruieren"
-            },
             {
               "goalId": "314854a0-4e97-462e-9486-9fd83652e91d",
               "title": "Taschenrechner situationsgerecht nutzen"
@@ -108,10 +112,6 @@
             {
               "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
               "title": "Umfang und Flächeninhalt von Kreisen und Kreisteilen berechnen"
-            },
-            {
-              "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
-              "title": "Einfache Zinsrechnung im Prozentkontext anwenden"
             },
             {
               "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
@@ -166,10 +166,6 @@
               "title": "Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen"
             },
             {
-              "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
-              "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen"
-            },
-            {
               "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
               "title": "Besondere Linien in Dreiecken beschreiben"
             },
@@ -180,14 +176,6 @@
             {
               "goalId": "e6eb42c7-454f-49bf-b598-64d2935d2735",
               "title": "Lineare Gleichungen und Ungleichungen lösen"
-            },
-            {
-              "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
-              "title": "Kreisbeziehungen am Kreis begründen und nutzen"
-            },
-            {
-              "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
-              "title": "Satz des Thales begründen und anwenden"
             },
             {
               "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
@@ -202,64 +190,16 @@
               "title": "Satz des Pythagoras in Konstruktionen und geometrischen Begründungen nutzen"
             },
             {
-              "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-              "title": "Warum Mathematik? – Denken, Muster & Zukunft"
-            },
-            {
-              "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
-              "title": "Annahmen und Begriffe klären"
-            },
-            {
-              "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
-              "title": "Plausibilität mit Beispielen testen"
-            },
-            {
-              "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
-              "title": "Geltungsbereich bestimmen"
-            },
-            {
-              "goalId": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
-              "title": "Begründen oder widerlegen"
-            },
-            {
-              "goalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
-              "title": "Implikation und Äquivalenz unterscheiden"
-            },
-            {
-              "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
-              "title": "Kettenschlüsse nachvollziehen und bilden"
-            },
-            {
-              "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
-              "title": "Fehlschlüsse erkennen und korrigieren"
-            },
-            {
               "goalId": "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
               "title": "Quantoren richtig interpretieren"
-            },
-            {
-              "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
-              "title": "Vermutungen mit Beispielen testen"
-            },
-            {
-              "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
-              "title": "Gegenbeispiele konstruieren"
             },
             {
               "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
               "title": "Widerlegung verständlich formulieren"
             },
             {
-              "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
-              "title": "Direkten Beweis führen"
-            },
-            {
               "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
               "title": "Beweis durch Kontraposition"
-            },
-            {
-              "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
-              "title": "Beweis durch Widerspruch"
             },
             {
               "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
@@ -268,18 +208,6 @@
             {
               "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
               "title": "Beweise verständlich präsentieren"
-            },
-            {
-              "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
-              "title": "Beweisstrategien vergleichen und wählen (LK)"
-            },
-            {
-              "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
-              "title": "Argumentation formalisieren und präzisieren (LK)"
-            },
-            {
-              "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
-              "title": "Beweislücken identifizieren (LK)"
             },
             {
               "goalId": "a288231e-e4bb-5c65-b018-b79a51ca87d8",
@@ -598,34 +526,6 @@
               "title": "Stil und Präzision verbessern (LK)"
             },
             {
-              "goalId": "81c8da58-9258-488e-9ab8-48500ab31652",
-              "title": "Übungen Jahrgangsstufe 5"
-            },
-            {
-              "goalId": "7a2a5706-aff4-4fd0-b092-1779d6ecbc1f",
-              "title": "Übungen Jahrgangsstufe 6"
-            },
-            {
-              "goalId": "811d6d09-130e-47b2-aba8-a5c401fe3251",
-              "title": "Übungen Jahrgangsstufe 7"
-            },
-            {
-              "goalId": "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
-              "title": "Übungen Jahrgangsstufe 8"
-            },
-            {
-              "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
-              "title": "Übungen Jahrgangsstufe 9"
-            },
-            {
-              "goalId": "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
-              "title": "Übungen Jahrgangsstufe 10"
-            },
-            {
-              "goalId": "30b62966-80d0-45f1-bdd9-b4fb815c7111",
-              "title": "Sek-I-Abschlussaufgaben Mathematik"
-            },
-            {
               "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
               "title": "Parameter in Funktionenscharen deuten"
             },
@@ -730,10 +630,6 @@
               "title": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)"
             },
             {
-              "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
-              "title": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen"
-            },
-            {
               "goalId": "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
               "title": "Stammfunktionen durch Ableiten nachweisen"
             },
@@ -782,40 +678,12 @@
               "title": "Differenzialgleichungen zweiter Ordnung untersuchen (LK)"
             },
             {
-              "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
-              "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)"
-            },
-            {
-              "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
-              "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen"
-            },
-            {
-              "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
-              "title": "Lagebeziehungen von Geraden im Raum untersuchen"
-            },
-            {
-              "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-              "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)"
-            },
-            {
-              "goalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
-              "title": "Schnittpunkt von Gerade und Ebene berechnen"
-            },
-            {
               "goalId": "baf7276f-60a0-4d96-b959-d63acfb929de",
               "title": "Schnittpunkte von Geraden mit Ebenen berechnen"
             },
             {
               "goalId": "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
               "title": "Schnittpunkte von Geraden und Ebenen bestimmen und deuten"
-            },
-            {
-              "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
-              "title": "Schnittgerade zweier Ebenen bestimmen (LK)"
-            },
-            {
-              "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
-              "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)"
             },
             {
               "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
@@ -870,228 +738,8 @@
               "title": "Fixpunkte linearer Abbildungen bestimmen (LK)"
             },
             {
-              "goalId": "57c6506d-5412-5dc9-9d41-32d860f02a08",
-              "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "3a2d5b64-3818-5d8a-b230-c2848aa75b2b",
-              "title": "A2 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "083079c3-bd26-5404-bd6a-7ec6cd9c0b43",
-              "title": "A3 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4eaf7b88-ca73-537c-8067-029a7b1116fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "81798ff9-cba0-5962-a95f-f930b543d606",
-              "title": "A5 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "8c12d84a-beff-5dbe-9a79-ae87462b903d",
-              "title": "A6 (Stochastik, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "fb48b8f8-1025-55bf-8ad4-4c6d6b538ea4",
-              "title": "A7 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4a906a0c-44eb-559a-99a7-9fc01b90409a",
-              "title": "A8 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4e0291cf-c322-5f4d-a9d2-53a5fb40e45e",
-              "title": "A9 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "0c36723f-0de5-5bdb-8f07-3e67405c855e",
-              "title": "A10 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "68a262fc-43f4-5d23-af30-853870bfd45b",
-              "title": "B1 (Analysis – \"Die Hängebrücke\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
-              "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
-              "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "6eb917e6-a204-5150-833f-a4455c8a05b0",
-              "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "65cc2ab6-483e-5b2f-a77c-2f6c987439e8",
-              "title": "A1 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "629b1ce0-b604-594a-8113-8e0af351dbb1",
-              "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)"
-            },
-            {
-              "goalId": "0c3cd465-ea5e-51e5-bec5-24298bc2a1fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "f85d225d-9441-5479-b798-661e3ae9bdfa",
-              "title": "A3 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "fcb905ce-1276-5626-8c60-de0f035a9404",
-              "title": "A5 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "87ce54e8-8d6d-5ebb-bae4-018bfb079b39",
-              "title": "A6 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "341630b3-0268-5371-89d3-9fb793bfcc32",
-              "title": "A7 (Lineare Algebra, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "5c56c1ee-5440-5455-a9f4-f3fd05ec4dd8",
-              "title": "A8 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "64a8a44d-d45b-5296-8123-834b4f88d6da",
-              "title": "A9 (Stochastik, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "53de0639-c08b-53dc-8f70-9b519b7ecbbd",
-              "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)"
-            },
-            {
-              "goalId": "377e1f12-c134-50bb-a0a8-d3536cfee1ef",
-              "title": "B2 (Analysis – \"Der Bremstest\", 25 BE)"
-            },
-            {
-              "goalId": "3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39",
-              "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)"
-            },
-            {
-              "goalId": "c2f6b981-f832-52ab-aa20-5e816eb33e64",
-              "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)"
-            },
-            {
-              "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
-              "title": "Lernkarten - Analysis-Kernregeln"
-            },
-            {
-              "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
-              "title": "Lernkarten - Lineare Algebra und Analytische Geometrie"
-            },
-            {
-              "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
-              "title": "Lernkarten - Stochastik-Kernbegriffe"
-            },
-            {
-              "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
-              "title": "Lernkarten - Komplexe Zahlen und Parameter"
-            },
-            {
-              "goalId": "6420e4be-fcb1-537a-8367-206431e5b14e",
-              "title": "Integralmodelle in Sachkontexten anwenden"
-            },
-            {
-              "goalId": "5886c6e8-2bea-5401-a834-9bd621b04bda",
-              "title": "Wachstums- und Bestandsmodelle vertiefen"
-            },
-            {
-              "goalId": "226e5c66-b5ce-5b58-a11c-7ed64feadcc1",
-              "title": "Integrationsmethoden gezielt auswählen"
-            },
-            {
-              "goalId": "97fb270f-9ede-5fe0-9a1f-600ffbd65610",
-              "title": "Differenzialgleichungen im Kontext interpretieren"
-            },
-            {
-              "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
-              "title": "Funktionsverknüpfungen und Transformationen untersuchen"
-            },
-            {
-              "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
-              "title": "Raumorientierung und Volumenprobleme lösen"
-            },
-            {
-              "goalId": "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
-              "title": "Übergangsprozesse mit Matrizen modellieren"
-            },
-            {
-              "goalId": "81823f27-0c92-5444-ac4e-32b83169f318",
-              "title": "Lineare Abbildungen mit Matrizen beschreiben"
-            },
-            {
-              "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
-              "title": "Zufallsexperimente und Modelle vergleichen"
-            },
-            {
-              "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
-              "title": "Verteilungen in Kontexten nutzen"
-            },
-            {
-              "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
-              "title": "Hypothesentests durchführen und bewerten"
-            },
-            {
-              "goalId": "3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b",
-              "title": "Intervalle interpretieren und planen"
-            },
-            {
-              "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
-              "title": "Statistische Daten und Verteilungen abgleichen"
-            },
-            {
-              "goalId": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
-              "title": "Funktionenscharen und Ortskurven untersuchen"
-            },
-            {
-              "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
-              "title": "Problemlösestrategien und Argumente entwickeln"
-            },
-            {
-              "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
-              "title": "Komplexe Zahlen sicher anwenden"
-            },
-            {
-              "goalId": "e45a39e5-cc9b-577e-a28d-691319410b9a",
-              "title": "Aussagen präzise begründen und prüfen"
-            },
-            {
-              "goalId": "99b3435a-fdda-5d1b-9681-0ae6d7d5bfcd",
-              "title": "Problemlösestrategien reflektiert wählen"
-            },
-            {
-              "goalId": "3095e125-fbb7-51c6-bf12-ffbb1735b9b7",
-              "title": "Sachkontexte modellieren und Entscheidungen begründen"
-            },
-            {
-              "goalId": "7337049a-c85c-5b94-adaa-81dc93528bf8",
-              "title": "Darstellungen sicher wechseln und bewerten"
-            },
-            {
-              "goalId": "4c319dfd-ebb1-504b-a036-c780e1915900",
-              "title": "Formale Verfahren und Werkzeuge reflektiert einsetzen"
-            },
-            {
-              "goalId": "b9a501c4-9d74-5514-b77b-895980b89b1b",
-              "title": "Mathematische Ergebnisse adressatengerecht kommunizieren"
-            },
-            {
               "goalId": "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
               "title": "Zählverfahren und kombinatorische Überlegungen für Wahrscheinlichkeiten nutzen"
-            },
-            {
-              "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
-              "title": "Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen"
-            },
-            {
-              "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
-              "title": "Parameterabhängige Winkel und Lagebeziehungen untersuchen"
             },
             {
               "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
@@ -1102,150 +750,20 @@
               "title": "Teilungsverhältnisse bei Volumina untersuchen"
             }
           ],
-          "unsupportedAssignedAtomicGoalIds": [
-            {
-              "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
-              "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen"
-            },
-            {
-              "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
-              "title": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben"
-            },
-            {
-              "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
-              "title": "Parallele und senkrechte Geraden konstruieren"
-            },
-            {
-              "goalId": "cba4cad7-926d-5035-a7dd-d450afccccb3",
-              "title": "Halbierende Geraden mit Geodreieck und Zirkel konstruieren"
-            },
-            {
-              "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
-              "title": "Einfache Zinsrechnung im Prozentkontext anwenden"
-            },
-            {
-              "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
-              "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen"
-            },
-            {
-              "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
-              "title": "Kreisbeziehungen am Kreis begründen und nutzen"
-            },
-            {
-              "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
-              "title": "Satz des Thales begründen und anwenden"
-            },
-            {
-              "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-              "title": "Warum Mathematik? – Denken, Muster & Zukunft"
-            },
-            {
-              "goalId": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
-              "title": "Annahmen und Begriffe klären"
-            },
-            {
-              "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
-              "title": "Plausibilität mit Beispielen testen"
-            },
-            {
-              "goalId": "04118376-6dd8-532e-ab38-be22017ba93d",
-              "title": "Geltungsbereich bestimmen"
-            },
-            {
-              "goalId": "3de1d5b0-0a26-5124-b066-92b65a882c5e",
-              "title": "Begründen oder widerlegen"
-            },
-            {
-              "goalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
-              "title": "Implikation und Äquivalenz unterscheiden"
-            },
-            {
-              "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
-              "title": "Kettenschlüsse nachvollziehen und bilden"
-            },
-            {
-              "goalId": "2b497114-66ce-5f38-9b4d-dd17a2f4088f",
-              "title": "Fehlschlüsse erkennen und korrigieren"
-            },
-            {
-              "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
-              "title": "Vermutungen mit Beispielen testen"
-            },
-            {
-              "goalId": "e2d56885-a204-54b4-8717-a46d029ef416",
-              "title": "Gegenbeispiele konstruieren"
-            },
-            {
-              "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
-              "title": "Direkten Beweis führen"
-            },
-            {
-              "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
-              "title": "Beweis durch Widerspruch"
-            },
-            {
-              "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
-              "title": "Beweisstrategien vergleichen und wählen (LK)"
-            },
-            {
-              "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
-              "title": "Argumentation formalisieren und präzisieren (LK)"
-            },
-            {
-              "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
-              "title": "Beweislücken identifizieren (LK)"
-            },
-            {
-              "goalId": "2713980f-75d2-5455-a8cb-bcd3888c49a0",
-              "title": "Analysisgrundlagen in Q1-Anschlussaufgaben nutzen"
-            },
-            {
-              "goalId": "6b2a1c04-8c28-51ff-905b-9c9492a26cc3",
-              "title": "Spezielle Lagen von Geraden und Ebenen begründen (LK)"
-            },
-            {
-              "goalId": "24174bba-a654-5f81-8de3-ca5bd09d9b6f",
-              "title": "Lagebeziehung zwischen Gerade und Ebene untersuchen"
-            },
-            {
-              "goalId": "69beb31d-5d02-4505-9500-3ec81af86f1e",
-              "title": "Lagebeziehungen von Geraden im Raum untersuchen"
-            },
-            {
-              "goalId": "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
-              "title": "Lagebeziehungen von Ebenen sowie von Geraden und Ebenen untersuchen (LK)"
-            },
-            {
-              "goalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
-              "title": "Schnittpunkt von Gerade und Ebene berechnen"
-            },
-            {
-              "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
-              "title": "Schnittgerade zweier Ebenen bestimmen (LK)"
-            },
-            {
-              "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
-              "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)"
-            },
-            {
-              "goalId": "58f613da-03be-5c6a-90a9-ff0958aa7849",
-              "title": "Besondere Lagen von Geraden zu Koordinatenachsen und Koordinatenebenen untersuchen"
-            },
-            {
-              "goalId": "5f90df42-8a71-534d-b995-b8f7dcaf1661",
-              "title": "Parameterabhängige Winkel und Lagebeziehungen untersuchen"
-            }
-          ]
+          "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-BB",
           "labelDe": "Brandenburg",
           "labelEn": "Brandenburg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 0,
           "projectionWarnings": 0,
@@ -1258,10 +776,13 @@
           "labelDe": "Berlin",
           "labelEn": "Berlin",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 0,
           "projectionWarnings": 0,
@@ -1274,12 +795,15 @@
           "labelDe": "Niedersachsen",
           "labelEn": "Lower Saxony",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 758,
+          "partialSourceLinkedAtomicGoals": 689,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -1290,12 +814,15 @@
           "labelDe": "Nordrhein-Westfalen",
           "labelEn": "North Rhine-Westphalia",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 688,
+          "partialSourceLinkedAtomicGoals": 619,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -1305,13 +832,16 @@
           "jurisdiction": "DE-SH",
           "labelDe": "Schleswig-Holstein",
           "labelEn": "Schleswig-Holstein",
-          "status": "error",
-          "sourceBackedAtomicGoals": 733,
-          "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 92,
-          "visibleAtomicGoals": 742,
-          "unsupportedAssignedAtomicGoals": 9,
-          "partialSourceLinkedAtomicGoals": 521,
+          "status": "partial",
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 717,
+          "surrogateBackedAtomicGoals": 9,
+          "missingSourceBackedAtomicGoals": 33,
+          "visibleAtomicGoals": 717,
+          "visibleCoveredAtomicGoals": 717,
+          "nonVisibleMissingSourceBackedAtomicGoals": 33,
+          "unsupportedAssignedAtomicGoals": 0,
+          "partialSourceLinkedAtomicGoals": 499,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
@@ -1350,34 +880,6 @@
             {
               "goalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82",
               "title": "Parabeln als Ortslinien mit Brennpunkt und Leitgerade beschreiben"
-            },
-            {
-              "goalId": "81c8da58-9258-488e-9ab8-48500ab31652",
-              "title": "Übungen Jahrgangsstufe 5"
-            },
-            {
-              "goalId": "7a2a5706-aff4-4fd0-b092-1779d6ecbc1f",
-              "title": "Übungen Jahrgangsstufe 6"
-            },
-            {
-              "goalId": "811d6d09-130e-47b2-aba8-a5c401fe3251",
-              "title": "Übungen Jahrgangsstufe 7"
-            },
-            {
-              "goalId": "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
-              "title": "Übungen Jahrgangsstufe 8"
-            },
-            {
-              "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
-              "title": "Übungen Jahrgangsstufe 9"
-            },
-            {
-              "goalId": "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
-              "title": "Übungen Jahrgangsstufe 10"
-            },
-            {
-              "goalId": "30b62966-80d0-45f1-bdd9-b4fb815c7111",
-              "title": "Sek-I-Abschlussaufgaben Mathematik"
             },
             {
               "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
@@ -1448,178 +950,6 @@
               "title": "Komplexe Zahlen als 2×2-Matrizen darstellen (LK)"
             },
             {
-              "goalId": "57c6506d-5412-5dc9-9d41-32d860f02a08",
-              "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "3a2d5b64-3818-5d8a-b230-c2848aa75b2b",
-              "title": "A2 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "083079c3-bd26-5404-bd6a-7ec6cd9c0b43",
-              "title": "A3 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4eaf7b88-ca73-537c-8067-029a7b1116fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "81798ff9-cba0-5962-a95f-f930b543d606",
-              "title": "A5 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "8c12d84a-beff-5dbe-9a79-ae87462b903d",
-              "title": "A6 (Stochastik, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "fb48b8f8-1025-55bf-8ad4-4c6d6b538ea4",
-              "title": "A7 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4a906a0c-44eb-559a-99a7-9fc01b90409a",
-              "title": "A8 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4e0291cf-c322-5f4d-a9d2-53a5fb40e45e",
-              "title": "A9 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "0c36723f-0de5-5bdb-8f07-3e67405c855e",
-              "title": "A10 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "68a262fc-43f4-5d23-af30-853870bfd45b",
-              "title": "B1 (Analysis – \"Die Hängebrücke\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
-              "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
-              "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "6eb917e6-a204-5150-833f-a4455c8a05b0",
-              "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "65cc2ab6-483e-5b2f-a77c-2f6c987439e8",
-              "title": "A1 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "629b1ce0-b604-594a-8113-8e0af351dbb1",
-              "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)"
-            },
-            {
-              "goalId": "0c3cd465-ea5e-51e5-bec5-24298bc2a1fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "f85d225d-9441-5479-b798-661e3ae9bdfa",
-              "title": "A3 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "fcb905ce-1276-5626-8c60-de0f035a9404",
-              "title": "A5 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "87ce54e8-8d6d-5ebb-bae4-018bfb079b39",
-              "title": "A6 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "341630b3-0268-5371-89d3-9fb793bfcc32",
-              "title": "A7 (Lineare Algebra, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "5c56c1ee-5440-5455-a9f4-f3fd05ec4dd8",
-              "title": "A8 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "64a8a44d-d45b-5296-8123-834b4f88d6da",
-              "title": "A9 (Stochastik, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "53de0639-c08b-53dc-8f70-9b519b7ecbbd",
-              "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)"
-            },
-            {
-              "goalId": "377e1f12-c134-50bb-a0a8-d3536cfee1ef",
-              "title": "B2 (Analysis – \"Der Bremstest\", 25 BE)"
-            },
-            {
-              "goalId": "3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39",
-              "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)"
-            },
-            {
-              "goalId": "c2f6b981-f832-52ab-aa20-5e816eb33e64",
-              "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)"
-            },
-            {
-              "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
-              "title": "Lernkarten - Lineare Algebra und Analytische Geometrie"
-            },
-            {
-              "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
-              "title": "Lernkarten - Stochastik-Kernbegriffe"
-            },
-            {
-              "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
-              "title": "Lernkarten - Komplexe Zahlen und Parameter"
-            },
-            {
-              "goalId": "bd2c5e29-31c6-58bf-9858-d08e9c8a32ad",
-              "title": "Funktionsverknüpfungen und Transformationen untersuchen"
-            },
-            {
-              "goalId": "1878f680-095c-511d-aaed-e98393f7fde9",
-              "title": "Raumorientierung und Volumenprobleme lösen"
-            },
-            {
-              "goalId": "2f8a3a90-717d-5ac1-b54e-facca26e9008",
-              "title": "Geraden, Ebenen und Schnittfiguren analysieren"
-            },
-            {
-              "goalId": "57aff94e-91b8-5cc6-9f85-3f317ecf36ca",
-              "title": "Übergangsprozesse mit Matrizen modellieren"
-            },
-            {
-              "goalId": "81823f27-0c92-5444-ac4e-32b83169f318",
-              "title": "Lineare Abbildungen mit Matrizen beschreiben"
-            },
-            {
-              "goalId": "77940875-ad1e-5272-9002-3ca9db810a18",
-              "title": "Zufallsexperimente und Modelle vergleichen"
-            },
-            {
-              "goalId": "9cf020ee-4f6b-554e-97d6-eca3e2aabe99",
-              "title": "Verteilungen in Kontexten nutzen"
-            },
-            {
-              "goalId": "99e45593-8509-5f51-832e-39ed2a9c10d9",
-              "title": "Hypothesentests durchführen und bewerten"
-            },
-            {
-              "goalId": "3c8c4a64-f6d0-5eaf-b35a-d97c8566ee3b",
-              "title": "Intervalle interpretieren und planen"
-            },
-            {
-              "goalId": "c83dc2d1-f44f-5fae-86ce-280c68c3c55e",
-              "title": "Statistische Daten und Verteilungen abgleichen"
-            },
-            {
-              "goalId": "1969d4dc-2ba6-5c26-ad7c-6e0114ab1fdf",
-              "title": "Funktionenscharen und Ortskurven untersuchen"
-            },
-            {
-              "goalId": "f77b9b40-6afc-5d9e-821e-79903bbbcb94",
-              "title": "Problemlösestrategien und Argumente entwickeln"
-            },
-            {
-              "goalId": "a8525adc-fad3-53f5-953f-213bd37b09e8",
-              "title": "Komplexe Zahlen sicher anwenden"
-            },
-            {
               "goalId": "cea13aa9-f102-5c22-b2f0-81767d000f41",
               "title": "Zahlbereichserweiterung zu komplexen Zahlen begründen (LK)"
             },
@@ -1632,48 +962,12 @@
               "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)"
             },
             {
-              "goalId": "474fe553-d868-50d9-a19b-761e64f21c0d",
-              "title": "Kleinen Satz von Fermat beweisen (LK)"
-            },
-            {
-              "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
-              "title": "RSA-Verfahren mathematisch erläutern und anwenden (LK)"
-            },
-            {
-              "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
-              "title": "Euklidischen Algorithmus anwenden (LK)"
-            },
-            {
-              "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
-              "title": "Erweiterten euklidischen Algorithmus anwenden (LK)"
-            },
-            {
-              "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
-              "title": "Euklidische Algorithmen digital nachvollziehen (LK)"
-            },
-            {
               "goalId": "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
               "title": "Komplexe Zahlen algebraisch multiplizieren"
             },
             {
               "goalId": "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
               "title": "Komplexe Zahlen algebraisch dividieren"
-            },
-            {
-              "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
-              "title": "Modulare Arithmetik nutzen (LK)"
-            },
-            {
-              "goalId": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
-              "title": "Chinesischen Restsatz nutzen (LK)"
-            },
-            {
-              "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
-              "title": "Primzahltests erläutern (LK)"
-            },
-            {
-              "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
-              "title": "Faktorisierungsverfahren erläutern (LK)"
             },
             {
               "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
@@ -1684,63 +978,25 @@
               "title": "Teilungsverhältnisse bei Volumina untersuchen"
             }
           ],
-          "unsupportedAssignedAtomicGoalIds": [
-            {
-              "goalId": "474fe553-d868-50d9-a19b-761e64f21c0d",
-              "title": "Kleinen Satz von Fermat beweisen (LK)"
-            },
-            {
-              "goalId": "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
-              "title": "RSA-Verfahren mathematisch erläutern und anwenden (LK)"
-            },
-            {
-              "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
-              "title": "Euklidischen Algorithmus anwenden (LK)"
-            },
-            {
-              "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
-              "title": "Erweiterten euklidischen Algorithmus anwenden (LK)"
-            },
-            {
-              "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
-              "title": "Euklidische Algorithmen digital nachvollziehen (LK)"
-            },
-            {
-              "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
-              "title": "Modulare Arithmetik nutzen (LK)"
-            },
-            {
-              "goalId": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
-              "title": "Chinesischen Restsatz nutzen (LK)"
-            },
-            {
-              "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
-              "title": "Primzahltests erläutern (LK)"
-            },
-            {
-              "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
-              "title": "Faktorisierungsverfahren erläutern (LK)"
-            }
-          ]
+          "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-HB",
           "labelDe": "Bremen",
           "labelEn": "Bremen",
-          "status": "error",
-          "sourceBackedAtomicGoals": 758,
-          "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 67,
-          "visibleAtomicGoals": 768,
-          "unsupportedAssignedAtomicGoals": 10,
-          "partialSourceLinkedAtomicGoals": 678,
+          "status": "partial",
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 727,
+          "surrogateBackedAtomicGoals": 10,
+          "missingSourceBackedAtomicGoals": 23,
+          "visibleAtomicGoals": 727,
+          "visibleCoveredAtomicGoals": 727,
+          "nonVisibleMissingSourceBackedAtomicGoals": 23,
+          "unsupportedAssignedAtomicGoals": 0,
+          "partialSourceLinkedAtomicGoals": 643,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
-            {
-              "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
-              "title": "Natürliche und ganze Zahlen multiplizieren und dividieren"
-            },
             {
               "goalId": "314854a0-4e97-462e-9486-9fd83652e91d",
               "title": "Taschenrechner situationsgerecht nutzen"
@@ -1758,20 +1014,8 @@
               "title": "Dichte als abgeleitete Größe verwenden"
             },
             {
-              "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
-              "title": "Mit Größen rechnen und Ergebnisse deuten"
-            },
-            {
-              "goalId": "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70",
-              "title": "Einfache proportionale Sachaufgaben mit Dreisatz und Maßstab lösen"
-            },
-            {
               "goalId": "03a87896-088d-4b21-a37b-d0604d784540",
               "title": "Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen"
-            },
-            {
-              "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
-              "title": "Umfang und Flächeninhalt unterscheiden und anwenden"
             },
             {
               "goalId": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
@@ -1794,26 +1038,6 @@
               "title": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben"
             },
             {
-              "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
-              "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln"
-            },
-            {
-              "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
-              "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen"
-            },
-            {
-              "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
-              "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen"
-            },
-            {
-              "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
-              "title": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen"
-            },
-            {
-              "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
-              "title": "Trigonometrische Graphen aus Funktionstermen zeichnen"
-            },
-            {
               "goalId": "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
               "title": "Funktionsterme aus trigonometrischen Graphen bestimmen"
             },
@@ -1834,10 +1058,6 @@
               "title": "Symmetrie ganzrationaler Funktionsgraphen am Term prüfen"
             },
             {
-              "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
-              "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben"
-            },
-            {
               "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
               "title": "Geraden und Strecken im Raum parametrisch beschreiben"
             },
@@ -1848,142 +1068,6 @@
             {
               "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
               "title": "Geradlinige Bewegungen mit Vektoren modellieren"
-            },
-            {
-              "goalId": "81c8da58-9258-488e-9ab8-48500ab31652",
-              "title": "Übungen Jahrgangsstufe 5"
-            },
-            {
-              "goalId": "7a2a5706-aff4-4fd0-b092-1779d6ecbc1f",
-              "title": "Übungen Jahrgangsstufe 6"
-            },
-            {
-              "goalId": "811d6d09-130e-47b2-aba8-a5c401fe3251",
-              "title": "Übungen Jahrgangsstufe 7"
-            },
-            {
-              "goalId": "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
-              "title": "Übungen Jahrgangsstufe 8"
-            },
-            {
-              "goalId": "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
-              "title": "Übungen Jahrgangsstufe 9"
-            },
-            {
-              "goalId": "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8",
-              "title": "Übungen Jahrgangsstufe 10"
-            },
-            {
-              "goalId": "30b62966-80d0-45f1-bdd9-b4fb815c7111",
-              "title": "Sek-I-Abschlussaufgaben Mathematik"
-            },
-            {
-              "goalId": "57c6506d-5412-5dc9-9d41-32d860f02a08",
-              "title": "A1 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "3a2d5b64-3818-5d8a-b230-c2848aa75b2b",
-              "title": "A2 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "083079c3-bd26-5404-bd6a-7ec6cd9c0b43",
-              "title": "A3 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4eaf7b88-ca73-537c-8067-029a7b1116fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "81798ff9-cba0-5962-a95f-f930b543d606",
-              "title": "A5 (Analysis, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "8c12d84a-beff-5dbe-9a79-ae87462b903d",
-              "title": "A6 (Stochastik, Niveau 1, 5 BE) (LK)"
-            },
-            {
-              "goalId": "fb48b8f8-1025-55bf-8ad4-4c6d6b538ea4",
-              "title": "A7 (Analysis, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4a906a0c-44eb-559a-99a7-9fc01b90409a",
-              "title": "A8 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "4e0291cf-c322-5f4d-a9d2-53a5fb40e45e",
-              "title": "A9 (Lineare Algebra, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "0c36723f-0de5-5bdb-8f07-3e67405c855e",
-              "title": "A10 (Stochastik, Niveau 2, 5 BE) (LK)"
-            },
-            {
-              "goalId": "68a262fc-43f4-5d23-af30-853870bfd45b",
-              "title": "B1 (Analysis – \"Die Hängebrücke\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
-              "title": "B2 (Analysis – \"Wirkstoffkonzentration\", 30 BE) (LK)"
-            },
-            {
-              "goalId": "000b2764-c5d9-5521-b39e-fc15a4aa72e2",
-              "title": "C1 (Lineare Algebra – \"Populationsdynamik\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "6eb917e6-a204-5150-833f-a4455c8a05b0",
-              "title": "D1 (Stochastik – \"Viren-Screening & Testgüte\", 20 BE) (LK)"
-            },
-            {
-              "goalId": "65cc2ab6-483e-5b2f-a77c-2f6c987439e8",
-              "title": "A1 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "629b1ce0-b604-594a-8113-8e0af351dbb1",
-              "title": "A2 (Analysis, Niveau 2 - \"Der Deich\", 5 BE)"
-            },
-            {
-              "goalId": "0c3cd465-ea5e-51e5-bec5-24298bc2a1fa",
-              "title": "A4 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "f85d225d-9441-5479-b798-661e3ae9bdfa",
-              "title": "A3 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "fcb905ce-1276-5626-8c60-de0f035a9404",
-              "title": "A5 (Stochastik, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "87ce54e8-8d6d-5ebb-bae4-018bfb079b39",
-              "title": "A6 (Analysis, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "341630b3-0268-5371-89d3-9fb793bfcc32",
-              "title": "A7 (Lineare Algebra, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "5c56c1ee-5440-5455-a9f4-f3fd05ec4dd8",
-              "title": "A8 (Lineare Algebra, Niveau 1, 5 BE)"
-            },
-            {
-              "goalId": "64a8a44d-d45b-5296-8123-834b4f88d6da",
-              "title": "A9 (Stochastik, Niveau 2, 5 BE)"
-            },
-            {
-              "goalId": "53de0639-c08b-53dc-8f70-9b519b7ecbbd",
-              "title": "B1 (Analysis – \"Das Algenwachstum\", 25 BE)"
-            },
-            {
-              "goalId": "377e1f12-c134-50bb-a0a8-d3536cfee1ef",
-              "title": "B2 (Analysis – \"Der Bremstest\", 25 BE)"
-            },
-            {
-              "goalId": "3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39",
-              "title": "C1 (Lineare Algebra - \"Das Solardach\", 15 BE)"
-            },
-            {
-              "goalId": "c2f6b981-f832-52ab-aa20-5e816eb33e64",
-              "title": "D1 (Stochastik – \"Viren-Screening\", 15 BE)"
             },
             {
               "goalId": "4fc77ab5-90aa-4aa7-941f-6c807dde54fe",
@@ -2006,60 +1090,22 @@
               "title": "Substitution zum Lösen von Gleichungen anwenden"
             }
           ],
-          "unsupportedAssignedAtomicGoalIds": [
-            {
-              "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
-              "title": "Natürliche und ganze Zahlen multiplizieren und dividieren"
-            },
-            {
-              "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
-              "title": "Mit Größen rechnen und Ergebnisse deuten"
-            },
-            {
-              "goalId": "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70",
-              "title": "Einfache proportionale Sachaufgaben mit Dreisatz und Maßstab lösen"
-            },
-            {
-              "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
-              "title": "Umfang und Flächeninhalt unterscheiden und anwenden"
-            },
-            {
-              "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
-              "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln"
-            },
-            {
-              "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
-              "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen"
-            },
-            {
-              "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
-              "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen"
-            },
-            {
-              "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
-              "title": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen"
-            },
-            {
-              "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
-              "title": "Trigonometrische Graphen aus Funktionstermen zeichnen"
-            },
-            {
-              "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
-              "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben"
-            }
-          ]
+          "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-HH",
           "labelDe": "Hamburg",
           "labelEn": "Hamburg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 687,
+          "partialSourceLinkedAtomicGoals": 614,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2070,12 +1116,15 @@
           "labelDe": "Mecklenburg-Vorpommern",
           "labelEn": "Mecklenburg-Western Pomerania",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 763,
+          "partialSourceLinkedAtomicGoals": 693,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2086,12 +1135,15 @@
           "labelDe": "Rheinland-Pfalz",
           "labelEn": "Rhineland-Palatinate",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 778,
+          "partialSourceLinkedAtomicGoals": 709,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2102,12 +1154,15 @@
           "labelDe": "Saarland",
           "labelEn": "Saarland",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 772,
+          "partialSourceLinkedAtomicGoals": 703,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2118,12 +1173,15 @@
           "labelDe": "Sachsen",
           "labelEn": "Saxony",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 764,
+          "partialSourceLinkedAtomicGoals": 695,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2134,12 +1192,15 @@
           "labelDe": "Sachsen-Anhalt",
           "labelEn": "Saxony-Anhalt",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 776,
+          "partialSourceLinkedAtomicGoals": 706,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2150,12 +1211,15 @@
           "labelDe": "Thueringen",
           "labelEn": "Thuringia",
           "status": "covered",
-          "sourceBackedAtomicGoals": 825,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 750,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 825,
+          "visibleAtomicGoals": 750,
+          "visibleCoveredAtomicGoals": 750,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 790,
+          "partialSourceLinkedAtomicGoals": 720,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2167,19 +1231,33 @@
       "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
       "title": "Physik (Gymnasium, DE)",
       "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
-      "totalAtomicGoals": 497,
+      "totalAtomicGoals": 425,
+      "summary": {
+        "jurisdictions": 16,
+        "coveredJurisdictions": 15,
+        "partialJurisdictions": 1,
+        "errorJurisdictions": 0,
+        "coveredViews": 16,
+        "partialViews": 0,
+        "errorViews": 0,
+        "unsupportedVisibleAtomicGoals": 0,
+        "nonVisibleMissingSourceBackedAtomicGoals": 56
+      },
       "jurisdictions": [
         {
           "jurisdiction": "DE-BW",
           "labelDe": "Baden-Württemberg",
           "labelEn": "Baden-Wuerttemberg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 420,
+          "partialSourceLinkedAtomicGoals": 349,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -2190,10 +1268,13 @@
           "labelDe": "Hessen",
           "labelEn": "Hesse",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 0,
           "projectionWarnings": 0,
@@ -2205,20 +1286,19 @@
           "jurisdiction": "DE-BY",
           "labelDe": "Bayern",
           "labelEn": "Bavaria",
-          "status": "error",
-          "sourceBackedAtomicGoals": 331,
-          "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 166,
-          "visibleAtomicGoals": 380,
-          "unsupportedAssignedAtomicGoals": 49,
-          "partialSourceLinkedAtomicGoals": 298,
+          "status": "partial",
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 369,
+          "surrogateBackedAtomicGoals": 49,
+          "missingSourceBackedAtomicGoals": 56,
+          "visibleAtomicGoals": 369,
+          "visibleCoveredAtomicGoals": 369,
+          "nonVisibleMissingSourceBackedAtomicGoals": 56,
+          "unsupportedAssignedAtomicGoals": 0,
+          "partialSourceLinkedAtomicGoals": 288,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [
-            {
-              "goalId": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
-              "title": "Temperatur und Wärme unterscheiden"
-            },
             {
               "goalId": "e11b2ee9-e528-4857-9ecd-59bd460fba81",
               "title": "Auftrieb mit dem archimedischen Prinzip erklären"
@@ -2228,48 +1308,8 @@
               "title": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen"
             },
             {
-              "goalId": "a4681378-ade4-4f20-bf77-fb020469510f",
-              "title": "Entstehung und Zerlegung von Farben erklären"
-            },
-            {
-              "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
-              "title": "Einfache Farbwahrnehmung beschreiben"
-            },
-            {
-              "goalId": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
-              "title": "Farben in technischen Anwendungen erklären"
-            },
-            {
-              "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
-              "title": "Schallquellen und Schallempfänger beschreiben"
-            },
-            {
-              "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
-              "title": "Schallausbreitung im Teilchenmodell erklären"
-            },
-            {
-              "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
-              "title": "Kern und Hülle des Atoms qualitativ beschreiben"
-            },
-            {
-              "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
-              "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben"
-            },
-            {
-              "goalId": "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
-              "title": "Einfache Stromkreise aufbauen und Schaltsymbole nutzen"
-            },
-            {
-              "goalId": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
-              "title": "Wirkungen des elektrischen Stroms qualitativ beschreiben"
-            },
-            {
               "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
               "title": "Stromstärke in einfachen Stromkreisen messen"
-            },
-            {
-              "goalId": "e41356c1-968b-435a-af25-b663f080ae5a",
-              "title": "Volumen, Masse und Dichte bestimmen und vergleichen"
             },
             {
               "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
@@ -2284,52 +1324,8 @@
               "title": "Arbeit, einfache Maschinen und Wirkungsgrad qualitativ deuten"
             },
             {
-              "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
-              "title": "Messabweichungen und Fehlerarten unterscheiden"
-            },
-            {
               "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
               "title": "Signifikante Stellen korrekt verwenden"
-            },
-            {
-              "goalId": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
-              "title": "Digitale und analoge Messverfahren vergleichen"
-            },
-            {
-              "goalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
-              "title": "Lernkarten - E-Phase"
-            },
-            {
-              "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
-              "title": "Bewegungsanalyse und freier Fall"
-            },
-            {
-              "goalId": "22561c66-3957-5d55-b07a-25de1f359930",
-              "title": "Newtonsche Axiome und Kräftebilanz"
-            },
-            {
-              "goalId": "72649cf5-893c-5f03-88bd-a2497171d434",
-              "title": "Energie, Impuls und Stöße"
-            },
-            {
-              "goalId": "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
-              "title": "Kreisbewegung, Gravitation und Gasmodell"
-            },
-            {
-              "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
-              "title": "Mehrphasenbewegung und Modellprüfung"
-            },
-            {
-              "goalId": "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
-              "title": "Überhöhte Kurve und Grenzgeschwindigkeiten"
-            },
-            {
-              "goalId": "1b432223-3d59-5586-86a9-2214b4844101",
-              "title": "Orbitaldynamik und Energiebilanz"
-            },
-            {
-              "goalId": "879491c0-7153-570b-91f4-c61d9fe8a143",
-              "title": "Thermodynamik und Rotationssystem"
             },
             {
               "goalId": "7ead007f-e85a-5cb5-b52d-76aae626119a",
@@ -2338,14 +1334,6 @@
             {
               "goalId": "e39c83b0-cb4f-5454-a143-b9a159c99cba",
               "title": "Optimierungen in Sportsituationen physikalisch begründen"
-            },
-            {
-              "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
-              "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)"
-            },
-            {
-              "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
-              "title": "Inertialsysteme und Bezugssysteme"
             },
             {
               "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
@@ -2360,24 +1348,8 @@
               "title": "Schiefen Wurf beschreiben"
             },
             {
-              "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
-              "title": "Reibungskräfte qualitativ verstehen"
-            },
-            {
-              "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
-              "title": "Geradlinige Bewegung mit Reibung modellieren"
-            },
-            {
-              "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
-              "title": "Freier Fall mit Luftreibung und Grenzgeschwindigkeit"
-            },
-            {
               "goalId": "76fd0ab2-079a-516e-a33b-170355336d40",
               "title": "Grenzen der Vorhersagbarkeit (Chaos)"
-            },
-            {
-              "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768",
-              "title": "Massenanziehung qualitativ beschreiben"
             },
             {
               "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
@@ -2400,92 +1372,8 @@
               "title": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)"
             },
             {
-              "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
-              "title": "Ersten Hauptsatz verstehen und mit Formel angeben"
-            },
-            {
-              "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
-              "title": "Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben"
-            },
-            {
-              "goalId": "36c4590c-6032-5a37-b660-f15951dee076",
-              "title": "Entropie E01: Zustandsgrößen vs. Prozessgrößen"
-            },
-            {
-              "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
-              "title": "Entropie E02: Reversibel, irreversibel, quasistatisch"
-            },
-            {
-              "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
-              "title": "Entropie E03: Warum Entropie überhaupt?"
-            },
-            {
-              "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
-              "title": "Entropie E04: Makroskopische Definition (Clausius)"
-            },
-            {
-              "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
-              "title": "Entropie E05: Einheiten und Bedeutung von S"
-            },
-            {
-              "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
-              "title": "Entropie E06: Standardfälle sicher rechnen"
-            },
-            {
-              "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
-              "title": "Entropie E07: Entropieänderung idealer Gase"
-            },
-            {
-              "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
-              "title": "Entropie E08: Entropiebilanz für System + Umgebung"
-            },
-            {
-              "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
-              "title": "Entropie E09: Der 2. Hauptsatz als Entscheidungsregel"
-            },
-            {
-              "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
-              "title": "Entropie E10: Clausius-Ungleichung (Kreisprozess)"
-            },
-            {
-              "goalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
-              "title": "Entropie E11: Entropieproduktion und Irreversibilität"
-            },
-            {
-              "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
-              "title": "Entropie E12: Makrozustand und Mikrozustände"
-            },
-            {
-              "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
-              "title": "Entropie E13: Boltzmann-Formel und Zählmodelle"
-            },
-            {
-              "goalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
-              "title": "Entropie E14: Brücke Makro ↔ Mikro"
-            },
-            {
-              "goalId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
-              "title": "Entropie E15: Wärmekraftmaschinen und Carnot-Grenze"
-            },
-            {
               "goalId": "161502b8-e52d-58d0-8f01-9f777b56d392",
               "title": "Entropie E16: Ordnung, Information und Zeitpfeil"
-            },
-            {
-              "goalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
-              "title": "Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden"
-            },
-            {
-              "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
-              "title": "Energiesparmaßnahmen physikalisch bewerten"
-            },
-            {
-              "goalId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
-              "title": "Zustandsgrößen und ideales Gasgesetz anwenden"
-            },
-            {
-              "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
-              "title": "Isochore, isobare und isotherme Zustandsänderungen berechnen"
             },
             {
               "goalId": "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
@@ -2494,10 +1382,6 @@
             {
               "goalId": "7982cd8e-2151-59e7-858d-c1361c5d249e",
               "title": "Prozessarbeit bei Volumenänderungen bestimmen"
-            },
-            {
-              "goalId": "93ece389-78c5-5141-9ef1-c68bd558306e",
-              "title": "Wärmemengen mit C_V und C_P berechnen"
             },
             {
               "goalId": "23c5382a-4b0f-5715-84b5-cf87b8323152",
@@ -2540,10 +1424,6 @@
               "title": "Kreiselstabilisierung technisch begründen"
             },
             {
-              "goalId": "69f0038a-6e2b-55b5-8ff0-d2ea8852e793",
-              "title": "Lernkarten - Q1"
-            },
-            {
               "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
               "title": "Gaußsches Verfahren anwenden"
             },
@@ -2552,40 +1432,8 @@
               "title": "Drehmoment auf Magnetnadeln und Dipole"
             },
             {
-              "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
-              "title": "Lorentzkraft auf freie Ladungen"
-            },
-            {
               "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
               "title": "Kernspintomografie (MRT)"
-            },
-            {
-              "goalId": "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
-              "title": "Elektrostatik und Potenzial"
-            },
-            {
-              "goalId": "783c1ffe-d983-5c5a-8897-2c88fc64147c",
-              "title": "Kondensator, Feldenergie und Millikan-Versuch"
-            },
-            {
-              "goalId": "5e64eacd-5204-5028-af23-02a43377c56e",
-              "title": "RC-Kreis und Dielektrika modellieren"
-            },
-            {
-              "goalId": "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
-              "title": "Elektronenablenkung im elektrischen Feld"
-            },
-            {
-              "goalId": "ba29e928-a287-5de7-b3fe-5c8c3731363b",
-              "title": "Magnetfeld, Leiterkraft und Lorentzkraft"
-            },
-            {
-              "goalId": "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
-              "title": "Magnetische Messverfahren und Technik"
-            },
-            {
-              "goalId": "341ec911-6624-529c-8799-b5a5113ee907",
-              "title": "Lernkarten - Q3"
             },
             {
               "goalId": "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
@@ -2594,14 +1442,6 @@
             {
               "goalId": "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
               "title": "Compton-Effekt"
-            },
-            {
-              "goalId": "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
-              "title": "Bohr’sche Postulate und Quantisierung"
-            },
-            {
-              "goalId": "c14857d3-634f-4a59-9a3f-8d0638fc5784",
-              "title": "Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für Modelle diskreter Energiezustände interpretieren"
             },
             {
               "goalId": "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
@@ -2614,38 +1454,6 @@
             {
               "goalId": "974a2d1c-2225-519d-965f-7744fe8aafd5",
               "title": "Rydberg-Formel anwenden"
-            },
-            {
-              "goalId": "7e2017d0-e76e-559c-bace-d5d7809a241f",
-              "title": "Spektrum, Polarisation und Glasfaseroptik"
-            },
-            {
-              "goalId": "36d5b915-1cb8-5a05-b64a-5f9497a33d1f",
-              "title": "Interferenz, Beugung und optische Instrumente"
-            },
-            {
-              "goalId": "22bdd29e-00d3-5d43-97d6-8b442b8bfc8c",
-              "title": "Photonenmodell und Fotöffekt"
-            },
-            {
-              "goalId": "2c3f9ee1-fe78-5583-8eb1-fa6369b95905",
-              "title": "Materiewellen und Quantencharakter"
-            },
-            {
-              "goalId": "d0eb16e9-9a52-5237-baca-ad5a14a4c59b",
-              "title": "Absorptionsspektren und Fluoreszenz deuten"
-            },
-            {
-              "goalId": "23530be9-66b6-57d7-9ff8-0c55dd5b1295",
-              "title": "Erweiterte Spektralanalyse und Laser"
-            },
-            {
-              "goalId": "266b6cf8-d49d-5197-862c-9998fcf179a5",
-              "title": "Lernkarten - Q4"
-            },
-            {
-              "goalId": "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
-              "title": "Orts-Impuls-Unbestimmtheit"
             },
             {
               "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
@@ -2664,16 +1472,8 @@
               "title": "GPS und Relativitätstheorie"
             },
             {
-              "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
-              "title": "Vom Sand zum Smartphone: Die digitale Revolution"
-            },
-            {
               "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
               "title": "Supraleitung qualitativ verstehen"
-            },
-            {
-              "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
-              "title": "Bahnformen quantitativ bestimmen"
             },
             {
               "goalId": "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
@@ -2704,160 +1504,12 @@
               "title": "Laserprinzip (Vertiefung: Resonator-Moden)"
             },
             {
-              "goalId": "b585ff81-6332-5d11-ae63-ee6a9928c00d",
-              "title": "Quantenobjekte, Unbestimmtheit und Messproblem"
-            },
-            {
-              "goalId": "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0",
-              "title": "Laser, Tunneleffekt und Quantenanwendungen"
-            },
-            {
-              "goalId": "4daef009-6425-526a-8574-4fa75f28f946",
-              "title": "Radioaktivitaet, Zerfall und Strahlenschutz"
-            },
-            {
-              "goalId": "5a5bc118-4420-5bb7-94c3-67837f2ce0dd",
-              "title": "Kernreaktionen und Kernmodelle"
-            },
-            {
-              "goalId": "15cb40f1-e2d3-5754-9e7b-e8888fe78340",
-              "title": "Standardmodell und Teilchenphysik"
-            },
-            {
-              "goalId": "f532c772-7b6e-59aa-ad65-e0eeafc3767f",
-              "title": "Relativitaet und Raumzeit"
-            },
-            {
-              "goalId": "0f5346d6-de1b-5e38-aaba-68db205e594b",
-              "title": "Festkoerperphysik und Halbleiterelektronik"
-            },
-            {
-              "goalId": "335a75b0-f691-5867-8ce3-3c971d541b9f",
-              "title": "Astrophysik und Kosmologie"
-            },
-            {
-              "goalId": "26c1e946-e858-57ef-a19b-d6bb295c76f4",
-              "title": "Vorschlag A (GK) - Felder und Induktion"
-            },
-            {
-              "goalId": "d8a08f79-befc-5a29-9b74-6481d40c02c3",
-              "title": "Vorschlag B (GK) - Schwingungen und Wellen"
-            },
-            {
-              "goalId": "706703af-b936-5e64-8fe2-ab1128feaf49",
-              "title": "Vorschlag C (GK) - Fotöffekt und Energiestufen"
-            },
-            {
-              "goalId": "d82ac375-2aa8-578a-893a-025e0a27e60f",
-              "title": "Vorschlag D (GK) - Franck-Hertz und Energiestufen"
-            },
-            {
-              "goalId": "86015397-23c4-5ed7-b893-bc619ec961a8",
-              "title": "Vorschlag A (LK) - Adaptive Ladespur (Felder/Induktion)"
-            },
-            {
-              "goalId": "fa333c2f-3150-5831-a649-28615164b2f2",
-              "title": "Vorschlag B (LK) - Aktives Schwingungsmanagement"
-            },
-            {
-              "goalId": "e73de7c5-5f09-5e84-8a95-8d764b422ec3",
-              "title": "Vorschlag C (LK) - Quantenanalyse einer Spektrallampe"
-            },
-            {
-              "goalId": "5733c2c5-be2d-5879-89db-4ed4e5f3eff3",
-              "title": "Vorschlag D (LK) - Röntgen-CT in der Werkstoffprüfung"
-            },
-            {
-              "goalId": "58c4b989-5cd0-5bf2-99d1-a0163fc837a1",
-              "title": "Vorschlag A (GK) - Felder und Induktion im Sensorprüfstand"
-            },
-            {
-              "goalId": "7be8cb95-7174-5beb-94c5-c0e7bb9b1836",
-              "title": "Vorschlag B (GK) - Schwingungsmonitoring und Wellenwege"
-            },
-            {
-              "goalId": "66100588-17bb-58c6-91dd-2349c880dd87",
-              "title": "Vorschlag C (GK) - Compton-Effekt und Energiestufenmodell"
-            },
-            {
-              "goalId": "c3c24489-4907-585f-8b56-2cb069aa6bf2",
-              "title": "Vorschlag D (GK) - Balmer-Auswertung und Teilchenwellen"
-            },
-            {
-              "goalId": "cf892388-6cb4-5981-adf2-7168aeb948b1",
-              "title": "Vorschlag A (LK) - Feldregelung und Transformatorwirkungsgrad"
-            },
-            {
-              "goalId": "99954602-819d-57f3-9c09-737e69f162df",
-              "title": "Vorschlag B (LK) - Schwingungsdiagnostik mit Grenzflächenanalyse"
-            },
-            {
-              "goalId": "422dcfaa-b082-57f0-a987-eec83a63937e",
-              "title": "Vorschlag C (LK) - Quantenanalyse mit Compton und Moseley"
-            },
-            {
-              "goalId": "5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7",
-              "title": "Vorschlag D (LK) - Röntgen-Qualitätssicherung in der Batteriezellprüfung"
-            },
-            {
-              "goalId": "0432a422-401b-5134-bf08-05cfd8c7a366",
-              "title": "Messmethoden und Datenanalyse in Aufgaben anwenden"
-            },
-            {
-              "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
-              "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren"
-            },
-            {
-              "goalId": "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
-              "title": "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen"
-            },
-            {
-              "goalId": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
-              "title": "Grundlagenaufgaben zu Newton, Energie und Impuls lösen"
-            },
-            {
-              "goalId": "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
-              "title": "Gravitation und Weltbilder in GK-Aufgaben verknüpfen"
-            },
-            {
-              "goalId": "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
-              "title": "Gravitation und Weltbilder vertieft herleiten (LK)"
-            },
-            {
-              "goalId": "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
-              "title": "Thermodynamik, Entropie und Klimakontexte bewerten"
-            },
-            {
-              "goalId": "6d25344c-35d7-5853-925d-2bccbaf50630",
-              "title": "Drehbewegungen in Sport und Technik anwenden"
-            },
-            {
               "goalId": "7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
               "title": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben"
             },
             {
               "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
               "title": "Kontinuitätsgleichung, Strömungsgesetze und Reynolds-Zahl einordnen"
-            },
-            {
-              "goalId": "3631c8f7-ff48-57ff-b7ee-8397ff1d166a",
-              "title": "Sek-I-Abschlussaufgaben Physik selbstständig lösen"
-            },
-            {
-              "goalId": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
-              "title": "E-Phase-Klausuraufgaben Physik selbstständig lösen"
-            },
-            {
-              "goalId": "d441ee2f-9230-5751-832b-5b0b5cf14605",
-              "title": "Q1-Klausuraufgaben Physik selbstständig lösen"
-            },
-            {
-              "goalId": "a94f9b05-ecb1-5a13-8364-44c1c98be8e4",
-              "title": "Q3-Klausuraufgaben Physik selbstständig lösen"
-            },
-            {
-              "goalId": "4a58df57-f791-502f-8b8d-9ba155e46035",
-              "title": "Q4-Klausuraufgaben Physik selbstständig lösen"
             },
             {
               "goalId": "1fede37b-6554-5dd3-93d9-08ed1fd09c91",
@@ -2870,226 +1522,24 @@
             {
               "goalId": "1ab5f599-0927-579d-94cc-feecdf3b5603",
               "title": "Bildentstehung bei der Lochkamera qualitativ beschreiben"
-            },
-            {
-              "goalId": "50431e92-eec9-54d6-b437-ea7a51b6f474",
-              "title": "Elektrische Energieversorgung und Geräteangaben einordnen"
-            },
-            {
-              "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
-              "title": "Kernspaltung und Kernfusion qualitativ beschreiben"
             }
           ],
-          "unsupportedAssignedAtomicGoalIds": [
-            {
-              "goalId": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
-              "title": "Temperatur und Wärme unterscheiden"
-            },
-            {
-              "goalId": "a4681378-ade4-4f20-bf77-fb020469510f",
-              "title": "Entstehung und Zerlegung von Farben erklären"
-            },
-            {
-              "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
-              "title": "Einfache Farbwahrnehmung beschreiben"
-            },
-            {
-              "goalId": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
-              "title": "Farben in technischen Anwendungen erklären"
-            },
-            {
-              "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
-              "title": "Schallquellen und Schallempfänger beschreiben"
-            },
-            {
-              "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
-              "title": "Schallausbreitung im Teilchenmodell erklären"
-            },
-            {
-              "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
-              "title": "Kern und Hülle des Atoms qualitativ beschreiben"
-            },
-            {
-              "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
-              "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben"
-            },
-            {
-              "goalId": "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
-              "title": "Einfache Stromkreise aufbauen und Schaltsymbole nutzen"
-            },
-            {
-              "goalId": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
-              "title": "Wirkungen des elektrischen Stroms qualitativ beschreiben"
-            },
-            {
-              "goalId": "e41356c1-968b-435a-af25-b663f080ae5a",
-              "title": "Volumen, Masse und Dichte bestimmen und vergleichen"
-            },
-            {
-              "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
-              "title": "Messabweichungen und Fehlerarten unterscheiden"
-            },
-            {
-              "goalId": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
-              "title": "Digitale und analoge Messverfahren vergleichen"
-            },
-            {
-              "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
-              "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)"
-            },
-            {
-              "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
-              "title": "Inertialsysteme und Bezugssysteme"
-            },
-            {
-              "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
-              "title": "Reibungskräfte qualitativ verstehen"
-            },
-            {
-              "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
-              "title": "Geradlinige Bewegung mit Reibung modellieren"
-            },
-            {
-              "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
-              "title": "Freier Fall mit Luftreibung und Grenzgeschwindigkeit"
-            },
-            {
-              "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768",
-              "title": "Massenanziehung qualitativ beschreiben"
-            },
-            {
-              "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
-              "title": "Ersten Hauptsatz verstehen und mit Formel angeben"
-            },
-            {
-              "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
-              "title": "Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben"
-            },
-            {
-              "goalId": "36c4590c-6032-5a37-b660-f15951dee076",
-              "title": "Entropie E01: Zustandsgrößen vs. Prozessgrößen"
-            },
-            {
-              "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
-              "title": "Entropie E02: Reversibel, irreversibel, quasistatisch"
-            },
-            {
-              "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
-              "title": "Entropie E03: Warum Entropie überhaupt?"
-            },
-            {
-              "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
-              "title": "Entropie E04: Makroskopische Definition (Clausius)"
-            },
-            {
-              "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
-              "title": "Entropie E05: Einheiten und Bedeutung von S"
-            },
-            {
-              "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
-              "title": "Entropie E06: Standardfälle sicher rechnen"
-            },
-            {
-              "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
-              "title": "Entropie E07: Entropieänderung idealer Gase"
-            },
-            {
-              "goalId": "14099861-897c-53f4-8c6c-48d088ee9f01",
-              "title": "Entropie E08: Entropiebilanz für System + Umgebung"
-            },
-            {
-              "goalId": "be921c3b-7db9-50b5-a110-92f31673fc62",
-              "title": "Entropie E09: Der 2. Hauptsatz als Entscheidungsregel"
-            },
-            {
-              "goalId": "81a45dec-37be-529b-89ce-2f3101237293",
-              "title": "Entropie E10: Clausius-Ungleichung (Kreisprozess)"
-            },
-            {
-              "goalId": "616ac6cf-901b-509a-8cbb-bd422ddecf05",
-              "title": "Entropie E11: Entropieproduktion und Irreversibilität"
-            },
-            {
-              "goalId": "b61d233a-1902-526b-a9b5-6b3d553f4013",
-              "title": "Entropie E12: Makrozustand und Mikrozustände"
-            },
-            {
-              "goalId": "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
-              "title": "Entropie E13: Boltzmann-Formel und Zählmodelle"
-            },
-            {
-              "goalId": "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
-              "title": "Entropie E14: Brücke Makro ↔ Mikro"
-            },
-            {
-              "goalId": "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
-              "title": "Entropie E15: Wärmekraftmaschinen und Carnot-Grenze"
-            },
-            {
-              "goalId": "91b20476-12cf-50d6-880a-ea509ffe8a9a",
-              "title": "Zweiten Hauptsatz auf Entropieerzeugung und Zeitpfeil anwenden"
-            },
-            {
-              "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
-              "title": "Energiesparmaßnahmen physikalisch bewerten"
-            },
-            {
-              "goalId": "cd1903a5-d70a-5320-9124-b6b24917ba14",
-              "title": "Zustandsgrößen und ideales Gasgesetz anwenden"
-            },
-            {
-              "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
-              "title": "Isochore, isobare und isotherme Zustandsänderungen berechnen"
-            },
-            {
-              "goalId": "93ece389-78c5-5141-9ef1-c68bd558306e",
-              "title": "Wärmemengen mit C_V und C_P berechnen"
-            },
-            {
-              "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
-              "title": "Lorentzkraft auf freie Ladungen"
-            },
-            {
-              "goalId": "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
-              "title": "Bohr’sche Postulate und Quantisierung"
-            },
-            {
-              "goalId": "c14857d3-634f-4a59-9a3f-8d0638fc5784",
-              "title": "Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für Modelle diskreter Energiezustände interpretieren"
-            },
-            {
-              "goalId": "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
-              "title": "Orts-Impuls-Unbestimmtheit"
-            },
-            {
-              "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
-              "title": "Vom Sand zum Smartphone: Die digitale Revolution"
-            },
-            {
-              "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
-              "title": "Bahnformen quantitativ bestimmen"
-            },
-            {
-              "goalId": "50431e92-eec9-54d6-b437-ea7a51b6f474",
-              "title": "Elektrische Energieversorgung und Geräteangaben einordnen"
-            },
-            {
-              "goalId": "50877233-7abf-54df-b347-6d3224678fc9",
-              "title": "Kernspaltung und Kernfusion qualitativ beschreiben"
-            }
-          ]
+          "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-BB",
           "labelDe": "Brandenburg",
           "labelEn": "Brandenburg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 494,
+          "partialSourceLinkedAtomicGoals": 423,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3100,12 +1550,15 @@
           "labelDe": "Berlin",
           "labelEn": "Berlin",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 494,
+          "partialSourceLinkedAtomicGoals": 423,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3116,12 +1569,15 @@
           "labelDe": "Niedersachsen",
           "labelEn": "Lower Saxony",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 274,
+          "partialSourceLinkedAtomicGoals": 206,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3132,12 +1588,15 @@
           "labelDe": "Nordrhein-Westfalen",
           "labelEn": "North Rhine-Westphalia",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 438,
+          "partialSourceLinkedAtomicGoals": 369,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3148,12 +1607,15 @@
           "labelDe": "Schleswig-Holstein",
           "labelEn": "Schleswig-Holstein",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 326,
+          "partialSourceLinkedAtomicGoals": 256,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3164,12 +1626,15 @@
           "labelDe": "Bremen",
           "labelEn": "Bremen",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 241,
+          "partialSourceLinkedAtomicGoals": 171,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3180,12 +1645,15 @@
           "labelDe": "Hamburg",
           "labelEn": "Hamburg",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 309,
+          "partialSourceLinkedAtomicGoals": 239,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3196,12 +1664,15 @@
           "labelDe": "Mecklenburg-Vorpommern",
           "labelEn": "Mecklenburg-Western Pomerania",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 487,
+          "partialSourceLinkedAtomicGoals": 415,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3212,12 +1683,15 @@
           "labelDe": "Rheinland-Pfalz",
           "labelEn": "Rhineland-Palatinate",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 496,
+          "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3228,12 +1702,15 @@
           "labelDe": "Saarland",
           "labelEn": "Saarland",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 487,
+          "partialSourceLinkedAtomicGoals": 415,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3244,12 +1721,15 @@
           "labelDe": "Sachsen",
           "labelEn": "Saxony",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 420,
+          "partialSourceLinkedAtomicGoals": 349,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3260,12 +1740,15 @@
           "labelDe": "Sachsen-Anhalt",
           "labelEn": "Saxony-Anhalt",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 497,
+          "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],
@@ -3276,12 +1759,15 @@
           "labelDe": "Thueringen",
           "labelEn": "Thuringia",
           "status": "covered",
-          "sourceBackedAtomicGoals": 497,
+          "viewStatus": "covered",
+          "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
           "missingSourceBackedAtomicGoals": 0,
-          "visibleAtomicGoals": 497,
+          "visibleAtomicGoals": 425,
+          "visibleCoveredAtomicGoals": 425,
+          "nonVisibleMissingSourceBackedAtomicGoals": 0,
           "unsupportedAssignedAtomicGoals": 0,
-          "partialSourceLinkedAtomicGoals": 497,
+          "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
           "missingSourceBackedAtomicGoalIds": [],

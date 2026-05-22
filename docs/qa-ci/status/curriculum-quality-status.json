@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v2",
-  "generatedAt": "2026-05-17T21:05:48.979Z",
+  "generatedAt": "2026-05-21T18:33:05.796Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -60,7 +60,7 @@
       "label": "Bundesland atomic coverage",
       "category": "applicability",
       "maturityTarget": "M2",
-      "description": "Bundesland composition-view atoms are source-backed and registered source original goals are fully covered by view atoms."
+      "description": "Bundesland composition-view source-coverage atoms are source-backed and registered source original goals are fully covered by view atoms."
     },
     {
       "id": "CQR-004",
@@ -35980,15 +35980,15 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 9797,
-        "sourceMappedToViewAtomicGoals": 9797,
+        "sourceAtomicGoals": 9972,
+        "sourceMappedToViewAtomicGoals": 9972,
         "unmappedSourceAtomicGoals": 0,
-        "sourceExtractedGoals": 9797,
+        "sourceExtractedGoals": 9972,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 9797,
+        "sourceExtractedAtomicGoals": 9972,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 9797,
-        "sourceFullyCoveredOriginalGoals": 9797,
+        "sourceOriginalGoals": 9972,
+        "sourceFullyCoveredOriginalGoals": 9972,
         "sourcePartiallyCoveredOriginalGoals": 0,
         "sourceUncoveredOriginalGoals": 0,
         "jurisdictions": [
@@ -36035,15 +36035,15 @@
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 742,
-            "sourceMappedToViewAtomicGoals": 742,
+            "sourceAtomicGoals": 917,
+            "sourceMappedToViewAtomicGoals": 917,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 742,
+            "sourceExtractedGoals": 917,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 742,
+            "sourceExtractedAtomicGoals": 917,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 742,
-            "sourceFullyCoveredOriginalGoals": 742,
+            "sourceOriginalGoals": 917,
+            "sourceFullyCoveredOriginalGoals": 917,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
@@ -36727,7 +36727,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "289 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -18%."
+                    "details": "289 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 4%."
                   }
                 ]
               },
@@ -36975,7 +36975,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "289 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -18%."
+                    "details": "289 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 4%."
                   }
                 ]
               },
@@ -37526,7 +37526,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "468 Source-Ziele; Vergleich HE/BW SEKI (278/426) + SEKII (221/316); Median 621; zulässiger 30%-Median-Korridor 435-806; Abweichung vom Median -25%."
+                    "details": "468 Source-Ziele; Vergleich HE/BW SEKI (278) + SEKII (221/316); Median 547; zulässiger 30%-Median-Korridor 383-710; Abweichung vom Median -14%."
                   }
                 ]
               },
@@ -37854,7 +37854,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "256 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -27%."
+                    "details": "256 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median -8%."
                   }
                 ]
               },
@@ -38099,11 +38099,15 @@
           },
           {
             "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
-            "title": "Mathematik Sekundarstufe I (Hessen, G9)",
+            "title": "Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction)",
             "jurisdiction": "DE-HE",
             "subject": "Mathematik",
             "stage": "SekI",
-            "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G9.source-extraction.json",
+            "durationModels": [
+              "G8",
+              "G9"
+            ],
+            "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
             "sourceKind": "source-extraction",
             "sourceDocuments": [
               {
@@ -38111,6 +38115,14 @@
                 "title": "Kerncurriculum Mathematik - Sekundarstufe I (Gymnasium)",
                 "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf",
                 "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-07/kerncurriculum_mathematik_gymnasium.pdf",
+                "available": false,
+                "hasUsableUrl": true
+              },
+              {
+                "key": "G8",
+                "title": "Lehrplan Gymnasium G8 Mathematik",
+                "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf",
+                "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2021-06/g8-mathematik.pdf",
                 "available": false,
                 "hasUsableUrl": true
               },
@@ -38132,23 +38144,29 @@
               }
             ],
             "currentStep": "",
-            "completedSteps": 3,
-            "totalSteps": 3,
-            "sourceGoals": 426,
-            "passages": 72,
-            "mappedSourceGoals": 426,
+            "completedSteps": 4,
+            "totalSteps": 4,
+            "sourceGoals": 601,
+            "passages": 89,
+            "mappedSourceGoals": 601,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 426,
+            "exactMappings": 601,
             "partialMappings": 0,
             "otherMappings": 0,
             "sourceGoalGranularity": {
-              "averageWords": 8.255868544600938,
-              "p90Words": 15,
-              "maxWords": 53,
-              "longGoals": 1,
+              "averageWords": 8.72712146422629,
+              "p90Words": 16,
+              "maxWords": 60,
+              "longGoals": 2,
               "longGoalThreshold": 45,
               "examples": [
+                {
+                  "id": "he-math-seki-g8-9g-2-03-b9e18ec8",
+                  "topicCode": "G8-9G.2",
+                  "words": 60,
+                  "text": "Satz von Cavalieri, anschauliche Begründung $\\sin$ (α), $\\cos$ (α) und $\\tan$ (α) als Längenver- Darstellung im rechtwinkligen Dreieck, Einheitskreis hältnis..."
+                },
                 {
                   "id": "he-math-seki-g9-10-4-01-7e67f8b5",
                   "topicCode": "G9-10.4",
@@ -38156,6 +38174,17 @@
                   "text": "Trigonometrie und trigonometrische $\\sin$ α, $\\cos$ α und $\\tan$ α als Längenverhält- Darstellung im rechtwinkligen Dreieck, Einheitskreis (Winkel von 0o bis..."
                 }
               ]
+            },
+            "durationProjectionAudit": {
+              "evidenceLinks": 598,
+              "evidenceByDuration": {
+                "G8": 262,
+                "G9": 336
+              },
+              "canonicalGoalsWithDurationEvidence": 251,
+              "canonicalGoalsWithDifferentG8G9Evidence": 118,
+              "coveredEvidenceLinks": 598,
+              "uncoveredEvidenceLinks": 0
             },
             "steps": [
               {
@@ -38168,7 +38197,7 @@
                     "id": "source-documents-present",
                     "label": "Alle offiziellen Sek-I-Quelldokumente liegen lokal vor",
                     "passed": true,
-                    "details": "KC: curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf; G9: curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf; LEITFADEN: curricula/DE/Gymnasium/input/HE/lower-secondary/leitfaden_mathematik_sekundarstufe_i.pdf"
+                    "details": "KC: curricula/DE/Gymnasium/input/HE/lower-secondary/kerncurriculum_mathematik_gymnasium.pdf; G8: curricula/DE/Gymnasium/input/HE/lower-secondary/g8-mathematik.pdf; G9: curricula/DE/Gymnasium/input/HE/lower-secondary/g9-mathematik.pdf; LEITFADEN: curricula/DE/Gymnasium/input/HE/lower-secondary/leitfaden_mathematik_sekundarstufe_i.pdf"
                   },
                   {
                     "id": "kc-content-passages-present",
@@ -38181,6 +38210,12 @@
                     "label": "KC 7.1/7.2/6 Kompetenzerwartungen sind als Passagen erfasst",
                     "passed": true,
                     "details": "Erfasst: 18/18; fehlend: -"
+                  },
+                  {
+                    "id": "g8-topic-passages-present",
+                    "label": "G8-Jahrgangsthemen 5G.1 bis 9G.3 sind als Originalpassagen erfasst",
+                    "passed": true,
+                    "details": "Erfasst: 17/17; fehlend: -"
                   },
                   {
                     "id": "g9-topic-passages-present",
@@ -38241,6 +38276,12 @@
                     "details": "Nicht wiedergefunden: -"
                   },
                   {
+                    "id": "g8-source-goals-created",
+                    "label": "Aus G8-Jahrgangspassagen wurden granulare Source-Ziele erzeugt",
+                    "passed": true,
+                    "details": "G8-Source-Ziele: 175; Passagen ohne Source-Ziele: -"
+                  },
+                  {
                     "id": "g9-source-goals-created",
                     "label": "Aus G9-Jahrgangspassagen wurden granulare Source-Ziele erzeugt",
                     "passed": true,
@@ -38297,13 +38338,49 @@
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": true,
-                    "details": "426/426 Source-Ziele reviewed; offen: 0."
+                    "details": "601/601 Source-Ziele reviewed; offen: 0."
                   },
                   {
                     "id": "m3-all-source-goals-covered-by-canonical",
                     "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": true,
-                    "details": "Fachlich abgedeckt: 426/426; Mappings: 426/426; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                    "details": "Fachlich abgedeckt: 601/601; Mappings: 601/601; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-4",
+                "label": "G8/G9-Jahrgangsprojektion in SkillPilot abgedeckt",
+                "status": "complete",
+                "dependsOn": [
+                  "MAPPING-1",
+                  "MAPPING-2",
+                  "MAPPING-3"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-3-complete",
+                    "label": "MAPPING-3 ist vollständig abgeschlossen",
+                    "passed": true,
+                    "details": "G8/G9-Jahrgangsprojektion kann gegen die kanonische SkillPilot-Landschaft geprüft werden."
+                  },
+                  {
+                    "id": "m4-duration-projection-evidence-present",
+                    "label": "G8/G9-Jahrgangsevidenz wurde aus Lehrplan-Mapping abgeleitet",
+                    "passed": true,
+                    "details": "Evidence: 598; G8: 262; G9: 336; Canonical-Ziele: 251"
+                  },
+                  {
+                    "id": "m4-g8-g9-differences-detected",
+                    "label": "G8/G9 erzeugt unterschiedliche Jahrgangsprojektionen",
+                    "passed": true,
+                    "details": "Unterschiedliche G8/G9-Jahrgangsevidenz bei 118 Canonical-Zielen"
+                  },
+                  {
+                    "id": "m4-duration-projection-covered",
+                    "label": "G8/G9-Jahrgangsevidenz ist durch Jahrgangsstruktur oder goalPlacements abgedeckt",
+                    "passed": true,
+                    "details": "Abgedeckt: 598/598; offen: -"
                   }
                 ]
               }
@@ -38339,6 +38416,11 @@
             "exactMappings": 137,
             "partialMappings": 300,
             "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "437 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung.",
+              "status": "accepted"
+            },
             "sourceGoalGranularity": {
               "averageWords": 8.327231121281464,
               "p90Words": 14,
@@ -38417,7 +38499,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "437 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 24%."
+                    "details": "437 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 57%. Kritisch gepruefte Abweichung: 437 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung."
                   }
                 ]
               },
@@ -38840,6 +38922,11 @@
             "exactMappings": 131,
             "partialMappings": 238,
             "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "369 Source-Ziele sind plausibel: Mecklenburg-Vorpommern wird aus zwei amtlichen Plaenen fuer 5/6 und 7-10 extrahiert und enthaelt neben verbindlichen Inhaltsitems auch K1-K6-Prozessbeispiele; die Abweichung zur BW-Baseline folgt der amtlichen Dokumentstruktur.",
+              "status": "accepted"
+            },
             "sourceGoalGranularity": {
               "averageWords": 3.111111111111111,
               "p90Words": 6,
@@ -38918,7 +39005,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "369 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 5%."
+                    "details": "369 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 33%. Kritisch gepruefte Abweichung: 369 Source-Ziele sind plausibel: Mecklenburg-Vorpommern wird aus zwei amtlichen Plaenen fuer 5/6 und 7-10 extrahiert und enthaelt neben verbindlichen Inhaltsitems auch K1-K6-Prozessbeispiele; die Abweichung zur BW-Baseline folgt der amtlichen Dokumentstruktur."
                   }
                 ]
               },
@@ -39212,7 +39299,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "361 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 3%."
+                    "details": "361 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 30%."
                   }
                 ]
               },
@@ -39517,7 +39604,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "207 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -41%. Kritisch gepruefte Abweichung: Der NRW KLP 2019 ist eine kompakte nummerierte KLP-Struktur. Kritisch abgeglichen wurden 2.2 mit 53 Prozesskompetenzerwartungen, 2.3/2.4 mit 113 nummerierten inhaltsbezogenen Kompetenzerwartungen und 41 inhaltlichen Schwerpunkten; alle diese amtlichen Listen sind extrahiert. Die niedrige Zielzahl ist damit fachplanstrukturell plausibel, nicht ein Hinweis auf fehlende Passage-Extraction."
+                    "details": "207 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median -26%."
                   }
                 ]
               },
@@ -39811,7 +39898,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "253 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -28%."
+                    "details": "253 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median -9%."
                   }
                 ]
               },
@@ -40105,7 +40192,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "346 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -2%."
+                    "details": "346 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 24%."
                   }
                 ]
               },
@@ -40500,7 +40587,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "818 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 132%. Kritisch gepruefte Abweichung: Die Saarland-G9-Sek-I-Lehrplaene 2023-2026 sind jahresstufenspezifische Einzeldokumente mit sehr kleinteiligen Kompetenz-Bullets. Die Source-Extraction bildet jedes amtliche Kompetenz-Bullet als einzelnes Source-Ziel ab; die hohe Zielzahl ist deshalb fachplanstrukturell plausibel und nicht eine kuenstliche Duplikation."
+                    "details": "818 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 194%. Kritisch gepruefte Abweichung: Die Saarland-G9-Sek-I-Lehrplaene 2023-2026 sind jahresstufenspezifische Einzeldokumente mit sehr kleinteiligen Kompetenz-Bullets. Die Source-Extraction bildet jedes amtliche Kompetenz-Bullet als einzelnes Source-Ziel ab; die hohe Zielzahl ist deshalb fachplanstrukturell plausibel und nicht eine kuenstliche Duplikation."
                   }
                 ]
               },
@@ -40832,7 +40919,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "327 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median -7%."
+                    "details": "327 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 18%."
                   }
                 ]
               },
@@ -41055,6 +41142,11 @@
             "exactMappings": 137,
             "partialMappings": 287,
             "otherMappings": 0,
+            "sourceGoalCountPeerBaselineReview": {
+              "accepted": true,
+              "details": "424 Source-Ziele sind plausibel: Sachsen-Anhalt wird bewusst zeilennah aus 257 inhaltsbezogenen Kompetenzzeilen und 167 Grundlegende-Wissensbestaende-Zeilen extrahiert; die hohe Zahl ist eine Folge der amtlichen Tabellenstruktur.",
+              "status": "accepted"
+            },
             "sourceGoalGranularity": {
               "averageWords": 6.96933962264151,
               "p90Words": 11,
@@ -41126,7 +41218,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "424 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 20%."
+                    "details": "424 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 53%. Kritisch gepruefte Abweichung: 424 Source-Ziele sind plausibel: Sachsen-Anhalt wird bewusst zeilennah aus 257 inhaltsbezogenen Kompetenzzeilen und 167 Grundlegende-Wissensbestaende-Zeilen extrahiert; die hohe Zahl ist eine Folge der amtlichen Tabellenstruktur."
                   }
                 ]
               },
@@ -41438,7 +41530,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "356 Source-Ziele; Vergleich HE/BW SEKI (278/426); Median 352; zulässiger 30%-Median-Korridor 247-457; Abweichung vom Median 1%."
+                    "details": "356 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 28%."
                   }
                 ]
               },
@@ -41620,10 +41712,10 @@
             "emptySourceJurisdictions": 0,
             "missingReadableSourceInventoryJurisdictions": 0,
             "originalSourceUrlIssues": 0,
-            "sourceExtractedGoals": 9797,
-            "sourceOriginalGoals": 9797,
+            "sourceExtractedGoals": 9972,
+            "sourceOriginalGoals": 9972,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 9797,
+            "sourceExtractedAtomicGoals": 9972,
             "sourceUnregisteredAtomicGoals": 0
           }
         },
@@ -41643,10 +41735,10 @@
             "sourceUnmappedJurisdictions": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "unmappedSourceAtomicGoals": 0,
-            "sourceAtomicGoals": 9797,
-            "sourceMappedToViewAtomicGoals": 9797,
-            "sourceOriginalGoals": 9797,
-            "sourceFullyCoveredOriginalGoals": 9797,
+            "sourceAtomicGoals": 9972,
+            "sourceMappedToViewAtomicGoals": 9972,
+            "sourceOriginalGoals": 9972,
+            "sourceFullyCoveredOriginalGoals": 9972,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "surrogateBackedAtomicGoals": 0,

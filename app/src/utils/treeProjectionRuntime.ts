@@ -1,5 +1,5 @@
 import type { UiGoal } from '../goalTypes'
-import { goalMatchesFilter } from './goalFilters'
+import { goalMatchesFilter, goalMatchesFilters } from './goalFilters'
 import { goalMatchesGlobalStageScope } from './personalCurriculumStageScope'
 
 export type TreeStructureMode = 'all' | 'content' | 'competency'
@@ -34,7 +34,7 @@ export const getAudienceGoalTitle = (
   return title
 }
 
-type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string }>
+type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
 
 export const buildVisibleChildrenMap = (
   allGoals: Map<string, UiGoal>,
@@ -101,7 +101,9 @@ export const buildVisibleChildrenMap = (
         const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
         if (config) {
           if (config.selected !== true) return false
-          if (!goalMatchesFilter(child, config.filterId)) {
+          const effectiveFilters = [config.filterId, config.durationModel]
+            .filter((value): value is string => typeof value === 'string')
+          if (!goalMatchesFilters(child, effectiveFilters)) {
             return false
           }
         } else if (hasPositiveSibling) {

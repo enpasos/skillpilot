@@ -6,6 +6,7 @@ export interface StudentMapping {
 export interface TrainerClassCurriculumConfigEntry {
   selected: boolean
   filterId?: string
+  durationModel?: string
 }
 
 export type TrainerClassCurriculumConfig = Record<string, TrainerClassCurriculumConfigEntry>

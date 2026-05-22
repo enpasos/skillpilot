@@ -8,6 +8,7 @@ type Scope = {
   jurisdiction?: string
   stage?: string
   courseProfile?: string
+  durationModel?: string
 }
 
 type MatchScore = {
@@ -53,6 +54,7 @@ const composeScopeKey = (scope: Scope) => [
   scope.jurisdiction ?? '',
   scope.stage ?? '',
   scope.courseProfile ?? '',
+  scope.durationModel ?? '',
 ].join('|')
 
 const matchStageScope = (viewStage?: string, requestedStage?: string): 'exact' | 'fallback' | 'none' => {
@@ -110,6 +112,7 @@ const formatScope = (scope: Scope) => {
     scope.jurisdiction ?? 'DE-default',
     scope.stage ?? 'stage:∅',
     scope.courseProfile ?? 'course:∅',
+    scope.durationModel ?? 'duration:∅',
   ]
   return parts.join(' | ')
 }

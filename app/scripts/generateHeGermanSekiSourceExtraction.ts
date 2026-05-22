@@ -329,6 +329,7 @@ const sourceGoals = areas.flatMap((area) => {
     tags: [
       'jurisdiction:DE-HE',
       'stage:SekI',
+      'durationModel:G9',
       `grade:${area.grade}`,
       `topic:${area.code}`,
       `area:${area.title}`,
@@ -347,6 +348,7 @@ const extraction = {
   jurisdiction: 'DE-HE',
   subject: 'Deutsch',
   stage: 'SekI',
+  durationModel: 'G9',
   sourceDocument: {
     key: 'HE-G9-DEUTSCH',
     title: 'Lehrplan Deutsch gymnasialer Bildungsgang Hessen, Jahrgangsstufen 5 bis 13',

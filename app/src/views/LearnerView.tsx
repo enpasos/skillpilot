@@ -35,6 +35,7 @@ import {
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
 import { applyDefaultGlobalStageScope } from '../utils/personalCurriculumStageScope'
+import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from '../utils/durationModel'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
@@ -78,7 +79,7 @@ interface LearnerViewProps {
   onLandscapeGoalChange?: (landscapeId: string, goalId: string) => void
 }
 
-type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
 type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
@@ -119,7 +120,13 @@ const normalizePersonalConfig = (
       }
     })
     if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
-      return applyDefaultGlobalStageScope(next).config
+      const stageScoped = applyDefaultGlobalStageScope(next).config
+      stageScoped[rootLandscapeId] = {
+        ...stageScoped[rootLandscapeId],
+        selected: stageScoped[rootLandscapeId]?.selected ?? true,
+        durationModel: normalizeDurationModel(stageScoped[rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL,
+      }
+      return stageScoped
     }
     return next
   }
@@ -149,6 +156,15 @@ const normalizePersonalConfig = (
     const stageScoped = applyDefaultGlobalStageScope(normalized)
     normalized = stageScoped.config
     corrected = corrected || stageScoped.corrected
+    const rootConfig = normalized[rootLandscapeId]
+    if (!normalizeDurationModel(rootConfig?.durationModel)) {
+      normalized[rootLandscapeId] = {
+        ...rootConfig,
+        selected: rootConfig?.selected ?? true,
+        durationModel: DEFAULT_DURATION_MODEL,
+      }
+      corrected = true
+    }
   }
 
   availableLandscapes.forEach((landscape) => {
@@ -210,6 +226,9 @@ const personalCurriculumConfigsEqual = (
       return false
     }
     if ((leftEntry?.filterId ?? '') !== (rightEntry?.filterId ?? '')) {
+      return false
+    }
+    if ((leftEntry?.durationModel ?? '') !== (rightEntry?.durationModel ?? '')) {
       return false
     }
   }
@@ -413,6 +432,25 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
     return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
+  const learnerScopeBadges = useMemo(() => {
+    if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) return []
+
+    const rootConfig = personalConfig[rootLandscapeId]
+    const landscapeConfig = personalConfig[landscapeId]
+    const jurisdictionFilter = rootConfig?.filterId ?? effectiveActiveFilter
+    const durationModel = normalizeDurationModel(rootConfig?.durationModel ?? landscapeConfig?.durationModel)
+      ?? (rootConfig || landscapeConfig ? DEFAULT_DURATION_MODEL : null)
+    const badges: string[] = []
+
+    if (jurisdictionFilter && !isWildcardFilter(jurisdictionFilter)) {
+      badges.push(formatFilterDisplayLabel(jurisdictionFilter, localizedLanguage))
+    }
+    if (durationModel) {
+      badges.push(durationModel)
+    }
+
+    return badges
+  }, [effectiveActiveFilter, landscapeId, localizedLanguage, personalConfig, rootLandscapeId])
   const learnerVisibleChildrenByParent = useMemo(
     () => {
       if (currentLandscapeHasMatchedCompositionView) {
@@ -454,7 +492,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const selectedScopeEntries = Object.entries(personalConfig)
       .filter(([, config]) => config.selected || config.filterId)
       .sort(([left], [right]) => left.localeCompare(right))
-      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}`)
+      .map(([scopeId, config]) => `${scopeId}:${config.selected ? '1' : '0'}:${config.filterId ?? ''}:${config.durationModel ?? ''}`)
 
     return [
       landscapeId,
@@ -2115,9 +2153,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
           <div className="flex-1 min-w-0 mr-2">
             <h2 className="font-bold text-sky-600 dark:text-sky-400 truncate">{t.learner.myGoals}</h2>
-            <div className="text-xs flex items-center gap-2 mt-1">
-              <button
-                className="flex items-center gap-1 font-bold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors"
+              <div className="text-xs flex items-center gap-2 mt-1">
+                <button
+                  className="flex items-center gap-1 font-bold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 transition-colors"
 	                onClick={revealScope}
 	                disabled={plannedGoals.size === 0}
 	                title={plannedGoals.size > 0
@@ -2152,6 +2190,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 </button>
               </ProgressPopover>
             </div>
+            {learnerScopeBadges.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-1">
+                {learnerScopeBadges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="rounded border border-border-color bg-input-bg px-1.5 py-0.5 text-[10px] font-semibold text-text-secondary"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-1 shrink-0">
 

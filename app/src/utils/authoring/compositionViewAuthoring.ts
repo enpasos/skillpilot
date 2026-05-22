@@ -175,7 +175,7 @@ export const compileCompositionView = (
   landscapeUniverseById: Map<string, CanonicalAuthoringLandscape> | null = null,
 ): CompositionCompileResult => {
   const findings: CompositionViewFinding[] = []
-  const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile']
+  const hasScopeDiscriminator = ['jurisdiction', 'stage', 'courseProfile', 'durationModel']
     .some((key) => ((view.scope[key] ?? '') as string).trim())
 
   if (!(view.viewId ?? '').trim()) {
@@ -191,7 +191,7 @@ export const compileCompositionView = (
     findings.push({
       code: 'CPV-001',
       severity: 'error',
-      message: 'Mindestens einer der Scope-Keys jurisdiction, stage oder courseProfile muss gesetzt sein.',
+      message: 'Mindestens einer der Scope-Keys jurisdiction, stage, courseProfile oder durationModel muss gesetzt sein.',
     })
   }
   if (view.rootNodes.length === 0) {

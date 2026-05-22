@@ -114,7 +114,10 @@ public class LearnerService {
             "C2");
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
+    private static final Set<String> DURATION_MODEL_FILTER_IDS = Set.of("G8", "G9");
+    private static final String DEFAULT_DURATION_MODEL_FILTER_ID = "G9";
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
+    private static final String APPLICABILITY_DIMENSION_DURATION_MODEL = "durationModel";
     private static final String HESSEN_JURISDICTION_FILTER_ID = "DE-HE";
     private static final String BAVARIA_JURISDICTION_FILTER_ID = "DE-BY";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
@@ -2110,9 +2113,21 @@ public class LearnerService {
         for (String landscapeId : targetLandscapes) {
             Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(landscapeId, new HashMap<>());
             settings.put("selected", true);
-            if (!effectiveFilters.isEmpty()) {
-                // Apply the first found filter (usually only one, e.g. "LK")
-                settings.put("filterId", effectiveFilters.get(0));
+            String durationModel = effectiveFilters.stream()
+                    .map(this::normalizeFilterId)
+                    .filter(DURATION_MODEL_FILTER_IDS::contains)
+                    .findFirst()
+                    .orElse(null);
+            String primaryFilter = effectiveFilters.stream()
+                    .map(this::normalizeFilterId)
+                    .filter(filter -> filter != null && !DURATION_MODEL_FILTER_IDS.contains(filter))
+                    .findFirst()
+                    .orElse(null);
+            if (primaryFilter != null && !primaryFilter.isBlank()) {
+                settings.put("filterId", primaryFilter);
+            }
+            if (durationModel != null) {
+                settings.put("durationModel", durationModel);
             }
             finalConfig.put(landscapeId, settings);
         }
@@ -3673,6 +3688,8 @@ public class LearnerService {
                 String json = learner.getPersonalCurriculum();
                 if (json != null && !json.isBlank()) {
                     Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(json);
+                    boolean hasCanonicalGymnasiumScope = config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID)
+                            || config.containsKey(curriculumId);
 
                     for (Map<String, Object> landscapeConfig : config.values()) {
                         Object filterObj = landscapeConfig.get("filterId");
@@ -3682,6 +3699,18 @@ public class LearnerService {
                                 activeFilters.add(f);
                             }
                         }
+                        Object durationModelObj = landscapeConfig.get("durationModel");
+                        if (durationModelObj instanceof String) {
+                            String durationModel = normalizeFilterId((String) durationModelObj);
+                            if (DURATION_MODEL_FILTER_IDS.contains(durationModel)
+                                    && !activeFilters.contains(durationModel)) {
+                                activeFilters.add(durationModel);
+                            }
+                        }
+                    }
+                    if (hasCanonicalGymnasiumScope
+                            && activeFilters.stream().noneMatch(DURATION_MODEL_FILTER_IDS::contains)) {
+                        activeFilters.add(DEFAULT_DURATION_MODEL_FILTER_ID);
                     }
                 }
             } catch (Exception e) {
@@ -4496,6 +4525,7 @@ public class LearnerService {
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
 
         String rootFilterId = null;
+        String rootDurationModel = null;
         if (!config.isEmpty()) {
             Map<String, Object> rootConfig = config.get(curriculumId);
             if (rootConfig != null) {
@@ -4503,6 +4533,15 @@ public class LearnerService {
                 if (rootFilterObj instanceof String) {
                     rootFilterId = normalizeFilterId((String) rootFilterObj);
                 }
+                Object rootDurationObj = rootConfig.get("durationModel");
+                if (rootDurationObj instanceof String) {
+                    rootDurationModel = normalizeFilterId((String) rootDurationObj);
+                }
+            }
+            if ((rootDurationModel == null || !DURATION_MODEL_FILTER_IDS.contains(rootDurationModel))
+                    && isCanonicalGymnasiumLandscape(root)
+                    && (config.containsKey(curriculumId) || config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID))) {
+                rootDurationModel = DEFAULT_DURATION_MODEL_FILTER_ID;
             }
         }
 
@@ -4514,6 +4553,7 @@ public class LearnerService {
             // Default to selected if no config exists, or if explicitly selected
             boolean isSelected = true;
             String filterId = null;
+            String durationModel = null;
 
             if (!config.isEmpty()) {
                 Map<String, Object> landscapeConfig = config.get(l.getLandscapeId());
@@ -4525,6 +4565,10 @@ public class LearnerService {
                     Object filterObj = landscapeConfig.get("filterId");
                     if (filterObj instanceof String) {
                         filterId = normalizeFilterId((String) filterObj);
+                    }
+                    Object durationObj = landscapeConfig.get("durationModel");
+                    if (durationObj instanceof String) {
+                        durationModel = normalizeFilterId((String) durationObj);
                     }
                 } else {
                     // If config exists but this landscape is not in it, assume not selected (unless
@@ -4554,6 +4598,15 @@ public class LearnerService {
             if (rootFilterId != null && !rootFilterId.isBlank() && !l.getLandscapeId().equals(curriculumId)
                     && !effectiveFilterIds.contains(rootFilterId)) {
                 effectiveFilterIds.add(rootFilterId);
+            }
+            if (durationModel != null && DURATION_MODEL_FILTER_IDS.contains(durationModel)
+                    && !effectiveFilterIds.contains(durationModel)) {
+                effectiveFilterIds.add(durationModel);
+            }
+            if (rootDurationModel != null && DURATION_MODEL_FILTER_IDS.contains(rootDurationModel)
+                    && !l.getLandscapeId().equals(curriculumId)
+                    && !effectiveFilterIds.contains(rootDurationModel)) {
+                effectiveFilterIds.add(rootDurationModel);
             }
 
             if (l.getGoals() != null) {
@@ -4603,6 +4656,9 @@ public class LearnerService {
         if (isStateFilterId(normalizedFilterId)) {
             return matchesStateFilter(goal, landscape, normalizedFilterId, mappedCanonicalGoalIdsByState,
                     canonicalStateCoverageCache);
+        }
+        if (DURATION_MODEL_FILTER_IDS.contains(normalizedFilterId)) {
+            return matchesDurationModelFilter(goal, normalizedFilterId);
         }
         return matchesTagFilter(goal, normalizedFilterId);
     }
@@ -4709,6 +4765,33 @@ public class LearnerService {
         return false;
     }
 
+    private boolean matchesDurationModelFilter(LearningGoal goal, String filterId) {
+        Boolean explicitApplicabilityMatch = matchesApplicabilityDimension(goal, APPLICABILITY_DIMENSION_DURATION_MODEL,
+                filterId);
+        if (explicitApplicabilityMatch != null) {
+            return explicitApplicabilityMatch.booleanValue();
+        }
+
+        List<String> tags = goal.getTags();
+        if (tags == null || tags.isEmpty()) {
+            return true;
+        }
+
+        String normalizedFilterId = normalizeFilterId(filterId);
+        boolean hasExplicitDurationRestriction = false;
+        for (String tag : tags) {
+            String normalizedTag = normalizeDurationModelTag(tag);
+            if (normalizedTag == null) {
+                continue;
+            }
+            hasExplicitDurationRestriction = true;
+            if (normalizedTag.equals(normalizedFilterId)) {
+                return true;
+            }
+        }
+        return !hasExplicitDurationRestriction;
+    }
+
     private boolean hasCanonicalStateCoverage(String goalId, String stateFilterId,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState,
             Map<String, Boolean> canonicalStateCoverageCache,
@@ -4810,6 +4893,20 @@ public class LearnerService {
         return tags == null || tags.isEmpty() || tags.contains(filterId);
     }
 
+    private String normalizeDurationModelTag(String value) {
+        String normalized = normalizeFilterId(value);
+        if (DURATION_MODEL_FILTER_IDS.contains(normalized)) {
+            return normalized;
+        }
+        if ("DURATIONMODEL:G8".equals(normalized) || "DURATION-MODEL:G8".equals(normalized)) {
+            return "G8";
+        }
+        if ("DURATIONMODEL:G9".equals(normalized) || "DURATION-MODEL:G9".equals(normalized)) {
+            return "G9";
+        }
+        return null;
+    }
+
     private String normalizeBundeslandCode(LearningLandscape landscape) {
         if (landscape == null) {
             return null;
@@ -4827,7 +4924,16 @@ public class LearnerService {
         }
         String normalized = filterId.trim().toUpperCase(Locale.ROOT);
         String normalizedBundesland = BundeslandCodeNormalizer.normalize(normalized);
-        return normalizedBundesland != null ? normalizedBundesland : normalized;
+        if (normalizedBundesland != null) {
+            return normalizedBundesland;
+        }
+        if ("DURATIONMODEL:G8".equals(normalized) || "DURATION-MODEL:G8".equals(normalized)) {
+            return "G8";
+        }
+        if ("DURATIONMODEL:G9".equals(normalized) || "DURATION-MODEL:G9".equals(normalized)) {
+            return "G9";
+        }
+        return normalized;
     }
 
     // Package-private for testing

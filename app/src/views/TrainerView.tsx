@@ -24,6 +24,7 @@ import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
 import { goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
+import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from '../utils/durationModel'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -135,9 +136,17 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (!activeClass?.rootLandscapeId) return undefined
     return activeClass.personalConfig?.[activeClass.rootLandscapeId]?.filterId
   }, [activeClass])
+  const activeClassRootDurationModel = useMemo(() => {
+    if (!activeClass?.rootLandscapeId) return undefined
+    return normalizeDurationModel(activeClass.personalConfig?.[activeClass.rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL
+  }, [activeClass])
   const activeClassLandscapeFilterId = useMemo(() => {
     if (!activeClass) return undefined
     return activeClass.personalConfig?.[activeClass.landscapeId]?.filterId
+  }, [activeClass])
+  const activeClassLandscapeDurationModel = useMemo(() => {
+    if (!activeClass) return undefined
+    return normalizeDurationModel(activeClass.personalConfig?.[activeClass.landscapeId]?.durationModel)
   }, [activeClass])
   const trainerContextFilter = useMemo(() => {
     if (activeClassRootFilterId && !isWildcardFilter(activeClassRootFilterId)) {
@@ -160,11 +169,15 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
     if (activeClassLandscapeFilterId && !isWildcardFilter(activeClassLandscapeFilterId)) {
       next.add(activeClassLandscapeFilterId)
     }
+    const durationModel = activeClassLandscapeDurationModel ?? activeClassRootDurationModel
+    if (durationModel) {
+      next.add(durationModel)
+    }
     if (next.size === 0 && activeClass.activeFilter && !isWildcardFilter(activeClass.activeFilter)) {
       next.add(activeClass.activeFilter)
     }
     return Array.from(next)
-  }, [activeClass, activeClassLandscapeFilterId, activeClassRootFilterId])
+  }, [activeClass, activeClassLandscapeDurationModel, activeClassLandscapeFilterId, activeClassRootDurationModel, activeClassRootFilterId])
   const projectedTrainerLandscapeEntries = useMemo(
     () => applyGoalPlacementProjection(landscapeEntries, activeClassFilterIds),
     [activeClassFilterIds, landscapeEntries],

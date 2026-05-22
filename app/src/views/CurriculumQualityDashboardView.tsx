@@ -126,6 +126,15 @@ interface MappingPipelineStep {
   checks: MappingPipelineCheck[]
 }
 
+interface DurationProjectionAudit {
+  evidenceLinks: number
+  evidenceByDuration?: Record<string, number>
+  canonicalGoalsWithDurationEvidence?: number
+  canonicalGoalsWithDifferentG8G9Evidence?: number
+  coveredEvidenceLinks: number
+  uncoveredEvidenceLinks: number
+}
+
 interface MappingPipelineSourceDocument {
   key?: string
   title: string
@@ -152,6 +161,7 @@ interface MappingPipelineSourceStatus {
   exactMappings?: number
   partialMappings?: number
   otherMappings?: number
+  durationProjectionAudit?: DurationProjectionAudit
   steps: MappingPipelineStep[]
 }
 
@@ -252,7 +262,7 @@ const COPY = {
     yes: 'ja',
     no: 'nein',
     rawAtomic: 'Roh-Atomar',
-    deViewAtomic: 'DE-Sicht atomar',
+    deViewAtomic: 'DE-Quellen-Atome',
     jurisdictionCoverage: 'Bundesland-Sichten',
     jurisdictionCoverageDeferred: 'Bundesland-Abdeckung ausgeblendet',
     jurisdictionCoverageDeferredDetail: 'Erst sinnvoll, wenn alle Quellen dieselbe Mapping-Stufe haben. Aktueller TODO ist die Umstellung der übrigen Quellen auf Passage-Extraction.',
@@ -287,7 +297,13 @@ const COPY = {
     inventoryCompleteSeal: 'Source-Inventar vollständig',
     passageBackedSeal: 'Passagenbelegt',
     exactMappingSeal: 'Zuordnungsform geprüft',
+    durationProjectionSeal: 'G8/G9-Projektion geprüft',
     nonExactMappingsNote: 'Alle Source-Ziele sind inhaltlich abgedeckt; 1:1 und 1:n beschreiben nur die Zuordnungsform, nicht eine offene Lücke.',
+    durationProjection: 'G8/G9-Projektion',
+    durationProjectionCovered: 'Belege abgedeckt',
+    durationProjectionEvidence: 'Lehrplanbelege',
+    durationProjectionDifferences: 'abweichende G8/G9-Ziele',
+    durationProjectionOpen: 'offen',
     complete: 'abgeschlossen',
     incomplete: 'offen',
     blocked: 'blockiert',
@@ -381,7 +397,7 @@ const COPY = {
     yes: 'yes',
     no: 'no',
     rawAtomic: 'Raw atomic',
-    deViewAtomic: 'DE view atomic',
+    deViewAtomic: 'DE source-view atoms',
     jurisdictionCoverage: 'Jurisdiction views',
     jurisdictionCoverageDeferred: 'Jurisdiction coverage hidden',
     jurisdictionCoverageDeferredDetail: 'Useful only once all sources are on the same mapping stage. The current TODO is moving the remaining sources to passage extraction.',
@@ -416,7 +432,13 @@ const COPY = {
     inventoryCompleteSeal: 'source inventory complete',
     passageBackedSeal: 'passage-backed',
     exactMappingSeal: 'mapping shape reviewed',
+    durationProjectionSeal: 'G8/G9 projection reviewed',
     nonExactMappingsNote: 'All source goals are content-covered; 1:1 and 1:n describe mapping shape, not an open gap.',
+    durationProjection: 'G8/G9 projection',
+    durationProjectionCovered: 'evidence covered',
+    durationProjectionEvidence: 'curriculum evidence',
+    durationProjectionDifferences: 'different G8/G9 goals',
+    durationProjectionOpen: 'open',
     complete: 'complete',
     incomplete: 'open',
     blocked: 'blocked',
@@ -1174,10 +1196,17 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                             const partialShare = mappedSourceGoals > 0
                               ? Math.round(((source.partialMappings ?? 0) / mappedSourceGoals) * 100)
                               : 0
+                            const durationAudit = source.durationProjectionAudit
+                            const durationProjectionComplete = Boolean(
+                              durationAudit
+                              && durationAudit.evidenceLinks > 0
+                              && durationAudit.uncoveredEvidenceLinks === 0,
+                            )
                             const seals = [
                               inventoryComplete ? copy.inventoryCompleteSeal : null,
                               passageBacked ? copy.passageBackedSeal : null,
                               exactOnly ? copy.exactMappingSeal : null,
+                              durationProjectionComplete ? copy.durationProjectionSeal : null,
                             ].filter(Boolean) as string[]
 
                             return (
@@ -1271,6 +1300,35 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                                     <div className="rounded-lg border border-border-color px-2 py-1">
                                       <div className="text-text-secondary">{copy.unmappedSource}</div>
                                       <div className="font-semibold tabular-nums">{source.unmappedSourceGoals ?? 0}</div>
+                                    </div>
+                                  </div>
+                                ) : null}
+                                {durationAudit ? (
+                                  <div className={`mt-2 rounded-lg border px-2 py-1 text-xs ${
+                                    durationProjectionComplete
+                                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300'
+                                      : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'
+                                  }`}>
+                                    <div className="font-semibold">{copy.durationProjection}</div>
+                                    <div className="mt-1 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionCovered}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.coveredEvidenceLinks}/{durationAudit.evidenceLinks}</div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionEvidence}</div>
+                                        <div className="font-semibold tabular-nums">
+                                          G8 {durationAudit.evidenceByDuration?.G8 ?? 0} · G9 {durationAudit.evidenceByDuration?.G9 ?? 0}
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionDifferences}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.canonicalGoalsWithDifferentG8G9Evidence ?? 0}</div>
+                                      </div>
+                                      <div>
+                                        <div className="opacity-75">{copy.durationProjectionOpen}</div>
+                                        <div className="font-semibold tabular-nums">{durationAudit.uncoveredEvidenceLinks}</div>
+                                      </div>
                                     </div>
                                   </div>
                                 ) : null}
