@@ -1,15 +1,16 @@
 {
-  "viewId": "de-de-gym-german-crossstage",
+  "viewId": "de-he-gym-german-sekii-gk",
   "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
   "scope": {
+    "jurisdiction": "DE-HE",
     "schoolForm": "Gymnasium",
-    "stage": "CrossStage",
+    "stage": "SekII",
     "courseProfile": "GK"
   },
   "rootNodes": [
     {
       "kind": "structure",
-      "id": "german-root",
+      "id": "german-he-sekii-gk-root",
       "label": "Deutsch",
       "children": [
         {
@@ -19,7 +20,7 @@
         },
         {
           "kind": "structure",
-          "id": "german-memory",
+          "id": "german-he-sekii-gk-memory",
           "label": "Lernkarten",
           "children": [
             {
@@ -46,18 +47,7 @@
         },
         {
           "kind": "structure",
-          "id": "german-seki",
-          "label": "Sekundarstufe I",
-          "children": [
-            {
-              "kind": "canonicalSubtree",
-              "goalId": "becd1384-eff9-5577-371b-dde4ae5e02b2"
-            }
-          ]
-        },
-        {
-          "kind": "structure",
-          "id": "german-e",
+          "id": "german-he-sekii-gk-e",
           "label": "Einführungsphase",
           "children": [
             {
@@ -72,7 +62,7 @@
         },
         {
           "kind": "structure",
-          "id": "german-q",
+          "id": "german-he-sekii-gk-q",
           "label": "Qualifikationsphase",
           "children": [
             {
@@ -151,13 +141,32 @@
         },
         {
           "kind": "structure",
-          "id": "german-practice",
-          "label": "Uebungen",
+          "id": "german-he-sekii-gk-practice",
+          "label": "Übungen",
           "children": [
             {
-              "kind": "goalEntry",
-              "goalId": "886ffd34-44f6-5daa-4451-d21dd846a53a",
-              "displayLabel": "Gesamtaufgabe Deutsch"
+              "kind": "canonicalSubtree",
+              "goalId": "2f74509b-1ea1-5d8c-a8e9-a91cfa65e49c"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "a041d8d4-d0ab-50d9-b2da-c88582138a4a"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "010b0f0d-906d-549e-b851-13650fb6dea5"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "716f75fd-5f37-5989-ba39-2a4da57aee8e"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "f2d0d790-8b72-5887-bbdc-d9e68da2c015"
+            },
+            {
+              "kind": "canonicalSubtree",
+              "goalId": "637c2158-d9f0-5375-b981-cfa6c44ce67c"
             }
           ]
         }

@@ -22,6 +22,12 @@ npm run check:he-math-duration-projection
 echo "--> Checking generated Math G8/G9 Composition Views"
 npm run check:math-duration-composition-views
 
+echo "--> Checking generated German Sek-I Composition Views"
+npm run check:german-seki-composition-views
+
+echo "--> Checking generated History Sek-I Composition Views"
+npm run check:history-seki-composition-views
+
 echo "--> Checking Canonical Math Scope Coverage"
 npm run check:canonical-math-scope-coverage
 
@@ -33,6 +39,9 @@ npm run check:math-duration-policy-readiness
 
 echo "--> Checking M6 G8/G9 Duration Policy Readiness"
 npm run check:m6-duration-policy-readiness
+
+echo "--> Checking generated Gymnasium Duration Offerings"
+npm run check:gymnasium-duration-offerings
 
 echo "--> Running Curriculum Source Coverage Check"
 npm run quality:source-coverage-audit:check

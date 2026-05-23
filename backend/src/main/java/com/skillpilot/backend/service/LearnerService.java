@@ -115,7 +115,6 @@ public class LearnerService {
 
     private static final Set<String> COURSE_FILTER_IDS = Set.of("GK", "LK");
     private static final Set<String> DURATION_MODEL_FILTER_IDS = Set.of("G8", "G9");
-    private static final String DEFAULT_DURATION_MODEL_FILTER_ID = "G9";
     private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
     private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
     private static final String APPLICABILITY_DIMENSION_JURISDICTION = "jurisdiction";
@@ -3690,10 +3689,8 @@ public class LearnerService {
                 String json = learner.getPersonalCurriculum();
                 if (json != null && !json.isBlank()) {
                     Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(json);
-                    boolean hasCanonicalGymnasiumScope = config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID)
-                            || config.containsKey(curriculumId);
-
-                    for (Map<String, Object> landscapeConfig : config.values()) {
+                    for (Map.Entry<String, Map<String, Object>> configEntry : config.entrySet()) {
+                        Map<String, Object> landscapeConfig = configEntry.getValue();
                         Object filterObj = landscapeConfig.get("filterId");
                         if (filterObj instanceof String) {
                             String f = (String) filterObj;
@@ -3704,15 +3701,12 @@ public class LearnerService {
                         Object durationModelObj = landscapeConfig.get("durationModel");
                         if (durationModelObj instanceof String) {
                             String durationModel = normalizeFilterId((String) durationModelObj);
-                            if (DURATION_MODEL_FILTER_IDS.contains(durationModel)
+                            if (!CANONICAL_GYMNASIUM_ROOT_ID.equals(configEntry.getKey())
+                                    && DURATION_MODEL_FILTER_IDS.contains(durationModel)
                                     && !activeFilters.contains(durationModel)) {
                                 activeFilters.add(durationModel);
                             }
                         }
-                    }
-                    if (hasCanonicalGymnasiumScope
-                            && activeFilters.stream().noneMatch(DURATION_MODEL_FILTER_IDS::contains)) {
-                        activeFilters.add(DEFAULT_DURATION_MODEL_FILTER_ID);
                     }
                 }
             } catch (Exception e) {
@@ -4540,11 +4534,6 @@ public class LearnerService {
                     rootDurationModel = normalizeFilterId((String) rootDurationObj);
                 }
             }
-            if ((rootDurationModel == null || !DURATION_MODEL_FILTER_IDS.contains(rootDurationModel))
-                    && isCanonicalGymnasiumLandscape(root)
-                    && (config.containsKey(curriculumId) || config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID))) {
-                rootDurationModel = DEFAULT_DURATION_MODEL_FILTER_ID;
-            }
         }
 
         Map<String, Set<String>> mappedCanonicalGoalIdsByState = new HashMap<>();
@@ -4604,8 +4593,7 @@ public class LearnerService {
             if (durationModel != null && DURATION_MODEL_FILTER_IDS.contains(durationModel)
                     && !effectiveFilterIds.contains(durationModel)) {
                 effectiveFilterIds.add(durationModel);
-            }
-            if (rootDurationModel != null && DURATION_MODEL_FILTER_IDS.contains(rootDurationModel)
+            } else if (rootDurationModel != null && DURATION_MODEL_FILTER_IDS.contains(rootDurationModel)
                     && !l.getLandscapeId().equals(curriculumId)
                     && !effectiveFilterIds.contains(rootDurationModel)) {
                 effectiveFilterIds.add(rootDurationModel);
@@ -4724,13 +4712,10 @@ public class LearnerService {
         String stage = inferCompositionStageScope(config);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
         String durationModel = resolveDurationModelScope(
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
                 readScopeValue(config, landscapeId, "durationModel"),
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
                 rootFilterId,
-                landscapeFilterId,
-                config.containsKey(CANONICAL_GYMNASIUM_ROOT_ID) || config.containsKey(landscapeId)
-                        ? DEFAULT_DURATION_MODEL_FILTER_ID
-                        : null);
+                landscapeFilterId);
 
         if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
             return Collections.emptyMap();

@@ -67,13 +67,13 @@ const getSharedCurriculumSetupCopy = (language: LabelLanguage): SharedCurriculum
         rootFilterLabel: 'Sicht / Bundesland',
         stageLabel: 'Sekundarstufe',
         durationModelLabel: 'Gymnasialdauer',
-        durationModelHint: 'Relevant für Bundesländer mit G8/G9-Unterscheidung.',
+        durationModelHint: 'Aus den Lehrplan-Daten für dieses Fach und Bundesland abgeleitet.',
       }
     : {
         rootFilterLabel: 'View / Jurisdiction',
         stageLabel: 'Secondary stage',
         durationModelLabel: 'Gymnasium duration',
-        durationModelHint: 'Relevant for jurisdictions that distinguish G8/G9.',
+        durationModelHint: 'Derived from the curriculum data for this subject and jurisdiction.',
       }
 )
 
@@ -84,7 +84,7 @@ export const getPersonalCurriculumSetupCopy = (
   ...(language === 'de'
     ? {
         title: 'Mein Lehrplan',
-        subtitle: 'Wähle zuerst Sekundarstufen und Gymnasialdauer, dann Fächer und für Sekundarstufe II die Kursniveaus.',
+        subtitle: 'Wähle Bundesland, Sekundarstufen und Fächer. Die Gymnasialdauer wird fachbezogen aus den Lehrplan-Daten angeboten.',
         preferencesTitle: 'Auswahlpriorisierung',
         randomStrategy: 'Zufällig (Abwechslung)',
         sequentialStrategy: 'Schritt für Schritt',
@@ -113,7 +113,7 @@ export const getPersonalCurriculumSetupCopy = (
       }
     : {
         title: 'My Curriculum',
-        subtitle: 'Choose the secondary stages and Gymnasium duration first, then subjects, and for upper secondary the course levels.',
+        subtitle: 'Choose jurisdiction, secondary stages, and subjects. Gymnasium duration is offered per subject from curriculum data.',
         preferencesTitle: 'Selection priorities',
         randomStrategy: 'Random (variety)',
         sequentialStrategy: 'Step by step',

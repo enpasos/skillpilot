@@ -51,7 +51,6 @@ public class CurriculaService {
     private static final double MASTERY_THRESHOLD = 0.9;
     private static final String HESSEN_FILTER_ID = "DE-HE";
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
-    private static final String DEFAULT_DURATION_MODEL_FILTER_ID = "G9";
     private static final String STAGE_SCOPE_SEK1_ID = "__skillpilot_stage_scope_sek1__";
     private static final String STAGE_SCOPE_SEK2_ID = "__skillpilot_stage_scope_sek2__";
     private static final String CANONICAL_GYMNASIUM_OVERVIEW_FRAMEWORK_ID = "canonical-gymnasium-overview";
@@ -700,15 +699,11 @@ public class CurriculaService {
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String stage = inferStageScope(config);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
-        String defaultDurationModel = hasScopeEntry(config, CANONICAL_GYMNASIUM_ROOT_ID) || hasScopeEntry(config, landscapeId)
-                ? DEFAULT_DURATION_MODEL_FILTER_ID
-                : null;
         String durationModel = resolveDurationModelScope(
-                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
                 readScopeValue(config, landscapeId, "durationModel"),
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
                 rootFilterId,
-                landscapeFilterId,
-                defaultDurationModel);
+                landscapeFilterId);
 
         if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
             return Collections.emptyMap();
@@ -761,10 +756,6 @@ public class CurriculaService {
         }
         Object value = entry.get(key);
         return value instanceof String textValue ? normalize(textValue) : null;
-    }
-
-    private boolean hasScopeEntry(Map<String, Map<String, Object>> config, String landscapeId) {
-        return config != null && config.containsKey(landscapeId);
     }
 
     private String readFilterId(Map<String, Map<String, Object>> config, String landscapeId) {

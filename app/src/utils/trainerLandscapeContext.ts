@@ -5,7 +5,6 @@ import {
   applyDefaultGlobalStageScope,
   GLOBAL_STAGE_SCOPE_CONFIG_IDS,
 } from './personalCurriculumStageScope'
-import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from './durationModel'
 
 const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
@@ -184,7 +183,6 @@ const buildCanonicalGymnasiumPersonalConfig = (
     [CANONICAL_GYMNASIUM_ROOT_ID]: {
       selected: true,
       filterId: rootFilterId,
-      durationModel: DEFAULT_DURATION_MODEL,
     },
     [landscapeId]: {
       selected: true,
@@ -228,13 +226,14 @@ export const migrateTrainerClassSession = (session: ClassSession): ClassSession 
       next.rootLandscapeId = canonicalConfig.rootLandscapeId
     } else if (session.rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
       const rootConfig = session.personalConfig[CANONICAL_GYMNASIUM_ROOT_ID]
-      if (!normalizeDurationModel(rootConfig?.durationModel)) {
+      if (rootConfig?.durationModel) {
+        const nextRootConfig = { ...rootConfig }
+        delete nextRootConfig.durationModel
         next.personalConfig = {
           ...session.personalConfig,
           [CANONICAL_GYMNASIUM_ROOT_ID]: {
-            ...rootConfig,
-            selected: rootConfig?.selected ?? true,
-            durationModel: DEFAULT_DURATION_MODEL,
+            ...nextRootConfig,
+            selected: nextRootConfig?.selected ?? true,
           },
         }
       }
