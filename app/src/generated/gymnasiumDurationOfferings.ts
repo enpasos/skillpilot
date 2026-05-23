@@ -11,6 +11,14 @@ export type GymnasiumContentOfferings = Record<string, Record<string, {
 
 export const GYMNASIUM_DURATION_OFFERINGS = {
   '08a43a1b-d97e-522c-9dfa-c950a493364e': {
+    'DE-BB': [
+      'G8',
+      'G9'
+    ],
+    'DE-BE': [
+      'G8',
+      'G9'
+    ],
     'DE-BW': [
       'G8',
       'G9'
@@ -24,16 +32,38 @@ export const GYMNASIUM_DURATION_OFFERINGS = {
     'DE-HE': [
       'G9'
     ],
+    'DE-HH': [
+      'G8'
+    ],
+    'DE-MV': [
+      'G8'
+    ],
     'DE-NI': [
+      'G9'
+    ],
+    'DE-NW': [
       'G9'
     ],
     'DE-RP': [
       'G8',
       'G9'
     ],
+    'DE-SH': [
+      'G8',
+      'G9'
+    ],
     'DE-SL': [
       'G8',
       'G9'
+    ],
+    'DE-SN': [
+      'G8'
+    ],
+    'DE-ST': [
+      'G8'
+    ],
+    'DE-TH': [
+      'G8'
     ]
   },
   '51b60137-46e8-5498-973e-ea38bb32f327': {
@@ -490,15 +520,23 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
   '08a43a1b-d97e-522c-9dfa-c950a493364e': {
     'DE-BB': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
     },
     'DE-BE': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
     },
     'DE-BW': {
       'stages': [
@@ -539,15 +577,21 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     },
     'DE-HH': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8'
+      ]
     },
     'DE-MV': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8'
+      ]
     },
     'DE-NI': {
       'stages': [
@@ -560,9 +604,12 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     },
     'DE-NW': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G9'
+      ]
     },
     'DE-RP': {
       'stages': [
@@ -576,9 +623,13 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     },
     'DE-SH': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8',
+        'G9'
+      ]
     },
     'DE-SL': {
       'stages': [
@@ -592,21 +643,30 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     },
     'DE-SN': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8'
+      ]
     },
     'DE-ST': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8'
+      ]
     },
     'DE-TH': {
       'stages': [
+        'SekI',
         'CrossStage'
       ],
-      'durationModels': []
+      'durationModels': [
+        'G8'
+      ]
     }
   },
   '51b60137-46e8-5498-973e-ea38bb32f327': {

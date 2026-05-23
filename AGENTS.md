@@ -611,6 +611,8 @@ Operational consequence for retained assets:
 
 - If a file or directory is kept because it remains relevant after canonical cutover, archive it under a DE-level state lane such as `curricula/DE/Gymnasium/input/DE-HE/...` or `curricula/DE/Gymnasium/input/DE-BY/...`.
 - Treat `curricula/DE/HE/Kultusministerium/Gymnasiale_Oberstufe/abi` as the model example for this rule, not as a special one-off exception.
+- For official curriculum sources, commit the structured reference and extraction state, not necessarily the original PDF/HTML working copy. `sourceDocument`/`sourceDocuments` entries with official HTTP(S) URLs, titles, and roles are the durable source-of-truth in Git; local PDFs/HTML files are cache/work artifacts for extraction and may remain ignored by `.gitignore`.
+- A green source-readiness state means the source situation is explicitly decided for every claimed scope dimension (Bundesland, subject, Sek I/Sek II, and G8/G9 where relevant), the official reference is usable, and any local working copy needed by the current pipeline can be reproduced or is present locally. It must not mean "the PDF is committed to Git."
 
 Detailed rollout plan:
 

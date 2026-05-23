@@ -266,6 +266,19 @@ Ziel:
 
 > Die Originalziele bzw. Source-Snapshot-Ziele eines Bundeslands sind zuerst ueberhaupt vollstaendig erfasst und auf amtliche Originalquellenlinks zurueckfuehrbar.
 
+Quellenartefakt-Modell:
+
+- Git ist die dauerhafte Quelle fuer die **Referenz** auf den amtlichen Lehrplan: `sourceDocument`/`sourceDocuments` muessen die amtliche HTTP(S)-`url`, Titel, Rolle und bei Bedarf einen lokalen Arbeitsdateipfad dokumentieren.
+- Lokale PDF-/HTML-Kopien sind **Arbeitskopien fuer Extraktion und Nachvollzug**, nicht der dauerhafte Source of Truth. Sie bleiben in der Regel durch `.gitignore` unversioniert.
+- Eine fehlende versionierte PDF-Datei ist deshalb fuer sich genommen kein QA-Fehler, solange die amtliche URL dokumentiert ist und die benoetigte Source-Extraction bzw. der retained Snapshot lesbar ist.
+- Wenn eine Pipeline-Stufe die Originaldatei tatsaechlich neu verarbeiten muss, muss die Datei lokal verfuegbar oder reproduzierbar herunterladbar sein. Dieser lokale Cache-Status ist Diagnoseinformation, aber nicht der gruene Quellenstatus selbst.
+
+Scope-Entscheidung:
+
+- Der gruen/pass-Zustand bedeutet: Fuer alle im Curriculum betrachteten Dimensionen ist die Quellenlage explizit geklaert. Dazu gehoeren insbesondere Bundesland, Fach, Sekundarstufe (`Sek I`/`Sek II`) und, soweit fachlich relevant, `G8`/`G9` bzw. andere Dauer- oder Kursmodelle.
+- "Geklaert" kann heissen: Es gibt eine eigene Source-Extraction/einen retained Snapshot fuer diese Zelle, oder es gibt eine explizite reviewed Entscheidung, dass keine getrennte Quelle bzw. keine getrennte G8/G9-Projektion erforderlich ist.
+- G8/G9 wird nicht durch doppelte kanonische Zielmengen modelliert. Wenn es relevant ist, muss die Unterscheidung ueber Source-Metadaten, Provenance, Mapping, Composition Views und Duration-Policy dokumentiert sein.
+
 Geprueft wird:
 
 - Der Generator liest die registrierten Source-Snapshots aus `source-landscape-registry.json`.
@@ -284,6 +297,7 @@ Metriken:
 - `sourceUnregisteredAtomicGoals`: extrahierte atomare Source-Ziele, die nicht registriert sind.
 - `completeSourceJurisdictions`: Bundeslaender, deren Source-Snapshots lesbar und vollstaendig registriert sind.
 - `originalSourceUrlIssues`: fehlende oder nicht verwendbare amtliche HTTP(S)-Originalquellenlinks in persistierten Source-Extractions.
+- lokale Originaldatei-Verfuegbarkeit: Diagnosewert fuer die Arbeitsumgebung; fehlende Git-Versionierung einer lokal vorhandenen PDF darf `CQR-000` nicht blockieren.
 
 Status:
 
