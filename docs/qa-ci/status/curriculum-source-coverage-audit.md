@@ -1,6 +1,6 @@
 # Curriculum Source Coverage Audit
 
-Generated: 2026-05-21T18:28:27.990Z
+Generated: 2026-05-23T06:23:30.725Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
 
