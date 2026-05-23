@@ -31,8 +31,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| de-de-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json` | 330 | 5 | 49 | 0 |
-| de-de-gym-economics-lk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json` | 330 | 5 | 49 | 0 |
+| de-de-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json` | 326 | 5 | 49 | 0 |
+| de-de-gym-economics-lk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json` | 326 | 5 | 49 | 0 |
 
 ## Memory-Required Goals
 

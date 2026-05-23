@@ -31,7 +31,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Latein Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/latein/de-de-gym-latin-crossstage.view.json` | 175 | 5 | 33 | 0 |
+| Latein Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/latein/de-de-gym-latin-crossstage.view.json` | 174 | 5 | 33 | 0 |
 
 ## Memory-Required Goals
 
