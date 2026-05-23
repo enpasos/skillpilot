@@ -75,6 +75,23 @@ To make that explicit, the dashboard also shows an `M5/M6 review gates` strip fo
 
 `M5` is intentionally strict for the core curriculum layer. `M6` is stricter again and is reserved for curricula whose optional memory-card layer has also been semantically reviewed.
 
+## Source References And Local Working Copies
+
+The dashboard treats original curriculum sources in two separate layers:
+
+- The committed, durable layer is the structured source reference in Git: `sourceDocument`/`sourceDocuments` with official HTTP(S) URLs, titles, roles, and optional local path hints.
+- Local PDFs or HTML files are working copies for extraction, page checks, and local review. They are normally ignored by Git through `curricula/**/*.pdf` and similar rules.
+
+This distinction is intentional. A green source badge means the official source reference is documented for the currently declared source scope and the extracted or retained source inventory is readable and registered. It does **not** mean that the original PDF is committed to Git.
+
+Local source-file availability remains useful diagnostic information:
+
+- If a generator must re-run PDF extraction, the local file must exist or be downloaded from the documented official URL first.
+- If the persisted extraction is already present, the dashboard can still be green with `0/n` local working copies, as long as `n/n` official URLs are documented and the extracted inventory is readable.
+- The UI therefore labels this as source links, not as bundled source files.
+
+For German Gymnasium quality work, "source scope is green" means the source situation is explicitly decided for every relevant cell that the curriculum claims to cover: Bundesland, subject, Sekundarstufe I/II, and G8/G9 or other duration models where applicable. A cell can be green either through its own retained source inventory or through an explicit reviewed decision that no separate source/duration split is required.
+
 ## Rule Families
 
 The current rule catalog is versioned as `curriculum-quality-v2`.

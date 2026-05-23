@@ -4719,7 +4719,9 @@ function renderMarkdown(status: StatusDocument): string {
       const documents = source.sourceDocuments ?? []
       const available = documents.filter((document) => document.available).length
       const linked = documents.filter((document) => document.hasUsableUrl).length
-      return documents.length > 0 ? `${available}/${documents.length} local, ${linked}/${documents.length} URL` : '0 original source(s)'
+      return documents.length > 0
+        ? `${linked}/${documents.length} URL; local cache ${available}/${documents.length}`
+        : '0 original source(s)'
     }
     if (source.sourceKind === 'legacy-snapshot') return 'Snapshot diagnostic'
     return 'No extraction'

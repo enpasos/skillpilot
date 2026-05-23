@@ -139,8 +139,10 @@ interface MappingPipelineSourceDocument {
   key?: string
   title: string
   path?: string
+  url?: string
   official?: boolean
   available: boolean
+  hasUsableUrl?: boolean
 }
 
 interface MappingPipelineSourceStatus {
@@ -280,8 +282,8 @@ const COPY = {
     legacySnapshotProgress: 'Snapshot-Diagnosen',
     missingExtractionProgress: 'keine Extraction',
     currentPipelineStep: 'Nächster offener Schritt',
-    originalSourcesProvided: 'Originalquellen bereitgestellt',
-    originalSourcesMissing: 'Originalquellen fehlen',
+    originalSourcesProvided: 'Originalquellen verlinkt',
+    originalSourcesMissing: 'Originalquellen-Link fehlt',
     originalSources: 'Originalquellen',
     passages: 'Passagen',
     sourceGoals: 'Source-Ziele',
@@ -415,8 +417,8 @@ const COPY = {
     legacySnapshotProgress: 'Snapshot diagnostics',
     missingExtractionProgress: 'no extraction',
     currentPipelineStep: 'Next open step',
-    originalSourcesProvided: 'Original sources provided',
-    originalSourcesMissing: 'Original sources missing',
+    originalSourcesProvided: 'Original sources linked',
+    originalSourcesMissing: 'Original source link missing',
     originalSources: 'Original sources',
     passages: 'Passages',
     sourceGoals: 'Source goals',
@@ -500,12 +502,12 @@ const statusClass: Record<RuleStatus, string> = {
 
 const maturityClass: Record<MaturityLevel, string> = {
   M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
-  M1: 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
-  M2: 'border-cyan-200 bg-cyan-50 text-cyan-700 dark:border-cyan-900/60 dark:bg-cyan-950/30 dark:text-cyan-300',
-  M3: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
-  M4: 'border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-900/60 dark:bg-violet-950/30 dark:text-violet-300',
-  M5: 'border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 dark:border-fuchsia-900/60 dark:bg-fuchsia-950/30 dark:text-fuchsia-300',
-  M6: 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  M1: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  M2: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  M3: 'border-amber-300 bg-amber-50 text-amber-800 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300',
+  M4: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
+  M5: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
+  M6: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
 }
 
 const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
@@ -1172,10 +1174,16 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                             const hasPartialMappings = (source.partialMappings ?? 0) > 0
                             const isSourceExtraction = source.sourceKind === 'source-extraction'
                             const sourceDocuments = source.sourceDocuments ?? []
-                            const availableSourceDocuments = sourceDocuments.filter((document) => document.available).length
-                            const sourceDocumentsReady = sourceDocuments.length > 0 && availableSourceDocuments === sourceDocuments.length
+                            const linkedSourceDocuments = sourceDocuments.filter((document) => document.hasUsableUrl).length
+                            const sourceDocumentsReady = sourceDocuments.length > 0 && linkedSourceDocuments === sourceDocuments.length
                             const sourceDocumentsTitle = sourceDocuments
-                              .map((document) => `${document.title}${document.path ? ` · ${document.path}` : ''}`)
+                              .map((document) => [
+                                document.title,
+                                document.path
+                                  ? `local: ${document.path}${document.available ? '' : ' (not versioned)'}`
+                                  : null,
+                                document.url ? `url: ${document.url}` : null,
+                              ].filter(Boolean).join('\n'))
                               .join('\n')
                             const inventoryComplete = isSourceExtraction
                               && source.sourceGoals > 0
@@ -1231,7 +1239,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
                                       title={sourceDocumentsTitle || undefined}
                                     >
                                       {sourceDocumentsReady ? copy.originalSourcesProvided : copy.originalSourcesMissing}
-                                      {sourceDocuments.length > 0 ? ` · ${availableSourceDocuments}/${sourceDocuments.length}` : ''}
+                                      {sourceDocuments.length > 0 ? ` · ${linkedSourceDocuments}/${sourceDocuments.length} URL` : ''}
                                     </span>
                                   ) : (
                                     <span className="rounded-full border border-border-color bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-text-secondary dark:bg-slate-800">

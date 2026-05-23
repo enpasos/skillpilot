@@ -63,6 +63,7 @@ interface DurationPolicyDecision {
   durationModels?: string[]
   learnerFacingProjection?: string
   compositionViewIds?: string[]
+  evidenceSources?: string[]
   rationale?: string
 }
 
@@ -85,6 +86,20 @@ interface SourceReadinessRow {
   sekiRuntimeViews: Map<DurationModel, string>
   policyDecision?: DurationPolicyDecision
   status: string
+}
+
+interface SourceEvidenceRow {
+  subject: string
+  jurisdiction: string
+  stage: string
+  title: string
+  path: string
+  sourceGoals: number
+  durationModels: Set<DurationModel>
+  gradeSignals: Set<string>
+  g8Hint: boolean
+  g9Hint: boolean
+  policyDecision?: DurationPolicyDecision
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
@@ -276,11 +291,35 @@ const collectGradeSignals = (source: SourceExtraction, text: string) => {
 const stageTouchesSekI = (stage: string) => {
   const normalized = stage.toLocaleUpperCase('de-DE')
   return normalized === 'SEKI'
+    || normalized === 'SEK I'
+    || normalized === 'SEKUNDARSTUFE I'
+    || normalized === 'LOWER SECONDARY'
+    || normalized === 'LOWER-SECONDARY'
     || normalized === 'CROSSSTAGE'
     || normalized === 'GYMNASIUM'
     || normalized === 'SEKI+SEKII'
     || normalized === 'SEKI/SEKII'
     || normalized === 'SEKI-SEKII'
+    || normalized === 'SEK I+SEK II'
+    || normalized === 'SEK I/SEK II'
+    || normalized === 'SEKUNDARSTUFE I+SEKUNDARSTUFE II'
+}
+
+const stageTouchesSekII = (stage: string) => {
+  const normalized = stage.toLocaleUpperCase('de-DE')
+  return normalized === 'SEKII'
+    || normalized === 'SEK II'
+    || normalized === 'SEKUNDARSTUFE II'
+    || normalized === 'UPPER SECONDARY'
+    || normalized === 'UPPER-SECONDARY'
+    || normalized === 'CROSSSTAGE'
+    || normalized === 'GYMNASIUM'
+    || normalized === 'SEKI+SEKII'
+    || normalized === 'SEKI/SEKII'
+    || normalized === 'SEKI-SEKII'
+    || normalized === 'SEK I+SEK II'
+    || normalized === 'SEK I/SEK II'
+    || normalized === 'SEKUNDARSTUFE I+SEKUNDARSTUFE II'
 }
 
 const describeSourceDocument = (value: unknown): string | undefined => {
@@ -551,11 +590,146 @@ const requiredSekIRuntimeDurationModels = (row: SourceReadinessRow) => {
 const hasRequiredSekIRuntimeViews = (row: SourceReadinessRow) =>
   requiredSekIRuntimeDurationModels(row).every((durationModel) => row.sekiRuntimeViews.has(durationModel))
 
-const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
+const classifyStageBucket = (stage: string) => {
+  const touchesSekI = stageTouchesSekI(stage)
+  const touchesSekII = stageTouchesSekII(stage)
+  if (touchesSekI && touchesSekII) return 'SekI+SekII'
+  if (touchesSekI) return 'SekI'
+  if (touchesSekII) return 'SekII'
+  return 'Other'
+}
+
+const formatTableCell = (value: string | number | undefined) => {
+  const raw = value === undefined || value === '' ? '-' : String(value)
+  return raw
+    .replace(/\s+/gu, ' ')
+    .replace(/\|/gu, '\\|')
+    .trim()
+}
+
+const formatInlineCodeCell = (value: string | undefined) => value ? `\`${formatTableCell(value)}\`` : '-'
+
+const describePolicyRationale = (policyDecision: DurationPolicyDecision | undefined) =>
+  formatTableCell(policyDecision?.rationale ?? '-')
+
+const describePolicyEvidenceSources = (policyDecision: DurationPolicyDecision | undefined) => {
+  const sources = policyDecision?.evidenceSources ?? []
+  return sources.length > 0 ? sources.map(formatTableCell).join('<br>') : '-'
+}
+
+const collectSourceEvidenceRows = (
+  m6SubjectsSet: Set<string>,
+  durationPolicyBySourcePath: Map<string, DurationPolicyDecision>,
+) => collectFiles(inputRoot, (path) => extname(path).toLowerCase() === '.json' && /source-extraction\.json$/iu.test(path))
+  .flatMap((sourcePath): SourceEvidenceRow[] => {
+    let source: SourceExtraction
+    try {
+      source = readJson<SourceExtraction>(sourcePath)
+    } catch {
+      return []
+    }
+    const subject = inferSubject(source, sourcePath, m6SubjectsSet)
+    if (!subject) return []
+
+    const title = source.title
+      ?? describeSourceDocument(source.sourceDocument)
+      ?? describeSourceDocuments(source.sourceDocuments)
+      ?? repoPath(sourcePath)
+    const searchableText = JSON.stringify({
+      title: source.title,
+      sourceDocument: source.sourceDocument,
+      sourceDocuments: source.sourceDocuments,
+      method: source.method,
+      refs: (source.sourceGoals ?? []).map((goal) => goal.sourceRef).filter(Boolean).slice(0, 100),
+    })
+
+    return [{
+      subject,
+      jurisdiction: inferJurisdiction(source, sourcePath),
+      stage: inferStage(source, sourcePath),
+      title,
+      path: repoPath(sourcePath),
+      sourceGoals: source.sourceGoals?.length ?? 0,
+      durationModels: collectDurationModels(source, searchableText),
+      gradeSignals: collectGradeSignals(source, searchableText),
+      g8Hint: /\bG8\b|achtj[aä]hr/iu.test(searchableText),
+      g9Hint: /\bG9\b|neunj[aä]hr/iu.test(searchableText),
+      policyDecision: durationPolicyBySourcePath.get(repoPath(sourcePath)),
+    }]
+  })
+
+const formatEvidenceDistribution = (rows: SourceEvidenceRow[]) => {
+  const dual = rows.filter((row) => durationModels.every((durationModel) => row.durationModels.has(durationModel))).length
+  const g8Only = rows.filter((row) => row.durationModels.has('G8') && !row.durationModels.has('G9')).length
+  const g9Only = rows.filter((row) => row.durationModels.has('G9') && !row.durationModels.has('G8')).length
+  const none = rows.length - dual - g8Only - g9Only
+  return `dual: ${dual}; G8 only: ${g8Only}; G9 only: ${g9Only}; none: ${none}`
+}
+
+const renderSourceEvidenceSummaryRows = (allSourceRows: SourceEvidenceRow[], m6Subjects: string[]) => {
+  const lines: string[] = []
+  lines.push('| Subject | Stage bucket | Sources | Reviewed decisions | Dual differentiated | Duration-neutral | Single-duration | Open source review | Source duration evidence |')
+  lines.push('| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |')
+  for (const subject of m6Subjects) {
+    const subjectRows = allSourceRows.filter((row) => row.subject === subject)
+    for (const stageBucket of ['SekI', 'SekII', 'SekI+SekII', 'Other']) {
+      const stageRows = subjectRows.filter((row) => classifyStageBucket(row.stage) === stageBucket)
+      if (stageRows.length === 0) continue
+      const reviewed = stageRows.filter((row) => row.policyDecision?.status === 'reviewed').length
+      const dual = stageRows.filter((row) => row.policyDecision?.decision === 'dual-duration-different-projection').length
+      const neutral = stageRows.filter((row) =>
+        row.policyDecision?.decision === 'duration-neutral-projection'
+        || row.policyDecision?.decision === 'no-difference-projection',
+      ).length
+      const single = stageRows.filter((row) => row.policyDecision?.decision === 'single-duration-source').length
+      const open = stageRows.length - reviewed
+      lines.push(`| ${subject} | ${stageBucket} | ${stageRows.length} | ${reviewed} | ${dual} | ${neutral} | ${single} | ${open} | ${formatEvidenceDistribution(stageRows)} |`)
+    }
+  }
+  return lines
+}
+
+const renderSourceEvidenceMatrixRows = (rows: SourceEvidenceRow[], includeSubject: boolean) => {
+  const lines: string[] = []
+  lines.push(includeSubject
+    ? '| Subject | Jurisdiction | Source stage | Reviewed decision | Source duration evidence | Grade signals | Source goals | Source | Source file | Decision note | Evidence references |'
+    : '| Jurisdiction | Source stage | Reviewed decision | Source duration evidence | Grade signals | Source goals | Source | Source file | Decision note | Evidence references |')
+  lines.push(includeSubject
+    ? '| --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |'
+    : '| --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |')
+  rows
+    .sort((left, right) =>
+      left.subject.localeCompare(right.subject, 'de', { sensitivity: 'base' })
+      || classifyStageBucket(left.stage).localeCompare(classifyStageBucket(right.stage))
+      || left.jurisdiction.localeCompare(right.jurisdiction)
+      || left.stage.localeCompare(right.stage),
+    )
+    .forEach((row) => {
+      const cells = [
+        ...(includeSubject ? [formatTableCell(row.subject)] : []),
+        formatInlineCodeCell(row.jurisdiction),
+        formatTableCell(row.stage),
+        formatTableCell(describePolicyDecision(row.policyDecision)),
+        formatTableCell(formatSet(row.durationModels)),
+        formatTableCell(formatSet(row.gradeSignals)),
+        String(row.sourceGoals),
+        formatTableCell(row.title),
+        formatInlineCodeCell(row.path),
+        describePolicyRationale(row.policyDecision),
+        describePolicyEvidenceSources(row.policyDecision),
+      ]
+      lines.push(`| ${cells.join(' | ')} |`)
+    })
+  return lines
+}
+
+const renderReport = (rows: SourceReadinessRow[], allSourceRows: SourceEvidenceRow[], m6Subjects: string[]) => {
   const lines: string[] = []
   lines.push('# Gymnasium G8/G9 Duration-Model Readiness')
   lines.push('')
-  lines.push('This report is generated from local SkillPilot source-extraction files and composition views. It is an implementation worklist, not an external policy assertion.')
+  lines.push('This report is generated from local SkillPilot source-extraction files, reviewed duration-model policy decisions, and composition views. It is an implementation worklist, not an external policy assertion.')
+  lines.push('')
+  lines.push('The important distinction is source evidence vs. runtime readiness: the source matrix below documents what the local original-curriculum extractions currently indicate for each Bundesland, subject, and stage. Reviewed policy decisions make SkillPilot assumptions explicit so they can be challenged with a concrete source reference.')
   lines.push('')
   lines.push('## Interpretation')
   lines.push('')
@@ -572,6 +746,8 @@ const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
   lines.push('| `open:needs-duration-review` | No usable local duration signal was found. |')
   lines.push('')
   lines.push('`Sek-I runtime view` mirrors backend composition-view matching for a learner who selected only Sekundarstufe I, a Bundesland, and an explicit G8/G9 duration model. `-` means the runtime currently falls back to the raw canonical graph for that subject/scope.')
+  lines.push('')
+  lines.push('`Open source review` in the source matrix means: no reviewed G8/G9 policy decision is recorded yet for that exact local source extraction. This does not automatically mean that a duration split exists; it means the assumption has not yet been documented in the policy ledger.')
   lines.push('')
   lines.push('## Summary')
   lines.push('')
@@ -597,6 +773,14 @@ const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
     lines.push(`| ${subject} | ${subjectRows.length} | ${runtimeCovered} | ${runtimeMissing} | ${dualReady} | ${reviewedPolicy} | ${dualOpen} | ${sourcePolicyOpen} | ${needsReview} |`)
   }
   lines.push('')
+  lines.push('## Source Evidence Summary')
+  lines.push('')
+  lines.push(...renderSourceEvidenceSummaryRows(allSourceRows, m6Subjects))
+  lines.push('')
+  lines.push('## Mathematik Source Matrix')
+  lines.push('')
+  lines.push(...renderSourceEvidenceMatrixRows(allSourceRows.filter((row) => row.subject === 'Mathematik'), false))
+  lines.push('')
   lines.push('## Mathematik First')
   lines.push('')
   lines.push('| Jurisdiction | Stage | Status | Policy | Source duration evidence | Duration views | Sek-I runtime view | Grade signals | Source goals | Source |')
@@ -607,6 +791,10 @@ const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
     .forEach((row) => {
       lines.push(`| \`${row.jurisdiction}\` | ${row.stage} | \`${row.status}\` | ${describePolicyDecision(row.policyDecision)} | ${formatSet(row.durationModels)} | ${formatSet(row.durationViews)} | ${formatRuntimeViews(row.sekiRuntimeViews)} | ${formatSet(row.gradeSignals)} | ${row.sourceGoals} | ${row.title} |`)
     })
+  lines.push('')
+  lines.push('## M6 Source Matrix')
+  lines.push('')
+  lines.push(...renderSourceEvidenceMatrixRows(allSourceRows.filter((row) => row.subject !== 'Mathematik'), true))
   lines.push('')
   lines.push('## M6 Subjects')
   lines.push('')
@@ -652,6 +840,7 @@ const main = () => {
   const compositionViews = collectCompositionViewSummaries(m6SubjectsByLandscapeId)
   const durationPolicy = loadDurationPolicyBySourcePath()
   durationPolicy.errors.forEach((error) => console.error(`Duration policy error: ${error}`))
+  const allSourceRows = collectSourceEvidenceRows(m6SubjectsSet, durationPolicy.decisionsBySourcePath)
 
   const rows = collectFiles(inputRoot, (path) => extname(path).toLowerCase() === '.json' && /source-extraction\.json$/iu.test(path))
     .flatMap((sourcePath): SourceReadinessRow[] => {
@@ -696,7 +885,7 @@ const main = () => {
       return [{ ...baseRow, status: deriveStatus(baseRow) }]
     })
 
-  const report = renderReport(rows, m6Subjects)
+  const report = renderReport(rows, allSourceRows, m6Subjects)
   const current = existsSync(reportPath) ? readFileSync(reportPath, 'utf8') : null
   const changed = current !== report
 
@@ -710,7 +899,7 @@ const main = () => {
   }
 
   console.log(`${changed ? 'changed' : 'ok'} ${repoPath(reportPath)}`)
-  console.log(`M6 subjects: ${m6Subjects.length}; source scopes touching Sek I: ${rows.length}`)
+  console.log(`M6 subjects: ${m6Subjects.length}; source scopes touching Sek I: ${rows.length}; all source scopes: ${allSourceRows.length}`)
   const subjectsToRequireReviewed = Array.from(new Set([
     ...(requiredReviewedSubject ? [requiredReviewedSubject] : []),
     ...(shouldRequireReviewedM6 ? m6Subjects : []),
