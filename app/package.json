@@ -57,6 +57,7 @@
     "export:subject-package:trace-source": "tsx scripts/traceSubjectExportSourceReference.ts",
     "export:subject-publication-index": "tsx scripts/buildSubjectExportPublicationIndex.ts",
     "export:subject-release-gate": "tsx scripts/runSubjectExportReleaseGate.ts",
+    "export:subject-release-gate:ci": "tsx scripts/runSubjectExportReleaseGate.ts --version 0.1.0 --enforce-committed-quality-status --enforce-clean-source-tree",
     "export:m5-subject-packages": "tsx scripts/buildM5SubjectExportPackages.ts",
     "export:m5-subject-provenance-audits": "tsx scripts/buildM5SubjectProvenanceAuditPackages.ts",
     "export:m5-subject-packages:check-reproducible": "tsx scripts/checkM5SubjectExportPackageReproducibility.ts",

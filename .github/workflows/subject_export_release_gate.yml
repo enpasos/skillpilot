@@ -106,14 +106,14 @@ jobs:
           AUDIT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.audit_source_links == true && 'true' || 'false' }}
           STRICT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.strict_source_links == true && 'true' || 'false' }}
         run: |
-          args=(--version 0.1.0 --enforce-committed-quality-status --enforce-clean-source-tree)
+          args=()
           if [ "$AUDIT_SOURCE_LINKS" = "true" ]; then
             args+=(--audit-source-links)
           fi
           if [ "$STRICT_SOURCE_LINKS" = "true" ]; then
             args+=(--strict-source-links)
           fi
-          npm run export:subject-release-gate -- "${args[@]}"
+          npm run export:subject-release-gate:ci -- "${args[@]}"
 
       - name: Upload release-gate reports
         if: always()

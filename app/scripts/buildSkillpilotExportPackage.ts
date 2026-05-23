@@ -1336,6 +1336,10 @@ const packageMemoryCardReviewReport = (
     .replace(/- Landscape: `[^`]+`/u, `- Landscape: \`data/canonical/${subjectSlug}.landscape.json\``)
     .replace(/- Goal ledger: `[^`]+`/u, `- Goal ledger: \`${paths.goalLedger}\``)
     .replace(/- Card ledger: `[^`]+`/u, `- Card ledger: \`${paths.cardLedger}\``)
+    .replace(
+      /curricula\/DE\/Gymnasium\/composition-views\/[^`\s|)]+\/([^`\s|)]+\.view\.json)/gu,
+      'data/views/$1',
+    )
 }
 
 const addMemoryCardReviewAuditEntries = (

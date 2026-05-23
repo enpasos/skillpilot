@@ -185,6 +185,7 @@ const enforceCommittedQualityStatus = () => {
     throw new Error([
       'Regenerated curriculum quality or memory-card review status differs from the committed files.',
       'Run `npm run quality:memory-card-review:report:all` and `npm run quality:curriculum-status`, review the status files, and commit them.',
+      'Run `npm run export:subject-release-gate:ci` locally to reproduce the GitHub Actions enforcement path.',
       diff.trim(),
     ].filter(Boolean).join('\n\n'))
   }

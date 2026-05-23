@@ -111,7 +111,14 @@ cd app
 npm run export:subject-release-gate -- --version 0.1.0
 ```
 
-In CI the same command is run with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if the regenerated curriculum quality status or configured memory-card review reports differ from the committed files, if a configured memory-card review ledger fails `quality:memory-card-review:check`, or if the release package would be built from a dirty source tree.
+To reproduce the GitHub Actions gate exactly, run:
+
+```bash
+cd app
+npm run export:subject-release-gate:ci
+```
+
+The CI-parity command runs the release gate with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if the regenerated curriculum quality status or configured memory-card review reports differ from the committed files, if a configured memory-card review ledger fails `quality:memory-card-review:check`, or if the release package would be built from a dirty source tree.
 
 For a publication candidate, include the live source-link audit in the release gate:
 
