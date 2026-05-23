@@ -8,7 +8,7 @@ import {
   type CompositionViewNode,
 } from './authoring/compositionViewAuthoring'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
-import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from './durationModel'
+import { normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './personalCurriculumStageScope'
 
@@ -318,9 +318,8 @@ export const deriveRuntimeGoalPlacementFilters = ({
   pushScopedFilter(filters, activeFilter)
 
   const durationModel = [
-    rootConfig?.durationModel,
     landscapeConfig?.durationModel,
-    rootConfig || landscapeConfig ? DEFAULT_DURATION_MODEL : undefined,
+    rootConfig?.durationModel,
   ]
     .map((value) => normalizeDurationModel(value))
     .find((value): value is NonNullable<typeof value> => !!value)
@@ -357,9 +356,8 @@ export const deriveRuntimeCompositionScope = ({
   const courseProfileCandidate = [landscapeFilterId, activeFilter].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
   const durationModel = [
-    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.durationModel,
     personalCurriculum[landscapeId]?.durationModel,
-    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID] || personalCurriculum[landscapeId] ? DEFAULT_DURATION_MODEL : undefined,
+    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.durationModel,
     rootFilterId,
     landscapeFilterId,
     activeFilter,

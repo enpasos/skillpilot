@@ -24,7 +24,7 @@ import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { goalMatchesFilters, isWildcardFilter } from '../utils/goalFilters'
 import { goalMatchesGlobalStageScope } from '../utils/personalCurriculumStageScope'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
-import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from '../utils/durationModel'
+import { normalizeDurationModel } from '../utils/durationModel'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -138,7 +138,7 @@ export const TrainerView: React.FC<TrainerViewProps> = ({
   }, [activeClass])
   const activeClassRootDurationModel = useMemo(() => {
     if (!activeClass?.rootLandscapeId) return undefined
-    return normalizeDurationModel(activeClass.personalConfig?.[activeClass.rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL
+    return normalizeDurationModel(activeClass.personalConfig?.[activeClass.rootLandscapeId]?.durationModel) ?? undefined
   }, [activeClass])
   const activeClassLandscapeFilterId = useMemo(() => {
     if (!activeClass) return undefined

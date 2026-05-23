@@ -35,7 +35,6 @@ import {
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
 import { applyDefaultGlobalStageScope } from '../utils/personalCurriculumStageScope'
-import { DEFAULT_DURATION_MODEL, normalizeDurationModel } from '../utils/durationModel'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
@@ -121,10 +120,11 @@ const normalizePersonalConfig = (
     })
     if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
       const stageScoped = applyDefaultGlobalStageScope(next).config
+      const rootConfig = { ...stageScoped[rootLandscapeId] }
+      delete rootConfig.durationModel
       stageScoped[rootLandscapeId] = {
-        ...stageScoped[rootLandscapeId],
-        selected: stageScoped[rootLandscapeId]?.selected ?? true,
-        durationModel: normalizeDurationModel(stageScoped[rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL,
+        ...rootConfig,
+        selected: rootConfig.selected ?? true,
       }
       return stageScoped
     }
@@ -157,11 +157,12 @@ const normalizePersonalConfig = (
     normalized = stageScoped.config
     corrected = corrected || stageScoped.corrected
     const rootConfig = normalized[rootLandscapeId]
-    if (!normalizeDurationModel(rootConfig?.durationModel)) {
+    if (rootConfig?.durationModel) {
+      const nextRootConfig = { ...rootConfig }
+      delete nextRootConfig.durationModel
       normalized[rootLandscapeId] = {
-        ...rootConfig,
-        selected: rootConfig?.selected ?? true,
-        durationModel: DEFAULT_DURATION_MODEL,
+        ...nextRootConfig,
+        selected: nextRootConfig.selected ?? true,
       }
       corrected = true
     }

@@ -9,12 +9,18 @@ import {
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
     getGlobalStageScopeOptions,
 } from '../utils/personalCurriculumStageScope'
-import { DEFAULT_DURATION_MODEL, getDurationModelOptions, normalizeDurationModel } from '../utils/durationModel'
+import {
+    getDurationModelOptions,
+    getOfferedGymnasiumDurationModels,
+    isGymnasiumSubjectOfferedForStageSelection,
+    normalizeOfferedDurationModel,
+} from '../utils/durationModel'
 import {
     formatJurisdictionScopedTitle,
     getDisplayCourseProfileFilters,
     getDisplayFiltersForSelection,
 } from '../utils/filterLabels'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 
 interface LandscapeSummary {
@@ -118,10 +124,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         })
         if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
             const stageScoped = applyDefaultGlobalStageScope(initial).config
+            const rootConfig = { ...stageScoped[rootLandscapeId] }
+            delete rootConfig.durationModel
             stageScoped[rootLandscapeId] = {
-                ...stageScoped[rootLandscapeId],
-                selected: stageScoped[rootLandscapeId]?.selected ?? true,
-                durationModel: normalizeDurationModel(stageScoped[rootLandscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL,
+                ...rootConfig,
+                selected: rootConfig.selected ?? true,
             }
             return stageScoped
         }
@@ -150,10 +157,6 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const [isApplying, setIsApplying] = useState(false)
     const stageScopeOptions = React.useMemo(
         () => getGlobalStageScopeOptions(localizedLanguage),
-        [localizedLanguage],
-    )
-    const durationModelOptions = React.useMemo(
-        () => getDurationModelOptions(localizedLanguage),
         [localizedLanguage],
     )
     const currentLandscape = availableLandscapes.find((landscape) => landscape.landscapeId === currentLandscapeId)
@@ -225,7 +228,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     }
 
     const setDurationModel = (landscapeId: string, durationModel: string) => {
-        const normalizedDurationModel = normalizeDurationModel(durationModel) ?? DEFAULT_DURATION_MODEL
+        const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
+        const offeredDurationModels = getOfferedGymnasiumDurationModels(landscapeId, rootJurisdiction)
+        const normalizedDurationModel = normalizeOfferedDurationModel(durationModel, offeredDurationModels)
+        if (!normalizedDurationModel) return
         setConfig(prev => ({
             ...prev,
             [landscapeId]: {
@@ -234,6 +240,63 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 durationModel: normalizedDurationModel,
             },
         }))
+    }
+
+    const normalizeDurationScopes = (draft: PersonalCurriculumConfig): PersonalCurriculumConfig => {
+        if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
+            return draft
+        }
+
+        const stageSelection = getGlobalStageScopeSelection(draft)
+        const rootJurisdiction = draft[rootLandscapeId]?.filterId
+        const hasJurisdictionScope = normalizeJurisdictionCode(rootJurisdiction) !== null
+        const shouldApplyDurationScope = stageSelection.sek1Selected
+        const shouldRestrictToOfferedContent = hasJurisdictionScope
+        const next: PersonalCurriculumConfig = { ...draft }
+        const rootConfig = { ...next[rootLandscapeId] }
+        delete rootConfig.durationModel
+        next[rootLandscapeId] = {
+            ...rootConfig,
+            selected: rootConfig.selected ?? true,
+        }
+
+        Object.entries(next).forEach(([landscapeId, value]) => {
+            if (
+                landscapeId === rootLandscapeId
+                || landscapeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+                || landscapeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2
+            ) {
+                return
+            }
+
+            const offeredDurationModels = value.selected && shouldApplyDurationScope
+                ? getOfferedGymnasiumDurationModels(landscapeId, rootJurisdiction)
+                : []
+            if (
+                shouldRestrictToOfferedContent
+                && value.selected
+                && !isGymnasiumSubjectOfferedForStageSelection(landscapeId, rootJurisdiction, stageSelection)
+            ) {
+                const withoutDurationModel = { ...value, selected: false }
+                delete withoutDurationModel.durationModel
+                next[landscapeId] = withoutDurationModel
+                return
+            }
+            const normalizedDurationModel = normalizeOfferedDurationModel(value.durationModel, offeredDurationModels)
+            if (normalizedDurationModel) {
+                next[landscapeId] = {
+                    ...value,
+                    durationModel: normalizedDurationModel,
+                }
+                return
+            }
+
+            const withoutDurationModel = { ...value }
+            delete withoutDurationModel.durationModel
+            next[landscapeId] = withoutDurationModel
+        })
+
+        return next
     }
 
     const toggleExpand = (landscapeId: string) => {
@@ -286,7 +349,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
         setIsApplying(true)
         try {
-            await onApply(config, { strategy, autoPilot, strictMode })
+            await onApply(normalizeDurationScopes(config), { strategy, autoPilot, strictMode })
             onClose()
         } finally {
             setIsApplying(false)
@@ -302,14 +365,32 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         .filter(l => l.landscapeId !== rootLandscapeId)
     const primaryChildrenLandscapes = childrenLandscapes.filter((landscape) => !isCompatibilityOnlyLandscape(landscape))
     const compatibilityChildrenLandscapes = childrenLandscapes.filter((landscape) => isCompatibilityOnlyLandscape(landscape))
+    const globalStageSelection = getGlobalStageScopeSelection(config)
+    const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
+    const shouldRestrictChildrenToOfferedContent =
+        rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        && normalizeJurisdictionCode(rootJurisdiction) !== null
+    const displayedPrimaryChildrenLandscapes = shouldRestrictChildrenToOfferedContent
+        ? primaryChildrenLandscapes.filter((landscape) =>
+            isGymnasiumSubjectOfferedForStageSelection(landscape.landscapeId, rootJurisdiction, globalStageSelection),
+        )
+        : primaryChildrenLandscapes
 
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const globalStageSelection = getGlobalStageScopeSelection(config)
         const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        const shouldShowDurationModelScope = shouldShowGlobalStageScope && globalStageSelection.sek1Selected
-        const currentDurationModel = normalizeDurationModel(config[landscape.landscapeId]?.durationModel) ?? DEFAULT_DURATION_MODEL
+        const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
+        const offeredDurationModels = !isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && globalStageSelection.sek1Selected && isSelected
+            ? getOfferedGymnasiumDurationModels(landscape.landscapeId, rootJurisdiction)
+            : []
+        const durationModelOptions = getDurationModelOptions(localizedLanguage, offeredDurationModels)
+        const shouldShowDurationModelControls = durationModelOptions.length > 0
+        const currentDurationModel = normalizeOfferedDurationModel(
+            config[landscape.landscapeId]?.durationModel,
+            offeredDurationModels,
+        )
         const effectiveFilters = getDisplayCourseProfileFilters(landscape.filters, localizedLanguage)
         const displayFilters = isRoot
             ? getDisplayFiltersForSelection(effectiveFilters, localizedLanguage)
@@ -317,7 +398,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const hasFilters = effectiveFilters.length > 0
         const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
         const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
-        const isExpandable = isRoot || showFilterControls
+        const showDetailControls = showFilterControls || shouldShowDurationModelControls
+        const isExpandable = isRoot || showDetailControls
         const isExpanded = expanded.has(landscape.landscapeId)
         const rawDisplayLabel = isRoot
             ? formatJurisdictionScopedTitle(landscape.title, currentFilter, localizedLanguage)
@@ -355,14 +437,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     </span>
                 </div>
 
-                {showFilterControls && isExpanded && (
+                {showDetailControls && isExpanded && (
                     <div className={`${isRoot ? 'ml-11 mt-2 mb-3 flex flex-col gap-1 rounded-lg border border-border-color bg-input-bg/40 p-3' : 'ml-11 flex flex-col gap-1 mt-1 mb-2 border-l-2 border-border-color pl-2'}`}>
-                        {isRoot && (
+                        {showFilterControls && isRoot && (
                             <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
                                 {setupCopy.rootFilterLabel}
                             </div>
                         )}
-                        {displayFilters.map(f => (
+                        {showFilterControls && displayFilters.map(f => (
                             <label
                                 key={f.id}
                                 className={`flex items-center gap-2 p-1.5 rounded cursor-pointer hover:bg-input-bg/50 transition-colors ${currentFilter === f.id ? 'text-sky-600 dark:text-sky-300' : 'text-text-secondary'
@@ -404,7 +486,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                 })}
                             </>
                         )}
-                        {shouldShowDurationModelScope && (
+                        {shouldShowDurationModelControls && (
                             <>
                                 <div className="mt-4 mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary">
                                     {setupCopy.durationModelLabel}
@@ -439,9 +521,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 {/* Render Children if this is Root */}
                 {isRoot && (
                     <div className="mt-3 space-y-4">
-                        {primaryChildrenLandscapes.length > 0 && (
+                        {displayedPrimaryChildrenLandscapes.length > 0 && (
                             <div className="grid gap-3 md:grid-cols-2">
-                                {primaryChildrenLandscapes.map(child => renderNode(child, false))}
+                                {displayedPrimaryChildrenLandscapes.map(child => renderNode(child, false))}
                             </div>
                         )}
                         {compatibilityChildrenLandscapes.length > 0 && (

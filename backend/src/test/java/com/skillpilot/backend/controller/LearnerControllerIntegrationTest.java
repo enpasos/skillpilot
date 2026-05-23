@@ -6023,12 +6023,12 @@ public class LearnerControllerIntegrationTest {
             boolean sek2Selected) {
         return """
                 {
-                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "%s", "durationModel": "%s"},
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "%s"},
                   "__skillpilot_stage_scope_sek1__": {"selected": %s},
                   "__skillpilot_stage_scope_sek2__": {"selected": %s},
-                  "%s": {"selected": true, "filterId": "%s"}
+                  "%s": {"selected": true, "filterId": "%s", "durationModel": "%s"}
                 }
-                """.formatted(jurisdiction, durationModel, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile);
+                """.formatted(jurisdiction, sek1Selected, sek2Selected, subjectLandscapeId, courseProfile, durationModel);
     }
 
     private String findResultStatus(JsonNode results, String skillpilotId) {

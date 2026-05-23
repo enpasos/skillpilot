@@ -8,8 +8,14 @@ import {
   GLOBAL_STAGE_SCOPE_CONFIG_IDS,
   getGlobalStageScopeOptions,
 } from '../utils/personalCurriculumStageScope'
-import { DEFAULT_DURATION_MODEL, getDurationModelOptions, normalizeDurationModel } from '../utils/durationModel'
+import {
+  getDurationModelOptions,
+  getOfferedGymnasiumDurationModels,
+  isGymnasiumSubjectOfferedForStageSelection,
+  normalizeOfferedDurationModel,
+} from '../utils/durationModel'
 import { getDisplayCourseProfileFilters, getDisplayFiltersForSelection } from '../utils/filterLabels'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { getClassSetupCopy } from '../utils/curriculumSetupCopy'
 
 interface ClassSetupProps {
@@ -46,7 +52,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     getDisplayFiltersForSelection(rootLandscape?.meta.filters ?? [], localizedLanguage)[0]?.id ?? 'ALL'
   ))
   const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() => applyDefaultGlobalStageScope({}).config)
-  const [selectedDurationModel, setSelectedDurationModel] = useState(DEFAULT_DURATION_MODEL)
+  const [selectedDurationModel, setSelectedDurationModel] = useState('')
   const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('ALL')
   const [studentNames, setStudentNames] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -67,14 +73,32 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     [effectiveRootFilters, localizedLanguage],
   )
   const stageSelection = getGlobalStageScopeSelection(curriculumConfig)
+  const shouldRestrictSubjectsToOfferedContent =
+    Boolean(rootLandscape)
+    && normalizeJurisdictionCode(selectedRootFilter) !== null
+  const selectableSubjectLandscapes = useMemo(
+    () => shouldRestrictSubjectsToOfferedContent
+      ? subjectLandscapes.filter((entry) =>
+        isGymnasiumSubjectOfferedForStageSelection(entry.meta.landscapeId, selectedRootFilter, stageSelection),
+      )
+      : subjectLandscapes,
+    [selectedRootFilter, shouldRestrictSubjectsToOfferedContent, stageSelection, subjectLandscapes],
+  )
   const stageScopeOptions = useMemo(
     () => getGlobalStageScopeOptions(localizedLanguage),
     [localizedLanguage],
   )
-  const durationModelOptions = useMemo(
-    () => getDurationModelOptions(localizedLanguage),
-    [localizedLanguage],
+  const offeredDurationModels = useMemo(
+    () => stageSelection.sek1Selected
+      ? getOfferedGymnasiumDurationModels(selectedLandscapeId, selectedRootFilter)
+      : [],
+    [selectedLandscapeId, selectedRootFilter, stageSelection.sek1Selected],
   )
+  const durationModelOptions = useMemo(
+    () => getDurationModelOptions(localizedLanguage, offeredDurationModels),
+    [localizedLanguage, offeredDurationModels],
+  )
+  const normalizedSelectedDurationModel = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
   const showCourseProfileControls = stageSelection.sek2Selected && selectedLandscapeFilters.length > 0
   const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
   const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -91,6 +115,24 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
       setSelectedSubjectFilter(defaultFilterId)
     }
   }, [selectedLandscapeFilters, selectedSubjectFilter])
+
+  useEffect(() => {
+    if (selectableSubjectLandscapes.length === 0) return
+    if (!selectableSubjectLandscapes.some((entry) => entry.meta.landscapeId === selectedLandscapeId)) {
+      const nextLandscapeId = selectableSubjectLandscapes[0]?.meta.landscapeId ?? ''
+      setSelectedLandscapeId(nextLandscapeId)
+      if (nextLandscapeId) {
+        localStorage.setItem('skillpilot_last_landscape', nextLandscapeId)
+      }
+    }
+  }, [selectableSubjectLandscapes, selectedLandscapeId])
+
+  useEffect(() => {
+    const normalized = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
+    if (normalized !== selectedDurationModel) {
+      setSelectedDurationModel(normalized ?? '')
+    }
+  }, [offeredDurationModels, selectedDurationModel])
 
   const toggleGlobalStageScope = (stageScopeId: string) => {
     setCurriculumConfig((prev) => {
@@ -118,7 +160,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   const handleCreate = async (event: React.FormEvent) => {
     event.preventDefault()
-    if (!selectedLandscapeId) {
+    if (!selectedLandscapeId || !selectableSubjectLandscapes.some((entry) => entry.meta.landscapeId === selectedLandscapeId)) {
       setError(copy.selectSubjectFirst)
       return
     }
@@ -153,13 +195,13 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               [rootLandscape.meta.landscapeId]: {
                 selected: true,
                 filterId: normalizeWildcardFilter(selectedRootFilter),
-                durationModel: normalizeDurationModel(selectedDurationModel) ?? DEFAULT_DURATION_MODEL,
               },
             }
           : {}),
         [selectedLandscapeId]: {
           selected: true,
           filterId: showCourseProfileControls ? normalizeWildcardFilter(selectedSubjectFilter) : undefined,
+          ...(normalizedSelectedDurationModel ? { durationModel: normalizedSelectedDurationModel } : {}),
         },
       }).config
 
@@ -240,32 +282,6 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               </div>
             </div>
 
-            {stageSelection.sek1Selected && (
-              <div>
-                <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.durationModelLabel}</label>
-                <div className="flex flex-col gap-2 rounded border border-border-color bg-input-bg/40 p-3">
-                  <p className="text-xs text-text-secondary">{copy.durationModelHint}</p>
-                  {durationModelOptions.map((option) => {
-                    const checked = normalizeDurationModel(selectedDurationModel) === option.id
-                    return (
-                      <label key={option.id} className="flex items-start gap-2 text-text-primary">
-                        <input
-                          type="radio"
-                          name="class-duration-model"
-                          checked={checked}
-                          onChange={() => setSelectedDurationModel(option.id)}
-                          className="mt-0.5 w-4 h-4 border-border-color bg-input-bg text-sky-500 focus:ring-sky-500"
-                        />
-                        <span className="flex flex-col">
-                          <span>{option.label}</span>
-                          <span className="text-xs text-text-secondary">{option.description}</span>
-                        </span>
-                      </label>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
           </div>
         )}
 
@@ -280,7 +296,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               }}
               className="w-full bg-input-bg border border-border-color rounded p-2 text-text-primary transition-colors"
             >
-              {subjectLandscapes.map((entry) => (
+              {selectableSubjectLandscapes.map((entry) => (
                 <option key={entry.meta.landscapeId} value={entry.meta.landscapeId}>
                   {entry.meta.subject?.trim() || entry.meta.title}
                 </option>
@@ -308,6 +324,33 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               </div>
             )}
           </div>
+
+          {durationModelOptions.length > 0 && (
+            <div>
+              <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.durationModelLabel}</label>
+              <div className="flex flex-col gap-2 rounded border border-border-color bg-input-bg/40 p-3">
+                <p className="text-xs text-text-secondary">{copy.durationModelHint}</p>
+                {durationModelOptions.map((option) => {
+                  const checked = normalizedSelectedDurationModel === option.id
+                  return (
+                    <label key={option.id} className="flex items-start gap-2 text-text-primary">
+                      <input
+                        type="radio"
+                        name="class-duration-model"
+                        checked={checked}
+                        onChange={() => setSelectedDurationModel(option.id)}
+                        className="mt-0.5 w-4 h-4 border-border-color bg-input-bg text-sky-500 focus:ring-sky-500"
+                      />
+                      <span className="flex flex-col">
+                        <span>{option.label}</span>
+                        <span className="text-xs text-text-secondary">{option.description}</span>
+                      </span>
+                    </label>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         <div>

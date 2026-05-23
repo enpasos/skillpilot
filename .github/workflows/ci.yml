@@ -71,6 +71,14 @@ jobs:
         run: npm run check:source-landscape-registry
       - name: Check Hessen Math G8/G9 Projection
         run: npm run check:he-math-duration-projection
+      - name: Check generated Math G8/G9 Composition Views
+        run: npm run check:math-duration-composition-views
+      - name: Check generated German Sek-I Composition Views
+        run: npm run check:german-seki-composition-views
+      - name: Check generated History Sek-I Composition Views
+        run: npm run check:history-seki-composition-views
+      - name: Check Gymnasium Duration Offerings
+        run: npm run check:gymnasium-duration-offerings
       - name: Check Curriculum Source Coverage
         run: npm run quality:source-coverage-audit:check
       - name: Validate Composition Views

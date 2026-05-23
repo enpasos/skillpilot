@@ -526,6 +526,31 @@ const formatRuntimeViews = (values: Map<DurationModel, string>) => {
     .join('<br>')
 }
 
+const normalizePolicyDurationModels = (policyDecision: DurationPolicyDecision | undefined) =>
+  (policyDecision?.durationModels ?? [])
+    .map(normalizeDurationModel)
+    .filter((value): value is DurationModel => !!value)
+
+const requiredSekIRuntimeDurationModels = (row: SourceReadinessRow) => {
+  const policyDurationModels = normalizePolicyDurationModels(row.policyDecision)
+  if (
+    row.policyDecision?.status === 'reviewed'
+    && row.policyDecision.decision === 'single-duration-source'
+    && policyDurationModels.length > 0
+  ) {
+    return policyDurationModels
+  }
+
+  if (row.status === 'reviewed:single-duration-source-policy' && row.durationModels.size === 1) {
+    return Array.from(row.durationModels)
+  }
+
+  return durationModels
+}
+
+const hasRequiredSekIRuntimeViews = (row: SourceReadinessRow) =>
+  requiredSekIRuntimeDurationModels(row).every((durationModel) => row.sekiRuntimeViews.has(durationModel))
+
 const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
   const lines: string[] = []
   lines.push('# Gymnasium G8/G9 Duration-Model Readiness')
@@ -554,7 +579,7 @@ const renderReport = (rows: SourceReadinessRow[], m6Subjects: string[]) => {
   lines.push('| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |')
   for (const subject of m6Subjects) {
     const subjectRows = rows.filter((row) => row.subject === subject)
-    const runtimeCovered = subjectRows.filter((row) => durationModels.every((durationModel) => row.sekiRuntimeViews.has(durationModel))).length
+    const runtimeCovered = subjectRows.filter(hasRequiredSekIRuntimeViews).length
     const runtimeMissing = subjectRows.length - runtimeCovered
     const dualReady = subjectRows.filter((row) => row.status === 'ready:dual-source-and-views').length
     const reviewedPolicy = subjectRows.filter((row) =>
