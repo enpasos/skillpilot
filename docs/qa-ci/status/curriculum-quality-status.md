@@ -1,6 +1,6 @@
 # Curriculum Quality Status
 
-Generated: 2026-05-23T04:18:49.772Z
+Generated: 2026-05-23T06:22:07.009Z
 Rules version: curriculum-quality-v2
 
 ## Summary
@@ -9,12 +9,12 @@ Rules version: curriculum-quality-v2
 | --- | ---: |
 | Curricula | 21 |
 | M0 | 11 |
-| M1 | 3 |
+| M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 7 |
+| M6 | 10 |
 
 ## Curricula
 
@@ -23,10 +23,10 @@ Rules version: curriculum-quality-v2
 | Biologie (Gymnasium, DE) | M6 | 430 | 379 | 17/17 | 16/16 | 1 | 0 | 0 |
 | Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 0 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Deutsch (Gymnasium, DE) | M1 | 354 | 291 | 31/31 | 8/16 | 1 | 0 | 1 |
+| Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
-| Geschichte (Gymnasium, DE) | M1 | 217 | 177 | 31/31 | 11/16 | 1 | 0 | 1 |
+| Geschichte (Gymnasium, DE) | M6 | 217 | 177 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
@@ -35,7 +35,7 @@ Rules version: curriculum-quality-v2
 | Mathematik (Gymnasium, DE) | M6 | 1038 | 826 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M6 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
-| Politik und Wirtschaft (Gymnasium, DE) | M1 | 512 | 439 | 33/33 | 15/16 | 1 | 0 | 1 |
+| Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -356,10 +356,10 @@ Rules version: curriculum-quality-v2
 | Biologie (Gymnasium, DE) | 16/16 | 357 | 379 | 16 | 999 | 999 | 999 | 0 | 999 | 0 | 0 | 0 | 0 | 0 | 355 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 336 | 405 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 334 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
-| Deutsch (Gymnasium, DE) | 8/16 | 268 | 291 | 16 | 6222 | 6222 | 5545 | 0 | 6222 | 0 | 0 | 677 | 0 | 8 | 268 (100%) |
+| Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
 | Französisch (Gymnasium, DE) | 2/16 | 260 | 275 | 2 | 269 | 269 | 269 | 0 | 269 | 0 | 0 | 0 | 0 | 0 | 260 (100%) |
-| Geschichte (Gymnasium, DE) | 11/16 | 156 | 177 | 16 | 4518 | 4518 | 4457 | 0 | 4518 | 0 | 0 | 61 | 0 | 5 | 156 (100%) |
+| Geschichte (Gymnasium, DE) | 16/16 | 156 | 177 | 16 | 4518 | 4518 | 4518 | 0 | 4518 | 0 | 0 | 0 | 0 | 0 | 156 (100%) |
 | Griechisch (Gymnasium, DE) | 2/16 | 170 | 185 | 2 | 710 | 710 | 710 | 0 | 710 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Gymnasium (DE) | 0/16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 (0%) |
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
@@ -368,7 +368,7 @@ Rules version: curriculum-quality-v2
 | Mathematik (Gymnasium, DE) | 16/16 | 648 | 826 | 16 | 9972 | 9972 | 9972 | 0 | 9972 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
-| Politik und Wirtschaft (Gymnasium, DE) | 15/16 | 413 | 439 | 16 | 4169 | 4169 | 3968 | 0 | 4169 | 0 | 0 | 201 | 0 | 1 | 308 (100%) |
+| Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
 | Polnisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Spanisch (Gymnasium, DE) | 2/16 | 44 | 59 | 2 | 50 | 50 | 50 | 0 | 50 | 0 | 0 | 0 | 0 | 0 | 44 (100%) |

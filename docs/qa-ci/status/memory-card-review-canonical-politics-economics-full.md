@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | kept primary cards with origin trace | 62 |
 | cards removed from active decks | 0 |
 | memory goals traced | 5/5 |
-| composition visibility scopes | 14 |
-| memory-required goals checked in views | 589 |
+| composition visibility scopes | 15 |
+| memory-required goals checked in views | 672 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -35,6 +35,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | de-be-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-be-gym-politics-economics-crossstage.view.json` | 93 | 5 | 42 | 0 |
 | de-bw-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bw-gym-politics-economics-crossstage.view.json` | 117 | 5 | 48 | 0 |
 | de-hb-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hb-gym-politics-economics-crossstage.view.json` | 73 | 5 | 28 | 0 |
+| de-he-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-he-gym-politics-economics-crossstage.view.json` | 228 | 5 | 83 | 0 |
 | de-hh-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hh-gym-politics-economics-crossstage.view.json` | 100 | 5 | 38 | 0 |
 | de-mv-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-mv-gym-politics-economics-crossstage.view.json` | 93 | 5 | 41 | 0 |
 | de-ni-gym-politics-economics-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-ni-gym-politics-economics-crossstage.view.json` | 81 | 5 | 33 | 0 |

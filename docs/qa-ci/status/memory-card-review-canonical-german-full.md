@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | kept primary cards with origin trace | 48 |
 | cards removed from active decks | 0 |
 | memory goals traced | 5/5 |
-| composition visibility scopes | 1 |
-| memory-required goals checked in views | 74 |
+| composition visibility scopes | 9 |
+| memory-required goals checked in views | 191 |
 | memory-required goals without visible memory node | 0 |
 | blocking issues | 0 |
 
@@ -32,6 +32,14 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
 | Deutsch Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/deutsch/de-de-gym-german-crossstage.view.json` | 324 | 5 | 74 | 0 |
+| de-bb-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-bb-gym-german-crossstage.view.json` | 62 | 5 | 19 | 0 |
+| de-be-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-be-gym-german-crossstage.view.json` | 62 | 5 | 19 | 0 |
+| de-bw-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-bw-gym-german-crossstage.view.json` | 108 | 5 | 32 | 0 |
+| de-by-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-by-gym-german-crossstage.view.json` | 18 | 5 | 3 | 0 |
+| de-hh-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-hh-gym-german-crossstage.view.json` | 36 | 5 | 11 | 0 |
+| de-ni-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-ni-gym-german-crossstage.view.json` | 36 | 5 | 11 | 0 |
+| de-nw-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-nw-gym-german-crossstage.view.json` | 36 | 5 | 11 | 0 |
+| de-sh-gym-german-crossstage.view.json | `curricula/DE/Gymnasium/composition-views/deutsch/de-sh-gym-german-crossstage.view.json` | 36 | 5 | 11 | 0 |
 
 ## Memory-Required Goals
 

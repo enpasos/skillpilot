@@ -224,6 +224,7 @@ const normalizeDurationModel = (value?: string): DurationModel | null => {
 }
 
 const normalizeStage = (value?: string) => value?.trim().toUpperCase() ?? ''
+const normalizeCompactStage = (value?: string) => normalizeStage(value).replace(/[\s_-]+/gu, '')
 
 const stageTouchesSekI = (stage?: string) => {
   const normalized = normalizeStage(stage)
@@ -268,8 +269,19 @@ const isSekISourceGoal = (sourceGoal: SourceGoal | undefined) => {
 
   if (grades.length > 0) return grades.some((grade) => grade >= 5 && grade <= 10)
 
-  const stage = normalizeStage(sourceGoal.stage)
-  return stage === '' || stage === 'SEKI' || stage === 'LOWERSECONDARY' || stage === 'LOWER_SECONDARY'
+  const stage = normalizeCompactStage(sourceGoal.stage)
+  return stage === ''
+    || stage === 'SEKI'
+    || stage === 'SEKUNDARSTUFEI'
+    || stage === 'LOWERSECONDARY'
+}
+
+const isExplicitSekISourceScope = (stage?: string, sourceExtractionPath?: string) => {
+  const normalizedStage = normalizeStage(stage)
+  const compactStage = normalizeCompactStage(stage)
+  return normalizedStage === 'SEKI'
+    || compactStage === 'SEKUNDARSTUFEI'
+    || /(?:^|[\\/])lower-secondary(?:[\\/]|$)/u.test(sourceExtractionPath ?? '')
 }
 
 const loadSourceGoalsById = (sourceExtractionPath: string) => {
@@ -510,10 +522,11 @@ for (const [jurisdiction, decisions] of Array.from(policiesByJurisdiction.entrie
   decisions.forEach((decision) => {
     const mapping = completeMappingsBySourcePath.get(decision.sourceExtractionPath as string)
     const sourceGoalsById = sourceGoalsBySourcePath.get(decision.sourceExtractionPath as string) ?? new Map()
+    const isExplicitSekI = isExplicitSekISourceScope(decision.stage, decision.sourceExtractionPath)
     ;(mapping?.mappings ?? []).forEach((entry) => {
       if (!entry.canonicalGoalId) return
       const sourceGoalId = entry.legacyGoalId ?? entry.sourceGoalId
-      if (sourceGoalId && !isSekISourceGoal(sourceGoalsById.get(sourceGoalId))) return
+      if (!isExplicitSekI && sourceGoalId && !isSekISourceGoal(sourceGoalsById.get(sourceGoalId))) return
       if (!goalById.has(entry.canonicalGoalId)) {
         throw new Error(`${jurisdiction} references missing canonical history goal ${entry.canonicalGoalId}`)
       }
