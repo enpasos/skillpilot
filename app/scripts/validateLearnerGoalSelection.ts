@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { getNextVisibleLearnerGoalSelection } from '../src/utils/learnerGoalSelection'
+import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../src/utils/learnerGoalSelection'
 import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import {
   applyCompositionViewProjection,
@@ -35,6 +35,39 @@ assert.equal(
   explicitRouteSelection,
   null,
   'An explicit goal route must suppress tree fallback selection.',
+)
+
+assert.equal(
+  shouldAutoRevealActiveGoal({
+    activeGoalId: 'active-goal',
+    previousRevealedActiveGoalId: 'active-goal',
+    currentRouteGoalId: 'inspected-goal',
+    pendingRouteSyncGoalId: null,
+  }),
+  false,
+  'A learner may inspect another routed tree goal without being forced back to the unchanged active goal.',
+)
+
+assert.equal(
+  shouldAutoRevealActiveGoal({
+    activeGoalId: 'active-goal',
+    previousRevealedActiveGoalId: 'previous-active-goal',
+    currentRouteGoalId: 'inspected-goal',
+    pendingRouteSyncGoalId: null,
+  }),
+  true,
+  'A real active-goal change should still reveal the new active goal.',
+)
+
+assert.equal(
+  shouldAutoRevealActiveGoal({
+    activeGoalId: 'active-goal',
+    previousRevealedActiveGoalId: 'active-goal',
+    currentRouteGoalId: '',
+    pendingRouteSyncGoalId: null,
+  }),
+  true,
+  'Opening the learner cockpit without an explicit goal route should still reveal the active goal.',
 )
 
 const activeGoalFallback = getNextVisibleLearnerGoalSelection({
