@@ -8,6 +8,30 @@ interface NextVisibleLearnerGoalSelectionInput {
   visibleRootGoalIds?: Iterable<string>
 }
 
+interface ActiveGoalRevealInput {
+  activeGoalId?: string | null
+  previousRevealedActiveGoalId?: string | null
+  currentRouteGoalId?: string | null
+  pendingRouteSyncGoalId?: string | null
+}
+
+export function shouldAutoRevealActiveGoal({
+  activeGoalId,
+  previousRevealedActiveGoalId,
+  currentRouteGoalId,
+  pendingRouteSyncGoalId,
+}: ActiveGoalRevealInput): boolean {
+  if (!activeGoalId) return false
+
+  const activeGoalChanged = activeGoalId !== previousRevealedActiveGoalId
+  if (activeGoalChanged) return true
+
+  const initialRouteNeedsSync = !currentRouteGoalId
+  if (!initialRouteNeedsSync) return false
+
+  return pendingRouteSyncGoalId !== activeGoalId
+}
+
 export function getNextVisibleLearnerGoalSelection({
   currentGoalId,
   currentRouteGoalId,

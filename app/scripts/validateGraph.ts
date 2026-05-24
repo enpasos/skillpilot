@@ -63,6 +63,7 @@ const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
 const CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
+const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
 
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
 const RULE_PHASE_MONOTONIC = 'GVR-002'
@@ -76,6 +77,7 @@ const RULE_EXPLICIT_TYPE_CONSISTENCY = 'GVR-009'
 const RULE_SHORTKEY_UNIQUE_WITHIN_LANDSCAPE = 'GVR-010'
 const RULE_SCOPED_TRANSITIVE_TO_MOTIVATION = 'GVR-011'
 const RULE_SCOPED_FULL_ROUTE_COVERAGE = 'GVR-012'
+const RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY = 'GVR-013'
 const HESSEN_GYM_OVERVIEW_LANDSCAPE_ID = 'bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da'
 const motivationRuleLandscapeIds = new Set<string>([
   '3e56aa75-c76c-4de5-883b-0aac98297846', // DE_HES_S_GYM_2_BIOLOGIE
@@ -113,7 +115,7 @@ interface ParsedLandscape {
 
 interface ScopedMotivationConnectivityProfile {
   landscapeId: string
-  anchorGoalId: string
+  anchorGoalIds: string[]
   goalSelector: (goal: UiGoal) => boolean
   scopeLabel: string
 }
@@ -122,6 +124,12 @@ interface ScopedFullRouteCoverageProfile {
   landscapeId: string
   motivationAnchorGoalIds: string[]
   terminalGoalIds: string[]
+  goalSelector: (goal: UiGoal) => boolean
+  scopeLabel: string
+}
+
+interface ScopedAtomicDirectRequiresOnlyProfile {
+  landscapeId: string
   goalSelector: (goal: UiGoal) => boolean
   scopeLabel: string
 }
@@ -396,12 +404,19 @@ function isCanonicalGymMathSek1AtomicGoal(goal: UiGoal): boolean {
   return isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal) && !isMemoryGoal(goal)
 }
 
+function isCanonicalGymMathAtomicGoal(goal: UiGoal): boolean {
+  return isAtomicGoal(goal) && !isMemoryGoal(goal)
+}
+
 const scopedMotivationConnectivityProfiles: ScopedMotivationConnectivityProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
-    anchorGoalId: CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
-    goalSelector: isCanonicalGymMathSek1AtomicGoal,
-    scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
+    anchorGoalIds: [
+      CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID,
+      CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID,
+    ],
+    goalSelector: isCanonicalGymMathAtomicGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / all non-memory atomic goals',
   },
 ]
 
@@ -412,6 +427,14 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
     terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
     goalSelector: isCanonicalGymMathSek1AtomicGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
+  },
+]
+
+const scopedAtomicDirectRequiresOnlyProfiles: ScopedAtomicDirectRequiresOnlyProfile[] = [
+  {
+    landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
+    goalSelector: isCanonicalGymMathAtomicGoal,
+    scopeLabel: 'canonical DE Gymnasium mathematics / all non-memory atomic goals',
   },
 ]
 
@@ -813,28 +836,31 @@ function validateLandscape(landscape: ParsedLandscape) {
     if (profile.landscapeId !== landscape.landscapeId) continue
 
     const scopedGoals = landscape.goals.filter(profile.goalSelector)
-    const anchorGoal = localMap.get(profile.anchorGoalId)
-    const anchorLabel = anchorGoal
-      ? `${anchorGoal.id} (${anchorGoal.title})`
-      : profile.anchorGoalId
+    const missingAnchorIds = profile.anchorGoalIds.filter((goalId) => !localMap.has(goalId))
+    const anchorLabels = profile.anchorGoalIds
+      .map((goalId) => {
+        const goal = localMap.get(goalId)
+        return goal ? `${goal.id} (${goal.title})` : goalId
+      })
+      .join(', ')
 
-    if (!anchorGoal) {
+    if (missingAnchorIds.length > 0) {
       addIssue(
         graphRuleIssueLevel,
         landscape.landscapeId,
-        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Configured motivation anchor ${anchorLabel} is missing for scope ${profile.scopeLabel}.`,
+        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Configured motivation anchor(s) ${missingAnchorIds.join(', ')} are missing for scope ${profile.scopeLabel}.`,
       )
       continue
     }
 
     scopedGoals.forEach((goal) => {
-      if (goal.id === anchorGoal.id) return
-      if (hasPathToTarget(goal.id, anchorGoal.id, effectiveEdges)) return
+      if (profile.anchorGoalIds.includes(goal.id)) return
+      if (profile.anchorGoalIds.some((anchorGoalId) => hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))) return
 
       addIssue(
         graphRuleIssueLevel,
         landscape.landscapeId,
-        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Scoped node ${goal.id} (${goal.title}) has no transitive effective-requires path to motivation anchor ${anchorLabel} for scope ${profile.scopeLabel}.`,
+        `[${RULE_SCOPED_TRANSITIVE_TO_MOTIVATION}] Scoped node ${goal.id} (${goal.title}) has no transitive effective-requires path to any motivation anchor (${anchorLabels}) for scope ${profile.scopeLabel}.`,
       )
     })
   }
@@ -898,6 +924,27 @@ function validateLandscape(landscape: ParsedLandscape) {
         landscape.landscapeId,
         `[${RULE_SCOPED_FULL_ROUTE_COVERAGE}] Scoped node ${goal.id} (${goal.title}) is missing ${missingSegments.join(' and ')} for scope ${profile.scopeLabel}.`,
       )
+    })
+  }
+
+  for (const profile of scopedAtomicDirectRequiresOnlyProfiles) {
+    if (profile.landscapeId !== landscape.landscapeId) continue
+
+    const scopedGoals = landscape.goals.filter(profile.goalSelector)
+    scopedGoals.forEach((goal) => {
+      goal.requires.forEach((rawReq) => {
+        const parsed = parseReference(rawReq, landscape.landscapeId)
+        if (parsed.landscapeId !== landscape.landscapeId) return
+
+        const requiredGoal = localMap.get(parsed.goalId)
+        if (!requiredGoal || isAtomicGoal(requiredGoal)) return
+
+        addIssue(
+          graphRuleIssueLevel,
+          landscape.landscapeId,
+          `[${RULE_SCOPED_ATOMIC_DIRECT_REQUIRES_ONLY}] Scoped atomic node ${goal.id} (${goal.title}) directly requires non-atomic prerequisite ${requiredGoal.id} (${requiredGoal.title}) for scope ${profile.scopeLabel}. Replace the cluster prerequisite with reviewed atomic prerequisites.`,
+        )
+      })
     })
   }
 

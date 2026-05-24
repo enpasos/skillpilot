@@ -46,8 +46,9 @@ This is the single source of truth for algorithmic graph validation in CI.
 | `GVR-008` | Committed landscape goals must use canonical `resourceLinks` as the only supported goal-level helper-link field. | Local landscape | `error` |
 | `GVR-009` | If explicit `type` metadata is present, it must match the canonical node classification derived from direct `contains` children (`atomic` iff leaf, `cluster` iff non-leaf). | Local landscape | `error` |
 | `GVR-010` | If `shortKey` is present, it must be unique within the logical `landscapeId` (duplicates across locale serializations are allowed only when they refer to the same goal id). | Logical landscape (`landscapeId`, including multi-file localizations) | `error` |
-| `GVR-011` | Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to the configured motivation anchor via effective `requires`. | Profile-defined rollout scopes | `error` |
+| `GVR-011` | Configured scoped motivation-connectivity profile: every node selected by the profile must have a transitive path to at least one configured motivation anchor via effective `requires`. | Profile-defined rollout scopes | `error` |
 | `GVR-012` | Configured scoped full-route-coverage profile: every node selected by the profile must have a transitive path to one configured motivation anchor and to one configured terminal autonomy goal via effective `requires`. | Profile-defined rollout scopes | `error` |
+| `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
 
 ## Core validator checks (always active, fail CI)
 
@@ -170,6 +171,11 @@ The conceptual target model described in `docs/concept/curriculum-graph/graph-de
 - mature route-quality checks should eventually validate atomic didactic routes from motivation anchors to terminal autonomy goals
 - progression semantics in the concept doc are defined via atomic mastery and derived cluster satisfaction, but this is not yet a CI validation target
 
+For reviewed canonical route scopes, this stricter target model is now enforced incrementally:
+
+- `GVR-013` forbids direct local `requires` from selected atomic route nodes to clusters.
+- If a cluster was previously used as a prerequisite shortcut, the route must be repaired by replacing it with reviewed atomic prerequisites. The mechanical migration fallback is to expand the cluster to its atomic descendants, but a tighter didactic prerequisite set is preferred when it has been reviewed.
+
 Until the validator and landscapes are migrated, this file distinguishes clearly between:
 
 - rules that are implemented today and have stable `GVR-*` IDs
@@ -183,24 +189,25 @@ Rule semantics:
 
 - a validator profile declares:
   - one target landscape
-  - one reviewed motivation anchor goal
+  - one or more reviewed motivation anchor goals
   - one scoped goal selector
-- `GVR-011` fails if any selected node except the anchor itself has no transitive path to that anchor in the effective-requires graph.
+- `GVR-011` fails if any selected node except the anchor nodes themselves has no transitive path to at least one configured anchor in the effective-requires graph.
 
 Current active profile:
 
 - landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
-- scope: Sekundarstufe I
-- anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
+- scope: all non-memory atomic goals
+- anchors:
+  - `Warum Mathematik? – Entdecken, Muster & Alltag`
+  - `Warum Mathematik? – Denken, Muster & Zukunft`
 - selected nodes:
-  - all goals tagged `phase:SekI`
-  - plus goals whose normalized phase is `J*`
-  - plus goals whose topic code contains `SEK1`
+  - every atomic goal in the canonical mathematics landscape except memory/SRS goals
 
 Interpretation:
 
 - This keeps the rule formulation general while still allowing rollout-specific route guarantees where the graph has already reached review-safe maturity.
 - It is stronger than composition-view ordering alone: the learner-facing tree may start with the motivation node, but `GVR-011` additionally requires the authored graph semantics to reflect that anchor.
+- The current mathematics profile intentionally does not rely on `phase`, `topicCode`, or placement metadata, because many canonical atomic goals are intentionally shared across projected views and do not carry one stable year/phase label.
 
 ## Scoped full route coverage (`GVR-012`)
 
@@ -233,6 +240,30 @@ Interpretation:
 - `GVR-012` is the migration-compatible full-route check for reviewed scopes where both ends of the route are now authored explicitly.
 - It does **not** yet prove that the route is authored canonically on the atomic direct-prerequisite layer; it validates full route coverage on the current effective-requires projection.
 - This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.
+
+## Scoped atomic direct requires (`GVR-013`)
+
+`GVR-013` closes the gap between effective route coverage and canonical route authoring.
+
+Rule semantics:
+
+- a validator profile declares:
+  - one target landscape
+  - one scoped atomic goal selector
+- for every selected atomic goal, every direct local `requires` edge must point to another atomic goal.
+- direct `requires` edges to cluster goals fail the check, because they make the route depend on implicit cluster expansion and can create misleading root nodes in requires-flow visualizations.
+
+Current active profile:
+
+- landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
+- scope: all non-memory atomic goals
+- selected nodes:
+  - every atomic goal in the canonical mathematics landscape except memory/SRS goals
+
+Interpretation:
+
+- A cluster may still be used for navigation through `contains`, but not as a direct prerequisite target inside this reviewed route scope.
+- The rule is deliberately narrower than a repository-wide ban, because older landscapes still use the compatibility model. New mature scopes should add their own `GVR-013` profile before being marked route-stable.
 
 ## Motivation-anchor rollout rules (`GVR-004`, `GVR-005`)
 

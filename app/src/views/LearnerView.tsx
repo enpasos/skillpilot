@@ -41,7 +41,7 @@ import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
-import { getNextVisibleLearnerGoalSelection } from '../utils/learnerGoalSelection'
+import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
@@ -1190,15 +1190,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       pendingActiveGoalRouteSyncRef.current = null
     }
 
-    const activeGoalChanged = effectiveActiveGoalId !== prevRevealedActiveGoalIdRef.current
-    const routeNeedsSync = currentRouteGoalId !== effectiveActiveGoalId
-    if (!activeGoalChanged && !routeNeedsSync) return
-    if (!activeGoalChanged && pendingActiveGoalRouteSyncRef.current === effectiveActiveGoalId) return
+    if (!shouldAutoRevealActiveGoal({
+      activeGoalId: effectiveActiveGoalId,
+      previousRevealedActiveGoalId: prevRevealedActiveGoalIdRef.current,
+      currentRouteGoalId,
+      pendingRouteSyncGoalId: pendingActiveGoalRouteSyncRef.current,
+    })) return
 
     console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
     revealActiveGoal()
     prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
-    pendingActiveGoalRouteSyncRef.current = routeNeedsSync ? effectiveActiveGoalId : null
+    pendingActiveGoalRouteSyncRef.current = currentRouteGoalId ? null : effectiveActiveGoalId
   }, [currentRouteGoalId, effectiveActiveGoalId, effectiveLearnerParentMap, revealActiveGoal])
 
 
