@@ -26,6 +26,10 @@ Detailed semantics for maturity levels, QA scopes, route coverage, and every `CQ
 - Source-coverage audit generator: `app/scripts/generateCurriculumSourceCoverageAudit.ts`
 - Source-coverage audit JSON: `docs/qa-ci/status/curriculum-source-coverage-audit.json`
 - Source-coverage audit Markdown: `docs/qa-ci/status/curriculum-source-coverage-audit.md`
+- MEM SPARQL consistency audit generator: `app/scripts/generateMemSparqlConsistencyAudit.ts`
+- MEM SPARQL consistency audit config: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
+- MEM SPARQL consistency audit JSON: `docs/qa-ci/status/mem-sparql-consistency-audit.json`
+- MEM SPARQL consistency audit Markdown: `docs/qa-ci/status/mem-sparql-consistency-audit.md`
 - Workbench route: `/quality-dashboard`
 - Local dev endpoint: `/__quality-dashboard/status`
 - Local status-file endpoint: `/__quality-dashboard/file?path=docs/qa-ci/status/<file>.md`
@@ -42,9 +46,12 @@ npm run quality:memory-card-review:pilot-dossier
 npm run quality:m0-remediation
 npm run quality:english-remediation-pilot
 npm run quality:source-coverage-audit
+npm run quality:mem-sparql-consistency
 ```
 
 `quality:memory-card-review:*:all` discovers all `*.config.json` files in `curricula/DE/Gymnasium/quality/memory-card-review/`. Add a config only when the CQR-302 ledger is meant to be enforced; Mathematik, Physik, Chemie, Biologie, Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft, and Wirtschaftswissenschaften are currently completed and enforced in CI.
+
+`quality:mem-sparql-consistency` is deliberately non-blocking. It probes the live MEM/FWU SPARQL endpoint, writes a Mathematik/Gymnasium review report, and keeps endpoint gaps or source-text discrepancies as triage issues instead of CI failures.
 
 `quality:memory-card-review:pilot-dossier` is a non-enforced preparation step for subject-level pilots. It writes a semantic triage dossier without creating or changing the enforced `CQR-302` config or ledger.
 

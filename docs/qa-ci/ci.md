@@ -83,6 +83,15 @@ npm run quality:curriculum-status
 
 This writes `docs/qa-ci/status/curriculum-quality-status.json` and `.md`, which are read by the local Workbench route `/quality-dashboard`.
 
+Optional MEM/FWU endpoint review snapshot:
+
+```bash
+cd app
+npm run quality:mem-sparql-consistency
+```
+
+This writes `docs/qa-ci/status/mem-sparql-consistency-audit.json` and `.md`. It is not part of the blocking CI workflow because the MEM endpoint is external and currently exposes concrete curriculum data only for some configured jurisdictions.
+
 ### 3. `backend-ci`
 
 Purpose: validate backend (`backend/`) via Gradle checks.

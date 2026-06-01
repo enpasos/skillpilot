@@ -1,0 +1,2220 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-01T14:36:46.533Z",
+  "generatedBy": "app/scripts/generateMemSparqlConsistencyAudit.ts",
+  "configPath": "curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json",
+  "endpoint": "https://sparql.mem.edufeed.org/sparql",
+  "subjectLabel": "Mathematik",
+  "schoolTypeLabel": "Gymnasium",
+  "mode": "non_blocking_review",
+  "summary": {
+    "jurisdictions": 16,
+    "localSourceExtractions": 31,
+    "localSourceGoals": 9972,
+    "memCurriculumAvailableJurisdictions": 2,
+    "memCurriculumMissingForLocalSourceJurisdictions": 14,
+    "concreteComparisons": 1,
+    "issueCount": 96
+  },
+  "sourceExtractions": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "title": "DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction)",
+      "extractionId": "DE-BB-MATHEMATIK-SEKI-RLP-2015-2023",
+      "sourceLandscapeId": "54cf7ae7-21e7-4cc2-a7b8-1f7dd9df5dc1",
+      "jurisdiction": "DE-BB",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 19,
+      "sourceGoals": 289
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_MATHEMATIK_SEKII_GOST_2022.source-extraction.json",
+      "title": "DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction)",
+      "extractionId": "DE-BB-MATHEMATIK-SEKII-GOST-2022",
+      "sourceLandscapeId": "c36ba9b3-4d11-4b19-a278-cd6c3c3fcc71",
+      "jurisdiction": "DE-BB",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 14,
+      "sourceGoals": 196
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "title": "DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction)",
+      "extractionId": "de-be-math-seki-rlp-2015-source-extraction",
+      "sourceLandscapeId": "b30048d2-d649-4727-b448-988a0f86a2c2",
+      "jurisdiction": "DE-BE",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 19,
+      "sourceGoals": 289
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
+      "title": "DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction)",
+      "extractionId": "de-be-math-sekii-go-2014-source-extraction",
+      "sourceLandscapeId": "5aafcc55-e89f-4dd5-ab17-9455e3c103b7",
+      "jurisdiction": "DE-BE",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 195
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+      "extractionId": "DE-BW-MATHEMATIK-SEKI-BP2016",
+      "sourceLandscapeId": "6232b783-199c-4c50-92f2-9fb31277e619",
+      "jurisdiction": "DE-BW",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 20,
+      "sourceGoals": 278
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+      "title": "DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+      "extractionId": "DE-BW-MATHEMATIK-SEKII-BP2016-SOURCE-EXTRACTION",
+      "sourceLandscapeId": "fa8f864a-aac5-486d-8e77-40df2af038a3",
+      "jurisdiction": "DE-BW",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 16,
+      "sourceGoals": 221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "title": "DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+      "extractionId": "DE-BY-MATHEMATIK-GYMNASIUM-LEHRPLANPLUS",
+      "sourceLandscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+      "jurisdiction": "DE-BY",
+      "subject": "Mathematik",
+      "stage": "SekI+SekII",
+      "sourceDocuments": 12,
+      "passages": 66,
+      "sourceGoals": 468
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction)",
+      "extractionId": "DE-HB-MATHEMATIK-SEKI-BILDUNGSPLAN-2006-2022",
+      "sourceLandscapeId": "c22f0777-fd82-4ad5-8306-33124017bdee",
+      "jurisdiction": "DE-HB",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 11,
+      "sourceGoals": 256
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HB-MATHEMATIK-SEKII-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "ffd76109-d192-467c-b0c0-033b445f0de7",
+      "jurisdiction": "DE-HB",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 122,
+      "sourceGoals": 275
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "title": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "extractionId": "DE-HE-MATHEMATIK-SEKI-KC-G8-G9",
+      "sourceLandscapeId": "b167b4cd-4b78-4c84-a721-6b2adbbcab3c",
+      "jurisdiction": "DE-HE",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 4,
+      "passages": 89,
+      "sourceGoals": 601
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "title": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "extractionId": "DE-HE-MATHEMATIK-SEKII-KC2024",
+      "sourceLandscapeId": "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3",
+      "jurisdiction": "DE-HE",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 316
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HH-MATHEMATIK-SEKI-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "c0ecbd92-92da-4b37-b77d-d537824d5141",
+      "jurisdiction": "DE-HH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 43,
+      "sourceGoals": 437
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "title": "Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)",
+      "extractionId": "DE-HH-MATHEMATIK-SEKII-BILDUNGSPLAN-2022",
+      "sourceLandscapeId": "42e6e650-ed49-472f-bd01-ba712d096bda",
+      "jurisdiction": "DE-HH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 189
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "title": "DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction)",
+      "extractionId": "DE-MV-MATHEMATIK-SEKI-RAHMENPLAENE-2020-2019",
+      "sourceLandscapeId": "71c43461-d20e-4267-bd18-ad9ba66f0c5b",
+      "jurisdiction": "DE-MV",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 33,
+      "sourceGoals": 369
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "title": "DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction)",
+      "extractionId": "DE-MV-MATHEMATIK-SEKII-RAHMENPLAN-2019",
+      "sourceLandscapeId": "9d420a46-b007-44ce-a4b4-453ef4e38523",
+      "jurisdiction": "DE-MV",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 219
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "title": "DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction)",
+      "extractionId": "DE-NI-MATHEMATIK-SEKI-KERNCURRICULUM",
+      "sourceLandscapeId": "2b995085-dc5e-47c6-a563-9dcfc01fb74d",
+      "jurisdiction": "DE-NI",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 28,
+      "sourceGoals": 361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "title": "DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction)",
+      "extractionId": "DE-NI-MATHEMATIK-SEKII-KERNCURRICULUM-2019",
+      "sourceLandscapeId": "fcb04661-6ea2-4030-a9b2-97e6cc03daf8",
+      "jurisdiction": "DE-NI",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 220
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "title": "DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction)",
+      "extractionId": "DE-NW-MATHEMATIK-SEKI-KLP-2019",
+      "sourceLandscapeId": "c862423f-d0ac-4a65-8ad2-9a6e560313a8",
+      "jurisdiction": "DE-NW",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 17,
+      "sourceGoals": 207
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+      "title": "DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction)",
+      "extractionId": "DE-NW-MATHEMATIK-SEKII-KLP-2023",
+      "sourceLandscapeId": "d3a068ca-90c6-4d7f-ab6b-4d8b43085cb1",
+      "jurisdiction": "DE-NW",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 13,
+      "sourceGoals": 235
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "title": "DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction)",
+      "extractionId": "DE-RP-MATHEMATIK-SEKI-RAHMENLEHRPLAN-2007",
+      "sourceLandscapeId": "810f8134-b4be-4f16-9b14-e50228b30bdd",
+      "jurisdiction": "DE-RP",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 25,
+      "sourceGoals": 253
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+      "title": "DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction)",
+      "extractionId": "DE-RP-MATHEMATIK-SEKII-MSS-2015",
+      "sourceLandscapeId": "2095b9f8-9d79-40bb-9601-3133ebb6f355",
+      "jurisdiction": "DE-RP",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 23,
+      "sourceGoals": 192
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "title": "DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction)",
+      "extractionId": "DE-SH-MATHEMATIK-SEKI-FACHANFORDERUNGEN-2024",
+      "sourceLandscapeId": "271b385b-04c7-4205-8202-b2dc918f5782",
+      "jurisdiction": "DE-SH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 6,
+      "sourceGoals": 346
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "title": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction)",
+      "extractionId": "DE-SH-MATHEMATIK-SEKII-FACHANFORDERUNGEN-2024",
+      "sourceLandscapeId": "01ffba7d-7588-4221-bd2b-1a692839809a",
+      "jurisdiction": "DE-SH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 6,
+      "sourceGoals": 274
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "title": "DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction)",
+      "extractionId": "DE-SL-MATHEMATIK-SEKI-GYM9-2023-2026",
+      "sourceLandscapeId": "9250478f-ebb4-438d-b6d9-738e1a6d574a",
+      "jurisdiction": "DE-SL",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 5,
+      "passages": 37,
+      "sourceGoals": 818
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+      "title": "DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction)",
+      "extractionId": "DE-SL-MATHEMATIK-SEKII-GOS-2014-2019",
+      "sourceLandscapeId": "7d66c285-38b4-4031-9836-2bba5de68e24",
+      "jurisdiction": "DE-SL",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 3,
+      "passages": 23,
+      "sourceGoals": 743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-SN-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "a615db78-931e-44ac-b0b5-44e16286470f",
+      "jurisdiction": "DE-SN",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 47,
+      "sourceGoals": 327
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-SN-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "59e52106-1d03-46ae-8fc6-6fdd6ab181d0",
+      "jurisdiction": "DE-SN",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 31,
+      "sourceGoals": 241
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-ST-MATHEMATIK-SEKI-FACHLEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "251bcdfc-19eb-4543-8ff7-5fb9fef6b667",
+      "jurisdiction": "DE-ST",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 1,
+      "passages": 32,
+      "sourceGoals": 424
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "title": "DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction)",
+      "extractionId": "DE-ST-MATHEMATIK-SEKII-FACHLEHRPLAN-GYMNASIUM-2019",
+      "sourceLandscapeId": "000359cf-2dfb-4216-bc71-743f76917a35",
+      "jurisdiction": "DE-ST",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 1,
+      "passages": 15,
+      "sourceGoals": 188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "title": "DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction)",
+      "extractionId": "DE-TH-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2018-2025",
+      "sourceLandscapeId": "25444927-45d3-486c-8e7f-39853e7de610",
+      "jurisdiction": "DE-TH",
+      "subject": "Mathematik",
+      "stage": "SekI",
+      "sourceDocuments": 2,
+      "passages": 17,
+      "sourceGoals": 356
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "title": "DE-TH - Mathematik Gymnasiale Oberstufe (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction)",
+      "extractionId": "DE-TH-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2018-2025",
+      "sourceLandscapeId": "cced401d-58d5-4832-b010-3b3466d0655b",
+      "jurisdiction": "DE-TH",
+      "subject": "Mathematik",
+      "stage": "SekII",
+      "sourceDocuments": 2,
+      "passages": 8,
+      "sourceGoals": 189
+    }
+  ],
+  "stateRows": [
+    {
+      "jurisdiction": "DE-BB",
+      "label": "Brandenburg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 485,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000057",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BE",
+      "label": "Berlin",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 484,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000048",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BW",
+      "label": "Baden-Württemberg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 499,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000049",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-BY",
+      "label": "Bayern",
+      "localSourceExtractions": 1,
+      "localSourceGoals": 468,
+      "localStages": [
+        "SekI+SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000051",
+      "memSubjectIri": "https://w3id.org/schulfach/BY_0000010",
+      "memSchoolTypeIri": "https://w3id.org/schulart/BY_0000005",
+      "memPlanCount": 10,
+      "status": "mem_curriculum_available"
+    },
+    {
+      "jurisdiction": "DE-HB",
+      "label": "Bremen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 531,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000056",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-HE",
+      "label": "Hessen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 917,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000050",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-HH",
+      "label": "Hamburg",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 626,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000045",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-MV",
+      "label": "Mecklenburg-Vorpommern",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 588,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000052",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-NI",
+      "label": "Niedersachsen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 581,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000043",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-NW",
+      "label": "Nordrhein-Westfalen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 442,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000044",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-RP",
+      "label": "Rheinland-Pfalz",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 445,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000046",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SH",
+      "label": "Schleswig-Holstein",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 620,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000054",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SL",
+      "label": "Saarland",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 1561,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000055",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "label": "Sachsen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 568,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000047",
+      "memSubjectIri": "https://w3id.org/schulfach/SN_0000012",
+      "memSchoolTypeIri": "https://w3id.org/schulart/SN_0000005",
+      "memPlanCount": 1,
+      "status": "mem_curriculum_available"
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "label": "Sachsen-Anhalt",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 612,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000053",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "label": "Thüringen",
+      "localSourceExtractions": 2,
+      "localSourceGoals": 545,
+      "localStages": [
+        "SekI",
+        "SekII"
+      ],
+      "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000031",
+      "memSubjectIri": null,
+      "memSchoolTypeIri": null,
+      "memPlanCount": 0,
+      "status": "mem_curriculum_missing"
+    }
+  ],
+  "concreteComparisons": [
+    {
+      "id": "de-by-math-gymnasium-lehrplanplus",
+      "label": "Bayern Mathematik Gymnasium LehrplanPLUS",
+      "jurisdiction": "DE-BY",
+      "localUniqueExpectationTexts": 291,
+      "memExpectationTexts": 292,
+      "matchedMemExpectationTexts": 251,
+      "unmatchedMemExpectationTexts": 41,
+      "unmatchedLocalExpectationTexts": 41,
+      "status": "discrepancies"
+    }
+  ],
+  "issues": [
+    {
+      "id": "local_expectation_not_found_in_mem-02b8b7b5dbc0",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "machen die Struktur der Formeln für Umfang bzw. Flächeninhalt eines Kreises plausibel und bestimmen, z. B. durch Messen, einen Näherungswert für die Kreiszahl π. Sie interpretieren die Flächeninhaltsformel als nicht lineare Zuordnung und wenden die Formeln bei innermathematischen Fragestellungen (auch zu einfachen Kreisteilen) sowie in Sachsituationen an.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.7",
+      "evidence": {
+        "sourceGoalIds": [
+          "df2633fe-483d-580d-9405-ba107c0b185d",
+          "by-math-m8-7-df2633fe-s02-a74522e82b",
+          "by-math-m8-7-df2633fe-s03-7fc51d8d33",
+          "by-math-m8-7-df2633fe-s04-a2f421f0a1"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.7"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-0def267d3b5e",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "verstehen, dass der Spezialfall einer linearen Funktion mit einer Funktionsgleichung der Form y = a ⋅ x als Zuordnung zweier Größen aufgefasst werden kann, die direkt proportional zueinander sind. Diesen Zusammenhang zwischen den beiden Größen erläutern sie an der zugehörigen Ursprungsgeraden und erkennen zueinander direkt proportionale Größen als solche, u. a. im Kontext naturwissenschaftlicher Fragestellungen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "bd1a1d1f-a23e-5ed1-aaa3-4f9e172aa647",
+          "by-math-m8-2-bd1a1d1f-s02-5323af0fbb"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-1807d118b9fe",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "verstehen das Grundprinzip eines indirekten Beweises, vollziehen damit den Beweis für die Irrationalität von nach und erläutern diesen; dabei erfassen sie auch, dass das Beweisen eine zentrale Bedeutung für die Mathematik und deren stringenten Aufbau hat. Sie begründen die Notwendigkeit, die Menge der rationalen Zahlen zu erweitern, nennen Quadratwurzeln und andere irrationale Zahlen (u. a. π) als Beispiele reeller nicht rationaler Zahlen und sind sich der kulturhistorischen Bedeutung dieser Zahlbereichserweiterung bewusst.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "ff811135-d54c-532a-82e1-a3ef98a1feeb",
+          "by-math-m9-1-ff811135-s02-57b6175837",
+          "by-math-m9-1-ff811135-s03-c5a02f22dc"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-1cfeb240b5ac",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "lösen einfache Exponentialgleichungen und wenden dabei auch die Regel logb(uz) = z ⋅ logb(u) an.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "37db79b4-aef7-54f5-b02c-d487e730c167"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-1e0061deaf1f",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "veranschaulichen auf der Grundlage ihrer in der Jahrgangsstufe 9 erworbenen Kenntnisse Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2π am Einheitskreis und ermitteln insbesondere das zugehörige Vorzeichen sicher. Sie bestimmen die Größen von Winkeln, die einen vorgegebenen Sinus- oder Kosinuswert besitzen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "2af4026c-ed70-520d-b56f-97e8584f77c8",
+          "by-math-m10-3-2af4026c-s02-d35f6419e2"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-1f54ff27b266",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "interpretieren Ergebnisse einseitiger Signifikanztests im Sachzusammenhang (u. a. Umfragen vor Wahlen) und widerlegen Fehlinterpretationen. Sie erläutern insbesondere, dass ein Signifikanztest keine Aussage über die Wahrscheinlichkeit der Gültigkeit der Nullhypothese zulässt und was unter einem „signifikanten Ergebnis“ verstanden wird.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "29bd9ba2-579b-529c-9426-dc420be0cc6a",
+          "by-math-m12-ea-3-29bd9ba2-s02-705bcc4aa5"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-22b70b0cad81",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte und plausibel.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.1.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "5d5f98a2-9cfb-559f-adaf-3701e1a84339"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.1.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-286f109a3faf",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "ermitteln mithilfe des Funktionsterms das links- und rechtsseitige Grenzverhalten einer einfachen gebrochen-rationalen Funktion für x → x0, um den Verlauf des Graphen in der Umgebung einer Polstelle x0 zu beschreiben. Zur Angabe des Grenzverhaltens verwenden sie die Grenzwertschreibweise und geben die Gleichung der zugehörigen senkrechten Asymptote des Graphen an.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "24ce0df9-f47f-5335-9756-16e07031d0eb",
+          "by-math-m11-2-24ce0df9-s02-8b33ebdf3f"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-3303124265fe",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "beschreiben für quadratische Funktionen mit Termen der Form a ⋅ (x + d)2 + e, wie sich Änderungen der Werte der Parameter a, d und e auf die zugehörige Parabel auswirken; sie bestimmen für Beispiele derart angegebener Funktionen jeweils die Anzahl der Nullstellen und die Lösungen der zugehörigen Gleichung. Zur Untersuchung und Veranschaulichung dieser Zusammenhänge nutzen sie auch eine dynamische Mathematiksoftware.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "c74ac5a2-32bb-5c9c-af1a-627fe7b55782",
+          "by-math-m9-2-1-c74ac5a2-s02-8b94049257"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-376cac075ba6",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "begründen die Zusammenhänge (sin α)2 + (cos α)2 = 1, , cos α = sin (90° − α) und sin α = cos (90° − α).",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.7.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "c1fa3874-5d20-5249-b093-da90b408f06d"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.7.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-3cd88391fe7d",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "zeichnen für einen gegebenen Funktionsterm der Form a ⋅ sin(b ⋅ (x + c)) + d unter Verwendung geeigneter Merkmale (insbesondere Amplitude und Periode) den zugehörigen Funktionsgraphen und ermitteln umgekehrt aus dem Graphen den zugehörigen Funktionsterm.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "ac97191f-18ea-59d1-a000-74271547f0ab"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-3e12b2a7dce0",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "bestimmen mithilfe der Monte-Carlo-Methode unter Einsatz eines Tabellenkalkulationsprogramms oder einer anderen geeigneten Software (z. B. unter Verwendung bedingter Anweisungen) einen Näherungswert für die Kreiszahl π. Sie vergleichen dieses Verfahren mit einem nicht zufallsbasierten Verfahren zur Bestimmung eines Näherungswerts von π, das z. B. auf der Streifenmethode beruht.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "76b7e724-aff5-5e69-93a5-8ca1d4e72a8d",
+          "by-math-m10-2-76b7e724-s02-605ef2002b"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-4cf0e786b3c5",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "verstehen die Definition der allgemeinen Wurzel und sind in der Lage, damit Gleichungen zu lösen, die sich auf die Form xn = c zurückführen lassen. Die Anzahl der Lösungen machen sie durch eine geeignete Skizze plausibel.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.5",
+      "evidence": {
+        "sourceGoalIds": [
+          "eedd3bfb-3d04-536b-aff9-b24f36d29bfc",
+          "by-math-m9-5-eedd3bfb-s02-3b0c4b17e3"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.5"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-4ff646a6e2b7",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "führen Sachsituationen durch Analogiebildung auf die Urnenmodelle „Ziehen mit Zurücklegen“ bzw. „Ziehen ohne Zurücklegen“ zurück, um die Anzahl möglicher Ergebnisse auch unter Zuhilfenahme von Binomialkoeffizienten zu bestimmen. In diesen Fällen berechnen sie damit verbundene Wahrscheinlichkeiten.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "406dd91f-417d-5fc5-8982-49aa618dd301"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-5066781ea1c5",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "beschreiben für Funktionen mit Termen der Form a ⋅ xn in Abhängigkeit von a und n den Verlauf des zugehörigen Graphen sowie seine Symmetrie; zur Untersuchung und Veranschaulichung nutzen sie auch eine dynamische Mathematiksoftware.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.5",
+      "evidence": {
+        "sourceGoalIds": [
+          "33ded94e-32cc-5c9d-b583-17039df865d2"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.5"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-5755bc1039e9",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "erläutern anhand des Graphen sowie anhand des Funktionsterms das Grenzverhalten von Funktionen für x → +∞ und für x → −∞; sie unterscheiden Konvergenz und Divergenz und veranschaulichen die Konvergenz mithilfe der Vorstellung eines beliebig schmalen Streifens, den ein gegebener Funktionsgraph jeweils ab einem bestimmten x‑Wert nicht mehr verlässt. Zur Angabe des Grenzverhaltens verwenden sie die Grenzwertschreibweise.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "c2577df2-b27b-5e60-b948-109c5ed6bfed",
+          "by-math-m11-1-c2577df2-s02-42f8af2a72",
+          "by-math-m11-1-c2577df2-s03-f45bfc9ed6"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-590add25a497",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "erläutern, dass in Sachzusammenhängen (z. B. in der medizinischen Diagnostik) klar zwischen PB(A), PA(B) und P(A∩B) unterschieden werden muss. Sie sind in der Lage, mithilfe von Vierfeldertafeln oder Baumdiagrammen – auch solchen, in denen sie Wahrscheinlichkeiten mithilfe von absoluten Häufigkeiten in den Feldern bzw. Knoten illustrieren – von der einen auf die andere bedingte Wahrscheinlichkeit zu schließen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "d93b49e1-efbb-5d59-9a64-b1f0f9ad4a88",
+          "by-math-m11-3-d93b49e1-s02-506ca0a30a"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-5fc5fc980147",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "lösen Gleichungen der Form a ⋅ x = b, x : a = b und a : x = b, wie in der Grundschule angebahnt, durch systematisches Probieren oder durch Bildung der jeweiligen Umkehraufgabe.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M5.3.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "4cecec79-3787-5813-b906-1dd4c27ff716"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M5.3.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-610c733e40e3",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "interpretieren Funktionsgleichungen der Form y = m ⋅ x + t als Gleichungen von Geraden und erläutern die Bedeutung der Parameter m und t, auch unter Verwendung einer dynamischen Mathematiksoftware. Sie zeichnen die Graphen linearer Funktionen und ermitteln umgekehrt anhand der Graphen solcher Funktionen die zugehörigen Werte der Parameter.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "d5a25fac-cd69-5288-b5a0-846ac435a168",
+          "by-math-m8-2-d5a25fac-s02-46beb16503",
+          "by-math-m8-2-d5a25fac-s03-94be18b267"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-7339e1ed786f",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "verstehen, dass der Spezialfall einer gebrochen-rationalen Funktion mit einer Funktionsgleichung der Form als Zuordnung zweier Größen aufgefasst werden kann, die indirekt proportional zueinander sind. Diesen Zusammenhang zwischen den beiden Größen erläutern sie am zugehörigen Graphen und erkennen zueinander indirekt proportionale Größen als solche, u. a. im Kontext naturwissenschaftlicher Fragestellungen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "9a14516b-775f-5d35-8a04-bd705a57e09b",
+          "by-math-m8-3-9a14516b-s02-f26377aa6a"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-798c8d4fe179",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "veranschaulichen die formale Definition der strengen Monotonie anhand geeigneter Skizzen und begründen damit z. B. die strenge Monotonie der Funktion x ↦ x3 (x ∈ IR). Sie erläutern, wie man aus der ersten Ableitung einer Funktion Rückschlüsse auf deren Monotonieverhalten sowie auf deren Extremstellen ziehen kann, und nutzen diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.4.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "6f71577f-5e4b-5e76-bff0-acb99cce0f90",
+          "by-math-m11-4-2-6f71577f-s02-7a37c87361",
+          "by-math-m11-4-2-6f71577f-s03-c971f0cc8e",
+          "by-math-m11-4-2-6f71577f-s04-2cc486a898"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.4.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-96d1130a18b8",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "sind sich bewusst, dass jede der drei Darstellungsformen des Terms einer quadratischen Funktion, die allgemeine Form ax2 + bx + c, die Scheitelpunktform a ⋅ (x − xS)2 + yS und die Nullstellenform a ⋅ (x − x1) ⋅ (x − x2), Vorteile besitzt, und nutzen diese Formen situationsgerecht, u. a. auch beim Argumentieren.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "cd991abf-058c-54a3-8690-a76ed51060f8",
+          "by-math-m9-2-1-cd991abf-s02-beb75b6dc2"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-a11ef6bfa3d3",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "zeichnen den Graphen einer gebrochen-rationalen Funktion der Form einschließlich seiner Asymptoten und ermitteln umgekehrt anhand des Graphen einer solchen Funktion die zugehörigen Werte der Parameter.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "71e28934-eefb-5600-aaa6-7991b1162d4b"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-a403a9ec6581",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "überprüfen rechnerisch sowie durch Analyse der Struktur des Funktionsterms, ob der Graph einer ganzrationalen Funktion Achsensymmetrie bezüglich der y‑Achse bzw. Punktsymmetrie bezüglich des Koordinatenursprungs aufweist.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.4",
+      "evidence": {
+        "sourceGoalIds": [
+          "dba05195-9751-5639-a48b-2a5b8fdc7ec1"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.4"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-a5a8af0b3dee",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "verstehen das Prinzip des Messens und rechnen Größenangaben bei Geld (€, ct), Länge (km, m, dm, cm, mm), Masse (t, kg, g, mg) und Zeit (h, min, s) jeweils in andere Einheiten um; dabei verwenden sie bei den Größen Geld, Länge und Masse – unter Rückgriff auf Einheitentafeln – auch Angaben in Kommaschreibweise.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M5.4.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "abd2306b-dd8d-5d66-af87-cd624d13352d",
+          "by-math-m5-4-1-abd2306b-s02-619d7b21f8"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M5.4.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-aad831eb0049",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "berechnen Lösungen von Kreisteilungsgleichungen der Form zn = 1 und interpretieren die so erhaltenen n-ten Einheitswurzeln am Einheitskreis.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "1adc2ddb-52a3-5955-b84f-980750e57754"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-bc820d16dbd6",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "wandeln Brüche in Dezimalbrüche um und stellen umgekehrt endliche Dezimalbrüche sowie rein periodische Dezimalbrüche der Periodenlänge eins als Brüche dar; bei angemessen gewählten Zahlen führen sie den Darstellungswechsel auch im Kopf durch. Sie setzen diese Fertigkeiten insbesondere beim Größenvergleich von rationalen Zahlen ein und greifen dabei auch auf ihr automatisiertes Wissen der Dezimalbruchdarstellung häufig verwendeter Brüche zurück. Mit Ergebnisanzeigen digitaler Rechenhilfen (z. B. Taschenrechner-App) gehen sie reflektiert um, z. B. mit „0,166666667“ bei Eingabe von „1 : 6 =“.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "1bd6fc10-3149-5617-8bd0-93bba977ce88",
+          "by-math-m6-1-2-1bd6fc10-s02-7a3c36d7db",
+          "by-math-m6-1-2-1bd6fc10-s03-8c0ba847c9",
+          "by-math-m6-1-2-1bd6fc10-s04-4c578b651e",
+          "by-math-m6-1-2-1bd6fc10-s05-e945f4b2dc"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M6.1.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-bf76ec7390fe",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "formulieren eine axiomatische Definition von Wahrscheinlichkeit und folgern aus den Axiomen weitere Aussagen über Wahrscheinlichkeiten. Sie vergleichen diesen Wahrscheinlichkeitsbegriff mit anderen Ansätzen zur Begriffsdefinition, z. B. Laplace'scher, frequentistischer oder subjektiver Wahrscheinlichkeitsbegriff.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "3b3a1c81-6d78-5b28-b2f9-0217893b4726"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c14363586ff1",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "ermitteln durch flexible Nutzung der binomischen Formeln die Koordinaten des Scheitels einer Parabel aus dem zugehörigen Funktionsterm, auch wenn dieser in der Form ax2 + bx + c vorliegt, und zeichnen den zugehörigen Graphen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "6e7ff196-a9e4-5bac-afee-621801ec85c2"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.2.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c3ee3e614056",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "interpretieren, ausgehend von Vierfeldertafeln mit absoluten Häufigkeiten, die zugehörigen relativen Häufigkeiten als Wahrscheinlichkeiten von Ereignissen eines entsprechenden Zufallsexperiments, begründen auf dieser Grundlage den Zusammenhang P(A∪B) = P(A) + P(B) – P(A∩B) und bestimmen Wahrscheinlichkeiten im Kontext zweier miteinander verknüpfter Ereignisse.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M9.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "a00ca20b-d872-5e7a-82d1-a840e2e95ed9",
+          "by-math-m9-3-a00ca20b-s02-93e6e69ba7"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M9.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c49c2a70f2ff",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "lösen Gleichungen der Form a + x = b, x − a = b und a − x = b, wie in der Grundschule angebahnt, durch systematisches Probieren oder durch Bildung der jeweiligen Umkehraufgabe.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M5.1.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "80597f1d-4414-524d-b9e3-61faec90d04a"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M5.1.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-c9cfb4ebe2b8",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "bestimmen mithilfe der Integralrechnung das Volumen eines Körpers, der durch Rotation eines Funktionsgraphen um die x‑Achse entsteht.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "439a800c-0bf9-584f-83bb-e6ac9d18ca51"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-caf43d8d0b17",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "beschreiben für Funktionen mit Termen der Form a ⋅ sin(b ⋅ (x + c)) + d, wie sich Änderungen der Parameter a, b, c und d auf den Funktionsgraphen auswirken. Zur Untersuchung, Demonstration und Erläuterung dieser Zusammenhänge nutzen sie auch eine dynamische Mathematiksoftware.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "0a84bd93-8e6d-5291-b55c-c5704eaf9eb1"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-dfa616a7f9b3",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "beschreiben für Funktionen mit Termen der Form b ⋅ ax in Abhängigkeit von a und b den Verlauf des zugehörigen Graphen und dessen typische Merkmale (Schnittpunkt mit der y‑Achse, asymptotisches Verhalten, Monotonieverhalten) und argumentieren damit. Zur Demonstration und Erläuterung dieser Beziehungen nutzen sie auch eine dynamische Mathematiksoftware.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "5e334eeb-c4d3-5ec8-94ee-ead8e4cd0db0",
+          "by-math-m10-1-5e334eeb-s02-a5ef15af7d"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-e0a28255cdeb",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "beschreiben, welche Änderungen an einem Funktionsterm dazu führen, dass der zum geänderten Funktionsterm gehörige Graph gegenüber dem ursprünglichen Graphen in x‑ oder y‑Richtung verschoben, in x‑ oder y‑Richtung gestreckt bzw. an einer Koordinatenachse gespiegelt ist. Sie sind sich bewusst, dass bei der Kombination mehrerer solcher Transformationen die Reihenfolge der Ausführung von Bedeutung sein kann. Sie demonstrieren und erläutern diese Zusammenhänge – auch unter Verwendung einer geeigneten Mathematiksoftware – und argumentieren mit ihnen, z. B. bei der Zuordnung von Funktionstermen zu Funktionsgraphen und umgekehrt.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "d3ab926c-a573-51fd-94fc-9f65549c32b1",
+          "by-math-m11-1-d3ab926c-s02-85a9b06460",
+          "by-math-m11-1-d3ab926c-s03-1a9f001aea",
+          "by-math-m11-1-d3ab926c-s04-1436f195da"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-ed770e1b8eaa",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "untersuchen in einfachen Fällen Verknüpfungen der natürlichen Logarithmusfunktion mit Funktionen bisher bekannter Funktionstypen auch mit den Methoden der Differentialrechnung und nutzen dabei auch die Rechenregeln für Logarithmen sowie die Grenzwerte und .",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "2bc7066b-1276-540f-9b47-40d940fecb2f"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f23dc0f868ea",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "unterscheiden bei Extremstellen und Wendestellen zwischen notwendigen und hinreichenden Bedingungen. Sie begründen u. a., dass die Bedingung f ′(x0) = 0 notwendig, aber nicht hinreichend für die Existenz einer Extremstelle einer differenzierbaren Funktion f an der Stelle x0 ist.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.4.2",
+      "evidence": {
+        "sourceGoalIds": [
+          "13109680-eb59-5568-806f-5d017663b035",
+          "by-math-m11-4-2-13109680-s02-2adf9fe668"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.4.2"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f52e560ea864",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "erläutern, wie sich die Werte von Sinus und Kosinus für Winkelgrößen größer als 2π sowie für negative Winkelgrößen mithilfe des Einheitskreises auf Werte für Winkelgrößen zwischen 0 und 2π zurückführen lassen.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "0a279639-f6c7-5901-b132-0aafa9aacd61"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M10.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f57b2f6d5045",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "überprüfen rechnerisch, ob die Graphen von Funktionen achsensymmetrisch bezüglich der y‑Achse bzw. punktsymmetrisch bezüglich des Koordinatenursprungs sind.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "2d882eb2-0243-595b-abe4-6bf1ec10e71e"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M11.1"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f6751e9b1f47",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "geben für gebrochen-rationale Funktionen der Form die maximale Definitionsmenge an, bestimmen die Schnittpunkte des Graphen mit den Koordinatenachsen und beschreiben den Einfluss einer Änderung der Werte der Parameter b und c auf den Verlauf des Graphen. Zur Untersuchung und Veranschaulichung nutzen sie auch eine dynamische Mathematiksoftware.",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3",
+      "evidence": {
+        "sourceGoalIds": [
+          "97efb769-8e4f-56a1-acaf-f2d230263ef9",
+          "by-math-m8-3-97efb769-s02-3b87f55564"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M8.3"
+        ]
+      }
+    },
+    {
+      "id": "local_expectation_not_found_in_mem-f8676a875b04",
+      "category": "LOCAL_EXPECTATION_NOT_FOUND_IN_MEM",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "Local source expectation not found in MEM",
+      "details": "ermitteln Terme von Stammfunktionen, auch unter Verwendung der Integrationsregeln für , und .",
+      "localRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1",
+      "evidence": {
+        "sourceGoalIds": [
+          "79e0b936-512b-55f5-8527-90fc4b0b6675"
+        ],
+        "sourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Mathematik, M13.1"
+        ]
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-04568bf479ca",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-TH",
+      "title": "Thüringen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 545 source goals for Thüringen. The MEM endpoint currently exposes the state vocabulary, but no Thüringen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 545,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000031",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-04eaafe7b0a9",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HB",
+      "title": "Bremen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 531 source goals for Bremen. The MEM endpoint currently exposes the state vocabulary, but no Bremen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 531,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000056",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-23f2c417c05d",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-NI",
+      "title": "Niedersachsen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 581 source goals for Niedersachsen. The MEM endpoint currently exposes the state vocabulary, but no Niedersachsen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 581,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000043",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-411f6f626b43",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-SL",
+      "title": "Saarland: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 1561 source goals for Saarland. The MEM endpoint currently exposes the state vocabulary, but no Saarland SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 1561,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000055",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-433c221727d9",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-RP",
+      "title": "Rheinland-Pfalz: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 445 source goals for Rheinland-Pfalz. The MEM endpoint currently exposes the state vocabulary, but no Rheinland-Pfalz SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 445,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000046",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-4dd84fd1d114",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BW",
+      "title": "Baden-Württemberg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 499 source goals for Baden-Württemberg. The MEM endpoint currently exposes the state vocabulary, but no Baden-Württemberg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 499,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000049",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-654e6484d2ee",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HE",
+      "title": "Hessen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 917 source goals for Hessen. The MEM endpoint currently exposes the state vocabulary, but no Hessen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 917,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000050",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-969ba3a5c24c",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-NW",
+      "title": "Nordrhein-Westfalen: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 442 source goals for Nordrhein-Westfalen. The MEM endpoint currently exposes the state vocabulary, but no Nordrhein-Westfalen SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 442,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000044",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-97302e81cbef",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-HH",
+      "title": "Hamburg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 626 source goals for Hamburg. The MEM endpoint currently exposes the state vocabulary, but no Hamburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 626,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000045",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a314cbac7646",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-ST",
+      "title": "Sachsen-Anhalt: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 612 source goals for Sachsen-Anhalt. The MEM endpoint currently exposes the state vocabulary, but no Sachsen-Anhalt SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 612,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000053",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a57f6bde5a04",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-SH",
+      "title": "Schleswig-Holstein: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 620 source goals for Schleswig-Holstein. The MEM endpoint currently exposes the state vocabulary, but no Schleswig-Holstein SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 620,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000054",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-a77dc312361a",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-MV",
+      "title": "Mecklenburg-Vorpommern: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 588 source goals for Mecklenburg-Vorpommern. The MEM endpoint currently exposes the state vocabulary, but no Mecklenburg-Vorpommern SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 588,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000052",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-cb7d88d22353",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BB",
+      "title": "Brandenburg: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 485 source goals for Brandenburg. The MEM endpoint currently exposes the state vocabulary, but no Brandenburg SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 485,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000057",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_curriculum_missing_for_local_source-f36e1325f6cb",
+      "category": "MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE",
+      "severity": "watch",
+      "jurisdiction": "DE-BE",
+      "title": "Berlin: local mathematics source extraction exists, but MEM has no matching curriculum plans",
+      "details": "Local SkillPilot source extraction has 2 file(s) and 484 source goals for Berlin. The MEM endpoint currently exposes the state vocabulary, but no Berlin SekI/SekII curriculum plan matching Mathematik/Gymnasium.",
+      "evidence": {
+        "localSourceExtractions": 2,
+        "localSourceGoals": 484,
+        "localStages": [
+          "SekI",
+          "SekII"
+        ],
+        "memStateIri": "https://w3id.org/lehrplan/ontology/LP_3000048",
+        "memSubjectIri": null,
+        "memSchoolTypeIri": null
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-00456f9a1b5e",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "geben für gebrochen-rationale Funktionen der Form [[image:GYM_M_8-1;class:center]] die maximale Definitionsmenge an, bestimmen die Schnittpunkte des Graphen mit den Koordinatenachsen und beschreiben den Einfluss einer Änderung der Werte der Parameter b und c auf den Verlauf des Graphen. Zur Untersuchung und Veranschaulichung nutzen sie auch eine dynamische Mathematiksoftware.",
+      "memRef": "https://lp-bavaria.org/fe3ba528-ac7b-467f-aa60-ad15f4d9ea93",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-03d8d7b92bf1",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "erläutern anhand des Graphen sowie anhand des Funktionsterms das Grenzverhalten von Funktionen für x&nbsp;→&nbsp;+∞ und für x&nbsp;→&nbsp;−∞; sie unterscheiden Konvergenz und Divergenz und veranschaulichen die Konvergenz mithilfe der Vorstellung eines beliebig schmalen Streifens, den ein gegebener Funktionsgraph jeweils ab einem bestimmten x&#x2011;Wert nicht mehr verlässt. Zur Angabe des Grenzverhaltens verwenden sie die Grenzwertschreibweise.",
+      "memRef": "https://lp-bavaria.org/610bc549-9349-42e9-84a1-03e7843673b3",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-05186e864caa",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 5",
+      "details": "lösen Gleichungen der Form a&nbsp;&sdot;&nbsp;x&nbsp;=&nbsp;b, x&nbsp;:&nbsp;a&nbsp;=&nbsp;b und a&nbsp;:&nbsp;x&nbsp;=&nbsp;b, wie in der Grundschule angebahnt, durch systematisches Probieren oder durch Bildung der jeweiligen Umkehraufgabe.",
+      "memRef": "https://lp-bavaria.org/a64ac9e0-3313-4ae8-be3b-247a8343a0b2",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220546.de",
+        "planLabel": "Mathematik 5",
+        "yearLabel": "Jahrgangsstufe 5"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-0d497216266c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (Vertiefungskurs)",
+      "details": "berechnen Lösungen von Kreisteilungsgleichungen der Form z<sup>n</sup>&nbsp;=&nbsp;1 und interpretieren die so erhaltenen n-ten Einheitswurzeln am Einheitskreis.",
+      "memRef": "https://lp-bavaria.org/67bcfaaf-7322-4db0-9f67-730f31075d30",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.313524.de",
+        "planLabel": "Mathematik 12 (Vertiefungskurs)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-139baa922f6c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "machen die Struktur der Formeln für Umfang bzw. Flächeninhalt eines Kreises plausibel und bestimmen, z.&nbsp;B. durch Messen, einen Näherungswert für die Kreiszahl&nbsp;&pi;. Sie interpretieren die Flächeninhaltsformel als nicht lineare Zuordnung und wenden die Formeln bei innermathematischen Fragestellungen (auch zu einfachen Kreisteilen) sowie in Sachsituationen an.",
+      "memRef": "https://lp-bavaria.org/791f9c05-dfe0-4572-bf1e-6998f7d0e41a",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-1773675e1cad",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "unterscheiden bei Extremstellen und Wendestellen zwischen notwendigen und hinreichenden Bedingungen. Sie begründen u.&nbsp;a., dass die Bedingung f&#x202f;&prime;(x<sub>0</sub>)&nbsp;=&nbsp;0 notwendig, aber nicht hinreichend für die Existenz einer Extremstelle einer differenzierbaren Funktion f an der Stelle x<sub>0</sub> ist.",
+      "memRef": "https://lp-bavaria.org/6364654e-1238-4860-8a96-869d9fd1a71f",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-1a8fa570a9fb",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "zeichnen den Graphen einer gebrochen-rationalen Funktion der Form [[image:GYM_M_8-1;class:center]] einschließlich seiner Asymptoten und ermitteln umgekehrt anhand des Graphen einer solchen Funktion die zugehörigen Werte der Parameter.",
+      "memRef": "https://lp-bavaria.org/126cf346-2a74-47aa-bf4a-48c0b1e39006",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-2444f18adcab",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "beschreiben, welche Änderungen an einem Funktionsterm dazu führen, dass der zum geänderten Funktionsterm gehörige Graph gegenüber dem ursprünglichen Graphen in x&#x2011; oder y&#x2011;Richtung verschoben, in x&#x2011; oder y&#x2011;Richtung gestreckt bzw. an einer Koordinatenachse gespiegelt ist. Sie sind sich bewusst, dass bei der Kombination mehrerer solcher Transformationen die Reihenfolge der Ausführung von Bedeutung sein kann. Sie demonstrieren und erläutern diese Zusammenhänge – auch unter Verwendung einer geeigneten Mathematiksoftware – und argumentieren mit ihnen, z.&nbsp;B. bei der Zuordnung von Funktionstermen zu Funktionsgraphen und umgekehrt.",
+      "memRef": "https://lp-bavaria.org/a6c2f017-a9f3-4881-84ca-797bc3f5dcbf",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-2c02ef698cbb",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "überprüfen rechnerisch sowie durch Analyse der Struktur des Funktionsterms, ob der Graph einer ganzrationalen Funktion Achsensymmetrie bezüglich der y&#x2011;Achse bzw. Punktsymmetrie bezüglich des Koordinatenursprungs aufweist.",
+      "memRef": "https://lp-bavaria.org/458302a1-63bf-4541-9d8e-2a214f4181b6",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-325c4600525c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 5",
+      "details": "lösen Gleichungen der Form a&nbsp;+&nbsp;x&nbsp;=&nbsp;b, x&nbsp;&minus;&nbsp;a&nbsp;=&nbsp;b und a&nbsp;&minus;&nbsp;x&nbsp;=&nbsp;b, wie in der Grundschule angebahnt, durch systematisches Probieren oder durch Bildung der jeweiligen Umkehraufgabe.",
+      "memRef": "https://lp-bavaria.org/734b3df7-b400-400b-8933-344210fe8519",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220546.de",
+        "planLabel": "Mathematik 5",
+        "yearLabel": "Jahrgangsstufe 5"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-32ca92a68360",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "interpretieren Funktionsgleichungen der Form y&nbsp;=&nbsp;m&nbsp;&sdot;&nbsp;x&nbsp;+&nbsp;t als Gleichungen von Geraden und erläutern die Bedeutung der Parameter m und t, auch unter Verwendung einer dynamischen Mathematiksoftware. Sie zeichnen die Graphen linearer Funktionen und ermitteln umgekehrt anhand der Graphen solcher Funktionen die zugehörigen Werte der Parameter.",
+      "memRef": "https://lp-bavaria.org/bb00159c-c8ac-4d8c-a53d-c89f6b2e67d8",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-3a0c4ce84fa3",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "verstehen, dass der Spezialfall einer linearen Funktion mit einer Funktionsgleichung der Form y&nbsp;=&nbsp;a&nbsp;&sdot;&nbsp;x als Zuordnung zweier Größen aufgefasst werden kann, die direkt proportional zueinander sind. Diesen Zusammenhang zwischen den beiden Größen erläutern sie an der zugehörigen Ursprungsgeraden und erkennen zueinander direkt proportionale Größen als solche, u.&nbsp;a. im Kontext naturwissenschaftlicher Fragestellungen.",
+      "memRef": "https://lp-bavaria.org/7a7d6bd3-4a51-4fae-9cc6-149770f5fc15",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-3d010bd1bb90",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (erhöhtes Anforderungsniveau)",
+      "details": "führen Sachsituationen durch Analogiebildung auf die Urnenmodelle &bdquo;Ziehen mit Zurücklegen&ldquo; bzw. &bdquo;Ziehen ohne Zurücklegen&ldquo; zurück, um die Anzahl möglicher Ergebnisse auch unter Zuhilfenahme von Binomialkoeffizienten zu bestimmen. In diesen Fällen berechnen sie damit verbundene Wahrscheinlichkeiten. ",
+      "memRef": "https://lp-bavaria.org/9d7b0644-0d84-4fc3-a19b-ee50a0ff2ce7",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220949.de",
+        "planLabel": "Mathematik 12 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-4383f87c8e34",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "beschreiben für Funktionen mit Termen der Form a&nbsp;&sdot;&nbsp;sin(b&nbsp;&sdot;&nbsp;(x&nbsp;+&nbsp;c))&nbsp;+&nbsp;d, wie sich Änderungen der Parameter a, b, c und d auf den Funktionsgraphen auswirken. Zur Untersuchung, Demonstration und Erläuterung dieser Zusammenhänge nutzen sie auch eine dynamische Mathematiksoftware.",
+      "memRef": "https://lp-bavaria.org/a8968317-28fc-48cd-a234-344a76206070",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-443daa461afe",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "zeichnen für einen gegebenen Funktionsterm der Form a&nbsp;&sdot;&nbsp;sin(b&nbsp;&sdot;&nbsp;(x&nbsp;+&nbsp;c))&nbsp;+&nbsp;d unter Verwendung geeigneter Merkmale (insbesondere Amplitude und Periode) den zugehörigen Funktionsgraphen und ermitteln umgekehrt aus dem Graphen den zugehörigen Funktionsterm.",
+      "memRef": "https://lp-bavaria.org/0c4850c6-60b2-4b4f-ac08-e02a354468b5",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-45da46f0eb9b",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (erhöhtes Anforderungsniveau)",
+      "details": "interpretieren Ergebnisse einseitiger Signifikanztests im Sachzusammenhang (u.&nbsp;a. Umfragen vor Wahlen) und widerlegen Fehlinterpretationen. Sie erläutern insbesondere, dass ein Signifikanztest keine Aussage über die Wahrscheinlichkeit der Gültigkeit der Nullhypothese zulässt und was unter einem &bdquo;signifikanten Ergebnis&ldquo; verstanden wird.",
+      "memRef": "https://lp-bavaria.org/f722ae84-39eb-4b1a-b205-7d16dba6dc41",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220949.de",
+        "planLabel": "Mathematik 12 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-4f96d4a79b87",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "veranschaulichen die formale Definition der strengen Monotonie  anhand geeigneter Skizzen und begründen damit z.&nbsp;B. die strenge Monotonie der Funktion x&nbsp;↦&nbsp;x<sup>3</sup>&nbsp;(x&#x202f;&isin;&#x202f;<span style=\"letter-spacing: -0.06em\">I</span>R). Sie erläutern, wie man aus der ersten Ableitung einer Funktion Rückschlüsse auf deren Monotonieverhalten sowie auf deren Extremstellen ziehen kann, und nutzen diese Zusammenhänge bei der Untersuchung ganzrationaler Funktionen.",
+      "memRef": "https://lp-bavaria.org/1838acd6-9140-4032-9876-d78f4a22c504",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-52f417334451",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "veranschaulichen auf der Grundlage ihrer in der Jahrgangsstufe&nbsp;9 erworbenen Kenntnisse Sinus- und Kosinuswerte von Winkelgrößen zwischen 0 und 2&pi; am Einheitskreis und ermitteln insbesondere das zugehörige Vorzeichen sicher. Sie bestimmen die Größen von Winkeln, die einen vorgegebenen Sinus- oder Kosinuswert besitzen.",
+      "memRef": "https://lp-bavaria.org/414ebe7f-0ebf-440f-a6f3-6cf93a727600",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-57b4946b149a",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "erläutern, wie sich die Werte von Sinus und Kosinus für Winkelgrößen größer als 2&pi; sowie für negative Winkelgrößen mithilfe des Einheitskreises auf Werte für Winkelgrößen zwischen 0 und 2&pi; zurückführen lassen.",
+      "memRef": "https://lp-bavaria.org/71a7c927-efd2-4b95-a657-2e06774f8999",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-5d8ad6f284fd",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 13 (erhöhtes Anforderungsniveau)",
+      "details": "bestimmen mithilfe der Integralrechnung das Volumen eines Körpers, der durch Rotation eines Funktionsgraphen um die x&#x2011;Achse entsteht. ",
+      "memRef": "https://lp-bavaria.org/cf158fd6-3bf0-4b47-8a12-5d81255079a4",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220988.de",
+        "planLabel": "Mathematik 13 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 13"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-673477842c7c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (erhöhtes Anforderungsniveau)",
+      "details": "formulieren eine axiomatische Definition von Wahrscheinlichkeit und folgern aus den Axiomen weitere Aussagen über Wahrscheinlichkeiten. Sie vergleichen diesen Wahrscheinlichkeitsbegriff mit anderen Ansätzen zur Begriffsdefinition, z.&nbsp;B. Laplace&apos;scher, frequentistischer oder subjektiver Wahrscheinlichkeitsbegriff.",
+      "memRef": "https://lp-bavaria.org/1fc5fb77-dc3b-4f34-80d7-13bbd22b6f32",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220949.de",
+        "planLabel": "Mathematik 12 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-6b3ac43d4733",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 8",
+      "details": "verstehen, dass der Spezialfall einer gebrochen-rationalen Funktion mit einer Funktionsgleichung der Form [[image:GYM_M_8-2;class:center]] als Zuordnung zweier Größen aufgefasst werden kann, die indirekt proportional zueinander sind. Diesen Zusammenhang zwischen den beiden Größen erläutern sie am zugehörigen Graphen und erkennen zueinander indirekt proportionale Größen als solche, u.&nbsp;a. im Kontext naturwissenschaftlicher Fragestellungen.",
+      "memRef": "https://lp-bavaria.org/f5b08c86-1fed-4cd9-8e70-234277651634",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220710.de",
+        "planLabel": "Mathematik 8",
+        "yearLabel": "Jahrgangsstufe 8"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-6ba1d66d0990",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "überprüfen rechnerisch, ob die Graphen von Funktionen achsensymmetrisch bezüglich der y&#x2011;Achse bzw. punktsymmetrisch bezüglich des Koordinatenursprungs sind.",
+      "memRef": "https://lp-bavaria.org/71cca0a4-d35a-4a07-bb8e-eb4661b0566a",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-6e18c8ddb0ca",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "sind sich bewusst, dass jede der drei Darstellungsformen des Terms einer quadratischen Funktion, die allgemeine Form ax<sup>2</sup>&nbsp;+&nbsp;bx&nbsp;+&nbsp;c, die Scheitelpunktform a&nbsp;&sdot;&nbsp;(x&nbsp;&minus;&nbsp;x<sub>S</sub>)<sup>2</sup>&nbsp;+&nbsp;y<sub>S</sub> und die Nullstellenform a&nbsp;&sdot;&nbsp;(x&nbsp;&minus;&nbsp;x<sub>1</sub>)&nbsp;&sdot;&nbsp;(x&nbsp;&minus;&nbsp;x<sub>2</sub>), Vorteile besitzt, und nutzen diese Formen situationsgerecht, u.&nbsp;a. auch beim Argumentieren.",
+      "memRef": "https://lp-bavaria.org/cb639d9d-d1dd-4e5e-8e93-e88486a12fee",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-725815b64e5c",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "beschreiben für Funktionen mit Termen der Form b&nbsp;&sdot;&nbsp;a<sup>x</sup> in Abhängigkeit von a und b den Verlauf des zugehörigen Graphen und dessen typische Merkmale (Schnittpunkt mit der y&#x2011;Achse, asymptotisches Verhalten, Monotonieverhalten) und argumentieren damit. Zur Demonstration und Erläuterung dieser Beziehungen nutzen sie auch eine dynamische Mathematiksoftware.",
+      "memRef": "https://lp-bavaria.org/9b974972-5835-4fbc-88f3-7b3246aeb394",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-788d69c01f9e",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "ermitteln durch flexible Nutzung der binomischen Formeln die Koordinaten des Scheitels einer Parabel aus dem zugehörigen Funktionsterm, auch wenn dieser in der Form ax<sup>2</sup>&nbsp;+&nbsp;bx&nbsp+&nbsp;c vorliegt, und zeichnen den zugehörigen Graphen.",
+      "memRef": "https://lp-bavaria.org/f87b4c33-14d5-4018-b3ed-30eca20265b8",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-7c7137802fa6",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "erläutern, dass in Sachzusammenhängen (z.&nbsp;B. in der medizinischen Diagnostik) klar zwischen P<sub>B</sub>(A), P<sub>A</sub>(B) und P(A&cap;B) unterschieden werden muss. Sie sind in der Lage, mithilfe von Vierfeldertafeln oder Baumdiagrammen – auch solchen, in denen sie Wahrscheinlichkeiten mithilfe von absoluten Häufigkeiten in den Feldern bzw. Knoten illustrieren – von der einen auf die andere bedingte Wahrscheinlichkeit zu schließen.",
+      "memRef": "https://lp-bavaria.org/6c4eb7c5-a4dc-4e07-87f9-e89006dda4d7",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-88835dda5dab",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 5",
+      "details": "verstehen das Prinzip des Messens und rechnen Größenangaben bei Geld (&euro;, ct), Länge (km, m, dm, cm, mm), Masse (t, kg, g, mg) und Zeit (h, min, s) jeweils in andere Einheiten um; dabei verwenden sie bei den Größen Geld, Länge und Masse &ndash; unter Rückgriff auf Einheitentafeln &ndash; auch Angaben in Kommaschreibweise.",
+      "memRef": "https://lp-bavaria.org/2be15419-d3c7-46de-8f13-1fcd64bbccc5",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220546.de",
+        "planLabel": "Mathematik 5",
+        "yearLabel": "Jahrgangsstufe 5"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-8b6ed4cbe25d",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 11",
+      "details": "ermitteln mithilfe des Funktionsterms das links- und rechtsseitige Grenzverhalten einer einfachen gebrochen-rationalen Funktion für x&nbsp;→&nbsp;x<sub>0</sub>, um den Verlauf des Graphen in der Umgebung einer Polstelle x<sub>0</sub> zu beschreiben. Zur Angabe des Grenzverhaltens verwenden sie die Grenzwertschreibweise und geben die Gleichung der zugehörigen senkrechten Asymptote des Graphen an.",
+      "memRef": "https://lp-bavaria.org/125a8237-c294-42cf-a60c-56f58fc8b4f5",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220889.de",
+        "planLabel": "Mathematik 11",
+        "yearLabel": "Jahrgangsstufe 11"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-8cd1f293584d",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "bestimmen mithilfe der Monte-Carlo-Methode unter Einsatz eines Tabellenkalkulationsprogramms oder einer anderen geeigneten Software (z.&nbsp;B. unter Verwendung bedingter Anweisungen) einen Näherungswert für die Kreiszahl &pi;. Sie vergleichen dieses Verfahren mit einem nicht zufallsbasierten Verfahren zur Bestimmung eines Näherungswerts von &pi;, das z.&nbsp;B. auf der Streifenmethode beruht.",
+      "memRef": "https://lp-bavaria.org/6e47efbc-724e-4f00-8b13-14803de0a452",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-8ff5e43639d6",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "begründen die Zusammenhänge (sin&nbsp;&alpha;)<sup>2</sup>&nbsp;+&nbsp;(cos&nbsp;&alpha;)<sup>2</sup>&nbsp;=&nbsp;1, [[image:GYM_M_9-2;class:center]], cos&nbsp;&alpha;&nbsp;=&nbsp;sin&nbsp;(90&deg;&nbsp;&minus;&nbsp;&alpha;) und sin&nbsp;&alpha;&nbsp;=&nbsp;cos&nbsp;(90&deg;&nbsp;&minus;&nbsp;&alpha;).",
+      "memRef": "https://lp-bavaria.org/d93fb389-aac0-4f29-955a-471ef72376fd",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-9d07a9a49ad5",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 13 (erhöhtes Anforderungsniveau)",
+      "details": "ermitteln Terme von Stammfunktionen, auch unter Verwendung der Integrationsregeln für [[image:GYM_M_13-1;class:center]], [[image:GYM_M_13-2;class:center]] und [[image:GYM_M_13-3;class:center]].",
+      "memRef": "https://lp-bavaria.org/a7e32a68-fd1d-4c00-909a-ee525a89c799",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220988.de",
+        "planLabel": "Mathematik 13 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 13"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-ae33a4d62f26",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "beschreiben für quadratische Funktionen mit Termen der Form a&nbsp;&sdot;&nbsp;(x&nbsp;+&nbsp;d)<sup>2</sup>&nbsp;+&nbsp;e, wie sich Änderungen der Werte der Parameter a, d und e auf die zugehörige Parabel auswirken; sie bestimmen für Beispiele derart angegebener Funktionen jeweils die Anzahl der Nullstellen und die Lösungen der zugehörigen Gleichung. Zur Untersuchung und Veranschaulichung dieser Zusammenhänge nutzen sie auch eine dynamische Mathematiksoftware.",
+      "memRef": "https://lp-bavaria.org/486ba5f9-253c-46dc-b70e-6c616b4fd25e",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-af17152bccbf",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "beschreiben für Funktionen mit Termen der Form a&nbsp;&sdot;&nbsp;x<sup>n</sup> in Abhängigkeit von a und n den Verlauf des zugehörigen Graphen sowie seine Symmetrie; zur Untersuchung und Veranschaulichung nutzen sie auch eine dynamische Mathematiksoftware.",
+      "memRef": "https://lp-bavaria.org/f75788cd-4cea-4fdf-a5a1-f3917f15cc2b",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-b420515481de",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (erhöhtes Anforderungsniveau)",
+      "details": "untersuchen in einfachen Fällen Verknüpfungen der natürlichen Logarithmusfunktion mit Funktionen bisher bekannter Funktionstypen auch mit den Methoden der Differentialrechnung und nutzen  dabei auch die Rechenregeln für Logarithmen sowie die Grenzwerte [[image:GYM_M_12-3;class:center]] und [[image:GYM_M_12-4;class:center]].",
+      "memRef": "https://lp-bavaria.org/6836ffb7-0524-49f1-af73-ffa5e4dc5f64",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220949.de",
+        "planLabel": "Mathematik 12 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-b8ef07369342",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 10",
+      "details": "lösen einfache Exponentialgleichungen und wenden dabei auch die Regel log<sub>b</sub>(u<sup>z</sup>)&nbsp;=&nbsp;z&nbsp;&sdot;&nbsp;log<sub>b</sub>(u) an.",
+      "memRef": "https://lp-bavaria.org/c4ab1fb0-ced3-4094-8ea3-88612f7f5a7b",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220820.de",
+        "planLabel": "Mathematik 10",
+        "yearLabel": "Jahrgangsstufe 10"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-b9fdc82e9b87",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "interpretieren, ausgehend von Vierfeldertafeln mit absoluten Häufigkeiten, die zugehörigen relativen Häufigkeiten als Wahrscheinlichkeiten von Ereignissen eines entsprechenden Zufallsexperiments, begründen auf dieser Grundlage den Zusammenhang P(A&cup;B) =&nbsp;P(A) +&nbsp;P(B) –&nbsp;P(A&cap;B) und bestimmen Wahrscheinlichkeiten im Kontext zweier miteinander verknüpfter Ereignisse.",
+      "memRef": "https://lp-bavaria.org/f38c2d03-adf0-470b-a940-c01229353ef1",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-d936b812ada8",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "verstehen die Definition der allgemeinen Wurzel und sind in der Lage, damit Gleichungen zu lösen, die sich auf die Form x<sup>n</sup>&nbsp;=&nbsp;c zurückführen lassen. Die Anzahl der Lösungen machen sie durch eine geeignete Skizze plausibel.",
+      "memRef": "https://lp-bavaria.org/63aa0c9b-937f-499f-b93e-e5c5d7f8757f",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-f8edb2575697",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 9",
+      "details": "verstehen das Grundprinzip eines indirekten Beweises, vollziehen damit den Beweis für die Irrationalität von [[image:GYM_M_9-1;class:top]] nach und erläutern diesen; dabei erfassen sie auch, dass das Beweisen eine zentrale Bedeutung für die Mathematik und deren stringenten Aufbau hat. Sie begründen die Notwendigkeit, die Menge der rationalen Zahlen zu erweitern, nennen Quadratwurzeln und andere irrationale Zahlen (u.&nbsp;a. &pi;) als Beispiele reeller nicht rationaler Zahlen und sind sich der kulturhistorischen Bedeutung dieser Zahlbereichserweiterung bewusst.",
+      "memRef": "https://lp-bavaria.org/f3e246ca-b34d-41ba-bc01-c00925e399e0",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220772.de",
+        "planLabel": "Mathematik 9",
+        "yearLabel": "Jahrgangsstufe 9"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-f9c2efaa082d",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 6",
+      "details": "wandeln Brüche in Dezimalbrüche um und stellen umgekehrt endliche Dezimalbrüche sowie rein periodische Dezimalbrüche der Periodenlänge eins als Brüche dar; bei angemessen gewählten Zahlen führen sie den Darstellungswechsel auch im Kopf durch. Sie setzen diese Fertigkeiten insbesondere beim Größenvergleich von rationalen Zahlen ein und greifen dabei auch auf ihr automatisiertes Wissen der Dezimalbruchdarstellung häufig verwendeter Brüche zurück. Mit Ergebnisanzeigen digitaler Rechenhilfen (z.&nbsp;B. Taschenrechner-App) gehen sie reflektiert um, z.&nbsp;B. mit „0,166666667“ bei Eingabe von „1&#x202f;:&#x202f;6&#x202f;=“.",
+      "memRef": "https://lp-bavaria.org/6818de54-7438-4a21-ad08-a767d3910627",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220606.de",
+        "planLabel": "Mathematik 6",
+        "yearLabel": "Jahrgangsstufe 6"
+      }
+    },
+    {
+      "id": "mem_expectation_not_found_in_local_source-fae28d223ac6",
+      "category": "MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE",
+      "severity": "review",
+      "jurisdiction": "DE-BY",
+      "title": "MEM expectation not found in local source extraction: Mathematik 12 (erhöhtes Anforderungsniveau)",
+      "details": "machen durch einen Vergleich des Wachstums von Exponential- und Potenzfunktion die Grenzwerte [[image:GYM_M_12-1;class:center]] und [[image:GYM_M_12-2;class:center]] plausibel.",
+      "memRef": "https://lp-bavaria.org/3cb0661c-4857-4121-be13-4256aebd9947",
+      "evidence": {
+        "planIri": "https://lp-bavaria.org/lis_live_isb.c.220949.de",
+        "planLabel": "Mathematik 12 (erhöhtes Anforderungsniveau)",
+        "yearLabel": "Jahrgangsstufe 12"
+      }
+    }
+  ]
+}

@@ -11,6 +11,10 @@ It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
   Persisted status layer used by the local Workbench dashboard.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
+- [MEM SPARQL Consistency Audit](mem-sparql-consistency.md)
+  Non-blocking live MEM/FWU endpoint comparison against persisted SkillPilot source extractions.
+- [MEM SPARQL Consistency PoC Procedure](mem-sparql-consistency-poc-procedure.md)
+  Practical runbook and interpretation guide for the first Mathematik/Gymnasium MEM PoC.
 - [BW Mathematik Sek II: HE Coverage Audit](bw-math-sekii-he-coverage-audit.md)
   Fachliche Kontrolle der BW-Kursstufen-Abdeckung gegen Hessen Sek II.
 - [Current Curriculum Quality Status](status/curriculum-quality-status.md)

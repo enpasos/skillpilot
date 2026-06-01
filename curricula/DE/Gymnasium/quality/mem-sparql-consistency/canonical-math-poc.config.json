@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "auditId": "canonical-math-poc",
+  "title": "MEM SPARQL consistency audit - canonical Gymnasium mathematics PoC",
+  "endpoint": "https://sparql.mem.edufeed.org/sparql",
+  "subjectLabel": "Mathematik",
+  "schoolTypeLabel": "Gymnasium",
+  "sourceExtractionRoot": "curricula/DE/Gymnasium/input",
+  "reportJsonPath": "docs/qa-ci/status/mem-sparql-consistency-audit.json",
+  "reportMarkdownPath": "docs/qa-ci/status/mem-sparql-consistency-audit.md",
+  "maxIssuesPerCategory": 50,
+  "states": {
+    "DE-BB": "Brandenburg",
+    "DE-BE": "Berlin",
+    "DE-BW": "Baden-Württemberg",
+    "DE-BY": "Bayern",
+    "DE-HB": "Bremen",
+    "DE-HE": "Hessen",
+    "DE-HH": "Hamburg",
+    "DE-MV": "Mecklenburg-Vorpommern",
+    "DE-NI": "Niedersachsen",
+    "DE-NW": "Nordrhein-Westfalen",
+    "DE-RP": "Rheinland-Pfalz",
+    "DE-SH": "Schleswig-Holstein",
+    "DE-SL": "Saarland",
+    "DE-SN": "Sachsen",
+    "DE-ST": "Sachsen-Anhalt",
+    "DE-TH": "Thüringen"
+  },
+  "concreteTextComparisons": [
+    {
+      "id": "de-by-math-gymnasium-lehrplanplus",
+      "jurisdiction": "DE-BY",
+      "label": "Bayern Mathematik Gymnasium LehrplanPLUS",
+      "graphIri": "https://w3id.org/lehrplan/by/data",
+      "stateIri": "https://w3id.org/lehrplan/ontology/LP_3000051",
+      "subjectIri": "https://w3id.org/schulfach/BY_0000010",
+      "schoolTypeIri": "https://w3id.org/schulart/BY_0000005",
+      "curriculumClassIri": "https://w3id.org/lehrplan/ontology/LP_0000819",
+      "competencyClassIri": "https://w3id.org/lehrplan/ontology/LP_0002049"
+    }
+  ]
+}
