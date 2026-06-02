@@ -25,7 +25,7 @@
     "quality:mem-sparql-consistency": "tsx scripts/generateMemSparqlConsistencyAudit.ts",
     "quality:goal-source-rationales:poc": "tsx scripts/generateGoalSourceRationales.ts --jurisdiction=DE-BY",
     "quality:goal-source-rationales:mem-examples": "tsx scripts/generateGoalSourceRationales.ts --jurisdiction=DE-BY --include-mem --goals=a075ae99-7669-563d-807a-f91b119c020a,09f47964-2cd0-410e-93ee-9632b582fc91,b1dcc191-d046-50de-984a-ee5c17157628 --output-json=docs/qa-ci/status/goal-source-rationales-mem-examples.json --output-md=docs/qa-ci/status/goal-source-rationales-mem-examples.md",
-    "quality:goal-source-rationales:mem-examples:plain": "tsx scripts/generateGoalSourceRationales.ts --jurisdiction=DE-BY --include-mem --audience=plain --goals=a075ae99-7669-563d-807a-f91b119c020a,09f47964-2cd0-410e-93ee-9632b582fc91,b1dcc191-d046-50de-984a-ee5c17157628 --output-json=docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json --output-md=docs/qa-ci/status/goal-source-rationales-mem-examples-plain.md",
+    "quality:goal-source-rationales:mem-examples:plain": "tsx scripts/generateGoalSourceRationales.ts --jurisdiction=DE-BY --include-mem --audience=plain --goals=a075ae99-7669-563d-807a-f91b119c020a,09f47964-2cd0-410e-93ee-9632b582fc91,b1dcc191-d046-50de-984a-ee5c17157628 --output-json=docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json --public-json=app/public/data/goal-source-rationales-mem-examples-plain.json --output-md=docs/qa-ci/status/goal-source-rationales-mem-examples-plain.md",
     "quality:semantic-atomicity": "tsx scripts/semanticAtomicityReview.ts",
     "quality:semantic-atomicity:check": "tsx scripts/semanticAtomicityReview.ts --mode=check",
     "quality:memory-card-review": "tsx scripts/memoryCardReview.ts",

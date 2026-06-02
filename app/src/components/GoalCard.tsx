@@ -95,6 +95,7 @@ type ApplicabilityGroup = {
   values: string[]
 }
 
+const SOURCE_RATIONALE_PUBLIC_PATH = '/data/goal-source-rationales-mem-examples-plain.json'
 const SOURCE_RATIONALE_STATUS_PATH = 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
@@ -184,13 +185,20 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
 
 let sourceRationaleIndexPromise: Promise<Map<string, GoalSourceRationaleItem>> | null = null
 
+const loadSourceRationalePayload = async (): Promise<Record<string, unknown> | null> => {
+  const publicResponse = await fetch(SOURCE_RATIONALE_PUBLIC_PATH)
+  if (publicResponse.ok) return asRecord(await publicResponse.json())
+
+  const params = new URLSearchParams({ path: SOURCE_RATIONALE_STATUS_PATH })
+  const localResponse = await fetch(`/__quality-dashboard/file?${params.toString()}`)
+  if (!localResponse.ok) return null
+  return asRecord(await localResponse.json())
+}
+
 const loadSourceRationaleIndex = (): Promise<Map<string, GoalSourceRationaleItem>> => {
   if (!sourceRationaleIndexPromise) {
-    const params = new URLSearchParams({ path: SOURCE_RATIONALE_STATUS_PATH })
-    sourceRationaleIndexPromise = fetch(`/__quality-dashboard/file?${params.toString()}`)
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`Source rationale status could not be loaded: ${response.status}`)
-        const payload = asRecord(await response.json())
+    sourceRationaleIndexPromise = loadSourceRationalePayload()
+      .then((payload) => {
         const rawItems = Array.isArray(payload?.items) ? payload.items : []
         const index = new Map<string, GoalSourceRationaleItem>()
         rawItems.forEach((rawItem) => {
