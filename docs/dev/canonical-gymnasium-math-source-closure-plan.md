@@ -4,9 +4,9 @@ Snapshot: `2026-03-26`
 
 This document complements the existing rollout artifacts:
 
-- [canonical-gymnasium-math-de-expansion-plan.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-math-de-expansion-plan.md)
-- [canonical-gymnasium-math-bundeslaender-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-math-bundeslaender-status.md)
-- [math-bundesland-rollout-tracker.json](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json)
+- [canonical-gymnasium-math-de-expansion-plan.md](canonical-gymnasium-math-de-expansion-plan.md)
+- [canonical-gymnasium-math-bundeslaender-status.md](canonical-gymnasium-math-bundeslaender-status.md)
+- [math-bundesland-rollout-tracker.json](../../curricula/DE/Gymnasium/provenance/math-bundesland-rollout-tracker.json)
 
 Its narrower purpose is different:
 
@@ -15,7 +15,9 @@ Its narrower purpose is different:
 
 For Baden-Wuerttemberg, the current reference source is:
 
-- [BP2016BW_ALLG_GYM_M.pdf](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf)
+- `BP2016BW_ALLG_GYM_M.pdf` in `curricula/DE/Gymnasium/input/BW/`
+
+The PDF itself is treated as retained local source input. PDF files are intentionally ignored by Git, so this plan names the source package without linking to the local binary file.
 
 The same closure logic should be usable for all `16` Bundeslaender.
 
@@ -116,14 +118,16 @@ Acceptable dispositions for residual non-core sections:
 
 The BW source package is the combined Gymnasium mathematics PDF:
 
-- [BP2016BW_ALLG_GYM_M.pdf](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_M.pdf)
+- `BP2016BW_ALLG_GYM_M.pdf` in `curricula/DE/Gymnasium/input/BW/`
 
 Its relevant top-level structure is:
 
-- `1.1` to `1.4` in [BW_M.txt](/home/enpasos/projects/skillpilot/tmp/bw_pdf_check/BW_M.txt#L112)
-- `2.1` to `2.5` in [BW_M.txt](/home/enpasos/projects/skillpilot/tmp/bw_pdf_check/BW_M.txt#L117)
-- `3.1` to `3.5` in [BW_M.txt](/home/enpasos/projects/skillpilot/tmp/bw_pdf_check/BW_M.txt#L130)
-- `4. Operatoren` and `5. Anhang` in [BW_M.txt](/home/enpasos/projects/skillpilot/tmp/bw_pdf_check/BW_M.txt#L182)
+- `1.1` to `1.4` in the local text extraction `tmp/bw_pdf_check/BW_M.txt`, around line `112`
+- `2.1` to `2.5` in the local text extraction `tmp/bw_pdf_check/BW_M.txt`, around line `117`
+- `3.1` to `3.5` in the local text extraction `tmp/bw_pdf_check/BW_M.txt`, around line `130`
+- `4. Operatoren` and `5. Anhang` in the local text extraction `tmp/bw_pdf_check/BW_M.txt`, around line `182`
+
+`tmp/bw_pdf_check/BW_M.txt` is a temporary review extraction and is not a committed documentation target.
 
 ### Current BW closure score
 
@@ -145,13 +149,13 @@ Open:
 
 The current repo note already records:
 
-- BW Sek I is still partial in [math-structure-note.md](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/math-structure-note.md#L23)
-- BW Sek II already reaches all inhaltsbezogene Kursstufen-Leitideen `3.4.1` to `3.5.5` in [math-structure-note.md](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/math-structure-note.md#L28)
+- BW Sek I is still partial in [math-structure-note.md](../../curricula/DE/Gymnasium/input/BW/math-structure-note.md#L23)
+- BW Sek II already reaches all inhaltsbezogene Kursstufen-Leitideen `3.4.1` to `3.5.5` in [math-structure-note.md](../../curricula/DE/Gymnasium/input/BW/math-structure-note.md#L28)
 
 That matches the active snapshots:
 
-- lower-secondary pilot snapshot in [DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot#L9)
-- upper-secondary pilot snapshot in [DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot](/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot#L9)
+- lower-secondary pilot snapshot in [DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot](../../curricula/DE/Gymnasium/input/BW/lower-secondary/source-json/DE_BAW_S_GYM_1_MATHEMATIK.de.json.snapshot#L9)
+- upper-secondary pilot snapshot in [DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot](../../curricula/DE/Gymnasium/input/BW/upper-secondary/source-json/DE_BAW_S_GYM_2_MATHEMATIK.de.json.snapshot#L9)
 
 ### Exact BW gaps
 
@@ -220,6 +224,6 @@ Whenever one Bundesland moves materially on source closure:
 1. update this plan document
 2. update the relevant state provenance note
 3. if the operational rollout phase changed, update `math-bundesland-rollout-tracker.json`
-4. regenerate [canonical-gymnasium-math-bundeslaender-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-math-bundeslaender-status.md)
+4. regenerate [canonical-gymnasium-math-bundeslaender-status.md](canonical-gymnasium-math-bundeslaender-status.md)
 
 This keeps the management view, the closure view, and the operational rollout view aligned without mixing them into one oversized status file.
