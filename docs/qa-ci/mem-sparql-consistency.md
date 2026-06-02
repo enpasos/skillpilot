@@ -1,44 +1,32 @@
 # MEM SPARQL Consistency Audit
 
-This QA lane probes the live MEM/FWU Lehrplan ontology endpoint and compares the returned curriculum evidence with SkillPilot's persisted source-extraction artifacts.
+This QA lane compares live MEM/FWU Lehrplan ontology data with SkillPilot's retained source-extraction evidence.
 
-It is intentionally non-blocking. The endpoint is external, the available MEM data is still incomplete across Bundeslaender, and current mismatches should become review issues, not failed builds.
+The lane is intentionally non-blocking. MEM is an external endpoint, endpoint coverage is still incomplete across Bundeslaender, and discrepancies are review signals rather than CI failures.
 
-## Scope
+## Purpose
 
-The initial proof of concept is configured for:
+- Query `https://sparql.mem.edufeed.org/sparql` from local QA tooling.
+- Check which configured Mathematik/Gymnasium source scopes currently have matching MEM curriculum plans.
+- Compare configured MEM text nodes with persisted SkillPilot source-extraction texts.
+- Emit stable review queues so humans can decide whether a mismatch is a SkillPilot extraction issue, a harmless representation difference, a source-version question, or MEM feedback.
 
-- subject: `Mathematik`
-- school type: `Gymnasium`
-- local evidence root: `curricula/DE/Gymnasium/input`
-- MEM endpoint: `https://sparql.mem.edufeed.org/sparql`
-- report: `docs/qa-ci/status/mem-sparql-consistency-audit.md`
-- machine-readable report: `docs/qa-ci/status/mem-sparql-consistency-audit.json`
+MEM remains a secondary consistency source in this lane. It does not replace original source references, source-coverage ledgers, semantic atomicity review, memory-card review, or composition-view validation.
 
-The current config lives at:
+## Source Of Truth
 
-- `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
+- Config: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json`
+- Review decision ledger: `curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.review.jsonl`
+- Generator: `app/scripts/generateMemSparqlConsistencyAudit.ts`
 
-The PoC procedure is documented in:
+Generated files under `docs/qa-ci/status/` are not source of truth and should not be edited manually.
 
-- `docs/qa-ci/mem-sparql-consistency-poc-procedure.md`
+## Generated Artifacts
 
-## Checks
-
-The audit currently has two layers:
-
-- availability: for every configured Bundesland, check whether SkillPilot has local Mathematik source extraction and whether MEM exposes matching Mathematik/Gymnasium curriculum plans.
-- concrete text comparison: for configured MEM graphs, compare MEM competency-expectation labels against SkillPilot source-extraction source texts after conservative normalization.
-
-The first concrete comparison is `Bayern Mathematik Gymnasium LehrplanPLUS`, because the MEM endpoint currently exposes concrete BY Mathematik/Gymnasium plan and competency data. Hessen remains visible in the availability lane; as of the current PoC run, the endpoint exposes Hessen vocabulary but no matching concrete Hessen Mathematik/Gymnasium curriculum plans.
-
-## Issue Categories
-
-- `MEM_CURRICULUM_MISSING_FOR_LOCAL_SOURCE`: SkillPilot has local source extraction for the Bundesland, but MEM currently exposes no matching curriculum plan.
-- `MEM_SCOPE_VOCAB_MISSING`: the audit could not resolve the configured MEM scope vocabulary.
-- `MEM_EXPECTATION_NOT_FOUND_IN_LOCAL_SOURCE`: a MEM competency expectation was not found in the local source extraction.
-- `LOCAL_EXPECTATION_NOT_FOUND_IN_MEM`: a local source-extraction expectation was not found in MEM.
-- `MEM_ENDPOINT_UNREACHABLE`: the endpoint or a concrete comparison query failed.
+- Audit report: `docs/qa-ci/status/mem-sparql-consistency-audit.md`
+- Machine-readable audit: `docs/qa-ci/status/mem-sparql-consistency-audit.json`
+- Human review queue: `docs/qa-ci/status/mem-sparql-consistency-review-issues.md`
+- Machine-readable review queue: `docs/qa-ci/status/mem-sparql-consistency-review-issues.json`
 
 ## Run
 
@@ -46,8 +34,6 @@ The first concrete comparison is `Bayern Mathematik Gymnasium LehrplanPLUS`, bec
 cd app
 npm run quality:mem-sparql-consistency
 ```
-
-The command writes fresh report files and exits successfully when it found review issues. It should fail only for local script/configuration errors that prevent producing the report.
 
 Use an alternate endpoint or config while experimenting:
 
@@ -57,12 +43,66 @@ npm run quality:mem-sparql-consistency -- --endpoint=https://sparql.mem.edufeed.
 npm run quality:mem-sparql-consistency -- --config=curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json
 ```
 
-## Interpretation
+## Blocking Semantics
 
-The generated issues are a triage queue for later human review. They are not source-of-truth decisions and do not override existing SkillPilot provenance, source mapping, semantic atomicity, or memory-card ledgers.
+The command exits successfully after producing reports, even when review issues exist.
 
-Typical next steps after a run:
+It should fail only for local script or configuration errors that prevent report generation. MEM content mismatches, missing MEM plans, stale review decisions, and open review items remain non-blocking.
 
-- inspect MEM-only and local-only text issues for normalization gaps, extraction defects, or real curriculum-source discrepancies;
-- promote confirmed local extraction defects into the appropriate source-extraction or mapping review work queue;
-- extend `concreteTextComparisons` only when the MEM graph and class vocabulary for a Bundesland/source are understood well enough to produce stable queries.
+## Review Ledger
+
+The JSON review queue carries an `itemFingerprint` for each queue item. The fingerprint is computed from the current MEM/local evidence, not from transient review notes.
+
+A human decision should be written to the configured JSONL ledger only after inspecting the queue item:
+
+```json
+{
+  "schemaVersion": 1,
+  "auditId": "canonical-math-poc",
+  "itemId": "triage-a3e85d9ef77a",
+  "itemFingerprint": "sha256:...",
+  "status": "mem_feedback_candidate",
+  "reviewedAt": "2026-06-01",
+  "reviewer": "initials-or-tool",
+  "reason": "Short evidence-based decision.",
+  "followUpRef": "optional issue, PR, or MEM feedback reference"
+}
+```
+
+Supported `status` values:
+
+- `not_an_issue`
+- `local_extraction_fix_needed`
+- `mem_feedback_candidate`
+- `source_version_gap`
+- `deferred`
+
+The generated JSON queue validates ledger records on every run:
+
+- matching `itemId` and `itemFingerprint` annotate a queue item as `decided`, except `deferred`, which stays open;
+- matching `itemId` with a changed fingerprint is shown as `stale_review`;
+- unknown, duplicate, or malformed ledger records are listed under `reviewLedger.diagnostics`.
+
+## Review Workflow
+
+1. Run the audit.
+2. Start with `highestSignalChecks` in the JSON queue or the matching section in the Markdown queue.
+3. Inspect MEM evidence, local source evidence, and any `reviewNote`.
+4. Fix local extraction defects in source-extraction files if the local evidence is wrong.
+5. Write confirmed decisions into the JSONL ledger with the current `itemFingerprint`.
+6. Re-run the audit and verify that the queue annotates the item as `decided`, `deferred`, or `stale_review`.
+
+## Expansion Criteria
+
+Add a new concrete comparison only when all of the following are true:
+
+- MEM exposes concrete plan data for the scope, not just vocabulary.
+- The graph IRI and relevant class IRIs are known.
+- SkillPilot has a retained source-extraction artifact for the same source scope.
+- The comparison can produce stable issue IDs and human-readable evidence references.
+- The resulting issues can be triaged without blocking existing `CQR-*` readiness rules.
+
+## Related Documents
+
+- Runbook: [MEM SPARQL Consistency Runbook](mem-sparql-consistency-runbook.md)
+- Initial PoC record: [MEM SPARQL Consistency PoC, 2026-06-01](archive/mem-sparql-consistency-poc-2026-06-01.md)

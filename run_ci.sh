@@ -46,6 +46,18 @@ npm run check:gymnasium-duration-offerings
 echo "--> Running Curriculum Source Coverage Check"
 npm run quality:source-coverage-audit:check
 
+echo "--> Checking Generated Documentation Notices"
+npm run check:generated-doc-notices
+
+echo "--> Checking Generated Status Registry"
+npm run check:generated-status-registry
+
+echo "--> Checking Documentation Links"
+npm run check:docs-links
+
+echo "--> Checking Documentation Index Coverage"
+npm run check:docs-indexes
+
 echo "--> Running Composition-View Validation"
 npm run validate:composition-views
 

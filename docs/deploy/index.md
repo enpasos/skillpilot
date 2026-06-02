@@ -1,0 +1,12 @@
+# Deployment Documentation Index
+
+This page groups deployment-facing operational documentation.
+
+## Deployment
+
+- [SkillPilot Deployment Process](deployment.md)
+
+## Maintenance
+
+- Add deployment runbooks or release-process notes here.
+- `cd app && npm run check:docs-indexes` fails if a direct Markdown child of `docs/deploy/` is missing from this index.

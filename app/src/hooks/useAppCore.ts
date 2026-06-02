@@ -24,6 +24,7 @@ import {
   deriveRuntimeCompositionScope,
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 const DEFAULT_ACTIVE_FILTER = 'all'
@@ -33,7 +34,12 @@ const normalizeActiveFilter = (
 ) => {
   const wildcardFilterId = availableFilters.find((filter) => isWildcardFilter(filter.id))?.id ?? DEFAULT_ACTIVE_FILTER
   if (!value || isWildcardFilter(value)) return wildcardFilterId
-  return availableFilters.some((filter) => filter.id === value) ? value : wildcardFilterId
+  const jurisdictionFilterId = normalizeJurisdictionCode(value)
+  if (jurisdictionFilterId) return jurisdictionFilterId
+  const exactFilter = availableFilters.find((filter) => filter.id === value)
+  if (exactFilter) return exactFilter.id
+  const caseInsensitiveFilter = availableFilters.find((filter) => filter.id.toUpperCase() === value.trim().toUpperCase())
+  return caseInsensitiveFilter?.id ?? wildcardFilterId
 }
 
 interface AppCoreOptions {
@@ -176,6 +182,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   useEffect(() => {
     if (!currentLandscapeEntry) return
+    if (pendingSearchRef.current && pendingSearchRef.current !== currentSearchString) return
     const currentParams = new URLSearchParams(currentSearchString)
     const nextFilter = normalizeActiveFilter(currentParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
@@ -209,6 +216,27 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       next.delete('f')
     } else {
       if (currentFilterParam === normalizedFilter) return
+      next.set('f', normalizedFilter)
+    }
+    replaceSearchParamsIfNeeded(next)
+  }, [activeFilter, currentLandscapeEntry, currentSearchString, replaceSearchParamsIfNeeded, setActiveFilter])
+
+  const handleFilterChange = useCallback((filter: string) => {
+    if (!currentLandscapeEntry) {
+      setActiveFilter(filter)
+      return
+    }
+
+    const normalizedFilter = normalizeActiveFilter(filter, currentLandscapeEntry.meta.filters ?? [])
+    if (normalizedFilter !== activeFilter) {
+      setActiveFilter(normalizedFilter)
+    }
+
+    const currentParams = new URLSearchParams(currentSearchString)
+    const next = new URLSearchParams(currentParams)
+    if (isWildcardFilter(normalizedFilter)) {
+      next.delete('f')
+    } else {
       next.set('f', normalizedFilter)
     }
     replaceSearchParamsIfNeeded(next)
@@ -624,6 +652,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     currentLandscapeHasMatchedCompositionView,
     activeFilter,
     setActiveFilter,
+    handleFilterChange,
     currentGoal,
     goalIndexAll,
     getMasteryValue,

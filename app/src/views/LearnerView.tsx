@@ -857,6 +857,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (hasAutoRevealedScope.current) return
     // Wait until data is loaded
     if (effectiveLearnerParentMap.size === 0) return
+    if (currentRouteGoalId) return
 
     // If there's an active goal, reveal that instead
     if (effectiveActiveGoalId) {
@@ -869,7 +870,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       hasAutoRevealedScope.current = true
       revealScope()
     }
-  }, [effectiveActiveGoalId, plannedGoals, effectiveLearnerParentMap, revealScope])
+  }, [currentRouteGoalId, effectiveActiveGoalId, plannedGoals, effectiveLearnerParentMap, revealScope])
 
   // Frontier Logic: Identify the "Next Actionable" goal in every branch.
   // Assumption: Content is sequential within containers.

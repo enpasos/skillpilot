@@ -34,17 +34,21 @@ Steps:
 3. `npm run validate:view-filters`
 4. `npm run check:he-math-duration-projection`
 5. `npm run quality:source-coverage-audit:check`
-6. `npm run validate:composition-views`
-7. `npm run quality:memory-card-review:check:all`
-8. `python scripts/validate_schemas.py`
-9. `python scripts/validate_goal_ids_uuid.py`
-10. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
-11. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-12. `python scripts/validate_chemistry_exam_pipeline.py`
-13. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-14. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-15. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-16. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+6. `npm run check:generated-doc-notices`
+7. `npm run check:generated-status-registry`
+8. `npm run check:docs-links`
+9. `npm run check:docs-indexes`
+10. `npm run validate:composition-views`
+11. `npm run quality:memory-card-review:check:all`
+12. `python scripts/validate_schemas.py`
+13. `python scripts/validate_goal_ids_uuid.py`
+14. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
+15. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
+16. `python scripts/validate_chemistry_exam_pipeline.py`
+17. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
+18. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
+19. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
+20. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
 
 The graph rule catalog is documented in:
 
@@ -63,6 +67,10 @@ Current scope note:
 - it additionally validates projected filtered learner graphs via `validate:view-filters`
 - it additionally enforces the Hessen Mathematik Sek-I G8/G9 duration projection via `check:he-math-duration-projection`; the check fails if G8/G9 evidence is missing, no G8/G9 differences are detected, or any canonical-duration-grade evidence link is not represented by authored year structure or duration-specific `goalPlacements`
 - it additionally enforces visible curriculum source coverage for the canonical Mathematik/Physik projections via `quality:source-coverage-audit:check`; global missing source-backed goals may remain as non-visible rollout backlog, but visible atomic goals must have direct source/mapping evidence or explicitly accepted surrogate evidence
+- it additionally checks registered generated Markdown status artifacts for the standard "do not edit manually" notice via `check:generated-doc-notices`
+- it additionally checks that the generated QA status artifact registry is in sync with `app/scripts/generatedMarkdownNoticeRegistry.ts` via `check:generated-status-registry`
+- it additionally checks local Markdown links under `docs/` via `check:docs-links`
+- it additionally checks coverage for the main documentation indexes via `check:docs-indexes`
 - it additionally validates explicit learner-facing composition-view files via `validate:composition-views`
 - it additionally enforces all configured memory-card review ledgers via `quality:memory-card-review:check:all`; in the dashboard, missing `CQR-302` review configuration blocks `M6`, while `M5` remains the core curriculum QA level
 - it additionally enforces the Hessen Oberstufe retained-asset boundary: under `curricula/DE/Gymnasium/input/DE-HE/abi`, legacy `Gymnasiale_Oberstufe` path strings may only remain inside allowlisted raw archival provenance files from `curricula/DE/Gymnasium/input/DE-HE/retained-asset-registry.json`
@@ -90,7 +98,7 @@ cd app
 npm run quality:mem-sparql-consistency
 ```
 
-This writes `docs/qa-ci/status/mem-sparql-consistency-audit.json` and `.md`. It is not part of the blocking CI workflow because the MEM endpoint is external and currently exposes concrete curriculum data only for some configured jurisdictions.
+This writes the MEM audit and review-queue artifacts under `docs/qa-ci/status/`. It is not part of the blocking CI workflow because the MEM endpoint is external and currently exposes concrete curriculum data only for some configured jurisdictions. See `docs/qa-ci/mem-sparql-consistency-runbook.md` for the operational workflow.
 
 ### 3. `backend-ci`
 
@@ -114,6 +122,6 @@ bash run_ci.sh
 
 This runs:
 
-1. app checks (`validate:graph`, `validate:view-filters`, `check:he-math-duration-projection`, `quality:source-coverage-audit:check`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
+1. app checks (`validate:graph`, `validate:view-filters`, `check:he-math-duration-projection`, `quality:source-coverage-audit:check`, `check:generated-doc-notices`, `check:generated-status-registry`, `check:docs-links`, `check:docs-indexes`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
 2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_chemistry_exam_pipeline.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
 3. backend checks (`./gradlew clean check --no-daemon`)

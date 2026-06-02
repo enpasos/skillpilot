@@ -8,7 +8,14 @@
   "sourceExtractionRoot": "curricula/DE/Gymnasium/input",
   "reportJsonPath": "docs/qa-ci/status/mem-sparql-consistency-audit.json",
   "reportMarkdownPath": "docs/qa-ci/status/mem-sparql-consistency-audit.md",
-  "maxIssuesPerCategory": 50,
+  "reviewIssuesMarkdownPath": "docs/qa-ci/status/mem-sparql-consistency-review-issues.md",
+  "reviewIssuesJsonPath": "docs/qa-ci/status/mem-sparql-consistency-review-issues.json",
+  "reviewLedgerPath": "curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.review.jsonl",
+  "reviewNotes": {
+    "triage-6dd2f119513e": "PoC probe on 2026-06-01: a constrained MEM query places this as an intermediate node under `Beherrschen der Grundrechenarten für natürliche Zahlen`; the local Sachsen extraction already contains `Umkehrung der Multiplikation` plus the related division routines in the same source passage. Treat as wording/granularity review, not as an automatic source gap.",
+    "triage-a3e85d9ef77a": "PoC probe on 2026-06-01: the local Sachsen LK extraction contains `Bogenlängen` as an official subitem row in Integralrechnung at source line 2746. A constrained MEM query over the Sachsen Gymnasium Mathematik plan did not find an exact `Bogenlängen` label; it only found `Grad- und Bogenmaß` for the broader Bogen search. Treat as MEM/source-version coverage feedback candidate."
+  },
+  "maxIssuesPerCategory": 200,
   "states": {
     "DE-BB": "Brandenburg",
     "DE-BE": "Berlin",
@@ -38,6 +45,17 @@
       "schoolTypeIri": "https://w3id.org/schulart/BY_0000005",
       "curriculumClassIri": "https://w3id.org/lehrplan/ontology/LP_0000819",
       "competencyClassIri": "https://w3id.org/lehrplan/ontology/LP_0002049"
+    },
+    {
+      "id": "de-sn-math-gymnasium-lehrplan-2019",
+      "jurisdiction": "DE-SN",
+      "label": "Sachsen Mathematik Gymnasium Lehrplan 2019",
+      "graphIri": "https://w3id.org/lehrplan/sn/data",
+      "stateIri": "https://w3id.org/lehrplan/ontology/LP_3000047",
+      "subjectIri": "https://w3id.org/schulfach/SN_0000012",
+      "schoolTypeIri": "https://w3id.org/schulart/SN_0000005",
+      "curriculumClassIri": "https://w3id.org/lehrplan/ontology/LP_0000818",
+      "competencyClassIri": "https://w3id.org/lehrplan/ontology/LP_0002115"
     }
   ]
 }
