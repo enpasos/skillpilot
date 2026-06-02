@@ -262,6 +262,7 @@ function parseArgs(args: string[]): {
   mappingRoot: string
   outputJsonPath: string
   outputMarkdownPath: string
+  publicJsonPath: string | null
   jurisdiction: string | null
   goalIds: string[]
   includeMemSparql: boolean
@@ -272,6 +273,7 @@ function parseArgs(args: string[]): {
   let mappingRoot = defaultMappingRoot
   let outputJsonPath = defaultOutputJsonPath
   let outputMarkdownPath = defaultOutputMarkdownPath
+  let publicJsonPath: string | null = null
   let jurisdiction: string | null = defaultJurisdiction
   let includeMemSparql = false
   let memConfigPath = defaultMemConfigPath
@@ -305,6 +307,14 @@ function parseArgs(args: string[]): {
     }
     if (arg.startsWith('--output-md=')) {
       outputMarkdownPath = arg.slice('--output-md='.length)
+      return
+    }
+    if (arg.startsWith('--public-json=')) {
+      publicJsonPath = arg.slice('--public-json='.length)
+      return
+    }
+    if (arg.startsWith('--output-public-json=')) {
+      publicJsonPath = arg.slice('--output-public-json='.length)
       return
     }
     if (arg.startsWith('--mem-config=')) {
@@ -342,6 +352,7 @@ function parseArgs(args: string[]): {
     mappingRoot,
     outputJsonPath,
     outputMarkdownPath,
+    publicJsonPath,
     jurisdiction,
     goalIds: goalIds.length > 0 ? Array.from(new Set(goalIds)) : defaultGoalIds,
     includeMemSparql,
@@ -1233,9 +1244,14 @@ async function main(): Promise<void> {
 
   mkdirSync(dirname(resolveRepoPath(args.outputJsonPath)), { recursive: true })
   writeFileSync(resolveRepoPath(args.outputJsonPath), `${JSON.stringify(report, null, 2)}\n`)
+  if (args.publicJsonPath !== null) {
+    mkdirSync(dirname(resolveRepoPath(args.publicJsonPath)), { recursive: true })
+    writeFileSync(resolveRepoPath(args.publicJsonPath), `${JSON.stringify(report, null, 2)}\n`)
+  }
   writeFileSync(resolveRepoPath(args.outputMarkdownPath), renderMarkdown(report))
 
   console.log(`Wrote ${args.outputJsonPath}`)
+  if (args.publicJsonPath !== null) console.log(`Wrote ${args.publicJsonPath}`)
   console.log(`Wrote ${args.outputMarkdownPath}`)
 }
 
