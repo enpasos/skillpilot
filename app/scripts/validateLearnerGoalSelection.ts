@@ -37,6 +37,22 @@ assert.equal(
   'An explicit goal route must suppress tree fallback selection.',
 )
 
+const explicitRouteDuringVisibilityHydration = getNextVisibleLearnerGoalSelection({
+  currentGoalId: 'root-goal',
+  currentRouteGoalId: 'deep-linked-goal',
+  visibleGoalIds: ['planned-goal'],
+  activeGoalId: 'planned-goal',
+  plannedGoalIds: ['planned-goal'],
+  plannedScopeGoalIds: ['planned-goal'],
+  visibleRootGoalIds: ['root-goal'],
+})
+
+assert.equal(
+  explicitRouteDuringVisibilityHydration,
+  null,
+  'A deep-linked route must not be replaced while visibility/projection is still hydrating.',
+)
+
 assert.equal(
   shouldAutoRevealActiveGoal({
     activeGoalId: 'active-goal',
@@ -55,8 +71,8 @@ assert.equal(
     currentRouteGoalId: 'inspected-goal',
     pendingRouteSyncGoalId: null,
   }),
-  true,
-  'A real active-goal change should still reveal the new active goal.',
+  false,
+  'A routed inspection target must not be replaced by a backend active-goal load or change.',
 )
 
 assert.equal(
@@ -115,7 +131,7 @@ assert.equal(
   'Visible current goals must not trigger fallback navigation.',
 )
 
-const staleRouteOutsidePlannedScopeFallsBackToPlannedGoal = getNextVisibleLearnerGoalSelection({
+const explicitRouteOutsidePlannedScopeStaysStable = getNextVisibleLearnerGoalSelection({
   currentGoalId: 'old-active-goal',
   currentRouteGoalId: 'old-active-goal',
   visibleGoalIds: ['old-active-goal', 'planned-goal'],
@@ -126,9 +142,9 @@ const staleRouteOutsidePlannedScopeFallsBackToPlannedGoal = getNextVisibleLearne
 })
 
 assert.equal(
-  staleRouteOutsidePlannedScopeFallsBackToPlannedGoal,
-  'planned-goal',
-  'A stale explicit route outside the current planned scope must yield to the new focus subtree.',
+  explicitRouteOutsidePlannedScopeStaysStable,
+  null,
+  'A visible explicit route outside the current planned scope must remain stable for deep links and inspections.',
 )
 
 const explicitRouteInsidePlannedScopeStaysStable = getNextVisibleLearnerGoalSelection({

@@ -81,6 +81,14 @@ jobs:
         run: npm run check:gymnasium-duration-offerings
       - name: Check Curriculum Source Coverage
         run: npm run quality:source-coverage-audit:check
+      - name: Check Generated Documentation Notices
+        run: npm run check:generated-doc-notices
+      - name: Check Generated Status Registry
+        run: npm run check:generated-status-registry
+      - name: Check Documentation Links
+        run: npm run check:docs-links
+      - name: Check Documentation Index Coverage
+        run: npm run check:docs-indexes
       - name: Validate Composition Views
         run: npm run validate:composition-views
       - name: Check Memory-Card Reviews

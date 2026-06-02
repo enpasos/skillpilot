@@ -1,5 +1,5 @@
 import React from 'react'
-import { Check, Target, Send } from 'lucide-react'
+import { Check, FileSearch, Send, Target, X } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 
 import { MasteryBar } from './MasteryBar'
@@ -52,11 +52,50 @@ type GoalProvenance = {
   sourceLicenseUrl?: string
 }
 
+type GoalSourceDocument = {
+  title?: string
+  url?: string
+  path?: string
+}
+
+type GoalClassicSourceRoute = {
+  sourceRef?: string
+  sourceText?: string
+  parentBulletText?: string
+  sourceExtractionPath?: string
+  sourceDocument?: GoalSourceDocument
+  matchType?: string
+  rationale?: string
+}
+
+type GoalMemSparqlRoute = {
+  endpoint?: string
+  graphIri?: string
+  planIri?: string
+  planLabel?: string
+  yearLabel?: string
+  goalIri?: string
+  goalLabel?: string
+  notes?: string
+}
+
+type GoalSourceRationaleItem = {
+  goal?: {
+    id?: string
+    title?: string
+    description?: string
+    pathTitles?: string[]
+  }
+  classicSourceRoute?: GoalClassicSourceRoute
+  memSparqlRoute?: GoalMemSparqlRoute
+}
+
 type ApplicabilityGroup = {
   dimension: string
   values: string[]
 }
 
+const SOURCE_RATIONALE_STATUS_PATH = 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
 const PROGRAM_UNIT_ANCHOR_TAG = 'program-unit:anchor'
@@ -74,6 +113,128 @@ const readString = (value: unknown): string | undefined => {
   if (typeof value !== 'string') return undefined
   const trimmed = value.trim()
   return trimmed.length > 0 ? trimmed : undefined
+}
+
+const readStringArray = (value: unknown): string[] => (
+  Array.isArray(value)
+    ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
+    : []
+)
+
+const decodeCommonHtmlEntities = (value?: string): string => (
+  (value ?? '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim()
+)
+
+const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem | null => {
+  const item = asRecord(rawItem)
+  const rawGoal = asRecord(item?.goal)
+  const goalId = readString(rawGoal?.id)
+  if (!item || !rawGoal || !goalId) return null
+
+  const rawClassicRoute = asRecord(item.classicSourceRoute)
+  const rawSourceDocument = asRecord(rawClassicRoute?.sourceDocument)
+  const rawMemRoute = asRecord(item.memSparqlRoute)
+
+  return {
+    goal: {
+      id: goalId,
+      title: readString(rawGoal.title),
+      description: readString(rawGoal.description),
+      pathTitles: readStringArray(rawGoal.pathTitles),
+    },
+    classicSourceRoute: rawClassicRoute
+      ? {
+          sourceRef: readString(rawClassicRoute.sourceRef),
+          sourceText: readString(rawClassicRoute.sourceText),
+          parentBulletText: readString(rawClassicRoute.parentBulletText),
+          sourceExtractionPath: readString(rawClassicRoute.sourceExtractionPath),
+          sourceDocument: rawSourceDocument
+            ? {
+                title: readString(rawSourceDocument.title),
+                url: readString(rawSourceDocument.url),
+                path: readString(rawSourceDocument.path),
+              }
+            : undefined,
+          matchType: readString(rawClassicRoute.matchType),
+          rationale: readString(rawClassicRoute.rationale),
+        }
+      : undefined,
+    memSparqlRoute: rawMemRoute
+      ? {
+          endpoint: readString(rawMemRoute.endpoint),
+          graphIri: readString(rawMemRoute.graphIri),
+          planIri: readString(rawMemRoute.planIri),
+          planLabel: readString(rawMemRoute.planLabel),
+          yearLabel: readString(rawMemRoute.yearLabel),
+          goalIri: readString(rawMemRoute.goalIri),
+          goalLabel: decodeCommonHtmlEntities(readString(rawMemRoute.goalLabel)),
+          notes: readString(rawMemRoute.notes),
+        }
+      : undefined,
+  }
+}
+
+let sourceRationaleIndexPromise: Promise<Map<string, GoalSourceRationaleItem>> | null = null
+
+const loadSourceRationaleIndex = (): Promise<Map<string, GoalSourceRationaleItem>> => {
+  if (!sourceRationaleIndexPromise) {
+    const params = new URLSearchParams({ path: SOURCE_RATIONALE_STATUS_PATH })
+    sourceRationaleIndexPromise = fetch(`/__quality-dashboard/file?${params.toString()}`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Source rationale status could not be loaded: ${response.status}`)
+        const payload = asRecord(await response.json())
+        const rawItems = Array.isArray(payload?.items) ? payload.items : []
+        const index = new Map<string, GoalSourceRationaleItem>()
+        rawItems.forEach((rawItem) => {
+          const item = normalizeSourceRationaleItem(rawItem)
+          if (item?.goal?.id) index.set(item.goal.id, item)
+        })
+        return index
+      })
+      .catch(() => new Map())
+  }
+
+  return sourceRationaleIndexPromise
+}
+
+const buildMemSparqlQuery = (route?: GoalMemSparqlRoute): string => {
+  if (!route?.graphIri || !route.planIri || !route.goalIri) return ''
+
+  return [
+    'PREFIX lp: <https://w3id.org/lehrplan/ontology/>',
+    'PREFIX bfo: <http://purl.obolibrary.org/obo/>',
+    'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>',
+    '',
+    'SELECT DISTINCT ?planLabel ?yearLabel ?goalLabel',
+    `FROM <${route.graphIri}>`,
+    'WHERE {',
+    `  VALUES ?plan { <${route.planIri}> }`,
+    `  VALUES ?goal { <${route.goalIri}> }`,
+    '',
+    '  ?plan rdfs:label ?planLabel ;',
+    '    lp:LP_0000026 ?year ;',
+    '    bfo:BFO_0000051+ ?goal .',
+    '',
+    '  ?year rdfs:label ?yearLabel .',
+    '  ?goal rdfs:label ?goalLabel .',
+    '',
+    '  FILTER(langMatches(lang(?yearLabel), "de"))',
+    '}',
+  ].join('\n')
+}
+
+const sourceMatchLabel = (matchType?: string): string => {
+  if (matchType === 'exact') return 'genauer Treffer'
+  if (matchType === 'partial') return 'fachliche Teilzuordnung'
+  return matchType ?? 'fachlich geprüft'
 }
 
 const extractLicenseFromTags = (tags?: string[]): string | undefined => {
@@ -168,6 +329,194 @@ const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfu
   return { provenance, helpfulLinks }
 }
 
+const SourceRationaleModal: React.FC<{
+  isOpen: boolean
+  onClose: () => void
+  item: GoalSourceRationaleItem | null
+  copy: ReturnType<typeof getGoalCardCopy>
+}> = ({ isOpen, onClose, item, copy }) => {
+  if (!isOpen || !item) return null
+
+  const goal = item.goal
+  const classicRoute = item.classicSourceRoute
+  const memRoute = item.memSparqlRoute
+  const pathLabel = goal?.pathTitles?.length ? goal.pathTitles.join(' > ') : goal?.title
+  const sparqlQuery = buildMemSparqlQuery(memRoute)
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={copy.sourceRationaleTitle}
+      onClick={onClose}
+    >
+      <div
+        className="flex max-h-[86vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-border-color bg-sidebar-bg shadow-xl"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-border-color px-5 py-4">
+          <div>
+            <h2 className="text-lg font-semibold text-text-primary">{copy.sourceRationaleTitle}</h2>
+            {goal?.title && (
+              <p className="mt-1 text-sm text-text-secondary">
+                <InlineMathText text={goal.title} />
+              </p>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-full p-1.5 text-text-secondary transition-colors hover:bg-slate-200 hover:text-text-primary dark:hover:bg-slate-800"
+            title={copy.sourceRationaleClose}
+            aria-label={copy.sourceRationaleClose}
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="space-y-5 overflow-y-auto px-5 py-4 text-sm text-text-secondary">
+          {pathLabel && (
+            <section>
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
+                {copy.sourceRationalePathLabel}
+              </div>
+              <p className="mt-1 text-text-primary">{pathLabel}</p>
+              {goal?.description && (
+                <p className="mt-2 leading-relaxed">{goal.description}</p>
+              )}
+            </section>
+          )}
+
+          {classicRoute && (
+            <section className="space-y-3">
+              <h3 className="text-sm font-semibold text-text-primary">{copy.sourceRationaleSourceHeading}</h3>
+              <ol className="ml-5 list-decimal space-y-2">
+                {classicRoute.sourceDocument?.url && (
+                  <li>
+                    {copy.sourceRationaleOpenSource}:{' '}
+                    <a
+                      href={classicRoute.sourceDocument.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-words underline decoration-dotted hover:decoration-solid"
+                    >
+                      {classicRoute.sourceDocument.title ?? classicRoute.sourceDocument.url}
+                    </a>
+                  </li>
+                )}
+                {classicRoute.sourceRef && (
+                  <li>
+                    {copy.sourceRationaleNavigateTo}: <span className="text-text-primary">{classicRoute.sourceRef}</span>
+                  </li>
+                )}
+                {classicRoute.sourceText && (
+                  <li>
+                    {copy.sourceRationaleCompareEvidence}: <span className="text-text-primary">{classicRoute.sourceText}</span>
+                  </li>
+                )}
+                {classicRoute.sourceExtractionPath && (
+                  <li>
+                    {copy.sourceRationaleTechnicalExtraction}:{' '}
+                    <code className="rounded bg-slate-100 px-1 py-0.5 text-[12px] text-text-primary dark:bg-slate-800">
+                      {classicRoute.sourceExtractionPath}
+                    </code>
+                  </li>
+                )}
+              </ol>
+            </section>
+          )}
+
+          {classicRoute && (
+            <section className="space-y-3">
+              <h3 className="text-sm font-semibold text-text-primary">{copy.sourceRationaleDerivationHeading}</h3>
+              {classicRoute.sourceText && (
+                <p>
+                  <span className="font-medium text-text-primary">{copy.sourceRationaleSourceCore}:</span>{' '}
+                  {classicRoute.sourceText}
+                </p>
+              )}
+              {classicRoute.parentBulletText && classicRoute.parentBulletText !== classicRoute.sourceText && (
+                <p>
+                  <span className="font-medium text-text-primary">{copy.sourceRationaleParentContext}:</span>{' '}
+                  {classicRoute.parentBulletText}
+                </p>
+              )}
+              {goal?.description && (
+                <p>
+                  <span className="font-medium text-text-primary">{copy.sourceRationaleSkillpilotGoal}:</span>{' '}
+                  {goal.description}
+                </p>
+              )}
+              {(classicRoute.matchType || classicRoute.rationale) && (
+                <p>
+                  <span className="font-medium text-text-primary">{copy.sourceRationaleMatch}:</span>{' '}
+                  {sourceMatchLabel(classicRoute.matchType)}
+                  {classicRoute.rationale ? `; ${classicRoute.rationale}` : ''}
+                </p>
+              )}
+            </section>
+          )}
+
+          {memRoute && (
+            <section className="space-y-3">
+              <h3 className="text-sm font-semibold text-text-primary">{copy.sourceRationaleMemHeading}</h3>
+              {memRoute.endpoint && (
+                <p>
+                  {copy.sourceRationaleMemOpenEndpoint}:{' '}
+                  <a
+                    href={memRoute.endpoint}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-words underline decoration-dotted hover:decoration-solid"
+                  >
+                    {memRoute.endpoint}
+                  </a>
+                </p>
+              )}
+              {sparqlQuery && (
+                <div>
+                  <div className="mb-1 font-medium text-text-primary">{copy.sourceRationaleMemRunQuery}</div>
+                  <pre className="max-h-72 overflow-auto rounded-xl border border-border-color bg-slate-950 p-3 text-[11px] leading-relaxed text-slate-100">
+                    <code>{sparqlQuery}</code>
+                  </pre>
+                </div>
+              )}
+              <div className="rounded-xl border border-border-color bg-slate-50/70 p-3 dark:bg-slate-900/30">
+                <div className="font-medium text-text-primary">{copy.sourceRationaleMemExpected}</div>
+                <dl className="mt-2 space-y-1">
+                  {memRoute.planLabel && (
+                    <div>
+                      <dt className="inline font-medium text-text-primary">planLabel: </dt>
+                      <dd className="inline">{memRoute.planLabel}</dd>
+                    </div>
+                  )}
+                  {memRoute.yearLabel && (
+                    <div>
+                      <dt className="inline font-medium text-text-primary">yearLabel: </dt>
+                      <dd className="inline">{memRoute.yearLabel}</dd>
+                    </div>
+                  )}
+                  {memRoute.goalLabel && (
+                    <div>
+                      <dt className="inline font-medium text-text-primary">goalLabel: </dt>
+                      <dd className="inline">{memRoute.goalLabel}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+              <p>
+                <span className="font-medium text-text-primary">{copy.sourceRationaleMemEvaluation}:</span>{' '}
+                {memRoute.notes ?? 'Wenn diese Zeile erscheint und der Erwartungstext fachlich passt, ist der MEM/FWU-Weg als konsistenter Alternativweg nutzbar.'}
+              </p>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export const GoalCard: React.FC<GoalCardProps> = ({
   goal,
   masteryValue,
@@ -209,6 +558,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? copy.activeActionReveal
     : copy.activeActionSelect
   const { provenance, helpfulLinks } = extractSourceMetadata(goal)
+  const [sourceRationale, setSourceRationale] = React.useState<GoalSourceRationaleItem | null>(null)
+  const [isSourceRationaleOpen, setIsSourceRationaleOpen] = React.useState(false)
   const displayTitle = useRawGoalTitles ? goal.title : getAudienceGoalTitle(goal)
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
@@ -242,6 +593,22 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       values,
     }))
   }, [goal.applicability])
+
+  React.useEffect(() => {
+    let cancelled = false
+    setSourceRationale(null)
+    setIsSourceRationaleOpen(false)
+
+    void loadSourceRationaleIndex().then((index) => {
+      if (!cancelled) {
+        setSourceRationale(index.get(goal.id) ?? null)
+      }
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [goal.id])
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -282,6 +649,17 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
         </div>
         <div className="flex items-center gap-2 shrink-0">
+          {sourceRationale && (
+            <button
+              type="button"
+              onClick={() => setIsSourceRationaleOpen(true)}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-sky-600 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-sky-300"
+              title={copy.sourceRationaleTooltip}
+              aria-label={copy.sourceRationaleTooltip}
+            >
+              <FileSearch size={18} strokeWidth={2} />
+            </button>
+          )}
           {isAtomic && (
             canSetActive ? (
               <button
@@ -674,6 +1052,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
         </div>
       )}
+
+      <SourceRationaleModal
+        isOpen={isSourceRationaleOpen}
+        onClose={() => setIsSourceRationaleOpen(false)}
+        item={sourceRationale}
+        copy={copy}
+      />
     </div>
   )
 }

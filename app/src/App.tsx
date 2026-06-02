@@ -151,6 +151,15 @@ const App: React.FC = () => {
     () => getLearnerPathToken(location.pathname),
     [location.pathname],
   )
+  const routeGoalToken = useMemo(() => {
+    const match = /^\/(?:learner|trainer|explorer)\/([^/]+)\/?$/.exec(location.pathname)
+    if (!match?.[1]) return ''
+    try {
+      return decodeURIComponent(match[1])
+    } catch {
+      return match[1]
+    }
+  }, [location.pathname])
   const isWhitepaperRoute = normalizedPath === '/whitepaper' || normalizedPath.startsWith('/whitepaper/') ||
     normalizedActualPath === '/whitepaper' || normalizedActualPath.startsWith('/whitepaper/')
   const isQuickstartRoute = normalizedPath === '/quickstart' || normalizedPath.startsWith('/quickstart/') ||
@@ -547,7 +556,9 @@ const App: React.FC = () => {
     // Deep Link Enforcer for Goal Navigation
     if (role === 'learner') {
       const params = new URLSearchParams(location.search)
-      const goalParam = params.get('goal') || params.get('g')
+      const goalParam = params.get('goal') || params.get('g') || (
+        window.location.pathname.startsWith('/learner/') ? '' : routeGoalToken
+      )
 
       if (goalParam) {
         const targetPath = `/learner/${goalParam}`
@@ -561,7 +572,10 @@ const App: React.FC = () => {
           return
         } else {
           // We are meant to be at the goal but aren't yet. Force redirect.
-          navigate(`${targetPath}${location.search}`, { replace: true })
+          params.delete('goal')
+          params.delete('g')
+          const newSearch = params.toString()
+          navigate(`${targetPath}${newSearch ? '?' + newSearch : ''}`, { replace: true })
           return
         }
       }
@@ -570,9 +584,10 @@ const App: React.FC = () => {
     const desiredPath =
       role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
     if (!window.location.pathname.startsWith(desiredPath) && window.location.pathname !== '/') {
-      navigate(desiredPath + location.search, { replace: true })
+      const targetPath = routeGoalToken ? `${desiredPath}/${routeGoalToken}` : desiredPath
+      navigate(targetPath + location.search, { replace: true })
     }
-  }, [role, hasActiveSession, navigate, isPublicRoute, location.search])
+  }, [role, hasActiveSession, navigate, isPublicRoute, location.search, routeGoalToken])
 
   // Direct check for /curricula using window.location to handle OAuth redirect cache issues
   // This ensures CurriculaView is rendered even if React Router state is out of sync
@@ -650,7 +665,7 @@ const App: React.FC = () => {
           const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
           const params = new URLSearchParams(location.search)
-          const routeGoalId = learnerPathToken && learnerPathToken !== sanitizedId ? learnerPathToken : ''
+          const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''
           const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
 
           if (activeRole === 'learner') {
@@ -701,7 +716,7 @@ const App: React.FC = () => {
           const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
           // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
           const params = new URLSearchParams(location.search)
-          const routeGoalId = learnerPathToken && learnerPathToken !== sanitizedId ? learnerPathToken : ''
+          const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''
           const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
 
           if (activeRole === 'learner') {
@@ -807,7 +822,7 @@ const App: React.FC = () => {
               neighbors={core.filteredNeighbors}
               activeFilter={core.activeFilter}
               availableFilters={core.availableFilters}
-              onFilterChange={core.setActiveFilter}
+              onFilterChange={core.handleFilterChange}
               externalRequires={core.externalRequires}
               currentGoal={core.currentGoal}
               getMastery={core.getMasteryValue}

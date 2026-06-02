@@ -26,6 +26,25 @@ export interface GoalCardCopy {
   progressInSectionLabel: string
   progressInStructureSectionLabel: string
   progressForGoalLabel: string
+  sourceRationaleTooltip: string
+  sourceRationaleTitle: string
+  sourceRationalePathLabel: string
+  sourceRationaleSourceHeading: string
+  sourceRationaleDerivationHeading: string
+  sourceRationaleMemHeading: string
+  sourceRationaleOpenSource: string
+  sourceRationaleNavigateTo: string
+  sourceRationaleCompareEvidence: string
+  sourceRationaleTechnicalExtraction: string
+  sourceRationaleSourceCore: string
+  sourceRationaleParentContext: string
+  sourceRationaleSkillpilotGoal: string
+  sourceRationaleMatch: string
+  sourceRationaleMemOpenEndpoint: string
+  sourceRationaleMemRunQuery: string
+  sourceRationaleMemExpected: string
+  sourceRationaleMemEvaluation: string
+  sourceRationaleClose: string
   projectedProgramUnitKinds: Record<string, string>
 }
 
@@ -57,6 +76,25 @@ export const getGoalCardCopy = (language: LabelLanguage): GoalCardCopy => (
         progressInSectionLabel: 'Progress in this section',
         progressInStructureSectionLabel: 'Progress in this structure section',
         progressForGoalLabel: 'Mastery for this learning goal',
+        sourceRationaleTooltip: 'Show source rationale',
+        sourceRationaleTitle: 'Source rationale',
+        sourceRationalePathLabel: 'SkillPilot path',
+        sourceRationaleSourceHeading: 'How to read the original source',
+        sourceRationaleDerivationHeading: 'Why this becomes the learning goal',
+        sourceRationaleMemHeading: 'MEM/FWU-SPARQL as alternate route',
+        sourceRationaleOpenSource: 'Open the official source',
+        sourceRationaleNavigateTo: 'Navigate to',
+        sourceRationaleCompareEvidence: 'Compare the curriculum text with this extracted evidence',
+        sourceRationaleTechnicalExtraction: 'Technical source extraction',
+        sourceRationaleSourceCore: 'The source states the relevant content as follows',
+        sourceRationaleParentContext: 'The excerpt appears in this wider official expectation',
+        sourceRationaleSkillpilotGoal: 'SkillPilot turns this into the following assessable learning goal',
+        sourceRationaleMatch: 'Review result',
+        sourceRationaleMemOpenEndpoint: 'Open the SPARQL endpoint',
+        sourceRationaleMemRunQuery: 'Run this query',
+        sourceRationaleMemExpected: 'Expected result',
+        sourceRationaleMemEvaluation: 'Evaluation',
+        sourceRationaleClose: 'Close',
         projectedProgramUnitKinds: {
           stage: 'Stage',
           year: 'Year',
@@ -90,6 +128,25 @@ export const getGoalCardCopy = (language: LabelLanguage): GoalCardCopy => (
         progressInSectionLabel: 'Fortschritt in diesem Abschnitt',
         progressInStructureSectionLabel: 'Fortschritt in diesem Strukturabschnitt',
         progressForGoalLabel: 'Kompetenzstand für dieses Lernziel',
+        sourceRationaleTooltip: 'Quellenbegründung anzeigen',
+        sourceRationaleTitle: 'Quellenbegründung',
+        sourceRationalePathLabel: 'SkillPilot-Pfad',
+        sourceRationaleSourceHeading: 'So liest man die Originalquelle',
+        sourceRationaleDerivationHeading: 'Warum daraus dieses Lernziel entsteht',
+        sourceRationaleMemHeading: 'MEM/FWU-SPARQL als Alternativweg',
+        sourceRationaleOpenSource: 'Offizielle Quelle öffnen',
+        sourceRationaleNavigateTo: 'Zur Stelle navigieren',
+        sourceRationaleCompareEvidence: 'Quellentext mit diesem extrahierten Beleg vergleichen',
+        sourceRationaleTechnicalExtraction: 'Technische Source-Extraction',
+        sourceRationaleSourceCore: 'Die Quelle formuliert den fachlichen Kern so',
+        sourceRationaleParentContext: 'Dieser Ausschnitt steht in diesem breiteren offiziellen Erwartungssatz',
+        sourceRationaleSkillpilotGoal: 'SkillPilot formuliert daraus dieses prüfbare Lernziel',
+        sourceRationaleMatch: 'Zuordnungsprüfung',
+        sourceRationaleMemOpenEndpoint: 'SPARQL-Endpunkt öffnen',
+        sourceRationaleMemRunQuery: 'Diese Abfrage ausführen',
+        sourceRationaleMemExpected: 'Erwartetes Ergebnis',
+        sourceRationaleMemEvaluation: 'Auswertung',
+        sourceRationaleClose: 'Schließen',
         projectedProgramUnitKinds: {
           stage: 'Stufe',
           year: 'Jahrgang',

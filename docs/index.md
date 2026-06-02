@@ -37,6 +37,16 @@ This project is an invitation to the community to jointly build and bring to lif
 
 The docs here are organized by intent: concept-level foundations (competence graph and didactics), then runtime workflows, followed by operational topics like pipelines, QA/CI, deployment, developer references, and security.
 
+-   [Documentation guidelines](dev/documentation-guidelines.md)
+-   [Quickstart documentation index](quickstart/index.md)
+-   [Whitepaper documentation index](whitepaper/index.md)
+-   [Concept documentation index](concept/index.md)
+-   [Production pipelines index](production-pipelines/index.md)
+-   [Developer documentation index](dev/index.md)
+-   [QA/CI documentation index](qa-ci/index.md)
+-   [Deployment documentation index](deploy/index.md)
+-   [Security documentation index](security/index.md)
+
 ## Contribute
 
 -   **Curriculum Champions:** Start with the Curricula & Champions entry above.
