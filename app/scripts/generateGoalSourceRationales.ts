@@ -34,6 +34,7 @@ interface MappingDecision {
 
 interface MappingReview {
   reviewId?: unknown
+  targetLandscapeId?: unknown
   sourceExtractionPath?: unknown
   decisions?: unknown
 }
@@ -150,6 +151,7 @@ interface SourceRationaleReport {
   request: {
     landscapePath: string
     mappingRoot: string
+    goalSelection: GoalSelection
     goalIds: string[]
     jurisdiction: string | null
     includeMemSparql: boolean
@@ -165,6 +167,8 @@ interface SourceRationaleReport {
   }
   items: SourceRationaleItem[]
 }
+
+type GoalSelection = 'default' | 'explicit' | 'source-backed'
 
 interface MemConcreteTextComparisonConfig {
   id: string
@@ -260,8 +264,9 @@ function asBoolean(value: unknown): boolean | null {
 function parseArgs(args: string[]): {
   landscapePath: string
   mappingRoot: string
+  goalSelection: GoalSelection
   outputJsonPath: string
-  outputMarkdownPath: string
+  outputMarkdownPath: string | null
   publicJsonPath: string | null
   jurisdiction: string | null
   goalIds: string[]
@@ -271,8 +276,9 @@ function parseArgs(args: string[]): {
 } {
   let landscapePath = defaultLandscapePath
   let mappingRoot = defaultMappingRoot
+  let goalSelection: GoalSelection = 'default'
   let outputJsonPath = defaultOutputJsonPath
-  let outputMarkdownPath = defaultOutputMarkdownPath
+  let outputMarkdownPath: string | null = defaultOutputMarkdownPath
   let publicJsonPath: string | null = null
   let jurisdiction: string | null = defaultJurisdiction
   let includeMemSparql = false
@@ -293,6 +299,14 @@ function parseArgs(args: string[]): {
       includeMemSparql = true
       return
     }
+    if (arg === '--source-backed-goals' || arg === '--goals=source-backed' || arg === '--goals=source-backed-goals') {
+      goalSelection = 'source-backed'
+      return
+    }
+    if (arg === '--no-md' || arg === '--no-markdown') {
+      outputMarkdownPath = null
+      return
+    }
     if (arg.startsWith('--landscape=')) {
       landscapePath = arg.slice('--landscape='.length)
       return
@@ -306,7 +320,8 @@ function parseArgs(args: string[]): {
       return
     }
     if (arg.startsWith('--output-md=')) {
-      outputMarkdownPath = arg.slice('--output-md='.length)
+      const value = arg.slice('--output-md='.length)
+      outputMarkdownPath = value === 'none' || value === 'null' ? null : value
       return
     }
     if (arg.startsWith('--public-json=')) {
@@ -333,11 +348,18 @@ function parseArgs(args: string[]): {
       return
     }
     if (arg.startsWith('--goal=')) {
+      goalSelection = 'explicit'
       goalIds.push(arg.slice('--goal='.length))
       return
     }
     if (arg.startsWith('--goals=')) {
-      arg.slice('--goals='.length)
+      const value = arg.slice('--goals='.length)
+      if (value === 'source-backed' || value === 'source-backed-goals') {
+        goalSelection = 'source-backed'
+        return
+      }
+      goalSelection = 'explicit'
+      value
         .split(',')
         .map((goalId) => goalId.trim())
         .filter((goalId) => goalId.length > 0)
@@ -350,6 +372,7 @@ function parseArgs(args: string[]): {
   return {
     landscapePath,
     mappingRoot,
+    goalSelection,
     outputJsonPath,
     outputMarkdownPath,
     publicJsonPath,
@@ -373,6 +396,12 @@ function collectReviewFiles(dir: string): string[] {
       return []
     })
     .sort((left, right) => left.localeCompare(right, 'en'))
+}
+
+function mappingReviewTargetsLandscape(mappingReview: MappingReview, targetLandscapeId: string | null): boolean {
+  if (targetLandscapeId === null) return true
+  const reviewTargetLandscapeId = asString(mappingReview.targetLandscapeId)
+  return reviewTargetLandscapeId === null || reviewTargetLandscapeId === targetLandscapeId
 }
 
 function goalContains(goal: Goal): string[] {
@@ -445,6 +474,64 @@ function findSourceGoal(sourceExtraction: SourceExtraction, sourceGoalId: string
   return sourceExtraction.sourceGoals.find((entry): entry is SourceGoal => (
     isRecord(entry) && entry.id === sourceGoalId
   )) ?? null
+}
+
+function readSourceExtraction(path: string, cache: Map<string, SourceExtraction>): SourceExtraction {
+  if (!cache.has(path)) {
+    cache.set(path, readJsonFile<SourceExtraction>(path))
+  }
+  const sourceExtraction = cache.get(path)
+  if (sourceExtraction === undefined) throw new Error(`Source extraction could not be loaded: ${path}`)
+  return sourceExtraction
+}
+
+function mappingReviewJurisdiction(
+  mappingReview: MappingReview,
+  sourceExtractionCache: Map<string, SourceExtraction>,
+): string | null {
+  const sourceExtractionPath = asString(mappingReview.sourceExtractionPath)
+  if (sourceExtractionPath === null) return null
+  return asString(readSourceExtraction(sourceExtractionPath, sourceExtractionCache).jurisdiction)
+}
+
+function collectSourceBackedGoalIds(input: {
+  landscapePath: string
+  mappingRoot: string
+  jurisdiction: string | null
+}): string[] {
+  const landscape = readJsonFile<Landscape>(input.landscapePath)
+  const goals = new Map((landscape.goals ?? []).map((goal) => [goal.id, goal]))
+  const parentsByGoal = buildParentMap(goals)
+  const targetLandscapeId = asString(landscape.landscapeId)
+  const sourceExtractionCache = new Map<string, SourceExtraction>()
+  const goalIds = new Set<string>()
+
+  collectReviewFiles(input.mappingRoot).forEach((mappingReviewPath) => {
+    const mappingReview = readJsonFile<MappingReview>(mappingReviewPath)
+    if (!mappingReviewTargetsLandscape(mappingReview, targetLandscapeId)) return
+    if (input.jurisdiction !== null) {
+      const jurisdiction = mappingReviewJurisdiction(mappingReview, sourceExtractionCache)
+      if (jurisdiction !== input.jurisdiction) return
+    }
+    if (!Array.isArray(mappingReview.decisions)) return
+
+    mappingReview.decisions
+      .filter((entry): entry is MappingDecision => isRecord(entry))
+      .forEach((decision) => {
+        const canonicalGoalIds = Array.isArray(decision.canonicalGoalIds)
+          ? decision.canonicalGoalIds.filter((goalId): goalId is string => typeof goalId === 'string')
+          : []
+        canonicalGoalIds
+          .filter((goalId) => goals.has(goalId))
+          .forEach((goalId) => goalIds.add(goalId))
+      })
+  })
+
+  return Array.from(goalIds).sort((left, right) => {
+    const leftPath = bestGoalPathTitles(left, goals, parentsByGoal).join(' > ')
+    const rightPath = bestGoalPathTitles(right, goals, parentsByGoal).join(' > ')
+    return leftPath.localeCompare(rightPath, 'de')
+  })
 }
 
 function evidenceMethod(evidence: unknown): string | null {
@@ -668,11 +755,7 @@ function buildCandidate(
   const sourceGoalId = asString(decision.sourceGoalId)
   if (sourceExtractionPath === null || sourceGoalId === null) return null
 
-  if (!sourceExtractionCache.has(sourceExtractionPath)) {
-    sourceExtractionCache.set(sourceExtractionPath, readJsonFile<SourceExtraction>(sourceExtractionPath))
-  }
-  const sourceExtraction = sourceExtractionCache.get(sourceExtractionPath)
-  if (sourceExtraction === undefined) return null
+  const sourceExtraction = readSourceExtraction(sourceExtractionPath, sourceExtractionCache)
 
   const sourceGoal = findSourceGoal(sourceExtraction, sourceGoalId)
   const sourceDocument = sourceGoal === null ? null : selectSourceDocument(sourceExtraction, sourceGoal)
@@ -710,7 +793,11 @@ function buildCandidate(
   }
 }
 
-function findCandidatesForGoals(goalIds: string[], mappingRoot: string): Map<string, SourceRationaleCandidate[]> {
+function findCandidatesForGoals(
+  goalIds: string[],
+  mappingRoot: string,
+  targetLandscapeId: string | null,
+): Map<string, SourceRationaleCandidate[]> {
   const goalIdSet = new Set(goalIds)
   const candidatesByGoal = new Map<string, SourceRationaleCandidate[]>()
   const sourceExtractionCache = new Map<string, SourceExtraction>()
@@ -719,6 +806,7 @@ function findCandidatesForGoals(goalIds: string[], mappingRoot: string): Map<str
 
   collectReviewFiles(mappingRoot).forEach((mappingReviewPath) => {
     const mappingReview = readJsonFile<MappingReview>(mappingReviewPath)
+    if (!mappingReviewTargetsLandscape(mappingReview, targetLandscapeId)) return
     if (!Array.isArray(mappingReview.decisions)) return
     mappingReview.decisions
       .filter((entry): entry is MappingDecision => isRecord(entry))
@@ -747,6 +835,7 @@ function findCandidatesForGoals(goalIds: string[], mappingRoot: string): Map<str
 function buildReport(input: {
   landscapePath: string
   mappingRoot: string
+  goalSelection: GoalSelection
   goalIds: string[]
   jurisdiction: string | null
   includeMemSparql: boolean
@@ -756,7 +845,11 @@ function buildReport(input: {
   const landscape = readJsonFile<Landscape>(input.landscapePath)
   const goals = new Map((landscape.goals ?? []).map((goal) => [goal.id, goal]))
   const parentsByGoal = buildParentMap(goals)
-  const candidatesByGoal = findCandidatesForGoals(input.goalIds, input.mappingRoot)
+  const candidatesByGoal = findCandidatesForGoals(
+    input.goalIds,
+    input.mappingRoot,
+    asString(landscape.landscapeId),
+  )
 
   const items: SourceRationaleItem[] = input.goalIds.map((goalId) => {
     const goal = goals.get(goalId)
@@ -1228,10 +1321,18 @@ function renderMarkdown(report: SourceRationaleReport): string {
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2))
+  const goalIds = args.goalSelection === 'source-backed'
+    ? collectSourceBackedGoalIds({
+      landscapePath: args.landscapePath,
+      mappingRoot: args.mappingRoot,
+      jurisdiction: args.jurisdiction,
+    })
+    : args.goalIds
   const report = buildReport({
     landscapePath: args.landscapePath,
     mappingRoot: args.mappingRoot,
-    goalIds: args.goalIds,
+    goalSelection: args.goalSelection,
+    goalIds,
     jurisdiction: args.jurisdiction,
     includeMemSparql: args.includeMemSparql,
     memConfigPath: args.includeMemSparql ? args.memConfigPath : null,
@@ -1248,11 +1349,14 @@ async function main(): Promise<void> {
     mkdirSync(dirname(resolveRepoPath(args.publicJsonPath)), { recursive: true })
     writeFileSync(resolveRepoPath(args.publicJsonPath), `${JSON.stringify(report, null, 2)}\n`)
   }
-  writeFileSync(resolveRepoPath(args.outputMarkdownPath), renderMarkdown(report))
+  if (args.outputMarkdownPath !== null) {
+    mkdirSync(dirname(resolveRepoPath(args.outputMarkdownPath)), { recursive: true })
+    writeFileSync(resolveRepoPath(args.outputMarkdownPath), renderMarkdown(report))
+  }
 
   console.log(`Wrote ${args.outputJsonPath}`)
   if (args.publicJsonPath !== null) console.log(`Wrote ${args.publicJsonPath}`)
-  console.log(`Wrote ${args.outputMarkdownPath}`)
+  if (args.outputMarkdownPath !== null) console.log(`Wrote ${args.outputMarkdownPath}`)
 }
 
 await main()

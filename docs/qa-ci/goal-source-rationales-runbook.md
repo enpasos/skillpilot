@@ -1,7 +1,7 @@
 # Goal Source Rationales Runbook
 
 Status: PoC runbook  
-Scope: generated human-readable source rationales for selected SkillPilot learning goals
+Scope: generated human-readable source rationales for selected and source-backed SkillPilot learning goals
 
 ## Purpose
 
@@ -59,6 +59,8 @@ Useful options:
 - `--mapping-root=<path>` selects the mapping-review root to scan.
 - `--output-json=<path>` changes the JSON output.
 - `--output-md=<path>` changes the Markdown output.
+- `--no-md` skips Markdown output for runtime-only JSON indexes.
+- `--goals=source-backed` derives all target goals that have reviewed source mappings in the selected scope.
 - `--jurisdiction=all` disables jurisdiction filtering.
 - `--include-mem` adds a live MEM/FWU-SPARQL comparison where configured.
 - `--mem-config=<path>` selects the MEM/FWU consistency config.
@@ -90,6 +92,64 @@ This writes:
 - `docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json`
 
 This variant hides SkillPilot goal IDs in the visible explanation, names the learning goal by its SkillPilot path, and includes a concrete SPARQL query plus result-reading instructions for every MEM/FWU match.
+
+## Runtime Public Index
+
+The Explorer source-rationale button does not call MEM/FWU or the local QA dashboard at render time. The production UI loads a Vite-built JSON asset from `app/src/data` first, so the index is shipped through the same `/assets/...` path family as the application code. A copy is also written to `/data/...` for local direct checks and as a legacy fallback:
+
+```text
+/assets/goal-source-rationales-math-public-<hash>.json
+/data/goal-source-rationales-math-public.json
+```
+
+Regenerate the current public Mathematik index with:
+
+```bash
+npm run quality:goal-source-rationales:math-public
+```
+
+Verify that the runtime copies are present, identical, and still cover the current PoC goals with:
+
+```bash
+npm run check:goal-source-rationales:math-public
+```
+
+After `npm run build`, verify that Vite emitted the hashed JSON asset and that the built JavaScript references it:
+
+```bash
+npm run check:goal-source-rationales:build-artifact
+```
+
+After deployment, verify the live host in the same shape the browser uses:
+
+```bash
+npm run smoke:goal-source-rationales:deployment
+```
+
+For another host, pass a base URL:
+
+```bash
+npm run smoke:goal-source-rationales:deployment -- --base-url=http://127.0.0.1:8080
+```
+
+The repository deploy script runs this smoke test after restarting the production service. Override the target host with:
+
+```bash
+SKILLPILOT_BASE_URL=https://staging.example.org scripts/deploy.sh
+```
+
+This command currently uses the reviewed Bayern Mathematik/Gymnasium source-backed scope:
+
+```text
+canonical Mathematik goals with DE-BY reviewed source mappings
+```
+
+It writes:
+
+- `app/src/data/goal-source-rationales-math-public.json`
+- `app/public/data/goal-source-rationales-math-public.json`
+
+The current index is a scalable runtime step, not the final national coverage promise. It expands the UI from three hand-picked PoC goals to all source-backed Bayern Mathematik goals that the generator can derive from mapping reviews. Further rollout should add per-scope or merged indexes for additional jurisdictions once their source-rationale and MEM status are reviewed.
 
 ## Review Checklist
 

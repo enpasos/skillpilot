@@ -46,6 +46,8 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Check Goal Source Rationale Build Artifact
+        run: npm run check:goal-source-rationales:build-artifact
 
   graph-validation:
     runs-on: ubuntu-latest
@@ -81,6 +83,8 @@ jobs:
         run: npm run check:gymnasium-duration-offerings
       - name: Check Curriculum Source Coverage
         run: npm run quality:source-coverage-audit:check
+      - name: Check Goal Source Rationale Runtime Index
+        run: npm run check:goal-source-rationales:math-public
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry
