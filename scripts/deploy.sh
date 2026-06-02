@@ -8,6 +8,42 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_ROOT}"
 
+SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
+
+ensure_restart_possible() {
+  echo "Prüfe Restart-Voraussetzungen..."
+
+  if ! command -v systemctl >/dev/null 2>&1; then
+    echo "Abbruch: systemctl ist in dieser Umgebung nicht verfügbar." >&2
+    exit 1
+  fi
+
+  local load_state
+  if ! load_state="$(systemctl show "${SERVICE_NAME}" --property=LoadState --value 2>/dev/null)"; then
+    echo "Abbruch: systemctl kann den Dienst '${SERVICE_NAME}' in dieser Umgebung nicht lesen." >&2
+    echo "Führe das Deployment auf dem Server aus, auf dem der systemd-Dienst läuft." >&2
+    exit 1
+  fi
+
+  if [ "${load_state}" != "loaded" ]; then
+    echo "Abbruch: systemd-Dienst '${SERVICE_NAME}' ist nicht geladen (LoadState=${load_state})." >&2
+    exit 1
+  fi
+
+  if [ -t 0 ]; then
+    if ! sudo -v; then
+      echo "Abbruch: sudo-Authentifizierung für den späteren Restart fehlgeschlagen." >&2
+      exit 1
+    fi
+  elif ! sudo -n true 2>/dev/null; then
+    echo "Abbruch: kein interaktives Terminal und keine passwortlose sudo-Berechtigung für den Restart." >&2
+    echo "Starte das Deployment in einer interaktiven Server-Shell oder richte NOPASSWD für systemctl restart ${SERVICE_NAME} ein." >&2
+    exit 1
+  fi
+}
+
+ensure_restart_possible
+
 echo "Stash local changes..."
 git stash
 
@@ -42,8 +78,11 @@ chmod +x gradlew
 cd ..
 
 echo "Starte Service neu..."
-# Prüfen, ob wir sudo-Rechte haben oder das Passwort benötigt wird (interaktiv)
-sudo systemctl restart skillpilot
+# sudo timestamp may expire during long builds, so refresh it directly before restart.
+if [ -t 0 ]; then
+  sudo -v
+fi
+sudo systemctl restart "${SERVICE_NAME}"
 
 echo "Prüfe Quellenbegründungs-Smoke-Test..."
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
