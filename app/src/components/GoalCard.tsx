@@ -1,6 +1,7 @@
 import React from 'react'
 import { Check, FileSearch, Send, Target, X } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
+import sourceRationaleMathPublicUrl from '../data/goal-source-rationales-math-public.json?url'
 
 import { MasteryBar } from './MasteryBar'
 import { isCompleteMastery, isMastered } from '../goalUiUtils'
@@ -95,7 +96,8 @@ type ApplicabilityGroup = {
   values: string[]
 }
 
-const SOURCE_RATIONALE_PUBLIC_PATH = '/data/goal-source-rationales-mem-examples-plain.json'
+const SOURCE_RATIONALE_ASSET_URL = sourceRationaleMathPublicUrl
+const SOURCE_RATIONALE_PUBLIC_PATH = '/data/goal-source-rationales-math-public.json'
 const SOURCE_RATIONALE_STATUS_PATH = 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
@@ -186,8 +188,14 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
 let sourceRationaleIndexPromise: Promise<Map<string, GoalSourceRationaleItem>> | null = null
 
 const loadSourceRationalePayload = async (): Promise<Record<string, unknown> | null> => {
-  const publicResponse = await fetch(SOURCE_RATIONALE_PUBLIC_PATH)
-  if (publicResponse.ok) return asRecord(await publicResponse.json())
+  for (const sourceUrl of [SOURCE_RATIONALE_ASSET_URL, SOURCE_RATIONALE_PUBLIC_PATH]) {
+    try {
+      const publicResponse = await fetch(sourceUrl)
+      if (publicResponse.ok) return asRecord(await publicResponse.json())
+    } catch {
+      // Try the next source; source rationales are optional UI metadata.
+    }
+  }
 
   const params = new URLSearchParams({ path: SOURCE_RATIONALE_STATUS_PATH })
   const localResponse = await fetch(`/__quality-dashboard/file?${params.toString()}`)

@@ -45,4 +45,10 @@ echo "Starte Service neu..."
 # Prüfen, ob wir sudo-Rechte haben oder das Passwort benötigt wird (interaktiv)
 sudo systemctl restart skillpilot
 
+echo "Prüfe Quellenbegründungs-Smoke-Test..."
+SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+cd app
+npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}"
+cd ..
+
 echo "Fertig!"
