@@ -44,11 +44,15 @@ ensure_restart_possible() {
 
 ensure_restart_possible
 
-echo "Stash local changes..."
-git stash
+if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
+  echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
+else
+  echo "Stash local changes..."
+  git stash
 
-echo "Hole Updates..."
-git pull
+  echo "Hole Updates..."
+  git pull
+fi
 
 echo "Deploying Vocabulary Decks..."
 # Führt das Python-Skript aus, um die Decks von curricula/../json nach app/public/data zu kopieren

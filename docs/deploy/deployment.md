@@ -34,11 +34,15 @@ SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 echo "Pruefe Restart-Voraussetzungen..."
 # The script validates systemctl access and sudo before doing expensive build work.
 
-echo "Stash local changes..."
-git stash
+if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
+  echo "Ueberspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
+else
+  echo "Stash local changes..."
+  git stash
 
-echo "Hole Updates..."
-git pull
+  echo "Hole Updates..."
+  git pull
+fi
 
 echo "Deploying Vocabulary Decks..."
 python3 scripts/deploy_decks.py
@@ -101,6 +105,8 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - CI is expected to catch regressions before deployment.
 - The service name defaults to `skillpilot`.
   - Override with `SKILLPILOT_SERVICE_NAME=<service-name>` when deploying an environment with a different unit name.
+- The script normally stashes local changes and pulls from Git before building.
+  - Set `SKILLPILOT_SKIP_GIT_UPDATE=1` only when the exact desired tree is already present on the server, for example after applying a patch manually in an SSH recovery deployment.
 - The post-restart smoke test defaults to `https://skillpilot.com`.
   - Override with `SKILLPILOT_BASE_URL=https://staging.example.org` for another host.
 - Non-interactive deployments need passwortlose `sudo` permission for the restart command.
