@@ -12,7 +12,7 @@ import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
-import { getDisplayFiltersForSelection } from '../utils/filterLabels'
+import { getDisplayFiltersForLandscapeSelection } from '../utils/landscapeFilterOptions'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
@@ -617,8 +617,18 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return relevantRoots.filter(matchesActiveFilter)
   }, [globalRootGoals, matchesActiveFilter])
   const availableFilters = useMemo(
-    () => getDisplayFiltersForSelection(currentLandscapeEntry?.meta.filters ?? [], localizedLanguage),
-    [currentLandscapeEntry?.meta.filters, localizedLanguage],
+    () => getDisplayFiltersForLandscapeSelection({
+      filters: currentLandscapeEntry?.meta.filters,
+      goals: currentLandscapeEntry?.goals ?? [],
+      goalPlacements: currentLandscapeEntry?.meta.goalPlacements,
+      language: localizedLanguage,
+    }),
+    [
+      currentLandscapeEntry?.goals,
+      currentLandscapeEntry?.meta.filters,
+      currentLandscapeEntry?.meta.goalPlacements,
+      localizedLanguage,
+    ],
   )
   const breadcrumbRootGoals = filteredRootGoals.length > 0 ? filteredRootGoals : globalRootGoals
 

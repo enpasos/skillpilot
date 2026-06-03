@@ -78,17 +78,17 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
   return (
     <div className="min-h-screen flex flex-col bg-chat-bg text-text-primary transition-colors">
       <header className="flex flex-col border-b border-border-color bg-sidebar-bg/90 backdrop-blur transition-colors">
-        <div className="flex items-center justify-between px-6 py-2 border-b border-border-color">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-2 border-b border-border-color">
+          <div className="flex min-w-0 flex-wrap items-center gap-3">
             {hasFilters && (
               <div className="flex items-center gap-2 text-[11px] text-text-secondary">
                 <span>Filter</span>
-                <div className="flex rounded-full border border-border-color bg-input-bg p-0.5">
+                <div className="flex flex-wrap items-center gap-1 rounded-2xl border border-border-color bg-input-bg p-0.5">
                   <button
                     type="button"
                     aria-pressed={isWildcardFilter(activeFilter)}
                     onClick={() => onFilterChange(wildcardFilterOption?.id ?? 'all')}
-                    className={`px-2 py-1 rounded-full text-[11px] transition-colors ${isWildcardFilter(activeFilter)
+                    className={`whitespace-nowrap px-2 py-1 rounded-full text-[11px] transition-colors ${isWildcardFilter(activeFilter)
                       ? 'bg-sky-600 text-white shadow'
                       : 'text-text-secondary hover:text-text-primary'
                       }`}
@@ -103,7 +103,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
                         type="button"
                         aria-pressed={isActive}
                         onClick={() => onFilterChange(option.id)}
-                        className={`px-2 py-1 rounded-full text-[11px] transition-colors ${isActive
+                        className={`whitespace-nowrap px-2 py-1 rounded-full text-[11px] transition-colors ${isActive
                           ? 'bg-sky-600 text-white shadow'
                           : 'text-text-secondary hover:text-text-primary'
                           }`}
