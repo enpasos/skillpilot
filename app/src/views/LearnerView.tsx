@@ -17,7 +17,8 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { isMastered } from '../goalUiUtils'
 import { useSrsMastery } from '../hooks/useSrsMastery'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
-import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
+import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import {
   CANONICAL_GYMNASIUM_ROOT_ID,
   LEGACY_HESSEN_GYMNASIUM_UPPER_IDS,
@@ -431,7 +432,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return supportedFilterIds.has(config.filterId) ? config.filterId : undefined
     }
     if (!activeFilter || isWildcardFilter(activeFilter)) return activeFilter
-    return supportedFilterIds.has(activeFilter) ? activeFilter : undefined
+    const supportedActiveFilters = splitFilterIds(activeFilter).filter((filterId) => {
+      const normalized = filterId.trim().toUpperCase()
+      return supportedFilterIds.has(filterId)
+        || !!normalizeJurisdictionCode(filterId)
+        || normalized === 'GK'
+        || normalized === 'LK'
+        || normalized === 'GK+LK'
+        || normalized === 'G8'
+        || normalized === 'G9'
+    })
+    return supportedActiveFilters.length > 0 ? supportedActiveFilters.join(',') : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
   const learnerVisibleChildrenByParent = useMemo(
     () => {

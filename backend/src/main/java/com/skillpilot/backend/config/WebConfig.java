@@ -12,10 +12,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // index.html and sw.js should not be cached
-        registry.addResourceHandler("/index.html", "/sw.js", "/manifest.webmanifest")
+        // App shell and update metadata must always be revalidated from the server.
+        registry.addResourceHandler("/index.html", "/sw.js", "/manifest.webmanifest", "/version.json")
                 .addResourceLocations("classpath:/static/")
-                .setCacheControl(CacheControl.noCache().mustRevalidate());
+                .setCacheControl(CacheControl.noStore());
 
         // Assets with hashes can be cached forever
         registry.addResourceHandler("/assets/**")

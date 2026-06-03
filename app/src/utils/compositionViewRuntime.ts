@@ -9,6 +9,7 @@ import {
 } from './authoring/compositionViewAuthoring'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import { normalizeDurationModel } from './durationModel'
+import { splitFilterIds } from './goalFilters'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './personalCurriculumStageScope'
 
@@ -292,11 +293,12 @@ const inferStageFromPersonalCurriculum = (config: PersonalCurriculumConfig): str
 }
 
 const pushScopedFilter = (filters: string[], value?: string | null) => {
-  const normalized = value?.trim()
-  if (!normalized || normalized.toLowerCase() === 'all') return
-  if (!filters.includes(normalized)) {
-    filters.push(normalized)
-  }
+  splitFilterIds(value ?? undefined).forEach((normalized) => {
+    if (!normalized || normalized.toLowerCase() === 'all') return
+    if (!filters.includes(normalized)) {
+      filters.push(normalized)
+    }
+  })
 }
 
 export const deriveRuntimeGoalPlacementFilters = ({
@@ -349,18 +351,20 @@ export const deriveRuntimeCompositionScope = ({
   const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
   const rootFilterId = personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.filterId
   const landscapeFilterId = personalCurriculum[landscapeId]?.filterId
-  const jurisdiction = [rootFilterId, landscapeFilterId, activeFilter]
+  const activeFilters = splitFilterIds(activeFilter)
+  const scopedFilters = [rootFilterId, landscapeFilterId, ...activeFilters]
+  const jurisdiction = scopedFilters
     .map((value) => normalizeJurisdictionCode(value))
     .find((value): value is NonNullable<typeof value> => !!value)
   const stage = inferStageFromPersonalCurriculum(personalCurriculum)
-  const courseProfileCandidate = [landscapeFilterId, activeFilter].find((value) => isCourseProfileFilterId(value))
+  const courseProfileCandidate = [landscapeFilterId, ...activeFilters].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
   const durationModel = [
     personalCurriculum[landscapeId]?.durationModel,
     personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.durationModel,
     rootFilterId,
     landscapeFilterId,
-    activeFilter,
+    ...activeFilters,
   ]
     .map((value) => normalizeDurationModel(value))
     .find((value): value is NonNullable<typeof value> => !!value)

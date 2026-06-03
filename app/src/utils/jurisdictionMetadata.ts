@@ -35,7 +35,7 @@ export const JURISDICTION_LABELS: Record<KnownJurisdiction, { de: string; en: st
   'DE-SL': { de: 'Saarland', en: 'Saarland' },
   'DE-SN': { de: 'Sachsen', en: 'Saxony' },
   'DE-ST': { de: 'Sachsen-Anhalt', en: 'Saxony-Anhalt' },
-  'DE-TH': { de: 'Thueringen', en: 'Thuringia' },
+  'DE-TH': { de: 'Thüringen', en: 'Thuringia' },
 }
 
 const JURISDICTION_ALIASES: Record<string, KnownJurisdiction> = {

@@ -4,7 +4,7 @@ import path from 'node:path'
 import { existsSync, promises as fs } from 'node:fs'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { promisify } from 'node:util'
-import { defineConfig, loadEnv, type ViteDevServer } from 'vite'
+import { defineConfig, loadEnv, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
@@ -1710,6 +1710,102 @@ const sendText = (res: ServerResponse, statusCode: number, body: string, content
   res.end(body)
 }
 
+type SkillpilotBuildVersion = {
+  app: 'skillpilot'
+  buildId: string
+  buildTime: string
+  commit: string
+  shortCommit: string
+  branch: string
+  dirty: boolean
+  mode: string
+}
+
+const readGitText = async (args: string[]): Promise<string> => {
+  try {
+    const { stdout } = await execFileAsync('git', args, { cwd: REPO_ROOT })
+    return stdout.trim()
+  } catch {
+    return ''
+  }
+}
+
+const escapeHtmlAttribute = (value: string): string =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+
+const createSkillpilotBuildVersion = async (mode: string): Promise<SkillpilotBuildVersion> => {
+  const envCommit = process.env.GITHUB_SHA
+    || process.env.VERCEL_GIT_COMMIT_SHA
+    || process.env.COMMIT_SHA
+    || ''
+  const commit = envCommit || await readGitText(['rev-parse', 'HEAD']) || 'unknown'
+  const branch = process.env.GITHUB_REF_NAME
+    || process.env.VERCEL_GIT_COMMIT_REF
+    || await readGitText(['rev-parse', '--abbrev-ref', 'HEAD'])
+    || 'unknown'
+  const status = await readGitText(['status', '--porcelain'])
+  const dirty = status.length > 0
+  const shortCommit = commit === 'unknown' ? 'unknown' : commit.slice(0, 12)
+  const buildTime = new Date().toISOString()
+
+  return {
+    app: 'skillpilot',
+    buildId: `${shortCommit}-${buildTime}`,
+    buildTime,
+    commit,
+    shortCommit,
+    branch,
+    dirty,
+    mode,
+  }
+}
+
+const createBuildVersionPlugin = (mode: string): Plugin => {
+  let buildVersionPromise: Promise<SkillpilotBuildVersion> | null = null
+  const getBuildVersion = () => {
+    buildVersionPromise ??= createSkillpilotBuildVersion(mode)
+    return buildVersionPromise
+  }
+
+  return {
+    name: 'skillpilot-build-version',
+    async transformIndexHtml(html) {
+      const version = await getBuildVersion()
+      const meta = [
+        `<meta name="skillpilot-build-id" content="${escapeHtmlAttribute(version.buildId)}">`,
+        `<meta name="skillpilot-build-time" content="${escapeHtmlAttribute(version.buildTime)}">`,
+      ].join('\n  ')
+
+      if (html.includes('name="skillpilot-build-id"')) {
+        return html
+      }
+
+      return html.replace('</head>', `  ${meta}\n</head>`)
+    },
+    async generateBundle() {
+      const version = await getBuildVersion()
+      this.emitFile({
+        type: 'asset',
+        fileName: 'version.json',
+        source: `${JSON.stringify(version, null, 2)}\n`,
+      })
+    },
+    configureServer(server) {
+      server.middlewares.use('/version.json', async (_req, res) => {
+        const version = await getBuildVersion()
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json; charset=utf-8')
+        res.setHeader('Cache-Control', 'no-store')
+        res.end(JSON.stringify(version))
+      })
+    },
+  }
+}
+
 const resolveQualityStatusFilePath = (candidatePath: string): string | null => {
   const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
   if (!sanitizedPath.startsWith('docs/qa-ci/status/')) return null
@@ -2382,6 +2478,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      createBuildVersionPlugin(mode),
       react(),
       tailwindcss(),
       deckEditorDevPlugin,
@@ -2394,6 +2491,7 @@ export default defineConfig(({ mode }) => {
           clientsClaim: true,
           skipWaiting: true,
           maximumFileSizeToCacheInBytes: 5000000,
+          globIgnores: ['**/version.json'],
           // Exclude patterns from service worker navigation caching
           // This ensures OAuth redirect to /curricula makes a real network request
           navigateFallbackDenylist: [
