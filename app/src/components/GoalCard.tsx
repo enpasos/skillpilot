@@ -10,6 +10,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
 import { getGoalCardCopy } from '../utils/goalCardCopy'
 import { getAudienceGoalTitle } from '../utils/treeProjectionRuntime'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 
 interface GoalCardProps {
   goal: Goal
@@ -22,6 +23,7 @@ interface GoalCardProps {
   showDetails?: boolean
   isPlanned?: boolean
   isActive?: boolean
+  activeFilter?: string
 
   onSetActive?: (id: string) => void
   onRevealActive?: () => void
@@ -60,6 +62,7 @@ type GoalSourceDocument = {
 }
 
 type GoalClassicSourceRoute = {
+  jurisdiction?: string
   sourceRef?: string
   sourceText?: string
   parentBulletText?: string
@@ -70,6 +73,7 @@ type GoalClassicSourceRoute = {
 }
 
 type GoalMemSparqlRoute = {
+  jurisdiction?: string
   endpoint?: string
   graphIri?: string
   planIri?: string
@@ -88,6 +92,7 @@ type GoalSourceRationaleItem = {
     pathTitles?: string[]
   }
   classicSourceRoute?: GoalClassicSourceRoute
+  alternateClassicSourceRoutes?: GoalClassicSourceRoute[]
   memSparqlRoute?: GoalMemSparqlRoute
 }
 
@@ -143,8 +148,31 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
   if (!item || !rawGoal || !goalId) return null
 
   const rawClassicRoute = asRecord(item.classicSourceRoute)
-  const rawSourceDocument = asRecord(rawClassicRoute?.sourceDocument)
+  const rawAlternateClassicRoutes = Array.isArray(item.alternateClassicSourceRoutes)
+    ? item.alternateClassicSourceRoutes
+    : []
   const rawMemRoute = asRecord(item.memSparqlRoute)
+
+  const normalizeClassicRoute = (rawRoute: Record<string, unknown> | null): GoalClassicSourceRoute | undefined => {
+    if (!rawRoute) return undefined
+    const rawRouteSourceDocument = asRecord(rawRoute.sourceDocument)
+    return {
+      jurisdiction: normalizeJurisdictionCode(readString(rawRoute.jurisdiction)) ?? undefined,
+      sourceRef: readString(rawRoute.sourceRef),
+      sourceText: readString(rawRoute.sourceText),
+      parentBulletText: readString(rawRoute.parentBulletText),
+      sourceExtractionPath: readString(rawRoute.sourceExtractionPath),
+      sourceDocument: rawRouteSourceDocument
+        ? {
+            title: readString(rawRouteSourceDocument.title),
+            url: readString(rawRouteSourceDocument.url),
+            path: readString(rawRouteSourceDocument.path),
+          }
+        : undefined,
+      matchType: readString(rawRoute.matchType),
+      rationale: readString(rawRoute.rationale),
+    }
+  }
 
   return {
     goal: {
@@ -153,25 +181,13 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
       description: readString(rawGoal.description),
       pathTitles: readStringArray(rawGoal.pathTitles),
     },
-    classicSourceRoute: rawClassicRoute
-      ? {
-          sourceRef: readString(rawClassicRoute.sourceRef),
-          sourceText: readString(rawClassicRoute.sourceText),
-          parentBulletText: readString(rawClassicRoute.parentBulletText),
-          sourceExtractionPath: readString(rawClassicRoute.sourceExtractionPath),
-          sourceDocument: rawSourceDocument
-            ? {
-                title: readString(rawSourceDocument.title),
-                url: readString(rawSourceDocument.url),
-                path: readString(rawSourceDocument.path),
-              }
-            : undefined,
-          matchType: readString(rawClassicRoute.matchType),
-          rationale: readString(rawClassicRoute.rationale),
-        }
-      : undefined,
+    classicSourceRoute: normalizeClassicRoute(rawClassicRoute),
+    alternateClassicSourceRoutes: rawAlternateClassicRoutes
+      .map((rawRoute) => normalizeClassicRoute(asRecord(rawRoute)))
+      .filter((route): route is GoalClassicSourceRoute => Boolean(route)),
     memSparqlRoute: rawMemRoute
       ? {
+          jurisdiction: normalizeJurisdictionCode(readString(rawMemRoute.jurisdiction)) ?? undefined,
           endpoint: readString(rawMemRoute.endpoint),
           graphIri: readString(rawMemRoute.graphIri),
           planIri: readString(rawMemRoute.planIri),
@@ -182,6 +198,39 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
           notes: readString(rawMemRoute.notes),
         }
       : undefined,
+  }
+}
+
+const selectSourceRationaleForFilter = (
+  item: GoalSourceRationaleItem | undefined,
+  activeFilter?: string,
+): GoalSourceRationaleItem | null => {
+  if (!item?.goal?.id) return null
+
+  const activeJurisdiction = normalizeJurisdictionCode(activeFilter)
+  if (!activeJurisdiction) {
+    return item
+  }
+
+  const routes = [
+    item.classicSourceRoute,
+    ...(item.alternateClassicSourceRoutes ?? []),
+  ].filter((route): route is GoalClassicSourceRoute => Boolean(route))
+  const selectedClassicRoute = routes.find((route) => normalizeJurisdictionCode(route.jurisdiction) === activeJurisdiction)
+
+  if (!selectedClassicRoute) {
+    return null
+  }
+
+  const memRouteJurisdiction = normalizeJurisdictionCode(item.memSparqlRoute?.jurisdiction)
+  const memRouteMatchesFilter = !item.memSparqlRoute
+    || !memRouteJurisdiction
+    || memRouteJurisdiction === activeJurisdiction
+
+  return {
+    ...item,
+    classicSourceRoute: selectedClassicRoute,
+    memSparqlRoute: memRouteMatchesFilter ? item.memSparqlRoute : undefined,
   }
 }
 
@@ -544,6 +593,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   showDetails = false,
   isPlanned = false,
   isActive = false,
+  activeFilter,
 
   onSetActive,
   onRevealActive,
@@ -617,14 +667,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
     void loadSourceRationaleIndex().then((index) => {
       if (!cancelled) {
-        setSourceRationale(index.get(goal.id) ?? null)
+        setSourceRationale(selectSourceRationaleForFilter(index.get(goal.id), activeFilter))
       }
     })
 
     return () => {
       cancelled = true
     }
-  }, [goal.id])
+  }, [activeFilter, goal.id])
 
   // Determine Status Icon
   let StatusIcon = Target

@@ -255,6 +255,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
               onMasteryChange={currentGoal.contains?.length > 0 ? undefined : onMasteryChange}
               showLearnerTools={showLearnerTools}
               showDetails={true}
+              activeFilter={activeFilter}
             />
             {children}
             <div className="text-[11px] text-text-secondary">
