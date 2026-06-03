@@ -841,7 +841,7 @@ const App: React.FC = () => {
               onNavigateExternal={core.handleNavigateToExternal}
               onMasteryChange={core.handleMasteryChange}
               showLearnerTools={core.showLearnerTools}
-              onLogout={hasActiveSession ? handleLogout : undefined}
+              onLogout={handleLogout}
               goalIndexAll={core.goalIndexAll}
             />
           }
