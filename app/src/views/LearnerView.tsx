@@ -2474,6 +2474,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   onRevealActive={revealActiveGoal}
                   isFrontier={backendFrontierIds.has(currentGoal.id)}
                   useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
+                  activeFilter={effectiveActiveFilter}
                 />
               )
             )}
