@@ -1,7 +1,8 @@
 # Goal Source Rationales Runbook
 
-Status: PoC runbook  
-Scope: generated human-readable source rationales for selected and source-backed SkillPilot learning goals
+Status: PoC-to-runtime runbook
+
+Scope: generated human-readable source rationales for selected, all-relevant, and public source-backed SkillPilot learning goals
 
 ## Purpose
 
@@ -61,6 +62,8 @@ Useful options:
 - `--output-md=<path>` changes the Markdown output.
 - `--no-md` skips Markdown output for runtime-only JSON indexes.
 - `--goals=source-backed` derives all target goals that have reviewed source mappings in the selected scope.
+- `--goals=source-backed-relevant-leaves` derives all relevant Mathematik leaf goals with at least one reviewed classic source mapping; `--jurisdiction` is then used as preferred rendered route, not as the item-set filter.
+- `--goals=all-relevant-leaves` derives all relevant Mathematik leaf goals and renders missing classic source routes as gap entries.
 - `--jurisdiction=all` disables jurisdiction filtering.
 - `--include-mem` adds a live MEM/FWU-SPARQL comparison where configured.
 - `--mem-config=<path>` selects the MEM/FWU consistency config.
@@ -108,7 +111,7 @@ Regenerate the current public Mathematik index with:
 npm run quality:goal-source-rationales:math-public
 ```
 
-Verify that the runtime copies are present, identical, and still cover the current PoC goals with:
+Verify that the runtime copies are present, identical, cover the currently source-backed relevant leaf-goal set, and still keep the MEM/FWU showcase goals consistent with:
 
 ```bash
 npm run check:goal-source-rationales:math-public
@@ -138,25 +141,27 @@ The repository deploy script runs this smoke test after restarting the productio
 SKILLPILOT_BASE_URL=https://staging.example.org scripts/deploy.sh
 ```
 
-This command currently uses the reviewed Bayern Mathematik/Gymnasium source-backed scope:
+This command currently emits the gap-free public runtime subset:
 
 ```text
-canonical Mathematik goals with DE-BY reviewed source mappings
+relevant canonical Mathematik leaf goals with at least one reviewed classic source mapping
 ```
+
+The rendered route still prefers `DE-BY` where available so that the configured MEM/FWU Bayern comparison remains visible. If no Bayern route exists for a goal, the generator falls back to another reviewed classic source route.
 
 It writes:
 
 - `app/src/data/goal-source-rationales-math-public.json`
 - `app/public/data/goal-source-rationales-math-public.json`
 
-The current index is a scalable runtime step, not the final national coverage promise. It expands the UI from three hand-picked PoC goals to all source-backed Bayern Mathematik goals that the generator can derive from mapping reviews. Further rollout should add per-scope or merged indexes for additional jurisdictions once their source-rationale and MEM status are reviewed.
+The current index is a scalable runtime step, not the final national coverage promise. It expands the UI from three hand-picked PoC goals to all currently source-backed relevant Mathematik leaf goals that the generator can derive from mapping reviews. Remaining uncovered leaf goals stay in the all-relevant report and gap-issue queue; relation rationales for `requires` and `contains` are still a separate rollout lane.
 
 ## Review Checklist
 
 For every rendered goal, inspect:
 
 - `sourceRationaleStatus`
-  - `classic_source_reviewed` is acceptable for the current PoC.
+  - `classic_source_reviewed` is acceptable for the current public runtime index.
   - `classic_source_partial` is usable only if the mapping rationale explains the partial shape.
   - `classic_source_gap` means a non-blocking follow-up issue is needed.
 - `Originalquelle Finden`

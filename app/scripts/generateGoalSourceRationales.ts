@@ -6,7 +6,11 @@ interface Goal {
   id: string
   title: string
   description: string
+  tags?: string[]
+  type?: 'atomic' | 'cluster'
+  nodeKind?: 'exam' | 'tutor' | 'memory'
   contains?: unknown
+  examData?: unknown
 }
 
 interface Landscape {
@@ -168,7 +172,12 @@ interface SourceRationaleReport {
   items: SourceRationaleItem[]
 }
 
-type GoalSelection = 'default' | 'explicit' | 'source-backed'
+type GoalSelection =
+  | 'default'
+  | 'explicit'
+  | 'source-backed'
+  | 'source-backed-relevant-leaves'
+  | 'all-relevant-leaves'
 
 interface MemConcreteTextComparisonConfig {
   id: string
@@ -228,6 +237,19 @@ const defaultGeneratedNoticeSources = [
   defaultMappingRoot,
   'curricula/DE/Gymnasium/input/',
 ]
+
+const allRelevantLeavesSelectionAliases = new Set([
+  'all-relevant-leaves',
+  'all-relevant-leaf-goals',
+  'all-relevant-math-leaves',
+])
+
+const sourceBackedRelevantLeavesSelectionAliases = new Set([
+  'source-backed-relevant-leaves',
+  'source-backed-relevant-leaf-goals',
+  'classic-backed-relevant-leaves',
+  'reviewed-relevant-leaves',
+])
 
 const LP = 'https://w3id.org/lehrplan/ontology/'
 const BFO = 'http://purl.obolibrary.org/obo/'
@@ -303,6 +325,22 @@ function parseArgs(args: string[]): {
       goalSelection = 'source-backed'
       return
     }
+    if (
+      arg === '--source-backed-relevant-leaf-goals'
+      || arg === '--source-backed-relevant-leaves'
+      || arg === '--goals=source-backed-relevant-leaves'
+    ) {
+      goalSelection = 'source-backed-relevant-leaves'
+      return
+    }
+    if (
+      arg === '--all-relevant-leaf-goals'
+      || arg === '--all-relevant-leaves'
+      || arg === '--goals=all-relevant-leaves'
+    ) {
+      goalSelection = 'all-relevant-leaves'
+      return
+    }
     if (arg === '--no-md' || arg === '--no-markdown') {
       outputMarkdownPath = null
       return
@@ -358,6 +396,14 @@ function parseArgs(args: string[]): {
         goalSelection = 'source-backed'
         return
       }
+      if (allRelevantLeavesSelectionAliases.has(value)) {
+        goalSelection = 'all-relevant-leaves'
+        return
+      }
+      if (sourceBackedRelevantLeavesSelectionAliases.has(value)) {
+        goalSelection = 'source-backed-relevant-leaves'
+        return
+      }
       goalSelection = 'explicit'
       value
         .split(',')
@@ -408,6 +454,24 @@ function goalContains(goal: Goal): string[] {
   return Array.isArray(goal.contains)
     ? goal.contains.filter((entry): entry is string => typeof entry === 'string')
     : []
+}
+
+function isClusterGoal(goal: Goal): boolean {
+  return goal.type === 'cluster' || goalContains(goal).length > 0
+}
+
+function isMemoryOrNonContentLeaf(goal: Goal): boolean {
+  const tags = goal.tags ?? []
+  return goal.nodeKind === 'memory'
+    || goal.nodeKind === 'exam'
+    || goal.nodeKind === 'tutor'
+    || tags.includes('memorization')
+    || tags.some((tag) => tag.startsWith('srs-deck:'))
+    || tags.includes('Practice')
+    || tags.includes('Assessment')
+    || tags.includes('Motivation')
+    || tags.includes('Orientation')
+    || goal.examData !== undefined
 }
 
 function buildParentMap(goals: Map<string, Goal>): Map<string, string[]> {
@@ -531,6 +595,41 @@ function collectSourceBackedGoalIds(input: {
     const leftPath = bestGoalPathTitles(left, goals, parentsByGoal).join(' > ')
     const rightPath = bestGoalPathTitles(right, goals, parentsByGoal).join(' > ')
     return leftPath.localeCompare(rightPath, 'de')
+  })
+}
+
+function collectAllRelevantLeafGoalIds(input: {
+  landscapePath: string
+}): string[] {
+  const landscape = readJsonFile<Landscape>(input.landscapePath)
+  const goals = new Map((landscape.goals ?? []).map((goal) => [goal.id, goal]))
+  const parentsByGoal = buildParentMap(goals)
+
+  return (landscape.goals ?? [])
+    .filter((goal) => !isClusterGoal(goal) && !isMemoryOrNonContentLeaf(goal))
+    .map((goal) => goal.id)
+    .sort((left, right) => {
+      const leftPath = bestGoalPathTitles(left, goals, parentsByGoal).join(' > ')
+      const rightPath = bestGoalPathTitles(right, goals, parentsByGoal).join(' > ')
+      return leftPath.localeCompare(rightPath, 'de')
+    })
+}
+
+function collectSourceBackedRelevantLeafGoalIds(input: {
+  landscapePath: string
+  mappingRoot: string
+}): string[] {
+  const landscape = readJsonFile<Landscape>(input.landscapePath)
+  const goals = new Map((landscape.goals ?? []).map((goal) => [goal.id, goal]))
+  const allSourceBackedGoalIds = collectSourceBackedGoalIds({
+    landscapePath: input.landscapePath,
+    mappingRoot: input.mappingRoot,
+    jurisdiction: null,
+  })
+
+  return allSourceBackedGoalIds.filter((goalId) => {
+    const goal = goals.get(goalId)
+    return goal !== undefined && !isClusterGoal(goal) && !isMemoryOrNonContentLeaf(goal)
   })
 }
 
@@ -1016,6 +1115,12 @@ function generatedNoticeSources(report: SourceRationaleReport): string[] {
 }
 
 function regenerateCommand(report: SourceRationaleReport): string {
+  if (report.request.goalSelection === 'all-relevant-leaves') {
+    return 'cd app && npm run quality:goal-source-rationales:math-all-relevant'
+  }
+  if (report.request.goalSelection === 'source-backed-relevant-leaves') {
+    return 'cd app && npm run quality:goal-source-rationales:math-public'
+  }
   if (report.request.includeMemSparql && report.request.audience === 'plain') {
     return 'cd app && npm run quality:goal-source-rationales:mem-examples:plain'
   }
@@ -1327,7 +1432,16 @@ async function main(): Promise<void> {
       mappingRoot: args.mappingRoot,
       jurisdiction: args.jurisdiction,
     })
-    : args.goalIds
+    : args.goalSelection === 'source-backed-relevant-leaves'
+      ? collectSourceBackedRelevantLeafGoalIds({
+        landscapePath: args.landscapePath,
+        mappingRoot: args.mappingRoot,
+      })
+    : args.goalSelection === 'all-relevant-leaves'
+      ? collectAllRelevantLeafGoalIds({
+        landscapePath: args.landscapePath,
+      })
+      : args.goalIds
   const report = buildReport({
     landscapePath: args.landscapePath,
     mappingRoot: args.mappingRoot,

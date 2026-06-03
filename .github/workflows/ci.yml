@@ -85,6 +85,14 @@ jobs:
         run: npm run quality:source-coverage-audit:check
       - name: Check Goal Source Rationale Runtime Index
         run: npm run check:goal-source-rationales:math-public
+      - name: Check Goal Source Rationale All-Relevant Report
+        run: npm run check:goal-source-rationales:math-all-relevant
+      - name: Check Goal Source Rationale Coverage Report
+        run: npm run check:goal-source-rationale-coverage
+      - name: Check Goal Source Rationale Gap Issues
+        run: npm run check:goal-source-rationale-gap-issues
+      - name: Check Goal Source Rationale Mapping Batch 01
+        run: npm run check:goal-source-rationale-mapping-batch-01
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry

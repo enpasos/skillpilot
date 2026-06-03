@@ -3,9 +3,9 @@ const defaultBaseUrl = 'https://skillpilot.com'
 const sourceRationaleAssetPattern = /\/assets\/goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json/u
 const legacySourceRationalePathPattern = /\/data\/goal-source-rationales-[A-Za-z0-9._-]+\.json/gu
 const jsAssetPattern = /(?:src=|url:)"?\/?(assets\/[^"')]+\.js)/gu
-const minimumItemCount = 200
+const minimumItemCount = 600
 
-const requiredPocGoals = [
+const requiredMemPocGoals = [
   'a075ae99-7669-563d-807a-f91b119c020a',
   '09f47964-2cd0-410e-93ee-9632b582fc91',
   'b1dcc191-d046-50de-984a-ee5c17157628',
@@ -153,10 +153,10 @@ function validatePayload(payload: Record<string, unknown>): string[] {
   const items = Array.isArray(payload.items) ? payload.items.map(asRecord) : []
 
   if (request.jurisdiction !== 'DE-BY') {
-    failures.push('runtime index is not the current DE-BY PoC scope')
+    failures.push('runtime index does not keep DE-BY as the MEM/FWU comparison preference')
   }
-  if (request.goalSelection !== 'source-backed') {
-    failures.push('runtime index was not generated with source-backed goal selection')
+  if (request.goalSelection !== 'source-backed-relevant-leaves') {
+    failures.push('runtime index was not generated with source-backed relevant leaf goal selection')
   }
   if (items.length < minimumItemCount) {
     failures.push(`runtime index has only ${items.length} items; expected at least ${minimumItemCount}`)
@@ -171,10 +171,10 @@ function validatePayload(payload: Record<string, unknown>): string[] {
     if (typeof goalId === 'string') itemsByGoalId.set(goalId, item)
   })
 
-  requiredPocGoals.forEach((goalId) => {
+  requiredMemPocGoals.forEach((goalId) => {
     const item = itemsByGoalId.get(goalId)
     if (!item) {
-      failures.push(`runtime index misses required PoC goal ${goalId}`)
+      failures.push(`runtime index misses required MEM/FWU PoC goal ${goalId}`)
       return
     }
     if (item.sourceRationaleStatus !== 'classic_source_reviewed') {

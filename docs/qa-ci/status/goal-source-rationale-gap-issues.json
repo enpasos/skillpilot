@@ -1,0 +1,2348 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-03T11:41:57.045Z",
+  "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
+  "request": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
+  },
+  "sourceReport": {
+    "generatedAt": "2026-06-03T11:41:42.378Z",
+    "summary": {
+      "requestedGoals": 750,
+      "resolvedGoals": 750,
+      "goalsWithClassicSourceRoute": 697,
+      "goalsWithoutClassicSourceRoute": 53,
+      "goalsWithMemSparqlConsistentRoute": 184
+    }
+  },
+  "summary": {
+    "totalClassicSourceGapIssues": 53,
+    "coveredSiblingMappingGaps": 22,
+    "isolatedSourceExpansionGaps": 31,
+    "phases": 4,
+    "areas": 3
+  },
+  "buckets": {
+    "byPhase": [
+      {
+        "key": "Q4",
+        "issues": 40,
+        "coveredSiblingMappingGaps": 17,
+        "isolatedSourceExpansionGaps": 23
+      },
+      {
+        "key": "E",
+        "issues": 8,
+        "coveredSiblingMappingGaps": 0,
+        "isolatedSourceExpansionGaps": 8
+      },
+      {
+        "key": "Q2",
+        "issues": 3,
+        "coveredSiblingMappingGaps": 3,
+        "isolatedSourceExpansionGaps": 0
+      },
+      {
+        "key": "Q3",
+        "issues": 2,
+        "coveredSiblingMappingGaps": 2,
+        "isolatedSourceExpansionGaps": 0
+      }
+    ],
+    "byArea": [
+      {
+        "key": "unknown",
+        "issues": 46,
+        "coveredSiblingMappingGaps": 21,
+        "isolatedSourceExpansionGaps": 25
+      },
+      {
+        "key": "Analysis",
+        "issues": 6,
+        "coveredSiblingMappingGaps": 0,
+        "isolatedSourceExpansionGaps": 6
+      },
+      {
+        "key": "Stochastics",
+        "issues": 1,
+        "coveredSiblingMappingGaps": 1,
+        "isolatedSourceExpansionGaps": 0
+      }
+    ],
+    "byLane": [
+      {
+        "key": "isolated-source-expansion-gap",
+        "issues": 31,
+        "coveredSiblingMappingGaps": 0,
+        "isolatedSourceExpansionGaps": 31
+      },
+      {
+        "key": "covered-sibling-mapping-gap",
+        "issues": 22,
+        "coveredSiblingMappingGaps": 22,
+        "isolatedSourceExpansionGaps": 0
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "GSR-GAP-7D37513B",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "shortKey": null,
+      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
+      "description": "Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum",
+        "Transformationsargumente für Flächen und Volumina nutzen (LK)"
+      ],
+      "parentGoalIds": [
+        "1a84cea4-d2a2-4527-b914-1a03e56e0814"
+      ],
+      "parentTitles": [
+        "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum"
+      ],
+      "siblingGoals": 18,
+      "coveredSiblingGoals": 18,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+          "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-K012-e09fce9163",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
+          "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-K012",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+          "title": "Flächeninhalte in räumlichen Sachzusammenhängen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-07c-flaecheninhalte-im-raum",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 7, S. 41.",
+          "topicCode": "BP2016-3.4.3",
+          "matchType": null
+        },
+        {
+          "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+          "title": "Vektorprodukt definieren (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-T037-3a50eff6a6",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
+          "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-T037",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
+          "title": "Abstandsverfahren im Raum auswählen und anwenden",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
+          "topicCode": "Q2.3",
+          "matchType": null
+        },
+        {
+          "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+          "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
+          "topicCode": "Q2.3",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-3AEA4D33",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+      "shortKey": null,
+      "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)",
+      "description": "Die lernende Person kann die Schnittfigur einer Ebene mit einem Polyeder (z. B. Quader/Prisma) konstruieren, Eckpunkte bestimmen und die Figur beschreiben.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Lagebeziehungen und Schnittmengen im Raum",
+        "Vertiefende Untersuchungen im Raum (LK)",
+        "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)"
+      ],
+      "parentGoalIds": [
+        "424cca47-adb3-5718-8b62-2af6cef76107"
+      ],
+      "parentTitles": [
+        "Vertiefende Untersuchungen im Raum (LK)"
+      ],
+      "siblingGoals": 1,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+          "title": "Schnittgerade zweier Ebenen bestimmen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-06d-ebene-ebene-schnittgebilde",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 6, S. 41.",
+          "topicCode": "BP2016-3.4.3",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-BF17CADA",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "shortKey": null,
+      "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+      "description": "Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Vertiefung der Analysis",
+        "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
+      ],
+      "parentGoalIds": [
+        "5ebfc509-0b4c-5c60-befb-2477eb24d4b5"
+      ],
+      "parentTitles": [
+        "Vertiefung der Analysis"
+      ],
+      "siblingGoals": 7,
+      "coveredSiblingGoals": 7,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K005",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+          "sourceGoalId": "he-math-seki-g9-10-1-13-bcc854ee",
+          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.1 Funktionen",
+          "topicCode": "G9-10.1",
+          "matchType": null
+        },
+        {
+          "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "title": "Einfache gebrochen rationale Funktionen untersuchen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "2cee715f-0523-59ca-b167-4e4c00714656",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.2",
+          "topicCode": "M11.2",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+          "title": "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
+          "topicCode": "M12-EA.4.2",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-1-b01-a02-caa4b3e0",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 1, Aspekt 2",
+          "topicCode": "Q2.1",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-5E615E88",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+      "shortKey": null,
+      "title": "Parameter für vorgegebene Nullstellen bestimmen",
+      "description": "Die lernende Person kann Parameterwerte berechnen, für die eine Scharfunktion eine vorgegebene Nullstelle besitzt, und die Lösung algebraisch begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameter für vorgegebene Nullstellen bestimmen"
+      ],
+      "parentGoalIds": [
+        "29d48dc6-1746-57b3-bc14-00a7198aac02"
+      ],
+      "parentTitles": [
+        "Funktionenscharen und Parameteruntersuchungen"
+      ],
+      "siblingGoals": 11,
+      "coveredSiblingGoals": 9,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a02-eebba818",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
+          "topicCode": "Q4.1",
+          "matchType": null
+        },
+        {
+          "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "title": "Integrale ganzrationaler Funktionenscharen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": "Q4.1",
+          "matchType": null
+        },
+        {
+          "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+          "title": "Parameter in Funktionenscharen deuten",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        },
+        {
+          "goalId": "bfa2351c-735e-56eb-a778-2413aa68db42",
+          "title": "Parameterwirkung auf Schargraphen beschreiben",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11b-parameterwirkung-schargraphen",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-6CA8AD6B",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+      "shortKey": null,
+      "title": "Parameter zur Modellierung von Sachsituationen bestimmen",
+      "description": "Die lernende Person kann einen Parameter einer Funktionenschar so bestimmen, dass eine vorgegebene Kontextbedingung erfüllt ist.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameter zur Modellierung von Sachsituationen bestimmen"
+      ],
+      "parentGoalIds": [
+        "29d48dc6-1746-57b3-bc14-00a7198aac02"
+      ],
+      "parentTitles": [
+        "Funktionenscharen und Parameteruntersuchungen"
+      ],
+      "siblingGoals": 11,
+      "coveredSiblingGoals": 9,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+          "title": "Parameter in Funktionenscharen deuten",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        },
+        {
+          "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+          "title": "Extremstellen parameterabhängig untersuchen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+          "title": "Funktionenscharen mit Exponential- und ganzrationalen Anteilen untersuchen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a01-44e89453",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 1",
+          "topicCode": "Q4.1",
+          "matchType": null
+        },
+        {
+          "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "title": "Ganzrationale Funktionenscharen untersuchen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11c-graph-zusammenhaenge",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-1BDAC3D8",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "shortKey": null,
+      "title": "Parameterbereiche für Lösungsexistenz analysieren (LK)",
+      "description": "Die lernende Person kann für eine Funktionenschar begründen, für welche Parameterbereiche eine geforderte Lösung existiert.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameterbereiche für Lösungsexistenz analysieren (LK)"
+      ],
+      "parentGoalIds": [
+        "29d48dc6-1746-57b3-bc14-00a7198aac02"
+      ],
+      "parentTitles": [
+        "Funktionenscharen und Parameteruntersuchungen"
+      ],
+      "siblingGoals": 11,
+      "coveredSiblingGoals": 9,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+          "title": "Parameter in Funktionenscharen deuten",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        },
+        {
+          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
+          "title": "Extremstellen parameterabhängig untersuchen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+          "title": "Funktionenscharen mit Exponential- und ganzrationalen Anteilen untersuchen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a01-44e89453",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 1",
+          "topicCode": "Q4.1",
+          "matchType": null
+        },
+        {
+          "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "title": "Ganzrationale Funktionenscharen untersuchen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11c-graph-zusammenhaenge",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+          "topicCode": "BP2016-3.4.4",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-81527AAC",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
+      "shortKey": null,
+      "title": "Beweis durch Kontraposition",
+      "description": "Die lernende Person kann eine Implikation $A \\Rightarrow B$ durch den Beweis der Kontraposition $\\neg B \\Rightarrow \\neg A$ beweisen und die logische Äquivalenz begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Begründungen und Beweise strukturieren",
+        "Beweis durch Kontraposition"
+      ],
+      "parentGoalIds": [
+        "94b15b52-a2f0-515a-b579-d6384c89eca7"
+      ],
+      "parentTitles": [
+        "Begründungen und Beweise strukturieren"
+      ],
+      "siblingGoals": 5,
+      "coveredSiblingGoals": 4,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "title": "Beweis durch Widerspruch",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+          "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "title": "Beweise verständlich präsentieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-10-6d2c62c8",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 10, S. 12.",
+          "topicCode": "BP2016-2.1",
+          "matchType": null
+        },
+        {
+          "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+          "title": "Induktionsbeweis durchführen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "2a64c577-a38b-5555-a802-e5da5ff5e285",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+          "topicCode": "M12-V.2",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+          "title": "Direkten Beweis führen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+          "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-9EA981ED",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
+      "shortKey": null,
+      "title": "Beweis mit Fallunterscheidung",
+      "description": "Die lernende Person kann eine Aussage durch vollständige Fallunterscheidung beweisen und sicherstellen, dass alle Fälle abgedeckt sind.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Begründungen und Beweise strukturieren",
+        "Beweis mit Fallunterscheidung"
+      ],
+      "parentGoalIds": [
+        "94b15b52-a2f0-515a-b579-d6384c89eca7"
+      ],
+      "parentTitles": [
+        "Begründungen und Beweise strukturieren"
+      ],
+      "siblingGoals": 5,
+      "coveredSiblingGoals": 4,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+          "title": "Beweis durch Widerspruch",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+          "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "title": "Beweise verständlich präsentieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-10-6d2c62c8",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 10, S. 12.",
+          "topicCode": "BP2016-2.1",
+          "matchType": null
+        },
+        {
+          "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
+          "title": "Induktionsbeweis durchführen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "2a64c577-a38b-5555-a802-e5da5ff5e285",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-V.2",
+          "topicCode": "M12-V.2",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
+          "title": "Direkten Beweis führen",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+          "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-56F9632D",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "56f9632d-37fe-5edf-a654-f53dbb373c91",
+      "shortKey": null,
+      "title": "Einstellungen dokumentieren und reproduzieren",
+      "description": "Die lernende Person kann Eingaben, Parameter und Einstellungen eines Werkzeugs so dokumentieren, dass Ergebnisse nachvollziehbar und reproduzierbar sind.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Darstellungen mit digitalen Werkzeugen erstellen",
+        "Einstellungen dokumentieren und reproduzieren"
+      ],
+      "parentGoalIds": [
+        "b8721377-e244-5545-87a8-6031d6aa295f"
+      ],
+      "parentTitles": [
+        "Darstellungen mit digitalen Werkzeugen erstellen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-7C4E8D59",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+      "shortKey": null,
+      "title": "Handrechnung mit digitaler Kontrolle kombinieren",
+      "description": "Die lernende Person kann ein handschriftlich gewonnenes Ergebnis mit einem digitalen Werkzeug kontrollieren und Abweichungen fachlich einordnen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Darstellungen mit digitalen Werkzeugen erstellen",
+        "Handrechnung mit digitaler Kontrolle kombinieren"
+      ],
+      "parentGoalIds": [
+        "b8721377-e244-5545-87a8-6031d6aa295f"
+      ],
+      "parentTitles": [
+        "Darstellungen mit digitalen Werkzeugen erstellen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-7AC32297",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "7ac32297-023c-5914-9109-6285e4ce5846",
+      "shortKey": null,
+      "title": "Tool-Ausgaben interpretieren",
+      "description": "Die lernende Person kann Ausgaben digitaler Werkzeuge (Graphen, Tabellen, numerische Werte) interpretieren, mit dem Kontext verknüpfen und Plausibilität prüfen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Darstellungen mit digitalen Werkzeugen erstellen",
+        "Tool-Ausgaben interpretieren"
+      ],
+      "parentGoalIds": [
+        "b8721377-e244-5545-87a8-6031d6aa295f"
+      ],
+      "parentTitles": [
+        "Darstellungen mit digitalen Werkzeugen erstellen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-879F9C84",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "879f9c84-d6fb-58c3-b219-696e0070d67f",
+      "shortKey": null,
+      "title": "Werkzeugeinstellungen zielgerichtet setzen",
+      "description": "Die lernende Person kann in einem digitalen Werkzeug Eingaben und Darstellungsparameter so setzen, dass ein mathematisches Objekt sachgerecht untersucht wird.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Darstellungen mit digitalen Werkzeugen erstellen",
+        "Werkzeugeinstellungen zielgerichtet setzen"
+      ],
+      "parentGoalIds": [
+        "b8721377-e244-5545-87a8-6031d6aa295f"
+      ],
+      "parentTitles": [
+        "Darstellungen mit digitalen Werkzeugen erstellen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-BAB64124",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "bab64124-fabf-544c-a2e5-3e6c786531d2",
+      "shortKey": null,
+      "title": "Argumente austauschen und prüfen",
+      "description": "Die lernende Person kann mathematische Argumente in einer Diskussion einbringen, Argumente anderer prüfen und begründete Rückmeldungen geben.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Diskutieren und kooperieren",
+        "Argumente austauschen und prüfen"
+      ],
+      "parentGoalIds": [
+        "375e5fb0-1444-50b1-99c4-093ea549f3cb"
+      ],
+      "parentTitles": [
+        "Diskutieren und kooperieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-FC2CF102",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+      "shortKey": null,
+      "title": "Kooperativ Ergebnisse erarbeiten",
+      "description": "Die lernende Person kann in der Gruppe Aufgaben verteilen, Zwischenergebnisse zusammenführen und ein gemeinsames Ergebnis dokumentieren.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Diskutieren und kooperieren",
+        "Kooperativ Ergebnisse erarbeiten"
+      ],
+      "parentGoalIds": [
+        "375e5fb0-1444-50b1-99c4-093ea549f3cb"
+      ],
+      "parentTitles": [
+        "Diskutieren und kooperieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-DED082ED",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "ded082ed-ea38-510c-ab91-e0a50b064e07",
+      "shortKey": null,
+      "title": "Kritik aufnehmen und integrieren",
+      "description": "Die lernende Person kann Kritik aufnehmen, eigene Fehler erkennen und den Lösungsweg bzw. die Argumentation entsprechend verbessern.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Diskutieren und kooperieren",
+        "Kritik aufnehmen und integrieren"
+      ],
+      "parentGoalIds": [
+        "375e5fb0-1444-50b1-99c4-093ea549f3cb"
+      ],
+      "parentTitles": [
+        "Diskutieren und kooperieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-619F29F5",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
+      "shortKey": null,
+      "title": "Entscheidung dokumentieren und bewerten (LK)",
+      "description": "Die lernende Person kann die gewählte Vorgehensweise dokumentieren, Grenzen benennen und die Entscheidung im Nachhinein bewerten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Effizienz von Verfahren beurteilen (LK)",
+        "Entscheidung dokumentieren und bewerten (LK)"
+      ],
+      "parentGoalIds": [
+        "09023b8c-1665-58b1-9d8a-de59a495a1ad"
+      ],
+      "parentTitles": [
+        "Effizienz von Verfahren beurteilen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+          "title": "Aufwand und Genauigkeit vergleichen (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19",
+          "topicCode": "NW-SEKII-PROCESS-PROBLEMLOSEN",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-E0ED8BB3",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+      "shortKey": null,
+      "title": "Verfahren begründet auswählen (LK)",
+      "description": "Die lernende Person kann für eine Aufgabe ein Verfahren begründet auswählen (z. B. symbolisch vs. numerisch, Tool vs. Hand) und die Entscheidung begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Effizienz von Verfahren beurteilen (LK)",
+        "Verfahren begründet auswählen (LK)"
+      ],
+      "parentGoalIds": [
+        "09023b8c-1665-58b1-9d8a-de59a495a1ad"
+      ],
+      "parentTitles": [
+        "Effizienz von Verfahren beurteilen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 1,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+          "title": "Aufwand und Genauigkeit vergleichen (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-NW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+          "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d",
+          "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19",
+          "topicCode": "NW-SEKII-PROCESS-PROBLEMLOSEN",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-613871F6",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "shortKey": null,
+      "title": "Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)",
+      "description": "Die lernende Person kann für eine komplexere Problemstellung eine mathematisch begründete Entscheidungsregel formulieren.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)"
+      ],
+      "parentGoalIds": [
+        "a5f07620-a895-52db-a0cc-1d05bf64c3d6"
+      ],
+      "parentTitles": [
+        "Problemlösen und Argumentieren"
+      ],
+      "siblingGoals": 12,
+      "coveredSiblingGoals": 12,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+          "title": "Mathematische Probleme erkennen und formulieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-2-01-b505c9c4",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.2, Kompetenz 1, S. 13.",
+          "topicCode": "BP2016-2.2",
+          "matchType": null
+        },
+        {
+          "goalId": "1675fdde-cba7-5456-ae70-a846e1924a68",
+          "title": "Anzahl von Graph-Schnittpunkten anschaulich begründen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b06-a02-a9b04dc8",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 6, Aspekt 2",
+          "topicCode": "Q4.2",
+          "matchType": null
+        },
+        {
+          "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
+          "title": "Entscheidungsregel oder Stichprobenumfang aus Gütefunktionsgraphen bestimmen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b15-a02-c00e0db5",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 15, Aspekt 2",
+          "topicCode": "Q4.2",
+          "matchType": null
+        },
+        {
+          "goalId": "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
+          "title": "Logische Schlussfolgerungen entwickeln",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-12-3b890906",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 12, S. 12.",
+          "topicCode": "BP2016-2.1",
+          "matchType": null
+        },
+        {
+          "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
+          "title": "Zufallsexperimente und Ereignisse aus Termen formulieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b13-a02-fd18df25",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13, Aspekt 2",
+          "topicCode": "Q4.2",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-83A6CCB1",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+      "shortKey": null,
+      "title": "Auf Rückfragen eingehen",
+      "description": "Die lernende Person kann auf Rückfragen eingehen, Missverständnisse klären und die eigene Erklärung gezielt anpassen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse adressatengerecht erklären",
+        "Auf Rückfragen eingehen"
+      ],
+      "parentGoalIds": [
+        "40fac8a9-469f-5d39-a5f4-5d7b728bd303"
+      ],
+      "parentTitles": [
+        "Ergebnisse adressatengerecht erklären"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+          "title": "Lösung nachvollziehbar erklären",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-2-1-08-22f8e2ad",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 8, S. 12.",
+          "topicCode": "BP2016-2.1",
+          "matchType": null
+        },
+        {
+          "goalId": "d5e1e007-7c64-5350-8aa9-fde93f8a76b5",
+          "title": "Mit Beispielen und Darstellungen erklären",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BB",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+          "sourceGoalId": "bb-math-seki-rlp-2-1-k6-b29f5712b6",
+          "sourceRef": "RLP Berlin/Brandenburg Mathematik 1-10 (2015), 2.1, K6, Niveaustufen D-H",
+          "topicCode": null,
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-F4DF008D",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+      "shortKey": null,
+      "title": "Einheiten- und Dimensionscheck anwenden",
+      "description": "Die lernende Person kann Einheiten bzw. Dimensionen prüfen und so grobe Fehler (z. B. falsche Skalierung) erkennen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse formal überprüfen",
+        "Einheiten- und Dimensionscheck anwenden"
+      ],
+      "parentGoalIds": [
+        "dd284459-3590-506c-a2d6-23a4e0c82d59"
+      ],
+      "parentTitles": [
+        "Ergebnisse formal überprüfen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+          "title": "Fehlerquellen analysieren und beheben",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-TH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
+          "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-1EF06AC4",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
+      "shortKey": null,
+      "title": "Kontrollrechnung mit Alternativmethode",
+      "description": "Die lernende Person kann Ergebnisse mit einer alternativen Rechnung oder einer Abschätzung kontrollieren und die Übereinstimmung bewerten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse formal überprüfen",
+        "Kontrollrechnung mit Alternativmethode"
+      ],
+      "parentGoalIds": [
+        "dd284459-3590-506c-a2d6-23a4e0c82d59"
+      ],
+      "parentTitles": [
+        "Ergebnisse formal überprüfen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+          "title": "Fehlerquellen analysieren und beheben",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-TH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
+          "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-F0F9C084",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+      "shortKey": null,
+      "title": "Probe durch Einsetzen durchführen",
+      "description": "Die lernende Person kann Ergebnisse durch Einsetzen in Ausgangsgleichungen oder -bedingungen überprüfen und Abweichungen erklären.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse formal überprüfen",
+        "Probe durch Einsetzen durchführen"
+      ],
+      "parentGoalIds": [
+        "dd284459-3590-506c-a2d6-23a4e0c82d59"
+      ],
+      "parentTitles": [
+        "Ergebnisse formal überprüfen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+          "title": "Fehlerquellen analysieren und beheben",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-TH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
+          "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-A111F535",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "a111f535-ff21-5953-90f6-bee81d61b186",
+      "shortKey": null,
+      "title": "Definitionen und Sätze präzise nutzen (LK)",
+      "description": "Die lernende Person kann Definitionen und Sätze präzise verwenden, Voraussetzungen prüfen und sauber zitieren bzw. anwenden.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Fachsprache präzisieren (LK)",
+        "Definitionen und Sätze präzise nutzen (LK)"
+      ],
+      "parentGoalIds": [
+        "35351b9e-2016-594d-9d42-dac2fc408296"
+      ],
+      "parentTitles": [
+        "Fachsprache präzisieren (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+          "title": "Stil und Präzision verbessern (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "by-math-m13-3-f5091eb7-s02-69fef47054",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.3",
+          "topicCode": "M13.3",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "33f2da84-d6ac-54d2-931a-76aed5cbc0c2",
+          "title": "Schriftliche Ausarbeitung strukturieren (LK)",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "by-math-m13-3-f5091eb7-s02-69fef47054",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.3",
+          "topicCode": "M13.3",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-4AE439C0",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+      "shortKey": null,
+      "title": "Argumentation formalisieren und präzisieren (LK)",
+      "description": "Die lernende Person kann Argumentationen in präziser mathematischer Sprache formulieren (Quantoren, Bedingungen, Äquivalenzen) und Unklarheiten gezielt vermeiden.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)",
+        "Argumentation formalisieren und präzisieren (LK)"
+      ],
+      "parentGoalIds": [
+        "393fb5de-e275-5a84-ad8b-723b323944de"
+      ],
+      "parentTitles": [
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-DD1D9F9C",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c",
+      "shortKey": null,
+      "title": "Beweislücken identifizieren (LK)",
+      "description": "Die lernende Person kann einen vorgelegten Beweis auf Vollständigkeit prüfen und die erste fehlende oder unzureichende Begründung präzise benennen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)",
+        "Beweislücken identifizieren (LK)"
+      ],
+      "parentGoalIds": [
+        "393fb5de-e275-5a84-ad8b-723b323944de"
+      ],
+      "parentTitles": [
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-01217F4A",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "01217f4a-5221-5df9-b379-7b241fccf809",
+      "shortKey": null,
+      "title": "Beweisstrategien vergleichen und wählen (LK)",
+      "description": "Die lernende Person kann für eine Behauptung geeignete Beweisstrategien (direkt, Kontraposition, Widerspruch, Induktion) vergleichen und eine begründete Wahl treffen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)",
+        "Beweisstrategien vergleichen und wählen (LK)"
+      ],
+      "parentGoalIds": [
+        "393fb5de-e275-5a84-ad8b-723b323944de"
+      ],
+      "parentTitles": [
+        "Formale Argumentationen im Leistungskurs entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-75DB9A04",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "75db9a04-d346-5968-953b-b20a8aea56c3",
+      "shortKey": null,
+      "title": "Medien passend auswählen",
+      "description": "Die lernende Person kann passende Medien auswählen (Tafel, Folie, digitales Tool) und deren Einsatz für Verständlichkeit begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Kommunikation reflektieren und präsentieren",
+        "Medien passend auswählen"
+      ],
+      "parentGoalIds": [
+        "2ff8f3fd-153d-5bd0-9c0a-0a5bc39773a2"
+      ],
+      "parentTitles": [
+        "Kommunikation reflektieren und präsentieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 2,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "3019ed7f-8f74-5330-816c-17997156ed68",
+          "title": "Ergebnisse strukturiert präsentieren",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "by-math-m13-3-f5091eb7-s02-69fef47054",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.3",
+          "topicCode": "M13.3",
+          "matchType": "partial"
+        },
+        {
+          "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
+          "title": "Kommunikation reflektieren und verbessern",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-TH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+          "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-026-9771da2ce9",
+          "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 33",
+          "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-026",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-D0475ED5",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "d0475ed5-cb6f-5694-9501-a1c94288d65a",
+      "shortKey": null,
+      "title": "Aussagekraft und Grenzen diskutieren (LK)",
+      "description": "Die lernende Person kann die Aussagekraft einer Visualisierung diskutieren, Grenzen benennen (Skalierung, Datenlage) und Verbesserungen vorschlagen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Komplexe Visualisierungen entwickeln (LK)",
+        "Aussagekraft und Grenzen diskutieren (LK)"
+      ],
+      "parentGoalIds": [
+        "eac18156-8f9e-5407-8054-b718215dc235"
+      ],
+      "parentTitles": [
+        "Komplexe Visualisierungen entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-55FA9261",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "55fa9261-c48e-5f0a-8821-20fe0ca6507d",
+      "shortKey": null,
+      "title": "Mehrere Darstellungen kombinieren (LK)",
+      "description": "Die lernende Person kann mehrere Darstellungen sinnvoll kombinieren (z. B. Graph, Tabelle und Text) und die Kombination zur Argumentation nutzen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Komplexe Visualisierungen entwickeln (LK)",
+        "Mehrere Darstellungen kombinieren (LK)"
+      ],
+      "parentGoalIds": [
+        "eac18156-8f9e-5407-8054-b718215dc235"
+      ],
+      "parentTitles": [
+        "Komplexe Visualisierungen entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-C23C4364",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "c23c4364-b5ea-513a-9d78-76bf7f113d1b",
+      "shortKey": null,
+      "title": "Visualisierung für komplexe Situation entwerfen (LK)",
+      "description": "Die lernende Person kann für eine anspruchsvolle Problemstellung eine geeignete Visualisierung entwerfen (z. B. Parameterabhängigkeit, 3D-Darstellung) und die Wahl begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Komplexe Visualisierungen entwickeln (LK)",
+        "Visualisierung für komplexe Situation entwerfen (LK)"
+      ],
+      "parentGoalIds": [
+        "eac18156-8f9e-5407-8054-b718215dc235"
+      ],
+      "parentTitles": [
+        "Komplexe Visualisierungen entwickeln (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-5C4B5AB1",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
+      "shortKey": null,
+      "title": "Modell vollständig notieren",
+      "description": "Die lernende Person kann das Modell vollständig und verständlich notieren (Definitionen, Variablen, Einheiten, Bedingungen), sodass es bearbeitbar ist.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Modell vollständig notieren"
+      ],
+      "parentGoalIds": [
+        "13f3bfd7-0363-5904-8f84-6b157f2f7210"
+      ],
+      "parentTitles": [
+        "Mathematische Modelle bilden"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Modellgleichungen aufstellen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+          "topicCode": "G9-9.1",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-C3CAD3F5",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
+      "shortKey": null,
+      "title": "Rand- und Anfangsbedingungen festlegen",
+      "description": "Die lernende Person kann Rand- bzw. Anfangsbedingungen oder Nebenbedingungen aus dem Kontext ableiten und im Modell festhalten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Rand- und Anfangsbedingungen festlegen"
+      ],
+      "parentGoalIds": [
+        "13f3bfd7-0363-5904-8f84-6b157f2f7210"
+      ],
+      "parentTitles": [
+        "Mathematische Modelle bilden"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Modellgleichungen aufstellen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+          "topicCode": "G9-9.1",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-670286AA",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "670286aa-c29d-560c-8fca-755e35f5d437",
+      "shortKey": null,
+      "title": "Variablen und Parameter definieren",
+      "description": "Die lernende Person kann Variablen und Parameter passend wählen, ihre Bedeutung angeben und ggf. Wertebereiche festlegen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Variablen und Parameter definieren"
+      ],
+      "parentGoalIds": [
+        "13f3bfd7-0363-5904-8f84-6b157f2f7210"
+      ],
+      "parentTitles": [
+        "Mathematische Modelle bilden"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+          "title": "Beziehungen als Modellgleichungen aufstellen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+          "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+          "topicCode": "G9-9.1",
+          "matchType": null
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-74F28CE7",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+      "shortKey": null,
+      "title": "Alternative Modelle entwickeln (LK)",
+      "description": "Die lernende Person kann für denselben Sachverhalt mindestens zwei plausible Modelle formulieren (z. B. linear vs. exponentiell) und die Annahmen explizit machen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mehrere Modelle vergleichen (LK)",
+        "Alternative Modelle entwickeln (LK)"
+      ],
+      "parentGoalIds": [
+        "ee920de4-1600-582a-a909-02503aa4d1a6"
+      ],
+      "parentTitles": [
+        "Mehrere Modelle vergleichen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-163DD583",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "163dd583-8308-53f0-b60d-34588787988d",
+      "shortKey": null,
+      "title": "Modelle nach Kriterien vergleichen (LK)",
+      "description": "Die lernende Person kann Modelle nach Kriterien (Einfachheit, Güte, Interpretierbarkeit) vergleichen und die Auswahl begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mehrere Modelle vergleichen (LK)",
+        "Modelle nach Kriterien vergleichen (LK)"
+      ],
+      "parentGoalIds": [
+        "ee920de4-1600-582a-a909-02503aa4d1a6"
+      ],
+      "parentTitles": [
+        "Mehrere Modelle vergleichen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-519660D0",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "519660d0-85e5-57a6-a219-d0a253336649",
+      "shortKey": null,
+      "title": "Modellentscheidung begründen (LK)",
+      "description": "Die lernende Person kann auf Basis der Kriterien eine Modellentscheidung treffen und Sensitivität bzw. Unsicherheiten qualitativ diskutieren.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mehrere Modelle vergleichen (LK)",
+        "Modellentscheidung begründen (LK)"
+      ],
+      "parentGoalIds": [
+        "ee920de4-1600-582a-a909-02503aa4d1a6"
+      ],
+      "parentTitles": [
+        "Mehrere Modelle vergleichen (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-BFBAEDB9",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "bfbaedb9-b138-590a-87e8-4d87784dda0e",
+      "shortKey": null,
+      "title": "Annahmen und Idealisationen formulieren",
+      "description": "Die lernende Person kann Modellannahmen bzw. Idealisationen (z. B. konstante Geschwindigkeit, Reibung vernachlässigt) benennen und begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Sachverhalte strukturieren und vereinfachen",
+        "Annahmen und Idealisationen formulieren"
+      ],
+      "parentGoalIds": [
+        "dcb80252-0423-5313-bbbb-5064e27758b2"
+      ],
+      "parentTitles": [
+        "Sachverhalte strukturieren und vereinfachen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-BB4569BC",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "bb4569bc-01ac-5bf9-8c85-05df42d70698",
+      "shortKey": null,
+      "title": "Größen und Einheiten identifizieren",
+      "description": "Die lernende Person kann in einer Situation relevante Größen erkennen, Einheiten angeben und bekannte sowie gesuchte Größen sauber unterscheiden.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Sachverhalte strukturieren und vereinfachen",
+        "Größen und Einheiten identifizieren"
+      ],
+      "parentGoalIds": [
+        "dcb80252-0423-5313-bbbb-5064e27758b2"
+      ],
+      "parentTitles": [
+        "Sachverhalte strukturieren und vereinfachen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-8D126397",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "8d126397-a8b0-528c-8986-614d56fa0749",
+      "shortKey": null,
+      "title": "Sachskizze mit Variablen erstellen",
+      "description": "Die lernende Person kann eine Sachskizze oder ein Diagramm anfertigen, Variablen eindeutig zuordnen und Größen konsistent benennen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Sachverhalte strukturieren und vereinfachen",
+        "Sachskizze mit Variablen erstellen"
+      ],
+      "parentGoalIds": [
+        "dcb80252-0423-5313-bbbb-5064e27758b2"
+      ],
+      "parentTitles": [
+        "Sachverhalte strukturieren und vereinfachen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-035B7FC6",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "035b7fc6-830d-5f41-9c5d-2495808c09d4",
+      "shortKey": null,
+      "title": "Sachverhalt vereinfachen und strukturieren",
+      "description": "Die lernende Person kann einen Sachverhalt sinnvoll vereinfachen, relevante Beziehungen hervorheben und eine übersichtliche Struktur (z. B. Schema) festlegen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Sachverhalte strukturieren und vereinfachen",
+        "Sachverhalt vereinfachen und strukturieren"
+      ],
+      "parentGoalIds": [
+        "dcb80252-0423-5313-bbbb-5064e27758b2"
+      ],
+      "parentTitles": [
+        "Sachverhalte strukturieren und vereinfachen"
+      ],
+      "siblingGoals": 3,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 3,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-4B16FCE6",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "shortKey": "canonical_math_e_model_extrema_inflection_smooth_connections_smooth_connections",
+      "title": "Anschlussbedingungen ohne Sprung und Knick modellieren",
+      "description": "Die lernende Person kann Anschlussbedingungen ohne Sprung und ohne Knick durch geeignete ganzrationale Funktionen modellieren und fachlich deuten.",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.SMOOTH_CONNECTIONS",
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Ableitungseinstieg und Differentialrechnung (Sek II)",
+        "Differentialrechnung, Untersuchung und Optimierung",
+        "Ableitungen zur Funktionsuntersuchung und Optimierung nutzen",
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren",
+        "Anschlussbedingungen ohne Sprung und Knick modellieren"
+      ],
+      "parentGoalIds": [
+        "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+      ],
+      "parentTitles": [
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-D4F2D4E2",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "shortKey": "canonical_math_e_model_extrema_inflection_smooth_connections_extrema",
+      "title": "Sachzusammenhänge mit Extremstellen modellieren",
+      "description": "Die lernende Person kann Sachzusammenhänge mit Extremstellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.EXTREMA",
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Ableitungseinstieg und Differentialrechnung (Sek II)",
+        "Differentialrechnung, Untersuchung und Optimierung",
+        "Ableitungen zur Funktionsuntersuchung und Optimierung nutzen",
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren",
+        "Sachzusammenhänge mit Extremstellen modellieren"
+      ],
+      "parentGoalIds": [
+        "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+      ],
+      "parentTitles": [
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-B88CBF71",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+      "shortKey": "canonical_math_e_model_extrema_inflection_smooth_connections_inflection",
+      "title": "Sachzusammenhänge mit Wendestellen modellieren",
+      "description": "Die lernende Person kann Sachzusammenhänge mit Wendestellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.",
+      "phase": "E",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.E.DERIVATIVE_APPLICATIONS.SMOOTH_CONNECTION_MODELS.INFLECTION",
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Ableitungseinstieg und Differentialrechnung (Sek II)",
+        "Differentialrechnung, Untersuchung und Optimierung",
+        "Ableitungen zur Funktionsuntersuchung und Optimierung nutzen",
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren",
+        "Sachzusammenhänge mit Wendestellen modellieren"
+      ],
+      "parentGoalIds": [
+        "e681c0f9-a69b-541c-bf64-a2b49556c1a6"
+      ],
+      "parentTitles": [
+        "Sachzusammenhänge mit Extrem- und Wendestellen modellieren"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-0272C501",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "0272c501-2931-5e52-b62f-af068db63c44",
+      "shortKey": null,
+      "title": "Aus Term einen Graphen erstellen",
+      "description": "Die lernende Person kann aus einem Term oder einer Funktionsvorschrift den zugehörigen Graphen skizzieren bzw. erstellen und zentrale Merkmale markieren.",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Funktionen und ihre Darstellung",
+        "Zwischen Darstellungen wechseln",
+        "Aus Term einen Graphen erstellen"
+      ],
+      "parentGoalIds": [
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+      ],
+      "parentTitles": [
+        "Zwischen Darstellungen wechseln"
+      ],
+      "siblingGoals": 4,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 4,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-1801C759",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+      "shortKey": "canonical_math_e_graph_to_function_equation",
+      "title": "Funktionsgleichungen aus Graphen bestimmen",
+      "description": "Die lernende Person kann aus einem gegebenen Graphen in einfachen Fällen eine passende Funktionsgleichung angeben und die verwendeten Merkmale begründen.",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": "CANONICAL.MATH.E.REPRESENTATIONS.GRAPH_TO_EQUATION",
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Funktionen und ihre Darstellung",
+        "Zwischen Darstellungen wechseln",
+        "Funktionsgleichungen aus Graphen bestimmen"
+      ],
+      "parentGoalIds": [
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+      ],
+      "parentTitles": [
+        "Zwischen Darstellungen wechseln"
+      ],
+      "siblingGoals": 4,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 4,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-99BFB566",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "99bfb566-f875-5646-ac3e-05a039838c54",
+      "shortKey": null,
+      "title": "Termmerkmale aus Graphen ableiten",
+      "description": "Die lernende Person kann aus einem Graphen zentrale Termmerkmale wie Funktionsfamilie, Parameter, Nullstellen oder Symmetrie ableiten und fachsprachlich formulieren.",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Funktionen und ihre Darstellung",
+        "Zwischen Darstellungen wechseln",
+        "Termmerkmale aus Graphen ableiten"
+      ],
+      "parentGoalIds": [
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+      ],
+      "parentTitles": [
+        "Zwischen Darstellungen wechseln"
+      ],
+      "siblingGoals": 4,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 4,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-42B57670",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "42b57670-d2be-5da2-be2f-d58055901813",
+      "shortKey": null,
+      "title": "Übertragungen begründen und prüfen",
+      "description": "Die lernende Person kann Übertragungen zwischen Darstellungen begründen, typische Fehlerquellen benennen und die Konsistenz der Darstellungen prüfen.",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Funktionen und ihre Darstellung",
+        "Zwischen Darstellungen wechseln",
+        "Übertragungen begründen und prüfen"
+      ],
+      "parentGoalIds": [
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+      ],
+      "parentTitles": [
+        "Zwischen Darstellungen wechseln"
+      ],
+      "siblingGoals": 4,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 4,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-B04D65DC",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "shortKey": null,
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "description": "Die lernende Person kann zwischen Tabelle, Graph und Termdarstellung wechseln, Informationen konsistent übertragen und passende Kontrollschritte nutzen.",
+      "phase": "E",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Grundlagen der Analysis und mathematische Modelle",
+        "Funktionen und ihre Darstellung",
+        "Zwischen Darstellungen wechseln",
+        "Zwischen Tabelle, Graph und Term wechseln"
+      ],
+      "parentGoalIds": [
+        "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e"
+      ],
+      "parentTitles": [
+        "Zwischen Darstellungen wechseln"
+      ],
+      "siblingGoals": 4,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 4,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-71FE4A39",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+      "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_model_validation",
+      "title": "Analysis-Modelle in Sachzusammenhängen validieren (LK)",
+      "description": "Die lernende Person kann Modellannahmen und Resultate in Sachzusammenhängen der Differential- und Integralrechnung fachlich prüfen und Grenzen des Modells benennen.",
+      "phase": "Q4",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.MODEL_VALIDATION",
+      "pathTitles": [
+        "Mathematik",
+        "Integralrechnung und Differenzialgleichungen",
+        "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
+        "Anwendungen der Integralrechnung",
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
+        "Analysis-Modelle in Sachzusammenhängen validieren (LK)"
+      ],
+      "parentGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848"
+      ],
+      "parentTitles": [
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-DC12F281",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+      "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_differential_context",
+      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+      "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Differentialrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "phase": "Q4",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.DIFFERENTIAL_CONTEXT",
+      "pathTitles": [
+        "Mathematik",
+        "Integralrechnung und Differenzialgleichungen",
+        "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
+        "Anwendungen der Integralrechnung",
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
+        "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)"
+      ],
+      "parentGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848"
+      ],
+      "parentTitles": [
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-0B162CB0",
+      "lane": "isolated-source-expansion-gap",
+      "goalId": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+      "shortKey": "canonical_math_sek2_q4_diff_integral_methods_context_validate_by_integral_context",
+      "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+      "description": "Die lernende Person kann in Sachzusammenhängen geeignete Methoden der Integralrechnung auswählen, anwenden und die Ergebnisse im Kontext interpretieren.",
+      "phase": "Q4",
+      "area": "Analysis",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.DIFF_INTEGRAL_CONTEXT_VALIDATE_BY.INTEGRAL_CONTEXT",
+      "pathTitles": [
+        "Mathematik",
+        "Integralrechnung und Differenzialgleichungen",
+        "Integralbegriffe, Rekonstruktion und Kontextdeutung (Sek II)",
+        "Anwendungen der Integralrechnung",
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)",
+        "Integralrechnung in Sachzusammenhängen auswählen und anwenden (LK)"
+      ],
+      "parentGoalIds": [
+        "ead1f5ce-fdf4-5591-8982-395001017848"
+      ],
+      "parentTitles": [
+        "Differential- und Integralrechnung in Sachzusammenhängen reflektiert anwenden (LK)"
+      ],
+      "siblingGoals": 2,
+      "coveredSiblingGoals": 0,
+      "gapSiblingGoals": 2,
+      "coveredSiblingExamples": [],
+      "recommendedAction": "Quellenstelle im klassischen Curriculum suchen und als Source-Extraction-/Mapping-Beleg nachtragen; es gibt im direkten Elternkontext noch kein belegtes Geschwisterziel als Anker."
+    },
+    {
+      "id": "GSR-GAP-18293A33",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
+      "shortKey": null,
+      "title": "Statistische Erhebungen exemplarisch planen und dokumentieren",
+      "description": "Die lernende Person kann exemplarisch statistische Erhebungen planen, Erfassungsmerkmale begründen und die Datenerhebung nachvollziehbar dokumentieren.",
+      "phase": "Q3",
+      "area": "Stochastics",
+      "topicCode": "CANONICAL.MATH.SEK2.STATISTICS.SURVEYS.PLAN_AND_DOCUMENT",
+      "pathTitles": [
+        "Mathematik",
+        "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+        "Stochastik, Tests und Statistik (Sek II)",
+        "Statistik und weitere Wahrscheinlichkeitsverteilungen",
+        "Q3.5 Statistik: Datenanalyse und Modellvergleich",
+        "Zufallsexperimente statistisch auswerten",
+        "Statistische Erhebungen planen, auswerten und kritisch beurteilen",
+        "Statistische Erhebungen planen und Daten aufbereiten",
+        "Statistische Erhebungen exemplarisch planen und dokumentieren"
+      ],
+      "parentGoalIds": [
+        "fd2fa63c-5626-4dc3-86b3-3672e906e34a"
+      ],
+      "parentTitles": [
+        "Statistische Erhebungen planen und Daten aufbereiten"
+      ],
+      "siblingGoals": 1,
+      "coveredSiblingGoals": 1,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "83a5546e-0ea6-576e-83e2-3387b30872bb",
+          "title": "Daten tabellarisch und grafisch aufbereiten",
+          "sourceRationaleStatus": "classic_source_partial",
+          "jurisdiction": "DE-BB",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+          "sourceGoalId": "bb-math-seki-rlp-1-10-2-2-l5-daten-zufall-e-02-7d847ca1",
+          "sourceRef": "RLP BE/BB Mathematik 1-10, Kap. 2.2, [L5] Daten und Zufall - Niveaustufen E-H, Niveaustufe E, S. 34.",
+          "topicCode": "RLP-1-10-2.2-L5-DATEN-ZUFALL",
+          "matchType": "partial"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    },
+    {
+      "id": "GSR-GAP-5B54F272",
+      "lane": "covered-sibling-mapping-gap",
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "shortKey": null,
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "phase": "Q3",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+        "Stochastik, Tests und Statistik (Sek II)",
+        "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+        "Wahrscheinlichkeitsverteilungen (Überblick)",
+        "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)"
+      ],
+      "parentGoalIds": [
+        "67ef9787-d540-5f30-9995-f1f9c39a1a45"
+      ],
+      "parentTitles": [
+        "Wahrscheinlichkeitsverteilungen (Überblick)"
+      ],
+      "siblingGoals": 13,
+      "coveredSiblingGoals": 13,
+      "gapSiblingGoals": 0,
+      "coveredSiblingExamples": [
+        {
+          "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+          "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+          "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T047",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "b431148b-526c-4bde-b04b-48d23101d0d3",
+          "title": "Annähernd normalverteilte Zufallsgrößen in Situationen erkennen (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "8a81f8bb-f573-588b-a488-0a5f8f3e5468",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.2",
+          "topicCode": "M13.2",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "34735a1a-c9d9-5378-805e-b48f9c2d947f",
+          "title": "Bernoulli-Experimente und -Ketten beschreiben",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T046-bf5541268e",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+          "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T046",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "c92133c6-d5de-4902-936c-321915cf21e9",
+          "title": "Diskrete und stetige Zufallsgrößen unterscheiden und Verteilungsfunktion als Integralfunktion deuten (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BY",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "sourceGoalId": "d8c42bfc-ee1b-52b3-9409-276164c61829",
+          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.2",
+          "topicCode": "M13.2",
+          "matchType": "exact"
+        },
+        {
+          "goalId": "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "title": "Erwartungswert, Varianz und Standardabweichung einfacher diskreter Zufallsgrößen bestimmen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-SH",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T090-3dd4c59368",
+          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 69",
+          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T090",
+          "matchType": "exact"
+        }
+      ],
+      "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
+    }
+  ]
+}
