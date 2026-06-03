@@ -24,8 +24,10 @@ interface Landscape {
 
 interface MappingDecision {
   sourceGoalId?: unknown
+  legacyGoalId?: unknown
   sourceSpan?: unknown
   decision?: unknown
+  canonicalGoalId?: unknown
   canonicalGoalIds?: unknown
   matchType?: unknown
   rationale?: unknown
@@ -40,6 +42,7 @@ interface MappingReview {
   reviewId?: unknown
   targetLandscapeId?: unknown
   sourceExtractionPath?: unknown
+  mappings?: unknown
   decisions?: unknown
 }
 
@@ -121,6 +124,7 @@ interface MemSparqlRoute {
   status: MemSparqlRouteStatus
   endpoint: string
   notes: string
+  jurisdiction?: string | null
   comparisonId?: string
   comparisonLabel?: string
   graphIri?: string
@@ -558,6 +562,32 @@ function mappingReviewJurisdiction(
   return asString(readSourceExtraction(sourceExtractionPath, sourceExtractionCache).jurisdiction)
 }
 
+function mappingReviewDecisions(mappingReview: MappingReview): MappingDecision[] {
+  const entries = [
+    ...(Array.isArray(mappingReview.decisions) ? mappingReview.decisions : []),
+    ...(Array.isArray(mappingReview.mappings) ? mappingReview.mappings : []),
+  ]
+  return entries.filter((entry): entry is MappingDecision => isRecord(entry))
+}
+
+function canonicalGoalIdsForDecision(decision: MappingDecision): string[] {
+  const goalIds = new Set<string>()
+  const canonicalGoalId = asString(decision.canonicalGoalId)
+  if (canonicalGoalId !== null) goalIds.add(canonicalGoalId)
+  if (Array.isArray(decision.canonicalGoalIds)) {
+    decision.canonicalGoalIds.forEach((goalId) => {
+      if (typeof goalId === 'string' && goalId.trim().length > 0) {
+        goalIds.add(goalId)
+      }
+    })
+  }
+  return Array.from(goalIds)
+}
+
+function sourceGoalIdForDecision(decision: MappingDecision): string | null {
+  return asString(decision.sourceGoalId) ?? asString(decision.legacyGoalId)
+}
+
 function collectSourceBackedGoalIds(input: {
   landscapePath: string
   mappingRoot: string
@@ -577,15 +607,9 @@ function collectSourceBackedGoalIds(input: {
       const jurisdiction = mappingReviewJurisdiction(mappingReview, sourceExtractionCache)
       if (jurisdiction !== input.jurisdiction) return
     }
-    if (!Array.isArray(mappingReview.decisions)) return
-
-    mappingReview.decisions
-      .filter((entry): entry is MappingDecision => isRecord(entry))
+    mappingReviewDecisions(mappingReview)
       .forEach((decision) => {
-        const canonicalGoalIds = Array.isArray(decision.canonicalGoalIds)
-          ? decision.canonicalGoalIds.filter((goalId): goalId is string => typeof goalId === 'string')
-          : []
-        canonicalGoalIds
+        canonicalGoalIdsForDecision(decision)
           .filter((goalId) => goals.has(goalId))
           .forEach((goalId) => goalIds.add(goalId))
       })
@@ -840,6 +864,8 @@ function candidateRank(candidate: SourceRationaleCandidate): number {
   if (candidate.sourceText !== null) rank -= 10
   if (candidate.matchType === 'exact') rank -= 20
   if (candidate.matchType === 'partial') rank -= 10
+  if (candidate.sourceSpan !== null) rank -= 5
+  if (candidate.rationale !== null) rank -= 5
   if (candidate.reviewedAt !== null) rank -= 5
   return rank
 }
@@ -851,7 +877,7 @@ function buildCandidate(
   sourceExtractionCache: Map<string, SourceExtraction>,
 ): SourceRationaleCandidate | null {
   const sourceExtractionPath = asString(mappingReview.sourceExtractionPath)
-  const sourceGoalId = asString(decision.sourceGoalId)
+  const sourceGoalId = sourceGoalIdForDecision(decision)
   if (sourceExtractionPath === null || sourceGoalId === null) return null
 
   const sourceExtraction = readSourceExtraction(sourceExtractionPath, sourceExtractionCache)
@@ -906,14 +932,9 @@ function findCandidatesForGoals(
   collectReviewFiles(mappingRoot).forEach((mappingReviewPath) => {
     const mappingReview = readJsonFile<MappingReview>(mappingReviewPath)
     if (!mappingReviewTargetsLandscape(mappingReview, targetLandscapeId)) return
-    if (!Array.isArray(mappingReview.decisions)) return
-    mappingReview.decisions
-      .filter((entry): entry is MappingDecision => isRecord(entry))
+    mappingReviewDecisions(mappingReview)
       .forEach((decision) => {
-        const canonicalGoalIds = Array.isArray(decision.canonicalGoalIds)
-          ? decision.canonicalGoalIds.filter((goalId): goalId is string => typeof goalId === 'string')
-          : []
-        canonicalGoalIds
+        canonicalGoalIdsForDecision(decision)
           .filter((goalId) => goalIdSet.has(goalId))
           .forEach((goalId) => {
             const candidate = buildCandidate(mappingReviewPath, mappingReview, decision, sourceExtractionCache)
@@ -926,6 +947,20 @@ function findCandidatesForGoals(
 
   candidatesByGoal.forEach((candidates) => {
     candidates.sort((left, right) => candidateRank(left) - candidateRank(right))
+    const seen = new Set<string>()
+    const deduped = candidates.filter((candidate) => {
+      const key = [
+        candidate.jurisdiction ?? '',
+        candidate.sourceExtractionPath,
+        candidate.sourceGoalId,
+        candidate.sourceSpan ?? '',
+        candidate.matchType ?? '',
+      ].join('|')
+      if (seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
+    candidates.splice(0, candidates.length, ...deduped)
   })
 
   return candidatesByGoal
@@ -975,6 +1010,9 @@ function buildReport(input: {
       : allCandidates.filter((candidate) => candidate.jurisdiction === input.jurisdiction)
     const candidates = scopedCandidates.length > 0 ? scopedCandidates : allCandidates
     const bestCandidate = candidates[0] ?? null
+    const alternateClassicSourceRoutes = bestCandidate === null
+      ? allCandidates
+      : allCandidates.filter((candidate) => candidate !== bestCandidate)
     const status = bestCandidate === null
       ? 'classic_source_gap'
       : bestCandidate.matchType === 'partial'
@@ -999,7 +1037,7 @@ function buildReport(input: {
       },
       sourceRationaleStatus: status,
       classicSourceRoute: bestCandidate,
-      alternateClassicSourceRoutes: candidates.slice(1),
+      alternateClassicSourceRoutes,
       memSparqlRoute: defaultMemSparqlRoute(),
       limitations,
     }
@@ -1053,6 +1091,7 @@ async function enrichReportWithMemSparql(report: SourceRationaleReport, memConfi
         item.memSparqlRoute = {
           status: 'mem_sparql_not_configured',
           endpoint,
+          jurisdiction: route.jurisdiction,
           notes: `Für ${route.jurisdiction ?? 'diesen Scope'} ist im MEM-Konsistenz-PoC kein konkreter Textvergleich konfiguriert.`,
         }
         item.limitations.push('Für dieses Ziel ist noch kein MEM/FWU-SPARQL-Vergleich konfiguriert.')
@@ -1069,6 +1108,7 @@ async function enrichReportWithMemSparql(report: SourceRationaleReport, memConfi
         item.memSparqlRoute = {
           status: 'mem_sparql_review_needed',
           endpoint,
+          jurisdiction: route.jurisdiction,
           comparisonId: comparison.id,
           comparisonLabel: comparison.label,
           graphIri: comparison.graphIri,
@@ -1081,6 +1121,7 @@ async function enrichReportWithMemSparql(report: SourceRationaleReport, memConfi
       item.memSparqlRoute = {
         status: 'mem_sparql_consistent',
         endpoint,
+        jurisdiction: route.jurisdiction,
         comparisonId: comparison.id,
         comparisonLabel: comparison.label,
         graphIri: comparison.graphIri,

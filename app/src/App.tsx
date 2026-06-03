@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'rea
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 
 import { SessionSetup } from './components/SessionSetup'
+import { AppUpdateNotice } from './components/AppUpdateNotice'
 import { ToastHost } from './components/ToastHost'
 import { useAppCore } from './hooks/useAppCore'
 import { useLandscapes } from './hooks/useLandscapes'
@@ -596,29 +597,32 @@ const App: React.FC = () => {
   if (isPublicRoute || window.location.pathname.startsWith('/curricula')) {
     return (
       <Suspense fallback={<RouteLoadingFallback />}>
-        <Routes>
-          <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
-          <Route path="/legal" element={<LegalView />} />
-          <Route path="/privacy" element={<PrivacyView />} />
-          <Route path="/legal" element={<LegalView />} />
-          <Route path="/privacy" element={<PrivacyView />} />
-          <Route path="/imprint" element={<ImprintView />} />
-          <Route path="/curricula" element={<CurriculaView />} />
-          <Route path="/stats" element={<StatsView />} />
-          <Route path="/users" element={<UsersView />} />
-          <Route path="/successes" element={<SuccessView />} />
-          <Route path="/quickstart/:lang?" element={<StoryView />} />
-          <Route path="/workbench" element={<WorkbenchView />} />
-          <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
-          <Route path="/graph-editor" element={<GraphEditorView />} />
-          <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
-          <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
-          <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
-          <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
-          <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
-          <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
-          <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
-        </Routes>
+        <>
+          <AppUpdateNotice />
+          <Routes>
+            <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
+            <Route path="/legal" element={<LegalView />} />
+            <Route path="/privacy" element={<PrivacyView />} />
+            <Route path="/legal" element={<LegalView />} />
+            <Route path="/privacy" element={<PrivacyView />} />
+            <Route path="/imprint" element={<ImprintView />} />
+            <Route path="/curricula" element={<CurriculaView />} />
+            <Route path="/stats" element={<StatsView />} />
+            <Route path="/users" element={<UsersView />} />
+            <Route path="/successes" element={<SuccessView />} />
+            <Route path="/quickstart/:lang?" element={<StoryView />} />
+            <Route path="/workbench" element={<WorkbenchView />} />
+            <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
+            <Route path="/graph-editor" element={<GraphEditorView />} />
+            <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
+            <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
+            <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
+            <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
+            <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
+            <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+            <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+          </Routes>
+        </>
       </Suspense>
     )
   }
@@ -778,7 +782,8 @@ const App: React.FC = () => {
     <Suspense fallback={<RouteLoadingFallback />}>
       <>
         <ToastHost toast={toast} />
-      <Routes>
+        <AppUpdateNotice />
+        <Routes>
         <Route
           path="/learner/:goalId?"
           element={
@@ -850,7 +855,7 @@ const App: React.FC = () => {
         <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
 
         <Route path="/" element={<Navigate to={role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'} replace />} />
-      </Routes>
+        </Routes>
       </>
     </Suspense>
   )

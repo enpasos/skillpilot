@@ -10,7 +10,7 @@ import { useGoalIndex } from './useGoalIndex'
 import { useLearnerProgress } from './useLearnerProgress'
 import { useMasteryCalculation } from './useMasteryCalculation'
 import { useLanguage } from '../contexts/LanguageContext'
-import { goalMatchesFilter, isWildcardFilter } from '../utils/goalFilters'
+import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { getDisplayFiltersForLandscapeSelection } from '../utils/landscapeFilterOptions'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
@@ -28,18 +28,101 @@ import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 const DEFAULT_ACTIVE_FILTER = 'all'
-const normalizeActiveFilter = (
+type ActiveFilterDimension = 'jurisdiction' | 'courseProfile' | 'durationModel' | 'generic'
+const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
+
+const getActiveFilterDimension = (filterId?: string): ActiveFilterDimension => {
+  const normalized = (filterId ?? '').trim().toUpperCase()
+  if (normalizeJurisdictionCode(normalized)) return 'jurisdiction'
+  if (COURSE_FILTER_VALUES.has(normalized)) return 'courseProfile'
+  if (normalized === 'G8' || normalized === 'G9') return 'durationModel'
+  return 'generic'
+}
+
+const normalizeSingleActiveFilter = (
   value: string | null | undefined,
+  availableFilters: { id: string }[],
+): string | null => {
+  const raw = value?.trim()
+  if (!raw) return null
+  if (isWildcardFilter(raw)) return DEFAULT_ACTIVE_FILTER
+
+  const jurisdictionFilterId = normalizeJurisdictionCode(raw)
+  if (jurisdictionFilterId) return jurisdictionFilterId
+
+  const normalized = raw.toUpperCase()
+  if (COURSE_FILTER_VALUES.has(normalized)) return normalized
+  if (normalized === 'G8' || normalized === 'G9') return normalized
+
+  const exactFilter = availableFilters.find((filter) => filter.id === raw)
+  if (exactFilter) return exactFilter.id
+  const caseInsensitiveFilter = availableFilters.find((filter) => filter.id.toUpperCase() === normalized)
+  return caseInsensitiveFilter?.id ?? null
+}
+
+const normalizeActiveFilterList = (
+  value: string | string[] | null | undefined,
+  availableFilters: { id: string }[],
+) => {
+  const filters: string[] = []
+
+  splitFilterIds(value ?? undefined).forEach((rawFilter) => {
+    const normalizedFilter = normalizeSingleActiveFilter(rawFilter, availableFilters)
+    if (!normalizedFilter || isWildcardFilter(normalizedFilter)) return
+
+    const dimension = getActiveFilterDimension(normalizedFilter)
+    const existingIndex = filters.findIndex((filter) => getActiveFilterDimension(filter) === dimension)
+    if (existingIndex >= 0) {
+      filters.splice(existingIndex, 1)
+    }
+    filters.push(normalizedFilter)
+  })
+
+  return filters
+}
+
+const serializeActiveFilters = (
+  filters: string[],
+  availableFilters: { id: string }[],
+) => {
+  const normalizedFilters = normalizeActiveFilterList(filters, availableFilters)
+  return normalizedFilters.length > 0 ? normalizedFilters.join(',') : DEFAULT_ACTIVE_FILTER
+}
+
+const normalizeActiveFilter = (
+  value: string | string[] | null | undefined,
   availableFilters: { id: string }[],
 ) => {
   const wildcardFilterId = availableFilters.find((filter) => isWildcardFilter(filter.id))?.id ?? DEFAULT_ACTIVE_FILTER
-  if (!value || isWildcardFilter(value)) return wildcardFilterId
-  const jurisdictionFilterId = normalizeJurisdictionCode(value)
-  if (jurisdictionFilterId) return jurisdictionFilterId
-  const exactFilter = availableFilters.find((filter) => filter.id === value)
-  if (exactFilter) return exactFilter.id
-  const caseInsensitiveFilter = availableFilters.find((filter) => filter.id.toUpperCase() === value.trim().toUpperCase())
-  return caseInsensitiveFilter?.id ?? wildcardFilterId
+  const normalizedFilters = normalizeActiveFilterList(value, availableFilters)
+  return normalizedFilters.length > 0 ? normalizedFilters.join(',') : wildcardFilterId
+}
+
+const getFilterParams = (params: URLSearchParams) => splitFilterIds(params.getAll('f'))
+
+const replaceFilterDimension = ({
+  currentFilter,
+  nextFilter,
+  dimension,
+  availableFilters,
+}: {
+  currentFilter: string
+  nextFilter: string
+  dimension?: ActiveFilterDimension
+  availableFilters: { id: string }[]
+}) => {
+  const currentFilters = normalizeActiveFilterList(currentFilter, availableFilters)
+  const normalizedNext = normalizeSingleActiveFilter(nextFilter, availableFilters)
+  const targetDimension = dimension ?? getActiveFilterDimension(normalizedNext ?? nextFilter)
+  const filtersWithoutDimension = currentFilters.filter(
+    (filter) => getActiveFilterDimension(filter) !== targetDimension,
+  )
+
+  if (!normalizedNext || isWildcardFilter(normalizedNext)) {
+    return serializeActiveFilters(filtersWithoutDimension, availableFilters)
+  }
+
+  return serializeActiveFilters([...filtersWithoutDimension, normalizedNext], availableFilters)
 }
 
 interface AppCoreOptions {
@@ -184,7 +267,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (!currentLandscapeEntry) return
     if (pendingSearchRef.current && pendingSearchRef.current !== currentSearchString) return
     const currentParams = new URLSearchParams(currentSearchString)
-    const nextFilter = normalizeActiveFilter(currentParams.get('f'), currentLandscapeEntry.meta.filters ?? [])
+    const nextFilter = normalizeActiveFilter(getFilterParams(currentParams), currentLandscapeEntry.meta.filters ?? [])
     if (nextFilter !== activeFilter) {
       pendingFilterFromUrlRef.current = nextFilter
       setActiveFilter(nextFilter)
@@ -209,7 +292,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     }
 
     const currentParams = new URLSearchParams(currentSearchString)
-    const currentFilterParam = currentParams.get('f')
+    const currentFilterParam = normalizeActiveFilter(getFilterParams(currentParams), availableFilters)
     const next = new URLSearchParams(currentParams)
     if (isWildcardFilter(normalizedFilter)) {
       if (!currentFilterParam) return
@@ -221,13 +304,19 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     replaceSearchParamsIfNeeded(next)
   }, [activeFilter, currentLandscapeEntry, currentSearchString, replaceSearchParamsIfNeeded, setActiveFilter])
 
-  const handleFilterChange = useCallback((filter: string) => {
+  const handleFilterChange = useCallback((filter: string, dimension?: ActiveFilterDimension) => {
     if (!currentLandscapeEntry) {
       setActiveFilter(filter)
       return
     }
 
-    const normalizedFilter = normalizeActiveFilter(filter, currentLandscapeEntry.meta.filters ?? [])
+    const availableFilters = currentLandscapeEntry.meta.filters ?? []
+    const normalizedFilter = replaceFilterDimension({
+      currentFilter: activeFilter,
+      nextFilter: filter,
+      dimension,
+      availableFilters,
+    })
     if (normalizedFilter !== activeFilter) {
       setActiveFilter(normalizedFilter)
     }

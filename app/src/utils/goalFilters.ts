@@ -12,6 +12,13 @@ export const isWildcardFilter = (filterId?: string) => {
   return filterId.toLowerCase() === 'all'
 }
 
+export const splitFilterIds = (filterIds?: string | string[]): string[] => (
+  (Array.isArray(filterIds) ? filterIds : [filterIds])
+    .flatMap((value) => (typeof value === 'string' ? value.split(',') : []))
+    .map((value) => value.trim())
+    .filter((value) => value.length > 0)
+)
+
 const normalizeFilterToken = (value?: string) => value?.trim().toUpperCase() ?? ''
 
 const inferFilterDimension = (filterId: string): FilterDimension => {
@@ -113,9 +120,11 @@ const getGenericFilterValues = (goal: FilterableGoal) => {
 }
 
 export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): boolean => {
-  if (!filterId || isWildcardFilter(filterId)) return true
+  const effectiveFilters = splitFilterIds(filterId).filter((value) => !isWildcardFilter(value))
+  if (effectiveFilters.length === 0) return true
+  if (effectiveFilters.length > 1) return goalMatchesFilters(goal, effectiveFilters)
 
-  const normalizedFilterId = normalizeFilterToken(filterId)
+  const normalizedFilterId = normalizeFilterToken(effectiveFilters[0])
   const dimension = inferFilterDimension(normalizedFilterId)
 
   if (dimension === 'courseProfile') {
@@ -150,8 +159,7 @@ export const goalMatchesFilters = (
   goal: FilterableGoal,
   filterIds?: string | string[],
 ): boolean => {
-  const effectiveFilters = (Array.isArray(filterIds) ? filterIds : [filterIds])
-    .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+  const effectiveFilters = splitFilterIds(filterIds)
     .filter((value) => !isWildcardFilter(value))
 
   if (effectiveFilters.length === 0) {

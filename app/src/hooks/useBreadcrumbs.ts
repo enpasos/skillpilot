@@ -10,6 +10,8 @@ export interface BreadcrumbCrumb {
   onNavigate: () => void
 }
 
+type StageNavigationKey = 'sek1' | 'sek2'
+
 interface Params {
   currentGoal: Goal | null
   goalIndexAll: Map<string, Goal>
@@ -17,6 +19,49 @@ interface Params {
   globalRootGoals: Goal[]
   useRawGoalTitles?: boolean
   onNavigate: (goalId: string, landscapeId?: string) => void
+}
+
+const normalizeStageTitle = (title: string) =>
+  title.normalize('NFKC').replace(/\s+/gu, ' ').trim().toLocaleLowerCase('de-DE')
+
+const getStageNavigationKey = (goal?: Pick<Goal, 'title'>): StageNavigationKey | null => {
+  if (!goal) return null
+  const title = normalizeStageTitle(goal.title)
+  if (title === 'sekundarstufe i') return 'sek1'
+  if (/^sekundarstufe ii(?:\s*\((?:gk|lk)\))?$/u.test(title)) return 'sek2'
+  return null
+}
+
+const getStageNavigationLabel = (key: StageNavigationKey) =>
+  key === 'sek1' ? 'Sekundarstufe I' : 'Sekundarstufe II'
+
+const getStageNavigationOptions = (
+  siblingGoals: Goal[],
+  currentGoal?: Goal,
+): { id: string; label: string }[] | null => {
+  const currentStageKey = getStageNavigationKey(currentGoal)
+  if (!currentStageKey) return null
+
+  const stages = new Map<StageNavigationKey, Goal>()
+  siblingGoals.forEach((goal) => {
+    const key = getStageNavigationKey(goal)
+    if (key && !stages.has(key)) {
+      stages.set(key, goal)
+    }
+  })
+  if (currentGoal) {
+    stages.set(currentStageKey, currentGoal)
+  }
+
+  const options: { id: string; label: string }[] = []
+  ;(['sek1', 'sek2'] as const).forEach((key) => {
+    const goal = stages.get(key)
+    if (goal) {
+      options.push({ id: goal.id, label: getStageNavigationLabel(key) })
+    }
+  })
+
+  return options.length > 0 ? options : null
 }
 
 export function useBreadcrumbs({
@@ -76,13 +121,13 @@ export function useBreadcrumbs({
       const label = goal ? getDisplayTitle(goal) : goalId
       const parentId = tail[idx - 1] ?? rootId
       const parent = goalIndexAll.get(parentId)
-      let options =
+      const siblingGoals =
         parent?.contains
-          .filter((childId) => goalIndexAll.has(childId))
-          .map((childId) => {
-            const child = goalIndexAll.get(childId)
-            return { id: childId, label: child ? getDisplayTitle(child) : childId }
-          }) || []
+          .map((childId) => goalIndexAll.get(childId))
+          .filter((child): child is Goal => Boolean(child)) || []
+      let options =
+        getStageNavigationOptions(siblingGoals, goal)
+        ?? siblingGoals.map((child) => ({ id: child.id, label: getDisplayTitle(child) }))
       if (options.length === 0) options = [{ id: goalId, label }]
       const pathToHere = chain.slice(0, idx + 2)
       crumbs.push({

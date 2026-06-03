@@ -1,6 +1,7 @@
 import type { UiGoal } from '../goalTypes'
 import type { GoalPlacement, GoalPlacementContext, LearningLandscape, ProgramUnit } from '../landscapeTypes'
 import { normalizeDurationModel } from './durationModel'
+import { splitFilterIds } from './goalFilters'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 export interface ProjectableLandscapeEntry {
@@ -21,8 +22,7 @@ const normalizeComparableText = (value: string | undefined): string =>
 const isWildcardFilter = (value?: string) => !value || value.toLocaleLowerCase() === 'all'
 
 const normalizeFilterIds = (filters?: string | string[]) =>
-  (Array.isArray(filters) ? filters : [filters])
-    .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+  splitFilterIds(filters)
     .filter((value) => !isWildcardFilter(value))
 
 const getProgramUnitPhaseTokens = (unit: ProgramUnit): string[] => {

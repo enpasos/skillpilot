@@ -8,12 +8,17 @@ import { LogoutButton } from '../components/LogoutButton'
 
 import type { NeighborSets } from '../hooks/useCompetenceGraph'
 import { useLanguage } from '../contexts/LanguageContext'
+import { splitFilterIds } from '../utils/goalFilters'
+import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { en } from '../locales/en'
 import { de } from '../locales/de'
 
 const RequiresFlowMap = lazy(() =>
   import('../components/RequiresFlowMap').then((module) => ({ default: module.RequiresFlowMap })),
 )
+
+type ExplorerFilterOption = { id: string; label: string }
+type ExplorerFilterDimension = 'jurisdiction' | 'courseProfile' | 'durationModel' | 'generic'
 
 interface ExplorerViewProps {
   breadcrumbCrumbs: {
@@ -33,7 +38,7 @@ interface ExplorerViewProps {
   showLearnerTools: boolean
   activeFilter: string
   availableFilters?: { id: string; label: string }[]
-  onFilterChange: (value: string) => void
+  onFilterChange: (value: string, dimension?: ExplorerFilterDimension) => void
   onLogout?: () => void
   children?: React.ReactNode
   goalIndexAll: Map<string, Goal>
@@ -61,9 +66,25 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
     if (!value) return false
     return value.toLowerCase() === 'all'
   }
+  const isCourseProfileFilter = (value?: string) => {
+    const normalized = (value ?? '').trim().toUpperCase()
+    return normalized === 'GK' || normalized === 'LK' || normalized === 'GK+LK'
+  }
   const { language } = useLanguage()
   const wildcardFilterOption = availableFilters.find((option) => isWildcardFilter(option.id))
   const selectableFilters = availableFilters.filter((option) => !isWildcardFilter(option.id))
+  const jurisdictionFilters = selectableFilters.filter((option) => normalizeJurisdictionCode(option.id))
+  const courseProfileFilters = selectableFilters.filter((option) => isCourseProfileFilter(option.id))
+  const otherFilters = selectableFilters.filter(
+    (option) => !normalizeJurisdictionCode(option.id) && !isCourseProfileFilter(option.id),
+  )
+  const activeFilterIds = splitFilterIds(activeFilter).filter((filterId) => !isWildcardFilter(filterId))
+  const activeJurisdiction = activeFilterIds
+    .map((filterId) => normalizeJurisdictionCode(filterId))
+    .find((jurisdiction) => !!jurisdiction)
+  const activeCourseProfile = activeFilterIds
+    .map((filterId) => filterId.trim().toUpperCase())
+    .find((filterId) => isCourseProfileFilter(filterId))
   const t = language === 'en' ? en.explorer : de.explorer
   const [showRequiresFlow, setShowRequiresFlow] = useState(false)
   const containsOptions = [...neighbors.children].sort((a, b) => a.title.localeCompare(b.title))
@@ -74,46 +95,92 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
       </div>
     </main>
   )
+  const filterOptionIsActive = (
+    option: ExplorerFilterOption,
+    dimension?: ExplorerFilterDimension,
+  ) => {
+    if (dimension === 'jurisdiction' && isWildcardFilter(option.id)) {
+      return !activeJurisdiction
+    }
+    if (dimension === 'courseProfile' && isWildcardFilter(option.id)) {
+      return !activeCourseProfile
+    }
+
+    const jurisdiction = normalizeJurisdictionCode(option.id)
+    if (jurisdiction) {
+      return activeJurisdiction === jurisdiction
+    }
+
+    const normalizedOptionId = option.id.trim().toUpperCase()
+    return activeFilterIds.some((filterId) => filterId.trim().toUpperCase() === normalizedOptionId)
+  }
+  const renderFilterButton = (option: ExplorerFilterOption, dimension?: ExplorerFilterDimension) => {
+    const isActive = filterOptionIsActive(option, dimension)
+    return (
+      <button
+        key={option.id}
+        type="button"
+        aria-pressed={isActive}
+        onClick={() => onFilterChange(option.id, dimension)}
+        className={`whitespace-nowrap rounded-full px-2 py-1 text-[11px] transition-colors ${isActive
+          ? 'bg-sky-600 text-white shadow'
+          : 'text-text-secondary hover:text-text-primary'
+          }`}
+      >
+        {option.label}
+      </button>
+    )
+  }
+  const renderFilterGroup = (
+    label: string,
+    options: ExplorerFilterOption[],
+    dimension?: ExplorerFilterDimension,
+  ) => {
+    if (options.length === 0) return null
+    return (
+      <div className="flex min-w-0 items-center gap-2 text-[11px] text-text-secondary">
+        <span className="shrink-0">{label}</span>
+        <div className="flex min-w-0 flex-wrap items-center gap-1 rounded-2xl border border-border-color bg-input-bg p-0.5">
+          {options.map((option) => renderFilterButton(option, dimension))}
+        </div>
+      </div>
+    )
+  }
+  const jurisdictionFilterOptions = [
+    {
+      id: wildcardFilterOption?.id ?? 'all',
+      label: wildcardFilterOption?.label ?? (language === 'en' ? 'Canonical DE View' : 'Kanonische DE-Sicht'),
+    },
+    ...jurisdictionFilters,
+  ]
+  const courseProfileFilterOptions = courseProfileFilters.length > 0
+    ? [
+      {
+        id: 'all',
+        label: language === 'en' ? 'All courses' : 'Alle Kurse',
+      },
+      ...courseProfileFilters,
+    ]
+    : []
 
   return (
     <div className="min-h-screen flex flex-col bg-chat-bg text-text-primary transition-colors">
       <header className="flex flex-col border-b border-border-color bg-sidebar-bg/90 backdrop-blur transition-colors">
-        <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-2 border-b border-border-color">
+        <div className="flex items-center justify-end gap-4 px-6 py-2">
+          <ThemeToggle />
+          {onLogout && (
+            <LogoutButton onLogout={onLogout} />
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-2 border-t border-border-color">
           <div className="flex min-w-0 flex-wrap items-center gap-3">
             {hasFilters && (
-              <div className="flex items-center gap-2 text-[11px] text-text-secondary">
-                <span>Filter</span>
-                <div className="flex flex-wrap items-center gap-1 rounded-2xl border border-border-color bg-input-bg p-0.5">
-                  <button
-                    type="button"
-                    aria-pressed={isWildcardFilter(activeFilter)}
-                    onClick={() => onFilterChange(wildcardFilterOption?.id ?? 'all')}
-                    className={`whitespace-nowrap px-2 py-1 rounded-full text-[11px] transition-colors ${isWildcardFilter(activeFilter)
-                      ? 'bg-sky-600 text-white shadow'
-                      : 'text-text-secondary hover:text-text-primary'
-                      }`}
-                  >
-                    {wildcardFilterOption?.label ?? 'Alle'}
-                  </button>
-                  {selectableFilters.map((option) => {
-                    const isActive = activeFilter === option.id
-                    return (
-                      <button
-                        key={option.id}
-                        type="button"
-                        aria-pressed={isActive}
-                        onClick={() => onFilterChange(option.id)}
-                        className={`whitespace-nowrap px-2 py-1 rounded-full text-[11px] transition-colors ${isActive
-                          ? 'bg-sky-600 text-white shadow'
-                          : 'text-text-secondary hover:text-text-primary'
-                          }`}
-                      >
-                        {option.label}
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
+              <>
+                {renderFilterGroup(language === 'en' ? 'Jurisdiction' : 'Bundesland', jurisdictionFilterOptions, 'jurisdiction')}
+                {renderFilterGroup(language === 'en' ? 'Course' : 'Kurs', courseProfileFilterOptions, 'courseProfile')}
+                {renderFilterGroup(language === 'en' ? 'Other filters' : 'Weitere Filter', otherFilters, 'generic')}
+              </>
             )}
             <div className="flex items-center gap-2 text-[11px] text-text-secondary">
               <span>{t.requiresFlowToggleLabel}</span>
@@ -137,14 +204,6 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
                 {showRequiresFlow ? t.requiresFlowStateOn : t.requiresFlowStateOff}
               </span>
             </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            {onLogout && (
-              <LogoutButton onLogout={onLogout} />
-            )}
-
           </div>
         </div>
 

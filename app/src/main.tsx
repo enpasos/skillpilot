@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import 'katex/dist/katex.min.css'
 import './index.css'
 import App from './App.tsx'
+import { installModuleLoadRecovery } from './utils/moduleLoadRecovery'
 
 
 import { ThemeProvider } from './contexts/ThemeContext'
@@ -11,6 +12,8 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 
 const routerBase = (import.meta.env.BASE_URL || '/').replace(/\/+$/, '')
+
+installModuleLoadRecovery()
 
 // Handle OAuth redirect before React initializes
 // When returning from OAuth, the service worker might serve a cached version of the app

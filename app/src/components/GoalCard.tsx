@@ -10,6 +10,7 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
 import { getGoalCardCopy } from '../utils/goalCardCopy'
 import { getAudienceGoalTitle } from '../utils/treeProjectionRuntime'
+import { splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 
 interface GoalCardProps {
@@ -73,6 +74,7 @@ type GoalClassicSourceRoute = {
 }
 
 type GoalMemSparqlRoute = {
+  status?: string
   jurisdiction?: string
   endpoint?: string
   graphIri?: string
@@ -187,6 +189,7 @@ const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem
       .filter((route): route is GoalClassicSourceRoute => Boolean(route)),
     memSparqlRoute: rawMemRoute
       ? {
+          status: readString(rawMemRoute.status),
           jurisdiction: normalizeJurisdictionCode(readString(rawMemRoute.jurisdiction)) ?? undefined,
           endpoint: readString(rawMemRoute.endpoint),
           graphIri: readString(rawMemRoute.graphIri),
@@ -207,9 +210,17 @@ const selectSourceRationaleForFilter = (
 ): GoalSourceRationaleItem | null => {
   if (!item?.goal?.id) return null
 
-  const activeJurisdiction = normalizeJurisdictionCode(activeFilter)
+  const activeJurisdiction = splitFilterIds(activeFilter)
+    .map((filterId) => normalizeJurisdictionCode(filterId))
+    .find((jurisdiction) => !!jurisdiction)
+  const usableMemRoute = item.memSparqlRoute?.status === 'mem_sparql_consistent'
+    ? item.memSparqlRoute
+    : undefined
   if (!activeJurisdiction) {
-    return item
+    return {
+      ...item,
+      memSparqlRoute: usableMemRoute,
+    }
   }
 
   const routes = [
@@ -222,15 +233,17 @@ const selectSourceRationaleForFilter = (
     return null
   }
 
-  const memRouteJurisdiction = normalizeJurisdictionCode(item.memSparqlRoute?.jurisdiction)
-  const memRouteMatchesFilter = !item.memSparqlRoute
-    || !memRouteJurisdiction
-    || memRouteJurisdiction === activeJurisdiction
+  const memRouteJurisdiction = normalizeJurisdictionCode(usableMemRoute?.jurisdiction)
+  const memRouteMatchesFilter = Boolean(usableMemRoute)
+    && (
+      memRouteJurisdiction === activeJurisdiction
+      || (!memRouteJurisdiction && normalizeJurisdictionCode(selectedClassicRoute.jurisdiction) === activeJurisdiction)
+    )
 
   return {
     ...item,
     classicSourceRoute: selectedClassicRoute,
-    memSparqlRoute: memRouteMatchesFilter ? item.memSparqlRoute : undefined,
+    memSparqlRoute: memRouteMatchesFilter ? usableMemRoute : undefined,
   }
 }
 
