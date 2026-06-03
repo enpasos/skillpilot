@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-03T11:42:03.955Z",
+  "generator": "app/scripts/reportGoalSourceRationaleMappingBatch.ts",
+  "request": {
+    "gapIssueReportPath": "docs/qa-ci/status/goal-source-rationale-gap-issues.json",
+    "batchId": "GSR-MAP-BATCH-01",
+    "maxItems": 20
+  },
+  "sourceReport": {
+    "generatedAt": "2026-06-03T11:41:57.045Z",
+    "summary": {
+      "totalClassicSourceGapIssues": 53,
+      "coveredSiblingMappingGaps": 22,
+      "isolatedSourceExpansionGaps": 31,
+      "phases": 4,
+      "areas": 3
+    }
+  },
+  "summary": {
+    "batchId": "GSR-MAP-BATCH-01",
+    "candidates": 20,
+    "totalSiblingMappingIssues": 22,
+    "remainingSiblingMappingIssuesOutsideBatch": 2,
+    "byJurisdiction": [
+      {
+        "jurisdiction": "DE-SH",
+        "candidates": 5
+      },
+      {
+        "jurisdiction": "DE-BW",
+        "candidates": 4
+      },
+      {
+        "jurisdiction": "DE-NW",
+        "candidates": 4
+      },
+      {
+        "jurisdiction": "DE-HE",
+        "candidates": 3
+      },
+      {
+        "jurisdiction": "DE-BY",
+        "candidates": 2
+      },
+      {
+        "jurisdiction": "DE-TH",
+        "candidates": 2
+      }
+    ],
+    "byPhase": [
+      {
+        "phase": "Q4",
+        "candidates": 16
+      },
+      {
+        "phase": "Q2",
+        "candidates": 3
+      },
+      {
+        "phase": "Q3",
+        "candidates": 1
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-001",
+      "issueId": "GSR-GAP-3AEA4D33",
+      "priorityScore": 91,
+      "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+      "shortKey": null,
+      "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)",
+      "description": "Die lernende Person kann die Schnittfigur einer Ebene mit einem Polyeder (z. B. Quader/Prisma) konstruieren, Eckpunkte bestimmen und die Figur beschreiben.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Lagebeziehungen und Schnittmengen im Raum",
+        "Vertiefende Untersuchungen im Raum (LK)",
+        "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+        "title": "Schnittgerade zweier Ebenen bestimmen (LK)",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-BW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-06d-ebene-ebene-schnittgebilde",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 6, S. 41.",
+        "topicCode": "BP2016-3.4.3",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json` den Source-Goal-Anker `bw-math-sekii-bp2016-3-4-3-06d-ebene-ebene-schnittgebilde`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `3aea4d33-4170-5ecc-82b0-3a3974cc2237` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-002",
+      "issueId": "GSR-GAP-613871F6",
+      "priorityScore": 80,
+      "goalId": "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+      "shortKey": null,
+      "title": "Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)",
+      "description": "Die lernende Person kann für eine komplexere Problemstellung eine mathematisch begründete Entscheidungsregel formulieren.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Entscheidungsregel für eine komplexe Problemstellung entwickeln (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
+        "title": "Mathematische Probleme erkennen und formulieren",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-BW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sourceGoalId": "bw-math-sekii-bp2016-2-2-01-b505c9c4",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.2, Kompetenz 1, S. 13.",
+        "topicCode": "BP2016-2.2",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 12,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json` den Source-Goal-Anker `bw-math-sekii-bp2016-2-2-01-b505c9c4`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `613871f6-ccb2-51fe-aba2-0dd17b86a89e` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-003",
+      "issueId": "GSR-GAP-7D37513B",
+      "priorityScore": 69,
+      "goalId": "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+      "shortKey": null,
+      "title": "Transformationsargumente für Flächen und Volumina nutzen (LK)",
+      "description": "Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Raum, Matrizen und lineare Modelle (Sek II)",
+        "Abstände, Schnittwinkel, Spiegelungen und Anwendungen im Raum",
+        "Transformationsargumente für Flächen und Volumina nutzen (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
+        "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-SH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-K012-e09fce9163",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
+        "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-K012",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 18,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json` den Source-Goal-Anker `de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-K012-e09fce9163`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `7d37513b-fa1a-54cc-9e2a-9279a381f0f0` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-004",
+      "issueId": "GSR-GAP-5B54F272",
+      "priorityScore": 65,
+      "goalId": "5b54f272-f588-5009-8b42-eb15f846d3e2",
+      "shortKey": null,
+      "title": "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)",
+      "description": "Die lernende Person kann die relative Streuung (Variationskoeffizient) $\\sigma/\\mu$ einer Binomialverteilung berechnen und zeigen, dass sie bei festem $p$ mit wachsendem $n$ abnimmt (z. B. $\\sigma/\\mu = \\sqrt{\\frac{1-p}{n\\,p}}$).",
+      "phase": "Q3",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+        "Stochastik, Tests und Statistik (Sek II)",
+        "Wahrscheinlichkeiten und Verteilungen (Sek II)",
+        "Wahrscheinlichkeitsverteilungen (Überblick)",
+        "Relative Streuung binomialverteilter Zufallsgrößen berechnen (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+        "title": "Wahrscheinlichkeiten in Bernoulli-Ketten berechnen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-SH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 71",
+        "topicCode": "SH-SEKII-L5-DATEN-UND-ZUFALL-T047",
+        "matchType": "exact"
+      },
+      "coveredSiblingGoals": 13,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json` den Source-Goal-Anker `de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T047-10aa2ff6c6`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `5b54f272-f588-5009-8b42-eb15f846d3e2` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-005",
+      "issueId": "GSR-GAP-6CA8AD6B",
+      "priorityScore": 64,
+      "goalId": "6ca8ad6b-a770-5d5e-9f91-7211c54c45b0",
+      "shortKey": null,
+      "title": "Parameter zur Modellierung von Sachsituationen bestimmen",
+      "description": "Die lernende Person kann einen Parameter einer Funktionenschar so bestimmen, dass eine vorgegebene Kontextbedingung erfüllt ist.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameter zur Modellierung von Sachsituationen bestimmen"
+      ],
+      "proposedAnchor": {
+        "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+        "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-SH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+        "matchType": "exact"
+      },
+      "coveredSiblingGoals": 9,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json` den Source-Goal-Anker `de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `6ca8ad6b-a770-5d5e-9f91-7211c54c45b0` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-006",
+      "issueId": "GSR-GAP-1BDAC3D8",
+      "priorityScore": 59,
+      "goalId": "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+      "shortKey": null,
+      "title": "Parameterbereiche für Lösungsexistenz analysieren (LK)",
+      "description": "Die lernende Person kann für eine Funktionenschar begründen, für welche Parameterbereiche eine geforderte Lösung existiert.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameterbereiche für Lösungsexistenz analysieren (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
+        "title": "Parameter in Funktionenscharen deuten",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-BW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
+        "topicCode": "BP2016-3.4.4",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 9,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json` den Source-Goal-Anker `bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `1bdac3d8-6b6f-5e27-9c9e-9addf198aa99` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-007",
+      "issueId": "GSR-GAP-5E615E88",
+      "priorityScore": 44,
+      "goalId": "5e615e88-25b6-50d5-8f1a-c57e5f9466ed",
+      "shortKey": null,
+      "title": "Parameter für vorgegebene Nullstellen bestimmen",
+      "description": "Die lernende Person kann Parameterwerte berechnen, für die eine Scharfunktion eine vorgegebene Nullstelle besitzt, und die Lösung algebraisch begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen (Sek II)",
+        "Funktionenscharen und Parameteruntersuchungen",
+        "Parameter für vorgegebene Nullstellen bestimmen"
+      ],
+      "proposedAnchor": {
+        "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+        "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-SH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+        "matchType": "exact"
+      },
+      "coveredSiblingGoals": 9,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json` den Source-Goal-Anker `de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `5e615e88-25b6-50d5-8f1a-c57e5f9466ed` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-008",
+      "issueId": "GSR-GAP-81527AAC",
+      "priorityScore": 43,
+      "goalId": "81527aac-1abf-588d-acae-b82a86564b06",
+      "shortKey": null,
+      "title": "Beweis durch Kontraposition",
+      "description": "Die lernende Person kann eine Implikation $A \\Rightarrow B$ durch den Beweis der Kontraposition $\\neg B \\Rightarrow \\neg A$ beweisen und die logische Äquivalenz begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Begründungen und Beweise strukturieren",
+        "Beweis durch Kontraposition"
+      ],
+      "proposedAnchor": {
+        "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+        "title": "Beweis durch Widerspruch",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-NW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+        "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+        "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 4,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `81527aac-1abf-588d-acae-b82a86564b06` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-009",
+      "issueId": "GSR-GAP-9EA981ED",
+      "priorityScore": 43,
+      "goalId": "9ea981ed-8b78-502c-b316-01d8cb885814",
+      "shortKey": null,
+      "title": "Beweis mit Fallunterscheidung",
+      "description": "Die lernende Person kann eine Aussage durch vollständige Fallunterscheidung beweisen und sicherstellen, dass alle Fälle abgedeckt sind.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Begründungen und Beweise strukturieren",
+        "Beweis mit Fallunterscheidung"
+      ],
+      "proposedAnchor": {
+        "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
+        "title": "Beweis durch Widerspruch",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-NW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44",
+        "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
+        "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 4,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-argumentieren-007-b9b20aef44`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `9ea981ed-8b78-502c-b316-01d8cb885814` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-010",
+      "issueId": "GSR-GAP-BF17CADA",
+      "priorityScore": 42,
+      "goalId": "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+      "shortKey": null,
+      "title": "Sachsituationen mit einer erweiterten Funktionsklasse modellieren",
+      "description": "Die lernende Person kann für eine Sachsituation eine passende erweiterte Funktionsklasse auswählen und die Parameter des Modells im Kontext deuten.",
+      "phase": "Q2",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+        "Vertiefung der Analysis",
+        "Sachsituationen mit einer erweiterten Funktionsklasse modellieren"
+      ],
+      "proposedAnchor": {
+        "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+        "title": "Umkehrbarkeit untersuchen und Umkehrfunktionen bestimmen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-SH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f",
+        "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 66",
+        "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-K005",
+        "matchType": "exact"
+      },
+      "coveredSiblingGoals": 7,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json` den Source-Goal-Anker `de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-K005-fd01e50e5f`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `bf17cada-3ccd-5d9a-b9e3-42065cfdbb01` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-011",
+      "issueId": "GSR-GAP-83A6CCB1",
+      "priorityScore": 32,
+      "goalId": "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+      "shortKey": null,
+      "title": "Auf Rückfragen eingehen",
+      "description": "Die lernende Person kann auf Rückfragen eingehen, Missverständnisse klären und die eigene Erklärung gezielt anpassen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse adressatengerecht erklären",
+        "Auf Rückfragen eingehen"
+      ],
+      "proposedAnchor": {
+        "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+        "title": "Lösung nachvollziehbar erklären",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-BW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+        "sourceGoalId": "bw-math-sekii-bp2016-2-1-08-22f8e2ad",
+        "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 8, S. 12.",
+        "topicCode": "BP2016-2.1",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 2,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json` den Source-Goal-Anker `bw-math-sekii-bp2016-2-1-08-22f8e2ad`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `83a6ccb1-576e-59e1-8a97-8a332ec7dda8` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-012",
+      "issueId": "GSR-GAP-5C4B5AB1",
+      "priorityScore": 31,
+      "goalId": "5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6",
+      "shortKey": null,
+      "title": "Modell vollständig notieren",
+      "description": "Die lernende Person kann das Modell vollständig und verständlich notieren (Definitionen, Variablen, Einheiten, Bedingungen), sodass es bearbeitbar ist.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Modell vollständig notieren"
+      ],
+      "proposedAnchor": {
+        "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "title": "Beziehungen als Modellgleichungen aufstellen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-HE",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+        "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+        "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+        "topicCode": "G9-9.1",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json` den Source-Goal-Anker `he-math-seki-g9-9-1-03-6c2d7b55`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `5c4b5ab1-aac9-5762-9ffc-94d047ba3cb6` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-013",
+      "issueId": "GSR-GAP-C3CAD3F5",
+      "priorityScore": 31,
+      "goalId": "c3cad3f5-f0e2-5caa-906a-f25d3044f7b1",
+      "shortKey": null,
+      "title": "Rand- und Anfangsbedingungen festlegen",
+      "description": "Die lernende Person kann Rand- bzw. Anfangsbedingungen oder Nebenbedingungen aus dem Kontext ableiten und im Modell festhalten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Rand- und Anfangsbedingungen festlegen"
+      ],
+      "proposedAnchor": {
+        "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "title": "Beziehungen als Modellgleichungen aufstellen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-HE",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+        "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+        "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+        "topicCode": "G9-9.1",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json` den Source-Goal-Anker `he-math-seki-g9-9-1-03-6c2d7b55`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `c3cad3f5-f0e2-5caa-906a-f25d3044f7b1` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-014",
+      "issueId": "GSR-GAP-A111F535",
+      "priorityScore": 22,
+      "goalId": "a111f535-ff21-5953-90f6-bee81d61b186",
+      "shortKey": null,
+      "title": "Definitionen und Sätze präzise nutzen (LK)",
+      "description": "Die lernende Person kann Definitionen und Sätze präzise verwenden, Voraussetzungen prüfen und sauber zitieren bzw. anwenden.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Fachsprache präzisieren (LK)",
+        "Definitionen und Sätze präzise nutzen (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "b35f8254-dfcc-5d4d-b77f-7b182999617f",
+        "title": "Stil und Präzision verbessern (LK)",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-BY",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sourceGoalId": "by-math-m13-3-f5091eb7-s02-69fef47054",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.3",
+        "topicCode": "M13.3",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 2,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` den Source-Goal-Anker `by-math-m13-3-f5091eb7-s02-69fef47054`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `a111f535-ff21-5953-90f6-bee81d61b186` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-015",
+      "issueId": "GSR-GAP-F4DF008D",
+      "priorityScore": 20,
+      "goalId": "f4df008d-fcd4-5ba3-821b-2ee8bd8a1180",
+      "shortKey": null,
+      "title": "Einheiten- und Dimensionscheck anwenden",
+      "description": "Die lernende Person kann Einheiten bzw. Dimensionen prüfen und so grobe Fehler (z. B. falsche Skalierung) erkennen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse formal überprüfen",
+        "Einheiten- und Dimensionscheck anwenden"
+      ],
+      "proposedAnchor": {
+        "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+        "title": "Fehlerquellen analysieren und beheben",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-TH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
+        "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
+        "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json` den Source-Goal-Anker `de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `f4df008d-fcd4-5ba3-821b-2ee8bd8a1180` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-016",
+      "issueId": "GSR-GAP-670286AA",
+      "priorityScore": 11,
+      "goalId": "670286aa-c29d-560c-8fca-755e35f5d437",
+      "shortKey": null,
+      "title": "Variablen und Parameter definieren",
+      "description": "Die lernende Person kann Variablen und Parameter passend wählen, ihre Bedeutung angeben und ggf. Wertebereiche festlegen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Mathematische Modelle bilden",
+        "Variablen und Parameter definieren"
+      ],
+      "proposedAnchor": {
+        "goalId": "07196e72-ba47-54bf-a096-3a79bbb67e23",
+        "title": "Beziehungen als Modellgleichungen aufstellen",
+        "sourceRationaleStatus": "classic_source_reviewed",
+        "jurisdiction": "DE-HE",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+        "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
+        "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
+        "topicCode": "G9-9.1",
+        "matchType": null
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json` den Source-Goal-Anker `he-math-seki-g9-9-1-03-6c2d7b55`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `670286aa-c29d-560c-8fca-755e35f5d437` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-017",
+      "issueId": "GSR-GAP-75DB9A04",
+      "priorityScore": 2,
+      "goalId": "75db9a04-d346-5968-953b-b20a8aea56c3",
+      "shortKey": null,
+      "title": "Medien passend auswählen",
+      "description": "Die lernende Person kann passende Medien auswählen (Tafel, Folie, digitales Tool) und deren Einsatz für Verständlichkeit begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Kommunikation reflektieren und präsentieren",
+        "Medien passend auswählen"
+      ],
+      "proposedAnchor": {
+        "goalId": "3019ed7f-8f74-5330-816c-17997156ed68",
+        "title": "Ergebnisse strukturiert präsentieren",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-BY",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sourceGoalId": "by-math-m13-3-f5091eb7-s02-69fef47054",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M13.3",
+        "topicCode": "M13.3",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 2,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` den Source-Goal-Anker `by-math-m13-3-f5091eb7-s02-69fef47054`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `75db9a04-d346-5968-953b-b20a8aea56c3` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-018",
+      "issueId": "GSR-GAP-619F29F5",
+      "priorityScore": 0,
+      "goalId": "619f29f5-7f44-5654-9692-01b250997d52",
+      "shortKey": null,
+      "title": "Entscheidung dokumentieren und bewerten (LK)",
+      "description": "Die lernende Person kann die gewählte Vorgehensweise dokumentieren, Grenzen benennen und die Entscheidung im Nachhinein bewerten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Effizienz von Verfahren beurteilen (LK)",
+        "Entscheidung dokumentieren und bewerten (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+        "title": "Aufwand und Genauigkeit vergleichen (LK)",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-NW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d",
+        "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19",
+        "topicCode": "NW-SEKII-PROCESS-PROBLEMLOSEN",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `619f29f5-7f44-5654-9692-01b250997d52` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-019",
+      "issueId": "GSR-GAP-E0ED8BB3",
+      "priorityScore": 0,
+      "goalId": "e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda",
+      "shortKey": null,
+      "title": "Verfahren begründet auswählen (LK)",
+      "description": "Die lernende Person kann für eine Aufgabe ein Verfahren begründet auswählen (z. B. symbolisch vs. numerisch, Tool vs. Hand) und die Entscheidung begründen.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Effizienz von Verfahren beurteilen (LK)",
+        "Verfahren begründet auswählen (LK)"
+      ],
+      "proposedAnchor": {
+        "goalId": "6fcd6a1a-88d3-59d2-9bf7-ee32babb773e",
+        "title": "Aufwand und Genauigkeit vergleichen (LK)",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-NW",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+        "sourceGoalId": "de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d",
+        "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 19",
+        "topicCode": "NW-SEKII-PROCESS-PROBLEMLOSEN",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json` den Source-Goal-Anker `de-nw-mathematik-sekii-klp-2023-nw-sekii-process-problemlosen-012-8bc7ef346d`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `e0ed8bb3-bf1c-5ac7-9022-2080e1b74dda` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    },
+    {
+      "batchItemId": "GSR-MAP-BATCH-01-020",
+      "issueId": "GSR-GAP-1EF06AC4",
+      "priorityScore": 0,
+      "goalId": "1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c",
+      "shortKey": null,
+      "title": "Kontrollrechnung mit Alternativmethode",
+      "description": "Die lernende Person kann Ergebnisse mit einer alternativen Rechnung oder einer Abschätzung kontrollieren und die Übereinstimmung bewerten.",
+      "phase": "Q4",
+      "area": "unknown",
+      "topicCode": null,
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Ergebnisse formal überprüfen",
+        "Kontrollrechnung mit Alternativmethode"
+      ],
+      "proposedAnchor": {
+        "goalId": "fbcb4ad3-786d-5365-94ba-b105660694a5",
+        "title": "Fehlerquellen analysieren und beheben",
+        "sourceRationaleStatus": "classic_source_partial",
+        "jurisdiction": "DE-TH",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+        "sourceGoalId": "de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3",
+        "sourceRef": "Lehrplan Mathematik Gymnasium, Thueringen 2018/2019, S. 34",
+        "topicCode": "TH-SEKII-2018-3-1-ARITHMETIK-ALGEBRA-032",
+        "matchType": "partial"
+      },
+      "coveredSiblingGoals": 1,
+      "reviewAction": "Pruefe in `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json` den Source-Goal-Anker `de-th-mathematik-sekii-lehrplan-gymnasium-2018-2025-th-sekii-2018-3-1-arithmetik-algebra-032-a6a26c4fd3`. Wenn der Quellenbeleg das Ziel fachlich direkt oder als sinnvoller Sammelbeleg traegt, ergaenze die passende Mapping-Review-Entscheidung um `1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c` oder splitte den Source-Beleg feiner.",
+      "nonAutomaticReason": "Der primaere Anker ist ein Kandidat aus einem belegten Geschwisterziel. Die fachliche Tragfaehigkeit fuer das Gap-Ziel muss vor einer Mapping-Aenderung explizit geprueft werden."
+    }
+  ]
+}

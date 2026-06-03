@@ -62,6 +62,14 @@ These files are generated snapshots or queues. Do not edit them as source of tru
   Generated source-rationale examples with live MEM/FWU-SPARQL matches for selected canonical Mathematik goals.
 - [Goal Source Rationales MEM/FWU Plain Examples](status/goal-source-rationales-mem-examples-plain.md)
   Plain-language source-rationale view with SkillPilot paths and concrete SPARQL verification queries.
+- [Goal Source Rationale Coverage](status/goal-source-rationale-coverage.md)
+  Generated coverage report and work queue for scaling Mathematik source rationales from the public runtime index to all relevant goals and relation texts.
+- [Goal Source Rationales Mathematik All-Relevant JSON](status/goal-source-rationales-math-all-relevant.json)
+  Machine-readable full Mathematik leaf-goal report with explicit classic-source gaps for uncovered goals.
+- [Goal Source Rationale Gap Issues](status/goal-source-rationale-gap-issues.md)
+  Generated human-review issue queue for classic-source gaps in the all-relevant Mathematik source-rationale report.
+- [Goal Source Rationale Mapping Batch 01](status/goal-source-rationale-mapping-batch-01.md)
+  First review batch of sibling-supported Mathematik source-rationale mapping candidates.
 - [Memory-Card Review Rollout](status/memory-card-review-rollout.md)
   Generated triage view for the remaining `CQR-302` rollout.
 - [M0 Remediation Plan](status/m0-remediation-plan.md)

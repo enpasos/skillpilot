@@ -5665,7 +5665,7 @@ public class LearnerControllerIntegrationTest {
                 { "DE-BW", "198", "198" },
                 { "DE-BY", "175", "175" },
                 { "DE-HB", "161", "161" },
-                { "DE-HE", "238", "261" },
+                { "DE-HE", "238", "262" },
                 { "DE-HH", "182", "182" },
                 { "DE-MV", "182", "182" },
                 { "DE-NI", "182", "182" },

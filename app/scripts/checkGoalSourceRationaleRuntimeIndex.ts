@@ -9,11 +9,11 @@ const repoRoot = resolve(scriptDir, '../..')
 const bundledIndexPath = 'app/src/data/goal-source-rationales-math-public.json'
 const publicIndexPath = 'app/public/data/goal-source-rationales-math-public.json'
 
-const minimumItemCount = 200
-const minimumClassicSourceRoutes = 200
+const minimumItemCount = 600
+const minimumClassicSourceRoutes = 600
 const minimumMemConsistentRoutes = 150
 
-const requiredPocGoals = [
+const requiredMemPocGoals = [
   'a075ae99-7669-563d-807a-f91b119c020a',
   '09f47964-2cd0-410e-93ee-9632b582fc91',
   'b1dcc191-d046-50de-984a-ee5c17157628',
@@ -66,11 +66,11 @@ function validateIndex(payload: Record<string, unknown>, failures: string[]): vo
   if (payload.schemaVersion !== 1) {
     failures.push(`${bundledIndexPath}: schemaVersion must be 1`)
   }
-  if (request.goalSelection !== 'source-backed') {
-    failures.push(`${bundledIndexPath}: request.goalSelection must be source-backed`)
+  if (request.goalSelection !== 'source-backed-relevant-leaves') {
+    failures.push(`${bundledIndexPath}: request.goalSelection must be source-backed-relevant-leaves`)
   }
   if (request.jurisdiction !== 'DE-BY') {
-    failures.push(`${bundledIndexPath}: request.jurisdiction must be DE-BY for the current PoC index`)
+    failures.push(`${bundledIndexPath}: request.jurisdiction must keep DE-BY as the MEM/FWU comparison preference`)
   }
   if (request.includeMemSparql !== true) {
     failures.push(`${bundledIndexPath}: request.includeMemSparql must be true`)
@@ -99,7 +99,7 @@ function validateIndex(payload: Record<string, unknown>, failures: string[]): vo
     failures.push(`${bundledIndexPath}: expected at least ${minimumClassicSourceRoutes} classic source routes`)
   }
   if (goalsWithoutClassicSourceRoute !== 0) {
-    failures.push(`${bundledIndexPath}: current PoC index must not contain classic source gaps`)
+    failures.push(`${bundledIndexPath}: public runtime index must not contain classic source gaps`)
   }
   if ((goalsWithMemSparqlConsistentRoute ?? 0) < minimumMemConsistentRoutes) {
     failures.push(`${bundledIndexPath}: expected at least ${minimumMemConsistentRoutes} MEM-consistent routes`)
@@ -112,10 +112,10 @@ function validateIndex(payload: Record<string, unknown>, failures: string[]): vo
     if (goalId !== null) itemsByGoalId.set(goalId, item)
   })
 
-  requiredPocGoals.forEach((goalId) => {
+  requiredMemPocGoals.forEach((goalId) => {
     const item = itemsByGoalId.get(goalId)
     if (!item) {
-      failures.push(`${bundledIndexPath}: missing required PoC goal ${goalId}`)
+      failures.push(`${bundledIndexPath}: missing required MEM/FWU PoC goal ${goalId}`)
       return
     }
     if (item.sourceRationaleStatus !== 'classic_source_reviewed') {

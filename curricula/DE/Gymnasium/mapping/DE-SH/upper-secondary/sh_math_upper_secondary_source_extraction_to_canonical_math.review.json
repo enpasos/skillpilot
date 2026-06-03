@@ -12,7 +12,7 @@
     "needsCanonicalGoal": 0,
     "totalSourceGoals": 274,
     "explicitNeedsCanonicalGoal": 0,
-    "notes": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction): all 274 official source goals are reviewed and content-covered by canonical mathematics goals. Exact/partial counts describe mapping shape only: 74 exact, 200 partial."
+    "notes": "DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction): all 274 official source goals are reviewed and content-covered by canonical mathematics goals. Exact/partial counts describe mapping shape only: 73 exact, 201 partial."
   },
   "mappings": [
     {
@@ -4168,6 +4168,12 @@
       "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T048-08caf53ecf"
     },
     {
+      "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T048-08caf53ecf",
+      "canonicalGoalId": "e8d810de-95ed-52d6-ab1f-0560398e35c0",
+      "matchType": "partial",
+      "reviewDecisionId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T048-08caf53ecf"
+    },
+    {
       "legacyGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T049-b9363e223a",
       "canonicalGoalId": "f7879354-1a82-4195-8e3c-a339a820439c",
       "matchType": "partial",
@@ -8116,6 +8122,28 @@
       "matchType": "exact"
     },
     {
+      "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
+      "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+      "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3630",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "7feaaebd-cc8d-522b-8b3a-ea22675c65dd"
+      ],
+      "rationale": "Ortskurven charakteristischer Punkte setzen voraus, dass charakteristische Punkte einer Funktionenschar, insbesondere Extrempunkte, parameterabhaengig bestimmt werden. Der SH-Bindungspunkt traegt dieses SkillPilot-Ziel daher anteilig; partial, weil die Quelle das Bestimmen parameterabhaengiger Extremstellen nicht als isoliertes Teilziel formuliert.",
+      "courseLevelDecision": "GK_LK",
+      "courseLevelRationale": "SH fuehrt diesen Bindungspunkt in den gemeinsamen Oberstufenanforderungen ohne GK/LK-Trennung; die kanonische Ziel-ID wird hier als anteilig belegtes SH-GK/LK-Ziel behandelt.",
+      "reviewedAt": "2026-06-03",
+      "reviewer": "codex",
+      "evidence": {
+        "method": "source-rationale-gap-reviewed",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+        "gapIssueIds": [
+          "GSR-GAP-7FEAAEBD"
+        ]
+      },
+      "matchType": "partial"
+    },
+    {
       "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T078-64f7488cf5",
       "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T078",
       "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 4: Funktionaler Zusammenhang, Zeile 3632",
@@ -9262,16 +9290,17 @@
       "sourceSpan": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, Leitidee 5: Daten und Zufall, Zeile 3805",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a"
+        "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+        "e8d810de-95ed-52d6-ab1f-0560398e35c0"
       ],
-      "rationale": "Fakultaet und Binomialkoeffizient ist passgenau durch das kanonische Mathematikziel abgedeckt.",
-      "reviewedAt": "2026-05-08",
+      "rationale": "Fakultaet und Binomialkoeffizient ist passgenau durch das kanonische Mathematikziel zu kombinatorischer Deutung und Berechnung abgedeckt. Der genannte Binomialkoeffizient traegt zusaetzlich anteilig das Ziel, Binomialkoeffizienten als abkuerzende Schreibweise fuer Kombinationen zu verwenden; partial, weil der SH-Bindungspunkt die Anwendungssituation nicht weiter ausformuliert.",
+      "reviewedAt": "2026-06-03",
       "reviewer": "codex",
       "evidence": {
         "method": "official-source-extraction-m3-review",
         "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json"
       },
-      "matchType": "exact"
+      "matchType": "partial"
     },
     {
       "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l5-daten-und-zufall-T049-b9363e223a",

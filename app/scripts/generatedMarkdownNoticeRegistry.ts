@@ -138,6 +138,62 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   },
   {
     artifactPaths: [
+      'docs/qa-ci/status/goal-source-rationale-coverage.md',
+      'docs/qa-ci/status/goal-source-rationale-coverage.json',
+    ],
+    generatedBy: 'app/scripts/reportGoalSourceRationaleCoverage.ts',
+    role: 'Coverage report and work queue for scaling Mathematik source rationales from the public runtime index to all relevant goals and relation texts.',
+    sourceOfTruth: [
+      'app/scripts/reportGoalSourceRationaleCoverage.ts',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+      'app/src/data/goal-source-rationales-math-public.json',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-source-rationale-coverage',
+  },
+  {
+    artifactPaths: [
+      'docs/qa-ci/status/goal-source-rationales-math-all-relevant.json',
+    ],
+    generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
+    role: 'Machine-readable all-relevant Mathematik source-rationale report with explicit classic-source gaps for uncovered leaf goals.',
+    sourceOfTruth: [
+      'app/scripts/generateGoalSourceRationales.ts',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+      'curricula/DE/Gymnasium/mapping/',
+      'curricula/DE/Gymnasium/input/',
+      'curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-source-rationales:math-all-relevant',
+  },
+  {
+    artifactPaths: [
+      'docs/qa-ci/status/goal-source-rationale-gap-issues.md',
+      'docs/qa-ci/status/goal-source-rationale-gap-issues.json',
+    ],
+    generatedBy: 'app/scripts/reportGoalSourceRationaleGapIssues.ts',
+    role: 'Human-review issue queue for classic-source gaps in the all-relevant Mathematik source-rationale report.',
+    sourceOfTruth: [
+      'app/scripts/reportGoalSourceRationaleGapIssues.ts',
+      'docs/qa-ci/status/goal-source-rationales-math-all-relevant.json',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-source-rationale-gap-issues',
+  },
+  {
+    artifactPaths: [
+      'docs/qa-ci/status/goal-source-rationale-mapping-batch-01.md',
+      'docs/qa-ci/status/goal-source-rationale-mapping-batch-01.json',
+    ],
+    generatedBy: 'app/scripts/reportGoalSourceRationaleMappingBatch.ts',
+    role: 'First review batch of sibling-supported Mathematik source-rationale mapping candidates.',
+    sourceOfTruth: [
+      'app/scripts/reportGoalSourceRationaleMappingBatch.ts',
+      'docs/qa-ci/status/goal-source-rationale-gap-issues.json',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-source-rationale-mapping-batch-01',
+  },
+  {
+    artifactPaths: [
       'docs/qa-ci/status/memory-card-review-rollout.md',
     ],
     generatedBy: 'app/scripts/reportMemoryCardReviewRollout.ts',
