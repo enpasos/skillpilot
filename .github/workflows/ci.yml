@@ -3,20 +3,24 @@ name: CI
 on:
   push:
     branches: [ main ]
-    paths-ignore:
-      - 'README.md' 
-      - 'AGENTS.md' 
-      - 'docs/**' 
-      - 'sandbox/**' 
-      - 'tmp/**'  
+    paths:
+      - '**'
+      - '!README.md'
+      - '!AGENTS.md'
+      - '!docs/**'
+      - 'docs/qa-ci/status/**'
+      - '!sandbox/**'
+      - '!tmp/**'
   pull_request:
     branches: [ main ]
-    paths-ignore:
-      - 'README.md'
-      - 'AGENTS.md' 
-      - 'docs/**' 
-      - 'sandbox/**' 
-      - 'tmp/**'   
+    paths:
+      - '**'
+      - '!README.md'
+      - '!AGENTS.md'
+      - '!docs/**'
+      - 'docs/qa-ci/status/**'
+      - '!sandbox/**'
+      - '!tmp/**'
      
 permissions:
   contents: read
