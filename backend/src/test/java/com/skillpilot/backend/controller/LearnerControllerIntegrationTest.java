@@ -5665,13 +5665,13 @@ public class LearnerControllerIntegrationTest {
                 { "DE-BW", "198", "198" },
                 { "DE-BY", "175", "175" },
                 { "DE-HB", "161", "161" },
-                { "DE-HE", "238", "262" },
+                { "DE-HE", "240", "264" },
                 { "DE-HH", "182", "182" },
                 { "DE-MV", "182", "182" },
                 { "DE-NI", "182", "182" },
                 { "DE-NW", "182", "182" },
-                { "DE-RP", "122", "122" },
-                { "DE-SH", "179", "179" },
+                { "DE-RP", "121", "121" },
+                { "DE-SH", "181", "181" },
                 { "DE-SL", "182", "182" },
                 { "DE-SN", "182", "182" },
                 { "DE-ST", "182", "182" },
@@ -5709,12 +5709,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "645", "647" },
-                { "DE-HE", "LK", "750", "752" },
-                { "DE-RP", "GK", "529", "529" },
-                { "DE-RP", "LK", "624", "624" },
-                { "DE-SH", "GK", "567", "567" },
-                { "DE-SH", "LK", "650", "650" }
+                { "DE-HE", "GK", "647", "649" },
+                { "DE-HE", "LK", "752", "754" },
+                { "DE-RP", "GK", "528", "528" },
+                { "DE-RP", "LK", "623", "623" },
+                { "DE-SH", "GK", "569", "569" },
+                { "DE-SH", "LK", "652", "652" }
         };
 
         for (String[] scope : scopes) {

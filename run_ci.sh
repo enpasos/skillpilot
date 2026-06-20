@@ -1,5 +1,24 @@
 #!/bin/bash
-set -e
+set -euo pipefail
+
+failed_command=""
+failed_line=""
+
+on_error() {
+  local exit_code=$?
+  failed_command=$BASH_COMMAND
+  failed_line=${BASH_LINENO[0]}
+  echo ""
+  echo "=========================================="
+  echo "CI RESULT: FAILED"
+  echo "Exit code: ${exit_code}"
+  echo "Failed at line: ${failed_line}"
+  echo "Failed command: ${failed_command}"
+  echo "=========================================="
+  exit "$exit_code"
+}
+
+trap on_error ERR
 
 echo "=========================================="
 echo "Running Frontend CI (app)"
@@ -109,5 +128,5 @@ cd ..
 
 echo ""
 echo "=========================================="
-echo "✅ All CI checks passed successfully!"
+echo "CI RESULT: PASSED"
 echo "=========================================="

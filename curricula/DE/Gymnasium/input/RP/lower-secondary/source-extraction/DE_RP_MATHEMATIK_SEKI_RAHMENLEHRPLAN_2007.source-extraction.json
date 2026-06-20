@@ -28,7 +28,7 @@
   ],
   "method": {
     "passageExtraction": "completed: official Rheinland-Pfalz Sek-I general mathematical competencies and Leitideen tables were extracted from the local 2007 Rahmenlehrplan PDF for Orientierungsstufe, Klassenstufen 7/8 and Klassenstufen 9/10 Mittlerer Schulabschluss; the Berufsreife-only chapter is intentionally excluded for the Gymnasium mapping lane.",
-    "sourceGoalExtraction": "completed: 253 source goals were derived from official K1-K6 process bullets, Leitideen content-table rows and subitems; the old 30-goal snapshot is diagnostic only."
+    "sourceGoalExtraction": "completed: 255 source goals were derived from official K1-K6 process bullets, Leitideen content-table rows and subitems; the old 30-goal snapshot is diagnostic only."
   },
   "expectedTopicCodes": [
     "RP-SEKI-PROCESS-K1",
@@ -105,7 +105,7 @@
             "id": "source-goals-derived-from-passages",
             "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
             "passed": true,
-            "details": "253 source goals from official K1-K6 process bullets, Leitideen content-table rows and subitems; old snapshot goals are not counted."
+            "details": "255 source goals from official K1-K6 process bullets, Leitideen content-table rows and subitems; old snapshot goals are not counted."
           },
           {
             "id": "source-goal-ids-unique",
@@ -133,7 +133,7 @@
             "id": "mapping-2-complete",
             "label": "MAPPING-2 abgeschlossen",
             "passed": true,
-            "details": "253 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+            "details": "255 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
           },
           {
             "id": "m3-review-file-present",
@@ -145,19 +145,19 @@
             "id": "m3-review-decisions-reference-source-goals",
             "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
             "passed": true,
-            "details": "Reviewed Source-Ziele: 253/253."
+            "details": "Reviewed Source-Ziele: 255/255."
           },
           {
             "id": "m3-all-source-goals-reviewed",
             "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
             "passed": true,
-            "details": "253/253 Source-Ziele reviewed; offen: 0."
+            "details": "255/255 Source-Ziele reviewed; offen: 0."
           },
           {
             "id": "m3-all-source-goals-covered",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
-            "details": "Abgedeckt: 253/253; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "details": "Abgedeckt: 255/255; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
           }
         ]
       }
@@ -616,13 +616,15 @@
       "sourcePath": "curricula/DE/Gymnasium/input/RP/Mathematik_Sekundarstufe_I.pdf",
       "sourceDocumentKey": "RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007",
       "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 98",
-      "text": "Klassenstufen 9 und 10 MSA L3 Raum und Form\n- Ähnliche Figuren durch Vergrößern bzw. V kleinern erzeugen\n- Auswirkungen maßstabsgetreuer Vergrößerungen und Verkleinerungen auf Winkelgr ßen, Streckenlängen und Flächeninhalt u suchen und beschreiben\n- Den Satz von Pythagoras begründen und in\n- Sachsituationen anwenden\n- Schrägbilder und Netze zeichnen und Bezi hungen herstellen Pyramide Kegel",
+      "text": "Klassenstufen 9 und 10 MSA L3 Raum und Form\n- Ähnliche Figuren durch Vergrößern bzw. V kleinern erzeugen\n- Auswirkungen maßstabsgetreuer Vergrößerungen und Verkleinerungen auf Winkelgr ßen, Streckenlängen und Flächeninhalt u suchen und beschreiben\n- Den Satz von Pythagoras begründen und in\n- Sachsituationen anwenden\n- Schrägbilder und Netze zeichnen und Bezi hungen herstellen Pyramide Kegel\n- Den Kathetensatz oder den Höhensatz beweisen\n- Sätze aus der Satzgruppe des Pythagoras in Sachsituationen anwenden",
       "sourceGoalIds": [
         "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-001-2c25713ab1",
         "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-002-d863e3a251",
         "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-003-79eabca01e",
         "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-004-8b3450d82a",
-        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-005-ed344f960e"
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-005-ed344f960e",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-006-hoehensatz-kathetensatz-beweisen-968ef95bbf",
+        "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-007-satzgruppe-pythagoras-sachsituationen-073fedc8f5"
       ]
     },
     {
@@ -5753,6 +5755,46 @@
         "rpStage:klasse9-10-msa",
         "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
       ]
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-006-hoehensatz-kathetensatz-beweisen-968ef95bbf",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form",
+      "topicCode": "RP-SEKI-910-L3-RAUM-FORM",
+      "sourceSpan": "S. 100, Klassenstufen 9 und 10 MSA L3 Raum und Form",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 100",
+      "category": "content-standard-with-tier",
+      "granularity": "tableContentRow",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "rpStage:klasse9-10-msa",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ],
+      "bulletIndex": 6,
+      "title": "Den Kathetensatz oder den Höhensatz beweisen",
+      "description": "Die lernende Person kann den Kathetensatz oder den Höhensatz beweisen.",
+      "sourceText": "Den Kathetensatz oder den Höhensatz beweisen"
+    },
+    {
+      "id": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form-007-satzgruppe-pythagoras-sachsituationen-073fedc8f5",
+      "passageId": "de-rp-mathematik-seki-rahmenlehrplan-2007-rp-seki-910-l3-raum-form",
+      "topicCode": "RP-SEKI-910-L3-RAUM-FORM",
+      "sourceSpan": "S. 100, Klassenstufen 9 und 10 MSA L3 Raum und Form",
+      "sourceRef": "Rahmenlehrplan Mathematik Klassenstufen 5 bis 9/10, Rheinland-Pfalz, Mai 2007, S. 100",
+      "category": "content-standard-with-tier",
+      "granularity": "tableContentRow",
+      "courseLevel": "GK_LK",
+      "tags": [
+        "source:DE-RP",
+        "stage:SekI",
+        "rpStage:klasse9-10-msa",
+        "sourceDocument:RP_GYM_SEKI_MATHEMATIK_RAHMENLEHRPLAN_2007"
+      ],
+      "bulletIndex": 7,
+      "title": "Sätze aus der Satzgruppe des Pythagoras in Sachsituationen anwenden",
+      "description": "Die lernende Person kann Sätze aus der Satzgruppe des Pythagoras in Sachsituationen anwenden.",
+      "sourceText": "Sätze aus der Satzgruppe des Pythagoras in Sachsituationen anwenden"
     }
   ]
 }
