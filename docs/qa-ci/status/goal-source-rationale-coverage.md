@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/src/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-06-15T08:26:03.146Z
+Generated: 2026-06-20T07:39:16.205Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,27 +16,27 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1038 |
-| Atomare Blattleernziele | 826 |
-| Davon relevant fuer Quellenbegruendung | 750 |
+| Alle Mathematik-Ziele | 1040 |
+| Atomare Blattleernziele | 828 |
+| Davon relevant fuer Quellenbegruendung | 752 |
 | Memory-/Nicht-Content-Blattziele | 76 |
 | Clusterziele | 212 |
-| Runtime-Quellenbegruendungen | 697 |
-| Runtime-Ziele mit klassischem Quellenweg | 697 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 184 |
-| Relevante Blattziele mit klassischem Quellenweg | 697/750 (92.9%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 184/750 (24.5%) |
+| Runtime-Quellenbegruendungen | 699 |
+| Runtime-Ziele mit klassischem Quellenweg | 699 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 185 |
+| Relevante Blattziele mit klassischem Quellenweg | 699/752 (93.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 185/752 (24.6%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/212 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 212 |
-| contains-Relationen mit Begruendungstext | 0/1143 |
-| requires-Relationen mit Begruendungstext | 0/2433 |
+| contains-Relationen mit Begruendungstext | 0/1147 |
+| requires-Relationen mit Begruendungstext | 0/2441 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 697 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 699 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
@@ -49,9 +49,9 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Q3 | 68 | 66 (97.1%) | 11 (16.2%) | 2 |
 | J10 | 56 | 56 (100.0%) | 19 (33.9%) | 0 |
 | Q1 | 47 | 47 (100.0%) | 10 (21.3%) | 0 |
-| J9 | 42 | 42 (100.0%) | 16 (38.1%) | 0 |
+| J9 | 44 | 44 (100.0%) | 16 (36.4%) | 0 |
 | J7 | 39 | 39 (100.0%) | 7 (17.9%) | 0 |
-| J8 | 36 | 36 (100.0%) | 12 (33.3%) | 0 |
+| J8 | 36 | 36 (100.0%) | 13 (36.1%) | 0 |
 | J6 | 35 | 35 (100.0%) | 17 (48.6%) | 0 |
 | J5 | 32 | 32 (100.0%) | 19 (59.4%) | 0 |
 | GLOBAL | 7 | 7 (100.0%) | 2 (28.6%) | 0 |
@@ -64,7 +64,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Analysis | 124 | 118 (95.2%) | 35 (28.2%) | 6 |
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | LinearAlgebra | 70 | 70 (100.0%) | 5 (7.1%) | 0 |
-| Geometry | 67 | 67 (100.0%) | 23 (34.3%) | 0 |
+| Geometry | 69 | 69 (100.0%) | 24 (34.8%) | 0 |
 | Algebra | 51 | 51 (100.0%) | 28 (54.9%) | 0 |
 | Arithmetic | 42 | 42 (100.0%) | 20 (47.6%) | 0 |
 | Data | 9 | 9 (100.0%) | 8 (88.9%) | 0 |
@@ -223,7 +223,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Geometriesoftware zur Raumorientierung nutzen (canonical_math_q2_use_geometry_software_for_spatial_orientation) | Q2 | LinearAlgebra | CANONICAL.MATH.SEK2.Q2.2.GEOMETRY_SOFTWARE_SPATIAL_ORIENTATION | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geometriesoftware zur Raumorientierung nutzen |
 | Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen | Q2 | unknown | - | Mathematik > Analytische Geometrie, lineare Algebra und vertiefte Analysis > Raum, Matrizen und lineare Modelle (Sek II) > Punkte, Vektoren und Bewegungen im Raum > Geradlinige Bewegungen mit Orts- und Geschwindigkeitsvektoren untersuchen |
 
-Weitere 433 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Cluster Direct Rationale Pending
 
@@ -296,5 +296,5 @@ Weitere 152 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/src/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-06-03T14:31:46.535Z
+- Runtime index generated: 2026-06-20T07:39:07.339Z
 
