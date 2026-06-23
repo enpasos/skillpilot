@@ -90,6 +90,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 ## Platform Notes
 
 - [Auto-Update Mechanism Architecture](auto-update.md)
+- [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
 - [Working with Liquibase in SkillPilot](liquibase.md)
 
 ## Maintenance
