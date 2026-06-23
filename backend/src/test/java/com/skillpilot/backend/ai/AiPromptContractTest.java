@@ -95,6 +95,40 @@ class AiPromptContractTest {
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "Start Exercise");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.de.md"),
+                "chooseMemoryMode",
+                "Verified-Recall",
+                "kein generisches `[Start Exercise]`",
+                "[Im Cockpit üben]");
+        assertDoesNotContainFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.de.md"),
+                "Hat dieses Ziel `srs-deck:` oder `extendedData`?");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.en.md"),
+                "chooseMemoryMode",
+                "Verified Recall",
+                "no generic `[Start Exercise]`",
+                "[Practice in the Cockpit]");
+        assertDoesNotContainFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.en.md"),
+                "Does this goal have `srs-deck:` or `extendedData`?");
+    }
+
+    @Test
+    void promptsDoNotTurnFlashcardVerificationFlowErrorsIntoGenericSaveErrors() throws Exception {
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "error_handling.de.md"),
+                "chooseMemoryMode",
+                "kein Nachweis",
+                "Verified-Recall-Actions",
+                "Standardformulierung");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "error_handling.en.md"),
+                "chooseMemoryMode",
+                "not evidence",
+                "Verified Recall actions",
+                "standard phrasing");
     }
 
     @Test
@@ -125,6 +159,13 @@ class AiPromptContractTest {
         String text = Files.readString(path);
         for (String fragment : fragments) {
             assertThat(text).containsIgnoringCase(fragment);
+        }
+    }
+
+    private static void assertDoesNotContainFragments(Path path, String... fragments) throws IOException {
+        String text = Files.readString(path);
+        for (String fragment : fragments) {
+            assertThat(text).doesNotContain(fragment);
         }
     }
 

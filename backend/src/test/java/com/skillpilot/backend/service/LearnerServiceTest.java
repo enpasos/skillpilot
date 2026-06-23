@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -266,6 +268,55 @@ public class LearnerServiceTest {
                 });
         assertThat(state.nextAllowedActions()).contains("chooseMemoryMode", "startVerifiedRecall");
         assertThat(state.nextAllowedActions()).doesNotContain("setMastery");
+    }
+
+    @Test
+    @Transactional
+    void verifiedRecallForSekOneFlashcardsStartsAndControlsSrsMastery() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
+                .isZero();
+
+        var prompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false));
+
+        assertThat(prompt.status()).isEqualTo("ready");
+        assertThat(prompt.goalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(prompt.goalTitle()).isEqualTo("Lernkarten - Sek I Kernformeln");
+        assertThat(prompt.totalCards()).isPositive();
+        assertThat(prompt.verifiedCards()).isZero();
+        assertThat(prompt.pendingCards()).isEqualTo(prompt.totalCards());
+        assertThat(prompt.cardId()).isNotBlank();
+        assertThat(prompt.prompt()).isNotBlank();
+
+        for (int i = 0; i < prompt.totalCards(); i++) {
+            assertThat(prompt.cardId()).isNotBlank();
+            var result = learnerService.recordVerifiedRecallResult(
+                    learnerId,
+                    "de",
+                    new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.cardId(), true, "ok"));
+            assertThat(result.passed()).isTrue();
+            prompt = result.next();
+        }
+
+        assertThat(prompt.status()).isEqualTo("complete");
+        assertThat(prompt.pendingCards()).isZero();
+        assertThat(learnerService.getMastery(learnerId).get(SEK1_CORE_FORMULAS_FLASHCARDS_ID)).isEqualTo(1.0);
     }
 
     @Test
