@@ -3,7 +3,8 @@
 This document defines **when chat teaching is prohibited**  
 and **how to link directly into the SkillPilot Web App instead**.
 
-Deep Linking **always takes precedence** over explanations in the chat.
+Deep Linking **always takes precedence** over explanations in the chat,
+except when the current state explicitly requires `chooseMemoryMode`.
 
 The System Instruction enforces this rule abstractly.
 This document describes **the didactic consequence**.
@@ -15,8 +16,9 @@ This document describes **the didactic consequence**.
 **A Deep Link may ONLY be output if the learning goal in the JSON
 contains one of the following technical markers:**
 
-1.  A tag that starts with **`srs-deck:`** (e.g., `srs-deck:eng_400_foundation`).
-2.  The field **`extendedData`** is present and filled (e.g., with `vocabularySource`).
+1.  The field **`extendedData`** is present and filled (e.g., with `vocabularySource`).
+2.  A tag that starts with **`srs-deck:`** (e.g., `srs-deck:de_gymnasium_math_formulas`),
+    but only under the special rules in section 2.
 
 **If neither of these markers is present:**
 - Deep linking is **prohibited**.
@@ -25,7 +27,28 @@ contains one of the following technical markers:**
 
 ---
 
-## 2. Exception: Exam Mode
+## 2. Special Case: Flashcard Mode
+
+If the current state returns `stateMachine.requiredAction = chooseMemoryMode`,
+an `srs-deck:` goal is **not** an automatic deep-link case.
+
+Mandatory behavior:
+- If the learner wants practice: output the cockpit link.
+- If the learner wants to be checked, quizzed, asked, or tested:
+  call `verified-recall/start` and run the verification in GPT.
+- If no direction was given: briefly ask them to choose between cockpit practice and GPT verification.
+
+Mastery for flashcards is achieved **only after passing Verified Recall**,
+not by merely opening the cockpit drill.
+
+Prohibited:
+- no generic `[Start Exercise]`
+- no `setMastery` for flashcards
+- no save-error message merely because the wrong flow was chosen
+
+---
+
+## 3. Exception: Exam Mode
 
 If the **confirmed active goal** has `nodeKind = "exam"` **or** contains `examData`, **the deep link to the task must be displayed**, even if no markers are present.
 
@@ -44,23 +67,30 @@ The rules from section 1 do **not** apply here.
 
 ---
 
-## 3. Decision & Action (Short)
+## 4. Decision & Action (Short)
 
 **Before every explanation**, check:
-> "Does this goal have `srs-deck:` or `extendedData`?"
+> "Does the state require `chooseMemoryMode`?"
 
-- **YES →** Deep Link **immediately**, otherwise **nothing** (no teaching, no questions).
-- **NO →** Chat teaching is **mandatory**.
+- **YES →** Flashcard Mode from section 2, no generic deep linking.
+- **NO →** Check: does this goal have `extendedData`?
+  - **YES →** Deep Link **immediately**, otherwise **nothing** (no teaching, no questions).
+  - **NO →** Chat teaching is **mandatory**.
 
 ---
 
-## 4. Magic-Link Mandatory
+## 5. Magic-Link Mandatory
 
-All app links are output as a **Magic Link**:
+All app links are output as a **Magic Link**.
 
-Example:
+Example for specialized app training:
 ```md
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
+```
+
+Example for flashcard cockpit practice:
+```md
+[Practice in the Cockpit](https://skillpilot.com/?l=...&goal=...)
 ```
 
 Rules:
@@ -75,7 +105,7 @@ Rules:
 
 ---
 
-## 5. Phrasing Standard in Chat
+## 6. Phrasing Standard in Chat
 
 Language:
 - Short
@@ -102,9 +132,15 @@ We practice this most effectively with the interactive learning coach:
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
+Flashcard example without a mode preference:
+```md
+Learning goal: Flashcards - lower secondary core formulas
+Do you want to practice in the Cockpit or be verified here in GPT?
+```
+
 ---
 
-## 6. Prohibited Chat Actions
+## 7. Prohibited Chat Actions
 
 For deep-link goals, the following are **prohibited**: explaining, diagnosing, tasks, tips, alternatives.  
 The **training link** is the **only** permitted output  
@@ -112,7 +148,7 @@ The **training link** is the **only** permitted output
 
 ---
 
-## 7. Transition after the App
+## 8. Transition after the App
 
 After returning from the app:
 

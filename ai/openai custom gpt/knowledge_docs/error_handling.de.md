@@ -56,6 +56,25 @@ Pflichtformulierung:
 
 Nicht nach der SkillPilot-ID fragen. Sie wird nur auf skillpilot.com eingegeben, nicht im Chat.
 
+### 2.3 Ausnahme: Lernkartenmodus falsch verzweigt
+
+Wenn der aktuelle Zustand `chooseMemoryMode` verlangt und die lernende Person
+„prüfen“, „abfragen“, „testen“ oder ähnlich sagt, ist der korrekte Ablauf
+`verified-recall/start` → Lernenden-Antwort → `verified-recall/answer` → `verified-recall/result`.
+
+Ein Fehler nach einem anderen Tool-Call in diesem Zustand ist **kein Nachweis**,
+dass die Umgebung nicht speichern kann.
+
+In diesem Fall:
+1. `getLearnerState` einmal neu aufrufen.
+2. Wenn weiterhin `chooseMemoryMode` gilt, den Verified-Recall-Ablauf starten.
+3. **Nicht** die Standardformulierung aus Abschnitt 4 verwenden.
+
+Wenn die Verified-Recall-Actions im Custom GPT nicht verfügbar sind:
+- keine Prüfung simulieren
+- kein Mastery behaupten
+- knapp sagen, dass die GPT-Konfiguration für Lernkarten-Prüfung noch aktualisiert werden muss
+
 ---
 
 ## 3. Verhalten im Fehlerfall
@@ -83,6 +102,7 @@ Empfohlene Standardformulierung (Client-Fehler, 4xx):
 > Bitte nutze einen Desktop-Browser oder aktualisiere die App, dann funktioniert das korrekt.“
 
 Diese Standardformulierung gilt **nicht** für eine abgelaufene SkillPilot-Session. Bei `410`/„Chat session has expired“ immer die spezifische Anleitung aus Abschnitt 2.2 verwenden.
+Sie gilt ebenfalls **nicht** für den Lernkartenmodus aus Abschnitt 2.3.
 
 Empfohlene Standardformulierung (sonstige Fehler):
 > „Es ist gerade ein technischer Fehler aufgetreten. Ich kann den Lernstand nicht zuverlässig speichern.“

@@ -56,6 +56,25 @@ Mandatory phrasing:
 
 Do not ask for the SkillPilot ID. It is entered only on skillpilot.com, not in chat.
 
+### 2.3 Exception: Flashcard Mode Routed Wrongly
+
+If the current state requires `chooseMemoryMode` and the learner says
+"check", "quiz", "ask", "test me", or similar, the correct flow is
+`verified-recall/start` -> learner answer -> `verified-recall/answer` -> `verified-recall/result`.
+
+An error after a different tool call in this state is **not evidence**
+that the environment cannot save progress.
+
+In this case:
+1. Call `getLearnerState` once.
+2. If `chooseMemoryMode` still applies, start the Verified Recall flow.
+3. **Do not** use the standard phrasing from section 4.
+
+If the Verified Recall actions are not available in the Custom GPT:
+- do not simulate verification
+- do not claim mastery
+- briefly say that the GPT configuration for flashcard verification still needs to be updated
+
 ---
 
 ## 3. Behavior in Case of Error
@@ -83,6 +102,7 @@ Recommended standard phrasing (Client error, 4xx):
 > Please use a desktop browser or update the app, then it will work correctly."
 
 This standard phrasing does **not** apply to an expired SkillPilot session. For `410` / "Chat session has expired", always use the specific guidance from section 2.2.
+It also does **not** apply to Flashcard Mode from section 2.3.
 
 Recommended standard phrasing (Other errors):
 > "A technical error has just occurred. I cannot save the learning progress reliably right now."

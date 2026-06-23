@@ -34,6 +34,25 @@ class DeckResourceServiceTest {
     }
 
     @Test
+    void resolveDeckResource_acceptsCanonicalFlashcardDeckNames() throws Exception {
+        Path deckDir = tempDir.resolve("DE/Gymnasium/Test/json");
+        Files.createDirectories(deckDir);
+        Path deckFile = deckDir.resolve("de_gymnasium_math_flashcards_seki_core.de.json");
+        Files.writeString(deckFile, "{ \"cards\": [] }");
+
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        DeckResourceService service = new DeckResourceService(properties);
+
+        Resource resource = service.resolveDeckResource("/data/de_gymnasium_math_flashcards_seki_core.de.json");
+
+        assertThat(resource).isNotNull();
+        assertThat(resource.exists()).isTrue();
+        assertThat(resource.getFile().toPath().toAbsolutePath().normalize())
+                .isEqualTo(deckFile.toAbsolutePath().normalize());
+    }
+
+    @Test
     void resolveDeckResource_rejectsInvalidFileNames() {
         LandscapeProperties properties = new LandscapeProperties();
         properties.setDirectory(tempDir.toString());
@@ -44,4 +63,3 @@ class DeckResourceServiceTest {
         assertThat(resource).isNull();
     }
 }
-

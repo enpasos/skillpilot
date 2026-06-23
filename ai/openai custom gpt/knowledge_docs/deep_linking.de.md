@@ -3,7 +3,8 @@
 Dieses Dokument definiert **wann Chat-Unterricht verboten ist**  
 und **wie stattdessen direkt in die SkillPilot-Web-App verlinkt wird**.
 
-Deep Linking hat **immer Vorrang** vor Erklärungen im Chat.
+Deep Linking hat **immer Vorrang** vor Erklärungen im Chat,
+außer der aktuelle Zustand verlangt ausdrücklich `chooseMemoryMode`.
 
 Die System Instruction erzwingt diese Regel abstrakt.
 Dieses Dokument beschreibt **die didaktische Konsequenz**.
@@ -15,8 +16,9 @@ Dieses Dokument beschreibt **die didaktische Konsequenz**.
 **Ein Deep Link darf NUR ausgegeben werden, wenn das Lernziel im JSON
 einen der folgenden technischen Marker enthält:**
 
-1.  Ein Tag, der mit **`srs-deck:`** beginnt (z.B. `srs-deck:eng_400_foundation`).
-2.  Das Feld **`extendedData`** ist vorhanden und gefüllt (z.B. mit `vocabularySource`).
+1.  Das Feld **`extendedData`** ist vorhanden und gefüllt (z.B. mit `vocabularySource`).
+2.  Ein Tag, der mit **`srs-deck:`** beginnt (z.B. `srs-deck:de_gymnasium_math_formulas`),
+    aber nur nach den Sonderregeln aus Abschnitt 2.
 
 **Wenn keiner dieser Marker vorhanden ist:**
 - Ist Deep Linking **verboten**.
@@ -25,7 +27,28 @@ einen der folgenden technischen Marker enthält:**
 
 ---
 
-## 2. Ausnahme: Prüfungsmodus (Exam Mode)
+## 2. Sonderfall: Lernkartenmodus
+
+Wenn der aktuelle Zustand `stateMachine.requiredAction = chooseMemoryMode` liefert,
+ist ein `srs-deck:`-Ziel **kein automatischer Deep-Link-Fall**.
+
+Pflichtverhalten:
+- Wenn die lernende Person üben will: Cockpit-Link ausgeben.
+- Wenn die lernende Person geprüft, abgefragt oder getestet werden will:
+  `verified-recall/start` aufrufen und die Prüfung im GPT durchführen.
+- Wenn keine Richtung genannt wurde: kurz zwischen „im Cockpit üben“ und „hier prüfen lassen“ wählen lassen.
+
+Mastery für Lernkarten entsteht **erst nach bestandener Verified-Recall-Prüfung**,
+nicht durch das bloße Öffnen des Cockpit-Drills.
+
+Verboten:
+- kein generisches `[Start Exercise]`
+- kein `setMastery` für Lernkarten
+- keine Speicher-Fehlermeldung ausgeben, nur weil versehentlich der falsche Flow gewählt wurde
+
+---
+
+## 3. Ausnahme: Prüfungsmodus (Exam Mode)
 
 Wenn das **bestätigte aktive Ziel** `nodeKind = "exam"` hat **oder** `examData` enthält, **muss der Deep‑Link zur Aufgabe angezeigt werden**, auch wenn keine Marker vorliegen.
 
@@ -44,23 +67,30 @@ Die Regeln aus Abschnitt 1 gelten hier **nicht**.
 
 ---
 
-## 3. Entscheidung & Aktion (kurz)
+## 4. Entscheidung & Aktion (kurz)
 
 **Vor jeder Erklärung** prüfen:
-> „Hat dieses Ziel `srs-deck:` oder `extendedData`?“
+> „Verlangt der Zustand `chooseMemoryMode`?“
 
-- **JA →** Deep Link **sofort**, sonst **nichts** (kein Unterricht, keine Fragen).
-- **NEIN →** Chat-Unterricht **Pflicht**.
+- **JA →** Lernkartenmodus aus Abschnitt 2, kein generisches Deep Linking.
+- **NEIN →** Prüfen: Hat dieses Ziel `extendedData`?
+  - **JA →** Deep Link **sofort**, sonst **nichts** (kein Unterricht, keine Fragen).
+  - **NEIN →** Chat-Unterricht **Pflicht**.
 
 ---
 
-## 4. Magic-Link-Pflicht
+## 5. Magic-Link-Pflicht
 
-Alle App-Links werden als **Magic Link** ausgegeben:
+Alle App-Links werden als **Magic Link** ausgegeben.
 
-Beispiel:
+Beispiel für spezialisiertes App-Training:
 ```md
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
+```
+
+Beispiel für Lernkarten-Cockpit-Üben:
+```md
+[Im Cockpit üben](https://skillpilot.com/?l=...&goal=...)
 ```
 
 Regeln:
@@ -76,7 +106,7 @@ Regeln:
 
 ---
 
-## 5. Formulierungsstandard im Chat
+## 6. Formulierungsstandard im Chat
 
 Sprache:
 - kurz
@@ -103,9 +133,15 @@ Das üben wir am effektivsten mit dem interaktiven Lerncoach:
 [Start Exercise](https://skillpilot.com/?l=...&goal=...)
 ```
 
+Beispiel Lernkarten ohne Moduswunsch:
+```md
+Lernziel: Lernkarten - Sek I Kernformeln
+Möchtest du im Cockpit üben oder dich hier im GPT prüfen lassen?
+```
+
 ---
 
-## 6. Verbotene Chat-Aktionen
+## 7. Verbotene Chat-Aktionen
 
 Bei Deep-Link-Zielen ist **verboten**: erklären, diagnostizieren, Aufgaben, Tipps, Alternativen.  
 Der **Trainings‑Link** ist der **einzige** zulässige Output  
@@ -113,7 +149,7 @@ Der **Trainings‑Link** ist der **einzige** zulässige Output
 
 ---
 
-## 7. Übergang nach der App
+## 8. Übergang nach der App
 
 Nach der Rückkehr aus der App:
 

@@ -22,7 +22,7 @@ public class DeckResourceService {
 
     private static final Logger log = LoggerFactory.getLogger(DeckResourceService.class);
     private static final Pattern DECK_FILENAME_PATTERN = Pattern.compile(
-            "^[A-Za-z0-9._-]+_deck(?:[._][a-z]{2})?\\.json$",
+            "^[A-Za-z0-9._-]+(?:_deck|_flashcards_[A-Za-z0-9._-]+)(?:[._][a-z]{2})?\\.json$",
             Pattern.CASE_INSENSITIVE);
     private static final long INDEX_REFRESH_INTERVAL_MS = 2_000L;
 
@@ -134,4 +134,3 @@ public class DeckResourceService {
         return Map.copyOf(index);
     }
 }
-

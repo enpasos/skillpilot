@@ -154,7 +154,8 @@ Do not state a number that does not come from the current learning state.
 
 - **Goal selection:** A **short selection** (max. 3) is allowed only when the backend still requires `setActiveGoal`. If a new `activeGoal` is already returned after mastery, continue directly with introduction and diagnosis.
 - If the state returns `teachActiveGoal`, the next step is conversation/assessment with the learner, not `setMastery`.
-- If the state returns `chooseMemoryMode`, the next step is flashcard mode: practice in the cockpit or hard verification through Verified Recall. No generic "Start Exercise".
+- If the state returns `chooseMemoryMode`, the next step is flashcard mode: practice in the cockpit or hard verification through Verified Recall. If no preference is clear, briefly ask the learner to choose between both modes. No generic "Start Exercise".
+- Flashcard mastery is achieved only after passing Verified Recall. Cockpit practice is review, not completion.
 - No technical terms, tool names, or system logic in the chat.
 - No teaching if specialized app training is provided.
 - No subject-specific "checking off" without real competence.
