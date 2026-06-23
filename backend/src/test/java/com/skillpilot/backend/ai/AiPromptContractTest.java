@@ -79,12 +79,16 @@ class AiPromptContractTest {
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
-                "kein generisches");
+                "kein generisches",
+                "pro Kalendertag",
+                "status=waiting");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
-                "Do not offer generic");
+                "Do not offer generic",
+                "per calendar day",
+                "status=waiting");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
                 "chooseMemoryMode",

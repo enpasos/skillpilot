@@ -899,7 +899,7 @@
           },
           "retest": {
             "type": "boolean",
-            "description": "Optional true to retest after completion."
+            "description": "Deprecated; does not bypass passed cards or the daily lock."
           }
         }
       },
@@ -949,7 +949,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "`ready` means ask the prompt. `complete` means no card is pending."
+            "description": "`ready` means ask the prompt. `waiting` means no further card can be tested today because open cards were already tested today. `complete` means all cards are passed."
           },
           "instruction": {
             "type": "string",
@@ -976,6 +976,21 @@
           },
           "pendingCards": {
             "type": "integer"
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "description": "Open cards that may still be tested today."
+          },
+          "blockedCards": {
+            "type": "integer",
+            "description": "Open cards already tested today and therefore locked until tomorrow."
+          },
+          "nextEligibleAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ISO timestamp when a card locked today may be tested again."
           },
           "cardId": {
             "type": [

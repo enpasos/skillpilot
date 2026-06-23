@@ -10,6 +10,8 @@ import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.domain.PlannedGoal;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -85,6 +87,8 @@ import org.springframework.core.io.Resource;
 
 @Service
 public class LearnerService {
+
+    private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
 
     private final LearnerRepository learnerRepository;
     private final LearnerClientStateRepository learnerClientStateRepository;
@@ -279,6 +283,14 @@ public class LearnerService {
             LearningGoal goal,
             List<SrsCard> cards,
             Map<String, Object> srsState) {
+    }
+
+    private record VerifiedRecallDeckStatus(
+            int verifiedCards,
+            int pendingCards,
+            int eligibleCards,
+            int blockedCards,
+            Instant nextEligibleAt) {
     }
 
     private static Long parseNextReview(Object value) {
@@ -542,7 +554,7 @@ public class LearnerService {
         }
     }
 
-    private boolean isSrsMasteredToday(List<SrsCard> cards, Map<String, Object> srsState, long now) {
+    private boolean isSrsMasteredByVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
         if (cards == null || cards.isEmpty()) {
             return false;
         }
@@ -552,11 +564,6 @@ public class LearnerService {
         for (SrsCard card : cards) {
             Object rawState = srsState.get(card.id);
             if (!(rawState instanceof Map<?, ?> stateMap)) {
-                return false;
-            }
-            Object nextReviewValue = stateMap.get("nextReview");
-            Long nextReview = parseNextReview(nextReviewValue);
-            if (nextReview == null || nextReview <= now) {
                 return false;
             }
             if (!isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
@@ -575,6 +582,50 @@ public class LearnerService {
         return "passed".equals(status) && passedAt instanceof String text && !text.isBlank();
     }
 
+    private boolean wasVerifiedRecallTestedOn(Object value, Instant instant) {
+        if (!(value instanceof Map<?, ?> verified) || instant == null) {
+            return false;
+        }
+        Object lastTestedAt = verified.get("lastTestedAt");
+        Instant testedAt = parseInstant(lastTestedAt);
+        if (testedAt == null) {
+            return false;
+        }
+        LocalDate testedDate = testedAt.atZone(VERIFIED_RECALL_DAY_ZONE).toLocalDate();
+        LocalDate referenceDate = instant.atZone(VERIFIED_RECALL_DAY_ZONE).toLocalDate();
+        return testedDate.equals(referenceDate);
+    }
+
+    private Instant parseInstant(Object value) {
+        if (value instanceof Instant instant) {
+            return instant;
+        }
+        if (value instanceof Number number) {
+            return Instant.ofEpochMilli(number.longValue());
+        }
+        if (value instanceof String text && !text.isBlank()) {
+            try {
+                return Instant.parse(text.trim());
+            } catch (Exception ignored) {
+                try {
+                    long epochMillis = Long.parseLong(text.trim());
+                    return Instant.ofEpochMilli(epochMillis);
+                } catch (Exception ignoredAgain) {
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
+    private Instant nextVerifiedRecallEligibleAt(Instant now) {
+        return now.atZone(VERIFIED_RECALL_DAY_ZONE)
+                .toLocalDate()
+                .plusDays(1)
+                .atStartOfDay(VERIFIED_RECALL_DAY_ZONE)
+                .toInstant();
+    }
+
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
             Map<String, LearningGoal> goals,
             Map<String, Double> mastery) {
@@ -582,7 +633,6 @@ public class LearnerService {
             return mastery;
         }
         Map<String, Double> result = new HashMap<>(mastery);
-        long now = System.currentTimeMillis();
         for (LearningGoal goal : goals.values()) {
             if (!isSrsGoal(goal)) {
                 continue;
@@ -609,8 +659,8 @@ public class LearnerService {
                 continue;
             }
             Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
-            boolean masteredToday = isSrsMasteredToday(filtered, srsState, now);
-            result.put(goal.getId(), masteredToday ? 1.0 : 0.0);
+            boolean verified = isSrsMasteredByVerifiedRecall(filtered, srsState);
+            result.put(goal.getId(), verified ? 1.0 : 0.0);
         }
         return result;
     }
@@ -628,7 +678,6 @@ public class LearnerService {
             return 0;
         }
         long count = 0;
-        long now = System.currentTimeMillis();
         for (String goalId : goalIds) {
             LearningGoal goal = landscapeService.getGoalDefinition(goalId);
             if (goal == null || !isSrsGoal(goal)) {
@@ -654,7 +703,7 @@ public class LearnerService {
                 continue;
             }
             Map<String, Object> srsState = loadSrsState(skillpilotId, goalId);
-            if (isSrsMasteredToday(filtered, srsState, now)) {
+            if (isSrsMasteredByVerifiedRecall(filtered, srsState)) {
                 count++;
             }
         }
@@ -668,8 +717,7 @@ public class LearnerService {
             return mastery;
         }
         Map<String, MasteryEntryDTO> result = new HashMap<>(mastery);
-        long now = System.currentTimeMillis();
-        Instant nowInstant = Instant.ofEpochMilli(now);
+        Instant nowInstant = Instant.now();
         for (LearningGoal goal : goals.values()) {
             if (!isSrsGoal(goal)) {
                 continue;
@@ -696,8 +744,8 @@ public class LearnerService {
                 continue;
             }
             Map<String, Object> srsState = loadSrsState(skillpilotId, goal.getId());
-            boolean masteredToday = isSrsMasteredToday(filtered, srsState, now);
-            result.put(goal.getId(), new MasteryEntryDTO(masteredToday ? 1.0 : 0.0, nowInstant));
+            boolean verified = isSrsMasteredByVerifiedRecall(filtered, srsState);
+            result.put(goal.getId(), new MasteryEntryDTO(verified ? 1.0 : 0.0, nowInstant));
         }
         return result;
     }
@@ -794,8 +842,7 @@ public class LearnerService {
         return buildVerifiedRecallPromptResponse(
                 skillpilotId,
                 language,
-                context,
-                request != null && Boolean.TRUE.equals(request.retest()));
+                context);
     }
 
     @Transactional(readOnly = true)
@@ -848,6 +895,15 @@ public class LearnerService {
         cardState.put("id", card.id);
 
         Instant testedAt = Instant.now();
+        Map<String, Object> previousVerified = toMutableStringObjectMap(cardState.get("verifiedRecall"));
+        if (isVerifiedRecallPassed(previousVerified)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Card has already been verified for this memorization goal.");
+        }
+        if (wasVerifiedRecallTestedOn(previousVerified, testedAt)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Card has already been tested today.");
+        }
         applyVerifiedRecallScheduling(cardState, request.passed(), testedAt, request.feedback());
         nextState.put(card.id, cardState);
 
@@ -857,7 +913,7 @@ public class LearnerService {
                 context.goal(),
                 context.cards(),
                 nextState);
-        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(skillpilotId, language, updatedContext, false);
+        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(skillpilotId, language, updatedContext);
         int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
         return new VerifiedRecallResultResponse(
                 card.id,
@@ -915,23 +971,26 @@ public class LearnerService {
     private VerifiedRecallPromptResponse buildVerifiedRecallPromptResponse(
             String skillpilotId,
             String language,
-            VerifiedRecallContext context,
-            boolean retest) {
-        int verifiedCards = countVerifiedRecall(context.cards(), context.srsState());
-        SrsCard nextCard = selectNextVerifiedRecallCard(context.cards(), context.srsState());
-        if (nextCard == null && retest && !context.cards().isEmpty()) {
-            nextCard = context.cards().get(0);
-        }
+            VerifiedRecallContext context) {
+        Instant now = Instant.now();
+        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(context.cards(), context.srsState(), now);
+        SrsCard nextCard = selectNextVerifiedRecallCard(context.cards(), context.srsState(), now);
         if (nextCard == null) {
+            boolean complete = status.pendingCards() == 0;
             return new VerifiedRecallPromptResponse(
-                    "complete",
-                    verifiedRecallCompleteInstruction(language),
+                    complete ? "complete" : "waiting",
+                    complete
+                            ? verifiedRecallCompleteInstruction(language)
+                            : verifiedRecallWaitingInstruction(language, status),
                     skillpilotId,
                     context.goal().getId(),
                     context.goal().getTitle(),
                     context.cards().size(),
-                    verifiedCards,
-                    0,
+                    status.verifiedCards(),
+                    status.pendingCards(),
+                    status.eligibleCards(),
+                    status.blockedCards(),
+                    status.nextEligibleAt() != null ? status.nextEligibleAt().toString() : null,
                     null,
                     null,
                     null);
@@ -943,8 +1002,11 @@ public class LearnerService {
                 context.goal().getId(),
                 context.goal().getTitle(),
                 context.cards().size(),
-                verifiedCards,
-                Math.max(0, context.cards().size() - verifiedCards),
+                status.verifiedCards(),
+                status.pendingCards(),
+                status.eligibleCards(),
+                status.blockedCards(),
+                status.nextEligibleAt() != null ? status.nextEligibleAt().toString() : null,
                 nextCard.id,
                 nextCard.front,
                 nextCard.category);
@@ -965,13 +1027,47 @@ public class LearnerService {
     }
 
     private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState) {
+        return selectNextVerifiedRecallCard(cards, srsState, Instant.now());
+    }
+
+    private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState, Instant now) {
         for (SrsCard card : cards) {
             Object rawState = srsState != null ? srsState.get(card.id) : null;
-            if (!(rawState instanceof Map<?, ?> stateMap) || !isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+            if (!(rawState instanceof Map<?, ?> stateMap)) {
+                return card;
+            }
+            Object verified = stateMap.get("verifiedRecall");
+            if (!isVerifiedRecallPassed(verified) && !wasVerifiedRecallTestedOn(verified, now)) {
                 return card;
             }
         }
         return null;
+    }
+
+    private VerifiedRecallDeckStatus summarizeVerifiedRecallDeck(
+            List<SrsCard> cards,
+            Map<String, Object> srsState,
+            Instant now) {
+        if (cards == null || cards.isEmpty()) {
+            return new VerifiedRecallDeckStatus(0, 0, 0, 0, null);
+        }
+        int verifiedCards = 0;
+        int eligibleCards = 0;
+        int blockedCards = 0;
+        for (SrsCard card : cards) {
+            Object rawState = srsState != null ? srsState.get(card.id) : null;
+            Object verified = rawState instanceof Map<?, ?> stateMap ? stateMap.get("verifiedRecall") : null;
+            if (isVerifiedRecallPassed(verified)) {
+                verifiedCards++;
+            } else if (wasVerifiedRecallTestedOn(verified, now)) {
+                blockedCards++;
+            } else {
+                eligibleCards++;
+            }
+        }
+        int pendingCards = Math.max(0, cards.size() - verifiedCards);
+        Instant nextEligibleAt = blockedCards > 0 ? nextVerifiedRecallEligibleAt(now) : null;
+        return new VerifiedRecallDeckStatus(verifiedCards, pendingCards, eligibleCards, blockedCards, nextEligibleAt);
     }
 
     private SrsCard findSrsCard(List<SrsCard> cards, String cardId) {
@@ -1026,6 +1122,7 @@ public class LearnerService {
             }
         } else {
             verified.put("lastFailedAt", testedAt.toString());
+            verified.put("nextEligibleAt", nextVerifiedRecallEligibleAt(testedAt).toString());
         }
         if (feedback != null && !feedback.isBlank()) {
             verified.put("lastFeedback", feedback.trim());
@@ -1114,8 +1211,17 @@ public class LearnerService {
 
     private String verifiedRecallCompleteInstruction(String language) {
         return isEnglish(language)
-                ? "All required cards for this memorization goal are verified. Offer a retest only if the learner explicitly wants one."
-                : "Alle erforderlichen Karten dieses Memorize-Ziels sind hart geprüft. Biete eine erneute Prüfung nur an, wenn der Lernende sie ausdrücklich möchte.";
+                ? "All required cards for this memorization goal are verified. The flashcard goal is complete; offer cockpit practice only if the learner wants review."
+                : "Alle erforderlichen Karten dieses Memorize-Ziels sind hart geprüft. Das Lernkartenziel ist abgeschlossen; biete nur Cockpit-Üben an, wenn der Lernende wiederholen möchte.";
+    }
+
+    private String verifiedRecallWaitingInstruction(String language, VerifiedRecallDeckStatus status) {
+        if (isEnglish(language)) {
+            return "No further flashcard exam item is available today. Explain mistakes if useful, but do not test today's failed cards again. Continue tomorrow for the remaining "
+                    + status.pendingCards() + " card(s).";
+        }
+        return "Heute ist keine weitere Kartenprüfung verfügbar. Erkläre Fehler bei Bedarf, aber prüfe heute falsch beantwortete Karten nicht noch einmal. Weiter geht es morgen mit den verbleibenden "
+                + status.pendingCards() + " Karte(n).";
     }
 
     @Transactional(readOnly = true)

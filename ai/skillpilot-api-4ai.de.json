@@ -899,7 +899,7 @@
           },
           "retest": {
             "type": "boolean",
-            "description": "Optional true, um nach Abschluss erneut abzufragen."
+            "description": "Veraltet; umgeht weder bestandene Karten noch die Tages-Sperre."
           }
         }
       },
@@ -949,7 +949,7 @@
         "properties": {
           "status": {
             "type": "string",
-            "description": "`ready` bedeutet: Frage stellen. `complete` bedeutet: keine offene Karte mehr."
+            "description": "`ready` bedeutet: Frage stellen. `waiting` bedeutet: heute keine weitere Karte pruefbar, weil offene Karten schon heute geprueft wurden. `complete` bedeutet: alle Karten sind bestanden."
           },
           "instruction": {
             "type": "string",
@@ -976,6 +976,21 @@
           },
           "pendingCards": {
             "type": "integer"
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "description": "Offene Karten, die heute noch geprueft werden duerfen."
+          },
+          "blockedCards": {
+            "type": "integer",
+            "description": "Offene Karten, die heute bereits geprueft wurden und deshalb bis morgen gesperrt sind."
+          },
+          "nextEligibleAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ISO-Zeitpunkt, ab dem eine heute gesperrte Karte wieder geprueft werden darf."
           },
           "cardId": {
             "type": [

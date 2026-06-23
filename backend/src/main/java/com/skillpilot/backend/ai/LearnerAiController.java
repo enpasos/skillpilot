@@ -470,6 +470,9 @@ public class LearnerAiController {
                 response.totalCards(),
                 response.verifiedCards(),
                 response.pendingCards(),
+                response.eligibleCards(),
+                response.blockedCards(),
+                response.nextEligibleAt(),
                 response.cardId(),
                 response.prompt(),
                 response.category());

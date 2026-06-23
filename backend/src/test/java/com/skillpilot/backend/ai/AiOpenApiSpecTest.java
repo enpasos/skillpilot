@@ -148,6 +148,12 @@ class AiOpenApiSpecTest {
         assertThat(schemas.path("VerifiedRecallPromptResponse").path("properties").path("skillpilotId")
                 .path("description").asText().toLowerCase())
                 .containsAnyOf("not", "nicht");
+        JsonNode promptProperties = schemas.path("VerifiedRecallPromptResponse").path("properties");
+        assertThat(promptProperties.path("status").path("description").asText())
+                .contains("waiting");
+        assertThat(promptProperties.has("eligibleCards")).isTrue();
+        assertThat(promptProperties.has("blockedCards")).isTrue();
+        assertThat(promptProperties.has("nextEligibleAt")).isTrue();
     }
 
     private static void assertVerifiedRecallOperation(JsonNode paths, String path, String operationId) {

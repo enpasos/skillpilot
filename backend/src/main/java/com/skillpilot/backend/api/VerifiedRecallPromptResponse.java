@@ -9,6 +9,9 @@ public record VerifiedRecallPromptResponse(
         int totalCards,
         int verifiedCards,
         int pendingCards,
+        int eligibleCards,
+        int blockedCards,
+        String nextEligibleAt,
         String cardId,
         String prompt,
         String category) {

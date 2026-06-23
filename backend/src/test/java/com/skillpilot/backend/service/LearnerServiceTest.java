@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
@@ -11,6 +12,7 @@ import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import org.springframework.test.context.ActiveProfiles;
 
@@ -317,6 +320,61 @@ public class LearnerServiceTest {
         assertThat(prompt.status()).isEqualTo("complete");
         assertThat(prompt.pendingCards()).isZero();
         assertThat(learnerService.getMastery(learnerId).get(SEK1_CORE_FORMULAS_FLASHCARDS_ID)).isEqualTo(1.0);
+    }
+
+    @Test
+    @Transactional
+    void verifiedRecallFailureLocksCardForRestOfDay() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+
+        var firstPrompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false));
+        String failedCardId = firstPrompt.cardId();
+
+        var failedResult = learnerService.recordVerifiedRecallResult(
+                learnerId,
+                "de",
+                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, false, "nicht gewusst"));
+
+        assertThat(failedResult.passed()).isFalse();
+        assertThat(failedResult.next().status()).isEqualTo("ready");
+        assertThat(failedResult.next().cardId()).isNotEqualTo(failedCardId);
+        assertThat(failedResult.next().blockedCards()).isEqualTo(1);
+        assertThat(failedResult.next().nextEligibleAt()).isNotBlank();
+        assertThat(Instant.parse(failedResult.next().nextEligibleAt())).isAfter(Instant.now());
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
+                .isZero();
+
+        assertThatThrownBy(() -> learnerService.recordVerifiedRecallResult(
+                learnerId,
+                "de",
+                new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, failedCardId, true, "zweiter Versuch")))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("already been tested today");
+
+        var restartedPrompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false));
+
+        assertThat(restartedPrompt.status()).isEqualTo("ready");
+        assertThat(restartedPrompt.cardId()).isNotEqualTo(failedCardId);
+        assertThat(restartedPrompt.blockedCards()).isEqualTo(1);
+        assertThat(restartedPrompt.pendingCards()).isEqualTo(restartedPrompt.totalCards());
     }
 
     @Test

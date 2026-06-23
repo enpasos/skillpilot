@@ -203,7 +203,7 @@ export function useSrsMastery(
         if (nextReview < nextDueAt) nextDueAt = nextReview
       }
 
-      results[goal.id] = cards.length > 0 && dueCount === 0 && verifiedCount === cards.length ? 1 : 0
+      results[goal.id] = cards.length > 0 && verifiedCount === cards.length ? 1 : 0
       if (dueCount === 0 && nextDueAt < earliestNextDue) {
         earliestNextDue = nextDueAt
       }
