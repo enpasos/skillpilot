@@ -32,11 +32,18 @@ export interface FlashcardDrillCopy {
     progressTooltip: string
     verifiedProgress: string
     verifiedProgressTooltip: string
+    practiceStatus: string
+    verificationStatus: string
+    dueCards: string
+    verifiedCards: string
+    eligibleCards: string
+    blockedTodayCards: string
+    verificationComplete: string
+    verificationWaiting: string
     modeLabel: string
     practiceMode: string
     verificationMode: string
     startVerification: string
-    retestVerification: string
     readyForReview: string
     tapToFlip: string
     showAnswer: string
@@ -84,11 +91,18 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             progressTooltip: 'Session Progress: {0}/{1}',
             verifiedProgress: 'Verified: {0}/{1}',
             verifiedProgressTooltip: 'Hard recall passed for {0} of {1} cards.',
+            practiceStatus: 'Practice',
+            verificationStatus: 'Verification',
+            dueCards: '{0}/{1} due',
+            verifiedCards: '{0}/{1} passed',
+            eligibleCards: '{0} testable today',
+            blockedTodayCards: '{0} locked today',
+            verificationComplete: 'Verification complete',
+            verificationWaiting: 'No card testable today',
             modeLabel: 'Mode',
             practiceMode: 'Practice',
             verificationMode: 'Check',
             startVerification: 'Check with Learning Coach',
-            retestVerification: 'Check with Learning Coach',
             readyForReview: 'Cards for today: {0}. Doing 20 of them is great!',
             tapToFlip: 'Tap to flip',
             showAnswer: 'Show Answer',
@@ -133,11 +147,18 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             progressTooltip: 'Sitzungsfortschritt: {0}/{1}',
             verifiedProgress: 'Geprüft: {0}/{1}',
             verifiedProgressTooltip: 'Harter Abruf bestanden für {0} von {1} Karten.',
+            practiceStatus: 'Üben',
+            verificationStatus: 'Prüfung',
+            dueCards: '{0}/{1} fällig',
+            verifiedCards: '{0}/{1} bestanden',
+            eligibleCards: '{0} heute prüfbar',
+            blockedTodayCards: '{0} heute gesperrt',
+            verificationComplete: 'Prüfung bestanden',
+            verificationWaiting: 'Heute keine Karte prüfbar',
             modeLabel: 'Modus',
             practiceMode: 'Üben',
             verificationMode: 'Prüfen',
             startVerification: 'Mit Lerncoach prüfen',
-            retestVerification: 'Mit Lerncoach prüfen',
             readyForReview: 'Bereit für heute: {0}.',
             tapToFlip: 'Zum Umdrehen tippen',
             showAnswer: 'Antwort zeigen',

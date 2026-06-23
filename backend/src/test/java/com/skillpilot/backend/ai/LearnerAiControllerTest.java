@@ -230,6 +230,9 @@ class LearnerAiControllerTest {
                 3,
                 1,
                 2,
+                2,
+                0,
+                null,
                 "card-1",
                 "Prompt",
                 "Formeln");
@@ -258,6 +261,9 @@ class LearnerAiControllerTest {
                 3,
                 1,
                 2,
+                2,
+                0,
+                null,
                 "card-1",
                 "Prompt",
                 "Formeln");
@@ -311,6 +317,9 @@ class LearnerAiControllerTest {
                 1,
                 1,
                 0,
+                0,
+                0,
+                null,
                 null,
                 null,
                 null);
@@ -340,6 +349,9 @@ class LearnerAiControllerTest {
                 2,
                 1,
                 1,
+                1,
+                0,
+                null,
                 "card-2",
                 "Prompt 2",
                 "Formeln");

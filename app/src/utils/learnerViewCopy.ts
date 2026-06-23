@@ -17,6 +17,14 @@ export interface LearnerViewCopy {
   memoryPracticeBody: string
   memoryVerifiedRecallAction: string
   memoryVerifiedRecallBody: string
+  memoryPracticeStatusLabel: string
+  memoryVerificationStatusLabel: string
+  memoryPracticeDueStatus: string
+  memoryVerificationPassedStatus: string
+  memoryVerificationEligibleStatus: string
+  memoryVerificationBlockedStatus: string
+  memoryVerificationCompleteStatus: string
+  memoryVerificationWaitingStatus: string
   memoryPracticeBackAction: string
   memoryVerifiedRecallPromptCopied: string
   memoryVerifiedRecallPromptCopyFailed: string
@@ -41,6 +49,14 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryPracticeBody: 'Wiederhole fällige Karten mit dem SRS-Drill.',
         memoryVerifiedRecallAction: 'Mit Lerncoach prüfen',
         memoryVerifiedRecallBody: 'Starte die harte Abfrage für dieses aktive Lernziel.',
+        memoryPracticeStatusLabel: 'Üben',
+        memoryVerificationStatusLabel: 'Prüfung',
+        memoryPracticeDueStatus: '{0}/{1} fällig',
+        memoryVerificationPassedStatus: '{0}/{1} bestanden',
+        memoryVerificationEligibleStatus: '{0} heute prüfbar',
+        memoryVerificationBlockedStatus: '{0} heute gesperrt',
+        memoryVerificationCompleteStatus: 'Prüfung bestanden',
+        memoryVerificationWaitingStatus: 'Heute keine Karte prüfbar',
         memoryPracticeBackAction: 'Zur Auswahl',
         memoryVerifiedRecallPromptCopied: 'Startcode für den Lerncoach wurde kopiert.',
         memoryVerifiedRecallPromptCopyFailed: 'Der Lerncoach wurde geöffnet. Bitte starte dort die harte Kartenprüfung für das aktive Lernziel.',
@@ -62,6 +78,14 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryPracticeBody: 'Review due cards with the SRS drill.',
         memoryVerifiedRecallAction: 'Verify with Learning Coach',
         memoryVerifiedRecallBody: 'Start hard recall for this active goal.',
+        memoryPracticeStatusLabel: 'Practice',
+        memoryVerificationStatusLabel: 'Verification',
+        memoryPracticeDueStatus: '{0}/{1} due',
+        memoryVerificationPassedStatus: '{0}/{1} passed',
+        memoryVerificationEligibleStatus: '{0} testable today',
+        memoryVerificationBlockedStatus: '{0} locked today',
+        memoryVerificationCompleteStatus: 'Verification complete',
+        memoryVerificationWaitingStatus: 'No card testable today',
         memoryPracticeBackAction: 'Back to choices',
         memoryVerifiedRecallPromptCopied: 'Learning Coach start code was copied.',
         memoryVerifiedRecallPromptCopyFailed: 'The Learning Coach was opened. Please start hard flashcard verification for the active goal there.',

@@ -11,6 +11,7 @@ export interface VerifiedRecallState {
     lastTestedAt: string;
     passedAt?: string;
     lastFailedAt?: string;
+    nextEligibleAt?: string;
 }
 
 export interface ReviewItem extends ReviewResult {
@@ -71,4 +72,31 @@ export function isVerifiedRecallPassed(value: unknown): boolean {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
     const state = value as Partial<VerifiedRecallState>;
     return state.status === 'passed' && typeof state.passedAt === 'string' && state.passedAt.length > 0;
+}
+
+export function parseReviewTimestamp(value: unknown): number {
+    if (typeof value === 'number') return value;
+    if (typeof value === 'string') {
+        const numeric = Number(value);
+        if (Number.isFinite(numeric)) return numeric;
+        const parsed = Date.parse(value);
+        return Number.isFinite(parsed) ? parsed : Number.NaN;
+    }
+    return Number.NaN;
+}
+
+export function isSameLocalDay(left: number, right: number): boolean {
+    if (!Number.isFinite(left) || !Number.isFinite(right)) return false;
+    const leftDate = new Date(left);
+    const rightDate = new Date(right);
+    return leftDate.getFullYear() === rightDate.getFullYear()
+        && leftDate.getMonth() === rightDate.getMonth()
+        && leftDate.getDate() === rightDate.getDate();
+}
+
+export function isVerifiedRecallTestedToday(value: unknown, now = Date.now()): boolean {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+    const state = value as Partial<VerifiedRecallState>;
+    const testedAt = parseReviewTimestamp(state.lastTestedAt);
+    return isSameLocalDay(testedAt, now);
 }

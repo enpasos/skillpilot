@@ -58,6 +58,8 @@ in der Unterhaltung genannt.
 - `requiredAction = chooseMemoryMode` gilt für ein bestätigtes aktives Memorierungs-/Lernkartenziel.
 - Wenn die lernende Person üben will: auf den Cockpit-Kartendrill verweisen. Das ist kein Chat-Mastery-Flow.
 - Wenn die lernende Person geprüft, abgefragt oder getestet werden will: `verified-recall/start` aufrufen, nur die zurückgegebene Frage stellen, nach der Lernenden-Antwort `verified-recall/answer` aufrufen und anschließend mit `verified-recall/result` `passed` oder `failed` speichern.
+- Jede Karte darf im Prüfmodus pro Kalendertag nur einmal geprüft werden. Bei `passed=false` darf die richtige Antwort erklärt werden; dieselbe Karte wird heute nicht erneut abgefragt.
+- Wenn `verified-recall/start` `status=waiting` liefert, ist die Prüfung für heute beendet; nicht improvisieren und keine Karte wiederholen.
 - Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten.
 
 ## 7. Mastery-Flow

@@ -5,6 +5,8 @@ import {
     calculateReview,
     INITIAL_DECK_STATE,
     isVerifiedRecallPassed,
+    isVerifiedRecallTestedToday,
+    parseReviewTimestamp,
     type ReviewItem,
 } from './srsLogic'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
@@ -52,17 +54,12 @@ type FlashcardStats = {
     due: number
     verifiedPassed: number
     verifiedPending: number
+    verifiedEligible: number
+    verifiedBlockedToday: number
 }
 
 const parseNextReview = (value: unknown): number => {
-    if (typeof value === 'number') return value
-    if (typeof value === 'string') {
-        const numeric = Number(value)
-        if (Number.isFinite(numeric)) return numeric
-        const parsed = Date.parse(value)
-        return Number.isFinite(parsed) ? parsed : Number.NaN
-    }
-    return Number.NaN
+    return parseReviewTimestamp(value)
 }
 
 const shuffle = <T,>(items: T[]): T[] => {
@@ -93,6 +90,8 @@ const calculateStats = (
     let box3 = 0
     let due = 0
     let verifiedPassed = 0
+    let verifiedBlockedToday = 0
+    let verifiedEligible = 0
 
     cards.forEach((card) => {
         const state = stateByCardId[card.id]
@@ -114,6 +113,10 @@ const calculateStats = (
         }
         if (isVerifiedRecallPassed(state?.verifiedRecall)) {
             verifiedPassed += 1
+        } else if (isVerifiedRecallTestedToday(state?.verifiedRecall, now)) {
+            verifiedBlockedToday += 1
+        } else {
+            verifiedEligible += 1
         }
     })
 
@@ -126,6 +129,8 @@ const calculateStats = (
         due,
         verifiedPassed,
         verifiedPending: Math.max(0, cards.length - verifiedPassed),
+        verifiedEligible,
+        verifiedBlockedToday,
     }
 }
 
@@ -170,10 +175,15 @@ export function FlashcardDrill({
         box3: 0,
         due: 0,
         verifiedPassed: 0,
-        verifiedPending: 0
+        verifiedPending: 0,
+        verifiedEligible: 0,
+        verifiedBlockedToday: 0
     })
 
     const [error, setError] = useState<string | null>(null)
+    const verificationComplete = stats.total > 0 && stats.verifiedPending === 0
+    const verificationWaiting = stats.total > 0 && stats.verifiedEligible === 0 && stats.verifiedPending > 0
+    const canStartVerification = Boolean(onStartVerifiedRecall) && !verificationComplete && !verificationWaiting
 
     const modeSwitch = onStartVerifiedRecall ? (
         <div className="mb-4 flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm dark:border-slate-800 dark:bg-slate-950/50">
@@ -192,8 +202,10 @@ export function FlashcardDrill({
                 <button
                     type="button"
                     onClick={onStartVerifiedRecall}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 dark:text-slate-200 dark:hover:bg-sky-950/40 dark:hover:text-sky-200"
+                    disabled={!canStartVerification}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 disabled:cursor-not-allowed disabled:opacity-55 dark:text-slate-200 dark:hover:bg-sky-950/40 dark:hover:text-sky-200"
                     aria-pressed="false"
+                    title={verificationComplete ? t.verificationComplete : verificationWaiting ? t.verificationWaiting : t.startVerification}
                 >
                     <ClipboardCheck className="h-3.5 w-3.5" />
                     {t.verificationMode}
@@ -395,7 +407,7 @@ export function FlashcardDrill({
     useEffect(() => {
         if (!onStateChange) return
         if (stats.total <= 0) return
-        const mastery = stats.due === 0 && stats.verifiedPending === 0 ? 1 : 0
+        const mastery = stats.verifiedPending === 0 ? 1 : 0
         if (lastMasteryRef.current === mastery) return
         lastMasteryRef.current = mastery
         onStateChange({
@@ -493,12 +505,38 @@ export function FlashcardDrill({
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
     const allCaughtUp = stats.total > 0 && stats.due === 0
-    const verificationComplete = stats.total > 0 && stats.verifiedPending === 0
+    const deckStatusPanel = stats.total > 0 ? (
+        <div className="mb-6 grid w-full max-w-md grid-cols-2 gap-3">
+            <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-800 dark:bg-slate-950/50">
+                <div className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary">
+                    {t.practiceStatus}
+                </div>
+                <div className="mt-1 text-lg font-semibold text-text-primary">
+                    {interpolateTemplate(t.dueCards, [stats.due, stats.total])}
+                </div>
+            </div>
+            <div className="rounded-xl border border-sky-200 bg-sky-50/70 p-3 shadow-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+                <div className="text-[10px] font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
+                    {t.verificationStatus}
+                </div>
+                <div className="mt-1 text-lg font-semibold text-text-primary">
+                    {interpolateTemplate(t.verifiedCards, [stats.verifiedPassed, stats.total])}
+                </div>
+                <div className="mt-1 text-[11px] text-text-secondary">
+                    {interpolateTemplate(t.eligibleCards, [stats.verifiedEligible])}
+                    {stats.verifiedBlockedToday > 0 ? (
+                        <span> · {interpolateTemplate(t.blockedTodayCards, [stats.verifiedBlockedToday])}</span>
+                    ) : null}
+                </div>
+            </div>
+        </div>
+    ) : null
 
     if (allCaughtUp) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 {modeSwitch}
+                {deckStatusPanel}
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
                 <h2 className="text-2xl font-bold mb-2">{verificationComplete ? t.allCaughtUp : t.practiceCaughtUp}</h2>
                 <div className="flex gap-2 my-8 justify-center w-full max-w-sm">
@@ -528,10 +566,11 @@ export function FlashcardDrill({
                     <button
                         type="button"
                         onClick={onStartVerifiedRecall}
-                        className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-700"
+                        disabled={!canStartVerification}
+                        className="inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
                     >
                         <ClipboardCheck className="h-4 w-4" />
-                        {verificationComplete ? t.retestVerification : t.startVerification}
+                        {verificationComplete ? t.verificationComplete : verificationWaiting ? t.verificationWaiting : t.startVerification}
                     </button>
                 ) : null}
             </div>
@@ -572,6 +611,7 @@ export function FlashcardDrill({
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
             {modeSwitch}
+            {deckStatusPanel}
 
             {/* Dashboard: Leitner Boxes */}
             <div className="w-full mb-6">
@@ -673,10 +713,11 @@ export function FlashcardDrill({
                         <button
                             type="button"
                             onClick={onStartVerifiedRecall}
-                            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700"
+                            disabled={!canStartVerification}
+                            className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
                         >
                             <ClipboardCheck className="h-4 w-4" />
-                            {verificationComplete ? t.retestVerification : t.startVerification}
+                            {verificationComplete ? t.verificationComplete : verificationWaiting ? t.verificationWaiting : t.startVerification}
                         </button>
                     ) : null}
                 </div>
