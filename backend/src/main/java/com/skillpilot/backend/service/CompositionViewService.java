@@ -100,6 +100,24 @@ public class CompositionViewService {
         return siblings == null ? Collections.emptyList() : siblings;
     }
 
+    public List<CompositionStructureResolution> findFollowingScopeSiblings(String syntheticGoalId) {
+        CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
+        if (reference == null) {
+            return Collections.emptyList();
+        }
+
+        Map<String, Object> view = findViewById(reference.viewId());
+        if (view == null) {
+            return Collections.emptyList();
+        }
+
+        List<CompositionStructureResolution> siblings = findFollowingScopeSiblings(
+                view.get("rootNodes"),
+                reference.viewId(),
+                reference.nodeId());
+        return siblings == null ? Collections.emptyList() : siblings;
+    }
+
     private record CompositionStructureReference(String viewId, String nodeId) {
     }
 
@@ -165,6 +183,75 @@ public class CompositionViewService {
                 return childMatch;
             }
         }
+        return null;
+    }
+
+    private static List<CompositionStructureResolution> findFollowingScopeSiblings(
+            Object rawNodes,
+            String viewId,
+            String nodeId) {
+        List<Map<String, Object>> nodes = asNodeList(rawNodes);
+        for (int index = 0; index < nodes.size(); index += 1) {
+            Map<String, Object> node = nodes.get(index);
+            if ("structure".equals(asString(node.get("kind"))) && nodeId.equals(asString(node.get("id")))) {
+                List<CompositionStructureResolution> siblings = new ArrayList<>();
+                for (int siblingIndex = index + 1; siblingIndex < nodes.size(); siblingIndex += 1) {
+                    CompositionStructureResolution sibling = resolveScopeSibling(nodes.get(siblingIndex), viewId);
+                    if (sibling != null) {
+                        siblings.add(sibling);
+                    }
+                }
+                return siblings;
+            }
+
+            List<CompositionStructureResolution> childMatch = findFollowingScopeSiblings(
+                    node.get("children"),
+                    viewId,
+                    nodeId);
+            if (childMatch != null) {
+                return childMatch;
+            }
+        }
+        return null;
+    }
+
+    private static CompositionStructureResolution resolveScopeSibling(Map<String, Object> node, String viewId) {
+        if (node == null) {
+            return null;
+        }
+
+        String kind = asString(node.get("kind"));
+        if ("structure".equals(kind)) {
+            String siblingNodeId = asString(node.get("id"));
+            if (!StringUtils.hasText(siblingNodeId)) {
+                return null;
+            }
+            LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+            collectReferencedGoalIds(node, referencedGoalIds);
+            if (referencedGoalIds.isEmpty()) {
+                return null;
+            }
+            return new CompositionStructureResolution(
+                    COMPOSITION_SYNTHETIC_PREFIX + viewId + COMPOSITION_STRUCTURE_SEPARATOR + siblingNodeId,
+                    viewId,
+                    siblingNodeId,
+                    asString(node.get("label")),
+                    List.copyOf(referencedGoalIds));
+        }
+
+        if ("canonicalSubtree".equals(kind) || "goalEntry".equals(kind)) {
+            String goalId = asString(node.get("goalId"));
+            if (!StringUtils.hasText(goalId)) {
+                return null;
+            }
+            return new CompositionStructureResolution(
+                    goalId,
+                    viewId,
+                    goalId,
+                    asString(node.get("label")),
+                    List.of(goalId));
+        }
+
         return null;
     }
 

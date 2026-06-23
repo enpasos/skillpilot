@@ -65,6 +65,18 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findFollowingScopeSiblings_returnsCanonicalSubtreeAfterFinalSekOneYear() {
+        CompositionViewService service = createService();
+
+        List<CompositionViewService.CompositionStructureResolution> siblings =
+                service.findFollowingScopeSiblings("composition:de-de-gym-math-lk:structure:j10");
+
+        assertThat(siblings).isNotEmpty();
+        assertThat(siblings.get(0).syntheticGoalId()).isEqualTo("bfc4fe23-bfa4-4836-9bd2-793f4305d682");
+        assertThat(siblings.get(0).referencedGoalIds()).containsExactly("bfc4fe23-bfa4-4836-9bd2-793f4305d682");
+    }
+
+    @Test
     void findMatchingView_prefersExactStageViewOverCrossStageFallback() {
         CompositionViewService service = createService();
 

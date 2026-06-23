@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.test.context.ActiveProfiles;
@@ -31,6 +32,13 @@ public class LearnerServiceTest {
             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j8";
     private static final String COMPOSITION_J9_SCOPE_ID =
             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j9";
+    private static final String COMPOSITION_J10_SCOPE_ID =
+            "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j10";
+    private static final String SEK1_EXERCISES_SCOPE_ID = "bfc4fe23-bfa4-4836-9bd2-793f4305d682";
+    private static final String VISIBLE_POLYNOMIAL_FUNCTIONS_ID = "1ce8af38-082a-477b-af48-b924c92761bf";
+    private static final String HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID =
+            "0756b198-0074-49d5-becd-9bb9f161a291";
+    private static final String HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID = "283ec44e-747c-55e3-9a61-4a4cc70ebfab";
 
     @Autowired
     private LearnerService learnerService;
@@ -169,6 +177,28 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
+    @SuppressWarnings("unchecked")
+    void getFilteredGoals_appliesCanonicalDeCompositionViewWithoutDurationModel() {
+        Map<String, LearningGoal> filteredGoals = (Map<String, LearningGoal>) ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "getFilteredGoals",
+                CANONICAL_GYMNASIUM_ROOT_ID,
+                """
+                        {
+                          "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                          "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                        }
+                        """);
+
+        assertThat(filteredGoals).isNotNull();
+        assertThat(filteredGoals).containsKeys(VISIBLE_POLYNOMIAL_FUNCTIONS_ID, SEK1_EXERCISES_SCOPE_ID);
+        assertThat(filteredGoals)
+                .doesNotContainKeys(HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID, HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
+    }
+
+    @Test
+    @Transactional
     void getLearnerState_offersNextCompositionYearWhenCurrentYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
@@ -200,8 +230,45 @@ public class LearnerServiceTest {
                 });
     }
 
+    @Test
+    @Transactional
+    void getLearnerState_offersSekOneExercisesAfterFinalCompositionYearScopeIsComplete() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J10_SCOPE_ID));
+
+        completeCurrentScope(200);
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.goals().scope_completed()).isTrue();
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(goal -> goal.id())
+                .contains(SEK1_EXERCISES_SCOPE_ID);
+        assertThat(state.stateMachine().goalOptions())
+                .filteredOn(goal -> SEK1_EXERCISES_SCOPE_ID.equals(goal.id()))
+                .singleElement()
+                .satisfies(goal -> {
+                    assertThat(goal.title()).isEqualTo("Übungen Sekundarstufe I");
+                    assertThat(goal.type()).isEqualTo("cluster");
+                });
+    }
+
     private void completeCurrentScope() {
-        for (int iteration = 0; iteration < 50; iteration += 1) {
+        completeCurrentScope(50);
+    }
+
+    private void completeCurrentScope(int maxIterations) {
+        for (int iteration = 0; iteration < maxIterations; iteration += 1) {
             var state = learnerService.getLearnerState(learnerId);
             if (Boolean.TRUE.equals(state.goals().scope_completed())) {
                 return;
@@ -214,7 +281,7 @@ public class LearnerServiceTest {
                     learnerId,
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
         }
-        throw new AssertionError("Scope did not complete within 50 mastery updates.");
+        throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {

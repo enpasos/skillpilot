@@ -883,6 +883,44 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [currentRouteGoalId, effectiveActiveGoalId, plannedGoals, effectiveLearnerParentMap, revealScope])
 
+  // When a connected agent changes the scope, open the new path even if the
+  // learner was still routed to the completed previous scope.
+  const prevRevealedPlannedScopeKeyRef = useRef<string | null>(null)
+  useEffect(() => {
+    prevRevealedPlannedScopeKeyRef.current = null
+  }, [landscapeId, learnerTreeScopeKey])
+
+  useEffect(() => {
+    const plannedScopeKey = goalIdsKey(plannedGoals)
+    if (!plannedScopeKey) {
+      prevRevealedPlannedScopeKeyRef.current = null
+      return
+    }
+    if (effectiveLearnerParentMap.size === 0) return
+    if (effectiveActiveGoalId) {
+      prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+      return
+    }
+
+    const previousScopeKey = prevRevealedPlannedScopeKeyRef.current
+    if (!previousScopeKey) {
+      prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+      return
+    }
+    if (previousScopeKey === plannedScopeKey) return
+
+    console.log('[SSE] 🧭 Planned scope ready for reveal:', plannedScopeKey)
+    revealScope()
+    prevRevealedPlannedScopeKeyRef.current = plannedScopeKey
+  }, [
+    effectiveActiveGoalId,
+    effectiveLearnerParentMap,
+    landscapeId,
+    learnerTreeScopeKey,
+    plannedGoals,
+    revealScope,
+  ])
+
   // Frontier Logic: Identify the "Next Actionable" goal in every branch.
   // Assumption: Content is sequential within containers.
   const frontierIds = useMemo(() => {
