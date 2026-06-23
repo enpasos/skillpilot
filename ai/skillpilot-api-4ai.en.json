@@ -259,6 +259,159 @@
         "x-openai-isConsequential": false
       }
     },
+    "/api/ai/en/sessions/{chatSessionToken}/verified-recall/start": {
+      "post": {
+        "operationId": "startVerifiedRecall",
+        "summary": "Start flashcard verification",
+        "description": "Use for an active flashcard/memorization goal when the learner wants to be checked, quizzed, asked, or tested. Ask only the returned prompt; do not reveal the answer yet.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Next flashcard prompt or verification completion.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallPromptResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat session expired. Stop teaching; direct the learner to skillpilot.com, load saved access or enter the SkillPilot ID there, and start the learning coach again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/verified-recall/answer": {
+      "post": {
+        "operationId": "getVerifiedRecallAnswer",
+        "summary": "Get the expected flashcard answer after the learner answered",
+        "description": "Call only after the learner has answered the flashcard prompt without help. Then compare the answer and save the result.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallAnswerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Expected answer for the previously asked card.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallAnswerResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat session expired. Stop teaching; direct the learner to skillpilot.com, load saved access or enter the SkillPilot ID there, and start the learning coach again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/verified-recall/result": {
+      "post": {
+        "operationId": "recordVerifiedRecallResult",
+        "summary": "Save the result of a flashcard verification",
+        "description": "After comparing the learner answer with the expected answer, save passed=true or passed=false. Returns the next prompt or completion.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallResultRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved card result and next verification step.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallResultResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat session expired. Stop teaching; direct the learner to skillpilot.com, load saved access or enter the SkillPilot ID there, and start the learning coach again.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
     "/api/ai/en/sessions/{chatSessionToken}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
@@ -686,6 +839,42 @@
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Confirmed active goal inside state machine."
+          },
+          "modeOptions": {
+            "type": "array",
+            "description": "Mode options for the current step. For `requiredAction=chooseMemoryMode`, this contains cockpit practice and GPT verified recall.",
+            "items": {
+              "$ref": "#/components/schemas/LearningModeOption"
+            }
+          }
+        }
+      },
+      "LearningModeOption": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable mode ID, e.g. practice or verify."
+          },
+          "title": {
+            "type": "string",
+            "description": "User-facing mode title."
+          },
+          "description": {
+            "type": "string",
+            "description": "Short action description for this mode."
+          },
+          "action": {
+            "type": "string",
+            "description": "Required action. `openCockpitPractice` means practice in the cockpit; `startVerifiedRecall` means start the verified-recall tool flow."
+          },
+          "target": {
+            "type": "string",
+            "description": "Target surface, e.g. cockpit or gpt."
+          },
+          "goalId": {
+            "type": "string",
+            "description": "Active flashcard goal for this mode."
           }
         }
       },
@@ -700,6 +889,159 @@
         "required": [
           "goalId"
         ]
+      },
+      "VerifiedRecallStartRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; if empty, the backend uses the active flashcard goal."
+          },
+          "retest": {
+            "type": "boolean",
+            "description": "Optional true to retest after completion."
+          }
+        }
+      },
+      "VerifiedRecallAnswerRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; active flashcard goal."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "ID of the card just asked by `startVerifiedRecall`."
+          }
+        },
+        "required": [
+          "cardId"
+        ]
+      },
+      "VerifiedRecallResultRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; active flashcard goal."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "ID of the checked card."
+          },
+          "passed": {
+            "type": "boolean",
+            "description": "true if the learner answer was sufficiently correct without card help; otherwise false."
+          },
+          "feedback": {
+            "type": "string",
+            "description": "Optional short grading reason."
+          }
+        },
+        "required": [
+          "cardId",
+          "passed"
+        ]
+      },
+      "VerifiedRecallPromptResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "`ready` means ask the prompt. `complete` means no card is pending."
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Binding short rule for the next chat step."
+          },
+          "skillpilotId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Null on chat session routes. Do not display or put into links."
+          },
+          "goalId": {
+            "type": "string"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer"
+          },
+          "verifiedCards": {
+            "type": "integer"
+          },
+          "pendingCards": {
+            "type": "integer"
+          },
+          "cardId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Card to ask now. Null when `status=complete`."
+          },
+          "prompt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Ask only this prompt; do not reveal the expected answer first."
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "VerifiedRecallAnswerResponse": {
+        "type": "object",
+        "properties": {
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string"
+          },
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "expectedAnswer": {
+            "type": "string",
+            "description": "Use only after the learner has answered."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifiedRecallResultResponse": {
+        "type": "object",
+        "properties": {
+          "savedCardId": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "verifiedCards": {
+            "type": "integer"
+          },
+          "pendingCards": {
+            "type": "integer"
+          },
+          "next": {
+            "$ref": "#/components/schemas/VerifiedRecallPromptResponse"
+          }
+        }
       },
       "MasteryResponse": {
         "type": "object",

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { CheckCircle, ClipboardCheck } from 'lucide-react'
+import { BookOpen, CheckCircle, ClipboardCheck } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import {
     calculateReview,
@@ -174,6 +174,33 @@ export function FlashcardDrill({
     })
 
     const [error, setError] = useState<string | null>(null)
+
+    const modeSwitch = onStartVerifiedRecall ? (
+        <div className="mb-4 flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm dark:border-slate-800 dark:bg-slate-950/50">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
+                {t.modeLabel}
+            </span>
+            <div className="grid grid-cols-2 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 text-xs font-semibold dark:border-slate-800 dark:bg-slate-900">
+                <button
+                    type="button"
+                    className="inline-flex items-center justify-center gap-1.5 bg-sky-600 px-3 py-2 text-white"
+                    aria-pressed="true"
+                >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    {t.practiceMode}
+                </button>
+                <button
+                    type="button"
+                    onClick={onStartVerifiedRecall}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 dark:text-slate-200 dark:hover:bg-sky-950/40 dark:hover:text-sky-200"
+                    aria-pressed="false"
+                >
+                    <ClipboardCheck className="h-3.5 w-3.5" />
+                    {t.verificationMode}
+                </button>
+            </div>
+        </div>
+    ) : null
 
     useEffect(() => {
         latestStateRef.current = srsState
@@ -471,6 +498,7 @@ export function FlashcardDrill({
     if (allCaughtUp) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
+                {modeSwitch}
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
                 <h2 className="text-2xl font-bold mb-2">{verificationComplete ? t.allCaughtUp : t.practiceCaughtUp}</h2>
                 <div className="flex gap-2 my-8 justify-center w-full max-w-sm">
@@ -543,6 +571,7 @@ export function FlashcardDrill({
 
     return (
         <div className="flex flex-col items-center w-full max-w-md mx-auto p-4 min-h-[60vh]">
+            {modeSwitch}
 
             {/* Dashboard: Leitner Boxes */}
             <div className="w-full mb-6">

@@ -64,6 +64,7 @@ import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
+import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -1385,23 +1386,36 @@ public class LearnerService {
         if (visibleGoals.containsKey(goalId)) {
             return goalId;
         }
+        List<ResolvedGoalMapping> mappings = goalMappingService.findAllByLegacyGoalId(goalId);
+        if (!mappings.isEmpty()) {
+            for (ResolvedGoalMapping mapping : mappings) {
+                if (!allowPartial && !"exact".equals(mapping.matchType())) {
+                    continue;
+                }
+                if (visibleGoals.containsKey(mapping.canonicalGoalId())) {
+                    return mapping.canonicalGoalId();
+                }
+            }
+        }
+        if (isKnownCanonicalGoalId(goalId)) {
+            return goalId;
+        }
         String provenanceMappedGoalId = findCanonicalGoalIdByLegacySourceId(goalId, visibleGoals);
         if (provenanceMappedGoalId != null) {
             return provenanceMappedGoalId;
         }
-        List<ResolvedGoalMapping> mappings = goalMappingService.findAllByLegacyGoalId(goalId);
-        if (mappings.isEmpty()) {
-            return goalId;
-        }
-        for (ResolvedGoalMapping mapping : mappings) {
-            if (!allowPartial && !"exact".equals(mapping.matchType())) {
-                continue;
-            }
-            if (visibleGoals.containsKey(mapping.canonicalGoalId())) {
-                return mapping.canonicalGoalId();
-            }
-        }
         return goalId;
+    }
+
+    private boolean isKnownCanonicalGoalId(String goalId) {
+        if (goalId == null || goalId.isBlank()) {
+            return false;
+        }
+        String landscapeId = landscapeService.getLandscapeIdForGoal(goalId);
+        if (landscapeId == null || landscapeId.isBlank()) {
+            return false;
+        }
+        return isCanonicalGymnasiumLandscape(landscapeService.getById(landscapeId));
     }
 
     private String resolveGoalIdInVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals,
@@ -3720,20 +3734,27 @@ public class LearnerService {
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
 
+        FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
+        boolean activeGoalIsMemory = isMemoryFrontierGoal(activeGoal);
+
         if (curriculumId != null) {
             nextAllowedActions.add("setPersonalization");
             if (!personalizationRequired) {
                 nextAllowedActions.add("setScope");
                 nextAllowedActions.add("getFrontier");
                 if (activeGoalId != null && !activeGoalId.isBlank() && !activeGoalMastered) {
-                    nextAllowedActions.add("setMastery");
+                    if (activeGoalIsMemory) {
+                        nextAllowedActions.add("chooseMemoryMode");
+                        nextAllowedActions.add("startVerifiedRecall");
+                    } else {
+                        nextAllowedActions.add("setMastery");
+                    }
                 } else if (!frontierAtomic.isEmpty()) {
                     nextAllowedActions.add("setActiveGoal");
                 }
             }
         }
 
-        FrontierGoal activeGoal = resolveActiveGoal(activeGoalId, allGoals);
         LearningState learningState = learner.getLearningState();
         if (learningState == null) {
             learningState = (activeGoalId == null || activeGoalId.isBlank() || activeGoalMastered)
@@ -3818,6 +3839,9 @@ public class LearnerService {
         if (curriculumId == null) {
             requiredAction = "setCurriculum";
             curriculumOptions = getAvailableBaseCurricula();
+        } else if (activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)) {
+            requiredAction = "chooseMemoryMode";
+            goalOptions = List.of(activeGoal);
         } else if (activeGoal != null && !activeGoalMastered) {
             requiredAction = "teachActiveGoal";
             goalOptions = List.of(activeGoal);
@@ -3835,7 +3859,44 @@ public class LearnerService {
             goalOptions = scopeExpansionOptions;
         }
 
-        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal);
+        List<LearningModeOption> modeOptions = activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)
+                ? buildMemoryModeOptions(activeGoal)
+                : Collections.emptyList();
+        return new StateMachineInfo(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions);
+    }
+
+    private List<LearningModeOption> buildMemoryModeOptions(FrontierGoal activeGoal) {
+        if (activeGoal == null) {
+            return Collections.emptyList();
+        }
+        return List.of(
+                new LearningModeOption(
+                        "practice",
+                        "Im Cockpit üben",
+                        "Öffne den SRS-Kartendrill im Cockpit für fällige Karten und Wiederholung.",
+                        "openCockpitPractice",
+                        "cockpit",
+                        activeGoal.id()),
+                new LearningModeOption(
+                        "verify",
+                        "Mit Lerncoach prüfen",
+                        "Schalte in den harten Kartenprüfmodus: Nutze verified-recall/start, frage ohne Hilfe ab, hole danach die erwartete Antwort und speichere passed oder failed.",
+                        "startVerifiedRecall",
+                        "gpt",
+                        activeGoal.id()));
+    }
+
+    private boolean isMemoryFrontierGoal(FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        if ("memory".equals(goal.nodeKind())) {
+            return true;
+        }
+        if (goal.tags() == null) {
+            return false;
+        }
+        return goal.tags().stream().anyMatch(tag -> "memorization".equals(tag) || tag.startsWith("srs-deck:"));
     }
 
     private List<FrontierGoal> buildScopeExpansionOptions(String curriculumId, Map<String, LearningGoal> filteredGoals,
@@ -4636,23 +4697,32 @@ public class LearnerService {
         }
 
         LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+        LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
         for (LearningLandscape landscape : closure) {
             if (!isCompositionViewCandidate(curriculumId, landscape, config)) {
                 continue;
             }
             Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), config);
             if (requestedScope.isEmpty()) {
+                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 continue;
             }
             Map<String, Object> matchedView =
                     compositionViewService.findMatchingView(landscape.getLandscapeId(), requestedScope);
             if (matchedView == null || matchedView.isEmpty()) {
+                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 continue;
             }
-            collectCompositionViewGoalReferences(matchedView.get("rootNodes"), referencedGoalIds);
+            LinkedHashSet<String> landscapeReferencedGoalIds = new LinkedHashSet<>();
+            collectCompositionViewGoalReferences(matchedView.get("rootNodes"), landscapeReferencedGoalIds);
+            if (landscapeReferencedGoalIds.isEmpty()) {
+                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+            } else {
+                referencedGoalIds.addAll(landscapeReferencedGoalIds);
+            }
         }
 
-        if (referencedGoalIds.isEmpty()) {
+        if (referencedGoalIds.isEmpty() && fallbackGoalIds.isEmpty()) {
             return allGoals;
         }
 
@@ -4660,6 +4730,7 @@ public class LearnerService {
         for (String referencedGoalId : referencedGoalIds) {
             collectCompositionGoalAndDescendants(referencedGoalId, allGoals, visibleGoalIds, new HashSet<>());
         }
+        visibleGoalIds.addAll(fallbackGoalIds);
         if (visibleGoalIds.isEmpty()) {
             return allGoals;
         }
@@ -4672,6 +4743,20 @@ public class LearnerService {
             }
         }
         return scopedGoals.isEmpty() ? allGoals : scopedGoals;
+    }
+
+    private void addFilteredLandscapeGoalIds(
+            LearningLandscape landscape,
+            Map<String, LearningGoal> allGoals,
+            Set<String> goalIds) {
+        if (landscape == null || landscape.getGoals() == null || allGoals == null || allGoals.isEmpty() || goalIds == null) {
+            return;
+        }
+        for (LearningGoal goal : landscape.getGoals()) {
+            if (goal != null && allGoals.containsKey(goal.getId())) {
+                goalIds.add(goal.getId());
+            }
+        }
     }
 
     private boolean isCompositionViewCandidate(

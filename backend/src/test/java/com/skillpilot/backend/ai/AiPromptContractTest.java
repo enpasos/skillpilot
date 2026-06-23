@@ -64,6 +64,40 @@ class AiPromptContractTest {
     }
 
     @Test
+    void prompts_defineFlashcardModeAsVerifiedRecallInsteadOfGenericExercise() throws Exception {
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "Start Exercise");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "Start Exercise");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "kein generisches");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "Do not offer generic");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "Start Exercise");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
+                "chooseMemoryMode",
+                "verified-recall/start",
+                "Start Exercise");
+    }
+
+    @Test
     void prompts_reconstructUnusualSolutionsBeforeCorrecting() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),

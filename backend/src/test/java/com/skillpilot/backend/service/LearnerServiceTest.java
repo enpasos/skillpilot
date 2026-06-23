@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
@@ -39,6 +40,7 @@ public class LearnerServiceTest {
     private static final String HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID =
             "0756b198-0074-49d5-becd-9bb9f161a291";
     private static final String HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID = "283ec44e-747c-55e3-9a61-4a4cc70ebfab";
+    private static final String SEK1_CORE_FORMULAS_FLASHCARDS_ID = "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a";
 
     @Autowired
     private LearnerService learnerService;
@@ -228,6 +230,42 @@ public class LearnerServiceTest {
                     assertThat(goal.title()).isEqualTo("Jahrgangsstufe 9");
                     assertThat(goal.type()).isEqualTo("cluster");
                 });
+    }
+
+    @Test
+    @Transactional
+    void getLearnerState_requiresMemoryModeChoiceForActiveFlashcardGoal() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """);
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("chooseMemoryMode");
+        assertThat(state.stateMachine().activeGoal()).isNotNull();
+        assertThat(state.stateMachine().activeGoal().nodeKind()).isEqualTo("memory");
+        assertThat(state.stateMachine().modeOptions())
+                .extracting(option -> option.id())
+                .containsExactly("practice", "verify");
+        assertThat(state.stateMachine().modeOptions())
+                .filteredOn(option -> "verify".equals(option.id()))
+                .singleElement()
+                .satisfies(option -> {
+                    assertThat(option.action()).isEqualTo("startVerifiedRecall");
+                    assertThat(option.target()).isEqualTo("gpt");
+                    assertThat(option.goalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+                });
+        assertThat(state.nextAllowedActions()).contains("chooseMemoryMode", "startVerifiedRecall");
+        assertThat(state.nextAllowedActions()).doesNotContain("setMastery");
     }
 
     @Test

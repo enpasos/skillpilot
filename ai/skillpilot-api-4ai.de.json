@@ -259,6 +259,159 @@
         "x-openai-isConsequential": false
       }
     },
+    "/api/ai/de/sessions/{chatSessionToken}/verified-recall/start": {
+      "post": {
+        "operationId": "startVerifiedRecall",
+        "summary": "Lernkarten-Pruefung starten",
+        "description": "Bei aktivem Lernkarten-/Memorisierungsziel verwenden, wenn die lernende Person geprueft, abgefragt oder getestet werden will. Nur die zurueckgegebene Frage stellen; die Antwort noch nicht zeigen.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat-Session-Token aus redeemStartCode. Nicht anzeigen, nicht erfragen, nur fuer Folge-Tool-Calls verwenden.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Naechste Kartenfrage oder Abschluss der Pruefung.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallPromptResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/verified-recall/answer": {
+      "post": {
+        "operationId": "getVerifiedRecallAnswer",
+        "summary": "Erwartete Kartenantwort nach Lernenden-Antwort abrufen",
+        "description": "Erst aufrufen, nachdem die lernende Person ohne Hilfe auf die Kartenfrage geantwortet hat. Danach Antwort vergleichen und Ergebnis speichern.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat-Session-Token aus redeemStartCode. Nicht anzeigen, nicht erfragen, nur fuer Folge-Tool-Calls verwenden.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallAnswerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Erwartete Antwort zur zuletzt abgefragten Karte.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallAnswerResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/verified-recall/result": {
+      "post": {
+        "operationId": "recordVerifiedRecallResult",
+        "summary": "Ergebnis einer Kartenpruefung speichern",
+        "description": "Nach Vergleich der Lernenden-Antwort mit der erwarteten Antwort passed=true oder passed=false speichern. Gibt die naechste Frage oder Abschluss zurueck.",
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Chat-Session-Token aus redeemStartCode. Nicht anzeigen, nicht erfragen, nur fuer Folge-Tool-Calls verwenden.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifiedRecallResultRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Gespeichertes Kartenergebnis und naechster Pruefschritt.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerifiedRecallResultResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Chat-Session abgelaufen. Unterricht stoppen; auf skillpilot.com verweisen, dort Zugang laden oder SkillPilot-ID eingeben und Lerncoach erneut starten.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionExpiredResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-openai-isConsequential": false
+      }
+    },
     "/api/ai/de/sessions/{chatSessionToken}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
@@ -686,6 +839,42 @@
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Bestätigtes aktives Ziel im State Machine-Teil."
+          },
+          "modeOptions": {
+            "type": "array",
+            "description": "Modusoptionen für den aktuellen Schritt. Bei `requiredAction=chooseMemoryMode` enthält dies Üben im Cockpit und Prüfen per Verified Recall.",
+            "items": {
+              "$ref": "#/components/schemas/LearningModeOption"
+            }
+          }
+        }
+      },
+      "LearningModeOption": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stabile Modus-ID, z. B. practice oder verify."
+          },
+          "title": {
+            "type": "string",
+            "description": "Nutzerseitiger Modustitel."
+          },
+          "description": {
+            "type": "string",
+            "description": "Kurze Handlungsbeschreibung für diesen Modus."
+          },
+          "action": {
+            "type": "string",
+            "description": "Erforderliche Aktion. `openCockpitPractice` bedeutet Üben im Cockpit; `startVerifiedRecall` bedeutet Verified-Recall-Toolflow starten."
+          },
+          "target": {
+            "type": "string",
+            "description": "Zieloberfläche, z. B. cockpit oder gpt."
+          },
+          "goalId": {
+            "type": "string",
+            "description": "Aktives Lernkarten-Ziel für diesen Modus."
           }
         }
       },
@@ -700,6 +889,159 @@
         "required": [
           "goalId"
         ]
+      },
+      "VerifiedRecallStartRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; wenn leer, nutzt das Backend das aktive Lernkarten-Ziel."
+          },
+          "retest": {
+            "type": "boolean",
+            "description": "Optional true, um nach Abschluss erneut abzufragen."
+          }
+        }
+      },
+      "VerifiedRecallAnswerRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; aktives Lernkarten-Ziel."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "ID der gerade abgefragten Karte aus `startVerifiedRecall`."
+          }
+        },
+        "required": [
+          "cardId"
+        ]
+      },
+      "VerifiedRecallResultRequest": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "description": "Optional; aktives Lernkarten-Ziel."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "ID der geprüften Karte."
+          },
+          "passed": {
+            "type": "boolean",
+            "description": "true, wenn die Lernenden-Antwort ohne Kartenhilfe ausreichend korrekt war; sonst false."
+          },
+          "feedback": {
+            "type": "string",
+            "description": "Optionaler kurzer Bewertungsgrund."
+          }
+        },
+        "required": [
+          "cardId",
+          "passed"
+        ]
+      },
+      "VerifiedRecallPromptResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "`ready` bedeutet: Frage stellen. `complete` bedeutet: keine offene Karte mehr."
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Verbindliche Kurzregel für den nächsten Chat-Schritt."
+          },
+          "skillpilotId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Bei Chat-Session-Routen null. Nicht anzeigen und nicht in Links verwenden."
+          },
+          "goalId": {
+            "type": "string"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer"
+          },
+          "verifiedCards": {
+            "type": "integer"
+          },
+          "pendingCards": {
+            "type": "integer"
+          },
+          "cardId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Karte, die jetzt abgefragt wird. Bei `status=complete` null."
+          },
+          "prompt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Nur diese Frage stellen; erwartete Antwort nicht vorwegnehmen."
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "VerifiedRecallAnswerResponse": {
+        "type": "object",
+        "properties": {
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string"
+          },
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "expectedAnswer": {
+            "type": "string",
+            "description": "Erst nach Lernenden-Antwort verwenden."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VerifiedRecallResultResponse": {
+        "type": "object",
+        "properties": {
+          "savedCardId": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "verifiedCards": {
+            "type": "integer"
+          },
+          "pendingCards": {
+            "type": "integer"
+          },
+          "next": {
+            "$ref": "#/components/schemas/VerifiedRecallPromptResponse"
+          }
+        }
       },
       "MasteryResponse": {
         "type": "object",

@@ -184,36 +184,43 @@ public class LearnerAiController {
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Switch flashcards to verification mode and get the next prompt",
+            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. Ask only the returned prompt; do not reveal the answer yet.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startSessionVerifiedRecall(
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
         String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.startVerifiedRecall(skillpilotId, lang, request);
+        return withoutSkillpilotId(learnerService.startVerifiedRecall(skillpilotId, lang, request));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/answer")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Reveal the expected answer after the learner answered a verified-recall prompt",
+            description = "Call only after the learner has answered without help. Compare the learner answer with the expected answer, then save passed or failed.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallAnswerResponse getSessionVerifiedRecallAnswer(
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallAnswerRequest request) {
         String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/result")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Save the result of a verified flashcard recall",
+            description = "Persist passed=true or passed=false for the card after comparing the learner answer. Returns the next verification prompt or completion.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallResultResponse recordSessionVerifiedRecallResult(
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallResultRequest request) {
         String skillpilotId = resolveSessionLearnerId(chatSessionToken);
         learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.recordVerifiedRecallResult(skillpilotId, lang, request);
+        return withoutSkillpilotId(learnerService.recordVerifiedRecallResult(skillpilotId, lang, request));
     }
 
     @PostMapping("/sessions/{chatSessionToken}/curriculum")
@@ -359,7 +366,10 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/start")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Switch flashcards to verification mode and get the next prompt",
+            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. Ask only the returned prompt; do not reveal the answer yet.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startVerifiedRecall(
             @PathVariable String lang,
             @PathVariable String skillpilotId,
@@ -369,7 +379,10 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/answer")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Reveal the expected answer after the learner answered a verified-recall prompt",
+            description = "Call only after the learner has answered without help. Compare the learner answer with the expected answer, then save passed or failed.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             @PathVariable String lang,
             @PathVariable String skillpilotId,
@@ -379,7 +392,10 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/result")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(
+            summary = "Save the result of a verified flashcard recall",
+            description = "Persist passed=true or passed=false for the card after comparing the learner answer. Returns the next verification prompt or completion.",
+            extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallResultResponse recordVerifiedRecallResult(
             @PathVariable String lang,
             @PathVariable String skillpilotId,
@@ -441,6 +457,36 @@ public class LearnerAiController {
                 state.stateMachine());
     }
 
+    private VerifiedRecallPromptResponse withoutSkillpilotId(VerifiedRecallPromptResponse response) {
+        if (response == null) {
+            return null;
+        }
+        return new VerifiedRecallPromptResponse(
+                response.status(),
+                response.instruction(),
+                null,
+                response.goalId(),
+                response.goalTitle(),
+                response.totalCards(),
+                response.verifiedCards(),
+                response.pendingCards(),
+                response.cardId(),
+                response.prompt(),
+                response.category());
+    }
+
+    private VerifiedRecallResultResponse withoutSkillpilotId(VerifiedRecallResultResponse response) {
+        if (response == null) {
+            return null;
+        }
+        return new VerifiedRecallResultResponse(
+                response.savedCardId(),
+                response.passed(),
+                response.verifiedCards(),
+                response.pendingCards(),
+                withoutSkillpilotId(response.next()));
+    }
+
     private UnifiedLearnerStateResponse withAbsoluteExamAssetUrls(UnifiedLearnerStateResponse state) {
         if (state == null) {
             return null;
@@ -463,7 +509,8 @@ public class LearnerAiController {
                         sm.requiredAction(),
                         stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), assetBase));
+                        rewriteExamData(sm.activeGoal(), assetBase),
+                        sm.modeOptions());
 
         return new UnifiedLearnerStateResponse(
                 state.skillpilotId(),
@@ -498,7 +545,8 @@ public class LearnerAiController {
                         sm.requiredAction(),
                         stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
-                        rewriteExamData(sm.activeGoal(), assetBase));
+                        rewriteExamData(sm.activeGoal(), assetBase),
+                        sm.modeOptions());
 
         return new MasteryUpdateResponse(
                 response.saved(),

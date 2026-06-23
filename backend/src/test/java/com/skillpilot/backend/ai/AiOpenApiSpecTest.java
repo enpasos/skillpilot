@@ -39,6 +39,12 @@ class AiOpenApiSpecTest {
         assertExpiredSessionResponseIsDocumented(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
     }
 
+    @Test
+    void aiSpecs_exposeFlashcardModeAndVerifiedRecallSessionActions() throws Exception {
+        assertFlashcardModeAndVerifiedRecallActions(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
+        assertFlashcardModeAndVerifiedRecallActions(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+    }
+
     private static void assertSpecIsAiMinimal(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         JsonNode schemas = root.path("components").path("schemas");
@@ -110,6 +116,48 @@ class AiOpenApiSpecTest {
                         .isEqualTo("#/components/schemas/SessionExpiredResponse");
             });
         });
+    }
+
+    private static void assertFlashcardModeAndVerifiedRecallActions(Path path) throws IOException {
+        JsonNode root = MAPPER.readTree(Files.readString(path));
+        String lang = path.getFileName().toString().contains(".de.") ? "de" : "en";
+        JsonNode paths = root.path("paths");
+        assertVerifiedRecallOperation(
+                paths,
+                "/api/ai/" + lang + "/sessions/{chatSessionToken}/verified-recall/start",
+                "startVerifiedRecall");
+        assertVerifiedRecallOperation(
+                paths,
+                "/api/ai/" + lang + "/sessions/{chatSessionToken}/verified-recall/answer",
+                "getVerifiedRecallAnswer");
+        assertVerifiedRecallOperation(
+                paths,
+                "/api/ai/" + lang + "/sessions/{chatSessionToken}/verified-recall/result",
+                "recordVerifiedRecallResult");
+
+        JsonNode schemas = root.path("components").path("schemas");
+        assertThat(schemas.path("StateMachineInfo").path("properties").path("modeOptions")
+                .path("items").path("$ref").asText())
+                .isEqualTo("#/components/schemas/LearningModeOption");
+        assertThat(schemas.has("LearningModeOption")).isTrue();
+        assertThat(schemas.path("LearningModeOption").path("properties").path("action").path("description").asText())
+                .contains("startVerifiedRecall");
+        assertThat(schemas.has("VerifiedRecallStartRequest")).isTrue();
+        assertThat(schemas.has("VerifiedRecallAnswerRequest")).isTrue();
+        assertThat(schemas.has("VerifiedRecallResultRequest")).isTrue();
+        assertThat(schemas.path("VerifiedRecallPromptResponse").path("properties").path("skillpilotId")
+                .path("description").asText().toLowerCase())
+                .containsAnyOf("not", "nicht");
+    }
+
+    private static void assertVerifiedRecallOperation(JsonNode paths, String path, String operationId) {
+        JsonNode operation = paths.path(path).path("post");
+        assertThat(operation.isMissingNode())
+                .as(path)
+                .isFalse();
+        assertThat(operation.path("operationId").asText()).isEqualTo(operationId);
+        assertThat(operation.path("x-openai-isConsequential").asBoolean()).isFalse();
+        assertThat(operation.path("responses").has("410")).isTrue();
     }
 
     private static boolean containsFieldNamed(JsonNode node, String fieldName) {
