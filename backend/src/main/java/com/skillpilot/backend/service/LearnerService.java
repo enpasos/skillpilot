@@ -3932,7 +3932,7 @@ public class LearnerService {
                 continue;
             }
             List<CompositionViewService.CompositionStructureResolution> siblings =
-                    compositionViewService.findFollowingStructureSiblings(storedPlannedId);
+                    compositionViewService.findFollowingScopeSiblings(storedPlannedId);
             for (CompositionViewService.CompositionStructureResolution sibling : siblings) {
                 if (sibling == null || sibling.syntheticGoalId() == null || sibling.syntheticGoalId().isBlank()) {
                     continue;
@@ -3955,9 +3955,12 @@ public class LearnerService {
                     continue;
                 }
 
-                options.putIfAbsent(
-                        sibling.syntheticGoalId(),
-                        toCompositionStructureFrontierGoal(sibling.syntheticGoalId(), "Scope expansion"));
+                FrontierGoal option = isCompositionStructureGoalId(sibling.syntheticGoalId())
+                        ? toCompositionStructureFrontierGoal(sibling.syntheticGoalId(), "Scope expansion")
+                        : toFrontierGoal(filteredGoals.get(mappedReferenceIds.get(0)), "Scope expansion", null);
+                if (option != null) {
+                    options.putIfAbsent(option.id(), option);
+                }
                 break;
             }
         }
@@ -4628,8 +4631,7 @@ public class LearnerService {
                 || config == null
                 || config.isEmpty()
                 || closure == null
-                || closure.isEmpty()
-                || !hasExplicitDurationModelScope(config)) {
+                || closure.isEmpty()) {
             return allGoals;
         }
 
@@ -4670,19 +4672,6 @@ public class LearnerService {
             }
         }
         return scopedGoals.isEmpty() ? allGoals : scopedGoals;
-    }
-
-    private boolean hasExplicitDurationModelScope(Map<String, Map<String, Object>> config) {
-        for (Map<String, Object> entry : config.values()) {
-            if (entry == null) {
-                continue;
-            }
-            Object durationModel = entry.get("durationModel");
-            if (durationModel instanceof String text && normalizeDurationModelScope(text) != null) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private boolean isCompositionViewCandidate(
@@ -4778,6 +4767,9 @@ public class LearnerService {
 
     private String normalizeDurationModelScope(String value) {
         String normalized = normalizeFilterId(value);
+        if (normalized == null) {
+            return null;
+        }
         if ("DURATIONMODEL:G8".equals(normalized) || "DURATION-MODEL:G8".equals(normalized)) {
             return "G8";
         }
@@ -4789,6 +4781,9 @@ public class LearnerService {
 
     private String normalizeCourseProfileScope(String filterId) {
         String normalized = normalizeFilterId(filterId);
+        if (normalized == null) {
+            return null;
+        }
         if ("ALL".equals(normalized) || "GK+LK".equals(normalized)) {
             return "GK+LK";
         }
