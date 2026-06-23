@@ -2461,7 +2461,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         onSync={syncClientData}
                         reloadSignal={srsReloadCounter}
                         filterTags={getSrsFilterTagsForGoal(currentGoal)}
-                        onStartVerifiedRecall={isCompatibilityAuditOnly ? undefined : () => handleStartVerifiedRecall(currentGoal)}
                         onStateChange={({ goalId, mastery }) => {
                           setOptimisticSrsMasteryByGoal((current) => {
                             if (current[goalId] === mastery) return current
@@ -2481,75 +2480,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           {learnerViewCopy.memoryGoalModeBody}
                         </p>
                       </div>
-                      {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
-                        <div className="grid gap-3 md:grid-cols-2">
-                          <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 dark:border-slate-800 dark:bg-slate-950/30">
-                            <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
-                              {learnerViewCopy.memoryPracticeStatusLabel}
-                            </div>
-                            <div className="mt-1 text-xl font-semibold text-text-primary">
-                              {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
-                                currentFlashcardSetStatus.due,
-                                currentFlashcardSetStatus.total,
-                              ])}
-                            </div>
-                          </div>
-                          <div className="rounded-xl border border-sky-200 bg-sky-50/70 p-4 dark:border-sky-900/60 dark:bg-sky-950/20">
-                            <div className="text-[11px] font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300">
-                              {learnerViewCopy.memoryVerificationStatusLabel}
-                            </div>
-                            <div className="mt-1 text-xl font-semibold text-text-primary">
-                              {interpolateTemplate(learnerViewCopy.memoryVerificationPassedStatus, [
-                                currentFlashcardSetStatus.verifiedPassed,
-                                currentFlashcardSetStatus.total,
-                              ])}
-                            </div>
-                            <div className="mt-1 text-xs text-text-secondary">
-                              {interpolateTemplate(learnerViewCopy.memoryVerificationEligibleStatus, [
-                                currentFlashcardSetStatus.verificationEligible,
-                              ])}
-                              {currentFlashcardSetStatus.verificationBlockedToday > 0 ? (
-                                <span> · {interpolateTemplate(learnerViewCopy.memoryVerificationBlockedStatus, [
-                                  currentFlashcardSetStatus.verificationBlockedToday,
-                                ])}</span>
-                              ) : null}
-                            </div>
-                          </div>
-                        </div>
-                      ) : null}
-                      <div className="flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm dark:border-slate-800 dark:bg-slate-950/50">
-                        <span className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">
-                          {learnerViewCopy.memoryModeLabel}
-                        </span>
-                        <div className="grid grid-cols-2 overflow-hidden rounded-lg border border-slate-200 bg-slate-50 text-xs font-semibold dark:border-slate-800 dark:bg-slate-900">
-                          <button
-                            type="button"
-                            onClick={() => setMemoryPracticeGoalId(currentGoal.id)}
-                            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 dark:text-slate-200 dark:hover:bg-sky-950/40 dark:hover:text-sky-200"
-                            aria-pressed="false"
-                          >
-                            <BookOpen size={14} />
-                            {learnerViewCopy.memoryPracticeMode}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleStartVerifiedRecall(currentGoal)}
-                            disabled={currentFlashcardVerificationDisabled}
-                            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700 disabled:cursor-not-allowed disabled:opacity-55 dark:text-slate-200 dark:hover:bg-sky-950/40 dark:hover:text-sky-200"
-                            aria-pressed="false"
-                            title={
-                              currentFlashcardVerificationComplete
-                                ? learnerViewCopy.memoryVerificationCompleteStatus
-                                : currentFlashcardVerificationWaiting
-                                  ? learnerViewCopy.memoryVerificationWaitingStatus
-                                  : learnerViewCopy.memoryVerifiedRecallAction
-                            }
-                          >
-                            <ClipboardCheck size={14} />
-                            {learnerViewCopy.memoryVerifyMode}
-                          </button>
-                        </div>
-                      </div>
                       <div className="grid gap-4 md:grid-cols-2">
                         <button
                           type="button"
@@ -2563,6 +2493,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                             <span className="block text-base font-semibold text-text-primary">
                               {learnerViewCopy.memoryPracticeAction}
                             </span>
+                            {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                              <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
+                                  currentFlashcardSetStatus.due,
+                                  currentFlashcardSetStatus.total,
+                                ])}
+                              </span>
+                            ) : null}
                             <span className="mt-2 block text-sm text-text-secondary">
                               {learnerViewCopy.memoryPracticeBody}
                             </span>
@@ -2585,6 +2523,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                                   ? learnerViewCopy.memoryVerificationWaitingStatus
                                   : learnerViewCopy.memoryVerifiedRecallAction}
                             </span>
+                            {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                              <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
+                                {interpolateTemplate(learnerViewCopy.memoryVerificationPassedStatus, [
+                                  currentFlashcardSetStatus.verifiedPassed,
+                                  currentFlashcardSetStatus.total,
+                                ])}
+                                {' · '}
+                                {interpolateTemplate(learnerViewCopy.memoryVerificationEligibleStatus, [
+                                  currentFlashcardSetStatus.verificationEligible,
+                                ])}
+                                {currentFlashcardSetStatus.verificationBlockedToday > 0 ? (
+                                  <>
+                                    {' · '}
+                                    {interpolateTemplate(learnerViewCopy.memoryVerificationBlockedStatus, [
+                                      currentFlashcardSetStatus.verificationBlockedToday,
+                                    ])}
+                                  </>
+                                ) : null}
+                              </span>
+                            ) : null}
                             <span className="mt-2 block text-sm text-text-secondary">
                               {learnerViewCopy.memoryVerifiedRecallBody}
                             </span>
