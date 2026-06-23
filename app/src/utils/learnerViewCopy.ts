@@ -17,6 +17,7 @@ export interface LearnerViewCopy {
   memoryPracticeBody: string
   memoryVerifiedRecallAction: string
   memoryVerifiedRecallBody: string
+  memoryVerifiedRecallBatchLabel: string
   memoryPracticeStatusLabel: string
   memoryVerificationStatusLabel: string
   memoryPracticeDueStatus: string
@@ -49,6 +50,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryPracticeBody: 'Wiederhole fällige Karten mit dem SRS-Drill.',
         memoryVerifiedRecallAction: 'Mit Lerncoach prüfen',
         memoryVerifiedRecallBody: 'Starte die harte Abfrage für dieses aktive Lernziel.',
+        memoryVerifiedRecallBatchLabel: 'Batchgröße',
         memoryPracticeStatusLabel: 'Üben',
         memoryVerificationStatusLabel: 'Prüfung',
         memoryPracticeDueStatus: '{0}/{1} fällig',
@@ -78,6 +80,7 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryPracticeBody: 'Review due cards with the SRS drill.',
         memoryVerifiedRecallAction: 'Verify with Learning Coach',
         memoryVerifiedRecallBody: 'Start hard recall for this active goal.',
+        memoryVerifiedRecallBatchLabel: 'Batch size',
         memoryPracticeStatusLabel: 'Practice',
         memoryVerificationStatusLabel: 'Verification',
         memoryPracticeDueStatus: '{0}/{1} due',

@@ -69,16 +69,19 @@ class AiPromptContractTest {
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "kein generisches",
                 "pro Kalendertag",
                 "status=waiting");
@@ -86,6 +89,7 @@ class AiPromptContractTest {
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "Do not offer generic",
                 "per calendar day",
                 "status=waiting");
@@ -93,11 +97,13 @@ class AiPromptContractTest {
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
+                "batchSize",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.de.md"),

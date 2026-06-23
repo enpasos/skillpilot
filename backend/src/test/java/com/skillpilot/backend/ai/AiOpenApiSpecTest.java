@@ -145,6 +145,11 @@ class AiOpenApiSpecTest {
         assertThat(schemas.has("VerifiedRecallStartRequest")).isTrue();
         assertThat(schemas.has("VerifiedRecallAnswerRequest")).isTrue();
         assertThat(schemas.has("VerifiedRecallResultRequest")).isTrue();
+        assertThat(schemas.has("VerifiedRecallPromptCard")).isTrue();
+        assertThat(schemas.path("VerifiedRecallStartRequest").path("properties").has("batchSize")).isTrue();
+        assertThat(schemas.path("VerifiedRecallStartRequest").path("properties").path("batchSize")
+                .path("description").asText().toLowerCase())
+                .contains("legacy");
         assertThat(schemas.path("VerifiedRecallPromptResponse").path("properties").path("skillpilotId")
                 .path("description").asText().toLowerCase())
                 .containsAnyOf("not", "nicht");
@@ -154,6 +159,9 @@ class AiOpenApiSpecTest {
         assertThat(promptProperties.has("eligibleCards")).isTrue();
         assertThat(promptProperties.has("blockedCards")).isTrue();
         assertThat(promptProperties.has("nextEligibleAt")).isTrue();
+        assertThat(promptProperties.path("cards").path("items").path("$ref").asText())
+                .isEqualTo("#/components/schemas/VerifiedRecallPromptCard");
+        assertThat(promptProperties.has("batchSize")).isTrue();
     }
 
     private static void assertVerifiedRecallOperation(JsonNode paths, String path, String operationId) {

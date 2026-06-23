@@ -263,7 +263,7 @@
       "post": {
         "operationId": "startVerifiedRecall",
         "summary": "Start flashcard verification",
-        "description": "Use for an active flashcard/memorization goal when the learner wants to be checked, quizzed, asked, or tested. Ask only the returned prompt; do not reveal the answer yet.",
+        "description": "Use for an active flashcard/memorization goal when the learner wants to be checked, quizzed, asked, or tested. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -900,6 +900,12 @@
           "retest": {
             "type": "boolean",
             "description": "Deprecated; does not bypass passed cards or the daily lock."
+          },
+          "batchSize": {
+            "type": "integer",
+            "description": "Opt-in for new clients: number of card prompts to return at once. Cockpit default is 10. Omit for legacy single-card behavior.",
+            "minimum": 1,
+            "maximum": 20
           }
         }
       },
@@ -992,19 +998,48 @@
             ],
             "description": "ISO timestamp when a card locked today may be tested again."
           },
+          "batchSize": {
+            "type": "integer",
+            "description": "Number of card prompts returned in `cards`. Legacy clients can keep using `cardId` and `prompt`."
+          },
+          "cards": {
+            "type": "array",
+            "description": "Batch of card prompts to ask together as a numbered list. Empty when status is `waiting` or `complete`.",
+            "items": {
+              "$ref": "#/components/schemas/VerifiedRecallPromptCard"
+            }
+          },
           "cardId": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Card to ask now. Null when `status=complete`."
+            "description": "First card from `cards` for legacy single-card clients. Null when no card is available."
           },
           "prompt": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Ask only this prompt; do not reveal the expected answer first."
+            "description": "First prompt from `cards` for legacy single-card clients; do not reveal the expected answer first."
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "VerifiedRecallPromptCard": {
+        "type": "object",
+        "properties": {
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Ask this prompt without revealing the expected answer first."
           },
           "category": {
             "type": [

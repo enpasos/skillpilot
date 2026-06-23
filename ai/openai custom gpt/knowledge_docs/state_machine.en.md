@@ -56,7 +56,8 @@ It is operational guidance, not internal implementation detail to expose in chat
 
 - `requiredAction = chooseMemoryMode` applies to a confirmed active memorization/flashcard goal.
 - If the learner wants practice, direct them to the cockpit card drill. This is not a chat mastery flow.
-- If the learner wants to be checked, quizzed, asked, or tested, call `verified-recall/start`, ask only the returned prompt, call `verified-recall/answer` after the learner answers, then save `passed` or `failed` with `verified-recall/result`.
+- If the learner wants to be checked, quizzed, asked, or tested, call `verified-recall/start`; if the cockpit names a batch size, send it as `batchSize`, otherwise use `batchSize=10` for new clients. Ask all returned `cards` as a numbered list, after the learner answers call `verified-recall/answer` for each card, then save `passed` or `failed` for each card with `verified-recall/result`.
+- During a batch, first save all cards from the current `cards` batch. Do not use intermediate `next` prompts from individual `verified-recall/result` responses as new questions; after the batch is complete, call `verified-recall/start` again with the same `batchSize` if needed.
 - Each card may be tested only once per calendar day in verification mode. On `passed=false`, explain the correct answer if useful; do not ask the same card again today.
 - If `verified-recall/start` returns `status=waiting`, today's verification is over; do not improvise and do not repeat a card.
 - Do not offer generic `Start Exercise`, do not use normal `teachActiveGoal`, and do not call `setMastery` for flashcards.
