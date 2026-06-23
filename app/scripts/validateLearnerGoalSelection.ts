@@ -77,6 +77,17 @@ assert.equal(
 
 assert.equal(
   shouldAutoRevealActiveGoal({
+    activeGoalId: 'new-active-goal',
+    previousRevealedActiveGoalId: 'old-active-goal',
+    currentRouteGoalId: 'old-active-goal',
+    pendingRouteSyncGoalId: null,
+  }),
+  true,
+  'When the backend advances the active goal from the currently routed active goal, the cockpit should reveal the new active goal.',
+)
+
+assert.equal(
+  shouldAutoRevealActiveGoal({
     activeGoalId: 'active-goal',
     previousRevealedActiveGoalId: 'active-goal',
     currentRouteGoalId: '',

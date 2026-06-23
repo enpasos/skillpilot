@@ -22,10 +22,14 @@ export function shouldAutoRevealActiveGoal({
   pendingRouteSyncGoalId,
 }: ActiveGoalRevealInput): boolean {
   if (!activeGoalId) return false
-  if (currentRouteGoalId && currentRouteGoalId !== activeGoalId) return false
 
   const activeGoalChanged = activeGoalId !== previousRevealedActiveGoalId
-  if (activeGoalChanged) return true
+  if (activeGoalChanged) {
+    if (!currentRouteGoalId) return true
+    return !!previousRevealedActiveGoalId && currentRouteGoalId === previousRevealedActiveGoalId
+  }
+
+  if (currentRouteGoalId && currentRouteGoalId !== activeGoalId) return false
 
   const initialRouteNeedsSync = !currentRouteGoalId
   if (!initialRouteNeedsSync) return false
