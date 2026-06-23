@@ -501,6 +501,12 @@ public class CompositionViewService {
             }
         }
 
+        if (stageFallbackCount > 0
+                && StringUtils.hasText(requestedScope.get(COURSE_PROFILE_KEY))
+                && !viewScope.containsKey(COURSE_PROFILE_KEY)) {
+            return null;
+        }
+
         return new MatchScore(viewScope.size(), stageFallbackCount, courseFallbackCount, coursePreferenceRank);
     }
 

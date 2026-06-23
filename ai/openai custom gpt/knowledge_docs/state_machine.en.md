@@ -49,9 +49,17 @@ It is operational guidance, not internal implementation detail to expose in chat
 - Teach only when a goal is actively locked.
 - If `requiredAction = setActiveGoal` or `activeGoal` is empty, call `setActiveGoal` first.
 - If `requiredAction = teachActiveGoal`, do not call another navigation tool; teach and assess the active goal.
+- If `requiredAction = chooseMemoryMode`, do not start normal teaching; choose the flashcard mode.
 - `frontier` and `goalOptions` are candidate lists; the confirmed current goal is `activeGoal`.
 
-## 6. Mastery flow
+## 6. Flashcard Mode
+
+- `requiredAction = chooseMemoryMode` applies to a confirmed active memorization/flashcard goal.
+- If the learner wants practice, direct them to the cockpit card drill. This is not a chat mastery flow.
+- If the learner wants to be checked, quizzed, asked, or tested, call `verified-recall/start`, ask only the returned prompt, call `verified-recall/answer` after the learner answers, then save `passed` or `failed` with `verified-recall/result`.
+- Do not offer generic `Start Exercise`, do not use normal `teachActiveGoal`, and do not call `setMastery` for flashcards.
+
+## 7. Mastery flow
 
 - Mastery applies to atomic goals only.
 - Call `setMastery` only after evidence from the current dialogue, never directly as a reaction to `teachActiveGoal`.
@@ -61,12 +69,13 @@ It is operational guidance, not internal implementation detail to expose in chat
   - if `requiredAction = teachActiveGoal`, introduce the active goal and assess the learner,
   - if complete, acknowledge completion and pause suggestions.
 
-## 7. Completion and transition
+## 8. Completion and transition
 
 - When current scope goals are fully mastered, confirm completion briefly.
 - Then check whether a broader transition is available (filter/scope change).
 - Do not invent additional tasks outside the returned learner state.
 
-## 8. Deep-link requirement
+## 9. Deep-link requirement
 
-- For goals with `srs-deck:` tags or `extendedData`, continue via the provided app flow instead of normal chat teaching.
+- For goals with `extendedData`, continue via the provided app flow instead of normal chat teaching.
+- For goals with `srs-deck:` tags, follow Flashcard Mode in section 6.

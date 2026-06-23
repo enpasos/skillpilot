@@ -50,9 +50,17 @@ in der Unterhaltung genannt.
 - Unterrichten passiert nur mit aktivem Ziel.
 - Wenn `requiredAction = setActiveGoal` oder `activeGoal` leer ist: zuerst `setActiveGoal`.
 - Wenn `requiredAction = teachActiveGoal`: kein weiteres Navigationstool aufrufen, sondern das aktive Ziel didaktisch bearbeiten.
+- Wenn `requiredAction = chooseMemoryMode`: kein normales Unterrichtsgespräch starten, sondern Lernkartenmodus wählen.
 - `frontier`/`goalOptions` bleiben Kandidatenlisten; das bestätigte aktuelle Ziel ist `activeGoal`.
 
-## 6. Mastery-Flow
+## 6. Lernkartenmodus
+
+- `requiredAction = chooseMemoryMode` gilt für ein bestätigtes aktives Memorierungs-/Lernkartenziel.
+- Wenn die lernende Person üben will: auf den Cockpit-Kartendrill verweisen. Das ist kein Chat-Mastery-Flow.
+- Wenn die lernende Person geprüft, abgefragt oder getestet werden will: `verified-recall/start` aufrufen, nur die zurückgegebene Frage stellen, nach der Lernenden-Antwort `verified-recall/answer` aufrufen und anschließend mit `verified-recall/result` `passed` oder `failed` speichern.
+- Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten.
+
+## 7. Mastery-Flow
 
 - Mastery nur für atomare Ziele.
 - `setMastery` nur nach fachlicher Evidenz aus dem aktuellen Dialog aufrufen, niemals direkt als Reaktion auf `teachActiveGoal`.
@@ -62,12 +70,13 @@ in der Unterhaltung genannt.
   - bei `requiredAction = teachActiveGoal` das aktive Ziel vorstellen und die lernende Person prüfen,
   - bei kompletter Abdeckung keine zusätzlichen Vorschläge machen.
 
-## 7. Abschluss / Übergang
+## 8. Abschluss / Übergang
 
 - Bei vollständiger Abdeckung des aktuellen Fokusbereichs (Filter/Scope): Abschluss kurz bestätigen.
 - Danach prüfen, ob über Filterwechsel oder neuen Scope sinnvoll weitergeführt werden kann.
 - Keine Erweiterungen erfinden, wenn der aktuelle Scope bereits abgeschlossen ist.
 
-## 8. Deep-Link-Fall
+## 9. Deep-Link-Fall
 
-- Bei Zielen mit `srs-deck:`-Tag oder `extendedData` wird per App-Link weitergeführt.
+- Bei Zielen mit `extendedData` wird per App-Link weitergeführt.
+- Bei Zielen mit `srs-deck:`-Tag gilt der Lernkartenmodus aus Abschnitt 6.

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -244,6 +245,38 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void startSessionVerifiedRecall_hidesSkillpilotIdFromGptResponse() {
+        String chatSessionToken = "chat-token";
+        String skillpilotId = "learner-1";
+        VerifiedRecallStartRequest request = new VerifiedRecallStartRequest("goal-1", false);
+        VerifiedRecallPromptResponse serviceResponse = new VerifiedRecallPromptResponse(
+                "ready",
+                "ask prompt",
+                skillpilotId,
+                "goal-1",
+                "Goal",
+                3,
+                1,
+                2,
+                "card-1",
+                "Prompt",
+                "Formeln");
+
+        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(learnerService.startVerifiedRecall(skillpilotId, "de", request)).thenReturn(serviceResponse);
+
+        VerifiedRecallPromptResponse response = controller.startSessionVerifiedRecall("de", chatSessionToken, request);
+
+        assertThat(response.skillpilotId()).isNull();
+        assertThat(response.goalId()).isEqualTo("goal-1");
+        assertThat(response.cardId()).isEqualTo("card-1");
+        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).startVerifiedRecall(skillpilotId, "de", request);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
     void getVerifiedRecallAnswer_usesActiveRouteReadAccessAndDelegatesToService() {
         String skillpilotId = "learner-1";
         VerifiedRecallAnswerRequest request = new VerifiedRecallAnswerRequest("goal-1", "card-1");
@@ -291,6 +324,40 @@ class LearnerAiControllerTest {
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
         verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void recordSessionVerifiedRecallResult_hidesSkillpilotIdFromNestedNextPrompt() {
+        String chatSessionToken = "chat-token";
+        String skillpilotId = "learner-1";
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest("goal-1", "card-1", true, "ok");
+        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+                "ready",
+                "next prompt",
+                skillpilotId,
+                "goal-1",
+                "Goal",
+                2,
+                1,
+                1,
+                "card-2",
+                "Prompt 2",
+                "Formeln");
+        VerifiedRecallResultResponse serviceResponse = new VerifiedRecallResultResponse("card-1", true, 1, 1, next);
+
+        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request)).thenReturn(serviceResponse);
+
+        VerifiedRecallResultResponse response = controller.recordSessionVerifiedRecallResult("de", chatSessionToken, request);
+
+        assertThat(response.next()).isNotNull();
+        assertThat(response.next().skillpilotId()).isNull();
+        assertThat(response.next().cardId()).isEqualTo("card-2");
+        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
     @Test
@@ -371,6 +438,69 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().activeGoal().examData()).isNotNull();
         assertThat(state.frontier()).hasSize(1);
         assertThat(state.frontier().get(0).examData()).isNull();
+
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void getLearnerState_keepsMemoryModeOptionsForAi() {
+        String skillpilotId = "learner-1";
+        FrontierGoal memoryGoal = new FrontierGoal(
+                "memory-goal",
+                "Lernkarten",
+                "Memory goal",
+                "atomic",
+                "memory",
+                "Ready",
+                List.of("memorization", "srs-deck:test"),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+        LearningModeOption practice = new LearningModeOption(
+                "practice",
+                "Im Cockpit üben",
+                "Practice in cockpit",
+                "openCockpitPractice",
+                "cockpit",
+                memoryGoal.id());
+        LearningModeOption verify = new LearningModeOption(
+                "verify",
+                "Mit Lerncoach prüfen",
+                "Use verified recall",
+                "startVerifiedRecall",
+                "gpt",
+                memoryGoal.id());
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(memoryGoal),
+                null,
+                List.of("chooseMemoryMode", "startVerifiedRecall"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                memoryGoal,
+                new StateMachineInfo(
+                        "TEACHING",
+                        "chooseMemoryMode",
+                        List.of(memoryGoal),
+                        List.of(),
+                        memoryGoal,
+                        List.of(practice, verify)));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+
+        assertThat(state.stateMachine().requiredAction()).isEqualTo("chooseMemoryMode");
+        assertThat(state.stateMachine().modeOptions()).extracting(LearningModeOption::id)
+                .containsExactly("practice", "verify");
+        assertThat(state.stateMachine().modeOptions()).extracting(LearningModeOption::action)
+                .containsExactly("openCockpitPractice", "startVerifiedRecall");
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);

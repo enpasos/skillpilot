@@ -10,6 +10,9 @@ export interface LearnerViewCopy {
   revealMarkedScopeTitle: string
   memoryGoalModeTitle: string
   memoryGoalModeBody: string
+  memoryModeLabel: string
+  memoryPracticeMode: string
+  memoryVerifyMode: string
   memoryPracticeAction: string
   memoryPracticeBody: string
   memoryVerifiedRecallAction: string
@@ -31,6 +34,9 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         revealMarkedScopeTitle: 'Gehe zum markierten Scope',
         memoryGoalModeTitle: 'Kartenknoten',
         memoryGoalModeBody: 'Üben findet im Cockpit statt. Die harte Prüfung läuft mit dem Lerncoach, damit die Antwort ohne Kartenhilfe abgefragt und anschließend gespeichert wird.',
+        memoryModeLabel: 'Modus',
+        memoryPracticeMode: 'Üben',
+        memoryVerifyMode: 'Prüfen',
         memoryPracticeAction: 'Im Cockpit üben',
         memoryPracticeBody: 'Wiederhole fällige Karten mit dem SRS-Drill.',
         memoryVerifiedRecallAction: 'Mit Lerncoach prüfen',
@@ -49,6 +55,9 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         revealMarkedScopeTitle: 'Go to marked scope',
         memoryGoalModeTitle: 'Flashcard node',
         memoryGoalModeBody: 'Practice stays in the cockpit. Hard verification runs through the Learning Coach so the answer is recalled without card help and then saved.',
+        memoryModeLabel: 'Mode',
+        memoryPracticeMode: 'Practice',
+        memoryVerifyMode: 'Check',
         memoryPracticeAction: 'Practice in cockpit',
         memoryPracticeBody: 'Review due cards with the SRS drill.',
         memoryVerifiedRecallAction: 'Verify with Learning Coach',

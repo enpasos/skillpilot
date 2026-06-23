@@ -56,6 +56,14 @@ export interface StateMachineInfo {
   goalOptions: FrontierGoal[];
   curriculumOptions: { landscapeId: string; title: string }[];
   activeGoal?: FrontierGoal;
+  modeOptions?: Array<{
+    id: 'practice' | 'verify' | string;
+    title: string;
+    description: string;
+    action: string;
+    target: 'cockpit' | 'gpt' | string;
+    goalId: string;
+  }>;
 }
 
 export interface GoalStats {
