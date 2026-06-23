@@ -72,6 +72,7 @@ import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
 import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
@@ -89,6 +90,8 @@ import org.springframework.core.io.Resource;
 public class LearnerService {
 
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
+    private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
+    private static final int MAX_VERIFIED_RECALL_BATCH_SIZE = 20;
 
     private final LearnerRepository learnerRepository;
     private final LearnerClientStateRepository learnerClientStateRepository;
@@ -842,7 +845,8 @@ public class LearnerService {
         return buildVerifiedRecallPromptResponse(
                 skillpilotId,
                 language,
-                context);
+                context,
+                normalizeVerifiedRecallBatchSize(request != null ? request.batchSize() : null));
     }
 
     @Transactional(readOnly = true)
@@ -913,7 +917,11 @@ public class LearnerService {
                 context.goal(),
                 context.cards(),
                 nextState);
-        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(skillpilotId, language, updatedContext);
+        VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(
+                skillpilotId,
+                language,
+                updatedContext,
+                LEGACY_VERIFIED_RECALL_BATCH_SIZE);
         int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
         return new VerifiedRecallResultResponse(
                 card.id,
@@ -971,11 +979,12 @@ public class LearnerService {
     private VerifiedRecallPromptResponse buildVerifiedRecallPromptResponse(
             String skillpilotId,
             String language,
-            VerifiedRecallContext context) {
+            VerifiedRecallContext context,
+            int batchSize) {
         Instant now = Instant.now();
         VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(context.cards(), context.srsState(), now);
-        SrsCard nextCard = selectNextVerifiedRecallCard(context.cards(), context.srsState(), now);
-        if (nextCard == null) {
+        List<SrsCard> nextCards = selectNextVerifiedRecallCards(context.cards(), context.srsState(), now, batchSize);
+        if (nextCards.isEmpty()) {
             boolean complete = status.pendingCards() == 0;
             return new VerifiedRecallPromptResponse(
                     complete ? "complete" : "waiting",
@@ -991,10 +1000,16 @@ public class LearnerService {
                     status.eligibleCards(),
                     status.blockedCards(),
                     status.nextEligibleAt() != null ? status.nextEligibleAt().toString() : null,
+                    0,
+                    Collections.emptyList(),
                     null,
                     null,
                     null);
         }
+        List<VerifiedRecallPromptCard> promptCards = nextCards.stream()
+                .map(card -> new VerifiedRecallPromptCard(card.id, card.front, card.category))
+                .toList();
+        SrsCard firstCard = nextCards.get(0);
         return new VerifiedRecallPromptResponse(
                 "ready",
                 verifiedRecallPromptInstruction(language),
@@ -1007,9 +1022,11 @@ public class LearnerService {
                 status.eligibleCards(),
                 status.blockedCards(),
                 status.nextEligibleAt() != null ? status.nextEligibleAt().toString() : null,
-                nextCard.id,
-                nextCard.front,
-                nextCard.category);
+                promptCards.size(),
+                promptCards,
+                firstCard.id,
+                firstCard.front,
+                firstCard.category);
     }
 
     private int countVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
@@ -1031,17 +1048,46 @@ public class LearnerService {
     }
 
     private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState, Instant now) {
+        List<SrsCard> selected = selectNextVerifiedRecallCards(
+                cards,
+                srsState,
+                now,
+                LEGACY_VERIFIED_RECALL_BATCH_SIZE);
+        return selected.isEmpty() ? null : selected.get(0);
+    }
+
+    private List<SrsCard> selectNextVerifiedRecallCards(
+            List<SrsCard> cards,
+            Map<String, Object> srsState,
+            Instant now,
+            int batchSize) {
+        if (cards == null || cards.isEmpty() || batchSize <= 0) {
+            return Collections.emptyList();
+        }
+        List<SrsCard> selected = new ArrayList<>();
         for (SrsCard card : cards) {
             Object rawState = srsState != null ? srsState.get(card.id) : null;
             if (!(rawState instanceof Map<?, ?> stateMap)) {
-                return card;
+                selected.add(card);
+            } else {
+                Object verified = stateMap.get("verifiedRecall");
+                if (!isVerifiedRecallPassed(verified) && !wasVerifiedRecallTestedOn(verified, now)) {
+                    selected.add(card);
+                }
             }
-            Object verified = stateMap.get("verifiedRecall");
-            if (!isVerifiedRecallPassed(verified) && !wasVerifiedRecallTestedOn(verified, now)) {
-                return card;
+            if (selected.size() >= batchSize) {
+                return selected;
             }
         }
-        return null;
+        return selected;
+    }
+
+    private int normalizeVerifiedRecallBatchSize(Integer requestedBatchSize) {
+        if (requestedBatchSize == null) {
+            return LEGACY_VERIFIED_RECALL_BATCH_SIZE;
+        }
+        return Math.max(LEGACY_VERIFIED_RECALL_BATCH_SIZE,
+                Math.min(MAX_VERIFIED_RECALL_BATCH_SIZE, requestedBatchSize));
     }
 
     private VerifiedRecallDeckStatus summarizeVerifiedRecallDeck(
@@ -1199,8 +1245,8 @@ public class LearnerService {
 
     private String verifiedRecallPromptInstruction(String language) {
         return isEnglish(language)
-                ? "Ask the learner only this prompt. Do not reveal the expected answer before the learner has answered without help. Then call the answer tool and save passed or failed with the result tool."
-                : "Stelle dem Lernenden nur diese Frage. Verrate die erwartete Antwort nicht, bevor die Antwort ohne Hilfe abgegeben wurde. Rufe danach das Antwort-Werkzeug auf und speichere passed oder failed mit dem Ergebnis-Werkzeug.";
+                ? "Ask all returned card prompts as one numbered batch. Do not reveal expected answers before the learner has answered without help. Then call the answer tool and save passed or failed with the result tool for each card."
+                : "Stelle alle zurückgegebenen Kartenfragen als einen nummerierten Batch. Verrate die erwarteten Antworten nicht, bevor die Antworten ohne Hilfe abgegeben wurden. Rufe danach je Karte das Antwort-Werkzeug auf und speichere passed oder failed mit dem Ergebnis-Werkzeug.";
     }
 
     private String verifiedRecallAnswerInstruction(String language) {

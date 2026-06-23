@@ -186,7 +186,7 @@ public class LearnerAiController {
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
     @Operation(
             summary = "Switch flashcards to verification mode and get the next prompt",
-            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. Ask only the returned prompt; do not reveal the answer yet.",
+            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startSessionVerifiedRecall(
             @PathVariable String lang,
@@ -368,7 +368,7 @@ public class LearnerAiController {
     @PostMapping("/learners/{skillpilotId}/verified-recall/start")
     @Operation(
             summary = "Switch flashcards to verification mode and get the next prompt",
-            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. Ask only the returned prompt; do not reveal the answer yet.",
+            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startVerifiedRecall(
             @PathVariable String lang,
@@ -473,6 +473,8 @@ public class LearnerAiController {
                 response.eligibleCards(),
                 response.blockedCards(),
                 response.nextEligibleAt(),
+                response.batchSize(),
+                response.cards(),
                 response.cardId(),
                 response.prompt(),
                 response.category());

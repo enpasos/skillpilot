@@ -96,6 +96,22 @@ type BackendStats = {
   plannedGoalKey?: string
 }
 
+const VERIFIED_RECALL_DEFAULT_BATCH_SIZE = 10
+const VERIFIED_RECALL_MIN_BATCH_SIZE = 1
+const VERIFIED_RECALL_MAX_BATCH_SIZE = 20
+
+const clampVerifiedRecallBatchSize = (value: number) => {
+  if (!Number.isFinite(value)) return VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+  return Math.max(
+    VERIFIED_RECALL_MIN_BATCH_SIZE,
+    Math.min(VERIFIED_RECALL_MAX_BATCH_SIZE, Math.round(value)),
+  )
+}
+
+const verifiedRecallBatchStorageKey = (skillpilotId: string, goalId: string) => (
+  `verified_recall_batch_size_${skillpilotId}_${goalId}`
+)
+
 const goalIdsKey = (goalIds: Iterable<string>) => (
   Array.from(goalIds).filter(Boolean).sort().join('|')
 )
@@ -283,6 +299,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
   const [memoryPracticeGoalId, setMemoryPracticeGoalId] = useState<string | null>(null)
+  const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -397,6 +414,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     Boolean(currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0
       && currentFlashcardSetStatus.verifiedPending > 0
       && currentFlashcardSetStatus.verificationEligible === 0)
+  const currentVerifiedRecallBatchSize = currentGoal
+    ? (verifiedRecallBatchSizeByGoal[currentGoal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE)
+    : VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+
+  useEffect(() => {
+    if (!currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck'))) return
+    setVerifiedRecallBatchSizeByGoal((current) => {
+      if (current[currentGoal.id] !== undefined) return current
+      const stored = localStorage.getItem(verifiedRecallBatchStorageKey(skillpilotId, currentGoal.id))
+      const parsed = stored ? Number(stored) : Number.NaN
+      return {
+        ...current,
+        [currentGoal.id]: clampVerifiedRecallBatchSize(parsed),
+      }
+    })
+  }, [currentGoal, skillpilotId])
+
+  const handleVerifiedRecallBatchSizeChange = useCallback((goalId: string, value: number) => {
+    const next = clampVerifiedRecallBatchSize(value)
+    setVerifiedRecallBatchSizeByGoal((current) => ({ ...current, [goalId]: next }))
+    localStorage.setItem(verifiedRecallBatchStorageKey(skillpilotId, goalId), String(next))
+  }, [skillpilotId])
 
   useEffect(() => {
     setOptimisticSrsMasteryByGoal((current) => {
@@ -617,33 +656,36 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setMemoryPracticeGoalId(null)
   }, [currentGoal?.id])
 
-  const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal) => {
+  const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
     const title = getLearnerGoalTitle(goal)
     if (localizedLanguage === 'en') {
       return [
         `Active learning goal: ${goal.id} - ${title}`,
+        `Flashcard verification batch size: ${batchSize}`,
         '',
         'Please start hard flashcard verification for this active memorization goal.',
-        'Use the SkillPilot verified-recall tools: first get the next prompt, let me answer without help, fetch the expected answer only after I have submitted my answer, then save passed/failed for the card.',
+        `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`,
       ].join('\n')
     }
     return [
       `Aktives Lernziel: ${goal.id} - ${title}`,
+      `Batchgröße für die Kartenprüfung: ${batchSize}`,
       '',
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
-      'Nutze die SkillPilot-Werkzeuge für verified recall: zuerst die nächste Frage holen, mich ohne Hilfe antworten lassen, die erwartete Antwort erst nach meiner Antwort abrufen und danach passed/failed für die Karte speichern.',
+      `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`,
     ].join('\n')
   }, [getLearnerGoalTitle, localizedLanguage])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
     const chatWindow = window.open('', '_blank')
     let copied = false
+    const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
     try {
       const chatStart = await requestChatStart({
         skillpilotId,
         language,
         selectedCurriculum: rootLandscapeId || landscapeId,
-        promptContext: buildVerifiedRecallPromptContext(goal),
+        promptContext: buildVerifiedRecallPromptContext(goal, batchSize),
         client: 'verified-recall',
       })
       const url = getSkillpilotGptUrl(language, chatStart.prompt)
@@ -679,6 +721,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onNotify,
     rootLandscapeId,
     skillpilotId,
+    verifiedRecallBatchSizeByGoal,
   ])
 
   const visibleGoals = useMemo(() => {
@@ -2506,16 +2549,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                             </span>
                           </span>
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => handleStartVerifiedRecall(currentGoal)}
-                          disabled={currentFlashcardVerificationDisabled}
-                          className="flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors hover:border-sky-400 hover:bg-sky-100/80 disabled:cursor-not-allowed disabled:opacity-55 dark:border-sky-900/60 dark:bg-sky-950/20 dark:hover:border-sky-700 dark:hover:bg-sky-950/40"
+                        <div
+                          className={`flex min-h-32 items-start gap-4 rounded-xl border border-sky-200 bg-sky-50/70 p-5 text-left transition-colors dark:border-sky-900/60 dark:bg-sky-950/20 ${
+                            currentFlashcardVerificationDisabled
+                              ? 'opacity-70'
+                              : 'hover:border-sky-400 hover:bg-sky-100/80 dark:hover:border-sky-700 dark:hover:bg-sky-950/40'
+                          }`}
                         >
                           <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
                             <ClipboardCheck size={22} />
                           </span>
-                          <span>
+                          <span className="min-w-0 flex-1">
                             <span className="block text-base font-semibold text-text-primary">
                               {currentFlashcardVerificationComplete
                                 ? learnerViewCopy.memoryVerificationCompleteStatus
@@ -2546,8 +2590,31 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                             <span className="mt-2 block text-sm text-text-secondary">
                               {learnerViewCopy.memoryVerifiedRecallBody}
                             </span>
+                            <span className="mt-4 flex flex-wrap items-center gap-3">
+                              <label className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+                                {learnerViewCopy.memoryVerifiedRecallBatchLabel}
+                                <input
+                                  type="number"
+                                  min={VERIFIED_RECALL_MIN_BATCH_SIZE}
+                                  max={VERIFIED_RECALL_MAX_BATCH_SIZE}
+                                  step={1}
+                                  value={currentVerifiedRecallBatchSize}
+                                  onChange={(event) => handleVerifiedRecallBatchSizeChange(currentGoal.id, Number(event.target.value))}
+                                  className="h-8 w-16 rounded-lg border border-sky-200 bg-white px-2 text-sm font-semibold text-text-primary outline-none transition-colors focus:border-sky-500 dark:border-sky-900/60 dark:bg-slate-950"
+                                  disabled={currentFlashcardVerificationComplete}
+                                />
+                              </label>
+                              <button
+                                type="button"
+                                onClick={() => handleStartVerifiedRecall(currentGoal)}
+                                disabled={currentFlashcardVerificationDisabled}
+                                className="inline-flex items-center justify-center rounded-lg bg-sky-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:bg-slate-800 dark:disabled:text-slate-300"
+                              >
+                                {learnerViewCopy.memoryVerifyMode}
+                              </button>
+                            </span>
                           </span>
-                        </button>
+                        </div>
                       </div>
                     </div>
                   )}

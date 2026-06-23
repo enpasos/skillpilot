@@ -263,7 +263,7 @@
       "post": {
         "operationId": "startVerifiedRecall",
         "summary": "Lernkarten-Pruefung starten",
-        "description": "Bei aktivem Lernkarten-/Memorisierungsziel verwenden, wenn die lernende Person geprueft, abgefragt oder getestet werden will. Nur die zurueckgegebene Frage stellen; die Antwort noch nicht zeigen.",
+        "description": "Bei aktivem Lernkarten-/Memorisierungsziel verwenden, wenn die lernende Person geprueft, abgefragt oder getestet werden will. Neue Clients koennen batchSize senden, um mehrere Fragen zu erhalten; zurueckgegebene Fragen ohne Antworten stellen.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -900,6 +900,12 @@
           "retest": {
             "type": "boolean",
             "description": "Veraltet; umgeht weder bestandene Karten noch die Tages-Sperre."
+          },
+          "batchSize": {
+            "type": "integer",
+            "description": "Opt-in fuer neue Clients: Anzahl der Kartenfragen, die gleichzeitig zurueckgegeben werden. Cockpit-Default ist 10. Weglassen fuer Legacy-Einzelkartenverhalten.",
+            "minimum": 1,
+            "maximum": 20
           }
         }
       },
@@ -992,19 +998,48 @@
             ],
             "description": "ISO-Zeitpunkt, ab dem eine heute gesperrte Karte wieder geprueft werden darf."
           },
+          "batchSize": {
+            "type": "integer",
+            "description": "Anzahl der in `cards` zurueckgegebenen Kartenfragen. Legacy-Clients koennen weiter `cardId` und `prompt` nutzen."
+          },
+          "cards": {
+            "type": "array",
+            "description": "Batch von Kartenfragen, die gemeinsam als nummerierte Liste gestellt werden. Leer bei `waiting` oder `complete`.",
+            "items": {
+              "$ref": "#/components/schemas/VerifiedRecallPromptCard"
+            }
+          },
           "cardId": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Karte, die jetzt abgefragt wird. Bei `status=complete` null."
+            "description": "Erste Karte aus `cards` fuer Legacy-Einzelkartenclients. Null, wenn keine Karte verfuegbar ist."
           },
           "prompt": {
             "type": [
               "string",
               "null"
             ],
-            "description": "Nur diese Frage stellen; erwartete Antwort nicht vorwegnehmen."
+            "description": "Erste Frage aus `cards` fuer Legacy-Einzelkartenclients; erwartete Antwort nicht vorwegnehmen."
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "VerifiedRecallPromptCard": {
+        "type": "object",
+        "properties": {
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Diese Frage stellen, ohne die erwartete Antwort vorher zu verraten."
           },
           "category": {
             "type": [
