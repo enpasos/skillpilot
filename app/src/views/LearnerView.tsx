@@ -307,6 +307,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
+  const forceActiveGoalRevealRef = useRef(false)
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
 
   const { language, setLanguage } = useLanguage();
@@ -1235,9 +1236,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       return
     }
 
+    const forceActiveGoalReveal =
+      payload?.type === 'ACTIVE_GOAL_UPDATE' || payload?.type === 'ACTIVE_GOAL_UPDATE_AUTOPILOT'
+    if (forceActiveGoalReveal) {
+      forceActiveGoalRevealRef.current = true
+    }
+
     const now = Date.now()
     if (fullRefreshInFlightRef.current) return
-    if (now - lastFullRefreshAtRef.current < 800) return
+    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
 
     fullRefreshInFlightRef.current = true
     lastFullRefreshAtRef.current = now
@@ -1301,12 +1308,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     if (!effectiveActiveGoalId) {
       prevRevealedActiveGoalIdRef.current = null
       pendingActiveGoalRouteSyncRef.current = null
+      forceActiveGoalRevealRef.current = false
       return
     }
     if (effectiveLearnerParentMap.size === 0) return
 
     if (currentRouteGoalId === effectiveActiveGoalId) {
       pendingActiveGoalRouteSyncRef.current = null
+      forceActiveGoalRevealRef.current = false
     }
 
     if (!shouldAutoRevealActiveGoal({
@@ -1314,10 +1323,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       previousRevealedActiveGoalId: prevRevealedActiveGoalIdRef.current,
       currentRouteGoalId,
       pendingRouteSyncGoalId: pendingActiveGoalRouteSyncRef.current,
+      forceActiveGoalReveal: forceActiveGoalRevealRef.current,
     })) return
 
     console.log('[SSE] 🎯 Active goal ready for reveal:', effectiveActiveGoalId)
     revealActiveGoal()
+    forceActiveGoalRevealRef.current = false
     prevRevealedActiveGoalIdRef.current = effectiveActiveGoalId
     pendingActiveGoalRouteSyncRef.current = currentRouteGoalId ? null : effectiveActiveGoalId
   }, [currentRouteGoalId, effectiveActiveGoalId, effectiveLearnerParentMap, revealActiveGoal])

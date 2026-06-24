@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": "curriculum-quality-v2",
-  "generatedAt": "2026-06-01T21:13:21.801Z",
+  "rulesVersion": "curriculum-quality-v3",
+  "generatedAt": "2026-06-24T17:32:42.133Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -27,7 +27,7 @@
       "M6": 10
     },
     "ruleStatus": {
-      "pass": 205,
+      "pass": 229,
       "warn": 18,
       "fail": 4,
       "not_configured": 49
@@ -106,10 +106,24 @@
     },
     {
       "id": "CQR-201",
-      "label": "Terminal autonomy exam data",
+      "label": "Terminal autonomy exam data presence",
       "category": "assessment",
       "maturityTarget": "M4",
-      "description": "Terminal autonomy goals in configured scopes are exam-mode-capable or explicitly reviewed."
+      "description": "Terminal autonomy goals in configured scopes carry examData."
+    },
+    {
+      "id": "CQR-202",
+      "label": "Concrete exam task readiness",
+      "category": "assessment",
+      "maturityTarget": "M4",
+      "description": "Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose."
+    },
+    {
+      "id": "CQR-203",
+      "label": "Exam release and coverage metadata",
+      "category": "assessment",
+      "maturityTarget": "M4",
+      "description": "Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata."
     },
     {
       "id": "CQR-301",
@@ -648,7 +662,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 223,
             "visibleAtomicGoals": 183,
@@ -3147,7 +3161,7 @@
           "scopeId": "canonical-biology-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 229,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -3185,6 +3199,26 @@
                 "terminalAutonomyGoals": 14,
                 "terminalAutonomyGoalsWithExamData": 14,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "concreteExamData": 14,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "releasedCoverageCompleteExamData": 14,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -3879,7 +3913,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 265,
             "visibleAtomicGoals": 134,
@@ -8911,7 +8945,7 @@
           "scopeId": "canonical-chemistry-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 276,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -8949,6 +8983,26 @@
                 "terminalAutonomyGoals": 14,
                 "terminalAutonomyGoalsWithExamData": 14,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "concreteExamData": 14,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "releasedCoverageCompleteExamData": 14,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -9643,7 +9697,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -10674,7 +10728,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 79,
             "visibleAtomicGoals": 47,
@@ -15338,7 +15392,7 @@
           "scopeId": "canonical-german-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 268,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -15388,6 +15442,26 @@
                 "terminalAutonomyGoals": 1,
                 "terminalAutonomyGoalsWithExamData": 1,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "concreteExamData": 1,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "releasedCoverageCompleteExamData": 1,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -16082,7 +16156,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -17082,7 +17156,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -18228,7 +18302,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 187,
             "visibleAtomicGoals": 138,
@@ -23546,7 +23620,7 @@
           "scopeId": "canonical-history-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 156,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -23596,6 +23670,26 @@
                 "terminalAutonomyGoals": 1,
                 "terminalAutonomyGoalsWithExamData": 1,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "concreteExamData": 1,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "releasedCoverageCompleteExamData": 1,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -24290,7 +24384,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -24879,7 +24973,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1933,
+            "diagnosticPartialOnlyWarnings": 1935,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -24941,7 +25035,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1443,
+            "diagnosticPartialOnlyWarnings": 1445,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25034,7 +25128,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1813,
+            "diagnosticPartialOnlyWarnings": 1814,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25065,7 +25159,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1811,
+            "diagnosticPartialOnlyWarnings": 1813,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25096,7 +25190,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1606,
+            "diagnosticPartialOnlyWarnings": 1611,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25158,7 +25252,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1685,
+            "diagnosticPartialOnlyWarnings": 1686,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25189,7 +25283,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 2029,
+            "diagnosticPartialOnlyWarnings": 2034,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25220,7 +25314,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 2041,
+            "diagnosticPartialOnlyWarnings": 2046,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25251,7 +25345,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1941,
+            "diagnosticPartialOnlyWarnings": 1945,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25282,7 +25376,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 2050,
+            "diagnosticPartialOnlyWarnings": 2052,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25313,7 +25407,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 2047,
+            "diagnosticPartialOnlyWarnings": 2049,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -25321,7 +25415,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 1,
             "visibleAtomicGoals": 0,
@@ -25344,7 +25438,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 2108,
+            "diagnosticPartialOnlyWarnings": 2113,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,
@@ -26012,7 +26106,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 229,
             "visibleAtomicGoals": 82,
@@ -30113,7 +30207,7 @@
           "scopeId": "canonical-informatics-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 207,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -30163,6 +30257,26 @@
                 "terminalAutonomyGoals": 14,
                 "terminalAutonomyGoalsWithExamData": 14,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "concreteExamData": 14,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "releasedCoverageCompleteExamData": 14,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -30857,7 +30971,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -31625,7 +31739,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 105,
             "visibleAtomicGoals": 75,
@@ -35715,7 +35829,7 @@
           "scopeId": "canonical-latin-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 115,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -35765,6 +35879,26 @@
                 "terminalAutonomyGoals": 9,
                 "terminalAutonomyGoalsWithExamData": 9,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 9,
+                "concreteExamData": 9,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 9,
+                "releasedCoverageCompleteExamData": 9,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -35959,14 +36093,14 @@
       "frameworkId": "canonical-gymnasium-math",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
       "maturity": "M6",
-      "goals": 1038,
-      "atomicGoals": 826,
+      "goals": 1040,
+      "atomicGoals": 828,
       "clusterGoals": 212,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "totalJurisdictions": 16,
         "totalAtomicGoals": 648,
-        "rawAtomicGoals": 826,
+        "rawAtomicGoals": 828,
         "coveredJurisdictions": 16,
         "sourceBackedJurisdictions": 16,
         "sourceCompleteJurisdictions": 16,
@@ -35980,15 +36114,15 @@
         "unsupportedAssignedAtomicGoals": 0,
         "surrogateBackedAtomicGoals": 0,
         "partialSourceLinkedAtomicGoals": 0,
-        "sourceAtomicGoals": 9974,
-        "sourceMappedToViewAtomicGoals": 9974,
+        "sourceAtomicGoals": 9977,
+        "sourceMappedToViewAtomicGoals": 9977,
         "unmappedSourceAtomicGoals": 0,
-        "sourceExtractedGoals": 9974,
+        "sourceExtractedGoals": 9977,
         "sourceUnregisteredGoals": 0,
-        "sourceExtractedAtomicGoals": 9974,
+        "sourceExtractedAtomicGoals": 9977,
         "sourceUnregisteredAtomicGoals": 0,
-        "sourceOriginalGoals": 9974,
-        "sourceFullyCoveredOriginalGoals": 9974,
+        "sourceOriginalGoals": 9977,
+        "sourceFullyCoveredOriginalGoals": 9977,
         "sourcePartiallyCoveredOriginalGoals": 0,
         "sourceUncoveredOriginalGoals": 0,
         "jurisdictions": [
@@ -35996,9 +36130,9 @@
             "jurisdiction": "DE-BW",
             "labelDe": "Baden-Württemberg",
             "labelEn": "Baden-Wuerttemberg",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 598,
-            "visibleClusterGoals": 440,
+            "visibleClusterGoals": 442,
             "viewAtomicGoals": 598,
             "sourceBackedAtomicGoals": 598,
             "surrogateBackedAtomicGoals": 0,
@@ -36017,7 +36151,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 627,
+            "diagnosticPartialOnlyWarnings": 629,
             "atomicCoveragePercent": 92.3,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36027,9 +36161,9 @@
             "jurisdiction": "DE-HE",
             "labelDe": "Hessen",
             "labelEn": "Hesse",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36058,9 +36192,9 @@
             "jurisdiction": "DE-BY",
             "labelDe": "Bayern",
             "labelEn": "Bavaria",
-            "visibleGoals": 777,
+            "visibleGoals": 779,
             "visibleAtomicGoals": 459,
-            "visibleClusterGoals": 318,
+            "visibleClusterGoals": 320,
             "viewAtomicGoals": 459,
             "sourceBackedAtomicGoals": 459,
             "surrogateBackedAtomicGoals": 0,
@@ -36079,7 +36213,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 365,
+            "diagnosticPartialOnlyWarnings": 367,
             "atomicCoveragePercent": 70.8,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36089,9 +36223,9 @@
             "jurisdiction": "DE-BB",
             "labelDe": "Brandenburg",
             "labelEn": "Brandenburg",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36120,9 +36254,9 @@
             "jurisdiction": "DE-BE",
             "labelDe": "Berlin",
             "labelEn": "Berlin",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 633,
-            "visibleClusterGoals": 405,
+            "visibleClusterGoals": 407,
             "viewAtomicGoals": 633,
             "sourceBackedAtomicGoals": 633,
             "surrogateBackedAtomicGoals": 0,
@@ -36151,9 +36285,9 @@
             "jurisdiction": "DE-NI",
             "labelDe": "Niedersachsen",
             "labelEn": "Lower Saxony",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36172,7 +36306,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 753,
+            "diagnosticPartialOnlyWarnings": 754,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36182,9 +36316,9 @@
             "jurisdiction": "DE-NW",
             "labelDe": "Nordrhein-Westfalen",
             "labelEn": "North Rhine-Westphalia",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36203,7 +36337,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 683,
+            "diagnosticPartialOnlyWarnings": 685,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36213,9 +36347,9 @@
             "jurisdiction": "DE-SH",
             "labelDe": "Schleswig-Holstein",
             "labelEn": "Schleswig-Holstein",
-            "visibleGoals": 946,
+            "visibleGoals": 948,
             "visibleAtomicGoals": 609,
-            "visibleClusterGoals": 337,
+            "visibleClusterGoals": 339,
             "viewAtomicGoals": 609,
             "sourceBackedAtomicGoals": 609,
             "surrogateBackedAtomicGoals": 0,
@@ -36234,7 +36368,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 519,
+            "diagnosticPartialOnlyWarnings": 524,
             "atomicCoveragePercent": 94,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36244,9 +36378,9 @@
             "jurisdiction": "DE-HB",
             "labelDe": "Bremen",
             "labelEn": "Bremen",
-            "visibleGoals": 972,
+            "visibleGoals": 974,
             "visibleAtomicGoals": 624,
-            "visibleClusterGoals": 348,
+            "visibleClusterGoals": 350,
             "viewAtomicGoals": 624,
             "sourceBackedAtomicGoals": 624,
             "surrogateBackedAtomicGoals": 0,
@@ -36275,28 +36409,28 @@
             "jurisdiction": "DE-HH",
             "labelDe": "Hamburg",
             "labelEn": "Hamburg",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 626,
-            "sourceMappedToViewAtomicGoals": 626,
+            "sourceAtomicGoals": 627,
+            "sourceMappedToViewAtomicGoals": 627,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 626,
+            "sourceExtractedGoals": 627,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 626,
+            "sourceExtractedAtomicGoals": 627,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 626,
-            "sourceFullyCoveredOriginalGoals": 626,
+            "sourceOriginalGoals": 627,
+            "sourceFullyCoveredOriginalGoals": 627,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 682,
+            "diagnosticPartialOnlyWarnings": 683,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36306,9 +36440,9 @@
             "jurisdiction": "DE-MV",
             "labelDe": "Mecklenburg-Vorpommern",
             "labelEn": "Mecklenburg-Western Pomerania",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 565,
-            "visibleClusterGoals": 473,
+            "visibleClusterGoals": 475,
             "viewAtomicGoals": 565,
             "sourceBackedAtomicGoals": 565,
             "surrogateBackedAtomicGoals": 0,
@@ -36327,7 +36461,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 758,
+            "diagnosticPartialOnlyWarnings": 763,
             "atomicCoveragePercent": 87.2,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36337,28 +36471,28 @@
             "jurisdiction": "DE-RP",
             "labelDe": "Rheinland-Pfalz",
             "labelEn": "Rhineland-Palatinate",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
-            "sourceAtomicGoals": 445,
-            "sourceMappedToViewAtomicGoals": 445,
+            "sourceAtomicGoals": 447,
+            "sourceMappedToViewAtomicGoals": 447,
             "unmappedSourceAtomicGoals": 0,
-            "sourceExtractedGoals": 445,
+            "sourceExtractedGoals": 447,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 445,
+            "sourceExtractedAtomicGoals": 447,
             "sourceUnregisteredAtomicGoals": 0,
-            "sourceOriginalGoals": 445,
-            "sourceFullyCoveredOriginalGoals": 445,
+            "sourceOriginalGoals": 447,
+            "sourceFullyCoveredOriginalGoals": 447,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 773,
+            "diagnosticPartialOnlyWarnings": 778,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36368,9 +36502,9 @@
             "jurisdiction": "DE-SL",
             "labelDe": "Saarland",
             "labelEn": "Saarland",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36389,7 +36523,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 767,
+            "diagnosticPartialOnlyWarnings": 771,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36399,9 +36533,9 @@
             "jurisdiction": "DE-SN",
             "labelDe": "Sachsen",
             "labelEn": "Saxony",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36420,7 +36554,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 759,
+            "diagnosticPartialOnlyWarnings": 761,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36430,9 +36564,9 @@
             "jurisdiction": "DE-ST",
             "labelDe": "Sachsen-Anhalt",
             "labelEn": "Saxony-Anhalt",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 648,
-            "visibleClusterGoals": 390,
+            "visibleClusterGoals": 392,
             "viewAtomicGoals": 648,
             "sourceBackedAtomicGoals": 648,
             "surrogateBackedAtomicGoals": 0,
@@ -36451,7 +36585,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 771,
+            "diagnosticPartialOnlyWarnings": 773,
             "atomicCoveragePercent": 100,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36459,11 +36593,11 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
-            "visibleGoals": 1038,
+            "visibleGoals": 1040,
             "visibleAtomicGoals": 562,
-            "visibleClusterGoals": 476,
+            "visibleClusterGoals": 478,
             "viewAtomicGoals": 562,
             "sourceBackedAtomicGoals": 562,
             "surrogateBackedAtomicGoals": 0,
@@ -36482,7 +36616,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 785,
+            "diagnosticPartialOnlyWarnings": 790,
             "atomicCoveragePercent": 86.7,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -36653,8 +36787,8 @@
             "mappedSourceGoals": 289,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 45,
-            "partialMappings": 244,
+            "exactMappings": 44,
+            "partialMappings": 245,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 7.709342560553633,
@@ -36901,8 +37035,8 @@
             "mappedSourceGoals": 289,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 45,
-            "partialMappings": 244,
+            "exactMappings": 44,
+            "partialMappings": 245,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 7.709342560553633,
@@ -37028,8 +37162,8 @@
             "mappedSourceGoals": 221,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 71,
-            "partialMappings": 150,
+            "exactMappings": 72,
+            "partialMappings": 149,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 8.81447963800905,
@@ -38151,8 +38285,8 @@
             "mappedSourceGoals": 601,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 601,
-            "partialMappings": 0,
+            "exactMappings": 599,
+            "partialMappings": 2,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 8.72712146422629,
@@ -38408,21 +38542,21 @@
             "currentStep": "",
             "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 437,
+            "sourceGoals": 438,
             "passages": 43,
-            "mappedSourceGoals": 437,
+            "mappedSourceGoals": 438,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 137,
+            "exactMappings": 138,
             "partialMappings": 300,
             "otherMappings": 0,
             "sourceGoalCountPeerBaselineReview": {
               "accepted": true,
-              "details": "437 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung.",
+              "details": "438 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung.",
               "status": "accepted"
             },
             "sourceGoalGranularity": {
-              "averageWords": 8.327231121281464,
+              "averageWords": 8.321917808219178,
               "p90Words": 14,
               "maxWords": 53,
               "longGoals": 1,
@@ -38481,7 +38615,7 @@
                     "id": "source-goals-derived-from-passages",
                     "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
                     "passed": true,
-                    "details": "437 source goals from the module content bullets; old snapshot goals are not counted."
+                    "details": "438 source goals from the module content bullets; old snapshot goals are not counted."
                   },
                   {
                     "id": "source-goal-ids-unique",
@@ -38499,7 +38633,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "437 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 57%. Kritisch gepruefte Abweichung: 437 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung."
+                    "details": "438 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median 58%. Kritisch gepruefte Abweichung: 438 Source-Ziele sind plausibel: Hamburg 2022 wird modul- und bulletnah aus 43 Modulen der Jahrgangsbaender 5/6, 7/8 und 9/10 extrahiert; die hoehere Zahl gegenueber BW folgt der feineren Modulstruktur, nicht einer doppelten Dauer-Modell-Zaehlung."
                   }
                 ]
               },
@@ -38515,7 +38649,7 @@
                     "id": "mapping-2-complete",
                     "label": "MAPPING-2 abgeschlossen",
                     "passed": true,
-                    "details": "437 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+                    "details": "438 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
                   },
                   {
                     "id": "m3-review-file-present",
@@ -38533,13 +38667,13 @@
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": true,
-                    "details": "437/437 Source-Ziele reviewed; offen: 0."
+                    "details": "438/438 Source-Ziele reviewed; offen: 0."
                   },
                   {
                     "id": "m3-all-source-goals-covered",
                     "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": true,
-                    "details": "Fachlich abgedeckt: 437/437; Mappings: 437/437; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                    "details": "Fachlich abgedeckt: 438/438; Mappings: 438/438; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -39225,8 +39359,8 @@
             "mappedSourceGoals": 361,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 112,
-            "partialMappings": 249,
+            "exactMappings": 113,
+            "partialMappings": 248,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 6.825484764542936,
@@ -39819,16 +39953,16 @@
             "currentStep": "",
             "completedSteps": 3,
             "totalSteps": 3,
-            "sourceGoals": 253,
+            "sourceGoals": 255,
             "passages": 25,
-            "mappedSourceGoals": 253,
+            "mappedSourceGoals": 255,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 61,
-            "partialMappings": 192,
+            "exactMappings": 62,
+            "partialMappings": 193,
             "otherMappings": 0,
             "sourceGoalGranularity": {
-              "averageWords": 6.7272727272727275,
+              "averageWords": 6.733333333333333,
               "p90Words": 12,
               "maxWords": 27,
               "longGoals": 0,
@@ -39880,7 +40014,7 @@
                     "id": "source-goals-derived-from-passages",
                     "label": "Source-Ziele aus Lehrplanpassagen erzeugt",
                     "passed": true,
-                    "details": "253 source goals from official K1-K6 process bullets, Leitideen content-table rows and subitems; old snapshot goals are not counted."
+                    "details": "255 source goals from official K1-K6 process bullets, Leitideen content-table rows and subitems; old snapshot goals are not counted."
                   },
                   {
                     "id": "source-goal-ids-unique",
@@ -39898,7 +40032,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "253 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median -9%."
+                    "details": "255 Source-Ziele; Vergleich HE/BW SEKI (278); Median 278; zulässiger 30%-Median-Korridor 195-361; Abweichung vom Median -8%."
                   }
                 ]
               },
@@ -39914,7 +40048,7 @@
                     "id": "mapping-2-complete",
                     "label": "MAPPING-2 abgeschlossen",
                     "passed": true,
-                    "details": "253 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+                    "details": "255 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
                   },
                   {
                     "id": "m3-review-file-present",
@@ -39932,13 +40066,13 @@
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
                     "passed": true,
-                    "details": "253/253 Source-Ziele reviewed; offen: 0."
+                    "details": "255/255 Source-Ziele reviewed; offen: 0."
                   },
                   {
                     "id": "m3-all-source-goals-covered",
                     "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
                     "passed": true,
-                    "details": "Fachlich abgedeckt: 253/253; Mappings: 253/253; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                    "details": "Fachlich abgedeckt: 255/255; Mappings: 255/255; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
                   }
                 ]
               }
@@ -40118,8 +40252,8 @@
             "mappedSourceGoals": 346,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 128,
-            "partialMappings": 218,
+            "exactMappings": 129,
+            "partialMappings": 217,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 5.017341040462428,
@@ -40478,8 +40612,8 @@
             "mappedSourceGoals": 818,
             "unmappedSourceGoals": 0,
             "extraMappedGoals": 0,
-            "exactMappings": 175,
-            "partialMappings": 643,
+            "exactMappings": 178,
+            "partialMappings": 640,
             "otherMappings": 0,
             "sourceGoalCountPeerBaselineReview": {
               "accepted": true,
@@ -41575,15 +41709,15 @@
         {
           "scopeId": "canonical-math-sek1",
           "label": "Sekundarstufe I",
-          "selectedAtomicGoals": 252,
-          "maturity": "M3",
+          "selectedAtomicGoals": 254,
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
               "status": "pass",
               "summary": "Effective route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 252,
+                "selectedAtomicGoals": 254,
                 "missingMotivationPath": 0,
                 "missingTerminalPath": 0
               }
@@ -41593,7 +41727,7 @@
               "status": "pass",
               "summary": "Direct atomic route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 252,
+                "selectedAtomicGoals": 254,
                 "missingDirectMotivationPath": 0,
                 "missingDirectTerminalPath": 0
               }
@@ -41627,6 +41761,26 @@
                 "terminalAutonomyGoalsWithExamData": 7,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 7,
+                "concreteExamData": 7,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 7,
+                "releasedCoverageCompleteExamData": 7,
+                "releaseCoverageIncompleteExamData": 0
+              }
             }
           ]
         },
@@ -41634,7 +41788,7 @@
           "scopeId": "canonical-math-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 541,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -41673,6 +41827,26 @@
                 "terminalAutonomyGoalsWithExamData": 34,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 34,
+                "concreteExamData": 34,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 34,
+                "releasedCoverageCompleteExamData": 34,
+                "releaseCoverageIncompleteExamData": 0
+              }
             }
           ]
         }
@@ -41683,7 +41857,7 @@
           "status": "pass",
           "summary": "Basic graph integrity checks pass.",
           "metrics": {
-            "goals": 1038,
+            "goals": 1040,
             "localReferenceIssues": 0
           }
         },
@@ -41705,10 +41879,10 @@
             "emptySourceJurisdictions": 0,
             "missingReadableSourceInventoryJurisdictions": 0,
             "originalSourceUrlIssues": 0,
-            "sourceExtractedGoals": 9974,
-            "sourceOriginalGoals": 9974,
+            "sourceExtractedGoals": 9977,
+            "sourceOriginalGoals": 9977,
             "sourceUnregisteredGoals": 0,
-            "sourceExtractedAtomicGoals": 9974,
+            "sourceExtractedAtomicGoals": 9977,
             "sourceUnregisteredAtomicGoals": 0
           }
         },
@@ -41728,10 +41902,10 @@
             "sourceUnmappedJurisdictions": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "unmappedSourceAtomicGoals": 0,
-            "sourceAtomicGoals": 9974,
-            "sourceMappedToViewAtomicGoals": 9974,
-            "sourceOriginalGoals": 9974,
-            "sourceFullyCoveredOriginalGoals": 9974,
+            "sourceAtomicGoals": 9977,
+            "sourceMappedToViewAtomicGoals": 9977,
+            "sourceOriginalGoals": 9977,
+            "sourceFullyCoveredOriginalGoals": 9977,
             "sourcePartiallyCoveredOriginalGoals": 0,
             "sourceUncoveredOriginalGoals": 0,
             "surrogateBackedAtomicGoals": 0,
@@ -41749,7 +41923,7 @@
         {
           "id": "CQR-004",
           "status": "pass",
-          "summary": "Course-level mapping is clean for 666 upper-secondary source-to-canonical mapping edge(s), including 12 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "summary": "Course-level mapping is clean for 696 upper-secondary source-to-canonical mapping edge(s), including 12 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
           "metrics": {
             "configuredMappingFiles": 31,
             "sourceGoals": 4050,
@@ -41757,8 +41931,8 @@
             "gkLkSourceGoals": 2328,
             "lkSourceGoals": 1245,
             "unspecifiedSourceGoals": 62,
-            "checkedMappingEdges": 666,
-            "defaultedUnspecifiedMappingEdges": 111,
+            "checkedMappingEdges": 696,
+            "defaultedUnspecifiedMappingEdges": 112,
             "reviewedCourseLevelExceptions": 12,
             "mismatches": 0,
             "missingSourceGoals": 0,
@@ -41784,8 +41958,8 @@
           "summary": "Semantic atomicity review ledgers are current and fully accepted.",
           "metrics": {
             "configs": 2,
-            "leafGoals": 754,
-            "atomic": 754,
+            "leafGoals": 756,
+            "atomic": 756,
             "needsDeveloperReview": 0,
             "nonAtomic": 0,
             "missing": 0,
@@ -41796,11 +41970,11 @@
         {
           "id": "CQR-302",
           "status": "pass",
-          "summary": "Memory-card review is current: 37/750 ordinary atomic goals intentionally use memorization support, 64/64 primary cards are kept with origin traces, all 6 memory goals are traced, and 15 view-visible memory-required goals resolve to visible memory nodes.",
+          "summary": "Memory-card review is current: 37/752 ordinary atomic goals intentionally use memorization support, 64/64 primary cards are kept with origin traces, all 6 memory goals are traced, and 15 view-visible memory-required goals resolve to visible memory nodes.",
           "metrics": {
             "configs": 1,
-            "reviewedGoals": 750,
-            "noMemoryNeeded": 713,
+            "reviewedGoals": 752,
+            "noMemoryNeeded": 715,
             "memoryRequired": 37,
             "needsDeveloperReview": 0,
             "missing": 0,
@@ -41848,13 +42022,13 @@
           "metrics": {
             "activeWarnings": 0,
             "rawActiveWarnings": 0,
-            "diagnosticPartialOnlyWarnings": 8915,
+            "diagnosticPartialOnlyWarnings": 8951,
             "acceptedWarnings": 0,
             "obsoleteAcceptedWarnings": 0
           },
           "details": [
-            "non-blocking partial-only applicability diagnostics APV-202: 8915",
-            "diagnostic finding type APV-202: 8915"
+            "non-blocking partial-only applicability diagnostics APV-202: 8951",
+            "diagnostic finding type APV-202: 8951"
           ]
         }
       ]
@@ -42366,7 +42540,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -43373,7 +43547,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 585,
             "visibleAtomicGoals": 381,
@@ -47103,7 +47277,7 @@
           "scopeId": "canonical-physics-sek1",
           "label": "Sekundarstufe I",
           "selectedAtomicGoals": 75,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -47142,6 +47316,26 @@
                 "terminalAutonomyGoalsWithExamData": 1,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "concreteExamData": 1,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 1,
+                "releasedCoverageCompleteExamData": 1,
+                "releaseCoverageIncompleteExamData": 0
+              }
             }
           ]
         },
@@ -47149,7 +47343,7 @@
           "scopeId": "canonical-physics-sek2",
           "label": "Sekundarstufe II",
           "selectedAtomicGoals": 296,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -47187,6 +47381,26 @@
                 "terminalAutonomyGoals": 49,
                 "terminalAutonomyGoalsWithExamData": 49,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 49,
+                "concreteExamData": 49,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 49,
+                "releasedCoverageCompleteExamData": 49,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -47881,7 +48095,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 201,
             "visibleAtomicGoals": 62,
@@ -52242,7 +52456,7 @@
           "scopeId": "canonical-politics-economics-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 407,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -52292,6 +52506,26 @@
                 "terminalAutonomyGoals": 14,
                 "terminalAutonomyGoalsWithExamData": 14,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "concreteExamData": 14,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 14,
+                "releasedCoverageCompleteExamData": 14,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]
@@ -52986,7 +53220,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -53754,7 +53988,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -54522,7 +54756,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -55522,7 +55756,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 0,
             "visibleAtomicGoals": 0,
@@ -56290,7 +56524,7 @@
           },
           {
             "jurisdiction": "DE-TH",
-            "labelDe": "Thueringen",
+            "labelDe": "Thüringen",
             "labelEn": "Thuringia",
             "visibleGoals": 153,
             "visibleAtomicGoals": 111,
@@ -59876,7 +60110,7 @@
           "scopeId": "canonical-economics-crossstage",
           "label": "Sekundarstufe I/II",
           "selectedAtomicGoals": 303,
-          "maturity": "M3",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -59926,6 +60160,26 @@
                 "terminalAutonomyGoals": 18,
                 "terminalAutonomyGoalsWithExamData": 18,
                 "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "concreteExamData": 18,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "releasedCoverageCompleteExamData": 18,
+                "releaseCoverageIncompleteExamData": 0
               }
             }
           ]

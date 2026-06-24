@@ -13,6 +13,7 @@ interface ActiveGoalRevealInput {
   previousRevealedActiveGoalId?: string | null
   currentRouteGoalId?: string | null
   pendingRouteSyncGoalId?: string | null
+  forceActiveGoalReveal?: boolean
 }
 
 export function shouldAutoRevealActiveGoal({
@@ -20,8 +21,10 @@ export function shouldAutoRevealActiveGoal({
   previousRevealedActiveGoalId,
   currentRouteGoalId,
   pendingRouteSyncGoalId,
+  forceActiveGoalReveal = false,
 }: ActiveGoalRevealInput): boolean {
   if (!activeGoalId) return false
+  if (forceActiveGoalReveal) return currentRouteGoalId !== activeGoalId
 
   const activeGoalChanged = activeGoalId !== previousRevealedActiveGoalId
   if (activeGoalChanged) {

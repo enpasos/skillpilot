@@ -472,6 +472,42 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void getLearnerState_filtersUnreleasedPlaceholderExamDataFromSelectableGoals() {
+        String skillpilotId = "learner-1";
+        FrontierGoal readyExamCandidate = examGoal("ready-goal");
+        FrontierGoal placeholderExamCandidate = placeholderExamGoal("placeholder-goal");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(readyExamCandidate, placeholderExamCandidate),
+                new LearnerGoals(List.of(readyExamCandidate, placeholderExamCandidate), 0, 2, null, null, false),
+                List.of("setActiveGoal"),
+                List.of(),
+                Set.of(),
+                "FRONTIER",
+                null,
+                new StateMachineInfo(
+                        "FRONTIER",
+                        "setActiveGoal",
+                        List.of(readyExamCandidate, placeholderExamCandidate),
+                        List.of(),
+                        null));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+
+        assertThat(state.frontier()).extracting(FrontierGoal::id).containsExactly("ready-goal");
+        assertThat(state.frontier().get(0).examData()).isNull();
+        assertThat(state.stateMachine().goalOptions()).extracting(FrontierGoal::id).containsExactly("ready-goal");
+        assertThat(state.stateMachine().goalOptions().get(0).examData()).isNull();
+
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
     void getLearnerState_keepsExamDataOnActiveGoal() {
         String skillpilotId = "learner-1";
         FrontierGoal activeExamGoal = examGoal("goal-1");
@@ -608,6 +644,20 @@ class LearnerAiControllerTest {
         ExamData examData = new ExamData();
         examData.setTaskContent("Task body $x$");
         examData.setSolutionContent("Solution body");
+        examData.setScoring(scoring("step-1"));
+        return examGoal(goalId, examData);
+    }
+
+    private static FrontierGoal placeholderExamGoal(String goalId) {
+        ExamData examData = new ExamData();
+        examData.setReviewStatus("needs_review");
+        examData.setTaskContent("Eine materialgestützte J5-Übungsaufgabe verbindet natürliche Zahlen und Größen.");
+        examData.setSolutionContent("Die Lösung zeigt einen vollständigen J5-Bearbeitungsgang.");
+        examData.setScoring(scoring("placeholder-step"));
+        return examGoal(goalId, examData);
+    }
+
+    private static FrontierGoal examGoal(String goalId, ExamData examData) {
         return new FrontierGoal(
                 goalId,
                 "Exam Goal",
@@ -621,6 +671,18 @@ class LearnerAiControllerTest {
                 null,
                 null,
                 examData);
+    }
+
+    private static ExamData.Scoring scoring(String stepId) {
+        ExamData.Step step = new ExamData.Step();
+        step.setId(stepId);
+        step.setPoints(5);
+        step.setDescription("Evaluate the mathematical work.");
+        ExamData.Scoring scoring = new ExamData.Scoring();
+        scoring.setMaxPoints(5);
+        scoring.setPassingPoints(3);
+        scoring.setSteps(List.of(step));
+        return scoring;
     }
 
     private static UnifiedLearnerStateResponse learnerState(String skillpilotId, String requiredAction) {

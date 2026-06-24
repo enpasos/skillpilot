@@ -131,6 +131,11 @@ const readStringArray = (value: unknown): string[] => (
     : []
 )
 
+const isRenderableExamData = (examData: Goal['examData']): boolean => {
+  const status = String(examData?.reviewStatus ?? '').trim().toLowerCase()
+  return status.length === 0 || status === 'released'
+}
+
 const decodeCommonHtmlEntities = (value?: string): string => (
   (value ?? '')
     .replace(/&nbsp;/g, ' ')
@@ -643,6 +648,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
+  const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined
   const visibleTags = React.useMemo(
     () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
     [goal.tags],
@@ -772,7 +778,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
-        {goal.examData ? (
+        {examDataForDisplay ? (
           <div className="space-y-6">
             <div className="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
               <h3 className="text-sm font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide mb-2 flex items-center gap-2">
@@ -783,7 +789,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
-            {goal.examData.taskContent}
+            {examDataForDisplay.taskContent}
           </ReactMarkdown>
         </div>
 
@@ -798,7 +804,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                   remarkPlugins={[remarkGfm, remarkMath]}
                   rehypePlugins={[rehypeKatex]}
                 >
-                  {goal.examData.solutionContent}
+                  {examDataForDisplay.solutionContent}
                 </ReactMarkdown>
               </div>
             )}

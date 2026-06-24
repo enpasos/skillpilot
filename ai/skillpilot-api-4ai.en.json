@@ -19,8 +19,8 @@
     "/api/ai/en/chat-start/redeem": {
       "post": {
         "operationId": "redeemStartCode",
-        "summary": "Redeem start code and start chat session",
-        "description": "Must be the first tool call when the conversation starts with a SkillPilot start code. Returns a chatSessionToken and the initial learner state. Keep the token internal and do not display it to the learner.",
+        "summary": "Redeem start code",
+        "description": "Redeem start code.",
         "requestBody": {
           "required": true,
           "content": {
@@ -59,7 +59,7 @@
       "get": {
         "operationId": "getLearnerState",
         "summary": "Get unified learner state",
-        "description": "Loads current learner state for the chat session. Do not ask for a SkillPilot ID.",
+        "description": "Load learner state.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -100,7 +100,7 @@
       "post": {
         "operationId": "setScope",
         "summary": "Set learning scope/focus",
-        "description": "Sets learning focus based on goal IDs from the latest loaded state and returns the updated state.",
+        "description": "Set learning focus.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -150,8 +150,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/active-goal": {
       "post": {
         "operationId": "setActiveGoal",
-        "summary": "Lock an atomic goal for teaching",
-        "description": "Locks an atomic goal from the latest loaded state as the active goal and returns the updated state. Flashcard goals are offered only when hard card verification is available today. If the learner explicitly wants a different goal during active flashcard mode, send `redirect=true`.",
+        "summary": "Set active goal",
+        "description": "Set active goal.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -201,8 +201,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/mastery": {
       "post": {
         "operationId": "setMastery",
-        "summary": "Update mastery and get next steps",
-        "description": "Persists mastery only for the active atomic goal after sufficient evidence in the current dialogue. Do not call directly after state load or setActiveGoal. Request needs the active goalId.",
+        "summary": "Save mastery",
+        "description": "Save mastery.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -263,7 +263,7 @@
       "post": {
         "operationId": "startVerifiedRecall",
         "summary": "Start flashcard verification",
-        "description": "Use for an active flashcard/memorization goal when the learner wants to be checked, quizzed, asked, or tested. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
+        "description": "Start card check.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -313,8 +313,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/verified-recall/answer": {
       "post": {
         "operationId": "getVerifiedRecallAnswer",
-        "summary": "Get the expected flashcard answer after the learner answered",
-        "description": "Call only after the learner has answered the flashcard prompt without help. Then compare the answer and save the result.",
+        "summary": "Get card answer",
+        "description": "Get card answer.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -364,8 +364,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/verified-recall/result": {
       "post": {
         "operationId": "recordVerifiedRecallResult",
-        "summary": "Save the result of a flashcard verification",
-        "description": "After comparing the learner answer with the expected answer, save passed=true or passed=false. Returns the next prompt or completion.",
+        "summary": "Save card result",
+        "description": "Save card result.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -415,8 +415,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
-        "summary": "Set current curriculum/landscape",
-        "description": "Sets the active curriculum for this chat session and returns the updated state.",
+        "summary": "Set curriculum",
+        "description": "Set curriculum.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -470,7 +470,7 @@
       "post": {
         "operationId": "setPersonalization",
         "summary": "Personalize the curriculum",
-        "description": "Stores personal preferences and filters for this chat session, then returns the updated state.",
+        "description": "Save filters.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -1282,6 +1282,35 @@
       "ExamData": {
         "type": "object",
         "properties": {
+          "reviewStatus": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "needs_review",
+              "released"
+            ]
+          },
+          "coveredGoalIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coveredStrands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "demandLevels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceArtifactPath": {
+            "type": "string"
+          },
           "taskContent": {
             "type": "string"
           },
