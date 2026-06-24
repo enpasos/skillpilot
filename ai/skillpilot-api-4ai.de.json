@@ -151,7 +151,7 @@
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
-        "description": "Setzt ein atomares Ziel aus dem zuletzt geladenen Zustand als aktives Ziel und gibt den neuen Zustand zurueck. Bei ausdruecklichem Nutzerwunsch nach einem anderen Ziel waehrend eines aktiven Lernkartenmodus `redirect=true` senden.",
+        "description": "Setzt ein atomares Ziel aus dem zuletzt geladenen Zustand als aktives Ziel und gibt den neuen Zustand zurueck. Lernkarten-Ziele werden nur angeboten, wenn heute harte Kartenpruefung moeglich ist. Bei ausdruecklichem Nutzerwunsch nach einem anderen Ziel waehrend eines aktiven Lernkartenmodus `redirect=true` senden.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -611,7 +611,7 @@
           },
           "redirect": {
             "type": "boolean",
-            "description": "Nur true, wenn der Nutzer explizit auf ein anderes Ziel wechseln moechte; auch fuer den Wechsel aus einem wartenden Lernkartenmodus verwenden."
+            "description": "Nur true, wenn der Nutzer explizit auf ein anderes Ziel wechseln moechte, waehrend der Zustand noch ein anderes aktives Ziel sperrt."
           }
         },
         "required": [

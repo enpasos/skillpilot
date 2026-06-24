@@ -70,9 +70,11 @@ In this case:
 2. If `chooseMemoryMode` still applies, start the Verified Recall flow.
 3. **Do not** use the standard phrasing from section 4.
 
-If `verified-recall/start` then returns `status=waiting` and the learner wants
-another goal, reload `getLearnerState` and choose another atomic frontier goal
-with `setActiveGoal` plus `redirect=true`.
+If `verified-recall/start` then returns `status=waiting`, no further hard
+flashcard verification is available today. Reload `getLearnerState`; the
+backend will no longer return the flashcard goal as `activeGoal` or
+`goalOptions`. If the learner wants another goal, choose another atomic frontier
+goal from that reloaded state with `setActiveGoal`.
 
 If the Verified Recall actions are not available in the Custom GPT:
 - do not simulate verification

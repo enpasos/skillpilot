@@ -70,14 +70,14 @@ class AiPromptContractTest {
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "batchSize",
-                "redirect=true",
+                "hart prüfbare Karten",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "batchSize",
-                "redirect=true",
+                "hard-testable cards",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
@@ -86,7 +86,7 @@ class AiPromptContractTest {
                 "batchSize",
                 "kein generisches",
                 "pro Kalendertag",
-                "redirect=true",
+                "hart prüfbaren Karten",
                 "status=waiting");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
@@ -95,21 +95,21 @@ class AiPromptContractTest {
                 "batchSize",
                 "Do not offer generic",
                 "per calendar day",
-                "redirect=true",
+                "hard-testable cards",
                 "status=waiting");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "batchSize",
-                "redirect=true",
+                "hard-testable cards",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "batchSize",
-                "redirect=true",
+                "hard-testable cards",
                 "Start Exercise");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "deep_linking.de.md"),

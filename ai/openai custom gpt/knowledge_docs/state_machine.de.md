@@ -55,13 +55,14 @@ in der Unterhaltung genannt.
 
 ## 6. Lernkartenmodus
 
-- `requiredAction = chooseMemoryMode` gilt für ein bestätigtes aktives Memorierungs-/Lernkartenziel.
+- `requiredAction = chooseMemoryMode` gilt für ein bestätigtes aktives Memorierungs-/Lernkartenziel mit heute hart prüfbaren Karten.
 - Wenn die lernende Person üben will: auf den Cockpit-Kartendrill verweisen. Das ist kein Chat-Mastery-Flow.
 - Wenn die lernende Person geprüft, abgefragt oder getestet werden will: `verified-recall/start` aufrufen; wenn das Cockpit eine Batchgröße nennt, diese als `batchSize` senden, sonst für neue Clients `batchSize=10` nutzen. Alle zurückgegebenen `cards` als nummerierte Liste stellen, nach den Lernenden-Antworten je Karte `verified-recall/answer` aufrufen und anschließend je Karte mit `verified-recall/result` `passed` oder `failed` speichern.
 - Während eines Batches erst alle Karten aus dem aktuellen `cards`-Batch speichern. Zwischenzeitliche `next`-Prompts aus einzelnen `verified-recall/result`-Antworten nicht als neue Fragen verwenden; nach abgeschlossenem Batch bei Bedarf erneut `verified-recall/start` mit derselben `batchSize` aufrufen.
 - Jede Karte darf im Prüfmodus pro Kalendertag nur einmal geprüft werden. Bei `passed=false` darf die richtige Antwort erklärt werden; dieselbe Karte wird heute nicht erneut abgefragt.
 - Wenn `verified-recall/start` `status=waiting` liefert, ist die Prüfung für heute beendet; nicht improvisieren und keine Karte wiederholen.
-- Wenn die lernende Person danach ausdrücklich ein anderes Ziel möchte: `getLearnerState` neu laden und mit `setActiveGoal` plus `redirect=true` ein anderes atomares Frontier-Ziel wählen.
+- Wenn heute keine Karte hart prüfbar ist, darf kein Lernkarten-Ziel angeboten werden. `getLearnerState` neu laden; das Backend entfernt solche Lernkarten-Ziele aus `activeGoal` und `goalOptions`, solange keine harte Prüfung möglich ist.
+- Wenn die lernende Person danach ausdrücklich ein anderes Ziel möchte: aus dem neu geladenen Zustand ein anderes atomares Frontier-Ziel mit `setActiveGoal` wählen.
 - Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten.
 
 ## 7. Mastery-Flow

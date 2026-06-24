@@ -629,6 +629,51 @@ public class LearnerService {
                 .toInstant();
     }
 
+    private boolean isSrsGoalUnavailableForVerifiedRecall(String skillpilotId, LearningGoal goal) {
+        if (goal == null || !isSrsGoal(goal)) {
+            return false;
+        }
+        return !hasVerifiedRecallEligibleCardsToday(skillpilotId, goal);
+    }
+
+    private boolean hasVerifiedRecallEligibleCardsToday(String skillpilotId, LearningGoal goal) {
+        if (goal == null || !isSrsGoal(goal)) {
+            return false;
+        }
+        String source = getVocabularySource(goal);
+        if (source == null || source.isBlank()) {
+            return false;
+        }
+        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(source));
+        if (cards.isEmpty()) {
+            return false;
+        }
+        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(
+                cards,
+                loadSrsState(skillpilotId, goal.getId()),
+                Instant.now());
+        return status.eligibleCards() > 0;
+    }
+
+    private List<FrontierGoal> filterVerifiedRecallAvailableMemoryGoals(
+            String skillpilotId,
+            List<FrontierGoal> goals) {
+        if (goals == null || goals.isEmpty()) {
+            return goals;
+        }
+        return goals.stream()
+                .filter(goal -> !isMemoryFrontierGoalUnavailableForVerifiedRecall(skillpilotId, goal))
+                .toList();
+    }
+
+    private boolean isMemoryFrontierGoalUnavailableForVerifiedRecall(String skillpilotId, FrontierGoal goal) {
+        if (!isMemoryFrontierGoal(goal)) {
+            return false;
+        }
+        LearningGoal definition = landscapeService.getGoalDefinition(goal.id());
+        return definition == null || isSrsGoalUnavailableForVerifiedRecall(skillpilotId, definition);
+    }
+
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
             Map<String, LearningGoal> goals,
             Map<String, Double> mastery) {
@@ -3175,7 +3220,9 @@ public class LearnerService {
             }
         }
 
-        return frontier;
+        return frontier.stream()
+                .filter(goalId -> !isSrsGoalUnavailableForVerifiedRecall(skillpilotId, allGoals.get(goalId)))
+                .toList();
     }
 
     @Transactional(readOnly = true)
@@ -3292,6 +3339,7 @@ public class LearnerService {
                 frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
             }
         }
+        frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier));
 
         // Compaction Logic: If frontier is too large, prefer atomic goals for
         // actionable next steps.
@@ -3828,6 +3876,12 @@ public class LearnerService {
             activeGoalId = null;
             activeGoalMastered = false;
         }
+        if (activeGoalId != null
+                && !activeGoalId.isBlank()
+                && isSrsGoalUnavailableForVerifiedRecall(skillpilotId, allGoals.get(activeGoalId))) {
+            activeGoalId = null;
+            activeGoalMastered = false;
+        }
 
         com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
         com.skillpilot.backend.api.GoalStats scopeStats = plannedScopeIds.isEmpty()
@@ -4307,16 +4361,16 @@ public class LearnerService {
                     "goalId must be an atomic goal from the current frontier.");
         }
 
-        String currentActiveGoalId = learner.getActiveGoalId();
-        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)) {
-            return;
-        }
-
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
         boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
         if (!allowed) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
+        }
+
+        String currentActiveGoalId = learner.getActiveGoalId();
+        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)) {
+            return;
         }
 
         learner.setActiveGoalId(effectiveGoalId);
