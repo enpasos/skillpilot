@@ -78,6 +78,18 @@ assert.equal(
 assert.equal(
   shouldAutoRevealActiveGoal({
     activeGoalId: 'new-active-goal',
+    previousRevealedActiveGoalId: null,
+    currentRouteGoalId: 'old-active-goal',
+    pendingRouteSyncGoalId: null,
+    forceActiveGoalReveal: true,
+  }),
+  true,
+  'An explicit active-goal SSE update must reveal the new active goal even when the cockpit still routes to the old goal.',
+)
+
+assert.equal(
+  shouldAutoRevealActiveGoal({
+    activeGoalId: 'new-active-goal',
     previousRevealedActiveGoalId: 'old-active-goal',
     currentRouteGoalId: 'old-active-goal',
     pendingRouteSyncGoalId: null,

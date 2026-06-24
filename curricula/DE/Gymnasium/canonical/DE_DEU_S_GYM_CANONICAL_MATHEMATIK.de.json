@@ -28259,31 +28259,64 @@
       "phase": "J5",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J5-Übungsaufgabe verbindet natürliche Zahlen, Größen und einfache geometrische Darstellungen. Die lernende Person entnimmt Informationen aus Text, Tabelle oder Skizze, rechnet nachvollziehbar und prüft Ergebnisse im Sachzusammenhang.",
-        "solutionContent": "Die Lösung zeigt einen vollständigen J5-Bearbeitungsgang: Informationen markieren, passende Rechenoperationen wählen, Größen sauber umrechnen, einfache Figuren oder Koordinaten fachgerecht nutzen und das Ergebnis im Kontext begründen.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+          "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+          "191c67db-44a8-4f63-994a-d85e8e301194",
+          "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+          "54148506-c23f-41b8-959b-068dd194cf15",
+          "b5de0574-93ed-409c-80ee-312211420cd6",
+          "03a87896-088d-4b21-a37b-d0604d784540",
+          "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "d825f7ce-e19b-594a-8181-eff199c21d93",
+          "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+          "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+          "0bd7dc9b-c7f9-52e6-b374-a019edfd821c"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j5_terminal_autonomy_v1.md",
+        "taskContent": "Die Klasse 5c plant einen Projekttag auf dem Schulhof. Der Lageplan wird in ein Koordinatensystem eingetragen. Eine Einheit entspricht $1\\,\\mathrm{m}$.\n\nSchulhof: $A(0\\mid0)$, $B(18\\mid0)$, $C(18\\mid12)$, $D(0\\mid12)$.\n\nSpielzone: $E(2\\mid2)$, $F(10\\mid2)$, $G(10\\mid7)$, $H(2\\mid7)$.\n\nMaterialtisch: $T(14\\mid3)$.\n\nBestellliste:\n\n| Material | Anzahl |\n| --- | ---: |\n| 8 Klassensets mit je 24 Aufgabenkarten | |\n| 6 Stationen mit je 35 Stickern | |\n| 4 Kreidepakete mit je 125 Kreidestücken | |\n\nKasse:\n\n| Vorgang | Änderung |\n| --- | ---: |\n| Startguthaben | $+850\\,\\mathrm{EUR}$ |\n| Dekoration | $-260\\,\\mathrm{EUR}$ |\n| Material | $-135\\,\\mathrm{EUR}$ |\n| Klassenbeiträge | $+192\\,\\mathrm{EUR}$ |\n\n1. Berechne die Gesamtzahl der Aufgabenkarten, Sticker und Kreidestücke. Nutze mindestens einen Rechenvorteil und ordne dein Ergebnis zusammen mit $1\\,000$ und $10\\,000$ der Größe nach. Erkläre außerdem kurz, warum es keine größte natürliche Zahl gibt. (6 BE)\n\n2. Bestimme den Kassenstand nach allen vier Vorgängen. Prüfe die Aussage: \"Schon nach den beiden Ausgaben sind noch mindestens $500\\,\\mathrm{EUR}$ in der Kasse.\" Gib ein Gegenbeispiel oder eine Rechnung an. (6 BE)\n\n3. Bestimme die Seitenlängen und den Flächeninhalt der Spielzone. Erkläre am Rechteck, warum die Flächenformel Länge $\\cdot$ Breite hier passt. (7 BE)\n\n4. Markiere alle Punkte auf waagerechten oder senkrechten Linien durch $T$, die genau $4\\,\\mathrm{m}$ von $T$ entfernt sind. Entscheide, welche davon noch auf dem Schulhof liegen. (5 BE)\n\n5. Löse die beiden Planungsgleichungen und kontrolliere jeweils mit der Umkehraufgabe: $x + 17 = 43$ und $4y = 72$. Deute $x$ als fehlende Helferinnen und Helfer und $y$ als Anzahl der Viererbänke. (6 BE)",
+        "solutionContent": "1. Es gilt\n$$\n8\\cdot24+6\\cdot35+4\\cdot125=192+210+500=902.\n$$\nEin Rechenvorteil ist zum Beispiel, zuerst $4\\cdot125=500$ zu rechnen. Die Ordnung lautet\n$$\n902 < 1\\,000 < 10\\,000.\n$$\nEs gibt keine größte natürliche Zahl, weil man zu jeder natürlichen Zahl noch $1$ addieren kann.\n\n2. Nach allen Vorgängen beträgt der Kassenstand\n$$\n850-260-135+192=647,\n$$\nalso $647\\,\\mathrm{EUR}$. Nach den beiden Ausgaben sind es\n$$\n850-260-135=455.\n$$\nDamit ist die Aussage falsch, denn $455<500$.\n\n3. Die Spielzone ist $10-2=8\\,\\mathrm{m}$ lang und $7-2=5\\,\\mathrm{m}$ breit. Der Flächeninhalt beträgt\n$$\n8\\cdot5=40,\n$$\nalso $40\\,\\mathrm{m}^2$. Die Formel passt, weil sich das Rechteck in $8$ Spalten und $5$ Reihen aus Einheitsquadraten zerlegen lässt.\n\n4. Von $T(14\\mid3)$ aus liegen die Punkte im Abstand $4\\,\\mathrm{m}$ auf waagerechten oder senkrechten Linien bei\n$$\n(10\\mid3),\\ (18\\mid3),\\ (14\\mid7),\\ (14\\mid-1).\n$$\nAuf dem Schulhof liegen $(10\\mid3)$, $(18\\mid3)$ und $(14\\mid7)$. Der Punkt $(14\\mid-1)$ liegt außerhalb, weil die y-Koordinate kleiner als $0$ ist.\n\n5. Aus $x+17=43$ folgt $x=26$, Kontrolle: $26+17=43$. Es fehlen $26$ Helferinnen und Helfer. Aus $4y=72$ folgt $y=18$, Kontrolle: $18\\cdot4=72$. Es werden $18$ Viererbänke benötigt.",
         "scoring": {
-          "maxPoints": 24,
-          "passingPoints": 12,
+          "maxPoints": 30,
+          "passingPoints": 15,
           "steps": [
             {
-              "id": "j5_practice_1",
+              "id": "j5_released_1",
               "points": 6,
-              "description": "Informationen aus Text, Tabelle oder Skizze richtig entnommen"
+              "description": "Materialmengen mit natürlichen Zahlen korrekt berechnet, Rechenvorteil genutzt und Zahlen geordnet"
             },
             {
-              "id": "j5_practice_2",
-              "points": 8,
-              "description": "Rechnungen mit natürlichen Zahlen und Größen korrekt durchgeführt"
+              "id": "j5_released_2",
+              "points": 6,
+              "description": "Kassenänderungen mit ganzen Zahlen korrekt verarbeitet und eine falsche Aussage durch Rechnung widerlegt"
             },
             {
-              "id": "j5_practice_3",
+              "id": "j5_released_3",
+              "points": 7,
+              "description": "Rechteckmaße und Flächeninhalt aus Koordinaten bestimmt und die Flächenformel über Einheitsquadrate erklärt"
+            },
+            {
+              "id": "j5_released_4",
               "points": 5,
-              "description": "Einfache geometrische Darstellung oder Koordinatendarstellung fachgerecht genutzt"
+              "description": "Punktmenge mit Abstand 4 m zu T bestimmt und Schulhoflage geprüft"
             },
             {
-              "id": "j5_practice_4",
-              "points": 5,
-              "description": "Ergebnis im Kontext geprüft und nachvollziehbar dargestellt"
+              "id": "j5_released_5",
+              "points": 6,
+              "description": "Additive und multiplikative Gleichungen gelöst, kontrolliert und im Kontext gedeutet"
             }
           ]
         }
@@ -28374,31 +28407,84 @@
       "phase": "J6",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J6-Übungsaufgabe verbindet rationale Zahlen, Flächen- oder Volumenberechnungen, Prozentrechnung und Datenauswertung. Die lernende Person wählt passende Verfahren und begründet die Ergebnisse fachlich.",
-        "solutionContent": "Die Lösung zeigt sichere Zahlbereichsarbeit, passende Formeln für Flächen oder Volumina, korrekte Prozent- oder Datenrechnungen und eine verständliche Deutung der Ergebnisse im Sachzusammenhang.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+          "a075ae99-7669-563d-807a-f91b119c020a",
+          "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+          "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+          "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+          "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+          "44cb7404-114e-5b14-b33a-ddee41952d46",
+          "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+          "ee48e811-4c9c-5080-9836-8403fc9f0810",
+          "26f668a0-6425-5466-9cf7-6295dd189005",
+          "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+          "491e0858-e977-516e-a339-1cc2f9e9690f",
+          "b44f038c-fb1f-527e-b9ad-382214d0328a",
+          "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+          "72b6bfa5-8e34-4029-8f85-0277207c485e",
+          "acbb7e26-f85f-405b-a3e5-affa6add6711",
+          "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "05012547-7263-5bfa-9e7c-df970745a011",
+          "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+          "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+          "8a691345-3216-522c-a898-d65e8e94db28",
+          "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+          "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+          "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+          "11c88ea2-8502-5008-bec2-3e491c75ace4",
+          "8cb18560-3a2b-593e-b634-9d768566cba9",
+          "3d49cd27-3a84-50eb-ac35-f0b0bee80df2"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6_terminal_autonomy_v1.md",
+        "taskContent": "Die Klasse 6b richtet einen Forschertag aus. Die Stationen stehen in einer Turnhalle. Die Maße sind in Metern angegeben.\n\nStationstisch: Quader mit Länge $1.8\\,\\mathrm{m}$, Breite $0.75\\,\\mathrm{m}$, Höhe $0.9\\,\\mathrm{m}$.\n\nGetränkebestand:\n\n| Getränk | Anteil am Vorrat | Vorrat in Litern |\n| --- | ---: | ---: |\n| Wasser | $\\frac{3}{8}$ | |\n| Apfelschorle | $0.35$ | |\n| Tee | Rest | |\n\nInsgesamt stehen $80\\,\\mathrm{L}$ Getränke bereit.\n\nTemperaturen in der Kühlbox:\n\n| Zeitpunkt | Temperatur |\n| --- | ---: |\n| 8:00 Uhr | $-2.5\\,^\\circ\\mathrm{C}$ |\n| 10:00 Uhr | $-0.75\\,^\\circ\\mathrm{C}$ |\n| 12:00 Uhr | $1.25\\,^\\circ\\mathrm{C}$ |\n\nBesucherinnen und Besucher:\n\n| Klasse | angemeldet | erschienen |\n| --- | ---: | ---: |\n| 6a | 24 | 21 |\n| 6b | 28 | 28 |\n| 6c | 25 | 20 |\n\n1. Deute $\\frac{3}{8}$ als Anteil, Quotient und Zahl. Wandle $0.35$ in einen gekürzten Bruch um. Bestimme den Tee-Anteil und ordne die drei Anteile der Größe nach. Gib außerdem eine rationale Zahl zwischen $\\frac{1}{2}$ und $\\frac{3}{5}$ an und erkläre daran kurz die Dichtheit der rationalen Zahlen. (7 BE)\n\n2. Berechne die Literzahlen für Wasser, Apfelschorle und Tee. Bestimme die Temperaturänderung von 8:00 Uhr bis 12:00 Uhr und den Betrag der Starttemperatur. Ordne $-2.5$, $-0.75$, $0$, $1.25$ auf einer Zahlengeraden. (6 BE)\n\n3. Für jede Station werden $\\frac{2}{3}$ einer Packung Papier, $0.25$ Packungen Folien und $2^{-2}$ Packungen Etiketten benötigt. Es gibt $12$ Stationen. Stelle einen Term auf, vereinfache ihn mit Rechengesetzen und berechne den gesamten Packungsbedarf. (5 BE)\n\n4. Untersuche den Stationstisch als Körper. Benenne den Körper, berechne Volumen und Oberfläche. Erkläre die Volumenformel mit Einheitswürfeln. Nenne zwei Darstellungsformen, mit denen man den Tisch oder sein Netz sinnvoll darstellen kann. (7 BE)\n\n5. Für runde Buttons wird ein Kreis mit Durchmesser $8\\,\\mathrm{cm}$ verwendet. Berechne den Umfang mit $\\pi\\approx3.14$ und erkläre, warum $\\pi$ als Verhältnis von Umfang zu Durchmesser verstanden werden kann. In der Besuchertabelle steht: \"Insgesamt sind 90% aller Angemeldeten erschienen.\" Prüfe diese Aussage und beurteile, ob ein Balkendiagramm ohne gleiche Achsenskalierung die Klassen fair vergleichen würde. (6 BE)\n\n6. Eine Spiegelwand verläuft entlang der y-Achse. Spiegele den Punkt $P(3\\mid-2)$ an dieser Achse und anschließend punktspiegele das Ergebnis am Ursprung. Die Materialkosten der ersten drei Stationen lauten $18\\,\\mathrm{EUR}$, $23\\,\\mathrm{EUR}$, $28\\,\\mathrm{EUR}$. Setze das Muster für die nächsten zwei Stationen fort und beschreibe den dynamischen Zusammenhang zwischen Stationsnummer und Kosten. (5 BE)",
+        "solutionContent": "1. $\\frac{3}{8}$ bedeutet drei von acht gleich großen Teilen, den Quotienten $3:8$ und die Zahl $0.375$. Es gilt $0.35=\\frac{35}{100}=\\frac{7}{20}$. Der Tee-Anteil ist\n$$\n1-\\frac{3}{8}-\\frac{7}{20}=\\frac{40}{40}-\\frac{15}{40}-\\frac{14}{40}=\\frac{11}{40}.\n$$\nDie Ordnung lautet\n$$\n\\frac{11}{40}<\\frac{7}{20}<\\frac{3}{8}.\n$$\nZwischen $\\frac{1}{2}$ und $\\frac{3}{5}$ liegt zum Beispiel $\\frac{11}{20}=0.55$. Zwischen zwei verschiedenen rationalen Zahlen findet man wieder rationale Zahlen, etwa durch Mitteln.\n\n2. Wasser: $80\\cdot\\frac{3}{8}=30\\,\\mathrm{L}$. Apfelschorle: $80\\cdot\\frac{7}{20}=28\\,\\mathrm{L}$. Tee: $80\\cdot\\frac{11}{40}=22\\,\\mathrm{L}$. Die Temperaturänderung beträgt $1.25-(-2.5)=3.75\\,^\\circ\\mathrm{C}$. Der Betrag der Starttemperatur ist $|-2.5|=2.5$. Auf der Zahlengeraden gilt $-2.5<-0.75<0<1.25$.\n\n3. Pro Station werden\n$$\n\\frac{2}{3}+0.25+2^{-2}=\\frac{2}{3}+\\frac{1}{4}+\\frac{1}{4}=\\frac{2}{3}+\\frac{1}{2}=\\frac{7}{6}\n$$\nPackungen benötigt. Für $12$ Stationen ergibt sich $12\\cdot\\frac{7}{6}=14$. Es werden $14$ Packungen benötigt.\n\n4. Der Tisch wird als Quader modelliert. Das Volumen beträgt\n$$\n1.8\\cdot0.75\\cdot0.9=1.215,\n$$\nalso $1.215\\,\\mathrm{m}^3$. Die Oberfläche beträgt\n$$\n2\\cdot(1.8\\cdot0.75+1.8\\cdot0.9+0.75\\cdot0.9)=7.29,\n$$\nalso $7.29\\,\\mathrm{m}^2$. Die Volumenformel passt, weil man Länge, Breite und Höhe als Anzahl beziehungsweise Maß von Schichten aus Einheitswürfeln verstehen kann. Sinnvolle Darstellungen sind zum Beispiel Schrägbild, Netz, Grundriss oder Kantenmodell.\n\n5. Der Umfang ist $U\\approx\\pi\\cdot d\\approx3.14\\cdot8=25.12$, also etwa $25.12\\,\\mathrm{cm}$. $\\pi$ beschreibt bei jedem Kreis das konstante Verhältnis $U:d$. Insgesamt sind $21+28+20=69$ von $24+28+25=77$ Angemeldeten erschienen. $\\frac{69}{77}\\approx0.896$, also etwa $89.6\\%$; auf ganze Prozent gerundet sind das $90\\%$, exakt aber nicht. Ein Balkendiagramm ohne gleiche Achsenskalierung wäre nicht fair, weil Unterschiede optisch vergrößert oder verkleinert werden können.\n\n6. Spiegelung an der y-Achse: $P'(-3\\mid-2)$. Punktspiegelung am Ursprung: $P''(3\\mid2)$. Die Kostenfolge wächst jeweils um $5\\,\\mathrm{EUR}$: $18,23,28,33,38$. Für Stationsnummer $n$ passt der Zusammenhang $K(n)=18+5\\cdot(n-1)$. Die Kosten steigen pro zusätzlicher Station linear um $5\\,\\mathrm{EUR}$.",
         "scoring": {
-          "maxPoints": 28,
-          "passingPoints": 14,
+          "maxPoints": 36,
+          "passingPoints": 18,
           "steps": [
             {
-              "id": "j6_practice_1",
+              "id": "j6_released_1",
               "points": 7,
-              "description": "Rationale Zahlen und Größenangaben fachgerecht verarbeitet"
+              "description": "Bruch-, Dezimal- und Anteilsdarstellungen korrekt gewechselt, Anteile geordnet und Dichtheit rationaler Zahlen erläutert"
             },
             {
-              "id": "j6_practice_2",
-              "points": 7,
-              "description": "Flächen- oder Volumenmodell passend gewählt und berechnet"
+              "id": "j6_released_2",
+              "points": 6,
+              "description": "Anteilssachproblem, negative rationale Zahlen, Betrag und Zahlengeradenordnung korrekt bearbeitet"
             },
             {
-              "id": "j6_practice_3",
-              "points": 7,
-              "description": "Prozent- oder Datenanteile korrekt bestimmt und dargestellt"
+              "id": "j6_released_3",
+              "points": 5,
+              "description": "Term mit rationalen Zahlen und Potenzen strukturiert aufgestellt, Rechengesetze genutzt und berechnet"
             },
             {
-              "id": "j6_practice_4",
+              "id": "j6_released_4",
               "points": 7,
-              "description": "Lösungsweg begründet und Ergebnis im Kontext geprüft"
+              "description": "Quader erkannt, Volumen und Oberfläche berechnet, Volumenformel plausibilisiert und Darstellungen benannt"
+            },
+            {
+              "id": "j6_released_5",
+              "points": 6,
+              "description": "Kreisumfang und Pi-Verhältnis erklärt, Prozentangabe geprüft und Diagrammdarstellung kritisch bewertet"
+            },
+            {
+              "id": "j6_released_6",
+              "points": 5,
+              "description": "Spiegelungen durchgeführt, Muster fortgesetzt und dynamischen Zusammenhang beschrieben"
             }
           ]
         }
@@ -28478,31 +28564,77 @@
       "phase": "J7",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J7-Übungsaufgabe verbindet Zuordnungen, Terme, einfache Gleichungen, Geometrie und Daten. Die lernende Person strukturiert Teilprobleme, nutzt Darstellungen und erläutert den Lösungsweg.",
-        "solutionContent": "Die Lösung zeigt eine strukturierte Bearbeitung mit Tabellen, Termen oder Diagrammen, korrekt gelösten Gleichungen, passenden geometrischen Überlegungen und einer sachgerechten Deutung der Daten oder Ergebnisse.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "59d5a330-61be-4590-ab46-cf7cefecd144",
+          "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+          "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+          "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+          "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+          "093397e0-eec8-45bb-9a5a-a24827876df5",
+          "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+          "0afe00fe-8cbc-4ed4-8b50-84494067e362",
+          "d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "804d7443-9976-5d81-a47d-1601f42f7e0e",
+          "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "bc1a4cba-a8a8-5e59-9f3f-1e8fe7918004",
+          "314854a0-4e97-462e-9486-9fd83652e91d",
+          "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+          "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+          "2345ae25-5805-4c72-b830-32e63cc6262a"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j7_terminal_autonomy_v1.md",
+        "taskContent": "Die Jahrgangsstufe 7 organisiert eine Sport- und Experimentierstation beim Schulfest.\n\nMessdaten der Laufstation:\n\n| Person | Strecke | Zeit |\n| --- | ---: | ---: |\n| A | $600\\,\\mathrm{m}$ | $2\\,\\mathrm{min}\\ 30\\,\\mathrm{s}$ |\n| B | $1.2\\,\\mathrm{km}$ | $6\\,\\mathrm{min}$ |\n\nRundenzeiten in Sekunden:\n\n| Gruppe Nord | 84 | 86 | 90 | 92 | 93 | 95 | 100 |\n| Gruppe Süd | 78 | 82 | 88 | 96 | 104 | 110 | 112 |\n\nMaterialpreise:\n\n| Material | Preis |\n| --- | ---: |\n| Startgebühr für Werkzeug | $35\\,\\mathrm{EUR}$ |\n| Buttonrohling | $1.80\\,\\mathrm{EUR}$ pro Stück |\n\nKörpermodell:\n\nEin Messkeil wird als gerades Prisma modelliert. Die Grundfläche ist ein rechtwinkliges Dreieck mit Katheten $6\\,\\mathrm{cm}$ und $8\\,\\mathrm{cm}$; die dritte Seite ist $10\\,\\mathrm{cm}$. Die Länge des Prismas beträgt $20\\,\\mathrm{cm}$. Die Masse beträgt $1200\\,\\mathrm{g}$.\n\nButtons:\n\nFür ein Buttonmotiv wird ein Kreis mit Radius $4\\,\\mathrm{cm}$ verwendet. Ein farbiger Halbkreis soll markiert werden.\n\n1. Bestimme für Person A und Person B die Geschwindigkeit in $\\mathrm{m/s}$. Entscheide, wer schneller ist. Nutze die Angaben als Messwerte aus einer Quelle und beschreibe eine mögliche Messungenauigkeit. (5 BE)\n\n2. Berechne Volumen und Oberfläche des Messkeils. Bestimme außerdem die Dichte des Materials in $\\mathrm{g/cm^3}$. (7 BE)\n\n3. Berechne Umfang und Flächeninhalt des Buttonkreises sowie den Flächeninhalt des farbigen Halbkreises. Verwende $\\pi\\approx3.14$. (5 BE)\n\n4. Die Kosten für $n$ Buttonrohlinge sind proportional. Stelle die proportionale Funktion $B(n)$ auf, berechne die Kosten für $45$ Rohlinge mit einem Dreisatz und beschreibe, warum der Graph eine Ursprungsgerade ist. Begründe außerdem, warum $B$ eine Funktion ist. (7 BE)\n\n5. Für die Gesamtkosten gilt $T(n)=35+1.80n$. Berechne $T(30)$. Forme den Term $3(n+4)-2n$ äquivalent um und berechne seinen Wert für $n=30$. Eine Schülerin sagt: \"$3(n+4)=3n+4$.\" Erkläre den Fehler und korrigiere ihn. (7 BE)\n\n6. Die Klasse legt $350\\,\\mathrm{EUR}$ für ein Jahr zu $2\\%$ Zinsen an. Berechne den Zins und den neuen Kontostand. Danach gibt es einen Rabatt von $15\\%$ auf eine Materialrechnung von $240\\,\\mathrm{EUR}$. Berechne den Rabatt und den Endpreis. (4 BE)\n\n7. Entnimm den beiden Datenreihen die Minima, Mediane und Maxima. Bestimme für jede Gruppe das untere und obere Quartil und vergleiche die Verteilungen so, wie man es mit Boxplots tun würde. Beurteile auch, warum die Datenquelle \"Sport-App\" nicht automatisch fehlerfrei sein muss. (5 BE)",
+        "solutionContent": "1. Person A: $2\\,\\mathrm{min}\\ 30\\,\\mathrm{s}=150\\,\\mathrm{s}$, also $600:150=4\\,\\mathrm{m/s}$. Person B: $1.2\\,\\mathrm{km}=1200\\,\\mathrm{m}$ und $6\\,\\mathrm{min}=360\\,\\mathrm{s}$, also $1200:360\\approx3.33\\,\\mathrm{m/s}$. Person A ist schneller. Mögliche Messungenauigkeiten entstehen zum Beispiel durch verzögertes Starten oder Stoppen der Uhr oder ungenau markierte Strecken.\n\n2. Die Grundfläche des rechtwinkligen Dreiecks beträgt $A_G=6\\cdot8:2=24\\,\\mathrm{cm^2}$. Das Volumen ist $V=24\\cdot20=480\\,\\mathrm{cm^3}$. Die Mantelfläche ist $(6+8+10)\\cdot20=480\\,\\mathrm{cm^2}$. Die Oberfläche beträgt $2\\cdot24+480=528\\,\\mathrm{cm^2}$. Die Dichte ist $1200:480=2.5\\,\\mathrm{g/cm^3}$.\n\n3. Kreisumfang: $U=2\\pi r\\approx2\\cdot3.14\\cdot4=25.12\\,\\mathrm{cm}$. Kreisfläche: $A=\\pi r^2\\approx3.14\\cdot16=50.24\\,\\mathrm{cm^2}$. Der farbige Halbkreis hat den Flächeninhalt $25.12\\,\\mathrm{cm^2}$.\n\n4. $B(n)=1.80n$. Mit Dreisatz kosten $45$ Rohlinge $45\\cdot1.80=81\\,\\mathrm{EUR}$. Der Graph ist eine Ursprungsgerade, weil bei $0$ Rohlingen $0\\,\\mathrm{EUR}$ anfallen und der Preis je Rohling konstant ist. $B$ ist eine Funktion, weil jeder Anzahl $n$ genau ein Preis zugeordnet wird.\n\n5. $T(30)=35+1.80\\cdot30=89$, also $89\\,\\mathrm{EUR}$. Weiter gilt $3(n+4)-2n=3n+12-2n=n+12$; für $n=30$ ergibt das $42$. Der Fehler ist, dass die $3$ mit beiden Summanden in der Klammer multipliziert werden muss. Korrekt ist $3(n+4)=3n+12$.\n\n6. $2\\%$ von $350\\,\\mathrm{EUR}$ sind $0.02\\cdot350=7\\,\\mathrm{EUR}$. Der neue Kontostand beträgt $357\\,\\mathrm{EUR}$. $15\\%$ von $240\\,\\mathrm{EUR}$ sind $36\\,\\mathrm{EUR}$. Der Endpreis beträgt $204\\,\\mathrm{EUR}$.\n\n7. Gruppe Nord: Minimum $84$, Median $92$, Maximum $100$, unteres Quartil $86$, oberes Quartil $95$. Gruppe Süd: Minimum $78$, Median $96$, Maximum $112$, unteres Quartil $82$, oberes Quartil $110$. Gruppe Süd hat die größere Streuung und einen höheren Median. Eine Sport-App kann Messfehler enthalten, etwa durch falsches Antippen, Sensorfehler oder falsch zugeordnete Personen.",
         "scoring": {
-          "maxPoints": 30,
-          "passingPoints": 15,
+          "maxPoints": 40,
+          "passingPoints": 20,
           "steps": [
             {
-              "id": "j7_practice_1",
-              "points": 8,
-              "description": "Zuordnung, Tabelle, Term oder Diagramm passend genutzt"
+              "id": "j7_released_1",
+              "points": 5,
+              "description": "Geschwindigkeiten aus Messdaten berechnet, verglichen und Messungenauigkeit beschrieben"
             },
             {
-              "id": "j7_practice_2",
+              "id": "j7_released_2",
               "points": 7,
-              "description": "Terme oder einfache Gleichungen korrekt bearbeitet"
+              "description": "Volumen, Oberfläche und Dichte eines geraden Prismas korrekt bestimmt"
             },
             {
-              "id": "j7_practice_3",
+              "id": "j7_released_3",
+              "points": 5,
+              "description": "Umfang und Flächeninhalte von Kreis und Halbkreis berechnet"
+            },
+            {
+              "id": "j7_released_4",
               "points": 7,
-              "description": "Geometrische oder datenbezogene Teilfrage fachgerecht gelöst"
+              "description": "Proportionale Funktion, Dreisatz, Ursprungsgerade und Funktionsbegriff korrekt genutzt"
             },
             {
-              "id": "j7_practice_4",
-              "points": 8,
-              "description": "Lösungsweg strukturiert dargestellt und Ergebnis erläutert"
+              "id": "j7_released_5",
+              "points": 7,
+              "description": "Termwerte berechnet, Terme äquivalent umgeformt und ein Distributivgesetz-Missverständnis korrigiert"
+            },
+            {
+              "id": "j7_released_6",
+              "points": 4,
+              "description": "Zinsrechnung und Prozentrechnung in Sachkontexten korrekt durchgeführt"
+            },
+            {
+              "id": "j7_released_7",
+              "points": 5,
+              "description": "Daten aus Sekundärquelle entnommen, Boxplot-Kenngrößen bestimmt, Verteilungen verglichen und Datenquelle kritisch beurteilt"
             }
           ]
         }
@@ -28592,31 +28724,87 @@
       "phase": "J8",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J8-Übungsaufgabe verbindet lineare Funktionen, Termumformungen, Gleichungssysteme, Wahrscheinlichkeit und Körpergeometrie. Die lernende Person modelliert die Situation und bearbeitet mehrere Darstellungen selbstständig.",
-        "solutionContent": "Die Lösung zeigt passende lineare Modelle, saubere Term- oder Gleichungsumformungen, eine korrekte Wahrscheinlichkeits- oder Geometrieberechnung und eine nachvollziehbare Prüfung der Ergebnisse.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+          "e09072f9-67d9-412c-b872-24ecbf329232",
+          "ae772695-d55e-4cc5-81bc-6605272759b4",
+          "4acca6ef-5344-4dd1-b53d-506907573cf7",
+          "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+          "e6eb42c7-454f-49bf-b598-64d2935d2735",
+          "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+          "797ee047-b8dd-45cf-880e-98571a56c690",
+          "0a154cbd-1218-4553-835c-a754e9901bba",
+          "e42c208d-9555-43cc-92f5-5bb4c0688726",
+          "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+          "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+          "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+          "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+          "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+          "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+          "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+          "15512e77-31e3-5222-8a6b-84791618e5ce",
+          "76478e47-5ff9-5de1-b601-5e6e436ad855",
+          "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+          "f65ab452-1884-57b0-9be3-c7d9e4944891",
+          "1842da92-ca2c-5fed-a946-e6413a6285bb",
+          "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+          "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+          "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
+          "797c4b05-96c4-59a7-85b2-f2690e22918f"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j8_terminal_autonomy_v1.md",
+        "taskContent": "Eine Schule plant einen Fahrrad-Aktionstag. Zwei Anbieter verleihen Fahrräder, ein Getränkestand arbeitet mit zylindrischen Tanks, und die Finanzierung wird tabellarisch überprüft.\n\nFahrradverleih:\n\n| Anbieter | Kostenmodell |\n| --- | --- |\n| A | Grundpreis $40\\,\\mathrm{EUR}$, zusätzlich $6\\,\\mathrm{EUR}$ je Fahrrad |\n| B | Grundpreis $10\\,\\mathrm{EUR}$, zusätzlich $9\\,\\mathrm{EUR}$ je Fahrrad |\n\nGetränketank:\n\nEin zylindrischer Tank hat Radius $0.4\\,\\mathrm{m}$ und Höhe $1.2\\,\\mathrm{m}$. Verwende $\\pi\\approx3.14$.\n\nFinanzierung:\n\nDie Schule spart monatlich einen festen Betrag. Startkapital: $120\\,\\mathrm{EUR}$.\n\n| Monat | Kontostand bei $35\\,\\mathrm{EUR}$ Sparrate |\n| ---: | ---: |\n| 0 | $120$ |\n| 1 | $155$ |\n| 2 | $190$ |\n| 3 | $225$ |\n\nKonstruktionsskizze:\n\nEin Kreis hat Mittelpunkt $M(4\\mid3)$ und Radius $3$. Der Punkt $P(10\\mid3)$ liegt außerhalb des Kreises.\n\n1. Stelle für beide Anbieter lineare Kostenfunktionen auf. Berechne die Kosten für $8$ und $12$ Fahrräder. Bestimme die Nullstelle der Funktion $D(x)=A(x)-B(x)$ und deute sie als Schnittpunkt der beiden Kostenmodelle. Stelle die Werte in einer Tabelle dar und beschreibe, wie die Graphen verlaufen. (8 BE)\n\n2. Löse das Gleichungssystem der beiden Kostenmodelle rechnerisch. Untersuche außerdem die Gleichung $2(3x-5)=4x+14$ und die Ungleichung $6x+40<9x+10$. Deute die Ergebnisse im Kontext. (6 BE)\n\n3. Für die Getränkeausgabe gilt näherungsweise $y=\\frac{120}{x}$, wobei $x$ die Anzahl gleich großer Gruppen und $y$ die Liter pro Gruppe beschreibt. Bestimme die Definitionsmenge im Sachkontext, berechne die Achsenschnittpunkte, soweit sie existieren, und beschreibe den Parametereinfluss, wenn statt $120$ Litern $180$ Liter vorhanden sind. (6 BE)\n\n4. Vereinfache die Bruchterme und nutze formale Schreibweise sauber:\n\n$$\\frac{1}{x+2}+\\frac{3}{x+2},\\qquad \\frac{2a}{5b}\\cdot\\frac{15b}{4a},\\qquad \\frac{x+1}{x}:\\frac{x+1}{2x}.$$\n\nGib jeweils sinnvolle Einschränkungen für Variablen an. (6 BE)\n\n5. Berechne das Volumen des zylindrischen Tanks. Begründe geometrisch, warum die Grundfläche mit der Höhe multipliziert wird. Ein Schlauch soll tangential an einen kreisförmigen Anschluss geführt werden. Beschreibe eine Konstruktion der Tangente von $P$ an den Kreis um $M$ und nutze den Satz des Thales zur Begründung. (7 BE)\n\n6. Die Schule möchte mindestens $400\\,\\mathrm{EUR}$ erreichen. Bestimme aus der Tabelle und rechnerisch, nach wie vielen Monaten dies mit $35\\,\\mathrm{EUR}$ Sparrate erstmals gelingt. Bestimme außerdem näherungsweise, welche monatliche Sparrate bei einer Laufzeit von $8$ Monaten nötig wäre. (5 BE)\n\n7. Eine Schülerin sagt: \"Bei Anbieter A ist der Preis pro Fahrrad immer $6\\,\\mathrm{EUR}$, weil die Funktionsgleichung $A(x)=40+6x$ die Steigung $6$ hat.\" Erkläre das Missverständnis und korrigiere die Aussage. (6 BE)",
+        "solutionContent": "1. $A(x)=40+6x$, $B(x)=10+9x$. Für $8$ Fahrräder: $A(8)=88$, $B(8)=82$. Für $12$ Fahrräder: $A(12)=112$, $B(12)=118$. $D(x)=A(x)-B(x)=30-3x$; die Nullstelle ist $x=10$. Bei $10$ Fahrrädern kosten beide Anbieter $100\\,\\mathrm{EUR}$. Die Graphen sind Geraden; A startet höher und steigt flacher, B startet niedriger und steigt steiler.\n\n2. $40+6x=10+9x$ ergibt $30=3x$, also $x=10$. Die Kosten betragen $100\\,\\mathrm{EUR}$. $2(3x-5)=4x+14$ ergibt $6x-10=4x+14$, also $2x=24$ und $x=12$. Die Ungleichung $6x+40<9x+10$ ergibt $30<3x$, also $x>10$; ab mehr als $10$ Fahrrädern ist Anbieter A günstiger.\n\n3. Im Sachkontext gilt $x>0$, meistens ganzzahlig. Für $y=\\frac{120}{x}$ gibt es keinen Achsenschnittpunkt mit der y-Achse, weil $x=0$ nicht erlaubt ist, und keinen mit der x-Achse, weil $\\frac{120}{x}$ nie $0$ wird. Bei $180$ Litern wird $y=\\frac{180}{x}$; für gleiche Gruppenzahl erhält jede Gruppe mehr Liter, der Graph liegt oberhalb.\n\n4. Es gilt\n$$\n\\frac{1}{x+2}+\\frac{3}{x+2}=\\frac{4}{x+2}\\quad (x\\ne -2),\n$$\n$$\n\\frac{2a}{5b}\\cdot\\frac{15b}{4a}=\\frac{3}{2}\\quad (a\\ne0, b\\ne0),\n$$\nund\n$$\n\\frac{x+1}{x}:\\frac{x+1}{2x}=2\\quad (x\\ne0, x\\ne-1).\n$$\n\n5. Das Volumen beträgt $V=\\pi r^2h\\approx3.14\\cdot0.4^2\\cdot1.2=0.60288$, also etwa $0.603\\,\\mathrm{m^3}$. Die Kreisfläche beschreibt eine Schicht; durch Multiplikation mit der Höhe werden gleich große Schichten aufsummiert. Zur Tangente: Konstruiere den Kreis mit Durchmesser $MP$. Seine Schnittpunkte mit dem gegebenen Kreis sind Berührpunkte. Nach dem Satz des Thales ist der Winkel am Berührpunkt rechtwinklig, daher steht der Radius senkrecht auf der Tangente.\n\n6. Gesucht ist $120+35m\\ge400$. Also $35m\\ge280$ und $m\\ge8$. Nach $8$ Monaten wird $400\\,\\mathrm{EUR}$ erreicht. Bei $8$ Monaten und Ziel $400\\,\\mathrm{EUR}$ ist die Sparrate $(400-120):8=35\\,\\mathrm{EUR}$.\n\n7. Die Steigung $6$ bedeutet: Wenn ein weiteres Fahrrad dazukommt, steigen die Kosten um $6\\,\\mathrm{EUR}$. Der durchschnittliche Preis pro Fahrrad ist bei Anbieter A aber $\\frac{40+6x}{x}$, also wegen des Grundpreises größer als $6\\,\\mathrm{EUR}$ und abhängig von $x$.",
         "scoring": {
-          "maxPoints": 32,
-          "passingPoints": 16,
+          "maxPoints": 44,
+          "passingPoints": 22,
           "steps": [
             {
-              "id": "j8_practice_1",
+              "id": "j8_released_1",
               "points": 8,
-              "description": "Lineare Funktionsdarstellung oder Gleichungssystem passend aufgestellt"
+              "description": "Lineare Funktionen aufgestellt, Werte berechnet, Darstellungen gewechselt, Nullstelle/Schnittpunkt gedeutet"
             },
             {
-              "id": "j8_practice_2",
-              "points": 8,
-              "description": "Terme, Gleichungen oder Parameter korrekt umgeformt und berechnet"
+              "id": "j8_released_2",
+              "points": 6,
+              "description": "Lineares Gleichungssystem, Gleichung und Ungleichung gelöst und kontextbezogen interpretiert"
             },
             {
-              "id": "j8_practice_3",
-              "points": 8,
-              "description": "Wahrscheinlichkeits- oder Körpergeometrieanteil fachgerecht bearbeitet"
+              "id": "j8_released_3",
+              "points": 6,
+              "description": "Umgekehrt proportionale Funktion mit Definitionsmenge, Achsenschnittpunkten und Parametereinfluss beschrieben"
             },
             {
-              "id": "j8_practice_4",
-              "points": 8,
-              "description": "Ergebnisse verglichen, geprüft und im Kontext gedeutet"
+              "id": "j8_released_4",
+              "points": 6,
+              "description": "Bruchterme addiert, multipliziert, dividiert und Variableneinschränkungen formal korrekt angegeben"
+            },
+            {
+              "id": "j8_released_5",
+              "points": 7,
+              "description": "Zylindervolumen berechnet, Kreis-Zylinder-Beziehung begründet, Tangente konstruktiv über Thales erklärt"
+            },
+            {
+              "id": "j8_released_6",
+              "points": 5,
+              "description": "Laufzeit und Sparrate tabellarisch sowie rechnerisch bestimmt"
+            },
+            {
+              "id": "j8_released_7",
+              "points": 6,
+              "description": "Steigungs-/Durchschnittskosten-Missverständnis an einer linearen Funktion fachlich korrigiert"
             }
           ]
         }
@@ -28712,31 +28900,93 @@
       "phase": "J9",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J9-Übungsaufgabe verbindet quadratische Funktionen, Wurzeln, Ähnlichkeit, die Satzgruppe des Pythagoras, Trigonometrie und Koordinatengeometrie. Die lernende Person wählt Verfahren begründet aus und reflektiert die Plausibilität der Ergebnisse.",
-        "solutionContent": "Die Lösung zeigt den sicheren Umgang mit quadratischen Modellen, Wurzel- oder Potenztermen, geometrischen Beziehungen einschließlich Satzgruppe des Pythagoras und trigonometrischen Verfahren sowie eine fachlich begründete Ergebnisprüfung.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+          "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+          "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+          "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+          "66077296-a8f8-4645-938b-7c3424cb2f14",
+          "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+          "80956a2c-5811-4021-863e-95675bec31f5",
+          "9189339d-1788-406c-a1a4-e0e6b851c4ea",
+          "d589c036-9280-42b9-aa39-f6aa4ee19786",
+          "97b3232d-b89f-48b8-9fa1-7a25a1bdbb3d",
+          "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+          "786ae588-a4fb-40e6-a7f5-113cfc2bfd0f",
+          "ef40a255-b6d4-4a1e-93b1-b79e65fb585d",
+          "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
+          "e322310f-f33a-485d-bc23-2412a6b8fa12",
+          "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "19f170e4-b88f-4c06-b72a-ce6923748bb4",
+          "5743b8f9-86cb-4e24-8859-351708d070ab",
+          "a7ccb7a9-6fb0-4e2d-b6e0-6420cc5ae0bf",
+          "3f3557a8-7d89-4f96-8a32-e24745c34d82",
+          "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+          "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+          "7fad6a57-cda1-5dee-a55e-877be64ba992",
+          "68505a32-3b1d-57b2-a495-00b4097eb50d",
+          "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+          "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+          "1bc118c3-1f05-5f2a-b125-418017180d75",
+          "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "47d8d47c-7c59-5394-9098-11d9ad3723f1",
+          "39fa30f2-e1ae-5c36-be56-793b77906abb",
+          "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
+          "88abc886-cce8-55cf-b86c-eb4ba45a92d7"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j9_terminal_autonomy_v1.md",
+        "taskContent": "Eine Schule plant einen Kletter- und Messparcours. Alle Längen sind in Metern angegeben, sofern nichts anderes angegeben ist.\n\nParabelbogen:\n\nDer Eingangsbogen berührt den Boden bei $x=0$ und $x=12$. Der höchste Punkt liegt bei $S(6\\mid4.5)$.\n\nMessdreieck:\n\nEin rechtwinkliges Dreieck $ABC$ hat den rechten Winkel bei $C$, Hypotenuse $c=13$, Höhenabschnitte $p=9$ und $q=4$.\n\nSchrägseil:\n\nEin nicht rechtwinkliges Dreieck $DEF$ hat $DE=18$, $DF=14$ und eingeschlossenen Winkel $D=42^\\circ$.\n\n3D-Koordinaten:\n\n$A(1\\mid2\\mid0)$, $B(5\\mid4\\mid3)$, $C(9\\mid6\\mid6)$, $P(2\\mid1\\mid1)$.\n\n1. Wurzel- und Potenzcheck: Vereinfache $\\sqrt{72}$, $\\sqrt{50}-\\sqrt{8}$, $\\sqrt{12}\\cdot\\sqrt{27}$, $8^{1/3}$, $16^{3/4}$ und rationalisiere $\\frac{5}{\\sqrt5}$. Erkläre kurz, warum $\\sqrt2$ irrational ist. Führe für $\\sqrt{10}$ zwei Heron-Schritte mit Startwert $x_0=3$ aus. (9 BE)\n\n2. Bestimme eine Funktionsgleichung für den Parabelbogen in Scheitelpunktform und in faktorisierter Form. Berechne die Höhe bei $x=3$. Bestimme die Stellen, an denen der Bogen $3\\,\\mathrm{m}$ hoch ist. Beschreibe, wie der Graph aus $y=x^2$ hervorgeht, und nenne Brennpunkt und Leitgerade der Parabel $y=\\frac18x^2$ als Ortslinienmodell. (10 BE)\n\n3. Ein Plan des Parcours wird im Maßstab $1:200$ gezeichnet. Eine reale Strecke von $18\\,\\mathrm{m}$ soll eingezeichnet werden. Berechne die Planlänge. Eine zweite Zeichnung wird mit Faktor $1.5$ vergrößert. Begründe, welche Figuren kongruent und welche nur ähnlich sind. Gib ein Gegenbeispiel, das zeigt, dass die Umkehrung des zweiten Strahlensatzes nicht allgemein gilt. (6 BE)\n\n4. Nutze das Messdreieck: Bestimme die Katheten mit dem Kathetensatz, die Höhe auf der Hypotenuse mit dem Höhensatz und prüfe mit dem Satz des Pythagoras. (6 BE)\n\n5. Berechne im Dreieck $DEF$ die Seite $EF$ mit dem Kosinussatz. Bestimme anschließend den Winkel $E$ mit dem Sinussatz. Erkläre an einem Einheitskreiswert, warum $\\sin(30^\\circ)=0.5$ und $\\cos(60^\\circ)=0.5$ zusammenpassen. (7 BE)\n\n6. Deute die Punkte im räumlichen Koordinatensystem. Berechne die Vektoren $\\overrightarrow{AB}$, $\\overrightarrow{BC}$ und $\\overrightarrow{AP}$. Prüfe, ob $\\overrightarrow{AB}$ und $\\overrightarrow{BC}$ kollinear sind. Berechne $2\\overrightarrow{AB}-\\overrightarrow{AP}$ komponentenweise und interpretiere kurz, was eine Vektoraddition geometrisch bedeutet. (7 BE)\n\n7. Eine Kontrollgleichung für eine Sicherheitszone lautet $(x-2)(x-10)=0$. Löse sie mit dem Satz vom Nullprodukt. Für eine Wurzelfunktion wird $g(x)=\\sqrt{x-1}+2$ betrachtet. Gib Definitionsmenge, Startpunkt und die Verschiebung gegenüber $\\sqrt{x}$ an. (5 BE)",
+        "solutionContent": "1. $\\sqrt{72}=6\\sqrt2$, $\\sqrt{50}-\\sqrt8=5\\sqrt2-2\\sqrt2=3\\sqrt2$, $\\sqrt{12}\\cdot\\sqrt{27}=\\sqrt{324}=18$, $8^{1/3}=2$, $16^{3/4}=8$, $\\frac{5}{\\sqrt5}=\\sqrt5$. $\\sqrt2$ ist irrational, weil eine gekürzte Bruchdarstellung $\\sqrt2=\\frac{a}{b}$ zu $a^2=2b^2$ führen würde; dann wären $a$ und $b$ beide gerade, ein Widerspruch zur Kürzung. Heron für $\\sqrt{10}$: $x_1=(3+\\frac{10}{3})/2=\\frac{19}{6}\\approx3.167$, $x_2=(\\frac{19}{6}+\\frac{10}{19/6})/2\\approx3.162$.\n\n2. Scheitelpunktform: $h(x)=-\\frac18(x-6)^2+4.5$. Faktorisierte Form: $h(x)=-\\frac18x(x-12)$. $h(3)=-\\frac18\\cdot9+4.5=3.375$. Für $h(x)=3$ gilt $-\\frac18(x-6)^2+4.5=3$, also $(x-6)^2=12$ und $x=6\\pm\\sqrt{12}=6\\pm2\\sqrt3$. Aus $y=x^2$ entsteht der Graph durch Spiegelung an der x-Achse, Stauchung mit Faktor $\\frac18$ und Verschiebung um $6$ nach rechts und $4.5$ nach oben. Bei $y=\\frac18x^2$ gilt $x^2=8y=4py$, also $p=2$; Brennpunkt $(0\\mid2)$, Leitgerade $y=-2$.\n\n3. $18\\,\\mathrm{m}$ entsprechen $1800\\,\\mathrm{cm}$; bei $1:200$ sind das $9\\,\\mathrm{cm}$ im Plan. Eine Zeichnung, die nur verschoben, gedreht oder gespiegelt wird, ist kongruent; eine Zeichnung mit Faktor $1.5$ ist nur ähnlich, nicht kongruent. Gegenbeispiel zur Umkehrung: Zwei Geraden können passende Streckenverhältnisse an einzelnen Strecken erzeugen, ohne parallel zu sein; ohne die passende Lagebedingung folgt aus einem Verhältnis allein keine Parallelität.\n\n4. Kathetensatz: $a^2=c\\cdot p=13\\cdot9=117$, also $a=3\\sqrt{13}$. $b^2=c\\cdot q=13\\cdot4=52$, also $b=2\\sqrt{13}$. Höhensatz: $h^2=pq=9\\cdot4=36$, also $h=6$. Pythagoras: $a^2+b^2=117+52=169=13^2$, also passt die Rechnung.\n\n5. Kosinussatz: $EF^2=18^2+14^2-2\\cdot18\\cdot14\\cdot\\cos(42^\\circ)\\approx145.5$, also $EF\\approx12.06$. Sinussatz: $\\frac{\\sin(E)}{14}=\\frac{\\sin(42^\\circ)}{12.06}$, also $\\sin(E)\\approx0.777$ und $E\\approx51^\\circ$. Im Einheitskreis haben die Punkte zu $30^\\circ$ und $60^\\circ$ vertauschte Koordinaten; deshalb ist $\\sin(30^\\circ)=0.5$ und $\\cos(60^\\circ)=0.5$.\n\n6. Die Punkte beschreiben Orte im dreidimensionalen Koordinatensystem. $\\overrightarrow{AB}=(4,2,3)$, $\\overrightarrow{BC}=(4,2,3)$, $\\overrightarrow{AP}=(1,-1,1)$. $\\overrightarrow{AB}$ und $\\overrightarrow{BC}$ sind kollinear, sogar gleich. $2\\overrightarrow{AB}-\\overrightarrow{AP}=2(4,2,3)-(1,-1,1)=(7,5,5)$. Vektoraddition bedeutet geometrisch, Verschiebungen nacheinander auszuführen.\n\n7. Nach dem Satz vom Nullprodukt gilt $x-2=0$ oder $x-10=0$, also $x=2$ oder $x=10$. Für $g(x)=\\sqrt{x-1}+2$ ist die Definitionsmenge $x\\ge1$. Der Startpunkt ist $(1\\mid2)$. Gegenüber $\\sqrt{x}$ ist der Graph um $1$ nach rechts und $2$ nach oben verschoben.",
         "scoring": {
-          "maxPoints": 34,
-          "passingPoints": 17,
+          "maxPoints": 50,
+          "passingPoints": 25,
           "steps": [
             {
-              "id": "j9_practice_1",
+              "id": "j9_released_1",
               "points": 9,
-              "description": "Quadratisches oder koordinatengeometrisches Modell passend verwendet"
+              "description": "Wurzelterme, rationale Exponenten, Kubikwurzel, Rationalisieren, Irrationalitätsargument und Heron-Verfahren korrekt bearbeitet"
             },
             {
-              "id": "j9_practice_2",
-              "points": 8,
-              "description": "Wurzel-, Potenz- oder Termrechnung korrekt durchgeführt"
+              "id": "j9_released_2",
+              "points": 10,
+              "description": "Quadratische Funktion aus Bedingungen bestimmt, Scheitel/Nullstellen/Höhen berechnet, Transformation und Parabel-Ortslinie beschrieben"
             },
             {
-              "id": "j9_practice_3",
-              "points": 9,
-              "description": "Ähnlichkeits- oder Trigonometrieanteil fachgerecht gelöst"
+              "id": "j9_released_3",
+              "points": 6,
+              "description": "Ähnlichkeit, Maßstab, Kongruenz und Nichtumkehrbarkeit des zweiten Strahlensatzes begründet"
             },
             {
-              "id": "j9_practice_4",
-              "points": 8,
-              "description": "Plausibilität geprüft und Ergebnis fachlich reflektiert"
+              "id": "j9_released_4",
+              "points": 6,
+              "description": "Kathetensatz, Höhensatz und Satz des Pythagoras im rechtwinkligen Dreieck angewendet und geprüft"
+            },
+            {
+              "id": "j9_released_5",
+              "points": 7,
+              "description": "Kosinussatz, Sinussatz und Einheitskreiswerte fachgerecht genutzt"
+            },
+            {
+              "id": "j9_released_6",
+              "points": 7,
+              "description": "Punkte und Vektoren im Raum gedeutet, Vektoren komponentenweise gerechnet und Kollinearität geprüft"
+            },
+            {
+              "id": "j9_released_7",
+              "points": 5,
+              "description": "Nullproduktgleichung gelöst und Wurzelfunktion mit Definitionsmenge und Transformation beschrieben"
             }
           ]
         }
@@ -28834,31 +29084,91 @@
       "phase": "J10",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine materialgestützte J10-Übungsaufgabe verbindet exponentielle, trigonometrische und polynomiale Zusammenhänge, Datenmodelle, Raumgeometrie und erste Ableitungsideen. Die lernende Person bearbeitet die Aufgabe selbstständig in klausurähnlicher Form.",
-        "solutionContent": "Die Lösung zeigt passende Modellwahl, sichere Funktions- und Datenarbeit, korrekte geometrische oder räumliche Berechnungen, erste Änderungsraten- oder Ableitungsdeutungen und eine begründete Bewertung der Ergebnisse.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+          "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+          "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+          "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+          "aa334054-d145-4ece-a796-f5b8159ef76f",
+          "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+          "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+          "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+          "6a4716bd-8038-46bb-b647-0db4a254fee7",
+          "0190e463-51a7-4860-9b35-d875530a85ba",
+          "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+          "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+          "e55edcb9-2184-4a24-890e-70cc91028990",
+          "1ce8af38-082a-477b-af48-b924c92761bf",
+          "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "f9fdb733-5838-4983-888a-05624eabbe17",
+          "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "50612a57-7b9d-45fd-bc08-e95556444760",
+          "6c122f0e-8017-4ec1-91d6-0d7a1c75f8c9",
+          "3d8f5e4c-8f7b-49cf-bd83-1d9876db5bf6",
+          "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+          "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+          "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "7b860649-373e-5523-9843-ec96b3537f1f",
+          "14d0e697-3fb0-5074-a08c-7e01ca9bbda8",
+          "d0db87c4-36f5-5ac6-8428-da96d31b253a",
+          "2bd88d66-5daf-53bb-aa02-4c010963679d",
+          "367a59ce-a388-5c93-b6f9-a3b0c6c3b45e",
+          "d9725eb6-6b1f-5674-9f17-3de10f5b1ed8",
+          "674baaa8-911d-5231-9330-881c5288634f",
+          "4cba85d3-2e25-5c4b-9c4c-37e5b201dce7",
+          "f76d00dc-6b31-59cd-b01a-3610eadc9908"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j10_terminal_autonomy_v1.md",
+        "taskContent": "Eine Stadt plant eine kleine Sternwarten-Station mit rotierender Beobachtungsplattform, Akkuspeicher, Wartungsdrohne und einem kegelförmigen Regenwassertank.\n\nEnergiespeicher:\n\nDer Akkustand in Wh wird durch B(t)=1200*0.82^t modelliert. t ist die Zeit in Stunden nach Beginn einer Nachtmessung.\n\nFörderkonto:\n\nFür Ersatzteile wird ein Konto mit K(n)=2500*1.035^n modelliert. n ist die Laufzeit in Jahren.\n\nRotierende Plattform:\n\nDie Höhe eines Sensors über dem Boden wird durch H(t)=18+14*sin((π/20)*(t-5)) beschrieben. t ist die Zeit in Sekunden.\n\nProfil einer Führungsschiene:\n\nFür 0<=x<=5 wird die Schienenhöhe in Metern modellhaft durch f(x)=0.1x^3-0.6x^2+0.9x+2 beschrieben.\n\nWartungsdrohne:\n\nDie Drohne bewegt sich auf r(t)=(1|2|0)+t*(2|1|1). Eine Kontrollgerade ist s(u)=(5|4|2)+u*(1|-1|0).\n\nRegenwassertank:\n\nDer Tank ist ein gerader Kreiskegel mit Radius 2.4 m und Höhe 6 m.\n\nSensortest:\n\nAus 8 Sensoren, darunter 3 fehlerhafte, werden ohne Zurücklegen 2 Sensoren ausgewählt.\n\n1. Exponentialmodelle: Beschreibe den Verlauf des Graphen von B anhand der Parameter. Berechne B(0) und B(3), bestimme die Zeit, ab der der Akkustand unter 500 Wh fällt, und berechne die Halbwertszeit. Erkläre dabei, warum Logarithmen als Umkehroperation nötig sind. Berechne außerdem K(5) und erläutere Anfangskapital, Zinssatz, Laufzeit, Endkapital und Zinseszins im Modell. (10 BE)\n\n2. Trigonometrisches Modell: Bestimme Mittellinie, Amplitude, Periode, minimale und maximale Sensorhöhe von H. Berechne H(5) und H(15). Ein zweiter Graph hat Mittellinie 6, Amplitude 2, Periode 12 und ein Maximum bei t=3; gib einen passenden Kosinus-Term an. Wandle 150° ins Bogenmaß um. Für einen spitzen Winkel gilt sin(alpha)=0.6; bestimme cos(alpha), tan(alpha) und sin(90°-alpha) mit den trigonometrischen Beziehungen. Gib H'(t) an und deute die Ableitung bei t=15. (12 BE)\n\n3. Ganzrationale Funktionen und Ableitungsideen: Bestimme Grad, Randverhalten, f'(x) und f''(x). Stelle Tangente und Normale im Punkt x=0 auf und nutze die Tangente als lineare Approximation für f(0.2). Bestimme die Wendestelle und beschreibe das Krümmungsverhalten. Untersuche mit dem Monotoniesatz die Monotonie von f und erkläre, warum die Umkehrung des Monotoniesatzes nicht allgemein gilt. Prüfe außerdem die Symmetrie von g(x)=x^4-3x^2+2 und h(x)=x^3-2x; begründe, welchen minimalen Grad ein Graph mit beiden Enden nach oben und drei Extremstellen haben muss. (14 BE)\n\n4. Gleichungen: Löse sqrt(x+5)=x-1 mit einmaligem Quadrieren und prüfe mögliche Scheinlösungen. Löse die Potenzgleichung x^4=81. Löse x^4-5x^2+4=0 mit der Substitution z=x^2 und führe die Rücksubstitution durch. (8 BE)\n\n5. Raumgeometrie und Vektoren: Interpretiere r(t) als geradlinige Bewegung und berechne die Drohnenposition für t=2. Untersuche, ob r und s sich schneiden. Vergleiche r mit k(v)=(0|0|1)+v*(2|1|1) und entscheide die Lagebeziehung. Berechne das Volumen des kegelförmigen Tanks und plausibilisiere die Formel als Grenzfall von Pyramiden. (10 BE)\n\n6. Kombinatorik und Simulation: Bestimme die Anzahl aller möglichen Zweierauswahlen. Berechne die Wahrscheinlichkeit, dass beide ausgewählten Sensoren fehlerhaft sind. Eine Monte-Carlo-Simulation mit 10000 Durchläufen liefert 1060 Treffer; deute den Näherungswert und erkläre, warum er vom exakten Modellwert abweichen kann. (10 BE)",
+        "solutionContent": "1. B(t)=1200*0.82^t hat Anfangswert 1200, Wachstumsfaktor 0.82<1, ist streng fallend und hat die waagerechte Asymptote y=0. B(0)=1200, B(3)=1200*0.82^3≈661.7 Wh, also liegt der Akkustand nach drei Stunden noch über 500 Wh. Für B(t)<500 gilt 1200*0.82^t<500, also t>log(500/1200)/log(0.82)≈4.41. Die Halbwertszeit erfüllt 0.82^t=0.5, also t=log(0.5)/log(0.82)≈3.49. Logarithmen werden benötigt, weil die gesuchte Zeit im Exponenten steht. Beim Konto ist K(5)=2500*1.035^5≈2969.22. Anfangskapital 2500 EUR, Zinssatz 3.5%, Laufzeit 5 Jahre, Endkapital etwa 2969.22 EUR; Zinseszins bedeutet, dass Zinsen in den Folgejahren mitverzinst werden.\n\n2. Mittellinie 18, Amplitude 14, Periode 40, Minimum 4, Maximum 32. H(5)=18 und H(15)=32. Ein passender zweiter Term ist q(t)=6+2*cos((π/6)*(t-3)), weil 2π/(π/6)=12 und bei t=3 ein Maximum liegt. 150°=5π/6. Aus sin(alpha)=0.6 folgt mit sin^2(alpha)+cos^2(alpha)=1 für einen spitzen Winkel cos(alpha)=0.8. Damit tan(alpha)=sin(alpha)/cos(alpha)=0.75 und sin(90°-alpha)=cos(alpha)=0.8. H'(t)=14*(π/20)*cos((π/20)*(t-5)). Bei t=15 ist der Sensor im Maximum; H'(15)=0, die momentane Höhenänderung ist dort null.\n\n3. f ist eine kubische Funktion mit positivem Leitkoeffizienten; für x->infty gilt f(x)->infty, für x->-infty gilt f(x)->-infty. f'(x)=0.3x^2-1.2x+0.9=0.3(x-1)(x-3), f''(x)=0.6x-1.2. Bei x=0 ist f(0)=2 und f'(0)=0.9; Tangente y=0.9x+2, Normale y=-(10/9)x+2. Linear ergibt sich f(0.2)≈2.18; exakt wäre 2.1568. Wendestelle: f''(x)=0 bei x=2, f(2)=2.2; links davon ist f''<0, rechts davon f''>0, also wechselt die Krümmung. Wegen der Vorzeichen von f' ist f auf (-∞,1) steigend, auf (1,3) fallend und auf (3,∞) steigend. Aus f'>0 auf einem Intervall folgt Monotonie; die Umkehrung ist nicht allgemein gültig, z.B. ist x^3 streng steigend, obwohl die Ableitung bei 0 gleich 0 ist. g ist achsensymmetrisch zur y-Achse, weil nur gerade Potenzen vorkommen. h ist punktsymmetrisch zum Ursprung, weil h(-x)=-h(x). Ein Graph mit beiden Enden nach oben und drei Extremstellen braucht mindestens Grad 4 mit positivem Leitkoeffizienten.\n\n4. Bei sqrt(x+5)=x-1 muss x>=1 gelten. Quadrieren liefert x+5=x^2-2x+1, also x^2-3x-4=0 und x=4 oder x=-1; durch Definitionsbedingung und Einsetzen bleibt nur x=4. Aus x^4=81 folgen die reellen Lösungen x=3 und x=-3. Bei x^4-5x^2+4=0 setze z=x^2; dann z^2-5z+4=0, also z=1 oder z=4. Rücksubstitution ergibt x=+-1 oder x=+-2.\n\n5. r(t) beschreibt eine geradlinige Bewegung vom Startpunkt (1|2|0) mit Richtungsvektor (2|1|1). Für t=2 liegt die Drohne bei (5|4|2). Für einen Schnitt mit s löst man (1+2t,2+t,t)=(5+u,4-u,2). Aus der dritten Koordinate folgt t=2, dann aus der ersten u=0 und aus der zweiten ebenfalls u=0; Schnittpunkt ist (5|4|2). k hat denselben Richtungsvektor wie r; der Verbindungsvektor der Stützpunkte (1|2|-1) ist kein Vielfaches von (2|1|1), also sind die Geraden echt parallel. Das Kegelvolumen ist V=(1/3)*π*r^2*h=(1/3)*π*2.4^2*6=11.52π≈36.2 m^3. Die Formel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer mehr Ecken in der Grundfläche verstanden werden kann.\n\n6. Es gibt C(8,2)=28 mögliche Zweierauswahlen. Günstig sind C(3,2)=3 Auswahlen mit zwei fehlerhaften Sensoren, also P=3/28≈0.107. Die Simulation liefert 1060/10000=0.106; das liegt nahe am exakten Wert. Abweichungen entstehen durch Zufallsschwankungen, werden aber bei vielen Durchläufen typischerweise kleiner.",
         "scoring": {
-          "maxPoints": 36,
-          "passingPoints": 18,
+          "maxPoints": 64,
+          "passingPoints": 32,
           "steps": [
             {
-              "id": "j10_practice_1",
-              "points": 9,
-              "description": "Funktionales oder datenbezogenes Modell sachgerecht ausgewählt"
+              "id": "j10_released_1",
+              "points": 10,
+              "description": "Exponentielle Modelle, Logarithmen, Halbwertszeit, Asymptotik und Zinseszins im Kontext korrekt genutzt"
             },
             {
-              "id": "j10_practice_2",
-              "points": 9,
-              "description": "Rechnungen zu Funktionen, Parametern oder Änderungsraten korrekt durchgeführt"
+              "id": "j10_released_2",
+              "points": 12,
+              "description": "Trigonometrische Graphen, Bogenmaß, Einheitskreisbeziehungen, Termbestimmung und Sinus-/Kosinusableitung fachgerecht bearbeitet"
             },
             {
-              "id": "j10_practice_3",
-              "points": 9,
-              "description": "Raumgeometrische oder trigonometrische Teilfrage fachgerecht bearbeitet"
+              "id": "j10_released_3",
+              "points": 14,
+              "description": "Ganzrationale Funktionen über Term, Graph, Symmetrie, Randverhalten, Tangente, Normale, Approximation, Krümmung und Monotonie analysiert"
             },
             {
-              "id": "j10_practice_4",
-              "points": 9,
-              "description": "Lösungsweg begründet, Ergebnis geprüft und im Kontext bewertet"
+              "id": "j10_released_4",
+              "points": 8,
+              "description": "Wurzel-, Potenz- und Substitutionsgleichungen gelöst und Lösungen geprüft"
+            },
+            {
+              "id": "j10_released_5",
+              "points": 10,
+              "description": "Geraden im Raum, vektorielle Bewegung, Lagebeziehungen und Kegelvolumen begründet bearbeitet"
+            },
+            {
+              "id": "j10_released_6",
+              "points": 10,
+              "description": "Kombinatorische Anzahl, Wahrscheinlichkeit und Monte-Carlo-Approximation korrekt bestimmt und gedeutet"
             }
           ]
         }
@@ -28928,31 +29238,63 @@
       "phase": "J10",
       "type": "atomic",
       "examData": {
-        "taskContent": "Eine integrative Sek-I-Abschlussaufgabe verbindet Darstellungen, funktionale Zusammenhänge, Geometrie, Prozent- oder Wahrscheinlichkeitskontexte sowie begründetes Rechnen. Die lernende Person wählt geeignete Darstellungen, bearbeitet Teilprobleme selbstständig und reflektiert die Ergebnisse im Sachzusammenhang.",
-        "solutionContent": "Die Lösung zeigt einen vollständigen mathematischen Bearbeitungsgang: relevante Informationen strukturieren, geeignete Modelle und Verfahren auswählen, Rechnungen sauber durchführen, Darstellungen fachgerecht nutzen und Ergebnisse im Kontext prüfen und begründen.",
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "81c8da58-9258-488e-9ab8-48500ab31652",
+          "7a2a5706-aff4-4fd0-b092-1779d6ecbc1f",
+          "811d6d09-130e-47b2-aba8-a5c401fe3251",
+          "5fb3ee61-059c-47f4-8c6f-7285d7982a41",
+          "f6c9c2b8-3dbd-4839-972f-c60f33c44b63",
+          "cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/sek1_capstone_terminal_autonomy_v1.md",
+        "taskContent": "Die Schule plant ein Klima- und Forschungsfestival auf dem Campus. Alle Längen sind in Metern angegeben, sofern nichts anderes angegeben ist.\n\nCampusplan:\n\nDer rechteckige Campus hat die Eckpunkte A(0|0), B(36|0), C(36|24), D(0|24). Eine Bühne wird als rechtwinkliges Dreieck mit Katheten 9 m und 12 m geplant.\n\nBesuchsdaten:\n\nJ5: 48, J6: 52, J7: 55, J8: 49, J9: 47, J10: 35 erschienene Personen.\n\nKasse:\n\nStartguthaben +1800 EUR, Sponsor +420 EUR, Material -645.50 EUR, Verpflegung -378.25 EUR, Eintritt 286 Tickets zu je 3.50 EUR.\n\nShuttle:\n\nAnbieter A verlangt 120 EUR Grundpreis und 2.40 EUR pro Person. Anbieter B verlangt 60 EUR Grundpreis und 3.00 EUR pro Person.\n\nEingangsbogen:\n\nDer Bogen berührt den Boden bei x=0 und x=10. Der Scheitelpunkt liegt bei S(5|3.125).\n\nEnergie- und Bewegungsmodelle:\n\nDer Akkustand eines Messgeräts wird durch E(t)=900*0.86^t beschrieben. Die Plattformhöhe wird durch P(t)=5+2*sin((π/6)*(t-1)) beschrieben. Ein Schienenprofil wird modelliert durch q(x)=0.05x^3-0.3x^2+0.45x+1.\n\nWassertank:\n\nEin zylindrischer Tank hat Radius 0.75 m und Höhe 1.8 m; ein kegelförmiger Deckel hat denselben Radius und Höhe 0.6 m.\n\nDrohne:\n\nDie Drohne bewegt sich auf r(t)=(0|2|1)+t*(3|1|0.5). Ein Kontrollstrahl verläuft auf s(u)=(6|4|2)+u*(1|-2|1).\n\nSensorprüfung:\n\nVon 10 Sensoren sind 4 fehlerhaft. Es werden ohne Zurücklegen 3 Sensoren ausgewählt.\n\n1. Daten und Kasse: Berechne die Gesamtzahl der erschienenen Personen. Bestimme Mittelwert, Median und Spannweite der Besuchsdaten. Berechne den Anteil von J10 an allen erschienenen Personen in Prozent. Bestimme den Kassenstand nach allen Vorgängen. (10 BE)\n\n2. Lineare Modelle und Maßstab: Stelle die Kostenfunktionen für beide Shuttle-Anbieter auf. Bestimme rechnerisch den Schnittpunkt und entscheide für 286 Personen den günstigeren Anbieter. Zeichne den Campus im Maßstab 1:250: Bestimme die Planlängen der Seiten 36 m und 24 m in Zentimetern. (10 BE)\n\n3. Geometrie und quadratisches Modell: Berechne Flächeninhalt des Campus und der Bühne sowie die Hypotenuse der Bühne. Bestimme eine Funktionsgleichung für den Eingangsbogen in Scheitelpunktform und faktorisierter Form. Berechne die Bogenhöhe bei x=2 und die beiden Stellen, an denen der Bogen 2.5 m hoch ist. (12 BE)\n\n4. Exponential-, trigonometrische und ganzrationale Modelle: Berechne E(4), bestimme die Zeit, ab der der Akkustand unter 300 Wh fällt, und berechne die Halbwertszeit. Bestimme bei P Mittellinie, Amplitude, Periode, P(1), P(4) und P'(t). Bestimme q'(x), q''(x), Tangente an q bei x=0, Wendestelle und Monotonieintervalle. (18 BE)\n\n5. Raumgeometrie, Vektoren und Volumen: Interpretiere r(t) als geradlinige Bewegung und berechne die Position für t=2. Untersuche, ob r und s sich schneiden. Berechne das Volumen des zylindrischen Tanks, das Volumen des Kegeldeckels und das Gesamtvolumen. Plausibilisiere die Kegelformel kurz als Grenzfall von Pyramiden. (12 BE)\n\n6. Kombinatorik, Wahrscheinlichkeit und Reflexion: Bestimme die Anzahl aller möglichen Dreierauswahlen. Berechne die Wahrscheinlichkeit, dass genau zwei der drei ausgewählten Sensoren fehlerhaft sind. Eine Simulation mit 10000 Durchläufen liefert 2940 Treffer; deute den Wert. Nenne zwei Stellen der Aufgabe, an denen ein Ergebnis im Sachzusammenhang geprüft werden muss. (10 BE)",
+        "solutionContent": "1. Insgesamt erschienen 48+52+55+49+47+35=286 Personen. Der Mittelwert ist 286/6≈47.7. Sortiert: 35,47,48,49,52,55; der Median ist (48+49)/2=48.5. Die Spannweite ist 55-35=20. Der J10-Anteil ist 35/286≈0.122, also etwa 12.2%. Der Eintritt bringt 286*3.50=1001 EUR. Kassenstand: 1800+420-645.50-378.25+1001=2197.25 EUR.\n\n2. A(x)=120+2.40x, B(x)=60+3.00x. Schnittpunkt: 120+2.40x=60+3.00x, also 60=0.60x und x=100; Kosten dann 360 EUR. Für 286 Personen gilt A(286)=806.40 EUR, B(286)=918 EUR, also ist Anbieter A günstiger. Beim Maßstab 1:250 entsprechen 36 m=3600 cm der Planlänge 14.4 cm, und 24 m=2400 cm der Planlänge 9.6 cm.\n\n3. Campusfläche: 36*24=864 m^2. Bühnenfläche: 9*12/2=54 m^2. Hypotenuse: sqrt(9^2+12^2)=15 m. Für den Bogen gilt in faktorisierter Form h(x)=-0.125x(x-10), weil die Nullstellen 0 und 10 sind und h(5)=3.125. In Scheitelpunktform: h(x)=-0.125(x-5)^2+3.125. h(2)=2.0. Für h(x)=2.5 gilt (x-5)^2=5, also x=5+-sqrt(5)≈2.76 und 7.24.\n\n4. E(4)=900*0.86^4≈492.3 Wh. Für E(t)<300 gilt 0.86^t<1/3, also t>log(1/3)/log(0.86)≈7.29. Die Halbwertszeit ist log(0.5)/log(0.86)≈4.60. Bei P sind Mittellinie 5, Amplitude 2, Periode 12; P(1)=5, P(4)=7. P'(t)=(π/3)*cos((π/6)*(t-1)). Für q gilt q'(x)=0.15x^2-0.6x+0.45=0.15(x-1)(x-3) und q''(x)=0.3x-0.6. Bei x=0 ist q(0)=1 und q'(0)=0.45, also Tangente y=0.45x+1. Die Wendestelle liegt bei x=2, q(2)=1.1. Wegen der Vorzeichen von q' ist q auf (-∞,1) steigend, auf (1,3) fallend und auf (3,∞) steigend.\n\n5. r(t) beschreibt eine geradlinige Bewegung mit Startpunkt (0|2|1) und Richtungsvektor (3|1|0.5). Für t=2 liegt die Drohne bei (6|4|2). Für einen Schnitt mit s löst man (3t,2+t,1+0.5t)=(6+u,4-2u,2+u). Mit t=2 ergibt sich in allen Koordinaten u=0, also schneiden sich die Geraden in (6|4|2). Zylindervolumen: V_Z=π*0.75^2*1.8=1.0125π≈3.18 m^3. Kegelvolumen: V_K=(1/3)*π*0.75^2*0.6=0.1125π≈0.35 m^3. Gesamtvolumen etwa 3.53 m^3. Die Kegelformel ist plausibel, weil ein Kegel als Grenzfall von Pyramiden mit immer feinerer Grundfläche verstanden werden kann.\n\n6. Es gibt C(10,3)=120 mögliche Dreierauswahlen. Genau zwei fehlerhafte Sensoren: C(4,2)*C(6,1)=6*6=36, also 36/120=0.30. Die Simulation liefert 2940/10000=0.294; das ist eine plausible Näherung an 0.30, aber wegen Zufallsschwankungen nicht exakt. Geprüft werden muss zum Beispiel, ob der Kassenstand positiv und realistisch ist, ob der Shuttle-Anbieter für die tatsächliche Personenzahl verglichen wurde, ob Modellzeiten im Sachkontext sinnvoll sind oder ob Tankvolumina mit passenden Einheiten angegeben sind.",
         "scoring": {
-          "maxPoints": 30,
-          "passingPoints": 15,
+          "maxPoints": 72,
+          "passingPoints": 36,
           "steps": [
             {
-              "id": "sek1_capstone_1",
-              "points": 8,
-              "description": "Situation strukturiert erfasst und passende mathematische Modelle ausgewählt"
-            },
-            {
-              "id": "sek1_capstone_2",
+              "id": "sek1_capstone_released_1",
               "points": 10,
-              "description": "Rechnungen und Darstellungen fachlich korrekt durchgeführt"
+              "description": "Besuchsdaten, Prozentanteil und Kassenrechnung korrekt ausgewertet"
             },
             {
-              "id": "sek1_capstone_3",
-              "points": 6,
-              "description": "Ergebnisse im Kontext gedeutet und überprüft"
+              "id": "sek1_capstone_released_2",
+              "points": 10,
+              "description": "Lineare Kostenmodelle, Schnittpunkt, Anbieterentscheidung und Maßstabsrechnung fachgerecht bearbeitet"
             },
             {
-              "id": "sek1_capstone_4",
-              "points": 6,
-              "description": "Lösungsweg klar dargestellt und fachlich begründet"
+              "id": "sek1_capstone_released_3",
+              "points": 12,
+              "description": "Flächen, Pythagoras und quadratischen Eingangsbogen in mehreren Darstellungen korrekt genutzt"
+            },
+            {
+              "id": "sek1_capstone_released_4",
+              "points": 18,
+              "description": "Exponential-, trigonometrische und ganzrationale Modelle inklusive Ableitungen, Logarithmen und Monotonie analysiert"
+            },
+            {
+              "id": "sek1_capstone_released_5",
+              "points": 12,
+              "description": "Raumvektoren, Schnittpunkt, Zylinder- und Kegelvolumen berechnet und begründet"
+            },
+            {
+              "id": "sek1_capstone_released_6",
+              "points": 10,
+              "description": "Kombinatorische Wahrscheinlichkeit, Simulation und Kontextprüfung reflektiert"
             }
           ]
         }
@@ -51720,6 +52062,30 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "d8c9eb57-1614-4c1d-829a-618134def352",
+          "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+          "741a8120-71ad-5f87-b9d8-be9d778b097b",
+          "0b47fec8-33ec-5f29-8d3e-64941a7c8ac5",
+          "7ba19509-8ee6-50e0-a411-a371f05b1801",
+          "0b23413e-a334-5dd3-98e5-de067208819e",
+          "1b70498a-62a0-5a84-99dd-476b8af68da6",
+          "2d75fd3f-c68b-4a11-89ae-19a30fefc47a",
+          "29ce4053-b5c5-4a82-9ff0-3acc492284d8",
+          "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+          "8fa32a68-46eb-414e-8292-a4c4052b2522",
+          "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+          "56b4acb5-6024-573f-9890-35fbd21ee343"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Eine Wasserfontäne wird für waagerechte Entfernungen $0 \\le x \\le 9$ durch die Funktion\n$$\nf(x) = -\\frac{1}{2}x^2 + 4x + 2\n$$\nbeschrieben. Dabei gibt $x$ die waagerechte Entfernung in Metern und $f(x)$ die Höhe in Metern an.\n\n1. Bestimmen Sie die Symmetrieachse und den Scheitelpunkt des Graphen.\n2. Berechnen Sie die Nullstellen von $f$ und interpretieren Sie deren Bedeutung im Kontext.\n3. Untersuchen Sie, in welchem Intervall die Fontäne höher als $8\\,\\text{m}$ ist.\n4. Die lineare Funktion $g(x)=mx+2$ soll durch den Punkt $(4\\mid 6)$ gehen. Bestimmen Sie $m$ und vergleichen Sie die Änderungsrate von $g$ mit dem Verlauf von $f$ im Bereich um den Scheitelpunkt.",
         "solutionContent": "1. Für die quadratische Funktion gilt\n$$\nx_S = -\\frac{b}{2a} = -\\frac{4}{2\\cdot(-\\tfrac12)} = 4.\n$$\nDann ist\n$$\nf(4) = -\\frac12\\cdot 16 + 16 + 2 = 10.\n$$\nSymmetrieachse: $x=4$, Scheitelpunkt: $S(4\\mid 10)$.\n\n2. Nullstellen aus\n$$\n-\\frac12x^2 + 4x + 2 = 0\n$$\nfolgen mit Multiplikation durch $-2$ zu\n$$\nx^2 - 8x - 4 = 0.\n$$\nDamit\n$$\nx_{1,2} = 4 \\pm 2\\sqrt{5}.\n$$\nRelevant im Modell ist die positive Nullstelle $x_2 = 4 + 2\\sqrt5 \\approx 8{,}47$ m; dort trifft der Wasserstrahl im betrachteten Bereich wieder den Boden. Die negative Nullstelle liegt außerhalb des betrachteten Kontextes.\n\n3. Gesucht ist\n$$\n-\\frac12x^2 + 4x + 2 > 8.\n$$\nDies ist äquivalent zu\n$$\nx^2 - 8x + 12 < 0.\n$$\nFaktorisieren liefert\n$$\n(x-2)(x-6) < 0.\n$$\nAlso ist die Fontäne für $2 < x < 6$ höher als $8$ m.\n\n4. Aus $g(4)=6$ folgt\n$$\n4m + 2 = 6 \\Rightarrow m=1.\n$$\nDie lineare Funktion hat konstante Änderungsrate $1$. Am Scheitelpunkt von $f$ ist die momentane Änderungsrate $0$; in Scheitelnähe flacht der parabolische Verlauf also ab, während $g$ überall mit derselben Steigung wächst.",
         "scoring": {
@@ -51816,6 +52182,29 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "01acfcc8-7204-5c22-8774-13f6383f4fd4",
+          "0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+          "e9445479-c188-5c09-842d-faa5e8678099",
+          "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+          "845440ce-f63f-5835-903f-739145ca27bd",
+          "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
+          "7e613c02-b0e9-4eb3-8bc0-93c37c30bf44",
+          "0264591c-fdd7-41c6-9fb9-7cb3a03f7658",
+          "f042385e-f772-42db-9c96-f21a792ac5ea",
+          "6aed5be9-f62f-482a-9b98-4253c3275e6e",
+          "7c0dee9b-a827-456d-9f88-b196fc4e9a13"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Gegeben ist die Funktion\n$$\nf(x) = \\frac13 x^3 - 2x^2 + 3x.\n$$\n\n1. Berechnen Sie die erste Ableitung $f'(x)$.\n2. Bestimmen Sie die Stellen, an denen der Graph von $f$ eine waagerechte Tangente besitzt.\n3. Untersuchen Sie, in welchen Intervallen der Graph steigt bzw. fällt.\n4. Bestimmen Sie die Gleichung der Tangente an den Graphen von $f$ im Punkt mit der Stelle $x=1$ und deuten Sie die Steigung in diesem Punkt.",
         "solutionContent": "1. Ableitung:\n$$\nf'(x) = x^2 - 4x + 3 = (x-1)(x-3).\n$$\n\n2. Waagerechte Tangenten liegen bei $f'(x)=0$, also bei\n$$\nx_1 = 1, \\qquad x_2 = 3.\n$$\n\n3. Vorzeichen von $f'(x)$:\n- für $x<1$ ist $f'(x)>0$, also steigt $f$.\n- für $1<x<3$ ist $f'(x)<0$, also fällt $f$.\n- für $x>3$ ist $f'(x)>0$, also steigt $f$ wieder.\n\n4. Funktionswert an $x=1$:\n$$\nf(1)=\\frac13-2+3=\\frac43.\n$$\nDie Tangentensteigung ist\n$$\nf'(1)=0.\n$$\nDamit lautet die Tangente\n$$\ny = \\frac43.\n$$\nDie Steigung $0$ bedeutet, dass der Graph dort in diesem Moment weder steigt noch fällt; es handelt sich um eine Extremstelle.",
         "scoring": {
@@ -51913,6 +52302,30 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "1511b39a-4094-5450-a755-4a3ad3339733",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "350fc8b1-ead0-4239-b28a-217cbd3bd1c3",
+          "b3604df4-15a8-41c8-a8b0-50dadd698bd3",
+          "d5feba00-4336-4f26-8dba-0537a797eddb",
+          "d78946f9-1f5f-462c-a99c-fe01054042dd",
+          "e9c401b1-144d-525f-a148-a1113b2e82a8",
+          "6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
+          "250daae6-58fd-59e4-8a11-f994e789ee47",
+          "8e1b0d9c-fa32-5ccd-9c11-77e788ae0941",
+          "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+          "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+          "4b16fce6-84cc-52ae-98ca-f88cc518cc28"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Aus $40\\,$m Zaun soll an einer geraden Hauswand ein rechteckiger Auslauf gebaut werden. Die Hauswand bildet dabei eine Seite des Rechtecks, sodass nur drei Seiten eingezäunt werden müssen.\n\n1. Stellen Sie die Fläche $A(x)$ des Auslaufs in Abhängigkeit von der Breite $x$ senkrecht zur Hauswand auf.\n2. Bestimmen Sie den Definitionsbereich der Funktion.\n3. Berechnen Sie die Breite $x$ und die zugehörige Länge, für die die Fläche maximal wird.\n4. Interpretieren Sie das Ergebnis im Sachzusammenhang.",
         "solutionContent": "Bezeichne mit $x$ die Breite senkrecht zur Wand und mit $y$ die Länge parallel zur Wand.\n\n1. Wegen der Zaunlänge gilt\n$$\n2x + y = 40 \\Rightarrow y = 40 - 2x.\n$$\nDie Fläche ist damit\n$$\nA(x) = x\\cdot y = x(40-2x) = 40x - 2x^2.\n$$\n\n2. Es muss $x>0$ und $y>0$ gelten. Also\n$$\n40 - 2x > 0 \\Rightarrow x < 20.\n$$\nDamit ist der sinnvolle Definitionsbereich\n$$\n0 < x < 20.\n$$\n\n3. Die Parabel $A(x)=40x-2x^2$ ist nach unten geöffnet. Das Maximum liegt im Scheitelpunkt:\n$$\nx_S = -\\frac{b}{2a} = -\\frac{40}{2\\cdot(-2)} = 10.\n$$\nDann ist\n$$\ny = 40 - 2\\cdot 10 = 20.\n$$\nDie maximale Fläche beträgt\n$$\nA(10)=40\\cdot 10 - 2\\cdot 10^2 = 200\\,\\text{m}^2.\n$$\n\n4. Der größte Auslauf entsteht bei einer Breite von $10\\,$m und einer Länge von $20\\,$m. Dann wird der vorhandene Zaun optimal ausgenutzt und die Fläche ist maximal.",
         "scoring": {
@@ -52002,6 +52415,22 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "f05acdc5-4949-54c7-b8cd-56ddd1fbdbad",
+          "fec30a5a-835a-4932-a436-d83549029486"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Eine Bakterienkultur wird zu Beginn mit $500$ Bakterien angesetzt. Nach $4$ Stunden sind $980$ Bakterien vorhanden. Die Entwicklung soll mit einer Exponentialfunktion\n$$\nN(t)=N_0\\cdot a^t\n$$\nmodelliert werden.\n\n1. Bestimmen Sie $N_0$ und den Wachstumsfaktor $a$.\n2. Geben Sie die Funktionsgleichung an.\n3. Berechnen Sie, nach wie vielen Stunden die Anzahl $2000$ erstmals überschritten wird.\n4. Bestimmen Sie die Verdopplungszeit und deuten Sie das Ergebnis.",
         "solutionContent": "1. Anfangsbestand:\n$$\nN_0 = 500.\n$$\nMit $N(4)=980$ folgt\n$$\n500\\cdot a^4 = 980 \\Rightarrow a^4 = 1{,}96 \\Rightarrow a = 1{,}96^{1/4} \\approx 1{,}1832.\n$$\n\n2. Das Modell lautet\n$$\nN(t)=500\\cdot 1{,}1832^t.\n$$\n\n3. Gesucht ist\n$$\n500\\cdot 1{,}1832^t > 2000 \\Rightarrow 1{,}1832^t > 4.\n$$\nDaraus folgt\n$$\nt > \\frac{\\ln 4}{\\ln 1{,}1832} \\approx 8{,}22.\n$$\nDie Anzahl $2000$ wird also nach etwa $8{,}2$ Stunden erstmals überschritten.\n\n4. Verdopplungszeit $T$ aus\n$$\n1{,}1832^T = 2.\n$$\nAlso\n$$\nT = \\frac{\\ln 2}{\\ln 1{,}1832} \\approx 4{,}11.\n$$\nDie Kultur verdoppelt sich also ungefähr alle $4{,}1$ Stunden.",
         "scoring": {
@@ -52101,6 +52530,32 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "781f133a-08bb-54b9-8fda-efa2f8f9b12c",
+          "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "3a5bf7e5-aacf-4666-b4fa-9868a1e6fcfb",
+          "c3c057a3-caf9-44a5-ae60-639e3119e94a",
+          "ccd47872-4d9d-44db-8c8d-eda24019b502",
+          "628928a6-4f48-54dc-952d-dec0e69dc856",
+          "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
+          "ab720928-9dbc-53c2-a1f8-865dda92122d",
+          "dc69a261-31c9-5c6b-af71-ae27877a3dc1",
+          "adcac2a7-e763-5442-abf2-866532fedcda",
+          "9db266a2-1889-5792-82b0-a7463f0832f1",
+          "1341c20b-87ab-51e7-bd4a-50166c27806e",
+          "864f9a45-badf-5a31-88d3-da4525808c2d",
+          "d0a9e407-e654-5940-958f-6f608bf3d654"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Die Temperatur eines Werkstücks nach dem Erhitzen wird durch\n$$\nT(t)=20+60\\cdot 0{,}8^t \\quad (t\\ge 0)\n$$\nmodelliert. Dabei ist $t$ die Zeit in Minuten und $T(t)$ die Temperatur in Grad Celsius.\n\n1. Deuten Sie die Parameter $20$, $60$ und $0{,}8$ im Sachzusammenhang. Bestimmen Sie die Halbwertszeit der Temperaturdifferenz zur Umgebungstemperatur.\n2. Schreiben Sie das Modell in der Form $T(t)=20+60e^{kt}$ und bestimmen Sie $k$. Berechnen Sie, wann erstmals $T(t)=35$ gilt.\n3. Vergleichen Sie das Temperaturmodell qualitativ mit einem linearen und einem quadratischen Modell für dieselbe Anfangssituation.\n4. Gegeben ist zusätzlich $g(x)=(2x+1)e^{0{,}4x}$. Zerlegen Sie $g$ in Produkt und Verkettung geeigneter Teilfunktionen und bestimmen Sie $g'(x)$ mit Produkt- und Kettenregel. Erläutern Sie an diesem Beispiel, woran man die beiden Regeln erkennt.",
         "solutionContent": "1. $20$ ist die Umgebungstemperatur beziehungsweise langfristige Grenztemperatur. $60$ ist die anfängliche Temperaturdifferenz zur Umgebung. Der Faktor $0{,}8$ bedeutet, dass pro Minute noch $80\\,$% der vorherigen Differenz zur Umgebung bestehen bleiben. Die Halbwertszeit $H$ erfüllt\n$$\n0{,}8^H=0{,}5.\n$$\nAlso\n$$\nH=\\frac{\\ln(0{,}5)}{\\ln(0{,}8)}\\approx 3{,}11.\n$$\nDie Temperaturdifferenz halbiert sich nach etwa $3{,}1$ Minuten.\n\n2. Wegen $0{,}8^t=e^{t\\ln(0{,}8)}$ gilt\n$$\nT(t)=20+60e^{\\ln(0{,}8)t}.\n$$\nDamit ist $k=\\ln(0{,}8)\\approx -0{,}2231$. Für $T(t)=35$ gilt\n$$\n20+60\\cdot0{,}8^t=35 \\Rightarrow 0{,}8^t=0{,}25.\n$$\nAlso\n$$\nt=\\frac{\\ln(0{,}25)}{\\ln(0{,}8)}\\approx 6{,}21.\n$$\n\n3. Ein lineares Modell hätte eine konstante Abnahme und könnte langfristig unter die Umgebungstemperatur fallen. Ein quadratisches Modell kann je nach Öffnung und Scheitelpunkt eine unpassende Umkehr oder unbegrenztes Wachstum bzw. Fallen erzeugen. Das Exponentialmodell beschreibt dagegen eine prozentuale Abnahme der Differenz und nähert sich der Umgebungstemperatur asymptotisch.\n\n4. $g$ ist ein Produkt aus $u(x)=2x+1$ und $v(x)=e^{0{,}4x}$; in $v$ ist die lineare innere Funktion $0{,}4x$ verkettet mit $e^x$. Mit Produkt- und Kettenregel folgt\n$$\ng'(x)=2e^{0{,}4x}+(2x+1)\\cdot0{,}4e^{0{,}4x}.\n$$\nZusammengefasst:\n$$\ng'(x)=e^{0{,}4x}(0{,}8x+2{,}4).\n$$\nDie Produktregel ist nötig, weil ein linearer Faktor mit einer Exponentialfunktion multipliziert wird. Die Kettenregel ist nötig, weil im Exponenten die innere Funktion $0{,}4x$ steht.",
         "scoring": {
@@ -52188,6 +52643,20 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "3401d95d-2191-5929-ac78-4de51d71a6be",
+          "56fba457-ab98-5b96-963e-ec284458c17f"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Die Höhe einer Gondel eines Riesenrads über dem Boden wird durch die Funktion\n$$\nh(t)=12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right)\n$$\nbeschrieben. Dabei ist $t$ die Zeit in Sekunden und $h(t)$ die Höhe in Metern.\n\n1. Bestimmen Sie Amplitude, Mittellinie und Periode der Bewegung.\n2. Berechnen Sie die Höhe der Gondel zu Beginn ($t=0$).\n3. Bestimmen Sie einen Zeitpunkt im Intervall $0\\le t\\le 40$, zu dem die Gondel ihre maximale Höhe erreicht.\n4. Untersuchen Sie, in welchem Zeitintervall innerhalb der ersten Umdrehung die Gondel höher als $20\\,$m ist.",
         "solutionContent": "1. Aus\n$$\nh(t)=12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right)\n$$\nliest man ab:\n- Amplitude: $10$\n- Mittellinie: $h=12$\n- Kreisfrequenz: $\\omega = \\frac{\\pi}{20}$\n\nDie Periode ist\n$$\nT = \\frac{2\\pi}{\\omega} = \\frac{2\\pi}{\\pi/20} = 40.\n$$\n\n2. Für $t=0$ gilt\n$$\nh(0)=12+10\\sin\\left(-\\frac{\\pi}{4}\\right)=12-5\\sqrt2\\approx 4{,}93.\n$$\n\n3. Das Maximum wird erreicht, wenn der Sinuswert $1$ ist:\n$$\n\\frac{\\pi}{20}(t-5)=\\frac\\pi2 + 2k\\pi.\n$$\nFür $k=0$ folgt\n$$\nt-5=10 \\Rightarrow t=15.\n$$\nDann ist\n$$\nh(15)=22.\n$$\n\n4. Gesucht ist\n$$\n12+10\\sin\\left(\\frac{\\pi}{20}(t-5)\\right) > 20.\n$$\nAlso\n$$\n\\sin\\left(\\frac{\\pi}{20}(t-5)\\right) > 0{,}8.\n$$\nIm ersten Umlauf gilt dafür\n$$\n\\alpha \\in (\\arcsin(0{,}8),\\ \\pi-\\arcsin(0{,}8)).\n$$\nMit $\\arcsin(0{,}8)\\approx 0{,}9273$ ergibt sich\n$$\nt \\in \\left(5+\\frac{20}{\\pi}\\cdot 0{,}9273,\\ 5+\\frac{20}{\\pi}(\\pi-0{,}9273)\\right).\n$$\nNumerisch folgt\n$$\nt \\in (10{,}90,\\ 29{,}10).\n$$\nIn diesem Zeitintervall ist die Gondel höher als $20$ m.",
         "scoring": {
@@ -52287,6 +52756,31 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+          "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+          "eda3a298-4965-525e-878d-f05b9e2d4503",
+          "ecd13e54-ab0e-550f-9400-66e13306635d",
+          "56fba457-ab98-5b96-963e-ec284458c17f",
+          "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+          "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+          "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+          "3401d95d-2191-5929-ac78-4de51d71a6be",
+          "58d2f963-4fb9-550d-a832-f5ac60808900",
+          "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+          "f042385e-f772-42db-9c96-f21a792ac5ea"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Die Auslenkung eines Federpendels aus der Ruhelage wird modelliert durch\n$$\ns(t)=1{,}5\\sin\\left(\\frac{\\pi}{6}(t-1)\\right)\n$$\nmit $t$ in Sekunden und $s(t)$ in Zentimetern.\n\n1. Deuten Sie die Parameter des Modells, bestimmen Sie Amplitude und Periodenlänge und erläutern Sie, warum der Faktor $\\frac{\\pi}{6}$ im Bogenmaß auftritt.\n2. Bestimmen Sie im Intervall $0\\le t\\le 13$ ohne Differenzialrechnung die Nullstellen, Extrempunkte und Wendepunkte des Graphen. Nutzen Sie dabei Symmetrie- und Periodizitätsargumente.\n3. Vergleichen Sie das trigonometrische Modell für eine langfristige Fortsetzung mit einer ganzrationalen Näherungsfunktion. Begründen Sie, welche Modellklasse für dauerhafte Schwingungen besser geeignet ist.\n4. Begründen Sie anhand der Graphen von Sinus und Kosinus durch grafisches Differenzieren den Zusammenhang zwischen $s$ und $s'$. Bestimmen Sie anschließend $s'(t)$ mit der Kettenregel, deuten Sie $s'(2)$ im Sachzusammenhang und bestimmen Sie Tangente und Normale an den Graphen im Punkt mit $t=2$.",
         "solutionContent": "1. Die Amplitude beträgt $1{,}5$, die Mittellinie ist $s=0$ und die Schwingung ist um $1$ Sekunde nach rechts verschoben. Wegen\n$$\n\\frac{\\pi}{6}(t-1)\n$$\nist der Winkel im Sinusargument im Bogenmaß angegeben. Die Periodenlänge ist\n$$\nT=\\frac{2\\pi}{\\pi/6}=12.\n$$\n\n2. Nullstellen liegen bei\n$$\n\\frac{\\pi}{6}(t-1)=k\\pi \\Rightarrow t=1+6k.\n$$\nIm Intervall folgen $t=1$, $t=7$ und $t=13$. Maxima liegen bei Argument $\\frac\\pi2+2k\\pi$, also bei $t=4$ mit $s(4)=1{,}5$. Minima liegen bei Argument $\\frac{3\\pi}{2}+2k\\pi$, also bei $t=10$ mit $s(10)=-1{,}5$. Die Wendepunkte des Sinusmodells liegen an den Nullstellen, hier also bei $(1\\mid0)$, $(7\\mid0)$ und $(13\\mid0)$.\n\n3. Eine ganzrationale Funktion kann auf einem kurzen Zeitfenster eine Schwingung näherungsweise beschreiben, ist aber langfristig nicht periodisch und im Allgemeinen unbeschränkt. Das Sinusmodell bleibt periodisch und beschränkt zwischen $-1{,}5$ und $1{,}5$ und ist daher für eine dauerhafte Schwingung die passendere Modellklasse.\n\n4. Beim grafischen Differenzieren erkennt man: Die Steigung des Sinusgraphen ist an Nulldurchgängen betragsgroß und an Hoch- beziehungsweise Tiefpunkten null. Der Ableitungsgraph hat daher Kosinusform. Mit der Kettenregel gilt\n$$\ns'(t)=1{,}5\\cdot\\frac{\\pi}{6}\\cos\\left(\\frac{\\pi}{6}(t-1)\\right)=\\frac\\pi4\\cos\\left(\\frac{\\pi}{6}(t-1)\\right).\n$$\nFür $t=2$ folgt\n$$\ns(2)=1{,}5\\sin\\left(\\frac\\pi6\\right)=0{,}75\n$$\nund\n$$\ns'(2)=\\frac\\pi4\\cos\\left(\\frac\\pi6\\right)=\\frac{\\pi\\sqrt3}{8}\\approx0{,}68.\n$$\nDas Pendel bewegt sich zu diesem Zeitpunkt mit einer momentanen Änderungsrate von etwa $0{,}68\\,\\text{cm/s}$ nach oben. Die Tangente lautet\n$$\ny=0{,}75+\\frac{\\pi\\sqrt3}{8}(t-2).\n$$\nDie Normale hat die Steigung $-\\frac{8}{\\pi\\sqrt3}$ und damit die Gleichung\n$$\ny=0{,}75-\\frac{8}{\\pi\\sqrt3}(t-2).\n$$",
         "scoring": {
@@ -52378,6 +52872,24 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+          "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+          "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+          "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+          "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+          "3bfc2747-03e2-57db-b13f-01f78835eefd",
+          "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Gegeben ist zunächst das Polynom\n$$\np(x)=x^3-6x^2+11x-6.\n$$\nAußerdem soll die Gleichung\n$$\nf(x)=x^3-x-1=0\n$$\nnäherungsweise gelöst werden.\n\n1. Faktorisieren Sie $p(x)$ mithilfe von Polynomdivision und bestimmen Sie alle Nullstellen.\n2. Zeigen Sie, dass $f$ im Intervall $[1,2]$ mindestens eine Nullstelle besitzt. Führen Sie anschließend zwei Schritte des Bisektionsverfahrens durch.\n3. Führen Sie für $f$ einen Schritt des Regula-falsi-Verfahrens auf dem Intervall $[1,2]$ durch und geben Sie das neue Einschließungsintervall an.\n4. Verwenden Sie das Newton-Verfahren mit Startwert $x_0=1{,}5$ und berechnen Sie $x_1$ und $x_2$.\n5. Vergleichen Sie Bisektion, Regula falsi und Newton-Verfahren hinsichtlich Konvergenzgeschwindigkeit, Voraussetzungen und Grenzen.",
         "solutionContent": "1. Da $p(1)=0$, ist $(x-1)$ ein Linearfaktor. Polynomdivision ergibt\n$$\np(x):(x-1)=x^2-5x+6.\n$$\nDamit\n$$\np(x)=(x-1)(x^2-5x+6)=(x-1)(x-2)(x-3).\n$$\nDie Nullstellen sind\n$$\nx=1,\\quad x=2,\\quad x=3.\n$$\n\n2. Für $f(x)=x^3-x-1$ gilt\n$$\nf(1)=-1<0,\\qquad f(2)=5>0.\n$$\nDa $f$ stetig ist, besitzt $f$ nach dem Zwischenwertsatz mindestens eine Nullstelle in $[1,2]$.\n\nErster Bisektionsschritt:\n$$\nm_1=1{,}5,\\qquad f(1{,}5)=0{,}875>0.\n$$\nDas neue Intervall ist $[1,1{,}5]$.\n\nZweiter Bisektionsschritt:\n$$\nm_2=1{,}25,\\qquad f(1{,}25)=-0{,}296875<0.\n$$\nDas neue Intervall ist $[1{,}25,1{,}5]$.\n\n3. Für Regula falsi auf $[1,2]$ wird die Nullstelle der Sekante verwendet:\n$$\nx_R=1-\\frac{f(1)(2-1)}{f(2)-f(1)}=1-\\frac{-1}{6}=\\frac{7}{6}\\approx1{,}1667.\n$$\nEs gilt\n$$\nf\\left(\\frac76\\right)=\\frac{343}{216}-\\frac76-1\\approx -0{,}579<0.\n$$\nDa $f(2)>0$ bleibt das neue Einschließungsintervall\n$$\n\\left[\\frac76,2\\right].\n$$\n\n4. Für das Newton-Verfahren gilt\n$$\nf'(x)=3x^2-1,\\qquad x_{n+1}=x_n-\\frac{f(x_n)}{f'(x_n)}.\n$$\nAus $x_0=1{,}5$ folgt\n$$\nx_1=1{,}5-\\frac{0{,}875}{5{,}75}\\approx1{,}3478.\n$$\nWeiter gilt näherungsweise\n$$\nf(1{,}3478)\\approx0{,}1003,\\qquad f'(1{,}3478)\\approx4{,}4497,\n$$\nalso\n$$\nx_2\\approx1{,}3478-\\frac{0{,}1003}{4{,}4497}\\approx1{,}3253.\n$$\n\n5. Das Bisektionsverfahren ist robust, weil es nur Stetigkeit und einen Vorzeichenwechsel braucht; es konvergiert aber vergleichsweise langsam. Regula falsi nutzt zusätzlich die Sekante und kann schneller sein, kann aber bei ungünstiger Krümmung einseitig langsam werden. Das Newton-Verfahren konvergiert bei geeignetem Startwert oft sehr schnell, benötigt aber eine Ableitung und kann bei ungeeignetem Startwert oder ungünstigem Funktionsverlauf scheitern.",
         "scoring": {
@@ -52471,6 +52983,21 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+          "1b888f4c-df57-52a9-9551-b2b692e929fa",
+          "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+          "c61af0a9-7d56-5505-a70d-ee097c3b747f"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Gegeben sind die Folgen\n$$\nu_n = 5+3(n-1),\\qquad v_n = 12\\cdot\\left(\\frac12\\right)^{n-1},\\qquad w_n=\\frac{(-1)^n}{n}.\n$$\nAußerdem sei\n$$\na_n=3-2\\cdot\\left(\\frac12\\right)^n\n$$\nund es werden die Reihen\n$$\nA_n=\\sum_{k=1}^{n}(2k+1),\\qquad G_n=\\sum_{k=1}^{n}3\\cdot\\left(\\frac12\\right)^{k-1}\n$$\nbetrachtet.\n\n1. Untersuchen Sie $u_n$ und $v_n$ als arithmetische beziehungsweise geometrische Folge. Geben Sie jeweils die ersten drei Glieder und eine explizite Beschreibung an.\n2. Begründen Sie, dass $w_n$ eine Nullfolge ist, obwohl die Vorzeichen wechseln.\n3. Bestimmen Sie den Grenzwert von $a_n$ mithilfe der Grenzwertsätze. Begründen Sie außerdem, warum $u_n$ divergiert.\n4. Bestimmen Sie für $A_n$ eine Summenformel und entscheiden Sie, ob die arithmetische Reihe konvergiert.\n5. Bestimmen Sie für $G_n$ eine Formel für die Partialsummen und den Grenzwert der geometrischen Reihe.",
         "solutionContent": "1. Für $u_n$ gilt\n$$\nu_1=5,\\quad u_2=8,\\quad u_3=11.\n$$\nDie Differenz benachbarter Glieder ist konstant $3$, also ist $u_n$ arithmetisch mit expliziter Beschreibung\n$$\nu_n=5+3(n-1)=3n+2.\n$$\nFür $v_n$ gilt\n$$\nv_1=12,\\quad v_2=6,\\quad v_3=3.\n$$\nDer Quotient benachbarter Glieder ist konstant $\\frac12$, also ist $v_n$ geometrisch mit\n$$\nv_n=12\\cdot\\left(\\frac12\\right)^{n-1}.\n$$\n\n2. Es gilt\n$$\n|w_n|=\\left|\\frac{(-1)^n}{n}\\right|=\\frac1n.\n$$\nDa $\\frac1n\\to0$ gilt, folgt auch $w_n\\to0$. Die wechselnden Vorzeichen ändern den Betrag nicht; deshalb ist $w_n$ eine Nullfolge.\n\n3. Mit dem Grenzwertsatz für Produkte und Summen gilt\n$$\n\\left(\\frac12\\right)^n\\to0\n$$\nund damit\n$$\na_n=3-2\\cdot\\left(\\frac12\\right)^n\\to3-2\\cdot0=3.\n$$\nDie Folge $u_n=3n+2$ wächst unbegrenzt. Daher besitzt sie keinen endlichen Grenzwert und divergiert gegen $+\\infty$.\n\n4. Für die arithmetische Reihe gilt\n$$\nA_n=\\sum_{k=1}^{n}(2k+1)=2\\sum_{k=1}^{n}k+\\sum_{k=1}^{n}1\n=2\\cdot\\frac{n(n+1)}2+n=n^2+2n.\n$$\nDa $A_n\\to+\\infty$, konvergiert diese Reihe nicht.\n\n5. $G_n$ ist die Partialsumme einer geometrischen Reihe mit erstem Glied $3$ und Quotienten $q=\\frac12$. Daher\n$$\nG_n=3\\cdot\\frac{1-(1/2)^n}{1-1/2}=6\\left(1-\\left(\\frac12\\right)^n\\right).\n$$\nFür $n\\to\\infty$ folgt\n$$\nG_n\\to6.\n$$\nDie geometrische Reihe konvergiert also gegen $6$.",
         "scoring": {
@@ -52562,6 +53089,19 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "1eb7b2ce-f9b1-52dc-aa66-5543c946454b",
+          "df5eeadd-414e-50ae-84ec-7e5dbf7449d6"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Für die Funktion\n$$\nf(x)=x^4-4x^2+1\n$$\nwerden mit einem CAS folgende Näherungen ausgegeben:\n- Nullstellen: $x\\approx -1{,}93$, $x\\approx -0{,}52$, $x\\approx 0{,}52$, $x\\approx 1{,}93$\n- Extremstellen: $x=0$, $x\\approx \\pm 1{,}41$\n\n1. Überprüfen Sie rechnerisch, ob $x=0$ tatsächlich eine Extremstelle ist.\n2. Bestimmen Sie mithilfe von $f'(x)$ die exakten Extremstellen.\n3. Berechnen Sie die Funktionswerte an den Extremstellen.\n4. Erläutern Sie, wie das digitale Werkzeug hier hilft und an welcher Stelle eine mathematische Kontrolle notwendig bleibt.",
         "solutionContent": "1. Ableitung:\n$$\nf'(x)=4x^3-8x=4x(x^2-2).\n$$\nDaraus folgt sofort $f'(0)=0$, also ist $x=0$ tatsächlich eine kritische Stelle.\n\n2. Aus\n$$\n4x(x^2-2)=0\n$$\nfolgen die exakten Extremstellen\n$$\nx=0, \\qquad x=\\pm \\sqrt2.\n$$\nDas stimmt näherungsweise mit den CAS-Werten $\\pm 1{,}41$ überein.\n\n3. Funktionswerte:\n$$\nf(0)=1.\n$$\nFür $x=\\pm \\sqrt2$ gilt\n$$\nf(\\pm \\sqrt2) = (\\sqrt2)^4 - 4(\\sqrt2)^2 + 1 = 4-8+1=-3.\n$$\nAlso liegt bei $x=0$ ein Hochpunkt und bei $x=\\pm\\sqrt2$ liegen Tiefpunkte.\n\n4. Das CAS liefert schnell Näherungen für Nullstellen und Extremstellen und unterstützt bei der grafischen Orientierung. Die mathematische Kontrolle bleibt nötig, um exakte Werte, Vorzeichenwechsel und die korrekte Deutung der Punkte sicher zu begründen.",
         "scoring": {
@@ -52711,6 +53251,25 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "0d21097c-09bf-5375-8c56-34ce8dc5bc35",
+          "9441bb35-2a2f-4edc-9d8a-bc58c257054d",
+          "b559e2ea-60ef-4b3f-a37c-669b867ace29",
+          "8675a3d8-9aaa-4f35-b4ed-383d1c93ea24",
+          "ced4f794-9b42-4be4-bde5-7d44f134a140",
+          "24f21c0c-b506-56ec-ad17-39b209af4585",
+          "5042fd2b-bab2-50be-8144-c9ccf5618615"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Die Zuflussrate in ein Speicherbecken wird für $0 \\le t \\le 8$ Stunden durch\n$$\nz(t)= -\\frac14 t^2 + 2t + 3\n$$\nin $\\text{m}^3/\\text{h}$ beschrieben.\n\n1. Berechnen Sie den gesamten Zufluss im Zeitraum von $0$ bis $8$ Stunden.\n2. Bestimmen Sie die mittlere Zuflussrate in diesem Zeitraum.\n3. Zu Beginn befinden sich $12\\,\\text{m}^3$ Wasser im Becken. Stellen Sie eine Funktion $B(t)$ für den Beckeninhalt auf, wenn kein Wasser abfließt.\n4. Erläutern Sie den Unterschied zwischen Zuflussrate und Beckeninhalt im gegebenen Modell.",
         "solutionContent": "1. Gesamtzufluss:\n$$\n\\int_0^8 \\left(-\\frac14 t^2 + 2t + 3\\right)\\,dt\n= \\left(-\\frac1{12}t^3 + t^2 + 3t\\right)_0^8.\n$$\nDamit ergibt sich\n$$\n-\\frac1{12}\\cdot 512 + 64 + 24 = -\\frac{128}{3} + 88 = \\frac{136}{3}.\n$$\nDer gesamte Zufluss beträgt also\n$$\n\\frac{136}{3}\\,\\text{m}^3 \\approx 45{,}33\\,\\text{m}^3.\n$$\n\n2. Die mittlere Zuflussrate ist\n$$\n\\bar z = \\frac{1}{8}\\int_0^8 z(t)\\,dt = \\frac{1}{8}\\cdot \\frac{136}{3} = \\frac{17}{3}\\,\\text{m}^3/\\text{h} \\approx 5{,}67\\,\\text{m}^3/\\text{h}.\n$$\n\n3. Der Beckeninhalt ergibt sich durch Aufintegrieren:\n$$\nB(t)=12+\\int_0^t \\left(-\\frac14 x^2+2x+3\\right)\\,dx.\n$$\nAlso\n$$\nB(t)=12-\\frac1{12}t^3+t^2+3t.\n$$\n\n4. Die Zuflussrate $z(t)$ gibt an, wie schnell sich der Inhalt pro Stunde ändert. Der Beckeninhalt $B(t)$ beschreibt dagegen die gesamte bis zum Zeitpunkt $t$ angesammelte Wassermenge. Inhalt ist also die aufintegrierte Änderungsrate plus Anfangsbestand.",
         "scoring": {
@@ -52806,6 +53365,29 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "647888d2-8e23-52b2-a2ec-fad3f31cb1a6",
+          "809ef78a-f282-5593-89be-0f2cb95570ac",
+          "34604a97-0c64-5b06-81e2-6ac818732d60",
+          "0f180645-37ce-5b6b-8a36-ad7b31168b1a",
+          "f4935b24-d8a9-5eb7-a5eb-6d34a9e09b2d",
+          "269675a9-13cd-4a3a-ab75-63794f5c9710",
+          "3862890e-9ea9-4c62-bcf2-e354c9d8f306",
+          "ece68088-71a8-466b-874c-09e6baac19fc",
+          "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "19481f5d-94de-4a74-b765-cbebd1525994",
+          "281e0c6e-d06d-580f-8443-4369f0ea524b"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Das Innenprofil eines Trinkbechers wird im Längsschnitt für $0 \\le x \\le 12$ cm durch\n$$\nr(x)=2+\\frac{x}{6}\n$$\nbeschrieben. Dabei ist $r(x)$ der Innenradius in cm. Durch Rotation des Graphen um die $x$-Achse entsteht das Innenvolumen des Bechers.\n\n1. Stellen Sie ein Integral für das Innenvolumen des Bechers auf und berechnen Sie das Volumen.\n2. Bestimmen Sie die mittlere Querschnittsfläche des Bechers auf dem Intervall $0 \\le x \\le 12$.\n3. Prüfen Sie, ob der Becher mindestens $0{,}33$ Liter fasst.\n4. Erläutern Sie, warum beim Volumenintegral $r(x)^2$ und nicht nur $r(x)$ integriert wird.",
         "solutionContent": "1. Beim Rotieren um die $x$-Achse entsteht ein Rotationskörper mit dem Volumen\n$$\nV=\\pi\\int_0^{12} r(x)^2\\,dx\n= \\pi\\int_0^{12} \\left(2+\\frac{x}{6}\\right)^2\\,dx.\n$$\nAusmultiplizieren liefert\n$$\n\\left(2+\\frac{x}{6}\\right)^2 = 4+\\frac{2}{3}x+\\frac1{36}x^2.\n$$\nAlso\n$$\nV=\\pi\\int_0^{12}\\left(4+\\frac{2}{3}x+\\frac1{36}x^2\\right)dx\n= \\pi\\left(4x+\\frac13x^2+\\frac1{108}x^3\\right)_0^{12}.\n$$\nDamit ergibt sich\n$$\nV=\\pi(48+48+16)=112\\pi\\,\\text{cm}^3\\approx 351{,}9\\,\\text{cm}^3.\n$$\n\n2. Die mittlere Querschnittsfläche ist Volumen durch Höhe:\n$$\n\\bar A = \\frac{V}{12} = \\frac{112\\pi}{12}=\\frac{28\\pi}{3}\\,\\text{cm}^2\\approx 29{,}3\\,\\text{cm}^2.\n$$\n\n3. Es gilt\n$$\n112\\pi\\,\\text{cm}^3 \\approx 351{,}9\\,\\text{cm}^3.\n$$\nDa $1\\,\\text{Liter}=1000\\,\\text{cm}^3$, fasst der Becher etwa\n$$\n0{,}352\\,\\text{Liter}.\n$$\nDer Becher fasst also mehr als $0{,}33$ Liter.\n\n4. In jedem Querschnitt senkrecht zur $x$-Achse entsteht eine Kreisfläche mit\n$$\nA(x)=\\pi r(x)^2.\n$$\nFür das Volumen werden diese Kreisflächen über die Höhe aufsummiert. Nur den Radius $r(x)$ zu integrieren würde eine Länge aufsummieren, aber kein Volumen beschreiben.",
         "scoring": {
@@ -52897,6 +53479,25 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "e7350739-c89f-5c7b-b4d1-717d6a767298",
+          "df7338ef-65ba-5ece-8aec-7f520dfe5710",
+          "ccd83f05-a0ae-4cd1-8917-24793a219fee",
+          "886caebc-a042-4a94-91f9-6dc184203c42",
+          "848af536-c7e5-4df0-a4e9-d5d0ff15244c",
+          "93fcf49d-a08c-5aa5-a5b2-cb4ee56fdae4",
+          "05946a6a-b41e-5cec-8a39-237f889f4d93"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Das Wachstum einer Fischpopulation in einem See wird durch das logistische Modell\n$$\nP'(t)=0{,}4\\,P(t)\\left(1-\\frac{P(t)}{5000}\\right)\n$$\nbeschrieben. Dabei gibt $P(t)$ die Anzahl der Fische zum Zeitpunkt $t$ in Monaten an.\nZu Beginn gilt $P(0)=1000$.\n\n1. Erläutern Sie die Bedeutung der Zahlen $0{,}4$ und $5000$ im Modell.\n2. Begründen Sie, warum $P(t)=5000$ eine konstante Lösung ist.\n3. Untersuchen Sie das Wachstum der Population für $P(t)<5000$ und für $P(t)>5000$.\n4. Erklären Sie, warum das logistische Modell für diese Situation geeigneter ist als ein reines Exponentialmodell.",
         "solutionContent": "1. Der Faktor $0{,}4$ beschreibt die relative Wachstumsstärke der Population. Die Zahl $5000$ ist die Sättigungsgrenze bzw. langfristige Kapazität des Sees.\n\n2. Setzt man $P(t)=5000$ in die Differentialgleichung ein, so erhält man\n$$\nP'(t)=0{,}4\\cdot 5000\\left(1-\\frac{5000}{5000}\\right)=0.\n$$\nAlso ändert sich die Population dort nicht; $P(t)=5000$ ist eine konstante Lösung.\n\n3. Für $0<P(t)<5000$ gilt\n$$\n1-\\frac{P(t)}{5000} > 0,\n$$\nalso ist $P'(t)>0$ und die Population wächst.\nFür $P(t)>5000$ ist\n$$\n1-\\frac{P(t)}{5000} < 0,\n$$\nalso ist $P'(t)<0$ und die Population nimmt ab. Die Sättigungsgrenze wirkt damit stabilisierend.\n\n4. Ein Exponentialmodell würde unbegrenztes Wachstum annehmen. In einem realen See sind Nahrung, Platz und Sauerstoff jedoch begrenzt. Das logistische Modell berücksichtigt diese Begrenzung durch den Faktor\n$$\n1-\\frac{P(t)}{5000}\n$$\nund ist deshalb sachlich besser geeignet.",
         "scoring": {
@@ -52988,6 +53589,25 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "5ccf0d90-2967-576e-8f72-f002792d8515",
+          "6d89d813-29dc-5e76-b004-98ed6b6fe8ce",
+          "12f4b957-da3d-53d5-a924-45a634ab8d44",
+          "90662398-a0fd-45bf-9ce9-2abbc20428ed",
+          "31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+          "649b673c-1a74-5dc5-af01-b4c9e090b90d",
+          "bfc2bf06-9b37-4912-a8eb-25fb5d489d72"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Berechnen Sie die folgenden Integrale und begründen Sie jeweils kurz die Wahl Ihrer Methode.\n\n1. $$I_1=\\int_0^1 (2x+1)e^{x^2+x}\\,dx$$\n2. $$I_2=\\int_0^1 (2x+3)e^x\\,dx$$\n3. $$I_3=\\int_0^{\\pi} x\\sin(x)\\,dx$$\n4. Erläutern Sie, weshalb für diese drei Integrale unterschiedliche Integrationsmethoden zweckmäßig sind.",
         "solutionContent": "1. Für\n$$\nI_1=\\int_0^1 (2x+1)e^{x^2+x}\\,dx\n$$\nist die Substitution\n$$\nu=x^2+x,\\qquad d\\nu=(2x+1)dx\n$$\nnaheliegend. Damit folgt\n$$\nI_1=\\int_0^2 e^\\nu\\,d\\nu=e^2-1.\n$$\n\n2. Für\n$$\nI_2=\\int_0^1 (2x+3)e^x\\,dx\n$$\nist ein Formansatz passend. Setze\n$$\nF(x)=(ax+b)e^x.\n$$\nDann gilt\n$$\nF'(x)=(ax+a+b)e^x.\n$$\nDer Koeffizientenvergleich mit $(2x+3)e^x$ liefert $a=2$ und $a+b=3$, also $b=1$. Damit ist\n$$\nF(x)=(2x+1)e^x\n$$\neine Stammfunktion und\n$$\nI_2=F(1)-F(0)=3e-1.\n$$\n\n3. Für\n$$\nI_3=\\int_0^{\\pi} x\\sin(x)\\,dx\n$$\nist partielle Integration geeignet:\n$$\nu=x,\\quad dw=\\sin(x)dx,\\quad d\\nu=dx,\\quad w=-\\cos(x).\n$$\nAlso\n$$\nI_3=\\left[-x\\cos(x)\\right]_0^{\\pi}+\\int_0^{\\pi}\\cos(x)\\,dx=\\pi.\n$$\n\n4. Im ersten Integral ist die innere Ableitung direkt vorhanden, daher ist Substitution zweckmäßig. Im zweiten Integral führt ein Formansatz mit Koeffizientenvergleich direkt zu einer Stammfunktion. Im dritten Integral liegt ein Produkt aus $x$ und einer trigonometrischen Funktion vor; dort ist partielle Integration zielführend. Die Struktur des Integranden entscheidet also über die Methode.",
         "scoring": {
@@ -53074,6 +53694,20 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
+          "58fda9b4-4336-5594-99ce-722c4a453372"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Die Temperatur $T(t)$ eines heißen Getränks in einem Raum mit konstanter Umgebungstemperatur $20^\\circ\\text{C}$ wird näherungsweise durch die Differentialgleichung\n$$\nT'(t) = -0{,}25\\,(T(t)-20)\n$$\nbeschrieben. Zu Beginn gilt $T(0)=80$.\n\n1. Erläutern Sie die Bedeutung des Terms $(T(t)-20)$ im Modell.\n2. Begründen Sie, warum $T(t)=20$ eine Gleichgewichtslösung ist.\n3. Geben Sie an, ob die Temperatur steigt oder fällt, solange $T(t)>20$ gilt. Begründen Sie dies mithilfe der Differentialgleichung.\n4. Skizzieren Sie qualitativ den Verlauf von $T(t)$ und erläutern Sie, weshalb sich die Temperatur langfristig der Umgebungstemperatur annähert.",
         "solutionContent": "1. Der Term $(T(t)-20)$ beschreibt die Abweichung der Getränketemperatur von der Umgebungstemperatur. Je größer diese Abweichung ist, desto stärker ist die Änderungsrate im Modell.\n\n2. Für $T(t)=20$ gilt\n$$\nT'(t) = -0{,}25\\,(20-20)=0.\n$$\nAlso ändert sich die Temperatur nicht mehr; $20^\\circ\\text{C}$ ist eine Gleichgewichtslösung.\n\n3. Gilt $T(t)>20$, dann ist\n$$\nT(t)-20 > 0.\n$$\nWegen des negativen Vorfaktors folgt\n$$\nT'(t)<0.\n$$\nDie Temperatur fällt also, solange das Getränk wärmer als die Umgebung ist.\n\n4. Der Graph startet bei $T(0)=80$ und fällt monoton. Dabei flacht der Verlauf mit der Zeit ab, weil die Differenz zur Umgebungstemperatur kleiner wird. Langfristig nähert sich der Graph der Horizontalen $T=20$ an, da dort die Änderungsrate gegen $0$ geht.",
         "scoring": {
@@ -53234,6 +53868,39 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+          "61686d85-0301-550e-bab9-bd9411c3e7ce",
+          "1e26404a-93ef-45f3-a28c-15679fbae96b",
+          "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "972cc7e8-be9c-444c-ba45-98e817b3cf14",
+          "71683f37-24de-4e0f-badd-858b56fa4d64",
+          "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+          "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
+          "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+          "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "a12bef54-7595-5f48-a7a8-9cfe1d8e9729",
+          "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
+          "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+          "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+          "91311908-9209-58e4-8429-99dad9df546d"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben ist die Funktion\n$$\nf(x) = 2\\,e^{0.5x}-3.\n$$\nAußerdem wird die Funktion\n$$\ng(x) = \\ln(x+3)\n$$\nbetrachtet.\n\n1. Beschreiben Sie, wie der Graph von $f$ aus dem Graphen von $y=e^{0.5x}$ hervorgeht.\n2. Bestimmen Sie die Nullstelle von $f$.\n3. Geben Sie Definitionsmenge und Wertemenge von $g$ an.\n4. Untersuchen Sie die Verknüpfung\n$$\n(g\\circ f)(x)=g(f(x))\n$$\nauf ihre Definitionsmenge und vereinfachen Sie den Funktionsterm so weit wie möglich.",
         "solutionContent": "1. Der Faktor $2$ bewirkt eine Streckung in $y$-Richtung um den Faktor $2$. Der Term $-3$ verschiebt den Graphen anschließend um $3$ Einheiten nach unten.\n\n2. Nullstelle von $f$:\n$$\n2e^{0.5x}-3=0 \\Rightarrow e^{0.5x}=\\frac32.\n$$\nLogarithmieren liefert\n$$\n0.5x = \\ln\\left(\\frac32\\right) \\Rightarrow x = 2\\ln\\left(\\frac32\\right).\n$$\n\n3. Für $g(x)=\\ln(x+3)$ muss gelten\n$$\nx+3>0 \\Rightarrow x>-3.\n$$\nAlso ist die Definitionsmenge\n$$\nD_g = (-3,\\infty).\n$$\nDa der Logarithmus alle reellen Werte annimmt, ist die Wertemenge\n$$\nW_g = \\mathbb R.\n$$\n\n4. Es gilt\n$$\n(g\\circ f)(x)=\\ln(f(x)+3)=\\ln(2e^{0.5x}).\n$$\nMit Logarithmusregeln folgt\n$$\n(g\\circ f)(x)=\\ln 2 + 0.5x.\n$$\nFür die Definitionsmenge muss $f(x)+3>0$ gelten. Wegen\n$$\nf(x)+3 = 2e^{0.5x}>0\n$$\nfür alle $x\\in\\mathbb R$ ist die Definitionsmenge von $g\\circ f$ gleich $\\mathbb R$.",
         "scoring": {
@@ -53363,6 +54030,65 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
+          "288633c1-f61c-5b48-af7e-a80357f96cad",
+          "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "c71ae268-f28e-59f0-982d-91db8f963378",
+          "e8237315-654e-5150-97de-49c4cb49b3d1",
+          "2f2c9f1a-07f0-59e4-b84a-60648c3b0bda",
+          "e9181209-1506-59df-9053-17f36b91bb06",
+          "7d37513b-fa1a-54cc-9e2a-9279a381f0f0",
+          "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "3016ec37-1c2e-47db-83f5-e767923bc97e",
+          "9460c3ff-e72d-4107-bc73-087d217200aa",
+          "3256476b-ec65-4038-9f5a-a8808fbcf207",
+          "509ae03b-96b1-4bb1-b015-b83d14569dae",
+          "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+          "8cb5c712-9c58-5910-8c63-8c3736369b80",
+          "06de364f-9b63-4044-8229-a975621dc6df",
+          "69beb31d-5d02-4505-9500-3ec81af86f1e",
+          "baf7276f-60a0-4d96-b959-d63acfb929de",
+          "5da12e3a-9abb-4134-a0a3-f44aa8de0a03",
+          "164eb50f-1a5e-44a2-932e-561862e1378e",
+          "8eb14d81-353a-4909-9464-61be7b1ba5b8",
+          "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
+          "aae119f2-925f-5fc1-b795-b52c9e980863",
+          "7680701b-35e3-519e-beaa-09753e733756",
+          "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+          "eb6bfdd9-3cbe-51b5-9798-a741bdc2782e",
+          "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "72dfc164-455d-4b63-85f0-96e803c9a1d5",
+          "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
+          "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "69eda7f9-1898-5220-932d-e7bec839b7af",
+          "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "d379e28b-d9d5-5cab-b383-318e0499c0c7",
+          "50eb5156-5046-5887-80dc-3128c5f8cbd6",
+          "eb070ed2-7ef4-5afe-b203-190ebb0116af",
+          "b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2",
+          "636b3e2d-c687-5469-8850-e085df06878d",
+          "5f548596-9bc3-532e-88a0-81d5029809e9",
+          "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+          "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+          "5390691d-1b7c-5572-9589-a69c2bba9a27",
+          "b04bd2d6-21d4-5ac5-9a77-b5f950a41c24",
+          "d6b74b15-1cbc-512b-a160-0f40aecafe8c",
+          "ef1524f1-0b2f-59f7-a001-5ab3e3dececb"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben sind die Punkte\n$$\nA(0\\mid0\\mid0),\\ B(6\\mid0\\mid0),\\ C(0\\mid4\\mid0),\\ D(0\\mid0\\mid3).\n$$\nSie bilden die Eckpunkte einer Pyramide mit Grunddreieck $ABC$ und Spitze $D$.\n\n1. Zeigen Sie, dass das Dreieck $ABC$ rechtwinklig ist.\n2. Berechnen Sie den Flächeninhalt des Grunddreiecks $ABC$.\n3. Bestimmen Sie das Volumen der Pyramide $ABCD$.\n4. Die Koordinaten aller Punkte werden mit dem Faktor $1.5$ multipliziert. Bestimmen Sie das neue Volumen und erläutern Sie, warum sich das Volumen gerade so ändert.",
         "solutionContent": "1. Es gilt\n$$\n\\overrightarrow{AB} = \\begin{pmatrix}6\\\\0\\\\0\\end{pmatrix},\\qquad \\overrightarrow{AC}=\\begin{pmatrix}0\\\\4\\\\0\\end{pmatrix}.\n$$\nDas Skalarprodukt ist\n$$\n\\overrightarrow{AB}\\cdot\\overrightarrow{AC}=6\\cdot 0+0\\cdot 4+0\\cdot 0=0.\n$$\nAlso stehen $\\overrightarrow{AB}$ und $\\overrightarrow{AC}$ senkrecht aufeinander; das Dreieck $ABC$ ist rechtwinklig bei $A$.\n\n2. Der Flächeninhalt des rechtwinkligen Dreiecks ist\n$$\nA_{ABC}=\\frac12\\cdot 6\\cdot 4 = 12.\n$$\n\n3. Die Höhe der Pyramide ist die Entfernung des Punktes $D$ von der Ebene $z=0$, also $h=3$.\nDamit ergibt sich\n$$\nV = \\frac13\\cdot A_{ABC}\\cdot h = \\frac13\\cdot 12\\cdot 3 = 12.\n$$\nDas Volumen beträgt $12\\,\\text{LE}^3$.\n\n4. Bei einer Streckung aller Längen mit dem Faktor $1.5$ werden Flächen mit dem Faktor $1.5^2=2.25$ und Volumina mit dem Faktor $1.5^3=3.375$ multipliziert. Also gilt\n$$\nV_{\\text{neu}} = 12\\cdot 1.5^3 = 12\\cdot 3.375 = 40.5.\n$$\nDas neue Volumen beträgt $40.5\\,\\text{LE}^3$.",
         "scoring": {
@@ -53476,6 +54202,48 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "36e0de23-1e3b-5c69-888f-e5e19e79cbbe",
+          "ce491ec0-c558-5872-86fd-289e60a38403",
+          "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+          "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+          "fa02cf14-0411-4fe3-8be7-a62c69743e26",
+          "f613634b-39fb-5021-9970-790ef34c9932",
+          "0f4f9957-8afe-4aab-9dd8-c26c9aee2afd",
+          "18be713b-7d90-4f01-b60a-5582ac4df0e8",
+          "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6",
+          "436532fe-cee6-5a13-a4be-05522435937b",
+          "6481fc23-d923-5ffc-ba49-f499328f43b8",
+          "7aa1abee-d6ec-528a-b110-f2260b0cda51",
+          "a9fde754-51b4-58d7-85e5-5e36160581e6",
+          "58f613da-03be-5c6a-90a9-ff0958aa7849",
+          "bda6a659-9640-53a5-8be0-24705ab623ef",
+          "5f90df42-8a71-534d-b995-b8f7dcaf1661",
+          "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
+          "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+          "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+          "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+          "985d5529-a586-50eb-bd7f-2db2be8906d1",
+          "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
+          "7bb3c312-f714-55e6-a31f-f31605a93760",
+          "edaf0bb4-e12e-5a6c-b484-91124ba209f3",
+          "fd4b7145-5c28-5b33-bf2e-0ca68f29f2fc",
+          "eb112b6f-4cc4-58af-975a-f1ea61b727f0"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben sind die Gerade\n$$\ng: \\vec x = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + t\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix}\n$$\nund die Ebene\n$$\nE: x_1 + x_2 + x_3 = 9.\n$$\nAußerdem sei der Quader mit den Eckpunkten\n$$\nO(0\\mid0\\mid0),\\ A(6\\mid0\\mid0),\\ B(6\\mid4\\mid0),\\ C(0\\mid4\\mid0),\\ O'(0\\mid0\\mid3)\n$$\ngegeben.\n\n1. Prüfen Sie, ob der Punkt $P(5\\mid 0\\mid 5)$ auf der Geraden $g$ liegt.\n2. Bestimmen Sie den Schnittpunkt von $g$ mit der Ebene $E$.\n3. Stellen Sie die Ebene $E$ in Hessescher Normalenform dar.\n4. Beschreiben Sie die Schnittfigur, die durch die Ebene $E$ im Quader entsteht. Begründen Sie Ihre Aussage anhand der Achsenabschnitte.",
         "solutionContent": "1. Für $t=2$ erhält man aus $g$\n$$\n\\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + 2\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix} = \\begin{pmatrix}5\\\\0\\\\5\\end{pmatrix}.\n$$\nAlso liegt $P$ auf $g$.\n\n2. Für den Schnittpunkt wird in die Ebenengleichung eingesetzt:\n$$\n(1+2t) + (2-t) + (3+t) = 9.\n$$\nDas ergibt\n$$\n6 + 2t = 9 \\Rightarrow t = \\frac32.\n$$\nDamit ist\n$$\nS = \\begin{pmatrix}1\\\\2\\\\3\\end{pmatrix} + \\frac32\\begin{pmatrix}2\\\\-1\\\\1\\end{pmatrix} = \\begin{pmatrix}4\\\\0{,}5\\\\4{,}5\\end{pmatrix}.\n$$\n\n3. Ein Normalenvektor ist\n$$\n\\vec n = \\begin{pmatrix}1\\\\1\\\\1\\end{pmatrix},\\qquad |\\vec n| = \\sqrt3.\n$$\nDamit lautet die Hessesche Normalenform\n$$\n\\frac{1}{\\sqrt3}(x_1+x_2+x_3-9)=0\n$$\noder äquivalent\n$$\n\\frac{1}{\\sqrt3}(x_1+x_2+x_3)=\\frac{9}{\\sqrt3}.\n$$\n\n4. Die Ebene schneidet die Koordinatenachsen bei $(9,0,0)$, $(0,9,0)$ und $(0,0,9)$. Im Quader sind wegen der Begrenzungen $x_1\\le 6$, $x_2\\le 4$, $x_3\\le 3$ nur Teilstücke der Ebene sichtbar. Die Ebene trifft mehrere Seitenflächen des Quaders; dadurch entsteht eine viereckige Schnittfigur. Die Achsenabschnittsform zeigt, dass kein vollständiger Achsenabschnitt innerhalb des Quaders liegt, daher ist die Schnittfigur kein Dreieck.",
         "scoring": {
@@ -53572,6 +54340,32 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "5e893892-393e-5df0-b705-fb3b3458122f",
+          "4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "304111dd-426b-520b-a275-3fa37da1b0e0",
+          "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "03685f87-7570-5bb3-b1c7-134124abb317",
+          "6aa593a3-6690-581d-9b7d-37cac78187a1",
+          "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "922d89fc-1cbd-56e9-ac5d-5cb59085de6c"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "In einer Region leben zu Beginn eines Jahres $10{,}000$ Personen in Stadt A und $8{,}000$ Personen in Stadt B. Von Jahr zu Jahr ziehen $8\\,$% der Bevölkerung von A nach B und $5\\,$% der Bevölkerung von B nach A.\n\n1. Stellen Sie eine Übergangsmatrix $M$ auf, die die Verteilung der Bevölkerung von einem Jahr zum nächsten beschreibt.\n2. Berechnen Sie die Bevölkerungsverteilung nach einem Jahr und nach zwei Jahren.\n3. Untersuchen Sie eine stationäre Verteilung $\\vec v$ mit $M\\vec v = \\vec v$ und insgesamt $18{,}000$ Personen.\n4. Erläutern Sie die Bedeutung der stationären Verteilung im gegebenen Kontext.",
         "solutionContent": "1. Mit der Reihenfolge $(A,B)$ gilt:\n- In A bleiben $92\\,$% und aus B kommen $5\\,$% nach A.\n- In B bleiben $95\\,$% und aus A wechseln $8\\,$% nach B.\n\nAlso ist\n$$\nM = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}.\n$$\n\n2. Anfangsvektor:\n$$\n\\vec x_0 = \\begin{pmatrix}10000\\\\8000\\end{pmatrix}.\n$$\nNach einem Jahr:\n$$\n\\vec x_1 = M\\vec x_0 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}10000\\\\8000\\end{pmatrix} = \\begin{pmatrix}9600\\\\8400\\end{pmatrix}.\n$$\nNach zwei Jahren:\n$$\n\\vec x_2 = M\\vec x_1 = \\begin{pmatrix}0.92 & 0.05\\\\ 0.08 & 0.95\\end{pmatrix}\\begin{pmatrix}9600\\\\8400\\end{pmatrix} = \\begin{pmatrix}9252\\\\8748\\end{pmatrix}.\n$$\n\n3. Für die stationäre Verteilung gilt\n$$\nM\\vec v = \\vec v,\\qquad v_A+v_B=18000.\n$$\nAus der ersten Zeile folgt\n$$\n0.92v_A + 0.05v_B = v_A \\Rightarrow -0.08v_A + 0.05v_B = 0.\n$$\nAlso\n$$\n0.05v_B = 0.08v_A \\Rightarrow v_B = 1.6v_A.\n$$\nMit $v_A+v_B=18000$ folgt\n$$\n2.6v_A = 18000 \\Rightarrow v_A \\approx 6923.08.\n$$\nDaraus ergibt sich\n$$\nv_B \\approx 11076.92.\n$$\n\n4. Die stationäre Verteilung beschreibt den langfristigen Zustand, auf den sich die Bevölkerungszahlen bei unveränderten Übergangsraten zubewegen. Langfristig leben also etwa $6923$ Personen in A und $11077$ Personen in B.",
         "scoring": {
@@ -53664,6 +54458,28 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "168d8879-0412-5524-94c5-c1d8169dbd65",
+          "803d910d-96d1-5118-b9ca-29e93d0da76d",
+          "7bd8f022-5002-5610-994c-a9cec1890558",
+          "4c494716-567b-59c2-855c-6ea45635c666",
+          "55039f9c-4ebc-5115-add5-fae95b915e46",
+          "35558905-753d-5fcb-b25e-7f85ffdbff56",
+          "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+          "5748633c-113f-5ea8-9041-24da55919de7"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben ist die lineare Abbildung mit der Matrix\n$$\nA = \\begin{pmatrix}2 & 1\\\\ 0 & 1\\end{pmatrix}.\n$$\nAußerdem sei das Dreieck mit den Eckpunkten\n$$\nP(0\\mid0),\\ Q(1\\mid0),\\ R(0\\mid2)\n$$\ngegeben.\n\n1. Bestimmen Sie die Bildpunkte $P'$, $Q'$ und $R'$ unter der Abbildung $A$.\n2. Beschreiben Sie, wie sich das Dreieck durch die Abbildung verändert.\n3. Untersuchen Sie, ob der Vektor\n$$\n\\vec u = \\begin{pmatrix}1\\\\0\\end{pmatrix}\n$$\nein Eigenvektor von $A$ ist.\n4. Die Matrix\n$$\nB = \\begin{pmatrix}1 & 0\\\\ 0 & 0\\end{pmatrix}\n$$\nbeschreibt eine Projektion. Erläutern Sie die geometrische Wirkung von $B$ und bestimmen Sie $B\\cdot R$.",
         "solutionContent": "1. Es gilt\n$$\nA\\cdot P = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}0\\\\0\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\end{pmatrix},\n$$\n$$\nA\\cdot Q = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}1\\\\0\\end{pmatrix} = \\begin{pmatrix}2\\\\0\\end{pmatrix},\n$$\n$$\nA\\cdot R = \\begin{pmatrix}2 & 1\\\\0 & 1\\end{pmatrix}\\begin{pmatrix}0\\\\2\\end{pmatrix} = \\begin{pmatrix}2\\\\2\\end{pmatrix}.\n$$\nAlso sind\n$$\nP'(0\\mid0),\\ Q'(2\\mid0),\\ R'(2\\mid2).\n$$\n\n2. Der Punkt $P$ bleibt fest. Der Punkt $Q$ wird in $x$-Richtung gestreckt, und $R$ wird sowohl verschoben als auch gestreckt. Das ursprüngliche Dreieck wird zu einem schiefen Dreieck; die Abbildung enthält also eine Scherung kombiniert mit einer Streckung.\n\n3. Für\n$$\n\\vec u = \\begin{pmatrix}1\\\\0\\end{pmatrix}\n$$\nergibt sich\n$$\nA\\vec u = \\begin{pmatrix}2\\\\0\\end{pmatrix} = 2\\begin{pmatrix}1\\\\0\\end{pmatrix} = 2\\vec u.\n$$\nDamit ist $\\vec u$ ein Eigenvektor zum Eigenwert $2$.\n\n4. Die Matrix\n$$\nB = \\begin{pmatrix}1 & 0\\\\0 & 0\\end{pmatrix}\n$$\nprojiziert jeden Punkt auf die $x$-Achse, weil die zweite Koordinate auf $0$ gesetzt wird. Für den Punkt $R$ gilt\n$$\nB\\cdot R = \\begin{pmatrix}1 & 0\\\\0 & 0\\end{pmatrix}\\begin{pmatrix}0\\\\2\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\end{pmatrix}.\n$$",
         "scoring": {
@@ -53803,6 +54619,22 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "bd63c0fc-50ef-55aa-ae6c-25cf73d02636",
+          "508292f2-671b-4fd3-acbf-53d705e44693",
+          "c2831918-26f1-421e-90fb-ce707689594e",
+          "dabff49b-d40a-4c81-a584-21408b2d4219",
+          "3e974075-b2fd-43e6-88d9-5f596ad053ec"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Für ein Forschungscamp werden $3$ Plätze unter $20$ Bewerberinnen und Bewerbern verlost. Darunter sind $8$ Personen aus dem Leistungskurs Mathematik und $12$ aus anderen Kursen.\n\n1. Beschreiben Sie das Ziehen ohne Zurücklegen mit einem geeigneten Modell und berechnen Sie die Wahrscheinlichkeit, dass genau zwei der drei ausgewählten Personen aus dem Leistungskurs Mathematik stammen.\n2. Eine Schülerin vereinfacht das Experiment zu drei Ziehungen mit Zurücklegen und verwendet ein Binomialmodell mit $p=0{,}4$. Berechnen Sie in diesem Modell ebenfalls die Wahrscheinlichkeit für genau zwei Leistungskurs-Personen.\n3. Vergleichen Sie beide Ergebnisse und beurteilen Sie, welches Modell die reale Situation besser beschreibt.\n4. Erläutern Sie, warum die Binomialmodellierung bei einer sehr grossen Grundgesamtheit mit demselben Anteil von $40\\,$% deutlich besser geeignet ist.",
         "solutionContent": "1. Da ohne Zurücklegen gezogen wird, ist die hypergeometrische Modellierung passend. Für genau zwei Leistungskurs-Personen gilt\n$$\nP(X=2)=\\frac{\\binom{8}{2}\\binom{12}{1}}{\\binom{20}{3}}=\\frac{28\\cdot 12}{1140}\\approx 0{,}2947.\n$$\n\n2. Im Binomialmodell mit $n=3$ und $p=0{,}4$ ergibt sich\n$$\nP(Y=2)=\\binom{3}{2}\\cdot 0{,}4^2\\cdot 0{,}6=3\\cdot 0{,}16\\cdot 0{,}6=0{,}288.\n$$\n\n3. Beide Werte liegen nah beieinander, unterscheiden sich aber leicht. Das reale Ziehen ohne Zurücklegen wird durch das hypergeometrische Modell besser beschrieben, weil sich die Wahrscheinlichkeiten nach jeder Ziehung verändern.\n\n4. Bei einer sehr grossen Grundgesamtheit ändert sich der Anteil von Leistungskurs-Personen durch eine einzelne Ziehung kaum. Dann sind die Ziehungen nahezu unabhängig, sodass die Binomialverteilung eine gute Approximation liefert.",
         "scoring": {
@@ -53896,6 +54728,29 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "42d300e3-e982-5889-98d7-fc297f10eff1",
+          "837b015a-c2a2-5f31-831c-ae16ee2ee6ce",
+          "5b54f272-f588-5009-8b42-eb15f846d3e2",
+          "66f432e9-22d3-51a9-8787-35f91db30616",
+          "3d9530ef-8355-59fc-b8c1-afe42cf9e888",
+          "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+          "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "6053aeda-84f7-4c2c-98d7-1753a7e26dcc",
+          "990d7514-c4c3-485e-907e-91687676a8cc",
+          "f7879354-1a82-4195-8e3c-a339a820439c",
+          "b431148b-526c-4bde-b04b-48d23101d0d3"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "In einem Versandzentrum kommen erfahrungsgemäß $6\\,$% aller Sendungen verspätet an. An einem Tag werden $250$ Sendungen betrachtet. Die Zufallsvariable $X$ beschreibt die Anzahl der verspäteten Sendungen.\n\n1. Begründen Sie ein geeignetes Modell für $X$ und bestimmen Sie Erwartungswert und Standardabweichung.\n2. Berechnen Sie mit der Normalapproximation und Stetigkeitskorrektur die Wahrscheinlichkeit, dass zwischen $10$ und $20$ Sendungen verspätet ankommen.\n3. Bestimmen Sie näherungsweise die Wahrscheinlichkeit, dass mehr als $25$ Sendungen verspätet sind.\n4. Beurteilen Sie, ob ein Tageswert von mehr als $25$ verspäteten Sendungen als auffällig gelten kann.",
         "solutionContent": "1. Es ist ein Binomialmodell mit\n$$\nX\\sim B(250;0{,}06)\n$$\nangemessen. Es gilt\n$$\n\\mu=np=250\\cdot 0{,}06=15,\n$$\n$$\n\\sigma=\\sqrt{np(1-p)}=\\sqrt{250\\cdot 0{,}06\\cdot 0{,}94}=\\sqrt{14{,}1}\\approx 3{,}76.\n$$\n\n2. Mit Stetigkeitskorrektur wird\n$$\nP(10\\le X\\le 20)\\approx P(9{,}5\\le Y\\le 20{,}5)\n$$\nmit $Y\\sim N(15;3{,}76)$. Standardisiert ergibt sich\n$$\nz_1=\\frac{9{,}5-15}{3{,}76}\\approx -1{,}46,\\qquad z_2=\\frac{20{,}5-15}{3{,}76}\\approx 1{,}46.\n$$\nDamit folgt\n$$\nP(10\\le X\\le 20)\\approx \\Phi(1{,}46)-\\Phi(-1{,}46)\\approx 0{,}857.\n$$\n\n3. Für mehr als $25$ verspätete Sendungen gilt mit Stetigkeitskorrektur\n$$\nP(X>25)\\approx P(Y>25{,}5).\n$$\nStandardisieren liefert\n$$\nz=\\frac{25{,}5-15}{3{,}76}\\approx 2{,}79.\n$$\nAlso\n$$\nP(X>25)\\approx 1-\\Phi(2{,}79)\\approx 0{,}0026.\n$$\n\n4. Ein Tageswert von mehr als $25$ verspäteten Sendungen ist sehr unwahrscheinlich. Mit einer Wahrscheinlichkeit von nur etwa $0{,}26\\,$% kann ein solcher Wert als deutlich auffällig beurteilt werden.",
         "scoring": {
@@ -53979,6 +54834,19 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "03357e70-2280-532f-b629-5dfa31dc44eb",
+          "ae483d98-54e0-5985-96d2-fc1351d22e4f"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Ein Hersteller behauptet, dass höchstens $2\\,$% aller produzierten Sensoren fehlerhaft sind. Zur Überprüfung wird eine Stichprobe von $n=400$ Sensoren untersucht; dabei werden $14$ fehlerhafte Sensoren gefunden.\n\n1. Formulieren Sie eine passende Nullhypothese und eine geeignete Alternativhypothese.\n2. Bestimmen Sie für einen einseitigen Test zum Signifikanzniveau $5\\,$% mit der Normalapproximation eine Entscheidungsregel.\n3. Treffen Sie auf Grundlage der Stichprobe eine Testentscheidung.\n4. Erläutern Sie die Bedeutung eines Fehlers 1. Art im gegebenen Kontext.",
         "solutionContent": "1. Geeignet ist\n$$\nH_0: p \\le 0{,}02, \\qquad H_1: p > 0{,}02.\n$$\nFür die Rechnung wird unter $H_0$ mit $p_0=0{,}02$ gearbeitet.\n\n2. Unter $H_0$ gilt näherungsweise\n$$\n\\mu = np_0 = 8, \\qquad \\sigma = \\sqrt{np_0(1-p_0)} = \\sqrt{7{,}84} \\approx 2{,}8.\n$$\nFür einen einseitigen Test mit $\\alpha=0{,}05$ wird der kritische $z$-Wert $1{,}645$ verwendet:\n$$\nk \\approx \\mu + 1{,}645\\sigma \\approx 8 + 1{,}645\\cdot 2{,}8 \\approx 12{,}6.\n$$\nMit Stetigkeitskorrektur ist eine sinnvolle Entscheidungsregel:\n$$\n\\text{Verwerfe } H_0 \\text{ für } X \\ge 13.\n$$\n\n3. Beobachtet wurde $X=14$. Da $14 \\ge 13$, wird $H_0$ verworfen. Die Stichprobe spricht also dafür, dass die Fehlerquote größer als $2\\,$% ist.\n\n4. Ein Fehler 1. Art liegt vor, wenn $H_0$ verworfen wird, obwohl die wahre Fehlerquote tatsächlich höchstens $2\\,$% beträgt. Im Kontext würde der Hersteller also zu Unrecht als qualitativ schlechter eingestuft.",
         "scoring": {
@@ -54062,6 +54930,19 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "52758ed0-cba8-5583-9e69-906d2e7c7843",
+          "410221ed-540c-5daf-8c42-d8dd12e9100a"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "Bei einer Befragung von $500$ Schülerinnen und Schülern geben $315$ an, regelmäßig mit dem Fahrrad zur Schule zu fahren.\n\n1. Bestimmen Sie den relativen Stichprobenanteil.\n2. Geben Sie ein $95\\,$%-Konfidenzintervall für den unbekannten Anteil $p$ aller Schülerinnen und Schüler an, die regelmäßig mit dem Fahrrad zur Schule fahren.\n3. Beurteilen Sie mithilfe des Intervalls die Aussage: \"Mindestens $60\\,$% aller Schülerinnen und Schüler fahren regelmäßig mit dem Fahrrad zur Schule.\"\n4. Wie gross muss eine neue Stichprobe mindestens sein, damit der Stichprobenfehler bei einem $95\\,$%-Konfidenzintervall höchstens $0{,}03$ beträgt, wenn man weiter mit dem beobachteten Anteil rechnet?",
         "solutionContent": "1. Der relative Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\n\n2. Für ein $95\\,$%-Konfidenzintervall gilt näherungsweise\n$$\n\\hat p\\pm 1{,}96\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}.\n$$\nMit $\\hat p=0{,}63$ und $n=500$ ergibt sich\n$$\n\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}}\\approx 0{,}0214,\n$$\nalso der Fehlerterm\n$$\n1{,}96\\cdot 0{,}0214\\approx 0{,}042.\n$$\nDamit lautet das Intervall näherungsweise\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n3. Der Wert $0{,}60$ liegt im Konfidenzintervall. Die Aussage \"mindestens $60\\,$%\" ist also mit den Daten vereinbar, aber durch die Stichprobe nicht eindeutig gesichert.\n\n4. Gesucht ist $n$ mit\n$$\n1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{n}}\\le 0{,}03.\n$$\nUmformen liefert\n$$\nn\\ge 0{,}63\\cdot 0{,}37\\left(\\frac{1{,}96}{0{,}03}\\right)^2\\approx 994{,}95.\n$$\nAlso werden mindestens\n$$\nn=995\n$$\nPersonen benötigt.",
         "scoring": {
@@ -54154,6 +55035,28 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "84069c5e-5526-57c1-9417-a886ccfd3f66",
+          "4aa70ad4-171d-5671-a864-c0c7758fa0ed",
+          "aeb947a2-2dd4-5017-a429-0d777e22db6a",
+          "c9a897ca-a0a2-5895-bbc4-23b20840c548",
+          "1cefd1ad-a250-5a03-8de7-04bdaf465ad8",
+          "5dbf149c-d335-552c-a918-768a12e09201",
+          "455ef29a-7194-5c5a-b832-1c27fcbf2516",
+          "7d9c565c-8df1-40ca-b3c6-2d4ec51e9140",
+          "c92133c6-d5de-4902-936c-321915cf21e9",
+          "18293a33-a5ff-4a0f-9b6a-085f171cbffe",
+          "75efcc7c-3c96-47c6-a681-1e9337862a20"
+        ],
+        "coveredStrands": [
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
         "taskContent": "In einem Callcenter wird in $100$ gleich langen Zeitintervallen erfasst, wie viele Anrufe eingehen. Die beobachteten Häufigkeiten lauten:\n\n- $0$ Anrufe: $12$\n- $1$ Anruf: $29$\n- $2$ Anrufe: $31$\n- $3$ Anrufe: $17$\n- mindestens $4$ Anrufe: $11$\n\nDie Leitung vermutet, dass die Anzahl der Anrufe pro Intervall durch eine Poisson-Verteilung mit dem Parameter $\\lambda=2$ beschrieben werden kann.\n\n1. Berechnen Sie die erwarteten Häufigkeiten für $0$, $1$, $2$, $3$ und mindestens $4$ Anrufe in $100$ Intervallen.\n2. Vergleichen Sie Beobachtung und Modell und beurteilen Sie, ob die Poisson-Verteilung hier als sinnvolles Modell gelten kann.\n3. Bestimmen Sie die Wahrscheinlichkeit, dass in drei aufeinanderfolgenden Intervallen zusammen mindestens $8$ Anrufe eingehen.\n4. Erläutern Sie, wie eine Simulation helfen kann, die Modellannahme weiter zu überprüfen.",
         "solutionContent": "1. Für $X\\sim \\operatorname{Pois}(2)$ gilt\n$$\nP(X=k)=\\frac{2^k\\mathrm e^{-2}}{k!}.\n$$\nDaraus folgen näherungsweise\n$$\nP(X=0)=\\mathrm e^{-2}\\approx 0{,}1353,\\quad P(X=1)=2\\mathrm e^{-2}\\approx 0{,}2707,\n$$\n$$\nP(X=2)=\\frac{2^2}{2!}\\mathrm e^{-2}\\approx 0{,}2707,\\quad P(X=3)=\\frac{2^3}{3!}\\mathrm e^{-2}\\approx 0{,}1804.\n$$\nSomit ist\n$$\nP(X\\ge 4)=1-(0{,}1353+0{,}2707+0{,}2707+0{,}1804)\\approx 0{,}1429.\n$$\nFür $100$ Intervalle ergeben sich die erwarteten Häufigkeiten:\n$$\n13{,}5;\\ 27{,}1;\\ 27{,}1;\\ 18{,}0;\\ 14{,}3.\n$$\n\n2. Die beobachteten Werte $12,29,31,17,11$ liegen insgesamt recht nah an den erwarteten Häufigkeiten. Es gibt kleinere Abweichungen, aber keine deutliche systematische Verletzung. Die Poisson-Verteilung kann deshalb als sinnvolles Modell angesehen werden.\n\n3. Die Summe von drei unabhängigen Poisson-verteilten Zufallsvariablen mit Parameter $2$ ist wieder poissonverteilt mit Parameter $6$. Für $Y\\sim \\operatorname{Pois}(6)$ gilt daher\n$$\nP(Y\\ge 8)=1-P(Y\\le 7)\\approx 0{,}256.\n$$\nDie Wahrscheinlichkeit beträgt also etwa $25{,}6\\,$%.\n\n4. Man kann sehr viele Serien von je $100$ Intervallen mit dem Poisson-Modell simulieren und dabei vergleichen, wie stark die simulierten Häufigkeiten typischerweise streuen. Liegen die realen Daten im Bereich dieser typischen Schwankungen, stützt das die Modellannahme.",
         "scoring": {
@@ -54307,6 +55210,38 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "fcf9af67-7abd-5f69-a22a-b436297d44c5",
+          "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
+          "1bdac3d8-6b6f-5e27-9c9e-9addf198aa99",
+          "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
+          "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "e33e75e3-eae5-5a09-862f-d1a11176373f",
+          "49f9059a-876c-5051-8146-d008b5cc691c",
+          "6a66b4f5-d36e-5b53-91ad-cf25a849d66b",
+          "10efb267-9733-5db3-a807-03f4cf54e336",
+          "f1eee698-04c6-5d60-bcc6-a3c67129eea2",
+          "b66d13c5-187e-530b-b4d3-efc7506a7f34",
+          "4d55ba50-8d67-560c-a10f-cccff4728c40",
+          "565fcd3f-52cd-5402-a0ac-a1069ed9c598",
+          "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
+          "911f3200-1dbc-59a6-90df-c883c77de39c",
+          "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+          "1b664036-3c29-5d94-9f42-97069aaa2c53",
+          "315093d4-515a-542c-b776-d72a12763d1a"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben ist für $a \\in \\mathbb R$ die Funktionenschar\n$$\nf_a(x)=x^2-2ax+2a.\n$$\n\n1. Bestimmen Sie den Scheitelpunkt $S_a$ des Graphen von $f_a$ in Abhängigkeit von $a$.\n2. Weisen Sie nach, dass die Scheitelpunkte aller Graphen auf einer gemeinsamen Ortskurve liegen, und geben Sie deren Gleichung an.\n3. Untersuchen Sie in Abhängigkeit von $a$, für welche Werte die Parabel keine reellen Nullstellen besitzt.\n4. Berechnen Sie für $a=3$ den Flächeninhalt der von dem Graphen von $f_3$, der $x$-Achse und den Nullstellen eingeschlossenen Fläche.",
         "solutionContent": "1. Durch quadratische Ergänzung erhält man\n$$\nf_a(x)=x^2-2ax+2a=(x-a)^2-a^2+2a.\n$$\nDamit ist der Scheitelpunkt\n$$\nS_a=(a\\mid -a^2+2a).\n$$\n\n2. Für die Scheitelpunkte gilt $x=a$. Einsetzen in die $y$-Koordinate liefert\n$$\ny=-a^2+2a=-x^2+2x.\n$$\nDie Ortskurve der Scheitelpunkte ist also\n$$\ny=-x^2+2x.\n$$\n\n3. Die Funktion $f_a$ besitzt genau dann keine reellen Nullstellen, wenn die Diskriminante negativ ist:\n$$\n\\Delta=(-2a)^2-4\\cdot 1\\cdot 2a=4a^2-8a=4a(a-2).\n$$\nGesucht ist\n$$\n4a(a-2)<0.\n$$\nDas gilt für\n$$\n0<a<2.\n$$\n\n4. Für $a=3$ ist\n$$\nf_3(x)=x^2-6x+6=(x-3)^2-3.\n$$\nDie Nullstellen sind\n$$\nx_{1,2}=3\\pm \\sqrt{3}.\n$$\nZwischen diesen Nullstellen liegt der Graph unter der $x$-Achse. Der Flächeninhalt ist daher\n$$\nA=\\int_{3-\\sqrt{3}}^{3+\\sqrt{3}} -f_3(x)\\,dx.\n$$\nMit $u=x-3$ wird\n$$\nA=\\int_{-\\sqrt{3}}^{\\sqrt{3}} (3-u^2)\\,du = \\left[3u-\\frac{u^3}{3}\\right]_{-\\sqrt{3}}^{\\sqrt{3}} = 4\\sqrt{3}.\n$$\nAlso gilt\n$$\nA=4\\sqrt{3}.\n$$",
         "scoring": {
@@ -54398,6 +55333,29 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "613871f6-ccb2-51fe-aba2-0dd17b86a89e",
+          "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",
+          "1675fdde-cba7-5456-ae70-a846e1924a68",
+          "27bdc580-ba17-5399-bf02-48f354846d1d",
+          "e75ec65a-9692-5871-b90b-fbebe38ae0c3",
+          "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+          "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+          "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+          "21fa0c22-976e-59b3-a871-899f0c0177f3",
+          "ae3483e3-4712-56a1-a881-2e1f8a1a8df9"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Es sollen rechteckige Gehege mit dem Flächeninhalt $36\\,\\mathrm{m}^2$ geplant werden. Unter allen möglichen Rechtecken soll dasjenige mit dem kleinsten Umfang gefunden werden.\n\n1. Stellen Sie den Umfang $U$ in Abhängigkeit von einer Seitenlänge $x$ als Funktion dar.\n2. Bestimmen Sie mit einer Analysis-Methode das Rechteck mit minimalem Umfang.\n3. Lösen Sie dieselbe Aufgabe ein zweites Mal ohne Differentialrechnung, sondern mit einem passenden Ungleichungsargument.\n4. Vergleichen Sie beide Lösungsstrategien und beurteilen Sie, welche im gegebenen Kontext beziehungsweise in allgemeineren Situationen stärker ist.",
         "solutionContent": "1. Sei $x>0$ eine Seitenlänge. Dann ist die andere Seitenlänge wegen des Flächeninhalts\n$$\ny=\\frac{36}{x}.\n$$\nDer Umfang lautet damit\n$$\nU(x)=2x+2\\cdot \\frac{36}{x}=2x+\\frac{72}{x}, \\qquad x>0.\n$$\n\n2. Mit der Ableitung\n$$\nU'(x)=2-\\frac{72}{x^2}\n$$\nfolgt aus $U'(x)=0$\n$$\n2=\\frac{72}{x^2} \\quad \\Rightarrow \\quad x^2=36 \\quad \\Rightarrow \\quad x=6.\n$$\nDann ist auch\n$$\ny=\\frac{36}{6}=6.\n$$\nMit\n$$\nU''(x)=\\frac{144}{x^3}>0\n$$\nfür $x>0$ liegt dort ein Minimum vor. Das gesuchte Rechteck ist also das Quadrat mit Seitenlänge $6\\,\\mathrm m$ und Umfang\n$$\nU_{\\min}=24\\,\\mathrm m.\n$$\n\n3. Mit der Ungleichung vom arithmetischen und geometrischen Mittel gilt für $x>0$\n$$\nx+\\frac{36}{x} \\ge 2\\sqrt{x\\cdot \\frac{36}{x}}=2\\sqrt{36}=12.\n$$\nSomit folgt\n$$\nU(x)=2\\left(x+\\frac{36}{x}\\right)\\ge 24.\n$$\nGleichheit gilt genau dann, wenn\n$$\nx=\\frac{36}{x},\n$$\nalso bei $x=6$. Wieder ergibt sich das Quadrat als optimale Lösung.\n\n4. Im gegebenen Kontext führen beide Strategien sicher zum selben Ergebnis. Das Ungleichungsargument ist kürzer und sehr elegant, wenn nur das Minimum gesucht wird und positive Größen vorliegen. Die Analysis-Methode ist flexibler, weil sie auch bei komplizierteren Nebenbedingungen, anderen Zielfunktionen oder weiterführenden Untersuchungen eingesetzt werden kann.",
         "scoring": {
@@ -54487,6 +55445,27 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+          "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+          "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+          "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+          "cea13aa9-f102-5c22-b2f0-81767d000f41",
+          "8e18154d-41d6-592e-ba98-537edad338e8",
+          "9b339361-7719-573d-a913-432246c502ee"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L4"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben ist die Gleichung\n$$\nz^2 - 4z + 13 = 0\n$$\nmit $z \\in \\mathbb C$.\n\n1. Lösen Sie die Gleichung in $\\mathbb C$.\n2. Stellen Sie die beiden Lösungen in der Gaußschen Zahlenebene dar.\n3. Bestimmen Sie Betrag und ein Argument der Lösung mit positivem Imaginärteil.\n4. Die Multiplikation mit $i$ kann in $\\mathbb R^2$ als lineare Abbildung dargestellt werden. Geben Sie die zugehörige Matrix an und erläutern Sie deren geometrische Bedeutung.",
         "solutionContent": "1. Mit der Mitternachtsformel ergibt sich\n$$\nz = \\frac{4 \\pm \\sqrt{16-52}}{2} = \\frac{4 \\pm \\sqrt{-36}}{2} = 2 \\pm 3i.\n$$\n\n2. In der Gaußschen Zahlenebene entsprechen die Lösungen den Punkten\n$$\n(2\\mid 3) \\quad \\text{und} \\quad (2\\mid -3).\n$$\nSie liegen spiegelsymmetrisch zur reellen Achse.\n\n3. Für $z_1 = 2+3i$ gilt\n$$\n|z_1| = \\sqrt{2^2+3^2} = \\sqrt{13}.\n$$\nEin Argument ist\n$$\n\\varphi = \\arctan\\left(\\frac{3}{2}\\right).\n$$\nNumerisch erhält man ungefähr $\\varphi \\approx 0{,}983$ rad.\n\n4. Die Multiplikation mit $i$ bildet\n$$\n(x,y) \\mapsto (-y,x)\n$$\nab. Die zugehörige Matrix ist\n$$\nA = \\begin{pmatrix}0 & -1\\\\ 1 & 0\\end{pmatrix}.\n$$\nGeometrisch beschreibt diese Matrix eine Drehung um $90^\\circ$ gegen den Uhrzeigersinn um den Ursprung.",
         "scoring": {
@@ -54644,6 +55623,31 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "a8d4eb81-b77a-53e3-813a-dbfeed09f1bf",
+          "f84ea3d8-c255-552a-998a-202e42843f56",
+          "dd6c5e08-0cc6-53c0-b317-ebaba277c776",
+          "772b11c9-1348-5ab9-bc3f-458c46b312b6",
+          "4c6369b0-4b58-5ac0-915c-82c348ae1c14",
+          "81527aac-1abf-588d-acae-b82a86564b06",
+          "9ea981ed-8b78-502c-b316-01d8cb885814",
+          "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "4ae439c0-ce3c-5c96-9755-9899bc70e948",
+          "dd1d9f9c-0a4e-5d01-95d8-f6993163b20c"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Sei $f$ eine gerade Funktion mit Definitionsmenge $\\mathbb R$.\n\n1. Begründen Sie, dass die Funktion $g(x)=2f(x)-3$ ebenfalls gerade ist.\n2. Untersuchen Sie die Aussage: \"Die Funktion $h(x)=f(x-1)$ ist für jede gerade Funktion $f$ wieder gerade.\" Widerlegen oder beweisen Sie die Aussage.\n3. Formulieren Sie eine fachlich korrekte Ersatz-Aussage zu $h(x)=f(x-1)$.\n4. Begründen Sie Ihre Ersatz-Aussage allgemein.",
         "solutionContent": "1. Da $f$ gerade ist, gilt für alle $x\\in \\mathbb R$\n$$\nf(-x)=f(x).\n$$\nDamit folgt\n$$\ng(-x)=2f(-x)-3=2f(x)-3=g(x).\n$$\nAlso ist $g$ gerade.\n\n2. Die Aussage ist falsch. Ein Gegenbeispiel ist $f(x)=x^2$. Dann gilt\n$$\nh(x)=f(x-1)=(x-1)^2.\n$$\nEs ist\n$$\nh(-x)=(-x-1)^2=(x+1)^2 \\neq (x-1)^2=h(x)\n$$\nzum Beispiel für $x=1$. Also ist $h$ im Allgemeinen nicht gerade.\n\n3. Eine korrekte Ersatz-Aussage lautet: Der Graph von $h(x)=f(x-1)$ ist achsensymmetrisch zur Geraden $x=1$.\n\n4. Setzt man $x=1+t$, so erhält man\n$$\nh(1+t)=f(t), \\qquad h(1-t)=f(-t).\n$$\nDa $f$ gerade ist, gilt $f(-t)=f(t)$. Also folgt\n$$\nh(1-t)=h(1+t).\n$$\nDamit sind die Funktionswerte in gleichem Abstand links und rechts von $x=1$ gleich. Genau das bedeutet Achsensymmetrie zur Geraden $x=1$.",
         "scoring": {
@@ -54735,6 +55739,25 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "86022c15-9847-5864-b84f-9ffe5d71556e",
+          "22fb19c1-9b26-5090-a8ae-6cea79ee581a",
+          "909d8b16-5156-528b-a300-d9aee5405ba0",
+          "8b885220-9985-52f1-a236-449d2f897acc"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gesucht sind alle Paare positiver ganzer Zahlen $(a,b)$ mit\n$$\nab=2a+2b.\n$$\n\n1. Lösen Sie die Aufgabe mit einer systematischen Strategie.\n2. Bestimmen Sie die Lösungsmenge ein zweites Mal durch geeignetes Umformen der Gleichung.\n3. Begründen Sie, warum damit alle Lösungen erfasst sind.\n4. Beurteilen Sie, welche der beiden Strategien sich leichter auf ähnliche Gleichungen wie $ab=3a+3b$ übertragen lässt.",
         "solutionContent": "1. Eine systematische Strategie ist, die Gleichung nach möglichen Teilern zu untersuchen. Zweckmäßiger ist aber direkt das Umformen.\n\n2. Aus\n$$\nab=2a+2b\n$$\nfolgt durch Addition von $4$ auf beiden Seiten\n$$\nab-2a-2b+4=4.\n$$\nDamit erhält man\n$$\n(a-2)(b-2)=4.\n$$\nDa $a$ und $b$ positive ganze Zahlen sind, müssen auch $a-2$ und $b-2$ positive Teiler von $4$ sein. Die möglichen Teilerpaare sind\n$$\n(1,4), (2,2), (4,1).\n$$\nDaraus folgen die Lösungen\n$$\n(a,b)=(3,6), (4,4), (6,3).\n$$\n\n3. Weitere Lösungen gibt es nicht, weil die Zahl $4$ nur die genannten positiven Teilerpaare besitzt. Jedes davon führt genau auf ein Zahlenpaar $(a,b)$ der Ausgangsgleichung.\n\n4. Die Faktorisierungsstrategie ist für ähnliche Gleichungen besonders stark, weil sie das Problem auf eine endliche Anzahl von Teilerpaaren reduziert. Reines Probieren kann zwar ebenfalls zum Ziel führen, ist aber weniger transparent und bei größeren Zahlen deutlich unpraktischer.",
         "scoring": {
@@ -54827,6 +55850,26 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+          "519660d0-85e5-57a6-a219-d0a253336649",
+          "dc12f281-f161-572b-a973-8405ae9b2498",
+          "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Eine Schule plant für einen Projekttag ein Mittagessen und vergleicht zwei Caterer.\n\n- Anbieter A verlangt eine Grundgebühr von $250\\,\\mathrm{EUR}$ und zusätzlich $4{,}20\\,\\mathrm{EUR}$ pro Essen.\n- Anbieter B verlangt eine Grundgebühr von $80\\,\\mathrm{EUR}$ und zusätzlich $5{,}10\\,\\mathrm{EUR}$ pro Essen.\n\n1. Stellen Sie für beide Anbieter Kostenfunktionen in Abhängigkeit von der Anzahl $x$ der Essen auf.\n2. Bestimmen Sie diejenige Teilnehmerzahl, ab der Anbieter A günstiger ist als Anbieter B.\n3. Entscheiden Sie für $120$ erwartete Essen, welcher Anbieter zu wählen ist.\n4. Beurteilen Sie die Aussagekraft des Modells. Nennen Sie mindestens zwei Aspekte der Realität, die im Modell nicht oder nur unvollständig berücksichtigt werden.",
         "solutionContent": "1. Die Kostenfunktionen lauten\n$$\nK_A(x)=250+4{,}2x,\n$$\n$$\nK_B(x)=80+5{,}1x.\n$$\n\n2. Gesucht ist der Schnittpunkt:\n$$\n250+4{,}2x=80+5{,}1x.\n$$\nDaraus folgt\n$$\n170=0{,}9x \\quad \\Rightarrow \\quad x\\approx 188{,}9.\n$$\nAb etwa $189$ Essen ist Anbieter A günstiger als Anbieter B.\n\n3. Für $x=120$ gilt\n$$\nK_A(120)=250+4{,}2\\cdot 120=754,\n$$\n$$\nK_B(120)=80+5{,}1\\cdot 120=692.\n$$\nAlso ist bei $120$ Essen Anbieter B die günstigere Wahl.\n\n4. Das Modell betrachtet nur lineare Kosten. Nicht berücksichtigt werden zum Beispiel Qualitätsunterschiede, mögliche Rabatte bei grossen Mengen, Lieferkosten, Ausfallrisiken, Restessen oder Unsicherheit bei der tatsächlichen Teilnehmerzahl. Daher ist das Modell eine sinnvolle erste Orientierung, aber keine vollständige Entscheidungsgrundlage.",
         "scoring": {
@@ -54919,6 +55962,26 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "cf4fe700-dec2-502f-888b-90acefa307bb",
+          "42b57670-d2be-5da2-be2f-d58055901813",
+          "d668c22d-caeb-5e91-8980-721c931a2bcf",
+          "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+          "d0475ed5-cb6f-5694-9501-a1c94288d65a"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Gegeben ist die Funktion\n$$\np(x)=-0{,}5x^2+12x.\n$$\n\n1. Erstellen Sie eine Wertetabelle für $x=0,4,8,12,16,20,24$.\n2. Bestimmen Sie mit Hilfe des Terms die Nullstellen und den Scheitelpunkt des Graphen.\n3. Erläutern Sie, welche Informationen der Term, die Wertetabelle und ein Schaubild jeweils besonders gut liefern.\n4. Eine Schülerin sagt: \"Zwischen $x=6$ und $x=18$ verhält sich die Funktion fast linear.\" Beurteilen Sie diese Aussage mithilfe der verschiedenen Darstellungen.",
         "solutionContent": "1. Einsetzen liefert die Tabelle\n$$\n\\begin{array}{c|ccccccc}\nx & 0 & 4 & 8 & 12 & 16 & 20 & 24\\\\ \\hline\np(x) & 0 & 40 & 64 & 72 & 64 & 40 & 0\n\\end{array}\n$$\n\n2. Für die Nullstellen gilt\n$$\np(x)=-0{,}5x^2+12x=x(-0{,}5x+12).\n$$\nAlso sind die Nullstellen\n$$\nx_1=0, \\qquad x_2=24.\n$$\nDer Scheitel liegt in der Mitte zwischen den Nullstellen bei\n$$\nx_S=12.\n$$\nDann ist\n$$\np(12)=72.\n$$\nSomit lautet der Scheitelpunkt\n$$\nS(12\\mid 72).\n$$\n\n3. Der Term erlaubt exakte Rechnungen und allgemeine Aussagen. Die Wertetabelle zeigt schnell einzelne Werte und Trends. Ein Schaubild macht den gesamten Verlauf anschaulich und erlaubt schnelles Ablesen, ist aber meist weniger exakt.\n\n4. Die Aussage ist nur eingeschränkt richtig. Im mittleren Bereich wirkt der Graph optisch flacher als an den Rändern, aber der Term zeigt klar, dass es sich um eine quadratische Funktion handelt. Auch die Tabelle zeigt keine konstante Änderungsrate: Von $x=8$ nach $12$ steigt der Wert um $8$, von $12$ nach $16$ fällt er um $8$. Eine echte lineare Entwicklung liegt also nicht vor.",
         "scoring": {
@@ -55020,6 +56083,35 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+          "07be4b71-b7e0-5dd1-be0c-9f590f3db3f3",
+          "c97a33d9-d5e4-56c5-ae4c-822bc4f54898",
+          "fbcb4ad3-786d-5365-94ba-b105660694a5",
+          "619f29f5-7f44-5654-9692-01b250997d52",
+          "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+          "c371b3f0-dd0e-5263-b616-de6c362f70db",
+          "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+          "d8cbf2bd-2512-5661-b431-4aea7e688912",
+          "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+          "474fe553-d868-50d9-a19b-761e64f21c0d",
+          "97b03cce-6641-5ec9-a6d2-f31838e2dbb9",
+          "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+          "1c1754b7-2cd3-5635-824d-ce93f7b99514"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Untersucht wird die Gleichung\n$$\n\\ln(x)=2-x\n$$\nmit $x>0$.\n\n1. Begründen Sie, dass die Gleichung genau eine Lösung besitzt.\n2. Führen Sie für die Funktion $F(x)=\\ln(x)+x-2$ einen Newton-Schritt mit dem Startwert $x_0=2$ aus.\n3. Bestimmen Sie die Lösung näherungsweise auf drei Dezimalstellen.\n4. Erläutern Sie, wie ein graphisches Werkzeug bei der Bearbeitung helfen kann und welche Grenzen eine rein graphische Ablesung hat.",
         "solutionContent": "1. Es wird\n$$\nF(x)=\\ln(x)+x-2\n$$\nbetrachtet. Für $x>0$ gilt\n$$\nF'(x)=\\frac{1}{x}+1>0.\n$$\nAlso ist $F$ streng monoton steigend und kann daher höchstens eine Nullstelle besitzen. Da\n$$\nF(1)=-1<0 \\quad \\text{und} \\quad F(2)=\\ln(2)>0,\n$$\nliegt nach dem Zwischenwertsatz mindestens eine Nullstelle im Intervall $(1,2)$. Insgesamt gibt es also genau eine Lösung.\n\n2. Für das Newton-Verfahren gilt\n$$\nx_{n+1}=x_n-\\frac{F(x_n)}{F'(x_n)}.\n$$\nMit $x_0=2$ ist\n$$\nF(2)=\\ln(2), \\qquad F'(2)=\\frac{1}{2}+1=1{,}5.\n$$\nDaher folgt\n$$\nx_1=2-\\frac{\\ln(2)}{1{,}5}\\approx 2-0{,}462=1{,}538.\n$$\n\n3. Numerisch ergibt sich die eindeutige Lösung zu\n$$\nx\\approx 1{,}557.\n$$\n\n4. Ein graphisches Werkzeug kann schnell zeigen, dass sich die Graphen von $y=\\ln(x)$ und $y=2-x$ genau einmal schneiden und wo die Lösung ungefähr liegt. Eine rein graphische Ablesung ist aber ungenau und hängt von Fensterwahl und Auflösung ab. Für die exakte Begründung der Eindeutigkeit und für verlässliche Näherungswerte sind formale Verfahren wie Monotonieargumente und Newton-Verfahren notwendig.",
         "scoring": {
@@ -55112,6 +56204,26 @@
         ]
       },
       "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "aeae526e-b3a4-5a17-b177-351df0307cb9",
+          "83a6ccb1-576e-59e1-8a97-8a332ec7dda8",
+          "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
+          "8b635349-abc3-59e7-af93-ec28940bf690",
+          "b35f8254-dfcc-5d4d-b77f-7b182999617f"
+        ],
+        "coveredStrands": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2",
+          "AB3"
+        ],
         "taskContent": "Bei einer Schulbefragung geben $315$ von $500$ Schülerinnen und Schülern an, regelmäßig mit dem Fahrrad zur Schule zu fahren.\n\n1. Formulieren Sie das Ergebnis mathematisch präzise mit Stichprobenanteil und einem geeigneten $95\\,$%-Konfidenzintervall.\n2. Formulieren Sie dasselbe Ergebnis in zwei bis drei Sätzen so, dass die Schulleitung ohne mathematischen Spezialwortschatz es gut versteht.\n3. Eine Rückfrage lautet: \"Heisst das, dass sicher genau $63\\,$% aller Schülerinnen und Schüler mit dem Fahrrad kommen?\" Antworten Sie fachlich korrekt und adressatengerecht.\n4. Verbessern Sie die missverständliche Aussage: \"Fast alle Schüler fahren mit dem Fahrrad.\"",
         "solutionContent": "1. Der Stichprobenanteil ist\n$$\n\\hat p=\\frac{315}{500}=0{,}63.\n$$\nEin näherungsweises $95\\,$%-Konfidenzintervall lautet\n$$\n0{,}63 \\pm 1{,}96\\sqrt{\\frac{0{,}63\\cdot 0{,}37}{500}} \\approx 0{,}63 \\pm 0{,}042.\n$$\nDamit ergibt sich\n$$\n[0{,}588;\\,0{,}672].\n$$\n\n2. Eine adressatengerechte Formulierung für die Schulleitung kann lauten: \"In unserer Befragung fuhren rund 63 Prozent der befragten Schülerinnen und Schüler regelmäßig mit dem Fahrrad zur Schule. Berücksichtigt man die übliche Unsicherheit einer Stichprobe, liegt der wahre Anteil wahrscheinlich irgendwo zwischen etwa 59 und 67 Prozent.\"\n\n3. Nein. Die 63 Prozent sind der beobachtete Anteil in der Stichprobe. Für alle Schülerinnen und Schüler der Schule lässt sich nur ein plausibler Bereich angeben; deshalb spricht man von einem Intervall und nicht von einem exakt sicheren Wert.\n\n4. Eine bessere Formulierung ist zum Beispiel: \"Nach der Befragung kommt eine klare Mehrheit der Schülerinnen und Schüler regelmäßig mit dem Fahrrad zur Schule; der wahre Anteil dürfte ungefähr zwischen 59 und 67 Prozent liegen.\"",
         "scoring": {

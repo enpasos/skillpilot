@@ -286,6 +286,35 @@
             "scoring"
           ],
           "properties": {
+            "reviewStatus": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "needs_review",
+                "released"
+              ]
+            },
+            "coveredGoalIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "coveredStrands": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "demandLevels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "sourceArtifactPath": {
+              "type": "string"
+            },
             "taskContent": {
               "type": "string",
               "description": "Markdown with LaTeX/images"

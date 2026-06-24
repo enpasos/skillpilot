@@ -19,8 +19,8 @@
     "/api/ai/de/chat-start/redeem": {
       "post": {
         "operationId": "redeemStartCode",
-        "summary": "Startcode einloesen und Chat-Session starten",
-        "description": "Muss als erster Tool-Call ausgefuehrt werden, wenn die Unterhaltung mit einem SkillPilot-Startcode beginnt. Gibt ein chatSessionToken und den initialen Lernzustand zurueck. Den Token intern weiterverwenden und nicht der lernenden Person anzeigen.",
+        "summary": "Startcode einloesen",
+        "description": "Startcode einloesen.",
         "requestBody": {
           "required": true,
           "content": {
@@ -59,7 +59,7 @@
       "get": {
         "operationId": "getLearnerState",
         "summary": "Get unified learner state",
-        "description": "Laedt den aktuellen Lernzustand fuer die Chat-Session. Nicht nach einer SkillPilot-ID fragen.",
+        "description": "Lernzustand laden.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -100,7 +100,7 @@
       "post": {
         "operationId": "setScope",
         "summary": "Set learning scope/focus",
-        "description": "Setzt den Lernfokus anhand von Goal-IDs aus dem zuletzt geladenen Zustand und gibt den aktualisierten Zustand zurueck.",
+        "description": "Fokus setzen.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -150,8 +150,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/active-goal": {
       "post": {
         "operationId": "setActiveGoal",
-        "summary": "Lock an atomic goal for teaching",
-        "description": "Setzt ein atomares Ziel aus dem zuletzt geladenen Zustand als aktives Ziel und gibt den neuen Zustand zurueck. Lernkarten-Ziele werden nur angeboten, wenn heute harte Kartenpruefung moeglich ist. Bei ausdruecklichem Nutzerwunsch nach einem anderen Ziel waehrend eines aktiven Lernkartenmodus `redirect=true` senden.",
+        "summary": "Aktives Ziel setzen",
+        "description": "Aktives Ziel setzen.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -201,8 +201,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/mastery": {
       "post": {
         "operationId": "setMastery",
-        "summary": "Update mastery and get next steps",
-        "description": "Persistiert Mastery nur fuer das aktive atomare Ziel nach ausreichender Evidenz im aktuellen Dialog. Nicht direkt nach State-Load oder setActiveGoal aufrufen. Request braucht goalId des aktiven Ziels.",
+        "summary": "Mastery speichern",
+        "description": "Mastery speichern.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -263,7 +263,7 @@
       "post": {
         "operationId": "startVerifiedRecall",
         "summary": "Lernkarten-Pruefung starten",
-        "description": "Bei aktivem Lernkarten-/Memorisierungsziel verwenden, wenn die lernende Person geprueft, abgefragt oder getestet werden will. Neue Clients koennen batchSize senden, um mehrere Fragen zu erhalten; zurueckgegebene Fragen ohne Antworten stellen.",
+        "description": "Kartenpruefung starten.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -313,8 +313,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/verified-recall/answer": {
       "post": {
         "operationId": "getVerifiedRecallAnswer",
-        "summary": "Erwartete Kartenantwort nach Lernenden-Antwort abrufen",
-        "description": "Erst aufrufen, nachdem die lernende Person ohne Hilfe auf die Kartenfrage geantwortet hat. Danach Antwort vergleichen und Ergebnis speichern.",
+        "summary": "Kartenantwort holen",
+        "description": "Kartenantwort holen.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -364,8 +364,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/verified-recall/result": {
       "post": {
         "operationId": "recordVerifiedRecallResult",
-        "summary": "Ergebnis einer Kartenpruefung speichern",
-        "description": "Nach Vergleich der Lernenden-Antwort mit der erwarteten Antwort passed=true oder passed=false speichern. Gibt die naechste Frage oder Abschluss zurueck.",
+        "summary": "Kartenergebnis speichern",
+        "description": "Kartenergebnis speichern.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -415,8 +415,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/curriculum": {
       "post": {
         "operationId": "setCurriculum",
-        "summary": "Set current curriculum/landscape",
-        "description": "Setzt das aktive Curriculum fuer die Chat-Session und gibt den aktualisierten Zustand zurueck.",
+        "summary": "Curriculum setzen",
+        "description": "Curriculum setzen.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -470,7 +470,7 @@
       "post": {
         "operationId": "setPersonalization",
         "summary": "Personalize the curriculum",
-        "description": "Speichert persoenliche Praeferenzen und Filter fuer die Chat-Session, danach den neuen Zustand.",
+        "description": "Filter speichern.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -1282,6 +1282,35 @@
       "ExamData": {
         "type": "object",
         "properties": {
+          "reviewStatus": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "needs_review",
+              "released"
+            ]
+          },
+          "coveredGoalIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "coveredStrands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "demandLevels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceArtifactPath": {
+            "type": "string"
+          },
           "taskContent": {
             "type": "string"
           },

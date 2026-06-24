@@ -34,6 +34,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
+import java.util.Locale;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -101,7 +102,7 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/active-goal")
-    @Operation(description = "Set an atomic frontier goal as active. Flashcard memory goals are offered only when hard card verification is available today. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+    @Operation(description = "Set active goal.", extensions = @Extension(properties = @ExtensionProperty(
             name = "x-openai-isConsequential",
             value = "false",
             parseValue = true)))
@@ -171,7 +172,7 @@ public class LearnerAiController {
     }
 
     @PostMapping("/sessions/{chatSessionToken}/active-goal")
-    @Operation(description = "Set an atomic frontier goal as active. Flashcard memory goals are offered only when hard card verification is available today. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+    @Operation(description = "Set active goal.", extensions = @Extension(properties = @ExtensionProperty(
             name = "x-openai-isConsequential",
             value = "false",
             parseValue = true)))
@@ -191,8 +192,8 @@ public class LearnerAiController {
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
     @Operation(
-            summary = "Switch flashcards to verification mode and get the next prompt",
-            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
+            summary = "Start card check",
+            description = "Start card check.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startSessionVerifiedRecall(
             @PathVariable String lang,
@@ -204,8 +205,8 @@ public class LearnerAiController {
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/answer")
     @Operation(
-            summary = "Reveal the expected answer after the learner answered a verified-recall prompt",
-            description = "Call only after the learner has answered without help. Compare the learner answer with the expected answer, then save passed or failed.",
+            summary = "Get card answer",
+            description = "Get card answer.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallAnswerResponse getSessionVerifiedRecallAnswer(
             @PathVariable String lang,
@@ -217,8 +218,8 @@ public class LearnerAiController {
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/result")
     @Operation(
-            summary = "Save the result of a verified flashcard recall",
-            description = "Persist passed=true or passed=false for the card after comparing the learner answer. Returns the next verification prompt or completion.",
+            summary = "Save card result",
+            description = "Save card result.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallResultResponse recordSessionVerifiedRecallResult(
             @PathVariable String lang,
@@ -377,8 +378,8 @@ public class LearnerAiController {
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/start")
     @Operation(
-            summary = "Switch flashcards to verification mode and get the next prompt",
-            description = "Use this when the learner asks to be tested, checked, abgefragt, or geprüft on an active memorization/flashcard goal. New clients may send batchSize to receive several prompts; ask returned prompts without revealing answers.",
+            summary = "Start card check",
+            description = "Start card check.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallPromptResponse startVerifiedRecall(
             @PathVariable String lang,
@@ -390,8 +391,8 @@ public class LearnerAiController {
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/answer")
     @Operation(
-            summary = "Reveal the expected answer after the learner answered a verified-recall prompt",
-            description = "Call only after the learner has answered without help. Compare the learner answer with the expected answer, then save passed or failed.",
+            summary = "Get card answer",
+            description = "Get card answer.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             @PathVariable String lang,
@@ -403,8 +404,8 @@ public class LearnerAiController {
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/result")
     @Operation(
-            summary = "Save the result of a verified flashcard recall",
-            description = "Persist passed=true or passed=false for the card after comparing the learner answer. Returns the next verification prompt or completion.",
+            summary = "Save card result",
+            description = "Save card result.",
             extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public VerifiedRecallResultResponse recordVerifiedRecallResult(
             @PathVariable String lang,
@@ -514,7 +515,7 @@ public class LearnerAiController {
 
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(state.activeGoal(), assetBase);
         com.skillpilot.backend.api.StateMachineInfo sm = state.stateMachine();
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = stripExamDataFromSelectableGoals(filterFrontierForAi(
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = prepareSelectableGoalsForAi(filterFrontierForAi(
                 rewriteExamData(state.frontier(), assetBase),
                 sm));
         com.skillpilot.backend.api.LearnerGoals goals = rewriteLearnerGoals(state.goals(), assetBase);
@@ -522,7 +523,7 @@ public class LearnerAiController {
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
+                        prepareSelectableGoalsForAi(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         rewriteExamData(sm.activeGoal(), assetBase),
                         sm.modeOptions());
@@ -550,7 +551,7 @@ public class LearnerAiController {
         }
         String assetBase = baseUrl + "/ai-assets";
         com.skillpilot.backend.api.StateMachineInfo sm = response.stateMachine();
-        List<com.skillpilot.backend.api.FrontierGoal> frontier = stripExamDataFromSelectableGoals(filterFrontierForAi(
+        List<com.skillpilot.backend.api.FrontierGoal> frontier = prepareSelectableGoalsForAi(filterFrontierForAi(
                 rewriteExamData(response.frontier(), assetBase),
                 sm));
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
@@ -558,7 +559,7 @@ public class LearnerAiController {
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
                         sm.requiredAction(),
-                        stripExamDataFromSelectableGoals(rewriteExamData(sm.goalOptions(), assetBase)),
+                        prepareSelectableGoalsForAi(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         rewriteExamData(sm.activeGoal(), assetBase),
                         sm.modeOptions());
@@ -611,6 +612,27 @@ public class LearnerAiController {
                 .toList();
     }
 
+    private List<com.skillpilot.backend.api.FrontierGoal> prepareSelectableGoalsForAi(
+            List<com.skillpilot.backend.api.FrontierGoal> goals) {
+        if (goals == null || goals.isEmpty()) {
+            return goals;
+        }
+        return goals.stream()
+                .filter(this::isSelectableGoalReadyForAi)
+                .map(this::stripExamDataFromSelectableGoal)
+                .toList();
+    }
+
+    private boolean isSelectableGoalReadyForAi(com.skillpilot.backend.api.FrontierGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        if (goal.examData() == null) {
+            return true;
+        }
+        return isExamDataReadyForHardCheck(goal.examData());
+    }
+
     private com.skillpilot.backend.api.FrontierGoal stripExamDataFromSelectableGoal(
             com.skillpilot.backend.api.FrontierGoal goal) {
         if (goal == null || goal.examData() == null) {
@@ -655,6 +677,11 @@ public class LearnerAiController {
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
+        updated.setReviewStatus(exam.getReviewStatus());
+        updated.setCoveredGoalIds(exam.getCoveredGoalIds());
+        updated.setCoveredStrands(exam.getCoveredStrands());
+        updated.setDemandLevels(exam.getDemandLevels());
+        updated.setSourceArtifactPath(exam.getSourceArtifactPath());
         updated.setTaskContent(normalizeTaskContentForAi(goal.id(),
                 rewriteAssetLinks(exam.getTaskContent(), assetBase)));
         updated.setTaskContentEn(normalizeTaskContentForAi(goal.id(),
@@ -678,6 +705,75 @@ public class LearnerAiController {
                 goal.sourceLicense(),
                 goal.sourceLicenseUrl(),
                 updated);
+    }
+
+    private boolean isExamDataReadyForHardCheck(com.skillpilot.backend.landscape.ExamData exam) {
+        if (exam == null) {
+            return false;
+        }
+        if (hasBlockingReviewStatus(exam.getReviewStatus())) {
+            return false;
+        }
+        if (containsPlaceholderExamText(exam)) {
+            return false;
+        }
+        return hasScoringStructure(exam)
+                && exam.getTaskContent() != null
+                && !exam.getTaskContent().isBlank()
+                && exam.getSolutionContent() != null
+                && !exam.getSolutionContent().isBlank();
+    }
+
+    private boolean hasBlockingReviewStatus(String reviewStatus) {
+        if (reviewStatus == null || reviewStatus.isBlank()) {
+            return false;
+        }
+        String normalized = reviewStatus.trim().toLowerCase(Locale.ROOT);
+        return !"released".equals(normalized);
+    }
+
+    private boolean containsPlaceholderExamText(com.skillpilot.backend.landscape.ExamData exam) {
+        String task = normalizeForInspection(exam.getTaskContent());
+        String solution = normalizeForInspection(exam.getSolutionContent());
+        if (task.matches("^eine materialgestuetzte j\\d+[- ]uebungsaufgabe\\b.*")) {
+            return true;
+        }
+        if (task.matches("^eine integrative sek[- ]i[- ]abschlussaufgabe\\b.*")) {
+            return true;
+        }
+        if (task.contains("uebungsaufgabe verbindet") && !hasSubtaskMarkers(task)) {
+            return true;
+        }
+        return solution.startsWith("die loesung zeigt ")
+                && !hasSubtaskMarkers(task)
+                && !task.matches(".*\\b\\d+[,.]?\\d*\\b.*");
+    }
+
+    private boolean hasSubtaskMarkers(String normalizedTask) {
+        return normalizedTask.matches("(?s).*(?:\\b1\\.|\\ba\\)|\\baufgabe\\s+1\\b|\\bteilaufgabe\\b).*");
+    }
+
+    private String normalizeForInspection(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value
+                .toLowerCase(Locale.ROOT)
+                .replace("ü", "ue")
+                .replace("ä", "ae")
+                .replace("ö", "oe")
+                .replace("ß", "ss")
+                .replaceAll("\\s+", " ")
+                .trim();
+    }
+
+    private boolean hasScoringStructure(com.skillpilot.backend.landscape.ExamData exam) {
+        com.skillpilot.backend.landscape.ExamData.Scoring scoring = exam.getScoring();
+        return scoring != null
+                && scoring.getMaxPoints() > 0
+                && scoring.getPassingPoints() > 0
+                && scoring.getSteps() != null
+                && !scoring.getSteps().isEmpty();
     }
 
     private String rewriteAssetLinks(String content, String assetBase) {

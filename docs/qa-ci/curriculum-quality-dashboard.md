@@ -101,7 +101,7 @@ For German Gymnasium quality work, "source scope is green" means the source situ
 
 ## Rule Families
 
-The current rule catalog is versioned as `curriculum-quality-v2`.
+The current rule catalog is versioned as `curriculum-quality-v3`.
 
 | Rule | Target | Meaning |
 | --- | --- | --- |

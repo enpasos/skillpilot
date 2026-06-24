@@ -7,8 +7,8 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-06-01T21:13:21.801Z
-Rules version: curriculum-quality-v2
+Generated: 2026-06-24T17:32:42.133Z
+Rules version: curriculum-quality-v3
 
 ## Summary
 
@@ -39,7 +39,7 @@ Rules version: curriculum-quality-v2
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1038 | 826 | 31/31 | 16/16 | 2 | 0 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1040 | 828 | 31/31 | 16/16 | 2 | 0 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Physik (Gymnasium, DE) | M6 | 585 | 497 | 25/25 | 16/16 | 2 | 0 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
@@ -230,30 +230,30 @@ Rules version: curriculum-quality-v2
 | Latein (Gymnasium, DE) | Latein Gymnasium (Sachsen-Anhalt, Fachlehrplan 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 4/4 | - | 48 | 264 | 60 | 204 | 23% | - |  |
 | Latein (Gymnasium, DE) | Latein Gymnasium (Thueringen, Lehrplan 2024 Source-Extraction) | DE-TH | 1/1 URL; local cache 0/1 | 4/4 | - | 159 | 906 | 258 | 648 | 28% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BB - Mathematik Oberstufe (Brandenburg, GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 14 | 196 | 40 | 156 | 20% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BB - Mathematik Sekundarstufe I (Brandenburg, RLP 1-10 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 44 | 245 | 15% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BE - Mathematik Oberstufe (Berlin, GO 2014 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 15 | 195 | 18 | 177 | 9% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 45 | 244 | 16% | - |  |
-| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 71 | 150 | 32% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BE - Mathematik Sekundarstufe I (Berlin, RLP 1-10 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 4/4 | - | 19 | 289 | 44 | 245 | 15% | - |  |
+| Mathematik (Gymnasium, DE) | DE-BW - Mathematik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 16 | 221 | 72 | 149 | 33% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 20 | 278 | 95 | 183 | 34% | - |  |
 | Mathematik (Gymnasium, DE) | DE-BY - Mathematik Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 12/12 URL; local cache 0/12 | 3/3 | - | 66 | 468 | 262 | 206 | 56% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Gymnasiale Oberstufe (Bremen, Bildungsplan 2022 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 122 | 275 | 0 | 275 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Bremen, Bildungsplan 2006 mit 2022-Einschraenkung Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 256 | 76 | 180 | 30% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 316 | 316 | 0 | 100% | - |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 601 | 0 | 100% | 598/598; diff 118; open 0 |  |
-| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 437 | 137 | 300 | 31% | - |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hessen, G8/G9 Source-Extraction) | DE-HE | 4/4 URL; local cache 0/4 | 4/4 | - | 89 | 601 | 599 | 2 | 100% | 598/598; diff 118; open 0 |  |
+| Mathematik (Gymnasium, DE) | Mathematik Sekundarstufe I (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 43 | 438 | 138 | 300 | 32% | - |  |
 | Mathematik (Gymnasium, DE) | Mathematik Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 189 | 0 | 189 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Qualifikationsphase (Mecklenburg-Vorpommern, Rahmenplan 2019 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 219 | 0 | 219 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-MV - Mathematik Sekundarstufe I (Mecklenburg-Vorpommern, Rahmenplaene 2020/2019 Source-Extraction) | DE-MV | 2/2 URL; local cache 0/2 | 3/3 | - | 33 | 369 | 131 | 238 | 36% | - |  |
 | Mathematik (Gymnasium, DE) | DE-NI - Mathematik Gymnasiale Oberstufe (Niedersachsen, Kerncurriculum 2019 Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 220 | 0 | 220 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 28 | 361 | 112 | 249 | 31% | - |  |
+| Mathematik (Gymnasium, DE) | DE-NI - Mathematik Sekundarstufe I (Niedersachsen, Kerncurriculum Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 28 | 361 | 113 | 248 | 31% | - |  |
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Gymnasiale Oberstufe (Nordrhein-Westfalen, KLP 2023 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 13 | 235 | 0 | 235 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-NW - Mathematik Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 17 | 207 | 38 | 169 | 18% | - |  |
 | Mathematik (Gymnasium, DE) | DE-RP - Mathematik Gymnasiale Oberstufe (Rheinland-Pfalz, MSS 2015 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 23 | 192 | 0 | 192 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 253 | 61 | 192 | 24% | - |  |
+| Mathematik (Gymnasium, DE) | DE-RP - Mathematik Sekundarstufe I (Rheinland-Pfalz, Rahmenlehrplan 2007 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 25 | 255 | 62 | 193 | 24% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 274 | 74 | 200 | 27% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 128 | 218 | 37% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 129 | 217 | 37% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 23 | 743 | 0 | 743 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 175 | 643 | 21% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 178 | 640 | 22% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 31 | 243 | 0 | 243 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 47 | 327 | 75 | 252 | 23% | - |  |
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 188 | 0 | 188 | 0% | - |  |
@@ -372,7 +372,7 @@ Rules version: curriculum-quality-v2
 | Informatik (Gymnasium, DE) | 16/16 | 209 | 237 | 16 | 3505 | 3505 | 3505 | 0 | 3505 | 0 | 0 | 0 | 0 | 0 | 207 (100%) |
 | Italienisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Latein (Gymnasium, DE) | 16/16 | 115 | 136 | 16 | 8481 | 8481 | 8481 | 0 | 8481 | 0 | 0 | 0 | 0 | 0 | 115 (100%) |
-| Mathematik (Gymnasium, DE) | 16/16 | 648 | 826 | 16 | 9974 | 9974 | 9974 | 0 | 9974 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
+| Mathematik (Gymnasium, DE) | 16/16 | 648 | 828 | 16 | 9977 | 9977 | 9977 | 0 | 9977 | 0 | 0 | 0 | 0 | 0 | 648 (100%) |
 | Musik (Gymnasium, DE) | 2/16 | 38 | 52 | 2 | 242 | 242 | 242 | 0 | 242 | 0 | 0 | 0 | 0 | 0 | 38 (100%) |
 | Physik (Gymnasium, DE) | 16/16 | 389 | 497 | 16 | 6342 | 6342 | 6342 | 0 | 6342 | 0 | 0 | 0 | 0 | 0 | 381 (100%) |
 | Politik und Wirtschaft (Gymnasium, DE) | 16/16 | 413 | 439 | 16 | 4169 | 4169 | 4169 | 0 | 4169 | 0 | 0 | 0 | 0 | 0 | 308 (100%) |
@@ -396,7 +396,9 @@ Rules version: curriculum-quality-v2
 | CQR-102 | M3 | route | Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires. |
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |
 | CQR-104 | M3 | route | Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views. |
-| CQR-201 | M4 | assessment | Terminal autonomy goals in configured scopes are exam-mode-capable or explicitly reviewed. |
+| CQR-201 | M4 | assessment | Terminal autonomy goals in configured scopes carry examData. |
+| CQR-202 | M4 | assessment | Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose. |
+| CQR-203 | M4 | assessment | Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-302 | M6 | review | Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible. |
 | CQR-401 | M5 | view | The curriculum has at least one reviewed learner-facing composition view. |

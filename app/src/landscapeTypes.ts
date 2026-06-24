@@ -58,6 +58,19 @@ export interface LandscapeFilter {
 }
 
 export interface ExamData {
+  /**
+   * Optional release gate for learner-facing hard exam mode.
+   * Missing means legacy data; explicit non-released statuses block hard-check use.
+   */
+  reviewStatus?: 'draft' | 'needs_review' | 'released' | string
+  /** Canonical goal IDs covered by this assessment package. */
+  coveredGoalIds?: string[]
+  /** Human-readable or canonical strand labels covered by this assessment package. */
+  coveredStrands?: string[]
+  /** Demand levels covered by the assessment package, e.g. AB1/AB2/AB3. */
+  demandLevels?: string[]
+  /** Optional source artifact path for reviewed authored exam packages. */
+  sourceArtifactPath?: string
   taskContent: string
   taskContentEn?: string
   solutionContent: string

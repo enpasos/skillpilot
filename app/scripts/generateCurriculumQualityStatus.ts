@@ -613,7 +613,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v2'
+  rulesVersion: 'curriculum-quality-v3'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -1038,10 +1038,24 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
   {
     id: 'CQR-201',
-    label: 'Terminal autonomy exam data',
+    label: 'Terminal autonomy exam data presence',
     category: 'assessment',
     maturityTarget: 'M4',
-    description: 'Terminal autonomy goals in configured scopes are exam-mode-capable or explicitly reviewed.',
+    description: 'Terminal autonomy goals in configured scopes carry examData.',
+  },
+  {
+    id: 'CQR-202',
+    label: 'Concrete exam task readiness',
+    category: 'assessment',
+    maturityTarget: 'M4',
+    description: 'Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose.',
+  },
+  {
+    id: 'CQR-203',
+    label: 'Exam release and coverage metadata',
+    category: 'assessment',
+    maturityTarget: 'M4',
+    description: 'Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata.',
   },
   {
     id: 'CQR-301',
@@ -1853,6 +1867,99 @@ function evaluateRouteEndpointCompositionVisibility(
   )
 }
 
+function normalizeExamTextForInspection(value: unknown): string {
+  return String(value ?? '')
+    .toLocaleLowerCase('de')
+    .normalize('NFKC')
+    .replace(/ü/g, 'ue')
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function hasExamSubtaskMarkers(normalizedTask: string): boolean {
+  return /(?:\b1\.|\ba\)|\baufgabe\s+1\b|\bteilaufgabe\b)/u.test(normalizedTask)
+}
+
+function hasScoringStructure(goal: LearningGoal): boolean {
+  const scoring = goal.examData?.scoring
+  return !!scoring
+    && Number(scoring.maxPoints) > 0
+    && Number(scoring.passingPoints) > 0
+    && Array.isArray(scoring.steps)
+    && scoring.steps.length > 0
+    && scoring.steps.every((step) =>
+      typeof step.id === 'string'
+      && step.id.trim().length > 0
+      && Number(step.points) > 0
+      && typeof step.description === 'string'
+      && step.description.trim().length > 0)
+}
+
+function hasBlockingExamReviewStatus(goal: LearningGoal): boolean {
+  const status = String(goal.examData?.reviewStatus ?? '').trim().toLowerCase()
+  return status.length > 0 && status !== 'released'
+}
+
+function isPlaceholderExamData(goal: LearningGoal): boolean {
+  if (!goal.examData) return false
+  const task = normalizeExamTextForInspection(goal.examData.taskContent)
+  const solution = normalizeExamTextForInspection(goal.examData.solutionContent)
+  if (/^eine materialgestuetzte j\d+[- ]uebungsaufgabe\b/u.test(task)) return true
+  if (/^eine integrative sek[- ]i[- ]abschlussaufgabe\b/u.test(task)) return true
+  if (task.includes('uebungsaufgabe verbindet') && !hasExamSubtaskMarkers(task)) return true
+  return solution.startsWith('die loesung zeigt ')
+    && !hasExamSubtaskMarkers(task)
+    && !/\b\d+[,.]?\d*\b/u.test(task)
+}
+
+function concreteExamReadinessIssues(goal: LearningGoal): string[] {
+  if (!goal.examData) return ['missing examData']
+  const issues: string[] = []
+  if (hasBlockingExamReviewStatus(goal)) {
+    issues.push(`reviewStatus=${String(goal.examData.reviewStatus)}`)
+  }
+  if (typeof goal.examData.taskContent !== 'string' || goal.examData.taskContent.trim().length === 0) {
+    issues.push('missing taskContent')
+  }
+  if (typeof goal.examData.solutionContent !== 'string' || goal.examData.solutionContent.trim().length === 0) {
+    issues.push('missing solutionContent')
+  }
+  if (!hasScoringStructure(goal)) {
+    issues.push('incomplete scoring')
+  }
+  if (isPlaceholderExamData(goal)) {
+    issues.push('placeholder examData')
+  }
+  return issues
+}
+
+function stringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
+    : []
+}
+
+function examReleaseCoverageIssues(goal: LearningGoal): string[] {
+  if (!goal.examData) return ['missing examData']
+  const issues: string[] = []
+  if (String(goal.examData.reviewStatus ?? '').trim().toLowerCase() !== 'released') {
+    issues.push('reviewStatus is not released')
+  }
+  if (stringArray(goal.examData.coveredGoalIds).length === 0) {
+    issues.push('missing coveredGoalIds')
+  }
+  if (stringArray(goal.examData.coveredStrands).length === 0) {
+    issues.push('missing coveredStrands')
+  }
+  if (stringArray(goal.examData.demandLevels).length === 0) {
+    issues.push('missing demandLevels')
+  }
+  return issues
+}
+
 function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfile): ScopeStatus {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
@@ -1883,6 +1990,12 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
     !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
 
   const terminalAutonomyGoalsWithoutExamData = terminalAutonomyGoals.filter((goal) => !goal.examData)
+  const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
+    .map((goal) => ({ goal, issues: concreteExamReadinessIssues(goal).filter((issue) => issue !== 'missing examData') }))
+    .filter((entry) => entry.issues.length > 0)
+  const terminalAutonomyGoalsWithMissingReleaseCoverage = terminalAutonomyGoals
+    .map((goal) => ({ goal, issues: examReleaseCoverageIssues(goal).filter((issue) => issue !== 'missing examData') }))
+    .filter((entry) => entry.issues.length > 0)
   const routeEndpointCompositionVisibility = evaluateRouteEndpointCompositionVisibility(
     landscape,
     profile,
@@ -1944,6 +2057,34 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
         terminalAutonomyGoalsWithoutExamData: terminalAutonomyGoalsWithoutExamData.length,
       },
       terminalAutonomyGoalsWithoutExamData.map((goal) => `Missing examData: ${formatGoal(goal, goal.id)}`),
+    ),
+    makeRule(
+      'CQR-202',
+      terminalAutonomyGoalsWithWeakExamData.length === 0 ? 'pass' : 'fail',
+      terminalAutonomyGoalsWithWeakExamData.length === 0
+        ? 'All terminal autonomy examData is concrete enough for hard exam mode.'
+        : `${terminalAutonomyGoalsWithWeakExamData.length} terminal autonomy examData item(s) are placeholders or incomplete.`,
+      {
+        terminalAutonomyGoals: terminalAutonomyGoals.length,
+        concreteExamData: terminalAutonomyGoals.length - terminalAutonomyGoalsWithWeakExamData.length,
+        weakExamData: terminalAutonomyGoalsWithWeakExamData.length,
+      },
+      terminalAutonomyGoalsWithWeakExamData.map(({ goal, issues }) =>
+        `Weak examData: ${formatGoal(goal, goal.id)} (${issues.join(', ')})`),
+    ),
+    makeRule(
+      'CQR-203',
+      terminalAutonomyGoalsWithMissingReleaseCoverage.length === 0 ? 'pass' : 'warn',
+      terminalAutonomyGoalsWithMissingReleaseCoverage.length === 0
+        ? 'All terminal autonomy examData has release and coverage metadata.'
+        : `${terminalAutonomyGoalsWithMissingReleaseCoverage.length} terminal autonomy examData item(s) lack release or coverage metadata.`,
+      {
+        terminalAutonomyGoals: terminalAutonomyGoals.length,
+        releasedCoverageCompleteExamData: terminalAutonomyGoals.length - terminalAutonomyGoalsWithMissingReleaseCoverage.length,
+        releaseCoverageIncompleteExamData: terminalAutonomyGoalsWithMissingReleaseCoverage.length,
+      },
+      terminalAutonomyGoalsWithMissingReleaseCoverage.map(({ goal, issues }) =>
+        `Incomplete exam release/coverage: ${formatGoal(goal, goal.id)} (${issues.join(', ')})`),
     ),
   ]
 
@@ -4686,7 +4827,9 @@ function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   const routeEndpointVisibility = rules.find((rule) => rule.id === 'CQR-104')
   if (routeEndpointVisibility && routeEndpointVisibility.status !== 'pass') return 'M2'
   if (rules.find((rule) => rule.id === 'CQR-201')?.status !== 'pass') return 'M2'
-  return 'M3'
+  if (rules.find((rule) => rule.id === 'CQR-202')?.status !== 'pass') return 'M2'
+  if (rules.find((rule) => rule.id === 'CQR-203')?.status !== 'pass') return 'M3'
+  return 'M4'
 }
 
 function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeStatus[]): MaturityLevel {
@@ -4701,8 +4844,9 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
   const routeScopes = scopes.filter((scope) => scope.rules.some((rule) => rule.id === 'CQR-101'))
   if (routeScopes.length === 0) return 'M2'
   if (!routeScopes.every((scope) => scope.rules.find((rule) => rule.id === 'CQR-101')?.status === 'pass')) return 'M2'
-  if (!routeScopes.every((scope) => scope.maturity === 'M2' || scope.maturity === 'M3')) return 'M2'
-  if (!routeScopes.every((scope) => scope.maturity === 'M3')) return 'M3'
+  if (!routeScopes.every((scope) => scope.maturity === 'M2' || scope.maturity === 'M3' || scope.maturity === 'M4')) return 'M2'
+  if (!routeScopes.every((scope) => scope.maturity === 'M3' || scope.maturity === 'M4')) return 'M3'
+  if (!routeScopes.every((scope) => scope.maturity === 'M4')) return 'M4'
 
   const m5Ready = curriculumRules.find((rule) => rule.id === 'CQR-301')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-401')?.status === 'pass'
@@ -4892,7 +5036,7 @@ function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v2',
+    rulesVersion: 'curriculum-quality-v3',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {

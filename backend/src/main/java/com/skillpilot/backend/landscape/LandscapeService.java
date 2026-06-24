@@ -589,6 +589,11 @@ public class LandscapeService {
         }
 
         ExamData copy = new ExamData();
+        copy.setReviewStatus(original.getReviewStatus());
+        copy.setCoveredGoalIds(original.getCoveredGoalIds());
+        copy.setCoveredStrands(original.getCoveredStrands());
+        copy.setDemandLevels(original.getDemandLevels());
+        copy.setSourceArtifactPath(original.getSourceArtifactPath());
         copy.setTaskContent(StringUtils.hasText(original.getTaskContentEn())
                 ? original.getTaskContentEn()
                 : original.getTaskContent());

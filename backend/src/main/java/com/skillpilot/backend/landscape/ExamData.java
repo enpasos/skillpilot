@@ -5,11 +5,56 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExamData {
+    private String reviewStatus;
+    private List<String> coveredGoalIds;
+    private List<String> coveredStrands;
+    private List<String> demandLevels;
+    private String sourceArtifactPath;
     private String taskContent;
     private String taskContentEn;
     private String solutionContent;
     private String solutionContentEn;
     private Scoring scoring;
+
+    public String getReviewStatus() {
+        return reviewStatus;
+    }
+
+    public void setReviewStatus(String reviewStatus) {
+        this.reviewStatus = reviewStatus;
+    }
+
+    public List<String> getCoveredGoalIds() {
+        return coveredGoalIds;
+    }
+
+    public void setCoveredGoalIds(List<String> coveredGoalIds) {
+        this.coveredGoalIds = coveredGoalIds;
+    }
+
+    public List<String> getCoveredStrands() {
+        return coveredStrands;
+    }
+
+    public void setCoveredStrands(List<String> coveredStrands) {
+        this.coveredStrands = coveredStrands;
+    }
+
+    public List<String> getDemandLevels() {
+        return demandLevels;
+    }
+
+    public void setDemandLevels(List<String> demandLevels) {
+        this.demandLevels = demandLevels;
+    }
+
+    public String getSourceArtifactPath() {
+        return sourceArtifactPath;
+    }
+
+    public void setSourceArtifactPath(String sourceArtifactPath) {
+        this.sourceArtifactPath = sourceArtifactPath;
+    }
 
     public String getTaskContent() {
         return taskContent;

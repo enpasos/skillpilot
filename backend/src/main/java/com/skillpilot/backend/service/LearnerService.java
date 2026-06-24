@@ -3335,6 +3335,10 @@ public class LearnerService {
                 }
             }
 
+            if (isExamGoalUnavailableForHardCheck(goal)) {
+                continue;
+            }
+
             if (prerequisitesMet) {
                 frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
             }
@@ -3876,11 +3880,14 @@ public class LearnerService {
             activeGoalId = null;
             activeGoalMastered = false;
         }
-        if (activeGoalId != null
-                && !activeGoalId.isBlank()
-                && isSrsGoalUnavailableForVerifiedRecall(skillpilotId, allGoals.get(activeGoalId))) {
-            activeGoalId = null;
-            activeGoalMastered = false;
+        if (activeGoalId != null && !activeGoalId.isBlank()) {
+            LearningGoal activeLearningGoal = allGoals.get(activeGoalId);
+            if (isSrsGoalUnavailableForVerifiedRecall(skillpilotId, activeLearningGoal)
+                    || isExamGoalUnavailableForHardCheck(activeLearningGoal)) {
+                clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_UNAVAILABLE_HARD_CHECK");
+                activeGoalId = null;
+                activeGoalMastered = false;
+            }
         }
 
         com.skillpilot.backend.api.GoalStats personalizedStats = computeAtomicStats(allGoals, null, mastery);
@@ -4360,6 +4367,10 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
         }
+        if (isExamGoalUnavailableForHardCheck(visibleGoals.get(effectiveGoalId))) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "goalId must reference a released, concrete exam goal.");
+        }
 
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId));
         boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
@@ -4377,6 +4388,88 @@ public class LearnerService {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "ACTIVE_GOAL_UPDATE"));
+    }
+
+    private boolean isExamGoalUnavailableForHardCheck(LearningGoal goal) {
+        if (goal == null || !isExamGoal(goal)) {
+            return false;
+        }
+        return !isExamDataReadyForHardCheck(goal.getExamData());
+    }
+
+    private boolean isExamGoal(LearningGoal goal) {
+        if (goal == null) {
+            return false;
+        }
+        return "exam".equalsIgnoreCase(goal.getNodeKind()) || goal.getExamData() != null;
+    }
+
+    private boolean isExamDataReadyForHardCheck(com.skillpilot.backend.landscape.ExamData exam) {
+        if (exam == null) {
+            return false;
+        }
+        if (hasBlockingExamReviewStatus(exam.getReviewStatus())) {
+            return false;
+        }
+        if (containsPlaceholderExamText(exam)) {
+            return false;
+        }
+        return hasScoringStructure(exam)
+                && exam.getTaskContent() != null
+                && !exam.getTaskContent().isBlank()
+                && exam.getSolutionContent() != null
+                && !exam.getSolutionContent().isBlank();
+    }
+
+    private boolean hasBlockingExamReviewStatus(String reviewStatus) {
+        if (reviewStatus == null || reviewStatus.isBlank()) {
+            return false;
+        }
+        return !"released".equals(reviewStatus.trim().toLowerCase(Locale.ROOT));
+    }
+
+    private boolean containsPlaceholderExamText(com.skillpilot.backend.landscape.ExamData exam) {
+        String task = normalizeExamTextForInspection(exam.getTaskContent());
+        String solution = normalizeExamTextForInspection(exam.getSolutionContent());
+        if (task.matches("^eine materialgestuetzte j\\d+[- ]uebungsaufgabe\\b.*")) {
+            return true;
+        }
+        if (task.matches("^eine integrative sek[- ]i[- ]abschlussaufgabe\\b.*")) {
+            return true;
+        }
+        if (task.contains("uebungsaufgabe verbindet") && !hasExamSubtaskMarkers(task)) {
+            return true;
+        }
+        return solution.startsWith("die loesung zeigt ")
+                && !hasExamSubtaskMarkers(task)
+                && !task.matches(".*\\b\\d+[,.]?\\d*\\b.*");
+    }
+
+    private boolean hasExamSubtaskMarkers(String normalizedTask) {
+        return normalizedTask.matches("(?s).*(?:\\b1\\.|\\ba\\)|\\baufgabe\\s+1\\b|\\bteilaufgabe\\b).*");
+    }
+
+    private String normalizeExamTextForInspection(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value
+                .toLowerCase(Locale.ROOT)
+                .replace("ü", "ue")
+                .replace("ä", "ae")
+                .replace("ö", "oe")
+                .replace("ß", "ss")
+                .replaceAll("\\s+", " ")
+                .trim();
+    }
+
+    private boolean hasScoringStructure(com.skillpilot.backend.landscape.ExamData exam) {
+        com.skillpilot.backend.landscape.ExamData.Scoring scoring = exam.getScoring();
+        return scoring != null
+                && scoring.getMaxPoints() > 0
+                && scoring.getPassingPoints() > 0
+                && scoring.getSteps() != null
+                && !scoring.getSteps().isEmpty();
     }
 
     private boolean isCompositionStructureGoalId(String goalId) {
