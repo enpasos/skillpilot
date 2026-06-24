@@ -60,6 +60,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 - During a batch, first save all cards from the current `cards` batch. Do not use intermediate `next` prompts from individual `verified-recall/result` responses as new questions; after the batch is complete, call `verified-recall/start` again with the same `batchSize` if needed.
 - Each card may be tested only once per calendar day in verification mode. On `passed=false`, explain the correct answer if useful; do not ask the same card again today.
 - If `verified-recall/start` returns `status=waiting`, today's verification is over; do not improvise and do not repeat a card.
+- If the learner explicitly wants another goal afterwards: reload `getLearnerState` and choose another atomic frontier goal with `setActiveGoal` plus `redirect=true`.
 - Do not offer generic `Start Exercise`, do not use normal `teachActiveGoal`, and do not call `setMastery` for flashcards.
 
 ## 7. Mastery flow

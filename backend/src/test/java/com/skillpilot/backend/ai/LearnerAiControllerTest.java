@@ -11,6 +11,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -62,6 +63,56 @@ class LearnerAiControllerTest {
     @AfterEach
     void tearDown() {
         RequestContextHolder.resetRequestAttributes();
+    }
+
+    @Test
+    void setActiveGoal_allowsExplicitRedirectFromMemoryMode() {
+        String skillpilotId = "learner-1";
+        String memoryGoalId = "memory-goal";
+        String nextGoalId = "goal-2";
+        FrontierGoal memoryGoal = new FrontierGoal(
+                memoryGoalId,
+                "Memory Goal",
+                "Description",
+                "atomic",
+                "memory",
+                "Active",
+                List.of("srs-deck:test"),
+                List.of(),
+                null,
+                null,
+                null,
+                null);
+        FrontierGoal nextGoal = simpleGoal(nextGoalId, "Next Goal");
+        UnifiedLearnerStateResponse before = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(nextGoal),
+                null,
+                List.of("chooseMemoryMode", "startVerifiedRecall"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                memoryGoal,
+                new StateMachineInfo("TEACHING", "chooseMemoryMode", List.of(memoryGoal), List.of(), memoryGoal));
+        UnifiedLearnerStateResponse after = learnerState(skillpilotId, "teachActiveGoal", nextGoal);
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(before, after);
+        doNothing().when(learnerService).setActiveGoal(skillpilotId, nextGoalId);
+
+        UnifiedLearnerStateResponse response = controller.setActiveGoal(
+                skillpilotId,
+                new ActiveGoalRequest(nextGoalId, true));
+
+        assertThat(response.activeGoal()).isNotNull();
+        assertThat(response.activeGoal().id()).isEqualTo(nextGoalId);
+
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        ordered.verify(learnerService).setActiveGoal(skillpilotId, nextGoalId);
+        ordered.verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
     }
 
     @Test

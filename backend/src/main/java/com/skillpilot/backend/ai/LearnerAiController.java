@@ -101,7 +101,10 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/active-goal")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(description = "Set an atomic frontier goal as active. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+            name = "x-openai-isConsequential",
+            value = "false",
+            parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
         return setActiveGoalForLearner(skillpilotId, request, false);
@@ -116,7 +119,7 @@ public class LearnerAiController {
         String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
         boolean redirect = Boolean.TRUE.equals(request.redirect());
         if (!"setActiveGoal".equals(requiredAction)) {
-            if (allowsMasteryWrite(requiredAction) && redirect) {
+            if (allowsActiveGoalRedirect(requiredAction) && redirect) {
                 // Allow explicit user redirect while an active goal is locked.
             } else if (requiredAction != null) {
                 throw new org.springframework.web.server.ResponseStatusException(
@@ -168,7 +171,10 @@ public class LearnerAiController {
     }
 
     @PostMapping("/sessions/{chatSessionToken}/active-goal")
-    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    @Operation(description = "Set an atomic frontier goal as active. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+            name = "x-openai-isConsequential",
+            value = "false",
+            parseValue = true)))
     public UnifiedLearnerStateResponse setSessionActiveGoal(
             @PathVariable String chatSessionToken,
             @Valid @RequestBody ActiveGoalRequest request) {
@@ -347,6 +353,10 @@ public class LearnerAiController {
 
     private boolean allowsMasteryWrite(String requiredAction) {
         return "setMastery".equals(requiredAction) || "teachActiveGoal".equals(requiredAction);
+    }
+
+    private boolean allowsActiveGoalRedirect(String requiredAction) {
+        return allowsMasteryWrite(requiredAction) || "chooseMemoryMode".equals(requiredAction);
     }
 
     private String extractGoalIdFromMasteryRequest(MasteryUpdateRequest request) {

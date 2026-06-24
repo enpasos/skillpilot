@@ -414,6 +414,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     Boolean(currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0
       && currentFlashcardSetStatus.verifiedPending > 0
       && currentFlashcardSetStatus.verificationEligible === 0)
+  const currentActiveFlashcardVerificationWaiting =
+    Boolean(currentFlashcardVerificationWaiting && currentGoal?.id === effectiveActiveGoalId)
   const currentVerifiedRecallBatchSize = currentGoal
     ? (verifiedRecallBatchSizeByGoal[currentGoal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE)
     : VERIFIED_RECALL_DEFAULT_BATCH_SIZE
@@ -1061,14 +1063,23 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
   }, [frontierOptions, learnerData?.learningStrategy])
 
+  const nextStepOptions = useMemo(() => {
+    if (!currentActiveFlashcardVerificationWaiting || !effectiveActiveGoalId) {
+      return atomicFrontierOptions
+    }
+    return atomicFrontierOptions.filter((candidate) => candidate.id !== effectiveActiveGoalId)
+  }, [atomicFrontierOptions, currentActiveFlashcardVerificationWaiting, effectiveActiveGoalId])
+
   const backendFrontierIds = useMemo(
     () => new Set(atomicFrontierOptions.map((goal) => goal.id)),
     [atomicFrontierOptions],
   )
 
   const shouldShowNextSteps =
-    atomicFrontierOptions.length > 0 &&
-    (stateRequiredAction ? stateRequiredAction === 'setActiveGoal' : !effectiveActiveGoalId)
+    nextStepOptions.length > 0 &&
+    (stateRequiredAction
+      ? stateRequiredAction === 'setActiveGoal' || currentActiveFlashcardVerificationWaiting
+      : !effectiveActiveGoalId)
 
   const refreshLearnerData = useCallback(async () => {
     if (!skillpilotId) return
@@ -1334,10 +1345,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/active-goal` : `/api/ui/learners/${skillpilotId}/active-goal`
 
+      const redirect = Boolean(
+        effectiveActiveGoalId
+        && stateRequiredAction
+        && stateRequiredAction !== 'setActiveGoal'
+        && goalId !== effectiveActiveGoalId,
+      )
+
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goalId })
+        body: JSON.stringify({ goalId, redirect })
       });
 
       if (res.ok) {
@@ -1385,8 +1403,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     onSelectGoal,
     buildCollapsedFocusPath,
     currentRouteGoalId,
+    effectiveActiveGoalId,
     parentMap,
     skillpilotId,
+    stateRequiredAction,
     t.notifications.activeGoalSetFailed,
     t.notifications.activeGoalSetSystemFailed,
   ])
@@ -2658,7 +2678,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {atomicFrontierOptions
+                  {nextStepOptions
                     .map((candidate, idx) => (
                       <button
                         key={candidate.id}
