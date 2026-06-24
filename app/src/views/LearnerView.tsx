@@ -353,7 +353,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const currentRouteGoalId = routeGoalId ?? ''
   const selectedId = currentRouteGoalId || currentGoal?.id || rootGoals[0]?.id || ''
-  const effectiveActiveGoalId = stateActiveGoalId ?? learnerData?.activeGoalId ?? null
+  const effectiveActiveGoalId = stateActiveGoalId
   const hasTrackedCampaignOpenRef = useRef(false)
   const hasAppliedCampaignFilterRef = useRef(false)
 

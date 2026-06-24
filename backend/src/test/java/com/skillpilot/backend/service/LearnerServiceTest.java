@@ -414,6 +414,64 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
+    void getLearnerStateDoesNotOfferFlashcardGoalWhenNoCardsAreEligibleToday() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.save(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_EXERCISES_SCOPE_ID));
+
+        var prompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false));
+        boolean failedOneCard = false;
+        while ("ready".equals(prompt.status())) {
+            boolean passed = failedOneCard;
+            var result = learnerService.recordVerifiedRecallResult(
+                    learnerId,
+                    "de",
+                    new VerifiedRecallResultRequest(
+                            SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                            prompt.cardId(),
+                            passed,
+                            passed ? "ok" : "nicht gewusst"));
+            failedOneCard = true;
+            prompt = result.next();
+        }
+
+        assertThat(failedOneCard).isTrue();
+        assertThat(prompt.status()).isEqualTo("waiting");
+        assertThat(prompt.eligibleCards()).isZero();
+        assertThat(prompt.blockedCards()).isPositive();
+
+        var state = learnerService.getLearnerState(learnerId);
+
+        assertThat(state.activeGoal()).isNull();
+        assertThat(state.stateMachine().activeGoal()).isNull();
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("chooseMemoryMode");
+        assertThat(state.nextAllowedActions()).doesNotContain("chooseMemoryMode", "startVerifiedRecall");
+        assertThat(state.frontier())
+                .extracting(goal -> goal.id())
+                .doesNotContain(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(state.stateMachine().goalOptions())
+                .extracting(goal -> goal.id())
+                .doesNotContain(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThatThrownBy(() -> learnerService.setActiveGoal(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("goalId must be an atomic goal from the current frontier");
+    }
+
+    @Test
+    @Transactional
     void getLearnerState_offersSekOneExercisesAfterFinalCompositionYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);

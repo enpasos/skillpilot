@@ -101,7 +101,7 @@ public class LearnerAiController {
     }
 
     @PostMapping("/learners/{skillpilotId}/active-goal")
-    @Operation(description = "Set an atomic frontier goal as active. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+    @Operation(description = "Set an atomic frontier goal as active. Flashcard memory goals are offered only when hard card verification is available today. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
             name = "x-openai-isConsequential",
             value = "false",
             parseValue = true)))
@@ -171,7 +171,7 @@ public class LearnerAiController {
     }
 
     @PostMapping("/sessions/{chatSessionToken}/active-goal")
-    @Operation(description = "Set an atomic frontier goal as active. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
+    @Operation(description = "Set an atomic frontier goal as active. Flashcard memory goals are offered only when hard card verification is available today. Send redirect=true only when the learner explicitly wants a different goal while another goal is locked, including flashcard memory mode.", extensions = @Extension(properties = @ExtensionProperty(
             name = "x-openai-isConsequential",
             value = "false",
             parseValue = true)))

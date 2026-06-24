@@ -151,7 +151,7 @@
       "post": {
         "operationId": "setActiveGoal",
         "summary": "Lock an atomic goal for teaching",
-        "description": "Locks an atomic goal from the latest loaded state as the active goal and returns the updated state. If the learner explicitly wants a different goal during active flashcard mode, send `redirect=true`.",
+        "description": "Locks an atomic goal from the latest loaded state as the active goal and returns the updated state. Flashcard goals are offered only when hard card verification is available today. If the learner explicitly wants a different goal during active flashcard mode, send `redirect=true`.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -611,7 +611,7 @@
           },
           "redirect": {
             "type": "boolean",
-            "description": "Set true only when the user explicitly requests moving to another active goal; use it for switching away from a waiting flashcard mode."
+            "description": "Set true only when the user explicitly requests moving to another goal while the current state still locks a different active goal."
           }
         },
         "required": [
