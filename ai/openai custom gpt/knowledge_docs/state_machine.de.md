@@ -61,6 +61,7 @@ in der Unterhaltung genannt.
 - Während eines Batches erst alle Karten aus dem aktuellen `cards`-Batch speichern. Zwischenzeitliche `next`-Prompts aus einzelnen `verified-recall/result`-Antworten nicht als neue Fragen verwenden; nach abgeschlossenem Batch bei Bedarf erneut `verified-recall/start` mit derselben `batchSize` aufrufen.
 - Jede Karte darf im Prüfmodus pro Kalendertag nur einmal geprüft werden. Bei `passed=false` darf die richtige Antwort erklärt werden; dieselbe Karte wird heute nicht erneut abgefragt.
 - Wenn `verified-recall/start` `status=waiting` liefert, ist die Prüfung für heute beendet; nicht improvisieren und keine Karte wiederholen.
+- Wenn die lernende Person danach ausdrücklich ein anderes Ziel möchte: `getLearnerState` neu laden und mit `setActiveGoal` plus `redirect=true` ein anderes atomares Frontier-Ziel wählen.
 - Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten.
 
 ## 7. Mastery-Flow

@@ -70,6 +70,10 @@ In this case:
 2. If `chooseMemoryMode` still applies, start the Verified Recall flow.
 3. **Do not** use the standard phrasing from section 4.
 
+If `verified-recall/start` then returns `status=waiting` and the learner wants
+another goal, reload `getLearnerState` and choose another atomic frontier goal
+with `setActiveGoal` plus `redirect=true`.
+
 If the Verified Recall actions are not available in the Custom GPT:
 - do not simulate verification
 - do not claim mastery
