@@ -62,7 +62,14 @@ const MATH_LANDSCAPE_ID = '2796fc7b-ba9d-446f-8f26-711dd6d8a9a3'
 const MATH_DIFFERENTIATION_GOAL_ID = 'e2b6b4d1-02db-4a27-948e-ecfbdb44dab3'
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
-const CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
+const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
+  '81c8da58-9258-488e-9ab8-48500ab31652',
+  '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
+  '811d6d09-130e-47b2-aba8-a5c401fe3251',
+  '5fb3ee61-059c-47f4-8c6f-7285d7982a41',
+  'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
+  'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
+]
 const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
 
 const RULE_REQUIRES_ANCESTOR = 'GVR-001'
@@ -123,7 +130,8 @@ interface ScopedMotivationConnectivityProfile {
 interface ScopedFullRouteCoverageProfile {
   landscapeId: string
   motivationAnchorGoalIds: string[]
-  terminalGoalIds: string[]
+  terminalGoalIds?: string[]
+  terminalGoalClusterIds?: string[]
   goalSelector: (goal: UiGoal) => boolean
   scopeLabel: string
 }
@@ -424,7 +432,7 @@ const scopedFullRouteCoverageProfiles: ScopedFullRouteCoverageProfile[] = [
   {
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
+    terminalGoalClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
     goalSelector: isCanonicalGymMathSek1AtomicGoal,
     scopeLabel: 'canonical DE Gymnasium mathematics / Sek I',
   },
@@ -459,6 +467,29 @@ function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string,
   }
 
   return false
+}
+
+function collectAtomicDescendantIds(goalId: string, goalMap: Map<string, UiGoal>, visiting = new Set<string>()): string[] {
+  if (visiting.has(goalId)) return []
+  const goal = goalMap.get(goalId)
+  if (!goal) return []
+  if ((goal.contains?.length ?? 0) === 0) return [goalId]
+
+  const nextVisiting = new Set(visiting)
+  nextVisiting.add(goalId)
+  return Array.from(new Set((goal.contains ?? []).flatMap((childId) =>
+    collectAtomicDescendantIds(childId, goalMap, nextVisiting))))
+}
+
+function terminalGoalIdsForProfile(
+  profile: ScopedFullRouteCoverageProfile,
+  goalMap: Map<string, UiGoal>,
+): string[] {
+  return Array.from(new Set([
+    ...(profile.terminalGoalIds ?? []),
+    ...(profile.terminalGoalClusterIds ?? []).flatMap((clusterId) =>
+      collectAtomicDescendantIds(clusterId, goalMap)),
+  ]))
 }
 
 function buildReverseEdges(edgeMap: Map<string, string[]>): Map<string, string[]> {
@@ -870,7 +901,8 @@ function validateLandscape(landscape: ParsedLandscape) {
 
     const scopedGoals = landscape.goals.filter(profile.goalSelector)
     const missingAnchorIds = profile.motivationAnchorGoalIds.filter((goalId) => !localMap.has(goalId))
-    const missingTerminalIds = profile.terminalGoalIds.filter((goalId) => !localMap.has(goalId))
+    const terminalGoalIds = terminalGoalIdsForProfile(profile, localMap)
+    const missingTerminalIds = terminalGoalIds.filter((goalId) => !localMap.has(goalId))
 
     if (missingAnchorIds.length > 0) {
       addIssue(
@@ -896,7 +928,7 @@ function validateLandscape(landscape: ParsedLandscape) {
         return goal ? `${goal.id} (${goal.title})` : goalId
       })
       .join(', ')
-    const terminalGoalLabels = profile.terminalGoalIds
+    const terminalGoalLabels = terminalGoalIds
       .map((goalId) => {
         const goal = localMap.get(goalId)
         return goal ? `${goal.id} (${goal.title})` : goalId
@@ -906,7 +938,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     scopedGoals.forEach((goal) => {
       const hasMotivationPath = profile.motivationAnchorGoalIds.some((anchorGoalId) =>
         hasPathToTarget(goal.id, anchorGoalId, effectiveEdges))
-      const hasTerminalPath = profile.terminalGoalIds.some((terminalGoalId) =>
+      const hasTerminalPath = terminalGoalIds.some((terminalGoalId) =>
         hasPathToTarget(goal.id, terminalGoalId, reverseEffectiveEdges))
 
       if (hasMotivationPath && hasTerminalPath) return

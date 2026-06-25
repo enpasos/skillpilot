@@ -268,8 +268,11 @@ Practical modeling rule:
 
 * Create local autonomy clusters such as `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4` where appropriate.
 * Initial rollout scope: canonical Gymnasium Mathematik, Sekundarstufe I. In that scope, model local autonomy at the year level: each visible year or year-band scope must contain a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, and the actual assessment tasks live as individual exam nodes below that folder.
-* Do not place ordinary Sek-I year practice for canonical Gymnasium Mathematik as one separate `Übungen Sekundarstufe I` learner-facing branch. A stage-level Sek-I capstone may remain as an additional integrative assessment, but it must not substitute the year-level exam folders.
+* Do not place ordinary Sek-I year practice for canonical Gymnasium Mathematik as one separate `Übungen Sekundarstufe I` learner-facing branch or as a separate `Sek-I-Abschlussaufgaben Mathematik` capstone. The learner-facing terminal endpoints for Sek I mathematics are the individual year-level exam tasks under the matching `Prüfungen Jahrgangsstufe <n>` folders.
 * If an old aggregate Sek-I practice cluster is retained only for compatibility, keep it out of learner-facing composition views and mark it with `extendedData.applicabilityProjection = "excluded"` so child-union applicability does not project it as a visible branch.
+* Sek-I mathematics exam tasks must use coherent, age-appropriate contexts that actually carry the mathematics. Avoid copied umbrella scenarios, artificial mega-contexts, and tasks that only wrap isolated procedures in decorative prose.
+* For year-level exam tasks, prefer a low-floor/high-ceiling shape: an accessible entry from concrete data or representations, followed by at least one reasoning, checking, model-limit, or explanation prompt at a level appropriate to the year.
+* Keep each exam node's `requires` and `examData.coveredGoalIds` aligned with the goals that the task actually assesses; do not bulk-copy the entire year coverage onto every individual task.
 * Other Sek-I subjects or school forms may adopt the same pattern after their own learner-facing composition views and assessment semantics have been reviewed; do not force the Mathematik rollout rule onto them by default.
 * If the curriculum has cross-phase process competencies, a separate branch such as `Übungen Prozesskompetenzen` can be appropriate.
 * Keep global Abitur/final-exam branches **separate** from these local exercise branches.

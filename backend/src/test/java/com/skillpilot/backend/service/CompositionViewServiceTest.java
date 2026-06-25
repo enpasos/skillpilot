@@ -65,15 +65,13 @@ class CompositionViewServiceTest {
     }
 
     @Test
-    void findFollowingScopeSiblings_returnsCanonicalSubtreeAfterFinalSekOneYear() {
+    void findFollowingScopeSiblings_doesNotReturnSeparateSekOneCapstoneAfterFinalYear() {
         CompositionViewService service = createService();
 
         List<CompositionViewService.CompositionStructureResolution> siblings =
                 service.findFollowingScopeSiblings("composition:de-de-gym-math-lk:structure:j10");
 
-        assertThat(siblings).isNotEmpty();
-        assertThat(siblings.get(0).syntheticGoalId()).isEqualTo("30b62966-80d0-45f1-bdd9-b4fb815c7111");
-        assertThat(siblings.get(0).referencedGoalIds()).containsExactly("30b62966-80d0-45f1-bdd9-b4fb815c7111");
+        assertThat(siblings).isEmpty();
     }
 
     @Test
