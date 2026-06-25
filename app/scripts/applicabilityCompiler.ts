@@ -273,6 +273,11 @@ function isMemoryGoal(goal: LearningGoal): boolean {
     || tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
+function isApplicabilityProjectionExcluded(goal: LearningGoal): boolean {
+  if (!goal.extendedData || typeof goal.extendedData !== 'object') return false
+  return (goal.extendedData as Record<string, unknown>).applicabilityProjection === 'excluded'
+}
+
 function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
   return value !== null && SUPPORTED_JURISDICTION_SET.has(value)
 }
@@ -936,6 +941,14 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         return empty
       }
 
+      if (isApplicabilityProjectionExcluded(goal)) {
+        const empty: ApplicabilityMap = {}
+        compiledByGoalId.set(key, empty)
+        evidenceByGoalId.set(key, [])
+        visiting.delete(key)
+        return empty
+      }
+
       if (!isAtomicGoal(goal)) {
         const jurisdictions = new Set<SupportedJurisdiction>()
         const evidence: ApplicabilityEvidence[] = []
@@ -1183,6 +1196,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       let changed = false
       for (const goal of canonical.landscape.goals) {
         if (isAtomicGoal(goal)) continue
+        if (isApplicabilityProjectionExcluded(goal)) continue
         const childRefs = childRefsByGoalId.get(goal.id) ?? []
         const visibleChildrenCountByJurisdiction = new Map<SupportedJurisdiction, number>()
 

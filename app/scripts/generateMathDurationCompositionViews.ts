@@ -94,7 +94,16 @@ const compositionViewDir = resolve(repoRoot, 'curricula/DE/Gymnasium/composition
 
 const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
-const SEK1_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
+const SEK1_MEMORY_GOAL_ID = '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a'
+const SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
+const SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
+  '5': '81c8da58-9258-488e-9ab8-48500ab31652',
+  '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
+  '7': '811d6d09-130e-47b2-aba8-a5c401fe3251',
+  '8': '5fb3ee61-059c-47f4-8c6f-7285d7982a41',
+  '9': 'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
+  '10': 'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
+}
 
 const GENERATED_VIEW_PATHS = [
   'de-he-seki-g8.view.json',
@@ -269,6 +278,11 @@ const collectAtomicDescendantIds = (goalId: string, visiting: Set<string> = new 
   return atomicIds
 }
 
+const sek1ExamGoalIds = new Set(Object.values(SEK1_EXAM_FOLDER_IDS_BY_YEAR).flatMap((folderId) => [
+  folderId,
+  ...collectAtomicDescendantIds(folderId),
+]))
+
 const evidenceAtomicIdsByDuration = Object.fromEntries(
   durationModels.map((durationModel) => [durationModel, new Set<string>()]),
 ) as Record<DurationModel, Set<string>>
@@ -304,6 +318,7 @@ const assignPrimaryGradeBuckets = (durationModel: DurationModel, excludedGoalIds
       const yearGoalIds = sortGoalIdsByTitle(rawBuckets[durationModel][year] ?? [], goalById)
         .filter((goalId) => {
           if (excludedGoalIds.has(goalId)) return false
+          if (sek1ExamGoalIds.has(goalId)) return false
           if (assigned.has(goalId)) return false
           assigned.add(goalId)
           return true
@@ -316,12 +331,31 @@ const assignPrimaryGradeBuckets = (durationModel: DurationModel, excludedGoalIds
 const baseSek1SupplementIds = Array.from(new Set([
   ...collectGoalEntriesFromStructure(baseGkView.rootNodes, 'he-g8-g9-supplements'),
   ...collectGoalEntriesFromStructure(baseGkView.rootNodes, 'he-source-extraction-supplements-seki'),
-]))
+])).filter((goalId) => !sek1ExamGoalIds.has(goalId))
 
 const createGoalEntry = (goalId: string): CompositionNode => ({
   kind: 'goalEntry',
   goalId,
 })
+
+const createCanonicalSubtree = (goalId: string, displayLabel?: string): CompositionNode => ({
+  kind: 'canonicalSubtree',
+  goalId,
+  ...(displayLabel ? { displayLabel } : {}),
+})
+
+const createSek1ExamFolderEntry = (year: string): CompositionNode => {
+  const goalId = SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
+  if (!goalId) {
+    throw new Error(`No Sek-I exam folder configured for year ${year}`)
+  }
+  return createCanonicalSubtree(goalId, `Prüfungen Jahrgangsstufe ${year}`)
+}
+
+const createSek1CommonTail = (): CompositionNode[] => [
+  createCanonicalSubtree(SEK1_MEMORY_GOAL_ID),
+  createCanonicalSubtree(SEK1_CAPSTONE_GOAL_ID),
+]
 
 const createYearNode = (durationModel: DurationModel, year: string, goalIds: string[]): CompositionNode | null => {
   if (goalIds.length === 0) return null
@@ -336,6 +370,7 @@ const createYearNode = (durationModel: DurationModel, year: string, goalIds: str
         label: 'Weitere Kompetenzen',
         children: goalIds.map(createGoalEntry),
       },
+      createSek1ExamFolderEntry(year),
     ],
   }
 }
@@ -351,7 +386,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
   })
 
   const children: CompositionNode[] = [
-    { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+    createCanonicalSubtree(SEK1_MOTIVATION_GOAL_ID),
     ...yearLabelsByDuration[durationModel]
       .map((year) => createYearNode(durationModel, year, buckets[year] ?? []))
       .filter((node): node is CompositionNode => node !== null),
@@ -363,7 +398,7 @@ const createSek1Node = (durationModel: DurationModel, excludedGoalIds: Set<strin
           children: sortGoalIdsByTitle(extraGoalIds, goalById).map(createGoalEntry),
         }]
       : []),
-    { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+    ...createSek1CommonTail(),
   ]
 
   return {
@@ -430,7 +465,7 @@ const rpStageLabelsByDuration: Record<DurationModel, Record<RpStage, string>> = 
   G9: {
     orientierungsstufe: 'Orientierungsstufe 5/6',
     'klasse7-8': 'Klassenstufen 7/8',
-    'klasse9-10-msa': 'Klassenstufe 10 (G9)',
+    'klasse9-10-msa': 'Klassenstufen 9/10 (G9)',
   },
 }
 
@@ -455,7 +490,7 @@ for (const mapping of rpMappingReview.mappings ?? []) {
 const baseRpSek1SupplementIds = Array.from(new Set([
   ...collectGoalEntriesFromStructure(baseRpGkView.rootNodes, 'rp-source-extraction-supplements-seki'),
   ...rpUngradedSourceAtomicIds,
-]))
+])).filter((goalId) => !sek1ExamGoalIds.has(goalId))
 
 const assignRpStageBuckets = (excludedGoalIds: Set<string> = new Set()) => {
   const assigned = new Set<string>()
@@ -464,6 +499,7 @@ const assignRpStageBuckets = (excludedGoalIds: Set<string> = new Set()) => {
       const goalIds = sortGoalIdsByTitle(rpRawBuckets[stage], goalById)
         .filter((goalId) => {
           if (excludedGoalIds.has(goalId)) return false
+          if (sek1ExamGoalIds.has(goalId)) return false
           if (assigned.has(goalId)) return false
           assigned.add(goalId)
           return true
@@ -490,6 +526,15 @@ const createRpStageNode = (
         label: 'Lehrplanbelegte Kompetenzen',
         children: goalIds.map(createGoalEntry),
       },
+      ...(
+        rpStage === 'orientierungsstufe'
+          ? ['5', '6']
+          : rpStage === 'klasse7-8'
+            ? ['7', '8']
+            : durationModel === 'G8'
+              ? ['9']
+              : ['9', '10']
+      ).map(createSek1ExamFolderEntry),
     ],
   }
 }
@@ -504,7 +549,7 @@ const createRpSek1Node = (
     .filter((goalId) => !excludedGoalIds.has(goalId) && !assignedGoalIds.has(goalId))
 
   const children: CompositionNode[] = [
-    { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+    createCanonicalSubtree(SEK1_MOTIVATION_GOAL_ID),
     ...rpStages
       .map((rpStage) => createRpStageNode(durationModel, rpStage, buckets[rpStage]))
       .filter((node): node is CompositionNode => node !== null),
@@ -516,7 +561,7 @@ const createRpSek1Node = (
           children: supplementGoalIds.map(createGoalEntry),
         }]
       : []),
-    { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+    ...createSek1CommonTail(),
   ]
 
   return {
@@ -617,6 +662,7 @@ const assignShBandBuckets = (excludedGoalIds: Set<string> = new Set()) => {
       const goalIds = sortGoalIdsByTitle(shRawBuckets[band], goalById)
         .filter((goalId) => {
           if (excludedGoalIds.has(goalId)) return false
+          if (sek1ExamGoalIds.has(goalId)) return false
           if (assigned.has(goalId)) return false
           assigned.add(goalId)
           return true
@@ -643,6 +689,17 @@ const createShBandNode = (
         label: 'Lehrplanbelegte Kompetenzen',
         children: goalIds.map(createGoalEntry),
       },
+      ...(
+        band === 'jg5-6'
+          ? ['5', '6']
+          : band === 'jg7-9'
+            ? durationModel === 'G8'
+              ? ['7', '8']
+              : ['7', '8', '9']
+            : durationModel === 'G8'
+              ? ['9']
+              : ['10']
+      ).map(createSek1ExamFolderEntry),
     ],
   }
 }
@@ -657,11 +714,11 @@ const createShSek1Node = (
     id: `sh-sek1-${durationModel.toLowerCase()}`,
     label: 'Sekundarstufe I',
     children: [
-      { kind: 'canonicalSubtree', goalId: SEK1_MOTIVATION_GOAL_ID },
+      createCanonicalSubtree(SEK1_MOTIVATION_GOAL_ID),
       ...shBands
         .map((band) => createShBandNode(durationModel, band, buckets[band]))
         .filter((node): node is CompositionNode => node !== null),
-      { kind: 'canonicalSubtree', goalId: SEK1_PRACTICE_CLUSTER_ID },
+      ...createSek1CommonTail(),
     ],
   }
 }

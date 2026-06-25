@@ -129,6 +129,7 @@ Accepted-warning handling:
 - `APV-201` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
 - Such warning cases must be explicitly listed in `docs/qa-ci/applicability-accepted-warnings.json` with a short rationale.
 - `APV-202` is high-cardinality mapping-shape diagnostics, not a warning: it says a projected visibility decision is backed only by partial mapping evidence. Since `1:n` / partial coverage can be fachlich complete, `validate:view-filters` reports `APV-202` as diagnostic findings and keeps warning debt separate.
+- Retained compatibility clusters that are no longer learner-facing must be marked with `extendedData.applicabilityProjection = "excluded"`. Otherwise cluster child-union applicability can make them visible without a root path and trigger `APV-103`.
 - `validate:view-filters` prints compact summaries by default. Set `APPLICABILITY_VERBOSE_WARNINGS=1` to print every individual warning line for audit/debug work.
 
 ## Composition-view validator (`validate:composition-views`)
@@ -154,6 +155,10 @@ Current stable finding families:
 | `CPV-007` | A structure node is left empty although it is still present in the view tree. | `error` |
 | `CPV-101` | A structure node label is still too generic to be review-safe. | `warning` |
 | `CPV-102` | A referenced canonical subtree root still looks phase- or state-specific by title. | `warning` |
+| `CPV-210` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the reviewed motivation anchor. | `error` |
+| `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders, their individual task nodes, or the Sek-I capstone. | `error` |
+| `CPV-212` | The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or missing capstone prerequisite. | `error` |
+| `CPV-213` | A canonical Gymnasium mathematics Sek-I learner-facing view still exposes the legacy `Übungen Sekundarstufe I` aggregate branch. | `error` |
 
 ## Current compatibility model vs. target model
 
@@ -230,6 +235,8 @@ Current active profile:
 - scope: Sekundarstufe I
 - motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
 - terminal autonomy goal: `Sek-I-Abschlussaufgaben Mathematik`
+- learner-facing year autonomy: each Sek-I year scope must expose a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, with individual exam-task nodes below it.
+- rollout boundary: this year-autonomy rule is currently normative for canonical Gymnasium mathematics. Other Sek-I subjects or school forms should opt in only after their composition views and assessment semantics have been reviewed.
 - selected nodes:
   - all goals tagged `phase:SekI`
   - plus goals whose normalized phase is `J*`
@@ -239,6 +246,7 @@ Interpretation:
 
 - `GVR-012` is the migration-compatible full-route check for reviewed scopes where both ends of the route are now authored explicitly.
 - It does **not** yet prove that the route is authored canonically on the atomic direct-prerequisite layer; it validates full route coverage on the current effective-requires projection.
+- The Sek-I capstone is an integrative stage-level endpoint. It does not replace the normative learner-facing structure of year-local exam folders and individual tasks.
 - This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.
 
 ## Scoped atomic direct requires (`GVR-013`)

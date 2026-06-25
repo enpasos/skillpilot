@@ -110,7 +110,7 @@ Aktuell sind fuer Mathematik und Physik jeweils zwei Pflicht-Scopes registriert:
 
 | Scope-ID | Label | Ausgewaehlte atomare Ziele | Motivationsanker | Terminale Autonomie |
 | --- | --- | ---: | --- | --- |
-| `canonical-math-sek1` | Sekundarstufe I | 218 | `Warum Mathematik? - Entdecken, Muster & Alltag` | `Sek-I-Abschlussaufgaben Mathematik` unter `Uebungen Sekundarstufe I` |
+| `canonical-math-sek1` | Sekundarstufe I | 247 | `Warum Mathematik? - Entdecken, Muster & Alltag` | Jahrgangsnahe `Pruefungen Jahrgangsstufe 5` bis `Pruefungen Jahrgangsstufe 10` mit 38 einzelnen Aufgabenknoten; zusaetzlich `Sek-I-Abschlussaufgaben Mathematik` als integrativer Capstone |
 | `canonical-math-sek2` | Sekundarstufe II | 397 | `Warum Mathematik? - Denken, Muster & Zukunft` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3`, `Uebungen Q4` und `Uebungen Prozesskompetenzen` |
 | `canonical-physics-sek1` | Sekundarstufe I | 44 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen Sekundarstufe I Physik` |
 | `canonical-physics-sek2` | Sekundarstufe II | 278 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3` und `Uebungen Q4` |
@@ -778,7 +778,7 @@ Interpretation:
 Bei `Mathematik (Gymnasium, DE)` bedeutet `M5` im aktuellen Dashboard:
 
 - Sek I und Sek II sind als Pflicht-QA-Scopes registriert.
-- Sek I prueft 218 atomare Ziele.
+- Sek I prueft 247 normale atomare Lernziele; die 38 jahrgangsnahen Pruefungsaufgaben werden als terminale Assessment-Knoten separat geprueft.
 - Sek II prueft 397 atomare Ziele.
 - Beide Scopes haben `CQR-101`, `CQR-102`, `CQR-103` und `CQR-201` auf `pass`.
 - Die globale Kern-Review-Schicht hat `CQR-301`, `CQR-401` und `CQR-501` auf `pass`.

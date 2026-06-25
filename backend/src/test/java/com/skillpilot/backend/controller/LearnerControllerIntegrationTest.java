@@ -5665,22 +5665,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "182", "182" },
-                { "DE-BE", "182", "182" },
-                { "DE-BW", "198", "198" },
-                { "DE-BY", "175", "175" },
-                { "DE-HB", "161", "161" },
-                { "DE-HE", "240", "264" },
-                { "DE-HH", "182", "182" },
-                { "DE-MV", "182", "182" },
-                { "DE-NI", "182", "182" },
-                { "DE-NW", "182", "182" },
-                { "DE-RP", "121", "121" },
-                { "DE-SH", "181", "181" },
-                { "DE-SL", "182", "182" },
-                { "DE-SN", "182", "182" },
-                { "DE-ST", "182", "182" },
-                { "DE-TH", "182", "182" }
+                { "DE-BB", "214", "214" },
+                { "DE-BE", "214", "214" },
+                { "DE-BW", "230", "230" },
+                { "DE-BY", "213", "213" },
+                { "DE-HB", "181", "181" },
+                { "DE-HE", "266", "296" },
+                { "DE-HH", "214", "214" },
+                { "DE-MV", "214", "214" },
+                { "DE-NI", "214", "214" },
+                { "DE-NW", "214", "214" },
+                { "DE-RP", "147", "153" },
+                { "DE-SH", "193", "199" },
+                { "DE-SL", "214", "214" },
+                { "DE-SN", "214", "214" },
+                { "DE-ST", "214", "214" },
+                { "DE-TH", "214", "214" }
         };
 
         for (String[] scope : scopes) {
@@ -5714,12 +5714,12 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "647", "649" },
-                { "DE-HE", "LK", "752", "754" },
-                { "DE-RP", "GK", "528", "528" },
-                { "DE-RP", "LK", "623", "623" },
-                { "DE-SH", "GK", "569", "569" },
-                { "DE-SH", "LK", "652", "652" }
+                { "DE-HE", "GK", "673", "681" },
+                { "DE-HE", "LK", "778", "786" },
+                { "DE-RP", "GK", "554", "560" },
+                { "DE-RP", "LK", "649", "655" },
+                { "DE-SH", "GK", "581", "587" },
+                { "DE-SH", "LK", "664", "670" }
         };
 
         for (String[] scope : scopes) {
