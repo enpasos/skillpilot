@@ -5665,22 +5665,22 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-BB", "214", "214" },
-                { "DE-BE", "214", "214" },
-                { "DE-BW", "230", "230" },
+                { "DE-BB", "213", "213" },
+                { "DE-BE", "213", "213" },
+                { "DE-BW", "229", "229" },
                 { "DE-BY", "213", "213" },
                 { "DE-HB", "181", "181" },
-                { "DE-HE", "266", "296" },
-                { "DE-HH", "214", "214" },
-                { "DE-MV", "214", "214" },
-                { "DE-NI", "214", "214" },
-                { "DE-NW", "214", "214" },
-                { "DE-RP", "147", "153" },
+                { "DE-HE", "265", "295" },
+                { "DE-HH", "213", "213" },
+                { "DE-MV", "213", "213" },
+                { "DE-NI", "213", "213" },
+                { "DE-NW", "213", "213" },
+                { "DE-RP", "146", "152" },
                 { "DE-SH", "193", "199" },
-                { "DE-SL", "214", "214" },
-                { "DE-SN", "214", "214" },
-                { "DE-ST", "214", "214" },
-                { "DE-TH", "214", "214" }
+                { "DE-SL", "213", "213" },
+                { "DE-SN", "213", "213" },
+                { "DE-ST", "213", "213" },
+                { "DE-TH", "213", "213" }
         };
 
         for (String[] scope : scopes) {
@@ -5714,10 +5714,10 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "673", "681" },
-                { "DE-HE", "LK", "778", "786" },
-                { "DE-RP", "GK", "554", "560" },
-                { "DE-RP", "LK", "649", "655" },
+                { "DE-HE", "GK", "672", "680" },
+                { "DE-HE", "LK", "777", "785" },
+                { "DE-RP", "GK", "553", "559" },
+                { "DE-RP", "LK", "648", "654" },
                 { "DE-SH", "GK", "581", "587" },
                 { "DE-SH", "LK", "664", "670" }
         };

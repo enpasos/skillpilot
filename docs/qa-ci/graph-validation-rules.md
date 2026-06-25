@@ -156,8 +156,8 @@ Current stable finding families:
 | `CPV-101` | A structure node label is still too generic to be review-safe. | `warning` |
 | `CPV-102` | A referenced canonical subtree root still looks phase- or state-specific by title. | `warning` |
 | `CPV-210` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the reviewed motivation anchor. | `error` |
-| `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders, their individual task nodes, or the Sek-I capstone. | `error` |
-| `CPV-212` | The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or missing capstone prerequisite. | `error` |
+| `CPV-211` | A canonical Gymnasium mathematics Sek-I learner-facing view does not expose the required year exam folders or their individual task nodes. | `error` |
+| `CPV-212` | The canonical Gymnasium mathematics Sek-I exam folder structure is malformed: missing year folder, non-atomic task, missing exam data, cluster prerequisite, duplicate task, or stale aggregate terminal endpoint. | `error` |
 | `CPV-213` | A canonical Gymnasium mathematics Sek-I learner-facing view still exposes the legacy `Übungen Sekundarstufe I` aggregate branch. | `error` |
 
 ## Current compatibility model vs. target model
@@ -234,8 +234,8 @@ Current active profile:
 - landscape: canonical DE Gymnasium mathematics (`Mathematik (Gymnasium, DE)`)
 - scope: Sekundarstufe I
 - motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
-- terminal autonomy goal: `Sek-I-Abschlussaufgaben Mathematik`
-- learner-facing year autonomy: each Sek-I year scope must expose a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, with individual exam-task nodes below it.
+- terminal autonomy goals: the individual exam-task nodes under `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`
+- learner-facing year autonomy: each Sek-I year scope must expose a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, with individual exam-task nodes below it. A separate global `Sek-I-Abschlussaufgaben Mathematik` capstone is not part of the learner-facing route.
 - rollout boundary: this year-autonomy rule is currently normative for canonical Gymnasium mathematics. Other Sek-I subjects or school forms should opt in only after their composition views and assessment semantics have been reviewed.
 - selected nodes:
   - all goals tagged `phase:SekI`
@@ -246,7 +246,9 @@ Interpretation:
 
 - `GVR-012` is the migration-compatible full-route check for reviewed scopes where both ends of the route are now authored explicitly.
 - It does **not** yet prove that the route is authored canonically on the atomic direct-prerequisite layer; it validates full route coverage on the current effective-requires projection.
-- The Sek-I capstone is an integrative stage-level endpoint. It does not replace the normative learner-facing structure of year-local exam folders and individual tasks.
+- For canonical Gymnasium mathematics Sek I, the terminal autonomy endpoints are the individual year-level exam tasks. Do not reintroduce a separate `Sek-I-Abschlussaufgaben Mathematik` capstone or expose an aggregate `Übungen Sekundarstufe I` learner-facing branch as the ordinary route endpoint.
+- Sek-I mathematics exam tasks should use coherent, age-appropriate contexts that carry the mathematics. Avoid copied umbrella scenarios and keep each task's `requires` / `examData.coveredGoalIds` aligned with the goals actually assessed.
+- Prefer a low-floor/high-ceiling task shape: accessible data or representations first, then an explanation, checking, model-limit, or short reasoning prompt appropriate to the year.
 - This keeps the rule formulation general while allowing strict CI protection once a concrete rollout scope has explicit motivation and terminal-autonomy anchors.
 
 ## Scoped atomic direct requires (`GVR-013`)

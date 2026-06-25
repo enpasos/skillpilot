@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/src/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-06-20T07:39:16.205Z
+Generated: 2026-06-25T14:31:24.172Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,11 +16,11 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1040 |
-| Atomare Blattleernziele | 828 |
+| Alle Mathematik-Ziele | 1077 |
+| Atomare Blattleernziele | 859 |
 | Davon relevant fuer Quellenbegruendung | 752 |
-| Memory-/Nicht-Content-Blattziele | 76 |
-| Clusterziele | 212 |
+| Memory-/Nicht-Content-Blattziele | 107 |
+| Clusterziele | 218 |
 | Runtime-Quellenbegruendungen | 699 |
 | Runtime-Ziele mit klassischem Quellenweg | 699 |
 | Runtime-Ziele mit MEM/FWU-konsistenter Route | 185 |
@@ -28,10 +28,10 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Relevante Blattziele mit MEM/FWU-konsistenter Route | 185/752 (24.6%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
-| Cluster mit direkter Runtime-Quellenbegruendung | 0/212 |
-| Cluster ohne direkte Runtime-Quellenbegruendung | 212 |
-| contains-Relationen mit Begruendungstext | 0/1147 |
-| requires-Relationen mit Begruendungstext | 0/2441 |
+| Cluster mit direkter Runtime-Quellenbegruendung | 0/218 |
+| Cluster ohne direkte Runtime-Quellenbegruendung | 218 |
+| contains-Relationen mit Begruendungstext | 0/1190 |
+| requires-Relationen mit Begruendungstext | 0/3188 |
 
 ## Interpretation
 
@@ -290,7 +290,7 @@ Weitere 434 Eintraege stehen in der JSON-Begleitdatei.
 | Fachsprache präzisieren (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Fachsprache präzisieren (LK) |
 | Formale Argumentationen im Leistungskurs entwickeln (LK) | Q4 | unknown | - | Mathematik > Funktionenscharen, Argumentieren und komplexe Zahlen > Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II) > Problemlösen und Argumentieren > Formale Argumentationen im Leistungskurs entwickeln (LK) |
 
-Weitere 152 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 158 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Sources
 

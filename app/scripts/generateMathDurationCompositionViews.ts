@@ -95,7 +95,6 @@ const compositionViewDir = resolve(repoRoot, 'curricula/DE/Gymnasium/composition
 const CANONICAL_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
 const SEK1_MEMORY_GOAL_ID = '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a'
-const SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
 const SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
   '5': '81c8da58-9258-488e-9ab8-48500ab31652',
   '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
@@ -354,7 +353,6 @@ const createSek1ExamFolderEntry = (year: string): CompositionNode => {
 
 const createSek1CommonTail = (): CompositionNode[] => [
   createCanonicalSubtree(SEK1_MEMORY_GOAL_ID),
-  createCanonicalSubtree(SEK1_CAPSTONE_GOAL_ID),
 ]
 
 const createYearNode = (durationModel: DurationModel, year: string, goalIds: string[]): CompositionNode | null => {

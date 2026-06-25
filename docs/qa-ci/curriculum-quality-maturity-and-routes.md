@@ -110,7 +110,7 @@ Aktuell sind fuer Mathematik und Physik jeweils zwei Pflicht-Scopes registriert:
 
 | Scope-ID | Label | Ausgewaehlte atomare Ziele | Motivationsanker | Terminale Autonomie |
 | --- | --- | ---: | --- | --- |
-| `canonical-math-sek1` | Sekundarstufe I | 247 | `Warum Mathematik? - Entdecken, Muster & Alltag` | Jahrgangsnahe `Pruefungen Jahrgangsstufe 5` bis `Pruefungen Jahrgangsstufe 10` mit 38 einzelnen Aufgabenknoten; zusaetzlich `Sek-I-Abschlussaufgaben Mathematik` als integrativer Capstone |
+| `canonical-math-sek1` | Sekundarstufe I | 247 | `Warum Mathematik? - Entdecken, Muster & Alltag` | Jahrgangsnahe `Pruefungen Jahrgangsstufe 5` bis `Pruefungen Jahrgangsstufe 10` mit 38 einzelnen Aufgabenknoten |
 | `canonical-math-sek2` | Sekundarstufe II | 397 | `Warum Mathematik? - Denken, Muster & Zukunft` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3`, `Uebungen Q4` und `Uebungen Prozesskompetenzen` |
 | `canonical-physics-sek1` | Sekundarstufe I | 44 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen Sekundarstufe I Physik` |
 | `canonical-physics-sek2` | Sekundarstufe II | 278 | `Warum Physik?` | atomare Klausur-/Uebungsziele unter `Uebungen E-Phase`, `Uebungen Q1`, `Uebungen Q2`, `Uebungen Q3` und `Uebungen Q4` |

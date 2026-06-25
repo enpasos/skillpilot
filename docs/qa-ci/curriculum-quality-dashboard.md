@@ -207,9 +207,8 @@ The currently required route profiles are:
 - landscape: `Mathematik (Gymnasium, DE)`
 - scope: `Sekundarstufe I`
 - motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
-- terminal autonomy target: `Sek-I-Abschlussaufgaben Mathematik`
+- terminal autonomy targets: the individual exam-task nodes under `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`
 - learner-facing terminal practice: `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`, each placed inside the matching year or year-band structure and containing individual exam-task nodes
-- stage-level capstone: `Sek-I-Abschlussaufgaben Mathematik`
 
 - `canonical-math-sek2`
 - landscape: `Mathematik (Gymnasium, DE)`
@@ -243,8 +242,8 @@ To bring canonical mathematics Sek I from `M3` toward `M4` after source ingestio
 1. Keep `GVR-012` / `CQR-101` green while editing.
 2. Move broad Sek-I cluster-level `requires` down into precise atomic prerequisites.
 3. Ensure each selected atomic goal has a direct atomic path back to the motivation anchor.
-4. Preserve the existing direct terminal path into the Sek-I capstone.
-5. Add concrete `examData` to the J5-J10 terminal autonomy goals or document a machine-readable exception convention.
+4. Preserve direct terminal paths into the Jahrgangsstufen-Prüfungsaufgaben.
+5. Keep concrete `examData` on the J5-J10 terminal autonomy goals.
 6. Regenerate `curriculum-quality-status.json` and rerun graph validation.
 
 Commands:

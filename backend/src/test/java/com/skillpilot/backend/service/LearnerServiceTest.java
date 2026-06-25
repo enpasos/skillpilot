@@ -42,7 +42,7 @@ public class LearnerServiceTest {
     private static final String COMPOSITION_J10_SCOPE_ID =
             "composition:merged:de-de-gym-math-lk+de-de-gym-math-gk:structure:j10";
     private static final String SEK1_EXERCISES_SCOPE_ID = "bfc4fe23-bfa4-4836-9bd2-793f4305d682";
-    private static final String SEK1_FINAL_EXAM_SCOPE_ID = "30b62966-80d0-45f1-bdd9-b4fb815c7111";
+    private static final String REMOVED_SEK1_CAPSTONE_ID = "30b62966-80d0-45f1-bdd9-b4fb815c7111";
     private static final String VISIBLE_POLYNOMIAL_FUNCTIONS_ID = "1ce8af38-082a-477b-af48-b924c92761bf";
     private static final String HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID =
             "0756b198-0074-49d5-becd-9bb9f161a291";
@@ -473,7 +473,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void getLearnerState_offersSekOneExercisesAfterFinalCompositionYearScopeIsComplete() {
+    void getLearnerState_doesNotOfferSeparateSekOneCapstoneAfterFinalCompositionYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum("""
@@ -494,14 +494,10 @@ public class LearnerServiceTest {
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(goal -> goal.id())
-                .contains(SEK1_FINAL_EXAM_SCOPE_ID);
+                .doesNotContain(REMOVED_SEK1_CAPSTONE_ID);
         assertThat(state.stateMachine().goalOptions())
-                .filteredOn(goal -> SEK1_FINAL_EXAM_SCOPE_ID.equals(goal.id()))
-                .singleElement()
-                .satisfies(goal -> {
-                    assertThat(goal.title()).isEqualTo("Sek-I-Abschlussaufgaben Mathematik");
-                    assertThat(goal.type()).isEqualTo("atomic");
-                });
+                .extracting(goal -> goal.title())
+                .doesNotContain("Sek-I-Abschlussaufgaben Mathematik");
     }
 
     private void completeCurrentScope() {

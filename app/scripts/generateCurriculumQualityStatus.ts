@@ -847,7 +847,6 @@ interface RouteProfile {
   landscapeId: string
   label: string
   motivationAnchorGoalIds: string[]
-  terminalGoalIds?: string[]
   terminalAutonomyClusterIds: string[]
   terminalAutonomyClusterIdsByDurationModel?: Partial<Record<DurationModel, string[]>>
   compositionViewStage?: 'SekI' | 'SekII' | 'CrossStage'
@@ -876,7 +875,6 @@ const statusMarkdownPath = join(statusDir, 'curriculum-quality-status.md')
 
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
-const CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
 const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
   '81c8da58-9258-488e-9ab8-48500ab31652',
   '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
@@ -1102,7 +1100,6 @@ const routeProfiles: RouteProfile[] = [
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
-    terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
     terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
     terminalAutonomyClusterIdsByDurationModel: {
       G8: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5),
@@ -2031,9 +2028,7 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
     .map((goalId) => goalById.get(goalId))
     .filter((goal): goal is LearningGoal => !!goal)
     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
-  const terminalGoalIds = profile.terminalGoalIds && profile.terminalGoalIds.length > 0
-    ? profile.terminalGoalIds
-    : terminalAutonomyGoals.map((goal) => goal.id)
+  const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
 
   const missingEffectiveMotivation = selectedGoals.filter((goal) =>
     !profile.motivationAnchorGoalIds.some((anchorId) => hasEffectivePath(goal.id, anchorId)))
