@@ -21,6 +21,7 @@ type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
 type SemanticReviewStatus = 'atomic' | 'needs_developer_review' | 'non_atomic'
 type MemoryCardReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type MemoryCardReviewCardStatus = 'kept' | 'remove' | 'needs_developer_review'
+type DurationModel = 'G8' | 'G9'
 
 interface QualityRuleDefinition {
   id: string
@@ -848,6 +849,7 @@ interface RouteProfile {
   motivationAnchorGoalIds: string[]
   terminalGoalIds?: string[]
   terminalAutonomyClusterIds: string[]
+  terminalAutonomyClusterIdsByDurationModel?: Partial<Record<DurationModel, string[]>>
   compositionViewStage?: 'SekI' | 'SekII' | 'CrossStage'
   goalSelector: (goal: LearningGoal) => boolean
   clusterSelector: (goal: LearningGoal) => boolean
@@ -874,8 +876,15 @@ const statusMarkdownPath = join(statusDir, 'curriculum-quality-status.md')
 
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
-const CANONICAL_GYM_MATH_SEK1_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
 const CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
+const CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS = [
+  '81c8da58-9258-488e-9ab8-48500ab31652',
+  '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
+  '811d6d09-130e-47b2-aba8-a5c401fe3251',
+  '5fb3ee61-059c-47f4-8c6f-7285d7982a41',
+  'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
+  'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
+]
 const CANONICAL_GYM_MATH_SEK2_MOTIVATION_GOAL_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
 const CANONICAL_GYM_MATH_SEK2_PRACTICE_CLUSTER_IDS = [
   '28b45b93-11e1-5a96-97a1-4cfee171802b',
@@ -1094,9 +1103,16 @@ const routeProfiles: RouteProfile[] = [
     label: 'Sekundarstufe I',
     motivationAnchorGoalIds: [CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID],
     terminalGoalIds: [CANONICAL_GYM_MATH_SEK1_CAPSTONE_GOAL_ID],
-    terminalAutonomyClusterIds: [CANONICAL_GYM_MATH_SEK1_PRACTICE_CLUSTER_ID],
+    terminalAutonomyClusterIds: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+    terminalAutonomyClusterIdsByDurationModel: {
+      G8: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS.slice(0, 5),
+      G9: CANONICAL_GYM_MATH_SEK1_EXAM_FOLDER_IDS,
+    },
     compositionViewStage: 'SekI',
-    goalSelector: (goal) => isAtomicGoal(goal) && isCanonicalGymMathSek1Goal(goal) && !isMemoryGoal(goal),
+    goalSelector: (goal) => isAtomicGoal(goal)
+      && isCanonicalGymMathSek1Goal(goal)
+      && !isMemoryGoal(goal)
+      && !isPracticeOrAssessmentGoal(goal),
     clusterSelector: isCanonicalGymMathSek1Goal,
   },
   {
@@ -1663,23 +1679,30 @@ function buildReverseEdges(edgeMap: Map<string, string[]>): Map<string, string[]
   return reverse
 }
 
-function hasPath(startId: string, targetId: string, edgeMap: Map<string, string[]>): boolean {
-  if (startId === targetId) return true
-  const seen = new Set<string>()
-  const stack = [startId]
+function createPathChecker(edgeMap: Map<string, string[]>): (startId: string, targetId: string) => boolean {
+  const reachableByStart = new Map<string, Set<string>>()
 
-  while (stack.length > 0) {
-    const current = stack.pop()
-    if (!current || seen.has(current)) continue
-    seen.add(current)
+  const reachableFrom = (startId: string): Set<string> => {
+    const cached = reachableByStart.get(startId)
+    if (cached) return cached
 
-    for (const next of edgeMap.get(current) ?? []) {
-      if (next === targetId) return true
-      if (!seen.has(next)) stack.push(next)
+    const seen = new Set<string>()
+    const stack = [startId]
+    while (stack.length > 0) {
+      const current = stack.pop()
+      if (!current || seen.has(current)) continue
+      seen.add(current)
+
+      for (const next of edgeMap.get(current) ?? []) {
+        if (!seen.has(next)) stack.push(next)
+      }
     }
+
+    reachableByStart.set(startId, seen)
+    return seen
   }
 
-  return false
+  return (startId, targetId) => startId === targetId || reachableFrom(startId).has(targetId)
 }
 
 function findCycle(edgeMap: Map<string, string[]>): string[] | null {
@@ -1812,12 +1835,36 @@ function evaluateTypeConsistency(landscape: LearningLandscape): RuleResult {
   )
 }
 
+function normalizeDurationModelForRouteScope(value: unknown): DurationModel | null {
+  return value === 'G8' || value === 'G9' ? value : null
+}
+
+function terminalAutonomyGoalsForRouteScope(
+  goalById: Map<string, LearningGoal>,
+  profile: RouteProfile,
+  scope: Record<string, unknown>,
+  fallbackTerminalAutonomyGoals: LearningGoal[],
+): LearningGoal[] {
+  const durationModel = normalizeDurationModelForRouteScope(scope.durationModel)
+  const clusterIds = durationModel
+    ? profile.terminalAutonomyClusterIdsByDurationModel?.[durationModel]
+    : undefined
+  if (!clusterIds) return fallbackTerminalAutonomyGoals
+
+  return clusterIds
+    .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
+    .map((goalId) => goalById.get(goalId))
+    .filter((goal): goal is LearningGoal => !!goal)
+    .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+}
+
 function evaluateRouteEndpointCompositionVisibility(
   landscape: LearningLandscape,
   profile: RouteProfile,
   terminalAutonomyGoals: LearningGoal[],
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
 
   const viewFiles = readCompositionViewFilesForLandscapeId(profile.landscapeId)
     .filter((file) => {
@@ -1826,11 +1873,19 @@ function evaluateRouteEndpointCompositionVisibility(
         && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage')
     })
 
-  const terminalGoalIds = terminalAutonomyGoals.map((goal) => goal.id)
   const missingMotivationViewFiles: string[] = []
   const missingTerminalViewFiles: string[] = []
+  let maxRequiredTerminalAutonomyGoals = 0
 
   viewFiles.forEach((file) => {
+    const view = normalizeCompositionView(loadJson<unknown>(file))
+    const terminalGoalIds = terminalAutonomyGoalsForRouteScope(
+      goalById,
+      profile,
+      view.scope,
+      terminalAutonomyGoals,
+    ).map((goal) => goal.id)
+    maxRequiredTerminalAutonomyGoals = Math.max(maxRequiredTerminalAutonomyGoals, terminalGoalIds.length)
     const visibleAtomicGoalIds = collectRenderedAtomicGoalIdsFromCompositionView(landscape, file)
     const hasMotivationAnchors = profile.motivationAnchorGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
     const hasTerminalGoals = terminalGoalIds.every((goalId) => visibleAtomicGoalIds.has(goalId))
@@ -1855,7 +1910,7 @@ function evaluateRouteEndpointCompositionVisibility(
     {
       relevantCompositionViews: viewFiles.length,
       requiredMotivationAnchors: profile.motivationAnchorGoalIds.length,
-      requiredTerminalAutonomyGoals: terminalGoalIds.length,
+      requiredTerminalAutonomyGoals: maxRequiredTerminalAutonomyGoals,
       viewsMissingMotivationAnchors: missingMotivationViewFiles.length,
       viewsMissingTerminalAutonomyGoals: missingTerminalViewFiles.length,
     },
@@ -1967,6 +2022,10 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
   const reverseEffectiveEdges = buildReverseEdges(effectiveEdges)
   const atomicDirectEdges = buildAtomicDirectRequiresEdges(landscape)
   const reverseAtomicDirectEdges = buildReverseEdges(atomicDirectEdges)
+  const hasEffectivePath = createPathChecker(effectiveEdges)
+  const hasReverseEffectivePath = createPathChecker(reverseEffectiveEdges)
+  const hasAtomicDirectPath = createPathChecker(atomicDirectEdges)
+  const hasReverseAtomicDirectPath = createPathChecker(reverseAtomicDirectEdges)
   const terminalAutonomyGoals = profile.terminalAutonomyClusterIds
     .flatMap((clusterId) => goalById.get(clusterId)?.contains ?? [])
     .map((goalId) => goalById.get(goalId))
@@ -1977,14 +2036,14 @@ function evaluateRouteProfile(landscape: LearningLandscape, profile: RouteProfil
     : terminalAutonomyGoals.map((goal) => goal.id)
 
   const missingEffectiveMotivation = selectedGoals.filter((goal) =>
-    !profile.motivationAnchorGoalIds.some((anchorId) => hasPath(goal.id, anchorId, effectiveEdges)))
+    !profile.motivationAnchorGoalIds.some((anchorId) => hasEffectivePath(goal.id, anchorId)))
   const missingEffectiveTerminal = selectedGoals.filter((goal) =>
-    !terminalGoalIds.some((terminalId) => hasPath(goal.id, terminalId, reverseEffectiveEdges)))
+    !terminalGoalIds.some((terminalId) => hasReverseEffectivePath(goal.id, terminalId)))
 
   const missingDirectMotivation = selectedGoals.filter((goal) =>
-    !profile.motivationAnchorGoalIds.some((anchorId) => hasPath(goal.id, anchorId, atomicDirectEdges)))
+    !profile.motivationAnchorGoalIds.some((anchorId) => hasAtomicDirectPath(goal.id, anchorId)))
   const missingDirectTerminal = selectedGoals.filter((goal) =>
-    !terminalGoalIds.some((terminalId) => hasPath(goal.id, terminalId, reverseAtomicDirectEdges)))
+    !terminalGoalIds.some((terminalId) => hasReverseAtomicDirectPath(goal.id, terminalId)))
 
   const scopedClusterRequires = landscape.goals.filter((goal) =>
     !isAtomicGoal(goal) && profile.clusterSelector(goal) && (goal.requires?.length ?? 0) > 0)
@@ -3160,46 +3219,62 @@ function hasDirectSourceBackedJurisdictionEvidence(
   return goal.evidence.some((evidence) => isSourceBackedJurisdictionEvidence(evidence, jurisdiction))
 }
 
-function hasReviewedRequiresClosureSurrogateEvidence(
+function createCoverageEvidenceChecker(
   report: CoverageReport,
-  goal: CoverageGoalReport,
   jurisdiction: string,
   surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
-  visitedGoalIds: Set<string> = new Set(),
-): boolean {
-  const entries = surrogateEntriesByKey.get(surrogateEvidenceKey(report.landscapeId, goal.goalId, jurisdiction)) ?? []
-  if (entries.length === 0) return false
-
+): {
+  hasCoverageBackedJurisdictionEvidence: (goal: CoverageGoalReport) => boolean
+  hasReviewedRequiresClosureSurrogateEvidence: (goal: CoverageGoalReport) => boolean
+} {
   const goalById = new Map(report.goals.map((candidate) => [candidate.goalId, candidate]))
+  const coverageMemo = new Map<string, boolean>()
+  const surrogateMemo = new Map<string, boolean>()
 
-  return entries.some((entry) => {
-    const requiredByGoalId = entry.requiredByGoalId!
-    const requiredByGoal = goalById.get(requiredByGoalId)
-    if (!requiredByGoal || visitedGoalIds.has(requiredByGoalId)) return false
-    return goal.evidence.some((evidence) =>
-      evidence.kind === 'requires-closure'
-      && evidence.dimension === 'jurisdiction'
-      && evidence.value === jurisdiction
-      && evidence.source === `required by ${requiredByGoalId}`)
-      && hasCoverageBackedJurisdictionEvidence(
-        report,
-        requiredByGoal,
-        jurisdiction,
-        surrogateEntriesByKey,
-        new Set([...visitedGoalIds, goal.goalId]),
-      )
-  })
-}
+  const hasReviewedRequiresClosureSurrogateEvidence = (
+    goal: CoverageGoalReport,
+    visitedGoalIds: Set<string> = new Set(),
+  ): boolean => {
+    const cached = surrogateMemo.get(goal.goalId)
+    if (cached !== undefined) return cached
 
-function hasCoverageBackedJurisdictionEvidence(
-  report: CoverageReport,
-  goal: CoverageGoalReport,
-  jurisdiction: string,
-  surrogateEntriesByKey: Map<string, SurrogateEvidenceEntry[]>,
-  visitedGoalIds: Set<string> = new Set(),
-): boolean {
-  return hasDirectSourceBackedJurisdictionEvidence(goal, jurisdiction)
-    || hasReviewedRequiresClosureSurrogateEvidence(report, goal, jurisdiction, surrogateEntriesByKey, visitedGoalIds)
+    const entries = surrogateEntriesByKey.get(surrogateEvidenceKey(report.landscapeId, goal.goalId, jurisdiction)) ?? []
+    const result = entries.some((entry) => {
+      const requiredByGoalId = entry.requiredByGoalId!
+      const requiredByGoal = goalById.get(requiredByGoalId)
+      if (!requiredByGoal || visitedGoalIds.has(requiredByGoalId)) return false
+      return goal.evidence.some((evidence) =>
+        evidence.kind === 'requires-closure'
+        && evidence.dimension === 'jurisdiction'
+        && evidence.value === jurisdiction
+        && evidence.source === `required by ${requiredByGoalId}`)
+        && hasCoverageBackedJurisdictionEvidence(
+          requiredByGoal,
+          new Set([...visitedGoalIds, goal.goalId]),
+        )
+    })
+
+    surrogateMemo.set(goal.goalId, result)
+    return result
+  }
+
+  const hasCoverageBackedJurisdictionEvidence = (
+    goal: CoverageGoalReport,
+    visitedGoalIds: Set<string> = new Set(),
+  ): boolean => {
+    const cached = coverageMemo.get(goal.goalId)
+    if (cached !== undefined) return cached
+
+    const result = hasDirectSourceBackedJurisdictionEvidence(goal, jurisdiction)
+      || hasReviewedRequiresClosureSurrogateEvidence(goal, visitedGoalIds)
+    coverageMemo.set(goal.goalId, result)
+    return result
+  }
+
+  return {
+    hasCoverageBackedJurisdictionEvidence,
+    hasReviewedRequiresClosureSurrogateEvidence,
+  }
 }
 
 const compositionViewDirectoryByLandscapeId = new Map<string, string>([
@@ -3313,7 +3388,9 @@ function normalizeJurisdiction(value: unknown): string | null {
   return Object.prototype.hasOwnProperty.call(JURISDICTION_LABELS, prefixed) ? prefixed : null
 }
 
+let sourceLandscapeJurisdictionByIdCache: Map<string, string> | null = null
 function readSourceLandscapeJurisdictionById(): Map<string, string> {
+  if (sourceLandscapeJurisdictionByIdCache) return sourceLandscapeJurisdictionByIdCache
   if (!existsSync(sourceLandscapeRegistryPath)) return new Map<string, string>()
   const registry = loadJson<{ entries?: SourceLandscapeRegistryEntry[] }>(sourceLandscapeRegistryPath)
   const result = new Map<string, string>()
@@ -3322,10 +3399,13 @@ function readSourceLandscapeJurisdictionById(): Map<string, string> {
     const jurisdiction = normalizeJurisdiction(entry.jurisdiction)
     if (jurisdiction) result.set(entry.landscapeId, jurisdiction)
   }
+  sourceLandscapeJurisdictionByIdCache = result
   return result
 }
 
+let sourceLandscapeRegistryEntriesByIdCache: Map<string, SourceLandscapeRegistryEntry> | null = null
 function readSourceLandscapeRegistryEntriesById(): Map<string, SourceLandscapeRegistryEntry> {
+  if (sourceLandscapeRegistryEntriesByIdCache) return sourceLandscapeRegistryEntriesByIdCache
   if (!existsSync(sourceLandscapeRegistryPath)) return new Map<string, SourceLandscapeRegistryEntry>()
   const registry = loadJson<{ entries?: SourceLandscapeRegistryEntry[] }>(sourceLandscapeRegistryPath)
   const result = new Map<string, SourceLandscapeRegistryEntry>()
@@ -3333,12 +3413,19 @@ function readSourceLandscapeRegistryEntriesById(): Map<string, SourceLandscapeRe
     if (typeof entry.landscapeId !== 'string') continue
     result.set(entry.landscapeId, entry)
   }
+  sourceLandscapeRegistryEntriesByIdCache = result
   return result
 }
 
+const sourceExtractionGoalIdsByAtomicOnlyCache = new Map<boolean, Map<string, Set<string>>>()
 function readSourceExtractionGoalIdsByLandscapeId(atomicOnly: boolean): Map<string, Set<string>> {
+  const cached = sourceExtractionGoalIdsByAtomicOnlyCache.get(atomicOnly)
+  if (cached) return cached
   const result = new Map<string, Set<string>>()
-  if (!existsSync(sourceExtractionRoot)) return result
+  if (!existsSync(sourceExtractionRoot)) {
+    sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
+    return result
+  }
 
   const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
   files.forEach((file) => {
@@ -3357,10 +3444,13 @@ function readSourceExtractionGoalIdsByLandscapeId(atomicOnly: boolean): Map<stri
     }
   })
 
+  sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
   return result
 }
 
+let extractedSourceAtomicGoalIdsByLandscapeIdCache: Map<string, Set<string>> | null = null
 function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string>> {
+  if (extractedSourceAtomicGoalIdsByLandscapeIdCache) return extractedSourceAtomicGoalIdsByLandscapeIdCache
   const result = readSourceExtractionGoalIdsByLandscapeId(true)
   const allSourceGoalIdsByLandscapeId = readExtractedSourceGoalIdsByLandscapeId()
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
@@ -3386,10 +3476,13 @@ function readExtractedSourceAtomicGoalIdsByLandscapeId(): Map<string, Set<string
       // prevent the dashboard from reporting the coverage data that is still usable.
     }
   }
+  extractedSourceAtomicGoalIdsByLandscapeIdCache = result
   return result
 }
 
+let extractedSourceGoalIdsByLandscapeIdCache: Map<string, Set<string>> | null = null
 function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
+  if (extractedSourceGoalIdsByLandscapeIdCache) return extractedSourceGoalIdsByLandscapeIdCache
   const result = readSourceExtractionGoalIdsByLandscapeId(false)
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
   for (const [landscapeId, entry] of registryEntriesById.entries()) {
@@ -3412,10 +3505,13 @@ function readExtractedSourceGoalIdsByLandscapeId(): Map<string, Set<string>> {
       // prevent the dashboard from reporting the coverage data that is still usable.
     }
   }
+  extractedSourceGoalIdsByLandscapeIdCache = result
   return result
 }
 
+let sourceGoalMembershipByLandscapeIdCache: Map<string, Set<string>> | null = null
 function readSourceGoalMembershipByLandscapeId(): Map<string, Set<string>> {
+  if (sourceGoalMembershipByLandscapeIdCache) return sourceGoalMembershipByLandscapeIdCache
   if (!existsSync(sourceGoalMembershipRegistryPath)) return new Map<string, Set<string>>()
   const registry = loadJson<SourceGoalMembershipRegistry>(sourceGoalMembershipRegistryPath)
   const result = new Map<string, Set<string>>()
@@ -3423,10 +3519,13 @@ function readSourceGoalMembershipByLandscapeId(): Map<string, Set<string>> {
     if (typeof entry.landscapeId !== 'string' || !Array.isArray(entry.goalIds)) continue
     result.set(entry.landscapeId, new Set(entry.goalIds.filter((goalId) => typeof goalId === 'string' && goalId.trim())))
   }
+  sourceGoalMembershipByLandscapeIdCache = result
   return result
 }
 
+let sourceGoalClosureByLandscapeIdCache: Map<string, Map<string, Set<string>>> | null = null
 function readSourceGoalClosureByLandscapeId(): Map<string, Map<string, Set<string>>> {
+  if (sourceGoalClosureByLandscapeIdCache) return sourceGoalClosureByLandscapeIdCache
   if (!existsSync(sourceGoalClosureRegistryPath)) return new Map<string, Map<string, Set<string>>>()
   const registry = loadJson<SourceGoalClosureRegistry>(sourceGoalClosureRegistryPath)
   const result = new Map<string, Map<string, Set<string>>>()
@@ -3441,15 +3540,22 @@ function readSourceGoalClosureByLandscapeId(): Map<string, Map<string, Set<strin
     })
     result.set(entry.landscapeId, closures)
   }
+  sourceGoalClosureByLandscapeIdCache = result
   return result
 }
 
+let allGoalMappingFilesCache: Array<GoalMappingFile & { file: string }> | null = null
 function readAllGoalMappingFiles(): Array<GoalMappingFile & { file: string }> {
+  if (allGoalMappingFilesCache) return allGoalMappingFilesCache
   const mappingRoot = resolve(repoRoot, 'curricula/DE')
-  if (!existsSync(mappingRoot)) return []
-  return collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
+  if (!existsSync(mappingRoot)) {
+    allGoalMappingFilesCache = []
+    return allGoalMappingFilesCache
+  }
+  allGoalMappingFilesCache = collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
     .filter((file) => file.replace(/\\/g, '/').includes('/mapping/'))
     .map((file) => ({ ...loadJson<GoalMappingFile>(file), file: toRepoPath(file) }))
+  return allGoalMappingFilesCache
 }
 
 function readGoalMappingFilesForReport(report: CoverageReport): Array<GoalMappingFile & { file: string }> {
@@ -4405,15 +4511,16 @@ function readJurisdictionCoverageByLandscapeId(
         .filter((goal) => sourceCoverageAtomicGoalIds.has(goal.goalId))
       const visibleAtomicGoals = visibleAtomicGoalReports.length
       const visibleClusterGoals = Math.max(0, projection.visibleGoals - visibleAtomicGoals)
+      const coverageEvidence = createCoverageEvidenceChecker(report, projection.value, surrogateEntriesByKey)
       const sourceBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
-        hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey)).length
+        coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)).length
       const surrogateBackedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
         !hasDirectSourceBackedJurisdictionEvidence(goal, projection.value)
-        && hasReviewedRequiresClosureSurrogateEvidence(report, goal, projection.value, surrogateEntriesByKey)).length
+        && coverageEvidence.hasReviewedRequiresClosureSurrogateEvidence(goal)).length
       const unsupportedAssignedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
-        !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey)).length
+        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)).length
       const partialSourceLinkedAtomicGoals = visibleAtomicGoalReports.filter((goal) =>
-        !hasCoverageBackedJurisdictionEvidence(report, goal, projection.value, surrogateEntriesByKey)
+        !coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal)
         && isPartialSourceLinkedJurisdictionEvidence(goal.evidence, projection.value)).length
       const reverseSourceCoverage = reverseSourceCoverageByJurisdiction.get(projection.value) ?? {
         sourceAtomicGoals: 0,

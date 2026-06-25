@@ -15,6 +15,7 @@ interface Args {
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const appRoot = resolve(scriptDir, '..')
+const npmCommand = process.platform === 'win32' ? 'cmd.exe' : 'npm'
 
 function usage(): string {
   return `Usage:
@@ -60,7 +61,8 @@ function runReview(configPath: string, mode: Mode): void {
   const script = mode === 'report'
     ? 'quality:memory-card-review:report'
     : 'quality:memory-card-review:check'
-  execFileSync('npm', ['run', script, '--', `--config=${configPath}`], {
+  const args = ['run', script, '--', `--config=${configPath}`]
+  execFileSync(npmCommand, process.platform === 'win32' ? ['/d', '/s', '/c', 'npm', ...args] : args, {
     cwd: appRoot,
     stdio: 'inherit',
   })

@@ -208,7 +208,8 @@ The currently required route profiles are:
 - scope: `Sekundarstufe I`
 - motivation anchor: `Warum Mathematik? – Entdecken, Muster & Alltag`
 - terminal autonomy target: `Sek-I-Abschlussaufgaben Mathematik`
-- terminal autonomy cluster: `Übungen Sekundarstufe I`
+- learner-facing terminal practice: `Prüfungen Jahrgangsstufe 5` through `Prüfungen Jahrgangsstufe 10`, each placed inside the matching year or year-band structure and containing individual exam-task nodes
+- stage-level capstone: `Sek-I-Abschlussaufgaben Mathematik`
 
 - `canonical-math-sek2`
 - landscape: `Mathematik (Gymnasium, DE)`

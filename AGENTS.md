@@ -267,6 +267,10 @@ For phase-based school curricula, ordinary didactic routes should normally end i
 Practical modeling rule:
 
 * Create local autonomy clusters such as `Übungen E-Phase`, `Übungen Q1`, `Übungen Q2`, `Übungen Q3`, `Übungen Q4` where appropriate.
+* Initial rollout scope: canonical Gymnasium Mathematik, Sekundarstufe I. In that scope, model local autonomy at the year level: each visible year or year-band scope must contain a `Prüfungen Jahrgangsstufe <n>` folder inside the respective year/year-band structure, and the actual assessment tasks live as individual exam nodes below that folder.
+* Do not place ordinary Sek-I year practice for canonical Gymnasium Mathematik as one separate `Übungen Sekundarstufe I` learner-facing branch. A stage-level Sek-I capstone may remain as an additional integrative assessment, but it must not substitute the year-level exam folders.
+* If an old aggregate Sek-I practice cluster is retained only for compatibility, keep it out of learner-facing composition views and mark it with `extendedData.applicabilityProjection = "excluded"` so child-union applicability does not project it as a visible branch.
+* Other Sek-I subjects or school forms may adopt the same pattern after their own learner-facing composition views and assessment semantics have been reviewed; do not force the Mathematik rollout rule onto them by default.
 * If the curriculum has cross-phase process competencies, a separate branch such as `Übungen Prozesskompetenzen` can be appropriate.
 * Keep global Abitur/final-exam branches **separate** from these local exercise branches.
 * Do not use the global final-exam branch as the only terminal target for ordinary phase goals.
@@ -274,6 +278,7 @@ Practical modeling rule:
 Interpretation:
 
 * Local exercise branches model ordinary klausur-style self-sufficiency inside a phase.
+* In canonical Gymnasium Mathematik Sek I, year exam folders make it possible to verify that each learning route ends in a task appropriate to the learner's current year, instead of only in a coarse stage-level practice bucket.
 * Global final-exam branches model an additional assessment layer with different selection and assessment semantics.
 * Mature learner-facing landscapes should aim for atomic route coverage from motivation anchors through ordinary atomic goals toward one or more local terminal autonomy goals.
 

@@ -45,10 +45,30 @@ interface MathScopeMatch {
 }
 
 const CANONICAL_DE_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const CANONICAL_MATH_MODULE_ID = 'c01b1ce9-a667-4a46-b251-ec33ae602b15'
 const CANONICAL_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
-const CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
+const CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID = '30b62966-80d0-45f1-bdd9-b4fb815c7111'
+const CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID = 'bfc4fe23-bfa4-4836-9bd2-793f4305d682'
 const CANONICAL_MATH_FALLBACK_POLICY_PATH = 'curricula/DE/Gymnasium/provenance/canonical-math-composition-fallback-policy.json'
 const CANONICAL_DE_MATH_VIEW_ID_PATTERN = /^de-de-gym-(?:seki|sekii-math-(?:gk|lk)|math-(?:gk|lk))$/u
+const CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR: Record<string, string> = {
+  '5': '81c8da58-9258-488e-9ab8-48500ab31652',
+  '6': '7a2a5706-aff4-4fd0-b092-1779d6ecbc1f',
+  '7': '811d6d09-130e-47b2-aba8-a5c401fe3251',
+  '8': '5fb3ee61-059c-47f4-8c6f-7285d7982a41',
+  '9': 'f6c9c2b8-3dbd-4839-972f-c60f33c44b63',
+  '10': 'cb20dd6b-c4ff-4a1b-9636-3b3d6ea86aa8',
+}
+const CANONICAL_MATH_SEK1_YEAR_ANCHOR_IDS_BY_YEAR: Record<string, string> = {
+  '5': '6377e1e3-8c26-4cf1-997d-8802690d74dd',
+  '6': '8f7bb79b-f014-4bb6-8dce-7e3f1c92e893',
+  '7': '5a7095a2-2b3a-48bf-9536-eca79ee5ff8c',
+  '8': 'd64516eb-9dd2-4808-91d0-0040ccdc281f',
+  '9': '902de188-6f27-47c2-ace1-9b2c5771fde8',
+  '10': '845f2a2c-e6aa-4991-8a12-645b8a9f70fe',
+}
+const CANONICAL_MATH_SEK1_G8_EXAM_YEARS = ['5', '6', '7', '8', '9'] as const
+const CANONICAL_MATH_SEK1_G9_EXAM_YEARS = ['5', '6', '7', '8', '9', '10'] as const
 const NAKED_PHASE_LABEL_PATTERN = /^(?:E-Phase|Q[1-4])$/u
 const PHASE_SUPPORT_LABEL_PATTERN = /^(?:Lernkarten|Flashcards|Übungen|Uebungen|Practice(?: Set)?)\s*[-–]\s*(?:E-Phase|Q[1-4])$/u
 const REDUNDANT_STAGE_SUFFIX_PATTERN = /\s+\((Sek I|Sek II)\)$/u
@@ -475,21 +495,204 @@ const collectSourceGoalIds = (rootNodes: CompiledCompositionPreviewNode[]): Set<
   return sourceGoalIds
 }
 
-const collectCanonicalMathSek1RouteEndpointFindings = (
+const isRecord = (value: unknown): value is Record<string, unknown> => (
+  typeof value === 'object' && value !== null && !Array.isArray(value)
+)
+
+const isCanonicalMathSek1LearnerScope = (view: ReturnType<typeof normalizeCompositionView>): boolean => (
+  view.landscapeId === CANONICAL_DE_MATH_ID
+  && (view.scope.stage === 'SekI' || view.scope.stage === 'CrossStage')
+)
+
+const expectedCanonicalMathSek1ExamYears = (view: ReturnType<typeof normalizeCompositionView>): readonly string[] => (
+  view.scope.durationModel === 'G8'
+    ? CANONICAL_MATH_SEK1_G8_EXAM_YEARS
+    : CANONICAL_MATH_SEK1_G9_EXAM_YEARS
+)
+
+const collectCanonicalMathSek1ExamStructureFindings = (
+  landscape: CanonicalAuthoringLandscape,
+): CompositionViewFinding[] => {
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const findings: CompositionViewFinding[] = []
+  const allTaskGoalIds: string[] = []
+
+  const moduleGoal = goalById.get(CANONICAL_MATH_MODULE_ID)
+  if ((moduleGoal?.contains ?? []).includes(CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID)) {
+    findings.push({
+      code: 'CPV-212',
+      severity: 'error',
+      goalId: CANONICAL_MATH_MODULE_ID,
+      message: 'Kanonische Gymnasium-Mathematik darf den alten Sek-I-Übungscluster nicht mehr als learner-facing Hauptzweig enthalten.',
+    })
+  }
+
+  Object.entries(CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR).forEach(([year, folderId]) => {
+    const folder = goalById.get(folderId)
+    const expectedTitle = `Prüfungen Jahrgangsstufe ${year}`
+    if (!folder) {
+      findings.push({
+        code: 'CPV-212',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Prüfungsordner für Jahrgangsstufe ${year} fehlt im kanonischen Mathematikgraphen.`,
+      })
+      return
+    }
+
+    if (folder.title !== expectedTitle) {
+      findings.push({
+        code: 'CPV-212',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Prüfungsordner für Jahrgangsstufe ${year} hat unerwarteten Titel: ${folder.title}`,
+      })
+    }
+
+    if (folder.type !== 'cluster' || folder.contains.length === 0) {
+      findings.push({
+        code: 'CPV-212',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Prüfungsordner für Jahrgangsstufe ${year} muss ein Cluster mit einzelnen Aufgabenknoten sein.`,
+      })
+    }
+
+    if (folder.requires.length > 0) {
+      findings.push({
+        code: 'CPV-212',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Prüfungsordner für Jahrgangsstufe ${year} darf keine direkten prerequisites tragen; diese gehören auf die Aufgabenknoten.`,
+      })
+    }
+
+    const yearAnchorId = CANONICAL_MATH_SEK1_YEAR_ANCHOR_IDS_BY_YEAR[year]
+    const yearAnchor = goalById.get(yearAnchorId)
+    if (!(yearAnchor?.contains ?? []).includes(folderId)) {
+      findings.push({
+        code: 'CPV-212',
+        severity: 'error',
+        goalId: yearAnchorId,
+        message: `Kanonischer Jahrgangsanker ${year} enthält den Prüfungsordner ${folderId} nicht.`,
+      })
+    }
+
+    folder.contains.forEach((taskId) => {
+      const task = goalById.get(taskId)
+      if (!task) {
+        findings.push({
+          code: 'CPV-212',
+          severity: 'error',
+          goalId: taskId,
+          message: `Sek-I-Prüfungsordner ${expectedTitle} enthält fehlenden Aufgabenknoten ${taskId}.`,
+        })
+        return
+      }
+
+      allTaskGoalIds.push(taskId)
+      if (task.type !== 'atomic' || task.contains.length > 0) {
+        findings.push({
+          code: 'CPV-212',
+          severity: 'error',
+          goalId: taskId,
+          message: `Sek-I-Prüfungsaufgabe ${taskId} muss ein atomarer Leaf-Knoten sein.`,
+        })
+      }
+
+      if (task.nodeKind !== 'exam') {
+        findings.push({
+          code: 'CPV-212',
+          severity: 'error',
+          goalId: taskId,
+          message: `Sek-I-Prüfungsaufgabe ${taskId} muss nodeKind="exam" tragen.`,
+        })
+      }
+
+      const examData = task.examData
+      if (
+        !isRecord(examData)
+        || typeof examData.taskContent !== 'string'
+        || examData.taskContent.trim() === ''
+        || typeof examData.solutionContent !== 'string'
+        || examData.solutionContent.trim() === ''
+        || !isRecord(examData.scoring)
+      ) {
+        findings.push({
+          code: 'CPV-212',
+          severity: 'error',
+          goalId: taskId,
+          message: `Sek-I-Prüfungsaufgabe ${taskId} braucht examData mit taskContent, solutionContent und scoring.`,
+        })
+      }
+
+      task.requires.forEach((prerequisiteId) => {
+        const prerequisite = goalById.get(prerequisiteId)
+        if (!prerequisite) {
+          findings.push({
+            code: 'CPV-212',
+            severity: 'error',
+            goalId: taskId,
+            message: `Sek-I-Prüfungsaufgabe ${taskId} hat fehlendes prerequisite ${prerequisiteId}.`,
+          })
+          return
+        }
+        if (prerequisite.contains.length > 0) {
+          findings.push({
+            code: 'CPV-212',
+            severity: 'error',
+            goalId: taskId,
+            message: `Sek-I-Prüfungsaufgabe ${taskId} darf kein Cluster-prerequisite verwenden: ${prerequisiteId}.`,
+          })
+        }
+      })
+    })
+  })
+
+  const duplicatedTaskGoalIds = allTaskGoalIds
+    .filter((taskId, index) => allTaskGoalIds.indexOf(taskId) !== index)
+  if (duplicatedTaskGoalIds.length > 0) {
+    findings.push({
+      code: 'CPV-212',
+      severity: 'error',
+      goalId: duplicatedTaskGoalIds[0],
+      message: `Sek-I-Prüfungsaufgaben sind mehrfach unter Jahrgangsordnern eingehängt: ${Array.from(new Set(duplicatedTaskGoalIds)).join(', ')}`,
+    })
+  }
+
+  const capstone = goalById.get(CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID)
+  if (!capstone) {
+    findings.push({
+      code: 'CPV-212',
+      severity: 'error',
+      goalId: CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID,
+      message: 'Sek-I-Abschlussaufgaben Mathematik fehlen im kanonischen Mathematikgraphen.',
+    })
+  } else {
+    allTaskGoalIds.forEach((taskId) => {
+      if (!capstone.requires.includes(taskId)) {
+        findings.push({
+          code: 'CPV-212',
+          severity: 'error',
+          goalId: CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID,
+          message: `Sek-I-Capstone muss die einzelne Jahrgangsprüfungsaufgabe ${taskId} als prerequisite führen.`,
+        })
+      }
+    })
+  }
+
+  return findings
+}
+
+const collectCanonicalMathSek1ExamVisibilityFindings = (
   view: ReturnType<typeof normalizeCompositionView>,
   landscape: CanonicalAuthoringLandscape | null,
   rootNodes: CompiledCompositionPreviewNode[],
 ): CompositionViewFinding[] => {
-  if (view.landscapeId !== CANONICAL_DE_MATH_ID) return []
-  if (view.scope.stage !== 'SekI' && view.scope.stage !== 'CrossStage') return []
+  if (!isCanonicalMathSek1LearnerScope(view)) return []
   if (!landscape) return []
 
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-  const practiceGoalIds = (goalById.get(CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID)?.contains ?? [])
-    .filter((goalId) => {
-      const goal = goalById.get(goalId)
-      return goal && goal.contains.length === 0
-    })
   const visibleGoalIds = collectSourceGoalIds(rootNodes)
   const findings: CompositionViewFinding[] = []
 
@@ -502,15 +705,48 @@ const collectCanonicalMathSek1RouteEndpointFindings = (
     })
   }
 
-  const missingPracticeGoalIds = practiceGoalIds.filter((goalId) => !visibleGoalIds.has(goalId))
-  if (missingPracticeGoalIds.length > 0) {
+  if (visibleGoalIds.has(CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID)) {
+    findings.push({
+      code: 'CPV-213',
+      severity: 'error',
+      goalId: CANONICAL_MATH_SEK1_LEGACY_PRACTICE_CLUSTER_ID,
+      message: 'Sek-I-Route verwendet noch den alten learner-facing Sammelzweig `Übungen Sekundarstufe I`.',
+    })
+  }
+
+  if (!visibleGoalIds.has(CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID)) {
     findings.push({
       code: 'CPV-211',
       severity: 'error',
-      goalId: CANONICAL_MATH_SEK1_PRACTICE_CLUSTER_ID,
-      message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingPracticeGoalIds.length}/${practiceGoalIds.length} Übungs-/Abschlussziel(e) fehlen in der Composition View.`,
+      goalId: CANONICAL_MATH_SEK1_CAPSTONE_GOAL_ID,
+      message: 'Sek-I-Route ist learner-facing nicht vollständig: Sek-I-Abschlussaufgaben Mathematik fehlen in der Composition View.',
     })
   }
+
+  expectedCanonicalMathSek1ExamYears(view).forEach((year) => {
+    const folderId = CANONICAL_MATH_SEK1_EXAM_FOLDER_IDS_BY_YEAR[year]
+    const folder = goalById.get(folderId)
+    if (!visibleGoalIds.has(folderId)) {
+      findings.push({
+        code: 'CPV-211',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Route ist learner-facing nicht vollständig: Prüfungsordner für Jahrgangsstufe ${year} fehlt in der Composition View.`,
+      })
+      return
+    }
+
+    const missingTaskGoalIds = (folder?.contains ?? [])
+      .filter((taskId) => !visibleGoalIds.has(taskId))
+    if (missingTaskGoalIds.length > 0) {
+      findings.push({
+        code: 'CPV-211',
+        severity: 'error',
+        goalId: folderId,
+        message: `Sek-I-Route ist learner-facing nicht vollständig: ${missingTaskGoalIds.length} Aufgabenknoten unter Prüfungen Jahrgangsstufe ${year} fehlen in der Composition View.`,
+      })
+    }
+  })
 
   return findings
 }
@@ -574,6 +810,18 @@ const canonicalLandscapeUniverseById = new Map(
 const normalizedViews: ReturnType<typeof normalizeCompositionView>[] = []
 
 const findings: CompositionViewValidationFinding[] = []
+const canonicalMathMatch = canonicalByLandscapeId.get(CANONICAL_DE_MATH_ID)
+
+if (canonicalMathMatch) {
+  collectCanonicalMathSek1ExamStructureFindings(canonicalMathMatch.landscape).forEach((finding) => {
+    findings.push({
+      ...finding,
+      viewId: '(canonical-math-sek1-exam-structure)',
+      viewPath: canonicalMathMatch.path,
+      landscapeId: CANONICAL_DE_MATH_ID,
+    })
+  })
+}
 
 for (const viewPath of compositionViewFiles) {
   try {
@@ -592,7 +840,7 @@ for (const viewPath of compositionViewFiles) {
         && CANONICAL_DE_MATH_VIEW_ID_PATTERN.test(normalizedView.viewId)
         ? collectCanonicalMathTreeFindings(result.compiledRootNodes)
         : []),
-      ...collectCanonicalMathSek1RouteEndpointFindings(
+      ...collectCanonicalMathSek1ExamVisibilityFindings(
         normalizedView,
         canonicalMatch?.landscape ?? null,
         result.compiledRootNodes,

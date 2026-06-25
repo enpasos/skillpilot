@@ -172,7 +172,14 @@ const collectFiles = (directory: string, predicate: (path: string) => boolean, t
   return target
 }
 
-const repoPath = (absolutePath: string) => absolutePath.replace(`${repoRoot}/`, '')
+const normalizePath = (path: string) => path.replace(/\\/gu, '/')
+const normalizedRepoRoot = normalizePath(repoRoot)
+const repoPath = (absolutePath: string) => {
+  const normalizedPath = normalizePath(absolutePath)
+  return normalizedPath.startsWith(`${normalizedRepoRoot}/`)
+    ? normalizedPath.slice(normalizedRepoRoot.length + 1)
+    : normalizedPath
+}
 
 function pushGeneratedMarkdownNotice(lines: string[]): void {
   lines.push('> Generated artifact. Do not edit manually.')
