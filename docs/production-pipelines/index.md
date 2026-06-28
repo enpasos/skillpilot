@@ -8,6 +8,8 @@ This page is the entry point for repeatable production and export pipelines. Kee
   Pipeline notes for curriculum graph production.
 - [Exam Example](exam-example.md)
   Pipeline notes for exam example production.
+- [Sek-I Mathematics Exam](seki-math-exam.md)
+  Reviewed production pipeline for Gymnasium mathematics Sek-I year-level exam tasks.
 - [MEM/FWU Roundtrip Pipeline](mem-fwu-roundtrip.md)
   Operational pipeline for MEM/FWU roundtrip artifacts.
 - [SkillPilot Subject Export Package](skillpilot-subject-export-package.md)
