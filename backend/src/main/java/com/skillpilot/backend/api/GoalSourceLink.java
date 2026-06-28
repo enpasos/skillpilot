@@ -9,5 +9,9 @@ public record GoalSourceLink(
         java.util.List<String> sections,
         String description,
         String lang,
-        String license) {
+        String license,
+        String skillpilotId,
+        String role,
+        String altText,
+        String reviewStatus) {
 }

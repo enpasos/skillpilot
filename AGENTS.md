@@ -382,6 +382,31 @@ Interpretation:
 * Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, configured learner-facing visibility for required memory nodes, and no unresolved/removal debt in active decks. It upgrades a curriculum from core-ready `M5` to memory-layer-ready `M6`.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 
+### 7.3 Atomic goal visualizations
+
+Atomic learning goals may optionally carry one or more didactic image references for cockpit and GPT use.
+
+Rule:
+
+* Store visualization references directly on the goal in canonical `resourceLinks`, not in a separate learner-facing branch or custom top-level image field.
+* Use `type: "goal-visualization"`, `resourceType: "image"`, and `skillpilotId` equal to the containing goal's `id`.
+* Public URLs should be root-relative under `/assets/goal-visualizations/...`; AI endpoints rewrite them to absolute `/ai-assets/...` URLs.
+* Image filenames should be the same SkillPilot ID plus image extension, using `<skillpilotId>.<ext>`, so copied assets remain self-identifying without creating Windows path-length problems.
+* Keep source image and prompt metadata under `curricula/DE/Gymnasium/visualizations/<subject>/<skillpilotId>/`.
+* For Nano Banana Pro automation, prefer `npm --prefix app run visualization:generate:nano-banana -- <goal>` with `GEMINI_API_KEY` or `GOOGLE_API_KEY` set; this generates the image, writes trace files under `tmp/`, imports the asset, and updates the canonical JSON.
+* For manual providers, use `npm --prefix app run visualization:prepare -- <goal>` before generation and `npm --prefix app run visualization:import -- <goal> <file>` after download instead of hand-building paths, filenames, or JSON links.
+* Provider prompts must not include SkillPilot IDs; IDs belong in filenames, directories, JSON links, and prompt metadata only. In provider-facing constraints, prefer neutral phrases such as `technical IDs` instead of naming SkillPilot.
+* Record reviewed production batches under `curricula/DE/Gymnasium/quality/goal-visualization-review/`, including rejected/regenerated attempts and visible mathematical risks.
+* Generated images are never accepted automatically. Treat them as technical imports until a visual fachlicher Review has checked calculations, notation, labels, geometry, age fit, text readability, and visible artifacts.
+* Reject or regenerate any visualization with a wrong or misleading value, marked digit, angle, coordinate, side property, unit conversion, sign rule, counterexample, or notation. Text that is correct does not rescue a misleading drawing.
+* If repeated Nano Banana Pro attempts for one goal remain fachlich wrong, remove the active `goal-visualization` link and published asset copies, mark the goal as `deferred_provider_limitation` in the review ledger, and revisit when the provider improves. Do not substitute a hand-drawn SVG in this cartoon visualization lane.
+* A visualization supports orientation only. It is not source evidence, not an assessment task, and not a substitute for explanation or practice.
+* Before broad rollout, review every image for mathematical correctness, age fit, text readability, accessibility alt text, and licensing/copyright risk.
+
+Reference:
+
+* `docs/concept/curriculum-graph/atomic-goal-visualizations.md`
+
 ---
 
 ## 8. Ideas for future work (for agents and humans)

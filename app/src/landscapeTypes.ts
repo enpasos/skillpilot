@@ -96,6 +96,10 @@ export interface ResourceLink {
   description?: string
   lang?: string
   license?: string
+  skillpilotId?: string
+  role?: string
+  altText?: string
+  reviewStatus?: string
 }
 
 export interface ExperimentData {

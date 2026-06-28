@@ -1,0 +1,236 @@
+# Atomic Goal Visualizations
+
+This document defines the production and integration convention for visualizing atomic learning goals in SkillPilot. Initial rollout scope: canonical `DE Gymnasium Mathematik`.
+
+## Purpose
+
+Atomic goal visualizations are compact didactic images that help learners recognize the core idea of one atomic learning goal. They are not tasks, solutions, or curriculum evidence. A visualization may support orientation in the cockpit and in GPT-based coaching, but the graph goal remains the source of truth.
+
+## Canonical JSON Format
+
+If a learning goal has an approved or pilot visualization, the reference is stored directly on that goal in canonical `resourceLinks`.
+
+Required fields for a goal visualization link:
+
+```json
+{
+  "type": "goal-visualization",
+  "resourceType": "image",
+  "role": "primary",
+  "skillpilotId": "<same value as goal.id>",
+  "title": "Visualisierung: <goal title>",
+  "url": "/assets/goal-visualizations/<subject>/<skillpilotId>/<skillpilotId>.png",
+  "provider": "<generator or production provider>",
+  "description": "<short caption>",
+  "altText": "<screen-reader description>",
+  "lang": "de",
+  "license": "<asset/license note>",
+  "reviewStatus": "pilot"
+}
+```
+
+Rules:
+
+- `skillpilotId` must equal the containing goal's `id`.
+- Use `type: "goal-visualization"` and `resourceType: "image"`; do not introduce another top-level goal field for images.
+- The public `url` must be root-relative under `/assets/goal-visualizations/...` so the cockpit can render it locally.
+- The image filename must be the SkillPilot ID plus extension: `<skillpilotId>.<ext>`. Keep language in the link metadata (`lang`), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.
+- The AI API rewrites `/assets/...` to an absolute `/ai-assets/...` URL for GPT clients.
+- A goal may have multiple visualization links, but at most one `role: "primary"` per language should be visible in ordinary learner views.
+- `reviewStatus: "pilot"` is allowed for integration pilots. Broad rollout should use reviewed assets only.
+
+## Asset Layout
+
+For each approved or pilot image, keep a traceable source directory:
+
+```text
+curricula/DE/Gymnasium/visualizations/mathematik/<skillpilotId>/
+  <skillpilotId>.png
+  prompt.de.md
+```
+
+Public runtime copies live under:
+
+```text
+app/public/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
+backend/src/main/resources/static/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
+```
+
+`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into `app/public/assets/goal-visualizations`. The Vite production build then writes the public assets to `backend/src/main/resources/static`, where GPT can read them via `/ai-assets/...`.
+
+Reference pools of example tasks or image inspirations may be kept locally under `tmp/`, but must not be committed if licensing is unclear. They must never be copied into final assets.
+
+## Production Pipeline
+
+1. Select an atomic goal and record its SkillPilot ID, title, description, phase, and intended learner audience.
+2. Draft a compact image prompt from the goal itself. The prompt may add concrete representations, but must not add extra curriculum content beyond the goal.
+3. Generate several candidates with the chosen image provider.
+4. Review candidates against the quality checklist below.
+5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
+6. Add the optional `resourceLinks` entry to the canonical goal JSON.
+7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
+8. Validate graph JSON, frontend rendering, and AI state output.
+
+## Automated Nano Banana Pro Workflow
+
+Preferred automated workflow:
+
+```bash
+GEMINI_API_KEY="<key>" npm --prefix app run visualization:generate:nano-banana -- "<goal-id-or-unique-title-fragment>"
+```
+
+The command:
+
+- resolves the goal from the canonical math landscape,
+- builds the provider prompt from the goal title and description, without sending the SkillPilot ID to the image model,
+- keeps provider-facing prompt constraints neutral where possible, for example `no technical IDs` instead of naming SkillPilot,
+- calls the Gemini image API with model `gemini-3-pro-image`,
+- saves a traceable generated candidate under `tmp/goal-visualizations/<skillpilotId>/generated/`,
+- imports the selected image into the canonical visualization asset layout,
+- updates the canonical goal's primary `goal-visualization` link.
+
+Use this first as a no-network rehearsal:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- "<goal-id-or-unique-title-fragment>" --dry-run
+```
+
+Configuration options:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- \
+  "<skillpilotId>" \
+  --aspect-ratio="16:9" \
+  --image-size="2K" \
+  --mime-type="image/jpeg" \
+  --prompt-append="Keine langen Formeln; Text sehr kurz halten." \
+  --review-status="pilot"
+```
+
+The API key must come from `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The generator also reads these variables from a local, ignored `.env.local` or `app/.env.local` file:
+
+```text
+GEMINI_API_KEY=<key>
+```
+
+Do not commit keys or generated provider scratch files. The `tmp/` directory is intentionally ignored by Git.
+
+Small batch generation uses the same single-goal pipeline:
+
+```bash
+npm --prefix app run visualization:plan-batch -- --count=10
+
+npm --prefix app run visualization:generate:nano-banana:batch -- \
+  --file tmp/goal-visualization-next-batch.txt \
+  --continue-on-error
+```
+
+Batch options:
+
+- `visualization:plan-batch -- --count=<n>` writes the next unvisualized atomic goals to `tmp/goal-visualization-next-batch.txt`.
+- `visualization:plan-batch -- --phase=J5 --count=<n>` restricts planning to one phase if phase metadata is available.
+- `visualization:plan-batch` skips goals marked `deferred_provider_limitation` in the review ledgers. Use `--include-deferred` only for an explicit retry.
+- `--dry-run` creates the prompt and request packages for all goals without API calls.
+- `--no-import` saves generated images under `tmp/.../generated/` but does not update canonical JSON.
+- `--continue-on-error` continues after a failed goal and reports failures at the end.
+- `--file <path>` reads one goal ID or unique title fragment per line; `#` starts a comment.
+
+Every production batch must be visually reviewed before it is considered more than a technical import. Store the review note under:
+
+```text
+curricula/DE/Gymnasium/quality/goal-visualization-review/
+```
+
+The review note must record accepted assets, rejected/regenerated assets, visible mathematical issues, and validation checks. Keep `reviewStatus: "pilot"` in canonical JSON until the asset has passed the intended release review.
+
+## Low-Friction Manual Provider Workflow
+
+When using a manual image provider such as Nano Banana Pro, do not hand-build filenames, folders, or JSON links.
+Use the helper scripts:
+
+```bash
+npm --prefix app run visualization:prepare -- "<goal-id-or-unique-title-fragment>"
+```
+
+This writes a prompt package to:
+
+```text
+tmp/goal-visualizations/<skillpilotId>/nano-banana-prompt.de.md
+tmp/goal-visualizations/<skillpilotId>/metadata.json
+```
+
+Copy the prompt text into the image provider, generate the image, download the selected candidate, then import it:
+
+```bash
+npm --prefix app run visualization:import -- "<skillpilotId>" "<downloaded-image-path>"
+```
+
+The import script:
+
+- resolves the goal from the canonical math landscape,
+- renames the image to `<skillpilotId>.<ext>`,
+- copies it to `curricula/DE/Gymnasium/visualizations/...`,
+- copies the runtime asset to `app/public/assets/goal-visualizations/...`,
+- writes or refreshes `prompt.de.md`,
+- adds or replaces the primary `goal-visualization` link on the goal.
+
+Optional overrides:
+
+```bash
+npm --prefix app run visualization:import -- \
+  "<skillpilotId>" \
+  "<downloaded-image-path>" \
+  --alt-text="<specific screen-reader description>" \
+  --description="<short caption>" \
+  --review-status="pilot"
+```
+
+Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
+
+## Quality Checklist
+
+- The image addresses exactly one atomic goal.
+- Mathematical notation is correct and not misleading.
+- The image has no copied third-party worksheet, logo, character, or protected layout.
+- The context is plausible and age-appropriate for the goal.
+- Text is readable at cockpit card width and does not dominate the image.
+- The image still works if GPT can only provide the URL plus alt text.
+- The visual does not replace the need for explanation, practice, or assessment.
+- `altText` is specific enough for non-visual use.
+- `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.
+- The `url` filename is the same `skillpilotId` plus image extension.
+
+## Hard Review Gate
+
+Generated images are useful but not trustworthy by default. A generated asset is only a technical import until it has been visually reviewed against the checklist. The review must be recorded in the batch ledger before the asset may be treated as curated pilot content.
+
+Mandatory rejection or regeneration triggers:
+
+- wrong calculation, wrong formula, wrong comparison, or wrong unit conversion
+- misleading mathematical representation, even if the text is correct
+- mismatched labels and drawings, for example marked digits, angle sizes, coordinates, number-line positions, or side properties
+- invalid or ambiguous notation that could teach a misconception
+- extra topics that distract from or distort the atomic goal
+- unreadable or dominant text, especially when the image is shown at cockpit card width
+- visible technical IDs, watermarks, provider artifacts, or copied third-party layout
+- target-age mismatch, such as concepts clearly above the current year level
+
+Review decisions should use these labels:
+
+- `accepted_pilot` - no gross mathematical issue is visible; suitable for controlled pilot use
+- `accepted_pilot_after_regeneration` - at least one generated attempt was rejected and replaced
+- `rejected_regenerate` - current image must not be used; generate a targeted replacement
+- `deferred_provider_limitation` - repeated provider attempts stayed fachlich wrong; remove the `resourceLinks` image reference and revisit when the provider improves
+- `needs_external_review` - no obvious blocker, but the image is too subtle or high-risk for self-review only
+
+If repeated Nano Banana Pro attempts still contain a gross mathematical or tool-use error, do not substitute a hand-drawn SVG or other non-provider replacement for the same cartoon visualization lane. Remove the active image link, remove the published asset copies, and record the deferred decision in the review ledger.
+
+Keep `reviewStatus: "pilot"` until the intended release review has passed. Do not infer approval from the existence of a generated file, a public asset, or a `resourceLinks` entry.
+
+## Pilot
+
+Pilot goal:
+
+- SkillPilot ID: `502ecaa7-cca6-5c51-a1cc-da09a7b2382c`
+- Title: `Definitionsmenge einer Funktion bestimmen`
+- Public asset: `/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png`

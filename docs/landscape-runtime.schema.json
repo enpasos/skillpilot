@@ -470,11 +470,27 @@
         },
         "url": {
           "type": "string",
-          "description": "Absolute target URL."
+          "description": "Absolute target URL or app-relative asset URL."
         },
         "resourceType": {
           "type": "string",
           "description": "Concrete material kind, e.g. course-page, video, notes, article, simulation, problem-set, exam, solution-set, book, tool."
+        },
+        "skillpilotId": {
+          "type": "string",
+          "description": "Optional stable SkillPilot goal or asset owner ID used for project-local resources."
+        },
+        "role": {
+          "type": "string",
+          "description": "Optional role inside the resource type, e.g. primary for the main goal visualization."
+        },
+        "altText": {
+          "type": "string",
+          "description": "Optional accessible image description for visual resources."
+        },
+        "reviewStatus": {
+          "type": "string",
+          "description": "Optional editorial/review status for generated resources."
         },
         "provider": {
           "type": "string"

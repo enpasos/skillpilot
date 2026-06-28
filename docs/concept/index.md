@@ -19,6 +19,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Scope-specific learner-facing views and placement semantics.
 - [Source And Resource Links](curriculum-graph/source-and-resource-links.md)
   Provenance and source/reference semantics.
+- [Atomic Goal Visualizations](curriculum-graph/atomic-goal-visualizations.md)
+  Production pipeline and review rules for optional atomic-goal image assets.
 - [Human-Readable Source Rationales](curriculum-graph/human-readable-source-rationales.md)
   Generated explanation model for tracing learning goals back to source evidence.
 - [Canonical Gymnasium Rollout Policy](curriculum-graph/canonical-gymnasium-rollout.md)

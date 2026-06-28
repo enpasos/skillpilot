@@ -4613,7 +4613,11 @@ public class LearnerService {
                 sections,
                 trimToNull(readString(rawLink.get("description"))),
                 trimToNull(readString(rawLink.get("lang"))),
-                trimToNull(readString(rawLink.get("license"))));
+                trimToNull(readString(rawLink.get("license"))),
+                trimToNull(readString(rawLink.get("skillpilotId"))),
+                trimToNull(readString(rawLink.get("role"))),
+                trimToNull(readString(rawLink.get("altText"))),
+                trimToNull(readString(rawLink.get("reviewStatus"))));
     }
 
     private String extractLicenseFromTags(List<String> tags) {

@@ -47,6 +47,10 @@ type GoalSourceLink = {
   description?: string
   lang?: string
   license?: string
+  skillpilotId?: string
+  role?: string
+  altText?: string
+  reviewStatus?: string
 }
 
 type GoalProvenance = {
@@ -351,6 +355,10 @@ const mapRawLink = (entry: Record<string, unknown>): GoalSourceLink | null => {
     description: readString(entry.description),
     lang: readString(entry.lang),
     license: readString(entry.license),
+    skillpilotId: readString(entry.skillpilotId),
+    role: readString(entry.role),
+    altText: readString(entry.altText),
+    reviewStatus: readString(entry.reviewStatus),
   }
 }
 
@@ -383,7 +391,15 @@ const isLearningMaterialLink = (link: GoalSourceLink): boolean => {
   )
 }
 
-const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfulLinks: GoalSourceLink[] } => {
+const isGoalVisualizationLink = (link: GoalSourceLink): boolean => {
+  const type = normalize(link.type)
+  const resourceType = normalize(link.resourceType)
+  return type === 'goal-visualization' || resourceType === 'goal-visualization'
+}
+
+const extractSourceMetadata = (
+  goal: Goal,
+): { provenance: GoalProvenance; helpfulLinks: GoalSourceLink[]; visualizationLinks: GoalSourceLink[] } => {
   const extended = asRecord(goal.extendedData)
   const provenanceRaw = asRecord(extended?.provenance)
   const canonicalLinksRaw = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
@@ -407,9 +423,14 @@ const extractSourceMetadata = (goal: Goal): { provenance: GoalProvenance; helpfu
 
   const helpfulLinks = rawLinks
     .filter((link) => link.type?.toLowerCase() !== 'license')
+    .filter((link) => !isGoalVisualizationLink(link))
     .filter((link, index, all) => all.findIndex((other) => other.url === link.url) === index)
 
-  return { provenance, helpfulLinks }
+  const visualizationLinks = rawLinks
+    .filter(isGoalVisualizationLink)
+    .filter((link, index, all) => all.findIndex((other) => other.url === link.url) === index)
+
+  return { provenance, helpfulLinks, visualizationLinks }
 }
 
 const SourceRationaleModal: React.FC<{
@@ -641,11 +662,12 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const activeActionLabel = isActive
     ? copy.activeActionReveal
     : copy.activeActionSelect
-  const { provenance, helpfulLinks } = extractSourceMetadata(goal)
+  const { provenance, helpfulLinks, visualizationLinks } = extractSourceMetadata(goal)
   const [sourceRationale, setSourceRationale] = React.useState<GoalSourceRationaleItem | null>(null)
   const [isSourceRationaleOpen, setIsSourceRationaleOpen] = React.useState(false)
   const displayTitle = useRawGoalTitles ? goal.title : getAudienceGoalTitle(goal)
   const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
+  const primaryVisualization = visualizationLinks.find((link) => normalize(link.role) === 'primary') ?? visualizationLinks[0]
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined
@@ -776,6 +798,16 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {/* SSE auto-refresh now active - manual refresh button removed */}
 
+      {primaryVisualization && !examDataForDisplay && !isProjectedStructureNode && (
+        <figure className="mt-4 mb-4 overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950">
+          <img
+            src={primaryVisualization.url}
+            alt={primaryVisualization.altText ?? primaryVisualization.description ?? primaryVisualization.title ?? displayTitle}
+            loading="lazy"
+            className="block h-auto max-h-[28rem] w-full object-contain"
+          />
+        </figure>
+      )}
 
       <div className="mt-2 text-sm text-text-primary leading-relaxed prose dark:prose-invert max-w-none">
         {examDataForDisplay ? (

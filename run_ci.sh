@@ -20,10 +20,37 @@ on_error() {
 
 trap on_error ERR
 
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${PROJECT_ROOT}"
+
+REQUIRED_NODE_VERSION="$(tr -d '[:space:]' < .nvmrc)"
+if [ -n "${NVM_DIR:-}" ] && [ -s "${NVM_DIR}/nvm.sh" ]; then
+  # shellcheck source=/dev/null
+  . "${NVM_DIR}/nvm.sh"
+elif [ -s "${HOME}/.nvm/nvm.sh" ]; then
+  export NVM_DIR="${HOME}/.nvm"
+  # shellcheck source=/dev/null
+  . "${NVM_DIR}/nvm.sh"
+fi
+
+if command -v nvm >/dev/null 2>&1; then
+  nvm install "${REQUIRED_NODE_VERSION}" >/dev/null
+  nvm use "${REQUIRED_NODE_VERSION}" >/dev/null
+fi
+
+CURRENT_NODE_VERSION="$(node -v 2>/dev/null || true)"
+REQUIRED_NODE_PREFIX="v${REQUIRED_NODE_VERSION}"
+if [[ "${CURRENT_NODE_VERSION}" != "${REQUIRED_NODE_PREFIX}" && "${CURRENT_NODE_VERSION}" != "${REQUIRED_NODE_PREFIX}".* ]]; then
+  echo "Abbruch: Node ${REQUIRED_NODE_VERSION}.x ist erforderlich (.nvmrc)." >&2
+  echo "Aktuelle Node-Version: ${CURRENT_NODE_VERSION:-nicht gefunden}" >&2
+  echo "Installiere/aktiviere Node ${REQUIRED_NODE_VERSION}.x, z. B. mit: nvm install && nvm use" >&2
+  exit 1
+fi
+
 echo "=========================================="
 echo "Running Frontend CI (app)"
 echo "=========================================="
-cd app
+cd "${PROJECT_ROOT}/app"
 npm ci
 
 echo "--> Running Graph Validation"
@@ -91,7 +118,7 @@ npm run validate:learner-goal-selection
 echo "--> Running Lint & Build"
 npm run lint
 npm run build
-cd ..
+cd "${PROJECT_ROOT}"
 
 echo "--> Running Schema Validation"
 # Ensure jsonschema is installed (suppress output if already present)
@@ -123,18 +150,34 @@ REQUIRED_CORRETTO_VERSION="$(tr -d '[:space:]' < .corretto-version)"
 CURRENT_JAVA_VERSION_OUTPUT="$(java -version 2>&1 || true)"
 if ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "version \"${REQUIRED_JAVA_VERSION}" \
   || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_CORRETTO_VERSION}"; then
+  echo "Aktuelle Java-Version entspricht nicht Amazon Corretto ${REQUIRED_CORRETTO_VERSION}; verwende lokalen CI-Download."
+  CORRETTO_TOOLS_DIR="${PROJECT_ROOT}/tmp/ci-tools"
+  CORRETTO_INSTALL_DIR="${CORRETTO_TOOLS_DIR}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}"
+  CORRETTO_ARCHIVE="${CORRETTO_TOOLS_DIR}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}-linux-x64.tar.gz"
+  mkdir -p "${CORRETTO_INSTALL_DIR}"
+  if [ ! -x "${CORRETTO_INSTALL_DIR}/bin/java" ]; then
+    curl -fsSL "https://corretto.aws/downloads/resources/${REQUIRED_CORRETTO_VERSION}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}-linux-x64.tar.gz" -o "${CORRETTO_ARCHIVE}"
+    tar -xzf "${CORRETTO_ARCHIVE}" --strip-components=1 -C "${CORRETTO_INSTALL_DIR}"
+  fi
+  export JAVA_HOME="${CORRETTO_INSTALL_DIR}"
+  export PATH="${JAVA_HOME}/bin:${PATH}"
+  CURRENT_JAVA_VERSION_OUTPUT="$(java -version 2>&1 || true)"
+fi
+if ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "version \"${REQUIRED_JAVA_VERSION}" \
+  || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_CORRETTO_VERSION}"; then
   echo "Abbruch: Amazon Corretto ${REQUIRED_CORRETTO_VERSION} ist erforderlich (.java-version/.corretto-version)." >&2
   echo "Aktuelle Java-Version:" >&2
   printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" >&2
   exit 1
 fi
-cd backend
+printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}"
+cd "${PROJECT_ROOT}/backend"
 chmod +x gradlew
 # Run backend check in a CI-like, isolated Gradle home to avoid stale local state.
 # This makes local results closer to GitHub Actions (fresh workspace behavior).
 export GRADLE_USER_HOME="$(pwd)/.gradle-ci"
 ./gradlew clean check --no-daemon
-cd ..
+cd "${PROJECT_ROOT}"
 
 echo ""
 echo "=========================================="
