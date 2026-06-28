@@ -4,7 +4,7 @@ Spring Boot backend for learner state, curriculum loading, UI APIs, AI APIs, and
 
 ## Prerequisites
 
-- Java toolchain compatible with the Gradle setup in this folder
+- Java 25.0.2, matching the production Amazon Corretto 25 runtime. The root `.java-version` file is the shared source for local CI, GitHub Actions, Gradle toolchains, and production deployment checks.
 - PostgreSQL reachable with the credentials from `src/main/resources/application.yml` or matching environment overrides
 
 ## Running locally

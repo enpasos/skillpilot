@@ -10,6 +10,20 @@ cd "${PROJECT_ROOT}"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 
+require_production_java() {
+  local required_java_version
+  local current_java_version_output
+  required_java_version="$(tr -d '[:space:]' < "${PROJECT_ROOT}/.java-version")"
+  current_java_version_output="$(java -version 2>&1 || true)"
+  if ! printf '%s\n' "${current_java_version_output}" | grep -Fq "version \"${required_java_version}" \
+    || ! printf '%s\n' "${current_java_version_output}" | grep -Fq "Corretto-${required_java_version}"; then
+    echo "Abbruch: Amazon Corretto ${required_java_version} ist für Produktion erforderlich (.java-version)." >&2
+    echo "Aktuelle Java-Version:" >&2
+    printf '%s\n' "${current_java_version_output}" >&2
+    exit 1
+  fi
+}
+
 ensure_restart_possible() {
   echo "Prüfe Restart-Voraussetzungen..."
 
@@ -43,6 +57,7 @@ ensure_restart_possible() {
 }
 
 ensure_restart_possible
+require_production_java
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
