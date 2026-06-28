@@ -1,3 +1,5 @@
+import org.gradle.jvm.toolchain.JvmVendorSpec
+
 plugins {
     id("org.springframework.boot") version "4.0.5"
     id("io.spring.dependency-management") version "1.1.7"
@@ -9,7 +11,11 @@ version = "0.1.0-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        val skillpilotJavaVersion = providers.fileContents(layout.projectDirectory.file("../.java-version"))
+            .asText
+            .map { it.trim().substringBefore(".").toInt() }
+        languageVersion.set(skillpilotJavaVersion.map { JavaLanguageVersion.of(it) })
+        vendor.set(JvmVendorSpec.AMAZON)
     }
 }
 

@@ -145,8 +145,8 @@ jobs:
       - name: Use Java
         uses: actions/setup-java@v5
         with:
-          distribution: temurin
-          java-version: 25
+          distribution: corretto
+          java-version-file: .java-version
           cache: gradle
       - name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
