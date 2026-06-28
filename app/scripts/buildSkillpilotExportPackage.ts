@@ -1333,6 +1333,22 @@ const packageMemoryCardReviewReport = (
       'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die verbindlichen Prüfdaten bleiben die JSONL-Ledger; dieser Report wird daraus reproduzierbar erzeugt.',
       'Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger. Die paketbezogenen Prüfdaten liegen direkt neben diesem Report und werden reproduzierbar aus dem SkillPilot-Review erzeugt.',
     )
+    .replace(
+      /curricula\/DE\/Gymnasium\/quality\/memory-card-review\/[^`\s|)]+\.config\.json/gu,
+      paths.config,
+    )
+    .replace(
+      /curricula\/DE\/Gymnasium\/quality\/memory-card-review\/[^`\s|)]+\.cards\.review\.jsonl/gu,
+      paths.cardLedger,
+    )
+    .replace(
+      /curricula\/DE\/Gymnasium\/quality\/memory-card-review\/[^`\s|)]+\.review\.jsonl/gu,
+      paths.goalLedger,
+    )
+    .replace(
+      /curricula\/DE\/Gymnasium\/canonical\/[^`\s|)]+\.json/gu,
+      `data/canonical/${subjectSlug}.landscape.json`,
+    )
     .replace(/- Landscape: `[^`]+`/u, `- Landscape: \`data/canonical/${subjectSlug}.landscape.json\``)
     .replace(/- Goal ledger: `[^`]+`/u, `- Goal ledger: \`${paths.goalLedger}\``)
     .replace(/- Card ledger: `[^`]+`/u, `- Card ledger: \`${paths.cardLedger}\``)

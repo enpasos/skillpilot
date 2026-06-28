@@ -148,6 +148,18 @@ jobs:
           distribution: corretto
           java-version-file: .java-version
           cache: gradle
+      - name: Use production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < ../.corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
       - name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
       - name: Run backend tests

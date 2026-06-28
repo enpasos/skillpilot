@@ -1,7 +1,7 @@
 import org.gradle.jvm.toolchain.JvmVendorSpec
 
 plugins {
-    id("org.springframework.boot") version "4.0.5"
+    id("org.springframework.boot") version "4.1.0"
     id("io.spring.dependency-management") version "1.1.7"
     java
 }
@@ -21,8 +21,6 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://repo.spring.io/milestone") }
-    maven { url = uri("https://repo.spring.io/snapshot") }
 }
 
 dependencies {
@@ -34,7 +32,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
 
 
 

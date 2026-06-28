@@ -116,7 +116,7 @@ public class DeckResourceService {
         Map<String, Path> index = new HashMap<>();
         try (Stream<Path> paths = Files.walk(curriculaRoot)) {
             paths.filter(Files::isRegularFile)
-                    .filter(path -> path.getParent() != null && "json".equals(path.getParent().getFileName().toString()))
+                    .filter(this::isDeckSourceFile)
                     .forEach(path -> {
                         String fileName = path.getFileName().toString();
                         if (!DECK_FILENAME_PATTERN.matcher(fileName).matches()) {
@@ -132,5 +132,13 @@ public class DeckResourceService {
             log.warn("Could not index deck files under {}", curriculaRoot, e);
         }
         return Map.copyOf(index);
+    }
+
+    private boolean isDeckSourceFile(Path path) {
+        if (path.getParent() == null) {
+            return false;
+        }
+        String directoryName = path.getParent().getFileName().toString();
+        return "json".equals(directoryName) || "memory-decks".equals(directoryName);
     }
 }
