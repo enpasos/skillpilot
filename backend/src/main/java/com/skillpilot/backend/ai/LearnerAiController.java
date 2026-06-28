@@ -2,6 +2,7 @@ package com.skillpilot.backend.ai;
 
 import com.skillpilot.backend.api.CreateLearnerResponse;
 import com.skillpilot.backend.api.ActiveGoalRequest;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.RedeemStartCodeRequest;
 import com.skillpilot.backend.api.RedeemStartCodeResponse;
@@ -672,8 +673,24 @@ public class LearnerAiController {
     private com.skillpilot.backend.api.FrontierGoal rewriteExamData(
             com.skillpilot.backend.api.FrontierGoal goal,
             String assetBase) {
-        if (goal == null || goal.examData() == null) {
-            return goal;
+        if (goal == null) {
+            return null;
+        }
+        List<GoalSourceLink> resourceLinks = rewriteResourceLinks(goal.resourceLinks(), assetBase);
+        if (goal.examData() == null) {
+            return new com.skillpilot.backend.api.FrontierGoal(
+                    goal.id(),
+                    normalizeMathDelimitersForChat(goal.title()),
+                    normalizeMathDelimitersForChat(goal.description()),
+                    goal.type(),
+                    goal.nodeKind(),
+                    goal.reason(),
+                    goal.tags(),
+                    resourceLinks,
+                    goal.sourceRef(),
+                    goal.sourceLicense(),
+                    goal.sourceLicenseUrl(),
+                    null);
         }
         com.skillpilot.backend.landscape.ExamData exam = goal.examData();
         com.skillpilot.backend.landscape.ExamData updated = new com.skillpilot.backend.landscape.ExamData();
@@ -700,11 +717,61 @@ public class LearnerAiController {
                 goal.nodeKind(),
                 goal.reason(),
                 goal.tags(),
-                goal.resourceLinks(),
+                resourceLinks,
                 goal.sourceRef(),
                 goal.sourceLicense(),
                 goal.sourceLicenseUrl(),
                 updated);
+    }
+
+    private List<GoalSourceLink> rewriteResourceLinks(List<GoalSourceLink> links, String assetBase) {
+        if (links == null || links.isEmpty()) {
+            return links;
+        }
+        return links.stream()
+                .map(link -> rewriteResourceLink(link, assetBase))
+                .toList();
+    }
+
+    private GoalSourceLink rewriteResourceLink(GoalSourceLink link, String assetBase) {
+        if (link == null) {
+            return null;
+        }
+        return new GoalSourceLink(
+                link.type(),
+                link.title(),
+                rewriteResourceLinkUrl(link.url(), assetBase),
+                link.resourceType(),
+                link.provider(),
+                link.sections(),
+                link.description(),
+                link.lang(),
+                link.license(),
+                link.skillpilotId(),
+                link.role(),
+                link.altText(),
+                link.reviewStatus());
+    }
+
+    private String rewriteResourceLinkUrl(String url, String assetBase) {
+        if (url == null || url.isBlank() || assetBase == null || assetBase.isBlank()) {
+            return url;
+        }
+        String trimmed = url.trim();
+        if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+            return trimmed;
+        }
+        String baseUrl = assetBase.replaceAll("/ai-assets$", "");
+        if (trimmed.startsWith("/assets/")) {
+            return assetBase + trimmed.substring("/assets".length());
+        }
+        if (trimmed.startsWith("/ai-assets/")) {
+            return baseUrl + trimmed;
+        }
+        if (trimmed.startsWith("/")) {
+            return baseUrl + trimmed;
+        }
+        return trimmed;
     }
 
     private boolean isExamDataReadyForHardCheck(com.skillpilot.backend.landscape.ExamData exam) {

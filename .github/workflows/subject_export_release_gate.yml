@@ -17,6 +17,7 @@ on:
     branches: [ main ]
     paths:
       - '.github/workflows/subject_export_release_gate.yml'
+      - '.nvmrc'
       - 'app/package-lock.json'
       - 'app/package.json'
       - 'app/scripts/auditSubjectExportSourceLinks.ts'
@@ -47,6 +48,7 @@ on:
     branches: [ main ]
     paths:
       - '.github/workflows/subject_export_release_gate.yml'
+      - '.nvmrc'
       - 'app/package-lock.json'
       - 'app/package.json'
       - 'app/scripts/auditSubjectExportSourceLinks.ts'
@@ -94,7 +96,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: app/package-lock.json
 

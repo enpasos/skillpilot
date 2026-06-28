@@ -44,6 +44,10 @@ export interface FrontierGoal {
     description?: string;
     lang?: string;
     license?: string;
+    skillpilotId?: string;
+    role?: string;
+    altText?: string;
+    reviewStatus?: string;
   }>;
   sourceRef?: string;
   sourceLicense?: string;
