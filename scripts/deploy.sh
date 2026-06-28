@@ -12,12 +12,14 @@ SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 
 require_production_java() {
   local required_java_version
+  local required_corretto_version
   local current_java_version_output
   required_java_version="$(tr -d '[:space:]' < "${PROJECT_ROOT}/.java-version")"
+  required_corretto_version="$(tr -d '[:space:]' < "${PROJECT_ROOT}/.corretto-version")"
   current_java_version_output="$(java -version 2>&1 || true)"
   if ! printf '%s\n' "${current_java_version_output}" | grep -Fq "version \"${required_java_version}" \
-    || ! printf '%s\n' "${current_java_version_output}" | grep -Fq "Corretto-${required_java_version}"; then
-    echo "Abbruch: Amazon Corretto ${required_java_version} ist für Produktion erforderlich (.java-version)." >&2
+    || ! printf '%s\n' "${current_java_version_output}" | grep -Fq "Corretto-${required_corretto_version}"; then
+    echo "Abbruch: Amazon Corretto ${required_corretto_version} ist für Produktion erforderlich (.java-version/.corretto-version)." >&2
     echo "Aktuelle Java-Version:" >&2
     printf '%s\n' "${current_java_version_output}" >&2
     exit 1

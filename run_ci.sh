@@ -119,10 +119,11 @@ echo "=========================================="
 echo "Running Backend CI (backend)"
 echo "=========================================="
 REQUIRED_JAVA_VERSION="$(tr -d '[:space:]' < .java-version)"
+REQUIRED_CORRETTO_VERSION="$(tr -d '[:space:]' < .corretto-version)"
 CURRENT_JAVA_VERSION_OUTPUT="$(java -version 2>&1 || true)"
 if ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "version \"${REQUIRED_JAVA_VERSION}" \
-  || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_JAVA_VERSION}"; then
-  echo "Abbruch: Amazon Corretto ${REQUIRED_JAVA_VERSION} ist erforderlich (.java-version)." >&2
+  || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_CORRETTO_VERSION}"; then
+  echo "Abbruch: Amazon Corretto ${REQUIRED_CORRETTO_VERSION} ist erforderlich (.java-version/.corretto-version)." >&2
   echo "Aktuelle Java-Version:" >&2
   printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" >&2
   exit 1

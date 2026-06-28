@@ -4,7 +4,8 @@ Spring Boot backend for learner state, curriculum loading, UI APIs, AI APIs, and
 
 ## Prerequisites
 
-- Java 25.0.2, matching the production Amazon Corretto 25 runtime. The root `.java-version` file is the shared source for local CI, GitHub Actions, Gradle toolchains, and production deployment checks.
+- Java 25.0.2 with Amazon Corretto build 25.0.2.10.1, matching production. The root `.java-version` and `.corretto-version` files are the shared source for local CI, GitHub Actions, Gradle toolchains, and production deployment checks.
+- Spring Boot 4.1.x; OpenAPI uses the matching `springdoc-openapi` 3.x starter line.
 - PostgreSQL reachable with the credentials from `src/main/resources/application.yml` or matching environment overrides
 
 ## Running locally
@@ -61,4 +62,4 @@ Persistence / migrations:
 ## Notes
 
 - The backend loads curriculum JSON from `curricula/**/json/*.json`, not from a separate `landscapes/` directory.
-- Static deck data is also mirrored into backend static resources during asset deployment.
+- Static deck data is also mirrored into backend static resources during asset deployment. At runtime the backend can also resolve canonical deck sources directly from `curricula/**/memory-decks/`.

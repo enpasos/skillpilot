@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-03T11:41:57.045Z",
+  "generatedAt": "2026-06-28T07:08:25.807Z",
   "generator": "app/scripts/reportGoalSourceRationaleGapIssues.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "allRelevantReportPath": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json"
   },
   "sourceReport": {
-    "generatedAt": "2026-06-03T11:41:42.378Z",
+    "generatedAt": "2026-06-20T07:38:58.911Z",
     "summary": {
-      "requestedGoals": 750,
-      "resolvedGoals": 750,
-      "goalsWithClassicSourceRoute": 697,
+      "requestedGoals": 752,
+      "resolvedGoals": 752,
+      "goalsWithClassicSourceRoute": 699,
       "goalsWithoutClassicSourceRoute": 53,
-      "goalsWithMemSparqlConsistentRoute": 184
+      "goalsWithMemSparqlConsistentRoute": 185
     }
   },
   "summary": {
@@ -116,13 +116,13 @@
         {
           "goalId": "7bb3c312-f714-55e6-a31f-f31605a93760",
           "title": "Vektorprodukt für Normalenvektoren und Flächeninhalte anwenden (LK)",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l1-algorithmus-und-zahl-K012-e09fce9163",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
-          "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-K012",
-          "matchType": "partial"
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-BW",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+          "sourceGoalId": "bw-math-sekii-bp2016-3-4-2-06",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.2, Kompetenz 6, S. 40.",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "d8e56cfc-a58d-5529-ab9f-e5187e31dd34",
@@ -132,8 +132,30 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
           "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-07c-flaecheninhalte-im-raum",
           "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 7, S. 41.",
-          "topicCode": "BP2016-3.4.3",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
+          "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "79c4cd21-af64-5925-968e-9bc1f74cd0ad",
+          "title": "Lotfußpunktverfahren zur Punkt-Ebene-Abstandsbestimmung anwenden",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b10-a02-444cef77",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 10, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "54541d08-61cc-5a6d-b6d9-d0270a7d1949",
@@ -145,28 +167,6 @@
           "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 62",
           "topicCode": "SH-SEKII-L1-ALGORITHMUS-UND-ZAHL-T037",
           "matchType": "exact"
-        },
-        {
-          "goalId": "fac75b4a-4ec2-5d38-bbce-9b002c8a4904",
-          "title": "Abstandsverfahren im Raum auswählen und anwenden",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
-          "topicCode": "Q2.3",
-          "matchType": null
-        },
-        {
-          "goalId": "c2c49659-5917-5be5-a3bd-e46f1b17126f",
-          "title": "Lotfußpunktverfahren für Abstände zwischen Punkten, Geraden und Ebenen anwenden (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-3-b13-a03-17099889",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 3",
-          "topicCode": "Q2.3",
-          "matchType": null
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -203,12 +203,12 @@
           "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
           "title": "Schnittgerade zweier Ebenen bestimmen (LK)",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-3-06d-ebene-ebene-schnittgebilde",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.3, Kompetenz 6, S. 41.",
-          "topicCode": "BP2016-3.4.3",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-3-b13-a02-b3fca74f",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.3, S. 42, Spiegelstrich 13, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -251,6 +251,17 @@
           "matchType": "exact"
         },
         {
+          "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
+          "title": "Wurzelfunktionen beschreiben und darstellen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+          "sourceGoalId": "he-math-seki-g9-10-1-01-032d27f1",
+          "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.1 Funktionen",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
           "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
           "title": "Zusammenhang von Funktionsgraph und Umkehrgraph erläutern",
           "sourceRationaleStatus": "classic_source_reviewed",
@@ -258,8 +269,19 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
           "sourceGoalId": "he-math-seki-g9-10-1-13-bcc854ee",
           "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 10.1 Funktionen",
-          "topicCode": "G9-10.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
+          "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q2-1-b01-a02-caa4b3e0",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "61686d85-0301-550e-bab9-bd9411c3e7ce",
@@ -271,28 +293,6 @@
           "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M11.2",
           "topicCode": "M11.2",
           "matchType": "partial"
-        },
-        {
-          "goalId": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
-          "title": "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-BY",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
-          "sourceGoalId": "b2650cbe-490c-547e-a55a-d5916c3c0647",
-          "sourceRef": "LehrplanPLUS Bayern Gymnasium Mathematik, M12-EA.4.2",
-          "topicCode": "M12-EA.4.2",
-          "matchType": "partial"
-        },
-        {
-          "goalId": "6517427b-cf4e-5ebf-9a76-e1035617687c",
-          "title": "Einfache gebrochen rationale und Wurzelfunktionen ableiten",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q2-1-b01-a02-caa4b3e0",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.1, S. 40, Spiegelstrich 1, Aspekt 2",
-          "topicCode": "Q2.1",
-          "matchType": null
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -326,6 +326,28 @@
       "gapSiblingGoals": 2,
       "coveredSiblingExamples": [
         {
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a02-eebba818",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "title": "Integrale ganzrationaler Funktionenscharen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
           "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
           "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
           "sourceRationaleStatus": "classic_source_reviewed",
@@ -337,48 +359,26 @@
           "matchType": "exact"
         },
         {
-          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
-          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q4-1-b02-a02-eebba818",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
-          "topicCode": "Q4.1",
-          "matchType": null
-        },
-        {
-          "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
-          "title": "Integrale ganzrationaler Funktionenscharen berechnen",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-HE",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
-          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
-          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
-          "topicCode": "Q4.1",
-          "matchType": null
-        },
-        {
           "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
           "title": "Parameter in Funktionenscharen deuten",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a02-825e2758",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "bfa2351c-735e-56eb-a778-2413aa68db42",
           "title": "Parameterwirkung auf Schargraphen beschreiben",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11b-parameterwirkung-schargraphen",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a02-825e2758",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -426,23 +426,12 @@
           "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
           "title": "Parameter in Funktionenscharen deuten",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
-        },
-        {
-          "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
-          "title": "Extremstellen parameterabhängig untersuchen",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
-          "matchType": "partial"
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a02-825e2758",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
@@ -452,19 +441,30 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-1-b02-a01-44e89453",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 1",
-          "topicCode": "Q4.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
           "title": "Ganzrationale Funktionenscharen untersuchen",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11c-graph-zusammenhaenge",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a02-eebba818",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -501,34 +501,12 @@
           "goalId": "993a14e8-60f0-5764-9340-b2447a5fa84b",
           "title": "Parameter in Funktionenscharen deuten",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11a-parameter-deuten",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
-        },
-        {
-          "goalId": "20843e23-cfc5-5ff8-96e0-e05a4f746fae",
-          "title": "Ortskurven von Extrem- und Wendepunkten bestimmen (LK)",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a02-825e2758",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 2",
+          "topicCode": null,
           "matchType": "exact"
-        },
-        {
-          "goalId": "7feaaebd-cc8d-522b-8b3a-ea22675c65dd",
-          "title": "Extremstellen parameterabhängig untersuchen",
-          "sourceRationaleStatus": "classic_source_partial",
-          "jurisdiction": "DE-SH",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
-          "sourceGoalId": "de-sh-mathematik-sekii-fachanforderungen-2024-sh-sekii-l4-funktionaler-zusammenhang-T077-6cbae84486",
-          "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 68",
-          "topicCode": "SH-SEKII-L4-FUNKTIONALER-ZUSAMMENHANG-T077",
-          "matchType": "partial"
         },
         {
           "goalId": "ccfd4e60-5728-568f-adb7-0b932d8e5aac",
@@ -538,19 +516,41 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-1-b02-a01-44e89453",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 1",
-          "topicCode": "Q4.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "fcf9af67-7abd-5f69-a22a-b436297d44c5",
           "title": "Ganzrationale Funktionenscharen untersuchen",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-3-4-4-11c-graph-zusammenhaenge",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 3.4.4, Kompetenz 11, S. 42. Granularisiertes Teilziel zu Kompetenz 11.",
-          "topicCode": "BP2016-3.4.4",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "0e8417d7-effb-5314-93ba-a571b01726ce",
+          "title": "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b02-a02-eebba818",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 2, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
+          "goalId": "d144a855-9139-55c7-a801-e8b85dab5f01",
+          "title": "Integrale ganzrationaler Funktionenscharen berechnen",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-1-b01-a01-3f70fd46",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.1, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -584,6 +584,17 @@
       "gapSiblingGoals": 1,
       "coveredSiblingExamples": [
         {
+          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "title": "Beweise verständlich präsentieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b04-a02-0c999650",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 4, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
           "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
           "title": "Beweis durch Widerspruch",
           "sourceRationaleStatus": "classic_source_partial",
@@ -593,17 +604,6 @@
           "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
           "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
           "matchType": "partial"
-        },
-        {
-          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
-          "title": "Beweise verständlich präsentieren",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-2-1-10-6d2c62c8",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 10, S. 12.",
-          "topicCode": "BP2016-2.1",
-          "matchType": null
         },
         {
           "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
@@ -659,6 +659,17 @@
       "gapSiblingGoals": 1,
       "coveredSiblingExamples": [
         {
+          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
+          "title": "Beweise verständlich präsentieren",
+          "sourceRationaleStatus": "classic_source_reviewed",
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b04-a02-0c999650",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 4, Aspekt 2",
+          "topicCode": null,
+          "matchType": "exact"
+        },
+        {
           "goalId": "c5ea9b97-746f-5e8b-9fe1-26a8406ac3a9",
           "title": "Beweis durch Widerspruch",
           "sourceRationaleStatus": "classic_source_partial",
@@ -668,17 +679,6 @@
           "sourceRef": "Kernlehrplan Mathematik Gymnasiale Oberstufe, Nordrhein-Westfalen 2023, S. 20",
           "topicCode": "NW-SEKII-PROCESS-ARGUMENTIEREN",
           "matchType": "partial"
-        },
-        {
-          "goalId": "f2df01c0-355e-5e51-973f-d31b0eed28ec",
-          "title": "Beweise verständlich präsentieren",
-          "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-2-1-10-6d2c62c8",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 10, S. 12.",
-          "topicCode": "BP2016-2.1",
-          "matchType": null
         },
         {
           "goalId": "5c632c68-fc34-582e-8581-ae9e55ab538f",
@@ -1030,12 +1030,12 @@
           "goalId": "c0e34fa8-fde5-5a4e-9b84-c5d5db719b58",
           "title": "Mathematische Probleme erkennen und formulieren",
           "sourceRationaleStatus": "classic_source_reviewed",
-          "jurisdiction": "DE-BW",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-2-2-01-b505c9c4",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.2, Kompetenz 1, S. 13.",
-          "topicCode": "BP2016-2.2",
-          "matchType": null
+          "jurisdiction": "DE-HE",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+          "sourceGoalId": "he-math-sekii-q4-2-b01-a01-05af313f",
+          "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 1, Aspekt 1",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "1675fdde-cba7-5456-ae70-a846e1924a68",
@@ -1045,8 +1045,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-2-b06-a02-a9b04dc8",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 6, Aspekt 2",
-          "topicCode": "Q4.2",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "ae3483e3-4712-56a1-a881-2e1f8a1a8df9",
@@ -1056,8 +1056,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-2-b15-a02-c00e0db5",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 15, Aspekt 2",
-          "topicCode": "Q4.2",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "3b64b90b-ed89-5aeb-9838-bf05ccef9d77",
@@ -1067,8 +1067,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
           "sourceGoalId": "bw-math-sekii-bp2016-2-1-12-3b890906",
           "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 12, S. 12.",
-          "topicCode": "BP2016-2.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "21fa0c22-976e-59b3-a871-899f0c0177f3",
@@ -1078,8 +1078,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
           "sourceGoalId": "he-math-sekii-q4-2-b13-a02-fd18df25",
           "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q4.2, S. 51, Spiegelstrich 13, Aspekt 2",
-          "topicCode": "Q4.2",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -1118,10 +1118,10 @@
           "sourceRationaleStatus": "classic_source_reviewed",
           "jurisdiction": "DE-BW",
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
-          "sourceGoalId": "bw-math-sekii-bp2016-2-1-08-22f8e2ad",
-          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.1, Kompetenz 8, S. 12.",
-          "topicCode": "BP2016-2.1",
-          "matchType": null
+          "sourceGoalId": "bw-math-sekii-bp2016-2-5-01-329b8f6f",
+          "sourceRef": "Bildungsplan BW Mathematik Gymnasium 2016, 2.5, Kompetenz 1, S. 16.",
+          "topicCode": null,
+          "matchType": "exact"
         },
         {
           "goalId": "d5e1e007-7c64-5350-8aa9-fde93f8a76b5",
@@ -1585,8 +1585,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
           "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
           "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": "G9-9.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -1627,8 +1627,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
           "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
           "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": "G9-9.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
@@ -1669,8 +1669,8 @@
           "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
           "sourceGoalId": "he-math-seki-g9-9-1-03-6c2d7b55",
           "sourceRef": "Lehrplan Gymnasium G9 Mathematik, G9 9.1 Algebra",
-          "topicCode": "G9-9.1",
-          "matchType": null
+          "topicCode": null,
+          "matchType": "exact"
         }
       ],
       "recommendedAction": "Pruefen, ob ein bereits belegter Geschwister-Quellenabschnitt auch dieses kanonische Ziel traegt; falls ja, Mapping-Review um die Ziel-ID ergaenzen oder Source-Extraction feiner splitten."
