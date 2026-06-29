@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Startcode einloesen",
-        "description": "Startcode einloesen.",
+        "description": "Startcode einloesen. Wenn die Antwort `assistantResponsePrefixMarkdown` enthaelt, muss der GPT diese Markdown-Zeile als erste sichtbare Zeile der naechsten Antwort wortgleich ausgeben.",
         "requestBody": {
           "required": true,
           "content": {
@@ -862,7 +862,7 @@
           },
           "activeGoalVisualizationMarkdown": {
             "type": "string",
-            "description": "Fertige Markdown-Bildzeile für das primäre Lernzielbild. Wenn vorhanden, beim Einstieg in teachActiveGoal vor der Erklärung wortgleich ausgeben."
+            "description": "Fertige Markdown-Bildzeile für das primäre Lernzielbild. Wenn vorhanden, beim Einstieg in teachActiveGoal vor der Erklärung wortgleich ausgeben. In der Startcode-Antwort ist dieselbe Zeile zusätzlich direkt als `assistantResponsePrefixMarkdown` vorhanden."
           },
           "modeOptions": {
             "type": "array",
@@ -1383,6 +1383,10 @@
           },
           "state": {
             "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
+          },
+          "assistantResponsePrefixMarkdown": {
+            "type": "string",
+            "description": "Optionale Markdown-Zeile, die als erste sichtbare Zeile der naechsten GPT-Antwort wortgleich ausgegeben werden muss. Derzeit wird hier das aktive Lernzielbild geliefert, falls das bestaetigte aktive Ziel eine Visualisierung hat."
           }
         }
       },

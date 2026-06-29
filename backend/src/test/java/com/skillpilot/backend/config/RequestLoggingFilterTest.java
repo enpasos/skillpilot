@@ -51,6 +51,73 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void formatBodyForOperationalLogRedactsRedeemRequestAndResponseSecrets() {
+        String redeemRequest = """
+                {
+                  "startCode": "SP-2345-6789"
+                }
+                """;
+        String redeemResponse = """
+                {
+                  "chatSessionToken": "sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q",
+                  "assistantResponsePrefixMarkdown": "![Visualisierung](https://skillpilot.com/ai-assets/example.jpg)"
+                }
+                """;
+
+        String redactedRequest = filter.formatBodyForOperationalLog(redeemRequest);
+        String redactedResponse = filter.formatBodyForOperationalLog(redeemResponse);
+
+        assertThat(redactedRequest).doesNotContain("SP-2345-6789");
+        assertThat(redactedRequest).contains("\"startCode\":\"<redacted>\"");
+        assertThat(redactedResponse).doesNotContain("sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q");
+        assertThat(redactedResponse).contains("\"chatSessionToken\":\"<redacted>\"");
+        assertThat(redactedResponse).contains("\"assistantResponsePrefixMarkdown\"");
+    }
+
+    @Test
+    void resolveTraceSubjectUsesRedeemResponseSessionTokenForPerSessionTrace() {
+        String chatSessionToken = "sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q";
+        String requestBody = """
+                {"startCode":"SP-2345-6789"}
+                """;
+        String responseBody = """
+                {"chatSessionToken":"%s","state":{"skillpilotId":null}}
+                """.formatted(chatSessionToken);
+
+        String refFromRedeem = filter.resolveTraceSubjectRef(
+                "/api/ai/de/chat-start/redeem",
+                requestBody,
+                responseBody);
+        String refFromSessionCall = filter.resolveTraceSubjectRef(
+                "/api/ai/de/sessions/%s/state".formatted(chatSessionToken),
+                "",
+                "{\"skillpilotId\":null}");
+
+        assertThat(filter.resolveTraceSubjectType(
+                "/api/ai/de/chat-start/redeem",
+                requestBody,
+                responseBody)).isEqualTo("chatSessionToken");
+        assertThat(refFromRedeem).isEqualTo(filter.stableSensitiveRef(chatSessionToken));
+        assertThat(refFromRedeem).isEqualTo(refFromSessionCall);
+        assertThat(refFromRedeem).doesNotContain(chatSessionToken);
+    }
+
+    @Test
+    void resolveTraceSubjectFallsBackToStartCodeForFailedRedeem() {
+        String startCode = "SP-2345-6789";
+
+        assertThat(filter.resolveTraceSubjectType(
+                "/api/ai/de/chat-start/redeem",
+                "{\"startCode\":\"%s\"}".formatted(startCode),
+                "{\"error\":\"Start code not found\"}")).isEqualTo("startCode");
+        assertThat(filter.resolveTraceSubjectRef(
+                "/api/ai/de/chat-start/redeem",
+                "{\"startCode\":\"%s\"}".formatted(startCode),
+                "{\"error\":\"Start code not found\"}"))
+                .isEqualTo(filter.stableSensitiveRef(startCode));
+    }
+
+    @Test
     void stableSensitiveRefDoesNotExposeTheOriginalId() {
         String skillpilotId = "b43a1e45-f05c-4d78-8453-f6fa677dc24c";
 

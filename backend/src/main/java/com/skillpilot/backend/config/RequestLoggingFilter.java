@@ -108,8 +108,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             String requestBody,
             String responseBody) {
         Path path = resolveAiTracePath();
-        String skillpilotId = resolveSkillpilotId(request.getRequestURI(), requestBody, responseBody);
-        String skillpilotRef = stableSensitiveRef(skillpilotId);
+        TraceSubject traceSubject = resolveTraceSubject(request.getRequestURI(), requestBody, responseBody);
+        String skillpilotRef = stableSensitiveRef(traceSubject.value());
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("ts", Instant.now().toString());
         entry.put("method", request.getMethod());
@@ -117,6 +117,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         entry.put("query", sanitizeQueryForTrace(request.getQueryString()));
         entry.put("status", response.getStatus());
         entry.put("durationMs", duration);
+        entry.put("traceSubjectType", traceSubject.type());
         entry.put("skillpilotRef", skillpilotRef);
         entry.put("requestBody", formatBodyForTrace(requestBody));
         entry.put("responseBody", formatBodyForTrace(responseBody));
@@ -223,6 +224,14 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         }
     }
 
+    String resolveTraceSubjectType(String uri, String requestBody, String responseBody) {
+        return resolveTraceSubject(uri, requestBody, responseBody).type();
+    }
+
+    String resolveTraceSubjectRef(String uri, String requestBody, String responseBody) {
+        return stableSensitiveRef(resolveTraceSubject(uri, requestBody, responseBody).value());
+    }
+
     private String sanitizeQueryForTrace(String query) {
         if (query == null || query.isBlank()) {
             return "";
@@ -306,16 +315,42 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         return value.substring(0, OPERATIONAL_LOG_MAX_BODY_CHARS) + "...(truncated)";
     }
 
-    private String resolveSkillpilotId(String uri, String requestBody, String responseBody) {
+    private TraceSubject resolveTraceSubject(String uri, String requestBody, String responseBody) {
         String skillpilotId = extractSkillpilotId(uri);
         if (!skillpilotId.isBlank()) {
-            return skillpilotId;
+            return new TraceSubject("skillpilotId", skillpilotId);
         }
         skillpilotId = extractSkillpilotIdFromJson(requestBody);
         if (!skillpilotId.isBlank()) {
-            return skillpilotId;
+            return new TraceSubject("skillpilotId", skillpilotId);
         }
-        return extractSkillpilotIdFromJson(responseBody);
+        skillpilotId = extractSkillpilotIdFromJson(responseBody);
+        if (!skillpilotId.isBlank()) {
+            return new TraceSubject("skillpilotId", skillpilotId);
+        }
+
+        String chatSessionToken = extractPathSegmentAfter(uri, "sessions");
+        if (!chatSessionToken.isBlank()) {
+            return new TraceSubject("chatSessionToken", chatSessionToken);
+        }
+        chatSessionToken = extractTextFieldFromJson(responseBody, "chatSessionToken");
+        if (!chatSessionToken.isBlank()) {
+            return new TraceSubject("chatSessionToken", chatSessionToken);
+        }
+        chatSessionToken = extractTextFieldFromJson(requestBody, "chatSessionToken");
+        if (!chatSessionToken.isBlank()) {
+            return new TraceSubject("chatSessionToken", chatSessionToken);
+        }
+
+        String startCode = extractTextFieldFromJson(requestBody, "startCode");
+        if (!startCode.isBlank()) {
+            return new TraceSubject("startCode", startCode);
+        }
+        startCode = extractTextFieldFromJson(responseBody, "startCode");
+        if (!startCode.isBlank()) {
+            return new TraceSubject("startCode", startCode);
+        }
+        return new TraceSubject("", "");
     }
 
     private String extractSkillpilotIdFromJson(String body) {
@@ -342,16 +377,38 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     }
 
     private String extractSkillpilotId(String uri) {
-        if (uri == null) {
+        return extractPathSegmentAfter(uri, "learners");
+    }
+
+    private String extractPathSegmentAfter(String uri, String segment) {
+        if (uri == null || segment == null || segment.isBlank()) {
             return "";
         }
         String[] parts = uri.split("/");
         for (int i = 0; i < parts.length - 1; i++) {
-            if ("learners".equals(parts[i])) {
+            if (segment.equals(parts[i]) && parts[i + 1] != null && !parts[i + 1].isBlank()) {
                 return parts[i + 1];
             }
         }
         return "";
     }
 
+    private String extractTextFieldFromJson(String body, String fieldName) {
+        if (body == null || body.isBlank() || fieldName == null || fieldName.isBlank()) {
+            return "";
+        }
+        try {
+            JsonNode node = objectMapper.readTree(body);
+            JsonNode direct = node.get(fieldName);
+            if (direct != null && direct.isTextual() && !direct.asText("").isBlank()) {
+                return direct.asText("");
+            }
+        } catch (IOException ignored) {
+            return "";
+        }
+        return "";
+    }
+
+    private record TraceSubject(String type, String value) {
+    }
 }
