@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Redeem start code",
-        "description": "Redeem start code. If `assistantNextMessageMarkdown` is set, output it verbatim as the first visible answer line. Then briefly explain.",
+        "description": "Redeem start code. `assistantMessage` is the visible startup answer and may contain a Cockpit link to the active goal.",
         "requestBody": {
           "required": true,
           "content": {
@@ -655,7 +655,7 @@
             }
           },
           "resourceLinks": {
-            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI learning coaches. Goal images are represented here as links with type=goal-visualization and resourceType=image.",
+            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI learning coaches.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -723,15 +723,15 @@
           },
           "skillpilotId": {
             "type": "string",
-            "description": "Optional goal reference. For goal visualizations this equals the learning goal ID."
+            "description": "Optional goal reference."
           },
           "role": {
             "type": "string",
-            "description": "Optional role of the link, e.g. primary. For goal visualizations the GPT should prefer role=primary."
+            "description": "Optional role of the link, e.g. primary."
           },
           "altText": {
             "type": "string",
-            "description": "Alternative text for images. Use as Markdown alt text for goal-visualization images."
+            "description": "Alternative text for image resources."
           },
           "reviewStatus": {
             "type": "string",
@@ -855,14 +855,6 @@
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Confirmed active goal inside state machine."
-          },
-          "activeGoalVisualization": {
-            "$ref": "#/components/schemas/GoalSourceLink",
-            "description": "Primary goal image for the confirmed active goal, if present. The URL is already absolute for ChatGPT and rewritten to /ai-assets."
-          },
-          "activeGoalVisualizationMarkdown": {
-            "type": "string",
-            "description": "Ready-to-send Markdown image line for the primary goal image. If present, output it verbatim before explanation when entering teachActiveGoal. In the start-code response, the same line is also exposed directly as `mandatoryFirstAssistantLineMarkdown` and `assistantResponsePrefixMarkdown`."
           },
           "modeOptions": {
             "type": "array",
@@ -1367,14 +1359,15 @@
       "RedeemStartCodeResponse": {
         "type": "object",
         "required": [
+          "assistantMessage",
           "chatSessionToken",
           "expiresAt",
           "state"
         ],
         "properties": {
-          "assistantNextMessageMarkdown": {
+          "assistantMessage": {
             "type": "string",
-            "description": "Markdown line the GPT must output directly as the beginning of the next answer."
+            "description": "Complete visible startup answer for the GPT. Output verbatim; may include the Cockpit link to the active goal."
           },
           "chatSessionToken": {
             "type": "string",
@@ -1387,18 +1380,6 @@
           },
           "state": {
             "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
-          },
-          "assistantResponsePrefixMarkdown": {
-            "type": "string",
-            "description": "Optional Markdown line that must be output verbatim as the first visible line of the next GPT answer. Currently used for the active goal image when the confirmed active goal has a visualization."
-          },
-          "mandatoryFirstAssistantLineMarkdown": {
-            "type": "string",
-            "description": "Mandatory first visible Markdown line of the next GPT answer. If set, the GPT must output exactly this line before any other text."
-          },
-          "assistantDisplayInstruction": {
-            "type": "string",
-            "description": "Short display instruction for the next GPT answer. Follow it, but do not display the instruction text itself."
           }
         }
       },

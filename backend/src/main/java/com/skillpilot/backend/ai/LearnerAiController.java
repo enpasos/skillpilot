@@ -153,10 +153,11 @@ public class LearnerAiController {
                 request == null ? null : request.startCode(),
                 lang);
         markAiTraceSkillpilotId(servletRequest, session.skillpilotId());
-        return new RedeemStartCodeResponse(
+        return RedeemStartCodeResponse.fromState(
                 session.chatSessionToken(),
                 session.expiresAt(),
-                prepareLearnerState(session.skillpilotId(), true));
+                prepareLearnerState(session.skillpilotId(), true),
+                resolveBaseUrl());
     }
 
     @GetMapping("/sessions/{chatSessionToken}/state")
@@ -532,8 +533,6 @@ public class LearnerAiController {
         com.skillpilot.backend.api.LearnerGoals goals = rewriteLearnerGoals(state.goals(), assetBase);
         com.skillpilot.backend.api.FrontierGoal stateMachineActiveGoal = sm == null ? null
                 : rewriteExamData(sm.activeGoal(), assetBase);
-        GoalSourceLink activeGoalVisualization = primaryGoalVisualization(
-                stateMachineActiveGoal != null ? stateMachineActiveGoal : activeGoal);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
@@ -541,9 +540,7 @@ public class LearnerAiController {
                         prepareSelectableGoalsForAi(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         stateMachineActiveGoal,
-                        sm.modeOptions(),
-                        activeGoalVisualization,
-                        toMarkdownImage(activeGoalVisualization));
+                        sm.modeOptions());
 
         return new UnifiedLearnerStateResponse(
                 state.skillpilotId(),
@@ -574,8 +571,6 @@ public class LearnerAiController {
         com.skillpilot.backend.api.FrontierGoal activeGoal = rewriteExamData(response.activeGoal(), assetBase);
         com.skillpilot.backend.api.FrontierGoal stateMachineActiveGoal = sm == null ? null
                 : rewriteExamData(sm.activeGoal(), assetBase);
-        GoalSourceLink activeGoalVisualization = primaryGoalVisualization(
-                stateMachineActiveGoal != null ? stateMachineActiveGoal : activeGoal);
         com.skillpilot.backend.api.StateMachineInfo smUpdated = sm == null ? null
                 : new com.skillpilot.backend.api.StateMachineInfo(
                         sm.state(),
@@ -583,9 +578,7 @@ public class LearnerAiController {
                         prepareSelectableGoalsForAi(rewriteExamData(sm.goalOptions(), assetBase)),
                         sm.curriculumOptions(),
                         stateMachineActiveGoal,
-                        sm.modeOptions(),
-                        activeGoalVisualization,
-                        toMarkdownImage(activeGoalVisualization));
+                        sm.modeOptions());
 
         return new MasteryUpdateResponse(
                 response.saved(),
@@ -751,6 +744,7 @@ public class LearnerAiController {
             return links;
         }
         return links.stream()
+                .filter(link -> !isGoalVisualizationImage(link))
                 .map(link -> rewriteResourceLink(link, assetBase))
                 .toList();
     }
@@ -775,44 +769,11 @@ public class LearnerAiController {
                 link.reviewStatus());
     }
 
-    private GoalSourceLink primaryGoalVisualization(com.skillpilot.backend.api.FrontierGoal goal) {
-        if (goal == null || goal.resourceLinks() == null || goal.resourceLinks().isEmpty()) {
-            return null;
-        }
-        List<GoalSourceLink> visualizations = goal.resourceLinks().stream()
-                .filter(this::isGoalVisualizationImage)
-                .toList();
-        if (visualizations.isEmpty()) {
-            return null;
-        }
-        return visualizations.stream()
-                .filter(link -> "primary".equals(link.role()))
-                .findFirst()
-                .orElse(visualizations.get(0));
-    }
-
     private boolean isGoalVisualizationImage(GoalSourceLink link) {
         if (link == null) {
             return false;
         }
         return "goal-visualization".equals(link.type()) && "image".equals(link.resourceType());
-    }
-
-    private String toMarkdownImage(GoalSourceLink link) {
-        if (link == null || link.url() == null || link.url().isBlank()) {
-            return null;
-        }
-        String altText = link.title();
-        if (altText == null || altText.isBlank()) {
-            altText = "Lernzielbild";
-        }
-        return "![" + escapeMarkdownImageAltText(altText) + "](" + link.url() + ")";
-    }
-
-    private String escapeMarkdownImageAltText(String value) {
-        return value.replace("\\", "\\\\")
-                .replace("[", "\\[")
-                .replace("]", "\\]");
     }
 
     private String rewriteResourceLinkUrl(String url, String assetBase) {

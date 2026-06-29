@@ -384,13 +384,13 @@ Interpretation:
 
 ### 7.3 Atomic goal visualizations
 
-Atomic learning goals may optionally carry one or more didactic image references for cockpit and GPT use.
+Atomic learning goals may optionally carry one or more didactic image references for cockpit use. GPT-facing flows do not render these images directly; they link learners into the cockpit when visual orientation is useful.
 
 Rule:
 
 * Store visualization references directly on the goal in canonical `resourceLinks`, not in a separate learner-facing branch or custom top-level image field.
 * Use `type: "goal-visualization"`, `resourceType: "image"`, and `skillpilotId` equal to the containing goal's `id`.
-* Public URLs should be root-relative under `/assets/goal-visualizations/...`; AI endpoints rewrite them to absolute `/ai-assets/...` URLs.
+* Public URLs should be root-relative under `/assets/goal-visualizations/...`; GPT-facing AI endpoints should not expose goal-visualization images as chat images. Use a normal cockpit deep link instead, such as `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
 * Image filenames should be the same SkillPilot ID plus image extension, using `<skillpilotId>.<ext>`, so copied assets remain self-identifying without creating Windows path-length problems.
 * Keep source image and prompt metadata under `curricula/DE/Gymnasium/visualizations/<subject>/<skillpilotId>/`.
 * For Nano Banana Pro automation, prefer `npm --prefix app run visualization:generate:nano-banana -- <goal>` with `GEMINI_API_KEY` or `GOOGLE_API_KEY` set; this generates the image, writes trace files under `tmp/`, imports the asset, and updates the canonical JSON.

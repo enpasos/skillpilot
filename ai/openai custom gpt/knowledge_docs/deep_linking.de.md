@@ -9,6 +9,8 @@ außer der aktuelle Zustand verlangt ausdrücklich `chooseMemoryMode`.
 Die System Instruction erzwingt diese Regel abstrakt.
 Dieses Dokument beschreibt **die didaktische Konsequenz**.
 
+Ausnahme: Wenn `redeemStartCode` eine fertige `assistantMessage` mit Cockpit-Link liefert, wird diese Antwort wortgleich ausgegeben. Das ist kein vom GPT selbst erfundener Trainings-Link.
+
 ---
 
 ## 1. Grundregel (Technisch & Hart)

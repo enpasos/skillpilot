@@ -138,91 +138,58 @@ class AiPromptContractTest {
     }
 
     @Test
-    void prompts_defineActiveGoalVisualizationDisplay() throws Exception {
+    void prompts_defineCockpitLinkStartupDisplay() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType = \"image\"",
-                "Markdown-Bild",
+                "assistantMessage",
+                "Cockpit-Link",
+                "Bilder werden im GPT nicht gerendert",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType = \"image\"",
-                "Markdown image",
+                "assistantMessage",
+                "Cockpit link",
+                "Do not render images inside GPT",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType = \"image\"",
-                "Markdown",
+                "assistantMessage",
+                "Cockpit-Link",
+                "Bilder im GPT nicht rendern",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType = \"image\"",
-                "Markdown image",
+                "assistantMessage",
+                "Cockpit link",
+                "Do not render images inside GPT",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType=image",
-                "Markdown-Bild",
+                "assistantMessage",
+                "Cockpit-Link",
+                "Bilder nicht im GPT rendern",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
-                "assistantNextMessageMarkdown",
-                "assistantDisplayInstruction",
-                "mandatoryFirstAssistantLineMarkdown",
-                "assistantResponsePrefixMarkdown",
-                "activeGoalVisualizationMarkdown",
-                "state.stateMachine.activeGoalVisualizationMarkdown",
-                "goal-visualization",
-                "resourceType=image",
-                "Markdown image",
+                "assistantMessage",
+                "Cockpit link",
+                "Do not render images inside GPT",
                 "teachActiveGoal");
     }
 
     @Test
-    void optimizedActionSchemasExposeGoalVisualizationMetadata() throws Exception {
+    void optimizedActionSchemasExposeSimpleStartupMessageOnly() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
-                "goal-visualization",
-                "resourceType=image",
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
                 "\"skillpilotId\"",
+                "\"assistantMessage\"",
+                "Cockpit-Link");
+        assertDoesNotContainFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                "\"activeGoalVisualization\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"assistantNextMessageMarkdown\"",
                 "\"mandatoryFirstAssistantLineMarkdown\"",
@@ -230,12 +197,15 @@ class AiPromptContractTest {
                 "\"assistantResponsePrefixMarkdown\"");
         assertContainsFragments(
                 Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
-                "goal-visualization",
-                "resourceType=image",
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
                 "\"skillpilotId\"",
+                "\"assistantMessage\"",
+                "Cockpit link");
+        assertDoesNotContainFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                "\"activeGoalVisualization\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"assistantNextMessageMarkdown\"",
                 "\"mandatoryFirstAssistantLineMarkdown\"",

@@ -4,7 +4,7 @@ This document defines the production and integration convention for visualizing 
 
 ## Purpose
 
-Atomic goal visualizations are compact didactic images that help learners recognize the core idea of one atomic learning goal. They are not tasks, solutions, or curriculum evidence. A visualization may support orientation in the cockpit and in GPT-based coaching, but the graph goal remains the source of truth.
+Atomic goal visualizations are compact didactic images that help learners recognize the core idea of one atomic learning goal. They are not tasks, solutions, or curriculum evidence. A visualization supports orientation in the cockpit. GPT-based coaching does not render these images directly; it links learners into the cockpit when visual orientation is useful. The graph goal remains the source of truth.
 
 ## Canonical JSON Format
 
@@ -35,7 +35,7 @@ Rules:
 - Use `type: "goal-visualization"` and `resourceType: "image"`; do not introduce another top-level goal field for images.
 - The public `url` must be root-relative under `/assets/goal-visualizations/...` so the cockpit can render it locally.
 - The image filename must be the SkillPilot ID plus extension: `<skillpilotId>.<ext>`. Keep language in the link metadata (`lang`), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.
-- The AI API rewrites `/assets/...` to an absolute `/ai-assets/...` URL for GPT clients.
+- GPT-facing AI endpoints do not render or expose goal-visualization images as chat images. They use a normal cockpit deep link such as `https://skillpilot.com/?l=<curriculumId>&goal=<goalId>`.
 - A goal may have multiple visualization links, but at most one `role: "primary"` per language should be visible in ordinary learner views.
 - `reviewStatus: "pilot"` is allowed for integration pilots. Broad rollout should use reviewed assets only.
 
@@ -56,7 +56,7 @@ app/public/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.p
 backend/src/main/resources/static/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
 ```
 
-`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into both `app/public/assets/goal-visualizations` and `backend/src/main/resources/static/assets/goal-visualizations`. The Vite production build also writes public assets to `backend/src/main/resources/static`, but the explicit backend copy keeps local GPT asset checks consistent before a full frontend build.
+`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into both `app/public/assets/goal-visualizations` and `backend/src/main/resources/static/assets/goal-visualizations`. The Vite production build also writes public assets to `backend/src/main/resources/static`, but the explicit backend copy keeps local static-asset checks consistent before a full frontend build.
 
 Reference pools of example tasks or image inspirations may be kept locally under `tmp/`, but must not be committed if licensing is unclear. They must never be copied into final assets.
 
@@ -69,7 +69,7 @@ Reference pools of example tasks or image inspirations may be kept locally under
 5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
 6. Add the optional `resourceLinks` entry to the canonical goal JSON.
 7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
-8. Validate graph JSON, frontend rendering, and AI state output.
+8. Validate graph JSON, cockpit rendering, and the GPT cockpit-link handoff.
 
 ## Automated Nano Banana Pro Workflow
 
@@ -217,7 +217,7 @@ Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
 - The image has no copied third-party worksheet, logo, character, or protected layout.
 - The context is plausible and age-appropriate for the goal.
 - Text is readable at cockpit card width and does not dominate the image.
-- The image still works if GPT can only provide the URL plus alt text.
+- The image works in the cockpit goal card; GPT users can reach it through the cockpit deep link.
 - The visual does not replace the need for explanation, practice, or assessment.
 - `altText` is specific enough for non-visual use.
 - `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.

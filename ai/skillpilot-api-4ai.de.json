@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Startcode einloesen",
-        "description": "Startcode einloesen. Wenn `assistantNextMessageMarkdown` gesetzt ist: als erste sichtbare Antwortzeile wortgleich ausgeben. Dann erst kurz erklären.",
+        "description": "Startcode einloesen. `assistantMessage` ist die sichtbare Startantwort und kann einen Cockpit-Link zum aktiven Ziel enthalten.",
         "requestBody": {
           "required": true,
           "content": {
@@ -655,7 +655,7 @@
             }
           },
           "resourceLinks": {
-            "description": "Geordnete hilfreiche Lernressourcen für dieses Lernziel. Kanonisches Feld für Cockpit und KI-Lerncoaches. Lernzielbilder stehen hier als Links mit type=goal-visualization und resourceType=image.",
+            "description": "Geordnete hilfreiche Lernressourcen fuer dieses Lernziel. Kanonisches Feld fuer Cockpit und KI-Lerncoaches.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -723,15 +723,15 @@
           },
           "skillpilotId": {
             "type": "string",
-            "description": "Optionaler Zielbezug. Bei Lernziel-Visualisierungen entspricht dies der Lernziel-ID."
+            "description": "Optionaler Zielbezug."
           },
           "role": {
             "type": "string",
-            "description": "Optionale Rolle des Links, z. B. primary. Für Lernziel-Visualisierungen bevorzugt der GPT role=primary."
+            "description": "Optionale Rolle des Links, z. B. primary."
           },
           "altText": {
             "type": "string",
-            "description": "Alternativtext für Bilder. Bei goal-visualization als Markdown-Alt-Text verwenden."
+            "description": "Alternativtext fuer Bildressourcen."
           },
           "reviewStatus": {
             "type": "string",
@@ -855,14 +855,6 @@
           "activeGoal": {
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Bestätigtes aktives Ziel im State Machine-Teil."
-          },
-          "activeGoalVisualization": {
-            "$ref": "#/components/schemas/GoalSourceLink",
-            "description": "Primäres Lernzielbild für das bestätigte aktive Ziel, falls vorhanden. Die URL ist für ChatGPT bereits absolut und auf /ai-assets umgeschrieben."
-          },
-          "activeGoalVisualizationMarkdown": {
-            "type": "string",
-            "description": "Fertige Markdown-Bildzeile für das primäre Lernzielbild. Wenn vorhanden, beim Einstieg in teachActiveGoal vor der Erklärung wortgleich ausgeben. In der Startcode-Antwort ist dieselbe Zeile zusätzlich direkt als `mandatoryFirstAssistantLineMarkdown` und `assistantResponsePrefixMarkdown` vorhanden."
           },
           "modeOptions": {
             "type": "array",
@@ -1367,14 +1359,15 @@
       "RedeemStartCodeResponse": {
         "type": "object",
         "required": [
+          "assistantMessage",
           "chatSessionToken",
           "expiresAt",
           "state"
         ],
         "properties": {
-          "assistantNextMessageMarkdown": {
+          "assistantMessage": {
             "type": "string",
-            "description": "Markdown-Zeile, die der GPT direkt als Beginn der naechsten Antwort ausgeben muss."
+            "description": "Vollstaendige sichtbare Startantwort fuer den GPT. Wortgleich ausgeben; enthaelt ggf. den Cockpit-Link zum aktiven Ziel."
           },
           "chatSessionToken": {
             "type": "string",
@@ -1387,18 +1380,6 @@
           },
           "state": {
             "$ref": "#/components/schemas/UnifiedLearnerStateResponse"
-          },
-          "assistantResponsePrefixMarkdown": {
-            "type": "string",
-            "description": "Optionale Markdown-Zeile, die als erste sichtbare Zeile der naechsten GPT-Antwort wortgleich ausgegeben werden muss. Derzeit wird hier das aktive Lernzielbild geliefert, falls das bestaetigte aktive Ziel eine Visualisierung hat."
-          },
-          "mandatoryFirstAssistantLineMarkdown": {
-            "type": "string",
-            "description": "Verpflichtende erste sichtbare Markdown-Zeile der naechsten GPT-Antwort. Wenn gesetzt, muss der GPT genau diese Zeile vor jedem anderen Text ausgeben."
-          },
-          "assistantDisplayInstruction": {
-            "type": "string",
-            "description": "Kurze Anzeigeanweisung fuer die naechste GPT-Antwort. Befolgen, aber nicht als Text anzeigen."
           }
         }
       },
