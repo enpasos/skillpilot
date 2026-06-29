@@ -31,7 +31,7 @@ Titel: Potenzen mit natürlichen Exponenten und Zehnerpotenzen verwenden
 Beschreibung: Die lernende Person kann Potenzen mit natürlichen Exponenten berechnen, Zehnerpotenzen zur Darstellung großer Zahlen verwenden und einfache Kontexte damit beschreiben.
 
 Zusatzanweisung:
-Regenerate with exact visuals. If you draw a cube for 2^3, it must be clearly 2 by 2 by 2, exactly eight small cubes, not a 3 by 3 by 3 cube. Better: use number cards and repeated multiplication instead of a cube. Required equations: 2^3 = 2 * 2 * 2 = 8; 10^1 = 10; 10^2 = 100; 10^3 = 1000; 10000 = 10^4. Do not add false exponent rules. Do not show a countable crowd meant to equal 10000 people. Little German text, no SkillPilot IDs.
+Regenerate with exact visuals. If you draw a cube for 2^3, it must be clearly 2 by 2 by 2, exactly eight small cubes, not a 3 by 3 by 3 cube. Better: use number cards and repeated multiplication instead of a cube. Required equations: 2^3 = 2 * 2 * 2 = 8; 10^1 = 10; 10^2 = 100; 10^3 = 1000; 10000 = 10^4. Do not add false exponent rules. Do not show a countable crowd meant to equal 10000 people. Little German text, no technical IDs.
 ```
 
 ## Review-Notiz

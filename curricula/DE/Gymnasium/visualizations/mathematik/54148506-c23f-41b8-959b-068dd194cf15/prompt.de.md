@@ -31,7 +31,7 @@ Titel: Einfache multiplikative Gleichungen durch Umkehroperationen lösen
 Beschreibung: Die lernende Person kann einfache Gleichungen wie a·x=b, x:a=b oder a:x=b durch Umkehroperationen, systematisches Probieren oder Rückwärtsarbeiten lösen.
 
 Zusatzanweisung:
-Use only grade-5-appropriate mathematics. Keep examples small and exact. Do not show decimal fractions, negative numbers, variables beyond simple placeholder boxes, or advanced algebra unless they are part of the goal. For arithmetic laws, show concrete numbers and a clear before/after comparison. For inverse-operation equations, show missing-number boxes such as box + 18 = 45 and the matching inverse step. For divisibility and prime factorization, all factor trees and divisibility statements must be arithmetically correct. For powers of ten, use correct notation such as 10^3 = 1000 and no false exponent rules. Use little German text and no SkillPilot IDs.
+Use only grade-5-appropriate mathematics. Keep examples small and exact. Do not show decimal fractions, negative numbers, variables beyond simple placeholder boxes, or advanced algebra unless they are part of the goal. For arithmetic laws, show concrete numbers and a clear before/after comparison. For inverse-operation equations, show missing-number boxes such as box + 18 = 45 and the matching inverse step. For divisibility and prime factorization, all factor trees and divisibility statements must be arithmetically correct. For powers of ten, use correct notation such as 10^3 = 1000 and no false exponent rules. Use little German text and no technical IDs.
 ```
 
 ## Review-Notiz

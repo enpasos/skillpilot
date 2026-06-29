@@ -135,6 +135,9 @@ function defaultResumeFilePath(args) {
   const goalsFromFile = getStringArg(args, 'file')
   if (goalsFromFile) {
     const batchPath = resolveProjectPath(goalsFromFile)
+    if (path.basename(batchPath).includes('.resume.')) {
+      return batchPath
+    }
     const ext = path.extname(batchPath)
     if (ext) {
       return path.join(path.dirname(batchPath), `${path.basename(batchPath, ext)}.resume${ext}`)
