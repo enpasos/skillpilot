@@ -655,7 +655,7 @@
             }
           },
           "resourceLinks": {
-            "description": "Geordnete hilfreiche Lernressourcen für dieses Lernziel. Kanonisches Feld für Cockpit und KI-Lerncoaches.",
+            "description": "Geordnete hilfreiche Lernressourcen für dieses Lernziel. Kanonisches Feld für Cockpit und KI-Lerncoaches. Lernzielbilder stehen hier als Links mit type=goal-visualization und resourceType=image.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -720,6 +720,22 @@
           "license": {
             "type": "string",
             "description": "Optionale Lizenzbezeichnung der verlinkten Ressource."
+          },
+          "skillpilotId": {
+            "type": "string",
+            "description": "Optionaler Zielbezug. Bei Lernziel-Visualisierungen entspricht dies der Lernziel-ID."
+          },
+          "role": {
+            "type": "string",
+            "description": "Optionale Rolle des Links, z. B. primary. Für Lernziel-Visualisierungen bevorzugt der GPT role=primary."
+          },
+          "altText": {
+            "type": "string",
+            "description": "Alternativtext für Bilder. Bei goal-visualization als Markdown-Alt-Text verwenden."
+          },
+          "reviewStatus": {
+            "type": "string",
+            "description": "Optionaler Reviewstatus der Ressource, z. B. pilot."
           }
         }
       },

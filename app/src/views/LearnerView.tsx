@@ -58,6 +58,7 @@ import {
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
+import type { ResourceLink } from '../landscapeTypes'
 
 interface LearnerViewProps {
   rootGoals: UiGoal[]
@@ -111,6 +112,61 @@ const clampVerifiedRecallBatchSize = (value: number) => {
 const verifiedRecallBatchStorageKey = (skillpilotId: string, goalId: string) => (
   `verified_recall_batch_size_${skillpilotId}_${goalId}`
 )
+
+const normalizeGoalVisualizationLinkType = (value?: string): string => (value ?? '').trim().toLowerCase()
+
+const isGoalVisualizationLink = (link: ResourceLink): boolean => {
+  const type = normalizeGoalVisualizationLinkType(link?.type)
+  const resourceType = normalizeGoalVisualizationLinkType(link?.resourceType)
+  return type === 'goal-visualization' || resourceType === 'goal-visualization'
+}
+
+const getAiAssetOrigin = (): string => {
+  const apiBase = (import.meta.env.VITE_API_BASE ?? '').trim()
+  if (apiBase) {
+    try {
+      return new URL(apiBase).origin
+    } catch {
+      // Fall back to the current app origin if local configuration is malformed.
+    }
+  }
+  return typeof window === 'undefined' ? '' : window.location.origin
+}
+
+const toAbsoluteAiImageUrl = (url: string): string => {
+  const trimmed = (url ?? '').trim()
+  if (!trimmed) return trimmed
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
+  const origin = getAiAssetOrigin()
+  if (!origin) return trimmed
+
+  const rootRelative = trimmed.startsWith('/') ? trimmed : `/${trimmed}`
+  if (rootRelative.startsWith('/assets/')) {
+    return `${origin}/ai-assets${rootRelative.substring('/assets'.length)}`
+  }
+  if (rootRelative.startsWith('/ai-assets/')) {
+    return `${origin}${rootRelative}`
+  }
+  return `${origin}/ai-assets${rootRelative.startsWith('/') ? rootRelative : `/${rootRelative}`}`
+}
+
+const pickGoalVisualizationUrl = (goal: UiGoal): string | null => {
+  const visualizationLinks = Array.isArray(goal.resourceLinks)
+    ? goal.resourceLinks.filter(isGoalVisualizationLink)
+    : []
+  if (visualizationLinks.length === 0) {
+    return null
+  }
+
+  const primaryVisualization = visualizationLinks.find((link) => (
+    normalizeGoalVisualizationLinkType(link.role) === 'primary'
+  ))
+  const rawUrl = (primaryVisualization ?? visualizationLinks[0]).url
+  if (!rawUrl || !rawUrl.trim()) {
+    return null
+  }
+  return toAbsoluteAiImageUrl(rawUrl)
+}
 
 const goalIdsKey = (goalIds: Iterable<string>) => (
   Array.from(goalIds).filter(Boolean).sort().join('|')
@@ -661,11 +717,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
     const title = getLearnerGoalTitle(goal)
+    const visualizationUrl = pickGoalVisualizationUrl(goal)
+    const visualizationBlock = visualizationUrl
+      ? [
+          '',
+          localizedLanguage === 'en'
+            ? `Goal visualization for ${title}:`
+            : `Lernziel-Visualisierung für ${title}:`,
+          `![Goal visualization](${visualizationUrl})`,
+        ].join('\n')
+      : ''
     if (localizedLanguage === 'en') {
       return [
         `Active learning goal: ${goal.id} - ${title}`,
         `Flashcard verification batch size: ${batchSize}`,
         '',
+        visualizationBlock,
         'Please start hard flashcard verification for this active memorization goal.',
         `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`,
       ].join('\n')
@@ -674,6 +741,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       `Aktives Lernziel: ${goal.id} - ${title}`,
       `Batchgröße für die Kartenprüfung: ${batchSize}`,
       '',
+      visualizationBlock,
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
       `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`,
     ].join('\n')

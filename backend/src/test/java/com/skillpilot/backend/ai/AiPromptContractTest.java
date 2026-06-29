@@ -10,6 +10,12 @@ import org.junit.jupiter.api.Test;
 class AiPromptContractTest {
 
     @Test
+    void systemInstructionsStayWithinGptBuilderLimit() throws Exception {
+        assertSystemInstructionLength(Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"));
+        assertSystemInstructionLength(Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"));
+    }
+
+    @Test
     void systemInstructions_requireStartCodeRedeemAndSessionToken() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
@@ -132,6 +138,66 @@ class AiPromptContractTest {
     }
 
     @Test
+    void prompts_defineActiveGoalVisualizationDisplay() throws Exception {
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "goal-visualization",
+                "resourceType = \"image\"",
+                "Markdown-Bild",
+                "teachActiveGoal");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "goal-visualization",
+                "resourceType = \"image\"",
+                "Markdown image",
+                "teachActiveGoal");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "goal-visualization",
+                "resourceType = \"image\"",
+                "Markdown",
+                "teachActiveGoal");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "goal-visualization",
+                "resourceType = \"image\"",
+                "Markdown image",
+                "teachActiveGoal");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
+                "goal-visualization",
+                "resourceType=image",
+                "Markdown-Bild",
+                "teachActiveGoal");
+        assertContainsFragments(
+                Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
+                "goal-visualization",
+                "resourceType=image",
+                "Markdown image",
+                "teachActiveGoal");
+    }
+
+    @Test
+    void optimizedActionSchemasExposeGoalVisualizationMetadata() throws Exception {
+        assertContainsFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                "goal-visualization",
+                "resourceType=image",
+                "\"role\"",
+                "\"altText\"",
+                "\"reviewStatus\"",
+                "\"skillpilotId\"");
+        assertContainsFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                "goal-visualization",
+                "resourceType=image",
+                "\"role\"",
+                "\"altText\"",
+                "\"reviewStatus\"",
+                "\"skillpilotId\"");
+    }
+
+    @Test
     void promptsDoNotTurnFlashcardVerificationFlowErrorsIntoGenericSaveErrors() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "error_handling.de.md"),
@@ -176,6 +242,14 @@ class AiPromptContractTest {
         for (String fragment : fragments) {
             assertThat(text).containsIgnoringCase(fragment);
         }
+    }
+
+    private static void assertSystemInstructionLength(Path path) throws IOException {
+        String text = Files.readString(path);
+        int charCount = text.codePointCount(0, text.length());
+        assertThat(charCount)
+                .as(path + " must stay within GPT Builder's 8000 character instruction limit")
+                .isLessThanOrEqualTo(8000);
     }
 
     private static void assertDoesNotContainFragments(Path path, String... fragments) throws IOException {

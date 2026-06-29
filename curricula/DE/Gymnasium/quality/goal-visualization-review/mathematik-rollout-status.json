@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T08:28:01.106Z",
+  "generatedAt": "2026-06-29T09:01:52.848Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -11,20 +11,20 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 184,
-    "coveragePercent": 24.4,
+    "goalsWithPrimaryVisualization": 187,
+    "coveragePercent": 24.8,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 184
+      "pilot": 187
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 184
+      "pilot": 187
     },
-    "reviewLedgerFiles": 40,
+    "reviewLedgerFiles": 43,
     "reviewDecisionCounts": {
       "accepted_pilot": 134,
-      "accepted_pilot_after_regeneration": 50,
-      "accepted_pilot_after_user_review_correction": 4,
+      "accepted_pilot_after_regeneration": 53,
+      "accepted_pilot_after_user_review_correction": 6,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 1,
       "not_attempted_after_quota_block": 4,
@@ -38,7 +38,7 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-040.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-043.md",
     "latestLedgerStatus": "completed_pilot",
     "resumeFile": "tmp/goal-visualization-batch-038.resume.txt",
     "resumeFileExists": false,
@@ -109,6 +109,20 @@
         "title": "Wurzelfunktionen graphisch untersuchen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The previous image placed the \"Startpunkt (0|0)\" arrow away from the origin. The corrected image marks `(0|0)` as an included point at the origin and places the \"Startpunkt (0|0)\" arrow directly on that point, while keeping `y=sqrt(x)`, `D=[0;∞)`, `W=[0;∞)`, and the points `(1|1)`, `(4|2)`, `(9|3)`. This addresses the reported issue."
+      },
+      {
+        "batch": "041",
+        "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+        "title": "Umgekehrt proportionale Größen mit Hyperbeln beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The previous asset used implausibly low speeds (6 km/h and 2 km/h in a car context). The corrected image uses `v=20 km/h` and `v=60 km/h` on a fixed distance of `120 km`, with consistent inverse-proportional times `t=6 h` and `t=2 h` (and intermediate points `30 km/h, 4 h` and `40 km/h, 3 h`). It also retains `y=120/x` and `x*y=120` as the central relation."
+      },
+      {
+        "batch": "042",
+        "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+        "title": "Darstellungsformen gerader Körper verknüpfen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The previous version used a model depiction that did not fit the cube-connection intent. The regenerated asset uses a minimal folded-wireframe model style, keeps a full 6-face cube net, and is explicitly constrained so the oblique drawing has a clearly orange top face."
       }
     ]
   },
@@ -718,6 +732,14 @@
       "url": "/assets/goal-visualizations/mathematik/cba4cad7-926d-5035-a7dd-d450afccccb3/cba4cad7-926d-5035-a7dd-d450afccccb3.jpg"
     },
     {
+      "goalId": "9189339d-1788-406c-a1a4-e0e6b851c4ea",
+      "title": "Höhensatz im rechtwinkligen Dreieck formulieren, begründen und anwenden",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9189339d-1788-406c-a1a4-e0e6b851c4ea/9189339d-1788-406c-a1a4-e0e6b851c4ea.jpg"
+    },
+    {
       "goalId": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
       "title": "Informationen aus Tabellen entnehmen",
       "phase": "J6",
@@ -1054,6 +1076,14 @@
       "url": "/assets/goal-visualizations/mathematik/68505a32-3b1d-57b2-a495-00b4097eb50d/68505a32-3b1d-57b2-a495-00b4097eb50d.jpg"
     },
     {
+      "goalId": "30c013ac-5164-4c3c-8bc1-9a10b2f49533",
+      "title": "Potenzfunktionen mit ganzzahligen Exponenten beschreiben",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/30c013ac-5164-4c3c-8bc1-9a10b2f49533/30c013ac-5164-4c3c-8bc1-9a10b2f49533.jpg"
+    },
+    {
       "goalId": "6596405a-9728-41df-9163-53670ec2a937",
       "title": "Potenzgesetze mit ganzzahligen Exponenten anwenden",
       "phase": "J8",
@@ -1220,6 +1250,14 @@
       "area": "Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/fd860da9-73ba-47cd-a1a8-452424915a80/fd860da9-73ba-47cd-a1a8-452424915a80.jpg"
+    },
+    {
+      "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+      "title": "Satz des Pythagoras anwenden",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4d78bbcc-89b8-47f0-aa45-516199e4da5d/4d78bbcc-89b8-47f0-aa45-516199e4da5d.jpg"
     },
     {
       "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `fa72cf74-a31e-402e-90d7-422c118f4a5b.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/fa72cf74-a31e-402e-90d7-422c118f4a5b/fa72cf74-a31e-402e-90d7-422c118f4a5b.jpg`
@@ -31,7 +31,19 @@ Titel: Umgekehrt proportionale Größen mit Hyperbeln beschreiben
 Beschreibung: Die lernende Person kann umgekehrt proportionale Größen als Spezialfall einfacher gebrochen-rationaler Funktionen erkennen und den Zusammenhang am Graphen auch in naturwissenschaftlichen Kontexten erläutern.
 
 Zusatzanweisung:
-Erzeuge nur eine fokussierte Visualisierung zu umgekehrt proportionalen Größen. Keine Bruchterm-Addition, kein gemeinsamer Nenner, keine Bruchterm-Kürzung. Verwende genau den Zusammenhang y=12/x im ersten Quadranten mit x>0 und y>0. Zeige eine Tabelle mit (2|6), (3|4), (4|3), (6|2) und daneben den Merksatz x*y=12 bleibt konstant. Zeichne eine fallende Hyperbel nur im ersten Quadranten durch diese Punkte. Plausibler Sachkontext: gleiche Strecke 12 km, Geschwindigkeit x und Zeit y; je größer die Geschwindigkeit, desto kleiner die Zeit. Kurze deutsche Labels, keine technischen IDs, keine negativen Werte.
+Erzeuge eine fachlich korrekte, fokussierte Infografik zu umgekehrt proportionalen Größen.
+- Veranschauliche den Zusammenhang mit dem Kontext "Auto fährt eine konstante Strecke", nicht mit unplausiblen Zusatzgeschwindigkeiten.
+- Verwende genau den Zusammenhang `y = 120/x` im ersten Quadranten mit `x>0` und `y>0`.
+- Zeige die Tabelle mit den Punkten `(20|6)`, `(30|4)`, `(40|3)`, `(60|2)` und den Merksatz `x*y = 120`.
+- Markiere die gleiche Strecke als `120 km` und lasse aus `v` (km/h) und `t` (h) folgen, dass größere Geschwindigkeit zu kleinerer Zeit führt.
+- Zeichne nur die fallende Hyperbel im ersten Quadranten.
+
+Vermeiden:
+- Keine Werte `6 km/h` und `2 km/h` für Geschwindigkeit.
+- Keine Strecke `12 km` mehr mit diesem Kontext.
+- Keine negativen Werte oder `x<=0`, `y<=0`.
+- Keine Werte/Beispiele aus einem anderen Funktionstyp.
+- Keine technischen IDs, keine Wasserzeichen.
 ```
 
 ## Review-Notiz

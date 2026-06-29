@@ -9,6 +9,11 @@ plugins {
 group = "com.skillpilot"
 version = "0.1.0-SNAPSHOT"
 
+providers.environmentVariable("SKILLPILOT_BACKEND_BUILD_DIR")
+    .orNull
+    ?.takeIf { it.isNotBlank() }
+    ?.let { layout.buildDirectory.set(file(it)) }
+
 java {
     toolchain {
         val skillpilotJavaVersion = providers.fileContents(layout.projectDirectory.file("../.java-version"))
