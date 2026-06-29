@@ -12,6 +12,7 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ActiveGoalRequest;
+import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerGoals;
@@ -544,6 +545,39 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void getLearnerState_exposesActiveGoalVisualizationMarkdownWithAbsoluteAiAssetUrl() {
+        String skillpilotId = "learner-1";
+        FrontierGoal activeGoal = visualizationGoal("goal-1");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(activeGoal),
+                null,
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeGoal,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeGoal), List.of(), activeGoal));
+
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
+
+        String expectedUrl = "https://skillpilot.test/ai-assets/goal-visualizations/mathematik/goal-1/goal-1.jpg";
+        assertThat(state.activeGoal().resourceLinks()).hasSize(1);
+        assertThat(state.activeGoal().resourceLinks().get(0).url()).isEqualTo(expectedUrl);
+        assertThat(state.stateMachine().activeGoalVisualization()).isNotNull();
+        assertThat(state.stateMachine().activeGoalVisualization().url()).isEqualTo(expectedUrl);
+        assertThat(state.stateMachine().activeGoalVisualizationMarkdown())
+                .isEqualTo("![Visualisierung zum Lernziel](%s)".formatted(expectedUrl));
+
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
     void getLearnerState_keepsMemoryModeOptionsForAi() {
         String skillpilotId = "learner-1";
         FrontierGoal memoryGoal = new FrontierGoal(
@@ -671,6 +705,36 @@ class LearnerAiControllerTest {
                 null,
                 null,
                 examData);
+    }
+
+    private static FrontierGoal visualizationGoal(String goalId) {
+        GoalSourceLink visualization = new GoalSourceLink(
+                "goal-visualization",
+                "Visualisierung",
+                "/assets/goal-visualizations/mathematik/%s/%s.jpg".formatted(goalId, goalId),
+                "image",
+                "provider",
+                List.of(),
+                "description",
+                "de",
+                "license",
+                goalId,
+                "primary",
+                "Visualisierung zum Lernziel",
+                "pilot");
+        return new FrontierGoal(
+                goalId,
+                "Goal",
+                "Description",
+                "atomic",
+                null,
+                "Ready",
+                List.of(),
+                List.of(visualization),
+                null,
+                null,
+                null,
+                null);
     }
 
     private static ExamData.Scoring scoring(String stepId) {

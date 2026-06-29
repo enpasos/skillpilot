@@ -9,7 +9,9 @@ public record StateMachineInfo(
         List<FrontierGoal> goalOptions,
         List<LandscapeSummary> curriculumOptions,
         FrontierGoal activeGoal,
-        List<LearningModeOption> modeOptions) {
+        List<LearningModeOption> modeOptions,
+        GoalSourceLink activeGoalVisualization,
+        String activeGoalVisualizationMarkdown) {
 
     public StateMachineInfo(
             String state,
@@ -17,6 +19,16 @@ public record StateMachineInfo(
             List<FrontierGoal> goalOptions,
             List<LandscapeSummary> curriculumOptions,
             FrontierGoal activeGoal) {
-        this(state, requiredAction, goalOptions, curriculumOptions, activeGoal, List.of());
+        this(state, requiredAction, goalOptions, curriculumOptions, activeGoal, List.of(), null, null);
+    }
+
+    public StateMachineInfo(
+            String state,
+            String requiredAction,
+            List<FrontierGoal> goalOptions,
+            List<LandscapeSummary> curriculumOptions,
+            FrontierGoal activeGoal,
+            List<LearningModeOption> modeOptions) {
+        this(state, requiredAction, goalOptions, curriculumOptions, activeGoal, modeOptions, null, null);
     }
 }

@@ -856,6 +856,14 @@
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Bestätigtes aktives Ziel im State Machine-Teil."
           },
+          "activeGoalVisualization": {
+            "$ref": "#/components/schemas/GoalSourceLink",
+            "description": "Primäres Lernzielbild für das bestätigte aktive Ziel, falls vorhanden. Die URL ist für ChatGPT bereits absolut und auf /ai-assets umgeschrieben."
+          },
+          "activeGoalVisualizationMarkdown": {
+            "type": "string",
+            "description": "Fertige Markdown-Bildzeile für das primäre Lernzielbild. Wenn vorhanden, beim Einstieg in teachActiveGoal vor der Erklärung wortgleich ausgeben."
+          },
           "modeOptions": {
             "type": "array",
             "description": "Modusoptionen für den aktuellen Schritt. Bei `requiredAction=chooseMemoryMode` enthält dies Üben im Cockpit und Prüfen per Verified Recall.",

@@ -141,36 +141,42 @@ class AiPromptContractTest {
     void prompts_defineActiveGoalVisualizationDisplay() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType = \"image\"",
                 "Markdown-Bild",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType = \"image\"",
                 "Markdown image",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType = \"image\"",
                 "Markdown",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType = \"image\"",
                 "Markdown image",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType=image",
                 "Markdown-Bild",
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
+                "activeGoalVisualizationMarkdown",
                 "goal-visualization",
                 "resourceType=image",
                 "Markdown image",
@@ -186,7 +192,8 @@ class AiPromptContractTest {
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
-                "\"skillpilotId\"");
+                "\"skillpilotId\"",
+                "\"activeGoalVisualizationMarkdown\"");
         assertContainsFragments(
                 Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
                 "goal-visualization",
@@ -194,7 +201,8 @@ class AiPromptContractTest {
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
-                "\"skillpilotId\"");
+                "\"skillpilotId\"",
+                "\"activeGoalVisualizationMarkdown\"");
     }
 
     @Test
