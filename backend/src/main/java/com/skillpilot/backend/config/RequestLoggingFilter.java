@@ -114,6 +114,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         entry.put("ts", Instant.now().toString());
         entry.put("method", request.getMethod());
         entry.put("path", sanitizeUriForOperationalLog(request.getRequestURI()));
+        entry.put("operationId", resolveAiOperationId(request.getMethod(), request.getRequestURI()));
         entry.put("query", sanitizeQueryForTrace(request.getQueryString()));
         entry.put("status", response.getStatus());
         entry.put("durationMs", duration);
@@ -230,6 +231,46 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
     String resolveTraceSubjectRef(String uri, String requestBody, String responseBody) {
         return stableSensitiveRef(resolveTraceSubject(uri, requestBody, responseBody).value());
+    }
+
+    String resolveAiOperationId(String method, String uri) {
+        String normalizedMethod = method == null ? "" : method.trim().toUpperCase(Locale.ROOT);
+        String normalizedUri = uri == null ? "" : uri;
+        if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/chat-start/redeem/?$")) {
+            return "redeemStartCode";
+        }
+        if ("GET".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/state/?$")) {
+            return "getLearnerState";
+        }
+        if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/scope/?$")) {
+            return "setScope";
+        }
+        if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/active-goal/?$")) {
+            return "setActiveGoal";
+        }
+        if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/mastery/?$")) {
+            return "setMastery";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/verified-recall/start/?$")) {
+            return "startVerifiedRecall";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/verified-recall/answer/?$")) {
+            return "getVerifiedRecallAnswer";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/verified-recall/result/?$")) {
+            return "recordVerifiedRecallResult";
+        }
+        if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/curriculum/?$")) {
+            return "setCurriculum";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/personalization/?$")) {
+            return "setPersonalization";
+        }
+        return "";
     }
 
     private String sanitizeQueryForTrace(String query) {

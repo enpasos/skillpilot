@@ -612,6 +612,7 @@ class LearnerAiControllerTest {
         assertThat(response.state().skillpilotId()).isNull();
         assertThat(response.state().stateMachine().activeGoalVisualizationMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.assistantResponsePrefixMarkdown()).isEqualTo(expectedMarkdown);
+        assertThat(response.mandatoryFirstAssistantLineMarkdown()).isEqualTo(expectedMarkdown);
 
         verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");
         verify(learnerService).getLearnerState(skillpilotId);
