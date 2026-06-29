@@ -18,6 +18,7 @@ import {
   getStringArg,
   parseCliArgs,
   readLandscape,
+  resolveProjectPath,
   toProjectPath,
 } from './goal_visualization_common.mjs'
 
@@ -27,6 +28,7 @@ const DEFAULT_ASPECT_RATIO = '16:9'
 const DEFAULT_IMAGE_SIZE = '2K'
 const DEFAULT_MIME_TYPE = 'image/jpeg'
 const DEFAULT_PROVIDER = `Google Gemini / Nano Banana Pro (${DEFAULT_MODEL})`
+const TEMPORARY_PROVIDER_FAILURE_EXIT_CODE = 75
 
 function usage() {
   return [
@@ -46,12 +48,33 @@ function usage() {
     `  --image-size <size>        Response image size. Default: ${DEFAULT_IMAGE_SIZE}`,
     `  --mime-type <mime>         Image MIME type. Default: ${DEFAULT_MIME_TYPE}`,
     '  --prompt-append <text>     Extra provider instruction appended to the generated prompt.',
+    '  --prompt-append-file <path> Extra provider instruction read from a UTF-8 text/Markdown file.',
     '  --description <text>       Optional resourceLink description.',
     '  --alt-text <text>          Optional resourceLink alt text.',
     '  --review-status <status>   Default: pilot.',
     '  --no-import                Save generated image only; do not update canonical JSON.',
     '  --dry-run                  Write prompt/request package only; do not call the API.',
   ].join('\n')
+}
+
+function readPromptAppendFile(filePath) {
+  const fullPath = resolveProjectPath(filePath)
+  return fs.readFileSync(fullPath, 'utf-8').trim()
+}
+
+function collectPromptAppend(args) {
+  const parts = []
+  const promptAppend = getStringArg(args, 'prompt-append')
+  const promptAppendFile = getStringArg(args, 'prompt-append-file')
+
+  if (promptAppend) {
+    parts.push(promptAppend)
+  }
+  if (promptAppendFile) {
+    parts.push(readPromptAppendFile(promptAppendFile))
+  }
+
+  return parts.filter(Boolean).join('\n\n')
 }
 
 function extensionFromMimeType(mimeType) {
@@ -179,6 +202,16 @@ async function requestImage({ endpoint, apiKey, model, prompt, mimeType, aspectR
   return { payload, body }
 }
 
+function isTemporaryProviderFailure(error) {
+  const message = String(error instanceof Error ? error.message : error).toLowerCase()
+  return (
+    message.includes('gemini api failed (429)') ||
+    message.includes('"code":"too_many_requests"') ||
+    message.includes('"code": "too_many_requests"') ||
+    (message.includes('quota') && message.includes('request'))
+  )
+}
+
 function runImporter(goalId, imagePath, options) {
   const args = [
     path.join(ROOT_DIR, 'scripts/import_goal_visualization.mjs'),
@@ -234,7 +267,7 @@ async function main() {
   const landscape = readLandscape(landscapePath)
   const goal = findGoalOrThrow(landscape, goalQuery)
   const paths = buildVisualizationPaths(goal, { subjectPath, lang, extension })
-  const promptAppend = getStringArg(args, 'prompt-append')
+  const promptAppend = collectPromptAppend(args)
   const prompt = promptAppend ? `${createVisualizationPrompt(goal)}\n\nZusatzanweisung:\n${promptAppend}` : createVisualizationPrompt(goal)
   const description =
     getStringArg(args, 'description') ?? `Visualisierung zum Lernziel: ${goal.title}.`
@@ -333,5 +366,5 @@ async function main() {
 
 main().catch((error) => {
   console.error(error instanceof Error ? error.message : error)
-  process.exit(1)
+  process.exit(isTemporaryProviderFailure(error) ? TEMPORARY_PROVIDER_FAILURE_EXIT_CODE : 1)
 })

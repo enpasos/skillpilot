@@ -3,7 +3,10 @@ import path from 'node:path'
 
 const ROOT_DIR = path.resolve(__dirname, '..')
 const SOURCE_DIR = path.join(ROOT_DIR, 'curricula/DE/Gymnasium/visualizations')
-const TARGET_DIR = path.join(ROOT_DIR, 'app/public/assets/goal-visualizations')
+const TARGET_DIRS = [
+  path.join(ROOT_DIR, 'app/public/assets/goal-visualizations'),
+  path.join(ROOT_DIR, 'backend/src/main/resources/static/assets/goal-visualizations'),
+]
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp', '.svg'])
 
 function walkFiles(dir: string): string[] {
@@ -27,13 +30,16 @@ function deployGoalVisualizations() {
 
   for (const sourcePath of files) {
     const relativePath = path.relative(SOURCE_DIR, sourcePath)
-    const targetPath = path.join(TARGET_DIR, relativePath)
-    fs.mkdirSync(path.dirname(targetPath), { recursive: true })
-    fs.copyFileSync(sourcePath, targetPath)
-    copied += 1
+    for (const targetDir of TARGET_DIRS) {
+      const targetPath = path.join(targetDir, relativePath)
+      fs.mkdirSync(path.dirname(targetPath), { recursive: true })
+      fs.copyFileSync(sourcePath, targetPath)
+      copied += 1
+    }
   }
 
-  console.log(`Deployed ${copied} goal visualization asset(s) to ${path.relative(ROOT_DIR, TARGET_DIR)}`)
+  const targetList = TARGET_DIRS.map((targetDir) => path.relative(ROOT_DIR, targetDir)).join(', ')
+  console.log(`Deployed ${copied} goal visualization asset copy/copies to ${targetList}`)
 }
 
 deployGoalVisualizations()
