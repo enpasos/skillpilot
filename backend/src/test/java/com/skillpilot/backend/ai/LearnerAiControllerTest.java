@@ -18,6 +18,8 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.RedeemStartCodeRequest;
+import com.skillpilot.backend.api.RedeemStartCodeResponse;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
@@ -30,6 +32,7 @@ import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -575,6 +578,44 @@ class LearnerAiControllerTest {
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void redeemStartCode_exposesActiveGoalVisualizationAsResponsePrefix() {
+        String skillpilotId = "learner-1";
+        String chatSessionToken = "sps_test-token";
+        Instant expiresAt = Instant.parse("2026-06-29T12:00:00Z");
+        FrontierGoal activeGoal = visualizationGoal("goal-1");
+        UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
+                skillpilotId,
+                null,
+                List.of(activeGoal),
+                null,
+                List.of("setMastery"),
+                List.of(),
+                Set.of(),
+                "TEACHING",
+                activeGoal,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(activeGoal), List.of(), activeGoal));
+
+        when(chatSessionService.redeemStartCode("SP-1234-5678", "de"))
+                .thenReturn(new ChatSessionService.RedeemedSession(chatSessionToken, expiresAt, skillpilotId));
+        when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+
+        RedeemStartCodeResponse response = controller.redeemStartCode(
+                "de",
+                new RedeemStartCodeRequest("SP-1234-5678"));
+
+        String expectedUrl = "https://skillpilot.test/ai-assets/goal-visualizations/mathematik/goal-1/goal-1.jpg";
+        String expectedMarkdown = "![Visualisierung zum Lernziel](%s)".formatted(expectedUrl);
+        assertThat(response.chatSessionToken()).isEqualTo(chatSessionToken);
+        assertThat(response.state().skillpilotId()).isNull();
+        assertThat(response.state().stateMachine().activeGoalVisualizationMarkdown()).isEqualTo(expectedMarkdown);
+        assertThat(response.assistantResponsePrefixMarkdown()).isEqualTo(expectedMarkdown);
+
+        verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");
+        verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
     @Test
