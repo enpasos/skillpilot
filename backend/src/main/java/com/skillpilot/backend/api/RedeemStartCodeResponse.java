@@ -47,9 +47,9 @@ public record RedeemStartCodeResponse(
         }
         return "Dein Lernstand ist geladen.\n\nAktuelles Lernziel: **"
                 + title
-                + "**\n\n[Im Cockpit öffnen]("
+                + "** ([Cockpit ↗]("
                 + cockpitUrl
-                + ")";
+                + "))";
     }
 
     private static String cockpitUrl(UnifiedLearnerStateResponse state, String publicBaseUrl) {
