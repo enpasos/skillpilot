@@ -615,6 +615,7 @@ class LearnerAiControllerTest {
         assertThat(response.state().stateMachine().activeGoalVisualizationMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.assistantResponsePrefixMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.mandatoryFirstAssistantLineMarkdown()).isEqualTo(expectedMarkdown);
+        assertThat(response.assistantNextMessageMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.assistantDisplayInstruction())
                 .contains("Markdown-Bildzeile")
                 .contains("erste sichtbare Zeile");

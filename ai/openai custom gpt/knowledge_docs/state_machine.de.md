@@ -50,7 +50,7 @@ in der Unterhaltung genannt.
 - Unterrichten passiert nur mit aktivem Ziel.
 - Wenn `requiredAction = setActiveGoal` oder `activeGoal` leer ist: zuerst `setActiveGoal`.
 - Wenn `requiredAction = teachActiveGoal`: kein weiteres Navigationstool aufrufen, sondern das aktive Ziel didaktisch bearbeiten.
-- Nach `redeemStartCode`: Wenn `assistantDisplayInstruction` gesetzt ist, befolgen, aber nicht anzeigen. Wenn `mandatoryFirstAssistantLineMarkdown` oder `assistantResponsePrefixMarkdown` gesetzt ist, diese Markdown-Zeile zuerst wortgleich ausgeben.
+- Nach `redeemStartCode`: Wenn `assistantNextMessageMarkdown` gesetzt ist, als erste sichtbare Zeile wortgleich ausgeben. Sonst `assistantDisplayInstruction` befolgen, aber nicht anzeigen; danach `mandatoryFirstAssistantLineMarkdown` oder `assistantResponsePrefixMarkdown` zuerst ausgeben.
 - Wenn `state.stateMachine.activeGoalVisualizationMarkdown` oder `stateMachine.activeGoalVisualizationMarkdown` gesetzt ist, diese Markdown-Bildzeile beim Einstieg in `teachActiveGoal` zuerst wortgleich ausgeben. Fallback: Wenn `activeGoal.resourceLinks` einen Link mit `type = "goal-visualization"` und `resourceType = "image"` enthält, einmal das primäre Bild per Markdown anzeigen. Das Bild dient nur der Orientierung und ersetzt keine Erklärung, Übung oder Prüfung.
 - Wenn `requiredAction = chooseMemoryMode`: kein normales Unterrichtsgespräch starten, sondern Lernkartenmodus wählen.
 - `frontier`/`goalOptions` bleiben Kandidatenlisten; das bestätigte aktuelle Ziel ist `activeGoal`.

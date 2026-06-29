@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Redeem start code",
-        "description": "Redeem start code. If the response contains `assistantDisplayInstruction`, follow it; do not show the instruction text itself. If `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown` is present, output that Markdown line verbatim as the first visible line of the next answer.",
+        "description": "Redeem start code. If `assistantNextMessageMarkdown` is set, output it verbatim as the first visible answer line. Then briefly explain.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1372,6 +1372,10 @@
           "state"
         ],
         "properties": {
+          "assistantNextMessageMarkdown": {
+            "type": "string",
+            "description": "Markdown line the GPT must output directly as the beginning of the next answer."
+          },
           "chatSessionToken": {
             "type": "string",
             "description": "Chat session token returned by redeemStartCode. Do not display it, do not ask the learner for it, use it only for follow-up tool calls."

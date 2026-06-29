@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.time.Instant;
 
 @JsonPropertyOrder({
+        "assistantNextMessageMarkdown",
         "assistantDisplayInstruction",
         "mandatoryFirstAssistantLineMarkdown",
         "assistantResponsePrefixMarkdown",
@@ -17,6 +18,7 @@ public record RedeemStartCodeResponse(
         UnifiedLearnerStateResponse state,
         String assistantResponsePrefixMarkdown,
         String mandatoryFirstAssistantLineMarkdown,
+        String assistantNextMessageMarkdown,
         String assistantDisplayInstruction) {
 
     public RedeemStartCodeResponse(
@@ -27,6 +29,7 @@ public record RedeemStartCodeResponse(
                 chatSessionToken,
                 expiresAt,
                 state,
+                responsePrefixMarkdown(state),
                 responsePrefixMarkdown(state),
                 responsePrefixMarkdown(state),
                 responseInstruction(state));

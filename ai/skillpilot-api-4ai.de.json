@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Startcode einloesen",
-        "description": "Startcode einloesen. Wenn `assistantDisplayInstruction` gesetzt ist: befolgen, nicht anzeigen. Wenn `mandatoryFirstAssistantLineMarkdown` oder `assistantResponsePrefixMarkdown` gesetzt ist: diese Markdown-Zeile als erste sichtbare Antwortzeile wortgleich ausgeben.",
+        "description": "Startcode einloesen. Wenn `assistantNextMessageMarkdown` gesetzt ist: als erste sichtbare Antwortzeile wortgleich ausgeben. Dann erst kurz erklären.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1372,6 +1372,10 @@
           "state"
         ],
         "properties": {
+          "assistantNextMessageMarkdown": {
+            "type": "string",
+            "description": "Markdown-Zeile, die der GPT direkt als Beginn der naechsten Antwort ausgeben muss."
+          },
           "chatSessionToken": {
             "type": "string",
             "description": "Chat-Session-Token aus redeemStartCode. Nicht anzeigen, nicht erfragen, nur fuer Folge-Tool-Calls verwenden."
