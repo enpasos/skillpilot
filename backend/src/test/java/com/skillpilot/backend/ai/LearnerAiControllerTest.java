@@ -611,7 +611,7 @@ class LearnerAiControllerTest {
         assertThat(response.assistantMessage())
                 .contains("Dein Lernstand ist geladen.")
                 .contains("Aktuelles Lernziel")
-                .contains("** ([Cockpit ↗](%s))".formatted(expectedUrl));
+                .contains("** ([Cockpit](%s))".formatted(expectedUrl));
         assertThat(servletRequest.getAttribute("skillpilot.ai.trace.skillpilotId")).isEqualTo(skillpilotId);
 
         verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");

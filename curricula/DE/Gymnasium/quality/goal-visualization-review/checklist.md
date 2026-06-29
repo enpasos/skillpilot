@@ -38,6 +38,7 @@ Reject or regenerate if any of these occur:
 
 - `accepted_pilot`: usable in controlled pilot after review
 - `accepted_pilot_after_regeneration`: usable after rejected attempt was replaced
+- `accepted_pilot_after_second_regeneration`: usable after two rejected attempts were replaced
 - `rejected_regenerate`: not usable; create a targeted replacement
 - `deferred_provider_limitation`: repeated Nano Banana Pro attempts stayed fachlich wrong; remove the active image link and revisit later
 - `needs_external_review`: plausible but should not be promoted without external subject review
