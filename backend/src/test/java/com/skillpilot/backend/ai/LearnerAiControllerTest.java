@@ -573,7 +573,7 @@ class LearnerAiControllerTest {
         assertThat(state.stateMachine().activeGoalVisualization()).isNotNull();
         assertThat(state.stateMachine().activeGoalVisualization().url()).isEqualTo(expectedUrl);
         assertThat(state.stateMachine().activeGoalVisualizationMarkdown())
-                .isEqualTo("![Visualisierung zum Lernziel](%s)".formatted(expectedUrl));
+                .isEqualTo("![Visualisierung](%s)".formatted(expectedUrl));
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
@@ -601,18 +601,24 @@ class LearnerAiControllerTest {
         when(chatSessionService.redeemStartCode("SP-1234-5678", "de"))
                 .thenReturn(new ChatSessionService.RedeemedSession(chatSessionToken, expiresAt, skillpilotId));
         when(learnerService.getLearnerState(skillpilotId)).thenReturn(rawState);
+        MockHttpServletRequest servletRequest = new MockHttpServletRequest();
 
         RedeemStartCodeResponse response = controller.redeemStartCode(
                 "de",
-                new RedeemStartCodeRequest("SP-1234-5678"));
+                new RedeemStartCodeRequest("SP-1234-5678"),
+                servletRequest);
 
         String expectedUrl = "https://skillpilot.test/ai-assets/goal-visualizations/mathematik/goal-1/goal-1.jpg";
-        String expectedMarkdown = "![Visualisierung zum Lernziel](%s)".formatted(expectedUrl);
+        String expectedMarkdown = "![Visualisierung](%s)".formatted(expectedUrl);
         assertThat(response.chatSessionToken()).isEqualTo(chatSessionToken);
         assertThat(response.state().skillpilotId()).isNull();
         assertThat(response.state().stateMachine().activeGoalVisualizationMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.assistantResponsePrefixMarkdown()).isEqualTo(expectedMarkdown);
         assertThat(response.mandatoryFirstAssistantLineMarkdown()).isEqualTo(expectedMarkdown);
+        assertThat(response.assistantDisplayInstruction())
+                .contains("Markdown-Bildzeile")
+                .contains("erste sichtbare Zeile");
+        assertThat(servletRequest.getAttribute("skillpilot.ai.trace.skillpilotId")).isEqualTo(skillpilotId);
 
         verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");
         verify(learnerService).getLearnerState(skillpilotId);

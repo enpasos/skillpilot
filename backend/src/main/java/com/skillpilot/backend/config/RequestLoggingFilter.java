@@ -37,6 +37,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(RequestLoggingFilter.class);
     private static final Object AI_TRACE_LOCK = new Object();
+    public static final String AI_TRACE_SKILLPILOT_ID_ATTRIBUTE = "skillpilot.ai.trace.skillpilotId";
     private static final String REDACTED = "<redacted>";
     private static final int OPERATIONAL_LOG_MAX_BODY_CHARS = 4000;
 
@@ -108,8 +109,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             String requestBody,
             String responseBody) {
         Path path = resolveAiTracePath();
-        TraceSubject traceSubject = resolveTraceSubject(request.getRequestURI(), requestBody, responseBody);
-        String skillpilotRef = stableSensitiveRef(traceSubject.value());
+        TraceSubject traceSubject = resolveTraceSubject(request, requestBody, responseBody);
+        String skillpilotRef = traceFileKey(traceSubject);
         Map<String, Object> entry = new LinkedHashMap<>();
         entry.put("ts", Instant.now().toString());
         entry.put("method", request.getMethod());
@@ -165,6 +166,24 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         } catch (IOException e) {
             logger.warn("Failed to write AI trace log to {}", path, e);
         }
+    }
+
+    private String traceFileKey(TraceSubject traceSubject) {
+        if (traceSubject == null || traceSubject.value() == null || traceSubject.value().isBlank()) {
+            return "";
+        }
+        if ("skillpilotId".equals(traceSubject.type())) {
+            return sanitizeTraceFileSegment(traceSubject.value());
+        }
+        return stableSensitiveRef(traceSubject.value());
+    }
+
+    private String sanitizeTraceFileSegment(String value) {
+        if (value == null || value.isBlank()) {
+            return "";
+        }
+        String sanitized = value.replaceAll("[^A-Za-z0-9._-]", "_");
+        return sanitized.length() <= 128 ? sanitized : sanitized.substring(0, 128);
     }
 
     private String truncate(String value) {
@@ -230,7 +249,15 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
     }
 
     String resolveTraceSubjectRef(String uri, String requestBody, String responseBody) {
-        return stableSensitiveRef(resolveTraceSubject(uri, requestBody, responseBody).value());
+        return traceFileKey(resolveTraceSubject(uri, requestBody, responseBody));
+    }
+
+    String resolveTraceSubjectType(HttpServletRequest request, String requestBody, String responseBody) {
+        return resolveTraceSubject(request, requestBody, responseBody).type();
+    }
+
+    String resolveTraceSubjectRef(HttpServletRequest request, String requestBody, String responseBody) {
+        return traceFileKey(resolveTraceSubject(request, requestBody, responseBody));
     }
 
     String resolveAiOperationId(String method, String uri) {
@@ -354,6 +381,17 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             return value;
         }
         return value.substring(0, OPERATIONAL_LOG_MAX_BODY_CHARS) + "...(truncated)";
+    }
+
+    private TraceSubject resolveTraceSubject(HttpServletRequest request, String requestBody, String responseBody) {
+        if (request != null) {
+            Object attribute = request.getAttribute(AI_TRACE_SKILLPILOT_ID_ATTRIBUTE);
+            if (attribute instanceof String skillpilotId && !skillpilotId.isBlank()) {
+                return new TraceSubject("skillpilotId", skillpilotId);
+            }
+            return resolveTraceSubject(request.getRequestURI(), requestBody, responseBody);
+        }
+        return resolveTraceSubject("", requestBody, responseBody);
     }
 
     private TraceSubject resolveTraceSubject(String uri, String requestBody, String responseBody) {

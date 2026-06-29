@@ -141,6 +141,7 @@ class AiPromptContractTest {
     void prompts_defineActiveGoalVisualizationDisplay() throws Exception {
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -151,6 +152,7 @@ class AiPromptContractTest {
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -161,6 +163,7 @@ class AiPromptContractTest {
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -171,6 +174,7 @@ class AiPromptContractTest {
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -181,6 +185,7 @@ class AiPromptContractTest {
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.de.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -191,6 +196,7 @@ class AiPromptContractTest {
                 "teachActiveGoal");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "gpt_setup_guide.en.md"),
+                "assistantDisplayInstruction",
                 "mandatoryFirstAssistantLineMarkdown",
                 "assistantResponsePrefixMarkdown",
                 "activeGoalVisualizationMarkdown",
@@ -213,6 +219,7 @@ class AiPromptContractTest {
                 "\"skillpilotId\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"mandatoryFirstAssistantLineMarkdown\"",
+                "\"assistantDisplayInstruction\"",
                 "\"assistantResponsePrefixMarkdown\"");
         assertContainsFragments(
                 Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
@@ -224,6 +231,7 @@ class AiPromptContractTest {
                 "\"skillpilotId\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"mandatoryFirstAssistantLineMarkdown\"",
+                "\"assistantDisplayInstruction\"",
                 "\"assistantResponsePrefixMarkdown\"");
     }
 

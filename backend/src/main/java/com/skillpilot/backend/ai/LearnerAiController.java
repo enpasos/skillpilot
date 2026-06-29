@@ -17,9 +17,11 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
+import com.skillpilot.backend.config.RequestLoggingFilter;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -145,10 +147,12 @@ public class LearnerAiController {
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public RedeemStartCodeResponse redeemStartCode(
             @PathVariable String lang,
-            @RequestBody RedeemStartCodeRequest request) {
+            @RequestBody RedeemStartCodeRequest request,
+            HttpServletRequest servletRequest) {
         ChatSessionService.RedeemedSession session = chatSessionService.redeemStartCode(
                 request == null ? null : request.startCode(),
                 lang);
+        markAiTraceSkillpilotId(servletRequest, session.skillpilotId());
         return new RedeemStartCodeResponse(
                 session.chatSessionToken(),
                 session.expiresAt(),
@@ -439,6 +443,12 @@ public class LearnerAiController {
         String skillpilotId = chatSessionService.resolveSkillpilotId(chatSessionToken);
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return skillpilotId;
+    }
+
+    private void markAiTraceSkillpilotId(HttpServletRequest request, String skillpilotId) {
+        if (request != null && skillpilotId != null && !skillpilotId.isBlank()) {
+            request.setAttribute(RequestLoggingFilter.AI_TRACE_SKILLPILOT_ID_ATTRIBUTE, skillpilotId);
+        }
     }
 
     private UnifiedLearnerStateResponse prepareLearnerState(String skillpilotId, boolean hideSkillpilotId) {
@@ -792,9 +802,7 @@ public class LearnerAiController {
         if (link == null || link.url() == null || link.url().isBlank()) {
             return null;
         }
-        String altText = link.altText() != null && !link.altText().isBlank()
-                ? link.altText()
-                : link.title();
+        String altText = link.title();
         if (altText == null || altText.isBlank()) {
             altText = "Lernzielbild";
         }

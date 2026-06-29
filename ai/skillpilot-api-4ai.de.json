@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Startcode einloesen",
-        "description": "Startcode einloesen. Wenn die Antwort `mandatoryFirstAssistantLineMarkdown` oder `assistantResponsePrefixMarkdown` enthaelt, muss der GPT diese Markdown-Zeile als erste sichtbare Zeile der naechsten Antwort wortgleich ausgeben.",
+        "description": "Startcode einloesen. Wenn `assistantDisplayInstruction` gesetzt ist: befolgen, nicht anzeigen. Wenn `mandatoryFirstAssistantLineMarkdown` oder `assistantResponsePrefixMarkdown` gesetzt ist: diese Markdown-Zeile als erste sichtbare Antwortzeile wortgleich ausgeben.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1391,6 +1391,10 @@
           "mandatoryFirstAssistantLineMarkdown": {
             "type": "string",
             "description": "Verpflichtende erste sichtbare Markdown-Zeile der naechsten GPT-Antwort. Wenn gesetzt, muss der GPT genau diese Zeile vor jedem anderen Text ausgeben."
+          },
+          "assistantDisplayInstruction": {
+            "type": "string",
+            "description": "Kurze Anzeigeanweisung fuer die naechste GPT-Antwort. Befolgen, aber nicht als Text anzeigen."
           }
         }
       },

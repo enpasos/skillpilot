@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
 
 class RequestLoggingFilterTest {
 
@@ -100,6 +101,26 @@ class RequestLoggingFilterTest {
         assertThat(refFromRedeem).isEqualTo(filter.stableSensitiveRef(chatSessionToken));
         assertThat(refFromRedeem).isEqualTo(refFromSessionCall);
         assertThat(refFromRedeem).doesNotContain(chatSessionToken);
+    }
+
+    @Test
+    void resolveTraceSubjectPrefersInternalSkillpilotIdAttributeForRedeemTraceFile() {
+        MockHttpServletRequest request = new MockHttpServletRequest("POST", "/api/ai/de/chat-start/redeem");
+        request.setAttribute(
+                RequestLoggingFilter.AI_TRACE_SKILLPILOT_ID_ATTRIBUTE,
+                "8452dc51-dc6d-43c2-aa16-53c150f2bff4");
+        String responseBody = """
+                {"chatSessionToken":"sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q","state":{"skillpilotId":null}}
+                """;
+
+        assertThat(filter.resolveTraceSubjectType(
+                request,
+                "{\"startCode\":\"SP-2345-6789\"}",
+                responseBody)).isEqualTo("skillpilotId");
+        assertThat(filter.resolveTraceSubjectRef(
+                request,
+                "{\"startCode\":\"SP-2345-6789\"}",
+                responseBody)).isEqualTo("8452dc51-dc6d-43c2-aa16-53c150f2bff4");
     }
 
     @Test

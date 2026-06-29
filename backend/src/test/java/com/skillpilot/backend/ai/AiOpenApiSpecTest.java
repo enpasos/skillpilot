@@ -45,6 +45,12 @@ class AiOpenApiSpecTest {
         assertFlashcardModeAndVerifiedRecallActions(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
     }
 
+    @Test
+    void aiSpecs_keepDescriptionsWithinGptActionLimit() throws Exception {
+        assertDescriptionLengths(Path.of("..", "ai", "skillpilot-api-4ai.en.json"), 300);
+        assertDescriptionLengths(Path.of("..", "ai", "skillpilot-api-4ai.de.json"), 300);
+    }
+
     private static void assertSpecIsAiMinimal(Path path) throws IOException {
         JsonNode root = MAPPER.readTree(Files.readString(path));
         JsonNode schemas = root.path("components").path("schemas");
@@ -196,5 +202,35 @@ class AiOpenApiSpecTest {
             }
         }
         return false;
+    }
+
+    private static void assertDescriptionLengths(Path path, int maxLength) throws IOException {
+        JsonNode root = MAPPER.readTree(Files.readString(path));
+        assertDescriptionLengths(path, root, "", maxLength);
+    }
+
+    private static void assertDescriptionLengths(Path path, JsonNode node, String jsonPath, int maxLength) {
+        if (node == null || node.isMissingNode()) {
+            return;
+        }
+        if (node.isObject()) {
+            Iterator<Map.Entry<String, JsonNode>> fields = node.fields();
+            while (fields.hasNext()) {
+                Map.Entry<String, JsonNode> entry = fields.next();
+                String childPath = jsonPath.isBlank() ? entry.getKey() : jsonPath + "." + entry.getKey();
+                if ("description".equals(entry.getKey()) && entry.getValue().isTextual()) {
+                    assertThat(entry.getValue().asText().length())
+                            .as(path + " " + childPath)
+                            .isLessThanOrEqualTo(maxLength);
+                }
+                assertDescriptionLengths(path, entry.getValue(), childPath, maxLength);
+            }
+            return;
+        }
+        if (node.isArray()) {
+            for (int i = 0; i < node.size(); i++) {
+                assertDescriptionLengths(path, node.get(i), jsonPath + "[" + i + "]", maxLength);
+            }
+        }
     }
 }
