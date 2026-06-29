@@ -47,7 +47,7 @@ public record RedeemStartCodeResponse(
         }
         return "Dein Lernstand ist geladen.\n\nAktuelles Lernziel: **"
                 + title
-                + "** ([Cockpit ↗]("
+                + "** ([Cockpit]("
                 + cockpitUrl
                 + "))";
     }

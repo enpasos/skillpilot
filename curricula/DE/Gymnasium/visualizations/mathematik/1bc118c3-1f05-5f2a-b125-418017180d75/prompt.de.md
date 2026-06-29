@@ -1,0 +1,36 @@
+# Lernzielvisualisierung: Vektoren komponentenweise addieren und skalieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `1bc118c3-1f05-5f2a-b125-418017180d75`
+- Titel: Vektoren komponentenweise addieren und skalieren
+- Beschreibung: Die lernende Person kann Vektoren komponentenweise addieren, subtrahieren und mit Skalaren multiplizieren sowie die Rechenoperationen geometrisch deuten.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
+- Quellbild: `1bc118c3-1f05-5f2a-b125-418017180d75.jpg`
+- Public Asset: `/assets/goal-visualizations/mathematik/1bc118c3-1f05-5f2a-b125-418017180d75/1bc118c3-1f05-5f2a-b125-418017180d75.jpg`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Zielgruppe: Gymnasium Mathematik.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Vektoren komponentenweise addieren und skalieren
+Beschreibung: Die lernende Person kann Vektoren komponentenweise addieren, subtrahieren und mit Skalaren multiplizieren sowie die Rechenoperationen geometrisch deuten.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -6,6 +6,7 @@ import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
 type ReviewDecision =
   | 'accepted_pilot'
   | 'accepted_pilot_after_regeneration'
+  | 'accepted_pilot_after_second_regeneration'
   | 'accepted_pilot_after_user_review_correction'
   | 'blocked_provider_quota'
   | 'deferred_provider_limitation'
@@ -110,8 +111,8 @@ const repoRoot = resolve(scriptDir, '../..')
 
 const defaultLandscapePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const defaultReviewDirPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review'
-const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-038.resume.txt'
-const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-038'
+const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-058.resume.txt'
+const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-058'
 const defaultOutputJsonPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json'
 const defaultOutputMarkdownPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md'
 
@@ -269,6 +270,7 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
 function isAcceptedDecision(decision: string | null | undefined): boolean {
   return decision === 'accepted_pilot'
     || decision === 'accepted_pilot_after_regeneration'
+    || decision === 'accepted_pilot_after_second_regeneration'
     || decision === 'accepted_pilot_after_user_review_correction'
 }
 
