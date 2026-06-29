@@ -49,7 +49,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 - Teach only when a goal is actively locked.
 - If `requiredAction = setActiveGoal` or `activeGoal` is empty, call `setActiveGoal` first.
 - If `requiredAction = teachActiveGoal`, do not call another navigation tool; teach and assess the active goal.
-- After `redeemStartCode`: if `assistantResponsePrefixMarkdown` is set, output that Markdown line verbatim first.
+- After `redeemStartCode`: if `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown` is set, output that Markdown line verbatim first.
 - If `state.stateMachine.activeGoalVisualizationMarkdown` or `stateMachine.activeGoalVisualizationMarkdown` is set, output that Markdown image line verbatim first when entering `teachActiveGoal`. Fallback: if `activeGoal.resourceLinks` contains `type = "goal-visualization"` and `resourceType = "image"`, show the primary image once as a Markdown image. The image is orientation support only and does not replace explanation, practice, or assessment.
 - If `requiredAction = chooseMemoryMode`, do not start normal teaching; choose the flashcard mode.
 - `frontier` and `goalOptions` are candidate lists; the confirmed current goal is `activeGoal`.

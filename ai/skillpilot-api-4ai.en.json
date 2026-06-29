@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Redeem start code",
-        "description": "Redeem start code. If the response contains `assistantResponsePrefixMarkdown`, the GPT must output that Markdown line verbatim as the first visible line of the next answer.",
+        "description": "Redeem start code. If the response contains `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown`, the GPT must output that Markdown line verbatim as the first visible line of the next answer.",
         "requestBody": {
           "required": true,
           "content": {
@@ -862,7 +862,7 @@
           },
           "activeGoalVisualizationMarkdown": {
             "type": "string",
-            "description": "Ready-to-send Markdown image line for the primary goal image. If present, output it verbatim before explanation when entering teachActiveGoal. In the start-code response, the same line is also exposed directly as `assistantResponsePrefixMarkdown`."
+            "description": "Ready-to-send Markdown image line for the primary goal image. If present, output it verbatim before explanation when entering teachActiveGoal. In the start-code response, the same line is also exposed directly as `mandatoryFirstAssistantLineMarkdown` and `assistantResponsePrefixMarkdown`."
           },
           "modeOptions": {
             "type": "array",
@@ -1387,6 +1387,10 @@
           "assistantResponsePrefixMarkdown": {
             "type": "string",
             "description": "Optional Markdown line that must be output verbatim as the first visible line of the next GPT answer. Currently used for the active goal image when the confirmed active goal has a visualization."
+          },
+          "mandatoryFirstAssistantLineMarkdown": {
+            "type": "string",
+            "description": "Mandatory first visible Markdown line of the next GPT answer. If set, the GPT must output exactly this line before any other text."
           }
         }
       },

@@ -6,13 +6,14 @@ public record RedeemStartCodeResponse(
         String chatSessionToken,
         Instant expiresAt,
         UnifiedLearnerStateResponse state,
-        String assistantResponsePrefixMarkdown) {
+        String assistantResponsePrefixMarkdown,
+        String mandatoryFirstAssistantLineMarkdown) {
 
     public RedeemStartCodeResponse(
             String chatSessionToken,
             Instant expiresAt,
             UnifiedLearnerStateResponse state) {
-        this(chatSessionToken, expiresAt, state, responsePrefixMarkdown(state));
+        this(chatSessionToken, expiresAt, state, responsePrefixMarkdown(state), responsePrefixMarkdown(state));
     }
 
     private static String responsePrefixMarkdown(UnifiedLearnerStateResponse state) {

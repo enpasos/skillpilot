@@ -118,6 +118,18 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void resolveAiOperationIdNamesRedeemAndSessionActionsForTraceSearch() {
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/chat-start/redeem"))
+                .isEqualTo("redeemStartCode");
+        assertThat(filter.resolveAiOperationId("GET", "/api/ai/de/sessions/sps_token/state"))
+                .isEqualTo("getLearnerState");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/mastery"))
+                .isEqualTo("setMastery");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/verified-recall/start"))
+                .isEqualTo("startVerifiedRecall");
+    }
+
+    @Test
     void stableSensitiveRefDoesNotExposeTheOriginalId() {
         String skillpilotId = "b43a1e45-f05c-4d78-8453-f6fa677dc24c";
 
