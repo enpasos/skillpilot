@@ -31,7 +31,7 @@ Titel: Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen
 Beschreibung: Die lernende Person kann Rechenvorteile nutzen, die sich aus Kommutativ- und Assoziativgesetz ergeben, und passende Umformungen bei ganzen Zahlen begründet anwenden.
 
 Zusatzanweisung:
-Regenerate without any countable cube piles, dot arrays, fruit bags, or object groups, because mismatched object counts are not acceptable. Use only clean number cards, arrows, brackets, and two exact examples: Kommutativgesetz: 7 + 5 = 5 + 7 = 12. Assoziativgesetz/Rechenvorteil: 13 + 4 + 7 + 6 becomes (13 + 7) + (4 + 6) = 20 + 10 = 30. Show the idea of tauschen and geschickt klammern. All displayed equations must be exactly correct. Grade 5, little German text, no SkillPilot IDs.
+Regenerate without any countable cube piles, dot arrays, fruit bags, or object groups, because mismatched object counts are not acceptable. Use only clean number cards, arrows, brackets, and two exact examples: Kommutativgesetz: 7 + 5 = 5 + 7 = 12. Assoziativgesetz/Rechenvorteil: 13 + 4 + 7 + 6 becomes (13 + 7) + (4 + 6) = 20 + 10 = 30. Show the idea of tauschen and geschickt klammern. All displayed equations must be exactly correct. Grade 5, little German text, no technical IDs.
 ```
 
 ## Review-Notiz

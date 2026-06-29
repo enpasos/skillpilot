@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `895a60ea-606a-4e77-a5af-ecc13d68e8fb.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/895a60ea-606a-4e77-a5af-ecc13d68e8fb/895a60ea-606a-4e77-a5af-ecc13d68e8fb.jpg`
@@ -31,7 +31,56 @@ Titel: Parameter trigonometrischer Funktionen deuten
 Beschreibung: Die lernende Person kann Parameter von Sinus- und Kosinusfunktionen in Termen und Graphen deuten und deren Wirkung auf Amplitude, Verschiebung und Periodenlänge beschreiben.
 
 Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic about parameters of sine functions. Show four small clean panels with simple sine curves, each panel labelled with one term and one effect. Panel 1: y = sin(x), Grundkurve. Panel 2: y = 2 sin(x), Amplitude 2, maxima at 2 and minima at -2. Panel 3: y = sin(2x), Periode pi, one full wave from 0 to pi. Panel 4: y = sin(x) + 1, Verschiebung um 1 nach oben, midline y = 1. Use x-axis labels 0, pi, 2pi where helpful. Avoid incorrect periods, avoid tangent curves, avoid cosine labels. Keep all German text short, readable, and mathematically correct.
+Erzeuge eine neue, fachlich sehr genaue Infografik zu Parametern trigonometrischer Funktionen.
+
+Ziel:
+- Zeige kurz und sauber, wie Amplitude, Periode und Verschiebung bei Sinusfunktionen gelesen werden.
+- Fokus auf korrekte Pfeilrichtungen und korrekte Periodenlaengen.
+
+Pflichtlayout:
+- Vier nebeneinander stehende Panels im einfachen Cartoon-Tafelstil.
+- Alle Graphen mit klarer x-Achse und y-Achse.
+- x-Achsen-Beschriftungen dort, wo noetig: `0`, `π`, `2π`.
+- y-Achsen-Beschriftungen dort, wo noetig: `-2`, `-1`, `0`, `1`, `2`.
+
+Panel 1: Grundkurve
+- Titel: `Grundkurve`
+- Term: `y = sin(x)`
+- Zeichne genau eine Sinusperiode von `0` bis `2π`.
+- Markiere die Periode mit einem waagerechten Doppelpfeil auf der x-Achse von `0` bis `2π`.
+- Beschriftung: `Periode = 2π`.
+- Markiere die Amplitude mit einem senkrechten Pfeil von der Mittellinie `y = 0` bis zum Maximum `y = 1`.
+- Beschriftung: `Amplitude = 1`.
+
+Panel 2: Amplitude
+- Titel: `Amplitude`
+- Term: `y = 2 sin(x)`
+- Maximalwert `2`, Minimalwert `-2`, Mittellinie `y = 0`.
+- Markiere die Amplitude mit einem senkrechten Pfeil von `y = 0` bis `y = 2`.
+- Beschriftung: `Amplitude = 2`.
+- Kein waagerechter Amplitudenpfeil.
+
+Panel 3: Periode
+- Titel: `Periode`
+- Term: `y = sin(2x)`
+- Zeichne von `0` bis `2π` zwei volle Sinuswellen.
+- Markiere die Periodenlaenge mit einem waagerechten Doppelpfeil genau von `x = 0` bis `x = π`.
+- Beschriftung: `Periode = π`.
+- Der Periodenpfeil darf nicht von `0` bis `2π` gehen.
+
+Panel 4: Verschiebung
+- Titel: `Verschiebung`
+- Term: `y = sin(x) + 1`
+- Zeichne die Mittellinie gestrichelt bei `y = 1`.
+- Markiere die Verschiebung mit einem senkrechten Pfeil von `y = 0` nach `y = 1`.
+- Beschriftung: `+1 nach oben`.
+
+Strikte Vermeidung:
+- Keine falschen Periodenpfeile.
+- Keine Amplitude als waagerechter Pfeil.
+- Keine Beschriftung `Amplitude & Periode` unter demselben horizontalen Pfeil.
+- Keine Kosinus- oder Tangenskurven.
+- Keine technischen IDs, keine Wasserzeichen.
 ```
 
 ## Review-Notiz

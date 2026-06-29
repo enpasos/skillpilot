@@ -143,6 +143,7 @@ Batch options:
 - `--continue-on-error` continues after a failed goal and reports failures at the end.
 - Temporary provider quota or rate-limit errors such as Gemini `429` stop the batch even with `--continue-on-error`, so remaining goals are not requested until quota is available again.
 - On a temporary provider failure, the batch command writes a resume file containing the failed goal plus all not-yet-started goals. With `--file tmp/goal-visualization-batch-036.txt`, the default resume file is `tmp/goal-visualization-batch-036.resume.txt`; override this with `--resume-file <path>` if needed.
+- Re-running a generated resume file is idempotent: `--file tmp/goal-visualization-batch-036.resume.txt` reuses that same resume file on another temporary provider failure instead of creating `*.resume.resume.txt`.
 - `--prompt-append-file <path>` applies one shared prompt append file to every goal in the batch.
 - `--prompt-append-dir <path>` lets the batch use per-goal prompt append files named `<skillpilotId>.md`, `<skillpilotId>.txt`, `<skillpilotId>.prompt.md`, or `<skillpilotId>.prompt.txt`. A per-goal file takes precedence over a shared `--prompt-append-file`.
 - `--file <path>` reads one goal ID or unique title fragment per line; `#` starts a comment.

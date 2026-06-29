@@ -31,7 +31,7 @@ Titel: Einfache additive Gleichungen durch Umkehraufgaben lösen
 Beschreibung: Die lernende Person kann einfache Gleichungen wie a+x=b, x-a=b oder a-x=b durch Probieren, Rückwärtsarbeiten oder Umkehraufgaben lösen.
 
 Zusatzanweisung:
-Regenerate as a simple grade-5 missing-number visual. Do not use abstract formulas such as a + x = b. Show exactly three panels with complete, correct inverse-operation chains: 1) box + 18 = 45, inverse 45 - 18 = 27, result box = 27. 2) box - 7 = 12, inverse 12 + 7 = 19, result box = 19. 3) 30 - box = 6, inverse 30 - 6 = 24, result box = 24. Every line must include an equals sign where needed. No empty final boxes. No extra examples. Little German text, no SkillPilot IDs.
+Regenerate as a simple grade-5 missing-number visual. Do not use abstract formulas such as a + x = b. Show exactly three panels with complete, correct inverse-operation chains: 1) box + 18 = 45, inverse 45 - 18 = 27, result box = 27. 2) box - 7 = 12, inverse 12 + 7 = 19, result box = 19. 3) 30 - box = 6, inverse 30 - 6 = 24, result box = 24. Every line must include an equals sign where needed. No empty final boxes. No extra examples. Little German text, no technical IDs.
 ```
 
 ## Review-Notiz

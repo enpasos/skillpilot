@@ -1,0 +1,1593 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-29T08:28:01.106Z",
+  "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
+  "request": {
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
+    "currentResumeFilePath": "tmp/goal-visualization-batch-038.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-038"
+  },
+  "summary": {
+    "totalGoals": 1077,
+    "atomicGoalsInScope": 754,
+    "goalsWithPrimaryVisualization": 184,
+    "coveragePercent": 24.4,
+    "releaseApprovedVisualizationCount": 0,
+    "reviewStatusCounts": {
+      "pilot": 184
+    },
+    "linkedVisualizationReviewStatuses": {
+      "pilot": 184
+    },
+    "reviewLedgerFiles": 40,
+    "reviewDecisionCounts": {
+      "accepted_pilot": 134,
+      "accepted_pilot_after_regeneration": 50,
+      "accepted_pilot_after_user_review_correction": 4,
+      "blocked_provider_quota": 5,
+      "deferred_provider_limitation": 1,
+      "not_attempted_after_quota_block": 4,
+      "rejected_after_user_review_replaced": 1,
+      "rejected_not_linked": 3
+    },
+    "openProviderDeferredGoals": 1,
+    "openProviderQuotaGoals": 0,
+    "blockedProviderQuotaLedgers": 2,
+    "linkedWithoutAcceptedReview": 0,
+    "acceptedReviewWithoutLink": 0
+  },
+  "currentBatch": {
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-040.md",
+    "latestLedgerStatus": "completed_pilot",
+    "resumeFile": "tmp/goal-visualization-batch-038.resume.txt",
+    "resumeFileExists": false,
+    "resumeGoalIds": [],
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-038",
+    "promptAppendDirExists": true,
+    "promptAppendFiles": 5
+  },
+  "qualityQueues": {
+    "openProviderDeferred": [
+      {
+        "batch": "003",
+        "goalId": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+        "title": "Winkel messen, zeichnen und fachsprachlich beschreiben",
+        "decision": "deferred_provider_limitation",
+        "notes": "Withdrawn after user review: repeated Nano Banana Pro attempts represented angle measurement with the Geodreieck incorrectly or ambiguously. Fachliche requirement: the Geodreieck keeps its fixed 45-45-90 shape; for measuring, its zero point/midpoint lies on the angle vertex and the long base lies on one side of the angle. The active `resourceLinks` image reference and published asset copies were removed. Revisit when the provider handles precise tool-use diagrams more reliably."
+      }
+    ],
+    "openProviderQuota": [],
+    "rejectedNotLinked": [
+      {
+        "batch": "035",
+        "goalId": "68505a32-3b1d-57b2-a495-00b4097eb50d",
+        "title": "Potenzen von Wurzeltermen vereinfachen",
+        "decision": "rejected_not_linked",
+        "notes": "One image was generated, but it mixed the target with partial radicizing and denominator rationalization. That was not focused enough for the atomic goal, so the `goal-visualization` resource link and generated asset copies were removed. The goal remains open for a later Nano Banana run."
+      },
+      {
+        "batch": "038",
+        "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+        "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
+        "decision": "rejected_not_linked",
+        "notes": "The first candidate showed a congruent copy and an enlarged triangle, but omitted a visible reduced copy although the goal explicitly includes enlarged and reduced figures. It was not imported."
+      },
+      {
+        "batch": "040",
+        "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+        "decision": "rejected_not_linked",
+        "notes": "The first correction candidate covered the full circle but used several green arrowheads, making the direction ambiguous. It was not imported."
+      }
+    ],
+    "userReviewCorrections": [
+      {
+        "batch": "037",
+        "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+        "title": "Parameter trigonometrischer Funktionen deuten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The previous image was replaced because the `Periode` panel did not clearly mark only the length `π`, and the `Grundkurve` panel mixed period and amplitude cues. The replacement marks period horizontally and amplitude vertically; for `y=sin(2x)` the period arrow is restricted to `0` through `π`."
+      },
+      {
+        "batch": "040",
+        "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+        "title": "Trigonometrische Graphen aus Funktionstermen zeichnen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The previous image showed the downward amplitude arrow too short. The corrected image uses `f(x)=2*sin(x)+1`, marks the midline `y=1`, max `3`, min `-1`, and shows the lower amplitude arrow from `y=1` down to `y=-1`. This addresses the reported issue."
+      },
+      {
+        "batch": "040",
+        "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+        "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The regenerated image shows the green Grundbereich as one full 360-degree circle with a single arrowhead at the `2π` end, indicating counterclockwise direction. In the negative-angle example, `-π/3` is shown clockwise into quadrant IV and `5π/3` counterclockwise to the same terminal ray. The side examples reduce `13π/6` to `π/6` and `-π/3` to `5π/3`. This addresses the reported issue."
+      },
+      {
+        "batch": "040",
+        "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+        "title": "Wurzelfunktionen graphisch untersuchen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The previous image placed the \"Startpunkt (0|0)\" arrow away from the origin. The corrected image marks `(0|0)` as an included point at the origin and places the \"Startpunkt (0|0)\" arrow directly on that point, while keeping `y=sqrt(x)`, `D=[0;∞)`, `W=[0;∞)`, and the points `(1|1)`, `(4|2)`, `(9|3)`. This addresses the reported issue."
+      }
+    ]
+  },
+  "consistency": {
+    "linkedWithoutAcceptedReview": [],
+    "acceptedReviewWithoutLink": []
+  },
+  "visualizedGoals": [
+    {
+      "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
+      "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f9fdb733-5838-4983-888a-05624eabbe17/f9fdb733-5838-4983-888a-05624eabbe17.jpg"
+    },
+    {
+      "goalId": "7156558c-57f1-4372-9ba7-0640c3f7cb3a",
+      "title": "Ableitungsbegriff aus mittleren und momentanen Änderungsraten entwickeln",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7156558c-57f1-4372-9ba7-0640c3f7cb3a/7156558c-57f1-4372-9ba7-0640c3f7cb3a.jpg"
+    },
+    {
+      "goalId": "91571d3f-3651-4477-ba21-320fc4077453",
+      "title": "Absolute und relative Häufigkeiten bestimmen und darstellen",
+      "phase": "J6",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/91571d3f-3651-4477-ba21-320fc4077453/91571d3f-3651-4477-ba21-320fc4077453.jpg"
+    },
+    {
+      "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
+      "title": "Achsenschnittpunkte einfacher gebrochen-rationaler Funktionen bestimmen",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43/0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43.jpg"
+    },
+    {
+      "goalId": "1335dff9-db1e-5dd6-aa55-3938b6d3b0ec",
+      "title": "Achsenspiegelungen und Punktspiegelungen durchführen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1335dff9-db1e-5dd6-aa55-3938b6d3b0ec/1335dff9-db1e-5dd6-aa55-3938b6d3b0ec.jpg"
+    },
+    {
+      "goalId": "ffd1ae26-c461-4439-9b18-d835c8f38e1a",
+      "title": "Ähnlichkeit und Strahlensatz anwenden",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ffd1ae26-c461-4439-9b18-d835c8f38e1a/ffd1ae26-c461-4439-9b18-d835c8f38e1a.jpg"
+    },
+    {
+      "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg"
+    },
+    {
+      "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
+      "title": "Arithmetisches Mittel bestimmen und deuten",
+      "phase": "J6",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/15505229-efec-4d01-8e71-acf15f9c2424/15505229-efec-4d01-8e71-acf15f9c2424.jpg"
+    },
+    {
+      "goalId": "6a4716bd-8038-46bb-b647-0db4a254fee7",
+      "title": "Aus Graphen ganzrationaler Funktionen Rückschlüsse auf Grad oder Funktionsterm ziehen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6a4716bd-8038-46bb-b647-0db4a254fee7/6a4716bd-8038-46bb-b647-0db4a254fee7.jpg"
+    },
+    {
+      "goalId": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "title": "Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8d1bb6ce-2433-4637-94ba-3bdc35fa5b10/8d1bb6ce-2433-4637-94ba-3bdc35fa5b10.jpg"
+    },
+    {
+      "goalId": "efc3506a-5f35-4d77-9498-d70a091a470b",
+      "title": "Baumdiagramme und Pfadregeln für zusammengesetzte Experimente nutzen",
+      "phase": "J10",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/efc3506a-5f35-4d77-9498-d70a091a470b/efc3506a-5f35-4d77-9498-d70a091a470b.jpg"
+    },
+    {
+      "goalId": "de393ab3-d2af-5476-8b46-315185abb805",
+      "title": "Besondere Dreiecke untersuchen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/de393ab3-d2af-5476-8b46-315185abb805/de393ab3-d2af-5476-8b46-315185abb805.jpg"
+    },
+    {
+      "goalId": "b37851f1-d64a-47ec-a54a-1e70fa5586a9",
+      "title": "Besondere Linien in Dreiecken beschreiben",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b37851f1-d64a-47ec-a54a-1e70fa5586a9/b37851f1-d64a-47ec-a54a-1e70fa5586a9.jpg"
+    },
+    {
+      "goalId": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "title": "Betrag einer Zahl angeben",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/44cb7404-114e-5b14-b33a-ddee41952d46/44cb7404-114e-5b14-b33a-ddee41952d46.jpg"
+    },
+    {
+      "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+      "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8d30d241-0247-48ac-83d3-4e0de61584d3/8d30d241-0247-48ac-83d3-4e0de61584d3.jpg"
+    },
+    {
+      "goalId": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "title": "Bruchdarstellungen verwenden und wechseln",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97/f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97.jpg"
+    },
+    {
+      "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6b0075bb-f71c-59f6-ab98-fb894568cc26/6b0075bb-f71c-59f6-ab98-fb894568cc26.jpg"
+    },
+    {
+      "goalId": "a075ae99-7669-563d-807a-f91b119c020a",
+      "title": "Brüche erweitern, kürzen und vergleichen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a075ae99-7669-563d-807a-f91b119c020a/a075ae99-7669-563d-807a-f91b119c020a.jpg"
+    },
+    {
+      "goalId": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ca8b2e67-7d14-5baf-8404-26820fe3d548/ca8b2e67-7d14-5baf-8404-26820fe3d548.jpg"
+    },
+    {
+      "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+      "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/797ee047-b8dd-45cf-880e-98571a56c690/797ee047-b8dd-45cf-880e-98571a56c690.jpg"
+    },
+    {
+      "goalId": "15512e77-31e3-5222-8a6b-84791618e5ce",
+      "title": "Bruchterme addieren und subtrahieren",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/15512e77-31e3-5222-8a6b-84791618e5ce/15512e77-31e3-5222-8a6b-84791618e5ce.jpg"
+    },
+    {
+      "goalId": "f7a9a0b4-ec64-468f-8da4-59c5055eac1d",
+      "title": "Bruchterme auf einen gemeinsamen Nenner bringen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f7a9a0b4-ec64-468f-8da4-59c5055eac1d/f7a9a0b4-ec64-468f-8da4-59c5055eac1d.jpg"
+    },
+    {
+      "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+      "title": "Bruchterme multiplizieren und dividieren",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/76478e47-5ff9-5de1-b601-5e6e436ad855/76478e47-5ff9-5de1-b601-5e6e436ad855.jpg"
+    },
+    {
+      "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+      "title": "Bruchterme strukturieren, erweitern und kürzen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c420e0be-1e74-4050-834c-d8da7f41095a/c420e0be-1e74-4050-834c-d8da7f41095a.jpg"
+    },
+    {
+      "goalId": "11c88ea2-8502-5008-bec2-3e491c75ace4",
+      "title": "Darstellungsformen gerader Körper verknüpfen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/11c88ea2-8502-5008-bec2-3e491c75ace4/11c88ea2-8502-5008-bec2-3e491c75ace4.jpg"
+    },
+    {
+      "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+      "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+      "phase": "J7",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.jpg"
+    },
+    {
+      "goalId": "502ecaa7-cca6-5c51-a1cc-da09a7b2382c",
+      "title": "Definitionsmenge einer Funktion bestimmen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png"
+    },
+    {
+      "goalId": "34ba4714-a0ff-4a48-857f-d2481cbe0441",
+      "title": "Definitionsmenge einfacher gebrochen-rationaler Funktionen bestimmen",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/34ba4714-a0ff-4a48-857f-d2481cbe0441/34ba4714-a0ff-4a48-857f-d2481cbe0441.jpg"
+    },
+    {
+      "goalId": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2f565855-bcd6-4da5-bc80-4b72a2d93d50/2f565855-bcd6-4da5-bc80-4b72a2d93d50.jpg"
+    },
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "title": "Diagramme deuten",
+      "phase": "J6",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg"
+    },
+    {
+      "goalId": "acbb7e26-f85f-405b-a3e5-affa6add6711",
+      "title": "Diagramme kritisch interpretieren",
+      "phase": "J6",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/acbb7e26-f85f-405b-a3e5-affa6add6711/acbb7e26-f85f-405b-a3e5-affa6add6711.jpg"
+    },
+    {
+      "goalId": "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+      "title": "Diagramme lesen",
+      "phase": "J6",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5e7d5ff2-b92c-4989-85bc-8d87ad7edadd/5e7d5ff2-b92c-4989-85bc-8d87ad7edadd.jpg"
+    },
+    {
+      "goalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "title": "Dichte als abgeleitete Größe verwenden",
+      "phase": "J7",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2345ae25-5805-4c72-b830-32e63cc6262a/2345ae25-5805-4c72-b830-32e63cc6262a.jpg"
+    },
+    {
+      "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d.jpg"
+    },
+    {
+      "goalId": "f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824",
+      "title": "Dreieckskonstruktionen nach Kongruenzsätzen planen, ausführen und ihre Lösbarkeit begründen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.jpg"
+    },
+    {
+      "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
+      "title": "Dreisatz in proportionalen Sachsituationen anwenden",
+      "phase": "J7",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/093397e0-eec8-45bb-9a5a-a24827876df5/093397e0-eec8-45bb-9a5a-a24827876df5.jpg"
+    },
+    {
+      "goalId": "3d49cd27-3a84-50eb-ac35-f0b0bee80df2",
+      "title": "Dynamische Zusammenhänge zwischen Größen erläutern",
+      "phase": "J6",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3d49cd27-3a84-50eb-ac35-f0b0bee80df2/3d49cd27-3a84-50eb-ac35-f0b0bee80df2.jpg"
+    },
+    {
+      "goalId": "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "title": "Einfache additive Gleichungen durch Umkehraufgaben lösen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/11e3cf89-9224-5894-8e4a-ae8ff5af0119/11e3cf89-9224-5894-8e4a-ae8ff5af0119.jpg"
+    },
+    {
+      "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
+      "title": "Einfache multiplikative Gleichungen durch Umkehroperationen lösen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/54148506-c23f-41b8-959b-068dd194cf15/54148506-c23f-41b8-959b-068dd194cf15.jpg"
+    },
+    {
+      "goalId": "ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70",
+      "title": "Einfache proportionale Sachaufgaben mit Dreisatz und Maßstab lösen",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70/ca9093cd-9ccf-5fb4-9dd8-bf4f92af4e70.jpg"
+    },
+    {
+      "goalId": "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
+      "title": "Einfache Wurzelterme vollständig radizieren und mit Beträgen vereinfachen",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5/28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5.jpg"
+    },
+    {
+      "goalId": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "title": "Einfache Zählprinzipien in Sachsituationen anwenden",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2ae76eae-799c-463e-9ec9-82327f8209a8/2ae76eae-799c-463e-9ec9-82327f8209a8.jpg"
+    },
+    {
+      "goalId": "bd8fd6d5-7155-45a5-96f0-008a4e9acb3a",
+      "title": "Einfache Zinsrechnung im Prozentkontext anwenden",
+      "phase": "J7",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/bd8fd6d5-7155-45a5-96f0-008a4e9acb3a/bd8fd6d5-7155-45a5-96f0-008a4e9acb3a.jpg"
+    },
+    {
+      "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+      "title": "Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/82597dfb-0ec6-4a77-abaf-e1d6bdd12041/82597dfb-0ec6-4a77-abaf-e1d6bdd12041.jpg"
+    },
+    {
+      "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
+      "title": "Elementare Körper erkennen und benennen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c823b5a2-82e3-5e22-9c27-c0f41cc5eac6/c823b5a2-82e3-5e22-9c27-c0f41cc5eac6.jpg"
+    },
+    {
+      "goalId": "c088fd81-fe4f-4282-99af-ebc0d1a7d202",
+      "title": "Exponentialgleichungen mit Logarithmen lösen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c088fd81-fe4f-4282-99af-ebc0d1a7d202/c088fd81-fe4f-4282-99af-ebc0d1a7d202.jpg"
+    },
+    {
+      "goalId": "3010d965-b9b9-4dc5-9d04-d706725e9a30",
+      "title": "Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum abgrenzen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3010d965-b9b9-4dc5-9d04-d706725e9a30/3010d965-b9b9-4dc5-9d04-d706725e9a30.jpg"
+    },
+    {
+      "goalId": "31207307-0cf9-4a56-bf14-90196dc2b3d4",
+      "title": "Exponentielles Wachstum in Graphen, Tabellen und Kontexten deuten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/31207307-0cf9-4a56-bf14-90196dc2b3d4/31207307-0cf9-4a56-bf14-90196dc2b3d4.jpg"
+    },
+    {
+      "goalId": "42e19186-6769-41ac-a7bf-ab39bdb50661",
+      "title": "Exponentielles Wachstum in Termen, Tabellen und Graphen beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/42e19186-6769-41ac-a7bf-ab39bdb50661/42e19186-6769-41ac-a7bf-ab39bdb50661.jpg"
+    },
+    {
+      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+      "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/121e3fdf-54d2-4d46-bc2d-f6e725f10f41/121e3fdf-54d2-4d46-bc2d-f6e725f10f41.jpg"
+    },
+    {
+      "goalId": "491e0858-e977-516e-a339-1cc2f9e9690f",
+      "title": "Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/491e0858-e977-516e-a339-1cc2f9e9690f/491e0858-e977-516e-a339-1cc2f9e9690f.jpg"
+    },
+    {
+      "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "title": "Flächeninhalte ebener Figuren berechnen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/87c55be5-06a9-41e2-a0d4-c60f7c8b8078/87c55be5-06a9-41e2-a0d4-c60f7c8b8078.jpg"
+    },
+    {
+      "goalId": "0a154cbd-1218-4553-835c-a754e9901bba",
+      "title": "Formeln mit Brüchen nach Variablen auflösen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0a154cbd-1218-4553-835c-a754e9901bba/0a154cbd-1218-4553-835c-a754e9901bba.jpg"
+    },
+    {
+      "goalId": "7dea79d2-67f2-4d92-b6cc-ad1b953dca3d",
+      "title": "Funktionen als eindeutige Zuordnungen charakterisieren",
+      "phase": "J7",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7dea79d2-67f2-4d92-b6cc-ad1b953dca3d/7dea79d2-67f2-4d92-b6cc-ad1b953dca3d.jpg"
+    },
+    {
+      "goalId": "e02c58a2-2a32-49bd-b110-7b307e0317fb",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "phase": "J7",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e02c58a2-2a32-49bd-b110-7b307e0317fb/e02c58a2-2a32-49bd-b110-7b307e0317fb.jpg"
+    },
+    {
+      "goalId": "0500f77f-8c12-5f7e-97b0-a75125eaa99b",
+      "title": "Funktionsterme aus trigonometrischen Graphen bestimmen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0500f77f-8c12-5f7e-97b0-a75125eaa99b/0500f77f-8c12-5f7e-97b0-a75125eaa99b.jpg"
+    },
+    {
+      "goalId": "e09072f9-67d9-412c-b872-24ecbf329232",
+      "title": "Funktionswerte linearer Funktionen berechnen und deuten",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e09072f9-67d9-412c-b872-24ecbf329232/e09072f9-67d9-412c-b872-24ecbf329232.jpg"
+    },
+    {
+      "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "title": "Ganze Zahlen addieren",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4b67bed9-06da-40b2-a306-24e9e7dfd390/4b67bed9-06da-40b2-a306-24e9e7dfd390.jpg"
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg"
+    },
+    {
+      "goalId": "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "title": "Ganze Zahlen subtrahieren",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3fde4db5-9e92-5f3a-98e1-d386a42b9e01/3fde4db5-9e92-5f3a-98e1-d386a42b9e01.jpg"
+    },
+    {
+      "goalId": "15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12",
+      "title": "Ganzrationale Funktionen als Summen von Potenzfunktionen beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12/15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12.jpg"
+    },
+    {
+      "goalId": "1ce8af38-082a-477b-af48-b924c92761bf",
+      "title": "Ganzrationale Funktionen über Term und Graph beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1ce8af38-082a-477b-af48-b924c92761bf/1ce8af38-082a-477b-af48-b924c92761bf.jpg"
+    },
+    {
+      "goalId": "f65ab452-1884-57b0-9be3-c7d9e4944891",
+      "title": "Geometrische Beziehungen an Kreisen und Zylindern begründet anwenden",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f65ab452-1884-57b0-9be3-c7d9e4944891/f65ab452-1884-57b0-9be3-c7d9e4944891.jpg"
+    },
+    {
+      "goalId": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+      "title": "Geraden und Strecken im Raum parametrisch beschreiben",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/235ae698-369f-4dbe-b46f-87e8b65bb03d/235ae698-369f-4dbe-b46f-87e8b65bb03d.jpg"
+    },
+    {
+      "goalId": "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "title": "Geradengleichungen linearer Funktionen aufstellen",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ae772695-d55e-4cc5-81bc-6605272759b4/ae772695-d55e-4cc5-81bc-6605272759b4.jpg"
+    },
+    {
+      "goalId": "ba343971-10e5-4b05-b005-405b9c1ce447",
+      "title": "Geradlinige Bewegungen mit Vektoren modellieren",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ba343971-10e5-4b05-b005-405b9c1ce447/ba343971-10e5-4b05-b005-405b9c1ce447.jpg"
+    },
+    {
+      "goalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "title": "Geschwindigkeit als abgeleitete Größe verwenden",
+      "phase": "J7",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/37bf2eb6-75a0-44c1-a988-ca0e203cb072/37bf2eb6-75a0-44c1-a988-ca0e203cb072.jpg"
+    },
+    {
+      "goalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
+      "title": "Graphen und Asymptoten einfacher Hyperbeln deuten",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/19a6bc8e-9851-4cf1-adf3-6898e08eb567/19a6bc8e-9851-4cf1-adf3-6898e08eb567.jpg"
+    },
+    {
+      "goalId": "302a857d-ad71-4bdf-81f3-851c95aeefe1",
+      "title": "Graphen von Sinus und Kosinus aus dem Einheitskreis ableiten und Periodizität sowie ihren Zusammenhang begründen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/302a857d-ad71-4bdf-81f3-851c95aeefe1/302a857d-ad71-4bdf-81f3-851c95aeefe1.jpg"
+    },
+    {
+      "goalId": "78238608-aaaa-4d12-a9de-54f325e9cf6f",
+      "title": "Graphverlauf exponentieller Funktionen der Form $b\\cdot a^x$ anhand von $a$ und $b$ beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg"
+    },
+    {
+      "goalId": "03a87896-088d-4b21-a37b-d0604d784540",
+      "title": "Größen in Sachsituationen mithilfe von Bezugsgrößen schätzen",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/03a87896-088d-4b21-a37b-d0604d784540/03a87896-088d-4b21-a37b-d0604d784540.jpg"
+    },
+    {
+      "goalId": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "title": "Größen und Einheiten vergleichen und umrechnen",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f2e42af5-67a6-477e-82ea-e65b09cc6cb3/f2e42af5-67a6-477e-82ea-e65b09cc6cb3.jpg"
+    },
+    {
+      "goalId": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+      "title": "Grundaufgaben der Prozentrechnung lösen",
+      "phase": "J6",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/71d43fcc-d787-4874-ae4a-2336364e9c0a/71d43fcc-d787-4874-ae4a-2336364e9c0a.jpg"
+    },
+    {
+      "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
+      "title": "Grundlegende Ableitungsregeln auf elementare Funktionsterme anwenden",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c/9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c.jpg"
+    },
+    {
+      "goalId": "cba4cad7-926d-5035-a7dd-d450afccccb3",
+      "title": "Halbierende Geraden mit Geodreieck und Zirkel konstruieren",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/cba4cad7-926d-5035-a7dd-d450afccccb3/cba4cad7-926d-5035-a7dd-d450afccccb3.jpg"
+    },
+    {
+      "goalId": "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+      "title": "Informationen aus Tabellen entnehmen",
+      "phase": "J6",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c9df47fa-81a9-4890-91b7-2cc80da813cb/c9df47fa-81a9-4890-91b7-2cc80da813cb.jpg"
+    },
+    {
+      "goalId": "7676b0f9-340d-4a91-ab1f-92745a8f88db",
+      "title": "Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7676b0f9-340d-4a91-ab1f-92745a8f88db/7676b0f9-340d-4a91-ab1f-92745a8f88db.jpg"
+    },
+    {
+      "goalId": "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "title": "Klammerterme und Rechenreihenfolge sicher auswerten",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5d1decb2-b01b-5c85-88fc-9fc255ff9776/5d1decb2-b01b-5c85-88fc-9fc255ff9776.jpg"
+    },
+    {
+      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+      "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.jpg"
+    },
+    {
+      "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
+      "title": "Kongruente und ähnliche Figuren erkennen und Eigenschaften geometrischer Abbildungen beschreiben",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6833664b-bd8b-44a2-95bc-c0b78ff89e31/6833664b-bd8b-44a2-95bc-c0b78ff89e31.jpg"
+    },
+    {
+      "goalId": "f0a49da2-018b-4cda-adbd-27047b610a0f",
+      "title": "Kongruenzsätze anwenden und begründen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f0a49da2-018b-4cda-adbd-27047b610a0f/f0a49da2-018b-4cda-adbd-27047b610a0f.jpg"
+    },
+    {
+      "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
+      "title": "Kreisbeziehungen am Kreis begründen und nutzen",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/21342eb9-9cfd-4fbf-b28e-60aa2b48f702/21342eb9-9cfd-4fbf-b28e-60aa2b48f702.jpg"
+    },
+    {
+      "goalId": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "title": "Lagebeziehungen geometrischer Objekte beschreiben",
+      "phase": "J5",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2231c29b-eb4e-51ae-9cb1-eb033bf16099/2231c29b-eb4e-51ae-9cb1-eb033bf16099.jpg"
+    },
+    {
+      "goalId": "3e53a39b-1c75-4034-a647-8de85719e1fb",
+      "title": "Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3e53a39b-1c75-4034-a647-8de85719e1fb/3e53a39b-1c75-4034-a647-8de85719e1fb.jpg"
+    },
+    {
+      "goalId": "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen",
+      "phase": "J10",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b025df0c-994c-4807-9c5f-2d548905b73f/b025df0c-994c-4807-9c5f-2d548905b73f.jpg"
+    },
+    {
+      "goalId": "5ab17678-bba7-4e6b-9aff-5a909e24d40e",
+      "title": "Laplace-Experimente auswerten",
+      "phase": "J8",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5ab17678-bba7-4e6b-9aff-5a909e24d40e/5ab17678-bba7-4e6b-9aff-5a909e24d40e.jpg"
+    },
+    {
+      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "title": "Lineare Funktionen beschreiben",
+      "phase": "GLOBAL",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186/af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186.jpg"
+    },
+    {
+      "goalId": "fa0b6b69-ce54-4711-90e6-26f27249cd71",
+      "title": "Lineare Gleichungen mit Klammern und Verhältnisgleichungen lösen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fa0b6b69-ce54-4711-90e6-26f27249cd71/fa0b6b69-ce54-4711-90e6-26f27249cd71.jpg"
+    },
+    {
+      "goalId": "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "title": "Lineare Gleichungen systematisch lösen",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/325771e1-602d-4bca-a199-a8f39a2d3dee/325771e1-602d-4bca-a199-a8f39a2d3dee.jpg"
+    },
+    {
+      "goalId": "e6eb42c7-454f-49bf-b598-64d2935d2735",
+      "title": "Lineare Gleichungen und Ungleichungen lösen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e6eb42c7-454f-49bf-b598-64d2935d2735/e6eb42c7-454f-49bf-b598-64d2935d2735.jpg"
+    },
+    {
+      "goalId": "058bf6de-6c0e-4298-b054-9e8dff6e6a66",
+      "title": "Lineare Gleichungen und Verhältnisgleichungen lösen, prüfen und Lösbarkeit beschreiben",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/058bf6de-6c0e-4298-b054-9e8dff6e6a66/058bf6de-6c0e-4298-b054-9e8dff6e6a66.jpg"
+    },
+    {
+      "goalId": "546bf0b3-6921-416b-a2ef-8fd37d429dc7",
+      "title": "Lineare Gleichungssysteme lösen und deuten",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/546bf0b3-6921-416b-a2ef-8fd37d429dc7/546bf0b3-6921-416b-a2ef-8fd37d429dc7.jpg"
+    },
+    {
+      "goalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "title": "Lineare Gleichungssysteme mit zwei Variablen lösen und Lösungsvielfalt untersuchen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e42c208d-9555-43cc-92f5-5bb4c0688726/e42c208d-9555-43cc-92f5-5bb4c0688726.jpg"
+    },
+    {
+      "goalId": "aed3ca99-815b-40b8-ae91-e11bf92f51da",
+      "title": "Logarithmen als Umkehrung exponentieller Zusammenhänge nutzen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/aed3ca99-815b-40b8-ae91-e11bf92f51da/aed3ca99-815b-40b8-ae91-e11bf92f51da.jpg"
+    },
+    {
+      "goalId": "3c1d6ce7-099e-4267-9ff2-3d1526209a89",
+      "title": "Logarithmus definieren und einfache Werte bestimmen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3c1d6ce7-099e-4267-9ff2-3d1526209a89/3c1d6ce7-099e-4267-9ff2-3d1526209a89.jpg"
+    },
+    {
+      "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
+      "title": "Median bestimmen und mit dem arithmetischen Mittel vergleichen",
+      "phase": "J7",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2242c379-ddbb-4f03-8aed-13f49a4674e8/2242c379-ddbb-4f03-8aed-13f49a4674e8.jpg"
+    },
+    {
+      "goalId": "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+      "title": "Messungen in Umwelt und Quellenmaterial durchführen",
+      "phase": "J7",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c3cce9a1-9adc-4470-b2d8-aea81d6d7b65/c3cce9a1-9adc-4470-b2d8-aea81d6d7b65.jpg"
+    },
+    {
+      "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "title": "Mit Größen rechnen und Ergebnisse deuten",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ca623958-c204-5d1b-bdd0-3f76765674cb/ca623958-c204-5d1b-bdd0-3f76765674cb.jpg"
+    },
+    {
+      "goalId": "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "title": "Mit natürlichen Zahlen in Grundsituationen rechnen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d825f7ce-e19b-594a-8181-eff199c21d93/d825f7ce-e19b-594a-8181-eff199c21d93.jpg"
+    },
+    {
+      "goalId": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+      "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1a18dbb3-f350-4766-9c8b-20ca018ccef1/1a18dbb3-f350-4766-9c8b-20ca018ccef1.jpg"
+    },
+    {
+      "goalId": "8cb18560-3a2b-593e-b634-9d768566cba9",
+      "title": "Muster und Zahlenfolgen erkennen, beschreiben und fortsetzen",
+      "phase": "J6",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8cb18560-3a2b-593e-b634-9d768566cba9/8cb18560-3a2b-593e-b634-9d768566cba9.jpg"
+    },
+    {
+      "goalId": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "title": "Natürliche und ganze Zahlen multiplizieren und dividieren",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/cafd6520-c4af-4109-9863-cc49ba6fad4d/cafd6520-c4af-4109-9863-cc49ba6fad4d.jpg"
+    },
+    {
+      "goalId": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "title": "Natürliche Zahlen als unbegrenzt fortsetzbar verstehen und große Zahlbezeichnungen verwenden",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1a25ef44-f310-4c23-9ba8-44baec60d3b0/1a25ef44-f310-4c23-9ba8-44baec60d3b0.jpg"
+    },
+    {
+      "goalId": "cf474eab-1379-4877-907e-58b0892ce734",
+      "title": "Natürliche Zahlen darstellen und am Zahlenstrahl verorten",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/cf474eab-1379-4877-907e-58b0892ce734/cf474eab-1379-4877-907e-58b0892ce734.jpg"
+    },
+    {
+      "goalId": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "title": "Natürliche Zahlen ordnen und vergleichen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9ef6c4fa-b97a-5d7a-86c1-96690f02d916/9ef6c4fa-b97a-5d7a-86c1-96690f02d916.jpg"
+    },
+    {
+      "goalId": "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+      "title": "Natürliche Zahlen runden",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fe07241a-b779-5f35-a82d-7aa51ae74f42/fe07241a-b779-5f35-a82d-7aa51ae74f42.jpg"
+    },
+    {
+      "goalId": "e131c594-c45e-5718-9f33-7ae39ddc82ad",
+      "title": "Nenner mit Wurzeltermen rationalisieren",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e131c594-c45e-5718-9f33-7ae39ddc82ad/e131c594-c45e-5718-9f33-7ae39ddc82ad.jpg"
+    },
+    {
+      "goalId": "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "title": "Nullstellen linearer Funktionen berechnen",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4acca6ef-5344-4dd1-b53d-506907573cf7/4acca6ef-5344-4dd1-b53d-506907573cf7.jpg"
+    },
+    {
+      "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
+      "title": "Parallele und senkrechte Geraden konstruieren",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c31d3a7a-778b-5ae3-9aa4-7b5674047f83/c31d3a7a-778b-5ae3-9aa4-7b5674047f83.jpg"
+    },
+    {
+      "goalId": "c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7",
+      "title": "Parameter exponentieller Funktionen aus Gleichung und Werten deuten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7/c74d0c7e-44e2-46ab-8f95-b8dc45fcfae7.jpg"
+    },
+    {
+      "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
+      "title": "Parameter trigonometrischer Funktionen deuten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/895a60ea-606a-4e77-a5af-ecc13d68e8fb/895a60ea-606a-4e77-a5af-ecc13d68e8fb.jpg"
+    },
+    {
+      "goalId": "be18cef8-ad5b-56d4-9ecf-9ba45bad211e",
+      "title": "Parametereinfluss auf einfache gebrochen-rationale Graphen beschreiben",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/be18cef8-ad5b-56d4-9ecf-9ba45bad211e/be18cef8-ad5b-56d4-9ecf-9ba45bad211e.jpg"
+    },
+    {
+      "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
+      "title": "Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7f11ffe0-7c43-4507-9101-50374a60b0e8/7f11ffe0-7c43-4507-9101-50374a60b0e8.jpg"
+    },
+    {
+      "goalId": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "title": "Positive und negative Zahlen an der Zahlengeraden veranschaulichen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/199fe2ed-2576-4611-b8de-fd56fb9f78fc/199fe2ed-2576-4611-b8de-fd56fb9f78fc.jpg"
+    },
+    {
+      "goalId": "eb993c0c-9b1d-52af-97c8-4a534fd78be3",
+      "title": "Potenzen mit natürlichen Exponenten und Zehnerpotenzen verwenden",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/eb993c0c-9b1d-52af-97c8-4a534fd78be3/eb993c0c-9b1d-52af-97c8-4a534fd78be3.jpg"
+    },
+    {
+      "goalId": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "title": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/26f668a0-6425-5466-9cf7-6295dd189005/26f668a0-6425-5466-9cf7-6295dd189005.jpg"
+    },
+    {
+      "goalId": "68505a32-3b1d-57b2-a495-00b4097eb50d",
+      "title": "Potenzen von Wurzeltermen vereinfachen",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/68505a32-3b1d-57b2-a495-00b4097eb50d/68505a32-3b1d-57b2-a495-00b4097eb50d.jpg"
+    },
+    {
+      "goalId": "6596405a-9728-41df-9163-53670ec2a937",
+      "title": "Potenzgesetze mit ganzzahligen Exponenten anwenden",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6596405a-9728-41df-9163-53670ec2a937/6596405a-9728-41df-9163-53670ec2a937.jpg"
+    },
+    {
+      "goalId": "b5de0574-93ed-409c-80ee-312211420cd6",
+      "title": "Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b5de0574-93ed-409c-80ee-312211420cd6/b5de0574-93ed-409c-80ee-312211420cd6.jpg"
+    },
+    {
+      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "title": "Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+      "phase": "J7",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f3167cab-bb23-4bb9-8a27-22e3c5015d44/f3167cab-bb23-4bb9-8a27-22e3c5015d44.jpg"
+    },
+    {
+      "goalId": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "title": "Proportionale Zusammenhänge mit Quotientengleichheit prüfen",
+      "phase": "J7",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c1f50bcc-7848-4e49-b9de-0ec030cc6bca/c1f50bcc-7848-4e49-b9de-0ec030cc6bca.jpg"
+    },
+    {
+      "goalId": "72b6bfa5-8e34-4029-8f85-0277207c485e",
+      "title": "Prozentangaben in Texten deuten und prüfen",
+      "phase": "J6",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/72b6bfa5-8e34-4029-8f85-0277207c485e/72b6bfa5-8e34-4029-8f85-0277207c485e.jpg"
+    },
+    {
+      "goalId": "804d7443-9976-5d81-a47d-1601f42f7e0e",
+      "title": "Prozentrechnungen in anspruchsvolleren Sachzusammenhängen anwenden",
+      "phase": "J7",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/804d7443-9976-5d81-a47d-1601f42f7e0e/804d7443-9976-5d81-a47d-1601f42f7e0e.jpg"
+    },
+    {
+      "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "title": "Punkte, Strecken, Geraden und Kreise im Koordinatensystem darstellen",
+      "phase": "J5",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/25593605-5e13-55cc-9a05-8f3d737e15e9/25593605-5e13-55cc-9a05-8f3d737e15e9.jpg"
+    },
+    {
+      "goalId": "31a89d59-7d45-5e60-a8e8-561001b05f2d",
+      "title": "Punktmengen mit Abstandsbedingungen kennzeichnen",
+      "phase": "J5",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/31a89d59-7d45-5e60-a8e8-561001b05f2d/31a89d59-7d45-5e60-a8e8-561001b05f2d.jpg"
+    },
+    {
+      "goalId": "59098969-0a35-5a58-94f2-1cfcdf191cf5",
+      "title": "Quader- und Würfeldarstellungen zeichnen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/59098969-0a35-5a58-94f2-1cfcdf191cf5/59098969-0a35-5a58-94f2-1cfcdf191cf5.jpg"
+    },
+    {
+      "goalId": "9023226b-fc17-412b-807c-2bb45cd551d5",
+      "title": "Quadratische Gleichungen lösen",
+      "phase": "J9",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9023226b-fc17-412b-807c-2bb45cd551d5/9023226b-fc17-412b-807c-2bb45cd551d5.jpg"
+    },
+    {
+      "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+      "title": "Quadratwurzeln definieren und schätzen",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f8704a7b-e93d-4e32-b0f9-1b171545fe28/f8704a7b-e93d-4e32-b0f9-1b171545fe28.jpg"
+    },
+    {
+      "goalId": "c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1",
+      "title": "Quadratwurzeln iterativ mit dem Heron-Verfahren approximieren",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1/c9eb293a-9be7-4a3d-8cd0-a1d885a3fdc1.jpg"
+    },
+    {
+      "goalId": "283ec44e-747c-55e3-9a61-4a4cc70ebfab",
+      "title": "Randverhalten ganzrationaler Funktionen aus dem Term begründen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/283ec44e-747c-55e3-9a61-4a4cc70ebfab/283ec44e-747c-55e3-9a61-4a4cc70ebfab.jpg"
+    },
+    {
+      "goalId": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "title": "Rationale Zahlen addieren und subtrahieren",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4eeab7d5-eeb3-579b-845e-1c52ffe9e89f/4eeab7d5-eeb3-579b-845e-1c52ffe9e89f.jpg"
+    },
+    {
+      "goalId": "c9e01667-24c4-56a2-8cf4-dfb6c360d7b9",
+      "title": "Rationale Zahlen an der Zahlengeraden darstellen und ordnen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c9e01667-24c4-56a2-8cf4-dfb6c360d7b9/c9e01667-24c4-56a2-8cf4-dfb6c360d7b9.jpg"
+    },
+    {
+      "goalId": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "title": "Rationale Zahlen multiplizieren und dividieren",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ee48e811-4c9c-5080-9836-8403fc9f0810/ee48e811-4c9c-5080-9836-8403fc9f0810.jpg"
+    },
+    {
+      "goalId": "05012547-7263-5bfa-9e7c-df970745a011",
+      "title": "Rechengesetze bei rationalen Zahlen nutzen",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/05012547-7263-5bfa-9e7c-df970745a011/05012547-7263-5bfa-9e7c-df970745a011.jpg"
+    },
+    {
+      "goalId": "191c67db-44a8-4f63-994a-d85e8e301194",
+      "title": "Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/191c67db-44a8-4f63-994a-d85e8e301194/191c67db-44a8-4f63-994a-d85e8e301194.jpg"
+    },
+    {
+      "goalId": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "title": "Rechnungen mit Umkehroperationen überprüfen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e82d8d3a-9012-5482-afe6-ab0d727a49bb/e82d8d3a-9012-5482-afe6-ab0d727a49bb.jpg"
+    },
+    {
+      "goalId": "0bd7dc9b-c7f9-52e6-b374-a019edfd821c",
+      "title": "Rechteckflächenformel aus dem Messprinzip erklären",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0bd7dc9b-c7f9-52e6-b374-a019edfd821c/0bd7dc9b-c7f9-52e6-b374-a019edfd821c.jpg"
+    },
+    {
+      "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
+      "title": "Sachsituationen in Terme mit Variablen übersetzen",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fd860da9-73ba-47cd-a1a8-452424915a80/fd860da9-73ba-47cd-a1a8-452424915a80.jpg"
+    },
+    {
+      "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+      "title": "Satz des Thales begründen und anwenden",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/36728db8-da44-4add-97b8-0fdd7cfd9c41/36728db8-da44-4add-97b8-0fdd7cfd9c41.jpg"
+    },
+    {
+      "goalId": "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "title": "Schnittpunkte zweier Geraden berechnen",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2f598bc7-c117-47d7-bb81-0f08ad679b91/2f598bc7-c117-47d7-bb81-0f08ad679b91.jpg"
+    },
+    {
+      "goalId": "5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11",
+      "title": "Sinus- und Kosinusfunktionen als periodische Funktionen beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11/5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11.jpg"
+    },
+    {
+      "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
+      "title": "Sinus- und Kosinuswerte am Einheitskreis im Bogenmass deuten und Winkel bestimmen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c8818eae-0c4d-4fa1-9085-04a9c95a668b/c8818eae-0c4d-4fa1-9085-04a9c95a668b.jpg"
+    },
+    {
+      "goalId": "53b47494-ec60-4128-840d-2a4c4bab6d32",
+      "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/53b47494-ec60-4128-840d-2a4c4bab6d32/53b47494-ec60-4128-840d-2a4c4bab6d32.jpg"
+    },
+    {
+      "goalId": "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
+      "title": "Spannweite und Quartile bestimmen und Boxplots erstellen",
+      "phase": "J7",
+      "area": "Data",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2/3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2.jpg"
+    },
+    {
+      "goalId": "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "title": "Stellenwertsystem und Zahlendarstellungen verstehen",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/624764d6-becd-5f9b-ada3-0d4f9d143073/624764d6-becd-5f9b-ada3-0d4f9d143073.jpg"
+    },
+    {
+      "goalId": "e55edcb9-2184-4a24-890e-70cc91028990",
+      "title": "Stochastische Simulationen und Monte-Carlo-Verfahren deuten",
+      "phase": "J10",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e55edcb9-2184-4a24-890e-70cc91028990/e55edcb9-2184-4a24-890e-70cc91028990.jpg"
+    },
+    {
+      "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
+      "title": "Symmetrie ganzrationaler Funktionsgraphen am Term prüfen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0190e463-51a7-4860-9b35-d875530a85ba/0190e463-51a7-4860-9b35-d875530a85ba.jpg"
+    },
+    {
+      "goalId": "8da730f1-8947-498d-9e78-7fb20b00a994",
+      "title": "Symmetrien in Figuren erkennen und beschreiben",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8da730f1-8947-498d-9e78-7fb20b00a994/8da730f1-8947-498d-9e78-7fb20b00a994.jpg"
+    },
+    {
+      "goalId": "f39c49c7-003b-471a-a33e-6cfea1d7b7b1",
+      "title": "Tabellen erstellen und beschriften",
+      "phase": "J5",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f39c49c7-003b-471a-a33e-6cfea1d7b7b1/f39c49c7-003b-471a-a33e-6cfea1d7b7b1.jpg"
+    },
+    {
+      "goalId": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "title": "Tangenten als lineare Approximationen nutzen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/06bdbecb-53e0-5ac3-992f-d6fd20555b59/06bdbecb-53e0-5ac3-992f-d6fd20555b59.jpg"
+    },
+    {
+      "goalId": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "title": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b43a1e45-f05c-4d78-8453-f6fa677dc24c/b43a1e45-f05c-4d78-8453-f6fa677dc24c.jpg"
+    },
+    {
+      "goalId": "314854a0-4e97-462e-9486-9fd83652e91d",
+      "title": "Taschenrechner situationsgerecht nutzen",
+      "phase": "J7",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/314854a0-4e97-462e-9486-9fd83652e91d/314854a0-4e97-462e-9486-9fd83652e91d.jpg"
+    },
+    {
+      "goalId": "f2d4a7de-57c3-5749-bbb4-6cd4b57b7562",
+      "title": "Teilbarkeitsregeln prüfen und Primfaktorzerlegungen angeben",
+      "phase": "J5",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562.jpg"
+    },
+    {
+      "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+      "title": "Terme im Bereich rationaler Zahlen äquivalent umformen",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2c4830e6-a8d5-48d0-9202-3b7d18a419c2/2c4830e6-a8d5-48d0-9202-3b7d18a419c2.jpg"
+    },
+    {
+      "goalId": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "title": "Terme mit rationalen Zahlen strukturiert auswerten",
+      "phase": "J6",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0a6dab2e-1bbb-5587-adb0-456d3991c327/0a6dab2e-1bbb-5587-adb0-456d3991c327.jpg"
+    },
+    {
+      "goalId": "959cc50b-6c81-4fa1-800f-4804a707b1ee",
+      "title": "Terme mit Rechengesetzen und Distributivgesetz äquivalent umformen",
+      "phase": "J8",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/959cc50b-6c81-4fa1-800f-4804a707b1ee/959cc50b-6c81-4fa1-800f-4804a707b1ee.jpg"
+    },
+    {
+      "goalId": "0afe00fe-8cbc-4ed4-8b50-84494067e362",
+      "title": "Terme mit Variablen deuten und äquivalent umformen",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0afe00fe-8cbc-4ed4-8b50-84494067e362/0afe00fe-8cbc-4ed4-8b50-84494067e362.jpg"
+    },
+    {
+      "goalId": "eb28b403-f9fc-57ea-a793-b4555596fdd7",
+      "title": "Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/eb28b403-f9fc-57ea-a793-b4555596fdd7/eb28b403-f9fc-57ea-a793-b4555596fdd7.jpg"
+    },
+    {
+      "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
+      "title": "Trigonometrische Graphen aus Funktionstermen zeichnen",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1/a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1.jpg"
+    },
+    {
+      "goalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
+      "title": "Trigonometrische Graphen und Periodizität deuten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/46bdcc16-418f-417a-89cf-033d7ae6c8cc/46bdcc16-418f-417a-89cf-033d7ae6c8cc.jpg"
+    },
+    {
+      "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "title": "Umfang und Flächeninhalt unterscheiden und anwenden",
+      "phase": "J5",
+      "area": "Measurement",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d6c3fb37-ece6-5b56-9221-1eeb21845877/d6c3fb37-ece6-5b56-9221-1eeb21845877.jpg"
+    },
+    {
+      "goalId": "8064088b-dc0a-4a67-ad63-360fdcc9869d",
+      "title": "Umfang und Flächeninhalt von Kreisen und Kreisteilen berechnen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8064088b-dc0a-4a67-ad63-360fdcc9869d/8064088b-dc0a-4a67-ad63-360fdcc9869d.jpg"
+    },
+    {
+      "goalId": "fa72cf74-a31e-402e-90d7-422c118f4a5b",
+      "title": "Umgekehrt proportionale Größen mit Hyperbeln beschreiben",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fa72cf74-a31e-402e-90d7-422c118f4a5b/fa72cf74-a31e-402e-90d7-422c118f4a5b.jpg"
+    },
+    {
+      "goalId": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "title": "Variablen in Sachsituationen einführen und deuten",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5bba4ec2-3781-4624-8b62-e24b38f7f76e/5bba4ec2-3781-4624-8b62-e24b38f7f76e.jpg"
+    },
+    {
+      "goalId": "c9112f89-ffaf-40f3-af1f-86a04b5ad4ee",
+      "title": "Variablen in Termen, Gleichungen und Formeln verwenden und deuten",
+      "phase": "J7",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c9112f89-ffaf-40f3-af1f-86a04b5ad4ee/c9112f89-ffaf-40f3-af1f-86a04b5ad4ee.jpg"
+    },
+    {
+      "goalId": "aa334054-d145-4ece-a796-f5b8159ef76f",
+      "title": "Verdoppelungszeit, Halbwertszeit und Asymptotik deuten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/aa334054-d145-4ece-a796-f5b8159ef76f/aa334054-d145-4ece-a796-f5b8159ef76f.jpg"
+    },
+    {
+      "goalId": "759485a9-51c0-4261-af7d-caa3c0e5d68b",
+      "title": "Verknüpfte Ereignisse mit Mengen- und Vierfelderdarstellungen strukturieren",
+      "phase": "J9",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/759485a9-51c0-4261-af7d-caa3c0e5d68b/759485a9-51c0-4261-af7d-caa3c0e5d68b.jpg"
+    },
+    {
+      "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "title": "Vierecke erkennen, darstellen und Eigenschaften nutzen",
+      "phase": "J5",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d98849c7-bd0b-50d4-90aa-6293a3adb211/d98849c7-bd0b-50d4-90aa-6293a3adb211.jpg"
+    },
+    {
+      "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
+      "title": "Volumen und Oberflächen gerader Prismen berechnen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/59d5a330-61be-4590-ab46-cf7cefecd144/59d5a330-61be-4590-ab46-cf7cefecd144.jpg"
+    },
+    {
+      "goalId": "415bd48b-8a76-4d4f-bfdd-d085573e7ac3",
+      "title": "Volumen von Zylindern berechnen",
+      "phase": "J8",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/415bd48b-8a76-4d4f-bfdd-d085573e7ac3/415bd48b-8a76-4d4f-bfdd-d085573e7ac3.jpg"
+    },
+    {
+      "goalId": "57fbbf31-9b8c-5408-9af5-fbc73acd12bb",
+      "title": "Volumeneinheiten deuten und umrechnen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/57fbbf31-9b8c-5408-9af5-fbc73acd12bb/57fbbf31-9b8c-5408-9af5-fbc73acd12bb.jpg"
+    },
+    {
+      "goalId": "b44f038c-fb1f-527e-b9ad-382214d0328a",
+      "title": "Volumenformel des Quaders mit Einheitswürfeln plausibilisieren",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b44f038c-fb1f-527e-b9ad-382214d0328a/b44f038c-fb1f-527e-b9ad-382214d0328a.jpg"
+    },
+    {
+      "goalId": "1f89d69e-ead1-424b-8221-fae37fdea2bc",
+      "title": "Volumina und Oberflächen einfacher Körper berechnen",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1f89d69e-ead1-424b-8221-fae37fdea2bc/1f89d69e-ead1-424b-8221-fae37fdea2bc.jpg"
+    },
+    {
+      "goalId": "27b63e2e-6a34-483e-8e5a-fe0f49670d1d",
+      "title": "Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse im Kontext bewerten",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/27b63e2e-6a34-483e-8e5a-fe0f49670d1d/27b63e2e-6a34-483e-8e5a-fe0f49670d1d.jpg"
+    },
+    {
+      "goalId": "4ac925cf-3862-4810-be2a-d92efff7d735",
+      "title": "Wahrscheinlichkeiten verknüpfter Ereignisse berechnen",
+      "phase": "J9",
+      "area": "Probability",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4ac925cf-3862-4810-be2a-d92efff7d735/4ac925cf-3862-4810-be2a-d92efff7d735.jpg"
+    },
+    {
+      "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "title": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
+      "phase": "J10",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ad66009f-55fb-563f-ace0-dbfeae7c76c3/ad66009f-55fb-563f-ace0-dbfeae7c76c3.jpg"
+    },
+    {
+      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+      "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+      "phase": "J7",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e.jpg"
+    },
+    {
+      "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
+      "title": "Wurzelfunktionen graphisch untersuchen",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/66077296-a8f8-4645-938b-7c3424cb2f14/66077296-a8f8-4645-938b-7c3424cb2f14.jpg"
+    },
+    {
+      "goalId": "4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a",
+      "title": "Wurzelterme addieren und subtrahieren",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a/4f889e45-3c1d-4a8e-8fcb-3582d40d9e8a.jpg"
+    },
+    {
+      "goalId": "7fad6a57-cda1-5dee-a55e-877be64ba992",
+      "title": "Wurzelterme multiplizieren und dividieren",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7fad6a57-cda1-5dee-a55e-877be64ba992/7fad6a57-cda1-5dee-a55e-877be64ba992.jpg"
+    },
+    {
+      "goalId": "62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb",
+      "title": "Wurzelterme teilweise radizieren",
+      "phase": "J9",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb/62e0a4e3-d1d3-46a2-982d-6b99dca6d3fb.jpg"
+    },
+    {
+      "goalId": "8a691345-3216-522c-a898-d65e8e94db28",
+      "title": "Zahl Pi als Verhältnis am Kreis erklären",
+      "phase": "J6",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/8a691345-3216-522c-a898-d65e8e94db28/8a691345-3216-522c-a898-d65e8e94db28.jpg"
+    },
+    {
+      "goalId": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "title": "Zuordnungen analysieren",
+      "phase": "GLOBAL",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2bb4bb91-7929-483a-b735-44275f6b5cdc/2bb4bb91-7929-483a-b735-44275f6b5cdc.jpg"
+    },
+    {
+      "goalId": "f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0",
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "phase": "J8",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0.jpg"
+    }
+  ]
+}
