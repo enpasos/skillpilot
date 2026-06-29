@@ -655,7 +655,7 @@
             }
           },
           "resourceLinks": {
-            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI learning coaches.",
+            "description": "Ordered helpful learning resources for this goal. Canonical field for Cockpit and AI learning coaches. Goal images are represented here as links with type=goal-visualization and resourceType=image.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GoalSourceLink"
@@ -720,6 +720,22 @@
           "license": {
             "type": "string",
             "description": "Optional license label for the linked resource."
+          },
+          "skillpilotId": {
+            "type": "string",
+            "description": "Optional goal reference. For goal visualizations this equals the learning goal ID."
+          },
+          "role": {
+            "type": "string",
+            "description": "Optional role of the link, e.g. primary. For goal visualizations the GPT should prefer role=primary."
+          },
+          "altText": {
+            "type": "string",
+            "description": "Alternative text for images. Use as Markdown alt text for goal-visualization images."
+          },
+          "reviewStatus": {
+            "type": "string",
+            "description": "Optional review status for the resource, e.g. pilot."
           }
         }
       },

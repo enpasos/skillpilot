@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-29T08:28:01.106Z
+Generated: 2026-06-29T09:01:52.848Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 184 |
-| Coverage | 24.4% |
+| Ziele mit primaerem Visualisierungslink | 187 |
+| Coverage | 24.8% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 40 |
+| Review-Ledger-Dateien | 43 |
 | Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,15 +32,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 184 |
+| `pilot` | 187 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_pilot` | 134 |
-| `accepted_pilot_after_regeneration` | 50 |
-| `accepted_pilot_after_user_review_correction` | 4 |
+| `accepted_pilot_after_regeneration` | 53 |
+| `accepted_pilot_after_user_review_correction` | 6 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 1 |
 | `not_attempted_after_quota_block` | 4 |
@@ -51,7 +51,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-040.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-043.md` |
 | Latest ledger status | `completed_pilot` |
 | Resume file | `tmp/goal-visualization-batch-038.resume.txt` |
 | Resume file exists | no |
@@ -94,6 +94,8 @@ Keine Eintraege.
 | 040 | `a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1` | Trigonometrische Graphen aus Funktionstermen zeichnen | `accepted_pilot_after_user_review_correction` |
 | 040 | `53b47494-ec60-4128-840d-2a4c4bab6d32` | Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen | `accepted_pilot_after_user_review_correction` |
 | 040 | `66077296-a8f8-4645-938b-7c3424cb2f14` | Wurzelfunktionen graphisch untersuchen | `accepted_pilot_after_user_review_correction` |
+| 041 | `fa72cf74-a31e-402e-90d7-422c118f4a5b` | Umgekehrt proportionale Größen mit Hyperbeln beschreiben | `accepted_pilot_after_user_review_correction` |
+| 042 | `11c88ea2-8502-5008-bec2-3e491c75ace4` | Darstellungsformen gerader Körper verknüpfen | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

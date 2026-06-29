@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `11c88ea2-8502-5008-bec2-3e491c75ace4.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/11c88ea2-8502-5008-bec2-3e491c75ace4/11c88ea2-8502-5008-bec2-3e491c75ace4.jpg`
@@ -31,7 +31,21 @@ Titel: Darstellungsformen gerader Körper verknüpfen
 Beschreibung: Die lernende Person kann Zusammenhänge zwischen Netz, Schrägbild und Modell bei geraden Körpern herstellen und fachsprachlich erläutern.
 
 Zusatzanweisung:
-Do not include any technical IDs, platform names, UUIDs, file names, database identifiers, watermarks, signatures, or hidden labels anywhere in the image. Visualize the connection between three representations of the same cube: Netz, Modell, Schraegbild. Use a cube with edge length 2 cm in all three representations. The net must show exactly six equal squares: four squares in one horizontal row, plus one square attached above the second square and one square attached below the second square. Label it: 6 Quadrate, jedes 2 cm x 2 cm. Draw arrows from net to folded cube model to oblique drawing. Use matching face colors in all three representations. Do not omit any face. No calculations except the edge label 2 cm.
+Visualisiere den Zusammenhang zwischen den drei Darstellungsformen desselben Würfels: Netz, Modell, Schrägbild.
+- Verwende einen Würfel mit Kantenlänge 2 cm in allen Darstellungen.
+- Netz: genau sechs gleiche Quadrate, vier in einer waagerechten Reihe, eines über dem zweiten und eines unter dem zweiten Quadrat.
+- Schrägbild: klare isometrische Ansicht, die obere sichtbare Fläche ist deutlich orange.
+- Modell: nur eine minimalistische gefaltete Drahtmodell-Skizze (keine plastische Schattierung, kein volumetrisch-realisiertes Körperbild).
+- Zeige Pfeile als Verbindung Netz -> Modell -> Schrägbild.
+- Nutze durchgängige Farbzuordnung für die Flächen über alle drei Darstellungen.
+- Label: „6 Quadrate“ und „je 2 cm × 2 cm“.
+- Kurze, fachsprachlich korrekte deutsche Labels.
+
+Vermeiden:
+- Keine fotorealistische oder anatomische Körpersilhouette.
+- Keine Schrägbild-Darstellung mit falscher Topfarbe.
+- Keine fehlende oder doppelte Fläche.
+- Keine zusätzlichen Objekte, keine IDs, keine Wasserzeichen.
 ```
 
 ## Review-Notiz

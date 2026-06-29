@@ -98,6 +98,9 @@ npm run check:generated-doc-notices
 echo "--> Checking Generated Status Registry"
 npm run check:generated-status-registry
 
+echo "--> Checking GPT System Instruction Lengths"
+npm run check:gpt-system-instruction-lengths
+
 echo "--> Checking Documentation Links"
 npm run check:docs-links
 
@@ -112,6 +115,9 @@ npm run quality:memory-card-review:check:all
 
 echo "--> Running Learner Goal Selection Validation"
 npm run validate:learner-goal-selection
+
+echo "--> Checking Goal Visualization Runtime Assets"
+npm run check:goal-visualization-assets
 
 
 
@@ -176,7 +182,16 @@ chmod +x gradlew
 # Run backend check in a CI-like, isolated Gradle home to avoid stale local state.
 # This makes local results closer to GitHub Actions (fresh workspace behavior).
 export GRADLE_USER_HOME="$(pwd)/.gradle-ci"
-./gradlew clean check --no-daemon
+export SKILLPILOT_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/backend-ci-build-$$"
+if [[ "${SKILLPILOT_BACKEND_BUILD_DIR}" != "${PROJECT_ROOT}/tmp/backend-ci-build-"* ]]; then
+  echo "Abbruch: unerwartetes Backend-CI-Build-Verzeichnis: ${SKILLPILOT_BACKEND_BUILD_DIR}" >&2
+  exit 1
+fi
+rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
+echo "Backend CI build dir: ${SKILLPILOT_BACKEND_BUILD_DIR}"
+./gradlew --stop >/dev/null 2>&1 || true
+./gradlew clean check --no-daemon --no-watch-fs
+rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
 cd "${PROJECT_ROOT}"
 
 echo ""
