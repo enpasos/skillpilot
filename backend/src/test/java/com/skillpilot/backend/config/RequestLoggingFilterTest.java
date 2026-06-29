@@ -61,7 +61,7 @@ class RequestLoggingFilterTest {
         String redeemResponse = """
                 {
                   "chatSessionToken": "sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q",
-                  "assistantResponsePrefixMarkdown": "![Visualisierung](https://skillpilot.com/ai-assets/example.jpg)"
+                  "assistantMessage": "Dein Lernstand ist geladen. [Im Cockpit öffnen](https://skillpilot.com/?l=math&goal=goal-1)"
                 }
                 """;
 
@@ -72,7 +72,7 @@ class RequestLoggingFilterTest {
         assertThat(redactedRequest).contains("\"startCode\":\"<redacted>\"");
         assertThat(redactedResponse).doesNotContain("sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q");
         assertThat(redactedResponse).contains("\"chatSessionToken\":\"<redacted>\"");
-        assertThat(redactedResponse).contains("\"assistantResponsePrefixMarkdown\"");
+        assertThat(redactedResponse).contains("\"assistantMessage\"");
     }
 
     @Test

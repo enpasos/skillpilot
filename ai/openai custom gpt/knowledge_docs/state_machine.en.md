@@ -49,8 +49,8 @@ It is operational guidance, not internal implementation detail to expose in chat
 - Teach only when a goal is actively locked.
 - If `requiredAction = setActiveGoal` or `activeGoal` is empty, call `setActiveGoal` first.
 - If `requiredAction = teachActiveGoal`, do not call another navigation tool; teach and assess the active goal.
-- After `redeemStartCode`: if `assistantNextMessageMarkdown` is set, output it verbatim as the first visible line. Otherwise follow `assistantDisplayInstruction` without displaying it, then output `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown` first.
-- If `state.stateMachine.activeGoalVisualizationMarkdown` or `stateMachine.activeGoalVisualizationMarkdown` is set, output that Markdown image line verbatim first when entering `teachActiveGoal`. Fallback: if `activeGoal.resourceLinks` contains `type = "goal-visualization"` and `resourceType = "image"`, show the primary image once as a Markdown image. The image is orientation support only and does not replace explanation, practice, or assessment.
+- After `redeemStartCode`: if `assistantMessage` is set, output that startup answer verbatim at the start of the answer.
+- Do not render images inside GPT. If visual orientation is useful, use the Cockpit link from `assistantMessage` or build the normal Cockpit link according to `deep_linking.md`.
 - If `requiredAction = chooseMemoryMode`, do not start normal teaching; choose the flashcard mode.
 - `frontier` and `goalOptions` are candidate lists; the confirmed current goal is `activeGoal`.
 

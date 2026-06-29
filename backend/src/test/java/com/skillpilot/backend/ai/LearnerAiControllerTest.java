@@ -29,6 +29,7 @@ import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.ExamData;
+import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.lang.reflect.Method;
@@ -548,12 +549,12 @@ class LearnerAiControllerTest {
     }
 
     @Test
-    void getLearnerState_exposesActiveGoalVisualizationMarkdownWithAbsoluteAiAssetUrl() {
+    void getLearnerState_hidesGoalVisualizationLinksFromAiResponse() {
         String skillpilotId = "learner-1";
         FrontierGoal activeGoal = visualizationGoal("goal-1");
         UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
                 skillpilotId,
-                null,
+                curriculumSummary(),
                 List.of(activeGoal),
                 null,
                 List.of("setMastery"),
@@ -567,13 +568,8 @@ class LearnerAiControllerTest {
 
         UnifiedLearnerStateResponse state = controller.getLearnerState(skillpilotId);
 
-        String expectedUrl = "https://skillpilot.test/ai-assets/goal-visualizations/mathematik/goal-1/goal-1.jpg";
-        assertThat(state.activeGoal().resourceLinks()).hasSize(1);
-        assertThat(state.activeGoal().resourceLinks().get(0).url()).isEqualTo(expectedUrl);
-        assertThat(state.stateMachine().activeGoalVisualization()).isNotNull();
-        assertThat(state.stateMachine().activeGoalVisualization().url()).isEqualTo(expectedUrl);
-        assertThat(state.stateMachine().activeGoalVisualizationMarkdown())
-                .isEqualTo("![Visualisierung](%s)".formatted(expectedUrl));
+        assertThat(state.activeGoal().resourceLinks()).isEmpty();
+        assertThat(state.stateMachine().activeGoal().resourceLinks()).isEmpty();
 
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
@@ -581,14 +577,14 @@ class LearnerAiControllerTest {
     }
 
     @Test
-    void redeemStartCode_exposesActiveGoalVisualizationAsResponsePrefix() {
+    void redeemStartCode_returnsSimpleAssistantMessageWithCockpitDeepLink() {
         String skillpilotId = "learner-1";
         String chatSessionToken = "sps_test-token";
         Instant expiresAt = Instant.parse("2026-06-29T12:00:00Z");
         FrontierGoal activeGoal = visualizationGoal("goal-1");
         UnifiedLearnerStateResponse rawState = new UnifiedLearnerStateResponse(
                 skillpilotId,
-                null,
+                curriculumSummary(),
                 List.of(activeGoal),
                 null,
                 List.of("setMastery"),
@@ -608,22 +604,32 @@ class LearnerAiControllerTest {
                 new RedeemStartCodeRequest("SP-1234-5678"),
                 servletRequest);
 
-        String expectedUrl = "https://skillpilot.test/ai-assets/goal-visualizations/mathematik/goal-1/goal-1.jpg";
-        String expectedMarkdown = "![Visualisierung](%s)".formatted(expectedUrl);
+        String expectedUrl = "https://skillpilot.test/?l=math-landscape&goal=goal-1";
         assertThat(response.chatSessionToken()).isEqualTo(chatSessionToken);
         assertThat(response.state().skillpilotId()).isNull();
-        assertThat(response.state().stateMachine().activeGoalVisualizationMarkdown()).isEqualTo(expectedMarkdown);
-        assertThat(response.assistantResponsePrefixMarkdown()).isEqualTo(expectedMarkdown);
-        assertThat(response.mandatoryFirstAssistantLineMarkdown()).isEqualTo(expectedMarkdown);
-        assertThat(response.assistantNextMessageMarkdown()).isEqualTo(expectedMarkdown);
-        assertThat(response.assistantDisplayInstruction())
-                .contains("Markdown-Bildzeile")
-                .contains("erste sichtbare Zeile");
+        assertThat(response.state().activeGoal().resourceLinks()).isEmpty();
+        assertThat(response.assistantMessage())
+                .contains("Dein Lernstand ist geladen.")
+                .contains("Aktuelles Lernziel")
+                .contains("[Im Cockpit öffnen](%s)".formatted(expectedUrl));
         assertThat(servletRequest.getAttribute("skillpilot.ai.trace.skillpilotId")).isEqualTo(skillpilotId);
 
         verify(chatSessionService).redeemStartCode("SP-1234-5678", "de");
         verify(learnerService).getLearnerState(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    private static LandscapeSummary curriculumSummary() {
+        return new LandscapeSummary(
+                "math-landscape",
+                "Mathematik",
+                "",
+                "DE",
+                "",
+                "Gymnasium",
+                "Mathematik",
+                "de-DE",
+                List.of());
     }
 
     @Test

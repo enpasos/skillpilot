@@ -9,6 +9,8 @@ except when the current state explicitly requires `chooseMemoryMode`.
 The System Instruction enforces this rule abstractly.
 This document describes **the didactic consequence**.
 
+Exception: if `redeemStartCode` returns a ready-made `assistantMessage` with a Cockpit link, output that answer verbatim. This is not a training link invented by the GPT.
+
 ---
 
 ## 1. Basic Rule (Technical & Hard)
