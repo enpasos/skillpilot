@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-29T20:39:36.295Z
+Generated: 2026-06-29T22:28:24.061Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,11 +18,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 266 |
-| Coverage | 35.3% |
+| Ziele mit primaerem Visualisierungslink | 291 |
+| Coverage | 38.6% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 58 |
-| Offene Provider-Deferred-Ziele | 5 |
+| Review-Ledger-Dateien | 63 |
+| Offene Provider-Deferred-Ziele | 4 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
@@ -32,16 +32,16 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 266 |
+| `pilot` | 291 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 196 |
-| `accepted_pilot_after_regeneration` | 68 |
-| `accepted_pilot_after_second_regeneration` | 2 |
-| `accepted_pilot_after_user_review_correction` | 6 |
+| `accepted_pilot` | 217 |
+| `accepted_pilot_after_regeneration` | 70 |
+| `accepted_pilot_after_second_regeneration` | 3 |
+| `accepted_pilot_after_user_review_correction` | 7 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 5 |
 | `not_attempted_after_quota_block` | 4 |
@@ -52,12 +52,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-058.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-063.md` |
 | Latest ledger status | `completed_pilot` |
-| Resume file | `tmp/goal-visualization-batch-058.resume.txt` |
+| Resume file | `tmp/goal-visualization-batch-063.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-058` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-063` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -76,7 +76,6 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | 044 | `786ae588-a4fb-40e6-a7f5-113cfc2bfd0f` | Kosinussatz herleiten | `deferred_provider_limitation` |
 | 046 | `57f6d5e4-7c24-4e70-9cf6-737f01d79914` | Punkte und Geraden im räumlichen Koordinatensystem darstellen | `deferred_provider_limitation` |
 | 044 | `ef40a255-b6d4-4a1e-93b1-b79e65fb585d` | Sinus- und Kosinussatz begründen und anwenden | `deferred_provider_limitation` |
-| 045 | `0c8c1ae9-135e-4fe5-bf67-e497eb3a9909` | Sinussatz herleiten | `deferred_provider_limitation` |
 | 003 | `2331caf2-ccb2-5492-9fc6-48763b848bae` | Winkel messen, zeichnen und fachsprachlich beschreiben | `deferred_provider_limitation` |
 
 ### Open Provider Quota
@@ -101,6 +100,7 @@ Keine Eintraege.
 | 040 | `66077296-a8f8-4645-938b-7c3424cb2f14` | Wurzelfunktionen graphisch untersuchen | `accepted_pilot_after_user_review_correction` |
 | 041 | `fa72cf74-a31e-402e-90d7-422c118f4a5b` | Umgekehrt proportionale Größen mit Hyperbeln beschreiben | `accepted_pilot_after_user_review_correction` |
 | 042 | `11c88ea2-8502-5008-bec2-3e491c75ace4` | Darstellungsformen gerader Körper verknüpfen | `accepted_pilot_after_user_review_correction` |
+| 059 | `0c8c1ae9-135e-4fe5-bf67-e497eb3a9909` | Sinussatz herleiten | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
@@ -116,10 +116,10 @@ Keine Eintraege.
 
 ```bash
 npm --prefix app run visualization:generate:nano-banana:batch -- \
-  --file tmp/goal-visualization-batch-058.resume.txt \
+  --file tmp/goal-visualization-batch-063.resume.txt \
   --continue-on-error \
   --no-import \
-  --prompt-append-dir=tmp/goal-visualization-prompt-appends/batch-058
+  --prompt-append-dir=tmp/goal-visualization-prompt-appends/batch-063
 ```
 
 After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
@@ -128,6 +128,6 @@ After generated candidates exist: inspect, reject or regenerate faulty images, i
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-batch-058.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-058`
+- Resume file: `tmp/goal-visualization-batch-063.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-063`
 

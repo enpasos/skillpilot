@@ -1,50 +1,50 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T20:39:36.295Z",
+  "generatedAt": "2026-06-29T22:28:24.061Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-batch-058.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-058"
+    "currentResumeFilePath": "tmp/goal-visualization-batch-063.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-063"
   },
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 266,
-    "coveragePercent": 35.3,
+    "goalsWithPrimaryVisualization": 291,
+    "coveragePercent": 38.6,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 266
+      "pilot": 291
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 266
+      "pilot": 291
     },
-    "reviewLedgerFiles": 58,
+    "reviewLedgerFiles": 63,
     "reviewDecisionCounts": {
-      "accepted_pilot": 196,
-      "accepted_pilot_after_regeneration": 68,
-      "accepted_pilot_after_second_regeneration": 2,
-      "accepted_pilot_after_user_review_correction": 6,
+      "accepted_pilot": 217,
+      "accepted_pilot_after_regeneration": 70,
+      "accepted_pilot_after_second_regeneration": 3,
+      "accepted_pilot_after_user_review_correction": 7,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 5,
       "not_attempted_after_quota_block": 4,
       "rejected_after_user_review_replaced": 1,
       "rejected_not_linked": 3
     },
-    "openProviderDeferredGoals": 5,
+    "openProviderDeferredGoals": 4,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-058.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-063.md",
     "latestLedgerStatus": "completed_pilot",
-    "resumeFile": "tmp/goal-visualization-batch-058.resume.txt",
+    "resumeFile": "tmp/goal-visualization-batch-063.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-058",
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-063",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
   },
@@ -70,13 +70,6 @@
         "title": "Sinus- und Kosinussatz begründen und anwenden",
         "decision": "deferred_provider_limitation",
         "notes": "Initial and regenerated candidates mixed side-angle correspondences or displayed an incorrect sine-rule pairing. No active image link was added."
-      },
-      {
-        "batch": "045",
-        "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
-        "title": "Sinussatz herleiten",
-        "decision": "deferred_provider_limitation",
-        "notes": "The linked image used inconsistent side labels in the altitude derivation, so the active resource link and published asset copies were removed. This goal needs a fresh provider attempt later."
       },
       {
         "batch": "003",
@@ -152,6 +145,13 @@
         "title": "Darstellungsformen gerader Körper verknüpfen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The previous version used a model depiction that did not fit the cube-connection intent. The regenerated asset uses a minimal folded-wireframe model style, keeps a full 6-face cube net, and is explicitly constrained so the oblique drawing has a clearly orange top face."
+      },
+      {
+        "batch": "059",
+        "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+        "title": "Sinussatz herleiten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The old removed asset was not restored. The new accepted image uses the standard triangle labeling `a = BC`, `b = AC`, `c = AB`, angles `alpha` at A, `beta` at B, `gamma` at C, and height `h` from C to AB. The displayed relations `sin(alpha) = h / b`, `sin(beta) = h / a`, `b * sin(alpha) = a * sin(beta)`, and `a / sin(alpha) = b / sin(beta)` are consistent; the optional `c / sin(gamma)` note is marked as analogous."
       }
     ]
   },
@@ -183,6 +183,22 @@
       "area": "Data",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/91571d3f-3651-4477-ba21-320fc4077453/91571d3f-3651-4477-ba21-320fc4077453.jpg"
+    },
+    {
+      "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
+      "title": "Abstände, Beträge und Mittelpunkte im Raum berechnen",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a8ff2666-8df3-4253-8021-3efe42114e40/a8ff2666-8df3-4253-8021-3efe42114e40.jpg"
+    },
+    {
+      "goalId": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "phase": "J7",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/80c232f1-8f72-5829-9dbe-5a610ccab3be/80c232f1-8f72-5829-9dbe-5a610ccab3be.jpg"
     },
     {
       "goalId": "0c8b59cb-62c0-5cc7-afd0-7e6e89cbee43",
@@ -249,6 +265,14 @@
       "url": "/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg"
     },
     {
+      "goalId": "08259bad-eb0c-5bd3-b2a1-b6673f796605",
+      "title": "Anwendbarkeitsbedingungen prüfen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/08259bad-eb0c-5bd3-b2a1-b6673f796605/08259bad-eb0c-5bd3-b2a1-b6673f796605.jpg"
+    },
+    {
       "goalId": "4ae439c0-ce3c-5c96-9755-9899bc70e948",
       "title": "Argumentation formalisieren und präzisieren (LK)",
       "phase": "Q4",
@@ -279,6 +303,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/0272c501-2931-5e52-b62f-af068db63c44/0272c501-2931-5e52-b62f-af068db63c44.jpg"
+    },
+    {
+      "goalId": "fcfbff12-bd03-52ec-b242-a693212b3d2b",
+      "title": "Aussagen anhand von Diagrammen prüfen",
+      "phase": "J7",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fcfbff12-bd03-52ec-b242-a693212b3d2b/fcfbff12-bd03-52ec-b242-a693212b3d2b.jpg"
     },
     {
       "goalId": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
@@ -577,6 +609,14 @@
       "url": "/assets/goal-visualizations/mathematik/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d/ec9f2ed4-c9e6-5fb3-a073-75b53127e55d.jpg"
     },
     {
+      "goalId": "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+      "title": "Digitale Werkzeuge korrekt einsetzen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/14af09c2-999f-52fa-8d42-1f2f6b23629b/14af09c2-999f-52fa-8d42-1f2f6b23629b.jpg"
+    },
+    {
       "goalId": "d21a1303-50fc-5e38-aeda-eeae3392c74b",
       "title": "Direkten Beweis führen",
       "phase": "Q4",
@@ -671,6 +711,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/82597dfb-0ec6-4a77-abaf-e1d6bdd12041/82597dfb-0ec6-4a77-abaf-e1d6bdd12041.jpg"
+    },
+    {
+      "goalId": "56f9632d-37fe-5edf-a654-f53dbb373c91",
+      "title": "Einstellungen dokumentieren und reproduzieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/56f9632d-37fe-5edf-a654-f53dbb373c91/56f9632d-37fe-5edf-a654-f53dbb373c91.jpg"
     },
     {
       "goalId": "c823b5a2-82e3-5e22-9c27-c0f41cc5eac6",
@@ -775,6 +823,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/87c55be5-06a9-41e2-a0d4-c60f7c8b8078/87c55be5-06a9-41e2-a0d4-c60f7c8b8078.jpg"
+    },
+    {
+      "goalId": "647ec09d-68ae-57db-9ca4-aeb2da4218f1",
+      "title": "Formale Schreibweisen situationsgerecht nutzen",
+      "phase": "J8",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/647ec09d-68ae-57db-9ca4-aeb2da4218f1/647ec09d-68ae-57db-9ca4-aeb2da4218f1.jpg"
     },
     {
       "goalId": "0a154cbd-1218-4553-835c-a754e9901bba",
@@ -929,6 +985,14 @@
       "url": "/assets/goal-visualizations/mathematik/37bf2eb6-75a0-44c1-a988-ca0e203cb072/37bf2eb6-75a0-44c1-a988-ca0e203cb072.jpg"
     },
     {
+      "goalId": "17c9e061-fe52-5553-be81-fec7a525fcbd",
+      "title": "Gleichungen und Ungleichungen lösen",
+      "phase": "J8",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/17c9e061-fe52-5553-be81-fec7a525fcbd/17c9e061-fe52-5553-be81-fec7a525fcbd.jpg"
+    },
+    {
       "goalId": "19a6bc8e-9851-4cf1-adf3-6898e08eb567",
       "title": "Graphen und Asymptoten einfacher Hyperbeln deuten",
       "phase": "J8",
@@ -1001,6 +1065,14 @@
       "url": "/assets/goal-visualizations/mathematik/cba4cad7-926d-5035-a7dd-d450afccccb3/cba4cad7-926d-5035-a7dd-d450afccccb3.jpg"
     },
     {
+      "goalId": "7c4e8d59-4acb-5f62-a387-c804c6fa23e0",
+      "title": "Handrechnung mit digitaler Kontrolle kombinieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7c4e8d59-4acb-5f62-a387-c804c6fa23e0/7c4e8d59-4acb-5f62-a387-c804c6fa23e0.jpg"
+    },
+    {
       "goalId": "bd637a72-6609-54f5-bb33-8a9e898bf7a0",
       "title": "Heuristik auswählen und begründen",
       "phase": "Q4",
@@ -1071,6 +1143,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/d589c036-9280-42b9-aa39-f6aa4ee19786/d589c036-9280-42b9-aa39-f6aa4ee19786.jpg"
+    },
+    {
+      "goalId": "496f16a0-c031-5753-b988-d6cd3cab595e",
+      "title": "Kennwerte und Trends deuten",
+      "phase": "J7",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/496f16a0-c031-5753-b988-d6cd3cab595e/496f16a0-c031-5753-b988-d6cd3cab595e.jpg"
     },
     {
       "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
@@ -1265,6 +1345,14 @@
       "url": "/assets/goal-visualizations/mathematik/c3cce9a1-9adc-4470-b2d8-aea81d6d7b65/c3cce9a1-9adc-4470-b2d8-aea81d6d7b65.jpg"
     },
     {
+      "goalId": "d668c22d-caeb-5e91-8980-721c931a2bcf",
+      "title": "Missverständnisse erklären und korrigieren",
+      "phase": "J7",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d668c22d-caeb-5e91-8980-721c931a2bcf/d668c22d-caeb-5e91-8980-721c931a2bcf.jpg"
+    },
+    {
       "goalId": "ca623958-c204-5d1b-bdd0-3f76765674cb",
       "title": "Mit Größen rechnen und Ergebnisse deuten",
       "phase": "J5",
@@ -1417,12 +1505,28 @@
       "url": "/assets/goal-visualizations/mathematik/e131c594-c45e-5718-9f33-7ae39ddc82ad/e131c594-c45e-5718-9f33-7ae39ddc82ad.jpg"
     },
     {
+      "goalId": "9278bc5e-a77f-5f72-8636-0d0d3e3d32ae",
+      "title": "Notation und Symbole deuten",
+      "phase": "J8",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9278bc5e-a77f-5f72-8636-0d0d3e3d32ae/9278bc5e-a77f-5f72-8636-0d0d3e3d32ae.jpg"
+    },
+    {
       "goalId": "4acca6ef-5344-4dd1-b53d-506907573cf7",
       "title": "Nullstellen linearer Funktionen berechnen",
       "phase": "J8",
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/4acca6ef-5344-4dd1-b53d-506907573cf7/4acca6ef-5344-4dd1-b53d-506907573cf7.jpg"
+    },
+    {
+      "goalId": "3f3557a8-7d89-4f96-8a32-e24745c34d82",
+      "title": "Parabeln als Ortslinien mit Brennpunkt und Leitgerade beschreiben",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3f3557a8-7d89-4f96-8a32-e24745c34d82/3f3557a8-7d89-4f96-8a32-e24745c34d82.jpg"
     },
     {
       "goalId": "c31d3a7a-778b-5ae3-9aa4-7b5674047f83",
@@ -1721,6 +1825,14 @@
       "url": "/assets/goal-visualizations/mathematik/05012547-7263-5bfa-9e7c-df970745a011/05012547-7263-5bfa-9e7c-df970745a011.jpg"
     },
     {
+      "goalId": "2e40a879-b62e-5dbf-aa45-020c0625a902",
+      "title": "Rechenregeln und Umformungen begründen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2e40a879-b62e-5dbf-aa45-020c0625a902/2e40a879-b62e-5dbf-aa45-020c0625a902.jpg"
+    },
+    {
       "goalId": "191c67db-44a8-4f63-994a-d85e8e301194",
       "title": "Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen",
       "phase": "J5",
@@ -1841,6 +1953,14 @@
       "url": "/assets/goal-visualizations/mathematik/53b47494-ec60-4128-840d-2a4c4bab6d32/53b47494-ec60-4128-840d-2a4c4bab6d32.jpg"
     },
     {
+      "goalId": "0c8c1ae9-135e-4fe5-bf67-e497eb3a9909",
+      "title": "Sinussatz herleiten",
+      "phase": "J9",
+      "area": "Geometry",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909.jpg"
+    },
+    {
       "goalId": "3e0c9bce-2528-4cf1-9b1f-c79146b0a5f2",
       "title": "Spannweite und Quartile bestimmen und Boxplots erstellen",
       "phase": "J7",
@@ -1879,6 +1999,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f9c24dd8-eaa5-5395-8679-820c1a74e7b7/f9c24dd8-eaa5-5395-8679-820c1a74e7b7.jpg"
+    },
+    {
+      "goalId": "95aa25c9-bf7f-53ee-bde2-df67cad3d46b",
+      "title": "Strategien optimieren (LK)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/95aa25c9-bf7f-53ee-bde2-df67cad3d46b/95aa25c9-bf7f-53ee-bde2-df67cad3d46b.jpg"
     },
     {
       "goalId": "0190e463-51a7-4860-9b35-d875530a85ba",
@@ -1953,6 +2081,14 @@
       "url": "/assets/goal-visualizations/mathematik/2c4830e6-a8d5-48d0-9202-3b7d18a419c2/2c4830e6-a8d5-48d0-9202-3b7d18a419c2.jpg"
     },
     {
+      "goalId": "2fb12329-9160-5c44-af5b-8731ecb05ba4",
+      "title": "Terme korrekt umformen",
+      "phase": "J8",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2fb12329-9160-5c44-af5b-8731ecb05ba4/2fb12329-9160-5c44-af5b-8731ecb05ba4.jpg"
+    },
+    {
       "goalId": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
       "title": "Terme mit rationalen Zahlen strukturiert auswerten",
       "phase": "J6",
@@ -1985,6 +2121,22 @@
       "url": "/assets/goal-visualizations/mathematik/99bfb566-f875-5646-ac3e-05a039838c54/99bfb566-f875-5646-ac3e-05a039838c54.jpg"
     },
     {
+      "goalId": "7ac32297-023c-5914-9109-6285e4ce5846",
+      "title": "Tool-Ausgaben interpretieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7ac32297-023c-5914-9109-6285e4ce5846/7ac32297-023c-5914-9109-6285e4ce5846.jpg"
+    },
+    {
+      "goalId": "b29a6ece-30f8-5ced-9782-4df1bcbad284",
+      "title": "Tool-Ergebnisse kritisch prüfen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b29a6ece-30f8-5ced-9782-4df1bcbad284/b29a6ece-30f8-5ced-9782-4df1bcbad284.jpg"
+    },
+    {
       "goalId": "eb28b403-f9fc-57ea-a793-b4555596fdd7",
       "title": "Transformationen von Potenz- und Wurzelfunktionsgraphen beschreiben",
       "phase": "J9",
@@ -2015,6 +2167,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/46bdcc16-418f-417a-89cf-033d7ae6c8cc/46bdcc16-418f-417a-89cf-033d7ae6c8cc.jpg"
+    },
+    {
+      "goalId": "42b57670-d2be-5da2-be2f-d58055901813",
+      "title": "Übertragungen begründen und prüfen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/42b57670-d2be-5da2-be2f-d58055901813/42b57670-d2be-5da2-be2f-d58055901813.jpg"
     },
     {
       "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
@@ -2129,6 +2289,14 @@
       "url": "/assets/goal-visualizations/mathematik/d98849c7-bd0b-50d4-90aa-6293a3adb211/d98849c7-bd0b-50d4-90aa-6293a3adb211.jpg"
     },
     {
+      "goalId": "c23c4364-b5ea-513a-9d78-76bf7f113d1b",
+      "title": "Visualisierung für komplexe Situation entwerfen (LK)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c23c4364-b5ea-513a-9d78-76bf7f113d1b/c23c4364-b5ea-513a-9d78-76bf7f113d1b.jpg"
+    },
+    {
       "goalId": "59d5a330-61be-4590-ab46-cf7cefecd144",
       "title": "Volumen und Oberflächen gerader Prismen berechnen",
       "phase": "J7",
@@ -2193,12 +2361,36 @@
       "url": "/assets/goal-visualizations/mathematik/4ac925cf-3862-4810-be2a-d92efff7d735/4ac925cf-3862-4810-be2a-d92efff7d735.jpg"
     },
     {
+      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg"
+    },
+    {
+      "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+      "phase": "GLOBAL",
+      "area": "Mathematik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/65365dce-f33f-49d8-9516-42f75883aa86/65365dce-f33f-49d8-9516-42f75883aa86.jpg"
+    },
+    {
       "goalId": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
       "title": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
       "phase": "J10",
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/ad66009f-55fb-563f-ace0-dbfeae7c76c3/ad66009f-55fb-563f-ace0-dbfeae7c76c3.jpg"
+    },
+    {
+      "goalId": "879f9c84-d6fb-58c3-b219-696e0070d67f",
+      "title": "Werkzeugeinstellungen zielgerichtet setzen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/879f9c84-d6fb-58c3-b219-696e0070d67f/879f9c84-d6fb-58c3-b219-696e0070d67f.jpg"
     },
     {
       "goalId": "f84ea3d8-c255-552a-998a-202e42843f56",
@@ -2279,6 +2471,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0/f9d284a3-1a47-4aaa-bde2-3dac1c3bb0f0.jpg"
+    },
+    {
+      "goalId": "b04d65dc-1214-5323-89a7-317d6b099e1a",
+      "title": "Zwischen Tabelle, Graph und Term wechseln",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b04d65dc-1214-5323-89a7-317d6b099e1a/b04d65dc-1214-5323-89a7-317d6b099e1a.jpg"
     },
     {
       "goalId": "ae2ca565-928d-55f4-b804-7155cf210120",

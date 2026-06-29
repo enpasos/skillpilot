@@ -111,8 +111,8 @@ const repoRoot = resolve(scriptDir, '../..')
 
 const defaultLandscapePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const defaultReviewDirPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review'
-const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-058.resume.txt'
-const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-058'
+const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-063.resume.txt'
+const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-063'
 const defaultOutputJsonPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json'
 const defaultOutputMarkdownPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md'
 
