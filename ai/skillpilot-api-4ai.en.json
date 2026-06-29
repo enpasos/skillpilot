@@ -856,6 +856,14 @@
             "$ref": "#/components/schemas/FrontierGoal",
             "description": "Confirmed active goal inside state machine."
           },
+          "activeGoalVisualization": {
+            "$ref": "#/components/schemas/GoalSourceLink",
+            "description": "Primary goal image for the confirmed active goal, if present. The URL is already absolute for ChatGPT and rewritten to /ai-assets."
+          },
+          "activeGoalVisualizationMarkdown": {
+            "type": "string",
+            "description": "Ready-to-send Markdown image line for the primary goal image. If present, output it verbatim before explanation when entering teachActiveGoal."
+          },
           "modeOptions": {
             "type": "array",
             "description": "Mode options for the current step. For `requiredAction=chooseMemoryMode`, this contains cockpit practice and GPT verified recall.",
