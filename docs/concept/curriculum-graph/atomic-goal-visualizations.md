@@ -56,7 +56,7 @@ app/public/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.p
 backend/src/main/resources/static/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
 ```
 
-`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into `app/public/assets/goal-visualizations`. The Vite production build then writes the public assets to `backend/src/main/resources/static`, where GPT can read them via `/ai-assets/...`.
+`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into both `app/public/assets/goal-visualizations` and `backend/src/main/resources/static/assets/goal-visualizations`. The Vite production build also writes public assets to `backend/src/main/resources/static`, but the explicit backend copy keeps local GPT asset checks consistent before a full frontend build.
 
 Reference pools of example tasks or image inspirations may be kept locally under `tmp/`, but must not be committed if licensing is unclear. They must never be copied into final assets.
 
@@ -107,6 +107,14 @@ npm --prefix app run visualization:generate:nano-banana -- \
   --review-status="pilot"
 ```
 
+For longer or carefully reviewed instructions, prefer a prompt append file over a long shell argument:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- \
+  "<skillpilotId>" \
+  --prompt-append-file="tmp/goal-visualization-prompts/<skillpilotId>.md"
+```
+
 The API key must come from `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The generator also reads these variables from a local, ignored `.env.local` or `app/.env.local` file:
 
 ```text
@@ -133,7 +141,21 @@ Batch options:
 - `--dry-run` creates the prompt and request packages for all goals without API calls.
 - `--no-import` saves generated images under `tmp/.../generated/` but does not update canonical JSON.
 - `--continue-on-error` continues after a failed goal and reports failures at the end.
+- Temporary provider quota or rate-limit errors such as Gemini `429` stop the batch even with `--continue-on-error`, so remaining goals are not requested until quota is available again.
+- On a temporary provider failure, the batch command writes a resume file containing the failed goal plus all not-yet-started goals. With `--file tmp/goal-visualization-batch-036.txt`, the default resume file is `tmp/goal-visualization-batch-036.resume.txt`; override this with `--resume-file <path>` if needed.
+- `--prompt-append-file <path>` applies one shared prompt append file to every goal in the batch.
+- `--prompt-append-dir <path>` lets the batch use per-goal prompt append files named `<skillpilotId>.md`, `<skillpilotId>.txt`, `<skillpilotId>.prompt.md`, or `<skillpilotId>.prompt.txt`. A per-goal file takes precedence over a shared `--prompt-append-file`.
 - `--file <path>` reads one goal ID or unique title fragment per line; `#` starts a comment.
+
+Before a prepared batch is sent to the provider, check the prompt append directory:
+
+```bash
+npm --prefix app run visualization:check-prompt-appends -- \
+  --file tmp/goal-visualization-batch-036.txt \
+  --prompt-append-dir tmp/goal-visualization-prompt-appends/batch-036
+```
+
+The check verifies that each batch goal has a prompt append file, the files contain explicit required/avoidance sections, and the final provider prompts do not contain concrete goal IDs or the string `SkillPilot`.
 
 Every production batch must be visually reviewed before it is considered more than a technical import. Store the review note under:
 
