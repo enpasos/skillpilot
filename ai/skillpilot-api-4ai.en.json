@@ -20,7 +20,7 @@
       "post": {
         "operationId": "redeemStartCode",
         "summary": "Redeem start code",
-        "description": "Redeem start code. If the response contains `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown`, the GPT must output that Markdown line verbatim as the first visible line of the next answer.",
+        "description": "Redeem start code. If the response contains `assistantDisplayInstruction`, follow it; do not show the instruction text itself. If `mandatoryFirstAssistantLineMarkdown` or `assistantResponsePrefixMarkdown` is present, output that Markdown line verbatim as the first visible line of the next answer.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1391,6 +1391,10 @@
           "mandatoryFirstAssistantLineMarkdown": {
             "type": "string",
             "description": "Mandatory first visible Markdown line of the next GPT answer. If set, the GPT must output exactly this line before any other text."
+          },
+          "assistantDisplayInstruction": {
+            "type": "string",
+            "description": "Short display instruction for the next GPT answer. Follow it, but do not display the instruction text itself."
           }
         }
       },
