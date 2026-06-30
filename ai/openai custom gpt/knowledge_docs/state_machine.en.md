@@ -64,7 +64,7 @@ It is operational guidance, not internal implementation detail to expose in chat
 - If `verified-recall/start` returns `status=waiting`, today's verification is over; do not improvise and do not repeat a card.
 - If no card is hard-testable today, do not offer a flashcard goal. Reload `getLearnerState`; the backend removes those flashcard goals from `activeGoal` and `goalOptions` while hard verification is unavailable.
 - If the learner explicitly wants another goal afterwards: choose another atomic frontier goal from the reloaded state with `setActiveGoal`.
-- Do not offer generic `Start Exercise`, do not use normal `teachActiveGoal`, and do not call `setMastery` for flashcards.
+- Do not offer generic `Start Exercise`, do not use normal `teachActiveGoal`, and do not call `setMastery` for flashcards. If `recordVerifiedRecallResult` returns `masterySaved=true` or `next.status=complete`, the backend has saved completion; briefly confirm and reload state only if requested.
 
 ## 7. Mastery flow
 

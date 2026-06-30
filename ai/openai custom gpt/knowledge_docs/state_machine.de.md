@@ -65,7 +65,7 @@ in der Unterhaltung genannt.
 - Wenn `verified-recall/start` `status=waiting` liefert, ist die Prüfung für heute beendet; nicht improvisieren und keine Karte wiederholen.
 - Wenn heute keine Karte hart prüfbar ist, darf kein Lernkarten-Ziel angeboten werden. `getLearnerState` neu laden; das Backend entfernt solche Lernkarten-Ziele aus `activeGoal` und `goalOptions`, solange keine harte Prüfung möglich ist.
 - Wenn die lernende Person danach ausdrücklich ein anderes Ziel möchte: aus dem neu geladenen Zustand ein anderes atomares Frontier-Ziel mit `setActiveGoal` wählen.
-- Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten.
+- Kein generisches `Start Exercise`, kein normales `teachActiveGoal`, kein `setMastery` für Lernkarten. Wenn `recordVerifiedRecallResult` `masterySaved=true` oder `next.status=complete` liefert, hat das Backend den Abschluss gespeichert; kurz bestätigen und nur bei Wunsch den State neu laden.
 
 ## 7. Mastery-Flow
 
