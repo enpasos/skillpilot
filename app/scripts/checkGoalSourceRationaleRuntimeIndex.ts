@@ -3,20 +3,63 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+interface RuntimeIndexConfig {
+  label: string
+  bundledIndexPath: string
+  publicIndexPath: string
+  regenerateCommand: string
+  minimumItemCount: number
+  minimumClassicSourceRoutes: number
+  minimumMemConsistentRoutes: number
+  requiredMemPocGoals: string[]
+  expectedRequest: {
+    goalSelection: string
+    jurisdiction: string
+    includeMemSparql: boolean
+    audience: string
+  }
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
-const bundledIndexPath = 'app/src/data/goal-source-rationales-math-public.json'
-const publicIndexPath = 'app/public/data/goal-source-rationales-math-public.json'
-
-const minimumItemCount = 600
-const minimumClassicSourceRoutes = 600
-const minimumMemConsistentRoutes = 150
-
-const requiredMemPocGoals = [
-  'a075ae99-7669-563d-807a-f91b119c020a',
-  '09f47964-2cd0-410e-93ee-9632b582fc91',
-  'b1dcc191-d046-50de-984a-ee5c17157628',
+const runtimeIndexes: RuntimeIndexConfig[] = [
+  {
+    label: 'Mathematik',
+    bundledIndexPath: 'app/src/data/goal-source-rationales-math-public.json',
+    publicIndexPath: 'app/public/data/goal-source-rationales-math-public.json',
+    regenerateCommand: 'npm run quality:goal-source-rationales:math-public',
+    minimumItemCount: 600,
+    minimumClassicSourceRoutes: 600,
+    minimumMemConsistentRoutes: 150,
+    requiredMemPocGoals: [
+      'a075ae99-7669-563d-807a-f91b119c020a',
+      '09f47964-2cd0-410e-93ee-9632b582fc91',
+      'b1dcc191-d046-50de-984a-ee5c17157628',
+    ],
+    expectedRequest: {
+      goalSelection: 'source-backed-relevant-leaves',
+      jurisdiction: 'DE-BY',
+      includeMemSparql: true,
+      audience: 'plain',
+    },
+  },
+  {
+    label: 'Physik',
+    bundledIndexPath: 'app/src/data/goal-source-rationales-physics-public.json',
+    publicIndexPath: 'app/public/data/goal-source-rationales-physics-public.json',
+    regenerateCommand: 'npm run quality:goal-source-rationales:physics-public',
+    minimumItemCount: 350,
+    minimumClassicSourceRoutes: 350,
+    minimumMemConsistentRoutes: 0,
+    requiredMemPocGoals: [],
+    expectedRequest: {
+      goalSelection: 'source-backed-relevant-leaves',
+      jurisdiction: 'DE-HE',
+      includeMemSparql: false,
+      audience: 'plain',
+    },
+  },
 ]
 
 function absolutePath(repoPath: string): string {
@@ -41,7 +84,10 @@ function readString(value: unknown): string | null {
   return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null
 }
 
-function readIndex(repoPath: string, failures: string[]): { raw: string; payload: Record<string, unknown> } | null {
+function readIndex(
+  repoPath: string,
+  failures: string[],
+): { raw: string; payload: Record<string, unknown> } | null {
   const path = absolutePath(repoPath)
   if (!existsSync(path)) {
     failures.push(`${repoPath}: missing runtime source-rationale index`)
@@ -58,29 +104,34 @@ function readIndex(repoPath: string, failures: string[]): { raw: string; payload
   }
 }
 
-function validateIndex(payload: Record<string, unknown>, failures: string[]): void {
+function validateIndex(
+  config: RuntimeIndexConfig,
+  payload: Record<string, unknown>,
+  failures: string[],
+): void {
   const request = asRecord(payload.request)
   const summary = asRecord(payload.summary)
   const items = Array.isArray(payload.items) ? payload.items.map(asRecord) : []
+  const pathLabel = config.bundledIndexPath
 
   if (payload.schemaVersion !== 1) {
-    failures.push(`${bundledIndexPath}: schemaVersion must be 1`)
+    failures.push(`${pathLabel}: schemaVersion must be 1`)
   }
-  if (request.goalSelection !== 'source-backed-relevant-leaves') {
-    failures.push(`${bundledIndexPath}: request.goalSelection must be source-backed-relevant-leaves`)
+  if (request.goalSelection !== config.expectedRequest.goalSelection) {
+    failures.push(`${pathLabel}: request.goalSelection must be ${config.expectedRequest.goalSelection}`)
   }
-  if (request.jurisdiction !== 'DE-BY') {
-    failures.push(`${bundledIndexPath}: request.jurisdiction must keep DE-BY as the MEM/FWU comparison preference`)
+  if (request.jurisdiction !== config.expectedRequest.jurisdiction) {
+    failures.push(`${pathLabel}: request.jurisdiction must be ${config.expectedRequest.jurisdiction}`)
   }
-  if (request.includeMemSparql !== true) {
-    failures.push(`${bundledIndexPath}: request.includeMemSparql must be true`)
+  if (Boolean(request.includeMemSparql) !== config.expectedRequest.includeMemSparql) {
+    failures.push(`${pathLabel}: request.includeMemSparql must be ${config.expectedRequest.includeMemSparql}`)
   }
-  if (request.audience !== 'plain') {
-    failures.push(`${bundledIndexPath}: request.audience must be plain`)
+  if (request.audience !== config.expectedRequest.audience) {
+    failures.push(`${pathLabel}: request.audience must be ${config.expectedRequest.audience}`)
   }
 
-  if (items.length < minimumItemCount) {
-    failures.push(`${bundledIndexPath}: expected at least ${minimumItemCount} items, found ${items.length}`)
+  if (items.length < config.minimumItemCount) {
+    failures.push(`${pathLabel}: expected at least ${config.minimumItemCount} items, found ${items.length}`)
   }
 
   const requestedGoals = readNumber(summary.requestedGoals)
@@ -90,19 +141,19 @@ function validateIndex(payload: Record<string, unknown>, failures: string[]): vo
   const goalsWithMemSparqlConsistentRoute = readNumber(summary.goalsWithMemSparqlConsistentRoute)
 
   if (requestedGoals !== items.length) {
-    failures.push(`${bundledIndexPath}: summary.requestedGoals must match item count`)
+    failures.push(`${pathLabel}: summary.requestedGoals must match item count`)
   }
   if (resolvedGoals !== items.length) {
-    failures.push(`${bundledIndexPath}: summary.resolvedGoals must match item count`)
+    failures.push(`${pathLabel}: summary.resolvedGoals must match item count`)
   }
-  if ((goalsWithClassicSourceRoute ?? 0) < minimumClassicSourceRoutes) {
-    failures.push(`${bundledIndexPath}: expected at least ${minimumClassicSourceRoutes} classic source routes`)
+  if ((goalsWithClassicSourceRoute ?? 0) < config.minimumClassicSourceRoutes) {
+    failures.push(`${pathLabel}: expected at least ${config.minimumClassicSourceRoutes} classic source routes`)
   }
   if (goalsWithoutClassicSourceRoute !== 0) {
-    failures.push(`${bundledIndexPath}: public runtime index must not contain classic source gaps`)
+    failures.push(`${pathLabel}: public runtime index must not contain classic source gaps`)
   }
-  if ((goalsWithMemSparqlConsistentRoute ?? 0) < minimumMemConsistentRoutes) {
-    failures.push(`${bundledIndexPath}: expected at least ${minimumMemConsistentRoutes} MEM-consistent routes`)
+  if ((goalsWithMemSparqlConsistentRoute ?? 0) < config.minimumMemConsistentRoutes) {
+    failures.push(`${pathLabel}: expected at least ${config.minimumMemConsistentRoutes} MEM-consistent routes`)
   }
 
   const itemsByGoalId = new Map<string, Record<string, unknown>>()
@@ -112,39 +163,51 @@ function validateIndex(payload: Record<string, unknown>, failures: string[]): vo
     if (goalId !== null) itemsByGoalId.set(goalId, item)
   })
 
-  requiredMemPocGoals.forEach((goalId) => {
+  config.requiredMemPocGoals.forEach((goalId) => {
     const item = itemsByGoalId.get(goalId)
     if (!item) {
-      failures.push(`${bundledIndexPath}: missing required MEM/FWU PoC goal ${goalId}`)
+      failures.push(`${pathLabel}: missing required MEM/FWU PoC goal ${goalId}`)
       return
     }
     if (item.sourceRationaleStatus !== 'classic_source_reviewed') {
-      failures.push(`${bundledIndexPath}: ${goalId} must have a reviewed classic source route`)
+      failures.push(`${pathLabel}: ${goalId} must have a reviewed classic source route`)
     }
     const classicSourceRoute = asRecord(item.classicSourceRoute)
     if (Object.keys(classicSourceRoute).length === 0) {
-      failures.push(`${bundledIndexPath}: ${goalId} must include classicSourceRoute`)
+      failures.push(`${pathLabel}: ${goalId} must include classicSourceRoute`)
     }
     const memSparqlRoute = asRecord(item.memSparqlRoute)
     if (memSparqlRoute.status !== 'mem_sparql_consistent') {
-      failures.push(`${bundledIndexPath}: ${goalId} must keep the MEM/FWU PoC route consistent`)
+      failures.push(`${pathLabel}: ${goalId} must keep the MEM/FWU PoC route consistent`)
     }
   })
 }
 
 const failures: string[] = []
-const bundledIndex = readIndex(bundledIndexPath, failures)
-const publicIndex = readIndex(publicIndexPath, failures)
+const passedSummaries: string[] = []
 
-if (bundledIndex !== null && publicIndex !== null && bundledIndex.raw !== publicIndex.raw) {
-  failures.push(
-    `${bundledIndexPath} and ${publicIndexPath} differ; regenerate with npm run quality:goal-source-rationales:math-public`,
-  )
-}
+runtimeIndexes.forEach((config) => {
+  const bundledIndex = readIndex(config.bundledIndexPath, failures)
+  const publicIndex = readIndex(config.publicIndexPath, failures)
 
-if (bundledIndex !== null) {
-  validateIndex(bundledIndex.payload, failures)
-}
+  if (bundledIndex !== null && publicIndex !== null && bundledIndex.raw !== publicIndex.raw) {
+    failures.push(
+      `${config.bundledIndexPath} and ${config.publicIndexPath} differ; regenerate with ${config.regenerateCommand}`,
+    )
+  }
+
+  if (bundledIndex !== null) {
+    validateIndex(config, bundledIndex.payload, failures)
+    const summary = asRecord(bundledIndex.payload.summary)
+    passedSummaries.push(
+      [
+        `${config.label}:`,
+        `items=${summary.resolvedGoals ?? 'unknown'}`,
+        `sha256=${sha256(bundledIndex.raw).slice(0, 12)}`,
+      ].join(' '),
+    )
+  }
+})
 
 if (failures.length > 0) {
   console.error(failures.join('\n'))
@@ -153,8 +216,7 @@ if (failures.length > 0) {
   console.log(
     [
       'Goal source-rationale runtime index check passed.',
-      `items=${(asRecord(bundledIndex?.payload.summary).resolvedGoals ?? 'unknown')}`,
-      `sha256=${bundledIndex === null ? 'missing' : sha256(bundledIndex.raw).slice(0, 12)}`,
+      ...passedSummaries,
     ].join(' '),
   )
 }

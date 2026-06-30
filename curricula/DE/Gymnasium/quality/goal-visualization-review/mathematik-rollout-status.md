@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-30T07:01:55.288Z
+Generated: 2026-06-30T07:59:21.655Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -21,7 +21,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 356 |
 | Coverage | 47.2% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 76 |
+| Review-Ledger-Dateien | 77 |
 | Offene Provider-Deferred-Ziele | 4 |
 | Offene Provider-Quota-Ziele | 5 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -50,14 +50,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `not_generated_provider_quota` | 1 |
 | `not_requested_provider_quota` | 4 |
 | `rejected_after_user_review_replaced` | 1 |
-| `rejected_not_linked` | 3 |
+| `rejected_not_linked` | 4 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-076.md` |
-| Latest ledger status | `completed_partial_provider_quota` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-077.md` |
+| Latest ledger status | `completed_context_visualization_removed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | yes |
 | Resume goals | 5 |
@@ -99,6 +99,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | 035 | `68505a32-3b1d-57b2-a495-00b4097eb50d` | Potenzen von Wurzeltermen vereinfachen | `rejected_not_linked` |
 | 038 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `rejected_not_linked` |
 | 040 | `53b47494-ec60-4128-840d-2a4c4bab6d32` | Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen | `rejected_not_linked` |
+| 077 | `311ab2f2-3364-5166-ac22-3ef01419fee4` | Aufgabe 1 (Jahrgangsstufe 5, 6 BE) | `rejected_not_linked` |
 
 ### User Review Corrections
 

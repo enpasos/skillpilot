@@ -2,6 +2,7 @@ import React from 'react'
 import { Check, FileSearch, Send, Target, X } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
 import sourceRationaleMathPublicUrl from '../data/goal-source-rationales-math-public.json?url'
+import sourceRationalePhysicsPublicUrl from '../data/goal-source-rationales-physics-public.json?url'
 
 import { MasteryBar } from './MasteryBar'
 import { isCompleteMastery, isMastered } from '../goalUiUtils'
@@ -107,9 +108,17 @@ type ApplicabilityGroup = {
   values: string[]
 }
 
-const SOURCE_RATIONALE_ASSET_URL = sourceRationaleMathPublicUrl
-const SOURCE_RATIONALE_PUBLIC_PATH = '/data/goal-source-rationales-math-public.json'
-const SOURCE_RATIONALE_STATUS_PATH = 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json'
+const SOURCE_RATIONALE_PAYLOAD_SOURCES = [
+  {
+    assetUrl: sourceRationaleMathPublicUrl,
+    publicPath: '/data/goal-source-rationales-math-public.json',
+    statusPath: 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json',
+  },
+  {
+    assetUrl: sourceRationalePhysicsPublicUrl,
+    publicPath: '/data/goal-source-rationales-physics-public.json',
+  },
+]
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
 const PROGRAM_UNIT_ANCHOR_TAG = 'program-unit:anchor'
@@ -258,8 +267,10 @@ const selectSourceRationaleForFilter = (
 
 let sourceRationaleIndexPromise: Promise<Map<string, GoalSourceRationaleItem>> | null = null
 
-const loadSourceRationalePayload = async (): Promise<Record<string, unknown> | null> => {
-  for (const sourceUrl of [SOURCE_RATIONALE_ASSET_URL, SOURCE_RATIONALE_PUBLIC_PATH]) {
+const loadSourceRationalePayload = async (
+  source: typeof SOURCE_RATIONALE_PAYLOAD_SOURCES[number],
+): Promise<Record<string, unknown> | null> => {
+  for (const sourceUrl of [source.assetUrl, source.publicPath]) {
     try {
       const publicResponse = await fetch(sourceUrl)
       if (publicResponse.ok) return asRecord(await publicResponse.json())
@@ -268,21 +279,32 @@ const loadSourceRationalePayload = async (): Promise<Record<string, unknown> | n
     }
   }
 
-  const params = new URLSearchParams({ path: SOURCE_RATIONALE_STATUS_PATH })
+  if (!source.statusPath) return null
+
+  const params = new URLSearchParams({ path: source.statusPath })
   const localResponse = await fetch(`/__quality-dashboard/file?${params.toString()}`)
   if (!localResponse.ok) return null
   return asRecord(await localResponse.json())
 }
 
+const loadSourceRationalePayloads = async (): Promise<Record<string, unknown>[]> => {
+  const payloads = await Promise.all(
+    SOURCE_RATIONALE_PAYLOAD_SOURCES.map((source) => loadSourceRationalePayload(source)),
+  )
+  return payloads.filter((payload): payload is Record<string, unknown> => payload !== null)
+}
+
 const loadSourceRationaleIndex = (): Promise<Map<string, GoalSourceRationaleItem>> => {
   if (!sourceRationaleIndexPromise) {
-    sourceRationaleIndexPromise = loadSourceRationalePayload()
-      .then((payload) => {
-        const rawItems = Array.isArray(payload?.items) ? payload.items : []
+    sourceRationaleIndexPromise = loadSourceRationalePayloads()
+      .then((payloads) => {
         const index = new Map<string, GoalSourceRationaleItem>()
-        rawItems.forEach((rawItem) => {
-          const item = normalizeSourceRationaleItem(rawItem)
-          if (item?.goal?.id) index.set(item.goal.id, item)
+        payloads.forEach((payload) => {
+          const rawItems = Array.isArray(payload.items) ? payload.items : []
+          rawItems.forEach((rawItem) => {
+            const item = normalizeSourceRationaleItem(rawItem)
+            if (item?.goal?.id && !index.has(item.goal.id)) index.set(item.goal.id, item)
+          })
         })
         return index
       })
