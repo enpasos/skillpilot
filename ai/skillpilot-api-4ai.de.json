@@ -365,7 +365,7 @@
       "post": {
         "operationId": "recordVerifiedRecallResult",
         "summary": "Kartenergebnis speichern",
-        "description": "Kartenergebnis speichern.",
+        "description": "Kartenergebnis speichern; bei Abschluss speichert das Backend Lernkarten-Mastery implizit.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -389,7 +389,7 @@
         },
         "responses": {
           "200": {
-            "description": "Gespeichertes Kartenergebnis und naechster Pruefschritt.",
+            "description": "Gespeichertes Kartenergebnis. Bei masterySaved=true ist das Lernkartenziel abgeschlossen; kein setMastery aufrufen.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1103,6 +1103,24 @@
           },
           "pendingCards": {
             "type": "integer"
+          },
+          "masterySaved": {
+            "type": "boolean",
+            "description": "true, wenn dieses Ergebnis das Lernkartenziel serverseitig als Mastery=1.0 gespeichert hat. Danach kein setMastery aufrufen."
+          },
+          "masteryGoalId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Lernkartenziel, dessen Mastery implizit gespeichert wurde, sonst null."
+          },
+          "instruction": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Verbindliche kurze Folgeanweisung fuer GPT, besonders beim Abschluss der Kartenpruefung."
           },
           "next": {
             "$ref": "#/components/schemas/VerifiedRecallPromptResponse"

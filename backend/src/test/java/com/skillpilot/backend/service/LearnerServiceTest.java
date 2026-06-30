@@ -11,8 +11,10 @@ import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
+import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
+import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -55,6 +57,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private LearnerRepository learnerRepository;
+
+    @Autowired
+    private MasteryRepository masteryRepository;
 
     @Autowired
     private PlannedGoalRepository plannedGoalRepository;
@@ -312,6 +317,7 @@ public class LearnerServiceTest {
         assertThat(prompt.cardId()).isNotBlank();
         assertThat(prompt.prompt()).isNotBlank();
 
+        com.skillpilot.backend.api.VerifiedRecallResultResponse finalResult = null;
         for (int i = 0; i < prompt.totalCards(); i++) {
             assertThat(prompt.cardId()).isNotBlank();
             var result = learnerService.recordVerifiedRecallResult(
@@ -319,12 +325,22 @@ public class LearnerServiceTest {
                     "de",
                     new VerifiedRecallResultRequest(SEK1_CORE_FORMULAS_FLASHCARDS_ID, prompt.cardId(), true, "ok"));
             assertThat(result.passed()).isTrue();
+            finalResult = result;
             prompt = result.next();
         }
 
+        assertThat(finalResult).isNotNull();
+        assertThat(finalResult.masterySaved()).isTrue();
+        assertThat(finalResult.masteryGoalId()).isEqualTo(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        assertThat(finalResult.instruction()).contains("Backend").contains("Mastery").contains("setMastery");
         assertThat(prompt.status()).isEqualTo("complete");
         assertThat(prompt.pendingCards()).isZero();
         assertThat(learnerService.getMastery(learnerId).get(SEK1_CORE_FORMULAS_FLASHCARDS_ID)).isEqualTo(1.0);
+        assertThat(masteryRepository.findById(new MasteryId(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID)))
+                .hasValueSatisfying(mastery -> assertThat(mastery.getValue()).isEqualTo(1.0));
+        Learner updatedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(updatedLearner.getActiveGoalId()).isNull();
+        assertThat(updatedLearner.getLearningState()).isEqualTo(LearningState.FRONTIER);
     }
 
     @Test

@@ -77,14 +77,20 @@ class AiPromptContractTest {
                 "verified-recall/start",
                 "batchSize",
                 "hart prüfbare Karten",
-                "Start Exercise");
+                "Start Exercise",
+                "recordVerifiedRecallResult",
+                "masterySaved=true",
+                "setMastery");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "system_instructions.en.md"),
                 "chooseMemoryMode",
                 "verified-recall/start",
                 "batchSize",
                 "hard-testable cards",
-                "Start Exercise");
+                "Start Exercise",
+                "recordVerifiedRecallResult",
+                "masterySaved=true",
+                "setMastery");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.de.md"),
                 "chooseMemoryMode",
@@ -94,6 +100,14 @@ class AiPromptContractTest {
                 "pro Kalendertag",
                 "hart prüfbaren Karten",
                 "status=waiting");
+        assertContainsFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                "\"masterySaved\"",
+                "kein setMastery");
+        assertContainsFragments(
+                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                "\"masterySaved\"",
+                "do not call setMastery");
         assertContainsFragments(
                 Path.of("..", "ai", "openai custom gpt", "knowledge_docs", "state_machine.en.md"),
                 "chooseMemoryMode",

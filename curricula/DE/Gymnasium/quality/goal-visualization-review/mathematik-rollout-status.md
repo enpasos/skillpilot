@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-30T07:59:21.655Z
+Generated: 2026-06-30T14:10:31.454Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,39 +18,39 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 356 |
-| Coverage | 47.2% |
+| Ziele mit primaerem Visualisierungslink | 360 |
+| Coverage | 47.7% |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 77 |
 | Offene Provider-Deferred-Ziele | 4 |
-| Offene Provider-Quota-Ziele | 5 |
+| Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 5 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 356 |
+| `pilot` | 360 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 271 |
+| `accepted_pilot` | 270 |
 | `accepted_pilot_after_regeneration` | 80 |
+| `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 1 |
 | `accepted_pilot_after_user_review_correction` | 8 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 5 |
 | `not_attempted_after_quota_block` | 4 |
-| `not_generated_provider_quota` | 1 |
-| `not_requested_provider_quota` | 4 |
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 4 |
+| `rejected_removed` | 1 |
 
 ## Current Batch
 
@@ -59,8 +59,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-077.md` |
 | Latest ledger status | `completed_context_visualization_removed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
-| Resume file exists | yes |
-| Resume goals | 5 |
+| Resume file exists | no |
+| Resume goals | 0 |
 | Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
@@ -69,7 +69,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.
-- Im aktuellen Resume stehen 5 Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
@@ -84,13 +84,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 ### Open Provider Quota
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 076 | `12a8dffc-dea7-5f2c-b490-2a1a2bb6901b` | Arithmetische und geometrische Reihen untersuchen | `not_generated_provider_quota` |
-| 076 | `09f47964-2cd0-410e-93ee-9632b582fc91` | Funktionsbegriff und Darstellungen verstehen | `not_requested_provider_quota` |
-| 076 | `c65ecabf-d00b-4e2d-99ae-b64692325ffb` | Funktionswerte berechnen | `not_requested_provider_quota` |
-| 076 | `c61af0a9-7d56-5505-a70d-ee097c3b747f` | Grenzwerte von Folgen mit Grenzwertsätzen begründen | `not_requested_provider_quota` |
-| 076 | `1b888f4c-df57-52a9-9551-b2b692e929fa` | Konvergenz und Divergenz von Folgen beschreiben | `not_requested_provider_quota` |
+Keine Eintraege.
 
 ### Rejected Not Linked
 
@@ -118,23 +112,25 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `12a8dffc-dea7-5f2c-b490-2a1a2bb6901b` | Arithmetische und geometrische Reihen untersuchen | `pilot` | `accepted_pilot_after_resume` |
+| `09f47964-2cd0-410e-93ee-9632b582fc91` | Funktionsbegriff und Darstellungen verstehen | `pilot` | `accepted_pilot_after_resume` |
+| `c65ecabf-d00b-4e2d-99ae-b64692325ffb` | Funktionswerte berechnen | `pilot` | `accepted_pilot_after_resume` |
+| `c61af0a9-7d56-5505-a70d-ee097c3b747f` | Grenzwerte von Folgen mit Grenzwertsätzen begründen | `pilot` | `accepted_pilot_after_resume` |
+| `1b888f4c-df57-52a9-9551-b2b692e929fa` | Konvergenz und Divergenz von Folgen beschreiben | `pilot` | `accepted_pilot_after_resume` |
 
 ### Accepted Review Without Link
 
 Keine Eintraege.
 
-## Next Command When Quota Is Available
+## Next Command
 
 ```bash
-npm --prefix app run visualization:generate:nano-banana:batch -- \
-  --file tmp/goal-visualization-batch-076.resume.txt \
-  --continue-on-error \
-  --no-import \
-  --prompt-append-dir=tmp/goal-visualization-prompt-appends/batch-076
+npm --prefix app run visualization:plan-batch -- --count 6
 ```
 
-After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 

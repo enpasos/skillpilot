@@ -968,12 +968,46 @@ public class LearnerService {
                 updatedContext,
                 LEGACY_VERIFIED_RECALL_BATCH_SIZE);
         int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        int pendingCards = Math.max(0, updatedContext.cards().size() - verifiedCards);
+        boolean masterySaved = false;
+        if (pendingCards == 0 && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.srsState())) {
+            persistVerifiedRecallMastery(skillpilotId, context.goal());
+            masterySaved = true;
+        }
         return new VerifiedRecallResultResponse(
                 card.id,
                 request.passed(),
                 verifiedCards,
-                Math.max(0, updatedContext.cards().size() - verifiedCards),
+                pendingCards,
+                masterySaved,
+                masterySaved ? context.goal().getId() : null,
+                verifiedRecallResultInstruction(language, masterySaved),
                 next);
+    }
+
+    private void persistVerifiedRecallMastery(String skillpilotId, LearningGoal goal) {
+        if (goal == null || goal.getId() == null || goal.getId().isBlank()) {
+            return;
+        }
+        Learner learner = learnerRepository.findById(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        MasteryId id = new MasteryId(skillpilotId, goal.getId());
+        Mastery mastery = masteryRepository.findById(id)
+                .orElseGet(() -> new Mastery(learner, goal.getId(), 1.0));
+        boolean masteryChanged = mastery.getValue() < 1.0;
+        mastery.setValue(1.0);
+        masteryRepository.save(mastery);
+
+        boolean activeGoalCleared = goal.getId().equals(learner.getActiveGoalId());
+        if (activeGoalCleared) {
+            learner.setActiveGoalId(null);
+            learner.setLearningState(LearningState.FRONTIER);
+            learnerRepository.save(learner);
+        }
+
+        if (masteryChanged || activeGoalCleared) {
+            eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
+        }
     }
 
     private VerifiedRecallContext resolveVerifiedRecallContext(String skillpilotId, String requestedGoalId, String language) {
@@ -1302,8 +1336,17 @@ public class LearnerService {
 
     private String verifiedRecallCompleteInstruction(String language) {
         return isEnglish(language)
-                ? "All required cards for this memorization goal are verified. The flashcard goal is complete; offer cockpit practice only if the learner wants review."
-                : "Alle erforderlichen Karten dieses Memorize-Ziels sind hart geprüft. Das Lernkartenziel ist abgeschlossen; biete nur Cockpit-Üben an, wenn der Lernende wiederholen möchte.";
+                ? "All required cards for this memorization goal are verified. Backend mastery is saved automatically; do not call setMastery. Reload state only if the learner wants the next goal."
+                : "Alle erforderlichen Karten dieses Lernkartenziels sind hart geprüft. Das Backend speichert Mastery automatisch; rufe nicht setMastery auf. Lade den Zustand nur neu, wenn das nächste Ziel gewünscht ist.";
+    }
+
+    private String verifiedRecallResultInstruction(String language, boolean masterySaved) {
+        if (masterySaved) {
+            return verifiedRecallCompleteInstruction(language);
+        }
+        return isEnglish(language)
+                ? "Card result saved. Continue with next.status: ask next.cards when ready; if waiting, stop today's flashcard verification."
+                : "Kartenergebnis gespeichert. Folge next.status: bei ready nächste cards stellen; bei waiting die heutige Kartenprüfung beenden.";
     }
 
     private String verifiedRecallWaitingInstruction(String language, VerifiedRecallDeckStatus status) {

@@ -168,6 +168,13 @@ class AiOpenApiSpecTest {
         assertThat(promptProperties.path("cards").path("items").path("$ref").asText())
                 .isEqualTo("#/components/schemas/VerifiedRecallPromptCard");
         assertThat(promptProperties.has("batchSize")).isTrue();
+
+        JsonNode resultProperties = schemas.path("VerifiedRecallResultResponse").path("properties");
+        assertThat(resultProperties.has("masterySaved")).isTrue();
+        assertThat(resultProperties.has("masteryGoalId")).isTrue();
+        assertThat(resultProperties.has("instruction")).isTrue();
+        assertThat(resultProperties.path("masterySaved").path("description").asText())
+                .containsIgnoringCase("setMastery");
     }
 
     private static void assertVerifiedRecallOperation(JsonNode paths, String path, String operationId) {

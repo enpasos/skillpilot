@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-30T07:59:21.655Z",
+  "generatedAt": "2026-06-30T14:10:31.454Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -11,49 +11,43 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 356,
-    "coveragePercent": 47.2,
+    "goalsWithPrimaryVisualization": 360,
+    "coveragePercent": 47.7,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 356
+      "pilot": 360
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 356
+      "pilot": 360
     },
     "reviewLedgerFiles": 77,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
-      "accepted_pilot": 271,
+      "accepted_pilot": 270,
       "accepted_pilot_after_regeneration": 80,
+      "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 3,
       "accepted_pilot_after_third_regeneration": 1,
       "accepted_pilot_after_user_review_correction": 8,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 5,
       "not_attempted_after_quota_block": 4,
-      "not_generated_provider_quota": 1,
-      "not_requested_provider_quota": 4,
       "rejected_after_user_review_replaced": 1,
-      "rejected_not_linked": 4
+      "rejected_not_linked": 4,
+      "rejected_removed": 1
     },
     "openProviderDeferredGoals": 4,
-    "openProviderQuotaGoals": 5,
+    "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
-    "linkedWithoutAcceptedReview": 0,
+    "linkedWithoutAcceptedReview": 5,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
     "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-077.md",
     "latestLedgerStatus": "completed_context_visualization_removed",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
-    "resumeFileExists": true,
-    "resumeGoalIds": [
-      "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
-      "1b888f4c-df57-52a9-9551-b2b692e929fa",
-      "c61af0a9-7d56-5505-a70d-ee097c3b747f",
-      "09f47964-2cd0-410e-93ee-9632b582fc91",
-      "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
-    ],
+    "resumeFileExists": false,
+    "resumeGoalIds": [],
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-076",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
@@ -89,43 +83,7 @@
         "notes": "Withdrawn after user review: repeated Nano Banana Pro attempts represented angle measurement with the Geodreieck incorrectly or ambiguously. Fachliche requirement: the Geodreieck keeps its fixed 45-45-90 shape; for measuring, its zero point/midpoint lies on the angle vertex and the long base lies on one side of the angle. The active `resourceLinks` image reference and published asset copies were removed. Revisit when the provider handles precise tool-use diagrams more reliably."
       }
     ],
-    "openProviderQuota": [
-      {
-        "batch": "076",
-        "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
-        "title": "Arithmetische und geometrische Reihen untersuchen",
-        "decision": "not_generated_provider_quota",
-        "notes": "The provider returned Gemini `429` before producing an image. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
-      },
-      {
-        "batch": "076",
-        "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
-        "title": "Funktionsbegriff und Darstellungen verstehen",
-        "decision": "not_requested_provider_quota",
-        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
-      },
-      {
-        "batch": "076",
-        "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
-        "title": "Funktionswerte berechnen",
-        "decision": "not_requested_provider_quota",
-        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
-      },
-      {
-        "batch": "076",
-        "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
-        "title": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
-        "decision": "not_requested_provider_quota",
-        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
-      },
-      {
-        "batch": "076",
-        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
-        "title": "Konvergenz und Divergenz von Folgen beschreiben",
-        "decision": "not_requested_provider_quota",
-        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
-      }
-    ],
+    "openProviderQuota": [],
     "rejectedNotLinked": [
       {
         "batch": "035",
@@ -216,7 +174,43 @@
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [],
+    "linkedWithoutAcceptedReview": [
+      {
+        "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+        "title": "Arithmetische und geometrische Reihen untersuchen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b.jpg",
+        "latestDecision": "accepted_pilot_after_resume"
+      },
+      {
+        "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "title": "Funktionsbegriff und Darstellungen verstehen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg",
+        "latestDecision": "accepted_pilot_after_resume"
+      },
+      {
+        "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "title": "Funktionswerte berechnen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/c65ecabf-d00b-4e2d-99ae-b64692325ffb/c65ecabf-d00b-4e2d-99ae-b64692325ffb.jpg",
+        "latestDecision": "accepted_pilot_after_resume"
+      },
+      {
+        "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+        "title": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/c61af0a9-7d56-5505-a70d-ee097c3b747f/c61af0a9-7d56-5505-a70d-ee097c3b747f.jpg",
+        "latestDecision": "accepted_pilot_after_resume"
+      },
+      {
+        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+        "title": "Konvergenz und Divergenz von Folgen beschreiben",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
+        "latestDecision": "accepted_pilot_after_resume"
+      }
+    ],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -403,6 +397,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/67c4d6f8-45fc-53d5-8c95-a4c423e421a6/67c4d6f8-45fc-53d5-8c95-a4c423e421a6.jpg"
+    },
+    {
+      "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+      "title": "Arithmetische und geometrische Reihen untersuchen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b.jpg"
     },
     {
       "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
@@ -1165,6 +1167,14 @@
       "url": "/assets/goal-visualizations/mathematik/e02c58a2-2a32-49bd-b110-7b307e0317fb/e02c58a2-2a32-49bd-b110-7b307e0317fb.jpg"
     },
     {
+      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg"
+    },
+    {
       "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
       "title": "Funktionsgleichungen aus Graphen bestimmen",
       "phase": "E",
@@ -1179,6 +1189,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/0500f77f-8c12-5f7e-97b0-a75125eaa99b/0500f77f-8c12-5f7e-97b0-a75125eaa99b.jpg"
+    },
+    {
+      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "title": "Funktionswerte berechnen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c65ecabf-d00b-4e2d-99ae-b64692325ffb/c65ecabf-d00b-4e2d-99ae-b64692325ffb.jpg"
     },
     {
       "goalId": "e09072f9-67d9-412c-b872-24ecbf329232",
@@ -1331,6 +1349,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/c97a33d9-d5e4-56c5-ae4c-822bc4f54898/c97a33d9-d5e4-56c5-ae4c-822bc4f54898.jpg"
+    },
+    {
+      "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+      "title": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c61af0a9-7d56-5505-a70d-ee097c3b747f/c61af0a9-7d56-5505-a70d-ee097c3b747f.jpg"
     },
     {
       "goalId": "03a87896-088d-4b21-a37b-d0604d784540",
@@ -1539,6 +1565,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c/1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c.jpg"
+    },
+    {
+      "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+      "title": "Konvergenz und Divergenz von Folgen beschreiben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg"
     },
     {
       "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",

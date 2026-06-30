@@ -365,7 +365,7 @@
       "post": {
         "operationId": "recordVerifiedRecallResult",
         "summary": "Save card result",
-        "description": "Save card result.",
+        "description": "Save card result; on completion the backend implicitly saves flashcard mastery.",
         "parameters": [
           {
             "name": "chatSessionToken",
@@ -389,7 +389,7 @@
         },
         "responses": {
           "200": {
-            "description": "Saved card result and next verification step.",
+            "description": "Saved card result. If masterySaved=true, the flashcard goal is complete; do not call setMastery.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1103,6 +1103,24 @@
           },
           "pendingCards": {
             "type": "integer"
+          },
+          "masterySaved": {
+            "type": "boolean",
+            "description": "true when this result saved the flashcard goal as Mastery=1.0 on the server. Do not call setMastery afterwards."
+          },
+          "masteryGoalId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Flashcard goal whose mastery was saved implicitly; otherwise null."
+          },
+          "instruction": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Binding short follow-up instruction for GPT, especially when verification is complete."
           },
           "next": {
             "$ref": "#/components/schemas/VerifiedRecallPromptResponse"

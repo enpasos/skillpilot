@@ -429,6 +429,56 @@ class LearnerAiControllerTest {
     }
 
     @Test
+    void recordSessionVerifiedRecallResult_preservesCompletionSignalForGpt() {
+        String chatSessionToken = "chat-token";
+        String skillpilotId = "learner-1";
+        String goalId = "memory-goal";
+        VerifiedRecallResultRequest request = new VerifiedRecallResultRequest(goalId, "card-1", true, "ok");
+        VerifiedRecallPromptResponse next = new VerifiedRecallPromptResponse(
+                "complete",
+                "Backend saved mastery; do not call setMastery.",
+                skillpilotId,
+                goalId,
+                "Lernkarten",
+                1,
+                1,
+                0,
+                0,
+                0,
+                null,
+                null,
+                null,
+                null);
+        VerifiedRecallResultResponse serviceResponse = new VerifiedRecallResultResponse(
+                "card-1",
+                true,
+                1,
+                0,
+                true,
+                goalId,
+                "Backend saved mastery; do not call setMastery.",
+                next);
+
+        when(chatSessionService.resolveSkillpilotId(chatSessionToken)).thenReturn(skillpilotId);
+        when(learnerService.recordVerifiedRecallResult(skillpilotId, "de", request)).thenReturn(serviceResponse);
+
+        VerifiedRecallResultResponse response = controller.recordSessionVerifiedRecallResult("de", chatSessionToken, request);
+
+        assertThat(response.masterySaved()).isTrue();
+        assertThat(response.masteryGoalId()).isEqualTo(goalId);
+        assertThat(response.instruction()).contains("do not call setMastery");
+        assertThat(response.next()).isNotNull();
+        assertThat(response.next().skillpilotId()).isNull();
+        assertThat(response.next().status()).isEqualTo("complete");
+
+        verify(chatSessionService).resolveSkillpilotId(chatSessionToken);
+        verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
+        verify(learnerService).recordVerifiedRecallResult(skillpilotId, "de", request);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
     void normalizeMathDelimitersForChat_usesChatGptLatexDelimiters() throws Exception {
         String raw = "Inline $Q=900\\\\,\\\\mathrm{kJ}$ and block $$\n\\\\eta=\\\\frac{W}{Q}\n$$. "
                 + "Existing \\(x\\) and \\[y\\] stay valid.";

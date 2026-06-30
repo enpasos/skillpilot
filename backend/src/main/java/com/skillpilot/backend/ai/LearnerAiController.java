@@ -512,6 +512,9 @@ public class LearnerAiController {
                 response.passed(),
                 response.verifiedCards(),
                 response.pendingCards(),
+                response.masterySaved(),
+                response.masteryGoalId(),
+                response.instruction(),
                 withoutSkillpilotId(response.next()));
     }
 
