@@ -111,8 +111,8 @@ const repoRoot = resolve(scriptDir, '../..')
 
 const defaultLandscapePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const defaultReviewDirPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review'
-const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-063.resume.txt'
-const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-063'
+const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-070.resume.txt'
+const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-070'
 const defaultOutputJsonPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json'
 const defaultOutputMarkdownPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md'
 
@@ -463,6 +463,7 @@ function renderLinkedReviewMismatchRows(rows: LinkedReviewMismatchRow[], maxRows
 
 function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   const { summary } = report
+  const hasCurrentResumeWork = report.currentBatch.resumeFileExists && report.currentBatch.resumeGoalIds.length > 0
   const lines: string[] = ['# Mathematik Goal Visualization Rollout Status', '']
   pushGeneratedMarkdownNotice(lines)
   lines.push(`Generated: ${report.generatedAt}`)
@@ -522,7 +523,11 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   lines.push('- Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.')
   lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.')
-  lines.push('- Batch 038 ist vorbereitet; solange der Provider `429 too_many_requests` liefert, ist der naechste produktive Schritt ein spaeterer Resume-Lauf.')
+  if (hasCurrentResumeWork) {
+    lines.push(`- Im aktuellen Resume stehen ${report.currentBatch.resumeGoalIds.length} Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.`)
+  } else {
+    lines.push('- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.')
+  }
   lines.push('')
   lines.push('## Quality Queues')
   lines.push('')
@@ -546,17 +551,25 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('### Accepted Review Without Link')
   lines.push('')
   lines.push(...renderDecisionRows(report.consistency.acceptedReviewWithoutLink, 30))
-  lines.push('## Next Command When Quota Is Available')
+  lines.push(hasCurrentResumeWork ? '## Next Command When Quota Is Available' : '## Next Command')
   lines.push('')
   lines.push('```bash')
-  lines.push('npm --prefix app run visualization:generate:nano-banana:batch -- \\')
-  lines.push(`  --file ${report.currentBatch.resumeFile} \\`)
-  lines.push('  --continue-on-error \\')
-  lines.push('  --no-import \\')
-  lines.push(`  --prompt-append-dir=${report.currentBatch.promptAppendDir}`)
+  if (hasCurrentResumeWork) {
+    lines.push('npm --prefix app run visualization:generate:nano-banana:batch -- \\')
+    lines.push(`  --file ${report.currentBatch.resumeFile} \\`)
+    lines.push('  --continue-on-error \\')
+    lines.push('  --no-import \\')
+    lines.push(`  --prompt-append-dir=${report.currentBatch.promptAppendDir}`)
+  } else {
+    lines.push('npm --prefix app run visualization:plan-batch -- --count 6')
+  }
   lines.push('```')
   lines.push('')
-  lines.push('After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
+  if (hasCurrentResumeWork) {
+    lines.push('After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
+  } else {
+    lines.push('After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
+  }
   lines.push('')
   lines.push('## Sources')
   lines.push('')

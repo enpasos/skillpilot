@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-29T22:28:24.061Z
+Generated: 2026-06-29T23:55:35.838Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 291 |
-| Coverage | 38.6% |
+| Ziele mit primaerem Visualisierungslink | 331 |
+| Coverage | 43.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 63 |
+| Review-Ledger-Dateien | 70 |
 | Offene Provider-Deferred-Ziele | 4 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,14 +32,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 291 |
+| `pilot` | 331 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 217 |
-| `accepted_pilot_after_regeneration` | 70 |
+| `accepted_context_visualization` | 2 |
+| `accepted_pilot` | 252 |
+| `accepted_pilot_after_regeneration` | 75 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 7 |
 | `blocked_provider_quota` | 5 |
@@ -52,12 +53,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-063.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-070.md` |
 | Latest ledger status | `completed_pilot` |
-| Resume file | `tmp/goal-visualization-batch-063.resume.txt` |
+| Resume file | `tmp/goal-visualization-batch-070.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-063` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-070` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -65,7 +66,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.
-- Batch 038 ist vorbereitet; solange der Provider `429 too_many_requests` liefert, ist der naechste produktive Schritt ein spaeterer Resume-Lauf.
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
@@ -112,22 +113,18 @@ Keine Eintraege.
 
 Keine Eintraege.
 
-## Next Command When Quota Is Available
+## Next Command
 
 ```bash
-npm --prefix app run visualization:generate:nano-banana:batch -- \
-  --file tmp/goal-visualization-batch-063.resume.txt \
-  --continue-on-error \
-  --no-import \
-  --prompt-append-dir=tmp/goal-visualization-prompt-appends/batch-063
+npm --prefix app run visualization:plan-batch -- --count 6
 ```
 
-After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-batch-063.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-063`
+- Resume file: `tmp/goal-visualization-batch-070.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-070`
 
