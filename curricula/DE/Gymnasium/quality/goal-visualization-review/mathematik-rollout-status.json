@@ -1,51 +1,60 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-29T23:55:35.838Z",
+  "generatedAt": "2026-06-30T07:01:55.288Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-batch-070.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-070"
+    "currentResumeFilePath": "tmp/goal-visualization-batch-076.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-076"
   },
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 331,
-    "coveragePercent": 43.9,
+    "goalsWithPrimaryVisualization": 356,
+    "coveragePercent": 47.2,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 331
+      "pilot": 356
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 331
+      "pilot": 356
     },
-    "reviewLedgerFiles": 70,
+    "reviewLedgerFiles": 76,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
-      "accepted_pilot": 252,
-      "accepted_pilot_after_regeneration": 75,
+      "accepted_pilot": 271,
+      "accepted_pilot_after_regeneration": 80,
       "accepted_pilot_after_second_regeneration": 3,
-      "accepted_pilot_after_user_review_correction": 7,
+      "accepted_pilot_after_third_regeneration": 1,
+      "accepted_pilot_after_user_review_correction": 8,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 5,
       "not_attempted_after_quota_block": 4,
+      "not_generated_provider_quota": 1,
+      "not_requested_provider_quota": 4,
       "rejected_after_user_review_replaced": 1,
       "rejected_not_linked": 3
     },
     "openProviderDeferredGoals": 4,
-    "openProviderQuotaGoals": 0,
+    "openProviderQuotaGoals": 5,
     "blockedProviderQuotaLedgers": 2,
     "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-070.md",
-    "latestLedgerStatus": "completed_pilot",
-    "resumeFile": "tmp/goal-visualization-batch-070.resume.txt",
-    "resumeFileExists": false,
-    "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-070",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-076.md",
+    "latestLedgerStatus": "completed_partial_provider_quota",
+    "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
+    "resumeFileExists": true,
+    "resumeGoalIds": [
+      "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+      "1b888f4c-df57-52a9-9551-b2b692e929fa",
+      "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+      "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+    ],
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-076",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
   },
@@ -80,7 +89,43 @@
         "notes": "Withdrawn after user review: repeated Nano Banana Pro attempts represented angle measurement with the Geodreieck incorrectly or ambiguously. Fachliche requirement: the Geodreieck keeps its fixed 45-45-90 shape; for measuring, its zero point/midpoint lies on the angle vertex and the long base lies on one side of the angle. The active `resourceLinks` image reference and published asset copies were removed. Revisit when the provider handles precise tool-use diagrams more reliably."
       }
     ],
-    "openProviderQuota": [],
+    "openProviderQuota": [
+      {
+        "batch": "076",
+        "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
+        "title": "Arithmetische und geometrische Reihen untersuchen",
+        "decision": "not_generated_provider_quota",
+        "notes": "The provider returned Gemini `429` before producing an image. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
+      },
+      {
+        "batch": "076",
+        "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "title": "Funktionsbegriff und Darstellungen verstehen",
+        "decision": "not_requested_provider_quota",
+        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
+      },
+      {
+        "batch": "076",
+        "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "title": "Funktionswerte berechnen",
+        "decision": "not_requested_provider_quota",
+        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
+      },
+      {
+        "batch": "076",
+        "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
+        "title": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
+        "decision": "not_requested_provider_quota",
+        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
+      },
+      {
+        "batch": "076",
+        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
+        "title": "Konvergenz und Divergenz von Folgen beschreiben",
+        "decision": "not_requested_provider_quota",
+        "notes": "The batch stopped after the provider quota error before this goal was requested. This goal is listed in `tmp/goal-visualization-batch-076.resume.txt` for retry."
+      }
+    ],
     "rejectedNotLinked": [
       {
         "batch": "035",
@@ -153,6 +198,13 @@
         "title": "Sinussatz herleiten",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The old removed asset was not restored. The new accepted image uses the standard triangle labeling `a = BC`, `b = AC`, `c = AB`, angles `alpha` at A, `beta` at B, `gamma` at C, and height `h` from C to AB. The displayed relations `sin(alpha) = h / b`, `sin(beta) = h / a`, `b * sin(alpha) = a * sin(beta)`, and `a / sin(alpha) = b / sin(beta)` are consistent; the optional `c / sin(gamma)` note is marked as analogous."
+      },
+      {
+        "batch": "075",
+        "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+        "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Replaced the previous asset because the labels `7pi/6` and `11pi/6` did not visually fit the zero crossings. The new image removes both labels, focuses on `f(x)=2*sin(x)+1`, marks maxima at `pi/2` and `5pi/2`, the minimum at `3pi/2`, and guide lines `y=3`, `y=1`, and `y=-1`."
       }
     ]
   },
@@ -170,6 +222,30 @@
       "url": "/assets/goal-visualizations/mathematik/c3c057a3-caf9-44a5-ae60-639e3119e94a/c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg"
     },
     {
+      "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+      "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.jpg"
+    },
+    {
+      "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+      "title": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3401d95d-2191-5929-ac78-4de51d71a6be/3401d95d-2191-5929-ac78-4de51d71a6be.jpg"
+    },
+    {
+      "goalId": "e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32",
+      "title": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg"
+    },
+    {
       "goalId": "f9fdb733-5838-4983-888a-05624eabbe17",
       "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
       "phase": "J10",
@@ -184,6 +260,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/7156558c-57f1-4372-9ba7-0640c3f7cb3a/7156558c-57f1-4372-9ba7-0640c3f7cb3a.jpg"
+    },
+    {
+      "goalId": "6acd79f5-9447-5ea1-8127-6dbb72bd057d",
+      "title": "Ableitungswerte trigonometrischer Modelle im Kontext interpretieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6acd79f5-9447-5ea1-8127-6dbb72bd057d/6acd79f5-9447-5ea1-8127-6dbb72bd057d.jpg"
     },
     {
       "goalId": "91571d3f-3651-4477-ba21-320fc4077453",
@@ -304,6 +388,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/bab64124-fabf-544c-a2e5-3e6c786531d2/bab64124-fabf-544c-a2e5-3e6c786531d2.jpg"
+    },
+    {
+      "goalId": "67c4d6f8-45fc-53d5-8c95-a4c423e421a6",
+      "title": "Arithmetische und geometrische Folgen beschreiben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/67c4d6f8-45fc-53d5-8c95-a4c423e421a6/67c4d6f8-45fc-53d5-8c95-a4c423e421a6.jpg"
     },
     {
       "goalId": "15505229-efec-4d01-8e71-acf15f9c2424",
@@ -498,12 +590,28 @@
       "url": "/assets/goal-visualizations/mathematik/fde351a8-98b1-5d75-b4df-813beb2bbe3c/fde351a8-98b1-5d75-b4df-813beb2bbe3c.jpg"
     },
     {
+      "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+      "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg"
+    },
+    {
       "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
       "title": "Bogenmass am Einheitskreis veranschaulichen und sicher zwischen Grad- und Bogenmass wechseln",
       "phase": "J10",
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/8d30d241-0247-48ac-83d3-4e0de61584d3/8d30d241-0247-48ac-83d3-4e0de61584d3.jpg"
+    },
+    {
+      "goalId": "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+      "title": "Bogenmaß in periodischen Prozessen nutzen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/cdf49335-cebf-54b4-9f52-50d5badabe2f/cdf49335-cebf-54b4-9f52-50d5badabe2f.jpg"
     },
     {
       "goalId": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
@@ -576,6 +684,14 @@
       "area": "Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/c420e0be-1e74-4050-834c-d8da7f41095a/c420e0be-1e74-4050-834c-d8da7f41095a.jpg"
+    },
+    {
+      "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+      "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg"
     },
     {
       "goalId": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
@@ -906,6 +1022,14 @@
       "url": "/assets/goal-visualizations/mathematik/fec30a5a-835a-4932-a436-d83549029486/fec30a5a-835a-4932-a436-d83549029486.jpg"
     },
     {
+      "goalId": "9db266a2-1889-5792-82b0-a7463f0832f1",
+      "title": "Exponentialfunktionen in e-Schreibweise umformen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9db266a2-1889-5792-82b0-a7463f0832f1/9db266a2-1889-5792-82b0-a7463f0832f1.jpg"
+    },
+    {
       "goalId": "d900e0a4-0c45-50dd-a37b-01f9f91a134c",
       "title": "Exponentialgleichungen lösen",
       "phase": "E",
@@ -936,6 +1060,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/3010d965-b9b9-4dc5-9d04-d706725e9a30/3010d965-b9b9-4dc5-9d04-d706725e9a30.jpg"
+    },
+    {
+      "goalId": "adcac2a7-e763-5442-abf2-866532fedcda",
+      "title": "Exponentielle, lineare und quadratische Modelle vergleichen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/adcac2a7-e763-5442-abf2-866532fedcda/adcac2a7-e763-5442-abf2-866532fedcda.jpg"
     },
     {
       "goalId": "31207307-0cf9-4a56-bf14-90196dc2b3d4",
@@ -1080,6 +1212,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12/15ce2a7e-a5dc-44f7-8a5e-6d04dd81db12.jpg"
+    },
+    {
+      "goalId": "51e80e7b-df31-5d97-97f9-4c6e26eb7416",
+      "title": "Ganzrationale Funktionen faktorisieren und Nullstellen bestimmen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/51e80e7b-df31-5d97-97f9-4c6e26eb7416/51e80e7b-df31-5d97-97f9-4c6e26eb7416.jpg"
     },
     {
       "goalId": "1ce8af38-082a-477b-af48-b924c92761bf",
@@ -1400,6 +1540,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c/1ef06ac4-4dc2-5400-ada5-f5ab2c5cf94c.jpg"
+    },
+    {
+      "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+      "title": "Konvergenz und Grenzen numerischer Verfahren reflektieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3bfc2747-03e2-57db-b13f-01f78835eefd/3bfc2747-03e2-57db-b13f-01f78835eefd.jpg"
+    },
+    {
+      "goalId": "70a21623-6c87-55ae-b534-ab45a3b9b1d2",
+      "title": "Konvergenzgeschwindigkeit numerischer Verfahren vergleichen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/70a21623-6c87-55ae-b534-ab45a3b9b1d2/70a21623-6c87-55ae-b534-ab45a3b9b1d2.jpg"
     },
     {
       "goalId": "fc2cf102-dcde-5565-884f-7c9e3e3b54b6",
@@ -1818,6 +1974,14 @@
       "url": "/assets/goal-visualizations/mathematik/346efb31-c400-5bd3-a698-dd9a7e1bc3f7/346efb31-c400-5bd3-a698-dd9a7e1bc3f7.jpg"
     },
     {
+      "goalId": "ea8e3dfb-7fd7-5d49-ae07-01864e6aa464",
+      "title": "Parameter periodischer Funktionen deuten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464.jpg"
+    },
+    {
       "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
       "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
       "phase": "J9",
@@ -1850,6 +2014,14 @@
       "url": "/assets/goal-visualizations/mathematik/be18cef8-ad5b-56d4-9ecf-9ba45bad211e/be18cef8-ad5b-56d4-9ecf-9ba45bad211e.jpg"
     },
     {
+      "goalId": "56fba457-ab98-5b96-963e-ec284458c17f",
+      "title": "Periodische Prozesse modellieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/56fba457-ab98-5b96-963e-ec284458c17f/56fba457-ab98-5b96-963e-ec284458c17f.jpg"
+    },
+    {
       "goalId": "7f11ffe0-7c43-4507-9101-50374a60b0e8",
       "title": "Periodische Realsituationen mit Sinus- und Kosinusfunktionen modellieren und Modelle variieren",
       "phase": "J10",
@@ -1880,6 +2052,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/e03eca28-9a57-5b24-877c-2e63fecee986/e03eca28-9a57-5b24-877c-2e63fecee986.jpg"
+    },
+    {
+      "goalId": "46166788-4a8f-53d5-9fe9-77b0a018d7ee",
+      "title": "Polynomdivision zur Nullstellensuche anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/46166788-4a8f-53d5-9fe9-77b0a018d7ee/46166788-4a8f-53d5-9fe9-77b0a018d7ee.jpg"
     },
     {
       "goalId": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
@@ -1944,6 +2124,22 @@
       "area": "Arithmetic",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/b5de0574-93ed-409c-80ee-312211420cd6/b5de0574-93ed-409c-80ee-312211420cd6.jpg"
+    },
+    {
+      "goalId": "864f9a45-badf-5a31-88d3-da4525808c2d",
+      "title": "Produkt- und Kettenregel an Beispielen überprüfen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/864f9a45-badf-5a31-88d3-da4525808c2d/864f9a45-badf-5a31-88d3-da4525808c2d.jpg"
+    },
+    {
+      "goalId": "d0a9e407-e654-5940-958f-6f608bf3d654",
+      "title": "Produkt- und Kettenregel bei Exponentialverknüpfungen anwenden",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d0a9e407-e654-5940-958f-6f608bf3d654/d0a9e407-e654-5940-958f-6f608bf3d654.jpg"
     },
     {
       "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
@@ -2146,6 +2342,14 @@
       "url": "/assets/goal-visualizations/mathematik/0bd7dc9b-c7f9-52e6-b374-a019edfd821c/0bd7dc9b-c7f9-52e6-b374-a019edfd821c.jpg"
     },
     {
+      "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+      "title": "Regula falsi zur Nullstellennäherung anwenden",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/47400de4-b0e4-5bb6-a1bd-bd2beee616bb/47400de4-b0e4-5bb6-a1bd-bd2beee616bb.jpg"
+    },
+    {
       "goalId": "fd860da9-73ba-47cd-a1a8-452424915a80",
       "title": "Sachsituationen in Terme mit Variablen übersetzen",
       "phase": "J7",
@@ -2224,6 +2428,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11/5d17ebb4-4e27-4f9c-8d0b-3520f34b2e11.jpg"
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "title": "Sinus- und Kosinusfunktionen verstehen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/bbef7cf2-90fa-59fa-a115-8b651aab9231/bbef7cf2-90fa-59fa-a115-8b651aab9231.jpg"
     },
     {
       "goalId": "c8818eae-0c4d-4fa1-9085-04a9c95a668b",
@@ -2450,12 +2662,28 @@
       "url": "/assets/goal-visualizations/mathematik/eb28b403-f9fc-57ea-a793-b4555596fdd7/eb28b403-f9fc-57ea-a793-b4555596fdd7.jpg"
     },
     {
+      "goalId": "58d2f963-4fb9-550d-a832-f5ac60808900",
+      "title": "Transformierte Sinus- und Kosinusfunktionen mit der Kettenregel ableiten",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/58d2f963-4fb9-550d-a832-f5ac60808900/58d2f963-4fb9-550d-a832-f5ac60808900.jpg"
+    },
+    {
       "goalId": "71a483ba-9680-4654-bb5e-5ab5427f0919",
       "title": "Trigonometrie am rechtwinkligen Dreieck anwenden",
       "phase": "J9",
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/71a483ba-9680-4654-bb5e-5ab5427f0919/71a483ba-9680-4654-bb5e-5ab5427f0919.jpg"
+    },
+    {
+      "goalId": "ecd13e54-ab0e-550f-9400-66e13306635d",
+      "title": "Trigonometrische Gleichungen lösen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ecd13e54-ab0e-550f-9400-66e13306635d/ecd13e54-ab0e-550f-9400-66e13306635d.jpg"
     },
     {
       "goalId": "a6c8db0a-a8a2-46bf-af04-d73d69d6c8b1",
@@ -2472,6 +2700,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/46bdcc16-418f-417a-89cf-033d7ae6c8cc/46bdcc16-418f-417a-89cf-033d7ae6c8cc.jpg"
+    },
+    {
+      "goalId": "2919b3f3-aca2-5add-beeb-de1b9e0eafd8",
+      "title": "Trigonometrische und ganzrationale Funktionen vergleichen",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/2919b3f3-aca2-5add-beeb-de1b9e0eafd8/2919b3f3-aca2-5add-beeb-de1b9e0eafd8.jpg"
     },
     {
       "goalId": "42b57670-d2be-5da2-be2f-d58055901813",
@@ -2594,12 +2830,28 @@
       "url": "/assets/goal-visualizations/mathematik/759485a9-51c0-4261-af7d-caa3c0e5d68b/759485a9-51c0-4261-af7d-caa3c0e5d68b.jpg"
     },
     {
+      "goalId": "1341c20b-87ab-51e7-bd4a-50166c27806e",
+      "title": "Verknüpfungen von ganzrationalen und Exponentialfunktionen strukturieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1341c20b-87ab-51e7-bd4a-50166c27806e/1341c20b-87ab-51e7-bd4a-50166c27806e.jpg"
+    },
+    {
       "goalId": "09e85220-afc3-5357-b5bc-c4b2c17e85aa",
       "title": "Vermutungen mit Beispielen testen",
       "phase": "Q4",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/09e85220-afc3-5357-b5bc-c4b2c17e85aa/09e85220-afc3-5357-b5bc-c4b2c17e85aa.jpg"
+    },
+    {
+      "goalId": "71f62cfa-7cc2-5f60-9691-bcdc2ee910df",
+      "title": "Vielfachheiten und Graphverhalten aus Linearfaktoren deuten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/71f62cfa-7cc2-5f60-9691-bcdc2ee910df/71f62cfa-7cc2-5f60-9691-bcdc2ee910df.jpg"
     },
     {
       "goalId": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
