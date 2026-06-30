@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-29T23:55:35.838Z
+Generated: 2026-06-30T07:01:55.288Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,12 +18,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 331 |
-| Coverage | 43.9% |
+| Ziele mit primaerem Visualisierungslink | 356 |
+| Coverage | 47.2% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 70 |
+| Review-Ledger-Dateien | 76 |
 | Offene Provider-Deferred-Ziele | 4 |
-| Offene Provider-Quota-Ziele | 0 |
+| Offene Provider-Quota-Ziele | 5 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
@@ -32,20 +32,23 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 331 |
+| `pilot` | 356 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 252 |
-| `accepted_pilot_after_regeneration` | 75 |
+| `accepted_pilot` | 271 |
+| `accepted_pilot_after_regeneration` | 80 |
 | `accepted_pilot_after_second_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 7 |
+| `accepted_pilot_after_third_regeneration` | 1 |
+| `accepted_pilot_after_user_review_correction` | 8 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 5 |
 | `not_attempted_after_quota_block` | 4 |
+| `not_generated_provider_quota` | 1 |
+| `not_requested_provider_quota` | 4 |
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 3 |
 
@@ -53,12 +56,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-070.md` |
-| Latest ledger status | `completed_pilot` |
-| Resume file | `tmp/goal-visualization-batch-070.resume.txt` |
-| Resume file exists | no |
-| Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-070` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-076.md` |
+| Latest ledger status | `completed_partial_provider_quota` |
+| Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
+| Resume file exists | yes |
+| Resume goals | 5 |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -66,7 +69,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.
-- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
+- Im aktuellen Resume stehen 5 Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.
 
 ## Quality Queues
 
@@ -81,7 +84,13 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 ### Open Provider Quota
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 076 | `12a8dffc-dea7-5f2c-b490-2a1a2bb6901b` | Arithmetische und geometrische Reihen untersuchen | `not_generated_provider_quota` |
+| 076 | `09f47964-2cd0-410e-93ee-9632b582fc91` | Funktionsbegriff und Darstellungen verstehen | `not_requested_provider_quota` |
+| 076 | `c65ecabf-d00b-4e2d-99ae-b64692325ffb` | Funktionswerte berechnen | `not_requested_provider_quota` |
+| 076 | `c61af0a9-7d56-5505-a70d-ee097c3b747f` | Grenzwerte von Folgen mit Grenzwertsätzen begründen | `not_requested_provider_quota` |
+| 076 | `1b888f4c-df57-52a9-9551-b2b692e929fa` | Konvergenz und Divergenz von Folgen beschreiben | `not_requested_provider_quota` |
 
 ### Rejected Not Linked
 
@@ -102,6 +111,7 @@ Keine Eintraege.
 | 041 | `fa72cf74-a31e-402e-90d7-422c118f4a5b` | Umgekehrt proportionale Größen mit Hyperbeln beschreiben | `accepted_pilot_after_user_review_correction` |
 | 042 | `11c88ea2-8502-5008-bec2-3e491c75ace4` | Darstellungsformen gerader Körper verknüpfen | `accepted_pilot_after_user_review_correction` |
 | 059 | `0c8c1ae9-135e-4fe5-bf67-e497eb3a9909` | Sinussatz herleiten | `accepted_pilot_after_user_review_correction` |
+| 075 | `eda3a298-4965-525e-878d-f05b9e2d4503` | Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
@@ -113,18 +123,22 @@ Keine Eintraege.
 
 Keine Eintraege.
 
-## Next Command
+## Next Command When Quota Is Available
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6
+npm --prefix app run visualization:generate:nano-banana:batch -- \
+  --file tmp/goal-visualization-batch-076.resume.txt \
+  --continue-on-error \
+  --no-import \
+  --prompt-append-dir=tmp/goal-visualization-prompt-appends/batch-076
 ```
 
-After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-batch-070.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-070`
+- Resume file: `tmp/goal-visualization-batch-076.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-076`
 
