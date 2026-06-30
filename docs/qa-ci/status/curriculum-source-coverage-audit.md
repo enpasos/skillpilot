@@ -8,9 +8,9 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 > Source of truth: `curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json`
 
-Generated: 2026-06-28T06:23:47.007Z
+Generated: 2026-06-30T09:35:54.406Z
 
-This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.
+This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.
 
 `Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` only evaluates the currently visible projection.
 
@@ -46,27 +46,27 @@ Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic go
 
 ## Physik (Gymnasium, DE)
 
-Source-coverage atomic goals: 425
-Global status: 15/16 covered, 1 partial, 0 error.
+Source-coverage atomic goals: 426
+Global status: 0/16 covered, 16 partial, 0 error.
 View status: 16/16 covered, 0 partial, 0 error.
-Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 56.
+Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 72.
 
 | Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 349 | 0 | 0 |
-| DE-HE | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 0 | 0 | 0 |
-| DE-BY | partial | covered | 369/425 (86.8%) | 320 | 49 | 56 | 369 | 369 | 0 | 288 | 0 | 0 |
-| DE-BB | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 423 | 0 | 0 |
-| DE-BE | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 423 | 0 | 0 |
-| DE-NI | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 206 | 0 | 0 |
-| DE-NW | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 369 | 0 | 0 |
-| DE-SH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 256 | 0 | 0 |
-| DE-HB | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 171 | 0 | 0 |
-| DE-HH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 239 | 0 | 0 |
-| DE-MV | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 415 | 0 | 0 |
-| DE-RP | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
-| DE-SL | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 415 | 0 | 0 |
-| DE-SN | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 349 | 0 | 0 |
-| DE-ST | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
-| DE-TH | covered | covered | 425/425 (100%) | 425 | 0 | 0 | 425 | 425 | 0 | 425 | 0 | 0 |
+| DE-BW | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 349 | 0 | 0 |
+| DE-HE | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 0 | 0 | 0 |
+| DE-BY | partial | covered | 369/426 (86.6%) | 320 | 49 | 57 | 369 | 369 | 0 | 288 | 0 | 0 |
+| DE-BB | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 423 | 0 | 0 |
+| DE-BE | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 423 | 0 | 0 |
+| DE-NI | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 206 | 0 | 0 |
+| DE-NW | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 369 | 0 | 0 |
+| DE-SH | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 256 | 0 | 0 |
+| DE-HB | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 171 | 0 | 0 |
+| DE-HH | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 239 | 0 | 0 |
+| DE-MV | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 415 | 0 | 0 |
+| DE-RP | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 425 | 0 | 0 |
+| DE-SL | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 415 | 0 | 0 |
+| DE-SN | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 349 | 0 | 0 |
+| DE-ST | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 425 | 0 | 0 |
+| DE-TH | partial | covered | 425/426 (99.8%) | 425 | 0 | 1 | 425 | 425 | 0 | 425 | 0 | 0 |
 

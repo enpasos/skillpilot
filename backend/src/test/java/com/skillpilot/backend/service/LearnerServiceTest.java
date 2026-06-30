@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
@@ -500,6 +501,57 @@ public class LearnerServiceTest {
                 .doesNotContain("Sek-I-Abschlussaufgaben Mathematik");
     }
 
+    @Test
+    void sequentialAutopilot_prefersNextLocalExamSiblingOverGlobalFrontierOrder() {
+        Map<String, LearningGoal> goals = new HashMap<>();
+        goals.put("ROOT", goal("ROOT", List.of(), List.of("J5_EXAMS", "SEK2")));
+        goals.put("J5_EXAMS", goal("J5_EXAMS", List.of(), List.of("J5_TASK_1", "J5_TASK_2", "J5_TASK_3")));
+        goals.put("J5_TASK_1", goal("J5_TASK_1", List.of(), List.of()));
+        goals.put("J5_TASK_2", goal("J5_TASK_2", List.of(), List.of()));
+        goals.put("J5_TASK_3", goal("J5_TASK_3", List.of(), List.of()));
+        goals.put("SEK2", goal("SEK2", List.of(), List.of("SEK2_TASK")));
+        goals.put("SEK2_TASK", goal("SEK2_TASK", List.of(), List.of()));
+
+        List<FrontierGoal> globalFrontierOrder = List.of(
+                frontierGoal("SEK2_TASK"),
+                frontierGoal("J5_TASK_2"),
+                frontierGoal("J5_TASK_3"));
+
+        FrontierGoal selected = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "findSequentialLocalFrontierGoal",
+                "J5_TASK_1",
+                globalFrontierOrder,
+                goals);
+
+        assertThat(selected).isNotNull();
+        assertThat(selected.id()).isEqualTo("J5_TASK_2");
+    }
+
+    @Test
+    void sequentialAutopilot_doesNotFallBackToGlobalFrontierAfterLocalExamTask() {
+        Learner learner = new Learner();
+        learner.setLearningStrategy("SEQUENTIAL");
+        Map<String, LearningGoal> goals = new HashMap<>();
+        goals.put("ROOT", goal("ROOT", List.of(), List.of("J5_EXAMS", "SEK2")));
+        goals.put("J5_EXAMS", goal("J5_EXAMS", List.of(), List.of("J5_TASK_1", "J5_TASK_2")));
+        goals.put("J5_TASK_1", goal("J5_TASK_1", List.of(), List.of()));
+        goals.put("J5_TASK_2", goal("J5_TASK_2", List.of(), List.of()));
+        goals.put("SEK2", goal("SEK2", List.of(), List.of("SEK2_TASK")));
+        goals.put("SEK2_TASK", goal("SEK2_TASK", List.of(), List.of()));
+
+        FrontierGoal selected = ReflectionTestUtils.invokeMethod(
+                learnerService,
+                "chooseAutopilotFrontierGoal",
+                learner,
+                List.of(frontierGoal("SEK2_TASK")),
+                List.of(frontierGoal("SEK2_TASK")),
+                "J5_TASK_1",
+                goals);
+
+        assertThat(selected).isNull();
+    }
+
     private void completeCurrentScope() {
         completeCurrentScope(50);
     }
@@ -527,5 +579,10 @@ public class LearnerServiceTest {
         g.setRequires(requires == null ? List.of() : new ArrayList<>(requires));
         g.setContains(contains == null ? List.of() : new ArrayList<>(contains));
         return g;
+    }
+
+    private static FrontierGoal frontierGoal(String id) {
+        return new FrontierGoal(id, id, "", "atomic", "exam", "Prerequisites met",
+                List.of(), List.of(), null, null, null, null);
     }
 }

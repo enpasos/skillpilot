@@ -76,7 +76,7 @@ interface SourceCoverageAudit {
   evidencePolicy: {
     sourceBackedEvidenceKinds: Array<'provenance' | 'mapping'>
     surrogateEvidenceKinds: Array<'requires-closure'>
-    nonCoverageEvidenceKinds: Array<'override' | 'child-union' | 'requires-closure'>
+    nonCoverageEvidenceKinds: Array<'override' | 'child-union' | 'requires-closure' | 'assessment-requires'>
   }
   curricula: CurriculumAudit[]
 }
@@ -268,7 +268,7 @@ function renderMarkdown(audit: SourceCoverageAudit): string {
   pushGeneratedMarkdownNotice(lines)
   lines.push(`Generated: ${audit.generatedAt}`)
   lines.push('')
-  lines.push('This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, and automatic `requires-closure` do not count as source coverage.')
+  lines.push('This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.')
   lines.push('')
   lines.push('`Covered` means direct source/mapping evidence plus explicitly accepted surrogate evidence. `Direct` excludes surrogate evidence; `Surrogate-only` is the accepted requires-closure bridge count. `View status` only evaluates the currently visible projection.')
   lines.push('')
@@ -391,7 +391,7 @@ function buildAudit(): SourceCoverageAudit {
     evidencePolicy: {
       sourceBackedEvidenceKinds: ['provenance', 'mapping'],
       surrogateEvidenceKinds: ['requires-closure'],
-      nonCoverageEvidenceKinds: ['override', 'child-union', 'requires-closure'],
+      nonCoverageEvidenceKinds: ['override', 'child-union', 'requires-closure', 'assessment-requires'],
     },
     curricula,
   }

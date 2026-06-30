@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-28T06:23:47.007Z",
+  "generatedAt": "2026-06-30T09:35:54.406Z",
   "generatedBy": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
   "evidencePolicy": {
     "sourceBackedEvidenceKinds": [
@@ -13,7 +13,8 @@
     "nonCoverageEvidenceKinds": [
       "override",
       "child-union",
-      "requires-closure"
+      "requires-closure",
+      "assessment-requires"
     ]
   },
   "curricula": [
@@ -1111,55 +1112,65 @@
       "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
       "title": "Physik (Gymnasium, DE)",
       "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
-      "totalAtomicGoals": 425,
+      "totalAtomicGoals": 426,
       "summary": {
         "jurisdictions": 16,
-        "coveredJurisdictions": 15,
-        "partialJurisdictions": 1,
+        "coveredJurisdictions": 0,
+        "partialJurisdictions": 16,
         "errorJurisdictions": 0,
         "coveredViews": 16,
         "partialViews": 0,
         "errorViews": 0,
         "unsupportedVisibleAtomicGoals": 0,
-        "nonVisibleMissingSourceBackedAtomicGoals": 56
+        "nonVisibleMissingSourceBackedAtomicGoals": 72
       },
       "jurisdictions": [
         {
           "jurisdiction": "DE-BW",
           "labelDe": "Baden-Württemberg",
           "labelEn": "Baden-Wuerttemberg",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 349,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-HE",
           "labelDe": "Hessen",
           "labelEn": "Hesse",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 0,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
@@ -1170,10 +1181,10 @@
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 369,
           "surrogateBackedAtomicGoals": 49,
-          "missingSourceBackedAtomicGoals": 56,
+          "missingSourceBackedAtomicGoals": 57,
           "visibleAtomicGoals": 369,
           "visibleCoveredAtomicGoals": 369,
-          "nonVisibleMissingSourceBackedAtomicGoals": 56,
+          "nonVisibleMissingSourceBackedAtomicGoals": 57,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 288,
           "projectionWarnings": 0,
@@ -1388,6 +1399,10 @@
               "title": "Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben"
             },
             {
+              "goalId": "bfea7a23-1ce1-4a42-badd-1fc9bf30124a",
+              "title": "Masse-Energie-Äquivalenz einordnen"
+            },
+            {
               "goalId": "333ca92b-a92c-46a9-86be-dea8ddbd43e0",
               "title": "Kontinuitätsgleichung, Strömungsgesetze und Reynolds-Zahl einordnen"
             },
@@ -1410,247 +1425,312 @@
           "jurisdiction": "DE-BB",
           "labelDe": "Brandenburg",
           "labelEn": "Brandenburg",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 423,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-BE",
           "labelDe": "Berlin",
           "labelEn": "Berlin",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 423,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-NI",
           "labelDe": "Niedersachsen",
           "labelEn": "Lower Saxony",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 206,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-NW",
           "labelDe": "Nordrhein-Westfalen",
           "labelEn": "North Rhine-Westphalia",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 369,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-SH",
           "labelDe": "Schleswig-Holstein",
           "labelEn": "Schleswig-Holstein",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 256,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-HB",
           "labelDe": "Bremen",
           "labelEn": "Bremen",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 171,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-HH",
           "labelDe": "Hamburg",
           "labelEn": "Hamburg",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 239,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-MV",
           "labelDe": "Mecklenburg-Vorpommern",
           "labelEn": "Mecklenburg-Western Pomerania",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 415,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-RP",
           "labelDe": "Rheinland-Pfalz",
           "labelEn": "Rhineland-Palatinate",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-SL",
           "labelDe": "Saarland",
           "labelEn": "Saarland",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 415,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-SN",
           "labelDe": "Sachsen",
           "labelEn": "Saxony",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 349,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-ST",
           "labelDe": "Sachsen-Anhalt",
           "labelEn": "Saxony-Anhalt",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         },
         {
           "jurisdiction": "DE-TH",
           "labelDe": "Thüringen",
           "labelEn": "Thuringia",
-          "status": "covered",
+          "status": "partial",
           "viewStatus": "covered",
           "sourceBackedAtomicGoals": 425,
           "surrogateBackedAtomicGoals": 0,
-          "missingSourceBackedAtomicGoals": 0,
+          "missingSourceBackedAtomicGoals": 1,
           "visibleAtomicGoals": 425,
           "visibleCoveredAtomicGoals": 425,
-          "nonVisibleMissingSourceBackedAtomicGoals": 0,
+          "nonVisibleMissingSourceBackedAtomicGoals": 1,
           "unsupportedAssignedAtomicGoals": 0,
           "partialSourceLinkedAtomicGoals": 425,
           "projectionWarnings": 0,
           "projectionErrors": 0,
-          "missingSourceBackedAtomicGoalIds": [],
+          "missingSourceBackedAtomicGoalIds": [
+            {
+              "goalId": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+              "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären"
+            }
+          ],
           "unsupportedAssignedAtomicGoalIds": []
         }
       ]

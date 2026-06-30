@@ -57,6 +57,7 @@
         "61684ca7-b725-534f-944b-c7645cea1792",
         "79028c45-90ae-57eb-8016-f5a96af18fa2",
         "a658b54c-94ac-4e9c-93e3-defe1f2508a1",
+        "3df08a2c-0dfb-40e5-9605-8baa6259a08e",
         "8eaa4e45-39fc-50e9-b59f-8a1752f6bebe",
         "052a4cc8-2ccd-5cef-b022-55b554417c4a",
         "47dc2c52-b776-5694-9715-ae98c7c23f85"
@@ -26807,7 +26808,6 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
-          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -26820,6 +26820,88 @@
           "DE-SN",
           "DE-ST",
           "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "3df08a2c-0dfb-40e5-9605-8baa6259a08e",
+      "shortKey": "canonical_physics_by_sek1_mass_energy_bridge",
+      "title": "Bayern Ph10.4 Masse-Energie-Äquivalenz und Kernreaktionen",
+      "titleEn": "Bavaria Ph10.4 Mass-Energy Equivalence and Nuclear Reactions",
+      "description": "Bayern-spezifischer Brückencluster für das Sek-I-Ziel zur Energiefreisetzung bei Alpha-Zerfall und einfachen Kernreaktionen mithilfe der Masse-Energie-Äquivalenz.",
+      "descriptionEn": "Bavaria-specific bridge cluster for the lower-secondary goal on energy release in alpha decay and simple nuclear reactions using mass-energy equivalence.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI",
+        "jurisdiction:DE-BY"
+      ],
+      "contains": [
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "DE-BY.PHYSICS.PH10.4.MASS_ENERGY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "cluster"
+    },
+    {
+      "id": "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2",
+      "shortKey": "canonical_physics_sek1_mass_energy_nuclear_release",
+      "title": "Energiefreisetzung bei Kernreaktionen mit Masse-Energie-Äquivalenz erklären",
+      "titleEn": "Explain Energy Release in Nuclear Reactions Using Mass-Energy Equivalence",
+      "description": "Die lernende Person kann mithilfe der Masse-Energie-Äquivalenz die Energiefreisetzung beim Alpha-Zerfall und bei einfachen Kernreaktionen qualitativ erklären.",
+      "descriptionEn": "The learner can qualitatively explain energy release in alpha decay and simple nuclear reactions using mass-energy equivalence.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [
+        "cb0426b0-a973-5660-b6fe-79407934730f"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.NUCLEAR.MASS_ENERGY"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
         ]
       },
       "type": "atomic"
@@ -26957,7 +27039,8 @@
       },
       "requires": [],
       "contains": [
-        "3631c8f7-ff48-57ff-b7ee-8397ff1d166a"
+        "3631c8f7-ff48-57ff-b7ee-8397ff1d166a",
+        "a77138b8-3924-4a17-a22e-d2625ab19bd6"
       ],
       "examples": [],
       "applicability": {
@@ -26965,6 +27048,7 @@
           "DE-BB",
           "DE-BE",
           "DE-BW",
+          "DE-BY",
           "DE-HB",
           "DE-HE",
           "DE-HH",
@@ -27230,6 +27314,96 @@
               "id": "s4",
               "points": 6,
               "description": "Anwendungssituation physikalisch begruendet bewertet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a77138b8-3924-4a17-a22e-d2625ab19bd6",
+      "shortKey": "canonical_physics_by_sek1_mass_energy_practice",
+      "title": "Bayern Ph10.4-Aufgabe zur Energiefreisetzung bei Kernreaktionen lösen",
+      "titleEn": "Solve a Bavaria Ph10.4 Task on Energy Release in Nuclear Reactions",
+      "description": "Die lernende Person kann eine prüfungsnahe Aufgabe zur Energiefreisetzung beim Alpha-Zerfall und bei einfachen Kernreaktionen mithilfe der Masse-Energie-Äquivalenz selbstständig bearbeiten.",
+      "descriptionEn": "The learner can independently solve an exam-like task on energy release in alpha decay and simple nuclear reactions using mass-energy equivalence.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI",
+        "jurisdiction:DE-BY"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB3",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK4_KOMMUNIZIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "phase": "GLOBAL",
+        "area": "Atom- und Kernphysik",
+        "topicCode": "DE-BY.PHYSICS.PH10.4.MASS_ENERGY.PRACTICE"
+      },
+      "requires": [
+        "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "7d78da7f-6af5-440a-9d6b-6cab4bee8dd2"
+        ],
+        "coveredStrands": [
+          "LI_ENERGIE",
+          "LI_MATERIE"
+        ],
+        "demandLevels": [
+          "AB2",
+          "AB3"
+        ],
+        "taskContent": "**Kontext:**\n\nBei einem Alpha-Zerfall ist die Masse der Ausgangsteilchen geringfügig größer als die Masse der entstehenden Teilchen. Die Massendifferenz wird als Energie frei.\n\n**Aufgaben:**\n\n1. Beschreiben Sie am Beispiel des Alpha-Zerfalls, welche Teilchen vor und nach dem Zerfall betrachtet werden. (4 BE)\n2. Erklären Sie qualitativ mit der Beziehung E = mc², warum eine kleine Massendifferenz zu frei werdender Energie führt. (6 BE)\n3. Übertragen Sie die Erklärung auf eine einfache Kernreaktion, bei der die Gesamtmasse der Produkte kleiner ist als die Gesamtmasse der Edukte. (5 BE)\n4. Prüfen Sie, warum dieses Modell eine Energiefreisetzung erklärt, aber ohne zusätzliche Daten keine genaue Energiebilanz liefert. (5 BE)",
+        "solutionContent": "Eine vollständige Lösung benennt Ausgangs- und Endteilchen beim Alpha-Zerfall, deutet die Massendifferenz als Energieäquivalent nach E = mc², überträgt diese qualitative Argumentation auf eine einfache Kernreaktion mit kleinerer Produktmasse und beschreibt die Modellgrenze: Ohne konkrete Massenwerte, Bindungsenergien oder Zerfallsdaten ist nur eine qualitative Energiefreisetzung begründbar.",
+        "scoring": {
+          "maxPoints": 20,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "s1",
+              "points": 4,
+              "description": "Teilchen und Massensituation beim Alpha-Zerfall fachlich passend beschrieben"
+            },
+            {
+              "id": "s2",
+              "points": 6,
+              "description": "Massendifferenz mithilfe der Masse-Energie-Äquivalenz qualitativ als Energiefreisetzung erklärt"
+            },
+            {
+              "id": "s3",
+              "points": 5,
+              "description": "Argumentation auf eine einfache Kernreaktion übertragen"
+            },
+            {
+              "id": "s4",
+              "points": 5,
+              "description": "Aussagekraft und Grenzen des qualitativen Modells geprüft"
             }
           ]
         }
