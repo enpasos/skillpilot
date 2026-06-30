@@ -9,9 +9,9 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: rejected_removed
-- Quellbild: entfernt am 2026-06-30
-- Public Asset: entfernt am 2026-06-30
+- Status: pilot
+- Quellbild: `1ce8af38-082a-477b-af48-b924c92761bf.jpg`
+- Public Asset: `/assets/goal-visualizations/mathematik/1ce8af38-082a-477b-af48-b924c92761bf/1ce8af38-082a-477b-af48-b924c92761bf.jpg`
 
 ## Prompt
 
@@ -29,11 +29,8 @@ Rahmen:
 
 Titel: Ganzrationale Funktionen über Term und Graph beschreiben
 Beschreibung: Die lernende Person kann ganzrationale Funktionen in einfachen Fällen über Funktionsterm, Graph und charakteristische Verläufe beschreiben.
-
-Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic about describing polynomial functions using both term and graph. Use one simple example: f(x)=x^3-3x. Show its graph schematically with zeros at -sqrt(3), 0, sqrt(3), turning points marked approximately, and end behavior left down/right up. Add labels: "Term", "Graph", "Nullstellen", "Extrempunkte", "Randverhalten". Add a caution note: "Ein Graph liefert Hinweise; der Term muss geprueft werden." Avoid claiming a unique exact term from a rough graph alone.
 ```
 
 ## Review-Notiz
 
-Dieses Asset wurde nach fachlichem Re-Review am 2026-06-30 aus dem aktiven Lernziel entfernt: Die Beschriftung `Extrempunkte` zeigte visuell auf Nullstellen/Root-Marker, und die Randverhalten-Anmerkung war missverstaendlich als lokales Graphmerkmal lesbar. Eine neue Version darf erst nach fachlicher Kontrolle von Nullstellen, Extrempunkten und Randverhalten wieder importiert werden.
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
