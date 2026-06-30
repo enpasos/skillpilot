@@ -4,6 +4,18 @@
   "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
   "quickViewPath": "docs/dev/canonical-gymnasium-physics-bundeslaender-status.md",
   "renderCommand": "python3 scripts/render_canonical_physics_bundesland_status.py",
+  "atomicCountPolicy": {
+    "referenceJurisdiction": "DE-HE",
+    "referenceLabel": "Hessen",
+    "tolerancePercent": 20,
+    "cutoverGate": {
+      "enabled": true,
+      "fallbackPhase": "P5",
+      "fallbackSourceStage": "subtree_adopted",
+      "partialFailurePriority": "next_wave",
+      "fullFailurePriority": "active"
+    }
+  },
   "phaseScale": [
     {
       "id": "P0",

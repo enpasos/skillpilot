@@ -2,12 +2,28 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+interface RuntimeIndexBuildConfig {
+  label: string
+  sourceIndexPath: string
+  assetFilePattern: RegExp
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
-const sourceIndexPath = 'app/src/data/goal-source-rationales-math-public.json'
 const buildAssetsDir = 'backend/src/main/resources/static/assets'
-const assetFilePattern = /^goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json$/u
+const runtimeIndexes: RuntimeIndexBuildConfig[] = [
+  {
+    label: 'Mathematik',
+    sourceIndexPath: 'app/src/data/goal-source-rationales-math-public.json',
+    assetFilePattern: /^goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json$/u,
+  },
+  {
+    label: 'Physik',
+    sourceIndexPath: 'app/src/data/goal-source-rationales-physics-public.json',
+    assetFilePattern: /^goal-source-rationales-physics-public-[A-Za-z0-9_-]+\.json$/u,
+  },
+]
 
 function absolutePath(repoPath: string): string {
   return resolve(repoRoot, repoPath)
@@ -41,19 +57,28 @@ if (!existsSync(absoluteAssetsDir)) {
   failures.push(`${buildAssetsDir}: missing build assets directory; run npm run build first`)
 }
 
-if (!existsSync(absolutePath(sourceIndexPath))) {
-  failures.push(`${sourceIndexPath}: missing source-rationale source index`)
-}
+runtimeIndexes.forEach((config) => {
+  if (!existsSync(absolutePath(config.sourceIndexPath))) {
+    failures.push(`${config.sourceIndexPath}: missing source-rationale source index`)
+  }
+})
 
 if (failures.length === 0) {
-  const assetFiles = readdirSync(absoluteAssetsDir)
-    .filter((fileName) => assetFilePattern.test(fileName))
-    .sort((left, right) => left.localeCompare(right, 'en'))
+  const builtJsFiles = collectBuiltJsFiles(absoluteAssetsDir)
 
-  if (assetFiles.length !== 1) {
-    failures.push(`${buildAssetsDir}: expected exactly one built goal-source-rationale JSON asset, found ${assetFiles.length}`)
-  } else {
-    const sourceIndex = readJson(sourceIndexPath)
+  runtimeIndexes.forEach((config) => {
+    const assetFiles = readdirSync(absoluteAssetsDir)
+      .filter((fileName) => config.assetFilePattern.test(fileName))
+      .sort((left, right) => left.localeCompare(right, 'en'))
+
+    if (assetFiles.length !== 1) {
+      failures.push(
+        `${buildAssetsDir}: expected exactly one built ${config.label} goal-source-rationale JSON asset, found ${assetFiles.length}`,
+      )
+      return
+    }
+
+    const sourceIndex = readJson(config.sourceIndexPath)
     const builtAssetPath = `${buildAssetsDir}/${assetFiles[0]}`
     const builtIndex = readJson(builtAssetPath)
 
@@ -63,21 +88,21 @@ if (failures.length === 0) {
     const builtSummary = JSON.stringify(asRecord(builtIndex.summary))
 
     if (sourceItems.length !== builtItems.length) {
-      failures.push(`${builtAssetPath}: item count differs from ${sourceIndexPath}`)
+      failures.push(`${builtAssetPath}: item count differs from ${config.sourceIndexPath}`)
     }
     if (sourceSummary !== builtSummary) {
-      failures.push(`${builtAssetPath}: summary differs from ${sourceIndexPath}`)
+      failures.push(`${builtAssetPath}: summary differs from ${config.sourceIndexPath}`)
     }
 
     const publicAssetPath = `/assets/${assetFiles[0]}`
-    const jsReferenceCount = collectBuiltJsFiles(absoluteAssetsDir)
+    const jsReferenceCount = builtJsFiles
       .filter((filePath) => readFileSync(filePath, 'utf8').includes(publicAssetPath))
       .length
 
     if (jsReferenceCount === 0) {
       failures.push(`${buildAssetsDir}: no built JS file references ${publicAssetPath}`)
     }
-  }
+  })
 }
 
 if (failures.length > 0) {

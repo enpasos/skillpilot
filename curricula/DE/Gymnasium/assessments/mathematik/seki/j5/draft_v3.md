@@ -1,6 +1,6 @@
 # J5 Mathematics Exam Draft v3
 
-Status: release candidate draft after external review
+Status: release candidate draft after external review and post-release context correction
 
 Time: 45 minutes
 
@@ -10,19 +10,19 @@ Total: 30 BE
 
 ---
 
-## Task 1 - Materiallager der Schule (6 BE)
+## Task 1 - Material fuer das Schulfest (6 BE)
 
-Im Materiallager werden neue Dinge für Projekttage gezählt.
+Für eine Spielestation beim Schulfest bereitet eine Klasse Material vor.
 
-| Lieferung | Anzahl |
+| Material | Anzahl |
 | --- | ---: |
-| 4 Kartons mit je 125 Heften | |
-| 6 Kartons mit je 48 Stiften | |
-| 75 einzelne Karteikarten | |
+| 4 Packungen mit je 125 Aufgabenkarten | |
+| 6 Beutel mit je 48 Spielchips | |
+| 75 einzelne Gewinnkarten | |
 
-1. Berechne die Gesamtzahl der gelieferten Dinge. Zeige dabei einen Rechenvorteil. (3 BE)
+1. Berechne die Gesamtzahl der vorbereiteten Materialteile. Zeige dabei einen Rechenvorteil. (3 BE)
 2. Runde dein Ergebnis auf Hunderter und ordne die drei Zahlen $750$, dein Ergebnis und $900$ der Größe nach. (1 BE)
-3. Die letzte Inventarnummer der Lieferung ist dein Ergebnis aus Teil 1. Erkläre, warum es trotzdem keine größte mögliche Inventarnummer gibt. (2 BE)
+3. Nach dem Ordnen sagt Lea: "$900$ ist die größte Zahl." Erkläre, warum das nur für die drei Zahlen aus Teil 2 stimmt, aber nicht für die natürlichen Zahlen insgesamt. (2 BE)
 
 ---
 

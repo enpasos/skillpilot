@@ -138,6 +138,25 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   },
   {
     artifactPaths: [
+      'app/src/data/goal-source-rationales-math-public.json',
+      'app/public/data/goal-source-rationales-math-public.json',
+      'app/src/data/goal-source-rationales-physics-public.json',
+      'app/public/data/goal-source-rationales-physics-public.json',
+    ],
+    generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
+    role: 'Public runtime source-rationale indexes that let the cockpit trace canonical Mathematik and Physik goals back to reviewed source bullets.',
+    sourceOfTruth: [
+      'app/scripts/generateGoalSourceRationales.ts',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
+      'curricula/DE/Gymnasium/mapping/',
+      'curricula/DE/Gymnasium/input/',
+      'curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-source-rationales:public',
+  },
+  {
+    artifactPaths: [
       'docs/qa-ci/status/goal-source-rationale-coverage.md',
       'docs/qa-ci/status/goal-source-rationale-coverage.json',
     ],

@@ -84,7 +84,7 @@ def render() -> str:
     lines.append("This file is generated from:")
     lines.append("")
     lines.append(f"- `{MANIFEST_PATH.relative_to(REPO_ROOT)}`")
-    lines.append(f"- `{Path(__file__).relative_to(REPO_ROOT)}`")
+    lines.append(f"- `{Path(__file__).resolve().relative_to(REPO_ROOT)}`")
     lines.append("")
     lines.append("## Headline")
     lines.append("")

@@ -1,23 +1,23 @@
 # J5 Mathematics Exam Solution Draft v3
 
-Status: release candidate solution after external review
+Status: release candidate solution after external review and post-release context correction
 
 Total: 30 BE
 
 ---
 
-## Task 1 - Materiallager der Schule (6 BE)
+## Task 1 - Material fuer das Schulfest (6 BE)
 
 1. $4 \cdot 125 = 500$, $6 \cdot 48 = 288$, also $500 + 288 + 75 = 863$. Ein Rechenvorteil ist zum Beispiel, zuerst $4 \cdot 125 = 500$ zu nutzen. (3 BE)
 2. Auf Hunderter gerundet: $863 ≈ 900$. Ordnung: $750 < 863 < 900$. (1 BE)
-3. Inventarnummern können immer fortgesetzt werden, weil man zu jeder natürlichen Zahl noch $1$ addieren kann. Deshalb gibt es keine größte natürliche Zahl und keine grundsätzlich größte mögliche Inventarnummer. (2 BE)
+3. $900$ ist nur die größte Zahl in dieser endlichen Liste. Bei den natürlichen Zahlen kann man zu jeder Zahl noch $1$ addieren, zum Beispiel $900 + 1 = 901$. Deshalb gibt es keine größte natürliche Zahl. (2 BE)
 
 Scoring notes:
 
 - Rechenweg und Ergebnis: 2 BE
 - sinnvoller Rechenvorteil: 1 BE
 - Runden und Ordnen: 1 BE
-- Begründung zur Fortsetzbarkeit: 2 BE
+- Begründung zum Unterschied zwischen größter Zahl in einer endlichen Liste und unbegrenzter Fortsetzbarkeit natürlicher Zahlen: 2 BE
 
 ---
 

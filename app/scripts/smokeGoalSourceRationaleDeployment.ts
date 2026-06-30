@@ -1,14 +1,36 @@
 const defaultBaseUrl = 'https://skillpilot.com'
 
-const sourceRationaleAssetPattern = /\/assets\/goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json/u
+const sourceRationaleAssetPattern = /\/assets\/goal-source-rationales-(math|physics)-public-[A-Za-z0-9_-]+\.json/gu
 const legacySourceRationalePathPattern = /\/data\/goal-source-rationales-[A-Za-z0-9._-]+\.json/gu
 const jsAssetPattern = /(?:src=|url:)"?\/?(assets\/[^"')]+\.js)/gu
-const minimumItemCount = 600
 
-const requiredMemPocGoals = [
-  'a075ae99-7669-563d-807a-f91b119c020a',
-  '09f47964-2cd0-410e-93ee-9632b582fc91',
-  'b1dcc191-d046-50de-984a-ee5c17157628',
+interface RuntimePayloadConfig {
+  id: 'math' | 'physics'
+  label: string
+  jurisdiction: string
+  minimumItemCount: number
+  requiredMemPocGoals: string[]
+}
+
+const runtimePayloads: RuntimePayloadConfig[] = [
+  {
+    id: 'math',
+    label: 'Mathematik',
+    jurisdiction: 'DE-BY',
+    minimumItemCount: 600,
+    requiredMemPocGoals: [
+      'a075ae99-7669-563d-807a-f91b119c020a',
+      '09f47964-2cd0-410e-93ee-9632b582fc91',
+      'b1dcc191-d046-50de-984a-ee5c17157628',
+    ],
+  },
+  {
+    id: 'physics',
+    label: 'Physik',
+    jurisdiction: 'DE-HE',
+    minimumItemCount: 350,
+    requiredMemPocGoals: [],
+  },
 ]
 
 interface Options {
@@ -16,7 +38,7 @@ interface Options {
 }
 
 interface AssetSearchResult {
-  assetPath: string | null
+  assetPathsById: Map<RuntimePayloadConfig['id'], string>
   scannedJsAssetCount: number
   legacyDataPaths: string[]
 }
@@ -73,6 +95,7 @@ function asRecord(value: unknown): Record<string, unknown> {
 function collectJsAssetPaths(text: string): string[] {
   const result = new Set<string>()
   let match: RegExpExecArray | null
+  jsAssetPattern.lastIndex = 0
   while ((match = jsAssetPattern.exec(text)) !== null) {
     const assetPath = match[1]
     if (assetPath) result.add(`/${assetPath}`)
@@ -80,14 +103,24 @@ function collectJsAssetPaths(text: string): string[] {
   return [...result].sort((left, right) => left.localeCompare(right, 'en'))
 }
 
-function findSourceRationaleAssetPath(text: string): string | null {
-  const match = sourceRationaleAssetPattern.exec(text)
-  return match?.[0] ?? null
+function collectSourceRationaleAssetPaths(text: string): Map<RuntimePayloadConfig['id'], string> {
+  const result = new Map<RuntimePayloadConfig['id'], string>()
+  sourceRationaleAssetPattern.lastIndex = 0
+  const matches = text.matchAll(sourceRationaleAssetPattern)
+  for (const match of matches) {
+    const id = match[1]
+    const path = match[0]
+    if ((id === 'math' || id === 'physics') && path) {
+      result.set(id, path)
+    }
+  }
+  return result
 }
 
 function collectLegacySourceRationalePaths(text: string): string[] {
   const result = new Set<string>()
   let match: RegExpExecArray | null
+  legacySourceRationalePathPattern.lastIndex = 0
   while ((match = legacySourceRationalePathPattern.exec(text)) !== null) {
     const legacyPath = match[0]
     if (legacyPath) result.add(legacyPath)
@@ -109,17 +142,23 @@ async function fetchStatus(url: string): Promise<number | string> {
   }
 }
 
-async function findSourceRationaleAsset(baseUrl: string, seedTexts: string[]): Promise<AssetSearchResult> {
-  const legacyDataPaths = new Set(seedTexts.flatMap(collectLegacySourceRationalePaths))
+function hasAllRequiredAssets(assetPathsById: Map<RuntimePayloadConfig['id'], string>): boolean {
+  return runtimePayloads.every((config) => assetPathsById.has(config.id))
+}
 
-  for (const text of seedTexts) {
-    const directMatch = findSourceRationaleAssetPath(text)
-    if (directMatch !== null) {
-      return {
-        assetPath: directMatch,
-        scannedJsAssetCount: 0,
-        legacyDataPaths: [...legacyDataPaths],
-      }
+async function findSourceRationaleAssets(baseUrl: string, seedTexts: string[]): Promise<AssetSearchResult> {
+  const legacyDataPaths = new Set(seedTexts.flatMap(collectLegacySourceRationalePaths))
+  const assetPathsById = new Map<RuntimePayloadConfig['id'], string>()
+
+  seedTexts.forEach((text) => {
+    collectSourceRationaleAssetPaths(text).forEach((path, id) => assetPathsById.set(id, path))
+  })
+
+  if (hasAllRequiredAssets(assetPathsById)) {
+    return {
+      assetPathsById,
+      scannedJsAssetCount: 0,
+      legacyDataPaths: [...legacyDataPaths],
     }
   }
 
@@ -129,40 +168,34 @@ async function findSourceRationaleAsset(baseUrl: string, seedTexts: string[]): P
     const jsText = await fetchText(urlFor(baseUrl, jsAssetPath))
     scannedJsAssetCount += 1
     collectLegacySourceRationalePaths(jsText).forEach((legacyPath) => legacyDataPaths.add(legacyPath))
-    const match = findSourceRationaleAssetPath(jsText)
-    if (match !== null) {
-      return {
-        assetPath: match,
-        scannedJsAssetCount,
-        legacyDataPaths: [...legacyDataPaths],
-      }
-    }
+    collectSourceRationaleAssetPaths(jsText).forEach((path, id) => assetPathsById.set(id, path))
+    if (hasAllRequiredAssets(assetPathsById)) break
   }
 
   return {
-    assetPath: null,
+    assetPathsById,
     scannedJsAssetCount,
     legacyDataPaths: [...legacyDataPaths],
   }
 }
 
-function validatePayload(payload: Record<string, unknown>): string[] {
+function validatePayload(config: RuntimePayloadConfig, payload: Record<string, unknown>): string[] {
   const failures: string[] = []
   const request = asRecord(payload.request)
   const summary = asRecord(payload.summary)
   const items = Array.isArray(payload.items) ? payload.items.map(asRecord) : []
 
-  if (request.jurisdiction !== 'DE-BY') {
-    failures.push('runtime index does not keep DE-BY as the MEM/FWU comparison preference')
+  if (request.jurisdiction !== config.jurisdiction) {
+    failures.push(`${config.label}: runtime index must use ${config.jurisdiction} as the source-route preference`)
   }
   if (request.goalSelection !== 'source-backed-relevant-leaves') {
-    failures.push('runtime index was not generated with source-backed relevant leaf goal selection')
+    failures.push(`${config.label}: runtime index was not generated with source-backed relevant leaf goal selection`)
   }
-  if (items.length < minimumItemCount) {
-    failures.push(`runtime index has only ${items.length} items; expected at least ${minimumItemCount}`)
+  if (items.length < config.minimumItemCount) {
+    failures.push(`${config.label}: runtime index has only ${items.length} items; expected at least ${config.minimumItemCount}`)
   }
   if (summary.goalsWithoutClassicSourceRoute !== 0) {
-    failures.push('runtime index contains classic source gaps')
+    failures.push(`${config.label}: runtime index contains classic source gaps`)
   }
 
   const itemsByGoalId = new Map<string, Record<string, unknown>>()
@@ -171,17 +204,17 @@ function validatePayload(payload: Record<string, unknown>): string[] {
     if (typeof goalId === 'string') itemsByGoalId.set(goalId, item)
   })
 
-  requiredMemPocGoals.forEach((goalId) => {
+  config.requiredMemPocGoals.forEach((goalId) => {
     const item = itemsByGoalId.get(goalId)
     if (!item) {
-      failures.push(`runtime index misses required MEM/FWU PoC goal ${goalId}`)
+      failures.push(`${config.label}: runtime index misses required MEM/FWU PoC goal ${goalId}`)
       return
     }
     if (item.sourceRationaleStatus !== 'classic_source_reviewed') {
-      failures.push(`${goalId}: classic source route is not reviewed`)
+      failures.push(`${config.label}: ${goalId}: classic source route is not reviewed`)
     }
     if (asRecord(item.memSparqlRoute).status !== 'mem_sparql_consistent') {
-      failures.push(`${goalId}: MEM/FWU route is not consistent`)
+      failures.push(`${config.label}: ${goalId}: MEM/FWU route is not consistent`)
     }
   })
 
@@ -198,10 +231,11 @@ async function main(): Promise<void> {
     serviceWorker = ''
   }
 
-  const searchResult = await findSourceRationaleAsset(options.baseUrl, [indexHtml, serviceWorker])
-  if (searchResult.assetPath === null) {
+  const searchResult = await findSourceRationaleAssets(options.baseUrl, [indexHtml, serviceWorker])
+  const missingConfigs = runtimePayloads.filter((config) => !searchResult.assetPathsById.has(config.id))
+  if (missingConfigs.length > 0) {
     const details = [
-      `${options.baseUrl}: no built goal-source-rationale JSON asset found in deployed JS assets`,
+      `${options.baseUrl}: missing built goal-source-rationale JSON asset(s): ${missingConfigs.map((config) => config.label).join(', ')}`,
       `scanned JS assets: ${searchResult.scannedJsAssetCount}`,
     ]
     if (searchResult.legacyDataPaths.length > 0) {
@@ -215,14 +249,21 @@ async function main(): Promise<void> {
     throw new Error(details.join('\n'))
   }
 
-  const payload = await fetchJson(urlFor(options.baseUrl, searchResult.assetPath))
-  const failures = validatePayload(payload)
-  if (failures.length > 0) {
-    throw new Error(failures.join('\n'))
+  const resultLines: string[] = []
+  for (const config of runtimePayloads) {
+    const assetPath = searchResult.assetPathsById.get(config.id)
+    if (!assetPath) continue
+    const payload = await fetchJson(urlFor(options.baseUrl, assetPath))
+    const failures = validatePayload(config, payload)
+    if (failures.length > 0) {
+      throw new Error(failures.join('\n'))
+    }
+
+    const items = Array.isArray(payload.items) ? payload.items.length : 0
+    resultLines.push(`${config.label} ${urlFor(options.baseUrl, assetPath)} items=${items}`)
   }
 
-  const items = Array.isArray(payload.items) ? payload.items.length : 0
-  console.log(`Deployment smoke check passed: ${urlFor(options.baseUrl, searchResult.assetPath)} items=${items}`)
+  console.log(`Deployment smoke check passed: ${resultLines.join('; ')}`)
 }
 
 main().catch((error: unknown) => {

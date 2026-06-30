@@ -11,8 +11,11 @@ Candidate files:
 - external review: `external_review.md`
 - findings: `findings.md`
 - re-QA: `re_qa.md`
+- post-release correction: `finding_resolution_v3.md`, `re_qa_v3.md`
 
 Decision date: 2026-06-28
+
+Post-release correction date: 2026-06-30
 
 Decision:
 
@@ -37,5 +40,7 @@ Decision:
 ## Promotion Notes
 
 The Markdown package is approved as the J5 release candidate and has been promoted into the canonical curriculum graph.
+
+Post-release finding `J5-REV-03` replaced the Task 1 inventory-number context with a school-festival material context and a finite-list-vs-natural-numbers reasoning prompt. Point totals, covered goals, and assessment placement stayed unchanged.
 
 The existing year-level exam nodes under `Prüfungen Jahrgangsstufe 5` were updated. Each final exam task node received only the prerequisites and `examData.coveredGoalIds` that the task actually assesses; the full year coverage was not bulk-copied onto every task.

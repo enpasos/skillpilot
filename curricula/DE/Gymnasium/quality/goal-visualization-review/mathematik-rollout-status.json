@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-30T07:01:55.288Z",
+  "generatedAt": "2026-06-30T07:59:21.655Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -20,7 +20,7 @@
     "linkedVisualizationReviewStatuses": {
       "pilot": 356
     },
-    "reviewLedgerFiles": 76,
+    "reviewLedgerFiles": 77,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
       "accepted_pilot": 271,
@@ -34,7 +34,7 @@
       "not_generated_provider_quota": 1,
       "not_requested_provider_quota": 4,
       "rejected_after_user_review_replaced": 1,
-      "rejected_not_linked": 3
+      "rejected_not_linked": 4
     },
     "openProviderDeferredGoals": 4,
     "openProviderQuotaGoals": 5,
@@ -43,8 +43,8 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-076.md",
-    "latestLedgerStatus": "completed_partial_provider_quota",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-077.md",
+    "latestLedgerStatus": "completed_context_visualization_removed",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": true,
     "resumeGoalIds": [
@@ -147,6 +147,13 @@
         "title": "Sinus- und Kosinuswerte für Winkel größer als 2π und für negative Winkel auf den Grundbereich zurückführen",
         "decision": "rejected_not_linked",
         "notes": "The first correction candidate covered the full circle but used several green arrowheads, making the direction ambiguous. It was not imported."
+      },
+      {
+        "batch": "077",
+        "goalId": "311ab2f2-3364-5166-ac22-3ef01419fee4",
+        "title": "Aufgabe 1 (Jahrgangsstufe 5, 6 BE)",
+        "decision": "rejected_not_linked",
+        "notes": "Previous visualization belonged to the obsolete inventory-number framing. The active link and published copies were removed; regenerate only after the revised school-festival task is reviewed."
       }
     ],
     "userReviewCorrections": [
