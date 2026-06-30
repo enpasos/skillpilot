@@ -29,7 +29,14 @@ type FindingCode =
   | 'APV-202'
   | 'APV-203'
 
-type EvidenceKind = 'provenance' | 'mapping' | 'override' | 'child-union' | 'requires-closure' | 'memory-review-origin'
+type EvidenceKind =
+  | 'provenance'
+  | 'mapping'
+  | 'override'
+  | 'child-union'
+  | 'requires-closure'
+  | 'memory-review-origin'
+  | 'assessment-requires'
 
 interface GoalMappingEntry {
   legacyGoalId?: string
@@ -273,9 +280,25 @@ function isMemoryGoal(goal: LearningGoal): boolean {
     || tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
+function isPracticeOrAssessmentGoal(goal: LearningGoal): boolean {
+  const tags = goal.tags ?? []
+  return tags.includes('Practice') || tags.includes('Assessment') || goal.examData !== undefined
+}
+
 function isApplicabilityProjectionExcluded(goal: LearningGoal): boolean {
   if (!goal.extendedData || typeof goal.extendedData !== 'object') return false
   return (goal.extendedData as Record<string, unknown>).applicabilityProjection === 'excluded'
+}
+
+function isApplicabilityMappingInheritanceBoundary(goal: LearningGoal): boolean {
+  if (!goal.extendedData || typeof goal.extendedData !== 'object') return false
+  return (goal.extendedData as Record<string, unknown>).applicabilityMappingInheritance === 'boundary'
+}
+
+function isApplicabilityFromRequiresEnabled(goal: LearningGoal): boolean {
+  if (!isPracticeOrAssessmentGoal(goal)) return false
+  if (!goal.extendedData || typeof goal.extendedData !== 'object') return false
+  return (goal.extendedData as Record<string, unknown>).applicabilityFromRequires === true
 }
 
 function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
@@ -823,15 +846,17 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
         .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false)
     }
 
-    const atomicDescendantKeysByGoalKey = new Map<string, Set<string>>()
+    const inheritedMappingAtomicDescendantKeysByTraversalKey = new Map<string, Set<string>>()
 
-    const getAtomicDescendantKeys = (
+    const getInheritedMappingAtomicDescendantKeys = (
       landscapeId: string,
       goalId: string,
+      targetKey = goalKey(landscapeId, goalId),
       visiting = new Set<string>(),
     ): Set<string> => {
       const key = goalKey(landscapeId, goalId)
-      const cached = atomicDescendantKeysByGoalKey.get(key)
+      const cacheKey = `${targetKey}|${key}`
+      const cached = inheritedMappingAtomicDescendantKeysByTraversalKey.get(cacheKey)
       if (cached) return cached
       if (visiting.has(key)) return new Set()
       visiting.add(key)
@@ -840,19 +865,19 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
       const goal = sourceLandscape?.goalById.get(goalId)
       const descendants = new Set<string>()
 
-      if (goal) {
+      if (goal && !(key !== targetKey && isApplicabilityMappingInheritanceBoundary(goal))) {
         if (isAtomicGoal(goal) && !isMemoryGoal(goal)) {
           descendants.add(key)
         } else {
           for (const childRef of getGoalChildRefs(sourceLandscape, landscapeId, goal)) {
-            getAtomicDescendantKeys(childRef.landscapeId, childRef.goalId, visiting)
+            getInheritedMappingAtomicDescendantKeys(childRef.landscapeId, childRef.goalId, targetKey, visiting)
               .forEach((descendantKey) => descendants.add(descendantKey))
           }
         }
       }
 
       visiting.delete(key)
-      atomicDescendantKeysByGoalKey.set(key, descendants)
+      inheritedMappingAtomicDescendantKeysByTraversalKey.set(cacheKey, descendants)
       return descendants
     }
 
@@ -884,7 +909,7 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
 
         const targetGoal = canonicalLandscapeById.get(landscapeId)?.goalById.get(targetGoalId)
         if (!targetGoal || isAtomicGoal(targetGoal)) continue
-        if (getAtomicDescendantKeys(landscapeId, targetGoalId).has(atomicGoalKey)) {
+        if (getInheritedMappingAtomicDescendantKeys(landscapeId, targetGoalId).has(atomicGoalKey)) {
           addReferences(targetGoalId, files)
         }
       }
@@ -1119,6 +1144,24 @@ export function buildApplicabilityCompilation(): ApplicabilityCompilationResult 
             kind: 'memory-review-origin',
             source: `${reference.reviewId}:${reference.originGoalId} (${reference.reviewPath})`,
           })
+        }
+      }
+
+      if (isApplicabilityFromRequiresEnabled(goal)) {
+        for (const rawReq of goal.requires ?? []) {
+          const req = resolveCanonicalReference(rawReq, landscapeId)
+          const requiredApplicability = compileGoal(req.landscapeId, req.goalId, visiting)
+          for (const rawValue of requiredApplicability[SUPPORTED_DIMENSION] ?? []) {
+            const jurisdiction = normalizeJurisdictionCode(rawValue)
+            if (!jurisdiction || !isSupportedJurisdiction(jurisdiction)) continue
+            jurisdictions.add(jurisdiction)
+            evidence.push({
+              dimension: SUPPORTED_DIMENSION,
+              value: jurisdiction,
+              kind: 'assessment-requires',
+              source: `requires ${req.goalId}`,
+            })
+          }
         }
       }
 

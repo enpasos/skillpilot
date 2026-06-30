@@ -74,7 +74,7 @@ Operational gate: out-of-corridor states are capped at `P5` / `subtree_adopted`.
 
 | State | Sek I | Sek II (GK) | Sek II (LK) | Corridor | Detail |
 | --- | ---: | ---: | ---: | --- | --- |
-| `DE-BY` Bayern | `92` (`GK 91` / `LK 92`) | `154` | `207` | `out` | Sek I high, Sek II (GK) low, Sek II (LK) low, Sek I GK/LK mismatch (91 vs 92) |
+| `DE-BY` Bayern | `92` | `154` | `207` | `out` | Sek I high, Sek II (GK) low, Sek II (LK) low |
 | `DE-BW` Baden-Wuerttemberg | `95` | `81` | `117` | `out` | Sek I high, Sek II (GK) low, Sek II (LK) low |
 | `DE-HE` Hessen | `63` | `267` | `334` | `reference` | reference lane `Hessen` |
 | `DE-BB` Brandenburg | `63` | `267` | `334` | `ok` | all stage counts within Hessen corridor |

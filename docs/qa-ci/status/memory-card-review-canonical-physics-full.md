@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 425 |
-| goals without memory need | 298 |
+| ordinary atomic goals reviewed | 426 |
+| goals without memory need | 299 |
 | goals with intentional memory support | 127 |
 | goals needing developer review | 0 |
 | primary cards in scope | 148 |

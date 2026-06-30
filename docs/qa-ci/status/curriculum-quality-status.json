@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v3",
-  "generatedAt": "2026-06-25T14:12:30.646Z",
+  "generatedAt": "2026-06-30T09:39:38.184Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -43047,14 +43047,14 @@
       "frameworkId": "canonical-gymnasium-physics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
       "maturity": "M6",
-      "goals": 585,
-      "atomicGoals": 497,
-      "clusterGoals": 88,
+      "goals": 588,
+      "atomicGoals": 499,
+      "clusterGoals": 89,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "totalJurisdictions": 16,
         "totalAtomicGoals": 389,
-        "rawAtomicGoals": 497,
+        "rawAtomicGoals": 499,
         "coveredJurisdictions": 16,
         "sourceBackedJurisdictions": 16,
         "sourceCompleteJurisdictions": 16,
@@ -43146,11 +43146,11 @@
             "jurisdiction": "DE-BY",
             "labelDe": "Bayern",
             "labelEn": "Bavaria",
-            "visibleGoals": 456,
-            "visibleAtomicGoals": 257,
-            "visibleClusterGoals": 199,
-            "viewAtomicGoals": 257,
-            "sourceBackedAtomicGoals": 257,
+            "visibleGoals": 459,
+            "visibleAtomicGoals": 256,
+            "visibleClusterGoals": 203,
+            "viewAtomicGoals": 256,
+            "sourceBackedAtomicGoals": 256,
             "surrogateBackedAtomicGoals": 0,
             "unsupportedAssignedAtomicGoals": 0,
             "partialSourceLinkedAtomicGoals": 0,
@@ -43168,7 +43168,7 @@
             "errors": 0,
             "warnings": 0,
             "diagnosticPartialOnlyWarnings": 303,
-            "atomicCoveragePercent": 66.1,
+            "atomicCoveragePercent": 65.8,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
             "status": "covered"
@@ -47276,7 +47276,7 @@
         {
           "scopeId": "canonical-physics-sek1",
           "label": "Sekundarstufe I",
-          "selectedAtomicGoals": 75,
+          "selectedAtomicGoals": 76,
           "maturity": "M4",
           "rules": [
             {
@@ -47284,7 +47284,7 @@
               "status": "pass",
               "summary": "Effective route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 75,
+                "selectedAtomicGoals": 76,
                 "missingMotivationPath": 0,
                 "missingTerminalPath": 0
               }
@@ -47294,7 +47294,7 @@
               "status": "pass",
               "summary": "Direct atomic route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 75,
+                "selectedAtomicGoals": 76,
                 "missingDirectMotivationPath": 0,
                 "missingDirectTerminalPath": 0
               }
@@ -47312,8 +47312,8 @@
               "status": "pass",
               "summary": "All configured terminal autonomy goals have examData.",
               "metrics": {
-                "terminalAutonomyGoals": 1,
-                "terminalAutonomyGoalsWithExamData": 1,
+                "terminalAutonomyGoals": 2,
+                "terminalAutonomyGoalsWithExamData": 2,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
             },
@@ -47322,8 +47322,8 @@
               "status": "pass",
               "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
               "metrics": {
-                "terminalAutonomyGoals": 1,
-                "concreteExamData": 1,
+                "terminalAutonomyGoals": 2,
+                "concreteExamData": 2,
                 "weakExamData": 0
               }
             },
@@ -47332,8 +47332,8 @@
               "status": "pass",
               "summary": "All terminal autonomy examData has release and coverage metadata.",
               "metrics": {
-                "terminalAutonomyGoals": 1,
-                "releasedCoverageCompleteExamData": 1,
+                "terminalAutonomyGoals": 2,
+                "releasedCoverageCompleteExamData": 2,
                 "releaseCoverageIncompleteExamData": 0
               }
             }
@@ -47412,7 +47412,7 @@
           "status": "pass",
           "summary": "Basic graph integrity checks pass.",
           "metrics": {
-            "goals": 585,
+            "goals": 588,
             "localReferenceIssues": 0
           }
         },
@@ -47513,8 +47513,8 @@
           "summary": "Semantic atomicity review ledgers are current and fully accepted.",
           "metrics": {
             "configs": 1,
-            "leafGoals": 425,
-            "atomic": 425,
+            "leafGoals": 426,
+            "atomic": 426,
             "needsDeveloperReview": 0,
             "nonAtomic": 0,
             "missing": 0,
@@ -47525,11 +47525,11 @@
         {
           "id": "CQR-302",
           "status": "pass",
-          "summary": "Memory-card review is current: 127/425 ordinary atomic goals intentionally use memorization support, 148/148 primary cards are kept with origin traces, all 5 memory goals are traced, and 0 view-visible memory-required goals resolve to visible memory nodes.",
+          "summary": "Memory-card review is current: 127/426 ordinary atomic goals intentionally use memorization support, 148/148 primary cards are kept with origin traces, all 5 memory goals are traced, and 0 view-visible memory-required goals resolve to visible memory nodes.",
           "metrics": {
             "configs": 1,
-            "reviewedGoals": 425,
-            "noMemoryNeeded": 298,
+            "reviewedGoals": 426,
+            "noMemoryNeeded": 299,
             "memoryRequired": 127,
             "needsDeveloperReview": 0,
             "missing": 0,

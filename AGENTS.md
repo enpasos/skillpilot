@@ -80,6 +80,8 @@ Interpretation rules:
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
+- Bundesland-specific canonical supplement branches under a broad shared root may use `extendedData.applicabilityMappingInheritance = "boundary"` on the supplement cluster. This prevents old broad ancestor-cluster source mappings from being treated as source evidence for the supplement's atomic descendants, while direct mappings/provenance inside the branch and child-union visibility upward still count.
+- Practice or assessment terminal goals may use `extendedData.applicabilityFromRequires = true` when their visibility should be derived exactly from their prerequisite goals. This is for local autonomy/exam endpoints, not for ordinary content atoms, and the resulting `assessment-requires` evidence is applicability evidence only, not source-coverage evidence.
 - local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem

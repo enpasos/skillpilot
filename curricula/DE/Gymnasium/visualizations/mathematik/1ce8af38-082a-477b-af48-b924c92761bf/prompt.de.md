@@ -9,9 +9,9 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: pilot
-- Quellbild: `1ce8af38-082a-477b-af48-b924c92761bf.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/1ce8af38-082a-477b-af48-b924c92761bf/1ce8af38-082a-477b-af48-b924c92761bf.jpg`
+- Status: rejected_removed
+- Quellbild: entfernt am 2026-06-30
+- Public Asset: entfernt am 2026-06-30
 
 ## Prompt
 
@@ -36,4 +36,4 @@ Do not include any technical identifiers in the image. Create a German education
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Dieses Asset wurde nach fachlichem Re-Review am 2026-06-30 aus dem aktiven Lernziel entfernt: Die Beschriftung `Extrempunkte` zeigte visuell auf Nullstellen/Root-Marker, und die Randverhalten-Anmerkung war missverstaendlich als lokales Graphmerkmal lesbar. Eine neue Version darf erst nach fachlicher Kontrolle von Nullstellen, Extrempunkten und Randverhalten wieder importiert werden.

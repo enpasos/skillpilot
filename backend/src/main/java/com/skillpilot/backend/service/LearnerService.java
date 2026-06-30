@@ -1845,7 +1845,8 @@ public class LearnerService {
         learner.setLearningState(LearningState.FRONTIER);
         learnerRepository.save(learner);
 
-        UnifiedLearnerStateResponse state = getLearnerState(skillpilotId);
+        String sequentialAutopilotAnchorGoalId = masteryValue >= 0.9 ? effectiveGoalId : null;
+        UnifiedLearnerStateResponse state = getLearnerState(skillpilotId, sequentialAutopilotAnchorGoalId);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
         return new MasteryUpdateResponse(
                 true,
@@ -3227,6 +3228,10 @@ public class LearnerService {
 
     @Transactional(readOnly = true)
     public List<FrontierGoal> getRichFrontier(String skillpilotId) {
+        return getRichFrontier(skillpilotId, true);
+    }
+
+    private List<FrontierGoal> getRichFrontier(String skillpilotId, boolean compactFrontier) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -3347,7 +3352,7 @@ public class LearnerService {
 
         // Compaction Logic: If frontier is too large, prefer atomic goals for
         // actionable next steps.
-        if (frontier.size() > 20) {
+        if (compactFrontier && frontier.size() > 20) {
             List<FrontierGoal> atomic = frontier.stream()
                     .filter(g -> "atomic".equals(g.type()))
                     .toList();
@@ -3777,6 +3782,10 @@ public class LearnerService {
 
     @Transactional
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
+        return getLearnerState(skillpilotId, null);
+    }
+
+    private UnifiedLearnerStateResponse getLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         com.skillpilot.backend.landscape.LandscapeSummary curriculumSummary = null;
@@ -3810,6 +3819,13 @@ public class LearnerService {
         if (curriculumId != null) {
             allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
             structuralGoals = getFilteredGoals(curriculumId, "{}");
+        }
+        List<FrontierGoal> sequentialAutopilotSearchAtomic = frontierAtomic;
+        if (sequentialAutopilotAnchorGoalId != null
+                && !sequentialAutopilotAnchorGoalId.isBlank()
+                && isSequentialLearningStrategy(learner)
+                && Boolean.TRUE.equals(learner.getAutoPilot())) {
+            sequentialAutopilotSearchAtomic = filterAtomicFrontier(getRichFrontier(skillpilotId, false));
         }
 
         List<String> storedPlannedGoalIds = getStoredPlannedGoals(skillpilotId);
@@ -3943,7 +3959,14 @@ public class LearnerService {
             personalizationRequired = needsPersonalization(frontier, activeFilters);
         }
 
-        activeGoalId = maybeAutoActivateFrontierGoal(learner, activeGoalId, frontierAtomic, personalizationRequired);
+        activeGoalId = maybeAutoActivateFrontierGoal(
+                learner,
+                activeGoalId,
+                frontierAtomic,
+                sequentialAutopilotSearchAtomic,
+                personalizationRequired,
+                sequentialAutopilotAnchorGoalId,
+                structuralGoals);
         activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
                 && mastery.getOrDefault(activeGoalId, 0.0) >= 0.9;
 
@@ -4011,7 +4034,10 @@ public class LearnerService {
             Learner learner,
             String activeGoalId,
             List<FrontierGoal> frontierAtomic,
-            boolean personalizationRequired) {
+            List<FrontierGoal> sequentialAutopilotSearchAtomic,
+            boolean personalizationRequired,
+            String sequentialAutopilotAnchorGoalId,
+            Map<String, LearningGoal> structuralGoals) {
         if (!Boolean.TRUE.equals(learner.getAutoPilot())) {
             return activeGoalId;
         }
@@ -4022,7 +4048,12 @@ public class LearnerService {
             return activeGoalId;
         }
 
-        FrontierGoal nextGoal = frontierAtomic.get(0);
+        FrontierGoal nextGoal = chooseAutopilotFrontierGoal(
+                learner,
+                frontierAtomic,
+                sequentialAutopilotSearchAtomic,
+                sequentialAutopilotAnchorGoalId,
+                structuralGoals);
         if (nextGoal == null || nextGoal.id() == null || nextGoal.id().isBlank()) {
             return activeGoalId;
         }
@@ -4033,6 +4064,221 @@ public class LearnerService {
         eventPublisher.publishEvent(
                 new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "ACTIVE_GOAL_UPDATE_AUTOPILOT"));
         return nextGoal.id();
+    }
+
+    private FrontierGoal chooseAutopilotFrontierGoal(
+            Learner learner,
+            List<FrontierGoal> frontierAtomic,
+            List<FrontierGoal> sequentialAutopilotSearchAtomic,
+            String sequentialAutopilotAnchorGoalId,
+            Map<String, LearningGoal> structuralGoals) {
+        if (frontierAtomic == null || frontierAtomic.isEmpty()) {
+            return null;
+        }
+        if (isSequentialLearningStrategy(learner)
+                && sequentialAutopilotAnchorGoalId != null
+                && !sequentialAutopilotAnchorGoalId.isBlank()) {
+            FrontierGoal localNext = findSequentialLocalFrontierGoal(
+                    sequentialAutopilotAnchorGoalId,
+                    sequentialAutopilotSearchAtomic == null || sequentialAutopilotSearchAtomic.isEmpty()
+                            ? frontierAtomic
+                            : sequentialAutopilotSearchAtomic,
+                    structuralGoals);
+            if (localNext != null) {
+                return localNext;
+            }
+            return null;
+        }
+        return frontierAtomic.get(0);
+    }
+
+    private boolean isSequentialLearningStrategy(Learner learner) {
+        return learner != null && "SEQUENTIAL".equalsIgnoreCase(learner.getLearningStrategy());
+    }
+
+    private FrontierGoal findSequentialLocalFrontierGoal(
+            String anchorGoalId,
+            List<FrontierGoal> frontierAtomic,
+            Map<String, LearningGoal> structuralGoals) {
+        if (anchorGoalId == null
+                || anchorGoalId.isBlank()
+                || frontierAtomic == null
+                || frontierAtomic.isEmpty()
+                || structuralGoals == null
+                || structuralGoals.isEmpty()) {
+            return null;
+        }
+
+        LinkedHashMap<String, FrontierGoal> frontierById = new LinkedHashMap<>();
+        for (FrontierGoal goal : frontierAtomic) {
+            if (goal != null && goal.id() != null && !goal.id().isBlank()) {
+                frontierById.putIfAbsent(goal.id(), goal);
+            }
+        }
+        if (frontierById.isEmpty()) {
+            return null;
+        }
+
+        Map<String, Set<String>> parentMap = buildParentMap(structuralGoals);
+        return findSequentialLocalFrontierGoal(
+                anchorGoalId,
+                frontierById,
+                structuralGoals,
+                parentMap,
+                new HashSet<>());
+    }
+
+    private FrontierGoal findSequentialLocalFrontierGoal(
+            String anchorGoalId,
+            Map<String, FrontierGoal> frontierById,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, Set<String>> parentMap,
+            Set<String> visitedAnchors) {
+        if (anchorGoalId == null || anchorGoalId.isBlank() || !visitedAnchors.add(anchorGoalId)) {
+            return null;
+        }
+
+        List<String> parentIds = orderedLocalParentIds(anchorGoalId, parentMap, structuralGoals);
+        boolean hasLocalFollowingSibling = false;
+        for (String parentId : parentIds) {
+            LocalParentFrontierSearch nextInParent = findNextFrontierAfterChildInParent(
+                    parentId,
+                    anchorGoalId,
+                    frontierById,
+                    structuralGoals);
+            if (nextInParent.goal() != null) {
+                return nextInParent.goal();
+            }
+            hasLocalFollowingSibling = hasLocalFollowingSibling || nextInParent.hasFollowingSibling();
+        }
+
+        if (hasLocalFollowingSibling) {
+            return null;
+        }
+
+        for (String parentId : parentIds) {
+            FrontierGoal nextAfterParent = findSequentialLocalFrontierGoal(
+                    parentId,
+                    frontierById,
+                    structuralGoals,
+                    parentMap,
+                    visitedAnchors);
+            if (nextAfterParent != null) {
+                return nextAfterParent;
+            }
+        }
+
+        return null;
+    }
+
+    private record LocalParentFrontierSearch(FrontierGoal goal, boolean hasFollowingSibling) {
+    }
+
+    private List<String> orderedLocalParentIds(
+            String goalId,
+            Map<String, Set<String>> parentMap,
+            Map<String, LearningGoal> structuralGoals) {
+        Set<String> parentIds = parentMap.getOrDefault(goalId, Collections.emptySet());
+        if (parentIds.isEmpty()) {
+            return Collections.emptyList();
+        }
+        Map<String, Integer> descendantCountCache = new HashMap<>();
+        return parentIds.stream()
+                .sorted(Comparator.comparingInt(parentId ->
+                        countStructuralDescendants(parentId, structuralGoals, descendantCountCache, new HashSet<>())))
+                .toList();
+    }
+
+    private int countStructuralDescendants(
+            String goalId,
+            Map<String, LearningGoal> structuralGoals,
+            Map<String, Integer> cache,
+            Set<String> visiting) {
+        Integer cached = cache.get(goalId);
+        if (cached != null) {
+            return cached;
+        }
+        if (goalId == null || goalId.isBlank() || !visiting.add(goalId)) {
+            return 0;
+        }
+
+        LearningGoal goal = structuralGoals.get(goalId);
+        int count = 0;
+        if (goal != null && goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                String childId = resolveGoalRef(childRef, structuralGoals);
+                if (childId == null) {
+                    continue;
+                }
+                count += 1 + countStructuralDescendants(childId, structuralGoals, cache, visiting);
+            }
+        }
+
+        visiting.remove(goalId);
+        cache.put(goalId, count);
+        return count;
+    }
+
+    private LocalParentFrontierSearch findNextFrontierAfterChildInParent(
+            String parentId,
+            String childId,
+            Map<String, FrontierGoal> frontierById,
+            Map<String, LearningGoal> structuralGoals) {
+        LearningGoal parent = structuralGoals.get(parentId);
+        if (parent == null || parent.getContains() == null || parent.getContains().isEmpty()) {
+            return new LocalParentFrontierSearch(null, false);
+        }
+
+        boolean afterChild = false;
+        boolean hasFollowingSibling = false;
+        for (String siblingRef : parent.getContains()) {
+            String siblingId = resolveGoalRef(siblingRef, structuralGoals);
+            if (siblingId == null) {
+                continue;
+            }
+            if (!afterChild) {
+                afterChild = siblingId.equals(childId);
+                continue;
+            }
+            hasFollowingSibling = true;
+            FrontierGoal next = findFirstFrontierInSubtree(siblingId, frontierById, structuralGoals, new HashSet<>());
+            if (next != null) {
+                return new LocalParentFrontierSearch(next, true);
+            }
+        }
+        return new LocalParentFrontierSearch(null, hasFollowingSibling);
+    }
+
+    private FrontierGoal findFirstFrontierInSubtree(
+            String goalId,
+            Map<String, FrontierGoal> frontierById,
+            Map<String, LearningGoal> structuralGoals,
+            Set<String> visiting) {
+        FrontierGoal direct = frontierById.get(goalId);
+        if (direct != null) {
+            return direct;
+        }
+        if (goalId == null || goalId.isBlank() || !visiting.add(goalId)) {
+            return null;
+        }
+
+        LearningGoal goal = structuralGoals.get(goalId);
+        if (goal != null && goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                String childId = resolveGoalRef(childRef, structuralGoals);
+                if (childId == null) {
+                    continue;
+                }
+                FrontierGoal next = findFirstFrontierInSubtree(childId, frontierById, structuralGoals, visiting);
+                if (next != null) {
+                    visiting.remove(goalId);
+                    return next;
+                }
+            }
+        }
+
+        visiting.remove(goalId);
+        return null;
     }
 
     private List<FrontierGoal> filterAtomicFrontier(List<FrontierGoal> frontier) {
