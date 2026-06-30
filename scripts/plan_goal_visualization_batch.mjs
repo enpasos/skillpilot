@@ -31,6 +31,21 @@ function hasVisualization(goal) {
   })
 }
 
+function hasChildren(goal) {
+  return Array.isArray(goal.contains) && goal.contains.length > 0
+}
+
+function isAtomicVisualizationGoal(goal) {
+  const tags = goal.tags ?? []
+  return !hasChildren(goal)
+    && goal.nodeKind !== 'memory'
+    && goal.nodeKind !== 'exam'
+    && goal.nodeKind !== 'tutor'
+    && goal.examData === undefined
+    && !tags.includes('memorization')
+    && !tags.some((tag) => tag.startsWith('srs-deck:'))
+}
+
 function readDeferredGoalIds() {
   const reviewDir = path.join(ROOT_DIR, 'curricula/DE/Gymnasium/quality/goal-visualization-review')
   if (!fs.existsSync(reviewDir)) {
@@ -76,6 +91,7 @@ function main() {
   const landscape = readLandscape(landscapePath)
   const selected = (landscape.goals ?? [])
     .filter((goal) => goal.type === 'atomic')
+    .filter(isAtomicVisualizationGoal)
     .filter((goal) => !phase || goal.phase === phase)
     .filter((goal) => !hasVisualization(goal))
     .filter((goal) => !deferredGoalIds.has(goal.id))
