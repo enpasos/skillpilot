@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-01T14:13:47.313Z
+Generated: 2026-07-01T14:38:00.141Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 587 |
-| Coverage | 77.9% |
+| Ziele mit primaerem Visualisierungslink | 593 |
+| Coverage | 78.6% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 115 |
+| Review-Ledger-Dateien | 116 |
 | Offene Provider-Deferred-Ziele | 5 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,14 +32,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 587 |
+| `pilot` | 593 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 460 |
+| `accepted_pilot` | 466 |
 | `accepted_pilot_after_regeneration` | 114 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 5 |
@@ -53,14 +53,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 18 |
+| `rejected_regenerated` | 19 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-115.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-116.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
