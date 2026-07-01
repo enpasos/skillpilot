@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-01T10:08:05.318Z
+Generated: 2026-07-01T12:23:02.274Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,28 +18,28 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 569 |
-| Coverage | 75.5% |
+| Ziele mit primaerem Visualisierungslink | 575 |
+| Coverage | 76.3% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 112 |
+| Review-Ledger-Dateien | 113 |
 | Offene Provider-Deferred-Ziele | 5 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 14 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 15 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 569 |
+| `pilot` | 575 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 442 |
+| `accepted_pilot` | 448 |
 | `accepted_pilot_after_regeneration` | 114 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 5 |
@@ -53,14 +53,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 15 |
+| `rejected_regenerated` | 16 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-112.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-113.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -132,6 +132,7 @@ Keine Eintraege.
 | `899ed286-0cc2-4d6d-ba46-7d4e40a11f41` | Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) | `pilot` | `rejected_regenerated` |
 | `963907f9-8d4c-5e1c-945d-10b7be07e1b9` | Richtungsfelder erarbeiten und interpretieren | `pilot` | `rejected_regenerated` |
 | `62a1c6f2-1775-5a19-98e0-ed3dd722039f` | Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen | `pilot` | `rejected_regenerated` |
+| `1e77bb2f-0cd6-5961-b0fb-230317c73fce` | Volumen von Prismen berechnen (Formelsammlung) | `pilot` | `rejected_regenerated` |
 | `5dabf0b3-89b1-59a6-ae57-014f92becd3b` | Wurzelfunktionen beschreiben und darstellen | `pilot` | `rejected_regenerated` |
 
 ### Accepted Review Without Link
