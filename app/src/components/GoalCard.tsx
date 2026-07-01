@@ -21,6 +21,7 @@ interface GoalCardProps {
   showLearnerTools: boolean
   useRawGoalTitles?: boolean
   hideTechnicalStructureUi?: boolean
+  hideTitleWhenPrimaryVisualizationVisible?: boolean
   readOnly?: boolean
   showDetails?: boolean
   isPlanned?: boolean
@@ -650,6 +651,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   showLearnerTools,
   useRawGoalTitles = false,
   hideTechnicalStructureUi = false,
+  hideTitleWhenPrimaryVisualizationVisible = false,
   readOnly = false,
   showDetails = false,
   isPlanned = false,
@@ -693,6 +695,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined
+  const isPrimaryVisualizationVisible = Boolean(primaryVisualization && !examDataForDisplay && !isProjectedStructureNode)
+  const shouldShowVisibleTitle = !(hideTitleWhenPrimaryVisualizationVisible && isPrimaryVisualizationVisible)
   const visibleTags = React.useMemo(
     () => (goal.tags ?? []).filter((tag) => !tag.startsWith('synthetic:') && !tag.startsWith(PROGRAM_UNIT_KIND_TAG_PREFIX)),
     [goal.tags],
@@ -760,8 +764,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   return (
     <div className="bg-sidebar-bg border border-border-color rounded-3xl p-5 shadow-none dark:shadow-card-2xl transition-colors relative group">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <div className="pr-8">
-          <h2 className="text-2xl font-semibold text-text-primary leading-tight">
+        <div className="min-w-0 flex-1 pr-8">
+          <h2 className={shouldShowVisibleTitle ? 'text-2xl font-semibold text-text-primary leading-tight' : 'sr-only'}>
             <InlineMathText text={displayTitle} />
           </h2>
           {!isLearnerAudience && isProjectedStructureNode && !hideTechnicalStructureUi && (
@@ -820,7 +824,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
       {/* SSE auto-refresh now active - manual refresh button removed */}
 
-      {primaryVisualization && !examDataForDisplay && !isProjectedStructureNode && (
+      {isPrimaryVisualizationVisible && primaryVisualization && (
         <figure className="mt-4 mb-4 overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-950">
           <img
             src={primaryVisualization.url}
