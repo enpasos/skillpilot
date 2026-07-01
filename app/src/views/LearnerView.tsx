@@ -2728,6 +2728,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                   }
                   showLearnerTools={true}
                   hideTechnicalStructureUi
+                  hideTitleWhenPrimaryVisualizationVisible
                   readOnly={isCompatibilityAuditOnly}
                   isPlanned={plannedGoals.has(currentGoal.id)}
                   isActive={effectiveActiveGoalId === currentGoal.id}
