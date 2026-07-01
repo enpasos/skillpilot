@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-30T20:33:51.634Z
+Generated: 2026-07-01T10:08:05.318Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,31 +18,31 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 461 |
-| Coverage | 61.1% |
+| Ziele mit primaerem Visualisierungslink | 569 |
+| Coverage | 75.5% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 94 |
+| Review-Ledger-Dateien | 112 |
 | Offene Provider-Deferred-Ziele | 5 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 5 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 14 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 461 |
+| `pilot` | 569 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 350 |
-| `accepted_pilot_after_regeneration` | 99 |
+| `accepted_pilot` | 442 |
+| `accepted_pilot_after_regeneration` | 114 |
 | `accepted_pilot_after_resume` | 5 |
-| `accepted_pilot_after_second_regeneration` | 4 |
+| `accepted_pilot_after_second_regeneration` | 5 |
 | `accepted_pilot_after_third_regeneration` | 2 |
 | `accepted_pilot_after_user_review_correction` | 8 |
 | `blocked_provider_quota` | 5 |
@@ -52,14 +52,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 4 |
-| `rejected_regenerate` | 3 |
+| `rejected_regenerate` | 22 |
+| `rejected_regenerated` | 15 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-094.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-112.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -119,10 +120,19 @@ Keine Eintraege.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `12a8dffc-dea7-5f2c-b490-2a1a2bb6901b` | Arithmetische und geometrische Reihen untersuchen | `pilot` | `accepted_pilot_after_resume` |
+| `3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4` | Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK) | `pilot` | `rejected_regenerated` |
 | `09f47964-2cd0-410e-93ee-9632b582fc91` | Funktionsbegriff und Darstellungen verstehen | `pilot` | `accepted_pilot_after_resume` |
 | `c65ecabf-d00b-4e2d-99ae-b64692325ffb` | Funktionswerte berechnen | `pilot` | `accepted_pilot_after_resume` |
+| `509ae03b-96b1-4bb1-b015-b83d14569dae` | Gerade-Gerade-Abstände im Raum bestimmen | `pilot` | `rejected_regenerated` |
 | `c61af0a9-7d56-5505-a70d-ee097c3b747f` | Grenzwerte von Folgen mit Grenzwertsätzen begründen | `pilot` | `accepted_pilot_after_resume` |
 | `1b888f4c-df57-52a9-9551-b2b692e929fa` | Konvergenz und Divergenz von Folgen beschreiben | `pilot` | `accepted_pilot_after_resume` |
+| `df7338ef-65ba-5ece-8aec-7f520dfe5710` | Logistisches Wachstum untersuchen (LK) | `pilot` | `rejected_regenerated` |
+| `1e26404a-93ef-45f3-a28c-15679fbae96b` | Natürlichen Logarithmus als Umkehrfunktion verstehen (LK) | `pilot` | `rejected_regenerated` |
+| `e7350739-c89f-5c7b-b4d1-717d6a767298` | Parameteruntersuchungen mit Exponentialfunktionen (LK) | `pilot` | `rejected_regenerated` |
+| `899ed286-0cc2-4d6d-ba46-7d4e40a11f41` | Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK) | `pilot` | `rejected_regenerated` |
+| `963907f9-8d4c-5e1c-945d-10b7be07e1b9` | Richtungsfelder erarbeiten und interpretieren | `pilot` | `rejected_regenerated` |
+| `62a1c6f2-1775-5a19-98e0-ed3dd722039f` | Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen | `pilot` | `rejected_regenerated` |
+| `5dabf0b3-89b1-59a6-ae57-014f92becd3b` | Wurzelfunktionen beschreiben und darstellen | `pilot` | `rejected_regenerated` |
 
 ### Accepted Review Without Link
 
