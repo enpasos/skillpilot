@@ -19,6 +19,13 @@ Generator/prompt policy:
 - Canonical IDs are used only for local paths, metadata, JSON links, and deployment.
 - No SVG fallback is used for accepted assets.
 
+## Rejected / Regenerated Candidates
+
+| Goal ID | Attempt | Decision | Reason |
+| --- | --- | --- | --- |
+| `e9181209-1506-59df-9053-17f36b91bb06` | initial Batch 114 candidate | `rejected_regenerated` | The image used the intended disk-integration idea and final formula, but the integral evaluation line visually omitted the necessary sign handling in the antiderivative evaluation. This made the displayed derivation mathematically risky despite the correct final result. |
+| `effe43eb-cabe-56cb-a228-35887d7915c1` | initial Batch 114 candidate | `rejected_regenerated` | The image used the correct points and direction vector, but the formula box stacked coordinate entries so that `(1,2,0)` and `(3,-2,3)` could be misread as two-dimensional vectors with decimal commas. The regenerated image uses semicolon-separated 3D coordinates in one line. |
+
 ## Reviewed Assets
 
 | Goal ID | Title | Decision | Review notes |
@@ -29,13 +36,6 @@ Generator/prompt policy:
 | `7d37513b-fa1a-54cc-9e2a-9279a381f0f0` | Transformationsargumente für Flächen und Volumina nutzen (LK) | `accepted_pilot` | The image correctly maps the unit cube to a parallelepiped with `a=(2,0,0)`, `b=(0,3,0)`, `c=(0,0,4)` using `A=diag(2,3,4)`. It computes `det(A)=2*3*4=24` and uses `V_Bild=|det(A)|*V_Einheitswuerfel=24*1=24`, while explicitly rejecting the additive error `2+3+4=9`. |
 | `effe43eb-cabe-56cb-a228-35887d7915c1` | Geraden im Raum parametrisch darstellen | `accepted_pilot` | Accepted after one targeted regeneration. The final image uses `A=(1;2;0)` and `B=(4;0;3)`, derives `v=B-A=(3;-2;3)`, and states the line as `g: X=(1;2;0)+t*(3;-2;3), t in R`. It marks `t=0` as `A` and `t=1` as `B`, and the line is shown extended beyond the segment. |
 | `525b1da9-7fdd-4a70-9f30-ff01d7511b04` | Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten | `accepted_pilot` | The image correctly uses `A(1,1,0)`, `B(5,3,2)`, and `v=B-A=(4,2,2)`. It distinguishes the line `g: X=(1,1,0)+t*(4,2,2), t in R` from the segment `AB: X=(1,1,0)+s*(4,2,2), 0<=s<=1`, and correctly interprets `s=0`, `s=1`, `s=0.5` with midpoint `M=(3,2,1)`, and `s>1` as outside the segment. |
-
-## Rejected / Regenerated Candidates
-
-| Goal ID | Attempt | Decision | Reason |
-| --- | --- | --- | --- |
-| `e9181209-1506-59df-9053-17f36b91bb06` | initial Batch 114 candidate | `rejected_regenerated` | The image used the intended disk-integration idea and final formula, but the integral evaluation line visually omitted the necessary sign handling in the antiderivative evaluation. This made the displayed derivation mathematically risky despite the correct final result. |
-| `effe43eb-cabe-56cb-a228-35887d7915c1` | initial Batch 114 candidate | `rejected_regenerated` | The image used the correct points and direction vector, but the formula box stacked coordinate entries so that `(1,2,0)` and `(3,-2,3)` could be misread as two-dimensional vectors with decimal commas. The regenerated image uses semicolon-separated 3D coordinates in one line. |
 
 ## Batch Checks
 
