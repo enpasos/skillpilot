@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-01T18:51:42.454Z
+Generated: 2026-07-01T20:23:48.824Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 605 |
-| Coverage | 80.2% |
+| Ziele mit primaerem Visualisierungslink | 617 |
+| Coverage | 81.8% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 118 |
+| Review-Ledger-Dateien | 120 |
 | Offene Provider-Deferred-Ziele | 5 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,35 +32,35 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 605 |
+| `pilot` | 617 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 478 |
+| `accepted_pilot` | 489 |
 | `accepted_pilot_after_regeneration` | 114 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 5 |
 | `accepted_pilot_after_third_regeneration` | 2 |
-| `accepted_pilot_after_user_review_correction` | 8 |
+| `accepted_pilot_after_user_review_correction` | 9 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 6 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
-| `rejected_after_user_review_replaced` | 1 |
+| `rejected_after_user_review_replaced` | 2 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 22 |
+| `rejected_regenerated` | 24 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-118.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-120.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -112,6 +112,7 @@ Keine Eintraege.
 | 042 | `11c88ea2-8502-5008-bec2-3e491c75ace4` | Darstellungsformen gerader Körper verknüpfen | `accepted_pilot_after_user_review_correction` |
 | 059 | `0c8c1ae9-135e-4fe5-bf67-e497eb3a9909` | Sinussatz herleiten | `accepted_pilot_after_user_review_correction` |
 | 075 | `eda3a298-4965-525e-878d-f05b9e2d4503` | Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen | `accepted_pilot_after_user_review_correction` |
+| 119 | `5e893892-393e-5df0-b705-fb3b3458122f` | Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

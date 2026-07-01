@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-01T18:51:42.454Z",
+  "generatedAt": "2026-07-01T20:23:48.824Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -11,33 +11,33 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 605,
-    "coveragePercent": 80.2,
+    "goalsWithPrimaryVisualization": 617,
+    "coveragePercent": 81.8,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 605
+      "pilot": 617
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 605
+      "pilot": 617
     },
-    "reviewLedgerFiles": 118,
+    "reviewLedgerFiles": 120,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
-      "accepted_pilot": 478,
+      "accepted_pilot": 489,
       "accepted_pilot_after_regeneration": 114,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 5,
       "accepted_pilot_after_third_regeneration": 2,
-      "accepted_pilot_after_user_review_correction": 8,
+      "accepted_pilot_after_user_review_correction": 9,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 6,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
-      "rejected_after_user_review_replaced": 1,
+      "rejected_after_user_review_replaced": 2,
       "rejected_not_linked": 4,
       "rejected_regenerate": 22,
-      "rejected_regenerated": 22,
+      "rejected_regenerated": 24,
       "rejected_removed": 1
     },
     "openProviderDeferredGoals": 5,
@@ -47,7 +47,7 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-118.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-120.md",
     "latestLedgerStatus": "completed",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
@@ -181,6 +181,13 @@
         "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "Replaced the previous asset because the labels `7pi/6` and `11pi/6` did not visually fit the zero crossings. The new image removes both labels, focuses on `f(x)=2*sin(x)+1`, marks maxima at `pi/2` and `5pi/2`, the minimum at `3pi/2`, and guide lines `y=3`, `y=1`, and `y=-1`."
+      },
+      {
+        "batch": "119",
+        "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+        "title": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image keeps the graph/table split, shows all nine directed transitions including `A->A`, `B->B`, `C->C`, `C->B`, and all other zero-probability transitions, and uses source-color-consistent arrows. The table is a `von`/`nach` matrix with source states as columns, target states as rows, values `nach A: 0,0 | 0,4 | 1,0`, `nach B: 0,7 | 0,0 | 0,0`, `nach C: 0,3 | 0,6 | 0,0`, and column sums `1,0`."
       }
     ]
   },
@@ -1310,6 +1317,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/a9ed219d-d497-55e5-a4e0-4d45d2554f6b/a9ed219d-d497-55e5-a4e0-4d45d2554f6b.jpg"
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "title": "Einfache inverse Matrizen bestimmen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg"
     },
     {
       "goalId": "54148506-c23f-41b8-959b-068dd194cf15",
@@ -2816,6 +2831,38 @@
       "url": "/assets/goal-visualizations/mathematik/27542d59-aa1b-569d-8d77-41129bae26e2/27542d59-aa1b-569d-8d77-41129bae26e2.jpg"
     },
     {
+      "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+      "title": "Matrix-Vektor-Produkte berechnen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6f09c97e-779b-500b-8092-3fb9696aa5bb/6f09c97e-779b-500b-8092-3fb9696aa5bb.jpg"
+    },
+    {
+      "goalId": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "title": "Matrixeinträge über Zeilen und Spalten lesen und deuten",
+      "phase": "Q2",
+      "area": "Lineare Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b5062446-332f-4a67-aaf7-3bfa3e5aded9/b5062446-332f-4a67-aaf7-3bfa3e5aded9.jpg"
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "title": "Matrizen addieren und subtrahieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.jpg"
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "title": "Matrizen multiplizieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/304111dd-426b-520b-a275-3fa37da1b0e0/304111dd-426b-520b-a275-3fa37da1b0e0.jpg"
+    },
+    {
       "goalId": "2242c379-ddbb-4f03-8aed-13f49a4674e8",
       "title": "Median bestimmen und mit dem arithmetischen Mittel vergleichen",
       "phase": "J7",
@@ -3912,6 +3959,22 @@
       "url": "/assets/goal-visualizations/mathematik/3e4032bd-4d8c-4e72-bfdd-64a34df053c9/3e4032bd-4d8c-4e72-bfdd-64a34df053c9.jpg"
     },
     {
+      "goalId": "3aea4d33-4170-5ecc-82b0-3a3974cc2237",
+      "title": "Schnittfiguren von Ebenen mit Polyedern bestimmen (LK)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3aea4d33-4170-5ecc-82b0-3a3974cc2237/3aea4d33-4170-5ecc-82b0-3a3974cc2237.jpg"
+    },
+    {
+      "goalId": "857c1c46-5d94-5dfb-9697-9a9fd04103c3",
+      "title": "Schnittgerade zweier Ebenen bestimmen (LK)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/857c1c46-5d94-5dfb-9697-9a9fd04103c3/857c1c46-5d94-5dfb-9697-9a9fd04103c3.jpg"
+    },
+    {
       "goalId": "3def350a-c01c-51c3-be74-b3de20ee53e1",
       "title": "Schnittpunkt von Gerade und Ebene berechnen",
       "phase": "Q2",
@@ -4048,6 +4111,14 @@
       "url": "/assets/goal-visualizations/mathematik/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909/0c8c1ae9-135e-4fe5-bf67-e497eb3a9909.jpg"
     },
     {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "title": "Skalare Multiplikation von Matrizen durchführen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4fb40e58-58c1-5964-b58e-3347a8022b97/4fb40e58-58c1-5964-b58e-3347a8022b97.jpg"
+    },
+    {
       "goalId": "9460c3ff-e72d-4107-bc73-087d217200aa",
       "title": "Skalarprodukt als Orthogonalitätskriterium nutzen",
       "phase": "Q2",
@@ -4174,6 +4245,14 @@
       "area": "Probability",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/e55edcb9-2184-4a24-890e-70cc91028990/e55edcb9-2184-4a24-890e-70cc91028990.jpg"
+    },
+    {
+      "goalId": "9bf67cce-4c8f-5497-8e64-825b83c6aa40",
+      "title": "Stochastische Übergangsmatrizen für Markov-Ketten prüfen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9bf67cce-4c8f-5497-8e64-825b83c6aa40/9bf67cce-4c8f-5497-8e64-825b83c6aa40.jpg"
     },
     {
       "goalId": "dabff49b-d40a-4c81-a584-21408b2d4219",
@@ -4488,12 +4567,28 @@
       "url": "/assets/goal-visualizations/mathematik/2919b3f3-aca2-5add-beeb-de1b9e0eafd8/2919b3f3-aca2-5add-beeb-de1b9e0eafd8.jpg"
     },
     {
+      "goalId": "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+      "title": "Tupelsachverhalte in Tabellenkalkulation organisieren und Zellbezüge lesen",
+      "phase": "Q2",
+      "area": "Lineare Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f378917f-2ca7-4c68-bd66-3f9457095dd5/f378917f-2ca7-4c68-bd66-3f9457095dd5.jpg"
+    },
+    {
       "goalId": "b559e2ea-60ef-4b3f-a37c-669b867ace29",
       "title": "Übergang von Produktsummen zum Integral erläutern und vollziehen",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/b559e2ea-60ef-4b3f-a37c-669b867ace29/b559e2ea-60ef-4b3f-a37c-669b867ace29.jpg"
+    },
+    {
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "title": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5e893892-393e-5df0-b705-fb3b3458122f/5e893892-393e-5df0-b705-fb3b3458122f.jpg"
     },
     {
       "goalId": "42b57670-d2be-5da2-be2f-d58055901813",
@@ -5094,6 +5189,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/dbc13bb0-963b-49a8-a441-2183f4b64c8e/dbc13bb0-963b-49a8-a441-2183f4b64c8e.jpg"
+    },
+    {
+      "goalId": "25157542-a262-562f-a29c-ac8d53b9798f",
+      "title": "Zustände in Markov-Ketten berechnen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/25157542-a262-562f-a29c-ac8d53b9798f/25157542-a262-562f-a29c-ac8d53b9798f.jpg"
     },
     {
       "goalId": "d76766a5-ce07-5c7a-987b-157f2998b05e",
