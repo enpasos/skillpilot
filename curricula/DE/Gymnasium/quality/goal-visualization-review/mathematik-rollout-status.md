@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-06-30T17:48:38.384Z
+Generated: 2026-06-30T20:33:51.634Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 455 |
-| Coverage | 60.3% |
+| Ziele mit primaerem Visualisierungslink | 461 |
+| Coverage | 61.1% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 93 |
+| Review-Ledger-Dateien | 94 |
 | Offene Provider-Deferred-Ziele | 5 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,15 +32,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 455 |
+| `pilot` | 461 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 347 |
-| `accepted_pilot_after_regeneration` | 96 |
+| `accepted_pilot` | 350 |
+| `accepted_pilot_after_regeneration` | 99 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 4 |
 | `accepted_pilot_after_third_regeneration` | 2 |
@@ -52,13 +52,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 1 |
 | `rejected_not_linked` | 4 |
+| `rejected_regenerate` | 3 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-093.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-094.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |

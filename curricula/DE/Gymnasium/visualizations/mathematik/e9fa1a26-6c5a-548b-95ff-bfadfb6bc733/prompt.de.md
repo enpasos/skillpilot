@@ -31,51 +31,27 @@ Titel: Statistischen Wahrscheinlichkeitsbegriff anwenden
 Beschreibung: Die lernende Person kann absolute und relative Häufigkeiten aus selbst durchgeführten oder gegebenen Zufallsexperimenten bestimmen, daraus Wahrscheinlichkeiten schätzen, den Unterschied zum theoretischen Wahrscheinlichkeitsbegriff beschreiben und das empirische Gesetz der großen Zahlen an konkreten Beispielrechnungen erläutern.
 
 Zusatzanweisung:
-Additional mathematical constraints for this batch:
+Required content:
 
-- Do not include technical IDs, filenames, watermarks, or product names in the image.
-- Use German labels. Keep text short and legible.
-- Prefer simple classroom contexts: dice, spinners, small measurement tables, class surveys, or histograms. Avoid unrealistic laboratory or finance imagery.
-- Do not overload one image with many formulas. Use one clear worked idea plus one interpretation sentence.
+- Show one fair die example for event "6" with exactly `n = 60` rolls and exactly `11` sixes.
+- Use only one visible data table with these exact values:
+  - result 1: 9
+  - result 2: 10
+  - result 3: 10
+  - result 4: 9
+  - result 5: 11
+  - result 6: 11
+  - sum: 60
+- For event "6", show `absolute Haeufigkeit = 11` and `relative Haeufigkeit h = 11 / 60 approx 0.18`.
+- Show theoretical probability for a fair die as `P(6) = 1 / 6 approx 0.17`.
+- Add one short German interpretation: with many repetitions, `h` often stabilizes near `P(6)`, but it is not guaranteed to be exactly equal.
 
-For empirical/statistical probability:
+Avoid:
 
-- Show the difference between theoretical probability and estimated probability from relative frequency.
-- Use notation such as `absolute Haeufigkeit`, `relative Haeufigkeit h = Treffer / n`, and `P(E) geschaetzt`.
-- Correct idea: with many repetitions, relative frequency often stabilizes near the true probability, but it does not become guaranteed or exact.
-- Safe example: fair die, event `6`, after `n=60` rolls maybe `11` sixes, so `h=11/60 approx 0.18`, close to theoretical `1/6 approx 0.17`.
-
-For location parameters:
-
-- If mean and median are shown, calculate them correctly.
-- Safe simple example: data `2, 3, 3, 4, 8`; sorted data stays the same; median `3`; mean `(2+3+3+4+8)/5 = 4`.
-- Use the interpretation: the mean can be pulled by an outlier, the median marks the middle of sorted data.
-- Do not label the largest value as the median unless it is actually in the middle.
-
-For spread measures:
-
-- Show spread as distance from the center, not as vertical chart height alone.
-- Safe comparison: data set A `4, 5, 6` and data set B `1, 5, 9`; both have mean `5`, but B has larger spread.
-- It is okay to avoid exact variance values. If values are shown, keep them consistent.
-- Use language such as `kleine Streuung`, `grosse Streuung`, `Standardabweichung als typische Entfernung vom Mittelwert`.
-
-For comparing data with distributions:
-
-- Show observed data as a histogram and a simple theoretical distribution as a smooth or bar-shaped model overlay.
-- Emphasize model fit: similar center, width, and shape; deviations are normal in samples.
-- Do not claim a model is proven by one matching histogram.
-
-For planning random experiments:
-
-- Show a clear plan: question, random device, fixed number of trials, recording table, relative frequency, evaluation.
-- Make it clear that each trial must be under the same conditions.
-- Avoid confusing random experiment planning with a survey.
-
-For planning statistical surveys:
-
-- Show population, sample, feature/variable, neutral question wording, data table, and short documentation.
-- Avoid leading questions and biased samples. A good contrast is `neutral fragen` versus `Suggestivfrage vermeiden`.
-- Do not imply a small convenience sample automatically represents the whole population.
+- Do not show a separate tally list unless it matches the same table exactly.
+- Do not show any row for result 6 with more or fewer than 11 marks.
+- Do not claim that empirical probability becomes exact or guaranteed.
+- Do not include technical IDs, filenames, watermarks, platform names, or product names.
 ```
 
 ## Review-Notiz
