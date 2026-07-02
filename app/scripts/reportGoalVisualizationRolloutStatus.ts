@@ -6,6 +6,7 @@ import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
 type ReviewDecision =
   | 'accepted_pilot'
   | 'accepted_pilot_after_regeneration'
+  | 'accepted_pilot_after_resume'
   | 'accepted_pilot_after_second_regeneration'
   | 'accepted_pilot_after_third_regeneration'
   | 'accepted_pilot_after_user_review_correction'
@@ -81,6 +82,7 @@ interface GoalVisualizationRolloutReport {
     openProviderDeferredGoals: number
     openProviderQuotaGoals: number
     blockedProviderQuotaLedgers: number
+    regularUnlinkedGoals: number
     linkedWithoutAcceptedReview: number
     acceptedReviewWithoutLink: number
   }
@@ -261,7 +263,14 @@ function loadReviewLedgers(reviewDirPath: string): ReviewLedger[] {
 function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
   const latestByGoal = new Map<string, ReviewDecisionRow>()
   ledgers.forEach((ledger) => {
+    const latestByGoalInLedger = new Map<string, ReviewDecisionRow>()
     ledger.decisions.forEach((decision) => {
+      const previousDecision = latestByGoalInLedger.get(decision.goalId)
+      if (!previousDecision || !isAcceptedDecision(previousDecision.decision) || isAcceptedDecision(decision.decision)) {
+        latestByGoalInLedger.set(decision.goalId, decision)
+      }
+    })
+    latestByGoalInLedger.forEach((decision) => {
       latestByGoal.set(decision.goalId, decision)
     })
   })
@@ -271,6 +280,7 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
 function isAcceptedDecision(decision: string | null | undefined): boolean {
   return decision === 'accepted_pilot'
     || decision === 'accepted_pilot_after_regeneration'
+    || decision === 'accepted_pilot_after_resume'
     || decision === 'accepted_pilot_after_second_regeneration'
     || decision === 'accepted_pilot_after_third_regeneration'
     || decision === 'accepted_pilot_after_user_review_correction'
@@ -332,6 +342,10 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     return row.reviewStatus === 'released' || row.reviewStatus === 'release_approved'
   }).length
   const linkedGoalIds = new Set(visualizedGoals.map((row) => row.goalId))
+  const openProviderDeferredGoalIds = new Set(openProviderDeferred.map((row) => row.goalId))
+  const regularUnlinkedGoals = atomicGoals.filter((goal) => {
+    return !linkedGoalIds.has(goal.id) && !openProviderDeferredGoalIds.has(goal.id)
+  })
   const linkedWithoutAcceptedReview = visualizedGoals.filter((row) => {
     return !isAcceptedDecision(latestDecisionByGoalId.get(row.goalId)?.decision)
   }).map((row) => ({
@@ -368,6 +382,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       openProviderDeferredGoals: openProviderDeferred.length,
       openProviderQuotaGoals: openProviderQuota.length,
       blockedProviderQuotaLedgers: ledgers.filter((ledger) => ledger.status?.includes('blocked_provider_quota')).length,
+      regularUnlinkedGoals: regularUnlinkedGoals.length,
       linkedWithoutAcceptedReview: linkedWithoutAcceptedReview.length,
       acceptedReviewWithoutLink: acceptedReviewWithoutLink.length,
     },
@@ -486,6 +501,7 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
       ['Offene Provider-Deferred-Ziele', summary.openProviderDeferredGoals],
       ['Offene Provider-Quota-Ziele', summary.openProviderQuotaGoals],
       ['Provider-Quota-blockierte Ledger', summary.blockedProviderQuotaLedgers],
+      ['Regulaere unvisualisierte Ziele ohne Deferred-Status', summary.regularUnlinkedGoals],
       ['Verlinkt ohne akzeptierende Review-Entscheidung', summary.linkedWithoutAcceptedReview],
       ['Akzeptierende Review-Entscheidung ohne Link', summary.acceptedReviewWithoutLink],
     ],
@@ -527,6 +543,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.')
   if (hasCurrentResumeWork) {
     lines.push(`- Im aktuellen Resume stehen ${report.currentBatch.resumeGoalIds.length} Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.`)
+  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+    lines.push(`- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur ${summary.openProviderDeferredGoals} Provider-Deferred-Ziel(e).`)
   } else {
     lines.push('- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.')
   }
@@ -562,6 +580,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
     lines.push('  --continue-on-error \\')
     lines.push('  --no-import \\')
     lines.push(`  --prompt-append-dir=${report.currentBatch.promptAppendDir}`)
+  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+    lines.push('npm --prefix app run visualization:plan-batch -- --count 6 --include-deferred')
   } else {
     lines.push('npm --prefix app run visualization:plan-batch -- --count 6')
   }
@@ -569,6 +589,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   if (hasCurrentResumeWork) {
     lines.push('After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
+  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+    lines.push('Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.')
   } else {
     lines.push('After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
   }

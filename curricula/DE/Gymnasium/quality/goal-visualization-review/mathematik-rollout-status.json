@@ -1,58 +1,59 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-02T16:11:55.651Z",
+  "generatedAt": "2026-07-02T18:16:05.326Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
     "currentResumeFilePath": "tmp/goal-visualization-batch-076.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-138"
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-142"
   },
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 723,
-    "coveragePercent": 95.9,
+    "goalsWithPrimaryVisualization": 746,
+    "coveragePercent": 98.9,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 723
+      "pilot": 746
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 723
+      "pilot": 746
     },
-    "reviewLedgerFiles": 138,
+    "reviewLedgerFiles": 142,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
-      "accepted_pilot": 569,
-      "accepted_pilot_after_regeneration": 131,
+      "accepted_pilot": 583,
+      "accepted_pilot_after_regeneration": 139,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 10,
       "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 10,
+      "accepted_pilot_after_user_review_correction": 11,
       "blocked_provider_quota": 5,
-      "deferred_provider_limitation": 8,
+      "deferred_provider_limitation": 9,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
-      "rejected_after_user_review_replaced": 2,
+      "rejected_after_user_review_replaced": 5,
       "rejected_not_linked": 4,
       "rejected_regenerate": 22,
-      "rejected_regenerated": 52,
+      "rejected_regenerated": 69,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 7,
+    "openProviderDeferredGoals": 8,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
-    "linkedWithoutAcceptedReview": 15,
+    "regularUnlinkedGoals": 0,
+    "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-138.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-142.md",
     "latestLedgerStatus": "completed",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-138",
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-142",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
   },
@@ -92,6 +93,13 @@
         "title": "Quadratische Funktionen im Graphen deuten",
         "decision": "deferred_provider_limitation",
         "notes": "Withdrawn after three Nano Banana attempts. Initial batch image paired an upward-opening parabola with bridge/projectile contexts that require downward-opening interpretation. First regeneration labeled a non-root start point as `N1`; second regeneration placed the y-intercept marker away from the y-axis. The active `goal-visualization` link and generated published asset copies were removed. Revisit when the provider handles precise graph labels more reliably."
+      },
+      {
+        "batch": "140",
+        "goalId": "aae119f2-925f-5fc1-b795-b52c9e980863",
+        "title": "Räumliche Objekte im Koordinatensystem verorten",
+        "decision": "deferred_provider_limitation",
+        "notes": "A final reduced-reference retry removed the full cuboid and requested only the three edges `A-B`, `A-D`, and `A-E`, but Nano Banana Pro still drew `A-B` horizontally while labeling the x-axis diagonally and introduced an indirect `A-D` path. Because multiple attempts produced false axis/edge/point relationships, no active goal-visualization link or published asset was created for this goal."
       },
       {
         "batch": "044",
@@ -209,117 +217,18 @@
         "title": "Eigenschaften von Funktionsprodukten graphisch begründen (LK)",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "Accepted after user-review correction with a graph-reference image input. The accepted image has no arrows. It correctly shows `f(x)=x`, `g(x)=2-x`, and `p(x)=x(2-x)`; the table values are `p(-1)=-3`, `p(0)=0`, `p(1)=1`, `p(2)=0`, `p(3)=-3`; the red product graph has zeros at `0` and `2` and the expected downward-opening shape."
+      },
+      {
+        "batch": "139",
+        "goalId": "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+        "title": "Oberflächeninhalte von Körpern berechnen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The accepted correction shows exactly one cuboid with `l=4 cm`, `b=3 cm`, and `h=2 cm`, the formula `O = 2(lb + lh + bh)`, and the correct calculation `O = 2(4*3 + 4*2 + 3*2) cm^2 = 2(12 + 8 + 6) cm^2 = 52 cm^2`. The right-hand net is a connected simple six-rectangle cuboid net with four mantle faces `3 cm x 2 cm`, `4 cm x 2 cm`, `3 cm x 2 cm`, `4 cm x 2 cm`; deck and base are attached to the `3 cm x 2 cm` mantle face and correctly labeled `3 cm x 4 cm`, with vertical proportions matching that orientation. The accepted image has no visible school/subject header, no `Mathematick` typo, no side-hole pattern, no net flaps, and no arrows on or around the net."
       }
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [
-      {
-        "goalId": "12a8dffc-dea7-5f2c-b490-2a1a2bb6901b",
-        "title": "Arithmetische und geometrische Reihen untersuchen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b/12a8dffc-dea7-5f2c-b490-2a1a2bb6901b.jpg",
-        "latestDecision": "accepted_pilot_after_resume"
-      },
-      {
-        "goalId": "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
-        "title": "Die natürliche Logarithmusfunktion als Stammfunktion von 1/x nutzen (LK)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
-        "title": "Funktionsbegriff und Darstellungen verstehen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg",
-        "latestDecision": "accepted_pilot_after_resume"
-      },
-      {
-        "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
-        "title": "Funktionswerte berechnen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/c65ecabf-d00b-4e2d-99ae-b64692325ffb/c65ecabf-d00b-4e2d-99ae-b64692325ffb.jpg",
-        "latestDecision": "accepted_pilot_after_resume"
-      },
-      {
-        "goalId": "509ae03b-96b1-4bb1-b015-b83d14569dae",
-        "title": "Gerade-Gerade-Abstände im Raum bestimmen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/509ae03b-96b1-4bb1-b015-b83d14569dae/509ae03b-96b1-4bb1-b015-b83d14569dae.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "c61af0a9-7d56-5505-a70d-ee097c3b747f",
-        "title": "Grenzwerte von Folgen mit Grenzwertsätzen begründen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/c61af0a9-7d56-5505-a70d-ee097c3b747f/c61af0a9-7d56-5505-a70d-ee097c3b747f.jpg",
-        "latestDecision": "accepted_pilot_after_resume"
-      },
-      {
-        "goalId": "1b888f4c-df57-52a9-9551-b2b692e929fa",
-        "title": "Konvergenz und Divergenz von Folgen beschreiben",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg",
-        "latestDecision": "accepted_pilot_after_resume"
-      },
-      {
-        "goalId": "df7338ef-65ba-5ece-8aec-7f520dfe5710",
-        "title": "Logistisches Wachstum untersuchen (LK)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/df7338ef-65ba-5ece-8aec-7f520dfe5710/df7338ef-65ba-5ece-8aec-7f520dfe5710.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "1e26404a-93ef-45f3-a28c-15679fbae96b",
-        "title": "Natürlichen Logarithmus als Umkehrfunktion verstehen (LK)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/1e26404a-93ef-45f3-a28c-15679fbae96b/1e26404a-93ef-45f3-a28c-15679fbae96b.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
-        "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/e7350739-c89f-5c7b-b4d1-717d6a767298/e7350739-c89f-5c7b-b4d1-717d6a767298.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "899ed286-0cc2-4d6d-ba46-7d4e40a11f41",
-        "title": "Produktregel, Kettenregel und zusammengesetzte Funktionen nutzen (LK)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/899ed286-0cc2-4d6d-ba46-7d4e40a11f41/899ed286-0cc2-4d6d-ba46-7d4e40a11f41.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "963907f9-8d4c-5e1c-945d-10b7be07e1b9",
-        "title": "Richtungsfelder erarbeiten und interpretieren",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/963907f9-8d4c-5e1c-945d-10b7be07e1b9/963907f9-8d4c-5e1c-945d-10b7be07e1b9.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "62a1c6f2-1775-5a19-98e0-ed3dd722039f",
-        "title": "Symmetrieeigenschaften verschobener Funktions- und Ableitungsgraphen begründen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/62a1c6f2-1775-5a19-98e0-ed3dd722039f/62a1c6f2-1775-5a19-98e0-ed3dd722039f.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "1e77bb2f-0cd6-5961-b0fb-230317c73fce",
-        "title": "Volumen von Prismen berechnen (Formelsammlung)",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/1e77bb2f-0cd6-5961-b0fb-230317c73fce/1e77bb2f-0cd6-5961-b0fb-230317c73fce.jpg",
-        "latestDecision": "rejected_regenerated"
-      },
-      {
-        "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",
-        "title": "Wurzelfunktionen beschreiben und darstellen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/5dabf0b3-89b1-59a6-ae57-014f92becd3b/5dabf0b3-89b1-59a6-ae57-014f92becd3b.jpg",
-        "latestDecision": "rejected_regenerated"
-      }
-    ],
+    "linkedWithoutAcceptedReview": [],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -554,6 +463,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/bfbaedb9-b138-590a-87e8-4d87784dda0e/bfbaedb9-b138-590a-87e8-4d87784dda0e.jpg"
+    },
+    {
+      "goalId": "4b16fce6-84cc-52ae-98ca-f88cc518cc28",
+      "title": "Anschlussbedingungen ohne Sprung und Knick modellieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/4b16fce6-84cc-52ae-98ca-f88cc518cc28/4b16fce6-84cc-52ae-98ca-f88cc518cc28.jpg"
     },
     {
       "goalId": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
@@ -1084,6 +1001,14 @@
       "url": "/assets/goal-visualizations/mathematik/eda3a298-4965-525e-878d-f05b9e2d4503/eda3a298-4965-525e-878d-f05b9e2d4503.jpg"
     },
     {
+      "goalId": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+      "title": "Chinesischen Restsatz nutzen (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/e4eaff7f-1e3d-54ea-8a59-02864948b5eb/e4eaff7f-1e3d-54ea-8a59-02864948b5eb.jpg"
+    },
+    {
       "goalId": "3f4d1340-1fbb-5109-b9c2-08fc61303133",
       "title": "Darstellung erstellen und beschriften",
       "phase": "E",
@@ -1354,6 +1279,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/3d49cd27-3a84-50eb-ac35-f0b0bee80df2/3d49cd27-3a84-50eb-ac35-f0b0bee80df2.jpg"
+    },
+    {
+      "goalId": "985d5529-a586-50eb-bd7f-2db2be8906d1",
+      "title": "Ebenen in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/985d5529-a586-50eb-bd7f-2db2be8906d1/985d5529-a586-50eb-bd7f-2db2be8906d1.jpg"
     },
     {
       "goalId": "d785943c-d61b-51a1-a9c2-c36a9e0cc97d",
@@ -1788,6 +1721,14 @@
       "url": "/assets/goal-visualizations/mathematik/781f133a-08bb-54b9-8fda-efa2f8f9b12c/781f133a-08bb-54b9-8fda-efa2f8f9b12c.jpg"
     },
     {
+      "goalId": "1b664036-3c29-5d94-9f42-97069aaa2c53",
+      "title": "Exponentialfunktion durch Taylorpolynome annähern (LK)",
+      "phase": "Q4",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1b664036-3c29-5d94-9f42-97069aaa2c53/1b664036-3c29-5d94-9f42-97069aaa2c53.jpg"
+    },
+    {
       "goalId": "fec30a5a-835a-4932-a436-d83549029486",
       "title": "Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen",
       "phase": "E",
@@ -1882,6 +1823,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/dde9ae98-d97d-598b-92f4-f1616f4d75c8/dde9ae98-d97d-598b-92f4-f1616f4d75c8.jpg"
+    },
+    {
+      "goalId": "1c1754b7-2cd3-5635-824d-ce93f7b99514",
+      "title": "Faktorisierungsverfahren erläutern (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1c1754b7-2cd3-5635-824d-ce93f7b99514/1c1754b7-2cd3-5635-824d-ce93f7b99514.jpg"
     },
     {
       "goalId": "935a68e3-b0c5-5a4a-9b2f-ac43007fdd2e",
@@ -2284,6 +2233,14 @@
       "url": "/assets/goal-visualizations/mathematik/effe43eb-cabe-56cb-a228-35887d7915c1/effe43eb-cabe-56cb-a228-35887d7915c1.jpg"
     },
     {
+      "goalId": "a97c7cce-1343-5d04-926f-4a4f323b3c21",
+      "title": "Geraden in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/a97c7cce-1343-5d04-926f-4a4f323b3c21/a97c7cce-1343-5d04-926f-4a4f323b3c21.jpg"
+    },
+    {
       "goalId": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
       "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
       "phase": "GLOBAL",
@@ -2474,6 +2431,14 @@
       "area": "Data",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/71d43fcc-d787-4874-ae4a-2336364e9c0a/71d43fcc-d787-4874-ae4a-2336364e9c0a.jpg"
+    },
+    {
+      "goalId": "3773bd34-3631-5fd2-b9b7-dfa01adf5abd",
+      "title": "Grundidee von Taylorpolynomen erläutern (LK)",
+      "phase": "Q4",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/3773bd34-3631-5fd2-b9b7-dfa01adf5abd/3773bd34-3631-5fd2-b9b7-dfa01adf5abd.jpg"
     },
     {
       "goalId": "9f2fc0d1-e1e7-4051-ba70-87ba1dd8dd1c",
@@ -2996,6 +2961,14 @@
       "url": "/assets/goal-visualizations/mathematik/06de364f-9b63-4044-8229-a975621dc6df/06de364f-9b63-4044-8229-a975621dc6df.jpg"
     },
     {
+      "goalId": "636b3e2d-c687-5469-8850-e085df06878d",
+      "title": "Körpereigenschaften fachlich begründen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/636b3e2d-c687-5469-8850-e085df06878d/636b3e2d-c687-5469-8850-e085df06878d.jpg"
+    },
+    {
       "goalId": "21342eb9-9cfd-4fbf-b28e-60aa2b48f702",
       "title": "Kreisbeziehungen am Kreis begründen und nutzen",
       "phase": "J8",
@@ -3122,6 +3095,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1462c189-8679-5f32-bf58-6e81e99e4635/1462c189-8679-5f32-bf58-6e81e99e4635.jpg"
+    },
+    {
+      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+      "title": "Laufzeit tabellarisch näherungsweise bestimmen",
+      "phase": "J8",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fc34449a-fbf4-574c-884f-ecdf48b42d2e/fc34449a-fbf4-574c-884f-ecdf48b42d2e.jpg"
     },
     {
       "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
@@ -3524,6 +3505,14 @@
       "url": "/assets/goal-visualizations/mathematik/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0/fb4dcd2a-a6a9-5371-a2fc-95348ee130e0.jpg"
     },
     {
+      "goalId": "d8cbf2bd-2512-5661-b431-4aea7e688912",
+      "title": "Modulare Arithmetik nutzen (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d8cbf2bd-2512-5661-b431-4aea7e688912/d8cbf2bd-2512-5661-b431-4aea7e688912.jpg"
+    },
+    {
       "goalId": "2143e9e8-b176-545b-b2fa-91bbb6c8cf5c",
       "title": "Momentane Änderungsrate qualitativ verstehen",
       "phase": "E",
@@ -3746,6 +3735,14 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/a4f6f5e4-f790-48d1-8b49-c9dc048c9d83/a4f6f5e4-f790-48d1-8b49-c9dc048c9d83.jpg"
+    },
+    {
+      "goalId": "9f9c7ece-b81c-55fa-8073-dd816d7d4778",
+      "title": "Oberflächeninhalte von Körpern berechnen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/9f9c7ece-b81c-55fa-8073-dd816d7d4778/9f9c7ece-b81c-55fa-8073-dd816d7d4778.jpg"
     },
     {
       "goalId": "ed5d869b-af4e-4b80-b34d-a2338e16ce34",
@@ -4124,6 +4121,14 @@
       "url": "/assets/goal-visualizations/mathematik/e9445479-c188-5c09-842d-faa5e8678099/e9445479-c188-5c09-842d-faa5e8678099.jpg"
     },
     {
+      "goalId": "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
+      "title": "Primzahltests erläutern (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d32f599e-3b38-5557-8ad3-565bcd99f4c6/d32f599e-3b38-5557-8ad3-565bcd99f4c6.jpg"
+    },
+    {
       "goalId": "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
       "title": "Probe durch Einsetzen durchführen",
       "phase": "Q4",
@@ -4268,12 +4273,28 @@
       "url": "/assets/goal-visualizations/mathematik/8cb5c712-9c58-5910-8c63-8c3736369b80/8cb5c712-9c58-5910-8c63-8c3736369b80.jpg"
     },
     {
+      "goalId": "d81d888c-6ffa-5751-8a4b-ce2ff3085071",
+      "title": "Punkte im Raum mit Koordinaten beschreiben",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d81d888c-6ffa-5751-8a4b-ce2ff3085071/d81d888c-6ffa-5751-8a4b-ce2ff3085071.jpg"
+    },
+    {
       "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
       "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
       "phase": "J9",
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f242a3e8-55a3-492e-8354-b81b24cdbb78/f242a3e8-55a3-492e-8354-b81b24cdbb78.jpg"
+    },
+    {
+      "goalId": "fcd1d180-ddce-5408-8c5d-70e417b179e7",
+      "title": "Punkte in allgemeinen Raumkonfigurationen spiegeln (LK)",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/fcd1d180-ddce-5408-8c5d-70e417b179e7/fcd1d180-ddce-5408-8c5d-70e417b179e7.jpg"
     },
     {
       "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
@@ -4516,6 +4537,14 @@
       "url": "/assets/goal-visualizations/mathematik/4d55ba50-8d67-560c-a10f-cccff4728c40/4d55ba50-8d67-560c-a10f-cccff4728c40.jpg"
     },
     {
+      "goalId": "315093d4-515a-542c-b776-d72a12763d1a",
+      "title": "Reihendarstellung der eulerschen Zahl angeben (LK)",
+      "phase": "Q4",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/315093d4-515a-542c-b776-d72a12763d1a/315093d4-515a-542c-b776-d72a12763d1a.jpg"
+    },
+    {
       "goalId": "10efb267-9733-5db3-a807-03f4cf54e336",
       "title": "Rekursiv definierte Folgen darstellen und berechnen (LK)",
       "phase": "Q4",
@@ -4602,6 +4631,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/035b7fc6-830d-5f41-9c5d-2495808c09d4/035b7fc6-830d-5f41-9c5d-2495808c09d4.jpg"
+    },
+    {
+      "goalId": "d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb",
+      "title": "Sachzusammenhänge mit Extremstellen modellieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb/d4f2d4e2-a831-5ee2-b9c6-bb9e79986aeb.jpg"
+    },
+    {
+      "goalId": "b88cbf71-5e3e-55e3-ba94-6789408d38d6",
+      "title": "Sachzusammenhänge mit Wendestellen modellieren",
+      "phase": "E",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/b88cbf71-5e3e-55e3-ba94-6789408d38d6/b88cbf71-5e3e-55e3-ba94-6789408d38d6.jpg"
     },
     {
       "goalId": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
@@ -4706,6 +4751,14 @@
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg"
+    },
+    {
+      "goalId": "7680701b-35e3-519e-beaa-09753e733756",
+      "title": "Schrägbilder räumlicher Objekte zeichnen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/7680701b-35e3-519e-beaa-09753e733756/7680701b-35e3-519e-beaa-09753e733756.jpg"
     },
     {
       "goalId": "33f2da84-d6ac-54d2-931a-76aed5cbc0c2",
@@ -5140,6 +5193,22 @@
       "url": "/assets/goal-visualizations/mathematik/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562.jpg"
     },
     {
+      "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+      "title": "Teilungsverhältnisse bei Strecken untersuchen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e.jpg"
+    },
+    {
+      "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",
+      "title": "Teilungsverhältnisse bei Volumina untersuchen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f2a12269-6bcb-564a-9fdb-45cfdbd704fc/f2a12269-6bcb-564a-9fdb-45cfdbd704fc.jpg"
+    },
+    {
       "goalId": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
       "title": "Terme im Bereich rationaler Zahlen äquivalent umformen",
       "phase": "J7",
@@ -5218,6 +5287,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/03357e70-2280-532f-b629-5dfa31dc44eb/03357e70-2280-532f-b629-5dfa31dc44eb.jpg"
+    },
+    {
+      "goalId": "f6574cdc-e29c-5a8f-a009-9f28b3bcf9be",
+      "title": "Tilgung oder Sparrate tabellarisch näherungsweise bestimmen",
+      "phase": "J8",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/f6574cdc-e29c-5a8f-a009-9f28b3bcf9be/f6574cdc-e29c-5a8f-a009-9f28b3bcf9be.jpg"
     },
     {
       "goalId": "7ac32297-023c-5914-9109-6285e4ce5846",
@@ -5740,6 +5817,14 @@
       "url": "/assets/goal-visualizations/mathematik/e9181209-1506-59df-9053-17f36b91bb06/e9181209-1506-59df-9053-17f36b91bb06.jpg"
     },
     {
+      "goalId": "5f548596-9bc3-532e-88a0-81d5029809e9",
+      "title": "Volumeninhalte von Körpern berechnen",
+      "phase": "Q2",
+      "area": "LinearAlgebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/5f548596-9bc3-532e-88a0-81d5029809e9/5f548596-9bc3-532e-88a0-81d5029809e9.jpg"
+    },
+    {
       "goalId": "1f89d69e-ead1-424b-8221-fae37fdea2bc",
       "title": "Volumina und Oberflächen einfacher Körper berechnen",
       "phase": "J6",
@@ -5970,6 +6055,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/14173f5e-d3ba-51e5-b510-49ecd0abad90/14173f5e-d3ba-51e5-b510-49ecd0abad90.jpg"
+    },
+    {
+      "goalId": "1842da92-ca2c-5fed-a946-e6413a6285bb",
+      "title": "Zinssatz tabellarisch näherungsweise bestimmen",
+      "phase": "J8",
+      "area": "Arithmetic",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/1842da92-ca2c-5fed-a946-e6413a6285bb/1842da92-ca2c-5fed-a946-e6413a6285bb.jpg"
     },
     {
       "goalId": "1769fcdc-33a6-586f-9b15-17f6f32579cf",
