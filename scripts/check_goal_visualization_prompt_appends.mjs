@@ -3,6 +3,7 @@ import path from 'node:path'
 
 import {
   DEFAULT_LANDSCAPE_PATH,
+  DEFAULT_SUBJECT_PATH,
   ROOT_DIR,
   createVisualizationPrompt,
   findGoalOrThrow,
@@ -21,6 +22,7 @@ function usage() {
     '',
     'Options:',
     `  --landscape <path>         Landscape JSON. Default: ${DEFAULT_LANDSCAPE_PATH}`,
+    `  --subject <path>           Asset subject path. Default: ${DEFAULT_SUBJECT_PATH}`,
     '  --file <path>              Batch file with one goal ID or title fragment per line.',
     '  --prompt-append-dir <path> Directory with per-goal prompt append files.',
     '  --allow-missing            Do not fail if a goal has no prompt append file.',
@@ -71,6 +73,7 @@ function main() {
   }
 
   const landscapePath = getStringArg(args, 'landscape', DEFAULT_LANDSCAPE_PATH) ?? DEFAULT_LANDSCAPE_PATH
+  const subjectPath = getStringArg(args, 'subject', DEFAULT_SUBJECT_PATH) ?? DEFAULT_SUBJECT_PATH
   const landscape = readLandscape(landscapePath)
   const goalQueries = readGoalsFromFile(file)
   const goals = goalQueries.map((query) => findGoalOrThrow(landscape, query))
@@ -101,7 +104,7 @@ function main() {
       issues.push(`${goal.id}: prompt append file should contain Pflichtinhalt and Vermeiden sections`)
     }
 
-    const providerPrompt = `${createVisualizationPrompt(goal)}\n\nZusatzanweisung:\n${promptAppend}`
+    const providerPrompt = `${createVisualizationPrompt(goal, { subjectPath })}\n\nZusatzanweisung:\n${promptAppend}`
     const leakedGoalId = containsAnyGoalId(providerPrompt, goalIds)
     if (leakedGoalId) {
       issues.push(`${goal.id}: provider prompt contains goal ID ${leakedGoalId}`)

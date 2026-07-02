@@ -159,18 +159,38 @@ export function buildVisualizationPaths(goal, options) {
   }
 }
 
-export function createVisualizationPrompt(goal) {
+function subjectLabelFromPath(subjectPath) {
+  const normalized = (subjectPath ?? DEFAULT_SUBJECT_PATH).split('/').filter(Boolean).at(-1) ?? DEFAULT_SUBJECT_PATH
+  const labels = {
+    biologie: 'Biologie',
+    chemie: 'Chemie',
+    deutsch: 'Deutsch',
+    englisch: 'Englisch',
+    franzoesisch: 'Franzoesisch',
+    geschichte: 'Geschichte',
+    informatik: 'Informatik',
+    mathematik: 'Mathematik',
+    physik: 'Physik',
+    politikwirtschaft: 'Politik und Wirtschaft',
+    wirtschaft: 'Wirtschaft',
+  }
+
+  return labels[normalized] ?? normalized.replace(/(^|-)([a-z])/g, (_, prefix, letter) => `${prefix ? ' ' : ''}${letter.toUpperCase()}`)
+}
+
+export function createVisualizationPrompt(goal, options = {}) {
   const phase = goal.phase ? `\nPhase/Jahrgang: ${goal.phase}` : ''
   const area = goal.area ? `\nBereich: ${goal.area}` : ''
+  const subjectLabel = subjectLabelFromPath(options.subjectPath)
 
   return [
     'Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.',
     '',
     'Rahmen:',
-    '- Zielgruppe: Gymnasium Mathematik.',
+    `- Zielgruppe: Gymnasium ${subjectLabel}; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.`,
     '- Erzeuge eine klare, gut lesbare Infografik im Querformat.',
     '- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.',
-    '- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.',
+    '- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.',
     '- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.',
     '- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.',
     '- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.',

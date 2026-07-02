@@ -313,7 +313,8 @@ async function main() {
   const goal = findGoalOrThrow(landscape, goalQuery)
   const paths = buildVisualizationPaths(goal, { subjectPath, lang, extension })
   const promptAppend = collectPromptAppend(args)
-  const prompt = promptAppend ? `${createVisualizationPrompt(goal)}\n\nZusatzanweisung:\n${promptAppend}` : createVisualizationPrompt(goal)
+  const basePrompt = createVisualizationPrompt(goal, { subjectPath })
+  const prompt = promptAppend ? `${basePrompt}\n\nZusatzanweisung:\n${promptAppend}` : basePrompt
   const description =
     getStringArg(args, 'description') ?? `Visualisierung zum Lernziel: ${goal.title}.`
   const altText =

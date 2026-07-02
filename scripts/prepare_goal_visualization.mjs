@@ -58,7 +58,7 @@ function main() {
   const landscape = readLandscape(landscapePath)
   const goal = findGoalOrThrow(landscape, goalQuery)
   const paths = buildVisualizationPaths(goal, { subjectPath, lang, extension: 'png' })
-  const rawPrompt = createVisualizationPrompt(goal)
+  const rawPrompt = createVisualizationPrompt(goal, { subjectPath })
   const promptMarkdown = createPromptMetadataMarkdown(goal, {
     provider,
     reviewStatus,
