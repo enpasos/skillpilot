@@ -25,6 +25,8 @@ const FORWARDED_OPTIONS = [
   'review-status',
   'prompt-append',
   'prompt-append-file',
+  'reference-image',
+  'reference-image-mime-type',
 ]
 const TEMPORARY_PROVIDER_FAILURE_EXIT_CODE = 75
 
@@ -50,6 +52,7 @@ function usage() {
     '                              Default: <batch-file>.resume.txt or tmp/goal-visualization-resume-after-provider-failure.txt.',
     '  --prompt-append-file <path> Shared extra provider instruction read from a UTF-8 text/Markdown file.',
     '  --prompt-append-dir <path>  Directory with per-goal prompt append files named <goal-id>.md or <goal-id>.txt.',
+    '  --reference-image <path>    Shared reference image input forwarded to the provider.',
     '  plus shared single-goal options such as --aspect-ratio, --image-size, --mime-type, --prompt-append.',
   ].join('\n')
 }

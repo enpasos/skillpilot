@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-02T00:17:41.911Z
+Generated: 2026-07-02T14:24:37.173Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,13 +18,13 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 706 |
-| Coverage | 93.6% |
+| Ziele mit primaerem Visualisierungslink | 707 |
+| Coverage | 93.8% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 135 |
-| Offene Provider-Deferred-Ziele | 6 |
-| Offene Provider-Quota-Ziele | 0 |
-| Provider-Quota-blockierte Ledger | 2 |
+| Review-Ledger-Dateien | 136 |
+| Offene Provider-Deferred-Ziele | 7 |
+| Offene Provider-Quota-Ziele | 4 |
+| Provider-Quota-blockierte Ledger | 3 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 15 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -32,22 +32,23 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 706 |
+| `pilot` | 707 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 557 |
+| `accepted_pilot` | 558 |
 | `accepted_pilot_after_regeneration` | 130 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 9 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 9 |
 | `blocked_provider_quota` | 5 |
-| `deferred_provider_limitation` | 7 |
+| `deferred_provider_limitation` | 8 |
 | `not_attempted_after_quota_block` | 4 |
+| `not_generated_provider_quota` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 2 |
@@ -60,8 +61,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-135.md` |
-| Latest ledger status | `completed_after_resume` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-136.md` |
+| Latest ledger status | `partial_blocked_provider_quota_and_provider_limitation` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -81,6 +82,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| 136 | `ebc41c8b-5754-5161-9b07-f4525b9fd9b4` | Eigenschaften von Funktionssummen graphisch begründen (LK) | `deferred_provider_limitation` |
 | 131 | `cf8c5677-f3c5-5563-8f0a-68443fbab7bf` | Geometrische Probleme mit Ortslinien konstruieren | `deferred_provider_limitation` |
 | 044 | `786ae588-a4fb-40e6-a7f5-113cfc2bfd0f` | Kosinussatz herleiten | `deferred_provider_limitation` |
 | 046 | `57f6d5e4-7c24-4e70-9cf6-737f01d79914` | Punkte und Geraden im räumlichen Koordinatensystem darstellen | `deferred_provider_limitation` |
@@ -90,7 +92,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 ### Open Provider Quota
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 136 | `0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85` | Eigenschaften von Funktionsprodukten graphisch begründen (LK) | `not_generated_provider_quota` |
+| 136 | `c371b3f0-dd0e-5263-b616-de6c362f70db` | Erweiterten euklidischen Algorithmus anwenden (LK) | `not_generated_provider_quota` |
+| 136 | `16767f5e-5f21-5adb-8365-01b0d64c28f4` | Euklidische Algorithmen digital nachvollziehen (LK) | `not_generated_provider_quota` |
+| 136 | `c1f08d89-d65a-5041-8ff3-37538f771b8c` | Euklidischen Algorithmus anwenden (LK) | `not_generated_provider_quota` |
 
 ### Rejected Not Linked
 
