@@ -49,6 +49,8 @@ function usage() {
     `  --mime-type <mime>         Image MIME type. Default: ${DEFAULT_MIME_TYPE}`,
     '  --prompt-append <text>     Extra provider instruction appended to the generated prompt.',
     '  --prompt-append-file <path> Extra provider instruction read from a UTF-8 text/Markdown file.',
+    '  --reference-image <path>    Optional image input sent to the provider together with the prompt.',
+    '  --reference-image-mime-type <mime> MIME type for --reference-image. Inferred from file extension by default.',
     '  --description <text>       Optional resourceLink description.',
     '  --alt-text <text>          Optional resourceLink alt text.',
     '  --review-status <status>   Default: pilot.',
@@ -82,6 +84,32 @@ function extensionFromMimeType(mimeType) {
   if (mimeType === 'image/png') return 'png'
   if (mimeType === 'image/webp') return 'webp'
   throw new Error(`Unsupported mime type: ${mimeType}`)
+}
+
+function mimeTypeFromImagePath(imagePath) {
+  const extension = path.extname(imagePath).toLowerCase()
+  if (extension === '.jpg' || extension === '.jpeg') return 'image/jpeg'
+  if (extension === '.png') return 'image/png'
+  if (extension === '.webp') return 'image/webp'
+  throw new Error(`Cannot infer MIME type for reference image: ${imagePath}`)
+}
+
+function readReferenceImage(inputPath, explicitMimeType) {
+  if (!inputPath) return undefined
+
+  const imagePath = resolveProjectPath(inputPath)
+  if (!fs.existsSync(imagePath)) {
+    throw new Error(`Reference image does not exist: ${inputPath}`)
+  }
+
+  const mimeType = explicitMimeType ?? mimeTypeFromImagePath(imagePath)
+  extensionFromMimeType(mimeType)
+
+  return {
+    path: imagePath,
+    mimeType,
+    data: fs.readFileSync(imagePath).toString('base64'),
+  }
 }
 
 function getApiKey() {
@@ -166,10 +194,21 @@ function summarizeResponse(response) {
   }
 }
 
-async function requestImage({ endpoint, apiKey, model, prompt, mimeType, aspectRatio, imageSize }) {
-  const body = {
+function buildRequestBody({ model, prompt, mimeType, aspectRatio, imageSize, referenceImage }) {
+  const input = referenceImage
+    ? [
+        { type: 'text', text: prompt },
+        {
+          type: 'image',
+          mime_type: referenceImage.mimeType,
+          data: referenceImage.data,
+        },
+      ]
+    : prompt
+
+  return {
     model,
-    input: prompt,
+    input,
     response_format: {
       type: 'image',
       mime_type: mimeType,
@@ -177,14 +216,16 @@ async function requestImage({ endpoint, apiKey, model, prompt, mimeType, aspectR
       image_size: imageSize,
     },
   }
+}
 
+async function requestImage({ endpoint, apiKey, requestBody }) {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'x-goog-api-key': apiKey,
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(requestBody),
   })
 
   const responseText = await response.text()
@@ -199,7 +240,7 @@ async function requestImage({ endpoint, apiKey, model, prompt, mimeType, aspectR
     throw new Error(`Gemini API failed (${response.status}): ${JSON.stringify(payload, null, 2)}`)
   }
 
-  return { payload, body }
+  return { payload, body: requestBody }
 }
 
 function isTemporaryProviderFailure(error) {
@@ -263,6 +304,10 @@ async function main() {
   const license = getStringArg(args, 'license', DEFAULT_LICENSE) ?? DEFAULT_LICENSE
   const dryRun = getBooleanArg(args, 'dry-run')
   const shouldImport = !getBooleanArg(args, 'no-import')
+  const referenceImage = readReferenceImage(
+    getStringArg(args, 'reference-image'),
+    getStringArg(args, 'reference-image-mime-type'),
+  )
 
   const landscape = readLandscape(landscapePath)
   const goal = findGoalOrThrow(landscape, goalQuery)
@@ -292,22 +337,23 @@ async function main() {
     'utf-8',
   )
 
-  const requestBody = {
+  const requestBody = buildRequestBody({
     model,
-    input: prompt,
-    response_format: {
-      type: 'image',
-      mime_type: mimeType,
-      aspect_ratio: aspectRatio,
-      image_size: imageSize,
-    },
-  }
+    prompt,
+    mimeType,
+    aspectRatio,
+    imageSize,
+    referenceImage,
+  })
   const requestPath = path.join(workDir, 'nano-banana-request.json')
   fs.writeFileSync(requestPath, `${JSON.stringify(requestBody, null, 2)}\n`, 'utf-8')
 
   console.log(`Goal: ${goal.title}`)
   console.log(`SkillPilot ID: ${goal.id}`)
   console.log(`Prompt: ${toProjectPath(promptPath)}`)
+  if (referenceImage) {
+    console.log(`Reference image: ${toProjectPath(referenceImage.path)} (${referenceImage.mimeType})`)
+  }
   console.log(`Request: ${toProjectPath(requestPath)}`)
 
   if (dryRun) {
@@ -325,11 +371,7 @@ async function main() {
   const { payload } = await requestImage({
     endpoint,
     apiKey,
-    model,
-    prompt,
-    mimeType,
-    aspectRatio,
-    imageSize,
+    requestBody,
   })
 
   const responseSummaryPath = path.join(workDir, 'nano-banana-response-summary.json')

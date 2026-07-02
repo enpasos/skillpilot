@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-02T00:17:41.911Z",
+  "generatedAt": "2026-07-02T14:24:37.173Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -11,27 +11,28 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 706,
-    "coveragePercent": 93.6,
+    "goalsWithPrimaryVisualization": 707,
+    "coveragePercent": 93.8,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 706
+      "pilot": 707
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 706
+      "pilot": 707
     },
-    "reviewLedgerFiles": 135,
+    "reviewLedgerFiles": 136,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
-      "accepted_pilot": 557,
+      "accepted_pilot": 558,
       "accepted_pilot_after_regeneration": 130,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 9,
       "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 9,
       "blocked_provider_quota": 5,
-      "deferred_provider_limitation": 7,
+      "deferred_provider_limitation": 8,
       "not_attempted_after_quota_block": 4,
+      "not_generated_provider_quota": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
       "rejected_after_user_review_replaced": 2,
@@ -40,15 +41,15 @@
       "rejected_regenerated": 52,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 6,
-    "openProviderQuotaGoals": 0,
-    "blockedProviderQuotaLedgers": 2,
+    "openProviderDeferredGoals": 7,
+    "openProviderQuotaGoals": 4,
+    "blockedProviderQuotaLedgers": 3,
     "linkedWithoutAcceptedReview": 15,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-135.md",
-    "latestLedgerStatus": "completed_after_resume",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-136.md",
+    "latestLedgerStatus": "partial_blocked_provider_quota_and_provider_limitation",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -58,6 +59,13 @@
   },
   "qualityQueues": {
     "openProviderDeferred": [
+      {
+        "batch": "136",
+        "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
+        "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
+        "decision": "deferred_provider_limitation",
+        "notes": "Removed after user review. The first image had a misleading `h(1)=2` arrow whose visible length was only `1`; later text-only correction attempts still showed an unreliable `h(x)=x^2+x` graph. A final Nano Banana Pro attempt with a graphing-calculator reference image input produced a visually nicer image, but `g(x)=x` was not reliably represented as a straight line, so the active link and asset copies were removed."
+      },
       {
         "batch": "131",
         "goalId": "cf8c5677-f3c5-5563-8f0a-68443fbab7bf",
@@ -101,7 +109,36 @@
         "notes": "Withdrawn after user review: repeated Nano Banana Pro attempts represented angle measurement with the Geodreieck incorrectly or ambiguously. Fachliche requirement: the Geodreieck keeps its fixed 45-45-90 shape; for measuring, its zero point/midpoint lies on the angle vertex and the long base lies on one side of the angle. The active `resourceLinks` image reference and published asset copies were removed. Revisit when the provider handles precise tool-use diagrams more reliably."
       }
     ],
-    "openProviderQuota": [],
+    "openProviderQuota": [
+      {
+        "batch": "136",
+        "goalId": "0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85",
+        "title": "Eigenschaften von Funktionsprodukten graphisch begründen (LK)",
+        "decision": "not_generated_provider_quota",
+        "notes": "The initially imported image was removed after user review because table-to-graph arrows could be read as pointing to wrong product values, especially around `p(-1)=-3` and `p(1)=1`. A corrected no-arrow regeneration prompt was prepared, but Nano Banana Pro returned Gemini `429`; no active image remains linked."
+      },
+      {
+        "batch": "136",
+        "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
+        "title": "Erweiterten euklidischen Algorithmus anwenden (LK)",
+        "decision": "not_generated_provider_quota",
+        "notes": "The remaining-goals resume file was not reached after the provider stopped with Gemini `429` on the first open goal. No accepted image was produced or linked."
+      },
+      {
+        "batch": "136",
+        "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+        "title": "Euklidische Algorithmen digital nachvollziehen (LK)",
+        "decision": "not_generated_provider_quota",
+        "notes": "The remaining-goals resume file was not reached after the provider stopped with Gemini `429` on the first open goal. No accepted image was produced or linked."
+      },
+      {
+        "batch": "136",
+        "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+        "title": "Euklidischen Algorithmus anwenden (LK)",
+        "decision": "not_generated_provider_quota",
+        "notes": "The provider stopped with Gemini `429` before producing an image candidate. No accepted image was produced or linked."
+      }
+    ],
     "rejectedNotLinked": [
       {
         "batch": "035",
@@ -1396,6 +1433,14 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e/e0c3359d-7d8a-4d01-a25e-a8cd5ebce90e.jpg"
+    },
+    {
+      "goalId": "91311908-9209-58e4-8429-99dad9df546d",
+      "title": "Eigenschaften von Funktionsverkettungen graphisch begründen (LK)",
+      "phase": "Q2",
+      "area": "Analysis",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/91311908-9209-58e4-8429-99dad9df546d/91311908-9209-58e4-8429-99dad9df546d.jpg"
     },
     {
       "goalId": "87372f49-c832-50f6-921f-ec9a6804d58a",
