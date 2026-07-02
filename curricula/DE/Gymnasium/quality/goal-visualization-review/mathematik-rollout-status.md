@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-02T15:50:50.428Z
+Generated: 2026-07-02T16:11:55.651Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,10 +18,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 711 |
-| Coverage | 94.3% |
+| Ziele mit primaerem Visualisierungslink | 723 |
+| Coverage | 95.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 136 |
+| Review-Ledger-Dateien | 138 |
 | Offene Provider-Deferred-Ziele | 7 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -32,15 +32,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 711 |
+| `pilot` | 723 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 558 |
-| `accepted_pilot_after_regeneration` | 130 |
+| `accepted_pilot` | 569 |
+| `accepted_pilot_after_regeneration` | 131 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 10 |
 | `accepted_pilot_after_third_regeneration` | 5 |
@@ -60,12 +60,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-136.md` |
-| Latest ledger status | `completed_with_one_deferred_provider_limitation` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-138.md` |
+| Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-138` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -156,5 +156,5 @@ After planning a batch: create prompt append files, generate candidates with `--
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 - Resume file: `tmp/goal-visualization-batch-076.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-076`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-138`
 
