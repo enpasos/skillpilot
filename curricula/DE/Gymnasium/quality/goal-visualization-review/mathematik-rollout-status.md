@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-01T20:48:37.234Z
+Generated: 2026-07-02T00:17:41.911Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,11 +18,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 623 |
-| Coverage | 82.6% |
+| Ziele mit primaerem Visualisierungslink | 706 |
+| Coverage | 93.6% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 121 |
-| Offene Provider-Deferred-Ziele | 5 |
+| Review-Ledger-Dateien | 135 |
+| Offene Provider-Deferred-Ziele | 6 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 15 |
@@ -32,36 +32,36 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 623 |
+| `pilot` | 706 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 492 |
-| `accepted_pilot_after_regeneration` | 115 |
+| `accepted_pilot` | 557 |
+| `accepted_pilot_after_regeneration` | 130 |
 | `accepted_pilot_after_resume` | 5 |
-| `accepted_pilot_after_second_regeneration` | 7 |
-| `accepted_pilot_after_third_regeneration` | 2 |
+| `accepted_pilot_after_second_regeneration` | 9 |
+| `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 9 |
 | `blocked_provider_quota` | 5 |
-| `deferred_provider_limitation` | 6 |
+| `deferred_provider_limitation` | 7 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 2 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 29 |
+| `rejected_regenerated` | 52 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-121.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-135.md` |
+| Latest ledger status | `completed_after_resume` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -81,6 +81,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| 131 | `cf8c5677-f3c5-5563-8f0a-68443fbab7bf` | Geometrische Probleme mit Ortslinien konstruieren | `deferred_provider_limitation` |
 | 044 | `786ae588-a4fb-40e6-a7f5-113cfc2bfd0f` | Kosinussatz herleiten | `deferred_provider_limitation` |
 | 046 | `57f6d5e4-7c24-4e70-9cf6-737f01d79914` | Punkte und Geraden im räumlichen Koordinatensystem darstellen | `deferred_provider_limitation` |
 | 078 | `29ce4053-b5c5-4a82-9ff0-3acc492284d8` | Quadratische Funktionen im Graphen deuten | `deferred_provider_limitation` |
