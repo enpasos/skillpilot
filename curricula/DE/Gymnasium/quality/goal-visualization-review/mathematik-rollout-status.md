@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-02T18:16:05.326Z
+Generated: 2026-07-02T18:39:14.116Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,11 +18,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 746 |
-| Coverage | 98.9% |
+| Ziele mit primaerem Visualisierungslink | 752 |
+| Coverage | 99.7% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 142 |
-| Offene Provider-Deferred-Ziele | 8 |
+| Review-Ledger-Dateien | 143 |
+| Offene Provider-Deferred-Ziele | 2 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -33,19 +33,19 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 746 |
+| `pilot` | 752 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 583 |
-| `accepted_pilot_after_regeneration` | 139 |
+| `accepted_pilot` | 586 |
+| `accepted_pilot_after_regeneration` | 141 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 10 |
 | `accepted_pilot_after_third_regeneration` | 5 |
-| `accepted_pilot_after_user_review_correction` | 11 |
+| `accepted_pilot_after_user_review_correction` | 12 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 9 |
 | `not_attempted_after_quota_block` | 4 |
@@ -54,19 +54,19 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_after_user_review_replaced` | 5 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 69 |
+| `rejected_regenerated` | 73 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-142.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-143.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-142` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-143` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -74,7 +74,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 8 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 2 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -83,13 +83,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | 136 | `ebc41c8b-5754-5161-9b07-f4525b9fd9b4` | Eigenschaften von Funktionssummen graphisch begründen (LK) | `deferred_provider_limitation` |
-| 131 | `cf8c5677-f3c5-5563-8f0a-68443fbab7bf` | Geometrische Probleme mit Ortslinien konstruieren | `deferred_provider_limitation` |
-| 044 | `786ae588-a4fb-40e6-a7f5-113cfc2bfd0f` | Kosinussatz herleiten | `deferred_provider_limitation` |
-| 046 | `57f6d5e4-7c24-4e70-9cf6-737f01d79914` | Punkte und Geraden im räumlichen Koordinatensystem darstellen | `deferred_provider_limitation` |
-| 078 | `29ce4053-b5c5-4a82-9ff0-3acc492284d8` | Quadratische Funktionen im Graphen deuten | `deferred_provider_limitation` |
 | 140 | `aae119f2-925f-5fc1-b795-b52c9e980863` | Räumliche Objekte im Koordinatensystem verorten | `deferred_provider_limitation` |
-| 044 | `ef40a255-b6d4-4a1e-93b1-b79e65fb585d` | Sinus- und Kosinussatz begründen und anwenden | `deferred_provider_limitation` |
-| 003 | `2331caf2-ccb2-5492-9fc6-48763b848bae` | Winkel messen, zeichnen und fachsprachlich beschreiben | `deferred_provider_limitation` |
 
 ### Open Provider Quota
 
@@ -119,6 +113,7 @@ Keine Eintraege.
 | 119 | `5e893892-393e-5df0-b705-fb3b3458122f` | Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben | `accepted_pilot_after_user_review_correction` |
 | 136 | `0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85` | Eigenschaften von Funktionsprodukten graphisch begründen (LK) | `accepted_pilot_after_user_review_correction` |
 | 139 | `9f9c7ece-b81c-55fa-8073-dd816d7d4778` | Oberflächeninhalte von Körpern berechnen | `accepted_pilot_after_user_review_correction` |
+| 143 | `2331caf2-ccb2-5492-9fc6-48763b848bae` | Winkel messen, zeichnen und fachsprachlich beschreiben | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
@@ -143,5 +138,5 @@ Use this only for an intentional provider-limitation revisit. Generated candidat
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 - Resume file: `tmp/goal-visualization-batch-076.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-142`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-143`
 
