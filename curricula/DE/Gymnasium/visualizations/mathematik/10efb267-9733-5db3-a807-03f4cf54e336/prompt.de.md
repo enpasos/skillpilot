@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image, corrected no-arrow retry)
 - Status: pilot
 - Quellbild: `10efb267-9733-5db3-a807-03f4cf54e336.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/10efb267-9733-5db3-a807-03f4cf54e336/10efb267-9733-5db3-a807-03f4cf54e336.jpg`
@@ -35,7 +35,11 @@ Pflichtinhalt:
 
 Show one recursive sequence only: Fibonacci-style start values `a_1 = 1`, `a_2 = 1`, and recursion `a_n = a_{n-1} + a_{n-2}` for `n >= 3`.
 Use a clean table with exactly these values: `n: 1, 2, 3, 4, 5, 6` and `a_n: 1, 1, 2, 3, 5, 8`.
-Make the dependence visible with text or brackets: each new value is the sum of the two previous values.
+Show the calculation in a separate list below the table, not between table cells:
+`a_3 = a_2 + a_1 = 1 + 1 = 2`
+`a_4 = a_3 + a_2 = 2 + 1 = 3`
+`a_5 = a_4 + a_3 = 3 + 2 = 5`
+`a_6 = a_5 + a_4 = 5 + 3 = 8`
 Keep all notation readable and German labels short.
 
 Vermeiden:
@@ -43,7 +47,8 @@ Vermeiden:
 Do not mix in a Newton sequence or an explicit closed formula.
 Do not change the start values.
 Do not show a wrong Fibonacci row such as `1, 2, 3, 5, 8, 13` when `a_1 = 1` and `a_2 = 1` are displayed.
-Avoid arrows. If any arrow is used, its source must be one of the two previous values and its target must be the correct next value.
+Use absolutely no arrows, no arrowheads, no curved arrows, no pointer tails, and no brace arrows between table cells.
+Do not place calculation labels under table-cell braces; use only the separate calculation list.
 ```
 
 ## Review-Notiz
