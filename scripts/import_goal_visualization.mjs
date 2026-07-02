@@ -132,7 +132,7 @@ function main() {
     getStringArg(args, 'alt-text') ??
     `Didaktische Visualisierung zum Lernziel "${goal.title}". ${goal.description ?? ''}`.trim()
   const rawPrompt =
-    readPromptForGoal(goal.id, lang, getStringArg(args, 'prompt')) ?? createVisualizationPrompt(goal)
+    readPromptForGoal(goal.id, lang, getStringArg(args, 'prompt')) ?? createVisualizationPrompt(goal, { subjectPath })
   const promptMarkdown = createPromptMetadataMarkdown(goal, {
     provider,
     reviewStatus,

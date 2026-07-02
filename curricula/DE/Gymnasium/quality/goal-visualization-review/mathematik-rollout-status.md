@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-02T18:48:10.892Z
+Generated: 2026-07-02T21:25:15.669Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -66,9 +66,9 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-144` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
 | Prompt append dir exists | yes |
-| Prompt append files | 2 |
+| Prompt append files | 6 |
 
 ## Interpretation
 
@@ -136,5 +136,5 @@ After planning a batch: create prompt append files, generate candidates with `--
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 - Resume file: `tmp/goal-visualization-batch-076.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-144`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-076`
 
