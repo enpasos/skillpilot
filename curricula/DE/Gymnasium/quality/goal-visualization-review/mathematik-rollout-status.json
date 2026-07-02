@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-02T14:24:37.173Z",
+  "generatedAt": "2026-07-02T15:34:57.102Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -11,14 +11,14 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 707,
-    "coveragePercent": 93.8,
+    "goalsWithPrimaryVisualization": 710,
+    "coveragePercent": 94.2,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 707
+      "pilot": 710
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 707
+      "pilot": 710
     },
     "reviewLedgerFiles": 136,
     "reviewDecisionCounts": {
@@ -26,13 +26,13 @@
       "accepted_pilot": 558,
       "accepted_pilot_after_regeneration": 130,
       "accepted_pilot_after_resume": 5,
-      "accepted_pilot_after_second_regeneration": 9,
-      "accepted_pilot_after_third_regeneration": 3,
+      "accepted_pilot_after_second_regeneration": 10,
+      "accepted_pilot_after_third_regeneration": 5,
       "accepted_pilot_after_user_review_correction": 9,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 8,
       "not_attempted_after_quota_block": 4,
-      "not_generated_provider_quota": 4,
+      "not_generated_provider_quota": 1,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
       "rejected_after_user_review_replaced": 2,
@@ -42,14 +42,14 @@
       "rejected_removed": 1
     },
     "openProviderDeferredGoals": 7,
-    "openProviderQuotaGoals": 4,
-    "blockedProviderQuotaLedgers": 3,
+    "openProviderQuotaGoals": 1,
+    "blockedProviderQuotaLedgers": 2,
     "linkedWithoutAcceptedReview": 15,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
     "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-136.md",
-    "latestLedgerStatus": "partial_blocked_provider_quota_and_provider_limitation",
+    "latestLedgerStatus": "partial_complete_with_provider_quota_and_limitation",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -116,27 +116,6 @@
         "title": "Eigenschaften von Funktionsprodukten graphisch begründen (LK)",
         "decision": "not_generated_provider_quota",
         "notes": "The initially imported image was removed after user review because table-to-graph arrows could be read as pointing to wrong product values, especially around `p(-1)=-3` and `p(1)=1`. A corrected no-arrow regeneration prompt was prepared, but Nano Banana Pro returned Gemini `429`; no active image remains linked."
-      },
-      {
-        "batch": "136",
-        "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
-        "title": "Erweiterten euklidischen Algorithmus anwenden (LK)",
-        "decision": "not_generated_provider_quota",
-        "notes": "The remaining-goals resume file was not reached after the provider stopped with Gemini `429` on the first open goal. No accepted image was produced or linked."
-      },
-      {
-        "batch": "136",
-        "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
-        "title": "Euklidische Algorithmen digital nachvollziehen (LK)",
-        "decision": "not_generated_provider_quota",
-        "notes": "The remaining-goals resume file was not reached after the provider stopped with Gemini `429` on the first open goal. No accepted image was produced or linked."
-      },
-      {
-        "batch": "136",
-        "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
-        "title": "Euklidischen Algorithmus anwenden (LK)",
-        "decision": "not_generated_provider_quota",
-        "notes": "The provider stopped with Gemini `429` before producing an image candidate. No accepted image was produced or linked."
       }
     ],
     "rejectedNotLinked": [
@@ -1721,6 +1700,30 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/0d21097c-09bf-5375-8c56-34ce8dc5bc35/0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg"
+    },
+    {
+      "goalId": "c371b3f0-dd0e-5263-b616-de6c362f70db",
+      "title": "Erweiterten euklidischen Algorithmus anwenden (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c371b3f0-dd0e-5263-b616-de6c362f70db/c371b3f0-dd0e-5263-b616-de6c362f70db.jpg"
+    },
+    {
+      "goalId": "16767f5e-5f21-5adb-8365-01b0d64c28f4",
+      "title": "Euklidische Algorithmen digital nachvollziehen (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/16767f5e-5f21-5adb-8365-01b0d64c28f4/16767f5e-5f21-5adb-8365-01b0d64c28f4.jpg"
+    },
+    {
+      "goalId": "c1f08d89-d65a-5041-8ff3-37538f771b8c",
+      "title": "Euklidischen Algorithmus anwenden (LK)",
+      "phase": "Q4",
+      "area": "Algebra",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/mathematik/c1f08d89-d65a-5041-8ff3-37538f771b8c/c1f08d89-d65a-5041-8ff3-37538f771b8c.jpg"
     },
     {
       "goalId": "ccd47872-4d9d-44db-8c8d-eda24019b502",

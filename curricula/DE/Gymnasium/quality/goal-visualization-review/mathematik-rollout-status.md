@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-02T14:24:37.173Z
+Generated: 2026-07-02T15:34:57.102Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,13 +18,13 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 707 |
-| Coverage | 93.8% |
+| Ziele mit primaerem Visualisierungslink | 710 |
+| Coverage | 94.2% |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 136 |
 | Offene Provider-Deferred-Ziele | 7 |
-| Offene Provider-Quota-Ziele | 4 |
-| Provider-Quota-blockierte Ledger | 3 |
+| Offene Provider-Quota-Ziele | 1 |
+| Provider-Quota-blockierte Ledger | 2 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 15 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -32,7 +32,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 707 |
+| `pilot` | 710 |
 
 ## Ledger Decisions
 
@@ -42,13 +42,13 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot` | 558 |
 | `accepted_pilot_after_regeneration` | 130 |
 | `accepted_pilot_after_resume` | 5 |
-| `accepted_pilot_after_second_regeneration` | 9 |
-| `accepted_pilot_after_third_regeneration` | 3 |
+| `accepted_pilot_after_second_regeneration` | 10 |
+| `accepted_pilot_after_third_regeneration` | 5 |
 | `accepted_pilot_after_user_review_correction` | 9 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 8 |
 | `not_attempted_after_quota_block` | 4 |
-| `not_generated_provider_quota` | 4 |
+| `not_generated_provider_quota` | 1 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 2 |
@@ -62,7 +62,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Metric | Value |
 | --- | --- |
 | Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-136.md` |
-| Latest ledger status | `partial_blocked_provider_quota_and_provider_limitation` |
+| Latest ledger status | `partial_complete_with_provider_quota_and_limitation` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -95,9 +95,6 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | 136 | `0c5e2ed1-4efb-5bdb-a8e5-fe830eb92c85` | Eigenschaften von Funktionsprodukten graphisch begründen (LK) | `not_generated_provider_quota` |
-| 136 | `c371b3f0-dd0e-5263-b616-de6c362f70db` | Erweiterten euklidischen Algorithmus anwenden (LK) | `not_generated_provider_quota` |
-| 136 | `16767f5e-5f21-5adb-8365-01b0d64c28f4` | Euklidische Algorithmen digital nachvollziehen (LK) | `not_generated_provider_quota` |
-| 136 | `c1f08d89-d65a-5041-8ff3-37538f771b8c` | Euklidischen Algorithmus anwenden (LK) | `not_generated_provider_quota` |
 
 ### Rejected Not Linked
 
