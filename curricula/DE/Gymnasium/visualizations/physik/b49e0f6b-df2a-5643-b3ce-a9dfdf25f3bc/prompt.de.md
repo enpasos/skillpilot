@@ -34,26 +34,27 @@ Zusatzanweisung:
 Pflichtinhalt:
 
 - Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Präzessionsbewegungen erklären`.
-- Use only a static card layout. Do not draw a physical scene, coordinate system, vector diagram, spinning top path, gyroscope path, or motion sketch.
-- If an icon is used, it must be a plain still silhouette without lines, arrowheads, arcs, trails, rotation marks, or pointer lines. Safer: no icon.
-- Show exactly these idea cards:
-  - `Drehimpuls L zeigt entlang der Rotationsachse`
-  - `äußeres Drehmoment ändert die Richtung von L`
-  - `die Achse wandert seitlich: Präzession`
-  - `keine einfache Kippbewegung nach unten`
-- Add a relation card with exactly this wording:
-  - `Drehmoment bewirkt eine Änderung des Drehimpulses`
-- Add a warning card: `Keine Pfeildiagramme: Vektoren nur mit korrekter Richtung zeichnen`.
-- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular marks, motion trails, pointer lines, connectors, flow lines, or `->` symbols anywhere in the image. Use cards and labels only.
+- Create an appealing German cartoon learning image titled `Präzessionsbewegungen erklären`.
+- Make it visual-first: at least two thirds of the image area must be a single clear illustration, not cards or text blocks.
+- Show exactly one solid tilted spinning top on a table. Its pointed tip touches one fixed black dot on the table.
+- Show the current rotation axis as a plain straight line through the tilted top and the fixed black dot, with no arrowhead. The label `L` may sit near this axis without a pointer line.
+- Show two additional semi-transparent ghost axis lines only, also starting exactly at the same fixed black dot, with no duplicate top bodies. Use small labels `1`, `2`, `3` near the three axis directions.
+- Add a small top-view inset: one central fixed dot and three short radial line segments from that same dot, labeled `1`, `2`, `3`. No circular path, no arrowhead.
+- Add only two tiny visual labels near the illustration: `fester Auflagepunkt` and `Präzession`. They must be labels, not cards.
+- The drawing must make clear that the contact point stays fixed and the axis direction changes sideways around it.
+- Strict arrow rule: no arrowheads, vector arrows, force arrows, torque arrows, angular-momentum arrows, precession arrows, circular arrows, curved direction marks, motion trails, pointer lines, connectors, flow lines, or `->` symbols anywhere in the image. Plain axis lines and numbered ghost-axis positions are allowed.
+- Visible learner text must be limited to the title, `L`, `fester Auflagepunkt`, `Präzession`, and `1`, `2`, `3`. Do not add cards, notes, warnings, checklists, instructions, or production guidance.
 
 Vermeiden:
 
 - Do not draw torque arrows, angular momentum arrows, precession arrows, circular arrows, or curved motion trails.
 - Do not show the top simply falling straight down.
 - Do not imply that precession happens without an external torque.
-- Do not include formulas beyond the qualitative relation listed above.
+- Do not include formulas.
 - Do not draw a vector triangle unless all directions are mathematically correct; safer: draw no vectors.
+- Do not create a text-card layout.
+- Do not draw multiple full tops in different positions; only one solid top plus ghost axis lines.
+- Do not draw the contact point moving across the table.
 ```
 
 ## Review-Notiz

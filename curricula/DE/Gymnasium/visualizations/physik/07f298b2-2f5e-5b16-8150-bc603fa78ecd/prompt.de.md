@@ -34,22 +34,20 @@ Zusatzanweisung:
 Pflichtinhalt:
 
 - Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Kreiselstabilisierung technisch begründen`.
-- Use only a technical comparison layout made of text cards and a small table. Do not draw signal paths, feedback loops, force diagrams, torque diagrams, or rotating-device sketches.
-- Use three static application cards:
-  - `Kamera-Gimbal`
-  - `Schiff / Satellit`
-  - `Drohne / Sensor`
-- Show principle cards:
-  - `schnell rotierender Kreisel: großer Drehimpuls`
-  - `Störung muss die Richtung von L ändern`
-  - `dafür ist Drehmoment nötig`
-  - `Regelung nutzt Sensoren und Aktoren`
-- Add formula cards:
-  - exactly one formula card, and it must read exactly `L = I · omega`
-  - `größeres L bedeutet trägere Richtungsänderung`
+- Create an appealing German cartoon infographic titled `Kreiselstabilisierung technisch begründen`.
+- Make it visual-first: at least two thirds of the image area must be illustration, not cards or text blocks.
+- Center: show a clean cutaway cartoon of a stabilizing rotor or flywheel inside a device housing. The rotor may have a soft blurred rim to suggest rotation, but no arrows, arrowheads, or circular direction marks.
+- Around it, show three static application vignettes: a camera gimbal, a ship or satellite platform, and a drone with a sensor. They must be real illustrated objects, not text cards.
+- Show one device base slightly tilted while the stabilized platform remains level, with no arrows.
+- Add only four short labels placed near the illustrations:
+  - `Rotor`
+  - `großer Drehimpuls L`
+  - `Sensoren`
+  - `Aktoren`
+- Add one small formula label near the rotor: `L = I · omega`.
 - Formula accuracy rule: the formula must have `L` on the left side and only `I · omega` on the right side. Do not write formulas such as `I = ...`, `I = I · omega · L`, or any formula with an extra `L` on the right side.
-- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular marks, motion trails, pointer lines, connectors, flow lines, or `->` symbols anywhere in the image. Use cards, table cells, and labels only.
+- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular direction marks, motion trails, pointer lines, connectors, flow lines, checkmarks, warning marks, signal waves, or `->` symbols anywhere in the image. Use static illustrations and nearby labels only.
+- Visible learner text must be limited to the title, the four listed labels, and the formula label. Do not add cards, notes, warnings, checklists, instructions, or production guidance.
 
 Vermeiden:
 
@@ -59,6 +57,8 @@ Vermeiden:
 - Do not show the device changing direction without cause.
 - Do not use unrelated electromagnetism formulas.
 - Do not replace `omega` with a clock, stopwatch, watch icon, spiral, or other symbol.
+- Do not draw any non-text mark that could be read as direction, rotation, signal flow, or force.
+- Do not create a text-card layout.
 ```
 
 ## Review-Notiz
