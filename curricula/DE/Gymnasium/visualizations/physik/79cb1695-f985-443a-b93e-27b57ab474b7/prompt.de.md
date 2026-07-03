@@ -33,24 +33,30 @@ Beschreibung: Die lernende Person kann Lichtwege mit dem Strahlenmodell darstell
 Zusatzanweisung:
 Pflichtinhalt:
 
-Show the ray model for predicting simple light paths.
-Use a clean optical-bench style diagram:
-
-- candle or lamp on the left labelled `Lichtquelle`
-- small opening/slit in the middle labelled `Blende`
-- screen on the right labelled `Schirm`
-- exactly two straight rays from the source through the slit to the screen
-- mark the bright spot on the screen labelled `beleuchteter Bereich`
-- rule card: `Strahlenmodell: gerade Linien zeigen den Lichtweg`
+- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
+- Create a German infographic titled `Lichtwege mit dem Strahlenmodell`.
+- Use a flat 2D side-view cross-section only.
+- Layout from left to right: `punktfoermige Lichtquelle`, `Blende mit Oeffnung`, `Schirm als Linie`.
+- The light source must be one single point on the left.
+- The aperture must be a vertical opaque barrier with one narrow opening in the middle. Show the opaque parts above and below the opening clearly.
+- The screen must be shown only as one vertical line, not as a rectangular wall, panel, surface, or 3D screen.
+- Draw exactly three straight light rays as thin lines without arrowheads:
+  1. from the point source through the upper edge of the aperture opening to the upper end of the illuminated segment on the screen line
+  2. from the point source through the center of the aperture opening to the center of the illuminated segment on the screen line
+  3. from the point source through the lower edge of the aperture opening to the lower end of the illuminated segment on the screen line
+- All three rays must start at the same point source and must pass through the aperture opening. No ray may pass through an opaque part of the barrier.
+- On the vertical screen line, show only a bright vertical segment between the two boundary-ray intersections, labelled `beleuchteter Bereich`.
+- Add rule card: `Strahlenmodell: gerade Linien zeigen den Lichtweg`.
 
 Vermeiden:
 
-Do not draw curved light paths.
-Do not draw rays from the screen back to the light source.
-Do not draw rays that pass through opaque parts of the screen or block.
-Do not include mirrors, lenses, or reflection in this image.
-Do not use more than two or three rays.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+- Do not draw parallel rays before the aperture; the rays must all start at the same point source.
+- Do not draw a 2D bright patch on a wall or screen.
+- Do not draw a screen rectangle, screen panel, or 3D wall perspective.
+- Do not draw rays through opaque parts of the aperture barrier.
+- Do not bend rays at the aperture; every ray must be one straight line from source through opening to screen.
+- Do not draw rays from the screen back to the light source.
+- Do not add mirrors, lenses, reflection, decorative arrows, connector arrows, or extra rays.
 ```
 
 ## Review-Notiz
