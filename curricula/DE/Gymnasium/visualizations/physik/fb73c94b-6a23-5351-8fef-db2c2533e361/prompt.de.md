@@ -44,11 +44,15 @@ Pflichtinhalt:
 - In the p-V diagram:
   - draw the isochore as a vertical line
   - draw the isobare as a horizontal line
-  - draw the isotherme as a decreasing hyperbola
+  - draw the isotherme as a decreasing hyperbola in the first quadrant
+  - make the isotherme asymptotic to the black p-axis and the black V-axis
+  - the isotherme must not be asymptotic to the colored isobare or colored isochore
+  - the colored isobare and colored isochore are only example lines; they may intersect the isotherme at one point each, but they are not asymptotes
   - label each line directly
 - Draw diagram axes without arrowheads.
 - Do not show a process direction. Lines are static families of states.
 - Add a check card: `fehlende Groessen mit pV = nRT und der konstanten Groesse bestimmen`.
+- Add a small note near the p-V diagram: `Isotherme: Asymptoten sind die Achsen`.
 
 Vermeiden:
 
@@ -56,6 +60,9 @@ Vermeiden:
 - Do not draw the isochore as horizontal.
 - Do not draw the isobare as vertical.
 - Do not draw the isotherm as a straight line.
+- Do not make the isotherm flatten toward the isobaric line.
+- Do not make the isotherm become vertical along the isochoric line.
+- Do not stop the isotherm at the isobare or isochore as if they were boundaries.
 - Do not add arrowheads, path arrows, cycle arrows, or connector arrows.
 - Do not use decorative formulas beyond the listed relationships.
 ```
