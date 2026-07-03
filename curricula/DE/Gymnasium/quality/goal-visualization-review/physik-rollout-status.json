@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-03T04:41:36.396Z",
+  "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
+  "request": {
+    "subject": "physik",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
+    "currentResumeFilePath": "tmp/goal-visualization-physik-batch-021.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-021"
+  },
+  "summary": {
+    "totalGoals": 588,
+    "atomicGoalsInScope": 427,
+    "goalsWithPrimaryVisualization": 125,
+    "coveragePercent": 29.3,
+    "releaseApprovedVisualizationCount": 0,
+    "reviewStatusCounts": {
+      "pilot": 125
+    },
+    "linkedVisualizationReviewStatuses": {
+      "pilot": 125
+    },
+    "reviewLedgerFiles": 21,
+    "reviewDecisionCounts": {
+      "accepted_pilot": 79,
+      "accepted_pilot_after_fifth_regeneration": 1,
+      "accepted_pilot_after_provider_retry": 3,
+      "accepted_pilot_after_regeneration": 34,
+      "accepted_pilot_after_second_regeneration": 7,
+      "accepted_pilot_after_third_regeneration": 1,
+      "accepted_pilot_after_user_review_correction": 3,
+      "deferred_provider_limitation": 1,
+      "rejected_after_user_review_replaced": 3,
+      "rejected_regenerated": 28
+    },
+    "openProviderDeferredGoals": 0,
+    "openProviderQuotaGoals": 0,
+    "blockedProviderQuotaLedgers": 0,
+    "regularUnlinkedGoals": 302,
+    "linkedWithoutAcceptedReview": 0,
+    "acceptedReviewWithoutLink": 0
+  },
+  "currentBatch": {
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-021.md",
+    "latestLedgerStatus": "completed",
+    "resumeFile": "tmp/goal-visualization-physik-batch-021.resume.txt",
+    "resumeFileExists": false,
+    "resumeGoalIds": [],
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-021",
+    "promptAppendDirExists": true,
+    "promptAppendFiles": 6
+  },
+  "qualityQueues": {
+    "openProviderDeferred": [],
+    "openProviderQuota": [],
+    "rejectedNotLinked": [],
+    "userReviewCorrections": [
+      {
+        "batch": "004",
+        "goalId": "dd7cdcea-0950-461b-96ac-ce49989fca47",
+        "title": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image uses a point-like light source, an opaque object, and a screen in one ray diagram. The two boundary rays start at the point source, touch the top and bottom object edges, continue straight to the screen, and define a `Schattenbild` that is visibly larger than the object. No ray passes through the object and no ray starts at the screen or shadow."
+      },
+      {
+        "batch": "004",
+        "goalId": "dd7cdcea-0950-461b-96ac-ce49989fca47",
+        "title": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The final accepted correction shows a flat 2D side-view cross-section with a point-like light source, an opaque circular object, and the screen only as a vertical line. The two straight boundary rays start at the point source, are tangent to the object, and end on the screen line. The dark `Schattenbild` segment on the screen line is visibly larger than the object diameter, and the bright `Licht` segments are above and below it."
+      },
+      {
+        "batch": "004",
+        "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+        "title": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image uses a flat 2D side-view cross-section with a point-like light source, an aperture made of two opaque barrier parts, and the screen as a vertical line. All three visible rays start at the same point source, pass through the aperture opening, and end on the illuminated screen segment. No ray bends at the aperture, starts at the screen, or crosses an opaque part of the barrier."
+      }
+    ]
+  },
+  "consistency": {
+    "linkedWithoutAcceptedReview": [],
+    "acceptedReviewWithoutLink": []
+  },
+  "visualizedGoals": [
+    {
+      "goalId": "16caf92e-2800-57d1-946c-5b92ce848a96",
+      "title": "2. Kepler-Gesetz aus Drehimpulserhaltung herleiten (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/16caf92e-2800-57d1-946c-5b92ce848a96/16caf92e-2800-57d1-946c-5b92ce848a96.jpg"
+    },
+    {
+      "goalId": "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+      "title": "3. Kepler-Gesetz per Skalierungsargument herleiten (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/89cadf81-143b-5f6b-82bd-29ba20d92a1b/89cadf81-143b-5f6b-82bd-29ba20d92a1b.jpg"
+    },
+    {
+      "goalId": "cdab9fd1-5054-4a7e-8c9a-4474062ddd23",
+      "title": "Additive und subtraktive Farbmischung unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Farben",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cdab9fd1-5054-4a7e-8c9a-4474062ddd23/cdab9fd1-5054-4a7e-8c9a-4474062ddd23.jpg"
+    },
+    {
+      "goalId": "979e0d0d-8933-4ace-814f-f28060ad280f",
+      "title": "Anwendungen und Risiken radioaktiver Strahlung beurteilen",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/979e0d0d-8933-4ace-814f-f28060ad280f/979e0d0d-8933-4ace-814f-f28060ad280f.jpg"
+    },
+    {
+      "goalId": "327302e3-5b36-46f8-9c16-73f24583b0eb",
+      "title": "Arbeit, einfache Maschinen und Wirkungsgrad qualitativ deuten",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/327302e3-5b36-46f8-9c16-73f24583b0eb/327302e3-5b36-46f8-9c16-73f24583b0eb.jpg"
+    },
+    {
+      "goalId": "15b56a1e-3eec-52ca-82fa-b4df9ce88415",
+      "title": "Astronomische Weltbilder zeitlich einordnen (GK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/15b56a1e-3eec-52ca-82fa-b4df9ce88415/15b56a1e-3eec-52ca-82fa-b4df9ce88415.jpg"
+    },
+    {
+      "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
+      "title": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen",
+      "phase": "GLOBAL",
+      "area": "Druck und Auftrieb",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/24b4686a-e8a6-4583-8952-33e6f653c2a3/24b4686a-e8a6-4583-8952-33e6f653c2a3.jpg"
+    },
+    {
+      "goalId": "e11b2ee9-e528-4857-9ecd-59bd460fba81",
+      "title": "Auftrieb mit dem archimedischen Prinzip erklären",
+      "phase": "GLOBAL",
+      "area": "Druck und Auftrieb",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e11b2ee9-e528-4857-9ecd-59bd460fba81/e11b2ee9-e528-4857-9ecd-59bd460fba81.jpg"
+    },
+    {
+      "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "title": "Bahn- und Winkelgeschwindigkeit",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ec7a0a68-730b-5c94-ac72-a937508f8303/ec7a0a68-730b-5c94-ac72-a937508f8303.jpg"
+    },
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen mit Diagrammen untersuchen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ce431132-dfc4-42c2-aff6-bd72035190f8/ce431132-dfc4-42c2-aff6-bd72035190f8.jpg"
+    },
+    {
+      "goalId": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "title": "Bewegungen mit Weg-Zeit-Diagrammen beschreiben",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ae67bcf1-f3ee-50d6-9a12-25a159dff659/ae67bcf1-f3ee-50d6-9a12-25a159dff659.jpg"
+    },
+    {
+      "goalId": "7ead007f-e85a-5cb5-b52d-76aae626119a",
+      "title": "Bewegungsabläufe im Sport qualitativ analysieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7ead007f-e85a-5cb5-b52d-76aae626119a/7ead007f-e85a-5cb5-b52d-76aae626119a.jpg"
+    },
+    {
+      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "title": "Bezugssysteme und Superpositionsprinzip",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/68c90ba6-c438-463c-9a53-cf61062d416a/68c90ba6-c438-463c-9a53-cf61062d416a.jpg"
+    },
+    {
+      "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
+      "title": "Digitale Messdaten auswerten und Unsicherheiten berücksichtigen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/72effc66-87f4-5f5e-8d36-1547677365fb/72effc66-87f4-5f5e-8d36-1547677365fb.jpg"
+    },
+    {
+      "goalId": "691c11d0-fa6a-5d2e-a19c-086e89c3c233",
+      "title": "Digitale Messdaten mit Sensoren erfassen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/691c11d0-fa6a-5d2e-a19c-086e89c3c233/691c11d0-fa6a-5d2e-a19c-086e89c3c233.jpg"
+    },
+    {
+      "goalId": "75b9ca4c-178e-5df2-adc4-f7f78e9d28e5",
+      "title": "Digitale und analoge Messverfahren vergleichen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5.jpg"
+    },
+    {
+      "goalId": "5308de76-79f0-44f4-8cb7-fc9de4772217",
+      "title": "Druck in Flüssigkeiten und Gasen qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Druck und Auftrieb",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5308de76-79f0-44f4-8cb7-fc9de4772217/5308de76-79f0-44f4-8cb7-fc9de4772217.jpg"
+    },
+    {
+      "goalId": "310b4f62-e261-46be-bb1b-1f125fc1699a",
+      "title": "Druck-Temperatur-Zusammenhänge qualitativ erklären",
+      "phase": "GLOBAL",
+      "area": "Druck und Auftrieb",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/310b4f62-e261-46be-bb1b-1f125fc1699a/310b4f62-e261-46be-bb1b-1f125fc1699a.jpg"
+    },
+    {
+      "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
+      "title": "Einfache Farbwahrnehmung beschreiben",
+      "phase": "GLOBAL",
+      "area": "Farben",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075/1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075.jpg"
+    },
+    {
+      "goalId": "6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "title": "Einfache optische Instrumente beschreiben",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6367d45e-919e-4c19-bcd9-7770a2d51139/6367d45e-919e-4c19-bcd9-7770a2d51139.jpg"
+    },
+    {
+      "goalId": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "title": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren",
+      "phase": "E",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2eecd0e2-a7ca-4568-9b12-3d47706c65fb/2eecd0e2-a7ca-4568-9b12-3d47706c65fb.jpg"
+    },
+    {
+      "goalId": "75bdf5ca-cda4-4658-9ec7-84c77b3759db",
+      "title": "Einfache Stromkreise aufbauen und Schaltsymbole nutzen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/75bdf5ca-cda4-4658-9ec7-84c77b3759db/75bdf5ca-cda4-4658-9ec7-84c77b3759db.jpg"
+    },
+    {
+      "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+      "title": "Elastische Stöße",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d168ae5d-f36f-4ad4-b070-d5931f8d70d1/d168ae5d-f36f-4ad4-b070-d5931f8d70d1.jpg"
+    },
+    {
+      "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "title": "Elastische Stöße im Schwerpunktsystem analysieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2/d30fd37b-1f05-44e3-a40a-4c5a88fa28c2.jpg"
+    },
+    {
+      "goalId": "1911920e-b099-4310-82f2-b47f51a78b33",
+      "title": "Elektrische Anlagen, Gewitter und Haushaltsstromkreise sicher beurteilen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1911920e-b099-4310-82f2-b47f51a78b33/1911920e-b099-4310-82f2-b47f51a78b33.jpg"
+    },
+    {
+      "goalId": "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+      "title": "Elektrische Energieumwandlungen qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76.jpg"
+    },
+    {
+      "goalId": "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+      "title": "Energieentwertung vs. Energieverbrauch",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73/cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73.jpg"
+    },
+    {
+      "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "title": "Energieerhaltung",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/91c49019-ea51-4ce5-a919-c91c45b25e83/91c49019-ea51-4ce5-a919-c91c45b25e83.jpg"
+    },
+    {
+      "goalId": "36c4590c-6032-5a37-b660-f15951dee076",
+      "title": "Entropie E01: Zustandsgrößen vs. Prozessgrößen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/36c4590c-6032-5a37-b660-f15951dee076/36c4590c-6032-5a37-b660-f15951dee076.jpg"
+    },
+    {
+      "goalId": "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+      "title": "Entropie E02: Reversibel, irreversibel, quasistatisch",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0de2ca8c-7272-59ed-9c89-0971d6ce2f47/0de2ca8c-7272-59ed-9c89-0971d6ce2f47.jpg"
+    },
+    {
+      "goalId": "239aac49-1137-5df5-b197-49e72292e40c",
+      "title": "Entropie E03: Warum Entropie überhaupt?",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/239aac49-1137-5df5-b197-49e72292e40c/239aac49-1137-5df5-b197-49e72292e40c.jpg"
+    },
+    {
+      "goalId": "e713dc34-beeb-5807-8a90-f872e049aa4e",
+      "title": "Entropie E04: Makroskopische Definition (Clausius)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e713dc34-beeb-5807-8a90-f872e049aa4e/e713dc34-beeb-5807-8a90-f872e049aa4e.jpg"
+    },
+    {
+      "goalId": "6e79ef4a-2666-5f7a-885c-b175954506f8",
+      "title": "Entropie E05: Einheiten und Bedeutung von S",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6e79ef4a-2666-5f7a-885c-b175954506f8/6e79ef4a-2666-5f7a-885c-b175954506f8.jpg"
+    },
+    {
+      "goalId": "741e7056-69e4-59be-a159-0e2583d748d1",
+      "title": "Entropie E06: Standardfälle sicher rechnen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/741e7056-69e4-59be-a159-0e2583d748d1/741e7056-69e4-59be-a159-0e2583d748d1.jpg"
+    },
+    {
+      "goalId": "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+      "title": "Entropie E07: Entropieänderung idealer Gase",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/eaef821b-4dbe-52a4-a0e2-574e5ce2040d/eaef821b-4dbe-52a4-a0e2-574e5ce2040d.jpg"
+    },
+    {
+      "goalId": "a4681378-ade4-4f20-bf77-fb020469510f",
+      "title": "Entstehung und Zerlegung von Farben erklären",
+      "phase": "GLOBAL",
+      "area": "Farben",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a4681378-ade4-4f20-bf77-fb020469510f/a4681378-ade4-4f20-bf77-fb020469510f.jpg"
+    },
+    {
+      "goalId": "481ffd56-d585-56fe-b525-ed423e30eed3",
+      "title": "Entwicklung astronomischer Weltbilder rekonstruieren (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/481ffd56-d585-56fe-b525-ed423e30eed3/481ffd56-d585-56fe-b525-ed423e30eed3.jpg"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "title": "Erhaltung der mechanischen Energie tiefer verstehen (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e359f8bb-6106-44aa-9edf-694528d2d2a9/e359f8bb-6106-44aa-9edf-694528d2d2a9.jpg"
+    },
+    {
+      "goalId": "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+      "title": "Ersten Hauptsatz verstehen und mit Formel angeben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5f17e992-fd07-56ee-80a0-567f45bbd10c/5f17e992-fd07-56ee-80a0-567f45bbd10c.jpg"
+    },
+    {
+      "goalId": "cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5",
+      "title": "Farben in technischen Anwendungen erklären",
+      "phase": "GLOBAL",
+      "area": "Farben",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5/cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5.jpg"
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/09029573-864f-40ca-bf8a-cee7bf6dcb73/09029573-864f-40ca-bf8a-cee7bf6dcb73.jpg"
+    },
+    {
+      "goalId": "12260012-cf04-5409-b57d-f5b3a46d9126",
+      "title": "Freier Fall mit Luftreibung und Grenzgeschwindigkeit",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.jpg"
+    },
+    {
+      "goalId": "25edd154-b1d8-546c-94a5-88502b6725cd",
+      "title": "Geozentrisches und heliozentrisches Weltbild vergleichen (GK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/25edd154-b1d8-546c-94a5-88502b6725cd/25edd154-b1d8-546c-94a5-88502b6725cd.jpg"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "title": "Geradlinige Bewegung mit Reibung modellieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg"
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/971beafa-6ba5-4c82-ac8b-7ebf66eec3dd/971beafa-6ba5-4c82-ac8b-7ebf66eec3dd.jpg"
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg"
+    },
+    {
+      "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+      "title": "Gravitationsfeld als Feldgröße einführen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/156edddc-ce8d-580d-8d17-d9376d59e60e/156edddc-ce8d-580d-8d17-d9376d59e60e.jpg"
+    },
+    {
+      "goalId": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+      "title": "Gravitationsgesetz und Gewichtskraft anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/eb0ffdea-c12d-56df-b7e8-c0297d2f8aff/eb0ffdea-c12d-56df-b7e8-c0297d2f8aff.jpg"
+    },
+    {
+      "goalId": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+      "title": "Gravitationskraft und Gravitationspotential",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a42f91a4-0d21-5aa9-ae11-f48be6f2e431/a42f91a4-0d21-5aa9-ae11-f48be6f2e431.jpg"
+    },
+    {
+      "goalId": "76fd0ab2-079a-516e-a33b-170355336d40",
+      "title": "Grenzen der Vorhersagbarkeit (Chaos)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/76fd0ab2-079a-516e-a33b-170355336d40/76fd0ab2-079a-516e-a33b-170355336d40.jpg"
+    },
+    {
+      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "title": "Grundgleichung der Mechanik anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5f289cdc-fda1-4058-b44f-041ba1398e79/5f289cdc-fda1-4058-b44f-041ba1398e79.jpg"
+    },
+    {
+      "goalId": "3e33813d-db75-4571-8345-3845b02b956d",
+      "title": "Hören, Ohr und Lärmbelastung einordnen",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/3e33813d-db75-4571-8345-3845b02b956d/3e33813d-db75-4571-8345-3845b02b956d.jpg"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "title": "Impulserhaltung",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/839ecc8f-3a60-418b-bc92-64bfeef33824/839ecc8f-3a60-418b-bc92-64bfeef33824.jpg"
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "title": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f524f05c-4456-4fc3-a1f7-f40741fc1f16/f524f05c-4456-4fc3-a1f7-f40741fc1f16.jpg"
+    },
+    {
+      "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "title": "Inelastische Stöße",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0da13365-02c2-44f1-8a81-d524ca0ac3ae/0da13365-02c2-44f1-8a81-d524ca0ac3ae.jpg"
+    },
+    {
+      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "title": "Inertialsysteme und Bezugssysteme",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/00245a43-eb89-47d2-92d7-21799dbec9f3/00245a43-eb89-47d2-92d7-21799dbec9f3.jpg"
+    },
+    {
+      "goalId": "497f1311-17d6-56ff-afb1-422a738e5c16",
+      "title": "Kepler-Gesetze anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/497f1311-17d6-56ff-afb1-422a738e5c16/497f1311-17d6-56ff-afb1-422a738e5c16.jpg"
+    },
+    {
+      "goalId": "1b833656-cd16-5b21-973a-9810960dcfd2",
+      "title": "Keplers Beschreibung und Newtons Erklärung unterscheiden (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1b833656-cd16-5b21-973a-9810960dcfd2/1b833656-cd16-5b21-973a-9810960dcfd2.jpg"
+    },
+    {
+      "goalId": "2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb",
+      "title": "Kern und Hülle des Atoms qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb.jpg"
+    },
+    {
+      "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "title": "Kinetische Energie",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7eeff2de-6015-49a6-a96e-a488d886dc9f/7eeff2de-6015-49a6-a96e-a488d886dc9f.jpg"
+    },
+    {
+      "goalId": "37b33812-d428-5953-852e-57a53a4347fe",
+      "title": "Kinetische Gastheorie & Temperatur",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/37b33812-d428-5953-852e-57a53a4347fe/37b33812-d428-5953-852e-57a53a4347fe.jpg"
+    },
+    {
+      "goalId": "581c0766-b84b-54cb-b8b6-375310329a41",
+      "title": "Kräfte und Reibung qualitativ nutzen",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/581c0766-b84b-54cb-b8b6-375310329a41/581c0766-b84b-54cb-b8b6-375310329a41.jpg"
+    },
+    {
+      "goalId": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+      "title": "Kräfte und Trägheit qualitativ erklären",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5ea765ac-c279-551a-8a94-a07da2381e5b/5ea765ac-c279-551a-8a94-a07da2381e5b.jpg"
+    },
+    {
+      "goalId": "10bb8262-fb0f-40cf-94ef-408420ec7cf2",
+      "title": "Kräfteigenschaften qualitativ nutzen",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/10bb8262-fb0f-40cf-94ef-408420ec7cf2/10bb8262-fb0f-40cf-94ef-408420ec7cf2.jpg"
+    },
+    {
+      "goalId": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "title": "Kraftstoß",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e790de73-f8e5-4027-bc05-9f12a0e8c9cb/e790de73-f8e5-4027-bc05-9f12a0e8c9cb.jpg"
+    },
+    {
+      "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "title": "Kreisbewegung mit Zentripetalkraft anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/accb1d9e-cd48-5983-bcef-9b9bca4a9114/accb1d9e-cd48-5983-bcef-9b9bca4a9114.jpg"
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "title": "Kurvenfahrten mit Haftreibung analysieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg"
+    },
+    {
+      "goalId": "dd7cdcea-0950-461b-96ac-ce49989fca47",
+      "title": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/dd7cdcea-0950-461b-96ac-ce49989fca47/dd7cdcea-0950-461b-96ac-ce49989fca47.jpg"
+    },
+    {
+      "goalId": "79cb1695-f985-443a-b93e-27b57ab474b7",
+      "title": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg"
+    },
+    {
+      "goalId": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
+      "title": "Linsenabbildungen qualitativ beschreiben und konstruieren",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5/078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5.jpg"
+    },
+    {
+      "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
+      "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f778a659-1467-4aa7-97b2-bed78c530634/f778a659-1467-4aa7-97b2-bed78c530634.jpg"
+    },
+    {
+      "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768",
+      "title": "Massenanziehung qualitativ beschreiben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/92d8f398-0c9f-523c-88d7-44165b6b4768/92d8f398-0c9f-523c-88d7-44165b6b4768.jpg"
+    },
+    {
+      "goalId": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "title": "Mechanische Arbeit als Energieänderung",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c1c71daa-042b-4f4c-8c31-0ac366f5149e/c1c71daa-042b-4f4c-8c31-0ac366f5149e.jpg"
+    },
+    {
+      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "title": "Mechanische Energie",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/94784e0a-7ddc-48be-91fb-dc82b78eb322/94784e0a-7ddc-48be-91fb-dc82b78eb322.jpg"
+    },
+    {
+      "goalId": "722857cf-f327-5740-8151-64eb92195ec8",
+      "title": "Mechanische Energieformen qualitativ unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/722857cf-f327-5740-8151-64eb92195ec8/722857cf-f327-5740-8151-64eb92195ec8.jpg"
+    },
+    {
+      "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "title": "Messabweichungen und Fehlerarten unterscheiden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8aff7aac-321b-5172-ac55-877876bfd2cd/8aff7aac-321b-5172-ac55-877876bfd2cd.jpg"
+    },
+    {
+      "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "title": "Messunsicherheiten angeben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f6b1d812-ce8b-5852-b417-e6c29b533c7a/f6b1d812-ce8b-5852-b417-e6c29b533c7a.jpg"
+    },
+    {
+      "goalId": "264dc31c-ec92-5e39-a8b8-16f1d74366d4",
+      "title": "Methode: Linearisierung von Messkurven",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/264dc31c-ec92-5e39-a8b8-16f1d74366d4/264dc31c-ec92-5e39-a8b8-16f1d74366d4.jpg"
+    },
+    {
+      "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
+      "title": "Methode: Modellbildung mit Tabellenkalkulation",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ac25ffe3-fd42-592d-a937-79cc13460313/ac25ffe3-fd42-592d-a937-79cc13460313.jpg"
+    },
+    {
+      "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
+      "title": "Methode: Videoanalyse von Bewegungen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d67502e3-5e0a-595b-a24b-65b1c40de36e/d67502e3-5e0a-595b-a24b-65b1c40de36e.jpg"
+    },
+    {
+      "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
+      "title": "Mittelwert und Streuung aus Messreihen bestimmen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f23fdfa9-38b6-5157-8301-ed302476c456/f23fdfa9-38b6-5157-8301-ed302476c456.jpg"
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Modellierung und Idealisierung von Bewegungen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d6dc0e02-831d-4894-a61a-852bcc74f147/d6dc0e02-831d-4894-a61a-852bcc74f147.jpg"
+    },
+    {
+      "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "title": "Newtons 1. Axiom (Trägheitsprinzip)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/31a2ef52-114b-4d2c-a720-6ef5a390b6dc/31a2ef52-114b-4d2c-a720-6ef5a390b6dc.jpg"
+    },
+    {
+      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "title": "Newtons 1. Axiom anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/32b896b9-f2f1-4d4e-96ad-e869ac3d3759/32b896b9-f2f1-4d4e-96ad-e869ac3d3759.jpg"
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20.jpg"
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg"
+    },
+    {
+      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "title": "Newtons 3. Axiom anwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a0aaedcb-41f8-4891-af77-a69a76b8c10d/a0aaedcb-41f8-4891-af77-a69a76b8c10d.jpg"
+    },
+    {
+      "goalId": "d873ffa2-04b3-5978-a955-89563802a348",
+      "title": "Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d873ffa2-04b3-5978-a955-89563802a348/d873ffa2-04b3-5978-a955-89563802a348.jpg"
+    },
+    {
+      "goalId": "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+      "title": "Numerische Simulation von Bewegungen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/761a0879-fc15-5d0c-a2b7-2b439efecd5b/761a0879-fc15-5d0c-a2b7-2b439efecd5b.jpg"
+    },
+    {
+      "goalId": "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+      "title": "Optimierungen in Sportsituationen physikalisch begründen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e39c83b0-cb4f-5454-a143-b9a159c99cba/e39c83b0-cb4f-5454-a143-b9a159c99cba.jpg"
+    },
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/4a2bf015-052b-4af0-aed7-324259fa1a8a.jpg"
+    },
+    {
+      "goalId": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+      "title": "Planetenbewegungen deuten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/60211ac1-cbe1-5182-87ef-673a068c5b0a/60211ac1-cbe1-5182-87ef-673a068c5b0a.jpg"
+    },
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "title": "Potenzielle Energie (Lageenergie)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6affc2ea-ecd2-4fcd-8877-3ffa15b0425b/6affc2ea-ecd2-4fcd-8877-3ffa15b0425b.jpg"
+    },
+    {
+      "goalId": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+      "title": "Potenzielle Energie und Potential",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/594f7f21-6b8a-531c-8424-5f1dcbaf0f23/594f7f21-6b8a-531c-8424-5f1dcbaf0f23.jpg"
+    },
+    {
+      "goalId": "f6f646db-3544-49ed-8f55-67bc684e80ce",
+      "title": "Radioaktive Strahlung nachweisen und Wirkungen einordnen",
+      "phase": "GLOBAL",
+      "area": "Atom- und Kernphysik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f6f646db-3544-49ed-8f55-67bc684e80ce/f6f646db-3544-49ed-8f55-67bc684e80ce.jpg"
+    },
+    {
+      "goalId": "cca06d84-28fe-4b80-9bcd-968dda026e0e",
+      "title": "Reflexion untersuchen und Spiegelbilder deuten",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cca06d84-28fe-4b80-9bcd-968dda026e0e/cca06d84-28fe-4b80-9bcd-968dda026e0e.jpg"
+    },
+    {
+      "goalId": "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "title": "Reibungsenergie",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/253a71d2-e751-4c63-acbe-238b71463cd8/253a71d2-e751-4c63-acbe-238b71463cd8.jpg"
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "title": "Reibungskräfte qualitativ verstehen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5fd45dbc-0eb1-591b-99a9-7386336f1456/5fd45dbc-0eb1-591b-99a9-7386336f1456.jpg"
+    },
+    {
+      "goalId": "01bebdfc-5819-4610-a03e-ea5e794fc954",
+      "title": "Reihen- und Parallelschaltungen planen und Widerstände deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg"
+    },
+    {
+      "goalId": "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+      "title": "Reversible und irreversible Vorgänge unterscheiden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2088ccf0-48f4-51d4-be5f-67affd0fb099/2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg"
+    },
+    {
+      "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
+      "title": "Schallausbreitung im Teilchenmodell erklären",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/3c82510a-1f12-4eaa-81c2-8599437a5b85/3c82510a-1f12-4eaa-81c2-8599437a5b85.jpg"
+    },
+    {
+      "goalId": "e62e48bc-2387-4b2b-8d6f-7a06c8e7580e",
+      "title": "Schallphänomene an Musikinstrumenten beschreiben",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e62e48bc-2387-4b2b-8d6f-7a06c8e7580e/e62e48bc-2387-4b2b-8d6f-7a06c8e7580e.jpg"
+    },
+    {
+      "goalId": "c1006f55-0406-48cc-92d4-0d8345897cf4",
+      "title": "Schallquellen und Schallempfänger beschreiben",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c1006f55-0406-48cc-92d4-0d8345897cf4/c1006f55-0406-48cc-92d4-0d8345897cf4.jpg"
+    },
+    {
+      "goalId": "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+      "title": "Scheinkräfte in nicht-inertialen Systemen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/39b2a0c4-eecf-5049-b58f-e790790a3bf2/39b2a0c4-eecf-5049-b58f-e790790a3bf2.jpg"
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "title": "Schiefen Wurf beschreiben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg"
+    },
+    {
+      "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
+      "title": "Sehvorgang und Fehlsichtigkeiten qualitativ erklären",
+      "phase": "GLOBAL",
+      "area": "Optik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/90e1e6cf-4092-41d6-81f7-5206f9d68f84/90e1e6cf-4092-41d6-81f7-5206f9d68f84.jpg"
+    },
+    {
+      "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+      "title": "Signifikante Stellen korrekt verwenden",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b615830a-e8b0-5754-81e0-99da98343a8d/b615830a-e8b0-5754-81e0-99da98343a8d.jpg"
+    },
+    {
+      "goalId": "32111497-d5ca-453e-906d-d352f885b126",
+      "title": "Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/32111497-d5ca-453e-906d-d352f885b126/32111497-d5ca-453e-906d-d352f885b126.jpg"
+    },
+    {
+      "goalId": "f1a078ae-6262-4444-a4bc-a5ab275621cf",
+      "title": "Stromstärke in einfachen Stromkreisen messen",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f1a078ae-6262-4444-a4bc-a5ab275621cf/f1a078ae-6262-4444-a4bc-a5ab275621cf.jpg"
+    },
+    {
+      "goalId": "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
+      "title": "Teilchenmodell für Temperaturänderungen nutzen",
+      "phase": "GLOBAL",
+      "area": "Wärmelehre",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9ac4973a-21d5-48a5-90b4-eb90e10391ae/9ac4973a-21d5-48a5-90b4-eb90e10391ae.jpg"
+    },
+    {
+      "goalId": "d27c8860-12a4-4d7d-9849-ccd8b7caca48",
+      "title": "Temperatur messen und Ausdehnung deuten",
+      "phase": "GLOBAL",
+      "area": "Wärmelehre",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d27c8860-12a4-4d7d-9849-ccd8b7caca48/d27c8860-12a4-4d7d-9849-ccd8b7caca48.jpg"
+    },
+    {
+      "goalId": "940978fa-1f2d-4e54-9c28-081a6df9b76f",
+      "title": "Temperatur und Wärme unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Wärmelehre",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/940978fa-1f2d-4e54-9c28-081a6df9b76f/940978fa-1f2d-4e54-9c28-081a6df9b76f.jpg"
+    },
+    {
+      "goalId": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
+      "title": "Tonhöhe, Lautstärke und Geräusche unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Akustik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/10aad90e-a1db-42b6-8d1e-1d856e14b47d/10aad90e-a1db-42b6-8d1e-1d856e14b47d.jpg"
+    },
+    {
+      "goalId": "c968d263-8be4-5cf9-b320-e95398fe648f",
+      "title": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c968d263-8be4-5cf9-b320-e95398fe648f/c968d263-8be4-5cf9-b320-e95398fe648f.jpg"
+    },
+    {
+      "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
+      "title": "Unfallphysik: Kraftstoß und Knautschzone",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1232febe-868a-4dac-b4c2-e35789434601/1232febe-868a-4dac-b4c2-e35789434601.jpg"
+    },
+    {
+      "goalId": "e41356c1-968b-435a-af25-b663f080ae5a",
+      "title": "Volumen, Masse und Dichte bestimmen und vergleichen",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e41356c1-968b-435a-af25-b663f080ae5a/e41356c1-968b-435a-af25-b663f080ae5a.jpg"
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "title": "Waagerechter Wurf analysieren",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.jpg"
+    },
+    {
+      "goalId": "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+      "title": "Wärme als Energieform qualitativ einordnen",
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/eeba6bf8-a2b9-4d7d-a1d6-67286c923cef/eeba6bf8-a2b9-4d7d-a1d6-67286c923cef.jpg"
+    },
+    {
+      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44",
+      "title": "Wärmeenergie als innere Energie deuten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/88d07c80-5d7d-5c70-b385-b22769381e44/88d07c80-5d7d-5c70-b385-b22769381e44.jpg"
+    },
+    {
+      "goalId": "fbe0faae-7fba-482b-888e-341f926770f3",
+      "title": "Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Wärmelehre",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/fbe0faae-7fba-482b-888e-341f926770f3/fbe0faae-7fba-482b-888e-341f926770f3.jpg"
+    },
+    {
+      "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5c44b9ba-9b05-4774-95d5-073230d3fc4f/5c44b9ba-9b05-4774-95d5-073230d3fc4f.jpg"
+    },
+    {
+      "goalId": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
+      "title": "Wirkungen des elektrischen Stroms qualitativ beschreiben",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a5f652cc-e091-4c90-bec2-c357ae54fcf1/a5f652cc-e091-4c90-bec2-c357ae54fcf1.jpg"
+    },
+    {
+      "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+      "title": "Zentripetalkraft herleiten",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e918b31f-6f39-5dee-ade6-3617080fb24f/e918b31f-6f39-5dee-ade6-3617080fb24f.jpg"
+    },
+    {
+      "goalId": "53196a71-9dbd-4835-b2f9-ff21b8a8962c",
+      "title": "Zusammenhang von Spannung und Stromstärke qualitativ erläutern",
+      "phase": "GLOBAL",
+      "area": "Elektrizität",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/53196a71-9dbd-4835-b2f9-ff21b8a8962c/53196a71-9dbd-4835-b2f9-ff21b8a8962c.jpg"
+    },
+    {
+      "goalId": "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+      "title": "Zweiten Hauptsatz verstehen und mit Entropie-Formulierung angeben",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d.jpg"
+    }
+  ]
+}

@@ -33,25 +33,34 @@ Beschreibung: Die lernende Person kann grundlegende Beobachtungen zu Licht, Scha
 Zusatzanweisung:
 Pflichtinhalt:
 
-Show light, shadow, and straight-line propagation.
-Use one simple scene:
-
-- point-like lamp on the left
-- opaque object in the middle
-- screen/wall on the right
-- exactly three straight light rays from the lamp tangent to the object edges and toward the screen
-- shadow region behind the object labelled `Schatten`
-- illuminated region labelled `Licht`
-- rule card: `Licht breitet sich geradlinig aus`
+- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
+- Create a German infographic titled `Licht, Schatten und geradlinige Ausbreitung`.
+- Use a flat 2D side-view cross-section only.
+- Layout from left to right: `punktfoermige Lichtquelle`, `undurchsichtiger Gegenstand`, `Schirm als Linie`.
+- The light source must be a single point on the left.
+- The object must be a simple opaque circle in the middle.
+- The screen must be shown only as one vertical line, not as a rectangular wall, panel, surface, or 3D screen.
+- Draw exactly two straight boundary rays as thin lines without arrowheads:
+  1. one line from the point source tangent to the top edge of the object and ending on the vertical screen line
+  2. one line from the point source tangent to the bottom edge of the object and ending on the vertical screen line
+- The two boundary rays must diverge from the point source.
+- On the vertical screen line, show the shadow only as a dark vertical segment between the two ray intersections.
+- The dark shadow segment on the screen line must be visibly longer than the object diameter, at least twice as large.
+- Label the dark segment `Schattenbild`.
+- Label the bright parts of the screen line above and below the dark segment `Licht`.
+- Add rule card: `Licht breitet sich geradlinig aus`.
 
 Vermeiden:
 
-Do not bend light rays around the object.
-Do not make rays start from the screen or from the shadow.
-Do not draw rays through the opaque object.
-Do not add reflections or mirrors; this goal is light and shadow.
-Do not add many decorative arrows.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+- Do not draw a 2D shadow area on a wall or screen.
+- Do not draw a screen rectangle, screen panel, or 3D wall perspective.
+- Do not make the shadow image smaller than the object.
+- Do not make the shadow image the same size as the object.
+- Do not draw rays through the opaque object.
+- Do not draw a central light ray passing through the object.
+- Do not bend light rays around the object.
+- Do not draw rays starting at the screen or at the shadow.
+- Do not draw decorative arrows, connector arrows, reflection arrows, mirrors, or lenses.
 ```
 
 ## Review-Notiz

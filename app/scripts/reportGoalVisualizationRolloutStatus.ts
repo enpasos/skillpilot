@@ -19,12 +19,24 @@ type ReviewDecision =
 
 interface Args {
   checkMode: boolean
+  subject: string
   landscapePath: string
   reviewDirPath: string
   currentResumeFilePath: string
   currentPromptAppendDirPath: string
   outputJsonPath: string
   outputMarkdownPath: string
+}
+
+interface SubjectDefaults {
+  displayName: string
+  scopeName: string
+  landscapePath: string
+  currentResumeFilePath: string
+  currentPromptAppendDirPath: string
+  outputJsonPath: string
+  outputMarkdownPath: string
+  qualityScriptName: string
 }
 
 interface ReviewDecisionRow {
@@ -64,6 +76,7 @@ interface GoalVisualizationRolloutReport {
   generatedAt: string
   generator: string
   request: {
+    subject: string
     landscapePath: string
     reviewDirPath: string
     currentResumeFilePath: string
@@ -112,12 +125,30 @@ interface GoalVisualizationRolloutReport {
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
-const defaultLandscapePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const defaultReviewDirPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review'
-const defaultCurrentResumeFilePath = 'tmp/goal-visualization-batch-076.resume.txt'
-const defaultCurrentPromptAppendDirPath = 'tmp/goal-visualization-prompt-appends/batch-076'
-const defaultOutputJsonPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json'
-const defaultOutputMarkdownPath = 'curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md'
+
+const subjectDefaults: Record<string, SubjectDefaults> = {
+  mathematik: {
+    displayName: 'Mathematik',
+    scopeName: 'DE Gymnasium Mathematik',
+    landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+    currentResumeFilePath: 'tmp/goal-visualization-batch-076.resume.txt',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/batch-076',
+    outputJsonPath: `${defaultReviewDirPath}/mathematik-rollout-status.json`,
+    outputMarkdownPath: `${defaultReviewDirPath}/mathematik-rollout-status.md`,
+    qualityScriptName: 'quality:goal-visualization-rollout-status',
+  },
+  physik: {
+    displayName: 'Physik',
+    scopeName: 'DE Gymnasium Physik',
+    landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
+    currentResumeFilePath: 'tmp/goal-visualization-physik-batch-021.resume.txt',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/physik-batch-021',
+    outputJsonPath: `${defaultReviewDirPath}/physik-rollout-status.json`,
+    outputMarkdownPath: `${defaultReviewDirPath}/physik-rollout-status.md`,
+    qualityScriptName: 'quality:goal-visualization-rollout-status:physik',
+  },
+}
 
 function toPosixPath(path: string): string {
   return path.split(sep).join('/')
@@ -131,24 +162,47 @@ function resolveRepoPath(path: string): string {
   return resolve(repoRoot, path)
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function subjectFromArgs(argv: string[]): string {
+  const subjectArg = argv.find((arg) => arg.startsWith('--subject='))
+  return subjectArg?.slice('--subject='.length) ?? 'mathematik'
+}
+
+function getSubjectDefaults(subject: string): SubjectDefaults {
+  const defaults = subjectDefaults[subject]
+  if (!defaults) {
+    throw new Error(`Unknown subject: ${subject}. Supported subjects: ${Object.keys(subjectDefaults).join(', ')}`)
+  }
+  return defaults
+}
+
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(resolveRepoPath(path), 'utf8')) as T
 }
 
 function parseArgs(argv: string[]): Args {
+  const subject = subjectFromArgs(argv)
+  const defaults = getSubjectDefaults(subject)
   const args: Args = {
     checkMode: false,
-    landscapePath: defaultLandscapePath,
+    subject,
+    landscapePath: defaults.landscapePath,
     reviewDirPath: defaultReviewDirPath,
-    currentResumeFilePath: defaultCurrentResumeFilePath,
-    currentPromptAppendDirPath: defaultCurrentPromptAppendDirPath,
-    outputJsonPath: defaultOutputJsonPath,
-    outputMarkdownPath: defaultOutputMarkdownPath,
+    currentResumeFilePath: defaults.currentResumeFilePath,
+    currentPromptAppendDirPath: defaults.currentPromptAppendDirPath,
+    outputJsonPath: defaults.outputJsonPath,
+    outputMarkdownPath: defaults.outputMarkdownPath,
   }
 
   argv.forEach((arg) => {
     if (arg === '--check') {
       args.checkMode = true
+      return
+    }
+    if (arg.startsWith('--subject=')) {
       return
     }
     if (arg.startsWith('--landscape=')) {
@@ -211,12 +265,12 @@ function isAtomicVisualizationGoal(goal: LearningGoal): boolean {
     && !tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
-function primaryVisualizationLink(goal: LearningGoal) {
+function primaryVisualizationLink(goal: LearningGoal, subject: string) {
   return (goal.resourceLinks ?? []).find((link) => {
     return link.type === 'goal-visualization'
       && link.resourceType === 'image'
       && link.role === 'primary'
-      && link.url.includes('/assets/goal-visualizations/mathematik/')
+      && link.url.includes(`/assets/goal-visualizations/${subject}/`)
   })
 }
 
@@ -225,9 +279,9 @@ function parseLedgerStatus(text: string): string | null {
   return match?.[1] ?? null
 }
 
-function parseReviewLedger(path: string): ReviewLedger {
+function parseReviewLedger(path: string, subject: string): ReviewLedger {
   const text = readFileSync(resolveRepoPath(path), 'utf8')
-  const batch = path.match(/mathematik-batch-(\d+)\.md$/)?.[1] ?? path
+  const batch = path.match(new RegExp(`${escapeRegExp(subject)}-batch-(\\d+)\\.md$`))?.[1] ?? path
   const decisions: ReviewDecisionRow[] = []
 
   text.split(/\r?\n/).forEach((line) => {
@@ -250,14 +304,15 @@ function parseReviewLedger(path: string): ReviewLedger {
   }
 }
 
-function loadReviewLedgers(reviewDirPath: string): ReviewLedger[] {
+function loadReviewLedgers(reviewDirPath: string, subject: string): ReviewLedger[] {
   const absoluteReviewDirPath = resolveRepoPath(reviewDirPath)
   if (!existsSync(absoluteReviewDirPath)) return []
+  const ledgerPattern = new RegExp(`^${escapeRegExp(subject)}-batch-\\d+\\.md$`)
 
   return readdirSync(absoluteReviewDirPath)
-    .filter((name) => /^mathematik-batch-\d+\.md$/.test(name))
+    .filter((name) => ledgerPattern.test(name))
     .sort()
-    .map((name) => parseReviewLedger(`${reviewDirPath}/${name}`))
+    .map((name) => parseReviewLedger(`${reviewDirPath}/${name}`, subject))
 }
 
 function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
@@ -278,12 +333,7 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
 }
 
 function isAcceptedDecision(decision: string | null | undefined): boolean {
-  return decision === 'accepted_pilot'
-    || decision === 'accepted_pilot_after_regeneration'
-    || decision === 'accepted_pilot_after_resume'
-    || decision === 'accepted_pilot_after_second_regeneration'
-    || decision === 'accepted_pilot_after_third_regeneration'
-    || decision === 'accepted_pilot_after_user_review_correction'
+  return decision?.startsWith('accepted_pilot') === true
 }
 
 function readResumeGoalIds(path: string): string[] {
@@ -309,7 +359,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
   const landscape = readJson<LearningLandscape>(args.landscapePath)
   const atomicGoals = landscape.goals.filter(isAtomicVisualizationGoal)
   const visualizedGoals: GoalVisualizationRow[] = atomicGoals.flatMap((goal) => {
-    const link = primaryVisualizationLink(goal)
+    const link = primaryVisualizationLink(goal, args.subject)
     if (!link) return []
     return [{
       goalId: goal.id,
@@ -321,7 +371,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     }]
   }).sort((left, right) => left.title.localeCompare(right.title))
 
-  const ledgers = loadReviewLedgers(args.reviewDirPath)
+  const ledgers = loadReviewLedgers(args.reviewDirPath, args.subject)
   const decisions = ledgers.flatMap((ledger) => ledger.decisions)
   const latestDecisions = latestDecisionRows(ledgers)
   const latestDecisionByGoalId = new Map(latestDecisions.map((row) => [row.goalId, row]))
@@ -364,6 +414,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     generatedAt,
     generator: 'app/scripts/reportGoalVisualizationRolloutStatus.ts',
     request: {
+      subject: args.subject,
       landscapePath: args.landscapePath,
       reviewDirPath: args.reviewDirPath,
       currentResumeFilePath: args.currentResumeFilePath,
@@ -434,14 +485,18 @@ function markdownTable(headers: string[], rows: Array<Array<string | number>>): 
   ]
 }
 
-function pushGeneratedMarkdownNotice(lines: string[]): void {
+function pushGeneratedMarkdownNotice(
+  lines: string[],
+  report: GoalVisualizationRolloutReport,
+  defaults: SubjectDefaults,
+): void {
   lines.push('> Generated artifact. Do not edit manually.')
   lines.push('>')
   lines.push('> Generated by: `app/scripts/reportGoalVisualizationRolloutStatus.ts`')
-  lines.push('> Regenerate with: `cd app && npm run quality:goal-visualization-rollout-status`')
+  lines.push(`> Regenerate with: \`cd app && npm run ${defaults.qualityScriptName}\``)
   lines.push('> Source of truth: `app/scripts/reportGoalVisualizationRolloutStatus.ts`')
-  lines.push(`> Source of truth: \`${defaultLandscapePath}\``)
-  lines.push(`> Source of truth: \`${defaultReviewDirPath}\``)
+  lines.push(`> Source of truth: \`${report.request.landscapePath}\``)
+  lines.push(`> Source of truth: \`${report.request.reviewDirPath}\``)
   lines.push('')
 }
 
@@ -480,12 +535,13 @@ function renderLinkedReviewMismatchRows(rows: LinkedReviewMismatchRow[], maxRows
 
 function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   const { summary } = report
+  const defaults = getSubjectDefaults(report.request.subject)
   const hasCurrentResumeWork = report.currentBatch.resumeFileExists && report.currentBatch.resumeGoalIds.length > 0
-  const lines: string[] = ['# Mathematik Goal Visualization Rollout Status', '']
-  pushGeneratedMarkdownNotice(lines)
+  const lines: string[] = [`# ${defaults.displayName} Goal Visualization Rollout Status`, '']
+  pushGeneratedMarkdownNotice(lines, report, defaults)
   lines.push(`Generated: ${report.generatedAt}`)
   lines.push('')
-  lines.push('Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.')
+  lines.push(`Scope: canonical \`${defaults.scopeName}\`, atomic goal visualizations.`)
   lines.push('')
   lines.push('## Current Coverage')
   lines.push('')
@@ -540,7 +596,7 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('## Interpretation')
   lines.push('')
   lines.push('- Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.')
-  lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und mathematischer Kontrolle in die Landschaft gelinkt.')
+  lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.')
   if (hasCurrentResumeWork) {
     lines.push(`- Im aktuellen Resume stehen ${report.currentBatch.resumeGoalIds.length} Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.`)
   } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
@@ -581,9 +637,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
     lines.push('  --no-import \\')
     lines.push(`  --prompt-append-dir=${report.currentBatch.promptAppendDir}`)
   } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
-    lines.push('npm --prefix app run visualization:plan-batch -- --count 6 --include-deferred')
+    lines.push(`npm --prefix app run visualization:plan-batch -- --count 6 --landscape ${report.request.landscapePath} --output tmp/goal-visualization-${report.request.subject}-next-batch.txt --include-deferred`)
   } else {
-    lines.push('npm --prefix app run visualization:plan-batch -- --count 6')
+    lines.push(`npm --prefix app run visualization:plan-batch -- --count 6 --landscape ${report.request.landscapePath} --output tmp/goal-visualization-${report.request.subject}-next-batch.txt`)
   }
   lines.push('```')
   lines.push('')
@@ -606,6 +662,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
 }
 
 function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void {
+  const defaults = getSubjectDefaults(args.subject)
+  const regenerateCommand = `cd app && npm run ${defaults.qualityScriptName}`
   const renderedJson = `${JSON.stringify(report, null, 2)}\n`
   const renderedMarkdown = renderMarkdown(report)
   if (args.checkMode) {
@@ -613,14 +671,14 @@ function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void 
     const jsonPath = resolveRepoPath(args.outputJsonPath)
     const markdownPath = resolveRepoPath(args.outputMarkdownPath)
     if (!existsSync(jsonPath)) {
-      failures.push(`${args.outputJsonPath} does not exist. Run: cd app && npm run quality:goal-visualization-rollout-status`)
+      failures.push(`${args.outputJsonPath} does not exist. Run: ${regenerateCommand}`)
     } else if (readFileSync(jsonPath, 'utf8') !== renderedJson) {
-      failures.push(`${args.outputJsonPath} is stale. Run: cd app && npm run quality:goal-visualization-rollout-status`)
+      failures.push(`${args.outputJsonPath} is stale. Run: ${regenerateCommand}`)
     }
     if (!existsSync(markdownPath)) {
-      failures.push(`${args.outputMarkdownPath} does not exist. Run: cd app && npm run quality:goal-visualization-rollout-status`)
+      failures.push(`${args.outputMarkdownPath} does not exist. Run: ${regenerateCommand}`)
     } else if (readFileSync(markdownPath, 'utf8') !== renderedMarkdown) {
-      failures.push(`${args.outputMarkdownPath} is stale. Run: cd app && npm run quality:goal-visualization-rollout-status`)
+      failures.push(`${args.outputMarkdownPath} is stale. Run: ${regenerateCommand}`)
     }
     if (failures.length > 0) {
       console.error(failures.join('\n'))
