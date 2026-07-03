@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-03T05:32:58.472Z",
+  "generatedAt": "2026-07-03T05:42:17.662Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -29,9 +29,9 @@
       "accepted_pilot_after_regeneration": 38,
       "accepted_pilot_after_second_regeneration": 7,
       "accepted_pilot_after_third_regeneration": 1,
-      "accepted_pilot_after_user_review_correction": 3,
+      "accepted_pilot_after_user_review_correction": 4,
       "deferred_provider_limitation": 1,
-      "rejected_after_user_review_replaced": 3,
+      "rejected_after_user_review_replaced": 4,
       "rejected_regenerated": 33
     },
     "openProviderDeferredGoals": 0,
@@ -76,6 +76,13 @@
         "title": "Lichtwege mit dem Strahlenmodell darstellen und vorhersagen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The corrected image uses a flat 2D side-view cross-section with a point-like light source, an aperture made of two opaque barrier parts, and the screen as a vertical line. All three visible rays start at the same point source, pass through the aperture opening, and end on the illuminated screen segment. No ray bends at the aperture, starts at the screen, or crosses an opaque part of the barrier."
+      },
+      {
+        "batch": "024",
+        "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
+        "title": "Isochore, isobare und isotherme Zustandsaenderungen berechnen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image shows p vertical and V horizontal. The orange isotherm is a decreasing hyperbola in the first quadrant and visibly approaches the black p and V axes. The colored isobar and isochore are only example lines and are not drawn as asymptotes; the curve crosses them instead of flattening toward them. Axis arrows point only in positive coordinate directions."
       }
     ]
   },

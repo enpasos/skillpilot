@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-03T05:32:58.472Z
+Generated: 2026-07-03T05:42:17.662Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -45,9 +45,9 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_regeneration` | 38 |
 | `accepted_pilot_after_second_regeneration` | 7 |
 | `accepted_pilot_after_third_regeneration` | 1 |
-| `accepted_pilot_after_user_review_correction` | 3 |
+| `accepted_pilot_after_user_review_correction` | 4 |
 | `deferred_provider_limitation` | 1 |
-| `rejected_after_user_review_replaced` | 3 |
+| `rejected_after_user_review_replaced` | 4 |
 | `rejected_regenerated` | 33 |
 
 ## Current Batch
@@ -90,6 +90,7 @@ Keine Eintraege.
 | 004 | `dd7cdcea-0950-461b-96ac-ce49989fca47` | Licht, Schatten und geradlinige Ausbreitung beschreiben | `accepted_pilot_after_user_review_correction` |
 | 004 | `dd7cdcea-0950-461b-96ac-ce49989fca47` | Licht, Schatten und geradlinige Ausbreitung beschreiben | `accepted_pilot_after_user_review_correction` |
 | 004 | `79cb1695-f985-443a-b93e-27b57ab474b7` | Lichtwege mit dem Strahlenmodell darstellen und vorhersagen | `accepted_pilot_after_user_review_correction` |
+| 024 | `fb73c94b-6a23-5351-8fef-db2c2533e361` | Isochore, isobare und isotherme Zustandsaenderungen berechnen | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
