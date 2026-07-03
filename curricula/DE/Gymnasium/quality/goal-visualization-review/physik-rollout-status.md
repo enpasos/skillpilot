@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-03T07:07:03.758Z
+Generated: 2026-07-03T08:24:09.259Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 155 |
-| Coverage | 36.3% |
+| Ziele mit primaerem Visualisierungslink | 161 |
+| Coverage | 37.7% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 26 |
+| Review-Ledger-Dateien | 27 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 272 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 266 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,29 +33,29 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 155 |
+| `pilot` | 161 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 102 |
+| `accepted_pilot` | 106 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 41 |
-| `accepted_pilot_after_second_regeneration` | 7 |
+| `accepted_pilot_after_regeneration` | 42 |
+| `accepted_pilot_after_second_regeneration` | 8 |
 | `accepted_pilot_after_third_regeneration` | 1 |
 | `accepted_pilot_after_user_review_correction` | 4 |
 | `deferred_provider_limitation` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
-| `rejected_regenerated` | 38 |
+| `rejected_regenerated` | 41 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-026.md` |
-| Latest ledger status | `completed_with_user_review_corrections` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-027.md` |
+| Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-physik-batch-021.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
