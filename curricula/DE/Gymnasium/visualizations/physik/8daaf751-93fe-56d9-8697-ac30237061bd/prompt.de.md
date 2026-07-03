@@ -34,17 +34,17 @@ Zusatzanweisung:
 Pflichtinhalt:
 
 - Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Fahrraddynamik mit Kreiselwirkung erklären`.
-- Use only a cautious qualitative text-card layout. Do not draw a road scene, motion path, wheel diagram, force diagram, or steering sketch.
-- If an icon is used, it must be a plain still bicycle silhouette without arrowheads, arcs, rotation marks, tilt marks, pointer lines, or trails. Safer: no icon.
-- Show exactly these cards:
-  - `rotierende Raeder besitzen Drehimpuls`
-  - `Lenken und Kippen erzeugen Drehmomente`
-  - `Kreiselwirkung trägt zur Stabilität bei`
-  - `Stabilität hat mehrere Ursachen`
-- Add an important caution card:
-  - `Nicht nur Kreiselwirkung: Geometrie, Nachlauf und Lenkbewegung wirken mit`
-- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular marks, motion trails, pointer lines, connectors, flow lines, or path marks anywhere in the image. Use cards and labels only.
+- Create an appealing German cartoon infographic titled `Fahrraddynamik mit Kreiselwirkung erklären`.
+- Make it visual-first: at least two thirds of the image area must be an illustration, not cards or text blocks.
+- Show a calm cartoon scene of an upright bicycle with rider, plus a large inset view of the front wheel and fork. The bicycle is static and balanced.
+- Highlight both wheels and the inset wheel with soft colored rings or translucent halos only. These rings must have no arrowheads and no direction marks.
+- Add a small visual cutaway of the front wheel as a rotating wheel on an axle, but without spin arrows or motion trails.
+- Add only three short labels placed close to the illustration, not inside large cards:
+  - `rotierende Räder`
+  - `Kreiselwirkung`
+  - `auch Geometrie und Nachlauf`
+- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular direction marks, motion trails, pointer lines, connectors, flow lines, or path marks anywhere in the image. Use static illustration and nearby labels only.
+- Visible learner text must be limited to the title and the three listed labels. Do not add cards, notes, warnings, checklists, instructions, or production guidance.
 
 Vermeiden:
 
@@ -53,6 +53,7 @@ Vermeiden:
 - Do not show a force arrow unless its source and target are exact; safer: no arrows.
 - Do not show a bicycle leaning opposite to the described effect.
 - Do not include mathematical formulas in this image.
+- Do not create a text-card layout.
 ```
 
 ## Review-Notiz
