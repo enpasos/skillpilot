@@ -1,58 +1,58 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-05T20:05:32.222Z",
+  "generatedAt": "2026-07-05T20:23:35.351Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-physik-batch-060.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-060"
+    "currentResumeFilePath": "tmp/goal-visualization-physik-batch-061.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-061"
   },
   "summary": {
     "totalGoals": 588,
     "atomicGoalsInScope": 427,
-    "goalsWithPrimaryVisualization": 355,
-    "coveragePercent": 83.1,
+    "goalsWithPrimaryVisualization": 360,
+    "coveragePercent": 84.3,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 66,
+      "accepted": 71,
       "pilot": 289
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 66,
+      "accepted": 71,
       "pilot": 289
     },
-    "reviewLedgerFiles": 60,
+    "reviewLedgerFiles": 61,
     "reviewDecisionCounts": {
-      "accepted_pilot": 232,
+      "accepted_pilot": 236,
       "accepted_pilot_after_fifth_regeneration": 1,
       "accepted_pilot_after_provider_quota_retry": 6,
       "accepted_pilot_after_provider_retry": 3,
       "accepted_pilot_after_regeneration": 87,
-      "accepted_pilot_after_second_regeneration": 20,
+      "accepted_pilot_after_second_regeneration": 21,
       "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 8,
       "blocked_provider_quota": 1,
-      "deferred_provider_limitation": 4,
+      "deferred_provider_limitation": 5,
       "provider_temporary_failure_retried": 1,
       "rejected_after_user_review_replaced": 8,
       "rejected_regenerated": 111
     },
-    "openProviderDeferredGoals": 3,
+    "openProviderDeferredGoals": 4,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 1,
-    "regularUnlinkedGoals": 69,
+    "regularUnlinkedGoals": 63,
     "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-060.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-061.md",
     "latestLedgerStatus": "completed",
-    "resumeFile": "tmp/goal-visualization-physik-batch-060.resume.txt",
+    "resumeFile": "tmp/goal-visualization-physik-batch-061.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-060",
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-061",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
   },
@@ -64,6 +64,13 @@
         "title": "Quantitative Superposition elektrischer Felder",
         "decision": "deferred_provider_limitation",
         "notes": "Deferred after a final text-plus-reference-image Nano Banana Pro attempt still changed the exact reference geometry and again made the horizontal `3 N/C` vector longer than the vertical `4 N/C` vector. No active asset was imported."
+      },
+      {
+        "batch": "061",
+        "goalId": "0dd1e39c-8557-5a4e-b467-caae964fff67",
+        "title": "Solarmodule in Schaltungen experimentell untersuchen",
+        "decision": "deferred_provider_limitation",
+        "notes": "No image was accepted. The first candidate had wrong or ambiguous series/parallel wiring and unclear meter placement. The first regeneration still had incomplete/cropped parallel wiring. The second regeneration still showed a wrong series connection with plus-to-plus between modules instead of plus-to-minus. Because a wrong circuit would be actively misleading, no asset or canonical link was created."
       },
       {
         "batch": "044",
@@ -1049,6 +1056,22 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/5b8eaf71-96fe-50eb-b9ea-a8fa392df086/5b8eaf71-96fe-50eb-b9ea-a8fa392df086.jpg"
+    },
+    {
+      "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+      "title": "Experimente planen und Messdaten auswerten",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/d3c153b9-e09b-5668-8386-73105546a7c1/d3c153b9-e09b-5668-8386-73105546a7c1.jpg"
+    },
+    {
+      "goalId": "ad62f563-4fee-5399-8d9c-03a214658aa9",
+      "title": "Experimentelle Untersuchungen fachgerecht dokumentieren",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/ad62f563-4fee-5399-8d9c-03a214658aa9/ad62f563-4fee-5399-8d9c-03a214658aa9.jpg"
     },
     {
       "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
@@ -2155,12 +2178,36 @@
       "url": "/assets/goal-visualizations/physik/4a2bf015-052b-4af0-aed7-324259fa1a8a/4a2bf015-052b-4af0-aed7-324259fa1a8a.jpg"
     },
     {
+      "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+      "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/6d323d54-0aee-55d0-a9e1-ef2efdea0346/6d323d54-0aee-55d0-a9e1-ef2efdea0346.jpg"
+    },
+    {
       "goalId": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
       "title": "Physikalische Aussagen empirisch überprüfen",
       "phase": "GLOBAL",
       "area": "Denk- und Arbeitsweisen",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/physik/da26294f-4316-5bd5-a37a-bd89397b3b8b/da26294f-4316-5bd5-a37a-bd89397b3b8b.jpg"
+    },
+    {
+      "goalId": "b378c8b3-5e83-5abf-8243-b0f345037bfc",
+      "title": "Physikalische Bewertungen begründet formulieren",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/b378c8b3-5e83-5abf-8243-b0f345037bfc/b378c8b3-5e83-5abf-8243-b0f345037bfc.jpg"
+    },
+    {
+      "goalId": "d2e6f87d-795b-5631-a7cc-0bfb5dc5142e",
+      "title": "Physikalische Informationen aus Quellen auswerten",
+      "phase": "GLOBAL",
+      "area": "Denk- und Arbeitsweisen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/d2e6f87d-795b-5631-a7cc-0bfb5dc5142e/d2e6f87d-795b-5631-a7cc-0bfb5dc5142e.jpg"
     },
     {
       "goalId": "5c0d5040-92e4-50f6-9695-9d33d889a080",
