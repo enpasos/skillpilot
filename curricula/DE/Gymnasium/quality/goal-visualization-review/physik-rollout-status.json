@@ -1,59 +1,134 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-03T08:24:09.259Z",
+  "generatedAt": "2026-07-03T18:43:14.369Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-physik-batch-021.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-021"
+    "currentResumeFilePath": "tmp/goal-visualization-physik-batch-050.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/physik-batch-050"
   },
   "summary": {
     "totalGoals": 588,
     "atomicGoalsInScope": 427,
-    "goalsWithPrimaryVisualization": 161,
-    "coveragePercent": 37.7,
+    "goalsWithPrimaryVisualization": 289,
+    "coveragePercent": 67.7,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 161
+      "pilot": 289
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 161
+      "pilot": 289
     },
-    "reviewLedgerFiles": 27,
+    "reviewLedgerFiles": 50,
     "reviewDecisionCounts": {
-      "accepted_pilot": 106,
+      "accepted_pilot": 188,
       "accepted_pilot_after_fifth_regeneration": 1,
       "accepted_pilot_after_provider_retry": 3,
-      "accepted_pilot_after_regeneration": 42,
-      "accepted_pilot_after_second_regeneration": 8,
-      "accepted_pilot_after_third_regeneration": 1,
+      "accepted_pilot_after_regeneration": 79,
+      "accepted_pilot_after_second_regeneration": 15,
+      "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 4,
-      "deferred_provider_limitation": 1,
+      "blocked_provider_quota": 2,
+      "deferred_provider_limitation": 4,
+      "not_requested_provider_quota": 5,
+      "provider_temporary_failure_retried": 1,
       "rejected_after_user_review_replaced": 8,
-      "rejected_regenerated": 41
+      "rejected_regenerated": 111
     },
-    "openProviderDeferredGoals": 0,
-    "openProviderQuotaGoals": 0,
-    "blockedProviderQuotaLedgers": 0,
-    "regularUnlinkedGoals": 266,
+    "openProviderDeferredGoals": 3,
+    "openProviderQuotaGoals": 6,
+    "blockedProviderQuotaLedgers": 2,
+    "regularUnlinkedGoals": 135,
     "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-027.md",
-    "latestLedgerStatus": "completed",
-    "resumeFile": "tmp/goal-visualization-physik-batch-021.resume.txt",
-    "resumeFileExists": false,
-    "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-021",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-050.md",
+    "latestLedgerStatus": "blocked_provider_quota_retry",
+    "resumeFile": "tmp/goal-visualization-physik-batch-050.resume.txt",
+    "resumeFileExists": true,
+    "resumeGoalIds": [
+      "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+      "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+      "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "af50bb9a-fd7b-50f5-9698-48c4efe99032"
+    ],
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/physik-batch-050",
     "promptAppendDirExists": true,
     "promptAppendFiles": 6
   },
   "qualityQueues": {
-    "openProviderDeferred": [],
-    "openProviderQuota": [],
+    "openProviderDeferred": [
+      {
+        "batch": "045",
+        "goalId": "455c65ca-814a-56ad-918a-013155883c52",
+        "title": "Quantitative Superposition elektrischer Felder",
+        "decision": "deferred_provider_limitation",
+        "notes": "Deferred after a final text-plus-reference-image Nano Banana Pro attempt still changed the exact reference geometry and again made the horizontal `3 N/C` vector longer than the vertical `4 N/C` vector. No active asset was imported."
+      },
+      {
+        "batch": "044",
+        "goalId": "d36727cc-ce42-51a3-9425-41afb0b9acdd",
+        "title": "Transistor und einfache Schaltungen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Deferred after the third regeneration still failed to provide a trustworthy NPN switch diagram: the lower terminal was labelled `B` instead of `E`, the emitter label was missing or unclear, and the terminal topology was not acceptable for a learner-facing physics image. No active asset was imported."
+      },
+      {
+        "batch": "047",
+        "goalId": "4888444f-4520-437a-9ba7-e74e8f8ed129",
+        "title": "Überlagerungen unabhängiger Schwingungen qualitativ beschreiben",
+        "decision": "deferred_provider_limitation",
+        "notes": "Deferred after a final reference-image Nano Banana Pro attempt still changed the exact reference geometry and again rendered the beating result with quasi-vertical strokes instead of a smooth resulting oscillation. No active asset was imported."
+      }
+    ],
+    "openProviderQuota": [
+      {
+        "batch": "050",
+        "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+        "title": "Lorentztransformation anwenden",
+        "decision": "not_requested_provider_quota",
+        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
+      },
+      {
+        "batch": "050",
+        "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+        "title": "Quantenphysikalische Bändermodelle",
+        "decision": "not_requested_provider_quota",
+        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
+      },
+      {
+        "batch": "050",
+        "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+        "title": "Relativistische Massenzunahme herleiten",
+        "decision": "not_requested_provider_quota",
+        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
+      },
+      {
+        "batch": "050",
+        "goalId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+        "title": "Röntgenspektren deuten",
+        "decision": "blocked_provider_quota",
+        "notes": "Retried with a stricter prompt requiring the continuous spectrum cutoff `E_max` at the high-energy right endpoint and `K_beta` to the right of `K_alpha`, but Gemini returned `429` before producing an image. Sixty-seven later resume attempts returned the same quota response before producing an image. No active asset was imported or linked."
+      },
+      {
+        "batch": "050",
+        "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+        "title": "Transistorverstärker analysieren",
+        "decision": "not_requested_provider_quota",
+        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
+      },
+      {
+        "batch": "050",
+        "goalId": "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+        "title": "α-Zerfall durch Tunneleffekt",
+        "decision": "not_requested_provider_quota",
+        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
+      }
+    ],
     "rejectedNotLinked": [],
     "userReviewCorrections": [
       {
@@ -124,6 +199,22 @@
       "url": "/assets/goal-visualizations/physik/7fe3022f-fad0-5f41-af1c-d55ff214ebc6/7fe3022f-fad0-5f41-af1c-d55ff214ebc6.jpg"
     },
     {
+      "goalId": "14d99a65-8d58-5647-88ab-02137b96d55b",
+      "title": "Allgemeine Relativitätstheorie (Qualitativ)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/14d99a65-8d58-5647-88ab-02137b96d55b/14d99a65-8d58-5647-88ab-02137b96d55b.jpg"
+    },
+    {
+      "goalId": "48e3d6c2-00bf-5afd-8846-ba3dbd01e96d",
+      "title": "Antimaterie und Paarvernichtung",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/48e3d6c2-00bf-5afd-8846-ba3dbd01e96d/48e3d6c2-00bf-5afd-8846-ba3dbd01e96d.jpg"
+    },
+    {
       "goalId": "979e0d0d-8933-4ace-814f-f28060ad280f",
       "title": "Anwendungen und Risiken radioaktiver Strahlung beurteilen",
       "phase": "GLOBAL",
@@ -164,6 +255,14 @@
       "url": "/assets/goal-visualizations/physik/0b4f2020-8486-5372-9cb9-6e59f698ac2d/0b4f2020-8486-5372-9cb9-6e59f698ac2d.jpg"
     },
     {
+      "goalId": "709e688c-eb07-5f83-a506-82c9bfe0d89f",
+      "title": "Auflösungsvermögen optischer Instrumente",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/709e688c-eb07-5f83-a506-82c9bfe0d89f/709e688c-eb07-5f83-a506-82c9bfe0d89f.jpg"
+    },
+    {
       "goalId": "24b4686a-e8a6-4583-8952-33e6f653c2a3",
       "title": "Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen",
       "phase": "GLOBAL",
@@ -186,6 +285,46 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/ec7a0a68-730b-5c94-ac72-a937508f8303/ec7a0a68-730b-5c94-ac72-a937508f8303.jpg"
+    },
+    {
+      "goalId": "3b866aea-3e4d-5f23-91de-759148382710",
+      "title": "Bahnformen quantitativ bestimmen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/3b866aea-3e4d-5f23-91de-759148382710/3b866aea-3e4d-5f23-91de-759148382710.jpg"
+    },
+    {
+      "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a",
+      "title": "Bändermodell und Dotierung",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/df010b2b-b182-5f7e-bbe4-49b72e48c27a/df010b2b-b182-5f7e-bbe4-49b72e48c27a.jpg"
+    },
+    {
+      "goalId": "c14857d3-634f-4a59-9a3f-8d0638fc5784",
+      "title": "Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für Modelle diskreter Energiezustände interpretieren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c14857d3-634f-4a59-9a3f-8d0638fc5784/c14857d3-634f-4a59-9a3f-8d0638fc5784.jpg"
+    },
+    {
+      "goalId": "ad021f2e-6b94-5e6e-a264-3d1110094b87",
+      "title": "Berechnungen im Potenzialtopf (LK)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ad021f2e-6b94-5e6e-a264-3d1110094b87/ad021f2e-6b94-5e6e-a264-3d1110094b87.jpg"
+    },
+    {
+      "goalId": "f6a3a602-1e45-5018-b0ff-3d49933cf634",
+      "title": "Beugung am Einzelspalt berechnen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f6a3a602-1e45-5018-b0ff-3d49933cf634/f6a3a602-1e45-5018-b0ff-3d49933cf634.jpg"
     },
     {
       "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
@@ -212,6 +351,14 @@
       "url": "/assets/goal-visualizations/physik/7ead007f-e85a-5cb5-b52d-76aae626119a/7ead007f-e85a-5cb5-b52d-76aae626119a.jpg"
     },
     {
+      "goalId": "a522c8c0-f3a4-5568-acae-3010ed9feb87",
+      "title": "Bewegungsinduktion und Ladungstrennung",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a522c8c0-f3a4-5568-acae-3010ed9feb87/a522c8c0-f3a4-5568-acae-3010ed9feb87.jpg"
+    },
+    {
       "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a",
       "title": "Bezugssysteme und Superpositionsprinzip",
       "phase": "E",
@@ -220,12 +367,116 @@
       "url": "/assets/goal-visualizations/physik/68c90ba6-c438-463c-9a53-cf61062d416a/68c90ba6-c438-463c-9a53-cf61062d416a.jpg"
     },
     {
+      "goalId": "cde9b548-2cf4-59ad-b5d4-a71872afbe56",
+      "title": "Bindungsenergie und Massendefekt",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cde9b548-2cf4-59ad-b5d4-a71872afbe56/cde9b548-2cf4-59ad-b5d4-a71872afbe56.jpg"
+    },
+    {
+      "goalId": "ce89fa04-bbd8-53b2-be01-812e3b3044ed",
+      "title": "Bohr’sche Postulate und Quantisierung",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ce89fa04-bbd8-53b2-be01-812e3b3044ed/ce89fa04-bbd8-53b2-be01-812e3b3044ed.jpg"
+    },
+    {
+      "goalId": "81c0d811-e6de-5489-8415-3b257c734a2e",
+      "title": "Bragg-Bedingung anwenden (LK)",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/81c0d811-e6de-5489-8415-3b257c734a2e/81c0d811-e6de-5489-8415-3b257c734a2e.jpg"
+    },
+    {
+      "goalId": "5fda8623-69e0-5503-9c6d-86d054a8cf91",
+      "title": "Braunsche Röhre (Oszilloskop)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5fda8623-69e0-5503-9c6d-86d054a8cf91/5fda8623-69e0-5503-9c6d-86d054a8cf91.jpg"
+    },
+    {
+      "goalId": "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
+      "title": "Charakteristische Schwingungsgrößen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e/fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e.jpg"
+    },
+    {
+      "goalId": "7e9e814c-fe12-42a9-8d80-e09e7fb52964",
+      "title": "Charakteristisches Röntgenspektrum mit Energieniveaus der Atomhülle erklären",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7e9e814c-fe12-42a9-8d80-e09e7fb52964/7e9e814c-fe12-42a9-8d80-e09e7fb52964.jpg"
+    },
+    {
+      "goalId": "2aa2ef4b-8204-59b9-ad53-71c994cd6180",
+      "title": "Compton-Effekt",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2aa2ef4b-8204-59b9-ad53-71c994cd6180/2aa2ef4b-8204-59b9-ad53-71c994cd6180.jpg"
+    },
+    {
       "goalId": "8da5c981-8216-5fcd-a393-19f392ae2006",
       "title": "Coulomb'sches Gesetz",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/8da5c981-8216-5fcd-a393-19f392ae2006/8da5c981-8216-5fcd-a393-19f392ae2006.jpg"
+    },
+    {
+      "goalId": "18c1f954-487e-5121-bb18-6c64a82f573d",
+      "title": "Dämpfungsverhalten klassifizieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/18c1f954-487e-5121-bb18-6c64a82f573d/18c1f954-487e-5121-bb18-6c64a82f573d.jpg"
+    },
+    {
+      "goalId": "b05da028-65e4-5cd1-a13c-6c1a95b6dfdf",
+      "title": "Das Messproblem in der Quantenphysik",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b05da028-65e4-5cd1-a13c-6c1a95b6dfdf/b05da028-65e4-5cd1-a13c-6c1a95b6dfdf.jpg"
+    },
+    {
+      "goalId": "dfa53498-34f5-5326-9d94-87e7b528caf3",
+      "title": "De-Broglie-Wellen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/dfa53498-34f5-5326-9d94-87e7b528caf3/dfa53498-34f5-5326-9d94-87e7b528caf3.jpg"
+    },
+    {
+      "goalId": "defe44d2-c3d3-456b-a786-fad2cef13fe8",
+      "title": "Die Bedeutung von Modellen an Photon und Elektron reflektieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/defe44d2-c3d3-456b-a786-fad2cef13fe8/defe44d2-c3d3-456b-a786-fad2cef13fe8.jpg"
+    },
+    {
+      "goalId": "a7255b83-336c-4d42-ba5c-bc2f6248ea36",
+      "title": "Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz lösen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a7255b83-336c-4d42-ba5c-bc2f6248ea36/a7255b83-336c-4d42-ba5c-bc2f6248ea36.jpg"
+    },
+    {
+      "goalId": "330808f6-789a-583d-86df-e271a7683d8b",
+      "title": "Differenzialgleichung des RC-Kreises lösen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/330808f6-789a-583d-86df-e271a7683d8b/330808f6-789a-583d-86df-e271a7683d8b.jpg"
     },
     {
       "goalId": "72effc66-87f4-5f5e-8d36-1547677365fb",
@@ -252,12 +503,28 @@
       "url": "/assets/goal-visualizations/physik/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5/75b9ca4c-178e-5df2-adc4-f7f78e9d28e5.jpg"
     },
     {
+      "goalId": "e7131fe3-1da6-5555-80ec-fb6bdf8fcc29",
+      "title": "Doppler-Effekt in der Medizin",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e7131fe3-1da6-5555-80ec-fb6bdf8fcc29/e7131fe3-1da6-5555-80ec-fb6bdf8fcc29.jpg"
+    },
+    {
       "goalId": "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
       "title": "Drehimpuls als Erhaltungsgröße",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/37f17e7e-9fcf-5dca-ac10-e94cb8420be5/37f17e7e-9fcf-5dca-ac10-e94cb8420be5.jpg"
+    },
+    {
+      "goalId": "d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "title": "Drehmoment auf Magnetnadeln und Dipole",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d02438ba-0cc9-5993-831e-5e44d35e32c4/d02438ba-0cc9-5993-831e-5e44d35e32c4.jpg"
     },
     {
       "goalId": "cf570e66-2ce2-5923-9033-c97d74119553",
@@ -282,6 +549,14 @@
       "area": "Druck und Auftrieb",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/310b4f62-e261-46be-bb1b-1f125fc1699a/310b4f62-e261-46be-bb1b-1f125fc1699a.jpg"
+    },
+    {
+      "goalId": "692db5b6-8be1-5c7b-8307-3a02afb21ea0",
+      "title": "Ein- und Ausschaltvorgänge analysieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/692db5b6-8be1-5c7b-8307-3a02afb21ea0/692db5b6-8be1-5c7b-8307-3a02afb21ea0.jpg"
     },
     {
       "goalId": "1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075",
@@ -348,6 +623,70 @@
       "url": "/assets/goal-visualizations/physik/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76/cbb26ed2-6979-46f6-a4ae-128f5c5d9d76.jpg"
     },
     {
+      "goalId": "2622bef1-bdbc-504e-b468-b600b2ca3ed8",
+      "title": "Elektrisches Potenzial berechnen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2622bef1-bdbc-504e-b468-b600b2ca3ed8/2622bef1-bdbc-504e-b468-b600b2ca3ed8.jpg"
+    },
+    {
+      "goalId": "ffbbf243-c2eb-4330-b050-837de994c130",
+      "title": "Elektromagnetische Felder im Maxwell-Ueberblick beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ffbbf243-c2eb-4330-b050-837de994c130/ffbbf243-c2eb-4330-b050-837de994c130.jpg"
+    },
+    {
+      "goalId": "ac4ba260-6086-5fcc-bea2-c06f1425a1cc",
+      "title": "Elektromagnetischen Schwingkreis analysieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ac4ba260-6086-5fcc-bea2-c06f1425a1cc/ac4ba260-6086-5fcc-bea2-c06f1425a1cc.jpg"
+    },
+    {
+      "goalId": "904670af-8e4c-543e-bc9b-e6248d87a10d",
+      "title": "Emission, Absorption und Linienspektren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/904670af-8e4c-543e-bc9b-e6248d87a10d/904670af-8e4c-543e-bc9b-e6248d87a10d.jpg"
+    },
+    {
+      "goalId": "fd9fd8ad-c4a1-5552-9ea0-1878e0636f20",
+      "title": "Energie des elektrischen Feldes",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/fd9fd8ad-c4a1-5552-9ea0-1878e0636f20/fd9fd8ad-c4a1-5552-9ea0-1878e0636f20.jpg"
+    },
+    {
+      "goalId": "a1389d4e-dc97-5557-babe-a31a2bd57217",
+      "title": "Energie gespeicherter Magnetfelder",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a1389d4e-dc97-5557-babe-a31a2bd57217/a1389d4e-dc97-5557-babe-a31a2bd57217.jpg"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "title": "Energie und Energieerhaltung in Schwingungen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/78cf6eff-b3bc-5444-9ef8-5d39dae8d17d/78cf6eff-b3bc-5444-9ef8-5d39dae8d17d.jpg"
+    },
+    {
+      "goalId": "d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec",
+      "title": "Energie und Impuls von Photonen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec/d2860d7f-32ff-5d74-b2f8-b7bfc8d75aec.jpg"
+    },
+    {
       "goalId": "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
       "title": "Energieentwertung vs. Energieverbrauch",
       "phase": "E",
@@ -362,6 +701,22 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/91c49019-ea51-4ce5-a919-c91c45b25e83/91c49019-ea51-4ce5-a919-c91c45b25e83.jpg"
+    },
+    {
+      "goalId": "bacae732-2016-5a83-bc61-d0f94ed5a0e4",
+      "title": "Energien wasserstoffähnlicher Atome",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/bacae732-2016-5a83-bc61-d0f94ed5a0e4/bacae732-2016-5a83-bc61-d0f94ed5a0e4.jpg"
+    },
+    {
+      "goalId": "d7244ce4-5409-58d1-a1b4-bfae35f391e1",
+      "title": "Energieniveaus des Wasserstoffatoms",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d7244ce4-5409-58d1-a1b4-bfae35f391e1/d7244ce4-5409-58d1-a1b4-bfae35f391e1.jpg"
     },
     {
       "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3",
@@ -540,6 +895,30 @@
       "url": "/assets/goal-visualizations/physik/5f17e992-fd07-56ee-80a0-567f45bbd10c/5f17e992-fd07-56ee-80a0-567f45bbd10c.jpg"
     },
     {
+      "goalId": "3efa0cda-f55b-5534-8fac-ffe1d312aed1",
+      "title": "Erzwungene Schwingungen und Resonanz",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/3efa0cda-f55b-5534-8fac-ffe1d312aed1/3efa0cda-f55b-5534-8fac-ffe1d312aed1.jpg"
+    },
+    {
+      "goalId": "8d34228c-da38-5c1e-97cc-571f3eafb9f4",
+      "title": "Exkurs: Relativistische Massenzunahme (Linearbeschleuniger)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8d34228c-da38-5c1e-97cc-571f3eafb9f4/8d34228c-da38-5c1e-97cc-571f3eafb9f4.jpg"
+    },
+    {
+      "goalId": "966782e5-690d-4fae-bbab-fa3fa30525c3",
+      "title": "Fadenstrahlrohr als Elektronen-Messverfahren einordnen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/966782e5-690d-4fae-bbab-fa3fa30525c3/966782e5-690d-4fae-bbab-fa3fa30525c3.jpg"
+    },
+    {
       "goalId": "8daaf751-93fe-56d9-8697-ac30237061bd",
       "title": "Fahrraddynamik mit Kreiselwirkung erklären",
       "phase": "E",
@@ -554,6 +933,30 @@
       "area": "Farben",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5/cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5.jpg"
+    },
+    {
+      "goalId": "158e1c19-7ccb-4c8c-931c-b685951ab161",
+      "title": "Fortschreitende ebene Transversalwellen und Momentanbilder beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/158e1c19-7ccb-4c8c-931c-b685951ab161/158e1c19-7ccb-4c8c-931c-b685951ab161.jpg"
+    },
+    {
+      "goalId": "cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f",
+      "title": "Fotöffekt und Einstein-Deutung",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f/cb0e05ff-e47d-55e7-bd5b-f8d78f2cb91f.jpg"
+    },
+    {
+      "goalId": "cf340ce4-8d91-5d22-a1d9-53bf408abdb3",
+      "title": "Franck-Hertz-Versuch",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cf340ce4-8d91-5d22-a1d9-53bf408abdb3/cf340ce4-8d91-5d22-a1d9-53bf408abdb3.jpg"
     },
     {
       "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
@@ -572,6 +975,38 @@
       "url": "/assets/goal-visualizations/physik/12260012-cf04-5409-b57d-f5b3a46d9126/12260012-cf04-5409-b57d-f5b3a46d9126.jpg"
     },
     {
+      "goalId": "58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "title": "Gaußsches Verfahren anwenden",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/58db62d4-458f-5e2d-9ca0-968e09f4944b/58db62d4-458f-5e2d-9ca0-968e09f4944b.jpg"
+    },
+    {
+      "goalId": "e6895bc3-fcbd-59ad-baef-a78c97a13e11",
+      "title": "Gedämpfte Schwingungen beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e6895bc3-fcbd-59ad-baef-a78c97a13e11/e6895bc3-fcbd-59ad-baef-a78c97a13e11.jpg"
+    },
+    {
+      "goalId": "741774ef-15fc-4bcf-a370-e2c5cf4257d0",
+      "title": "Geladene Teilchen in homogenen elektrischen Feldern untersuchen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/741774ef-15fc-4bcf-a370-e2c5cf4257d0/741774ef-15fc-4bcf-a370-e2c5cf4257d0.jpg"
+    },
+    {
+      "goalId": "9854589c-5feb-4942-b90f-311ddf36eb78",
+      "title": "Geladene Teilchen in homogenen magnetischen Feldern untersuchen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9854589c-5feb-4942-b90f-311ddf36eb78/9854589c-5feb-4942-b90f-311ddf36eb78.jpg"
+    },
+    {
       "goalId": "25edd154-b1d8-546c-94a5-88502b6725cd",
       "title": "Geozentrisches und heliozentrisches Weltbild vergleichen (GK)",
       "phase": "E",
@@ -588,6 +1023,14 @@
       "url": "/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg"
     },
     {
+      "goalId": "c2b6acd8-b298-4e4e-aa7a-553a8a65f913",
+      "title": "Geschichtliche Entwicklung von Modellvorstellungen des Lichts beschreiben",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c2b6acd8-b298-4e4e-aa7a-553a8a65f913/c2b6acd8-b298-4e4e-aa7a-553a8a65f913.jpg"
+    },
+    {
       "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
       "title": "Gleichförmige Bewegung und Geschwindigkeit",
       "phase": "E",
@@ -602,6 +1045,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg"
+    },
+    {
+      "goalId": "a9169a74-de19-54a9-a8ac-a2ce43c7342e",
+      "title": "GPS und Relativitätstheorie",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a9169a74-de19-54a9-a8ac-a2ce43c7342e/a9169a74-de19-54a9-a8ac-a2ce43c7342e.jpg"
     },
     {
       "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e",
@@ -636,6 +1087,14 @@
       "url": "/assets/goal-visualizations/physik/76fd0ab2-079a-516e-a33b-170355336d40/76fd0ab2-079a-516e-a33b-170355336d40.jpg"
     },
     {
+      "goalId": "ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
+      "title": "Grenzen des Potentialtopf-Modells",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/ef6d5067-96b0-5388-87dd-5ac4e6a3e313/ef6d5067-96b0-5388-87dd-5ac4e6a3e313.jpg"
+    },
+    {
       "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
       "title": "Grundgleichung der Mechanik anwenden",
       "phase": "E",
@@ -644,12 +1103,68 @@
       "url": "/assets/goal-visualizations/physik/5f289cdc-fda1-4058-b44f-041ba1398e79/5f289cdc-fda1-4058-b44f-041ba1398e79.jpg"
     },
     {
+      "goalId": "b39ae8fb-4358-5866-8adf-3d5365368eeb",
+      "title": "Hall-Effekt anwenden",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b39ae8fb-4358-5866-8adf-3d5365368eeb/b39ae8fb-4358-5866-8adf-3d5365368eeb.jpg"
+    },
+    {
+      "goalId": "d03f1cb6-c224-53db-ad91-76cc7827978d",
+      "title": "Harmonische Schwingung verstehen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d03f1cb6-c224-53db-ad91-76cc7827978d/d03f1cb6-c224-53db-ad91-76cc7827978d.jpg"
+    },
+    {
+      "goalId": "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8",
+      "title": "Harmonische Wellen und ihre Größen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/cb0ced6d-b7c1-5b7d-9922-8c394f6030e8/cb0ced6d-b7c1-5b7d-9922-8c394f6030e8.jpg"
+    },
+    {
+      "goalId": "5da7d4d0-878e-44fd-b398-1b1de8b636a4",
+      "title": "Hertz'schen Dipol als Grenzfall des Schwingkreises deuten",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5da7d4d0-878e-44fd-b398-1b1de8b636a4/5da7d4d0-878e-44fd-b398-1b1de8b636a4.jpg"
+    },
+    {
+      "goalId": "206fe51d-cc78-5422-b139-32cc97eb1c37",
+      "title": "Hertzsprung-Russell-Diagramm (HRD)",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/206fe51d-cc78-5422-b139-32cc97eb1c37/206fe51d-cc78-5422-b139-32cc97eb1c37.jpg"
+    },
+    {
+      "goalId": "8ea46612-7f0d-4ef4-a732-9428e640ae92",
+      "title": "Historische Entwicklung der Atommodelle und Modellgrenzen fachlich einordnen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8ea46612-7f0d-4ef4-a732-9428e640ae92/8ea46612-7f0d-4ef4-a732-9428e640ae92.jpg"
+    },
+    {
       "goalId": "3e33813d-db75-4571-8345-3845b02b956d",
       "title": "Hören, Ohr und Lärmbelastung einordnen",
       "phase": "GLOBAL",
       "area": "Akustik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/3e33813d-db75-4571-8345-3845b02b956d/3e33813d-db75-4571-8345-3845b02b956d.jpg"
+    },
+    {
+      "goalId": "9dba2826-b179-59f0-8d91-5916079e5abe",
+      "title": "Huygens'sches Prinzip und Elementarwellen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9dba2826-b179-59f0-8d91-5916079e5abe/9dba2826-b179-59f0-8d91-5916079e5abe.jpg"
     },
     {
       "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
@@ -668,6 +1183,30 @@
       "url": "/assets/goal-visualizations/physik/f524f05c-4456-4fc3-a1f7-f40741fc1f16/f524f05c-4456-4fc3-a1f7-f40741fc1f16.jpg"
     },
     {
+      "goalId": "1a037489-3c95-540b-8cae-0acd360358ee",
+      "title": "Induktion durch Änderung des magnetischen Flusses",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1a037489-3c95-540b-8cae-0acd360358ee/1a037489-3c95-540b-8cae-0acd360358ee.jpg"
+    },
+    {
+      "goalId": "d18d4190-ddc1-5181-b1b6-e79947b737c2",
+      "title": "Induktionsgesetz in Differenzialform",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d18d4190-ddc1-5181-b1b6-e79947b737c2/d18d4190-ddc1-5181-b1b6-e79947b737c2.jpg"
+    },
+    {
+      "goalId": "eb1ea150-ec6c-5000-bce3-f46c820dccf8",
+      "title": "Induktionsgesetz und Lenz’sche Regel",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/eb1ea150-ec6c-5000-bce3-f46c820dccf8/eb1ea150-ec6c-5000-bce3-f46c820dccf8.jpg"
+    },
+    {
       "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
       "title": "Inelastische Stöße",
       "phase": "E",
@@ -682,6 +1221,62 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/00245a43-eb89-47d2-92d7-21799dbec9f3/00245a43-eb89-47d2-92d7-21799dbec9f3.jpg"
+    },
+    {
+      "goalId": "6270e558-d657-5363-a6b2-e49a032a453b",
+      "title": "Interferenz am Doppelspalt",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6270e558-d657-5363-a6b2-e49a032a453b/6270e558-d657-5363-a6b2-e49a032a453b.jpg"
+    },
+    {
+      "goalId": "1a1c09f0-96b7-4c33-a623-0e8101537876",
+      "title": "Interferenz einzelner Quantenobjekte mit Wahrscheinlichkeitsaussagen beschreiben",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/1a1c09f0-96b7-4c33-a623-0e8101537876/1a1c09f0-96b7-4c33-a623-0e8101537876.jpg"
+    },
+    {
+      "goalId": "85157cf0-7f68-5aea-b375-0f9797008cc9",
+      "title": "Interferenz in der Technik (ANC)",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/85157cf0-7f68-5aea-b375-0f9797008cc9/85157cf0-7f68-5aea-b375-0f9797008cc9.jpg"
+    },
+    {
+      "goalId": "2c6af966-7703-4176-a117-5ddb8295bedf",
+      "title": "Interferenzmuster und Intensitaetsverteilungen bei Einzelspalt, Doppelspalt und Gitter beschreiben",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2c6af966-7703-4176-a117-5ddb8295bedf/2c6af966-7703-4176-a117-5ddb8295bedf.jpg"
+    },
+    {
+      "goalId": "c71315c1-f329-4289-a145-d99819da7bad",
+      "title": "Interferenzphaenomene an Einzelspalt, Doppelspalt und Gitter experimentell untersuchen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c71315c1-f329-4289-a145-d99819da7bad/c71315c1-f329-4289-a145-d99819da7bad.jpg"
+    },
+    {
+      "goalId": "31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4",
+      "title": "Interferenzphaenomene im Alltag physikalisch beschreiben",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4/31ed4e95-3ed4-4cfb-9b11-9f3c1341f2d4.jpg"
+    },
+    {
+      "goalId": "d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1",
+      "title": "Interferometer verstehen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1/d1e26b52-78a7-5f3b-ac9f-97f3e62d7db1.jpg"
     },
     {
       "goalId": "fb73c94b-6a23-5351-8fef-db2c2533e361",
@@ -716,6 +1311,22 @@
       "url": "/assets/goal-visualizations/physik/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb/2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb.jpg"
     },
     {
+      "goalId": "49872cc0-401f-5464-9235-4763df4db5cf",
+      "title": "Kernreaktionen, Spaltung und Fusion",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/49872cc0-401f-5464-9235-4763df4db5cf/49872cc0-401f-5464-9235-4763df4db5cf.jpg"
+    },
+    {
+      "goalId": "52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "title": "Kernspintomografie (MRT)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/52bdabb2-d9a1-56e6-bccf-ff58f299c739/52bdabb2-d9a1-56e6-bccf-ff58f299c739.jpg"
+    },
+    {
       "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
       "title": "Kinetische Energie",
       "phase": "E",
@@ -732,6 +1343,14 @@
       "url": "/assets/goal-visualizations/physik/37b33812-d428-5953-852e-57a53a4347fe/37b33812-d428-5953-852e-57a53a4347fe.jpg"
     },
     {
+      "goalId": "4245c54f-d609-41bc-9eff-e9ceeff4902f",
+      "title": "Klassische Wellen, klassische Teilchen und Quantenobjekte am Doppelspalt vergleichen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/4245c54f-d609-41bc-9eff-e9ceeff4902f/4245c54f-d609-41bc-9eff-e9ceeff4902f.jpg"
+    },
+    {
       "goalId": "f322c268-dc16-5d50-82dd-209834f20208",
       "title": "Klimawirkungen von Energieentscheidungen fachlich diskutieren",
       "phase": "E",
@@ -740,12 +1359,60 @@
       "url": "/assets/goal-visualizations/physik/f322c268-dc16-5d50-82dd-209834f20208/f322c268-dc16-5d50-82dd-209834f20208.jpg"
     },
     {
+      "goalId": "5b90066f-b5b3-4e82-8d31-7b95ff0a0451",
+      "title": "Kohaerentes Licht als elektromagnetische Welle beschreiben",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5b90066f-b5b3-4e82-8d31-7b95ff0a0451/5b90066f-b5b3-4e82-8d31-7b95ff0a0451.jpg"
+    },
+    {
+      "goalId": "aef1e312-6a0c-5323-9202-c22ae84086f2",
+      "title": "Koinzidenznachweis einzelner Photonen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/aef1e312-6a0c-5323-9202-c22ae84086f2/aef1e312-6a0c-5323-9202-c22ae84086f2.jpg"
+    },
+    {
+      "goalId": "6031bed0-9baa-4f45-b2a5-57ffb00d39cc",
+      "title": "Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6031bed0-9baa-4f45-b2a5-57ffb00d39cc/6031bed0-9baa-4f45-b2a5-57ffb00d39cc.jpg"
+    },
+    {
+      "goalId": "8c97c234-a932-5e84-aed5-237b4e2a8336",
+      "title": "Komplementarität und Delayed-choice-Experiment",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8c97c234-a932-5e84-aed5-237b4e2a8336/8c97c234-a932-5e84-aed5-237b4e2a8336.jpg"
+    },
+    {
       "goalId": "9f59a088-3939-59e9-821d-167fadfda782",
       "title": "Kondensator und Feld im Plattenkondensator",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/9f59a088-3939-59e9-821d-167fadfda782/9f59a088-3939-59e9-821d-167fadfda782.jpg"
+    },
+    {
+      "goalId": "e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9",
+      "title": "Kosmologie und Urknall",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9/e5b3d86c-0a74-5fa7-b9c4-7964bcb5ebc9.jpg"
+    },
+    {
+      "goalId": "c6355a22-24cf-5d8b-88af-ea11711460fb",
+      "title": "Kraft auf stromdurchflossene Leiter",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c6355a22-24cf-5d8b-88af-ea11711460fb/c6355a22-24cf-5d8b-88af-ea11711460fb.jpg"
     },
     {
       "goalId": "581c0766-b84b-54cb-b8b6-375310329a41",
@@ -812,6 +1479,30 @@
       "url": "/assets/goal-visualizations/physik/a6e48b88-51ed-5942-bdb8-8d2192652e0d/a6e48b88-51ed-5942-bdb8-8d2192652e0d.jpg"
     },
     {
+      "goalId": "c64820e1-c0ee-4342-9225-f981650f0c52",
+      "title": "Lage von Interferenzminima und Interferenzmaxima in Fernfeldnaeherung berechnen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c64820e1-c0ee-4342-9225-f981650f0c52/c64820e1-c0ee-4342-9225-f981650f0c52.jpg"
+    },
+    {
+      "goalId": "75f7139f-0f07-5cec-bcea-4f139502b528",
+      "title": "Laserprinzip und Anwendungen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/75f7139f-0f07-5cec-bcea-4f139502b528/75f7139f-0f07-5cec-bcea-4f139502b528.jpg"
+    },
+    {
+      "goalId": "7badac4d-2874-5b3a-87e8-bf8f4440b2a6",
+      "title": "Leiter, Nichtleiter und Halbleiter",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7badac4d-2874-5b3a-87e8-bf8f4440b2a6/7badac4d-2874-5b3a-87e8-bf8f4440b2a6.jpg"
+    },
+    {
       "goalId": "dd7cdcea-0950-461b-96ac-ce49989fca47",
       "title": "Licht, Schatten und geradlinige Ausbreitung beschreiben",
       "phase": "GLOBAL",
@@ -828,6 +1519,22 @@
       "url": "/assets/goal-visualizations/physik/79cb1695-f985-443a-b93e-27b57ab474b7/79cb1695-f985-443a-b93e-27b57ab474b7.jpg"
     },
     {
+      "goalId": "74a74132-fa39-541c-8d3c-696cf228452d",
+      "title": "Linearbeschleuniger modellieren",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/74a74132-fa39-541c-8d3c-696cf228452d/74a74132-fa39-541c-8d3c-696cf228452d.jpg"
+    },
+    {
+      "goalId": "05af2893-0201-4d7f-985b-272d7b88e26e",
+      "title": "Lineare Rückstellkraft bei harmonischen Schwingungen beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/05af2893-0201-4d7f-985b-272d7b88e26e/05af2893-0201-4d7f-985b-272d7b88e26e.jpg"
+    },
+    {
       "goalId": "078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5",
       "title": "Linsenabbildungen qualitativ beschreiben und konstruieren",
       "phase": "GLOBAL",
@@ -836,12 +1543,44 @@
       "url": "/assets/goal-visualizations/physik/078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5/078ce4d2-3193-4cd0-ae59-4fb8ab16e9e5.jpg"
     },
     {
+      "goalId": "8c9394cb-f54a-508d-9750-4c49e31b3fa9",
+      "title": "Lorentzkraft auf freie Ladungen",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8c9394cb-f54a-508d-9750-4c49e31b3fa9/8c9394cb-f54a-508d-9750-4c49e31b3fa9.jpg"
+    },
+    {
       "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
       "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/f778a659-1467-4aa7-97b2-bed78c530634/f778a659-1467-4aa7-97b2-bed78c530634.jpg"
+    },
+    {
+      "goalId": "106417ed-80db-5490-a1ee-bb4160d3f2b4",
+      "title": "Magnetfeld von geradem Leiter und Spule",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/106417ed-80db-5490-a1ee-bb4160d3f2b4/106417ed-80db-5490-a1ee-bb4160d3f2b4.jpg"
+    },
+    {
+      "goalId": "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+      "title": "Magnetische Felder und Feldlinienbilder",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0f6b798b-594e-5480-8c5f-95e2486a4d85/0f6b798b-594e-5480-8c5f-95e2486a4d85.jpg"
+    },
+    {
+      "goalId": "0924162b-46d0-5c56-93bc-33e1f5ac6886",
+      "title": "Magnetisierung und Permanentmagnete",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0924162b-46d0-5c56-93bc-33e1f5ac6886/0924162b-46d0-5c56-93bc-33e1f5ac6886.jpg"
     },
     {
       "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768",
@@ -876,6 +1615,14 @@
       "url": "/assets/goal-visualizations/physik/722857cf-f327-5740-8151-64eb92195ec8/722857cf-f327-5740-8151-64eb92195ec8.jpg"
     },
     {
+      "goalId": "a844895e-2cdc-4665-aad2-a49c62f11759",
+      "title": "Mechanische und elektromagnetische Schwingungen vergleichen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a844895e-2cdc-4665-aad2-a49c62f11759/a844895e-2cdc-4665-aad2-a49c62f11759.jpg"
+    },
+    {
       "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
       "title": "Messabweichungen und Fehlerarten unterscheiden",
       "phase": "E",
@@ -900,6 +1647,14 @@
       "url": "/assets/goal-visualizations/physik/264dc31c-ec92-5e39-a8b8-16f1d74366d4/264dc31c-ec92-5e39-a8b8-16f1d74366d4.jpg"
     },
     {
+      "goalId": "09f2cdbd-64e0-55d2-ada7-1190f4fd50df",
+      "title": "Methode: Lösungsansatz für DGL (Exponentialfunktion)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/09f2cdbd-64e0-55d2-ada7-1190f4fd50df/09f2cdbd-64e0-55d2-ada7-1190f4fd50df.jpg"
+    },
+    {
       "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
       "title": "Methode: Modellbildung mit Tabellenkalkulation",
       "phase": "E",
@@ -908,12 +1663,36 @@
       "url": "/assets/goal-visualizations/physik/ac25ffe3-fd42-592d-a937-79cc13460313/ac25ffe3-fd42-592d-a937-79cc13460313.jpg"
     },
     {
+      "goalId": "28f6a324-5f5e-5771-91d2-c007f6c275aa",
+      "title": "Methode: Naturkonstanten bestimmen (Linearisierung)",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/28f6a324-5f5e-5771-91d2-c007f6c275aa/28f6a324-5f5e-5771-91d2-c007f6c275aa.jpg"
+    },
+    {
       "goalId": "d67502e3-5e0a-595b-a24b-65b1c40de36e",
       "title": "Methode: Videoanalyse von Bewegungen",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/d67502e3-5e0a-595b-a24b-65b1c40de36e/d67502e3-5e0a-595b-a24b-65b1c40de36e.jpg"
+    },
+    {
+      "goalId": "0f803c37-8191-5a07-9b31-9603ded98fe2",
+      "title": "Millikan-Versuch und Elementarladung",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0f803c37-8191-5a07-9b31-9603ded98fe2/0f803c37-8191-5a07-9b31-9603ded98fe2.jpg"
+    },
+    {
+      "goalId": "6ebb6182-f221-5f4c-b112-4ac72b104321",
+      "title": "Minkowski-Diagramme nutzen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6ebb6182-f221-5f4c-b112-4ac72b104321/6ebb6182-f221-5f4c-b112-4ac72b104321.jpg"
     },
     {
       "goalId": "f23fdfa9-38b6-5157-8301-ed302476c456",
@@ -996,6 +1775,62 @@
       "url": "/assets/goal-visualizations/physik/e39c83b0-cb4f-5454-a143-b9a159c99cba/e39c83b0-cb4f-5454-a143-b9a159c99cba.jpg"
     },
     {
+      "goalId": "b1f00a6d-1a03-496c-b1bd-c1f2259f59a8",
+      "title": "Orbitale des Wasserstoffatoms als Nachweiswahrscheinlichkeiten interpretieren",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b1f00a6d-1a03-496c-b1bd-c1f2259f59a8/b1f00a6d-1a03-496c-b1bd-c1f2259f59a8.jpg"
+    },
+    {
+      "goalId": "9e881b3b-68cd-5f52-819f-c2e33b5ba631",
+      "title": "Orts-Impuls-Unbestimmtheit",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/9e881b3b-68cd-5f52-819f-c2e33b5ba631/9e881b3b-68cd-5f52-819f-c2e33b5ba631.jpg"
+    },
+    {
+      "goalId": "f6e5929f-d52a-42a4-a5d2-ff498ee7083f",
+      "title": "Orts-Impuls-Unbestimmtheit und Grenzen des Bahnbegriffs begruenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f6e5929f-d52a-42a4-a5d2-ff498ee7083f/f6e5929f-d52a-42a4-a5d2-ff498ee7083f.jpg"
+    },
+    {
+      "goalId": "7f0798cb-5966-5dcb-beb3-84f637ab6139",
+      "title": "p-n-Übergang und Diode",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/7f0798cb-5966-5dcb-beb3-84f637ab6139/7f0798cb-5966-5dcb-beb3-84f637ab6139.jpg"
+    },
+    {
+      "goalId": "215f5558-562c-5686-b649-931f324c7983",
+      "title": "Phasensprünge bei Reflexion",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/215f5558-562c-5686-b649-931f324c7983/215f5558-562c-5686-b649-931f324c7983.jpg"
+    },
+    {
+      "goalId": "a359c859-eee0-40ef-a9d1-88db2e6c55b2",
+      "title": "Photonen und Elektronen als Quantenobjekte beschreiben",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a359c859-eee0-40ef-a9d1-88db2e6c55b2/a359c859-eee0-40ef-a9d1-88db2e6c55b2.jpg"
+    },
+    {
+      "goalId": "0d2a4690-d891-503b-96f4-42c2de48fd8b",
+      "title": "Physik der Musikinstrumente",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/0d2a4690-d891-503b-96f4-42c2de48fd8b/0d2a4690-d891-503b-96f4-42c2de48fd8b.jpg"
+    },
+    {
       "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
       "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
       "phase": "E",
@@ -1018,6 +1853,30 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/60211ac1-cbe1-5182-87ef-673a068c5b0a/60211ac1-cbe1-5182-87ef-673a068c5b0a.jpg"
+    },
+    {
+      "goalId": "73b309ed-1aab-5778-8494-d9b65f5a352b",
+      "title": "Polarisation und Dielektrika deuten",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/73b309ed-1aab-5778-8494-d9b65f5a352b/73b309ed-1aab-5778-8494-d9b65f5a352b.jpg"
+    },
+    {
+      "goalId": "549269d3-1aef-5c55-9640-ee2a8e2ee9a1",
+      "title": "Polarisation und Schwingungsebene",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/549269d3-1aef-5c55-9640-ee2a8e2ee9a1/549269d3-1aef-5c55-9640-ee2a8e2ee9a1.jpg"
+    },
+    {
+      "goalId": "6e7c35e0-7a38-5996-a42e-005038eff0db",
+      "title": "Potenzialtopfmodell für Kerne",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/6e7c35e0-7a38-5996-a42e-005038eff0db/6e7c35e0-7a38-5996-a42e-005038eff0db.jpg"
     },
     {
       "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
@@ -1068,6 +1927,14 @@
       "url": "/assets/goal-visualizations/physik/f6f646db-3544-49ed-8f55-67bc684e80ce/f6f646db-3544-49ed-8f55-67bc684e80ce.jpg"
     },
     {
+      "goalId": "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717",
+      "title": "Radioaktive Strahlung und Wirkungen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717/e5c08365-a0d3-592c-ad8e-d2c2c6e2b717.jpg"
+    },
+    {
       "goalId": "cca06d84-28fe-4b80-9bcd-968dda026e0e",
       "title": "Reflexion untersuchen und Spiegelbilder deuten",
       "phase": "GLOBAL",
@@ -1100,6 +1967,22 @@
       "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg"
     },
     {
+      "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
+      "title": "Relativitätspostulate und Experimente",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a684bec1-ba59-59d0-98d2-4ca37236f64c/a684bec1-ba59-59d0-98d2-4ca37236f64c.jpg"
+    },
+    {
+      "goalId": "c0205f47-185c-5e27-b89c-c3ff8809b1d1",
+      "title": "Resonanzkurven analysieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c0205f47-185c-5e27-b89c-c3ff8809b1d1/c0205f47-185c-5e27-b89c-c3ff8809b1d1.jpg"
+    },
+    {
       "goalId": "2088ccf0-48f4-51d4-be5f-67affd0fb099",
       "title": "Reversible und irreversible Vorgänge unterscheiden",
       "phase": "E",
@@ -1114,6 +1997,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931/5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931.jpg"
+    },
+    {
+      "goalId": "974a2d1c-2225-519d-965f-7744fe8aafd5",
+      "title": "Rydberg-Formel anwenden",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/974a2d1c-2225-519d-965f-7744fe8aafd5/974a2d1c-2225-519d-965f-7744fe8aafd5.jpg"
     },
     {
       "goalId": "3c82510a-1f12-4eaa-81c2-8599437a5b85",
@@ -1156,12 +2047,28 @@
       "url": "/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg"
     },
     {
+      "goalId": "b2fb9a25-4d26-5cf2-a917-823909dcb6bd",
+      "title": "Schwingungsgleichung lösen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/b2fb9a25-4d26-5cf2-a917-823909dcb6bd/b2fb9a25-4d26-5cf2-a917-823909dcb6bd.jpg"
+    },
+    {
       "goalId": "90e1e6cf-4092-41d6-81f7-5206f9d68f84",
       "title": "Sehvorgang und Fehlsichtigkeiten qualitativ erklären",
       "phase": "GLOBAL",
       "area": "Optik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/90e1e6cf-4092-41d6-81f7-5206f9d68f84/90e1e6cf-4092-41d6-81f7-5206f9d68f84.jpg"
+    },
+    {
+      "goalId": "37f28bc4-def2-57cf-a06b-191dfd228205",
+      "title": "Selbstinduktion und Induktivität",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/37f28bc4-def2-57cf-a06b-191dfd228205/37f28bc4-def2-57cf-a06b-191dfd228205.jpg"
     },
     {
       "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
@@ -1172,12 +2079,60 @@
       "url": "/assets/goal-visualizations/physik/b615830a-e8b0-5754-81e0-99da98343a8d/b615830a-e8b0-5754-81e0-99da98343a8d.jpg"
     },
     {
+      "goalId": "c9405043-bdc0-5995-8b4d-5bb56d97d05d",
+      "title": "Sonnensystem und Kepler-Gesetze",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/c9405043-bdc0-5995-8b4d-5bb56d97d05d/c9405043-bdc0-5995-8b4d-5bb56d97d05d.jpg"
+    },
+    {
+      "goalId": "91683676-01cf-5003-80fa-a04d043b4e61",
+      "title": "Spektren mit Beugungsgitter deuten",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/91683676-01cf-5003-80fa-a04d043b4e61/91683676-01cf-5003-80fa-a04d043b4e61.jpg"
+    },
+    {
+      "goalId": "4a7cbe83-b694-57d3-85ce-1eeca418daaf",
+      "title": "Spektrum elektromagnetischer Wellen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/4a7cbe83-b694-57d3-85ce-1eeca418daaf/4a7cbe83-b694-57d3-85ce-1eeca418daaf.jpg"
+    },
+    {
       "goalId": "32111497-d5ca-453e-906d-d352f885b126",
       "title": "Statische Elektrizität, Spannung und Kondensatoren qualitativ deuten",
       "phase": "GLOBAL",
       "area": "Elektrizität",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/32111497-d5ca-453e-906d-d352f885b126/32111497-d5ca-453e-906d-d352f885b126.jpg"
+    },
+    {
+      "goalId": "4c919da9-157a-5a14-a725-f7343975c9ab",
+      "title": "Stehende elektromagnetische Wellen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/4c919da9-157a-5a14-a725-f7343975c9ab/4c919da9-157a-5a14-a725-f7343975c9ab.jpg"
+    },
+    {
+      "goalId": "d5772db3-120c-5c37-ab46-2336d02236b0",
+      "title": "Stehende Wellen und Wellenlängenbestimmung",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d5772db3-120c-5c37-ab46-2336d02236b0/d5772db3-120c-5c37-ab46-2336d02236b0.jpg"
+    },
+    {
+      "goalId": "8ad305d2-bde0-4223-9477-517b2943148b",
+      "title": "Strahlenmodell und Wellenmodell des Lichts vergleichen",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/8ad305d2-bde0-4223-9477-517b2943148b/8ad305d2-bde0-4223-9477-517b2943148b.jpg"
     },
     {
       "goalId": "bbee4c52-4e95-5529-990f-706aa99316a3",
@@ -1196,12 +2151,44 @@
       "url": "/assets/goal-visualizations/physik/f1a078ae-6262-4444-a4bc-a5ab275621cf/f1a078ae-6262-4444-a4bc-a5ab275621cf.jpg"
     },
     {
+      "goalId": "5db07785-8cca-50d5-81a9-e0264d344af9",
+      "title": "Struktur und Alter des Universums",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5db07785-8cca-50d5-81a9-e0264d344af9/5db07785-8cca-50d5-81a9-e0264d344af9.jpg"
+    },
+    {
       "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
       "title": "Superposition elektrischer Felder",
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe.jpg"
+    },
+    {
+      "goalId": "853dbe54-85b0-59ab-8f3a-000c2b7746ec",
+      "title": "Supraleitung qualitativ verstehen",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/853dbe54-85b0-59ab-8f3a-000c2b7746ec/853dbe54-85b0-59ab-8f3a-000c2b7746ec.jpg"
+    },
+    {
+      "goalId": "fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c",
+      "title": "Technische Anwendungen des Induktionsgesetzes qualitativ beschreiben",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c/fdcd5faf-f9bf-4fa9-87f4-4e22d8d3387c.jpg"
+    },
+    {
+      "goalId": "2d62b444-796e-548d-aeee-cfd9c6665ddc",
+      "title": "Teilchenbeschleuniger (Zyklotron/Synchrotron)",
+      "phase": "Q1",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2d62b444-796e-548d-aeee-cfd9c6665ddc/2d62b444-796e-548d-aeee-cfd9c6665ddc.jpg"
     },
     {
       "goalId": "9ac4973a-21d5-48a5-90b4-eb90e10391ae",
@@ -1228,12 +2215,28 @@
       "url": "/assets/goal-visualizations/physik/940978fa-1f2d-4e54-9c28-081a6df9b76f/940978fa-1f2d-4e54-9c28-081a6df9b76f.jpg"
     },
     {
+      "goalId": "f36a5946-f2a8-59b8-b3bd-a2f246defa4f",
+      "title": "Thomson’sche Schwingungsgleichung nutzen",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f36a5946-f2a8-59b8-b3bd-a2f246defa4f/f36a5946-f2a8-59b8-b3bd-a2f246defa4f.jpg"
+    },
+    {
       "goalId": "10aad90e-a1db-42b6-8d1e-1d856e14b47d",
       "title": "Tonhöhe, Lautstärke und Geräusche unterscheiden",
       "phase": "GLOBAL",
       "area": "Akustik",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/10aad90e-a1db-42b6-8d1e-1d856e14b47d/10aad90e-a1db-42b6-8d1e-1d856e14b47d.jpg"
+    },
+    {
+      "goalId": "58fc7852-722c-5a67-be6a-bfd1be0b527e",
+      "title": "Totalreflexion und Glasfasern",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/58fc7852-722c-5a67-be6a-bfd1be0b527e/58fc7852-722c-5a67-be6a-bfd1be0b527e.jpg"
     },
     {
       "goalId": "642aebd7-66cd-5a50-b543-73c4b207525d",
@@ -1244,12 +2247,28 @@
       "url": "/assets/goal-visualizations/physik/642aebd7-66cd-5a50-b543-73c4b207525d/642aebd7-66cd-5a50-b543-73c4b207525d.jpg"
     },
     {
+      "goalId": "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
+      "title": "Tunneleffekt und Rastertunnelmikroskop",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/2ec48368-ac5b-55f9-a396-5a5fe4e1e874/2ec48368-ac5b-55f9-a396-5a5fe4e1e874.jpg"
+    },
+    {
       "goalId": "c968d263-8be4-5cf9-b320-e95398fe648f",
       "title": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/c968d263-8be4-5cf9-b320-e95398fe648f/c968d263-8be4-5cf9-b320-e95398fe648f.jpg"
+    },
+    {
+      "goalId": "f47a7fa0-b929-5264-b038-b83fd682967f",
+      "title": "Ultraschall in Medizin und Technik",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f47a7fa0-b929-5264-b038-b83fd682967f/f47a7fa0-b929-5264-b038-b83fd682967f.jpg"
     },
     {
       "goalId": "1232febe-868a-4dac-b4c2-e35789434601",
@@ -1268,12 +2287,28 @@
       "url": "/assets/goal-visualizations/physik/e41356c1-968b-435a-af25-b663f080ae5a/e41356c1-968b-435a-af25-b663f080ae5a.jpg"
     },
     {
+      "goalId": "70b358bf-da6d-53ba-8393-51d5c2365b04",
+      "title": "Vom Sand zum Smartphone: Die digitale Revolution",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/70b358bf-da6d-53ba-8393-51d5c2365b04/70b358bf-da6d-53ba-8393-51d5c2365b04.jpg"
+    },
+    {
       "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
       "title": "Waagerechter Wurf analysieren",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2.jpg"
+    },
+    {
+      "goalId": "5c57dbc7-d258-4aad-a84c-e773f3c493ae",
+      "title": "Wahrscheinlichkeitsaussagen statt klassischem Determinismus erlaeutern",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/5c57dbc7-d258-4aad-a84c-e773f3c493ae/5c57dbc7-d258-4aad-a84c-e773f3c493ae.jpg"
     },
     {
       "goalId": "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
@@ -1316,6 +2351,46 @@
       "url": "/assets/goal-visualizations/physik/5c44b9ba-9b05-4774-95d5-073230d3fc4f/5c44b9ba-9b05-4774-95d5-073230d3fc4f.jpg"
     },
     {
+      "goalId": "51bc5513-6879-548f-b19a-9746b667f1a3",
+      "title": "Wellenfunktion und Wahrscheinlichkeitsdeutung",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/51bc5513-6879-548f-b19a-9746b667f1a3/51bc5513-6879-548f-b19a-9746b667f1a3.jpg"
+    },
+    {
+      "goalId": "e160acb4-5b88-509e-8055-2653df420c65",
+      "title": "Wellengleichung formulieren",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e160acb4-5b88-509e-8055-2653df420c65/e160acb4-5b88-509e-8055-2653df420c65.jpg"
+    },
+    {
+      "goalId": "d716a35e-e422-5aba-b39a-f2e22f1e1e74",
+      "title": "Wellenphänomene: Brechung, Reflexion, Beugung",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/d716a35e-e422-5aba-b39a-f2e22f1e1e74/d716a35e-e422-5aba-b39a-f2e22f1e1e74.jpg"
+    },
+    {
+      "goalId": "f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6",
+      "title": "Wie funktionieren Solarzellen und Lichtsensoren?",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6/f75c494c-5723-5cd8-8ec9-dc3d8ec7eca6.jpg"
+    },
+    {
+      "goalId": "e5c33afc-a233-50ff-a17f-63c085dfb89c",
+      "title": "Wirbelströme und Waltenhofen-Pendel",
+      "phase": "Q2",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/e5c33afc-a233-50ff-a17f-63c085dfb89c/e5c33afc-a233-50ff-a17f-63c085dfb89c.jpg"
+    },
+    {
       "goalId": "a5f652cc-e091-4c90-bec2-c357ae54fcf1",
       "title": "Wirkungen des elektrischen Stroms qualitativ beschreiben",
       "phase": "GLOBAL",
@@ -1332,12 +2407,36 @@
       "url": "/assets/goal-visualizations/physik/73b5af24-7750-520a-bb16-43136ce19a5c/73b5af24-7750-520a-bb16-43136ce19a5c.jpg"
     },
     {
+      "goalId": "19aef2ed-eb46-55b1-9486-ee83f7520bb6",
+      "title": "Zeitdilatation und Längenkontraktion",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/19aef2ed-eb46-55b1-9486-ee83f7520bb6/19aef2ed-eb46-55b1-9486-ee83f7520bb6.jpg"
+    },
+    {
       "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
       "title": "Zentripetalkraft herleiten",
       "phase": "E",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/e918b31f-6f39-5dee-ade6-3617080fb24f/e918b31f-6f39-5dee-ade6-3617080fb24f.jpg"
+    },
+    {
+      "goalId": "a12fddce-0215-58d9-bd91-21be8a960d25",
+      "title": "Zerfallsgesetze anwenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/a12fddce-0215-58d9-bd91-21be8a960d25/a12fddce-0215-58d9-bd91-21be8a960d25.jpg"
+    },
+    {
+      "goalId": "3b50255a-6b01-578b-8f5c-4383536a3221",
+      "title": "Zerfallsreihen analysieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/physik/3b50255a-6b01-578b-8f5c-4383536a3221/3b50255a-6b01-578b-8f5c-4383536a3221.jpg"
     },
     {
       "goalId": "53196a71-9dbd-4835-b2f9-ff21b8a8962c",

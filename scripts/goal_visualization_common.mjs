@@ -181,13 +181,12 @@ function subjectLabelFromPath(subjectPath) {
 export function createVisualizationPrompt(goal, options = {}) {
   const phase = goal.phase ? `\nPhase/Jahrgang: ${goal.phase}` : ''
   const area = goal.area ? `\nBereich: ${goal.area}` : ''
-  const subjectLabel = subjectLabelFromPath(options.subjectPath)
 
   return [
     'Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.',
     '',
     'Rahmen:',
-    `- Zielgruppe: Gymnasium ${subjectLabel}; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.`,
+    '- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.',
     '- Erzeuge eine klare, gut lesbare Infografik im Querformat.',
     '- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.',
     '- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.',

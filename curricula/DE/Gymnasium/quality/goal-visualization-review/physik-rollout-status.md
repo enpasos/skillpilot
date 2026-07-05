@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-03T08:24:09.259Z
+Generated: 2026-07-03T18:43:14.369Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 161 |
-| Coverage | 37.7% |
+| Ziele mit primaerem Visualisierungslink | 289 |
+| Coverage | 67.7% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 27 |
-| Offene Provider-Deferred-Ziele | 0 |
-| Offene Provider-Quota-Ziele | 0 |
-| Provider-Quota-blockierte Ledger | 0 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 266 |
+| Review-Ledger-Dateien | 50 |
+| Offene Provider-Deferred-Ziele | 3 |
+| Offene Provider-Quota-Ziele | 6 |
+| Provider-Quota-blockierte Ledger | 2 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 135 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,33 +33,36 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 161 |
+| `pilot` | 289 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 106 |
+| `accepted_pilot` | 188 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 42 |
-| `accepted_pilot_after_second_regeneration` | 8 |
-| `accepted_pilot_after_third_regeneration` | 1 |
+| `accepted_pilot_after_regeneration` | 79 |
+| `accepted_pilot_after_second_regeneration` | 15 |
+| `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 4 |
-| `deferred_provider_limitation` | 1 |
+| `blocked_provider_quota` | 2 |
+| `deferred_provider_limitation` | 4 |
+| `not_requested_provider_quota` | 5 |
+| `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
-| `rejected_regenerated` | 41 |
+| `rejected_regenerated` | 111 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-027.md` |
-| Latest ledger status | `completed` |
-| Resume file | `tmp/goal-visualization-physik-batch-021.resume.txt` |
-| Resume file exists | no |
-| Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-021` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-050.md` |
+| Latest ledger status | `blocked_provider_quota_retry` |
+| Resume file | `tmp/goal-visualization-physik-batch-050.resume.txt` |
+| Resume file exists | yes |
+| Resume goals | 6 |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-050` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -67,17 +70,28 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
+- Im aktuellen Resume stehen 6 Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 045 | `455c65ca-814a-56ad-918a-013155883c52` | Quantitative Superposition elektrischer Felder | `deferred_provider_limitation` |
+| 044 | `d36727cc-ce42-51a3-9425-41afb0b9acdd` | Transistor und einfache Schaltungen | `deferred_provider_limitation` |
+| 047 | `4888444f-4520-437a-9ba7-e74e8f8ed129` | Überlagerungen unabhängiger Schwingungen qualitativ beschreiben | `deferred_provider_limitation` |
 
 ### Open Provider Quota
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 050 | `57ec031c-9a91-5331-81a7-6ef900f7c63e` | Lorentztransformation anwenden | `not_requested_provider_quota` |
+| 050 | `658cf33d-a0c2-5d47-801a-3dbcd5cac074` | Quantenphysikalische Bändermodelle | `not_requested_provider_quota` |
+| 050 | `79da5c34-86b2-5c10-9726-9de886ccef7d` | Relativistische Massenzunahme herleiten | `not_requested_provider_quota` |
+| 050 | `48e77690-17f7-5ebe-a8f7-87b2ee9820da` | Röntgenspektren deuten | `blocked_provider_quota` |
+| 050 | `af50bb9a-fd7b-50f5-9698-48c4efe99032` | Transistorverstärker analysieren | `not_requested_provider_quota` |
+| 050 | `76bcbdcb-3003-5e6a-952e-aa36eb8f97ee` | α-Zerfall durch Tunneleffekt | `not_requested_provider_quota` |
 
 ### Rejected Not Linked
 
@@ -102,18 +116,22 @@ Keine Eintraege.
 
 Keine Eintraege.
 
-## Next Command
+## Next Command When Quota Is Available
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --output tmp/goal-visualization-physik-next-batch.txt
+npm --prefix app run visualization:generate:nano-banana:batch -- \
+  --file tmp/goal-visualization-physik-batch-050.resume.txt \
+  --continue-on-error \
+  --no-import \
+  --prompt-append-dir=tmp/goal-visualization-prompt-appends/physik-batch-050
 ```
 
-After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-physik-batch-021.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-021`
+- Resume file: `tmp/goal-visualization-physik-batch-050.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-050`
 
