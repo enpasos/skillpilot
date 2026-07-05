@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-05T16:49:41.251Z
+Generated: 2026-07-05T17:10:14.189Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 295 |
-| Coverage | 69.1% |
+| Ziele mit primaerem Visualisierungslink | 301 |
+| Coverage | 70.5% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 50 |
+| Review-Ledger-Dateien | 51 |
 | Offene Provider-Deferred-Ziele | 3 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 129 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 123 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,18 +33,18 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 6 |
+| `accepted` | 12 |
 | `pilot` | 289 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 188 |
+| `accepted_pilot` | 193 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 79 |
+| `accepted_pilot_after_regeneration` | 80 |
 | `accepted_pilot_after_second_regeneration` | 15 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 4 |
@@ -58,12 +58,12 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-050.md` |
-| Latest ledger status | `completed_after_provider_quota_retry` |
-| Resume file | `tmp/goal-visualization-physik-batch-050.resume.txt` |
-| Resume file exists | yes |
-| Resume goals | 6 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-050` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-051.md` |
+| Latest ledger status | `completed` |
+| Resume file | `tmp/goal-visualization-physik-batch-051.resume.txt` |
+| Resume file exists | no |
+| Resume goals | 0 |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-051` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -71,7 +71,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Im aktuellen Resume stehen 6 Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
@@ -110,22 +110,18 @@ Keine Eintraege.
 
 Keine Eintraege.
 
-## Next Command When Quota Is Available
+## Next Command
 
 ```bash
-npm --prefix app run visualization:generate:nano-banana:batch -- \
-  --file tmp/goal-visualization-physik-batch-050.resume.txt \
-  --continue-on-error \
-  --no-import \
-  --prompt-append-dir=tmp/goal-visualization-prompt-appends/physik-batch-050
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json --output tmp/goal-visualization-physik-next-batch.txt
 ```
 
-After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-physik-batch-050.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-050`
+- Resume file: `tmp/goal-visualization-physik-batch-051.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-051`
 
