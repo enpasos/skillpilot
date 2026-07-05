@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-05T17:10:14.189Z
+Generated: 2026-07-05T18:54:58.511Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 301 |
-| Coverage | 70.5% |
+| Ziele mit primaerem Visualisierungslink | 331 |
+| Coverage | 77.5% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 51 |
+| Review-Ledger-Dateien | 56 |
 | Offene Provider-Deferred-Ziele | 3 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 123 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 93 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,21 +33,21 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 12 |
+| `accepted` | 42 |
 | `pilot` | 289 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 193 |
+| `accepted_pilot` | 215 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 80 |
-| `accepted_pilot_after_second_regeneration` | 15 |
+| `accepted_pilot_after_regeneration` | 84 |
+| `accepted_pilot_after_second_regeneration` | 17 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 4 |
+| `accepted_pilot_after_user_review_correction` | 7 |
 | `blocked_provider_quota` | 1 |
 | `deferred_provider_limitation` | 4 |
 | `provider_temporary_failure_retried` | 1 |
@@ -58,12 +58,12 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-051.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-056.md` |
 | Latest ledger status | `completed` |
-| Resume file | `tmp/goal-visualization-physik-batch-051.resume.txt` |
+| Resume file | `tmp/goal-visualization-physik-batch-057.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-051` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-057` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -99,6 +99,9 @@ Keine Eintraege.
 | 004 | `dd7cdcea-0950-461b-96ac-ce49989fca47` | Licht, Schatten und geradlinige Ausbreitung beschreiben | `accepted_pilot_after_user_review_correction` |
 | 004 | `79cb1695-f985-443a-b93e-27b57ab474b7` | Lichtwege mit dem Strahlenmodell darstellen und vorhersagen | `accepted_pilot_after_user_review_correction` |
 | 024 | `fb73c94b-6a23-5351-8fef-db2c2533e361` | Isochore, isobare und isotherme Zustandsaenderungen berechnen | `accepted_pilot_after_user_review_correction` |
+| 051 | `4c5c7cb1-f238-52c8-b82c-159c6c299c0e` | Energieumwandlung in der Sonne | `accepted_pilot_after_user_review_correction` |
+| 053 | `4e046c1c-bcc7-5e3c-9f71-f80d69027483` | Standardmodell: Teilchenfamilien | `accepted_pilot_after_user_review_correction` |
+| 054 | `7fe6f8a1-5580-4e37-bf8e-9772964a6b0a` | Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreiben | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
@@ -122,6 +125,6 @@ After planning a batch: create prompt append files, generate candidates with `--
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-physik-batch-051.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-051`
+- Resume file: `tmp/goal-visualization-physik-batch-057.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-057`
 
