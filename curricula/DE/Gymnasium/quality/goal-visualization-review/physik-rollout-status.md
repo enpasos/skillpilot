@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-05T20:05:32.222Z
+Generated: 2026-07-05T20:23:35.351Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 355 |
-| Coverage | 83.1% |
+| Ziele mit primaerem Visualisierungslink | 360 |
+| Coverage | 84.3% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 60 |
-| Offene Provider-Deferred-Ziele | 3 |
+| Review-Ledger-Dateien | 61 |
+| Offene Provider-Deferred-Ziele | 4 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 69 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 63 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,23 +33,23 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 66 |
+| `accepted` | 71 |
 | `pilot` | 289 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_pilot` | 232 |
+| `accepted_pilot` | 236 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
 | `accepted_pilot_after_regeneration` | 87 |
-| `accepted_pilot_after_second_regeneration` | 20 |
+| `accepted_pilot_after_second_regeneration` | 21 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 8 |
 | `blocked_provider_quota` | 1 |
-| `deferred_provider_limitation` | 4 |
+| `deferred_provider_limitation` | 5 |
 | `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
 | `rejected_regenerated` | 111 |
@@ -58,12 +58,12 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-060.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-061.md` |
 | Latest ledger status | `completed` |
-| Resume file | `tmp/goal-visualization-physik-batch-060.resume.txt` |
+| Resume file | `tmp/goal-visualization-physik-batch-061.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-060` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-061` |
 | Prompt append dir exists | yes |
 | Prompt append files | 6 |
 
@@ -80,6 +80,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | 045 | `455c65ca-814a-56ad-918a-013155883c52` | Quantitative Superposition elektrischer Felder | `deferred_provider_limitation` |
+| 061 | `0dd1e39c-8557-5a4e-b467-caae964fff67` | Solarmodule in Schaltungen experimentell untersuchen | `deferred_provider_limitation` |
 | 044 | `d36727cc-ce42-51a3-9425-41afb0b9acdd` | Transistor und einfache Schaltungen | `deferred_provider_limitation` |
 | 047 | `4888444f-4520-437a-9ba7-e74e8f8ed129` | Überlagerungen unabhängiger Schwingungen qualitativ beschreiben | `deferred_provider_limitation` |
 
@@ -126,6 +127,6 @@ After planning a batch: create prompt append files, generate candidates with `--
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-physik-batch-060.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-060`
+- Resume file: `tmp/goal-visualization-physik-batch-061.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-061`
 
