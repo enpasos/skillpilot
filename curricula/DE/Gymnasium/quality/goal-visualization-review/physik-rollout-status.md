@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-03T18:43:14.369Z
+Generated: 2026-07-05T16:49:41.251Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 289 |
-| Coverage | 67.7% |
+| Ziele mit primaerem Visualisierungslink | 295 |
+| Coverage | 69.1% |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 50 |
 | Offene Provider-Deferred-Ziele | 3 |
-| Offene Provider-Quota-Ziele | 6 |
-| Provider-Quota-blockierte Ledger | 2 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 135 |
+| Offene Provider-Quota-Ziele | 0 |
+| Provider-Quota-blockierte Ledger | 1 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 129 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
@@ -33,6 +33,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
+| `accepted` | 6 |
 | `pilot` | 289 |
 
 ## Ledger Decisions
@@ -41,14 +42,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | `accepted_pilot` | 188 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
+| `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
 | `accepted_pilot_after_regeneration` | 79 |
 | `accepted_pilot_after_second_regeneration` | 15 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 4 |
-| `blocked_provider_quota` | 2 |
+| `blocked_provider_quota` | 1 |
 | `deferred_provider_limitation` | 4 |
-| `not_requested_provider_quota` | 5 |
 | `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
 | `rejected_regenerated` | 111 |
@@ -58,7 +59,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Metric | Value |
 | --- | --- |
 | Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-050.md` |
-| Latest ledger status | `blocked_provider_quota_retry` |
+| Latest ledger status | `completed_after_provider_quota_retry` |
 | Resume file | `tmp/goal-visualization-physik-batch-050.resume.txt` |
 | Resume file exists | yes |
 | Resume goals | 6 |
@@ -84,14 +85,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 ### Open Provider Quota
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 050 | `57ec031c-9a91-5331-81a7-6ef900f7c63e` | Lorentztransformation anwenden | `not_requested_provider_quota` |
-| 050 | `658cf33d-a0c2-5d47-801a-3dbcd5cac074` | Quantenphysikalische Bändermodelle | `not_requested_provider_quota` |
-| 050 | `79da5c34-86b2-5c10-9726-9de886ccef7d` | Relativistische Massenzunahme herleiten | `not_requested_provider_quota` |
-| 050 | `48e77690-17f7-5ebe-a8f7-87b2ee9820da` | Röntgenspektren deuten | `blocked_provider_quota` |
-| 050 | `af50bb9a-fd7b-50f5-9698-48c4efe99032` | Transistorverstärker analysieren | `not_requested_provider_quota` |
-| 050 | `76bcbdcb-3003-5e6a-952e-aa36eb8f97ee` | α-Zerfall durch Tunneleffekt | `not_requested_provider_quota` |
+Keine Eintraege.
 
 ### Rejected Not Linked
 

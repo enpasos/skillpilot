@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-03T18:43:14.369Z",
+  "generatedAt": "2026-07-05T16:49:41.251Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "physik",
@@ -12,41 +12,43 @@
   "summary": {
     "totalGoals": 588,
     "atomicGoalsInScope": 427,
-    "goalsWithPrimaryVisualization": 289,
-    "coveragePercent": 67.7,
+    "goalsWithPrimaryVisualization": 295,
+    "coveragePercent": 69.1,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
+      "accepted": 6,
       "pilot": 289
     },
     "linkedVisualizationReviewStatuses": {
+      "accepted": 6,
       "pilot": 289
     },
     "reviewLedgerFiles": 50,
     "reviewDecisionCounts": {
       "accepted_pilot": 188,
       "accepted_pilot_after_fifth_regeneration": 1,
+      "accepted_pilot_after_provider_quota_retry": 6,
       "accepted_pilot_after_provider_retry": 3,
       "accepted_pilot_after_regeneration": 79,
       "accepted_pilot_after_second_regeneration": 15,
       "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 4,
-      "blocked_provider_quota": 2,
+      "blocked_provider_quota": 1,
       "deferred_provider_limitation": 4,
-      "not_requested_provider_quota": 5,
       "provider_temporary_failure_retried": 1,
       "rejected_after_user_review_replaced": 8,
       "rejected_regenerated": 111
     },
     "openProviderDeferredGoals": 3,
-    "openProviderQuotaGoals": 6,
-    "blockedProviderQuotaLedgers": 2,
-    "regularUnlinkedGoals": 135,
+    "openProviderQuotaGoals": 0,
+    "blockedProviderQuotaLedgers": 1,
+    "regularUnlinkedGoals": 129,
     "linkedWithoutAcceptedReview": 0,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
     "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-050.md",
-    "latestLedgerStatus": "blocked_provider_quota_retry",
+    "latestLedgerStatus": "completed_after_provider_quota_retry",
     "resumeFile": "tmp/goal-visualization-physik-batch-050.resume.txt",
     "resumeFileExists": true,
     "resumeGoalIds": [
@@ -85,50 +87,7 @@
         "notes": "Deferred after a final reference-image Nano Banana Pro attempt still changed the exact reference geometry and again rendered the beating result with quasi-vertical strokes instead of a smooth resulting oscillation. No active asset was imported."
       }
     ],
-    "openProviderQuota": [
-      {
-        "batch": "050",
-        "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
-        "title": "Lorentztransformation anwenden",
-        "decision": "not_requested_provider_quota",
-        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
-      },
-      {
-        "batch": "050",
-        "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
-        "title": "Quantenphysikalische Bändermodelle",
-        "decision": "not_requested_provider_quota",
-        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
-      },
-      {
-        "batch": "050",
-        "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
-        "title": "Relativistische Massenzunahme herleiten",
-        "decision": "not_requested_provider_quota",
-        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
-      },
-      {
-        "batch": "050",
-        "goalId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
-        "title": "Röntgenspektren deuten",
-        "decision": "blocked_provider_quota",
-        "notes": "Retried with a stricter prompt requiring the continuous spectrum cutoff `E_max` at the high-energy right endpoint and `K_beta` to the right of `K_alpha`, but Gemini returned `429` before producing an image. Sixty-seven later resume attempts returned the same quota response before producing an image. No active asset was imported or linked."
-      },
-      {
-        "batch": "050",
-        "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
-        "title": "Transistorverstärker analysieren",
-        "decision": "not_requested_provider_quota",
-        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
-      },
-      {
-        "batch": "050",
-        "goalId": "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
-        "title": "α-Zerfall durch Tunneleffekt",
-        "decision": "not_requested_provider_quota",
-        "notes": "Not requested because the provider quota block occurred on the first Batch 050 item."
-      }
-    ],
+    "openProviderQuota": [],
     "rejectedNotLinked": [],
     "userReviewCorrections": [
       {
@@ -1551,6 +1510,14 @@
       "url": "/assets/goal-visualizations/physik/8c9394cb-f54a-508d-9750-4c49e31b3fa9/8c9394cb-f54a-508d-9750-4c49e31b3fa9.jpg"
     },
     {
+      "goalId": "57ec031c-9a91-5331-81a7-6ef900f7c63e",
+      "title": "Lorentztransformation anwenden",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/57ec031c-9a91-5331-81a7-6ef900f7c63e/57ec031c-9a91-5331-81a7-6ef900f7c63e.jpg"
+    },
+    {
       "goalId": "f778a659-1467-4aa7-97b2-bed78c530634",
       "title": "Magnete, Pole und magnetische Kräfte qualitativ beschreiben",
       "phase": "GLOBAL",
@@ -1911,6 +1878,14 @@
       "url": "/assets/goal-visualizations/physik/7982cd8e-2151-59e7-858d-c1361c5d249e/7982cd8e-2151-59e7-858d-c1361c5d249e.jpg"
     },
     {
+      "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074",
+      "title": "Quantenphysikalische Bändermodelle",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/658cf33d-a0c2-5d47-801a-3dbcd5cac074/658cf33d-a0c2-5d47-801a-3dbcd5cac074.jpg"
+    },
+    {
       "goalId": "98e42cda-9e5d-5910-b2c0-3e631fd20c78",
       "title": "Radialsymmetrische elektrische Felder",
       "phase": "Q1",
@@ -1967,6 +1942,14 @@
       "url": "/assets/goal-visualizations/physik/01bebdfc-5819-4610-a03e-ea5e794fc954/01bebdfc-5819-4610-a03e-ea5e794fc954.jpg"
     },
     {
+      "goalId": "79da5c34-86b2-5c10-9726-9de886ccef7d",
+      "title": "Relativistische Massenzunahme herleiten",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/79da5c34-86b2-5c10-9726-9de886ccef7d/79da5c34-86b2-5c10-9726-9de886ccef7d.jpg"
+    },
+    {
       "goalId": "a684bec1-ba59-59d0-98d2-4ca37236f64c",
       "title": "Relativitätspostulate und Experimente",
       "phase": "Q4",
@@ -1989,6 +1972,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/2088ccf0-48f4-51d4-be5f-67affd0fb099/2088ccf0-48f4-51d4-be5f-67affd0fb099.jpg"
+    },
+    {
+      "goalId": "48e77690-17f7-5ebe-a8f7-87b2ee9820da",
+      "title": "Röntgenspektren deuten",
+      "phase": "Q3",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/48e77690-17f7-5ebe-a8f7-87b2ee9820da/48e77690-17f7-5ebe-a8f7-87b2ee9820da.jpg"
     },
     {
       "goalId": "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
@@ -2247,6 +2238,14 @@
       "url": "/assets/goal-visualizations/physik/642aebd7-66cd-5a50-b543-73c4b207525d/642aebd7-66cd-5a50-b543-73c4b207525d.jpg"
     },
     {
+      "goalId": "af50bb9a-fd7b-50f5-9698-48c4efe99032",
+      "title": "Transistorverstärker analysieren",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/af50bb9a-fd7b-50f5-9698-48c4efe99032/af50bb9a-fd7b-50f5-9698-48c4efe99032.jpg"
+    },
+    {
       "goalId": "2ec48368-ac5b-55f9-a396-5a5fe4e1e874",
       "title": "Tunneleffekt und Rastertunnelmikroskop",
       "phase": "Q4",
@@ -2477,6 +2476,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/physik/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d/912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d.jpg"
+    },
+    {
+      "goalId": "76bcbdcb-3003-5e6a-952e-aa36eb8f97ee",
+      "title": "α-Zerfall durch Tunneleffekt",
+      "phase": "Q4",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/physik/76bcbdcb-3003-5e6a-952e-aa36eb8f97ee/76bcbdcb-3003-5e6a-952e-aa36eb8f97ee.jpg"
     }
   ]
 }
