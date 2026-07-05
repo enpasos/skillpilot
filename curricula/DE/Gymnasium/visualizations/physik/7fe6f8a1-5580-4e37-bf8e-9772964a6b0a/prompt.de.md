@@ -31,36 +31,29 @@ Titel: Ladungsträger in Magnetfeldern bei beliebigem Eintrittswinkel beschreibe
 Beschreibung: Die lernende Person kann die Lorentzkraft bei beliebigem Eintrittswinkel nutzen, die Bewegung in Parallel- und Senkrechtkomponente zerlegen und Schraubenbahnen qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Korrigiere die vorhandene Darstellung fachlich, behalte den dreiteiligen Aufbau und den freundlichen didaktischen Stil bei.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Use the provided reference image only as a rough layout reference.
-- Create the same three-panel German cartoon learning image titled `Ladung im Magnetfeld`.
-- Keep three panels: `senkrecht zu B`, `parallel zu B`, and `Überlagerung`.
-- In every panel, the blue magnetic-field arrows `B` are straight, horizontal, and point to the right.
-- Left panel: show a positive particle on a circular path in a plane perpendicular to `B`, labelled `v_senkrecht` and `Kreisbewegung`.
-- Middle panel: show a positive particle with one straight red velocity arrow to the right, labelled `v_parallel` and `gerade Bewegung`.
-- Right panel `Überlagerung`:
-  - Draw one single continuous red screw path like a spring wrapped around a straight horizontal axis.
-  - The helix axis must be parallel to the blue `B` arrows.
-  - The helix must advance from left to right along the `B` direction.
-  - The red curve must be continuous and smooth, not a set of separated U-shaped arcs.
-  - Do not draw any red arrowheads in the right panel.
-  - Do not draw any vertical red arrows in the right panel.
-  - Put one positive particle `+` exactly on the red helix near the right end.
-  - Use light/dark overlap or dashed back segments if needed to make the curve read as a 3D coil.
-- Keep the relation card exactly as: `v = v_parallel + v_senkrecht`.
-- Visible learner text must be limited to the title, `B`, `senkrecht zu B`, `parallel zu B`, `Überlagerung`, `v_parallel`, `v_senkrecht`, `Kreisbewegung`, `gerade Bewegung`, and `v = v_parallel + v_senkrecht`.
+Behalte im linken Feld die neue richtige Feldrichtung bei:
+- Bei "senkrecht zu B" muss B senkrecht aus der Bildebene heraus zeigen, dargestellt durch viele Kreise mit Punkt.
+- Die Kreisbahn liegt in der Bildebene. Keine horizontalen B-Pfeile im linken Feld.
 
-Vermeiden:
+Korrigiere das rechte Feld "Ueberlagerung" konsequent:
+- Zeichne dort eine einzige offene, durchgehende rote Schraubenbahn entlang der horizontalen B-Richtung.
+- Die rote Bahn beginnt links offen, windet sich gleichmaessig nach rechts und endet rechts offen. Jede Windung ist weiter rechts als die vorige.
+- Am rechten Ende darf kein geschlossener Kreis, keine isolierte Ellipse und kein alleinstehender Querschnitt stehen.
+- Die Bahn muss wie eine durchgehende Feder um die horizontale Achse wirken, nicht wie mehrere getrennte Kreise.
+- Verwende hoechstens einen separaten kleinen Richtungspfeil nach rechts neben der Bahn. Keine Pfeilspitzen auf der Helix selbst, wenn sie nicht exakt tangential sind.
+- Ein Teilchensymbol ist optional; wenn es gesetzt wird, muss es direkt auf der offenen roten Bahn liegen und darf keinen falschen Endkreis erzeugen.
 
-- Do not draw red arrowheads in the right panel.
-- Do not draw upward or downward red arrows in the right panel.
-- Do not draw the right-panel helix as disconnected arcs.
-- Do not make the helix axis vertical or diagonal.
-- Do not draw a flat circle in the right panel.
-- Do not put the positive particle off the red path.
-- Do not add force arrows, electric fields, plates, long explanatory text, internal instructions, or production guidance.
+Mittleres Feld:
+- B horizontal nach rechts, gerade Bewegung nach rechts, unveraendert klar darstellen.
+
+Beschriftungen:
+- Ueberschrift: "Ladung im Magnetfeld"
+- Paneltitel: "senkrecht zu B", "parallel zu B", "Ueberlagerung"
+- Formel unten: "v = v_parallel + v_senkrecht"
+
+Qualitaetsregel: Weniger Pfeile sind besser als ein falscher Pfeil. Keine geschlossene Endellipse bei der Schraubenbahn.
 ```
 
 ## Review-Notiz
