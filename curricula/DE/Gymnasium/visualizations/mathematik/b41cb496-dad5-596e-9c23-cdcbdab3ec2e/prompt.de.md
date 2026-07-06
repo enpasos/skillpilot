@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: pilot
+- Provider: user-provided generated image
+- Status: approved
 - Quellbild: `b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/b41cb496-dad5-596e-9c23-cdcbdab3ec2e/b41cb496-dad5-596e-9c23-cdcbdab3ec2e.jpg`
 
