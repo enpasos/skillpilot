@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-06T03:25:30.937Z",
+  "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
+  "request": {
+    "subject": "chemie",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
+    "currentResumeFilePath": "tmp/goal-visualization-chemie-batch-014.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction"
+  },
+  "summary": {
+    "totalGoals": 473,
+    "atomicGoalsInScope": 377,
+    "goalsWithPrimaryVisualization": 78,
+    "coveragePercent": 20.7,
+    "releaseApprovedVisualizationCount": 0,
+    "reviewStatusCounts": {
+      "accepted": 78
+    },
+    "linkedVisualizationReviewStatuses": {
+      "accepted": 78
+    },
+    "reviewLedgerFiles": 14,
+    "reviewDecisionCounts": {
+      "accepted_pilot": 59,
+      "accepted_pilot_after_regeneration": 13,
+      "accepted_pilot_after_second_regeneration": 3,
+      "accepted_pilot_after_third_regeneration": 3,
+      "accepted_pilot_after_user_review_correction": 1,
+      "rejected_after_user_review_replaced": 1,
+      "rejected_regenerated": 29
+    },
+    "openProviderDeferredGoals": 0,
+    "openProviderQuotaGoals": 0,
+    "blockedProviderQuotaLedgers": 0,
+    "regularUnlinkedGoals": 299,
+    "linkedWithoutAcceptedReview": 0,
+    "acceptedReviewWithoutLink": 0
+  },
+  "currentBatch": {
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-014.md",
+    "latestLedgerStatus": "completed_with_user_review_correction",
+    "resumeFile": "tmp/goal-visualization-chemie-batch-014.resume.txt",
+    "resumeFileExists": false,
+    "resumeGoalIds": [],
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction",
+    "promptAppendDirExists": true,
+    "promptAppendFiles": 1
+  },
+  "qualityQueues": {
+    "openProviderDeferred": [],
+    "openProviderQuota": [],
+    "rejectedNotLinked": [],
+    "userReviewCorrections": [
+      {
+        "batch": "014",
+        "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+        "title": "Massenerhaltung bei Reaktionen erklären",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted. The corrected image keeps both digital balance readings at `150 g`, preserves the two-panel `vorher`/`nachher` setup and the separate `A2 + B2 -> 2 AB` particle inset with exactly two red and two blue atoms before and after. In the right panel, the balloon neck is now visibly wrapped down over the outside rim of the flask neck, making the flask-balloon setup a closed system analogous to the left panel. No gas-escape cue or open-flask cue is shown."
+      }
+    ]
+  },
+  "consistency": {
+    "linkedWithoutAcceptedReview": [],
+    "acceptedReviewWithoutLink": []
+  },
+  "visualizedGoals": [
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "title": "Aggregatzustände und Übergänge deuten",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/326d45bf-9f77-57d5-a054-93e76b034dd5/326d45bf-9f77-57d5-a054-93e76b034dd5.jpg"
+    },
+    {
+      "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
+      "title": "Alkalimetalle und ihre Verbindungen charakterisieren",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e0e201bd-a1fd-5985-ab08-fd24c8655f3d/e0e201bd-a1fd-5985-ab08-fd24c8655f3d.jpg"
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "title": "Allgemeine Sicherheitsregeln im Chemielabor anwenden",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/13d4f336-ab16-54a7-9479-c920b458f385/13d4f336-ab16-54a7-9479-c920b458f385.jpg"
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "title": "Atomare Masseneinheit und Grammbezug einordnen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/dd3fc8fe-2316-5fbc-b569-00651c83bc81/dd3fc8fe-2316-5fbc-b569-00651c83bc81.jpg"
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "title": "Avogadro-Konstante als Teilchenzahlbezug nutzen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e45c0022-ac0d-5c83-b433-5f68655e382f/e45c0022-ac0d-5c83-b433-5f68655e382f.jpg"
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "title": "Avogadro-These fuer Gasvolumina erlaeutern",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1e5a4b89-69f1-5379-811e-c8ec76faad2a/1e5a4b89-69f1-5379-811e-c8ec76faad2a.jpg"
+    },
+    {
+      "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+      "title": "Bedeutung von Redoxreaktionen erörtern",
+      "phase": "GLOBAL",
+      "area": "Redoxreaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/17fe22c4-1248-5f37-9d0c-52ee4571d09f/17fe22c4-1248-5f37-9d0c-52ee4571d09f.jpg"
+    },
+    {
+      "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57",
+      "title": "Chemie in Gesellschaft und Berufsfeldern einordnen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/542822de-cb96-56cf-a487-0fc3b5820f57/542822de-cb96-56cf-a487-0fc3b5820f57.jpg"
+    },
+    {
+      "goalId": "49b13b33-34b7-5e4e-861c-b21082cb9922",
+      "title": "Chemische Daten dokumentieren und deuten",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/49b13b33-34b7-5e4e-861c-b21082cb9922/49b13b33-34b7-5e4e-861c-b21082cb9922.jpg"
+    },
+    {
+      "goalId": "f660c91a-fa14-5010-94cf-068d785c7fd2",
+      "title": "Chemische Erkenntniswege einordnen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/f660c91a-fa14-5010-94cf-068d785c7fd2/f660c91a-fa14-5010-94cf-068d785c7fd2.jpg"
+    },
+    {
+      "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+      "title": "Chemische Fach- und Symbolsprache ebenengerecht verwenden",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/95dc0ee5-a0af-5682-af32-d66e36fbeb50/95dc0ee5-a0af-5682-af32-d66e36fbeb50.jpg"
+    },
+    {
+      "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
+      "title": "Chemische Fragestellungen hypothesengeleitet untersuchen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/91238ba1-5c63-50c7-a4fd-9bbe492c6b61/91238ba1-5c63-50c7-a4fd-9bbe492c6b61.jpg"
+    },
+    {
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "title": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1df17884-96ae-57d7-9da9-dbebd082596f/1df17884-96ae-57d7-9da9-dbebd082596f.jpg"
+    },
+    {
+      "goalId": "277a3c20-6082-5a95-be08-c1e386efe79b",
+      "title": "Chemische Modelle nutzen und kritisch vergleichen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/277a3c20-6082-5a95-be08-c1e386efe79b/277a3c20-6082-5a95-be08-c1e386efe79b.jpg"
+    },
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566/8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566.jpg"
+    },
+    {
+      "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+      "title": "Chemische Sachverhalte fachlich diskutieren",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1f354a60-be44-512b-8f8b-f67c8c456035/1f354a60-be44-512b-8f8b-f67c8c456035.jpg"
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "title": "Chemische Symbole und Formeln sicher nutzen",
+      "phase": "GLOBAL",
+      "area": "Symbolsprache",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e7c363d4-e02d-4895-8750-ba62c2eb63fe/e7c363d4-e02d-4895-8750-ba62c2eb63fe.jpg"
+    },
+    {
+      "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "title": "CO2-Bilanz und Reaktionswärme von Brennstoffen vergleichen",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/4dab7d52-5b89-52ab-a425-17a7707f44c8/4dab7d52-5b89-52ab-a425-17a7707f44c8.jpg"
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "title": "Dalton-Modell und Modellcharakter erläutern",
+      "phase": "GLOBAL",
+      "area": "Symbolsprache",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/9b5d6326-d27c-4ece-8c72-debda705464a/9b5d6326-d27c-4ece-8c72-debda705464a.jpg"
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "title": "Duengemittel chemisch einordnen",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg"
+    },
+    {
+      "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+      "title": "Eigenschaften von Wasser strukturbezogen erklären",
+      "phase": "GLOBAL",
+      "area": "Stoffeigenschaften",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/7a36f2a2-a97e-5a0b-a6e1-a80f72137640/7a36f2a2-a97e-5a0b-a6e1-a80f72137640.jpg"
+    },
+    {
+      "goalId": "11bea4c6-7b8a-47e0-8293-2eb1ce34cf66",
+      "title": "Einfache Reaktionsgleichungen ableiten",
+      "phase": "GLOBAL",
+      "area": "Symbolsprache",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66/11bea4c6-7b8a-47e0-8293-2eb1ce34cf66.jpg"
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "title": "Einfache Redoxgleichungen mit Oxidationszahlen erstellen",
+      "phase": "GLOBAL",
+      "area": "Symbolsprache",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/22133f29-ef02-4408-8f8d-2bbea3275d91/22133f29-ef02-4408-8f8d-2bbea3275d91.jpg"
+    },
+    {
+      "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+      "title": "Einfache Verbrennungsvorgänge chemisch deuten",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3/fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3.jpg"
+    },
+    {
+      "goalId": "b3c9c4b8-5575-5200-86cf-26c14ebcc3d8",
+      "title": "Einflüsse auf naturwissenschaftliches Wissen bewerten",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/b3c9c4b8-5575-5200-86cf-26c14ebcc3d8/b3c9c4b8-5575-5200-86cf-26c14ebcc3d8.jpg"
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "phase": "GLOBAL",
+      "area": "Ionen und Elektrolyse",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/70b12d1c-abaf-45c6-ae9e-b571e9cbc126/70b12d1c-abaf-45c6-ae9e-b571e9cbc126.jpg"
+    },
+    {
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "title": "Elemente, Verbindungen und Gemische unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/42a84bca-d27e-581f-a43a-eee424f0504d/42a84bca-d27e-581f-a43a-eee424f0504d.jpg"
+    },
+    {
+      "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+      "title": "Energieprofile chemischer Reaktionen deuten",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/542d88e9-4cd3-5f90-bd20-b50ab030d72a/542d88e9-4cd3-5f90-bd20-b50ab030d72a.jpg"
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "title": "Energiestufenmodell und Elektronenverteilung anwenden",
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/f5efab9d-2c61-44ea-b36a-87f873b51fd8/f5efab9d-2c61-44ea-b36a-87f873b51fd8.jpg"
+    },
+    {
+      "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+      "title": "Energieträger kriteriengeleitet bewerten",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/9198b4cf-e454-562f-83f0-b1b74e68765d/9198b4cf-e454-562f-83f0-b1b74e68765d.jpg"
+    },
+    {
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "title": "Energieumsatz mit Bindungsänderungen erklären",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/a530ee7d-1002-5f02-ae05-a9d46410ac78/a530ee7d-1002-5f02-ae05-a9d46410ac78.jpg"
+    },
+    {
+      "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "title": "Exotherme und endotherme Reaktionen unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1286f2fe-89b7-4454-8e11-85b6abd6e278/1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg"
+    },
+    {
+      "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+      "title": "Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/0503c975-3934-5206-962e-b1c247de0c12/0503c975-3934-5206-962e-b1c247de0c12.jpg"
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "title": "Gasverhalten mit dem kinetischen Teilchenmodell deuten",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/5c4788a7-6760-53dc-894e-e04bca6f8cd9/5c4788a7-6760-53dc-894e-e04bca6f8cd9.jpg"
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "title": "Gefahrenpotenziale beurteilen und reduzieren",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/ebaae4f5-cc13-5493-98b1-10e1abeb638f/ebaae4f5-cc13-5493-98b1-10e1abeb638f.jpg"
+    },
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "title": "Gefahrstoffsymbole und Kennzeichnungen deuten",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/9e656697-fc05-5aa9-9aca-871af2e89eb7/9e656697-fc05-5aa9-9aca-871af2e89eb7.jpg"
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "title": "Gipsbildung bei Rauchgaswaesche deuten",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/414489cb-453e-5de4-ab0f-0fc01175e522/414489cb-453e-5de4-ab0f-0fc01175e522.jpg"
+    },
+    {
+      "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208",
+      "title": "Grundlegende Laborarbeitsweisen anwenden",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/416dfd33-8b43-5c49-903c-9847b95e4208/416dfd33-8b43-5c49-903c-9847b95e4208.jpg"
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "title": "Halogene und ihre Verwendung charakterisieren",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/58486300-3f84-5aa1-9ed4-66186af62669/58486300-3f84-5aa1-9ed4-66186af62669.jpg"
+    },
+    {
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "title": "Halogenide, Sulfate, Nitrate und Carbonate einordnen",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/b5086548-169e-5d63-a14a-dabf631fa013/b5086548-169e-5d63-a14a-dabf631fa013.jpg"
+    },
+    {
+      "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "title": "Ionen als Ladungsträger erklären",
+      "phase": "GLOBAL",
+      "area": "Ionen und Elektrolyse",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/4285d84a-2c9a-4d51-8250-8bed4daf2d2e/4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg"
+    },
+    {
+      "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "title": "Ionenbildung mit der Edelgasregel deuten",
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.jpg"
+    },
+    {
+      "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+      "title": "Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen",
+      "phase": "GLOBAL",
+      "area": "Atombau und Periodensystem",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/a138d7bf-163a-59e0-a50a-8438ef4f5168/a138d7bf-163a-59e0-a50a-8438ef4f5168.jpg"
+    },
+    {
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "title": "Kalkkreislauf chemisch beschreiben",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/d726e00e-1f87-5ba5-8c79-76ad4022365e/d726e00e-1f87-5ba5-8c79-76ad4022365e.jpg"
+    },
+    {
+      "goalId": "72236f2c-771e-4ab6-933a-e549ee49d15b",
+      "title": "Kern-Hülle-Modell und Elementarteilchen beschreiben",
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/72236f2c-771e-4ab6-933a-e549ee49d15b/72236f2c-771e-4ab6-933a-e549ee49d15b.jpg"
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "title": "Konstante Massenverhältnisse beschreiben",
+      "phase": "GLOBAL",
+      "area": "Symbolsprache",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e0d05c36-eaac-4c75-8ead-3fd5bdafefca/e0d05c36-eaac-4c75-8ead-3fd5bdafefca.jpg"
+    },
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "title": "Leitfähigkeit von Stoffen vergleichen",
+      "phase": "GLOBAL",
+      "area": "Ionen und Elektrolyse",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/018bec90-445f-4a88-b8bc-228f8335dee6/018bec90-445f-4a88-b8bc-228f8335dee6.jpg"
+    },
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "title": "Lösen von Salzen energetisch erklären",
+      "phase": "GLOBAL",
+      "area": "Stoffeigenschaften",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg"
+    },
+    {
+      "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+      "title": "Lösungen und Löslichkeit beschreiben",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/53fd1bfd-facb-54ae-b2dc-f667ed1414fc/53fd1bfd-facb-54ae-b2dc-f667ed1414fc.jpg"
+    },
+    {
+      "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+      "title": "Luftzusammensetzung für Verbrennungen beschreiben",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/2dae4132-40a9-5ee3-ac0c-11c5d1302f36/2dae4132-40a9-5ee3-ac0c-11c5d1302f36.jpg"
+    },
+    {
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "title": "Massenerhaltung bei Reaktionen erklären",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1bdaf7f2-ff3b-455a-a7fb-95a44642762a/1bdaf7f2-ff3b-455a-a7fb-95a44642762a.jpg"
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "title": "Molare Masse bestimmen und verwenden",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/8a2ad724-df5e-5986-8de9-560ba43caac2/8a2ad724-df5e-5986-8de9-560ba43caac2.jpg"
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "title": "Molare Masse von Gasen bestimmen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/199570f4-b3c3-5e12-877d-ced97e9f6968/199570f4-b3c3-5e12-877d-ced97e9f6968.jpg"
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "title": "Molares Volumen von Gasen nutzen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/2924f784-5261-54e8-93ee-49ac3b3cd300/2924f784-5261-54e8-93ee-49ac3b3cd300.jpg"
+    },
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "title": "Oxidation und Reduktion bei einfachen Reaktionen erkennen",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a/bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a.jpg"
+    },
+    {
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "title": "Periodensystem zur Strukturdeutung nutzen",
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e9d74940-1e0e-4511-9718-4851f49ad7a5/e9d74940-1e0e-4511-9718-4851f49ad7a5.jpg"
+    },
+    {
+      "goalId": "0bf26276-2780-506c-ac34-35dd44a29409",
+      "title": "pH-Werte in Alltag, Technik und Biologie erörtern",
+      "phase": "GLOBAL",
+      "area": "Säure-Base-Chemie",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/0bf26276-2780-506c-ac34-35dd44a29409/0bf26276-2780-506c-ac34-35dd44a29409.jpg"
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "title": "Qualitative Elementaranalyse von Kohlenwasserstoffen auswerten",
+      "phase": "GLOBAL",
+      "area": "Kohlenwasserstoffe",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/ddb76915-4d63-5375-901d-4e659f5e9b09/ddb76915-4d63-5375-901d-4e659f5e9b09.jpg"
+    },
+    {
+      "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
+      "title": "Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen",
+      "phase": "GLOBAL",
+      "area": "Atombau und Periodensystem",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/3bc48951-025c-5144-99b1-924db611a5f9/3bc48951-025c-5144-99b1-924db611a5f9.jpg"
+    },
+    {
+      "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7",
+      "title": "Quellen und Argumente zu chemischen Sachverhalten auswerten",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/b6327e98-8ab9-5d7f-b826-4023bc1a56a7/b6327e98-8ab9-5d7f-b826-4023bc1a56a7.jpg"
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "title": "Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten",
+      "phase": "GLOBAL",
+      "area": "Elementgruppen und Salze",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg"
+    },
+    {
+      "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+      "title": "Reaktionstypen mechanismisch einordnen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/7a05a1ce-45d3-571e-be51-afcd8dfd33ca/7a05a1ce-45d3-571e-be51-afcd8dfd33ca.jpg"
+    },
+    {
+      "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+      "title": "Redox- und Säure-Base-Reaktionen unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Redoxreaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1f30d81c-8a26-5675-8c0a-1cb82e96d3ba/1f30d81c-8a26-5675-8c0a-1cb82e96d3ba.jpg"
+    },
+    {
+      "goalId": "e313c1ee-a617-54ed-adea-c183da1e03d8",
+      "title": "Reinstoffgehalt in Stoffgemischen bestimmen",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e313c1ee-a617-54ed-adea-c183da1e03d8/e313c1ee-a617-54ed-adea-c183da1e03d8.jpg"
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "title": "Relative Atommassen und Molekülformeln aus Daten bestimmen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/e675fa94-6e23-59c0-b376-4340bf44c00e/e675fa94-6e23-59c0-b376-4340bf44c00e.jpg"
+    },
+    {
+      "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+      "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg"
+    },
+    {
+      "goalId": "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+      "title": "Saure und basische Lösungen auf Teilchenebene deuten",
+      "phase": "GLOBAL",
+      "area": "Säure-Base-Chemie",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/fd309753-4d48-5570-a4ec-09dfeb20ff9c/fd309753-4d48-5570-a4ec-09dfeb20ff9c.jpg"
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/d2ccd1d5-56f7-583f-9724-e97441367f91/d2ccd1d5-56f7-583f-9724-e97441367f91.jpg"
+    },
+    {
+      "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16",
+      "title": "Stoffe nach Struktur und Eigenschaften ordnen",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/02dc29ae-4046-556a-b048-d64a0feb8f16/02dc29ae-4046-556a-b048-d64a0feb8f16.jpg"
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "title": "Stoffe und Eigenschaften beschreiben",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/fcc73fb5-7413-557f-aea3-b9692a66ee75/fcc73fb5-7413-557f-aea3-b9692a66ee75.jpg"
+    },
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "title": "Stoffgemische mit Trennverfahren trennen",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/5a709938-e0f5-42b7-94f0-cfded08963a2/5a709938-e0f5-42b7-94f0-cfded08963a2.jpg"
+    },
+    {
+      "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+      "title": "Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben",
+      "phase": "GLOBAL",
+      "area": "Erkenntnisgewinnung und Kommunikation",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/c0f1bf09-5a70-5006-b1e9-e91f786a63bf/c0f1bf09-5a70-5006-b1e9-e91f786a63bf.jpg"
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "title": "Stoffmenge und Einheit Mol nutzen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/1dc15fa2-fca4-56b0-b5c1-4d215613dde0/1dc15fa2-fca4-56b0-b5c1-4d215613dde0.jpg"
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "title": "Stoffumsätze einfacher Molekülreaktionen berechnen",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/9f355f63-4fb7-5638-9538-6e8a246ec4b2/9f355f63-4fb7-5638-9538-6e8a246ec4b2.jpg"
+    },
+    {
+      "goalId": "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+      "title": "Umgang und Entsorgung von Chemikalien begründen",
+      "phase": "GLOBAL",
+      "area": "Grundlagen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/7be6f951-a614-52dc-94d3-2ce0d33765ff/7be6f951-a614-52dc-94d3-2ce0d33765ff.jpg"
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "title": "Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten",
+      "phase": "GLOBAL",
+      "area": "Atombau und Periodensystem",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/49235cbe-6658-5e7e-8bd4-398416bcebdc/49235cbe-6658-5e7e-8bd4-398416bcebdc.jpg"
+    },
+    {
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "title": "Wirkung geeigneter Löschmittel erklären",
+      "phase": "GLOBAL",
+      "area": "Reaktionen",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/350a394f-e0d4-5e42-8e9a-39da9df33518/350a394f-e0d4-5e42-8e9a-39da9df33518.jpg"
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "title": "Zweiatomigkeit gasfoermiger Elementmolekuele begruenden",
+      "phase": "GLOBAL",
+      "area": "Stoechiometrie und Gase",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/chemie/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a/d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a.jpg"
+    }
+  ]
+}

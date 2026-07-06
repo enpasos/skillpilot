@@ -241,6 +241,20 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   },
   {
     artifactPaths: [
+      'curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md',
+      'curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json',
+    ],
+    generatedBy: 'app/scripts/reportGoalVisualizationRolloutStatus.ts',
+    role: 'Rollout status, quality queues, and current provider-blocker state for canonical Chemie atomic goal visualizations.',
+    sourceOfTruth: [
+      'app/scripts/reportGoalVisualizationRolloutStatus.ts',
+      'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',
+      'curricula/DE/Gymnasium/quality/goal-visualization-review',
+    ],
+    regenerateWith: 'cd app && npm run quality:goal-visualization-rollout-status:chemie',
+  },
+  {
+    artifactPaths: [
       'docs/qa-ci/status/memory-card-review-rollout.md',
     ],
     generatedBy: 'app/scripts/reportMemoryCardReviewRollout.ts',

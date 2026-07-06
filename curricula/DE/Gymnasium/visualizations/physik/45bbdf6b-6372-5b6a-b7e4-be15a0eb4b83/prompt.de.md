@@ -35,22 +35,30 @@ Pflichtinhalt:
 
 - Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
 - Create an appealing German cartoon learning image titled `Kraft und Verformung`.
-- Show a vertical spring with a ruler beside it and three measurement states: no load, small load, larger load.
-- The spring must be shortest with no load, longer with the small load, and longest with the larger load.
+- Use the provided reference image as binding geometry for the shared `Nullpunkt`, spring-end positions, `s` measurement segments, table, and graph. You may improve the cartoon style, spacing, colors, and readability, but do not change the geometry or the numeric relationships.
+- Show exactly three vertical spring states side by side under the same fixed top bar: `F = 0 N`, `F = 1 N`, `F = 2 N`.
+- Use the same spring in all three states: same visible number of windings, same wire thickness, same top attachment. Only the spacing between windings and the total spring length may increase.
+- Draw one common horizontal dashed reference line across all three states labeled `Nullpunkt`. This line must pass through the lower hook/end position of the unloaded spring (`F = 0 N`).
+- The `F = 0 N` spring end must lie on the `0 cm` line. The `F = 1 N` spring end must lie on the `2 cm` line. The `F = 2 N` spring end must lie on the `4 cm` line.
+- The label `s in cm` means displacement/extension from the shared `Nullpunkt`, not total spring length. The drawn displacement in each spring picture must visibly match the red measurement segment: `s = 0 cm` for no load, `s = 2 cm` for `1 N`, and `s = 4 cm` for `2 N`.
+- Add simple vertical measurement braces or thin colored line segments without arrowheads from the `Nullpunkt` line down to each loaded lower spring end, labeled `s = 2 cm` and `s = 4 cm`. The `s = 4 cm` segment must be exactly twice as long as the `s = 2 cm` segment.
+- Do not draw a full numbered ruler. The only scale-like marks in the spring pictures should be the shared `Nullpunkt` line and the red `s = 0 cm`, `s = 2 cm`, and `s = 4 cm` measurement segments.
 - Show a small table with exactly three consistent rows: `F = 0 N, s = 0 cm`; `F = 1 N, s = 2 cm`; `F = 2 N, s = 4 cm`.
 - Show a small graph with horizontal axis `F in N` and vertical axis `s in cm`. Plot the points `(0|0)`, `(1|2)`, `(2|4)` on a straight rising line through the origin.
-- If force arrows are used, use only one downward arrow on each hanging load, pointing vertically downward.
-- Put each load label next to its own spring state only once: no load `F = 0 N`, small load `F = 1 N`, large load `F = 2 N`.
-- Do not place separate force labels below the springs; use either the table or one nearby label per spring state, but never duplicate a contradictory label.
-- Visible learner text must be limited to the title, table headers, axis labels, and the three data rows.
+- If force arrows are used, use only downward arrows on the hanging loads and do not draw an arrow for `F = 0 N`.
+- Visible learner text must be limited to the title, `Nullpunkt`, force labels, table headers/rows, axis labels, and ruler labels.
 
 Vermeiden:
 
+- Do not put the zero mark at the top attachment of the spring.
+- Do not measure absolute spring length; measure extension from the unloaded lower spring end.
+- Do not let table or graph values disagree with the visible spring displacement.
+- Do not draw `s = 2 cm` and `s = 4 cm` with the same visual length.
+- Do not draw a numbered ruler with values `0` to `7`.
+- Do not show different numbers of spring windings across the three spring states.
+- Do not make the small-load or large-load spring end align with the wrong ruler mark.
 - Do not show decreasing extension for increasing force.
 - Do not draw a graph line that misses the origin.
-- Do not swap the units: force must use `N`, extension must use `cm`.
-- Do not place arrowheads in the wrong direction.
-- Do not label the small-load spring as `F = 0 N`.
 - Do not add extra numerical points that break proportionality.
 - Do not make the image a text-only poster.
 - Do not add long explanatory text, internal instructions, or production guidance.
