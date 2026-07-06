@@ -186,7 +186,7 @@ export function createVisualizationPrompt(goal, options = {}) {
     'Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.',
     '',
     'Rahmen:',
-    '- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.',
+    '- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.',
     '- Erzeuge eine klare, gut lesbare Infografik im Querformat.',
     '- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.',
     '- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.',

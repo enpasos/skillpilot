@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: approved
 - Quellbild: `3401d95d-2191-5929-ac78-4de51d71a6be.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/3401d95d-2191-5929-ac78-4de51d71a6be/3401d95d-2191-5929-ac78-4de51d71a6be.jpg`
 
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,24 +31,29 @@ Titel: Ableitungen von Sinus- und Kosinusfunktionen anwenden
 Beschreibung: Die lernende Person kann die Ableitungen von $\sin(x)$ und $\cos(x)$ zur Untersuchung einfacher trigonometrischer Funktionen einsetzen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Bearbeite die bestehende Infografik minimal und lasse Layout, Stil und fachlichen Inhalt sonst unveraendert.
 
-- Show a clean coordinate grid with two simple rule cards: `d/dx sin(x) = cos(x)` and `d/dx cos(x) = -sin(x)`.
-- Include one sine graph with three marked tangent situations:
-  - at `x=0`, tangent slope is positive and the derivative value is `1`;
-  - at `x=pi/2`, tangent is horizontal and the derivative value is `0`;
-  - at `x=pi`, tangent slope is negative and the derivative value is `-1`.
-- Add a small cosine example next to it: at `x=0`, `cos(x)` has horizontal tangent and `cos'(0)=0`.
-- Use short labels only, with `x`, `sin(x)`, `cos(x)`, `f'(x)` and values `-1`, `0`, `1`.
+Strenge Korrektur fuer das rechte kleine lila Koordinatensystem:
+- Entferne dort alle y-Achsen-Zahlen.
+- Im rechten kleinen lila Koordinatensystem darf keine freistehende Zahl `1` stehen.
+- Im rechten kleinen lila Koordinatensystem darf keine freistehende Zahl `-1` stehen.
+- Der Ursprung darf mit `0` beschriftet sein.
+- Die rote waagerechte Tangente am Maximum bleibt sichtbar.
+- Die Beschriftung `Steigung = 0` und `f'(0)=-sin(0)=0` bleibt fachlich korrekt.
+
+Erhalte:
+- Die beiden Regelkarten mit `d/dx sin(x)=cos(x)` und `d/dx cos(x)=-sin(x)`.
+- Die grosse Sinus-Grafik mit den drei Anwendungen bei `0`, `pi/2`, `pi`.
+- Die rechte Kosinus-Grafik als Beispiel fuer eine waagerechte Tangente bei `x=0`.
+- Deutsche Beschriftungen und Umlaute korrekt.
 
 Vermeiden:
-
-- Do not show `cos'(x)=sin(x)`; the minus sign must be visible for the cosine derivative.
-- Do not mark a maximum or minimum with a nonzero derivative.
-- Do not use degree labels, decimal approximations, or overly dense formulas.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine neue Skala im rechten kleinen Koordinatensystem.
+- Keine Dezimalzahlen.
+- Keine zusaetzlichen Formeln oder Erklaerkaesten.
+- Keine internen technischen Bezeichnungen im Bild.
 ```
 
 ## Review-Notiz
 
-Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.
+Korrigiertes Asset nach Human-Review vom 2026-07-06: Die falsche y-Achsen-Zahl im rechten Kosinus-Panel wurde entfernt. Kandidat 1 blieb wegen einer freistehenden `1` im rechten Panel verworfen; Kandidat 2 wurde mit `view_image` geprueft und als fachlich korrekt importiert.

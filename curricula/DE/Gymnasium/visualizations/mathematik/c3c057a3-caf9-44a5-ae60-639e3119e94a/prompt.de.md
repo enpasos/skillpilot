@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: approved
 - Quellbild: `c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/c3c057a3-caf9-44a5-ae60-639e3119e94a/c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg`
 
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,22 +32,23 @@ Beschreibung: Die lernende Person kann die Ableitungsfunktionen von $e^x$ und $a
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Show derivative rules for exponential functions.
-- Include exactly these formulas:
-  - `(e^x)' = e^x`
-  - `(a^x)' = ln(a)*a^x`
-- Include two example cards:
-  - `(3e^x)' = 3e^x`
-  - `(2^x)' = ln(2)*2^x`
-- Add a warning card: "Bei `a^x` den Faktor `ln(a)` nicht vergessen."
+- Behalte den anschaulichen Cartoon-Infografik-Stil und die klare Zweiteilung bei.
+- Zeige links kurz den Spezialfall: "(e^x)' = e^x".
+- Zeige rechts den Ableitungsweg für die allgemeine Exponentialfunktion als kleine Rechenkette:
+  "a^x = e^{x ln(a)}"
+  "(a^x)' = (e^{x ln(a)})'"
+  "= e^{x ln(a)} · ln(a)"
+  "= a^x · ln(a)"
+- Beschrifte den entscheidenden Zwischenschritt mit "Kettenregel" und "innere Ableitung: ln(a)".
+- Zeige ein konkretes Beispiel "2^x": "(2^x)' = 2^x · ln(2)".
+- Nutze Multiplikation mit einem Mittelpunkt "·", nicht mit einem Stern.
+- Falls Pfeile vorkommen, müssen sie nur vom Ausgangsausdruck zum nächsten korrekten Umformungsschritt zeigen.
 
 Vermeiden:
-
-- Do not write `(a^x)' = a^x` as the general rule.
-- Do not omit `ln(a)` for `2^x`.
-- Do not use `log` inconsistently instead of `ln`.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine reine Merkkarte "Faktor nicht vergessen" ohne Herleitung.
+- Keine falsche Aussage, dass aus "a^x" direkt wieder nur "a^x" wird.
+- Keine überladene Formelsammlung; lieber wenige große, lesbare Schritte.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

@@ -36,6 +36,7 @@ const PUBLIC_PATHS = new Set([
   '/canonical-cluster-editor',
   '/composition-view-editor',
   '/semantic-atomicity-review',
+  '/goal-visualization-qa',
   '/quality-dashboard',
   '/curriculum-mapping-workbench',
 ])
@@ -62,6 +63,7 @@ const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((modul
 const CanonicalClusterEditorView = lazy(() => import('./views/CanonicalClusterEditorView').then((module) => ({ default: module.CanonicalClusterEditorView })))
 const CompositionViewEditorView = lazy(() => import('./views/CompositionViewEditorView').then((module) => ({ default: module.CompositionViewEditorView })))
 const SemanticAtomicityReviewView = lazy(() => import('./views/SemanticAtomicityReviewView').then((module) => ({ default: module.SemanticAtomicityReviewView })))
+const GoalVisualizationQaView = lazy(() => import('./views/GoalVisualizationQaView').then((module) => ({ default: module.GoalVisualizationQaView })))
 const CurriculumQualityDashboardView = lazy(() => import('./views/CurriculumQualityDashboardView').then((module) => ({ default: module.CurriculumQualityDashboardView })))
 const CurriculumMappingWorkbenchView = lazy(() => import('./views/CurriculumMappingWorkbenchView').then((module) => ({ default: module.CurriculumMappingWorkbenchView })))
 
@@ -482,6 +484,11 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Local editor for semantic atomicity review ledgers.'
           : 'Lokaler Editor für Semantic-Atomicity-Review-Ledger.'
+      } else if (path === '/goal-visualization-qa') {
+        title = `Goal Visualization QA | ${baseTitle}`
+        description = language === 'en'
+          ? 'Local subject-level review list for generated learning-goal images.'
+          : 'Lokale fachbezogene Review-Liste für erzeugte Lernzielbilder.'
       } else if (path === '/quality-dashboard') {
         title = `Curriculum Quality | ${baseTitle}`
         description = language === 'en'
@@ -617,6 +624,7 @@ const App: React.FC = () => {
             <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
             <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
             <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
+            <Route path="/goal-visualization-qa" element={<GoalVisualizationQaView />} />
             <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
             <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
             <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />

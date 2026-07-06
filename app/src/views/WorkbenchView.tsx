@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
+import { ArrowRight, Blocks, BookOpenText, Gauge, Home, Image as ImageIcon, Layers3, ListChecks, Network, Split, Wrench } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { PublicPageHeader } from '../components/PublicPageHeader'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -100,6 +100,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       icon: ListChecks,
     },
     {
+      title: 'Goal-Visualization QS',
+      path: '/goal-visualization-qa',
+      description: 'Pflegt fachbezogene QS-Listen für erzeugte Lernzielbilder und erzeugt Codex-Korrekturaufträge.',
+      scope: 'Umlaut-, Fachlichkeits- und Human-Review für Goal-Visualization-Assets',
+      group: 'maintenance',
+      icon: ImageIcon,
+    },
+    {
       title: 'Curriculum Quality Dashboard',
       path: '/quality-dashboard',
       description: 'Zeigt generierte Qualitätsstände, Reifegrade und offene Regelverletzungen pro Curriculum.',
@@ -156,6 +164,14 @@ const TOOL_DEFINITIONS: Record<'de' | 'en', WorkbenchTool[]> = {
       scope: 'review ledgers, developer queue, and fingerprint status for technical leaf goals',
       group: 'maintenance',
       icon: ListChecks,
+    },
+    {
+      title: 'Goal Visualization QA',
+      path: '/goal-visualization-qa',
+      description: 'Maintains subject-level QA lists for generated learning-goal images and creates Codex correction tasks.',
+      scope: 'umlaut, content, and human review for goal visualization assets',
+      group: 'maintenance',
+      icon: ImageIcon,
     },
     {
       title: 'Curriculum Quality Dashboard',

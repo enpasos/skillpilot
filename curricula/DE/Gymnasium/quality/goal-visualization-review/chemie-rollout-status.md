@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-06T03:25:30.937Z
+Generated: 2026-07-06T04:37:56.939Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -21,7 +21,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 78 |
 | Coverage | 20.7% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 14 |
+| Review-Ledger-Dateien | 15 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
@@ -43,20 +43,20 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `accepted_pilot_after_regeneration` | 13 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 1 |
-| `rejected_after_user_review_replaced` | 1 |
-| `rejected_regenerated` | 29 |
+| `accepted_pilot_after_user_review_correction` | 2 |
+| `rejected_after_user_review_replaced` | 2 |
+| `rejected_regenerated` | 33 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-014.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-015.md` |
 | Latest ledger status | `completed_with_user_review_correction` |
-| Resume file | `tmp/goal-visualization-chemie-batch-014.resume.txt` |
+| Resume file | `tmp/goal-visualization-chemie-batch-015.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction` |
+| Prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction` |
 | Prompt append dir exists | yes |
 | Prompt append files | 1 |
 
@@ -85,6 +85,7 @@ Keine Eintraege.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | 014 | `1bdaf7f2-ff3b-455a-a7fb-95a44642762a` | Massenerhaltung bei Reaktionen erklären | `accepted_pilot_after_user_review_correction` |
+| 015 | `1f354a60-be44-512b-8f8b-f67c8c456035` | Chemische Sachverhalte fachlich diskutieren | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 
@@ -108,6 +109,6 @@ After planning a batch: create prompt append files, generate candidates with `--
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-chemie-batch-014.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction`
+- Resume file: `tmp/goal-visualization-chemie-batch-015.resume.txt`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction`
 

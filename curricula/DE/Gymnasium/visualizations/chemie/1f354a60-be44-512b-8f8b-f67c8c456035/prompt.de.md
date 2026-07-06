@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: accepted
 - Quellbild: `1f354a60-be44-512b-8f8b-f67c8c456035.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/1f354a60-be44-512b-8f8b-f67c8c456035/1f354a60-be44-512b-8f8b-f67c8c456035.jpg`
@@ -33,24 +33,26 @@ Beschreibung: Die lernende Person kann chemische Sachverhalte fachlich schlüssi
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
 - Create an appealing German cartoon learning image titled `Fachlich diskutieren`.
-- Show a small lab discussion table with three students and a teacher, all calm and constructive.
-- Center topic card: `Soll Essigreiniger auf Marmor?`
-- Show three evidence cards:
-  1. `Beobachtung: Blasenbildung`
-  2. `Reaktion: Saeure + Carbonat`
-  3. `Schluss: nicht geeignet`
-- Show a speech bubble sequence `Behauptung -> Beleg -> Begruendung -> Standpunkt pruefen`.
-- Include a small crossed-out card `nur Meinung` to distinguish unsupported opinion from evidence-based argument.
-- Visible learner text must be limited to title, topic card, evidence cards, and the short sequence labels.
+- Show a calm lab discussion with three learners and one teacher around a table.
+- The central idea is evidence-based scientific discussion.
+- Use a clean chain of four cards from left to right:
+  1. `Aussage` with the question `Soll Essigreiniger auf Marmor?`
+  2. `Beleg` with `Beobachtung: Blasenbildung`
+  3. `Grund` with `Reaktion: Essig + Carbonat`
+  4. `Standpunkt bewerten` with `Schluss: nicht geeignet`
+- Under or beside the chain, show one crossed-out card labelled exactly `nur Meinung`.
+- Illustrate the reaction card only with simple icons: a vinegar bottle, a marble tile, bubbles, and an arrow to the conclusion.
+- Do not use any formulas, molecule structures, reaction equations, element symbols, or pseudo-chemical notation.
+- Do not use any visible word with ae/oe/ue as a substitute for German umlauts.
+- Do not write `Saeure`, `Begruendung`, `pruefen`, `Loesung`, `waehlen`, or similar ASCII umlaut substitutes anywhere.
 
 Vermeiden:
 
-- Do not show students shouting or mocking each other.
-- Do not present an unsafe experiment on real furniture.
-- Do not show vinegar as harmless for all materials.
-- Do not include long paragraphs or debate slogans.
+- Do not add extra explanatory text, paragraphs, or unrelated chemistry.
+- Do not present the cleaner as safe for marble.
+- Do not show unsafe work on real furniture.
+- Do not include any technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels.
 ```
 
 ## Review-Notiz
