@@ -138,7 +138,7 @@ The important distinction is source evidence vs. runtime readiness: the source m
 | `DE-ST` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | - | 424 | DE-ST - Mathematik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) |
 | `DE-TH` | SekI | `reviewed:single-duration-source-policy` | single-duration-source (G8) | - | - | G8: de-de-gym-seki-math<br>G9: de-de-gym-seki-math | 5-6, 5/6, 7-10 | 356 | DE-TH - Mathematik Sekundarstufe I (Thueringen, Lehrplan Gymnasium 2018/2025 Source-Extraction) |
 
-## M6 Source Matrix
+## M6+ Source Matrix
 
 | Subject | Jurisdiction | Source stage | Reviewed decision | Source duration evidence | Grade signals | Source goals | Source | Source file | Decision note | Evidence references |
 | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
@@ -388,7 +388,7 @@ The important distinction is source evidence vs. runtime readiness: the source m
 | Wirtschaftswissenschaften | `DE-ST` | SekII | - | - | - | 94 | Wirtschaftslehre Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Source-Extraction) | `curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKII_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json` | - | - |
 | Wirtschaftswissenschaften | `DE-TH` | SekII | - | - | 10 | 145 | Wirtschaft und Recht Qualifikationsphase (Thueringen, Lehrplan 2012 Source-Extraction) | `curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKII_LEHRPLAN_GYMNASIUM_2012.source-extraction.json` | - | - |
 
-## M6 Subjects
+## M6+ Subjects
 
 | Subject | Jurisdiction | Stage | Status | Policy | Source duration evidence | Duration views | Sek-I runtime view | Grade signals | Source goals | Source |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |

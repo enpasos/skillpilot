@@ -8,7 +8,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 ## Start Here
 
 - [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
-  Detailed meaning of `M0` to `M6`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
+  Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
 - [CI Overview](ci.md)
   Local and GitHub Actions validation entry points.
 - [Graph Validation Rules](graph-validation-rules.md)

@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 
 interface RuleResult {
   id: string
@@ -223,6 +223,7 @@ function renderReport(status: StatusDocument, statusPath: string): string {
         ['Total curricula', status.summary.curricula],
         ['M0 curricula', status.summary.maturity.M0 ?? 0],
         ['M6 curricula', status.summary.maturity.M6 ?? 0],
+        ['M7 curricula', status.summary.maturity.M7 ?? 0],
         ['Partial source expansion', byCategory['partial source expansion'] ?? 0],
         ['Source bootstrap', byCategory['source bootstrap'] ?? 0],
         ['Aggregate root', byCategory['aggregate root'] ?? 0],

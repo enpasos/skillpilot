@@ -17,7 +17,7 @@ import {
 } from './memoryCardReviewConfigDiscovery'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 type SemanticReviewStatus = 'atomic' | 'needs_developer_review' | 'non_atomic'
 type MemoryCardReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type MemoryCardReviewCardStatus = 'kept' | 'remove' | 'needs_developer_review'
@@ -26,7 +26,7 @@ type DurationModel = 'G8' | 'G9'
 interface QualityRuleDefinition {
   id: string
   label: string
-  category: 'graph' | 'route' | 'assessment' | 'review' | 'view' | 'applicability'
+  category: 'graph' | 'route' | 'assessment' | 'review' | 'view' | 'applicability' | 'visualization'
   maturityTarget: MaturityLevel
   description: string
 }
@@ -614,7 +614,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   schemaVersion: 1
-  rulesVersion: 'curriculum-quality-v3'
+  rulesVersion: 'curriculum-quality-v4'
   generatedAt: string
   generatedBy: string
   sources: {
@@ -622,6 +622,7 @@ interface StatusDocument {
     sourceExtractionRoot: string
     semanticAtomicityRoot: string
     memoryCardReviewRoot: string
+    goalVisualizationQaRoot: string
     compositionViewRoot: string
     acceptedWarningsPath: string
     sourceLandscapeRegistryPath: string
@@ -718,6 +719,26 @@ interface MemoryCardReviewCardRecord {
   reviewedAt: string
   reviewer: string
   reason: string
+}
+
+interface GoalVisualizationQaRecord {
+  goalId: string
+  title: string
+  imageUrl: string
+  publicAssetPath: string
+  canonicalAssetPath: string
+  assetSha256: string
+  umlautsCorrectChatGpt: 'yes' | 'no'
+  contentApprovedChatGpt: 'yes' | 'no'
+  humanApproved: 'yes' | 'no'
+  humanIssueIdentified: 'yes' | 'no'
+  humanIssueDescription: string
+}
+
+interface GoalVisualizationQaLedger {
+  schemaVersion: 1
+  subject: string
+  records: GoalVisualizationQaRecord[]
 }
 
 interface AcceptedWarningEntry {
@@ -860,6 +881,7 @@ const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const sourceExtractionRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/input')
 const semanticAtomicityRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/semantic-atomicity')
 const memoryCardReviewRoot = resolve(repoRoot, defaultMemoryCardReviewConfigDir)
+const goalVisualizationQaRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/goal-visualization-qa')
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
 const acceptedWarningsPath = resolve(repoRoot, 'docs/qa-ci/applicability-accepted-warnings.json')
 const sourceLandscapeRegistryPath = resolve(repoRoot, 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json')
@@ -1077,6 +1099,13 @@ const ruleCatalog: QualityRuleDefinition[] = [
     category: 'review',
     maturityTarget: 'M6',
     description: 'Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible.',
+  },
+  {
+    id: 'CQR-303',
+    label: 'Goal-visualization approval trace',
+    category: 'visualization',
+    maturityTarget: 'M7',
+    description: 'All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue.',
   },
   {
     id: 'CQR-401',
@@ -1419,8 +1448,24 @@ function collectFiles(root: string, predicate: (fileName: string) => boolean): s
   return result.sort((left, right) => left.localeCompare(right))
 }
 
+function hashFile(path: string): string {
+  if (!existsSync(path)) return ''
+  return `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`
+}
+
 function isAtomicGoal(goal: LearningGoal): boolean {
   return (goal.contains?.length ?? 0) === 0
+}
+
+function isGoalVisualizationRelevantGoal(goal: LearningGoal): boolean {
+  const tags = goal.tags ?? []
+  return isAtomicGoal(goal)
+    && goal.nodeKind !== 'memory'
+    && goal.nodeKind !== 'exam'
+    && goal.nodeKind !== 'tutor'
+    && (goal as { examData?: unknown }).examData === undefined
+    && !tags.includes('memorization')
+    && !tags.some((tag) => tag.startsWith('srs-deck:'))
 }
 
 function isSemanticAtomicityRelevantGoal(goal: LearningGoal): boolean {
@@ -3003,6 +3048,185 @@ function readMemoryCardReviewConfigs(): Map<string, MemoryCardReviewConfig[]> {
     configsByLandscapeId.set(config.landscapeId, existing)
   })
   return configsByLandscapeId
+}
+
+function normalizeGoalVisualizationSubject(value: string | undefined): string {
+  return (value ?? '')
+    .trim()
+    .toLocaleLowerCase('de-DE')
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function goalVisualizationSubjectFromUrl(url: string | undefined): string {
+  const match = url?.match(/^\/assets\/goal-visualizations\/([^/]+)\//u)
+  return match?.[1] ?? ''
+}
+
+function goalVisualizationPublicAssetPath(url: string | undefined): string {
+  if (!url?.startsWith('/assets/goal-visualizations/')) return ''
+  return resolve(repoRoot, 'app/public', url.replace(/^\/+/u, ''))
+}
+
+function primaryGoalVisualizationLink(goal: LearningGoal) {
+  return (goal.resourceLinks ?? []).find((link) =>
+    link.type === 'goal-visualization'
+    && link.resourceType === 'image'
+    && link.role === 'primary'
+    && typeof link.url === 'string')
+}
+
+function readGoalVisualizationQaLedgers(): Map<string, GoalVisualizationQaLedger> {
+  const ledgersBySubject = new Map<string, GoalVisualizationQaLedger>()
+  collectFiles(goalVisualizationQaRoot, (fileName) => /\.qa\.json$/i.test(fileName)).forEach((file) => {
+    const ledger = loadJson<GoalVisualizationQaLedger>(file)
+    const subject = normalizeGoalVisualizationSubject(ledger.subject) || (file.match(/([^/\\]+)\.qa\.json$/i)?.[1] ?? '')
+    if (subject && ledger.schemaVersion === 1 && Array.isArray(ledger.records)) {
+      ledgersBySubject.set(subject, ledger)
+    }
+  })
+  return ledgersBySubject
+}
+
+function evaluateGoalVisualizationQa(
+  landscape: LearningLandscape,
+  ledgersBySubject: Map<string, GoalVisualizationQaLedger>,
+): RuleResult {
+  const relevantGoals = landscape.goals.filter(isGoalVisualizationRelevantGoal)
+  const linksByGoalId = new Map<string, NonNullable<ReturnType<typeof primaryGoalVisualizationLink>>>()
+  relevantGoals.forEach((goal) => {
+    const link = primaryGoalVisualizationLink(goal)
+    if (link) linksByGoalId.set(goal.id, link)
+  })
+  const subjectSlug = Array.from(linksByGoalId.values())
+    .map((link) => goalVisualizationSubjectFromUrl(link.url))
+    .find(Boolean)
+    ?? normalizeGoalVisualizationSubject(landscape.subject)
+  const ledger = ledgersBySubject.get(subjectSlug)
+  if (!ledger) {
+    return makeRule(
+      'CQR-303',
+      'not_configured',
+      `No goal-visualization QA ledger is registered for subject ${subjectSlug || '(unknown)'}.`,
+      {
+        expectedGoals: relevantGoals.length,
+        linkedGoals: linksByGoalId.size,
+      },
+    )
+  }
+
+  let missingLinks = 0
+  let missingRecords = 0
+  let staleRecords = 0
+  let duplicateRecords = 0
+  let missingAssets = 0
+  let humanApproved = 0
+  let humanNotApproved = 0
+  let humanIssues = 0
+  let chatGptReady = 0
+  let chatGptOpen = 0
+  const details: string[] = []
+
+  const recordsByGoalAndUrl = new Map<string, GoalVisualizationQaRecord>()
+  const duplicateKeys = new Set<string>()
+  ledger.records.forEach((record) => {
+    const key = `${record.goalId}\n${record.imageUrl}`
+    if (recordsByGoalAndUrl.has(key)) duplicateKeys.add(key)
+    recordsByGoalAndUrl.set(key, record)
+  })
+  duplicateRecords += duplicateKeys.size
+  duplicateKeys.forEach((key) => {
+    if (details.length < 30) details.push(`duplicate QA record for ${key.replace('\n', ' ')}`)
+  })
+
+  relevantGoals.forEach((goal) => {
+    const link = linksByGoalId.get(goal.id)
+    if (!link) {
+      missingLinks += 1
+      if (details.length < 30) details.push(`missing visualization link: ${formatGoal(goal, goal.id)}`)
+      return
+    }
+
+    const record = recordsByGoalAndUrl.get(`${goal.id}\n${link.url}`)
+    if (!record) {
+      missingRecords += 1
+      if (details.length < 30) details.push(`missing QA record: ${formatGoal(goal, goal.id)} ${link.url}`)
+      return
+    }
+
+    const publicAssetPath = goalVisualizationPublicAssetPath(link.url)
+    const currentHash = hashFile(publicAssetPath)
+    if (!currentHash) {
+      missingAssets += 1
+      if (details.length < 30) details.push(`missing public asset: ${formatGoal(goal, goal.id)} ${link.url}`)
+      return
+    }
+    if (record.assetSha256 !== currentHash) {
+      staleRecords += 1
+      if (details.length < 30) details.push(`stale QA record: ${formatGoal(goal, goal.id)} ledger ${record.assetSha256 || '(empty)'} current ${currentHash}`)
+      return
+    }
+
+    if (record.umlautsCorrectChatGpt === 'yes' && record.contentApprovedChatGpt === 'yes') {
+      chatGptReady += 1
+    } else {
+      chatGptOpen += 1
+    }
+
+    if (record.humanIssueIdentified === 'yes') {
+      humanIssues += 1
+      if (details.length < 30) {
+        const issue = record.humanIssueDescription?.trim() ? `: ${record.humanIssueDescription.trim()}` : ''
+        details.push(`open human issue: ${formatGoal(goal, goal.id)}${issue}`)
+      }
+    }
+
+    if (record.humanApproved === 'yes' && record.humanIssueIdentified !== 'yes') {
+      humanApproved += 1
+    } else {
+      humanNotApproved += 1
+      if (details.length < 30 && record.humanIssueIdentified !== 'yes') {
+        details.push(`missing human approval: ${formatGoal(goal, goal.id)}`)
+      }
+    }
+  })
+
+  const unresolved = missingLinks
+    + missingRecords
+    + staleRecords
+    + duplicateRecords
+    + missingAssets
+    + humanNotApproved
+    + humanIssues
+
+  return makeRule(
+    'CQR-303',
+    unresolved === 0 ? 'pass' : 'warn',
+    unresolved === 0
+      ? `Goal visualizations are complete and human-approved for all ${relevantGoals.length} ordinary atomic goals.`
+      : 'Goal-visualization rollout or human approval is still incomplete.',
+    {
+      expectedGoals: relevantGoals.length,
+      linkedGoals: linksByGoalId.size,
+      missingLinks,
+      qaRecords: ledger.records.length,
+      missingRecords,
+      staleRecords,
+      duplicateRecords,
+      missingAssets,
+      currentRecords: relevantGoals.length - missingLinks - missingRecords - staleRecords - missingAssets,
+      chatGptReady,
+      chatGptOpen,
+      humanApproved,
+      humanNotApproved,
+      humanIssues,
+    },
+    details,
+  )
 }
 
 function readCompositionViewCountsByLandscapeId(): Map<string, number> {
@@ -4955,7 +5179,8 @@ function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeSt
     && curriculumRules.find((rule) => rule.id === 'CQR-501')?.status === 'pass'
   if (!m5Ready) return 'M4'
 
-  return curriculumRules.find((rule) => rule.id === 'CQR-302')?.status === 'pass' ? 'M6' : 'M5'
+  if (curriculumRules.find((rule) => rule.id === 'CQR-302')?.status !== 'pass') return 'M5'
+  return curriculumRules.find((rule) => rule.id === 'CQR-303')?.status === 'pass' ? 'M7' : 'M6'
 }
 
 function pushGeneratedMarkdownNotice(lines: string[]): void {
@@ -5063,6 +5288,7 @@ function main() {
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
+  const goalVisualizationQaLedgersBySubject = readGoalVisualizationQaLedgers()
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -5092,6 +5318,7 @@ function main() {
       ]
       curriculumRules.push(
         evaluateMemoryCardReview(landscape, memoryCardReviewConfigs),
+        evaluateGoalVisualizationQa(landscape, goalVisualizationQaLedgersBySubject),
         evaluateCompositionViews(compositionViewCountsByLandscapeId.get(landscape.landscapeId) ?? 0),
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
       )
@@ -5127,7 +5354,7 @@ function main() {
     ...curriculum.rules,
     ...curriculum.scopes.flatMap((scope) => scope.rules),
   ])
-  const maturity: Record<MaturityLevel, number> = { M0: 0, M1: 0, M2: 0, M3: 0, M4: 0, M5: 0, M6: 0 }
+  const maturity: Record<MaturityLevel, number> = { M0: 0, M1: 0, M2: 0, M3: 0, M4: 0, M5: 0, M6: 0, M7: 0 }
   curricula.forEach((curriculum) => {
     maturity[curriculum.maturity] += 1
   })
@@ -5138,7 +5365,7 @@ function main() {
 
   const statusDraft: StatusDocument = {
     schemaVersion: 1,
-    rulesVersion: 'curriculum-quality-v3',
+    rulesVersion: 'curriculum-quality-v4',
     generatedAt: new Date().toISOString(),
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     sources: {
@@ -5146,6 +5373,7 @@ function main() {
       sourceExtractionRoot: toRepoPath(sourceExtractionRoot),
       semanticAtomicityRoot: toRepoPath(semanticAtomicityRoot),
       memoryCardReviewRoot: toRepoPath(memoryCardReviewRoot),
+      goalVisualizationQaRoot: toRepoPath(goalVisualizationQaRoot),
       compositionViewRoot: toRepoPath(compositionViewRoot),
       acceptedWarningsPath: toRepoPath(acceptedWarningsPath),
       sourceLandscapeRegistryPath: toRepoPath(sourceLandscapeRegistryPath),

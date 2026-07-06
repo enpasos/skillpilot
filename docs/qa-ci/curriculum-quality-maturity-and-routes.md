@@ -218,7 +218,7 @@ Die Dashboard-Spalten `Warnungen` und `Fehler` zaehlen alle Regeln mit diesem St
 - globale Curriculumregeln,
 - plus alle Regeln der zugehoerigen QA-Scopes.
 
-## Reifegrade M0 bis M6
+## Reifegrade M0 bis M7
 
 Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle relevanten niedrigeren Bedingungen voraus.
 
@@ -235,7 +235,7 @@ Ein einzelner QA-Scope kann maximal `M3` erreichen.
 
 ### Curriculum-Reife
 
-Ein Curriculum kann `M0` bis `M6` erreichen.
+Ein Curriculum kann `M0` bis `M7` erreichen.
 
 | Curriculum-Reife | Exakte Bedingung |
 | --- | --- |
@@ -246,6 +246,7 @@ Ein Curriculum kann `M0` bis `M6` erreichen.
 | `M4` | Graph, Source-Ingestion, Bundeslandabdeckung und alle QA-Scopes sind `M3`, aber mindestens eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch nicht `pass`. |
 | `M5` | Alle QA-Scopes sind `M3` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
 | `M6` | `M5` ist erreicht und zusaetzlich ist `CQR-302` `pass`; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen und blockiert nur `M6`. |
+| `M7` | `M6` ist erreicht und zusaetzlich ist `CQR-303` `pass`; fehlende Visualisierungslinks, veraltete QA-Hashes oder fehlende Human-Freigaben zaehlen fuer `CQR-303` als offen und blockieren nur `M7`. |
 
 Wichtige Konsequenz:
 
@@ -255,6 +256,8 @@ Es bedeutet:
 > Die Originalquellen sind erfasst, die Bundesland-Sichten sind beidseitig belegt, fuer alle konfigurierten Pflicht-QA-Scopes ist die Route von Motivation ueber atomare Lernziele bis zur terminalen Anwendung geschlossen, und die Kern-Review- und Sichtbarkeitsschulden des Dashboards sind im aktuellen Snapshot bereinigt.
 
 `M6` bedeutet darueber hinaus, dass die optionale Memory-Layer fachlich eng begruendet ist: normale atomare Ziele wurden semantisch auf Memory-Notwendigkeit geprueft, aktive Karten sind auf diese Entscheidungen zurueckgefuehrt, und noetige Memory-Knoten sind in den konfigurierten Lernenden-Sichten sichtbar.
+
+`M7` bedeutet darueber hinaus, dass die optionalen Lernzielbilder vollstaendig ausgerollt und QS-gesichert sind: Jedes normale atomare Lernziel im Visualisierungs-Scope hat ein aktuelles primaeres Bild, die QA-Ledger passen zum aktiven Asset-Hash, und jedes Bild ist menschlich freigegeben.
 
 `M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
 
@@ -707,6 +710,48 @@ Interpretation:
 - Die Regel ist bewusst streng: Erst die semantische Entscheidung pro Lernziel und pro Karte zaehlt, danach kommt die technische Buchhaltung.
 - Ein Memory-Deck ist dann fachlich sauber benannt, wenn es den kanonischen Lernkontext beschreibt. Herkunft aus Hessen oder einem anderen Bundesland gehoert in Provenance und Source-Ledger, nicht in die oeffentliche SRS-ID.
 - Eine initialisierte Review-Queue ohne fachliche Entscheidungen ist kein Pass. Sie macht den offenen Zustand sichtbar (`warn`), damit ein Curriculum nicht durch fehlende Konfiguration unsichtbar an `CQR-302` vorbeilaeuft.
+
+### `CQR-303` - Goal-visualization approval trace
+
+Ziel:
+
+> Fuer normale atomare Lernziele sind die Lernzielbilder vollstaendig erstellt, technisch aktuell und menschlich freigegeben.
+
+Geprueft wird:
+
+- Die Regel wird fuer jedes kanonische Curriculum ausgewiesen.
+- Ohne passendes QA-Ledger unter `curricula/DE/Gymnasium/quality/goal-visualization-qa/` ist der Status `not_configured`; das blockiert `M7`, aber nicht `M6`.
+- Der Visualisierungs-Scope sind normale atomare Ziele: keine Memory-, Exam- oder Tutor-Knoten, keine SRS-Decks und keine Ziele mit `examData`.
+- Jedes Ziel im Scope muss einen primaeren `goal-visualization`-Link mit `resourceType: "image"` haben.
+- Fuer jeden aktiven Link muss ein QA-Datensatz mit passender `goalId` und `imageUrl` existieren.
+- Der `assetSha256` im QA-Datensatz muss zum aktuellen Public Asset passen. Dadurch werden alte Freigaben nach einem Bildwechsel automatisch stale.
+- Die Human-Freigabe ist das Release-Gate: `humanApproved: "yes"` und kein offenes `humanIssueIdentified: "yes"`.
+- Eine aktuelle Human-Freigabe ueberstimmt aeltere ChatGPT-Triagewerte. Die Felder `umlautsCorrectChatGpt` und `contentApprovedChatGpt` bleiben als Triage- und Arbeitsmetriken sichtbar, sind aber nach Human-Freigabe nicht das harte Release-Gate.
+
+Metriken:
+
+- `expectedGoals`: normale atomare Ziele im Visualisierungs-Scope.
+- `linkedGoals`: Ziele mit primaerem Visualisierungslink.
+- `missingLinks`: Ziele ohne aktiven primaeren Bildlink.
+- `qaRecords`: Datensaetze im Fach-QA-Ledger.
+- `missingRecords`, `staleRecords`, `duplicateRecords`, `missingAssets`: technische Ledger-/Asset-Schulden.
+- `chatGptReady`, `chatGptOpen`: ChatGPT-Triagezustand.
+- `humanApproved`, `humanNotApproved`, `humanIssues`: menschliche Freigabe und offene menschliche Fehlerhinweise.
+
+Status:
+
+- `pass`, wenn alle Ziele im Scope einen aktuellen Link und einen passenden aktuellen QA-Datensatz haben und jedes aktive Bild menschlich freigegeben ist.
+- `warn`, wenn Links, Assets, QA-Datensaetze oder Human-Freigaben fehlen oder stale sind.
+
+Reifeziel:
+
+- Teil von `M7`; `not_configured`, `warn` und `fail` blockieren `M7`, aber nicht `M6`.
+
+Interpretation:
+
+- `M7` ist eine Veroeffentlichungs- und Orientierungsasset-Schicht, keine fachliche Voraussetzung fuer die Kern-Lernziellandschaft.
+- Provider-Deferred-Ziele bleiben sichtbar als nicht vollstaendig ausgerollt; sie koennen `M7` erst erreichen, wenn ein fachlich korrektes Bild existiert oder der Scope bewusst anders entschieden wird.
+- Bilder sind keine Source-Evidence, keine Aufgaben und kein Ersatz fuer Erklaerung oder Uebung.
 
 ### `CQR-401` - Composition view availability
 

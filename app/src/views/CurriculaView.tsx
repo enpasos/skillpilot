@@ -26,7 +26,7 @@ interface ChampionEntry {
   registeredAt?: string
 }
 
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 
 interface CurriculumSubjectQuality {
   subject: string
@@ -87,7 +87,7 @@ type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
 
 const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7']
 
 const maturityClass: Record<MaturityLevel, string> = {
   M0: 'border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200',
@@ -97,6 +97,7 @@ const maturityClass: Record<MaturityLevel, string> = {
   M4: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
   M5: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
   M6: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  M7: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
 }
 
 const maturityCopy = {
@@ -107,7 +108,7 @@ const maturityCopy = {
     atomicGoals: 'atomar',
     warnings: 'Warnungen',
     failures: 'Fehler',
-    legendTitle: 'Was bedeuten M0-M6?',
+    legendTitle: 'Was bedeuten M0-M7?',
     legend: {
       M0: 'Noch kein belastbarer QA-Stand.',
       M1: 'Quellen und Bearbeitungspipeline sind sichtbar.',
@@ -116,6 +117,7 @@ const maturityCopy = {
       M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
       M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
       M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
+      M7: 'M6 plus vollständig erstellte und menschlich freigegebene Lernzielbilder.',
     },
   },
   en: {
@@ -125,7 +127,7 @@ const maturityCopy = {
     atomicGoals: 'atomic',
     warnings: 'warnings',
     failures: 'failures',
-    legendTitle: 'What do M0-M6 mean?',
+    legendTitle: 'What do M0-M7 mean?',
     legend: {
       M0: 'No reliable QA baseline yet.',
       M1: 'Sources and processing pipeline are visible.',
@@ -134,6 +136,7 @@ const maturityCopy = {
       M4: 'Jurisdiction views and QA scopes are validated.',
       M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
       M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
+      M7: 'M6 plus fully created and human-approved goal visualizations.',
     },
   },
 } as const

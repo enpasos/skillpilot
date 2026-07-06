@@ -1,13 +1,14 @@
 {
   "schemaVersion": 1,
-  "rulesVersion": "curriculum-quality-v3",
-  "generatedAt": "2026-06-30T09:39:38.184Z",
+  "rulesVersion": "curriculum-quality-v4",
+  "generatedAt": "2026-07-06T19:40:18.279Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
     "sourceExtractionRoot": "curricula/DE/Gymnasium/input",
     "semanticAtomicityRoot": "curricula/DE/Gymnasium/quality/semantic-atomicity",
     "memoryCardReviewRoot": "curricula/DE/Gymnasium/quality/memory-card-review",
+    "goalVisualizationQaRoot": "curricula/DE/Gymnasium/quality/goal-visualization-qa",
     "compositionViewRoot": "curricula/DE/Gymnasium/composition-views",
     "acceptedWarningsPath": "docs/qa-ci/applicability-accepted-warnings.json",
     "sourceLandscapeRegistryPath": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
@@ -24,13 +25,14 @@
       "M3": 0,
       "M4": 0,
       "M5": 0,
-      "M6": 10
+      "M6": 10,
+      "M7": 0
     },
     "ruleStatus": {
       "pass": 229,
-      "warn": 18,
+      "warn": 21,
       "fail": 4,
-      "not_configured": 49
+      "not_configured": 67
     }
   },
   "ruleCatalog": [
@@ -138,6 +140,13 @@
       "category": "review",
       "maturityTarget": "M6",
       "description": "Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible."
+    },
+    {
+      "id": "CQR-303",
+      "label": "Goal-visualization approval trace",
+      "category": "visualization",
+      "maturityTarget": "M7",
+      "description": "All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue."
     },
     {
       "id": "CQR-401",
@@ -3379,6 +3388,15 @@
           "details": [
             "canonical-biology-full: audit report docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
           ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject biologie.",
+          "metrics": {
+            "expectedGoals": 356,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -9165,6 +9183,49 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Goal-visualization rollout or human approval is still incomplete.",
+          "metrics": {
+            "expectedGoals": 377,
+            "linkedGoals": 78,
+            "missingLinks": 299,
+            "qaRecords": 78,
+            "missingRecords": 0,
+            "staleRecords": 0,
+            "duplicateRecords": 0,
+            "missingAssets": 0,
+            "currentRecords": 78,
+            "chatGptReady": 78,
+            "chatGptOpen": 0,
+            "humanApproved": 0,
+            "humanNotApproved": 78,
+            "humanIssues": 0
+          },
+          "details": [
+            "missing human approval: Grundlegende Laborarbeitsweisen anwenden [416dfd33-8b43-5c49-903c-9847b95e4208]",
+            "missing human approval: Allgemeine Sicherheitsregeln im Chemielabor anwenden [13d4f336-ab16-54a7-9479-c920b458f385]",
+            "missing human approval: Stoffe und Eigenschaften beschreiben [fcc73fb5-7413-557f-aea3-b9692a66ee75]",
+            "missing human approval: Gefahrstoffsymbole und Kennzeichnungen deuten [9e656697-fc05-5aa9-9aca-871af2e89eb7]",
+            "missing human approval: Umgang und Entsorgung von Chemikalien begründen [7be6f951-a614-52dc-94d3-2ce0d33765ff]",
+            "missing human approval: Gefahrenpotenziale beurteilen und reduzieren [ebaae4f5-cc13-5493-98b1-10e1abeb638f]",
+            "missing human approval: Stoffgemische mit Trennverfahren trennen [5a709938-e0f5-42b7-94f0-cfded08963a2]",
+            "missing human approval: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen [580b3616-f121-5d82-ac6b-fc24f145fbdc]",
+            "missing human approval: Reinstoffgehalt in Stoffgemischen bestimmen [e313c1ee-a617-54ed-adea-c183da1e03d8]",
+            "missing human approval: Aggregatzustände und Übergänge deuten [326d45bf-9f77-57d5-a054-93e76b034dd5]",
+            "missing human approval: Lösungen und Löslichkeit beschreiben [53fd1bfd-facb-54ae-b2dc-f667ed1414fc]",
+            "missing human approval: Eigenschaften von Wasser strukturbezogen erklären [7a36f2a2-a97e-5a0b-a6e1-a80f72137640]",
+            "missing human approval: Lösen von Salzen energetisch erklären [5abc5961-6368-52bb-88b9-6a846c3c37a8]",
+            "missing human approval: Saure, alkalische und neutrale Lösungen unterscheiden [d2ccd1d5-56f7-583f-9724-e97441367f91]",
+            "missing human approval: pH-Werte in Alltag, Technik und Biologie erörtern [0bf26276-2780-506c-ac34-35dd44a29409]",
+            "missing human approval: Saure und basische Lösungen auf Teilchenebene deuten [fd309753-4d48-5570-a4ec-09dfeb20ff9c]",
+            "missing human approval: Stoffe nach Struktur und Eigenschaften ordnen [02dc29ae-4046-556a-b048-d64a0feb8f16]",
+            "missing human approval: Reaktionstypen mechanismisch einordnen [7a05a1ce-45d3-571e-be51-afcd8dfd33ca]",
+            "missing human approval: Stoffkreisläufe mit Reaktionen und physikalischen Vorgängen beschreiben [c0f1bf09-5a70-5006-b1e9-e91f786a63bf]",
+            "missing human approval: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]"
+          ]
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "37 composition view(s) are registered.",
@@ -10193,6 +10254,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject chinesisch.",
+          "metrics": {
+            "expectedGoals": 171,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -15624,6 +15694,15 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject deutsch.",
+          "metrics": {
+            "expectedGoals": 269,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "27 composition view(s) are registered.",
@@ -16621,6 +16700,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject englisch.",
+          "metrics": {
+            "expectedGoals": 90,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -17767,6 +17855,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject franzoesisch.",
+          "metrics": {
+            "expectedGoals": 261,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -23852,6 +23949,15 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject geschichte.",
+          "metrics": {
+            "expectedGoals": 157,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "19 composition view(s) are registered.",
@@ -24882,6 +24988,15 @@
           "summary": "No memory-card review config is registered for this curriculum."
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject griechisch.",
+          "metrics": {
+            "expectedGoals": 171,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "not_configured",
           "summary": "No composition view is registered for this curriculum.",
@@ -25571,6 +25686,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject gymnasium-deutschland.",
+          "metrics": {
+            "expectedGoals": 0,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -30439,6 +30563,15 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject informatik.",
+          "metrics": {
+            "expectedGoals": 208,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "19 composition view(s) are registered.",
@@ -31204,6 +31337,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject italienisch.",
+          "metrics": {
+            "expectedGoals": 7,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -36059,6 +36201,15 @@
           "details": [
             "canonical-latin-full: audit report docs/qa-ci/status/memory-card-review-canonical-latin-full.md"
           ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject latein.",
+          "metrics": {
+            "expectedGoals": 116,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -42008,6 +42159,49 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Goal-visualization rollout or human approval is still incomplete.",
+          "metrics": {
+            "expectedGoals": 754,
+            "linkedGoals": 754,
+            "missingLinks": 0,
+            "qaRecords": 755,
+            "missingRecords": 0,
+            "staleRecords": 0,
+            "duplicateRecords": 0,
+            "missingAssets": 0,
+            "currentRecords": 754,
+            "chatGptReady": 754,
+            "chatGptOpen": 0,
+            "humanApproved": 47,
+            "humanNotApproved": 707,
+            "humanIssues": 4
+          },
+          "details": [
+            "missing human approval: Ganze Zahlen addieren [4b67bed9-06da-40b2-a306-24e9e7dfd390]",
+            "missing human approval: Ganze Zahlen ordnen und an der Zahlengeraden darstellen [d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe]",
+            "missing human approval: Ganze Zahlen subtrahieren [3fde4db5-9e92-5f3a-98e1-d386a42b9e01]",
+            "missing human approval: Natürliche Zahlen darstellen und am Zahlenstrahl verorten [cf474eab-1379-4877-907e-58b0892ce734]",
+            "missing human approval: Natürliche Zahlen ordnen und vergleichen [9ef6c4fa-b97a-5d7a-86c1-96690f02d916]",
+            "missing human approval: Mit natürlichen Zahlen in Grundsituationen rechnen [d825f7ce-e19b-594a-8181-eff199c21d93]",
+            "missing human approval: Rechnungen mit Umkehroperationen überprüfen [e82d8d3a-9012-5482-afe6-ab0d727a49bb]",
+            "missing human approval: Punkte, Strecken, Geraden und Kreise im Koordinatensystem darstellen [25593605-5e13-55cc-9a05-8f3d737e15e9]",
+            "missing human approval: Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen [121e3fdf-54d2-4d46-bc2d-f6e725f10f41]",
+            "missing human approval: Lagebeziehungen geometrischer Objekte beschreiben [2231c29b-eb4e-51ae-9cb1-eb033bf16099]",
+            "missing human approval: Lagebeziehungen geometrischer Objekte fachsprachlich beschreiben [3e53a39b-1c75-4034-a647-8de85719e1fb]",
+            "missing human approval: Parallele und senkrechte Geraden konstruieren [c31d3a7a-778b-5ae3-9aa4-7b5674047f83]",
+            "missing human approval: Halbierende Geraden mit Geodreieck und Zirkel konstruieren [cba4cad7-926d-5035-a7dd-d450afccccb3]",
+            "missing human approval: Punktmengen mit Abstandsbedingungen kennzeichnen [31a89d59-7d45-5e60-a8e8-561001b05f2d]",
+            "missing human approval: Winkel messen, zeichnen und fachsprachlich beschreiben [2331caf2-ccb2-5492-9fc6-48763b848bae]",
+            "missing human approval: Vierecke erkennen, darstellen und Eigenschaften nutzen [d98849c7-bd0b-50d4-90aa-6293a3adb211]",
+            "missing human approval: Größen und Einheiten vergleichen und umrechnen [f2e42af5-67a6-477e-82ea-e65b09cc6cb3]",
+            "missing human approval: Natürliche und ganze Zahlen multiplizieren und dividieren [cafd6520-c4af-4109-9863-cc49ba6fad4d]",
+            "missing human approval: Stellenwertsystem und Zahlendarstellungen verstehen [624764d6-becd-5f9b-ada3-0d4f9d143073]",
+            "missing human approval: Natürliche Zahlen runden [fe07241a-b779-5f35-a82d-7aa51ae74f42]"
+          ]
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "88 composition view(s) are registered.",
@@ -43012,6 +43206,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject musik.",
+          "metrics": {
+            "expectedGoals": 39,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -47560,6 +47763,49 @@
           },
           "details": [
             "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Goal-visualization rollout or human approval is still incomplete.",
+          "metrics": {
+            "expectedGoals": 427,
+            "linkedGoals": 425,
+            "missingLinks": 2,
+            "qaRecords": 425,
+            "missingRecords": 0,
+            "staleRecords": 0,
+            "duplicateRecords": 0,
+            "missingAssets": 0,
+            "currentRecords": 425,
+            "chatGptReady": 425,
+            "chatGptOpen": 0,
+            "humanApproved": 0,
+            "humanNotApproved": 425,
+            "humanIssues": 0
+          },
+          "details": [
+            "missing human approval: Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren [2eecd0e2-a7ca-4568-9b12-3d47706c65fb]",
+            "missing human approval: Temperatur und Wärme unterscheiden [940978fa-1f2d-4e54-9c28-081a6df9b76f]",
+            "missing human approval: Temperatur messen und Ausdehnung deuten [d27c8860-12a4-4d7d-9849-ccd8b7caca48]",
+            "missing human approval: Teilchenmodell für Temperaturänderungen nutzen [9ac4973a-21d5-48a5-90b4-eb90e10391ae]",
+            "missing human approval: Wärmeleitung, Konvektion und Wärmestrahlung unterscheiden [fbe0faae-7fba-482b-888e-341f926770f3]",
+            "missing human approval: Druck in Flüssigkeiten und Gasen qualitativ beschreiben [5308de76-79f0-44f4-8cb7-fc9de4772217]",
+            "missing human approval: Druck-Temperatur-Zusammenhänge qualitativ erklären [310b4f62-e261-46be-bb1b-1f125fc1699a]",
+            "missing human approval: Auftrieb mit dem archimedischen Prinzip erklären [e11b2ee9-e528-4857-9ecd-59bd460fba81]",
+            "missing human approval: Auftrieb an Tragflächen und Luftwiderstand qualitativ einordnen [24b4686a-e8a6-4583-8952-33e6f653c2a3]",
+            "missing human approval: Entstehung und Zerlegung von Farben erklären [a4681378-ade4-4f20-bf77-fb020469510f]",
+            "missing human approval: Additive und subtraktive Farbmischung unterscheiden [cdab9fd1-5054-4a7e-8c9a-4474062ddd23]",
+            "missing human approval: Einfache Farbwahrnehmung beschreiben [1c8dd14c-0fbf-44a5-85a3-25c8e3bd0075]",
+            "missing human approval: Farben in technischen Anwendungen erklären [cc9eea77-2a7f-4f35-ac22-6c230c0d6fa5]",
+            "missing human approval: Schallquellen und Schallempfänger beschreiben [c1006f55-0406-48cc-92d4-0d8345897cf4]",
+            "missing human approval: Schallausbreitung im Teilchenmodell erklären [3c82510a-1f12-4eaa-81c2-8599437a5b85]",
+            "missing human approval: Tonhöhe, Lautstärke und Geräusche unterscheiden [10aad90e-a1db-42b6-8d1e-1d856e14b47d]",
+            "missing human approval: Hören, Ohr und Lärmbelastung einordnen [3e33813d-db75-4571-8345-3845b02b956d]",
+            "missing human approval: Schallphänomene an Musikinstrumenten beschreiben [e62e48bc-2387-4b2b-8d6f-7a06c8e7580e]",
+            "missing human approval: Kern und Hülle des Atoms qualitativ beschreiben [2a6703e0-2a6f-4ebf-a5c6-7aa05a4b86eb]",
+            "missing human approval: Radioaktive Strahlung nachweisen und Wirkungen einordnen [f6f646db-3544-49ed-8f55-67bc684e80ce]"
           ]
         },
         {
@@ -52688,6 +52934,15 @@
           ]
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject politik-und-wirtschaft.",
+          "metrics": {
+            "expectedGoals": 414,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "pass",
           "summary": "28 composition view(s) are registered.",
@@ -53453,6 +53708,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject polnisch.",
+          "metrics": {
+            "expectedGoals": 4,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -54221,6 +54485,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject russisch.",
+          "metrics": {
+            "expectedGoals": 7,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -55223,6 +55496,15 @@
           "summary": "No memory-card review config is registered for this curriculum."
         },
         {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject spanisch.",
+          "metrics": {
+            "expectedGoals": 45,
+            "linkedGoals": 0
+          }
+        },
+        {
           "id": "CQR-401",
           "status": "not_configured",
           "summary": "No composition view is registered for this curriculum.",
@@ -55989,6 +56271,15 @@
           "id": "CQR-302",
           "status": "not_configured",
           "summary": "No memory-card review config is registered for this curriculum."
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject tschechisch.",
+          "metrics": {
+            "expectedGoals": 4,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",
@@ -60340,6 +60631,15 @@
           "details": [
             "canonical-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-economics-full.md"
           ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "not_configured",
+          "summary": "No goal-visualization QA ledger is registered for subject wirtschaftswissenschaften.",
+          "metrics": {
+            "expectedGoals": 304,
+            "linkedGoals": 0
+          }
         },
         {
           "id": "CQR-401",

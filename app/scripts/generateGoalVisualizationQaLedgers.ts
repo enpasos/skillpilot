@@ -41,7 +41,6 @@ interface GoalVisualizationQaLedger {
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(scriptDir, '../..')
 const canonicalRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/canonical')
-const publicAssetRoot = path.join(repoRoot, 'app/public/assets/goal-visualizations')
 const canonicalAssetRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/visualizations')
 const qaRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/quality/goal-visualization-qa')
 

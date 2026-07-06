@@ -231,7 +231,8 @@ const commandErrorMessage = (error: unknown) => {
   return stderrText ? `${base}\n${stderrText}` : base
 }
 
-const isM5OrBetter = (entry: CurriculumStatusEntry) => entry.maturity === 'M5' || entry.maturity === 'M6'
+const isM5OrBetter = (entry: CurriculumStatusEntry) =>
+  entry.maturity === 'M5' || entry.maturity === 'M6' || entry.maturity === 'M7'
 
 const selectedM5Subjects = (statusPath: string, filters: string[]) => {
   if (!existsSync(statusPath)) {
@@ -381,7 +382,7 @@ const main = () => {
   if (subjects.length === 0) {
     throw new Error(options.subjects.length === 0
       ? 'No M5+ subjects found in the quality status file.'
-      : `No requested subject is currently M5 or M6: ${options.subjects.join(', ')}`)
+      : `No requested subject is currently M5 or better: ${options.subjects.join(', ')}`)
   }
 
   mkdirSync(options.outputDir, { recursive: true })

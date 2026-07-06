@@ -263,7 +263,7 @@ export const GoalVisualizationQaView: React.FC = () => {
     void loadLedger(selectedPath)
   }, [loadLedger, selectedPath])
 
-  const records = payload?.ledger.records ?? []
+  const records = useMemo(() => payload?.ledger.records ?? [], [payload?.ledger.records])
   const counts = useMemo(() => {
     const chatgptOpen = records.filter(isChatGptOpen).length
     const humanIssue = records.filter((record) => record.humanIssueIdentified === 'yes').length
