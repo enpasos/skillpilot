@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 
 interface RuleResult {
   id: string
@@ -212,6 +212,7 @@ function renderReport(status: StatusDocument, statusPath: string): string {
       return curriculum.maturity === 'M4'
         || curriculum.maturity === 'M5'
         || curriculum.maturity === 'M6'
+        || curriculum.maturity === 'M7'
         || rule?.status === 'pass'
         || rule?.status === 'warn'
     })

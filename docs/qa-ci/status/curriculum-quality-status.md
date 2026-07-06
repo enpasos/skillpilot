@@ -7,8 +7,8 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-06-30T09:39:38.184Z
-Rules version: curriculum-quality-v3
+Generated: 2026-07-06T19:40:18.279Z
+Rules version: curriculum-quality-v4
 
 ## Summary
 
@@ -22,13 +22,14 @@ Rules version: curriculum-quality-v3
 | M4 | 0 |
 | M5 | 0 |
 | M6 | 10 |
+| M7 | 0 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M6 | 430 | 379 | 17/17 | 16/16 | 1 | 0 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 0 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 473 | 405 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -39,9 +40,9 @@ Rules version: curriculum-quality-v3
 | Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M6 | 1077 | 859 | 31/31 | 16/16 | 2 | 0 | 0 |
+| Mathematik (Gymnasium, DE) | M6 | 1077 | 859 | 31/31 | 16/16 | 2 | 1 | 0 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Physik (Gymnasium, DE) | M6 | 588 | 499 | 25/25 | 16/16 | 2 | 0 | 0 |
+| Physik (Gymnasium, DE) | M6 | 588 | 499 | 25/25 | 16/16 | 2 | 1 | 0 |
 | Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
@@ -401,6 +402,7 @@ Rules version: curriculum-quality-v3
 | CQR-203 | M4 | assessment | Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-302 | M6 | review | Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible. |
+| CQR-303 | M7 | visualization | All ordinary atomic learning goals have current primary goal-visualization assets, the QA ledger hashes match the active assets, and every active image has current human approval with no open human issue. |
 | CQR-401 | M5 | view | The curriculum has at least one reviewed learner-facing composition view. |
 | CQR-501 | M5 | applicability | Active applicability warnings are resolved and accepted warning records still match current findings. |
 

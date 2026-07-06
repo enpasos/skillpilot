@@ -17,7 +17,7 @@ import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 
 interface RuleResult {
   id: string
@@ -232,6 +232,7 @@ const COPY = {
       M4: 'Bundesland-Sichten und QA-Scopes sind geprüft.',
       M5: 'Schulgeeigneter Kern-QS-Stand: CI-fähig, ohne offene Fehler; Voraussetzung für Champions-QS in der Schule.',
       M6: 'M5 plus geprüfte Memory-Layer: Kartenentscheidungen, Herkunftsspuren und Sichtbarkeit sind aktuell.',
+      M7: 'M6 plus vollständig erstellte und menschlich freigegebene Lernzielbilder.',
     },
     all: 'Alle',
     generated: 'Generiert',
@@ -274,7 +275,7 @@ const COPY = {
     blockedBy: 'Blockiert durch',
     openBlockers: 'offen',
     gateClearShort: 'bereit',
-    gateNoNext: 'M6 erreicht',
+    gateNoNext: 'M7 erreicht',
     gateHint: 'Der Reifegrad steigt erst, wenn alle Regeln der nächsten Stufe bestanden sind. Grüne Regeln aus späteren Stufen zählen erst nach den offenen Vorstufen.',
     gateReady: 'Für die nächste Stufe ist kein offener Blocker sichtbar.',
     pipelineProgress: 'Passage-Extraction bereit',
@@ -318,8 +319,8 @@ const COPY = {
     rules: 'Regeln',
     details: 'Details',
     reviewGates: {
-      title: 'M5/M6-Review-Gates',
-      hint: 'Diese Gates trennen Kern-QS und Karten-QS: CQR-301, CQR-401 und CQR-501 tragen M5; CQR-302 ist der zusätzliche M6-Memory-Layer.',
+      title: 'M5-M7-Review-Gates',
+      hint: 'Diese Gates trennen Kern-QS, Karten-QS und Bild-QS: CQR-301, CQR-401 und CQR-501 tragen M5; CQR-302 ist der zusätzliche M6-Memory-Layer; CQR-303 ist die M7-Freigabe der Lernzielbilder.',
       total: 'gesamt',
       configured: 'bewertet',
       passed: 'bestanden',
@@ -367,6 +368,7 @@ const COPY = {
       M4: 'Jurisdiction views and QA scopes are validated.',
       M5: 'School-ready core QA level: CI-ready, no open failures; prerequisite for school-facing Champion QA.',
       M6: 'M5 plus reviewed memory layer: card decisions, origin traces, and visibility are current.',
+      M7: 'M6 plus fully created and human-approved goal visualizations.',
     },
     all: 'All',
     generated: 'Generated',
@@ -409,7 +411,7 @@ const COPY = {
     blockedBy: 'Blocked by',
     openBlockers: 'open',
     gateClearShort: 'ready',
-    gateNoNext: 'M6 reached',
+    gateNoNext: 'M7 reached',
     gateHint: 'Maturity only advances when every rule in the next level passes. Green rules from later levels count after open earlier gates are closed.',
     gateReady: 'No open blocker is visible for the next level.',
     pipelineProgress: 'passage extraction ready',
@@ -453,8 +455,8 @@ const COPY = {
     rules: 'Rules',
     details: 'Details',
     reviewGates: {
-      title: 'M5/M6 review gates',
-      hint: 'These gates separate core QA from card QA: CQR-301, CQR-401, and CQR-501 carry M5; CQR-302 is the additional M6 memory layer.',
+      title: 'M5-M7 review gates',
+      hint: 'These gates separate core QA, card QA, and image QA: CQR-301, CQR-401, and CQR-501 carry M5; CQR-302 is the additional M6 memory layer; CQR-303 is the M7 release gate for goal visualizations.',
       total: 'total',
       configured: 'evaluated',
       passed: 'passed',
@@ -508,11 +510,12 @@ const maturityClass: Record<MaturityLevel, string> = {
   M4: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
   M5: 'border-orange-300 bg-orange-50 text-orange-800 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-300',
   M6: 'border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
+  M7: 'border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/30 dark:text-sky-300',
 }
 
-const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6']
+const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7']
 const maturityLevels: Array<'all' | MaturityLevel> = ['all', ...maturityOrder]
-const reviewGateRuleIds = ['CQR-301', 'CQR-401', 'CQR-501', 'CQR-302']
+const reviewGateRuleIds = ['CQR-301', 'CQR-401', 'CQR-501', 'CQR-302', 'CQR-303']
 
 const coverageStatusClass: Record<JurisdictionCoverageStatus, string> = {
   covered: 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300',
@@ -831,7 +834,7 @@ export const CurriculumQualityDashboardView: React.FC = () => {
         ) : null}
 
         {summary ? (
-          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-[repeat(11,minmax(0,1fr))]">
+          <section className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-[repeat(12,minmax(0,1fr))]">
             <div className="rounded-2xl border border-border-color bg-white/70 p-4 dark:bg-slate-900/70">
               <div className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.curricula}</div>
               <div className="mt-2 text-2xl font-bold">{summary.curricula}</div>

@@ -15,6 +15,8 @@ interface CurriculumStatusDocument {
   curricula?: CurriculumStatusEntry[]
 }
 
+const isM6OrBetter = (maturity: string | undefined): boolean => maturity === 'M6' || maturity === 'M7'
+
 interface SourceGoal {
   tags?: string[]
   sourceRef?: string
@@ -813,11 +815,11 @@ const renderReport = (rows: SourceReadinessRow[], allSourceRows: SourceEvidenceR
       lines.push(`| \`${row.jurisdiction}\` | ${row.stage} | \`${row.status}\` | ${describePolicyDecision(row.policyDecision)} | ${formatSet(row.durationModels)} | ${formatSet(row.durationViews)} | ${formatRuntimeViews(row.sekiRuntimeViews)} | ${formatSet(row.gradeSignals)} | ${row.sourceGoals} | ${row.title} |`)
     })
   lines.push('')
-  lines.push('## M6 Source Matrix')
+  lines.push('## M6+ Source Matrix')
   lines.push('')
   lines.push(...renderSourceEvidenceMatrixRows(allSourceRows.filter((row) => row.subject !== 'Mathematik'), true))
   lines.push('')
-  lines.push('## M6 Subjects')
+  lines.push('## M6+ Subjects')
   lines.push('')
   lines.push('| Subject | Jurisdiction | Stage | Status | Policy | Source duration evidence | Duration views | Sek-I runtime view | Grade signals | Source goals | Source |')
   lines.push('| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |')
@@ -846,7 +848,7 @@ const renderReport = (rows: SourceReadinessRow[], allSourceRows: SourceEvidenceR
 const main = () => {
   const qualityStatus = readJson<CurriculumStatusDocument>(qualityStatusPath)
   const m6Curricula = (qualityStatus.curricula ?? [])
-    .filter((curriculum) => curriculum.maturity === 'M6' && curriculum.subject && curriculum.landscapeId)
+    .filter((curriculum) => isM6OrBetter(curriculum.maturity) && curriculum.subject && curriculum.landscapeId)
     .sort((left, right) => {
       if (left.subject === 'Mathematik') return -1
       if (right.subject === 'Mathematik') return 1

@@ -155,6 +155,8 @@ const loadGymnasiumJurisdictions = () => {
     .filter((id): id is string => !!id && /^DE-[A-Z]{2}$/u.test(id))
 }
 
+const isM6OrBetter = (maturity: string | undefined): boolean => maturity === 'M6' || maturity === 'M7'
+
 const loadM6CanonicalGymnasiumSubjects = () => {
   const qualityStatus = readJson<CurriculumStatusDocument>(qualityStatusPath)
   const subjectToLandscapeId = new Map<string, string>()
@@ -162,7 +164,7 @@ const loadM6CanonicalGymnasiumSubjects = () => {
 
   for (const curriculum of qualityStatus.curricula ?? []) {
     if (!curriculum.subject || !curriculum.landscapeId) continue
-    if (curriculum.maturity !== 'M6') continue
+    if (!isM6OrBetter(curriculum.maturity)) continue
     if (!curriculum.frameworkId?.startsWith('canonical-gymnasium')) continue
     subjectToLandscapeId.set(curriculum.subject, curriculum.landscapeId)
     landscapeIdToSubject.set(curriculum.landscapeId, curriculum.subject)

@@ -2122,14 +2122,12 @@ const deckEditorDevPlugin = {
                 || humanIssueDescription !== String(record.humanIssueDescription ?? record.fehlerbeschreibungHuman ?? '')
               if (changed) changedCount += 1
 
-              const {
-                umlauteRichtigChatGpt: _legacyUmlautsCorrectChatGpt,
-                inhaltlichApprovedChatGpt: _legacyContentApprovedChatGpt,
-                approvedHuman: _legacyHumanApproved,
-                fehlerIdentifiziertHuman: _legacyHumanIssueIdentified,
-                fehlerbeschreibungHuman: _legacyHumanIssueDescription,
-                ...recordWithoutLegacyFields
-              } = record
+              const recordWithoutLegacyFields = { ...record }
+              delete recordWithoutLegacyFields.umlauteRichtigChatGpt
+              delete recordWithoutLegacyFields.inhaltlichApprovedChatGpt
+              delete recordWithoutLegacyFields.approvedHuman
+              delete recordWithoutLegacyFields.fehlerIdentifiziertHuman
+              delete recordWithoutLegacyFields.fehlerbeschreibungHuman
 
               return {
                 ...recordWithoutLegacyFields,

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
-type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6'
+type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
 type PilotLane =
   | 'hard-recall-seed'
   | 'limited-glossary'
