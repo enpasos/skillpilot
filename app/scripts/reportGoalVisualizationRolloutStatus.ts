@@ -142,11 +142,21 @@ const subjectDefaults: Record<string, SubjectDefaults> = {
     displayName: 'Physik',
     scopeName: 'DE Gymnasium Physik',
     landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
-    currentResumeFilePath: 'tmp/goal-visualization-physik-batch-062.resume.txt',
-    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/physik-batch-062',
+    currentResumeFilePath: 'tmp/goal-visualization-physik-batch-073.resume.txt',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2',
     outputJsonPath: `${defaultReviewDirPath}/physik-rollout-status.json`,
     outputMarkdownPath: `${defaultReviewDirPath}/physik-rollout-status.md`,
     qualityScriptName: 'quality:goal-visualization-rollout-status:physik',
+  },
+  chemie: {
+    displayName: 'Chemie',
+    scopeName: 'DE Gymnasium Chemie',
+    landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',
+    currentResumeFilePath: 'tmp/goal-visualization-chemie-batch-014.resume.txt',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction',
+    outputJsonPath: `${defaultReviewDirPath}/chemie-rollout-status.json`,
+    outputMarkdownPath: `${defaultReviewDirPath}/chemie-rollout-status.md`,
+    qualityScriptName: 'quality:goal-visualization-rollout-status:chemie',
   },
 }
 
