@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-06T03:25:30.937Z",
+  "generatedAt": "2026-07-06T04:37:56.939Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "chemie",
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-chemie-batch-014.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction"
+    "currentResumeFilePath": "tmp/goal-visualization-chemie-batch-015.resume.txt",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction"
   },
   "summary": {
     "totalGoals": 473,
@@ -21,15 +21,15 @@
     "linkedVisualizationReviewStatuses": {
       "accepted": 78
     },
-    "reviewLedgerFiles": 14,
+    "reviewLedgerFiles": 15,
     "reviewDecisionCounts": {
       "accepted_pilot": 59,
       "accepted_pilot_after_regeneration": 13,
       "accepted_pilot_after_second_regeneration": 3,
       "accepted_pilot_after_third_regeneration": 3,
-      "accepted_pilot_after_user_review_correction": 1,
-      "rejected_after_user_review_replaced": 1,
-      "rejected_regenerated": 29
+      "accepted_pilot_after_user_review_correction": 2,
+      "rejected_after_user_review_replaced": 2,
+      "rejected_regenerated": 33
     },
     "openProviderDeferredGoals": 0,
     "openProviderQuotaGoals": 0,
@@ -39,12 +39,12 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-014.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-015.md",
     "latestLedgerStatus": "completed_with_user_review_correction",
-    "resumeFile": "tmp/goal-visualization-chemie-batch-014.resume.txt",
+    "resumeFile": "tmp/goal-visualization-chemie-batch-015.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/chemie-batch-014-user-correction",
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction",
     "promptAppendDirExists": true,
     "promptAppendFiles": 1
   },
@@ -59,6 +59,13 @@
         "title": "Massenerhaltung bei Reaktionen erklären",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "Accepted. The corrected image keeps both digital balance readings at `150 g`, preserves the two-panel `vorher`/`nachher` setup and the separate `A2 + B2 -> 2 AB` particle inset with exactly two red and two blue atoms before and after. In the right panel, the balloon neck is now visibly wrapped down over the outside rim of the flask neck, making the flask-balloon setup a closed system analogous to the left panel. No gas-escape cue or open-flask cue is shown."
+      },
+      {
+        "batch": "015",
+        "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+        "title": "Chemische Sachverhalte fachlich diskutieren",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted. The replacement uses a four-card evidence chain: `Aussage`, `Beleg`, `Grund`, `Standpunkt bewerten`; shows `Soll Essigreiniger auf Marmor?`, `Beobachtung: Blasenbildung`, `Reaktion: Essig + Carbonat`, `Schluss: nicht geeignet`, and a crossed-out `nur Meinung` card. The visual chemistry is limited to vinegar cleaner, marble/carbonate, bubbles, and the conclusion that the cleaner is unsuitable. Focused OCR re-check reported `0` umlaut issues and no uncertain findings."
       }
     ]
   },

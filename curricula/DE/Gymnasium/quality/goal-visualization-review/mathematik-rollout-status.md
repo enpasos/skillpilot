@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-05T20:23:35.743Z
+Generated: 2026-07-06T11:00:27.802Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -21,7 +21,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 754 |
 | Coverage | 100.0% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 144 |
+| Review-Ledger-Dateien | 147 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -33,7 +33,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `pilot` | 754 |
+| `approved` | 8 |
+| `pilot` | 746 |
 
 ## Ledger Decisions
 
@@ -45,23 +46,23 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 10 |
 | `accepted_pilot_after_third_regeneration` | 5 |
-| `accepted_pilot_after_user_review_correction` | 13 |
+| `accepted_pilot_after_user_review_correction` | 15 |
 | `blocked_provider_quota` | 5 |
-| `deferred_provider_limitation` | 9 |
+| `deferred_provider_limitation` | 10 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
 | `rejected_after_user_review_replaced` | 5 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 74 |
+| `rejected_regenerated` | 75 |
 | `rejected_removed` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-144.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-147.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -112,6 +113,8 @@ Keine Eintraege.
 | 139 | `9f9c7ece-b81c-55fa-8073-dd816d7d4778` | Oberflächeninhalte von Körpern berechnen | `accepted_pilot_after_user_review_correction` |
 | 143 | `2331caf2-ccb2-5492-9fc6-48763b848bae` | Winkel messen, zeichnen und fachsprachlich beschreiben | `accepted_pilot_after_user_review_correction` |
 | 144 | `ebc41c8b-5754-5161-9b07-f4525b9fd9b4` | Eigenschaften von Funktionssummen graphisch begründen (LK) | `accepted_pilot_after_user_review_correction` |
+| 146 | `2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2` | Ableitungen von Sinus und Kosinus grafisch begruenden | `accepted_pilot_after_user_review_correction` |
+| 147 | `3401d95d-2191-5929-ac78-4de51d71a6be` | Ableitungen von Sinus- und Kosinusfunktionen anwenden | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

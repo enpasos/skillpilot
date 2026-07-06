@@ -1,0 +1,614 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { AlertTriangle, CheckCircle2, Clipboard, Copy, Home, Image, RefreshCw, Save, Search, XCircle } from 'lucide-react'
+import { LanguageToggle } from '../components/LanguageToggle'
+import { useLanguage } from '../contexts/LanguageContext'
+import { requestJson } from '../utils/authoring/authoringClient'
+
+type YesNo = 'yes' | 'no'
+type FilterKey = 'all' | 'queue' | 'human_approved' | 'human_issue' | 'chatgpt_open'
+
+interface QaRecord {
+  goalId: string
+  title: string
+  description: string
+  subject: string
+  landscapeId: string
+  landscapePath: string
+  imageUrl: string
+  publicAssetPath: string
+  canonicalAssetPath: string
+  assetSha256: string
+  umlautsCorrectChatGpt: YesNo
+  contentApprovedChatGpt: YesNo
+  humanApproved: YesNo
+  humanIssueIdentified: YesNo
+  humanIssueDescription: string
+  chatGptReviewedAt: string | null
+  chatGptReviewer: string
+  chatGptNotes: string
+  humanReviewedAt: string | null
+  humanReviewer: string
+}
+
+interface QaLedger {
+  schemaVersion: 1
+  subject: string
+  source: {
+    canonicalRoot: string
+    publicAssetRoot: string
+  }
+  records: QaRecord[]
+}
+
+interface ListRow {
+  path: string
+  subject: string
+  counts: Record<string, number>
+}
+
+interface ListResponse {
+  ledgers: ListRow[]
+}
+
+interface LoadResponse {
+  path: string
+  ledger: QaLedger
+}
+
+interface SaveResponse {
+  path: string
+  savedRecords: number
+  changedRecords: number
+}
+
+const COPY = {
+  de: {
+    title: 'Goal-Visualization QS',
+    subtitle: 'Fachbezogene Review-Liste für erzeugte Lernzielbilder.',
+    workbench: 'Workbench',
+    backHome: 'Startseite',
+    subject: 'Fachliste',
+    refresh: 'Neu laden',
+    save: 'Speichern',
+    saving: 'Speichern ...',
+    search: 'Suchen',
+    image: 'Bild',
+    prompt: 'Codex-Korrekturauftrag',
+    copyPrompt: 'Prompt kopieren',
+    copied: 'Prompt kopiert.',
+    copyFailed: 'Prompt konnte nicht kopiert werden.',
+    saved: (count: number) => `${count} Änderung(en) gespeichert.`,
+    filters: {
+      all: 'Alle',
+      queue: 'Offen',
+      human_approved: 'Human approved',
+      human_issue: 'Fehler markiert',
+      chatgpt_open: 'ChatGPT offen',
+    },
+    labels: {
+      umlaute: 'Umlaute richtig (ChatGPT)',
+      content: 'Inhaltlich approved (ChatGPT)',
+      humanApproved: 'Approved (Human)',
+      humanIssue: 'Fehler identifiziert (Human)',
+      humanDescription: 'Fehlerbeschreibung (Human)',
+      yes: 'yes',
+      no: 'no',
+      path: 'Pfad',
+      goalId: 'Goal ID',
+    },
+    placeholders: {
+      humanDescription: 'Fehler konkret beschreiben: Was ist falsch, wo im Bild, wie soll es fachlich richtig aussehen?',
+    },
+    empty: 'Keine Einträge für diesen Filter.',
+    loading: 'Laden ...',
+  },
+  en: {
+    title: 'Goal Visualization QA',
+    subtitle: 'Subject-level review list for generated learning-goal images.',
+    workbench: 'Workbench',
+    backHome: 'Home',
+    subject: 'Subject list',
+    refresh: 'Reload',
+    save: 'Save',
+    saving: 'Saving ...',
+    search: 'Search',
+    image: 'Image',
+    prompt: 'Codex correction task',
+    copyPrompt: 'Copy prompt',
+    copied: 'Prompt copied.',
+    copyFailed: 'Could not copy prompt.',
+    saved: (count: number) => `${count} change(s) saved.`,
+    filters: {
+      all: 'All',
+      queue: 'Open',
+      human_approved: 'Human approved',
+      human_issue: 'Issue marked',
+      chatgpt_open: 'ChatGPT open',
+    },
+    labels: {
+      umlaute: 'Umlauts correct (ChatGPT)',
+      content: 'Content approved (ChatGPT)',
+      humanApproved: 'Approved (Human)',
+      humanIssue: 'Issue identified (Human)',
+      humanDescription: 'Issue description (Human)',
+      yes: 'yes',
+      no: 'no',
+      path: 'Path',
+      goalId: 'Goal ID',
+    },
+    placeholders: {
+      humanDescription: 'Describe the issue concretely: what is wrong, where in the image, and what should be correct?',
+    },
+    empty: 'No entries for this filter.',
+    loading: 'Loading ...',
+  },
+} as const
+
+const filterKeys: FilterKey[] = ['queue', 'all', 'human_issue', 'human_approved', 'chatgpt_open']
+
+const statusBadgeClass = (value: YesNo) =>
+  value === 'yes'
+    ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300'
+    : 'border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300'
+
+const isHumanApprovedFinal = (record: QaRecord): boolean =>
+  record.humanApproved === 'yes' && record.humanIssueIdentified !== 'yes'
+
+const isChatGptOpen = (record: QaRecord): boolean =>
+  !isHumanApprovedFinal(record)
+  && (record.umlautsCorrectChatGpt !== 'yes' || record.contentApprovedChatGpt !== 'yes')
+
+const isQaOpen = (record: QaRecord): boolean =>
+  record.humanIssueIdentified === 'yes' || record.humanApproved !== 'yes'
+
+const imageSrcForRecord = (record: QaRecord, reloadToken: number): string => {
+  const separator = record.imageUrl.includes('?') ? '&' : '?'
+  return `${record.imageUrl}${separator}v=${encodeURIComponent(record.assetSha256 || 'unknown')}&reload=${reloadToken}`
+}
+
+const subjectLabel = (subject: string) => {
+  const labels: Record<string, string> = {
+    chemie: 'Chemie',
+    mathematik: 'Mathematik',
+    physik: 'Physik',
+  }
+  return labels[subject] ?? subject
+}
+
+const buildCodexPrompt = (record: QaRecord): string => [
+  'Bitte korrigiere diese SkillPilot-Lernzielvisualisierung mit der bestehenden Nano-Banana-Pro-Pipeline.',
+  '',
+  'Arbeitsregeln:',
+  '- Kein SVG-Fallback und keine manuelle Ersatzgrafik als finales Asset.',
+  '- Provider-Prompts dürfen keine technischen IDs, Dateinamen, Plattform-/Produktnamen, Schulformlabels oder internen Pfade enthalten.',
+  '- IDs und Pfade dürfen nur lokal in Dateinamen, JSON, Metadaten und diesem Codex-Auftrag stehen.',
+  '- Generiere zuerst Kandidaten mit `--no-import`, prüfe sie mit `view_image`, importiere nur fachlich korrekte Kandidaten.',
+  '- Wenn Nano Banana Pro nach mehreren gezielten Versuchen fachlich falsch bleibt, entferne den aktiven Link und dokumentiere `deferred_provider_limitation` im Review-Ledger.',
+  '',
+  'Ziel:',
+  `- Fach: ${subjectLabel(record.subject)}`,
+  `- Goal ID: ${record.goalId}`,
+  `- Titel: ${record.title}`,
+  `- Beschreibung: ${record.description}`,
+  `- Landscape: ${record.landscapePath}`,
+  `- Aktuelles Public Asset: ${record.publicAssetPath}`,
+  `- Canonical Asset: ${record.canonicalAssetPath}`,
+  '',
+  'Human Review:',
+  `- Approved (Human): ${record.humanApproved}`,
+  `- Fehler identifiziert (Human): ${record.humanIssueIdentified}`,
+  `- Fehlerbeschreibung: ${record.humanIssueDescription || '(leer; falls kein konkreter Fehler beschrieben ist, zuerst visuell prüfen und nur bei klarem Befund korrigieren)'}`,
+  '',
+  'Erwarteter Ablauf:',
+  '1. Aktuelles Bild mit `view_image` prüfen.',
+  '2. Einen provider-sicheren Prompt-Append unter `tmp/goal-visualization-prompt-appends/...` schreiben.',
+  `3. Nano Banana Pro mit Referenzbild verwenden, z.B. \`npm --prefix app run visualization:generate:nano-banana -- ${record.goalId} --landscape=${record.landscapePath} --subject=${record.subject} --reference-image=${record.publicAssetPath} --prompt-append-file=<append-file> --no-import\`.`,
+  '4. Kandidaten fachlich und orthografisch prüfen.',
+  '5. Akzeptierten Kandidaten importieren, deployen, Review-Ledger aktualisieren.',
+  '6. Danach mindestens ausführen: `npm --prefix app run check:goal-visualization-assets`, `npm --prefix app run validate:graph`, und die fachbezogenen Rollout-/QA-Checks.',
+].join('\n')
+
+export const GoalVisualizationQaView: React.FC = () => {
+  const { language } = useLanguage()
+  const copy = COPY[language]
+  const [ledgers, setLedgers] = useState<ListRow[]>([])
+  const [selectedPath, setSelectedPath] = useState('')
+  const [payload, setPayload] = useState<LoadResponse | null>(null)
+  const [filter, setFilter] = useState<FilterKey>('queue')
+  const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [dirty, setDirty] = useState(false)
+  const [imageReloadToken, setImageReloadToken] = useState(0)
+  const [statusMessage, setStatusMessage] = useState<string | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const loadList = useCallback(async () => {
+    setLoading(true)
+    setErrorMessage(null)
+    try {
+      const response = await requestJson<ListResponse>('/__goal-visualization-qa/list')
+      setLedgers(response.ledgers)
+      setSelectedPath((current) => current || response.ledgers[0]?.path || '')
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'QA list load failed.')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  const loadLedger = useCallback(async (path: string) => {
+    if (!path) return
+    setLoading(true)
+    setErrorMessage(null)
+    setStatusMessage(null)
+    try {
+      const response = await requestJson<LoadResponse>(`/__goal-visualization-qa/load?path=${encodeURIComponent(path)}`)
+      setPayload(response)
+      setDirty(false)
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'QA ledger load failed.')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    void loadList()
+  }, [loadList])
+
+  useEffect(() => {
+    if (!selectedPath) return
+    void loadLedger(selectedPath)
+  }, [loadLedger, selectedPath])
+
+  const records = payload?.ledger.records ?? []
+  const counts = useMemo(() => {
+    const chatgptOpen = records.filter(isChatGptOpen).length
+    const humanIssue = records.filter((record) => record.humanIssueIdentified === 'yes').length
+    const humanApproved = records.filter(isHumanApprovedFinal).length
+    return {
+      all: records.length,
+      queue: records.filter(isQaOpen).length,
+      human_approved: humanApproved,
+      human_issue: humanIssue,
+      chatgpt_open: chatgptOpen,
+    } satisfies Record<FilterKey, number>
+  }, [records])
+
+  const visibleRecords = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase()
+    return records.filter((record) => {
+      const matchesFilter = filter === 'all'
+        || (filter === 'queue' && isQaOpen(record))
+        || (filter === 'human_approved' && isHumanApprovedFinal(record))
+        || (filter === 'human_issue' && record.humanIssueIdentified === 'yes')
+        || (filter === 'chatgpt_open' && isChatGptOpen(record))
+      if (!matchesFilter) return false
+      if (!normalizedSearch) return true
+      return [
+        record.goalId,
+        record.title,
+        record.description,
+        record.humanIssueDescription,
+        record.publicAssetPath,
+      ].join(' ').toLowerCase().includes(normalizedSearch)
+    })
+  }, [filter, records, search])
+
+  const updateRecord = (goalId: string, imageUrl: string, updater: (record: QaRecord) => QaRecord) => {
+    setPayload((current) => {
+      if (!current) return current
+      return {
+        ...current,
+        ledger: {
+          ...current.ledger,
+          records: current.ledger.records.map((record) =>
+            record.goalId === goalId && record.imageUrl === imageUrl ? updater(record) : record),
+        },
+      }
+    })
+    setDirty(true)
+  }
+
+  const handleSave = async () => {
+    if (!payload) return
+    setSaving(true)
+    setErrorMessage(null)
+    setStatusMessage(null)
+    try {
+      const response = await requestJson<SaveResponse>('/__goal-visualization-qa/save', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: payload.path, ledger: payload.ledger }),
+      })
+      setDirty(false)
+      setImageReloadToken((current) => current + 1)
+      setStatusMessage(`${copy.saved(response.changedRecords)} ${response.path}`)
+      await loadLedger(payload.path)
+      await loadList()
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'QA ledger save failed.')
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  const handleReload = async () => {
+    if (!selectedPath) return
+    setImageReloadToken((current) => current + 1)
+    await Promise.all([
+      loadList(),
+      loadLedger(selectedPath),
+    ])
+  }
+
+  const copyPrompt = async (record: QaRecord) => {
+    try {
+      await navigator.clipboard.writeText(buildCodexPrompt(record))
+      setStatusMessage(copy.copied)
+      setErrorMessage(null)
+    } catch {
+      setErrorMessage(copy.copyFailed)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-chat-bg p-4 text-text-primary md:p-6">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-4">
+        <header className="rounded-2xl border border-border-color bg-white/70 p-4 backdrop-blur-sm dark:bg-slate-900/70 md:p-6">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+            <div className="max-w-4xl">
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-700 dark:border-sky-900/50 dark:bg-sky-950/30 dark:text-sky-300">
+                <Clipboard size={14} />
+                <span>{copy.title}</span>
+              </div>
+              <h1 className="text-3xl font-bold text-sky-600 dark:text-sky-400">{copy.title}</h1>
+              <p className="mt-2 text-sm text-text-secondary md:text-base">{copy.subtitle}</p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 self-start">
+              <Link to="/workbench" className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 dark:hover:bg-slate-800">
+                <Clipboard size={16} />
+                <span>{copy.workbench}</span>
+              </Link>
+              <Link to="/" className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 dark:hover:bg-slate-800">
+                <Home size={16} />
+                <span>{copy.backHome}</span>
+              </Link>
+              <LanguageToggle />
+            </div>
+          </div>
+        </header>
+
+        <section className="rounded-2xl border border-border-color bg-white/70 p-4 backdrop-blur-sm dark:bg-slate-900/70">
+          <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(260px,1fr)_auto] xl:items-end">
+            <label className="block min-w-0">
+              <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.subject}</span>
+              <select
+                value={selectedPath}
+                onChange={(event) => setSelectedPath(event.target.value)}
+                className="mt-1 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm text-text-primary shadow-sm dark:bg-slate-950"
+              >
+                {ledgers.map((ledger) => (
+                  <option key={ledger.path} value={ledger.path}>
+                    {subjectLabel(ledger.subject)} · {ledger.counts.all} Bilder
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => void handleReload()}
+                disabled={!selectedPath || loading}
+                className="inline-flex items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60 dark:hover:bg-slate-800"
+              >
+                <RefreshCw size={16} />
+                <span>{copy.refresh}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleSave()}
+                disabled={!payload || saving || !dirty}
+                className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                <Save size={16} />
+                <span>{saving ? copy.saving : copy.save}</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+            <div className="flex flex-wrap gap-2">
+              {filterKeys.map((key) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setFilter(key)}
+                  className={`rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${filter === key
+                    ? 'border-sky-500 bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300'
+                    : 'border-border-color text-text-secondary hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }`}
+                >
+                  {copy.filters[key]} <span className="ml-1 text-text-primary">{counts[key]}</span>
+                </button>
+              ))}
+            </div>
+
+            <label className="relative block min-w-0 xl:w-96">
+              <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary" size={16} />
+              <input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder={copy.search}
+                className="w-full rounded-lg border border-border-color bg-white py-2 pl-9 pr-3 text-sm text-text-primary shadow-sm dark:bg-slate-950"
+              />
+            </label>
+          </div>
+
+          {statusMessage ? (
+            <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-200">{statusMessage}</p>
+          ) : null}
+          {errorMessage ? (
+            <p className="mt-4 rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/30 dark:text-rose-200">{errorMessage}</p>
+          ) : null}
+        </section>
+
+        <section className="grid grid-cols-1 gap-4">
+          {loading && !payload ? (
+            <div className="rounded-2xl border border-border-color bg-white/70 p-6 text-sm text-text-secondary dark:bg-slate-900/70">{copy.loading}</div>
+          ) : null}
+
+          {visibleRecords.map((record) => {
+            const prompt = buildCodexPrompt(record)
+            return (
+              <article key={`${record.goalId}:${record.imageUrl}`} className="grid grid-cols-1 gap-4 rounded-2xl border border-border-color bg-white/80 p-4 shadow-sm dark:bg-slate-900/80 xl:grid-cols-[minmax(360px,0.9fr)_minmax(0,1.1fr)]">
+                <div className="min-w-0">
+                  <div className="overflow-hidden rounded-xl border border-border-color bg-slate-100 dark:bg-slate-950">
+                    <img
+                      src={imageSrcForRecord(record, imageReloadToken)}
+                      alt={record.title}
+                      loading="lazy"
+                      className="aspect-video w-full object-contain"
+                    />
+                  </div>
+                  <div className="mt-3 flex items-center gap-2 text-xs text-text-secondary">
+                    <Image size={14} />
+                    <span className="truncate font-mono">{record.publicAssetPath}</span>
+                  </div>
+                </div>
+
+                <div className="min-w-0">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                    <div className="min-w-0">
+                      <h2 className="text-xl font-semibold text-text-primary">{record.title}</h2>
+                      <p className="mt-2 text-sm leading-relaxed text-text-secondary">{record.description}</p>
+                    </div>
+                    <span className="shrink-0 rounded-full border border-border-color px-3 py-1 text-xs font-mono text-text-secondary">
+                      {subjectLabel(record.subject)}
+                    </span>
+                  </div>
+
+                  <dl className="mt-3 grid grid-cols-1 gap-2 text-xs text-text-secondary md:grid-cols-2">
+                    <div className="min-w-0">
+                      <dt className="font-semibold uppercase tracking-wide">{copy.labels.goalId}</dt>
+                      <dd className="truncate font-mono">{record.goalId}</dd>
+                    </div>
+                    <div className="min-w-0">
+                      <dt className="font-semibold uppercase tracking-wide">{copy.labels.path}</dt>
+                      <dd className="truncate font-mono">{record.landscapePath}</dd>
+                    </div>
+                  </dl>
+
+                  <div className="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2">
+                    <span className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold ${statusBadgeClass(record.umlautsCorrectChatGpt)}`}>
+                      {record.umlautsCorrectChatGpt === 'yes' ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                      {copy.labels.umlaute}: {record.umlautsCorrectChatGpt}
+                    </span>
+                    <span className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold ${statusBadgeClass(record.contentApprovedChatGpt)}`}>
+                      {record.contentApprovedChatGpt === 'yes' ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
+                      {copy.labels.content}: {record.contentApprovedChatGpt}
+                    </span>
+                  </div>
+
+                  <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                    <label className="block">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.labels.humanApproved}</span>
+                      <select
+                        value={record.humanApproved}
+                        onChange={(event) => {
+                          const value = event.target.value === 'yes' ? 'yes' : 'no'
+                          updateRecord(record.goalId, record.imageUrl, (current) => ({
+                            ...current,
+                            humanApproved: value,
+                            humanIssueIdentified: value === 'yes' ? 'no' : current.humanIssueIdentified,
+                            humanIssueDescription: value === 'yes' ? '' : current.humanIssueDescription,
+                          }))
+                        }}
+                        className="mt-1 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm text-text-primary dark:bg-slate-950"
+                      >
+                        <option value="no">{copy.labels.no}</option>
+                        <option value="yes">{copy.labels.yes}</option>
+                      </select>
+                    </label>
+
+                    <label className="block">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.labels.humanIssue}</span>
+                      <select
+                        value={record.humanIssueIdentified}
+                        onChange={(event) => {
+                          const value = event.target.value === 'yes' ? 'yes' : 'no'
+                          updateRecord(record.goalId, record.imageUrl, (current) => ({
+                            ...current,
+                            humanIssueIdentified: value,
+                            humanApproved: value === 'yes' ? 'no' : current.humanApproved,
+                          }))
+                        }}
+                        className="mt-1 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm text-text-primary dark:bg-slate-950"
+                      >
+                        <option value="no">{copy.labels.no}</option>
+                        <option value="yes">{copy.labels.yes}</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <label className="mt-4 block">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.labels.humanDescription}</span>
+                    <textarea
+                      key={`${record.goalId}:${record.imageUrl}:${record.humanIssueDescription}`}
+                      defaultValue={record.humanIssueDescription}
+                      onBlur={(event) => {
+                        const nextDescription = event.currentTarget.value
+                        if (nextDescription === record.humanIssueDescription) return
+                        updateRecord(record.goalId, record.imageUrl, (current) => ({
+                          ...current,
+                          humanIssueDescription: nextDescription,
+                          humanIssueIdentified: nextDescription.trim() ? 'yes' : current.humanIssueIdentified,
+                          humanApproved: nextDescription.trim() ? 'no' : current.humanApproved,
+                        }))
+                      }}
+                      placeholder={copy.placeholders.humanDescription}
+                      rows={3}
+                      className="mt-1 w-full resize-y rounded-lg border border-border-color bg-white px-3 py-2 text-sm leading-relaxed text-text-primary dark:bg-slate-950"
+                    />
+                  </label>
+
+                  <details className="mt-4 rounded-xl border border-border-color bg-slate-50/80 p-3 dark:bg-slate-950/50">
+                    <summary className="cursor-pointer text-sm font-semibold text-text-primary">
+                      {record.humanIssueIdentified === 'yes' ? (
+                        <span className="inline-flex items-center gap-2 text-amber-700 dark:text-amber-300"><AlertTriangle size={16} />{copy.prompt}</span>
+                      ) : copy.prompt}
+                    </summary>
+                    <div className="mt-3 flex flex-col gap-3">
+                      <button
+                        type="button"
+                        onClick={() => void copyPrompt(record)}
+                        className="inline-flex w-fit items-center gap-2 rounded-lg border border-border-color px-3 py-2 text-sm font-semibold transition-colors hover:bg-white dark:hover:bg-slate-900"
+                      >
+                        <Copy size={16} />
+                        <span>{copy.copyPrompt}</span>
+                      </button>
+                      <textarea
+                        readOnly
+                        value={prompt}
+                        rows={10}
+                        className="w-full resize-y rounded-lg border border-border-color bg-white px-3 py-2 font-mono text-xs leading-relaxed text-text-primary dark:bg-slate-950"
+                      />
+                    </div>
+                  </details>
+                </div>
+              </article>
+            )
+          })}
+
+          {!loading && visibleRecords.length === 0 ? (
+            <div className="rounded-2xl border border-border-color bg-white/70 p-6 text-sm text-text-secondary dark:bg-slate-900/70">{copy.empty}</div>
+          ) : null}
+        </section>
+      </div>
+    </div>
+  )
+}

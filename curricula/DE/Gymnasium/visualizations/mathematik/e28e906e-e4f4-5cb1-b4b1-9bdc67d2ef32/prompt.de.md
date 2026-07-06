@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: approved
 - Quellbild: `e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg`
 
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,28 +32,29 @@ Beschreibung: Die lernende Person kann mithilfe geometrischer Argumente oder Gre
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Show the derivative relationships clearly: `(sin x)' = cos x` and `(cos x)' = -sin x`.
-- Use a small tangent/limit idea panel at `x=0`: sine has slope `1`, cosine value is `1`.
-- Use another point check at `x=pi/2`: sine has slope `0`, cosine value is `0`.
-- For cosine derivative, show at `x=0`: cosine has slope `0`, `-sin(0)=0`.
-- Include a short note: "Steigung des Graphen wird zur Ableitungsfunktion".
-- Use simple graphs, not dense formal proof text.
+- Behalte eine klare Zweiteilung bei: links "sin(x)", rechts "cos(x)".
+- Links: Zeige oben den Graphen von "f(x)=sin(x)" und darunter die Ableitungsfunktion "f'(x)=cos(x)".
+- Rechts: Zeige oben den Graphen von "g(x)=cos(x)" und darunter die Ableitungsfunktion "g'(x)=-sin(x)".
+- Zeige kurze reine Text-/Formelboxen fuer die Kerngedanken:
+  - "Steigung bei x=0 ist 1"
+  - "Steigung bei x=π/2 ist 0"
+  - "Steigung bei x=0 ist 0"
+  - "Steigung bei x=π/2 ist -1"
+- Die Boxen und Sprechblasen duerfen nur Text, Zahlen und Formeln enthalten.
+- Die Formeln unten muessen korrekt sein: "(sin x)' = cos x" und "(cos x)' = -sin x".
+- Verwende fuer die Zuordnung nur farbige Punkte und kurze Labels, keine Zuordnungspfeile.
+- Markiere bei sin(x) die Punkte x=0 und x=π/2 und bei cos(x) die Punkte x=0 und x=π/2.
+- Markiere in den Ableitungsgraphen die passenden Werte als Punkte: cos(0)=1, cos(π/2)=0, -sin(0)=0, -sin(π/2)=-1.
+- Wenn ein Hinweis unten vorkommt, dann nur als reine Textzeile ohne Symbol.
 
 Vermeiden:
-
-- Do not write `(cos x)' = sin x`; the minus sign is essential.
-- Do not claim sine derivative is always positive.
-- Do not show a tangent slope `1` at `x=pi/2` for sine.
-- Do not use degree labels on the graph x-axis.
-- Do not include technical IDs, filenames, watermarks, or brand names.
-
-Regeneration-Zusatz:
-
-- For `(sin x)' = cos x`, the derivative graph must pass through `(pi/2,0)`.
-- Do not draw a minimum of the derivative graph at `x=pi/2`; `cos(pi/2)=0`.
-- Mark the cosine derivative graph key points: `(0,1)`, `(pi/2,0)`, `(pi,-1)`, `(3pi/2,0)`, `(2pi,1)`.
-- Keep the formula box simple: `(sin x)'=cos x` and `(cos x)'=-sin x`.
+- Keine kleinen Bildchen, Icons, Doodles, Symbole oder Kreuzchen im gesamten Bild.
+- Kein Kreuzsymbol irgendwo im Bild.
+- Keine Zuordnungspfeile, keine gekreuzten Pfeile und keine Verbindungslinien zwischen oberem und unterem Graphen.
+- Keine dekorativen Lupen, Haken, Scheren, X-Zeichen oder Mini-Zeichnungen in den Textboxen.
+- Keine falschen Zuordnungspfeile.
+- Keine ueberladene Beschriftung; lieber wenige grosse, lesbare Labels.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

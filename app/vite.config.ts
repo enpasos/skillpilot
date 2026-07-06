@@ -17,6 +17,7 @@ const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
 const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
+const GOAL_VISUALIZATION_QA_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'goal-visualization-qa')
 const GYMNASIUM_MAPPING_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'mapping')
 const SOURCE_LANDSCAPE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
 const SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-membership-registry.json')
@@ -211,6 +212,17 @@ const resolveSemanticAtomicityReviewAbsolutePath = (candidatePath: string): stri
   return absolutePath
 }
 
+const resolveGoalVisualizationQaAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/quality/goal-visualization-qa/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, GOAL_VISUALIZATION_QA_ROOT)) return null
+  if (!/\.qa\.json$/i.test(path.basename(absolutePath))) return null
+
+  return absolutePath
+}
+
 const collectDeckFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
 
@@ -252,6 +264,26 @@ const collectSemanticAtomicityConfigFiles = async (directory: string, result: st
   }
 }
 
+const collectGoalVisualizationQaFiles = async (directory: string, result: string[]): Promise<void> => {
+  const entries = await fs.readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = path.join(directory, entry.name)
+
+    if (entry.isDirectory()) {
+      await collectGoalVisualizationQaFiles(absolutePath, result)
+      continue
+    }
+
+    if (!entry.isFile()) continue
+    if (!/\.qa\.json$/i.test(entry.name)) continue
+    if (!isPathInside(absolutePath, GOAL_VISUALIZATION_QA_ROOT)) continue
+
+    const relativeToRepo = path.relative(REPO_ROOT, absolutePath)
+    result.push(toPosixPath(relativeToRepo))
+  }
+}
+
 const isLandscapePayload = (value: unknown): boolean => {
   const record = asRecord(value)
   return typeof record.landscapeId === 'string' && Array.isArray(record.goals)
@@ -274,6 +306,48 @@ const isSemanticAtomicityConfigPayload = (value: unknown): boolean => {
     && typeof record.landscapePath === 'string'
     && typeof record.reviewPath === 'string'
     && (hasRootGoalIds || hasLeafGoalIds)
+}
+
+const isGoalVisualizationQaPayload = (value: unknown): boolean => {
+  const record = asRecord(value)
+  return record.schemaVersion === 1
+    && typeof record.subject === 'string'
+    && Array.isArray(record.records)
+}
+
+const normalizeQaYesNo = (value: unknown): 'yes' | 'no' => value === 'yes' ? 'yes' : 'no'
+
+const qaYesNoField = (record: Record<string, unknown>, field: string, legacyField: string): 'yes' | 'no' =>
+  normalizeQaYesNo(record[field] ?? record[legacyField])
+
+const isGoalVisualizationQaHumanApproved = (record: Record<string, unknown>): boolean =>
+  qaYesNoField(record, 'humanApproved', 'approvedHuman') === 'yes'
+  && qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') !== 'yes'
+
+const isGoalVisualizationQaOpen = (record: Record<string, unknown>): boolean =>
+  qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') === 'yes'
+  || qaYesNoField(record, 'humanApproved', 'approvedHuman') !== 'yes'
+
+const goalVisualizationQaCounts = (ledger: Record<string, unknown>): Record<string, number> => {
+  const records = Array.isArray(ledger.records) ? ledger.records.map(asRecord) : []
+  return {
+    all: records.length,
+    open: records.filter(isGoalVisualizationQaOpen).length,
+    umlautsCorrectChatGpt: records.filter((record) =>
+      qaYesNoField(record, 'umlautsCorrectChatGpt', 'umlauteRichtigChatGpt') === 'yes').length,
+    contentApprovedChatGpt: records.filter((record) =>
+      qaYesNoField(record, 'contentApprovedChatGpt', 'inhaltlichApprovedChatGpt') === 'yes').length,
+    humanApproved: records.filter((record) =>
+      isGoalVisualizationQaHumanApproved(record)).length,
+    humanIssueIdentified: records.filter((record) =>
+      qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') === 'yes').length,
+    chatGptOpen: records.filter((record) =>
+      !isGoalVisualizationQaHumanApproved(record)
+      && (
+        qaYesNoField(record, 'umlautsCorrectChatGpt', 'umlauteRichtigChatGpt') !== 'yes'
+        || qaYesNoField(record, 'contentApprovedChatGpt', 'inhaltlichApprovedChatGpt') !== 'yes'
+      )).length,
+  }
 }
 
 const normalizeScopeValue = (value: unknown): string =>
@@ -1843,6 +1917,7 @@ const deckEditorDevPlugin = {
         && !requestUrl.pathname.startsWith('/__canonical-cluster-editor')
         && !requestUrl.pathname.startsWith('/__composition-view-editor')
         && !requestUrl.pathname.startsWith('/__semantic-atomicity-review')
+        && !requestUrl.pathname.startsWith('/__goal-visualization-qa')
         && !requestUrl.pathname.startsWith('/__quality-dashboard')
         && !requestUrl.pathname.startsWith('/__curriculum-mapping-workbench')
         && !requestUrl.pathname.startsWith('/__authoring')
@@ -1936,6 +2011,147 @@ const deckEditorDevPlugin = {
           }
 
           sendJson(res, 200, payload)
+          return
+        }
+
+        if (requestUrl.pathname === '/__goal-visualization-qa/list') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const files: string[] = []
+          try {
+            await collectGoalVisualizationQaFiles(GOAL_VISUALIZATION_QA_ROOT, files)
+          } catch (error) {
+            const message = error instanceof Error ? error.message : ''
+            if (!message.includes('ENOENT')) throw error
+          }
+          files.sort((left, right) => left.localeCompare(right))
+          const ledgers = await Promise.all(files.map(async (filePath) => {
+            const absolutePath = resolveGoalVisualizationQaAbsolutePath(filePath)
+            if (!absolutePath) return null
+            const ledger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+            if (!isGoalVisualizationQaPayload(ledger)) return null
+            return {
+              path: filePath,
+              subject: String(ledger.subject),
+              counts: goalVisualizationQaCounts(ledger),
+            }
+          }))
+
+          sendJson(res, 200, { ledgers: ledgers.filter(Boolean) })
+          return
+        }
+
+        if (requestUrl.pathname === '/__goal-visualization-qa/load') {
+          if (req.method !== 'GET') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const pathParam = requestUrl.searchParams.get('path') ?? ''
+          const absolutePath = resolveGoalVisualizationQaAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid goal visualization QA path.' })
+            return
+          }
+
+          const ledger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+          if (!isGoalVisualizationQaPayload(ledger)) {
+            sendJson(res, 400, { error: 'Invalid goal visualization QA payload.' })
+            return
+          }
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+            ledger,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__goal-visualization-qa/save') {
+          if (req.method !== 'PUT') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const payload = asRecord(await readJsonBody(req))
+          const pathParam = typeof payload.path === 'string' ? payload.path : ''
+          const absolutePath = resolveGoalVisualizationQaAbsolutePath(pathParam)
+          if (!absolutePath) {
+            sendJson(res, 400, { error: 'Invalid goal visualization QA path.' })
+            return
+          }
+
+          const currentLedger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+          if (!isGoalVisualizationQaPayload(currentLedger)) {
+            sendJson(res, 400, { error: 'Current goal visualization QA payload is invalid.' })
+            return
+          }
+          const inputLedger = asRecord(payload.ledger)
+          if (!isGoalVisualizationQaPayload(inputLedger)) {
+            sendJson(res, 400, { error: 'Invalid goal visualization QA payload.' })
+            return
+          }
+
+          const inputRecords = Array.isArray(inputLedger.records) ? inputLedger.records.map(asRecord) : []
+          const inputByGoalAndUrl = new Map<string, Record<string, unknown>>(
+            inputRecords.map((record) => [
+              `${String(record.goalId ?? '')}\n${String(record.imageUrl ?? '')}`,
+              record,
+            ]),
+          )
+          const now = new Date().toISOString()
+          let changedCount = 0
+          const nextRecords = (Array.isArray(currentLedger.records) ? currentLedger.records.map(asRecord) : [])
+            .map((record) => {
+              const key = `${String(record.goalId ?? '')}\n${String(record.imageUrl ?? '')}`
+              const input = inputByGoalAndUrl.get(key)
+              if (!input) return record
+
+              const humanApproved = qaYesNoField(input, 'humanApproved', 'approvedHuman')
+              const humanIssueIdentified = qaYesNoField(input, 'humanIssueIdentified', 'fehlerIdentifiziertHuman')
+              const humanIssueDescription = typeof input.humanIssueDescription === 'string'
+                ? input.humanIssueDescription.trim()
+                : typeof input.fehlerbeschreibungHuman === 'string'
+                  ? input.fehlerbeschreibungHuman.trim()
+                  : ''
+              const changed = humanApproved !== qaYesNoField(record, 'humanApproved', 'approvedHuman')
+                || humanIssueIdentified !== qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman')
+                || humanIssueDescription !== String(record.humanIssueDescription ?? record.fehlerbeschreibungHuman ?? '')
+              if (changed) changedCount += 1
+
+              const {
+                umlauteRichtigChatGpt: _legacyUmlautsCorrectChatGpt,
+                inhaltlichApprovedChatGpt: _legacyContentApprovedChatGpt,
+                approvedHuman: _legacyHumanApproved,
+                fehlerIdentifiziertHuman: _legacyHumanIssueIdentified,
+                fehlerbeschreibungHuman: _legacyHumanIssueDescription,
+                ...recordWithoutLegacyFields
+              } = record
+
+              return {
+                ...recordWithoutLegacyFields,
+                humanApproved,
+                humanIssueIdentified,
+                humanIssueDescription,
+                humanReviewedAt: changed ? now : (typeof record.humanReviewedAt === 'string' ? record.humanReviewedAt : null),
+                humanReviewer: changed ? 'workbench' : String(record.humanReviewer ?? ''),
+              }
+            })
+
+          const nextLedger = {
+            ...currentLedger,
+            records: nextRecords,
+          }
+          await fs.writeFile(absolutePath, `${JSON.stringify(nextLedger, null, 2)}\n`, 'utf8')
+
+          sendJson(res, 200, {
+            path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
+            savedRecords: nextRecords.length,
+            changedRecords: changedCount,
+          })
           return
         }
 

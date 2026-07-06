@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-05T20:23:35.743Z",
+  "generatedAt": "2026-07-06T11:00:27.802Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -16,12 +16,14 @@
     "coveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "pilot": 754
+      "approved": 8,
+      "pilot": 746
     },
     "linkedVisualizationReviewStatuses": {
-      "pilot": 754
+      "approved": 8,
+      "pilot": 746
     },
-    "reviewLedgerFiles": 144,
+    "reviewLedgerFiles": 147,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
       "accepted_pilot": 586,
@@ -29,16 +31,16 @@
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 10,
       "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 13,
+      "accepted_pilot_after_user_review_correction": 15,
       "blocked_provider_quota": 5,
-      "deferred_provider_limitation": 9,
+      "deferred_provider_limitation": 10,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
       "rejected_after_user_review_replaced": 5,
       "rejected_not_linked": 4,
       "rejected_regenerate": 22,
-      "rejected_regenerated": 74,
+      "rejected_regenerated": 75,
       "rejected_removed": 1
     },
     "openProviderDeferredGoals": 0,
@@ -49,7 +51,7 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-144.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-147.md",
     "latestLedgerStatus": "completed",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
@@ -182,6 +184,20 @@
         "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The accepted image avoids unreliable continuous curves and instead uses pointwise value columns for `f(x)=x^2`, `g(x)=x`, and `h(x)=f(x)+g(x)`. For `x=1`, the blue segment has value `1`, the green stacked segment has value `1`, and the red top point is labelled `h(1)=2`; the visible height therefore matches the value. For `x=2`, the blue segment is `f(2)=4`, the green stacked segment is `g(2)=2`, and the red top point is `h(2)=6`. The table rows `1 | 1 | 1 | 2` and `2 | 4 | 2 | 6` are correct. No curve, false straight line, or misleading arrow is present."
+      },
+      {
+        "batch": "146",
+        "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
+        "title": "Ableitungen von Sinus und Kosinus grafisch begruenden",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "User-approved replacement imported from `tmp/Gemini_Generated_Image_onggg6onggg6ongg.png`. The image preserves the corrected hint/label layout, keeps the sine and cosine derivative relationship visually aligned, and is considered good enough for the current curated pilot despite the prior stricter tangent-geometry concern. The active `goal-visualization` link now points to the PNG asset."
+      },
+      {
+        "batch": "147",
+        "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
+        "title": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The accepted candidate removes the wrong y-axis number from the right small cosine panel while keeping the origin label `0`, the horizontal tangent at `x=0`, and the formula `f'(0)=-sin(0)=0`. The left rule cards and the main sine applications remain mathematically coherent: `(sin x)'=cos x`, `(cos x)'=-sin x`, derivative values `1`, `0`, and `-1` at `0`, `pi/2`, and `pi`. Visible German text and umlauts are correct."
       }
     ]
   },
@@ -203,7 +219,7 @@
       "title": "Ableitung als Steigung im Punkt deuten",
       "phase": "E",
       "area": "",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/b1dcc191-d046-50de-984a-ee5c17157628/b1dcc191-d046-50de-984a-ee5c17157628.jpg"
     },
     {
@@ -219,7 +235,7 @@
       "title": "Ableitungen von $e^x$ und $a^x$ verwenden",
       "phase": "E",
       "area": "",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/c3c057a3-caf9-44a5-ae60-639e3119e94a/c3c057a3-caf9-44a5-ae60-639e3119e94a.jpg"
     },
     {
@@ -227,15 +243,15 @@
       "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
       "phase": "E",
       "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.jpg"
+      "reviewStatus": "approved",
+      "url": "/assets/goal-visualizations/mathematik/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2/2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2.png"
     },
     {
       "goalId": "3401d95d-2191-5929-ac78-4de51d71a6be",
       "title": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
       "phase": "E",
       "area": "",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/3401d95d-2191-5929-ac78-4de51d71a6be/3401d95d-2191-5929-ac78-4de51d71a6be.jpg"
     },
     {
@@ -243,7 +259,7 @@
       "title": "Ableitungen von Sinus- und Kosinusfunktionen herleiten",
       "phase": "E",
       "area": "",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32/e28e906e-e4f4-5cb1-b4b1-9bdc67d2ef32.jpg"
     },
     {
@@ -251,7 +267,7 @@
       "title": "Ableitungen von Sinus- und Kosinusfunktionen in einfachen Fällen nutzen",
       "phase": "J10",
       "area": "Analysis",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/f9fdb733-5838-4983-888a-05624eabbe17/f9fdb733-5838-4983-888a-05624eabbe17.jpg"
     },
     {
@@ -275,7 +291,7 @@
       "title": "Absolute und relative Häufigkeiten bestimmen und darstellen",
       "phase": "J6",
       "area": "Data",
-      "reviewStatus": "pilot",
+      "reviewStatus": "approved",
       "url": "/assets/goal-visualizations/mathematik/91571d3f-3651-4477-ba21-320fc4077453/91571d3f-3651-4477-ba21-320fc4077453.jpg"
     },
     {
@@ -291,8 +307,8 @@
       "title": "Abstände und Längen im Raum bestimmen",
       "phase": "Q2",
       "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/0a846521-edcc-5c3c-a844-eac061e053ce/0a846521-edcc-5c3c-a844-eac061e053ce.jpg"
+      "reviewStatus": "approved",
+      "url": "/assets/goal-visualizations/mathematik/0a846521-edcc-5c3c-a844-eac061e053ce/0a846521-edcc-5c3c-a844-eac061e053ce.png"
     },
     {
       "goalId": "a8ff2666-8df3-4253-8021-3efe42114e40",
