@@ -32,42 +32,41 @@ Beschreibung: Die lernende Person kann Ähnlichkeitsbeziehungen erkennen, den St
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Behalte eine anschauliche Tafel-Infografik zu Aehnlichkeit und Strahlensatz.
-- Zeichne zwei Strahlen mit gemeinsamem Startpunkt S.
+- Erzeuge eine klare Tafel-Infografik zu Ähnlichkeit und Strahlensatz.
+- Nutze die Referenzskizze als Geometrievorlage, aber gestalte sie anschaulich und hochwertig.
+- Zeichne genau zwei Strahlen mit gemeinsamem Startpunkt S.
 - Auf dem oberen Strahl liegen in dieser Reihenfolge S, A, A'.
 - Auf dem unteren Strahl liegen in dieser Reihenfolge S, B, B'.
-- Die Verbindungsstrecken AB und A'B' sind parallel.
+- Die Strecken AB und A'B' verbinden jeweils die beiden Strahlen und sind parallel.
 - Beschrifte die kurzen Strecken: SA = 3, SB = 4, AB = 5.
-- Das Label AB = 5 gehoert ausschliesslich an die kurze Verbindungsstrecke zwischen A und B.
-- Schreibe keine Laengenbeschriftung auf den Abschnitt von A nach A' und keine Laengenbeschriftung auf den Abschnitt von B nach B'.
-- Beschrifte die langen Strecken vom Startpunkt S aus: SA' = 6 und SB' = 8.
-- Verwende fuer Messungen bevorzugt einfache Messklammern oder Tickmarken ohne Pfeilspitzen. Pfeilspitzen koennen leicht falsch wirken.
-- Ganz wichtig: Die Messklammer fuer SA' beginnt exakt bei S und endet exakt bei A'. Sie darf nicht nur von A nach A' laufen und darf nicht vor A' enden.
-- Ganz wichtig: Die Messklammer fuer SB' beginnt exakt bei S und endet exakt bei B'. Sie darf nicht nur von B nach B' laufen und darf nicht vor B' enden.
-- Die Beschriftung SB = 4 muss sichtbar direkt am kurzen unteren Strahlabschnitt von S nach B stehen.
-- Beschrifte die grosse parallele Strecke mit A'B' = 10.
-- Das Label A'B' = 10 gehoert ausschliesslich an die lange Verbindungsstrecke zwischen A' und B'.
+- Beschrifte die langen Strecken vom Startpunkt aus: SA' = 6 und SB' = 8.
+- Ganz wichtig: SA' bedeutet die ganze Strecke von S bis A'. Die Messklammer oder Markierung für SA' muss bei S beginnen und bei A' enden.
+- Ganz wichtig: SB' bedeutet die ganze Strecke von S bis B'. Die Messklammer oder Markierung für SB' muss bei S beginnen und bei B' enden.
+- Verwende für SA' und SB' bevorzugt Messklammern oder dünne Messlinien mit Endstrichen statt Pfeilen.
+- Wenn du Pfeile verwendest, muss jeder Pfeil exakt bei S starten und exakt beim Zielpunkt A' oder B' enden.
+- Zeichne keine Messlinie von A nach A' und beschrifte sie nicht mit SA'.
+- Zeichne keine Messlinie von B nach B' und beschrifte sie nicht mit SB'.
+- Die Beschriftung AB = 5 gehört ausschließlich an die Verbindungsstrecke zwischen A und B.
+- Die Beschriftung A'B' = 10 gehört ausschließlich an die Verbindungsstrecke zwischen A' und B'.
 - Zeige die Streckenrelationen nur mit sauberer Bruchschreibweise:
   SA / SA' = 3 / 6 = 1 / 2
   SB / SB' = 4 / 8 = 1 / 2
   AB / A'B' = 5 / 10 = 1 / 2
-- Verwende keine Mischung aus Doppelpunkt, Geteilt-durch-Zeichen und Bruchstrichen in derselben Formel. Nur Bruchschreibweise.
-- Ein kurzer Merksatz ist erlaubt: "Parallelen erzeugen aehnliche Dreiecke."
-- Verwende korrekte deutsche Umlaute im Bild, insbesondere "Ähnlichkeit", "Strahlensatz" und "ähnliche".
+- Verwende keine Mischung aus Doppelpunkt, Geteilt-durch-Zeichen und Bruchstrichen in derselben Formel. Nur die oben genannte Bruchschreibweise.
+- Ein kurzer Merksatz ist erlaubt: "Parallelen erzeugen ähnliche Dreiecke."
+- Verwende korrekte deutsche Umlaute im Bild, insbesondere "Ähnlichkeit", "Strahlensatz", "ähnliche" und "Streckenverhältnisse".
 
 Vermeiden:
-- Kein Pfeil fuer SA', der erst bei A startet.
-- Kein Pfeil fuer SB', der erst bei B startet.
-- Kein Messpfeil fuer SA', der vor A' endet.
-- Kein Messpfeil fuer SB', der vor B' endet.
-- Kein fehlendes Label SB = 4.
-- Keine Formel wie "SA : SA'" oder "SA · SA'"; es muss ein Bruch SA / SA' sein.
-- Keine unklare Mischform aus Bruch und geteilt-durch-Zeichen.
-- Kein Label "AB = 5" auf dem Strahlabschnitt A bis A'. AB ist die Strecke von A nach B.
-- Kein Label "A'B' = 10" auf einem Strahl; A'B' ist die Strecke von A' nach B'.
-- Keine Laengenlabels fuer die Abschnitte A bis A' oder B bis B'.
-- Keine falsche Reihenfolge der Punkte auf den Strahlen.
-- Keine nicht-parallelen Strecken AB und A'B'.
+- Kein Pfeil oder keine Messklammer für SA', die erst bei A startet.
+- Kein Pfeil oder keine Messklammer für SB', die erst bei B startet.
+- Kein Messpfeil für SA', der vor A' endet.
+- Kein Messpfeil für SB', der vor B' endet.
+- Keine Längenbeschriftung für den Abschnitt A bis A'.
+- Keine Längenbeschriftung für den Abschnitt B bis B'.
+- Kein Label AB = 5 auf einem Strahl.
+- Kein Label A'B' = 10 auf einem Strahl.
+- Keine falsche Reihenfolge der Punkte.
+- Keine nicht-parallelen Verbindungsstrecken AB und A'B'.
 - Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
