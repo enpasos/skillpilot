@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,21 +32,24 @@ Beschreibung: Die lernende Person kann mathematische Aussagen strukturiert formu
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-Show a structured mathematical statement with condition and conclusion.
-
-- A student-friendly proof card with two colored blocks:
-  1. "Bedingung: Wenn `n` gerade ist, dann `n = 2k`."
-  2. "Schluss: Dann ist `n^2 = 4k^2 = 2(2k^2)`, also gerade."
-- A side checklist with "Variable erklaert", "Bedingung genannt", "Folgerung begruendet".
-- Keep the mathematical notation consistent: only use `n` and `k`.
+- Ueberarbeite die bestehende Cartoon-Infografik nur minimal und erhalte Komposition, Tablet-Ansicht, Checkliste, Farben und mathematische Schreibweise.
+- Korrigiere in der Checkliste rechts die deutschen Umlaute:
+  - "Variable erklaert" muss exakt zu "Variable erklärt" werden.
+  - "Folgerung begruendet" muss exakt zu "Folgerung begründet" werden.
+- Die Checkliste soll danach genau diese drei Punkte zeigen:
+  - "Variable erklärt"
+  - "Bedingung genannt"
+  - "Folgerung begründet"
+- Erhalte die Aussage-Struktur:
+  - Bedingung: Wenn n gerade ist, dann n = 2k.
+  - Schluss: Dann ist n^2 = 4k^2 = 2(2k^2), also gerade.
+- Alle sichtbaren deutschen Umlaute muessen korrekt gesetzt sein.
 
 Vermeiden:
-
-- Do not use a false statement.
-- Do not change variables halfway through the argument.
-- Do not use overly advanced proof notation beyond the displayed simple example.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine Schreibweisen "erklaert", "begruendet" oder andere Umschreibungen ohne Umlaut im Bild.
+- Keine geaenderte Mathematik, keine neuen Variablen und keine geaenderte Formel.
+- Keine Layout-Neugestaltung; nur die fehlerhaften Umlautstellen sauber korrigieren.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

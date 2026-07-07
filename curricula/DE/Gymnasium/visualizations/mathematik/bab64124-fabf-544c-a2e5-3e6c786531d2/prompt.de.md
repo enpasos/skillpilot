@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
-- Status: approved
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
 - Quellbild: `bab64124-fabf-544c-a2e5-3e6c786531d2.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/bab64124-fabf-544c-a2e5-3e6c786531d2/bab64124-fabf-544c-a2e5-3e6c786531d2.jpg`
 
@@ -32,52 +32,30 @@ Beschreibung: Die lernende Person kann mathematische Argumente in einer Diskussi
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-Revise the classroom blackboard illustration while preserving the friendly cartoon style and broad layout.
-
-The image must show a clear mathematical discussion with an explicit claim, two proposed arguments, and a justified review.
-
-Use this exact mathematical content:
-
-Title:
-"Argumente austauschen und prüfen"
-
-Claim on the board:
-"Behauptung: Wenn n gerade ist, dann ist n² gerade."
-
-Left side:
-"Argument A"
-"n gerade ⇒ n = 2k"
-"n² = (2k)² = 4k² = 2·(2k²)"
-"also n² gerade"
-"Begründung korrekt"
-
-Right side:
-"Argument B"
-"Beispiel n = 4: 4² = 16"
-"also wohl immer gerade"
-"Unzureichend: nur ein Beispiel"
-
-Review card:
-"Prüfung:"
-"A beweist die Behauptung allgemein."
-"B reicht nicht als Beweis für alle n."
-
-Feedback card:
-"Rückmeldung:"
-"Zeige die allgemeine Form n = 2k, nicht nur ein Beispiel."
-
-Optional small note:
-"Ein Gegenbeispiel widerlegt eine All-Aussage."
-
-Make all formulas and labels clean, legible, and mathematically consistent. Use correct German umlauts.
+- Ueberarbeite die bestehende Klassenzimmer-/Tafel-Infografik nur gezielt und erhalte die freundliche Cartoon-Komposition.
+- Die zentrale Story soll klar bleiben:
+  - Behauptung: Wenn n gerade ist, dann ist n^2 gerade.
+  - Argument A ist ein allgemeiner algebraischer Beweis mit n = 2k.
+  - Argument B ist nur ein einzelnes Beispiel mit n = 4 und reicht nicht als Beweis fuer alle n.
+  - Die Pruefung soll zeigen: A beweist die Behauptung allgemein; B reicht nicht als Beweis.
+- Entferne oder ersetze den isolierten Hinweis "Ein Gegenbeispiel widerlegt eine All-Aussage."
+- Verwende nicht den Ausdruck "All-Aussage".
+- Wenn ein Gegenbeispiel-Hinweis im Bild bleibt, dann nur als gut eingebundene, kurze Rueckmeldung zur Pruefung, zum Beispiel:
+  "Ein Beispiel beweist nicht allgemein.
+  Ein Gegenbeispiel würde die Behauptung widerlegen."
+- Die Rueckmeldung soll fachlich klar machen:
+  - Ein einzelnes passendes Beispiel beweist keine allgemeine Behauptung.
+  - Ein Gegenbeispiel waere ausreichend, um eine allgemeine Behauptung zu widerlegen.
+- Es ist akzeptabel, die rechte untere Sprechblase ganz wegzulassen, wenn dadurch die Story klarer wird.
+- Sichtbarer deutscher Text soll echte Umlaute verwenden, zum Beispiel "Rückmeldung", "würde" und "für".
+- Alle mathematischen Schreibweisen muessen korrekt bleiben: n gerade, n = 2k, n^2 = (2k)^2 = 4k^2 = 2*(2k^2), Beispiel n = 4, 4^2 = 16.
 
 Vermeiden:
-
-Do not write "Feedback: Ein Gegenbeispiel prüft die Aussage."
-Do not present a counterexample as feedback here.
-Do not omit the explicit claim.
-Do not use an example as if it proved a universal statement.
+- Kein Begriff "All-Aussage" im Bild.
+- Kein verlorener Merksatz, der nicht zur dargestellten Pruefung passt.
+- Keine Behauptung, dass ein Beispiel eine allgemeine Aussage beweist.
+- Keine veraenderte Mathematik in Argument A oder Argument B.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz
