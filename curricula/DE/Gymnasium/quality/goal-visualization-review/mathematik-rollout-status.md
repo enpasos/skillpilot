@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-07T06:29:55.387Z
+Generated: 2026-07-07T18:19:14.929Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,15 +18,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1077 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 754 |
-| Coverage | 100.0% |
+| Ziele mit primaerem Visualisierungslink | 753 |
+| Coverage | 99.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 147 |
-| Offene Provider-Deferred-Ziele | 0 |
+| Review-Ledger-Dateien | 163 |
+| Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 2 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -34,7 +34,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `approved` | 18 |
-| `pilot` | 736 |
+| `pilot` | 735 |
 
 ## Ledger Decisions
 
@@ -44,11 +44,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot` | 586 |
 | `accepted_pilot_after_regeneration` | 142 |
 | `accepted_pilot_after_resume` | 5 |
-| `accepted_pilot_after_second_regeneration` | 10 |
+| `accepted_pilot_after_second_regeneration` | 11 |
 | `accepted_pilot_after_third_regeneration` | 5 |
-| `accepted_pilot_after_user_review_correction` | 15 |
+| `accepted_pilot_after_user_review_correction` | 28 |
 | `blocked_provider_quota` | 5 |
-| `deferred_provider_limitation` | 10 |
+| `deferred_provider_limitation` | 11 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -57,13 +57,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `rejected_regenerate` | 22 |
 | `rejected_regenerated` | 75 |
 | `rejected_removed` | 1 |
+| `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` | 1 |
+| `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-147.md` |
-| Latest ledger status | `completed` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-163.md` |
+| Latest ledger status | `completed_user_review_correction` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -75,13 +77,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 1 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 148 | `f40fcaf7-c630-589c-9f48-6c9e69da0b9d` | Bisektionsverfahren zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
 
 ### Open Provider Quota
 
@@ -115,12 +119,22 @@ Keine Eintraege.
 | 144 | `ebc41c8b-5754-5161-9b07-f4525b9fd9b4` | Eigenschaften von Funktionssummen graphisch begründen (LK) | `accepted_pilot_after_user_review_correction` |
 | 146 | `2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2` | Ableitungen von Sinus und Kosinus grafisch begruenden | `accepted_pilot_after_user_review_correction` |
 | 147 | `3401d95d-2191-5929-ac78-4de51d71a6be` | Ableitungen von Sinus- und Kosinusfunktionen anwenden | `accepted_pilot_after_user_review_correction` |
+| 149 | `6b0075bb-f71c-59f6-ab98-fb894568cc26` | Brüche als Zahlen, Anteile und Quotienten deuten | `accepted_pilot_after_user_review_correction` |
+| 150 | `845440ce-f63f-5835-903f-739145ca27bd` | Zusammenhang von f und f' am Graphen beschreiben | `accepted_pilot_after_user_review_correction` |
+| 151 | `3016ec37-1c2e-47db-83f5-e767923bc97e` | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `accepted_pilot_after_user_review_correction` |
+| 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
+| 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
+
+Weitere 8 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `fb7a4fa0-03b5-53b4-bd86-608480b748a1` | Betrag eines Vektors im Raum bestimmen | `pilot` | `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` |
+| `15512e77-31e3-5222-8a6b-84791618e5ce` | Bruchterme addieren und subtrahieren | `pilot` | `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` |
 
 ### Accepted Review Without Link
 
@@ -129,10 +143,10 @@ Keine Eintraege.
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred
 ```
 
-After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
 
 ## Sources
 

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -33,26 +33,36 @@ Beschreibung: Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstel
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show a clean graph of `f(x)=2*sin(x)+1` from `0` to `3pi`.
-- Mark only these characteristic x-positions on the axis:
-  - `0`;
-  - `pi/2`;
-  - `pi`;
-  - `3pi/2`;
-  - `2pi`;
-  - `5pi/2`;
-  - `3pi`.
-- Show horizontal guide lines `y=3`, `y=1`, and `y=-1`.
-- Mark maxima at `pi/2` and `5pi/2`; mark the minimum at `3pi/2`.
-- Include the idea of symmetry and periodicity with arrows or a note, but keep it focused on extrema and guide lines.
-- If zero crossings are visible, leave them unlabeled; do not label their x-values.
+Korrigiere die bestehende Infografik gezielt. Erhalte den vorhandenen Graphen, die orange Kurve, die Punkte, die Achsenbeschriftungen, die Periodizität, die Symmetriehinweise, die Mittellinie y = 1, die Maximumlinie y = 3 und die Minimumlinie y = -1.
+
+Die Funktion bleibt:
+f(x) = 2 · sin(x) + 1
+
+Die Amplitude bleibt:
+A = 2
+
+Korrigiere nur den rechten Amplitudenpfeil:
+
+- Der rechte Amplitudenpfeil muss die vertikale Strecke von der Mittellinie y = 1 bis zur Minimumlinie y = -1 zeigen.
+- Der Pfeil darf nicht bei der x-Achse y = 0 enden.
+- Der Pfeil muss also zwei Gitternetz-Einheiten lang sein.
+- Die Beschriftung "Amplitude A=2" bleibt beim rechten Pfeil.
+- Die Mittellinie y = 1 und die Minimumlinie y = -1 sollen als Bezugslinien sichtbar bleiben.
+
+Fachliche Regel:
+Die Amplitude ist der Abstand von der Mittellinie zu einem Extremwert. Bei dieser Funktion ist das entweder von y = 1 nach y = 3 oder von y = 1 nach y = -1.
+
+Sichtbarer deutscher Text soll korrekte Umlaute verwenden.
 
 Vermeiden:
 
-- Do not show the labels `7pi/6`, `7π/6`, `11pi/6`, or `11π/6` anywhere.
-- Do not add any fractional pi labels other than the required half-pi labels.
-- Do not mark a point as a zero unless the curve visibly crosses the x-axis there.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Kein rechter Amplitudenpfeil von y = 1 nach y = 0.
+- Kein rechter Amplitudenpfeil, der an der x-Achse endet.
+- Keine Änderung der Funktion f(x) = 2 · sin(x) + 1.
+- Keine Änderung der Amplitude A = 2.
+- Keine Änderung der y-Werte: Maximum y = 3, Mittellinie y = 1, Minimum y = -1.
+- Keine Änderung der orangefarbenen Kurve oder der markierten charakteristischen Punkte.
+- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

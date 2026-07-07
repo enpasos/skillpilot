@@ -32,25 +32,33 @@ Beschreibung: Die lernende Person kann in Sachsituationen Bestände, rekonstruie
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Korrigiere die bestehende Infografik nur gezielt: Das Wasser muss im linken grossen Bild sichtbar aus dem Wasserhahn in den Messbecher fliessen.
-- Der Wasserstrom soll direkt am Auslauf des Hahns beginnen und ohne Luecke in den Becher laufen.
-- Entferne oder korrigiere jede Darstellung, bei der der Wasserstrahl aus einem anderen Objekt, aus dem Rand, aus einer Lupe oder scheinbar aus dem Nichts kommt.
-- Optional darf auch in kleinen Becher-Symbolen ein kurzer Wasserstrahl aus dem Hahn sichtbar sein, aber nur wenn er eindeutig aus dem Hahn kommt.
+- Korrigiere die bestehende Infografik nur gezielt im rechten Abschnitt "Mittlerer Bestand".
 - Erhalte die fachliche Struktur und alle Rechnungen:
   - r(t)=2t in Liter/min
   - Zeitraum [0,3] min
   - Anfangsbestand B(0)=10 Liter
-  - Integral von 0 bis 3 ueber 2t dt = 9 Liter
-  - B(3)=10+9=19 Liter
-  - mittlere Aenderungsrate = 9/3 = 3 Liter pro Minute
+  - Bestandsänderung 9 Liter
+  - B(3)=19 Liter
+  - mittlere Änderungsrate = 3 Liter pro Minute
   - mittlerer Bestand = 13 Liter
-- Erhalte die Idee: Integral liefert Bestandsaenderung; Mittelwerte entstehen durch Teilen durch die Intervalllaenge.
-- Sichtbarer deutscher Text soll echte Umlaute verwenden, wenn Umlaute vorkommen.
+- Im rechten kleinen Diagramm zum mittleren Bestand muss die Kurve den Bestand B(t)=10+t² auf dem Intervall [0,3] darstellen:
+  - bei t=0 liegt die Kurve bei 10 Liter,
+  - bei t=3 liegt die Kurve bei 19 Liter,
+  - die horizontale gestrichelte Mittelwertlinie ist mit "13 Liter" beschriftet.
+- Die horizontale Linie "13 Liter" soll sichtbar tiefer liegen als bisher:
+  - bezogen auf den Bereich von 10 Liter bis 19 Liter liegt sie nur ein Drittel oberhalb von 10 Liter,
+  - sie liegt deutlich unter der Mitte zwischen 10 Liter und 19 Liter,
+  - sie ist eine Mittelwertlinie, keine Endbestandslinie.
+- Die Flächenidee muss sichtbar stimmen: Die Rechtecksfläche über [0,3] mit Höhe 13 Liter soll als gleicher Flächeninhalt wie die Fläche unter der Kurve B(t)=10+t² verstanden werden.
+- Erhalte den sichtbaren Wasserhahn mit Wasserstrahl in den Messbecher.
+- Sichtbarer deutscher Text soll echte Umlaute verwenden.
 
 Vermeiden:
+- Keine Veränderung der Werte 10, 13, 19, 3 oder 9.
+- Keine Veränderung der Integrale, Einheiten oder Ergebniszahlen.
+- Keine Mittelwertlinie nahe beim Endbestand 19 Liter.
+- Keine Kurve, die bei 0 Liter startet, wenn sie als B(t)=10+t² gemeint ist.
 - Kein Wasserstrahl, der nicht aus dem Hahn kommt.
-- Kein leerer oder geschlossener Hahn neben einem grossen Wasserstrahl.
-- Keine Aenderung der Werte, Integrale, Einheiten oder Ergebniszahlen.
 - Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 

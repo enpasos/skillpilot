@@ -32,34 +32,39 @@ Beschreibung: Die lernende Person kann die kombinatorische Bedeutung von Binomia
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Überarbeite die Infografik so, dass zwei getrennte Faktoren klar sichtbar werden.
-- Nutze weiterhin das einfache Beispiel "Wähle 2 aus 5 Objekten" mit den Objekten A, B, C, D, E.
-- Verwende im Bild keine Buchstaben außer A, B, C, D, E.
-- Faktor 1 muss sichtbar erklärt werden:
-  Geordnete Ziehungen: 5 * 4 = 20
-  Allgemein: n * (n-1) * ... * (n-k+1) = n! / (n-k)!
-- Stelle Faktor 1 nur mit zwei Plätzen und der Rechnung 5 * 4 = 20 dar; keine Liste vieler geordneter Paare.
-- Faktor 2 muss sichtbar erklärt werden:
-  Anordnungen derselben Auswahl: 2! = 2, zum Beispiel AB und BA
-  Allgemein: k!
-- Zeige klar die Division:
-  Kombinationen = geordnete Ziehungen / Anordnungen
-  C(5,2) = (5*4) / (2!) = 20 / 2 = 10
-- Zeige optional auch die allgemeine Formel:
-  C(n,k) = n! / (k! * (n-k)!)
-- Die Aussage muss klar sein: Eine ungeordnete Auswahl wird bei den geordneten Ziehungen genau k! mal gezählt; deshalb wird durch k! geteilt.
-- Erhalte die Bedeutung: 10 verschiedene Zweiergruppen.
-- Sichtbarer deutscher Text soll echte Umlaute verwenden, wenn Umlaute vorkommen.
-- Die Referenzvorlage ist für die zwei Faktoren und die Rechnung fachlich maßgeblich.
+
+Correct the existing educational infographic while preserving the friendly layout and the existing combinatorial explanation with the two factors:
+
+- ordered draws: n * (n-1) * ... * (n-k+1) = n!/(n-k)!
+- arrangements of each chosen group: k!
+
+The essential correction is the notation for the binomial coefficient.
+
+Required notation:
+
+- Show the binomial coefficient in the standard stacked form, not only as C(n,k).
+- In the example, display a large clear expression with "5 over 2" in parentheses:
+  (5 choose 2) = (5 * 4) / 2! = 20 / 2 = 10
+- In the general formula, display a large clear expression with "n over k" in parentheses:
+  (n choose k) = n! / (k! * (n-k)!)
+- It is acceptable to also show C(5,2) or C(n,k) as an alternative notation, but the stacked binomial coefficient notation must be present and visually central.
+- Keep the explanation that combinations equal ordered draws divided by arrangements.
+- Keep the example "Wähle 2 aus 5 Objekten A, B, C, D, E" and the result "10 verschiedene Zweiergruppen".
+- Keep German umlauts correct.
+
+Visual guidance for the stacked notation:
+
+- Use a recognizable binomial coefficient layout: a tall pair of parentheses with 5 above 2 for the example, and n above k for the general formula.
+- If exact mathematical typesetting is difficult, use a clean two-line fraction-like vertical layout inside parentheses so learners clearly recognize "n über k".
 
 Vermeiden:
-- Keine reine Endformel ohne Erklaerung der zwei Faktoren.
-- Keine falsche Aussage, dass AB und BA zwei verschiedene ungeordnete Gruppen sind.
-- Keine falschen Werte für 5, 4, 20, 2!, 2 oder 10.
-- Keine Verwechslung von geordneten Ziehungen und ungeordneten Kombinationen.
-- Keine erfundenen Paarbeispiele, keine Buchstaben außerhalb A, B, C, D, E.
-- Keine Aufzählung aller Paare; wenn Beispiele nötig sind, nur AB und BA als dieselbe Auswahl.
-- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+
+- Do not leave the final formula as only C(5,2) or only C(n,k).
+- Do not remove the factorial formula.
+- Do not change the result from 10.
+- Do not confuse ordered draws with unordered combinations.
+- Do not introduce wrong arithmetic, wrong factorials, missing umlauts, or extra misleading symbols.
+- Do not include technical IDs, file names, platform names, product names, internal paths, or school-form labels in the visible image.
 ```
 
 ## Review-Notiz

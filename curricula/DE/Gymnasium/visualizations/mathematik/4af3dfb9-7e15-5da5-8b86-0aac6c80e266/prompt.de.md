@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,26 +32,33 @@ Beschreibung: Die lernende Person kann einfache geometrische Figuren, insbesonde
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Einfache geometrische Figuren fachsprachlich beschreiben.
-- Zeige eine uebersichtliche Tafel mit zwei Bereichen: Dreiecke und Vierecke.
-- Dreiecke:
-  gleichseitiges Dreieck: drei gleich lange Seiten, drei Winkel je 60 Grad.
-  gleichschenkliges Dreieck: zwei gleich lange Seiten, zwei gleich grosse Basiswinkel.
-  rechtwinkliges Dreieck: ein Winkel 90 Grad, Katheten und Hypotenuse beschriftet.
-- Vierecke:
-  Quadrat: vier gleich lange Seiten, vier rechte Winkel.
-  Rechteck: gegenueberliegende Seiten gleich lang, vier rechte Winkel.
-  Raute: vier gleich lange Seiten, gegenueberliegende Winkel gleich gross.
-  Parallelogramm: gegenueberliegende Seiten parallel und gleich lang.
-  Trapez: mindestens ein Paar gegenueberliegender Seiten parallel.
-  Drachenviereck: zwei Paare benachbarter gleich langer Seiten.
-- Nutze kleine Markierungen: gleich lange Seiten mit Strichen, rechte Winkel mit Kaestchen, parallele Seiten mit Pfeilmarken.
+
+Korrigiere die bestehende Tafel-Infografik als reine Textkorrektur. Erhalte den vorhandenen Stil, das Layout, die Figuren, Farben und den fachlichen Inhalt. Kein Redesign, keine neuen Beispiele.
+
+Korrigiere jede Schreibweise des Wortes "gegenüberliegend":
+
+- Nutze genau "gegenüberliegende", wenn mehrere Seiten oder Winkel beschrieben werden.
+- Nutze genau "gegenüberliegender", wenn "ein Paar ... Seiten" beschrieben wird.
+- Der Wortteil muss exakt "gegenüber" lauten: mit "ü" nach "gegen" und vor "ber".
+- Verwende keine falschen Schreibweisen wie "gegenüerbliegende", "gegenuberliegende", "gegenüberligende" oder Varianten ohne korrektes "über".
+
+Die Beschreibungen der Vierecke sollen inhaltlich so bleiben:
+
+- Rechteck: gegenüberliegende Seiten gleich lang, vier rechte Winkel.
+- Parallelogramm: gegenüberliegende Seiten parallel und gleich lang.
+- Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.
+- Raute: vier gleich lange Seiten, gegenüberliegende Winkel gleich groß.
+
+Korrigiere außerdem sichtbaren deutschen Text mit "gross" oder "grosse" zu "groß" beziehungsweise "große".
 
 Vermeiden:
-- Trapez nicht als Figur mit zwei Paaren paralleler Seiten darstellen.
-- Drachenviereck nicht als Raute zeichnen; die benachbarten Seitenpaare sollen erkennbar sein.
-- Gleichschenkliges und gleichseitiges Dreieck nicht verwechseln.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+
+- Keine falsche Schreibweise von "gegenüberliegende" oder "gegenüberliegender".
+- Keine Schreibweise ohne Umlaut in "gegenüber".
+- Keine Änderung der geometrischen Zeichnungen.
+- Keine Änderung der mathematischen Eigenschaften der Figuren.
+- Keine neuen Figuren, keine zusätzlichen Beispiele, keine neuen Erklärkästen.
+- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz
