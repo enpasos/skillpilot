@@ -32,29 +32,31 @@ Beschreibung: Die lernende Person kann den Betrag eines Vektors im Raum aus sein
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Korrigiere die Raumzeichnung fachlich: Der gelbe Vektorpfeil fuer v=(3,4,12) muss beim Ursprung O starten und an der gegenueberliegenden Ecke des Quaders enden.
-- Die Pfeilspitze des gelben Vektors muss exakt den Punkt (3|4|12) markieren.
-- Die Pfeilspitze darf nicht auf der vertikalen Kante mit x=0 liegen. Sie darf nicht im Punkt (0|4|12) sitzen.
-- Zeichne den gelben Vektor als echte Raumdiagonale durch den Quader: erst x-Komponente 3, dann y-Komponente 4, dann z-Komponente 12 ergeben den Endpunkt (3|4|12).
-- Markiere den Endpunkt gerne mit einem kleinen Punkt oder Label "(3|4|12)", damit eindeutig ist, wohin der Vektor zeigt.
-- Die farbigen Komponenten sollen zur Diagonale passen:
-  - rote x-Komponente: 3
-  - gruene y-Komponente: 4
-  - blaue z-Komponente: 12
-- Erhalte die Rechnung rechts:
-  |v| = sqrt(3^2 + 4^2 + 12^2)
-  |v| = sqrt(9 + 16 + 144)
-  |v| = sqrt(169)
-  |v| = 13
-- Erhalte die Aussage: Der Betrag ist 13 und kein Vektor.
-- Sichtbarer deutscher Text soll echte Umlaute verwenden, wenn Umlaute vorkommen.
-- Die Referenzskizze ist fuer die Lage der Pfeilspitze fachlich massgeblich: Der gelbe Pfeil endet an der Ecke (3|4|12), nicht an der Ecke (0|4|12).
+
+Korrigiere die bestehende Infografik als gezielte Text- und Formelsatzkorrektur. Erhalte die aktuelle Zeichnung des Quaders, die Achsen, den gelben Vektorpfeil, die Beschriftungen O(0,0,0), P(3|4|12), x = 3, y = 4, z = 12 und |v| = 13.
+
+Die Korrektur betrifft den rechten Kasten "Rechnung". Dort darf kein technischer Formel-Quelltext stehen.
+
+Schreibe die Rechnung hübsch in mathematischer Darstellung:
+
+|v| = √(3² + 4² + 12²)
+|v| = √(9 + 16 + 144)
+|v| = √169
+|v| = 13
+
+Die Wurzel soll als Wurzelzeichen "√" sichtbar sein. Die Quadrate sollen als hochgestellte ² erscheinen, nicht als technische Schreibweise.
+
+Der Satz unten bleibt inhaltlich erhalten:
+"Der Betrag ist eine Länge, kein Vektor."
 
 Vermeiden:
-- Keine gelbe Pfeilspitze auf einer nur durch y- und z-Komponente bestimmten Kante oder Flaeche.
-- Keine Diagonale, die nur in einer Seitenflaeche des Quaders liegt.
-- Keine Aenderung der Komponenten 3, 4, 12 oder des Betrags 13.
-- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+
+- Kein technischer Formel-Quelltext wie "sqrt(...)".
+- Keine Caret-Schreibweise wie "3^2", "4^2" oder "12^2".
+- Keine Backslashes, keine TeX-Kommandos, keine LaTeX-Quelltextdarstellung.
+- Keine Änderung der Vektorwerte 3, 4, 12 oder des Ergebnisses 13.
+- Keine Änderung der Quadergeometrie oder der Pfeilspitze.
+- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

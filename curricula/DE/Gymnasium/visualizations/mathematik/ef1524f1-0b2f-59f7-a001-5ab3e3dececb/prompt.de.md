@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,31 +32,34 @@ Beschreibung: Die lernende Person kann Eigenschaften einfacher geometrischer Fig
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Eigenschaften eines Parallelogramms mit Kongruenz-, Parallelitaets- und Winkelargumenten begruenden.
-- Zeige ein Parallelogramm ABCD mit Diagonale AC.
-- Markiere:
-  AB parallel CD,
-  BC parallel AD,
-  Diagonale AC als gemeinsame Seite der Dreiecke ABC und CDA.
-- Begruendung in drei Schritten:
-  1. Wegen Parallelitaet sind Wechselwinkel gleich:
-     Winkel BAC = Winkel DCA,
-     Winkel BCA = Winkel DAC.
-  2. AC ist gemeinsame Seite.
-  3. Dreiecke ABC und CDA sind kongruent.
-- Schluss:
-  Seitenlaengen: Laenge(AB) = Laenge(CD) und Laenge(BC) = Laenge(AD).
-  Gegenueberliegende Seiten im Parallelogramm sind gleich lang.
-- Zeige die beiden Dreiecke farblich leicht unterschiedlich, aber mit derselben Diagonale AC.
-- In der Schlussfolgerung keine Vektorpfeile ueber AB, CD, BC oder AD verwenden; es geht um Seitenlaengen, nicht um Vektorgleichheit.
-- Wenn eine symbolische Schreibweise genutzt wird, schreibe "Laenge(AB) = Laenge(CD)" und "Laenge(BC) = Laenge(AD)".
+- Korrigiere Abschnitt 1 "Parallelität & Wechselwinkel" fachlich.
+- Sichtbar in Abschnitt 1 sollen nur diese mathematischen Inhalte stehen:
+  - Überschrift: "1. Parallelität & Wechselwinkel"
+  - Ein kleines Parallelogramm ABCD mit A unten links, B oben links, C oben rechts, D unten rechts.
+  - Die Diagonale AC.
+  - Die Parallelitätsmarkierung AB ∥ CD.
+  - Die Parallelitätszeichen in Abschnitt 1 sitzen sichtbar auf den schrägen Seiten AB und CD.
+  - Auf den Seiten BC und AD stehen in Abschnitt 1 keine Parallelitätszeichen, wenn dort "Winkel BAC = Winkel DCA" erklärt wird.
+  - Der Text: "Winkel BAC = Winkel DCA"
+  - Optional kurz: "Wechselwinkel sind gleich"
+- Markiere genau zwei rote Winkel:
+  - Winkel BAC am Punkt A, genau zwischen den Strahlen A->B und A->C.
+  - Winkel DCA am Punkt C, genau zwischen den Strahlen C->D und C->A.
+- Die roten Winkel müssen mit gleichen roten Bögen markiert sein und eindeutig zu "Winkel BAC = Winkel DCA" gehören.
+- Wenn Abschnitt 1 zusätzlich den blauen Winkelvergleich zeigt, muss dieser exakt passen:
+  - Winkel BCA am Punkt C zwischen C->B und C->A.
+  - Winkel DAC am Punkt A zwischen A->D und A->C.
+- Erhalte die übrige Bildidee: gemeinsame Diagonale AC, Kongruenz der Dreiecke ABC und CDA, Schluss auf gleich lange gegenüberliegende Seiten.
+- Sichtbarer deutscher Text soll echte Umlaute verwenden.
 
 Vermeiden:
-- Nicht behaupten, dass alle Seiten gleich lang sind; das gilt nur fuer besondere Parallelogramme wie Rauten.
-- Keine falschen Winkelgleichheiten einzeichnen.
-- Die Diagonale AC nicht als Symmetrieachse darstellen.
-- Keine Pfeilnotation wie Vektor AB = Vektor CD fuer die Schlussfolgerung verwenden.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine roten Winkelbögen an AD/AC für die Beschriftung BAC.
+- Keine roten Winkelbögen an BC/AC für die Beschriftung DCA.
+- Keine zusätzlichen Punktnamen und keine doppelten D-Punkte in einem Parallelogramm.
+- Keine Beschriftungslinien, die auf einen anderen Winkel zeigen als der daneben genannte Winkel.
+- Keine Vektorpfeile für Seitenlängen; Seitenlängen als Längenbeziehung schreiben.
+- Als Bildtext nur mathematische Fachtexte aus dem Pflichtinhalt verwenden.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

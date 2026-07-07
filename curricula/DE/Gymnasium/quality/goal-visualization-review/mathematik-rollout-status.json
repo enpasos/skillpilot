@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-07T06:29:55.387Z",
+  "generatedAt": "2026-07-07T18:19:14.929Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -12,28 +12,28 @@
   "summary": {
     "totalGoals": 1077,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 754,
-    "coveragePercent": 100,
+    "goalsWithPrimaryVisualization": 753,
+    "coveragePercent": 99.9,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "approved": 18,
-      "pilot": 736
+      "pilot": 735
     },
     "linkedVisualizationReviewStatuses": {
       "approved": 18,
-      "pilot": 736
+      "pilot": 735
     },
-    "reviewLedgerFiles": 147,
+    "reviewLedgerFiles": 163,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
       "accepted_pilot": 586,
       "accepted_pilot_after_regeneration": 142,
       "accepted_pilot_after_resume": 5,
-      "accepted_pilot_after_second_regeneration": 10,
+      "accepted_pilot_after_second_regeneration": 11,
       "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 15,
+      "accepted_pilot_after_user_review_correction": 28,
       "blocked_provider_quota": 5,
-      "deferred_provider_limitation": 10,
+      "deferred_provider_limitation": 11,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -41,18 +41,20 @@
       "rejected_not_linked": 4,
       "rejected_regenerate": 22,
       "rejected_regenerated": 75,
-      "rejected_removed": 1
+      "rejected_removed": 1,
+      "sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c": 1,
+      "sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6": 1
     },
-    "openProviderDeferredGoals": 0,
+    "openProviderDeferredGoals": 1,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
-    "linkedWithoutAcceptedReview": 0,
+    "linkedWithoutAcceptedReview": 2,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-147.md",
-    "latestLedgerStatus": "completed",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-163.md",
+    "latestLedgerStatus": "completed_user_review_correction",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -61,7 +63,15 @@
     "promptAppendFiles": 6
   },
   "qualityQueues": {
-    "openProviderDeferred": [],
+    "openProviderDeferred": [
+      {
+        "batch": "148",
+        "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+        "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
+        "decision": "deferred_provider_limitation",
+        "notes": "Withdrawn after four targeted Nano Banana Pro attempts. The provider repeatedly failed to keep German decimal-comma interval notation, a linear interval-nesting scale with `1,5` exactly halfway between `1` and `2`, the `sqrt(2)` marker between `1,25` and `1,5`, and the `f(1,25)` calculation simultaneously correct. The active link and published JPG copies were removed."
+      }
+    ],
     "openProviderQuota": [],
     "rejectedNotLinked": [
       {
@@ -198,11 +208,117 @@
         "title": "Ableitungen von Sinus- und Kosinusfunktionen anwenden",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The accepted candidate removes the wrong y-axis number from the right small cosine panel while keeping the origin label `0`, the horizontal tangent at `x=0`, and the formula `f'(0)=-sin(0)=0`. The left rule cards and the main sine applications remain mathematically coherent: `(sin x)'=cos x`, `(cos x)'=-sin x`, derivative values `1`, `0`, and `-1` at `0`, `pi/2`, and `pi`. Visible German text and umlauts are correct."
+      },
+      {
+        "batch": "149",
+        "goalId": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after the third targeted Nano Banana Pro attempt. The middle quotient panel now shows exactly three quartered pizza circles, four people, and the coherent computation `3 Pizzen = 12 Viertel`, `12 Viertel : 4 = 3 Viertel pro Person`, with `jede Person: 3/4 Pizza`. The left part-whole panel and right number-line panel remain coherent, and visible German text uses correct umlauts."
+      },
+      {
+        "batch": "150",
+        "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
+        "title": "Zusammenhang von f und f' am Graphen beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after the second targeted Nano Banana Pro attempt. The blue graph `f(x)=x^3-3x` has a high point at `x=-1` and a low point at `x=1`; the red derivative graph `f'(x)=3x^2-3` is a U-shaped parabola with zeros exactly at `x=-1` and `x=1`. The sign labels match the monotonicity intervals: `f'>0` outside `[-1,1]`, `f'<0` between `-1` and `1`. Visible German text is acceptable."
+      },
+      {
+        "batch": "151",
+        "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+        "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after one targeted Nano Banana Pro attempt. The image keeps `a=(4,0)` and `b=(3,2)`, shows the orthogonal projection of `b` onto the direction of `a` ending directly below `b` at `x=3`, and makes the projection length visibly about `3/4` of the full `|a|=4` baseline. The formulas `a*b=4*3+0*2=12`, `|a|=4`, and `12/4=3` are coherent, and visible German text uses correct umlauts."
+      },
+      {
+        "batch": "152",
+        "goalId": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after one targeted Nano Banana Pro attempt. The number-line marker labeled `1,25` now sits at the first quarter step after `1`, clearly before the midpoint between `1` and `2`. The place-value representation `1`, `2`, `5`, the decomposition `1 + 0,2 + 0,05 = 1,25`, and the fraction conversion `125/100 = 5/4 = 1 1/4` remain coherent. Visible German text and umlauts are acceptable."
+      },
+      {
+        "batch": "153",
+        "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+        "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after the second targeted Nano Banana Pro attempt. The red graph `y = 2/(x+1)` now has the correct vertical asymptote `x=-1`, a positive branch for `x>-1`, and a negative branch for `x<-1` in both the individual and combined graph panels. The blue graph `y=1/x` and the red graph meet at `S(1|1)`, matching the algebraic solution `x=1`. Visible German text and umlauts are acceptable."
+      },
+      {
+        "batch": "154",
+        "goalId": "7bff61c1-1a69-4991-97de-0cff764f507e",
+        "title": "Darstellungsformen quadratischer Funktionen situationsgerecht nutzen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after one targeted Nano Banana Pro attempt. The \"Allgemeine Form\" card now shows the blue example parabola shifted upward so that `(0,c)` lies directly on the parabola at the y-axis and the callout for reading the y-axis intercept points to that same point. The Scheitelpunktform and Nullstellenform cards remain visually and mathematically coherent, and visible German text is acceptable."
+      },
+      {
+        "batch": "155",
+        "goalId": "d81bc960-4eff-5c87-90b8-fec8e1cb8b3a",
+        "title": "Binomialkoeffizienten kombinatorisch deuten und in einfachen Fällen berechnen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after one targeted Nano Banana Pro attempt. The image now shows the standard stacked binomial coefficient notation for both the example and the general rule: `(5 over 2) = (5 * 4) / 2! = 20 / 2 = 10` and `(n over k) = n! / (k! * (n-k)!)`. It keeps the two combinatorial factors clear: ordered draws `n * (n-1) * ... * (n-k+1)` and division by the `k!` arrangements of each selected group. Visible German umlauts are correct."
+      },
+      {
+        "batch": "156",
+        "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "title": "Betrag eines Vektors im Raum bestimmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after targeted regeneration with a precise geometry reference. The corrected image shows the x-, y-, and z-axes as arrows starting at the common origin `O`; the y-axis is explicitly drawn from `O`. The yellow vector starts at `O` and ends at the rear upper right cuboid corner labelled `P(3|4|12)`. The visible values `x=3`, `y=4`, `z=12`, and `|v|=13` are mutually consistent. Visible German umlauts are correct."
+      },
+      {
+        "batch": "157",
+        "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
+        "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after simplifying the right side to one large shared intersection graph. The red graph `y=2/(x+1)` has vertical asymptote `x=-1`, stays below the x-axis for `x<-1`, stays above the x-axis for `x>-1`, passes through `S(1|1)`, and approaches the x-axis from above to the right. The blue graph `y=1/x` and the algebraic solution `x=1` are coherent. Visible German umlauts are correct."
+      },
+      {
+        "batch": "158",
+        "goalId": "76478e47-5ff9-5de1-b601-5e6e436ad855",
+        "title": "Bruchterme multiplizieren und dividieren",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after targeted regeneration. The right \"Dividieren\" box now cancels only the common `(x+1)` factors; `(x-1)` in the numerator and denominator `x` remain uncancelled. The result `(x-1)/x` and restrictions `x != 0`, `x != -1` are consistent. Visible German umlauts are correct."
+      },
+      {
+        "batch": "159",
+        "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "title": "Einfache geometrische Figuren beschreiben",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Accepted after targeted text-only regeneration. The broken spellings of `gegenüberliegende` and `gegenüberliegender` are corrected, and `groß/große` appears correctly. The visible figure drawings and geometric classification statements remain consistent."
+      },
+      {
+        "batch": "162",
+        "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+        "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The right amplitude marker now spans from the midline `y = 1` to the minimum line `y = -1`, so it has length `2` and matches `A = 2` for `f(x)=2·sin(x)+1`. The graph, maximum line, midline, minimum line, period, and characteristic points remain consistent."
+      },
+      {
+        "batch": "163",
+        "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+        "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected diagram now shows equal horizontal unit marks `0, 1, 2, 3, 4`, the green projection from `0` to `3`, the blue remaining segment labeled `Rest 1` from `3` to `4`, and the dashed perpendicular labeled `Lot 2` from the foot point to the endpoint of `b=(3,2)`. Formula cards and German umlauts are acceptable."
       }
     ]
   },
   "consistency": {
-    "linkedWithoutAcceptedReview": [],
+    "linkedWithoutAcceptedReview": [
+      {
+        "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "title": "Betrag eines Vektors im Raum bestimmen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/fb7a4fa0-03b5-53b4-bd86-608480b748a1/fb7a4fa0-03b5-53b4-bd86-608480b748a1.jpg",
+        "latestDecision": "sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c"
+      },
+      {
+        "goalId": "15512e77-31e3-5222-8a6b-84791618e5ce",
+        "title": "Bruchterme addieren und subtrahieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/15512e77-31e3-5222-8a6b-84791618e5ce/15512e77-31e3-5222-8a6b-84791618e5ce.jpg",
+        "latestDecision": "sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6"
+      }
+    ],
     "acceptedReviewWithoutLink": []
   },
   "visualizedGoals": [
@@ -869,14 +985,6 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/66f432e9-22d3-51a9-8787-35f91db30616/66f432e9-22d3-51a9-8787-35f91db30616.jpg"
-    },
-    {
-      "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
-      "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
-      "phase": "E",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg"
     },
     {
       "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
