@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/3862890e-9ea9-4c62-bcf2-e354c9d8f306/3862890e-9ea9-4c62-bcf2-e354c9d8f306.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,22 +32,33 @@ Beschreibung: Die lernende Person kann das bestimmte Integral als gemeinsamen Gr
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Bestimmtes Integral als Grenzwert von Ober- und Untersummen und als rekonstruierter Bestand.
-- Verwende genau f(t)=t+1 auf [0,4].
-- Zeige eine kleine Tabelle:
-  n=4: Untersumme 10, Obersumme 14.
-  n=8: Untersumme 11, Obersumme 13.
-  Grenzwert: integral_0^4 (t+1) dt = 12.
-- Zeige darunter den Bestandsbezug:
-  Anfangsbestand B(0)=7.
-  rekonstruierter Bestand B(4)=7+12=19.
-- Ergebnisbox: Ober- und Untersummen naehern sich demselben Integralwert; das Integral rekonstruiert den Bestandszuwachs.
+- Korrigiere die bestehende Infografik gezielt im linken Bereich mit Ober- und Untersummen.
+- Die Funktion bleibt f(t)=t+1 auf dem Intervall [0,4].
+- Die Gerade ist steigend. Deshalb muessen die roten Obersummen-Rechtecke auf jedem Teilintervall genau die Hoehe des rechten Randpunkts haben.
+- Bei jedem roten Obersummen-Rechteck muss die rechte obere Ecke beziehungsweise die rechte Oberkante die steigende Gerade genau beruehren.
+- Die roten Obersummen-Rechtecke duerfen nicht hoeher sein als der Funktionswert am rechten Rand des jeweiligen Teilintervalls.
+- Fuer n=4 sind die vier roten Obersummen-Hoehen entsprechend den rechten Randpunkten:
+  - auf [0,1]: Hoehe f(1)=2
+  - auf [1,2]: Hoehe f(2)=3
+  - auf [2,3]: Hoehe f(3)=4
+  - auf [3,4]: Hoehe f(4)=5
+- Fuer n=8 gilt analog: jedes rote Obersummen-Rechteck beruehrt die Gerade am rechten oberen Randpunkt seines Teilintervalls.
+- Die blauen Untersummen-Rechtecke sollen fuer die steigende Gerade an den linken Randpunkten ausgerichtet bleiben.
+- Erhalte alle fachlichen Werte und Aussagen:
+  - Untersumme n=4 ist 10
+  - Obersumme n=4 ist 14
+  - Untersumme n=8 ist 11
+  - Obersumme n=8 ist 13
+  - gemeinsamer Grenzwert ist Integral von 0 bis 4 ueber (t+1) dt = 12
+  - rekonstruierter Bestand B(4)=7+12=19
+- Erhalte die Aussage, dass Ober- und Untersummen sich demselben Integralwert naehern.
+- Sichtbarer deutscher Text soll echte Umlaute verwenden, wenn Umlaute vorkommen.
 
 Vermeiden:
-- Die Summen nicht mit dem Endbestand verwechseln.
-- Nicht B(4)=12 schreiben; 12 ist nur der Zuwachs.
-- Keine falschen Tabellenwerte fuer n=4 oder n=8.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine roten Obersummen-Rechtecke, die ueber den rechten Randpunkt der steigenden Gerade hinausragen.
+- Keine roten Rechtecke, deren Oberkante die Gerade nicht rechts beruehrt.
+- Keine Aenderung der Funktion, Intervallgrenzen, Summenwerte, Integralwerte oder Bestandswerte.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz
