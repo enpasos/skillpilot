@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,19 +32,24 @@ Beschreibung: Die lernende Person kann die Besonderheit der natürlichen Exponen
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Show the special role of the natural exponential function.
-- Use `f(x)=e^x` and the identity `f'(x)=e^x`.
-- Mark the point `(0|1)` and a tangent there with slope `1`.
-- Include a note: "Funktion und Ableitung sind gleich".
-- The graph must be increasing, positive, and approach the x-axis to the left without crossing it.
+- Ueberarbeite die bestehende Cartoon-Infografik nur gezielt.
+- Erhalte Layout, Stil, Farben, Graph, Achsen, Punkt (0|1), Tangente, Formel f(x)=e^x, Ableitung f'(x)=e^x, Tangentensteigung m=1 und den Kasten "Funktion und Ableitung sind gleich".
+- Aendere nur die Sprechblase rechts neben der Figur.
+- Ersetze den Text "Der herausgehobene Stellenwert!" in der Sprechblase durch einen klaren, fachlich selbststaendigen Hinweis:
+  "Besonderheit der natürlichen Exponentialfunktion: f'(x)=f(x)"
+- Wenn der Text in der Sprechblase umbrochen werden muss, sind diese Zeilen erlaubt:
+  "Besonderheit der natürlichen"
+  "Exponentialfunktion:"
+  "f'(x)=f(x)"
+- Der sichtbare deutsche Text muss echte Umlaute verwenden: "natürlichen" mit ü.
+- Die Sprechblase soll gut lesbar bleiben und nicht ueber den Rand oder die Figur laufen.
 
 Vermeiden:
-
-- Do not show `e^x` crossing the x-axis.
-- Do not draw a decreasing graph.
-- Do not claim `e=3` or `e=2`.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine Formulierung "Der herausgehobene Stellenwert!".
+- Keine falschen Ableitungen wie f'(x)=x e^x oder f'(x)=a^x.
+- Keine Aenderung des Graphen, der Tangente, der Achsen oder des Punktes (0|1).
+- Keine neuen Pfeile oder Markierungen.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

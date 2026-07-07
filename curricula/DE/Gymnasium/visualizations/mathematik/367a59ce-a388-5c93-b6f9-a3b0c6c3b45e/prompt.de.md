@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,29 +32,31 @@ Beschreibung: Die lernende Person kann Zinssatz, Anfangskapital, Endkapital, Lau
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Begriffe des Zinseszinses erlaeutern.
-- Zeige eine einfache Finanzsituation:
-  Anfangskapital K0 = 1000 Euro.
-  Zinssatz p = 3% pro Jahr.
-  Wachstumsfaktor q = 1 + 0.03 = 1.03.
-  Laufzeit n = 4 Jahre.
-  Endkapital K4 = 1000 * 1.03^4 ≈ 1125.51 Euro.
-- Beschrifte die Begriffe klar:
-  Anfangskapital K0, Zinssatz p, Wachstumsfaktor q, Laufzeit n, Endkapital Kn, Zinseszins.
-- Zeige eine kleine Jahresleiter:
-  Jahr 0: 1000.00 Euro.
-  Jahr 1: 1030.00 Euro.
-  Jahr 2: 1060.90 Euro.
-  Jahr 3: 1092.73 Euro.
-  Jahr 4: 1125.51 Euro.
-- Erklaerung in einem kurzen Satz:
-  Beim Zinseszins werden die gutgeschriebenen Zinsen im naechsten Jahr mitverzinst.
+- Ueberarbeite die bestehende Infografik fachlich so, dass der Zinseszinseffekt bei 3% pro Jahr in seiner echten Groessenordnung sichtbar wird.
+- Erhalte den einfachen Cartoon-Infografik-Stil, aber entferne oder ersetze die irrefuehrende Muenzen-Jahresleiter. Keine grossen Muenztuerme fuer nur 4 Jahre.
+- Nutze als zentrales Beispiel:
+  - Anfangskapital K0 = 1000 Euro
+  - Zinssatz p = 3% pro Jahr
+  - Wachstumsfaktor q = 1.03
+  - Formel K_n = K0 * 1.03^n
+- Zeige klar: Nach 4 Jahren ist der reine Zinseszinsanteil klein:
+  - einfache Zinsen nach 4 Jahren: 120.00 Euro
+  - Zinseszinsanteil nach 4 Jahren: 5.51 Euro
+  - Endkapital nach 4 Jahren: 1125.51 Euro
+- Zeige daneben, dass der Effekt erst nach vielen Jahren deutlich wird:
+  - nach 30 Jahren: Endkapital 2427.26 Euro, Zinseszinsanteil gegenueber einfachen Zinsen 527.26 Euro
+  - nach 50 Jahren: Endkapital 4383.91 Euro, Zinseszinsanteil gegenueber einfachen Zinsen 1883.91 Euro
+- Visualisiere den Unterschied am besten mit einer Kurve: eine gestrichelte Gerade fuer einfache Zinsen und eine gruen gekruemmte Kurve fuer Zinseszins. Bei Jahr 4 sollen Gerade und Kurve fast zusammenliegen; bei Jahr 30 und besonders Jahr 50 soll der Abstand deutlich sein.
+- Verwende kurze Labels fuer die Begriffe: Anfangskapital, Zinssatz, Wachstumsfaktor, Laufzeit, Endkapital, Zinseszinsanteil.
+- Sichtbarer deutscher Text soll echte Umlaute verwenden, wenn Umlaute vorkommen.
+- Die Referenzvorlage ist fuer Zahlen, Groessenordnung und Kurvenverlauf massgeblich.
 
 Vermeiden:
-- Zinseszins nicht mit einfacher Verzinsung K0 * (1 + n*p) verwechseln.
-- 3% nicht als Faktor 3 oder 0.3 verwenden; korrekt ist 0.03 beziehungsweise q = 1.03.
-- Keine realen Banklogos oder Marken.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine Darstellung, die im Jahr 4 einen grossen Zinseszins-Muenzturm suggeriert.
+- Keine Aussage, dass der Zinseszins bei 3% schon nach 4 Jahren stark wirkt.
+- Keine falschen Werte fuer 4, 30 oder 50 Jahre.
+- Keine Verwechslung von gesamten Zinsen und Zinseszinsanteil.
+- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz
