@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-07T18:19:14.929Z",
+  "generatedAt": "2026-07-07T20:33:02.142Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -23,7 +23,7 @@
       "approved": 18,
       "pilot": 735
     },
-    "reviewLedgerFiles": 163,
+    "reviewLedgerFiles": 175,
     "reviewDecisionCounts": {
       "accepted_context_visualization": 2,
       "accepted_pilot": 586,
@@ -31,7 +31,7 @@
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 11,
       "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 28,
+      "accepted_pilot_after_user_review_correction": 40,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 11,
       "not_attempted_after_quota_block": 4,
@@ -53,8 +53,8 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-163.md",
-    "latestLedgerStatus": "completed_user_review_correction",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-175.md",
+    "latestLedgerStatus": null,
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -299,6 +299,90 @@
         "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The corrected diagram now shows equal horizontal unit marks `0, 1, 2, 3, 4`, the green projection from `0` to `3`, the blue remaining segment labeled `Rest 1` from `3` to `4`, and the dashed perpendicular labeled `Lot 2` from the foot point to the endpoint of `b=(3,2)`. Formula cards and German umlauts are acceptable."
+      },
+      {
+        "batch": "164",
+        "goalId": "a9fde754-51b4-58d7-85e5-5e36160581e6",
+        "title": "Durchstoßpunkte einer Geraden mit Koordinatenebenen bestimmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The line equation now reads `Gerade g: (x,y,z) = (1, 2, 3) + t*(2, -1, -1)`, avoiding confusion between the point vector and the x-coordinate. The plane labels, three substitution equations, parameter values, and spur points remain coherent: `S_xz=(5,0,1)`, `S_yz=(0,5/2,7/2)`, `S_xy=(7,-1,0)`."
+      },
+      {
+        "batch": "165",
+        "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+        "title": "Daten mit Verteilungen vergleichen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The clipboard tally table now matches the visible frequency numbers exactly: `1 -> 9`, `2 -> 10`, `3 -> 10`, `4 -> 11`, `5 -> 9`, `6 -> 11`. Counts are represented with 5-groups, and the histogram, expected frequency `10`, empirical mean `approx 3.57`, theoretical expectation `3.5`, and model suitability conclusion remain coherent."
+      },
+      {
+        "batch": "166",
+        "goalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+        "title": "Dichte als abgeleitete Größe verwenden",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image separates the two measurement steps: mass is measured on a scale as `m = 1930 g`, and volume is measured by water displacement. The same metal body is fully submerged in a measuring cylinder; the water level changes from `300 cm^3` to `400 cm^3`, so `V = 400 cm^3 - 300 cm^3 = 100 cm^3`. The density calculation remains coherent: `rho = m / V = 1930 g / 100 cm^3 = 19.3 g/cm^3`."
+      },
+      {
+        "batch": "167",
+        "goalId": "fd13605e-21d9-523f-bcf4-6824b6cc09e5",
+        "title": "Dichtefunktion der Normalverteilung angeben und deuten (LK)",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image shows two vertical interval boundaries `a` and `b`, with `a` left of `mu` and `b` right of `mu`. The highlighted probability area is the connected region under the density curve from `a` to `b`; `mu` lies inside the shaded interval and is not used as a boundary. The formula and horizontal `sigma` marker remain coherent."
+      },
+      {
+        "batch": "168",
+        "goalId": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "title": "Dichtheit der rationalen Zahlen erläutern",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image removes the duplicated final line in the central memory box. The visible statement is readable and appears only once: between two rational numbers there is always another rational number. The number line keeps the ordered fraction markers `1/2`, `9/16`, `5/8`, `11/16`, `3/4`; the midpoint annotation remains coherent. German spelling and umlauts are correct."
+      },
+      {
+        "batch": "169",
+        "goalId": "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+        "title": "Digitale Werkzeuge korrekt einsetzen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image keeps the digital-tool workflow and fixes the small graph on the right. It now shows only one upward-opening parabola for `f(x) = x^2 - 4`, with the two x-axis zeros at `-2` and `2` and a visible vertex at `-4`. The previous downward-opening parabola and its curve-curve intersection points are gone. There are no misleading arrows in the graph area. German spelling and visible notation are acceptable."
+      },
+      {
+        "batch": "170",
+        "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
+        "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image keeps the existing exponential-function poster and reverses the left-side arrow next to `nähert sich 0, bleibt positiv`. The arrow now points toward negative x direction, matching the limit behavior as `x` goes to negative infinity. The curve remains positive and approaches the x-axis from above on the left. The right growth arrow, point `(0|1)`, tangent, derivative note, and value table remain coherent. German spelling and visible notation are correct."
+      },
+      {
+        "batch": "171",
+        "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+        "title": "Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image keeps the unit-circle geometry and fixes the label next to the red arc to `Bogenlänge π/3` with a correctly drawn German umlaut. The point `P(1/2 | √3/2)`, the angle `α = π/3 = 60°`, the red arc from `0` to `π/3`, and the sine/cosine coordinate annotations remain coherent."
+      },
+      {
+        "batch": "172",
+        "goalId": "8e18154d-41d6-592e-ba98-537edad338e8",
+        "title": "Einheitswurzeln komplexer Zahlen am Einheitskreis deuten (LK)",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image fixes the unreadable heading by showing `Vierte Einheitswurzeln:` clearly. It still illustrates `z^4 = 1` with exactly the four fourth roots of unity at the correct axis positions: `z_0 = 1` at `0°`, `z_1 = i` at `90°`, `z_2 = -1` at `180°`, and `z_3 = -i` at `270°`. The formula `z_k = exp(2*pi*i*k/4), k = 0, 1, 2, 3` and the square interpretation on the unit circle remain coherent and readable."
+      },
+      {
+        "batch": "173",
+        "goalId": "2a1158e5-d4ca-51d4-860c-f43bd5a86836",
+        "title": "Ereignisse darstellen und Baumdiagramme nutzen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected two-stage coin-tree visualization marks exactly the two event paths for `genau einmal K`: `Start -> K -> Z` with end result `KZ`, and `Start -> Z -> K` with end result `ZK`. The `KK` path remains separate as an orange multiplication-rule example, and the `ZZ` tree path is not blue. All branch probabilities remain `1/2`, and the addition-rule calculation `P(genau einmal K) = P(KZ) + P(ZK) = 1/4 + 1/4 = 1/2` is coherent."
+      },
+      {
+        "batch": "174",
+        "goalId": "4a630596-6e2f-593e-bac6-2a6d8fa58e2f",
+        "title": "Ergebnisse sichern und prüfen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image now shows the full checking story: the task `Bestimme x in 4*x + 12 = 60`, the result candidate `x = 12`, substitution into the original equation, and the successful check. The calculation chain is coherent: `4*12 + 12 = 60`, `48 + 12 = 60`, `60 = 60`, followed by `Ergebnis passt.`"
+      },
+      {
+        "batch": "175",
+        "goalId": "84069c5e-5526-57c1-9417-a886ccfd3f66",
+        "title": "Daten mit Verteilungen vergleichen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "Box 2 no longer contains the misleading small deviation arrows or `+1`/`-1`/`0` labels. The histogram still shows the data `9, 10, 10, 11, 9, 11`; the expected frequency line remains at `10`. Box 1 keeps matching 5-group tally marks and a readable `Anzahl (n=60)` column. Box 3 now uses the grammatically correct statement `Abweichungen sind durch Stichprobenvariation plausibel.` and keeps the empirical mean `ca. 3.57` and theoretical expectation `3.5`."
       }
     ]
   },

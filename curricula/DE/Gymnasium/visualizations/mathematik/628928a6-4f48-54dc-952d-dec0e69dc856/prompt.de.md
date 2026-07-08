@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,21 +32,18 @@ Beschreibung: Die lernende Person kann $e^x$ motivieren und wichtige Eigenschaft
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Show the natural exponential function `f(x)=e^x` as one smooth increasing curve.
-- Mark the point `(0|1)` clearly.
-- Draw a tangent at `(0|1)` and label it `Steigung 1`.
-- Include the formula `(e^x)' = e^x` and a small note: "Funktion und Ableitung sind gleich".
-- Show a small value table: `x=-1 -> ca. 0,37`, `x=0 -> 1`, `x=1 -> ca. 2,72`.
-- Indicate left behavior with text: "naehert sich 0, bleibt positiv" and right behavior: "waechst immer schneller".
+- Preserve the existing educational poster layout, the graph of f(x) = e^x, the point (0|1), the tangent labeled "Steigung 1", the derivative note, the value table, and the right upward-growth arrow.
+- Correct only the small green arrow next to the text "nähert sich 0, bleibt positiv".
+- That left-side arrow must point to the left, in negative x direction, toward the far-left tail of the graph as x goes toward minus infinity.
+- Keep the statement "nähert sich 0, bleibt positiv" readable and next to the left tail of the curve.
+- The curve must remain positive and approach the x-axis from above on the far left.
+- Keep all visible German spelling and mathematical notation correct.
 
 Vermeiden:
-
-- Do not let the curve touch or cross the x-axis.
-- Do not draw a straight line instead of an exponential curve.
-- Do not show a tangent slope other than `1` at `(0|1)`.
-- Do not use the false derivative rule `(e^x)' = x e^(x-1)`.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Do not leave the left-side arrow pointing right.
+- Do not flip or change the right-side upward-growth arrow.
+- Do not change the graph shape, the point (0|1), the derivative statement, the tangent, or the value table.
+- Do not add extra curves, extra arrows, extra marked points, watermarks, logos, source notes, technical labels, or internal instructions.
 ```
 
 ## Review-Notiz

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,24 +31,28 @@ Titel: Ergebnisse sichern und prüfen
 Beschreibung: Die lernende Person kann Zwischen- und Endergebnisse prüfen (z. B. Einsetzen, Plausibilität) und bei Bedarf korrigieren.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show checking an obtained result by substitution.
-- Use exactly:
-  - "x = 12"
-  - "Probe: 4 * 12 + 12 = 60"
-  - "48 + 12 = 60"
-  - "60 = 60"
-- Add a green check mark and label: "Ergebnis passt."
+Pflichtinhalt:
+- Ueberarbeite das Referenzbild gezielt: Es soll klar werden, welche Aufgabe geloest und welches Ergebnis geprueft wird.
+- Stelle die Story sichtbar in dieser Reihenfolge dar:
+  1. Aufgabe: "Bestimme x in 4*x + 12 = 60"
+  2. Ergebniskandidat: "x = 12"
+  3. Probe durch Einsetzen.
+  4. Schluss: "Ergebnis passt."
+- Die Probe muss mathematisch korrekt und gut lesbar sein:
+  "4*12 + 12 = 60"
+  "48 + 12 = 60"
+  "60 = 60"
+- Zeige visuell, dass 12 fuer x in die Gleichung 4*x + 12 = 60 eingesetzt wird.
+- Ein gruener Haken darf nur bei der erfolgreichen Probe stehen.
+- Die Bildidee mit Rechner, Zettel oder Checkliste darf bleiben, aber die Aufgabe muss direkt auf dem Zettel oder neben dem Kandidaten sichtbar sein.
 
-Visual guidance:
-- Use a calculator/checklist visual next to the calculation.
-- Make the substitution into the original equation visually clear.
-
-Avoid:
-- Do not change the numbers.
-- Do not add a false equality.
-- Do not use English text.
-- Do not add unrelated plausibility claims.
+Vermeiden:
+- Den Kandidaten x = 12 nicht ohne sichtbare Aufgabe zeigen.
+- Keine andere Gleichung verwenden.
+- Keine falsche Gleichungskette.
+- Nicht "4*x + 12" ohne "= 60" als Aufgabe darstellen.
+- Keine unleserlichen oder erfundenen deutschen Woerter.
+- Keine technischen Kennungen, keine internen Labels, keine Wasserzeichen.
 ```
 
 ## Review-Notiz
