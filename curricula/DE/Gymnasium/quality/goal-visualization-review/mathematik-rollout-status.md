@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-07T18:19:14.929Z
+Generated: 2026-07-07T20:33:02.142Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -21,7 +21,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 753 |
 | Coverage | 99.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 163 |
+| Review-Ledger-Dateien | 175 |
 | Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
@@ -46,7 +46,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 11 |
 | `accepted_pilot_after_third_regeneration` | 5 |
-| `accepted_pilot_after_user_review_correction` | 28 |
+| `accepted_pilot_after_user_review_correction` | 40 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 11 |
 | `not_attempted_after_quota_block` | 4 |
@@ -64,8 +64,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-163.md` |
-| Latest ledger status | `completed_user_review_correction` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-175.md` |
+| Latest ledger status | - |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -125,7 +125,7 @@ Keine Eintraege.
 | 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
 | 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
 
-Weitere 8 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 20 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 

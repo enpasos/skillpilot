@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `fd13605e-21d9-523f-bcf4-6824b6cc09e5.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/fd13605e-21d9-523f-bcf4-6824b6cc09e5/fd13605e-21d9-523f-bcf4-6824b6cc09e5.jpg`
@@ -19,36 +19,55 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Dichtefunktion der Normalverteilung angeben und deuten (LK)
+Titel: Dichtefunktion der Normalverteilung angeben und deuten
 Beschreibung: Die lernende Person kann die Dichtefunktion der Normalverteilung $\varphi_{\mu,\sigma}(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac12\left(\frac{x-\mu}{\sigma}\right)^2}$ angeben, die Rolle der Parameter $\mu$ und $\sigma$ erläutern und grundlegende Eigenschaften interpretieren.
 
 Zusatzanweisung:
-Additional mathematical constraints for this batch:
+Pflichtinhalt:
 
-- Do not include technical IDs in the image.
-- Prefer one clear diagram with correct labels over many small formulas.
-- For normal density, show a smooth symmetric bell curve centered at `mu`. The curve approaches the x-axis but does not cross it.
-- If the density formula is shown, use `f(x)=1/(sigma*sqrt(2*pi))*exp(-0.5*((x-mu)/sigma)^2)`.
-- Never present `f(x)` as a point probability. For continuous variables, emphasize area under the curve: `P(a <= X <= b) = integral_a^b f(x) dx`.
-- Mark `sigma` horizontally as a distance from `mu` to `mu+sigma` or from `mu-sigma` to `mu`, never as vertical height.
-- For calculating with a normal distribution, a safe example is `X ~ N(100, 15^2)` and the central interval `85 <= X <= 115`, interpreted as roughly one standard deviation around the mean.
-- For the distribution function, use `F(x)=P(X <= x)`. For continuous variables, show `F(x)=integral_{-infinity}^x f(t) dt` as shaded area to the left of `x`.
-- For discrete vs continuous variables, use this contrast:
-  - discrete: separate bars, `P(X=k)` can be positive
-  - continuous: smooth density curve, `P(X=x)=0`, probabilities are areas over intervals
-- For recognizing approximately normal situations, use conditions such as many small independent influences, unimodal bell shape, approximate symmetry, and no hard boundary near the typical values.
-- For binomial normal approximation, use `X ~ B(n,p)`, `mu=n*p`, `sigma=sqrt(n*p*(1-p))`. State the rule of thumb `n*p >= 5` and `n*(1-p) >= 5` only if it fits clearly.
-- If a binomial approximation example is shown, use `X ~ B(100,0.5)` approximated by `Y ~ N(50,25)`, and show continuity correction such as `P(45 <= X <= 55) approx P(44.5 <= Y <= 55.5)`.
-- For Poisson as a limit, show `X_n ~ B(n,p_n)`, `n*p_n -> lambda`, `p_n -> 0`, and the result `P(X=k)=e^{-lambda}*lambda^k/k!`.
-- For Poisson context, use rare independent events in a fixed interval with constant average rate `lambda`; do not use a normal bell curve for the Poisson distribution.
+Korrigiere die bestehende Infografik gezielt bei der markierten Wahrscheinlichkeitsfläche unter der Normalverteilung. Erhalte den grundsätzlichen Aufbau, die Glockenkurve, die Formel, die Beschriftung von μ als Zentrum und die horizontale σ-Markierung.
+
+Die hervorgehobene Fläche muss wirklich die Intervallwahrscheinlichkeit zwischen zwei Grenzen a und b zeigen:
+
+- Zeichne auf der x-Achse zwei vertikale Begrenzungslinien mit den Labels "a" und "b".
+- Die linke Begrenzung "a" muss links von der rechten Begrenzung "b" liegen.
+- Schattiere nur die Fläche unter der Dichtekurve zwischen a und b.
+- Außerhalb des Intervalls von a bis b darf keine hervorgehobene Wahrscheinlichkeitsfläche liegen.
+- Die Schattierung darf nicht bei μ beginnen, außer wenn a zufällig dort läge. Für dieses Bild soll a sichtbar links von μ und b sichtbar rechts von μ liegen.
+- μ liegt also innerhalb der schattierten Fläche. Die gestrichelte μ-Linie darf die Schattierung durchqueren, aber sie darf keine linke oder rechte Grenze der Wahrscheinlichkeitsfläche sein.
+- Der rosa Bereich muss zusammenhängend von der vertikalen Linie bei a bis zur vertikalen Linie bei b laufen: ein linker Teil von a bis μ und ein rechter Teil von μ bis b.
+- Wenn a links von μ und b rechts von μ liegen, muss auch die Fläche links von μ zwischen a und μ deutlich rosa markiert sein.
+- Beschrifte die Fläche mit "P(a ≤ X ≤ b)" oder "P(a <= X <= b)".
+- Optional darf darunter stehen: "Wahrscheinlichkeit = Fläche zwischen a und b".
+
+Die Darstellung soll klar zeigen:
+
+- μ ist der Erwartungswert bzw. das Zentrum der Kurve.
+- σ ist eine horizontale Streckenlänge und keine Fläche.
+- Die Wahrscheinlichkeit entsteht als Fläche unter der Kurve über einem Intervall, nicht an einem einzelnen Punkt.
+
+Sichtbarer deutscher Text muss korrekt geschrieben sein, insbesondere "Dichtefunktion", "Normalverteilung", "Wahrscheinlichkeit", "Fläche", "Erwartungswert", "Standardabweichung".
+
+Vermeiden:
+
+- Keine Schattierung von der linken Kurvenseite bis zu einem einzelnen Punkt.
+- Keine Schattierung von μ bis zu einem Punkt, wenn die Beschriftung P(a ≤ X ≤ b) lautet.
+- Keine Schattierung, die erst an der gestrichelten μ-Linie beginnt.
+- Keine weiße Lücke zwischen a und μ innerhalb des Intervalls.
+- Keine Schattierung über die ganze Kurve.
+- Keine fehlenden Labels a und b.
+- Kein einzelnes Label x als rechte Grenze der markierten Wahrscheinlichkeit.
+- Keine Änderung der Formelstruktur der Normaldichte.
+- Keine vertikale σ-Markierung.
+- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz

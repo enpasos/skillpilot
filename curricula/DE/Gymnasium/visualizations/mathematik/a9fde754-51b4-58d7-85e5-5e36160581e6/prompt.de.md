@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,26 +32,31 @@ Beschreibung: Die lernende Person kann Schnittpunkte einer Geraden mit Koordinat
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Durchstosspunkte einer Geraden mit den drei Koordinatenebenen bestimmen.
-- Zeige die Gerade
-  g: x = (1, 2, 3) + t*(2, -1, -1).
-- Bestimme drei Spurpunkte:
-  xy-Ebene: z = 0.
-  3 - t = 0, also t = 3.
-  S_xy = (7, -1, 0).
-- xz-Ebene: y = 0.
-  2 - t = 0, also t = 2.
-  S_xz = (5, 0, 1).
-- yz-Ebene: x = 0.
-  1 + 2t = 0, also t = -1/2.
-  S_yz = (0, 5/2, 7/2).
-- Zeige ein 3D-Koordinatensystem mit den drei farblich markierten Koordinatenebenen und den drei Spurpunkten auf der Geraden.
+
+Korrigiere die bestehende Infografik nur an der Geradengleichung oben rechts. Erhalte Layout, Titel, Koordinatenebenen, Gerade, Spurpunkte, Farben, Sprechblasen und alle Rechnungen unverändert.
+
+Die Formelzeile oben rechts muss lauten:
+
+Gerade g: (x,y,z) = (1, 2, 3) + t*(2, -1, -1)
+
+Wichtig:
+
+- Ersetze nur das einzelne linke "x" in der Geradengleichung durch "(x,y,z)".
+- Das linke "(x,y,z)" steht fuer den Punkt auf der Geraden und darf nicht wie eine einzelne x-Koordinate wirken.
+- Behalte die Werte (1, 2, 3), t*(2, -1, -1), die drei Ebenenbedingungen und die drei Spurpunkte unveraendert.
+- Die Rechnungen bleiben:
+  - y=0: 2 - t = 0, t = 2, S_xz = (5, 0, 1)
+  - x=0: 1 + 2t = 0, t = -1/2, S_yz = (0, 5/2, 7/2)
+  - z=0: 3 - t = 0, t = 3, S_xy = (7, -1, 0)
+- Sichtbarer deutscher Text muss korrekt geschrieben sein, insbesondere "Durchstoßpunkte", "Koordinatenebenen", "Gerade", "Ebene".
 
 Vermeiden:
-- Die Bedingungen fuer die Ebenen nicht vertauschen: xy hat z=0, xz hat y=0, yz hat x=0.
-- Die Spurpunkte nicht auf die falsche Ebene setzen.
-- Keine Dezimalnaeherung fuer S_yz verwenden, wenn dadurch der Wert unklar wird; Brueche 5/2 und 7/2 sind okay.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+
+- Keine Änderung an den drei Spurpunkt-Rechnungen.
+- Keine Änderung an der Lage der Punkte oder der Gerade.
+- Keine neuen Pfeile, keine neuen Koordinaten, keine neue Formel.
+- Kein einzelnes "x =" als linke Seite der Geradengleichung.
+- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
 ```
 
 ## Review-Notiz
