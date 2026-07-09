@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-07T20:33:02.142Z
+Generated: 2026-07-08T04:51:47.968Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -21,12 +21,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 753 |
 | Coverage | 99.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 175 |
+| Review-Ledger-Dateien | 180 |
 | Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 2 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 5 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -40,13 +40,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Decision | Count |
 | --- | --- |
+| `accepted_after_regeneration` | 2 |
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 586 |
 | `accepted_pilot_after_regeneration` | 142 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 11 |
 | `accepted_pilot_after_third_regeneration` | 5 |
-| `accepted_pilot_after_user_review_correction` | 40 |
+| `accepted_pilot_after_user_review_correction` | 42 |
+| `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `deferred_provider_limitation` | 11 |
 | `not_attempted_after_quota_block` | 4 |
@@ -64,7 +66,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-175.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-180.md` |
 | Latest ledger status | - |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -125,7 +127,7 @@ Keine Eintraege.
 | 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
 | 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
 
-Weitere 20 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 22 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 
@@ -135,6 +137,9 @@ Weitere 20 Eintraege stehen in der JSON-Begleitdatei.
 | --- | --- | --- | --- |
 | `fb7a4fa0-03b5-53b4-bd86-608480b748a1` | Betrag eines Vektors im Raum bestimmen | `pilot` | `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` |
 | `15512e77-31e3-5222-8a6b-84791618e5ce` | Bruchterme addieren und subtrahieren | `pilot` | `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` |
+| `3016ec37-1c2e-47db-83f5-e767923bc97e` | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `pilot` | `accepted_user_supplied_replacement` |
+| `4af3dfb9-7e15-5da5-8b86-0aac6c80e266` | Einfache geometrische Figuren beschreiben | `pilot` | `accepted_after_regeneration` |
+| `82597dfb-0ec6-4a77-abaf-e1d6bdd12041` | Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen | `pilot` | `accepted_after_regeneration` |
 
 ### Accepted Review Without Link
 

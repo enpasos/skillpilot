@@ -12,6 +12,7 @@
     "visualization:import": "node ../scripts/import_goal_visualization.mjs",
     "visualization:generate:nano-banana": "node ../scripts/generate_goal_visualization_nano_banana.mjs",
     "visualization:generate:nano-banana:batch": "node ../scripts/generate_goal_visualization_batch.mjs",
+    "visualization:generate-reconstruction-prompts": "node ../scripts/generate_goal_visualization_reconstruction_prompts.mjs",
     "visualization:plan-batch": "node ../scripts/plan_goal_visualization_batch.mjs",
     "visualization:check-prompt-appends": "node ../scripts/check_goal_visualization_prompt_appends.mjs",
     "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py",

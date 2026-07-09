@@ -47,7 +47,10 @@ For each approved or pilot image, keep a traceable source directory:
 curricula/DE/Gymnasium/visualizations/mathematik/<skillpilotId>/
   <skillpilotId>.png
   prompt.de.md
+  image-reconstruction-prompt.de.md
 ```
+
+`prompt.de.md` records the original provider prompt. `image-reconstruction-prompt.de.md` records a standalone alternative prompt derived from the generated image itself; the QA workbench can use it as an alternate correction base when the human review identifies an error. If this file is missing for an older image, the local QA workbench can generate it on demand from the image only.
 
 Public runtime copies live under:
 
@@ -86,7 +89,9 @@ The command:
 - keeps provider-facing prompt constraints neutral where possible, for example `no technical IDs` instead of naming SkillPilot,
 - calls the Gemini image API with model `gemini-3-pro-image`,
 - saves a traceable generated candidate under `tmp/goal-visualizations/<skillpilotId>/generated/`,
+- asks Gemini to derive a standalone image-reconstruction prompt for the generated candidate and stores it beside the candidate,
 - imports the selected image into the canonical visualization asset layout,
+- copies the selected candidate's reconstruction prompt to `image-reconstruction-prompt.de.md`,
 - updates the canonical goal's primary `goal-visualization` link.
 
 Use this first as a no-network rehearsal:
@@ -114,6 +119,19 @@ npm --prefix app run visualization:generate:nano-banana -- \
   "<skillpilotId>" \
   --prompt-append-file="tmp/goal-visualization-prompts/<skillpilotId>.md"
 ```
+
+Use `--skip-reconstruction-prompt` only for explicit debugging; normal generated assets should keep the reconstruction prompt so `/goal-visualization-qa` can offer it as a correction base. The QA workbench also has an on-demand action to create a missing reconstruction prompt for an already imported image.
+
+For older imported images, generate missing reconstruction prompts in controlled batches from the QA ledgers:
+
+```bash
+npm --prefix app run visualization:generate-reconstruction-prompts -- \
+  --subject=mathematik \
+  --limit=25 \
+  --continue-on-error
+```
+
+Run with `--dry-run` first to inspect the planned images. The script reads active images from `curricula/DE/Gymnasium/quality/goal-visualization-qa/*.qa.json`, skips existing prompts by default, writes `image-reconstruction-prompt.de.md` beside the canonical source image, and stores provider response traces under `tmp/`.
 
 The API key must come from `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The generator also reads these variables from a local, ignored `.env.local` or `app/.env.local` file:
 
@@ -195,6 +213,7 @@ The import script:
 - copies it to `curricula/DE/Gymnasium/visualizations/...`,
 - copies the runtime asset to `app/public/assets/goal-visualizations/...`,
 - writes or refreshes `prompt.de.md`,
+- writes `image-reconstruction-prompt.de.md` when a sibling reconstruction prompt or `--reconstruction-prompt` input exists; otherwise it removes any stale reconstruction prompt for that asset,
 - adds or replaces the primary `goal-visualization` link on the goal.
 
 Optional overrides:
@@ -203,6 +222,7 @@ Optional overrides:
 npm --prefix app run visualization:import -- \
   "<skillpilotId>" \
   "<downloaded-image-path>" \
+  --reconstruction-prompt="<standalone-image-prompt.md>" \
   --alt-text="<specific screen-reader description>" \
   --description="<short caption>" \
   --review-status="pilot"

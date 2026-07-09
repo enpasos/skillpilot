@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AlertTriangle, CheckCircle2, Clipboard, Copy, Home, Image, RefreshCw, Save, Search, XCircle } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, Clipboard, Copy, FileText, Home, Image, RefreshCw, Save, Search, XCircle } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { requestJson } from '../utils/authoring/authoringClient'
@@ -62,6 +62,20 @@ interface SaveResponse {
   changedRecords: number
 }
 
+interface ReconstructionPromptResponse {
+  available: boolean
+  path: string
+  prompt: string
+  markdown: string
+}
+
+type ReconstructionPromptState =
+  | { status: 'loading' }
+  | { status: 'generating' }
+  | { status: 'loaded'; path: string; prompt: string }
+  | { status: 'missing'; path: string }
+  | { status: 'error'; error: string }
+
 const COPY = {
   de: {
     title: 'Goal-Visualization QS',
@@ -75,6 +89,12 @@ const COPY = {
     search: 'Suchen',
     image: 'Bild',
     prompt: 'Codex-Korrekturauftrag',
+    alternativePrompt: 'Alternative Korrekturbasis',
+    loadAlternativePrompt: 'Alternativprompt laden',
+    generateAlternativePrompt: 'Alternativprompt erzeugen',
+    alternativePromptMissing: 'Kein Alternativprompt für dieses Bild gespeichert.',
+    alternativePromptLoading: 'Alternativprompt wird geladen ...',
+    alternativePromptGenerating: 'Alternativprompt wird per Gemini erzeugt ...',
     copyPrompt: 'Prompt kopieren',
     copied: 'Prompt kopiert.',
     copyFailed: 'Prompt konnte nicht kopiert werden.',
@@ -115,6 +135,12 @@ const COPY = {
     search: 'Search',
     image: 'Image',
     prompt: 'Codex correction task',
+    alternativePrompt: 'Alternative correction basis',
+    loadAlternativePrompt: 'Load alternative prompt',
+    generateAlternativePrompt: 'Generate alternative prompt',
+    alternativePromptMissing: 'No alternative prompt is stored for this image.',
+    alternativePromptLoading: 'Loading alternative prompt ...',
+    alternativePromptGenerating: 'Generating alternative prompt with Gemini ...',
     copyPrompt: 'Copy prompt',
     copied: 'Prompt copied.',
     copyFailed: 'Could not copy prompt.',
@@ -167,6 +193,9 @@ const imageSrcForRecord = (record: QaRecord, reloadToken: number): string => {
   return `${record.imageUrl}${separator}v=${encodeURIComponent(record.assetSha256 || 'unknown')}&reload=${reloadToken}`
 }
 
+const reconstructionPromptKey = (record: QaRecord): string =>
+  `${record.goalId}:${record.imageUrl}:${record.assetSha256}`
+
 const subjectLabel = (subject: string) => {
   const labels: Record<string, string> = {
     chemie: 'Chemie',
@@ -176,7 +205,10 @@ const subjectLabel = (subject: string) => {
   return labels[subject] ?? subject
 }
 
-const buildCodexPrompt = (record: QaRecord): string => [
+const buildCodexPrompt = (
+  record: QaRecord,
+  alternativePrompt?: { path: string; prompt: string },
+): string => [
   'Bitte korrigiere diese SkillPilot-Lernzielvisualisierung mit der bestehenden Nano-Banana-Pro-Pipeline.',
   '',
   'Arbeitsregeln:',
@@ -194,6 +226,19 @@ const buildCodexPrompt = (record: QaRecord): string => [
   `- Landscape: ${record.landscapePath}`,
   `- Aktuelles Public Asset: ${record.publicAssetPath}`,
   `- Canonical Asset: ${record.canonicalAssetPath}`,
+  ...(alternativePrompt?.prompt.trim()
+    ? [
+      '',
+      'Alternative Korrekturbasis:',
+      `- Bild-Rekonstruktionsprompt: ${alternativePrompt.path}`,
+      '- Nutze diesen Prompt als mögliche Ausgangsbasis, wenn eine Neugenerierung ohne Referenzbild oder mit stärkerer struktureller Kontrolle sinnvoller ist.',
+      '- Human Review und fachliche Korrektheit haben Vorrang, falls der Alternativprompt etwas falsch beschreibt.',
+      '',
+      '```text',
+      alternativePrompt.prompt.trim(),
+      '```',
+    ]
+    : []),
   '',
   'Human Review:',
   `- Approved (Human): ${record.humanApproved}`,
@@ -221,6 +266,7 @@ export const GoalVisualizationQaView: React.FC = () => {
   const [saving, setSaving] = useState(false)
   const [dirty, setDirty] = useState(false)
   const [imageReloadToken, setImageReloadToken] = useState(0)
+  const [reconstructionPrompts, setReconstructionPrompts] = useState<Record<string, ReconstructionPromptState>>({})
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -246,6 +292,7 @@ export const GoalVisualizationQaView: React.FC = () => {
     try {
       const response = await requestJson<LoadResponse>(`/__goal-visualization-qa/load?path=${encodeURIComponent(path)}`)
       setPayload(response)
+      setReconstructionPrompts({})
       setDirty(false)
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : 'QA ledger load failed.')
@@ -344,9 +391,86 @@ export const GoalVisualizationQaView: React.FC = () => {
     ])
   }
 
+  const loadReconstructionPrompt = async (record: QaRecord): Promise<{ path: string; prompt: string } | null> => {
+    const key = reconstructionPromptKey(record)
+    const current = reconstructionPrompts[key]
+    if (current?.status === 'loaded') return { path: current.path, prompt: current.prompt }
+    if (current?.status === 'missing' || current?.status === 'loading' || current?.status === 'generating') return null
+
+    setReconstructionPrompts((state) => ({
+      ...state,
+      [key]: { status: 'loading' },
+    }))
+
+    try {
+      const response = await requestJson<ReconstructionPromptResponse>(
+        `/__goal-visualization-qa/reconstruction-prompt?canonicalAssetPath=${encodeURIComponent(record.canonicalAssetPath)}`,
+      )
+      if (!response.available || !response.prompt.trim()) {
+        setReconstructionPrompts((state) => ({
+          ...state,
+          [key]: { status: 'missing', path: response.path },
+        }))
+        return null
+      }
+      const loaded = { path: response.path, prompt: response.prompt }
+      setReconstructionPrompts((state) => ({
+        ...state,
+        [key]: { status: 'loaded', ...loaded },
+      }))
+      return loaded
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Alternative prompt load failed.'
+      setReconstructionPrompts((state) => ({
+        ...state,
+        [key]: { status: 'error', error: message },
+      }))
+      return null
+    }
+  }
+
+  const generateReconstructionPrompt = async (record: QaRecord): Promise<{ path: string; prompt: string } | null> => {
+    const key = reconstructionPromptKey(record)
+    setReconstructionPrompts((state) => ({
+      ...state,
+      [key]: { status: 'generating' },
+    }))
+
+    try {
+      const response = await requestJson<ReconstructionPromptResponse>(
+        '/__goal-visualization-qa/reconstruction-prompt',
+        {
+          method: 'POST',
+          body: JSON.stringify({ canonicalAssetPath: record.canonicalAssetPath }),
+        },
+      )
+      if (!response.available || !response.prompt.trim()) {
+        setReconstructionPrompts((state) => ({
+          ...state,
+          [key]: { status: 'missing', path: response.path },
+        }))
+        return null
+      }
+      const loaded = { path: response.path, prompt: response.prompt }
+      setReconstructionPrompts((state) => ({
+        ...state,
+        [key]: { status: 'loaded', ...loaded },
+      }))
+      return loaded
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Alternative prompt generation failed.'
+      setReconstructionPrompts((state) => ({
+        ...state,
+        [key]: { status: 'error', error: message },
+      }))
+      return null
+    }
+  }
+
   const copyPrompt = async (record: QaRecord) => {
     try {
-      await navigator.clipboard.writeText(buildCodexPrompt(record))
+      const alternativePrompt = await loadReconstructionPrompt(record)
+      await navigator.clipboard.writeText(buildCodexPrompt(record, alternativePrompt ?? undefined))
       setStatusMessage(copy.copied)
       setErrorMessage(null)
     } catch {
@@ -463,7 +587,11 @@ export const GoalVisualizationQaView: React.FC = () => {
           ) : null}
 
           {visibleRecords.map((record) => {
-            const prompt = buildCodexPrompt(record)
+            const reconstructionState = reconstructionPrompts[reconstructionPromptKey(record)]
+            const alternativePrompt = reconstructionState?.status === 'loaded'
+              ? { path: reconstructionState.path, prompt: reconstructionState.prompt }
+              : undefined
+            const prompt = buildCodexPrompt(record, alternativePrompt)
             return (
               <article key={`${record.goalId}:${record.imageUrl}`} className="grid grid-cols-1 gap-4 rounded-2xl border border-border-color bg-white/80 p-4 shadow-sm dark:bg-slate-900/80 xl:grid-cols-[minmax(360px,0.9fr)_minmax(0,1.1fr)]">
                 <div className="min-w-0">
@@ -583,6 +711,59 @@ export const GoalVisualizationQaView: React.FC = () => {
                       ) : copy.prompt}
                     </summary>
                     <div className="mt-3 flex flex-col gap-3">
+                      <div className="rounded-lg border border-sky-100 bg-white p-3 text-sm dark:border-slate-800 dark:bg-slate-950">
+                        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                          <span className="inline-flex items-center gap-2 font-semibold text-text-primary">
+                            <FileText size={16} />
+                            {copy.alternativePrompt}
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              type="button"
+                              onClick={() => void loadReconstructionPrompt(record)}
+                              disabled={reconstructionState?.status === 'loading' || reconstructionState?.status === 'generating'}
+                              className="inline-flex w-fit items-center gap-2 rounded-lg border border-border-color px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:hover:bg-slate-900"
+                            >
+                              <RefreshCw size={14} />
+                              <span>{copy.loadAlternativePrompt}</span>
+                            </button>
+                            {reconstructionState?.status !== 'loaded' ? (
+                              <button
+                                type="button"
+                                onClick={() => void generateReconstructionPrompt(record)}
+                                disabled={reconstructionState?.status === 'loading' || reconstructionState?.status === 'generating'}
+                                className="inline-flex w-fit items-center gap-2 rounded-lg border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-800 transition-colors hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-60 dark:border-sky-800 dark:bg-sky-950 dark:text-sky-200 dark:hover:bg-sky-900"
+                              >
+                                <FileText size={14} />
+                                <span>{copy.generateAlternativePrompt}</span>
+                              </button>
+                            ) : null}
+                          </div>
+                        </div>
+                        {reconstructionState?.status === 'loading' ? (
+                          <p className="mt-2 text-xs text-text-secondary">{copy.alternativePromptLoading}</p>
+                        ) : null}
+                        {reconstructionState?.status === 'generating' ? (
+                          <p className="mt-2 text-xs text-text-secondary">{copy.alternativePromptGenerating}</p>
+                        ) : null}
+                        {reconstructionState?.status === 'missing' ? (
+                          <p className="mt-2 text-xs text-text-secondary">{copy.alternativePromptMissing}</p>
+                        ) : null}
+                        {reconstructionState?.status === 'error' ? (
+                          <p className="mt-2 text-xs text-rose-700 dark:text-rose-300">{reconstructionState.error}</p>
+                        ) : null}
+                        {reconstructionState?.status === 'loaded' ? (
+                          <div className="mt-2 flex flex-col gap-2">
+                            <span className="truncate font-mono text-xs text-text-secondary">{reconstructionState.path}</span>
+                            <textarea
+                              readOnly
+                              value={reconstructionState.prompt}
+                              rows={6}
+                              className="w-full resize-y rounded-lg border border-border-color bg-slate-50 px-3 py-2 font-mono text-xs leading-relaxed text-text-primary dark:bg-slate-900"
+                            />
+                          </div>
+                        ) : null}
+                      </div>
                       <button
                         type="button"
                         onClick={() => void copyPrompt(record)}

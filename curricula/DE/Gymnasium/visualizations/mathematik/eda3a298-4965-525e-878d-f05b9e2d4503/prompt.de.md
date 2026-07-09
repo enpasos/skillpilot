@@ -32,37 +32,24 @@ Beschreibung: Die lernende Person kann bei Sinus- und Kosinusfunktionen Nullstel
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-Korrigiere die bestehende Infografik gezielt. Erhalte den vorhandenen Graphen, die orange Kurve, die Punkte, die Achsenbeschriftungen, die Periodizität, die Symmetriehinweise, die Mittellinie y = 1, die Maximumlinie y = 3 und die Minimumlinie y = -1.
-
-Die Funktion bleibt:
-f(x) = 2 · sin(x) + 1
-
-Die Amplitude bleibt:
-A = 2
-
-Korrigiere nur den rechten Amplitudenpfeil:
-
-- Der rechte Amplitudenpfeil muss die vertikale Strecke von der Mittellinie y = 1 bis zur Minimumlinie y = -1 zeigen.
-- Der Pfeil darf nicht bei der x-Achse y = 0 enden.
-- Der Pfeil muss also zwei Gitternetz-Einheiten lang sein.
-- Die Beschriftung "Amplitude A=2" bleibt beim rechten Pfeil.
-- Die Mittellinie y = 1 und die Minimumlinie y = -1 sollen als Bezugslinien sichtbar bleiben.
-
-Fachliche Regel:
-Die Amplitude ist der Abstand von der Mittellinie zu einem Extremwert. Bei dieser Funktion ist das entweder von y = 1 nach y = 3 oder von y = 1 nach y = -1.
-
-Sichtbarer deutscher Text soll korrekte Umlaute verwenden.
+- Fuehre eine minimale Korrektur am bestehenden Lernbild aus. Behalte Graph, Achsen, Gitternetz, Beschriftungen, Periodizitaetsbogen, Symmetriepfeile, Maxima, Minimum und die Funktion unveraendert.
+- Entferne rechts neben der Stelle 2π den dicken zusaetzlichen senkrechten Pfeil, der von der Mittellinie y=1 zur Minimumlinie y=-1 zeigt. Dort darf kein massiver vertikaler Pfeil mehr stehen.
+- Korrigiere nur den rechten gestrichelten Amplitudenpfeil neben der Beschriftung "Amplitude A=2":
+  Er muss genau die vertikale Strecke von der Mittellinie y=1 bis zur Minimumlinie y=-1 markieren.
+  Ein Ende liegt auf der Mittellinie y=1.
+  Das andere Ende liegt auf der Minimumlinie y=-1.
+  Der markierte Abstand ist 2 Einheiten.
+- Die Beschriftung "Amplitude A=2" soll rechts erhalten bleiben und eindeutig zu diesem gestrichelten Pfeil gehoeren.
+- Links vorhandene korrekte Amplitudenmarkierung von y=3 bis y=1 unveraendert lassen.
 
 Vermeiden:
-
-- Kein rechter Amplitudenpfeil von y = 1 nach y = 0.
-- Kein rechter Amplitudenpfeil, der an der x-Achse endet.
-- Keine Änderung der Funktion f(x) = 2 · sin(x) + 1.
-- Keine Änderung der Amplitude A = 2.
-- Keine Änderung der y-Werte: Maximum y = 3, Mittellinie y = 1, Minimum y = -1.
-- Keine Änderung der orangefarbenen Kurve oder der markierten charakteristischen Punkte.
-- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+- Kein dicker, massiver Zusatzpfeil von y=1 nach y=-1.
+- Kein Amplitudenpfeil, der nur bis zur x-Achse y=0 reicht.
+- Keine Aenderung der Funktion f(x) = 2 sin(x) + 1.
+- Keine Aenderung der Linien y=3, y=1, y=0, y=-1.
+- Keine falsche Verschiebung von Maximum, Minimum, Nullstellen oder Symmetriepunkten.
+- Keine technischen Kennungen, keine internen Labels, keine Wasserzeichen.
+- Keine unleserlichen oder erfundenen deutschen Woerter.
 ```
 
 ## Review-Notiz
