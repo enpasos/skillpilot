@@ -116,6 +116,9 @@ npm run quality:memory-card-review:check:all
 echo "--> Running Learner Goal Selection Validation"
 npm run validate:learner-goal-selection
 
+echo "--> Deploying Generated Runtime Assets"
+npm run deploy:assets
+
 echo "--> Checking Goal Visualization Runtime Assets"
 npm run check:goal-visualization-assets
 

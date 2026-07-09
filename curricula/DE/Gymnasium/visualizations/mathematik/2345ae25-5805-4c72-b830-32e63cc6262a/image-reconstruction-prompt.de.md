@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `2345ae25-5805-4c72-b830-32e63cc6262a.jpg`
 
 ## Zweck
@@ -18,50 +18,36 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, modernes, pädagogisches Diagramm im Cartoon-Stil mit schwarzen Umrissen und weichen Farben. Der Hintergrund ist weiß.
+Ein klares, lehrreiches Diagramm im Cartoon-Stil mit schwarzen Umrissen und weichen Schatten, auf einem weißen Hintergrund, der oben leicht ins Hellblaue übergeht.
 
-Oben mittig steht der Titel in großer, fetter, schwarzer, serifenloser Schrift: "DICHTE ALS ABGELEITETE GRÖSSE VERWENDEN". Der Titel ist auf einem hellblauen, leicht nach unten verlaufenden Farbverlaufshintergrund platziert.
+Der Haupttitel, zentriert und in fetter, schwarzer, serifenloser Schrift, lautet: "DICHTE ALS ABGELEITETE GRÖSSE VERWENDEN".
 
-Unterhalb des Titels sind drei Hauptbereiche horizontal nebeneinander angeordnet. Jeder Bereich ist von einem abgerundeten Rechteck mit dünnem schwarzem Rand umgeben und hat einen hellblauen Hintergrund. Unter jedem dieser Bereiche befindet sich ein kleineres, abgerundetes, hellblaues Rechteck mit einer nummerierten Überschrift in schwarzer Schrift.
+Darunter befinden sich drei horizontal angeordnete, abgerundete Rechtecke mit hellgrauem Rand und sehr hellblauem Hintergrund, die jeweils einen Abschnitt darstellen. Unter jedem dieser Abschnitte befindet sich ein weiteres hellblaues, abgerundetes Rechteck mit schwarzem Text als Überschrift.
 
-**Bereich 1: "1. Verhältnis deuten"**
-- Oben links: Ein goldener Barren liegt auf einer grauen mechanischen Waage mit einem Zeiger. Darüber schwebt eine weiße Sprechblase mit schwarzem Rand, die den Text "m = 1930 g" enthält.
-- Oben rechts: Eine weiße Gedankenblase mit schwarzem Rand, die den Text "Wie "dicht" gepackt?" enthält. Daneben ist eine kleine, stilisierte, graue, unregelmäßige Masse (wie ein Stein) dargestellt. Ein grüner Pfeil zeigt von der Waage mit dem Goldbarren zur Gedankenblase.
-- Mittig: Ein grüner Pfeil zeigt von der grauen Masse nach rechts zu einem kleinen, leeren, transparenten Messbecher mit Skala. Unter diesem Pfeil steht die mathematische Notation " = ρ" (Rho-Symbol).
-- Unten links: Zwei transparente Glasmesszylinder mit blauer Flüssigkeit.
-    - Der linke Zylinder zeigt einen Flüssigkeitsstand bei "300 cm³" und ist mit "vorher:" beschriftet.
-    - Der rechte Zylinder zeigt einen Flüssigkeitsstand bei "400 cm³". Ein goldener Barren hängt an einer dünnen Linie von oben in der Flüssigkeit. Dieser Zylinder ist mit "nachher:" beschriftet.
-- Unten rechts: Der Text "Dichte = Masse / Volumen".
-- Unter den Messzylindern: Ein grüner Pfeil zeigt nach rechts zu der mathematischen Notation "V = 400 cm³ - 300 cm³ = 100 cm³".
+**Abschnitt 1: "1. Verhältnis deuten"**
+Dieser linke Abschnitt zeigt oben links einen goldenen Barren auf einer grauen Digitalwaage. Eine Sprechblase darüber zeigt "m = 1930 g". Rechts daneben eine Denkblase mit dem Text "Wie "dicht" gepackt?" und einem Fragezeichen. Rechts von der Denkblase ist ein kleiner, grauer, schwer aussehender Gegenstand (wie ein Gewicht) mit Griff dargestellt. Ein Pfeil zeigt von diesem Gegenstand zu einem kleinen Messbecher mit hellblauer Flüssigkeit. Rechts neben dem Pfeil und dem Messbecher steht " = ρ".
+Im unteren Bereich dieses Abschnitts sind zwei transparente Messzylinder mit schwarzen Skalenstrichen abgebildet. Der linke Zylinder enthält hellblaue Flüssigkeit und ist mit "vorher: 300 cm³" beschriftet. Der rechte Zylinder enthält ebenfalls hellblaue Flüssigkeit, in der ein goldener Barren (ähnlich dem auf der Waage) an einer dünnen Linie von oben herabhängt. Dieser Zylinder ist mit "nachher: 400 cm³" beschriftet. Ein Pfeil zeigt von unterhalb der Zylinder nach rechts. Daneben steht der Text:
+"Dichte = Masse / Volumen"
+"V = 400 cm³ - 300 cm³"
+"= 100 cm³"
+Die Überschrift unter diesem Abschnitt lautet: "1. Verhältnis deuten".
 
-**Bereich 2: "2. Passende Einheiten verwenden"**
-- Dieser Bereich ist in drei vertikale Spalten unterteilt, die jeweils eine farbige Überschrift und darunterliegende Inhalte haben.
-- **Spalte 1 (links):** Überschrift in einem hellblauen, abgerundeten Rechteck: "Masse-Einheit".
-    - Darunter: Ein graues, stilisiertes Gewicht mit der Aufschrift "kg". Darunter der Text "Kilogramm (kg)".
-    - Darunter: Ein graues, stilisiertes Gewicht mit der Aufschrift "g". Darunter der Text "Gramm (g)".
-- **Spalte 2 (Mitte):** Überschrift in einem hellgrünen, abgerundeten Rechteck: "Volumen-Einheit".
-    - Darunter: Ein Drahtgitterwürfel. Darunter der Text "Kubikmeter (m³)".
-    - Darunter: Ein Drahtgitterwürfel. Darunter der Text "Kubikzentimeter (cm³)".
-    - Darunter: Ein kleiner, transparenter Messbecher mit Skala. Darunter der Text "Liter (l)".
-- **Spalte 3 (rechts):** Überschrift in einem hellorangen, abgerundeten Rechteck: "Dichte-Einheit".
-    - Darunter: Die mathematische Notation "kg / m³".
-    - Darunter: Die mathematische Notation "g / cm³".
-    - Darunter: Die mathematische Notation "g / l".
-- **Pfeile:** Grüne Pfeile verbinden die Einheiten:
-    - Ein Pfeil zeigt von "Kilogramm (kg)" nach rechts zum oberen "Kubikmeter (m³)".
-    - Ein Pfeil zeigt von "Gramm (g)" nach rechts zum mittleren "Kubikzentimeter (cm³)".
-    - Ein Pfeil zeigt von "Gramm (g)" nach rechts zum unteren "Liter (l)".
-    - Ein Pfeil zeigt vom oberen "Kubikmeter (m³)" nach rechts zu "kg / m³".
-    - Ein Pfeil zeigt vom mittleren "Kubikzentimeter (cm³)" nach rechts zu "g / cm³".
-    - Ein Pfeil zeigt vom unteren "Liter (l)" nach rechts zu "g / l".
+**Abschnitt 2: "2. Passende Einheiten verwenden"**
+Dieser mittlere Abschnitt ist in drei vertikale Spalten unterteilt, getrennt durch gestrichelte Linien. Jede Spalte hat eine Kopfzeile in einem abgerundeten Rechteck.
+Die linke Spalte hat die Kopfzeile "Masse-Einheit" (hellblauer Hintergrund). Darunter ist ein graues Kilogramm-Gewichtssymbol mit "kg" abgebildet, darunter "Kilogramm (kg)". Darunter ein kleineres graues Gramm-Gewichtssymbol mit "g", darunter "Gramm (g)".
+Die mittlere Spalte hat die Kopfzeile "Volumen-Einheit" (hellgrüner Hintergrund). Darunter ist ein Drahtgitterwürfel (Kubikmeter) abgebildet, darunter "Kubikmeter (m³)". Darunter ein kleinerer Drahtgitterwürfel (Kubikzentimeter), darunter "Kubikzentimeter (cm³)". Darunter ein Messbecher-Symbol, darunter "Liter (l)".
+Die rechte Spalte hat die Kopfzeile "Dichte-Einheit" (hellorangefarbener Hintergrund). Darunter steht "kg / m³". Darunter "g / cm³". Darunter "g / l".
+Hellgrüne Pfeile mit dunklerem grünen Umriss verbinden die Einheiten: Ein Pfeil zeigt von "Kilogramm (kg)" zu "Kubikmeter (m³)". Ein Pfeil zeigt von "Kubikmeter (m³)" zu "kg / m³". Ein Pfeil zeigt von "Gramm (g)" zu "Kubikzentimeter (cm³)". Ein Pfeil zeigt von "Kubikzentimeter (cm³)" zu "g / cm³". Ein Pfeil zeigt von "Liter (l)" zu "g / l".
+Die Überschrift unter diesem Abschnitt lautet: "2. Passende Einheiten verwenden".
 
-**Bereich 3: "3. Einfache Sachaufgaben lösen"**
-- Oben links: Eine braune, hölzerne Schatztruhe mit goldenen Beschlägen und einem Schlüsselloch. Darüber schwebt eine hellgelbe Sprechblase mit schwarzem Rand, die den Text "Volumen V = 100 cm³" enthält.
-- Unten links: Ein goldener Barren liegt auf einer grauen mechanischen Waage mit einem Zeiger. Darüber schwebt eine hellgelbe Sprechblase mit schwarzem Rand, die den Text "Masse m = 1930 g" enthält.
-- Oben rechts: Eine weiße Gedankenblase mit schwarzem Rand, die ein Fragezeichen und den Text "Dichte ρ = ?" enthält.
-- Mittig rechts: Ein aufgeschlagenes Notizbuch mit Spiralbindung. Die Seite ist hellgelb und enthält die folgenden mathematischen Notationen und Berechnungen in schwarzer Schrift:
-    "ρ = m / V"
-    " = 1930 g / 100 cm³"
-    " = 19,3 g/cm³"
-- Unten rechts: Eine hellgrüne Sprechblase mit schwarzem Rand, die den Text "Dichte berechnet!" enthält.
+**Abschnitt 3: "3. Einfache Sachaufgaben lösen"**
+Dieser rechte Abschnitt zeigt oben links eine Sprechblase mit einem grauen Fragezeichen und dem Text "Dichte ρ = ?". Darunter befindet sich ein hellorangefarbenes, abgerundetes Rechteck mit "Masse m = 1930 g". Rechts davon ist ein Notizbuch mit Spiralbindung und einer hellorangen Seite dargestellt. Auf der Seite steht:
+"ρ = m / V"
+"ρ = 1930 g / 100 cm³"
+"= 19,3 g/cm³"
+Im unteren Bereich dieses Abschnitts sind zwei transparente Messzylinder mit schwarzen Skalenstrichen abgebildet, identisch zu Abschnitt 1. Der linke Zylinder enthält hellblaue Flüssigkeit und ist mit "vorher: 300 cm³" beschriftet. Der rechte Zylinder enthält ebenfalls hellblaue Flüssigkeit, in der ein goldener Barren an einer dünnen Linie von oben herabhängt. Dieser Zylinder ist mit "nachher: 400 cm³" beschriftet. Unter den Zylindern steht der Text:
+"V = 400 cm³ - 300 cm³"
+"= 100 cm³"
+Unten rechts in diesem Abschnitt befindet sich ein hellgrünes, abgerundetes Rechteck mit dem Text "Dichte berechnet!".
+Die Überschrift unter diesem Abschnitt lautet: "3. Einfache Sachaufgaben lösen".
 ```

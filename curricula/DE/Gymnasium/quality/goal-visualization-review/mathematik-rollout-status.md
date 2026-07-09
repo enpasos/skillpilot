@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-08T04:51:47.968Z
+Generated: 2026-07-09T13:29:33.089Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -16,17 +16,17 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 1077 |
-| Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 753 |
+| Alle Ziele in der Landschaft | 1079 |
+| Atomare Ziele im Visualisierungs-Scope | 756 |
+| Ziele mit primaerem Visualisierungslink | 755 |
 | Coverage | 99.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 180 |
+| Review-Ledger-Dateien | 185 |
 | Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 5 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 10 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -34,13 +34,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `approved` | 18 |
-| `pilot` | 735 |
+| `pilot` | 737 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
-| `accepted_after_regeneration` | 2 |
+| `accepted` | 2 |
+| `accepted_after_regeneration` | 5 |
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 586 |
 | `accepted_pilot_after_regeneration` | 142 |
@@ -66,7 +67,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-180.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-185.md` |
 | Latest ledger status | - |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -136,10 +137,15 @@ Weitere 22 Eintraege stehen in der JSON-Begleitdatei.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `fb7a4fa0-03b5-53b4-bd86-608480b748a1` | Betrag eines Vektors im Raum bestimmen | `pilot` | `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` |
+| `a075ae99-7669-563d-807a-f91b119c020a` | Brüche erweitern, kürzen und vergleichen | `pilot` | `accepted_after_regeneration` |
 | `15512e77-31e3-5222-8a6b-84791618e5ce` | Bruchterme addieren und subtrahieren | `pilot` | `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` |
+| `a7c2aa01-4942-597f-a65f-ebb913d0019b` | Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK) | `pilot` | `accepted` |
 | `3016ec37-1c2e-47db-83f5-e767923bc97e` | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `pilot` | `accepted_user_supplied_replacement` |
+| `2345ae25-5805-4c72-b830-32e63cc6262a` | Dichte als abgeleitete Größe verwenden | `pilot` | `accepted_after_regeneration` |
+| `ef1524f1-0b2f-59f7-a001-5ab3e3dececb` | Eigenschaften geometrischer Figuren begründen | `pilot` | `accepted_after_regeneration` |
 | `4af3dfb9-7e15-5da5-8b86-0aac6c80e266` | Einfache geometrische Figuren beschreiben | `pilot` | `accepted_after_regeneration` |
 | `82597dfb-0ec6-4a77-abaf-e1d6bdd12041` | Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen | `pilot` | `accepted_after_regeneration` |
+| `701b3942-9f70-548e-9d02-a34b7e64aa17` | Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK) | `pilot` | `accepted` |
 
 ### Accepted Review Without Link
 

@@ -179,9 +179,19 @@ function subjectLabelFromPath(subjectPath) {
   return labels[normalized] ?? normalized.replace(/(^|-)([a-z])/g, (_, prefix, letter) => `${prefix ? ' ' : ''}${letter.toUpperCase()}`)
 }
 
+function sanitizeProviderGoalText(value) {
+  return String(value ?? '')
+    .replace(/\s*\((?:LK|GK|Grundkurs|Leistungskurs)\)\s*/giu, ' ')
+    .replace(/\b(?:Gymnasium|gymnasiale Oberstufe|gymnasialer Oberstufe|Sekundarstufe I|Sekundarstufe II)\b/giu, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 export function createVisualizationPrompt(goal, options = {}) {
   const phase = goal.phase ? `\nPhase/Jahrgang: ${goal.phase}` : ''
   const area = goal.area ? `\nBereich: ${goal.area}` : ''
+  const providerTitle = sanitizeProviderGoalText(goal.title)
+  const providerDescription = sanitizeProviderGoalText(goal.description ?? 'Keine Beschreibung hinterlegt.')
 
   return [
     'Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.',
@@ -195,8 +205,8 @@ export function createVisualizationPrompt(goal, options = {}) {
     '- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.',
     '- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.',
     '',
-    `Titel: ${goal.title}`,
-    `Beschreibung: ${goal.description ?? 'Keine Beschreibung hinterlegt.'}${phase}${area}`,
+    `Titel: ${providerTitle}`,
+    `Beschreibung: ${providerDescription}${phase}${area}`,
   ].join('\n')
 }
 

@@ -5715,9 +5715,9 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
                 { "DE-HE", "GK", "672", "680" },
-                { "DE-HE", "LK", "777", "785" },
+                { "DE-HE", "LK", "779", "787" },
                 { "DE-RP", "GK", "553", "559" },
-                { "DE-RP", "LK", "648", "654" },
+                { "DE-RP", "LK", "650", "656" },
                 { "DE-SH", "GK", "581", "587" },
                 { "DE-SH", "LK", "664", "670" }
         };

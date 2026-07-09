@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 > Source of truth: `curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json`
 
-Generated: 2026-06-30T09:35:54.406Z
+Generated: 2026-07-09T13:28:42.047Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.
 
@@ -20,29 +20,29 @@ This file is a raw Applicability compiler audit. The Workbench `Curriculum Quali
 
 ## Mathematik (Gymnasium, DE)
 
-Source-coverage atomic goals: 752
+Source-coverage atomic goals: 754
 Global status: 13/16 covered, 3 partial, 0 error.
 View status: 16/16 covered, 0 partial, 0 error.
 Unsupported visible atomic goals: 0. Non-visible missing source-backed atomic goals: 191.
 
 | Bundesland | Status | View status | Covered | Direct | Surrogate-only | Missing | Visible | Visible covered | Unsupported visible | Partial source links | Warnings | Errors |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| DE-BW | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 561 | 0 | 0 |
-| DE-HE | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 0 | 0 | 0 |
-| DE-BY | partial | covered | 617/752 (82%) | 556 | 61 | 135 | 617 | 617 | 0 | 355 | 0 | 0 |
-| DE-BB | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 0 | 0 | 0 |
-| DE-BE | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 0 | 0 | 0 |
-| DE-NI | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 690 | 0 | 0 |
-| DE-NW | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 621 | 0 | 0 |
-| DE-SH | partial | covered | 719/752 (95.6%) | 710 | 9 | 33 | 719 | 719 | 0 | 504 | 0 | 0 |
-| DE-HB | partial | covered | 729/752 (96.9%) | 719 | 10 | 23 | 729 | 729 | 0 | 643 | 0 | 0 |
-| DE-HH | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 615 | 0 | 0 |
-| DE-MV | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 698 | 0 | 0 |
-| DE-RP | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 714 | 0 | 0 |
-| DE-SL | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 707 | 0 | 0 |
-| DE-SN | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 697 | 0 | 0 |
-| DE-ST | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 708 | 0 | 0 |
-| DE-TH | covered | covered | 752/752 (100%) | 752 | 0 | 0 | 752 | 752 | 0 | 725 | 0 | 0 |
+| DE-BW | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 563 | 0 | 0 |
+| DE-HE | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 0 | 0 | 0 |
+| DE-BY | partial | covered | 619/754 (82.1%) | 558 | 61 | 135 | 619 | 619 | 0 | 355 | 0 | 0 |
+| DE-BB | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 0 | 0 | 0 |
+| DE-BE | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 0 | 0 | 0 |
+| DE-NI | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 692 | 0 | 0 |
+| DE-NW | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 623 | 0 | 0 |
+| DE-SH | partial | covered | 721/754 (95.6%) | 710 | 11 | 33 | 721 | 721 | 0 | 504 | 0 | 0 |
+| DE-HB | partial | covered | 731/754 (96.9%) | 721 | 10 | 23 | 731 | 731 | 0 | 645 | 0 | 0 |
+| DE-HH | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 617 | 0 | 0 |
+| DE-MV | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 700 | 0 | 0 |
+| DE-RP | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 716 | 0 | 0 |
+| DE-SL | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 709 | 0 | 0 |
+| DE-SN | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 699 | 0 | 0 |
+| DE-ST | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 710 | 0 | 0 |
+| DE-TH | covered | covered | 754/754 (100%) | 754 | 0 | 0 | 754 | 754 | 0 | 727 | 0 | 0 |
 
 ## Physik (Gymnasium, DE)
 
