@@ -31,48 +31,34 @@ Titel: Dichte als abgeleitete Größe verwenden
 Beschreibung: Die lernende Person kann Dichte als Verhältnis von Masse und Volumen deuten, passende Einheiten verwenden und einfache Sachaufgaben zu Dichte lösen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Korrigiere die bestehende Visualisierung gezielt.
 
-Korrigiere die bestehende Infografik gezielt in der Darstellung, wie Masse und Volumen gemessen werden. Erhalte den grundsätzlichen Aufbau mit drei Bereichen, die freundliche gezeichnete Unterrichtsoptik, die Dichteformel, die Einheitenübersicht und das Rechenbeispiel.
+Erhalte den klaren Cartoon-Stil, das breite 16:9-Layout, den großen Titel und die drei Hauptboxen.
 
-Wichtig: Masse und Volumen werden nicht gemeinsam auf einer Balkenwaage bestimmt.
+Fachliche Pflichtkorrektur:
+- In der dritten Box darf kein Schatzkästchen, keine Schatztruhe und kein dekoratives Behältnis vorkommen.
+- Die dritte Box soll für das Volumen dieselbe sachlich richtige Messmethode zeigen wie die erste Box: Wasserverdrängung in zwei Messzylindern.
+- Zeige in der dritten Box links oder mittig zwei transparente Messzylinder:
+  - linker Messzylinder: "vorher: 300 cm³"
+  - rechter Messzylinder: "nachher: 400 cm³" und ein vollständig eingetauchter goldener Körper hängt an einem Faden im Wasser
+  - daneben oder darunter: "V = 400 cm³ - 300 cm³ = 100 cm³"
+- Zeige zusätzlich eine Waage mit demselben goldenen Körper und die Beschriftung "Masse m = 1930 g".
+- Die Rechnung in der dritten Box muss weiter korrekt bleiben:
+  - "ρ = m / V"
+  - "= 1930 g / 100 cm³"
+  - "= 19,3 g/cm³"
+- Die dritte Box soll also sichtbar zeigen, was in die Rechnung eingeht: gemessene Masse und gemessenes Volumen durch Wasserverdrängung.
 
-Stelle den Messablauf praktisch machbar und fachlich korrekt dar:
+Was unverändert bleiben soll:
+- Die erste Box mit Verhältnisdeutung und Wasserverdrängung bleibt fachlich gleich.
+- Die zweite Box mit passenden Einheiten bleibt fachlich gleich.
+- Die Überschrift der dritten Box bleibt "3. Einfache Sachaufgaben lösen".
 
-1. Masse messen:
-   - Zeige den Metallkörper allein auf einer Waage.
-   - Die Waage zeigt "m = 1930 g".
-   - Es soll klar sein: Nur die Masse wird mit der Waage bestimmt.
-
-2. Volumen durch Wasserverdrängung messen:
-   - Zeige ein Messgefäß mit Skala und Wasser.
-   - Zeige den gleichen Metallkörper vollständig untergetaucht im Wasser, gerne an einem dünnen Faden.
-   - Zeige zwei Wasserstände oder zwei nebeneinander stehende Messgefäße:
-     - vorher: "300 cm³"
-     - nachher: "400 cm³"
-   - Zeige eindeutig: "V = 400 cm³ - 300 cm³ = 100 cm³".
-   - Das verdrängte Volumen ist das Volumen des Körpers.
-
-3. Dichte berechnen:
-   - Behalte die Rechnung korrekt:
-     - "ρ = m / V"
-     - "ρ = 1930 g / 100 cm³"
-     - "ρ = 19,3 g/cm³"
-   - Die Beispielwerte müssen zusammenpassen: Masse 1930 g, Volumen 100 cm³, Dichte 19,3 g/cm³.
-
-Die linke Bildhälfte soll die Idee "Dichte = Masse pro Volumen" zeigen, aber bitte mit zwei getrennten, sinnvollen Messschritten: Waage für Masse, Wasserverdrängung im Messgefäß für Volumen.
-
-Sichtbarer deutscher Text muss korrekt geschrieben sein, insbesondere "Dichte", "Masse", "Volumen", "Wasserstand", "vorher", "nachher", "Verdrängung", "Messgefäß", "berechnet".
-
-Vermeiden:
-
-- Kein Bild, in dem ein Wasserbecher auf einer Waage als Volumenmessung missverstanden werden kann.
-- Keine Balkenwaage, auf der Masse und Volumen gegeneinander abgewogen werden.
-- Kein Volumenwert ohne sichtbare Wasserstandsänderung.
-- Kein nur halb eingetauchter Körper; der Körper muss vollständig untergetaucht sein.
-- Kein anderer Zahlenwert als 1930 g, 100 cm³ und 19,3 g/cm³ im Rechenbeispiel.
-- Keine Änderung der Grundformel "ρ = m / V".
-- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+Gestalterische und sprachliche Vorgaben:
+- Alle deutschen Umlaute korrekt schreiben.
+- Keine internen Anweisungen im Bild.
+- Keine technischen IDs, keine Dateinamen, keine Produktnamen, keine Schulformlabels, keine lokalen oder internen Pfade.
+- Keine falschen Messwerte, keine widersprüchlichen Skalen, keine dekorativen Objekte, die als Volumenmessung missverstanden werden können.
 ```
 
 ## Review-Notiz

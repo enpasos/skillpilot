@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-28T07:00:44.187Z",
+  "generatedAt": "2026-07-09T13:28:30.933Z",
   "generator": "app/scripts/reportGoalSourceRationaleCoverage.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "runtimeIndexPath": "app/src/data/goal-source-rationales-math-public.json"
   },
   "sourceIndex": {
-    "generatedAt": "2026-06-20T07:39:07.339Z",
+    "generatedAt": "2026-07-09T13:20:21.311Z",
     "generator": "app/scripts/generateGoalSourceRationales.ts",
     "summary": {
-      "requestedGoals": 699,
-      "resolvedGoals": 699,
-      "goalsWithClassicSourceRoute": 699,
+      "requestedGoals": 701,
+      "resolvedGoals": 701,
+      "goalsWithClassicSourceRoute": 701,
       "goalsWithoutClassicSourceRoute": 0,
-      "goalsWithMemSparqlConsistentRoute": 185
+      "goalsWithMemSparqlConsistentRoute": 187
     },
     "request": {
       "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -267,7 +267,9 @@
         "16767f5e-5f21-5adb-8365-01b0d64c28f4",
         "c1f08d89-d65a-5041-8ff3-37538f771b8c",
         "474fe553-d868-50d9-a19b-761e64f21c0d",
+        "a7c2aa01-4942-597f-a65f-ebb913d0019b",
         "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
+        "701b3942-9f70-548e-9d02-a34b7e64aa17",
         "d8cbf2bd-2512-5661-b431-4aea7e688912",
         "1c1754b7-2cd3-5635-824d-ce93f7b99514",
         "d32f599e-3b38-5557-8ad3-565bcd99f4c6",
@@ -728,20 +730,20 @@
     }
   },
   "summary": {
-    "totalGoals": 1077,
-    "atomicLeaves": 859,
-    "relevantAtomicLeaves": 752,
+    "totalGoals": 1079,
+    "atomicLeaves": 861,
+    "relevantAtomicLeaves": 754,
     "memoryOrNonContentLeaves": 107,
     "clusters": 218,
-    "containsRelations": 1190,
+    "containsRelations": 1192,
     "requiresRelations": 2444,
-    "runtimeItems": 699,
-    "runtimeItemsInLandscape": 699,
+    "runtimeItems": 701,
+    "runtimeItemsInLandscape": 701,
     "runtimeItemsMissingFromLandscape": 0,
-    "runtimeGoalsWithClassicSourceRationale": 699,
-    "runtimeGoalsWithMemSparqlConsistentRoute": 185,
-    "relevantLeavesWithClassicSourceRationale": 699,
-    "relevantLeavesWithMemSparqlConsistentRoute": 185,
+    "runtimeGoalsWithClassicSourceRationale": 701,
+    "runtimeGoalsWithMemSparqlConsistentRoute": 187,
+    "relevantLeavesWithClassicSourceRationale": 701,
+    "relevantLeavesWithMemSparqlConsistentRoute": 187,
     "relevantLeavesMissingRuntimeSourceRationale": 53,
     "relevantLeavesWithRuntimeClassicGap": 0,
     "clustersWithDirectRuntimeSourceRationale": 0,
@@ -749,15 +751,15 @@
     "containsRelationRationalesImplemented": 0,
     "requiresRelationRationalesImplemented": 0,
     "relevantLeafClassicCoveragePercent": 93,
-    "relevantLeafMemCoveragePercent": 24.6
+    "relevantLeafMemCoveragePercent": 24.8
   },
   "buckets": {
     "byPhase": [
       {
         "key": "Q4",
-        "totalRelevantLeaves": 156,
-        "leavesWithClassicSourceRationale": 116,
-        "leavesWithMemSparqlConsistentRoute": 31,
+        "totalRelevantLeaves": 158,
+        "leavesWithClassicSourceRationale": 118,
+        "leavesWithMemSparqlConsistentRoute": 33,
         "missingRelevantLeaves": 40
       },
       {
@@ -876,9 +878,9 @@
       },
       {
         "key": "Algebra",
-        "totalRelevantLeaves": 51,
-        "leavesWithClassicSourceRationale": 51,
-        "leavesWithMemSparqlConsistentRoute": 28,
+        "totalRelevantLeaves": 53,
+        "leavesWithClassicSourceRationale": 53,
+        "leavesWithMemSparqlConsistentRoute": 30,
         "missingRelevantLeaves": 0
       },
       {
@@ -16397,7 +16399,7 @@
       }
     ],
     "relationRationales": {
-      "containsRelationsPending": 1190,
+      "containsRelationsPending": 1192,
       "requiresRelationsPending": 2444
     }
   },
@@ -24488,6 +24490,28 @@
       "classification": "cluster_aggregate_pending"
     },
     {
+      "id": "a7c2aa01-4942-597f-a65f-ebb913d0019b",
+      "shortKey": "canonical_math_sek2_q4_modular_arithmetic_crt_by_crt_statement_prerequisites",
+      "title": "Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)",
+      "type": "atomic",
+      "phase": "Q4",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.NUMBER_THEORY.MODULAR_CRT_BY.CRT_STATEMENT_PREREQUISITES",
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Zahlentheorie und Kryptologie im Vertiefungskurs (LK)",
+        "Modulare Arithmetik und chinesischen Restsatz nutzen (LK)",
+        "Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK)"
+      ],
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
+    },
+    {
       "id": "e4eaff7f-1e3d-54ea-8a59-02864948b5eb",
       "shortKey": "canonical_math_sek2_q4_modular_arithmetic_crt_by_chinese_remainder",
       "title": "Chinesischen Restsatz nutzen (LK)",
@@ -24503,6 +24527,28 @@
         "Zahlentheorie und Kryptologie im Vertiefungskurs (LK)",
         "Modulare Arithmetik und chinesischen Restsatz nutzen (LK)",
         "Chinesischen Restsatz nutzen (LK)"
+      ],
+      "runtimeCovered": true,
+      "classicSourceRoute": true,
+      "memSparqlStatus": "mem_sparql_consistent",
+      "classification": "covered_runtime_classic_and_mem"
+    },
+    {
+      "id": "701b3942-9f70-548e-9d02-a34b7e64aa17",
+      "shortKey": "canonical_math_sek2_q4_modular_arithmetic_crt_by_constructive_proof",
+      "title": "Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)",
+      "type": "atomic",
+      "phase": "Q4",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK2.Q4.NUMBER_THEORY.MODULAR_CRT_BY.CONSTRUCTIVE_PROOF",
+      "pathTitles": [
+        "Mathematik",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen",
+        "Funktionenscharen, Argumentieren und komplexe Zahlen (Sek II)",
+        "Problemlösen und Argumentieren",
+        "Zahlentheorie und Kryptologie im Vertiefungskurs (LK)",
+        "Modulare Arithmetik und chinesischen Restsatz nutzen (LK)",
+        "Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)"
       ],
       "runtimeCovered": true,
       "classicSourceRoute": true,

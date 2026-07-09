@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `app/src/data/goal-source-rationales-math-public.json`
 
-Generated: 2026-06-28T07:00:44.187Z
+Generated: 2026-07-09T13:28:30.933Z
 
 Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung schon skaliert. Er ist ein Status- und Arbeitslisten-Artefakt: offene Eintraege blockieren die Runtime nicht, machen aber sichtbar, welche Ziel- und Relationstexte noch aufgebaut werden muessen.
 
@@ -16,34 +16,34 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 
 | Metric | Value |
 | --- | --- |
-| Alle Mathematik-Ziele | 1077 |
-| Atomare Blattleernziele | 859 |
-| Davon relevant fuer Quellenbegruendung | 752 |
+| Alle Mathematik-Ziele | 1079 |
+| Atomare Blattleernziele | 861 |
+| Davon relevant fuer Quellenbegruendung | 754 |
 | Memory-/Nicht-Content-Blattziele | 107 |
 | Clusterziele | 218 |
-| Runtime-Quellenbegruendungen | 699 |
-| Runtime-Ziele mit klassischem Quellenweg | 699 |
-| Runtime-Ziele mit MEM/FWU-konsistenter Route | 185 |
-| Relevante Blattziele mit klassischem Quellenweg | 699/752 (93.0%) |
-| Relevante Blattziele mit MEM/FWU-konsistenter Route | 185/752 (24.6%) |
+| Runtime-Quellenbegruendungen | 701 |
+| Runtime-Ziele mit klassischem Quellenweg | 701 |
+| Runtime-Ziele mit MEM/FWU-konsistenter Route | 187 |
+| Relevante Blattziele mit klassischem Quellenweg | 701/754 (93.0%) |
+| Relevante Blattziele mit MEM/FWU-konsistenter Route | 187/754 (24.8%) |
 | Relevante Blattziele ohne Runtime-Quellenbegruendung | 53 |
 | Relevante Blattziele mit Runtime-Classic-Gap | 0 |
 | Cluster mit direkter Runtime-Quellenbegruendung | 0/218 |
 | Cluster ohne direkte Runtime-Quellenbegruendung | 218 |
-| contains-Relationen mit Begruendungstext | 0/1190 |
+| contains-Relationen mit Begruendungstext | 0/1192 |
 | requires-Relationen mit Begruendungstext | 0/2444 |
 
 ## Interpretation
 
 - Die Runtime-Datei enthaelt aktuell direkte Quellenbegruendungen fuer alle bereits klassisch belegten relevanten Mathematik-Blattziele. Sie deckt Zielknoten ab, aber noch keine `requires`- oder `contains`-Relationstexte.
-- Die 699 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
+- Die 701 Runtime-Eintraege sind der online ausgelieferte, gap-freie Ausschnitt. Die fehlenden relevanten Blattziele bleiben als nicht-blockierende Arbeitsliste im All-Relevant-Report sichtbar.
 - MEM/FWU-SPARQL ist nur dort als konsistent gezaehlt, wo der klassische Quellenweg bereits auf einen passenden MEM-Erwartungstext gematcht werden konnte.
 
 ## Gaps By Phase
 
 | Bucket | Relevant leaves | Classic | MEM consistent | Missing |
 | --- | --- | --- | --- | --- |
-| Q4 | 156 | 116 (74.4%) | 31 (19.9%) | 40 |
+| Q4 | 158 | 118 (74.7%) | 33 (20.9%) | 40 |
 | E | 93 | 85 (91.4%) | 24 (25.8%) | 8 |
 | Q2 | 139 | 136 (97.8%) | 16 (11.5%) | 3 |
 | Q3 | 68 | 66 (97.1%) | 11 (16.2%) | 2 |
@@ -65,7 +65,7 @@ Dieser Report misst, wie weit die oeffentliche Mathematik-Quellenbegruendung sch
 | Stochastics | 2 | 1 (50.0%) | 1 (50.0%) | 1 |
 | LinearAlgebra | 70 | 70 (100.0%) | 5 (7.1%) | 0 |
 | Geometry | 69 | 69 (100.0%) | 24 (34.8%) | 0 |
-| Algebra | 51 | 51 (100.0%) | 28 (54.9%) | 0 |
+| Algebra | 53 | 53 (100.0%) | 30 (56.6%) | 0 |
 | Arithmetic | 42 | 42 (100.0%) | 20 (47.6%) | 0 |
 | Data | 9 | 9 (100.0%) | 8 (88.9%) | 0 |
 | Measurement | 9 | 9 (100.0%) | 3 (33.3%) | 0 |
@@ -296,5 +296,5 @@ Weitere 158 Eintraege stehen in der JSON-Begleitdatei.
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Runtime index: `app/src/data/goal-source-rationales-math-public.json`
-- Runtime index generated: 2026-06-20T07:39:07.339Z
+- Runtime index generated: 2026-07-09T13:20:21.311Z
 

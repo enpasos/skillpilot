@@ -31,35 +31,33 @@ Titel: Eigenschaften geometrischer Figuren begründen
 Beschreibung: Die lernende Person kann Eigenschaften einfacher geometrischer Figuren begründen und die verwendeten Kongruenz-, Ähnlichkeits-, Parallelitäts- oder Winkelargumente nachvollziehbar darstellen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Korrigiere Abschnitt 1 "Parallelität & Wechselwinkel" fachlich.
-- Sichtbar in Abschnitt 1 sollen nur diese mathematischen Inhalte stehen:
-  - Überschrift: "1. Parallelität & Wechselwinkel"
-  - Ein kleines Parallelogramm ABCD mit A unten links, B oben links, C oben rechts, D unten rechts.
-  - Die Diagonale AC.
-  - Die Parallelitätsmarkierung AB ∥ CD.
-  - Die Parallelitätszeichen in Abschnitt 1 sitzen sichtbar auf den schrägen Seiten AB und CD.
-  - Auf den Seiten BC und AD stehen in Abschnitt 1 keine Parallelitätszeichen, wenn dort "Winkel BAC = Winkel DCA" erklärt wird.
-  - Der Text: "Winkel BAC = Winkel DCA"
-  - Optional kurz: "Wechselwinkel sind gleich"
-- Markiere genau zwei rote Winkel:
-  - Winkel BAC am Punkt A, genau zwischen den Strahlen A->B und A->C.
-  - Winkel DCA am Punkt C, genau zwischen den Strahlen C->D und C->A.
-- Die roten Winkel müssen mit gleichen roten Bögen markiert sein und eindeutig zu "Winkel BAC = Winkel DCA" gehören.
-- Wenn Abschnitt 1 zusätzlich den blauen Winkelvergleich zeigt, muss dieser exakt passen:
-  - Winkel BCA am Punkt C zwischen C->B und C->A.
-  - Winkel DAC am Punkt A zwischen A->D und A->C.
-- Erhalte die übrige Bildidee: gemeinsame Diagonale AC, Kongruenz der Dreiecke ABC und CDA, Schluss auf gleich lange gegenüberliegende Seiten.
-- Sichtbarer deutscher Text soll echte Umlaute verwenden.
+Korrigiere die bestehende Visualisierung gezielt.
 
-Vermeiden:
-- Keine roten Winkelbögen an AD/AC für die Beschriftung BAC.
-- Keine roten Winkelbögen an BC/AC für die Beschriftung DCA.
-- Keine zusätzlichen Punktnamen und keine doppelten D-Punkte in einem Parallelogramm.
-- Keine Beschriftungslinien, die auf einen anderen Winkel zeigen als der daneben genannte Winkel.
-- Keine Vektorpfeile für Seitenlängen; Seitenlängen als Längenbeziehung schreiben.
-- Als Bildtext nur mathematische Fachtexte aus dem Pflichtinhalt verwenden.
-- Keine technischen IDs, Dateinamen, Plattformnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+Erhalte den klaren handgezeichneten Stil, das breite 16:9-Layout, den Titel oben und die drei gelben Abschnittsüberschriften.
+
+Fachliche Pflichtkorrektur:
+- Abschnitt 1 und Abschnitt 2 dürfen inhaltlich gleich bleiben: Parallelogramm ABCD mit Diagonale AC, Wechselwinkel und gemeinsamer Seite.
+- Abschnitt 3 darf keine separaten, frei neu gezeichneten Dreiecke enthalten, wenn ihre Form, Orientierung, Winkel oder Seitenmarkierungen nicht exakt zu den aus dem Parallelogramm entstehenden Dreiecken passen.
+- Sicherste Lösung: Entferne in Abschnitt 3 die beiden separaten Dreieckszeichnungen vollständig und ersetze sie durch eine saubere, textbasierte Schlussfolgerungsbox mit kleinen korrekten Symbolen.
+- Die Box soll klar zeigen:
+  1. Winkel BAC = Winkel DCA
+  2. Winkel BCA = Winkel CAD
+  3. AC ist gemeinsame Seite
+  4. Daraus folgt: Dreieck ABC ist kongruent zu Dreieck CDA (WSW)
+  5. Also: Länge(AB) = Länge(CD) und Länge(BC) = Länge(AD)
+- Der Abschlusssatz muss lauten: "Gegenüberliegende Seiten im Parallelogramm sind gleich lang."
+
+Wenn du in Abschnitt 3 doch Dreiecke zeichnest, müssen sie exakt die beiden Teildreiecke aus demselben Parallelogramm sein:
+- Dreieck ABC und Dreieck CDA entstehen durch dieselbe Diagonale AC.
+- AC ist in beiden Dreiecken dieselbe gemeinsame Seite.
+- Gleiche Winkelmarkierungen müssen an exakt entsprechenden Winkeln sitzen.
+- Seitenmarkierungen müssen den Schluss Länge(AB) = Länge(CD) und Länge(BC) = Länge(AD) korrekt unterstützen.
+
+Gestalterische Vorgaben:
+- Keine langen Zusatztexte, keine internen Anweisungen im Bild.
+- Alle deutschen Umlaute korrekt schreiben.
+- Keine technische Beschriftung, keine Dateinamen, keine Produktnamen, keine Schulformlabels.
+- Keine falschen Pfeile, keine unpassenden Dreiecksformen, keine widersprüchlichen Markierungen.
 ```
 
 ## Review-Notiz
