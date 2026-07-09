@@ -32,16 +32,23 @@ Beschreibung: Die lernende Person kann Einheitskreis- und Bogenmassvorstellungen
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Preserve the existing unit-circle layout, point P, coordinates, angle, red arc, sine and cosine arrows, and all formulas.
-- Correct only the label next to the red arc: it must read exactly "Bogenlänge π/3".
-- The German letter "ä" in "Bogenlänge" must be drawn correctly with two dots above the a.
-- Keep the point label "P(1/2 | √3/2)", the angle label "α = π/3 = 60°", the sine label, and the cosine label unchanged and readable.
-- Keep the red arc from angle 0 to π/3 and do not change the geometry.
+
+- Keep the existing unit-circle composition, title, point label, angle label, arc label, axes, and overall style.
+- Correct the blue x-coordinate highlight for `cos(α) = 1/2`.
+- The blue horizontal segment must start at the origin and end exactly at the foot of the vertical dashed line from point `P`.
+- That blue segment must be visibly half as long as the radius from the origin to the point `1` on the positive x-axis.
+- The label `1/2` must sit at the end of the blue segment or directly below that endpoint.
+- The remaining horizontal distance from `1/2` to `1` must not be blue.
+- Keep the slanted radius from the origin to `P` visible as the radius of the unit circle, not as the blue cosine segment.
+- Keep the red/y-coordinate projection and `√3/2` label consistent with the point `P(1/2 | √3/2)`.
 
 Vermeiden:
-- Do not write "Bogenlaenge", "Bogenlange", "Bogenlanke", or any malformed version of "Bogenlänge".
-- Do not change the angle, coordinates, arc length value, sine value, cosine value, arrows, point, or circle.
-- Do not add extra formulas, extra labels, watermarks, logos, source notes, technical labels, or internal instructions.
+
+- Do not show the blue segment from the origin all the way to `1`.
+- Do not move `P` away from the 60-degree point on the unit circle.
+- Do not change `α = π/3 = 60°`, `Bogenlänge π/3`, `sin(α) = y-Koordinate`, or `cos(α) = x-Koordinate`.
+- Do not add extra formulas, notes, arrows, icons, or decorative labels.
+- Do not redraw the figure as a different angle or a different unit-circle example.
 ```
 
 ## Review-Notiz

@@ -18,6 +18,9 @@ const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium',
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
 const GOAL_VISUALIZATION_QA_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'goal-visualization-qa')
+const GOAL_VISUALIZATION_SOURCE_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'visualizations')
+const GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_MODEL = 'gemini-2.5-flash'
+const GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models'
 const GYMNASIUM_MAPPING_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'mapping')
 const SOURCE_LANDSCAPE_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-landscape-registry.json')
 const SOURCE_GOAL_MEMBERSHIP_REGISTRY_PATH = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'provenance', 'source-goal-membership-registry.json')
@@ -88,6 +91,8 @@ const asRecord = (value: unknown): Record<string, unknown> => {
   }
   return {}
 }
+
+const readString = (value: unknown): string => typeof value === 'string' ? value : ''
 
 const normalizeMappingPipelineCheck = (value: unknown): Record<string, unknown> | null => {
   const record = asRecord(value)
@@ -222,6 +227,166 @@ const resolveGoalVisualizationQaAbsolutePath = (candidatePath: string): string |
 
   return absolutePath
 }
+
+const resolveGoalVisualizationCanonicalAssetAbsolutePath = (candidatePath: string): string | null => {
+  const sanitizedPath = candidatePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+  if (!sanitizedPath.startsWith('curricula/DE/Gymnasium/visualizations/')) return null
+
+  const absolutePath = path.resolve(REPO_ROOT, sanitizedPath)
+  if (!isPathInside(absolutePath, GOAL_VISUALIZATION_SOURCE_ROOT)) return null
+  if (!/\.(png|jpe?g|webp)$/i.test(path.basename(absolutePath))) return null
+
+  return absolutePath
+}
+
+const extractFencedPromptText = (markdown: string): string => {
+  const match = markdown.match(/```(?:text)?\r?\n([\s\S]*?)```/u)
+  return (match?.[1] ?? markdown).trim()
+}
+
+const imageMimeTypeForPath = (imagePath: string): string => {
+  const extension = path.extname(imagePath).toLowerCase()
+  if (extension === '.png') return 'image/png'
+  if (extension === '.webp') return 'image/webp'
+  return 'image/jpeg'
+}
+
+const readLocalSecretEnv = async (key: 'GEMINI_API_KEY' | 'GOOGLE_API_KEY'): Promise<string | undefined> => {
+  const envPaths = [
+    path.resolve(REPO_ROOT, '.env.local'),
+    path.resolve(APP_ROOT, '.env.local'),
+  ]
+
+  for (const envPath of envPaths) {
+    if (!existsSync(envPath)) continue
+    const content = await fs.readFile(envPath, 'utf8')
+    for (const line of content.split(/\r?\n/u)) {
+      const match = line.match(/^\s*(GEMINI_API_KEY|GOOGLE_API_KEY)\s*=\s*(.*)\s*$/u)
+      if (!match || match[1] !== key) continue
+      return match[2].replace(/^['"]|['"]$/g, '').trim()
+    }
+  }
+
+  return undefined
+}
+
+const getGeminiApiKey = async (): Promise<string> => {
+  const apiKey =
+    process.env.GEMINI_API_KEY?.trim() ||
+    (await readLocalSecretEnv('GEMINI_API_KEY')) ||
+    process.env.GOOGLE_API_KEY?.trim() ||
+    (await readLocalSecretEnv('GOOGLE_API_KEY'))
+
+  if (!apiKey) {
+    throw new Error('Missing GEMINI_API_KEY or GOOGLE_API_KEY for reconstruction prompt generation.')
+  }
+
+  return apiKey
+}
+
+const buildGoalVisualizationReconstructionPromptRequest = (imageData: string, mimeType: string) => ({
+  contents: [
+    {
+      role: 'user',
+      parts: [
+        {
+          text: [
+            'Analyze only the attached image.',
+            'Write a standalone image-generation prompt in German that could recreate this image without any other context.',
+            'Output only the prompt text, no preface and no Markdown fence.',
+            '',
+            'Rules:',
+            '- Do not mention that an attached, source, or reference image exists.',
+            '- Do not include technical IDs, file names, product or platform names, school-form labels, local paths, or internal paths.',
+            '- Never output these exact words: SkillPilot, Nano Banana, Gemini, Gymnasium.',
+            '- Describe the visual style, layout, colors, visible text, mathematical notation, labels, arrows, diagrams, and spatial relationships precisely.',
+            '- Preserve visible German wording and mathematical notation exactly where it is readable.',
+            '- If a visual element is mathematically important, describe the intended relation explicitly.',
+          ].join('\n'),
+        },
+        {
+          inline_data: {
+            mime_type: mimeType,
+            data: imageData,
+          },
+        },
+      ],
+    },
+  ],
+  generationConfig: {
+    temperature: 0.2,
+  },
+})
+
+const requestGoalVisualizationReconstructionPrompt = async (imagePath: string): Promise<{ prompt: string; response: unknown }> => {
+  const apiKey = await getGeminiApiKey()
+  const requestBody = buildGoalVisualizationReconstructionPromptRequest(
+    (await fs.readFile(imagePath)).toString('base64'),
+    imageMimeTypeForPath(imagePath),
+  )
+  const response = await fetch(
+    `${GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_ENDPOINT}/${encodeURIComponent(GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_MODEL)}:generateContent`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey,
+      },
+      body: JSON.stringify(requestBody),
+    },
+  )
+
+  const responseText = await response.text()
+  let payload: unknown
+  try {
+    payload = JSON.parse(responseText)
+  } catch {
+    throw new Error(`Gemini prompt reconstruction returned non-JSON response (${response.status}): ${responseText.slice(0, 500)}`)
+  }
+
+  if (!response.ok) {
+    throw new Error(`Gemini prompt reconstruction failed (${response.status}): ${JSON.stringify(payload, null, 2)}`)
+  }
+
+  const textParts: string[] = []
+  const candidates = Array.isArray((payload as { candidates?: unknown[] }).candidates)
+    ? (payload as { candidates: unknown[] }).candidates
+    : []
+  for (const candidate of candidates) {
+    const parts = (candidate as { content?: { parts?: unknown[] } })?.content?.parts ?? []
+    for (const part of parts) {
+      const text = (part as { text?: unknown }).text
+      if (typeof text === 'string' && text.trim()) textParts.push(text.trim())
+    }
+  }
+
+  const prompt = textParts.join('\n\n').trim()
+  if (!prompt) {
+    throw new Error('Gemini prompt reconstruction response did not contain text.')
+  }
+
+  return { prompt, response: payload }
+}
+
+const createGoalVisualizationReconstructionPromptMarkdown = (imagePath: string, rawPrompt: string): string => [
+  '# Bildrekonstruktionsprompt',
+  '',
+  '## Generator',
+  '',
+  `- Provider: Google Gemini (${GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_MODEL})`,
+  `- Quellbild: \`${toPosixPath(path.relative(REPO_ROOT, imagePath))}\``,
+  '',
+  '## Zweck',
+  '',
+  'Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.',
+  '',
+  '## Prompt',
+  '',
+  '```text',
+  rawPrompt.replace(/```/gu, "'''"),
+  '```',
+  '',
+].join('\n')
 
 const collectDeckFiles = async (directory: string, result: string[]): Promise<void> => {
   const entries = await fs.readdir(directory, { withFileTypes: true })
@@ -2066,6 +2231,56 @@ const deckEditorDevPlugin = {
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),
             ledger,
+          })
+          return
+        }
+
+        if (requestUrl.pathname === '/__goal-visualization-qa/reconstruction-prompt') {
+          if (req.method !== 'GET' && req.method !== 'POST') {
+            sendJson(res, 405, { error: 'Method not allowed' })
+            return
+          }
+
+          const body = req.method === 'POST' ? asRecord(await readJsonBody(req)) : {}
+          const canonicalAssetPathParam = req.method === 'POST'
+            ? readString(body.canonicalAssetPath)
+            : requestUrl.searchParams.get('canonicalAssetPath') ?? ''
+          const canonicalAssetPath = resolveGoalVisualizationCanonicalAssetAbsolutePath(canonicalAssetPathParam)
+          if (!canonicalAssetPath) {
+            sendJson(res, 400, { error: 'Invalid canonical goal visualization asset path.' })
+            return
+          }
+
+          const promptPath = path.join(path.dirname(canonicalAssetPath), 'image-reconstruction-prompt.de.md')
+          if (req.method === 'POST') {
+            const reconstruction = await requestGoalVisualizationReconstructionPrompt(canonicalAssetPath)
+            const markdown = createGoalVisualizationReconstructionPromptMarkdown(canonicalAssetPath, reconstruction.prompt)
+            await fs.writeFile(promptPath, markdown, 'utf8')
+            sendJson(res, 200, {
+              available: true,
+              path: toPosixPath(path.relative(REPO_ROOT, promptPath)),
+              prompt: reconstruction.prompt,
+              markdown,
+            })
+            return
+          }
+
+          if (!existsSync(promptPath)) {
+            sendJson(res, 200, {
+              available: false,
+              path: toPosixPath(path.relative(REPO_ROOT, promptPath)),
+              prompt: '',
+              markdown: '',
+            })
+            return
+          }
+
+          const markdown = await fs.readFile(promptPath, 'utf8')
+          sendJson(res, 200, {
+            available: true,
+            path: toPosixPath(path.relative(REPO_ROOT, promptPath)),
+            prompt: extractFencedPromptText(markdown),
+            markdown,
           })
           return
         }

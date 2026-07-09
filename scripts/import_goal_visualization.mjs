@@ -11,6 +11,7 @@ import {
   ROOT_DIR,
   buildVisualizationPaths,
   createGoalVisualizationLink,
+  createImageReconstructionPromptMetadataMarkdown,
   createPromptMetadataMarkdown,
   createVisualizationPrompt,
   extractPromptText,
@@ -45,6 +46,7 @@ function usage() {
     '  --description <text>   Optional resourceLink description.',
     '  --alt-text <text>      Optional resourceLink alt text.',
     '  --prompt <path>        Optional prompt markdown/text file.',
+    '  --reconstruction-prompt <path> Optional standalone image reconstruction prompt markdown/text file.',
     '  --dry-run              Print planned changes without writing files.',
   ].join('\n')
 }
@@ -87,6 +89,33 @@ function readPromptForGoal(goalId, lang, explicitPromptPath) {
   }
 
   return undefined
+}
+
+function inferReconstructionPromptPath(imagePath, lang) {
+  const extension = path.extname(imagePath)
+  const basePath = path.join(path.dirname(imagePath), path.basename(imagePath, extension))
+  const candidates = [
+    `${basePath}.image-reconstruction-prompt.${lang}.md`,
+    `${basePath}.reconstruction-prompt.${lang}.md`,
+    `${basePath}.image-reconstruction-prompt.md`,
+    `${basePath}.reconstruction-prompt.md`,
+    path.join(path.dirname(imagePath), `image-reconstruction-prompt.${lang}.md`),
+  ]
+
+  return candidates.find((candidate) => fs.existsSync(candidate))
+}
+
+function readReconstructionPromptForImage(imagePath, lang, explicitPromptPath) {
+  const promptPath = explicitPromptPath
+    ? resolveExistingInputPath(explicitPromptPath)
+    : inferReconstructionPromptPath(imagePath, lang)
+
+  if (!promptPath) return null
+
+  return {
+    path: promptPath,
+    rawPrompt: extractPromptText(fs.readFileSync(promptPath, 'utf-8')),
+  }
 }
 
 function main() {
@@ -140,6 +169,18 @@ function main() {
     publicUrl: paths.publicUrl,
     rawPrompt,
   })
+  const reconstructionPrompt = readReconstructionPromptForImage(
+    imagePath,
+    lang,
+    getStringArg(args, 'reconstruction-prompt'),
+  )
+  const reconstructionPromptMarkdown = reconstructionPrompt
+    ? createImageReconstructionPromptMetadataMarkdown(goal, {
+      provider,
+      sourceImageFile: paths.fileName,
+      rawPrompt: reconstructionPrompt.rawPrompt,
+    })
+    : null
 
   const newLink = createGoalVisualizationLink(goal, {
     provider,
@@ -163,7 +204,11 @@ function main() {
   console.log(`Canonical image: ${toProjectPath(paths.sourceImagePath)}`)
   console.log(`Public image: ${toProjectPath(paths.publicImagePath)}`)
   console.log(`Canonical prompt: ${toProjectPath(paths.sourcePromptPath)}`)
+  console.log(`Canonical reconstruction prompt: ${toProjectPath(paths.sourceReconstructionPromptPath)}`)
   console.log(`JSON link URL: ${paths.publicUrl}`)
+  if (reconstructionPrompt) {
+    console.log(`Reconstruction prompt source: ${toProjectPath(reconstructionPrompt.path)}`)
+  }
 
   if (dryRun) {
     console.log('')
@@ -175,6 +220,11 @@ function main() {
   copyFileIfNeeded(imagePath, paths.publicImagePath, dryRun)
   fs.mkdirSync(path.dirname(paths.sourcePromptPath), { recursive: true })
   fs.writeFileSync(paths.sourcePromptPath, promptMarkdown, 'utf-8')
+  if (reconstructionPromptMarkdown) {
+    fs.writeFileSync(paths.sourceReconstructionPromptPath, reconstructionPromptMarkdown, 'utf-8')
+  } else if (fs.existsSync(paths.sourceReconstructionPromptPath)) {
+    fs.unlinkSync(paths.sourceReconstructionPromptPath)
+  }
   writeLandscape(landscapePath, landscape)
 
   console.log('')

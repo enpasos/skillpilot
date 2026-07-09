@@ -33,32 +33,30 @@ Beschreibung: Die lernende Person kann einfache geometrische Figuren, insbesonde
 Zusatzanweisung:
 Pflichtinhalt:
 
-Korrigiere die bestehende Tafel-Infografik als reine Textkorrektur. Erhalte den vorhandenen Stil, das Layout, die Figuren, Farben und den fachlichen Inhalt. Kein Redesign, keine neuen Beispiele.
+- Keep the chalkboard layout, all geometric figures, all side marks, all angle marks, all headings, and the overall visual style unchanged.
+- Correct every visible misspelling of the word `gegenüberliegende` or `gegenüberliegender`.
+- The final visible spellings must use the German umlaut: `gegenüberliegende` and `gegenüberliegender`.
+- Do not use `gegenueberliegende`, `gegenueberliegender`, `gegenuëberliegende`, or any other substitute spelling.
+- Set these three captions exactly:
+  - `Rechteck: gegenüberliegende Seiten gleich lang, vier rechte Winkel.`
+  - `Parallelogramm: gegenüberliegende Seiten parallel und gleich lang.`
+  - `Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.`
+- Make no other text changes unless required to preserve the exact existing grammar around that corrected word.
+- Do not add new formulas, arrows, labels, icons, notes, or warnings.
 
-Korrigiere jede Schreibweise des Wortes "gegenüberliegend":
+Acceptance checklist:
 
-- Nutze genau "gegenüberliegende", wenn mehrere Seiten oder Winkel beschrieben werden.
-- Nutze genau "gegenüberliegender", wenn "ein Paar ... Seiten" beschrieben wird.
-- Der Wortteil muss exakt "gegenüber" lauten: mit "ü" nach "gegen" und vor "ber".
-- Verwende keine falschen Schreibweisen wie "gegenüerbliegende", "gegenuberliegende", "gegenüberligende" oder Varianten ohne korrektes "über".
-
-Die Beschreibungen der Vierecke sollen inhaltlich so bleiben:
-
-- Rechteck: gegenüberliegende Seiten gleich lang, vier rechte Winkel.
-- Parallelogramm: gegenüberliegende Seiten parallel und gleich lang.
-- Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.
-- Raute: vier gleich lange Seiten, gegenüberliegende Winkel gleich groß.
-
-Korrigiere außerdem sichtbaren deutschen Text mit "gross" oder "grosse" zu "groß" beziehungsweise "große".
+- The rectangle text says that opposite sides are equal in length, with `gegenüberliegende` spelled correctly.
+- The parallelogram text says that opposite sides are parallel and equal in length, with `gegenüberliegende` spelled correctly.
+- The trapezoid text says that at least one pair of opposite sides is parallel, with `gegenüberliegender` spelled correctly.
+- The rhombus text still contains `gegenüberliegende Winkel gleich groß.`
+- The triangle and quadrilateral drawings remain geometrically consistent with their labels.
 
 Vermeiden:
 
-- Keine falsche Schreibweise von "gegenüberliegende" oder "gegenüberliegender".
-- Keine Schreibweise ohne Umlaut in "gegenüber".
-- Keine Änderung der geometrischen Zeichnungen.
-- Keine Änderung der mathematischen Eigenschaften der Figuren.
-- Keine neuen Figuren, keine zusätzlichen Beispiele, keine neuen Erklärkästen.
-- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+- Do not redraw or reinterpret the figures.
+- Do not change correct words such as `gleich`, `groß`, `Hypotenuse`, `Kathete`, `Basiswinkel`, `Quadrat`, `Raute`, `Rechteck`, `Parallelogramm`, `Trapez`, or `Drachenviereck`.
+- Do not add decorative elements, extra explanations, internal notes, warning boxes, or source labels.
 ```
 
 ## Review-Notiz

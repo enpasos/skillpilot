@@ -32,43 +32,28 @@ Beschreibung: Die lernende Person kann die Struktur von Bruchtermen erkennen, si
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-Korrigiere die bestehende freundliche Infografik gezielt. Erhalte den zweigeteilten Aufbau mit "Kürzen (vereinfachen)" links und "Erweitern (Wert erhalten)" rechts, den hellblauen Stil und die Warnung "NICHT über Summen kürzen!".
-
-Linker Kasten "Kürzen":
-
-- Starte wie bisher mit dem Bruch (2x + 6) / (x + 3).
-- Zeige die Faktorisierung:
-  (2x + 6) / (x + 3) = 2(x + 3) / (x + 3)
-- Kürze ausschließlich die beiden gleichen Faktoren (x + 3) im Zähler und im Nenner.
-- Der Faktor 2 bleibt vollständig stehen und darf nicht durchgestrichen werden.
-- Das Ergebnis bleibt 2.
-- Die Bedingung bleibt: x != -3.
-- Entferne das große rote Kreuz über dem ganzen Bruch im Kürzungsschritt.
-- Wenn du Kürzungsmarken setzt, setze höchstens kleine rote Striche nur auf die beiden Textteile "(x + 3)" im Zähler und im Nenner.
-- Wenn du die Kürzungsmarken nicht eindeutig nur auf "(x + 3)" setzen kannst, lasse die Kürzungsmarken im linken Hauptbeispiel lieber ganz weg. Keine Kürzungsmarke ist akzeptabel; eine falsche Kürzungsmarke über der 2 ist nicht akzeptabel.
-
-Rechter Kasten "Erweitern":
-
-- Mache deutlich, warum erweitert wird: "Zielnenner 6" oder "auf Nenner 6 erweitern" soll sichtbar sein.
-- Verwende ein sinnvolles Beispiel:
-  (x + 1) / 2 = ((x + 1) · 3) / (2 · 3) = 3(x + 1) / 6
-- Die Aussage bleibt: Zähler und Nenner werden mit demselben Faktor multipliziert, der Wert des Bruchs bleibt gleich.
-
-Sichtbarer deutscher Text soll korrekte Umlaute verwenden.
+- Fuehre eine gezielte, minimale Ueberarbeitung des bestehenden Lernbilds aus. Behalte den freundlichen Cartoon-Stil, die Zweiteilung in "Kuerzen" links und "Erweitern" rechts sowie die allgemeine Farb- und Layoutwirkung bei.
+- Im linken Kasten zum Kuerzen muss der Rechenweg fachlich eindeutig sein:
+  Ausgangsterm: (2x + 6) / (x + 3)
+  Faktorisieren: 2(x + 3) / (x + 3)
+  Kuerzen: Nur der gemeinsame Faktor (x + 3) im Zaehler und Nenner wird gestrichen.
+  Ergebnis: 2
+  Nebenbedingung: x ungleich -3.
+- Im linken Kasten darf die 2 nicht gestrichen oder als gekuerzter Faktor markiert werden.
+- Im rechten Kasten soll das Beispiel sinnvoll zeigen, warum Erweitern gebraucht wird: Addition von Bruchtermen mit Hauptnenner 6.
+  Ausgangsterm: (x + 1) / 2 + 1 / 3
+  Zwischenschritt: 3(x + 1) / 6 + 2 / 6
+  Ergebnis: (3x + 5) / 6
+- Zeige rechts sinngemaess "Hauptnenner 6" oder "auf Hauptnenner 6 erweitern". Der didaktische Fokus ist: Nenner angleichen, dann Zaehler addieren.
+- Behalte die Merkaussage unten sinngemaess bei: Erst faktorisieren, dann kuerzen.
 
 Vermeiden:
-
-- Keine Kürzungsmarkierung auf dem Faktor 2.
-- Kein großer roter Strich oder rotes Kreuz, das den Faktor 2 im Ausdruck 2(x + 3) berührt.
-- Kein großes rotes X über dem gesamten Bruch 2(x + 3)/(x + 3).
-- Keine Kürzungsmarke, die das komplette Produkt 2(x + 3) durchstreicht.
-- Keine Darstellung, die suggeriert, dass 2 gekürzt wird.
-- Keine Kürzung über Summen.
-- Kein bloßes Erweitern mit 3/3 ohne sichtbaren Zweck oder Zielnenner.
-- Keine Änderung des linken Ergebnisses 2.
-- Keine Änderung der Bedingung x != -3.
-- Keine technischen IDs, Dateinamen, Plattformnamen, Produktnamen, internen Pfade oder internen Zielgruppenlabels im Bild.
+- Keine roten Kuerzstriche durch die 2.
+- Keine Kuerzung ueber Summen hinweg.
+- Kein isoliertes Erweitern mit 3/3, wenn es keinen gemeinsamen Nenner fuer eine Addition vorbereitet.
+- Keine falsche Gleichung und kein Weglassen des Pluszeichens im rechten Ausgangsterm.
+- Keine technischen Kennungen, keine internen Labels, keine Wasserzeichen.
+- Keine unleserlichen oder erfundenen deutschen Woerter.
 ```
 
 ## Review-Notiz

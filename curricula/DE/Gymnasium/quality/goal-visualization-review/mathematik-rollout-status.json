@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-07T20:33:02.142Z",
+  "generatedAt": "2026-07-08T04:51:47.968Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -23,15 +23,17 @@
       "approved": 18,
       "pilot": 735
     },
-    "reviewLedgerFiles": 175,
+    "reviewLedgerFiles": 180,
     "reviewDecisionCounts": {
+      "accepted_after_regeneration": 2,
       "accepted_context_visualization": 2,
       "accepted_pilot": 586,
       "accepted_pilot_after_regeneration": 142,
       "accepted_pilot_after_resume": 5,
       "accepted_pilot_after_second_regeneration": 11,
       "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 40,
+      "accepted_pilot_after_user_review_correction": 42,
+      "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "deferred_provider_limitation": 11,
       "not_attempted_after_quota_block": 4,
@@ -49,11 +51,11 @@
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
-    "linkedWithoutAcceptedReview": 2,
+    "linkedWithoutAcceptedReview": 5,
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-175.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-180.md",
     "latestLedgerStatus": null,
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
@@ -383,6 +385,20 @@
         "title": "Daten mit Verteilungen vergleichen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "Box 2 no longer contains the misleading small deviation arrows or `+1`/`-1`/`0` labels. The histogram still shows the data `9, 10, 10, 11, 9, 11`; the expected frequency line remains at `10`. Box 1 keeps matching 5-group tally marks and a readable `Anzahl (n=60)` column. Box 3 now uses the grammatically correct statement `Abweichungen sind durch Stichprobenvariation plausibel.` and keeps the empirical mean `ca. 3.57` and theoretical expectation `3.5`."
+      },
+      {
+        "batch": "176",
+        "goalId": "c420e0be-1e74-4050-834c-d8da7f41095a",
+        "title": "Bruchterme strukturieren, erweitern und kürzen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image keeps the left cancellation example coherent: `(2x + 6)/(x + 3)` is factorized to `2(x + 3)/(x + 3)`, only the common factor `(x + 3)` is canceled, and the coefficient `2` remains uncanceled. The right example now uses a meaningful common-denominator addition: `(x + 1)/2 + 1/3`, Hauptnenner `6`, `3(x + 1)/6 + 2/6`, then `(3x + 3 + 2)/6` and final result `(3x + 5)/6`. German text and umlauts are readable."
+      },
+      {
+        "batch": "177",
+        "goalId": "eda3a298-4965-525e-878d-f05b9e2d4503",
+        "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The corrected image removes the thick extra vertical arrow from the midline to the minimum line. The right dashed amplitude marker now spans exactly from the midline `y=1` to the minimum line `y=-1`, matching amplitude `A=2`. The function `f(x)=2 sin(x)+1`, the midline, maximum line, minimum line, period marker, and symmetry markers remain coherent."
       }
     ]
   },
@@ -401,6 +417,27 @@
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/15512e77-31e3-5222-8a6b-84791618e5ce/15512e77-31e3-5222-8a6b-84791618e5ce.jpg",
         "latestDecision": "sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6"
+      },
+      {
+        "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+        "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/3016ec37-1c2e-47db-83f5-e767923bc97e/3016ec37-1c2e-47db-83f5-e767923bc97e.jpg",
+        "latestDecision": "accepted_user_supplied_replacement"
+      },
+      {
+        "goalId": "4af3dfb9-7e15-5da5-8b86-0aac6c80e266",
+        "title": "Einfache geometrische Figuren beschreiben",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/4af3dfb9-7e15-5da5-8b86-0aac6c80e266/4af3dfb9-7e15-5da5-8b86-0aac6c80e266.jpg",
+        "latestDecision": "accepted_after_regeneration"
+      },
+      {
+        "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
+        "title": "Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/82597dfb-0ec6-4a77-abaf-e1d6bdd12041/82597dfb-0ec6-4a77-abaf-e1d6bdd12041.jpg",
+        "latestDecision": "accepted_after_regeneration"
       }
     ],
     "acceptedReviewWithoutLink": []

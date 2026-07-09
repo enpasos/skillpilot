@@ -10,6 +10,7 @@ import {
   DEFAULT_SUBJECT_PATH,
   ROOT_DIR,
   buildVisualizationPaths,
+  createImageReconstructionPromptMetadataMarkdown,
   createPromptMetadataMarkdown,
   createVisualizationPrompt,
   findGoalOrThrow,
@@ -28,6 +29,8 @@ const DEFAULT_ASPECT_RATIO = '16:9'
 const DEFAULT_IMAGE_SIZE = '2K'
 const DEFAULT_MIME_TYPE = 'image/jpeg'
 const DEFAULT_PROVIDER = `Google Gemini / Nano Banana Pro (${DEFAULT_MODEL})`
+const DEFAULT_RECONSTRUCTION_PROMPT_MODEL = 'gemini-2.5-flash'
+const DEFAULT_RECONSTRUCTION_PROMPT_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models'
 const TEMPORARY_PROVIDER_FAILURE_EXIT_CODE = 75
 
 function usage() {
@@ -51,6 +54,9 @@ function usage() {
     '  --prompt-append-file <path> Extra provider instruction read from a UTF-8 text/Markdown file.',
     '  --reference-image <path>    Optional image input sent to the provider together with the prompt.',
     '  --reference-image-mime-type <mime> MIME type for --reference-image. Inferred from file extension by default.',
+    `  --reconstruction-prompt-model <id> Model used to describe the generated image. Default: ${DEFAULT_RECONSTRUCTION_PROMPT_MODEL}`,
+    `  --reconstruction-prompt-endpoint <url> Base endpoint for prompt reconstruction. Default: ${DEFAULT_RECONSTRUCTION_PROMPT_ENDPOINT}`,
+    '  --skip-reconstruction-prompt Do not create the standalone prompt for the generated image.',
     '  --description <text>       Optional resourceLink description.',
     '  --alt-text <text>          Optional resourceLink alt text.',
     '  --review-status <status>   Default: pilot.',
@@ -194,6 +200,82 @@ function summarizeResponse(response) {
   }
 }
 
+function buildImageReconstructionPromptRequest({ imageData, mimeType }) {
+  return {
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          {
+            text: [
+              'Analyze only the attached image.',
+              'Write a standalone image-generation prompt in German that could recreate this image without any other context.',
+              'Output only the prompt text, no preface and no Markdown fence.',
+              '',
+              'Rules:',
+              '- Do not mention that an attached, source, or reference image exists.',
+              '- Do not include technical IDs, file names, product or platform names, school-form labels, local paths, or internal paths.',
+              '- Never output these exact words: SkillPilot, Nano Banana, Gemini, Gymnasium.',
+              '- Describe the visual style, layout, colors, visible text, mathematical notation, labels, arrows, diagrams, and spatial relationships precisely.',
+              '- Preserve visible German wording and mathematical notation exactly where it is readable.',
+              '- If a visual element is mathematically important, describe the intended relation explicitly.',
+            ].join('\n'),
+          },
+          {
+            inline_data: {
+              mime_type: mimeType,
+              data: imageData,
+            },
+          },
+        ],
+      },
+    ],
+    generationConfig: {
+      temperature: 0.2,
+    },
+  }
+}
+
+async function requestImageReconstructionPrompt({ endpoint, model, apiKey, requestBody }) {
+  const modelPathSegment = model.replace(/^models\//u, '')
+  const response = await fetch(`${endpoint.replace(/\/+$/u, '')}/${encodeURIComponent(modelPathSegment)}:generateContent`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': apiKey,
+    },
+    body: JSON.stringify(requestBody),
+  })
+
+  const responseText = await response.text()
+  let payload
+  try {
+    payload = JSON.parse(responseText)
+  } catch {
+    throw new Error(`Gemini prompt reconstruction returned non-JSON response (${response.status}): ${responseText.slice(0, 500)}`)
+  }
+
+  if (!response.ok) {
+    throw new Error(`Gemini prompt reconstruction failed (${response.status}): ${JSON.stringify(payload, null, 2)}`)
+  }
+
+  const textParts = []
+  for (const candidate of payload.candidates ?? []) {
+    for (const part of candidate?.content?.parts ?? []) {
+      if (typeof part?.text === 'string' && part.text.trim()) {
+        textParts.push(part.text.trim())
+      }
+    }
+  }
+
+  const prompt = textParts.join('\n\n').trim()
+  if (!prompt) {
+    throw new Error('Gemini prompt reconstruction response did not contain text.')
+  }
+
+  return { payload, prompt }
+}
+
 function buildRequestBody({ model, prompt, mimeType, aspectRatio, imageSize, referenceImage }) {
   const input = referenceImage
     ? [
@@ -265,6 +347,9 @@ function runImporter(goalId, imagePath, options) {
     `--license=${options.license}`,
     `--prompt=${options.promptPath}`,
   ]
+  if (options.reconstructionPromptPath) {
+    args.push(`--reconstruction-prompt=${options.reconstructionPromptPath}`)
+  }
 
   const result = spawnSync(process.execPath, args, {
     cwd: ROOT_DIR,
@@ -295,6 +380,12 @@ async function main() {
   const lang = getStringArg(args, 'lang', DEFAULT_LANG) ?? DEFAULT_LANG
   const model = getStringArg(args, 'model', DEFAULT_MODEL) ?? DEFAULT_MODEL
   const endpoint = getStringArg(args, 'endpoint', DEFAULT_ENDPOINT) ?? DEFAULT_ENDPOINT
+  const reconstructionPromptModel =
+    getStringArg(args, 'reconstruction-prompt-model', DEFAULT_RECONSTRUCTION_PROMPT_MODEL)
+    ?? DEFAULT_RECONSTRUCTION_PROMPT_MODEL
+  const reconstructionPromptEndpoint =
+    getStringArg(args, 'reconstruction-prompt-endpoint', DEFAULT_RECONSTRUCTION_PROMPT_ENDPOINT)
+    ?? DEFAULT_RECONSTRUCTION_PROMPT_ENDPOINT
   const aspectRatio = getStringArg(args, 'aspect-ratio', DEFAULT_ASPECT_RATIO) ?? DEFAULT_ASPECT_RATIO
   const imageSize = getStringArg(args, 'image-size', DEFAULT_IMAGE_SIZE) ?? DEFAULT_IMAGE_SIZE
   const mimeType = getStringArg(args, 'mime-type', DEFAULT_MIME_TYPE) ?? DEFAULT_MIME_TYPE
@@ -304,6 +395,7 @@ async function main() {
   const license = getStringArg(args, 'license', DEFAULT_LICENSE) ?? DEFAULT_LICENSE
   const dryRun = getBooleanArg(args, 'dry-run')
   const shouldImport = !getBooleanArg(args, 'no-import')
+  const shouldCreateReconstructionPrompt = !getBooleanArg(args, 'skip-reconstruction-prompt')
   const referenceImage = readReferenceImage(
     getStringArg(args, 'reference-image'),
     getStringArg(args, 'reference-image-mime-type'),
@@ -392,6 +484,38 @@ async function main() {
   console.log(`Generated image: ${toProjectPath(generatedImagePath)}`)
   console.log(`Response summary: ${toProjectPath(responseSummaryPath)}`)
 
+  let reconstructionPromptPath
+  if (shouldCreateReconstructionPrompt) {
+    const generatedBaseName = path.basename(generatedImagePath, path.extname(generatedImagePath))
+    const reconstructionRequestBody = buildImageReconstructionPromptRequest({
+      imageData: fs.readFileSync(generatedImagePath).toString('base64'),
+      mimeType,
+    })
+    const reconstructionRequestPath = path.join(generatedDir, `${generatedBaseName}.image-reconstruction-request.json`)
+    const reconstructionResponsePath = path.join(generatedDir, `${generatedBaseName}.image-reconstruction-response.json`)
+    reconstructionPromptPath = path.join(generatedDir, `${generatedBaseName}.image-reconstruction-prompt.${lang}.md`)
+
+    fs.writeFileSync(reconstructionRequestPath, `${JSON.stringify(reconstructionRequestBody, null, 2)}\n`, 'utf-8')
+    console.log(`Calling ${reconstructionPromptModel} for image reconstruction prompt...`)
+    const reconstruction = await requestImageReconstructionPrompt({
+      endpoint: reconstructionPromptEndpoint,
+      model: reconstructionPromptModel,
+      apiKey,
+      requestBody: reconstructionRequestBody,
+    })
+    fs.writeFileSync(reconstructionResponsePath, `${JSON.stringify(reconstruction.payload, null, 2)}\n`, 'utf-8')
+    fs.writeFileSync(
+      reconstructionPromptPath,
+      createImageReconstructionPromptMetadataMarkdown(goal, {
+        provider: `Google Gemini (${reconstructionPromptModel})`,
+        sourceImageFile: generatedFileName,
+        rawPrompt: reconstruction.prompt,
+      }),
+      'utf-8',
+    )
+    console.log(`Image reconstruction prompt: ${toProjectPath(reconstructionPromptPath)}`)
+  }
+
   if (!shouldImport) {
     console.log('Import skipped because --no-import was set.')
     return
@@ -404,6 +528,7 @@ async function main() {
     reviewStatus,
     license,
     promptPath,
+    reconstructionPromptPath,
   })
 }
 

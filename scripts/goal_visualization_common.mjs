@@ -153,6 +153,7 @@ export function buildVisualizationPaths(goal, options) {
     sourceDir,
     sourceImagePath: path.join(sourceDir, fileName),
     sourcePromptPath: path.join(sourceDir, `prompt.${options.lang}.md`),
+    sourceReconstructionPromptPath: path.join(sourceDir, `image-reconstruction-prompt.${options.lang}.md`),
     publicDir,
     publicImagePath: path.join(publicDir, fileName),
     publicUrl: `/assets/goal-visualizations/${options.subjectPath}/${goal.id}/${fileName}`,
@@ -225,6 +226,34 @@ export function createPromptMetadataMarkdown(goal, options) {
     '## Review-Notiz',
     '',
     'Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.',
+    '',
+  ].join('\n')
+}
+
+export function createImageReconstructionPromptMetadataMarkdown(goal, options) {
+  return [
+    `# Bildrekonstruktionsprompt: ${goal.title}`,
+    '',
+    '## SkillPilot-Ziel',
+    '',
+    `- SkillPilot-ID: \`${goal.id}\``,
+    `- Titel: ${goal.title}`,
+    `- Beschreibung: ${goal.description ?? 'Keine Beschreibung hinterlegt.'}`,
+    '',
+    '## Generator',
+    '',
+    `- Provider: ${options.provider}`,
+    `- Quellbild: \`${options.sourceImageFile}\``,
+    '',
+    '## Zweck',
+    '',
+    'Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.',
+    '',
+    '## Prompt',
+    '',
+    '```text',
+    options.rawPrompt,
+    '```',
     '',
   ].join('\n')
 }
