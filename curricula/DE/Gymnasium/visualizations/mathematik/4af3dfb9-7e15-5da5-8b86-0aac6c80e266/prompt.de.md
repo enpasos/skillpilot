@@ -33,30 +33,43 @@ Beschreibung: Die lernende Person kann einfache geometrische Figuren, insbesonde
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Keep the chalkboard layout, all geometric figures, all side marks, all angle marks, all headings, and the overall visual style unchanged.
-- Correct every visible misspelling of the word `gegenüberliegende` or `gegenüberliegender`.
-- The final visible spellings must use the German umlaut: `gegenüberliegende` and `gegenüberliegender`.
-- Do not use `gegenueberliegende`, `gegenueberliegender`, `gegenuëberliegende`, or any other substitute spelling.
-- Set these three captions exactly:
-  - `Rechteck: gegenüberliegende Seiten gleich lang, vier rechte Winkel.`
-  - `Parallelogramm: gegenüberliegende Seiten parallel und gleich lang.`
-  - `Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.`
-- Make no other text changes unless required to preserve the exact existing grammar around that corrected word.
-- Do not add new formulas, arrows, labels, icons, notes, or warnings.
+- Perform one surgical character-level correction on the supplied edit target. Preserve the complete image composition and every geometric drawing and mark.
+- In the trapezoid caption, replace the malformed sequence that visually uses a normal `u` followed by an `ë` with one precomposed German `ü` followed immediately by `b`.
+- The exact final trapezoid caption is: `Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.`
+- The exact letter sequence of the corrected word is `g-e-g-e-n-ü-b-e-r-l-i-e-g-e-n-d-e-r`. The dots are over `u`; the following character is `b`. There is no extra `e` between `u` and `b` and no diaeresis over any `e`.
+- Do not alter any other pixels except those required for this character correction.
+
+Alle sichtbaren Texte müssen exakt erhalten bleiben:
+
+- `Einfache geometrische Figuren beschreiben`
+- `DREIECKE`
+- `VIERECKE`
+- `Gleichseitiges Dreieck: drei gleich lange Seiten, drei Winkel je 60 Grad.`
+- `Basiswinkel`
+- `Gleichschenkliges Dreieck: zwei gleich lange Seiten, zwei gleich große Basiswinkel.`
+- `Kathete`
+- `Hypotenuse`
+- `Rechtwinkliges Dreieck: ein Winkel 90 Grad, Katheten und Hypotenuse beschriftet.`
+- `Quadrat: vier gleich lange Seiten, vier rechte Winkel.`
+- `Raute: vier gleich lange Seiten, gegenüberliegende Winkel gleich groß.`
+- `Rechteck: gegenüberliegende Seiten gleich lang, vier rechte Winkel.`
+- `Parallelogramm: gegenüberliegende Seiten parallel und gleich lang.`
+- `Trapez: mindestens ein Paar gegenüberliegender Seiten parallel.`
+- `Drachenviereck: zwei Paare benachbarter gleich langer Seiten.`
 
 Acceptance checklist:
 
-- The rectangle text says that opposite sides are equal in length, with `gegenüberliegende` spelled correctly.
-- The parallelogram text says that opposite sides are parallel and equal in length, with `gegenüberliegende` spelled correctly.
-- The trapezoid text says that at least one pair of opposite sides is parallel, with `gegenüberliegender` spelled correctly.
-- The rhombus text still contains `gegenüberliegende Winkel gleich groß.`
-- The triangle and quadrilateral drawings remain geometrically consistent with their labels.
+- Every occurrence of the word stem `gegenüberliegend` visibly uses `ü` followed immediately by `b`.
+- `Basiswinkel` is spelled exactly and remains visible in both places.
+- `groß` and `große` use `ß` correctly.
+- All existing `60°` and `90°` labels remain unchanged.
+- Every figure, side-equality mark, angle mark, right-angle mark, and parallel-side arrow remains unchanged.
 
 Vermeiden:
 
-- Do not redraw or reinterpret the figures.
-- Do not change correct words such as `gleich`, `groß`, `Hypotenuse`, `Kathete`, `Basiswinkel`, `Quadrat`, `Raute`, `Rechteck`, `Parallelogramm`, `Trapez`, or `Drachenviereck`.
-- Do not add decorative elements, extra explanations, internal notes, warning boxes, or source labels.
+- Never render `uë`, `üe`, `üë`, `ue`, `Bastswinkel`, `Baslswinkel`, or any other substitute spelling.
+- Do not rewrite, shorten, reflow, translate, or reinterpret any caption.
+- Do not add proofreading marks, notes, warnings, spelling guides, internal instructions, decorations, formulas, or labels.
 ```
 
 ## Review-Notiz

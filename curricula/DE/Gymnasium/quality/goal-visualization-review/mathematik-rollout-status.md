@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-09T13:29:33.089Z
+Generated: 2026-07-09T18:59:37.773Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -21,12 +21,12 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Ziele mit primaerem Visualisierungslink | 755 |
 | Coverage | 99.9% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 185 |
+| Review-Ledger-Dateien | 188 |
 | Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 10 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -41,7 +41,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Decision | Count |
 | --- | --- |
 | `accepted` | 2 |
-| `accepted_after_regeneration` | 5 |
+| `accepted_after_regeneration` | 8 |
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 586 |
 | `accepted_pilot_after_regeneration` | 142 |
@@ -67,7 +67,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-185.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-188.md` |
 | Latest ledger status | - |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -144,6 +144,7 @@ Weitere 22 Eintraege stehen in der JSON-Begleitdatei.
 | `2345ae25-5805-4c72-b830-32e63cc6262a` | Dichte als abgeleitete Größe verwenden | `pilot` | `accepted_after_regeneration` |
 | `ef1524f1-0b2f-59f7-a001-5ab3e3dececb` | Eigenschaften geometrischer Figuren begründen | `pilot` | `accepted_after_regeneration` |
 | `4af3dfb9-7e15-5da5-8b86-0aac6c80e266` | Einfache geometrische Figuren beschreiben | `pilot` | `accepted_after_regeneration` |
+| `250daae6-58fd-59e4-8a11-f994e789ee47` | Einfache Parametertransformationen in Funktionsuntersuchungen nutzen | `pilot` | `accepted_after_regeneration` |
 | `82597dfb-0ec6-4a77-abaf-e1d6bdd12041` | Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen | `pilot` | `accepted_after_regeneration` |
 | `701b3942-9f70-548e-9d02-a34b7e64aa17` | Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK) | `pilot` | `accepted` |
 
