@@ -36,29 +36,38 @@ Korrigiere die bestehende Visualisierung gezielt.
 Erhalte den klaren Cartoon-Stil, das breite 16:9-Layout, den großen Titel und die drei Hauptboxen.
 
 Fachliche Pflichtkorrektur:
-- In der dritten Box darf kein Schatzkästchen, keine Schatztruhe und kein dekoratives Behältnis vorkommen.
-- Die dritte Box soll für das Volumen dieselbe sachlich richtige Messmethode zeigen wie die erste Box: Wasserverdrängung in zwei Messzylindern.
-- Zeige in der dritten Box links oder mittig zwei transparente Messzylinder:
-  - linker Messzylinder: "vorher: 300 cm³"
-  - rechter Messzylinder: "nachher: 400 cm³" und ein vollständig eingetauchter goldener Körper hängt an einem Faden im Wasser
-  - daneben oder darunter: "V = 400 cm³ - 300 cm³ = 100 cm³"
-- Zeige zusätzlich eine Waage mit demselben goldenen Körper und die Beschriftung "Masse m = 1930 g".
-- Die Rechnung in der dritten Box muss weiter korrekt bleiben:
+- Die erste Box zeigt weiterhin die Deutung und Messung: Masse des goldenen Körpers auf einer Waage und Volumenbestimmung durch Wasserverdrängung von 300 cm³ auf 400 cm³, also V = 100 cm³.
+- Die zweite Box zeigt weiterhin passende Einheiten für Masse, Volumen und Dichte.
+- Die dritte Box darf die Messszene aus der ersten Box nicht wiederholen.
+- In der dritten Box keine Messzylinder, keine Waage, kein Wassergefäß, kein erneut eingetauchter Körper.
+- Die dritte Box ist nur die konkrete Beispielrechnung aus den bereits gemessenen Werten.
+
+Gestalte die dritte Box so:
+- Links in der dritten Box eine kleine Datenkarte mit genau:
+  - "Gegeben:"
+  - "m = 1930 g"
+  - "V = 100 cm³"
+- Rechts daneben oder darunter ein Notizblock mit der Rechnung:
   - "ρ = m / V"
-  - "= 1930 g / 100 cm³"
-  - "= 19,3 g/cm³"
-- Die dritte Box soll also sichtbar zeigen, was in die Rechnung eingeht: gemessene Masse und gemessenes Volumen durch Wasserverdrängung.
+  - "ρ = 1930 g / 100 cm³"
+  - "ρ = 19,3 g/cm³"
+- Unten in der dritten Box eine kleine grüne Ergebnis-Markierung:
+  - "Dichte berechnet!"
 
 Was unverändert bleiben soll:
-- Die erste Box mit Verhältnisdeutung und Wasserverdrängung bleibt fachlich gleich.
-- Die zweite Box mit passenden Einheiten bleibt fachlich gleich.
-- Die Überschrift der dritten Box bleibt "3. Einfache Sachaufgaben lösen".
+- Der Titel bleibt "DICHTE ALS ABGELEITETE GRÖSSE VERWENDEN".
+- Die Überschriften bleiben:
+  - "1. Verhältnis deuten"
+  - "2. Passende Einheiten verwenden"
+  - "3. Einfache Sachaufgaben lösen"
+- Die Werte bleiben konsistent: 1930 g, 100 cm³, 19,3 g/cm³.
+- Die Formel bleibt korrekt: ρ = m / V.
 
 Gestalterische und sprachliche Vorgaben:
 - Alle deutschen Umlaute korrekt schreiben.
 - Keine internen Anweisungen im Bild.
-- Keine technischen IDs, keine Dateinamen, keine Produktnamen, keine Schulformlabels, keine lokalen oder internen Pfade.
-- Keine falschen Messwerte, keine widersprüchlichen Skalen, keine dekorativen Objekte, die als Volumenmessung missverstanden werden können.
+- Keine internen Metadaten oder Zielgruppenlabels im Bild.
+- Keine falschen Messwerte, keine widersprüchlichen Skalen, keine Wiederholung der linken Messszene in der rechten Box.
 ```
 
 ## Review-Notiz
