@@ -133,7 +133,7 @@ skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.release.json.sig
 
 „JSON-basiert“ bezeichnet dabei den normativen Datenvertrag, nicht die ausschließliche Dateiendung im Archiv. Strukturierte fachliche Daten liegen als JSON vor; verpflichtende Bilder und andere binäre Runtime-Ressourcen werden als gehashte Sidecars mitgeliefert.
 
-Lokale Entwicklungs- und Staging-Kandidaten dürfen vorübergehend unsigniert sein. Ein öffentlicher `stable`-Release benötigt dagegen eine verifizierbare Signatur des externen Release-Index; eine Build-Provenienz-Attestation ist ebenfalls verpflichtender Bestandteil des Stable-Gates. Die Runtime-Trust-Policy pinnt zulässige Schlüssel oder bei keyless Signaturen Issuer, Repository und Workflow-Identität; eine technisch gültige Signatur ohne vertrauenswürdige Identität reicht nicht. Das konkrete Signaturformat wird im Paketvertrag festgelegt und kann statt der beispielhaften `.sig`-Datei ein Sigstore-Bundle verwenden. Ob die Dateien über GitHub Releases, einen Objekt-Store oder als OCI-Artefakte transportiert werden, bleibt vom Paketvertrag getrennt. OCI kann später bei identischen großen Bild-Layern Speicher und Transfer sparen, ohne die logischen ZIP-Artefakte zu ändern.
+Lokale Entwicklungs- und Staging-Kandidaten dürfen vorübergehend unsigniert sein. Ein öffentlicher `stable`-Release benötigt dagegen eine verifizierbare Signatur des externen Release-Index; eine Build-Provenienz-Attestation ist ebenfalls verpflichtender Bestandteil des Stable-Gates. Die Runtime-Trust-Policy pinnt zulässige Schlüssel oder bei keyless Signaturen Issuer, Repository und Workflow-Identität; eine technisch gültige Signatur ohne vertrauenswürdige Identität reicht nicht. Das konkrete Signaturformat wird im Paketvertrag festgelegt und kann statt der beispielhaften `.sig`-Datei ein Sigstore-Bundle verwenden. Damit Signaturdatei und -Hash keine kryptographische Selbstreferenz erzeugen, wird die kanonische Signing-Projection explizit versioniert: Sie entfernt den vollständigen `authentication.releaseIndexSignature`-Block vor Kanonisierung und Hashbildung; der vollständige Release-Index bleibt separat als Distributionsartefakt gehasht. Ob die Dateien über GitHub Releases, einen Objekt-Store oder als OCI-Artefakte transportiert werden, bleibt vom Paketvertrag getrennt. OCI kann später bei identischen großen Bild-Layern Speicher und Transfer sparen, ohne die logischen ZIP-Artefakte zu ändern.
 
 ### Gemeinsamer Release-Index
 
@@ -405,7 +405,7 @@ Zusätzlich legt er die RDF-Strategie fest:
 - `registered-canonical-json-literal` für eng begrenzte strukturierte Erweiterungen;
 - `excluded-generated`.
 
-Jeder Registry-Eintrag adressiert ein Feld über JSON Pointer beziehungsweise ein explizites Schema-Pfadmuster und definiert Kardinalität, Datentyp, Sprache, Default-/Null-Semantik, Regeln für dynamische Map-Keys, konkrete RDF-Prädikate oder Konstruktionen und die Reverse-Abbildung. `registered-canonical-json-literal` ist kein Catch-all: Jeder zulässige Teilbaum braucht einen eigenen Eintrag, einen begründeten Core-Gap, eine maximale Bytegröße und eine dokumentierte Granularität. Die Registry besitzt eine eigene Version und Kompatibilitätsregeln.
+Jeder Registry-Eintrag adressiert ein Feld über JSON Pointer beziehungsweise ein explizites Schema-Pfadmuster und definiert Kardinalität, Datentyp, Sprache, Default-/Null-Semantik, Regeln für dynamische Map-Keys, konkrete RDF-Prädikate oder Konstruktionen und die Reverse-Abbildung. Das V1-Pfadmuster arbeitet segmentweise nach RFC-6901-Decoding: `*` trifft genau ein Segment, `**` null oder mehr Segmente. Spezifität wird deterministisch nach Literalanzahl, Zahl rekursiver Wildcards und Segmentanzahl bestimmt; gleich spezifische überlappende Muster sind ein Vertragsfehler. `registered-canonical-json-literal` ist kein Catch-all: Jeder zulässige Teilbaum braucht einen eigenen Eintrag, einen begründeten Core-Gap, eine maximale Bytegröße und eine dokumentierte Granularität. Überdeckt ein spezifischerer Eintrag einen Nachfahren eines solchen Teilbaums, muss der Literal-Eintrag diesen Nachfahren ausdrücklich auslassen und der Importer ihn konfliktprüfend wieder zusammenführen. Die Registry besitzt eine eigene Version und Kompatibilitätsregeln.
 
 Geordnete Listen werden nicht über N-Triples-Dateireihenfolge dargestellt. Die Registry verlangt je Liste entweder eine RDF-Liste oder, bevorzugt für große Graphen, reifizierte Membership-/Edge-Ressourcen mit lückenlosen eindeutigen ganzzahligen Positionen. Eine zusätzliche ungeordnete Core-Relation darf die fachliche Semantik projizieren, ersetzt aber nicht die verlustlose Positionsdarstellung von Goal-Reihenfolge, `contains`, `requires`, View-Kindern, Resource Links oder Karten.
 
@@ -427,8 +427,8 @@ Insbesondere sollten `goals`, `contains`, View-Kinder, Resource Links, Karten un
 
 Beide Varianten tragen denselben `contentDigest`. Er wird nicht aus den ZIP-Bytes berechnet, sondern aus einem kanonischen Inhaltsindex:
 
-1. jede normative JSON-Struktur wird gemäß Feldregistry normalisiert;
-2. logische Artefakte werden nach Rolle und stabiler ID sortiert und längengeframed gehasht;
+1. jede normative JSON-Struktur wird gemäß Feldregistry normalisiert und ihr kanonischer Payload-Hash bestimmt;
+2. logische Artefakte werden aus Rolle, stabiler ID, MIME-Type, Bytezahl und Payload-Hash zu prüfbaren Record-Hashes gebunden, nach Rolle und stabiler ID sortiert und längengeframed gehasht;
 3. für Binärressourcen gehen die logische Resource-ID beziehungsweise kanonische öffentliche Referenz, Länge, MIME-Type und Datei-SHA ein; variantenspezifische ZIP-Pfade bleiben Verpackungsmetadaten;
 4. generierte Dokumentation und variantenspezifische Verpackungsfelder bleiben außen vor.
 

@@ -1,0 +1,554 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
+  "title": "SkillPilot dual curriculum release index v1",
+  "description": "Strict external index binding exactly one JSON runtime package and one Core-first FWU ontology package to a shared semantic content state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "releaseId",
+    "packageId",
+    "packageVersion",
+    "curriculumEdition",
+    "releaseProfile",
+    "channel",
+    "contentDigest",
+    "contracts",
+    "variants",
+    "equivalence",
+    "provenance",
+    "authentication"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "releaseId": {
+      "$ref": "#/$defs/releaseId"
+    },
+    "packageId": {
+      "$ref": "#/$defs/packageId"
+    },
+    "packageVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "curriculumEdition": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "releaseProfile": {
+      "const": "full-standalone-v1"
+    },
+    "channel": {
+      "enum": [
+        "staging",
+        "stable"
+      ]
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/prefixedSha256"
+    },
+    "contracts": {
+      "$ref": "#/$defs/contracts"
+    },
+    "variants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json",
+        "fwu-owl"
+      ],
+      "properties": {
+        "json": {
+          "$ref": "#/$defs/jsonVariant"
+        },
+        "fwu-owl": {
+          "$ref": "#/$defs/fwuOwlVariant"
+        }
+      }
+    },
+    "equivalence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "report",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "report": {
+          "$ref": "#/$defs/equivalenceReportFile"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attestation",
+        "format",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "attestation": {
+          "$ref": "#/$defs/provenanceFile"
+        },
+        "format": {
+          "enum": [
+            "in-toto-statement-v1",
+            "slsa-provenance-v1"
+          ]
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "authentication": {
+      "$ref": "#/$defs/authentication"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "channel": {
+            "const": "stable"
+          }
+        },
+        "required": [
+          "channel"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authentication": {
+            "type": "object",
+            "properties": {
+              "releaseIndexSignature": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "const": "verified"
+                  },
+                  "format": {
+                    "enum": [
+                      "sigstore-bundle-v0.3",
+                      "detached-signature-v1"
+                    ]
+                  },
+                  "artifact": {
+                    "$ref": "#/$defs/nonNullSignatureFile"
+                  },
+                  "sha256": {
+                    "$ref": "#/$defs/sha256"
+                  },
+                  "trustedIdentityVerified": {
+                    "const": true
+                  }
+                }
+              },
+              "provenanceAttestation": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "const": "verified"
+                  },
+                  "trustedBuilderIdentityVerified": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "authentication": {
+            "type": "object",
+            "properties": {
+              "releaseIndexSignature": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "unsigned-staging",
+                      "verified"
+                    ]
+                  }
+                }
+              },
+              "provenanceAttestation": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "present-staging",
+                      "verified"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+$"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+@[0-9A-Za-z.+-]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "gitCommit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "positiveBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000000
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:.*\\S)?$"
+    },
+    "uri": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^https://[^\\s]+$"
+    },
+    "portableFile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "jsonZipFile": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.json\\.zip$"
+    },
+    "fwuOwlZipFile": {
+      "type": "string",
+      "minLength": 13,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.fwu-owl\\.zip$"
+    },
+    "equivalenceReportFile": {
+      "type": "string",
+      "minLength": 18,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.equivalence\\.json$"
+    },
+    "provenanceFile": {
+      "type": "string",
+      "minLength": 17,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.provenance\\.json$"
+    },
+    "nonNullSignatureFile": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*(?:\\.sig|\\.sigstore\\.json)$"
+    },
+    "contractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/uri"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageFormatVersion",
+        "runtimeContractVersion",
+        "supportedSkillpilotSoftware",
+        "ontologyProfileVersion",
+        "packageManifestSchema",
+        "dualReleaseIndexSchema",
+        "equivalenceReportSchema",
+        "ontologyProfile",
+        "fieldSemanticsRegistry",
+        "semanticNormalForm",
+        "semanticContentIndexSchema"
+      ],
+      "properties": {
+        "packageFormatVersion": {
+          "const": "1.0"
+        },
+        "runtimeContractVersion": {
+          "const": "1.0"
+        },
+        "supportedSkillpilotSoftware": {
+          "type": "string",
+          "pattern": "^>=(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*) <(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "ontologyProfileVersion": {
+          "const": "1.0"
+        },
+        "packageManifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "dualReleaseIndexSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "equivalenceReportSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "ontologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticNormalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticContentIndexSchema": {
+          "$ref": "#/$defs/contractBinding"
+        }
+      }
+    },
+    "variantBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "manifestSha256"
+      ],
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/portableFile"
+        },
+        "mediaType": {
+          "const": "application/zip"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "jsonVariant": {
+      "$ref": "#/$defs/variantBase",
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/jsonZipFile"
+        }
+      }
+    },
+    "fwuOwlVariant": {
+      "$ref": "#/$defs/variantBase",
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/fwuOwlZipFile"
+        }
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseIndexSignature",
+        "provenanceAttestation"
+      ],
+      "properties": {
+        "releaseIndexSignature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "format",
+            "artifact",
+            "sha256",
+            "signedPayloadProjection",
+            "signedPayloadSha256",
+            "trustedIdentityVerified"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "unsigned-staging",
+                "verified"
+              ]
+            },
+            "format": {
+              "enum": [
+                "none",
+                "sigstore-bundle-v0.3",
+                "detached-signature-v1"
+              ]
+            },
+            "artifact": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/nonNullSignatureFile"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sha256": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/sha256"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "signedPayloadProjection": {
+              "const": "canonical-json-with-release-index-signature-removed-v1"
+            },
+            "signedPayloadSha256": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/sha256"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "trustedIdentityVerified": {
+              "type": "boolean"
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "status": {
+                    "const": "verified"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "format": {
+                    "enum": [
+                      "sigstore-bundle-v0.3",
+                      "detached-signature-v1"
+                    ]
+                  },
+                  "artifact": {
+                    "$ref": "#/$defs/nonNullSignatureFile"
+                  },
+                  "sha256": {
+                    "$ref": "#/$defs/sha256"
+                  },
+                  "signedPayloadSha256": {
+                    "$ref": "#/$defs/sha256"
+                  },
+                  "trustedIdentityVerified": {
+                    "const": true
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "format": {
+                    "const": "none"
+                  },
+                  "artifact": {
+                    "type": "null"
+                  },
+                  "sha256": {
+                    "type": "null"
+                  },
+                  "signedPayloadSha256": {
+                    "type": "null"
+                  },
+                  "trustedIdentityVerified": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "provenanceAttestation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "trustedBuilderIdentityVerified"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "present-staging",
+                "verified"
+              ]
+            },
+            "trustedBuilderIdentityVerified": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

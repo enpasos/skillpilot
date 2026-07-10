@@ -12,6 +12,8 @@ The current reference scope is:
 
 This reference ZIP currently belongs to the explicitly marked legacy subject-export lane. A successful semantic roundtrip proves equivalence for the covered content and image sidecars; it does not prove `full-standalone-v1` runtime readiness. Until the JSON package supplies and passes the runtime catalog, offline schema catalog, complete hard-reference closure, semantic digest, and hermetic consumer gates, its independent target classification remains `not-ready-legacy`.
 
+DPK-003 now provides the normative [dual-release contract gate](../qa-ci/dual-curriculum-release-contracts.md). It intentionally exposes two differences from this legacy pilot: the existing comparator drops `null` properties during its local normalization and compares several goal arrays as sorted sets, while the release contract keeps missing/null/default distinct and preserves runtime-observable list order. Therefore the current `semantic-reconstruction-report.json`, technical `roundtrip-report.json`, and OWL report remain hashable input evidence only; none of them may be relabelled as the public equivalence verdict. DPK-004 completes the Mathematik release-model registry and compilation; DPK-008 migrates the ontology exporter/importer to the positioned RDF representation and isolated reverse-compiler contract.
+
 ## Roundtrip Contract
 
 ```text

@@ -1,0 +1,1133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
+  "title": "SkillPilot dual curriculum package equivalence report v1",
+  "description": "Strict evidence record for a JSON -> FWU ontology -> reconstructed JSON roundtrip and reproducibility gate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reportFormatVersion",
+    "releaseId",
+    "packageId",
+    "packageVersion",
+    "contentDigest",
+    "contracts",
+    "inputs",
+    "outputs",
+    "reverseCompilation",
+    "normalForms",
+    "fwuCore",
+    "tools",
+    "roleSummaries",
+    "fieldCoverage",
+    "comparisons",
+    "ontologyValidation",
+    "packageValidation",
+    "consumerSmokeTests",
+    "reproducibility",
+    "differences",
+    "passed"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json"
+    },
+    "reportFormatVersion": {
+      "const": "1.0"
+    },
+    "releaseId": {
+      "$ref": "#/$defs/releaseId"
+    },
+    "packageId": {
+      "$ref": "#/$defs/packageId"
+    },
+    "packageVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/prefixedSha256"
+    },
+    "contracts": {
+      "$ref": "#/$defs/contracts"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json",
+        "fwu-owl"
+      ],
+      "properties": {
+        "json": {
+          "$ref": "#/$defs/jsonInput"
+        },
+        "fwu-owl": {
+          "$ref": "#/$defs/fwuOwlInput"
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reconstructed-json"
+      ],
+      "properties": {
+        "reconstructed-json": {
+          "$ref": "#/$defs/jsonInput"
+        }
+      }
+    },
+    "reverseCompilation": {
+      "$ref": "#/$defs/reverseCompilation"
+    },
+    "normalForms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json",
+        "fwu-owl",
+        "reconstructed-json"
+      ],
+      "properties": {
+        "json": {
+          "$ref": "#/$defs/normalFormResult"
+        },
+        "fwu-owl": {
+          "$ref": "#/$defs/normalFormResult"
+        },
+        "reconstructed-json": {
+          "$ref": "#/$defs/normalFormResult"
+        }
+      }
+    },
+    "fwuCore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "iri",
+        "commit",
+        "fileSha256"
+      ],
+      "properties": {
+        "iri": {
+          "$ref": "#/$defs/uri"
+        },
+        "commit": {
+          "$ref": "#/$defs/gitCommit"
+        },
+        "fileSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/tool"
+      }
+    },
+    "roleSummaries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "items": {
+        "$ref": "#/$defs/roleSummary"
+      }
+    },
+    "fieldCoverage": {
+      "$ref": "#/$defs/fieldCoverage"
+    },
+    "comparisons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graph",
+        "compositionViews",
+        "cards",
+        "binaryAssets"
+      ],
+      "properties": {
+        "graph": {
+          "$ref": "#/$defs/graphComparison"
+        },
+        "compositionViews": {
+          "$ref": "#/$defs/viewComparison"
+        },
+        "cards": {
+          "$ref": "#/$defs/cardComparison"
+        },
+        "binaryAssets": {
+          "$ref": "#/$defs/binaryAssetComparison"
+        }
+      }
+    },
+    "ontologyValidation": {
+      "$ref": "#/$defs/ontologyValidation"
+    },
+    "packageValidation": {
+      "$ref": "#/$defs/packageValidation"
+    },
+    "consumerSmokeTests": {
+      "$ref": "#/$defs/consumerSmokeTests"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibility"
+    },
+    "differences": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/difference"
+      }
+    },
+    "passed": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+$"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+@[0-9A-Za-z.+-]+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "gitCommit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "positiveBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000000
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "uri": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^https://[^\\s]+$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "jsonZipFile": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.json\\.zip$"
+    },
+    "fwuOwlZipFile": {
+      "type": "string",
+      "minLength": 13,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.fwu-owl\\.zip$"
+    },
+    "contractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/uri"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "contracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageFormatVersion",
+        "runtimeContractVersion",
+        "releaseProfile",
+        "ontologyProfileVersion",
+        "packageManifestSchema",
+        "dualReleaseIndexSchema",
+        "equivalenceReportSchema",
+        "ontologyProfile",
+        "fieldSemanticsRegistry",
+        "semanticNormalForm",
+        "semanticContentIndexSchema"
+      ],
+      "properties": {
+        "packageFormatVersion": {
+          "const": "1.0"
+        },
+        "runtimeContractVersion": {
+          "const": "1.0"
+        },
+        "releaseProfile": {
+          "const": "full-standalone-v1"
+        },
+        "ontologyProfileVersion": {
+          "const": "1.0"
+        },
+        "packageManifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "dualReleaseIndexSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "equivalenceReportSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "ontologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticNormalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticContentIndexSchema": {
+          "$ref": "#/$defs/contractBinding"
+        }
+      }
+    },
+    "normalFormResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contentIndexSha256",
+        "contentDigest",
+        "logicalArtifactCount",
+        "binaryResourceCount",
+        "passed"
+      ],
+      "properties": {
+        "contentIndexSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "logicalArtifactCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "binaryResourceCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "manifestBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/portablePath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "inputBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "bytes",
+        "sha256",
+        "manifest"
+      ],
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifest": {
+          "$ref": "#/$defs/manifestBinding"
+        }
+      }
+    },
+    "jsonInput": {
+      "$ref": "#/$defs/inputBase",
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/jsonZipFile"
+        }
+      }
+    },
+    "fwuOwlInput": {
+      "$ref": "#/$defs/inputBase",
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/fwuOwlZipFile"
+        }
+      }
+    },
+    "reverseCompilation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputOntologyZipSha256",
+        "outputJsonZipSha256",
+        "originalJsonPackageAccessible",
+        "authoringCheckoutAccessible",
+        "passed",
+        "reportSha256"
+      ],
+      "properties": {
+        "inputOntologyZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "outputJsonZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "originalJsonPackageAccessible": {
+          "type": "boolean"
+        },
+        "authoringCheckoutAccessible": {
+          "type": "boolean"
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "reportSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "name",
+        "version",
+        "sourceCommit",
+        "executableSha256"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "json-package-validator",
+            "ontology-exporter",
+            "ontology-validator",
+            "reverse-compiler",
+            "semantic-normalizer",
+            "equivalence-comparator",
+            "consumer-smoke-test",
+            "reproducibility-runner"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[0-9A-Za-z][0-9A-Za-z.+_-]*$"
+        },
+        "sourceCommit": {
+          "$ref": "#/$defs/gitCommit"
+        },
+        "executableSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "digestTriplet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json",
+        "fwuOwl",
+        "reconstructedJson"
+      ],
+      "properties": {
+        "json": {
+          "$ref": "#/$defs/sha256"
+        },
+        "fwuOwl": {
+          "$ref": "#/$defs/sha256"
+        },
+        "reconstructedJson": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "countTriplet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json",
+        "fwuOwl",
+        "reconstructedJson"
+      ],
+      "properties": {
+        "json": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "fwuOwl": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "reconstructedJson": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        }
+      }
+    },
+    "roleSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "counts",
+        "logicalDigests",
+        "passed"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "counts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "logicalDigests": {
+          "$ref": "#/$defs/digestTriplet",
+          "description": "Per variant SHA-256 over the normalization profile's role-summary domain, the role, and the role's recordSha256 values in logical-ID/resource-ID order."
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fieldCoverageEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryId",
+        "schemaPathPattern",
+        "semanticClass",
+        "rdfStrategy",
+        "forwardMapped",
+        "reverseMapped",
+        "tested",
+        "coverageDigest"
+      ],
+      "properties": {
+        "entryId": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)+$"
+        },
+        "schemaPathPattern": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "semanticClass": {
+          "enum": [
+            "scalar",
+            "ordered-list",
+            "set",
+            "map",
+            "binary-reference",
+            "generated-non-semantic"
+          ]
+        },
+        "rdfStrategy": {
+          "enum": [
+            "fwu-core",
+            "skillpilot-profile",
+            "registered-canonical-json-literal",
+            "excluded-generated"
+          ]
+        },
+        "forwardMapped": {
+          "type": "boolean"
+        },
+        "reverseMapped": {
+          "type": "boolean"
+        },
+        "tested": {
+          "type": "boolean"
+        },
+        "coverageDigest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "fieldCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry",
+        "normalForm",
+        "registeredFieldCount",
+        "coveredFieldCount",
+        "entries",
+        "uncoveredFields",
+        "unknownFields",
+        "coverageDigest",
+        "passed"
+      ],
+      "properties": {
+        "registry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "normalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "registeredFieldCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "coveredFieldCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "entries": {
+          "type": "array",
+          "maxItems": 10000,
+          "items": {
+            "$ref": "#/$defs/fieldCoverageEntry"
+          }
+        },
+        "uncoveredFields": {
+          "$ref": "#/$defs/pathList"
+        },
+        "unknownFields": {
+          "$ref": "#/$defs/pathList"
+        },
+        "coverageDigest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "pathList": {
+      "type": "array",
+      "maxItems": 10000,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonBlankText"
+      }
+    },
+    "graphComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalCounts",
+        "directContainsEdgeCounts",
+        "directRequiresEdgeCounts",
+        "programUnitCounts",
+        "placementCounts",
+        "competencyEntryCounts",
+        "logicalDigests",
+        "passed"
+      ],
+      "properties": {
+        "goalCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "directContainsEdgeCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "directRequiresEdgeCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "programUnitCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "placementCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "competencyEntryCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "logicalDigests": {
+          "$ref": "#/$defs/digestTriplet"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "viewComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "viewCounts",
+        "nodeReferenceCounts",
+        "logicalDigests",
+        "orderPreserved",
+        "passed"
+      ],
+      "properties": {
+        "viewCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "nodeReferenceCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "logicalDigests": {
+          "$ref": "#/$defs/digestTriplet"
+        },
+        "orderPreserved": {
+          "type": "boolean"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "cardComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deckCounts",
+        "cardCounts",
+        "logicalDigests",
+        "orderPreserved",
+        "passed"
+      ],
+      "properties": {
+        "deckCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "cardCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "logicalDigests": {
+          "$ref": "#/$defs/digestTriplet"
+        },
+        "orderPreserved": {
+          "type": "boolean"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "binaryAssetComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assetCounts",
+        "totalBytes",
+        "logicalIndexDigests",
+        "byteDigests",
+        "mimeTypesMatched",
+        "passed"
+      ],
+      "properties": {
+        "assetCounts": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "totalBytes": {
+          "$ref": "#/$defs/countTriplet"
+        },
+        "logicalIndexDigests": {
+          "$ref": "#/$defs/digestTriplet",
+          "description": "The normalization profile role-summary digest for the binary-asset records."
+        },
+        "byteDigests": {
+          "$ref": "#/$defs/digestTriplet",
+          "description": "The normalization profile binary-collection digest over stable resource IDs and file SHA-256 values."
+        },
+        "mimeTypesMatched": {
+          "type": "boolean"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "validationResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "errorCount",
+        "reportSha256"
+      ],
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        },
+        "errorCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "reportSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "ontologyValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageSha256",
+        "manifestSha256",
+        "coreBindingVerified",
+        "rdfSyntax",
+        "owl2Dl",
+        "shacl",
+        "reasoner",
+        "passed"
+      ],
+      "properties": {
+        "packageSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "coreBindingVerified": {
+          "type": "boolean"
+        },
+        "rdfSyntax": {
+          "$ref": "#/$defs/validationResult"
+        },
+        "owl2Dl": {
+          "$ref": "#/$defs/validationResult"
+        },
+        "shacl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "violationCount",
+            "warningCount",
+            "reportSha256"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "violationCount": {
+              "$ref": "#/$defs/nonNegativeInteger"
+            },
+            "warningCount": {
+              "$ref": "#/$defs/nonNegativeInteger"
+            },
+            "reportSha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "reasoner": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "passed",
+            "engine",
+            "version",
+            "consistent",
+            "unsatisfiableClassCount",
+            "reportSha256"
+          ],
+          "properties": {
+            "passed": {
+              "type": "boolean"
+            },
+            "engine": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "consistent": {
+              "type": "boolean"
+            },
+            "unsatisfiableClassCount": {
+              "$ref": "#/$defs/nonNegativeInteger"
+            },
+            "reportSha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "packageValidationResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageSha256",
+        "manifestSha256",
+        "passed",
+        "errorCount",
+        "reportSha256"
+      ],
+      "properties": {
+        "packageSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "errorCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "reportSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "packageValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "jsonPackage",
+        "reconstructedJsonPackage",
+        "passed"
+      ],
+      "properties": {
+        "jsonPackage": {
+          "$ref": "#/$defs/packageValidationResult"
+        },
+        "reconstructedJsonPackage": {
+          "$ref": "#/$defs/packageValidationResult"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "smokeTest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "consumer",
+        "consumerVersion",
+        "hermetic",
+        "sourceCheckoutAccessible",
+        "packageSha256",
+        "passed",
+        "reportSha256"
+      ],
+      "properties": {
+        "consumer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "consumerVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "hermetic": {
+          "type": "boolean"
+        },
+        "sourceCheckoutAccessible": {
+          "type": "boolean"
+        },
+        "packageSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "reportSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "consumerSmokeTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "jsonPackage",
+        "reconstructedJsonPackage",
+        "passed"
+      ],
+      "properties": {
+        "jsonPackage": {
+          "$ref": "#/$defs/smokeTest"
+        },
+        "reconstructedJsonPackage": {
+          "$ref": "#/$defs/smokeTest"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "buildRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "builderEnvironmentDigest",
+        "jsonZipSha256",
+        "fwuOwlZipSha256"
+      ],
+      "properties": {
+        "builderEnvironmentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "jsonZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "fwuOwlZipSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceDateEpoch",
+        "locale",
+        "timezone",
+        "runA",
+        "runB",
+        "jsonZipByteIdentical",
+        "fwuOwlZipByteIdentical",
+        "passed"
+      ],
+      "properties": {
+        "sourceDateEpoch": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 253402300799
+        },
+        "locale": {
+          "const": "C.UTF-8"
+        },
+        "timezone": {
+          "const": "UTC"
+        },
+        "runA": {
+          "$ref": "#/$defs/buildRun"
+        },
+        "runB": {
+          "$ref": "#/$defs/buildRun"
+        },
+        "jsonZipByteIdentical": {
+          "type": "boolean"
+        },
+        "fwuOwlZipByteIdentical": {
+          "type": "boolean"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "nullableSha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "difference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "logicalPath",
+        "message",
+        "jsonValueDigest",
+        "reconstructedValueDigest",
+        "allowed",
+        "justification"
+      ],
+      "properties": {
+        "category": {
+          "enum": [
+            "field",
+            "order",
+            "graph-edge",
+            "composition-view",
+            "card",
+            "binary-asset",
+            "role-inventory",
+            "contract",
+            "consumer",
+            "reproducibility"
+          ]
+        },
+        "logicalPath": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "message": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jsonValueDigest": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "reconstructedValueDigest": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "allowed": {
+          "type": "boolean"
+        },
+        "justification": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2000
+        }
+      }
+    }
+  }
+}
