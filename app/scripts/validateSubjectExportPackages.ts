@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { mkdirSync, readdirSync, writeFileSync } from 'node:fs'
+import { lstatSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -11,6 +11,8 @@ type JsonValue =
   | string
   | JsonValue[]
   | { [key: string]: JsonValue }
+
+const compareCodeUnits = (left: string, right: string) => (left < right ? -1 : left > right ? 1 : 0)
 
 type CliOptions = {
   zipPaths: string[]
@@ -27,6 +29,7 @@ type CheckResult = {
 
 type PackageValidationResult = {
   zipPath: string
+  zipSha256: string | null
   archiveRoot: string | null
   passed: boolean
   checks: CheckResult[]
@@ -102,6 +105,10 @@ const EXPECTED_DE_STATES = [
 
 const WINDOWS_SAFE_ARCHIVE_PATH_LIMIT = 180
 const ZIP_COMMAND_MAX_BUFFER_BYTES = 256 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_TOTAL_BYTES = 8 * 1024 * 1024 * 1024
+const MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
+const MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES = 16 * 1024 * 1024 * 1024
 
 const REQUIRED_RELATIVE_PATHS = [
   'README.md',
@@ -236,7 +243,7 @@ const stableSortJson = (value: JsonValue): JsonValue => {
   if (value && typeof value === 'object') {
     return Object.fromEntries(
       Object.entries(value)
-        .sort(([left], [right]) => left.localeCompare(right))
+        .sort(([left], [right]) => compareCodeUnits(left, right))
         .map(([key, child]) => [key, stableSortJson(child)]),
     )
   }
@@ -291,13 +298,40 @@ const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPa
   .split(/\r?\n/u)
   .filter(Boolean)
 
+const listZipEntryMetadata = (zipPath: string) => execFileSync('zipinfo', ['-l', zipPath], {
+  encoding: 'utf8',
+  maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+  stdio: ['ignore', 'pipe', 'pipe'],
+})
+  .split(/\r?\n/u)
+  .flatMap((line) => {
+    const match = line.match(/^([bcdlps-][rwxStTs-]{9})\s+\S+\s+\S+\s+(\d+)\s+\S+\s+\d+\s+\S+\s+\S+\s+\S+\s+(.+)$/u)
+    return match ? [{ mode: match[1], uncompressedBytes: Number(match[2]), path: match[3] }] : []
+  })
+
+const listZipEntryModes = (zipPath: string) => listZipEntryMetadata(zipPath).map((entry) => entry.mode)
+
 const sha256 = (content: Buffer | string) => createHash('sha256').update(content).digest('hex')
+
+const sha256RegularFile = (filePath: string) => {
+  try {
+    if (!lstatSync(filePath).isFile()) return null
+    const output = execFileSync('sha256sum', ['--', filePath], {
+      encoding: 'utf8',
+      maxBuffer: 1024 * 1024,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+    return output.match(/[a-f0-9]{64}/u)?.[0] ?? null
+  } catch {
+    return null
+  }
+}
 
 const directExportZips = (directory: string) => readdirSync(directory, { withFileTypes: true })
   .filter((entry) => entry.isFile())
   .map((entry) => resolve(directory, entry.name))
   .filter((path) => /^skillpilot-.+\.zip$/u.test(basename(path)))
-  .sort((left, right) => repoRelative(left).localeCompare(repoRelative(right)))
+  .sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
 
 const check = (checks: CheckResult[], id: string, passed: boolean, details: string) => {
   checks.push({ id, passed, details })
@@ -308,15 +342,80 @@ const archiveRootFrom = (entries: string[]) => {
   return roots.size === 1 ? [...roots][0] : null
 }
 
+const duplicateValues = (values: string[]) => {
+  const seen = new Set<string>()
+  const duplicates = new Set<string>()
+  values.forEach((value) => {
+    if (seen.has(value)) {
+      duplicates.add(value)
+    } else {
+      seen.add(value)
+    }
+  })
+  return [...duplicates]
+}
+
+const portablePathCollisionIssues = (paths: string[]) => {
+  const issues: string[] = []
+  const pathsByKey = new Map<string, string[]>()
+  paths.forEach((path) => {
+    const key = path.normalize('NFC').toLowerCase()
+    pathsByKey.set(key, [...(pathsByKey.get(key) ?? []), path])
+  })
+  pathsByKey.forEach((collidingPaths) => {
+    if (collidingPaths.length > 1) issues.push(`portable collision: ${collidingPaths.join(' <> ')}`)
+  })
+  const keySet = new Set(pathsByKey.keys())
+  pathsByKey.forEach((_paths, key) => {
+    const segments = key.split('/')
+    segments.slice(1, -1).forEach((_segment, index) => {
+      const parent = segments.slice(0, index + 2).join('/')
+      if (keySet.has(parent)) issues.push(`file/child collision: ${parent} <> ${key}`)
+    })
+  })
+  return issues
+}
+
+const windowsReservedSegment = /^(?:aux|com[1-9]|con|lpt[1-9]|nul|prn)(?:\.|$)/iu
+const unsafeWindowsPathCharacter = /[<>:"|?*]/u
+const hasUnsafeWindowsPathCharacter = (segment: string) => (
+  unsafeWindowsPathCharacter.test(segment)
+  || [...segment].some((character) => {
+    const codePoint = character.codePointAt(0) ?? 0
+    return codePoint <= 0x1f || codePoint === 0x7f
+  })
+)
+const hasUnsafePathSegments = (path: string, allowTrailingSlash = false) => {
+  const segments = path.split('/')
+  if (allowTrailingSlash && segments.at(-1) === '') segments.pop()
+  return segments.some((segment) => (
+    segment.length === 0
+    || segment === '.'
+    || segment === '..'
+    || hasUnsafeWindowsPathCharacter(segment)
+    || windowsReservedSegment.test(segment)
+    || segment.endsWith('.')
+    || segment.endsWith(' ')
+  ))
+}
+
 const hasUnsafeEntryPath = (entry: string) => (
   entry.startsWith('/')
   || entry.includes('\\')
-  || entry.split('/').includes('..')
+  || hasUnsafePathSegments(entry, entry.endsWith('/'))
   || entry.includes('/curricula/')
   || entry.includes('/source-extraction/')
   || entry.endsWith('.source-extraction.json')
   || entry.toLowerCase().endsWith('.pdf')
 )
+
+const isPortableArchiveRoot = (value: string | null): value is string => Boolean(
+  value
+  && /^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(value)
+  && !hasUnsafePathSegments(value),
+)
+
+const hasUnsafeManifestFilePath = (path: string) => path.endsWith('/') || hasUnsafeEntryPath(path)
 
 const parseManifestFileRecord = (value: JsonValue): ManifestFileRecord => {
   const data = jsonObject(value, 'manifest.files[]')
@@ -340,6 +439,10 @@ const parseChecksumFile = (content: string) => {
       const match = line.match(/^([a-f0-9]{64}) {2}(.+)$/u)
       if (!match) {
         invalidLines.push(line)
+        return
+      }
+      if (checksums.has(match[2])) {
+        invalidLines.push(`duplicate checksum path: ${match[2]}`)
         return
       }
       checksums.set(match[2], match[1])
@@ -655,28 +758,82 @@ const validationReportHasPassed = (validationReport: JsonValue) => {
     })
 }
 
-const packageRelativePathFromManifestValue = (value: JsonValue) => (
-  typeof value === 'string' && value.trim() && !value.includes('\\') && !value.startsWith('/') && !value.split('/').includes('..')
-    ? value.trim()
+const packageRelativePathFromManifestValue = (value: JsonValue) => {
+  if (typeof value !== 'string' || value !== value.trim() || value.length === 0) return null
+  return !value.includes('\\') && !value.startsWith('/') && !hasUnsafePathSegments(value)
+    ? value
     : null
-)
+}
 
 const validatePackage = (zipPath: string): PackageValidationResult => {
   const checks: CheckResult[] = []
   const errors: string[] = []
   const counts: Record<string, number> = {}
   let archiveRoot: string | null = null
+  const zipSha256 = sha256RegularFile(zipPath)
+  const checkZipInputStability = () => {
+    const finalZipSha256 = sha256RegularFile(zipPath)
+    const stable = zipSha256 !== null && finalZipSha256 === zipSha256
+    check(
+      checks,
+      'zip-input-stable',
+      stable,
+      stable ? `outer ZIP SHA-256 ${zipSha256}` : 'outer ZIP is not a stable regular file',
+    )
+  }
 
+  let zipPreflightPassed = false
   try {
-    execFileSync('unzip', ['-tq', zipPath], { stdio: ['ignore', 'ignore', 'pipe'] })
-    check(checks, 'zip-integrity', true, 'unzip -tq passed')
+    const preflightEntries = listZipEntries(zipPath)
+    const preflightMetadata = listZipEntryMetadata(zipPath)
+    const totalUncompressedBytes = preflightMetadata.reduce((sum, entry) => sum + entry.uncompressedBytes, 0)
+    const safe = preflightMetadata.length === preflightEntries.length
+      && preflightMetadata.every((entry, index) => entry.path === preflightEntries[index])
+      && preflightMetadata.every((entry) => entry.mode.startsWith('-'))
+      && preflightMetadata.every((entry) => entry.uncompressedBytes <= MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES)
+      && totalUncompressedBytes <= MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES
+      && duplicateValues(preflightEntries).length === 0
+      && portablePathCollisionIssues(preflightEntries).length === 0
+      && preflightEntries.every((entry) => !hasUnsafeEntryPath(entry))
+    if (!safe) throw new Error('unsafe ZIP metadata')
+    zipPreflightPassed = true
+    check(checks, 'zip-metadata-preflight', true, `${preflightEntries.length} bounded regular-file entry/entries; ${totalUncompressedBytes} uncompressed bytes`)
   } catch {
-    check(checks, 'zip-integrity', false, 'unzip -tq failed')
+    check(checks, 'zip-metadata-preflight', false, 'ZIP metadata is unsafe, ambiguous, unsupported, or exceeds extraction limits')
+  }
+
+  if (zipPreflightPassed) {
+    try {
+      execFileSync('unzip', ['-tq', zipPath], { stdio: ['ignore', 'ignore', 'pipe'] })
+      check(checks, 'zip-integrity', true, 'unzip -tq passed after metadata preflight')
+    } catch {
+      check(checks, 'zip-integrity', false, 'unzip -tq failed')
+    }
+  } else {
+    check(checks, 'zip-integrity', false, 'skipped because ZIP metadata preflight failed')
+  }
+
+  if (!zipPreflightPassed) {
+    errors.push('ZIP metadata preflight failed; content inspection was skipped.')
+    checkZipInputStability()
+    return {
+      zipPath: repoRelative(zipPath),
+      zipSha256,
+      archiveRoot,
+      passed: false,
+      checks,
+      counts,
+      errors,
+    }
   }
 
   try {
     const entries = listZipEntries(zipPath)
+    const entryModes = listZipEntryModes(zipPath)
+    const duplicateEntries = duplicateValues(entries)
+    const portableCollisions = portablePathCollisionIssues(entries)
     const entrySet = new Set(entries)
+    const fileEntries = entries.filter((entry) => !entry.endsWith('/'))
     const entryIntegrity = new Map<string, { bytes: number; sha256: string; head: Buffer }>()
     const inspectZipEntry = (entry: string) => {
       const cached = entryIntegrity.get(entry)
@@ -692,9 +849,36 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     }
     archiveRoot = archiveRootFrom(entries)
     counts.files = entries.length
+    counts.uniqueFiles = entrySet.size
     counts.maxArchivePathLength = entries.reduce((maxLength, entry) => Math.max(maxLength, entry.length), 0)
 
+    check(
+      checks,
+      'zip-entry-names-unique',
+      duplicateEntries.length === 0,
+      duplicateEntries.slice(0, 5).join(', ') || `${entries.length} unique entry name(s)`,
+    )
+    check(
+      checks,
+      'zip-entry-paths-portably-distinct',
+      portableCollisions.length === 0,
+      portableCollisions.slice(0, 5).join(' | ') || 'no case-folded, Unicode-normalized, or file/child collisions',
+    )
+    check(
+      checks,
+      'zip-entry-types-regular-files-only',
+      entryModes.length === entries.length && entryModes.every((mode) => mode.startsWith('-')),
+      entryModes.length !== entries.length
+        ? `zipinfo described ${entryModes.length}/${entries.length} entries`
+        : entryModes.filter((mode) => !mode.startsWith('-')).slice(0, 5).join(', ') || `${entryModes.length} regular file entry/entries`,
+    )
     check(checks, 'single-archive-root', archiveRoot !== null, archiveRoot ?? 'Archive has multiple roots.')
+    check(
+      checks,
+      'portable-archive-root',
+      isPortableArchiveRoot(archiveRoot),
+      archiveRoot ?? 'Archive has no unique root.',
+    )
     check(
       checks,
       'windows-safe-entry-paths',
@@ -722,10 +906,45 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
       ? manifest.files.map(parseManifestFileRecord)
       : []
     counts.manifestFiles = manifestFiles.length
+    const manifestFilePaths = manifestFiles.map((file) => file.path)
+    const duplicateManifestFilePaths = duplicateValues(manifestFilePaths)
+    const unsafeManifestFilePaths = manifestFilePaths.filter(hasUnsafeManifestFilePath)
+    check(
+      checks,
+      'manifest-file-paths-unique',
+      duplicateManifestFilePaths.length === 0,
+      duplicateManifestFilePaths.slice(0, 5).join(', ') || `${manifestFilePaths.length} unique manifest file path(s)`,
+    )
+    check(
+      checks,
+      'manifest-file-paths-safe',
+      unsafeManifestFilePaths.length === 0,
+      unsafeManifestFilePaths.slice(0, 5).join(', ') || 'ok',
+    )
     const invalidLicenseFiles = manifestFiles.filter((file) => !ALLOWED_LICENSE_CATEGORIES.has(file.licenseCategory))
     check(checks, 'manifest-license-categories-known', invalidLicenseFiles.length === 0, invalidLicenseFiles.map((file) => file.path).join(', ') || 'ok')
 
     const shaPath = packageEntryPath(archiveRoot, 'metadata/SHA256SUMS')
+    const manifestFilePathSet = new Set(manifestFilePaths)
+    const manifestExcludedEntries = new Set([manifestPath, shaPath])
+    const expectedManifestFilePaths = fileEntries.filter((entry) => !manifestExcludedEntries.has(entry))
+    const expectedManifestFilePathSet = new Set(expectedManifestFilePaths)
+    const missingManifestFilePaths = expectedManifestFilePaths
+      .filter((entry) => !manifestFilePathSet.has(entry))
+    const unexpectedManifestFilePaths = manifestFilePaths
+      .filter((entry) => !expectedManifestFilePathSet.has(entry))
+    check(
+      checks,
+      'manifest-file-set-exact',
+      missingManifestFilePaths.length === 0
+        && unexpectedManifestFilePaths.length === 0
+        && manifestFiles.length === expectedManifestFilePaths.length,
+      missingManifestFilePaths.length === 0
+        && unexpectedManifestFilePaths.length === 0
+        && manifestFiles.length === expectedManifestFilePaths.length
+        ? `${manifestFiles.length} file record(s); metadata/manifest.json and metadata/SHA256SUMS intentionally excluded`
+        : `missing: ${missingManifestFilePaths.slice(0, 5).join(', ') || '-'}; unexpected: ${unexpectedManifestFilePaths.slice(0, 5).join(', ') || '-'}; records: ${manifestFiles.length}/${expectedManifestFilePaths.length}`,
+    )
     const { checksums, invalidLines } = parseChecksumFile(readZipEntryText(zipPath, shaPath))
     check(checks, 'checksum-file-format', invalidLines.length === 0, invalidLines.slice(0, 3).join(' | ') || 'ok')
 
@@ -928,6 +1147,16 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
       visualizationIndexParseIssues.length === 0 && indexedVisualizations.length === visualizationIndexValues.length,
       visualizationIndexParseIssues.slice(0, 5).join(' | ') || `${indexedVisualizations.length} valid asset record(s)`,
     )
+    const oversizedVisualizations = indexedVisualizations.filter((asset) => asset.bytes > MAX_GOAL_VISUALIZATION_BYTES)
+    const visualizationExtractionSizeSafe = oversizedVisualizations.length === 0
+      && counts.goalVisualizationBytes <= MAX_GOAL_VISUALIZATION_TOTAL_BYTES
+    check(
+      checks,
+      'goal-visualization-extraction-size-limits',
+      visualizationExtractionSizeSafe,
+      oversizedVisualizations.slice(0, 5).map((asset) => `${asset.packagePath}: ${asset.bytes} bytes`).join(' | ')
+        || `${counts.goalVisualizationBytes} total visualization bytes`,
+    )
 
     const visualizationKey = (record: { goalId: string; order: number }) => `${record.goalId}:${record.order}`
     const indexedKeys = indexedVisualizations.map(visualizationKey)
@@ -1021,6 +1250,10 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
         if (manifestFile.sha256 !== record.sha256) issues.push(`${entry}: manifest/index hash mismatch`)
       }
       if (!entrySet.has(entry)) return issues
+      if (!visualizationExtractionSizeSafe) {
+        issues.push(`${entry}: visualization extraction size contract failed`)
+        return issues
+      }
       const content = inspectZipEntry(entry)
       if (content.bytes !== record.bytes) issues.push(`${entry}: packaged byte length mismatch`)
       if (content.sha256 !== record.sha256) issues.push(`${entry}: packaged SHA-256 mismatch`)
@@ -1095,7 +1328,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     const mappingStates = [...new Set(entries.flatMap((entry) => {
       const match = entry.match(/\/data\/mappings\/(DE-[A-Z]{2})\//u)
       return match ? [match[1]] : []
-    }))].sort((left, right) => left.localeCompare(right))
+    }))].sort(compareCodeUnits)
     counts.mappingStates = mappingStates.length
     const missingStates = EXPECTED_DE_STATES.filter((state) => !mappingStates.includes(state))
     check(checks, 'all-de-state-mapping-lanes-present', missingStates.length === 0, missingStates.join(', ') || 'all 16 state lanes')
@@ -1186,9 +1419,11 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     check(checks, 'validator-runtime', false, message)
   }
 
+  checkZipInputStability()
   const failedChecks = checks.filter((entry) => !entry.passed)
   return {
     zipPath: repoRelative(zipPath),
+    zipSha256,
     archiveRoot,
     passed: failedChecks.length === 0 && errors.length === 0,
     checks,
@@ -1202,7 +1437,7 @@ const buildMarkdownReport = (params: {
   results: PackageValidationResult[]
 }) => {
   const rows = params.results
-    .map((result) => `| \`${result.zipPath}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.goalVisualizationAssets ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
+    .map((result) => `| \`${result.zipPath}\` | \`${result.zipSha256 ?? 'not available'}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.goalVisualizationAssets ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
     .join('\n')
   const failedChecks = params.results.flatMap((result) => result.checks
     .filter((checkResult) => !checkResult.passed)
@@ -1220,8 +1455,8 @@ ${params.results.every((result) => result.passed)
 
 ## Packages
 
-| ZIP | Status | Files | Goals | Images | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ZIP | SHA-256 | Status | Files | Goals | Images | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 ${rows}
 
 ## Failed Checks

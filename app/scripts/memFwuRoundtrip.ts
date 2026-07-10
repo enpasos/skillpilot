@@ -1,6 +1,20 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { createReadStream, createWriteStream, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import {
+  closeSync,
+  createReadStream,
+  createWriteStream,
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  openSync,
+  readFileSync,
+  renameSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+  writeSync,
+} from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath } from 'node:url'
@@ -14,7 +28,7 @@ type JsonValue =
   | { [key: string]: JsonValue }
 
 type CliOptions = {
-  mode: 'roundtrip' | 'to-rdf' | 'to-slim-rdf' | 'from-rdf' | 'validate'
+  mode: 'roundtrip' | 'to-rdf' | 'to-slim-rdf' | 'from-rdf' | 'validate' | 'validate-owl'
   zipPath: string
   outDir: string
   rdfPath: string
@@ -23,6 +37,7 @@ type CliOptions = {
   reconstructedDir: string
   reconstructedZipPath: string
   ontologyDir: string
+  reason: boolean
   help: boolean
 }
 
@@ -31,11 +46,13 @@ type SlimRdfFile = {
   path: string
   triples: number
   bytes: number
+  sha256: string
   description: string
 }
 
 type ZipEntryRecord = {
   path: string
+  uncompressedBytes: number
   content: Buffer | null
   text: string | null
   sha256: string | null
@@ -67,6 +84,8 @@ type SemanticCounts = {
   containsEdges: number
   requiresEdges: number
   competencyCatalogEntries: number
+  coreAxisEntries: number
+  coreAxisReferences: number
   programUnits: number
   goalPlacements: number
   compositionViews: number
@@ -88,6 +107,13 @@ type RoundtripReport = {
   rdfPath: string
   profilePath: string
   reconstructedZip: string
+  hashes: {
+    inputZipSha256: string | null
+    rdfSha256: string | null
+    profileSha256: string | null
+    reconstructedZipSha256: string | null
+    ontologyCoreSha256: string | null
+  }
   archiveRoot: string
   fwuOntology: {
     repository: string
@@ -105,6 +131,8 @@ type RoundtripReport = {
   packageValidation: {
     command: string
     passed: boolean
+    reportPath: string | null
+    reportSha256: string | null
   } | null
 }
 
@@ -121,6 +149,8 @@ type ParsedTriple = {
 type GoalFwuKind =
   | 'curricular-atomic'
   | 'curricular-cluster'
+  | 'unscoped-curricular-atomic'
+  | 'runtime-cluster'
   | 'program-structure'
   | 'practice-or-assessment'
   | 'memorization'
@@ -141,6 +171,10 @@ const appRoot = resolve(repoRoot, 'app')
 const DEFAULT_ZIP = 'tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip'
 const DEFAULT_OUT_DIR = 'tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0'
 const ZIP_COMMAND_MAX_BUFFER_BYTES = 512 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_TOTAL_BYTES = 8 * 1024 * 1024 * 1024
+const MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
+const MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES = 16 * 1024 * 1024 * 1024
 
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
@@ -156,22 +190,25 @@ const LP_CORE_ONTOLOGY = `${LP}lp/components/lehrplan-core.owl`
 const SP = 'https://skillpilot.de/ns/roundtrip#'
 const ID = 'https://skillpilot.de/id/mem-fwu-roundtrip/'
 
-const LP_CURRICULAR_ELEMENT = `${LP}LP_0000261`
+const LP_SUBJECT_SPECIFIC_COMPETENCY = `${LP}LP_0000336`
 const LP_COMPETENCY_SPECIFICATION = `${LP}LP_0000263`
 const LP_CURRICULAR_AREA = `${LP}LP_0000349`
+const LP_PROCESS_COMPETENCY_AREA = `${LP}LP_0030265`
+const LP_GUIDING_IDEA = `${LP}LP_0000268`
 const LP_REFERENCE = `${LP}LP_0030065`
 const LP_DIDACTIC_PREREQUISITE = `${LP}LP_0000554`
 const LP_SCHOOL_SUBJECT = `${LP}LP_0000001`
 const LP_SCHOOL_TYPE = `${LP}LP_0000111`
 const LP_HAS_SCHOOL_SUBJECT = `${LP}LP_0000537`
 const LP_FOR_TYPE_OF_SCHOOL = `${LP}LP_0000812`
+const LP_HAS_GRADE = `${LP}LP_0000026`
+const LP_HAS_STAGE = `${LP}LP_0000047`
+const LP_OF_STATE = `${LP}LP_0000029`
+const LP_HAS_UNIT = `${LP}LP_0000041`
+const LP_HAS_REQUIREMENT_LEVEL = `${LP}LP_0000840`
 const LP_HAS_REFERENCE = `${LP}LP_0030071`
 const LP_REFERS_TO = `${LP}LP_0030072`
 const LP_DESCRIBED_BY = `${LP}LP_0000024`
-const LP_HAS_FUNCTION = `${LP}LP_0000483`
-const LP_COMPETENCY_DESCRIPTION_FUNCTION = `${LP}LP_0000479`
-const LP_AREA_FUNCTION = `${LP}LP_0000497`
-const LP_REFERENCE_DESCRIPTION_FUNCTION = `${LP}LP_0002158`
 const LP_HAS_DESCRIPTION = `${LP}LP_0030051`
 const LP_HAS_TITLE = `${LP}LP_0030056`
 const LP_HAS_NUMBER = `${LP}LP_0030057`
@@ -179,10 +216,49 @@ const LP_VALUE = `${LP}LP_0000344`
 const LP_TITLE = `${LP}LP_0000346`
 const LP_DESCRIPTION = `${LP}LP_0030003`
 const LP_IDENTIFIER = `${LP}LP_0000347`
+const LP_POSITION = `${LP}LP_0000460`
 const BFO_HAS_PART = `${BFO}BFO_0000051`
-const IAO_INFORMATION_CONTENT_ENTITY = `${IAO}IAO_0000030`
+const BFO_PART_OF = `${BFO}BFO_0000050`
 const KIM_MATHEMATICS = 'http://w3id.org/kim/schulfaecher/s1017'
 const KIM_GYMNASIUM = 'https://w3id.org/kim/schularten/s08'
+
+const REFERENCE_ROLE_COMPETENCY_REFS = 'competencyRefs'
+const REFERENCE_ROLE_PROCESS_COMPETENCIES = 'dimensionTags.processCompetencies'
+const REFERENCE_ROLE_GUIDING_IDEAS = 'dimensionTags.guidingIdeas'
+
+const FWU_GRADES = new Map<string, string>(
+  Array.from({ length: 9 }, (_, index) => {
+    const grade = index + 5
+    return [`de-gym-math-j${grade}`, `${LP}LP_${2_000_000 + grade}`]
+  }),
+)
+const FWU_STAGES = new Map<string, string>([
+  ['de-gym-math-sek1', `${LP}LP_0000045`],
+  ['de-gym-math-sek2', `${LP}LP_0000046`],
+])
+const FWU_REQUIREMENT_LEVELS = new Map<string, string>([
+  ['1', `${LP}LP_0000803`],
+  ['2', `${LP}LP_0000804`],
+  ['3', `${LP}LP_0000805`],
+])
+const FWU_STATE_BY_JURISDICTION = new Map<string, string>([
+  ['DE-TH', `${LP}LP_3000031`],
+  ['DE-NI', `${LP}LP_3000043`],
+  ['DE-NW', `${LP}LP_3000044`],
+  ['DE-HH', `${LP}LP_3000045`],
+  ['DE-RP', `${LP}LP_3000046`],
+  ['DE-SN', `${LP}LP_3000047`],
+  ['DE-BE', `${LP}LP_3000048`],
+  ['DE-BW', `${LP}LP_3000049`],
+  ['DE-HE', `${LP}LP_3000050`],
+  ['DE-BY', `${LP}LP_3000051`],
+  ['DE-MV', `${LP}LP_3000052`],
+  ['DE-ST', `${LP}LP_3000053`],
+  ['DE-SH', `${LP}LP_3000054`],
+  ['DE-SL', `${LP}LP_3000055`],
+  ['DE-HB', `${LP}LP_3000056`],
+  ['DE-BB', `${LP}LP_3000057`],
+])
 
 const emptyCounts = (): SemanticCounts => ({
   files: 0,
@@ -191,6 +267,8 @@ const emptyCounts = (): SemanticCounts => ({
   containsEdges: 0,
   requiresEdges: 0,
   competencyCatalogEntries: 0,
+  coreAxisEntries: 0,
+  coreAxisReferences: 0,
   programUnits: 0,
   goalPlacements: 0,
   compositionViews: 0,
@@ -214,7 +292,7 @@ const usage = () => `Usage:
   npm run roundtrip:mem-fwu:validate -- --zip <package.zip> --rdf <data.nt> --out-dir <dir>
 
 Options:
-  --mode <roundtrip|to-rdf|to-slim-rdf|from-rdf|validate>
+  --mode <roundtrip|to-rdf|to-slim-rdf|from-rdf|validate|validate-owl>
   --zip <path>                  Input SkillPilot ZIP. Default: ${DEFAULT_ZIP}
   --out-dir <path>              Roundtrip working directory. Default: ${DEFAULT_OUT_DIR}
   --rdf <path>                  RDF N-Triples path. Default: <out-dir>/rdf/skillpilot-mem-fwu.nt
@@ -223,6 +301,7 @@ Options:
   --reconstructed-dir <path>    Directory for reconstructed package root. Default: <out-dir>/reconstructed
   --reconstructed-zip <path>    Reconstructed ZIP path. Default: <out-dir>/skillpilot-de-gymnasium-mathematik-v0.1.0.roundtrip.zip
   --ontology-dir <path>         Local FWU ontology checkout. Default: tmp/lehrplan-ontologie
+  --reason                      With validate-owl, also run HermiT consistency reasoning.
   --help
 `
 
@@ -241,6 +320,26 @@ const resolveInsideRepo = (inputPath: string) => {
 }
 
 const toPosixPath = (path: string) => path.split(sep).join('/')
+
+const compareCodeUnits = (left: string, right: string) => left < right ? -1 : left > right ? 1 : 0
+
+const chunkArgumentsByBytes = (values: string[], maxBytes = 256 * 1024) => {
+  const chunks: string[][] = []
+  let chunk: string[] = []
+  let chunkBytes = 0
+  values.forEach((value) => {
+    const argumentBytes = Buffer.byteLength(value) + 1
+    if (chunk.length > 0 && chunkBytes + argumentBytes > maxBytes) {
+      chunks.push(chunk)
+      chunk = []
+      chunkBytes = 0
+    }
+    chunk.push(value)
+    chunkBytes += argumentBytes
+  })
+  if (chunk.length > 0) chunks.push(chunk)
+  return chunks
+}
 
 const repoRelative = (absolutePath: string) => {
   const relativePath = toPosixPath(relative(repoRoot, absolutePath))
@@ -262,6 +361,7 @@ const parseArgs = (argv: string[]): CliOptions => {
     reconstructedDir: resolve(outDirDefault, 'reconstructed'),
     reconstructedZipPath: resolve(outDirDefault, 'skillpilot-de-gymnasium-mathematik-v0.1.0.roundtrip.zip'),
     ontologyDir: resolveInsideRepo('tmp/lehrplan-ontologie'),
+    reason: false,
     help: false,
   }
 
@@ -282,7 +382,7 @@ const parseArgs = (argv: string[]): CliOptions => {
     }
     if (arg === '--mode') {
       const mode = readValue(arg)
-      if (!['roundtrip', 'to-rdf', 'to-slim-rdf', 'from-rdf', 'validate'].includes(mode)) {
+      if (!['roundtrip', 'to-rdf', 'to-slim-rdf', 'from-rdf', 'validate', 'validate-owl'].includes(mode)) {
         throw new Error(`Unsupported mode: ${mode}`)
       }
       options.mode = mode as CliOptions['mode']
@@ -335,6 +435,10 @@ const parseArgs = (argv: string[]): CliOptions => {
       options.ontologyDir = resolveInsideRepo(readValue(arg))
       continue
     }
+    if (arg === '--reason') {
+      options.reason = true
+      continue
+    }
 
     throw new Error(`Unknown argument: ${arg}`)
   }
@@ -357,6 +461,10 @@ const sha256File = (filePath: string) => execFileSync('sha256sum', [filePath], {
   maxBuffer: 1024 * 1024,
 }).trim().split(/\s+/u)[0]
 
+const sha256RegularFile = (filePath: string) => (
+  existsSync(filePath) && lstatSync(filePath).isFile() ? sha256File(filePath) : null
+)
+
 const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPath], {
   encoding: 'utf8',
   maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
@@ -364,6 +472,17 @@ const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPa
 })
   .split(/\r?\n/u)
   .filter(Boolean)
+
+const listZipEntryMetadata = (zipPath: string) => execFileSync('zipinfo', ['-l', zipPath], {
+  encoding: 'utf8',
+  maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+  stdio: ['ignore', 'pipe', 'pipe'],
+})
+  .split(/\r?\n/u)
+  .flatMap((line) => {
+    const match = line.match(/^([bcdlps-][rwxStTs-]{9})\s+\S+\s+\S+\s+(\d+)\s+\S+\s+\d+\s+\S+\s+\S+\s+\S+\s+(.+)$/u)
+    return match ? [{ mode: match[1], uncompressedBytes: Number(match[2]), path: match[3] }] : []
+  })
 
 const readZipEntry = (zipPath: string, entryPath: string) => execFileSync('unzip', ['-p', zipPath, entryPath], {
   maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
@@ -381,6 +500,10 @@ const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue
   }
   return value
 }
+
+const optionalJsonObject = (value: JsonValue | undefined): Record<string, JsonValue> | null => (
+  value && typeof value === 'object' && !Array.isArray(value) ? value : null
+)
 
 const stringValue = (value: JsonValue | undefined) => typeof value === 'string' && value.trim() ? value.trim() : null
 
@@ -461,7 +584,7 @@ const classifyGoalForFwu = (data: Record<string, JsonValue>, contains: string[])
     return {
       kind: 'curricular-cluster',
       profileClass: null,
-      fwuClasses: [LP_CURRICULAR_ELEMENT, LP_CURRICULAR_AREA],
+      fwuClasses: [LP_CURRICULAR_AREA],
       safeCurricularPartWholeSource: true,
       safeCurricularPartWholeTarget: true,
     }
@@ -470,10 +593,75 @@ const classifyGoalForFwu = (data: Record<string, JsonValue>, contains: string[])
   return {
     kind: 'curricular-atomic',
     profileClass: null,
-    fwuClasses: [LP_CURRICULAR_ELEMENT, LP_COMPETENCY_SPECIFICATION],
+    fwuClasses: [LP_SUBJECT_SPECIFIC_COMPETENCY],
     safeCurricularPartWholeSource: false,
     safeCurricularPartWholeTarget: true,
   }
+}
+
+const runtimeClusterClassification = (): GoalFwuClassification => ({
+  kind: 'runtime-cluster',
+  profileClass: `${SP}RuntimeClusterGoal`,
+  fwuClasses: [],
+  safeCurricularPartWholeSource: false,
+  safeCurricularPartWholeTarget: false,
+})
+
+const unscopedCurricularAtomicClassification = (): GoalFwuClassification => ({
+  kind: 'unscoped-curricular-atomic',
+  profileClass: `${SP}UnscopedCurricularGoal`,
+  fwuClasses: [],
+  safeCurricularPartWholeSource: false,
+  safeCurricularPartWholeTarget: false,
+})
+
+const refineRuntimeOnlyClusters = (
+  goals: JsonValue[],
+  classifications: Map<string, GoalFwuClassification>,
+) => {
+  let changed = true
+  while (changed) {
+    changed = false
+    goals.forEach((goal) => {
+      const data = jsonObject(goal, 'canonical goal')
+      const goalId = stringValue(data.id)
+      const children = stringArray(data.contains)
+      if (!goalId || children.length === 0 || classifications.get(goalId)?.kind !== 'curricular-cluster') {
+        return
+      }
+      const childKinds = children.map((childId) => classifications.get(childId)?.kind)
+      if (childKinds.every((kind) => kind !== 'curricular-atomic' && kind !== 'curricular-cluster')) {
+        classifications.set(goalId, runtimeClusterClassification())
+        changed = true
+      }
+    })
+  }
+}
+
+const classifyGoalsForFwu = (goals: JsonValue[]) => {
+  const classifications = new Map<string, GoalFwuClassification>()
+  goals.forEach((goal) => {
+    const data = jsonObject(goal, 'canonical goal')
+    const goalId = stringValue(data.id)
+    if (goalId) {
+      classifications.set(goalId, classifyGoalForFwu(data, stringArray(data.contains)))
+    }
+  })
+  refineRuntimeOnlyClusters(goals, classifications)
+  const childrenOfCurricularAreas = new Set<string>()
+  goals.forEach((goal) => {
+    const data = jsonObject(goal, 'canonical goal')
+    const goalId = stringValue(data.id)
+    if (goalId && classifications.get(goalId)?.kind === 'curricular-cluster') {
+      stringArray(data.contains).forEach((childId) => childrenOfCurricularAreas.add(childId))
+    }
+  })
+  classifications.forEach((classification, goalId) => {
+    if (classification.kind === 'curricular-atomic' && !childrenOfCurricularAreas.has(goalId)) {
+      classifications.set(goalId, unscopedCurricularAtomicClassification())
+    }
+  })
+  return classifications
 }
 
 const shouldWriteStrictCurricularPart = (
@@ -483,7 +671,62 @@ const shouldWriteStrictCurricularPart = (
 
 const compactJsonLiteral = (value: JsonValue | undefined) => value === undefined ? null : JSON.stringify(value)
 
+const compactResourceLinksForRdf = (value: JsonValue | undefined): JsonValue | undefined => {
+  if (!Array.isArray(value)) {
+    return value
+  }
+  return value.map((link) => {
+    if (!link || typeof link !== 'object' || Array.isArray(link)) {
+      return link
+    }
+    return link.type === 'goal-visualization' && link.resourceType === 'image' ? null : link
+  })
+}
+
+const hasUnsafeRdfLiteralCharacters = (value: string) => {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index)
+    if (
+      code <= 0x08
+      || code === 0x0B
+      || code === 0x0C
+      || (code >= 0x0E && code <= 0x1F)
+      || code === 0x7F
+      || code === 0xFFFE
+      || code === 0xFFFF
+    ) {
+      return true
+    }
+    if (code >= 0xD800 && code <= 0xDBFF) {
+      const next = value.charCodeAt(index + 1)
+      if (next < 0xDC00 || next > 0xDFFF) {
+        return true
+      }
+      index += 1
+    } else if (code >= 0xDC00 && code <= 0xDFFF) {
+      return true
+    }
+  }
+  return false
+}
+
+const hasUnsafeJsonString = (value: JsonValue): boolean => {
+  if (typeof value === 'string') {
+    return hasUnsafeRdfLiteralCharacters(value)
+  }
+  if (Array.isArray(value)) {
+    return value.some(hasUnsafeJsonString)
+  }
+  if (value && typeof value === 'object') {
+    return Object.values(value).some(hasUnsafeJsonString)
+  }
+  return false
+}
+
 const escapeLiteral = (value: string) => {
+  if (hasUnsafeRdfLiteralCharacters(value)) {
+    throw new Error('RDF literal contains a forbidden control character or an unpaired surrogate.')
+  }
   let escaped = ''
   for (let index = 0; index < value.length; index += 1) {
     const char = value[index]
@@ -493,7 +736,7 @@ const escapeLiteral = (value: string) => {
     else if (char === '\n') escaped += '\\n'
     else if (char === '\r') escaped += '\\r'
     else if (char === '\t') escaped += '\\t'
-    else if (code < 0x20 || (code >= 0xD800 && code <= 0xDFFF)) escaped += `\\u${code.toString(16).padStart(4, '0').toUpperCase()}`
+    else if (code < 0x20) escaped += `\\u${code.toString(16).padStart(4, '0').toUpperCase()}`
     else escaped += char
   }
   return escaped
@@ -545,6 +788,23 @@ const didacticPrerequisiteIri = (archiveRoot: string, sourceGoalId: string, targ
   `${goalIri(archiveRoot, sourceGoalId)}/didactic-prerequisite/${idSegment(targetGoalId)}`
 )
 
+const competencyReferenceIri = (archiveRoot: string, sourceGoalId: string, competencyId: string) => (
+  `${goalIri(archiveRoot, sourceGoalId)}/competency-reference/${idSegment(competencyId)}`
+)
+
+const processAxisId = (code: string) => `PROCESS.${code}`
+const guidingIdeaAxisId = (code: string) => `GUIDING.${code}`
+const processAxisIri = (archiveRoot: string, code: string) => `${packageIri(archiveRoot)}/competency/${idSegment(processAxisId(code))}`
+const guidingIdeaAxisIri = (archiveRoot: string, code: string) => `${packageIri(archiveRoot)}/guiding-idea/${idSegment(code)}`
+
+const GUIDING_IDEA_TITLES = new Map<string, string>([
+  ['L1', 'Leitidee L1'],
+  ['L2', 'Leitidee L2'],
+  ['L3', 'Leitidee L3'],
+  ['L4', 'Leitidee L4'],
+  ['L5', 'Leitidee L5'],
+])
+
 const goalVisualizationReferenceIri = (archiveRoot: string, goalId: string, order: number) => (
   `${goalIri(archiveRoot, goalId)}/goal-visualization/${order}`
 )
@@ -593,7 +853,7 @@ const semanticCardIri = (deck: string, cardId: string) => `${deck}/card/${idSegm
 
 const writeProfile = (
   profilePath: string,
-  options: { includeCarrier?: boolean; coreImport?: string } = {},
+  options: { includeCarrier?: boolean } = {},
 ) => {
   mkdirSync(dirname(profilePath), { recursive: true })
   const carrierTerms = options.includeCarrier === false ? '' : `
@@ -608,12 +868,14 @@ sp:sourceIndexSummaryJson a owl:DatatypeProperty ; rdfs:label "source index summ
   writeFileSync(profilePath, `@prefix sp: <${SP}> .
 @prefix lp: <${LP}> .
 @prefix bfo: <${BFO}> .
+@prefix iao: <${IAO}> .
+@prefix schema: <${SCHEMA}> .
 @prefix owl: <${OWL}> .
 @prefix rdfs: <${RDFS}> .
 @prefix dcterms: <${DCTERMS}> .
 
 <${SP}> a owl:Ontology ;
-  owl:imports <${options.coreImport ?? LP_CORE_ONTOLOGY}> ;
+  owl:imports <${LP_CORE_ONTOLOGY}> ;
   dcterms:title "SkillPilot MEM/FWU Roundtrip Profile"@en ;
   dcterms:description "Minimal SkillPilot profile used to test whether a SkillPilot competence landscape can be carried through a MEM-compatible RDF/OWL representation based on the FWU Lehrplan-Ontologie and reconstructed afterwards."@en .
 
@@ -624,6 +886,14 @@ sp:LearningGoal a owl:Class ;
   rdfs:comment "A SkillPilot graph node used for learning navigation. This application-level notion is not automatically a FWU competence or competency specification."@en .
 sp:AtomicGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal ; rdfs:label "SkillPilot atomic graph node"@en .
 sp:ClusterGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal ; rdfs:label "SkillPilot cluster graph node"@en .
+sp:RuntimeClusterGoal a owl:Class ;
+  rdfs:subClassOf sp:ClusterGoal ;
+  rdfs:label "SkillPilot runtime-only cluster"@en ;
+  rdfs:comment "A learner-facing grouping whose children are application nodes rather than curricular elements."@en .
+sp:UnscopedCurricularGoal a owl:Class ;
+  rdfs:subClassOf sp:AtomicGoal ;
+  rdfs:label "Unscoped curricular goal"@en ;
+  rdfs:comment "A curricular learning goal that cannot safely be asserted as an FWU competency specification until it has a named curricular-area parent."@en .
 sp:ProgramStructureGoal a owl:Class ;
   rdfs:subClassOf sp:ClusterGoal ;
   rdfs:label "SkillPilot program structure node"@en ;
@@ -646,12 +916,11 @@ sp:MappingFile a owl:Class ; rdfs:label "Mapping file metadata"@en .
 sp:MappingRecord a owl:Class ; rdfs:label "Canonical curriculum mapping record"@en .
 sp:ReviewDecision a owl:Class ; rdfs:label "Reviewed source-to-canonical mapping decision"@en .
 sp:SourceCollection a owl:Class ; rdfs:label "Curriculum source extraction collection"@en .
-sp:SourceDocument a owl:Class ; rdfs:label "Official curriculum source document"@en .
+sp:SourceDocument a owl:Class ; rdfs:subClassOf iao:IAO_0000030 ; rdfs:label "Official curriculum source document"@en .
 sp:SourceGoalReference a owl:Class ; rdfs:subClassOf lp:LP_0030065 ; rdfs:label "Source goal reference with official text span"@en .
 sp:GoalVisualizationReference a owl:Class ;
-  rdfs:subClassOf lp:LP_0030065 ;
-  rdfs:label "Goal visualization reference"@en ;
-  rdfs:comment "Application-specific CE-Verweis specialization linking a learning goal to an image sidecar in the release package."@en .
+  rdfs:label "Runtime goal visualization reference"@en ;
+  rdfs:comment "Application reference used only when the source graph node is not a curricular element."@en .
 sp:CardDeck a owl:Class ; rdfs:label "Memorization card deck"@en .
 sp:Card a owl:Class ; rdfs:label "Memorization card"@en .
 sp:ExternalGoalReference a owl:Class ; rdfs:label "External goal reference"@en .
@@ -669,7 +938,20 @@ sp:containsGoal a owl:ObjectProperty ;
   rdfs:domain sp:LearningGoal ;
   rdfs:range sp:LearningGoal ;
   rdfs:comment "Direct SkillPilot containment edge retained as the lossless adjacency anchor; strict curricular edges additionally use transitive BFO has-part semantics."@en .
-sp:competencyRef a owl:ObjectProperty ; rdfs:domain sp:LearningGoal ; rdfs:range sp:CompetencyCatalogEntry .
+sp:didacticRequires a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:LearningGoal ;
+  rdfs:comment "Direct runtime prerequisite edge used only when either endpoint is not a curricular element; curricular prerequisite references use lp:LP_0000554."@en .
+sp:hasGoalVisualization a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:GoalVisualizationReference .
+sp:referencesAsset a owl:ObjectProperty ;
+  rdfs:domain sp:GoalVisualizationReference ;
+  rdfs:range schema:ImageObject .
+sp:competencyRef a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:CompetencyCatalogEntry ;
+  rdfs:comment "Runtime competency link used only when the source node is not a curricular element."@en .
 sp:hasMappingRecord a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:MappingRecord .
 sp:hasMappingFile a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:MappingFile .
 sp:fromMappingFile a owl:ObjectProperty ; rdfs:range sp:MappingFile .
@@ -716,17 +998,23 @@ sp:core a owl:DatatypeProperty ; rdfs:label "core goal flag"@en .
 sp:weight a owl:DatatypeProperty ; rdfs:label "progress weight"@en .
 sp:applicabilityJson a owl:DatatypeProperty ; rdfs:label "applicability JSON"@en .
 sp:metadataJson a owl:DatatypeProperty ; rdfs:label "metadata JSON"@en .
-sp:resourceLinksJson a owl:DatatypeProperty ; rdfs:label "resource links JSON"@en .
+sp:resourceLinksJson a owl:DatatypeProperty ;
+  rdfs:label "resource links JSON"@en ;
+  rdfs:comment "Compact JSON fallback. Null positions reserve links represented as first-class RDF references."@en .
 sp:extendedDataJson a owl:DatatypeProperty ; rdfs:label "extended data JSON"@en .
 sp:releaseJson a owl:DatatypeProperty ; rdfs:label "release metadata JSON"@en .
 sp:examDataJson a owl:DatatypeProperty ; rdfs:label "exam data JSON"@en .
 sp:dimensionTag a owl:DatatypeProperty ; rdfs:label "dimension tag"@en .
+sp:dimensionTagsJson a owl:DatatypeProperty ; rdfs:label "structured dimension tags JSON"@en .
 sp:semanticAtomic a owl:DatatypeProperty ; rdfs:label "semantic atomicity flag"@en .
 sp:goalType a owl:DatatypeProperty ; rdfs:label "goal type"@en .
 sp:nodeKind a owl:DatatypeProperty ; rdfs:label "node kind"@en .
 sp:tag a owl:DatatypeProperty ; rdfs:label "tag"@en .
 sp:example a owl:DatatypeProperty ; rdfs:label "example reference"@en .
 sp:relation a owl:DatatypeProperty ; rdfs:label "relation"@en .
+sp:referenceRole a owl:DatatypeProperty ;
+  rdfs:label "reference reconstruction role"@en ;
+  rdfs:comment "Distinguishes authored competencyRefs from Core projections of structured dimension tags."@en .
 sp:landscapeId a owl:DatatypeProperty ; rdfs:label "landscape id"@en .
 sp:viewId a owl:DatatypeProperty ; rdfs:label "view id"@en .
 sp:scopeJson a owl:DatatypeProperty ; rdfs:label "composition view scope JSON"@en .
@@ -782,7 +1070,18 @@ sp:order a owl:DatatypeProperty ; rdfs:label "stable order"@en .
 sp:viewNodeKind a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition node kind"@en .
 sp:structureId a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition structure id"@en .
 sp:displayLabel a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition display label"@en .
-sp:json a rdfs:Datatype ; rdfs:label "compact JSON literal"@en .
+sp:quarantinedRecordJson a owl:DatatypeProperty ;
+  rdfs:label "quarantined source record JSON"@en ;
+  rdfs:comment "Lossless JSON fallback for a source record containing characters that cannot safely be materialized as RDF/OWL string literals."@en .
+
+schema:ImageObject a owl:Class ; rdfs:subClassOf iao:IAO_0000030 .
+schema:contentUrl a owl:DatatypeProperty .
+schema:encodingFormat a owl:DatatypeProperty .
+schema:provider a owl:DatatypeProperty .
+schema:accessibilitySummary a owl:DatatypeProperty .
+schema:license a owl:DatatypeProperty .
+schema:creativeWorkStatus a owl:DatatypeProperty .
+schema:inLanguage a owl:DatatypeProperty .
 ${carrierTerms}
 `)
 }
@@ -799,16 +1098,116 @@ const ontologyCommit = (ontologyDir: string) => {
 
 const ontologyCorePath = (ontologyDir: string) => resolve(ontologyDir, 'src/ontology/components/lehrplan-core.owl')
 
+const writeOntologyCatalog = (catalogPath: string) => {
+  mkdirSync(dirname(catalogPath), { recursive: true })
+  writeFileSync(catalogPath, `<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+  <uri name="${LP_CORE_ONTOLOGY}" uri="ontology/lehrplan-core.owl"/>
+</catalog>
+`)
+}
+
+const writeBoundCore = (outputDir: string, sourceCorePath: string) => {
+  const bundledCorePath = resolve(outputDir, 'ontology/lehrplan-core.owl')
+  const catalogPath = resolve(outputDir, 'catalog-v001.xml')
+  mkdirSync(dirname(bundledCorePath), { recursive: true })
+  writeFileSync(bundledCorePath, readFileSync(sourceCorePath))
+  writeOntologyCatalog(catalogPath)
+  return { bundledCorePath, catalogPath }
+}
+
 const requireOntologyCore = (ontologyDir: string) => {
   const corePath = ontologyCorePath(ontologyDir)
   if (!existsSync(corePath)) {
     throw new Error(`FWU core ontology is missing: ${repoRelative(corePath)}`)
   }
-  const content = readFileSync(corePath, 'utf8')
-  const requiredTerms = ['LP_0000554', 'LP_0030071', 'LP_0030072']
-  const missingTerms = requiredTerms.filter((term) => !content.includes(`${LP}${term}`))
-  if (missingTerms.length > 0) {
-    throw new Error(`FWU core ontology does not contain required terms: ${missingTerms.join(', ')}`)
+  const coreRepoPath = toPosixPath(relative(ontologyDir, corePath))
+  const coreStatus = execFileSync('git', ['status', '--porcelain', '--', coreRepoPath], {
+    cwd: ontologyDir,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  }).trim()
+  if (coreStatus) {
+    throw new Error(`FWU core working-tree file is not clean: ${coreStatus}`)
+  }
+  const committedCore = execFileSync('git', ['show', `HEAD:${coreRepoPath}`], {
+    cwd: ontologyDir,
+    maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  })
+  if (sha256(committedCore) !== sha256File(corePath)) {
+    throw new Error('FWU core file does not match the recorded ontology HEAD commit.')
+  }
+  const syntax = readFileSync(corePath, 'utf8').replace(/\s+/gu, '')
+  const declarations = new Map<string, { kind: 'Class' | 'DataProperty' | 'NamedIndividual' | 'ObjectProperty'; iri: string }>([
+    ['subject-specific competency', { kind: 'Class', iri: LP_SUBJECT_SPECIFIC_COMPETENCY }],
+    ['competency specification', { kind: 'Class', iri: LP_COMPETENCY_SPECIFICATION }],
+    ['curricular area', { kind: 'Class', iri: LP_CURRICULAR_AREA }],
+    ['process competency area', { kind: 'Class', iri: LP_PROCESS_COMPETENCY_AREA }],
+    ['guiding idea', { kind: 'Class', iri: LP_GUIDING_IDEA }],
+    ['reference', { kind: 'Class', iri: LP_REFERENCE }],
+    ['didactic prerequisite', { kind: 'Class', iri: LP_DIDACTIC_PREREQUISITE }],
+    ['school subject class', { kind: 'Class', iri: LP_SCHOOL_SUBJECT }],
+    ['school type class', { kind: 'Class', iri: LP_SCHOOL_TYPE }],
+    ['title class', { kind: 'Class', iri: LP_TITLE }],
+    ['description class', { kind: 'Class', iri: LP_DESCRIPTION }],
+    ['identifier class', { kind: 'Class', iri: LP_IDENTIFIER }],
+    ['described-by property', { kind: 'ObjectProperty', iri: LP_DESCRIBED_BY }],
+    ['school-subject property', { kind: 'ObjectProperty', iri: LP_HAS_SCHOOL_SUBJECT }],
+    ['school-type property', { kind: 'ObjectProperty', iri: LP_FOR_TYPE_OF_SCHOOL }],
+    ['grade property', { kind: 'ObjectProperty', iri: LP_HAS_GRADE }],
+    ['stage property', { kind: 'ObjectProperty', iri: LP_HAS_STAGE }],
+    ['federal-state property', { kind: 'ObjectProperty', iri: LP_OF_STATE }],
+    ['unit property', { kind: 'ObjectProperty', iri: LP_HAS_UNIT }],
+    ['requirement-level property', { kind: 'ObjectProperty', iri: LP_HAS_REQUIREMENT_LEVEL }],
+    ['has-reference property', { kind: 'ObjectProperty', iri: LP_HAS_REFERENCE }],
+    ['refers-to property', { kind: 'ObjectProperty', iri: LP_REFERS_TO }],
+    ['has-description property', { kind: 'ObjectProperty', iri: LP_HAS_DESCRIPTION }],
+    ['has-title property', { kind: 'ObjectProperty', iri: LP_HAS_TITLE }],
+    ['has-number property', { kind: 'ObjectProperty', iri: LP_HAS_NUMBER }],
+    ['BFO has-part property', { kind: 'ObjectProperty', iri: BFO_HAS_PART }],
+    ['BFO part-of property', { kind: 'ObjectProperty', iri: BFO_PART_OF }],
+    ['value property', { kind: 'DataProperty', iri: LP_VALUE }],
+    ['reference position property', { kind: 'DataProperty', iri: LP_POSITION }],
+    ['mathematics individual', { kind: 'NamedIndividual', iri: KIM_MATHEMATICS }],
+    ['Gymnasium individual', { kind: 'NamedIndividual', iri: KIM_GYMNASIUM }],
+  ])
+  ;[
+    ...FWU_GRADES.values(),
+    ...FWU_STAGES.values(),
+    ...FWU_REQUIREMENT_LEVELS.values(),
+    ...FWU_STATE_BY_JURISDICTION.values(),
+  ].forEach((individual) => declarations.set(`individual ${idSegment(individual)}`, { kind: 'NamedIndividual', iri: individual }))
+
+  const requiredFragments = new Map<string, string>([
+    ['canonical ontology IRI', `Ontology(<${LP_CORE_ONTOLOGY}>`],
+    ['didactic prerequisite specialization', `SubClassOf(<${LP_DIDACTIC_PREREQUISITE}><${LP_REFERENCE}>)`],
+    ['subject-specific competency specialization', `SubClassOf(<${LP_SUBJECT_SPECIFIC_COMPETENCY}><${LP_COMPETENCY_SPECIFICATION}>)`],
+    ['competency specification area and title restrictions', `EquivalentClasses(<${LP_COMPETENCY_SPECIFICATION}>ObjectIntersectionOf(<${LP}LP_0000261>ObjectSomeValuesFrom(<${BFO_PART_OF}><${LP_CURRICULAR_AREA}>)ObjectSomeValuesFrom(<${LP_DESCRIBED_BY}><${LP_TITLE}>)`],
+    ['BFO part inverse', `InverseObjectProperties(<${BFO_PART_OF}><${BFO_HAS_PART}>)`],
+    ['process competency area specialization', `SubClassOf(<${LP_PROCESS_COMPETENCY_AREA}>ObjectIntersectionOf(<${LP}LP_0030263>ObjectHasValue(<${LP}LP_0000483><${LP}LP_0000500>)))`],
+    ['guiding-idea specialization', `SubClassOf(<${LP_GUIDING_IDEA}>ObjectIntersectionOf(<${LP}LP_0030263>ObjectHasValue(<${LP}LP_0000483><${LP}LP_0000501>)))`],
+    ['has-reference range', `ObjectPropertyRange(<${LP_HAS_REFERENCE}><${LP_REFERENCE}>)`],
+    ['refers-to domain', `ObjectPropertyDomain(<${LP_REFERS_TO}><${LP_REFERENCE}>)`],
+    ['unit parthood specialization', `SubObjectPropertyOf(<${LP_HAS_UNIT}><${BFO_HAS_PART}>)`],
+    ['grade range', `ObjectPropertyRange(<${LP_HAS_GRADE}><${LP}LP_0000009>)`],
+    ['stage range', `ObjectPropertyRange(<${LP_HAS_STAGE}><${LP}LP_0000020>)`],
+    ['requirement-level range', `ObjectPropertyRange(<${LP_HAS_REQUIREMENT_LEVEL}><${LP}LP_0000037>)`],
+    ['description range', `ObjectPropertyRange(<${LP_HAS_DESCRIPTION}><${LP_DESCRIPTION}>)`],
+    ['title range', `ObjectPropertyRange(<${LP_HAS_TITLE}><${LP_TITLE}>)`],
+    ['number range', `ObjectPropertyRange(<${LP_HAS_NUMBER}><${LP_IDENTIFIER}>)`],
+    ['reference position range', `DataPropertyRange(<${LP_POSITION}>xsd:int)`],
+  ])
+  const missingContracts = [
+    ...[...declarations]
+      .filter(([, declaration]) => !syntax.includes(`Declaration(${declaration.kind}(<${declaration.iri}>))`))
+      .map(([label]) => label),
+    ...[...requiredFragments]
+      .filter(([, fragment]) => !syntax.includes(fragment))
+      .map(([label]) => label),
+  ]
+  if (missingContracts.length > 0) {
+    throw new Error(`FWU core ontology does not satisfy the required contract: ${missingContracts.join(', ')}`)
   }
   return corePath
 }
@@ -825,15 +1224,52 @@ const decodeZipEntryText = (entryPath: string, content: Buffer) => {
 
 const readEntries = (zipPath: string) => {
   const entryPaths = listZipEntries(zipPath)
+  const entryMetadata = listZipEntryMetadata(zipPath)
   const archiveRoot = archiveRootFrom(entryPaths)
   if (!archiveRoot || !isSafeArchiveRootSegment(archiveRoot)) {
     throw new Error('ZIP must contain exactly one archive root.')
   }
+  if (new Set(entryPaths).size !== entryPaths.length) {
+    throw new Error('ZIP contains duplicate entry names.')
+  }
+  if (
+    entryMetadata.length !== entryPaths.length
+    || entryMetadata.some((entry, index) => entry.path !== entryPaths[index])
+    || entryMetadata.some((entry) => !entry.mode.startsWith('-'))
+  ) {
+    throw new Error('ZIP entries must all be regular files with unambiguous metadata.')
+  }
+  if (entryMetadata.some((entry) => (
+    !Number.isSafeInteger(entry.uncompressedBytes)
+    || entry.uncompressedBytes < 0
+    || entry.uncompressedBytes > MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES
+  ))) {
+    throw new Error(`ZIP entry exceeds the ${MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES}-byte extraction limit.`)
+  }
+  const totalUncompressedBytes = entryMetadata.reduce((sum, entry) => sum + entry.uncompressedBytes, 0)
+  if (!Number.isSafeInteger(totalUncompressedBytes) || totalUncompressedBytes > MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES) {
+    throw new Error(`ZIP exceeds the ${MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES}-byte total extraction limit.`)
+  }
+  if (entryPaths.some((entryPath) => !isSafePackagePath(entryPath))) {
+    throw new Error('ZIP contains a non-portable or unsafe entry path.')
+  }
+  const portableKeys = entryPaths.map((entryPath) => entryPath.normalize('NFC').toLowerCase())
+  if (new Set(portableKeys).size !== portableKeys.length) {
+    throw new Error('ZIP contains case-insensitive or Unicode-normalized path collisions.')
+  }
+  const portableKeySet = new Set(portableKeys)
+  if (portableKeys.some((portableKey) => {
+    const segments = portableKey.split('/')
+    return segments.slice(1, -1).some((_segment, index) => portableKeySet.has(segments.slice(0, index + 2).join('/')))
+  })) {
+    throw new Error('ZIP contains a file/child path-prefix collision.')
+  }
 
-  const entries = entryPaths.map((entryPath): ZipEntryRecord => {
+  const entries = entryPaths.map((entryPath, index): ZipEntryRecord => {
     if (binaryEntryPattern.test(entryPath)) {
       return {
         path: entryPath,
+        uncompressedBytes: entryMetadata[index].uncompressedBytes,
         content: null,
         text: null,
         sha256: null,
@@ -842,6 +1278,7 @@ const readEntries = (zipPath: string) => {
     const content = readZipEntry(zipPath, entryPath)
     return {
       path: entryPath,
+      uncompressedBytes: entryMetadata[index].uncompressedBytes,
       content,
       text: decodeZipEntryText(entryPath, content),
       sha256: sha256(content),
@@ -931,7 +1368,7 @@ const writeJsonField = (write: (line: string) => void, subject: string, predicat
   if (json === null) {
     return
   }
-  write(tripleLine(subject, predicate, literal(json, `${SP}json`)))
+  write(tripleLine(subject, predicate, literal(json, `${XSD}string`)))
 }
 
 const writeCoreTextEntity = (
@@ -949,8 +1386,6 @@ const writeCoreTextEntity = (
   }
   write(tripleLine(subject, property, iri(entity)))
   if (property === LP_HAS_TITLE) {
-    // The current core restriction for CE-Kompetenzspezifikation uses LP_0000024,
-    // while the documented data pattern uses LP_0030056. Materialize both.
     write(tripleLine(subject, LP_DESCRIBED_BY, iri(entity)))
   }
   write(tripleLine(entity, `${RDF}type`, iri(entityClass)))
@@ -978,6 +1413,20 @@ const findEntry = (entries: ZipEntryRecord[], archiveRoot: string, relativePath:
   return entry
 }
 
+const readGoalClassifications = (archiveRoot: string, entries: ZipEntryRecord[]) => {
+  const canonicalEntry = entries.find((entry) => (
+    entry.path.startsWith(`${archiveRoot}/data/canonical/`) && entry.path.endsWith('.landscape.json')
+  ))
+  if (!canonicalEntry) {
+    throw new Error('Package does not contain a canonical landscape JSON.')
+  }
+  const landscape = jsonObject(
+    JSON.parse(entryText(canonicalEntry, 'canonical landscape')) as JsonValue,
+    'canonical landscape',
+  )
+  return classifyGoalsForFwu(Array.isArray(landscape.goals) ? landscape.goals : [])
+}
+
 const requiredManifestString = (data: Record<string, JsonValue>, key: string, context: string) => {
   const value = stringValue(data[key])
   if (!value) {
@@ -994,18 +1443,35 @@ const requiredManifestInteger = (data: Record<string, JsonValue>, key: string, c
   return value
 }
 
+const windowsReservedSegment = /^(?:aux|com[1-9]|con|lpt[1-9]|nul|prn)(?:\.|$)/iu
+const unsafeWindowsPathCharacter = /[<>:"|?*]/u
+const hasUnsafeWindowsPathCharacter = (segment: string) => (
+  unsafeWindowsPathCharacter.test(segment)
+  || [...segment].some((character) => {
+    const codePoint = character.codePointAt(0) ?? 0
+    return codePoint <= 0x1f || codePoint === 0x7f
+  })
+)
+
+const isSafePackagePathSegment = (segment: string) => (
+  segment !== ''
+  && segment !== '.'
+  && segment !== '..'
+  && !hasUnsafeWindowsPathCharacter(segment)
+  && !windowsReservedSegment.test(segment)
+  && !segment.endsWith('.')
+  && !segment.endsWith(' ')
+)
+
 const isSafePackagePath = (value: string) => (
   !value.startsWith('/')
   && !value.includes('\\')
-  && value.split('/').every((segment) => segment !== '' && segment !== '.' && segment !== '..')
+  && value.split('/').every(isSafePackagePathSegment)
 )
 
 const isSafeArchiveRootSegment = (value: string) => (
-  value !== ''
-  && value !== '.'
-  && value !== '..'
-  && !value.includes('/')
-  && !value.includes('\\')
+  /^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(value)
+  && isSafePackagePathSegment(value)
 )
 
 const readGoalVisualizationAssets = (archiveRoot: string, entries: ZipEntryRecord[]): GoalVisualizationAsset[] => {
@@ -1066,6 +1532,9 @@ const readGoalVisualizationAssets = (archiveRoot: string, entries: ZipEntryRecor
     if (!assetEntry) {
       throw new Error(`Missing indexed goal visualization sidecar: ${zipPath}`)
     }
+    if (assetEntry.uncompressedBytes !== bytes) {
+      throw new Error(`ZIP metadata byte-length mismatch in ${context}: ${assetEntry.uncompressedBytes} != ${bytes}`)
+    }
 
     return {
       goalId,
@@ -1087,6 +1556,13 @@ const readGoalVisualizationAssets = (archiveRoot: string, entries: ZipEntryRecor
     }
   })
   const indexedPaths = new Set(assets.map((asset) => `${archiveRoot}/${asset.packagePath}`))
+  if (assets.some((asset) => asset.bytes > MAX_GOAL_VISUALIZATION_BYTES)) {
+    throw new Error(`A goal visualization exceeds the ${MAX_GOAL_VISUALIZATION_BYTES}-byte extraction limit.`)
+  }
+  const totalAssetBytes = assets.reduce((sum, asset) => sum + asset.bytes, 0)
+  if (totalAssetBytes > MAX_GOAL_VISUALIZATION_TOTAL_BYTES) {
+    throw new Error(`Goal visualizations exceed the ${MAX_GOAL_VISUALIZATION_TOTAL_BYTES}-byte total extraction limit.`)
+  }
   const unindexedAssets = entries
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/assets/goal-visualizations/`))
     .filter((entry) => !entry.path.endsWith('/'))
@@ -1119,22 +1595,28 @@ const writeGoalVisualizationSemantics = (
   archiveRoot: string,
   assets: GoalVisualizationAsset[],
   counts: SemanticCounts,
+  goalClassifications: Map<string, GoalFwuClassification>,
 ) => {
   assets.forEach((asset) => {
     const goal = goalIri(archiveRoot, asset.goalId)
     const reference = goalVisualizationReferenceIri(archiveRoot, asset.goalId, asset.order)
     const image = packageAssetIri(archiveRoot, asset.packagePath)
+    const isCurricularSource = goalClassifications.get(asset.goalId)?.safeCurricularPartWholeTarget === true
     counts.goalVisualizations += 1
 
-    write(tripleLine(goal, LP_HAS_REFERENCE, iri(reference)))
-    write(tripleLine(reference, `${RDF}type`, iri(`${SP}GoalVisualizationReference`)))
-    write(tripleLine(reference, `${RDF}type`, iri(LP_REFERENCE)))
-    write(tripleLine(reference, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
-    write(tripleLine(reference, LP_REFERS_TO, iri(image)))
-    write(tripleLine(reference, `${SP}order`, literal(asset.order, `${XSD}integer`)))
+    if (isCurricularSource) {
+      write(tripleLine(goal, LP_HAS_REFERENCE, iri(reference)))
+      write(tripleLine(reference, `${RDF}type`, iri(LP_REFERENCE)))
+      write(tripleLine(reference, LP_REFERS_TO, iri(image)))
+      write(tripleLine(reference, LP_POSITION, literal(asset.order, `${XSD}int`)))
+    } else {
+      write(tripleLine(goal, `${SP}hasGoalVisualization`, iri(reference)))
+      write(tripleLine(reference, `${RDF}type`, iri(`${SP}GoalVisualizationReference`)))
+      write(tripleLine(reference, `${SP}referencesAsset`, iri(image)))
+      write(tripleLine(reference, `${SP}order`, literal(asset.order, `${XSD}integer`)))
+    }
     write(tripleLine(reference, `${SP}role`, literal(asset.role)))
 
-    write(tripleLine(image, `${RDF}type`, iri(IAO_INFORMATION_CONTENT_ENTITY)))
     write(tripleLine(image, `${RDF}type`, iri(`${SCHEMA}ImageObject`)))
     write(tripleLine(image, `${SP}skillpilotId`, literal(asset.skillpilotId)))
     write(tripleLine(image, `${SP}zipPath`, literal(`${archiveRoot}/${asset.packagePath}`)))
@@ -1158,44 +1640,82 @@ const writeGoalVisualizationSidecars = (
   archiveRoot: string,
   entries: ZipEntryRecord[],
   assets: GoalVisualizationAsset[],
-) => assets.map((asset) => {
-  const zipPath = `${archiveRoot}/${asset.packagePath}`
-  const entry = entries.find((candidate) => candidate.path === zipPath)
-  if (!entry) {
-    throw new Error(`Missing validated goal visualization entry: ${zipPath}`)
+) => {
+  if (assets.length === 0) return []
+
+  const entryPaths = new Set(entries.map((entry) => entry.path))
+  const zipPaths = assets.map((asset) => `${archiveRoot}/${asset.packagePath}`)
+  zipPaths.forEach((zipPath) => {
+    if (!entryPaths.has(zipPath)) {
+      throw new Error(`Missing validated goal visualization entry: ${zipPath}`)
+    }
+  })
+
+  const extractRoot = resolve(outputDir, '.goal-visualization-extract')
+  rmSync(extractRoot, { recursive: true, force: true })
+  mkdirSync(extractRoot, { recursive: true })
+  try {
+    chunkArgumentsByBytes(zipPaths.map((zipPath) => zipPath.replaceAll('[', '[[]'))).forEach((literalZipPatterns) => {
+      execFileSync('unzip', ['-qq', '-o', inputZipPath, ...literalZipPatterns, '-d', extractRoot], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+        maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+      })
+    })
+
+    return assets.map((asset) => {
+      const zipPath = `${archiveRoot}/${asset.packagePath}`
+      const extracted = resolve(extractRoot, zipPath)
+      const relativeExtracted = relative(extractRoot, extracted)
+      if (relativeExtracted.startsWith('..') || isAbsolute(relativeExtracted) || !existsSync(extracted)) {
+        throw new Error(`Bulk extraction did not produce the expected goal visualization: ${zipPath}`)
+      }
+      const extractedStat = lstatSync(extracted)
+      if (!extractedStat.isFile()) {
+        throw new Error(`Goal visualization is not a regular file: ${zipPath}`)
+      }
+      if (extractedStat.size !== asset.bytes) {
+        throw new Error(`Byte-length mismatch for ${zipPath}: ${extractedStat.size} != ${asset.bytes}`)
+      }
+      const digest = sha256(readFileSync(extracted))
+      if (digest !== asset.sha256) {
+        throw new Error(`SHA-256 mismatch for ${zipPath}: ${digest} != ${asset.sha256}`)
+      }
+      const target = resolve(outputDir, asset.packagePath)
+      const relativeTarget = relative(outputDir, target)
+      if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
+        throw new Error(`Refusing to write goal visualization outside output directory: ${asset.packagePath}`)
+      }
+      mkdirSync(dirname(target), { recursive: true })
+      rmSync(target, { force: true })
+      renameSync(extracted, target)
+      return {
+        goalId: asset.goalId,
+        order: asset.order,
+        packagePath: asset.packagePath,
+        zipPath,
+        sidecarPath: repoRelative(target),
+        mediaType: asset.mediaType,
+        bytes: asset.bytes,
+        sha256: asset.sha256,
+      }
+    })
+  } finally {
+    rmSync(extractRoot, { recursive: true, force: true })
   }
-  const content = entry.content ?? readZipEntry(inputZipPath, entry.path)
-  if (content.length !== asset.bytes) {
-    throw new Error(`Byte-length mismatch for ${zipPath}: ${content.length} != ${asset.bytes}`)
-  }
-  const digest = sha256(content)
-  if (digest !== asset.sha256) {
-    throw new Error(`SHA-256 mismatch for ${zipPath}: ${digest} != ${asset.sha256}`)
-  }
-  const target = resolve(outputDir, asset.packagePath)
-  const relativeTarget = relative(outputDir, target)
-  if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
-    throw new Error(`Refusing to write goal visualization outside output directory: ${asset.packagePath}`)
-  }
+}
+
+const writeIndependentFile = (target: string, content: Buffer) => {
   mkdirSync(dirname(target), { recursive: true })
+  rmSync(target, { force: true })
   writeFileSync(target, content)
-  return {
-    goalId: asset.goalId,
-    order: asset.order,
-    packagePath: asset.packagePath,
-    zipPath,
-    sidecarPath: repoRelative(target),
-    mediaType: asset.mediaType,
-    bytes: asset.bytes,
-    sha256: asset.sha256,
-  }
-})
+}
 
 const writeLandscapeSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
   counts: SemanticCounts,
+  knownGoalClassifications?: Map<string, GoalFwuClassification>,
 ) => {
   const canonicalEntry = entries.find((entry) => (
     entry.path.startsWith(`${archiveRoot}/data/canonical/`) && entry.path.endsWith('.landscape.json')
@@ -1231,6 +1751,9 @@ const writeLandscapeSemantics = (
   writeStringField(write, landscape, `${DCTERMS}description`, landscapeData.descriptionEn, 'en')
   writeJsonField(write, landscape, `${SP}filtersJson`, landscapeData.filters)
 
+  const goals = Array.isArray(landscapeData.goals) ? landscapeData.goals : []
+  const goalClassifications = knownGoalClassifications ?? classifyGoalsForFwu(goals)
+
   const competencyCatalog = Array.isArray(landscapeData.competencyCatalog) ? landscapeData.competencyCatalog : []
   competencyCatalog.forEach((entry) => {
     const data = jsonObject(entry, 'competency catalog entry')
@@ -1242,10 +1765,72 @@ const writeLandscapeSemantics = (
     counts.competencyCatalogEntries += 1
     write(tripleLine(landscape, `${SP}hasCompetencyCatalogEntry`, iri(resource)))
     write(tripleLine(resource, `${RDF}type`, iri(`${SP}CompetencyCatalogEntry`)))
+    write(tripleLine(resource, `${RDF}type`, iri(LP_PROCESS_COMPETENCY_AREA)))
+    write(tripleLine(resource, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
     write(tripleLine(resource, `${SP}skillpilotId`, literal(competencyId)))
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}dimension`, data.dimension)
+    writeCoreTextEntity(write, resource, LP_HAS_TITLE, goalTextIri(resource, 'title', 'de'), LP_TITLE, data.label, 'de')
+    writeCoreTextEntity(
+      write,
+      resource,
+      LP_HAS_NUMBER,
+      goalTextIri(resource, 'number'),
+      LP_IDENTIFIER,
+      competencyId.replace(/^PROCESS\./u, ''),
+    )
   })
+
+  const curricularDimensionTags = goals.flatMap((goalValue) => {
+    const goal = jsonObject(goalValue, 'canonical goal')
+    const goalId = stringValue(goal.id)
+    const classification = goalId ? goalClassifications.get(goalId) : undefined
+    const dimensionTags = optionalJsonObject(goal.dimensionTags)
+    return classification?.safeCurricularPartWholeTarget && dimensionTags ? [dimensionTags] : []
+  })
+  const processCodes = new Set(curricularDimensionTags
+    .flatMap((dimensionTags) => stringArray(dimensionTags.processCompetencies))
+    .filter((code) => /^K[1-6](?:\.\d+)?$/u.test(code)))
+  const guidingIdeaCodes = new Set(curricularDimensionTags
+    .flatMap((dimensionTags) => stringArray(dimensionTags.guidingIdeas))
+    .filter((code) => /^L[1-5]$/u.test(code)))
+  const catalogIds = new Set(competencyCatalog.flatMap((entryValue) => {
+    const entry = jsonObject(entryValue, 'competency catalog entry')
+    return stringValue(entry.id) ? [String(entry.id)] : []
+  }))
+
+  ;[...processCodes].sort(compareCodeUnits).forEach((code) => {
+    const resource = processAxisIri(archiveRoot, code)
+    const axisId = processAxisId(code)
+    if (!catalogIds.has(axisId)) {
+      write(tripleLine(resource, `${RDF}type`, iri(LP_PROCESS_COMPETENCY_AREA)))
+      write(tripleLine(resource, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
+      write(tripleLine(resource, `${SP}skillpilotId`, literal(axisId)))
+      write(tripleLine(resource, `${RDFS}label`, langLiteral(code, 'de')))
+      writeCoreTextEntity(write, resource, LP_HAS_TITLE, goalTextIri(resource, 'title', 'de'), LP_TITLE, code, 'de')
+      writeCoreTextEntity(write, resource, LP_HAS_NUMBER, goalTextIri(resource, 'number'), LP_IDENTIFIER, code)
+    }
+    const parentCode = code.match(/^(K[1-6])\./u)?.[1]
+    if (parentCode) {
+      write(tripleLine(processAxisIri(archiveRoot, parentCode), BFO_HAS_PART, iri(resource)))
+    }
+  })
+
+  ;[...guidingIdeaCodes].sort(compareCodeUnits).forEach((code) => {
+    const resource = guidingIdeaAxisIri(archiveRoot, code)
+    const title = GUIDING_IDEA_TITLES.get(code) ?? code
+    write(tripleLine(resource, `${RDF}type`, iri(LP_GUIDING_IDEA)))
+    write(tripleLine(resource, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
+    write(tripleLine(resource, `${SP}skillpilotId`, literal(guidingIdeaAxisId(code))))
+    write(tripleLine(resource, `${RDFS}label`, langLiteral(title, 'de')))
+    writeCoreTextEntity(write, resource, LP_HAS_TITLE, goalTextIri(resource, 'title', 'de'), LP_TITLE, title, 'de')
+    writeCoreTextEntity(write, resource, LP_HAS_NUMBER, goalTextIri(resource, 'number'), LP_IDENTIFIER, code)
+  })
+  counts.coreAxisEntries += new Set([
+    ...[...catalogIds].filter((id) => /^PROCESS\.K[1-6](?:\.\d+)?$/u.test(id)),
+    ...[...processCodes].map(processAxisId),
+    ...[...guidingIdeaCodes].map(guidingIdeaAxisId),
+  ]).size
 
   const programUnits = Array.isArray(landscapeData.programUnits) ? landscapeData.programUnits : []
   programUnits.forEach((unit) => {
@@ -1265,18 +1850,25 @@ const writeLandscapeSemantics = (
     writeStringField(write, resource, `${SP}parentUnitId`, data.parentUnitId)
     writeNumberField(write, resource, `${SP}order`, data.order)
     writeJsonField(write, resource, `${SP}contextJson`, data.context)
+    const grade = FWU_GRADES.get(unitId)
+    const year = unitId.match(/^de-gym-math-j([0-9]+)$/u)?.[1]
+    const yearNumber = year ? Number(year) : null
+    const stage = FWU_STAGES.get(unitId)
+      ?? (yearNumber !== null && yearNumber <= 10 ? FWU_STAGES.get('de-gym-math-sek1') : undefined)
+      ?? (yearNumber !== null && yearNumber > 10 ? FWU_STAGES.get('de-gym-math-sek2') : undefined)
+      ?? (/^de-gym-math-(?:e|q[1-4])$/u.test(unitId) ? FWU_STAGES.get('de-gym-math-sek2') : undefined)
+    if (grade) {
+      write(tripleLine(resource, LP_HAS_GRADE, iri(grade)))
+    }
+    if (stage) {
+      write(tripleLine(resource, LP_HAS_STAGE, iri(stage)))
+    }
+    const parentUnitId = stringValue(data.parentUnitId)
+    if (parentUnitId) {
+      write(tripleLine(`${packageIri(archiveRoot)}/program-unit/${idSegment(parentUnitId)}`, LP_HAS_UNIT, iri(resource)))
+    }
   })
 
-  const goals = Array.isArray(landscapeData.goals) ? landscapeData.goals : []
-  const goalClassifications = new Map<string, GoalFwuClassification>()
-  goals.forEach((goal) => {
-    const data = jsonObject(goal, 'canonical goal')
-    const goalId = stringValue(data.id)
-    if (!goalId) {
-      return
-    }
-    goalClassifications.set(goalId, classifyGoalForFwu(data, stringArray(data.contains)))
-  })
   const strictCurricularChildren = new Set<string>()
   goals.forEach((goal) => {
     const data = jsonObject(goal, 'canonical goal')
@@ -1311,7 +1903,7 @@ const writeLandscapeSemantics = (
       write(tripleLine(landscape, BFO_HAS_PART, iri(resource)))
     }
     write(tripleLine(resource, `${RDF}type`, iri(`${SP}LearningGoal`)))
-    write(tripleLine(resource, `${RDF}type`, iri(contains.length > 0 ? `${SP}ClusterGoal` : `${SP}AtomicGoal`)))
+    write(tripleLine(resource, `${RDF}type`, iri(data.type === 'cluster' || contains.length > 0 ? `${SP}ClusterGoal` : `${SP}AtomicGoal`)))
     if (classification.profileClass) {
       write(tripleLine(resource, `${RDF}type`, iri(classification.profileClass)))
     }
@@ -1326,11 +1918,12 @@ const writeLandscapeSemantics = (
     writeStringField(write, resource, `${DCTERMS}description`, data.descriptionEn, 'en')
     if (classification.safeCurricularPartWholeTarget) {
       writeCurricularTextSemantics(write, resource, data)
-      write(tripleLine(
-        resource,
-        LP_HAS_FUNCTION,
-        iri(classification.kind === 'curricular-cluster' ? LP_AREA_FUNCTION : LP_COMPETENCY_DESCRIPTION_FUNCTION),
-      ))
+      write(tripleLine(resource, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
+      const level = data.level === undefined || data.level === null ? null : String(data.level)
+      const requirementLevel = level ? FWU_REQUIREMENT_LEVELS.get(level) : undefined
+      if (requirementLevel) {
+        write(tripleLine(resource, LP_HAS_REQUIREMENT_LEVEL, iri(requirementLevel)))
+      }
     }
     writeStringField(write, resource, `${SP}phase`, data.phase)
     writeStringField(write, resource, `${SP}area`, data.area)
@@ -1344,16 +1937,55 @@ const writeLandscapeSemantics = (
     writeBooleanField(write, resource, `${SP}semanticAtomic`, data.semanticAtomic)
     writeJsonField(write, resource, `${SP}applicabilityJson`, data.applicability)
     writeJsonField(write, resource, `${SP}metadataJson`, data.metadata)
-    writeJsonField(write, resource, `${SP}resourceLinksJson`, data.resourceLinks)
+    writeJsonField(write, resource, `${SP}resourceLinksJson`, compactResourceLinksForRdf(data.resourceLinks))
     writeJsonField(write, resource, `${SP}extendedDataJson`, data.extendedData)
     writeJsonField(write, resource, `${SP}releaseJson`, data.release)
     writeJsonField(write, resource, `${SP}examDataJson`, data.examData)
     stringArray(data.tags).forEach((tag) => write(tripleLine(resource, `${SP}tag`, literal(tag))))
-    stringArray(data.dimensionTags).forEach((tag) => write(tripleLine(resource, `${SP}dimensionTag`, literal(tag))))
+    if (Array.isArray(data.dimensionTags)) {
+      stringArray(data.dimensionTags).forEach((tag) => write(tripleLine(resource, `${SP}dimensionTag`, literal(tag))))
+    }
+    writeJsonField(write, resource, `${SP}dimensionTagsJson`, data.dimensionTags)
     stringArray(data.examples).forEach((example) => write(tripleLine(resource, `${SP}example`, literal(example))))
-    ;[...new Set([...stringArray(data.kompetenzen), ...stringArray(data.competencyRefs)])].forEach((competencyId) => (
-      write(tripleLine(resource, `${SP}competencyRef`, iri(`${packageIri(archiveRoot)}/competency/${idSegment(competencyId)}`)))
-    ))
+    const authoredCompetencyIds = [...new Set([...stringArray(data.kompetenzen), ...stringArray(data.competencyRefs)])]
+      .map((competencyId) => /^K[1-6](?:\.\d+)?$/u.test(competencyId) ? processAxisId(competencyId) : competencyId)
+    if (classification.safeCurricularPartWholeTarget) {
+      const references = new Map<string, { roles: Set<string>; target: string }>()
+      const addReferenceRole = (axisId: string, target: string, role: string) => {
+        const existing = references.get(axisId) ?? { roles: new Set<string>(), target }
+        existing.roles.add(role)
+        references.set(axisId, existing)
+      }
+      authoredCompetencyIds.forEach((competencyId) => {
+        addReferenceRole(
+          competencyId,
+          `${packageIri(archiveRoot)}/competency/${idSegment(competencyId)}`,
+          REFERENCE_ROLE_COMPETENCY_REFS,
+        )
+      })
+      const dimensionTags = optionalJsonObject(data.dimensionTags)
+      stringArray(dimensionTags?.processCompetencies)
+        .filter((code) => processCodes.has(code))
+        .forEach((code) => addReferenceRole(processAxisId(code), processAxisIri(archiveRoot, code), REFERENCE_ROLE_PROCESS_COMPETENCIES))
+      stringArray(dimensionTags?.guidingIdeas)
+        .filter((code) => guidingIdeaCodes.has(code))
+        .forEach((code) => addReferenceRole(guidingIdeaAxisId(code), guidingIdeaAxisIri(archiveRoot, code), REFERENCE_ROLE_GUIDING_IDEAS))
+
+      ;[...references].sort(([left], [right]) => compareCodeUnits(left, right)).forEach(([axisId, referenceData]) => {
+        const reference = competencyReferenceIri(archiveRoot, goalId, axisId)
+        write(tripleLine(resource, LP_HAS_REFERENCE, iri(reference)))
+        write(tripleLine(reference, `${RDF}type`, iri(LP_REFERENCE)))
+        write(tripleLine(reference, LP_REFERS_TO, iri(referenceData.target)))
+        ;[...referenceData.roles].sort(compareCodeUnits).forEach((role) => {
+          write(tripleLine(reference, `${SP}referenceRole`, literal(role)))
+        })
+      })
+      counts.coreAxisReferences += references.size
+    } else {
+      authoredCompetencyIds.forEach((competencyId) => {
+        write(tripleLine(resource, `${SP}competencyRef`, iri(`${packageIri(archiveRoot)}/competency/${idSegment(competencyId)}`)))
+      })
+    }
     contains.forEach((targetId) => {
       const target = iri(goalIri(archiveRoot, targetId))
       write(tripleLine(resource, `${SP}containsGoal`, target))
@@ -1362,12 +1994,15 @@ const writeLandscapeSemantics = (
       }
     })
     requires.forEach((targetId) => {
-      const prerequisite = didacticPrerequisiteIri(archiveRoot, goalId, targetId)
-      write(tripleLine(resource, LP_HAS_REFERENCE, iri(prerequisite)))
-      write(tripleLine(prerequisite, `${RDF}type`, iri(LP_DIDACTIC_PREREQUISITE)))
-      write(tripleLine(prerequisite, `${RDF}type`, iri(LP_REFERENCE)))
-      write(tripleLine(prerequisite, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
-      write(tripleLine(prerequisite, LP_REFERS_TO, iri(goalIri(archiveRoot, targetId))))
+      const targetClassification = goalClassifications.get(targetId)
+      if (classification.safeCurricularPartWholeTarget && targetClassification?.safeCurricularPartWholeTarget) {
+        const prerequisite = didacticPrerequisiteIri(archiveRoot, goalId, targetId)
+        write(tripleLine(resource, LP_HAS_REFERENCE, iri(prerequisite)))
+        write(tripleLine(prerequisite, `${RDF}type`, iri(LP_DIDACTIC_PREREQUISITE)))
+        write(tripleLine(prerequisite, LP_REFERS_TO, iri(goalIri(archiveRoot, targetId))))
+      } else {
+        write(tripleLine(resource, `${SP}didacticRequires`, iri(goalIri(archiveRoot, targetId))))
+      }
     })
   })
 
@@ -1577,6 +2212,11 @@ const writeSourceSemantics = (
     writeStringField(write, collection, `${SP}sourceLandscapeId`, sourceData.sourceLandscapeId)
     writeStringField(write, collection, `${SP}stage`, sourceData.stage)
     writeStringField(write, collection, `${SP}subject`, sourceData.subject)
+    const jurisdiction = stringValue(sourceData.jurisdiction)
+    const federalState = jurisdiction ? FWU_STATE_BY_JURISDICTION.get(jurisdiction) : undefined
+    if (federalState) {
+      write(tripleLine(collection, LP_OF_STATE, iri(federalState)))
+    }
 
     const documents = Array.isArray(sourceData.sourceDocuments) ? sourceData.sourceDocuments : []
     documents.forEach((document) => {
@@ -1607,33 +2247,40 @@ const writeSourceSemantics = (
       write(tripleLine(collection, `${SP}hasSourceGoal`, iri(resource)))
       write(tripleLine(collection, LP_HAS_REFERENCE, iri(resource)))
       write(tripleLine(resource, `${RDF}type`, iri(`${SP}SourceGoalReference`)))
-      write(tripleLine(resource, `${RDF}type`, iri(LP_REFERENCE)))
-      write(tripleLine(resource, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
       write(tripleLine(resource, `${SP}skillpilotId`, literal(sourceGoalId)))
       if (documentKey) {
         const documentResource = sourceDocumentIri(archiveRoot, `${extractionId}/${documentKey}`)
         write(tripleLine(resource, LP_REFERS_TO, iri(documentResource)))
         write(tripleLine(resource, `${DCTERMS}source`, iri(documentResource)))
       }
-      writeStringField(write, resource, `${RDFS}label`, goalData.title, 'de')
-      writeStringField(write, resource, `${DCTERMS}description`, goalData.description, 'de')
-      writeStringField(write, resource, `${SP}sourceText`, goalData.sourceText)
-      writeStringField(write, resource, `${SP}sourceSpan`, goalData.sourceSpan)
-      writeStringField(write, resource, `${SP}sourceRef`, goalData.sourceRef)
-      writeStringField(write, resource, `${SP}sourceTextSha256`, goalData.sourceTextSha256)
-      writeStringField(write, resource, `${SP}sourceDocumentUrl`, goalData.sourceDocumentUrl)
-      writeStringField(write, resource, `${SP}sourceDocumentLandingUrl`, goalData.sourceDocumentLandingUrl)
-      writeStringField(write, resource, `${SP}sourceDocumentTitle`, goalData.sourceDocumentTitle, 'de')
-      writeStringField(write, resource, `${SP}topicCode`, goalData.topicCode)
-      writeStringField(write, resource, `${SP}passageId`, goalData.passageId)
-      writeStringField(write, resource, `${SP}granularity`, goalData.granularity)
+      const isQuarantined = hasUnsafeJsonString(goalData)
+      if (isQuarantined) {
+        writeJsonField(write, resource, `${SP}quarantinedRecordJson`, goalData)
+      }
+      const writeSafeSourceString = (predicate: string, value: JsonValue | undefined, lang?: string) => {
+        if (typeof value === 'string' && !hasUnsafeRdfLiteralCharacters(value)) {
+          writeStringField(write, resource, predicate, value, lang)
+        }
+      }
+      writeSafeSourceString(`${RDFS}label`, goalData.title, 'de')
+      writeSafeSourceString(`${DCTERMS}description`, goalData.description, 'de')
+      writeSafeSourceString(`${SP}sourceText`, goalData.sourceText)
+      writeSafeSourceString(`${SP}sourceSpan`, goalData.sourceSpan)
+      writeSafeSourceString(`${SP}sourceRef`, goalData.sourceRef)
+      writeSafeSourceString(`${SP}sourceTextSha256`, goalData.sourceTextSha256)
+      writeSafeSourceString(`${SP}sourceDocumentUrl`, goalData.sourceDocumentUrl)
+      writeSafeSourceString(`${SP}sourceDocumentLandingUrl`, goalData.sourceDocumentLandingUrl)
+      writeSafeSourceString(`${SP}sourceDocumentTitle`, goalData.sourceDocumentTitle, 'de')
+      writeSafeSourceString(`${SP}topicCode`, goalData.topicCode)
+      writeSafeSourceString(`${SP}passageId`, goalData.passageId)
+      writeSafeSourceString(`${SP}granularity`, goalData.granularity)
       writeNumberField(write, resource, `${SP}sourcePage`, goalData.sourcePage)
       writeNumberField(write, resource, `${SP}sourceLine`, goalData.sourceLine)
-      writeStringField(write, resource, `${SP}parentBulletText`, goalData.parentBulletText)
+      writeSafeSourceString(`${SP}parentBulletText`, goalData.parentBulletText)
       writeJsonField(write, resource, `${SP}passageJson`, goalData.passage)
-      writeStringField(write, resource, `${SP}phase`, goalData.phase)
-      writeStringField(write, resource, `${SP}courseLevel`, goalData.courseLevel)
-      writeStringField(write, resource, `${SP}category`, goalData.category)
+      writeSafeSourceString(`${SP}phase`, goalData.phase)
+      writeSafeSourceString(`${SP}courseLevel`, goalData.courseLevel)
+      writeSafeSourceString(`${SP}category`, goalData.category)
     })
   })
 
@@ -1770,15 +2417,52 @@ const writeSemanticTriples = (
   ontologyDir: string,
   goalVisualizationAssets: GoalVisualizationAsset[],
 ) => {
+  const goalClassifications = readGoalClassifications(archiveRoot, entries)
   writePackageHeaderSemantics(write, archiveRoot, inputZipPath, ontologyDir)
 
-  writeLandscapeSemantics(write, archiveRoot, entries, counts)
+  writeLandscapeSemantics(write, archiveRoot, entries, counts, goalClassifications)
   writeViewSemantics(write, archiveRoot, entries, counts)
   writeMappingSemantics(write, archiveRoot, entries, counts)
   writeSourceSemantics(write, archiveRoot, entries, counts)
   writeCardSemantics(write, archiveRoot, entries, counts)
   writeExternalDependencySemantics(write, archiveRoot, entries, counts)
-  writeGoalVisualizationSemantics(write, archiveRoot, goalVisualizationAssets, counts)
+  writeGoalVisualizationSemantics(write, archiveRoot, goalVisualizationAssets, counts, goalClassifications)
+}
+
+const writeBufferedText = (
+  filePath: string,
+  emit: (write: (text: string) => void) => void,
+  bufferLimit = 4 * 1024 * 1024,
+) => {
+  rmSync(filePath, { force: true })
+  mkdirSync(dirname(filePath), { recursive: true })
+  const descriptor = openSync(filePath, 'w')
+  let buffered = ''
+  let bufferedBytes = 0
+  const flush = () => {
+    if (bufferedBytes === 0) {
+      return
+    }
+    const content = Buffer.from(buffered, 'utf8')
+    let offset = 0
+    while (offset < content.length) {
+      offset += writeSync(descriptor, content, offset, content.length - offset)
+    }
+    buffered = ''
+    bufferedBytes = 0
+  }
+  try {
+    emit((text) => {
+      buffered += text
+      bufferedBytes += Buffer.byteLength(text)
+      if (bufferedBytes >= bufferLimit) {
+        flush()
+      }
+    })
+    flush()
+  } finally {
+    closeSync(descriptor)
+  }
 }
 
 const writeRdf = async (options: CliOptions) => {
@@ -1791,31 +2475,19 @@ const writeRdf = async (options: CliOptions) => {
   rmSync(options.profilePath, { force: true })
   mkdirSync(dirname(options.rdfPath), { recursive: true })
   writeProfile(options.profilePath)
+  writeBoundCore(dirname(options.profilePath), requireOntologyCore(options.ontologyDir))
 
-  const stream = createWriteStream(options.rdfPath, { encoding: 'utf8', highWaterMark: 64 * 1024 * 1024 })
-  const write = (line: string) => {
-    stream.write(line)
-  }
-
-  writeSemanticTriples(
-    write,
-    archiveRoot,
-    entries,
-    counts,
-    options.zipPath,
-    options.ontologyDir,
-    goalVisualizationAssets,
-  )
-  writeCarrierTriples(write, archiveRoot, entries, counts)
-
-  await new Promise<void>((resolvePromise, reject) => {
-    stream.end((error?: Error | null) => {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolvePromise()
-    })
+  writeBufferedText(options.rdfPath, (write) => {
+    writeSemanticTriples(
+      write,
+      archiveRoot,
+      entries,
+      counts,
+      options.zipPath,
+      options.ontologyDir,
+      goalVisualizationAssets,
+    )
+    writeCarrierTriples(write, archiveRoot, entries, counts)
   })
 
   rmSync(resolve(dirname(options.rdfPath), 'assets'), { recursive: true, force: true })
@@ -1836,28 +2508,14 @@ const writeNtFile = async (
   filePath: string,
   emit: (write: (line: string) => void) => void,
 ) => {
-  rmSync(filePath, { force: true })
-  mkdirSync(dirname(filePath), { recursive: true })
-  const stream = createWriteStream(filePath, { encoding: 'utf8', highWaterMark: 16 * 1024 * 1024 })
   let triples = 0
-  const write = (line: string) => {
-    triples += 1
-    stream.write(line)
-  }
-
-  emit(write)
-
-  await new Promise<void>((resolvePromise, reject) => {
-    stream.end((error?: Error | null) => {
-      if (error) {
-        reject(error)
-        return
-      }
-      resolvePromise()
+  writeBufferedText(filePath, (writeText) => {
+    emit((line) => {
+      triples += 1
+      writeText(line)
     })
   })
-
-  return { triples, bytes: readFileSync(filePath).byteLength }
+  return { triples, bytes: statSync(filePath).size }
 }
 
 const appendFileToStream = (sourcePath: string, targetStream: ReturnType<typeof createWriteStream>) => (
@@ -1885,12 +2543,58 @@ const writeBundleFile = async (bundlePath: string, sourcePaths: string[]) => {
       resolvePromise()
     })
   })
-  return readFileSync(bundlePath).byteLength
+  return statSync(bundlePath).size
+}
+
+const writeSemanticDeclarations = async (filePath: string, sourcePaths: string[]) => {
+  const classIris = new Set<string>()
+  const propertyUsage = new Map<string, { iri: boolean; literal: boolean }>()
+  for (const sourcePath of sourcePaths) {
+    const reader = createInterface({
+      input: createReadStream(sourcePath, { encoding: 'utf8' }),
+      crlfDelay: Infinity,
+    })
+    for await (const line of reader) {
+      const triple = parseTriple(line)
+      if (!triple) {
+        continue
+      }
+      if (triple.predicate === `${RDF}type` && triple.object.kind === 'iri') {
+        classIris.add(triple.object.value)
+        continue
+      }
+      const usage = propertyUsage.get(triple.predicate) ?? { iri: false, literal: false }
+      usage[triple.object.kind] = true
+      propertyUsage.set(triple.predicate, usage)
+    }
+  }
+
+  const annotationProperties = new Set([
+    `${RDFS}label`,
+    `${DCTERMS}description`,
+    `${DCTERMS}source`,
+    `${DCTERMS}title`,
+    `${SKOS}prefLabel`,
+  ])
+  return writeNtFile(filePath, (write) => {
+    [...classIris].sort(compareCodeUnits).forEach((classIri) => {
+      write(tripleLine(classIri, `${RDF}type`, iri(`${OWL}Class`)))
+    })
+    ;[...propertyUsage].sort(([left], [right]) => compareCodeUnits(left, right)).forEach(([property, usage]) => {
+      const propertyType = annotationProperties.has(property) || (usage.iri && usage.literal)
+        ? `${OWL}AnnotationProperty`
+        : usage.iri
+          ? `${OWL}ObjectProperty`
+          : `${OWL}DatatypeProperty`
+      write(tripleLine(property, `${RDF}type`, iri(propertyType)))
+    })
+  })
 }
 
 const writeSlimReadme = (slimDir: string, data: {
   archiveRoot: string
   bundlePath: string
+  zipPath: string
   files: SlimRdfFile[]
   counts: SemanticCounts
 }) => {
@@ -1909,21 +2613,29 @@ It intentionally excludes the lossless package-file carrier lane used by the tec
 - no file-path-derived SkillPilot resource IRIs such as \`/file/...\`
 - no embedded source ZIP file lines
 
-Binary goal visualizations are copied byte-for-byte as package-relative sidecars under \`assets/\`. Their semantic references and checksums are represented in \`assets.nt\`; binary bytes are never embedded in \`bundle.nt\`.
+Binary goal visualizations are batch-extracted and verified byte-for-byte as package-relative sidecars under \`assets/\`. Their Core or application reference lane and checksums are represented in \`assets.nt\`; binary bytes are never embedded in \`bundle.nt\`.
 
-The profile imports \`ontology/lehrplan-core.owl\` by a relative IRI. Load \`skillpilot-mem-fwu-profile.ttl\` from this directory so the pinned, hashed core copy is used instead of the potentially stale remote release artifact.
+The profile imports the canonical FWU core IRI. \`catalog-v001.xml\` resolves that IRI to the pinned, hashed copy at \`ontology/lehrplan-core.owl\` for offline and reproducible OWL tooling.
 
 The exact FWU core source used for the export is pinned under \`ontology/lehrplan-core.owl\`, because the current generated upstream release artifacts do not yet contain every term used by this bundle.
+
+\`declarations.nt\` makes \`bundle.nt\` self-contained for RDF-to-OWL parsers: terms are declared in the same RDF graph before the application profile and the imported core add their richer axioms.
 
 The official curriculum evidence needed for independent semantic checks is represented as source-document URLs plus exact source-goal spans in \`sources.nt\`.
 
 \`sp:zipPath\` is retained only as a local package placement literal for deterministic reconstruction; it is not used as curriculum-source provenance.
 
+Source records containing RDF/XML-forbidden control characters or unpaired UTF-16 surrogates are kept losslessly in an explicit \`sp:quarantinedRecordJson\` fallback. Safe fields remain queryable as ordinary RDF literals, and the semantic importer reconstructs the exact source record.
+
+Structured \`dimensionTags\` remain lossless JSON while curricular process competencies and guiding ideas are additionally projected to FWU Core axis resources. \`sp:referenceRole\` keeps derived axis projections distinct from authored \`competencyRefs\`.
+
+\`manifest.json\` binds every RDF file plus profile, catalog, Core, and input ZIP by SHA-256 before independent ROBOT validation.
+
 ## Files
 
-| File | Purpose | Triples | Size |
-| --- | --- | ---: | ---: |
-${data.files.map((file) => `| \`${file.name}\` | ${file.description} | ${file.triples} | ${file.bytes} B |`).join('\n')}
+| File | Purpose | Triples | Size | SHA-256 |
+| --- | --- | ---: | ---: | --- |
+${data.files.map((file) => `| \`${file.name}\` | ${file.description} | ${file.triples} | ${file.bytes} B | \`${file.sha256}\` |`).join('\n')}
 
 \`bundle.nt\` is only a convenience concatenation of the semantic files for parsers that prefer one N-Triples input file.
 
@@ -1938,30 +2650,44 @@ ${Object.entries(data.counts).map(([key, value]) => `| ${key} | ${value} |`).joi
 Run the semantic reconstruction check from this bundle:
 
 \`\`\`bash
-cd app
-npm run roundtrip:mem-fwu:semantic-reconstruct -- \\
+npm --prefix app run roundtrip:mem-fwu:semantic-reconstruct -- \\
   --rdf ${repoRelative(data.bundlePath)} \\
-  --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip \\
+  --zip ${repoRelative(data.zipPath)} \\
   --out-dir ${repoRelative(resolve(slimDir, 'semantic-reconstructed'))}
 \`\`\`
+
+Run the manifest-bound OWL 2 DL and HermiT release gate with [ROBOT](http://robot.obolibrary.org/):
+
+\`\`\`bash
+ROBOT_JAR=/absolute/path/to/robot.jar npm --prefix app run roundtrip:mem-fwu:owl:reason -- \\
+  --slim-dir ${repoRelative(slimDir)} \\
+  --zip ${repoRelative(data.zipPath)}
+\`\`\`
+
+The gate verifies every manifest-bound input before running ROBOT, rejects inputs that change during the run, and writes \`owl-validation-report.{json,md}\`, \`robot-dl-report.txt\`, and \`robot-hermit-reasoned.owl\` next to this README.
 `)
 }
 
 const writeSlimRdf = async (options: CliOptions) => {
+  const sourceCorePath = requireOntologyCore(options.ontologyDir)
+  const inputZipSha256 = sha256File(options.zipPath)
+  const sourceCoreSha256 = sha256File(sourceCorePath)
   const { archiveRoot, entries } = readEntries(options.zipPath)
   const goalVisualizationAssets = readGoalVisualizationAssets(archiveRoot, entries)
+  const goalClassifications = readGoalClassifications(archiveRoot, entries)
   assertNoUnsupportedBinaryEntries(archiveRoot, entries, goalVisualizationAssets)
   const counts = emptyCounts()
   const slimDir = options.slimDir
   mkdirSync(slimDir, { recursive: true })
-  const sourceCorePath = requireOntologyCore(options.ontologyDir)
   const bundledCorePath = resolve(slimDir, 'ontology/lehrplan-core.owl')
 
   const profilePath = resolve(slimDir, 'skillpilot-mem-fwu-profile.ttl')
+  const catalogPath = resolve(slimDir, 'catalog-v001.xml')
   const bundlePath = resolve(slimDir, 'bundle.nt')
   const manifestPath = resolve(slimDir, 'manifest.json')
   const readmePath = resolve(slimDir, 'README.md')
   const generatedNames = [
+    'declarations.nt',
     'landscape.nt',
     'views.nt',
     'mappings.nt',
@@ -1970,19 +2696,21 @@ const writeSlimRdf = async (options: CliOptions) => {
     'assets.nt',
     'bundle.nt',
     'skillpilot-mem-fwu-profile.ttl',
+    'catalog-v001.xml',
     'manifest.json',
     'README.md',
+    'robot-dl-report.txt',
+    'robot-hermit-reasoned.owl',
+    'owl-validation-report.json',
+    'owl-validation-report.md',
   ]
   generatedNames.forEach((name) => rmSync(resolve(slimDir, name), { force: true }))
+  rmSync(resolve(slimDir, 'semantic-reconstructed'), { recursive: true, force: true })
   rmSync(resolve(slimDir, 'assets'), { recursive: true, force: true })
   rmSync(resolve(slimDir, 'ontology'), { recursive: true, force: true })
 
-  writeProfile(profilePath, {
-    includeCarrier: false,
-    coreImport: 'ontology/lehrplan-core.owl',
-  })
-  mkdirSync(dirname(bundledCorePath), { recursive: true })
-  writeFileSync(bundledCorePath, readFileSync(sourceCorePath))
+  writeProfile(profilePath, { includeCarrier: false })
+  writeBoundCore(slimDir, sourceCorePath)
 
   const segments: Array<{
     name: string
@@ -1994,7 +2722,7 @@ const writeSlimRdf = async (options: CliOptions) => {
       description: 'package metadata, canonical goals, contains/requires edges, program placements, external references',
       emit: (write) => {
         writePackageHeaderSemantics(write, archiveRoot, options.zipPath, options.ontologyDir)
-        writeLandscapeSemantics(write, archiveRoot, entries, counts)
+        writeLandscapeSemantics(write, archiveRoot, entries, counts, goalClassifications)
         writeExternalDependencySemantics(write, archiveRoot, entries, counts, { semanticIris: true })
       },
     },
@@ -2021,7 +2749,13 @@ const writeSlimRdf = async (options: CliOptions) => {
     {
       name: 'assets.nt',
       description: 'goal-to-visualization references and metadata for binary image sidecars',
-      emit: (write) => writeGoalVisualizationSemantics(write, archiveRoot, goalVisualizationAssets, counts),
+      emit: (write) => writeGoalVisualizationSemantics(
+        write,
+        archiveRoot,
+        goalVisualizationAssets,
+        counts,
+        goalClassifications,
+      ),
     },
   ]
 
@@ -2034,9 +2768,24 @@ const writeSlimRdf = async (options: CliOptions) => {
       path: repoRelative(segmentPath),
       triples: result.triples,
       bytes: result.bytes,
+      sha256: sha256File(segmentPath),
       description: segment.description,
     })
   }
+
+  const declarationsPath = resolve(slimDir, 'declarations.nt')
+  const declarations = await writeSemanticDeclarations(
+    declarationsPath,
+    files.map((file) => resolve(repoRoot, file.path)),
+  )
+  files.unshift({
+    name: 'declarations.nt',
+    path: repoRelative(declarationsPath),
+    triples: declarations.triples,
+    bytes: declarations.bytes,
+    sha256: sha256File(declarationsPath),
+    description: 'self-contained OWL class and property declarations for single-graph RDF loaders',
+  })
 
   const bundleBytes = await writeBundleFile(bundlePath, files.map((file) => resolve(repoRoot, file.path)))
   files.push({
@@ -2044,6 +2793,7 @@ const writeSlimRdf = async (options: CliOptions) => {
     path: repoRelative(bundlePath),
     triples: files.reduce((sum, file) => sum + file.triples, 0),
     bytes: bundleBytes,
+    sha256: sha256File(bundlePath),
     description: 'concatenated semantic bundle for single-file RDF loaders',
   })
 
@@ -2059,7 +2809,7 @@ const writeSlimRdf = async (options: CliOptions) => {
     generatedAt: new Date().toISOString(),
     archiveRoot,
     inputZip: repoRelative(options.zipPath),
-    inputZipSha256: sha256File(options.zipPath),
+    inputZipSha256,
     profile: repoRelative(profilePath),
     bundle: repoRelative(bundlePath),
     fwuOntology: {
@@ -2068,7 +2818,10 @@ const writeSlimRdf = async (options: CliOptions) => {
       corePath: repoRelative(sourceCorePath),
       bundledCorePath: repoRelative(bundledCorePath),
       bundledCoreSha256: sha256File(bundledCorePath),
-      profileImport: 'ontology/lehrplan-core.owl',
+      profileImport: LP_CORE_ONTOLOGY,
+      profileSha256: sha256File(profilePath),
+      catalogPath: repoRelative(catalogPath),
+      catalogSha256: sha256File(catalogPath),
       commit: ontologyCommit(options.ontologyDir),
       ontologyIri: LP_CORE_ONTOLOGY,
     },
@@ -2085,7 +2838,11 @@ const writeSlimRdf = async (options: CliOptions) => {
     semanticCounts: counts,
   }
   writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
-  writeSlimReadme(slimDir, { archiveRoot, bundlePath, files, counts })
+  writeSlimReadme(slimDir, { archiveRoot, bundlePath, zipPath: options.zipPath, files, counts })
+
+  if (sha256File(options.zipPath) !== inputZipSha256 || sha256File(sourceCorePath) !== sourceCoreSha256) {
+    throw new Error('Slim RDF inputs changed while the bundle was being written.')
+  }
 
   return {
     archiveRoot,
@@ -2094,6 +2851,7 @@ const writeSlimRdf = async (options: CliOptions) => {
     bundlePath,
     manifestPath,
     readmePath,
+    catalogPath,
     files,
   }
 }
@@ -2330,7 +3088,7 @@ const reconstructFromRdf = async (options: CliOptions) => {
 
   const orderedFiles = [...files.values()]
     .filter((file) => file.path !== null)
-    .sort((left, right) => String(left.path).localeCompare(String(right.path)))
+    .sort((left, right) => compareCodeUnits(String(left.path), String(right.path)))
 
   orderedFiles.forEach((file) => {
     if (!file.path) {
@@ -2430,8 +3188,11 @@ const reconstructFromRdf = async (options: CliOptions) => {
     if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
       throw new Error(`Refusing to reconstruct image outside repository: ${zipPath}`)
     }
-    mkdirSync(dirname(target), { recursive: true })
-    writeFileSync(target, content)
+    writeIndependentFile(target, content)
+    const targetStat = lstatSync(target)
+    if (!targetStat.isFile() || targetStat.size !== expectedBytes || sha256File(target) !== expectedSha) {
+      throw new Error(`Materialized image is not an independent byte-identical regular file: ${packagePath}`)
+    }
     reconstructedImages += 1
   })
 
@@ -2440,6 +3201,7 @@ const reconstructFromRdf = async (options: CliOptions) => {
 
 const countRdfSemantics = async (rdfPath: string) => {
   const counts = emptyCounts()
+  const roleReferences = new Set<string>()
   const reader = createInterface({
     input: createReadStream(rdfPath, { encoding: 'utf8' }),
     crlfDelay: Infinity,
@@ -2452,12 +3214,15 @@ const countRdfSemantics = async (rdfPath: string) => {
     }
     if (triple.predicate === `${SP}lineText`) counts.textLines += 1
     if (triple.predicate === `${SP}containsGoal`) counts.containsEdges += 1
+    if (triple.predicate === `${SP}didacticRequires`) counts.requiresEdges += 1
+    if (triple.predicate === `${SP}referenceRole`) roleReferences.add(triple.subject)
     if (triple.predicate !== `${RDF}type` || triple.object.kind !== 'iri') {
       continue
     }
     if (triple.object.value === `${SP}PackageFile`) counts.files += 1
     if (triple.object.value === `${SP}LearningGoal`) counts.canonicalGoals += 1
     if (triple.object.value === `${SP}CompetencyCatalogEntry`) counts.competencyCatalogEntries += 1
+    if (triple.object.value === LP_PROCESS_COMPETENCY_AREA || triple.object.value === LP_GUIDING_IDEA) counts.coreAxisEntries += 1
     if (triple.object.value === `${SP}ProgramUnit`) counts.programUnits += 1
     if (triple.object.value === `${SP}GoalPlacement`) counts.goalPlacements += 1
     if (triple.object.value === `${SP}CompositionView`) counts.compositionViews += 1
@@ -2471,8 +3236,10 @@ const countRdfSemantics = async (rdfPath: string) => {
     if (triple.object.value === `${SP}Card`) counts.cards += 1
     if (triple.object.value === `${SP}ExternalGoalReference`) counts.externalGoalReferences += 1
     if (triple.object.value === LP_DIDACTIC_PREREQUISITE) counts.requiresEdges += 1
-    if (triple.object.value === `${SP}GoalVisualizationReference`) counts.goalVisualizations += 1
+    if (triple.object.value === `${SCHEMA}ImageObject`) counts.goalVisualizations += 1
   }
+
+  counts.coreAxisReferences = roleReferences.size
 
   return counts
 }
@@ -2493,7 +3260,7 @@ const zipReconstructedPackage = (options: CliOptions, archiveRoot: string) => {
   })
     .split(/\r?\n/u)
     .filter(Boolean)
-    .sort((left, right) => left.localeCompare(right))
+    .sort(compareCodeUnits)
     .join('\n')
   writeFileSync(zipListPath, `${fileList}\n`)
   execFileSync('zip', ['-X', '-0', '-q', options.reconstructedZipPath, '-@'], {
@@ -2503,12 +3270,70 @@ const zipReconstructedPackage = (options: CliOptions, archiveRoot: string) => {
   })
 }
 
-const compareZipEntries = (originalZip: string, reconstructedZip: string) => {
+const parseSha256Sums = (content: Buffer, context: string) => {
+  const records = new Map<string, string>()
+  content.toString('utf8').split(/\r?\n/u).filter(Boolean).forEach((line) => {
+    const match = line.match(/^([a-f0-9]{64}) {2}(.+)$/u)
+    if (!match) {
+      throw new Error(`Malformed SHA256SUMS line in ${context}: ${line}`)
+    }
+    const [, digest, path] = match
+    if (records.has(path)) {
+      throw new Error(`Duplicate SHA256SUMS path in ${context}: ${path}`)
+    }
+    records.set(path, digest)
+  })
+  return records
+}
+
+const hashReconstructedFiles = (reconstructedDir: string, entryPaths: string[]) => {
+  const hashes = new Map<string, string>()
+  chunkArgumentsByBytes(entryPaths).forEach((paths) => {
+    const output = execFileSync('sha256sum', ['--', ...paths], {
+      cwd: reconstructedDir,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+    })
+    output.split(/\r?\n/u).filter(Boolean).forEach((line) => {
+      const match = line.match(/^([a-f0-9]{64}) {2}(.+)$/u)
+      if (!match) throw new Error(`Malformed sha256sum output: ${line}`)
+      hashes.set(match[2], match[1])
+    })
+  })
+  return hashes
+}
+
+const compareZipEntries = (originalZip: string, reconstructedZip: string, reconstructedDir: string) => {
   const originalEntries = listZipEntries(originalZip)
   const reconstructedEntries = listZipEntries(reconstructedZip)
-  const allEntries = [...new Set([...originalEntries, ...reconstructedEntries])].sort((left, right) => left.localeCompare(right))
+  if (new Set(originalEntries).size !== originalEntries.length || new Set(reconstructedEntries).size !== reconstructedEntries.length) {
+    throw new Error('Cannot compare ZIPs containing duplicate entry names.')
+  }
+  const allEntries = [...new Set([...originalEntries, ...reconstructedEntries])].sort(compareCodeUnits)
   const mismatches: string[] = []
   let byteIdenticalFiles = 0
+
+  const checksumEntries = originalEntries.filter((entry) => entry.endsWith('/metadata/SHA256SUMS'))
+  if (checksumEntries.length !== 1) {
+    throw new Error(`Expected exactly one original SHA256SUMS entry, got ${checksumEntries.length}.`)
+  }
+  const checksumEntry = checksumEntries[0]
+  const originalChecksumContent = readZipEntry(originalZip, checksumEntry)
+  const reconstructedChecksumContent = reconstructedEntries.includes(checksumEntry)
+    ? readZipEntry(reconstructedZip, checksumEntry)
+    : Buffer.alloc(0)
+  const originalHashes = parseSha256Sums(originalChecksumContent, originalZip)
+  const expectedChecksumPaths = new Set(originalEntries.filter((entry) => entry !== checksumEntry))
+  const missingChecksumPaths = [...expectedChecksumPaths].filter((entry) => !originalHashes.has(entry))
+  const unexpectedChecksumPaths = [...originalHashes.keys()].filter((entry) => !expectedChecksumPaths.has(entry))
+  if (missingChecksumPaths.length > 0 || unexpectedChecksumPaths.length > 0) {
+    throw new Error([
+      ...missingChecksumPaths.map((entry) => `missing checksum ${entry}`),
+      ...unexpectedChecksumPaths.map((entry) => `unexpected checksum ${entry}`),
+    ].slice(0, 10).join(' | '))
+  }
+  const reconstructedHashes = hashReconstructedFiles(reconstructedDir, reconstructedEntries)
 
   allEntries.forEach((entry) => {
     const inOriginal = originalEntries.includes(entry)
@@ -2517,12 +3342,14 @@ const compareZipEntries = (originalZip: string, reconstructedZip: string) => {
       mismatches.push(`${entry}: ${inOriginal ? 'missing in reconstructed ZIP' : 'unexpected in reconstructed ZIP'}`)
       return
     }
-    const originalContent = readZipEntry(originalZip, entry)
-    const reconstructedContent = readZipEntry(reconstructedZip, entry)
-    const originalSha = sha256(originalContent)
-    const reconstructedSha = sha256(reconstructedContent)
+    const originalSha = entry === checksumEntry
+      ? sha256(originalChecksumContent)
+      : originalHashes.get(entry)
+    const reconstructedSha = entry === checksumEntry
+      ? sha256(reconstructedChecksumContent)
+      : reconstructedHashes.get(entry)
     if (originalSha !== reconstructedSha) {
-      mismatches.push(`${entry}: ${originalSha} != ${reconstructedSha}`)
+      mismatches.push(`${entry}: ${String(originalSha)} != ${String(reconstructedSha)}`)
       return
     }
     byteIdenticalFiles += 1
@@ -2536,7 +3363,12 @@ const compareZipEntries = (originalZip: string, reconstructedZip: string) => {
 }
 
 const runPackageValidation = (options: CliOptions) => {
-  const command = `npm run export:subject-packages:validate -- --zip ${repoRelative(options.reconstructedZipPath)} --report-dir ${repoRelative(resolve(options.outDir, 'package-validation'))}`
+  const reportDir = resolve(options.outDir, 'package-validation')
+  const reportPath = resolve(reportDir, 'subject-export-package-validation-report.json')
+  const markdownReportPath = resolve(reportDir, 'subject-export-package-validation-report.md')
+  const command = `npm run export:subject-packages:validate -- --zip ${repoRelative(options.reconstructedZipPath)} --report-dir ${repoRelative(reportDir)}`
+  rmSync(reportPath, { force: true })
+  rmSync(markdownReportPath, { force: true })
   try {
     execFileSync('npm', [
       'run',
@@ -2545,18 +3377,31 @@ const runPackageValidation = (options: CliOptions) => {
       '--zip',
       options.reconstructedZipPath,
       '--report-dir',
-      resolve(options.outDir, 'package-validation'),
+      reportDir,
     ], {
       cwd: appRoot,
       stdio: ['ignore', 'pipe', 'pipe'],
       maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
     })
-    return { command, passed: true }
+    const reportSha256 = sha256RegularFile(reportPath)
+    if (!reportSha256) throw new Error('Package validator did not write a regular JSON report.')
+    return {
+      command,
+      passed: true,
+      reportPath: repoRelative(reportPath),
+      reportSha256,
+    }
   } catch (error) {
     if (error instanceof Error) {
       process.stderr.write(`${error.message}\n`)
     }
-    return { command, passed: false }
+    const reportSha256 = sha256RegularFile(reportPath)
+    return {
+      command,
+      passed: false,
+      reportPath: reportSha256 ? repoRelative(reportPath) : null,
+      reportSha256,
+    }
   }
 }
 
@@ -2573,6 +3418,11 @@ Generated at: ${report.generatedAt}
 - RDF: \`${report.rdfPath}\`
 - SkillPilot profile: \`${report.profilePath}\`
 - Reconstructed ZIP: \`${report.reconstructedZip}\`
+- Input ZIP SHA-256: \`${report.hashes.inputZipSha256 ?? 'not available'}\`
+- RDF SHA-256: \`${report.hashes.rdfSha256 ?? 'not available'}\`
+- SkillPilot profile SHA-256: \`${report.hashes.profileSha256 ?? 'not available'}\`
+- Reconstructed ZIP SHA-256: \`${report.hashes.reconstructedZipSha256 ?? 'not available'}\`
+- FWU core SHA-256: \`${report.hashes.ontologyCoreSha256 ?? 'not available'}\`
 - Archive root: \`${report.archiveRoot}\`
 - FWU ontology: \`${report.fwuOntology.repository}\`
 - FWU core: \`${report.fwuOntology.corePath}\`
@@ -2599,9 +3449,199 @@ Mismatches: ${report.reconstruction.mismatches.length === 0 ? 'none' : report.re
 ${report.packageValidation
   ? `Command: \`${report.packageValidation.command}\`
 
-Status: ${report.packageValidation.passed ? 'passed' : 'failed'}`
+Status: ${report.packageValidation.passed ? 'passed' : 'failed'}
+
+Report: ${report.packageValidation.reportPath ? `\`${report.packageValidation.reportPath}\`` : 'not available'}
+
+Report SHA-256: \`${report.packageValidation.reportSha256 ?? 'not available'}\``
   : 'Not run in this mode.'}
 `)
+}
+
+const validateOwlBundle = (options: CliOptions) => {
+  const profileReportPath = resolve(options.slimDir, 'robot-dl-report.txt')
+  const reasonedPath = resolve(options.slimDir, 'robot-hermit-reasoned.owl')
+  const jsonPath = resolve(options.slimDir, 'owl-validation-report.json')
+  const markdownPath = resolve(options.slimDir, 'owl-validation-report.md')
+  ;[profileReportPath, reasonedPath, jsonPath, markdownPath].forEach((path) => rmSync(path, { force: true }))
+
+  const configuredRobotJar = process.env.ROBOT_JAR
+  const robotJarPath = configuredRobotJar
+    ? resolve(process.cwd(), configuredRobotJar)
+    : resolve(repoRoot, 'tmp/tools/robot-1.9.10/robot.jar')
+  if (!existsSync(robotJarPath)) {
+    throw new Error('ROBOT JAR is missing. Set ROBOT_JAR or place ROBOT 1.9.10 under tmp/tools/robot-1.9.10/robot.jar.')
+  }
+
+  const manifestPath = resolve(options.slimDir, 'manifest.json')
+  if (!existsSync(manifestPath)) throw new Error(`OWL validation manifest is missing: ${manifestPath}`)
+  const manifest = jsonObject(JSON.parse(readFileSync(manifestPath, 'utf8')) as JsonValue, 'slim manifest')
+  const fwuOntology = jsonObject(manifest.fwuOntology, 'slim manifest fwuOntology')
+  const rdfFiles = Array.isArray(manifest.files)
+    ? manifest.files.map((file) => jsonObject(file, 'slim manifest RDF file'))
+    : []
+  const expectedRdfNames = ['declarations.nt', 'landscape.nt', 'views.nt', 'mappings.nt', 'sources.nt', 'cards.nt', 'assets.nt', 'bundle.nt']
+  const rdfNames = rdfFiles.map((file) => stringValue(file.name)).filter((name): name is string => !!name)
+  if (new Set(rdfNames).size !== rdfNames.length || JSON.stringify([...rdfNames].sort(compareCodeUnits)) !== JSON.stringify([...expectedRdfNames].sort(compareCodeUnits))) {
+    throw new Error('Slim manifest RDF file set is duplicate, incomplete, or unexpected.')
+  }
+  if (fwuOntology.ontologyIri !== LP_CORE_ONTOLOGY || fwuOntology.profileImport !== LP_CORE_ONTOLOGY) {
+    throw new Error('Slim manifest does not bind the canonical FWU Core IRI.')
+  }
+  const fwuCommit = stringValue(fwuOntology.commit)
+  if (!fwuCommit || !/^[a-f0-9]{40}(?:[a-f0-9]{24})?$/u.test(fwuCommit)) {
+    throw new Error('Slim manifest does not contain a valid FWU ontology commit hash.')
+  }
+
+  const inputPaths = new Map<string, string>([
+    ...rdfFiles.map((file) => [`rdf:${String(file.name)}`, resolve(options.slimDir, String(file.name))] as const),
+    ['profile', resolve(options.slimDir, 'skillpilot-mem-fwu-profile.ttl')],
+    ['catalog', resolve(options.slimDir, 'catalog-v001.xml')],
+    ['core', resolve(options.slimDir, 'ontology/lehrplan-core.owl')],
+    ['package', options.zipPath],
+    ['manifest', manifestPath],
+    ['robotJar', robotJarPath],
+  ])
+  inputPaths.forEach((path, label) => {
+    if (!existsSync(path) || !lstatSync(path).isFile()) throw new Error(`OWL validation input is missing or not a regular file (${label}): ${path}`)
+  })
+  const beforeHashes = Object.fromEntries([...inputPaths].map(([label, path]) => [label, sha256File(path)]))
+
+  const assertManifestArtifact = (
+    label: string,
+    actualPath: string,
+    recordedPath: JsonValue | undefined,
+    recordedSha: JsonValue | undefined,
+    hashLabel: string,
+  ) => {
+    if (typeof recordedPath !== 'string' || resolve(repoRoot, recordedPath) !== resolve(actualPath)) {
+      throw new Error(`${label} manifest path does not identify the co-located OWL input.`)
+    }
+    if (typeof recordedSha !== 'string' || recordedSha !== beforeHashes[hashLabel]) {
+      throw new Error(`${label} manifest SHA-256 does not match the OWL input.`)
+    }
+  }
+  rdfFiles.forEach((file) => {
+    const name = String(file.name)
+    assertManifestArtifact(`RDF ${name}`, resolve(options.slimDir, name), file.path, file.sha256, `rdf:${name}`)
+  })
+  assertManifestArtifact('profile', inputPaths.get('profile') as string, manifest.profile, fwuOntology.profileSha256, 'profile')
+  assertManifestArtifact('catalog', inputPaths.get('catalog') as string, fwuOntology.catalogPath, fwuOntology.catalogSha256, 'catalog')
+  assertManifestArtifact('bound core', inputPaths.get('core') as string, fwuOntology.bundledCorePath, fwuOntology.bundledCoreSha256, 'core')
+  if (typeof manifest.bundle !== 'string' || resolve(repoRoot, manifest.bundle) !== resolve(inputPaths.get('rdf:bundle.nt') as string)) {
+    throw new Error('Slim manifest bundle path does not identify the co-located RDF bundle.')
+  }
+  if (typeof manifest.inputZip !== 'string' || resolve(repoRoot, manifest.inputZip) !== resolve(options.zipPath)) {
+    throw new Error('Slim manifest inputZip path does not identify the package input.')
+  }
+  if (manifest.inputZipSha256 !== beforeHashes.package) {
+    throw new Error('Slim manifest input ZIP SHA-256 does not match the package input.')
+  }
+
+  const profileText = readFileSync(inputPaths.get('profile') as string, 'utf8')
+  const profileImports = [...profileText.matchAll(/\bowl:imports\s+<([^>]+)>/gu)].map((match) => match[1])
+  if (
+    !profileText.includes(`@prefix owl: <${OWL}> .`)
+    || profileImports.length !== 1
+    || profileImports[0] !== LP_CORE_ONTOLOGY
+  ) {
+    throw new Error('SkillPilot profile does not import exactly the canonical FWU Core IRI.')
+  }
+  const catalogText = readFileSync(inputPaths.get('catalog') as string, 'utf8')
+  const catalogMappings = catalogText.match(/<uri\b/gu) ?? []
+  const expectedCatalogMapping = `<uri name="${LP_CORE_ONTOLOGY}" uri="ontology/lehrplan-core.owl"/>`
+  if (catalogMappings.length !== 1 || !catalogText.includes(expectedCatalogMapping)) {
+    throw new Error('OWL catalog does not map exactly the canonical FWU Core IRI to the bundled Core.')
+  }
+
+  const commonMergeArguments = [
+    'merge',
+    '--catalog', inputPaths.get('catalog') as string,
+    '--input', inputPaths.get('profile') as string,
+    '--input', inputPaths.get('rdf:bundle.nt') as string,
+    '--collapse-import-closure', 'true',
+  ]
+  execFileSync('java', [
+    '-Xmx3g',
+    '-jar', robotJarPath,
+    ...commonMergeArguments,
+    'validate-profile', '--profile', 'DL',
+    '--output', profileReportPath,
+  ], {
+    cwd: repoRoot,
+    stdio: ['ignore', 'inherit', 'inherit'],
+  })
+  const profileReport = readFileSync(profileReportPath, 'utf8')
+  if (!profileReport.includes('Ontology and imports closure in profile')) {
+    throw new Error(`ROBOT did not confirm OWL 2 DL: ${profileReport.trim()}`)
+  }
+
+  if (options.reason) {
+    execFileSync('java', [
+      '-Xmx3g',
+      '-jar', robotJarPath,
+      ...commonMergeArguments,
+      'reason', '--reasoner', 'HermiT', '--equivalent-classes-allowed', 'all',
+      '--output', reasonedPath,
+    ], {
+      cwd: repoRoot,
+      stdio: ['ignore', 'inherit', 'inherit'],
+    })
+  }
+
+  const afterHashes = Object.fromEntries([...inputPaths].map(([label, path]) => [label, sha256File(path)]))
+  if (JSON.stringify(beforeHashes) !== JSON.stringify(afterHashes)) {
+    throw new Error('OWL validation inputs changed while ROBOT was running.')
+  }
+  const report = {
+    generatedAt: new Date().toISOString(),
+    passed: true,
+    owlProfile: 'OWL 2 DL',
+    reasoning: options.reason ? 'HermiT passed' : 'not requested',
+    fwuOntologyCommit: fwuCommit,
+    robotJar: isInsideRepo(robotJarPath) ? repoRelative(robotJarPath) : robotJarPath,
+    robotJarSha256: beforeHashes.robotJar,
+    inputs: Object.fromEntries([...inputPaths].map(([label, path]) => [label, {
+      path: isInsideRepo(path) ? repoRelative(path) : path,
+      sha256: beforeHashes[label],
+    }])),
+    outputs: {
+      profileReport: {
+        path: repoRelative(profileReportPath),
+        sha256: sha256File(profileReportPath),
+      },
+      reasonedOntology: options.reason ? {
+        path: repoRelative(reasonedPath),
+        sha256: sha256File(reasonedPath),
+      } : null,
+    },
+  }
+  writeFileSync(jsonPath, `${JSON.stringify(report, null, 2)}\n`)
+  writeFileSync(markdownPath, `# MEM/FWU OWL Validation Report
+
+Generated at: ${report.generatedAt}
+
+Result: passed
+
+- Profile: OWL 2 DL
+- Reasoning: ${report.reasoning}
+- FWU ontology commit: \`${report.fwuOntologyCommit ?? 'not available'}\`
+- ROBOT JAR SHA-256: \`${report.robotJarSha256}\`
+
+## Bound inputs
+
+| Input | Path | SHA-256 |
+| --- | --- | --- |
+${Object.entries(report.inputs).map(([label, input]) => `| ${label} | \`${input.path}\` | \`${input.sha256}\` |`).join('\n')}
+
+## Outputs
+
+| Output | Path | SHA-256 |
+| --- | --- | --- |
+| OWL 2 DL report | \`${report.outputs.profileReport.path}\` | \`${report.outputs.profileReport.sha256}\` |
+${report.outputs.reasonedOntology ? `| HermiT reasoned ontology | \`${report.outputs.reasonedOntology.path}\` | \`${report.outputs.reasonedOntology.sha256}\` |` : '| HermiT reasoned ontology | not requested | — |'}
+`)
+  return { jsonPath, markdownPath }
 }
 
 const run = async () => {
@@ -2610,7 +3650,13 @@ const run = async () => {
     process.stdout.write(usage())
     return
   }
-  requireOntologyCore(options.ontologyDir)
+  if (options.mode === 'validate-owl') {
+    const result = validateOwlBundle(options)
+    process.stdout.write(`OWL validation passed: ${repoRelative(result.markdownPath)}\n`)
+    return
+  }
+
+  const corePath = requireOntologyCore(options.ontologyDir)
 
   if (options.mode === 'to-slim-rdf') {
     const result = await writeSlimRdf(options)
@@ -2624,6 +3670,12 @@ const run = async () => {
   let semanticCounts = emptyCounts()
   let reconstruction: RoundtripReport['reconstruction'] = null
   let packageValidation: RoundtripReport['packageValidation'] = null
+  const inputZipIsRead = ['roundtrip', 'to-rdf', 'validate'].includes(options.mode)
+  const rdfIsReadWithoutRewrite = ['from-rdf', 'validate'].includes(options.mode)
+  const stableReadInputs = new Map<string, { path: string; sha256: string }>()
+  if (inputZipIsRead) stableReadInputs.set('input ZIP', { path: options.zipPath, sha256: sha256File(options.zipPath) })
+  if (rdfIsReadWithoutRewrite) stableReadInputs.set('RDF', { path: options.rdfPath, sha256: sha256File(options.rdfPath) })
+  stableReadInputs.set('FWU core', { path: corePath, sha256: sha256File(corePath) })
 
   if (options.mode === 'roundtrip' || options.mode === 'to-rdf') {
     const rdfResult = await writeRdf(options)
@@ -2641,21 +3693,34 @@ const run = async () => {
     if (semanticCounts.files === 0 && existsSync(options.rdfPath)) {
       semanticCounts = await countRdfSemantics(options.rdfPath)
     }
-    reconstruction = compareZipEntries(options.zipPath, options.reconstructedZipPath)
+    reconstruction = compareZipEntries(options.zipPath, options.reconstructedZipPath, options.reconstructedDir)
     packageValidation = runPackageValidation(options)
   }
 
+  stableReadInputs.forEach((input, label) => {
+    const finalSha256 = sha256File(input.path)
+    if (finalSha256 !== input.sha256) throw new Error(`${label} changed during the technical roundtrip.`)
+  })
+  const reconstructsZip = ['roundtrip', 'from-rdf', 'validate'].includes(options.mode)
+  const writesProfile = ['roundtrip', 'to-rdf'].includes(options.mode)
   const report: RoundtripReport = {
     generatedAt: new Date().toISOString(),
     inputZip: repoRelative(options.zipPath),
     rdfPath: repoRelative(options.rdfPath),
     profilePath: repoRelative(options.profilePath),
     reconstructedZip: repoRelative(options.reconstructedZipPath),
+    hashes: {
+      inputZipSha256: inputZipIsRead ? stableReadInputs.get('input ZIP')?.sha256 ?? null : null,
+      rdfSha256: sha256RegularFile(options.rdfPath),
+      profileSha256: writesProfile ? sha256RegularFile(options.profilePath) : null,
+      reconstructedZipSha256: reconstructsZip ? sha256RegularFile(options.reconstructedZipPath) : null,
+      ontologyCoreSha256: stableReadInputs.get('FWU core')?.sha256 ?? null,
+    },
     archiveRoot,
     fwuOntology: {
       repository: 'https://github.com/FWU-DE/lehrplan-ontologie',
       localPath: repoRelative(options.ontologyDir),
-      corePath: repoRelative(requireOntologyCore(options.ontologyDir)),
+      corePath: repoRelative(corePath),
       commit: ontologyCommit(options.ontologyDir),
       ontologyIri: LP_CORE_ONTOLOGY,
     },

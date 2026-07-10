@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import {
   createReadStream,
   existsSync,
+  lstatSync,
   mkdirSync,
   readFileSync,
   rmSync,
@@ -20,6 +21,26 @@ type JsonValue =
   | JsonValue[]
   | { [key: string]: JsonValue }
 
+const compareCodeUnits = (left: string, right: string) => (left < right ? -1 : left > right ? 1 : 0)
+
+const chunkArgumentsByBytes = (values: string[], maxBytes = 256 * 1024) => {
+  const chunks: string[][] = []
+  let chunk: string[] = []
+  let chunkBytes = 0
+  values.forEach((value) => {
+    const argumentBytes = Buffer.byteLength(value) + 1
+    if (chunk.length > 0 && chunkBytes + argumentBytes > maxBytes) {
+      chunks.push(chunk)
+      chunk = []
+      chunkBytes = 0
+    }
+    chunk.push(value)
+    chunkBytes += argumentBytes
+  })
+  if (chunk.length > 0) chunks.push(chunk)
+  return chunks
+}
+
 type CliOptions = {
   rdfPath: string
   zipPath: string
@@ -31,6 +52,8 @@ type TripleObject =
   | { kind: 'iri'; value: string }
   | { kind: 'literal'; value: string; datatype?: string; lang?: string }
 
+type LiteralObject = Extract<TripleObject, { kind: 'literal' }>
+
 type ParsedTriple = {
   subject: string
   predicate: string
@@ -39,8 +62,10 @@ type ParsedTriple = {
 
 type RdfModel = {
   types: Map<string, Set<string>>
-  literals: Map<string, Map<string, string[]>>
+  literals: Map<string, Map<string, LiteralObject[]>>
   iris: Map<string, Map<string, string[]>>
+  reverseIris: Map<string, Map<string, string[]>>
+  hasReferenceRoles: boolean
 }
 
 type ReconstructedLandscape = {
@@ -110,6 +135,31 @@ type CheckResult = {
   details: string
 }
 
+type BoundInputArtifact = {
+  path: string
+  sha256: string
+}
+
+type ReferencePair = {
+  reference: string
+  source: string
+  target: string
+}
+
+type ReferenceStructureValidation = {
+  prerequisiteIssues: string[]
+  competencyIssues: string[]
+  visualizationIssues: string[]
+}
+
+type CoreFirstValidation = {
+  goalIssues: string[]
+  competencyIssues: string[]
+  programIssues: string[]
+  sourceIssues: string[]
+  owlSafetyIssues: string[]
+}
+
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
@@ -118,6 +168,10 @@ const DEFAULT_RDF = `${DEFAULT_BASE}/slim/bundle.nt`
 const DEFAULT_ZIP = 'tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip'
 const DEFAULT_OUT_DIR = `${DEFAULT_BASE}/slim/semantic-reconstructed`
 const ZIP_COMMAND_MAX_BUFFER_BYTES = 512 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_TOTAL_BYTES = 8 * 1024 * 1024 * 1024
+const MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
+const MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES = 16 * 1024 * 1024 * 1024
 const EXPECTED_DE_STATES = [
   'DE-BB',
   'DE-BE',
@@ -139,19 +193,73 @@ const EXPECTED_DE_STATES = [
 
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
+const OWL = 'http://www.w3.org/2002/07/owl#'
 const DCTERMS = 'http://purl.org/dc/terms/'
 const BFO = 'http://purl.obolibrary.org/obo/'
-const IAO_INFORMATION_CONTENT_ENTITY = `${BFO}IAO_0000030`
 const LP = 'https://w3id.org/lehrplan/ontology/'
+const LP_CORE_ONTOLOGY = `${LP}lp/components/lehrplan-core.owl`
 const SCHEMA = 'https://schema.org/'
 const SP = 'https://skillpilot.de/ns/roundtrip#'
 
 const LP_DIDACTIC_PREREQUISITE = `${LP}LP_0000554`
+const LP_SUBJECT_SPECIFIC_COMPETENCY = `${LP}LP_0000336`
+const LP_CURRICULAR_AREA = `${LP}LP_0000349`
+const LP_PROCESS_COMPETENCY_AREA = `${LP}LP_0030265`
+const LP_GUIDING_IDEA = `${LP}LP_0000268`
 const LP_REFERENCE = `${LP}LP_0030065`
 const LP_HAS_REFERENCE = `${LP}LP_0030071`
 const LP_REFERS_TO = `${LP}LP_0030072`
+const LP_DESCRIBED_BY = `${LP}LP_0000024`
+const LP_HAS_DESCRIPTION = `${LP}LP_0030051`
+const LP_HAS_TITLE = `${LP}LP_0030056`
+const LP_HAS_NUMBER = `${LP}LP_0030057`
+const LP_VALUE = `${LP}LP_0000344`
+const LP_POSITION = `${LP}LP_0000460`
+const LP_HAS_SCHOOL_SUBJECT = `${LP}LP_0000537`
+const LP_HAS_GRADE = `${LP}LP_0000026`
+const LP_HAS_STAGE = `${LP}LP_0000047`
+const LP_OF_STATE = `${LP}LP_0000029`
+const LP_HAS_UNIT = `${LP}LP_0000041`
+const LP_HAS_REQUIREMENT_LEVEL = `${LP}LP_0000840`
 const BFO_HAS_PART = `${BFO}BFO_0000051`
+const BFO_PART_OF = `${BFO}BFO_0000050`
 const SCHEMA_IMAGE_OBJECT = `${SCHEMA}ImageObject`
+const KIM_MATHEMATICS = 'http://w3id.org/kim/schulfaecher/s1017'
+const REFERENCE_ROLE_COMPETENCY_REFS = 'competencyRefs'
+const REFERENCE_ROLE_PROCESS_COMPETENCIES = 'dimensionTags.processCompetencies'
+const REFERENCE_ROLE_GUIDING_IDEAS = 'dimensionTags.guidingIdeas'
+
+const FWU_GRADES = new Map(
+  Array.from({ length: 9 }, (_, index) => {
+    const grade = index + 5
+    return [`de-gym-math-j${grade}`, `${LP}LP_${2_000_000 + grade}`]
+  }),
+)
+const FWU_STAGE_SEK_I = `${LP}LP_0000045`
+const FWU_STAGE_SEK_II = `${LP}LP_0000046`
+const FWU_REQUIREMENT_LEVELS = new Map<string, string>([
+  ['1', `${LP}LP_0000803`],
+  ['2', `${LP}LP_0000804`],
+  ['3', `${LP}LP_0000805`],
+])
+const FWU_STATE_BY_JURISDICTION = new Map<string, string>([
+  ['DE-TH', `${LP}LP_3000031`],
+  ['DE-NI', `${LP}LP_3000043`],
+  ['DE-NW', `${LP}LP_3000044`],
+  ['DE-HH', `${LP}LP_3000045`],
+  ['DE-RP', `${LP}LP_3000046`],
+  ['DE-SN', `${LP}LP_3000047`],
+  ['DE-BE', `${LP}LP_3000048`],
+  ['DE-BW', `${LP}LP_3000049`],
+  ['DE-HE', `${LP}LP_3000050`],
+  ['DE-BY', `${LP}LP_3000051`],
+  ['DE-MV', `${LP}LP_3000052`],
+  ['DE-ST', `${LP}LP_3000053`],
+  ['DE-SH', `${LP}LP_3000054`],
+  ['DE-SL', `${LP}LP_3000055`],
+  ['DE-HB', `${LP}LP_3000056`],
+  ['DE-BB', `${LP}LP_3000057`],
+])
 
 const P = {
   type: `${RDF}type`,
@@ -165,6 +273,9 @@ const P = {
   skillpilotId: `${SP}skillpilotId`,
   order: `${SP}order`,
   archiveRoot: `${SP}archiveRoot`,
+  fwuOntologyCommit: `${SP}fwuOntologyCommit`,
+  fwuOntologyCorePath: `${SP}fwuOntologyCorePath`,
+  fwuOntologyIri: `${SP}fwuOntologyIri`,
   frameworkId: `${SP}frameworkId`,
   locale: `${SP}locale`,
   country: `${SP}country`,
@@ -182,11 +293,14 @@ const P = {
   tag: `${SP}tag`,
   example: `${SP}example`,
   competencyRef: `${SP}competencyRef`,
+  hasGoalVisualization: `${SP}hasGoalVisualization`,
+  referencesAsset: `${SP}referencesAsset`,
   dimension: `${SP}dimension`,
   kind: `${SP}kind`,
   shortLabel: `${SP}shortLabel`,
   parentUnitId: `${SP}parentUnitId`,
   relation: `${SP}relation`,
+  referenceRole: `${SP}referenceRole`,
   contextJson: `${SP}contextJson`,
   metadataJson: `${SP}metadataJson`,
   applicabilityJson: `${SP}applicabilityJson`,
@@ -195,12 +309,14 @@ const P = {
   releaseJson: `${SP}releaseJson`,
   examDataJson: `${SP}examDataJson`,
   dimensionTag: `${SP}dimensionTag`,
+  dimensionTagsJson: `${SP}dimensionTagsJson`,
   semanticAtomic: `${SP}semanticAtomic`,
   goalType: `${SP}goalType`,
   nodeKind: `${SP}nodeKind`,
   containsGoal: `${SP}containsGoal`,
   didacticRequires: `${SP}didacticRequires`,
   hasPart: BFO_HAS_PART,
+  partOf: BFO_PART_OF,
   hasReference: LP_HAS_REFERENCE,
   refersTo: LP_REFERS_TO,
   placedGoal: `${SP}placedGoal`,
@@ -273,11 +389,15 @@ const P = {
   schemaLicense: `${SCHEMA}license`,
   creativeWorkStatus: `${SCHEMA}creativeWorkStatus`,
   inLanguage: `${SCHEMA}inLanguage`,
+  quarantinedRecordJson: `${SP}quarantinedRecordJson`,
 }
 
 const T = {
+  skillPilotPackage: `${SP}SkillPilotPackage`,
   learningLandscape: `${SP}LearningLandscape`,
   learningGoal: `${SP}LearningGoal`,
+  atomicGoal: `${SP}AtomicGoal`,
+  clusterGoal: `${SP}ClusterGoal`,
   competencyCatalogEntry: `${SP}CompetencyCatalogEntry`,
   programUnit: `${SP}ProgramUnit`,
   goalPlacement: `${SP}GoalPlacement`,
@@ -292,6 +412,12 @@ const T = {
   mappingRecord: `${SP}MappingRecord`,
   reviewDecision: `${SP}ReviewDecision`,
   goalVisualizationReference: `${SP}GoalVisualizationReference`,
+  runtimeClusterGoal: `${SP}RuntimeClusterGoal`,
+  unscopedCurricularGoal: `${SP}UnscopedCurricularGoal`,
+  programStructureGoal: `${SP}ProgramStructureGoal`,
+  practiceOrAssessmentGoal: `${SP}PracticeOrAssessmentGoal`,
+  memorizationGoal: `${SP}MemorizationGoal`,
+  orientationGoal: `${SP}OrientationGoal`,
 }
 
 const usage = () => `Usage:
@@ -458,6 +584,8 @@ const emptyModel = (): RdfModel => ({
   types: new Map(),
   literals: new Map(),
   iris: new Map(),
+  reverseIris: new Map(),
+  hasReferenceRoles: false,
 })
 
 const addMapValue = <TValue>(map: Map<string, Map<string, TValue[]>>, subject: string, predicate: string, value: TValue) => {
@@ -484,8 +612,11 @@ const isCarrierPredicate = (predicate: string) => (
 
 const readRdfModel = async (rdfPath: string) => {
   const model = emptyModel()
+  const input = createReadStream(rdfPath)
+  const digest = createHash('sha256')
+  input.on('data', (chunk: Buffer) => digest.update(chunk))
   const reader = createInterface({
-    input: createReadStream(rdfPath, { encoding: 'utf8' }),
+    input,
     crlfDelay: Infinity,
   })
 
@@ -503,20 +634,67 @@ const readRdfModel = async (rdfPath: string) => {
     }
     if (triple.object.kind === 'iri') {
       addMapValue(model.iris, triple.subject, triple.predicate, triple.object.value)
+      if (triple.predicate === P.hasReference || triple.predicate === P.hasGoalVisualization) {
+        addMapValue(model.reverseIris, triple.predicate, triple.object.value, triple.subject)
+      }
     } else {
-      addMapValue(model.literals, triple.subject, triple.predicate, triple.object.value)
+      addMapValue(model.literals, triple.subject, triple.predicate, triple.object)
+      if (triple.predicate === P.referenceRole) model.hasReferenceRoles = true
     }
   }
-  return model
+  return { model, sha256: digest.digest('hex') }
 }
 
 const resourcesOfType = (model: RdfModel, type: string) => [...model.types.entries()]
   .filter(([, values]) => values.has(type))
   .map(([resource]) => resource)
 
-const lit = (model: RdfModel, subject: string, predicate: string) => model.literals.get(subject)?.get(predicate)?.[0]
+const literalObjects = (model: RdfModel, subject: string, predicate: string) => (
+  model.literals.get(subject)?.get(predicate) ?? []
+)
 
-const lits = (model: RdfModel, subject: string, predicate: string) => model.literals.get(subject)?.get(predicate) ?? []
+const lit = (model: RdfModel, subject: string, predicate: string) => (
+  literalObjects(model, subject, predicate)[0]?.value
+)
+
+const lits = (model: RdfModel, subject: string, predicate: string) => (
+  literalObjects(model, subject, predicate).map((value) => value.value)
+)
+
+const literalByLanguage = (
+  values: LiteralObject[],
+  language: 'de' | 'en',
+) => {
+  const normalizedLanguage = language.toLowerCase()
+  return values.find((value) => value.lang?.toLowerCase() === normalizedLanguage)?.value
+    ?? values.find((value) => value.lang?.toLowerCase().startsWith(`${normalizedLanguage}-`))?.value
+}
+
+const localizedLit = (
+  model: RdfModel,
+  subject: string,
+  predicate: string,
+  language: 'de' | 'en',
+) => {
+  const values = literalObjects(model, subject, predicate)
+  return literalByLanguage(values, language)
+    ?? values.find((value) => value.lang === undefined)?.value
+}
+
+const coreText = (
+  model: RdfModel,
+  subject: string,
+  predicate: string,
+  language: 'de' | 'en',
+) => {
+  const values = iris(model, subject, predicate)
+    .flatMap((textResource) => literalObjects(model, textResource, LP_VALUE))
+  return literalByLanguage(values, language)
+    ?? values.find((value) => value.lang === undefined)?.value
+}
+
+const coreNumber = (model: RdfModel, subject: string) => iris(model, subject, LP_HAS_NUMBER)
+  .flatMap((textResource) => literalObjects(model, textResource, LP_VALUE))[0]?.value
 
 const iris = (model: RdfModel, subject: string, predicate: string) => model.iris.get(subject)?.get(predicate) ?? []
 
@@ -562,32 +740,55 @@ const orderedResources = (model: RdfModel, resources: string[]) => [...resources
   if (leftOrder !== undefined && rightOrder !== undefined && leftOrder !== rightOrder) {
     return leftOrder - rightOrder
   }
-  return skillpilotId(model, left).localeCompare(skillpilotId(model, right))
+  return compareCodeUnits(skillpilotId(model, left), skillpilotId(model, right))
 })
 
 const graphTargets = (model: RdfModel, source: string, predicate: string) => (
   [...new Set(iris(model, source, predicate).map((target) => skillpilotId(model, target)))]
-    .sort((left, right) => left.localeCompare(right))
+    .sort(compareCodeUnits)
 )
 
 const resourceHasType = (model: RdfModel, resource: string, type: string) => model.types.get(resource)?.has(type) ?? false
 
+const OWL_PROPERTY_TYPES = new Set([
+  `${OWL}AnnotationProperty`,
+  `${OWL}DatatypeProperty`,
+  `${OWL}ObjectProperty`,
+])
+
+const isSelfContainedCoreFirstBundle = (model: RdfModel) => [...(model.types.get(P.skillpilotId) ?? [])]
+  .some((type) => OWL_PROPERTY_TYPES.has(type))
+
+const resourcesLinkingTo = (
+  model: RdfModel,
+  target: string,
+  predicates: string[],
+) => predicates.flatMap((predicate) => model.reverseIris.get(predicate)?.get(target) ?? [])
+
 const reconstructRequires = (model: RdfModel, source: string) => {
   const prerequisiteReferences = iris(model, source, P.hasReference)
     .filter((reference) => resourceHasType(model, reference, LP_DIDACTIC_PREREQUISITE))
-  const coreTargets = [...new Set(prerequisiteReferences
+  return [...new Set([
+    ...prerequisiteReferences
     .flatMap((reference) => iris(model, reference, P.refersTo))
-    .map((target) => skillpilotId(model, target)))]
-    .sort((left, right) => left.localeCompare(right))
-
-  return prerequisiteReferences.length > 0
-    ? coreTargets
-    : graphTargets(model, source, P.didacticRequires)
+    .map((target) => skillpilotId(model, target)),
+    ...graphTargets(model, source, P.didacticRequires),
+  ])]
+    .sort(compareCodeUnits)
 }
 
-const subjectsReferringTo = (model: RdfModel, reference: string) => [...model.iris.entries()]
-  .filter(([, predicates]) => predicates.get(P.hasReference)?.includes(reference))
-  .map(([subject]) => subject)
+const subjectsReferringTo = (model: RdfModel, reference: string) => (
+  resourcesLinkingTo(model, reference, [P.hasReference, P.hasGoalVisualization])
+)
+
+const reconstructCompetencyRefs = (model: RdfModel, source: string) => [...new Set([
+  ...iris(model, source, P.hasReference)
+    .filter((reference) => !model.hasReferenceRoles || lits(model, reference, P.referenceRole).includes('competencyRefs'))
+    .flatMap((reference) => iris(model, reference, P.refersTo))
+    .filter((target) => resourceHasType(model, target, T.competencyCatalogEntry))
+    .map((competency) => skillpilotId(model, competency)),
+  ...graphTargets(model, source, P.competencyRef),
+])].sort(compareCodeUnits)
 
 const nullableLiteral = (model: RdfModel, subject: string, predicate: string) => lit(model, subject, predicate) ?? null
 
@@ -599,21 +800,41 @@ const packagePathFromZipPath = (zipPath: string | null) => {
   return separator >= 0 && separator < zipPath.length - 1 ? zipPath.slice(separator + 1) : null
 }
 
+const visualizationReferenceResources = (model: RdfModel) => {
+  const imageResources = new Set(resourcesOfType(model, SCHEMA_IMAGE_OBJECT))
+  const targetTypedReferences = [...model.iris.entries()]
+    .filter(([, predicateMap]) => [P.refersTo, P.referencesAsset]
+      .some((predicate) => (predicateMap.get(predicate) ?? []).some((target) => imageResources.has(target))))
+    .map(([resource]) => resource)
+  return [...new Set([
+    ...resourcesOfType(model, T.goalVisualizationReference),
+    ...targetTypedReferences,
+  ])]
+}
+
 const reconstructGoalVisualizations = (model: RdfModel): GoalVisualizationRecord[] => (
-  orderedResources(model, resourcesOfType(model, T.goalVisualizationReference)).map((reference) => {
+  orderedResources(model, visualizationReferenceResources(model)).map((reference) => {
     const structureIssues: string[] = []
-    if (!resourceHasType(model, reference, LP_REFERENCE)) {
-      structureIssues.push('reference is not typed lp:LP_0030065')
+    if (
+      !resourceHasType(model, reference, LP_REFERENCE)
+      && !resourceHasType(model, reference, T.goalVisualizationReference)
+    ) {
+      structureIssues.push('reference is neither typed lp:LP_0030065 nor sp:GoalVisualizationReference')
     }
 
     const sourceCandidates = subjectsReferringTo(model, reference)
-      .filter((source) => resourceHasType(model, source, T.learningGoal))
     if (sourceCandidates.length !== 1) {
       structureIssues.push(`expected exactly one source goal, found ${sourceCandidates.length}`)
     }
     const source = sourceCandidates[0]
+    if (source && !resourceHasType(model, source, T.learningGoal)) {
+      structureIssues.push('source is not typed sp:LearningGoal')
+    }
 
-    const imageCandidates = iris(model, reference, P.refersTo)
+    const imageCandidates = [
+      ...iris(model, reference, P.refersTo),
+      ...iris(model, reference, P.referencesAsset),
+    ]
     if (imageCandidates.length !== 1) {
       structureIssues.push(`expected exactly one image target, found ${imageCandidates.length}`)
     }
@@ -621,11 +842,9 @@ const reconstructGoalVisualizations = (model: RdfModel): GoalVisualizationRecord
     if (image && !resourceHasType(model, image, SCHEMA_IMAGE_OBJECT)) {
       structureIssues.push('image is not typed schema:ImageObject')
     }
-    if (image && !resourceHasType(model, image, IAO_INFORMATION_CONTENT_ENTITY)) {
-      structureIssues.push('image is not typed obo:IAO_0000030')
-    }
 
-    const order = nullableNumber(model, reference, P.order)
+    const order = nullableNumber(model, reference, LP_POSITION)
+      ?? nullableNumber(model, reference, P.order)
     const role = nullableLiteral(model, reference, P.role)
     const goalId = source ? skillpilotId(model, source) : null
     const zipPath = image ? nullableLiteral(model, image, P.zipPath) : null
@@ -700,6 +919,492 @@ const reconstructGoalVisualizations = (model: RdfModel): GoalVisualizationRecord
   })
 )
 
+const referencesTargetingType = (model: RdfModel, targetType: string) => [...model.iris.entries()]
+  .filter(([, predicateMap]) => (predicateMap.get(P.refersTo) ?? [])
+    .some((target) => resourceHasType(model, target, targetType)))
+  .map(([reference]) => reference)
+
+const inspectReifiedReferences = (params: {
+  model: RdfModel
+  references: string[]
+  incomingPredicates: string[]
+  targetType: string
+  referenceLabel: string
+  targetPredicates?: string[]
+  requireCoreReferenceType?: boolean
+  allowAppVisualizationType?: boolean
+  rejectSelfLoop?: boolean
+}) => {
+  const issues: string[] = []
+  const pairs: ReferencePair[] = []
+  ;[...new Set(params.references)].forEach((reference) => {
+    const shortReference = idFromResource(reference)
+    if (
+      params.requireCoreReferenceType
+      && !resourceHasType(params.model, reference, LP_REFERENCE)
+    ) {
+      issues.push(`${params.referenceLabel} ${shortReference}: missing lp:LP_0030065 type`)
+    }
+    if (
+      params.allowAppVisualizationType
+      && !resourceHasType(params.model, reference, LP_REFERENCE)
+      && !resourceHasType(params.model, reference, T.goalVisualizationReference)
+    ) {
+      issues.push(`${params.referenceLabel} ${shortReference}: missing core or app reference type`)
+    }
+
+    const sources = resourcesLinkingTo(params.model, reference, params.incomingPredicates)
+    const targetPredicates = params.targetPredicates ?? [P.refersTo]
+    const targets = targetPredicates.flatMap((predicate) => iris(params.model, reference, predicate))
+    if (sources.length !== 1) {
+      issues.push(`${params.referenceLabel} ${shortReference}: expected 1 incoming reference edge, found ${sources.length}`)
+    }
+    if (targets.length !== 1) {
+      issues.push(`${params.referenceLabel} ${shortReference}: expected 1 target edge, found ${targets.length}`)
+    }
+    const source = sources[0]
+    const target = targets[0]
+    if (source && !resourceHasType(params.model, source, T.learningGoal)) {
+      issues.push(`${params.referenceLabel} ${shortReference}: source is not a known learning goal`)
+    }
+    if (target && !resourceHasType(params.model, target, params.targetType)) {
+      issues.push(`${params.referenceLabel} ${shortReference}: target has the wrong resource type`)
+    }
+    if (source && target && params.rejectSelfLoop && source === target) {
+      issues.push(`${params.referenceLabel} ${shortReference}: self-loop`)
+    }
+    if (
+      sources.length === 1
+      && targets.length === 1
+      && resourceHasType(params.model, source, T.learningGoal)
+      && resourceHasType(params.model, target, params.targetType)
+    ) {
+      pairs.push({ reference, source, target })
+    }
+  })
+  return { issues, pairs }
+}
+
+const inspectDirectGoalRelations = (params: {
+  model: RdfModel
+  predicate: string
+  targetType: string
+  relationLabel: string
+  rejectSelfLoop?: boolean
+}) => {
+  const issues: string[] = []
+  const pairs: ReferencePair[] = []
+  ;[...params.model.iris.entries()].forEach(([source, predicateMap]) => {
+    const targets = predicateMap.get(params.predicate) ?? []
+    targets.forEach((target, index) => {
+      const relation = `${params.relationLabel} ${skillpilotId(params.model, source)} -> ${skillpilotId(params.model, target)}`
+      if (!resourceHasType(params.model, source, T.learningGoal)) {
+        issues.push(`${relation}: source is not a known learning goal`)
+      }
+      if (!resourceHasType(params.model, target, params.targetType)) {
+        issues.push(`${relation}: target has the wrong resource type`)
+      }
+      if (params.rejectSelfLoop && source === target) {
+        issues.push(`${relation}: self-loop`)
+      }
+      if (
+        resourceHasType(params.model, source, T.learningGoal)
+        && resourceHasType(params.model, target, params.targetType)
+      ) {
+        pairs.push({ reference: `${params.predicate}#${index}`, source, target })
+      }
+    })
+  })
+  return { issues, pairs }
+}
+
+const duplicatePairIssues = (
+  model: RdfModel,
+  label: string,
+  pairs: ReferencePair[],
+) => {
+  const referencesByPair = new Map<string, ReferencePair[]>()
+  pairs.forEach((pair) => {
+    const key = `${pair.source}\u0000${pair.target}`
+    referencesByPair.set(key, [...(referencesByPair.get(key) ?? []), pair])
+  })
+  return [...referencesByPair.values()]
+    .filter((entries) => entries.length > 1)
+    .map((entries) => (
+      `${label} ${skillpilotId(model, entries[0].source)} -> ${skillpilotId(model, entries[0].target)} is encoded ${entries.length} times`
+    ))
+}
+
+const validateReferenceStructure = (model: RdfModel): ReferenceStructureValidation => {
+  const prerequisites = inspectReifiedReferences({
+    model,
+    references: resourcesOfType(model, LP_DIDACTIC_PREREQUISITE),
+    incomingPredicates: [P.hasReference],
+    targetType: T.learningGoal,
+    referenceLabel: 'prerequisite reference',
+    rejectSelfLoop: true,
+  })
+  const directPrerequisites = inspectDirectGoalRelations({
+    model,
+    predicate: P.didacticRequires,
+    targetType: T.learningGoal,
+    relationLabel: 'direct prerequisite',
+    rejectSelfLoop: true,
+  })
+  const prerequisitePairs = [...prerequisites.pairs, ...directPrerequisites.pairs]
+
+  const competencies = inspectReifiedReferences({
+    model,
+    references: referencesTargetingType(model, T.competencyCatalogEntry),
+    incomingPredicates: [P.hasReference],
+    targetType: T.competencyCatalogEntry,
+    referenceLabel: 'competency reference',
+    requireCoreReferenceType: true,
+  })
+  const directCompetencies = inspectDirectGoalRelations({
+    model,
+    predicate: P.competencyRef,
+    targetType: T.competencyCatalogEntry,
+    relationLabel: 'direct competency reference',
+  })
+  const competencyPairs = [...competencies.pairs, ...directCompetencies.pairs]
+
+  const visualizations = inspectReifiedReferences({
+    model,
+    references: visualizationReferenceResources(model),
+    incomingPredicates: [P.hasReference, P.hasGoalVisualization],
+    targetPredicates: [P.refersTo, P.referencesAsset],
+    targetType: SCHEMA_IMAGE_OBJECT,
+    referenceLabel: 'visualization reference',
+    allowAppVisualizationType: true,
+  })
+  if (isSelfContainedCoreFirstBundle(model)) {
+    visualizations.pairs.forEach(({ reference, source }) => {
+      const isAppReference = resourceHasType(model, reference, T.goalVisualizationReference)
+      const isCoreReference = resourceHasType(model, reference, LP_REFERENCE)
+      const coreIncoming = resourcesLinkingTo(model, reference, [P.hasReference]).length
+      const appIncoming = resourcesLinkingTo(model, reference, [P.hasGoalVisualization]).length
+      const coreTargets = iris(model, reference, P.refersTo).length
+      const appTargets = iris(model, reference, P.referencesAsset).length
+      if (isCurricularGoal(model, source)) {
+        if (!isCoreReference || isAppReference || coreIncoming !== 1 || coreTargets !== 1 || appIncoming !== 0 || appTargets !== 0) {
+          visualizations.issues.push(`visualization reference ${idFromResource(reference)}: curricular source must use only the core reference pattern`)
+        }
+      } else if (!isAppReference || isCoreReference || appIncoming !== 1 || appTargets !== 1 || coreIncoming !== 0 || coreTargets !== 0) {
+        visualizations.issues.push(`visualization reference ${idFromResource(reference)}: runtime source must use only the app reference pattern`)
+      }
+    })
+  }
+
+  return {
+    prerequisiteIssues: [
+      ...prerequisites.issues,
+      ...directPrerequisites.issues,
+      ...duplicatePairIssues(model, 'prerequisite relation', prerequisitePairs),
+    ],
+    competencyIssues: [
+      ...competencies.issues,
+      ...directCompetencies.issues,
+      ...duplicatePairIssues(model, 'competency relation', competencyPairs),
+    ],
+    visualizationIssues: [
+      ...visualizations.issues,
+      ...duplicatePairIssues(model, 'visualization relation', visualizations.pairs),
+    ],
+  }
+}
+
+const isCurricularGoal = (model: RdfModel, resource: string) => (
+  resourceHasType(model, resource, LP_SUBJECT_SPECIFIC_COMPETENCY)
+  || resourceHasType(model, resource, LP_CURRICULAR_AREA)
+)
+
+const hasUnsafeRdfLiteralCharacters = (value: string) => {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index)
+    if (
+      code <= 0x08
+      || code === 0x0B
+      || code === 0x0C
+      || (code >= 0x0E && code <= 0x1F)
+      || code === 0x7F
+      || code === 0xFFFE
+      || code === 0xFFFF
+    ) {
+      return true
+    }
+    if (code >= 0xD800 && code <= 0xDBFF) {
+      const next = value.charCodeAt(index + 1)
+      if (next < 0xDC00 || next > 0xDFFF) {
+        return true
+      }
+      index += 1
+    } else if (code >= 0xDC00 && code <= 0xDFFF) {
+      return true
+    }
+  }
+  return false
+}
+
+const validateCoreFirstStructure = (
+  model: RdfModel,
+  expectedKinds?: Map<string, ExpectedGoalKind>,
+  expectedGraphKinds?: Map<string, 'atomic' | 'cluster'>,
+): CoreFirstValidation => {
+  const goalIssues: string[] = []
+  const competencyIssues: string[] = []
+  const programIssues: string[] = []
+  const sourceIssues: string[] = []
+  const owlSafetyIssues: string[] = []
+  if (!isSelfContainedCoreFirstBundle(model)) {
+    return { goalIssues, competencyIssues, programIssues, sourceIssues, owlSafetyIssues }
+  }
+
+  const goalById = new Map(
+    resourcesOfType(model, T.learningGoal).map((resource) => [skillpilotId(model, resource), resource]),
+  )
+  const appGoalTypes = [
+    T.runtimeClusterGoal,
+    T.unscopedCurricularGoal,
+    T.programStructureGoal,
+    T.practiceOrAssessmentGoal,
+    T.memorizationGoal,
+    T.orientationGoal,
+  ]
+  const appTypeByExpectedKind = new Map<ExpectedGoalKind, string>([
+    ['runtime-cluster', T.runtimeClusterGoal],
+    ['unscoped-curricular-atomic', T.unscopedCurricularGoal],
+    ['program-structure', T.programStructureGoal],
+    ['practice-or-assessment', T.practiceOrAssessmentGoal],
+    ['memorization', T.memorizationGoal],
+    ['orientation', T.orientationGoal],
+  ])
+  expectedKinds?.forEach((expectedKind, id) => {
+    const resource = goalById.get(id)
+    if (!resource) {
+      goalIssues.push(`${id}: expected goal is missing from the RDF graph`)
+      return
+    }
+    const isAtomic = resourceHasType(model, resource, LP_SUBJECT_SPECIFIC_COMPETENCY)
+    const isArea = resourceHasType(model, resource, LP_CURRICULAR_AREA)
+    const actualAppTypes = appGoalTypes.filter((type) => resourceHasType(model, resource, type))
+    if (expectedKind === 'atomic' && (!isAtomic || isArea || actualAppTypes.length > 0)) {
+      goalIssues.push(`${id}: expected only the subject-specific competency core type`)
+    } else if (expectedKind === 'area' && (!isArea || isAtomic || actualAppTypes.length > 0)) {
+      goalIssues.push(`${id}: expected only the curricular-area core type`)
+    } else if (expectedKind !== 'atomic' && expectedKind !== 'area') {
+      const expectedAppType = appTypeByExpectedKind.get(expectedKind)
+      if (isAtomic || isArea || !expectedAppType || actualAppTypes.length !== 1 || actualAppTypes[0] !== expectedAppType) {
+        goalIssues.push(`${id}: expected exactly the ${expectedKind} application goal type`)
+      }
+    }
+  })
+  expectedGraphKinds?.forEach((expectedGraphKind, id) => {
+    const resource = goalById.get(id)
+    if (!resource) return
+    const isAtomicGoal = resourceHasType(model, resource, T.atomicGoal)
+    const isClusterGoal = resourceHasType(model, resource, T.clusterGoal)
+    if (
+      (expectedGraphKind === 'atomic' && (!isAtomicGoal || isClusterGoal))
+      || (expectedGraphKind === 'cluster' && (!isClusterGoal || isAtomicGoal))
+    ) {
+      goalIssues.push(`${id}: expected exactly the ${expectedGraphKind} runtime graph-node type`)
+    }
+  })
+
+  const curricularGoals = [...new Set([
+    ...resourcesOfType(model, LP_SUBJECT_SPECIFIC_COMPETENCY),
+    ...resourcesOfType(model, LP_CURRICULAR_AREA),
+  ])]
+  curricularGoals.forEach((resource) => {
+    const id = skillpilotId(model, resource)
+    if (!resourceHasType(model, resource, T.learningGoal)) {
+      goalIssues.push(`${id}: curricular resource is not a SkillPilot learning goal`)
+    }
+    if (
+      resourceHasType(model, resource, LP_SUBJECT_SPECIFIC_COMPETENCY)
+      && resourceHasType(model, resource, LP_CURRICULAR_AREA)
+    ) {
+      goalIssues.push(`${id}: typed as both subject-specific competency and curricular area`)
+    }
+    if (!iris(model, resource, LP_HAS_SCHOOL_SUBJECT).includes(KIM_MATHEMATICS)) {
+      goalIssues.push(`${id}: missing mathematics subject assertion`)
+    }
+    ;(['de', 'en'] as const).forEach((language) => {
+      const title = localizedLit(model, resource, P.label, language)
+      if (title && coreText(model, resource, LP_HAS_TITLE, language) !== title) {
+        goalIssues.push(`${id}: core ${language} title does not match rdfs:label`)
+      }
+      const description = localizedLit(model, resource, P.description, language)
+      if (description && coreText(model, resource, LP_HAS_DESCRIPTION, language) !== description) {
+        goalIssues.push(`${id}: core ${language} description does not match dcterms:description`)
+      }
+    })
+    iris(model, resource, LP_HAS_TITLE).forEach((titleResource) => {
+      if (!iris(model, resource, LP_DESCRIBED_BY).includes(titleResource)) {
+        goalIssues.push(`${id}: named core title is not linked through lp:LP_0000024`)
+      }
+    })
+    const shortKey = lit(model, resource, P.shortKey)
+    if (shortKey && coreNumber(model, resource) !== shortKey) {
+      goalIssues.push(`${id}: core number does not match sp:shortKey`)
+    }
+    const level = lit(model, resource, P.level)
+    const requirementLevel = level ? FWU_REQUIREMENT_LEVELS.get(level) : undefined
+    if (requirementLevel && !iris(model, resource, LP_HAS_REQUIREMENT_LEVEL).includes(requirementLevel)) {
+      goalIssues.push(`${id}: missing FWU requirement-level assertion for level ${level}`)
+    }
+  })
+
+  ;[
+    T.runtimeClusterGoal,
+    T.unscopedCurricularGoal,
+    T.programStructureGoal,
+    T.practiceOrAssessmentGoal,
+    T.memorizationGoal,
+    T.orientationGoal,
+  ].flatMap((type) => resourcesOfType(model, type)).forEach((resource) => {
+    if (isCurricularGoal(model, resource)) {
+      goalIssues.push(`${skillpilotId(model, resource)}: runtime-only goal carries a curricular core type`)
+    }
+  })
+
+  const atomsWithNamedAreaParent = new Set<string>()
+  resourcesOfType(model, LP_CURRICULAR_AREA).forEach((source) => {
+    iris(model, source, P.containsGoal).filter((target) => isCurricularGoal(model, target)).forEach((target) => {
+      if (!iris(model, source, P.hasPart).includes(target)) {
+        goalIssues.push(`${skillpilotId(model, source)} -> ${skillpilotId(model, target)}: missing strict BFO has-part edge`)
+      }
+      if (resourceHasType(model, target, LP_SUBJECT_SPECIFIC_COMPETENCY)) {
+        atomsWithNamedAreaParent.add(target)
+      }
+    })
+  })
+  resourcesOfType(model, LP_SUBJECT_SPECIFIC_COMPETENCY).forEach((resource) => {
+    if (!atomsWithNamedAreaParent.has(resource)) {
+      goalIssues.push(`${skillpilotId(model, resource)}: competency specification has no named curricular-area parent`)
+    }
+  })
+  ;[...model.iris.entries()].forEach(([source, predicateMap]) => {
+    if (!resourceHasType(model, source, T.learningGoal)) {
+      return
+    }
+    ;(predicateMap.get(P.hasPart) ?? []).filter((target) => resourceHasType(model, target, T.learningGoal)).forEach((target) => {
+      if (!iris(model, source, P.containsGoal).includes(target)) {
+        goalIssues.push(`${skillpilotId(model, source)} -> ${skillpilotId(model, target)}: BFO edge is not an authored direct contains edge`)
+      }
+    })
+  })
+
+  resourcesOfType(model, LP_DIDACTIC_PREREQUISITE).forEach((reference) => {
+    const source = resourcesLinkingTo(model, reference, [P.hasReference])[0]
+    const target = iris(model, reference, P.refersTo)[0]
+    if (source && target && (!isCurricularGoal(model, source) || !isCurricularGoal(model, target))) {
+      goalIssues.push(`${skillpilotId(model, source)} -> ${skillpilotId(model, target)}: core prerequisite has a runtime-only endpoint`)
+    }
+  })
+  ;[...model.iris.entries()].forEach(([source, predicateMap]) => {
+    ;(predicateMap.get(P.didacticRequires) ?? []).forEach((target) => {
+      if (isCurricularGoal(model, source) && isCurricularGoal(model, target)) {
+        goalIssues.push(`${skillpilotId(model, source)} -> ${skillpilotId(model, target)}: curricular prerequisite uses the app fallback`)
+      }
+    })
+  })
+
+  resourcesOfType(model, T.competencyCatalogEntry).forEach((resource) => {
+    const id = skillpilotId(model, resource)
+    if (!resourceHasType(model, resource, LP_PROCESS_COMPETENCY_AREA)) {
+      competencyIssues.push(`${id}: missing process-competency-area core type`)
+    }
+    if (!iris(model, resource, LP_HAS_SCHOOL_SUBJECT).includes(KIM_MATHEMATICS)) {
+      competencyIssues.push(`${id}: missing mathematics subject assertion`)
+    }
+    if (coreNumber(model, resource) !== id.replace(/^PROCESS\./u, '')) {
+      competencyIssues.push(`${id}: core number does not match the curriculum code`)
+    }
+    const label = localizedLit(model, resource, P.label, 'de')
+    if (label && coreText(model, resource, LP_HAS_TITLE, 'de') !== label) {
+      competencyIssues.push(`${id}: core title does not match the catalog label`)
+    }
+  })
+  ;[...model.iris.entries()].forEach(([source, predicateMap]) => {
+    ;(predicateMap.get(P.competencyRef) ?? []).forEach((target) => {
+      if (isCurricularGoal(model, source)) {
+        competencyIssues.push(`${skillpilotId(model, source)} -> ${skillpilotId(model, target)}: curricular source uses the app competency fallback`)
+      }
+    })
+  })
+  referencesTargetingType(model, T.competencyCatalogEntry).forEach((reference) => {
+    const source = resourcesLinkingTo(model, reference, [P.hasReference])[0]
+    if (source && !isCurricularGoal(model, source)) {
+      competencyIssues.push(`${skillpilotId(model, source)}: competency reference source is not a curricular goal`)
+    }
+  })
+
+  resourcesOfType(model, T.programUnit).forEach((resource) => {
+    const id = skillpilotId(model, resource)
+    const expectedGrade = FWU_GRADES.get(id)
+    if (expectedGrade && !iris(model, resource, LP_HAS_GRADE).includes(expectedGrade)) {
+      programIssues.push(`${id}: missing grade assertion ${idFromResource(expectedGrade)}`)
+    }
+    const year = id.match(/^de-gym-math-j([0-9]+)$/u)?.[1]
+    const yearNumber = year ? Number(year) : null
+    const expectedStage = id === 'de-gym-math-sek1' || (yearNumber !== null && yearNumber <= 10)
+      ? FWU_STAGE_SEK_I
+      : (
+          id === 'de-gym-math-sek2'
+          || (yearNumber !== null && yearNumber > 10)
+          || /^de-gym-math-(?:e|q[1-4])$/u.test(id)
+        )
+          ? FWU_STAGE_SEK_II
+          : null
+    if (expectedStage && !iris(model, resource, LP_HAS_STAGE).includes(expectedStage)) {
+      programIssues.push(`${id}: missing school-stage assertion ${idFromResource(expectedStage)}`)
+    }
+    const parentId = lit(model, resource, P.parentUnitId)
+    if (parentId) {
+      const parent = resourcesOfType(model, T.programUnit)
+        .find((candidate) => skillpilotId(model, candidate) === parentId)
+      if (!parent || !iris(model, parent, LP_HAS_UNIT).includes(resource)) {
+        programIssues.push(`${id}: parent ${parentId} does not use the core has-unit relation`)
+      }
+    }
+  })
+
+  resourcesOfType(model, T.sourceCollection).forEach((resource) => {
+    const jurisdiction = lit(model, resource, P.jurisdiction)
+    const expectedState = jurisdiction ? FWU_STATE_BY_JURISDICTION.get(jurisdiction) : undefined
+    if (expectedState && !iris(model, resource, LP_OF_STATE).includes(expectedState)) {
+      sourceIssues.push(`${skillpilotId(model, resource)}: missing federal-state assertion for ${jurisdiction}`)
+    }
+  })
+
+  const usedProperties = new Set<string>()
+  model.iris.forEach((predicateMap) => predicateMap.forEach((_values, predicate) => usedProperties.add(predicate)))
+  model.literals.forEach((predicateMap) => predicateMap.forEach((_values, predicate) => usedProperties.add(predicate)))
+  usedProperties.forEach((property) => {
+    if (![...(model.types.get(property) ?? [])].some((type) => OWL_PROPERTY_TYPES.has(type))) {
+      owlSafetyIssues.push(`${property}: property kind is not declared in bundle.nt`)
+    }
+  })
+  model.types.forEach((types) => types.forEach((type) => {
+    if (type.startsWith(OWL) || resourceHasType(model, type, `${OWL}Class`)) {
+      return
+    }
+    owlSafetyIssues.push(`${type}: used class is not declared in bundle.nt`)
+  }))
+  model.literals.forEach((predicateMap, subject) => predicateMap.forEach((values, predicate) => values.forEach((value) => {
+    if (value.datatype === `${SP}json`) {
+      owlSafetyIssues.push(`${skillpilotId(model, subject)} ${predicate}: private sp:json datatype is forbidden`)
+    }
+    if (hasUnsafeRdfLiteralCharacters(value.value)) {
+      owlSafetyIssues.push(`${skillpilotId(model, subject)} ${predicate}: unsafe RDF/XML literal character`)
+    }
+  })))
+
+  return { goalIssues, competencyIssues, programIssues, sourceIssues, owlSafetyIssues }
+}
+
 const withString = (data: Record<string, JsonValue>, key: string, value: string | undefined) => {
   if (value !== undefined) data[key] = value
 }
@@ -716,7 +1421,35 @@ const withJson = (data: Record<string, JsonValue>, key: string, value: JsonValue
   if (value !== undefined) data[key] = value
 }
 
-const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
+const mergeGoalVisualizationLinks = (
+  serializedLinks: JsonValue | undefined,
+  records: GoalVisualizationRecord[],
+): JsonValue | undefined => {
+  if (records.length === 0 || !Array.isArray(serializedLinks)) {
+    return serializedLinks
+  }
+  const reconstructed = [...serializedLinks]
+  records.forEach((record) => {
+    if (record.order === null || !Number.isInteger(record.order) || record.order < 0) {
+      return
+    }
+    while (reconstructed.length <= record.order) {
+      reconstructed.push(null)
+    }
+    // Older bundles contain the complete visualization link in the compact JSON.
+    // New core-first bundles retain its array position as null and put the actual
+    // semantics on the reified LP reference. Do not append or duplicate old links.
+    if (reconstructed[record.order] === null) {
+      reconstructed[record.order] = visualizationLinkFromRecord(record)
+    }
+  })
+  return reconstructed
+}
+
+const reconstructLandscape = (
+  model: RdfModel,
+  goalVisualizations: GoalVisualizationRecord[],
+): ReconstructedLandscape => {
   const landscapeResource = resourcesOfType(model, T.learningLandscape)[0]
   if (!landscapeResource) {
     throw new Error('No sp:LearningLandscape resource found.')
@@ -735,16 +1468,17 @@ const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
   withString(reconstructed as Record<string, JsonValue>, 'region', lit(model, landscapeResource, P.region))
   withString(reconstructed as Record<string, JsonValue>, 'schoolType', lit(model, landscapeResource, P.schoolType))
   withString(reconstructed as Record<string, JsonValue>, 'subject', lit(model, landscapeResource, P.subject))
-  withString(reconstructed as Record<string, JsonValue>, 'title', lits(model, landscapeResource, P.title)[0])
-  withString(reconstructed as Record<string, JsonValue>, 'titleEn', lits(model, landscapeResource, P.title)[1])
-  withString(reconstructed as Record<string, JsonValue>, 'description', lits(model, landscapeResource, P.description)[0])
-  withString(reconstructed as Record<string, JsonValue>, 'descriptionEn', lits(model, landscapeResource, P.description)[1])
+  withString(reconstructed as Record<string, JsonValue>, 'title', localizedLit(model, landscapeResource, P.title, 'de'))
+  withString(reconstructed as Record<string, JsonValue>, 'titleEn', localizedLit(model, landscapeResource, P.title, 'en'))
+  withString(reconstructed as Record<string, JsonValue>, 'description', localizedLit(model, landscapeResource, P.description, 'de'))
+  withString(reconstructed as Record<string, JsonValue>, 'descriptionEn', localizedLit(model, landscapeResource, P.description, 'en'))
   withJson(reconstructed as Record<string, JsonValue>, 'filters', json(lit(model, landscapeResource, P.filtersJson)))
 
   reconstructed.competencyCatalog = orderedResources(model, resourcesOfType(model, T.competencyCatalogEntry)).map((resource) => {
     const entry: Record<string, JsonValue> = {}
     withString(entry, 'id', lit(model, resource, P.skillpilotId))
-    withString(entry, 'label', lit(model, resource, P.label))
+    withString(entry, 'label', coreText(model, resource, LP_HAS_TITLE, 'de')
+      ?? localizedLit(model, resource, P.label, 'de'))
     withString(entry, 'dimension', lit(model, resource, P.dimension))
     return entry
   })
@@ -775,11 +1509,15 @@ const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
   reconstructed.goals = orderedResources(model, resourcesOfType(model, T.learningGoal)).map((resource) => {
     const goal: Record<string, JsonValue> = {}
     withString(goal, 'id', lit(model, resource, P.skillpilotId))
-    withString(goal, 'shortKey', lit(model, resource, P.shortKey))
-    withString(goal, 'title', lits(model, resource, P.label)[0])
-    withString(goal, 'titleEn', lits(model, resource, P.label)[1])
-    withString(goal, 'description', lits(model, resource, P.description)[0])
-    withString(goal, 'descriptionEn', lits(model, resource, P.description)[1])
+    withString(goal, 'shortKey', coreNumber(model, resource) ?? lit(model, resource, P.shortKey))
+    withString(goal, 'title', coreText(model, resource, LP_HAS_TITLE, 'de')
+      ?? localizedLit(model, resource, P.label, 'de'))
+    withString(goal, 'titleEn', coreText(model, resource, LP_HAS_TITLE, 'en')
+      ?? localizedLit(model, resource, P.label, 'en'))
+    withString(goal, 'description', coreText(model, resource, LP_HAS_DESCRIPTION, 'de')
+      ?? localizedLit(model, resource, P.description, 'de'))
+    withString(goal, 'descriptionEn', coreText(model, resource, LP_HAS_DESCRIPTION, 'en')
+      ?? localizedLit(model, resource, P.description, 'en'))
     withString(goal, 'phase', lit(model, resource, P.phase))
     withString(goal, 'area', lit(model, resource, P.area))
     withString(goal, 'level', lit(model, resource, P.level))
@@ -792,14 +1530,23 @@ const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
     withBoolean(goal, 'semanticAtomic', bool(lit(model, resource, P.semanticAtomic)))
     withJson(goal, 'metadata', json(lit(model, resource, P.metadataJson)))
     withJson(goal, 'applicability', json(lit(model, resource, P.applicabilityJson)))
-    withJson(goal, 'resourceLinks', json(lit(model, resource, P.resourceLinksJson)))
+    withJson(goal, 'resourceLinks', mergeGoalVisualizationLinks(
+      json(lit(model, resource, P.resourceLinksJson)),
+      goalVisualizations.filter((record) => record.goalId === skillpilotId(model, resource)),
+    ))
     withJson(goal, 'extendedData', json(lit(model, resource, P.extendedDataJson)))
     withJson(goal, 'release', json(lit(model, resource, P.releaseJson)))
     withJson(goal, 'examData', json(lit(model, resource, P.examDataJson)))
     goal.tags = lits(model, resource, P.tag)
-    goal.dimensionTags = lits(model, resource, P.dimensionTag)
+    const structuredDimensionTags = json(lit(model, resource, P.dimensionTagsJson))
+    const legacyDimensionTags = lits(model, resource, P.dimensionTag)
+    if (structuredDimensionTags !== undefined) {
+      goal.dimensionTags = structuredDimensionTags
+    } else if (legacyDimensionTags.length > 0) {
+      goal.dimensionTags = legacyDimensionTags
+    }
     goal.examples = lits(model, resource, P.example)
-    goal.competencyRefs = iris(model, resource, P.competencyRef).map((competency) => skillpilotId(model, competency))
+    goal.competencyRefs = reconstructCompetencyRefs(model, resource)
     // sp:containsGoal preserves the authored direct edge. BFO has-part is
     // transitive in the FWU core, so inferred BFO descendants must not become
     // direct SkillPilot children after a reasoning roundtrip.
@@ -812,6 +1559,44 @@ const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
   })
 
   return reconstructed
+}
+
+const reconstructSourceGoal = (model: RdfModel, goal: string): Record<string, JsonValue> => {
+  const quarantined = json(lit(model, goal, P.quarantinedRecordJson))
+  const base = quarantined && typeof quarantined === 'object' && !Array.isArray(quarantined)
+    ? { ...quarantined }
+    : {}
+  const explicit: Record<string, JsonValue | undefined> = {
+    sourceGoalId: lit(model, goal, P.skillpilotId),
+    title: localizedLit(model, goal, P.label, 'de'),
+    description: localizedLit(model, goal, P.description, 'de'),
+    sourceText: lit(model, goal, P.sourceText),
+    sourceSpan: lit(model, goal, P.sourceSpan),
+    sourceRef: lit(model, goal, P.sourceRef),
+    sourceTextSha256: lit(model, goal, P.sourceTextSha256),
+    sourceDocumentKey: iris(model, goal, P.refersTo)
+      .map((document) => lit(model, document, P.sourceDocumentKey))
+      .find((key) => key !== undefined),
+    sourceDocumentUrl: lit(model, goal, P.sourceDocumentUrl),
+    sourceDocumentLandingUrl: lit(model, goal, P.sourceDocumentLandingUrl),
+    sourceDocumentTitle: localizedLit(model, goal, P.sourceDocumentTitle, 'de'),
+    topicCode: lit(model, goal, P.topicCode),
+    passageId: lit(model, goal, P.passageId),
+    granularity: lit(model, goal, P.granularity),
+    sourcePage: num(lit(model, goal, P.sourcePage)),
+    sourceLine: num(lit(model, goal, P.sourceLine)),
+    parentBulletText: lit(model, goal, P.parentBulletText),
+    passage: json(lit(model, goal, P.passageJson)),
+    phase: lit(model, goal, P.phase) ?? null,
+    courseLevel: lit(model, goal, P.courseLevel) ?? null,
+    category: lit(model, goal, P.category) ?? null,
+  }
+  Object.entries(explicit).forEach(([key, value]) => {
+    if (value !== undefined) {
+      base[key] = value
+    }
+  })
+  return base
 }
 
 const reconstructSourceGoalReferences = (model: RdfModel) => ({
@@ -832,28 +1617,8 @@ const reconstructSourceGoalReferences = (model: RdfModel) => ({
       role: lit(model, document, P.role),
       official: bool(lit(model, document, P.official)),
     })),
-    sourceGoals: orderedResources(model, iris(model, collection, P.hasSourceGoal)).map((goal) => ({
-      sourceGoalId: lit(model, goal, P.skillpilotId),
-      title: lit(model, goal, P.label),
-      description: lit(model, goal, P.description),
-      sourceText: lit(model, goal, P.sourceText),
-      sourceSpan: lit(model, goal, P.sourceSpan),
-      sourceRef: lit(model, goal, P.sourceRef),
-      sourceTextSha256: lit(model, goal, P.sourceTextSha256),
-      sourceDocumentUrl: lit(model, goal, P.sourceDocumentUrl),
-      sourceDocumentLandingUrl: lit(model, goal, P.sourceDocumentLandingUrl),
-      sourceDocumentTitle: lit(model, goal, P.sourceDocumentTitle),
-      topicCode: lit(model, goal, P.topicCode),
-      passageId: lit(model, goal, P.passageId),
-      granularity: lit(model, goal, P.granularity),
-      sourcePage: num(lit(model, goal, P.sourcePage)),
-      sourceLine: num(lit(model, goal, P.sourceLine)),
-      parentBulletText: lit(model, goal, P.parentBulletText),
-      passage: json(lit(model, goal, P.passageJson)),
-      phase: lit(model, goal, P.phase) ?? null,
-      courseLevel: lit(model, goal, P.courseLevel) ?? null,
-      category: lit(model, goal, P.category) ?? null,
-    })),
+    sourceGoals: orderedResources(model, iris(model, collection, P.hasSourceGoal))
+      .map((goal) => reconstructSourceGoal(model, goal)),
   })),
 })
 
@@ -964,9 +1729,10 @@ const reconstructViews = (model: RdfModel) => {
 
 const reconstructSemantic = (model: RdfModel): SemanticReconstruction => {
   const mappings = reconstructMappings(model)
+  const goalVisualizations = reconstructGoalVisualizations(model)
   return {
-    landscape: reconstructLandscape(model),
-    goalVisualizations: reconstructGoalVisualizations(model),
+    landscape: reconstructLandscape(model, goalVisualizations),
+    goalVisualizations,
     sourceGoalReferences: reconstructSourceGoalReferences(model) as JsonValue,
     cardDecks: reconstructCardDecks(model) as JsonValue[],
     mappingFiles: reconstructMappingFiles(model),
@@ -984,6 +1750,17 @@ const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPa
   .split(/\r?\n/u)
   .filter(Boolean)
 
+const listZipEntryMetadata = (zipPath: string) => execFileSync('zipinfo', ['-l', zipPath], {
+  encoding: 'utf8',
+  maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+  stdio: ['ignore', 'pipe', 'pipe'],
+})
+  .split(/\r?\n/u)
+  .flatMap((line) => {
+    const match = line.match(/^([bcdlps-][rwxStTs-]{9})\s+\S+\s+\S+\s+(\d+)\s+\S+\s+\d+\s+\S+\s+\S+\s+\S+\s+(.+)$/u)
+    return match ? [{ mode: match[1], uncompressedBytes: Number(match[2]), path: match[3] }] : []
+  })
+
 const readZipEntryBuffer = (zipPath: string, entryPath: string) => execFileSync('unzip', ['-p', zipPath, entryPath], {
   maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
   stdio: ['ignore', 'pipe', 'pipe'],
@@ -998,13 +1775,68 @@ const archiveRootFrom = (entries: string[]) => {
   return roots.size === 1 ? [...roots][0] : null
 }
 
-const isSafeArchiveRootSegment = (value: string) => (
-  value !== ''
-  && value !== '.'
-  && value !== '..'
-  && !value.includes('/')
-  && !value.includes('\\')
+const windowsReservedSegment = /^(?:aux|com[1-9]|con|lpt[1-9]|nul|prn)(?:\.|$)/iu
+const unsafeWindowsPathCharacter = /[<>:"|?*]/u
+const hasUnsafeWindowsPathCharacter = (segment: string) => (
+  unsafeWindowsPathCharacter.test(segment)
+  || [...segment].some((character) => {
+    const codePoint = character.codePointAt(0) ?? 0
+    return codePoint <= 0x1f || codePoint === 0x7f
+  })
 )
+const isSafePackagePathSegment = (segment: string) => (
+  segment !== ''
+  && segment !== '.'
+  && segment !== '..'
+  && !hasUnsafeWindowsPathCharacter(segment)
+  && !windowsReservedSegment.test(segment)
+  && !segment.endsWith('.')
+  && !segment.endsWith(' ')
+)
+const isSafeArchiveRootSegment = (value: string) => (
+  /^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(value)
+  && isSafePackagePathSegment(value)
+)
+
+type ZipEntryMetadata = { mode: string; path: string; uncompressedBytes: number }
+
+const assertSafeRegularZipEntries = (entries: string[], metadata: ZipEntryMetadata[]) => {
+  if (new Set(entries).size !== entries.length) {
+    throw new Error('ZIP contains duplicate entry names.')
+  }
+  if (
+    metadata.length !== entries.length
+    || metadata.some((entry, index) => entry.path !== entries[index])
+    || metadata.some((entry) => !entry.mode.startsWith('-'))
+  ) {
+    throw new Error('ZIP entries must all be regular files with unambiguous metadata.')
+  }
+  if (metadata.some((entry) => (
+    !Number.isSafeInteger(entry.uncompressedBytes)
+    || entry.uncompressedBytes < 0
+    || entry.uncompressedBytes > MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES
+  ))) {
+    throw new Error(`ZIP entry exceeds the ${MAX_ZIP_ENTRY_UNCOMPRESSED_BYTES}-byte extraction limit.`)
+  }
+  const totalUncompressedBytes = metadata.reduce((sum, entry) => sum + entry.uncompressedBytes, 0)
+  if (!Number.isSafeInteger(totalUncompressedBytes) || totalUncompressedBytes > MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES) {
+    throw new Error(`ZIP exceeds the ${MAX_ZIP_TOTAL_UNCOMPRESSED_BYTES}-byte total extraction limit.`)
+  }
+  if (entries.some((entry) => entry.startsWith('/') || entry.includes('\\') || !entry.split('/').every(isSafePackagePathSegment))) {
+    throw new Error('ZIP contains a non-portable or unsafe entry path.')
+  }
+  const portableKeys = entries.map((entry) => entry.normalize('NFC').toLowerCase())
+  if (new Set(portableKeys).size !== portableKeys.length) {
+    throw new Error('ZIP contains case-insensitive or Unicode-normalized path collisions.')
+  }
+  const portableKeySet = new Set(portableKeys)
+  if (portableKeys.some((portableKey) => {
+    const segments = portableKey.split('/')
+    return segments.slice(1, -1).some((_segment, index) => portableKeySet.has(segments.slice(0, index + 2).join('/')))
+  })) {
+    throw new Error('ZIP contains a file/child path-prefix collision.')
+  }
+}
 
 const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue> => {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -1013,9 +1845,276 @@ const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue
   return value
 }
 
+const optionalJsonObject = (value: JsonValue | undefined): Record<string, JsonValue> | null => (
+  value && typeof value === 'object' && !Array.isArray(value) ? value : null
+)
+
+type ExpectedGoalKind =
+  | 'area'
+  | 'atomic'
+  | 'memorization'
+  | 'orientation'
+  | 'practice-or-assessment'
+  | 'program-structure'
+  | 'runtime-cluster'
+  | 'unscoped-curricular-atomic'
+
+const expectedGoalKinds = (landscape: Record<string, JsonValue>) => {
+  const goals = Array.isArray(landscape.goals)
+    ? landscape.goals.map((goal) => jsonObject(goal, 'canonical goal'))
+    : []
+  const kinds = new Map<string, ExpectedGoalKind>()
+  goals.forEach((goal) => {
+    const id = typeof goal.id === 'string' ? goal.id : null
+    if (!id) return
+    const title = typeof goal.title === 'string' ? goal.title : ''
+    const goalType = typeof goal.type === 'string' ? goal.type : null
+    const nodeKind = typeof goal.nodeKind === 'string' ? goal.nodeKind : null
+    const tags = stringArray(goal.tags).map((tag) => tag.toLocaleLowerCase('de-DE'))
+    const contains = stringArray(goal.contains)
+    const hasTag = (tag: string) => tags.includes(tag)
+    const hasTagPrefix = (prefix: string) => tags.some((tag) => tag.startsWith(prefix))
+    const hasExamData = goal.examData !== undefined && goal.examData !== null
+    const kind: ExpectedGoalKind = nodeKind === 'memory' || hasTag('memorization') || hasTagPrefix('srs-deck:')
+      ? 'memorization'
+      : nodeKind === 'exam'
+        || hasExamData
+        || hasTag('practice')
+        || hasTag('assessment')
+        || /^(Übungen|Abiturprüfung|Sek-I-Abschlussaufgaben)\b/u.test(title)
+        ? 'practice-or-assessment'
+        : hasTag('root')
+          || title === 'Mathematik'
+          || /^Jahrgangsstufe \d+$/u.test(title)
+          || /^(Sekundarstufe [I]{1,3}|E-Phase|Qualifikationsphase)$/u.test(title)
+          ? 'program-structure'
+          : hasTag('motivation') || hasTag('orientation') || title.startsWith('Warum Mathematik?')
+            ? 'orientation'
+            : goalType === 'cluster' || contains.length > 0
+              ? 'area'
+              : 'atomic'
+    kinds.set(id, kind)
+  })
+
+  let changed = true
+  while (changed) {
+    changed = false
+    goals.forEach((goal) => {
+      const id = typeof goal.id === 'string' ? goal.id : null
+      const children = stringArray(goal.contains)
+      if (!id || children.length === 0 || kinds.get(id) !== 'area') return
+      if (children.every((childId) => !['area', 'atomic'].includes(kinds.get(childId) ?? ''))) {
+        kinds.set(id, 'runtime-cluster')
+        changed = true
+      }
+    })
+  }
+  const childrenOfAreas = new Set<string>()
+  goals.forEach((goal) => {
+    const id = typeof goal.id === 'string' ? goal.id : null
+    if (id && kinds.get(id) === 'area') {
+      stringArray(goal.contains).forEach((childId) => childrenOfAreas.add(childId))
+    }
+  })
+  kinds.forEach((kind, id) => {
+    if (kind === 'atomic' && !childrenOfAreas.has(id)) kinds.set(id, 'unscoped-curricular-atomic')
+  })
+  return kinds
+}
+
 const stringArray = (value: JsonValue | undefined) => Array.isArray(value)
   ? value.filter((item): item is string => typeof item === 'string')
   : []
+
+const expectedGoalGraphKinds = (landscape: Record<string, JsonValue>) => new Map<string, 'atomic' | 'cluster'>(
+  (Array.isArray(landscape.goals) ? landscape.goals : []).flatMap((goalValue) => {
+    const goal = jsonObject(goalValue, 'canonical goal')
+    return typeof goal.id === 'string'
+      ? [[goal.id, goal.type === 'cluster' || stringArray(goal.contains).length > 0 ? 'cluster' : 'atomic'] as const]
+      : []
+  }),
+)
+
+const validateCoreAxisProjection = (model: RdfModel, landscape: Record<string, JsonValue>) => {
+  const issues: string[] = []
+  const expectedRoles = new Set<string>()
+  const expectedProcessIds = new Set<string>()
+  const expectedGuidingIdeaIds = new Set<string>()
+  const expectedProcessTitles = new Map<string, string>()
+  const goalKinds = expectedGoalKinds(landscape)
+  const goals = Array.isArray(landscape.goals) ? landscape.goals.map((goal) => jsonObject(goal, 'canonical goal')) : []
+  const competencyCatalog = Array.isArray(landscape.competencyCatalog)
+    ? landscape.competencyCatalog.map((entry) => jsonObject(entry, 'competency catalog entry'))
+    : []
+  competencyCatalog.forEach((entry) => {
+    if (typeof entry.id === 'string') {
+      expectedProcessIds.add(entry.id)
+      if (typeof entry.label === 'string') expectedProcessTitles.set(entry.id, entry.label)
+    }
+  })
+  const roleKey = (goalId: string, role: string, axisId: string) => `${goalId}\u0000${role}\u0000${axisId}`
+
+  goals.forEach((goal) => {
+    if (typeof goal.id !== 'string' || !['area', 'atomic'].includes(goalKinds.get(goal.id) ?? '')) return
+    ;[...new Set([...stringArray(goal.kompetenzen), ...stringArray(goal.competencyRefs)])].forEach((competencyId) => {
+      const normalizedId = /^K[1-6](?:\.\d+)?$/u.test(competencyId) ? `PROCESS.${competencyId}` : competencyId
+      expectedRoles.add(roleKey(goal.id as string, REFERENCE_ROLE_COMPETENCY_REFS, normalizedId))
+    })
+    const dimensionTags = optionalJsonObject(goal.dimensionTags)
+    stringArray(dimensionTags?.processCompetencies).filter((code) => /^K[1-6](?:\.\d+)?$/u.test(code)).forEach((code) => {
+      const axisId = `PROCESS.${code}`
+      expectedProcessIds.add(axisId)
+      if (!expectedProcessTitles.has(axisId)) expectedProcessTitles.set(axisId, code)
+      expectedRoles.add(roleKey(goal.id as string, REFERENCE_ROLE_PROCESS_COMPETENCIES, axisId))
+    })
+    stringArray(dimensionTags?.guidingIdeas).filter((code) => /^L[1-5]$/u.test(code)).forEach((code) => {
+      const axisId = `GUIDING.${code}`
+      expectedGuidingIdeaIds.add(axisId)
+      expectedRoles.add(roleKey(goal.id as string, REFERENCE_ROLE_GUIDING_IDEAS, axisId))
+    })
+  })
+
+  const actualProcessPairs = resourcesOfType(model, LP_PROCESS_COMPETENCY_AREA)
+    .map((resource) => [skillpilotId(model, resource), resource] as const)
+  const actualGuidingPairs = resourcesOfType(model, LP_GUIDING_IDEA)
+    .map((resource) => [skillpilotId(model, resource), resource] as const)
+  const actualProcessResources = new Map(actualProcessPairs)
+  const actualGuidingResources = new Map(actualGuidingPairs)
+  if (actualProcessResources.size !== actualProcessPairs.length) issues.push('duplicate process-axis skillpilotId')
+  if (actualGuidingResources.size !== actualGuidingPairs.length) issues.push('duplicate guiding-idea skillpilotId')
+  ;[
+    ...[...expectedProcessIds].filter((id) => !actualProcessResources.has(id)).map((id) => `missing process-axis resource ${id}`),
+    ...[...actualProcessResources.keys()].filter((id) => !expectedProcessIds.has(id)).map((id) => `unexpected process-axis resource ${id}`),
+    ...[...expectedGuidingIdeaIds].filter((id) => !actualGuidingResources.has(id)).map((id) => `missing guiding-idea resource ${id}`),
+    ...[...actualGuidingResources.keys()].filter((id) => !expectedGuidingIdeaIds.has(id)).map((id) => `unexpected guiding-idea resource ${id}`),
+  ].forEach((issue) => issues.push(issue))
+  ;[...actualProcessResources, ...actualGuidingResources].forEach(([id, resource]) => {
+    const explicitIds = literalObjects(model, resource, P.skillpilotId)
+    if (explicitIds.length !== 1 || explicitIds[0].value !== id) {
+      issues.push(`${id}: axis resource must have exactly one explicit skillpilotId`)
+    }
+    const subjects = iris(model, resource, LP_HAS_SCHOOL_SUBJECT)
+    if (subjects.length !== 1 || subjects[0] !== KIM_MATHEMATICS) {
+      issues.push(`${id}: axis resource must have exactly the mathematics subject`)
+    }
+  })
+  actualProcessResources.forEach((resource, id) => {
+    const code = id.replace(/^PROCESS\./u, '')
+    const expectedTitle = expectedProcessTitles.get(id)
+    if (coreNumber(model, resource) !== code || iris(model, resource, LP_HAS_NUMBER).length !== 1) {
+      issues.push(`${id}: process axis must have exactly the Core number ${code}`)
+    }
+    if (
+      !expectedTitle
+      || coreText(model, resource, LP_HAS_TITLE, 'de') !== expectedTitle
+      || localizedLit(model, resource, P.label, 'de') !== expectedTitle
+      || iris(model, resource, LP_HAS_TITLE).length !== 1
+    ) {
+      issues.push(`${id}: process axis title/label does not match ${String(expectedTitle)}`)
+    }
+  })
+  actualGuidingResources.forEach((resource, id) => {
+    const code = id.replace(/^GUIDING\./u, '')
+    const expectedTitle = `Leitidee ${code}`
+    if (coreNumber(model, resource) !== code || iris(model, resource, LP_HAS_NUMBER).length !== 1) {
+      issues.push(`${id}: guiding idea must have exactly the Core number ${code}`)
+    }
+    if (
+      coreText(model, resource, LP_HAS_TITLE, 'de') !== expectedTitle
+      || localizedLit(model, resource, P.label, 'de') !== expectedTitle
+      || iris(model, resource, LP_HAS_TITLE).length !== 1
+    ) {
+      issues.push(`${id}: guiding-idea title/label does not match ${expectedTitle}`)
+    }
+  })
+  const expectedHierarchy = new Set([...expectedProcessIds].flatMap((id) => {
+    const childCode = id.match(/^PROCESS\.(K[1-6])\./u)
+    return childCode ? [`PROCESS.${childCode[1]}\u0000${id}`] : []
+  }))
+  const processIdByResource = new Map([...actualProcessResources].map(([id, resource]) => [resource, id]))
+  const actualHierarchy = new Set<string>()
+  actualProcessResources.forEach((source, sourceId) => {
+    iris(model, source, P.hasPart).forEach((target) => {
+      const targetId = processIdByResource.get(target)
+      if (targetId) actualHierarchy.add(`${sourceId}\u0000${targetId}`)
+      else issues.push(`${sourceId}: unexpected BFO axis child ${skillpilotId(model, target)}`)
+    })
+  })
+  actualGuidingResources.forEach((source, sourceId) => {
+    iris(model, source, P.hasPart).forEach((target) => {
+      issues.push(`${sourceId}: unexpected BFO axis child ${skillpilotId(model, target)}`)
+    })
+  })
+  ;[...actualProcessResources, ...actualGuidingResources].forEach(([id, resource]) => {
+    iris(model, resource, P.partOf).forEach((target) => {
+      issues.push(`${id}: unexpected direct BFO part-of assertion to ${skillpilotId(model, target)}`)
+    })
+  })
+  ;[
+    ...[...expectedHierarchy].filter((key) => !actualHierarchy.has(key)).map((key) => `missing process hierarchy ${key.replace('\u0000', ' -> ')}`),
+    ...[...actualHierarchy].filter((key) => !expectedHierarchy.has(key)).map((key) => `unexpected process hierarchy ${key.replace('\u0000', ' -> ')}`),
+  ].forEach((issue) => issues.push(issue))
+
+  const axisResources = new Set([...actualProcessResources.values(), ...actualGuidingResources.values()])
+  model.iris.forEach((predicateMap, reference) => {
+    if (!(predicateMap.get(P.refersTo) ?? []).some((target) => axisResources.has(target))) return
+    if (lits(model, reference, P.referenceRole).length === 0) {
+      issues.push(`${idFromResource(reference)}: Core axis reference is missing a reconstruction role`)
+    }
+  })
+
+  const actualRoleReferences = new Map<string, Set<string>>()
+  model.literals.forEach((predicateMap, reference) => {
+    const roles = (predicateMap.get(P.referenceRole) ?? []).map((value) => value.value)
+    if (roles.length === 0) return
+    if (new Set(roles).size !== roles.length) issues.push(`${idFromResource(reference)}: duplicate reconstruction role literal`)
+    const sources = resourcesLinkingTo(model, reference, [P.hasReference])
+    const targets = iris(model, reference, P.refersTo)
+    if (!resourceHasType(model, reference, LP_REFERENCE) || sources.length !== 1 || targets.length !== 1) {
+      issues.push(`${idFromResource(reference)}: axis reference must have one Core source and target`)
+      return
+    }
+    const goalId = skillpilotId(model, sources[0])
+    const axisId = skillpilotId(model, targets[0])
+    if (!resourceHasType(model, sources[0], T.learningGoal) || !isCurricularGoal(model, sources[0])) {
+      issues.push(`${goalId} -> ${axisId}: axis source is not a curricular learning goal`)
+    }
+    roles.forEach((role) => {
+      if (![REFERENCE_ROLE_COMPETENCY_REFS, REFERENCE_ROLE_PROCESS_COMPETENCIES, REFERENCE_ROLE_GUIDING_IDEAS].includes(role)) {
+        issues.push(`${goalId} -> ${axisId}: unsupported reference role ${role}`)
+        return
+      }
+      if (role === REFERENCE_ROLE_PROCESS_COMPETENCIES && !resourceHasType(model, targets[0], LP_PROCESS_COMPETENCY_AREA)) {
+        issues.push(`${goalId} -> ${axisId}: process role target has the wrong Core type`)
+      }
+      if (role === REFERENCE_ROLE_GUIDING_IDEAS && !resourceHasType(model, targets[0], LP_GUIDING_IDEA)) {
+        issues.push(`${goalId} -> ${axisId}: guiding-idea role target has the wrong Core type`)
+      }
+      if (role === REFERENCE_ROLE_COMPETENCY_REFS && !resourceHasType(model, targets[0], T.competencyCatalogEntry)) {
+        issues.push(`${goalId} -> ${axisId}: authored competency role target is not a catalog entry`)
+      }
+      const key = roleKey(goalId, role, axisId)
+      const references = actualRoleReferences.get(key) ?? new Set<string>()
+      references.add(reference)
+      actualRoleReferences.set(key, references)
+    })
+  })
+  actualRoleReferences.forEach((references, key) => {
+    if (references.size !== 1) issues.push(`axis role is encoded by ${references.size} references: ${key.replaceAll('\u0000', ' | ')}`)
+  })
+  const actualRoles = new Set(actualRoleReferences.keys())
+  ;[
+    ...[...expectedRoles].filter((key) => !actualRoles.has(key)).map((key) => `missing axis role ${key.replaceAll('\u0000', ' | ')}`),
+    ...[...actualRoles].filter((key) => !expectedRoles.has(key)).map((key) => `unexpected axis role ${key.replaceAll('\u0000', ' | ')}`),
+  ].forEach((issue) => issues.push(issue))
+
+  return {
+    issues,
+    processEntries: actualProcessResources.size,
+    guidingIdeaEntries: actualGuidingResources.size,
+    referenceRoles: actualRoles.size,
+  }
+}
 
 const packageEntryPath = (archiveRoot: string, relativePath: string) => `${archiveRoot}/${relativePath}`
 
@@ -1062,7 +2161,7 @@ const stableValue = (value: JsonValue | undefined): JsonValue => {
     return Object.fromEntries(
       Object.entries(value)
         .filter(([, entryValue]) => entryValue !== undefined && entryValue !== null)
-        .sort(([left], [right]) => left.localeCompare(right))
+        .sort(([left], [right]) => compareCodeUnits(left, right))
         .map(([key, entryValue]) => [key, stableValue(entryValue)]),
     )
   }
@@ -1073,9 +2172,9 @@ const normalize = (value: JsonValue | undefined) => JSON.stringify(stableValue(v
 
 const asMap = <TValue>(items: TValue[], key: (item: TValue) => string) => new Map(items.map((item) => [key(item), item]))
 
-const normalizeRecordSet = (items: JsonValue[]) => JSON.stringify(items.map((item) => normalize(item)).sort((left, right) => left.localeCompare(right)))
+const normalizeRecordSet = (items: JsonValue[]) => JSON.stringify(items.map((item) => normalize(item)).sort(compareCodeUnits))
 
-const normalizedStringArray = (value: JsonValue | undefined) => stringArray(value).sort((left, right) => left.localeCompare(right))
+const normalizedStringArray = (value: JsonValue | undefined) => stringArray(value).sort(compareCodeUnits)
 
 const compareJsonField = (
   issues: string[],
@@ -1104,6 +2203,12 @@ const check = (checks: CheckResult[], id: string, passed: boolean, details: stri
 }
 
 const sha256 = (content: Buffer) => createHash('sha256').update(content).digest('hex')
+
+const sha256File = (filePath: string) => execFileSync('sha256sum', [filePath], {
+  encoding: 'utf8',
+  stdio: ['ignore', 'pipe', 'pipe'],
+  maxBuffer: 1024 * 1024,
+}).trim().split(/\s+/u)[0]
 
 const visualizationKey = (goalId: JsonValue | null | undefined, order: JsonValue | null | undefined) => `${String(goalId)}#${String(order)}`
 
@@ -1151,7 +2256,7 @@ const resolveSafeRelativePath = (baseDir: string, packagePath: string) => {
     packagePath.length === 0
     || packagePath.startsWith('/')
     || packagePath.includes('\\')
-    || packagePath.split('/').includes('..')
+    || !packagePath.split('/').every(isSafePackagePathSegment)
   ) {
     return null
   }
@@ -1162,18 +2267,171 @@ const resolveSafeRelativePath = (baseDir: string, packagePath: string) => {
     : null
 }
 
+const bulkExtractZipEntries = (zipPath: string, entryPaths: string[], outputRoot: string) => {
+  const uniquePaths = [...new Set(entryPaths)].sort(compareCodeUnits)
+  if (uniquePaths.some((entryPath) => (
+    entryPath.startsWith('/')
+    || entryPath.includes('\\')
+    || !entryPath.split('/').every(isSafePackagePathSegment)
+  ))) {
+    throw new Error('Refusing to bulk-extract an unsafe ZIP entry path.')
+  }
+  rmSync(outputRoot, { recursive: true, force: true })
+  mkdirSync(outputRoot, { recursive: true })
+  if (uniquePaths.length > 0) {
+    chunkArgumentsByBytes(uniquePaths.map((entryPath) => entryPath.replaceAll('[', '[[]'))).forEach((literalZipPatterns) => {
+      execFileSync('unzip', ['-qq', '-o', zipPath, ...literalZipPatterns, '-d', outputRoot], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+        maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
+      })
+    })
+  }
+}
+
+const writeIndependentFile = (target: string, content: Buffer) => {
+  mkdirSync(dirname(target), { recursive: true })
+  rmSync(target, { force: true })
+  writeFileSync(target, content)
+}
+
 const validateSemanticReconstruction = (params: {
   zipPath: string
   rdfPath: string
   outDir: string
+  model: RdfModel
   reconstruction: SemanticReconstruction
+  initialRdfSha256: string
+  initialZipSha256: string
 }) => {
   const checks: CheckResult[] = []
+  const boundInputs = new Map<string, BoundInputArtifact>()
+  const trackBoundInput = (label: string, path: string, digest = sha256File(path)) => {
+    boundInputs.set(label, { path: repoRelative(path), sha256: digest })
+    return digest
+  }
+  const comparisonZipSha256 = trackBoundInput('comparisonZip', params.zipPath, params.initialZipSha256)
+  trackBoundInput('rdf', params.rdfPath, params.initialRdfSha256)
   const entries = listZipEntries(params.zipPath)
+  const zipEntryMetadata = listZipEntryMetadata(params.zipPath)
+  assertSafeRegularZipEntries(entries, zipEntryMetadata)
+  const zipMetadataByPath = new Map(zipEntryMetadata.map((entry) => [entry.path, entry]))
   const archiveRoot = archiveRootFrom(entries)
   if (!archiveRoot || !isSafeArchiveRootSegment(archiveRoot)) {
     throw new Error('ZIP does not contain exactly one archive root.')
   }
+
+  const bindingIssues: string[] = []
+  const slimManifestPath = resolve(dirname(params.rdfPath), 'manifest.json')
+  let slimManifest: Record<string, JsonValue> | null = null
+  let boundOntology: { ontologyIri: string | null; commit: string | null; corePath: string | null } | null = null
+  if (existsSync(slimManifestPath)) {
+    if (!lstatSync(slimManifestPath).isFile()) throw new Error(`Slim manifest is not a regular file: ${repoRelative(slimManifestPath)}`)
+    const slimManifestBytes = readFileSync(slimManifestPath)
+    trackBoundInput('manifest', slimManifestPath, sha256(slimManifestBytes))
+    slimManifest = jsonObject(JSON.parse(slimManifestBytes.toString('utf8')) as JsonValue, 'slim manifest')
+    const fwuOntology = jsonObject(slimManifest.fwuOntology, 'slim manifest fwuOntology')
+    const manifestCommit = typeof fwuOntology.commit === 'string' ? fwuOntology.commit : null
+    const manifestCorePath = typeof fwuOntology.corePath === 'string' ? fwuOntology.corePath : null
+    boundOntology = {
+      ontologyIri: typeof fwuOntology.ontologyIri === 'string' ? fwuOntology.ontologyIri : null,
+      commit: manifestCommit,
+      corePath: manifestCorePath,
+    }
+    if (!manifestCommit || !/^[a-f0-9]{40}(?:[a-f0-9]{24})?$/u.test(manifestCommit)) {
+      bindingIssues.push('manifest does not contain a valid FWU ontology commit hash')
+    }
+    const absoluteManifestCorePath = manifestCorePath ? resolve(repoRoot, manifestCorePath) : null
+    if (
+      !manifestCorePath
+      || manifestCorePath !== manifestCorePath.trim()
+      || manifestCorePath.includes('\\')
+      || !absoluteManifestCorePath
+      || !isInsideRepo(absoluteManifestCorePath)
+      || repoRelative(absoluteManifestCorePath) !== manifestCorePath
+    ) {
+      bindingIssues.push('manifest does not contain a canonical repository-relative FWU Core source path')
+    }
+    const rdfFiles = Array.isArray(slimManifest.files)
+      ? slimManifest.files.map((file) => jsonObject(file, 'slim manifest RDF file'))
+      : []
+    const bundleRecord = rdfFiles.find((file) => file.name === 'bundle.nt')
+    const slimDir = dirname(params.rdfPath)
+    const checkArtifact = (
+      label: string,
+      recordedPath: JsonValue | undefined,
+      recordedSha: JsonValue | undefined,
+      expectedPath: string,
+    ) => {
+      if (typeof recordedPath !== 'string' || typeof recordedSha !== 'string' || !/^[a-f0-9]{64}$/u.test(recordedSha)) {
+        bindingIssues.push(`${label}: missing path or SHA-256`)
+        return
+      }
+      const absolutePath = resolve(repoRoot, recordedPath)
+      if (absolutePath !== resolve(expectedPath)) {
+        bindingIssues.push(`${label}: recorded path does not identify the expected co-located artifact`)
+        return
+      }
+      if (!isInsideRepo(absolutePath) || !existsSync(absolutePath) || !lstatSync(absolutePath).isFile()) {
+        bindingIssues.push(`${label}: recorded artifact is missing or unsafe`)
+        return
+      }
+      const actualSha = sha256File(absolutePath)
+      trackBoundInput(label, absolutePath, actualSha)
+      if (actualSha !== recordedSha) bindingIssues.push(`${label}: ${actualSha} != ${recordedSha}`)
+    }
+    const expectedRdfNames = ['declarations.nt', 'landscape.nt', 'views.nt', 'mappings.nt', 'sources.nt', 'cards.nt', 'assets.nt', 'bundle.nt']
+    const rdfNames = rdfFiles.map((file) => file.name).filter((name): name is string => typeof name === 'string')
+    if (new Set(rdfNames).size !== rdfNames.length || normalize(rdfNames.sort(compareCodeUnits) as JsonValue) !== normalize([...expectedRdfNames].sort(compareCodeUnits) as JsonValue)) {
+      bindingIssues.push('manifest RDF file set is duplicate, incomplete, or unexpected')
+    }
+    rdfFiles.forEach((file) => {
+      if (typeof file.name !== 'string') {
+        bindingIssues.push('manifest RDF file is missing its name')
+        return
+      }
+      checkArtifact(`RDF ${file.name}`, file.path, file.sha256, resolve(slimDir, file.name))
+    })
+    checkArtifact('bundle input', bundleRecord?.path, bundleRecord?.sha256, params.rdfPath)
+    checkArtifact('profile', slimManifest.profile, fwuOntology.profileSha256, resolve(slimDir, 'skillpilot-mem-fwu-profile.ttl'))
+    checkArtifact('catalog', fwuOntology.catalogPath, fwuOntology.catalogSha256, resolve(slimDir, 'catalog-v001.xml'))
+    checkArtifact('bound core', fwuOntology.bundledCorePath, fwuOntology.bundledCoreSha256, resolve(slimDir, 'ontology/lehrplan-core.owl'))
+    if (typeof slimManifest.inputZip !== 'string' || resolve(repoRoot, slimManifest.inputZip) !== resolve(params.zipPath)) {
+      bindingIssues.push('manifest inputZip path does not identify the comparison ZIP')
+    }
+    if (typeof slimManifest.bundle !== 'string' || resolve(repoRoot, slimManifest.bundle) !== resolve(params.rdfPath)) {
+      bindingIssues.push('manifest bundle path does not identify the selected RDF input')
+    }
+    if (slimManifest.archiveRoot !== archiveRoot) bindingIssues.push('manifest archiveRoot does not match the ZIP')
+    if (slimManifest.inputZipSha256 !== comparisonZipSha256) bindingIssues.push('manifest input ZIP SHA-256 does not match')
+    if (fwuOntology.ontologyIri !== LP_CORE_ONTOLOGY || fwuOntology.profileImport !== LP_CORE_ONTOLOGY) {
+      bindingIssues.push('manifest does not bind the canonical FWU Core IRI')
+    }
+    const packageResources = resourcesOfType(params.model, T.skillPilotPackage)
+    if (packageResources.length !== 1) {
+      bindingIssues.push(`expected one package resource, found ${packageResources.length}`)
+    } else {
+      const packageResource = packageResources[0]
+      if (!iris(params.model, packageResource, P.fwuOntologyIri).includes(LP_CORE_ONTOLOGY)) {
+        bindingIssues.push('RDF package does not reference the canonical FWU Core IRI')
+      }
+      const rdfCommit = lit(params.model, packageResource, P.fwuOntologyCommit)
+      if (!rdfCommit || rdfCommit !== manifestCommit) {
+        bindingIssues.push('RDF/package manifest FWU commit mismatch')
+      }
+      const rdfCorePath = lit(params.model, packageResource, P.fwuOntologyCorePath)
+      if (!rdfCorePath || rdfCorePath !== manifestCorePath) {
+        bindingIssues.push('RDF/package manifest FWU Core path mismatch')
+      }
+    }
+  } else if (isSelfContainedCoreFirstBundle(params.model) || params.model.hasReferenceRoles) {
+    bindingIssues.push('current role-based bundle is missing slim/manifest.json')
+  }
+  check(
+    checks,
+    'semantic-slim-manifest-and-core-binding',
+    bindingIssues.length === 0,
+    bindingIssues.slice(0, 10).join(' | ') || (existsSync(slimManifestPath) ? 'manifest paths, hashes, Core IRI, and commit are bound' : 'legacy bundle without a slim manifest'),
+  )
 
   const canonicalOriginal = jsonObject(readZipJson(params.zipPath, canonicalLandscapeEntry(entries, archiveRoot)), 'canonical landscape')
   const reconstructedLandscape = params.reconstruction.landscape as unknown as Record<string, JsonValue>
@@ -1247,6 +2505,8 @@ const validateSemanticReconstruction = (params: {
       'type',
       'nodeKind',
       'applicability',
+      'metadata',
+      'dimensionTags',
       'resourceLinks',
       'extendedData',
       'release',
@@ -1254,13 +2514,76 @@ const validateSemanticReconstruction = (params: {
     ].forEach((field) => {
       compareJsonField(issues, `${String(goal.id)}.${field}`, goal[field], reconstructed[field])
     })
-    ;['tags', 'dimensionTags', 'examples', 'competencyRefs', 'contains', 'requires'].forEach((field) => {
+    ;['tags', 'examples', 'competencyRefs', 'contains', 'requires'].forEach((field) => {
       compareStringSetField(issues, `${String(goal.id)}.${field}`, goal[field], reconstructed[field])
     })
     return issues
   })
   check(checks, 'semantic-goals-count-and-ids', missingGoals.length === 0 && originalGoals.length === reconstructedGoals.length, `${reconstructedGoals.length}/${originalGoals.length} goal(s); missing ${missingGoals.length}`)
   check(checks, 'semantic-goal-fields-match', changedGoalFields.length === 0, changedGoalFields.slice(0, 10).join(', ') || 'ok')
+
+  const referenceStructure = validateReferenceStructure(params.model)
+  const coreFirstStructure = validateCoreFirstStructure(
+    params.model,
+    expectedGoalKinds(canonicalOriginal),
+    expectedGoalGraphKinds(canonicalOriginal),
+  )
+  const coreAxisProjection = validateCoreAxisProjection(params.model, canonicalOriginal)
+  check(
+    checks,
+    'semantic-core-prerequisite-reference-structure',
+    referenceStructure.prerequisiteIssues.length === 0,
+    referenceStructure.prerequisiteIssues.slice(0, 10).join(' | ') || 'all prerequisite relations are structurally valid',
+  )
+  check(
+    checks,
+    'semantic-core-competency-reference-structure',
+    referenceStructure.competencyIssues.length === 0,
+    referenceStructure.competencyIssues.slice(0, 10).join(' | ') || 'all competency relations are structurally valid',
+  )
+  check(
+    checks,
+    'semantic-goal-visualization-reference-structure',
+    referenceStructure.visualizationIssues.length === 0,
+    referenceStructure.visualizationIssues.slice(0, 10).join(' | ') || 'all visualization relations are structurally valid',
+  )
+  check(
+    checks,
+    'semantic-core-goal-modeling',
+    coreFirstStructure.goalIssues.length === 0,
+    coreFirstStructure.goalIssues.slice(0, 10).join(' | ') || 'curricular goal types, subjects, texts, and BFO edges are valid',
+  )
+  check(
+    checks,
+    'semantic-core-competency-catalog',
+    coreFirstStructure.competencyIssues.length === 0,
+    coreFirstStructure.competencyIssues.slice(0, 10).join(' | ') || 'process competency catalog uses the FWU core',
+  )
+  check(
+    checks,
+    'semantic-core-dimension-axis-projection',
+    coreAxisProjection.issues.length === 0,
+    coreAxisProjection.issues.slice(0, 10).join(' | ')
+      || `${coreAxisProjection.processEntries} process axes, ${coreAxisProjection.guidingIdeaEntries} guiding ideas, ${coreAxisProjection.referenceRoles} exact reference role(s)`,
+  )
+  check(
+    checks,
+    'semantic-core-program-metadata',
+    coreFirstStructure.programIssues.length === 0,
+    coreFirstStructure.programIssues.slice(0, 10).join(' | ') || 'program grades, stages, and unit hierarchy use the FWU core',
+  )
+  check(
+    checks,
+    'semantic-core-source-jurisdictions',
+    coreFirstStructure.sourceIssues.length === 0,
+    coreFirstStructure.sourceIssues.slice(0, 10).join(' | ') || 'source collections use FWU federal-state individuals',
+  )
+  check(
+    checks,
+    'semantic-owl-safe-literals-and-declarations',
+    coreFirstStructure.owlSafetyIssues.length === 0,
+    coreFirstStructure.owlSafetyIssues.slice(0, 10).join(' | ') || 'all RDF terms are declared and literals are OWL/XML safe',
+  )
 
   const canonicalVisualizations = originalGoals.flatMap((goal) => {
     const resourceLinks = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
@@ -1362,81 +2685,228 @@ const validateSemanticReconstruction = (params: {
       || `${visualizationIndexAssets.length}/${rdfVisualizations.length} indexed visualization asset(s)`,
   )
 
+  const sidecarRoot = dirname(params.rdfPath)
+  const slimManifestAssetIssues: string[] = []
+  const slimManifestAssets = slimManifest && Array.isArray(slimManifest.assets)
+    ? slimManifest.assets.map((asset) => jsonObject(asset, 'slim manifest visualization asset'))
+    : []
+  if (slimManifest && !Array.isArray(slimManifest.assets)) {
+    slimManifestAssetIssues.push('slim manifest does not contain an assets array')
+  }
+  const expectedSlimManifestAssets = rdfVisualizations.map((record) => {
+    const sidecarPath = typeof record.packagePath === 'string'
+      ? resolveSafeRelativePath(sidecarRoot, record.packagePath)
+      : null
+    return stableValue({
+      goalId: record.goalId,
+      order: record.order,
+      packagePath: record.packagePath,
+      zipPath: record.zipPath,
+      sidecarPath: sidecarPath ? repoRelative(sidecarPath) : null,
+      mediaType: record.mediaType,
+      bytes: record.bytes,
+      sha256: record.sha256,
+    })
+  })
+  const slimManifestAssetKeys = slimManifestAssets.map((asset) => visualizationKey(asset.goalId, asset.order))
+  const slimManifestAssetPaths = slimManifestAssets
+    .map((asset) => asset.packagePath)
+    .filter((path): path is string => typeof path === 'string')
+  const duplicateSlimManifestAssetKeys = slimManifestAssetKeys
+    .filter((key, index) => slimManifestAssetKeys.indexOf(key) !== index)
+  const duplicateSlimManifestAssetPaths = slimManifestAssetPaths
+    .filter((path, index) => slimManifestAssetPaths.indexOf(path) !== index)
+  if (slimManifest && normalizeRecordSet(slimManifestAssets) !== normalizeRecordSet(expectedSlimManifestAssets)) {
+    slimManifestAssetIssues.push('slim manifest assets do not exactly match the RDF visualization sidecars')
+  }
+  check(
+    checks,
+    'semantic-slim-manifest-assets-match',
+    slimManifestAssetIssues.length === 0
+      && duplicateSlimManifestAssetKeys.length === 0
+      && duplicateSlimManifestAssetPaths.length === 0,
+    [
+      ...duplicateSlimManifestAssetKeys.map((key) => `duplicate manifest asset ${key}`),
+      ...duplicateSlimManifestAssetPaths.map((path) => `duplicate manifest asset path ${path}`),
+      ...slimManifestAssetIssues,
+    ].slice(0, 10).join(' | ')
+      || (slimManifest ? `${slimManifestAssets.length}/${rdfVisualizations.length} manifest sidecar record(s)` : 'legacy bundle without a slim manifest'),
+  )
+
   const sidecarIssues: string[] = []
   const originalByteIssues: string[] = []
   const copyIssues: string[] = []
+  const verifiedSidecarStates: Array<{
+    key: string
+    path: string
+    dev: number
+    ino: number
+    size: number
+    mtimeMs: number
+    ctimeMs: number
+  }> = []
   let sidecarsCopied = 0
-  const sidecarRoot = dirname(params.rdfPath)
   const packageAssetsRoot = resolve(params.outDir, 'package-assets')
   rmSync(packageAssetsRoot, { recursive: true, force: true })
   const zipEntrySet = new Set(entries)
-  rdfVisualizations.forEach((record) => {
-    const key = visualizationKey(record.goalId, record.order)
-    const packagePath = record.packagePath
-    if (!packagePath) {
-      sidecarIssues.push(`${key}: missing packagePath`)
-      return
+  const originalExtractRoot = resolve(params.outDir, '.original-goal-visualization-assets')
+  const extractableZipPaths = rdfVisualizations.flatMap((record) => {
+    if (!record.packagePath || !resolveSafeRelativePath(packageAssetsRoot, record.packagePath)) return []
+    const expectedZipPath = packageEntryPath(archiveRoot, record.packagePath)
+    const metadata = zipMetadataByPath.get(expectedZipPath)
+    if (!metadata || metadata.uncompressedBytes !== record.bytes) {
+      originalByteIssues.push(`${visualizationKey(record.goalId, record.order)}: ZIP metadata byteLength does not match RDF`)
+      return []
     }
-    const expectedZipPath = packageEntryPath(archiveRoot, packagePath)
-    if (record.zipPath !== expectedZipPath) {
-      sidecarIssues.push(`${key}: zipPath ${String(record.zipPath)} != ${expectedZipPath}`)
+    if (metadata.uncompressedBytes > MAX_GOAL_VISUALIZATION_BYTES) {
+      originalByteIssues.push(`${visualizationKey(record.goalId, record.order)}: visualization exceeds the extraction size limit`)
+      return []
     }
+    return zipEntrySet.has(expectedZipPath) ? [expectedZipPath] : []
+  })
+  const totalExtractBytes = [...new Set(extractableZipPaths)]
+    .reduce((sum, zipPath) => sum + (zipMetadataByPath.get(zipPath)?.uncompressedBytes ?? 0), 0)
+  if (totalExtractBytes > MAX_GOAL_VISUALIZATION_TOTAL_BYTES) {
+    throw new Error(`Goal visualization extraction would exceed ${MAX_GOAL_VISUALIZATION_TOTAL_BYTES} bytes.`)
+  }
+  bulkExtractZipEntries(params.zipPath, extractableZipPaths, originalExtractRoot)
+  try {
+    rdfVisualizations.forEach((record) => {
+      const key = visualizationKey(record.goalId, record.order)
+      const packagePath = record.packagePath
+      if (!packagePath) {
+        sidecarIssues.push(`${key}: missing packagePath`)
+        return
+      }
+      const expectedZipPath = packageEntryPath(archiveRoot, packagePath)
+      if (record.zipPath !== expectedZipPath) {
+        sidecarIssues.push(`${key}: zipPath ${String(record.zipPath)} != ${expectedZipPath}`)
+      }
 
-    const sidecarPath = resolveSafeRelativePath(sidecarRoot, packagePath)
-    const copyPath = resolveSafeRelativePath(packageAssetsRoot, packagePath)
-    if (!sidecarPath || !copyPath) {
-      sidecarIssues.push(`${key}: unsafe packagePath ${packagePath}`)
-      return
-    }
-    if (!existsSync(sidecarPath)) {
-      sidecarIssues.push(`${key}: missing sidecar ${toPosixPath(relative(repoRoot, sidecarPath))}`)
-      return
-    }
+      const sidecarPath = resolveSafeRelativePath(sidecarRoot, packagePath)
+      const copyPath = resolveSafeRelativePath(packageAssetsRoot, packagePath)
+      const originalPath = resolveSafeRelativePath(originalExtractRoot, expectedZipPath)
+      if (!sidecarPath || !copyPath || !originalPath) {
+        sidecarIssues.push(`${key}: unsafe packagePath ${packagePath}`)
+        return
+      }
+      if (!existsSync(sidecarPath) || !lstatSync(sidecarPath).isFile()) {
+        sidecarIssues.push(`${key}: missing regular-file sidecar ${toPosixPath(relative(repoRoot, sidecarPath))}`)
+        return
+      }
 
-    const sidecar = readFileSync(sidecarPath)
-    const sidecarSha256 = sha256(sidecar)
-    let sidecarValid = true
-    if (record.bytes !== sidecar.length) {
-      sidecarIssues.push(`${key}: sidecar byteLength ${sidecar.length} != ${String(record.bytes)}`)
-      sidecarValid = false
-    }
-    if (record.sha256 !== sidecarSha256) {
-      sidecarIssues.push(`${key}: sidecar sha256 ${sidecarSha256} != ${String(record.sha256)}`)
-      sidecarValid = false
-    }
+      const sidecarStat = lstatSync(sidecarPath)
+      if (
+        typeof record.bytes !== 'number'
+        || !Number.isSafeInteger(record.bytes)
+        || record.bytes < 0
+        || record.bytes > MAX_GOAL_VISUALIZATION_BYTES
+        || sidecarStat.size !== record.bytes
+      ) {
+        sidecarIssues.push(`${key}: sidecar size ${sidecarStat.size} is invalid or does not match RDF ${String(record.bytes)}`)
+        return
+      }
+      const sidecar = readFileSync(sidecarPath)
+      const sidecarSha256 = sha256(sidecar)
+      let sidecarValid = true
+      if (record.bytes !== sidecar.length) {
+        sidecarIssues.push(`${key}: sidecar byteLength ${sidecar.length} != ${String(record.bytes)}`)
+        sidecarValid = false
+      }
+      if (record.sha256 !== sidecarSha256) {
+        sidecarIssues.push(`${key}: sidecar sha256 ${sidecarSha256} != ${String(record.sha256)}`)
+        sidecarValid = false
+      }
 
-    let originalValid = true
-    if (!zipEntrySet.has(expectedZipPath)) {
-      originalByteIssues.push(`${key}: original ZIP is missing ${expectedZipPath}`)
-      originalValid = false
-    } else {
-      const original = readZipEntryBuffer(params.zipPath, expectedZipPath)
-      const originalSha256 = sha256(original)
-      if (original.length !== sidecar.length || originalSha256 !== sidecarSha256) {
-        originalByteIssues.push(`${key}: sidecar bytes differ from original ZIP (${sidecarSha256} != ${originalSha256})`)
+      let originalValid = true
+      if (!zipEntrySet.has(expectedZipPath) || !existsSync(originalPath) || !lstatSync(originalPath).isFile()) {
+        originalByteIssues.push(`${key}: original ZIP is missing regular-file entry ${expectedZipPath}`)
         originalValid = false
+      } else {
+        const originalStat = lstatSync(originalPath)
+        if (originalStat.size !== record.bytes || originalStat.size > MAX_GOAL_VISUALIZATION_BYTES) {
+          originalByteIssues.push(`${key}: extracted original size ${originalStat.size} is invalid or does not match RDF ${String(record.bytes)}`)
+          originalValid = false
+          return
+        }
+        const original = readFileSync(originalPath)
+        const originalSha256 = sha256(original)
+        if (original.length !== sidecar.length || originalSha256 !== sidecarSha256) {
+          originalByteIssues.push(`${key}: sidecar bytes differ from original ZIP (${sidecarSha256} != ${originalSha256})`)
+          originalValid = false
+        }
+        if (record.bytes !== original.length || record.sha256 !== originalSha256) {
+          originalByteIssues.push(`${key}: RDF digest/length differ from original ZIP`)
+          originalValid = false
+        }
       }
-      if (record.bytes !== original.length || record.sha256 !== originalSha256) {
-        originalByteIssues.push(`${key}: RDF digest/length differ from original ZIP`)
-        originalValid = false
-      }
-    }
 
-    if (sidecarValid && originalValid && record.zipPath === expectedZipPath) {
-      try {
-        mkdirSync(dirname(copyPath), { recursive: true })
-        writeFileSync(copyPath, sidecar)
-        sidecarsCopied += 1
-      } catch (error) {
-        copyIssues.push(`${key}: ${error instanceof Error ? error.message : String(error)}`)
+      if (sidecarValid && originalValid && record.zipPath === expectedZipPath) {
+        try {
+          writeIndependentFile(copyPath, sidecar)
+          const sourceAfterMaterialization = lstatSync(sidecarPath)
+          const copyBeforeVerification = lstatSync(copyPath)
+          const sourceStable = sourceAfterMaterialization.dev === sidecarStat.dev
+            && sourceAfterMaterialization.ino === sidecarStat.ino
+            && sourceAfterMaterialization.size === sidecarStat.size
+            && sourceAfterMaterialization.mtimeMs === sidecarStat.mtimeMs
+            && sourceAfterMaterialization.ctimeMs === sidecarStat.ctimeMs
+          const materializedSha256 = sha256(readFileSync(copyPath))
+          const finalSourceStat = lstatSync(sidecarPath)
+          const finalCopyStat = lstatSync(copyPath)
+          const sourceStableDuringVerification = finalSourceStat.dev === sourceAfterMaterialization.dev
+            && finalSourceStat.ino === sourceAfterMaterialization.ino
+            && finalSourceStat.size === sourceAfterMaterialization.size
+            && finalSourceStat.mtimeMs === sourceAfterMaterialization.mtimeMs
+            && finalSourceStat.ctimeMs === sourceAfterMaterialization.ctimeMs
+          const copyStableDuringVerification = finalCopyStat.dev === copyBeforeVerification.dev
+            && finalCopyStat.ino === copyBeforeVerification.ino
+            && finalCopyStat.size === copyBeforeVerification.size
+            && finalCopyStat.mtimeMs === copyBeforeVerification.mtimeMs
+            && finalCopyStat.ctimeMs === copyBeforeVerification.ctimeMs
+          const materializedValid = copyBeforeVerification.isFile()
+            && copyBeforeVerification.size === record.bytes
+            && materializedSha256 === record.sha256
+            && sourceStableDuringVerification
+            && copyStableDuringVerification
+          if (!sourceStable || !materializedValid) {
+            copyIssues.push(`${key}: sidecar changed or materialized bytes are invalid`)
+            return
+          }
+          verifiedSidecarStates.push({
+            key,
+            path: sidecarPath,
+            dev: finalSourceStat.dev,
+            ino: finalSourceStat.ino,
+            size: finalSourceStat.size,
+            mtimeMs: finalSourceStat.mtimeMs,
+            ctimeMs: finalSourceStat.ctimeMs,
+          })
+          sidecarsCopied += 1
+        } catch (error) {
+          copyIssues.push(`${key}: ${error instanceof Error ? error.message : String(error)}`)
+        }
       }
-    }
+    })
+  } finally {
+    rmSync(originalExtractRoot, { recursive: true, force: true })
+  }
+  const unstableSidecars = verifiedSidecarStates.flatMap((state) => {
+    if (!existsSync(state.path) || !lstatSync(state.path).isFile()) return [`${state.key}: verified sidecar disappeared`]
+    const current = lstatSync(state.path)
+    return current.dev === state.dev
+      && current.ino === state.ino
+      && current.size === state.size
+      && current.mtimeMs === state.mtimeMs
+      && current.ctimeMs === state.ctimeMs
+      ? []
+      : [`${state.key}: verified sidecar changed during validation`]
   })
   check(
     checks,
     'semantic-goal-visualization-sidecars-valid',
-    sidecarIssues.length === 0,
-    sidecarIssues.slice(0, 10).join(' | ') || `${rdfVisualizations.length} sidecar asset(s) verified`,
+    sidecarIssues.length === 0 && unstableSidecars.length === 0,
+    [...sidecarIssues, ...unstableSidecars].slice(0, 10).join(' | ') || `${rdfVisualizations.length} stable sidecar asset(s) verified`,
   )
   check(
     checks,
@@ -1448,7 +2918,7 @@ const validateSemanticReconstruction = (params: {
     checks,
     'semantic-goal-visualization-assets-copied',
     copyIssues.length === 0 && sidecarsCopied === rdfVisualizations.length,
-    copyIssues.slice(0, 10).join(' | ') || `${sidecarsCopied}/${rdfVisualizations.length} asset(s) copied to package-assets`,
+    copyIssues.slice(0, 10).join(' | ') || `${sidecarsCopied}/${rdfVisualizations.length} asset(s) materialized in package-assets`,
   )
 
   const visualizationCounts: VisualizationValidationCounts = {
@@ -1504,6 +2974,7 @@ const validateSemanticReconstruction = (params: {
       'sourceSpan',
       'sourceRef',
       'sourceTextSha256',
+      'sourceDocumentKey',
       'sourceDocumentUrl',
       'sourceDocumentLandingUrl',
       'sourceDocumentTitle',
@@ -1642,7 +3113,7 @@ const validateSemanticReconstruction = (params: {
   const reconstructedMappingStates = [...new Set(mappingKeys.flatMap((key) => {
     const match = key.match(/\/data\/mappings\/(DE-[A-Z]{2})\//u)
     return match ? [match[1]] : []
-  }))].sort((left, right) => left.localeCompare(right))
+  }))].sort(compareCodeUnits)
   const missingMappingStates = EXPECTED_DE_STATES.filter((state) => !reconstructedMappingStates.includes(state))
   check(
     checks,
@@ -1678,11 +3149,26 @@ const validateSemanticReconstruction = (params: {
       : `missing ${missingViewStates.join(', ')}; aggregate views ${aggregateViews}`,
   )
 
+  const changedBoundInputs = [...boundInputs.entries()].flatMap(([label, input]) => {
+    const absolutePath = resolve(repoRoot, input.path)
+    if (!existsSync(absolutePath) || !lstatSync(absolutePath).isFile()) return [`${label}: input disappeared`]
+    const currentSha256 = sha256File(absolutePath)
+    return currentSha256 === input.sha256 ? [] : [`${label}: ${input.sha256} -> ${currentSha256}`]
+  })
+  check(
+    checks,
+    'semantic-bound-inputs-stable',
+    changedBoundInputs.length === 0,
+    changedBoundInputs.slice(0, 10).join(' | ') || `${boundInputs.size} bound input artifact(s) remained unchanged`,
+  )
+
   return {
     archiveRoot,
     passed: checks.every((entry) => entry.passed),
     checks,
     visualizationCounts,
+    boundInputs: Object.fromEntries(boundInputs),
+    boundOntology,
   }
 }
 
@@ -1692,6 +3178,7 @@ const writeOutputs = (params: {
   validation: ReturnType<typeof validateSemanticReconstruction>
 }) => {
   mkdirSync(params.options.outDir, { recursive: true })
+  const generatedAt = new Date().toISOString()
   writeFileSync(resolve(params.options.outDir, 'canonical-landscape.semantic.json'), `${JSON.stringify(params.reconstruction.landscape, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'goal-visualizations.semantic.json'), `${JSON.stringify({
     schemaVersion: 1,
@@ -1710,9 +3197,11 @@ const writeOutputs = (params: {
   }, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'composition-views.semantic.json'), `${JSON.stringify(params.reconstruction.compositionViews, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'semantic-reconstruction-report.json'), `${JSON.stringify({
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     rdfPath: repoRelative(params.options.rdfPath),
     comparisonZip: repoRelative(params.options.zipPath),
+    boundInputs: params.validation.boundInputs,
+    boundOntology: params.validation.boundOntology,
     archiveRoot: params.validation.archiveRoot,
     passed: params.validation.passed,
     counts: {
@@ -1724,11 +3213,21 @@ const writeOutputs = (params: {
   const failed = params.validation.checks.filter((entry) => !entry.passed)
   writeFileSync(resolve(params.options.outDir, 'semantic-reconstruction-report.md'), `# Semantic MEM/FWU Reconstruction Report
 
-Generated at: ${new Date().toISOString()}
+Generated at: ${generatedAt}
 
 RDF: \`${repoRelative(params.options.rdfPath)}\`
 
 Comparison ZIP: \`${repoRelative(params.options.zipPath)}\`
+
+## Bound Inputs
+
+| Input | Path | SHA-256 |
+| --- | --- | --- |
+${Object.entries(params.validation.boundInputs).map(([label, input]) => `| ${label} | \`${input.path}\` | \`${input.sha256}\` |`).join('\n')}
+
+FWU Core IRI: \`${params.validation.boundOntology?.ontologyIri ?? 'not available'}\`
+
+FWU ontology commit: \`${params.validation.boundOntology?.commit ?? 'not available'}\`
 
 ## Result
 
@@ -1736,7 +3235,7 @@ ${params.validation.passed ? 'Semantic reconstruction passed.' : 'Semantic recon
 
 ## Visualization Assets
 
-| Canonical links | RDF references | Resource index assets | Copied sidecars |
+| Canonical links | RDF references | Resource index assets | Materialized sidecars |
 | ---: | ---: | ---: | ---: |
 | ${params.validation.visualizationCounts.canonicalLinks} | ${params.validation.visualizationCounts.rdfReferences} | ${params.validation.visualizationCounts.indexAssets} | ${params.validation.visualizationCounts.sidecarsCopied} |
 
@@ -1758,13 +3257,22 @@ const run = async () => {
     process.stdout.write(usage())
     return
   }
-  const model = await readRdfModel(options.rdfPath)
+  const initialRdfSha256 = sha256File(options.rdfPath)
+  const initialZipSha256 = sha256File(options.zipPath)
+  const parsedRdf = await readRdfModel(options.rdfPath)
+  if (parsedRdf.sha256 !== initialRdfSha256) {
+    throw new Error(`RDF input changed while it was parsed: ${initialRdfSha256} -> ${parsedRdf.sha256}`)
+  }
+  const model = parsedRdf.model
   const reconstruction = reconstructSemantic(model)
   const validation = validateSemanticReconstruction({
     zipPath: options.zipPath,
     rdfPath: options.rdfPath,
     outDir: options.outDir,
+    model,
     reconstruction,
+    initialRdfSha256,
+    initialZipSha256,
   })
   writeOutputs({ options, reconstruction, validation })
   process.stdout.write(`Semantic reconstruction ${validation.passed ? 'passed' : 'failed'}\n`)
