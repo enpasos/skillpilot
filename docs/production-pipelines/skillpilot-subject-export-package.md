@@ -1,10 +1,12 @@
 # SkillPilot Subject Export Package
 
-This pipeline builds a reproducible release ZIP artifact for one SkillPilot subject landscape.
+This pipeline builds a reproducible legacy subject-export ZIP artifact for one SkillPilot subject landscape. It is a validated publication and roundtrip carrier, but it is not yet a `full-standalone-v1` package and must not be presented as the sole runtime input for SkillPilot.
 
 The long-term dual-release target, including the standalone JSON runtime contract, the paired FWU-ontology artifact, and their mandatory equivalence proof, is described in [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
 
 The current implementation checkpoint and remaining roadmap are tracked in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
+
+The independent target-profile classification is documented in [Curriculum Package Readiness](../qa-ci/curriculum-package-readiness.md). Current manifests and reports identify this lane as `legacy-subject-export`, with target status `not-ready-legacy` and `standaloneProfileReady: false`.
 
 The package includes every image referenced by an active canonical `goal-visualization` link. Selection is link-driven, so stale files in the runtime asset directory do not leak into releases.
 
@@ -50,6 +52,17 @@ The validator treats the ZIPs as external handoff artifacts. It verifies archive
 
 - `tmp/exports/validation/subject-export-package-validation-report.json`
 - `tmp/exports/validation/subject-export-package-validation-report.md`
+- one canonical, ZIP-hash-bound target-profile report per package under `tmp/exports/readiness/`
+
+This remains a legacy validation gate. Classify the artifact against the future standalone runtime profile separately from the repository root:
+
+```bash
+python3 -B scripts/evaluate_curriculum_package_readiness.py \
+  --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip \
+  --expect-status not-ready-legacy
+```
+
+The expected result is not a package defect: it prevents a successful handoff or roundtrip check from being mistaken for proof of package-only runtime operation. The independent validator runs this command itself for every ZIP; its report, the publication index, and the final legacy release-gate report derive their target status from the persisted evaluator output.
 
 Before publication, run the live source-link audit against the finished ZIPs:
 

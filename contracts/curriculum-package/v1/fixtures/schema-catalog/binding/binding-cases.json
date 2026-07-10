@@ -1,0 +1,220 @@
+{
+  "fixtureFormatVersion": 1,
+  "baseCatalog": "../valid/catalog.json",
+  "baseManifest": "../../valid/minimal-full-standalone.manifest.json",
+  "cases": [
+    {
+      "id": "valid-binding",
+      "catalogMutations": [],
+      "manifestMutations": [],
+      "expectedDiagnostics": []
+    },
+    {
+      "id": "catalog-record-hash-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/10/sha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "MANIFEST_SCHEMA_CATALOG_HASH_MISMATCH",
+          "location": "/manifest/files/10/sha256"
+        }
+      ]
+    },
+    {
+      "id": "catalog-record-path-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/10/path",
+          "value": "schemas/other-catalog.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "MANIFEST_SCHEMA_CATALOG_PATH_MISMATCH",
+          "location": "/manifest/files/10/path"
+        }
+      ]
+    },
+    {
+      "id": "schema-record-hash-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/15/sha256",
+          "value": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_MANIFEST_SCHEMA_HASH_MISMATCH",
+          "location": "/manifest/files/15/sha256"
+        }
+      ]
+    },
+    {
+      "id": "catalog-entry-without-schema-role",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/14/role",
+          "value": "quality-evidence"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_ENTRY_MANIFEST_SCHEMA_MISSING",
+          "location": "/entries/3/path"
+        }
+      ]
+    },
+    {
+      "id": "schema-role-without-catalog-entry",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "append",
+          "pointer": "/files",
+          "value": {
+            "path": "schemas/unlisted-contract.schema.json",
+            "role": "schema",
+            "mediaType": "application/schema+json",
+            "bytes": 42,
+            "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "runtimeRequired": true,
+            "licenseExpression": "Apache-2.0",
+            "provenanceClass": "software-contract",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "MANIFEST_SCHEMA_CATALOG_ENTRY_MISSING",
+          "location": "/manifest/files/20/path"
+        }
+      ]
+    },
+    {
+      "id": "duplicate-schema-role-path",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "append",
+          "pointer": "/files",
+          "value": {
+            "path": "schemas/fixture-shared.schema.json",
+            "role": "schema",
+            "mediaType": "application/schema+json",
+            "bytes": 310,
+            "sha256": "a3b14d144fa6925f2b3018206090b0b2e8cf66f36c84032cfd5407590deba762",
+            "runtimeRequired": true,
+            "licenseExpression": "Apache-2.0",
+            "provenanceClass": "software-contract",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_ENTRY_MANIFEST_SCHEMA_MISSING",
+          "location": "/entries/4/path"
+        }
+      ]
+    },
+    {
+      "id": "validation-schema-id-unresolved",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/3/validationSchemaId",
+          "value": "https://skillpilot.com/schemas/fixtures/v1/missing.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "VALIDATION_SCHEMA_ID_UNRESOLVED",
+          "location": "/manifest/files/3/validationSchemaId"
+        }
+      ]
+    },
+    {
+      "id": "trusted-binding-path-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/contractBindings/runtimeCatalogSchema/path",
+          "value": "schemas/package-manifest.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "TRUSTED_CONTRACT_CATALOG_BINDING_MISMATCH",
+          "location": "/manifest/contractBindings/runtimeCatalogSchema"
+        }
+      ]
+    },
+    {
+      "id": "schema-media-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/15/mediaType",
+          "value": "application/json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_MANIFEST_SCHEMA_MEDIA_MISMATCH",
+          "location": "/manifest/files/15/mediaType"
+        }
+      ]
+    },
+    {
+      "id": "schema-runtime-flag-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/15/runtimeRequired",
+          "value": false
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_MANIFEST_SCHEMA_RUNTIME_MISMATCH",
+          "location": "/manifest/files/15/runtimeRequired"
+        }
+      ]
+    },
+    {
+      "id": "schema-catalog-record-not-singleton",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/10/role",
+          "value": "quality-evidence"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "MANIFEST_SCHEMA_CATALOG_SINGLETON",
+          "location": "/manifest/files"
+        }
+      ]
+    }
+  ]
+}

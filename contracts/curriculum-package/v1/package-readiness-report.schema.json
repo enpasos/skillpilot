@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json",
+  "title": "SkillPilot JSON curriculum package readiness report v1",
+  "description": "Strict external assessment of whether an artifact satisfies json/full-standalone-v1. Report validity alone never establishes readiness; the policy-derived semantic invariants must also pass.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reportFormatVersion",
+    "scope",
+    "policy",
+    "evaluator",
+    "input",
+    "classification",
+    "dimensions",
+    "decision",
+    "checks"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json"
+    },
+    "reportFormatVersion": {
+      "const": "1.0"
+    },
+    "scope": {
+      "const": "json-full-standalone-v1"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sha256",
+        "requiredCheckIds"
+      ],
+      "properties": {
+        "id": {
+          "const": "full-standalone-v1-readiness-v1"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "requiredCheckIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/checkId"
+          }
+        }
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "jsonschemaVersion",
+        "implementedCheckIds",
+        "completeForPolicy"
+      ],
+      "properties": {
+        "name": {
+          "const": "skillpilot-json-package-readiness"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "jsonschemaVersion": {
+          "const": "4.26.0"
+        },
+        "implementedCheckIds": {
+          "const": [
+            "input.parse-and-container-safe",
+            "identity.target-contract-declared",
+            "contract.manifest-schema",
+            "contract.target-values",
+            "contract.trusted-bindings",
+            "contract.profile-roles",
+            "contract.inventory-bytes"
+          ]
+        },
+        "completeForPolicy": {
+          "const": false
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "name",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "archiveRoot"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "manifest",
+            "zip"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "manifestSha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "archiveRoot": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 180
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestDialect",
+        "targetMarkers"
+      ],
+      "properties": {
+        "manifestDialect": {
+          "enum": [
+            "legacy-subject-export",
+            "full-standalone-v1-candidate",
+            "partial-target-claim",
+            "unsupported",
+            "unclassified"
+          ]
+        },
+        "targetMarkers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputIntegrity",
+        "contractConformance",
+        "catalogCompleteness",
+        "standaloneCompleteness",
+        "consumerOperability"
+      ],
+      "properties": {
+        "inputIntegrity": {
+          "$ref": "#/$defs/checkResult"
+        },
+        "contractConformance": {
+          "$ref": "#/$defs/checkResult"
+        },
+        "catalogCompleteness": {
+          "$ref": "#/$defs/checkResult"
+        },
+        "standaloneCompleteness": {
+          "$ref": "#/$defs/checkResult"
+        },
+        "consumerOperability": {
+          "$ref": "#/$defs/checkResult"
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "standaloneProfileReady",
+        "primaryReasonCode",
+        "blockingCheckIds"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "not-ready-legacy",
+            "not-ready-incomplete",
+            "invalid",
+            "unsupported"
+          ]
+        },
+        "standaloneProfileReady": {
+          "type": "boolean"
+        },
+        "primaryReasonCode": {
+          "$ref": "#/$defs/diagnosticCode"
+        },
+        "blockingCheckIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/checkId"
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "result",
+          "blocking",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/checkId"
+          },
+          "result": {
+            "$ref": "#/$defs/checkResult"
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "code": {
+            "$ref": "#/$defs/diagnosticCode"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "checkId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+    },
+    "diagnosticCode": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$"
+    },
+    "checkResult": {
+      "enum": [
+        "pass",
+        "fail",
+        "not-applicable",
+        "not-evaluated"
+      ]
+    }
+  }
+}

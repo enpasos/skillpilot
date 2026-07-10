@@ -524,6 +524,117 @@
       ]
     },
     {
+      "id": "missing-runtime-catalog-schema-binding",
+      "description": "The runtime discovery schema is part of the mandatory external trust bootstrap.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/contractBindings/runtimeCatalogSchema"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ],
+      "expectedLocations": {
+        "MANIFEST_SCHEMA": [
+          "/contractBindings"
+        ]
+      }
+    },
+    {
+      "id": "runtime-catalog-schema-binding-hash-mismatch",
+      "description": "A package cannot redefine the trusted runtime-catalog schema.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contractBindings/runtimeCatalogSchema/sha256",
+          "value": "abababababababababababababababababababababababababababababababab"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_HASH_MISMATCH",
+        "CONTRACT_BINDING_TRUSTED_HASH_MISMATCH"
+      ]
+    },
+    {
+      "id": "schema-catalog-schema-binding-size-mismatch",
+      "description": "The trusted schema-catalog contract is bound by size as well as hash.",
+      "mutations": [
+        {
+          "operation": "set-file-field-by-path",
+          "path": "schemas/schema-catalog.schema.json",
+          "field": "bytes",
+          "value": 1
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_SIZE_MISMATCH"
+      ]
+    },
+    {
+      "id": "runtime-catalog-validation-schema-missing",
+      "description": "The runtime catalog must name its externally trusted validation schema.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/files/0/validationSchemaId"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_REQUIRED"
+      ],
+      "expectedLocations": {
+        "VALIDATION_SCHEMA_REQUIRED": [
+          "/files/0/validationSchemaId"
+        ]
+      }
+    },
+    {
+      "id": "schema-catalog-validation-schema-mismatch",
+      "description": "The offline resolver table must use the trusted schema-catalog schema.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "schema-catalog",
+          "field": "validationSchemaId",
+          "value": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_MISMATCH"
+      ]
+    },
+    {
+      "id": "binary-validation-schema-forbidden",
+      "description": "Binary resources are integrity-bound but are not JSON-schema instances.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "binary-asset",
+          "field": "validationSchemaId",
+          "value": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_FORBIDDEN"
+      ]
+    },
+    {
+      "id": "text-validation-schema-forbidden",
+      "description": "Text artifacts cannot claim JSON-schema validation.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "license",
+          "field": "validationSchemaId",
+          "value": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_FORBIDDEN"
+      ]
+    },
+    {
       "id": "generic-entry-limit-exceeded",
       "description": "Declared entry sizes are bounded by the package-format v1 ZIP32 policy.",
       "mutations": [

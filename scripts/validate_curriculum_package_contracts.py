@@ -22,10 +22,29 @@ from jsonschema import Draft202012Validator
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONTRACT_DIR = REPO_ROOT / "contracts" / "curriculum-package" / "v1"
 SCHEMA_FILENAME = "package-manifest.schema.json"
+RUNTIME_CATALOG_SCHEMA_FILENAME = "runtime-catalog.schema.json"
+SCHEMA_CATALOG_SCHEMA_FILENAME = "schema-catalog.schema.json"
 PROFILE_RELATIVE_PATH = Path("profiles/full-standalone-v1.profile.json")
 MANIFEST_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json"
+RUNTIME_CATALOG_SCHEMA_ID = (
+    "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
+)
+SCHEMA_CATALOG_SCHEMA_ID = (
+    "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json"
+)
 PROFILE_ID = "full-standalone-v1"
 JSONSCHEMA_VERSION = "4.26.0"
+
+TRUSTED_SCHEMA_BINDINGS = {
+    "manifestSchema": (MANIFEST_SCHEMA_ID, SCHEMA_FILENAME),
+    "runtimeCatalogSchema": (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
+    "schemaCatalogSchema": (SCHEMA_CATALOG_SCHEMA_ID, SCHEMA_CATALOG_SCHEMA_FILENAME),
+}
+BOOTSTRAP_VALIDATION_SCHEMAS = {
+    "runtime-catalog": RUNTIME_CATALOG_SCHEMA_ID,
+    "schema-catalog": SCHEMA_CATALOG_SCHEMA_ID,
+}
+NON_JSON_VALIDATION_SCHEMA_ROLES = {"binary-asset", "license", "package-documentation"}
 
 SAFE_PATH_RE = re.compile(r"^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$")
 WINDOWS_RESERVED_NAMES = {
@@ -75,6 +94,14 @@ class DuplicateJsonKeyError(ValueError):
         self.key = key
 
 
+class NonFiniteJsonConstantError(ValueError):
+    """Raised for JavaScript constants that are not part of RFC 8259 JSON."""
+
+    def __init__(self, constant: str) -> None:
+        super().__init__(f"non-finite JSON constant {constant!r}")
+        self.constant = constant
+
+
 @dataclass(frozen=True, order=True)
 class Diagnostic:
     code: str
@@ -92,7 +119,14 @@ def reject_duplicate_json_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def parse_json_text(text: str) -> Any:
-    return json.loads(text, object_pairs_hook=reject_duplicate_json_keys)
+    def reject_nonfinite_constant(constant: str) -> Any:
+        raise NonFiniteJsonConstantError(constant)
+
+    return json.loads(
+        text,
+        object_pairs_hook=reject_duplicate_json_keys,
+        parse_constant=reject_nonfinite_constant,
+    )
 
 
 def load_json(path: Path, *, max_bytes: int | None = None) -> Any:
@@ -104,7 +138,13 @@ def load_json(path: Path, *, max_bytes: int | None = None) -> Any:
         return parse_json_text(path.read_text(encoding="utf-8"))
     except ContractDefinitionError:
         raise
-    except (OSError, UnicodeError, json.JSONDecodeError, DuplicateJsonKeyError) as error:
+    except (
+        OSError,
+        UnicodeError,
+        json.JSONDecodeError,
+        DuplicateJsonKeyError,
+        NonFiniteJsonConstantError,
+    ) as error:
         raise ContractDefinitionError(f"Cannot read JSON from {path}: {error}") from error
 
 
@@ -137,6 +177,7 @@ def validate_trusted_contract(
     profile: dict[str, Any],
     schema_path: Path,
     profile_path: Path,
+    trusted_schema_paths: dict[str, Path],
 ) -> dict[str, dict[str, Any]]:
     Draft202012Validator.check_schema(schema)
     if schema.get("$id") != MANIFEST_SCHEMA_ID:
@@ -149,6 +190,7 @@ def validate_trusted_contract(
             "profileId",
             "description",
             "manifestSchema",
+            "trustedContractSchemas",
             "compatibility",
             "inventoryPolicy",
             "archiveLimits",
@@ -168,6 +210,26 @@ def validate_trusted_contract(
     if manifest_schema != {"id": MANIFEST_SCHEMA_ID, "sha256": schema_hash}:
         raise ContractDefinitionError(
             "Profile manifestSchema binding does not match the trusted repository schema"
+        )
+
+    expected_trusted_schemas: list[dict[str, str]] = []
+    for binding_name, (schema_id, _filename) in TRUSTED_SCHEMA_BINDINGS.items():
+        trusted_path = trusted_schema_paths.get(binding_name)
+        if trusted_path is None:
+            raise ContractDefinitionError(f"Missing trusted schema path for {binding_name}")
+        trusted_schema = expect_object(load_json(trusted_path), str(trusted_path))
+        Draft202012Validator.check_schema(trusted_schema)
+        if trusted_schema.get("$id") != schema_id:
+            raise ContractDefinitionError(
+                f"Trusted schema {binding_name} has unexpected $id {trusted_schema.get('$id')!r}"
+            )
+        expected_trusted_schemas.append(
+            {"id": schema_id, "sha256": file_sha256(trusted_path)}
+        )
+    trusted_schemas = profile.get("trustedContractSchemas")
+    if trusted_schemas != expected_trusted_schemas:
+        raise ContractDefinitionError(
+            "Profile trustedContractSchemas must be the closed trusted manifest/runtime/schema-catalog set"
         )
 
     compatibility = expect_object(profile.get("compatibility"), "profile.compatibility")
@@ -457,9 +519,8 @@ def validate_manifest(
     schema_validator: Draft202012Validator,
     profile: dict[str, Any],
     roles: dict[str, dict[str, Any]],
-    schema_hash: str,
+    trusted_schema_metadata: dict[str, tuple[str, str, int]],
     profile_hash: str,
-    schema_bytes: int,
     profile_bytes: int,
 ) -> list[Diagnostic]:
     diagnostics: list[Diagnostic] = []
@@ -683,6 +744,37 @@ def validate_manifest(
                     f"Role {role!r} allows {rule['mediaTypes']}",
                 )
             )
+        validation_schema_id = record.get("validationSchemaId")
+        expected_validation_schema_id = BOOTSTRAP_VALIDATION_SCHEMAS.get(role)
+        if expected_validation_schema_id is not None:
+            if validation_schema_id is None:
+                diagnostics.append(
+                    Diagnostic(
+                        "VALIDATION_SCHEMA_REQUIRED",
+                        f"/files/{index}/validationSchemaId",
+                        f"Role {role!r} requires its trusted bootstrap validation schema",
+                    )
+                )
+            elif validation_schema_id != expected_validation_schema_id:
+                diagnostics.append(
+                    Diagnostic(
+                        "VALIDATION_SCHEMA_MISMATCH",
+                        f"/files/{index}/validationSchemaId",
+                        f"Role {role!r} must use {expected_validation_schema_id!r}",
+                    )
+                )
+        media_type = record.get("mediaType")
+        if validation_schema_id is not None and (
+            role in NON_JSON_VALIDATION_SCHEMA_ROLES
+            or (isinstance(media_type, str) and media_type.startswith("text/"))
+        ):
+            diagnostics.append(
+                Diagnostic(
+                    "VALIDATION_SCHEMA_FORBIDDEN",
+                    f"/files/{index}/validationSchemaId",
+                    "Binary and text artifacts cannot declare a JSON validation schema",
+                )
+            )
         if (
             profile["redistributionPolicy"]["allFilesMustBeAllowed"]
             and record.get("redistributionStatus") != "allowed"
@@ -854,17 +946,18 @@ def validate_manifest(
             )
         )
 
-    diagnostics.extend(
-        validate_contract_binding(
-            "manifestSchema",
-            MANIFEST_SCHEMA_ID,
-            schema_hash,
-            schema_bytes,
-            "schema",
-            manifest,
-            files_by_path,
+    for binding_name, (schema_id, schema_hash, schema_bytes) in trusted_schema_metadata.items():
+        diagnostics.extend(
+            validate_contract_binding(
+                binding_name,
+                schema_id,
+                schema_hash,
+                schema_bytes,
+                "schema",
+                manifest,
+                files_by_path,
+            )
         )
-    )
     diagnostics.extend(
         validate_contract_binding(
             "releaseProfile",
@@ -910,6 +1003,18 @@ def file_by_role(manifest: dict[str, Any], role: str) -> dict[str, Any]:
     return matches[0]
 
 
+def file_by_path(manifest: dict[str, Any], path: str) -> dict[str, Any]:
+    files = manifest.get("files")
+    if not isinstance(files, list):
+        raise ContractDefinitionError("Fixture base manifest has no files array")
+    matches = [record for record in files if isinstance(record, dict) and record.get("path") == path]
+    if len(matches) != 1:
+        raise ContractDefinitionError(
+            f"Fixture mutation expected exactly one file record for path {path!r}"
+        )
+    return matches[0]
+
+
 def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
     data = expect_object(mutation, "fixture mutation")
     operation = data.get("operation")
@@ -938,6 +1043,13 @@ def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
         if not isinstance(role, str) or not isinstance(field, str):
             raise ContractDefinitionError("set-file-field requires string role and field")
         file_by_role(manifest, role)[field] = copy.deepcopy(data.get("value"))
+        return
+    if operation == "set-file-field-by-path":
+        path = data.get("path")
+        field = data.get("field")
+        if not isinstance(path, str) or not isinstance(field, str):
+            raise ContractDefinitionError("set-file-field-by-path requires string path and field")
+        file_by_path(manifest, path)[field] = copy.deepcopy(data.get("value"))
         return
     if operation == "copy-file-field":
         from_role = data.get("fromRole")
@@ -1015,15 +1127,27 @@ def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[
     seen_ids: set[str] = set()
     for index, raw_case in enumerate(cases):
         case = expect_object(raw_case, f"{expectations_path}.cases[{index}]")
-        expect_exact_keys(
-            case,
-            {"id", "path", "expectedErrorCode", "expectedDuplicateKey"},
-            f"{expectations_path}.cases[{index}]",
-        )
         case_id = case.get("id")
         relative_path = case.get("path")
         expected_code = case.get("expectedErrorCode")
-        expected_key = case.get("expectedDuplicateKey")
+        if expected_code == "JSON_DUPLICATE_KEY":
+            expect_exact_keys(
+                case,
+                {"id", "path", "expectedErrorCode", "expectedDuplicateKey"},
+                f"{expectations_path}.cases[{index}]",
+            )
+            expected_value = case.get("expectedDuplicateKey")
+        elif expected_code == "JSON_NONFINITE_CONSTANT":
+            expect_exact_keys(
+                case,
+                {"id", "path", "expectedErrorCode", "expectedConstant"},
+                f"{expectations_path}.cases[{index}]",
+            )
+            expected_value = case.get("expectedConstant")
+        else:
+            raise ContractDefinitionError(
+                f"Unsupported raw fixture error code at index {index}: {expected_code!r}"
+            )
         if (
             not isinstance(case_id, str)
             or not case_id
@@ -1031,9 +1155,8 @@ def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[
             or not isinstance(relative_path, str)
             or not path_is_safe(relative_path)
             or "/" in relative_path
-            or expected_code != "JSON_DUPLICATE_KEY"
-            or not isinstance(expected_key, str)
-            or not expected_key
+            or not isinstance(expected_value, str)
+            or not expected_value
         ):
             raise ContractDefinitionError(f"Malformed or duplicate raw fixture case at index {index}")
         seen_ids.add(case_id)
@@ -1045,22 +1168,25 @@ def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[
             parse_json_text(fixture_path.read_text(encoding="utf-8"))
         except DuplicateJsonKeyError as error:
             actual_code = "JSON_DUPLICATE_KEY"
-            actual_key = error.key
+            actual_value = error.key
+        except NonFiniteJsonConstantError as error:
+            actual_code = "JSON_NONFINITE_CONSTANT"
+            actual_value = error.constant
         except (OSError, UnicodeError, json.JSONDecodeError) as error:
             failures.append(f"Raw invalid fixture {case_id!r} failed unexpectedly: {error}")
             continue
         else:
             failures.append(f"Raw invalid fixture {case_id!r} unexpectedly parsed successfully")
             continue
-        if actual_code != expected_code or actual_key != expected_key:
+        if actual_code != expected_code or actual_value != expected_value:
             failures.append(
-                f"Raw invalid fixture {case_id!r} expected {expected_code} for {expected_key!r}, "
-                f"got {actual_code} for {actual_key!r}"
+                f"Raw invalid fixture {case_id!r} expected {expected_code} for {expected_value!r}, "
+                f"got {actual_code} for {actual_value!r}"
             )
         else:
             passed += 1
             if verbose:
-                print(f"PASS invalid {case_id}: {actual_code} ({actual_key})")
+                print(f"PASS invalid {case_id}: {actual_code} ({actual_value})")
 
     actual_paths = {path.resolve() for path in raw_dir.glob("*.manifest.json")}
     if actual_paths != referenced_paths:
@@ -1077,9 +1203,8 @@ def validate_fixture_suite(
     schema_validator: Draft202012Validator,
     profile: dict[str, Any],
     roles: dict[str, dict[str, Any]],
-    schema_hash: str,
+    trusted_schema_metadata: dict[str, tuple[str, str, int]],
     profile_hash: str,
-    schema_bytes: int,
     profile_bytes: int,
     verbose: bool,
 ) -> tuple[int, int, list[str]]:
@@ -1104,9 +1229,8 @@ def validate_fixture_suite(
             schema_validator,
             profile,
             roles,
-            schema_hash,
+            trusted_schema_metadata,
             profile_hash,
-            schema_bytes,
             profile_bytes,
         )
         if diagnostics:
@@ -1140,9 +1264,8 @@ def validate_fixture_suite(
                 schema_validator,
                 profile,
                 roles,
-                schema_hash,
+                trusted_schema_metadata,
                 profile_hash,
-                schema_bytes,
                 profile_bytes,
             )
             if base_diagnostics:
@@ -1182,9 +1305,8 @@ def validate_fixture_suite(
                 schema_validator,
                 profile,
                 roles,
-                schema_hash,
+                trusted_schema_metadata,
                 profile_hash,
-                schema_bytes,
                 profile_bytes,
             )
             actual_code_counts = Counter(item.code for item in diagnostics)
@@ -1233,6 +1355,10 @@ def main() -> int:
     contract_dir = args.contracts_dir.resolve()
     schema_path = contract_dir / SCHEMA_FILENAME
     profile_path = contract_dir / PROFILE_RELATIVE_PATH
+    trusted_schema_paths = {
+        binding_name: contract_dir / filename
+        for binding_name, (_schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
+    }
     try:
         try:
             installed_jsonschema_version = distribution_version("jsonschema")
@@ -1244,10 +1370,22 @@ def main() -> int:
             )
         schema = expect_object(load_json(schema_path), str(schema_path))
         profile = expect_object(load_json(profile_path), str(profile_path))
-        roles = validate_trusted_contract(schema, profile, schema_path, profile_path)
-        schema_hash = file_sha256(schema_path)
+        roles = validate_trusted_contract(
+            schema,
+            profile,
+            schema_path,
+            profile_path,
+            trusted_schema_paths,
+        )
+        trusted_schema_metadata = {
+            binding_name: (
+                TRUSTED_SCHEMA_BINDINGS[binding_name][0],
+                file_sha256(path),
+                path.stat().st_size,
+            )
+            for binding_name, path in trusted_schema_paths.items()
+        }
         profile_hash = file_sha256(profile_path)
-        schema_bytes = schema_path.stat().st_size
         profile_bytes = profile_path.stat().st_size
         schema_validator = Draft202012Validator(schema)
         valid_count, invalid_count, failures = validate_fixture_suite(
@@ -1255,9 +1393,8 @@ def main() -> int:
             schema_validator,
             profile,
             roles,
-            schema_hash,
+            trusted_schema_metadata,
             profile_hash,
-            schema_bytes,
             profile_bytes,
             args.verbose,
         )

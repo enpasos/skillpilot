@@ -1,0 +1,151 @@
+{
+  "fixtureFormatVersion": 1,
+  "baseCatalog": "../valid/minimal-mathematik.catalog.json",
+  "baseManifest": "../../valid/minimal-full-standalone.manifest.json",
+  "catalogPath": "data/runtime/catalog.json",
+  "expectedLocationsByCase": {
+    "valid-binding": [],
+    "release-id-mismatch": [
+      "/releaseBinding/releaseId"
+    ],
+    "view-role-path-mismatch": [
+      "/composition-view/data/views/de-he-gk.view.json",
+      "/files/composition-view"
+    ],
+    "duplicate-runtime-catalog": [
+      "/files"
+    ],
+    "catalog-prefixes-archive-root": [
+      "/",
+      "/files"
+    ],
+    "unregistered-card-deck-role": [
+      "/files/card-deck"
+    ],
+    "unregistered-binary-asset-role": [
+      "/files/binary-asset"
+    ],
+    "unregistered-embedded-dependency-role": [
+      "/files/embedded-goal-dependency"
+    ]
+  },
+  "cases": [
+    {
+      "id": "valid-binding",
+      "catalogMutations": [],
+      "manifestMutations": [],
+      "expectedErrorCodes": []
+    },
+    {
+      "id": "release-id-mismatch",
+      "catalogMutations": [
+        {
+          "operation": "set",
+          "pointer": "/releaseBinding/releaseId",
+          "value": "org.example.wrong@1.0.0"
+        }
+      ],
+      "manifestMutations": [],
+      "expectedErrorCodes": [
+        "MANIFEST_RELEASE_BINDING_MISMATCH"
+      ]
+    },
+    {
+      "id": "view-role-path-mismatch",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "set",
+          "pointer": "/files/5/role",
+          "value": "quality-evidence"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_ARTIFACT_BINDING_MISMATCH",
+        "MANIFEST_ROLE_PATH_MISMATCH"
+      ]
+    },
+    {
+      "id": "duplicate-runtime-catalog",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "copy-item",
+          "pointer": "/files",
+          "index": 0
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_RUNTIME_CATALOG_SINGLETON"
+      ]
+    },
+    {
+      "id": "catalog-prefixes-archive-root",
+      "catalogMutations": [],
+      "manifestMutations": [],
+      "catalogPath": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0/data/runtime/catalog.json",
+      "expectedErrorCodes": [
+        "CATALOG_PATH_ARCHIVE_ROOT_PREFIX",
+        "MANIFEST_RUNTIME_CATALOG_SINGLETON"
+      ]
+    },
+    {
+      "id": "unregistered-card-deck-role",
+      "catalogMutations": [
+        {
+          "operation": "remove",
+          "pointer": "/decks/0"
+        },
+        {
+          "operation": "remove",
+          "pointer": "/capabilities/1"
+        }
+      ],
+      "manifestMutations": [],
+      "expectedErrorCodes": [
+        "MANIFEST_ROLE_PATH_MISMATCH"
+      ]
+    },
+    {
+      "id": "unregistered-binary-asset-role",
+      "catalogMutations": [
+        {
+          "operation": "remove",
+          "pointer": "/resources/0"
+        },
+        {
+          "operation": "remove",
+          "pointer": "/capabilities/2"
+        }
+      ],
+      "manifestMutations": [],
+      "expectedErrorCodes": [
+        "MANIFEST_ROLE_PATH_MISMATCH"
+      ]
+    },
+    {
+      "id": "unregistered-embedded-dependency-role",
+      "catalogMutations": [],
+      "manifestMutations": [
+        {
+          "operation": "append",
+          "pointer": "/files",
+          "value": {
+            "path": "data/dependencies/unregistered-fragment.json",
+            "role": "embedded-goal-dependency",
+            "mediaType": "application/json",
+            "bytes": 128,
+            "sha256": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+            "runtimeRequired": true,
+            "licenseExpression": "CC-BY-4.0",
+            "provenanceClass": "generated-metadata",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_ROLE_PATH_MISMATCH"
+      ]
+    }
+  ]
+}

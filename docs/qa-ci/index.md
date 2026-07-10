@@ -13,6 +13,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Local and GitHub Actions validation entry points.
 - [Graph Validation Rules](graph-validation-rules.md)
   Single source of truth for algorithmic graph validation in CI.
+- [Curriculum Package Readiness](curriculum-package-readiness.md)
+  Fail-closed distinction between legacy export validation and the standalone JSON runtime profile.
 - [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)

@@ -1,0 +1,563 @@
+{
+  "fixtureFormatVersion": 1,
+  "baseCatalog": "../valid/minimal-mathematik.catalog.json",
+  "expectedLocationsByCase": {
+    "missing-release-binding": [
+      "/"
+    ],
+    "unknown-root-landscape": [
+      "/rootLandscapeIds",
+      "/rootLandscapeIds/0"
+    ],
+    "root-role-mismatch": [
+      "/landscapes/0",
+      "/landscapes/0/parentLandscapeId",
+      "/rootLandscapeIds/0",
+      "/rootLandscapeIds"
+    ],
+    "duplicate-landscape": [
+      "/[0,1]",
+      "/landscapes[0,1]"
+    ],
+    "undeclared-scope-dimension": [
+      "/offeredScopes/0/scope/jurisdiction",
+      "/offeredScopes/1/scope/jurisdiction",
+      "/views/0/scope/jurisdiction",
+      "/views/1/scope/jurisdiction"
+    ],
+    "undeclared-scope-value": [
+      "/offeredScopes/0/scope/courseProfile",
+      "/offeredScopes/0/viewResolution"
+    ],
+    "unknown-offering-view": [
+      "/offeredScopes/0/viewResolution/viewIds",
+      "/landscapes/0/defaultOfferingId"
+    ],
+    "single-resolution-not-exact": [
+      "/offeredScopes/0/viewResolution"
+    ],
+    "merge-member-order-mismatch": [
+      "/offeredScopes/1/viewResolution/viewIds"
+    ],
+    "view-without-explicit-offering": [
+      "/views/1/viewId"
+    ],
+    "duplicate-offering": [
+      "/offeredScopes[0,2]",
+      "/offeredScopes[0,2]"
+    ],
+    "duplicate-deck-locale": [
+      "/[3,4]",
+      "/decks[0,1]"
+    ],
+    "external-runtime-resource": [
+      "/resources/0",
+      "/resources/0",
+      "/resources/0/runtimeRequired"
+    ],
+    "missing-memory-capability": [
+      "/capabilities"
+    ],
+    "embedded-fragment-without-ownership": [
+      "/capabilities",
+      "/landscapes/1"
+    ],
+    "artifact-path-collision": [
+      "/[0,1]"
+    ],
+    "unknown-default-offering": [
+      "/landscapes/0/defaultOfferingId"
+    ],
+    "external-runtime-dependency": [
+      "/dependencyClosure/externalRuntimeDependencies"
+    ],
+    "merge-dimension-not-composite": [
+      "/offeredScopes/1/viewResolution/mergeDimension"
+    ],
+    "duplicate-view": [
+      "/[1,3]",
+      "/views[0,2]",
+      "/views[0,2]"
+    ],
+    "portable-artifact-case-collision": [
+      "/"
+    ],
+    "root-without-default-offering": [
+      "/landscapes/0"
+    ],
+    "unknown-resource-kind-v1": [
+      "/capabilities",
+      "/resources/0/resourceKind"
+    ],
+    "exam-nodes-before-payload-validation": [
+      "/capabilities/3",
+      "/capabilities"
+    ],
+    "oversized-subject-string": [
+      "/landscapes/0/subject"
+    ],
+    "module-not-reachable-from-root": [
+      "/landscapes/1/parentLandscapeId"
+    ],
+    "fragment-owner-landscape-unknown": [
+      "/landscapes/1/ownership/fragmentOfLandscapeId"
+    ],
+    "goal-visualization-without-goal": [
+      "/resources/0"
+    ],
+    "module-parent-cycle": [
+      "/landscapes/1/parentLandscapeId",
+      "/landscapes/2/parentLandscapeId"
+    ]
+  },
+  "cases": [
+    {
+      "id": "missing-release-binding",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/releaseBinding"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "unknown-root-landscape",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/rootLandscapeIds/0",
+          "value": "unknown-landscape"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ROOT_LANDSCAPE_SET_MISMATCH",
+        "ROOT_LANDSCAPE_UNKNOWN"
+      ]
+    },
+    {
+      "id": "root-role-mismatch",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/landscapes/0/role",
+          "value": "module"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA",
+        "MODULE_PARENT_UNKNOWN",
+        "ROOT_LANDSCAPE_ROLE",
+        "ROOT_LANDSCAPE_SET_MISMATCH"
+      ]
+    },
+    {
+      "id": "duplicate-landscape",
+      "mutations": [
+        {
+          "operation": "copy-item",
+          "pointer": "/landscapes",
+          "index": 0
+        }
+      ],
+      "expectedErrorCodes": [
+        "DUPLICATE_ARTIFACT_PATH",
+        "DUPLICATE_LANDSCAPE_ID"
+      ]
+    },
+    {
+      "id": "undeclared-scope-dimension",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/scopeDimensions/1"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SCOPE_DIMENSION_UNKNOWN",
+        "SCOPE_DIMENSION_UNKNOWN",
+        "SCOPE_DIMENSION_UNKNOWN",
+        "SCOPE_DIMENSION_UNKNOWN"
+      ]
+    },
+    {
+      "id": "undeclared-scope-value",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/offeredScopes/0/scope/courseProfile",
+          "value": "UNKNOWN"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SCOPE_VALUE_UNKNOWN",
+        "SINGLE_VIEW_SCOPE_MISMATCH"
+      ]
+    },
+    {
+      "id": "unknown-offering-view",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/offeredScopes/0/viewResolution/viewIds/0",
+          "value": "unknown-view"
+        }
+      ],
+      "expectedErrorCodes": [
+        "OFFERING_VIEW_UNKNOWN",
+        "ROOT_DEFAULT_VIEW_REQUIRED"
+      ]
+    },
+    {
+      "id": "single-resolution-not-exact",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/offeredScopes/0/scope/courseProfile",
+          "value": "LK"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SINGLE_VIEW_SCOPE_MISMATCH"
+      ]
+    },
+    {
+      "id": "merge-member-order-mismatch",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/offeredScopes/1/viewResolution/viewIds",
+          "value": [
+            "de-he-gym-sekii-math-lk-view",
+            "de-he-gym-sekii-math-gk-view"
+          ]
+        }
+      ],
+      "expectedErrorCodes": [
+        "MERGE_MEMBER_MISMATCH"
+      ]
+    },
+    {
+      "id": "view-without-explicit-offering",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/offeredScopes/1"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VIEW_UNOFFERED"
+      ]
+    },
+    {
+      "id": "duplicate-offering",
+      "mutations": [
+        {
+          "operation": "copy-item",
+          "pointer": "/offeredScopes",
+          "index": 0
+        }
+      ],
+      "expectedErrorCodes": [
+        "DUPLICATE_OFFERED_SCOPE",
+        "DUPLICATE_OFFERING_ID"
+      ]
+    },
+    {
+      "id": "duplicate-deck-locale",
+      "mutations": [
+        {
+          "operation": "copy-item",
+          "pointer": "/decks",
+          "index": 0
+        }
+      ],
+      "expectedErrorCodes": [
+        "DUPLICATE_ARTIFACT_PATH",
+        "DUPLICATE_DECK_KEY"
+      ]
+    },
+    {
+      "id": "external-runtime-resource",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/resources/0/delivery",
+          "value": "external"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA",
+        "CATALOG_SCHEMA",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "missing-memory-capability",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/capabilities/1"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CAPABILITY_MISMATCH"
+      ]
+    },
+    {
+      "id": "embedded-fragment-without-ownership",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/landscapes",
+          "value": {
+            "landscapeId": "embedded-math-fragment",
+            "role": "embedded-fragment",
+            "artifactPath": "data/dependencies/math-fragment.json",
+            "locale": "de-DE",
+            "frameworkId": "canonical-gymnasium-math",
+            "subject": "Mathematik"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "artifact-path-collision",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/views/0/artifactPath",
+          "value": "data/canonical/mathematik.landscape.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "DUPLICATE_ARTIFACT_PATH"
+      ]
+    },
+    {
+      "id": "unknown-default-offering",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/landscapes/0/defaultOfferingId",
+          "value": "unknown-offering"
+        }
+      ],
+      "expectedErrorCodes": [
+        "DEFAULT_OFFERING_UNKNOWN"
+      ]
+    },
+    {
+      "id": "external-runtime-dependency",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/dependencyClosure/externalRuntimeDependencies",
+          "value": "org.example.math@1.0.0"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "merge-dimension-not-composite",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/offeredScopes/1/viewResolution/mergeDimension",
+          "value": "stage"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MERGE_DIMENSION_INVALID"
+      ]
+    },
+    {
+      "id": "duplicate-view",
+      "mutations": [
+        {
+          "operation": "copy-item",
+          "pointer": "/views",
+          "index": 0
+        }
+      ],
+      "expectedErrorCodes": [
+        "DUPLICATE_ARTIFACT_PATH",
+        "DUPLICATE_VIEW_ID",
+        "DUPLICATE_VIEW_SCOPE"
+      ]
+    },
+    {
+      "id": "portable-artifact-case-collision",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/views/0/artifactPath",
+          "value": "Data/canonical/mathematik.landscape.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "PORTABLE_ARTIFACT_PATH_COLLISION"
+      ]
+    },
+    {
+      "id": "root-without-default-offering",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/landscapes/0/defaultOfferingId"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ROOT_DEFAULT_OFFERING_REQUIRED"
+      ]
+    },
+    {
+      "id": "unknown-resource-kind-v1",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/resources/0/resourceKind",
+          "value": "audio"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CAPABILITY_MISMATCH",
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "exam-nodes-before-payload-validation",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/capabilities",
+          "value": "examNodes"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA",
+        "EXAM_NODES_UNVERIFIED"
+      ]
+    },
+    {
+      "id": "oversized-subject-string",
+      "mutations": [
+        {
+          "operation": "set",
+          "pointer": "/landscapes/0/subject",
+          "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "module-not-reachable-from-root",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/landscapes",
+          "value": {
+            "landscapeId": "orphan-module",
+            "role": "module",
+            "artifactPath": "data/canonical/orphan.landscape.json",
+            "locale": "de-DE",
+            "frameworkId": "example-framework",
+            "subject": "Orphan",
+            "parentLandscapeId": "unknown-parent"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "MODULE_PARENT_UNKNOWN"
+      ]
+    },
+    {
+      "id": "fragment-owner-landscape-unknown",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/landscapes",
+          "value": {
+            "landscapeId": "embedded-fragment",
+            "role": "embedded-fragment",
+            "artifactPath": "data/dependencies/fragment.json",
+            "locale": "de-DE",
+            "frameworkId": "example-framework",
+            "subject": "Fragment",
+            "ownership": {
+              "ownerPackageId": "org.example.curriculum",
+              "sourceReleaseId": "org.example.curriculum@1.0.0",
+              "fragmentOfLandscapeId": "missing-owner-landscape",
+              "recordDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          }
+        },
+        {
+          "operation": "append",
+          "pointer": "/capabilities",
+          "value": "embeddedDependencies"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FRAGMENT_LANDSCAPE_UNKNOWN"
+      ]
+    },
+    {
+      "id": "goal-visualization-without-goal",
+      "mutations": [
+        {
+          "operation": "remove",
+          "pointer": "/resources/0/goalId"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CATALOG_SCHEMA"
+      ]
+    },
+    {
+      "id": "module-parent-cycle",
+      "mutations": [
+        {
+          "operation": "append",
+          "pointer": "/landscapes",
+          "value": {
+            "landscapeId": "cycle-module-a",
+            "role": "module",
+            "artifactPath": "data/canonical/cycle-a.landscape.json",
+            "locale": "de-DE",
+            "frameworkId": "example-framework",
+            "subject": "Cycle A",
+            "parentLandscapeId": "cycle-module-b"
+          }
+        },
+        {
+          "operation": "append",
+          "pointer": "/landscapes",
+          "value": {
+            "landscapeId": "cycle-module-b",
+            "role": "module",
+            "artifactPath": "data/canonical/cycle-b.landscape.json",
+            "locale": "de-DE",
+            "frameworkId": "example-framework",
+            "subject": "Cycle B",
+            "parentLandscapeId": "cycle-module-a"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "MODULE_PARENT_CYCLE",
+        "MODULE_PARENT_CYCLE"
+      ]
+    }
+  ]
+}

@@ -243,6 +243,8 @@ Der physische Pfad ist nicht die Semantik. `metadata/manifest.json` weist jeder 
 
 Der Loader folgt ausschließlich diesen Rollen und den im Manifest angegebenen Pfaden. Er scannt nicht beliebige JSON-Dateien.
 
+Normative JSON-Dateien tragen eine explizite Schema-Zuordnung. Der paketlokale Schema-Katalog löst öffentliche Schema-IDs ausschließlich auf inventarisierte, gehashte Paketpfade auf; er ist selbst keine Trust Root. Die unterstützte Vertragsversion des Consumers, die gebundenen Bootstrap-Schemas und deren Hashes haben Vorrang vor paketgelieferten Behauptungen. Netzwerkzugriffe zur Schemaauflösung sind verboten.
+
 ### Paketlokaler Runtime-Katalog
 
 `data/runtime/catalog.json` ersetzt die heutige Abhängigkeit von `curricula/curriculum_manifest.json` und repository-spezifischen Registries. Er enthält mindestens:
@@ -257,6 +259,8 @@ Der Loader folgt ausschließlich diesen Rollen und den im Manifest angegebenen P
 - optionale Capability-Marker, etwa `compositionViews`, `memoryCards`, `goalVisualizations` oder `examNodes`.
 
 Die kanonischen Landschaften im Runtime-Paket enthalten bereits fertig kompilierte effektive `applicability`-Werte und andere zur Laufzeit benötigte Ableitungen. Die Runtime wertet keine Authoring-Mappings oder Provenienzregister aus, um Sichtbarkeit nachträglich zu berechnen.
+
+Jeder angebotene Einstiegsscope benennt seine Auflösung explizit: entweder genau eine Composition View oder eine geordnete, vertraglich definierte Zusammenführung mehrerer Views. Jeder auswählbare Root besitzt mindestens ein Angebot und eine eindeutige Default-Auflösung. Dateinamen, Array-Reihenfolge, Verzeichnisstruktur oder fest codierte Fallbacks dürfen keine implizite View auswählen; nicht auswählbare Module und eingebettete Fragmente müssen von einem Root aus nachweisbar erreichbar sein.
 
 ### Alleiniger fachlicher Input
 

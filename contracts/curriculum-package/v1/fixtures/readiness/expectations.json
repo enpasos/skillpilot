@@ -1,0 +1,170 @@
+{
+  "fixtureFormatVersion": 1,
+  "cases": [
+    {
+      "id": "legacy-subject-export-remains-legacy",
+      "input": "legacy.manifest.json",
+      "expectedStatus": "not-ready-legacy",
+      "expectedDialect": "legacy-subject-export",
+      "expectedPrimaryReasonCode": "TARGET_PROFILE_NOT_DECLARED",
+      "expectedResults": {
+        "input.parse-and-container-safe": "pass",
+        "identity.target-contract-declared": "fail",
+        "contract.manifest-schema": "not-applicable",
+        "contract.target-values": "not-applicable",
+        "contract.trusted-bindings": "not-applicable",
+        "contract.profile-roles": "not-applicable",
+        "contract.inventory-bytes": "not-applicable",
+        "catalog.runtime-catalog": "not-applicable",
+        "catalog.offline-schema-catalog": "not-applicable",
+        "standalone.hard-reference-closure": "not-applicable",
+        "standalone.content-digest": "not-applicable",
+        "consumer.hermetic-package-only": "not-applicable"
+      },
+      "expectedBlockingCheckIds": [
+        "identity.target-contract-declared",
+        "contract.manifest-schema",
+        "contract.target-values",
+        "contract.trusted-bindings",
+        "contract.profile-roles",
+        "contract.inventory-bytes",
+        "catalog.runtime-catalog",
+        "catalog.offline-schema-catalog",
+        "standalone.hard-reference-closure",
+        "standalone.content-digest",
+        "consumer.hermetic-package-only"
+      ]
+    },
+    {
+      "id": "single-target-marker-is-invalid",
+      "input": "partial-target.manifest.json",
+      "expectedStatus": "invalid",
+      "expectedDialect": "partial-target-claim",
+      "expectedPrimaryReasonCode": "PARTIAL_TARGET_CLAIM",
+      "expectedResults": {
+        "input.parse-and-container-safe": "pass",
+        "identity.target-contract-declared": "fail",
+        "contract.manifest-schema": "fail",
+        "contract.target-values": "not-applicable",
+        "contract.trusted-bindings": "not-applicable",
+        "contract.profile-roles": "not-applicable",
+        "contract.inventory-bytes": "not-applicable",
+        "catalog.runtime-catalog": "not-applicable",
+        "catalog.offline-schema-catalog": "not-applicable",
+        "standalone.hard-reference-closure": "not-applicable",
+        "standalone.content-digest": "not-applicable",
+        "consumer.hermetic-package-only": "not-applicable"
+      },
+      "expectedBlockingCheckIds": [
+        "identity.target-contract-declared",
+        "contract.manifest-schema",
+        "contract.target-values",
+        "contract.trusted-bindings",
+        "contract.profile-roles",
+        "contract.inventory-bytes",
+        "catalog.runtime-catalog",
+        "catalog.offline-schema-catalog",
+        "standalone.hard-reference-closure",
+        "standalone.content-digest",
+        "consumer.hermetic-package-only"
+      ]
+    },
+    {
+      "id": "explicit-legacy-readiness-marker-remains-legacy",
+      "input": "legacy-marked.manifest.json",
+      "expectedStatus": "not-ready-legacy",
+      "expectedDialect": "legacy-subject-export",
+      "expectedPrimaryReasonCode": "TARGET_PROFILE_NOT_DECLARED",
+      "expectedResults": {
+        "input.parse-and-container-safe": "pass",
+        "identity.target-contract-declared": "fail",
+        "contract.manifest-schema": "not-applicable",
+        "contract.target-values": "not-applicable",
+        "contract.trusted-bindings": "not-applicable",
+        "contract.profile-roles": "not-applicable",
+        "contract.inventory-bytes": "not-applicable",
+        "catalog.runtime-catalog": "not-applicable",
+        "catalog.offline-schema-catalog": "not-applicable",
+        "standalone.hard-reference-closure": "not-applicable",
+        "standalone.content-digest": "not-applicable",
+        "consumer.hermetic-package-only": "not-applicable"
+      },
+      "expectedBlockingCheckIds": [
+        "identity.target-contract-declared",
+        "contract.manifest-schema",
+        "contract.target-values",
+        "contract.trusted-bindings",
+        "contract.profile-roles",
+        "contract.inventory-bytes",
+        "catalog.runtime-catalog",
+        "catalog.offline-schema-catalog",
+        "standalone.hard-reference-closure",
+        "standalone.content-digest",
+        "consumer.hermetic-package-only"
+      ]
+    },
+    {
+      "id": "formal-contract-is-still-incomplete",
+      "input": "target-contract-only.manifest.json",
+      "expectedStatus": "not-ready-incomplete",
+      "expectedDialect": "full-standalone-v1-candidate",
+      "expectedPrimaryReasonCode": "REQUIRED_GATES_NOT_EVALUATED",
+      "expectedResults": {
+        "input.parse-and-container-safe": "pass",
+        "identity.target-contract-declared": "pass",
+        "contract.manifest-schema": "pass",
+        "contract.target-values": "pass",
+        "contract.trusted-bindings": "pass",
+        "contract.profile-roles": "pass",
+        "contract.inventory-bytes": "not-evaluated",
+        "catalog.runtime-catalog": "not-evaluated",
+        "catalog.offline-schema-catalog": "not-evaluated",
+        "standalone.hard-reference-closure": "not-evaluated",
+        "standalone.content-digest": "not-evaluated",
+        "consumer.hermetic-package-only": "not-evaluated"
+      },
+      "expectedBlockingCheckIds": [
+        "contract.inventory-bytes",
+        "catalog.runtime-catalog",
+        "catalog.offline-schema-catalog",
+        "standalone.hard-reference-closure",
+        "standalone.content-digest",
+        "consumer.hermetic-package-only"
+      ]
+    },
+    {
+      "id": "unsupported-manifest-remains-unsupported",
+      "input": "unsupported.manifest.json",
+      "expectedStatus": "unsupported",
+      "expectedDialect": "unsupported",
+      "expectedPrimaryReasonCode": "UNSUPPORTED_TARGET_CONTRACT",
+      "expectedResults": {
+        "input.parse-and-container-safe": "pass",
+        "identity.target-contract-declared": "fail",
+        "contract.manifest-schema": "not-applicable",
+        "contract.target-values": "not-applicable",
+        "contract.trusted-bindings": "not-applicable",
+        "contract.profile-roles": "not-applicable",
+        "contract.inventory-bytes": "not-applicable",
+        "catalog.runtime-catalog": "not-applicable",
+        "catalog.offline-schema-catalog": "not-applicable",
+        "standalone.hard-reference-closure": "not-applicable",
+        "standalone.content-digest": "not-applicable",
+        "consumer.hermetic-package-only": "not-applicable"
+      },
+      "expectedBlockingCheckIds": [
+        "identity.target-contract-declared",
+        "contract.manifest-schema",
+        "contract.target-values",
+        "contract.trusted-bindings",
+        "contract.profile-roles",
+        "contract.inventory-bytes",
+        "catalog.runtime-catalog",
+        "catalog.offline-schema-catalog",
+        "standalone.hard-reference-closure",
+        "standalone.content-digest",
+        "consumer.hermetic-package-only"
+      ]
+    }
+  ]
+}

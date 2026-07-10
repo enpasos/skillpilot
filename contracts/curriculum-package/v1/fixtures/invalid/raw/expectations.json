@@ -6,6 +6,24 @@
       "path": "duplicate-json-object-key.manifest.json",
       "expectedErrorCode": "JSON_DUPLICATE_KEY",
       "expectedDuplicateKey": "packageId"
+    },
+    {
+      "id": "nonfinite-nan",
+      "path": "nonfinite-nan.manifest.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "NaN"
+    },
+    {
+      "id": "nonfinite-positive-infinity",
+      "path": "nonfinite-positive-infinity.manifest.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "Infinity"
+    },
+    {
+      "id": "nonfinite-negative-infinity",
+      "path": "nonfinite-negative-infinity.manifest.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "-Infinity"
     }
   ]
 }

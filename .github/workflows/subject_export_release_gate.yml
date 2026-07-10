@@ -46,6 +46,9 @@ on:
       - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
       - 'scripts/validate_curriculum_package_contracts.py'
+      - 'scripts/validate_curriculum_runtime_catalog_contract.py'
+      - 'scripts/validate_curriculum_schema_catalog_contract.py'
+      - 'scripts/evaluate_curriculum_package_readiness.py'
   pull_request:
     branches: [ main ]
     paths:
@@ -79,6 +82,9 @@ on:
       - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
       - 'scripts/validate_curriculum_package_contracts.py'
+      - 'scripts/validate_curriculum_runtime_catalog_contract.py'
+      - 'scripts/validate_curriculum_schema_catalog_contract.py'
+      - 'scripts/evaluate_curriculum_package_readiness.py'
 
 permissions:
   contents: read
@@ -116,7 +122,12 @@ jobs:
         run: pip install jsonschema==4.26.0
 
       - name: Validate curriculum package contracts
-        run: cd .. && python scripts/validate_curriculum_package_contracts.py
+        run: |
+          cd ..
+          python -B scripts/validate_curriculum_package_contracts.py
+          python -B scripts/validate_curriculum_runtime_catalog_contract.py
+          python -B scripts/validate_curriculum_schema_catalog_contract.py
+          python -B scripts/evaluate_curriculum_package_readiness.py --self-test
 
       - name: Run subject export release gate
         env:
@@ -143,6 +154,7 @@ jobs:
             tmp/exports/m5-subject-export-summary.md
             tmp/exports/validation/subject-export-package-validation-report.json
             tmp/exports/validation/subject-export-package-validation-report.md
+            tmp/exports/readiness/*-readiness-report.json
             tmp/exports/link-audit/subject-export-source-link-audit.json
             tmp/exports/link-audit/subject-export-source-link-audit.md
             tmp/exports/reproducibility/m5-export-reproducibility-report.json

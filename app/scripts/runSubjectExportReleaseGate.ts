@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
@@ -154,6 +154,41 @@ const stableSortJson = (value: JsonValue): JsonValue => {
 
 const stableJson = (value: JsonValue) => `${JSON.stringify(stableSortJson(value), null, 2)}\n`
 
+const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue> => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`Expected JSON object: ${context}`)
+  }
+  return value
+}
+
+const publicationVerdict = () => {
+  const indexPath = resolve(repoRoot, 'tmp/exports/publication/subject-export-publication-index.json')
+  const index = jsonObject(JSON.parse(readFileSync(indexPath, 'utf8')) as JsonValue, 'subject-export publication index')
+  const validationScope = index.validationScope
+  const legacyExportGatePassed = index.legacyExportGatePassed
+  const targetReadinessStatus = index.targetReadinessStatus
+  const standaloneProfileReady = index.standaloneProfileReady
+  const targetReadiness = jsonObject(index.targetReadiness ?? null, 'publication target readiness')
+  const readinessInputIntegrity = targetReadiness.inputIntegrity
+  if (
+    validationScope !== 'legacy-subject-export'
+    || legacyExportGatePassed !== true
+    || targetReadinessStatus !== 'not-ready-legacy'
+    || standaloneProfileReady !== false
+    || readinessInputIntegrity !== 'pass'
+  ) {
+    throw new Error('Publication index does not contain a passing, input-safe legacy target-readiness verdict.')
+  }
+  return {
+    validationScope,
+    legacyExportGatePassed,
+    targetReadinessStatus,
+    standaloneProfileReady,
+    readinessInputIntegrity,
+    publicationIndexPath: repoRelative(indexPath),
+  }
+}
+
 const shellQuote = (value: string) => (/\s/u.test(value) ? JSON.stringify(value) : value)
 
 const runStep = (name: string, command: string, args: string[]): StepResult => {
@@ -216,8 +251,13 @@ const buildMarkdownReport = (params: {
   enforceCleanSourceTree: boolean
   auditSourceLinks: boolean
   strictSourceLinks: boolean
+  validationScope: string
+  legacyExportGatePassed: boolean
+  targetReadinessStatus: string
+  standaloneProfileReady: boolean
+  readinessInputIntegrity: string
   steps: StepResult[]
-}) => `# Subject Export Release Gate
+}) => `# Legacy Subject Export Release Gate
 
 Generated at: ${params.generatedAt}
 
@@ -230,6 +270,16 @@ Clean source tree enforced: ${params.enforceCleanSourceTree}
 Live source-link audit enabled: ${params.auditSourceLinks}
 
 Strict source-link audit: ${params.strictSourceLinks}
+
+Validation scope: \`${params.validationScope}\`
+
+Legacy export gate passed: \`${String(params.legacyExportGatePassed)}\`
+
+\`full-standalone-v1\` readiness: \`${params.targetReadinessStatus}\`
+
+Standalone profile ready: \`${String(params.standaloneProfileReady)}\`
+
+Readiness input integrity: \`${params.readinessInputIntegrity}\`
 
 ## Steps
 
@@ -290,6 +340,7 @@ const main = () => {
     options.version,
     ...(options.auditSourceLinks ? ['--require-link-audit'] : []),
   ]))
+  const verdict = publicationVerdict()
 
   const outputDir = resolve(repoRoot, 'tmp/exports/release-gate')
   mkdirSync(outputDir, { recursive: true })
@@ -302,7 +353,13 @@ const main = () => {
     enforceCleanSourceTree: options.enforceCleanSourceTree,
     auditSourceLinks: options.auditSourceLinks,
     strictSourceLinks: options.strictSourceLinks,
-    passed: true,
+    validationScope: verdict.validationScope,
+    passed: verdict.legacyExportGatePassed,
+    legacyExportGatePassed: verdict.legacyExportGatePassed,
+    targetReadinessStatus: verdict.targetReadinessStatus,
+    standaloneProfileReady: verdict.standaloneProfileReady,
+    readinessInputIntegrity: verdict.readinessInputIntegrity,
+    publicationIndexPath: verdict.publicationIndexPath,
     steps,
     reportPath: repoRelative(reportPath),
     markdownReportPath: repoRelative(markdownReportPath),
@@ -316,6 +373,11 @@ const main = () => {
     enforceCleanSourceTree: options.enforceCleanSourceTree,
     auditSourceLinks: options.auditSourceLinks,
     strictSourceLinks: options.strictSourceLinks,
+    validationScope: verdict.validationScope,
+    legacyExportGatePassed: verdict.legacyExportGatePassed,
+    targetReadinessStatus: verdict.targetReadinessStatus,
+    standaloneProfileReady: verdict.standaloneProfileReady,
+    readinessInputIntegrity: verdict.readinessInputIntegrity,
     steps,
   }))
   process.stdout.write(stableJson(report as unknown as JsonValue))
