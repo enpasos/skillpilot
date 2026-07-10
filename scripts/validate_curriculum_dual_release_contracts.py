@@ -1341,7 +1341,14 @@ def mutation_cases() -> list[MutationCase]:
     case("registry-membership-missing", "registry", "REGISTRY_SCHEMA", lambda value: registry_entry(value, "goal.contains")["rdfMapping"]["construction"].pop("membership"))
     case("registry-requires-core-missing", "registry", "REGISTRY_CORE_PREREQUISITE_INCOMPLETE", lambda value: registry_entry(value, "goal.requires")["rdfMapping"]["construction"]["membership"]["coreProjection"].update({"resourceClass": "lp:LP_0030065"}))
     case("registry-contains-core-mismatch", "registry", "REGISTRY_CORE_PROJECTION_MISMATCH", lambda value: registry_entry(value, "goal.contains")["rdfMapping"]["construction"]["membership"]["coreProjection"].update({"ownerPredicate": "sp:containsGoal"}))
-    case("registry-complete-json-with-descendant", "registry", "REGISTRY_JSON_LITERAL_DESCENDANT_CONFLICT", lambda value: value["entries"].append({**copy.deepcopy(registry_entry(value, "goal.id")), "entryId": "goal.extended-data-child", "pathPattern": "/goals/*/extendedData/foo"}))
+    case(
+        "registry-complete-json-with-descendant",
+        "registry",
+        "REGISTRY_JSON_LITERAL_DESCENDANT_CONFLICT",
+        lambda value: registry_entry(value, "goal.extended-data")["rdfMapping"][
+            "canonicalJsonLiteral"
+        ].update({"subtreeProjection": "complete-value"}),
+    )
     case("normalization-nonfinite", "normalization", "NORMALIZATION_SCHEMA", lambda value: set_path(value, ("canonicalJson", "numberPolicy", "finiteOnly"), False))
     case("normalization-collapse-null", "normalization", "NORMALIZATION_SCHEMA", lambda value: set_path(value, ("canonicalJson", "missingNullDefault"), "collapse"))
     case("content-stale-profile", "content_index", "CONTENT_INDEX_BINDING_MISMATCH", lambda value: set_path(value, ("normalizationProfile", "sha256"), "0" * 64))

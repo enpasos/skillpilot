@@ -1,0 +1,138 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+  "closureFormatVersion": "1.0",
+  "releaseBinding": {
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "1.0.0",
+    "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "algorithm": "schema-hard-reference-fixed-point-v1",
+  "fieldSemanticsRegistry": {
+    "id": "skillpilot-fwu-field-semantics-v1",
+    "version": "1.1.0",
+    "sha256": "1fe7360badbd0bf97c7a27f21f0c9b1aa87e8a13e492aaa2bf07aae38337274a"
+  },
+  "definitionDigestProfile": {
+    "id": "canonical-definition-record-v1",
+    "version": "1.0.0",
+    "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+  },
+  "conflictPolicy": {
+    "policyId": "stable-definition-identity-v1",
+    "identityKey": "typed-entity-key",
+    "sameKeySameOwnerSameDigest": "deduplicate",
+    "sameKeyDifferentOwnerOrDigest": "reject-atomically",
+    "installOrderTieBreak": "forbidden",
+    "activeLockOnConflict": "unchanged"
+  },
+  "seeds": [
+    {
+      "kind": "landscape",
+      "id": "math-landscape"
+    }
+  ],
+  "definitions": [
+    {
+      "key": {
+        "kind": "landscape",
+        "id": "math-landscape"
+      },
+      "provision": "owned",
+      "artifactBinding": {
+        "role": "canonical-landscape",
+        "logicalId": "math-landscape",
+        "path": "data/canonical/mathematik.landscape.json",
+        "jsonPointer": ""
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "definitionDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-root"
+      },
+      "provision": "owned",
+      "artifactBinding": {
+        "role": "canonical-landscape",
+        "logicalId": "math-landscape",
+        "path": "data/canonical/mathematik.landscape.json",
+        "jsonPointer": "/goals/0"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "definitionDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-linear"
+      },
+      "provision": "owned",
+      "artifactBinding": {
+        "role": "canonical-landscape",
+        "logicalId": "math-landscape",
+        "path": "data/canonical/mathematik.landscape.json",
+        "jsonPointer": "/goals/1"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "references": [
+    {
+      "source": {
+        "kind": "landscape",
+        "id": "math-landscape"
+      },
+      "sourcePointer": "/goals/0",
+      "registryEntryId": "landscape.goals",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "math-root"
+      },
+      "resolution": "owned"
+    },
+    {
+      "source": {
+        "kind": "landscape",
+        "id": "math-landscape"
+      },
+      "sourcePointer": "/goals/1",
+      "registryEntryId": "landscape.goals",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "math-linear"
+      },
+      "resolution": "owned"
+    },
+    {
+      "source": {
+        "kind": "goal",
+        "id": "math-root"
+      },
+      "sourcePointer": "/goals/0/contains/0",
+      "registryEntryId": "goal.contains",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "math-linear"
+      },
+      "resolution": "owned"
+    }
+  ],
+  "embeddedFragments": [],
+  "externalRuntimeDependencies": [],
+  "unresolvedHardReferences": [],
+  "definitionIndexDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "closureDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "conflictCheck": {
+    "candidateDefinitionCount": 3,
+    "deduplicatedDefinitionCount": 0,
+    "conflicts": [],
+    "result": "compatible"
+  },
+  "closureStatus": "complete"
+}

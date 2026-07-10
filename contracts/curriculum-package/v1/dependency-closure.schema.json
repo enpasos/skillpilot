@@ -1,0 +1,650 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+  "title": "SkillPilot dependency closure v1",
+  "description": "Closed fixed-point inventory of every runtime definition and schema-classified reference in a full-standalone-v1 curriculum release.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "closureFormatVersion",
+    "releaseBinding",
+    "algorithm",
+    "fieldSemanticsRegistry",
+    "definitionDigestProfile",
+    "conflictPolicy",
+    "seeds",
+    "definitions",
+    "references",
+    "embeddedFragments",
+    "externalRuntimeDependencies",
+    "unresolvedHardReferences",
+    "definitionIndexDigest",
+    "closureDigest",
+    "conflictCheck",
+    "closureStatus"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json"
+    },
+    "closureFormatVersion": {
+      "const": "1.0"
+    },
+    "releaseBinding": {
+      "$ref": "#/$defs/releaseBinding"
+    },
+    "algorithm": {
+      "const": "schema-hard-reference-fixed-point-v1"
+    },
+    "fieldSemanticsRegistry": {
+      "$ref": "#/$defs/versionedContractBinding"
+    },
+    "definitionDigestProfile": {
+      "$ref": "#/$defs/versionedContractBinding"
+    },
+    "conflictPolicy": {
+      "$ref": "#/$defs/conflictPolicy"
+    },
+    "seeds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100000,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/entityKey"
+      }
+    },
+    "definitions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "items": {
+        "$ref": "#/$defs/definition"
+      }
+    },
+    "references": {
+      "type": "array",
+      "maxItems": 5000000,
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "embeddedFragments": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/embeddedFragment"
+      }
+    },
+    "externalRuntimeDependencies": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "unresolvedHardReferences": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "definitionIndexDigest": {
+      "$ref": "#/$defs/sha256Digest",
+      "description": "Digest of canonically ordered typed definition keys, owners, and definition digests. It does not include this field or releaseBinding.contentDigest."
+    },
+    "closureDigest": {
+      "$ref": "#/$defs/sha256Digest",
+      "description": "Digest of the versioned canonical closure projection. The projection excludes closureDigest and the generated releaseBinding.contentDigest to avoid self-reference."
+    },
+    "conflictCheck": {
+      "$ref": "#/$defs/conflictCheck"
+    },
+    "closureStatus": {
+      "const": "complete"
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+$",
+      "maxLength": 300
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+@(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+      "maxLength": 500
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@+-]*$"
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-[A-Z]{2}|-[0-9]{3})?$",
+      "maxLength": 64
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "jsonPointer": {
+      "oneOf": [
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "maxLength": 2000,
+          "pattern": "^(?:/(?:[^~/]|~[01])*)+$"
+        }
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "releaseBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest"
+      ],
+      "properties": {
+        "releaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "versionedContractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "version": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "globalEntityKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "landscape",
+            "goal",
+            "view",
+            "resource"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "landscapeScopedEntityKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "landscapeId",
+        "id"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "program-unit",
+            "placement",
+            "competency-entry"
+          ]
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "deckEntityKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "locale"
+      ],
+      "properties": {
+        "kind": {
+          "const": "deck"
+        },
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "locale": {
+          "$ref": "#/$defs/locale"
+        }
+      }
+    },
+    "cardEntityKey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "deckId",
+        "locale",
+        "id"
+      ],
+      "properties": {
+        "kind": {
+          "const": "card"
+        },
+        "deckId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "locale": {
+          "$ref": "#/$defs/locale"
+        },
+        "id": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "entityKey": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/globalEntityKey"
+        },
+        {
+          "$ref": "#/$defs/landscapeScopedEntityKey"
+        },
+        {
+          "$ref": "#/$defs/deckEntityKey"
+        },
+        {
+          "$ref": "#/$defs/cardEntityKey"
+        }
+      ]
+    },
+    "artifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "logicalId",
+        "path",
+        "jsonPointer"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "runtime-catalog",
+            "canonical-landscape",
+            "embedded-goal-dependency",
+            "composition-view",
+            "card-deck",
+            "resource-index",
+            "migration-aliases"
+          ]
+        },
+        "logicalId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "jsonPointer": {
+          "$ref": "#/$defs/jsonPointer"
+        }
+      }
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "provision",
+        "artifactBinding",
+        "ownerPackageId",
+        "definitionDigest"
+      ],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/entityKey"
+        },
+        "provision": {
+          "enum": [
+            "owned",
+            "embedded"
+          ]
+        },
+        "artifactBinding": {
+          "$ref": "#/$defs/artifactBinding"
+        },
+        "ownerPackageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "sourceReleaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "sourceContentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "fragmentId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "definitionDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "provision": {
+                "const": "embedded"
+              }
+            },
+            "required": [
+              "provision"
+            ]
+          },
+          "then": {
+            "required": [
+              "sourceReleaseId",
+              "sourceContentDigest",
+              "fragmentId"
+            ]
+          },
+          "else": {
+            "allOf": [
+              {
+                "not": {
+                  "required": [
+                    "sourceReleaseId"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "sourceContentDigest"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "required": [
+                    "fragmentId"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "hardReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "sourcePointer",
+        "registryEntryId",
+        "strength",
+        "target",
+        "resolution"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/entityKey"
+        },
+        "sourcePointer": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "registryEntryId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "strength": {
+          "const": "hard"
+        },
+        "target": {
+          "$ref": "#/$defs/entityKey"
+        },
+        "resolution": {
+          "enum": [
+            "owned",
+            "embedded"
+          ]
+        }
+      }
+    },
+    "externalTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "uri"
+      ],
+      "properties": {
+        "kind": {
+          "const": "external-uri"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://",
+          "maxLength": 2000
+        }
+      }
+    },
+    "softReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "sourcePointer",
+        "registryEntryId",
+        "strength",
+        "target",
+        "resolution",
+        "reason"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/entityKey"
+        },
+        "sourcePointer": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "registryEntryId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "strength": {
+          "const": "soft"
+        },
+        "target": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/entityKey"
+            },
+            {
+              "$ref": "#/$defs/externalTarget"
+            }
+          ]
+        },
+        "resolution": {
+          "const": "not-followed-soft"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        }
+      }
+    },
+    "reference": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/hardReference"
+        },
+        {
+          "$ref": "#/$defs/softReference"
+        }
+      ]
+    },
+    "embeddedFragment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fragmentId",
+        "ownerPackageId",
+        "sourceReleaseId",
+        "sourceContentDigest",
+        "fragmentOfLandscapeId",
+        "completeness",
+        "completeOwnerLandscape",
+        "definitionKeys",
+        "fragmentDigest"
+      ],
+      "properties": {
+        "fragmentId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "ownerPackageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "sourceReleaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "sourceContentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "fragmentOfLandscapeId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "completeness": {
+          "const": "transitive-hard-reference-fragment"
+        },
+        "completeOwnerLandscape": {
+          "const": false
+        },
+        "definitionKeys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/entityKey"
+          }
+        },
+        "fragmentDigest": {
+          "$ref": "#/$defs/sha256Digest",
+          "description": "Digest of the source binding and canonically ordered definition keys/digests for this fragment; excludes fragmentDigest itself."
+        }
+      }
+    },
+    "conflictPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policyId",
+        "identityKey",
+        "sameKeySameOwnerSameDigest",
+        "sameKeyDifferentOwnerOrDigest",
+        "installOrderTieBreak",
+        "activeLockOnConflict"
+      ],
+      "properties": {
+        "policyId": {
+          "const": "stable-definition-identity-v1"
+        },
+        "identityKey": {
+          "const": "typed-entity-key"
+        },
+        "sameKeySameOwnerSameDigest": {
+          "const": "deduplicate"
+        },
+        "sameKeyDifferentOwnerOrDigest": {
+          "const": "reject-atomically"
+        },
+        "installOrderTieBreak": {
+          "const": "forbidden"
+        },
+        "activeLockOnConflict": {
+          "const": "unchanged"
+        }
+      }
+    },
+    "compatibleConflictCheck": {
+      "type": "object",
+      "description": "Environment-independent identity check inside this release. Cross-package installation repeats the declared conflictPolicy against the active package lock.",
+      "additionalProperties": false,
+      "required": [
+        "candidateDefinitionCount",
+        "deduplicatedDefinitionCount",
+        "conflicts",
+        "result"
+      ],
+      "properties": {
+        "candidateDefinitionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "deduplicatedDefinitionCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000,
+          "description": "Number of byte-identical same-key/same-owner/same-digest candidates removed before emitting definitions; candidateDefinitionCount equals emitted definitions plus this count."
+        },
+        "conflicts": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "result": {
+          "const": "compatible"
+        }
+      }
+    },
+    "conflictCheck": {
+      "$ref": "#/$defs/compatibleConflictCheck"
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
   "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
   "packageVersion": "1.0.0",
-  "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+  "contentDigest": "sha256:2ab859bcc7ea7ae161d1b53b923aafe3fc0aca672b85dd79b2ddde52b11f7917",
   "contracts": {
     "packageFormatVersion": "1.0",
     "runtimeContractVersion": "1.0",
@@ -28,7 +28,7 @@
     },
     "fieldSemanticsRegistry": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
-      "sha256": "5dd04ecaf616a08b6e23257d76d6821434db494d411680c10030a51bf602d973"
+      "sha256": "1fe7360badbd0bf97c7a27f21f0c9b1aa87e8a13e492aaa2bf07aae38337274a"
     },
     "semanticNormalForm": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
@@ -80,22 +80,22 @@
   },
   "normalForms": {
     "json": {
-      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
-      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "contentIndexSha256": "ce034a3796f67d0c6805eefff60676e945362e18e2c03cea64a51ba7fea3c2c6",
+      "contentDigest": "sha256:2ab859bcc7ea7ae161d1b53b923aafe3fc0aca672b85dd79b2ddde52b11f7917",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
     },
     "fwu-owl": {
-      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
-      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "contentIndexSha256": "ce034a3796f67d0c6805eefff60676e945362e18e2c03cea64a51ba7fea3c2c6",
+      "contentDigest": "sha256:2ab859bcc7ea7ae161d1b53b923aafe3fc0aca672b85dd79b2ddde52b11f7917",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
     },
     "reconstructed-json": {
-      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
-      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "contentIndexSha256": "ce034a3796f67d0c6805eefff60676e945362e18e2c03cea64a51ba7fea3c2c6",
+      "contentDigest": "sha256:2ab859bcc7ea7ae161d1b53b923aafe3fc0aca672b85dd79b2ddde52b11f7917",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
@@ -107,112 +107,3561 @@
     "fileSha256": "4444444444444444444444444444444444444444444444444444444444444444"
   },
   "tools": [
-    { "role": "json-package-validator", "name": "skillpilot-json-package-validator", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000001" },
-    { "role": "ontology-exporter", "name": "skillpilot-fwu-exporter", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000002" },
-    { "role": "ontology-validator", "name": "robot-hermit-shacl", "version": "1.9.8", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000003" },
-    { "role": "reverse-compiler", "name": "skillpilot-fwu-reverse-compiler", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000004" },
-    { "role": "semantic-normalizer", "name": "skillpilot-semantic-normalizer", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000005" },
-    { "role": "equivalence-comparator", "name": "skillpilot-equivalence-comparator", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000006" },
-    { "role": "consumer-smoke-test", "name": "skillpilot-package-smoke-test", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000007" },
-    { "role": "reproducibility-runner", "name": "skillpilot-reproducibility-runner", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000008" }
+    {
+      "role": "json-package-validator",
+      "name": "skillpilot-json-package-validator",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000001"
+    },
+    {
+      "role": "ontology-exporter",
+      "name": "skillpilot-fwu-exporter",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000002"
+    },
+    {
+      "role": "ontology-validator",
+      "name": "robot-hermit-shacl",
+      "version": "1.9.8",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000003"
+    },
+    {
+      "role": "reverse-compiler",
+      "name": "skillpilot-fwu-reverse-compiler",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000004"
+    },
+    {
+      "role": "semantic-normalizer",
+      "name": "skillpilot-semantic-normalizer",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000005"
+    },
+    {
+      "role": "equivalence-comparator",
+      "name": "skillpilot-equivalence-comparator",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000006"
+    },
+    {
+      "role": "consumer-smoke-test",
+      "name": "skillpilot-package-smoke-test",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000007"
+    },
+    {
+      "role": "reproducibility-runner",
+      "name": "skillpilot-reproducibility-runner",
+      "version": "1.0.0",
+      "sourceCommit": "0123456789abcdef0123456789abcdef01234567",
+      "executableSha256": "5000000000000000000000000000000000000000000000000000000000000008"
+    }
   ],
   "roleSummaries": [
     {
-      "role": "canonical-landscape",
-      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "logicalDigests": { "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c" },
+      "role": "binary-asset",
+      "counts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "logicalDigests": {
+        "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834",
+        "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834",
+        "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834"
+      },
       "passed": true
     },
     {
-      "role": "composition-view",
-      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "logicalDigests": { "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79" },
+      "role": "canonical-landscape",
+      "counts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "logicalDigests": {
+        "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c",
+        "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c",
+        "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c"
+      },
       "passed": true
     },
     {
       "role": "card-deck",
-      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "logicalDigests": { "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079" },
+      "counts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "logicalDigests": {
+        "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079",
+        "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079",
+        "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079"
+      },
+      "passed": true
+    },
+    {
+      "role": "card-index",
+      "counts": {
+        "json": 0,
+        "fwuOwl": 0,
+        "reconstructedJson": 0
+      },
+      "logicalDigests": {
+        "json": "13bb050cca40c5280f227eced48e17bfdb0fec32a82211754cab9876212b1994",
+        "fwuOwl": "13bb050cca40c5280f227eced48e17bfdb0fec32a82211754cab9876212b1994",
+        "reconstructedJson": "13bb050cca40c5280f227eced48e17bfdb0fec32a82211754cab9876212b1994"
+      },
+      "passed": true
+    },
+    {
+      "role": "composition-view",
+      "counts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "logicalDigests": {
+        "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79",
+        "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79",
+        "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79"
+      },
+      "passed": true
+    },
+    {
+      "role": "composition-view-index",
+      "counts": {
+        "json": 0,
+        "fwuOwl": 0,
+        "reconstructedJson": 0
+      },
+      "logicalDigests": {
+        "json": "ac6160d3f620789410a2a0388e386efcf05b5a9e95530015988c1bb232697a81",
+        "fwuOwl": "ac6160d3f620789410a2a0388e386efcf05b5a9e95530015988c1bb232697a81",
+        "reconstructedJson": "ac6160d3f620789410a2a0388e386efcf05b5a9e95530015988c1bb232697a81"
+      },
+      "passed": true
+    },
+    {
+      "role": "dependency-closure",
+      "counts": {
+        "json": 0,
+        "fwuOwl": 0,
+        "reconstructedJson": 0
+      },
+      "logicalDigests": {
+        "json": "f74037a3f3a4f17c0ba6d0abede81934dafcf3643c2c9a4f7563b398574f99b7",
+        "fwuOwl": "f74037a3f3a4f17c0ba6d0abede81934dafcf3643c2c9a4f7563b398574f99b7",
+        "reconstructedJson": "f74037a3f3a4f17c0ba6d0abede81934dafcf3643c2c9a4f7563b398574f99b7"
+      },
+      "passed": true
+    },
+    {
+      "role": "migration-aliases",
+      "counts": {
+        "json": 0,
+        "fwuOwl": 0,
+        "reconstructedJson": 0
+      },
+      "logicalDigests": {
+        "json": "30d3aa459372a07ff8b2657b4990cf2cf09997896ef0eb6a8ab48f73b27c29f3",
+        "fwuOwl": "30d3aa459372a07ff8b2657b4990cf2cf09997896ef0eb6a8ab48f73b27c29f3",
+        "reconstructedJson": "30d3aa459372a07ff8b2657b4990cf2cf09997896ef0eb6a8ab48f73b27c29f3"
+      },
       "passed": true
     },
     {
       "role": "resource-index",
-      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "logicalDigests": { "json": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85", "fwuOwl": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85", "reconstructedJson": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85" },
+      "counts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "logicalDigests": {
+        "json": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85",
+        "fwuOwl": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85",
+        "reconstructedJson": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85"
+      },
       "passed": true
     },
     {
-      "role": "binary-asset",
-      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "logicalDigests": { "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834" },
+      "role": "runtime-catalog",
+      "counts": {
+        "json": 0,
+        "fwuOwl": 0,
+        "reconstructedJson": 0
+      },
+      "logicalDigests": {
+        "json": "a0819a742f2de41e1e0d8e661e86ada85918df868f4c03e2b9301e02beb7da5c",
+        "fwuOwl": "a0819a742f2de41e1e0d8e661e86ada85918df868f4c03e2b9301e02beb7da5c",
+        "reconstructedJson": "a0819a742f2de41e1e0d8e661e86ada85918df868f4c03e2b9301e02beb7da5c"
+      },
       "passed": true
     }
   ],
   "fieldCoverage": {
     "registry": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
-      "sha256": "5dd04ecaf616a08b6e23257d76d6821434db494d411680c10030a51bf602d973"
+      "sha256": "1fe7360badbd0bf97c7a27f21f0c9b1aa87e8a13e492aaa2bf07aae38337274a"
     },
     "normalForm": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
       "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
     },
-    "registeredFieldCount": 17,
-    "coveredFieldCount": 17,
+    "registeredFieldCount": 324,
+    "coveredFieldCount": 324,
     "entries": [
-      { "entryId": "landscape.goals", "schemaPathPattern": "/goals", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000001" },
-      { "entryId": "goal.id", "schemaPathPattern": "/goals/*/id", "semanticClass": "scalar", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000002" },
-      { "entryId": "goal.title", "schemaPathPattern": "/goals/*/title", "semanticClass": "scalar", "rdfStrategy": "fwu-core", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000003" },
-      { "entryId": "goal.description", "schemaPathPattern": "/goals/*/description", "semanticClass": "scalar", "rdfStrategy": "fwu-core", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000004" },
-      { "entryId": "goal.contains", "schemaPathPattern": "/goals/*/contains", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000005" },
-      { "entryId": "goal.requires", "schemaPathPattern": "/goals/*/requires", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000006" },
-      { "entryId": "goal.resource-links", "schemaPathPattern": "/goals/*/resourceLinks", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000007" },
-      { "entryId": "goal.dimension-tags", "schemaPathPattern": "/goals/*/dimensionTags", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000008" },
-      { "entryId": "goal.extended-data", "schemaPathPattern": "/goals/*/extendedData", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000009" },
-      { "entryId": "goal.exam-data", "schemaPathPattern": "/goals/*/examData", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000a" },
-      { "entryId": "goal.scoring-steps", "schemaPathPattern": "/goals/*/examData/scoring/steps", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000b" },
-      { "entryId": "view.root-nodes", "schemaPathPattern": "/rootNodes", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000c" },
-      { "entryId": "view.children", "schemaPathPattern": "/rootNodes/**/children", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000d" },
-      { "entryId": "card-deck.cards", "schemaPathPattern": "/cards", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000e" },
-      { "entryId": "goal.tags", "schemaPathPattern": "/goals/*/tags", "semanticClass": "set", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000f" },
-      { "entryId": "resource.public-reference", "schemaPathPattern": "/assets/*/publicUrl", "semanticClass": "binary-reference", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000010" },
-      { "entryId": "report.generated-at", "schemaPathPattern": "/generatedAt", "semanticClass": "generated-non-semantic", "rdfStrategy": "excluded-generated", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000011" }
+      {
+        "entryId": "card-deck.cards",
+        "schemaPathPattern": "/cards",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0528973ce1bf1a551acf25daaaadbf86a09da635c0fc80003b27f24eedd2514f"
+      },
+      {
+        "entryId": "card-deck.format-version",
+        "schemaPathPattern": "/deckFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "407024e65a515c519eaaa949bf9a03f02654bda6e1306cbaf1e9b53715ab6ffd"
+      },
+      {
+        "entryId": "card-deck.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "765b100e6a405385f028eede64a78096e6cff7c2c2a194844505a93ee89ff1ea"
+      },
+      {
+        "entryId": "card-index.artifact-path",
+        "schemaPathPattern": "/decks/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c99f9306fe7b6fa786b825b6fb54a57728bf07a1eaec03a2a67a05433caa9a3e"
+      },
+      {
+        "entryId": "card-index.card-count",
+        "schemaPathPattern": "/decks/*/cardCount",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0961b6a1265e3f7cde3744bd2a50bf1bd9672a39782337d0249af80c341fc46a"
+      },
+      {
+        "entryId": "card-index.deck-id",
+        "schemaPathPattern": "/decks/*/deckId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "86cf2547914dacce1b08b1280fb90bcc12712e18ce17e46e17f5817adc232d6e"
+      },
+      {
+        "entryId": "card-index.decks",
+        "schemaPathPattern": "/decks",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "35fbf0c80db643f1ef26487026df2907b923a414e3d72501082dd930e4ced1b6"
+      },
+      {
+        "entryId": "card-index.format-version",
+        "schemaPathPattern": "/indexFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a076e1a0dcbcd566a2007ad3a2d3a208e468bbd5014e9c2f83e67400c82f4146"
+      },
+      {
+        "entryId": "card-index.landscape-id",
+        "schemaPathPattern": "/decks/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e6c91550986a1b4e6cc6a9834b7c5e9961f71ee3f8db0abaf3ad28ca0d8b9c00"
+      },
+      {
+        "entryId": "card-index.language",
+        "schemaPathPattern": "/decks/*/language",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3ee89c3fb8c10bdb020f5f5f14f2aab6bbcce42ee19a95baf97c33b5917418e6"
+      },
+      {
+        "entryId": "card-index.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2edf20568cf186bd50e7f86f099883d84c35caf663e52cdc8cb704ae8201a0d2"
+      },
+      {
+        "entryId": "card-index.title",
+        "schemaPathPattern": "/decks/*/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "82843ab215eb540c0012a611c836d66deaf31ecad7968c131f27a0e0774785b3"
+      },
+      {
+        "entryId": "card.back",
+        "schemaPathPattern": "/cards/*/back",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ac5312cca06c07553e271160f69472824bce036af15916779b346c68b5bacaf4"
+      },
+      {
+        "entryId": "card.category",
+        "schemaPathPattern": "/cards/*/category",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "766ca1d12dbcbcc33db0c0cec4266edbbdab23a05fbcd175f3a3ded83f1c6b6e"
+      },
+      {
+        "entryId": "card.front",
+        "schemaPathPattern": "/cards/*/front",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "014c8213227fe151808fcfa6dd991e2f5b48478722a1beed5cff2af28ed0ef7f"
+      },
+      {
+        "entryId": "card.id",
+        "schemaPathPattern": "/cards/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "122adf63333171ddc4442914cb3f487149790e1cfe1f5ee596e779d820bf8d0f"
+      },
+      {
+        "entryId": "card.tags",
+        "schemaPathPattern": "/cards/*/tags",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "dc6cd13e6f32934e44a0d06f09832bffba07d22bb038eb50067343ed2f8f7679"
+      },
+      {
+        "entryId": "closure.algorithm",
+        "schemaPathPattern": "/algorithm",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "84d563679fcbe5b8c01320aa0e610e48f67aaf7310dca5af30b5527a2ea81ffb"
+      },
+      {
+        "entryId": "closure.closure-digest",
+        "schemaPathPattern": "/closureDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "591723fb48e42b84d06a6d105ac158e1c86de91e600fb81b579e00b6330f328f"
+      },
+      {
+        "entryId": "closure.conflict-check",
+        "schemaPathPattern": "/conflictCheck",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "92588915a3a301d111195a5de75b8e5b7494987b73a760d1b07ed0ab646fd9c6"
+      },
+      {
+        "entryId": "closure.conflict-check-candidate-definition-count",
+        "schemaPathPattern": "/conflictCheck/candidateDefinitionCount",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2c35dbda51cec95c7239dae9613c66bbd4b9e83b2f22c35c8eb03cac95db0908"
+      },
+      {
+        "entryId": "closure.conflict-check-deduplicated-definition-count",
+        "schemaPathPattern": "/conflictCheck/deduplicatedDefinitionCount",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "cd9c5119a4aa037cf8931e304d9f0022e8f30b295593780fc1f71b39d52376bc"
+      },
+      {
+        "entryId": "closure.conflict-policy",
+        "schemaPathPattern": "/conflictPolicy",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "34ad16df0c7b423cd74c4b69d04fe0914fa721f2557347c3bee4af3df9978833"
+      },
+      {
+        "entryId": "closure.conflict-policy-active-lock-on-conflict",
+        "schemaPathPattern": "/conflictPolicy/activeLockOnConflict",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "03671dc0bb0c444e9a51bf1e107cb6d977fa4ed471afa430e5d0899b0e808ce6"
+      },
+      {
+        "entryId": "closure.conflict-policy-identity-key",
+        "schemaPathPattern": "/conflictPolicy/identityKey",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2cd6aed713cbbaa9104886f9df0e9d3bc06af34d58d5333a20114e81f0828f6b"
+      },
+      {
+        "entryId": "closure.conflict-policy-install-order-tie-break",
+        "schemaPathPattern": "/conflictPolicy/installOrderTieBreak",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1038abbe0eda5832cc6a36ceace84529b457fbd6c7789fae75ad8dc283479d35"
+      },
+      {
+        "entryId": "closure.conflict-policy-policy-id",
+        "schemaPathPattern": "/conflictPolicy/policyId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "132bad71df8ac7ab8ba5771062d5da3647206eff878eaeccc2b8a92e580e2474"
+      },
+      {
+        "entryId": "closure.conflict-policy-same-key-different-owner-or-digest",
+        "schemaPathPattern": "/conflictPolicy/sameKeyDifferentOwnerOrDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b09c3fef3a86cbd8b0a1abf41cb3188bf9114e6c8bc6eb7c0d18e3696bd5ddc9"
+      },
+      {
+        "entryId": "closure.conflict-policy-same-key-same-owner-same-digest",
+        "schemaPathPattern": "/conflictPolicy/sameKeySameOwnerSameDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "971fa0f47fec110ef5a60277295e3e50c563f05d6706d91a7a7e3a9ca12e7097"
+      },
+      {
+        "entryId": "closure.conflict-result",
+        "schemaPathPattern": "/conflictCheck/result",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e53babadb31b07ce6910e75bc36bcf34101ece4ebce17ed55cf055303445de28"
+      },
+      {
+        "entryId": "closure.conflicts",
+        "schemaPathPattern": "/conflictCheck/conflicts",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "27befbbeb61938a3d671e33840e8ddb9eea0a6bef084b649e52b746dc3bddb25"
+      },
+      {
+        "entryId": "closure.definition-artifact-binding",
+        "schemaPathPattern": "/definitions/*/artifactBinding",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "61c244931cfd32c4c82ae1fc43cae91a74fd9ec6c623400eece2a1237ad079b2"
+      },
+      {
+        "entryId": "closure.definition-definition-digest",
+        "schemaPathPattern": "/definitions/*/definitionDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d9b990f01bbfab629979d102e009ec884d5a87675cd843a5bacea00cb74d993c"
+      },
+      {
+        "entryId": "closure.definition-digest-profile",
+        "schemaPathPattern": "/definitionDigestProfile",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ab0ebd0d3513d9d8e4123cd022d7a1e3057d1bbbf0d9c1b36a4f2e379f2fbda8"
+      },
+      {
+        "entryId": "closure.definition-digest-profile-id",
+        "schemaPathPattern": "/definitionDigestProfile/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8f8f397bde0d397272741d815fa03da3312c993a847b100edf5484db4ee6d2f7"
+      },
+      {
+        "entryId": "closure.definition-digest-profile-sha256",
+        "schemaPathPattern": "/definitionDigestProfile/sha256",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a063b6720a75ffb35f317ccf4bbaf9cf9fbc001bdbf3888ebb0339a9456f3e4f"
+      },
+      {
+        "entryId": "closure.definition-digest-profile-version",
+        "schemaPathPattern": "/definitionDigestProfile/version",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a516afdacafe67cb92c870a42120fc5be40006fcba0ebce158bbe41943490c0b"
+      },
+      {
+        "entryId": "closure.definition-fragment-id",
+        "schemaPathPattern": "/definitions/*/fragmentId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d3cc3f114704c9bdfafbe16b811d5cb17cf5b2a61f38b31b6974d48b315d7e87"
+      },
+      {
+        "entryId": "closure.definition-index-digest",
+        "schemaPathPattern": "/definitionIndexDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "963d50d2259d8e10fcc1a0ef9c2263aed8b8a7c5631c21feacb0f3f7e01d124d"
+      },
+      {
+        "entryId": "closure.definition-key",
+        "schemaPathPattern": "/definitions/*/key",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "478a0539688fda06329ca208c280920eeff79a059808d3ce7067456ab6f738dc"
+      },
+      {
+        "entryId": "closure.definition-owner-package-id",
+        "schemaPathPattern": "/definitions/*/ownerPackageId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e536e5d5e8e078ef496891417621643297d4dac08223c4f1fcce1bf5af09147e"
+      },
+      {
+        "entryId": "closure.definition-provision",
+        "schemaPathPattern": "/definitions/*/provision",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a04783878f1ef7f5d467387edf38b5b51727b4ff2788722e4776c01c04ddf125"
+      },
+      {
+        "entryId": "closure.definition-source-content-digest",
+        "schemaPathPattern": "/definitions/*/sourceContentDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "374ba72301ef551bbbc0109eb8c773696c155427402736dfdfcc089c5da33f91"
+      },
+      {
+        "entryId": "closure.definition-source-release-id",
+        "schemaPathPattern": "/definitions/*/sourceReleaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0c369f9d6d6c97d30c89a0cb3c8a3674a62264f786f5789981143b404ce3b9f1"
+      },
+      {
+        "entryId": "closure.definitions",
+        "schemaPathPattern": "/definitions",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fb197ebb73d2187be93c66e90a7ed728668d1e636b5503e28a1d75b225eb6aa1"
+      },
+      {
+        "entryId": "closure.embedded-fragments",
+        "schemaPathPattern": "/embeddedFragments",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "43f54d040da865b423f2230fdc52176c23428d35ba22e366c3623386642c9901"
+      },
+      {
+        "entryId": "closure.external-runtime-dependencies",
+        "schemaPathPattern": "/externalRuntimeDependencies",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "dc4c7f398f993aa47484b20a492f1f08e8d8c461cb2eb1028dfb88b609a94340"
+      },
+      {
+        "entryId": "closure.field-semantics-registry",
+        "schemaPathPattern": "/fieldSemanticsRegistry",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "148077d4a8793e0fcbc814c9577fab71c2ef753c1e73cce43c3bf36d1210ee52"
+      },
+      {
+        "entryId": "closure.field-semantics-registry-id",
+        "schemaPathPattern": "/fieldSemanticsRegistry/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f345612f0ab2e3978c7e225b3188faeabef5bc8fa68be2aa940e42c8d09b00eb"
+      },
+      {
+        "entryId": "closure.field-semantics-registry-sha256",
+        "schemaPathPattern": "/fieldSemanticsRegistry/sha256",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "69dbd3b222bb91d5ac8062f1a6e8c570f982482078495edb38337127053b1f1a"
+      },
+      {
+        "entryId": "closure.field-semantics-registry-version",
+        "schemaPathPattern": "/fieldSemanticsRegistry/version",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c8e7b9d926a1934fe3d7f8725a0350576357914aea33386e495f1e206eadd835"
+      },
+      {
+        "entryId": "closure.fragment-complete-owner-landscape",
+        "schemaPathPattern": "/embeddedFragments/*/completeOwnerLandscape",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c35eed978122656a580fb21be5a72b787ac2bf61438c4c0c5750d8444fb64eb7"
+      },
+      {
+        "entryId": "closure.fragment-completeness",
+        "schemaPathPattern": "/embeddedFragments/*/completeness",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "84d5a9f509a0bef467fb435071cfca1e9c19efe071328ab46e365de1abf80885"
+      },
+      {
+        "entryId": "closure.fragment-definition-key-deck-id",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys/*/deckId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c3a53a83e27d105068ebe24b0727bf88d633fbb343d4c447f939f5ed8da8f2c8"
+      },
+      {
+        "entryId": "closure.fragment-definition-key-id",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6029ed7b754ae8846f14f41461f2e638b768ab32f33dedd8c79c1c7b36746205"
+      },
+      {
+        "entryId": "closure.fragment-definition-key-kind",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys/*/kind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "71ca12f7e0b5358236fb1d65ba9376d6c33e35af04cd07df214be3bbc79bea02"
+      },
+      {
+        "entryId": "closure.fragment-definition-key-landscape-id",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2fccd5d1e87fc296090fb4a81f0925f3f0bef12e77d5253f2686e34b3279521a"
+      },
+      {
+        "entryId": "closure.fragment-definition-key-locale",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys/*/locale",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f0ca07ca9fe507ee14ea0a19add0a4acc531b0e9417c1357accc2a6273d606d9"
+      },
+      {
+        "entryId": "closure.fragment-definition-keys",
+        "schemaPathPattern": "/embeddedFragments/*/definitionKeys",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "333bb281fb2acd822eaa85f24bb242309eb85667a455c95dab933283ec2a34cc"
+      },
+      {
+        "entryId": "closure.fragment-fragment-digest",
+        "schemaPathPattern": "/embeddedFragments/*/fragmentDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1f210cbd31d3b68486a169c3f80da51be44f6d38ffc0542a24fca0f721dc3f7e"
+      },
+      {
+        "entryId": "closure.fragment-fragment-id",
+        "schemaPathPattern": "/embeddedFragments/*/fragmentId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1b66dcc8016b777c37e84cf7249b1769feb81d12e2f2c112f1d32f438d32fee4"
+      },
+      {
+        "entryId": "closure.fragment-fragment-of-landscape-id",
+        "schemaPathPattern": "/embeddedFragments/*/fragmentOfLandscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d3910571e6e8cf471f85539cb2403911809238d76259b89500e733509e9387c4"
+      },
+      {
+        "entryId": "closure.fragment-owner-package-id",
+        "schemaPathPattern": "/embeddedFragments/*/ownerPackageId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a5a12f8fb98b2e09e72818b4ef4d4b9bfd9d9767baa0f118e6021fe1300a48e5"
+      },
+      {
+        "entryId": "closure.fragment-source-content-digest",
+        "schemaPathPattern": "/embeddedFragments/*/sourceContentDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2a9fe692fabf7b8a30eed33bff0a52afa4545106eb5c37c16c787ba3c8a5687f"
+      },
+      {
+        "entryId": "closure.fragment-source-release-id",
+        "schemaPathPattern": "/embeddedFragments/*/sourceReleaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "24ade51cebaa87437838bc6ca66696d73a8e5969ad3720bde07dd7be3e9858f5"
+      },
+      {
+        "entryId": "closure.reference-reason",
+        "schemaPathPattern": "/references/*/reason",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "94dabddbc1e45cfb75d92ffc9269842468a7c9de5f21ab938bf18fc9310cd460"
+      },
+      {
+        "entryId": "closure.reference-registry-entry",
+        "schemaPathPattern": "/references/*/registryEntryId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "88602e73336bc8d6835b3999230763df845929e347dcd053894ae237a1f43f5b"
+      },
+      {
+        "entryId": "closure.reference-resolution",
+        "schemaPathPattern": "/references/*/resolution",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bc270e2d638f5250345040d2b161d4e54d919d79f0f59d9f2bdc53f045c4f879"
+      },
+      {
+        "entryId": "closure.reference-source",
+        "schemaPathPattern": "/references/*/source",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1b781f1e065c1ee84843a52ae28a8e7f92fd179b6af935094c58b31a4895be24"
+      },
+      {
+        "entryId": "closure.reference-source-pointer",
+        "schemaPathPattern": "/references/*/sourcePointer",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c678fdef9a27f0a41155f5c51274932d5d66d7719851a5c97c9b2a3d10065f4f"
+      },
+      {
+        "entryId": "closure.reference-strength",
+        "schemaPathPattern": "/references/*/strength",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8bc9f60efc33b5f359a320bff01d29883b687cf00a9fecf37f17d279af360dbf"
+      },
+      {
+        "entryId": "closure.reference-target",
+        "schemaPathPattern": "/references/*/target",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "11b1974bc291c892b87d630c32ae8df3eb2807def26d9ac6e6ce41e159a411b9"
+      },
+      {
+        "entryId": "closure.references",
+        "schemaPathPattern": "/references",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a53aa153ea8e7e8b812e84cd68bdbb4eca9c70da89dfce32473fd5b06d8be7d0"
+      },
+      {
+        "entryId": "closure.release-binding",
+        "schemaPathPattern": "/releaseBinding",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0459714fbcee09073f923f11d73c63025a8f11e840586b6ac3f0d018f3e9e246"
+      },
+      {
+        "entryId": "closure.release-content-digest",
+        "schemaPathPattern": "/releaseBinding/contentDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6e4793062a1005afd897b81de0906d23d22a0c5175205ca1774fee26d09be9ca"
+      },
+      {
+        "entryId": "closure.release-package-id",
+        "schemaPathPattern": "/releaseBinding/packageId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "519978c7088555b5377cbce0e58dd1a57baf486bd345b0c6e7b3fcc94c284164"
+      },
+      {
+        "entryId": "closure.release-package-version",
+        "schemaPathPattern": "/releaseBinding/packageVersion",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "885f84934f432cab48ff60eb20b4e0614f5762d1a0863e4d6d975f4cc57c1588"
+      },
+      {
+        "entryId": "closure.release-release-id",
+        "schemaPathPattern": "/releaseBinding/releaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4c623b4d057406e3a33c2efb3fa0a5f22c2a8caf050533a71d30e7c862cb3803"
+      },
+      {
+        "entryId": "closure.seed-deck-id",
+        "schemaPathPattern": "/seeds/*/deckId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bcc688d0f42a5db4f3337b38f881811dfc87e6af1f2feae4f55adfcdb297d4ba"
+      },
+      {
+        "entryId": "closure.seed-id",
+        "schemaPathPattern": "/seeds/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4cfc3e1953b4a82a1e1d6a721ae43e09f341f7cd656538dfcc2c85c881f18a32"
+      },
+      {
+        "entryId": "closure.seed-kind",
+        "schemaPathPattern": "/seeds/*/kind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2de321c7adcde4c328c63633a9783baa356bca992c9bb0b41710f266e81c604a"
+      },
+      {
+        "entryId": "closure.seed-landscape-id",
+        "schemaPathPattern": "/seeds/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "461ad6b7c69355d9bcaa070ebdf9c54741623ecdb331e9238537b0785f0cf9fc"
+      },
+      {
+        "entryId": "closure.seed-locale",
+        "schemaPathPattern": "/seeds/*/locale",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "29d17ca0286bb7ab04dfc1beff04141db23c8a094e23270746e695ce3416404b"
+      },
+      {
+        "entryId": "closure.seeds",
+        "schemaPathPattern": "/seeds",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a3a128272b48acdca77902d475a82a96a293dd162632c981bcf3886cbdce0f7d"
+      },
+      {
+        "entryId": "closure.status",
+        "schemaPathPattern": "/closureStatus",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "547a7888da8bf7519f7b18920c5b9f5ac932b1e4e1c277c512dd45e65a4d96fc"
+      },
+      {
+        "entryId": "closure.unresolved-hard-references",
+        "schemaPathPattern": "/unresolvedHardReferences",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5d64250efe43fd6f13267e392783305d2d26af4ee193cd05985df667f203fca1"
+      },
+      {
+        "entryId": "competency-entry.dimension",
+        "schemaPathPattern": "/competencyCatalog/*/dimension",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8376d830bd57690016278e316c9c111367a97fac7e474d04f4270d184dee8020"
+      },
+      {
+        "entryId": "competency-entry.id",
+        "schemaPathPattern": "/competencyCatalog/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8c73297804393ce4d27e1185a882a3e302b4c29fe84eb38f46ae5c3d88e50e43"
+      },
+      {
+        "entryId": "competency-entry.label",
+        "schemaPathPattern": "/competencyCatalog/*/label",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c4f20f5e4bd1d5430bdb28f09e4231ad5b2aee33a0ca62c28f88f197c003446d"
+      },
+      {
+        "entryId": "composition-view-index.format-version",
+        "schemaPathPattern": "/indexFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fed11a4e60ba9ff7d6bfbc0e7e5d6196681b33cdb98a0de5c950b86135395449"
+      },
+      {
+        "entryId": "composition-view-index.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "790a9cac715bb13ddc9ca1dca7e3519756b8fe7201b86ce86994a6c11f88b265"
+      },
+      {
+        "entryId": "composition-view.format-version",
+        "schemaPathPattern": "/viewFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0b6b5c68d44196eace3f4cea04b23a89b1267b9c12d3996cb38a76cb1ed07597"
+      },
+      {
+        "entryId": "composition-view.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "12bb31c2b2905084b886579f09324d35d55d7714f0ce3fab59e79542c5d87fd2"
+      },
+      {
+        "entryId": "deck.deck-id",
+        "schemaPathPattern": "/deckId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "076c67b661e48ddab486bb915e2237cf31caafead5ddc73220d785786e908695"
+      },
+      {
+        "entryId": "deck.landscape-id",
+        "schemaPathPattern": "/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1ed4dc28e90eb19fdcc5865e8a5033515a850eb6cbace7a318ddc9a272916a76"
+      },
+      {
+        "entryId": "deck.language",
+        "schemaPathPattern": "/language",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "7aa9c55096cb4ea204233e82b82359dd4f0ffc2045aefefae018b8980727466f"
+      },
+      {
+        "entryId": "deck.title",
+        "schemaPathPattern": "/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a134368fb04f08bd657b3b1e1ab8d496a54ee135f58603b687909a421338b751"
+      },
+      {
+        "entryId": "dependency-closure.format-version",
+        "schemaPathPattern": "/closureFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a93d677da427503ac00c9fb9d8b869342b16e29e40aa701f5552e52a49d4a851"
+      },
+      {
+        "entryId": "dependency-closure.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "31c4c1937edc2688bf960b881a7f76794d5c17e38335bdf4da4a2394e4edbccd"
+      },
+      {
+        "entryId": "filter.id",
+        "schemaPathPattern": "/filters/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "443ec62a56baa2a4d2c70e0936fbb0749158f7afbc07b9a766a21870e7e96913"
+      },
+      {
+        "entryId": "filter.label",
+        "schemaPathPattern": "/filters/*/label",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "be815eb1bc1043b9f901de45efb77c639efc400a0495df64e72b59ec0562ee6d"
+      },
+      {
+        "entryId": "goal.applicability",
+        "schemaPathPattern": "/goals/*/applicability",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f9404c8642d73332530610d188d316f4e28c4b81d494df9e7a15a8054c0abd04"
+      },
+      {
+        "entryId": "goal.competency-refs",
+        "schemaPathPattern": "/goals/*/competencyRefs",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6aed78ea9df651c7b906ba18b43672e05025d5078d03f1d2d9735c73fbba5da3"
+      },
+      {
+        "entryId": "goal.contains",
+        "schemaPathPattern": "/goals/*/contains",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "61377e79090ff745b0cc460acdd7322107f80f3d218db5a54eda0509890189c7"
+      },
+      {
+        "entryId": "goal.core",
+        "schemaPathPattern": "/goals/*/core",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d61f91e7a6034a68ad450fba1eec45d5c6927358bfada46fb97dcf29a9613191"
+      },
+      {
+        "entryId": "goal.course-level",
+        "schemaPathPattern": "/goals/*/courseLevel",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "13f104e53fc616eb14ca2e72c4289a10722664834498f223995bbdba1667332d"
+      },
+      {
+        "entryId": "goal.description",
+        "schemaPathPattern": "/goals/*/description",
+        "semanticClass": "scalar",
+        "rdfStrategy": "fwu-core",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b7b32ce0c0388ad4309434f674c99b65b97f51e72f10deb3a946ba237fa681f0"
+      },
+      {
+        "entryId": "goal.description-en",
+        "schemaPathPattern": "/goals/*/descriptionEn",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3614a8e609a818ca4dd69375eaaf5d7078e1879624b158ba71425d538a07df06"
+      },
+      {
+        "entryId": "goal.dimension-tags",
+        "schemaPathPattern": "/goals/*/dimensionTags",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "efb1ac678aa67fcfcde4297ae980340dd773cd0e348099b016679986d1f7f9c2"
+      },
+      {
+        "entryId": "goal.exam-covered-goals",
+        "schemaPathPattern": "/goals/*/examData/coveredGoalIds",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d6a126fe73dc47289c6f39da257a35f536952ae93c8b1d3681de9275993009b9"
+      },
+      {
+        "entryId": "goal.exam-data",
+        "schemaPathPattern": "/goals/*/examData",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6f3f8a3ed90940b509cd5b4bc7f44817c0975101f39c414559dfcf386db2c96b"
+      },
+      {
+        "entryId": "goal.exam-source-artifact",
+        "schemaPathPattern": "/goals/*/examData/sourceArtifactPath",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "dc7c1536e3d3ecdfbd1469f06ee1969f58cdd141bef6a40025043718538520db"
+      },
+      {
+        "entryId": "goal.examples",
+        "schemaPathPattern": "/goals/*/examples",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "26a1d5a7c423de73af5638484501e27d9fee56064720f7ea9ba87b3d8333a6c8"
+      },
+      {
+        "entryId": "goal.experiment-data",
+        "schemaPathPattern": "/goals/*/experimentData",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "95c2953abed771de1863611f2e413a2b11fc0bbfef41de7d3b2966aed7902f4a"
+      },
+      {
+        "entryId": "goal.extended-data",
+        "schemaPathPattern": "/goals/*/extendedData",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5eb0068ec07af3d4f1aad4fcfb65a3b25712fc8d88346410a76ae2636ecbdb72"
+      },
+      {
+        "entryId": "goal.id",
+        "schemaPathPattern": "/goals/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "52989143b36afe76fd5f0e30f9ed1849c508894133b9d7090fd86fa3aaf5dfdd"
+      },
+      {
+        "entryId": "goal.kompetenzen",
+        "schemaPathPattern": "/goals/*/kompetenzen",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b0902d2577aaaed108a251915294ef570ca75bfdbfb3d6bb2b6a8d020bc3aeab"
+      },
+      {
+        "entryId": "goal.leitideen",
+        "schemaPathPattern": "/goals/*/leitideen",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e37dc7ad30177f1385011766af0957d82fb74e5e1c7e677d6a50dbdf925c69ab"
+      },
+      {
+        "entryId": "goal.node-kind",
+        "schemaPathPattern": "/goals/*/nodeKind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ab18455c85863a73679ac5230607f098a6066dc6b114e24e1e27f423344f2e55"
+      },
+      {
+        "entryId": "goal.phase",
+        "schemaPathPattern": "/goals/*/phase",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d183ccea5b0501f95189054ba246f62a9729b767a187a27b3695f86df7184138"
+      },
+      {
+        "entryId": "goal.release",
+        "schemaPathPattern": "/goals/*/release",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6603a2279b7d52a80cbd972a61ba5e97f139deba8f0498470ed068d346cedfe7"
+      },
+      {
+        "entryId": "goal.requires",
+        "schemaPathPattern": "/goals/*/requires",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0e291d0ece166cf2873a8e9a1733035b0d899ec2650ca232e50337753c5b666d"
+      },
+      {
+        "entryId": "goal.resource-alt-text",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/altText",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4f026a65e850695a1f667aedddc339ce015d1eb7ae7cde4d12d41cd2eee44614"
+      },
+      {
+        "entryId": "goal.resource-description",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/description",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "17060a8be1a07ee6ec6566867fc963d081cf813beadab5adc78ded3efab224e7"
+      },
+      {
+        "entryId": "goal.resource-lang",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/lang",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "701c6c185ed5747601e1c94b5c49b22b064909e50ef372853b7daead1222fad6"
+      },
+      {
+        "entryId": "goal.resource-license",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/license",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "de448aeb464444d777750ca4c2bf396681c263029200ebaae73f1d9d63d1b8d4"
+      },
+      {
+        "entryId": "goal.resource-links",
+        "schemaPathPattern": "/goals/*/resourceLinks",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0688da110e180d8ca509a7e40fd377f430d5d7a0bc49324ba0c3490434ed198e"
+      },
+      {
+        "entryId": "goal.resource-provider",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/provider",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "23ab5d27c0eac5a5a5677f6079b33e676093e124640c165046f0ea5fd3ec77ec"
+      },
+      {
+        "entryId": "goal.resource-resource-type",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/resourceType",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "260c772caa1705a298460104075e202b7cb28c2d5129a354aa909d8a5c7a0a46"
+      },
+      {
+        "entryId": "goal.resource-review-status",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/reviewStatus",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "69669adbfa87f17a85069edf1b84162c6e6694a6ac43ebcdb76e998def64373c"
+      },
+      {
+        "entryId": "goal.resource-role",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/role",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "31d29e7b2701af7e5d3e8678dff3cfed814425c7988b4e5741af93c5bc998025"
+      },
+      {
+        "entryId": "goal.resource-sections",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/sections",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "689be946a4c205a48d13c3879fa1ab01bda74a15a223f22e5f2be0919069e8c3"
+      },
+      {
+        "entryId": "goal.resource-skillpilot-id",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/skillpilotId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3c1b0ec220d4f0a038719e0800ac0bedf577d194131b38da991e85a5ea3bc602"
+      },
+      {
+        "entryId": "goal.resource-title",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "9e8485451c17be10bedbffec32857974aa6d0f089f9a2e09ac84afe9a91c96f2"
+      },
+      {
+        "entryId": "goal.resource-type",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/type",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0b5f84d66e07709fba1275223803fe99612eeb09a5a1930621ee0f30f9c3e745"
+      },
+      {
+        "entryId": "goal.resource-url",
+        "schemaPathPattern": "/goals/*/resourceLinks/*/url",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6d9298aa242e5918bf3c44845e9e8a8e0cd33a58537b12dc1c96004ca0080e6b"
+      },
+      {
+        "entryId": "goal.scoring-step-description",
+        "schemaPathPattern": "/goals/*/examData/scoring/steps/*/description",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f554f0c2b1b293083163061779cbcbd53f50b540a4d4428c9c45970381a8d535"
+      },
+      {
+        "entryId": "goal.scoring-step-id",
+        "schemaPathPattern": "/goals/*/examData/scoring/steps/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "169a9ddfa3ca64a0b024019dffe766828def5a7b8e55133a274c0daf4b41a599"
+      },
+      {
+        "entryId": "goal.scoring-step-points",
+        "schemaPathPattern": "/goals/*/examData/scoring/steps/*/points",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "505752682615b1856a98ed82a336847115806fd96125fd20018a6b4f3a86549b"
+      },
+      {
+        "entryId": "goal.scoring-steps",
+        "schemaPathPattern": "/goals/*/examData/scoring/steps",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c7219d77153c323ede27f3c4449ddfa300dae14f535ce40aab29c0a1b887da74"
+      },
+      {
+        "entryId": "goal.semantic-atomic",
+        "schemaPathPattern": "/goals/*/semanticAtomic",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "45009a209ca5ce1cf7cc1f18dfdb91ba047a4c8416396014050ecc2227878a10"
+      },
+      {
+        "entryId": "goal.semantic-kind",
+        "schemaPathPattern": "/goals/*/semanticKind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e752eb2c7b2afa5887b86c3d60c459c88ef49b4500abc7bca6a326803fc5c4e9"
+      },
+      {
+        "entryId": "goal.short-key",
+        "schemaPathPattern": "/goals/*/shortKey",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c50ced14dbf92ad16c4cb02b06a789b53ecf8558c9678433b76276e6660869b6"
+      },
+      {
+        "entryId": "goal.source-ref",
+        "schemaPathPattern": "/goals/*/sourceRef",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b4960442aec2aa64ce997ce88e9dd74ae5f0ddc8aacbb2c2160e7843c77bf5d1"
+      },
+      {
+        "entryId": "goal.tags",
+        "schemaPathPattern": "/goals/*/tags",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0a69c9ad3de4f6b2f365a040b770556e967c1e9ccf2d7d72e7579bdbc6641ba6"
+      },
+      {
+        "entryId": "goal.themenfeld",
+        "schemaPathPattern": "/goals/*/themenfeld",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "57edfcced10bb7a6e6f9d43743a39286310cfd61f4f9d790f7e964472853a1a5"
+      },
+      {
+        "entryId": "goal.title",
+        "schemaPathPattern": "/goals/*/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "fwu-core",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5c4132de8cce20afceba07f919fc28c0d97a827e44d267c07dc526b3ba53c3ab"
+      },
+      {
+        "entryId": "goal.title-en",
+        "schemaPathPattern": "/goals/*/titleEn",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bb0e286aeb4412ad3b4d8586dd4c77bc2d81715ac57278d017f9c9615a22d742"
+      },
+      {
+        "entryId": "goal.type",
+        "schemaPathPattern": "/goals/*/type",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "939ea945137e91c7b07612ab48affda620b35c9046ce330d4d0d3f4e3214b3a5"
+      },
+      {
+        "entryId": "goal.vocabulary-source",
+        "schemaPathPattern": "/goals/*/extendedData/vocabularySource",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fbb9ed92ff4f4ab39a991ac7d719b2cc7a9f34324e2f2a713e222f25f5a7ec6d"
+      },
+      {
+        "entryId": "goal.vocabulary-source-en",
+        "schemaPathPattern": "/goals/*/extendedData/vocabularySourceEn",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3625f7060ddfafd098900cfa17d346031ae74bf214ef8dfae7594475b5bc7a83"
+      },
+      {
+        "entryId": "goal.weight",
+        "schemaPathPattern": "/goals/*/weight",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5f06af86f7e25c153f843817f669486b9dee8cecbb41093de556044512f63f5e"
+      },
+      {
+        "entryId": "landscape.compatibility-only",
+        "schemaPathPattern": "/compatibilityOnly",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b987066244f536a576063461d8a934396790b135e389f437f4d3a24c7f461401"
+      },
+      {
+        "entryId": "landscape.competency-catalog",
+        "schemaPathPattern": "/competencyCatalog",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "30bdc503583fe5aaa89ca6ca671cea4924c516b85a5a4888d4b422a734e94c29"
+      },
+      {
+        "entryId": "landscape.country",
+        "schemaPathPattern": "/country",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1603123400724534597453aa04e273080cc6e19298e2f94c6604c70eedfff63c"
+      },
+      {
+        "entryId": "landscape.description",
+        "schemaPathPattern": "/description",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "803f54a274ac8828c39da823ce148f47b74eff9875af139ea4335e2921b44e7c"
+      },
+      {
+        "entryId": "landscape.description-en",
+        "schemaPathPattern": "/descriptionEn",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2da8417547cb00b6cb8149cc869b0249ee7df79cf6c5c8dcf873ec97ccbd55f0"
+      },
+      {
+        "entryId": "landscape.filters",
+        "schemaPathPattern": "/filters",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "82bf923e821223747def1eeb601d8ffd4caabf9ad30fdf85e752438409a37995"
+      },
+      {
+        "entryId": "landscape.format-version",
+        "schemaPathPattern": "/landscapeFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c6e4dfdb6e603ea6acb3c371be5ba81c4f499d8270fceaae17fe5b255348c49f"
+      },
+      {
+        "entryId": "landscape.framework-id",
+        "schemaPathPattern": "/frameworkId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "24c01020d08ffda78189eaa9267821cbb973a6c005e80b0d006c6199e7e2f01d"
+      },
+      {
+        "entryId": "landscape.goal-placements",
+        "schemaPathPattern": "/goalPlacements",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d6b100313a0742b676249627e7928885bd6e5e112444a038572e6091e66dfed2"
+      },
+      {
+        "entryId": "landscape.goals",
+        "schemaPathPattern": "/goals",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a1be20503dddff932167a9b0d80edcaf9f942fb4d33bac02975c2aa303b7dd32"
+      },
+      {
+        "entryId": "landscape.landscape-id",
+        "schemaPathPattern": "/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1caa189696bf6a104eddbdbd94bbd3b49623714fdad7d275cf1ba17438686ec0"
+      },
+      {
+        "entryId": "landscape.legacy-hidden-by-default",
+        "schemaPathPattern": "/legacyHiddenByDefault",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "951da584afe5230b3ec9983dfa7d21aa9ce9a852a5d98ff6f2857130c12530b2"
+      },
+      {
+        "entryId": "landscape.locale",
+        "schemaPathPattern": "/locale",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "55289bf613a1b993a2d0502ba47b370478d0fb0c3a31403512777849a73be10c"
+      },
+      {
+        "entryId": "landscape.program-units",
+        "schemaPathPattern": "/programUnits",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1b49310a12f32e1c739a3a17e93c0210ea096136e7b63cee99e012b3e6085e5f"
+      },
+      {
+        "entryId": "landscape.region",
+        "schemaPathPattern": "/region",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "7c23d458e6aacba7e6c1b4bd4c6e8dbc5447a87c4306d60a218a406f6f5ecf48"
+      },
+      {
+        "entryId": "landscape.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "281a397172e43c5814df3c9a6b549cf9e0192e07b8114c0c0fccab41f634bc4b"
+      },
+      {
+        "entryId": "landscape.school-type",
+        "schemaPathPattern": "/schoolType",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3c7d0dead22484d46bb6679d4e009c5986d12ae2708852977bd3f11712ccad0d"
+      },
+      {
+        "entryId": "landscape.subject",
+        "schemaPathPattern": "/subject",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "67c2d180894dc19f3fc0d61fbe4af7af7359af4facd225050643a690142cc325"
+      },
+      {
+        "entryId": "landscape.title",
+        "schemaPathPattern": "/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "11f4016b878ca5bcf98722ef920279a78b0332562dcdd0edfa8f7ecb558bf786"
+      },
+      {
+        "entryId": "landscape.title-en",
+        "schemaPathPattern": "/titleEn",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5b715f73f7ab532a7445a77d76d34c5a2c4c0a1611ba879380139f3617b57643"
+      },
+      {
+        "entryId": "migration-aliases.format-version",
+        "schemaPathPattern": "/migrationFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f3729170de993abb70e3bcb7fa1d502e374d184074c9e6d66c3f841ec0c84040"
+      },
+      {
+        "entryId": "migration-aliases.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e2c8581f7e23ee286780b45813ac8b688dd676e9883daf950f11917098d43018"
+      },
+      {
+        "entryId": "migration.baseline",
+        "schemaPathPattern": "/baseline",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0197724424a6c7f5e7f48b1066f6775a970414806157ca64b0887761802a8acb"
+      },
+      {
+        "entryId": "migration.baseline-content-digest",
+        "schemaPathPattern": "/baseline/contentDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "510aeee93a1f66905f1a8672b27fe32f7c298a414757fa0690761535e870e437"
+      },
+      {
+        "entryId": "migration.baseline-definition-index-digest",
+        "schemaPathPattern": "/baseline/definitionIndexDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3ee22d09dec58d5f4a275a8504ae6994a71e4b9748bcbbdf50945c2ced042dc9"
+      },
+      {
+        "entryId": "migration.baseline-mode",
+        "schemaPathPattern": "/baseline/mode",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "930ac80878be868e397041582c70a561aab37b6bfe28337d6e7eaa904973a696"
+      },
+      {
+        "entryId": "migration.baseline-package-id",
+        "schemaPathPattern": "/baseline/packageId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6479ed038df28059f22925872217715096af4527b069b8a4328b8057fa3feda3"
+      },
+      {
+        "entryId": "migration.baseline-package-version",
+        "schemaPathPattern": "/baseline/packageVersion",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bf1d99c0324f3552dc262ae4431bde5d1976389a10f68e218bf50acb7735fa98"
+      },
+      {
+        "entryId": "migration.baseline-release-id",
+        "schemaPathPattern": "/baseline/releaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d9fbc5111a74be60350a87331204ff4cad85281c8941789deb719f281a54ad1a"
+      },
+      {
+        "entryId": "migration.current-content-digest",
+        "schemaPathPattern": "/currentRelease/contentDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d7c71d96c3057d8733fe9ed5b0206d5d39197b8133fc61068a7e6ccd56b0efd0"
+      },
+      {
+        "entryId": "migration.current-definition-index-digest",
+        "schemaPathPattern": "/currentRelease/definitionIndexDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "db6ec7adb7c668c1a7e8dec21e48dbf1d82b0832817dc1813b737e32137346a4"
+      },
+      {
+        "entryId": "migration.current-package-id",
+        "schemaPathPattern": "/currentRelease/packageId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "84060b5d72f9a0750b89ca097373c41f204fa9ef6c31358c34f55e2ebcf1bc79"
+      },
+      {
+        "entryId": "migration.current-package-version",
+        "schemaPathPattern": "/currentRelease/packageVersion",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3a2f75bb848639502e495144e578945a868d56ac939b1e4ea1d574fdcb81458c"
+      },
+      {
+        "entryId": "migration.current-release",
+        "schemaPathPattern": "/currentRelease",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1d7c9757e552792544ef242d265e85acc22883c601d4d94dfcb12206046e64c3"
+      },
+      {
+        "entryId": "migration.current-release-id",
+        "schemaPathPattern": "/currentRelease/releaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d4ce17ae2262d579ff773be06b5485f8f1fc974780f9fe77a9cc34849fc9470a"
+      },
+      {
+        "entryId": "migration.digest",
+        "schemaPathPattern": "/migrationDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0ee8ff5f93e0701fa2fae1fe8aa94da8c7542c0621bdb4c243a72bacf40cd911"
+      },
+      {
+        "entryId": "migration.rule-history-policy",
+        "schemaPathPattern": "/rules/*/historyPolicy",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bf3c414bb62658c2887cb376f33c9bd1e0a80c2aabd401a5a8e78c0e0f294192"
+      },
+      {
+        "entryId": "migration.rule-mastery-policy",
+        "schemaPathPattern": "/rules/*/masteryPolicy",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "7e7acd8270ea4ea79c0ff188506ab18d5a528ce732b05ce702d43152314f80a3"
+      },
+      {
+        "entryId": "migration.rule-migration-id",
+        "schemaPathPattern": "/rules/*/migrationId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "15dce88afb0975b30c5a4e2a277175d92b706c207b53b10c2b6a39eb3f057a8b"
+      },
+      {
+        "entryId": "migration.rule-relation",
+        "schemaPathPattern": "/rules/*/relation",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c192440e02e9bac7e396e06cc6cd2cb2ebd143524c9f2bab5e04cac7e056fb3e"
+      },
+      {
+        "entryId": "migration.rule-sources",
+        "schemaPathPattern": "/rules/*/sources",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f4a5a70b5a7fecfefbfbc26256a142ec54122507bcd66c8199bab0c9790b7200"
+      },
+      {
+        "entryId": "migration.rule-targets",
+        "schemaPathPattern": "/rules/*/targets",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "62b8a5ea19fdec695af5805c486854e33f1a342ec4d31abd7dcfbb62875a2a5b"
+      },
+      {
+        "entryId": "migration.rules",
+        "schemaPathPattern": "/rules",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "90e8885185f52804a342c16c04d686e416c9e2e4777480153b935d5e0c03567c"
+      },
+      {
+        "entryId": "migration.source-definition-digest",
+        "schemaPathPattern": "/rules/*/sources/*/definitionDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ca9f2ecf675f741f224e3bdfe1e7059dfc44c360ab23bf8c7afdc66cbbaed694"
+      },
+      {
+        "entryId": "migration.source-goal-id",
+        "schemaPathPattern": "/rules/*/sources/*/goalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d96e89e84fd977e0f70bab6c532ee451b4995636460e0de6d70cce625e481d30"
+      },
+      {
+        "entryId": "migration.source-semantic-body-digest",
+        "schemaPathPattern": "/rules/*/sources/*/semanticBodyDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "29e1043861fb9e511c5ce57de43d93c5aab97db20b9cfa04c82f11d134bad8ec"
+      },
+      {
+        "entryId": "migration.status",
+        "schemaPathPattern": "/migrationStatus",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ab172fa79f653fb596940a22ff5a2dd7b576668f006322e933a9973d774d1581"
+      },
+      {
+        "entryId": "migration.target-definition-digest",
+        "schemaPathPattern": "/rules/*/targets/*/definitionDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "24c7be3d5b92710a00d66085c2d9d26cbf9ba85e795a453cd733c924a5ec53b3"
+      },
+      {
+        "entryId": "migration.target-goal-id",
+        "schemaPathPattern": "/rules/*/targets/*/goalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "992e6119515cca12ad4d676667c46a6f4d9e311d718649666030cd6dfdc7d4ab"
+      },
+      {
+        "entryId": "migration.target-semantic-body-digest",
+        "schemaPathPattern": "/rules/*/targets/*/semanticBodyDigest",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c00f4ae93363f89035da7e08a1ce3132af9b787e686ce7535ff6d5ae9af4b641"
+      },
+      {
+        "entryId": "placement.context",
+        "schemaPathPattern": "/goalPlacements/*/context",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d07735e1dad5afa27c0d5193596a46321d9f5060a62cf2a90b44a68359ddd404"
+      },
+      {
+        "entryId": "placement.goal",
+        "schemaPathPattern": "/goalPlacements/*/goalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ca6fca0cbd8b257357d7fc6c2c2c2ac1f568d44c6f1bbe941d382afde1a6d64a"
+      },
+      {
+        "entryId": "placement.relation",
+        "schemaPathPattern": "/goalPlacements/*/relation",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4a40d1da360d6e85422c1c6aa5058c97e08228d1f97d96f7c224f2ae1cb23c4c"
+      },
+      {
+        "entryId": "placement.unit",
+        "schemaPathPattern": "/goalPlacements/*/unitId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3543ec9c03bcafc22918659a3778a1e9fbe0d8c0d04d130490eab26ac0616e86"
+      },
+      {
+        "entryId": "program-unit.id",
+        "schemaPathPattern": "/programUnits/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e77647d8e2e2fba71a8deb998191bddfb8b516e6a4675c54ab8ee2410aeb5967"
+      },
+      {
+        "entryId": "program-unit.kind",
+        "schemaPathPattern": "/programUnits/*/kind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "274862b82964153efc7433da65311598b60df4ea186715566e49c7fa94f05d13"
+      },
+      {
+        "entryId": "program-unit.label",
+        "schemaPathPattern": "/programUnits/*/label",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f668dddd0a80b357c717b3cf9067f667f8e60c2e74f7d3d3d79095c05a28e46b"
+      },
+      {
+        "entryId": "program-unit.order",
+        "schemaPathPattern": "/programUnits/*/order",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "22bd2b506ac8ef547fd391db4b407d031da9553706af071e6be87c28a32994c9"
+      },
+      {
+        "entryId": "program-unit.parent",
+        "schemaPathPattern": "/programUnits/*/parentUnitId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "70f0ed624be0b31dacb6be6363056441a9f8658662d2d948927cbae15ff0e0ce"
+      },
+      {
+        "entryId": "program-unit.short-label",
+        "schemaPathPattern": "/programUnits/*/shortLabel",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ba8d5b7526d7d57f969c979d542c7bf2b4355a993ef8823170c962c37b941061"
+      },
+      {
+        "entryId": "report.generated-at",
+        "schemaPathPattern": "/generatedAt",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5a21688ad60b0bb0876e0ec0d8ef10780fbe831c6b2cebaa80300ab66df7f624"
+      },
+      {
+        "entryId": "resource-index.format-version",
+        "schemaPathPattern": "/indexFormatVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "265074cfebdb6c3eceb4e87327c86ac686ea7d86240b3bf705be5cb726995412"
+      },
+      {
+        "entryId": "resource-index.resources",
+        "schemaPathPattern": "/resources",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8395a506c3364b6c479c9a24e8a1dbc946afbbdcf16bea8e7bb02137567ee028"
+      },
+      {
+        "entryId": "resource-index.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "539a5763071f0b6e10e76471f81c1ba7d608f483daa1efa078ea79b9fd8b30f0"
+      },
+      {
+        "entryId": "resource.alt-text",
+        "schemaPathPattern": "/resources/*/altText",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f218ef48bfdf690d17c6e405dd48d662817bff59faa019d00c67cab719ce66a0"
+      },
+      {
+        "entryId": "resource.artifact-path",
+        "schemaPathPattern": "/resources/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d4f7eb80a74a015e3cd55b8e5dc7ae42de1b44a61d0224865339d0e89c93dcf5"
+      },
+      {
+        "entryId": "resource.bytes",
+        "schemaPathPattern": "/resources/*/bytes",
+        "semanticClass": "scalar",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "63a0acfc9ef3249a9a7e5aa9da4edb5c980041a9e479755981a5e4faeca5f9ee"
+      },
+      {
+        "entryId": "resource.delivery",
+        "schemaPathPattern": "/resources/*/delivery",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f4b04f86a82af83fca852436af2fbf95c67ae20b7e2bce629afa1e340bd23449"
+      },
+      {
+        "entryId": "resource.description",
+        "schemaPathPattern": "/resources/*/description",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5681051b0813a6caac6108235cb446e017cb052a12dba0cae22a4f19ec012364"
+      },
+      {
+        "entryId": "resource.external-url",
+        "schemaPathPattern": "/resources/*/externalUrl",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6dc51bc76d296380aae61fc036f4e94480bbeb7aa0800055dfeabb8a8cf230c5"
+      },
+      {
+        "entryId": "resource.landscape-id",
+        "schemaPathPattern": "/resources/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "06602be03b7512d14318a749690e4572f746d7bae1cfabfae9c3040c2ee068ea"
+      },
+      {
+        "entryId": "resource.language",
+        "schemaPathPattern": "/resources/*/language",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ecc1d46d667f4527e5b4141bc0cd39dcde7a97ed32fb2d289ec626f24af87c18"
+      },
+      {
+        "entryId": "resource.license",
+        "schemaPathPattern": "/resources/*/license",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "7a4c554de6a1a6fd5f788760ce237638f3b7b0b28a08f95b169a77fe63ae270e"
+      },
+      {
+        "entryId": "resource.media-type",
+        "schemaPathPattern": "/resources/*/mediaType",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8cd5b2f36e476771951256b18ac519cbbb72c05daa53a260fd9d8980ce1c6599"
+      },
+      {
+        "entryId": "resource.order",
+        "schemaPathPattern": "/resources/*/order",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0409e5c04499d816ff6917e33e087f4b38ef0064fdcc32a4cc956e0ec4ba6e3e"
+      },
+      {
+        "entryId": "resource.owner-goal-id",
+        "schemaPathPattern": "/resources/*/ownerGoalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f09c82cc8712b7675daa38cf8031e5130c2ffedbfc86569cda260cd517bb7733"
+      },
+      {
+        "entryId": "resource.provider",
+        "schemaPathPattern": "/resources/*/provider",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fe5e14817ee29af0f5d0d6462000a8faecf8ce1c6b09e537f095c1de7be9b6c8"
+      },
+      {
+        "entryId": "resource.public-reference",
+        "schemaPathPattern": "/resources/*/publicUrl",
+        "semanticClass": "binary-reference",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6028ec12255c9e2017bac00a6eb8257326d20f0334bfaadd48e1d2e545a639fa"
+      },
+      {
+        "entryId": "resource.resource-id",
+        "schemaPathPattern": "/resources/*/resourceId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "bf7da5ad9ee7c7bc17ff3ef8a00b192c95264217c439ed0354e842361db12ec9"
+      },
+      {
+        "entryId": "resource.resource-kind",
+        "schemaPathPattern": "/resources/*/resourceKind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0c901a496e6ecd383bd51b4d2730fdee971375dbc71086e15dbb8281f7b35f94"
+      },
+      {
+        "entryId": "resource.resource-type",
+        "schemaPathPattern": "/resources/*/resourceType",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fccfc4291c6d94100bdb17c9ebe08998e21b3915536ddfa6581849d3084a9788"
+      },
+      {
+        "entryId": "resource.review-status",
+        "schemaPathPattern": "/resources/*/reviewStatus",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4b47622a9b1438c0a1841435a2c14b9ffdbb5e591a82d81b7535f92c97952cd0"
+      },
+      {
+        "entryId": "resource.role",
+        "schemaPathPattern": "/resources/*/role",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "462932b6222ad8e03857c3725459d84663f28868477f56e6f3595c6846e821fe"
+      },
+      {
+        "entryId": "resource.runtime-required",
+        "schemaPathPattern": "/resources/*/runtimeRequired",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f5c671a6eaf5d431b2dab61bd6353b06f5397bd7930434c71290e7984d2b9cea"
+      },
+      {
+        "entryId": "resource.sha256",
+        "schemaPathPattern": "/resources/*/sha256",
+        "semanticClass": "scalar",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c58c0422334f4c28efa5566ff6270f5bc34e038668d42a628429bfd7fa5d1fc0"
+      },
+      {
+        "entryId": "resource.title",
+        "schemaPathPattern": "/resources/*/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "22407fd9ddc8b1b1c1c8c2e898475219a350658b08e4e7ed0f23c6b34c54828a"
+      },
+      {
+        "entryId": "runtime-catalog.catalog-version",
+        "schemaPathPattern": "/catalogVersion",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2f35c12c7b95aff3e9b3f3f95fa554b48acd76abb99eac48eeab46e022cdb557"
+      },
+      {
+        "entryId": "runtime-catalog.schema",
+        "schemaPathPattern": "/$schema",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "74cf7d8d621676ab6d051a5ce13a01a4049a2c078cc8c92b5f56c3300c558ebb"
+      },
+      {
+        "entryId": "runtime.artifact-index-cards-path",
+        "schemaPathPattern": "/artifactIndexes/cardsPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "908eedbb07f828cc12d9c5d6c86a6c9c970e220c78d5124547002a9e16c28ebc"
+      },
+      {
+        "entryId": "runtime.artifact-index-composition-views-path",
+        "schemaPathPattern": "/artifactIndexes/compositionViewsPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "218048896f2b5e179670fcb61b383f7b139e41de09ae6b1429d4b22e1218905c"
+      },
+      {
+        "entryId": "runtime.artifact-index-migration-aliases-path",
+        "schemaPathPattern": "/artifactIndexes/migrationAliasesPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e4f943d4fb190b5922c4f863a66f04a09609ebf80cb0e87d068d228884df7673"
+      },
+      {
+        "entryId": "runtime.artifact-index-resources-path",
+        "schemaPathPattern": "/artifactIndexes/resourcesPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "9142688ac7e5cc1244f6f60b9fa1b6909da2409b081418ec48fe50b4f84dd5f1"
+      },
+      {
+        "entryId": "runtime.artifact-indexes",
+        "schemaPathPattern": "/artifactIndexes",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ff355828e876f970aa18c9632cf88754c8574a1a357af8c00696486ba7418f75"
+      },
+      {
+        "entryId": "runtime.capabilities",
+        "schemaPathPattern": "/capabilities",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0740fbb8768b3d21ec1baff77ab7a576b447afb4bfa6861123075f18d3ee68be"
+      },
+      {
+        "entryId": "runtime.content-digest",
+        "schemaPathPattern": "/releaseBinding/contentDigest",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3705c0b95304f3f27a0bb37401f74975472c2106a20308e6b5ecb808be9015a7"
+      },
+      {
+        "entryId": "runtime.deck-artifact-path",
+        "schemaPathPattern": "/decks/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b7c955020992817f7bac3edb16640b6db885c3b6be60f89c8cb397385ab75dc3"
+      },
+      {
+        "entryId": "runtime.deck-deck-id",
+        "schemaPathPattern": "/decks/*/deckId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4620d0e3909362675790d02e61114e988626865ceb927745c1cce5329839a105"
+      },
+      {
+        "entryId": "runtime.deck-landscape-id",
+        "schemaPathPattern": "/decks/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1e96144b19d66207c419dc908782ef797099a64a474ad681e2ef0acdd37535ae"
+      },
+      {
+        "entryId": "runtime.deck-locale",
+        "schemaPathPattern": "/decks/*/locale",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "630b5fb9756b3fdb00730c888a1629ff650079afd17b7267e9af9ffb79c77ca5"
+      },
+      {
+        "entryId": "runtime.decks",
+        "schemaPathPattern": "/decks",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "022aa37d9fc687d9d807317570305a2b8ba18acf18d695a6249bef0d1b441a1a"
+      },
+      {
+        "entryId": "runtime.dependency-closure",
+        "schemaPathPattern": "/dependencyClosure",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3a0cf9fb925a57b8773a2bcdb3ab7297e149813efa9f233489c5483941c1d778"
+      },
+      {
+        "entryId": "runtime.dependency-closure-path",
+        "schemaPathPattern": "/dependencyClosure/path",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "dbc300bb1d58483fa437e29035a858b4cdddc2161351e2c6937201c74e618c8c"
+      },
+      {
+        "entryId": "runtime.dependency-closure-strategy",
+        "schemaPathPattern": "/dependencyClosure/strategy",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "2f04aa159e883c2f39bde81878d4ef555beb8aea7d305fa74a5b29b4d7a837a1"
+      },
+      {
+        "entryId": "runtime.external-runtime-dependencies",
+        "schemaPathPattern": "/dependencyClosure/externalRuntimeDependencies",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "099233ea9207253ce34b8ef1c8970561910408ae5240d4b7090ac5fb452b2ec8"
+      },
+      {
+        "entryId": "runtime.landscape-artifact-path",
+        "schemaPathPattern": "/landscapes/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "03894e9908b89fef2b1cde8ae139c7c6c3b18fa5e271e02322568a6d80c3e27a"
+      },
+      {
+        "entryId": "runtime.landscape-country",
+        "schemaPathPattern": "/landscapes/*/country",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "383eb96b32dd0c0e35be8afa6adae09867287d81ed6a95fa6b11f1d4c0d2679e"
+      },
+      {
+        "entryId": "runtime.landscape-default-offering-id",
+        "schemaPathPattern": "/landscapes/*/defaultOfferingId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5ad946c7c9d220a15c7d14c214444cac4f36398ca7e6ad24e085d8ab71fd8b79"
+      },
+      {
+        "entryId": "runtime.landscape-framework-id",
+        "schemaPathPattern": "/landscapes/*/frameworkId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6b9d54c8a30d3995e1dfb3fcc34c236c138f58219d973a1a8d9ca66b525c9c55"
+      },
+      {
+        "entryId": "runtime.landscape-landscape-id",
+        "schemaPathPattern": "/landscapes/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "705ec1e6ed2cc4fc628814884759f427a3d9598fad6fb0d209deb68cde044e00"
+      },
+      {
+        "entryId": "runtime.landscape-locale",
+        "schemaPathPattern": "/landscapes/*/locale",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "318c2d774202b6214e9828036bffa3f12881bea54a289a63e07e81576dd5975e"
+      },
+      {
+        "entryId": "runtime.landscape-ownership",
+        "schemaPathPattern": "/landscapes/*/ownership",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e0aafb3c9d2fb9076a9a0bccf9b873aa06ca6f929087369bc5895768a6085ecd"
+      },
+      {
+        "entryId": "runtime.landscape-parent-landscape-id",
+        "schemaPathPattern": "/landscapes/*/parentLandscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "685d4630d70abe587de5fe482a4c3d711e49fa759a9bd723c30783fa88dbc2eb"
+      },
+      {
+        "entryId": "runtime.landscape-region",
+        "schemaPathPattern": "/landscapes/*/region",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fe347bbb90b28e022c49872aeb1d2c3a80b9ff78899aa569eb5ce8c7d733c998"
+      },
+      {
+        "entryId": "runtime.landscape-role",
+        "schemaPathPattern": "/landscapes/*/role",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4462f903a6a66cadf08bfdde0f8863fa5f2f6af0993bee8d0479f1ee1ac00001"
+      },
+      {
+        "entryId": "runtime.landscape-school-form",
+        "schemaPathPattern": "/landscapes/*/schoolForm",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a15de8e0133b12233246a92eb01931b0e7a1fc39d6473b7b43a1f3a1174d683f"
+      },
+      {
+        "entryId": "runtime.landscape-subject",
+        "schemaPathPattern": "/landscapes/*/subject",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ba722ea8530fd2fa228cbf9b793ccd5956274e2bf240ec41ab57c09379de6eb5"
+      },
+      {
+        "entryId": "runtime.landscapes",
+        "schemaPathPattern": "/landscapes",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "84ac4d866728de937904ded4575ae117527e0c176323da49e6ded4e11d68d2e5"
+      },
+      {
+        "entryId": "runtime.offered-scopes",
+        "schemaPathPattern": "/offeredScopes",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4a1bc3f6af3ecd745f3e50a170c0fee6f6002eedf4ee4fdb6a6e6c6bf7877d5e"
+      },
+      {
+        "entryId": "runtime.offered-scopes-landscape-id",
+        "schemaPathPattern": "/offeredScopes/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ef42a80ef40f55b23f15fd8e6119d81893d20a8795986a744ff9c966f2c142c5"
+      },
+      {
+        "entryId": "runtime.offered-scopes-scope",
+        "schemaPathPattern": "/offeredScopes/*/scope",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d16320fa2ba9058f065f2a15570cdd52ee2a2e1ebe6fe51bb2a23a0789c962dc"
+      },
+      {
+        "entryId": "runtime.offering-id",
+        "schemaPathPattern": "/offeredScopes/*/offeringId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b25985d4e3bf239a008260c5ae91b1e2a0af277021c9501acb2abba242fca6dc"
+      },
+      {
+        "entryId": "runtime.release-binding",
+        "schemaPathPattern": "/releaseBinding",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "790971756fd11a7f4ec0fc3f3f161fdd3b61c2db4db35ff49c45b5415233f390"
+      },
+      {
+        "entryId": "runtime.release-id",
+        "schemaPathPattern": "/releaseBinding/releaseId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "27f5e7de53f561c01d12ce5310e5b339861734dad1c696e2ecaa0cf1461011d5"
+      },
+      {
+        "entryId": "runtime.resource-artifact-path",
+        "schemaPathPattern": "/resources/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "735ec091f43994ca3b5b466176ae50fddb951c5ceab420027b4511c6be6fe361"
+      },
+      {
+        "entryId": "runtime.resource-delivery",
+        "schemaPathPattern": "/resources/*/delivery",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "57c51c6993424f014128c5a522d490014e17282f9b5da4028adf63ab2d6eb87e"
+      },
+      {
+        "entryId": "runtime.resource-external-url",
+        "schemaPathPattern": "/resources/*/externalUrl",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ea9b6c6037a27cd64ca6ac14311c9e492a7f2d09cdcf017fd88fc27a5b2474a8"
+      },
+      {
+        "entryId": "runtime.resource-goal-id",
+        "schemaPathPattern": "/resources/*/goalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "3dee4c20e9c8b1d729ff474b724280f40cdcc2da57dede52c4c76a3dc6bf74c7"
+      },
+      {
+        "entryId": "runtime.resource-landscape-id",
+        "schemaPathPattern": "/resources/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5cc131ceebb7ae503fab4458cf4e9f94e709acdedf5b95504740939dcf914bb2"
+      },
+      {
+        "entryId": "runtime.resource-media-type",
+        "schemaPathPattern": "/resources/*/mediaType",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "6041c16b6f7fd3a7b0fe2a675a945896e6155c2e6a641d19875f7f1687f9b621"
+      },
+      {
+        "entryId": "runtime.resource-resource-id",
+        "schemaPathPattern": "/resources/*/resourceId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "45ae7eb2ee89808af45b2d1781b82b4c2f26f6f03329da70c32fd0a3b6722bd7"
+      },
+      {
+        "entryId": "runtime.resource-resource-kind",
+        "schemaPathPattern": "/resources/*/resourceKind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4ace21857a0d7d858d8893cc70251b35f239a9e44f15e8bde0f0bb8388194560"
+      },
+      {
+        "entryId": "runtime.resource-runtime-required",
+        "schemaPathPattern": "/resources/*/runtimeRequired",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "cda643b8737ff7f8444e247122743375d821f3b58dbc14de0ed2835c4b70d7c5"
+      },
+      {
+        "entryId": "runtime.resources",
+        "schemaPathPattern": "/resources",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "4bb34599a75898b2ade0941448fc8d5d2698905acc9abc689e5e97787be326c6"
+      },
+      {
+        "entryId": "runtime.root-landscape-ids",
+        "schemaPathPattern": "/rootLandscapeIds",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "cd65d22b817a42f0b6a7f9732153a4df61606567e23519cb868e123563405247"
+      },
+      {
+        "entryId": "runtime.runtime-contract-version",
+        "schemaPathPattern": "/runtimeContractVersion",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c9ba162b2f2225653e17fd89bf5351d301f8ca6f4dae40fbb7531eda0435f72c"
+      },
+      {
+        "entryId": "runtime.scope-dimension-composite-members",
+        "schemaPathPattern": "/scopeDimensions/*/composites/*/members",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c5d7a5533ea94aa5ada65ce633dfde1465eac4ddbf3842a9ae74fc0cde99d46d"
+      },
+      {
+        "entryId": "runtime.scope-dimension-composite-value",
+        "schemaPathPattern": "/scopeDimensions/*/composites/*/value",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "0f5e0f08c0674344642e33502a583031d9b8162f896578157e0ab35308f58c3d"
+      },
+      {
+        "entryId": "runtime.scope-dimension-composites",
+        "schemaPathPattern": "/scopeDimensions/*/composites",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "ec10573da327d398bb5485d323f0ea56cdffb6bfaf54de934dbc529b5348801d"
+      },
+      {
+        "entryId": "runtime.scope-dimension-id",
+        "schemaPathPattern": "/scopeDimensions/*/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "08b0ee3427e13bbfeaa2b6a429731c69e9b6d84dd3437e999bb018a3c6f3933c"
+      },
+      {
+        "entryId": "runtime.scope-dimension-values",
+        "schemaPathPattern": "/scopeDimensions/*/values",
+        "semanticClass": "set",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "a07b371671bdbda6f3c492b58e091bc6eb30480cbd91657c952774df93299840"
+      },
+      {
+        "entryId": "runtime.scope-dimensions",
+        "schemaPathPattern": "/scopeDimensions",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e4d287883a0669807a4c0544538bb7176265036c6232ce4c3992130e454367ae"
+      },
+      {
+        "entryId": "runtime.view-artifact-path",
+        "schemaPathPattern": "/views/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "af61688bb83f019b0d5314c4de83e169aae2a288c5fef0756d3721ed9bfdc2d3"
+      },
+      {
+        "entryId": "runtime.view-id",
+        "schemaPathPattern": "/views/*/viewId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8fec4288dfff2bfd0171b2a95d848cc7840e35fc7e16ed9843b4d000da5d0ca6"
+      },
+      {
+        "entryId": "runtime.view-resolution",
+        "schemaPathPattern": "/offeredScopes/*/viewResolution",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "9d88c2f4b86860442cadd20a6cc1a1ab7398eab07d6be52df1ae22d00aeaa0a0"
+      },
+      {
+        "entryId": "runtime.view-resolution-ids",
+        "schemaPathPattern": "/offeredScopes/*/viewResolution/viewIds",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "30bcb244b0538d6ded0fcfa1dcdb272aea814fc935ca22b1a5c0c449cf6d7656"
+      },
+      {
+        "entryId": "runtime.views",
+        "schemaPathPattern": "/views",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "f3d7285068f731cd707d2aa4826d7ea045939e937ff8c03c9c8681886a4ff6c1"
+      },
+      {
+        "entryId": "runtime.views-landscape-id",
+        "schemaPathPattern": "/views/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "91bc1b3058990ea6621d6da9dcf0941f8ad48db94ba72eab4db915945a408213"
+      },
+      {
+        "entryId": "runtime.views-scope",
+        "schemaPathPattern": "/views/*/scope",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5b908a6bb5209ca85b6b1c8f8952753b9a831333560d839f4a72d2eaab85e1f7"
+      },
+      {
+        "entryId": "view-index.artifact-path",
+        "schemaPathPattern": "/views/*/artifactPath",
+        "semanticClass": "generated-non-semantic",
+        "rdfStrategy": "excluded-generated",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "48950b4738aa541a44e8568d6f87a7a4daafc0cd28317a7c82322a685c510afa"
+      },
+      {
+        "entryId": "view-index.landscape-id",
+        "schemaPathPattern": "/views/*/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "1dc6ad9182776c500a3fa1a3cd279261d9520a68e2b9dbe9918514f03b6315cd"
+      },
+      {
+        "entryId": "view-index.language",
+        "schemaPathPattern": "/views/*/language",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c2d64c68f3ea8e7e96423c6395824075f89d953154d10da18b9c686d7ed77841"
+      },
+      {
+        "entryId": "view-index.scope",
+        "schemaPathPattern": "/views/*/scope",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "b131c1dae006935f3822d27def9d8f3903aad7ce24aba02e1484b0d6b27bd59f"
+      },
+      {
+        "entryId": "view-index.view-id",
+        "schemaPathPattern": "/views/*/viewId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "e577aabb4e0fd3efeb6c2a015a59711249f456b41f3a4e4376e7ee84e6c2acc0"
+      },
+      {
+        "entryId": "view-index.views",
+        "schemaPathPattern": "/views",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "459c922e8369906e6176b1362b86eabdb6284f12ed9b27189a17090b9fdc1d58"
+      },
+      {
+        "entryId": "view.children",
+        "schemaPathPattern": "/rootNodes/**/children",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5ac36528f1b172edadac7a0d990f343f51c83e4f1cad30cb1a38a1762b330755"
+      },
+      {
+        "entryId": "view.landscape-id",
+        "schemaPathPattern": "/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "cb177b24ae8dfdb91c878c28744a14574b6173aec4ce5f65c71400e7ba91fd2e"
+      },
+      {
+        "entryId": "view.language",
+        "schemaPathPattern": "/language",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fdf0b8b94716c7de9e3ddd2c4434687e857eeedffc7c77ad92cf8852c8e0b0f1"
+      },
+      {
+        "entryId": "view.node-display-label",
+        "schemaPathPattern": "/rootNodes/**/displayLabel",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d2bdbcc13f4acdb87f7bb1fd88c94041dbbe7215ae133f3eeff7c61e7a8b7310"
+      },
+      {
+        "entryId": "view.node-goal-id",
+        "schemaPathPattern": "/rootNodes/**/goalId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "fcb584d61a2e95c7a16466b4859aed6e3294751eeced92450ae895475c9f6fd4"
+      },
+      {
+        "entryId": "view.node-id",
+        "schemaPathPattern": "/rootNodes/**/id",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "60e1b3aee306ba2897d27f9d0b326c608f5c9856413f02ee3d5a06e5dcaaf653"
+      },
+      {
+        "entryId": "view.node-kind",
+        "schemaPathPattern": "/rootNodes/**/kind",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "9b369741aac7d37664589c14198d2c0d25a7c9af642271ecf450a7c35aca3293"
+      },
+      {
+        "entryId": "view.node-label",
+        "schemaPathPattern": "/rootNodes/**/label",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "9c42cf61f5a8fc2fbc534c566caa10cd7599da076e1eb4b885f982f62bf0c909"
+      },
+      {
+        "entryId": "view.node-landscape-id",
+        "schemaPathPattern": "/rootNodes/**/landscapeId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "41b55493652c97beb5ea54baf0921828a83b020b6d4870e1732ddb2d0bebe519"
+      },
+      {
+        "entryId": "view.root-nodes",
+        "schemaPathPattern": "/rootNodes",
+        "semanticClass": "ordered-list",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "738be7fc8024d2b8abcc490771a1097f2cf0edb865e2999348bef1dc0659dfe0"
+      },
+      {
+        "entryId": "view.scope",
+        "schemaPathPattern": "/scope",
+        "semanticClass": "map",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8b1c4f1a6cbfb12b3d0c6626b78bbdfc4b036c3ec369248926044ae20ac172dc"
+      },
+      {
+        "entryId": "view.scope-course-profile",
+        "schemaPathPattern": "/scope/courseProfile",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "8acea448aa560ee8de265a355c56b80a436099ea3f18aa8f1e42df5507659a65"
+      },
+      {
+        "entryId": "view.scope-duration-model",
+        "schemaPathPattern": "/scope/durationModel",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "d0b682184b67fe26c2bb75eb7ef514a961b8b344a72b0d5aebad4aaec8513b35"
+      },
+      {
+        "entryId": "view.scope-jurisdiction",
+        "schemaPathPattern": "/scope/jurisdiction",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "405be5b45da60d199c3e9af218ffe710b0aec6ea5a8e8cf169363ff3c7a14733"
+      },
+      {
+        "entryId": "view.scope-school-form",
+        "schemaPathPattern": "/scope/schoolForm",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "5ef7664dbb87f7cffdae0e27b5143679bec8bcc053e23b3b473f813765ac7a4e"
+      },
+      {
+        "entryId": "view.scope-stage",
+        "schemaPathPattern": "/scope/stage",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "c194b3e41625beb5ed3b6627396b3662ad6d86a26fc199310e2021b6f2bd6498"
+      },
+      {
+        "entryId": "view.title",
+        "schemaPathPattern": "/title",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "03c6f6e41b2b72a8eff2e2d969155a49f0ba31831401ba5123f6dbd42b32c5d6"
+      },
+      {
+        "entryId": "view.view-id",
+        "schemaPathPattern": "/viewId",
+        "semanticClass": "scalar",
+        "rdfStrategy": "skillpilot-profile",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "dbaccee897ec2dcd9d601747c151f9db2191b97b66b57b8acdff7daeaacf960b"
+      }
     ],
     "uncoveredFields": [],
     "unknownFields": [],
-    "coverageDigest": "5280f393d4ec1539e93788bb884aafb85103f68650a64521c1217a03de62f36b",
+    "coverageDigest": "4bf826fd315b1764080edd01f65d893b6f6866314b6ed40ad0242a81c1384a7e",
     "passed": true
   },
   "comparisons": {
     "graph": {
-      "goalCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
-      "directContainsEdgeCounts": { "json": 9, "fwuOwl": 9, "reconstructedJson": 9 },
-      "directRequiresEdgeCounts": { "json": 8, "fwuOwl": 8, "reconstructedJson": 8 },
-      "programUnitCounts": { "json": 2, "fwuOwl": 2, "reconstructedJson": 2 },
-      "placementCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
-      "competencyEntryCounts": { "json": 6, "fwuOwl": 6, "reconstructedJson": 6 },
-      "logicalDigests": { "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c" },
+      "goalCounts": {
+        "json": 10,
+        "fwuOwl": 10,
+        "reconstructedJson": 10
+      },
+      "directContainsEdgeCounts": {
+        "json": 9,
+        "fwuOwl": 9,
+        "reconstructedJson": 9
+      },
+      "directRequiresEdgeCounts": {
+        "json": 8,
+        "fwuOwl": 8,
+        "reconstructedJson": 8
+      },
+      "programUnitCounts": {
+        "json": 2,
+        "fwuOwl": 2,
+        "reconstructedJson": 2
+      },
+      "placementCounts": {
+        "json": 10,
+        "fwuOwl": 10,
+        "reconstructedJson": 10
+      },
+      "competencyEntryCounts": {
+        "json": 6,
+        "fwuOwl": 6,
+        "reconstructedJson": 6
+      },
+      "logicalDigests": {
+        "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c",
+        "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c",
+        "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c"
+      },
       "passed": true
     },
     "compositionViews": {
-      "viewCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "nodeReferenceCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
-      "logicalDigests": { "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79" },
+      "viewCounts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "nodeReferenceCounts": {
+        "json": 10,
+        "fwuOwl": 10,
+        "reconstructedJson": 10
+      },
+      "logicalDigests": {
+        "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79",
+        "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79",
+        "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79"
+      },
       "orderPreserved": true,
       "passed": true
     },
     "cards": {
-      "deckCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "cardCounts": { "json": 3, "fwuOwl": 3, "reconstructedJson": 3 },
-      "logicalDigests": { "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079" },
+      "deckCounts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "cardCounts": {
+        "json": 3,
+        "fwuOwl": 3,
+        "reconstructedJson": 3
+      },
+      "logicalDigests": {
+        "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079",
+        "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079",
+        "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079"
+      },
       "orderPreserved": true,
       "passed": true
     },
     "binaryAssets": {
-      "assetCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
-      "totalBytes": { "json": 8192, "fwuOwl": 8192, "reconstructedJson": 8192 },
-      "logicalIndexDigests": { "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834" },
-      "byteDigests": { "json": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796", "fwuOwl": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796", "reconstructedJson": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796" },
+      "assetCounts": {
+        "json": 1,
+        "fwuOwl": 1,
+        "reconstructedJson": 1
+      },
+      "totalBytes": {
+        "json": 8192,
+        "fwuOwl": 8192,
+        "reconstructedJson": 8192
+      },
+      "logicalIndexDigests": {
+        "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834",
+        "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834",
+        "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834"
+      },
+      "byteDigests": {
+        "json": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796",
+        "fwuOwl": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796",
+        "reconstructedJson": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796"
+      },
       "mimeTypesMatched": true,
       "passed": true
     }
@@ -221,10 +3670,30 @@
     "packageSha256": "2222222222222222222222222222222222222222222222222222222222222222",
     "manifestSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     "coreBindingVerified": true,
-    "rdfSyntax": { "passed": true, "errorCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000001" },
-    "owl2Dl": { "passed": true, "errorCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000002" },
-    "shacl": { "passed": true, "violationCount": 0, "warningCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000003" },
-    "reasoner": { "passed": true, "engine": "HermiT", "version": "1.4.6.519", "consistent": true, "unsatisfiableClassCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000004" },
+    "rdfSyntax": {
+      "passed": true,
+      "errorCount": 0,
+      "reportSha256": "a000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "owl2Dl": {
+      "passed": true,
+      "errorCount": 0,
+      "reportSha256": "a000000000000000000000000000000000000000000000000000000000000002"
+    },
+    "shacl": {
+      "passed": true,
+      "violationCount": 0,
+      "warningCount": 0,
+      "reportSha256": "a000000000000000000000000000000000000000000000000000000000000003"
+    },
+    "reasoner": {
+      "passed": true,
+      "engine": "HermiT",
+      "version": "1.4.6.519",
+      "consistent": true,
+      "unsatisfiableClassCount": 0,
+      "reportSha256": "a000000000000000000000000000000000000000000000000000000000000004"
+    },
     "passed": true
   },
   "packageValidation": {
@@ -245,16 +3714,40 @@
     "passed": true
   },
   "consumerSmokeTests": {
-    "jsonPackage": { "consumer": "SkillPilot", "consumerVersion": "1.0.0", "hermetic": true, "sourceCheckoutAccessible": false, "packageSha256": "1111111111111111111111111111111111111111111111111111111111111111", "passed": true, "reportSha256": "b000000000000000000000000000000000000000000000000000000000000001" },
-    "reconstructedJsonPackage": { "consumer": "SkillPilot", "consumerVersion": "1.0.0", "hermetic": true, "sourceCheckoutAccessible": false, "packageSha256": "1212121212121212121212121212121212121212121212121212121212121212", "passed": true, "reportSha256": "b000000000000000000000000000000000000000000000000000000000000002" },
+    "jsonPackage": {
+      "consumer": "SkillPilot",
+      "consumerVersion": "1.0.0",
+      "hermetic": true,
+      "sourceCheckoutAccessible": false,
+      "packageSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "passed": true,
+      "reportSha256": "b000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "reconstructedJsonPackage": {
+      "consumer": "SkillPilot",
+      "consumerVersion": "1.0.0",
+      "hermetic": true,
+      "sourceCheckoutAccessible": false,
+      "packageSha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "passed": true,
+      "reportSha256": "b000000000000000000000000000000000000000000000000000000000000002"
+    },
     "passed": true
   },
   "reproducibility": {
     "sourceDateEpoch": 1783641600,
     "locale": "C.UTF-8",
     "timezone": "UTC",
-    "runA": { "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001", "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111", "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222" },
-    "runB": { "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001", "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111", "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222" },
+    "runA": {
+      "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001",
+      "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
+    "runB": {
+      "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001",
+      "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    },
     "jsonZipByteIdentical": true,
     "fwuOwlZipByteIdentical": true,
     "passed": true

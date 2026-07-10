@@ -1,0 +1,103 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+  "fragmentFormatVersion": "1.0",
+  "hostReleaseBinding": {
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.physik@1.0.0",
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.physik",
+    "packageVersion": "1.0.0",
+    "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "fragmentId": "math-fragment-linear",
+  "ownership": {
+    "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "sourceReleaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.1.0",
+    "sourceContentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "fragmentOfLandscapeId": "math-landscape",
+    "completeness": "transitive-hard-reference-fragment",
+    "completeOwnerLandscape": false
+  },
+  "content": {
+    "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+    "landscapeFormatVersion": "1.0",
+    "landscapeId": "math-landscape",
+    "title": "Mathematik-Abhängigkeitsfragment",
+    "description": "Nicht auswählbares Fragment für physikalische Geschwindigkeitsziele.",
+    "locale": "de-DE",
+    "frameworkId": "canonical-gymnasium-math",
+    "subject": "Mathematik",
+    "competencyCatalog": [
+      {
+        "id": "PROCESS.K1",
+        "label": "Mathematisch argumentieren",
+        "dimension": "process"
+      }
+    ],
+    "goals": [
+      {
+        "id": "math-linear-functions",
+        "semanticKind": "curricularAtomic",
+        "title": "Lineare Funktionen nutzen",
+        "description": "Die lernende Person kann lineare Funktionen zur Beschreibung von Zusammenhängen nutzen.",
+        "core": true,
+        "weight": 1,
+        "tags": [],
+        "contains": [],
+        "requires": [
+          "math-coordinate-system"
+        ],
+        "kompetenzen": [
+          "PROCESS.K1"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "phase": "cross-subject"
+        },
+        "type": "atomic"
+      },
+      {
+        "id": "math-coordinate-system",
+        "semanticKind": "curricularAtomic",
+        "title": "Koordinatensysteme lesen",
+        "description": "Die lernende Person kann Punkte und Verläufe in einem Koordinatensystem lesen.",
+        "core": true,
+        "weight": 1,
+        "tags": [],
+        "contains": [],
+        "requires": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-math",
+          "phase": "cross-subject"
+        },
+        "type": "atomic"
+      }
+    ]
+  },
+  "recordBindings": [
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-linear-functions"
+      },
+      "jsonPointer": "/content/goals/0",
+      "definitionDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-coordinate-system"
+      },
+      "jsonPointer": "/content/goals/1",
+      "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+      "key": {
+        "kind": "competency-entry",
+        "landscapeId": "math-landscape",
+        "id": "PROCESS.K1"
+      },
+      "jsonPointer": "/content/competencyCatalog/0",
+      "definitionDigest": "sha256:abababababababababababababababababababababababababababababababab"
+    }
+  ],
+  "fragmentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+}

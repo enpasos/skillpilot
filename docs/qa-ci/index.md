@@ -15,6 +15,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Single source of truth for algorithmic graph validation in CI.
 - [Curriculum Package Readiness](curriculum-package-readiness.md)
   Fail-closed distinction between legacy export validation and the standalone JSON runtime profile.
+- [Curriculum Release Model Conformance](curriculum-release-model-conformance.md)
+  Real Mathematik compilation into the strict unpacked runtime model, including closure, migration, semantic kinds, digests, resources, QA, and remaining package gates.
 - [Dual Curriculum Release Contracts](dual-curriculum-release-contracts.md)
   Field/RDF semantics, canonical content digest, equivalence evidence, and paired release-index gates.
 - [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)

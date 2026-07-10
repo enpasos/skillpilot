@@ -1,0 +1,219 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+  "closureFormatVersion": "1.0",
+  "releaseBinding": {
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.physik@1.0.0",
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.physik",
+    "packageVersion": "1.0.0",
+    "contentDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "algorithm": "schema-hard-reference-fixed-point-v1",
+  "fieldSemanticsRegistry": {
+    "id": "skillpilot-fwu-field-semantics-v1",
+    "version": "1.1.0",
+    "sha256": "1fe7360badbd0bf97c7a27f21f0c9b1aa87e8a13e492aaa2bf07aae38337274a"
+  },
+  "definitionDigestProfile": {
+    "id": "canonical-definition-record-v1",
+    "version": "1.0.0",
+    "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+  },
+  "conflictPolicy": {
+    "policyId": "stable-definition-identity-v1",
+    "identityKey": "typed-entity-key",
+    "sameKeySameOwnerSameDigest": "deduplicate",
+    "sameKeyDifferentOwnerOrDigest": "reject-atomically",
+    "installOrderTieBreak": "forbidden",
+    "activeLockOnConflict": "unchanged"
+  },
+  "seeds": [
+    {
+      "kind": "landscape",
+      "id": "physics-landscape"
+    }
+  ],
+  "definitions": [
+    {
+      "key": {
+        "kind": "landscape",
+        "id": "physics-landscape"
+      },
+      "provision": "owned",
+      "artifactBinding": {
+        "role": "canonical-landscape",
+        "logicalId": "physics-landscape",
+        "path": "data/canonical/physik.landscape.json",
+        "jsonPointer": ""
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.physik",
+      "definitionDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "physics-velocity"
+      },
+      "provision": "owned",
+      "artifactBinding": {
+        "role": "canonical-landscape",
+        "logicalId": "physics-landscape",
+        "path": "data/canonical/physik.landscape.json",
+        "jsonPointer": "/goals/0"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.physik",
+      "definitionDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-linear-functions"
+      },
+      "provision": "embedded",
+      "artifactBinding": {
+        "role": "embedded-goal-dependency",
+        "logicalId": "math-fragment-linear",
+        "path": "data/dependencies/math-fragment-linear.json",
+        "jsonPointer": "/content/goals/0"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "sourceReleaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.1.0",
+      "sourceContentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "fragmentId": "math-fragment-linear",
+      "definitionDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    {
+      "key": {
+        "kind": "goal",
+        "id": "math-coordinate-system"
+      },
+      "provision": "embedded",
+      "artifactBinding": {
+        "role": "embedded-goal-dependency",
+        "logicalId": "math-fragment-linear",
+        "path": "data/dependencies/math-fragment-linear.json",
+        "jsonPointer": "/content/goals/1"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "sourceReleaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.1.0",
+      "sourceContentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "fragmentId": "math-fragment-linear",
+      "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+      "key": {
+        "kind": "competency-entry",
+        "landscapeId": "math-landscape",
+        "id": "PROCESS.K1"
+      },
+      "provision": "embedded",
+      "artifactBinding": {
+        "role": "embedded-goal-dependency",
+        "logicalId": "math-fragment-linear",
+        "path": "data/dependencies/math-fragment-linear.json",
+        "jsonPointer": "/content/competencyCatalog/0"
+      },
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "sourceReleaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.1.0",
+      "sourceContentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "fragmentId": "math-fragment-linear",
+      "definitionDigest": "sha256:abababababababababababababababababababababababababababababababab"
+    }
+  ],
+  "references": [
+    {
+      "source": {
+        "kind": "landscape",
+        "id": "physics-landscape"
+      },
+      "sourcePointer": "/goals/0",
+      "registryEntryId": "landscape.goals",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "physics-velocity"
+      },
+      "resolution": "owned"
+    },
+    {
+      "source": {
+        "kind": "goal",
+        "id": "physics-velocity"
+      },
+      "sourcePointer": "/goals/0/requires/0",
+      "registryEntryId": "goal.requires",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "math-linear-functions"
+      },
+      "resolution": "embedded"
+    },
+    {
+      "source": {
+        "kind": "goal",
+        "id": "math-linear-functions"
+      },
+      "sourcePointer": "/content/goals/0/requires/0",
+      "registryEntryId": "goal.requires",
+      "strength": "hard",
+      "target": {
+        "kind": "goal",
+        "id": "math-coordinate-system"
+      },
+      "resolution": "embedded"
+    },
+    {
+      "source": {
+        "kind": "goal",
+        "id": "math-linear-functions"
+      },
+      "sourcePointer": "/content/goals/0/kompetenzen/0",
+      "registryEntryId": "goal.kompetenzen",
+      "strength": "hard",
+      "target": {
+        "kind": "competency-entry",
+        "landscapeId": "math-landscape",
+        "id": "PROCESS.K1"
+      },
+      "resolution": "embedded"
+    }
+  ],
+  "embeddedFragments": [
+    {
+      "fragmentId": "math-fragment-linear",
+      "ownerPackageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+      "sourceReleaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.1.0",
+      "sourceContentDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "fragmentOfLandscapeId": "math-landscape",
+      "completeness": "transitive-hard-reference-fragment",
+      "completeOwnerLandscape": false,
+      "definitionKeys": [
+        {
+          "kind": "goal",
+          "id": "math-coordinate-system"
+        },
+        {
+          "kind": "goal",
+          "id": "math-linear-functions"
+        },
+        {
+          "kind": "competency-entry",
+          "landscapeId": "math-landscape",
+          "id": "PROCESS.K1"
+        }
+      ],
+      "fragmentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "externalRuntimeDependencies": [],
+  "unresolvedHardReferences": [],
+  "definitionIndexDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "closureDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "conflictCheck": {
+    "candidateDefinitionCount": 5,
+    "deduplicatedDefinitionCount": 0,
+    "conflicts": [],
+    "result": "compatible"
+  },
+  "closureStatus": "complete"
+}

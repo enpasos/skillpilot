@@ -2,20 +2,27 @@
 
 This directory is the trusted repository authority for the SkillPilot curriculum-package v1 contract.
 
-DPK-001 established the manifest/profile kernel; DPK-002 adds package-local discovery, offline schema resolution, and a fail-closed readiness vocabulary. DPK-003 freezes the cross-variant semantic proof contract:
+DPK-001 established the manifest/profile kernel; DPK-002 adds package-local discovery, offline schema resolution, and a fail-closed readiness vocabulary. DPK-003 freezes the cross-variant semantic proof contract. DPK-004a adds the strict unpacked runtime release model and proves it against the real Mathematik authoring state:
 
 - `package-manifest.schema.json` defines the strict internal manifest shape.
 - `profiles/full-standalone-v1.profile.json` defines the closed JSON release profile, artifact-role cardinalities, media types, redistribution policy, and package-format limits.
 - `runtime-catalog.schema.json` defines explicit roots, offered scopes, view resolution, runtime artifacts, resources, capabilities, and package-local dependency references.
 - `schema-catalog.schema.json` defines the offline ID-to-file resolver for hash-bound JSON Schemas.
 - `profiles/full-standalone-v1.readiness-policy.json` and `package-readiness-report.schema.json` define the blocking checks and machine-readable decision.
-- `field-semantics-registry.schema.json` and `profiles/skillpilot-fwu-field-semantics-v1.registry.json` define closed, reversible JSON-field-to-RDF semantics. The initial registry is an explicit DPK-003 baseline; DPK-004 must extend it to every compiled Mathematik field before production coverage can pass.
+- `compiled-landscape.schema.json`, `composition-view.schema.json`, `composition-view-index.schema.json`, `card-deck.schema.json`, `card-index.schema.json`, and `resource-index.schema.json` close the runtime payload shapes compiled in DPK-004a.
+- `dependency-closure.schema.json`, `embedded-goal-dependency.schema.json`, `definition-digest-profile.schema.json`, and `profiles/canonical-definition-record-v1.profile.json` define typed identity, canonical definition digests, ownership, embedded fragments, fixed-point hard-reference closure, and deterministic conflict handling.
+- `migration-aliases.schema.json` defines `renamed`, `replacedBy`, `splitInto`, `mergedInto`, and `removed` relations with explicit, fail-closed mastery and immutable-history policies.
+- `field-semantics-registry.schema.json` and `profiles/skillpilot-fwu-field-semantics-v1.registry.json` define closed, reversible JSON-field-to-RDF semantics and dependency behavior. DPK-004a extends the DPK-003 baseline to every field in the compiled runtime roles; DPK-004b will classify mapping, source, and quality-evidence publication fields.
 - `semantic-normalization-profile.schema.json`, `profiles/semantic-normal-form-v1.profile.json`, and `semantic-content-index.schema.json` define canonical JSON, ordered-versus-set behavior, missing/null/default handling, binary-resource records, length framing, and the packaging-neutral `contentDigest` input.
+- `curriculum-ontology-profile.schema.json`, `profiles/de-gymnasium-mathematik-v1.profile.json`, and the fingerprinted Mathematik semantic-kind ledger bind Core-first mapping decisions to an exact FWU repository, commit, source file, profile hash, and namespace-map hash without title, ID, or path inference. Compiler and independent validator also prove that every mapped Core term occurs in the pinned OWL bytes.
+- `release-model-build-profile.schema.json` and `profiles/de-gymnasium-mathematik-release-model-v1.profile.json` bind the real canonical landscape, 88 views, 12 decks, 825 resource links, path relocations, trusted contracts, and exact conformance counts.
 - `equivalence-report.schema.json` and `dual-release-index.schema.json` bind the isolated reverse compilation, field coverage, graph/view/card/asset parity, ontology gates, hermetic consumer tests, reproducibility, final ZIPs, provenance, and release authentication.
 - `fixtures/valid/` contains conforming manifest examples.
-- `fixtures/` contains positive, mutation-based, raw-JSON, cross-binding, adversarial ZIP, report-forgery, and dual-release contract cases.
+- `fixtures/` contains positive, mutation-based, raw-JSON, cross-binding, adversarial ZIP, report-forgery, dual-release, and release-model ownership/fixed-point contract cases.
 
-The existing subject exporter still produces the explicitly marked legacy subject-export format. It is not conformant with `full-standalone-v1`; successful legacy export and roundtrip checks remain `not-ready-legacy`. The evaluator deliberately cannot emit `ready` until catalog payload validation, standalone dependency closure, semantic digest verification, and the hermetic package-only consumer gate are implemented. The inner package-manifest and `full-standalone-v1` profile still cover only the JSON runtime variant; the external DPK-003 proof contracts cover both variants, while the FWU-OWL inner manifest/profile remains a later contract step.
+The DPK-004a compiler emits an unpacked conformance model below `tmp/`, not a release ZIP. It proves strict runtime payloads, complete hard-reference closure, migration shape, binary-image binding, and the semantic digest against the real Mathematik data, but it deliberately reports `conformance-model-only-not-a-package`. It does not yet copy the 756 image sidecars or add a package manifest, offline schema catalog, full file inventory, licenses, checksums, or a hermetic consumer result. DPK-004b still has to classify mapping, source, and quality-evidence publication fields; DPK-005 packages the completed model.
+
+The existing subject exporter therefore still produces the explicitly marked legacy subject-export format. It is not conformant with `full-standalone-v1`; successful legacy export and roundtrip checks remain `not-ready-legacy`. The readiness evaluator cannot emit `ready` until a finished ZIP passes the complete payload, inventory, license, ZIP-safety, and hermetic package-only consumer gates. The inner package-manifest and `full-standalone-v1` profile still cover only the JSON runtime variant; the external DPK-003 proof contracts cover both variants, while the FWU-OWL inner manifest/profile remains a later contract step.
 
 Run the contract conformance gate from the repository root:
 
@@ -26,6 +33,22 @@ python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
 python3 -B scripts/validate_curriculum_dual_release_contracts.py
 ```
+
+Compile the real unpacked Mathematik model into a disposable directory:
+
+```bash
+python3 -B scripts/compile_curriculum_release_model.py \
+  --profile contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json \
+  --output tmp/curriculum-release-model/mathematik
+
+python3 -B scripts/validate_curriculum_release_model.py \
+  --profile contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json \
+  --release-root tmp/curriculum-release-model/mathematik
+```
+
+CI uses `bash scripts/run_curriculum_release_model_conformance.sh` to validate the small release-model fixtures and compiler dependency-emission probe, reject destructive output-symlink and non-regular-node cases, verify the pinned FWU Core checkout, perform the independent real-model validation, and produce a second byte-identical build in one gate.
+
+The compiler accepts output directories only below repository `tmp/`. Its output and validation workflow are documented in [Curriculum Release Model Conformance](../../../docs/qa-ci/curriculum-release-model-conformance.md).
 
 Use `--verbose` on the catalog validators to print every fixture result. All validators require the pinned `jsonschema==4.26.0` runtime and fail closed when trusted contracts are inconsistent, a binding is stale, or a valid fixture fails. The manifest/catalog suites assert their exact expected diagnostics; the DPK-003 adversarial matrix requires the named invariant diagnostic even when one mutation necessarily triggers additional dependent failures.
 
@@ -51,6 +74,6 @@ The DPK-003 registry rejects unknown fields and separates `ordered-list`, `set`,
 
 Canonical JSON literals are limited to registered owner subtrees with a stated Core gap and byte cap. They cannot carry a whole package or landscape. Known curricular text and prerequisite semantics use the FWU Core; application vocabulary remains limited to actual runtime, reconstruction, ordering, view, card, assessment, and packaging concerns.
 
-The semantic content index contains no variant ZIP paths. It binds each normalized logical artifact's role, stable ID, media type, length, canonical-payload SHA-256 and derived record SHA-256, plus stable binary-resource identity, canonical public reference, MIME type, length, file digest, and independently recomputed record digest. The checked fixture proves that a deterministic length-framed index yields one shared content digest. DPK-004 supplies the compiler that produces and verifies the canonical payload bytes themselves.
+The semantic content index contains no variant ZIP paths. It binds each normalized logical artifact's role, stable ID, media type, length, canonical-payload SHA-256 and derived record SHA-256, plus stable binary-resource identity, canonical public reference, MIME type, length, file digest, and independently recomputed record digest. The checked fixture proves that a deterministic length-framed index yields one shared content digest. DPK-004a supplies the real Mathematik compiler and independent validator for those payload bytes; DPK-004b extends the modeled publication evidence before DPK-005 turns the directory into a package.
 
 The dual-release fixtures are conformance examples, not evidence for a real curriculum release. In particular, their dummy ZIP, Core, tool, and ontology-profile hashes do not make the current legacy subject export ready. A report may claim `passed` only with exact registry coverage, three content-index-bound normal forms, ordered graph/view/card parity, byte-identical assets, package-bound ontology checks, an isolated reverse compiler, independently validated original/reconstructed JSON packages, two hermetic consumer tests, and reproducible JSON and FWU-OWL ZIPs. The release contract defines a non-self-referential signing projection. Until DPK-011 supplies cryptographic signature and provenance verification, this validator rejects every `verified` claim and every `stable` promotion; the positive fixture is explicitly unsigned staging.

@@ -8,6 +8,8 @@ The current implementation checkpoint and remaining roadmap are tracked in [Dual
 
 The independent target-profile classification is documented in [Curriculum Package Readiness](../qa-ci/curriculum-package-readiness.md). Current manifests and reports identify this lane as `legacy-subject-export`, with target status `not-ready-legacy` and `standaloneProfileReady: false`.
 
+DPK-004a additionally compiles the real Mathematik sources into a strict, unpacked Runtime Release Model and binds all active image bytes into its semantic digest. That model is an intermediate conformance artifact, not a replacement ZIP for this legacy pipeline; its scope and remaining packaging gates are documented in [Curriculum Release Model Conformance](../qa-ci/curriculum-release-model-conformance.md).
+
 The package includes every image referenced by an active canonical `goal-visualization` link. Selection is link-driven, so stale files in the runtime asset directory do not leak into releases.
 
 Supported `DE/Gymnasium` presets currently cover the M5-or-better subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.

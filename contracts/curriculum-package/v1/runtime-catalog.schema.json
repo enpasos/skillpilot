@@ -94,14 +94,15 @@
     },
     "capabilities": {
       "type": "array",
-      "maxItems": 4,
+      "maxItems": 5,
       "uniqueItems": true,
       "items": {
         "enum": [
           "compositionViews",
           "memoryCards",
           "goalVisualizations",
-          "embeddedDependencies"
+          "embeddedDependencies",
+          "examNodes"
         ]
       }
     }
@@ -492,7 +493,10 @@
           "$ref": "#/$defs/id"
         },
         "resourceKind": {
-          "const": "goal-visualization"
+          "enum": [
+            "goal-visualization",
+            "external-tool"
+          ]
         },
         "landscapeId": {
           "$ref": "#/$defs/id"
