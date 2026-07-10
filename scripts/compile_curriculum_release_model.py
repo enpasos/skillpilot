@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Compile a deterministic, unpacked curriculum runtime release model.
+"""Compile a deterministic, unpacked curriculum release model.
 
-DPK-004a deliberately stops before ZIP assembly.  The compiler consumes only
-explicit paths and identities from a trusted build profile, joins the reviewed
-semantic-kind ledger, hashes (but does not copy) large image resources, and
-writes a closed-schema model below ``tmp/``.  It never derives semantics from
-German titles, identifier prefixes, or filesystem ordering.
+DPK-004 deliberately stops before ZIP assembly.  The compiler consumes only
+explicit paths and identities from trusted, hash-bound profiles, joins reviewed
+runtime and publication evidence, hashes (but does not copy) large image
+resources, and writes a closed-schema model below ``tmp/``.  It never derives
+semantics from German titles, identifier prefixes, or filesystem ordering.
 """
 
 from __future__ import annotations
@@ -16,12 +16,14 @@ import hashlib
 import json
 import math
 import os
+import re
 import secrets
 import shutil
 import stat
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass
 from decimal import Decimal
@@ -51,6 +53,15 @@ SCHEMA_FILES = {
     "definition-digest-profile": CONTRACT_ROOT / "definition-digest-profile.schema.json",
     "field-semantics-registry": CONTRACT_ROOT / "field-semantics-registry.schema.json",
     "semantic-normalization-profile": CONTRACT_ROOT / "semantic-normalization-profile.schema.json",
+    "publication-evidence-profile": CONTRACT_ROOT
+    / "publication-evidence-projection.schema.json",
+    "source-to-canonical-mappings": CONTRACT_ROOT
+    / "source-to-canonical-mappings.schema.json",
+    "official-source-index": CONTRACT_ROOT / "official-source-index.schema.json",
+    "source-goal-reference-index": CONTRACT_ROOT
+    / "source-goal-reference-index.schema.json",
+    "release-quality-evidence": CONTRACT_ROOT
+    / "release-quality-evidence.schema.json",
 }
 
 SCHEMA_IDS = {
@@ -66,6 +77,10 @@ SCHEMA_IDS = {
         "dependency-closure": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
         "migration-aliases": "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
         "semantic-content-index": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        "source-to-canonical-mappings": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+        "official-source-index": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+        "source-goal-reference-index": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+        "release-quality-evidence": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
     }.items()
 }
 
@@ -128,6 +143,221 @@ def load_json(path: Path) -> Any:
         return strict_json_loads(path.read_bytes(), str(path))
     except OSError as error:
         raise CompilationError(f"Cannot read {path}: {error}") from error
+
+
+def load_json_lines(path: Path) -> list[Any]:
+    try:
+        raw_lines = path.read_bytes().splitlines()
+    except OSError as error:
+        raise CompilationError(f"Cannot read {path}: {error}") from error
+    result: list[Any] = []
+    for line_number, raw_line in enumerate(raw_lines, start=1):
+        if not raw_line.strip():
+            continue
+        result.append(strict_json_loads(raw_line, f"{path}:{line_number}"))
+    return result
+
+
+def normalized_review_text(value: Any) -> str:
+    return re.sub(r"\s+", " ", unicodedata.normalize("NFKC", str(value or ""))).strip()
+
+
+def review_fingerprint(value: Mapping[str, Any]) -> str:
+    return "sha256:" + sha256_bytes(canonical_json_bytes(value))
+
+
+def goal_review_fingerprint(goal: Mapping[str, Any], rule_version: str) -> str:
+    dimensions = goal.get("dimensionTags")
+    dimension_map = dimensions if isinstance(dimensions, dict) else {}
+    return review_fingerprint(
+        {
+            "ruleVersion": rule_version,
+            "goalId": goal.get("id"),
+            "shortKey": goal.get("shortKey", ""),
+            "title": normalized_review_text(goal.get("title")),
+            "titleEn": normalized_review_text(goal.get("titleEn")),
+            "description": normalized_review_text(goal.get("description")),
+            "descriptionEn": normalized_review_text(goal.get("descriptionEn")),
+            "phase": normalized_review_text(dimension_map.get("phase")),
+            "area": normalized_review_text(dimension_map.get("area")),
+            "topicCode": normalized_review_text(dimension_map.get("topicCode")),
+            "nodeKind": normalized_review_text(goal.get("nodeKind")),
+        }
+    )
+
+
+def card_review_fingerprint(card: Mapping[str, Any], rule_version: str) -> str:
+    tags = card.get("tags")
+    normalized_tags = (
+        [normalized_review_text(tag) for tag in tags if normalized_review_text(tag)]
+        if isinstance(tags, list)
+        else []
+    )
+    return review_fingerprint(
+        {
+            "ruleVersion": rule_version,
+            "deckId": card.get("deckId"),
+            "cardId": card.get("cardId"),
+            "front": normalized_review_text(card.get("front")),
+            "back": normalized_review_text(card.get("back")),
+            "category": normalized_review_text(card.get("category")),
+            "tags": normalized_tags,
+        }
+    )
+
+
+def is_memory_goal(goal: Mapping[str, Any]) -> bool:
+    tags = goal.get("tags")
+    normalized_tags = [tag for tag in tags if isinstance(tag, str)] if isinstance(tags, list) else []
+    return (
+        goal.get("nodeKind") == "memory"
+        or "memorization" in normalized_tags
+        or any(tag.startswith("srs-deck:") for tag in normalized_tags)
+    )
+
+
+def is_review_relevant_leaf(goal: Mapping[str, Any]) -> bool:
+    contains = goal.get("contains")
+    if isinstance(contains, list) and contains:
+        return False
+    tags = goal.get("tags")
+    normalized_tags = {tag for tag in tags if isinstance(tag, str)} if isinstance(tags, list) else set()
+    if normalized_tags & {"Practice", "Assessment", "Motivation", "Orientation"}:
+        return False
+    if is_memory_goal(goal) or goal.get("examData") is not None:
+        return False
+    return True
+
+
+def configured_goal_scope(
+    config: Mapping[str, Any], goal_by_id: Mapping[str, Mapping[str, Any]]
+) -> set[str]:
+    scope = config.get("scope")
+    if not isinstance(scope, dict):
+        raise CompilationError("Quality review config has no scope")
+    explicit = scope.get("leafGoalIds")
+    if isinstance(explicit, list) and explicit:
+        if any(not isinstance(goal_id, str) for goal_id in explicit):
+            raise CompilationError("Quality review leafGoalIds must be strings")
+        return set(explicit)
+    roots = scope.get("rootGoalIds")
+    if not isinstance(roots, list) or not roots or any(not isinstance(goal_id, str) for goal_id in roots):
+        raise CompilationError("Quality review config needs rootGoalIds or leafGoalIds")
+    visited: set[str] = set()
+    pending = list(reversed(roots))
+    while pending:
+        goal_id = pending.pop()
+        if goal_id in visited:
+            continue
+        goal = goal_by_id.get(goal_id)
+        if goal is None:
+            raise CompilationError(f"Quality review scope references unknown goal {goal_id}")
+        visited.add(goal_id)
+        contains = goal.get("contains")
+        if isinstance(contains, list):
+            for child_id in reversed(contains):
+                if not isinstance(child_id, str):
+                    raise CompilationError(f"Malformed contains reference on {goal_id}")
+                pending.append(child_id)
+    return visited
+
+
+@dataclass(frozen=True)
+class PublicationFieldClassification:
+    classification_id: str
+    input_role: str
+    pattern: tuple[str, ...]
+    scope: str
+    disposition: str
+    projection: str
+
+
+class PublicationInputClassifier:
+    def __init__(self, profile: Mapping[str, Any]) -> None:
+        raw_entries = profile.get("fieldClassifications")
+        if not isinstance(raw_entries, list) or not raw_entries:
+            raise CompilationError("Publication-evidence field classifications are missing")
+        entries: list[PublicationFieldClassification] = []
+        seen_ids: set[str] = set()
+        for raw in raw_entries:
+            if not isinstance(raw, dict):
+                raise CompilationError("Malformed publication-evidence field classification")
+            classification_id = raw.get("classificationId")
+            if not isinstance(classification_id, str) or classification_id in seen_ids:
+                raise CompilationError(
+                    f"Duplicate or malformed publication classification ID: {classification_id}"
+                )
+            seen_ids.add(classification_id)
+            entries.append(
+                PublicationFieldClassification(
+                    classification_id=classification_id,
+                    input_role=str(raw["inputRole"]),
+                    pattern=pointer_segments(str(raw["pathPattern"])),
+                    scope=str(raw["scope"]),
+                    disposition=str(raw["disposition"]),
+                    projection=str(raw["projection"]),
+                )
+            )
+        self.entries = entries
+        self.by_role: dict[str, list[PublicationFieldClassification]] = defaultdict(list)
+        for entry in entries:
+            self.by_role[entry.input_role].append(entry)
+        self.hits: Counter[str] = Counter()
+
+    @staticmethod
+    def matches(entry: PublicationFieldClassification, concrete: tuple[str, ...]) -> bool:
+        if entry.scope == "field":
+            return match_pattern(entry.pattern, concrete)
+        if entry.scope != "subtree":
+            raise CompilationError(
+                f"Unsupported publication classification scope {entry.scope}"
+            )
+        for length in range(len(concrete), 0, -1):
+            if match_pattern(entry.pattern, concrete[:length]):
+                return True
+        return False
+
+    def classify(self, input_role: str, path: str) -> PublicationFieldClassification:
+        concrete = pointer_segments(path)
+        matches = [
+            entry
+            for entry in self.by_role.get(input_role, [])
+            if self.matches(entry, concrete)
+        ]
+        if not matches:
+            raise CompilationError(f"Unclassified authoring input field {input_role}:{path}")
+        best = max(pattern_specificity(entry.pattern) for entry in matches)
+        selected = [entry for entry in matches if pattern_specificity(entry.pattern) == best]
+        if len(selected) != 1:
+            raise CompilationError(
+                f"Ambiguous authoring input classification for {input_role}:{path}: "
+                + ", ".join(entry.classification_id for entry in selected)
+            )
+        self.hits[selected[0].classification_id] += 1
+        return selected[0]
+
+    def observe(self, input_role: str, value: Any, path: str = "") -> None:
+        if isinstance(value, dict):
+            for key in sorted(value):
+                child_path = (
+                    f"{path}/{escape_pointer_segment(key)}"
+                    if path
+                    else f"/{escape_pointer_segment(key)}"
+                )
+                self.classify(input_role, child_path)
+                self.observe(input_role, value[key], child_path)
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                self.observe(input_role, child, f"{path}/{index}")
+
+    def assert_complete(self) -> None:
+        unused = sorted(
+            entry.classification_id for entry in self.entries if not self.hits[entry.classification_id]
+        )
+        if unused:
+            raise CompilationError(
+                f"Unobserved publication-evidence field classifications: {unused[:5]}"
+            )
 
 
 def canonical_float(value: float) -> str:
@@ -273,6 +503,36 @@ def core_terms(value: Any) -> list[str]:
     return sorted(result)
 
 
+def compact_iri_terms(value: Any, prefix: str) -> list[str]:
+    """Return every compact IRI value using ``prefix`` from a JSON value.
+
+    Registry mappings are executable semantic instructions.  A Core term used
+    there must therefore be part of the ontology profile's closed, pinned term
+    set instead of merely sharing its namespace binding.
+    """
+
+    result: set[str] = set()
+    marker = prefix + ":"
+
+    def visit(node: Any) -> None:
+        if isinstance(node, dict):
+            for key, child in node.items():
+                visit(key)
+                visit(child)
+        elif isinstance(node, list):
+            for child in node:
+                visit(child)
+        elif isinstance(node, str) and node.startswith(marker):
+            if re.fullmatch(rf"{re.escape(prefix)}:[A-Za-z0-9._~-]+", node) is None:
+                raise CompilationError(
+                    f"Malformed {prefix} compact IRI in field registry: {node}"
+                )
+            result.add(node)
+
+    visit(value)
+    return sorted(result)
+
+
 def verify_ontology_profile_trust(
     build_profile: Mapping[str, Any],
     ontology_profile: Mapping[str, Any],
@@ -307,6 +567,13 @@ def verify_ontology_profile_trust(
         raise CompilationError("Application-vocabulary namespace binding is inconsistent")
 
     terms = core_terms(ontology_profile)
+    registry_core_terms = compact_iri_terms(registry_value, "lp")
+    undeclared_registry_core_terms = sorted(set(registry_core_terms) - set(terms))
+    if undeclared_registry_core_terms:
+        raise CompilationError(
+            "Field registry uses Core terms outside the trusted ontology profile: "
+            + ", ".join(undeclared_registry_core_terms[:10])
+        )
     expanded_terms: list[str] = []
     for term in terms:
         prefix, separator, local_name = term.partition(":")
@@ -1051,6 +1318,1217 @@ def assert_program_unit_hierarchy_acyclic(units: Sequence[Mapping[str, Any]]) ->
         visit(unit_id)
 
 
+def source_documents_from_extraction(extraction: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    raw_documents = extraction.get("sourceDocuments")
+    if isinstance(raw_documents, list) and raw_documents:
+        documents = raw_documents
+    else:
+        single = extraction.get("sourceDocument")
+        documents = [single] if isinstance(single, dict) else []
+    if not documents or any(not isinstance(document, dict) for document in documents):
+        raise CompilationError(
+            f"Source extraction {extraction.get('extractionId')} has no source documents"
+        )
+    return documents
+
+
+def source_document_key_from_goal(
+    goal: Mapping[str, Any], passage: Mapping[str, Any] | None
+) -> str | None:
+    direct = goal.get("sourceDocumentKey")
+    if isinstance(direct, str) and direct:
+        return direct
+    tags = goal.get("tags")
+    if isinstance(tags, list):
+        for tag in tags:
+            if isinstance(tag, str) and tag.startswith("sourceDocument:"):
+                value = tag.removeprefix("sourceDocument:")
+                if value:
+                    return value
+    if passage is not None:
+        value = passage.get("sourceDocumentKey")
+        if isinstance(value, str) and value:
+            return value
+    return None
+
+
+def assert_http_url(value: Any, context: str) -> str:
+    if not isinstance(value, str) or not re.fullmatch(r"https?://[^\s]+", value):
+        raise CompilationError(f"Official source URL must be HTTP(S) in {context}")
+    return value
+
+
+def optional_nonblank(value: Any) -> str | None:
+    return value.strip() if isinstance(value, str) and value.strip() else None
+
+
+def publication_input_record(role: str, path: Path, disposition: str) -> dict[str, Any]:
+    size, digest = sha256_file(path)
+    return {
+        "inputRole": role,
+        "sourcePath": str(path.relative_to(REPO_ROOT)).replace("\\", "/"),
+        "disposition": disposition,
+        "bytes": size,
+        "sha256": digest,
+    }
+
+
+def compile_mapping_source_lane(
+    raw_binding: Mapping[str, Any],
+    landscape_id: str,
+    canonical_goal_ids: set[str],
+    legacy_membership_by_landscape: Mapping[str, set[str]],
+    classifier: PublicationInputClassifier,
+    source_document_semantics: Mapping[str, str],
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any], Counter[str], list[dict[str, Any]]]:
+    review_path = resolve_repo_path(str(raw_binding["reviewPath"]))
+    extraction_path = resolve_repo_path(str(raw_binding["sourceExtractionPath"]))
+    legacy_path = resolve_repo_path(str(raw_binding["legacyMappingPath"]))
+    review = load_json(review_path)
+    extraction = load_json(extraction_path)
+    legacy = load_json(legacy_path)
+    if not all(isinstance(value, dict) for value in (review, extraction, legacy)):
+        raise CompilationError("Publication mapping inputs must be JSON objects")
+    classifier.observe("mapping-review", review)
+    classifier.observe("source-extraction", extraction)
+    classifier.observe("legacy-mapping", legacy)
+    input_files = [
+        publication_input_record("mapping-review", review_path, "publication-evidence"),
+        publication_input_record("source-extraction", extraction_path, "authoring-only-projected"),
+        publication_input_record("legacy-mapping", legacy_path, "authoring-only"),
+    ]
+
+    collection_id = extraction.get("extractionId")
+    source_landscape_id = extraction.get("sourceLandscapeId")
+    if not isinstance(collection_id, str) or not collection_id:
+        raise CompilationError(f"Source extraction has no extractionId: {extraction_path}")
+    if not isinstance(source_landscape_id, str) or not source_landscape_id:
+        raise CompilationError(f"Source extraction has no sourceLandscapeId: {extraction_path}")
+    if raw_binding.get("mappingCollectionId") != review.get("reviewId"):
+        raise CompilationError(f"Mapping collection ID mismatch in {review_path}")
+    if review.get("sourceExtractionPath") != raw_binding.get("sourceExtractionPath"):
+        raise CompilationError(f"Review/source-extraction binding mismatch in {review_path}")
+    if review.get("sourceLandscapeId") != source_landscape_id:
+        raise CompilationError(f"Review/source landscape mismatch in {review_path}")
+    if review.get("targetLandscapeId") != landscape_id:
+        raise CompilationError(f"Review target landscape mismatch in {review_path}")
+    if (
+        legacy.get("sourceLandscapeId") != source_landscape_id
+        or legacy.get("targetLandscapeId") != landscape_id
+    ):
+        raise CompilationError(f"Legacy mapping identity mismatch in {legacy_path}")
+    legacy_source_membership = legacy_membership_by_landscape.get(source_landscape_id)
+    if legacy_source_membership is None:
+        raise CompilationError(
+            f"Legacy source landscape has no bound membership: {source_landscape_id}"
+        )
+    jurisdiction = extraction.get("jurisdiction")
+    subject = extraction.get("subject")
+    stage = extraction.get("stage")
+    if (
+        not isinstance(jurisdiction, str)
+        or not isinstance(subject, str)
+        or stage not in {"SekI", "SekII", "SekI+SekII"}
+    ):
+        raise CompilationError(f"Incomplete source collection identity in {extraction_path}")
+
+    passages_raw = extraction.get("passages")
+    passages = passages_raw if isinstance(passages_raw, list) else []
+    passage_by_id: dict[str, Mapping[str, Any]] = {}
+    for passage in passages:
+        if not isinstance(passage, dict) or not isinstance(passage.get("id"), str):
+            raise CompilationError(f"Malformed source passage in {extraction_path}")
+        if passage["id"] in passage_by_id:
+            raise CompilationError(f"Duplicate source passage {passage['id']}")
+        passage_by_id[passage["id"]] = passage
+
+    document_by_key: dict[str, dict[str, Any]] = {}
+    compiled_documents: list[dict[str, Any]] = []
+    duration_models: set[str] = set()
+    for document in source_documents_from_extraction(extraction):
+        source_key = document.get("key")
+        title = document.get("title")
+        role = document.get("role")
+        if not all(
+            isinstance(value, str) and value.strip() for value in (source_key, title, role)
+        ):
+            raise CompilationError(f"Incomplete official source document in {extraction_path}")
+        source_key = source_key.strip()
+        title = title.strip()
+        role = role.strip()
+        semantic_type = source_document_semantics.get(role)
+        if semantic_type not in {"curriculum", "supplemental-source"}:
+            raise CompilationError(
+                f"Official source document role is not classified by the trusted profile: {role}"
+            )
+        if document.get("official") is not True:
+            raise CompilationError(f"Source document {source_key} is not explicitly official")
+        if source_key in document_by_key:
+            raise CompilationError(f"Duplicate source document key {source_key} in {collection_id}")
+        document_id = f"{collection_id}:{source_key}"
+        compiled_document = {
+            "sourceDocumentId": document_id,
+            "sourceKey": source_key,
+            "title": title,
+            "role": role,
+            "semanticType": semantic_type,
+            "official": True,
+            "url": assert_http_url(document.get("url"), f"source document {source_key}"),
+        }
+        landing_url = document.get("landingUrl")
+        if landing_url is not None:
+            compiled_document["landingUrl"] = assert_http_url(
+                landing_url, f"source document {source_key} landing page"
+            )
+        duration_model = document.get("durationModel")
+        if "durationModel" in document and (
+            not isinstance(duration_model, str)
+            or not duration_model
+            or duration_model != duration_model.strip()
+        ):
+            raise CompilationError(
+                f"Malformed source-document durationModel for {source_key}"
+            )
+        if isinstance(duration_model, str):
+            compiled_document["durationModel"] = duration_model
+            duration_models.add(duration_model)
+        document_by_key[source_key] = compiled_document
+        compiled_documents.append(compiled_document)
+    compiled_documents.sort(key=lambda item: item["sourceDocumentId"])
+    if "durationModels" not in extraction:
+        if duration_models:
+            raise CompilationError(
+                f"Source collection {collection_id} derives duration models from documents "
+                "but has no top-level durationModels evidence"
+            )
+    else:
+        authored_duration_models = extraction["durationModels"]
+        if (
+            not isinstance(authored_duration_models, list)
+            or not authored_duration_models
+            or any(
+                not isinstance(duration_model, str)
+                or not duration_model
+                or duration_model != duration_model.strip()
+                for duration_model in authored_duration_models
+            )
+            or len(authored_duration_models) != len(set(authored_duration_models))
+        ):
+            raise CompilationError(
+                f"Malformed authored durationModels in source collection {collection_id}"
+            )
+        if set(authored_duration_models) != duration_models:
+            raise CompilationError(
+                "Authored source-collection durationModels do not exactly match the "
+                f"official source documents in {collection_id}"
+            )
+
+    source_goals_raw = extraction.get("sourceGoals")
+    if not isinstance(source_goals_raw, list) or not source_goals_raw:
+        raise CompilationError(f"Source extraction has no source goals: {extraction_path}")
+    compiled_source_goals: list[dict[str, Any]] = []
+    lineage_groups: defaultdict[str, list[tuple[str, int, int]]] = defaultdict(list)
+    source_goal_ids: set[str] = set()
+    for source_goal in source_goals_raw:
+        if not isinstance(source_goal, dict):
+            raise CompilationError(f"Malformed source goal in {extraction_path}")
+        source_goal_id = source_goal.get("id")
+        passage_id = source_goal.get("passageId")
+        if not isinstance(source_goal_id, str) or not isinstance(passage_id, str):
+            raise CompilationError(f"Source goal identity is missing in {extraction_path}")
+        if source_goal_id in source_goal_ids:
+            raise CompilationError(f"Duplicate source goal {source_goal_id} in {collection_id}")
+        source_goal_ids.add(source_goal_id)
+        passage = passage_by_id.get(passage_id)
+        document_key = source_document_key_from_goal(source_goal, passage)
+        if document_key is None and len(document_by_key) == 1:
+            document_key = next(iter(document_by_key))
+        document = document_by_key.get(str(document_key))
+        if document is None:
+            raise CompilationError(
+                f"Source goal {source_goal_id} does not resolve an official source document"
+            )
+        topic_code = optional_nonblank(source_goal.get("topicCode")) or (
+            optional_nonblank(passage.get("topicCode")) if passage is not None else None
+        )
+        source_ref = optional_nonblank(source_goal.get("sourceRef")) or (
+            optional_nonblank(passage.get("sourceRef")) if passage is not None else None
+        )
+        source_text = optional_nonblank(source_goal.get("sourceText"))
+        source_span = optional_nonblank(source_goal.get("sourceSpan"))
+        title_value = optional_nonblank(source_goal.get("title"))
+        description_value = optional_nonblank(source_goal.get("description"))
+        if None in {topic_code, source_ref, source_text, source_span, title_value, description_value}:
+            raise CompilationError(f"Incomplete source-goal evidence for {source_goal_id}")
+        locator: dict[str, Any] = {
+            "passageId": passage_id,
+            "topicCode": topic_code,
+            "sourceSpan": source_span,
+            "sourceRef": source_ref,
+        }
+        source_page = source_goal.get("sourcePage")
+        if not isinstance(source_page, int) and passage is not None:
+            source_page = passage.get("page")
+        if isinstance(source_page, int):
+            locator["sourcePage"] = source_page
+        source_line = source_goal.get("sourceLine")
+        if isinstance(source_line, int):
+            locator["sourceLine"] = source_line
+        compiled_source_goal: dict[str, Any] = {
+            "sourceGoalId": source_goal_id,
+            "sourceDocumentId": document["sourceDocumentId"],
+            "title": title_value,
+            "description": description_value,
+            "sourceText": source_text,
+            "sourceTextSha256": "sha256:" + sha256_bytes(source_text.encode("utf-8")),
+            "locator": locator,
+        }
+        parent_bullet = optional_nonblank(source_goal.get("parentBulletText"))
+        if parent_bullet is not None:
+            compiled_source_goal["parentBulletText"] = parent_bullet
+        classification = {
+            key: value
+            for key in (
+                "granularity",
+                "category",
+                "stage",
+                "phase",
+                "courseLevel",
+                "grade",
+                "area",
+                "level",
+            )
+            if (value := optional_nonblank(source_goal.get(key))) is not None
+        }
+        if classification:
+            compiled_source_goal["classification"] = classification
+        lineage_keys = ("splitFromSourceGoalId", "splitIndex", "splitPartCount")
+        lineage_values = [source_goal.get(key) for key in lineage_keys]
+        if any(value is not None for value in lineage_values):
+            if not (
+                isinstance(lineage_values[0], str)
+                and bool(lineage_values[0])
+                and lineage_values[0] == lineage_values[0].strip()
+                and type(lineage_values[1]) is int
+                and type(lineage_values[2]) is int
+                and lineage_values[1] >= 1
+                and lineage_values[2] >= 1
+            ):
+                raise CompilationError(f"Incomplete split lineage for {source_goal_id}")
+            compiled_source_goal["lineage"] = dict(zip(lineage_keys, lineage_values))
+            lineage_groups[lineage_values[0]].append(
+                (source_goal_id, lineage_values[1], lineage_values[2])
+            )
+        compiled_source_goals.append(compiled_source_goal)
+    compiled_source_goals.sort(key=lambda item: item["sourceGoalId"])
+
+    for split_from_source_goal_id, parts in sorted(lineage_groups.items()):
+        part_counts = {part_count for _goal_id, _index, part_count in parts}
+        if len(part_counts) != 1:
+            raise CompilationError(
+                "Split lineage has inconsistent splitPartCount in "
+                f"{collection_id}:{split_from_source_goal_id}"
+            )
+        part_count = next(iter(part_counts))
+        indices = [index for _goal_id, index, _part_count in parts]
+        if len(indices) != len(set(indices)):
+            raise CompilationError(
+                "Split lineage has duplicate splitIndex values in "
+                f"{collection_id}:{split_from_source_goal_id}"
+            )
+        if sorted(indices) != list(range(1, part_count + 1)):
+            raise CompilationError(
+                "Split lineage does not exactly cover indices 1..splitPartCount in "
+                f"{collection_id}:{split_from_source_goal_id}"
+            )
+
+    diagnostics: Counter[str] = Counter()
+    raw_mappings = review.get("mappings")
+    if not isinstance(raw_mappings, list):
+        raise CompilationError(f"Review has no redundant mappings array: {review_path}")
+    raw_pairs: dict[tuple[str, str], str] = {}
+    for mapping in raw_mappings:
+        if not isinstance(mapping, dict):
+            raise CompilationError(f"Malformed redundant mapping in {review_path}")
+        source_goal_id = mapping.get("legacyGoalId")
+        target_goal_id = mapping.get("canonicalGoalId")
+        match_type = mapping.get("matchType")
+        if (
+            not isinstance(source_goal_id, str)
+            or not isinstance(target_goal_id, str)
+            or match_type not in {"exact", "partial"}
+        ):
+            raise CompilationError(f"Malformed redundant mapping row in {review_path}")
+        pair = (source_goal_id, target_goal_id)
+        if pair in raw_pairs:
+            raise CompilationError(f"Duplicate redundant mapping edge {pair}")
+        raw_pairs[pair] = match_type
+
+    decisions = review.get("decisions")
+    if not isinstance(decisions, list) or not decisions:
+        raise CompilationError(f"Mapping review has no authoritative decisions: {review_path}")
+    decision_edges: dict[tuple[str, str], str] = {}
+    explicit_match_type_pairs: set[tuple[str, str]] = set()
+    unresolved_match_type_pairs: list[tuple[str, str]] = []
+    for decision in decisions:
+        if not isinstance(decision, dict) or decision.get("decision") != "mapped":
+            raise CompilationError(f"Unsupported mapping decision in {review_path}")
+        source_goal_id = decision.get("sourceGoalId")
+        targets = decision.get("canonicalGoalIds")
+        if (
+            not isinstance(source_goal_id, str)
+            or source_goal_id not in source_goal_ids
+            or not isinstance(targets, list)
+            or not targets
+        ):
+            raise CompilationError(f"Malformed authoritative decision in {review_path}")
+        has_explicit_match_type = "matchType" in decision
+        explicit_match_type = decision.get("matchType")
+        if has_explicit_match_type and explicit_match_type not in {"exact", "partial"}:
+            raise CompilationError(f"Malformed authoritative decision in {review_path}")
+        for target in targets:
+            if not isinstance(target, str) or target not in canonical_goal_ids:
+                raise CompilationError(f"Unknown canonical mapping target {target} in {review_path}")
+            pair = (source_goal_id, target)
+            if pair in decision_edges:
+                raise CompilationError(f"Duplicate authoritative mapping edge {pair} in {review_path}")
+            if has_explicit_match_type:
+                match_type = str(explicit_match_type)
+                explicit_match_type_pairs.add(pair)
+            elif pair in raw_pairs:
+                match_type = raw_pairs[pair]
+                diagnostics["decisionMatchTypesDerivedFromRawMappings"] += 1
+            else:
+                unresolved_match_type_pairs.append(pair)
+                continue
+            decision_edges[pair] = match_type
+    diagnostics["unresolvedDecisionMatchTypes"] += len(unresolved_match_type_pairs)
+    if unresolved_match_type_pairs:
+        raise CompilationError(
+            "Authoritative mapping edges have neither an explicit decision matchType "
+            "nor an edge-specific reviewed mappings fallback: "
+            f"{unresolved_match_type_pairs[:3]}"
+        )
+    if {source for source, _ in decision_edges} != source_goal_ids:
+        raise CompilationError(f"Authoritative decisions do not cover every source goal in {review_path}")
+
+    unsupported_raw_pairs = set(raw_pairs) - set(decision_edges)
+    if unsupported_raw_pairs:
+        raise CompilationError(
+            "Redundant mapping is not decision-backed: "
+            f"{sorted(unsupported_raw_pairs)[:3]}"
+        )
+    diagnostics["rawMappingEdges"] += len(raw_pairs)
+    diagnostics["decisionEdgesMissingFromRawMappings"] += len(set(decision_edges) - set(raw_pairs))
+    diagnostics["decisionRawMatchTypeConflicts"] += sum(
+        pair in explicit_match_type_pairs
+        and pair in raw_pairs
+        and raw_pairs[pair] != match_type
+        for pair, match_type in decision_edges.items()
+    )
+
+    legacy_rows = legacy.get("mappings")
+    if not isinstance(legacy_rows, list):
+        raise CompilationError(f"Legacy mapping has no mappings array: {legacy_path}")
+    diagnostics["legacyPlainMappingRows"] += len(legacy_rows)
+    for mapping in legacy_rows:
+        if not isinstance(mapping, dict):
+            raise CompilationError(f"Malformed legacy mapping in {legacy_path}")
+        if mapping.get("legacyGoalId") not in legacy_source_membership:
+            diagnostics["legacySourceIdsOutsideMembership"] += 1
+        if mapping.get("canonicalGoalId") not in canonical_goal_ids:
+            diagnostics["legacyDanglingTargets"] += 1
+
+    edges = [
+        {
+            "sourceGoalId": source_goal_id,
+            "canonicalGoalId": canonical_goal_id,
+            "matchType": match_type,
+        }
+        for (source_goal_id, canonical_goal_id), match_type in sorted(decision_edges.items())
+    ]
+    mapping_collection = {
+        "mappingCollectionId": review["reviewId"],
+        "sourceCollectionId": collection_id,
+        "sourceLandscapeId": source_landscape_id,
+        "targetLandscapeId": landscape_id,
+        "jurisdiction": jurisdiction,
+        "subject": subject,
+        "stage": stage,
+        "inputDecisionCount": len(decisions),
+        "mappingEdgeCount": len(edges),
+        "edges": edges,
+    }
+    source_collection: dict[str, Any] = {
+        "sourceCollectionId": collection_id,
+        "sourceLandscapeId": source_landscape_id,
+        "jurisdiction": jurisdiction,
+        "subject": subject,
+        "stage": stage,
+        "documentCount": len(compiled_documents),
+        "documents": compiled_documents,
+    }
+    if duration_models:
+        source_collection["durationModels"] = sorted(duration_models)
+    source_goal_collection = {
+        "sourceCollectionId": collection_id,
+        "sourceLandscapeId": source_landscape_id,
+        "sourceGoalCount": len(compiled_source_goals),
+        "sourceGoals": compiled_source_goals,
+    }
+    return (
+        mapping_collection,
+        source_collection,
+        source_goal_collection,
+        diagnostics,
+        input_files,
+    )
+
+
+def compile_release_quality_evidence(
+    publication_profile: Mapping[str, Any],
+    goal_by_id: Mapping[str, Mapping[str, Any]],
+    compiled_decks: Sequence[tuple[str, Mapping[str, Any]]],
+    resources: Sequence[Mapping[str, Any]],
+    classifier: PublicationInputClassifier,
+    schema_id: str,
+) -> tuple[dict[str, Any], dict[str, int], list[dict[str, Any]]]:
+    landscape_id = str(publication_profile["targetLandscapeId"])
+    quality_sources = publication_profile.get("qualitySources")
+    if not isinstance(quality_sources, dict):
+        raise CompilationError("Publication quality-source bindings are missing")
+    input_files: list[dict[str, Any]] = []
+
+    atomic_binding = quality_sources["semanticAtomicity"]
+    atomic_config_path = resolve_repo_path(str(atomic_binding["configPath"]))
+    atomic_review_path = resolve_repo_path(str(atomic_binding["reviewPath"]))
+    atomic_config = load_json(atomic_config_path)
+    atomic_records = load_json_lines(atomic_review_path)
+    if not isinstance(atomic_config, dict):
+        raise CompilationError("Semantic-atomicity config must be an object")
+    classifier.observe("semantic-atomicity-config", atomic_config)
+    for record in atomic_records:
+        classifier.observe("semantic-atomicity-review", record)
+    input_files.extend(
+        [
+            publication_input_record(
+                "semantic-atomicity-config", atomic_config_path, "authoring-only-selector"
+            ),
+            publication_input_record(
+                "semantic-atomicity-review", atomic_review_path, "publication-evidence"
+            ),
+        ]
+    )
+    if (
+        atomic_config.get("reviewId") != atomic_binding.get("reviewId")
+        or atomic_config.get("ruleVersion") != atomic_binding.get("ruleVersion")
+        or atomic_config.get("landscapeId") != landscape_id
+        or atomic_config.get("reviewPath") != atomic_binding.get("reviewPath")
+    ):
+        raise CompilationError("Semantic-atomicity quality binding mismatch")
+    atomic_scope = {
+        goal_id
+        for goal_id in configured_goal_scope(atomic_config, goal_by_id)
+        if is_review_relevant_leaf(goal_by_id[goal_id])
+    }
+    atomic_by_goal: dict[str, Mapping[str, Any]] = {}
+    atomic_decisions: list[dict[str, Any]] = []
+    for record in atomic_records:
+        if not isinstance(record, dict) or not isinstance(record.get("goalId"), str):
+            raise CompilationError("Malformed semantic-atomicity decision")
+        goal_id = record["goalId"]
+        if goal_id in atomic_by_goal:
+            raise CompilationError(f"Duplicate semantic-atomicity decision for {goal_id}")
+        atomic_by_goal[goal_id] = record
+        if (
+            record.get("reviewId") != atomic_binding["reviewId"]
+            or record.get("ruleVersion") != atomic_binding["ruleVersion"]
+            or record.get("landscapeId") != landscape_id
+            or goal_id not in atomic_scope
+        ):
+            raise CompilationError(f"Semantic-atomicity decision binding mismatch for {goal_id}")
+        expected_fingerprint = goal_review_fingerprint(
+            goal_by_id[goal_id], str(atomic_binding["ruleVersion"])
+        )
+        if record.get("fingerprint") != expected_fingerprint:
+            raise CompilationError(f"Stale semantic-atomicity fingerprint for {goal_id}")
+        status = record.get("status")
+        semantic_atomic = record.get("semanticAtomic")
+        expected_semantic_atomic = {
+            "atomic": True,
+            "non_atomic": False,
+            "needs_developer_review": None,
+        }.get(str(status), "unsupported")
+        if semantic_atomic != expected_semantic_atomic:
+            raise CompilationError(f"Invalid semantic-atomicity result for {goal_id}")
+        atomic_decisions.append(
+            {
+                "goalId": goal_id,
+                "goalFingerprint": expected_fingerprint,
+                "status": status,
+                "semanticAtomic": semantic_atomic,
+            }
+        )
+    if set(atomic_by_goal) != atomic_scope:
+        raise CompilationError("Semantic-atomicity ledger does not cover the exact configured scope")
+    atomic_decisions.sort(key=lambda item: item["goalId"])
+    atomic_statuses = {item["status"] for item in atomic_decisions}
+    atomic_lane_status = (
+        "failed"
+        if "non_atomic" in atomic_statuses
+        else "incomplete"
+        if "needs_developer_review" in atomic_statuses
+        else "passed"
+    )
+
+    memory_binding = quality_sources["memoryCards"]
+    memory_config_path = resolve_repo_path(str(memory_binding["configPath"]))
+    memory_review_path = resolve_repo_path(str(memory_binding["reviewPath"]))
+    card_review_path = resolve_repo_path(str(memory_binding["cardReviewPath"]))
+    memory_config = load_json(memory_config_path)
+    memory_records = load_json_lines(memory_review_path)
+    card_records = load_json_lines(card_review_path)
+    if not isinstance(memory_config, dict):
+        raise CompilationError("Memory-card config must be an object")
+    classifier.observe("memory-card-config", memory_config)
+    for record in memory_records:
+        classifier.observe("memory-goal-review", record)
+    for record in card_records:
+        classifier.observe("memory-card-review", record)
+    input_files.extend(
+        [
+            publication_input_record(
+                "memory-card-config", memory_config_path, "authoring-only-selector"
+            ),
+            publication_input_record(
+                "memory-goal-review", memory_review_path, "publication-evidence"
+            ),
+            publication_input_record(
+                "memory-card-review", card_review_path, "publication-evidence-projected"
+            ),
+        ]
+    )
+    if (
+        memory_config.get("reviewId") != memory_binding.get("reviewId")
+        or memory_config.get("ruleVersion") != memory_binding.get("ruleVersion")
+        or memory_config.get("landscapeId") != landscape_id
+        or memory_config.get("reviewPath") != memory_binding.get("reviewPath")
+        or memory_config.get("cardReviewPath") != memory_binding.get("cardReviewPath")
+    ):
+        raise CompilationError("Memory-card quality binding mismatch")
+    memory_scope = {
+        goal_id
+        for goal_id in configured_goal_scope(memory_config, goal_by_id)
+        if is_review_relevant_leaf(goal_by_id[goal_id])
+    }
+    memory_by_goal: dict[str, Mapping[str, Any]] = {}
+    memory_decisions: list[dict[str, Any]] = []
+    for record in memory_records:
+        if not isinstance(record, dict) or not isinstance(record.get("goalId"), str):
+            raise CompilationError("Malformed memory-goal decision")
+        goal_id = record["goalId"]
+        if goal_id in memory_by_goal:
+            raise CompilationError(f"Duplicate memory-goal decision for {goal_id}")
+        memory_by_goal[goal_id] = record
+        if (
+            record.get("reviewId") != memory_binding["reviewId"]
+            or record.get("ruleVersion") != memory_binding["ruleVersion"]
+            or record.get("landscapeId") != landscape_id
+            or goal_id not in memory_scope
+        ):
+            raise CompilationError(f"Memory-goal decision binding mismatch for {goal_id}")
+        expected_fingerprint = goal_review_fingerprint(
+            goal_by_id[goal_id], str(memory_binding["ruleVersion"])
+        )
+        if record.get("fingerprint") != expected_fingerprint:
+            raise CompilationError(f"Stale memory-goal fingerprint for {goal_id}")
+        status = record.get("status")
+        memory_useful = record.get("memoryUseful")
+        expected_memory_useful = {
+            "no_memory_needed": False,
+            "memory_required": True,
+            "needs_developer_review": None,
+        }.get(str(status), "unsupported")
+        if memory_useful != expected_memory_useful:
+            raise CompilationError(f"Invalid memory-goal result for {goal_id}")
+        decision: dict[str, Any] = {
+            "goalId": goal_id,
+            "goalFingerprint": expected_fingerprint,
+            "status": status,
+            "memoryUseful": memory_useful,
+        }
+        if status == "memory_required":
+            memory_goal_ids = record.get("memoryGoalIds")
+            deck_ids = record.get("deckIds")
+            if (
+                not isinstance(memory_goal_ids, list)
+                or not memory_goal_ids
+                or not isinstance(deck_ids, list)
+                or not deck_ids
+                or any(
+                    not isinstance(memory_goal_id, str)
+                    or memory_goal_id not in goal_by_id
+                    or not is_memory_goal(goal_by_id[memory_goal_id])
+                    for memory_goal_id in memory_goal_ids
+                )
+            ):
+                raise CompilationError(f"Invalid memory support references for {goal_id}")
+            decision["memoryGoalIds"] = sorted(set(memory_goal_ids))
+            decision["deckIds"] = sorted(set(deck_ids))
+        memory_decisions.append(decision)
+    if set(memory_by_goal) != memory_scope:
+        raise CompilationError("Memory-goal ledger does not cover the exact configured scope")
+    memory_decisions.sort(key=lambda item: item["goalId"])
+
+    primary_cards: dict[tuple[str, str], dict[str, Any]] = {}
+    for _, deck in compiled_decks:
+        if deck.get("language") != "de-DE":
+            continue
+        deck_id = deck.get("deckId")
+        cards = deck.get("cards")
+        if not isinstance(deck_id, str) or not isinstance(cards, list):
+            raise CompilationError("Malformed primary memory deck")
+        for card in cards:
+            if not isinstance(card, dict) or not isinstance(card.get("id"), str):
+                raise CompilationError(f"Malformed card in primary deck {deck_id}")
+            key = (deck_id, card["id"])
+            if key in primary_cards:
+                raise CompilationError(f"Duplicate primary card identity {key}")
+            primary_cards[key] = {
+                "deckId": deck_id,
+                "cardId": card["id"],
+                "front": card.get("front"),
+                "back": card.get("back"),
+                "category": card.get("category"),
+                "tags": card.get("tags", []),
+            }
+    card_record_by_key: dict[tuple[str, str], Mapping[str, Any]] = {}
+    removed_card_count = 0
+    for record in card_records:
+        if not isinstance(record, dict):
+            raise CompilationError("Malformed memory-card review decision")
+        key = (record.get("deckId"), record.get("cardId"))
+        if not all(isinstance(value, str) for value in key):
+            raise CompilationError("Memory-card review identity is missing")
+        typed_key = (str(key[0]), str(key[1]))
+        if typed_key in card_record_by_key:
+            raise CompilationError(f"Duplicate memory-card review decision {typed_key}")
+        card_record_by_key[typed_key] = record
+        if record.get("status") == "remove":
+            removed_card_count += 1
+    active_card_decisions: list[dict[str, Any]] = []
+    for key, card in primary_cards.items():
+        record = card_record_by_key.get(key)
+        if record is None:
+            raise CompilationError(f"Missing review for active primary card {key}")
+        expected_fingerprint = card_review_fingerprint(
+            card, str(memory_binding["ruleVersion"])
+        )
+        origin_goal_ids = record.get("originGoalIds")
+        if (
+            record.get("reviewId") != memory_binding["reviewId"]
+            or record.get("ruleVersion") != memory_binding["ruleVersion"]
+            or record.get("landscapeId") != landscape_id
+            or record.get("fingerprint") != expected_fingerprint
+            or record.get("status") != "kept"
+            or record.get("necessary") is not True
+            or not isinstance(origin_goal_ids, list)
+            or not origin_goal_ids
+        ):
+            raise CompilationError(f"Invalid or stale review for active primary card {key}")
+        for origin_goal_id in origin_goal_ids:
+            goal_record = memory_by_goal.get(str(origin_goal_id))
+            if (
+                goal_record is None
+                or goal_record.get("status") != "memory_required"
+                or key[0] not in goal_record.get("deckIds", [])
+            ):
+                raise CompilationError(f"Untraced memory-card origin {origin_goal_id} for {key}")
+        active_card_decisions.append(
+            {
+                "deckId": key[0],
+                "cardId": key[1],
+                "cardFingerprint": expected_fingerprint,
+                "status": "kept",
+                "necessary": True,
+                "originGoalIds": sorted(set(origin_goal_ids)),
+            }
+        )
+    inactive_card_records = {
+        key: record
+        for key, record in card_record_by_key.items()
+        if key not in primary_cards
+    }
+    if any(record.get("status") != "remove" for record in inactive_card_records.values()):
+        raise CompilationError(
+            "Inactive memory-card review records must be authoring-only removals"
+        )
+    active_card_decisions.sort(key=lambda item: (item["deckId"], item["cardId"]))
+    required_goal_ids = {
+        item["goalId"]
+        for item in memory_decisions
+        if item["status"] == "memory_required"
+    }
+    active_origin_goal_ids = {
+        goal_id
+        for item in active_card_decisions
+        for goal_id in item["originGoalIds"]
+    }
+    if active_origin_goal_ids != required_goal_ids:
+        raise CompilationError(
+            "Active memory-card origins do not exactly cover memory-required goals"
+        )
+    required_deck_ids = {
+        deck_id
+        for item in memory_decisions
+        if item["status"] == "memory_required"
+        for deck_id in item["deckIds"]
+    }
+    primary_deck_ids = {deck_id for deck_id, _card_id in primary_cards}
+    if required_deck_ids != primary_deck_ids:
+        raise CompilationError(
+            "Memory-required deck references do not match the active primary decks"
+        )
+    memory_statuses = {item["status"] for item in memory_decisions}
+    memory_lane_status = (
+        "incomplete" if "needs_developer_review" in memory_statuses else "passed"
+    )
+
+    visual_binding = quality_sources["goalVisualizations"]
+    visual_qa_path = resolve_repo_path(str(visual_binding["qaPath"]))
+    visual_qa = load_json(visual_qa_path)
+    if not isinstance(visual_qa, dict):
+        raise CompilationError("Goal-visualization QA must be an object")
+    classifier.observe("goal-visualization-qa", visual_qa)
+    input_files.append(
+        publication_input_record(
+            "goal-visualization-qa", visual_qa_path, "publication-evidence-projected"
+        )
+    )
+    visual_records = visual_qa.get("records")
+    if (
+        visual_qa.get("landscapeId") not in {None, landscape_id}
+        or not isinstance(visual_records, list)
+        or not visual_records
+    ):
+        raise CompilationError("Goal-visualization QA binding is invalid")
+    visual_resources: dict[str, Mapping[str, Any]] = {}
+    for resource in resources:
+        if resource.get("resourceKind") != "goal-visualization":
+            continue
+        goal_id = resource.get("ownerGoalId")
+        if not isinstance(goal_id, str) or goal_id in visual_resources:
+            raise CompilationError(f"Goal visualization ownership is not one-to-one: {goal_id}")
+        visual_resources[goal_id] = resource
+    missing_visual_goal_ids = sorted(atomic_scope - set(visual_resources))
+    visual_decisions: list[dict[str, Any]] = []
+    visual_goal_ids: set[str] = set()
+    for record in visual_records:
+        if not isinstance(record, dict) or not isinstance(record.get("goalId"), str):
+            raise CompilationError("Malformed goal-visualization QA decision")
+        goal_id = record["goalId"]
+        if goal_id in visual_goal_ids:
+            raise CompilationError(f"Duplicate goal-visualization QA decision for {goal_id}")
+        visual_goal_ids.add(goal_id)
+        resource = visual_resources.get(goal_id)
+        if resource is None:
+            raise CompilationError(f"Goal-visualization QA has no active resource for {goal_id}")
+        expected_digest = "sha256:" + str(resource["sha256"])
+        if record.get("assetSha256") != expected_digest:
+            raise CompilationError(f"Stale goal-visualization QA asset hash for {goal_id}")
+        human_approved = record.get("humanApproved")
+        human_issue = record.get("humanIssueIdentified")
+        if human_approved not in {"yes", "no"} or human_issue not in {"yes", "no"}:
+            raise CompilationError(f"Invalid human visualization decision for {goal_id}")
+        status = (
+            "rejected"
+            if human_issue == "yes"
+            else "human-approved"
+            if human_approved == "yes"
+            else "pending-human-review"
+        )
+        visual_decisions.append(
+            {"goalId": goal_id, "assetSha256": expected_digest, "status": status}
+        )
+    if visual_goal_ids != set(visual_resources):
+        raise CompilationError("Goal-visualization QA does not cover the exact active resource set")
+    visual_decisions.sort(key=lambda item: item["goalId"])
+    approved_count = sum(item["status"] == "human-approved" for item in visual_decisions)
+    rejected_count = sum(item["status"] == "rejected" for item in visual_decisions)
+    open_count = len(visual_decisions) - approved_count
+    visual_lane_status = (
+        "failed"
+        if rejected_count
+        else "incomplete"
+        if open_count or missing_visual_goal_ids
+        else "passed"
+    )
+
+    publication_status = (
+        "ready"
+        if {atomic_lane_status, memory_lane_status, visual_lane_status} == {"passed"}
+        else "not-ready"
+    )
+    quality_value = {
+        "$schema": schema_id,
+        "qualityEvidenceFormatVersion": "1.0",
+        "landscapeId": landscape_id,
+        "publicationStatus": publication_status,
+        "qualityDecisionCount": (
+            len(atomic_decisions)
+            + len(memory_decisions)
+            + len(active_card_decisions)
+            + len(visual_decisions)
+        ),
+        "lanes": {
+            "semanticAtomicity": {
+                "reviewId": atomic_binding["reviewId"],
+                "ruleVersion": atomic_binding["ruleVersion"],
+                "status": atomic_lane_status,
+                "decisionCount": len(atomic_decisions),
+                "decisions": atomic_decisions,
+            },
+            "memoryCards": {
+                "reviewId": memory_binding["reviewId"],
+                "ruleVersion": memory_binding["ruleVersion"],
+                "status": memory_lane_status,
+                "goalDecisionCount": len(memory_decisions),
+                "activeCardDecisionCount": len(active_card_decisions),
+                "goalDecisions": memory_decisions,
+                "activeCardDecisions": active_card_decisions,
+            },
+            "goalVisualizations": {
+                "reviewId": visual_binding["reviewId"],
+                "ruleVersion": visual_binding["ruleVersion"],
+                "status": visual_lane_status,
+                "scopeGoalCount": len(atomic_scope),
+                "missingGoalCount": len(missing_visual_goal_ids),
+                "missingGoalIds": missing_visual_goal_ids,
+                "decisionCount": len(visual_decisions),
+                "approvedCount": approved_count,
+                "openCount": open_count,
+                "decisions": visual_decisions,
+            },
+        },
+    }
+    quality_counts = {
+        "semanticAtomicityDecisions": len(atomic_decisions),
+        "memoryGoalDecisions": len(memory_decisions),
+        "noMemoryNeeded": sum(
+            item["status"] == "no_memory_needed" for item in memory_decisions
+        ),
+        "memoryRequired": sum(item["status"] == "memory_required" for item in memory_decisions),
+        "cardLedgerDecisions": len(card_records),
+        "activeKeptCardDecisions": len(active_card_decisions),
+        "authoringOnlyRemovedCardDecisions": removed_card_count,
+        "visualizationDecisions": len(visual_decisions),
+        "visualizationScopeGoals": len(atomic_scope),
+        "missingGoalVisualizations": len(missing_visual_goal_ids),
+        "humanApprovedVisualizations": approved_count,
+        "openVisualizations": open_count,
+        "publishedQualityDecisions": quality_value["qualityDecisionCount"],
+    }
+    return quality_value, quality_counts, input_files
+
+
+def compile_publication_evidence(
+    publication_profile: Mapping[str, Any],
+    compiled_landscape: Mapping[str, Any],
+    compiled_decks: Sequence[tuple[str, Mapping[str, Any]]],
+    resources: Sequence[Mapping[str, Any]],
+) -> tuple[list[tuple[str, str, str, dict[str, Any]]], dict[str, Any], dict[str, int]]:
+    landscape_id = str(compiled_landscape["landscapeId"])
+    if publication_profile.get("targetLandscapeId") != landscape_id:
+        raise CompilationError("Publication-evidence profile targets another landscape")
+    goals = compiled_landscape.get("goals")
+    if not isinstance(goals, list):
+        raise CompilationError("Compiled landscape goals are missing for publication evidence")
+    canonical_goal_ids = {
+        goal["id"]
+        for goal in goals
+        if isinstance(goal, dict) and isinstance(goal.get("id"), str)
+    }
+    goal_by_id = {
+        goal["id"]: goal
+        for goal in goals
+        if isinstance(goal, dict) and isinstance(goal.get("id"), str)
+    }
+    if len(canonical_goal_ids) != len(goals):
+        raise CompilationError("Canonical goals are malformed or duplicated")
+
+    classifier = PublicationInputClassifier(publication_profile)
+    raw_source_document_semantics = publication_profile.get("sourceDocumentSemantics")
+    if (
+        not isinstance(raw_source_document_semantics, dict)
+        or raw_source_document_semantics.get("unknownRolePolicy") != "reject"
+        or not isinstance(raw_source_document_semantics.get("roles"), dict)
+        or not raw_source_document_semantics["roles"]
+    ):
+        raise CompilationError("Trusted source-document role semantics are missing")
+    source_document_semantics = raw_source_document_semantics["roles"]
+    if any(
+        not isinstance(role, str)
+        or not role
+        or semantic_type not in {"curriculum", "supplemental-source"}
+        for role, semantic_type in source_document_semantics.items()
+    ):
+        raise CompilationError("Trusted source-document role semantics are malformed")
+    legacy_diagnostics = publication_profile.get("legacyDiagnostics")
+    if not isinstance(legacy_diagnostics, dict):
+        raise CompilationError("Legacy diagnostic binding is missing")
+    legacy_membership_path = resolve_repo_path(
+        str(legacy_diagnostics["sourceGoalMembershipRegistryPath"])
+    )
+    legacy_membership_value = load_json(legacy_membership_path)
+    if not isinstance(legacy_membership_value, dict):
+        raise CompilationError("Legacy source-goal membership registry must be an object")
+    classifier.observe("legacy-membership-registry", legacy_membership_value)
+    raw_legacy_memberships = legacy_membership_value.get("landscapes")
+    if not isinstance(raw_legacy_memberships, list) or not raw_legacy_memberships:
+        raise CompilationError("Legacy source-goal memberships are missing")
+    legacy_membership_by_landscape: dict[str, set[str]] = {}
+    for membership in raw_legacy_memberships:
+        if not isinstance(membership, dict):
+            raise CompilationError("Malformed legacy source-goal membership")
+        source_landscape_id = membership.get("landscapeId")
+        goal_ids = membership.get("goalIds")
+        if (
+            not isinstance(source_landscape_id, str)
+            or not isinstance(goal_ids, list)
+            or any(not isinstance(goal_id, str) for goal_id in goal_ids)
+            or len(goal_ids) != len(set(goal_ids))
+            or source_landscape_id in legacy_membership_by_landscape
+        ):
+            raise CompilationError("Malformed or duplicate legacy source-goal membership")
+        legacy_membership_by_landscape[source_landscape_id] = set(goal_ids)
+    raw_bindings = publication_profile.get("mappingCollections")
+    if not isinstance(raw_bindings, list) or not raw_bindings:
+        raise CompilationError("Publication-evidence mapping bindings are missing")
+    mapping_collections: list[dict[str, Any]] = []
+    source_collections: list[dict[str, Any]] = []
+    source_goal_collections: list[dict[str, Any]] = []
+    input_files: list[dict[str, Any]] = [
+        publication_input_record(
+            "legacy-membership-registry",
+            legacy_membership_path,
+            "authoring-only-diagnostic",
+        )
+    ]
+    diagnostics: Counter[str] = Counter()
+    for raw_binding in raw_bindings:
+        if not isinstance(raw_binding, dict):
+            raise CompilationError("Malformed publication mapping binding")
+        mapping, source, source_goals, lane_diagnostics, lane_inputs = (
+            compile_mapping_source_lane(
+                raw_binding,
+                landscape_id,
+                canonical_goal_ids,
+                legacy_membership_by_landscape,
+                classifier,
+                source_document_semantics,
+            )
+        )
+        mapping_collections.append(mapping)
+        source_collections.append(source)
+        source_goal_collections.append(source_goals)
+        diagnostics.update(lane_diagnostics)
+        input_files.extend(lane_inputs)
+    mapping_collections.sort(key=lambda item: item["mappingCollectionId"])
+    source_collections.sort(key=lambda item: item["sourceCollectionId"])
+    source_goal_collections.sort(key=lambda item: item["sourceCollectionId"])
+    for field, values in (
+        ("mappingCollectionId", mapping_collections),
+        ("sourceCollectionId", source_collections),
+        ("sourceCollectionId", source_goal_collections),
+    ):
+        identities = [item[field] for item in values]
+        if len(identities) != len(set(identities)):
+            raise CompilationError(f"Duplicate publication collection identity in {field}")
+    document_ids = [
+        document["sourceDocumentId"]
+        for collection in source_collections
+        for document in collection["documents"]
+    ]
+    if len(document_ids) != len(set(document_ids)):
+        raise CompilationError("Duplicate official source document identity")
+    observed_source_document_roles = {
+        document["role"]
+        for collection in source_collections
+        for document in collection["documents"]
+    }
+    if observed_source_document_roles != set(source_document_semantics):
+        raise CompilationError(
+            "Trusted source-document role semantics do not exactly cover the bound inputs: "
+            f"missing={sorted(observed_source_document_roles - set(source_document_semantics))}, "
+            f"unused={sorted(set(source_document_semantics) - observed_source_document_roles)}"
+        )
+    source_goal_ids = [
+        goal["sourceGoalId"]
+        for collection in source_goal_collections
+        for goal in collection["sourceGoals"]
+    ]
+    if len(source_goal_ids) != len(set(source_goal_ids)):
+        raise CompilationError("Source goal IDs must be package-wide unique")
+    source_document_references = {
+        goal["sourceDocumentId"]
+        for collection in source_goal_collections
+        for goal in collection["sourceGoals"]
+    }
+    if not source_document_references <= set(document_ids):
+        raise CompilationError("Source-goal reference index has dangling source documents")
+
+    outputs = publication_profile["outputArtifacts"]
+    mappings_value = {
+        "$schema": outputs["mappings"]["schemaId"],
+        "mappingFormatVersion": "1.0",
+        "targetLandscapeId": landscape_id,
+        "mappingCollectionCount": len(mapping_collections),
+        "decisionCount": sum(item["inputDecisionCount"] for item in mapping_collections),
+        "mappingEdgeCount": sum(item["mappingEdgeCount"] for item in mapping_collections),
+        "collections": mapping_collections,
+    }
+    source_index_value = {
+        "$schema": outputs["sourceIndex"]["schemaId"],
+        "sourceIndexFormatVersion": "1.0",
+        "targetLandscapeId": landscape_id,
+        "sourceCollectionCount": len(source_collections),
+        "sourceDocumentCount": len(document_ids),
+        "collections": source_collections,
+    }
+    source_goals_value = {
+        "$schema": outputs["sourceGoalReferences"]["schemaId"],
+        "sourceGoalReferenceFormatVersion": "1.0",
+        "targetLandscapeId": landscape_id,
+        "sourceCollectionCount": len(source_goal_collections),
+        "sourceGoalCount": len(source_goal_ids),
+        "collections": source_goal_collections,
+    }
+    quality_value, quality_counts, quality_inputs = compile_release_quality_evidence(
+        publication_profile,
+        goal_by_id,
+        compiled_decks,
+        resources,
+        classifier,
+        outputs["qualityEvidence"]["schemaId"],
+    )
+    input_files.extend(quality_inputs)
+    classifier.assert_complete()
+
+    jurisdictions = {item["jurisdiction"] for item in source_collections}
+    source_document_semantic_counts = Counter(
+        document["semanticType"]
+        for collection in source_collections
+        for document in collection["documents"]
+    )
+    counts = {
+        "mappingCollections": len(mapping_collections),
+        "mappingInputDecisions": mappings_value["decisionCount"],
+        "mappingEdges": mappings_value["mappingEdgeCount"],
+        "sourceCollections": len(source_collections),
+        "sourceDocuments": len(document_ids),
+        "curriculumSourceDocuments": source_document_semantic_counts["curriculum"],
+        "supplementalSourceDocuments": source_document_semantic_counts[
+            "supplemental-source"
+        ],
+        "sourceGoals": len(source_goal_ids),
+        "sourceJurisdictions": len(jurisdictions),
+        "decisionMatchTypesDerivedFromRawMappings": diagnostics[
+            "decisionMatchTypesDerivedFromRawMappings"
+        ],
+        "unresolvedDecisionMatchTypes": diagnostics[
+            "unresolvedDecisionMatchTypes"
+        ],
+        **diagnostics,
+        **quality_counts,
+    }
+    expected = publication_profile["expectedCounts"]
+    expected_flat = {
+        "mappingCollections": expected["mappings"]["collections"],
+        "mappingInputDecisions": expected["mappings"]["inputDecisions"],
+        "mappingEdges": expected["mappings"]["decisionEdges"],
+        "rawMappingEdges": expected["mappings"]["rawMappingEdges"],
+        "decisionEdgesMissingFromRawMappings": expected["mappings"][
+            "decisionEdgesMissingFromRawMappings"
+        ],
+        "decisionRawMatchTypeConflicts": expected["mappings"][
+            "decisionRawMatchTypeConflicts"
+        ],
+        "decisionMatchTypesDerivedFromRawMappings": expected["mappings"][
+            "decisionMatchTypesDerivedFromRawMappings"
+        ],
+        "unresolvedDecisionMatchTypes": expected["mappings"][
+            "unresolvedDecisionMatchTypes"
+        ],
+        "legacyPlainMappingRows": expected["mappings"]["legacyPlainMappingRows"],
+        "legacyDanglingTargets": expected["mappings"]["legacyDanglingTargets"],
+        "legacySourceIdsOutsideMembership": expected["mappings"][
+            "legacySourceIdsOutsideMembership"
+        ],
+        "sourceCollections": expected["sources"]["collections"],
+        "sourceDocuments": expected["sources"]["documents"],
+        "curriculumSourceDocuments": expected["sources"]["curriculumDocuments"],
+        "supplementalSourceDocuments": expected["sources"]["supplementalDocuments"],
+        "sourceGoals": expected["sources"]["sourceGoals"],
+        "sourceJurisdictions": expected["sources"]["jurisdictions"],
+        **expected["quality"],
+    }
+    differences = {
+        key: {"expected": expected_flat.get(key), "actual": counts.get(key)}
+        for key in sorted(expected_flat)
+        if expected_flat.get(key) != counts.get(key)
+    }
+    if differences:
+        raise CompilationError(f"Publication-evidence conformance counts changed: {differences}")
+
+    logical_documents = [
+        (
+            outputs["mappings"]["artifactRole"],
+            f"{landscape_id}:source-mappings",
+            outputs["mappings"]["outputPath"],
+            mappings_value,
+        ),
+        (
+            outputs["sourceIndex"]["artifactRole"],
+            f"{landscape_id}:official-sources",
+            outputs["sourceIndex"]["outputPath"],
+            source_index_value,
+        ),
+        (
+            outputs["sourceGoalReferences"]["artifactRole"],
+            f"{landscape_id}:source-goal-references",
+            outputs["sourceGoalReferences"]["outputPath"],
+            source_goals_value,
+        ),
+        (
+            outputs["qualityEvidence"]["artifactRole"],
+            f"{landscape_id}:release-quality",
+            outputs["qualityEvidence"]["outputPath"],
+            quality_value,
+        ),
+    ]
+    build_inputs = {
+        "profileId": publication_profile["profileId"],
+        "profileVersion": publication_profile["version"],
+        "inputFiles": sorted(
+            input_files, key=lambda item: (item["inputRole"], item["sourcePath"])
+        ),
+        "authoringOnlyDiagnostics": {
+            key: diagnostics[key]
+            for key in (
+                "rawMappingEdges",
+                "decisionEdgesMissingFromRawMappings",
+                "decisionRawMatchTypeConflicts",
+                "decisionMatchTypesDerivedFromRawMappings",
+                "unresolvedDecisionMatchTypes",
+                "legacyPlainMappingRows",
+                "legacyDanglingTargets",
+                "legacySourceIdsOutsideMembership",
+            )
+        },
+    }
+    return logical_documents, build_inputs, counts
+
+
 def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     profile = load_json(profile_path)
     validate_schema(profile, "build-profile", str(profile_path))
@@ -1063,6 +2541,9 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     registry_path = resolve_repo_path(contract_paths["fieldSemanticsRegistryPath"])
     normalization_path = resolve_repo_path(contract_paths["normalizationProfilePath"])
     ontology_profile_path = resolve_repo_path(contract_paths["ontologyProfilePath"])
+    publication_profile_path = resolve_repo_path(
+        contract_paths["publicationEvidenceProfilePath"]
+    )
     definition_profile_path = CONTRACT_ROOT / "profiles/canonical-definition-record-v1.profile.json"
     registry_value = load_json(registry_path)
     validate_schema(registry_value, "field-semantics-registry", str(registry_path))
@@ -1098,6 +2579,40 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     ontology_profile_binding, fwu_core_binding = verify_ontology_profile_trust(
         profile, ontology_profile, ontology_profile_path, registry_value
     )
+    try:
+        publication_profile_bytes = publication_profile_path.read_bytes()
+    except OSError as error:
+        raise CompilationError(
+            f"Cannot read publication-evidence profile {publication_profile_path}: {error}"
+        ) from error
+    publication_profile = strict_json_loads(
+        publication_profile_bytes, str(publication_profile_path)
+    )
+    validate_schema(
+        publication_profile,
+        "publication-evidence-profile",
+        str(publication_profile_path),
+    )
+    if (
+        sha256_bytes(publication_profile_bytes)
+        != contract_paths["publicationEvidenceProfileSha256"]
+    ):
+        raise CompilationError(
+            "Publication-evidence profile hash does not match build profile"
+        )
+    if (
+        publication_profile["releaseModelContractVersion"]
+        != contract_paths["runtimeContractVersion"]
+    ):
+        raise CompilationError(
+            "Publication-evidence profile/runtime contract version mismatch"
+        )
+    publication_profile_binding = {
+        "id": publication_profile["profileId"],
+        "version": publication_profile["version"],
+        "path": contract_paths["publicationEvidenceProfilePath"],
+        "sha256": contract_paths["publicationEvidenceProfileSha256"],
+    }
     definition_profile = load_json(definition_profile_path)
     validate_schema(definition_profile, "definition-digest-profile", str(definition_profile_path))
     if definition_profile["canonicalJsonProfile"] != normalization["profileId"]:
@@ -1460,6 +2975,37 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     }
     validate_schema(resource_index, "resource-index", "resource index")
     write_json(output_root, resource_index_path, resource_index)
+
+    (
+        publication_logical_documents,
+        publication_build_inputs,
+        publication_counts,
+    ) = compile_publication_evidence(
+        publication_profile,
+        compiled_landscape,
+        compiled_decks,
+        resources,
+    )
+    publication_schema_names = {
+        "mapping": "source-to-canonical-mappings",
+        "source-index": "official-source-index",
+        "source-goal-reference-index": "source-goal-reference-index",
+        "quality-evidence": "release-quality-evidence",
+    }
+    publication_normalization_roles = {
+        binding["artifactRole"]: binding["normalizationRole"]
+        for binding in publication_profile["outputArtifacts"].values()
+    }
+    if set(publication_normalization_roles) != set(publication_schema_names):
+        raise CompilationError("Publication artifact-role binding is incomplete")
+    for role, _logical_id, output_path, value in publication_logical_documents:
+        schema_name = publication_schema_names.get(role)
+        if schema_name is None:
+            raise CompilationError(f"Unknown publication artifact role {role}")
+        if value.get("$schema") != SCHEMA_IDS[schema_name]:
+            raise CompilationError(f"Publication artifact schema mismatch for {role}")
+        validate_schema(value, schema_name, f"publication artifact {role}")
+        write_json(output_root, output_path, value)
 
     copied_assessment_sources: list[dict[str, Any]] = []
     for source, target in sorted(assessment_sources.items()):
@@ -2017,10 +3563,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         ("card-deck", f"{deck['deckId']}@{deck['language']}", output_path, deck)
         for output_path, deck in compiled_decks
     )
+    logical_documents.extend(publication_logical_documents)
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
     for role, logical_id, _path, value in logical_documents:
-        normalized_value = normalizer.normalize(role, value)
+        normalization_role = publication_normalization_roles.get(role, role)
+        normalized_value = normalizer.normalize(normalization_role, value)
         payload = canonical_json_bytes(normalized_value)
         record = {
             "role": role,
@@ -2049,6 +3597,16 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         record["recordSha256"] = calculate_binary_record(record, normalization)
         binary_records.append(record)
     binary_records.sort(key=lambda item: item["resourceId"])
+    expected_content_counts = publication_profile["expectedCounts"]["contentIndex"]
+    if (
+        len(publication_logical_documents)
+        != expected_content_counts["addedLogicalArtifacts"]
+        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"]
+        or len(binary_records) != expected_content_counts["binaryResources"]
+    ):
+        raise CompilationError(
+            "Publication artifacts changed semantic-content-index conformance counts"
+        )
     content_index_path = "metadata/semantic-content-index.json"
     content_index = {
         "$schema": SCHEMA_IDS["semantic-content-index"],
@@ -2095,7 +3653,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     write_json(output_root, content_index_path, content_index)
 
     for role, _logical_id, _path, value in logical_documents:
-        coverage_normalizer.normalize(role, value)
+        normalization_role = publication_normalization_roles.get(role, role)
+        coverage_normalizer.normalize(normalization_role, value)
 
     expected = profile["expectedCounts"]
     actual_counts = {
@@ -2135,6 +3694,10 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "runtime-catalog",
             "dependency-closure",
             "migration-aliases",
+            "source-to-canonical-mappings",
+            "official-source-index",
+            "source-goal-reference-index",
+            "release-quality-evidence",
         }:
             continue
         coverage_entries.append(
@@ -2152,7 +3715,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     coverage_report = {
         "reportFormatVersion": "1.0",
         "releaseId": release_id,
-        "coverageScope": "runtime-instance-observations",
+        "coverageScope": "runtime-and-publication-instance-observations",
         "schemaRegistryCoverageGate": "independent-validator-required",
         "fieldSemanticsRegistry": registry_binding,
         "runtimeEntryCount": len(coverage_entries),
@@ -2172,6 +3735,10 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "profileSha256": sha256_file(profile_path)[1],
         "curriculumOntologyProfile": ontology_profile_binding,
         "fwuCoreOntology": fwu_core_binding,
+        "publicationEvidence": {
+            "profile": publication_profile_binding,
+            **publication_build_inputs,
+        },
         "semanticKindLedgerPath": str(ledger_path.relative_to(REPO_ROOT)).replace("\\", "/"),
         "semanticKindLedgerSha256": sha256_file(ledger_path)[1],
         "binaryResources": sorted(binary_inputs, key=lambda item: item["resourceId"]),
@@ -2192,6 +3759,12 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "closureDigest": closure["closureDigest"],
         "migrationDigest": migration["migrationDigest"],
         "counts": actual_counts,
+        "publicationEvidenceCounts": publication_counts,
+        "publicationStatus": next(
+            value["publicationStatus"]
+            for role, _logical_id, _path, value in publication_logical_documents
+            if role == "quality-evidence"
+        ),
         "semanticKindCounts": dict(sorted(semantic_counts.items())),
         "unresolvedHardReferences": 0,
         "externalRuntimeDependencies": 0,

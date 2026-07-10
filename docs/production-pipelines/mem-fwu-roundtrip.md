@@ -12,7 +12,7 @@ The current reference scope is:
 
 This reference ZIP currently belongs to the explicitly marked legacy subject-export lane. A successful semantic roundtrip proves equivalence for the covered content and image sidecars; it does not prove `full-standalone-v1` runtime readiness. Until the JSON package supplies and passes the runtime catalog, offline schema catalog, complete hard-reference closure, semantic digest, and hermetic consumer gates, its independent target classification remains `not-ready-legacy`.
 
-DPK-003 now provides the normative [dual-release contract gate](../qa-ci/dual-curriculum-release-contracts.md). It intentionally exposes two differences from this legacy pilot: the existing comparator drops `null` properties during its local normalization and compares several goal arrays as sorted sets, while the release contract keeps missing/null/default distinct and preserves runtime-observable list order. Therefore the current `semantic-reconstruction-report.json`, technical `roundtrip-report.json`, and OWL report remain hashable input evidence only; none of them may be relabelled as the public equivalence verdict. DPK-004a now compiles and independently validates the strict, unpacked Mathematik runtime normal form, including the byte-level bindings for all active images; it is documented in [Curriculum Release Model Conformance](../qa-ci/curriculum-release-model-conformance.md). DPK-004b adds mapping, source, and quality publication evidence. DPK-008 then migrates the ontology exporter/importer to the positioned RDF representation and isolated reverse-compiler contract.
+DPK-003 provides the normative [dual-release contract gate](../qa-ci/dual-curriculum-release-contracts.md). It intentionally exposes two differences from this legacy pilot: the existing comparator drops `null` properties during its local normalization and compares several goal arrays as sorted sets, while the release contract keeps missing/null/default distinct and preserves runtime-observable list order. Therefore the current `semantic-reconstruction-report.json`, technical `roundtrip-report.json`, and OWL report remain hashable input evidence only; none of them may be relabelled as the public equivalence verdict. DPK-004 now compiles and independently validates the complete, unpacked Mathematik release normal form: Runtime closure, all active image-byte bindings, and the four digest-relevant but non-Runtime publication artifacts for mappings, sources, SourceGoals, and quality. It is documented in [Curriculum Release Model Conformance](../qa-ci/curriculum-release-model-conformance.md). DPK-005 packages that model; DPK-008 later migrates the ontology exporter/importer to the positioned RDF representation and isolated reverse-compiler contract.
 
 ## Roundtrip Contract
 
@@ -70,6 +70,11 @@ This binding is currently necessary because [FWU-DE/lehrplan-ontologie#9](https:
 | Curricular short number | `LP_0030057` -> `LP_0000347` -> `LP_0000344` | `sp:shortKey` preserves the exact runtime field |
 | Visualization of a curricular goal | generic `LP_0030065` CE-Verweis to `schema:ImageObject`, ordered with `LP_0000460` | role and package path/hash/length remain SkillPilot packaging metadata |
 | Visualization of a runtime-only or unscoped goal | not forced into a curricular CE reference | `sp:GoalVisualizationReference` via `sp:hasGoalVisualization` / `sp:referencesAsset` |
+| Official curriculum document (`semanticType: curriculum`) | `LP_0000438` Lehrplan with Core title and canonical URI | stable source identity, collection grouping, role, and optional landing URL remain publication evidence |
+| Official supplemental source (`semanticType: supplemental-source`) | no false Core-`Lehrplan` claim | `sp:OfficialSourceDocument` with `rdfs:label`; role and semantic type are preserved exactly |
+| Reviewed SourceGoal evidence | conservative `LP_0000261` Curriculares Element with Core title and description | reviewed source-aligned authored wording/hash, document join, locator, classification, and split lineage remain publication evidence; no verbatim-PDF claim is inferred |
+| Authoritative source-to-canonical mapping | `LP_0030065` CE-Verweis via `LP_0030071` / `LP_0030072` | only `exact` versus `partial` needs a small `sp` predicate |
+| Quality evidence | no Core assertion | semantic-atomicity, memory-card, and visualization decisions remain `sp` evidence and never enter Runtime closure |
 
 ### Didactic prerequisites
 
@@ -125,6 +130,8 @@ Before an ordinary RDF literal is written, the exporter rejects XML/RDF-unsafe c
 - the semantic importer restores the exact original record from the quarantined JSON and overlays any safe first-class fields.
 
 This is a narrow application fallback for malformed source evidence, not a replacement for normal core text entities.
+
+That quarantine remains only a backward-compatible reader/writer lane for legacy roundtrip bundles. The DPK-004 release compiler has a stricter contract: it rejects C0 controls, U+FFFE/U+FFFF, and unpaired UTF-16 surrogates in every input scalar before projection or hashing and never substitutes a sanitized surrogate value. This gate found real PDF/OCR residue in the Mathematik source extractions; the affected authored source was corrected. Future recurrence blocks the release instead of being hidden in a quarantine carrier.
 
 Structured application metadata stays structured across the roundtrip. Every present `dimensionTags` value, including ordered and empty arrays, is preserved as canonical JSON in `sp:dimensionTagsJson`; repeated `sp:dimensionTag` literals remain only as a query/legacy projection for array-valued data. Core axis triples are an additional semantic projection, never the lossless source of truth.
 
@@ -303,7 +310,7 @@ Important paths:
 - `slim/landscape.nt`: goals, Core process/guiding axes, core-first `contains`, reified prerequisites, program units, placements, and external dependencies;
 - `slim/assets.nt`: goal-visualization references and media metadata;
 - `slim/assets/goal-visualizations/`: binary image sidecars;
-- `slim/sources.nt`: official source documents and exact source spans;
+- `slim/sources.nt`: official source documents and reviewed source locators;
 - `slim/mappings.nt`: canonical mappings and reviewed decisions;
 - `slim/views.nt`: learner-facing composition views;
 - `slim/cards.nt`: memorization decks and cards;
@@ -353,7 +360,7 @@ The profile is intentionally limited to concepts not supplied by the FWU core:
 - program units and goal placements;
 - scoped composition views;
 - auditable mapping and review records;
-- exact source spans and fingerprints;
+- losslessly reconstructed authored source locators and fingerprints;
 - memory-card decks and cards;
 - practice, assessment, memory, and orientation nodes;
 - explicit unscoped-curricular migration nodes where the FWU atomic competency restriction cannot yet be satisfied by a named area;

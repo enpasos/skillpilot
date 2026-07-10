@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+  "title": "SkillPilot reviewed source-to-canonical mappings v1",
+  "description": "Closed publication-evidence projection of authoritative review decisions into exact or partial source-to-canonical edges. Authoring history, redundant legacy rows, rationales, reviewers, timestamps, evidence worklogs, and repository-local paths are not part of this artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "mappingFormatVersion",
+    "targetLandscapeId",
+    "mappingCollectionCount",
+    "decisionCount",
+    "mappingEdgeCount",
+    "collections"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"
+    },
+    "mappingFormatVersion": {
+      "const": "1.0"
+    },
+    "targetLandscapeId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "mappingCollectionCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "decisionCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    },
+    "mappingEdgeCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000
+    },
+    "collections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/mappingCollection"
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "mappingCollection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingCollectionId",
+        "sourceCollectionId",
+        "sourceLandscapeId",
+        "targetLandscapeId",
+        "jurisdiction",
+        "subject",
+        "stage",
+        "inputDecisionCount",
+        "mappingEdgeCount",
+        "edges"
+      ],
+      "properties": {
+        "mappingCollectionId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "sourceCollectionId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "sourceLandscapeId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "targetLandscapeId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE-[A-Z]{2}$"
+        },
+        "subject": {
+          "$ref": "#/$defs/nonBlank"
+        },
+        "stage": {
+          "enum": [
+            "SekI",
+            "SekII",
+            "SekI+SekII"
+          ]
+        },
+        "inputDecisionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "mappingEdgeCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000000
+        },
+        "edges": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000000,
+          "items": {
+            "$ref": "#/$defs/mappingEdge"
+          }
+        }
+      }
+    },
+    "mappingEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceGoalId",
+        "canonicalGoalId",
+        "matchType"
+      ],
+      "properties": {
+        "sourceGoalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "canonicalGoalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "matchType": {
+          "enum": [
+            "exact",
+            "partial"
+          ]
+        }
+      }
+    }
+  }
+}

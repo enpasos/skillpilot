@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the small DPK-004a release-model contract fixtures.
+"""Validate the small DPK-004a/DPK-004b release-model contract fixtures.
 
 The real Mathematik conformance run proves the production compiler output.  This
 separate harness keeps the illustrative embedded-dependency and migration
@@ -32,6 +32,8 @@ FIXTURE_ROOT = CONTRACT_ROOT / "fixtures/release-model/valid"
 MAX_JSON_BYTES = 32 * 1024 * 1024
 
 SCHEMA_PATHS = {
+    "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json": CONTRACT_ROOT
+    / "field-semantics-registry.schema.json",
     "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json": CONTRACT_ROOT
     / "compiled-landscape.schema.json",
     "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json": CONTRACT_ROOT
@@ -40,6 +42,14 @@ SCHEMA_PATHS = {
     / "embedded-goal-dependency.schema.json",
     "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json": CONTRACT_ROOT
     / "migration-aliases.schema.json",
+    "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json": CONTRACT_ROOT
+    / "source-to-canonical-mappings.schema.json",
+    "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json": CONTRACT_ROOT
+    / "official-source-index.schema.json",
+    "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json": CONTRACT_ROOT
+    / "source-goal-reference-index.schema.json",
+    "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json": CONTRACT_ROOT
+    / "release-quality-evidence.schema.json",
 }
 
 REGISTRY_PATH = (
@@ -97,6 +107,8 @@ def validate_scalars(value: Any, source: str) -> None:
                 fail("JSON_UNICODE", f"Unpaired surrogate in {source}")
             if codepoint in {0xFFFE, 0xFFFF}:
                 fail("JSON_UNICODE", f"Forbidden noncharacter in {source}")
+            if codepoint < 0x20 and codepoint not in {0x09, 0x0A, 0x0D}:
+                fail("JSON_UNICODE", f"XML/RDF-unsafe control character in {source}")
     elif isinstance(value, dict):
         for key, child in value.items():
             validate_scalars(key, source)
@@ -540,6 +552,322 @@ def validate_migration(value: Mapping[str, Any]) -> None:
             )
 
 
+def publication_fixture_documents() -> dict[str, dict[str, Any]]:
+    source_text = "Brüche auf dem Zahlenstrahl darstellen"
+    asset_digest = "sha256:" + "a" * 64
+    target = "landscape-math"
+    source_collection = "source-collection-a"
+    source_landscape = "source-landscape-a"
+    source_goal = "source-goal-a"
+    canonical_goal = "canonical-goal-a"
+    source_document = f"{source_collection}:KC"
+    return {
+        "mapping": {
+            "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+            "mappingFormatVersion": "1.0",
+            "targetLandscapeId": target,
+            "mappingCollectionCount": 1,
+            "decisionCount": 1,
+            "mappingEdgeCount": 1,
+            "collections": [
+                {
+                    "mappingCollectionId": "mapping-review-a",
+                    "sourceCollectionId": source_collection,
+                    "sourceLandscapeId": source_landscape,
+                    "targetLandscapeId": target,
+                    "jurisdiction": "DE-HE",
+                    "subject": "Mathematik",
+                    "stage": "SekI",
+                    "inputDecisionCount": 1,
+                    "mappingEdgeCount": 1,
+                    "edges": [
+                        {
+                            "sourceGoalId": source_goal,
+                            "canonicalGoalId": canonical_goal,
+                            "matchType": "exact",
+                        }
+                    ],
+                }
+            ],
+        },
+        "source-index": {
+            "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+            "sourceIndexFormatVersion": "1.0",
+            "targetLandscapeId": target,
+            "sourceCollectionCount": 1,
+            "sourceDocumentCount": 1,
+            "collections": [
+                {
+                    "sourceCollectionId": source_collection,
+                    "sourceLandscapeId": source_landscape,
+                    "jurisdiction": "DE-HE",
+                    "subject": "Mathematik",
+                    "stage": "SekI",
+                    "documentCount": 1,
+                    "documents": [
+                        {
+                            "sourceDocumentId": source_document,
+                            "sourceKey": "KC",
+                            "title": "Kerncurriculum Mathematik",
+                            "role": "binding-core",
+                            "semanticType": "curriculum",
+                            "official": True,
+                            "url": "https://example.edu/kc-mathematik.pdf",
+                        }
+                    ],
+                }
+            ],
+        },
+        "source-goals": {
+            "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+            "sourceGoalReferenceFormatVersion": "1.0",
+            "targetLandscapeId": target,
+            "sourceCollectionCount": 1,
+            "sourceGoalCount": 1,
+            "collections": [
+                {
+                    "sourceCollectionId": source_collection,
+                    "sourceLandscapeId": source_landscape,
+                    "sourceGoalCount": 1,
+                    "sourceGoals": [
+                        {
+                            "sourceGoalId": source_goal,
+                            "sourceDocumentId": source_document,
+                            "title": "Brüche darstellen",
+                            "description": "Die lernende Person kann Brüche darstellen.",
+                            "sourceText": source_text,
+                            "sourceTextSha256": "sha256:"
+                            + hashlib.sha256(source_text.encode("utf-8")).hexdigest(),
+                            "locator": {
+                                "passageId": "passage-a",
+                                "topicCode": "M5.1",
+                                "sourceSpan": source_text,
+                                "sourceRef": "KC Mathematik, S. 10",
+                                "sourcePage": 10,
+                            },
+                            "classification": {"stage": "SekI"},
+                        }
+                    ],
+                }
+            ],
+        },
+        "quality": {
+            "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+            "qualityEvidenceFormatVersion": "1.0",
+            "landscapeId": target,
+            "publicationStatus": "not-ready",
+            "qualityDecisionCount": 3,
+            "lanes": {
+                "semanticAtomicity": {
+                    "reviewId": "atomicity-a",
+                    "ruleVersion": "semantic-atomicity-v1",
+                    "status": "passed",
+                    "decisionCount": 1,
+                    "decisions": [
+                        {
+                            "goalId": canonical_goal,
+                            "goalFingerprint": "sha256:" + "b" * 64,
+                            "status": "atomic",
+                            "semanticAtomic": True,
+                        }
+                    ],
+                },
+                "memoryCards": {
+                    "reviewId": "memory-a",
+                    "ruleVersion": "memory-card-review-v1",
+                    "status": "passed",
+                    "goalDecisionCount": 1,
+                    "activeCardDecisionCount": 0,
+                    "goalDecisions": [
+                        {
+                            "goalId": canonical_goal,
+                            "goalFingerprint": "sha256:" + "c" * 64,
+                            "status": "no_memory_needed",
+                            "memoryUseful": False,
+                        }
+                    ],
+                    "activeCardDecisions": [],
+                },
+                "goalVisualizations": {
+                    "reviewId": "visual-a",
+                    "ruleVersion": "goal-visualization-qa-v1",
+                    "status": "incomplete",
+                    "scopeGoalCount": 1,
+                    "missingGoalCount": 0,
+                    "missingGoalIds": [],
+                    "decisionCount": 1,
+                    "approvedCount": 0,
+                    "openCount": 1,
+                    "decisions": [
+                        {
+                            "goalId": canonical_goal,
+                            "assetSha256": asset_digest,
+                            "status": "pending-human-review",
+                        }
+                    ],
+                },
+            },
+        },
+    }
+
+
+def validate_publication_documents(
+    values: Mapping[str, Mapping[str, Any]],
+    canonical_goal_ids: set[str],
+) -> None:
+    mapping = values["mapping"]
+    source_index = values["source-index"]
+    source_goals = values["source-goals"]
+    quality = values["quality"]
+    source_document_semantics = {"binding-core": "curriculum"}
+    target = mapping["targetLandscapeId"]
+    require_equal(
+        {
+            target,
+            source_index["targetLandscapeId"],
+            source_goals["targetLandscapeId"],
+            quality["landscapeId"],
+        },
+        {target},
+        "PUBLICATION_TARGET",
+        "Publication artifacts target different landscapes",
+    )
+    mapping_by_collection = {
+        item["sourceCollectionId"]: item for item in mapping["collections"]
+    }
+    source_by_collection = {
+        item["sourceCollectionId"]: item for item in source_index["collections"]
+    }
+    goals_by_collection = {
+        item["sourceCollectionId"]: item for item in source_goals["collections"]
+    }
+    require_equal(
+        set(mapping_by_collection),
+        set(source_by_collection),
+        "SOURCE_COLLECTIONS",
+        "Mapping and source-index collections differ",
+    )
+    require_equal(
+        set(source_by_collection),
+        set(goals_by_collection),
+        "SOURCE_COLLECTIONS",
+        "Source and source-goal collections differ",
+    )
+    for collection_id, mapping_collection in mapping_by_collection.items():
+        source_collection = source_by_collection[collection_id]
+        goal_collection = goals_by_collection[collection_id]
+        document_ids = {
+            item["sourceDocumentId"] for item in source_collection["documents"]
+        }
+        observed_roles: set[str] = set()
+        for document in source_collection["documents"]:
+            role = document["role"]
+            if (
+                role not in source_document_semantics
+                or document["semanticType"] != source_document_semantics[role]
+            ):
+                fail(
+                    "SOURCE_DOCUMENT_SEMANTICS",
+                    f"semanticType overclaim/mismatch for {document['sourceDocumentId']}",
+                )
+            observed_roles.add(role)
+        require_equal(
+            observed_roles,
+            set(source_document_semantics),
+            "SOURCE_DOCUMENT_SEMANTICS",
+            "Fixture source-document roles are not exactly covered",
+        )
+        source_goal_ids = {
+            item["sourceGoalId"] for item in goal_collection["sourceGoals"]
+        }
+        for goal in goal_collection["sourceGoals"]:
+            if goal["sourceDocumentId"] not in document_ids:
+                fail("SOURCE_DOCUMENT", f"Dangling source document in {collection_id}")
+            expected_hash = "sha256:" + hashlib.sha256(
+                goal["sourceText"].encode("utf-8")
+            ).hexdigest()
+            require_equal(
+                goal["sourceTextSha256"],
+                expected_hash,
+                "SOURCE_TEXT_HASH",
+                f"Source text hash differs for {goal['sourceGoalId']}",
+            )
+        edge_keys: set[tuple[str, str]] = set()
+        for edge in mapping_collection["edges"]:
+            key = (edge["sourceGoalId"], edge["canonicalGoalId"])
+            if key in edge_keys:
+                fail("MAPPING_DUPLICATE", f"Duplicate mapping edge {key}")
+            edge_keys.add(key)
+            if edge["sourceGoalId"] not in source_goal_ids:
+                fail("SOURCE_EDGE", f"Unknown source goal in mapping edge {key}")
+            if edge["canonicalGoalId"] not in canonical_goal_ids:
+                fail("CANONICAL_EDGE", f"Unknown canonical goal in mapping edge {key}")
+        require_equal(
+            {source for source, _ in edge_keys},
+            source_goal_ids,
+            "MAPPING_COVERAGE",
+            f"Mapping does not cover every source goal in {collection_id}",
+        )
+    visualization_lane = quality["lanes"]["goalVisualizations"]
+    require_equal(
+        visualization_lane["missingGoalCount"],
+        len(visualization_lane["missingGoalIds"]),
+        "QUALITY_VISUALIZATION_SCOPE",
+        "Visualization missing-goal count differs from its ID list",
+    )
+    require_equal(
+        visualization_lane["scopeGoalCount"],
+        visualization_lane["decisionCount"]
+        + visualization_lane["missingGoalCount"],
+        "QUALITY_VISUALIZATION_SCOPE",
+        "Visualization scope is not partitioned into decisions and missing goals",
+    )
+    visualization_decision_ids = {
+        decision["goalId"] for decision in visualization_lane["decisions"]
+    }
+    if visualization_decision_ids & set(visualization_lane["missingGoalIds"]):
+        fail(
+            "QUALITY_VISUALIZATION_SCOPE",
+            "Visualization decisions and missing-goal evidence overlap",
+        )
+    quality_goal_ids = {
+        decision["goalId"]
+        for decision in quality["lanes"]["semanticAtomicity"]["decisions"]
+    }
+    quality_goal_ids.update(
+        decision["goalId"]
+        for decision in quality["lanes"]["memoryCards"]["goalDecisions"]
+    )
+    quality_goal_ids.update(visualization_decision_ids)
+    quality_goal_ids.update(visualization_lane["missingGoalIds"])
+    if not quality_goal_ids <= canonical_goal_ids:
+        fail("QUALITY_GOAL", "Quality evidence references unknown canonical goals")
+    lane_statuses = {
+        lane["status"] for lane in quality["lanes"].values()
+    }
+    expected_status = "ready" if lane_statuses == {"passed"} else "not-ready"
+    require_equal(
+        quality["publicationStatus"],
+        expected_status,
+        "QUALITY_STATUS",
+        "Publication status overclaims its quality lanes",
+    )
+
+
+def validate_publication_outside_closure(closure: Mapping[str, Any]) -> None:
+    forbidden = {
+        "mapping",
+        "source-index",
+        "source-goal-reference-index",
+        "quality-evidence",
+    }
+    roles = {
+        definition["artifactBinding"]["role"] for definition in closure["definitions"]
+    }
+    if roles & forbidden:
+        fail("PUBLICATION_CLOSURE", "Publication evidence entered the runtime closure")
+
+
 def expect_failure(name: str, code: str, action: Any) -> None:
     try:
         action()
@@ -552,6 +880,8 @@ def expect_failure(name: str, code: str, action: Any) -> None:
 
 def main() -> int:
     validators = build_validators()
+    field_registry = load_json(REGISTRY_PATH)
+    validate_schema(field_registry, validators, "field-semantics registry")
     fixtures = {path.name: load_json(path) for path in sorted(FIXTURE_ROOT.glob("*.json"))}
     expected_names = {
         "all-relations.migration-aliases.json",
@@ -573,12 +903,50 @@ def main() -> int:
     validate_closure(embedded_closure, embedded_fragment)
     validate_migration(initial_migration)
     validate_migration(relation_migration)
+    publication = publication_fixture_documents()
+    for name, value in publication.items():
+        validate_schema(value, validators, f"publication fixture {name}")
+    validate_publication_documents(publication, {"canonical-goal-a"})
+    validate_publication_outside_closure(local_closure)
 
     cases: list[tuple[str, str, Any]] = []
+
+    cases.append(
+        (
+            "raw-json-rdf-unsafe-control",
+            "JSON_UNICODE",
+            lambda: strict_json_loads(
+                br'{"value":"\u001d"}', "adversarial RDF-unsafe JSON"
+            ),
+        )
+    )
 
     stale_registry = copy.deepcopy(local_closure)
     stale_registry["fieldSemanticsRegistry"]["sha256"] = "0" * 64
     cases.append(("stale-registry", "TRUST_REGISTRY", lambda: validate_closure(stale_registry)))
+
+    nullable_typed_literal_registry = copy.deepcopy(field_registry)
+    nullable_typed_literal_entry = next(
+        entry
+        for entry in nullable_typed_literal_registry["entries"]
+        if entry["entryId"] == "goal.id"
+    )
+    nullable_typed_literal_entry["dataType"]["jsonTypes"] = ["string", "null"]
+    nullable_typed_literal_entry["presenceSemantics"]["null"] = "distinct"
+    nullable_typed_literal_entry["rdfMapping"]["fallbackConstruction"] = copy.deepcopy(
+        nullable_typed_literal_entry["rdfMapping"]["construction"]
+    )
+    cases.append(
+        (
+            "registry-nullable-distinct-primary-fallback-typed-literal",
+            "SCHEMA_INVALID",
+            lambda: validate_schema(
+                nullable_typed_literal_registry,
+                validators,
+                "registry with nullable distinct primary/fallback typed literals",
+            ),
+        )
+    )
 
     missing_definition = copy.deepcopy(embedded_closure)
     missing_definition["definitions"].pop()
@@ -655,12 +1023,181 @@ def main() -> int:
         )
     )
 
+    missing_visualization_scope = copy.deepcopy(publication)
+    missing_visualization_scope["quality"]["lanes"]["goalVisualizations"].pop(
+        "scopeGoalCount"
+    )
+    cases.append(
+        (
+            "publication-quality-missing-required-scope-evidence",
+            "SCHEMA_INVALID",
+            lambda: validate_schema(
+                missing_visualization_scope["quality"],
+                validators,
+                "quality evidence without required visualization scope",
+            ),
+        )
+    )
+
+    missing_mapping_edge = copy.deepcopy(publication)
+    missing_mapping_edge["mapping"]["collections"][0]["edges"] = []
+    cases.append(
+        (
+            "publication-mapping-edge-loss",
+            "MAPPING_COVERAGE",
+            lambda: validate_publication_documents(
+                missing_mapping_edge, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    duplicate_mapping_edge = copy.deepcopy(publication)
+    duplicate_mapping_edge["mapping"]["collections"][0]["edges"].append(
+        copy.deepcopy(
+            duplicate_mapping_edge["mapping"]["collections"][0]["edges"][0]
+        )
+    )
+    cases.append(
+        (
+            "publication-mapping-edge-duplicate",
+            "MAPPING_DUPLICATE",
+            lambda: validate_publication_documents(
+                duplicate_mapping_edge, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    zero_based_split_lineage = copy.deepcopy(publication)
+    zero_based_split_lineage["source-goals"]["collections"][0]["sourceGoals"][0][
+        "lineage"
+    ] = {
+        "splitFromSourceGoalId": "source-goal-parent",
+        "splitIndex": 0,
+        "splitPartCount": 2,
+    }
+    cases.append(
+        (
+            "publication-source-lineage-zero-split-index",
+            "SCHEMA_INVALID",
+            lambda: validate_schema(
+                zero_based_split_lineage["source-goals"],
+                validators,
+                "source-goal reference with zero-based split lineage",
+            ),
+        )
+    )
+
+    unknown_canonical_edge = copy.deepcopy(publication)
+    unknown_canonical_edge["mapping"]["collections"][0]["edges"][0][
+        "canonicalGoalId"
+    ] = "missing-canonical-goal"
+    cases.append(
+        (
+            "publication-unknown-canonical-goal",
+            "CANONICAL_EDGE",
+            lambda: validate_publication_documents(
+                unknown_canonical_edge, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    missing_source_collection = copy.deepcopy(publication)
+    missing_source_collection["source-goals"]["collections"] = []
+    cases.append(
+        (
+            "publication-source-collection-loss",
+            "SOURCE_COLLECTIONS",
+            lambda: validate_publication_documents(
+                missing_source_collection, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    dangling_source_document = copy.deepcopy(publication)
+    dangling_source_document["source-goals"]["collections"][0]["sourceGoals"][0][
+        "sourceDocumentId"
+    ] = "missing-document"
+    cases.append(
+        (
+            "publication-dangling-source-document",
+            "SOURCE_DOCUMENT",
+            lambda: validate_publication_documents(
+                dangling_source_document, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    stale_source_text_hash = copy.deepcopy(publication)
+    stale_source_text_hash["source-goals"]["collections"][0]["sourceGoals"][0][
+        "sourceTextSha256"
+    ] = "sha256:" + "0" * 64
+    cases.append(
+        (
+            "publication-stale-source-text-hash",
+            "SOURCE_TEXT_HASH",
+            lambda: validate_publication_documents(
+                stale_source_text_hash, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    visualization_missing_count_drift = copy.deepcopy(publication)
+    visualization_missing_count_drift["quality"]["lanes"]["goalVisualizations"][
+        "missingGoalCount"
+    ] = 1
+    cases.append(
+        (
+            "publication-quality-missing-goal-count-list-drift",
+            "QUALITY_VISUALIZATION_SCOPE",
+            lambda: validate_publication_documents(
+                visualization_missing_count_drift, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    quality_overclaim = copy.deepcopy(publication)
+    quality_overclaim["quality"]["publicationStatus"] = "ready"
+    cases.append(
+        (
+            "publication-quality-overclaim",
+            "QUALITY_STATUS",
+            lambda: validate_publication_documents(
+                quality_overclaim, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    source_semantic_overclaim = copy.deepcopy(publication)
+    source_semantic_overclaim["source-index"]["collections"][0]["documents"][0][
+        "semanticType"
+    ] = "supplemental-source"
+    cases.append(
+        (
+            "publication-source-semantic-overclaim",
+            "SOURCE_DOCUMENT_SEMANTICS",
+            lambda: validate_publication_documents(
+                source_semantic_overclaim, {"canonical-goal-a"}
+            ),
+        )
+    )
+
+    closure_pollution = copy.deepcopy(local_closure)
+    closure_pollution["definitions"][0]["artifactBinding"]["role"] = "mapping"
+    cases.append(
+        (
+            "publication-runtime-closure-pollution",
+            "PUBLICATION_CLOSURE",
+            lambda: validate_publication_outside_closure(closure_pollution),
+        )
+    )
+
     for name, code, action in cases:
         expect_failure(name, code, action)
 
     print(
         "Curriculum release-model fixture contracts passed: "
-        f"{len(fixtures)} valid documents, {len(cases)} adversarial cases, zero remote fetches."
+        f"{len(fixtures) + len(publication)} valid documents, "
+        f"{len(cases)} adversarial cases, zero remote fetches."
     )
     return 0
 

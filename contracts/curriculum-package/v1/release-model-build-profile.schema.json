@@ -79,7 +79,9 @@
         "normalizationProfilePath",
         "ontologyProfilePath",
         "ontologyProfileSha256",
-        "ontologyNamespaceBindingsSha256"
+        "ontologyNamespaceBindingsSha256",
+        "publicationEvidenceProfilePath",
+        "publicationEvidenceProfileSha256"
       ],
       "properties": {
         "runtimeContractVersion": {
@@ -98,6 +100,12 @@
           "$ref": "#/$defs/sha256"
         },
         "ontologyNamespaceBindingsSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "publicationEvidenceProfilePath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "publicationEvidenceProfileSha256": {
           "$ref": "#/$defs/sha256"
         }
       }

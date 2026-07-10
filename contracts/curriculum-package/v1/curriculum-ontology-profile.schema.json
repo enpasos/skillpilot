@@ -519,7 +519,7 @@
               "$ref": "#/$defs/iri"
             },
             "policy": {
-              "const": "only-runtime-reconstruction-order-view-srs-assessment-packaging-gaps"
+              "const": "only-runtime-reconstruction-order-view-srs-assessment-packaging-publication-evidence-gaps"
             }
           }
         },
@@ -599,7 +599,11 @@
             "compositionViews",
             "memoryCards",
             "assessments",
-            "authoredOrder"
+            "authoredOrder",
+            "officialSources",
+            "sourceGoalReferences",
+            "sourceMappings",
+            "qualityEvidence"
           ],
           "properties": {
             "curriculumIdentity": { "$ref": "#/$defs/mappingRule" },
@@ -612,7 +616,11 @@
             "compositionViews": { "$ref": "#/$defs/mappingRule" },
             "memoryCards": { "$ref": "#/$defs/mappingRule" },
             "assessments": { "$ref": "#/$defs/mappingRule" },
-            "authoredOrder": { "$ref": "#/$defs/mappingRule" }
+            "authoredOrder": { "$ref": "#/$defs/mappingRule" },
+            "officialSources": { "$ref": "#/$defs/mappingRule" },
+            "sourceGoalReferences": { "$ref": "#/$defs/mappingRule" },
+            "sourceMappings": { "$ref": "#/$defs/mappingRule" },
+            "qualityEvidence": { "$ref": "#/$defs/mappingRule" }
           }
         }
       }

@@ -243,6 +243,10 @@ Der physische Pfad ist nicht die Semantik. `metadata/manifest.json` weist jeder 
 
 Der Loader folgt ausschließlich diesen Rollen und den im Manifest angegebenen Pfaden. Er scannt nicht beliebige JSON-Dateien.
 
+Paketrollen und Normalisierungsrollen lösen zwei verschiedene Aufgaben. Generische Paketrollen wie `mapping`, `source-index`, `source-goal-reference-index` und `quality-evidence` bleiben die stabile Manifest- und Consumer-Schnittstelle. Ein vertrauenswürdig gebundenes Fachprofil ordnet ihnen jeweils genau eine spezifische `normalizationRole` zu, zum Beispiel `source-to-canonical-mappings` oder `official-source-index`. Erst diese spezifische Rolle wählt das geschlossene Payload-Schema, die Feldregistry und die kanonische Normalisierung. Der Inhaltsindex behält die generische Paketrolle; eine fehlende, doppelte oder widersprüchliche Rollenbindung blockiert den Build.
+
+Die vier Publikationsartefakte für Mapping-Truth, amtliche Quellen, SourceGoal-Belege und Quality-Evidence sind fachlich digest-relevant, aber nicht runtime-erforderlich. Sie gehen als normalisierte logische Records in den gemeinsamen `contentDigest` ein, werden jedoch weder als Closure-Seeds verwendet noch in `dependency-closure.json` aufgenommen. So kann der Roundtrip Belege und Freigabestatus verlustfrei prüfen, ohne sie zu Navigations-, Frontier- oder Offline-Laufzeitabhängigkeiten umzudeuten.
+
 Normative JSON-Dateien tragen eine explizite Schema-Zuordnung. Der paketlokale Schema-Katalog löst öffentliche Schema-IDs ausschließlich auf inventarisierte, gehashte Paketpfade auf; er ist selbst keine Trust Root. Die unterstützte Vertragsversion des Consumers, die gebundenen Bootstrap-Schemas und deren Hashes haben Vorrang vor paketgelieferten Behauptungen. Netzwerkzugriffe zur Schemaauflösung sind verboten.
 
 ### Paketlokaler Runtime-Katalog
@@ -410,6 +414,10 @@ Jeder Registry-Eintrag adressiert ein Feld über JSON Pointer beziehungsweise ei
 Geordnete Listen werden nicht über N-Triples-Dateireihenfolge dargestellt. Die Registry verlangt je Liste entweder eine RDF-Liste oder, bevorzugt für große Graphen, reifizierte Membership-/Edge-Ressourcen mit lückenlosen eindeutigen ganzzahligen Positionen. Eine zusätzliche ungeordnete Core-Relation darf die fachliche Semantik projizieren, ersetzt aber nicht die verlustlose Positionsdarstellung von Goal-Reihenfolge, `contains`, `requires`, View-Kindern, Resource Links oder Karten.
 
 Ein neues Feld ohne Registry-Eintrag blockiert den Ontologie-Release. Dadurch kann eine Schemaerweiterung nicht unbemerkt aus dem Roundtrip verschwinden.
+
+Der Mathematik-Conformance-Stand nach DPK-004 belegt diese Trennung mit 454 Registry-Regeln: 323 für Runtime-Felder, 130 für die vier Publikationsnormalformen und einem historischen generischen Eintrag. Eine hashgebundene Rollentabelle typisiert 52 tatsächliche Curriculum-Dokumente als Core-`Lehrplan` und drei amtliche Leitfaden-/Einschränkungs-/Profil-Dokumente als `sp:OfficialSourceDocument`; unbekannte, ungenutzte oder widersprüchliche Rollen blockieren den Build. Source Goals verwenden konservativ das generische Core-`Curriculares Element`, und autoritative Source→Canonical-Kanten den Core-`CE-Verweis`; `exact`/`partial` bleibt eine kleine Anwendungserweiterung. Quality-Entscheidungen sind ausschließlich SkillPilot-Evidenz und werden nicht als Curriculare Elemente ausgegeben.
+
+Mapping-Truth entsteht aus den autoritativen Review-Entscheidungen, nicht durch Vereinigung konkurrierender Carrier. Im Mathematik-Pilot erzeugen 10.021 Entscheidungen 33.382 Kanten. Ein expliziter Decision-Match-Type gewinnt; fehlt er, wird der edge-spezifische Wert der reviewten Mappingzeile verwendet. So werden 2.599 Kanten ohne pauschale `missing => exact`-Annahme bestimmt und null Kanten bleiben unaufgelöst. Die 33.334 Mappingzeilen weichen um 48 fehlende Entscheidungskanten und 23 explizite Match-Type-Konflikte ab; historische Legacy-Dateien bleiben für Rückwärtskompatibilität und Audit unter Quarantäne. Ihre 2.539 Zeilen, 695 Source-IDs außerhalb historischer Membership und acht dangling Targets dürfen die Review-Entscheidung nicht überschreiben.
 
 Empfohlene Normalisierungsregeln:
 
@@ -601,6 +609,8 @@ Die gemeinsame Schnittstelle besteht aus versionierten Schemas, der Feldsemantik
 ## Umsetzungsplan
 
 ### Phase 0 – Verträge festschreiben
+
+Implementierungsstand: DPK-004 schließt P0 fachlich und technisch ab. Der reale Kandidat `0.1.0-conformance.2` unter Publikationsprofil `1.1.0` kompiliert 111 logische und 756 binäre Inhaltsrecords mit dem gemeinsamen Digest `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60`. Die gezielte QS und das vollständige Repository-CI sind grün. DPK-005 beginnt anschließend P1 mit der ZIP-Materialisierung.
 
 Ergebnisse:
 
