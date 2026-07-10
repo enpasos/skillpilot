@@ -1,237 +1,256 @@
-# MEM/FWU Roundtrip Pipeline
+# MEM/FWU Core Roundtrip Pipeline
 
-This pipeline tests whether a SkillPilot publication package can be represented as an RDF/OWL artifact based on the FWU Lehrplan-Ontologie and reconstructed afterwards without reading the original ZIP.
+This pipeline proves that a SkillPilot subject publication package can be transformed into a core-first RDF/OWL bundle based on the FWU Lehrplan-Ontologie and reconstructed semantically without reading the original package as an input source.
 
-Initial input package:
+The current reference scope is:
 
 `tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip`
 
-## Goal
-
-The primary test chain is semantic, not byte-identical:
+## Roundtrip Contract
 
 ```text
-curricular SkillPilot landscape package
-  -> clean MEM-compatible RDF/OWL representation based on FWU-DE/lehrplan-ontologie
-  -> reconstructed SkillPilot knowledge-landscape content
-  -> semantic validation against the original package
+SkillPilot subject ZIP, including goal-visualization images
+  -> FWU-core-first semantic bundle: RDF/OWL + hashed binary sidecars
+  -> reconstructed SkillPilot semantic content + copied image sidecars
+  -> comparison with the original ZIP as validation oracle
 ```
 
-The first implemented roundtrip uses the FWU Lehrplan-Ontologie as the base vocabulary for curriculum, subject, school type, competencies, curricular elements, parts, and source references. SkillPilot-specific runtime semantics that are not explicit FWU terms are kept in a small SkillPilot roundtrip profile:
+The original ZIP is used only after reconstruction to compare semantic fields and image bytes. The reverse transformation reads `bundle.nt` and the sidecars next to it; it does not read JSON or image content from the original ZIP to reconstruct the result.
 
-- `sp:didacticRequires` for SkillPilot prerequisite edges
-- `sp:containsGoal` for SkillPilot graph containment
-- `sp:hasCurricularPart` as a strict curricular part-whole relation mapped to `BFO_0000051` / `hat Teil` only where that semantics is intended
-- `sp:CompositionView` for learner-facing view trees
-- `sp:MappingRecord` and `sp:ReviewDecision` for canonical/state curriculum mappings
-- `sp:SourceGoalReference` for official source text spans
-- `sp:CardDeck` and `sp:Card` for memorization cards
+The roundtrip is semantic, not layout- or byte-identical for every generated metadata file. A separate technical carrier lane remains available for a byte-oriented package check.
 
-The profile is intentionally small. It should make missing relations visible instead of hiding them in application code.
+## Bound FWU Core Version
 
-## Concept Alignment
+The local FWU checkout defaults to:
 
-The primary relation focus comes from the concept paper "Schulisch verantwortete KI-Lernbegleitung entlang der Lehrplaene", version 1.0:
+`tmp/lehrplan-ontologie`
 
-<https://aifyer.com/ki-lernbegleitung/versions/v1.0/schulisch-verantwortete-ki-lernbegleitung-v1.0.pdf>
+The exporter requires and records:
 
-The paper describes a machine-readable learning-goal graph that covers learning-goal containment and prerequisite relations. In SkillPilot terms, those are the two core graph edges:
+- Git commit of the checkout;
+- `src/ontology/components/lehrplan-core.owl`;
+- ontology IRI `https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl` as the identity recorded in RDF;
+- the presence of `LP_0000554`, `LP_0030071`, and `LP_0030072` in that exact core module;
+- a copy and SHA-256 digest of the bound core module in the slim bundle.
 
-- `contains`: a goal or cluster comprises subgoals
-- `requires`: a goal presupposes prerequisite goals
+The slim profile imports `ontology/lehrplan-core.owl` by a relative IRI, so loading the profile from the bundle directory resolves to the pinned local copy. The manifest records both the canonical ontology IRI and this profile import. The monolithic technical profile keeps the canonical W3ID import because its RDF directory does not carry the slim ontology tree.
 
-Therefore the first MEM/FWU modeling question is whether these two relations can be represented cleanly, explicitly, and inspectably in or alongside the FWU Lehrplan-Ontologie. View-to-canonical mapping relations are important, but they are a later modeling layer on top of the core graph.
+This binding is currently necessary because [FWU-DE/lehrplan-ontologie#9](https://github.com/FWU-DE/lehrplan-ontologie/pull/9) added `LP_0000554` to the merged source module while the generated `lp*.ttl/owl` release artifacts in the same upstream checkout have not yet been regenerated with that term. The pipeline fails early if the expected core contract is unavailable instead of silently falling back to an older ontology release.
 
-## Quality Goal 1: Semantically Lossless MEM Roundtrip
+## Core-First Mapping
 
-The first quality goal is not an elegant RDF export in isolation. It is a clean semantic roundtrip that proves which SkillPilot knowledge-landscape information can be carried by a MEM-compatible representation based on the FWU Lehrplan-Ontologie.
+| SkillPilot meaning | Primary representation | Application fallback or extension |
+| --- | --- | --- |
+| Atomic curricular goal | `LP_0000263` CE-Kompetenzspezifikation | `sp:LearningGoal` + `sp:AtomicGoal` preserve the runtime graph-node distinction |
+| Curricular cluster | `LP_0000349` CE-Bereich | `sp:LearningGoal` + `sp:ClusterGoal` |
+| Strict curricular `contains` | `BFO_0000051` (`hat Teil`) | `sp:containsGoal` additionally preserves the authored direct edge |
+| Non-curricular or mixed runtime `contains` | not forced into BFO parthood | `sp:containsGoal` |
+| `requires` | reified `LP_0000554` Didaktische Voraussetzung | legacy `sp:didacticRequires` is read only for old bundles |
+| Curricular title | `LP_0030056` -> `LP_0000346` -> `LP_0000344` | readable `rdfs:label` remains in parallel |
+| Curricular description | `LP_0030051` -> `LP_0030003` -> `LP_0000344` | readable `dcterms:description` remains in parallel |
+| Curricular short number | `LP_0030057` -> `LP_0000347` -> `LP_0000344` | `sp:shortKey` preserves the exact runtime field |
+| Goal visualization | core `CE-Verweis` pattern to a `schema:ImageObject` / `IAO_0000030` sidecar | reference role/order and package path/hash/length remain explicit SkillPilot packaging metadata |
 
-The quality target is met when:
+### Didactic prerequisites
 
-- the publication-oriented RDF is generated from `skillpilot-de-gymnasium-mathematik-v0.1.0.zip`
-- the RDF uses FWU/MEM vocabulary wherever this is semantically correct
-- the remaining SkillPilot profile terms are explicit, documented, and not hidden inside opaque JSON blobs
-- reconstruction reads only the RDF bundle, not the original ZIP content
-- all SkillPilot runtime-relevant data is reconstructed with semantic equivalence, not necessarily byte-identical ZIP layout
-- the reconstructed data passes the SkillPilot validators and roundtrip comparison checks
-- the profile terms that remain outside FWU/MEM are classified as either candidate MEM/FWU improvements, legitimate SkillPilot extensions, or purely technical reconstruction metadata
+Every SkillPilot prerequisite edge is represented as a first-class reference resource:
 
-This gives the MEM/FWU discussion an evidence base: SkillPilot can show concrete data, transformation code, and validation reports instead of arguing abstractly about ontology gaps.
+```turtle
+<goal/current> lp:LP_0030071 <goal/current/didactic-prerequisite/prior> .
+
+<goal/current/didactic-prerequisite/prior>
+  a lp:LP_0000554, lp:LP_0030065 ;
+  lp:LP_0030072 <goal/prior> .
+```
+
+`LP_0030071` is `hat Verweis`; `LP_0030072` is `verweist auf`. A generic `CE-Verweis` is not interpreted as a prerequisite. Only the specialized `LP_0000554` reference carries `requires` semantics.
+
+### Goal containment
+
+The exporter classifies graph nodes before writing containment:
+
+- every authored direct edge uses `sp:containsGoal` as the lossless roundtrip anchor;
+- a curricular cluster containing a curricular cluster or atomic curricular goal additionally uses `BFO_0000051`;
+- practice, assessment, memory, orientation, program, and other mixed graph edges are not asserted as BFO parthood;
+- the old redundant `sp:hasCurricularPart` term is not written;
+- the importer reconstructs current bundles from direct `sp:containsGoal` assertions and reads BFO-only assertions only as a legacy fallback.
+
+The direct application assertion is necessary even for strict curricular edges: `BFO_0000051` is transitive in the FWU core. A reasoner may therefore materialize indirect descendants. Those inferred triples are valid BFO semantics but must not become direct SkillPilot children during reconstruction.
+
+Only top-level curricular elements are attached to the landscape as BFO parts. The exporter does not flatten every curricular descendant into a direct landscape child.
+
+## Goal-Visualization Package Contract
+
+The subject-package builder selects images exclusively from active canonical links with:
+
+```json
+{
+  "type": "goal-visualization",
+  "resourceType": "image"
+}
+```
+
+It does not scan the asset directory indiscriminately. Replaced or orphaned files are therefore excluded.
+
+For a canonical URL such as:
+
+```text
+/assets/goal-visualizations/mathematik/<goalId>/<goalId>.jpg
+```
+
+the ZIP contains the same path below its archive root. The file can consequently be resolved by removing the leading slash from the canonical URL.
+
+`data/resources/goal-visualizations.json` records, per active link:
+
+- goal ID and link order;
+- package path and public URL;
+- MIME type, byte length, and SHA-256;
+- `skillpilotId`, role, title, provider, description, alt text, language, license note, and review status.
+
+The independent subject-package validator checks:
+
+- safe root-relative paths and matching goal/file IDs;
+- JPEG/PNG extension, MIME type, and magic bytes;
+- exact agreement between canonical link, resource index, ZIP entry, and package manifest;
+- byte length and SHA-256;
+- absence of missing and orphaned image entries;
+- explicit image-license category and preserved per-link license note.
+
+The category `goal-visualization-ai-generated-curated` records provenance and curation status. It is deliberately not treated as an SPDX identifier or an automatic CC BY grant.
+
+## Image Representation in RDF
+
+Images reuse the core `CE-Verweis` pattern rather than adding a direct goal-to-image property:
+
+```turtle
+<goal/G> lp:LP_0030071 <goal/G/goal-visualization/0> .
+
+<goal/G/goal-visualization/0>
+  a sp:GoalVisualizationReference, lp:LP_0030065 ;
+  lp:LP_0030072 <package/asset/...> ;
+  sp:order 0 ;
+  sp:role "primary" .
+
+<package/asset/...>
+  a <http://purl.obolibrary.org/obo/IAO_0000030>, schema:ImageObject ;
+  schema:contentUrl "/assets/goal-visualizations/..." ;
+  schema:encodingFormat "image/jpeg" ;
+  schema:accessibilitySummary "..."@de ;
+  sp:zipPath "<archive-root>/assets/goal-visualizations/..." ;
+  sp:sha256 "..." ;
+  sp:byteLength 12345 .
+```
+
+`assets.nt` contains these references and media metadata. The corresponding image files live under `slim/assets/goal-visualizations/...`.
+
+Binary image data is never Base64-encoded into `bundle.nt`. The slim manifest records every sidecar path, size, and SHA-256.
 
 ## Commands
 
-Run the primary semantic roundtrip:
+Run commands from `app/`.
+
+### 1. Build the current subject package
 
 ```bash
-cd app
+npm run export:subject-package -- --subject Mathematik --version 0.1.0
+```
+
+### 2. Validate the package independently
+
+```bash
+npm run export:subject-packages:validate -- \
+  --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+```
+
+### 3. Run the preferred semantic roundtrip
+
+```bash
 npm run roundtrip:mem-fwu:semantic
 ```
 
-Run only the clean semantic MEM/FWU export without the lossless ZIP text carrier:
+This is equivalent to the two explicit stages:
 
 ```bash
-cd app
-npm run roundtrip:mem-fwu:slim -- --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
-```
+npm run roundtrip:mem-fwu:slim -- \
+  --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip \
+  --ontology-dir ../tmp/lehrplan-ontologie
 
-Run only the semantic reconstruction check from the slim bundle:
-
-```bash
-cd app
-npm run roundtrip:mem-fwu:semantic-reconstruct
-```
-
-Optional technical/debug lane: build the monolithic carrier RDF that can reconstruct the ZIP byte-for-byte:
-
-```bash
-cd app
-npm run roundtrip:mem-fwu:to-rdf -- --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
-```
-
-Optional technical/debug lane: reconstruct plus validate the byte-carrier RDF:
-
-```bash
-cd app
-npm run roundtrip:mem-fwu:validate -- \
-  --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip \
-  --rdf tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/rdf/skillpilot-mem-fwu.nt
-```
-
-Run the semantic reconstruction check against an explicitly selected RDF file:
-
-```bash
-cd app
 npm run roundtrip:mem-fwu:semantic-reconstruct -- \
-  --rdf tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/bundle.nt \
-  --zip tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+  --rdf ../tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/bundle.nt \
+  --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
 ```
+
+### 4. Optional technical carrier roundtrip
+
+```bash
+npm run roundtrip:mem-fwu
+```
+
+The technical lane stores UTF-8 package files as RDF line carriers. Binary images remain hashed sidecars next to the RDF and are copied back during reconstruction; they are not coerced through UTF-8 text. Until a generic binary-sidecar vocabulary is added, any other binary package entry fails explicitly instead of being dropped.
 
 ## Output
 
-Default output directory:
+Default base directory:
 
 `tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/`
 
-Important files:
+Important paths:
 
-- `slim/` - clean semantic MEM/FWU bundle without the technical ZIP text carrier
-- `slim/landscape.nt` - package metadata, canonical goals, program units, placements, `contains`, and `requires`
-- `slim/sources.nt` - official source documents, source URLs, and exact source-goal spans
-- `slim/mappings.nt` - reviewed source-to-canonical decisions and state mapping records
-- `slim/views.nt` - learner-facing Bundesland and aggregate composition views
-- `slim/cards.nt` - memorization card decks and cards
-- `slim/bundle.nt` - concatenation of the slim semantic files for single-file RDF loaders
-- `slim/skillpilot-mem-fwu-profile.ttl` - profile without carrier-only terms such as `sp:textLine`
-- `slim/semantic-reconstructed/` - SkillPilot core artifacts reconstructed from the slim semantic RDF bundle
-- `slim/semantic-reconstructed/semantic-reconstruction-report.*` - semantic reconstruction report
-- `rdf/skillpilot-mem-fwu.nt` - optional monolithic technical/debug RDF with lossless text carrier
-- `rdf/skillpilot-mem-fwu-profile.ttl` - profile for the monolithic technical/debug RDF
-- `reconstructed/` - reconstructed package directory
-- `skillpilot-de-gymnasium-mathematik-v0.1.0.roundtrip.zip` - reconstructed ZIP
-- `roundtrip-report.json` and `roundtrip-report.md` - roundtrip result
-- `package-validation/subject-export-package-validation-report.*` - independent SkillPilot package validation
+- `slim/landscape.nt`: goals, core-first `contains`, reified prerequisites, program units, placements, and external dependencies;
+- `slim/assets.nt`: goal-visualization references and media metadata;
+- `slim/assets/goal-visualizations/`: binary image sidecars;
+- `slim/sources.nt`: official source documents and exact source spans;
+- `slim/mappings.nt`: canonical mappings and reviewed decisions;
+- `slim/views.nt`: learner-facing composition views;
+- `slim/cards.nt`: memorization decks and cards;
+- `slim/bundle.nt`: RDF-only concatenation of the semantic `.nt` segments;
+- `slim/ontology/lehrplan-core.owl`: bound upstream core module;
+- `slim/skillpilot-mem-fwu-profile.ttl`: remaining application vocabulary;
+- `slim/manifest.json`: ontology binding, RDF files, sidecars, hashes, and semantic counts;
+- `slim/semantic-reconstructed/goal-visualizations.semantic.json`: reconstructed schema-compatible resource index;
+- `slim/semantic-reconstructed/goal-visualizations.diagnostic.json`: RDF reference resources and structural diagnostics;
+- `slim/semantic-reconstructed/package-assets/`: verified copied image sidecars;
+- `slim/semantic-reconstructed/semantic-reconstruction-report.*`: semantic and byte-integrity verdict.
 
-## Representation Strategy
+## Validation Gates
 
-There are two RDF export forms with different purposes.
+The semantic reconstruction must pass all existing landscape, mapping, source, view, and card comparisons plus these core/media checks:
 
-The slim MEM/FWU export under `slim/` is the publication-oriented representation. It represents the actual learning landscape:
+- every `requires` edge is reconstructed from exactly the intended specialized prerequisite reference;
+- direct containment reconstructs the original `contains` sets without duplicates, while additional or inferred BFO parthood cannot introduce false direct children;
+- every visualization link has one `sp:GoalVisualizationReference`, one image target, and one indexed sidecar;
+- RDF metadata equals the canonical resource link and package resource index;
+- sidecar byte length and SHA-256 equal the RDF and original ZIP values;
+- all verified sidecars are copied into the reconstructed package-assets tree;
+- missing, malformed, unsafe, duplicate, or orphaned resources fail the run.
 
-- SkillPilot graph nodes as `sp:LearningGoal`
-- semantically curricular atomic goals additionally as FWU `LP_0000263` competency specifications
-- semantically curricular clusters additionally as FWU `LP_0000349` curricular areas
-- runtime-only nodes such as memorization, practice, assessment, orientation, or program-structure nodes as SkillPilot profile classes without forced FWU competency typing
-- the package and landscape as FWU `LP_0000438` curricula
-- Mathematik via KIM school subject `http://w3id.org/kim/schulfaecher/s1017`
-- Gymnasium as a school-type resource linked through FWU `LP_0000812`
-- SkillPilot `contains` through `sp:containsGoal`
-- strict curricular part-whole decomposition through `sp:hasCurricularPart` and `BFO_0000051` / `hat Teil` only where source and target are classified as curricular graph elements
-- `requires` through `sp:didacticRequires`
-- source goals and official text spans as `sp:SourceGoalReference` / FWU references
-- composition views, mappings, review decisions, and card decks as explicit SkillPilot profile resources
+The generated reports are the authoritative result. Do not copy old counts into this document after the source package changes.
 
-The `FWU-DE/schulfach-ontologie` should be considered for the subject-identifier layer. The current export links Mathematik through the generic KIM subject IRI `http://w3id.org/kim/schulfaecher/s1017`; the school-subject ontology additionally provides state-specific subject individuals such as `https://w3id.org/schulfach/HE_0000027` with `skos:exactMatch` to that KIM IRI. This is relevant for full MEM/FWU alignment, but separate from the learning-goal graph relation proposal.
+## Remaining SkillPilot Profile
 
-The slim export intentionally does not include:
+The profile is intentionally limited to concepts not supplied by the FWU core:
 
-- `sp:PackageFile`
-- `sp:hasFile`
-- `sp:textLine`
-- `sp:lineText`
-- file-path-derived SkillPilot resource IRIs such as `/file/...`
-- embedded ZIP file lines
-- the redundant `sp:sourceIndexSummaryJson` blob
+- technical package identity and deterministic reconstruction metadata;
+- runtime graph-node distinctions and the direct-containment roundtrip anchor;
+- program units and goal placements;
+- scoped composition views;
+- auditable mapping and review records;
+- exact source spans and fingerprints;
+- memory-card decks and cards;
+- practice, assessment, memory, and orientation nodes;
+- visualization-reference specialization plus package path, hash, byte length, role, order, and review status.
 
-The monolithic `rdf/skillpilot-mem-fwu.nt` keeps an additional carrier lane that stores every package file as RDF text-line resources. This is deliberately not the semantic model. It is a technical proof artifact for byte-identical ZIP reconstruction.
+These are not all candidates for the FWU core. Composition views, learning runtime nodes, memorization cards, and binary package mechanics are application concerns. The dedicated prerequisite class and strict curricular parthood now use upstream terms directly.
 
-`sp:zipPath` may still appear in the slim bundle as a local package placement literal for deterministic reconstruction. It is not used as curriculum-source provenance; official source provenance is represented through source-document URLs and exact source-goal spans.
+## Operational Notes
 
-`requires` and `contains` are treated as unordered graph edges. The semantic comparison therefore compares them as sets. Stable ordering is only represented where it has actual meaning for a consumer, for example in learner-facing composition-view children and memorization cards.
+- The mathematics visualization payload is currently much larger than the RDF metadata. Allow several GiB of free disk space for the source ZIP, slim sidecars, and reconstructed copies.
+- JPEG and PNG files are stored without recompression in the reproducible subject ZIP.
+- The deterministic ZIP writer streams uncompressed entries to disk and hashes the finished file without buffering the full archive. It uses ZIP32 and fails before writing if entry count, file size, offsets, or total archive size exceed supported limits.
+- Keep `tmp/` for generated packages and reports; do not commit roundtrip artifacts.
 
-## Current Validation Result
+## Upstream Follow-up
 
-For `skillpilot-de-gymnasium-mathematik-v0.1.0.zip`, the optional monolithic byte-carrier run produced:
+When FWU regenerates its release artifacts and shapes with `LP_0000554`, the local binding can move from the source core module to the corresponding released artifact. Until then, the manifest makes the exact source commit and core-module checksum independently reviewable.
 
-- 163 reconstructed files
-- 163 byte-identical files
-- 1,037 canonical goals
-- 1,142 `contains` edges
-- 2,312 `requires` edges
-- 70 composition views
-- 2,539 canonical mapping records
-- 9,797 review decisions
-- 9,797 source-goal references with official text spans
-- 10 card decks with 126 cards
-
-The reconstructed ZIP passed `npm run export:subject-packages:validate`.
-
-The slim MEM/FWU export generated on 2026-05-16 produced:
-
-- `slim/bundle.nt`: 437,681 semantic triples, about 130 MB
-- `slim/landscape.nt`: about 7.2 MB
-- `slim/sources.nt`: about 65 MB
-- `slim/mappings.nt`: about 44 MB
-- `slim/views.nt`: about 9.9 MB
-- `slim/cards.nt`: about 284 KB
-
-The semantic reconstruction from `slim/bundle.nt` passed these content checks:
-
-- landscape metadata, filters, program units, goal placements, and competency catalog match
-- 1,037/1,037 goals reconstructed with all relevant fields
-- 31/31 source collections and 9,797/9,797 source goals reconstructed
-- 126/126 cards reconstructed
-- 62/62 mapping file metadata records reconstructed
-- 2,539/2,539 mapping records and 9,797/9,797 review decisions reconstructed
-- all 16 state mapping lanes present
-- 70/70 composition views reconstructed with 5,991/5,991 view goal refs
-- all 16 state view lanes plus 5 DE aggregate views present
-
-## Interpretation
-
-This is a practical first proof that the current public SkillPilot mathematics package can survive a semantic RDF roundtrip without losing the data required by the SkillPilot runtime and publication validator.
-
-The additional semantic reconstruction check proves more than byte-identical transport: the SkillPilot core landscape, source references, mappings, views, and cards can be rebuilt from explicit RDF triples.
-
-For MEM-oriented publication, the `slim/` bundle is the preferred artifact. The large monolithic RDF file remains useful for reproducibility and byte-identical technical roundtrip testing, but it should not be treated as the clean MEM representation.
-
-It still does not prove that the FWU Lehrplan-Ontologie alone already contains every SkillPilot relation. The test currently makes those gaps explicit through the SkillPilot roundtrip profile, especially for didactic prerequisite logic, learner-facing composition views, reviewed source mappings, and memorization cards.
-
-## MEM/FWU Improvement Candidates
-
-The current slim roundtrip is deliberately modeled as "FWU/MEM first, SkillPilot profile only where necessary". The profile terms should therefore be reviewed after every successful roundtrip.
-
-Priority candidate areas for upstream discussion:
-
-- Didactic prerequisites: `sp:didacticRequires` is not the same as a FWU `CE-Verweis`. A curriculum reference can point to a related element, while SkillPilot needs an explicit prerequisite relation for frontier and next-step logic.
-- Learning-goal containment: `sp:containsGoal` preserves the SkillPilot graph. Only `sp:hasCurricularPart` is mapped to `BFO_0000051` / `hat Teil`, and only for genuine curricular part-whole relations. This must not be used for UI placement, ordering, loose topic association, state visibility, or view mappings. The upstream question is whether FWU/MEM wants to document `hat Teil` as the intended pattern for strict curricular goal decomposition or provide a more specific relation.
-- Exact source spans: `sp:SourceGoalReference` connects a source URL and source-goal identity with exact official text spans, page or locator metadata, and extraction context. This is needed for independent validation of mapping decisions.
-- Learner-facing composition views: `sp:CompositionView` and ordered composition nodes express scoped, single-occurrence user views over a canonical graph. This is different from the canonical curriculum graph itself and matters for Bundesland-specific views. This should come after `requires` and `contains`.
-- Reviewed source-to-canonical mappings: `sp:MappingRecord` and `sp:ReviewDecision` express auditable mapping decisions, including evidence, status, and reviewer judgement. This is stronger than a loose source reference and becomes more important when composition views are mapped explicitly onto the canonical graph.
-- Memorization cards: `sp:CardDeck` and `sp:Card` are probably a SkillPilot learning-runtime extension, not necessarily a MEM core concern, unless MEM wants to model fine-grained learning media or practice resources.
-
-Potential GitHub contribution path:
-
-1. Keep the SkillPilot roundtrip passing as the reproducible evidence artifact.
-2. Check whether each remaining `sp:` term already has an appropriate FWU/MEM equivalent before proposing a new term.
-3. Open a focused issue in `FWU-DE/lehrplan-ontologie` with the SkillPilot story, the concept-paper relation focus, RDF examples, and validation report.
-4. If maintainers agree that a gap belongs in MEM/FWU, submit a small PR, preferably starting with `didacticRequires` and documented semantic guidance for `contains` / `hat Teil` as strict curricular goal composition.
+The integration stance remains collaborative: SkillPilot uses the FWU core where its semantics fit, retains application vocabulary only for genuine runtime/package concerns, and turns reproducible roundtrip evidence into focused upstream feedback.

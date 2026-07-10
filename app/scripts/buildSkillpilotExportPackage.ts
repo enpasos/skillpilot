@@ -1,15 +1,22 @@
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
+  closeSync,
   existsSync,
   mkdirSync,
+  openSync,
+  readSync,
   readFileSync,
   readdirSync,
+  renameSync,
+  rmSync,
   statSync,
+  writeSync,
   writeFileSync,
 } from 'node:fs'
-import { basename, dirname, extname, join, relative, resolve, sep } from 'node:path'
+import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { crc32 } from 'node:zlib'
 import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
@@ -39,9 +46,38 @@ type PublicationProfile = 'release'
 
 type PackageEntry = {
   packagePath: string
-  content: Buffer
+  content?: Buffer
+  sourcePath?: string
+  bytes: number
+  sha256: string
+  crc32: number
   category: string
   licenseCategory: string
+}
+
+type GoalVisualizationAssetRecord = {
+  goalId: string
+  order: number
+  packagePath: string
+  publicUrl: string
+  mediaType: 'image/jpeg' | 'image/png'
+  bytes: number
+  sha256: string
+  skillpilotId: string
+  role: string
+  title: string
+  provider: string
+  description: string
+  altText: string
+  lang: string
+  license: string
+  reviewStatus: string
+}
+
+type GoalVisualizationAsset = {
+  record: GoalVisualizationAssetRecord
+  sourcePath: string
+  crc32: number
 }
 
 type SubjectPreset = {
@@ -99,6 +135,9 @@ const EXPECTED_DE_STATES = [
 ]
 
 const WINDOWS_SAFE_ARCHIVE_PATH_LIMIT = 180
+const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-curated'
+const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
+const ZIP32_MAX_VALUE = 0xffffffff
 
 const SUBJECT_PRESETS: Record<string, SubjectPreset> = {
   biologie: {
@@ -420,6 +459,70 @@ const FLASHCARD_DECK_SCHEMA = {
   },
 }
 
+const GOAL_VISUALIZATION_INDEX_SCHEMA = {
+  $schema: 'https://json-schema.org/draft/2020-12/schema',
+  $id: 'https://skillpilot.local/schema/goal-visualization-index.schema.json',
+  title: 'SkillPilot goal visualization asset index',
+  type: 'object',
+  required: ['schemaVersion', 'assets'],
+  additionalProperties: false,
+  properties: {
+    schemaVersion: { const: 1 },
+    assets: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: [
+          'goalId',
+          'order',
+          'packagePath',
+          'publicUrl',
+          'mediaType',
+          'bytes',
+          'sha256',
+          'skillpilotId',
+          'role',
+          'title',
+          'provider',
+          'description',
+          'altText',
+          'lang',
+          'license',
+          'reviewStatus',
+        ],
+        additionalProperties: false,
+        properties: {
+          goalId: { type: 'string', minLength: 1 },
+          order: { type: 'integer', minimum: 0 },
+          packagePath: {
+            type: 'string',
+            pattern: '^assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
+          },
+          publicUrl: {
+            type: 'string',
+            pattern: '^/assets/goal-visualizations/[^/]+/[^/]+/[^/]+\\.(?:jpg|png)$',
+          },
+          mediaType: { enum: ['image/jpeg', 'image/png'] },
+          bytes: { type: 'integer', minimum: 0 },
+          sha256: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+          skillpilotId: { type: 'string', minLength: 1 },
+          role: { const: 'primary' },
+          title: { type: 'string', minLength: 1 },
+          provider: { type: 'string', minLength: 1 },
+          description: { type: 'string', minLength: 1 },
+          altText: { type: 'string', minLength: 1 },
+          lang: {
+            type: 'string',
+            pattern: '^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$',
+          },
+          license: { type: 'string', minLength: 1 },
+          reviewStatus: { type: 'string', minLength: 1 },
+        },
+      },
+    },
+  },
+}
+
 const usage = () => `Usage:
   npm run export:subject-package -- --subject Mathematik [--version 0.1.0]
 
@@ -658,6 +761,55 @@ const stableSortJson = (value: JsonValue): JsonValue => {
 const stableJson = (value: JsonValue) => `${JSON.stringify(stableSortJson(value), null, 2)}\n`
 
 const sha256 = (content: Buffer) => createHash('sha256').update(content).digest('hex')
+
+const inspectFile = (absolutePath: string) => {
+  const hash = createHash('sha256')
+  const chunk = Buffer.allocUnsafe(8 * 1024 * 1024)
+  const head = Buffer.alloc(8)
+  let headLength = 0
+  let bytes = 0
+  let checksum = 0
+  const descriptor = openSync(absolutePath, 'r')
+  try {
+    while (true) {
+      const read = readSync(descriptor, chunk, 0, chunk.length, null)
+      if (read === 0) break
+      const data = chunk.subarray(0, read)
+      hash.update(data)
+      checksum = crc32(data, checksum) >>> 0
+      if (headLength < head.length) {
+        const copied = Math.min(head.length - headLength, read)
+        data.copy(head, headLength, 0, copied)
+        headLength += copied
+      }
+      bytes += read
+    }
+  } finally {
+    closeSync(descriptor)
+  }
+  return {
+    bytes,
+    sha256: hash.digest('hex'),
+    crc32: checksum,
+    head: head.subarray(0, headLength),
+  }
+}
+
+const sha256File = (absolutePath: string) => {
+  const hash = createHash('sha256')
+  const chunk = Buffer.allocUnsafe(8 * 1024 * 1024)
+  const descriptor = openSync(absolutePath, 'r')
+  try {
+    while (true) {
+      const read = readSync(descriptor, chunk, 0, chunk.length, null)
+      if (read === 0) break
+      hash.update(chunk.subarray(0, read))
+    }
+  } finally {
+    closeSync(descriptor)
+  }
+  return hash.digest('hex')
+}
 
 const jsonObject = (value: JsonValue): Record<string, JsonValue> => (
   value && typeof value === 'object' && !Array.isArray(value) ? value : {}
@@ -1251,6 +1403,182 @@ const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
   return [...selected.values()].sort((left, right) => basename(left).localeCompare(basename(right)))
 }
 
+const GOAL_VISUALIZATION_LINK_FIELDS = [
+  'skillpilotId',
+  'role',
+  'title',
+  'provider',
+  'description',
+  'altText',
+  'lang',
+  'license',
+  'reviewStatus',
+] as const
+
+const requiredGoalVisualizationLinkFields = (
+  link: Record<string, JsonValue>,
+  context: string,
+  errors: string[],
+) => {
+  const values: Record<(typeof GOAL_VISUALIZATION_LINK_FIELDS)[number], string> = {
+    skillpilotId: '',
+    role: '',
+    title: '',
+    provider: '',
+    description: '',
+    altText: '',
+    lang: '',
+    license: '',
+    reviewStatus: '',
+  }
+  let valid = true
+  GOAL_VISUALIZATION_LINK_FIELDS.forEach((field) => {
+    const value = link[field]
+    if (typeof value !== 'string' || value.trim().length === 0) {
+      errors.push(`${context}: missing non-empty ${field}.`)
+      valid = false
+      return
+    }
+    values[field] = value
+  })
+  return valid ? values : null
+}
+
+const goalVisualizationMediaType = (extension: string, content: Buffer) => {
+  if (extension === '.jpg') {
+    return content.length >= 3
+      && content[0] === 0xff
+      && content[1] === 0xd8
+      && content[2] === 0xff
+      ? 'image/jpeg' as const
+      : null
+  }
+  if (extension === '.png') {
+    const signature = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]
+    return content.length >= signature.length
+      && signature.every((byte, index) => content[index] === byte)
+      ? 'image/png' as const
+      : null
+  }
+  return null
+}
+
+const selectGoalVisualizationAssets = (
+  canonicalData: Record<string, JsonValue>,
+  subjectSlug: string,
+  errors: string[],
+) => {
+  const goals = Array.isArray(canonicalData.goals) ? canonicalData.goals : []
+  const publicAssetRoot = resolveRepoPath('app/public/assets/goal-visualizations')
+  const seenPackagePaths = new Set<string>()
+  const assets: GoalVisualizationAsset[] = []
+
+  goals.forEach((goalValue) => {
+    if (!isJsonObject(goalValue) || typeof goalValue.id !== 'string' || !Array.isArray(goalValue.resourceLinks)) {
+      return
+    }
+    const goalId = goalValue.id
+    goalValue.resourceLinks.forEach((linkValue, order) => {
+      if (!isJsonObject(linkValue) || linkValue.type !== 'goal-visualization') {
+        return
+      }
+      const context = `Goal visualization ${goalId} resourceLinks[${order}]`
+      if (linkValue.resourceType !== 'image') {
+        errors.push(`${context}: resourceType must be image.`)
+        return
+      }
+      const fields = requiredGoalVisualizationLinkFields(linkValue, context, errors)
+      const publicUrl = typeof linkValue.url === 'string' ? linkValue.url : ''
+      if (!fields || !publicUrl) {
+        if (!publicUrl) errors.push(`${context}: missing non-empty url.`)
+        return
+      }
+      if (fields.skillpilotId !== goalId) {
+        errors.push(`${context}: skillpilotId must equal containing goal id.`)
+        return
+      }
+      if (fields.role !== 'primary') {
+        errors.push(`${context}: role must be primary.`)
+        return
+      }
+      if (!/^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/u.test(fields.lang)) {
+        errors.push(`${context}: lang must be a simple BCP-47 language tag.`)
+        return
+      }
+
+      const packagePath = publicUrl.startsWith('/') ? publicUrl.slice(1) : ''
+      const pathSegments = packagePath.split('/')
+      const pathIsSafe = publicUrl.startsWith('/')
+        && !publicUrl.startsWith('//')
+        && !publicUrl.includes('\\')
+        && !publicUrl.includes('?')
+        && !publicUrl.includes('#')
+        && !publicUrl.includes('\0')
+        && pathSegments.length > 0
+        && pathSegments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+      if (!pathIsSafe) {
+        errors.push(`${context}: url must be a safe root-relative asset path.`)
+        return
+      }
+
+      const extension = extname(packagePath).toLowerCase()
+      if (extension !== '.jpg' && extension !== '.png') {
+        errors.push(`${context}: only .jpg and .png assets are supported.`)
+        return
+      }
+      const expectedPackagePath = `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+      if (packagePath !== expectedPackagePath) {
+        errors.push(`${context}: url must be /${expectedPackagePath}.`)
+        return
+      }
+      if (basename(packagePath) !== `${goalId}${extension}`) {
+        errors.push(`${context}: image filename must be ${goalId}${extension}.`)
+        return
+      }
+      if (seenPackagePaths.has(packagePath)) {
+        errors.push(`${context}: duplicate active asset path ${packagePath}.`)
+        return
+      }
+
+      const absoluteAssetPath = resolve(repoRoot, 'app/public', packagePath)
+      const relativeToAssetRoot = relative(publicAssetRoot, absoluteAssetPath)
+      if (relativeToAssetRoot.startsWith('..') || isAbsolute(relativeToAssetRoot)) {
+        errors.push(`${context}: url resolves outside app/public/assets/goal-visualizations.`)
+        return
+      }
+      if (!existsSync(absoluteAssetPath) || !statSync(absoluteAssetPath).isFile()) {
+        errors.push(`${context}: missing runtime asset ${repoRelative(absoluteAssetPath)}.`)
+        return
+      }
+
+      const inspected = inspectFile(absoluteAssetPath)
+      const mediaType = goalVisualizationMediaType(extension, inspected.head)
+      if (!mediaType) {
+        errors.push(`${context}: file signature does not match ${extension}.`)
+        return
+      }
+
+      seenPackagePaths.add(packagePath)
+      assets.push({
+        sourcePath: absoluteAssetPath,
+        crc32: inspected.crc32,
+        record: {
+          goalId,
+          order,
+          packagePath,
+          publicUrl,
+          mediaType,
+          bytes: inspected.bytes,
+          sha256: inspected.sha256,
+          ...fields,
+        },
+      })
+    })
+  })
+
+  return assets
+}
+
 type MemoryCardReviewAudit = {
   reviewId: string
   ruleVersion: string | null
@@ -1501,71 +1829,143 @@ const stateFromMappingPath = (absolutePath: string) => {
   return match?.[1]
 }
 
-const createZip = (entries: PackageEntry[], mtime: Date) => {
+const writeBufferFully = (descriptor: number, content: Buffer) => {
+  let offset = 0
+  while (offset < content.length) {
+    const written = writeSync(descriptor, content, offset, content.length - offset)
+    if (written <= 0) throw new Error('Failed to make progress while writing ZIP output.')
+    offset += written
+  }
+}
+
+const writePackageEntryContent = (descriptor: number, entry: PackageEntry) => {
+  if (entry.content) {
+    writeBufferFully(descriptor, entry.content)
+    return
+  }
+  if (!entry.sourcePath) {
+    throw new Error(`Package entry has neither content nor source path: ${entry.packagePath}`)
+  }
+  const sourceDescriptor = openSync(entry.sourcePath, 'r')
+  const chunk = Buffer.allocUnsafe(8 * 1024 * 1024)
+  const hash = createHash('sha256')
+  let copied = 0
+  let checksum = 0
+  try {
+    while (true) {
+      const read = readSync(sourceDescriptor, chunk, 0, chunk.length, null)
+      if (read === 0) break
+      const data = chunk.subarray(0, read)
+      hash.update(data)
+      checksum = crc32(data, checksum) >>> 0
+      writeBufferFully(descriptor, data)
+      copied += read
+    }
+  } finally {
+    closeSync(sourceDescriptor)
+  }
+  if (copied !== entry.bytes) {
+    throw new Error(`Source file changed while writing ZIP entry ${entry.packagePath}: ${copied} != ${entry.bytes} bytes.`)
+  }
+  const actualSha256 = hash.digest('hex')
+  if (actualSha256 !== entry.sha256 || checksum !== entry.crc32) {
+    throw new Error(`Source file changed while writing ZIP entry ${entry.packagePath}: checksum mismatch.`)
+  }
+}
+
+const createZip = (entries: PackageEntry[], mtime: Date, outputPath: string) => {
   const sortedEntries = [...entries].sort((left, right) => left.packagePath.localeCompare(right.packagePath))
-  const localParts: Buffer[] = []
+  if (sortedEntries.length > 0xffff) {
+    throw new Error(`ZIP32 supports at most 65535 entries, got ${sortedEntries.length}.`)
+  }
+  const namedEntries = sortedEntries.map((entry) => ({
+    entry,
+    name: Buffer.from(entry.packagePath, 'utf8'),
+  }))
+  namedEntries.forEach(({ entry, name }) => {
+    if (name.length > 0xffff) throw new Error(`ZIP entry name is too long: ${entry.packagePath}`)
+    if (entry.bytes > ZIP32_MAX_VALUE) throw new Error(`ZIP entry exceeds the ZIP32 size limit: ${entry.packagePath}`)
+  })
+
+  const centralSize = namedEntries.reduce((sum, { name }) => sum + 46 + name.length, 0)
+  const centralOffset = namedEntries.reduce((sum, { entry, name }) => sum + 30 + name.length + entry.bytes, 0)
+  const totalSize = centralOffset + centralSize + 22
+  if (centralOffset > ZIP32_MAX_VALUE || centralSize > ZIP32_MAX_VALUE || totalSize > ZIP32_MAX_VALUE) {
+    throw new Error(`ZIP would exceed the supported ZIP32 size limit (${totalSize} > ${ZIP32_MAX_VALUE} bytes).`)
+  }
+
   const centralParts: Buffer[] = []
   let offset = 0
   const { dosTime, dosDate } = toDosDateTime(mtime)
+  const temporaryPath = `${outputPath}.tmp-${process.pid}`
+  rmSync(temporaryPath, { force: true })
+  const descriptor = openSync(temporaryPath, 'w')
+  try {
+    namedEntries.forEach(({ entry, name }) => {
+      const localHeader = Buffer.alloc(30)
+      localHeader.writeUInt32LE(0x04034b50, 0)
+      localHeader.writeUInt16LE(20, 4)
+      localHeader.writeUInt16LE(0x0800, 6)
+      localHeader.writeUInt16LE(0, 8)
+      localHeader.writeUInt16LE(dosTime, 10)
+      localHeader.writeUInt16LE(dosDate, 12)
+      localHeader.writeUInt32LE(entry.crc32, 14)
+      localHeader.writeUInt32LE(entry.bytes, 18)
+      localHeader.writeUInt32LE(entry.bytes, 22)
+      localHeader.writeUInt16LE(name.length, 26)
+      localHeader.writeUInt16LE(0, 28)
+      writeBufferFully(descriptor, localHeader)
+      writeBufferFully(descriptor, name)
+      writePackageEntryContent(descriptor, entry)
 
-  sortedEntries.forEach((entry) => {
-    const name = Buffer.from(entry.packagePath, 'utf8')
-    const data = entry.content
-    const crc = crc32(data)
+      const centralHeader = Buffer.alloc(46)
+      centralHeader.writeUInt32LE(0x02014b50, 0)
+      centralHeader.writeUInt16LE(20, 4)
+      centralHeader.writeUInt16LE(20, 6)
+      centralHeader.writeUInt16LE(0x0800, 8)
+      centralHeader.writeUInt16LE(0, 10)
+      centralHeader.writeUInt16LE(dosTime, 12)
+      centralHeader.writeUInt16LE(dosDate, 14)
+      centralHeader.writeUInt32LE(entry.crc32, 16)
+      centralHeader.writeUInt32LE(entry.bytes, 20)
+      centralHeader.writeUInt32LE(entry.bytes, 24)
+      centralHeader.writeUInt16LE(name.length, 28)
+      centralHeader.writeUInt16LE(0, 30)
+      centralHeader.writeUInt16LE(0, 32)
+      centralHeader.writeUInt16LE(0, 34)
+      centralHeader.writeUInt16LE(0, 36)
+      centralHeader.writeUInt32LE((0o100644 << 16) >>> 0, 38)
+      centralHeader.writeUInt32LE(offset, 42)
+      centralParts.push(centralHeader, name)
+      offset += localHeader.length + name.length + entry.bytes
+    })
 
-    const localHeader = Buffer.alloc(30)
-    localHeader.writeUInt32LE(0x04034b50, 0)
-    localHeader.writeUInt16LE(20, 4)
-    localHeader.writeUInt16LE(0x0800, 6)
-    localHeader.writeUInt16LE(0, 8)
-    localHeader.writeUInt16LE(dosTime, 10)
-    localHeader.writeUInt16LE(dosDate, 12)
-    localHeader.writeUInt32LE(crc, 14)
-    localHeader.writeUInt32LE(data.length, 18)
-    localHeader.writeUInt32LE(data.length, 22)
-    localHeader.writeUInt16LE(name.length, 26)
-    localHeader.writeUInt16LE(0, 28)
-
-    localParts.push(localHeader, name, data)
-
-    const centralHeader = Buffer.alloc(46)
-    centralHeader.writeUInt32LE(0x02014b50, 0)
-    centralHeader.writeUInt16LE(20, 4)
-    centralHeader.writeUInt16LE(20, 6)
-    centralHeader.writeUInt16LE(0x0800, 8)
-    centralHeader.writeUInt16LE(0, 10)
-    centralHeader.writeUInt16LE(dosTime, 12)
-    centralHeader.writeUInt16LE(dosDate, 14)
-    centralHeader.writeUInt32LE(crc, 16)
-    centralHeader.writeUInt32LE(data.length, 20)
-    centralHeader.writeUInt32LE(data.length, 24)
-    centralHeader.writeUInt16LE(name.length, 28)
-    centralHeader.writeUInt16LE(0, 30)
-    centralHeader.writeUInt16LE(0, 32)
-    centralHeader.writeUInt16LE(0, 34)
-    centralHeader.writeUInt16LE(0, 36)
-    centralHeader.writeUInt32LE((0o100644 << 16) >>> 0, 38)
-    centralHeader.writeUInt32LE(offset, 42)
-    centralParts.push(centralHeader, name)
-
-    offset += localHeader.length + name.length + data.length
-  })
-
-  const centralDirectory = Buffer.concat(centralParts)
-  const centralOffset = offset
-  const centralSize = centralDirectory.length
-
-  const endOfCentralDirectory = Buffer.alloc(22)
-  endOfCentralDirectory.writeUInt32LE(0x06054b50, 0)
-  endOfCentralDirectory.writeUInt16LE(0, 4)
-  endOfCentralDirectory.writeUInt16LE(0, 6)
-  endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 8)
-  endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 10)
-  endOfCentralDirectory.writeUInt32LE(centralSize, 12)
-  endOfCentralDirectory.writeUInt32LE(centralOffset, 16)
-  endOfCentralDirectory.writeUInt16LE(0, 20)
-
-  return Buffer.concat([...localParts, centralDirectory, endOfCentralDirectory])
+    const centralDirectory = Buffer.concat(centralParts)
+    writeBufferFully(descriptor, centralDirectory)
+    const endOfCentralDirectory = Buffer.alloc(22)
+    endOfCentralDirectory.writeUInt32LE(0x06054b50, 0)
+    endOfCentralDirectory.writeUInt16LE(0, 4)
+    endOfCentralDirectory.writeUInt16LE(0, 6)
+    endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 8)
+    endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 10)
+    endOfCentralDirectory.writeUInt32LE(centralSize, 12)
+    endOfCentralDirectory.writeUInt32LE(centralOffset, 16)
+    endOfCentralDirectory.writeUInt16LE(0, 20)
+    writeBufferFully(descriptor, endOfCentralDirectory)
+  } catch (error) {
+    closeSync(descriptor)
+    rmSync(temporaryPath, { force: true })
+    throw error
+  }
+  closeSync(descriptor)
+  const writtenBytes = statSync(temporaryPath).size
+  if (writtenBytes !== totalSize) {
+    rmSync(temporaryPath, { force: true })
+    throw new Error(`ZIP byte count mismatch after streaming write: ${writtenBytes} != ${totalSize}.`)
+  }
+  rmSync(outputPath, { force: true })
+  renameSync(temporaryPath, outputPath)
+  return writtenBytes
 }
 
 const toDosDateTime = (date: Date) => {
@@ -1582,27 +1982,10 @@ const toDosDateTime = (date: Date) => {
   }
 }
 
-const CRC_TABLE = new Uint32Array(256)
-for (let index = 0; index < 256; index += 1) {
-  let crc = index
-  for (let bit = 0; bit < 8; bit += 1) {
-    crc = (crc & 1) ? (0xedb88320 ^ (crc >>> 1)) : (crc >>> 1)
-  }
-  CRC_TABLE[index] = crc >>> 0
-}
-
-const crc32 = (content: Buffer) => {
-  let crc = 0xffffffff
-  for (const byte of content) {
-    crc = CRC_TABLE[(crc ^ byte) & 0xff] ^ (crc >>> 8)
-  }
-  return (crc ^ 0xffffffff) >>> 0
-}
-
 const addEntry = (entriesByPath: Map<string, PackageEntry>, entry: PackageEntry) => {
   const existing = entriesByPath.get(entry.packagePath)
   if (existing) {
-    if (!existing.content.equals(entry.content)) {
+    if (existing.bytes !== entry.bytes || existing.sha256 !== entry.sha256) {
       throw new Error(`Package path collision with different content: ${entry.packagePath}`)
     }
     return
@@ -1618,9 +2001,13 @@ const addRepoFile = (
   subjectSlug: string,
 ) => {
   const sourcePath = repoRelative(absolutePath)
+  const content = packageContentForRepoSource(absolutePath, category)
   addEntry(entriesByPath, {
     packagePath: `${packageRoot}/${packagePathForRepoSource(sourcePath, category, subjectSlug)}`,
-    content: packageContentForRepoSource(absolutePath, category),
+    content,
+    bytes: content.length,
+    sha256: sha256(content),
+    crc32: crc32(content) >>> 0,
     category,
     licenseCategory: licenseCategoryForRepoSource(sourcePath, category),
   })
@@ -1632,18 +2019,24 @@ const generatedEntry = (
   value: string | JsonValue,
   category: string,
   licenseCategory = 'generated-package-metadata',
-): PackageEntry => ({
-  packagePath: `${packageRoot}/${packagePath}`,
-  content: Buffer.from(typeof value === 'string' ? value : stableJson(value), 'utf8'),
-  category,
-  licenseCategory,
-})
+): PackageEntry => {
+  const content = Buffer.from(typeof value === 'string' ? value : stableJson(value), 'utf8')
+  return {
+    packagePath: `${packageRoot}/${packagePath}`,
+    content,
+    bytes: content.length,
+    sha256: sha256(content),
+    crc32: crc32(content) >>> 0,
+    category,
+    licenseCategory,
+  }
+}
 
 const fileRecords = (entries: PackageEntry[]) => entries
   .map((entry) => ({
     path: entry.packagePath,
-    sha256: sha256(entry.content),
-    bytes: entry.content.length,
+    sha256: entry.sha256,
+    bytes: entry.bytes,
     category: entry.category,
     licenseCategory: entry.licenseCategory,
   }))
@@ -1659,6 +2052,7 @@ const buildReadme = (params: {
   createdAt: string
   mappingStates: string[]
   cardDeckCount: number
+  goalVisualizationAssetCount: number
   memoryCardReviewAuditCount: number
   sourceGoalReferenceCount: number
 }) => `# ${params.packageId}
@@ -1678,6 +2072,7 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - Canonical landscape: \`data/canonical/\`
 - Covered mapping jurisdictions: ${params.mappingStates.join(', ')}
 - Included card decks: ${params.cardDeckCount}
+- Included goal visualizations: ${params.goalVisualizationAssetCount}
 - Memory-card review audits: ${params.memoryCardReviewAuditCount}
 - Source-goal references: ${params.sourceGoalReferenceCount}
 
@@ -1687,6 +2082,8 @@ This package is a reproducible release artifact for the SkillPilot Gymnasium kno
 - \`data/views/\` contains learner-facing composition views.
 - \`data/mappings/\` contains state-to-canonical mapping and review files.
 - \`data/cards/\` contains card decks referenced by SRS/memorization goals.
+- \`data/resources/goal-visualizations.json\` indexes active canonical goal-visualization links and their packaged binary assets.
+- \`assets/goal-visualizations/\` contains exactly the image assets referenced by that index.
 - \`data/dependencies/external-goal-references.json\` declares cross-subject goal references outside this subject scope.
 - \`data/sources/source-index.json\` lists the referenced official source documents and URLs.
 - \`data/sources/source-goal-references.json\` resolves review mapping source IDs to official source-goal text, source anchors, source locators, and document URLs.
@@ -1755,6 +2152,10 @@ SkillPilot curriculum data package ${params.packageId}, generated from the Skill
 Files marked \`official-source-provenance-only\` are not relicensed by SkillPilot. They refer to official curriculum sources and may be subject to statutory rules, source-specific terms, or quotation limits.
 
 The \`${params.publicationProfile}\` package includes source-reference indexes that resolve mapping IDs to official source documents, source-goal text anchors, and source locators. Official curriculum source material remains attributable to its original publishers and is not relicensed by SkillPilot.
+
+## AI-generated, SkillPilot-curated goal visualizations
+
+Files marked \`goal-visualization-ai-generated-curated\` are AI-generated image assets selected and curated by SkillPilot. This category records provenance and curation status; it is not an SPDX license identifier and does not assert that the images are licensed under CC BY 4.0. The per-asset \`license\` note is preserved in \`data/resources/goal-visualizations.json\`. Downstream distributors must review that note and the applicable provider terms before redistribution.
 `
 
 const buildNotice = (params: {
@@ -1763,6 +2164,7 @@ const buildNotice = (params: {
   mappingStates: string[]
   git: GitInfo
   cardDeckCount: number
+  goalVisualizationAssetCount: number
   memoryCardReviewAuditCount: number
 }) => `# Notice
 
@@ -1777,6 +2179,8 @@ Represented mapping jurisdictions:
 - ${params.mappingStates.join(', ')}
 
 Included card decks: ${params.cardDeckCount}
+
+Included AI-generated, SkillPilot-curated goal visualizations: ${params.goalVisualizationAssetCount}. Their per-asset license notes are preserved in \`data/resources/goal-visualizations.json\`; the manifest category does not itself grant a CC BY license.
 
 Included memory-card review audits: ${params.memoryCardReviewAuditCount}
 
@@ -1843,6 +2247,8 @@ For each review mapping source ID, the package contains the matching source-goal
 | Unresolved review mapping source references | ${counts.unresolvedReviewMappingSourceGoalReferences ?? 0} |
 | Source-goal URL issues | ${counts.sourceGoalReferenceUrlIssues ?? 0} |
 | Source-goal text issues | ${counts.sourceGoalReferenceTextIssues ?? 0} |
+| Goal visualizations | ${counts.goalVisualizationAssets ?? 0} |
+| Goal-visualization bytes | ${counts.goalVisualizationBytes ?? 0} |
 | Memory-card review audits | ${counts.memoryCardReviewAudits ?? 0} |
 
 ## Export-Time Checks
@@ -1909,6 +2315,8 @@ const buildReleaseReport = (params: {
 | Unresolved review mapping source references | ${params.validationReport.counts.unresolvedReviewMappingSourceGoalReferences ?? 0} |
 | Source URL issues | ${params.validationReport.counts.sourceOriginalUrlIssues ?? 0} |
 | Card decks | ${params.validationReport.counts.cardDeckFiles ?? 0} |
+| Goal visualizations | ${params.validationReport.counts.goalVisualizationAssets ?? 0} |
+| Goal-visualization bytes | ${params.validationReport.counts.goalVisualizationBytes ?? 0} |
 | Memory-card review audits | ${params.validationReport.counts.memoryCardReviewAudits ?? 0} |
 | Max archive path length | ${params.validationReport.counts.maxPackagePathLength ?? 0} |
 
@@ -1961,6 +2369,7 @@ const main = () => {
   const sourceExtractionJsonFiles = sourceExtractionFiles
     .filter((file) => basename(file).endsWith('.source-extraction.json'))
   const cardDeckFiles = selectCardDeckFiles(canonicalData, errors)
+  const goalVisualizationAssets = selectGoalVisualizationAssets(canonicalData, options.subjectSlug, errors)
   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
   const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
@@ -2006,6 +2415,28 @@ const main = () => {
   provenanceFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'provenance', options.subjectSlug))
   cardDeckFiles.forEach((file) => addRepoFile(entriesByPath, archiveRoot, file, 'card-deck', options.subjectSlug))
   memoryCardReviewAudits.forEach((audit) => addMemoryCardReviewAuditEntries(entriesByPath, archiveRoot, audit, options.subjectSlug))
+  goalVisualizationAssets.forEach(({ record, sourcePath, crc32: assetCrc32 }) => {
+    addEntry(entriesByPath, {
+      packagePath: `${archiveRoot}/${record.packagePath}`,
+      sourcePath,
+      bytes: record.bytes,
+      sha256: record.sha256,
+      crc32: assetCrc32,
+      category: 'goal-visualization',
+      licenseCategory: GOAL_VISUALIZATION_LICENSE_CATEGORY,
+    })
+  })
+
+  addEntry(entriesByPath, generatedEntry(
+    archiveRoot,
+    GOAL_VISUALIZATION_INDEX_PATH,
+    {
+      schemaVersion: 1,
+      assets: goalVisualizationAssets.map(({ record }) => record),
+    },
+    'goal-visualization-index',
+    'skillpilot-data-cc-by-4.0',
+  ))
 
   addEntry(entriesByPath, generatedEntry(
     archiveRoot,
@@ -2060,9 +2491,13 @@ const main = () => {
 
   const runtimeSchemaPath = resolveRepoPath('docs/landscape-runtime.schema.json')
   if (existsSync(runtimeSchemaPath)) {
+    const runtimeSchemaContent = readFileSync(runtimeSchemaPath)
     addEntry(entriesByPath, {
       packagePath: `${archiveRoot}/schemas/landscape-runtime.schema.json`,
-      content: readFileSync(runtimeSchemaPath),
+      content: runtimeSchemaContent,
+      bytes: runtimeSchemaContent.length,
+      sha256: sha256(runtimeSchemaContent),
+      crc32: crc32(runtimeSchemaContent) >>> 0,
       category: 'schema',
       licenseCategory: 'skillpilot-software-apache-2.0',
     })
@@ -2076,6 +2511,7 @@ const main = () => {
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/source-extraction.schema.json', SOURCE_EXTRACTION_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/source-goal-references.schema.json', SOURCE_GOAL_REFERENCES_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/flashcard-deck.schema.json', FLASHCARD_DECK_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
+  addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/goal-visualization-index.schema.json', GOAL_VISUALIZATION_INDEX_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
 
   const goals = Array.isArray(canonicalData.goals) ? canonicalData.goals : []
   const longestPackagePath = [...entriesByPath.keys()]
@@ -2093,6 +2529,9 @@ const main = () => {
     counts: {
       canonicalLandscapes: 1,
       canonicalGoals: goals.length,
+      goalVisualizationLinks: goalVisualizationAssets.length,
+      goalVisualizationAssets: goalVisualizationAssets.length,
+      goalVisualizationBytes: goalVisualizationAssets.reduce((sum, asset) => sum + asset.record.bytes, 0),
       cardDeckFiles: cardDeckFiles.length,
       memoryCardReviewAudits: memoryCardReviewAudits.length,
       memoryCardReviewAuditFiles: memoryCardReviewAudits.length * 4,
@@ -2176,6 +2615,18 @@ const main = () => {
         details: `${cardDeckFiles.length} card deck file(s)`,
       },
       {
+        id: 'goal-visualization-assets-packaged',
+        passed: goalVisualizationAssets.every(({ record }) => (
+          entriesByPath.has(`${archiveRoot}/${record.packagePath}`)
+        )),
+        details: `${goalVisualizationAssets.length} active canonical visualization link(s) and package asset(s)`,
+      },
+      {
+        id: 'goal-visualization-index-present',
+        passed: entriesByPath.has(`${archiveRoot}/${GOAL_VISUALIZATION_INDEX_PATH}`),
+        details: `${GOAL_VISUALIZATION_INDEX_PATH} with ${goalVisualizationAssets.length} asset record(s)`,
+      },
+      {
         id: 'memory-card-review-audits-present',
         passed: memoryCardReviewAudits.every((audit) => {
           const paths = Object.values(memoryCardReviewPackagePaths(audit))
@@ -2223,6 +2674,7 @@ const main = () => {
     createdAt,
     mappingStates,
     cardDeckCount: cardDeckFiles.length,
+    goalVisualizationAssetCount: goalVisualizationAssets.length,
     memoryCardReviewAuditCount: memoryCardReviewAudits.length,
     sourceGoalReferenceCount: sourceGoalReferences.sourceGoalReferenceCount,
   }), 'package-documentation'))
@@ -2236,6 +2688,7 @@ const main = () => {
     mappingStates,
     git,
     cardDeckCount: cardDeckFiles.length,
+    goalVisualizationAssetCount: goalVisualizationAssets.length,
     memoryCardReviewAuditCount: memoryCardReviewAudits.length,
   }), 'package-documentation'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'LEGAL.md', buildLegal(options.publicationProfile), 'package-documentation'))
@@ -2261,8 +2714,9 @@ const main = () => {
     licensePolicy: {
       defaultSoftwareLicense: 'Apache-2.0',
       defaultSkillpilotDataLicense: 'CC-BY-4.0',
+      goalVisualizationLicenseCategory: GOAL_VISUALIZATION_LICENSE_CATEGORY,
       fileLicenseField: 'licenseCategory',
-      note: 'Official curriculum source material is not relicensed by SkillPilot.',
+      note: 'Official curriculum source material is not relicensed by SkillPilot. AI-generated, SkillPilot-curated goal visualizations retain their per-asset license note and are not asserted as CC BY by the manifest category.',
     },
     sourceRepository: {
       commit: git.commit,
@@ -2280,6 +2734,8 @@ const main = () => {
     sourceSelection: {
       canonicalLandscapePackagePath: `${archiveRoot}/data/canonical/${options.subjectSlug}.landscape.json`,
       cardDeckCount: cardDeckFiles.length,
+      goalVisualizationAssetCount: goalVisualizationAssets.length,
+      goalVisualizationIndexPackagePath: `${archiveRoot}/${GOAL_VISUALIZATION_INDEX_PATH}`,
       memoryCardReviewAuditCount: memoryCardReviewAudits.length,
       memoryCardReviewAuditPackagePaths: memoryCardReviewAudits.map((audit) => {
         const paths = memoryCardReviewPackagePaths(audit)
@@ -2316,9 +2772,8 @@ const main = () => {
 
   mkdirSync(options.outputDir, { recursive: true })
   const zipPath = resolve(options.outputDir, `${archiveRoot}.zip`)
-  const zipContent = createZip([...entriesByPath.values()], packageDate)
-  writeFileSync(zipPath, zipContent)
-  const zipSha256 = sha256(zipContent)
+  const zipBytes = createZip([...entriesByPath.values()], packageDate, zipPath)
+  const zipSha256 = sha256File(zipPath)
   const releaseReportPath = resolve(options.outputDir, `${archiveRoot}-release-report.md`)
   writeFileSync(releaseReportPath, buildReleaseReport({
     packageId,
@@ -2330,7 +2785,7 @@ const main = () => {
     git,
     zipFileName: basename(zipPath),
     zipSha256,
-    zipBytes: zipContent.length,
+    zipBytes,
     packageFileCount: entriesByPath.size,
     validationReport,
   }))
@@ -2339,7 +2794,7 @@ const main = () => {
     zipPath: repoRelative(zipPath),
     releaseReportPath: repoRelative(releaseReportPath),
     sha256: zipSha256,
-    bytes: zipContent.length,
+    bytes: zipBytes,
     packageId,
     archiveRoot,
     version,

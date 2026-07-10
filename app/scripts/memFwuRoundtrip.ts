@@ -36,9 +36,28 @@ type SlimRdfFile = {
 
 type ZipEntryRecord = {
   path: string
-  content: Buffer
-  text: string
+  content: Buffer | null
+  text: string | null
+  sha256: string | null
+}
+
+type GoalVisualizationAsset = {
+  goalId: string
+  order: number
+  packagePath: string
+  publicUrl: string
+  mediaType: 'image/jpeg' | 'image/png'
+  bytes: number
   sha256: string
+  skillpilotId: string
+  role: string
+  title: string
+  provider: string
+  description: string
+  altText: string
+  lang: string
+  license: string
+  reviewStatus: string
 }
 
 type SemanticCounts = {
@@ -60,6 +79,7 @@ type SemanticCounts = {
   cardDecks: number
   cards: number
   externalGoalReferences: number
+  goalVisualizations: number
 }
 
 type RoundtripReport = {
@@ -72,6 +92,7 @@ type RoundtripReport = {
   fwuOntology: {
     repository: string
     localPath: string
+    corePath: string
     commit: string | null
     ontologyIri: string
   }
@@ -107,7 +128,7 @@ type GoalFwuKind =
 
 type GoalFwuClassification = {
   kind: GoalFwuKind
-  profileClass: string
+  profileClass: string | null
   fwuClasses: string[]
   safeCurricularPartWholeSource: boolean
   safeCurricularPartWholeTarget: boolean
@@ -128,23 +149,40 @@ const XSD = 'http://www.w3.org/2001/XMLSchema#'
 const DCTERMS = 'http://purl.org/dc/terms/'
 const SKOS = 'http://www.w3.org/2004/02/skos/core#'
 const BFO = 'http://purl.obolibrary.org/obo/'
+const IAO = 'http://purl.obolibrary.org/obo/'
+const SCHEMA = 'https://schema.org/'
 const LP = 'https://w3id.org/lehrplan/ontology/'
+const LP_CORE_ONTOLOGY = `${LP}lp/components/lehrplan-core.owl`
 const SP = 'https://skillpilot.de/ns/roundtrip#'
 const ID = 'https://skillpilot.de/id/mem-fwu-roundtrip/'
 
-const LP_CURRICULUM = `${LP}LP_0000438`
-const LP_COMPETENCE = `${LP}LP_0000013`
 const LP_CURRICULAR_ELEMENT = `${LP}LP_0000261`
 const LP_COMPETENCY_SPECIFICATION = `${LP}LP_0000263`
 const LP_CURRICULAR_AREA = `${LP}LP_0000349`
 const LP_REFERENCE = `${LP}LP_0030065`
+const LP_DIDACTIC_PREREQUISITE = `${LP}LP_0000554`
 const LP_SCHOOL_SUBJECT = `${LP}LP_0000001`
 const LP_SCHOOL_TYPE = `${LP}LP_0000111`
 const LP_HAS_SCHOOL_SUBJECT = `${LP}LP_0000537`
 const LP_FOR_TYPE_OF_SCHOOL = `${LP}LP_0000812`
 const LP_HAS_REFERENCE = `${LP}LP_0030071`
+const LP_REFERS_TO = `${LP}LP_0030072`
+const LP_DESCRIBED_BY = `${LP}LP_0000024`
+const LP_HAS_FUNCTION = `${LP}LP_0000483`
+const LP_COMPETENCY_DESCRIPTION_FUNCTION = `${LP}LP_0000479`
+const LP_AREA_FUNCTION = `${LP}LP_0000497`
+const LP_REFERENCE_DESCRIPTION_FUNCTION = `${LP}LP_0002158`
+const LP_HAS_DESCRIPTION = `${LP}LP_0030051`
+const LP_HAS_TITLE = `${LP}LP_0030056`
+const LP_HAS_NUMBER = `${LP}LP_0030057`
+const LP_VALUE = `${LP}LP_0000344`
+const LP_TITLE = `${LP}LP_0000346`
+const LP_DESCRIPTION = `${LP}LP_0030003`
+const LP_IDENTIFIER = `${LP}LP_0000347`
 const BFO_HAS_PART = `${BFO}BFO_0000051`
+const IAO_INFORMATION_CONTENT_ENTITY = `${IAO}IAO_0000030`
 const KIM_MATHEMATICS = 'http://w3id.org/kim/schulfaecher/s1017'
+const KIM_GYMNASIUM = 'https://w3id.org/kim/schularten/s08'
 
 const emptyCounts = (): SemanticCounts => ({
   files: 0,
@@ -165,6 +203,7 @@ const emptyCounts = (): SemanticCounts => ({
   cardDecks: 0,
   cards: 0,
   externalGoalReferences: 0,
+  goalVisualizations: 0,
 })
 
 const usage = () => `Usage:
@@ -312,6 +351,12 @@ const parseArgs = (argv: string[]): CliOptions => {
 
 const sha256 = (content: Buffer | string) => createHash('sha256').update(content).digest('hex')
 
+const sha256File = (filePath: string) => execFileSync('sha256sum', [filePath], {
+  encoding: 'utf8',
+  stdio: ['ignore', 'pipe', 'pipe'],
+  maxBuffer: 1024 * 1024,
+}).trim().split(/\s+/u)[0]
+
 const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPath], {
   encoding: 'utf8',
   maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
@@ -415,7 +460,7 @@ const classifyGoalForFwu = (data: Record<string, JsonValue>, contains: string[])
   if (isCluster) {
     return {
       kind: 'curricular-cluster',
-      profileClass: `${SP}CurricularGoalCluster`,
+      profileClass: null,
       fwuClasses: [LP_CURRICULAR_ELEMENT, LP_CURRICULAR_AREA],
       safeCurricularPartWholeSource: true,
       safeCurricularPartWholeTarget: true,
@@ -424,7 +469,7 @@ const classifyGoalForFwu = (data: Record<string, JsonValue>, contains: string[])
 
   return {
     kind: 'curricular-atomic',
-    profileClass: `${SP}AtomicCurricularGoal`,
+    profileClass: null,
     fwuClasses: [LP_CURRICULAR_ELEMENT, LP_COMPETENCY_SPECIFICATION],
     safeCurricularPartWholeSource: false,
     safeCurricularPartWholeTarget: true,
@@ -492,6 +537,22 @@ const lineIri = (archiveRoot: string, entryPath: string, index: number) => `${fi
 
 const goalIri = (archiveRoot: string, goalId: string) => `${packageIri(archiveRoot)}/goal/${idSegment(goalId)}`
 
+const goalTextIri = (goal: string, kind: 'title' | 'description' | 'number', language?: string) => (
+  `${goal}/${kind}${language ? `/${idSegment(language)}` : ''}`
+)
+
+const didacticPrerequisiteIri = (archiveRoot: string, sourceGoalId: string, targetGoalId: string) => (
+  `${goalIri(archiveRoot, sourceGoalId)}/didactic-prerequisite/${idSegment(targetGoalId)}`
+)
+
+const goalVisualizationReferenceIri = (archiveRoot: string, goalId: string, order: number) => (
+  `${goalIri(archiveRoot, goalId)}/goal-visualization/${order}`
+)
+
+const packageAssetIri = (archiveRoot: string, packagePath: string) => (
+  `${packageIri(archiveRoot)}/asset/${idSegment(packagePath)}`
+)
+
 const sourceGoalIri = (archiveRoot: string, sourceGoalId: string) => `${packageIri(archiveRoot)}/source-goal/${idSegment(sourceGoalId)}`
 
 const sourceDocumentIri = (archiveRoot: string, sourceKey: string) => `${packageIri(archiveRoot)}/source-document/${idSegment(sourceKey)}`
@@ -530,15 +591,16 @@ const semanticDeckIri = (archiveRoot: string, deckId: string, language: string |
 
 const semanticCardIri = (deck: string, cardId: string) => `${deck}/card/${idSegment(cardId)}`
 
-const writeProfile = (profilePath: string, options: { includeCarrier?: boolean } = {}) => {
+const writeProfile = (
+  profilePath: string,
+  options: { includeCarrier?: boolean; coreImport?: string } = {},
+) => {
   mkdirSync(dirname(profilePath), { recursive: true })
   const carrierTerms = options.includeCarrier === false ? '' : `
-sp:PackageFile a owl:Class ; rdfs:label "ZIP package file"@en .
-sp:textLine a owl:ObjectProperty ; rdfs:label "lossless carrier text line"@en .
+sp:PackageFile a owl:Class ; rdfs:label "UTF-8 ZIP package file"@en .
+sp:textLine a owl:ObjectProperty ; rdfs:label "lossless UTF-8 carrier text line"@en .
 sp:hasFile a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:PackageFile .
 sp:lineText a owl:DatatypeProperty ; rdfs:label "line text"@en .
-sp:sha256 a owl:DatatypeProperty ; rdfs:label "SHA-256 checksum"@en .
-sp:byteLength a owl:DatatypeProperty ; rdfs:label "byte length"@en .
 sp:lineCount a owl:DatatypeProperty ; rdfs:label "line count"@en .
 sp:endsWithNewline a owl:DatatypeProperty ; rdfs:label "ends with newline"@en .
 sp:sourceIndexSummaryJson a owl:DatatypeProperty ; rdfs:label "source index summary JSON"@en .
@@ -551,29 +613,17 @@ sp:sourceIndexSummaryJson a owl:DatatypeProperty ; rdfs:label "source index summ
 @prefix dcterms: <${DCTERMS}> .
 
 <${SP}> a owl:Ontology ;
-  owl:imports <${LP}> ;
+  owl:imports <${options.coreImport ?? LP_CORE_ONTOLOGY}> ;
   dcterms:title "SkillPilot MEM/FWU Roundtrip Profile"@en ;
   dcterms:description "Minimal SkillPilot profile used to test whether a SkillPilot competence landscape can be carried through a MEM-compatible RDF/OWL representation based on the FWU Lehrplan-Ontologie and reconstructed afterwards."@en .
 
-sp:SkillPilotPackage a owl:Class ; rdfs:subClassOf lp:LP_0000438 ; rdfs:label "SkillPilot release package"@en .
-sp:LearningLandscape a owl:Class ; rdfs:subClassOf lp:LP_0000438 ; rdfs:label "SkillPilot learning landscape"@en .
+sp:SkillPilotPackage a owl:Class ; rdfs:label "SkillPilot release package"@en .
+sp:LearningLandscape a owl:Class ; rdfs:label "SkillPilot learning landscape"@en .
 sp:LearningGoal a owl:Class ;
   rdfs:label "SkillPilot learning goal"@en ;
   rdfs:comment "A SkillPilot graph node used for learning navigation. This application-level notion is not automatically a FWU competence or competency specification."@en .
 sp:AtomicGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal ; rdfs:label "SkillPilot atomic graph node"@en .
 sp:ClusterGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal ; rdfs:label "SkillPilot cluster graph node"@en .
-sp:CurricularLearningGoal a owl:Class ;
-  rdfs:subClassOf sp:LearningGoal, lp:LP_0000261 ;
-  rdfs:label "SkillPilot curricular learning goal"@en ;
-  rdfs:comment "A SkillPilot goal that can be interpreted as a curricular element. Runtime-only nodes such as memorization cards, practice nodes, assessment nodes, or view/program structure nodes are not instances of this class by default."@en .
-sp:AtomicCurricularGoal a owl:Class ;
-  rdfs:subClassOf sp:AtomicGoal, sp:CurricularLearningGoal, lp:LP_0000263 ;
-  rdfs:label "SkillPilot atomic curricular learning goal"@en ;
-  rdfs:comment "A SkillPilot atomic goal that corresponds to a FWU CE-Kompetenzspezifikation: a curriculum-level description of a competence, not the learner's competence itself."@en .
-sp:CurricularGoalCluster a owl:Class ;
-  rdfs:subClassOf sp:ClusterGoal, sp:CurricularLearningGoal, lp:LP_0000349 ;
-  rdfs:label "SkillPilot curricular goal cluster"@en ;
-  rdfs:comment "A SkillPilot cluster that groups competency specifications or subordinate areas under a common curricular focus."@en .
 sp:ProgramStructureGoal a owl:Class ;
   rdfs:subClassOf sp:ClusterGoal ;
   rdfs:label "SkillPilot program structure node"@en ;
@@ -587,7 +637,7 @@ sp:MemorizationGoal a owl:Class ;
 sp:OrientationGoal a owl:Class ;
   rdfs:subClassOf sp:AtomicGoal ;
   rdfs:label "SkillPilot orientation goal"@en .
-sp:CompetencyCatalogEntry a owl:Class ; rdfs:subClassOf lp:LP_0000013 ; rdfs:label "Competency catalog entry"@en .
+sp:CompetencyCatalogEntry a owl:Class ; rdfs:label "Competency catalog entry"@en .
 sp:ProgramUnit a owl:Class ; rdfs:label "Curricular program unit"@en .
 sp:GoalPlacement a owl:Class ; rdfs:label "Goal placement in a program unit"@en .
 sp:CompositionView a owl:Class ; rdfs:label "Learner-facing composition view"@en .
@@ -596,8 +646,12 @@ sp:MappingFile a owl:Class ; rdfs:label "Mapping file metadata"@en .
 sp:MappingRecord a owl:Class ; rdfs:label "Canonical curriculum mapping record"@en .
 sp:ReviewDecision a owl:Class ; rdfs:label "Reviewed source-to-canonical mapping decision"@en .
 sp:SourceCollection a owl:Class ; rdfs:label "Curriculum source extraction collection"@en .
-sp:SourceDocument a owl:Class ; rdfs:subClassOf lp:LP_0030065 ; rdfs:label "Official curriculum source document"@en .
+sp:SourceDocument a owl:Class ; rdfs:label "Official curriculum source document"@en .
 sp:SourceGoalReference a owl:Class ; rdfs:subClassOf lp:LP_0030065 ; rdfs:label "Source goal reference with official text span"@en .
+sp:GoalVisualizationReference a owl:Class ;
+  rdfs:subClassOf lp:LP_0030065 ;
+  rdfs:label "Goal visualization reference"@en ;
+  rdfs:comment "Application-specific CE-Verweis specialization linking a learning goal to an image sidecar in the release package."@en .
 sp:CardDeck a owl:Class ; rdfs:label "Memorization card deck"@en .
 sp:Card a owl:Class ; rdfs:label "Memorization card"@en .
 sp:ExternalGoalReference a owl:Class ; rdfs:label "External goal reference"@en .
@@ -614,17 +668,7 @@ sp:placedInProgramUnit a owl:ObjectProperty ; rdfs:domain sp:GoalPlacement ; rdf
 sp:containsGoal a owl:ObjectProperty ;
   rdfs:domain sp:LearningGoal ;
   rdfs:range sp:LearningGoal ;
-  rdfs:comment "SkillPilot graph containment. This preserves the application graph and is not automatically BFO parthood; use sp:hasCurricularPart only where strict curricular part-whole semantics is intended."@en .
-sp:hasCurricularPart a owl:ObjectProperty ;
-  rdfs:subPropertyOf bfo:BFO_0000051 ;
-  rdfs:domain sp:CurricularLearningGoal ;
-  rdfs:range sp:CurricularLearningGoal ;
-  rdfs:comment "Strict curricular part-whole relation for learning-goal composition. Do not use for UI placement, ordering, loose topic association, state visibility, or view mappings."@en .
-sp:didacticRequires a owl:ObjectProperty ;
-  rdfs:domain sp:LearningGoal ;
-  rdfs:range sp:LearningGoal ;
-  rdfs:label "didactically requires"@en ;
-  rdfs:comment "A didactic prerequisite relation for learning-path navigation. This is not a generic curriculum reference."@en .
+  rdfs:comment "Direct SkillPilot containment edge retained as the lossless adjacency anchor; strict curricular edges additionally use transitive BFO has-part semantics."@en .
 sp:competencyRef a owl:ObjectProperty ; rdfs:domain sp:LearningGoal ; rdfs:range sp:CompetencyCatalogEntry .
 sp:hasMappingRecord a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:MappingRecord .
 sp:hasMappingFile a owl:ObjectProperty ; rdfs:domain sp:SkillPilotPackage ; rdfs:range sp:MappingFile .
@@ -648,6 +692,9 @@ sp:archiveRoot a owl:DatatypeProperty ; rdfs:label "archive root"@en .
 sp:sourceZipName a owl:DatatypeProperty ; rdfs:label "source ZIP file name"@en .
 sp:sourceZipSha256 a owl:DatatypeProperty ; rdfs:label "source ZIP SHA-256 checksum"@en .
 sp:fwuOntologyCommit a owl:DatatypeProperty ; rdfs:label "FWU ontology commit"@en .
+sp:fwuOntologyCorePath a owl:DatatypeProperty ; rdfs:label "local FWU core ontology path"@en .
+sp:sha256 a owl:DatatypeProperty ; rdfs:label "SHA-256 checksum"@en .
+sp:byteLength a owl:DatatypeProperty ; rdfs:label "byte length"@en .
 sp:shortKey a owl:DatatypeProperty ; rdfs:label "short key"@en .
 sp:frameworkId a owl:DatatypeProperty ; rdfs:label "framework id"@en .
 sp:locale a owl:DatatypeProperty ; rdfs:label "locale"@en .
@@ -750,28 +797,65 @@ const ontologyCommit = (ontologyDir: string) => {
   }).trim()
 }
 
+const ontologyCorePath = (ontologyDir: string) => resolve(ontologyDir, 'src/ontology/components/lehrplan-core.owl')
+
+const requireOntologyCore = (ontologyDir: string) => {
+  const corePath = ontologyCorePath(ontologyDir)
+  if (!existsSync(corePath)) {
+    throw new Error(`FWU core ontology is missing: ${repoRelative(corePath)}`)
+  }
+  const content = readFileSync(corePath, 'utf8')
+  const requiredTerms = ['LP_0000554', 'LP_0030071', 'LP_0030072']
+  const missingTerms = requiredTerms.filter((term) => !content.includes(`${LP}${term}`))
+  if (missingTerms.length > 0) {
+    throw new Error(`FWU core ontology does not contain required terms: ${missingTerms.join(', ')}`)
+  }
+  return corePath
+}
+
+const binaryEntryPattern = /\.(?:avif|bmp|gif|ico|jpe?g|pdf|png|webp|zip)$/iu
+
+const decodeZipEntryText = (entryPath: string, content: Buffer) => {
+  if (binaryEntryPattern.test(entryPath) || content.includes(0)) {
+    return null
+  }
+  const text = content.toString('utf8')
+  return text.includes('\uFFFD') ? null : text
+}
+
 const readEntries = (zipPath: string) => {
   const entryPaths = listZipEntries(zipPath)
   const archiveRoot = archiveRootFrom(entryPaths)
-  if (!archiveRoot) {
+  if (!archiveRoot || !isSafeArchiveRootSegment(archiveRoot)) {
     throw new Error('ZIP must contain exactly one archive root.')
   }
 
   const entries = entryPaths.map((entryPath): ZipEntryRecord => {
-    const content = readZipEntry(zipPath, entryPath)
-    const text = content.toString('utf8')
-    if (text.includes('\uFFFD')) {
-      throw new Error(`ZIP entry is not valid UTF-8 text and cannot be represented by the line carrier: ${entryPath}`)
+    if (binaryEntryPattern.test(entryPath)) {
+      return {
+        path: entryPath,
+        content: null,
+        text: null,
+        sha256: null,
+      }
     }
+    const content = readZipEntry(zipPath, entryPath)
     return {
       path: entryPath,
       content,
-      text,
+      text: decodeZipEntryText(entryPath, content),
       sha256: sha256(content),
     }
   })
 
   return { archiveRoot, entries }
+}
+
+const entryText = (entry: ZipEntryRecord, context: string) => {
+  if (entry.text === null) {
+    throw new Error(`Expected UTF-8 text for ${context}: ${entry.path}`)
+  }
+  return entry.text
 }
 
 const splitCarrierLines = (text: string) => {
@@ -789,6 +873,9 @@ const writeCarrierTriples = (
 ) => {
   const root = packageIri(archiveRoot)
   entries.forEach((entry) => {
+    if (entry.text === null || entry.content === null || entry.sha256 === null) {
+      return
+    }
     const file = fileIri(archiveRoot, entry.path)
     const { lines, endsWithNewline } = splitCarrierLines(entry.text)
     counts.files += 1
@@ -847,6 +934,41 @@ const writeJsonField = (write: (line: string) => void, subject: string, predicat
   write(tripleLine(subject, predicate, literal(json, `${SP}json`)))
 }
 
+const writeCoreTextEntity = (
+  write: (line: string) => void,
+  subject: string,
+  property: string,
+  entity: string,
+  entityClass: string,
+  value: JsonValue | undefined,
+  language?: string,
+) => {
+  const text = stringValue(value)
+  if (!text) {
+    return
+  }
+  write(tripleLine(subject, property, iri(entity)))
+  if (property === LP_HAS_TITLE) {
+    // The current core restriction for CE-Kompetenzspezifikation uses LP_0000024,
+    // while the documented data pattern uses LP_0030056. Materialize both.
+    write(tripleLine(subject, LP_DESCRIBED_BY, iri(entity)))
+  }
+  write(tripleLine(entity, `${RDF}type`, iri(entityClass)))
+  write(tripleLine(entity, LP_VALUE, language ? langLiteral(text, language) : literal(text)))
+}
+
+const writeCurricularTextSemantics = (
+  write: (line: string) => void,
+  resource: string,
+  data: Record<string, JsonValue>,
+) => {
+  writeCoreTextEntity(write, resource, LP_HAS_TITLE, goalTextIri(resource, 'title', 'de'), LP_TITLE, data.title, 'de')
+  writeCoreTextEntity(write, resource, LP_HAS_TITLE, goalTextIri(resource, 'title', 'en'), LP_TITLE, data.titleEn, 'en')
+  writeCoreTextEntity(write, resource, LP_HAS_DESCRIPTION, goalTextIri(resource, 'description', 'de'), LP_DESCRIPTION, data.description, 'de')
+  writeCoreTextEntity(write, resource, LP_HAS_DESCRIPTION, goalTextIri(resource, 'description', 'en'), LP_DESCRIPTION, data.descriptionEn, 'en')
+  writeCoreTextEntity(write, resource, LP_HAS_NUMBER, goalTextIri(resource, 'number'), LP_IDENTIFIER, data.shortKey)
+}
+
 const findEntry = (entries: ZipEntryRecord[], archiveRoot: string, relativePath: string) => {
   const entryPath = `${archiveRoot}/${relativePath}`
   const entry = entries.find((candidate) => candidate.path === entryPath)
@@ -855,6 +977,219 @@ const findEntry = (entries: ZipEntryRecord[], archiveRoot: string, relativePath:
   }
   return entry
 }
+
+const requiredManifestString = (data: Record<string, JsonValue>, key: string, context: string) => {
+  const value = stringValue(data[key])
+  if (!value) {
+    throw new Error(`Missing ${key} in ${context}.`)
+  }
+  return value
+}
+
+const requiredManifestInteger = (data: Record<string, JsonValue>, key: string, context: string) => {
+  const value = numberValue(data[key])
+  if (value === null || !Number.isSafeInteger(value) || value < 0) {
+    throw new Error(`Expected non-negative integer ${key} in ${context}.`)
+  }
+  return value
+}
+
+const isSafePackagePath = (value: string) => (
+  !value.startsWith('/')
+  && !value.includes('\\')
+  && value.split('/').every((segment) => segment !== '' && segment !== '.' && segment !== '..')
+)
+
+const isSafeArchiveRootSegment = (value: string) => (
+  value !== ''
+  && value !== '.'
+  && value !== '..'
+  && !value.includes('/')
+  && !value.includes('\\')
+)
+
+const readGoalVisualizationAssets = (archiveRoot: string, entries: ZipEntryRecord[]): GoalVisualizationAsset[] => {
+  const manifestPath = `${archiveRoot}/data/resources/goal-visualizations.json`
+  const manifestEntry = entries.find((entry) => entry.path === manifestPath)
+  if (!manifestEntry) {
+    // Backwards-compatible regression support for publication packages created
+    // before visualization sidecars became part of the contract.
+    return []
+  }
+  const manifest = jsonObject(
+    JSON.parse(entryText(manifestEntry, 'goal visualization manifest')) as JsonValue,
+    'goal visualization manifest',
+  )
+  if (numberValue(manifest.schemaVersion) !== 1) {
+    throw new Error('Goal visualization manifest must use schemaVersion 1.')
+  }
+  if (!Array.isArray(manifest.assets)) {
+    throw new Error('Goal visualization manifest must contain an assets array.')
+  }
+
+  const seenPaths = new Set<string>()
+  const seenReferences = new Set<string>()
+  const assets = manifest.assets.map((value, index): GoalVisualizationAsset => {
+    const context = `goal visualization asset ${index}`
+    const data = jsonObject(value, context)
+    const packagePath = requiredManifestString(data, 'packagePath', context)
+    const publicUrl = requiredManifestString(data, 'publicUrl', context)
+    const mediaType = requiredManifestString(data, 'mediaType', context)
+    const bytes = requiredManifestInteger(data, 'bytes', context)
+    const order = requiredManifestInteger(data, 'order', context)
+    const goalId = requiredManifestString(data, 'goalId', context)
+    const digest = requiredManifestString(data, 'sha256', context).toLowerCase()
+    if (!isSafePackagePath(packagePath)) {
+      throw new Error(`Unsafe packagePath in ${context}: ${packagePath}`)
+    }
+    if (publicUrl !== `/${packagePath}`) {
+      throw new Error(`publicUrl/packagePath mismatch in ${context}: ${publicUrl}`)
+    }
+    if (mediaType !== 'image/jpeg' && mediaType !== 'image/png') {
+      throw new Error(`Unsupported mediaType in ${context}: ${mediaType}`)
+    }
+    if (!/^[a-f0-9]{64}$/u.test(digest)) {
+      throw new Error(`Invalid SHA-256 in ${context}: ${digest}`)
+    }
+    if (seenPaths.has(packagePath)) {
+      throw new Error(`Duplicate goal visualization packagePath: ${packagePath}`)
+    }
+    const referenceKey = `${goalId}\u0000${order}`
+    if (seenReferences.has(referenceKey)) {
+      throw new Error(`Duplicate goal visualization reference for ${goalId} at order ${order}.`)
+    }
+    seenPaths.add(packagePath)
+    seenReferences.add(referenceKey)
+
+    const zipPath = `${archiveRoot}/${packagePath}`
+    const assetEntry = entries.find((entry) => entry.path === zipPath)
+    if (!assetEntry) {
+      throw new Error(`Missing indexed goal visualization sidecar: ${zipPath}`)
+    }
+
+    return {
+      goalId,
+      order,
+      packagePath,
+      publicUrl,
+      mediaType,
+      bytes,
+      sha256: digest,
+      skillpilotId: requiredManifestString(data, 'skillpilotId', context),
+      role: requiredManifestString(data, 'role', context),
+      title: requiredManifestString(data, 'title', context),
+      provider: requiredManifestString(data, 'provider', context),
+      description: requiredManifestString(data, 'description', context),
+      altText: requiredManifestString(data, 'altText', context),
+      lang: requiredManifestString(data, 'lang', context),
+      license: requiredManifestString(data, 'license', context),
+      reviewStatus: requiredManifestString(data, 'reviewStatus', context),
+    }
+  })
+  const indexedPaths = new Set(assets.map((asset) => `${archiveRoot}/${asset.packagePath}`))
+  const unindexedAssets = entries
+    .filter((entry) => entry.path.startsWith(`${archiveRoot}/assets/goal-visualizations/`))
+    .filter((entry) => !entry.path.endsWith('/'))
+    .filter((entry) => !indexedPaths.has(entry.path))
+  if (unindexedAssets.length > 0) {
+    throw new Error(`Unindexed goal visualization sidecars: ${unindexedAssets.map((entry) => entry.path).join(', ')}`)
+  }
+  return assets
+}
+
+const assertNoUnsupportedBinaryEntries = (
+  archiveRoot: string,
+  entries: ZipEntryRecord[],
+  goalVisualizationAssets: GoalVisualizationAsset[],
+) => {
+  const supportedPaths = new Set(goalVisualizationAssets.map((asset) => `${archiveRoot}/${asset.packagePath}`))
+  const unsupportedPaths = entries
+    .filter((entry) => entry.text === null && !entry.path.endsWith('/'))
+    .map((entry) => entry.path)
+    .filter((entryPath) => !supportedPaths.has(entryPath))
+  if (unsupportedPaths.length > 0) {
+    throw new Error(
+      `Unsupported binary package entries would be lost by the current RDF carrier: ${unsupportedPaths.join(', ')}`,
+    )
+  }
+}
+
+const writeGoalVisualizationSemantics = (
+  write: (line: string) => void,
+  archiveRoot: string,
+  assets: GoalVisualizationAsset[],
+  counts: SemanticCounts,
+) => {
+  assets.forEach((asset) => {
+    const goal = goalIri(archiveRoot, asset.goalId)
+    const reference = goalVisualizationReferenceIri(archiveRoot, asset.goalId, asset.order)
+    const image = packageAssetIri(archiveRoot, asset.packagePath)
+    counts.goalVisualizations += 1
+
+    write(tripleLine(goal, LP_HAS_REFERENCE, iri(reference)))
+    write(tripleLine(reference, `${RDF}type`, iri(`${SP}GoalVisualizationReference`)))
+    write(tripleLine(reference, `${RDF}type`, iri(LP_REFERENCE)))
+    write(tripleLine(reference, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
+    write(tripleLine(reference, LP_REFERS_TO, iri(image)))
+    write(tripleLine(reference, `${SP}order`, literal(asset.order, `${XSD}integer`)))
+    write(tripleLine(reference, `${SP}role`, literal(asset.role)))
+
+    write(tripleLine(image, `${RDF}type`, iri(IAO_INFORMATION_CONTENT_ENTITY)))
+    write(tripleLine(image, `${RDF}type`, iri(`${SCHEMA}ImageObject`)))
+    write(tripleLine(image, `${SP}skillpilotId`, literal(asset.skillpilotId)))
+    write(tripleLine(image, `${SP}zipPath`, literal(`${archiveRoot}/${asset.packagePath}`)))
+    write(tripleLine(image, `${SP}sha256`, literal(asset.sha256)))
+    write(tripleLine(image, `${SP}byteLength`, literal(asset.bytes, `${XSD}integer`)))
+    write(tripleLine(image, `${SCHEMA}contentUrl`, literal(asset.publicUrl)))
+    write(tripleLine(image, `${SCHEMA}encodingFormat`, literal(asset.mediaType)))
+    write(tripleLine(image, `${SCHEMA}provider`, literal(asset.provider)))
+    write(tripleLine(image, `${SCHEMA}accessibilitySummary`, langLiteral(asset.altText, asset.lang)))
+    write(tripleLine(image, `${SCHEMA}license`, literal(asset.license)))
+    write(tripleLine(image, `${SCHEMA}creativeWorkStatus`, literal(asset.reviewStatus)))
+    write(tripleLine(image, `${SCHEMA}inLanguage`, literal(asset.lang)))
+    write(tripleLine(image, `${DCTERMS}title`, langLiteral(asset.title, asset.lang)))
+    write(tripleLine(image, `${DCTERMS}description`, langLiteral(asset.description, asset.lang)))
+  })
+}
+
+const writeGoalVisualizationSidecars = (
+  inputZipPath: string,
+  outputDir: string,
+  archiveRoot: string,
+  entries: ZipEntryRecord[],
+  assets: GoalVisualizationAsset[],
+) => assets.map((asset) => {
+  const zipPath = `${archiveRoot}/${asset.packagePath}`
+  const entry = entries.find((candidate) => candidate.path === zipPath)
+  if (!entry) {
+    throw new Error(`Missing validated goal visualization entry: ${zipPath}`)
+  }
+  const content = entry.content ?? readZipEntry(inputZipPath, entry.path)
+  if (content.length !== asset.bytes) {
+    throw new Error(`Byte-length mismatch for ${zipPath}: ${content.length} != ${asset.bytes}`)
+  }
+  const digest = sha256(content)
+  if (digest !== asset.sha256) {
+    throw new Error(`SHA-256 mismatch for ${zipPath}: ${digest} != ${asset.sha256}`)
+  }
+  const target = resolve(outputDir, asset.packagePath)
+  const relativeTarget = relative(outputDir, target)
+  if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
+    throw new Error(`Refusing to write goal visualization outside output directory: ${asset.packagePath}`)
+  }
+  mkdirSync(dirname(target), { recursive: true })
+  writeFileSync(target, content)
+  return {
+    goalId: asset.goalId,
+    order: asset.order,
+    packagePath: asset.packagePath,
+    zipPath,
+    sidecarPath: repoRelative(target),
+    mediaType: asset.mediaType,
+    bytes: asset.bytes,
+    sha256: asset.sha256,
+  }
+})
 
 const writeLandscapeSemantics = (
   write: (line: string) => void,
@@ -869,14 +1204,13 @@ const writeLandscapeSemantics = (
     throw new Error('Package does not contain a canonical landscape JSON.')
   }
 
-  const landscapeData = jsonObject(JSON.parse(canonicalEntry.text) as JsonValue, 'canonical landscape')
+  const landscapeData = jsonObject(JSON.parse(entryText(canonicalEntry, 'canonical landscape')) as JsonValue, 'canonical landscape')
   const landscapeId = stringValue(landscapeData.id) ?? stringValue(landscapeData.landscapeId) ?? stringValue(landscapeData.frameworkId) ?? 'canonical-gymnasium-math'
   const landscape = `${packageIri(archiveRoot)}/landscape/${idSegment(landscapeId)}`
-  const schoolType = `${ID}school-type/gymnasium`
+  const schoolType = KIM_GYMNASIUM
 
   write(tripleLine(packageIri(archiveRoot), `${SP}hasLandscape`, iri(landscape)))
   write(tripleLine(landscape, `${RDF}type`, iri(`${SP}LearningLandscape`)))
-  write(tripleLine(landscape, `${RDF}type`, iri(LP_CURRICULUM)))
   write(tripleLine(landscape, LP_HAS_SCHOOL_SUBJECT, iri(KIM_MATHEMATICS)))
   write(tripleLine(KIM_MATHEMATICS, `${RDF}type`, iri(LP_SCHOOL_SUBJECT)))
   write(tripleLine(KIM_MATHEMATICS, `${SKOS}prefLabel`, langLiteral('Mathematik', 'de')))
@@ -908,7 +1242,6 @@ const writeLandscapeSemantics = (
     counts.competencyCatalogEntries += 1
     write(tripleLine(landscape, `${SP}hasCompetencyCatalogEntry`, iri(resource)))
     write(tripleLine(resource, `${RDF}type`, iri(`${SP}CompetencyCatalogEntry`)))
-    write(tripleLine(resource, `${RDF}type`, iri(LP_COMPETENCE)))
     write(tripleLine(resource, `${SP}skillpilotId`, literal(competencyId)))
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}dimension`, data.dimension)
@@ -944,6 +1277,20 @@ const writeLandscapeSemantics = (
     }
     goalClassifications.set(goalId, classifyGoalForFwu(data, stringArray(data.contains)))
   })
+  const strictCurricularChildren = new Set<string>()
+  goals.forEach((goal) => {
+    const data = jsonObject(goal, 'canonical goal')
+    const goalId = stringValue(data.id)
+    if (!goalId) {
+      return
+    }
+    const sourceClassification = goalClassifications.get(goalId)
+    stringArray(data.contains).forEach((targetId) => {
+      if (sourceClassification && shouldWriteStrictCurricularPart(sourceClassification, goalClassifications.get(targetId))) {
+        strictCurricularChildren.add(targetId)
+      }
+    })
+  })
 
   goals.forEach((goal) => {
     const data = jsonObject(goal, 'canonical goal')
@@ -960,12 +1307,14 @@ const writeLandscapeSemantics = (
 
     const classification = goalClassifications.get(goalId) ?? classifyGoalForFwu(data, contains)
     write(tripleLine(landscape, `${SP}hasGoal`, iri(resource)))
-    if (classification.safeCurricularPartWholeTarget) {
+    if (classification.safeCurricularPartWholeTarget && !strictCurricularChildren.has(goalId)) {
       write(tripleLine(landscape, BFO_HAS_PART, iri(resource)))
     }
     write(tripleLine(resource, `${RDF}type`, iri(`${SP}LearningGoal`)))
     write(tripleLine(resource, `${RDF}type`, iri(contains.length > 0 ? `${SP}ClusterGoal` : `${SP}AtomicGoal`)))
-    write(tripleLine(resource, `${RDF}type`, iri(classification.profileClass)))
+    if (classification.profileClass) {
+      write(tripleLine(resource, `${RDF}type`, iri(classification.profileClass)))
+    }
     classification.fwuClasses.forEach((fwuClass) => {
       write(tripleLine(resource, `${RDF}type`, iri(fwuClass)))
     })
@@ -975,6 +1324,14 @@ const writeLandscapeSemantics = (
     writeStringField(write, resource, `${RDFS}label`, data.titleEn, 'en')
     writeStringField(write, resource, `${DCTERMS}description`, data.description, 'de')
     writeStringField(write, resource, `${DCTERMS}description`, data.descriptionEn, 'en')
+    if (classification.safeCurricularPartWholeTarget) {
+      writeCurricularTextSemantics(write, resource, data)
+      write(tripleLine(
+        resource,
+        LP_HAS_FUNCTION,
+        iri(classification.kind === 'curricular-cluster' ? LP_AREA_FUNCTION : LP_COMPETENCY_DESCRIPTION_FUNCTION),
+      ))
+    }
     writeStringField(write, resource, `${SP}phase`, data.phase)
     writeStringField(write, resource, `${SP}area`, data.area)
     writeStringField(write, resource, `${SP}level`, data.level)
@@ -1001,12 +1358,16 @@ const writeLandscapeSemantics = (
       const target = iri(goalIri(archiveRoot, targetId))
       write(tripleLine(resource, `${SP}containsGoal`, target))
       if (shouldWriteStrictCurricularPart(classification, goalClassifications.get(targetId))) {
-        write(tripleLine(resource, `${SP}hasCurricularPart`, target))
         write(tripleLine(resource, BFO_HAS_PART, target))
       }
     })
     requires.forEach((targetId) => {
-      write(tripleLine(resource, `${SP}didacticRequires`, iri(goalIri(archiveRoot, targetId))))
+      const prerequisite = didacticPrerequisiteIri(archiveRoot, goalId, targetId)
+      write(tripleLine(resource, LP_HAS_REFERENCE, iri(prerequisite)))
+      write(tripleLine(prerequisite, `${RDF}type`, iri(LP_DIDACTIC_PREREQUISITE)))
+      write(tripleLine(prerequisite, `${RDF}type`, iri(LP_REFERENCE)))
+      write(tripleLine(prerequisite, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
+      write(tripleLine(prerequisite, LP_REFERS_TO, iri(goalIri(archiveRoot, targetId))))
     })
   })
 
@@ -1071,7 +1432,7 @@ const writeViewSemantics = (
   entries
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
-      const data = jsonObject(JSON.parse(entry.text) as JsonValue, 'composition view')
+      const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
       const viewId = stringValue(data.id) ?? stringValue(data.viewId)
       const view = options.semanticIris
         ? semanticViewIri(archiveRoot, viewId, entry.path)
@@ -1108,7 +1469,7 @@ const writeMappingSemantics = (
   entries
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/mappings/`) && entry.path.endsWith('.json'))
     .forEach((entry) => {
-      const data = jsonObject(JSON.parse(entry.text) as JsonValue, 'mapping file')
+      const data = jsonObject(JSON.parse(entryText(entry, 'mapping file')) as JsonValue, 'mapping file')
       const jurisdiction = jurisdictionFromEntryPath(entry.path)
       const mappingFile = options.semanticIris ? semanticMappingFileIri(archiveRoot, entry.path) : fileIri(archiveRoot, entry.path)
       write(tripleLine(packageIri(archiveRoot), `${SP}hasMappingFile`, iri(mappingFile)))
@@ -1198,7 +1559,7 @@ const writeSourceSemantics = (
   options: { includeSourceIndexSummary?: boolean } = {},
 ) => {
   const sourceReferencesEntry = findEntry(entries, archiveRoot, 'data/sources/source-goal-references.json')
-  const sourceReferences = jsonObject(JSON.parse(sourceReferencesEntry.text) as JsonValue, 'source-goal references')
+  const sourceReferences = jsonObject(JSON.parse(entryText(sourceReferencesEntry, 'source-goal references')) as JsonValue, 'source-goal references')
   const sources = Array.isArray(sourceReferences.sources) ? sourceReferences.sources : []
 
   sources.forEach((source) => {
@@ -1225,7 +1586,6 @@ const writeSourceSemantics = (
       counts.sourceDocuments += 1
       write(tripleLine(collection, `${SP}hasSourceDocument`, iri(documentResource)))
       write(tripleLine(documentResource, `${RDF}type`, iri(`${SP}SourceDocument`)))
-      write(tripleLine(documentResource, `${RDF}type`, iri(LP_REFERENCE)))
       writeStringField(write, documentResource, `${SP}sourceDocumentKey`, key)
       writeStringField(write, documentResource, `${DCTERMS}title`, documentData.title, 'de')
       writeStringField(write, documentResource, `${DCTERMS}source`, documentData.url)
@@ -1245,12 +1605,14 @@ const writeSourceSemantics = (
       const documentKey = stringValue(goalData.sourceDocumentKey)
       counts.sourceGoals += 1
       write(tripleLine(collection, `${SP}hasSourceGoal`, iri(resource)))
+      write(tripleLine(collection, LP_HAS_REFERENCE, iri(resource)))
       write(tripleLine(resource, `${RDF}type`, iri(`${SP}SourceGoalReference`)))
       write(tripleLine(resource, `${RDF}type`, iri(LP_REFERENCE)))
+      write(tripleLine(resource, LP_HAS_FUNCTION, iri(LP_REFERENCE_DESCRIPTION_FUNCTION)))
       write(tripleLine(resource, `${SP}skillpilotId`, literal(sourceGoalId)))
       if (documentKey) {
         const documentResource = sourceDocumentIri(archiveRoot, `${extractionId}/${documentKey}`)
-        write(tripleLine(resource, LP_HAS_REFERENCE, iri(documentResource)))
+        write(tripleLine(resource, LP_REFERS_TO, iri(documentResource)))
         write(tripleLine(resource, `${DCTERMS}source`, iri(documentResource)))
       }
       writeStringField(write, resource, `${RDFS}label`, goalData.title, 'de')
@@ -1277,7 +1639,7 @@ const writeSourceSemantics = (
 
   if (options.includeSourceIndexSummary !== false) {
     const sourceIndexEntry = findEntry(entries, archiveRoot, 'data/sources/source-index.json')
-    const sourceIndex = jsonObject(JSON.parse(sourceIndexEntry.text) as JsonValue, 'source index')
+    const sourceIndex = jsonObject(JSON.parse(entryText(sourceIndexEntry, 'source index')) as JsonValue, 'source index')
     writeJsonField(write, packageIri(archiveRoot), `${SP}sourceIndexSummaryJson`, sourceIndex)
   }
 }
@@ -1291,7 +1653,7 @@ const writeCardSemantics = (
 ) => {
   const cardIndexEntry = entries.find((entry) => entry.path === `${archiveRoot}/data/cards/card-index.json`)
   const cardIndexDecks = cardIndexEntry
-    ? (jsonObject(JSON.parse(cardIndexEntry.text) as JsonValue, 'card index').decks)
+    ? (jsonObject(JSON.parse(entryText(cardIndexEntry, 'card index')) as JsonValue, 'card index').decks)
     : []
   const cardIndexByPath = new Map(
     (Array.isArray(cardIndexDecks) ? cardIndexDecks : [])
@@ -1308,7 +1670,7 @@ const writeCardSemantics = (
   ))
 
   cardEntries.forEach((entry) => {
-    const data = jsonObject(JSON.parse(entry.text) as JsonValue, 'card deck')
+    const data = jsonObject(JSON.parse(entryText(entry, 'card deck')) as JsonValue, 'card deck')
     const deckId = stringValue(data.deckId)
     if (!deckId) {
       return
@@ -1359,7 +1721,7 @@ const writeExternalDependencySemantics = (
   options: { semanticIris?: boolean } = {},
 ) => {
   const dependencyEntry = findEntry(entries, archiveRoot, 'data/dependencies/external-goal-references.json')
-  const data = jsonObject(JSON.parse(dependencyEntry.text) as JsonValue, 'external dependencies')
+  const data = jsonObject(JSON.parse(entryText(dependencyEntry, 'external dependencies')) as JsonValue, 'external dependencies')
   const references = Array.isArray(data.references) ? data.references : []
   references.forEach((reference, index) => {
     const referenceData = jsonObject(reference, 'external dependency reference')
@@ -1385,14 +1747,15 @@ const writePackageHeaderSemantics = (
 ) => {
   const root = packageIri(archiveRoot)
   const commit = ontologyCommit(ontologyDir)
+  const corePath = requireOntologyCore(ontologyDir)
   write(tripleLine(root, `${RDF}type`, iri(`${SP}SkillPilotPackage`)))
-  write(tripleLine(root, `${RDF}type`, iri(LP_CURRICULUM)))
   write(tripleLine(root, `${DCTERMS}title`, langLiteral('SkillPilot Gymnasium Mathematik v0.1.0', 'de')))
   write(tripleLine(root, `${SP}archiveRoot`, literal(archiveRoot)))
   write(tripleLine(root, `${SP}sourceZipName`, literal(basename(inputZipPath))))
-  write(tripleLine(root, `${SP}sourceZipSha256`, literal(sha256(readFileSync(inputZipPath)))))
-  write(tripleLine(root, `${SP}fwuOntologyIri`, iri(LP)))
+  write(tripleLine(root, `${SP}sourceZipSha256`, literal(sha256File(inputZipPath))))
+  write(tripleLine(root, `${SP}fwuOntologyIri`, iri(LP_CORE_ONTOLOGY)))
   write(tripleLine(root, `${SP}fwuOntologyRepository`, iri('https://github.com/FWU-DE/lehrplan-ontologie')))
+  write(tripleLine(root, `${SP}fwuOntologyCorePath`, literal(repoRelative(corePath))))
   if (commit) {
     write(tripleLine(root, `${SP}fwuOntologyCommit`, literal(commit)))
   }
@@ -1405,6 +1768,7 @@ const writeSemanticTriples = (
   counts: SemanticCounts,
   inputZipPath: string,
   ontologyDir: string,
+  goalVisualizationAssets: GoalVisualizationAsset[],
 ) => {
   writePackageHeaderSemantics(write, archiveRoot, inputZipPath, ontologyDir)
 
@@ -1414,10 +1778,13 @@ const writeSemanticTriples = (
   writeSourceSemantics(write, archiveRoot, entries, counts)
   writeCardSemantics(write, archiveRoot, entries, counts)
   writeExternalDependencySemantics(write, archiveRoot, entries, counts)
+  writeGoalVisualizationSemantics(write, archiveRoot, goalVisualizationAssets, counts)
 }
 
 const writeRdf = async (options: CliOptions) => {
   const { archiveRoot, entries } = readEntries(options.zipPath)
+  const goalVisualizationAssets = readGoalVisualizationAssets(archiveRoot, entries)
+  assertNoUnsupportedBinaryEntries(archiveRoot, entries, goalVisualizationAssets)
   const counts = emptyCounts()
 
   rmSync(options.rdfPath, { force: true })
@@ -1430,7 +1797,15 @@ const writeRdf = async (options: CliOptions) => {
     stream.write(line)
   }
 
-  writeSemanticTriples(write, archiveRoot, entries, counts, options.zipPath, options.ontologyDir)
+  writeSemanticTriples(
+    write,
+    archiveRoot,
+    entries,
+    counts,
+    options.zipPath,
+    options.ontologyDir,
+    goalVisualizationAssets,
+  )
   writeCarrierTriples(write, archiveRoot, entries, counts)
 
   await new Promise<void>((resolvePromise, reject) => {
@@ -1442,6 +1817,17 @@ const writeRdf = async (options: CliOptions) => {
       resolvePromise()
     })
   })
+
+  rmSync(resolve(dirname(options.rdfPath), 'assets'), { recursive: true, force: true })
+  if (goalVisualizationAssets.length > 0) {
+    writeGoalVisualizationSidecars(
+      options.zipPath,
+      dirname(options.rdfPath),
+      archiveRoot,
+      entries,
+      goalVisualizationAssets,
+    )
+  }
 
   return { archiveRoot, counts }
 }
@@ -1523,6 +1909,12 @@ It intentionally excludes the lossless package-file carrier lane used by the tec
 - no file-path-derived SkillPilot resource IRIs such as \`/file/...\`
 - no embedded source ZIP file lines
 
+Binary goal visualizations are copied byte-for-byte as package-relative sidecars under \`assets/\`. Their semantic references and checksums are represented in \`assets.nt\`; binary bytes are never embedded in \`bundle.nt\`.
+
+The profile imports \`ontology/lehrplan-core.owl\` by a relative IRI. Load \`skillpilot-mem-fwu-profile.ttl\` from this directory so the pinned, hashed core copy is used instead of the potentially stale remote release artifact.
+
+The exact FWU core source used for the export is pinned under \`ontology/lehrplan-core.owl\`, because the current generated upstream release artifacts do not yet contain every term used by this bundle.
+
 The official curriculum evidence needed for independent semantic checks is represented as source-document URLs plus exact source-goal spans in \`sources.nt\`.
 
 \`sp:zipPath\` is retained only as a local package placement literal for deterministic reconstruction; it is not used as curriculum-source provenance.
@@ -1557,9 +1949,13 @@ npm run roundtrip:mem-fwu:semantic-reconstruct -- \\
 
 const writeSlimRdf = async (options: CliOptions) => {
   const { archiveRoot, entries } = readEntries(options.zipPath)
+  const goalVisualizationAssets = readGoalVisualizationAssets(archiveRoot, entries)
+  assertNoUnsupportedBinaryEntries(archiveRoot, entries, goalVisualizationAssets)
   const counts = emptyCounts()
   const slimDir = options.slimDir
   mkdirSync(slimDir, { recursive: true })
+  const sourceCorePath = requireOntologyCore(options.ontologyDir)
+  const bundledCorePath = resolve(slimDir, 'ontology/lehrplan-core.owl')
 
   const profilePath = resolve(slimDir, 'skillpilot-mem-fwu-profile.ttl')
   const bundlePath = resolve(slimDir, 'bundle.nt')
@@ -1571,14 +1967,22 @@ const writeSlimRdf = async (options: CliOptions) => {
     'mappings.nt',
     'sources.nt',
     'cards.nt',
+    'assets.nt',
     'bundle.nt',
     'skillpilot-mem-fwu-profile.ttl',
     'manifest.json',
     'README.md',
   ]
   generatedNames.forEach((name) => rmSync(resolve(slimDir, name), { force: true }))
+  rmSync(resolve(slimDir, 'assets'), { recursive: true, force: true })
+  rmSync(resolve(slimDir, 'ontology'), { recursive: true, force: true })
 
-  writeProfile(profilePath, { includeCarrier: false })
+  writeProfile(profilePath, {
+    includeCarrier: false,
+    coreImport: 'ontology/lehrplan-core.owl',
+  })
+  mkdirSync(dirname(bundledCorePath), { recursive: true })
+  writeFileSync(bundledCorePath, readFileSync(sourceCorePath))
 
   const segments: Array<{
     name: string
@@ -1614,6 +2018,11 @@ const writeSlimRdf = async (options: CliOptions) => {
       description: 'memorization decks and cards',
       emit: (write) => writeCardSemantics(write, archiveRoot, entries, counts, { semanticIris: true }),
     },
+    {
+      name: 'assets.nt',
+      description: 'goal-to-visualization references and metadata for binary image sidecars',
+      emit: (write) => writeGoalVisualizationSemantics(write, archiveRoot, goalVisualizationAssets, counts),
+    },
   ]
 
   const files: SlimRdfFile[] = []
@@ -1638,25 +2047,41 @@ const writeSlimRdf = async (options: CliOptions) => {
     description: 'concatenated semantic bundle for single-file RDF loaders',
   })
 
+  const assetSidecars = writeGoalVisualizationSidecars(
+    options.zipPath,
+    slimDir,
+    archiveRoot,
+    entries,
+    goalVisualizationAssets,
+  )
+
   const manifest = {
     generatedAt: new Date().toISOString(),
     archiveRoot,
     inputZip: repoRelative(options.zipPath),
-    inputZipSha256: sha256(readFileSync(options.zipPath)),
+    inputZipSha256: sha256File(options.zipPath),
     profile: repoRelative(profilePath),
     bundle: repoRelative(bundlePath),
     fwuOntology: {
       repository: 'https://github.com/FWU-DE/lehrplan-ontologie',
       localPath: repoRelative(options.ontologyDir),
+      corePath: repoRelative(sourceCorePath),
+      bundledCorePath: repoRelative(bundledCorePath),
+      bundledCoreSha256: sha256File(bundledCorePath),
+      profileImport: 'ontology/lehrplan-core.owl',
       commit: ontologyCommit(options.ontologyDir),
-      ontologyIri: LP,
+      ontologyIri: LP_CORE_ONTOLOGY,
     },
     semantics: {
       carrierLaneIncluded: false,
       sourceIndexSummaryJsonIncluded: false,
       officialSourceTextSpansIncluded: true,
+      goalVisualizationManifestIncluded: goalVisualizationAssets.length > 0,
+      binaryGoalVisualizationSidecarsIncluded: goalVisualizationAssets.length > 0,
+      bundleNtContainsBinaryData: false,
     },
     files,
+    assets: assetSidecars,
     semanticCounts: counts,
   }
   writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
@@ -1786,12 +2211,19 @@ const isCarrierFileResource = (resource: string) => /\/file\/[^/]+$/u.test(resou
 const reconstructFromRdf = async (options: CliOptions) => {
   type FileCarrier = {
     path: string | null
-    endsWithNewline: boolean
+    byteLength: number | null
+    sha256: string | null
+    lineCount: number | null
+    endsWithNewline: boolean | null
     lineResources: string[]
   }
 
   const files = new Map<string, FileCarrier>()
   const lineTexts = new Map<string, string>()
+  const imageResources = new Set<string>()
+  const imagePaths = new Map<string, string>()
+  const imageSha256 = new Map<string, string>()
+  const imageByteLengths = new Map<string, number>()
   let archiveRoot: string | null = null
 
   const ensureFile = (resource: string) => {
@@ -1801,7 +2233,10 @@ const reconstructFromRdf = async (options: CliOptions) => {
     }
     const carrier: FileCarrier = {
       path: null,
-      endsWithNewline: false,
+      byteLength: null,
+      sha256: null,
+      lineCount: null,
+      endsWithNewline: null,
       lineResources: [],
     }
     files.set(resource, carrier)
@@ -1822,18 +2257,53 @@ const reconstructFromRdf = async (options: CliOptions) => {
       archiveRoot = literalObjectValue(triple.object)
       continue
     }
+    if (
+      triple.predicate === `${RDF}type`
+      && triple.object.kind === 'iri'
+      && triple.object.value === `${SCHEMA}ImageObject`
+    ) {
+      imageResources.add(triple.subject)
+      continue
+    }
     if (triple.predicate === `${SP}zipPath`) {
       if (!isCarrierFileResource(triple.subject)) {
+        imagePaths.set(triple.subject, literalObjectValue(triple.object))
         continue
       }
       ensureFile(triple.subject).path = literalObjectValue(triple.object)
+      continue
+    }
+    if (triple.predicate === `${SP}sha256`) {
+      if (isCarrierFileResource(triple.subject)) {
+        ensureFile(triple.subject).sha256 = literalObjectValue(triple.object)
+        continue
+      }
+      imageSha256.set(triple.subject, literalObjectValue(triple.object))
+      continue
+    }
+    if (triple.predicate === `${SP}byteLength`) {
+      if (isCarrierFileResource(triple.subject)) {
+        ensureFile(triple.subject).byteLength = Number(literalObjectValue(triple.object))
+        continue
+      }
+      imageByteLengths.set(triple.subject, Number(literalObjectValue(triple.object)))
+      continue
+    }
+    if (triple.predicate === `${SP}lineCount`) {
+      if (isCarrierFileResource(triple.subject)) {
+        ensureFile(triple.subject).lineCount = Number(literalObjectValue(triple.object))
+      }
       continue
     }
     if (triple.predicate === `${SP}endsWithNewline`) {
       if (!isCarrierFileResource(triple.subject)) {
         continue
       }
-      ensureFile(triple.subject).endsWithNewline = literalObjectValue(triple.object) === 'true'
+      const value = literalObjectValue(triple.object)
+      if (value !== 'true' && value !== 'false') {
+        throw new Error(`Invalid sp:endsWithNewline value for ${triple.subject}: ${value}`)
+      }
+      ensureFile(triple.subject).endsWithNewline = value === 'true'
       continue
     }
     if (triple.predicate === `${SP}textLine`) {
@@ -1851,6 +2321,9 @@ const reconstructFromRdf = async (options: CliOptions) => {
   if (!archiveRoot) {
     throw new Error('RDF does not contain sp:archiveRoot.')
   }
+  if (!isSafeArchiveRootSegment(archiveRoot)) {
+    throw new Error(`RDF contains unsafe archive root: ${archiveRoot}`)
+  }
 
   rmSync(options.reconstructedDir, { recursive: true, force: true })
   mkdirSync(options.reconstructedDir, { recursive: true })
@@ -1863,13 +2336,43 @@ const reconstructFromRdf = async (options: CliOptions) => {
     if (!file.path) {
       return
     }
+    const archivePrefix = `${archiveRoot}/`
+    if (!file.path.startsWith(archivePrefix)) {
+      throw new Error(`Carrier file path is outside archive root ${archiveRoot}: ${file.path}`)
+    }
+    const packagePath = file.path.slice(archivePrefix.length)
+    if (!isSafePackagePath(packagePath)) {
+      throw new Error(`Unsafe carrier package path in RDF: ${packagePath}`)
+    }
+    if (file.endsWithNewline === null) {
+      throw new Error(`Carrier file does not contain sp:endsWithNewline: ${file.path}`)
+    }
+    if (file.lineCount === null || !Number.isSafeInteger(file.lineCount) || file.lineCount < 0) {
+      throw new Error(`Carrier file does not contain a valid sp:lineCount: ${file.path}`)
+    }
+    if (file.byteLength === null || !Number.isSafeInteger(file.byteLength) || file.byteLength < 0) {
+      throw new Error(`Carrier file does not contain a valid sp:byteLength: ${file.path}`)
+    }
+    if (!file.sha256 || !/^[a-f0-9]{64}$/u.test(file.sha256)) {
+      throw new Error(`Carrier file does not contain a valid sp:sha256: ${file.path}`)
+    }
     const target = resolve(options.reconstructedDir, file.path)
-    if (!isInsideRepo(target)) {
+    const relativeTarget = relative(options.reconstructedDir, target)
+    if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
       throw new Error(`Refusing to reconstruct outside repository: ${file.path}`)
     }
     mkdirSync(dirname(target), { recursive: true })
-    const lines = file.lineResources
+    const orderedLineResources = [...file.lineResources]
       .sort((left, right) => lineIndexFromIri(left) - lineIndexFromIri(right))
+    const lineIndexes = orderedLineResources.map(lineIndexFromIri)
+    if (
+      orderedLineResources.length !== file.lineCount
+      || new Set(orderedLineResources).size !== orderedLineResources.length
+      || lineIndexes.some((lineIndex, index) => lineIndex !== index)
+    ) {
+      throw new Error(`Carrier line structure does not match sp:lineCount for ${file.path}`)
+    }
+    const lines = orderedLineResources
       .map((lineResource) => {
         const line = lineTexts.get(lineResource)
         if (line === undefined) {
@@ -1877,11 +2380,62 @@ const reconstructFromRdf = async (options: CliOptions) => {
         }
         return line
       })
-    const content = `${lines.join('\n')}${file.endsWithNewline ? '\n' : ''}`
+    const content = Buffer.from(`${lines.join('\n')}${file.endsWithNewline ? '\n' : ''}`, 'utf8')
+    if (content.length !== file.byteLength) {
+      throw new Error(`Carrier byte-length mismatch for ${file.path}: ${content.length} != ${file.byteLength}`)
+    }
+    const contentSha256 = sha256(content)
+    if (contentSha256 !== file.sha256) {
+      throw new Error(`Carrier SHA-256 mismatch for ${file.path}: ${contentSha256} != ${file.sha256}`)
+    }
     writeFileSync(target, content)
   })
 
-  return { archiveRoot, fileCount: orderedFiles.length }
+  let reconstructedImages = 0
+  imageResources.forEach((resource) => {
+    const zipPath = imagePaths.get(resource)
+    if (!zipPath) {
+      throw new Error(`Image resource does not contain sp:zipPath: ${resource}`)
+    }
+    const archivePrefix = `${archiveRoot}/`
+    if (!zipPath.startsWith(archivePrefix)) {
+      throw new Error(`Image ZIP path is outside archive root ${archiveRoot}: ${zipPath}`)
+    }
+    const packagePath = zipPath.slice(archivePrefix.length)
+    if (!isSafePackagePath(packagePath)) {
+      throw new Error(`Unsafe image package path in RDF: ${packagePath}`)
+    }
+    const sidecar = resolve(dirname(options.rdfPath), packagePath)
+    const relativeSidecar = relative(dirname(options.rdfPath), sidecar)
+    if (relativeSidecar.startsWith('..') || isAbsolute(relativeSidecar) || !existsSync(sidecar)) {
+      throw new Error(`Image sidecar is missing or outside RDF directory: ${packagePath}`)
+    }
+    const content = readFileSync(sidecar)
+    const expectedBytes = imageByteLengths.get(resource)
+    const expectedSha = imageSha256.get(resource)
+    if (expectedBytes === undefined || !Number.isSafeInteger(expectedBytes) || expectedBytes < 0) {
+      throw new Error(`Image resource does not contain a valid sp:byteLength: ${resource}`)
+    }
+    if (!expectedSha || !/^[a-f0-9]{64}$/u.test(expectedSha)) {
+      throw new Error(`Image resource does not contain a valid sp:sha256: ${resource}`)
+    }
+    if (content.length !== expectedBytes) {
+      throw new Error(`Image sidecar byte-length mismatch for ${packagePath}.`)
+    }
+    if (sha256(content) !== expectedSha) {
+      throw new Error(`Image sidecar SHA-256 mismatch for ${packagePath}.`)
+    }
+    const target = resolve(options.reconstructedDir, zipPath)
+    const relativeTarget = relative(options.reconstructedDir, target)
+    if (relativeTarget.startsWith('..') || isAbsolute(relativeTarget)) {
+      throw new Error(`Refusing to reconstruct image outside repository: ${zipPath}`)
+    }
+    mkdirSync(dirname(target), { recursive: true })
+    writeFileSync(target, content)
+    reconstructedImages += 1
+  })
+
+  return { archiveRoot, fileCount: orderedFiles.length + reconstructedImages }
 }
 
 const countRdfSemantics = async (rdfPath: string) => {
@@ -1898,7 +2452,6 @@ const countRdfSemantics = async (rdfPath: string) => {
     }
     if (triple.predicate === `${SP}lineText`) counts.textLines += 1
     if (triple.predicate === `${SP}containsGoal`) counts.containsEdges += 1
-    if (triple.predicate === `${SP}didacticRequires`) counts.requiresEdges += 1
     if (triple.predicate !== `${RDF}type` || triple.object.kind !== 'iri') {
       continue
     }
@@ -1917,6 +2470,8 @@ const countRdfSemantics = async (rdfPath: string) => {
     if (triple.object.value === `${SP}CardDeck`) counts.cardDecks += 1
     if (triple.object.value === `${SP}Card`) counts.cards += 1
     if (triple.object.value === `${SP}ExternalGoalReference`) counts.externalGoalReferences += 1
+    if (triple.object.value === LP_DIDACTIC_PREREQUISITE) counts.requiresEdges += 1
+    if (triple.object.value === `${SP}GoalVisualizationReference`) counts.goalVisualizations += 1
   }
 
   return counts
@@ -2020,6 +2575,7 @@ Generated at: ${report.generatedAt}
 - Reconstructed ZIP: \`${report.reconstructedZip}\`
 - Archive root: \`${report.archiveRoot}\`
 - FWU ontology: \`${report.fwuOntology.repository}\`
+- FWU core: \`${report.fwuOntology.corePath}\`
 - FWU ontology commit: \`${report.fwuOntology.commit ?? 'not available'}\`
 
 ## Semantic Counts
@@ -2054,6 +2610,7 @@ const run = async () => {
     process.stdout.write(usage())
     return
   }
+  requireOntologyCore(options.ontologyDir)
 
   if (options.mode === 'to-slim-rdf') {
     const result = await writeSlimRdf(options)
@@ -2098,8 +2655,9 @@ const run = async () => {
     fwuOntology: {
       repository: 'https://github.com/FWU-DE/lehrplan-ontologie',
       localPath: repoRelative(options.ontologyDir),
+      corePath: repoRelative(requireOntologyCore(options.ontologyDir)),
       commit: ontologyCommit(options.ontologyDir),
-      ontologyIri: LP,
+      ontologyIri: LP_CORE_ONTOLOGY,
     },
     semanticCounts,
     reconstruction,

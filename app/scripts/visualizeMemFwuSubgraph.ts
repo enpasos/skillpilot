@@ -25,7 +25,7 @@ type ParsedTriple = {
 
 type Edge = {
   source: string
-  predicate: string
+  predicate: 'contains' | 'requires'
   target: string
 }
 
@@ -43,12 +43,13 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
 const DEFAULT_BASE = 'tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0'
-const DEFAULT_RDF = `${DEFAULT_BASE}/rdf/skillpilot-mem-fwu.nt`
+const DEFAULT_RDF = `${DEFAULT_BASE}/slim/bundle.nt`
 const DEFAULT_OUT_DIR = `${DEFAULT_BASE}/visualizations`
 
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
 const DCTERMS = 'http://purl.org/dc/terms/'
+const LP = 'https://w3id.org/lehrplan/ontology/'
 const SP = 'https://skillpilot.de/ns/roundtrip#'
 
 const PREDICATES = {
@@ -56,7 +57,9 @@ const PREDICATES = {
   label: `${RDFS}label`,
   description: `${DCTERMS}description`,
   containsGoal: `${SP}containsGoal`,
-  didacticRequires: `${SP}didacticRequires`,
+  legacyDidacticRequires: `${SP}didacticRequires`,
+  hasReference: `${LP}LP_0030071`,
+  refersTo: `${LP}LP_0030072`,
   sourceText: `${SP}sourceText`,
   sourceRef: `${SP}sourceRef`,
   sourceDocumentUrl: `${SP}sourceDocumentUrl`,
@@ -69,6 +72,7 @@ const TYPES = {
   clusterGoal: `${SP}ClusterGoal`,
   atomicGoal: `${SP}AtomicGoal`,
   sourceGoalReference: `${SP}SourceGoalReference`,
+  didacticPrerequisite: `${LP}LP_0000554`,
 }
 
 const usage = () => `Usage:
@@ -276,17 +280,15 @@ const compact = (value: string | undefined, max = 90) => {
 
 const shortId = (resource: string) => decodeURIComponent(resource.split('/').pop() ?? resource)
 
-const edgeLabel = (predicate: string) => {
-  if (predicate === PREDICATES.containsGoal) return 'contains'
-  if (predicate === PREDICATES.didacticRequires) return 'requires'
-  return predicate
-}
+const edgeLabel = (predicate: Edge['predicate']) => predicate
 
 const readSemanticGraph = async (rdfPath: string) => {
   const labels = new Map<string, string>()
   const descriptions = new Map<string, string>()
   const types = new Map<string, Set<string>>()
   const edges: Edge[] = []
+  const referenceSources = new Map<string, string[]>()
+  const referenceTargets = new Map<string, string[]>()
   const sourceSamples = new Map<string, SourceSample>()
 
   const addType = (resource: string, type: string) => {
@@ -341,11 +343,28 @@ const readSemanticGraph = async (rdfPath: string) => {
       }
       continue
     }
-    if (triple.predicate === PREDICATES.containsGoal || triple.predicate === PREDICATES.didacticRequires) {
+    // Visualize the authored direct graph only. FWU's BFO has-part relation is
+    // transitive and may contain reasoner-materialized indirect descendants.
+    if (triple.predicate === PREDICATES.containsGoal) {
       const target = iriValue(triple.object)
       if (target) {
-        edges.push({ source: triple.subject, predicate: triple.predicate, target })
+        edges.push({ source: triple.subject, predicate: 'contains', target })
       }
+      continue
+    }
+    if (triple.predicate === PREDICATES.legacyDidacticRequires) {
+      const target = iriValue(triple.object)
+      if (target) edges.push({ source: triple.subject, predicate: 'requires', target })
+      continue
+    }
+    if (triple.predicate === PREDICATES.hasReference) {
+      const reference = iriValue(triple.object)
+      if (reference) referenceSources.set(reference, [...(referenceSources.get(reference) ?? []), triple.subject])
+      continue
+    }
+    if (triple.predicate === PREDICATES.refersTo) {
+      const target = iriValue(triple.object)
+      if (target) referenceTargets.set(triple.subject, [...(referenceTargets.get(triple.subject) ?? []), target])
       continue
     }
     if (
@@ -368,7 +387,27 @@ const readSemanticGraph = async (rdfPath: string) => {
     }
   }
 
-  return { labels, descriptions, types, edges, sourceSamples }
+  for (const [reference, referenceTypes] of types) {
+    if (!referenceTypes.has(TYPES.didacticPrerequisite)) continue
+    for (const source of referenceSources.get(reference) ?? []) {
+      for (const target of referenceTargets.get(reference) ?? []) {
+        edges.push({ source, predicate: 'requires', target })
+      }
+    }
+  }
+
+  const learningGoals = new Set([...types.entries()]
+    .filter(([, values]) => values.has(TYPES.learningGoal))
+    .map(([resource]) => resource))
+  const normalizedEdges = edges
+    .filter((edge) => learningGoals.has(edge.source) && learningGoals.has(edge.target))
+    .filter((edge, index, allEdges) => allEdges.findIndex((candidate) => (
+      candidate.source === edge.source
+      && candidate.target === edge.target
+      && candidate.predicate === edge.predicate
+    )) === index)
+
+  return { labels, descriptions, types, edges: normalizedEdges, sourceSamples }
 }
 
 const hasType = (types: Map<string, Set<string>>, resource: string, type: string) => types.get(resource)?.has(type) ?? false
@@ -386,7 +425,7 @@ const findFocus = (params: {
 
   return learningGoals.find((resource) => resource.toLocaleLowerCase('de').includes(focus))
     ?? learningGoals.find((resource) => (params.labels.get(resource) ?? '').toLocaleLowerCase('de').includes(focus))
-    ?? params.edges.find((edge) => edge.predicate === PREDICATES.didacticRequires)?.source
+    ?? params.edges.find((edge) => edge.predicate === 'requires')?.source
     ?? learningGoals[0]
 }
 
@@ -456,7 +495,7 @@ const buildDot = (params: {
     })
 
   const edgeLines = params.edges.map((edge) => {
-    const isRequires = edge.predicate === PREDICATES.didacticRequires
+    const isRequires = edge.predicate === 'requires'
     const color = isRequires ? '#b54708' : '#1d4ed8'
     const style = isRequires ? 'dashed' : 'solid'
     return `  "${dotEscape(edge.source)}" -> "${dotEscape(edge.target)}" [label="${edgeLabel(edge.predicate)}", color="${color}", fontcolor="${color}", style="${style}"];`
@@ -567,7 +606,9 @@ const renderHtml = (params: {
     <h2>Same Idea As SPARQL</h2>
     <pre>SELECT ?goal ?title ?requiredGoal ?requiredTitle
 WHERE {
-  ?goal &lt;${PREDICATES.didacticRequires}&gt; ?requiredGoal .
+  ?goal &lt;${PREDICATES.hasReference}&gt; ?prerequisiteRef .
+  ?prerequisiteRef a &lt;${TYPES.didacticPrerequisite}&gt; ;
+                   &lt;${PREDICATES.refersTo}&gt; ?requiredGoal .
   OPTIONAL { ?goal &lt;${PREDICATES.label}&gt; ?title . }
   OPTIONAL { ?requiredGoal &lt;${PREDICATES.label}&gt; ?requiredTitle . }
 }
