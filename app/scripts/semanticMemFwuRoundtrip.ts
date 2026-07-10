@@ -1,5 +1,13 @@
 import { execFileSync } from 'node:child_process'
-import { createReadStream, mkdirSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import {
+  createReadStream,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
 import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath } from 'node:url'
@@ -57,12 +65,43 @@ type ReconstructedLandscape = {
 
 type SemanticReconstruction = {
   landscape: ReconstructedLandscape
+  goalVisualizations: GoalVisualizationRecord[]
   sourceGoalReferences: JsonValue
   cardDecks: JsonValue[]
   mappingFiles: Record<string, JsonValue>
   canonicalMappings: Record<string, JsonValue[]>
   reviewDecisions: Record<string, JsonValue[]>
   compositionViews: Record<string, JsonValue>
+}
+
+type GoalVisualizationRecord = {
+  referenceIri: string
+  imageIri: string | null
+  goalId: string | null
+  order: number | null
+  packagePath: string | null
+  publicUrl: string | null
+  mediaType: string | null
+  bytes: number | null
+  sha256: string | null
+  skillpilotId: string | null
+  role: string | null
+  title: string | null
+  provider: string | null
+  description: string | null
+  altText: string | null
+  lang: string | null
+  license: string | null
+  reviewStatus: string | null
+  zipPath: string | null
+  structureIssues: string[]
+}
+
+type VisualizationValidationCounts = {
+  canonicalLinks: number
+  rdfReferences: number
+  indexAssets: number
+  sidecarsCopied: number
 }
 
 type CheckResult = {
@@ -101,7 +140,18 @@ const EXPECTED_DE_STATES = [
 const RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 const RDFS = 'http://www.w3.org/2000/01/rdf-schema#'
 const DCTERMS = 'http://purl.org/dc/terms/'
+const BFO = 'http://purl.obolibrary.org/obo/'
+const IAO_INFORMATION_CONTENT_ENTITY = `${BFO}IAO_0000030`
+const LP = 'https://w3id.org/lehrplan/ontology/'
+const SCHEMA = 'https://schema.org/'
 const SP = 'https://skillpilot.de/ns/roundtrip#'
+
+const LP_DIDACTIC_PREREQUISITE = `${LP}LP_0000554`
+const LP_REFERENCE = `${LP}LP_0030065`
+const LP_HAS_REFERENCE = `${LP}LP_0030071`
+const LP_REFERS_TO = `${LP}LP_0030072`
+const BFO_HAS_PART = `${BFO}BFO_0000051`
+const SCHEMA_IMAGE_OBJECT = `${SCHEMA}ImageObject`
 
 const P = {
   type: `${RDF}type`,
@@ -109,6 +159,9 @@ const P = {
   description: `${DCTERMS}description`,
   source: `${DCTERMS}source`,
   title: `${DCTERMS}title`,
+  format: `${DCTERMS}format`,
+  dctermsLanguage: `${DCTERMS}language`,
+  dctermsLicense: `${DCTERMS}license`,
   skillpilotId: `${SP}skillpilotId`,
   order: `${SP}order`,
   archiveRoot: `${SP}archiveRoot`,
@@ -147,6 +200,9 @@ const P = {
   nodeKind: `${SP}nodeKind`,
   containsGoal: `${SP}containsGoal`,
   didacticRequires: `${SP}didacticRequires`,
+  hasPart: BFO_HAS_PART,
+  hasReference: LP_HAS_REFERENCE,
+  refersTo: LP_REFERS_TO,
   placedGoal: `${SP}placedGoal`,
   placedInProgramUnit: `${SP}placedInProgramUnit`,
   zipPath: `${SP}zipPath`,
@@ -208,6 +264,15 @@ const P = {
   suggestedCanonicalGapJson: `${SP}suggestedCanonicalGapJson`,
   mapsCanonicalGoal: `${SP}mapsCanonicalGoal`,
   mapsSourceGoal: `${SP}mapsSourceGoal`,
+  sha256: `${SP}sha256`,
+  byteLength: `${SP}byteLength`,
+  contentUrl: `${SCHEMA}contentUrl`,
+  encodingFormat: `${SCHEMA}encodingFormat`,
+  provider: `${SCHEMA}provider`,
+  accessibilitySummary: `${SCHEMA}accessibilitySummary`,
+  schemaLicense: `${SCHEMA}license`,
+  creativeWorkStatus: `${SCHEMA}creativeWorkStatus`,
+  inLanguage: `${SCHEMA}inLanguage`,
 }
 
 const T = {
@@ -226,6 +291,7 @@ const T = {
   mappingFile: `${SP}MappingFile`,
   mappingRecord: `${SP}MappingRecord`,
   reviewDecision: `${SP}ReviewDecision`,
+  goalVisualizationReference: `${SP}GoalVisualizationReference`,
 }
 
 const usage = () => `Usage:
@@ -412,10 +478,8 @@ const isCarrierPredicate = (predicate: string) => (
   predicate === `${SP}lineText`
   || predicate === `${SP}textLine`
   || predicate === `${SP}hasFile`
-  || predicate === `${SP}byteLength`
   || predicate === `${SP}lineCount`
   || predicate === `${SP}endsWithNewline`
-  || predicate === `${SP}sha256`
 )
 
 const readRdfModel = async (rdfPath: string) => {
@@ -504,6 +568,136 @@ const orderedResources = (model: RdfModel, resources: string[]) => [...resources
 const graphTargets = (model: RdfModel, source: string, predicate: string) => (
   [...new Set(iris(model, source, predicate).map((target) => skillpilotId(model, target)))]
     .sort((left, right) => left.localeCompare(right))
+)
+
+const resourceHasType = (model: RdfModel, resource: string, type: string) => model.types.get(resource)?.has(type) ?? false
+
+const reconstructRequires = (model: RdfModel, source: string) => {
+  const prerequisiteReferences = iris(model, source, P.hasReference)
+    .filter((reference) => resourceHasType(model, reference, LP_DIDACTIC_PREREQUISITE))
+  const coreTargets = [...new Set(prerequisiteReferences
+    .flatMap((reference) => iris(model, reference, P.refersTo))
+    .map((target) => skillpilotId(model, target)))]
+    .sort((left, right) => left.localeCompare(right))
+
+  return prerequisiteReferences.length > 0
+    ? coreTargets
+    : graphTargets(model, source, P.didacticRequires)
+}
+
+const subjectsReferringTo = (model: RdfModel, reference: string) => [...model.iris.entries()]
+  .filter(([, predicates]) => predicates.get(P.hasReference)?.includes(reference))
+  .map(([subject]) => subject)
+
+const nullableLiteral = (model: RdfModel, subject: string, predicate: string) => lit(model, subject, predicate) ?? null
+
+const nullableNumber = (model: RdfModel, subject: string, predicate: string) => num(lit(model, subject, predicate)) ?? null
+
+const packagePathFromZipPath = (zipPath: string | null) => {
+  if (!zipPath) return null
+  const separator = zipPath.indexOf('/')
+  return separator >= 0 && separator < zipPath.length - 1 ? zipPath.slice(separator + 1) : null
+}
+
+const reconstructGoalVisualizations = (model: RdfModel): GoalVisualizationRecord[] => (
+  orderedResources(model, resourcesOfType(model, T.goalVisualizationReference)).map((reference) => {
+    const structureIssues: string[] = []
+    if (!resourceHasType(model, reference, LP_REFERENCE)) {
+      structureIssues.push('reference is not typed lp:LP_0030065')
+    }
+
+    const sourceCandidates = subjectsReferringTo(model, reference)
+      .filter((source) => resourceHasType(model, source, T.learningGoal))
+    if (sourceCandidates.length !== 1) {
+      structureIssues.push(`expected exactly one source goal, found ${sourceCandidates.length}`)
+    }
+    const source = sourceCandidates[0]
+
+    const imageCandidates = iris(model, reference, P.refersTo)
+    if (imageCandidates.length !== 1) {
+      structureIssues.push(`expected exactly one image target, found ${imageCandidates.length}`)
+    }
+    const image = imageCandidates[0] ?? null
+    if (image && !resourceHasType(model, image, SCHEMA_IMAGE_OBJECT)) {
+      structureIssues.push('image is not typed schema:ImageObject')
+    }
+    if (image && !resourceHasType(model, image, IAO_INFORMATION_CONTENT_ENTITY)) {
+      structureIssues.push('image is not typed obo:IAO_0000030')
+    }
+
+    const order = nullableNumber(model, reference, P.order)
+    const role = nullableLiteral(model, reference, P.role)
+    const goalId = source ? skillpilotId(model, source) : null
+    const zipPath = image ? nullableLiteral(model, image, P.zipPath) : null
+    const record: GoalVisualizationRecord = {
+      referenceIri: reference,
+      imageIri: image,
+      goalId,
+      order,
+      packagePath: packagePathFromZipPath(zipPath),
+      publicUrl: image ? nullableLiteral(model, image, P.contentUrl) : null,
+      mediaType: image
+        ? (nullableLiteral(model, image, P.encodingFormat) ?? nullableLiteral(model, image, P.format))
+        : null,
+      bytes: image ? nullableNumber(model, image, P.byteLength) : null,
+      sha256: image ? nullableLiteral(model, image, P.sha256) : null,
+      skillpilotId: image ? nullableLiteral(model, image, P.skillpilotId) : null,
+      role,
+      title: image ? nullableLiteral(model, image, P.title) : null,
+      provider: image ? nullableLiteral(model, image, P.provider) : null,
+      description: image ? nullableLiteral(model, image, P.description) : null,
+      altText: image ? nullableLiteral(model, image, P.accessibilitySummary) : null,
+      lang: image
+        ? (nullableLiteral(model, image, P.inLanguage) ?? nullableLiteral(model, image, P.dctermsLanguage))
+        : null,
+      license: image
+        ? (nullableLiteral(model, image, P.schemaLicense) ?? nullableLiteral(model, image, P.dctermsLicense))
+        : null,
+      reviewStatus: image ? nullableLiteral(model, image, P.creativeWorkStatus) : null,
+      zipPath,
+      structureIssues,
+    }
+
+    if (record.order === null || !Number.isInteger(record.order) || record.order < 0) {
+      structureIssues.push('order is missing or not a non-negative integer')
+    }
+    ;([
+      'goalId',
+      'packagePath',
+      'publicUrl',
+      'mediaType',
+      'sha256',
+      'skillpilotId',
+      'role',
+      'title',
+      'provider',
+      'description',
+      'altText',
+      'lang',
+      'license',
+      'reviewStatus',
+      'zipPath',
+    ] as const).forEach((field) => {
+      if (!record[field]) structureIssues.push(`${field} is missing`)
+    })
+    if (record.bytes === null || !Number.isInteger(record.bytes) || record.bytes < 0) {
+      structureIssues.push('bytes is missing or not a non-negative integer')
+    }
+    if (record.sha256 !== null && !/^[a-f0-9]{64}$/u.test(record.sha256)) {
+      structureIssues.push('sha256 is not a lowercase SHA-256 digest')
+    }
+    if (record.goalId && record.skillpilotId && record.goalId !== record.skillpilotId) {
+      structureIssues.push(`image skillpilotId ${record.skillpilotId} does not match source goal ${record.goalId}`)
+    }
+    if (record.packagePath && record.publicUrl && record.publicUrl !== `/${record.packagePath}`) {
+      structureIssues.push(`publicUrl ${record.publicUrl} does not match packagePath ${record.packagePath}`)
+    }
+    if (record.mediaType && record.mediaType !== 'image/jpeg' && record.mediaType !== 'image/png') {
+      structureIssues.push(`unsupported mediaType ${record.mediaType}`)
+    }
+
+    return record
+  })
 )
 
 const withString = (data: Record<string, JsonValue>, key: string, value: string | undefined) => {
@@ -606,8 +800,14 @@ const reconstructLandscape = (model: RdfModel): ReconstructedLandscape => {
     goal.dimensionTags = lits(model, resource, P.dimensionTag)
     goal.examples = lits(model, resource, P.example)
     goal.competencyRefs = iris(model, resource, P.competencyRef).map((competency) => skillpilotId(model, competency))
-    goal.contains = graphTargets(model, resource, P.containsGoal)
-    goal.requires = graphTargets(model, resource, P.didacticRequires)
+    // sp:containsGoal preserves the authored direct edge. BFO has-part is
+    // transitive in the FWU core, so inferred BFO descendants must not become
+    // direct SkillPilot children after a reasoning roundtrip.
+    const directContains = graphTargets(model, resource, P.containsGoal)
+    goal.contains = directContains.length > 0
+      ? directContains
+      : graphTargets(model, resource, P.hasPart)
+    goal.requires = reconstructRequires(model, resource)
     return goal
   })
 
@@ -766,6 +966,7 @@ const reconstructSemantic = (model: RdfModel): SemanticReconstruction => {
   const mappings = reconstructMappings(model)
   return {
     landscape: reconstructLandscape(model),
+    goalVisualizations: reconstructGoalVisualizations(model),
     sourceGoalReferences: reconstructSourceGoalReferences(model) as JsonValue,
     cardDecks: reconstructCardDecks(model) as JsonValue[],
     mappingFiles: reconstructMappingFiles(model),
@@ -783,11 +984,12 @@ const listZipEntries = (zipPath: string) => execFileSync('zipinfo', ['-1', zipPa
   .split(/\r?\n/u)
   .filter(Boolean)
 
-const readZipEntry = (zipPath: string, entryPath: string) => execFileSync('unzip', ['-p', zipPath, entryPath], {
-  encoding: 'utf8',
+const readZipEntryBuffer = (zipPath: string, entryPath: string) => execFileSync('unzip', ['-p', zipPath, entryPath], {
   maxBuffer: ZIP_COMMAND_MAX_BUFFER_BYTES,
   stdio: ['ignore', 'pipe', 'pipe'],
 })
+
+const readZipEntry = (zipPath: string, entryPath: string) => readZipEntryBuffer(zipPath, entryPath).toString('utf8')
 
 const readZipJson = (zipPath: string, entryPath: string) => JSON.parse(readZipEntry(zipPath, entryPath)) as JsonValue
 
@@ -795,6 +997,14 @@ const archiveRootFrom = (entries: string[]) => {
   const roots = new Set(entries.map((entry) => entry.split('/')[0]).filter(Boolean))
   return roots.size === 1 ? [...roots][0] : null
 }
+
+const isSafeArchiveRootSegment = (value: string) => (
+  value !== ''
+  && value !== '.'
+  && value !== '..'
+  && !value.includes('/')
+  && !value.includes('\\')
+)
 
 const jsonObject = (value: JsonValue, context: string): Record<string, JsonValue> => {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -893,14 +1103,75 @@ const check = (checks: CheckResult[], id: string, passed: boolean, details: stri
   checks.push({ id, passed, details })
 }
 
+const sha256 = (content: Buffer) => createHash('sha256').update(content).digest('hex')
+
+const visualizationKey = (goalId: JsonValue | null | undefined, order: JsonValue | null | undefined) => `${String(goalId)}#${String(order)}`
+
+const isGoalVisualizationLink = (value: JsonValue) => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false
+  return value.type === 'goal-visualization' && value.resourceType === 'image'
+}
+
+const visualizationLinkFromRecord = (record: GoalVisualizationRecord): JsonValue => stableValue({
+  type: 'goal-visualization',
+  resourceType: 'image',
+  role: record.role,
+  skillpilotId: record.skillpilotId,
+  title: record.title,
+  url: record.publicUrl,
+  provider: record.provider,
+  description: record.description,
+  altText: record.altText,
+  lang: record.lang,
+  license: record.license,
+  reviewStatus: record.reviewStatus,
+} as unknown as JsonValue)
+
+const visualizationIndexAssetFromRecord = (record: GoalVisualizationRecord): JsonValue => stableValue({
+  goalId: record.goalId,
+  order: record.order,
+  packagePath: record.packagePath,
+  publicUrl: record.publicUrl,
+  mediaType: record.mediaType,
+  bytes: record.bytes,
+  sha256: record.sha256,
+  skillpilotId: record.skillpilotId,
+  role: record.role,
+  title: record.title,
+  provider: record.provider,
+  description: record.description,
+  altText: record.altText,
+  lang: record.lang,
+  license: record.license,
+  reviewStatus: record.reviewStatus,
+} as unknown as JsonValue)
+
+const resolveSafeRelativePath = (baseDir: string, packagePath: string) => {
+  if (
+    packagePath.length === 0
+    || packagePath.startsWith('/')
+    || packagePath.includes('\\')
+    || packagePath.split('/').includes('..')
+  ) {
+    return null
+  }
+  const absolutePath = resolve(baseDir, packagePath)
+  const relativePath = relative(baseDir, absolutePath)
+  return relativePath !== '' && !relativePath.startsWith('..') && !isAbsolute(relativePath)
+    ? absolutePath
+    : null
+}
+
 const validateSemanticReconstruction = (params: {
   zipPath: string
+  rdfPath: string
+  outDir: string
   reconstruction: SemanticReconstruction
 }) => {
   const checks: CheckResult[] = []
   const entries = listZipEntries(params.zipPath)
   const archiveRoot = archiveRootFrom(entries)
-  if (!archiveRoot) {
+  if (!archiveRoot || !isSafeArchiveRootSegment(archiveRoot)) {
     throw new Error('ZIP does not contain exactly one archive root.')
   }
 
@@ -990,6 +1261,202 @@ const validateSemanticReconstruction = (params: {
   })
   check(checks, 'semantic-goals-count-and-ids', missingGoals.length === 0 && originalGoals.length === reconstructedGoals.length, `${reconstructedGoals.length}/${originalGoals.length} goal(s); missing ${missingGoals.length}`)
   check(checks, 'semantic-goal-fields-match', changedGoalFields.length === 0, changedGoalFields.slice(0, 10).join(', ') || 'ok')
+
+  const canonicalVisualizations = originalGoals.flatMap((goal) => {
+    const resourceLinks = Array.isArray(goal.resourceLinks) ? goal.resourceLinks : []
+    return resourceLinks.flatMap((link, order) => isGoalVisualizationLink(link)
+      ? [{ goalId: String(goal.id), order, link }]
+      : [])
+  })
+  const visualizationIndexPath = packageEntryPath(archiveRoot, 'data/resources/goal-visualizations.json')
+  const visualizationIndexPresent = entries.includes(visualizationIndexPath)
+  const visualizationIndex = visualizationIndexPresent
+    ? jsonObject(readZipJson(params.zipPath, visualizationIndexPath), 'goal visualization resource index')
+    : null
+  const visualizationIndexAssets = visualizationIndex && Array.isArray(visualizationIndex.assets)
+    ? visualizationIndex.assets.map((asset) => jsonObject(asset, 'goal visualization index asset'))
+    : []
+  const rdfVisualizations = params.reconstruction.goalVisualizations
+  const visualizationLaneActive = canonicalVisualizations.length > 0
+    || rdfVisualizations.length > 0
+    || visualizationIndexPresent
+
+  const structureIssues = rdfVisualizations.flatMap((record) => record.structureIssues
+    .map((issue) => `${visualizationKey(record.goalId, record.order)}: ${issue}`))
+  check(
+    checks,
+    'semantic-goal-visualization-rdf-structure',
+    structureIssues.length === 0,
+    structureIssues.slice(0, 10).join(' | ') || `${rdfVisualizations.length} explicit visualization reference(s)`,
+  )
+
+  const canonicalKeys = canonicalVisualizations.map((entry) => visualizationKey(entry.goalId, entry.order))
+  const rdfKeys = rdfVisualizations.map((entry) => visualizationKey(entry.goalId, entry.order))
+  const duplicateCanonicalKeys = canonicalKeys.filter((key, index) => canonicalKeys.indexOf(key) !== index)
+  const duplicateRdfKeys = rdfKeys.filter((key, index) => rdfKeys.indexOf(key) !== index)
+  const rdfPaths = rdfVisualizations.map((entry) => entry.packagePath).filter((path): path is string => path !== null)
+  const duplicateRdfPaths = rdfPaths.filter((path, index) => rdfPaths.indexOf(path) !== index)
+  const rdfByKey = asMap(rdfVisualizations, (record) => visualizationKey(record.goalId, record.order))
+  const canonicalMetadataIssues = canonicalVisualizations.flatMap((entry) => {
+    const reconstructed = rdfByKey.get(visualizationKey(entry.goalId, entry.order))
+    if (!reconstructed) return [`missing RDF reference ${visualizationKey(entry.goalId, entry.order)}`]
+    return normalize(entry.link) === normalize(visualizationLinkFromRecord(reconstructed))
+      ? []
+      : [`changed RDF metadata ${visualizationKey(entry.goalId, entry.order)}`]
+  })
+  check(
+    checks,
+    'semantic-goal-visualization-metadata-match',
+    canonicalMetadataIssues.length === 0
+      && duplicateCanonicalKeys.length === 0
+      && duplicateRdfKeys.length === 0
+      && duplicateRdfPaths.length === 0
+      && canonicalVisualizations.length === rdfVisualizations.length,
+    [...duplicateCanonicalKeys.map((key) => `duplicate canonical ${key}`),
+      ...duplicateRdfKeys.map((key) => `duplicate RDF ${key}`),
+      ...duplicateRdfPaths.map((path) => `duplicate RDF path ${path}`),
+      ...canonicalMetadataIssues]
+      .slice(0, 10).join(' | ')
+      || `${rdfVisualizations.length}/${canonicalVisualizations.length} visualization metadata record(s)`,
+  )
+
+  const indexKeys = visualizationIndexAssets.map((asset) => visualizationKey(asset.goalId, asset.order))
+  const duplicateIndexKeys = indexKeys.filter((key, index) => indexKeys.indexOf(key) !== index)
+  const indexPaths = visualizationIndexAssets
+    .map((asset) => asset.packagePath)
+    .filter((path): path is string => typeof path === 'string')
+  const duplicateIndexPaths = indexPaths.filter((path, index) => indexPaths.indexOf(path) !== index)
+  const indexByKey = asMap(visualizationIndexAssets, (asset) => visualizationKey(asset.goalId, asset.order))
+  const indexIssues: string[] = []
+  if (visualizationLaneActive && !visualizationIndexPresent) {
+    indexIssues.push(`missing ${visualizationIndexPath}`)
+  }
+  if (visualizationIndexPresent && visualizationIndex?.schemaVersion !== 1) {
+    indexIssues.push(`unexpected resource index schemaVersion ${String(visualizationIndex?.schemaVersion)}`)
+  }
+  if (visualizationIndexPresent && !Array.isArray(visualizationIndex?.assets)) {
+    indexIssues.push('resource index does not contain an assets array')
+  }
+  rdfVisualizations.forEach((record) => {
+    const key = visualizationKey(record.goalId, record.order)
+    const indexed = indexByKey.get(key)
+    if (!indexed) {
+      indexIssues.push(`missing index asset ${key}`)
+      return
+    }
+    if (normalize(indexed as JsonValue) !== normalize(visualizationIndexAssetFromRecord(record))) {
+      indexIssues.push(`changed index asset ${key}`)
+    }
+  })
+  check(
+    checks,
+    'semantic-goal-visualization-resource-index-match',
+    indexIssues.length === 0
+      && duplicateIndexKeys.length === 0
+      && duplicateIndexPaths.length === 0
+      && visualizationIndexAssets.length === rdfVisualizations.length,
+    [...duplicateIndexKeys.map((key) => `duplicate index ${key}`),
+      ...duplicateIndexPaths.map((path) => `duplicate index path ${path}`),
+      ...indexIssues]
+      .slice(0, 10).join(' | ')
+      || `${visualizationIndexAssets.length}/${rdfVisualizations.length} indexed visualization asset(s)`,
+  )
+
+  const sidecarIssues: string[] = []
+  const originalByteIssues: string[] = []
+  const copyIssues: string[] = []
+  let sidecarsCopied = 0
+  const sidecarRoot = dirname(params.rdfPath)
+  const packageAssetsRoot = resolve(params.outDir, 'package-assets')
+  rmSync(packageAssetsRoot, { recursive: true, force: true })
+  const zipEntrySet = new Set(entries)
+  rdfVisualizations.forEach((record) => {
+    const key = visualizationKey(record.goalId, record.order)
+    const packagePath = record.packagePath
+    if (!packagePath) {
+      sidecarIssues.push(`${key}: missing packagePath`)
+      return
+    }
+    const expectedZipPath = packageEntryPath(archiveRoot, packagePath)
+    if (record.zipPath !== expectedZipPath) {
+      sidecarIssues.push(`${key}: zipPath ${String(record.zipPath)} != ${expectedZipPath}`)
+    }
+
+    const sidecarPath = resolveSafeRelativePath(sidecarRoot, packagePath)
+    const copyPath = resolveSafeRelativePath(packageAssetsRoot, packagePath)
+    if (!sidecarPath || !copyPath) {
+      sidecarIssues.push(`${key}: unsafe packagePath ${packagePath}`)
+      return
+    }
+    if (!existsSync(sidecarPath)) {
+      sidecarIssues.push(`${key}: missing sidecar ${toPosixPath(relative(repoRoot, sidecarPath))}`)
+      return
+    }
+
+    const sidecar = readFileSync(sidecarPath)
+    const sidecarSha256 = sha256(sidecar)
+    let sidecarValid = true
+    if (record.bytes !== sidecar.length) {
+      sidecarIssues.push(`${key}: sidecar byteLength ${sidecar.length} != ${String(record.bytes)}`)
+      sidecarValid = false
+    }
+    if (record.sha256 !== sidecarSha256) {
+      sidecarIssues.push(`${key}: sidecar sha256 ${sidecarSha256} != ${String(record.sha256)}`)
+      sidecarValid = false
+    }
+
+    let originalValid = true
+    if (!zipEntrySet.has(expectedZipPath)) {
+      originalByteIssues.push(`${key}: original ZIP is missing ${expectedZipPath}`)
+      originalValid = false
+    } else {
+      const original = readZipEntryBuffer(params.zipPath, expectedZipPath)
+      const originalSha256 = sha256(original)
+      if (original.length !== sidecar.length || originalSha256 !== sidecarSha256) {
+        originalByteIssues.push(`${key}: sidecar bytes differ from original ZIP (${sidecarSha256} != ${originalSha256})`)
+        originalValid = false
+      }
+      if (record.bytes !== original.length || record.sha256 !== originalSha256) {
+        originalByteIssues.push(`${key}: RDF digest/length differ from original ZIP`)
+        originalValid = false
+      }
+    }
+
+    if (sidecarValid && originalValid && record.zipPath === expectedZipPath) {
+      try {
+        mkdirSync(dirname(copyPath), { recursive: true })
+        writeFileSync(copyPath, sidecar)
+        sidecarsCopied += 1
+      } catch (error) {
+        copyIssues.push(`${key}: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    }
+  })
+  check(
+    checks,
+    'semantic-goal-visualization-sidecars-valid',
+    sidecarIssues.length === 0,
+    sidecarIssues.slice(0, 10).join(' | ') || `${rdfVisualizations.length} sidecar asset(s) verified`,
+  )
+  check(
+    checks,
+    'semantic-goal-visualization-original-bytes-match',
+    originalByteIssues.length === 0,
+    originalByteIssues.slice(0, 10).join(' | ') || `${rdfVisualizations.length} original ZIP asset(s) match`,
+  )
+  check(
+    checks,
+    'semantic-goal-visualization-assets-copied',
+    copyIssues.length === 0 && sidecarsCopied === rdfVisualizations.length,
+    copyIssues.slice(0, 10).join(' | ') || `${sidecarsCopied}/${rdfVisualizations.length} asset(s) copied to package-assets`,
+  )
+
+  const visualizationCounts: VisualizationValidationCounts = {
+    canonicalLinks: canonicalVisualizations.length,
+    rdfReferences: rdfVisualizations.length,
+    indexAssets: visualizationIndexAssets.length,
+    sidecarsCopied,
+  }
 
   const sourceOriginal = readZipJson(params.zipPath, packageEntryPath(archiveRoot, 'data/sources/source-goal-references.json'))
   const originalSources = jsonObject(sourceOriginal, 'source-goal references').sources
@@ -1215,6 +1682,7 @@ const validateSemanticReconstruction = (params: {
     archiveRoot,
     passed: checks.every((entry) => entry.passed),
     checks,
+    visualizationCounts,
   }
 }
 
@@ -1225,6 +1693,14 @@ const writeOutputs = (params: {
 }) => {
   mkdirSync(params.options.outDir, { recursive: true })
   writeFileSync(resolve(params.options.outDir, 'canonical-landscape.semantic.json'), `${JSON.stringify(params.reconstruction.landscape, null, 2)}\n`)
+  writeFileSync(resolve(params.options.outDir, 'goal-visualizations.semantic.json'), `${JSON.stringify({
+    schemaVersion: 1,
+    assets: params.reconstruction.goalVisualizations.map(visualizationIndexAssetFromRecord),
+  }, null, 2)}\n`)
+  writeFileSync(resolve(params.options.outDir, 'goal-visualizations.diagnostic.json'), `${JSON.stringify({
+    schemaVersion: 1,
+    references: params.reconstruction.goalVisualizations,
+  }, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'source-goal-references.semantic.json'), `${JSON.stringify(params.reconstruction.sourceGoalReferences, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'card-decks.semantic.json'), `${JSON.stringify(params.reconstruction.cardDecks, null, 2)}\n`)
   writeFileSync(resolve(params.options.outDir, 'mappings.semantic.json'), `${JSON.stringify({
@@ -1239,6 +1715,9 @@ const writeOutputs = (params: {
     comparisonZip: repoRelative(params.options.zipPath),
     archiveRoot: params.validation.archiveRoot,
     passed: params.validation.passed,
+    counts: {
+      ...params.validation.visualizationCounts,
+    },
     checks: params.validation.checks,
   }, null, 2)}\n`)
 
@@ -1254,6 +1733,12 @@ Comparison ZIP: \`${repoRelative(params.options.zipPath)}\`
 ## Result
 
 ${params.validation.passed ? 'Semantic reconstruction passed.' : 'Semantic reconstruction failed.'}
+
+## Visualization Assets
+
+| Canonical links | RDF references | Resource index assets | Copied sidecars |
+| ---: | ---: | ---: | ---: |
+| ${params.validation.visualizationCounts.canonicalLinks} | ${params.validation.visualizationCounts.rdfReferences} | ${params.validation.visualizationCounts.indexAssets} | ${params.validation.visualizationCounts.sidecarsCopied} |
 
 ## Checks
 
@@ -1275,7 +1760,12 @@ const run = async () => {
   }
   const model = await readRdfModel(options.rdfPath)
   const reconstruction = reconstructSemantic(model)
-  const validation = validateSemanticReconstruction({ zipPath: options.zipPath, reconstruction })
+  const validation = validateSemanticReconstruction({
+    zipPath: options.zipPath,
+    rdfPath: options.rdfPath,
+    outDir: options.outDir,
+    reconstruction,
+  })
   writeOutputs({ options, reconstruction, validation })
   process.stdout.write(`Semantic reconstruction ${validation.passed ? 'passed' : 'failed'}\n`)
   process.stdout.write(`Report: ${repoRelative(resolve(options.outDir, 'semantic-reconstruction-report.md'))}\n`)

@@ -1,6 +1,6 @@
 # MEM/FWU Roundtrip Plan
 
-Status: concept plan  
+Status: implemented reference roundtrip
 Scope: SkillPilot curriculum landscapes as a practical compatibility probe for MEM-compatible RDF/OWL representations based on the FWU Lehrplan Ontology
 
 ## Purpose
@@ -51,7 +51,7 @@ reconstructed SkillPilot curricular competence landscape
 SkillPilot validation
 ```
 
-The second transformation must reconstruct the SkillPilot landscape from the RDF/OWL representation without reading or relying on the original SkillPilot ZIP input.
+The second transformation must reconstruct the SkillPilot landscape from the semantic bundle without reading or relying on the original SkillPilot ZIP input. The bundle consists of RDF/OWL plus explicitly referenced binary sidecars such as goal visualizations; binary files are not embedded as opaque Base64 literals in RDF.
 
 ## First Quality Goal
 
@@ -60,7 +60,7 @@ The first quality goal is a semantically lossless MEM/FWU roundtrip for the math
 ```text
 skillpilot-de-gymnasium-mathematik-v0.1.0.zip
     ->
-FWU/MEM-first RDF representation with a minimal SkillPilot profile
+FWU/MEM-first semantic bundle with a minimal SkillPilot profile and referenced assets
     ->
 reconstructed SkillPilot knowledge-landscape data
     ->
@@ -104,47 +104,55 @@ The roundtrip is meaningful only if the RDF/OWL representation can preserve all 
 - competency axes: `competencyCatalog`, `competencyRefs`
 - learner-facing structure: composition views
 - source and provenance references
+- goal-visualization references, metadata, package paths, and byte-identical image assets
 - validation-relevant metadata
 
 The RDF/OWL representation must not simply embed the original SkillPilot JSON as an opaque blob. It must express the data semantically enough that an independent reverse transformation can reconstruct the package.
 
 ## Expected Ontology Profile
 
-The current FWU Lehrplan Ontology already covers many curriculum metadata concepts, but it does not directly define all SkillPilot runtime semantics.
+The current FWU Lehrplan Ontology already covers many curriculum metadata concepts, but it does not directly define all SkillPilot runtime semantics or a media-package format.
 
-The roundtrip will likely require a small SkillPilot profile or extension vocabulary aligned with the FWU ontology.
+The implemented roundtrip uses a small SkillPilot profile aligned with the FWU ontology for the semantics that the core intentionally does not cover.
 
-The first profile focus should be the two graph relations that are explicit in the concept paper's learning-goal graph:
+The first profile focus remains the two graph relations that are explicit in the concept paper's learning-goal graph:
 
 - `requires` / didactic prerequisite
 - `contains` / learning-goal composition
 
-Mappings from learner-facing views to the canonical graph are a later extension layer. They should be added once the core graph relations roundtrip cleanly.
+Mappings and learner-facing composition views remain a separate application layer and are included in the semantic bundle without being recast as curricular parthood.
 
-Candidate terms:
+Since [FWU-DE/lehrplan-ontologie#9](https://github.com/FWU-DE/lehrplan-ontologie/pull/9), didactic prerequisites have a dedicated core pattern. A prerequisite is a reified `LP_0000554` resource, attached to the source through `LP_0030071` (`hat Verweis`) and pointing to the prerequisite goal through `LP_0030072` (`verweist auf`). This replaces the earlier `skillpilot:didacticRequires` proposal for the canonical roundtrip.
+
+Strict curricular composition uses `BFO_0000051` (`hat Teil`) directly. Every authored direct edge is additionally retained as `skillpilot:containsGoal`, because BFO parthood is transitive and a reasoner may materialize indirect descendants. The application assertion is therefore the lossless direct-edge anchor; mixed runtime, practice, assessment, memory, orientation, or navigation edges use only that assertion.
+
+Candidate application terms that still remain useful:
 
 ```text
 skillpilot:LearningGoal
 skillpilot:AtomicGoal
 skillpilot:ClusterGoal
-skillpilot:didacticRequires
 skillpilot:containsGoal
-skillpilot:hasCurricularPart
-skillpilot:masteryWeight
+skillpilot:weight
 skillpilot:core
 skillpilot:shortKey
 skillpilot:ProgramUnit
 skillpilot:GoalPlacement
 skillpilot:CompositionView
+skillpilot:GoalVisualizationReference
 ```
+
+The referenced media target uses the standard `schema:ImageObject` class rather than a new SkillPilot asset class.
 
 Important modeling constraint:
 
-> FWU `CE-Verweis` must not be treated as SkillPilot `requires`.
+> A generic FWU `CE-Verweis` must not be treated as a prerequisite. Only the specialized `LP_0000554` pattern carries SkillPilot `requires` semantics.
 
-A curriculum reference is not automatically a didactic prerequisite. SkillPilot needs an explicit prerequisite relation for frontier and learning-path logic.
+A generic curriculum reference is not automatically a didactic prerequisite. The specialized core class now provides the explicit semantics needed for frontier and learning-path logic while retaining a first-class edge resource for rationale, source, scope, version, and review metadata.
 
-Likewise, plain parthood must be checked for domain fit. SkillPilot `contains` should be preserved as application graph containment. It may be materialized as `BFO_0000051` / `hat Teil` only through a stricter relation such as `skillpilot:hasCurricularPart`, and only when the relation is a genuine curricular part-whole relation: a cluster or goal comprises subgoals that are semantic parts of that cluster or goal. It must not be used for UI placement, ordering, loose topic association, state visibility, memorization/practice nodes, or view mappings. If FWU/MEM treats `hat Teil` as the intended relation for this strict pattern, the roundtrip should document this explicitly; otherwise a curriculum-specific relation should be discussed before being introduced.
+Likewise, plain parthood must be checked for domain fit. SkillPilot `contains` is additionally represented as `BFO_0000051` / `hat Teil` only when the relation is a genuine curricular part-whole relation: a cluster or goal comprises subgoals that are semantic parts of that cluster or goal. It must not be used for UI placement, ordering, loose topic association, state visibility, memorization/practice nodes, or view mappings. `skillpilot:containsGoal` preserves the authored direct graph independently of BFO inference.
+
+Goal visualizations reuse the core `CE-Verweis` pattern from a goal to an external resource. The target image is represented with standard media vocabulary and shipped as a hashed binary sidecar. Package path, checksum, byte length, review state, and exact SkillPilot link reconstruction remain legitimate application-level packaging metadata because the FWU core does not define a binary media package model.
 
 ## Deliverables
 
@@ -153,9 +161,10 @@ Likewise, plain parthood must be checked for domain fit. SkillPilot `contains` s
 3. Transformation project A: SkillPilot ZIP to RDF/OWL.
 4. Transformation project B: RDF/OWL to SkillPilot ZIP.
 5. RDF/OWL profile documentation for the SkillPilot-specific terms.
-6. Roundtrip comparison report.
-7. List of ontology gaps or candidate relation additions for discussion in the FWU GitHub project.
-8. Draft issue or PR text backed by the current roundtrip evidence, if the test reveals a generally useful MEM/FWU modeling improvement.
+6. Binary resource index and byte-integrity checks for goal visualizations.
+7. Roundtrip comparison report.
+8. List of ontology gaps or candidate relation additions for discussion in the FWU GitHub project.
+9. Draft issue or PR text backed by the current roundtrip evidence, if the test reveals a generally useful MEM/FWU modeling improvement.
 
 ## Success Criteria
 
@@ -168,8 +177,9 @@ The first roundtrip is successful when:
   - referential integrity
   - valid composition views
 - all SkillPilot-required fields are reconstructed deterministically
+- every active goal-visualization reference resolves to exactly one packaged image and the reconstructed sidecar is byte-identical by SHA-256
 - canonicalized source and reconstructed JSON are equivalent for required data
-- RDF/OWL and SHACL validation pass for the intermediate representation
+- RDF/OWL core-pattern validation passes for the intermediate representation; until the upstream release artifacts and auto-shapes contain `LP_0000554`, the roundtrip applies an equivalent local source/reference/target structural check and records the pinned core module
 - the transformation does not depend on hidden copies of the original JSON
 
 ## Collaboration Channel

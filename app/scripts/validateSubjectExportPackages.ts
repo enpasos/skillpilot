@@ -44,6 +44,27 @@ type ManifestFileRecord = {
 
 type ManifestSourceSelection = {
   memoryCardReviewAuditCount?: number
+  goalVisualizationAssetCount?: number
+  goalVisualizationIndexPackagePath?: string
+}
+
+type GoalVisualizationAssetRecord = {
+  goalId: string
+  order: number
+  packagePath: string
+  publicUrl: string
+  mediaType: 'image/jpeg' | 'image/png'
+  bytes: number
+  sha256: string
+  skillpilotId: string
+  role: string
+  title: string
+  provider: string
+  description: string
+  altText: string
+  lang: string
+  license: string
+  reviewStatus: string
 }
 
 type GoalRecord = {
@@ -103,12 +124,21 @@ const REQUIRED_RELATIVE_PATHS = [
   'schemas/flashcard-deck.schema.json',
 ]
 
+const GOAL_VISUALIZATION_CONTRACT_RELATIVE_PATHS = [
+  'data/resources/goal-visualizations.json',
+  'schemas/goal-visualization-index.schema.json',
+]
+
 const ALLOWED_LICENSE_CATEGORIES = new Set([
   'skillpilot-software-apache-2.0',
   'skillpilot-data-cc-by-4.0',
   'official-source-provenance-only',
   'generated-package-metadata',
+  'goal-visualization-ai-generated-curated',
 ])
+
+const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-curated'
+const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
 
 const INTERNAL_DATA_PATTERNS = [
   /\/home\//u,
@@ -334,6 +364,189 @@ const parseGoals = (canonicalData: JsonValue): GoalRecord[] => {
   })
 }
 
+const GOAL_VISUALIZATION_LINK_FIELDS = [
+  'skillpilotId',
+  'role',
+  'title',
+  'provider',
+  'description',
+  'altText',
+  'lang',
+  'license',
+  'reviewStatus',
+] as const
+
+type CanonicalGoalVisualizationRecord = Pick<GoalVisualizationAssetRecord,
+  | 'goalId'
+  | 'order'
+  | 'packagePath'
+  | 'publicUrl'
+  | 'skillpilotId'
+  | 'role'
+  | 'title'
+  | 'provider'
+  | 'description'
+  | 'altText'
+  | 'lang'
+  | 'license'
+  | 'reviewStatus'
+>
+
+const expectedGoalVisualizationPath = (subjectSlug: string, goalId: string, extension: string) => (
+  `assets/goal-visualizations/${subjectSlug}/${goalId}/${goalId}${extension}`
+)
+
+const safeGoalVisualizationPackagePath = (value: string) => {
+  const segments = value.split('/')
+  return value.startsWith('assets/goal-visualizations/')
+    && !value.includes('\\')
+    && !value.includes('?')
+    && !value.includes('#')
+    && !value.includes('\0')
+    && segments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+}
+
+const collectCanonicalGoalVisualizations = (canonicalData: JsonValue, subjectSlug: string) => {
+  const data = jsonObject(canonicalData, 'canonical landscape')
+  const goals = Array.isArray(data.goals) ? data.goals : []
+  const records: CanonicalGoalVisualizationRecord[] = []
+  const issues: string[] = []
+  let declaredLinks = 0
+
+  goals.forEach((goalValue) => {
+    const goal = jsonObject(goalValue, 'canonical goal')
+    const goalId = typeof goal.id === 'string' ? goal.id : ''
+    if (!goalId || !Array.isArray(goal.resourceLinks)) return
+    goal.resourceLinks.forEach((linkValue, order) => {
+      if (!linkValue || typeof linkValue !== 'object' || Array.isArray(linkValue)) return
+      const link = linkValue as Record<string, JsonValue>
+      if (link.type !== 'goal-visualization') return
+      declaredLinks += 1
+      const context = `${goalId}:resourceLinks[${order}]`
+      if (link.resourceType !== 'image') {
+        issues.push(`${context}: resourceType must be image`)
+        return
+      }
+      const values: Record<string, string> = {}
+      let valid = true
+      GOAL_VISUALIZATION_LINK_FIELDS.forEach((field) => {
+        const value = link[field]
+        if (typeof value !== 'string' || value.trim().length === 0) {
+          issues.push(`${context}: missing non-empty ${field}`)
+          valid = false
+        } else {
+          values[field] = value
+        }
+      })
+      const publicUrl = typeof link.url === 'string' ? link.url : ''
+      if (!publicUrl.startsWith('/') || publicUrl.startsWith('//')) {
+        issues.push(`${context}: url must be root-relative`)
+        valid = false
+      }
+      if (!valid) return
+      if (values.skillpilotId !== goalId) {
+        issues.push(`${context}: skillpilotId must equal goal id`)
+        return
+      }
+      if (values.role !== 'primary') {
+        issues.push(`${context}: role must be primary`)
+        return
+      }
+      if (!/^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/u.test(values.lang)) {
+        issues.push(`${context}: invalid language tag`)
+        return
+      }
+      const packagePath = publicUrl.slice(1)
+      const extension = packagePath.toLowerCase().endsWith('.jpg')
+        ? '.jpg'
+        : packagePath.toLowerCase().endsWith('.png')
+          ? '.png'
+          : ''
+      if (!extension || !safeGoalVisualizationPackagePath(packagePath)) {
+        issues.push(`${context}: unsafe or unsupported visualization URL ${publicUrl}`)
+        return
+      }
+      const expectedPath = expectedGoalVisualizationPath(subjectSlug, goalId, extension)
+      if (packagePath !== expectedPath) {
+        issues.push(`${context}: expected /${expectedPath}, got ${publicUrl}`)
+        return
+      }
+      records.push({
+        goalId,
+        order,
+        packagePath,
+        publicUrl,
+        skillpilotId: values.skillpilotId,
+        role: values.role,
+        title: values.title,
+        provider: values.provider,
+        description: values.description,
+        altText: values.altText,
+        lang: values.lang,
+        license: values.license,
+        reviewStatus: values.reviewStatus,
+      })
+    })
+  })
+
+  return { records, issues, declaredLinks }
+}
+
+const parseGoalVisualizationAssetRecord = (value: JsonValue): GoalVisualizationAssetRecord => {
+  const data = jsonObject(value, 'goal visualization asset')
+  const mediaType = stringField(data, 'mediaType', 'goal visualization asset')
+  if (mediaType !== 'image/jpeg' && mediaType !== 'image/png') {
+    throw new Error(`Unsupported goal visualization mediaType: ${mediaType}`)
+  }
+  const record: GoalVisualizationAssetRecord = {
+    goalId: stringField(data, 'goalId', 'goal visualization asset'),
+    order: numberField(data, 'order', 'goal visualization asset'),
+    packagePath: stringField(data, 'packagePath', 'goal visualization asset'),
+    publicUrl: stringField(data, 'publicUrl', 'goal visualization asset'),
+    mediaType,
+    bytes: numberField(data, 'bytes', 'goal visualization asset'),
+    sha256: stringField(data, 'sha256', 'goal visualization asset'),
+    skillpilotId: stringField(data, 'skillpilotId', 'goal visualization asset'),
+    role: stringField(data, 'role', 'goal visualization asset'),
+    title: stringField(data, 'title', 'goal visualization asset'),
+    provider: stringField(data, 'provider', 'goal visualization asset'),
+    description: stringField(data, 'description', 'goal visualization asset'),
+    altText: stringField(data, 'altText', 'goal visualization asset'),
+    lang: stringField(data, 'lang', 'goal visualization asset'),
+    license: stringField(data, 'license', 'goal visualization asset'),
+    reviewStatus: stringField(data, 'reviewStatus', 'goal visualization asset'),
+  }
+  if (!Number.isInteger(record.order) || record.order < 0) {
+    throw new Error(`Invalid goal visualization order: ${record.order}`)
+  }
+  if (!Number.isInteger(record.bytes) || record.bytes < 0) {
+    throw new Error(`Invalid goal visualization byte length: ${record.bytes}`)
+  }
+  if (!/^[a-f0-9]{64}$/u.test(record.sha256)) {
+    throw new Error(`Invalid goal visualization SHA-256: ${record.sha256}`)
+  }
+  GOAL_VISUALIZATION_LINK_FIELDS.forEach((field) => {
+    if (record[field].trim().length === 0) {
+      throw new Error(`Empty goal visualization field: ${field}`)
+    }
+  })
+  return record
+}
+
+const goalVisualizationMagicMatches = (record: GoalVisualizationAssetRecord, content: Buffer) => {
+  if (record.mediaType === 'image/jpeg') {
+    return record.packagePath.endsWith('.jpg')
+      && content.length >= 3
+      && content[0] === 0xff
+      && content[1] === 0xd8
+      && content[2] === 0xff
+  }
+  const pngSignature = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]
+  return record.packagePath.endsWith('.png')
+    && content.length >= pngSignature.length
+    && pngSignature.every((byte, index) => content[index] === byte)
+}
+
 const unknownReferences = (goals: GoalRecord[], relation: 'contains' | 'requires'): GoalReference[] => {
   const ids = new Set(goals.map((goal) => goal.id))
   return goals.flatMap((goal) => goal[relation]
@@ -464,6 +677,19 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
   try {
     const entries = listZipEntries(zipPath)
     const entrySet = new Set(entries)
+    const entryIntegrity = new Map<string, { bytes: number; sha256: string; head: Buffer }>()
+    const inspectZipEntry = (entry: string) => {
+      const cached = entryIntegrity.get(entry)
+      if (cached) return cached
+      const content = readZipEntry(zipPath, entry)
+      const inspected = {
+        bytes: content.length,
+        sha256: sha256(content),
+        head: Buffer.from(content.subarray(0, 8)),
+      }
+      entryIntegrity.set(entry, inspected)
+      return inspected
+    }
     archiveRoot = archiveRootFrom(entries)
     counts.files = entries.length
     counts.maxArchivePathLength = entries.reduce((maxLength, entry) => Math.max(maxLength, entry.length), 0)
@@ -512,7 +738,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
       if (!entrySet.has(entry)) {
         return [`missing entry: ${entry}`]
       }
-      const actual = sha256(readZipEntry(zipPath, entry))
+      const actual = inspectZipEntry(entry).sha256
       return actual === expected ? [] : [`${entry}: ${actual} != ${expected}`]
     })
     check(checks, 'checksum-file-values-match', checksumMismatches.length === 0, checksumMismatches.slice(0, 3).join(' | ') || 'ok')
@@ -521,13 +747,12 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
       if (!entrySet.has(file.path)) {
         return [`missing entry: ${file.path}`]
       }
-      const content = readZipEntry(zipPath, file.path)
-      const actualSha = sha256(content)
+      const content = inspectZipEntry(file.path)
       const issues: string[] = []
-      if (actualSha !== file.sha256) {
+      if (content.sha256 !== file.sha256) {
         issues.push(`${file.path}: sha256 mismatch`)
       }
-      if (content.length !== file.bytes) {
+      if (content.bytes !== file.bytes) {
         issues.push(`${file.path}: byte length mismatch`)
       }
       return issues
@@ -639,6 +864,205 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     const duplicateGoalIds = goalIds.filter((goalId, index) => goalIds.indexOf(goalId) !== index)
     counts.canonicalGoals = goals.length
     check(checks, 'canonical-goals-present-and-unique', goals.length > 0 && duplicateGoalIds.length === 0, `${goals.length} goal(s)`)
+
+    const subjectSlug = typeof manifest.subjectSlug === 'string' && manifest.subjectSlug.trim()
+      ? manifest.subjectSlug.trim()
+      : ''
+    check(checks, 'manifest-subject-slug-present', subjectSlug.length > 0, subjectSlug || '(missing)')
+    const canonicalVisualizations = collectCanonicalGoalVisualizations(canonicalData, subjectSlug)
+    const actualVisualizationEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/assets/goal-visualizations/`))
+    const visualizationContractMarkers = GOAL_VISUALIZATION_CONTRACT_RELATIVE_PATHS
+      .map((relativePath) => packageEntryPath(archiveRoot, relativePath))
+      .filter((entry) => entrySet.has(entry))
+    const manifestDeclaresVisualizations = Object.prototype.hasOwnProperty.call(sourceSelection, 'goalVisualizationAssetCount')
+      || Object.prototype.hasOwnProperty.call(sourceSelection, 'goalVisualizationIndexPackagePath')
+      || manifestFiles.some((file) => file.category === 'goal-visualization' || file.category === 'goal-visualization-index')
+    const hasVisualizationContract = canonicalVisualizations.declaredLinks > 0
+      || actualVisualizationEntries.length > 0
+      || visualizationContractMarkers.length > 0
+      || manifestDeclaresVisualizations
+    const missingVisualizationContractEntries = hasVisualizationContract
+      ? GOAL_VISUALIZATION_CONTRACT_RELATIVE_PATHS
+        .map((relativePath) => packageEntryPath(archiveRoot, relativePath))
+        .filter((entry) => !entrySet.has(entry))
+      : []
+    check(
+      checks,
+      'goal-visualization-contract-files-present-when-declared',
+      missingVisualizationContractEntries.length === 0,
+      hasVisualizationContract
+        ? missingVisualizationContractEntries.join(', ') || 'index and schema present'
+        : 'legacy package without a goal-visualization contract',
+    )
+
+    if (hasVisualizationContract) {
+      counts.goalVisualizationLinks = canonicalVisualizations.records.length
+      check(
+        checks,
+        'canonical-goal-visualization-links-valid',
+        canonicalVisualizations.issues.length === 0
+          && canonicalVisualizations.records.length === canonicalVisualizations.declaredLinks,
+        canonicalVisualizations.issues.slice(0, 5).join(' | ') || `${canonicalVisualizations.records.length} active link(s)`,
+      )
+    }
+
+    if (hasVisualizationContract && missingVisualizationContractEntries.length === 0) {
+      const visualizationIndexEntry = packageEntryPath(archiveRoot, GOAL_VISUALIZATION_INDEX_PATH)
+    const visualizationIndex = jsonObject(readZipEntryJson(zipPath, visualizationIndexEntry), 'goal visualization index')
+    check(checks, 'goal-visualization-index-schema-version', visualizationIndex.schemaVersion === 1, String(visualizationIndex.schemaVersion ?? '(missing)'))
+    const visualizationIndexValues = Array.isArray(visualizationIndex.assets) ? visualizationIndex.assets : []
+    const indexedVisualizations: GoalVisualizationAssetRecord[] = []
+    const visualizationIndexParseIssues: string[] = []
+    visualizationIndexValues.forEach((value, index) => {
+      try {
+        indexedVisualizations.push(parseGoalVisualizationAssetRecord(value))
+      } catch (error) {
+        visualizationIndexParseIssues.push(`assets[${index}]: ${error instanceof Error ? error.message : String(error)}`)
+      }
+    })
+    counts.goalVisualizationIndexAssets = indexedVisualizations.length
+    counts.goalVisualizationBytes = indexedVisualizations.reduce((sum, asset) => sum + asset.bytes, 0)
+    check(
+      checks,
+      'goal-visualization-index-records-valid',
+      visualizationIndexParseIssues.length === 0 && indexedVisualizations.length === visualizationIndexValues.length,
+      visualizationIndexParseIssues.slice(0, 5).join(' | ') || `${indexedVisualizations.length} valid asset record(s)`,
+    )
+
+    const visualizationKey = (record: { goalId: string; order: number }) => `${record.goalId}:${record.order}`
+    const indexedKeys = indexedVisualizations.map(visualizationKey)
+    const duplicateIndexedKeys = indexedKeys.filter((key, index) => indexedKeys.indexOf(key) !== index)
+    const indexedPaths = indexedVisualizations.map((record) => record.packagePath)
+    const duplicateIndexedPaths = indexedPaths.filter((path, index) => indexedPaths.indexOf(path) !== index)
+    check(
+      checks,
+      'goal-visualization-index-records-unique',
+      duplicateIndexedKeys.length === 0 && duplicateIndexedPaths.length === 0,
+      duplicateIndexedKeys.length === 0 && duplicateIndexedPaths.length === 0
+        ? 'unique by goal/link index and package path'
+        : `duplicate keys: ${duplicateIndexedKeys.slice(0, 3).join(', ') || '-'}; duplicate paths: ${duplicateIndexedPaths.slice(0, 3).join(', ') || '-'}`,
+    )
+
+    const indexedByKey = new Map(indexedVisualizations.map((record) => [visualizationKey(record), record]))
+    const canonicalByKey = new Map(canonicalVisualizations.records.map((record) => [visualizationKey(record), record]))
+    const visualizationMetadataFields = [
+      'goalId',
+      'order',
+      'packagePath',
+      'publicUrl',
+      'skillpilotId',
+      'role',
+      'title',
+      'provider',
+      'description',
+      'altText',
+      'lang',
+      'license',
+      'reviewStatus',
+    ] as const
+    const visualizationMetadataIssues = canonicalVisualizations.records.flatMap((expected) => {
+      const key = visualizationKey(expected)
+      const actual = indexedByKey.get(key)
+      if (!actual) return [`missing index record ${key}`]
+      return visualizationMetadataFields.flatMap((field) => (
+        actual[field] === expected[field] ? [] : [`${key}: ${field} mismatch`]
+      ))
+    })
+    const unexpectedVisualizationRecords = indexedVisualizations
+      .filter((record) => !canonicalByKey.has(visualizationKey(record)))
+      .map((record) => `unexpected index record ${visualizationKey(record)}`)
+    check(
+      checks,
+      'goal-visualization-index-matches-canonical-links',
+      visualizationMetadataIssues.length === 0
+        && unexpectedVisualizationRecords.length === 0
+        && indexedVisualizations.length === canonicalVisualizations.records.length,
+      [...visualizationMetadataIssues, ...unexpectedVisualizationRecords].slice(0, 5).join(' | ')
+        || `${indexedVisualizations.length}/${canonicalVisualizations.records.length} index record(s) match`,
+    )
+
+    const expectedVisualizationEntries = new Set(indexedVisualizations.map((record) => packageEntryPath(archiveRoot, record.packagePath)))
+    const missingVisualizationEntries = [...expectedVisualizationEntries].filter((entry) => !entrySet.has(entry))
+    const orphanVisualizationEntries = actualVisualizationEntries.filter((entry) => !expectedVisualizationEntries.has(entry))
+    counts.goalVisualizationAssets = actualVisualizationEntries.length
+    check(
+      checks,
+      'goal-visualization-assets-complete-without-orphans',
+      missingVisualizationEntries.length === 0
+        && orphanVisualizationEntries.length === 0
+        && actualVisualizationEntries.length === indexedVisualizations.length,
+      missingVisualizationEntries.length === 0 && orphanVisualizationEntries.length === 0
+        ? `${actualVisualizationEntries.length} packaged asset(s)`
+        : `missing: ${missingVisualizationEntries.slice(0, 3).join(', ') || '-'}; orphan: ${orphanVisualizationEntries.slice(0, 3).join(', ') || '-'}`,
+    )
+
+    const manifestByPath = new Map(manifestFiles.map((file) => [file.path, file]))
+    const visualizationManifestFiles = manifestFiles.filter((file) => file.category === 'goal-visualization')
+    const visualizationBinaryIssues = indexedVisualizations.flatMap((record) => {
+      const entry = packageEntryPath(archiveRoot, record.packagePath)
+      const manifestFile = manifestByPath.get(entry)
+      const issues: string[] = []
+      if (!safeGoalVisualizationPackagePath(record.packagePath) || record.publicUrl !== `/${record.packagePath}`) {
+        issues.push(`${visualizationKey(record)}: unsafe packagePath/publicUrl`)
+      }
+      const extension = record.mediaType === 'image/jpeg' ? '.jpg' : '.png'
+      if (record.packagePath !== expectedGoalVisualizationPath(subjectSlug, record.goalId, extension)) {
+        issues.push(`${visualizationKey(record)}: unexpected package path`)
+      }
+      if (record.skillpilotId !== record.goalId || record.role !== 'primary') {
+        issues.push(`${visualizationKey(record)}: goal/skillpilot ID or role mismatch`)
+      }
+      if (!manifestFile) {
+        issues.push(`${entry}: missing manifest record`)
+      } else {
+        if (manifestFile.category !== 'goal-visualization') issues.push(`${entry}: wrong manifest category`)
+        if (manifestFile.licenseCategory !== GOAL_VISUALIZATION_LICENSE_CATEGORY) issues.push(`${entry}: wrong license category`)
+        if (manifestFile.bytes !== record.bytes) issues.push(`${entry}: manifest/index byte mismatch`)
+        if (manifestFile.sha256 !== record.sha256) issues.push(`${entry}: manifest/index hash mismatch`)
+      }
+      if (!entrySet.has(entry)) return issues
+      const content = inspectZipEntry(entry)
+      if (content.bytes !== record.bytes) issues.push(`${entry}: packaged byte length mismatch`)
+      if (content.sha256 !== record.sha256) issues.push(`${entry}: packaged SHA-256 mismatch`)
+      if (!goalVisualizationMagicMatches(record, content.head)) issues.push(`${entry}: extension, MIME, or magic-byte mismatch`)
+      return issues
+    })
+    const unexpectedVisualizationManifestFiles = visualizationManifestFiles
+      .filter((file) => !expectedVisualizationEntries.has(file.path))
+      .map((file) => `${file.path}: orphan manifest visualization record`)
+    check(
+      checks,
+      'goal-visualization-binaries-and-manifest-valid',
+      visualizationBinaryIssues.length === 0
+        && unexpectedVisualizationManifestFiles.length === 0
+        && visualizationManifestFiles.length === indexedVisualizations.length,
+      [...visualizationBinaryIssues, ...unexpectedVisualizationManifestFiles].slice(0, 5).join(' | ')
+        || `${indexedVisualizations.length} image(s) passed path, MIME, magic-byte, byte-length, SHA-256, and manifest checks`,
+    )
+
+    const expectedVisualizationCount = typeof sourceSelection.goalVisualizationAssetCount === 'number'
+      ? sourceSelection.goalVisualizationAssetCount
+      : -1
+    const configuredVisualizationIndexPath = sourceSelection.goalVisualizationIndexPackagePath
+    check(
+      checks,
+      'goal-visualization-counts-match-manifest',
+      expectedVisualizationCount === indexedVisualizations.length
+        && configuredVisualizationIndexPath === visualizationIndexEntry,
+      `${indexedVisualizations.length} indexed; manifest expects ${expectedVisualizationCount}; index ${String(configuredVisualizationIndexPath ?? '(missing)')}`,
+    )
+    } else if (!hasVisualizationContract) {
+      counts.goalVisualizationLinks = 0
+      counts.goalVisualizationIndexAssets = 0
+      counts.goalVisualizationAssets = 0
+      counts.goalVisualizationBytes = 0
+      check(
+        checks,
+        'legacy-package-without-goal-visualizations-supported',
+        true,
+        'No canonical links, manifest declarations, index/schema markers, or packaged visualization assets are present.',
+      )
+    }
 
     const containsUnknown = unknownReferences(goals, 'contains')
     const requiresUnknown = unknownReferences(goals, 'requires')
@@ -778,7 +1202,7 @@ const buildMarkdownReport = (params: {
   results: PackageValidationResult[]
 }) => {
   const rows = params.results
-    .map((result) => `| \`${result.zipPath}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
+    .map((result) => `| \`${result.zipPath}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.goalVisualizationAssets ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
     .join('\n')
   const failedChecks = params.results.flatMap((result) => result.checks
     .filter((checkResult) => !checkResult.passed)
@@ -796,8 +1220,8 @@ ${params.results.every((result) => result.passed)
 
 ## Packages
 
-| ZIP | Status | Files | Goals | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ZIP | Status | Files | Goals | Images | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 ${rows}
 
 ## Failed Checks

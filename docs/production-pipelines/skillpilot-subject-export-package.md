@@ -2,6 +2,8 @@
 
 This pipeline builds a reproducible release ZIP artifact for one SkillPilot subject landscape.
 
+The package includes every image referenced by an active canonical `goal-visualization` link. Selection is link-driven, so stale files in the runtime asset directory do not leak into releases.
+
 Supported `DE/Gymnasium` presets currently cover the M5-or-better subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.
 
 The artifact is intended as the first handoff format for later MEM/FWU roundtrip experiments:
@@ -40,7 +42,7 @@ cd app
 npm run export:subject-packages:validate -- --dir tmp/exports
 ```
 
-The validator treats the ZIPs as external handoff artifacts. It verifies archive integrity, package checksums, manifest file records, required layout, embedded export checks, canonical graph references, composition-view references, packaged card references, memory-card review audit references where configured, state-mapping lanes, source-index HTTP(S) links, source-goal reference resolution for review mappings, Windows-safe paths, and the absence of repository-local paths. It writes:
+The validator treats the ZIPs as external handoff artifacts. It verifies archive integrity, package checksums, manifest file records, required layout, embedded export checks, canonical graph references, composition-view references, packaged card references, active goal-visualization links and binary assets, memory-card review audit references where configured, state-mapping lanes, source-index HTTP(S) links, source-goal reference resolution for review mappings, Windows-safe paths, and the absence of repository-local paths. It writes:
 
 - `tmp/exports/validation/subject-export-package-validation-report.json`
 - `tmp/exports/validation/subject-export-package-validation-report.md`
@@ -179,6 +181,8 @@ Important paths:
 - `data/views/`: learner-facing composition views.
 - `data/mappings/`: state-to-canonical mapping and review files.
 - `data/cards/`: card decks referenced by SRS/memorization goals, plus `card-index.json`.
+- `data/resources/goal-visualizations.json`: active goal-to-image records with package paths, MIME types, byte lengths, SHA-256 hashes, accessibility text, provider, license note, and review status.
+- `assets/goal-visualizations/`: the exact JPEG/PNG files referenced by active canonical `goal-visualization` links; unreferenced and replaced files are not exported.
 - `data/dependencies/external-goal-references.json`: declared cross-subject goal references outside this subject package.
 - `data/sources/source-index.json`: index for referenced official sources, including official HTTP(S) source URLs.
 - `data/sources/source-goal-references.json`: source-goal reference index for review mapping IDs, source text anchors, source locators, source text hashes, and official document URLs.
@@ -208,6 +212,7 @@ Current categories:
 - `skillpilot-data-cc-by-4.0`: SkillPilot-authored curriculum graph, views, mappings, dependency declarations, cards, and memory-card review decisions.
 - `official-source-provenance-only`: source references, source index records, and source-goal reference material attributable to the original official publishers.
 - `generated-package-metadata`: generated manifest, checksums, package README, license, notice, and legal notes.
+- `goal-visualization-ai-generated-curated`: AI-generated image assets selected and curated by SkillPilot. This provenance category is not an SPDX identifier and does not itself grant CC BY; the per-asset license note remains in `data/resources/goal-visualizations.json`.
 
 There is only one release package. It writes official source document references to `data/sources/source-index.json` and mapping-level source-goal references to `data/sources/source-goal-references.json`. Review mappings and canonical data keep mapping decisions and graph structure; repository-local paths and generated rationales are excluded from the package copy.
 
