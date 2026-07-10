@@ -1,6 +1,6 @@
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { lstatSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
+import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -31,10 +31,32 @@ type PackageValidationResult = {
   zipPath: string
   zipSha256: string | null
   archiveRoot: string | null
+  targetReadiness: PackageTargetReadiness | null
   passed: boolean
   checks: CheckResult[]
   counts: Record<string, number>
   errors: string[]
+}
+
+type PackageTargetReadiness = {
+  reportPath: string
+  reportSha256: string
+  inputZipSha256: string
+  manifestDialect: string
+  status: string
+  standaloneProfileReady: boolean
+  primaryReasonCode: string
+  inputIntegrity: string
+}
+
+type AggregateTargetReadiness = {
+  reportCount: number
+  packageCount: number
+  status: string | null
+  manifestDialect: string | null
+  standaloneProfileReady: boolean
+  inputIntegrity: string
+  reportPaths: string[]
 }
 
 type ManifestFileRecord = {
@@ -275,6 +297,14 @@ const numberField = (data: Record<string, JsonValue>, key: string, context: stri
   return value
 }
 
+const booleanField = (data: Record<string, JsonValue>, key: string, context: string) => {
+  const value = data[key]
+  if (typeof value !== 'boolean') {
+    throw new Error(`Expected boolean field ${key}: ${context}`)
+  }
+  return value
+}
+
 const stringArray = (value: JsonValue) => (
   Array.isArray(value) && value.every((item) => typeof item === 'string')
     ? value
@@ -335,6 +365,142 @@ const directExportZips = (directory: string) => readdirSync(directory, { withFil
 
 const check = (checks: CheckResult[], id: string, passed: boolean, details: string) => {
   checks.push({ id, passed, details })
+}
+
+const evaluatePackageTargetReadiness = (params: {
+  zipPath: string
+  zipSha256: string | null
+  readinessDir: string
+  checks: CheckResult[]
+  errors: string[]
+}): PackageTargetReadiness | null => {
+  mkdirSync(params.readinessDir, { recursive: true })
+  const reportName = `${basename(params.zipPath).replace(/\.zip$/iu, '')}-readiness-report.json`
+  const reportPath = resolve(params.readinessDir, reportName)
+  rmSync(reportPath, { force: true })
+
+  const commandArgs = [
+    '-B',
+    'scripts/evaluate_curriculum_package_readiness.py',
+    '--zip',
+    params.zipPath,
+    '--expect-status',
+    'not-ready-legacy',
+    '--report',
+    reportPath,
+    '--compact',
+  ]
+  const completed = spawnSync('python3', commandArgs, {
+    cwd: repoRoot,
+    encoding: 'utf8',
+    maxBuffer: 16 * 1024 * 1024,
+    stdio: ['ignore', 'pipe', 'pipe'],
+  })
+  const stderr = (completed.stderr ?? '').trim()
+  const processPassed = completed.status === 0 && completed.signal === null && !completed.error
+  check(
+    params.checks,
+    'target-readiness-evaluator-passed',
+    processPassed,
+    processPassed
+      ? 'Python evaluator returned the expected not-ready-legacy status.'
+      : `exit=${String(completed.status)} signal=${String(completed.signal)}${stderr ? `: ${stderr}` : ''}`,
+  )
+  if (!processPassed) {
+    params.errors.push(`Target-readiness evaluator failed for ${repoRelative(params.zipPath)}${stderr ? `: ${stderr}` : ''}`)
+    return null
+  }
+
+  try {
+    if (!existsSync(reportPath)) {
+      throw new Error('Evaluator did not persist its canonical report.')
+    }
+    const reportRaw = readFileSync(reportPath, 'utf8')
+    const stdoutMatchesReport = (completed.stdout ?? '') === reportRaw
+    check(
+      params.checks,
+      'target-readiness-stdout-matches-report',
+      stdoutMatchesReport,
+      stdoutMatchesReport ? repoRelative(reportPath) : 'Evaluator stdout differs from its persisted report.',
+    )
+
+    const report = jsonObject(JSON.parse(reportRaw) as JsonValue, 'target-readiness report')
+    const input = jsonObject(report.input ?? null, 'target-readiness report input')
+    const classification = jsonObject(report.classification ?? null, 'target-readiness report classification')
+    const decision = jsonObject(report.decision ?? null, 'target-readiness report decision')
+    const dimensions = jsonObject(report.dimensions ?? null, 'target-readiness report dimensions')
+    const readiness: PackageTargetReadiness = {
+      reportPath: repoRelative(reportPath),
+      reportSha256: sha256(reportRaw),
+      inputZipSha256: stringField(input, 'sha256', 'target-readiness report input'),
+      manifestDialect: stringField(classification, 'manifestDialect', 'target-readiness report classification'),
+      status: stringField(decision, 'status', 'target-readiness report decision'),
+      standaloneProfileReady: booleanField(decision, 'standaloneProfileReady', 'target-readiness report decision'),
+      primaryReasonCode: stringField(decision, 'primaryReasonCode', 'target-readiness report decision'),
+      inputIntegrity: stringField(dimensions, 'inputIntegrity', 'target-readiness report dimensions'),
+    }
+
+    const bindings = [
+      {
+        id: 'target-readiness-input-kind-zip',
+        passed: input.kind === 'zip',
+        details: String(input.kind ?? '(missing)'),
+      },
+      {
+        id: 'target-readiness-zip-sha256-matches',
+        passed: params.zipSha256 !== null && readiness.inputZipSha256 === params.zipSha256,
+        details: `${readiness.inputZipSha256} / ${params.zipSha256 ?? '(unavailable)'}`,
+      },
+      {
+        id: 'target-readiness-dialect-legacy',
+        passed: readiness.manifestDialect === 'legacy-subject-export',
+        details: readiness.manifestDialect,
+      },
+      {
+        id: 'target-readiness-status-not-ready-legacy',
+        passed: readiness.status === 'not-ready-legacy',
+        details: readiness.status,
+      },
+      {
+        id: 'target-readiness-standalone-ready-false',
+        passed: readiness.standaloneProfileReady === false,
+        details: String(readiness.standaloneProfileReady),
+      },
+      {
+        id: 'target-readiness-input-integrity-passed',
+        passed: readiness.inputIntegrity === 'pass',
+        details: readiness.inputIntegrity,
+      },
+    ]
+    bindings.forEach((binding) => check(params.checks, binding.id, binding.passed, binding.details))
+    return readiness
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error)
+    check(params.checks, 'target-readiness-report-readable', false, message)
+    params.errors.push(`Cannot bind target-readiness report for ${repoRelative(params.zipPath)}: ${message}`)
+    return null
+  }
+}
+
+const aggregateTargetReadiness = (results: PackageValidationResult[]): AggregateTargetReadiness => {
+  const readinessRecords = results.flatMap((result) => result.targetReadiness ? [result.targetReadiness] : [])
+  const singleValue = (values: string[]) => {
+    const unique = [...new Set(values)]
+    return readinessRecords.length === results.length && unique.length === 1 ? unique[0] : null
+  }
+  return {
+    reportCount: readinessRecords.length,
+    packageCount: results.length,
+    status: singleValue(readinessRecords.map((record) => record.status)),
+    manifestDialect: singleValue(readinessRecords.map((record) => record.manifestDialect)),
+    standaloneProfileReady: readinessRecords.length === results.length
+      && readinessRecords.every((record) => record.standaloneProfileReady),
+    inputIntegrity: readinessRecords.length === results.length
+      && readinessRecords.every((record) => record.inputIntegrity === 'pass')
+      ? 'pass'
+      : 'fail',
+    reportPaths: readinessRecords.map((record) => record.reportPath),
+  }
 }
 
 const archiveRootFrom = (entries: string[]) => {
@@ -765,12 +931,19 @@ const packageRelativePathFromManifestValue = (value: JsonValue) => {
     : null
 }
 
-const validatePackage = (zipPath: string): PackageValidationResult => {
+const validatePackage = (zipPath: string, readinessDir: string): PackageValidationResult => {
   const checks: CheckResult[] = []
   const errors: string[] = []
   const counts: Record<string, number> = {}
   let archiveRoot: string | null = null
   const zipSha256 = sha256RegularFile(zipPath)
+  const targetReadiness = evaluatePackageTargetReadiness({
+    zipPath,
+    zipSha256,
+    readinessDir,
+    checks,
+    errors,
+  })
   const checkZipInputStability = () => {
     const finalZipSha256 = sha256RegularFile(zipPath)
     const stable = zipSha256 !== null && finalZipSha256 === zipSha256
@@ -820,6 +993,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
       zipPath: repoRelative(zipPath),
       zipSha256,
       archiveRoot,
+      targetReadiness,
       passed: false,
       checks,
       counts,
@@ -1425,6 +1599,7 @@ const validatePackage = (zipPath: string): PackageValidationResult => {
     zipPath: repoRelative(zipPath),
     zipSha256,
     archiveRoot,
+    targetReadiness,
     passed: failedChecks.length === 0 && errors.length === 0,
     checks,
     counts,
@@ -1436,27 +1611,37 @@ const buildMarkdownReport = (params: {
   generatedAt: string
   results: PackageValidationResult[]
 }) => {
+  const targetReadiness = aggregateTargetReadiness(params.results)
   const rows = params.results
-    .map((result) => `| \`${result.zipPath}\` | \`${result.zipSha256 ?? 'not available'}\` | ${result.passed ? 'pass' : 'fail'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.goalVisualizationAssets ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`)
+    .map((result) => {
+      const readiness = result.targetReadiness
+      return `| \`${result.zipPath}\` | \`${result.zipSha256 ?? 'not available'}\` | ${result.passed ? 'pass' : 'fail'} | ${readiness?.status ?? 'unavailable'} | ${String(readiness?.standaloneProfileReady ?? false)} | ${readiness?.inputIntegrity ?? 'unavailable'} | ${readiness ? `\`${readiness.reportPath}\`` : '-'} | ${result.counts.files ?? 0} | ${result.counts.canonicalGoals ?? 0} | ${result.counts.goalVisualizationAssets ?? 0} | ${result.counts.mappingStates ?? 0}/16 | ${result.counts.sourceUrls ?? 0} | ${result.counts.sourceGoalReferences ?? 0} | ${result.counts.reviewMappingSourceReferences ?? 0} | ${result.counts.memoryCardReviewAuditReports ?? 0} | ${result.counts.externalGoalReferences ?? 0} | ${result.counts.maxArchivePathLength ?? 0} |`
+    })
     .join('\n')
   const failedChecks = params.results.flatMap((result) => result.checks
     .filter((checkResult) => !checkResult.passed)
     .map((checkResult) => `- \`${result.zipPath}\` ${checkResult.id}: ${checkResult.details}`))
 
-  return `# Subject Export Package Validation Report
+  return `# Legacy Subject Export Package Validation Report
 
 Generated at: ${params.generatedAt}
 
 ## Result
 
 ${params.results.every((result) => result.passed)
-  ? 'All subject export packages passed independent ZIP validation.'
-  : 'At least one subject export package failed independent ZIP validation.'}
+  ? 'All legacy subject-export packages passed independent ZIP validation.'
+  : 'At least one legacy subject-export package failed independent ZIP validation.'}
+
+Target runtime readiness: \`${targetReadiness.status ?? 'mixed-or-unavailable'}\`
+
+Standalone profile ready: \`${String(targetReadiness.standaloneProfileReady)}\`
+
+Readiness input integrity: \`${targetReadiness.inputIntegrity}\` (${targetReadiness.reportCount}/${targetReadiness.packageCount} report(s))
 
 ## Packages
 
-| ZIP | SHA-256 | Status | Files | Goals | Images | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ZIP | SHA-256 | Legacy validation | Target readiness | Standalone ready | Readiness input | Readiness report | Files | Goals | Images | State lanes | Source URLs | Source-goal refs | Review source refs | Memory audits | External refs | Max path |
+| --- | --- | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 ${rows}
 
 ## Failed Checks
@@ -1478,12 +1663,16 @@ const main = () => {
   }
 
   const generatedAt = new Date().toISOString()
-  const results = zipPaths.map(validatePackage)
+  const readinessDir = resolve(dirname(options.reportDir), 'readiness')
+  const results = zipPaths.map((zipPath) => validatePackage(zipPath, readinessDir))
+  const targetReadiness = aggregateTargetReadiness(results)
   mkdirSync(options.reportDir, { recursive: true })
   const reportPath = resolve(options.reportDir, 'subject-export-package-validation-report.json')
   const markdownReportPath = resolve(options.reportDir, 'subject-export-package-validation-report.md')
   const report = {
     generatedAt,
+    validationScope: 'legacy-subject-export',
+    targetReadiness,
     reportPath: repoRelative(reportPath),
     markdownReportPath: repoRelative(markdownReportPath),
     packageCount: results.length,

@@ -217,15 +217,27 @@ const EXPORT_MANIFEST_SCHEMA = {
   $id: 'https://skillpilot.local/schema/export-manifest.schema.json',
   title: 'SkillPilot subject export manifest',
   type: 'object',
-  required: ['packageId', 'packageVersion', 'archiveRoot', 'subject', 'subjectSlug', 'createdAt', 'files'],
+  required: ['manifestDialect', 'packageId', 'packageVersion', 'archiveRoot', 'subject', 'subjectSlug', 'createdAt', 'targetRuntimeReadiness', 'files'],
   additionalProperties: true,
   properties: {
+    manifestDialect: { const: 'legacy-subject-export-v1' },
     packageId: { type: 'string' },
     packageVersion: { type: 'string' },
     archiveRoot: { type: 'string', minLength: 1 },
     subject: { type: 'string' },
     subjectSlug: { type: 'string', minLength: 1 },
     createdAt: { type: 'string', format: 'date-time' },
+    targetRuntimeReadiness: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['targetProfile', 'status', 'standaloneProfileReady', 'reasonCode'],
+      properties: {
+        targetProfile: { const: 'full-standalone-v1' },
+        status: { const: 'not-ready-legacy' },
+        standaloneProfileReady: { const: false },
+        reasonCode: { const: 'TARGET_PROFILE_NOT_DECLARED' },
+      },
+    },
     sourceRepository: {
       type: 'object',
       additionalProperties: true,
@@ -2332,11 +2344,17 @@ const buildReleaseReport = (params: {
 | --- | --- | --- |
 ${checkRows}
 
-## Release Verdict
+## Legacy Export Verdict
 
 ${failedChecks.length === 0 && params.validationReport.errors.length === 0
-  ? 'Release package passed all export-time validation checks.'
-  : `Release package has ${failedChecks.length} failed check(s) and ${params.validationReport.errors.length} error(s).`}
+  ? 'Legacy subject-export package passed all export-time validation checks.'
+  : `Legacy subject-export package has ${failedChecks.length} failed check(s) and ${params.validationReport.errors.length} error(s).`}
+
+## Target Runtime Readiness
+
+- \`full-standalone-v1\` readiness: \`not-ready-legacy\`
+- Standalone profile ready: \`false\`
+- Reason: this artifact uses the legacy subject-export manifest and does not declare or prove the standalone runtime contract.
 
 ## Notes
 
@@ -2709,10 +2727,17 @@ const main = () => {
 
   const entriesBeforeManifest = [...entriesByPath.values()]
   const manifest = {
+    manifestDialect: 'legacy-subject-export-v1',
     packageId,
     archiveRoot,
     packageVersion: version,
     publicationProfile: options.publicationProfile,
+    targetRuntimeReadiness: {
+      targetProfile: 'full-standalone-v1',
+      status: 'not-ready-legacy',
+      standaloneProfileReady: false,
+      reasonCode: 'TARGET_PROFILE_NOT_DECLARED',
+    },
     subject: options.subject,
     subjectSlug: options.subjectSlug,
     createdAt,
@@ -2805,6 +2830,7 @@ const main = () => {
   }))
 
   const summary = {
+    validationScope: 'legacy-subject-export',
     zipPath: repoRelative(zipPath),
     releaseReportPath: repoRelative(releaseReportPath),
     sha256: zipSha256,
@@ -2813,6 +2839,8 @@ const main = () => {
     archiveRoot,
     version,
     publicationProfile: options.publicationProfile,
+    targetReadinessStatus: 'not-ready-legacy',
+    standaloneProfileReady: false,
     files: entriesByPath.size,
     mappingStates: mappingStates.length,
     warnings,

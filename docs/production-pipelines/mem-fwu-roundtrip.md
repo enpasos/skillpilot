@@ -10,6 +10,8 @@ The current reference scope is:
 
 `tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip`
 
+This reference ZIP currently belongs to the explicitly marked legacy subject-export lane. A successful semantic roundtrip proves equivalence for the covered content and image sidecars; it does not prove `full-standalone-v1` runtime readiness. Until the JSON package supplies and passes the runtime catalog, offline schema catalog, complete hard-reference closure, semantic digest, and hermetic consumer gates, its independent target classification remains `not-ready-legacy`.
+
 ## Roundtrip Contract
 
 ```text

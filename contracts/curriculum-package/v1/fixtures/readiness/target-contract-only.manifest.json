@@ -13,10 +13,6 @@
   "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
   "licenseDocuments": [
     {
-      "licenseId": "CC-BY-4.0",
-      "path": "licenses/CC-BY-4.0.txt"
-    },
-    {
       "licenseId": "Apache-2.0",
       "path": "licenses/Apache-2.0.txt"
     }
@@ -48,11 +44,11 @@
       "path": "data/runtime/catalog.json",
       "role": "runtime-catalog",
       "mediaType": "application/json",
-      "bytes": 128,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000001",
       "runtimeRequired": true,
       "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
       "redistributionStatus": "allowed"
     },
@@ -60,10 +56,10 @@
       "path": "data/runtime/dependency-closure.json",
       "role": "dependency-closure",
       "mediaType": "application/json",
-      "bytes": 96,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000002",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
       "redistributionStatus": "allowed"
     },
@@ -71,10 +67,10 @@
       "path": "data/runtime/migration-aliases.json",
       "role": "migration-aliases",
       "mediaType": "application/json",
-      "bytes": 48,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000003",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
       "redistributionStatus": "allowed"
     },
@@ -82,10 +78,10 @@
       "path": "data/canonical/mathematik.landscape.json",
       "role": "canonical-landscape",
       "mediaType": "application/json",
-      "bytes": 4096,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000004",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "skillpilot-authored",
       "redistributionStatus": "allowed"
     },
@@ -93,32 +89,21 @@
       "path": "data/views/index.json",
       "role": "composition-view-index",
       "mediaType": "application/json",
-      "bytes": 256,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000005",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
       "redistributionStatus": "allowed"
     },
     {
-      "path": "data/views/de-he-gk.view.json",
+      "path": "data/views/default.view.json",
       "role": "composition-view",
       "mediaType": "application/json",
-      "bytes": 1024,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000006",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
-      "provenanceClass": "skillpilot-authored",
-      "redistributionStatus": "allowed"
-    },
-    {
-      "path": "data/views/de-he-lk.view.json",
-      "role": "composition-view",
-      "mediaType": "application/json",
-      "bytes": 1024,
-      "sha256": "000000000000000000000000000000000000000000000000000000000000000e",
-      "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "skillpilot-authored",
       "redistributionStatus": "allowed"
     },
@@ -126,32 +111,21 @@
       "path": "data/cards/card-index.json",
       "role": "card-index",
       "mediaType": "application/json",
-      "bytes": 32,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000007",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
-    },
-    {
-      "path": "data/cards/de_gymnasium_math_analysis_core.de.json",
-      "role": "card-deck",
-      "mediaType": "application/json",
-      "bytes": 512,
-      "sha256": "000000000000000000000000000000000000000000000000000000000000000f",
-      "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
-      "provenanceClass": "skillpilot-authored",
       "redistributionStatus": "allowed"
     },
     {
       "path": "data/resources/resource-index.json",
       "role": "resource-index",
       "mediaType": "application/json",
-      "bytes": 256,
+      "bytes": 1,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000008",
       "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
+      "licenseExpression": "Apache-2.0",
       "provenanceClass": "generated-metadata",
       "redistributionStatus": "allowed"
     },
@@ -159,8 +133,8 @@
       "path": "schemas/catalog.json",
       "role": "schema-catalog",
       "mediaType": "application/json",
-      "bytes": 1781,
-      "sha256": "a1a567d19205f7f43df890f41a6777155c68b624b4abd79991e07e03ea0f6a62",
+      "bytes": 1,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000009",
       "runtimeRequired": true,
       "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
       "licenseExpression": "Apache-2.0",
@@ -201,28 +175,6 @@
       "redistributionStatus": "allowed"
     },
     {
-      "path": "schemas/fixture-document.schema.json",
-      "role": "schema",
-      "mediaType": "application/schema+json",
-      "bytes": 462,
-      "sha256": "a01d1d3e5f4fb24ad80322f848780e7dae6dd408f00abe227f8ba98370bb187b",
-      "runtimeRequired": true,
-      "licenseExpression": "Apache-2.0",
-      "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
-    },
-    {
-      "path": "schemas/fixture-shared.schema.json",
-      "role": "schema",
-      "mediaType": "application/schema+json",
-      "bytes": 310,
-      "sha256": "a3b14d144fa6925f2b3018206090b0b2e8cf66f36c84032cfd5407590deba762",
-      "runtimeRequired": true,
-      "licenseExpression": "Apache-2.0",
-      "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
-    },
-    {
       "path": "schemas/profiles/full-standalone-v1.profile.json",
       "role": "release-profile",
       "mediaType": "application/json",
@@ -234,36 +186,14 @@
       "redistributionStatus": "allowed"
     },
     {
-      "path": "licenses/CC-BY-4.0.txt",
-      "role": "license",
-      "mediaType": "text/plain",
-      "bytes": 1024,
-      "sha256": "000000000000000000000000000000000000000000000000000000000000000b",
-      "runtimeRequired": false,
-      "licenseExpression": "CC-BY-4.0",
-      "provenanceClass": "third-party",
-      "redistributionStatus": "allowed"
-    },
-    {
       "path": "licenses/Apache-2.0.txt",
       "role": "license",
       "mediaType": "text/plain",
-      "bytes": 11358,
-      "sha256": "000000000000000000000000000000000000000000000000000000000000000d",
+      "bytes": 1,
+      "sha256": "000000000000000000000000000000000000000000000000000000000000000a",
       "runtimeRequired": false,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "third-party",
-      "redistributionStatus": "allowed"
-    },
-    {
-      "path": "assets/goal-visualizations/example-goal.png",
-      "role": "binary-asset",
-      "mediaType": "image/png",
-      "bytes": 8192,
-      "sha256": "000000000000000000000000000000000000000000000000000000000000000c",
-      "runtimeRequired": true,
-      "licenseExpression": "CC-BY-4.0",
-      "provenanceClass": "ai-generated-curated",
       "redistributionStatus": "allowed"
     }
   ]

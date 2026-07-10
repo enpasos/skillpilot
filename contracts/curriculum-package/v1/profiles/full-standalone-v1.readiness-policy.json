@@ -1,0 +1,91 @@
+{
+  "policyFormatVersion": 1,
+  "policyId": "full-standalone-v1-readiness-v1",
+  "scope": "json-full-standalone-v1",
+  "target": {
+    "variant": "json",
+    "packageFormatVersion": "1.0",
+    "runtimeContractVersion": "1.0",
+    "releaseProfile": "full-standalone-v1",
+    "manifestSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+    },
+    "releaseProfileContract": {
+      "id": "full-standalone-v1",
+      "sha256": "9cae79dc542a8dee9536cfec283e6fb8aabe1159259d59c102b520aefbbca69b"
+    }
+  },
+  "reportSchema": {
+    "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json",
+    "sha256": "558b3b81b13fe74d1dd935a858b365279be1825ddb2f0a391b746ae816f5ea42"
+  },
+  "evaluator": {
+    "name": "skillpilot-json-package-readiness",
+    "version": "1.0.0",
+    "jsonschemaVersion": "4.26.0"
+  },
+  "statusVocabulary": [
+    "ready",
+    "not-ready-legacy",
+    "not-ready-incomplete",
+    "invalid",
+    "unsupported"
+  ],
+  "checkResultVocabulary": [
+    "pass",
+    "fail",
+    "not-applicable",
+    "not-evaluated"
+  ],
+  "requiredChecks": [
+    {
+      "id": "input.parse-and-container-safe",
+      "blocking": true
+    },
+    {
+      "id": "identity.target-contract-declared",
+      "blocking": true
+    },
+    {
+      "id": "contract.manifest-schema",
+      "blocking": true
+    },
+    {
+      "id": "contract.target-values",
+      "blocking": true
+    },
+    {
+      "id": "contract.trusted-bindings",
+      "blocking": true
+    },
+    {
+      "id": "contract.profile-roles",
+      "blocking": true
+    },
+    {
+      "id": "contract.inventory-bytes",
+      "blocking": true
+    },
+    {
+      "id": "catalog.runtime-catalog",
+      "blocking": true
+    },
+    {
+      "id": "catalog.offline-schema-catalog",
+      "blocking": true
+    },
+    {
+      "id": "standalone.hard-reference-closure",
+      "blocking": true
+    },
+    {
+      "id": "standalone.content-digest",
+      "blocking": true
+    },
+    {
+      "id": "consumer.hermetic-package-only",
+      "blocking": true
+    }
+  ]
+}

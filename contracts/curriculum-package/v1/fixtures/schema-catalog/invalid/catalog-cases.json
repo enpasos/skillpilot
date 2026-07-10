@@ -1,0 +1,533 @@
+{
+  "fixtureFormatVersion": 1,
+  "cases": [
+    {
+      "id": "duplicate-schema-id",
+      "mutations": [
+        {
+          "operation": "duplicate-entry-id",
+          "fromSchemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "toSchemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_ID_DUPLICATE",
+          "location": "/entries"
+        }
+      ]
+    },
+    {
+      "id": "duplicate-schema-path",
+      "mutations": [
+        {
+          "operation": "set-entry-field",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "field": "path",
+          "value": "schemas/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_PATH_DUPLICATE",
+          "location": "/entries"
+        },
+        {
+          "code": "SCHEMA_FILE_BYTES_MISMATCH",
+          "location": "/entries/4/bytes"
+        },
+        {
+          "code": "SCHEMA_FILE_HASH_MISMATCH",
+          "location": "/entries/4/sha256"
+        },
+        {
+          "code": "SCHEMA_FILE_UNLISTED",
+          "location": "/files/schemas/fixture-shared.schema.json"
+        },
+        {
+          "code": "SCHEMA_ID_MISMATCH",
+          "location": "/files/schemas/fixture-document.schema.json/$id"
+        },
+        {
+          "code": "SCHEMA_REF_FRAGMENT_UNRESOLVED",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        },
+        {
+          "code": "SCHEMA_REMOTE_RETRIEVAL_ATTEMPT",
+          "location": "/entries"
+        }
+      ]
+    },
+    {
+      "id": "unsafe-absolute-schema-path",
+      "mutations": [
+        {
+          "operation": "set-entry-field",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "field": "path",
+          "value": "/schemas/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_PATH_UNSAFE",
+          "location": "/entries/3/path"
+        },
+        {
+          "code": "CATALOG_SCHEMA",
+          "location": "/entries/3/path"
+        },
+        {
+          "code": "SCHEMA_FILE_MISSING",
+          "location": "/files//schemas/fixture-document.schema.json"
+        },
+        {
+          "code": "SCHEMA_FILE_UNLISTED",
+          "location": "/files/schemas/fixture-document.schema.json"
+        }
+      ]
+    },
+    {
+      "id": "schema-hash-mismatch",
+      "mutations": [
+        {
+          "operation": "set-entry-field",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "field": "sha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_FILE_HASH_MISMATCH",
+          "location": "/entries/4/sha256"
+        }
+      ]
+    },
+    {
+      "id": "schema-byte-count-mismatch",
+      "mutations": [
+        {
+          "operation": "set-entry-field",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "field": "bytes",
+          "value": 1
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_FILE_BYTES_MISMATCH",
+          "location": "/entries/4/bytes"
+        }
+      ]
+    },
+    {
+      "id": "schema-document-id-mismatch",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/$id",
+          "value": "https://skillpilot.com/schemas/fixtures/v1/different.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_ID_MISMATCH",
+          "location": "/files/schemas/fixture-document.schema.json/$id"
+        }
+      ]
+    },
+    {
+      "id": "schema-document-dialect-mismatch",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/$schema",
+          "value": "https://json-schema.org/draft/2019-09/schema"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_DIALECT_MISMATCH",
+          "location": "/files/schemas/fixture-document.schema.json/$schema"
+        }
+      ]
+    },
+    {
+      "id": "nested-schema-id",
+      "mutations": [
+        {
+          "operation": "add-nested-id",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_NESTED_ID_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/$defs/nestedIdFixture/$id"
+        }
+      ]
+    },
+    {
+      "id": "unknown-offline-reference",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "https://skillpilot.com/schemas/fixtures/v1/missing.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_UNRESOLVED",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "http-reference-forbidden",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "http://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "file-reference-forbidden",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "file:///tmp/fixture-shared.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "relative-reference-escape",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "../../../outside.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "malformed-absolute-https-reference",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "https:/schemas/fixtures/v1/fixture-shared.schema.json#/$defs/stableId"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "scheme-relative-reference",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "//skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json#/$defs/stableId"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "empty-query-reference",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "?#/$defs/local"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "bare-empty-query-reference",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "?"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "missing-reference-fragment",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json#/$defs/missing"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_REF_FRAGMENT_UNRESOLVED",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "catalogued-schema-file-missing",
+      "mutations": [
+        {
+          "operation": "remove-schema-file",
+          "path": "schemas/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_FILE_MISSING",
+          "location": "/files/schemas/fixture-document.schema.json"
+        }
+      ]
+    },
+    {
+      "id": "schema-file-unlisted",
+      "mutations": [
+        {
+          "operation": "add-unlisted-schema-file",
+          "path": "schemas/unlisted.schema.json",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/unlisted.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_FILE_UNLISTED",
+          "location": "/files/schemas/unlisted.schema.json"
+        }
+      ]
+    },
+    {
+      "id": "trusted-catalog-schema-redefined",
+      "mutations": [
+        {
+          "operation": "add-schema-field",
+          "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+          "field": "description",
+          "value": "A package must not redefine a trusted contract schema under the same ID."
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_TRUSTED_SCHEMA_BINDING_MISMATCH",
+          "location": "/entries/2"
+        }
+      ]
+    },
+    {
+      "id": "trusted-runtime-schema-redefined",
+      "mutations": [
+        {
+          "operation": "add-schema-field",
+          "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
+          "field": "description",
+          "value": "A package must not weaken a trusted runtime contract under its official ID."
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_TRUSTED_SCHEMA_BINDING_MISMATCH",
+          "location": "/entries/1"
+        }
+      ]
+    },
+    {
+      "id": "noncanonical-schema-id",
+      "mutations": [
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "pointer": "/$id",
+          "value": "https://skillpilot.com:443/schemas/fixtures/v1/fixture-shared.schema.json"
+        },
+        {
+          "operation": "set-schema-pointer",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "pointer": "/properties/id/$ref",
+          "value": "https://skillpilot.com:443/schemas/fixtures/v1/fixture-shared.schema.json#/$defs/stableId"
+        },
+        {
+          "operation": "set-entry-field",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json",
+          "field": "id",
+          "value": "https://skillpilot.com:443/schemas/fixtures/v1/fixture-shared.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_ID_NONCANONICAL",
+          "location": "/entries/4/id"
+        },
+        {
+          "code": "CATALOG_SCHEMA",
+          "location": "/entries/4/id"
+        },
+        {
+          "code": "SCHEMA_REF_FORBIDDEN",
+          "location": "/schemas/fixture-document.schema.json/properties/id/$ref"
+        }
+      ]
+    },
+    {
+      "id": "catalog-entry-count-limit",
+      "mutations": [
+        {
+          "operation": "append-numbered-entries",
+          "count": 254,
+          "sourceSchemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_ENTRY_COUNT_LIMIT",
+          "location": "/entries"
+        }
+      ]
+    },
+    {
+      "id": "catalog-byte-limit",
+      "mutations": [
+        {
+          "operation": "catalog-padding",
+          "bytes": 1048576
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "CATALOG_BYTES_LIMIT",
+          "location": "/"
+        }
+      ]
+    },
+    {
+      "id": "individual-schema-byte-limit",
+      "mutations": [
+        {
+          "operation": "schema-padding",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+          "bytes": 16777216
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_BYTES_LIMIT",
+          "location": "/entries/3/bytes"
+        }
+      ]
+    },
+    {
+      "id": "aggregate-schema-byte-limit",
+      "mutations": [
+        {
+          "operation": "declared-total-over-limit"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_TOTAL_BYTES_LIMIT",
+          "location": "/entries"
+        }
+      ]
+    },
+    {
+      "id": "schema-depth-limit",
+      "mutations": [
+        {
+          "operation": "deep-schema",
+          "schemaId": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_DEPTH_LIMIT",
+          "location": "/files/schemas/fixture-document.schema.json"
+        }
+      ]
+    },
+    {
+      "id": "aggregate-schema-node-limit",
+      "mutations": [
+        {
+          "operation": "aggregate-node-budget-exceeded"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_TOTAL_NODE_LIMIT",
+          "location": "/files"
+        }
+      ]
+    },
+    {
+      "id": "aggregate-schema-reference-limit",
+      "mutations": [
+        {
+          "operation": "aggregate-reference-budget-exceeded"
+        }
+      ],
+      "expectedDiagnostics": [
+        {
+          "code": "SCHEMA_TOTAL_REFERENCE_LIMIT",
+          "location": "/files"
+        }
+      ]
+    }
+  ]
+}

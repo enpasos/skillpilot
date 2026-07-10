@@ -4,8 +4,22 @@
   "description": "Self-contained JSON curriculum package profile. Every hard runtime dependency must resolve inside the package; external source URLs remain non-runtime metadata.",
   "manifestSchema": {
     "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-    "sha256": "721053d41c558deb4192eab424e9f9452165176fbf073a79533bba4e75e33d7c"
+    "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
   },
+  "trustedContractSchemas": [
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
+      "sha256": "df31b286e9e802472d2323d54ae70b17014ee48977bd04e0be47d49d4c6e14d0"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+      "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+    }
+  ],
   "compatibility": {
     "packageFormatVersion": "1.0",
     "runtimeContractVersion": "1.0",

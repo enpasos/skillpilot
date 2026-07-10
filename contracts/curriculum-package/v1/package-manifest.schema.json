@@ -79,13 +79,21 @@
       "additionalProperties": false,
       "required": [
         "manifestSchema",
-        "releaseProfile"
+        "releaseProfile",
+        "runtimeCatalogSchema",
+        "schemaCatalogSchema"
       ],
       "properties": {
         "manifestSchema": {
           "$ref": "#/$defs/contractBinding"
         },
         "releaseProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "runtimeCatalogSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "schemaCatalogSchema": {
           "$ref": "#/$defs/contractBinding"
         }
       }
@@ -229,8 +237,17 @@
             "review-required",
             "prohibited"
           ]
+        },
+        "validationSchemaId": {
+          "$ref": "#/$defs/schemaId"
         }
       }
+    },
+    "schemaId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^https://skillpilot\\.com/schemas/(?!.*//)(?!.*(?:^|/)\\.\\.?(?:/|$))[a-z0-9][a-z0-9._~/-]*\\.schema\\.json$"
     }
   }
 }

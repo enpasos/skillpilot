@@ -34,6 +34,7 @@ type CurriculumStatusEntry = {
 }
 
 type SubjectBuildSummary = {
+  validationScope: string
   zipPath: string
   releaseReportPath: string
   sha256: string
@@ -42,6 +43,8 @@ type SubjectBuildSummary = {
   archiveRoot: string
   version: string
   publicationProfile: string
+  targetReadinessStatus: string
+  standaloneProfileReady: boolean
   files: number
   mappingStates: number
   warnings: string[]
@@ -188,6 +191,14 @@ const numberField = (data: Record<string, JsonValue>, key: string) => {
   return value
 }
 
+const booleanField = (data: Record<string, JsonValue>, key: string) => {
+  const value = data[key]
+  if (typeof value !== 'boolean') {
+    throw new Error(`Expected boolean field in build summary: ${key}`)
+  }
+  return value
+}
+
 const stringArrayField = (data: Record<string, JsonValue>, key: string) => {
   const value = data[key]
   if (!Array.isArray(value) || value.some((item) => typeof item !== 'string')) {
@@ -198,7 +209,8 @@ const stringArrayField = (data: Record<string, JsonValue>, key: string) => {
 
 const parseSingleBuildSummary = (stdout: string): SubjectBuildSummary => {
   const data = jsonObject(JSON.parse(stdout) as JsonValue)
-  return {
+  const summary = {
+    validationScope: stringField(data, 'validationScope'),
     zipPath: stringField(data, 'zipPath'),
     releaseReportPath: stringField(data, 'releaseReportPath'),
     sha256: stringField(data, 'sha256'),
@@ -207,10 +219,20 @@ const parseSingleBuildSummary = (stdout: string): SubjectBuildSummary => {
     archiveRoot: stringField(data, 'archiveRoot'),
     version: stringField(data, 'version'),
     publicationProfile: stringField(data, 'publicationProfile'),
+    targetReadinessStatus: stringField(data, 'targetReadinessStatus'),
+    standaloneProfileReady: booleanField(data, 'standaloneProfileReady'),
     files: numberField(data, 'files'),
     mappingStates: numberField(data, 'mappingStates'),
     warnings: stringArrayField(data, 'warnings'),
   }
+  if (
+    summary.validationScope !== 'legacy-subject-export'
+    || summary.targetReadinessStatus !== 'not-ready-legacy'
+    || summary.standaloneProfileReady !== false
+  ) {
+    throw new Error('Subject builder returned an unexpected target-readiness classification.')
+  }
+  return summary
 }
 
 const sha256File = (absolutePath: string) => createHash('sha256')
@@ -272,7 +294,7 @@ const maxZipEntryPathLength = (zipPath: string) => {
 
 const verifyReleaseReport = (releaseReportPath: string) => {
   const report = readFileSync(releaseReportPath, 'utf8')
-  if (!report.includes('Release package passed all export-time validation checks.')) {
+  if (!report.includes('Legacy subject-export package passed all export-time validation checks.')) {
     throw new Error(`Release report does not contain a passing verdict: ${repoRelative(releaseReportPath)}`)
   }
 }
@@ -325,6 +347,19 @@ const buildSubjectPackage = (subject: string, options: CliOptions): BatchPackage
   }
 }
 
+const aggregateBuildReadiness = (packages: BatchPackageRecord[]) => {
+  const singleValue = (values: string[]) => {
+    const unique = [...new Set(values)]
+    return packages.length > 0 && unique.length === 1 ? unique[0] : null
+  }
+  return {
+    validationScope: singleValue(packages.map((entry) => entry.validationScope)),
+    targetReadinessStatus: singleValue(packages.map((entry) => entry.targetReadinessStatus)),
+    standaloneProfileReady: packages.length > 0
+      && packages.every((entry) => entry.standaloneProfileReady),
+  }
+}
+
 const buildMarkdownSummary = (params: {
   generatedAt: string
   version: string
@@ -334,6 +369,7 @@ const buildMarkdownSummary = (params: {
   packages: BatchPackageRecord[]
   failures: BatchFailure[]
 }) => {
+  const targetReadiness = aggregateBuildReadiness(params.packages)
   const rows = params.packages
     .map((entry) => `| ${entry.subject} | \`${entry.zipPath}\` | ${entry.bytes} | ${entry.files} | ${entry.mappingStates}/16 | ${entry.maxArchivePathLength} | \`${entry.sha256}\` |`)
     .join('\n')
@@ -362,8 +398,9 @@ ${rows}
 ## Verification
 
 - ZIP integrity: ${params.packages.length} package(s) passed \`unzip -tq\`.
-- Release reports: ${params.packages.length} package(s) contain a passing export-time verdict.
+- Legacy export reports: ${params.packages.length} package(s) contain a passing export-time verdict.
 - SHA-256: all package checksums were recalculated after writing.
+- Target readiness from builder summaries: \`${targetReadiness.targetReadinessStatus ?? 'mixed-or-unavailable'}\`; standalone profile ready: \`${String(targetReadiness.standaloneProfileReady)}\`.
 
 ## Failures
 
@@ -403,8 +440,13 @@ const main = () => {
   const markdownSummaryPath = resolve(options.outputDir, 'm5-subject-export-summary.md')
   const warnings = packages
     .flatMap((entry) => entry.warnings.map((warning) => `${entry.subject}: ${warning}`))
+  const targetReadiness = aggregateBuildReadiness(packages)
   const batchSummary = {
     generatedAt,
+    validationScope: targetReadiness.validationScope,
+    legacyExportGatePassed: failures.length === 0,
+    targetReadinessStatus: targetReadiness.targetReadinessStatus,
+    standaloneProfileReady: targetReadiness.standaloneProfileReady,
     version: options.version,
     qualityStatusPath: repoRelative(options.statusPath),
     outputDir: repoRelative(options.outputDir),
