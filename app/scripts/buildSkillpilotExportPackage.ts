@@ -30,6 +30,8 @@ type JsonValue =
   | JsonValue[]
   | { [key: string]: JsonValue }
 
+const compareCodeUnits = (left: string, right: string) => (left < right ? -1 : left > right ? 1 : 0)
+
 type CliOptions = {
   subject: string
   subjectSlug?: string
@@ -137,6 +139,8 @@ const EXPECTED_DE_STATES = [
 const WINDOWS_SAFE_ARCHIVE_PATH_LIMIT = 180
 const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-curated'
 const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
+const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
+const MAX_GOAL_VISUALIZATION_TOTAL_BYTES = 8 * 1024 * 1024 * 1024
 const ZIP32_MAX_VALUE = 0xffffffff
 
 const SUBJECT_PRESETS: Record<string, SubjectPreset> = {
@@ -213,12 +217,14 @@ const EXPORT_MANIFEST_SCHEMA = {
   $id: 'https://skillpilot.local/schema/export-manifest.schema.json',
   title: 'SkillPilot subject export manifest',
   type: 'object',
-  required: ['packageId', 'packageVersion', 'subject', 'createdAt', 'files'],
+  required: ['packageId', 'packageVersion', 'archiveRoot', 'subject', 'subjectSlug', 'createdAt', 'files'],
   additionalProperties: true,
   properties: {
     packageId: { type: 'string' },
     packageVersion: { type: 'string' },
+    archiveRoot: { type: 'string', minLength: 1 },
     subject: { type: 'string' },
+    subjectSlug: { type: 'string', minLength: 1 },
     createdAt: { type: 'string', format: 'date-time' },
     sourceRepository: {
       type: 'object',
@@ -232,8 +238,8 @@ const EXPORT_MANIFEST_SCHEMA = {
       type: 'array',
       items: {
         type: 'object',
-        required: ['path', 'sha256', 'bytes', 'category'],
-    additionalProperties: true,
+        required: ['path', 'sha256', 'bytes', 'category', 'licenseCategory'],
+        additionalProperties: true,
         properties: {
           path: { type: 'string' },
           sha256: { type: 'string', pattern: '^[a-f0-9]{64}$' },
@@ -751,7 +757,7 @@ const stableSortJson = (value: JsonValue): JsonValue => {
   if (value && typeof value === 'object') {
     return Object.fromEntries(
       Object.entries(value)
-        .sort(([left], [right]) => left.localeCompare(right))
+        .sort(([left], [right]) => compareCodeUnits(left, right))
         .map(([key, child]) => [key, stableSortJson(child)]),
     )
   }
@@ -1144,7 +1150,7 @@ const sourceGoalReferenceIndexRecord = (absolutePath: string) => {
 const sourceGoalReferenceIndex = (sourceExtractionJsonFiles: string[]) => {
   const sources = sourceExtractionJsonFiles
     .map(sourceGoalReferenceIndexRecord)
-    .sort((left, right) => left.extractionId.localeCompare(right.extractionId))
+    .sort((left, right) => compareCodeUnits(left.extractionId, right.extractionId))
   return {
     schemaVersion: 1,
     note: 'Source-goal reference index. Review mapping source IDs in data/mappings resolve here to official source documents, source text anchors, and source locators.',
@@ -1178,7 +1184,7 @@ const walkFiles = (absoluteDirectory: string): string[] => {
     return []
   }
   return readdirSync(absoluteDirectory)
-    .sort((left, right) => left.localeCompare(right))
+    .sort(compareCodeUnits)
     .flatMap((entryName) => {
       const absolutePath = join(absoluteDirectory, entryName)
       const stat = statSync(absolutePath)
@@ -1262,7 +1268,7 @@ const selectCompositionFiles = (compositionDir: string | undefined) => {
   const compositionRoot = resolveRepoPath(`curricula/DE/Gymnasium/composition-views/${compositionDir}`)
   return walkFiles(compositionRoot)
     .filter((path) => extname(path).toLowerCase() === '.json')
-    .sort((left, right) => repoRelative(left).localeCompare(repoRelative(right)))
+    .sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
 }
 
 const targetLandscapeIdFrom = (value: JsonValue): string | null => (
@@ -1281,7 +1287,7 @@ const selectMappingFiles = (mappingTokens: string[], targetLandscapeId?: string)
     ? candidates.filter((path) => targetLandscapeIdFrom(readJson(path)) === targetLandscapeId)
     : []
   if (exactTargetMatches.length > 0) {
-    return exactTargetMatches.sort((left, right) => repoRelative(left).localeCompare(repoRelative(right)))
+    return exactTargetMatches.sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
   }
 
   return candidates
@@ -1289,7 +1295,7 @@ const selectMappingFiles = (mappingTokens: string[], targetLandscapeId?: string)
       const fileToken = normalizeToken(basename(path))
       return normalizedTokens.some((token) => fileToken.includes(token))
     })
-    .sort((left, right) => repoRelative(left).localeCompare(repoRelative(right)))
+    .sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
 }
 
 const selectProvenanceFiles = () => [] as string[]
@@ -1348,7 +1354,7 @@ const selectSourceExtractionFiles = (mappingFiles: string[], warnings: string[],
     warnings.push('No source extraction files were selected from mapping review files.')
   }
 
-  return [...selected].sort((left, right) => repoRelative(left).localeCompare(repoRelative(right)))
+  return [...selected].sort((left, right) => compareCodeUnits(repoRelative(left), repoRelative(right)))
 }
 
 const collectCardRuntimePaths = (value: JsonValue): string[] => {
@@ -1372,7 +1378,7 @@ const collectCardRuntimePaths = (value: JsonValue): string[] => {
   }
 
   visit(value)
-  return [...new Set(paths)].sort((left, right) => left.localeCompare(right))
+  return [...new Set(paths)].sort(compareCodeUnits)
 }
 
 const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
@@ -1400,7 +1406,7 @@ const selectCardDeckFiles = (canonicalData: JsonValue, errors: string[]) => {
     selected.set(fileName, absolutePath)
   })
 
-  return [...selected.values()].sort((left, right) => basename(left).localeCompare(basename(right)))
+  return [...selected.values()].sort((left, right) => compareCodeUnits(basename(left), basename(right)))
 }
 
 const GOAL_VISUALIZATION_LINK_FIELDS = [
@@ -1638,7 +1644,7 @@ const selectMemoryCardReviewAudits = (landscapeId: string | undefined, errors: s
         scope: config.scope ?? null,
       }]
     })
-    .sort((left, right) => left.reviewId.localeCompare(right.reviewId))
+    .sort((left, right) => compareCodeUnits(left.reviewId, right.reviewId))
 }
 
 const memoryCardReviewPackagePaths = (audit: MemoryCardReviewAudit) => {
@@ -1820,7 +1826,7 @@ const collectExternalGoalReferences = (
   return [...references.values()].sort((left, right) => {
     const leftKey = isJsonObject(left) ? `${left.fromGoalId ?? ''}|${left.relation ?? ''}|${left.targetGoalId ?? ''}` : ''
     const rightKey = isJsonObject(right) ? `${right.fromGoalId ?? ''}|${right.relation ?? ''}|${right.targetGoalId ?? ''}` : ''
-    return leftKey.localeCompare(rightKey)
+    return compareCodeUnits(leftKey, rightKey)
   })
 }
 
@@ -1874,7 +1880,7 @@ const writePackageEntryContent = (descriptor: number, entry: PackageEntry) => {
 }
 
 const createZip = (entries: PackageEntry[], mtime: Date, outputPath: string) => {
-  const sortedEntries = [...entries].sort((left, right) => left.packagePath.localeCompare(right.packagePath))
+  const sortedEntries = [...entries].sort((left, right) => compareCodeUnits(left.packagePath, right.packagePath))
   if (sortedEntries.length > 0xffff) {
     throw new Error(`ZIP32 supports at most 65535 entries, got ${sortedEntries.length}.`)
   }
@@ -2040,7 +2046,7 @@ const fileRecords = (entries: PackageEntry[]) => entries
     category: entry.category,
     licenseCategory: entry.licenseCategory,
   }))
-  .sort((left, right) => left.path.localeCompare(right.path))
+  .sort((left, right) => compareCodeUnits(left.path, right.path))
 
 const buildReadme = (params: {
   packageId: string
@@ -2370,6 +2376,14 @@ const main = () => {
     .filter((file) => basename(file).endsWith('.source-extraction.json'))
   const cardDeckFiles = selectCardDeckFiles(canonicalData, errors)
   const goalVisualizationAssets = selectGoalVisualizationAssets(canonicalData, options.subjectSlug, errors)
+  const oversizedGoalVisualizations = goalVisualizationAssets.filter((asset) => asset.record.bytes > MAX_GOAL_VISUALIZATION_BYTES)
+  errors.push(...oversizedGoalVisualizations.map((asset) => (
+    `Goal visualization exceeds ${MAX_GOAL_VISUALIZATION_BYTES} bytes: ${asset.record.packagePath}`
+  )))
+  const goalVisualizationTotalBytes = goalVisualizationAssets.reduce((sum, asset) => sum + asset.record.bytes, 0)
+  if (goalVisualizationTotalBytes > MAX_GOAL_VISUALIZATION_TOTAL_BYTES) {
+    errors.push(`Goal visualizations exceed ${MAX_GOAL_VISUALIZATION_TOTAL_BYTES} total bytes.`)
+  }
   const memoryCardReviewAudits = selectMemoryCardReviewAudits(canonicalLandscapeId, errors)
   const externalGoalReferences = collectExternalGoalReferences(canonicalPath, canonicalData, errors)
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
@@ -2396,7 +2410,7 @@ const main = () => {
   )
 
   const mappingStates = [...new Set(mappingFiles.map(stateFromMappingPath).filter((state): state is string => !!state))]
-    .sort((left, right) => left.localeCompare(right))
+    .sort(compareCodeUnits)
   const missingMappingStates = EXPECTED_DE_STATES.filter((state) => !mappingStates.includes(state))
   if (missingMappingStates.length > 0 && !options.allowMissingStates) {
     errors.push(`Missing mapping files for DE states: ${missingMappingStates.join(', ')}`)
@@ -2515,7 +2529,7 @@ const main = () => {
 
   const goals = Array.isArray(canonicalData.goals) ? canonicalData.goals : []
   const longestPackagePath = [...entriesByPath.keys()]
-    .sort((left, right) => right.length - left.length || left.localeCompare(right))[0] ?? ''
+    .sort((left, right) => right.length - left.length || compareCodeUnits(left, right))[0] ?? ''
   const maxPackagePathLength = longestPackagePath.length
   if (maxPackagePathLength > WINDOWS_SAFE_ARCHIVE_PATH_LIMIT) {
     errors.push(

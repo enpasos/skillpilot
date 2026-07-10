@@ -106,6 +106,8 @@
     "roundtrip:mem-fwu:to-rdf": "tsx scripts/memFwuRoundtrip.ts --mode to-rdf",
     "roundtrip:mem-fwu:slim": "tsx scripts/memFwuRoundtrip.ts --mode to-slim-rdf",
     "roundtrip:mem-fwu:semantic": "tsx scripts/memFwuRoundtrip.ts --mode to-slim-rdf && tsx scripts/semanticMemFwuRoundtrip.ts",
+    "roundtrip:mem-fwu:owl": "tsx scripts/memFwuRoundtrip.ts --mode validate-owl",
+    "roundtrip:mem-fwu:owl:reason": "tsx scripts/memFwuRoundtrip.ts --mode validate-owl --reason",
     "roundtrip:mem-fwu:from-rdf": "tsx scripts/memFwuRoundtrip.ts --mode from-rdf",
     "roundtrip:mem-fwu:validate": "tsx scripts/memFwuRoundtrip.ts --mode validate",
     "roundtrip:mem-fwu:visualize": "tsx scripts/visualizeMemFwuSubgraph.ts",

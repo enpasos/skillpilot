@@ -27,6 +27,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Conceptual rollout rules for canonical German Gymnasium subjects.
 - [MEM/FWU Roundtrip Plan](curriculum-graph/mem-fwu-roundtrip-plan.md)
   Concept plan for MEM/FWU graph interchange.
+- [Dual Curriculum Package Releases](curriculum-graph/dual-curriculum-package-releases.md)
+  Target architecture for equivalent JSON-runtime and FWU-ontology release packages, standalone consumption, and repository decoupling.
 
 ## Didactic Concepts
 

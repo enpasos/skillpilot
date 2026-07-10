@@ -515,6 +515,23 @@ Agents working on Layer A should think in terms of:
 
 Layer A is **shared across all learners**; it does not contain any individual performance data.
 
+#### Curriculum release packages
+
+The long-term publication target for Layer A is one fachlicher release in two equivalent package variants:
+
+* a self-contained JSON runtime package that is the normative fachlicher input for SkillPilot;
+* a Lehrplan-Ontologie package derived Core-first from that exact JSON artifact, with explicit application extensions only where the Core cannot express the required semantics.
+
+The two variants are build artifacts of one normalized content state, not independently authored sources. A release is valid only if the ontology package can be transformed back, without a hidden copy of the original JSON, into the same normalized runtime content and byte-identical binary assets. An external release index binds both artifact hashes and the shared semantic content digest.
+
+SkillPilot runtime code should consume versioned package manifests and artifact roles, not infer curriculum semantics from repository paths. The JSON package must include the transitive runtime closure, composition views, cards, resources, and visualizations needed for standalone operation. Embedded cross-package goals retain ownership metadata; jointly installed packages may provide the same stable goal ID only when their canonical definitions are identical. Authoring repositories, build tooling, and the SkillPilot runtime may be separated after this package contract and a package-only runtime path are stable.
+
+The first public contract profile is `full-standalone-v1`. Compiled release goals carry an explicit `semanticKind`; ontology tooling must not derive Core semantics from titles or subject-specific ID patterns. Public stable releases are authenticated by a trusted signature over an external release index that binds both package variants and their equivalence evidence.
+
+Reference:
+
+* `docs/concept/curriculum-graph/dual-curriculum-package-releases.md`
+
 ### 10.2 Layer B – Individuelle Lernpfade & Mastery
 
 Layer B describes, for a fixed Layer‑A graph, the **state of a concrete learner** (or group):

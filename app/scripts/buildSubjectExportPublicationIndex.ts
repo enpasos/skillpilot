@@ -364,8 +364,16 @@ const main = () => {
     const releaseReport = fileArtifact('subject-release-report', releaseReportPath)
     const expectedSha256 = stringField(pkg, 'sha256')
     const zipMatchesSummary = zip.sha256 === expectedSha256
+    const validationZipSha256 = validationResult ? optionalStringField(validationResult, 'zipSha256') : undefined
+    const zipMatchesValidation = validationZipSha256 === zip.sha256
     addCheck(checks, `zip-checksum-matches-summary:${subject}`, zipMatchesSummary, zipMatchesSummary ? zip.path : `${zip.path} expected ${expectedSha256} but got ${zip.sha256}`)
     addCheck(checks, `validation-result-present:${subject}`, Boolean(validationResult), zipPath)
+    addCheck(
+      checks,
+      `zip-checksum-matches-validation:${subject}`,
+      zipMatchesValidation,
+      zipMatchesValidation ? zip.path : `${zip.path} validation hash ${validationZipSha256 ?? 'missing'} != ${zip.sha256}`,
+    )
     addCheck(checks, `reproducibility-result-present:${subject}`, Boolean(reproducibilityResult), subject)
 
     return {
@@ -384,10 +392,12 @@ const main = () => {
       validation: validationResult
         ? {
             passed: booleanField(validationResult, 'passed'),
+            zipSha256: validationZipSha256 ?? null,
             counts: maybeObjectField(validationResult, 'counts') ?? {},
           }
         : {
             passed: false,
+            zipSha256: null,
             counts: {},
           },
       reproducibility: reproducibilityResult
