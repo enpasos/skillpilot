@@ -1,0 +1,671 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+  "documentType": "publication-evidence-projection-profile",
+  "profileFormatVersion": 1,
+  "profileId": "de-gymnasium-mathematik-publication-evidence-v1",
+  "version": "1.1.0",
+  "releaseModelContractVersion": "1.0",
+  "targetLandscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "sourceDocumentSemantics": {
+    "unknownRolePolicy": "reject",
+    "roles": {
+      "binding-core": "curriculum",
+      "binding-core-with-restriction": "curriculum",
+      "binding-for-grade-5-6-and-11-12-from-2025-26": "curriculum",
+      "binding-lower-secondary-2007": "curriculum",
+      "binding-lower-secondary-5-10": "curriculum",
+      "binding-lower-secondary-5-6": "curriculum",
+      "binding-lower-secondary-7-10": "curriculum",
+      "binding-lower-secondary-and-entry-phase": "curriculum",
+      "binding-lower-secondary-classes-5-10": "curriculum",
+      "binding-lower-secondary-g9-2019": "curriculum",
+      "binding-lower-secondary-grade-10": "curriculum",
+      "binding-lower-secondary-grade-5-6": "curriculum",
+      "binding-lower-secondary-grade-7": "curriculum",
+      "binding-lower-secondary-grade-8": "curriculum",
+      "binding-lower-secondary-grade-9": "curriculum",
+      "binding-lower-secondary-mathematics": "curriculum",
+      "binding-restriction": "supplemental-source",
+      "binding-transition-for-grade-7-10-and-11S": "curriculum",
+      "binding-upper-secondary-11-12": "curriculum",
+      "binding-upper-secondary-2023": "curriculum",
+      "binding-upper-secondary-advanced-course": "curriculum",
+      "binding-upper-secondary-basic-course": "curriculum",
+      "binding-upper-secondary-classes-11-12": "curriculum",
+      "binding-upper-secondary-core-2024": "curriculum",
+      "binding-upper-secondary-entry-phase": "curriculum",
+      "binding-upper-secondary-gymnasium-2019": "curriculum",
+      "binding-upper-secondary-mathematics": "curriculum",
+      "binding-upper-secondary-mss-2015": "curriculum",
+      "binding-upper-secondary-qualification-phase": "curriculum",
+      "implementation-guide": "supplemental-source",
+      "legacy-grade-sequencing-reference": "curriculum",
+      "optional-extension": "curriculum",
+      "profile-summary": "supplemental-source"
+    }
+  },
+  "outputArtifacts": {
+    "mappings": {
+      "artifactRole": "mapping",
+      "normalizationRole": "source-to-canonical-mappings",
+      "outputPath": "data/mappings/source-to-canonical.json",
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+      "runtimeRequired": false,
+      "contentDigest": "include-normalized-logical-artifact"
+    },
+    "sourceIndex": {
+      "artifactRole": "source-index",
+      "normalizationRole": "official-source-index",
+      "outputPath": "data/sources/source-index.json",
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+      "runtimeRequired": false,
+      "contentDigest": "include-normalized-logical-artifact"
+    },
+    "sourceGoalReferences": {
+      "artifactRole": "source-goal-reference-index",
+      "normalizationRole": "source-goal-reference-index",
+      "outputPath": "data/sources/source-goal-references.json",
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+      "runtimeRequired": false,
+      "contentDigest": "include-normalized-logical-artifact"
+    },
+    "qualityEvidence": {
+      "artifactRole": "quality-evidence",
+      "normalizationRole": "release-quality-evidence",
+      "outputPath": "metadata/quality/release-quality-evidence.json",
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+      "runtimeRequired": false,
+      "contentDigest": "include-normalized-logical-artifact"
+    }
+  },
+  "mappingCollections": [
+    {
+      "mappingCollectionId": "bb-math-lower-secondary-source-extraction-to-canonical-math-review",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "bb-math-upper-secondary-source-extraction-to-canonical-math-review",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_MATHEMATIK_SEKII_GOST_2022.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "be-math-lower-secondary-source-extraction-to-canonical-math-review",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_MATHEMATIK_SEKI_RLP_2015.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "de-be-math-sekii-go-2014-source-extraction-to-canonical-math",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_MATHEMATIK_SEKII_GO_2014.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-BW-MATHEMATIK-SEKI-BP2016-MAPPING-3-GAP-RESOLUTION-1",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_MATHEMATIK_SEKI_BP2016.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-BW-MATHEMATIK-SEKII-BP2016-MAPPING-3-SOURCE-EXTRACTION-TRANSFER-1",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_MATHEMATIK_SEKII_BP2016.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-BY-MATHEMATIK-GYMNASIUM-LEHRPLANPLUS-MAPPING-3",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_MATHEMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_math_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HB-MATHEMATIK-SEKI-BILDUNGSPLAN-2006-2022-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_MATHEMATIK_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HB-MATHEMATIK-SEKII-BILDUNGSPLAN-2022-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HB/upper-secondary/source-extraction/DE_HB_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HE-MATHEMATIK-SEKI-KC-G8-G9-MAPPING-3",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extraction/DE_HE_MATHEMATIK_SEKI_KC_G8_G9.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HE-MATHEMATIK-SEKII-KC2024-MAPPING-3",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_MATHEMATIK_SEKII_KC2024.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HH-MATHEMATIK-SEKI-BILDUNGSPLAN-2022-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-HH-MATHEMATIK-SEKII-BILDUNGSPLAN-2022-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/upper-secondary/source-extraction/DE_HH_MATHEMATIK_SEKII_BILDUNGSPLAN_2022.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-MV-MATHEMATIK-SEKI-RAHMENPLAENE-2020-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_MATHEMATIK_SEKI_RAHMENPLAENE_2020_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-MV-MATHEMATIK-SEKII-RAHMENPLAN-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_MATHEMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-NI-MATHEMATIK-SEKI-KERNCURRICULUM-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_MATHEMATIK_SEKI_KERNCURRICULUM.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-NI-MATHEMATIK-SEKII-KERNCURRICULUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_MATHEMATIK_SEKII_KERNCURRICULUM_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-NW-MATHEMATIK-SEKI-KLP-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_MATHEMATIK_SEKI_KLP_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-NW-MATHEMATIK-SEKII-KLP-2023-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_MATHEMATIK_SEKII_KLP_2023.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-RP-MATHEMATIK-SEKI-RAHMENLEHRPLAN-2007-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/lower-secondary/source-extraction/DE_RP_MATHEMATIK_SEKI_RAHMENLEHRPLAN_2007.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-RP-MATHEMATIK-SEKII-MSS-2015-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_MATHEMATIK_SEKII_MSS_2015.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SH-MATHEMATIK-SEKI-FACHANFORDERUNGEN-2024-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_MATHEMATIK_SEKI_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SH-MATHEMATIK-SEKII-FACHANFORDERUNGEN-2024-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_MATHEMATIK_SEKII_FACHANFORDERUNGEN_2024.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SL-MATHEMATIK-SEKI-GYM9-2023-2026-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/lower-secondary/source-extraction/DE_SL_MATHEMATIK_SEKI_GYM9_2023_2026.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SL-MATHEMATIK-SEKII-GOS-2014-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SL/upper-secondary/source-extraction/DE_SL_MATHEMATIK_SEKII_GOS_2014_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SN-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-SN-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/upper-secondary/source-extraction/DE_SN_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-ST-MATHEMATIK-SEKI-FACHLEHRPLAN-GYMNASIUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-ST-MATHEMATIK-SEKII-FACHLEHRPLAN-GYMNASIUM-2019-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_MATHEMATIK_SEKII_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-TH-MATHEMATIK-SEKI-LEHRPLAN-GYMNASIUM-2018-2025-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_MATHEMATIK_SEKI_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_math_lower_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    },
+    {
+      "mappingCollectionId": "DE-TH-MATHEMATIK-SEKII-LEHRPLAN-GYMNASIUM-2018-2025-MAPPING-3-SOURCE-EXTRACTION-REVIEW",
+      "reviewPath": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_math_upper_secondary_source_extraction_to_canonical_math.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_MATHEMATIK_SEKII_LEHRPLAN_GYMNASIUM_2018_2025.source-extraction.json",
+      "legacyMappingPath": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_math_upper_secondary_to_canonical_math.json",
+      "reviewDisposition": "publication-evidence",
+      "legacyMappingDisposition": "authoring-only"
+    }
+  ],
+  "legacyDiagnostics": {
+    "sourceGoalMembershipRegistryPath": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+    "disposition": "authoring-only"
+  },
+  "qualitySources": {
+    "semanticAtomicity": {
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "semantic-atomicity-v1",
+      "configPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl"
+    },
+    "memoryCards": {
+      "reviewId": "canonical-math-full",
+      "ruleVersion": "memory-card-review-v1",
+      "configPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "reviewPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "cardReviewPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "removedCardDecisionDisposition": "authoring-only"
+    },
+    "goalVisualizations": {
+      "reviewId": "mathematik-goal-visualizations",
+      "ruleVersion": "goal-visualization-qa-v1",
+      "qaPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json"
+    }
+  },
+  "classificationPolicy": {
+    "unknownInputFieldPolicy": "reject",
+    "overlapPolicy": "exactly-one-most-specific",
+    "unobservedClassificationPolicy": "reject",
+    "runtimeConsumption": "publication-evidence-never-runtime-input",
+    "localRepositoryPaths": "authoring-only-never-emit",
+    "generatedBuildFields": "exclude-from-content-digest",
+    "publishedTextBoundaryWhitespace": "trim-leading-and-trailing-unicode-whitespace"
+  },
+  "fieldClassifications": [
+    {
+      "classificationId": "mapping.legacy.membership-registry",
+      "inputRole": "legacy-membership-registry",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The historical source-landscape membership registry is used only to diagnose stale plain legacy mappings; it is never a publication truth source or package artifact."
+    },
+    {
+      "classificationId": "mapping.review.identity",
+      "inputRole": "mapping-review",
+      "pathPattern": "/reviewId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The explicit review identity becomes the mapping collection identity."
+    },
+    {
+      "classificationId": "mapping.review.source-landscape-binding",
+      "inputRole": "mapping-review",
+      "pathPattern": "/sourceLandscapeId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The source landscape identity binds every published edge collection."
+    },
+    {
+      "classificationId": "mapping.review.target-landscape-binding",
+      "inputRole": "mapping-review",
+      "pathPattern": "/targetLandscapeId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The target landscape identity binds every published edge collection."
+    },
+    {
+      "classificationId": "mapping.review.decisions",
+      "inputRole": "mapping-review",
+      "pathPattern": "/decisions",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "Authoritative decisions define the canonical source-to-goal edge set; authoring history is projected away."
+    },
+    {
+      "classificationId": "mapping.review.flat-mapping-source",
+      "inputRole": "mapping-review",
+      "pathPattern": "/mappings/*/legacyGoalId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The reviewed source edge identity selects an edge-specific matchType fallback when the authoritative decision omits that classification."
+    },
+    {
+      "classificationId": "mapping.review.flat-mapping-target",
+      "inputRole": "mapping-review",
+      "pathPattern": "/mappings/*/canonicalGoalId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The reviewed canonical edge identity selects an edge-specific matchType fallback when the authoritative decision omits that classification."
+    },
+    {
+      "classificationId": "mapping.review.flat-mapping-match-type",
+      "inputRole": "mapping-review",
+      "pathPattern": "/mappings/*/matchType",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "decision-edge-projection-v1",
+      "reason": "The reviewed edge-specific matchType is projected only when its authoritative decision omits matchType; explicit decision values always win."
+    },
+    {
+      "classificationId": "mapping.review.flat-mappings",
+      "inputRole": "mapping-review",
+      "pathPattern": "/mappings",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The flat mappings array is redundant and incomplete as an edge set. Evidence notes, transfer history, and review worklog fields remain authoring-only; only the separately classified edge identity and matchType fields can provide a fail-closed fallback."
+    },
+    {
+      "classificationId": "mapping.review.source-path",
+      "inputRole": "mapping-review",
+      "pathPattern": "/sourceExtractionPath",
+      "scope": "field",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The repository path is replaced by the explicitly bound source collection identity."
+    },
+    {
+      "classificationId": "mapping.review.authoring-metadata",
+      "inputRole": "mapping-review",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "Versions, generated timestamps, work status, summaries, titles, rationales, reviewers, and other review worklog fields do not enter the release projection."
+    },
+    {
+      "classificationId": "mapping.legacy.document",
+      "inputRole": "legacy-mapping",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "Legacy plain mappings are diagnostic authoring history and never a publication truth source."
+    },
+    {
+      "classificationId": "source.collection.identity-and-scope",
+      "inputRole": "source-extraction",
+      "pathPattern": "/extractionId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "The extraction identity becomes the stable source collection identity."
+    },
+    {
+      "classificationId": "source.collection.landscape",
+      "inputRole": "source-extraction",
+      "pathPattern": "/sourceLandscapeId",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "The official source landscape identity remains explicit."
+    },
+    {
+      "classificationId": "source.collection.jurisdiction",
+      "inputRole": "source-extraction",
+      "pathPattern": "/jurisdiction",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "Jurisdiction is required publication scope evidence."
+    },
+    {
+      "classificationId": "source.collection.subject",
+      "inputRole": "source-extraction",
+      "pathPattern": "/subject",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "Subject is required publication scope evidence."
+    },
+    {
+      "classificationId": "source.collection.stage",
+      "inputRole": "source-extraction",
+      "pathPattern": "/stage",
+      "scope": "field",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "School stage is required publication scope evidence."
+    },
+    {
+      "classificationId": "source.collection.duration-models",
+      "inputRole": "source-extraction",
+      "pathPattern": "/durationModels",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "Explicit G8/G9 duration scope is retained when authored."
+    },
+    {
+      "classificationId": "source.collection.documents",
+      "inputRole": "source-extraction",
+      "pathPattern": "/sourceDocuments",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-collection-projection-v1",
+      "reason": "Official document metadata is emitted without local paths or document bytes."
+    },
+    {
+      "classificationId": "source.collection.goals",
+      "inputRole": "source-extraction",
+      "pathPattern": "/sourceGoals",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "closed-source-goal-projection-v1",
+      "reason": "Every mapped source goal contributes reviewed, source-aligned authored wording, a digest of those published wording bytes, and a stable official-source document reference; no verbatim-quotation claim is made."
+    },
+    {
+      "classificationId": "source.collection.passages",
+      "inputRole": "source-extraction",
+      "pathPattern": "/passages",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "source-goal-locator-join-v1",
+      "reason": "Passage metadata fills source-goal locators but is not emitted as a duplicate passage collection."
+    },
+    {
+      "classificationId": "source.collection.redundant-document",
+      "inputRole": "source-extraction",
+      "pathPattern": "/sourceDocument",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The singular sourceDocument is a duplicate of the authoritative sourceDocuments list."
+    },
+    {
+      "classificationId": "source.collection.remaining-fields",
+      "inputRole": "source-extraction",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "Extraction methods, pipeline state, local paths, raw graph helpers, audits, and deferred material remain authoring-only."
+    },
+    {
+      "classificationId": "quality.atomicity.config",
+      "inputRole": "semantic-atomicity-config",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The config selects and binds the ledger but repository paths and workbench scope are not published."
+    },
+    {
+      "classificationId": "quality.atomicity.review",
+      "inputRole": "semantic-atomicity-review",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "semantic-atomicity-release-projection-v1",
+      "reason": "Only goal identity, current fingerprint, status, and semanticAtomic result enter the release projection."
+    },
+    {
+      "classificationId": "quality.memory.config",
+      "inputRole": "memory-card-config",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "authoring-only",
+      "projection": "none",
+      "reason": "The config selects ledgers and visibility QA but its repository paths are authoring-only."
+    },
+    {
+      "classificationId": "quality.memory.goals",
+      "inputRole": "memory-goal-review",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "memory-goal-release-projection-v1",
+      "reason": "Current memory necessity, goal/deck links, and fingerprints enter the release projection."
+    },
+    {
+      "classificationId": "quality.memory.cards",
+      "inputRole": "memory-card-review",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "active-memory-card-release-projection-v1",
+      "reason": "Only kept active card decisions are published; removal history stays authoring-only under the explicit profile policy."
+    },
+    {
+      "classificationId": "quality.visualizations",
+      "inputRole": "goal-visualization-qa",
+      "pathPattern": "/**",
+      "scope": "subtree",
+      "disposition": "publication-evidence",
+      "projection": "human-visualization-release-projection-v1",
+      "reason": "Goal identity, active asset hash, and current human approval state enter as decisions; the atomicity-derived visualization scope and explicit missing-goal IDs enter separately as coverage evidence without being counted as invented decisions."
+    }
+  ],
+  "expectedCounts": {
+    "mappings": {
+      "collections": 31,
+      "inputDecisions": 10021,
+      "decisionEdges": 33382,
+      "rawMappingEdges": 33334,
+      "decisionEdgesMissingFromRawMappings": 48,
+      "decisionRawMatchTypeConflicts": 23,
+      "decisionMatchTypesDerivedFromRawMappings": 2599,
+      "unresolvedDecisionMatchTypes": 0,
+      "legacyPlainMappingRows": 2539,
+      "legacyDanglingTargets": 8,
+      "legacySourceIdsOutsideMembership": 695
+    },
+    "sources": {
+      "collections": 31,
+      "documents": 55,
+      "curriculumDocuments": 52,
+      "supplementalDocuments": 3,
+      "sourceGoals": 9977,
+      "jurisdictions": 16
+    },
+    "quality": {
+      "semanticAtomicityDecisions": 754,
+      "memoryGoalDecisions": 754,
+      "noMemoryNeeded": 717,
+      "memoryRequired": 37,
+      "cardLedgerDecisions": 77,
+      "activeKeptCardDecisions": 64,
+      "authoringOnlyRemovedCardDecisions": 13,
+      "visualizationDecisions": 756,
+      "visualizationScopeGoals": 754,
+      "missingGoalVisualizations": 1,
+      "humanApprovedVisualizations": 136,
+      "openVisualizations": 620,
+      "publishedQualityDecisions": 2328
+    },
+    "contentIndex": {
+      "addedLogicalArtifacts": 4,
+      "totalLogicalArtifacts": 111,
+      "binaryResources": 756
+    }
+  }
+}

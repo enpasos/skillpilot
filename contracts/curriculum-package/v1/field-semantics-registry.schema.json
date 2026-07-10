@@ -540,6 +540,19 @@
             },
             "runtimeRequired": { "const": false }
           }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "targetKind", "targetScope", "traversal", "valueMode", "runtimeRequired"],
+          "properties": {
+            "mode": { "const": "soft-reference" },
+            "targetKind": { "const": "goal" },
+            "targetScope": { "const": "same-landscape" },
+            "traversal": { "const": "not-followed" },
+            "valueMode": { "enum": ["scalar", "list-items"] },
+            "runtimeRequired": { "const": false }
+          }
         }
       ]
     },
@@ -692,7 +705,9 @@
           "enum": [
             "always",
             "curricular-goal",
-            "non-curricular-or-unscoped-goal"
+            "non-curricular-or-unscoped-goal",
+            "official-source-curriculum-document",
+            "official-source-supplemental-document"
           ]
         },
         "datatype": {
@@ -1257,6 +1272,131 @@
                   },
                   "roundtrip": {
                     "const": "exact"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "dataType": {
+                "properties": {
+                  "jsonTypes": {
+                    "contains": {
+                      "const": "null"
+                    }
+                  }
+                },
+                "required": [
+                  "jsonTypes"
+                ]
+              },
+              "presenceSemantics": {
+                "properties": {
+                  "null": {
+                    "const": "distinct"
+                  }
+                },
+                "required": [
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "dataType",
+              "presenceSemantics"
+            ]
+          },
+          "then": {
+            "properties": {
+              "rdfMapping": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "construction": {
+                          "properties": {
+                            "objectMapping": {
+                              "const": "typed-literal"
+                            }
+                          },
+                          "required": [
+                            "objectMapping"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "construction"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "fallbackConstruction": {
+                          "properties": {
+                            "objectMapping": {
+                              "const": "typed-literal"
+                            }
+                          },
+                          "required": [
+                            "objectMapping"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "fallbackConstruction"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "rdfMapping": {
+                    "properties": {
+                      "construction": {
+                        "required": [
+                          "resourceClass"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "construction"
+                    ]
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "rdfMapping": {
+                    "properties": {
+                      "fallbackConstruction": {
+                        "required": [
+                          "resourceClass"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "fallbackConstruction"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "reverseMapping": {
+                "properties": {
+                  "mode": {
+                    "const": "resource-record"
                   }
                 }
               }

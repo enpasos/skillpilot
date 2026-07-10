@@ -2,11 +2,12 @@
 
 - Stand: 2026-07-10
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
-- Aktuelle Phase: `P0 – Verträge festschreiben`
-- Aktiver Schritt: `DPK-004 – nächster Teilschritt DPK-004b`
-- Nächster commitbarer Teilschritt: `DPK-004b – Publikations-Evidenz für Mappings, Quellen und Quality-Daten klassifizieren`
-- Letzter abgeschlossener Schritt: `DPK-004a – entpacktes Mathematik-Runtime-Release-Modell`
-- Solider Ausgangsstand des nächsten Schritts: `DPK-004a`, vollständiges `./run_ci.sh` am 2026-07-10 grün
+- Abgeschlossene Phase: `P0 – Verträge und vollständiges Mathematik-Release-Modell`
+- Nächste Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
+- Nächster Schritt: `DPK-005 – Mathematik-JSON-Paket nach full-standalone-v1 bauen und strikt validieren`
+- Letzter fachlich abgeschlossener Schritt: `DPK-004b / DPK-004 – Publikations-Evidenz und vollständige Mathematik-Conformance`
+- Solider Ausgangsstand: `DPK-004b / DPK-004`, vollständiges `./run_ci.sh` am 2026-07-10 grün
+- Abschluss-Gate für den DPK-004b-Commit: gezielte QS und vollständiges `./run_ci.sh` grün
 - Blocker: keine
 
 Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdokument bleibt die Quelle für Zielarchitektur und endgültige Abnahmekriterien; Git-Historie und CI-Artefakte ersetzen ein langes Umsetzungstagebuch.
@@ -15,7 +16,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
-| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge | `in_progress` | DPK-004b schließt die Publikations-Evidenz des Release-Modells |
+| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen; DPK-005 beginnt P1 |
 | P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `not_started` | Mathematik package-only laden |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
@@ -24,6 +25,52 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | P6 | Trennung von Curriculum-Erstellung und SkillPilot-Software | `not_started` | Software benötigt keinen produktiven Curriculum-Quellbaum |
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
+
+## Abgeschlossener Teilschritt: DPK-004b
+
+Ziel ist die vollständige, verlustfreie Mathematik-Conformance-Kompilation: Neben den Runtime-Artefakten aus DPK-004a werden jetzt auch die veröffentlichungsrelevanten Mappings, amtlichen Quellen, SourceGoal-Belege und Quality-Entscheidungen strikt projiziert und in denselben fachlichen `contentDigest` aufgenommen.
+
+Die Paketrolle bleibt generisch und konsumierbar; die spezifischere `normalizationRole` wählt das geschlossene Payload-Schema und die Feldsemantik:
+
+| Paketrolle | `normalizationRole` | Output | `contentDigest` | Runtime-Closure |
+| --- | --- | --- | --- | --- |
+| `mapping` | `source-to-canonical-mappings` | `data/mappings/source-to-canonical.json` | enthalten | ausgeschlossen |
+| `source-index` | `official-source-index` | `data/sources/source-index.json` | enthalten | ausgeschlossen |
+| `source-goal-reference-index` | `source-goal-reference-index` | `data/sources/source-goal-references.json` | enthalten | ausgeschlossen |
+| `quality-evidence` | `release-quality-evidence` | `metadata/quality/release-quality-evidence.json` | enthalten | ausgeschlossen |
+
+Diese Trennung ist absichtlich: Publikations-Evidenz gehört zur fachlichen Identität und muss den JSON↔OWL-Roundtrip bestehen, ist aber kein navigations- oder frontier-relevanter Runtime-Input. Der reale Closure-Report enthält deshalb keine der vier Publikationsrollen, weiterhin aber die vollständigen 2.402 Runtime-Definitionen und 18.815 harten/weichen Referenzrecords.
+
+Realer Publikationsnachweis:
+
+| Bereich | Geprüfter Umfang und Entscheidung |
+| --- | --- |
+| Mapping-Truth | 31 Collections, 10.021 autoritative Review-Entscheidungen und 33.382 daraus projizierte `exact`-/`partial`-Kanten |
+| Review-Mappingzeilen | 33.334 Kanten; 48 autoritative Entscheidungskanten fehlen dort, 23 explizite Decision-vs-Row-Konflikte werden zugunsten der Decision aufgelöst und 2.599 nicht auf Decision-Ebene typisierte Kanten erhalten ihren edge-spezifischen Reviewwert; 0 bleiben unaufgelöst |
+| Legacy-Mappings | 2.539 Zeilen bleiben Rückwärtskompatibilitäts-/Auditmaterial; 695 Source-IDs liegen außerhalb historischer Membership, 8 Ziele hängen; keine Legacy-Zeile wird Mapping-Truth |
+| Amtliche Quellen | 31 Source Collections, 52 Curriculum-Dokumente, 3 amtliche Zusatzdokumente, 9.977 Source Goals und 16 Jurisdiktionen |
+| Quality-Evidence | 754 Atomicity-, 754 Memory-Goal-, 64 aktive Karten- und 756 aktive Visualisierungsentscheidungen, zusammen 2.328 veröffentlichte Entscheidungen; Atomic-Scope 754, davon 1 ohne aktives Bild |
+| Visualisierungsfreigabe | 136 human-approved, 620 aktive Reviews offen und 1 Atomic Goal ohne Bild; deshalb ehrlich `publicationStatus: not-ready` |
+
+Die Feldregistry umfasst 454 Regeln: 323 Runtime-Regeln, 130 Regeln für die vier Publikationsnormalformen und einen historischen generischen Eintrag. Eine hashgebundene Rollentabelle typisiert 52 tatsächliche Curriculum-Dokumente als Core-`Lehrplan` und drei amtliche Zusatzdokumente als `sp:OfficialSourceDocument`; unbekannte, ungenutzte oder widersprüchliche Rollen scheitern fail-closed. Source Goals verwenden konservativ Core-`Curriculares Element`, Source→Canonical-Kanten Core-`CE-Verweis`; nur `exact`/`partial` benötigt eine kleine SkillPilot-Erweiterung. Quality-Evidence bleibt vollständig Anwendungsevidenz und erzeugt keine falschen Core-Aussagen.
+
+Der reale Kandidat `org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.2` verwendet das Publikationsprofil `1.1.0`. Sein Inhaltsindex umfasst 111 logische Artefakte plus 756 Binärrecords und ergibt:
+
+`sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60`
+
+Die fail-closed Scalar-Prüfung hat dabei reale PDF-/OCR-Altlasten gefunden: C0-Steuerzeichen und nicht gepaarte UTF-16-Surrogate wurden in den Authoring-Quellen bereinigt. Die Release-Kompilation akzeptiert solche Werte nicht und ersetzt sie nicht stillschweigend durch Surrogate oder bereinigte Texte.
+
+Die 9.977 SourceGoal-Records sind eine verlustfrei veröffentlichte, reviewte und quellennahe Authoring-Projektion, keine pauschale Behauptung wortgleicher PDF-Zitate. Der aktuelle Bestand enthält weiterhin OCR-/Transliterationsschuld; 484 `sourceText`-Werte sind im jeweiligen authored Passage-Carrier nicht als zusammenhängender, whitespace-normalisierter Text selbstverifizierbar. Vor einer Release-Promotion bleibt deshalb eine eigene Source-Verification-QA-Lane offen, auch wenn JSON↔OWL den veröffentlichten Wortlaut bereits exakt erhält.
+
+Gezielte QS:
+
+- Compiler und unabhängiger Validator rekonstruieren und prüfen alle vier Publikationsartefakte getrennt;
+- 9 gültige Fixture-Dokumente, 22 gezielte Negativfälle und 47 benannte Produktions-/Adversarialtests sind grün;
+- zwei Realbuilds liefern denselben Dateibaum, dieselben 111+756 Inhaltsrecords und denselben `contentDigest`;
+- unbekannte oder nicht beobachtete Feldklassifikationen, Mapping-Truth-Abweichungen, Legacy-Leakage, falsche Counts, Source-Join-Verlust, Quality-Fingerprint-/Asset-Abweichungen und Publikationsrollen in der Runtime-Closure scheitern fail-closed;
+- das vollständige `./run_ci.sh` ist auf dem final dokumentierten Stand grün.
+
+Bewusste Grenze: DPK-004 erzeugt weiterhin ein entpacktes Conformance-Modell, kein installierbares ZIP. Manifest, paketlokaler Schema-Katalog, Lizenzen, komplettes Dateiinventar, Bildmaterialisierung und fertige Archivprüfung beginnen mit DPK-005.
 
 ## Abgeschlossener Teilschritt: DPK-004a
 
@@ -60,7 +107,7 @@ Bewusste Nicht-Ziele dieses Teilschritts:
 
 - der Output ist noch kein `full-standalone-v1`-ZIP: Paketmanifest, paketlokaler Schema-Katalog, vollständiges Dateiinventar, Lizenzen, Checksummendatei und fertige Archivgrenzen folgen in DPK-005;
 - die 756 Bilder werden in DPK-004a gehasht und semantisch gebunden, aber noch nicht in den entpackten Output kopiert; die ZIP-Materialisierung folgt in DPK-005;
-- Mapping-, Quellen- und Quality-Evidenz sind noch nicht vollständig nach Runtime-, Veröffentlichungs- und Authoring-only-Semantik klassifiziert; das ist DPK-004b;
+- Mapping-, Quellen- und Quality-Evidenz waren bewusst auf DPK-004b verschoben und sind dort inzwischen vollständig klassifiziert und kompiliert;
 - noch kein FWU-OWL-Exporter, isolierter Ontologie-Reverse-Compiler oder öffentlicher Dual-Release-Äquivalenznachweis;
 - noch kein Package Loader und kein hermetischer SkillPilot-Consumer-Test.
 
@@ -182,6 +229,7 @@ Abnahme:
 | DPK-002 | Explizite Runtime-Discovery, offline und vertrauenswürdig gebundene Schemaauflösung sowie fail-closed Readiness-Klassifikation eingeführt; Legacy-ZIPs bleiben nachweisbar nicht standalone | Manifest 1/49, Runtime 1/31 + 8 Bindings, Schema-Katalog 1/34 + 12 Bindings, Readiness-Adversarialmatrix, realer Latein-Publikationspfad 37/37; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
 | DPK-003 | Core-first Feld-/RDF-Semantik, versionierte Normalform mit Inhaltsindex sowie externe Äquivalenz- und Dual-Release-Verträge eingeführt | 5 gültige Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests und 8 Raw-JSON-Fälle; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
 | DPK-004a | Reales Mathematik-Authoring verlustfrei in ein striktes, entpacktes Runtime-Release-Modell mit typisierter Fixpunkt-Closure, Semantic-Kind-Ledger, Migration, Ressourcenbindung und gemeinsamem `contentDigest` kompiliert | Reales Profil: 1.079 Ziele, 88 Views, 12 Decks/128 Karten, 825 Ressourcenlinks einschließlich 756 gehashter Bilder; 0 ungelöste harte Referenzen, externe Runtime-Abhängigkeiten und Definitionskonflikte; 5 Fixture-Dokumente/8 Mutationen, Compilerprobe, 25 Selbsttests, sicherer Doppelbuild und vollständiges `./run_ci.sh`, Exit 0 | 2026-07-10 |
+| DPK-004b / DPK-004 | Autoritative Mappings, Quellen, SourceGoal-Belege und ehrliche Quality-Evidence als vier digest-relevante, nicht runtime-erforderliche Publikationsartefakte ergänzt; P0 damit fachlich und technisch vollständig | 10.021 Mapping-Entscheidungen/33.382 Kanten, 9.977 Source Goals, 2.328 Quality-Entscheidungen plus 1 explizite Bildlücke, 111+756 Inhaltsrecords; 9 gültige Fixture-Dokumente, 22 Negativfälle, 47 Produktions-/Adversarialtests; gezielte QS und vollständiges `./run_ci.sh` grün | 2026-07-10 |
 
 ## Verbleibende Roadmap
 
@@ -190,16 +238,16 @@ Abnahme:
 | DPK-001 | P0 | JSON-Manifest-/Profilvertrag v1 und Conformance-Validator | DPK-000 | `complete` |
 | DPK-002 | P0 | Runtime-Katalogschema, paketlokaler Offline-Schema-Katalog, Artefaktrollen und ehrliche Readiness-Auswertung | DPK-001 | `complete` |
 | DPK-003 | P0 | Feldsemantik-/RDF-Mappingregistry, versionierte Normalform sowie Release-Index-/Äquivalenzreport-Schemas | DPK-001 | `complete` |
-| DPK-004 | P0 | Closure-, Ownership-, Konflikt- und Migrationsverträge; vollständige Mathematik-Conformance-Kompilation in das neue Release-Modell | DPK-002–DPK-003 | `in_progress` |
+| DPK-004 | P0 | Closure-, Ownership-, Konflikt- und Migrationsverträge; vollständige Mathematik-Conformance-Kompilation in das neue Release-Modell | DPK-002–DPK-003 | `complete` |
 | DPK-004a | P0 | Entpacktes Runtime-Modell mit strikten Payload-Schemas, Semantic-Kind-Ledger, Fixpunkt-Closure, Migration, Ressourcenbindung und realer Mathematik-Kompilation | DPK-002–DPK-003 | `complete` |
-| DPK-004b | P0 | Mapping-, Quellen- und Quality-Felder vollständig als Runtime-, Publikations-Evidenz oder Authoring-only klassifizieren und in die Mathematik-Conformance aufnehmen | DPK-004a | `not_started` |
-| DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen und strikt validieren | DPK-002–DPK-004 | `not_started` |
+| DPK-004b | P0 | Mapping-, Quellen- und Quality-Felder vollständig als Runtime-, Publikations-Evidenz oder Authoring-only klassifizieren und in die Mathematik-Conformance aufnehmen | DPK-004a | `complete` |
+| DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen, strikt validieren und die offene Source-Verification-QA-Schuld als maschinenlesbares Release-Gate führen | DPK-002–DPK-004 | `not_started` |
 | DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `not_started` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
 | DPK-010 | P4 | Physik-Closure und fachübergreifende Profile | DPK-004, DPK-009 | `not_started` |
-| DPK-011 | P5 | Signierter Release-Index, Distributionskatalog und atomare Promotion | DPK-009–DPK-010 | `not_started` |
+| DPK-011 | P5 | Signierter Release-Index, Distributionskatalog und atomare Promotion nur bei geschlossenen Visualisierungs- und Source-Verification-Gates | DPK-009–DPK-010 | `not_started` |
 | DPK-012 | P6 | Curriculum-Toolchain und Inhalte aus dem Software-Repository lösen | DPK-007, DPK-011 | `not_started` |
 
 Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht die detaillierten Phasen und Abnahmekriterien im Zielkonzept.
@@ -213,6 +261,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-002 | Manifest 1/49; Runtime 1/31 + 8 Bindings; Schema-Katalog 1/34 + 12 Bindings; Readiness: 5 Manifest-, 4 Policy-Tamper-, 5 Forgery-, 3 Raw-JSON-, 7 adversariale ZIP-, 2 Early-Limit- und 10 Exitcode-Fälle; realer Latein-Build/Validator/Repro/Index 37/37; Lint, TypeScript, Doku, Workflow-YAML und Diff-Check | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-003 | Dual-Release-Validator: 5 positive Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests, 8 Raw-JSON-Fälle; Schema-, Digest-, Trust-, Cross-Binding-, Doku-, Workflow- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-004a | Strikte Schema-/Profil-/Ledger-/Core-Pin-Prüfung; reale Mathematik-Kompilation mit exakten Umfangsgates; 5 Fixture-Dokumente/8 Mutationen; Compilerprobe; 25 unabhängige Selbsttests; sichere Output-Promotion; unabhängige Digest-, Feldabdeckungs-, Referenz-, Closure-, Ownership-, Konflikt-, Migrations-, Index- und Ressourcenprüfung; bytegleicher Doppelbuild | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
+| DPK-004b / DPK-004 | Compiler plus unabhängiger Validator; 9 gültige Fixture-Dokumente, 22 Negativfälle und 47 Produktions-/Adversarialtests; Mapping-Truth-/Raw-/Legacy-Differenzen, Source-Joins/Lineage, Core-Term-Trust, Source-Semantik-Overclaims, unabhängig abgeleitete Quality-Status, stabile Schlüssel, 454 Registry-Regeln, 111+756 Inhaltsrecords, 0 Publikationsrollen in der Runtime-Closure und bytegleicher Doppelbuild | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

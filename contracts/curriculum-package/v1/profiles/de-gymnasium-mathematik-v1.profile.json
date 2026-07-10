@@ -3,7 +3,7 @@
   "documentType": "curriculum-ontology-profile",
   "profileFormatVersion": 1,
   "profileId": "de-gymnasium-mathematik-v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Core-first ontology mapping profile for the canonical German Gymnasium mathematics release model. Goal semantics are joined exclusively from the separately reviewed, fingerprint-bound ledger; this profile contains no goal-ID list and forbids title or ID-prefix inference.",
   "releaseModelContractVersion": "1.0",
   "source": {
@@ -35,7 +35,7 @@
   },
   "applicationVocabulary": {
     "namespaceIri": "https://skillpilot.de/ns/roundtrip#",
-    "policy": "only-runtime-reconstruction-order-view-srs-assessment-packaging-gaps"
+    "policy": "only-runtime-reconstruction-order-view-srs-assessment-packaging-publication-evidence-gaps"
   },
   "semanticKindDecisions": {
     "mode": "authoritative-fingerprinted-ledger",
@@ -365,6 +365,7 @@
         "/goals/*/resourceLinks"
       ],
       "coreTerms": [
+        "lp:LP_0000460",
         "lp:LP_0030065",
         "lp:LP_0030071",
         "lp:LP_0030072"
@@ -449,6 +450,120 @@
       "condition": "Every runtime-observable list is represented by unique contiguous zero-based positions independent of RDF statement order.",
       "reverseMode": "exact-positioned-memberships",
       "notes": "Order is an explicit SkillPilot reconstruction contract; unordered Core projections are never the authoritative carrier."
+    },
+    "officialSources": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/collections",
+        "/collections/*/documents",
+        "/collections/*/documents/*/semanticType",
+        "/collections/*/documents/*/title",
+        "/collections/*/documents/*/url",
+        "/collections/*/documents/*/landingUrl"
+      ],
+      "coreTerms": [
+        "lp:LP_0000344",
+        "lp:LP_0000346",
+        "lp:LP_0000438",
+        "lp:LP_0000463",
+        "lp:LP_0030056"
+      ],
+      "applicationTerms": [
+        "sp:OfficialSourceCollection",
+        "sp:OfficialSourceDocument",
+        "sp:hasOfficialSourceDocument",
+        "sp:officialSourceLandingUrl",
+        "sp:officialSourceSemanticType"
+      ],
+      "condition": "The 52 documents with semanticType curriculum are represented as Core Lehrplan LP_0000438 with Core titles; the 3 supplemental documents remain sp:OfficialSourceDocument with rdfs:label. Canonical URLs use the domain-free Core URI property in both cases, while collection grouping, semantic type, and an optional distinct landing URL remain exact application evidence.",
+      "reverseMode": "exact",
+      "notes": "The hash-bound publication profile classifies each authored role explicitly as curriculum or supplemental-source; unknown and unused roles are rejected. The resulting semanticType drives the RDF construction without title, jurisdiction, or URL heuristics. Stable source identities and publication grouping are preserved without repository-local paths."
+    },
+    "sourceGoalReferences": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/collections/*/sourceGoals",
+        "/collections/*/sourceGoals/*/title",
+        "/collections/*/sourceGoals/*/description",
+        "/collections/*/sourceGoals/*/sourceText",
+        "/collections/*/sourceGoals/*/sourceDocumentId",
+        "/collections/*/sourceGoals/*/locator"
+      ],
+      "coreTerms": [
+        "lp:LP_0000261",
+        "lp:LP_0000344",
+        "lp:LP_0000346",
+        "lp:LP_0030003",
+        "lp:LP_0030051",
+        "lp:LP_0030056"
+      ],
+      "applicationTerms": [
+        "sp:SourceGoalCollection",
+        "sp:SourceGoalClassification",
+        "sp:SourceGoalLineage",
+        "sp:SourceLocator",
+        "sp:hasSourceGoal",
+        "sp:sourceGoalSourceText"
+      ],
+      "condition": "Every reviewed source goal is represented conservatively as the generic Core Curriculares Element LP_0000261 with Core title and description records; exact source text, document join, locator, optional classification, and split lineage remain publication-evidence extensions.",
+      "reverseMode": "exact",
+      "notes": "No source-goal competency subtype is inferred from extracted wording. Its official URL is obtained through the stable sourceDocumentId join to an officialSources record, which may be either a Core Lehrplan or an application-level supplemental document according to semanticType."
+    },
+    "sourceMappings": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/decisionCount",
+        "/collections/*/inputDecisionCount",
+        "/collections/*/edges",
+        "/collections/*/edges/*/sourceGoalId",
+        "/collections/*/edges/*/canonicalGoalId",
+        "/collections/*/edges/*/matchType"
+      ],
+      "coreTerms": [
+        "lp:LP_0030065",
+        "lp:LP_0030071",
+        "lp:LP_0030072"
+      ],
+      "applicationTerms": [
+        "sp:sourceMappingDecisionCount",
+        "sp:sourceMappingEdgeMatchType",
+        "sp:sourceMappingInputDecisionCount"
+      ],
+      "condition": "Every reviewed exact or partial source-to-canonical edge is a Core CE-Verweis LP_0030065 linked from its source by LP_0030071 and to its canonical goal by LP_0030072; exact-versus-partial granularity and the authored decision counts remain exact application predicates.",
+      "reverseMode": "exact",
+      "notes": "Authoring rationales, reviewers, timestamps, redundant rows, and repository paths are deliberately absent from the release-facing mapping graph."
+    },
+    "qualityEvidence": {
+      "strategy": "skillpilot-extension",
+      "sourcePaths": [
+        "/publicationStatus",
+        "/lanes/semanticAtomicity",
+        "/lanes/semanticAtomicity/decisions",
+        "/lanes/memoryCards",
+        "/lanes/memoryCards/goalDecisions",
+        "/lanes/memoryCards/activeCardDecisions",
+        "/lanes/goalVisualizations",
+        "/lanes/goalVisualizations/scopeGoalCount",
+        "/lanes/goalVisualizations/missingGoalCount",
+        "/lanes/goalVisualizations/missingGoalIds",
+        "/lanes/goalVisualizations/decisions"
+      ],
+      "coreTerms": [],
+      "applicationTerms": [
+        "sp:ActiveCardDecisionEvidence",
+        "sp:GoalVisualizationDecisionEvidence",
+        "sp:GoalVisualizationEvidence",
+        "sp:MemoryCardEvidence",
+        "sp:MemoryGoalDecisionEvidence",
+        "sp:missingGoalVisualization",
+        "sp:QualityEvidence",
+        "sp:SemanticAtomicityDecisionEvidence",
+        "sp:SemanticAtomicityEvidence",
+        "sp:visualizationScopeGoalCount"
+      ],
+      "condition": "Release quality records are evidence about current SkillPilot review lanes and never curricular elements, competencies, prerequisites, or Core source statements. Missing visualization goal IDs are publication-only soft references and are not traversed into the runtime dependency closure.",
+      "reverseMode": "exact",
+      "notes": "Only release-facing decisions, fingerprints, and independent quality scope evidence are emitted. Status-redundant booleans and list-derived counts are regenerated instead of receiving RDF literals. Reviewer identity, timestamps, rationales, workbench paths, model triage, generated reports, and removed-card history remain authoring-only."
     }
   }
 }
