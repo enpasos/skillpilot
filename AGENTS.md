@@ -531,6 +531,7 @@ The first public contract profile is `full-standalone-v1`. Compiled release goal
 Reference:
 
 * `docs/concept/curriculum-graph/dual-curriculum-package-releases.md`
+* `docs/dev/dual-curriculum-package-implementation-status.md`
 
 ### 10.2 Layer B – Individuelle Lernpfade & Mastery
 

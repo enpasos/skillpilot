@@ -1,0 +1,680 @@
+{
+  "fixtureFormatVersion": 1,
+  "baseManifest": "../valid/minimal-full-standalone.manifest.json",
+  "cases": [
+    {
+      "id": "missing-package-format-version",
+      "description": "A package must declare the package-format contract it implements.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/packageFormatVersion"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA",
+        "PROFILE_MISMATCH"
+      ]
+    },
+    {
+      "id": "missing-runtime-catalog-role",
+      "description": "The standalone profile requires exactly one runtime catalog.",
+      "mutations": [
+        {
+          "operation": "remove-files-by-role",
+          "role": "runtime-catalog"
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_ROLE_CARDINALITY"
+      ]
+    },
+    {
+      "id": "missing-release-profile-field",
+      "description": "A manifest must identify the closed release profile it implements.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/releaseProfile"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA",
+        "PROFILE_MISMATCH"
+      ]
+    },
+    {
+      "id": "missing-release-profile-role",
+      "description": "The profile copy bound by the manifest must be packaged exactly once.",
+      "mutations": [
+        {
+          "operation": "remove-files-by-role",
+          "role": "release-profile"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_MISSING",
+        "PROFILE_ROLE_CARDINALITY"
+      ]
+    },
+    {
+      "id": "absolute-file-path",
+      "description": "Manifest paths are archive-root-relative and may never be absolute.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "/data/canonical/mathematik.landscape.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FILE_PATH_UNSAFE",
+        "MANIFEST_SCHEMA"
+      ],
+      "expectedLocations": {
+        "FILE_PATH_UNSAFE": [
+          "/files/3/path"
+        ],
+        "MANIFEST_SCHEMA": [
+          "/files/3/path"
+        ]
+      }
+    },
+    {
+      "id": "archive-root-prefixed-file-path",
+      "description": "A legacy path containing the archive-root prefix is not a v1 package-relative path.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0/data/canonical/mathematik.landscape.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FILE_PATH_ARCHIVE_ROOT_PREFIX"
+      ]
+    },
+    {
+      "id": "duplicate-file-path",
+      "description": "Two artifact records may not claim the same package path.",
+      "mutations": [
+        {
+          "operation": "copy-file-field",
+          "fromRole": "canonical-landscape",
+          "toRole": "composition-view",
+          "field": "path"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FILE_PATH_DUPLICATE"
+      ]
+    },
+    {
+      "id": "portable-case-collision",
+      "description": "Paths that collide after Unicode normalization and case folding are ambiguous on common filesystems.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "Data/runtime/catalog.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FILE_PATH_PORTABLE_COLLISION"
+      ]
+    },
+    {
+      "id": "file-directory-prefix-collision",
+      "description": "An archive path cannot be both a file and an ancestor directory.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "data/runtime/catalog.json/child.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FILE_PATH_PREFIX_COLLISION"
+      ],
+      "expectedLocations": {
+        "FILE_PATH_PREFIX_COLLISION": [
+          "/files"
+        ]
+      }
+    },
+    {
+      "id": "windows-reserved-archive-root",
+      "description": "The single archive root must be portable to Windows filesystems.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/archiveRoot",
+          "value": "CON"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_ROOT_UNSAFE"
+      ],
+      "expectedLocations": {
+        "ARCHIVE_ROOT_UNSAFE": [
+          "/archiveRoot"
+        ]
+      }
+    },
+    {
+      "id": "combined-archive-path-too-long",
+      "description": "Root plus relative path must remain below the package-format byte limit.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/archiveRoot",
+          "value": "klmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrstklmnopqrst"
+        },
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_PATH_LIMIT"
+      ],
+      "expectedLocations": {
+        "ARCHIVE_PATH_LIMIT": [
+          "/files/3/path"
+        ]
+      }
+    },
+    {
+      "id": "ontology-variant-not-yet-contracted",
+      "description": "DPK-001 freezes only the JSON runtime manifest contract.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/variant",
+          "value": "fwu-owl"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA",
+        "PROFILE_MISMATCH"
+      ],
+      "expectedLocations": {
+        "MANIFEST_SCHEMA": [
+          "/variant"
+        ],
+        "PROFILE_MISMATCH": [
+          "/variant"
+        ]
+      }
+    },
+    {
+      "id": "unknown-artifact-role",
+      "description": "The closed standalone profile rejects roles it does not define.",
+      "mutations": [
+        {
+          "operation": "append-file",
+          "file": {
+            "path": "data/unknown/example.json",
+            "role": "unknown-artifact",
+            "mediaType": "application/json",
+            "bytes": 12,
+            "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "runtimeRequired": false,
+            "licenseExpression": "CC-BY-4.0",
+            "provenanceClass": "skillpilot-authored",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_UNKNOWN_ROLE"
+      ]
+    },
+    {
+      "id": "malformed-content-digest",
+      "description": "The semantic content digest is an explicitly labelled lower-case SHA-256 value.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contentDigest",
+          "value": "not-a-digest"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "malformed-software-range",
+      "description": "Runtime compatibility uses the closed inclusive-lower/exclusive-upper SemVer range grammar.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/supportedSkillpilotSoftware",
+          "value": "banana"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "reversed-software-range",
+      "description": "The supported runtime range must be non-empty and ordered.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/supportedSkillpilotSoftware",
+          "value": ">=2.0.0 <1.0.0"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SOFTWARE_RANGE_INVALID"
+      ],
+      "expectedLocations": {
+        "SOFTWARE_RANGE_INVALID": [
+          "/supportedSkillpilotSoftware"
+        ]
+      }
+    },
+    {
+      "id": "semver-prerelease-leading-zero",
+      "description": "Numeric SemVer prerelease identifiers cannot contain leading zeroes.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/packageVersion",
+          "value": "1.0.0-01"
+        },
+        {
+          "operation": "set-pointer",
+          "pointer": "/releaseId",
+          "value": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0-01"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "malformed-file-sha256",
+      "description": "Every file record carries a lower-case 64-digit SHA-256 value.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "sha256",
+          "value": "not-a-file-digest"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "non-redistributable-source-metadata",
+      "description": "Every distributed file must be cleared, including non-runtime source metadata.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "license",
+          "field": "redistributionStatus",
+          "value": "review-required"
+        }
+      ],
+      "expectedErrorCodes": [
+        "REDISTRIBUTION_NOT_ALLOWED"
+      ]
+    },
+    {
+      "id": "malformed-license-expression",
+      "description": "License expressions use the supported SPDX-style AND/OR/WITH grammar.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "licenseExpression",
+          "value": "totally not a license"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LICENSE_EXPRESSION_INVALID"
+      ],
+      "expectedLocations": {
+        "LICENSE_EXPRESSION_INVALID": [
+          "/files/3/licenseExpression"
+        ]
+      }
+    },
+    {
+      "id": "unresolved-license-identifier",
+      "description": "Every identifier used by a distributed file needs a mapped license document.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "licenseExpression",
+          "value": "MIT"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LICENSE_DOCUMENT_MISSING"
+      ],
+      "expectedLocations": {
+        "LICENSE_DOCUMENT_MISSING": [
+          "/files/3/licenseExpression"
+        ]
+      }
+    },
+    {
+      "id": "noassertion-is-not-releaseable",
+      "description": "A public standalone package cannot claim redistribution while its license is unknown.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "licenseExpression",
+          "value": "NOASSERTION"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LICENSE_IDENTIFIER_DISALLOWED"
+      ]
+    },
+    {
+      "id": "license-document-path-missing",
+      "description": "A declared license document must resolve to an inventoried license artifact.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/licenseDocuments/0/path",
+          "value": "licenses/missing.txt"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LICENSE_DOCUMENT_FILE_MISSING",
+        "LICENSE_DOCUMENT_ORPHAN"
+      ]
+    },
+    {
+      "id": "release-identity-mismatch",
+      "description": "A release ID is derived exactly from stable package ID and package version.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/releaseId",
+          "value": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.1"
+        }
+      ],
+      "expectedErrorCodes": [
+        "RELEASE_ID_MISMATCH"
+      ]
+    },
+    {
+      "id": "canonical-landscape-not-runtime-required",
+      "description": "Normative runtime content cannot be marked optional in a standalone package.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "runtimeRequired",
+          "value": false
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_RUNTIME_REQUIRED"
+      ]
+    },
+    {
+      "id": "canonical-landscape-wrong-media-type",
+      "description": "Role-specific media types prevent a loader from guessing artifact formats.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "mediaType",
+          "value": "text/plain"
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_MEDIA_TYPE"
+      ]
+    },
+    {
+      "id": "manifest-self-inventory",
+      "description": "The manifest cannot hash itself and is excluded from its own file inventory.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "metadata/manifest.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INVENTORY_EXCLUDED_PATH"
+      ]
+    },
+    {
+      "id": "manifest-schema-binding-hash-mismatch",
+      "description": "The declared manifest-schema hash must equal both the trusted repository contract and its file record.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contractBindings/manifestSchema/sha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_HASH_MISMATCH",
+        "CONTRACT_BINDING_TRUSTED_HASH_MISMATCH"
+      ]
+    },
+    {
+      "id": "release-profile-file-role-mismatch",
+      "description": "The bound profile path must resolve to the dedicated singleton release-profile role.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "release-profile",
+          "field": "role",
+          "value": "schema"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_ROLE_MISMATCH",
+        "PROFILE_MEDIA_TYPE",
+        "PROFILE_ROLE_CARDINALITY"
+      ]
+    },
+    {
+      "id": "manifest-schema-binding-size-mismatch",
+      "description": "Trusted contract file records bind byte length as well as SHA-256.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "schema",
+          "field": "bytes",
+          "value": 1
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_SIZE_MISMATCH"
+      ]
+    },
+    {
+      "id": "release-profile-binding-hash-mismatch",
+      "description": "The declared release-profile hash must equal both the trusted repository profile and its file record.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contractBindings/releaseProfile/sha256",
+          "value": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        }
+      ],
+      "expectedErrorCodes": [
+        "CONTRACT_BINDING_FILE_HASH_MISMATCH",
+        "CONTRACT_BINDING_TRUSTED_HASH_MISMATCH"
+      ]
+    },
+    {
+      "id": "generic-entry-limit-exceeded",
+      "description": "Declared entry sizes are bounded by the package-format v1 ZIP32 policy.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "bytes",
+          "value": 1000000001
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_GENERIC_ENTRY_LIMIT",
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "nested-archive-artifact",
+      "description": "Nested archives are prohibited in package-format v1.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "path",
+          "value": "licenses/archive.zip"
+        },
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "mediaType",
+          "value": "application/zip"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_NESTED_FORBIDDEN",
+        "PROFILE_MEDIA_TYPE"
+      ]
+    },
+    {
+      "id": "visualization-entry-limit-exceeded",
+      "description": "Image sidecars have a stricter per-entry cap than generic files.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "binary-asset",
+          "field": "bytes",
+          "value": 67108865
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_VISUALIZATION_LIMIT"
+      ]
+    },
+    {
+      "id": "image-lane-limit-exceeded",
+      "description": "Many individually valid images cannot exceed the aggregate image-lane budget.",
+      "mutations": [
+        {
+          "operation": "append-numbered-files",
+          "count": 45,
+          "pathPrefix": "assets/goal-visualizations/generated-",
+          "pathSuffix": ".png",
+          "file": {
+            "role": "binary-asset",
+            "mediaType": "image/png",
+            "bytes": 67108864,
+            "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "runtimeRequired": true,
+            "licenseExpression": "CC-BY-4.0",
+            "provenanceClass": "ai-generated-curated",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_IMAGE_LANE_LIMIT"
+      ]
+    },
+    {
+      "id": "total-uncompressed-limit-exceeded",
+      "description": "The complete declared payload remains below the ZIP32 uncompressed-data budget.",
+      "mutations": [
+        {
+          "operation": "append-numbered-files",
+          "count": 8,
+          "pathPrefix": "docs/generated-large-",
+          "pathSuffix": ".txt",
+          "file": {
+            "role": "package-documentation",
+            "mediaType": "text/plain",
+            "bytes": 1000000000,
+            "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "runtimeRequired": false,
+            "licenseExpression": "Apache-2.0",
+            "provenanceClass": "generated-metadata",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "ARCHIVE_TOTAL_UNCOMPRESSED_LIMIT"
+      ]
+    },
+    {
+      "id": "archive-entry-count-limit-exceeded",
+      "description": "The manifest file-record list is rejected before schema traversal when it exceeds the ZIP32-derived cap.",
+      "mutations": [
+        {
+          "operation": "append-numbered-files",
+          "count": 60000,
+          "pathPrefix": "docs/generated-count-",
+          "pathSuffix": ".txt",
+          "file": {
+            "role": "package-documentation",
+            "mediaType": "text/plain",
+            "bytes": 0,
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "runtimeRequired": false,
+            "licenseExpression": "Apache-2.0",
+            "provenanceClass": "generated-metadata",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_FILE_COUNT_LIMIT"
+      ],
+      "expectedLocations": {
+        "MANIFEST_FILE_COUNT_LIMIT": [
+          "/files"
+        ]
+      }
+    },
+    {
+      "id": "license-document-count-limit-exceeded",
+      "description": "Oversized license-document arrays are rejected before schema traversal and semantic resolution.",
+      "mutations": [
+        {
+          "operation": "append-numbered-license-documents",
+          "count": 1023,
+          "idPrefix": "LicenseRef-Bulk-",
+          "pathPrefix": "licenses/bulk-"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_LICENSE_DOCUMENT_COUNT_LIMIT"
+      ],
+      "expectedLocations": {
+        "MANIFEST_LICENSE_DOCUMENT_COUNT_LIMIT": [
+          "/licenseDocuments"
+        ]
+      }
+    }
+  ]
+}

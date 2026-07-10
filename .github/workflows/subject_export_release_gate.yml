@@ -27,6 +27,7 @@ on:
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
       - 'app/scripts/validateSubjectExportPackages.ts'
+      - 'contracts/curriculum-package/**'
       - 'app/scripts/generateCurriculumQualityStatus.ts'
       - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
       - 'app/scripts/memoryCardReview.ts'
@@ -44,6 +45,7 @@ on:
       - 'docs/qa-ci/status/curriculum-quality-status.md'
       - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
+      - 'scripts/validate_curriculum_package_contracts.py'
   pull_request:
     branches: [ main ]
     paths:
@@ -58,6 +60,7 @@ on:
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
       - 'app/scripts/validateSubjectExportPackages.ts'
+      - 'contracts/curriculum-package/**'
       - 'app/scripts/generateCurriculumQualityStatus.ts'
       - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
       - 'app/scripts/memoryCardReview.ts'
@@ -75,6 +78,7 @@ on:
       - 'docs/qa-ci/status/curriculum-quality-status.md'
       - 'docs/qa-ci/status/memory-card-review-*.md'
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
+      - 'scripts/validate_curriculum_package_contracts.py'
 
 permissions:
   contents: read
@@ -102,6 +106,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install jsonschema==4.26.0
+
+      - name: Validate curriculum package contracts
+        run: cd .. && python scripts/validate_curriculum_package_contracts.py
 
       - name: Run subject export release gate
         env:

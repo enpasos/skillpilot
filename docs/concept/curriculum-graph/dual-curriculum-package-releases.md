@@ -17,6 +17,8 @@ Die Zielrichtung lautet damit:
 
 > Curriculum-Erstellung liefert signierte, reproduzierbare und eigenständig validierbare Pakete. SkillPilot konsumiert nur noch den veröffentlichten JSON-Vertrag und benötigt weder das Curriculum-Quellrepository noch dessen Verzeichnisstruktur.
 
+Aktueller Umsetzungsstand: [Dual Curriculum Package Implementation Status](../../dev/dual-curriculum-package-implementation-status.md)
+
 ## Ziele
 
 Das Vorhaben ist erfolgreich, wenn:
@@ -557,9 +559,11 @@ Die vorhandenen Regeln für sichere ZIP-Pfade, Größenlimits, reguläre Dateien
 - getrennte Lizenzkategorien für SkillPilot-Daten, offizielle Quellenmetadaten, Software-Schemas und generierte/kuratierte Bilder;
 - Live-URL-Audits bleiben eine zusätzliche Provenienzprüfung, nicht Voraussetzung für den Offline-Runtimebetrieb.
 
-Solange der Builder ZIP32 schreibt, setzt `packageFormatVersion: 1.x` feste Obergrenzen: höchstens `3_500_000_000` Byte äußere ZIP-Größe, `60_000` Einträge, `1_000_000_000` Byte pro allgemeinem Eintrag, `64 MiB` pro Visualisierung, `3_000_000_000` Byte für die gesamte Bild-Lane und `8_000_000_000` Byte unkomprimierte Gesamtdaten. Verschachtelte Archive sind verboten; Kompressionsverhältnis und deklarierte/ausgelesene Größen werden vor und während der Extraktion geprüft. Builder, beide unabhängigen Validatoren und Loader verwenden dieselbe versionierte Limitdatei. Größere Releases benötigen zuerst `packageFormatVersion: 2` mit ZIP64 und erneut festgelegten Grenzen.
+Solange der Builder ZIP32 schreibt, setzt `packageFormatVersion: 1.x` feste Obergrenzen: höchstens `3_500_000_000` Byte äußere ZIP-Größe, `60_000` Einträge, `1_000_000_000` Byte pro allgemeinem Eintrag, `64 MiB` pro Visualisierung, `3_000_000_000` Byte für die gesamte Bild-Lane, `8_000_000_000` Byte unkomprimierte Gesamtdaten und `240` UTF-8-Byte pro vollständigem Pfad aus Archivroot und relativem Dateipfad. Ein Manifest ist auf `64 MiB`, `59_998` inventarisierte Dateien und `1_024` Lizenzdokumente begrenzt; Listenlimits werden vor der vollständigen Schemaprüfung abgefangen. Doppelte JSON-Objektschlüssel sind verboten. Verschachtelte Archive sind verboten; das maximale Kompressionsverhältnis beträgt `100:1` pro Eintrag und `25:1` insgesamt. Kompressionsverhältnisse und deklarierte/ausgelesene Größen werden vor und während der Extraktion geprüft. Builder, beide unabhängigen Validatoren und Loader verwenden dasselbe versionierte Profil. Größere Releases benötigen zuerst `packageFormatVersion: 2` mit ZIP64 und erneut festgelegten Grenzen.
 
 Lizenz und Entstehungsprovenienz dürfen nicht in einem Feld vermischt werden. Für veröffentlichte Assets werden mindestens `licenseExpression`, `provenanceClass` und `redistributionStatus` (`allowed`, `review-required`, `prohibited`) getrennt geführt. `review-required` und `prohibited` blockieren den öffentlichen Release. Die heutige Kategorie `goal-visualization-ai-generated-curated` beschreibt Herkunft und Kuratierung, erteilt aber für sich keine Weiterverbreitungslizenz.
+
+Jeder Identifier aus einer SPDX-artigen `licenseExpression` muss über `licenseDocuments` auf ein im Paket inventarisiertes Lizenzartefakt aufgelöst werden. `NONE`, `NOASSERTION`, nicht auflösbare Identifier und verwaiste Lizenztexte sind im öffentlichen Standalone-Profil nicht zulässig.
 
 Ein kleiner Curriculum-BOM im Release-Index inventarisiert verwendete Schemas, Transformations-/Validatorversionen, FWU Core und SkillPilot-Profil, Quellenkollektionen sowie Asset- und Lizenzklassen.
 

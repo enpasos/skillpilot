@@ -114,7 +114,9 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install Python dependencies
-        run: pip install jsonschema
+        run: pip install jsonschema==4.26.0
+      - name: Validate Curriculum Package Contracts
+        run: cd .. && python scripts/validate_curriculum_package_contracts.py
       - name: Validate Schemas
         run: cd .. && python scripts/validate_schemas.py
       - name: Validate Curriculum Goal IDs (UUIDs)

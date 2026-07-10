@@ -4,6 +4,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
+- [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
+  Current checkpoint, quality evidence, and remaining roadmap for paired JSON-runtime and FWU-ontology releases.
 - [Documentation Guidelines](documentation-guidelines.md)
   Document roles, placement rules, generated artifact handling, and local checks.
 - [Canonical Gymnasium Implementation Plan](canonical-gymnasium-implementation-plan.md)

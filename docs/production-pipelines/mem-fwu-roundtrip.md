@@ -4,6 +4,8 @@ This pipeline proves that a SkillPilot subject publication package can be transf
 
 The target release architecture that turns this reference pipeline into paired JSON-runtime and FWU-ontology curriculum releases is described in [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
 
+The current implementation checkpoint and remaining roadmap are tracked in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
+
 The current reference scope is:
 
 `tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip`
