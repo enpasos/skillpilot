@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+  "title": "SkillPilot composition view v1",
+  "description": "Closed, learner-facing composition tree. Root and child array order is authored runtime semantics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "viewFormatVersion",
+    "viewId",
+    "landscapeId",
+    "language",
+    "scope",
+    "rootNodes"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json"
+    },
+    "viewFormatVersion": {
+      "const": "1.0"
+    },
+    "viewId": {
+      "$ref": "#/$defs/id"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "language": {
+      "$ref": "#/$defs/languageTag"
+    },
+    "title": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "rootNodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schoolForm"
+      ],
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "courseProfile": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "structureNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "label",
+        "children"
+      ],
+      "properties": {
+        "kind": {
+          "const": "structure"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "children": {
+          "type": "array",
+          "maxItems": 1000000,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/node"
+          }
+        }
+      }
+    },
+    "canonicalSubtreeNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "canonicalSubtree"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "goalEntryNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "goalId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "goalEntry"
+        },
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "landscapeEntryNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "landscapeId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "landscapeEntry"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "displayLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "node": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/structureNode"
+        },
+        {
+          "$ref": "#/$defs/canonicalSubtreeNode"
+        },
+        {
+          "$ref": "#/$defs/goalEntryNode"
+        },
+        {
+          "$ref": "#/$defs/landscapeEntryNode"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+  "profileFormatVersion": 1,
+  "profileId": "canonical-definition-record-v1",
+  "version": "1.0.0",
+  "canonicalJsonProfile": "semantic-normal-form-v1",
+  "definitionDigest": {
+    "algorithm": "sha-256-over-length-framed-domain-and-canonical-json-payload",
+    "domain": "skillpilot:canonical-definition:v1",
+    "projection": "typed-entity-key-plus-registry-normalized-definition-body",
+    "output": "sha256-prefixed-lowercase-hex"
+  },
+  "semanticBodyDigest": {
+    "algorithm": "sha-256-over-length-framed-domain-and-canonical-json-payload",
+    "domain": "skillpilot:canonical-semantic-body:v1",
+    "projection": "registry-normalized-definition-body-without-typed-entity-key",
+    "output": "sha256-prefixed-lowercase-hex"
+  },
+  "derivedIdentities": {
+    "placement": {
+      "entityKind": "placement",
+      "algorithm": "sha-256-over-length-framed-domain-and-payload",
+      "domain": "skillpilot:derived-placement-identity:v1",
+      "projection": "registry-normalized-placement-record",
+      "outputPrefix": "placement:",
+      "hexLength": 32
+    }
+  },
+  "definitionIndexDigest": {
+    "algorithm": "sha-256-over-length-framed-domain-and-record-fields",
+    "domain": "skillpilot:definition-index:v1",
+    "recordOrder": "canonical-typed-entity-key",
+    "recordFields": [
+      "key",
+      "ownerPackageId",
+      "definitionDigest"
+    ],
+    "output": "sha256-prefixed-lowercase-hex"
+  },
+  "closureDigest": {
+    "algorithm": "sha-256-over-length-framed-domain-and-canonical-json-payload",
+    "domain": "skillpilot:dependency-closure:v1",
+    "canonicalProjection": "whole-document-with-generated-fields-removed",
+    "selfFieldExcluded": true,
+    "releaseContentDigestExcluded": true,
+    "output": "sha256-prefixed-lowercase-hex"
+  },
+  "migrationDigest": {
+    "algorithm": "sha-256-over-length-framed-domain-and-canonical-json-payload",
+    "domain": "skillpilot:migration-aliases:v1",
+    "canonicalProjection": "whole-document-with-generated-fields-removed",
+    "selfFieldExcluded": true,
+    "releaseContentDigestExcluded": true,
+    "output": "sha256-prefixed-lowercase-hex"
+  }
+}

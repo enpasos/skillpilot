@@ -1,0 +1,127 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+  "migrationFormatVersion": "1.0",
+  "currentRelease": {
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@2.0.0",
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "2.0.0",
+    "contentDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+    "definitionIndexDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+  },
+  "baseline": {
+    "mode": "previous-stable",
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "1.0.0",
+    "contentDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777",
+    "definitionIndexDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "rules": [
+    {
+      "migrationId": "migration-rename",
+      "relation": "renamed",
+      "sources": [
+        {
+          "goalId": "old-rename-goal",
+          "definitionDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "semanticBodyDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      ],
+      "targets": [
+        {
+          "goalId": "new-rename-goal",
+          "definitionDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "semanticBodyDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      ],
+      "masteryPolicy": "copy-exact",
+      "historyPolicy": "preserve-original-and-add-alias"
+    },
+    {
+      "migrationId": "migration-replace",
+      "relation": "replacedBy",
+      "sources": [
+        {
+          "goalId": "old-replaced-goal",
+          "definitionDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "semanticBodyDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      ],
+      "targets": [
+        {
+          "goalId": "new-replacement-goal",
+          "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "semanticBodyDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        }
+      ],
+      "masteryPolicy": "reassess",
+      "historyPolicy": "preserve-with-successor-links"
+    },
+    {
+      "migrationId": "migration-split",
+      "relation": "splitInto",
+      "sources": [
+        {
+          "goalId": "old-split-goal",
+          "definitionDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "semanticBodyDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+        }
+      ],
+      "targets": [
+        {
+          "goalId": "new-split-goal-a",
+          "definitionDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "semanticBodyDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "goalId": "new-split-goal-b",
+          "definitionDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+          "semanticBodyDigest": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+        }
+      ],
+      "masteryPolicy": "reassess",
+      "historyPolicy": "preserve-with-successor-links"
+    },
+    {
+      "migrationId": "migration-merge",
+      "relation": "mergedInto",
+      "sources": [
+        {
+          "goalId": "old-merge-goal-a",
+          "definitionDigest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+          "semanticBodyDigest": "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+        },
+        {
+          "goalId": "old-merge-goal-b",
+          "definitionDigest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+          "semanticBodyDigest": "sha256:8888888888888888888888888888888888888888888888888888888888888888"
+        }
+      ],
+      "targets": [
+        {
+          "goalId": "new-merged-goal",
+          "definitionDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+          "semanticBodyDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+        }
+      ],
+      "masteryPolicy": "reassess",
+      "historyPolicy": "preserve-with-successor-links"
+    },
+    {
+      "migrationId": "migration-remove",
+      "relation": "removed",
+      "sources": [
+        {
+          "goalId": "old-removed-goal",
+          "definitionDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+          "semanticBodyDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "targets": [],
+      "masteryPolicy": "retire",
+      "historyPolicy": "preserve-retired"
+    }
+  ],
+  "migrationDigest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+  "migrationStatus": "complete"
+}

@@ -487,6 +487,75 @@
         }
       }
     },
+    "dependencySemantics": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode"],
+          "properties": {
+            "mode": { "const": "none" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "entityKind", "identitySource"],
+          "properties": {
+            "mode": { "const": "identity" },
+            "entityKind": { "$ref": "#/$defs/entityKind" },
+            "identitySource": {
+              "enum": ["field-value", "owner-and-position", "record-projection"]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "targetKind", "targetScope", "traversal", "valueMode"],
+          "properties": {
+            "mode": { "const": "hard-reference" },
+            "targetKind": { "$ref": "#/$defs/entityKind" },
+            "targetScope": {
+              "enum": ["global", "same-landscape", "same-deck", "owner-derived"]
+            },
+            "traversal": { "const": "forward-definition" },
+            "valueMode": {
+              "enum": ["scalar", "list-items", "owner-and-position", "record-membership", "artifact-path-lookup"]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "targetKind", "traversal", "valueMode", "runtimeRequired"],
+          "properties": {
+            "mode": { "const": "soft-reference" },
+            "targetKind": {
+              "enum": ["external-uri", "source-anchor"]
+            },
+            "traversal": { "const": "not-followed" },
+            "valueMode": {
+              "enum": ["scalar", "record-field"]
+            },
+            "runtimeRequired": { "const": false }
+          }
+        }
+      ]
+    },
+    "entityKind": {
+      "enum": [
+        "landscape",
+        "goal",
+        "program-unit",
+        "placement",
+        "competency-entry",
+        "view",
+        "deck",
+        "card",
+        "resource"
+      ]
+    },
     "membership": {
       "type": "object",
       "additionalProperties": false,
@@ -929,6 +998,7 @@
         "presenceSemantics",
         "dynamicMapKeys",
         "normalization",
+        "dependencySemantics",
         "rdfMapping",
         "reverseMapping"
       ],
@@ -971,6 +1041,9 @@
         },
         "normalization": {
           "$ref": "#/$defs/normalization"
+        },
+        "dependencySemantics": {
+          "$ref": "#/$defs/dependencySemantics"
         },
         "rdfMapping": {
           "$ref": "#/$defs/rdfMapping"

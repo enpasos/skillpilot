@@ -1,0 +1,710 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+  "title": "SkillPilot compiled curriculum landscape v1",
+  "description": "Closed runtime landscape produced by the curriculum release compiler. Authoring-only inference is forbidden; every goal carries an explicit semanticKind.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "landscapeFormatVersion",
+    "landscapeId",
+    "locale",
+    "title",
+    "description",
+    "goals"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json"
+    },
+    "landscapeFormatVersion": {
+      "const": "1.0"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "locale": {
+      "$ref": "#/$defs/languageTag"
+    },
+    "subject": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "frameworkId": {
+      "$ref": "#/$defs/id"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,3}$"
+    },
+    "region": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "schoolType": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "title": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "titleEn": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "description": {
+      "$ref": "#/$defs/longText"
+    },
+    "descriptionEn": {
+      "$ref": "#/$defs/longText"
+    },
+    "compatibilityOnly": {
+      "type": "boolean"
+    },
+    "legacyHiddenByDefault": {
+      "type": "boolean"
+    },
+    "filters": {
+      "type": "array",
+      "maxItems": 1000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/filter"
+      }
+    },
+    "programUnits": {
+      "type": "array",
+      "maxItems": 100000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/programUnit"
+      }
+    },
+    "goalPlacements": {
+      "type": "array",
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/goalPlacement"
+      }
+    },
+    "competencyCatalog": {
+      "type": "array",
+      "maxItems": 100000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/competencyCatalogEntry"
+      }
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/goal"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000000
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 2000000
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "stringList": {
+      "type": "array",
+      "maxItems": 100000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "type": "string",
+        "maxLength": 2000
+      }
+    },
+    "idList": {
+      "type": "array",
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    },
+    "filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "programUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "program",
+            "stage",
+            "year",
+            "phase",
+            "semester",
+            "module",
+            "track",
+            "exam"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "shortLabel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "parentUnitId": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "scopeContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^DE(?:-[A-Z]{2})?$"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "courseProfile": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "goalPlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "unitId",
+        "relation"
+      ],
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/id"
+        },
+        "unitId": {
+          "$ref": "#/$defs/id"
+        },
+        "relation": {
+          "enum": [
+            "primary",
+            "secondary",
+            "assessed"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/scopeContext"
+        }
+      }
+    },
+    "competencyCatalogEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "dimension"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "dimension": {
+          "$ref": "#/$defs/id"
+        }
+      }
+    },
+    "dimensionTags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "framework",
+        "phase"
+      ],
+      "properties": {
+        "framework": {
+          "$ref": "#/$defs/id"
+        },
+        "demandLevel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "processCompetencies": {
+          "$ref": "#/$defs/stringList"
+        },
+        "guidingIdeas": {
+          "$ref": "#/$defs/stringList"
+        },
+        "phase": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "area": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "topicCode": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schoolForm": {
+          "$ref": "#/$defs/stringList"
+        },
+        "stage": {
+          "$ref": "#/$defs/stringList"
+        },
+        "jurisdiction": {
+          "$ref": "#/$defs/stringList"
+        },
+        "durationModel": {
+          "$ref": "#/$defs/stringList"
+        },
+        "courseProfile": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "extendedData": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "treeOrder": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "vocabularySource": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "vocabularySourceEn": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "applicabilityProjection": {
+          "const": "excluded"
+        },
+        "compatibilityOnly": {
+          "type": "boolean"
+        },
+        "applicabilityFromRequires": {
+          "type": "boolean"
+        },
+        "applicabilityMappingInheritance": {
+          "const": "boundary"
+        }
+      }
+    },
+    "releaseMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "examYear",
+        "kind",
+        "courseLevel",
+        "status"
+      ],
+      "properties": {
+        "examYear": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 3000
+        },
+        "kind": {
+          "enum": [
+            "offer",
+            "master"
+          ]
+        },
+        "courseLevel": {
+          "enum": [
+            "GK",
+            "LK"
+          ]
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "released"
+          ]
+        }
+      }
+    },
+    "scoringStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "points",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "points": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "description": {
+          "$ref": "#/$defs/longText"
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxPoints",
+        "passingPoints",
+        "steps"
+      ],
+      "properties": {
+        "maxPoints": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "passingPoints": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "steps": {
+          "type": "array",
+          "maxItems": 10000,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/scoringStep"
+          }
+        }
+      }
+    },
+    "examData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "taskContent",
+        "solutionContent",
+        "scoring"
+      ],
+      "properties": {
+        "reviewStatus": {
+          "enum": [
+            "draft",
+            "needs_review",
+            "released"
+          ]
+        },
+        "reviewNote": {
+          "$ref": "#/$defs/longText"
+        },
+        "coveredGoalIds": {
+          "$ref": "#/$defs/idList"
+        },
+        "coveredStrands": {
+          "$ref": "#/$defs/stringList"
+        },
+        "demandLevels": {
+          "$ref": "#/$defs/stringList"
+        },
+        "sourceArtifactPath": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "taskContent": {
+          "$ref": "#/$defs/longText"
+        },
+        "taskContentEn": {
+          "$ref": "#/$defs/longText"
+        },
+        "solutionContent": {
+          "$ref": "#/$defs/longText"
+        },
+        "solutionContentEn": {
+          "$ref": "#/$defs/longText"
+        },
+        "scoring": {
+          "$ref": "#/$defs/scoring"
+        }
+      }
+    },
+    "resourceLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "url"
+      ],
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "resourceType": {
+          "$ref": "#/$defs/id"
+        },
+        "skillpilotId": {
+          "$ref": "#/$defs/id"
+        },
+        "role": {
+          "$ref": "#/$defs/id"
+        },
+        "altText": {
+          "$ref": "#/$defs/longText"
+        },
+        "reviewStatus": {
+          "$ref": "#/$defs/id"
+        },
+        "provider": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sections": {
+          "$ref": "#/$defs/stringList"
+        },
+        "description": {
+          "$ref": "#/$defs/longText"
+        },
+        "lang": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "license": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      }
+    },
+    "experimentData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "description",
+        "equipment"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "description": {
+          "$ref": "#/$defs/longText"
+        },
+        "equipment": {
+          "$ref": "#/$defs/stringList"
+        }
+      }
+    },
+    "semanticKind": {
+      "enum": [
+        "curricularAtomic",
+        "curricularArea",
+        "programStructure",
+        "practiceAssessment",
+        "memory",
+        "orientation",
+        "runtimeSupport"
+      ]
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "description",
+        "weight",
+        "tags",
+        "contains",
+        "requires",
+        "dimensionTags",
+        "type",
+        "semanticKind"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "shortKey": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "titleEn": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "descriptionEn": {
+          "$ref": "#/$defs/text"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/longText"
+        },
+        "resourceLinks": {
+          "type": "array",
+          "maxItems": 100000,
+          "x-skillpilot-listSemantics": "ordered",
+          "items": {
+            "$ref": "#/$defs/resourceLink"
+          }
+        },
+        "competencyRefs": {
+          "$ref": "#/$defs/idList"
+        },
+        "core": {
+          "type": "boolean"
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 100000,
+          "uniqueItems": true,
+          "x-skillpilot-listSemantics": "set",
+          "items": {
+            "type": "string",
+            "maxLength": 500
+          }
+        },
+        "contains": {
+          "$ref": "#/$defs/idList"
+        },
+        "requires": {
+          "$ref": "#/$defs/idList"
+        },
+        "examples": {
+          "$ref": "#/$defs/stringList"
+        },
+        "courseLevel": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "themenfeld": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "leitideen": {
+          "$ref": "#/$defs/stringList"
+        },
+        "kompetenzen": {
+          "$ref": "#/$defs/stringList"
+        },
+        "dimensionTags": {
+          "$ref": "#/$defs/dimensionTags"
+        },
+        "applicability": {
+          "$ref": "#/$defs/applicability"
+        },
+        "extendedData": {
+          "$ref": "#/$defs/extendedData"
+        },
+        "release": {
+          "$ref": "#/$defs/releaseMetadata"
+        },
+        "examData": {
+          "$ref": "#/$defs/examData"
+        },
+        "experimentData": {
+          "$ref": "#/$defs/experimentData"
+        },
+        "phase": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "semanticAtomic": {
+          "type": "boolean"
+        },
+        "type": {
+          "enum": [
+            "atomic",
+            "cluster"
+          ]
+        },
+        "nodeKind": {
+          "enum": [
+            "exam",
+            "tutor",
+            "memory"
+          ]
+        },
+        "semanticKind": {
+          "$ref": "#/$defs/semanticKind"
+        }
+      }
+    }
+  }
+}

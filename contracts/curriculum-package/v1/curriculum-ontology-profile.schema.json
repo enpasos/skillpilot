@@ -1,0 +1,743 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+  "title": "SkillPilot curriculum ontology profile and semantic-kind ledger v1",
+  "description": "Strict contract for a subject ontology profile and its separate authoritative, fingerprint-bound semantic-kind decision ledger.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/profile"
+    },
+    {
+      "$ref": "#/$defs/semanticKindLedger"
+    }
+  ],
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "iri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 1000
+    },
+    "compactIri": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:[A-Za-z_][A-Za-z0-9._-]*$",
+      "maxLength": 240
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "semanticKind": {
+      "enum": [
+        "curricularAtomic",
+        "curricularArea",
+        "practiceAssessment",
+        "programStructure",
+        "memory",
+        "runtimeSupport",
+        "orientation"
+      ]
+    },
+    "sourceFingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "algorithm",
+        "domain",
+        "canonicalJsonProfile",
+        "canonicalJsonProfileVersion",
+        "canonicalJsonProfilePath",
+        "canonicalJsonProfileSha256",
+        "projectionRepresentation",
+        "missingNullSemantics",
+        "hashInput",
+        "digestEncoding",
+        "byteFormula",
+        "pointers",
+        "arraySemantics"
+      ],
+      "properties": {
+        "contractId": {
+          "const": "semantic-kind-source-fingerprint-v1"
+        },
+        "algorithm": {
+          "const": "sha-256-over-skillpilot-canonical-json-v1"
+        },
+        "domain": {
+          "const": "skillpilot:semantic-kind-source-fingerprint:v1"
+        },
+        "canonicalJsonProfile": {
+          "const": "semantic-normal-form-v1"
+        },
+        "canonicalJsonProfileVersion": {
+          "const": "1.0.0"
+        },
+        "canonicalJsonProfilePath": {
+          "const": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json"
+        },
+        "canonicalJsonProfileSha256": {
+          "const": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        },
+        "projectionRepresentation": {
+          "const": "ordered-path-state-value-records"
+        },
+        "missingNullSemantics": {
+          "const": "missing-and-null-are-distinct"
+        },
+        "hashInput": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "topLevelMembers",
+            "fieldsOrder",
+            "missingRecordMembers",
+            "presentRecordMembers",
+            "missingState",
+            "presentState"
+          ],
+          "properties": {
+            "topLevelMembers": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                { "const": "domain" },
+                { "const": "fields" }
+              ],
+              "items": false
+            },
+            "fieldsOrder": {
+              "const": "pointers-array-order"
+            },
+            "missingRecordMembers": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                { "const": "path" },
+                { "const": "state" }
+              ],
+              "items": false
+            },
+            "presentRecordMembers": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                { "const": "path" },
+                { "const": "state" },
+                { "const": "value" }
+              ],
+              "items": false
+            },
+            "missingState": {
+              "const": "missing"
+            },
+            "presentState": {
+              "const": "value"
+            }
+          }
+        },
+        "digestEncoding": {
+          "const": "sha256-colon-lowercase-hex"
+        },
+        "byteFormula": {
+          "const": "sourceFingerprint = 'sha256:' + lowercaseHex(SHA-256(UTF-8(skillpilot-canonical-json-v1({'domain': domain, 'fields': [record(pointer) for pointer in pointers]})))); record(pointer) = {'path': pointer, 'state': 'missing'} when absent, otherwise {'path': pointer, 'state': 'value', 'value': normalizedValue}; the sha256: prefix is not part of the hashed bytes"
+        },
+        "pointers": {
+          "type": "array",
+          "minItems": 15,
+          "maxItems": 15,
+          "prefixItems": [
+            { "const": "/id" },
+            { "const": "/type" },
+            { "const": "/nodeKind" },
+            { "const": "/title" },
+            { "const": "/titleEn" },
+            { "const": "/description" },
+            { "const": "/descriptionEn" },
+            { "const": "/tags" },
+            { "const": "/contains" },
+            { "const": "/requires" },
+            { "const": "/semanticAtomic" },
+            { "const": "/dimensionTags" },
+            { "const": "/examData" },
+            { "const": "/extendedData" },
+            { "const": "/release" }
+          ],
+          "items": false
+        },
+        "arraySemantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "/tags",
+            "/contains",
+            "/requires",
+            "nestedArrays"
+          ],
+          "properties": {
+            "/tags": {
+              "const": "set-sort-unicode-code-point-reject-duplicates"
+            },
+            "/contains": {
+              "const": "preserve-order-and-duplicates"
+            },
+            "/requires": {
+              "const": "preserve-order-and-duplicates"
+            },
+            "nestedArrays": {
+              "const": "preserve-order-and-duplicates"
+            }
+          }
+        }
+      }
+    },
+    "coreBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyIri",
+        "sourceRepository",
+        "checkoutPath",
+        "commit",
+        "sourcePath",
+        "fileSha256"
+      ],
+      "properties": {
+        "ontologyIri": {
+          "$ref": "#/$defs/iri"
+        },
+        "sourceRepository": {
+          "$ref": "#/$defs/iri"
+        },
+        "checkoutPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourcePath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "fileSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "kindMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "coreClasses",
+        "applicationClasses",
+        "notes"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "fwu-core",
+            "skillpilot-extension"
+          ]
+        },
+        "coreClasses": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/compactIri"
+          }
+        },
+        "applicationClasses": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/compactIri"
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/nonBlank"
+        }
+      }
+    },
+    "mappingRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "sourcePaths",
+        "coreTerms",
+        "applicationTerms",
+        "condition",
+        "reverseMode",
+        "notes"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "fwu-core",
+            "core-projection-with-lossless-extension",
+            "skillpilot-extension"
+          ]
+        },
+        "sourcePaths": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^/",
+            "maxLength": 500
+          }
+        },
+        "coreTerms": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/compactIri"
+          }
+        },
+        "applicationTerms": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/compactIri"
+          }
+        },
+        "condition": {
+          "$ref": "#/$defs/nonBlank"
+        },
+        "reverseMode": {
+          "enum": [
+            "exact",
+            "exact-positioned-memberships",
+            "exact-profile-lookup"
+          ]
+        },
+        "notes": {
+          "$ref": "#/$defs/nonBlank"
+        }
+      }
+    },
+    "lookupBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceField",
+        "values"
+      ],
+      "properties": {
+        "sourceField": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+        },
+        "values": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 32,
+          "propertyNames": {
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/compactIri"
+          }
+        }
+      }
+    },
+    "programUnitMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "program",
+        "stage",
+        "year",
+        "phase",
+        "hierarchyPredicate",
+        "orderPredicate",
+        "stageLookup",
+        "yearLookup"
+      ],
+      "properties": {
+        "program": {
+          "$ref": "#/$defs/mappingRule"
+        },
+        "stage": {
+          "$ref": "#/$defs/mappingRule"
+        },
+        "year": {
+          "$ref": "#/$defs/mappingRule"
+        },
+        "phase": {
+          "$ref": "#/$defs/mappingRule"
+        },
+        "hierarchyPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "orderPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "stageLookup": {
+          "$ref": "#/$defs/lookupBinding"
+        },
+        "yearLookup": {
+          "$ref": "#/$defs/lookupBinding"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$schema",
+        "documentType",
+        "profileFormatVersion",
+        "profileId",
+        "version",
+        "description",
+        "releaseModelContractVersion",
+        "source",
+        "coreBinding",
+        "namespaceBindings",
+        "applicationVocabulary",
+        "semanticKindDecisions",
+        "semanticKinds",
+        "mappings"
+      ],
+      "properties": {
+        "$schema": {
+          "const": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json"
+        },
+        "documentType": {
+          "const": "curriculum-ontology-profile"
+        },
+        "profileFormatVersion": {
+          "const": 1
+        },
+        "profileId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "version": {
+          "$ref": "#/$defs/semver"
+        },
+        "description": {
+          "$ref": "#/$defs/nonBlank"
+        },
+        "releaseModelContractVersion": {
+          "const": "1.0"
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "landscapeId",
+            "landscapePath",
+            "locale",
+            "subject",
+            "schoolType",
+            "country"
+          ],
+          "properties": {
+            "landscapeId": {
+              "$ref": "#/$defs/stableId"
+            },
+            "landscapePath": {
+              "$ref": "#/$defs/repositoryPath"
+            },
+            "locale": {
+              "type": "string",
+              "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$"
+            },
+            "subject": {
+              "$ref": "#/$defs/nonBlank"
+            },
+            "schoolType": {
+              "$ref": "#/$defs/nonBlank"
+            },
+            "country": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            }
+          }
+        },
+        "coreBinding": {
+          "$ref": "#/$defs/coreBinding"
+        },
+        "namespaceBindings": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 32,
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/iri"
+          }
+        },
+        "applicationVocabulary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "namespaceIri",
+            "policy"
+          ],
+          "properties": {
+            "namespaceIri": {
+              "$ref": "#/$defs/iri"
+            },
+            "policy": {
+              "const": "only-runtime-reconstruction-order-view-srs-assessment-packaging-gaps"
+            }
+          }
+        },
+        "semanticKindDecisions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "ledgerId",
+            "ledgerPath",
+            "coveragePolicy",
+            "unknownGoalPolicy",
+            "staleFingerprintPolicy",
+            "titleOrIdInference",
+            "sourceFingerprint"
+          ],
+          "properties": {
+            "mode": {
+              "const": "authoritative-fingerprinted-ledger"
+            },
+            "ledgerId": {
+              "$ref": "#/$defs/stableId"
+            },
+            "ledgerPath": {
+              "$ref": "#/$defs/repositoryPath"
+            },
+            "coveragePolicy": {
+              "const": "exactly-one-current-decision-per-source-goal"
+            },
+            "unknownGoalPolicy": {
+              "const": "reject"
+            },
+            "staleFingerprintPolicy": {
+              "const": "reject"
+            },
+            "titleOrIdInference": {
+              "const": "forbidden"
+            },
+            "sourceFingerprint": {
+              "$ref": "#/$defs/sourceFingerprint"
+            }
+          }
+        },
+        "semanticKinds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "curricularAtomic",
+            "curricularArea",
+            "practiceAssessment",
+            "programStructure",
+            "memory",
+            "runtimeSupport",
+            "orientation"
+          ],
+          "properties": {
+            "curricularAtomic": { "$ref": "#/$defs/kindMapping" },
+            "curricularArea": { "$ref": "#/$defs/kindMapping" },
+            "practiceAssessment": { "$ref": "#/$defs/kindMapping" },
+            "programStructure": { "$ref": "#/$defs/kindMapping" },
+            "memory": { "$ref": "#/$defs/kindMapping" },
+            "runtimeSupport": { "$ref": "#/$defs/kindMapping" },
+            "orientation": { "$ref": "#/$defs/kindMapping" }
+          }
+        },
+        "mappings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "curriculumIdentity",
+            "programUnits",
+            "processCompetencyCatalog",
+            "titlesAndDescriptions",
+            "contains",
+            "requires",
+            "visualReferences",
+            "compositionViews",
+            "memoryCards",
+            "assessments",
+            "authoredOrder"
+          ],
+          "properties": {
+            "curriculumIdentity": { "$ref": "#/$defs/mappingRule" },
+            "programUnits": { "$ref": "#/$defs/programUnitMapping" },
+            "processCompetencyCatalog": { "$ref": "#/$defs/mappingRule" },
+            "titlesAndDescriptions": { "$ref": "#/$defs/mappingRule" },
+            "contains": { "$ref": "#/$defs/mappingRule" },
+            "requires": { "$ref": "#/$defs/mappingRule" },
+            "visualReferences": { "$ref": "#/$defs/mappingRule" },
+            "compositionViews": { "$ref": "#/$defs/mappingRule" },
+            "memoryCards": { "$ref": "#/$defs/mappingRule" },
+            "assessments": { "$ref": "#/$defs/mappingRule" },
+            "authoredOrder": { "$ref": "#/$defs/mappingRule" }
+          }
+        }
+      }
+    },
+    "semanticKindDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "sourceFingerprint",
+        "semanticKind",
+        "decisionStatus",
+        "decisionBasis"
+      ],
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "sourceFingerprint": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "semanticKind": {
+          "$ref": "#/$defs/semanticKind"
+        },
+        "decisionStatus": {
+          "const": "authoritative"
+        },
+        "decisionBasis": {
+          "type": "string",
+          "enum": [
+            "reviewed-current-pilot-curricular-atomic",
+            "reviewed-current-pilot-curricular-area",
+            "reviewed-current-pilot-practice-assessment",
+            "reviewed-current-pilot-program-structure",
+            "reviewed-current-pilot-memory",
+            "reviewed-current-pilot-runtime-support",
+            "reviewed-current-pilot-orientation"
+          ]
+        }
+      }
+    },
+    "semanticKindCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curricularAtomic",
+        "curricularArea",
+        "practiceAssessment",
+        "programStructure",
+        "memory",
+        "runtimeSupport",
+        "orientation",
+        "total"
+      ],
+      "properties": {
+        "curricularAtomic": { "type": "integer", "minimum": 0 },
+        "curricularArea": { "type": "integer", "minimum": 0 },
+        "practiceAssessment": { "type": "integer", "minimum": 0 },
+        "programStructure": { "type": "integer", "minimum": 0 },
+        "memory": { "type": "integer", "minimum": 0 },
+        "runtimeSupport": { "type": "integer", "minimum": 0 },
+        "orientation": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "semanticKindLedger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$schema",
+        "documentType",
+        "ledgerFormatVersion",
+        "ledgerId",
+        "profileId",
+        "profileVersion",
+        "sourceLandscapeId",
+        "sourceLandscapePath",
+        "sourceFingerprintContractId",
+        "reviewMethod",
+        "counts",
+        "decisions"
+      ],
+      "properties": {
+        "$schema": {
+          "const": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json"
+        },
+        "documentType": {
+          "const": "semantic-kind-ledger"
+        },
+        "ledgerFormatVersion": {
+          "const": 1
+        },
+        "ledgerId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "profileId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "profileVersion": {
+          "$ref": "#/$defs/semver"
+        },
+        "sourceLandscapeId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "sourceLandscapePath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourceFingerprintContractId": {
+          "const": "semantic-kind-source-fingerprint-v1"
+        },
+        "reviewMethod": {
+          "const": "one-time-reviewed-pilot-migration-v1"
+        },
+        "counts": {
+          "$ref": "#/$defs/semanticKindCounts"
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000000,
+          "items": {
+            "$ref": "#/$defs/semanticKindDecision"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,454 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+  "documentType": "curriculum-ontology-profile",
+  "profileFormatVersion": 1,
+  "profileId": "de-gymnasium-mathematik-v1",
+  "version": "1.0.0",
+  "description": "Core-first ontology mapping profile for the canonical German Gymnasium mathematics release model. Goal semantics are joined exclusively from the separately reviewed, fingerprint-bound ledger; this profile contains no goal-ID list and forbids title or ID-prefix inference.",
+  "releaseModelContractVersion": "1.0",
+  "source": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "locale": "de-DE",
+    "subject": "Mathematik",
+    "schoolType": "Gymnasium",
+    "country": "DE"
+  },
+  "coreBinding": {
+    "ontologyIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+    "sourceRepository": "https://github.com/FWU-DE/lehrplan-ontologie.git",
+    "checkoutPath": "tmp/lehrplan-ontologie",
+    "commit": "8aa5bce4a5366807d46f18650e31db98f9bfe35d",
+    "sourcePath": "src/ontology/components/lehrplan-core.owl",
+    "fileSha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df"
+  },
+  "namespaceBindings": {
+    "bfo": "http://purl.obolibrary.org/obo/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "kim-school": "https://w3id.org/kim/schularten/",
+    "kim-subject": "http://w3id.org/kim/schulfaecher/",
+    "lp": "https://w3id.org/lehrplan/ontology/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sp": "https://skillpilot.de/ns/roundtrip#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "applicationVocabulary": {
+    "namespaceIri": "https://skillpilot.de/ns/roundtrip#",
+    "policy": "only-runtime-reconstruction-order-view-srs-assessment-packaging-gaps"
+  },
+  "semanticKindDecisions": {
+    "mode": "authoritative-fingerprinted-ledger",
+    "ledgerId": "de-gymnasium-mathematik-semantic-kinds-v1",
+    "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "coveragePolicy": "exactly-one-current-decision-per-source-goal",
+    "unknownGoalPolicy": "reject",
+    "staleFingerprintPolicy": "reject",
+    "titleOrIdInference": "forbidden",
+    "sourceFingerprint": {
+      "contractId": "semantic-kind-source-fingerprint-v1",
+      "algorithm": "sha-256-over-skillpilot-canonical-json-v1",
+      "domain": "skillpilot:semantic-kind-source-fingerprint:v1",
+      "canonicalJsonProfile": "semantic-normal-form-v1",
+      "canonicalJsonProfileVersion": "1.0.0",
+      "canonicalJsonProfilePath": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+      "canonicalJsonProfileSha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca",
+      "projectionRepresentation": "ordered-path-state-value-records",
+      "missingNullSemantics": "missing-and-null-are-distinct",
+      "hashInput": {
+        "topLevelMembers": [
+          "domain",
+          "fields"
+        ],
+        "fieldsOrder": "pointers-array-order",
+        "missingRecordMembers": [
+          "path",
+          "state"
+        ],
+        "presentRecordMembers": [
+          "path",
+          "state",
+          "value"
+        ],
+        "missingState": "missing",
+        "presentState": "value"
+      },
+      "digestEncoding": "sha256-colon-lowercase-hex",
+      "byteFormula": "sourceFingerprint = 'sha256:' + lowercaseHex(SHA-256(UTF-8(skillpilot-canonical-json-v1({'domain': domain, 'fields': [record(pointer) for pointer in pointers]})))); record(pointer) = {'path': pointer, 'state': 'missing'} when absent, otherwise {'path': pointer, 'state': 'value', 'value': normalizedValue}; the sha256: prefix is not part of the hashed bytes",
+      "pointers": [
+        "/id",
+        "/type",
+        "/nodeKind",
+        "/title",
+        "/titleEn",
+        "/description",
+        "/descriptionEn",
+        "/tags",
+        "/contains",
+        "/requires",
+        "/semanticAtomic",
+        "/dimensionTags",
+        "/examData",
+        "/extendedData",
+        "/release"
+      ],
+      "arraySemantics": {
+        "/tags": "set-sort-unicode-code-point-reject-duplicates",
+        "/contains": "preserve-order-and-duplicates",
+        "/requires": "preserve-order-and-duplicates",
+        "nestedArrays": "preserve-order-and-duplicates"
+      }
+    }
+  },
+  "semanticKinds": {
+    "curricularAtomic": {
+      "strategy": "fwu-core",
+      "coreClasses": [
+        "lp:LP_0000336"
+      ],
+      "applicationClasses": [],
+      "notes": "An assessable subject-specific competency is represented as the Core Fachbezogene Kompetenzspezifikation."
+    },
+    "curricularArea": {
+      "strategy": "fwu-core",
+      "coreClasses": [
+        "lp:LP_0000349"
+      ],
+      "applicationClasses": [],
+      "notes": "A curricular subject cluster is represented as the Core CE-Bereich."
+    },
+    "practiceAssessment": {
+      "strategy": "skillpilot-extension",
+      "coreClasses": [],
+      "applicationClasses": [
+        "sp:PracticeAssessmentGoal"
+      ],
+      "notes": "Practice and assessment endpoints carry runtime task, scoring, and autonomy semantics that the curriculum Core does not define."
+    },
+    "programStructure": {
+      "strategy": "skillpilot-extension",
+      "coreClasses": [],
+      "applicationClasses": [
+        "sp:ProgramStructureGoal"
+      ],
+      "notes": "Learner-facing program navigation nodes are not asserted as curricular competency areas; Core program-unit references are mapped separately."
+    },
+    "memory": {
+      "strategy": "skillpilot-extension",
+      "coreClasses": [],
+      "applicationClasses": [
+        "sp:MemoryGoal"
+      ],
+      "notes": "SRS deck ownership and due-state behavior are SkillPilot runtime semantics."
+    },
+    "runtimeSupport": {
+      "strategy": "skillpilot-extension",
+      "coreClasses": [],
+      "applicationClasses": [
+        "sp:RuntimeSupportGoal"
+      ],
+      "notes": "Pure runtime grouping nodes are explicitly excluded from false curricular-area assertions."
+    },
+    "orientation": {
+      "strategy": "skillpilot-extension",
+      "coreClasses": [],
+      "applicationClasses": [
+        "sp:OrientationGoal"
+      ],
+      "notes": "Motivational and learner-orientation nodes are application navigation content rather than assessable curricular competencies."
+    }
+  },
+  "mappings": {
+    "curriculumIdentity": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/landscapeId",
+        "/subject",
+        "/schoolType"
+      ],
+      "coreTerms": [
+        "kim-school:s08",
+        "kim-subject:s1017",
+        "lp:LP_0000001",
+        "lp:LP_0000111",
+        "lp:LP_0000537",
+        "lp:LP_0000812"
+      ],
+      "applicationTerms": [
+        "sp:LearningLandscape",
+        "sp:skillpilotId"
+      ],
+      "condition": "Always bind mathematics and Gymnasium through the pinned KIM individuals; retain the canonical cross-jurisdiction landscape identity in the application profile without falsely asserting one state-specific Lehrplan.",
+      "reverseMode": "exact",
+      "notes": "The Core carries subject and school-type semantics; the stable SkillPilot landscape identity remains an application concern."
+    },
+    "programUnits": {
+      "program": {
+        "strategy": "skillpilot-extension",
+        "sourcePaths": [
+          "/programUnits/*"
+        ],
+        "coreTerms": [],
+        "applicationTerms": [
+          "sp:ProgramUnit"
+        ],
+        "condition": "programUnit.kind equals program",
+        "reverseMode": "exact",
+        "notes": "The canonical multi-state program root is a runtime structure and is not asserted as one state-specific Core curriculum."
+      },
+      "stage": {
+        "strategy": "core-projection-with-lossless-extension",
+        "sourcePaths": [
+          "/programUnits/*"
+        ],
+        "coreTerms": [
+          "lp:LP_0000045",
+          "lp:LP_0000046",
+          "lp:LP_0000047"
+        ],
+        "applicationTerms": [
+          "sp:ProgramUnit"
+        ],
+        "condition": "programUnit.kind equals stage and shortLabel resolves through stageLookup",
+        "reverseMode": "exact-profile-lookup",
+        "notes": "The Core school-stage individual is referenced explicitly while the authored program-unit record stays losslessly reconstructible."
+      },
+      "year": {
+        "strategy": "core-projection-with-lossless-extension",
+        "sourcePaths": [
+          "/programUnits/*"
+        ],
+        "coreTerms": [
+          "lp:LP_0000026",
+          "lp:LP_2000005",
+          "lp:LP_2000006",
+          "lp:LP_2000007",
+          "lp:LP_2000008",
+          "lp:LP_2000009",
+          "lp:LP_2000010"
+        ],
+        "applicationTerms": [
+          "sp:ProgramUnit"
+        ],
+        "condition": "programUnit.kind equals year and numeric order resolves through yearLookup",
+        "reverseMode": "exact-profile-lookup",
+        "notes": "Year units reference the matching Core Jahrgangsstufe individual; authored labels, hierarchy, and order remain in the application record."
+      },
+      "phase": {
+        "strategy": "skillpilot-extension",
+        "sourcePaths": [
+          "/programUnits/*"
+        ],
+        "coreTerms": [],
+        "applicationTerms": [
+          "sp:ProgramUnit"
+        ],
+        "condition": "programUnit.kind equals phase",
+        "reverseMode": "exact",
+        "notes": "E and Q1-Q4 cannot be assigned to one Core G8/G9 phase individual without a resolved duration context, so the canonical cross-duration phase remains explicit application structure."
+      },
+      "hierarchyPredicate": "lp:LP_0000041",
+      "orderPredicate": "sp:order",
+      "stageLookup": {
+        "sourceField": "shortLabel",
+        "values": {
+          "Sek I": "lp:LP_0000045",
+          "Sek II": "lp:LP_0000046"
+        }
+      },
+      "yearLookup": {
+        "sourceField": "order",
+        "values": {
+          "5": "lp:LP_2000005",
+          "6": "lp:LP_2000006",
+          "7": "lp:LP_2000007",
+          "8": "lp:LP_2000008",
+          "9": "lp:LP_2000009",
+          "10": "lp:LP_2000010"
+        }
+      }
+    },
+    "processCompetencyCatalog": {
+      "strategy": "fwu-core",
+      "sourcePaths": [
+        "/competencyCatalog",
+        "/goals/*/competencyRefs",
+        "/goals/*/dimensionTags/processCompetencies"
+      ],
+      "coreTerms": [
+        "lp:LP_0000001",
+        "lp:LP_0000344",
+        "lp:LP_0000346",
+        "lp:LP_0000347",
+        "lp:LP_0000537",
+        "lp:LP_0030056",
+        "lp:LP_0030057",
+        "lp:LP_0030265",
+        "lp:LP_0030065",
+        "lp:LP_0030071",
+        "lp:LP_0030072"
+      ],
+      "applicationTerms": [
+        "sp:referenceRole",
+        "sp:skillpilotId"
+      ],
+      "condition": "Catalog and goal references use stable competency IDs; referenceRole distinguishes authored competencyRefs from dimension-derived process competency references.",
+      "reverseMode": "exact",
+      "notes": "Process competency entries use the Core Bistas process-area class and Core CE references; the application role preserves the exact source field."
+    },
+    "titlesAndDescriptions": {
+      "strategy": "fwu-core",
+      "sourcePaths": [
+        "/title",
+        "/titleEn",
+        "/description",
+        "/descriptionEn",
+        "/goals/*/title",
+        "/goals/*/titleEn",
+        "/goals/*/description",
+        "/goals/*/descriptionEn"
+      ],
+      "coreTerms": [
+        "lp:LP_0000344",
+        "lp:LP_0000346",
+        "lp:LP_0030003",
+        "lp:LP_0030051",
+        "lp:LP_0030056"
+      ],
+      "applicationTerms": [],
+      "condition": "Use language-tagged Core title and description text entities for curricular resources and the landscape; application-only nodes retain equivalent language-tagged fallback text without a false Core class assertion.",
+      "reverseMode": "exact",
+      "notes": "The containing profile preserves the authored field and language so title and description resources reconstruct unambiguously."
+    },
+    "contains": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/goals/*/contains"
+      ],
+      "coreTerms": [
+        "bfo:BFO_0000051"
+      ],
+      "applicationTerms": [
+        "sp:ContainsMembership",
+        "sp:containedGoal",
+        "sp:hasContainsMembership",
+        "sp:order"
+      ],
+      "condition": "Always emit the positioned authored edge; additionally emit BFO has-part only when both reviewed semantic kinds make curricular parthood safe.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "The Core projection is additive and never substitutes for direct-edge identity or authored order."
+    },
+    "requires": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/goals/*/requires"
+      ],
+      "coreTerms": [
+        "lp:LP_0000554",
+        "lp:LP_0030065",
+        "lp:LP_0030071",
+        "lp:LP_0030072"
+      ],
+      "applicationTerms": [
+        "sp:RequiresMembership",
+        "sp:hasRequiresMembership",
+        "sp:order",
+        "sp:requiredGoal"
+      ],
+      "condition": "Always emit the positioned authored edge; additionally emit a Core didactic-prerequisite reference when source and target are reviewed curricularAtomic or curricularArea resources.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "Inferred Core references do not create or reorder authored prerequisites."
+    },
+    "visualReferences": {
+      "strategy": "core-projection-with-lossless-extension",
+      "sourcePaths": [
+        "/goals/*/resourceLinks"
+      ],
+      "coreTerms": [
+        "lp:LP_0030065",
+        "lp:LP_0030071",
+        "lp:LP_0030072"
+      ],
+      "applicationTerms": [
+        "sp:ResourceLink",
+        "sp:hasResourceLink",
+        "sp:order",
+        "sp:referencesResource"
+      ],
+      "condition": "All resource links retain positioned application metadata; a curricular goal visualization additionally uses a Core CE reference to the image sidecar.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "External tools remain soft runtime links and do not become embedded binary dependencies."
+    },
+    "compositionViews": {
+      "strategy": "skillpilot-extension",
+      "sourcePaths": [
+        "/viewId",
+        "/scope",
+        "/rootNodes"
+      ],
+      "coreTerms": [],
+      "applicationTerms": [
+        "sp:CompositionNode",
+        "sp:CompositionView",
+        "sp:hasCompositionChild",
+        "sp:order"
+      ],
+      "condition": "Composition views are explicit learner-facing runtime projections and never redefine canonical curricular parthood.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "Scope, structure labels, goal references, and child order are reconstructed from the application profile."
+    },
+    "memoryCards": {
+      "strategy": "skillpilot-extension",
+      "sourcePaths": [
+        "/deckId",
+        "/cards"
+      ],
+      "coreTerms": [],
+      "applicationTerms": [
+        "sp:Card",
+        "sp:CardDeck",
+        "sp:hasCard",
+        "sp:order"
+      ],
+      "condition": "SRS decks and cards are emitted only for goals reviewed as memory and preserve card order exactly.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "The curriculum Core does not define SRS scheduling or deck runtime semantics."
+    },
+    "assessments": {
+      "strategy": "skillpilot-extension",
+      "sourcePaths": [
+        "/goals/*/examData"
+      ],
+      "coreTerms": [],
+      "applicationTerms": [
+        "sp:AssessmentData",
+        "sp:ScoringStep",
+        "sp:hasScoringStep",
+        "sp:order"
+      ],
+      "condition": "Assessment data is allowed only on goals reviewed as practiceAssessment and remains a bounded owner subtree with positioned scoring steps.",
+      "reverseMode": "exact",
+      "notes": "Task, solution, scoring, and review-state semantics are application data rather than curricular Core claims."
+    },
+    "authoredOrder": {
+      "strategy": "skillpilot-extension",
+      "sourcePaths": [
+        "/goals",
+        "/goals/*/contains",
+        "/goals/*/requires",
+        "/goals/*/resourceLinks",
+        "/rootNodes",
+        "/rootNodes/**/children",
+        "/cards",
+        "/goals/*/examData/scoring/steps"
+      ],
+      "coreTerms": [],
+      "applicationTerms": [
+        "sp:order"
+      ],
+      "condition": "Every runtime-observable list is represented by unique contiguous zero-based positions independent of RDF statement order.",
+      "reverseMode": "exact-positioned-memberships",
+      "notes": "Order is an explicit SkillPilot reconstruction contract; unordered Core projections are never the authoritative carrier."
+    }
+  }
+}

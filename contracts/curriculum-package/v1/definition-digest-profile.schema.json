@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+  "title": "SkillPilot canonical definition digest profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profileFormatVersion",
+    "profileId",
+    "version",
+    "canonicalJsonProfile",
+    "definitionDigest",
+    "semanticBodyDigest",
+    "derivedIdentities",
+    "definitionIndexDigest",
+    "closureDigest",
+    "migrationDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json"
+    },
+    "profileFormatVersion": {
+      "const": 1
+    },
+    "profileId": {
+      "const": "canonical-definition-record-v1"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "canonicalJsonProfile": {
+      "const": "semantic-normal-form-v1"
+    },
+    "definitionDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "projection",
+        "output"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256-over-length-framed-domain-and-canonical-json-payload"
+        },
+        "domain": {
+          "const": "skillpilot:canonical-definition:v1"
+        },
+        "projection": {
+          "const": "typed-entity-key-plus-registry-normalized-definition-body"
+        },
+        "output": {
+          "const": "sha256-prefixed-lowercase-hex"
+        }
+      }
+    },
+    "semanticBodyDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "projection",
+        "output"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256-over-length-framed-domain-and-canonical-json-payload"
+        },
+        "domain": {
+          "const": "skillpilot:canonical-semantic-body:v1"
+        },
+        "projection": {
+          "const": "registry-normalized-definition-body-without-typed-entity-key"
+        },
+        "output": {
+          "const": "sha256-prefixed-lowercase-hex"
+        }
+      }
+    },
+    "derivedIdentities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "placement"
+      ],
+      "properties": {
+        "placement": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entityKind",
+            "algorithm",
+            "domain",
+            "projection",
+            "outputPrefix",
+            "hexLength"
+          ],
+          "properties": {
+            "entityKind": {
+              "const": "placement"
+            },
+            "algorithm": {
+              "const": "sha-256-over-length-framed-domain-and-payload"
+            },
+            "domain": {
+              "const": "skillpilot:derived-placement-identity:v1"
+            },
+            "projection": {
+              "const": "registry-normalized-placement-record"
+            },
+            "outputPrefix": {
+              "const": "placement:"
+            },
+            "hexLength": {
+              "const": 32
+            }
+          }
+        }
+      }
+    },
+    "definitionIndexDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "recordOrder",
+        "recordFields",
+        "output"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256-over-length-framed-domain-and-record-fields"
+        },
+        "domain": {
+          "const": "skillpilot:definition-index:v1"
+        },
+        "recordOrder": {
+          "const": "canonical-typed-entity-key"
+        },
+        "recordFields": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "key" },
+            { "const": "ownerPackageId" },
+            { "const": "definitionDigest" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "output": {
+          "const": "sha256-prefixed-lowercase-hex"
+        }
+      }
+    },
+    "closureDigest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/generatedDigest"
+        },
+        {
+          "properties": {
+            "domain": {
+              "const": "skillpilot:dependency-closure:v1"
+            }
+          }
+        }
+      ]
+    },
+    "migrationDigest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/generatedDigest"
+        },
+        {
+          "properties": {
+            "domain": {
+              "const": "skillpilot:migration-aliases:v1"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "generatedDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "canonicalProjection",
+        "selfFieldExcluded",
+        "releaseContentDigestExcluded",
+        "output"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256-over-length-framed-domain-and-canonical-json-payload"
+        },
+        "domain": {
+          "enum": [
+            "skillpilot:dependency-closure:v1",
+            "skillpilot:migration-aliases:v1"
+          ]
+        },
+        "canonicalProjection": {
+          "const": "whole-document-with-generated-fields-removed"
+        },
+        "selfFieldExcluded": {
+          "const": true
+        },
+        "releaseContentDigestExcluded": {
+          "const": true
+        },
+        "output": {
+          "const": "sha256-prefixed-lowercase-hex"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",
+  "title": "SkillPilot memory card deck v1",
+  "description": "Closed runtime card deck. Card order and an explicit language tag are normative; language is never inferred from a filename.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "deckFormatVersion",
+    "deckId",
+    "landscapeId",
+    "language",
+    "title",
+    "cards"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json"
+    },
+    "deckFormatVersion": {
+      "const": "1.0"
+    },
+    "deckId": {
+      "$ref": "#/$defs/id"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "language": {
+      "$ref": "#/$defs/languageTag"
+    },
+    "title": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "cards": {
+      "type": "array",
+      "maxItems": 1000000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "front",
+        "back"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "front": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "back": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "x-skillpilot-listSemantics": "set",
+          "items": {
+            "type": "string",
+            "maxLength": 500
+          }
+        }
+      }
+    }
+  }
+}
