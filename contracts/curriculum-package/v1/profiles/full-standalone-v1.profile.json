@@ -1,0 +1,252 @@
+{
+  "profileFormatVersion": 1,
+  "profileId": "full-standalone-v1",
+  "description": "Self-contained JSON curriculum package profile. Every hard runtime dependency must resolve inside the package; external source URLs remain non-runtime metadata.",
+  "manifestSchema": {
+    "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+    "sha256": "721053d41c558deb4192eab424e9f9452165176fbf073a79533bba4e75e33d7c"
+  },
+  "compatibility": {
+    "packageFormatVersion": "1.0",
+    "runtimeContractVersion": "1.0",
+    "variant": "json"
+  },
+  "inventoryPolicy": {
+    "pathBase": "archive-root-relative",
+    "allowUnknownRoles": false,
+    "excludedPaths": [
+      "metadata/manifest.json",
+      "metadata/SHA256SUMS"
+    ]
+  },
+  "archiveLimits": {
+    "outerZipBytes": 3500000000,
+    "entryCount": 60000,
+    "genericEntryBytes": 1000000000,
+    "goalVisualizationBytes": 67108864,
+    "imageLaneBytes": 3000000000,
+    "totalUncompressedBytes": 8000000000,
+    "archivePathBytes": 240,
+    "maxEntryCompressionRatio": 100,
+    "maxTotalCompressionRatio": 25,
+    "nestedArchivesAllowed": false
+  },
+  "manifestLimits": {
+    "manifestBytes": 67108864,
+    "fileRecords": 59998,
+    "licenseDocuments": 1024
+  },
+  "redistributionPolicy": {
+    "allFilesMustBeAllowed": true
+  },
+  "licensePolicy": {
+    "requireDocumentForEveryIdentifier": true,
+    "disallowedIdentifiers": [
+      "NONE",
+      "NOASSERTION"
+    ]
+  },
+  "roles": [
+    {
+      "role": "runtime-catalog",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "dependency-closure",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "migration-aliases",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "canonical-landscape",
+      "minimum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "composition-view-index",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "composition-view",
+      "minimum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "card-index",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "card-deck",
+      "minimum": 0,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "resource-index",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "binary-asset",
+      "minimum": 0,
+      "runtimeRequired": "either",
+      "mediaTypes": [
+        "image/jpeg",
+        "image/png"
+      ]
+    },
+    {
+      "role": "embedded-goal-dependency",
+      "minimum": 0,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "external-dependency-declaration",
+      "minimum": 0,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "mapping",
+      "minimum": 0,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "source-index",
+      "minimum": 0,
+      "maximum": 1,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "source-goal-reference-index",
+      "minimum": 0,
+      "maximum": 1,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "quality-evidence",
+      "minimum": 0,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json",
+        "application/x-ndjson",
+        "text/markdown"
+      ]
+    },
+    {
+      "role": "schema-catalog",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "schema",
+      "minimum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/schema+json"
+      ]
+    },
+    {
+      "role": "release-profile",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "license",
+      "minimum": 1,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "text/plain"
+      ]
+    },
+    {
+      "role": "package-documentation",
+      "minimum": 0,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "text/markdown",
+        "text/plain"
+      ]
+    },
+    {
+      "role": "validation-report",
+      "minimum": 0,
+      "maximum": 1,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json"
+      ]
+    },
+    {
+      "role": "provenance-report",
+      "minimum": 0,
+      "maximum": 1,
+      "runtimeRequired": "forbidden",
+      "mediaTypes": [
+        "application/json",
+        "text/markdown"
+      ]
+    }
+  ]
+}

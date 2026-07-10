@@ -2,6 +2,11 @@
 
 This page is the entry point for repeatable production and export pipelines. Keep pipeline status reports in `docs/qa-ci/status/` and implementation notes in `docs/dev/`.
 
+## Program Status
+
+- [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md)
+  Current implementation checkpoint for the paired JSON-runtime and FWU-ontology release program.
+
 ## Pipelines
 
 - [Curriculum Graph](curriculum-graph.md)

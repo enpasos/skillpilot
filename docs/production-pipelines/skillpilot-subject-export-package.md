@@ -4,6 +4,8 @@ This pipeline builds a reproducible release ZIP artifact for one SkillPilot subj
 
 The long-term dual-release target, including the standalone JSON runtime contract, the paired FWU-ontology artifact, and their mandatory equivalence proof, is described in [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
 
+The current implementation checkpoint and remaining roadmap are tracked in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
+
 The package includes every image referenced by an active canonical `goal-visualization` link. Selection is link-driven, so stale files in the runtime asset directory do not leak into releases.
 
 Supported `DE/Gymnasium` presets currently cover the M5-or-better subjects: `Biologie`, `Chemie`, `Deutsch`, `Geschichte`, `Informatik`, `Latein`, `Mathematik`, `Physik`, `Politik und Wirtschaft`, and `Wirtschaftswissenschaften`.
