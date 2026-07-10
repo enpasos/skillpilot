@@ -15,6 +15,8 @@ Use this page by role: start with the overview documents, then jump to a review 
   Single source of truth for algorithmic graph validation in CI.
 - [Curriculum Package Readiness](curriculum-package-readiness.md)
   Fail-closed distinction between legacy export validation and the standalone JSON runtime profile.
+- [Dual Curriculum Release Contracts](dual-curriculum-release-contracts.md)
+  Field/RDF semantics, canonical content digest, equivalence evidence, and paired release-index gates.
 - [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
 - [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)

@@ -1,0 +1,264 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
+  "reportFormatVersion": "1.0",
+  "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
+  "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+  "packageVersion": "1.0.0",
+  "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+  "contracts": {
+    "packageFormatVersion": "1.0",
+    "runtimeContractVersion": "1.0",
+    "releaseProfile": "full-standalone-v1",
+    "ontologyProfileVersion": "1.0",
+    "packageManifestSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+    },
+    "dualReleaseIndexSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
+      "sha256": "5947a595a9dc0abc3c850c0dc8314ad4f3ad6b77a8f5e845f666686a75f99e7a"
+    },
+    "equivalenceReportSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
+      "sha256": "0db6d51071a49a0fdd23b290da52a8325866da7aa17aca1fee17ce207bc32b88"
+    },
+    "ontologyProfile": {
+      "id": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "fieldSemanticsRegistry": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
+      "sha256": "5dd04ecaf616a08b6e23257d76d6821434db494d411680c10030a51bf602d973"
+    },
+    "semanticNormalForm": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    "semanticContentIndexSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+    }
+  },
+  "inputs": {
+    "json": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.json.zip",
+      "bytes": 1000000,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "manifest": {
+        "path": "metadata/manifest.json",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "fwu-owl": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.fwu-owl.zip",
+      "bytes": 1200000,
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "manifest": {
+        "path": "metadata/manifest.json",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    }
+  },
+  "outputs": {
+    "reconstructed-json": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.reconstructed.json.zip",
+      "bytes": 1001000,
+      "sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "manifest": {
+        "path": "metadata/manifest.json",
+        "sha256": "abababababababababababababababababababababababababababababababab"
+      }
+    }
+  },
+  "reverseCompilation": {
+    "inputOntologyZipSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "outputJsonZipSha256": "1212121212121212121212121212121212121212121212121212121212121212",
+    "originalJsonPackageAccessible": false,
+    "authoringCheckoutAccessible": false,
+    "passed": true,
+    "reportSha256": "1313131313131313131313131313131313131313131313131313131313131313"
+  },
+  "normalForms": {
+    "json": {
+      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
+      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "logicalArtifactCount": 4,
+      "binaryResourceCount": 1,
+      "passed": true
+    },
+    "fwu-owl": {
+      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
+      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "logicalArtifactCount": 4,
+      "binaryResourceCount": 1,
+      "passed": true
+    },
+    "reconstructed-json": {
+      "contentIndexSha256": "1fe7c283d804865d5036cab778335869ec9f675ea944355300e9f0d089b89953",
+      "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+      "logicalArtifactCount": 4,
+      "binaryResourceCount": 1,
+      "passed": true
+    }
+  },
+  "fwuCore": {
+    "iri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+    "commit": "0123456789abcdef0123456789abcdef01234567",
+    "fileSha256": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "tools": [
+    { "role": "json-package-validator", "name": "skillpilot-json-package-validator", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000001" },
+    { "role": "ontology-exporter", "name": "skillpilot-fwu-exporter", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000002" },
+    { "role": "ontology-validator", "name": "robot-hermit-shacl", "version": "1.9.8", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000003" },
+    { "role": "reverse-compiler", "name": "skillpilot-fwu-reverse-compiler", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000004" },
+    { "role": "semantic-normalizer", "name": "skillpilot-semantic-normalizer", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000005" },
+    { "role": "equivalence-comparator", "name": "skillpilot-equivalence-comparator", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000006" },
+    { "role": "consumer-smoke-test", "name": "skillpilot-package-smoke-test", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000007" },
+    { "role": "reproducibility-runner", "name": "skillpilot-reproducibility-runner", "version": "1.0.0", "sourceCommit": "0123456789abcdef0123456789abcdef01234567", "executableSha256": "5000000000000000000000000000000000000000000000000000000000000008" }
+  ],
+  "roleSummaries": [
+    {
+      "role": "canonical-landscape",
+      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "logicalDigests": { "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c" },
+      "passed": true
+    },
+    {
+      "role": "composition-view",
+      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "logicalDigests": { "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79" },
+      "passed": true
+    },
+    {
+      "role": "card-deck",
+      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "logicalDigests": { "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079" },
+      "passed": true
+    },
+    {
+      "role": "resource-index",
+      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "logicalDigests": { "json": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85", "fwuOwl": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85", "reconstructedJson": "06e39fe1063a452525b2cc76eb3c8cbdff1f5b0e3a6375e299b30363ddac2f85" },
+      "passed": true
+    },
+    {
+      "role": "binary-asset",
+      "counts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "logicalDigests": { "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834" },
+      "passed": true
+    }
+  ],
+  "fieldCoverage": {
+    "registry": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
+      "sha256": "5dd04ecaf616a08b6e23257d76d6821434db494d411680c10030a51bf602d973"
+    },
+    "normalForm": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    "registeredFieldCount": 17,
+    "coveredFieldCount": 17,
+    "entries": [
+      { "entryId": "landscape.goals", "schemaPathPattern": "/goals", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000001" },
+      { "entryId": "goal.id", "schemaPathPattern": "/goals/*/id", "semanticClass": "scalar", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000002" },
+      { "entryId": "goal.title", "schemaPathPattern": "/goals/*/title", "semanticClass": "scalar", "rdfStrategy": "fwu-core", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000003" },
+      { "entryId": "goal.description", "schemaPathPattern": "/goals/*/description", "semanticClass": "scalar", "rdfStrategy": "fwu-core", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000004" },
+      { "entryId": "goal.contains", "schemaPathPattern": "/goals/*/contains", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000005" },
+      { "entryId": "goal.requires", "schemaPathPattern": "/goals/*/requires", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000006" },
+      { "entryId": "goal.resource-links", "schemaPathPattern": "/goals/*/resourceLinks", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000007" },
+      { "entryId": "goal.dimension-tags", "schemaPathPattern": "/goals/*/dimensionTags", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000008" },
+      { "entryId": "goal.extended-data", "schemaPathPattern": "/goals/*/extendedData", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000009" },
+      { "entryId": "goal.exam-data", "schemaPathPattern": "/goals/*/examData", "semanticClass": "map", "rdfStrategy": "registered-canonical-json-literal", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000a" },
+      { "entryId": "goal.scoring-steps", "schemaPathPattern": "/goals/*/examData/scoring/steps", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000b" },
+      { "entryId": "view.root-nodes", "schemaPathPattern": "/rootNodes", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000c" },
+      { "entryId": "view.children", "schemaPathPattern": "/rootNodes/**/children", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000d" },
+      { "entryId": "card-deck.cards", "schemaPathPattern": "/cards", "semanticClass": "ordered-list", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000e" },
+      { "entryId": "goal.tags", "schemaPathPattern": "/goals/*/tags", "semanticClass": "set", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "800000000000000000000000000000000000000000000000000000000000000f" },
+      { "entryId": "resource.public-reference", "schemaPathPattern": "/assets/*/publicUrl", "semanticClass": "binary-reference", "rdfStrategy": "skillpilot-profile", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000010" },
+      { "entryId": "report.generated-at", "schemaPathPattern": "/generatedAt", "semanticClass": "generated-non-semantic", "rdfStrategy": "excluded-generated", "forwardMapped": true, "reverseMapped": true, "tested": true, "coverageDigest": "8000000000000000000000000000000000000000000000000000000000000011" }
+    ],
+    "uncoveredFields": [],
+    "unknownFields": [],
+    "coverageDigest": "5280f393d4ec1539e93788bb884aafb85103f68650a64521c1217a03de62f36b",
+    "passed": true
+  },
+  "comparisons": {
+    "graph": {
+      "goalCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
+      "directContainsEdgeCounts": { "json": 9, "fwuOwl": 9, "reconstructedJson": 9 },
+      "directRequiresEdgeCounts": { "json": 8, "fwuOwl": 8, "reconstructedJson": 8 },
+      "programUnitCounts": { "json": 2, "fwuOwl": 2, "reconstructedJson": 2 },
+      "placementCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
+      "competencyEntryCounts": { "json": 6, "fwuOwl": 6, "reconstructedJson": 6 },
+      "logicalDigests": { "json": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "fwuOwl": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c", "reconstructedJson": "92cb093591828c6be58e35dcdd99616faa0edad5369104c5f6e81c71d52ca10c" },
+      "passed": true
+    },
+    "compositionViews": {
+      "viewCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "nodeReferenceCounts": { "json": 10, "fwuOwl": 10, "reconstructedJson": 10 },
+      "logicalDigests": { "json": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "fwuOwl": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79", "reconstructedJson": "5563b3a22a756727b25a54ba567da2c4db8d1078d70139cc272c79514f732c79" },
+      "orderPreserved": true,
+      "passed": true
+    },
+    "cards": {
+      "deckCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "cardCounts": { "json": 3, "fwuOwl": 3, "reconstructedJson": 3 },
+      "logicalDigests": { "json": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "fwuOwl": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079", "reconstructedJson": "ec0ac1b7d2837d5c48c8ce2196470faea135b705ca1d9c700558bd0f3a1c9079" },
+      "orderPreserved": true,
+      "passed": true
+    },
+    "binaryAssets": {
+      "assetCounts": { "json": 1, "fwuOwl": 1, "reconstructedJson": 1 },
+      "totalBytes": { "json": 8192, "fwuOwl": 8192, "reconstructedJson": 8192 },
+      "logicalIndexDigests": { "json": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "fwuOwl": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834", "reconstructedJson": "5df1122fa93ae6ef2f5a90d93d5d58e511ffa0d9ec67c66113eb5561df5b3834" },
+      "byteDigests": { "json": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796", "fwuOwl": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796", "reconstructedJson": "020a1d92d882e826a4ec34544f8f5c93d1d5a325f909462c01d23954d52ae796" },
+      "mimeTypesMatched": true,
+      "passed": true
+    }
+  },
+  "ontologyValidation": {
+    "packageSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "manifestSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "coreBindingVerified": true,
+    "rdfSyntax": { "passed": true, "errorCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000001" },
+    "owl2Dl": { "passed": true, "errorCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000002" },
+    "shacl": { "passed": true, "violationCount": 0, "warningCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000003" },
+    "reasoner": { "passed": true, "engine": "HermiT", "version": "1.4.6.519", "consistent": true, "unsatisfiableClassCount": 0, "reportSha256": "a000000000000000000000000000000000000000000000000000000000000004" },
+    "passed": true
+  },
+  "packageValidation": {
+    "jsonPackage": {
+      "packageSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "passed": true,
+      "errorCount": 0,
+      "reportSha256": "1414141414141414141414141414141414141414141414141414141414141414"
+    },
+    "reconstructedJsonPackage": {
+      "packageSha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "manifestSha256": "abababababababababababababababababababababababababababababababab",
+      "passed": true,
+      "errorCount": 0,
+      "reportSha256": "1515151515151515151515151515151515151515151515151515151515151515"
+    },
+    "passed": true
+  },
+  "consumerSmokeTests": {
+    "jsonPackage": { "consumer": "SkillPilot", "consumerVersion": "1.0.0", "hermetic": true, "sourceCheckoutAccessible": false, "packageSha256": "1111111111111111111111111111111111111111111111111111111111111111", "passed": true, "reportSha256": "b000000000000000000000000000000000000000000000000000000000000001" },
+    "reconstructedJsonPackage": { "consumer": "SkillPilot", "consumerVersion": "1.0.0", "hermetic": true, "sourceCheckoutAccessible": false, "packageSha256": "1212121212121212121212121212121212121212121212121212121212121212", "passed": true, "reportSha256": "b000000000000000000000000000000000000000000000000000000000000002" },
+    "passed": true
+  },
+  "reproducibility": {
+    "sourceDateEpoch": 1783641600,
+    "locale": "C.UTF-8",
+    "timezone": "UTC",
+    "runA": { "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001", "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111", "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222" },
+    "runB": { "builderEnvironmentDigest": "sha256:c000000000000000000000000000000000000000000000000000000000000001", "jsonZipSha256": "1111111111111111111111111111111111111111111111111111111111111111", "fwuOwlZipSha256": "2222222222222222222222222222222222222222222222222222222222222222" },
+    "jsonZipByteIdentical": true,
+    "fwuOwlZipByteIdentical": true,
+    "passed": true
+  },
+  "differences": [],
+  "passed": true
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
+  "schemaVersion": 1,
+  "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
+  "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+  "packageVersion": "1.0.0",
+  "curriculumEdition": "DE-Gymnasium-2026-07",
+  "releaseProfile": "full-standalone-v1",
+  "channel": "staging",
+  "contentDigest": "sha256:0f441c5af9b8998199dfd11ea7c9b83e494acd960dbb5d3f6881e035b48d8766",
+  "contracts": {
+    "packageFormatVersion": "1.0",
+    "runtimeContractVersion": "1.0",
+    "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+    "ontologyProfileVersion": "1.0",
+    "packageManifestSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+    },
+    "dualReleaseIndexSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
+      "sha256": "5947a595a9dc0abc3c850c0dc8314ad4f3ad6b77a8f5e845f666686a75f99e7a"
+    },
+    "equivalenceReportSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
+      "sha256": "0db6d51071a49a0fdd23b290da52a8325866da7aa17aca1fee17ce207bc32b88"
+    },
+    "ontologyProfile": {
+      "id": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "fieldSemanticsRegistry": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
+      "sha256": "5dd04ecaf616a08b6e23257d76d6821434db494d411680c10030a51bf602d973"
+    },
+    "semanticNormalForm": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    "semanticContentIndexSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+    }
+  },
+  "variants": {
+    "json": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.json.zip",
+      "mediaType": "application/zip",
+      "bytes": 1000000,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "fwu-owl": {
+      "file": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.fwu-owl.zip",
+      "mediaType": "application/zip",
+      "bytes": 1200000,
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "manifestSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  "equivalence": {
+    "status": "passed",
+    "report": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.equivalence.json",
+    "bytes": 20523,
+    "sha256": "bf5d0ac640abe95eedc379569a5f8d0e5bf6b13bce27dd67fc216e83565948d2"
+  },
+  "provenance": {
+    "attestation": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.provenance.json",
+    "format": "slsa-provenance-v1",
+    "bytes": 2048,
+    "sha256": "9999999999999999999999999999999999999999999999999999999999999999"
+  },
+  "authentication": {
+    "releaseIndexSignature": {
+      "status": "unsigned-staging",
+      "format": "none",
+      "artifact": null,
+      "sha256": null,
+      "signedPayloadProjection": "canonical-json-with-release-index-signature-removed-v1",
+      "signedPayloadSha256": null,
+      "trustedIdentityVerified": false
+    },
+    "provenanceAttestation": {
+      "status": "present-staging",
+      "trustedBuilderIdentityVerified": false
+    }
+  }
+}

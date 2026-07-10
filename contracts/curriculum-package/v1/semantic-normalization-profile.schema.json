@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+  "title": "SkillPilot semantic normalization profile v1",
+  "description": "Strict, variant-independent canonicalization and content-digest contract for curriculum release artifacts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profileFormatVersion",
+    "profileId",
+    "version",
+    "description",
+    "compatibility",
+    "canonicalJson",
+    "pathNormalization",
+    "lengthFraming",
+    "semanticArtifactDigest",
+    "binaryAssetDigest",
+    "roleSummaryDigest",
+    "binaryCollectionDigest",
+    "contentDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json"
+    },
+    "profileFormatVersion": {
+      "const": 1
+    },
+    "profileId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "version": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "description": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "compatibility": {
+      "$ref": "#/$defs/compatibility"
+    },
+    "canonicalJson": {
+      "$ref": "#/$defs/canonicalJson"
+    },
+    "pathNormalization": {
+      "$ref": "#/$defs/pathNormalization"
+    },
+    "lengthFraming": {
+      "$ref": "#/$defs/lengthFraming"
+    },
+    "semanticArtifactDigest": {
+      "$ref": "#/$defs/semanticArtifactDigest"
+    },
+    "binaryAssetDigest": {
+      "$ref": "#/$defs/binaryAssetDigest"
+    },
+    "roleSummaryDigest": {
+      "$ref": "#/$defs/roleSummaryDigest"
+    },
+    "binaryCollectionDigest": {
+      "$ref": "#/$defs/binaryCollectionDigest"
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/contentDigest"
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$",
+      "maxLength": 160
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseModelContractVersion",
+        "fieldRegistryFormatVersion",
+        "unknownPropertyPolicy"
+      ],
+      "properties": {
+        "releaseModelContractVersion": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*\\.[0-9]+$"
+        },
+        "fieldRegistryFormatVersion": {
+          "const": 1
+        },
+        "unknownPropertyPolicy": {
+          "const": "reject-unregistered"
+        }
+      }
+    },
+    "numberPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finiteOnly",
+        "negativeZero",
+        "serialization"
+      ],
+      "properties": {
+        "finiteOnly": {
+          "const": true
+        },
+        "negativeZero": {
+          "const": "canonicalize-to-zero"
+        },
+        "serialization": {
+          "const": "ecmascript-shortest-roundtrip"
+        }
+      }
+    },
+    "canonicalJson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "encoding",
+        "objectKeyOrder",
+        "arrayOrder",
+        "duplicateObjectKeys",
+        "unicodeNormalization",
+        "invalidUnicode",
+        "stringEscaping",
+        "numberPolicy",
+        "missingNullDefault",
+        "finalNewline"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "skillpilot-canonical-json-v1"
+        },
+        "encoding": {
+          "const": "UTF-8"
+        },
+        "objectKeyOrder": {
+          "const": "unicode-code-point"
+        },
+        "arrayOrder": {
+          "const": "field-registry-governed"
+        },
+        "duplicateObjectKeys": {
+          "const": "reject"
+        },
+        "unicodeNormalization": {
+          "const": "none"
+        },
+        "invalidUnicode": {
+          "type": "array",
+          "const": [
+            "reject-unpaired-surrogates",
+            "reject-xml-1.0-illegal-controls",
+            "reject-u+fffe-u+ffff"
+          ]
+        },
+        "stringEscaping": {
+          "const": "rfc8259-minimal"
+        },
+        "numberPolicy": {
+          "$ref": "#/$defs/numberPolicy"
+        },
+        "missingNullDefault": {
+          "const": "distinct-unless-field-registry-declares-equivalence"
+        },
+        "finalNewline": {
+          "const": false
+        }
+      }
+    },
+    "pathNormalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base",
+        "separator",
+        "leadingSlash",
+        "backslash",
+        "emptySegment",
+        "dotSegments",
+        "unicodeNormalization",
+        "caseFolding",
+        "percentDecoding"
+      ],
+      "properties": {
+        "base": {
+          "const": "archive-root-relative"
+        },
+        "separator": {
+          "const": "/"
+        },
+        "leadingSlash": {
+          "const": "reject"
+        },
+        "backslash": {
+          "const": "reject"
+        },
+        "emptySegment": {
+          "const": "reject"
+        },
+        "dotSegments": {
+          "const": "reject"
+        },
+        "unicodeNormalization": {
+          "const": "none"
+        },
+        "caseFolding": {
+          "const": "none"
+        },
+        "percentDecoding": {
+          "const": "none"
+        }
+      }
+    },
+    "lengthFraming": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "lengthEncoding",
+        "textEncoding",
+        "integerEncoding",
+        "recordFieldOrderSource",
+        "frameRule"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "skillpilot-length-frame-v1"
+        },
+        "lengthEncoding": {
+          "const": "unsigned-64-bit-big-endian"
+        },
+        "textEncoding": {
+          "const": "UTF-8"
+        },
+        "integerEncoding": {
+          "const": "unsigned-base10-ascii-no-leading-zeroes"
+        },
+        "recordFieldOrderSource": {
+          "const": "digest-record-fields-in-declared-order"
+        },
+        "frameRule": {
+          "const": "uint64-byte-length-followed-by-exact-field-bytes"
+        }
+      }
+    },
+    "semanticArtifactDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "payload",
+        "recordFields",
+        "recordOrder",
+        "excludedClassifications"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256"
+        },
+        "domain": {
+          "const": "skillpilot:semantic-artifact:v1"
+        },
+        "payload": {
+          "const": "canonical-json-sha256"
+        },
+        "recordFields": {
+          "type": "array",
+          "const": [
+            "role",
+            "stableId",
+            "mediaType",
+            "byteLength",
+            "payloadSha256"
+          ]
+        },
+        "recordOrder": {
+          "const": "role-then-stable-id-unicode-code-point"
+        },
+        "excludedClassifications": {
+          "type": "array",
+          "const": [
+            "generated-non-semantic"
+          ]
+        }
+      }
+    },
+    "binaryAssetDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "byteDigestAlgorithm",
+        "recordFields",
+        "identityField",
+        "recordOrder",
+        "excludedPackagingFields"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256"
+        },
+        "domain": {
+          "const": "skillpilot:binary-asset:v1"
+        },
+        "byteDigestAlgorithm": {
+          "const": "sha-256"
+        },
+        "recordFields": {
+          "type": "array",
+          "const": [
+            "logicalResourceId",
+            "canonicalPublicReference",
+            "mediaType",
+            "byteLength",
+            "fileSha256"
+          ]
+        },
+        "identityField": {
+          "const": "logicalResourceId"
+        },
+        "recordOrder": {
+          "const": "logical-resource-id-unicode-code-point"
+        },
+        "excludedPackagingFields": {
+          "type": "array",
+          "const": [
+            "variantZipPath",
+            "zipCompressionMetadata"
+          ]
+        }
+      }
+    },
+    "roleSummaryDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "recordField",
+        "recordOrder",
+        "emptyRoleAllowed"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256"
+        },
+        "domain": {
+          "const": "skillpilot:role-records:v1"
+        },
+        "recordField": {
+          "const": "recordSha256"
+        },
+        "recordOrder": {
+          "const": "logical-id-or-resource-id-unicode-code-point"
+        },
+        "emptyRoleAllowed": {
+          "const": true
+        }
+      }
+    },
+    "binaryCollectionDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "recordFields",
+        "recordOrder"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256"
+        },
+        "domain": {
+          "const": "skillpilot:binary-collection:v1"
+        },
+        "recordFields": {
+          "type": "array",
+          "const": [
+            "logicalResourceId",
+            "fileSha256"
+          ]
+        },
+        "recordOrder": {
+          "const": "logical-resource-id-unicode-code-point"
+        }
+      }
+    },
+    "contentDigest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "domain",
+        "outputFormat",
+        "inputGroups",
+        "groupOrder",
+        "recordProjection",
+        "contractBindingOrder",
+        "variantIndependent"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha-256"
+        },
+        "domain": {
+          "const": "skillpilot:curriculum-content:v1"
+        },
+        "outputFormat": {
+          "const": "sha256-lowercase-hex-prefixed"
+        },
+        "inputGroups": {
+          "type": "array",
+          "const": [
+            "semantic-artifact-records",
+            "binary-asset-records"
+          ]
+        },
+        "groupOrder": {
+          "const": "declared"
+        },
+        "recordProjection": {
+          "const": "length-frame-record-sha256-in-declared-group-order"
+        },
+        "contractBindingOrder": {
+          "type": "array",
+          "const": [
+            "normalizationProfile.id",
+            "normalizationProfile.version",
+            "normalizationProfile.sha256",
+            "fieldSemanticsRegistry.id",
+            "fieldSemanticsRegistry.version",
+            "fieldSemanticsRegistry.sha256"
+          ]
+        },
+        "variantIndependent": {
+          "const": true
+        }
+      }
+    }
+  }
+}

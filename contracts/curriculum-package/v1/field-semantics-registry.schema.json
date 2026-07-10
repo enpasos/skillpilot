@@ -1,0 +1,1196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+  "title": "SkillPilot field-semantics registry v1",
+  "description": "Closed field-by-field contract for semantic normalization and reversible JSON-to-RDF mapping. A release field must match exactly one registry entry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "registryFormatVersion",
+    "registryId",
+    "version",
+    "description",
+    "compatibility",
+    "pathPatternSyntax",
+    "namespaceBindings",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json"
+    },
+    "registryFormatVersion": {
+      "const": 1
+    },
+    "registryId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "version": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "description": {
+      "$ref": "#/$defs/nonBlankText"
+    },
+    "compatibility": {
+      "$ref": "#/$defs/compatibility"
+    },
+    "pathPatternSyntax": {
+      "$ref": "#/$defs/pathPatternSyntax"
+    },
+    "namespaceBindings": {
+      "$ref": "#/$defs/namespaceBindings"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4096,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$",
+      "maxLength": 160
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "compactIri": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:[A-Za-z_][A-Za-z0-9._-]*$",
+      "maxLength": 240
+    },
+    "jsonPointerPattern": {
+      "type": "string",
+      "pattern": "^/(?:[^/~*]|~[01]|\\*)+(?:/(?:[^/~*]|~[01]|\\*)+)*$",
+      "maxLength": 500
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseModelContractVersion",
+        "normalizationProfileId",
+        "normalizationProfileVersion",
+        "fwuCoreOntologyIri",
+        "skillpilotProfileIri",
+        "unknownFieldPolicy",
+        "pathMatchPolicy"
+      ],
+      "properties": {
+        "releaseModelContractVersion": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*\\.[0-9]+$"
+        },
+        "normalizationProfileId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "normalizationProfileVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "fwuCoreOntologyIri": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 500
+        },
+        "skillpilotProfileIri": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 500
+        },
+        "unknownFieldPolicy": {
+          "const": "reject"
+        },
+        "pathMatchPolicy": {
+          "const": "exactly-one-most-specific"
+        }
+      }
+    },
+    "namespaceBindings": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 64,
+      "patternProperties": {
+        "^[a-z][a-z0-9-]*$": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 500
+        }
+      },
+      "additionalProperties": false
+    },
+    "pathPatternSyntax": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dialect",
+        "pointerEscaping",
+        "singleSegmentWildcard",
+        "recursiveSegmentWildcard",
+        "specificity",
+        "tiePolicy"
+      ],
+      "properties": {
+        "dialect": {
+          "const": "json-pointer-segment-pattern-v1"
+        },
+        "pointerEscaping": {
+          "const": "rfc6901-before-pattern-matching"
+        },
+        "singleSegmentWildcard": {
+          "const": "*-matches-exactly-one-decoded-segment"
+        },
+        "recursiveSegmentWildcard": {
+          "const": "**-matches-zero-or-more-decoded-segments"
+        },
+        "specificity": {
+          "const": "descending-literal-count-then-ascending-recursive-wildcard-count-then-descending-segment-count"
+        },
+        "tiePolicy": {
+          "const": "reject-overlapping-equal-specificity-patterns"
+        }
+      }
+    },
+    "cardinality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "presence"
+      ],
+      "properties": {
+        "presence": {
+          "enum": [
+            "required",
+            "optional"
+          ]
+        },
+        "minItems": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000000
+        },
+        "maxItems": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000000
+        }
+      }
+    },
+    "dataType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "jsonTypes"
+      ],
+      "properties": {
+        "jsonTypes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "array",
+              "boolean",
+              "integer",
+              "number",
+              "object",
+              "string",
+              "null"
+            ]
+          }
+        },
+        "itemJsonTypes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "boolean",
+              "integer",
+              "number",
+              "object",
+              "string",
+              "null"
+            ]
+          }
+        },
+        "format": {
+          "enum": [
+            "none",
+            "bcp47",
+            "iri",
+            "package-relative-path",
+            "sha256",
+            "date-time"
+          ]
+        }
+      }
+    },
+    "languageSemantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "fixed",
+            "from-artifact",
+            "from-sibling"
+          ]
+        },
+        "languageTag": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$",
+          "maxLength": 64
+        },
+        "sourcePath": {
+          "$ref": "#/$defs/jsonPointerPattern"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "fixed"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "languageTag"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "from-artifact",
+                  "from-sibling"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "sourcePath"
+            ]
+          }
+        }
+      ]
+    },
+    "defaultValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "explicit"
+          ]
+        },
+        "value": true
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "explicit"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "value"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "presenceSemantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missing",
+        "null",
+        "empty",
+        "default"
+      ],
+      "properties": {
+        "missing": {
+          "enum": [
+            "distinct",
+            "equivalent-to-null",
+            "equivalent-to-default"
+          ]
+        },
+        "null": {
+          "enum": [
+            "forbidden",
+            "distinct",
+            "equivalent-to-missing",
+            "equivalent-to-default"
+          ]
+        },
+        "empty": {
+          "enum": [
+            "not-applicable",
+            "distinct",
+            "equivalent-to-missing",
+            "equivalent-to-default"
+          ]
+        },
+        "default": {
+          "$ref": "#/$defs/defaultValue"
+        }
+      }
+    },
+    "dynamicMapKeys": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy",
+        "keyNormalization"
+      ],
+      "properties": {
+        "policy": {
+          "enum": [
+            "forbidden",
+            "patterned",
+            "enumerated"
+          ]
+        },
+        "keyPattern": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "allowedKeys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "keyNormalization": {
+          "enum": [
+            "none",
+            "unicode-code-point-order"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "policy": {
+                "const": "patterned"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "keyPattern"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "policy": {
+                "const": "enumerated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "allowedKeys"
+            ]
+          }
+        }
+      ]
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objectKeyOrder",
+        "arrayOrder",
+        "duplicateItems",
+        "unicode",
+        "pathHandling"
+      ],
+      "properties": {
+        "objectKeyOrder": {
+          "const": "unicode-code-point"
+        },
+        "arrayOrder": {
+          "enum": [
+            "not-applicable",
+            "preserve",
+            "sort-canonical-unique"
+          ]
+        },
+        "duplicateItems": {
+          "enum": [
+            "not-applicable",
+            "preserve",
+            "reject"
+          ]
+        },
+        "unicode": {
+          "const": "preserve-code-points"
+        },
+        "pathHandling": {
+          "enum": [
+            "not-a-path",
+            "package-relative-forward-slash"
+          ]
+        },
+        "setSortKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        }
+      }
+    },
+    "membership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "representation",
+        "membershipClass",
+        "ownerPredicate",
+        "valuePredicate",
+        "positionPredicate",
+        "positionBase"
+      ],
+      "properties": {
+        "representation": {
+          "enum": [
+            "positioned-membership",
+            "rdf-list"
+          ]
+        },
+        "membershipClass": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "ownerPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "valuePredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "positionPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "positionBase": {
+          "const": 0
+        },
+        "coreProjection": {
+          "$ref": "#/$defs/coreProjection"
+        }
+      }
+    },
+    "coreProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "condition",
+        "ownerPredicate"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "direct-edge",
+            "reified-reference"
+          ]
+        },
+        "condition": {
+          "enum": [
+            "top-level-curricular-element",
+            "curricular-parthood-safe",
+            "curricular-source-and-target",
+            "curricular-goal-visualization"
+          ]
+        },
+        "ownerPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "valuePredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "resourceClass": {
+          "$ref": "#/$defs/compactIri"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "reified-reference"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "valuePredicate",
+              "resourceClass"
+            ]
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "valuePredicate"
+                  ]
+                },
+                {
+                  "required": [
+                    "resourceClass"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "construction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subjectTemplate",
+        "predicate",
+        "objectMapping"
+      ],
+      "properties": {
+        "subjectTemplate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "predicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "objectMapping": {
+          "enum": [
+            "language-literal",
+            "typed-literal",
+            "iri-reference",
+            "resource",
+            "positioned-membership",
+            "rdf-list"
+          ]
+        },
+        "condition": {
+          "enum": [
+            "always",
+            "curricular-goal",
+            "non-curricular-or-unscoped-goal"
+          ]
+        },
+        "datatype": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "resourceClass": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "ownerSubjectTemplate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "ownerPredicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "membership": {
+          "$ref": "#/$defs/membership"
+        },
+        "notes": {
+          "$ref": "#/$defs/nonBlankText"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "objectMapping": {
+                "enum": [
+                  "positioned-membership",
+                  "rdf-list"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "membership"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "resourceClass"
+            ]
+          },
+          "then": {
+            "required": [
+              "ownerSubjectTemplate",
+              "ownerPredicate"
+            ]
+          }
+        }
+      ]
+    },
+    "canonicalJsonLiteral": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "predicate",
+        "datatype",
+        "coreGap",
+        "maxBytes",
+        "granularity",
+        "subtreeProjection"
+      ],
+      "properties": {
+        "predicate": {
+          "$ref": "#/$defs/compactIri"
+        },
+        "datatype": {
+          "const": "xsd:string"
+        },
+        "coreGap": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1048576
+        },
+        "granularity": {
+          "enum": [
+            "single-field-value",
+            "single-owner-subtree"
+          ]
+        },
+        "subtreeProjection": {
+          "enum": [
+            "complete-value",
+            "exclude-more-specific-descendants"
+          ]
+        }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reason",
+        "deterministicallyRegenerated"
+      ],
+      "properties": {
+        "reason": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "deterministicallyRegenerated": {
+          "const": true
+        }
+      }
+    },
+    "rdfMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "fwu-core",
+            "skillpilot-profile",
+            "registered-canonical-json-literal",
+            "excluded-generated"
+          ]
+        },
+        "construction": {
+          "$ref": "#/$defs/construction"
+        },
+        "fallbackConstruction": {
+          "$ref": "#/$defs/construction"
+        },
+        "canonicalJsonLiteral": {
+          "$ref": "#/$defs/canonicalJsonLiteral"
+        },
+        "exclusion": {
+          "$ref": "#/$defs/exclusion"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "strategy": {
+                "enum": [
+                  "fwu-core",
+                  "skillpilot-profile"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "construction"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "canonicalJsonLiteral"
+                  ]
+                },
+                {
+                  "required": [
+                    "exclusion"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "strategy": {
+                "const": "registered-canonical-json-literal"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "canonicalJsonLiteral"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "construction"
+                  ]
+                },
+                {
+                  "required": [
+                    "exclusion"
+                  ]
+                },
+                {
+                  "required": [
+                    "fallbackConstruction"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "strategy": {
+                "const": "excluded-generated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "exclusion"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "construction"
+                  ]
+                },
+                {
+                  "required": [
+                    "canonicalJsonLiteral"
+                  ]
+                },
+                {
+                  "required": [
+                    "fallbackConstruction"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "reverseMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "roundtrip",
+        "onMissing",
+        "onAmbiguous"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "scalar-literal",
+            "iri-to-stable-id",
+            "resource-record",
+            "ordered-memberships",
+            "canonical-json-parse",
+            "binary-index-join",
+            "omitted-generated"
+          ]
+        },
+        "roundtrip": {
+          "enum": [
+            "exact",
+            "excluded-non-semantic"
+          ]
+        },
+        "onMissing": {
+          "enum": [
+            "error",
+            "preserve-missing",
+            "regenerate"
+          ]
+        },
+        "onAmbiguous": {
+          "const": "error"
+        },
+        "requireUniquePositions": {
+          "type": "boolean"
+        },
+        "requireContiguousPositions": {
+          "type": "boolean"
+        },
+        "notes": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "mergePolicy": {
+          "const": "merge-more-specific-descendants-reject-conflicts"
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryId",
+        "artifactRole",
+        "pathPattern",
+        "classification",
+        "cardinality",
+        "dataType",
+        "languageSemantics",
+        "presenceSemantics",
+        "dynamicMapKeys",
+        "normalization",
+        "rdfMapping",
+        "reverseMapping"
+      ],
+      "properties": {
+        "entryId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "artifactRole": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "maxLength": 100
+        },
+        "pathPattern": {
+          "$ref": "#/$defs/jsonPointerPattern"
+        },
+        "classification": {
+          "enum": [
+            "scalar",
+            "ordered-list",
+            "set",
+            "map",
+            "binary-reference",
+            "generated-non-semantic"
+          ]
+        },
+        "cardinality": {
+          "$ref": "#/$defs/cardinality"
+        },
+        "dataType": {
+          "$ref": "#/$defs/dataType"
+        },
+        "languageSemantics": {
+          "$ref": "#/$defs/languageSemantics"
+        },
+        "presenceSemantics": {
+          "$ref": "#/$defs/presenceSemantics"
+        },
+        "dynamicMapKeys": {
+          "$ref": "#/$defs/dynamicMapKeys"
+        },
+        "normalization": {
+          "$ref": "#/$defs/normalization"
+        },
+        "rdfMapping": {
+          "$ref": "#/$defs/rdfMapping"
+        },
+        "reverseMapping": {
+          "$ref": "#/$defs/reverseMapping"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "enum": [
+                  "ordered-list",
+                  "set"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dataType": {
+                "properties": {
+                  "jsonTypes": {
+                    "const": [
+                      "array"
+                    ]
+                  }
+                },
+                "required": [
+                  "itemJsonTypes"
+                ]
+              },
+              "cardinality": {
+                "required": [
+                  "minItems"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "map"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dataType": {
+                "properties": {
+                  "jsonTypes": {
+                    "const": [
+                      "object"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "binary-reference"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dataType": {
+                "properties": {
+                  "jsonTypes": {
+                    "const": [
+                      "string"
+                    ]
+                  }
+                }
+              },
+              "reverseMapping": {
+                "properties": {
+                  "mode": {
+                    "const": "binary-index-join"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "set"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "normalization": {
+                "properties": {
+                  "arrayOrder": {
+                    "const": "sort-canonical-unique"
+                  },
+                  "duplicateItems": {
+                    "const": "reject"
+                  }
+                },
+                "required": [
+                  "setSortKey"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "classification": {
+                "const": "ordered-list"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "normalization": {
+                "properties": {
+                  "arrayOrder": {
+                    "const": "preserve"
+                  },
+                  "duplicateItems": {
+                    "const": "preserve"
+                  }
+                }
+              },
+              "reverseMapping": {
+                "properties": {
+                  "mode": {
+                    "const": "ordered-memberships"
+                  },
+                  "requireUniquePositions": {
+                    "const": true
+                  },
+                  "requireContiguousPositions": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "requireUniquePositions",
+                  "requireContiguousPositions"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "rdfMapping": {
+                "properties": {
+                  "strategy": {
+                    "const": "excluded-generated"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "classification": {
+                "const": "generated-non-semantic"
+              },
+              "reverseMapping": {
+                "properties": {
+                  "mode": {
+                    "const": "omitted-generated"
+                  },
+                  "roundtrip": {
+                    "const": "excluded-non-semantic"
+                  },
+                  "onMissing": {
+                    "const": "regenerate"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "rdfMapping": {
+                "properties": {
+                  "strategy": {
+                    "const": "registered-canonical-json-literal"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "reverseMapping": {
+                "properties": {
+                  "mode": {
+                    "const": "canonical-json-parse"
+                  },
+                  "roundtrip": {
+                    "const": "exact"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

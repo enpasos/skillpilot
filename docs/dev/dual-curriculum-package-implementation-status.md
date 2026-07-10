@@ -3,9 +3,9 @@
 - Stand: 2026-07-10
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktuelle Phase: `P0 – Verträge festschreiben`
-- Nächster Schritt: `DPK-003 – Feldsemantik, Normalform und Äquivalenzverträge`
-- Letzter abgeschlossener Schritt: `DPK-002 – Runtime-/Schema-Katalog und Readiness-Auswertung`
-- Solider Ausgangsstand dieses Schritts: `bc9d27f2` (`DPK-001`), vollständiges `./run_ci.sh` am 2026-07-10 grün
+- Nächster Schritt: `DPK-004 – Closure, Ownership, Migration und Mathematik-Conformance-Kompilation`
+- Letzter abgeschlossener Schritt: `DPK-003 – Feldsemantik, Normalform und Äquivalenzverträge`
+- Solider Ausgangsstand dieses Schritts: `d5ea5927` (`DPK-002`), vollständiges `./run_ci.sh` am 2026-07-10 grün
 - Blocker: keine
 
 Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdokument bleibt die Quelle für Zielarchitektur und endgültige Abnahmekriterien; Git-Historie und CI-Artefakte ersetzen ein langes Umsetzungstagebuch.
@@ -14,7 +14,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
-| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge | `in_progress` | DPK-003 vollständig grün und committed |
+| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge | `in_progress` | DPK-004 kompiliert Mathematik verlustfrei in das Release-Modell |
 | P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `not_started` | Mathematik package-only laden |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
@@ -23,6 +23,37 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | P6 | Trennung von Curriculum-Erstellung und SkillPilot-Software | `not_started` | Software benötigt keinen produktiven Curriculum-Quellbaum |
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
+
+## Abgeschlossener Schritt: DPK-003
+
+Ziel ist ein ausführbarer, fail-closed Vertrag dafür, wann JSON- und FWU-OWL-Variante fachlich gleich sind und wie beide von einem gemeinsamen Release-Index gebunden werden.
+
+Scope:
+
+- striktes Schema und versionierte Baseline-Registry für Feldklassen, Kardinalität, Sprache, Missing-/Null-/Default-Semantik, dynamische Map-Keys, Normalisierung, Core-first RDF-Abbildung und exakte Reverse-Abbildung;
+- verbindliche Ordnungssemantik mit expliziten RDF-Positionen für Goals, direkte `contains`-/`requires`-Kanten, Resource Links, Composition-View-Kinder, Karten und Scoring-Schritte;
+- begrenzte, begründete `registered-canonical-json-literal`-Lanes statt eines vollständigen JSON-Landschaftscarriers;
+- versioniertes Normalisierungsprofil und semantischer Inhaltsindex, der logische Artefakte sowie Bild-/Binärressourcen paketpfadneutral in einen gemeinsamen `contentDigest` überführt;
+- strikte Schemas für Äquivalenzreport und externen Dual-Release-Index einschließlich FWU-Core-, Toolchain-, Feldabdeckungs-, Graph-/View-/Card-/Asset-, Ontologie-, Consumer-, Reproduzierbarkeits-, Provenienz- und Signaturbindung;
+- unabhängiger Validator mit positiven Fixtures, Hash-/Cross-Binding-Prüfung, Digest-Neuberechnung und adversarialer Mutationsmatrix;
+- lokale und gehostete CI-Integration sowie zentrale QA-Dokumentation.
+
+Bewusste Nicht-Ziele dieses Schritts:
+
+- die 17 Registry-Einträge frieren die kritischen Mappingfamilien und Ordnungsentscheidungen ein; die vollständige Abdeckung aller heute kompilierten Mathematikfelder entsteht erst in DPK-004;
+- die positiven Dual-Release-Fixtures sind synthetische Conformance-Beispiele und kein realer Curriculum-Release;
+- noch kein produktives JSON- oder FWU-OWL-ZIP, kein produktiver `contentDigest`, kein FWU-OWL-Paketmanifest und kein isolierter Reverse Compiler;
+- bestehende Legacy-Roundtrip-Berichte bleiben Evidenzquellen und werden nicht als neuer Äquivalenzreport ausgegeben;
+- die Readiness-Auswertung kann weiterhin nicht `ready` liefern.
+
+Abnahme:
+
+- alle fünf authored Vertragsdokumente bestehen ihre strikten Draft-2020-12-Schemas und semantischen Cross-Invarianten;
+- ein Inhaltsindex berechnet reproduzierbar den erwarteten gemeinsamen Digest und bindet Registry sowie Normalform bytegenau;
+- vollständige Registry-Abdeckung, identische drei Normalformen, geordnete Graph-/View-/Card-Semantik, bytegleiche Bilder, Ontologie-QS, hermetische Consumer-Tests und zwei reproduzierbare Builds sind notwendige Bedingungen für `passed`;
+- der Vertrag definiert eine nicht selbstreferenzielle Signing-Projection; bis zur kryptographischen Prüfung in DPK-011 weist der aktuelle Gate jeden `verified`-Claim und jede `stable`-Promotion fail-closed zurück;
+- gezielte Prüfungen und anschließend `./run_ci.sh` sind grün;
+- der geprüfte Stand wird als eigener Git-Commit festgehalten.
 
 ## Abgeschlossener Schritt: DPK-002
 
@@ -97,6 +128,7 @@ Abnahme:
 | DPK-000 | Bestehenden Export, Roundtrip, Runtime-Kopplungen und neues FWU-Core-Profil analysiert; Zielkonzept beschlossen | Roundtrip- und Doku-Gates; Baseline `./run_ci.sh` auf `0d419930` grün | 2026-07-10 |
 | DPK-001 | Strikten JSON-Manifest-/Profilvertrag v1 mit ausführbarer Conformance-Matrix und lokalen wie gehosteten CI-Gates eingeführt | Vertragsvalidator: 1 gültige Fixture und 39 gezielte Negativfälle; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
 | DPK-002 | Explizite Runtime-Discovery, offline und vertrauenswürdig gebundene Schemaauflösung sowie fail-closed Readiness-Klassifikation eingeführt; Legacy-ZIPs bleiben nachweisbar nicht standalone | Manifest 1/49, Runtime 1/31 + 8 Bindings, Schema-Katalog 1/34 + 12 Bindings, Readiness-Adversarialmatrix, realer Latein-Publikationspfad 37/37; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
+| DPK-003 | Core-first Feld-/RDF-Semantik, versionierte Normalform mit Inhaltsindex sowie externe Äquivalenz- und Dual-Release-Verträge eingeführt | 5 gültige Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests und 8 Raw-JSON-Fälle; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
 
 ## Verbleibende Roadmap
 
@@ -104,7 +136,7 @@ Abnahme:
 | --- | --- | --- | --- | --- |
 | DPK-001 | P0 | JSON-Manifest-/Profilvertrag v1 und Conformance-Validator | DPK-000 | `complete` |
 | DPK-002 | P0 | Runtime-Katalogschema, paketlokaler Offline-Schema-Katalog, Artefaktrollen und ehrliche Readiness-Auswertung | DPK-001 | `complete` |
-| DPK-003 | P0 | Feldsemantik-/RDF-Mappingregistry, versionierte Normalform sowie Release-Index-/Äquivalenzreport-Schemas | DPK-001 | `not_started` |
+| DPK-003 | P0 | Feldsemantik-/RDF-Mappingregistry, versionierte Normalform sowie Release-Index-/Äquivalenzreport-Schemas | DPK-001 | `complete` |
 | DPK-004 | P0 | Closure-, Ownership-, Konflikt- und Migrationsverträge; verlustfreie Mathematik-Conformance-Kompilation in das neue Release-Modell | DPK-002–DPK-003 | `not_started` |
 | DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen und strikt validieren | DPK-002–DPK-004 | `not_started` |
 | DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `not_started` |
@@ -124,6 +156,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | Baseline `0d419930` | vorhandene Doku- und Roundtrip-Prüfungen | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-001 | Vertragsvalidator (1 gültige Fixture, 39 Negativfälle), Workflow-Syntax, Doku-Links und Diff-Check | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-002 | Manifest 1/49; Runtime 1/31 + 8 Bindings; Schema-Katalog 1/34 + 12 Bindings; Readiness: 5 Manifest-, 4 Policy-Tamper-, 5 Forgery-, 3 Raw-JSON-, 7 adversariale ZIP-, 2 Early-Limit- und 10 Exitcode-Fälle; realer Latein-Build/Validator/Repro/Index 37/37; Lint, TypeScript, Doku, Workflow-YAML und Diff-Check | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
+| DPK-003 | Dual-Release-Validator: 5 positive Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests, 8 Raw-JSON-Fälle; Schema-, Digest-, Trust-, Cross-Binding-, Doku-, Workflow- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 
