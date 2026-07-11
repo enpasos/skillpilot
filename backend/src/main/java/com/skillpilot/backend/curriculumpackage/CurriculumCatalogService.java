@@ -2,17 +2,28 @@ package com.skillpilot.backend.curriculumpackage;
 
 import com.skillpilot.backend.api.CurriculumCatalogResponse;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /** Immutable, path-free projection of the active package runtime catalog. */
 public final class CurriculumCatalogService {
 
-    private static final String CATALOG_API_VERSION = "1.0";
+    private static final String CATALOG_API_VERSION = "1.1";
 
     private final CurriculumCatalogResponse catalog;
 
-    public CurriculumCatalogService(CurriculumRuntimeSnapshot snapshot) {
+    public CurriculumCatalogService(
+            CurriculumRuntimeSnapshot snapshot,
+            PackageCurriculumResourceState resourceState) {
         Objects.requireNonNull(snapshot, "snapshot");
+        Objects.requireNonNull(resourceState, "resourceState");
+        if (!snapshot.generationSha256().equals(resourceState.generationSha256())) {
+            throw new CurriculumPackageException("Catalog and package resource generations differ");
+        }
+        Map<String, String> packageVersions = new LinkedHashMap<>();
+        snapshot.packages().forEach(descriptor ->
+                packageVersions.put(descriptor.packageId(), descriptor.packageVersion()));
         List<CurriculumCatalogResponse.PackageEntry> packages = snapshot.packages().stream()
                 .map(descriptor -> new CurriculumCatalogResponse.PackageEntry(
                         descriptor.packageId(),
@@ -63,6 +74,37 @@ public final class CurriculumCatalogService {
                                 descriptor.mergeDimension(),
                                 descriptor.viewIds())))
                 .toList();
+        List<CurriculumCatalogResponse.DeckEntry> decks = snapshot.decksByKey().values().stream()
+                .map(descriptor -> {
+                    CurriculumRuntimeSnapshot.DeckKey key = descriptor.key();
+                    return new CurriculumCatalogResponse.DeckEntry(
+                            key.packageId(),
+                            requirePackageVersion(packageVersions, key.packageId()),
+                            key.deckId(),
+                            descriptor.landscapeId(),
+                            key.locale(),
+                            requireHref(resourceState.deckHrefs(), key, "deck"));
+                })
+                .toList();
+        List<CurriculumCatalogResponse.ResourceEntry> resources = snapshot.resourcesById().values().stream()
+                .map(descriptor -> {
+                    CurriculumRuntimeSnapshot.Artifact artifact = descriptor.artifact();
+                    return new CurriculumCatalogResponse.ResourceEntry(
+                            descriptor.packageId(),
+                            requirePackageVersion(packageVersions, descriptor.packageId()),
+                            descriptor.resourceId(),
+                            descriptor.landscapeId(),
+                            descriptor.ownerGoalId(),
+                            descriptor.resourceKind(),
+                            descriptor.delivery(),
+                            descriptor.mediaType(),
+                            descriptor.publicUrl(),
+                            requireHref(resourceState.resourceHrefs(), descriptor.resourceId(), "resource"),
+                            artifact != null && artifact.runtimeRequired(),
+                            artifact == null ? null : artifact.bytes(),
+                            artifact == null ? null : artifact.sha256());
+                })
+                .toList();
         this.catalog = new CurriculumCatalogResponse(
                 CATALOG_API_VERSION,
                 snapshot.generationSha256(),
@@ -70,10 +112,28 @@ public final class CurriculumCatalogService {
                 snapshot.rootLandscapeIds(),
                 landscapes,
                 views,
-                offerings);
+                offerings,
+                decks,
+                resources);
     }
 
     public CurriculumCatalogResponse getCatalog() {
         return catalog;
+    }
+
+    private static String requirePackageVersion(Map<String, String> packageVersions, String packageId) {
+        String version = packageVersions.get(packageId);
+        if (version == null) {
+            throw new CurriculumPackageException("Catalog entry references an unknown package: " + packageId);
+        }
+        return version;
+    }
+
+    private static <K> String requireHref(Map<K, String> hrefs, K key, String kind) {
+        String href = hrefs.get(key);
+        if (href == null) {
+            throw new CurriculumPackageException("Catalog has no " + kind + " href for " + key);
+        }
+        return href;
     }
 }

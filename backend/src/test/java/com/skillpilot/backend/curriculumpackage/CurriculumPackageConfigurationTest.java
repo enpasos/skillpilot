@@ -8,6 +8,7 @@ import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.RepositoryCurriculumConfiguration;
 import com.skillpilot.backend.service.CompositionViewService;
+import com.skillpilot.backend.service.DeckResourceService;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
@@ -42,10 +43,12 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).doesNotHaveBean(CurriculumRuntimeSnapshotProvider.class);
                     assertThat(context).doesNotHaveBean(PackageCurriculumDomainState.class);
                     assertThat(context).doesNotHaveBean(PackageCompositionViewState.class);
+                    assertThat(context).doesNotHaveBean(PackageCurriculumResourceState.class);
                     assertThat(context).doesNotHaveBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
                     assertThat(context).hasSingleBean(CompositionViewService.class);
+                    assertThat(context).hasSingleBean(DeckResourceService.class);
                 });
     }
 
@@ -79,10 +82,12 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).hasSingleBean(CurriculumRuntimeSnapshotProvider.class);
                     assertThat(context).hasSingleBean(PackageCurriculumDomainState.class);
                     assertThat(context).hasSingleBean(PackageCompositionViewState.class);
+                    assertThat(context).hasSingleBean(PackageCurriculumResourceState.class);
                     assertThat(context).hasSingleBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
                     assertThat(context).hasSingleBean(CompositionViewService.class);
+                    assertThat(context).hasSingleBean(DeckResourceService.class);
                     assertThat(context.getBean(CurriculumRuntimeSnapshotProvider.class)
                             .current().packages()).hasSize(1);
                     PackageCurriculumDomainState domainState =
@@ -112,6 +117,7 @@ class CurriculumPackageConfigurationTest {
                             .getGoals().get(0).getApplicability().get("jurisdiction"))
                             .containsExactly("DE-HE");
                     var catalog = context.getBean(CurriculumCatalogService.class).getCatalog();
+                    assertThat(catalog.catalogApiVersion()).isEqualTo("1.1");
                     assertThat(catalog.generationSha256()).isEqualTo(domainState.generationSha256());
                     assertThat(catalog.rootLandscapeIds()).containsExactly("landscape-alpha");
                     assertThat(catalog.landscapes())
@@ -120,6 +126,38 @@ class CurriculumPackageConfigurationTest {
                     assertThat(catalog.offerings())
                             .extracting(entry -> entry.offeringId())
                             .containsExactly("offering-alpha");
+                    assertThat(catalog.decks())
+                            .singleElement()
+                            .satisfies(deck -> {
+                                assertThat(deck.deckId()).isEqualTo("deck-alpha");
+                                assertThat(deck.locale()).isEqualTo("de-DE");
+                                assertThat(deck.href()).isEqualTo(
+                                        "/api/ui/curriculum-resources/packages/org.example.alpha/1.0.0/"
+                                                + "decks/deck-alpha/de-DE");
+                            });
+                    assertThat(catalog.resources()).hasSize(2);
+                    assertThat(catalog.resources())
+                            .filteredOn(resource -> resource.delivery().equals("embedded"))
+                            .singleElement()
+                            .satisfies(resource -> {
+                                assertThat(resource.href()).isEqualTo(
+                                        "/api/ui/curriculum-resources/packages/org.example.alpha/1.0.0/"
+                                                + "resources/resource-alpha");
+                                assertThat(resource.bytes()).isEqualTo(4L);
+                                assertThat(resource.sha256()).hasSize(64);
+                            });
+                    assertThat(catalog.resources())
+                            .filteredOn(resource -> resource.delivery().equals("external"))
+                            .singleElement()
+                            .satisfies(resource -> {
+                                assertThat(resource.href()).isEqualTo("https://example.org/tool/alpha");
+                                assertThat(resource.runtimeRequired()).isFalse();
+                                assertThat(resource.bytes()).isNull();
+                            });
+                    assertThat(objectMapper.writeValueAsString(catalog))
+                            .doesNotContain(store.root().toString())
+                            .doesNotContain("data/cards/")
+                            .doesNotContain("assets/fixture.png");
                     CompositionViewService compositionViews = context.getBean(CompositionViewService.class);
                     assertThat(compositionViews.isAuthoritativeForLandscape("landscape-alpha")).isTrue();
                     assertThat(compositionViews.findMatchingView(

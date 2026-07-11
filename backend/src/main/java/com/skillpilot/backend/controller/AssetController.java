@@ -1,6 +1,7 @@
 package com.skillpilot.backend.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.CacheControl;
@@ -19,6 +20,11 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping({"/ai-assets"})
+@ConditionalOnProperty(
+        prefix = "skillpilot.curriculum",
+        name = "source",
+        havingValue = "repository",
+        matchIfMissing = true)
 public class AssetController {
 
     private static final AntPathMatcher PATH_MATCHER = new AntPathMatcher();

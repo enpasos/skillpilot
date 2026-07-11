@@ -1,6 +1,7 @@
 package com.skillpilot.backend.controller;
 
 import com.skillpilot.backend.service.DeckResourceService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.Resource;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@ConditionalOnProperty(
+        prefix = "skillpilot.curriculum",
+        name = "source",
+        havingValue = "repository",
+        matchIfMissing = true)
 public class DeckDataController {
 
     private final DeckResourceService deckResourceService;
@@ -31,4 +37,3 @@ public class DeckDataController {
                 .body(resource);
     }
 }
-

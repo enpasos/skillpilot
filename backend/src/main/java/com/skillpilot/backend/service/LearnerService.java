@@ -488,11 +488,11 @@ public class LearnerService {
         return filtered;
     }
 
-    private List<SrsCard> loadSrsDeckCards(String vocabularySource) {
-        if (vocabularySource == null || vocabularySource.isBlank()) {
+    private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource) {
+        if (goal == null || vocabularySource == null || vocabularySource.isBlank()) {
             return Collections.emptyList();
         }
-        Resource resource = deckResourceService.resolveDeckResource(vocabularySource);
+        Resource resource = deckResourceService.resolveDeckResource(goal.getId(), vocabularySource);
         if (resource == null || !resource.exists()) {
             return Collections.emptyList();
         }
@@ -644,7 +644,7 @@ public class LearnerService {
         if (source == null || source.isBlank()) {
             return false;
         }
-        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(source));
+        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(goal, source));
         if (cards.isEmpty()) {
             return false;
         }
@@ -689,7 +689,7 @@ public class LearnerService {
             if (source == null || source.isBlank()) {
                 continue;
             }
-            List<SrsCard> cards = loadSrsDeckCards(source);
+            List<SrsCard> cards = loadSrsDeckCards(goal, source);
             if (cards.isEmpty()) {
                 result.put(goal.getId(), 0.0);
                 continue;
@@ -735,7 +735,7 @@ public class LearnerService {
             if (source == null || source.isBlank()) {
                 continue;
             }
-            List<SrsCard> cards = loadSrsDeckCards(source);
+            List<SrsCard> cards = loadSrsDeckCards(goal, source);
             if (cards.isEmpty()) {
                 continue;
             }
@@ -774,7 +774,7 @@ public class LearnerService {
             if (source == null || source.isBlank()) {
                 continue;
             }
-            List<SrsCard> cards = loadSrsDeckCards(source);
+            List<SrsCard> cards = loadSrsDeckCards(goal, source);
             if (cards.isEmpty()) {
                 result.put(goal.getId(), new MasteryEntryDTO(0.0, nowInstant));
                 continue;
@@ -1034,7 +1034,7 @@ public class LearnerService {
                     "The memorization goal has no vocabulary source.");
         }
 
-        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(source));
+        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(goal, source));
         if (cards.isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "No cards match this memorization goal.");

@@ -2,6 +2,7 @@ package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.service.CompositionViewService;
+import com.skillpilot.backend.service.DeckResourceService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,5 +36,10 @@ public class RepositoryCurriculumConfiguration {
             LandscapeProperties properties,
             ObjectMapper objectMapper) {
         return new CompositionViewService(properties, objectMapper);
+    }
+
+    @Bean
+    DeckResourceService repositoryDeckResourceService(LandscapeProperties properties) {
+        return new DeckResourceService(properties);
     }
 }

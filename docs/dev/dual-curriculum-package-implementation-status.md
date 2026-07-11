@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-006c-d – Decks und Bilder paket- und generationsgebunden auflösen`
-- Letzter vollständig abgeschlossener Schritt: `DPK-006c-c – exakter Runtime-Katalog und paketautoritative Composition Views`
-- Solider Ausgangsstand: `DPK-006c-c`
-- Abschluss-Gate für DPK-006c-c: reale 88 Views und 88 Offerings exakt und ohne synthetische Scope-/Merge-Fallbacks aufgelöst sowie vollständiges `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-006c-e – Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen`
+- Letzter vollständig abgeschlossener Schritt: `DPK-006c-d – paket- und generationsgebundene Deck-/Bildauflösung`
+- Solider Ausgangsstand: `DPK-006c-d`
+- Abschluss-Gate für DPK-006c-d: reale 12 Deckvarianten/128 Karten und 756 eingebettete Bilder ausschließlich aus dem aktiven Paket aufgelöst sowie vollständiges `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -17,7 +17,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-c–f/007: Views, Ressourcen, Frontend und Smoke-Test umstellen |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-e/f/007: Frontend, Quellenanzeige und Smoke-Test umstellen |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -170,6 +170,24 @@ Qualitätsnachweis:
 - vollständiges `./run_ci.sh` auf dem final dokumentierten Stand grün.
 
 Bewusste Grenze: Der Katalog enthält in diesem Schritt noch keine öffentlichen Deck-/Ressourcen-Hrefs; Deckdateien und Visualisierungsbytes werden noch nicht durch den Package-Resolver ausgeliefert. Das ist DPK-006c-d. Frontend und paketierte Quellenanzeige folgen in DPK-006c-e/f, der hermetische Gesamtbeweis in DPK-007. Offene fachliche und rechtliche Human-Gates bleiben durch die technische View-Auflösung unverändert.
+
+## Abgeschlossener Teilschritt: DPK-006c-d
+
+DPK-006c-d macht Decks, Karten und eingebettete Bilder zu paketautoritativen Runtime-Ressourcen. Ein unveränderlicher `PackageCurriculumResourceState` bindet sie an dieselbe Snapshot- und Domain-Generation wie Landschaften, Mappings und Views. Decks werden öffentlich ausschließlich über `packageId + packageVersion + deckId + locale` identifiziert; der interne Paketpfad dient nur zusammen mit dem besitzenden Ziel als streng geprüfte Kompatibilitätsbindung. Jedes Memory-Ziel muss genau einen nichtleeren `srs-deck:<deckId>`-Tag tragen, und seine de-/en-Quellen müssen auf katalogisierte Artefakte derselben Landschaft und Deck-ID zeigen. Freie Dateinamensuche oder Locale-Raten gibt es im Package-Modus nicht.
+
+Eingebettete Ressourcen werden über `packageId + packageVersion + resourceId` beziehungsweise den exakt katalogisierten `publicUrl` aufgelöst. V1 liefert ausschließlich manifestgebundene JPEG-/PNG-Bilder eines existierenden Ziels aus. Rolle, Capability, MIME-Type, semantische Bindung, Runtime-Pflicht, Eigentum und 64-MiB-Grenze werden beim State-Aufbau geprüft; bei jedem Abruf prüft die sichere Artefaktfassade Dateiidentität, Länge und SHA-256 erneut. Externe HTTPS-Ressourcen bleiben reine Metadaten-Hrefs und besitzen bewusst keinen Byte-Endpunkt.
+
+`DeckResourceService`, Deck- und Asset-Controller sind jetzt strikt nach Repository- und Package-Modus verdrahtet. Nur der Authoring-Modus behält seine Repository-/Classpath-Kompatibilität. Der Package-Controller liefert versionsgebundene Hrefs mit MIME, ETag und immutable Cache-Control; die unversionierten `/ai-assets`- und Goal-Visualization-Aliasse lösen ausschließlich den exakten Paket-`publicUrl` auf und erzwingen Revalidierung. `/data/**` wird im Package-Modus explizit mit 404 beantwortet, damit der generische Static-Handler nicht zum versteckten fachlichen Classpath-Fallback wird. Der öffentliche Curriculum-Katalog enthält nun geordnete, pfadfreie Deck- und Ressourceneinträge einschließlich ihrer Hrefs, aber keine Store- oder Artefaktpfade. Auch die Backend-SRS-Logik lädt Karten zielgebunden aus demselben State.
+
+Qualitätsnachweis:
+
+- State-, Service-, Controller-, Routing-, Modus- und Konfigurationstests für exakte Version/Deck/Locale-/Goal-/Resource-Auflösung, falsche SRS-Bindungen, semantische Manifestdrift, Traversal, externe Metadaten, Immutabilität, ETag/Cache und explizit blockierte Static-Fallbacks;
+- Manipulation eines bereits geladenen Bildes wird beim nächsten Abruf durch die erneute SHA-256-Prüfung erkannt, ohne Repository-/Classpath-Ersatz;
+- bestehender vollständiger Verified-Recall-/SRS-Workflow im Repository-Modus unverändert grün;
+- reale Store-Probe: 12 Deckvarianten mit 128 Karten, 756 eingebettete Bilder (748 JPEG/8 PNG, 1.695.291.325 Byte), 69 externe Ressourcen, beide Sprachquellen eines Memory-Ziels sowie echte Deck- und Bildbytes verifiziert;
+- vollständiges `./run_ci.sh` auf dem final dokumentierten Stand grün.
+
+Bewusste Grenze: Der Backend-Katalog und die Bytes sind jetzt paketautoritative Runtime-Daten. Das bestehende Frontend liest Roots, Offerings und Ressourcen aber noch nicht durchgängig aus diesem Katalog; diese Umschaltung ist DPK-006c-e. Die paketgebundene Quellenanzeige folgt in DPK-006c-f, der hermetische Nachweis ohne Curriculum-Checkout und fachliche App-Fallbacks in DPK-007. Offene fachliche und rechtliche Human-Gates bleiben unverändert.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -382,6 +400,7 @@ Abnahme:
 | DPK-006c-a | Vollständiges manifestgebundenes Runtime-Artefaktinventar, erneut verifizierende Lesefassade und verlustfreie Java-/TypeScript-Modellparität eingeführt | 911 reale Artefakte; absent-vs.-false-/Semantic-/Experiment-/Review-Tests; Limit-/Unknown-Key-/Hashdrift-Proben; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-b | Landschaften, Root-/Goal-Indizes, amtliche Source-Metadaten und verlustfreie Mehrfach-Mappings ausschließlich aus einer Package-Generation bereitgestellt; Repository-/Classpath-Fallback im Package-Modus entfernt | 13 Compiler-/State-Tests; Poison-/Konfigurationsgates; reale Probe mit 1.079 Zielen, 31 Collections, 55 Dokumenten, 9.977 Source Goals, 10.021 Entscheidungen und 33.382 Kanten; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-c | Runtime-Katalog, Views und Offerings generationsgebunden und exakt aufgelöst; freie Merge-/Scope-Heuristiken im Package-Modus entfernt und Verbraucher bei nicht angebotenen Scopes fail-closed geschaltet | State-/Konfigurations-/Controller-/Consumer-Gates; Repository-Regression; reale Probe mit 88 Views und 88 Offerings; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-006c-d | Decks, Karten und Bilder ziel-, paket-, versions- und generationsgebunden aufgelöst; Package-Modus ohne Repository-, Classpath- oder Static-Data-Fallback | Resolver-/Binding-/Tamper-/Routing-/Cache-/Modus-Gates; reale Probe mit 12 Decks/128 Karten, 756 Bildern und 69 externen Ressourcen; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -403,8 +422,8 @@ Abnahme:
 | DPK-006c-a | P1 | Vollständiges Manifestinventar, sichere Artefaktfassade und Runtime-Modellparität | DPK-006b | `complete` |
 | DPK-006c-b | P1 | Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen | DPK-006c-a | `complete` |
 | DPK-006c-c | P1 | Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen | DPK-006c-b | `complete` |
-| DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `in_progress` |
-| DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `not_started` |
+| DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `complete` |
+| DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `in_progress` |
 | DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `not_started` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
@@ -432,6 +451,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006c-a | Package-Modellparität; vollständiger Artefaktindex; Unknown-Key-/Limit-/Hashdrift-Gates; reales Inventar 911 einschließlich Mapping/Quality; TypeScript, ESLint, Doku und Diff | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-b | Geschlossener Mapping-/Source-Compiler; Mehrfach-`exact`-/Mixed-/Count-/Join-/Conflict-/Immutability-Gates; konditionale Services und Repository-Poison; reale 31/55/9.977/10.021/33.382-Paketprobe; Landscape-/Mapping-Regression | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-c | Exakte View-/Offering-Indizes; Single-/Merge-/Scope-/Order-/Visibility-/Immutability-Gates; konditionale Repository-/Package-Services; Catalog-/Offering-API; Consumer-Fail-closed; reale 88/88-Paketprobe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-006c-d | Exakte Deck-/Goal-/Locale- und Resource-/PublicUrl-Indizes; Semantic-Binding-/Capability-/Owner-/Limit-/Tamper-Gates; konditionale Services/Controller; Static-Fallback-Sperre; pfadfreie Hrefs; reale 12/128/756/69-Paketprobe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 
