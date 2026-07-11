@@ -153,6 +153,7 @@ echo "--> Running Schema Validation"
 pip3 install -q "jsonschema==4.26.0" || echo "Warning: Failed to install pinned jsonschema, validation will fail if the required version is unavailable."
 echo "--> Validating Curriculum Package Contracts"
 python3 -B scripts/validate_curriculum_package_contracts.py
+python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
 python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
 python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test

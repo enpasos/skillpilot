@@ -1,0 +1,1026 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+  "title": "SkillPilot Core-first FWU-OWL curriculum package manifest v1",
+  "description": "Strict inner manifest for the reproducible FWU-OWL variant. Paths are relative to one archive root; metadata/manifest.json and metadata/SHA256SUMS are the only non-inventoried files.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "packageFormatVersion",
+    "runtimeContractVersion",
+    "releaseProfile",
+    "variant",
+    "releaseId",
+    "packageId",
+    "packageVersion",
+    "curriculumEdition",
+    "contentDigest",
+    "archiveRoot",
+    "supportedSkillpilotSoftware",
+    "sourceJsonPackage",
+    "contractBindings",
+    "schemaCatalog",
+    "semanticContentIndex",
+    "fwuCore",
+    "applicationProfile",
+    "shapes",
+    "rdfSegments",
+    "rdfBundle",
+    "releaseSupport",
+    "licenseDocuments",
+    "files"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json"
+    },
+    "packageFormatVersion": {
+      "const": "1.0"
+    },
+    "runtimeContractVersion": {
+      "const": "1.0"
+    },
+    "releaseProfile": {
+      "const": "fwu-owl-v1"
+    },
+    "variant": {
+      "const": "fwu-owl"
+    },
+    "releaseId": {
+      "$ref": "#/$defs/releaseId"
+    },
+    "packageId": {
+      "$ref": "#/$defs/packageId"
+    },
+    "packageVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "curriculumEdition": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/prefixedSha256"
+    },
+    "archiveRoot": {
+      "$ref": "#/$defs/portablePathSegment"
+    },
+    "supportedSkillpilotSoftware": {
+      "$ref": "#/$defs/softwareVersionRange"
+    },
+    "sourceJsonPackage": {
+      "$ref": "#/$defs/sourceJsonPackage"
+    },
+    "contractBindings": {
+      "$ref": "#/$defs/contractBindings"
+    },
+    "schemaCatalog": {
+      "$ref": "#/$defs/schemaCatalogDescriptor"
+    },
+    "semanticContentIndex": {
+      "$ref": "#/$defs/semanticContentIndex"
+    },
+    "fwuCore": {
+      "$ref": "#/$defs/fwuCore"
+    },
+    "applicationProfile": {
+      "$ref": "#/$defs/applicationProfile"
+    },
+    "shapes": {
+      "$ref": "#/$defs/shapes"
+    },
+    "rdfSegments": {
+      "$ref": "#/$defs/rdfSegments"
+    },
+    "rdfBundle": {
+      "$ref": "#/$defs/rdfBundle"
+    },
+    "releaseSupport": {
+      "$ref": "#/$defs/releaseSupport"
+    },
+    "licenseDocuments": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/licenseDocument"
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 54,
+      "maxItems": 59998,
+      "items": {
+        "$ref": "#/$defs/fileRecord"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nonEmptyText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "softwareVersionRange": {
+      "type": "string",
+      "pattern": "^>=(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*) <(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 500,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+@[0-9A-Za-z.+-]+$"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "maxLength": 1000
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*//)[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)*$"
+    },
+    "archiveFileName": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.json\\.zip$"
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^[a-z0-9!#$&^_.+-]+/[a-z0-9!#$&^_.+-]+$"
+    },
+    "sourceJsonPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "releaseId",
+        "curriculumEdition",
+        "contentDigest",
+        "runtimeContractVersion",
+        "releaseProfile",
+        "releaseProfileBinding",
+        "supportedSkillpilotSoftware",
+        "semanticContracts"
+      ],
+      "properties": {
+        "file": {
+          "$ref": "#/$defs/archiveFileName"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "releaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "curriculumEdition": {
+          "$ref": "#/$defs/nonEmptyText"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "runtimeContractVersion": {
+          "const": "1.0"
+        },
+        "releaseProfile": {
+          "const": "full-standalone-v1"
+        },
+        "releaseProfileBinding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "path", "bytes", "sha256"],
+          "properties": {
+            "id": { "const": "full-standalone-v1" },
+            "path": { "const": "schemas/profiles/full-standalone-v1.profile.json" },
+            "bytes": { "const": 16926 },
+            "sha256": { "const": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c" }
+          }
+        },
+        "supportedSkillpilotSoftware": {
+          "$ref": "#/$defs/softwareVersionRange"
+        },
+        "semanticContracts": {
+          "$ref": "#/$defs/sourceSemanticContracts"
+        }
+      }
+    },
+    "sourceContractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "sha256"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sourceSemanticContracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "properties": {
+        "semanticNormalForm": { "$ref": "#/$defs/sourceContractBinding" },
+        "fieldSemanticsRegistry": { "$ref": "#/$defs/sourceContractBinding" },
+        "definitionDigestProfile": { "$ref": "#/$defs/sourceContractBinding" },
+        "curriculumOntologyProfile": { "$ref": "#/$defs/sourceContractBinding" },
+        "publicationEvidenceProfile": { "$ref": "#/$defs/sourceContractBinding" }
+      }
+    },
+    "contractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "contractBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestSchema",
+        "packageProfileSchema",
+        "validationReportSchema",
+        "schemaCatalogSchema",
+        "semanticContentIndexSchema",
+        "definitionDigestProfileSchema",
+        "packageProfile",
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "properties": {
+        "manifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "packageProfileSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "validationReportSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "schemaCatalogSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticContentIndexSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "definitionDigestProfileSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "packageProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticNormalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "definitionDigestProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "curriculumOntologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "publicationEvidenceProfile": {
+          "$ref": "#/$defs/contractBinding"
+        }
+      }
+    },
+    "semanticContentIndex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "contentDigest",
+        "logicalArtifactCount",
+        "binaryResourceCount",
+        "fieldRegistryEntryCount"
+      ],
+      "properties": {
+        "path": { "const": "metadata/semantic-content-index.json" },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "contentDigest": { "$ref": "#/$defs/prefixedSha256" },
+        "logicalArtifactCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "binaryResourceCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000
+        },
+        "fieldRegistryEntryCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        }
+      }
+    },
+    "schemaCatalogDescriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaId",
+        "path",
+        "mediaType",
+        "entries",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "schemaId": {
+          "const": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json"
+        },
+        "path": { "const": "schemas/catalog.json" },
+        "mediaType": { "const": "application/json" },
+        "entries": { "const": 25 },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "fwuCore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyIri",
+        "sourceRepository",
+        "commit",
+        "sourcePath",
+        "bundledPath",
+        "catalogPath",
+        "catalogMediaType",
+        "catalogBytes",
+        "catalogSha256",
+        "mediaType",
+        "syntax",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "ontologyIri": {
+          "const": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+        },
+        "sourceRepository": {
+          "const": "https://github.com/FWU-DE/lehrplan-ontologie.git"
+        },
+        "commit": {
+          "const": "8aa5bce4a5366807d46f18650e31db98f9bfe35d"
+        },
+        "sourcePath": {
+          "const": "src/ontology/components/lehrplan-core.owl"
+        },
+        "bundledPath": {
+          "const": "ontology/lehrplan-core.owl"
+        },
+        "catalogPath": {
+          "const": "catalog-v001.xml"
+        },
+        "catalogMediaType": {
+          "const": "application/xml"
+        },
+        "catalogBytes": {
+          "const": 228
+        },
+        "catalogSha256": {
+          "const": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8"
+        },
+        "mediaType": {
+          "const": "text/owl-functional"
+        },
+        "syntax": {
+          "const": "owl-functional"
+        },
+        "bytes": {
+          "const": 195917
+        },
+        "sha256": {
+          "const": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df"
+        }
+      }
+    },
+    "applicationProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyIri",
+        "versionIri",
+        "version",
+        "imports",
+        "path",
+        "mediaType",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "ontologyIri": {
+          "const": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl"
+        },
+        "versionIri": {
+          "const": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "imports": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [
+            { "const": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl" }
+          ],
+          "items": false
+        },
+        "path": {
+          "const": "skillpilot-curriculum-profile.ttl"
+        },
+        "mediaType": {
+          "const": "text/turtle"
+        },
+        "bytes": {
+          "const": 5298
+        },
+        "sha256": {
+          "const": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+        }
+      }
+    },
+    "shapes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shapesIri",
+        "versionIri",
+        "version",
+        "path",
+        "mediaType",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "shapesIri": {
+          "const": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl"
+        },
+        "versionIri": {
+          "const": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "path": {
+          "const": "ontology/shapes.ttl"
+        },
+        "mediaType": {
+          "const": "text/turtle"
+        },
+        "bytes": {
+          "const": 6103
+        },
+        "sha256": {
+          "const": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59"
+        }
+      }
+    },
+    "segmentId": {
+      "enum": [
+        "declarations",
+        "runtime",
+        "landscape",
+        "views",
+        "mappings",
+        "sources",
+        "cards",
+        "assets"
+      ]
+    },
+    "rdfSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "position",
+        "segmentId",
+        "path",
+        "mediaType",
+        "triples",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "position": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "segmentId": {
+          "$ref": "#/$defs/segmentId"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "mediaType": {
+          "const": "application/n-triples"
+        },
+        "triples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000000
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 536870912
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "rdfSegments": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "prefixItems": [
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 0 }, "segmentId": { "const": "declarations" }, "path": { "const": "rdf/declarations.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 1 }, "segmentId": { "const": "runtime" }, "path": { "const": "rdf/runtime.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 2 }, "segmentId": { "const": "landscape" }, "path": { "const": "rdf/landscape.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 3 }, "segmentId": { "const": "views" }, "path": { "const": "rdf/views.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 4 }, "segmentId": { "const": "mappings" }, "path": { "const": "rdf/mappings.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 5 }, "segmentId": { "const": "sources" }, "path": { "const": "rdf/sources.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 6 }, "segmentId": { "const": "cards" }, "path": { "const": "rdf/cards.nt" } } }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/rdfSegment" },
+            { "properties": { "position": { "const": 7 }, "segmentId": { "const": "assets" }, "path": { "const": "rdf/assets.nt" } } }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "rdfBundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "mediaType",
+        "construction",
+        "segmentOrder",
+        "triples",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "rdf/bundle.nt"
+        },
+        "mediaType": {
+          "const": "application/n-triples"
+        },
+        "construction": {
+          "const": "ordered-rdf-segment-byte-concatenation-v1"
+        },
+        "segmentOrder": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "prefixItems": [
+            { "const": "declarations" },
+            { "const": "runtime" },
+            { "const": "landscape" },
+            { "const": "views" },
+            { "const": "mappings" },
+            { "const": "sources" },
+            { "const": "cards" },
+            { "const": "assets" }
+          ],
+          "items": false
+        },
+        "triples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 400000000
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "supportType": {
+      "enum": [
+        "json-contract-schema",
+        "json-release-profile",
+        "redistribution-review",
+        "source-verification-review",
+        "source-verification-status",
+        "assessment-source"
+      ]
+    },
+    "supportId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
+    },
+    "releaseSupportRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "supportType",
+        "supportId",
+        "targetPath",
+        "path",
+        "mediaType",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "supportType": { "$ref": "#/$defs/supportType" },
+        "supportId": { "$ref": "#/$defs/supportId" },
+        "targetPath": { "$ref": "#/$defs/packageRelativePath" },
+        "path": { "$ref": "#/$defs/packageRelativePath" },
+        "mediaType": { "$ref": "#/$defs/mediaType" },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "releaseSupport": {
+      "type": "array",
+      "minItems": 26,
+      "maxItems": 1026,
+      "items": { "$ref": "#/$defs/releaseSupportRecord" }
+    },
+    "licenseDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "licenseId",
+        "path"
+      ],
+      "properties": {
+        "licenseId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$",
+          "maxLength": 100
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        }
+      }
+    },
+    "semanticBinding": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "segmentId", "position"],
+          "properties": {
+            "kind": { "const": "normative-rdf-segment" },
+            "segmentId": { "$ref": "#/$defs/segmentId" },
+            "position": { "type": "integer", "minimum": 0, "maximum": 7 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "construction"],
+          "properties": {
+            "kind": { "const": "generated-rdf-bundle" },
+            "construction": { "const": "ordered-rdf-segment-byte-concatenation-v1" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "bindingName"],
+          "properties": {
+            "kind": { "const": "contract" },
+            "bindingName": {
+              "enum": [
+                "manifestSchema",
+                "packageProfileSchema",
+                "validationReportSchema",
+                "schemaCatalogSchema",
+                "semanticContentIndexSchema",
+                "definitionDigestProfileSchema",
+                "packageProfile",
+                "semanticNormalForm",
+                "fieldSemanticsRegistry",
+                "definitionDigestProfile",
+                "curriculumOntologyProfile",
+                "publicationEvidenceProfile"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "schema-catalog" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "semantic-content-index" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "ontology-core" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "ontology-profile" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "ontology-shapes" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": { "kind": { "const": "ontology-catalog" } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "resourceId", "publicReference"],
+          "properties": {
+            "kind": { "const": "binary-resource" },
+            "resourceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "pattern": "^\\S(?:.*\\S)?$"
+            },
+            "publicReference": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000,
+              "pattern": "^/assets/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)*$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "supportType", "supportId", "targetPath"],
+          "properties": {
+            "kind": { "const": "release-support" },
+            "supportType": { "$ref": "#/$defs/supportType" },
+            "supportId": { "$ref": "#/$defs/supportId" },
+            "targetPath": { "$ref": "#/$defs/packageRelativePath" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "licenseId"],
+          "properties": {
+            "kind": { "const": "license" },
+            "licenseId": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$",
+              "maxLength": 100
+            }
+          }
+        }
+      ]
+    },
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "role",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "semanticBinding",
+        "licenseExpression",
+        "provenanceClass",
+        "redistributionStatus"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "role": {
+          "enum": [
+            "rdf-segment",
+            "rdf-bundle",
+            "package-profile",
+            "contract-schema",
+            "schema-catalog",
+            "contract",
+            "semantic-content-index",
+            "ontology-core",
+            "ontology-profile",
+            "ontology-shapes",
+            "ontology-catalog",
+            "binary-resource",
+            "release-support",
+            "license"
+          ]
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "semanticBinding": {
+          "$ref": "#/$defs/semanticBinding"
+        },
+        "licenseExpression": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$",
+              "maxLength": 100
+            },
+            { "type": "null" }
+          ]
+        },
+        "provenanceClass": {
+          "enum": [
+            "skillpilot-authored",
+            "fwu-core-pinned-copy",
+            "official-source-metadata",
+            "ai-generated-curated",
+            "user-provided-generated-claim",
+            "third-party",
+            "generated-package-metadata"
+          ]
+        },
+        "redistributionStatus": {
+          "enum": [
+            "allowed",
+            "review-required",
+            "prohibited"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "redistributionStatus": { "const": "allowed" } },
+            "required": ["redistributionStatus"]
+          },
+          "then": { "properties": { "licenseExpression": { "type": "string" } } },
+          "else": { "properties": { "licenseExpression": { "type": "null" } } }
+        }
+      ]
+    }
+  }
+}

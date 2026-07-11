@@ -32,6 +32,12 @@ FILES = {
     "release_schema": CONTRACT_ROOT / "dual-release-index.schema.json",
     "equivalence_schema": CONTRACT_ROOT / "equivalence-report.schema.json",
     "package_manifest_schema": CONTRACT_ROOT / "package-manifest.schema.json",
+    "fwu_owl_manifest_schema": CONTRACT_ROOT / "fwu-owl-package-manifest.schema.json",
+    "fwu_owl_validation_report_schema": CONTRACT_ROOT / "fwu-owl-package-validation-report.schema.json",
+    "fwu_owl_package_profile": CONTRACT_ROOT / "profiles" / "fwu-owl-v1.profile.json",
+    "subject_ontology_profile": CONTRACT_ROOT / "profiles" / "de-gymnasium-mathematik-v1.profile.json",
+    "definition_digest_profile": CONTRACT_ROOT / "profiles" / "canonical-definition-record-v1.profile.json",
+    "publication_evidence_profile": CONTRACT_ROOT / "profiles" / "de-gymnasium-mathematik-publication-evidence-v1.profile.json",
     "registry": CONTRACT_ROOT / "profiles" / "skillpilot-fwu-field-semantics-v1.registry.json",
     "normalization": CONTRACT_ROOT / "profiles" / "semantic-normal-form-v1.profile.json",
     "content_index": FIXTURE_ROOT / "semantic-content-index.json",
@@ -46,6 +52,8 @@ SCHEMA_IDS = {
     "release_schema": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
     "equivalence_schema": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
     "package_manifest_schema": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+    "fwu_owl_manifest_schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+    "fwu_owl_validation_report_schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
 }
 
 REGISTRY_BINDING_ID = (
@@ -55,6 +63,25 @@ REGISTRY_BINDING_ID = (
 NORMALIZATION_BINDING_ID = (
     "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json"
 )
+FWU_OWL_PACKAGE_PROFILE_BINDING_ID = (
+    "urn:skillpilot:curriculum-package-profile:fwu-owl-v1"
+)
+SUBJECT_ONTOLOGY_PROFILE_BINDING_ID = (
+    "https://skillpilot.com/contracts/curriculum-package/v1/profiles/"
+    "de-gymnasium-mathematik-v1.profile.json"
+)
+DEFINITION_DIGEST_PROFILE_BINDING_ID = (
+    "https://skillpilot.com/contracts/curriculum-package/v1/"
+    "canonical-definition-record-v1.profile.json"
+)
+PUBLICATION_EVIDENCE_PROFILE_BINDING_ID = (
+    "https://skillpilot.com/contracts/curriculum-package/v1/profiles/"
+    "de-gymnasium-mathematik-publication-evidence-v1.profile.json"
+)
+EXPECTED_CONTRACT_VERSION_FIELDS = {
+    "subjectOntologyProfileVersion": "1.1.1",
+    "fwuOwlPackageProfileVersion": "1.0.0",
+}
 REQUIRED_TOOL_ROLES = {
     "json-package-validator",
     "ontology-exporter",
@@ -578,28 +605,64 @@ def validate_normalization(
 
 def expected_contract_bindings() -> dict[str, dict[str, str]]:
     return {
-        "packageManifestSchema": {
+        "jsonPackageManifestSchema": {
             "id": SCHEMA_IDS["package_manifest_schema"],
+            "version": "1.0",
             "sha256": sha256_file(FILES["package_manifest_schema"]),
+        },
+        "fwuOwlPackageManifestSchema": {
+            "id": SCHEMA_IDS["fwu_owl_manifest_schema"],
+            "version": "1.0",
+            "sha256": sha256_file(FILES["fwu_owl_manifest_schema"]),
+        },
+        "fwuOwlPackageProfile": {
+            "id": FWU_OWL_PACKAGE_PROFILE_BINDING_ID,
+            "version": "1.0.0",
+            "sha256": sha256_file(FILES["fwu_owl_package_profile"]),
+        },
+        "fwuOwlPackageValidationReportSchema": {
+            "id": SCHEMA_IDS["fwu_owl_validation_report_schema"],
+            "version": "1",
+            "sha256": sha256_file(FILES["fwu_owl_validation_report_schema"]),
         },
         "dualReleaseIndexSchema": {
             "id": SCHEMA_IDS["release_schema"],
+            "version": "1",
             "sha256": sha256_file(FILES["release_schema"]),
         },
         "equivalenceReportSchema": {
             "id": SCHEMA_IDS["equivalence_schema"],
+            "version": "1.0",
             "sha256": sha256_file(FILES["equivalence_schema"]),
+        },
+        "subjectOntologyProfile": {
+            "id": SUBJECT_ONTOLOGY_PROFILE_BINDING_ID,
+            "version": "1.1.1",
+            "sha256": sha256_file(FILES["subject_ontology_profile"]),
+        },
+        "definitionDigestProfile": {
+            "id": DEFINITION_DIGEST_PROFILE_BINDING_ID,
+            "version": "1.0.0",
+            "sha256": sha256_file(FILES["definition_digest_profile"]),
+        },
+        "publicationEvidenceProfile": {
+            "id": PUBLICATION_EVIDENCE_PROFILE_BINDING_ID,
+            "version": "1.1.1",
+            "sha256": sha256_file(FILES["publication_evidence_profile"]),
         },
         "fieldSemanticsRegistry": {
             "id": REGISTRY_BINDING_ID,
+            "version": "1.2.0",
             "sha256": sha256_file(FILES["registry"]),
         },
         "semanticNormalForm": {
             "id": NORMALIZATION_BINDING_ID,
+            "version": "1.0.0",
             "sha256": sha256_file(FILES["normalization"]),
         },
         "semanticContentIndexSchema": {
             "id": SCHEMA_IDS["content_index_schema"],
+            "version": "1",
             "sha256": sha256_file(FILES["content_index_schema"]),
         },
     }
@@ -609,6 +672,15 @@ def contract_binding_diagnostics(contracts: Any, location: str) -> list[Diagnost
     diagnostics: list[Diagnostic] = []
     if not isinstance(contracts, dict):
         return diagnostics
+    for key, expected in EXPECTED_CONTRACT_VERSION_FIELDS.items():
+        if contracts.get(key) != expected:
+            diagnostics.append(
+                Diagnostic(
+                    "TRUSTED_CONTRACT_VERSION_MISMATCH",
+                    f"{location}/{key}",
+                    f"Expected trusted version {expected!r}",
+                )
+            )
     for key, expected in expected_contract_bindings().items():
         if contracts.get(key) != expected:
             diagnostics.append(
@@ -1359,6 +1431,12 @@ def mutation_cases() -> list[MutationCase]:
     case("content-logical-record", "content_index", "CONTENT_INDEX_LOGICAL_RECORD_MISMATCH", lambda value: set_path(value, ("logicalArtifacts", 0, "normalizedSha256"), "0" * 64))
     case("content-unknown-role", "content_index", "CONTENT_INDEX_ROLE_UNKNOWN", lambda value: set_path(value, ("logicalArtifacts", 0, "role"), "unknown-role"))
     case("equivalence-release-id", "equivalence", "EQUIVALENCE_RELEASE_ID_MISMATCH", lambda value: set_path(value, ("releaseId",), "org.skillpilot.curriculum.fake@1.0.0"))
+    case("equivalence-fwu-manifest-contract-version", "equivalence", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "fwuOwlPackageManifestSchema", "version"), "2.0"))
+    case("equivalence-fwu-package-profile-hash", "equivalence", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "fwuOwlPackageProfile", "sha256"), "0" * 64))
+    case("equivalence-fwu-validation-schema-id", "equivalence", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "fwuOwlPackageValidationReportSchema", "id"), "https://attacker.example/fwu-validation.schema.json"))
+    case("equivalence-subject-profile-version", "equivalence", "TRUSTED_CONTRACT_VERSION_MISMATCH", lambda value: set_path(value, ("contracts", "subjectOntologyProfileVersion"), "1.1.0"))
+    case("equivalence-definition-profile-hash", "equivalence", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "definitionDigestProfile", "sha256"), "0" * 64))
+    case("equivalence-publication-profile-hash", "equivalence", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "publicationEvidenceProfile", "sha256"), "0" * 64))
     case("equivalence-tool-missing", "equivalence", "EQUIVALENCE_TOOLCHAIN_INCOMPLETE", lambda value: value["tools"].pop())
     case("equivalence-field-missing", "equivalence", "EQUIVALENCE_FIELD_COVERAGE_SET", lambda value: value["fieldCoverage"]["entries"].pop())
     case("equivalence-field-untested", "equivalence", "EQUIVALENCE_FIELD_UNTESTED", lambda value: set_path(value, ("fieldCoverage", "entries", 0, "tested"), False))
@@ -1386,7 +1464,8 @@ def mutation_cases() -> list[MutationCase]:
     case("release-report-hash", "release", "RELEASE_EQUIVALENCE_HASH_MISMATCH", lambda value: set_path(value, ("equivalence", "sha256"), "0" * 64))
     case("release-report-path", "release", "RELEASE_EQUIVALENCE_PATH_MISMATCH", lambda value: set_path(value, ("equivalence", "report"), "other.equivalence.json"))
     case("release-contract-hash", "release", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "fieldSemanticsRegistry", "sha256"), "0" * 64))
-    case("release-ontology-profile-mismatch", "release", "RELEASE_EQUIVALENCE_CONTRACT_MISMATCH", lambda value: set_path(value, ("contracts", "ontologyProfile", "sha256"), "0" * 64))
+    case("release-fwu-manifest-contract-hash", "release", "TRUSTED_CONTRACT_BINDING_MISMATCH", lambda value: set_path(value, ("contracts", "fwuOwlPackageManifestSchema", "sha256"), "0" * 64))
+    case("release-ontology-profile-mismatch", "release", "RELEASE_EQUIVALENCE_CONTRACT_MISMATCH", lambda value: set_path(value, ("contracts", "subjectOntologyProfile", "sha256"), "0" * 64))
     case("release-stable-unsigned", "release", "RELEASE_STABLE_AUTHENTICATION_REQUIRED", lambda value: set_path(value, ("channel",), "stable"))
     case("release-staging-forged-signature", "release", "RELEASE_UNSIGNED_STAGING_INCONSISTENT", lambda value: set_path(value, ("authentication", "releaseIndexSignature", "format"), "detached-signature-v1"))
     case("release-staging-false-verified", "release", "RELEASE_VERIFIED_SIGNATURE_INCONSISTENT", lambda value: set_path(value, ("authentication", "releaseIndexSignature", "status"), "verified"))
@@ -1439,6 +1518,8 @@ def main() -> int:
             "release_schema",
             "equivalence_schema",
             "package_manifest_schema",
+            "fwu_owl_manifest_schema",
+            "fwu_owl_validation_report_schema",
         ):
             schema = documents[key]
             if not isinstance(schema, dict):
@@ -1446,6 +1527,24 @@ def main() -> int:
             Draft202012Validator.check_schema(schema)
             if schema.get("$id") != SCHEMA_IDS[key]:
                 raise ContractError(f"Unexpected $id in {FILES[key]}: {schema.get('$id')!r}")
+        fwu_package_profile = documents["fwu_owl_package_profile"]
+        if not (
+            isinstance(fwu_package_profile, dict)
+            and fwu_package_profile.get("profileId") == "fwu-owl-v1"
+            and fwu_package_profile.get("profileVersion") == EXPECTED_CONTRACT_VERSION_FIELDS["fwuOwlPackageProfileVersion"]
+            and fwu_package_profile.get("$schema")
+            == "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json"
+        ):
+            raise ContractError(f"Unexpected FWU-OWL package profile identity in {FILES['fwu_owl_package_profile']}")
+        subject_ontology_profile = documents["subject_ontology_profile"]
+        if not (
+            isinstance(subject_ontology_profile, dict)
+            and subject_ontology_profile.get("profileId") == "de-gymnasium-mathematik-v1"
+            and subject_ontology_profile.get("version") == EXPECTED_CONTRACT_VERSION_FIELDS["subjectOntologyProfileVersion"]
+            and subject_ontology_profile.get("$schema")
+            == "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json"
+        ):
+            raise ContractError(f"Unexpected subject ontology profile identity in {FILES['subject_ontology_profile']}")
         validators = {
             "registry": Draft202012Validator(documents["registry_schema"], format_checker=FormatChecker()),
             "normalization": Draft202012Validator(documents["normalization_schema"], format_checker=FormatChecker()),

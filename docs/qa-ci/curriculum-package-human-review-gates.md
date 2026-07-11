@@ -71,10 +71,12 @@ Dieses Gate wird erst nach dem technischen DPK-008-Export konkret befüllt. Zu p
 
 - ob jeder verwendete FWU-Core-Term semantisch passt und nicht nur ähnlich benannt ist;
 - ob jede SkillPilot-Erweiterung eine nachgewiesene Core-Lücke schließt;
+- ob die CC-BY-SA-4.0-Angabe des generierten FWU-Gesamtmodells die separat gebündelte Core-Komponente tatsächlich abdeckt und welche Attribution-/Share-Alike-Pflichten für deren Redistribution gelten;
 - ob registrierte kanonische JSON-Literale eng begrenzt bleiben und keine versteckte Komplettkopie des JSON-Pakets bilden;
 - ob Source-, Goal-, Programm-, Placement-, Kompetenzachsen- und Composition-View-Semantik sauber getrennt bleiben.
 
 Der technische Roundtrip, SHACL-/OWL-Test und identische Digest sind notwendig, ersetzen dieses semantische Sign-off aber nicht.
+Bis zu dieser Entscheidung trägt die Core-Datei im FWU-OWL-Manifest bewusst `licenseExpression: null` und `redistributionStatus: review-required`; technische Validität darf diesen offenen Rechtsstatus nicht zu `allowed` umdeuten.
 
 ## HR-006 – Signatur und Stable-Promotion
 

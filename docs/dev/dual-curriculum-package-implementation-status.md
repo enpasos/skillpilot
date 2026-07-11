@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P2 – Core-first Ontologieformat vorbereiten`
-- Nächster Umsetzungsschritt: `DPK-008 – Core-first FWU-OWL-Paket und isolierter Reverse Compiler`
-- Letzter vollständig abgeschlossener Schritt: `DPK-007a – Mathematik-Content-Freeze 0.1.0-conformance.3`
-- Solider Ausgangsstand: `DPK-007a`
-- Abschluss-Gate für DPK-007a: letzte Visualisierung importiert, Core-/Registry-Lanes ausgerichtet, unveränderlicher `.3`-Kandidat unabhängig validiert und `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-008b – paketgetriebener Core-first FWU-OWL-Exporter`
+- Letzter vollständig abgeschlossener Schritt: `DPK-008a – geschlossener FWU-OWL-Vertragskern`
+- Solider Ausgangsstand: `DPK-008a`
+- Abschluss-Gate für DPK-008a: drei geschlossene Schemas, Core-/Katalog-/Profil-/Shapes-/Schema-Trust-Roots, produktives Paketprofil, 93 semantische Negativfälle, zwei Raw-JSON-Fälle, 61 Dual-Contract-Mutationen und `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -25,6 +25,14 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | P6 | Trennung von Curriculum-Erstellung und SkillPilot-Software | `not_started` | Software benötigt keinen produktiven Curriculum-Quellbaum |
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
+
+## Abgeschlossener Teilschritt: DPK-008a
+
+DPK-008a legt den ausführbaren Vertrag vor den eigentlichen Ontologieexport. Das innere `fwu-owl-v1`-Manifest inventarisiert genau acht geordnete normative N-Triples-Segmente (`declarations`, `runtime`, `landscape`, `views`, `mappings`, `sources`, `cards`, `assets`). `bundle.nt` ist davon getrennt und darf ausschließlich die bytegenaue Konkatenation dieser Segmente sein. Core-Kopie, XML-Katalog, SkillPilot-Profil, Shapes, alle Paketverträge, Lizenzen und binäre Sidecars besitzen geschlossene Rollen und Hashbindungen.
+
+Das produktive Paketprofil fixiert ZIP32-/Pfad-/Dekompressionsgrenzen einschließlich expliziter JSON-Byte-, Tiefen- und Knotengrenzen, verbietet Symlinks, Sonderdateien, Data Descriptors, Extra Fields und Netzwerkauflösung und verlangt achtzehn benannte Gates von Archiv- und Manifestprüfung über Semantic-Content-Index und Registry-Abdeckung bis zu RDF/SHACL/OWL 2 DL/HermiT und Reproduzierbarkeit. Der gepinnte FWU-Core wird byteidentisch und ehrlich als OWL Functional Syntax deklariert. Statisches SkillPilot-Anwendungsprofil, nicht ausführbare SHACL-Core-Shapes und Core-only-XML-Katalog liegen als versionierte Repository-Trust-Roots vor. Sechs Bootstrap-Schemas und drei globale Semantikverträge sind ebenfalls an Repositorybytes gebunden; der 25-Einträge-Schemakatalog wird daraus und aus dem gepinnten 22-Schema-JSON-Profil deterministisch konstruiert. Der externe Validierungsreport bindet ein exaktes ZIP und Manifest, das unabhängig geöffnete JSON-Quellpaket samt fünf Semantikverträgen, Core/Profil/Registry/Definition-Digest/Shapes/Bundle, Zählwerte, Ontologieevidenz und zwei bytegleiche Builds. Frühe Fehler an falschem Suffix, leerem oder übergroßem Input bleiben als schema-valide `invalid`-/`error`-Receipts darstellbar. Geschlossene `release-support`-Records stellen exakt die 22 JSON-Schemas, das JSON-Releaseprofil sowie Redistribution- und Source-Verification-Evidenz für den isolierten Rückcompiler bereit, ohne logische JSON-Payloads zu verstecken.
+
+Der unabhängige Vertragsvalidator importiert keinen Exporter. Er prüft eine positive, extern am JSON-Quellmanifest verankerte Fixture, zwei ehrliche frühe Fehlerzustände sowie 93 gezielte Mutationen und verwirft doppelte JSON-Keys und nicht-endliche Zahlen. Die Mutationen schließen unter anderem Digest-, Leergraph-, Core-Syntax-, Ontologie-/Shapes-/Schema-/Katalog-Trust-, vollständige ZIP-Pfad-, NFC-/casefold-sichere Pfad- und Metadatenabgrenzung, JSON-Limit-, Quellpaket-/Quellprofil-, Vertrags-ID-, Support-, Lizenz- und Report-Substitutionen. Eine rein additive, reverse-nichtautoritative Fach-Area-Projektion hält auch die 18 Mathematik-Atomziele ohne authored `curricularArea` Core-/SHACL-konform, ohne die Normalform zu verändern. Der äußere Dual-Release-Vertrag bindet zusätzlich Definition-Digest- und Publikationsevidenzprofil; seine 61 Mutationen prüfen die geschlossene Trust-Menge. Damit ist das Format fail-closed definiert; DPK-008b muss nun den eingefrorenen `.3`-JSON-Kandidaten ausschließlich über diesen Vertrag materialisieren.
 
 ## Abgeschlossener Teilschritt: DPK-007a
 
@@ -519,7 +527,11 @@ Abnahme:
 | DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `complete` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `complete` |
 | DPK-007a | P2 | Letzte fehlende Mathematik-Visualisierung technisch importieren und unveränderlichen `.3`-Content-Freeze erzeugen | DPK-007 | `complete` |
-| DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005, DPK-007a | `not_started` |
+| DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005, DPK-007a | `in_progress` |
+| DPK-008a | P2 | Geschlossenes FWU-OWL-Manifest, Paketprofil und externes Validierungsreport-Format | DPK-007a | `complete` |
+| DPK-008b | P2 | Paketgetriebenen Core-first Exporter und reproduzierbares FWU-OWL-ZIP implementieren | DPK-008a | `not_started` |
+| DPK-008c | P2 | Unabhängige RDF-, SHACL-, OWL-2-DL- und HermiT-Paket-QS vervollständigen | DPK-008b | `not_started` |
+| DPK-008d | P2 | Isolierten Reverse Compiler zum installierbaren JSON-Runtime-ZIP implementieren | DPK-008c | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
 | DPK-010 | P4 | Physik-Closure und fachübergreifende Profile | DPK-004, DPK-009 | `not_started` |
 | DPK-011 | P5 | Signierter Release-Index, Distributionskatalog und atomare Promotion nur bei geschlossenen Visualisierungs- und Source-Verification-Gates | DPK-009–DPK-010 | `not_started` |
@@ -549,6 +561,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006c-f | SourceGoal-Evidence-State und 200/204/400/404-API; Generation-/Cache-/Hash-/Count-/Crossref-/Order-/Optionalitäts-Gates; Frontend-Discovery und Lazy-Fetch; kein großer Build-/Precache-Index; reale 31/55/9.977/33.382/869-Probe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-007 | Source-spezifische Quality-Provider; Catalog-only Frontend/Runtime; echter React-/Chromium-Fluss und 404-Fail-closed; evaluator-gesteuerte Runner-Attestation; bwrap-/strace-Isolation; fünf Poison-Lanes; 29 Consumer-Fälschungen, Output-Destruktions- und Replay-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-007a | Letzter Bildimport; 754/754 Atomic-Scope-Abdeckung; 914/912/757-Paketfreeze; Profile `1.1.1`; unveränderte 454-Einträge-Registry und Core-/Order-Lane-Mutationen; unabhängige Modell-/ZIP-/Readiness-Prüfung | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-008a | FWU-OWL-Verträge: eine positive Fixture, zwei frühe nicht-erfolgreiche Receipts, 93 fail-closed Mutationen, zwei Raw-JSON-Fälle, 14 Rollen, 12 Bindungen, 18 Gates, extern gepinnte Core-/Katalog-/Profil-/Shapes-/Schema-/Semantik-Trust-Roots sowie 61 getrennte Dual-Contract-Mutationen | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

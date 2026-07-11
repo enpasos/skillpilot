@@ -1,0 +1,1004 @@
+{
+  "profile": {
+    "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+    "profileFormatVersion": 1,
+    "profileId": "fwu-owl-v1",
+    "profileVersion": "1.0.0",
+    "description": "Self-contained Core-first FWU-OWL curriculum package with positioned RDF, hashed binary sidecars, offline trust, and deterministic ZIP32 construction.",
+    "compatibility": {
+      "packageFormatVersion": "1.0",
+      "variant": "fwu-owl",
+      "manifestSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+      "validationReportSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json"
+    },
+    "inventoryPolicy": {
+      "pathBase": "archive-root-relative",
+      "allowUnknownRoles": false,
+      "requireExactFileSet": true,
+      "excludedPaths": [
+        "metadata/manifest.json",
+        "metadata/SHA256SUMS"
+      ]
+    },
+    "archiveLimits": {
+      "outerZipBytes": 3500000000,
+      "entryCount": 60000,
+      "genericEntryBytes": 1000000000,
+      "rdfSegmentBytes": 536870912,
+      "rdfBundleBytes": 1000000000,
+      "binaryResourceBytes": 67108864,
+      "binaryLaneBytes": 3000000000,
+      "totalUncompressedBytes": 8000000000,
+      "archivePathBytes": 240,
+      "jsonEntryBytes": 67108864,
+      "jsonMaxDepth": 128,
+      "jsonMaxNodes": 5000000
+    },
+    "manifestLimits": {
+      "manifestBytes": 67108864,
+      "fileRecords": 59998,
+      "licenseDocuments": 1024
+    },
+    "jsonPolicy": {
+      "encoding": "UTF-8",
+      "duplicateObjectKeys": "reject",
+      "nonFiniteNumbers": "reject",
+      "invalidUnicode": "reject-unpaired-surrogates-controls-u+fffe-u+ffff",
+      "depthLimitSource": "archiveLimits.jsonMaxDepth",
+      "nodeLimitSource": "archiveLimits.jsonMaxNodes",
+      "entryByteLimitSource": "archiveLimits.jsonEntryBytes"
+    },
+    "checksumPolicy": {
+      "path": "metadata/SHA256SUMS",
+      "format": "lowercase-sha256-two-spaces-root-relative-path-lf-v1",
+      "entryOrder": "unicode-code-point-path-order",
+      "coverage": "every-other-archive-entry-including-manifest",
+      "selfEntryAllowed": false,
+      "finalNewline": true
+    },
+    "securityPolicy": {
+      "regularFilesOnly": true,
+      "symlinksAllowed": false,
+      "directoriesAllowed": false,
+      "duplicatePathsAllowed": false,
+      "caseFoldCollisionsAllowed": false,
+      "unicodeNormalizationCollisionsAllowed": false,
+      "absolutePathsAllowed": false,
+      "parentTraversalAllowed": false,
+      "backslashesAllowed": false,
+      "nestedArchivesAllowed": false,
+      "zip64Allowed": false,
+      "dataDescriptorsAllowed": false,
+      "encryptedEntriesAllowed": false,
+      "archiveCommentsAllowed": false,
+      "entryCommentsAllowed": false,
+      "extraFieldsAllowed": false,
+      "localCentralHeaderMismatchAllowed": false,
+      "overlappingEntriesAllowed": false,
+      "trailingBytesAllowed": false,
+      "multiDiskAllowed": false,
+      "fileDirectoryPrefixCollisionsAllowed": false,
+      "reservedPortablePathsAllowed": false,
+      "trailingDotOrSpaceSegmentsAllowed": false
+    },
+    "rdfPolicy": {
+      "segmentSyntax": "application/n-triples",
+      "segmentOrder": [
+        "declarations",
+        "runtime",
+        "landscape",
+        "views",
+        "mappings",
+        "sources",
+        "cards",
+        "assets"
+      ],
+      "bundlePath": "rdf/bundle.nt",
+      "bundleConstruction": "ordered-rdf-segment-byte-concatenation-v1",
+      "fileOrderCarriesSemantics": false,
+      "positionsRequiredForOrderedFields": true,
+      "bundleContributesSeparatelyToContentDigest": false
+    },
+    "declarationPolicy": {
+      "segmentId": "declarations",
+      "vocabularySource": "fieldSemanticsRegistry",
+      "requireEveryUsedApplicationTermDeclared": true,
+      "classSources": ["membershipClass", "resourceClass", "recordClass"],
+      "objectPropertySources": ["iri-object-predicates", "owner-predicates", "value-predicates-with-iri-object"],
+      "datatypePropertySources": ["typed-literal-predicates", "language-literal-predicates", "canonical-json-literal-predicates"],
+      "undeclaredEntitiesAllowed": false,
+      "objectDataPropertyPunningAllowed": false,
+      "wholePackageJsonCarrierVocabularyAllowed": false
+    },
+    "coreProjectionPolicy": {
+      "curricularAtomicClass": "https://w3id.org/lehrplan/ontology/LP_0000336",
+      "curricularAreaClass": "https://w3id.org/lehrplan/ontology/LP_0000349",
+      "areaParentPredicate": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "atomicAreaParentRequired": true,
+      "unscopedAtomicAreaPolicy": {
+        "strategy": "single-generated-subject-area",
+        "iriTemplate": "{landscapeIri}/core-projection/unscoped-curricular-area",
+        "areaClass": "https://w3id.org/lehrplan/ontology/LP_0000349",
+        "edgePredicate": "http://purl.obolibrary.org/obo/BFO_0000051",
+        "selection": "curricularAtomic-without-direct-authored-curricularArea-parent",
+        "emitWhenEmpty": false,
+        "authoritativeForReverse": false
+      },
+      "titleOwnerPredicate": "https://w3id.org/lehrplan/ontology/LP_0030056",
+      "additionalTitleOwnerPredicate": "https://w3id.org/lehrplan/ontology/LP_0000024",
+      "titleResourceClass": "https://w3id.org/lehrplan/ontology/LP_0000346",
+      "additionalTitleProjectionAuthoritativeForReverse": false,
+      "prerequisiteClass": "https://w3id.org/lehrplan/ontology/LP_0000554",
+      "referenceSourcePredicate": "https://w3id.org/lehrplan/ontology/LP_0030071",
+      "referenceTargetPredicate": "https://w3id.org/lehrplan/ontology/LP_0030072",
+      "positionedCarrierReuseForCoreReferences": true,
+      "assertedReferenceAlignmentRequired": true,
+      "reasonedCoreEdgesAuthoritativeForReverse": false
+    },
+    "coreBindingPolicy": {
+      "canonicalOntologyIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+      "sourceRepository": "https://github.com/FWU-DE/lehrplan-ontologie.git",
+      "sourceCommit": "8aa5bce4a5366807d46f18650e31db98f9bfe35d",
+      "sourcePath": "src/ontology/components/lehrplan-core.owl",
+      "bundledPath": "ontology/lehrplan-core.owl",
+      "catalogPath": "catalog-v001.xml",
+      "catalogSourcePath": "contracts/curriculum-package/v1/ontology/fwu-owl-catalog-v001.xml",
+      "catalogMediaType": "application/xml",
+      "catalogBytes": 228,
+      "catalogSha256": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8",
+      "catalogResolutionPolicy": "exact-local-core-uri-only-no-dtd-entities-delegates-rewrites-or-next-catalog",
+      "mediaType": "text/owl-functional",
+      "syntax": "owl-functional",
+      "bytes": 195917,
+      "sha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df",
+      "requireCommit": true,
+      "requireSourcePath": true,
+      "requireByteHash": true,
+      "remoteResolutionAllowed": false
+    },
+    "applicationProfilePolicy": {
+      "ontologyIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
+      "versionIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl",
+      "version": "1.0.0",
+      "requiredImports": [
+        "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+      ],
+      "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
+      "packagePath": "skillpilot-curriculum-profile.ttl",
+      "mediaType": "text/turtle",
+      "bytes": 5298,
+      "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+    },
+    "shapesPolicy": {
+      "shapesIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl",
+      "versionIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0",
+      "version": "1.0.0",
+      "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-shapes-1.0.0.ttl",
+      "packagePath": "ontology/shapes.ttl",
+      "mediaType": "text/turtle",
+      "bytes": 6103,
+      "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59",
+      "inference": "none",
+      "executableConstraintsAllowed": false,
+      "warningPolicy": "fail"
+    },
+    "schemaCatalogPolicy": {
+      "path": "schemas/catalog.json",
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "requiredSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"
+      ],
+      "construction": "canonical-json-by-id-from-bootstrap-and-trusted-json-release-profile-v1",
+      "bootstrapBindingNames": [
+        "manifestSchema",
+        "packageProfileSchema",
+        "validationReportSchema",
+        "schemaCatalogSchema",
+        "semanticContentIndexSchema",
+        "definitionDigestProfileSchema"
+      ],
+      "expectedEntryCount": 25,
+      "remoteResolutionAllowed": false,
+      "unknownSchemaIdsAllowed": false,
+      "duplicateSchemaIdsAllowed": false,
+      "duplicateSchemaPathsAllowed": false,
+      "requireExactFileHashBindings": true
+    },
+    "contractPolicy": {
+      "requiredBindings": [
+        "manifestSchema",
+        "packageProfileSchema",
+        "validationReportSchema",
+        "schemaCatalogSchema",
+        "semanticContentIndexSchema",
+        "definitionDigestProfileSchema",
+        "packageProfile",
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "trustedBootstrapSchemas": [
+        {
+          "bindingName": "manifestSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+          "packagePath": "schemas/fwu-owl-package-manifest.schema.json",
+          "bytes": 28406,
+          "sha256": "15e0f4a487e03d3c2786bf5099f84cc3b9bc4a565a4e351a860de2b3abce7941"
+        },
+        {
+          "bindingName": "packageProfileSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+          "packagePath": "schemas/fwu-owl-package-profile.schema.json",
+          "bytes": 37728,
+          "sha256": "13f1afbb48e41ee166b7beb2a7acf49b32fc5d6d6179e1a6c855637b2f5b7589"
+        },
+        {
+          "bindingName": "validationReportSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+          "packagePath": "schemas/fwu-owl-package-validation-report.schema.json",
+          "bytes": 27385,
+          "sha256": "6e9e758456ac769199ac23b04039a8f10d0fc23306d30ddf8ebf4c7b58c622a4"
+        },
+        {
+          "bindingName": "schemaCatalogSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/schema-catalog.schema.json",
+          "packagePath": "schemas/schema-catalog.schema.json",
+          "bytes": 2043,
+          "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+        },
+        {
+          "bindingName": "semanticContentIndexSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/semantic-content-index.schema.json",
+          "packagePath": "schemas/semantic-content-index.schema.json",
+          "bytes": 4278,
+          "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+        },
+        {
+          "bindingName": "definitionDigestProfileSchema",
+          "id": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+          "sourcePath": "contracts/curriculum-package/v1/definition-digest-profile.schema.json",
+          "packagePath": "schemas/definition-digest-profile.schema.json",
+          "bytes": 5674,
+          "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b"
+        }
+      ],
+      "trustedGlobalContracts": [
+        {
+          "bindingName": "semanticNormalForm",
+          "id": "semantic-normal-form-v1",
+          "sourcePath": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+          "packagePath": "contracts/semantic-normal-form-v1.profile.json",
+          "bytes": 3877,
+          "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        },
+        {
+          "bindingName": "fieldSemanticsRegistry",
+          "id": "skillpilot-fwu-field-semantics-v1",
+          "sourcePath": "contracts/curriculum-package/v1/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+          "packagePath": "contracts/skillpilot-fwu-field-semantics-v1.registry.json",
+          "bytes": 719933,
+          "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+        },
+        {
+          "bindingName": "definitionDigestProfile",
+          "id": "canonical-definition-record-v1",
+          "sourcePath": "contracts/curriculum-package/v1/profiles/canonical-definition-record-v1.profile.json",
+          "packagePath": "contracts/canonical-definition-record-v1.profile.json",
+          "bytes": 2222,
+          "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+        }
+      ],
+      "offlineResolutionOnly": true,
+      "packageControlledTrustRootAllowed": false,
+      "unknownFieldMappingAllowed": false,
+      "wholePackageJsonCarrierAllowed": false
+    },
+    "sourceJsonBindingPolicy": {
+      "sourcePackageRequiredForValidation": true,
+      "validationMode": "independent-full-standalone-v1",
+      "packageLocalFallbackAllowed": false,
+      "remoteResolutionAllowed": false,
+      "compareIdentityFields": [
+        "file",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "releaseId",
+        "curriculumEdition",
+        "contentDigest",
+        "runtimeContractVersion",
+        "releaseProfileBinding",
+        "supportedSkillpilotSoftware"
+      ],
+      "compareContractBindings": [
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "compareBindingFields": [
+        "id",
+        "path",
+        "sha256"
+      ]
+    },
+    "semanticContentPolicy": {
+      "indexPath": "metadata/semantic-content-index.json",
+      "indexContributesSeparatelyToContentDigest": false,
+      "requireLogicalArtifactInventory": true,
+      "requireBinaryResourceInventory": true,
+      "requireDigestRecomputation": true,
+      "requireCompleteRegistryCoverage": true
+    },
+    "releaseSupportPolicy": {
+      "jsonContractSchemaCount": 22,
+      "requiredSingletonTypes": [
+        "json-release-profile",
+        "redistribution-review",
+        "source-verification-review",
+        "source-verification-status"
+      ],
+      "assessmentSourceMinimum": 0,
+      "assessmentSourceMaximum": 1000,
+      "logicalJsonPayloadsAllowed": false,
+      "targetPathsUnique": true,
+      "trustedJsonReleaseProfile": {
+        "id": "full-standalone-v1",
+        "sourcePath": "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json",
+        "targetPath": "schemas/profiles/full-standalone-v1.profile.json",
+        "packagePath": "support/json/schemas/profiles/full-standalone-v1.profile.json",
+        "mediaType": "application/json",
+        "bytes": 16926,
+        "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c",
+        "schemaTrustField": "trustedContractSchemas",
+        "trustedSchemaCount": 22
+      }
+    },
+    "resourceCapabilities": {
+      "embeddedBinaryMediaTypes": [
+        "image/jpeg",
+        "image/png"
+      ],
+      "binaryEncoding": "sidecar",
+      "requireResourceIdentity": true,
+      "requirePublicReference": true,
+      "requireByteHash": true
+    },
+    "roles": [
+      {
+        "role": "rdf-segment",
+        "minimum": 8,
+        "maximum": 8,
+        "mediaTypes": ["application/n-triples"],
+        "semanticBindingKinds": ["normative-rdf-segment"]
+      },
+      {
+        "role": "rdf-bundle",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["application/n-triples"],
+        "semanticBindingKinds": ["generated-rdf-bundle"]
+      },
+      {
+        "role": "package-profile",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["application/json"],
+        "semanticBindingKinds": ["contract"]
+      },
+      {
+        "role": "contract-schema",
+        "minimum": 6,
+        "maximum": 6,
+        "mediaTypes": ["application/schema+json"],
+        "semanticBindingKinds": ["contract"]
+      },
+      {
+        "role": "schema-catalog",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["application/json"],
+        "semanticBindingKinds": ["schema-catalog"]
+      },
+      {
+        "role": "contract",
+        "minimum": 5,
+        "maximum": 5,
+        "mediaTypes": ["application/json"],
+        "semanticBindingKinds": ["contract"]
+      },
+      {
+        "role": "semantic-content-index",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["application/json"],
+        "semanticBindingKinds": ["semantic-content-index"]
+      },
+      {
+        "role": "ontology-core",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["text/owl-functional"],
+        "semanticBindingKinds": ["ontology-core"]
+      },
+      {
+        "role": "ontology-profile",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["text/turtle"],
+        "semanticBindingKinds": ["ontology-profile"]
+      },
+      {
+        "role": "ontology-shapes",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["text/turtle"],
+        "semanticBindingKinds": ["ontology-shapes"]
+      },
+      {
+        "role": "ontology-catalog",
+        "minimum": 1,
+        "maximum": 1,
+        "mediaTypes": ["application/xml"],
+        "semanticBindingKinds": ["ontology-catalog"]
+      },
+      {
+        "role": "binary-resource",
+        "minimum": 0,
+        "maximum": 50000,
+        "mediaTypes": ["image/jpeg", "image/png"],
+        "semanticBindingKinds": ["binary-resource"]
+      },
+      {
+        "role": "release-support",
+        "minimum": 26,
+        "maximum": 1026,
+        "mediaTypes": ["application/json", "application/schema+json", "text/markdown"],
+        "semanticBindingKinds": ["release-support"]
+      },
+      {
+        "role": "license",
+        "minimum": 1,
+        "maximum": 1024,
+        "mediaTypes": ["text/plain"],
+        "semanticBindingKinds": ["license"]
+      }
+    ],
+    "validationGates": [
+      "archive-security",
+      "manifest-schema",
+      "profile-contract",
+      "inventory",
+      "contract-bindings",
+      "offline-schema-catalog",
+      "semantic-content-index",
+      "field-registry-coverage",
+      "rdf-syntax",
+      "rdf-segment-order",
+      "rdf-bundle",
+      "core-binding",
+      "ontology-profile",
+      "shacl",
+      "owl2-dl",
+      "reasoner",
+      "binary-sidecars",
+      "reproducibility"
+    ],
+    "reproducibility": {
+      "zipFormat": "zip32",
+      "compression": "store",
+      "entryOrder": "unicode-code-point-path-order",
+      "timestampPolicy": "source-date-epoch-utc-clamped-to-zip32",
+      "locale": "C.UTF-8",
+      "timezone": "UTC",
+      "unixMode": "0644",
+      "doubleBuildRequired": true
+    }
+  },
+  "sourceJsonValidation": {
+    "status": "valid",
+    "input": {
+      "file": "skillpilot-curriculum-fixture-1.0.0.json.zip",
+      "bytes": 1000,
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "manifestSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "manifest": {
+      "manifestSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "releaseId": "org.skillpilot.curriculum.fixture@1.0.0",
+      "curriculumEdition": "fixture-2026-07",
+      "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "runtimeContractVersion": "1.0",
+      "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+      "contractBindings": {
+        "releaseProfile": {
+          "id": "full-standalone-v1",
+          "path": "schemas/profiles/full-standalone-v1.profile.json",
+          "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c"
+        },
+        "semanticNormalForm": {
+          "id": "semantic-normal-form-v1",
+          "path": "schemas/profiles/semantic-normal-form-v1.profile.json",
+          "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        },
+        "fieldSemanticsRegistry": {
+          "id": "skillpilot-fwu-field-semantics-v1",
+          "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+          "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+        },
+        "definitionDigestProfile": {
+          "id": "canonical-definition-record-v1",
+          "path": "schemas/profiles/canonical-definition-record-v1.profile.json",
+          "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+        },
+        "curriculumOntologyProfile": {
+          "id": "de-gymnasium-mathematik-v1",
+          "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json",
+          "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93"
+        },
+        "publicationEvidenceProfile": {
+          "id": "de-gymnasium-mathematik-publication-evidence-v1",
+          "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+          "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e"
+        }
+      },
+      "files": [
+        { "path": "schemas/profiles/full-standalone-v1.profile.json", "bytes": 16926, "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c" },
+        { "path": "schemas/profiles/semantic-normal-form-v1.profile.json", "bytes": 3877, "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca" },
+        { "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json", "bytes": 719933, "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48" },
+        { "path": "schemas/profiles/canonical-definition-record-v1.profile.json", "bytes": 2222, "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d" },
+        { "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json", "bytes": 23384, "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93" },
+        { "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json", "bytes": 38711, "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e" }
+      ]
+    }
+  },
+  "manifest": {
+    "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+    "packageFormatVersion": "1.0",
+    "runtimeContractVersion": "1.0",
+    "releaseProfile": "fwu-owl-v1",
+    "variant": "fwu-owl",
+    "releaseId": "org.skillpilot.curriculum.fixture@1.0.0",
+    "packageId": "org.skillpilot.curriculum.fixture",
+    "packageVersion": "1.0.0",
+    "curriculumEdition": "fixture-2026-07",
+    "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "archiveRoot": "skillpilot-curriculum-fixture-1.0.0.fwu-owl",
+    "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+    "sourceJsonPackage": {
+      "file": "skillpilot-curriculum-fixture-1.0.0.json.zip",
+      "bytes": 1000,
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "manifestSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "releaseId": "org.skillpilot.curriculum.fixture@1.0.0",
+      "curriculumEdition": "fixture-2026-07",
+      "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "runtimeContractVersion": "1.0",
+      "releaseProfile": "full-standalone-v1",
+      "releaseProfileBinding": {
+        "id": "full-standalone-v1",
+        "path": "schemas/profiles/full-standalone-v1.profile.json",
+        "bytes": 16926,
+        "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c"
+      },
+      "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+      "semanticContracts": {
+        "semanticNormalForm": {
+          "id": "semantic-normal-form-v1",
+          "path": "schemas/profiles/semantic-normal-form-v1.profile.json",
+          "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        },
+        "fieldSemanticsRegistry": {
+          "id": "skillpilot-fwu-field-semantics-v1",
+          "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+          "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+        },
+        "definitionDigestProfile": {
+          "id": "canonical-definition-record-v1",
+          "path": "schemas/profiles/canonical-definition-record-v1.profile.json",
+          "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+        },
+        "curriculumOntologyProfile": {
+          "id": "de-gymnasium-mathematik-v1",
+          "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json",
+          "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93"
+        },
+        "publicationEvidenceProfile": {
+          "id": "de-gymnasium-mathematik-publication-evidence-v1",
+          "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+          "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e"
+        }
+      }
+    },
+    "contractBindings": {
+      "manifestSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+        "path": "schemas/fwu-owl-package-manifest.schema.json",
+        "bytes": 28406,
+        "sha256": "15e0f4a487e03d3c2786bf5099f84cc3b9bc4a565a4e351a860de2b3abce7941"
+      },
+      "packageProfileSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+        "path": "schemas/fwu-owl-package-profile.schema.json",
+        "bytes": 37728,
+        "sha256": "13f1afbb48e41ee166b7beb2a7acf49b32fc5d6d6179e1a6c855637b2f5b7589"
+      },
+      "validationReportSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+        "path": "schemas/fwu-owl-package-validation-report.schema.json",
+        "bytes": 27385,
+        "sha256": "6e9e758456ac769199ac23b04039a8f10d0fc23306d30ddf8ebf4c7b58c622a4"
+      },
+      "schemaCatalogSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+        "path": "schemas/schema-catalog.schema.json",
+        "bytes": 2043,
+        "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+      },
+      "semanticContentIndexSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        "path": "schemas/semantic-content-index.schema.json",
+        "bytes": 4278,
+        "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+      },
+      "definitionDigestProfileSchema": {
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+        "path": "schemas/definition-digest-profile.schema.json",
+        "bytes": 5674,
+        "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b"
+      },
+      "packageProfile": {
+        "id": "fwu-owl-v1",
+        "path": "profiles/fwu-owl-v1.profile.json",
+        "bytes": 21710,
+        "sha256": "d05086a69a3d06eeb90a7db314aef602d2a1ff0d4bc18bd2db72db3cece7cc95"
+      },
+      "semanticNormalForm": {
+        "id": "semantic-normal-form-v1",
+        "path": "contracts/semantic-normal-form-v1.profile.json",
+        "bytes": 3877,
+        "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+      },
+      "fieldSemanticsRegistry": {
+        "id": "skillpilot-fwu-field-semantics-v1",
+        "path": "contracts/skillpilot-fwu-field-semantics-v1.registry.json",
+        "bytes": 719933,
+        "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+      },
+      "definitionDigestProfile": {
+        "id": "canonical-definition-record-v1",
+        "path": "contracts/canonical-definition-record-v1.profile.json",
+        "bytes": 2222,
+        "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+      },
+      "curriculumOntologyProfile": {
+        "id": "de-gymnasium-mathematik-v1",
+        "path": "contracts/de-gymnasium-mathematik-v1.profile.json",
+        "bytes": 23384,
+        "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93"
+      },
+      "publicationEvidenceProfile": {
+        "id": "de-gymnasium-mathematik-publication-evidence-v1",
+        "path": "contracts/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+        "bytes": 38711,
+        "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e"
+      }
+    },
+    "schemaCatalog": {
+      "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+      "path": "schemas/catalog.json",
+      "mediaType": "application/json",
+      "entries": 25,
+      "bytes": 8994,
+      "sha256": "799ae3548c3b8256b196883bc418bfad2dde340d578155baba00e7926f0b98e9"
+    },
+    "semanticContentIndex": {
+      "path": "metadata/semantic-content-index.json",
+      "bytes": 113,
+      "sha256": "1212121212121212121212121212121212121212121212121212121212121212",
+      "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "logicalArtifactCount": 4,
+      "binaryResourceCount": 1,
+      "fieldRegistryEntryCount": 454
+    },
+    "fwuCore": {
+      "ontologyIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+      "sourceRepository": "https://github.com/FWU-DE/lehrplan-ontologie.git",
+      "commit": "8aa5bce4a5366807d46f18650e31db98f9bfe35d",
+      "sourcePath": "src/ontology/components/lehrplan-core.owl",
+      "bundledPath": "ontology/lehrplan-core.owl",
+      "catalogPath": "catalog-v001.xml",
+      "catalogMediaType": "application/xml",
+      "catalogBytes": 228,
+      "catalogSha256": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8",
+      "mediaType": "text/owl-functional",
+      "syntax": "owl-functional",
+      "bytes": 195917,
+      "sha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df"
+    },
+    "applicationProfile": {
+      "ontologyIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
+      "versionIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl",
+      "version": "1.0.0",
+      "imports": [
+        "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+      ],
+      "path": "skillpilot-curriculum-profile.ttl",
+      "mediaType": "text/turtle",
+      "bytes": 5298,
+      "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+    },
+    "shapes": {
+      "shapesIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl",
+      "versionIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0",
+      "version": "1.0.0",
+      "path": "ontology/shapes.ttl",
+      "mediaType": "text/turtle",
+      "bytes": 6103,
+      "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59"
+    },
+    "rdfSegments": [
+      { "position": 0, "segmentId": "declarations", "path": "rdf/declarations.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "0000000000000000000000000000000000000000000000000000000000000000" },
+      { "position": 1, "segmentId": "runtime", "path": "rdf/runtime.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "1111111111111111111111111111111111111111111111111111111111111111" },
+      { "position": 2, "segmentId": "landscape", "path": "rdf/landscape.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "2222222222222222222222222222222222222222222222222222222222222222" },
+      { "position": 3, "segmentId": "views", "path": "rdf/views.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "3333333333333333333333333333333333333333333333333333333333333333" },
+      { "position": 4, "segmentId": "mappings", "path": "rdf/mappings.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "4444444444444444444444444444444444444444444444444444444444444444" },
+      { "position": 5, "segmentId": "sources", "path": "rdf/sources.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "5555555555555555555555555555555555555555555555555555555555555555" },
+      { "position": 6, "segmentId": "cards", "path": "rdf/cards.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "6666666666666666666666666666666666666666666666666666666666666666" },
+      { "position": 7, "segmentId": "assets", "path": "rdf/assets.nt", "mediaType": "application/n-triples", "triples": 1, "bytes": 10, "sha256": "7777777777777777777777777777777777777777777777777777777777777777" }
+    ],
+    "rdfBundle": {
+      "path": "rdf/bundle.nt",
+      "mediaType": "application/n-triples",
+      "construction": "ordered-rdf-segment-byte-concatenation-v1",
+      "segmentOrder": [
+        "declarations",
+        "runtime",
+        "landscape",
+        "views",
+        "mappings",
+        "sources",
+        "cards",
+        "assets"
+      ],
+      "triples": 8,
+      "bytes": 80,
+      "sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+    },
+    "releaseSupport": [
+      { "supportType": "json-contract-schema", "supportId": "package-manifest", "targetPath": "schemas/package-manifest.schema.json", "path": "support/json/schemas/package-manifest.schema.json", "mediaType": "application/schema+json", "bytes": 9677, "sha256": "b9589f40cc19a995e66cf7ddbdaa80a8e12ea223c78bd6cd21028fba2bcd3d5c" },
+      { "supportType": "json-contract-schema", "supportId": "runtime-catalog", "targetPath": "schemas/runtime-catalog.schema.json", "path": "support/json/schemas/runtime-catalog.schema.json", "mediaType": "application/schema+json", "bytes": 13612, "sha256": "b25dd33eaa1e0a64153e143863925af36965de09c2002869c6426046da381142" },
+      { "supportType": "json-contract-schema", "supportId": "schema-catalog", "targetPath": "schemas/schema-catalog.schema.json", "path": "support/json/schemas/schema-catalog.schema.json", "mediaType": "application/schema+json", "bytes": 2043, "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0" },
+      { "supportType": "json-contract-schema", "supportId": "dependency-closure", "targetPath": "schemas/dependency-closure.schema.json", "path": "support/json/schemas/dependency-closure.schema.json", "mediaType": "application/schema+json", "bytes": 15989, "sha256": "1c70e16a87d729d0fbf44130e70871adfe675f7a5746d3b1fcd44f2586075695" },
+      { "supportType": "json-contract-schema", "supportId": "migration-aliases", "targetPath": "schemas/migration-aliases.schema.json", "path": "support/json/schemas/migration-aliases.schema.json", "mediaType": "application/schema+json", "bytes": 9926, "sha256": "87459d64185f4a35da3e9898ee613a312e9ba5710beaa543b8f1f0d6a0aea277" },
+      { "supportType": "json-contract-schema", "supportId": "compiled-landscape", "targetPath": "schemas/compiled-landscape.schema.json", "path": "support/json/schemas/compiled-landscape.schema.json", "mediaType": "application/schema+json", "bytes": 15872, "sha256": "1b1acf12a343f36e61c675ed96a05db5cc98dab0b34a2d09aea0438f83e2d6cd" },
+      { "supportType": "json-contract-schema", "supportId": "composition-view-index", "targetPath": "schemas/composition-view-index.schema.json", "path": "support/json/schemas/composition-view-index.schema.json", "mediaType": "application/schema+json", "bytes": 2723, "sha256": "b21fdb79de6f56533305698b989a5a36ab582885f5836ad665a0563ed5c1c07e" },
+      { "supportType": "json-contract-schema", "supportId": "composition-view", "targetPath": "schemas/composition-view.schema.json", "path": "support/json/schemas/composition-view.schema.json", "mediaType": "application/schema+json", "bytes": 4320, "sha256": "8b37b9b0e1eb0b3d7594139bae9e90f87a0bdda579fbe92d5b9822449b998c6e" },
+      { "supportType": "json-contract-schema", "supportId": "card-index", "targetPath": "schemas/card-index.schema.json", "path": "support/json/schemas/card-index.schema.json", "mediaType": "application/schema+json", "bytes": 2218, "sha256": "dd5e77689686710a801ae01eb7947fce6b0d84154936e5b4ed15cc650c170723" },
+      { "supportType": "json-contract-schema", "supportId": "card-deck", "targetPath": "schemas/card-deck.schema.json", "path": "support/json/schemas/card-deck.schema.json", "mediaType": "application/schema+json", "bytes": 2305, "sha256": "3f7159eb41ab4c12337e0b76f7e3bacaa3ac36404e8293c0c240cc2d3b6ec6ba" },
+      { "supportType": "json-contract-schema", "supportId": "resource-index", "targetPath": "schemas/resource-index.schema.json", "path": "support/json/schemas/resource-index.schema.json", "mediaType": "application/schema+json", "bytes": 6006, "sha256": "67034e9b1737650ec7fc6d81c8d58aa355b54226f8445e9c118ceb33a83bf425" },
+      { "supportType": "json-contract-schema", "supportId": "semantic-content-index", "targetPath": "schemas/semantic-content-index.schema.json", "path": "support/json/schemas/semantic-content-index.schema.json", "mediaType": "application/schema+json", "bytes": 4278, "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49" },
+      { "supportType": "json-contract-schema", "supportId": "embedded-goal-dependency", "targetPath": "schemas/embedded-goal-dependency.schema.json", "path": "support/json/schemas/embedded-goal-dependency.schema.json", "mediaType": "application/schema+json", "bytes": 4735, "sha256": "a05f266142af45df932b74dc67de9d451d8fbe4e466bf5a781bbc65c5fb04f85" },
+      { "supportType": "json-contract-schema", "supportId": "source-to-canonical-mappings", "targetPath": "schemas/source-to-canonical-mappings.schema.json", "path": "support/json/schemas/source-to-canonical-mappings.schema.json", "mediaType": "application/schema+json", "bytes": 3765, "sha256": "47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91" },
+      { "supportType": "json-contract-schema", "supportId": "official-source-index", "targetPath": "schemas/official-source-index.schema.json", "path": "support/json/schemas/official-source-index.schema.json", "mediaType": "application/schema+json", "bytes": 3977, "sha256": "1f7c205414eeb311941792009573fd80d1c2eadac73e02472eeb13dc193cd803" },
+      { "supportType": "json-contract-schema", "supportId": "source-goal-reference-index", "targetPath": "schemas/source-goal-reference-index.schema.json", "path": "support/json/schemas/source-goal-reference-index.schema.json", "mediaType": "application/schema+json", "bytes": 6048, "sha256": "30168d9084086855896f02325591fe0ceda5e49d6065b0b72fdfb74c167fba61" },
+      { "supportType": "json-contract-schema", "supportId": "release-quality-evidence", "targetPath": "schemas/release-quality-evidence.schema.json", "path": "support/json/schemas/release-quality-evidence.schema.json", "mediaType": "application/schema+json", "bytes": 11974, "sha256": "e12475ff9c143a722a63684d398a0db761fc5a5eb2eca4fc83d9a89d69418d7b" },
+      { "supportType": "json-contract-schema", "supportId": "semantic-normalization-profile", "targetPath": "schemas/semantic-normalization-profile.schema.json", "path": "support/json/schemas/semantic-normalization-profile.schema.json", "mediaType": "application/schema+json", "bytes": 11352, "sha256": "e125e54cb618b0b1e803d7aec2c7b92d28124ea6ba781bc594c2b0c0fdf0bff1" },
+      { "supportType": "json-contract-schema", "supportId": "field-semantics-registry", "targetPath": "schemas/field-semantics-registry.schema.json", "path": "support/json/schemas/field-semantics-registry.schema.json", "mediaType": "application/schema+json", "bytes": 34294, "sha256": "d288daad8669f3cbbaf608beb16b5013a36af093030fbe5ee52580a48494d430" },
+      { "supportType": "json-contract-schema", "supportId": "definition-digest-profile", "targetPath": "schemas/definition-digest-profile.schema.json", "path": "support/json/schemas/definition-digest-profile.schema.json", "mediaType": "application/schema+json", "bytes": 5674, "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b" },
+      { "supportType": "json-contract-schema", "supportId": "curriculum-ontology-profile", "targetPath": "schemas/curriculum-ontology-profile.schema.json", "path": "support/json/schemas/curriculum-ontology-profile.schema.json", "mediaType": "application/schema+json", "bytes": 21304, "sha256": "b0af9c02d7bb60517db59788c88c4f36aed3533c31d30287dc3e59988761e701" },
+      { "supportType": "json-contract-schema", "supportId": "publication-evidence-projection", "targetPath": "schemas/publication-evidence-projection.schema.json", "path": "support/json/schemas/publication-evidence-projection.schema.json", "mediaType": "application/schema+json", "bytes": 18195, "sha256": "db42009b4241cfa03f0b350c8d5e7f62e4a08cdc322f5ee2a079ad315d2e339f" },
+      { "supportType": "json-release-profile", "supportId": "full-standalone-v1", "targetPath": "schemas/profiles/full-standalone-v1.profile.json", "path": "support/json/schemas/profiles/full-standalone-v1.profile.json", "mediaType": "application/json", "bytes": 16926, "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c" },
+      { "supportType": "redistribution-review", "supportId": "redistribution-review", "targetPath": "metadata/provenance/redistribution-review.json", "path": "support/json/metadata/provenance/redistribution-review.json", "mediaType": "application/json", "bytes": 122, "sha256": "1515151515151515151515151515151515151515151515151515151515151515" },
+      { "supportType": "source-verification-review", "supportId": "source-verification-review", "targetPath": "metadata/provenance/source-verification-review.json", "path": "support/json/metadata/provenance/source-verification-review.json", "mediaType": "application/json", "bytes": 123, "sha256": "1616161616161616161616161616161616161616161616161616161616161616" },
+      { "supportType": "source-verification-status", "supportId": "source-verification-status", "targetPath": "metadata/provenance/source-verification-status.md", "path": "support/json/metadata/provenance/source-verification-status.md", "mediaType": "text/markdown", "bytes": 124, "sha256": "1717171717171717171717171717171717171717171717171717171717171717" }
+    ],
+    "licenseDocuments": [
+      {
+        "licenseId": "Apache-2.0",
+        "path": "licenses/Apache-2.0.txt"
+      }
+    ],
+    "files": [
+      { "path": "rdf/declarations.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "declarations", "position": 0 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/runtime.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "1111111111111111111111111111111111111111111111111111111111111111", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "runtime", "position": 1 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/landscape.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "landscape", "position": 2 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/views.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "3333333333333333333333333333333333333333333333333333333333333333", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "views", "position": 3 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/mappings.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "4444444444444444444444444444444444444444444444444444444444444444", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "mappings", "position": 4 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/sources.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "5555555555555555555555555555555555555555555555555555555555555555", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "sources", "position": 5 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/cards.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "6666666666666666666666666666666666666666666666666666666666666666", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "cards", "position": 6 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/assets.nt", "role": "rdf-segment", "mediaType": "application/n-triples", "bytes": 10, "sha256": "7777777777777777777777777777777777777777777777777777777777777777", "semanticBinding": { "kind": "normative-rdf-segment", "segmentId": "assets", "position": 7 }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "rdf/bundle.nt", "role": "rdf-bundle", "mediaType": "application/n-triples", "bytes": 80, "sha256": "8888888888888888888888888888888888888888888888888888888888888888", "semanticBinding": { "kind": "generated-rdf-bundle", "construction": "ordered-rdf-segment-byte-concatenation-v1" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "profiles/fwu-owl-v1.profile.json", "role": "package-profile", "mediaType": "application/json", "bytes": 21710, "sha256": "d05086a69a3d06eeb90a7db314aef602d2a1ff0d4bc18bd2db72db3cece7cc95", "semanticBinding": { "kind": "contract", "bindingName": "packageProfile" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/fwu-owl-package-manifest.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 28406, "sha256": "15e0f4a487e03d3c2786bf5099f84cc3b9bc4a565a4e351a860de2b3abce7941", "semanticBinding": { "kind": "contract", "bindingName": "manifestSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/fwu-owl-package-profile.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 37728, "sha256": "13f1afbb48e41ee166b7beb2a7acf49b32fc5d6d6179e1a6c855637b2f5b7589", "semanticBinding": { "kind": "contract", "bindingName": "packageProfileSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/fwu-owl-package-validation-report.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 27385, "sha256": "6e9e758456ac769199ac23b04039a8f10d0fc23306d30ddf8ebf4c7b58c622a4", "semanticBinding": { "kind": "contract", "bindingName": "validationReportSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/schema-catalog.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 2043, "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0", "semanticBinding": { "kind": "contract", "bindingName": "schemaCatalogSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/semantic-content-index.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 4278, "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49", "semanticBinding": { "kind": "contract", "bindingName": "semanticContentIndexSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/definition-digest-profile.schema.json", "role": "contract-schema", "mediaType": "application/schema+json", "bytes": 5674, "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b", "semanticBinding": { "kind": "contract", "bindingName": "definitionDigestProfileSchema" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "schemas/catalog.json", "role": "schema-catalog", "mediaType": "application/json", "bytes": 8994, "sha256": "799ae3548c3b8256b196883bc418bfad2dde340d578155baba00e7926f0b98e9", "semanticBinding": { "kind": "schema-catalog" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "contracts/semantic-normal-form-v1.profile.json", "role": "contract", "mediaType": "application/json", "bytes": 3877, "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca", "semanticBinding": { "kind": "contract", "bindingName": "semanticNormalForm" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "contracts/skillpilot-fwu-field-semantics-v1.registry.json", "role": "contract", "mediaType": "application/json", "bytes": 719933, "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48", "semanticBinding": { "kind": "contract", "bindingName": "fieldSemanticsRegistry" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "contracts/canonical-definition-record-v1.profile.json", "role": "contract", "mediaType": "application/json", "bytes": 2222, "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d", "semanticBinding": { "kind": "contract", "bindingName": "definitionDigestProfile" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "contracts/de-gymnasium-mathematik-v1.profile.json", "role": "contract", "mediaType": "application/json", "bytes": 23384, "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93", "semanticBinding": { "kind": "contract", "bindingName": "curriculumOntologyProfile" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "contracts/de-gymnasium-mathematik-publication-evidence-v1.profile.json", "role": "contract", "mediaType": "application/json", "bytes": 38711, "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e", "semanticBinding": { "kind": "contract", "bindingName": "publicationEvidenceProfile" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "metadata/semantic-content-index.json", "role": "semantic-content-index", "mediaType": "application/json", "bytes": 113, "sha256": "1212121212121212121212121212121212121212121212121212121212121212", "semanticBinding": { "kind": "semantic-content-index" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "ontology/lehrplan-core.owl", "role": "ontology-core", "mediaType": "text/owl-functional", "bytes": 195917, "sha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df", "semanticBinding": { "kind": "ontology-core" }, "licenseExpression": null, "provenanceClass": "fwu-core-pinned-copy", "redistributionStatus": "review-required" },
+      { "path": "skillpilot-curriculum-profile.ttl", "role": "ontology-profile", "mediaType": "text/turtle", "bytes": 5298, "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9", "semanticBinding": { "kind": "ontology-profile" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "ontology/shapes.ttl", "role": "ontology-shapes", "mediaType": "text/turtle", "bytes": 6103, "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59", "semanticBinding": { "kind": "ontology-shapes" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "catalog-v001.xml", "role": "ontology-catalog", "mediaType": "application/xml", "bytes": 228, "sha256": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8", "semanticBinding": { "kind": "ontology-catalog" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "assets/goal-visualizations/goal-1/goal-1.png", "role": "binary-resource", "mediaType": "image/png", "bytes": 64, "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "semanticBinding": { "kind": "binary-resource", "resourceId": "goal-visualization:goal-1:0", "publicReference": "/assets/goal-visualizations/goal-1/goal-1.png" }, "licenseExpression": "Apache-2.0", "provenanceClass": "ai-generated-curated", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/package-manifest.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 9677, "sha256": "b9589f40cc19a995e66cf7ddbdaa80a8e12ea223c78bd6cd21028fba2bcd3d5c", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "package-manifest", "targetPath": "schemas/package-manifest.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/runtime-catalog.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 13612, "sha256": "b25dd33eaa1e0a64153e143863925af36965de09c2002869c6426046da381142", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "runtime-catalog", "targetPath": "schemas/runtime-catalog.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/schema-catalog.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 2043, "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "schema-catalog", "targetPath": "schemas/schema-catalog.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/dependency-closure.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 15989, "sha256": "1c70e16a87d729d0fbf44130e70871adfe675f7a5746d3b1fcd44f2586075695", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "dependency-closure", "targetPath": "schemas/dependency-closure.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/migration-aliases.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 9926, "sha256": "87459d64185f4a35da3e9898ee613a312e9ba5710beaa543b8f1f0d6a0aea277", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "migration-aliases", "targetPath": "schemas/migration-aliases.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/compiled-landscape.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 15872, "sha256": "1b1acf12a343f36e61c675ed96a05db5cc98dab0b34a2d09aea0438f83e2d6cd", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "compiled-landscape", "targetPath": "schemas/compiled-landscape.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/composition-view-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 2723, "sha256": "b21fdb79de6f56533305698b989a5a36ab582885f5836ad665a0563ed5c1c07e", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "composition-view-index", "targetPath": "schemas/composition-view-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/composition-view.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 4320, "sha256": "8b37b9b0e1eb0b3d7594139bae9e90f87a0bdda579fbe92d5b9822449b998c6e", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "composition-view", "targetPath": "schemas/composition-view.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/card-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 2218, "sha256": "dd5e77689686710a801ae01eb7947fce6b0d84154936e5b4ed15cc650c170723", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "card-index", "targetPath": "schemas/card-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/card-deck.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 2305, "sha256": "3f7159eb41ab4c12337e0b76f7e3bacaa3ac36404e8293c0c240cc2d3b6ec6ba", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "card-deck", "targetPath": "schemas/card-deck.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/resource-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 6006, "sha256": "67034e9b1737650ec7fc6d81c8d58aa355b54226f8445e9c118ceb33a83bf425", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "resource-index", "targetPath": "schemas/resource-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/semantic-content-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 4278, "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "semantic-content-index", "targetPath": "schemas/semantic-content-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/embedded-goal-dependency.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 4735, "sha256": "a05f266142af45df932b74dc67de9d451d8fbe4e466bf5a781bbc65c5fb04f85", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "embedded-goal-dependency", "targetPath": "schemas/embedded-goal-dependency.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/source-to-canonical-mappings.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 3765, "sha256": "47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "source-to-canonical-mappings", "targetPath": "schemas/source-to-canonical-mappings.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/official-source-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 3977, "sha256": "1f7c205414eeb311941792009573fd80d1c2eadac73e02472eeb13dc193cd803", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "official-source-index", "targetPath": "schemas/official-source-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/source-goal-reference-index.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 6048, "sha256": "30168d9084086855896f02325591fe0ceda5e49d6065b0b72fdfb74c167fba61", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "source-goal-reference-index", "targetPath": "schemas/source-goal-reference-index.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/release-quality-evidence.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 11974, "sha256": "e12475ff9c143a722a63684d398a0db761fc5a5eb2eca4fc83d9a89d69418d7b", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "release-quality-evidence", "targetPath": "schemas/release-quality-evidence.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/semantic-normalization-profile.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 11352, "sha256": "e125e54cb618b0b1e803d7aec2c7b92d28124ea6ba781bc594c2b0c0fdf0bff1", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "semantic-normalization-profile", "targetPath": "schemas/semantic-normalization-profile.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/field-semantics-registry.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 34294, "sha256": "d288daad8669f3cbbaf608beb16b5013a36af093030fbe5ee52580a48494d430", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "field-semantics-registry", "targetPath": "schemas/field-semantics-registry.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/definition-digest-profile.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 5674, "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "definition-digest-profile", "targetPath": "schemas/definition-digest-profile.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/curriculum-ontology-profile.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 21304, "sha256": "b0af9c02d7bb60517db59788c88c4f36aed3533c31d30287dc3e59988761e701", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "curriculum-ontology-profile", "targetPath": "schemas/curriculum-ontology-profile.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/publication-evidence-projection.schema.json", "role": "release-support", "mediaType": "application/schema+json", "bytes": 18195, "sha256": "db42009b4241cfa03f0b350c8d5e7f62e4a08cdc322f5ee2a079ad315d2e339f", "semanticBinding": { "kind": "release-support", "supportType": "json-contract-schema", "supportId": "publication-evidence-projection", "targetPath": "schemas/publication-evidence-projection.schema.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/schemas/profiles/full-standalone-v1.profile.json", "role": "release-support", "mediaType": "application/json", "bytes": 16926, "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c", "semanticBinding": { "kind": "release-support", "supportType": "json-release-profile", "supportId": "full-standalone-v1", "targetPath": "schemas/profiles/full-standalone-v1.profile.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "skillpilot-authored", "redistributionStatus": "allowed" },
+      { "path": "support/json/metadata/provenance/redistribution-review.json", "role": "release-support", "mediaType": "application/json", "bytes": 122, "sha256": "1515151515151515151515151515151515151515151515151515151515151515", "semanticBinding": { "kind": "release-support", "supportType": "redistribution-review", "supportId": "redistribution-review", "targetPath": "metadata/provenance/redistribution-review.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "support/json/metadata/provenance/source-verification-review.json", "role": "release-support", "mediaType": "application/json", "bytes": 123, "sha256": "1616161616161616161616161616161616161616161616161616161616161616", "semanticBinding": { "kind": "release-support", "supportType": "source-verification-review", "supportId": "source-verification-review", "targetPath": "metadata/provenance/source-verification-review.json" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "support/json/metadata/provenance/source-verification-status.md", "role": "release-support", "mediaType": "text/markdown", "bytes": 124, "sha256": "1717171717171717171717171717171717171717171717171717171717171717", "semanticBinding": { "kind": "release-support", "supportType": "source-verification-status", "supportId": "source-verification-status", "targetPath": "metadata/provenance/source-verification-status.md" }, "licenseExpression": "Apache-2.0", "provenanceClass": "generated-package-metadata", "redistributionStatus": "allowed" },
+      { "path": "licenses/Apache-2.0.txt", "role": "license", "mediaType": "text/plain", "bytes": 109, "sha256": "9999999999999999999999999999999999999999999999999999999999999999", "semanticBinding": { "kind": "license", "licenseId": "Apache-2.0" }, "licenseExpression": "Apache-2.0", "provenanceClass": "third-party", "redistributionStatus": "allowed" }
+    ]
+  },
+  "validationReport": {
+    "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+    "reportFormatVersion": 1,
+    "validatorId": "skillpilot-fwu-owl-package-validator-v1",
+    "status": "valid",
+    "input": {
+      "file": "skillpilot-curriculum-fixture-1.0.0.fwu-owl.zip",
+      "bytes": 2000,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "manifestSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "package": {
+      "releaseId": "org.skillpilot.curriculum.fixture@1.0.0",
+      "packageId": "org.skillpilot.curriculum.fixture",
+      "packageVersion": "1.0.0",
+      "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "archiveRoot": "skillpilot-curriculum-fixture-1.0.0.fwu-owl",
+      "manifestSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "sourceJsonPackage": {
+        "file": "skillpilot-curriculum-fixture-1.0.0.json.zip",
+        "bytes": 1000,
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "manifestSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "releaseId": "org.skillpilot.curriculum.fixture@1.0.0",
+        "curriculumEdition": "fixture-2026-07",
+        "contentDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "runtimeContractVersion": "1.0",
+        "releaseProfile": "full-standalone-v1",
+        "releaseProfileBinding": {
+          "id": "full-standalone-v1",
+          "path": "schemas/profiles/full-standalone-v1.profile.json",
+          "bytes": 16926,
+          "sha256": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c"
+        },
+        "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+        "semanticContracts": {
+          "semanticNormalForm": { "id": "semantic-normal-form-v1", "path": "schemas/profiles/semantic-normal-form-v1.profile.json", "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca" },
+          "fieldSemanticsRegistry": { "id": "skillpilot-fwu-field-semantics-v1", "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json", "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48" },
+          "definitionDigestProfile": { "id": "canonical-definition-record-v1", "path": "schemas/profiles/canonical-definition-record-v1.profile.json", "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d" },
+          "curriculumOntologyProfile": { "id": "de-gymnasium-mathematik-v1", "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json", "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93" },
+          "publicationEvidenceProfile": { "id": "de-gymnasium-mathematik-publication-evidence-v1", "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json", "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e" }
+        }
+      },
+      "packageProfile": { "path": "profiles/fwu-owl-v1.profile.json", "bytes": 21710, "sha256": "d05086a69a3d06eeb90a7db314aef602d2a1ff0d4bc18bd2db72db3cece7cc95" },
+      "schemaCatalog": { "path": "schemas/catalog.json", "bytes": 8994, "sha256": "799ae3548c3b8256b196883bc418bfad2dde340d578155baba00e7926f0b98e9" },
+      "fieldSemanticsRegistry": { "path": "contracts/skillpilot-fwu-field-semantics-v1.registry.json", "bytes": 719933, "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48" },
+      "definitionDigestProfile": { "path": "contracts/canonical-definition-record-v1.profile.json", "bytes": 2222, "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d" },
+      "semanticContentIndex": { "path": "metadata/semantic-content-index.json", "bytes": 113, "sha256": "1212121212121212121212121212121212121212121212121212121212121212" },
+      "applicationProfile": { "path": "skillpilot-curriculum-profile.ttl", "bytes": 5298, "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9" },
+      "shapes": { "path": "ontology/shapes.ttl", "bytes": 6103, "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59" },
+      "fwuCore": {
+        "ontologyIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+        "commit": "8aa5bce4a5366807d46f18650e31db98f9bfe35d",
+        "sourcePath": "src/ontology/components/lehrplan-core.owl",
+        "path": "ontology/lehrplan-core.owl",
+        "catalogPath": "catalog-v001.xml",
+        "catalogBytes": 228,
+        "catalogSha256": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8",
+        "bytes": 195917,
+        "sha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df"
+      },
+      "rdfBundle": { "path": "rdf/bundle.nt", "bytes": 80, "sha256": "8888888888888888888888888888888888888888888888888888888888888888" }
+    },
+    "counts": {
+      "zipEntries": 57,
+      "manifestFiles": 55,
+      "rdfSegments": 8,
+      "rdfTriples": 8,
+      "logicalArtifacts": 4,
+      "fieldRegistryEntries": 454,
+      "binaryResources": 1,
+      "binaryBytes": 64
+    },
+    "gates": [
+      { "id": "archive-security", "status": "passed", "summary": "ZIP32 archive and path safety passed" },
+      { "id": "manifest-schema", "status": "passed", "summary": "Manifest schema passed" },
+      { "id": "profile-contract", "status": "passed", "summary": "Package profile passed" },
+      { "id": "inventory", "status": "passed", "summary": "Exact inventory passed" },
+      { "id": "contract-bindings", "status": "passed", "summary": "Contract bindings passed" },
+      { "id": "offline-schema-catalog", "status": "passed", "summary": "Offline schema catalog passed" },
+      { "id": "semantic-content-index", "status": "passed", "summary": "Semantic content digest and inventories passed" },
+      { "id": "field-registry-coverage", "status": "passed", "summary": "Field registry coverage passed" },
+      { "id": "rdf-syntax", "status": "passed", "summary": "N-Triples syntax passed" },
+      { "id": "rdf-segment-order", "status": "passed", "summary": "Normative RDF segment order passed" },
+      { "id": "rdf-bundle", "status": "passed", "summary": "Derived RDF bundle passed" },
+      { "id": "core-binding", "status": "passed", "summary": "Pinned Core binding passed" },
+      { "id": "ontology-profile", "status": "passed", "summary": "Application ontology profile passed" },
+      { "id": "shacl", "status": "passed", "summary": "SHACL validation passed" },
+      { "id": "owl2-dl", "status": "passed", "summary": "OWL 2 DL profile passed" },
+      { "id": "reasoner", "status": "passed", "summary": "HermiT consistency passed" },
+      { "id": "binary-sidecars", "status": "passed", "summary": "Binary sidecar binding passed" },
+      { "id": "reproducibility", "status": "passed", "summary": "Deterministic double build passed" }
+    ],
+    "ontologyEvidence": {
+      "rdfSyntax": { "status": "passed", "tool": "rdf-syntax-validator", "version": "1.0.0", "report": "evidence/rdf-syntax.txt", "reportSha256": "1111111111111111111111111111111111111111111111111111111111111111" },
+      "shacl": { "status": "passed", "tool": "pyshacl", "version": "0.30.1", "report": "evidence/shacl.ttl", "reportSha256": "2222222222222222222222222222222222222222222222222222222222222222", "violationCount": 0, "warningCount": 0 },
+      "owl2Dl": { "status": "passed", "tool": "robot", "version": "1.9.10", "report": "evidence/owl2-dl.txt", "reportSha256": "3333333333333333333333333333333333333333333333333333333333333333" },
+      "reasoner": { "status": "passed", "tool": "HermiT", "version": "1.4.5.456", "report": "evidence/hermit.txt", "reportSha256": "4444444444444444444444444444444444444444444444444444444444444444", "consistent": true, "unsatisfiableClassCount": 0 }
+    },
+    "reproducibility": {
+      "status": "passed",
+      "sourceDateEpoch": 1767225600,
+      "locale": "C.UTF-8",
+      "timezone": "UTC",
+      "runA": { "zipSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "manifestSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" },
+      "runB": { "zipSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "manifestSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" },
+      "byteIdentical": true
+    },
+    "diagnostics": [],
+    "diagnosticsTruncated": false
+  }
+}

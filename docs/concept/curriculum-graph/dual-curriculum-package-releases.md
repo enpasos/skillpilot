@@ -666,7 +666,7 @@ Abnahme:
 
 ### Phase 2 – Ontologieformat verallgemeinern
 
-Implementierungsstand: DPK-007a ist abgeschlossen und stellt den unveränderlichen `.3`-JSON-Input sowie die profil-/registry-konsistenten RDF-Lanes bereit. DPK-008 ist der nächste technische Schritt: FWU-OWL-Manifest und -Profil, Core-first Exporter, unabhängige Ontologievalidierung und isolierter Reverse Compiler werden auf diese Paketverträge umgestellt.
+Implementierungsstand: DPK-007a stellt den unveränderlichen `.3`-JSON-Input sowie die profil-/registry-konsistenten RDF-Lanes bereit. DPK-008a hat das geschlossene FWU-OWL-Manifest, das produktive Paketprofil, bytegepinnte statische Core-/Katalog-/Anwendungsontologie-/Shapes-/Schema-Trust-Roots und den externen Validierungsreport mit festen Segment-, Rollen-, JSON-Ressourcen-, Gate- und Reproduzierbarkeitsverträgen umgesetzt. Ein erfolgreicher Report setzt das unabhängig geöffnete und vollständig validierte JSON-Quellpaket voraus; Identität und alle fünf Semantikverträge werden gegen dessen echtes Manifest geprüft. Der FWU-Core bleibt dabei in seinen gepinnten Originalbytes als OWL Functional Syntax erhalten. Für Atomziele ohne authored fachlichen Area-Parent definiert das Profil eine einzige additive Fach-Area-Projektion, die der Reverse Compiler ignoriert. DPK-008b–d materialisieren darauf den Core-first Exporter, die unabhängige Ontologievalidierung und den isolierten Reverse Compiler.
 
 Ergebnisse:
 

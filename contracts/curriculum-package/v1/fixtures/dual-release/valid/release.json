@@ -12,33 +12,66 @@
     "packageFormatVersion": "1.0",
     "runtimeContractVersion": "1.0",
     "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
-    "ontologyProfileVersion": "1.0",
-    "packageManifestSchema": {
+    "subjectOntologyProfileVersion": "1.1.1",
+    "fwuOwlPackageProfileVersion": "1.0.0",
+    "jsonPackageManifestSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "version": "1.0",
       "sha256": "b9589f40cc19a995e66cf7ddbdaa80a8e12ea223c78bd6cd21028fba2bcd3d5c"
+    },
+    "fwuOwlPackageManifestSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+      "version": "1.0",
+      "sha256": "15e0f4a487e03d3c2786bf5099f84cc3b9bc4a565a4e351a860de2b3abce7941"
+    },
+    "fwuOwlPackageProfile": {
+      "id": "urn:skillpilot:curriculum-package-profile:fwu-owl-v1",
+      "version": "1.0.0",
+      "sha256": "d05086a69a3d06eeb90a7db314aef602d2a1ff0d4bc18bd2db72db3cece7cc95"
+    },
+    "fwuOwlPackageValidationReportSchema": {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+      "version": "1",
+      "sha256": "6e9e758456ac769199ac23b04039a8f10d0fc23306d30ddf8ebf4c7b58c622a4"
     },
     "dualReleaseIndexSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/dual-release-index.schema.json",
-      "sha256": "5947a595a9dc0abc3c850c0dc8314ad4f3ad6b77a8f5e845f666686a75f99e7a"
+      "version": "1",
+      "sha256": "e329dadbc017ecdf9a58c182f97d92d11c26a69c3bcbdea11cd0124cf08f13f4"
     },
     "equivalenceReportSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/equivalence-report.schema.json",
-      "sha256": "0db6d51071a49a0fdd23b290da52a8325866da7aa17aca1fee17ce207bc32b88"
+      "version": "1.0",
+      "sha256": "4e3d8e00a47c5c98706da5ded4b7c6cee6e92c3afa5b161b89ca9a1befaa78ee"
     },
-    "ontologyProfile": {
-      "id": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
-      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    "subjectOntologyProfile": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "version": "1.1.1",
+      "sha256": "395bed1ce5bacc0f4dce625c4364c56a6f217676870288ff535a52106cdd9b93"
+    },
+    "definitionDigestProfile": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/canonical-definition-record-v1.profile.json",
+      "version": "1.0.0",
+      "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+    },
+    "publicationEvidenceProfile": {
+      "id": "https://skillpilot.com/contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "version": "1.1.1",
+      "sha256": "5fe5eed792760d9170a07c4121935846b72e4be833f4dd7f894e7918349f911e"
     },
     "fieldSemanticsRegistry": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
+      "version": "1.2.0",
       "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
     },
     "semanticNormalForm": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
+      "version": "1.0.0",
       "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
     },
     "semanticContentIndexSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "version": "1",
       "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
     }
   },
@@ -61,8 +94,8 @@
   "equivalence": {
     "status": "passed",
     "report": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.equivalence.json",
-    "bytes": 196177,
-    "sha256": "33af7ee86a45ef3b9b1a660974edf2fdf52fba62f34aed7834e936147caa1337"
+    "bytes": 197782,
+    "sha256": "92f8c8ca986cc6982d4e50d12b9e55532c20bb3c2451f5618a92b45473c76a2a"
   },
   "provenance": {
     "attestation": "skillpilot-curriculum-de-gymnasium-mathematik-1.0.0.provenance.json",
