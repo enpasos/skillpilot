@@ -5,6 +5,7 @@ import com.skillpilot.backend.api.TopicSummary;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.skillpilot.backend.curriculumpackage.PackageCurriculumDomainState;
 import com.skillpilot.backend.util.BundeslandCodeNormalizer;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,13 +22,10 @@ import java.util.Set;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-@Service
 public class LandscapeService {
 
     private static final Logger log = LoggerFactory.getLogger(LandscapeService.class);
@@ -98,6 +96,7 @@ public class LandscapeService {
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
     private final GoalMappingService goalMappingService;
+    private final boolean packageBacked;
 
     private static final java.util.regex.Pattern FILENAME_PATTERN = java.util.regex.Pattern.compile(
             "^([A-Z]{2})_([A-Z]{3})_([A-Z])_([A-Z0-9]+)_([A-Z0-9]+)(?:_([A-Z0-9]+))?\\.([a-z]{2})\\.json$");
@@ -124,12 +123,55 @@ public class LandscapeService {
         this(properties, objectMapper, new GoalMappingService(properties, objectMapper));
     }
 
-    @Autowired
     public LandscapeService(LandscapeProperties properties, ObjectMapper objectMapper, GoalMappingService goalMappingService) {
         this.properties = properties;
         this.objectMapper = objectMapper;
         this.goalMappingService = goalMappingService;
+        this.packageBacked = false;
         loadLandscapes();
+    }
+
+    /** Builds the landscape runtime exclusively from one validated package generation. */
+    public LandscapeService(
+            ObjectMapper objectMapper,
+            GoalMappingService goalMappingService,
+            PackageCurriculumDomainState packageState) {
+        if (objectMapper == null || goalMappingService == null || packageState == null) {
+            throw new IllegalArgumentException("Package landscape dependencies must not be null");
+        }
+        this.properties = null;
+        this.objectMapper = objectMapper;
+        this.goalMappingService = goalMappingService;
+        this.packageBacked = true;
+        installPackageState(packageState);
+    }
+
+    private void installPackageState(PackageCurriculumDomainState packageState) {
+        cachedLandscapes = packageState.landscapes();
+        cachedById = packageState.landscapesById();
+        cachedByLegacyId = Collections.emptyMap();
+        goalIdToLandscapeId = packageState.landscapeIdByGoalId();
+        Map<String, String> jurisdictions = new LinkedHashMap<>();
+        packageState.mappingState().sourceLandscapesById().forEach(
+                (sourceLandscapeId, metadata) -> jurisdictions.put(
+                        sourceLandscapeId, metadata.jurisdiction()));
+        sourceLandscapeJurisdictionById = Collections.unmodifiableMap(jurisdictions);
+        sourceAtomicGoalIdsByLandscapeAndGoal = Collections.emptyMap();
+        sourceLandscapeIdByGoalId = packageState.mappingState().sourceLandscapeBySourceGoalId();
+        canonicalGoalProvenanceByGoalId = Collections.emptyMap();
+        canonicalGoalApplicabilityOverridesByGoalId = Collections.emptyMap();
+        canonicalJurisdictionApplicabilityByLandscapeId = new ConcurrentHashMap<>();
+        compatibilityArchiveSummariesById = Collections.emptyMap();
+        compatibilityArchiveTopicsById = Collections.emptyMap();
+        curriculumManifest = Collections.unmodifiableSet(
+                new LinkedHashSet<>(packageState.rootLandscapeIds()));
+        lastLoadedFingerprint = Long.MAX_VALUE;
+        log.info(
+                "Loaded package curriculum generation {} with {} landscapes, {} goals and {} source mappings",
+                packageState.generationSha256(),
+                cachedLandscapes.size(),
+                goalIdToLandscapeId.size(),
+                packageState.mappingState().mappings().size());
     }
 
     public List<LearningLandscape> getAll() {
@@ -242,7 +284,8 @@ public class LandscapeService {
         copy.setTitleEn(original.getTitleEn());
         copy.setDescriptionEn(original.getDescriptionEn());
 
-        Map<String, List<String>> derivedJurisdictionsByGoalId = isCanonicalGymnasiumLandscape(original)
+        Map<String, List<String>> derivedJurisdictionsByGoalId = !packageBacked
+                && isCanonicalGymnasiumLandscape(original)
                 ? canonicalJurisdictionApplicabilityByLandscapeId.computeIfAbsent(
                         original.getLandscapeId(),
                         ignored -> buildCanonicalJurisdictionApplicability(original.getGoals()))
@@ -261,7 +304,11 @@ public class LandscapeService {
                 gc.setRequires(g.getRequires());
                 gc.setContains(g.getContains());
                 gc.setExamples(g.getExamples());
-                gc.setApplicability(mergeApplicability(resolveGoalApplicability(g), derivedJurisdictionsByGoalId.get(g.getId())));
+                gc.setApplicability(packageBacked
+                        ? g.getApplicability()
+                        : mergeApplicability(
+                                resolveGoalApplicability(g),
+                                derivedJurisdictionsByGoalId.get(g.getId())));
                 gc.setSourceRef(g.getSourceRef());
                 gc.setResourceLinks(g.getResourceLinks());
                 gc.setCompetencyRefs(g.getCompetencyRefs());
@@ -1211,6 +1258,11 @@ public class LandscapeService {
     public boolean isCompatibilityOnlyLandscape(String landscapeId) {
         ensureFresh();
         LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
+        if (packageBacked) {
+            return landscapeId != null
+                    && (Boolean.TRUE.equals(landscape != null ? landscape.getCompatibilityOnly() : null)
+                            || sourceLandscapeJurisdictionById.containsKey(landscapeId));
+        }
         return landscapeId != null
                 && (Boolean.TRUE.equals(landscape != null ? landscape.getCompatibilityOnly() : null)
                         || COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
@@ -1221,6 +1273,10 @@ public class LandscapeService {
     public boolean isLegacyHiddenByDefaultLandscape(String landscapeId) {
         ensureFresh();
         LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
+        if (packageBacked) {
+            return landscapeId != null
+                    && Boolean.TRUE.equals(landscape != null ? landscape.getLegacyHiddenByDefault() : null);
+        }
         return landscapeId != null
                 && (Boolean.TRUE.equals(landscape != null ? landscape.getLegacyHiddenByDefault() : null)
                         || LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS.contains(landscapeId));
@@ -1742,6 +1798,9 @@ public class LandscapeService {
     }
 
     private void ensureFresh() {
+        if (packageBacked) {
+            return;
+        }
         long now = System.currentTimeMillis();
         if (now - lastReloadCheck < RELOAD_CHECK_INTERVAL_MS) {
             return;

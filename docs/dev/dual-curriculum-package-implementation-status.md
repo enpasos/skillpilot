@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-006c-b – Landschafts- und Mapping-Services auf das Package-Inventar umstellen`
-- Letzter vollständig abgeschlossener Schritt: `DPK-006c-a – vollständiges Runtime-Artefaktinventar und DTO-Parität`
-- Solider Ausgangsstand: `DPK-006c-a`
-- Abschluss-Gate für DPK-006c-a: 911 reale Manifestartefakte, sichere Reverify-Fassade, Modellparität und vollständiges `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-006c-c – Runtime-Katalog, Offerings und Composition Views paketgebunden bereitstellen`
+- Letzter vollständig abgeschlossener Schritt: `DPK-006c-b – paketgebundene Landschafts- und Mapping-Services`
+- Solider Ausgangsstand: `DPK-006c-b`
+- Abschluss-Gate für DPK-006c-b: reale 1.079 Ziele, 31 Source Collections, 10.021 Entscheidungen und 33.382 Kanten ohne Repository-Fallback sowie vollständiges `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -17,7 +17,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-b–f/007: Services, Frontend und Smoke-Test umstellen |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-c–f/007: Views, Ressourcen, Frontend und Smoke-Test umstellen |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -135,6 +135,23 @@ Qualitätsnachweis:
 - TypeScript, ESLint, Diff-Gates und vollständiges `./run_ci.sh` grün.
 
 Bewusste Grenze: DPK-006c-a stellt die vertrauenswürdige Datenebene bereit, ändert aber noch keine fachlichen Service-Endpunkte. Landschaften und Mappings folgen in DPK-006c-b, exakte Katalog-/View-Auflösung in DPK-006c-c, Decks und Bilder in DPK-006c-d, Frontend und paketierte Quellenanzeige in DPK-006c-e/f. Der hermetische Gesamtnachweis bleibt DPK-007.
+
+## Abgeschlossener Teilschritt: DPK-006c-b
+
+DPK-006c-b schaltet `LandscapeService` und `GoalMappingService` strikt zwischen Repository- und Package-Quelle um. Im Package-Modus entsteht genau ein lock- und generationsgebundener Domain-State aus den katalogisierten `canonical-landscape`-, `mapping`- und `source-index`-Artefakten; `LandscapeProperties`, Repositorypfade und Classpath-Dateien sind an diesem Pfad nicht beteiligt. Root-Reihenfolge, Landscape- und Goal-Indizes stammen ausschließlich aus dem Snapshot. Payload- und Katalogmetadaten, doppelte Goal-IDs, unbekannte Mappingziele und inkonsistente Source-Metadaten blockieren den Start.
+
+Der Mapping-Compiler bewahrt alle autoritativen Kanten in Paketreihenfolge. Mehrere Ziele pro Source Goal sind fachlich erlaubt, ausdrücklich auch mehrere `exact`-Ziele sowie gemischte `exact`-/`partial`-Kanten. Nur eine identische Kante, ein Match-Type-Konflikt für dasselbe Source-/Canonical-Paar oder eine mehrdeutige SourceGoal-Eigentümerschaft scheitert fail-closed. Der singuläre Kompatibilitätszugriff liefert deshalb bei Fanout keinen willkürlichen ersten Treffer; der produktive Mehrfachzugriff bleibt verlustfrei. Diagnoseherkünfte sind opake `package:<packageId>/...#<mappingCollectionId>`-Labels und keine Storepfade.
+
+Die kanonische Paketlandschaft enthält bereits fertig kompilierte effektive `applicability`. Der Package-Service übernimmt sie unverändert und führt weder die alte Mapping-/Contains-Ableitung noch Repository-Provenienz- oder Override-Registries erneut aus. Der amtliche Source-Index ist dagegen die autoritative Quelle für `sourceLandscapeId → jurisdiction`; Mapping-Metadaten werden strikt dagegen geprüft. SourceGoal-Zugehörigkeit ist aus den veröffentlichten Kanten verfügbar. Eine nicht paketierte historische Source-Cluster→Atomic-Closure und Compatibility-Archive bleiben bewusst leer statt auf den Quellbaum zurückzufallen.
+
+Qualitätsnachweis:
+
+- 13 neue Compiler-/State-Tests für Mehrfach-`exact`, gemischte Kanten, Counts, geschlossene Felder, Duplikate, Match-Type- und Eigentumskonflikte, 1:1-Source-Join, unbekannte Ziele, Multi-Package-Merge und tiefe Immutabilität;
+- konditionale Spring-Konfiguration mit absichtlich konfliktbehaftetem Repository-Poison beweist, dass Package-Mode ausschließlich den Paketstand liefert und ungültige Package-Aktivierung nicht zurückfällt;
+- reale 1,7-GB-Store-Probe bindet 1 Landschaft/1.079 Ziele, 31 Source Collections, 55 Dokumente, 9.977 Source Goals, 10.021 Entscheidungen und alle 33.382 geordneten Kanten; alle 16 Jurisdiktionen sind ableitbar und die ausgeschlossene Applicability-Projektion bleibt unverändert;
+- gezielte Package-/Landscape-/Mapping-Suiten, Diff-Gates und vollständiges `./run_ci.sh` grün.
+
+Bewusste Grenze: Die aktive Package-Generation ist derzeit eine Prozessstart-Grenze. Ein direkter öffentlicher Snapshot-Reload ist gesperrt, bis ein späterer Aktivierungskoordinator Snapshot und sämtliche abgeleiteten Resolver gemeinsam publizieren kann; die externe CAS-Lock-Aktivierung bleibt davon unberührt. Composition Views/Offerings folgen in DPK-006c-c, Decks und Bilder in DPK-006c-d, Frontend und Quellenanzeige in DPK-006c-e/f. Erst DPK-007 erbringt den hermetischen Gesamtbeweis.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -345,6 +362,7 @@ Abnahme:
 | DPK-006a | Read-only Backend-Consumer für einen exakt gepinnten, vorvalidierten content-adressierten Store mit Validator-v2-Trustkette und unveränderlichem Runtime-Snapshot | 29 fokussierte Backend-Tests; Validator v2 mit 28 Garantien; Readiness 1.2 mit acht Report-Fälschungen; reale 1,7-GB-Loaderprobe; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006b | Sicheren Quarantäne-/Streaming-Provisioner, immutable content-addressed Store, externe Betriebsverträge sowie atomare CAS-Aktivierung und Rollback umgesetzt | Operational 3/23; Provisioner 38 Garantien; reale 1,7-GB-Install-/Verify-/Activate-Strecke und echter Java-Loader; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-a | Vollständiges manifestgebundenes Runtime-Artefaktinventar, erneut verifizierende Lesefassade und verlustfreie Java-/TypeScript-Modellparität eingeführt | 911 reale Artefakte; absent-vs.-false-/Semantic-/Experiment-/Review-Tests; Limit-/Unknown-Key-/Hashdrift-Proben; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-006c-b | Landschaften, Root-/Goal-Indizes, amtliche Source-Metadaten und verlustfreie Mehrfach-Mappings ausschließlich aus einer Package-Generation bereitgestellt; Repository-/Classpath-Fallback im Package-Modus entfernt | 13 Compiler-/State-Tests; Poison-/Konfigurationsgates; reale Probe mit 1.079 Zielen, 31 Collections, 55 Dokumenten, 9.977 Source Goals, 10.021 Entscheidungen und 33.382 Kanten; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -364,8 +382,8 @@ Abnahme:
 | DPK-006b | P1 | ZIP sicher provisionieren, content-adressiert promoten sowie Lock per CAS aktivieren und zurückrollen | DPK-006a | `complete` |
 | DPK-006c | P1 | Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen | DPK-006b | `in_progress` |
 | DPK-006c-a | P1 | Vollständiges Manifestinventar, sichere Artefaktfassade und Runtime-Modellparität | DPK-006b | `complete` |
-| DPK-006c-b | P1 | Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen | DPK-006c-a | `in_progress` |
-| DPK-006c-c | P1 | Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen | DPK-006c-b | `not_started` |
+| DPK-006c-b | P1 | Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen | DPK-006c-a | `complete` |
+| DPK-006c-c | P1 | Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen | DPK-006c-b | `in_progress` |
 | DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `not_started` |
 | DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `not_started` |
 | DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `not_started` |
@@ -393,6 +411,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006a | 29 Backend-Package-Tests; Report-v2-Replay-/Tamper-/Path-/Conflict-Gates; Validator 28; Readiness 1.2; Builder; reale Paket-/Loaderprobe; Doku- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006b | Operational Contracts 3/23; Provisioner-Selftest 38; Crash-/Poison-/Permission-/Replay-/CAS-/Rollback-/Multi-Package-Gates; realer Build→Validator→Store→Activate→Java-Loader; Workflow-, Doku- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-a | Package-Modellparität; vollständiger Artefaktindex; Unknown-Key-/Limit-/Hashdrift-Gates; reales Inventar 911 einschließlich Mapping/Quality; TypeScript, ESLint, Doku und Diff | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-006c-b | Geschlossener Mapping-/Source-Compiler; Mehrfach-`exact`-/Mixed-/Count-/Join-/Conflict-/Immutability-Gates; konditionale Services und Repository-Poison; reale 31/55/9.977/10.021/33.382-Paketprobe; Landscape-/Mapping-Regression | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

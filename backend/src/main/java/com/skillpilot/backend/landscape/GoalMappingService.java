@@ -2,6 +2,7 @@ package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.curriculumpackage.PackageLandscapeMappingState;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,10 +15,8 @@ import java.util.Map;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-@Service
 public class GoalMappingService {
 
     private static final Logger log = LoggerFactory.getLogger(GoalMappingService.class);
@@ -27,6 +26,7 @@ public class GoalMappingService {
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
+    private final boolean packageBacked;
 
     private volatile List<ResolvedGoalMapping> cachedMappings = Collections.emptyList();
     private volatile Map<String, ResolvedGoalMapping> cachedByLegacyGoalId = Collections.emptyMap();
@@ -38,7 +38,27 @@ public class GoalMappingService {
     public GoalMappingService(LandscapeProperties properties, ObjectMapper objectMapper) {
         this.properties = properties;
         this.objectMapper = objectMapper;
+        this.packageBacked = false;
         loadMappings();
+    }
+
+    /** Builds the runtime adapter from one already validated package generation. */
+    public GoalMappingService(PackageLandscapeMappingState.Merged packageMappings) {
+        if (packageMappings == null) {
+            throw new IllegalArgumentException("packageMappings must not be null");
+        }
+        this.properties = null;
+        this.objectMapper = null;
+        this.packageBacked = true;
+        this.cachedMappings = packageMappings.mappings();
+        this.cachedAllByLegacyGoalId = packageMappings.mappingsBySourceGoalId();
+        Map<String, ResolvedGoalMapping> uniqueMappings = new LinkedHashMap<>();
+        this.cachedAllByLegacyGoalId.forEach((sourceGoalId, mappings) -> {
+            if (mappings.size() == 1) {
+                uniqueMappings.put(sourceGoalId, mappings.get(0));
+            }
+        });
+        this.cachedByLegacyGoalId = Collections.unmodifiableMap(uniqueMappings);
     }
 
     public List<ResolvedGoalMapping> getAllMappings() {
@@ -73,6 +93,9 @@ public class GoalMappingService {
     }
 
     private void ensureFresh() {
+        if (packageBacked) {
+            return;
+        }
         long now = System.currentTimeMillis();
         if (now - lastReloadCheck < RELOAD_CHECK_INTERVAL_MS) {
             return;
