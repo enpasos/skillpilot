@@ -8,43 +8,33 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI built-in image generation
 - Status: pilot
-- Quellbild: `f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg`
+- Quellbild: `f40fcaf7-c630-589c-9f48-6c9e69da0b9d.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Use case: scientific-educational
+Asset type: correction of one panel in a didactic mathematics infographic
+Input images: Image 1 is the edit target.
+Primary request: Change only panel 3. Preserve the title, complete panels 1 and 2, borders, colors, spacing and typography unchanged.
 
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Panel 3:
+Keep heading (verbatim): "Intervallschachtelung"
+Remove the number line, ticks and interval bars completely. Replace them with three centered horizontal inequality rows in nested colored boxes, connected by downward narrowing arrows.
 
-Titel: Bisektionsverfahren zur Nullstellennäherung anwenden
-Beschreibung: Die lernende Person kann für eine stetige Funktion ein Vorzeichenwechselintervall begründen, das Bisektionsverfahren schrittweise durchführen und die entstehende Intervallschachtelung als Nullstellennäherung deuten.
+Render exactly:
+First blue row: "1 < √2 < 2"
+Second teal row: "1 < √2 < 1,5"
+Third orange row: "1,25 < √2 < 1,5"
+Final label below (verbatim): "√2 ≈ 1,414"
 
-Zusatzanweisung:
-Pflichtinhalt:
+Use the same panel colors: blue, then teal, then orange. Make each successive box visibly narrower than the previous box. This is a symbolic interval-nesting representation, not a spatial number scale.
 
-- Show the bisection method for `f(x)=x^2-2`.
-- Start with the sign-change interval `[1,2]` and show `f(1)=-1`, `f(2)=2`.
-- Step 1: midpoint `m=1.5`, show `f(1.5)=0.25`, then new interval `[1,1.5]`.
-- Step 2: midpoint `m=1.25`, show `f(1.25)<0`, then new interval `[1.25,1.5]`.
-- Draw a number line with nested intervals getting shorter around `sqrt(2)`.
-
-Vermeiden:
-
-- Do not choose a new interval without a sign change.
-- Do not put `sqrt(2)` exactly at `1.5`; it lies between `1.25` and `1.5`.
-- Do not show tangent or secant steps; this image is only bisection.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+Constraints: all text and mathematical signs exactly as specified; German decimal commas; the final orange inequality proves √2 lies between 1,25 and 1,5; no number line; no ticks; no interval bars; no extra labels; no technical IDs; no filenames; no logos; no brands; no watermark.
+Avoid: any approximate spatial placement, decimal points, swapped inequalities, altered content in panels 1 or 2.
 ```
 
 ## Review-Notiz

@@ -453,6 +453,11 @@ try {
   } as const
   const plan = createFullStandalonePackagePlan(fixturePlanOptions)
   assert.equal(
+    plan.archiveRoot,
+    `skillpilot-curriculum-de-gymnasium-mathematik-${packageVersion}.json`,
+    'default archive root encodes the JSON package variant',
+  )
+  assert.equal(
     plan.manifest.supportedSkillpilotSoftware,
     '>=0.1.0 <1.0.0',
     'default package range accepts the stable curriculum-consumer API version 0.1.0',
@@ -618,6 +623,8 @@ try {
   })
   assert.ok(firstDirectory.directoryPath && existsSync(firstDirectory.directoryPath))
   assert.ok(first.zipPath && existsSync(first.zipPath))
+  assert.equal(basename(first.zipPath as string), `${plan.archiveRoot}.zip`)
+  assert.ok((first.zipPath as string).endsWith('.json.zip'), 'JSON package filename uses the contract suffix')
   const second = materializeFullStandalonePackage(plan, {
     repositoryRoot: fixtureRepositoryRoot,
     outputDirectory: resolve(fixtureTmp, 'second-output'),

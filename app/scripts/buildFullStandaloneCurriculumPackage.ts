@@ -929,7 +929,7 @@ const attachManifestFile = (
   }
 }
 
-const defaultArchiveRoot = (packageVersion: string) => `skillpilot-curriculum-de-gymnasium-mathematik-${packageVersion}-json`
+const defaultArchiveRoot = (packageVersion: string) => `skillpilot-curriculum-de-gymnasium-mathematik-${packageVersion}.json`
 
 const assertArchiveRoot = (archiveRoot: string) => {
   if (
