@@ -1,0 +1,220 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sp: <https://skillpilot.de/ns/roundtrip#> .
+@prefix lp: <https://w3id.org/lehrplan/ontology/> .
+@prefix bfo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sps: <https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl#> .
+
+<https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl>
+  a owl:Ontology ;
+  owl:versionIRI
+    <https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0> ;
+  owl:versionInfo "1.0.0" ;
+  dcterms:title "SkillPilot Core-first FWU package SHACL constraints"@en ;
+  dcterms:description
+    "Non-executable SHACL Core constraints. Cross-record equality, list continuity, manifests, digests and DAGs are checked procedurally by the independent package validator."@en .
+
+sps:LearningGoalShape
+  a sh:NodeShape ;
+  sh:targetClass sp:LearningGoal ;
+  sh:targetObjectsOf sp:membershipGoal ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path sp:skillpilotId ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string ;
+    sh:minLength 1
+  ] ;
+  sh:property [
+    sh:path sp:goalSemanticKind ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype xsd:string ;
+    sh:in (
+      "curricularAtomic"
+      "curricularArea"
+      "practiceAssessment"
+      "programStructure"
+      "memory"
+      "runtimeSupport"
+      "orientation"
+    )
+  ] .
+
+sps:GoalMembershipShape
+  a sh:NodeShape ;
+  sh:targetClass sp:GoalMembership ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasGoalMembership ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:membershipGoal ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:CorePositionProperty .
+
+sps:ContainsMembershipShape
+  a sh:NodeShape ;
+  sh:targetClass sp:ContainsMembership ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasContainsMembership ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:containsGoal ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:CorePositionProperty .
+
+sps:RequiresMembershipShape
+  a sh:NodeShape ;
+  sh:targetClass sp:RequiresMembership ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasRequiresMembership ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:requiredGoal ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:CorePositionProperty .
+
+sps:ResourceLinkShape
+  a sh:NodeShape ;
+  sh:targetClass sp:ResourceLink ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasResourceLink ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:referencesResource ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:CorePositionProperty .
+
+sps:CorePositionProperty
+  a sh:PropertyShape ;
+  sh:path lp:LP_0000460 ;
+  sh:minCount 1 ;
+  sh:maxCount 1 ;
+  sh:datatype xsd:int ;
+  sh:minInclusive 0 .
+
+sps:CompositionNodeShape
+  a sh:NodeShape ;
+  sh:targetClass sp:CompositionNode ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasCompositionChild ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:compositionGoal ;
+    sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:ApplicationPositionProperty .
+
+sps:CardMembershipShape
+  a sh:NodeShape ;
+  sh:targetClass sp:CardMembership ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath sp:hasCard ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path sp:cardValue ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property sps:ApplicationPositionProperty .
+
+sps:ApplicationPositionProperty
+  a sh:PropertyShape ;
+  sh:path sp:order ;
+  sh:minCount 1 ;
+  sh:maxCount 1 ;
+  sh:datatype xsd:integer ;
+  sh:minInclusive 0 .
+
+sps:CoreCompetencyShape
+  a sh:NodeShape ;
+  sh:targetClass lp:LP_0000336 ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath bfo:BFO_0000051 ] ;
+    sh:minCount 1 ;
+    sh:class lp:LP_0000349 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path lp:LP_0030056 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class lp:LP_0000346 ;
+    sh:equals lp:LP_0000024 ;
+    sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path lp:LP_0030051 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:class lp:LP_0030003 ;
+    sh:nodeKind sh:IRI
+  ] .
+
+sps:TitleResourceShape
+  a sh:NodeShape ;
+  sh:targetClass lp:LP_0000346 ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path lp:LP_0000344 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:Literal
+  ] .
+
+sps:DescriptionResourceShape
+  a sh:NodeShape ;
+  sh:targetClass lp:LP_0030003 ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path lp:LP_0000344 ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:Literal
+  ] .
+
+sps:DidacticPrerequisiteShape
+  a sh:NodeShape ;
+  sh:targetClass lp:LP_0000554 ;
+  sh:nodeKind sh:IRI ;
+  sh:property [
+    sh:path [ sh:inversePath lp:LP_0030071 ] ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] ;
+  sh:property [
+    sh:path lp:LP_0030072 ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI
+  ] .
+
+sps:BinaryResourceShape
+  a sh:NodeShape ;
+  sh:targetClass sp:BinaryResource ;
+  sh:nodeKind sh:IRI ;
+  sh:property [ sh:path sp:resourceId ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path sp:publicReference ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path sp:mediaType ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path sp:byteLength ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:nonNegativeInteger ] ;
+  sh:property [
+    sh:path sp:sha256 ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ;
+    sh:pattern "^[a-f0-9]{64}$"
+  ] .

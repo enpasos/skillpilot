@@ -149,6 +149,7 @@ jobs:
         run: |
           cd ..
           python -B scripts/validate_curriculum_package_contracts.py
+          python -B scripts/validate_curriculum_fwu_owl_package_contracts.py
           python -B scripts/validate_curriculum_runtime_catalog_contract.py
           python -B scripts/validate_curriculum_schema_catalog_contract.py
           python -B scripts/evaluate_curriculum_package_readiness.py --self-test

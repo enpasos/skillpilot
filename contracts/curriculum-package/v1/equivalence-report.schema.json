@@ -236,6 +236,12 @@
       "maxLength": 2000,
       "pattern": "^https://[^\\s]+$"
     },
+    "contractId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^(?:https://[^\\s]+|urn:[A-Za-z0-9][A-Za-z0-9:._-]+)$"
+    },
     "portablePath": {
       "type": "string",
       "minLength": 1,
@@ -259,11 +265,18 @@
       "additionalProperties": false,
       "required": [
         "id",
+        "version",
         "sha256"
       ],
       "properties": {
         "id": {
-          "$ref": "#/$defs/uri"
+          "$ref": "#/$defs/contractId"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[0-9A-Za-z][0-9A-Za-z.+_-]*$"
         },
         "sha256": {
           "$ref": "#/$defs/sha256"
@@ -277,11 +290,17 @@
         "packageFormatVersion",
         "runtimeContractVersion",
         "releaseProfile",
-        "ontologyProfileVersion",
-        "packageManifestSchema",
+        "subjectOntologyProfileVersion",
+        "fwuOwlPackageProfileVersion",
+        "jsonPackageManifestSchema",
+        "fwuOwlPackageManifestSchema",
+        "fwuOwlPackageProfile",
+        "fwuOwlPackageValidationReportSchema",
         "dualReleaseIndexSchema",
         "equivalenceReportSchema",
-        "ontologyProfile",
+        "subjectOntologyProfile",
+        "definitionDigestProfile",
+        "publicationEvidenceProfile",
         "fieldSemanticsRegistry",
         "semanticNormalForm",
         "semanticContentIndexSchema"
@@ -296,10 +315,22 @@
         "releaseProfile": {
           "const": "full-standalone-v1"
         },
-        "ontologyProfileVersion": {
-          "const": "1.0"
+        "subjectOntologyProfileVersion": {
+          "const": "1.1.1"
         },
-        "packageManifestSchema": {
+        "fwuOwlPackageProfileVersion": {
+          "const": "1.0.0"
+        },
+        "jsonPackageManifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fwuOwlPackageManifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fwuOwlPackageProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fwuOwlPackageValidationReportSchema": {
           "$ref": "#/$defs/contractBinding"
         },
         "dualReleaseIndexSchema": {
@@ -308,7 +339,13 @@
         "equivalenceReportSchema": {
           "$ref": "#/$defs/contractBinding"
         },
-        "ontologyProfile": {
+        "subjectOntologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "definitionDigestProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "publicationEvidenceProfile": {
           "$ref": "#/$defs/contractBinding"
         },
         "fieldSemanticsRegistry": {

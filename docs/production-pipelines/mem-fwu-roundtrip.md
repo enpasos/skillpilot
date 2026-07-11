@@ -18,12 +18,13 @@ DPK-005b first materialized that model as a real `full-standalone-v1` staging ZI
 
 DPK-007a now freezes the exact JSON input for DPK-008 as `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`. The ZIP contains 914 entries and 912 manifest records; it is 1,738,161,217 bytes with SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, while its manifest has SHA-256 `32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe`. Its 111 logical and 757 binary records share `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`; the 757 embedded images total 1,696,390,279 bytes. The runtime closure contains 2,403 definitions and 18,820 references with closure digest `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121` and definition-index digest `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
 
-Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008 must next migrate the ontology exporter/importer from the legacy subject ZIP to this positioned RDF representation and isolated reverse-compiler contract. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
+Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a now supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. They require the fixed eight-segment RDF order, a derived-only byte-concatenated `bundle.nt`, pinned Core/profile/shapes/definition-digest and contract bindings, a bound semantic content index, closed reverse-build support, sidecar hashes, eighteen named validation gates and a byte-identical double build. DPK-008b must next materialize candidate `.3` through that contract; DPK-008c/d add the independent ontology gate and isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
 
 Accordingly, two lanes coexist temporarily:
 
 - the commands below continue to exercise the already working legacy semantic OWL pilot;
-- `scripts/run_curriculum_release_model_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`.
+- `scripts/run_curriculum_release_model_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`;
+- `scripts/validate_curriculum_fwu_owl_package_contracts.py` validates the DPK-008a ontology-package contracts independently of any exporter.
 
 They must not be presented as the final dual-release roundtrip until DPK-008/009 connect frozen candidate `.3` to the Core-first ontology package and compare the isolated reverse compilation.
 
@@ -130,6 +131,8 @@ The exporter classifies graph nodes before writing containment:
 The direct application assertion is necessary even for strict curricular edges: `BFO_0000051` is transitive in the FWU core. A reasoner may therefore materialize indirect descendants. Those inferred triples are valid BFO semantics but must not become direct SkillPilot children during reconstruction.
 
 Only top-level curricular elements are attached to the landscape as BFO parts. The exporter does not flatten every curricular descendant into a direct landscape child.
+
+The Core requires every projected `LP_0000336` atomic competency to have a named `LP_0000349` area parent. If an authored `curricularAtomic` has no direct authored `curricularArea` parent, the exporter creates exactly one deterministic subject-wide fallback area at `{landscapeIri}/core-projection/unscoped-curricular-area` and attaches exactly those atoms with `BFO_0000051`. This is an additive Core/SHACL projection only: it has no SkillPilot membership or goal ID, does not enter the normal form or `contentDigest`, and is ignored by the reverse compiler.
 
 ### OWL-safe literals and source quarantine
 
@@ -393,10 +396,14 @@ These are not all candidates for the FWU core. Composition views, learning runti
 - Image sidecars are batch-extracted per phase instead of spawning one `unzip` process per image; every extracted file is still verified independently before use.
 - Generated path lists use code-unit ordering rather than locale-dependent collation.
 - The deterministic ZIP writer streams uncompressed entries to disk and hashes the finished file without buffering the full archive. It uses ZIP32 and fails before writing if entry count, file size, offsets, or total archive size exceed supported limits.
+- The production FWU package copies the pinned Core bytes without syntax conversion. Although the source filename ends in `.owl`, those bytes are OWL Functional Syntax and are inventoried as `text/owl-functional`, not RDF/XML.
+- The versioned SkillPilot application ontology, SHACL Core shapes, and Core-only XML catalog under `contracts/curriculum-package/v1/ontology/` are external trust roots. Package-local copies must match their pinned byte length and SHA-256; the Shapes graph contains no SPARQL, JavaScript, or rule execution.
+- Six bootstrap schemas, the global normalization/registry/definition contracts, and the JSON release profile's 22-schema set are externally pinned. The 25-entry FWU schema catalog is deterministic, and no package-local schema or profile may redefine the validator's trust root.
+- A successful ontology validation requires the original JSON ZIP as a second input. Its exact ZIP and manifest hashes are checked first; release identity, edition, content digest, runtime/software profile and all five semantic contract bindings are then copied into and attested by the FWU report.
 - Keep `tmp/` for generated packages and reports; do not commit roundtrip artifacts.
 
 ## Upstream Follow-up
 
-When FWU regenerates its release artifacts and shapes with `LP_0000554`, the local binding can move from the source core module to the corresponding released artifact. Until then, the manifest makes the exact source commit and core-module checksum independently reviewable.
+When FWU regenerates its release artifacts and shapes with `LP_0000554`, the local binding can move from the source core module to the corresponding released artifact. Until then, the manifest makes the exact source commit, source syntax and core-module checksum independently reviewable; its redistribution status remains `review-required` until HR-005 resolves the applicable license and attribution duties.
 
 The integration stance remains collaborative: SkillPilot uses the FWU core where its semantics fit, retains application vocabulary only for genuine runtime/package concerns, and turns reproducible roundtrip evidence into focused upstream feedback.

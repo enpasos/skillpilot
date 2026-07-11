@@ -1,0 +1,1107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+  "title": "SkillPilot Core-first FWU-OWL package profile v1",
+  "description": "Closed profile contract for inventory roles, RDF segment order, offline trust, Core binding, archive security, validation gates, and reproducible FWU-OWL ZIP construction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profileFormatVersion",
+    "profileId",
+    "profileVersion",
+    "description",
+    "compatibility",
+    "inventoryPolicy",
+    "archiveLimits",
+    "manifestLimits",
+    "jsonPolicy",
+    "checksumPolicy",
+    "securityPolicy",
+    "rdfPolicy",
+    "declarationPolicy",
+    "coreProjectionPolicy",
+    "coreBindingPolicy",
+    "applicationProfilePolicy",
+    "shapesPolicy",
+    "schemaCatalogPolicy",
+    "contractPolicy",
+    "sourceJsonBindingPolicy",
+    "semanticContentPolicy",
+    "releaseSupportPolicy",
+    "resourceCapabilities",
+    "roles",
+    "validationGates",
+    "reproducibility"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json"
+    },
+    "profileFormatVersion": {
+      "const": 1
+    },
+    "profileId": {
+      "const": "fwu-owl-v1"
+    },
+    "profileVersion": {
+      "const": "1.0.0"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "compatibility": {
+      "$ref": "#/$defs/compatibility"
+    },
+    "inventoryPolicy": {
+      "$ref": "#/$defs/inventoryPolicy"
+    },
+    "archiveLimits": {
+      "$ref": "#/$defs/archiveLimits"
+    },
+    "manifestLimits": {
+      "$ref": "#/$defs/manifestLimits"
+    },
+    "jsonPolicy": {
+      "$ref": "#/$defs/jsonPolicy"
+    },
+    "checksumPolicy": {
+      "$ref": "#/$defs/checksumPolicy"
+    },
+    "securityPolicy": {
+      "$ref": "#/$defs/securityPolicy"
+    },
+    "rdfPolicy": {
+      "$ref": "#/$defs/rdfPolicy"
+    },
+    "declarationPolicy": {
+      "$ref": "#/$defs/declarationPolicy"
+    },
+    "coreProjectionPolicy": {
+      "$ref": "#/$defs/coreProjectionPolicy"
+    },
+    "coreBindingPolicy": {
+      "$ref": "#/$defs/coreBindingPolicy"
+    },
+    "applicationProfilePolicy": {
+      "$ref": "#/$defs/applicationProfilePolicy"
+    },
+    "shapesPolicy": {
+      "$ref": "#/$defs/shapesPolicy"
+    },
+    "schemaCatalogPolicy": {
+      "$ref": "#/$defs/schemaCatalogPolicy"
+    },
+    "contractPolicy": {
+      "$ref": "#/$defs/contractPolicy"
+    },
+    "sourceJsonBindingPolicy": {
+      "$ref": "#/$defs/sourceJsonBindingPolicy"
+    },
+    "semanticContentPolicy": {
+      "$ref": "#/$defs/semanticContentPolicy"
+    },
+    "releaseSupportPolicy": {
+      "$ref": "#/$defs/releaseSupportPolicy"
+    },
+    "resourceCapabilities": {
+      "$ref": "#/$defs/resourceCapabilities"
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "$ref": "#/$defs/roleRule"
+      }
+    },
+    "validationGates": {
+      "$ref": "#/$defs/validationGateIds"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibility"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^[a-z0-9!#$&^_.+-]+/[a-z0-9!#$&^_.+-]+$"
+    },
+    "role": {
+      "enum": [
+        "rdf-segment",
+        "rdf-bundle",
+        "package-profile",
+        "contract-schema",
+        "schema-catalog",
+        "contract",
+        "semantic-content-index",
+        "ontology-core",
+        "ontology-profile",
+        "ontology-shapes",
+        "ontology-catalog",
+        "binary-resource",
+        "release-support",
+        "license"
+      ]
+    },
+    "semanticBindingKind": {
+      "enum": [
+        "normative-rdf-segment",
+        "generated-rdf-bundle",
+        "contract",
+        "schema-catalog",
+        "ontology-core",
+        "ontology-profile",
+        "ontology-shapes",
+        "ontology-catalog",
+        "binary-resource",
+        "semantic-content-index",
+        "release-support",
+        "license"
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageFormatVersion",
+        "variant",
+        "manifestSchemaId",
+        "validationReportSchemaId"
+      ],
+      "properties": {
+        "packageFormatVersion": {
+          "const": "1.0"
+        },
+        "variant": {
+          "const": "fwu-owl"
+        },
+        "manifestSchemaId": {
+          "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json"
+        },
+        "validationReportSchemaId": {
+          "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json"
+        }
+      }
+    },
+    "inventoryPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pathBase",
+        "allowUnknownRoles",
+        "requireExactFileSet",
+        "excludedPaths"
+      ],
+      "properties": {
+        "pathBase": {
+          "const": "archive-root-relative"
+        },
+        "allowUnknownRoles": {
+          "const": false
+        },
+        "requireExactFileSet": {
+          "const": true
+        },
+        "excludedPaths": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "const": "metadata/manifest.json" },
+            { "const": "metadata/SHA256SUMS" }
+          ],
+          "items": false
+        }
+      }
+    },
+    "archiveLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outerZipBytes",
+        "entryCount",
+        "genericEntryBytes",
+        "rdfSegmentBytes",
+        "rdfBundleBytes",
+        "binaryResourceBytes",
+        "binaryLaneBytes",
+        "totalUncompressedBytes",
+        "archivePathBytes",
+        "jsonEntryBytes",
+        "jsonMaxDepth",
+        "jsonMaxNodes"
+      ],
+      "properties": {
+        "outerZipBytes": { "const": 3500000000 },
+        "entryCount": { "const": 60000 },
+        "genericEntryBytes": { "const": 1000000000 },
+        "rdfSegmentBytes": { "const": 536870912 },
+        "rdfBundleBytes": { "const": 1000000000 },
+        "binaryResourceBytes": { "const": 67108864 },
+        "binaryLaneBytes": { "const": 3000000000 },
+        "totalUncompressedBytes": { "const": 8000000000 },
+        "archivePathBytes": { "const": 240 },
+        "jsonEntryBytes": { "const": 67108864 },
+        "jsonMaxDepth": { "const": 128 },
+        "jsonMaxNodes": { "const": 5000000 }
+      }
+    },
+    "manifestLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestBytes",
+        "fileRecords",
+        "licenseDocuments"
+      ],
+      "properties": {
+        "manifestBytes": { "const": 67108864 },
+        "fileRecords": { "const": 59998 },
+        "licenseDocuments": { "const": 1024 }
+      }
+    },
+    "jsonPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoding",
+        "duplicateObjectKeys",
+        "nonFiniteNumbers",
+        "invalidUnicode",
+        "depthLimitSource",
+        "nodeLimitSource",
+        "entryByteLimitSource"
+      ],
+      "properties": {
+        "encoding": { "const": "UTF-8" },
+        "duplicateObjectKeys": { "const": "reject" },
+        "nonFiniteNumbers": { "const": "reject" },
+        "invalidUnicode": { "const": "reject-unpaired-surrogates-controls-u+fffe-u+ffff" },
+        "depthLimitSource": { "const": "archiveLimits.jsonMaxDepth" },
+        "nodeLimitSource": { "const": "archiveLimits.jsonMaxNodes" },
+        "entryByteLimitSource": { "const": "archiveLimits.jsonEntryBytes" }
+      }
+    },
+    "checksumPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "format",
+        "entryOrder",
+        "coverage",
+        "selfEntryAllowed",
+        "finalNewline"
+      ],
+      "properties": {
+        "path": { "const": "metadata/SHA256SUMS" },
+        "format": { "const": "lowercase-sha256-two-spaces-root-relative-path-lf-v1" },
+        "entryOrder": { "const": "unicode-code-point-path-order" },
+        "coverage": { "const": "every-other-archive-entry-including-manifest" },
+        "selfEntryAllowed": { "const": false },
+        "finalNewline": { "const": true }
+      }
+    },
+    "securityPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "regularFilesOnly",
+        "symlinksAllowed",
+        "directoriesAllowed",
+        "duplicatePathsAllowed",
+        "caseFoldCollisionsAllowed",
+        "unicodeNormalizationCollisionsAllowed",
+        "absolutePathsAllowed",
+        "parentTraversalAllowed",
+        "backslashesAllowed",
+        "nestedArchivesAllowed",
+        "zip64Allowed",
+        "dataDescriptorsAllowed",
+        "encryptedEntriesAllowed",
+        "archiveCommentsAllowed",
+        "entryCommentsAllowed",
+        "extraFieldsAllowed",
+        "localCentralHeaderMismatchAllowed",
+        "overlappingEntriesAllowed",
+        "trailingBytesAllowed",
+        "multiDiskAllowed",
+        "fileDirectoryPrefixCollisionsAllowed",
+        "reservedPortablePathsAllowed",
+        "trailingDotOrSpaceSegmentsAllowed"
+      ],
+      "properties": {
+        "regularFilesOnly": { "const": true },
+        "symlinksAllowed": { "const": false },
+        "directoriesAllowed": { "const": false },
+        "duplicatePathsAllowed": { "const": false },
+        "caseFoldCollisionsAllowed": { "const": false },
+        "unicodeNormalizationCollisionsAllowed": { "const": false },
+        "absolutePathsAllowed": { "const": false },
+        "parentTraversalAllowed": { "const": false },
+        "backslashesAllowed": { "const": false },
+        "nestedArchivesAllowed": { "const": false },
+        "zip64Allowed": { "const": false },
+        "dataDescriptorsAllowed": { "const": false },
+        "encryptedEntriesAllowed": { "const": false },
+        "archiveCommentsAllowed": { "const": false },
+        "entryCommentsAllowed": { "const": false },
+        "extraFieldsAllowed": { "const": false },
+        "localCentralHeaderMismatchAllowed": { "const": false },
+        "overlappingEntriesAllowed": { "const": false },
+        "trailingBytesAllowed": { "const": false },
+        "multiDiskAllowed": { "const": false },
+        "fileDirectoryPrefixCollisionsAllowed": { "const": false },
+        "reservedPortablePathsAllowed": { "const": false },
+        "trailingDotOrSpaceSegmentsAllowed": { "const": false }
+      }
+    },
+    "segmentIdOrder": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "prefixItems": [
+        { "const": "declarations" },
+        { "const": "runtime" },
+        { "const": "landscape" },
+        { "const": "views" },
+        { "const": "mappings" },
+        { "const": "sources" },
+        { "const": "cards" },
+        { "const": "assets" }
+      ],
+      "items": false
+    },
+    "rdfPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segmentSyntax",
+        "segmentOrder",
+        "bundlePath",
+        "bundleConstruction",
+        "fileOrderCarriesSemantics",
+        "positionsRequiredForOrderedFields",
+        "bundleContributesSeparatelyToContentDigest"
+      ],
+      "properties": {
+        "segmentSyntax": {
+          "const": "application/n-triples"
+        },
+        "segmentOrder": {
+          "$ref": "#/$defs/segmentIdOrder"
+        },
+        "bundlePath": {
+          "const": "rdf/bundle.nt"
+        },
+        "bundleConstruction": {
+          "const": "ordered-rdf-segment-byte-concatenation-v1"
+        },
+        "fileOrderCarriesSemantics": {
+          "const": false
+        },
+        "positionsRequiredForOrderedFields": {
+          "const": true
+        },
+        "bundleContributesSeparatelyToContentDigest": {
+          "const": false
+        }
+      }
+    },
+    "declarationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segmentId",
+        "vocabularySource",
+        "requireEveryUsedApplicationTermDeclared",
+        "classSources",
+        "objectPropertySources",
+        "datatypePropertySources",
+        "undeclaredEntitiesAllowed",
+        "objectDataPropertyPunningAllowed",
+        "wholePackageJsonCarrierVocabularyAllowed"
+      ],
+      "properties": {
+        "segmentId": { "const": "declarations" },
+        "vocabularySource": { "const": "fieldSemanticsRegistry" },
+        "requireEveryUsedApplicationTermDeclared": { "const": true },
+        "classSources": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "membershipClass" },
+            { "const": "resourceClass" },
+            { "const": "recordClass" }
+          ],
+          "items": false
+        },
+        "objectPropertySources": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "iri-object-predicates" },
+            { "const": "owner-predicates" },
+            { "const": "value-predicates-with-iri-object" }
+          ],
+          "items": false
+        },
+        "datatypePropertySources": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "typed-literal-predicates" },
+            { "const": "language-literal-predicates" },
+            { "const": "canonical-json-literal-predicates" }
+          ],
+          "items": false
+        },
+        "undeclaredEntitiesAllowed": { "const": false },
+        "objectDataPropertyPunningAllowed": { "const": false },
+        "wholePackageJsonCarrierVocabularyAllowed": { "const": false }
+      }
+    },
+    "coreProjectionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curricularAtomicClass",
+        "curricularAreaClass",
+        "areaParentPredicate",
+        "atomicAreaParentRequired",
+        "unscopedAtomicAreaPolicy",
+        "titleOwnerPredicate",
+        "additionalTitleOwnerPredicate",
+        "titleResourceClass",
+        "additionalTitleProjectionAuthoritativeForReverse",
+        "prerequisiteClass",
+        "referenceSourcePredicate",
+        "referenceTargetPredicate",
+        "positionedCarrierReuseForCoreReferences",
+        "assertedReferenceAlignmentRequired",
+        "reasonedCoreEdgesAuthoritativeForReverse"
+      ],
+      "properties": {
+        "curricularAtomicClass": { "const": "https://w3id.org/lehrplan/ontology/LP_0000336" },
+        "curricularAreaClass": { "const": "https://w3id.org/lehrplan/ontology/LP_0000349" },
+        "areaParentPredicate": { "const": "http://purl.obolibrary.org/obo/BFO_0000051" },
+        "atomicAreaParentRequired": { "const": true },
+        "unscopedAtomicAreaPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "strategy",
+            "iriTemplate",
+            "areaClass",
+            "edgePredicate",
+            "selection",
+            "emitWhenEmpty",
+            "authoritativeForReverse"
+          ],
+          "properties": {
+            "strategy": { "const": "single-generated-subject-area" },
+            "iriTemplate": { "const": "{landscapeIri}/core-projection/unscoped-curricular-area" },
+            "areaClass": { "const": "https://w3id.org/lehrplan/ontology/LP_0000349" },
+            "edgePredicate": { "const": "http://purl.obolibrary.org/obo/BFO_0000051" },
+            "selection": { "const": "curricularAtomic-without-direct-authored-curricularArea-parent" },
+            "emitWhenEmpty": { "const": false },
+            "authoritativeForReverse": { "const": false }
+          }
+        },
+        "titleOwnerPredicate": { "const": "https://w3id.org/lehrplan/ontology/LP_0030056" },
+        "additionalTitleOwnerPredicate": { "const": "https://w3id.org/lehrplan/ontology/LP_0000024" },
+        "titleResourceClass": { "const": "https://w3id.org/lehrplan/ontology/LP_0000346" },
+        "additionalTitleProjectionAuthoritativeForReverse": { "const": false },
+        "prerequisiteClass": { "const": "https://w3id.org/lehrplan/ontology/LP_0000554" },
+        "referenceSourcePredicate": { "const": "https://w3id.org/lehrplan/ontology/LP_0030071" },
+        "referenceTargetPredicate": { "const": "https://w3id.org/lehrplan/ontology/LP_0030072" },
+        "positionedCarrierReuseForCoreReferences": { "const": true },
+        "assertedReferenceAlignmentRequired": { "const": true },
+        "reasonedCoreEdgesAuthoritativeForReverse": { "const": false }
+      }
+    },
+    "coreBindingPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalOntologyIri",
+        "sourceRepository",
+        "sourceCommit",
+        "sourcePath",
+        "bundledPath",
+        "catalogPath",
+        "catalogSourcePath",
+        "catalogMediaType",
+        "catalogBytes",
+        "catalogSha256",
+        "catalogResolutionPolicy",
+        "mediaType",
+        "syntax",
+        "bytes",
+        "sha256",
+        "requireCommit",
+        "requireSourcePath",
+        "requireByteHash",
+        "remoteResolutionAllowed"
+      ],
+      "properties": {
+        "canonicalOntologyIri": {
+          "const": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+        },
+        "sourceRepository": {
+          "const": "https://github.com/FWU-DE/lehrplan-ontologie.git"
+        },
+        "sourceCommit": {
+          "const": "8aa5bce4a5366807d46f18650e31db98f9bfe35d"
+        },
+        "sourcePath": {
+          "const": "src/ontology/components/lehrplan-core.owl"
+        },
+        "bundledPath": {
+          "const": "ontology/lehrplan-core.owl"
+        },
+        "catalogPath": {
+          "const": "catalog-v001.xml"
+        },
+        "catalogSourcePath": {
+          "const": "contracts/curriculum-package/v1/ontology/fwu-owl-catalog-v001.xml"
+        },
+        "catalogMediaType": { "const": "application/xml" },
+        "catalogBytes": { "const": 228 },
+        "catalogSha256": {
+          "const": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8"
+        },
+        "catalogResolutionPolicy": {
+          "const": "exact-local-core-uri-only-no-dtd-entities-delegates-rewrites-or-next-catalog"
+        },
+        "mediaType": { "const": "text/owl-functional" },
+        "syntax": { "const": "owl-functional" },
+        "bytes": { "const": 195917 },
+        "sha256": {
+          "const": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df"
+        },
+        "requireCommit": { "const": true },
+        "requireSourcePath": { "const": true },
+        "requireByteHash": { "const": true },
+        "remoteResolutionAllowed": { "const": false }
+      }
+    },
+    "applicationProfilePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyIri",
+        "versionIri",
+        "version",
+        "requiredImports",
+        "sourcePath",
+        "packagePath",
+        "mediaType",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "ontologyIri": {
+          "const": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl"
+        },
+        "versionIri": {
+          "const": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "requiredImports": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [
+            { "const": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl" }
+          ],
+          "items": false
+        },
+        "sourcePath": {
+          "const": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl"
+        },
+        "packagePath": { "const": "skillpilot-curriculum-profile.ttl" },
+        "mediaType": { "const": "text/turtle" },
+        "bytes": { "const": 5298 },
+        "sha256": {
+          "const": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+        }
+      }
+    },
+    "shapesPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shapesIri",
+        "versionIri",
+        "version",
+        "sourcePath",
+        "packagePath",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "inference",
+        "executableConstraintsAllowed",
+        "warningPolicy"
+      ],
+      "properties": {
+        "shapesIri": {
+          "const": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl"
+        },
+        "versionIri": {
+          "const": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0"
+        },
+        "version": { "const": "1.0.0" },
+        "sourcePath": {
+          "const": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-shapes-1.0.0.ttl"
+        },
+        "packagePath": { "const": "ontology/shapes.ttl" },
+        "mediaType": { "const": "text/turtle" },
+        "bytes": { "const": 6103 },
+        "sha256": {
+          "const": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59"
+        },
+        "inference": { "const": "none" },
+        "executableConstraintsAllowed": { "const": false },
+        "warningPolicy": { "const": "fail" }
+      }
+    },
+    "schemaCatalogPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "schemaId",
+        "dialect",
+        "requiredSchemaIds",
+        "construction",
+        "bootstrapBindingNames",
+        "expectedEntryCount",
+        "remoteResolutionAllowed",
+        "unknownSchemaIdsAllowed",
+        "duplicateSchemaIdsAllowed",
+        "duplicateSchemaPathsAllowed",
+        "requireExactFileHashBindings"
+      ],
+      "properties": {
+        "path": { "const": "schemas/catalog.json" },
+        "schemaId": { "const": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json" },
+        "dialect": { "const": "https://json-schema.org/draft/2020-12/schema" },
+        "requiredSchemaIds": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "prefixItems": [
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json" },
+            { "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json" }
+          ],
+          "items": false
+        },
+        "construction": {
+          "const": "canonical-json-by-id-from-bootstrap-and-trusted-json-release-profile-v1"
+        },
+        "bootstrapBindingNames": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "prefixItems": [
+            { "const": "manifestSchema" },
+            { "const": "packageProfileSchema" },
+            { "const": "validationReportSchema" },
+            { "const": "schemaCatalogSchema" },
+            { "const": "semanticContentIndexSchema" },
+            { "const": "definitionDigestProfileSchema" }
+          ],
+          "items": false
+        },
+        "expectedEntryCount": { "const": 25 },
+        "remoteResolutionAllowed": { "const": false },
+        "unknownSchemaIdsAllowed": { "const": false },
+        "duplicateSchemaIdsAllowed": { "const": false },
+        "duplicateSchemaPathsAllowed": { "const": false },
+        "requireExactFileHashBindings": { "const": true }
+      }
+    },
+    "requiredBindingNames": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "prefixItems": [
+        { "const": "manifestSchema" },
+        { "const": "packageProfileSchema" },
+        { "const": "validationReportSchema" },
+        { "const": "schemaCatalogSchema" },
+        { "const": "semanticContentIndexSchema" },
+        { "const": "definitionDigestProfileSchema" },
+        { "const": "packageProfile" },
+        { "const": "semanticNormalForm" },
+        { "const": "fieldSemanticsRegistry" },
+        { "const": "definitionDigestProfile" },
+        { "const": "curriculumOntologyProfile" },
+        { "const": "publicationEvidenceProfile" }
+      ],
+      "items": false
+    },
+    "contractPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredBindings",
+        "trustedBootstrapSchemas",
+        "trustedGlobalContracts",
+        "offlineResolutionOnly",
+        "packageControlledTrustRootAllowed",
+        "unknownFieldMappingAllowed",
+        "wholePackageJsonCarrierAllowed"
+      ],
+      "properties": {
+        "requiredBindings": {
+          "$ref": "#/$defs/requiredBindingNames"
+        },
+        "trustedBootstrapSchemas": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/trustedContractBinding" }
+        },
+        "trustedGlobalContracts": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/trustedContractBinding" }
+        },
+        "offlineResolutionOnly": { "const": true },
+        "packageControlledTrustRootAllowed": { "const": false },
+        "unknownFieldMappingAllowed": { "const": false },
+        "wholePackageJsonCarrierAllowed": { "const": false }
+      }
+    },
+    "trustedContractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bindingName", "id", "sourcePath", "packagePath", "bytes", "sha256"],
+      "properties": {
+        "bindingName": {
+          "enum": [
+            "manifestSchema",
+            "packageProfileSchema",
+            "validationReportSchema",
+            "schemaCatalogSchema",
+            "semanticContentIndexSchema",
+            "definitionDigestProfileSchema",
+            "semanticNormalForm",
+            "fieldSemanticsRegistry",
+            "definitionDigestProfile"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "sourcePath": { "$ref": "#/$defs/packageRelativePath" },
+        "packagePath": { "$ref": "#/$defs/packageRelativePath" },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 1000000000 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sourceJsonBindingPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourcePackageRequiredForValidation",
+        "validationMode",
+        "packageLocalFallbackAllowed",
+        "remoteResolutionAllowed",
+        "compareIdentityFields",
+        "compareContractBindings",
+        "compareBindingFields"
+      ],
+      "properties": {
+        "sourcePackageRequiredForValidation": { "const": true },
+        "validationMode": { "const": "independent-full-standalone-v1" },
+        "packageLocalFallbackAllowed": { "const": false },
+        "remoteResolutionAllowed": { "const": false },
+        "compareIdentityFields": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "prefixItems": [
+            { "const": "file" },
+            { "const": "bytes" },
+            { "const": "sha256" },
+            { "const": "manifestSha256" },
+            { "const": "releaseId" },
+            { "const": "curriculumEdition" },
+            { "const": "contentDigest" },
+            { "const": "runtimeContractVersion" },
+            { "const": "releaseProfileBinding" },
+            { "const": "supportedSkillpilotSoftware" }
+          ],
+          "items": false
+        },
+        "compareContractBindings": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "prefixItems": [
+            { "const": "semanticNormalForm" },
+            { "const": "fieldSemanticsRegistry" },
+            { "const": "definitionDigestProfile" },
+            { "const": "curriculumOntologyProfile" },
+            { "const": "publicationEvidenceProfile" }
+          ],
+          "items": false
+        },
+        "compareBindingFields": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            { "const": "id" },
+            { "const": "path" },
+            { "const": "sha256" }
+          ],
+          "items": false
+        }
+      }
+    },
+    "semanticContentPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "indexPath",
+        "indexContributesSeparatelyToContentDigest",
+        "requireLogicalArtifactInventory",
+        "requireBinaryResourceInventory",
+        "requireDigestRecomputation",
+        "requireCompleteRegistryCoverage"
+      ],
+      "properties": {
+        "indexPath": { "const": "metadata/semantic-content-index.json" },
+        "indexContributesSeparatelyToContentDigest": { "const": false },
+        "requireLogicalArtifactInventory": { "const": true },
+        "requireBinaryResourceInventory": { "const": true },
+        "requireDigestRecomputation": { "const": true },
+        "requireCompleteRegistryCoverage": { "const": true }
+      }
+    },
+    "releaseSupportPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "jsonContractSchemaCount",
+        "requiredSingletonTypes",
+        "assessmentSourceMinimum",
+        "assessmentSourceMaximum",
+        "logicalJsonPayloadsAllowed",
+        "targetPathsUnique",
+        "trustedJsonReleaseProfile"
+      ],
+      "properties": {
+        "jsonContractSchemaCount": { "const": 22 },
+        "requiredSingletonTypes": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            { "const": "json-release-profile" },
+            { "const": "redistribution-review" },
+            { "const": "source-verification-review" },
+            { "const": "source-verification-status" }
+          ],
+          "items": false
+        },
+        "assessmentSourceMinimum": { "const": 0 },
+        "assessmentSourceMaximum": { "const": 1000 },
+        "logicalJsonPayloadsAllowed": { "const": false },
+        "targetPathsUnique": { "const": true },
+        "trustedJsonReleaseProfile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "sourcePath",
+            "targetPath",
+            "packagePath",
+            "mediaType",
+            "bytes",
+            "sha256",
+            "schemaTrustField",
+            "trustedSchemaCount"
+          ],
+          "properties": {
+            "id": { "const": "full-standalone-v1" },
+            "sourcePath": { "const": "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json" },
+            "targetPath": { "const": "schemas/profiles/full-standalone-v1.profile.json" },
+            "packagePath": { "const": "support/json/schemas/profiles/full-standalone-v1.profile.json" },
+            "mediaType": { "const": "application/json" },
+            "bytes": { "const": 16926 },
+            "sha256": { "const": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c" },
+            "schemaTrustField": { "const": "trustedContractSchemas" },
+            "trustedSchemaCount": { "const": 22 }
+          }
+        }
+      }
+    },
+    "resourceCapabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "embeddedBinaryMediaTypes",
+        "binaryEncoding",
+        "requireResourceIdentity",
+        "requirePublicReference",
+        "requireByteHash"
+      ],
+      "properties": {
+        "embeddedBinaryMediaTypes": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "const": "image/jpeg" },
+            { "const": "image/png" }
+          ],
+          "items": false
+        },
+        "binaryEncoding": { "const": "sidecar" },
+        "requireResourceIdentity": { "const": true },
+        "requirePublicReference": { "const": true },
+        "requireByteHash": { "const": true }
+      }
+    },
+    "roleRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "minimum",
+        "maximum",
+        "mediaTypes",
+        "semanticBindingKinds"
+      ],
+      "properties": {
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59998
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 59998
+        },
+        "mediaTypes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/mediaType"
+          }
+        },
+        "semanticBindingKinds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/semanticBindingKind"
+          }
+        }
+      }
+    },
+    "validationGateIds": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "prefixItems": [
+        { "const": "archive-security" },
+        { "const": "manifest-schema" },
+        { "const": "profile-contract" },
+        { "const": "inventory" },
+        { "const": "contract-bindings" },
+        { "const": "offline-schema-catalog" },
+        { "const": "semantic-content-index" },
+        { "const": "field-registry-coverage" },
+        { "const": "rdf-syntax" },
+        { "const": "rdf-segment-order" },
+        { "const": "rdf-bundle" },
+        { "const": "core-binding" },
+        { "const": "ontology-profile" },
+        { "const": "shacl" },
+        { "const": "owl2-dl" },
+        { "const": "reasoner" },
+        { "const": "binary-sidecars" },
+        { "const": "reproducibility" }
+      ],
+      "items": false
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zipFormat",
+        "compression",
+        "entryOrder",
+        "timestampPolicy",
+        "locale",
+        "timezone",
+        "unixMode",
+        "doubleBuildRequired"
+      ],
+      "properties": {
+        "zipFormat": { "const": "zip32" },
+        "compression": { "const": "store" },
+        "entryOrder": { "const": "unicode-code-point-path-order" },
+        "timestampPolicy": { "const": "source-date-epoch-utc-clamped-to-zip32" },
+        "locale": { "const": "C.UTF-8" },
+        "timezone": { "const": "UTC" },
+        "unixMode": { "const": "0644" },
+        "doubleBuildRequired": { "const": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@prefix sp: <https://skillpilot.de/ns/roundtrip#> .
+@prefix lp: <https://w3id.org/lehrplan/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl>
+  a owl:Ontology ;
+  owl:versionIRI
+    <https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl> ;
+  owl:versionInfo "1.0.0" ;
+  owl:imports
+    <https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl> ;
+  dcterms:title "SkillPilot Core-first FWU curriculum package profile"@en ;
+  dcterms:description
+    "Stable application vocabulary for lossless SkillPilot package semantics that the FWU Lehrplan-Ontologie Core does not express."@en .
+
+# Cross-jurisdiction runtime identity and package structures are deliberately not
+# subclasses of a Core Lehrplan. Subject profiles add Core types only where the
+# reviewed semantic kind warrants them.
+sp:SkillPilotPackage a owl:Class .
+sp:LearningLandscape a owl:Class .
+sp:LearningGoal a owl:Class .
+sp:PracticeAssessmentGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
+sp:ProgramStructureGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
+sp:MemoryGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
+sp:RuntimeSupportGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
+sp:OrientationGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .
+
+sp:ProgramUnit a owl:Class .
+sp:GoalPlacement a owl:Class .
+sp:CompositionView a owl:Class .
+sp:CompositionNode a owl:Class .
+sp:CardDeck a owl:Class .
+sp:Card a owl:Class .
+sp:AssessmentData a owl:Class .
+sp:ScoringStep a owl:Class .
+sp:OfficialSourceCollection a owl:Class .
+sp:OfficialSourceDocument a owl:Class .
+sp:SourceGoalCollection a owl:Class .
+sp:SourceGoalClassification a owl:Class .
+sp:SourceGoalLineage a owl:Class .
+sp:SourceLocator a owl:Class .
+sp:MappingCollection a owl:Class .
+sp:Resource a owl:Class .
+sp:BinaryResource a owl:Class ; rdfs:subClassOf sp:Resource .
+
+sp:QualityEvidence a owl:Class .
+sp:SemanticAtomicityEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:SemanticAtomicityDecisionEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:MemoryCardEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:MemoryGoalDecisionEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:ActiveCardDecisionEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:GoalVisualizationEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+sp:GoalVisualizationDecisionEvidence a owl:Class ; rdfs:subClassOf sp:QualityEvidence .
+
+sp:PositionedMembership a owl:Class .
+sp:GoalMembership a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
+sp:ContainsMembership a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
+sp:RequiresMembership a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
+sp:ResourceLink a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
+sp:CardMembership a owl:Class ; rdfs:subClassOf sp:PositionedMembership .
+
+sp:hasGoalMembership a owl:ObjectProperty ;
+  rdfs:domain sp:LearningLandscape ;
+  rdfs:range sp:GoalMembership .
+sp:membershipGoal a owl:ObjectProperty ;
+  rdfs:domain sp:GoalMembership ;
+  rdfs:range sp:LearningGoal .
+sp:hasContainsMembership a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:ContainsMembership .
+sp:containsGoal a owl:ObjectProperty ;
+  rdfs:domain sp:ContainsMembership ;
+  rdfs:range sp:LearningGoal .
+sp:hasRequiresMembership a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:RequiresMembership .
+sp:requiredGoal a owl:ObjectProperty ;
+  rdfs:domain sp:RequiresMembership ;
+  rdfs:range sp:LearningGoal .
+sp:hasResourceLink a owl:ObjectProperty ;
+  rdfs:domain sp:LearningGoal ;
+  rdfs:range sp:ResourceLink .
+sp:referencesResource a owl:ObjectProperty ;
+  rdfs:domain sp:ResourceLink .
+
+sp:hasCompositionChild a owl:ObjectProperty ;
+  rdfs:range sp:CompositionNode .
+sp:compositionGoal a owl:ObjectProperty ;
+  rdfs:domain sp:CompositionNode ;
+  rdfs:range sp:LearningGoal .
+sp:hasCard a owl:ObjectProperty ;
+  rdfs:domain sp:CardDeck ;
+  rdfs:range sp:CardMembership .
+sp:cardValue a owl:ObjectProperty ;
+  rdfs:domain sp:CardMembership ;
+  rdfs:range sp:Card .
+sp:hasScoringStep a owl:ObjectProperty ;
+  rdfs:domain sp:AssessmentData ;
+  rdfs:range sp:ScoringStep .
+sp:stepValue a owl:ObjectProperty ;
+  rdfs:domain sp:ScoringStep .
+sp:hasOfficialSourceDocument a owl:ObjectProperty ;
+  rdfs:domain sp:OfficialSourceCollection ;
+  rdfs:range sp:OfficialSourceDocument .
+sp:hasSourceGoal a owl:ObjectProperty ;
+  rdfs:domain sp:SourceGoalCollection ;
+  rdfs:range lp:LP_0000261 .
+
+sp:skillpilotId a owl:DatatypeProperty ; rdfs:range xsd:string .
+sp:goalSemanticKind a owl:DatatypeProperty ; rdfs:range xsd:string .
+sp:order a owl:DatatypeProperty ; rdfs:range xsd:integer .
+sp:resourceId a owl:DatatypeProperty ; rdfs:range xsd:string .
+sp:publicReference a owl:DatatypeProperty ; rdfs:range xsd:string .
+sp:mediaType a owl:DatatypeProperty ; rdfs:range xsd:string .
+sp:byteLength a owl:DatatypeProperty ; rdfs:range xsd:nonNegativeInteger .
+sp:sha256 a owl:DatatypeProperty ; rdfs:range xsd:string .

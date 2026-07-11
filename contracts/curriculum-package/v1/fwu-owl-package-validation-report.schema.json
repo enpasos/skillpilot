@@ -1,0 +1,969 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+  "title": "SkillPilot Core-first FWU-OWL package validation report v1",
+  "description": "Closed external validation receipt for one exact FWU-OWL ZIP. The report binds the package, manifest, Core, profiles, registry, RDF bundle, ontology evidence, binary sidecars, and deterministic double build.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reportFormatVersion",
+    "validatorId",
+    "status",
+    "input",
+    "package",
+    "counts",
+    "gates",
+    "ontologyEvidence",
+    "reproducibility",
+    "diagnostics",
+    "diagnosticsTruncated"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json"
+    },
+    "reportFormatVersion": {
+      "const": 1
+    },
+    "validatorId": {
+      "const": "skillpilot-fwu-owl-package-validator-v1"
+    },
+    "status": {
+      "enum": [
+        "valid",
+        "invalid",
+        "error"
+      ]
+    },
+    "input": {
+      "$ref": "#/$defs/inputBinding"
+    },
+    "package": {
+      "oneOf": [
+        { "$ref": "#/$defs/packageBinding" },
+        { "type": "null" }
+      ]
+    },
+    "counts": {
+      "oneOf": [
+        { "$ref": "#/$defs/counts" },
+        { "type": "null" }
+      ]
+    },
+    "gates": {
+      "$ref": "#/$defs/gates"
+    },
+    "ontologyEvidence": {
+      "$ref": "#/$defs/ontologyEvidence"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibilityEvidence"
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    },
+    "diagnosticsTruncated": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "valid" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "input": {
+            "properties": {
+              "file": { "pattern": "^[^\\r\\n]*\\.fwu-owl\\.zip$" },
+              "bytes": { "minimum": 1, "maximum": 3500000000 },
+              "sha256": { "$ref": "#/$defs/sha256" },
+              "manifestSha256": { "$ref": "#/$defs/sha256" }
+            }
+          },
+          "package": { "$ref": "#/$defs/packageBinding" },
+          "counts": {
+            "allOf": [
+              { "$ref": "#/$defs/counts" },
+              { "properties": { "rdfSegments": { "const": 8 } } }
+            ]
+          },
+          "gates": {
+            "contains": {
+              "type": "object",
+              "properties": { "status": { "const": "passed" } },
+              "required": ["status"]
+            },
+            "minContains": 18,
+            "maxContains": 18
+          },
+          "ontologyEvidence": {
+            "properties": {
+              "rdfSyntax": { "properties": { "status": { "const": "passed" } } },
+              "shacl": {
+                "properties": {
+                  "status": { "const": "passed" },
+                  "violationCount": { "const": 0 },
+                  "warningCount": { "const": 0 }
+                }
+              },
+              "owl2Dl": { "properties": { "status": { "const": "passed" } } },
+              "reasoner": {
+                "properties": {
+                  "status": { "const": "passed" },
+                  "consistent": { "const": true },
+                  "unsatisfiableClassCount": { "const": 0 }
+                }
+              }
+            }
+          },
+          "reproducibility": {
+            "properties": {
+              "status": { "const": "passed" },
+              "sourceDateEpoch": { "type": "integer" },
+              "runA": { "$ref": "#/$defs/buildRun" },
+              "runB": { "$ref": "#/$defs/buildRun" },
+              "byteIdentical": { "const": true }
+            }
+          },
+          "diagnostics": { "maxItems": 0 },
+          "diagnosticsTruncated": { "const": false }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "const": "invalid" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "gates": {
+            "contains": {
+              "type": "object",
+              "properties": { "status": { "const": "failed" } },
+              "required": ["status"]
+            },
+            "minContains": 1
+          },
+          "diagnostics": { "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "status": { "const": "error" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "gates": {
+            "contains": {
+              "type": "object",
+              "properties": { "status": { "const": "not-evaluated" } },
+              "required": ["status"]
+            },
+            "minContains": 1
+          },
+          "diagnostics": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 500,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+@[0-9A-Za-z.+-]+$"
+    },
+    "evidencePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*//)[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?(?:/[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)*$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "inputBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "bytes",
+        "sha256",
+        "manifestSha256"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "sha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "manifestSha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "hashBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "coreBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ontologyIri",
+        "commit",
+        "sourcePath",
+        "path",
+        "catalogPath",
+        "catalogBytes",
+        "catalogSha256",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "ontologyIri": {
+          "const": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "sourcePath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "path": {
+          "const": "ontology/lehrplan-core.owl"
+        },
+        "catalogPath": {
+          "const": "catalog-v001.xml"
+        },
+        "catalogBytes": {
+          "const": 228
+        },
+        "catalogSha256": {
+          "const": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 134217728
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "packageBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest",
+        "archiveRoot",
+        "manifestSha256",
+        "sourceJsonPackage",
+        "packageProfile",
+        "schemaCatalog",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "semanticContentIndex",
+        "applicationProfile",
+        "shapes",
+        "fwuCore",
+        "rdfBundle"
+      ],
+      "properties": {
+        "releaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "archiveRoot": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sourceJsonPackage": {
+          "$ref": "#/$defs/sourceJsonPackageEvidence"
+        },
+        "packageProfile": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "schemaCatalog": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "definitionDigestProfile": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "semanticContentIndex": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "applicationProfile": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "shapes": {
+          "$ref": "#/$defs/hashBinding"
+        },
+        "fwuCore": {
+          "$ref": "#/$defs/coreBinding"
+        },
+        "rdfBundle": {
+          "$ref": "#/$defs/hashBinding"
+        }
+      }
+    },
+    "sourceContractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "sha256"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sourceSemanticContracts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "properties": {
+        "semanticNormalForm": { "$ref": "#/$defs/sourceContractBinding" },
+        "fieldSemanticsRegistry": { "$ref": "#/$defs/sourceContractBinding" },
+        "definitionDigestProfile": { "$ref": "#/$defs/sourceContractBinding" },
+        "curriculumOntologyProfile": { "$ref": "#/$defs/sourceContractBinding" },
+        "publicationEvidenceProfile": { "$ref": "#/$defs/sourceContractBinding" }
+      }
+    },
+    "sourceJsonPackageEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "releaseId",
+        "curriculumEdition",
+        "contentDigest",
+        "runtimeContractVersion",
+        "releaseProfile",
+        "releaseProfileBinding",
+        "supportedSkillpilotSoftware",
+        "semanticContracts"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 240,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*\\.json\\.zip$"
+        },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 3500000000 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "manifestSha256": { "$ref": "#/$defs/sha256" },
+        "releaseId": { "$ref": "#/$defs/releaseId" },
+        "curriculumEdition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        },
+        "contentDigest": { "$ref": "#/$defs/prefixedSha256" },
+        "runtimeContractVersion": { "const": "1.0" },
+        "releaseProfile": { "const": "full-standalone-v1" },
+        "releaseProfileBinding": { "$ref": "#/$defs/sourceReleaseProfileBinding" },
+        "supportedSkillpilotSoftware": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^\\S(?:.*\\S)?$"
+        },
+        "semanticContracts": { "$ref": "#/$defs/sourceSemanticContracts" }
+      }
+    },
+    "sourceReleaseProfileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "bytes", "sha256"],
+      "properties": {
+        "id": { "const": "full-standalone-v1" },
+        "path": { "const": "schemas/profiles/full-standalone-v1.profile.json" },
+        "bytes": { "const": 16926 },
+        "sha256": { "const": "8ab60c023e43c01d89b93cca2017313f4d55a10e00e79a050b80c5a4b441918c" }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zipEntries",
+        "manifestFiles",
+        "rdfSegments",
+        "rdfTriples",
+        "logicalArtifacts",
+        "fieldRegistryEntries",
+        "binaryResources",
+        "binaryBytes"
+      ],
+      "properties": {
+        "zipEntries": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 60000
+        },
+        "manifestFiles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 59998
+        },
+        "rdfSegments": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8
+        },
+        "rdfTriples": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 400000000
+        },
+        "logicalArtifacts": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "fieldRegistryEntries": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "binaryResources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000
+        },
+        "binaryBytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000000
+        }
+      }
+    },
+    "gateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "archive-security",
+            "manifest-schema",
+            "profile-contract",
+            "inventory",
+            "contract-bindings",
+            "offline-schema-catalog",
+            "semantic-content-index",
+            "field-registry-coverage",
+            "rdf-syntax",
+            "rdf-segment-order",
+            "rdf-bundle",
+            "core-binding",
+            "ontology-profile",
+            "shacl",
+            "owl2-dl",
+            "reasoner",
+            "binary-sidecars",
+            "reproducibility"
+          ]
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-evaluated"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "prefixItems": [
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "archive-security" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "manifest-schema" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "profile-contract" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "inventory" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "contract-bindings" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "offline-schema-catalog" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "semantic-content-index" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "field-registry-coverage" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "rdf-syntax" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "rdf-segment-order" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "rdf-bundle" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "core-binding" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "ontology-profile" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "shacl" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "owl2-dl" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "reasoner" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "binary-sidecars" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/gateResult" }, { "properties": { "id": { "const": "reproducibility" } } }] }
+      ],
+      "items": false
+    },
+    "toolEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "tool",
+        "version",
+        "report",
+        "reportSha256"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["passed", "failed", "not-evaluated"]
+        },
+        "tool": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "version": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "report": {
+          "oneOf": [
+            { "$ref": "#/$defs/evidencePath" },
+            { "type": "null" }
+          ]
+        },
+        "reportSha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "not-evaluated" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "tool": { "type": "null" },
+              "version": { "type": "null" },
+              "report": { "type": "null" },
+              "reportSha256": { "type": "null" }
+            }
+          },
+          "else": {
+            "properties": {
+              "tool": { "type": "string" },
+              "version": { "type": "string" },
+              "report": { "$ref": "#/$defs/evidencePath" },
+              "reportSha256": { "$ref": "#/$defs/sha256" }
+            }
+          }
+        }
+      ]
+    },
+    "shaclEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "tool",
+        "version",
+        "report",
+        "reportSha256",
+        "violationCount",
+        "warningCount"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["passed", "failed", "not-evaluated"]
+        },
+        "tool": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "version": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "report": {
+          "oneOf": [
+            { "$ref": "#/$defs/evidencePath" },
+            { "type": "null" }
+          ]
+        },
+        "reportSha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "violationCount": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0, "maximum": 1000000 },
+            { "type": "null" }
+          ]
+        },
+        "warningCount": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0, "maximum": 1000000 },
+            { "type": "null" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "not-evaluated" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "tool": { "type": "null" },
+              "version": { "type": "null" },
+              "report": { "type": "null" },
+              "reportSha256": { "type": "null" },
+              "violationCount": { "type": "null" },
+              "warningCount": { "type": "null" }
+            }
+          },
+          "else": {
+            "properties": {
+              "tool": { "type": "string" },
+              "version": { "type": "string" },
+              "report": { "$ref": "#/$defs/evidencePath" },
+              "reportSha256": { "$ref": "#/$defs/sha256" },
+              "violationCount": { "type": "integer" },
+              "warningCount": { "type": "integer" }
+            }
+          }
+        }
+      ]
+    },
+    "reasonerEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "tool",
+        "version",
+        "report",
+        "reportSha256",
+        "consistent",
+        "unsatisfiableClassCount"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["passed", "failed", "not-evaluated"]
+        },
+        "tool": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "version": {
+          "type": ["string", "null"],
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "report": {
+          "oneOf": [
+            { "$ref": "#/$defs/evidencePath" },
+            { "type": "null" }
+          ]
+        },
+        "reportSha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "consistent": { "type": ["boolean", "null"] },
+        "unsatisfiableClassCount": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0, "maximum": 1000000 },
+            { "type": "null" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "not-evaluated" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "tool": { "type": "null" },
+              "version": { "type": "null" },
+              "report": { "type": "null" },
+              "reportSha256": { "type": "null" },
+              "consistent": { "type": "null" },
+              "unsatisfiableClassCount": { "type": "null" }
+            }
+          },
+          "else": {
+            "properties": {
+              "tool": { "type": "string" },
+              "version": { "type": "string" },
+              "report": { "$ref": "#/$defs/evidencePath" },
+              "reportSha256": { "$ref": "#/$defs/sha256" },
+              "consistent": { "type": "boolean" },
+              "unsatisfiableClassCount": { "type": "integer" }
+            }
+          }
+        }
+      ]
+    },
+    "ontologyEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rdfSyntax",
+        "shacl",
+        "owl2Dl",
+        "reasoner"
+      ],
+      "properties": {
+        "rdfSyntax": {
+          "$ref": "#/$defs/toolEvidence"
+        },
+        "shacl": {
+          "$ref": "#/$defs/shaclEvidence"
+        },
+        "owl2Dl": {
+          "$ref": "#/$defs/toolEvidence"
+        },
+        "reasoner": {
+          "$ref": "#/$defs/reasonerEvidence"
+        }
+      }
+    },
+    "buildRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zipSha256",
+        "manifestSha256"
+      ],
+      "properties": {
+        "zipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "reproducibilityEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sourceDateEpoch",
+        "locale",
+        "timezone",
+        "runA",
+        "runB",
+        "byteIdentical"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["passed", "failed", "not-evaluated"]
+        },
+        "sourceDateEpoch": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 315532800,
+              "maximum": 4354819199
+            },
+            { "type": "null" }
+          ]
+        },
+        "locale": {
+          "const": "C.UTF-8"
+        },
+        "timezone": {
+          "const": "UTC"
+        },
+        "runA": {
+          "oneOf": [
+            { "$ref": "#/$defs/buildRun" },
+            { "type": "null" }
+          ]
+        },
+        "runB": {
+          "oneOf": [
+            { "$ref": "#/$defs/buildRun" },
+            { "type": "null" }
+          ]
+        },
+        "byteIdentical": {
+          "type": ["boolean", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "not-evaluated" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "sourceDateEpoch": { "type": "null" },
+              "runA": { "type": "null" },
+              "runB": { "type": "null" },
+              "byteIdentical": { "type": "null" }
+            }
+          }
+        }
+      ]
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "path",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{2,100}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000,
+          "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+        }
+      }
+    }
+  }
+}

@@ -53,6 +53,7 @@ on:
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
       - 'docs/production-pipelines/curriculum-package-provisioning.md'
       - 'scripts/validate_curriculum_package_contracts.py'
+      - 'scripts/validate_curriculum_fwu_owl_package_contracts.py'
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
@@ -106,6 +107,7 @@ on:
       - 'docs/production-pipelines/skillpilot-subject-export-package.md'
       - 'docs/production-pipelines/curriculum-package-provisioning.md'
       - 'scripts/validate_curriculum_package_contracts.py'
+      - 'scripts/validate_curriculum_fwu_owl_package_contracts.py'
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
@@ -165,6 +167,7 @@ jobs:
         run: |
           cd ..
           python -B scripts/validate_curriculum_package_contracts.py
+          python -B scripts/validate_curriculum_fwu_owl_package_contracts.py
           python -B scripts/validate_curriculum_runtime_catalog_contract.py
           python -B scripts/validate_curriculum_schema_catalog_contract.py
           python -B scripts/evaluate_curriculum_package_readiness.py --self-test
