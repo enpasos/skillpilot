@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.controller.PackageCurriculumResourceController;
+import com.skillpilot.backend.controller.PackageCurriculumSourceEvidenceController;
 import com.skillpilot.backend.landscape.RepositoryCurriculumConfiguration;
 import com.skillpilot.backend.service.CompositionViewService;
 import com.skillpilot.backend.ui.CompositionViewUiController;
@@ -57,16 +58,19 @@ class PackageCurriculumRuntimeApiConformanceTest {
                                     new CompositionViewUiController(
                                             context.getBean(CompositionViewService.class)),
                                     new PackageCurriculumResourceController(
-                                            context.getBean(PackageCurriculumResourceState.class)))
+                                            context.getBean(PackageCurriculumResourceState.class)),
+                                    new PackageCurriculumSourceEvidenceController(
+                                            context.getBean(PackageSourceEvidenceState.class)))
                             .build();
 
                     MvcResult catalogResult = mockMvc.perform(get("/api/ui/curriculum-catalog"))
                             .andExpect(status().isOk())
                             .andExpect(content().contentTypeCompatibleWith("application/json"))
-                            .andExpect(jsonPath("$.catalogApiVersion").value("1.1"))
+                            .andExpect(jsonPath("$.catalogApiVersion").value("1.2"))
                             .andReturn();
                     JsonNode catalog = objectMapper.readTree(
                             catalogResult.getResponse().getContentAsByteArray());
+                    String generation = catalog.path("generationSha256").asText();
 
                     String rootLandscapeId = catalog.path("rootLandscapeIds").get(0).asText();
                     JsonNode rootLandscape = findByText(
@@ -105,6 +109,50 @@ class PackageCurriculumRuntimeApiConformanceTest {
 
                     mockMvc.perform(get("/data/cards/fixture.de.json"))
                             .andExpect(status().isNotFound());
+
+                    JsonNode sourceEvidence = catalog.path("sourceEvidence").get(0);
+                    assertThat(sourceEvidence.path("packageId").asText()).isEqualTo("org.example.alpha");
+                    assertThat(sourceEvidence.path("packageVersion").asText()).isEqualTo("1.0.0");
+                    assertThat(sourceEvidence.path("targetLandscapeId").asText())
+                            .isEqualTo(rootLandscapeId);
+                    assertThat(sourceEvidence.path("sourceCollectionCount").asInt()).isOne();
+                    assertThat(sourceEvidence.path("sourceDocumentCount").asInt()).isOne();
+                    assertThat(sourceEvidence.path("sourceGoalCount").asInt()).isOne();
+                    assertThat(sourceEvidence.path("mappingEdgeCount").asInt()).isOne();
+                    assertThat(sourceEvidence.path("goals").get(0).path("goalId").asText())
+                            .isEqualTo("goal-alpha");
+                    assertThat(sourceEvidence.path("goals").get(0).path("jurisdictions").get(0).asText())
+                            .isEqualTo("DE-BY");
+                    String sourceHref = sourceEvidence.path("href").asText() + "/goal-alpha";
+                    mockMvc.perform(get(sourceHref)
+                                    .queryParam("generation", generation)
+                                    .queryParam("jurisdiction", "DE-BY"))
+                            .andExpect(status().isOk())
+                            .andExpect(header().string(
+                                    "Cache-Control", org.hamcrest.Matchers.containsString("immutable")))
+                            .andExpect(header().string(
+                                    "ETag", org.hamcrest.Matchers.matchesPattern("\"[a-f0-9]{64}\"")))
+                            .andExpect(jsonPath("$.generationSha256").value(generation))
+                            .andExpect(jsonPath("$.goalId").value("goal-alpha"))
+                            .andExpect(jsonPath("$.matchType").value("exact"))
+                            .andExpect(jsonPath("$.sourceGoal.sourceGoalId").value("source-goal-alpha"))
+                            .andExpect(jsonPath("$.sourceDocument.sourceDocumentId")
+                                    .value("source-collection-alpha:core"));
+                    mockMvc.perform(get(sourceHref)).andExpect(status().isBadRequest());
+                    mockMvc.perform(get(sourceHref)
+                                    .queryParam("generation", generation)
+                                    .queryParam("jurisdiction", "DE-HE"))
+                            .andExpect(status().isNoContent());
+                    mockMvc.perform(get(sourceEvidence.path("href").asText() + "/unmapped-goal-alpha")
+                                    .queryParam("generation", generation))
+                            .andExpect(status().isNoContent());
+                    mockMvc.perform(get(sourceEvidence.path("href").asText() + "/unknown-goal")
+                                    .queryParam("generation", generation))
+                            .andExpect(status().isNotFound());
+                    mockMvc.perform(get(sourceHref)
+                                    .queryParam("generation", generation)
+                                    .queryParam("jurisdiction", "de-by"))
+                            .andExpect(status().isBadRequest());
                 });
     }
 

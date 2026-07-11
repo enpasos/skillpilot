@@ -5,9 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 interface RuntimeIndexConfig {
   label: string
-  bundledIndexPath: string
   publicIndexPath: string
-  regenerateCommand: string
   minimumItemCount: number
   minimumClassicSourceRoutes: number
   minimumMemConsistentRoutes: number
@@ -26,9 +24,7 @@ const repoRoot = resolve(scriptDir, '../..')
 const runtimeIndexes: RuntimeIndexConfig[] = [
   {
     label: 'Mathematik',
-    bundledIndexPath: 'app/src/data/goal-source-rationales-math-public.json',
     publicIndexPath: 'app/public/data/goal-source-rationales-math-public.json',
-    regenerateCommand: 'npm run quality:goal-source-rationales:math-public',
     minimumItemCount: 600,
     minimumClassicSourceRoutes: 600,
     minimumMemConsistentRoutes: 150,
@@ -46,9 +42,7 @@ const runtimeIndexes: RuntimeIndexConfig[] = [
   },
   {
     label: 'Physik',
-    bundledIndexPath: 'app/src/data/goal-source-rationales-physics-public.json',
     publicIndexPath: 'app/public/data/goal-source-rationales-physics-public.json',
-    regenerateCommand: 'npm run quality:goal-source-rationales:physics-public',
     minimumItemCount: 350,
     minimumClassicSourceRoutes: 350,
     minimumMemConsistentRoutes: 0,
@@ -112,7 +106,7 @@ function validateIndex(
   const request = asRecord(payload.request)
   const summary = asRecord(payload.summary)
   const items = Array.isArray(payload.items) ? payload.items.map(asRecord) : []
-  const pathLabel = config.bundledIndexPath
+  const pathLabel = config.publicIndexPath
 
   if (payload.schemaVersion !== 1) {
     failures.push(`${pathLabel}: schemaVersion must be 1`)
@@ -187,23 +181,15 @@ const failures: string[] = []
 const passedSummaries: string[] = []
 
 runtimeIndexes.forEach((config) => {
-  const bundledIndex = readIndex(config.bundledIndexPath, failures)
   const publicIndex = readIndex(config.publicIndexPath, failures)
-
-  if (bundledIndex !== null && publicIndex !== null && bundledIndex.raw !== publicIndex.raw) {
-    failures.push(
-      `${config.bundledIndexPath} and ${config.publicIndexPath} differ; regenerate with ${config.regenerateCommand}`,
-    )
-  }
-
-  if (bundledIndex !== null) {
-    validateIndex(config, bundledIndex.payload, failures)
-    const summary = asRecord(bundledIndex.payload.summary)
+  if (publicIndex !== null) {
+    validateIndex(config, publicIndex.payload, failures)
+    const summary = asRecord(publicIndex.payload.summary)
     passedSummaries.push(
       [
         `${config.label}:`,
         `items=${summary.resolvedGoals ?? 'unknown'}`,
-        `sha256=${sha256(bundledIndex.raw).slice(0, 12)}`,
+        `sha256=${sha256(publicIndex.raw).slice(0, 12)}`,
       ].join(' '),
     )
   }

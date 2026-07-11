@@ -59,7 +59,7 @@ class JsonCurriculumPackageLoaderTest {
                 .isEqualTo("external-tool");
         CurriculumRuntimeSnapshot.Artifact auditArtifact = snapshot.artifactsByKey().get(
                 new CurriculumRuntimeSnapshot.ArtifactKey("org.example.alpha", "metadata/audit.json"));
-        assertThat(snapshot.artifactsByKey()).hasSize(13);
+        assertThat(snapshot.artifactsByKey()).hasSize(14);
         assertThat(auditArtifact.runtimeRequired()).isFalse();
         assertThat(auditArtifact.semanticBindingKind()).isEqualTo("excluded-generated");
         assertThat(auditArtifact.licenseExpression()).isEqualTo("Apache-2.0");
@@ -82,6 +82,17 @@ class JsonCurriculumPackageLoaderTest {
                 .satisfies(artifact -> {
                     assertThat(artifact.runtimeRequired()).isFalse();
                     assertThat(artifact.normalizationRole()).isEqualTo("official-source-index");
+                });
+        assertThat(snapshot.artifactsByRole().get("source-goal-reference-index"))
+                .singleElement()
+                .satisfies(artifact -> {
+                    assertThat(artifact.runtimeRequired()).isFalse();
+                    assertThat(artifact.logicalId())
+                            .isEqualTo(expected.landscapeId() + ":source-goal-references");
+                    assertThat(artifact.normalizationRole()).isEqualTo("source-goal-reference-index");
+                    assertThat(artifact.validationSchemaId())
+                            .isEqualTo("https://skillpilot.com/schemas/curriculum-package/v1/"
+                                    + "source-goal-reference-index.schema.json");
                 });
         assertThat(snapshot.definitionCount()).isEqualTo(1);
         assertThat(snapshot.landscapesById()).isUnmodifiable();

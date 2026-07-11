@@ -127,7 +127,7 @@ const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
 
 const defaultLandscapePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
-const defaultRuntimeIndexPath = 'app/src/data/goal-source-rationales-math-public.json'
+const defaultRuntimeIndexPath = 'app/public/data/goal-source-rationales-math-public.json'
 const defaultOutputJsonPath = 'docs/qa-ci/status/goal-source-rationale-coverage.json'
 const defaultOutputMarkdownPath = 'docs/qa-ci/status/goal-source-rationale-coverage.md'
 

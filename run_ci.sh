@@ -62,6 +62,9 @@ npm run test:package-landscape-model
 echo "--> Testing Runtime Curriculum Catalog Consumer"
 npm run test:runtime-curriculum-catalog
 
+echo "--> Testing Package Goal Source Evidence Consumer"
+npm run test:package-goal-source-evidence
+
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 

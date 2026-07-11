@@ -9,17 +9,20 @@ import java.util.Objects;
 /** Immutable, path-free projection of the active package runtime catalog. */
 public final class CurriculumCatalogService {
 
-    private static final String CATALOG_API_VERSION = "1.1";
+    private static final String CATALOG_API_VERSION = "1.2";
 
     private final CurriculumCatalogResponse catalog;
 
     public CurriculumCatalogService(
             CurriculumRuntimeSnapshot snapshot,
-            PackageCurriculumResourceState resourceState) {
+            PackageCurriculumResourceState resourceState,
+            PackageSourceEvidenceState sourceEvidenceState) {
         Objects.requireNonNull(snapshot, "snapshot");
         Objects.requireNonNull(resourceState, "resourceState");
-        if (!snapshot.generationSha256().equals(resourceState.generationSha256())) {
-            throw new CurriculumPackageException("Catalog and package resource generations differ");
+        Objects.requireNonNull(sourceEvidenceState, "sourceEvidenceState");
+        if (!snapshot.generationSha256().equals(resourceState.generationSha256())
+                || !snapshot.generationSha256().equals(sourceEvidenceState.generationSha256())) {
+            throw new CurriculumPackageException("Catalog and package runtime generations differ");
         }
         Map<String, String> packageVersions = new LinkedHashMap<>();
         snapshot.packages().forEach(descriptor ->
@@ -114,7 +117,8 @@ public final class CurriculumCatalogService {
                 views,
                 offerings,
                 decks,
-                resources);
+                resources,
+                sourceEvidenceState.catalogEntries());
     }
 
     public CurriculumCatalogResponse getCatalog() {

@@ -151,9 +151,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   },
   {
     artifactPaths: [
-      'app/src/data/goal-source-rationales-math-public.json',
       'app/public/data/goal-source-rationales-math-public.json',
-      'app/src/data/goal-source-rationales-physics-public.json',
       'app/public/data/goal-source-rationales-physics-public.json',
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
@@ -178,7 +176,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     sourceOfTruth: [
       'app/scripts/reportGoalSourceRationaleCoverage.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
-      'app/src/data/goal-source-rationales-math-public.json',
+      'app/public/data/goal-source-rationales-math-public.json',
     ],
     regenerateWith: 'cd app && npm run quality:goal-source-rationale-coverage',
   },

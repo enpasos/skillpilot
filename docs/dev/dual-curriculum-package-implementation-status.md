@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-006c-f – paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten`
-- Letzter vollständig abgeschlossener Schritt: `DPK-006c-e – Frontend auf katalogisierte Roots, Offerings und Ressourcen umgestellt`
-- Solider Ausgangsstand: `DPK-006c-e`
-- Abschluss-Gate für DPK-006c-e: Frontend-Katalogconsumer mit strikter Package-/Repository-/Fehlertrennung, katalogisierte Root-/Offering-/Deck-/Bildpfade, API-Integration und vollständiges `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-007 – hermetischer Package-only Mathematik-Smoke`
+- Letzter vollständig abgeschlossener Schritt: `DPK-006c-f – paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten`
+- Solider Ausgangsstand: `DPK-006c-f`
+- Abschluss-Gate für DPK-006c-f: generationgebundene zielgenaue Quellen-Evidenz, kein eingebetteter Source-Rationale-Index, reale Paketprobe und vollständiges `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -17,7 +17,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-f/007: Quellenanzeige und hermetischen Smoke-Test umstellen |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-007: hermetischen Smoke-Test ohne fachliche Repository-/App-Fallbacks bestehen |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -205,6 +205,24 @@ Qualitätsnachweis:
 - konditionales Controller-Gate für Package- gegenüber Repository-Modus, TypeScript, ESLint und vollständiges `./run_ci.sh` grün.
 
 Bewusste Grenze: Die Quellenbegründungen in `GoalCard` stammen noch aus zwei eingebrannten, zusammen rund 69 MB großen Mathematik-/Physik-Indizes und dürfen deshalb noch nicht als hermetischer Package-Pfad gelten. Ihre zielgenaue, generationgebundene Ablösung ist DPK-006c-f. Erst DPK-007 beweist den vollständigen Betrieb ohne Curriculum-Checkout und fachliche App-Fallbacks. Offene fachliche und rechtliche Human-Gates bleiben unverändert.
+
+## Abgeschlossener Teilschritt: DPK-006c-f
+
+DPK-006c-f löst die letzte direkt eingebrannte fachliche Frontendquelle ab. Catalog API `1.2` veröffentlicht für jedes Paket mit SourceGoal-Evidenz eine pfadfreie Discovery aus Paket, Version, Ziellandschaft, geprüften Umfangszahlen und den tatsächlich verfügbaren Ziel-/Jurisdiktionspaaren. Der Browser zeigt das Quellen-Symbol ausschließlich aus dieser Discovery und lädt erst beim Öffnen genau einen Goal-Beleg. Der Request bindet die aktive Kataloggeneration als URL-Parameter; dadurch bleiben ETag und `immutable`-Cache auch nach einer späteren Lock-Aktivierung korrekt getrennt. Fehler, leere Evidenz und ungültige Antworten bleiben ohne Repository-Fallback geschlossen.
+
+Der Backend-State liest ausschließlich das manifestgebundene `source-goal-reference-index`-Artefakt. Er prüft Rolle, Schema, logische Bindung, sichere Bytes, UTF-8-Text-Hashes, alle Counts sowie Collection-, Landscape-, Document-, Mapping- und Goal-Cross-References. Routen bevorzugen `exact` vor `partial` und erhalten innerhalb eines Typs die deklarierte globale Mapping-Kantenreihenfolge. Bekannte Ziele und Mappingziele sind auf die deklarierte Ziellandschaft begrenzt. Ein Paket ohne dieses optionale Evidenzartefakt bleibt lauffähig und veröffentlicht keine Discovery; ein Duplikat oder eine inkonsistente Bindung blockiert den Start.
+
+Die bisherigen Mathematik-/Physik-Indizes bleiben nur noch als je eine öffentliche Repository-Authoring-Kompatibilitätsdatei erhalten. Ihre zusammen rund 69 MB großen Duplikate unter `app/src/data` wurden entfernt. Der Produktionsbuild enthält statt zweier großer Hash-Assets nur einen etwa 2,73-kB großen dynamischen Repository-Loader; weder JavaScript noch PWA-Precache enthalten die Payloads. Die UI benennt `sourceText` korrekt als geprüfte quellennahe Formulierung und behauptet ausdrücklich kein wörtliches amtliches Zitat.
+
+Qualitätsnachweis:
+
+- Backend-State-, Controller-, Modus-, Konfigurations- und API-Kettentests für 200/204/400/404, Generation, Cache, optionale/duplizierte Rollen, Hash-/Count-/Join-Drift, Ziellandschaft und Routenauswahl;
+- reale 1,7-GB-Store-Probe mit 31 Collections, 55 Dokumenten, 9.977 SourceGoals, 33.382 Mappingkanten, 869 belegten Zielgoals und einer echten `DE-BY`-`exact`-Route;
+- ausführbare Frontend-Selftests für Catalog Discovery, Jurisdiktions-/Generationsbindung, strikte Payloadprüfung und sämtliche fail-closed Fehlerpfade;
+- Vite-/PWA-Build-Gate gegen Hash-Assets, Inline-Payloads und Precache-Einträge sowie Repository-Index-/Generated-Report-Konsistenz;
+- TypeScript, ESLint, Diff-Gates und vollständiges `./run_ci.sh` grün.
+
+Bewusste Grenze: DPK-006c-f beweist die einzelnen Backend- und Browserverträge, aber noch nicht den gesamten gestarteten Anwendungsfluss in einer Umgebung ohne Curriculum-Checkout und ohne fachliche statische App-Daten. Diesen Dateizugriffs-/Resource-Trace erbringt DPK-007. Offene Source-Text-, Bildfachlichkeits- und Rechte-Reviews werden durch die technische Quellenanzeige nicht geschlossen.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -419,6 +437,7 @@ Abnahme:
 | DPK-006c-c | Runtime-Katalog, Views und Offerings generationsgebunden und exakt aufgelöst; freie Merge-/Scope-Heuristiken im Package-Modus entfernt und Verbraucher bei nicht angebotenen Scopes fail-closed geschaltet | State-/Konfigurations-/Controller-/Consumer-Gates; Repository-Regression; reale Probe mit 88 Views und 88 Offerings; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-d | Decks, Karten und Bilder ziel-, paket-, versions- und generationsgebunden aufgelöst; Package-Modus ohne Repository-, Classpath- oder Static-Data-Fallback | Resolver-/Binding-/Tamper-/Routing-/Cache-/Modus-Gates; reale Probe mit 12 Decks/128 Karten, 756 Bildern und 69 externen Ressourcen; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-e | Frontend strikt zwischen Package-, Repository- und Fehlerzustand getrennt und auf katalogisierte Roots, exakte Offerings, Decks, Bilder und externe Ressourcen umgestellt | TypeScript-Adapter-/Negativmatrix; Backend-API-Kette; Modus-/Fallback-Gates; TypeScript/ESLint; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-006c-f | Quellenanzeige generationgebunden aus paketierter SourceGoal-Evidenz; keine eingebetteten fachlichen Indizes | State-/API-/Frontend-Negativmatrix; reale 31/55/9.977/33.382/869-Probe; Build-/Precache-Gates; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -433,16 +452,16 @@ Abnahme:
 | DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen, strikt validieren und Human-Review-Schuld als maschinenlesbare Release-Gates führen | DPK-002–DPK-004 | `complete` |
 | DPK-005a | P1 | Package-Trust, File-Semantik, deterministisches ZIP32 sowie Redistribution-/Source-Review-Lanes | DPK-002–DPK-004 | `complete` |
 | DPK-005b | P1 | Vollständiges reales Mathematik-Inventar und ZIP materialisieren, paketlokal validieren und reproduzieren | DPK-005a | `complete` |
-| DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `in_progress` |
+| DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `complete` |
 | DPK-006a | P1 | Exakten vorvalidierten Store read-only laden und atomaren unveränderlichen Runtime-Snapshot aufbauen | DPK-005 | `complete` |
 | DPK-006b | P1 | ZIP sicher provisionieren, content-adressiert promoten sowie Lock per CAS aktivieren und zurückrollen | DPK-006a | `complete` |
-| DPK-006c | P1 | Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen | DPK-006b | `in_progress` |
+| DPK-006c | P1 | Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen | DPK-006b | `complete` |
 | DPK-006c-a | P1 | Vollständiges Manifestinventar, sichere Artefaktfassade und Runtime-Modellparität | DPK-006b | `complete` |
 | DPK-006c-b | P1 | Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen | DPK-006c-a | `complete` |
 | DPK-006c-c | P1 | Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen | DPK-006c-b | `complete` |
 | DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `complete` |
 | DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `complete` |
-| DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `not_started` |
+| DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `complete` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
@@ -471,6 +490,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006c-c | Exakte View-/Offering-Indizes; Single-/Merge-/Scope-/Order-/Visibility-/Immutability-Gates; konditionale Repository-/Package-Services; Catalog-/Offering-API; Consumer-Fail-closed; reale 88/88-Paketprobe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-d | Exakte Deck-/Goal-/Locale- und Resource-/PublicUrl-Indizes; Semantic-Binding-/Capability-/Owner-/Limit-/Tamper-Gates; konditionale Services/Controller; Static-Fallback-Sperre; pfadfreie Hrefs; reale 12/128/756/69-Paketprobe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-e | Frontend-Katalogadapter und Modustrennung; Root-/Offering-/Deck-/Resource-Resolver samt Negativmatrix; Backend-API-Kette und Controller-Modus; TypeScript, ESLint, Doku- und Workflow-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-006c-f | SourceGoal-Evidence-State und 200/204/400/404-API; Generation-/Cache-/Hash-/Count-/Crossref-/Order-/Optionalitäts-Gates; Frontend-Discovery und Lazy-Fetch; kein großer Build-/Precache-Index; reale 31/55/9.977/33.382/869-Probe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

@@ -32,13 +32,22 @@ final class CurriculumPackageTestFixture {
     }
 
     TestStore create(Path storeRoot, PackageSpec... specs) throws IOException {
+        return create(storeRoot, false, specs);
+    }
+
+    TestStore createWithMixedSourceEvidence(Path storeRoot, PackageSpec spec) throws IOException {
+        return create(storeRoot, true, spec);
+    }
+
+    private TestStore create(Path storeRoot, boolean mixedSourceEvidence, PackageSpec... specs)
+            throws IOException {
         Files.createDirectories(storeRoot.resolve("locks"));
         Files.createDirectories(storeRoot.resolve("install-records"));
         Files.createDirectories(storeRoot.resolve("validation-reports"));
         List<PackageFixture> packages = new ArrayList<>();
         List<Map<String, Object>> lockEntries = new ArrayList<>();
         for (PackageSpec spec : specs) {
-            PackageFixture packageFixture = createPackage(storeRoot, spec);
+            PackageFixture packageFixture = createPackage(storeRoot, spec, mixedSourceEvidence);
             packages.add(packageFixture);
             lockEntries.add(packageFixture.lockEntry());
         }
@@ -49,7 +58,8 @@ final class CurriculumPackageTestFixture {
         return new TestStore(storeRoot, lockPath, List.copyOf(packages));
     }
 
-    private PackageFixture createPackage(Path storeRoot, PackageSpec spec) throws IOException {
+    private PackageFixture createPackage(
+            Path storeRoot, PackageSpec spec, boolean mixedSourceEvidence) throws IOException {
         String repeated = String.valueOf(spec.hashCharacter()).repeat(64);
         String outerZipSha256 = repeated;
         String contentDigest = "sha256:" + repeated;
@@ -79,10 +89,14 @@ final class CurriculumPackageTestFixture {
                 Map.entry("subject", "Fixture subject"),
                 Map.entry("country", "DE"),
                 Map.entry("schoolType", "Gymnasium"),
-                Map.entry("goals", List.of(Map.of(
-                        "id", "goal-" + spec.suffix(),
-                        "title", "Fixture goal",
-                        "applicability", Map.of("jurisdiction", List.of("DE-HE"))))))));
+                Map.entry("goals", List.of(
+                        Map.of(
+                                "id", "goal-" + spec.suffix(),
+                                "title", "Fixture goal",
+                                "applicability", Map.of("jurisdiction", List.of("DE-HE"))),
+                        Map.of(
+                                "id", "unmapped-goal-" + spec.suffix(),
+                                "title", "Fixture goal without source evidence"))))));
         if (spec.moduleLandscapeId() != null) {
             artifacts.put("data/canonical/module.landscape.json", jsonBytes(Map.ofEntries(
                     Map.entry("landscapeId", spec.moduleLandscapeId()),
@@ -96,6 +110,9 @@ final class CurriculumPackageTestFixture {
         String sourceCollectionId = "source-collection-" + spec.suffix();
         String sourceLandscapeId = "source-landscape-" + spec.suffix();
         String sourceGoalId = "source-goal-" + spec.suffix();
+        String partialSourceGoalId = "source-goal-partial-" + spec.suffix();
+        String preferredExactSourceGoalId = "z-source-goal-exact-first-" + spec.suffix();
+        String sourceDocumentId = sourceCollectionId + ":core";
         String mappingCollectionId = "mapping-collection-" + spec.suffix();
         artifacts.put("data/sources/source-index.json", jsonBytes(Map.ofEntries(
                 Map.entry("$schema", "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json"),
@@ -111,20 +128,112 @@ final class CurriculumPackageTestFixture {
                         Map.entry("stage", "SekI"),
                         Map.entry("documentCount", 1),
                         Map.entry("documents", List.of(Map.ofEntries(
-                                Map.entry("sourceDocumentId", sourceCollectionId + ":core"),
+                                Map.entry("sourceDocumentId", sourceDocumentId),
                                 Map.entry("sourceKey", "core"),
                                 Map.entry("title", "Fixture curriculum source"),
                                 Map.entry("role", "binding-core"),
                                 Map.entry("semanticType", "curriculum"),
                                 Map.entry("official", true),
                                 Map.entry("url", "https://example.org/curriculum/" + spec.suffix()))))))))));
+        String sourceText = "Fixture source wording " + spec.suffix();
+        List<Map<String, Object>> sourceGoals = new ArrayList<>();
+        if (mixedSourceEvidence) {
+            String partialSourceText = "Fixture partial source wording " + spec.suffix();
+            sourceGoals.add(Map.ofEntries(
+                    Map.entry("sourceGoalId", partialSourceGoalId),
+                    Map.entry("sourceDocumentId", sourceDocumentId),
+                    Map.entry("title", "Fixture partial source goal"),
+                    Map.entry("description", "The learner can partly use the fixture source wording."),
+                    Map.entry("sourceText", partialSourceText),
+                    Map.entry(
+                            "sourceTextSha256",
+                            "sha256:" + CurriculumPackageFileReader.sha256(
+                                    partialSourceText.getBytes(java.nio.charset.StandardCharsets.UTF_8))),
+                    Map.entry("locator", Map.ofEntries(
+                            Map.entry("passageId", "fixture-partial-passage-" + spec.suffix()),
+                            Map.entry("topicCode", "FIXTURE-PARTIAL-" + spec.suffix()),
+                            Map.entry("sourceSpan", "Fixture partial span " + spec.suffix()),
+                            Map.entry("sourceRef", "Fixture source, partial section " + spec.suffix()),
+                            Map.entry("sourcePage", 8)))));
+        }
+        sourceGoals.add(Map.ofEntries(
+                Map.entry("sourceGoalId", sourceGoalId),
+                Map.entry("sourceDocumentId", sourceDocumentId),
+                Map.entry("title", "Fixture source goal"),
+                Map.entry("description", "The learner can use the fixture source wording."),
+                Map.entry("sourceText", sourceText),
+                Map.entry(
+                        "sourceTextSha256",
+                        "sha256:" + CurriculumPackageFileReader.sha256(
+                                sourceText.getBytes(java.nio.charset.StandardCharsets.UTF_8))),
+                Map.entry("parentBulletText", "Fixture parent bullet"),
+                Map.entry("locator", Map.ofEntries(
+                        Map.entry("passageId", "fixture-passage-" + spec.suffix()),
+                        Map.entry("topicCode", "FIXTURE-" + spec.suffix()),
+                        Map.entry("sourceSpan", "Fixture span " + spec.suffix()),
+                        Map.entry("sourceRef", "Fixture source, section " + spec.suffix()),
+                        Map.entry("sourcePage", 7))),
+                Map.entry("classification", Map.ofEntries(
+                        Map.entry("granularity", "officialContentStandard"),
+                        Map.entry("stage", "SekI"),
+                        Map.entry("area", "Fixture area")))));
+        if (mixedSourceEvidence) {
+            String preferredSourceText = "Fixture preferred exact source wording " + spec.suffix();
+            sourceGoals.add(Map.ofEntries(
+                    Map.entry("sourceGoalId", preferredExactSourceGoalId),
+                    Map.entry("sourceDocumentId", sourceDocumentId),
+                    Map.entry("title", "Fixture preferred exact source goal"),
+                    Map.entry("description", "The learner can use the preferred exact source wording."),
+                    Map.entry("sourceText", preferredSourceText),
+                    Map.entry(
+                            "sourceTextSha256",
+                            "sha256:" + CurriculumPackageFileReader.sha256(
+                                    preferredSourceText.getBytes(java.nio.charset.StandardCharsets.UTF_8))),
+                    Map.entry("locator", Map.ofEntries(
+                            Map.entry("passageId", "fixture-preferred-passage-" + spec.suffix()),
+                            Map.entry("topicCode", "FIXTURE-PREFERRED-" + spec.suffix()),
+                            Map.entry("sourceSpan", "Fixture preferred exact span " + spec.suffix()),
+                            Map.entry("sourceRef", "Fixture source, preferred section " + spec.suffix()),
+                            Map.entry("sourcePage", 9)))));
+        }
+        int sourceGoalCount = sourceGoals.size();
+        artifacts.put("data/sources/source-goal-references.json", jsonBytes(Map.ofEntries(
+                Map.entry(
+                        "$schema",
+                        "https://skillpilot.com/schemas/curriculum-package/v1/"
+                                + "source-goal-reference-index.schema.json"),
+                Map.entry("sourceGoalReferenceFormatVersion", "1.0"),
+                Map.entry("targetLandscapeId", landscapeId),
+                Map.entry("sourceCollectionCount", 1),
+                Map.entry("sourceGoalCount", sourceGoalCount),
+                Map.entry("collections", List.of(Map.ofEntries(
+                        Map.entry("sourceCollectionId", sourceCollectionId),
+                        Map.entry("sourceLandscapeId", sourceLandscapeId),
+                        Map.entry("sourceGoalCount", sourceGoalCount),
+                        Map.entry("sourceGoals", sourceGoals)))))));
+        List<Map<String, Object>> mappingEdges = new ArrayList<>();
+        if (mixedSourceEvidence) {
+            mappingEdges.add(Map.of(
+                    "sourceGoalId", partialSourceGoalId,
+                    "canonicalGoalId", "goal-" + spec.suffix(),
+                    "matchType", "partial"));
+            mappingEdges.add(Map.of(
+                    "sourceGoalId", preferredExactSourceGoalId,
+                    "canonicalGoalId", "goal-" + spec.suffix(),
+                    "matchType", "exact"));
+        }
+        mappingEdges.add(Map.of(
+                "sourceGoalId", sourceGoalId,
+                "canonicalGoalId", "goal-" + spec.suffix(),
+                "matchType", "exact"));
+        int mappingEdgeCount = mappingEdges.size();
         artifacts.put("data/mappings/source-to-canonical.json", jsonBytes(Map.ofEntries(
                 Map.entry("$schema", "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"),
                 Map.entry("mappingFormatVersion", "1.0"),
                 Map.entry("targetLandscapeId", landscapeId),
                 Map.entry("mappingCollectionCount", 1),
-                Map.entry("decisionCount", 1),
-                Map.entry("mappingEdgeCount", 1),
+                Map.entry("decisionCount", mappingEdgeCount),
+                Map.entry("mappingEdgeCount", mappingEdgeCount),
                 Map.entry("collections", List.of(Map.ofEntries(
                         Map.entry("mappingCollectionId", mappingCollectionId),
                         Map.entry("sourceCollectionId", sourceCollectionId),
@@ -133,12 +242,9 @@ final class CurriculumPackageTestFixture {
                         Map.entry("jurisdiction", "DE-BY"),
                         Map.entry("subject", "Fixture subject"),
                         Map.entry("stage", "SekI"),
-                        Map.entry("inputDecisionCount", 1),
-                        Map.entry("mappingEdgeCount", 1),
-                        Map.entry("edges", List.of(Map.of(
-                                "sourceGoalId", sourceGoalId,
-                                "canonicalGoalId", "goal-" + spec.suffix(),
-                                "matchType", "exact")))))))));
+                        Map.entry("inputDecisionCount", mappingEdgeCount),
+                        Map.entry("mappingEdgeCount", mappingEdgeCount),
+                        Map.entry("edges", mappingEdges)))))));
         List<Map<String, Object>> viewIndexEntries = new ArrayList<>();
         viewIndexEntries.add(Map.of(
                         "viewId", viewId,
@@ -338,6 +444,7 @@ final class CurriculumPackageTestFixture {
                 Map.entry("data/runtime/catalog.json", "runtime-catalog"),
                 Map.entry("data/mappings/source-to-canonical.json", "mapping"),
                 Map.entry("data/sources/source-index.json", "source-index"),
+                Map.entry("data/sources/source-goal-references.json", "source-goal-reference-index"),
                 Map.entry("metadata/audit.json", "audit-report"),
                 Map.entry("assets/fixture.png", "binary-asset")));
         if (spec.moduleLandscapeId() != null) {
@@ -362,31 +469,48 @@ final class CurriculumPackageTestFixture {
                 String normalizationRole = switch (role) {
                     case "mapping" -> "source-to-canonical-mappings";
                     case "source-index" -> "official-source-index";
+                    case "source-goal-reference-index" -> "source-goal-reference-index";
                     default -> role;
                 };
-                String logicalId = role.equals("card-deck")
-                        ? deckId + "@de-DE"
-                        : "fixture:" + path;
+                String logicalId = switch (role) {
+                    case "card-deck" -> deckId + "@de-DE";
+                    case "source-goal-reference-index" -> landscapeId + ":source-goal-references";
+                    default -> "fixture:" + path;
+                };
                 semanticBinding = Map.of(
                         "kind", "logical-artifact",
                         "logicalId", logicalId,
                         "normalizationRole", normalizationRole);
             }
-            manifestFiles.add(Map.ofEntries(
-                    Map.entry("path", path),
-                    Map.entry("role", role),
-                    Map.entry("mediaType", path.endsWith(".json") ? "application/json" : "image/png"),
-                    Map.entry("bytes", artifact.getValue().length),
-                    Map.entry("sha256", CurriculumPackageFileReader.sha256(artifact.getValue())),
-                    Map.entry(
-                            "runtimeRequired",
-                            !path.equals("metadata/audit.json")
-                                    && !path.equals("data/mappings/source-to-canonical.json")
-                                    && !path.equals("data/sources/source-index.json")),
-                    Map.entry("semanticBinding", semanticBinding),
-                    Map.entry("licenseExpression", "Apache-2.0"),
-                    Map.entry("provenanceClass", "software-contract"),
-                    Map.entry("redistributionStatus", "allowed")));
+            Map<String, Object> manifestFile = new LinkedHashMap<>();
+            manifestFile.put("path", path);
+            manifestFile.put("role", role);
+            manifestFile.put("mediaType", path.endsWith(".json") ? "application/json" : "image/png");
+            manifestFile.put("bytes", artifact.getValue().length);
+            manifestFile.put("sha256", CurriculumPackageFileReader.sha256(artifact.getValue()));
+            manifestFile.put(
+                    "runtimeRequired",
+                    !path.equals("metadata/audit.json")
+                            && !path.equals("data/mappings/source-to-canonical.json")
+                            && !path.equals("data/sources/source-index.json")
+                            && !path.equals("data/sources/source-goal-references.json"));
+            if (role.equals("source-goal-reference-index")) {
+                manifestFile.put(
+                        "validationSchemaId",
+                        "https://skillpilot.com/schemas/curriculum-package/v1/"
+                                + "source-goal-reference-index.schema.json");
+            }
+            manifestFile.put("semanticBinding", semanticBinding);
+            if (role.equals("source-goal-reference-index")) {
+                manifestFile.put("licenseExpression", null);
+                manifestFile.put("provenanceClass", "official-source-metadata");
+                manifestFile.put("redistributionStatus", "review-required");
+            } else {
+                manifestFile.put("licenseExpression", "Apache-2.0");
+                manifestFile.put("provenanceClass", "software-contract");
+                manifestFile.put("redistributionStatus", "allowed");
+            }
+            manifestFiles.add(manifestFile);
         }
 
         Map<String, Object> manifest = new LinkedHashMap<>();
@@ -489,7 +613,13 @@ final class CurriculumPackageTestFixture {
                 resourceId,
                 publicUrl,
                 externalResourceId,
-                externalUrl);
+                externalUrl,
+                sourceCollectionId,
+                sourceLandscapeId,
+                sourceGoalId,
+                mixedSourceEvidence ? partialSourceGoalId : null,
+                mixedSourceEvidence ? preferredExactSourceGoalId : null,
+                sourceDocumentId);
     }
 
     void writeJson(Path path, Object value) throws IOException {
@@ -557,6 +687,12 @@ final class CurriculumPackageTestFixture {
             String resourceId,
             String publicUrl,
             String externalResourceId,
-            String externalUrl) {
+            String externalUrl,
+            String sourceCollectionId,
+            String sourceLandscapeId,
+            String sourceGoalId,
+            String partialSourceGoalId,
+            String preferredExactSourceGoalId,
+            String sourceDocumentId) {
     }
 }

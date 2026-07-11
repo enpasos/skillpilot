@@ -64,6 +64,16 @@ public class CurriculumPackageConfiguration {
     }
 
     @Bean
+    PackageSourceEvidenceState packageSourceEvidenceState(
+            CurriculumRuntimeSnapshotProvider snapshotProvider,
+            PackageCurriculumDomainState domainState,
+            CurriculumPackageArtifactReader artifactReader,
+            ObjectMapper objectMapper) {
+        return PackageSourceEvidenceState.load(
+                snapshotProvider.current(), domainState, artifactReader, objectMapper);
+    }
+
+    @Bean
     DeckResourceService packageDeckResourceService(PackageCurriculumResourceState resourceState) {
         return new DeckResourceService(resourceState);
     }
@@ -72,13 +82,15 @@ public class CurriculumPackageConfiguration {
     CurriculumCatalogService curriculumCatalogService(
             CurriculumRuntimeSnapshotProvider snapshotProvider,
             PackageCurriculumDomainState domainState,
-            PackageCurriculumResourceState resourceState) {
+            PackageCurriculumResourceState resourceState,
+            PackageSourceEvidenceState sourceEvidenceState) {
         CurriculumRuntimeSnapshot snapshot = snapshotProvider.current();
         if (!snapshot.generationSha256().equals(domainState.generationSha256())
-                || !snapshot.generationSha256().equals(resourceState.generationSha256())) {
+                || !snapshot.generationSha256().equals(resourceState.generationSha256())
+                || !snapshot.generationSha256().equals(sourceEvidenceState.generationSha256())) {
             throw new CurriculumPackageException("Catalog and package domain generations differ");
         }
-        return new CurriculumCatalogService(snapshot, resourceState);
+        return new CurriculumCatalogService(snapshot, resourceState, sourceEvidenceState);
     }
 
     @Bean

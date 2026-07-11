@@ -151,8 +151,11 @@ The rendered route still prefers `DE-BY` where available so that the configured 
 
 It writes:
 
-- `app/src/data/goal-source-rationales-math-public.json`
 - `app/public/data/goal-source-rationales-math-public.json`
+
+This file is a repository-mode authoring compatibility index only. Package mode discovers and
+loads source evidence lazily from the active curriculum package and never imports this index into
+the JavaScript bundle.
 
 The current index is a scalable runtime step, not the final national coverage promise. It expands the UI from three hand-picked PoC goals to all currently source-backed relevant Mathematik leaf goals that the generator can derive from mapping reviews. Remaining uncovered leaf goals stay in the all-relevant report and gap-issue queue; relation rationales for `requires` and `contains` are still a separate rollout lane.
 
