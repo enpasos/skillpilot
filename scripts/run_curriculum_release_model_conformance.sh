@@ -89,6 +89,7 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --release-root "${OUTPUT_A}" \
   --output-dir "${PACKAGE_OUTPUT}" \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
+  --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
   --expect-entry-count 913 \
   --expect-manifest-file-count 911 \
@@ -99,6 +100,45 @@ npm --prefix app run --silent export:full-standalone-package -- \
 python3 -B scripts/validate_full_standalone_curriculum_package.py \
   --zip "${PACKAGE_ZIP}" \
   --report "${PACKAGE_VALIDATION_REPORT}"
+
+python3 -B - "${PACKAGE_ZIP}" "${PACKAGE_VALIDATION_REPORT}" <<'PY'
+import hashlib
+import json
+import sys
+import zipfile
+from pathlib import Path
+
+zip_path = Path(sys.argv[1])
+report = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+with zipfile.ZipFile(zip_path) as archive:
+    root = report["package"]["archiveRoot"]
+    manifest_bytes = archive.read(f"{root}/metadata/manifest.json")
+    manifest = json.loads(manifest_bytes)
+    closure_records = [
+        record for record in manifest["files"]
+        if record.get("role") == "dependency-closure"
+    ]
+    if len(closure_records) != 1:
+        raise SystemExit("real package has no exact dependency-closure record")
+    closure = json.loads(archive.read(f"{root}/{closure_records[0]['path']}"))
+
+expected = {
+    "manifestSha256": hashlib.sha256(manifest_bytes).hexdigest(),
+    "closureDigest": closure["closureDigest"],
+    "definitionIndexDigest": closure["definitionIndexDigest"],
+}
+actual = {key: report["package"].get(key) for key in expected}
+if report.get("reportFormatVersion") != 2:
+    raise SystemExit("real package validator report is not protocol v2")
+if report.get("validatorId") != "skillpilot-full-standalone-package-validator-v2":
+    raise SystemExit("real package validator identity is not v2")
+if manifest.get("supportedSkillpilotSoftware") != ">=0.1.0 <1.0.0":
+    raise SystemExit("real package does not accept curriculum-consumer API version 0.1.0")
+if actual != expected:
+    raise SystemExit(f"real package validator binding mismatch: {actual!r} != {expected!r}")
+if any(gate.get("status") != "passed" for gate in report.get("gates", {}).values()):
+    raise SystemExit("real package validator report does not pass every gate")
+PY
 
 python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --zip "${PACKAGE_ZIP}" \

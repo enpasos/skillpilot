@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-006 – manifestbasierter Backend-Package-Loader`
-- Letzter vollständig abgeschlossener Schritt: `DPK-005b – vollständiges Mathematik-JSON-Paket mit unabhängigem Finished-ZIP-Validator`
-- Solider Ausgangsstand: `DPK-005b`
-- Abschluss-Gate für DPK-005b: gezielte QS und vollständiges `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-006b – sicherer ZIP-Provisioner und atomare Aktivierung`
+- Letzter vollständig abgeschlossener Schritt: `DPK-006a – read-only Package-Store und unveränderlicher Runtime-Snapshot`
+- Solider Ausgangsstand: `DPK-006a`
+- Abschluss-Gate für DPK-006a: gezielte QS, reale Mathematik-Loaderprobe und vollständiges `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -16,8 +16,8 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
-| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen; DPK-005 beginnt P1 |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006/007: Paket laden und hermetisch konsumieren |
+| P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006b/006c/007: sicher installieren, Runtime-Services umstellen und hermetisch konsumieren |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -66,7 +66,7 @@ Der reale Mathematik-Gate erwartet exakt:
 | Binärressourcen | 756 |
 | fachlicher `contentDigest` | `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60` |
 
-`scripts/run_curriculum_release_model_conformance.sh` baut weiterhin zwei bytegleiche Release-Modell-Verzeichnisse und ruft danach den realen ZIP-Builder genau einmal auf; dessen interner Doppelbuild beweist die ZIP-Reproduzierbarkeit. Der Wrapper schreibt ZIP, Build-Zusammenfassung, unabhängigen Validatorreport und Readiness-Report unter `tmp/curriculum-release-model/full-standalone-package/`. Der Kandidat muss technisch valide sein, bleibt wegen offener Redistribution-Entscheidungen aber ehrlich `not-ready-incomplete`. DPK-006/007 müssen anschließend den manifestbasierten Loader und den Betrieb ohne `curricula/`- oder `app/public`-Fallback beweisen.
+`scripts/run_curriculum_release_model_conformance.sh` baut weiterhin zwei bytegleiche Release-Modell-Verzeichnisse und ruft danach den realen ZIP-Builder genau einmal auf; dessen interner Doppelbuild beweist die ZIP-Reproduzierbarkeit. Der Wrapper schreibt ZIP, Build-Zusammenfassung, unabhängigen Validatorreport und Readiness-Report unter `tmp/curriculum-release-model/full-standalone-package/`. Der Kandidat muss technisch valide sein, bleibt wegen offener Redistribution-Entscheidungen aber ehrlich `not-ready-incomplete`. DPK-006a lädt einen vorvalidierten Store inzwischen exakt; DPK-006b/006c/007 müssen noch sichere Provisionierung und den Betrieb ohne `curricula/`- oder `app/public`-Fallback beweisen.
 
 Gezielte QS ist grün:
 
@@ -76,6 +76,30 @@ Gezielte QS ist grün:
 - TypeScript-, Lint-, Python-, Shell-, Workflow- und Dokumentationsprüfungen.
 
 Das vollständige `./run_ci.sh` ist auf diesem final dokumentierten Stand grün. DPK-005b ist damit technisch abgeschlossen; die offenen Human-Gates verhindern weiterhin ausdrücklich eine Publikationsfreigabe.
+
+## Abgeschlossener Teilschritt: DPK-006a
+
+DPK-006a führt den ersten Backend-Consumer für bereits sicher vorvalidierte und content-adressiert entpackte Pakete ein. `skillpilot.curriculum.source` trennt `repository` und `package` explizit. Im Package-Modus ist ein exakter, nach Package-ID sortierter Mehrpaket-Lock verpflichtend; ein fehlender oder ungültiger Lock bricht den Start ab. Der Consumer scannt keine Paketverzeichnisse, wählt kein `latest`, schreibt weder Store noch Lock und fällt in diesen Komponenten weder auf Repository, Classpath noch Netzwerk zurück.
+
+Die Vertrauenskette wurde nach einem unabhängigen Replay-Audit auf Validatorreport v2 gehärtet:
+
+1. der Report bindet Outer-ZIP-SHA und -Bytezahl sowie den exakten Manifest-SHA;
+2. derselbe Report bindet `contentDigest`, `closureDigest` und `definitionIndexDigest` und genau sechs vollständig bestandene Finished-Package-Gates;
+3. Install-Record und Lock binden den Report-Hash und dieselben Identitäten;
+4. der Loader hasht vor Snapshot-Publikation jede der 911 manifestinventarisierten Dateien erneut.
+
+Ein v1-Report oder ein ausgetauschtes Manifest mit nachgezogenen Lock-/Receipt-Hashes wird fail-closed abgewiesen. Der Readiness-Evaluator trägt wegen dieser stärkeren Evidenzsemantik die Version `1.2.0`. Die stabile fachliche Consumer-API-Version ist unabhängig vom Gradle-Buildqualifier und aktuell `0.1.0`; frisch gebaute Conformance-Pakete deklarieren deshalb ehrlich `>=0.1.0 <1.0.0`.
+
+Dateizugriffe werden vom Dateisystemroot aus über `SecureDirectoryStream` und `NOFOLLOW_LINKS` verankert. Lock, Receipt, Report und Paket-JSON verwenden Duplicate-Key- und Trailing-Token-Erkennung sowie die sichtbaren Profilgrenzen. Der Lock ist auf 256 aktive Pakete begrenzt. Der vollständig geladene Snapshot bewahrt Paketidentitäten, Root-/Module-Landschaften, Scope-Dimensionen und Composites, Capabilities, Views, deklarierte Single-/Merge-Offerings, Decks, eingebettete und externe Ressourcen, Migrationen sowie Definitionseigentum. Mehrdeutige IDs oder Definitionen blockieren die gesamte Generation; ein fehlgeschlagener Reload lässt exakt den bisherigen Snapshot aktiv.
+
+Qualitätsnachweis:
+
+- fokussierte Backend-Suite für Lock, Receipt, Validator-v2, sichere Pfade, Manipulationen, Kompatibilität, Scope-/Merge-Semantik, Mehrpaketkonflikte, Snapshot-Immutabilität und atomaren Reload grün;
+- Full-Package-Validator v2 mit 28 Garantien und Readiness-1.2-Selftest einschließlich acht Validatorreport-Fälschungen grün;
+- echte read-only Loaderprobe über das 1,7-GB-Mathematikpaket: 1 Landschaft, 88 Views, 88 Offerings, 12 Decks, 825 Ressourcen und 2.402 Closure-Definitionen, alle Manifestbytes erneut geprüft;
+- vollständiges `./run_ci.sh` auf dem final dokumentierten Stand grün.
+
+Bewusste Grenze: DPK-006a konsumiert nur einen bereits vertrauenswürdig provisionierten Store. Exakte ZIP-Extraktion, `SHA256SUMS`-/Tree-Identität, Store-Schreibautorität, CAS-Aktivierung und Rollback folgen in DPK-006b. Runtime-Services und Frontend lesen noch nicht aus dem Snapshot; diese Umschaltung folgt in DPK-006c. `embedded-fragment` bleibt bis zur fachübergreifenden Closure-Lane ausdrücklich fail-closed. Erst DPK-007 darf den vollständigen SkillPilot-Betrieb ohne Quellcheckout und statische fachliche Fallbacks behaupten.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -283,6 +307,7 @@ Abnahme:
 | DPK-004b / DPK-004 | Autoritative Mappings, Quellen, SourceGoal-Belege und ehrliche Quality-Evidence als vier digest-relevante, nicht runtime-erforderliche Publikationsartefakte ergänzt; P0 damit fachlich und technisch vollständig | 10.021 Mapping-Entscheidungen/33.382 Kanten, 9.977 Source Goals, 2.328 Quality-Entscheidungen plus 1 explizite Bildlücke, 111+756 Inhaltsrecords; 9 gültige Fixture-Dokumente, 22 Negativfälle, 47 Produktions-/Adversarialtests; gezielte QS und vollständiges `./run_ci.sh` grün | 2026-07-10 |
 | DPK-005a | Paketweite semantische File-Bindings, kompletter Offline-Trustsatz, deterministischer sicherer ZIP32-Writer sowie Rechte- und Source-Verification-Gates eingeführt | 1/61 Manifestfälle, 22 Schemas, 34+12 Katalogfälle, komplette Readiness-Adversarialmatrix, 756 Asset-/23 Rollenbindungen, 9.493+5 maschinelle Source-Treffer/479 Humanqueue, 22 ZIP-Garantien; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-005b | Vollständigen `full-standalone-v1`-Builder und unabhängigen Finished-ZIP-Validator umgesetzt; der reale Gate bindet 913 ZIP-Einträge, 911 Manifestdateien, 756 Bilder und den erwarteten Inhaltsdigest und klassifiziert offene Rechte ehrlich als `not-ready-incomplete` | Builder-/Validator-Selftests, Real-Plan, Finished-ZIP-Validierung und vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-006a | Read-only Backend-Consumer für einen exakt gepinnten, vorvalidierten content-adressierten Store mit Validator-v2-Trustkette und unveränderlichem Runtime-Snapshot | 29 fokussierte Backend-Tests; Validator v2 mit 28 Garantien; Readiness 1.2 mit acht Report-Fälschungen; reale 1,7-GB-Loaderprobe; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -297,7 +322,10 @@ Abnahme:
 | DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen, strikt validieren und Human-Review-Schuld als maschinenlesbare Release-Gates führen | DPK-002–DPK-004 | `complete` |
 | DPK-005a | P1 | Package-Trust, File-Semantik, deterministisches ZIP32 sowie Redistribution-/Source-Review-Lanes | DPK-002–DPK-004 | `complete` |
 | DPK-005b | P1 | Vollständiges reales Mathematik-Inventar und ZIP materialisieren, paketlokal validieren und reproduzieren | DPK-005a | `complete` |
-| DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `not_started` |
+| DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `in_progress` |
+| DPK-006a | P1 | Exakten vorvalidierten Store read-only laden und atomaren unveränderlichen Runtime-Snapshot aufbauen | DPK-005 | `complete` |
+| DPK-006b | P1 | ZIP sicher provisionieren, content-adressiert promoten sowie Lock per CAS aktivieren und zurückrollen | DPK-006a | `in_progress` |
+| DPK-006c | P1 | Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen | DPK-006b | `not_started` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
@@ -319,6 +347,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-004b / DPK-004 | Compiler plus unabhängiger Validator; 9 gültige Fixture-Dokumente, 22 Negativfälle und 47 Produktions-/Adversarialtests; Mapping-Truth-/Raw-/Legacy-Differenzen, Source-Joins/Lineage, Core-Term-Trust, Source-Semantik-Overclaims, unabhängig abgeleitete Quality-Status, stabile Schlüssel, 454 Registry-Regeln, 111+756 Inhaltsrecords, 0 Publikationsrollen in der Runtime-Closure und bytegleicher Doppelbuild | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-005a | Manifest 1/61; vollständiger 22-Schema-Katalog 1/34 + 12 Bindings; Readiness einschließlich Redistribution; 756 Bild-/23 Rollen-Lizenzbindungen und 17 Mutationen; Source Verification 9.493+5+479, 8 Mutationen und PDF-Replay; ZIP32 Golden-/Safety-/Legacy-Bytegleichheit; Doku-, Workflow-, Lint-, TypeScript- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-005b | Builder- und unabhängiger Validator-Selftest; Real-Paket 913/911/756 plus Digest; Finished-ZIP-, Readiness-, Code-, Workflow- und Doku-Integration | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-006a | 29 Backend-Package-Tests; Report-v2-Replay-/Tamper-/Path-/Conflict-Gates; Validator 28; Readiness 1.2; Builder; reale Paket-/Loaderprobe; Doku- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

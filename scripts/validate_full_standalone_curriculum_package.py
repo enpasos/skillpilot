@@ -48,8 +48,8 @@ DEFAULT_FIXTURE_PATH = (
     / "adversarial-cases.json"
 )
 
-REPORT_FORMAT_VERSION = 1
-VALIDATOR_ID = "skillpilot-full-standalone-package-validator-v1"
+REPORT_FORMAT_VERSION = 2
+VALIDATOR_ID = "skillpilot-full-standalone-package-validator-v2"
 GATE_IDS = (
     "inventory",
     "runtimeCatalog",
@@ -3167,6 +3167,15 @@ def build_report(
     if isinstance(index, dict):
         logical_count = len(index.get("logicalArtifacts", [])) if isinstance(index.get("logicalArtifacts"), list) else 0
         binary_count = len(index.get("binaryResources", [])) if isinstance(index.get("binaryResources"), list) else 0
+    closure_records = [
+        record for record in manifest_files if record.get("role") == "dependency-closure"
+    ]
+    closure_path = closure_records[0].get("path") if len(closure_records) == 1 else None
+    closure = documents.values.get(closure_path) if isinstance(closure_path, str) else None
+    closure_digest = closure.get("closureDigest") if isinstance(closure, dict) else None
+    definition_index_digest = (
+        closure.get("definitionIndexDigest") if isinstance(closure, dict) else None
+    )
     return {
         "reportFormatVersion": REPORT_FORMAT_VERSION,
         "validatorId": VALIDATOR_ID,
@@ -3182,6 +3191,13 @@ def build_report(
             "packageId": manifest.get("packageId"),
             "packageVersion": manifest.get("packageVersion"),
             "contentDigest": manifest.get("contentDigest"),
+            "manifestSha256": (
+                sha256_bytes(snapshot.manifest_raw)
+                if snapshot.manifest_raw is not None
+                else None
+            ),
+            "closureDigest": closure_digest,
+            "definitionIndexDigest": definition_index_digest,
         },
         "counts": {
             "archiveEntries": len(snapshot.infos_by_relative_path),
@@ -3788,6 +3804,70 @@ def run_self_test(trusted: TrustedContext, fixture_path: Path, verbose: bool) ->
     except Exception as error:
         failures.append(f"runtime-projection-fixtures: self-test crashed: {error}")
 
+    # Report protocol v2 closes the extracted-payload replay gap by binding the
+    # independently read manifest and its closure identities directly.
+    try:
+        report_manifest_raw = b'{"releaseId":"org.example.fixture@1.0.0"}\n'
+        report_closure = {
+            "closureDigest": "sha256:" + "a" * 64,
+            "definitionIndexDigest": "sha256:" + "b" * 64,
+        }
+        report_snapshot = ArchiveSnapshot(
+            path=Path("report-v2-fixture.zip"),
+            outer_bytes=123,
+            outer_sha256="c" * 64,
+            archive_root="fixture",
+            infos_by_relative_path={},
+            raw_documents={},
+            actual_bytes={},
+            actual_sha256={},
+            content_prefixes={},
+            manifest_raw=report_manifest_raw,
+            manifest={
+                "archiveRoot": "fixture",
+                "releaseId": "org.example.fixture@1.0.0",
+                "packageId": "org.example.fixture",
+                "packageVersion": "1.0.0",
+                "contentDigest": "sha256:" + "d" * 64,
+                "files": [
+                    {
+                        "path": "data/runtime/dependency-closure.json",
+                        "role": "dependency-closure",
+                    }
+                ],
+            },
+        )
+        report_collector = DiagnosticCollector()
+        report_collector.mark_evaluated(*GATE_IDS)
+        report = build_report(
+            report_snapshot,
+            PackageDocuments(
+                values={"data/runtime/dependency-closure.json": report_closure}
+            ),
+            report_collector,
+        )
+        expected_binding = {
+            "manifestSha256": sha256_bytes(report_manifest_raw),
+            **report_closure,
+        }
+        actual_binding = {
+            key: report["package"].get(key) for key in expected_binding
+        }
+        if (
+            report.get("reportFormatVersion") != 2
+            or report.get("validatorId") != VALIDATOR_ID
+            or actual_binding != expected_binding
+        ):
+            failures.append(
+                f"report-v2-package-binding: expected {expected_binding!r}, got {actual_binding!r}"
+            )
+        else:
+            passed += 1
+            if verbose:
+                print("PASS report-v2-package-binding: manifest and closure identities bound")
+    except Exception as error:
+        failures.append(f"report-v2-package-binding: self-test crashed: {error}")
+
     return {
         "selfTestFormatVersion": 1,
         "status": "passed" if not failures else "failed",
@@ -3840,6 +3920,9 @@ def unavailable_report(path: Path | None, message: str) -> dict[str, Any]:
             "packageId": None,
             "packageVersion": None,
             "contentDigest": None,
+            "manifestSha256": None,
+            "closureDigest": None,
+            "definitionIndexDigest": None,
         },
         "counts": {
             "archiveEntries": 0,
