@@ -49,6 +49,7 @@ import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { requestChatStart } from '../utils/chatStart'
+import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
 import {
@@ -327,8 +328,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
-  const bavariaFilterDisplay = formatFilterDisplayLabel('DE-BY', localizedLanguage)
-  const hessenFilterDisplay = formatFilterDisplayLabel('DE-HE', localizedLanguage)
+  const bavariaFilterDisplay = import.meta.env.MODE === 'package-consumer'
+    ? ''
+    : formatFilterDisplayLabel('DE-BY', localizedLanguage)
+  const hessenFilterDisplay = import.meta.env.MODE === 'package-consumer'
+    ? ''
+    : formatFilterDisplayLabel('DE-HE', localizedLanguage)
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
   const persistedCampaignContext = useMemo(() => loadAbi26CampaignContext(), [])
@@ -1630,10 +1635,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setIsCutoverPending(true)
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase
-        ? `${apiBase}/api/ui/learners/${skillpilotId}/cutover/canonical-gymnasium`
-        : `/api/ui/learners/${skillpilotId}/cutover/canonical-gymnasium`
-      const res = await fetch(url, { method: 'POST' })
+      const res = await requestCanonicalGymnasiumCutover(fetch, apiBase, skillpilotId)
       if (!res.ok) {
         const message = await res.text()
         setModalTitle(legacyErrorCopy.cutoverTitle)

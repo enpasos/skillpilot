@@ -1,6 +1,6 @@
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { UiGoal } from '../goalTypes'
-import type { GoalPlacementContext, LearningLandscape } from '../landscapeTypes'
+import type { GoalPlacementContext } from '../landscapeTypes'
 import {
   normalizeCompositionView,
   type CompositionStructureNode,
@@ -303,15 +303,17 @@ const pushScopedFilter = (filters: string[], value?: string | null) => {
 
 export const deriveRuntimeGoalPlacementFilters = ({
   landscapeId,
+  rootLandscapeId = CANONICAL_GYMNASIUM_ROOT_ID,
   activeFilter,
   learnerPersonalCurriculum,
 }: {
   landscapeId: string
+  rootLandscapeId?: string
   activeFilter?: string
   learnerPersonalCurriculum?: string | null
 }) => {
   const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
-  const rootConfig = personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]
+  const rootConfig = personalCurriculum[rootLandscapeId]
   const landscapeConfig = personalCurriculum[landscapeId]
   const filters: string[] = []
 
@@ -335,33 +337,41 @@ export const deriveRuntimeGoalPlacementFilters = ({
 
 export const deriveRuntimeCompositionScope = ({
   landscapeId,
-  landscapeMeta,
+  rootLandscapeId = CANONICAL_GYMNASIUM_ROOT_ID,
+  scopeEnabled,
+  catalogJurisdictions,
   activeFilter,
   learnerPersonalCurriculum,
 }: {
   landscapeId: string
-  landscapeMeta?: LearningLandscape | null
+  rootLandscapeId?: string
+  scopeEnabled: boolean
+  catalogJurisdictions?: readonly string[]
   activeFilter?: string
   learnerPersonalCurriculum?: string | null
 }): RuntimeCompositionScope | null => {
-  if (!landscapeId || !landscapeMeta?.frameworkId?.startsWith('canonical-gymnasium')) {
+  if (!landscapeId || !scopeEnabled) {
     return null
   }
 
   const personalCurriculum = parsePersonalCurriculum(learnerPersonalCurriculum)
-  const rootFilterId = personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.filterId
+  const rootFilterId = personalCurriculum[rootLandscapeId]?.filterId
   const landscapeFilterId = personalCurriculum[landscapeId]?.filterId
   const activeFilters = splitFilterIds(activeFilter)
   const scopedFilters = [rootFilterId, landscapeFilterId, ...activeFilters]
+  const catalogJurisdictionSet = new Set(catalogJurisdictions ?? [])
   const jurisdiction = scopedFilters
-    .map((value) => normalizeJurisdictionCode(value))
-    .find((value): value is NonNullable<typeof value> => !!value)
+    .map((value) => value?.trim())
+    .find((value): value is string => !!value && catalogJurisdictionSet.has(value))
+    ?? scopedFilters
+      .map((value) => normalizeJurisdictionCode(value))
+      .find((value): value is NonNullable<typeof value> => !!value)
   const stage = inferStageFromPersonalCurriculum(personalCurriculum)
   const courseProfileCandidate = [landscapeFilterId, ...activeFilters].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
   const durationModel = [
     personalCurriculum[landscapeId]?.durationModel,
-    personalCurriculum[CANONICAL_GYMNASIUM_ROOT_ID]?.durationModel,
+    personalCurriculum[rootLandscapeId]?.durationModel,
     rootFilterId,
     landscapeFilterId,
     ...activeFilters,

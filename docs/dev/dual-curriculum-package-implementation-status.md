@@ -2,11 +2,11 @@
 
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
-- Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-007 – hermetischer Package-only Mathematik-Smoke`
-- Letzter vollständig abgeschlossener Schritt: `DPK-006c-f – paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten`
-- Solider Ausgangsstand: `DPK-006c-f`
-- Abschluss-Gate für DPK-006c-f: generationgebundene zielgenaue Quellen-Evidenz, kein eingebetteter Source-Rationale-Index, reale Paketprobe und vollständiges `./run_ci.sh` grün
+- Aktive Phase: `P2 – Core-first Ontologieformat vorbereiten`
+- Nächster Umsetzungsschritt: `DPK-007a – Mathematik-Content-Freeze mit letzter fehlender Visualisierung und unveränderlichem Kandidat 0.1.0-conformance.3`
+- Letzter vollständig abgeschlossener Schritt: `DPK-007 – hermetischer Package-only Mathematik-Smoke`
+- Solider Ausgangsstand: `DPK-007`
+- Abschluss-Gate für DPK-007: package-only Frontend und schlanke Java-Runtime, 15/15 reale Consumer-Prüfungen, checkout-freier bwrap-/strace-Nachweis, vollständige Readiness-Bindung und `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -17,8 +17,8 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-007: hermetischen Smoke-Test ohne fachliche Repository-/App-Fallbacks bestehen |
-| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `complete` | abgeschlossen |
+| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `in_progress` | Content-Freeze `.3`, danach Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
 | P5 | Signierter Package-Betrieb und Veröffentlichungskatalog | `not_started` | atomare Stable-Promotion und Rollback |
@@ -66,7 +66,7 @@ Der reale Mathematik-Gate erwartet exakt:
 | Binärressourcen | 756 |
 | fachlicher `contentDigest` | `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60` |
 
-`scripts/run_curriculum_release_model_conformance.sh` baut weiterhin zwei bytegleiche Release-Modell-Verzeichnisse und ruft danach den realen ZIP-Builder genau einmal auf; dessen interner Doppelbuild beweist die ZIP-Reproduzierbarkeit. Der Wrapper schreibt ZIP, Build-Zusammenfassung, unabhängigen Validatorreport und Readiness-Report unter `tmp/curriculum-release-model/full-standalone-package/`. Der Kandidat muss technisch valide sein, bleibt wegen offener Redistribution-Entscheidungen aber ehrlich `not-ready-incomplete`. DPK-006a lädt einen vorvalidierten Store inzwischen exakt; DPK-006b/006c/007 müssen noch sichere Provisionierung und den Betrieb ohne `curricula/`- oder `app/public`-Fallback beweisen.
+`scripts/run_curriculum_release_model_conformance.sh` baut weiterhin zwei bytegleiche Release-Modell-Verzeichnisse und ruft danach den realen ZIP-Builder genau einmal auf; dessen interner Doppelbuild beweist die ZIP-Reproduzierbarkeit. Der Wrapper schreibt ZIP, Build-Zusammenfassung, unabhängigen Validator-, Consumer- und Readiness-Report unter `tmp/curriculum-release-model/full-standalone-package/`; die verifizierten Assembly-/Evidence-Bäume und ihre externen Manifeste liegen unter `tmp/curriculum-release-model/package-consumer-smoke/`. Der Kandidat muss technisch valide sein, bleibt wegen offener Redistribution-Entscheidungen aber ehrlich `not-ready-incomplete`. DPK-006a–c laden, aktivieren und bedienen ihn inzwischen exakt; DPK-007 beweist zusätzlich den Betrieb ohne `curricula/`- oder fachlichen `app/public`-Fallback.
 
 Gezielte QS ist grün:
 
@@ -224,6 +224,36 @@ Qualitätsnachweis:
 
 Bewusste Grenze: DPK-006c-f beweist die einzelnen Backend- und Browserverträge, aber noch nicht den gesamten gestarteten Anwendungsfluss in einer Umgebung ohne Curriculum-Checkout und ohne fachliche statische App-Daten. Diesen Dateizugriffs-/Resource-Trace erbringt DPK-007. Offene Source-Text-, Bildfachlichkeits- und Rechte-Reviews werden durch die technische Quellenanzeige nicht geschlossen.
 
+## Abgeschlossener Teilschritt: DPK-007
+
+DPK-007 schließt den Nachweis, dass das JSON-Paket tatsächlich alleiniger fachlicher Input einer gestarteten SkillPilot-Instanz sein kann. Ein eigener Package-Consumer-Frontendbuild setzt `publicDir: false`, übernimmt daher weder Decks noch Visualisierungen oder Quellenindizes aus `app/public` und wird als kleiner, hashgebundener App-Shell-Build in eine schlanke Java-Runtime assembliert. Die Backend-Assembly enthält nur Produktionsklassen, Runtime-Abhängigkeiten und den H2-Treiber für den isolierten Test; der rund 3 GB große Repository-Static-Baum wird nicht kopiert.
+
+Der Runner startet diese Assembly mit dem real provisionierten 1,7-GB-Mathematikpaket in getrennten User-, PID-, Netzwerk-, IPC- und UTS-Namespaces. `bubblewrap --clearenv` und eine feste Allowlist verhindern geerbte Hostkonfiguration. Nur Loopback ist erreichbar, der content-adressierte Package-Store ist read-only eingebunden und der vollständige Python-/Java-/HTTP-Probe-/Node-/Chromium-Prozessbaum wird mit `strace -f -yy` protokolliert. Das Repository selbst wird im Namespace verdeckt. Fünf explizite Poison-Lanes für `curricula/`, `app/public/data`, `app/src/data`, den QA-Status unter `docs/` und statische Backenddaten blieben im realen Trace unbeobachtet.
+
+Der geschlossene funktionale Satz prüft dynamisch aus dem Katalog, ohne fest codierte Mathematik-IDs:
+
+- App-Shell, genau ein aktives Paket, Kataloggeneration, Root-Landschaft und transitive Runtime-Closure;
+- Default-Offering und dieselbe Composition View über den Scope-Matcher;
+- einen neu angelegten Lernenden mit dynamisch gesetztem Paketcurriculum und 213 nichtleeren Frontier-Zielen, sämtlich innerhalb der Paket-Closure;
+- ein katalogisiertes Deck, eine echte Verified-Recall-Abfrage, Bildbytes über versionierte Route und öffentlichen Alias sowie den geladenen Migrationsträger;
+- generationgebundene Source-Evidence einschließlich Negativpfaden und 404 für Legacy-, Repository- und rohe Paketdatenrouten.
+
+Ein echter Playwright-1.59.1-/Chromium-Fluss rendert dabei paketabgeleiteten Lernzieltext aus Catalog, Closure und View. Ein getrennt simulierter Catalog-404-Fall zeigt den stabilen Fail-closed-Zustand und löst weder Landscape- noch View-Fallbackrequests aus.
+
+Der externe `package-consumer-smoke-report` bindet den Nachweis an ZIP-Größe und -SHA, Paket-/Release-ID, Manifest, `contentDigest`, Closure- und Definition-Index-Digest, den vollständigen aktiven Lock, dessen Generation, den policy-gepinnten Runner, sechs Runner-Helper sowie Frontend-, Backend-, Konfigurations-, Trace-, Assembly- und Evidence-Tree-Hashes. Readiness-Evaluator `1.3.0` führt ausschließlich diesen Runner selbst aus, bindet Exitcode, Timeout und Frische und berechnet beide kanonischen Bäume unabhängig neu. Vorhandene externe Reports bleiben unbezeugt. No-follow-/atomare Ausgabe und vollständige Pfaddisjunktheit schützen ZIP, Store, Arbeitsbaum und Ontologie-Checkout bereits vor der ersten Mutation. Die Replay-/Forgery-Matrix verwirft abweichende ZIPs, Locks, Generationen, App-Artefakte, Isolationsergebnisse, Checkreihenfolgen, nichtkanonisches JSON und 29 gezielte Consumer-Fälschungen. Ein bestandener Consumer-Gate überschreibt ausdrücklich keine offenen Rechte- oder Fachfreigaben: der reale Kandidat bleibt korrekt `not-ready-incomplete`.
+
+Der letzte direkte Repository-Probe im Package-Modus wurde ebenfalls entfernt: `CurriculaService` erhält die Qualitätsprojektion nun über source-spezifische Provider. Nur Repository-Modus liest `docs/qa-ci/status/curriculum-quality-status.json`; Package-Modus kennt diese Pfade nicht und liefert bis zu einem eigenen Paketartefakt eine definierte leere Projektion.
+
+Qualitätsnachweis:
+
+- realer 1.737.052.540-Byte-Kandidat mit 15/15 funktionalen Prüfungen, fünf unbeobachteten Poison-Lanes, read-only Store und loopback-only Namespace;
+- rund 28-MB-Datei-/Netzwerk-Trace ohne Checkout- oder externen Netzwerkzugriff;
+- 61 Manifest-, 23 Provisioner-, sieben Readiness-, acht Validator- und 29 Consumer-Negativfälle einschließlich Repack-Replay;
+- externe `assembly-manifest.json` und `evidence-bundle-manifest.json`; lokal bleiben die verifizierten Bäume erhalten, CI lädt Reports, beide Manifeste und das Evidence-Bundle für 14 Tage hoch, nicht aber die große Assembly;
+- Package-/Repository-Provider-, Poison- und Spring-Kontexttests, TypeScript, Lint, Diff-Gates und vollständiges `./run_ci.sh` grün.
+
+Bewusste Grenze: Das letzte noch bildlose Mathematikziel wird vor Beginn des Ontologie-Paketexports technisch ergänzt. Da dies Resource-Index, Quality-Evidence, `contentDigest`, ZIP-Identität und alle späteren Variantenhashes ändert, erhält der eingefrorene Kandidat die neue unveränderliche Version `0.1.0-conformance.3`. Fachliche Bildfreigabe, Bild-/Datenrechte und Source-Text-Review bleiben menschliche Release-Gates.
+
 ## Abgeschlossener Teilschritt: DPK-004b
 
 Ziel ist die vollständige, verlustfreie Mathematik-Conformance-Kompilation: Neben den Runtime-Artefakten aus DPK-004a werden jetzt auch die veröffentlichungsrelevanten Mappings, amtlichen Quellen, SourceGoal-Belege und Quality-Entscheidungen strikt projiziert und in denselben fachlichen `contentDigest` aufgenommen.
@@ -258,7 +288,7 @@ Der reale Kandidat `org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conf
 
 Die fail-closed Scalar-Prüfung hat dabei reale PDF-/OCR-Altlasten gefunden: C0-Steuerzeichen und nicht gepaarte UTF-16-Surrogate wurden in den Authoring-Quellen bereinigt. Die Release-Kompilation akzeptiert solche Werte nicht und ersetzt sie nicht stillschweigend durch Surrogate oder bereinigte Texte.
 
-Die 9.977 SourceGoal-Records sind eine verlustfrei veröffentlichte, reviewte und quellennahe Authoring-Projektion, keine pauschale Behauptung wortgleicher PDF-Zitate. Der aktuelle Bestand enthält weiterhin OCR-/Transliterationsschuld; 484 `sourceText`-Werte sind im jeweiligen authored Passage-Carrier nicht als zusammenhängender, whitespace-normalisierter Text selbstverifizierbar. Vor einer Release-Promotion bleibt deshalb eine eigene Source-Verification-QA-Lane offen, auch wenn JSON↔OWL den veröffentlichten Wortlaut bereits exakt erhält.
+Die 9.977 SourceGoal-Records sind eine verlustfrei veröffentlichte, reviewte und quellennahe Authoring-Projektion, keine pauschale Behauptung wortgleicher PDF-Zitate. Der aktuelle Bestand enthält weiterhin OCR-/Transliterationsschuld; nach zusätzlicher hashgebundener PDF-Projektion bleiben 479 `sourceText`-Werte ohne maschinell hinreichenden zusammenhängenden Nachweis. Vor einer Release-Promotion bleibt deshalb eine eigene Source-Verification-QA-Lane offen, auch wenn JSON↔OWL den veröffentlichten Wortlaut bereits exakt erhält.
 
 Gezielte QS:
 
@@ -462,8 +492,9 @@ Abnahme:
 | DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `complete` |
 | DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `complete` |
 | DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `complete` |
-| DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
-| DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
+| DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `complete` |
+| DPK-007a | P2 | Letzte fehlende Mathematik-Visualisierung technisch importieren und unveränderlichen `.3`-Content-Freeze erzeugen | DPK-007 | `not_started` |
+| DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005, DPK-007a | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
 | DPK-010 | P4 | Physik-Closure und fachübergreifende Profile | DPK-004, DPK-009 | `not_started` |
 | DPK-011 | P5 | Signierter Release-Index, Distributionskatalog und atomare Promotion nur bei geschlossenen Visualisierungs- und Source-Verification-Gates | DPK-009–DPK-010 | `not_started` |
@@ -491,6 +522,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006c-d | Exakte Deck-/Goal-/Locale- und Resource-/PublicUrl-Indizes; Semantic-Binding-/Capability-/Owner-/Limit-/Tamper-Gates; konditionale Services/Controller; Static-Fallback-Sperre; pfadfreie Hrefs; reale 12/128/756/69-Paketprobe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-e | Frontend-Katalogadapter und Modustrennung; Root-/Offering-/Deck-/Resource-Resolver samt Negativmatrix; Backend-API-Kette und Controller-Modus; TypeScript, ESLint, Doku- und Workflow-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-f | SourceGoal-Evidence-State und 200/204/400/404-API; Generation-/Cache-/Hash-/Count-/Crossref-/Order-/Optionalitäts-Gates; Frontend-Discovery und Lazy-Fetch; kein großer Build-/Precache-Index; reale 31/55/9.977/33.382/869-Probe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-007 | Source-spezifische Quality-Provider; Catalog-only Frontend/Runtime; echter React-/Chromium-Fluss und 404-Fail-closed; evaluator-gesteuerte Runner-Attestation; bwrap-/strace-Isolation; fünf Poison-Lanes; 29 Consumer-Fälschungen, Output-Destruktions- und Replay-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

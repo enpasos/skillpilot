@@ -25,7 +25,9 @@ SCHEMA_FILENAME = "package-manifest.schema.json"
 RUNTIME_CATALOG_SCHEMA_FILENAME = "runtime-catalog.schema.json"
 SCHEMA_CATALOG_SCHEMA_FILENAME = "schema-catalog.schema.json"
 PROFILE_RELATIVE_PATH = Path("profiles/full-standalone-v1.profile.json")
-MANIFEST_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json"
+MANIFEST_SCHEMA_ID = (
+    "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json"
+)
 RUNTIME_CATALOG_SCHEMA_ID = (
     "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
 )
@@ -34,8 +36,33 @@ SCHEMA_CATALOG_SCHEMA_ID = (
 )
 PROFILE_ID = "full-standalone-v1"
 JSONSCHEMA_VERSION = "4.26.0"
+CONSUMER_API_VERSION = "0.1.0"
+CONSUMER_FUNCTIONAL_CHECK_IDS = (
+    "app-shell.served",
+    "catalog.package-discovery",
+    "catalog.root-landscape-resolved",
+    "landscape.transitive-runtime-closure",
+    "offering.default-resolved",
+    "composition-view.resolved",
+    "learning.frontier-computed",
+    "cards.deck-loaded",
+    "cards.verified-recall-loaded",
+    "resources.goal-visualization-bytes",
+    "migration.aliases-loaded",
+    "source-evidence.goal-lookup",
+    "fallback.legacy-route-rejected",
+    "fallback.repository-data-unavailable",
+    "fallback.raw-data-route-rejected",
+)
+CONSUMER_POISON_SENTINEL_IDS = (
+    "repository.curricula",
+    "repository.app-public-data",
+    "repository.app-source-data",
+    "repository.docs-quality-status",
+    "repository.backend-static-data",
+)
 
-# These schemas describe the external package-store/provisioning protocol. They
+# These schemas describe the external package-store/provisioning/consumer protocol. They
 # are intentionally not package-local payload schemas and therefore must never
 # be added to NORMATIVE_SCHEMA_FILES or full-standalone-v1 trustedContractSchemas.
 OPERATIONAL_SCHEMA_FILES = {
@@ -54,6 +81,11 @@ OPERATIONAL_SCHEMA_FILES = {
         "active-package-lock.schema.json",
         "active-package-lock.schema.json",
     ),
+    "packageConsumerSmokeReport": (
+        "https://skillpilot.com/schemas/curriculum-package/v1/"
+        "package-consumer-smoke-report.schema.json",
+        "package-consumer-smoke-report.schema.json",
+    ),
 }
 PROVISIONER_GATE_IDS = (
     "inventory",
@@ -66,32 +98,92 @@ PROVISIONER_GATE_IDS = (
 
 TRUSTED_SCHEMA_BINDINGS = {
     "manifestSchema": (MANIFEST_SCHEMA_ID, SCHEMA_FILENAME),
-    "runtimeCatalogSchema": (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
+    "runtimeCatalogSchema": (
+        RUNTIME_CATALOG_SCHEMA_ID,
+        RUNTIME_CATALOG_SCHEMA_FILENAME,
+    ),
     "schemaCatalogSchema": (SCHEMA_CATALOG_SCHEMA_ID, SCHEMA_CATALOG_SCHEMA_FILENAME),
 }
 NORMATIVE_SCHEMA_FILES = (
     (MANIFEST_SCHEMA_ID, SCHEMA_FILENAME),
     (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
     (SCHEMA_CATALOG_SCHEMA_ID, SCHEMA_CATALOG_SCHEMA_FILENAME),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json", "dependency-closure.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json", "migration-aliases.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json", "compiled-landscape.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json", "composition-view-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json", "composition-view.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json", "card-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json", "card-deck.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json", "resource-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json", "semantic-content-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json", "embedded-goal-dependency.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json", "source-to-canonical-mappings.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json", "official-source-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json", "source-goal-reference-index.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json", "release-quality-evidence.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json", "semantic-normalization-profile.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json", "field-semantics-registry.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json", "definition-digest-profile.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json", "curriculum-ontology-profile.schema.json"),
-    ("https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json", "publication-evidence-projection.schema.json"),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+        "dependency-closure.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+        "migration-aliases.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+        "compiled-landscape.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",
+        "composition-view-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+        "composition-view.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+        "card-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",
+        "card-deck.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",
+        "resource-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        "semantic-content-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+        "embedded-goal-dependency.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+        "source-to-canonical-mappings.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+        "official-source-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+        "source-goal-reference-index.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+        "release-quality-evidence.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+        "semantic-normalization-profile.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+        "field-semantics-registry.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+        "definition-digest-profile.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+        "curriculum-ontology-profile.schema.json",
+    ),
+    (
+        "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+        "publication-evidence-projection.schema.json",
+    ),
 )
 NORMATIVE_SCHEMA_IDS = {schema_id for schema_id, _filename in NORMATIVE_SCHEMA_FILES}
 
@@ -119,25 +211,115 @@ SEMANTIC_CONTRACT_BINDINGS = (
 )
 
 ROLE_SEMANTIC_CONTRACTS = {
-    "runtime-catalog": ("logical-artifact", ("runtime-catalog",), (RUNTIME_CATALOG_SCHEMA_ID,)),
-    "dependency-closure": ("logical-artifact", ("dependency-closure",), ("https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",)),
-    "migration-aliases": ("logical-artifact", ("migration-aliases",), ("https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",)),
-    "semantic-content-index": ("excluded-generated", (), ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",)),
-    "canonical-landscape": ("logical-artifact", ("canonical-landscape",), ("https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",)),
-    "composition-view-index": ("logical-artifact", ("composition-view-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",)),
-    "composition-view": ("logical-artifact", ("composition-view",), ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",)),
-    "card-index": ("logical-artifact", ("card-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",)),
-    "card-deck": ("logical-artifact", ("card-deck",), ("https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",)),
-    "resource-index": ("logical-artifact", ("resource-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",)),
+    "runtime-catalog": (
+        "logical-artifact",
+        ("runtime-catalog",),
+        (RUNTIME_CATALOG_SCHEMA_ID,),
+    ),
+    "dependency-closure": (
+        "logical-artifact",
+        ("dependency-closure",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+        ),
+    ),
+    "migration-aliases": (
+        "logical-artifact",
+        ("migration-aliases",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+        ),
+    ),
+    "semantic-content-index": (
+        "excluded-generated",
+        (),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        ),
+    ),
+    "canonical-landscape": (
+        "logical-artifact",
+        ("canonical-landscape",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+        ),
+    ),
+    "composition-view-index": (
+        "logical-artifact",
+        ("composition-view-index",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",
+        ),
+    ),
+    "composition-view": (
+        "logical-artifact",
+        ("composition-view",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+        ),
+    ),
+    "card-index": (
+        "logical-artifact",
+        ("card-index",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+        ),
+    ),
+    "card-deck": (
+        "logical-artifact",
+        ("card-deck",),
+        ("https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",),
+    ),
+    "resource-index": (
+        "logical-artifact",
+        ("resource-index",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",
+        ),
+    ),
     "binary-asset": ("binary-resource", (), ()),
-    "embedded-goal-dependency": ("logical-artifact", ("embedded-goal-dependency",), ("https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",)),
-    "mapping": ("logical-artifact", ("source-to-canonical-mappings",), ("https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",)),
-    "source-index": ("logical-artifact", ("official-source-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",)),
-    "source-goal-reference-index": ("logical-artifact", ("source-goal-reference-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",)),
-    "quality-evidence": ("logical-artifact", ("release-quality-evidence",), ("https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",)),
+    "embedded-goal-dependency": (
+        "logical-artifact",
+        ("embedded-goal-dependency",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+        ),
+    ),
+    "mapping": (
+        "logical-artifact",
+        ("source-to-canonical-mappings",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+        ),
+    ),
+    "source-index": (
+        "logical-artifact",
+        ("official-source-index",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+        ),
+    ),
+    "source-goal-reference-index": (
+        "logical-artifact",
+        ("source-goal-reference-index",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+        ),
+    ),
+    "quality-evidence": (
+        "logical-artifact",
+        ("release-quality-evidence",),
+        (
+            "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+        ),
+    ),
     "schema-catalog": ("excluded-generated", (), (SCHEMA_CATALOG_SCHEMA_ID,)),
     "schema": ("excluded-generated", (), ()),
-    "semantic-contract": ("excluded-generated", (), tuple(item[1] for item in SEMANTIC_CONTRACT_BINDINGS)),
+    "semantic-contract": (
+        "excluded-generated",
+        (),
+        tuple(item[1] for item in SEMANTIC_CONTRACT_BINDINGS),
+    ),
     "release-profile": ("excluded-generated", (), ()),
     "license": ("excluded-generated", (), ()),
     "package-documentation": ("excluded-generated", (), ()),
@@ -244,7 +426,9 @@ def load_json(path: Path, *, max_bytes: int | None = None) -> Any:
         DuplicateJsonKeyError,
         NonFiniteJsonConstantError,
     ) as error:
-        raise ContractDefinitionError(f"Cannot read JSON from {path}: {error}") from error
+        raise ContractDefinitionError(
+            f"Cannot read JSON from {path}: {error}"
+        ) from error
 
 
 def file_sha256(path: Path) -> str:
@@ -280,7 +464,9 @@ def validate_trusted_contract(
 ) -> dict[str, dict[str, Any]]:
     Draft202012Validator.check_schema(schema)
     if schema.get("$id") != MANIFEST_SCHEMA_ID:
-        raise ContractDefinitionError(f"Unexpected manifest schema $id: {schema.get('$id')!r}")
+        raise ContractDefinitionError(
+            f"Unexpected manifest schema $id: {schema.get('$id')!r}"
+        )
 
     expect_exact_keys(
         profile,
@@ -301,10 +487,17 @@ def validate_trusted_contract(
         },
         "profile",
     )
-    if profile.get("profileFormatVersion") != 1 or profile.get("profileId") != PROFILE_ID:
-        raise ContractDefinitionError("Profile identity must be full-standalone-v1 with format version 1")
+    if (
+        profile.get("profileFormatVersion") != 1
+        or profile.get("profileId") != PROFILE_ID
+    ):
+        raise ContractDefinitionError(
+            "Profile identity must be full-standalone-v1 with format version 1"
+        )
 
-    manifest_schema = expect_object(profile.get("manifestSchema"), "profile.manifestSchema")
+    manifest_schema = expect_object(
+        profile.get("manifestSchema"), "profile.manifestSchema"
+    )
     expect_exact_keys(manifest_schema, {"id", "sha256"}, "profile.manifestSchema")
     schema_hash = file_sha256(schema_path)
     if manifest_schema != {"id": MANIFEST_SCHEMA_ID, "sha256": schema_hash}:
@@ -353,9 +546,13 @@ def validate_trusted_contract(
         "runtimeContractVersion": "1.0",
         "variant": "json",
     }:
-        raise ContractDefinitionError("Unexpected full-standalone-v1 compatibility declaration")
+        raise ContractDefinitionError(
+            "Unexpected full-standalone-v1 compatibility declaration"
+        )
 
-    inventory_policy = expect_object(profile.get("inventoryPolicy"), "profile.inventoryPolicy")
+    inventory_policy = expect_object(
+        profile.get("inventoryPolicy"), "profile.inventoryPolicy"
+    )
     expect_exact_keys(
         inventory_policy,
         {"pathBase", "allowUnknownRoles", "excludedPaths"},
@@ -366,8 +563,12 @@ def validate_trusted_contract(
     if inventory_policy.get("allowUnknownRoles") is not False:
         raise ContractDefinitionError("full-standalone-v1 must reject unknown roles")
     excluded_paths = inventory_policy.get("excludedPaths")
-    if not isinstance(excluded_paths, list) or not all(isinstance(path, str) for path in excluded_paths):
-        raise ContractDefinitionError("profile.inventoryPolicy.excludedPaths must be a string array")
+    if not isinstance(excluded_paths, list) or not all(
+        isinstance(path, str) for path in excluded_paths
+    ):
+        raise ContractDefinitionError(
+            "profile.inventoryPolicy.excludedPaths must be a string array"
+        )
     if set(excluded_paths) != {"metadata/manifest.json", "metadata/SHA256SUMS"}:
         raise ContractDefinitionError("Unexpected manifest inventory exclusions")
 
@@ -386,30 +587,44 @@ def validate_trusted_contract(
         "maxTotalCompressionRatio": 25,
         "nestedArchivesAllowed": False,
     }
-    archive_limits = expect_object(profile.get("archiveLimits"), "profile.archiveLimits")
+    archive_limits = expect_object(
+        profile.get("archiveLimits"), "profile.archiveLimits"
+    )
     expect_exact_keys(archive_limits, set(expected_limits), "profile.archiveLimits")
     if archive_limits != expected_limits:
-        raise ContractDefinitionError("Package-format v1 archive limits differ from the approved limits")
+        raise ContractDefinitionError(
+            "Package-format v1 archive limits differ from the approved limits"
+        )
 
     expected_manifest_limits = {
         "manifestBytes": 64 * 1024 * 1024,
         "fileRecords": 59_998,
         "licenseDocuments": 1_024,
     }
-    manifest_limits = expect_object(profile.get("manifestLimits"), "profile.manifestLimits")
-    expect_exact_keys(manifest_limits, set(expected_manifest_limits), "profile.manifestLimits")
+    manifest_limits = expect_object(
+        profile.get("manifestLimits"), "profile.manifestLimits"
+    )
+    expect_exact_keys(
+        manifest_limits, set(expected_manifest_limits), "profile.manifestLimits"
+    )
     if manifest_limits != expected_manifest_limits:
-        raise ContractDefinitionError("Package-format v1 manifest limits differ from the approved limits")
+        raise ContractDefinitionError(
+            "Package-format v1 manifest limits differ from the approved limits"
+        )
     try:
         schema_file_limit = schema["properties"]["files"]["maxItems"]
         schema_license_limit = schema["properties"]["licenseDocuments"]["maxItems"]
     except (KeyError, TypeError) as error:
-        raise ContractDefinitionError("Manifest schema does not expose the profile array limits") from error
+        raise ContractDefinitionError(
+            "Manifest schema does not expose the profile array limits"
+        ) from error
     if (
         schema_file_limit != manifest_limits["fileRecords"]
         or schema_license_limit != manifest_limits["licenseDocuments"]
     ):
-        raise ContractDefinitionError("Manifest schema and release-profile array limits differ")
+        raise ContractDefinitionError(
+            "Manifest schema and release-profile array limits differ"
+        )
 
     redistribution_policy = expect_object(
         profile.get("redistributionPolicy"), "profile.redistributionPolicy"
@@ -419,7 +634,9 @@ def validate_trusted_contract(
             "full-standalone-v1 must defer redistribution clearance to readiness"
         )
 
-    license_policy = expect_object(profile.get("licensePolicy"), "profile.licensePolicy")
+    license_policy = expect_object(
+        profile.get("licensePolicy"), "profile.licensePolicy"
+    )
     if license_policy != {
         "requireDocumentForEveryIdentifier": True,
         "disallowedIdentifiers": ["NONE", "NOASSERTION"],
@@ -461,7 +678,9 @@ def validate_trusted_contract(
         runtime_required = rule.get("runtimeRequired")
         media_types = rule.get("mediaTypes")
         if not isinstance(role, str) or not role:
-            raise ContractDefinitionError(f"profile.roles[{index}].role must be a string")
+            raise ContractDefinitionError(
+                f"profile.roles[{index}].role must be a string"
+            )
         if role in roles:
             raise ContractDefinitionError(f"Duplicate profile role: {role}")
         if not isinstance(minimum, int) or isinstance(minimum, bool) or minimum < 0:
@@ -473,9 +692,15 @@ def validate_trusted_contract(
         ):
             raise ContractDefinitionError(f"Invalid maximum for profile role {role}")
         if runtime_required not in {"required", "forbidden", "either"}:
-            raise ContractDefinitionError(f"Invalid runtimeRequired policy for profile role {role}")
-        if not isinstance(media_types, list) or not media_types or not all(
-            isinstance(media_type, str) and media_type for media_type in media_types
+            raise ContractDefinitionError(
+                f"Invalid runtimeRequired policy for profile role {role}"
+            )
+        if (
+            not isinstance(media_types, list)
+            or not media_types
+            or not all(
+                isinstance(media_type, str) and media_type for media_type in media_types
+            )
         ):
             raise ContractDefinitionError(f"Invalid mediaTypes for profile role {role}")
         semantic_binding = rule.get("semanticBinding")
@@ -499,14 +724,14 @@ def validate_trusted_contract(
         raise ContractDefinitionError(
             "Profile role set differs from the closed DPK-005a artifact set"
         )
-    for role, (kind, normalization_roles, validation_schema_ids) in (
-        ROLE_SEMANTIC_CONTRACTS.items()
-    ):
+    for role, (
+        kind,
+        normalization_roles,
+        validation_schema_ids,
+    ) in ROLE_SEMANTIC_CONTRACTS.items():
         expected_binding = {"kind": kind}
         if kind == "logical-artifact":
-            expected_binding["allowedNormalizationRoles"] = list(
-                normalization_roles
-            )
+            expected_binding["allowedNormalizationRoles"] = list(normalization_roles)
         if roles[role]["semanticBinding"] != expected_binding:
             raise ContractDefinitionError(
                 f"Role {role} semantic-binding policy differs from the trusted contract"
@@ -522,7 +747,9 @@ def validate_trusted_contract(
         or release_profile_rule.get("maximum") != 1
         or release_profile_rule.get("runtimeRequired") != "required"
     ):
-        raise ContractDefinitionError("The release-profile role must be required exactly once")
+        raise ContractDefinitionError(
+            "The release-profile role must be required exactly once"
+        )
 
     semantic_contract_rule = roles.get("semantic-contract")
     if semantic_contract_rule is None or (
@@ -542,7 +769,12 @@ def portable_path_key(path: str) -> str:
 
 
 def path_is_safe(path: str) -> bool:
-    if not path or path.startswith("/") or "\\" in path or not SAFE_PATH_RE.fullmatch(path):
+    if (
+        not path
+        or path.startswith("/")
+        or "\\" in path
+        or not SAFE_PATH_RE.fullmatch(path)
+    ):
         return False
     for segment in path.split("/"):
         if segment in {"", ".", ".."} or segment.endswith((".", " ")):
@@ -589,7 +821,13 @@ def parse_license_expression(expression: str) -> set[str]:
         cursor += 1
         if cursor < len(tokens) and tokens[cursor] == "WITH":
             cursor += 1
-            if cursor >= len(tokens) or tokens[cursor] in {"AND", "OR", "WITH", "(", ")"}:
+            if cursor >= len(tokens) or tokens[cursor] in {
+                "AND",
+                "OR",
+                "WITH",
+                "(",
+                ")",
+            }:
                 raise ValueError("WITH must be followed by an exception identifier")
             referenced_ids.add(tokens[cursor])
             cursor += 1
@@ -652,7 +890,9 @@ def validate_contract_binding(
             )
         )
     binding_path = binding.get("path")
-    matching_files = files_by_path.get(binding_path, []) if isinstance(binding_path, str) else []
+    matching_files = (
+        files_by_path.get(binding_path, []) if isinstance(binding_path, str) else []
+    )
     if len(matching_files) != 1:
         diagnostics.append(
             Diagnostic(
@@ -758,7 +998,10 @@ def validate_manifest(
     if isinstance(manifest, dict):
         manifest_limits = profile["manifestLimits"]
         raw_files = manifest.get("files")
-        if isinstance(raw_files, list) and len(raw_files) > manifest_limits["fileRecords"]:
+        if (
+            isinstance(raw_files, list)
+            and len(raw_files) > manifest_limits["fileRecords"]
+        ):
             diagnostics.append(
                 Diagnostic(
                     "MANIFEST_FILE_COUNT_LIMIT",
@@ -786,7 +1029,9 @@ def validate_manifest(
         schema_validator.iter_errors(manifest),
         key=lambda item: tuple(str(part) for part in item.absolute_path),
     ):
-        diagnostics.append(Diagnostic("MANIFEST_SCHEMA", schema_location(error), error.message))
+        diagnostics.append(
+            Diagnostic("MANIFEST_SCHEMA", schema_location(error), error.message)
+        )
     if not isinstance(manifest, dict):
         return sorted(diagnostics)
 
@@ -839,16 +1084,26 @@ def validate_manifest(
             )
 
     raw_files = manifest.get("files")
-    files = [record for record in raw_files if isinstance(record, dict)] if isinstance(raw_files, list) else []
+    files = (
+        [record for record in raw_files if isinstance(record, dict)]
+        if isinstance(raw_files, list)
+        else []
+    )
     files_by_path: dict[str, list[dict[str, Any]]] = {}
     for record in files:
         path = record.get("path")
         if isinstance(path, str):
             files_by_path.setdefault(path, []).append(record)
-    paths = [record.get("path") for record in files if isinstance(record.get("path"), str)]
+    paths = [
+        record.get("path") for record in files if isinstance(record.get("path"), str)
+    ]
     limits = profile["archiveLimits"]
     archive_root = manifest.get("archiveRoot")
-    archive_root_safe = isinstance(archive_root, str) and "/" not in archive_root and path_is_safe(archive_root)
+    archive_root_safe = (
+        isinstance(archive_root, str)
+        and "/" not in archive_root
+        and path_is_safe(archive_root)
+    )
     if isinstance(archive_root, str) and not archive_root_safe:
         diagnostics.append(
             Diagnostic(
@@ -862,7 +1117,11 @@ def validate_manifest(
         if isinstance(path, str):
             if not path_is_safe(path):
                 diagnostics.append(
-                    Diagnostic("FILE_PATH_UNSAFE", f"/files/{index}/path", f"Unsafe package path {path!r}")
+                    Diagnostic(
+                        "FILE_PATH_UNSAFE",
+                        f"/files/{index}/path",
+                        f"Unsafe package path {path!r}",
+                    )
                 )
             if isinstance(archive_root, str) and (
                 path == archive_root or path.startswith(f"{archive_root}/")
@@ -874,7 +1133,11 @@ def validate_manifest(
                         "File paths must not repeat the archive root",
                     )
                 )
-            if archive_root_safe and len(f"{archive_root}/{path}".encode("utf-8")) > limits["archivePathBytes"]:
+            if (
+                archive_root_safe
+                and len(f"{archive_root}/{path}".encode("utf-8"))
+                > limits["archivePathBytes"]
+            ):
                 diagnostics.append(
                     Diagnostic(
                         "ARCHIVE_PATH_LIMIT",
@@ -883,10 +1146,14 @@ def validate_manifest(
                     )
                 )
 
-    duplicate_paths = sorted(path for path, count in Counter(paths).items() if count > 1)
+    duplicate_paths = sorted(
+        path for path, count in Counter(paths).items() if count > 1
+    )
     for path in duplicate_paths:
         diagnostics.append(
-            Diagnostic("FILE_PATH_DUPLICATE", "/files", f"Duplicate manifest path {path!r}")
+            Diagnostic(
+                "FILE_PATH_DUPLICATE", "/files", f"Duplicate manifest path {path!r}"
+            )
         )
     excluded_paths = set(profile["inventoryPolicy"]["excludedPaths"])
     portable_paths: dict[str, set[str]] = {}
@@ -929,11 +1196,15 @@ def validate_manifest(
                 )
             )
 
-    role_counts = Counter(record.get("role") for record in files if isinstance(record.get("role"), str))
+    role_counts = Counter(
+        record.get("role") for record in files if isinstance(record.get("role"), str)
+    )
     for role, count in sorted(role_counts.items()):
         if role not in roles:
             diagnostics.append(
-                Diagnostic("PROFILE_UNKNOWN_ROLE", "/files", f"Unknown artifact role {role!r}")
+                Diagnostic(
+                    "PROFILE_UNKNOWN_ROLE", "/files", f"Unknown artifact role {role!r}"
+                )
             )
     for role, rule in sorted(roles.items()):
         count = role_counts.get(role, 0)
@@ -956,9 +1227,8 @@ def validate_manifest(
             continue
         runtime_policy = rule["runtimeRequired"]
         runtime_required = record.get("runtimeRequired")
-        if (
-            (runtime_policy == "required" and runtime_required is not True)
-            or (runtime_policy == "forbidden" and runtime_required is not False)
+        if (runtime_policy == "required" and runtime_required is not True) or (
+            runtime_policy == "forbidden" and runtime_required is not False
         ):
             diagnostics.append(
                 Diagnostic(
@@ -988,9 +1258,7 @@ def validate_manifest(
                 )
             )
         elif expected_kind == "logical-artifact":
-            allowed_normalization_roles = expected_binding[
-                "allowedNormalizationRoles"
-            ]
+            allowed_normalization_roles = expected_binding["allowedNormalizationRoles"]
             if binding.get("normalizationRole") not in allowed_normalization_roles:
                 diagnostics.append(
                     Diagnostic(
@@ -1135,7 +1403,10 @@ def validate_manifest(
 
     documented_license_paths = set(license_paths)
     for index, record in enumerate(files):
-        if record.get("role") == "license" and record.get("path") not in documented_license_paths:
+        if (
+            record.get("role") == "license"
+            and record.get("path") not in documented_license_paths
+        ):
             diagnostics.append(
                 Diagnostic(
                     "LICENSE_DOCUMENT_ORPHAN",
@@ -1242,7 +1513,11 @@ def validate_manifest(
             )
         )
 
-    for binding_name, (schema_id, schema_hash, schema_bytes) in trusted_schema_metadata.items():
+    for binding_name, (
+        schema_id,
+        schema_hash,
+        schema_bytes,
+    ) in trusted_schema_metadata.items():
         diagnostics.extend(
             validate_contract_binding(
                 binding_name,
@@ -1289,8 +1564,112 @@ def load_operational_schema_validators(
             raise ContractDefinitionError(
                 f"Operational schema {filename} has unexpected $id {schema.get('$id')!r}"
             )
+        if binding_name == "packageConsumerSmokeReport":
+            validate_consumer_smoke_schema_contract(schema)
         validators[binding_name] = Draft202012Validator(schema)
     return validators
+
+
+def validate_consumer_smoke_schema_contract(schema: dict[str, Any]) -> None:
+    """Pin the closed package-only proof surface, not only its JSON types."""
+
+    try:
+        properties = schema["properties"]
+        definitions = schema["$defs"]
+        functional = properties["functionalChecks"]
+        isolation = definitions["isolationEvidence"]["properties"]
+        poison = isolation["poisonSentinels"]
+        activation = definitions["activationBinding"]["properties"]
+        lock_packages = definitions["activePackageLock"]["properties"]["packages"]
+        application = definitions["applicationBinding"]["properties"]
+        runner = properties["runner"]
+        evidence_bundle = definitions["evidenceBundleBinding"]
+    except (KeyError, TypeError) as error:
+        raise ContractDefinitionError(
+            "Consumer-smoke operational schema lacks closed binding fields"
+        ) from error
+
+    def prefix_ids(value: Any, description: str) -> tuple[str, ...]:
+        if not isinstance(value, list):
+            raise ContractDefinitionError(f"{description} prefixItems must be an array")
+        result: list[str] = []
+        for item in value:
+            if not isinstance(item, dict) or set(item) != {"$ref"}:
+                raise ContractDefinitionError(
+                    f"{description} prefix item must be one local definition reference"
+                )
+            reference = item["$ref"]
+            if not isinstance(reference, str) or not reference.startswith("#/$defs/"):
+                raise ContractDefinitionError(
+                    f"{description} prefix item must use a local definition reference"
+                )
+            definition = definitions.get(reference.removeprefix("#/$defs/"))
+            if not isinstance(definition, dict):
+                raise ContractDefinitionError(
+                    f"{description} prefix item references an unknown definition"
+                )
+            identifier = definition.get("properties", {}).get("id", {}).get("const")
+            if not isinstance(identifier, str):
+                raise ContractDefinitionError(
+                    f"{description} prefix item lacks an exact ID const"
+                )
+            result.append(identifier)
+        return tuple(result)
+
+    if (
+        functional.get("minItems") != len(CONSUMER_FUNCTIONAL_CHECK_IDS)
+        or functional.get("maxItems") != len(CONSUMER_FUNCTIONAL_CHECK_IDS)
+        or functional.get("items") is not False
+        or prefix_ids(functional.get("prefixItems"), "Consumer functional checks")
+        != CONSUMER_FUNCTIONAL_CHECK_IDS
+    ):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must pin exactly the 15 functional checks in order"
+        )
+    if (
+        poison.get("minItems") != len(CONSUMER_POISON_SENTINEL_IDS)
+        or poison.get("maxItems") != len(CONSUMER_POISON_SENTINEL_IDS)
+        or poison.get("items") is not False
+        or prefix_ids(poison.get("prefixItems"), "Consumer poison sentinels")
+        != CONSUMER_POISON_SENTINEL_IDS
+    ):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must pin exactly the five poison sentinels in order"
+        )
+    if (
+        activation.get("packageCount", {}).get("const") != 1
+        or lock_packages.get("minItems") != 1
+        or lock_packages.get("maxItems") != 1
+    ):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must bind exactly one active lock package"
+        )
+    if application.get("consumerApiVersion", {}).get("const") != CONSUMER_API_VERSION:
+        raise ContractDefinitionError(
+            "Consumer-smoke schema consumer API binding differs from the runtime contract"
+        )
+    runner_required = set(runner.get("required", []))
+    application_required = set(
+        definitions["applicationBinding"].get("required", [])
+    )
+    if not {"scriptBytes", "scriptSha256"}.issubset(runner_required):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must bind exact runner script bytes"
+        )
+    if not {"assemblyBytes", "assemblySha256"}.issubset(application_required):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must bind the final runtime assembly"
+        )
+    if (
+        set(evidence_bundle.get("required", [])) != {"bytes", "sha256"}
+        or evidence_bundle.get("additionalProperties") is not False
+        or "evidenceBundle" not in schema.get("required", [])
+        or properties.get("evidenceBundle")
+        != {"$ref": "#/$defs/evidenceBundleBinding"}
+    ):
+        raise ContractDefinitionError(
+            "Consumer-smoke schema must bind one closed external evidence bundle"
+        )
 
 
 def operational_schema_diagnostics(
@@ -1594,10 +1973,14 @@ def decode_json_pointer_token(token: str) -> str:
 
 def pointer_parent(document: Any, pointer: str) -> tuple[Any, str]:
     if not pointer.startswith("/"):
-        raise ContractDefinitionError(f"Fixture JSON pointer must start with '/': {pointer!r}")
+        raise ContractDefinitionError(
+            f"Fixture JSON pointer must start with '/': {pointer!r}"
+        )
     tokens = [decode_json_pointer_token(token) for token in pointer[1:].split("/")]
     if not tokens or tokens == [""]:
-        raise ContractDefinitionError("Fixture mutation cannot replace the document root")
+        raise ContractDefinitionError(
+            "Fixture mutation cannot replace the document root"
+        )
     current = document
     for token in tokens[:-1]:
         if isinstance(current, list):
@@ -1613,9 +1996,15 @@ def file_by_role(manifest: dict[str, Any], role: str) -> dict[str, Any]:
     files = manifest.get("files")
     if not isinstance(files, list):
         raise ContractDefinitionError("Fixture base manifest has no files array")
-    matches = [record for record in files if isinstance(record, dict) and record.get("role") == role]
+    matches = [
+        record
+        for record in files
+        if isinstance(record, dict) and record.get("role") == role
+    ]
     if not matches:
-        raise ContractDefinitionError(f"Fixture mutation cannot find file role {role!r}")
+        raise ContractDefinitionError(
+            f"Fixture mutation cannot find file role {role!r}"
+        )
     return matches[0]
 
 
@@ -1623,7 +2012,11 @@ def file_by_path(manifest: dict[str, Any], path: str) -> dict[str, Any]:
     files = manifest.get("files")
     if not isinstance(files, list):
         raise ContractDefinitionError("Fixture base manifest has no files array")
-    matches = [record for record in files if isinstance(record, dict) and record.get("path") == path]
+    matches = [
+        record
+        for record in files
+        if isinstance(record, dict) and record.get("path") == path
+    ]
     if len(matches) != 1:
         raise ContractDefinitionError(
             f"Fixture mutation expected exactly one file record for path {path!r}"
@@ -1651,20 +2044,26 @@ def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
         return
     if operation == "remove-files-by-role":
         role = data.get("role")
-        manifest["files"] = [record for record in manifest["files"] if record.get("role") != role]
+        manifest["files"] = [
+            record for record in manifest["files"] if record.get("role") != role
+        ]
         return
     if operation == "set-file-field":
         role = data.get("role")
         field = data.get("field")
         if not isinstance(role, str) or not isinstance(field, str):
-            raise ContractDefinitionError("set-file-field requires string role and field")
+            raise ContractDefinitionError(
+                "set-file-field requires string role and field"
+            )
         file_by_role(manifest, role)[field] = copy.deepcopy(data.get("value"))
         return
     if operation == "set-file-field-by-path":
         path = data.get("path")
         field = data.get("field")
         if not isinstance(path, str) or not isinstance(field, str):
-            raise ContractDefinitionError("set-file-field-by-path requires string path and field")
+            raise ContractDefinitionError(
+                "set-file-field-by-path requires string path and field"
+            )
         file_by_path(manifest, path)[field] = copy.deepcopy(data.get("value"))
         return
     if operation == "copy-file-field":
@@ -1672,12 +2071,16 @@ def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
         to_role = data.get("toRole")
         field = data.get("field")
         if not all(isinstance(value, str) for value in (from_role, to_role, field)):
-            raise ContractDefinitionError("copy-file-field requires fromRole, toRole, and field")
+            raise ContractDefinitionError(
+                "copy-file-field requires fromRole, toRole, and field"
+            )
         source = file_by_role(manifest, from_role)
         file_by_role(manifest, to_role)[field] = copy.deepcopy(source[field])
         return
     if operation == "append-file":
-        manifest["files"].append(copy.deepcopy(expect_object(data.get("file"), "append-file.file")))
+        manifest["files"].append(
+            copy.deepcopy(expect_object(data.get("file"), "append-file.file"))
+        )
         return
     if operation == "append-numbered-files":
         count = data.get("count")
@@ -1734,16 +2137,24 @@ def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
     raise ContractDefinitionError(f"Unknown fixture mutation operation: {operation!r}")
 
 
-def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[int, list[str]]:
+def validate_raw_json_fixture_suite(
+    contract_dir: Path, verbose: bool
+) -> tuple[int, list[str]]:
     raw_dir = contract_dir / "fixtures" / "invalid" / "raw"
     expectations_path = raw_dir / "expectations.json"
     expectations = expect_object(load_json(expectations_path), str(expectations_path))
-    expect_exact_keys(expectations, {"fixtureFormatVersion", "cases"}, str(expectations_path))
+    expect_exact_keys(
+        expectations, {"fixtureFormatVersion", "cases"}, str(expectations_path)
+    )
     if expectations.get("fixtureFormatVersion") != 1:
-        raise ContractDefinitionError(f"Unsupported raw fixture format in {expectations_path}")
+        raise ContractDefinitionError(
+            f"Unsupported raw fixture format in {expectations_path}"
+        )
     cases = expectations.get("cases")
     if not isinstance(cases, list) or not cases:
-        raise ContractDefinitionError(f"Raw fixture suite {expectations_path} must contain cases")
+        raise ContractDefinitionError(
+            f"Raw fixture suite {expectations_path} must contain cases"
+        )
 
     failures: list[str] = []
     passed = 0
@@ -1782,11 +2193,15 @@ def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[
             or not isinstance(expected_value, str)
             or not expected_value
         ):
-            raise ContractDefinitionError(f"Malformed or duplicate raw fixture case at index {index}")
+            raise ContractDefinitionError(
+                f"Malformed or duplicate raw fixture case at index {index}"
+            )
         seen_ids.add(case_id)
         fixture_path = (raw_dir / relative_path).resolve()
         if fixture_path.parent != raw_dir.resolve():
-            raise ContractDefinitionError(f"Raw fixture escapes its directory: {relative_path!r}")
+            raise ContractDefinitionError(
+                f"Raw fixture escapes its directory: {relative_path!r}"
+            )
         referenced_paths.add(fixture_path)
         try:
             parse_json_text(fixture_path.read_text(encoding="utf-8"))
@@ -1797,10 +2212,14 @@ def validate_raw_json_fixture_suite(contract_dir: Path, verbose: bool) -> tuple[
             actual_code = "JSON_NONFINITE_CONSTANT"
             actual_value = error.constant
         except (OSError, UnicodeError, json.JSONDecodeError) as error:
-            failures.append(f"Raw invalid fixture {case_id!r} failed unexpectedly: {error}")
+            failures.append(
+                f"Raw invalid fixture {case_id!r} failed unexpectedly: {error}"
+            )
             continue
         else:
-            failures.append(f"Raw invalid fixture {case_id!r} unexpectedly parsed successfully")
+            failures.append(
+                f"Raw invalid fixture {case_id!r} unexpectedly parsed successfully"
+            )
             continue
         if actual_code != expected_code or actual_value != expected_value:
             failures.append(
@@ -1837,7 +2256,9 @@ def validate_fixture_suite(
     valid_paths = sorted(valid_dir.glob("*.manifest.json"))
     invalid_paths = sorted(invalid_dir.glob("*.json"))
     if not valid_paths or not invalid_paths:
-        raise ContractDefinitionError("Contract fixtures must include valid and invalid cases")
+        raise ContractDefinitionError(
+            "Contract fixtures must include valid and invalid cases"
+        )
 
     failures: list[str] = []
     valid_count = 0
@@ -1860,7 +2281,10 @@ def validate_fixture_suite(
         if diagnostics:
             failures.append(
                 f"Valid fixture {path.relative_to(contract_dir)} failed: "
-                + "; ".join(f"{item.code} {item.location}: {item.message}" for item in diagnostics)
+                + "; ".join(
+                    f"{item.code} {item.location}: {item.message}"
+                    for item in diagnostics
+                )
             )
         else:
             valid_count += 1
@@ -1875,12 +2299,16 @@ def validate_fixture_suite(
         base_manifest_value = suite.get("baseManifest")
         cases = suite.get("cases")
         if not isinstance(base_manifest_value, str) or not isinstance(cases, list):
-            raise ContractDefinitionError(f"Invalid fixture suite structure in {suite_path}")
+            raise ContractDefinitionError(
+                f"Invalid fixture suite structure in {suite_path}"
+            )
         base_path = (suite_path.parent / base_manifest_value).resolve()
         base_manifest = valid_documents.get(base_path)
         if base_manifest is None:
             base_manifest = expect_object(
-                load_json(base_path, max_bytes=profile["manifestLimits"]["manifestBytes"]),
+                load_json(
+                    base_path, max_bytes=profile["manifestLimits"]["manifestBytes"]
+                ),
                 str(base_path),
             )
             base_diagnostics = validate_manifest(
@@ -1893,7 +2321,9 @@ def validate_fixture_suite(
                 profile_bytes,
             )
             if base_diagnostics:
-                raise ContractDefinitionError(f"Invalid base manifest for fixture suite {suite_path}")
+                raise ContractDefinitionError(
+                    f"Invalid base manifest for fixture suite {suite_path}"
+                )
         seen_case_ids: set[str] = set()
         for case_index, raw_case in enumerate(cases):
             case = expect_object(raw_case, f"{suite_path}.cases[{case_index}]")
@@ -1919,7 +2349,9 @@ def validate_fixture_suite(
                 )
                 or not set(expected_locations).issubset(expected_codes)
             ):
-                raise ContractDefinitionError(f"Malformed or duplicate invalid fixture case at index {case_index}")
+                raise ContractDefinitionError(
+                    f"Malformed or duplicate invalid fixture case at index {case_index}"
+                )
             seen_case_ids.add(case_id)
             candidate = copy.deepcopy(base_manifest)
             for mutation in mutations:
@@ -1949,14 +2381,25 @@ def validate_fixture_suite(
                 failures.append(
                     f"Invalid fixture {case_id!r} expected {dict(sorted(expected_code_counts.items()))}, "
                     f"got {dict(sorted(actual_code_counts.items()))}: "
-                    + ("; ".join(location_mismatches) + "; " if location_mismatches else "")
-                    + "; ".join(f"{item.code} {item.location}: {item.message}" for item in diagnostics)
+                    + (
+                        "; ".join(location_mismatches) + "; "
+                        if location_mismatches
+                        else ""
+                    )
+                    + "; ".join(
+                        f"{item.code} {item.location}: {item.message}"
+                        for item in diagnostics
+                    )
                 )
             else:
                 invalid_count += 1
                 if verbose:
-                    print(f"PASS invalid {case_id}: {', '.join(sorted(actual_code_counts.elements()))}")
-    raw_invalid_count, raw_failures = validate_raw_json_fixture_suite(contract_dir, verbose)
+                    print(
+                        f"PASS invalid {case_id}: {', '.join(sorted(actual_code_counts.elements()))}"
+                    )
+    raw_invalid_count, raw_failures = validate_raw_json_fixture_suite(
+        contract_dir, verbose
+    )
     invalid_count += raw_invalid_count
     failures.extend(raw_failures)
     return valid_count, invalid_count, failures
@@ -1981,9 +2424,7 @@ def pointer_value(document: Any, pointer: str) -> Any:
         elif isinstance(current, dict):
             current = current[token]
         else:
-            raise ContractDefinitionError(
-                f"Fixture pointer cannot traverse {token!r}"
-            )
+            raise ContractDefinitionError(f"Fixture pointer cannot traverse {token!r}")
     return current
 
 
@@ -2129,10 +2570,7 @@ def validate_package_provisioner_raw_fixtures(
             passed += 1
             if verbose:
                 print(f"PASS provisioner raw-invalid {case_id}: {actual_code}")
-    actual = {
-        path.resolve()
-        for path in raw_dir.glob("*.raw.json")
-    }
+    actual = {path.resolve() for path in raw_dir.glob("*.raw.json")}
     if actual != referenced:
         failures.append(
             "Package-provisioner raw fixture inventory differs from expectations: "
@@ -2151,7 +2589,8 @@ def validate_package_provisioner_fixture_suite(
     valid_dir = fixture_root / "valid"
     suite_path = fixture_root / "invalid" / "contract-cases.json"
     document_paths = {
-        "fullPackageValidationReport": valid_dir / "full-package-validation-report.json",
+        "fullPackageValidationReport": valid_dir
+        / "full-package-validation-report.json",
         "installedPackageRecord": valid_dir / "installed-package-record.json",
         "activePackageLock": valid_dir / "active-package-lock.json",
     }
@@ -2202,8 +2641,7 @@ def validate_package_provisioner_fixture_suite(
             f"Unsupported package-provisioner fixture format in {suite_path}"
         )
     expected_base = {
-        name: f"../valid/{path.name}"
-        for name, path in document_paths.items()
+        name: f"../valid/{path.name}" for name, path in document_paths.items()
     }
     if suite.get("baseDocuments") != expected_base:
         raise ContractDefinitionError(
@@ -2253,8 +2691,7 @@ def validate_package_provisioner_fixture_suite(
         for mutation in mutations:
             apply_provisioner_mutation(candidate, mutation)
         candidate_bytes = {
-            name: fixture_json_bytes(document)
-            for name, document in candidate.items()
+            name: fixture_json_bytes(document) for name, document in candidate.items()
         }
         if validation == "full-package-validation-report":
             diagnostics = validate_full_package_validation_report(
@@ -2315,7 +2752,9 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_CONTRACT_DIR,
         help="Versioned curriculum-package contract directory",
     )
-    parser.add_argument("--verbose", action="store_true", help="Print every passing fixture")
+    parser.add_argument(
+        "--verbose", action="store_true", help="Print every passing fixture"
+    )
     return parser.parse_args()
 
 
@@ -2332,7 +2771,9 @@ def main() -> int:
         try:
             installed_jsonschema_version = distribution_version("jsonschema")
         except PackageNotFoundError as error:
-            raise ContractDefinitionError("Pinned jsonschema dependency is not installed") from error
+            raise ContractDefinitionError(
+                "Pinned jsonschema dependency is not installed"
+            ) from error
         if installed_jsonschema_version != JSONSCHEMA_VERSION:
             raise ContractDefinitionError(
                 f"Expected jsonschema {JSONSCHEMA_VERSION}, found {installed_jsonschema_version}"
@@ -2407,8 +2848,8 @@ def main() -> int:
     print(
         "Curriculum package contract validation passed: "
         f"trusted schema/profile, {valid_count} valid fixture(s), "
-        f"{invalid_count} invalid fixture case(s); operational package-provisioner "
-        f"schemas, {provisioner_valid_count} valid document(s), "
+        f"{invalid_count} invalid fixture case(s); operational provisioning/consumer "
+        f"schemas, {provisioner_valid_count} provisioner document(s), "
         f"{provisioner_invalid_count} invalid case(s)."
     )
     return 0

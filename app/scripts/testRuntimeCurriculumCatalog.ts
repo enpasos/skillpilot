@@ -244,6 +244,11 @@ const response = (status: number, body?: unknown): Response => new Response(
 const packageLoad = await loadRuntimeCurriculumCatalog(async () => response(200, fixture()), 'https://api.example.test')
 assert.equal(packageLoad.mode, 'package')
 assert.equal((await loadRuntimeCurriculumCatalog(async () => response(404))).mode, 'repository')
+assert.equal((await loadRuntimeCurriculumCatalog(
+  async () => response(404),
+  '',
+  { allowRepositoryFallback: false },
+)).mode, 'unavailable')
 assert.equal((await loadRuntimeCurriculumCatalog(async () => response(500))).mode, 'unavailable')
 assert.equal((await loadRuntimeCurriculumCatalog(async () => { throw new Error('network') })).mode, 'unavailable')
 assert.equal((await loadRuntimeCurriculumCatalog(async () => response(200, { catalogApiVersion: '2.0' }))).mode, 'unavailable')

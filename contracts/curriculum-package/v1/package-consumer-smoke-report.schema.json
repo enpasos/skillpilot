@@ -1,0 +1,924 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report.schema.json",
+  "title": "SkillPilot package-only consumer smoke report v1",
+  "description": "External operational evidence that one exact SkillPilot application build consumed one exact validated curriculum ZIP through one exact active package-lock generation without repository curriculum fallbacks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reportFormatVersion",
+    "runner",
+    "status",
+    "input",
+    "activation",
+    "application",
+    "evidenceBundle",
+    "isolation",
+    "functionalChecks",
+    "summary",
+    "diagnostics"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report.schema.json"
+    },
+    "reportFormatVersion": {
+      "const": 1
+    },
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "scriptBytes",
+        "scriptSha256"
+      ],
+      "properties": {
+        "id": {
+          "const": "skillpilot-package-consumer-smoke"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "scriptBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "scriptSha256": {
+          "description": "SHA-256 of the exact repository-pinned runner script executed for this report.",
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "passed",
+        "failed",
+        "error"
+      ]
+    },
+    "input": {
+      "$ref": "#/$defs/inputBinding"
+    },
+    "activation": {
+      "$ref": "#/$defs/activationBinding"
+    },
+    "application": {
+      "$ref": "#/$defs/applicationBinding"
+    },
+    "evidenceBundle": {
+      "$ref": "#/$defs/evidenceBundleBinding"
+    },
+    "isolation": {
+      "$ref": "#/$defs/isolationEvidence"
+    },
+    "functionalChecks": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/appShellCheck"
+        },
+        {
+          "$ref": "#/$defs/catalogDiscoveryCheck"
+        },
+        {
+          "$ref": "#/$defs/catalogRootCheck"
+        },
+        {
+          "$ref": "#/$defs/runtimeClosureCheck"
+        },
+        {
+          "$ref": "#/$defs/defaultOfferingCheck"
+        },
+        {
+          "$ref": "#/$defs/compositionViewCheck"
+        },
+        {
+          "$ref": "#/$defs/learningFrontierCheck"
+        },
+        {
+          "$ref": "#/$defs/cardDeckCheck"
+        },
+        {
+          "$ref": "#/$defs/verifiedRecallCheck"
+        },
+        {
+          "$ref": "#/$defs/visualizationBytesCheck"
+        },
+        {
+          "$ref": "#/$defs/migrationAliasesCheck"
+        },
+        {
+          "$ref": "#/$defs/sourceEvidenceCheck"
+        },
+        {
+          "$ref": "#/$defs/legacyFallbackCheck"
+        },
+        {
+          "$ref": "#/$defs/repositoryFallbackCheck"
+        },
+        {
+          "$ref": "#/$defs/rawDataFallbackCheck"
+        }
+      ],
+      "items": false
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "passed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "isolation": {
+            "$ref": "#/$defs/passingIsolationEvidence"
+          },
+          "functionalChecks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/passingFunctionalCheck"
+            }
+          },
+          "summary": {
+            "$ref": "#/$defs/passingSummary"
+          },
+          "diagnostics": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "diagnostics": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "error"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "summary": {
+            "properties": {
+              "notRun": {
+                "minimum": 1
+              }
+            }
+          },
+          "diagnostics": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "nullableSha256": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "inputBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "bytes",
+        "sha256",
+        "packageId",
+        "packageVersion",
+        "releaseId",
+        "archiveRoot",
+        "manifestSha256",
+        "contentDigest",
+        "closureDigest",
+        "definitionIndexDigest"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "releaseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "archiveRoot": {
+          "$ref": "#/$defs/portablePathSegment"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "closureDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "definitionIndexDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "packageLockEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageId",
+        "packageVersion",
+        "releaseId",
+        "outerZipSha256",
+        "manifestSha256",
+        "contentDigest",
+        "archiveRoot",
+        "closureDigest",
+        "definitionIndexDigest",
+        "installRecordSha256"
+      ],
+      "properties": {
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "releaseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "outerZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "archiveRoot": {
+          "$ref": "#/$defs/portablePathSegment"
+        },
+        "closureDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "definitionIndexDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "installRecordSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "activationBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activeLockBytes",
+        "activeLockSha256",
+        "activeLock",
+        "generationSha256",
+        "packageCount",
+        "selectedPackage"
+      ],
+      "properties": {
+        "activeLockBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "activeLockSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "activeLock": {
+          "$ref": "#/$defs/activePackageLock"
+        },
+        "generationSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "packageCount": {
+          "const": 1
+        },
+        "selectedPackage": {
+          "$ref": "#/$defs/packageLockEntry"
+        }
+      }
+    },
+    "activePackageLock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lockFormatVersion",
+        "packages"
+      ],
+      "properties": {
+        "lockFormatVersion": {
+          "const": "1.0"
+        },
+        "packages": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$ref": "#/$defs/packageLockEntry"
+          }
+        }
+      }
+    },
+    "applicationBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "consumer",
+        "consumerApiVersion",
+        "frontendBytes",
+        "frontendSha256",
+        "backendBytes",
+        "backendSha256",
+        "configurationBytes",
+        "configurationSha256",
+        "assemblyBytes",
+        "assemblySha256"
+      ],
+      "properties": {
+        "consumer": {
+          "const": "SkillPilot"
+        },
+        "consumerApiVersion": {
+          "const": "0.1.0"
+        },
+        "frontendBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "frontendSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "backendBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "backendSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "configurationBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "configurationSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "assemblyBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "assemblySha256": {
+          "description": "Canonical tree digest of the final launched assembly, using sorted relative POSIX path, NUL, decimal file size, NUL, lowercase file SHA-256, and LF for every regular file.",
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "evidenceBundleBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "sha256": {
+          "description": "Canonical tree digest of every report-external evidence file, using sorted relative POSIX path, NUL, decimal file size, NUL, lowercase file SHA-256, and LF for every regular file.",
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "poisonSentinel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "result"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "repository.curricula",
+            "repository.app-public-data",
+            "repository.app-source-data",
+            "repository.docs-quality-status",
+            "repository.backend-static-data"
+          ]
+        },
+        "result": {
+          "enum": [
+            "not-observed",
+            "observed",
+            "not-checked"
+          ]
+        }
+      }
+    },
+    "isolationEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mechanism",
+        "hermetic",
+        "sourceCheckoutAccessible",
+        "repositoryMountAccessible",
+        "networkPolicy",
+        "packageStoreReadOnly",
+        "filesystemTraceBytes",
+        "filesystemTraceSha256",
+        "poisonSentinels"
+      ],
+      "properties": {
+        "mechanism": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "hermetic": {
+          "type": "boolean"
+        },
+        "sourceCheckoutAccessible": {
+          "type": "boolean"
+        },
+        "repositoryMountAccessible": {
+          "type": "boolean"
+        },
+        "networkPolicy": {
+          "enum": [
+            "loopback-only",
+            "unrestricted",
+            "unknown"
+          ]
+        },
+        "packageStoreReadOnly": {
+          "type": "boolean"
+        },
+        "filesystemTraceBytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1073741824
+        },
+        "filesystemTraceSha256": {
+          "$ref": "#/$defs/nullableSha256"
+        },
+        "poisonSentinels": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/repositoryCurriculaSentinel"
+            },
+            {
+              "$ref": "#/$defs/repositoryAppPublicSentinel"
+            },
+            {
+              "$ref": "#/$defs/repositoryAppSourceSentinel"
+            },
+            {
+              "$ref": "#/$defs/repositoryDocsSentinel"
+            },
+            {
+              "$ref": "#/$defs/repositoryBackendStaticSentinel"
+            }
+          ],
+          "items": false
+        }
+      }
+    },
+    "passingIsolationEvidence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/isolationEvidence"
+        },
+        {
+          "properties": {
+            "hermetic": {
+              "const": true
+            },
+            "sourceCheckoutAccessible": {
+              "const": false
+            },
+            "repositoryMountAccessible": {
+              "const": false
+            },
+            "networkPolicy": {
+              "const": "loopback-only"
+            },
+            "packageStoreReadOnly": {
+              "const": true
+            },
+            "filesystemTraceSha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "filesystemTraceBytes": {
+              "minimum": 1
+            },
+            "poisonSentinels": {
+              "items": {
+                "properties": {
+                  "result": {
+                    "const": "not-observed"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "functionalCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "result",
+        "evidenceSha256"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "app-shell.served",
+            "catalog.package-discovery",
+            "catalog.root-landscape-resolved",
+            "landscape.transitive-runtime-closure",
+            "offering.default-resolved",
+            "composition-view.resolved",
+            "learning.frontier-computed",
+            "cards.deck-loaded",
+            "cards.verified-recall-loaded",
+            "resources.goal-visualization-bytes",
+            "migration.aliases-loaded",
+            "source-evidence.goal-lookup",
+            "fallback.legacy-route-rejected",
+            "fallback.repository-data-unavailable",
+            "fallback.raw-data-route-rejected"
+          ]
+        },
+        "result": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-run"
+          ]
+        },
+        "evidenceSha256": {
+          "$ref": "#/$defs/nullableSha256"
+        }
+      }
+    },
+    "passingFunctionalCheck": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/functionalCheck"
+        },
+        {
+          "properties": {
+            "result": {
+              "const": "passed"
+            },
+            "evidenceSha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        }
+      ]
+    },
+    "appShellCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "app-shell.served"
+        }
+      }
+    },
+    "catalogDiscoveryCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "catalog.package-discovery"
+        }
+      }
+    },
+    "catalogRootCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "catalog.root-landscape-resolved"
+        }
+      }
+    },
+    "runtimeClosureCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "landscape.transitive-runtime-closure"
+        }
+      }
+    },
+    "defaultOfferingCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "offering.default-resolved"
+        }
+      }
+    },
+    "compositionViewCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "composition-view.resolved"
+        }
+      }
+    },
+    "learningFrontierCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "learning.frontier-computed"
+        }
+      }
+    },
+    "cardDeckCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "cards.deck-loaded"
+        }
+      }
+    },
+    "verifiedRecallCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "cards.verified-recall-loaded"
+        }
+      }
+    },
+    "visualizationBytesCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "resources.goal-visualization-bytes"
+        }
+      }
+    },
+    "migrationAliasesCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "migration.aliases-loaded"
+        }
+      }
+    },
+    "sourceEvidenceCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "source-evidence.goal-lookup"
+        }
+      }
+    },
+    "legacyFallbackCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "fallback.legacy-route-rejected"
+        }
+      }
+    },
+    "repositoryFallbackCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "fallback.repository-data-unavailable"
+        }
+      }
+    },
+    "rawDataFallbackCheck": {
+      "$ref": "#/$defs/functionalCheck",
+      "properties": {
+        "id": {
+          "const": "fallback.raw-data-route-rejected"
+        }
+      }
+    },
+    "repositoryCurriculaSentinel": {
+      "$ref": "#/$defs/poisonSentinel",
+      "properties": {
+        "id": {
+          "const": "repository.curricula"
+        }
+      }
+    },
+    "repositoryAppPublicSentinel": {
+      "$ref": "#/$defs/poisonSentinel",
+      "properties": {
+        "id": {
+          "const": "repository.app-public-data"
+        }
+      }
+    },
+    "repositoryAppSourceSentinel": {
+      "$ref": "#/$defs/poisonSentinel",
+      "properties": {
+        "id": {
+          "const": "repository.app-source-data"
+        }
+      }
+    },
+    "repositoryDocsSentinel": {
+      "$ref": "#/$defs/poisonSentinel",
+      "properties": {
+        "id": {
+          "const": "repository.docs-quality-status"
+        }
+      }
+    },
+    "repositoryBackendStaticSentinel": {
+      "$ref": "#/$defs/poisonSentinel",
+      "properties": {
+        "id": {
+          "const": "repository.backend-static-data"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "passed",
+        "failed",
+        "notRun"
+      ],
+      "properties": {
+        "required": {
+          "const": 15
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "notRun": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        }
+      }
+    },
+    "passingSummary": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/summary"
+        },
+        {
+          "properties": {
+            "passed": {
+              "const": 15
+            },
+            "failed": {
+              "const": 0
+            },
+            "notRun": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    }
+  }
+}

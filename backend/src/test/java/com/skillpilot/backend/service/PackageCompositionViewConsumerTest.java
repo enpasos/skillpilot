@@ -114,7 +114,8 @@ class PackageCompositionViewConsumerTest {
                 mock(GitHubStatsService.class),
                 learners,
                 compositionViews,
-                new ObjectMapper());
+                new ObjectMapper(),
+                new PackageCurriculumQualitySnapshotProvider());
         Learner learner = new Learner();
         learner.setSkillpilotId("learner");
         learner.setSelectedCurriculum(LANDSCAPE_ID);
@@ -241,7 +242,8 @@ class PackageCompositionViewConsumerTest {
                 mock(GitHubStatsService.class),
                 learners,
                 compositionViews,
-                new ObjectMapper());
+                new ObjectMapper(),
+                new PackageCurriculumQualitySnapshotProvider());
         Learner learner = new Learner();
         learner.setSelectedCurriculum(LANDSCAPE_ID);
         learner.setPersonalCurriculum(null);
@@ -280,7 +282,8 @@ class PackageCompositionViewConsumerTest {
                 mock(GitHubStatsService.class),
                 learners,
                 compositionViews,
-                new ObjectMapper());
+                new ObjectMapper(),
+                new PackageCurriculumQualitySnapshotProvider());
         Learner learner = new Learner();
         learner.setSelectedCurriculum(LANDSCAPE_ID);
 

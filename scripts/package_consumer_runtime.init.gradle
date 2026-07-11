@@ -1,0 +1,36 @@
+allprojects {
+    afterEvaluate { project ->
+        if (project != rootProject) {
+            return
+        }
+
+        tasks.register("writePackageConsumerRuntimeClasspath") {
+            // Only compiled production classes are needed. Depending on `classes`
+            // would also copy the repository's multi-gigabyte static/public tree.
+            dependsOn(tasks.named("compileJava"))
+            doLast {
+                def outputProperty = project.findProperty("packageConsumerClasspathOutput")
+                if (outputProperty == null || outputProperty.toString().trim().isEmpty()) {
+                    throw new GradleException("-PpackageConsumerClasspathOutput is required")
+                }
+
+                def runtimeJars = configurations.runtimeClasspath.files.findAll {
+                    it.isFile() && it.name.endsWith(".jar")
+                }
+                def h2Jars = configurations.testRuntimeClasspath.files.findAll {
+                    it.isFile() && it.name ==~ /^h2-[0-9].*[.]jar$/
+                }
+                if (h2Jars.size() != 1) {
+                    throw new GradleException("Expected exactly one H2 runtime jar, got ${h2Jars.size()}")
+                }
+
+                def jars = (runtimeJars + h2Jars).collect { it.canonicalFile }.unique().sort {
+                    left, right -> left.absolutePath <=> right.absolutePath
+                }
+                def output = file(outputProperty.toString())
+                output.parentFile.mkdirs()
+                output.setText(jars.collect { it.absolutePath }.join("\n") + "\n", "UTF-8")
+            }
+        }
+    }
+}

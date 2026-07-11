@@ -3,6 +3,10 @@ import {
   GYMNASIUM_DURATION_OFFERINGS,
   type GymnasiumStageOffering,
 } from '../generated/gymnasiumDurationOfferings'
+import type {
+  RuntimeCurriculumCatalog,
+  RuntimeCurriculumCatalogState,
+} from './runtimeCurriculumCatalog'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
 export const KNOWN_DURATION_MODELS = ['G8', 'G9'] as const
@@ -14,6 +18,19 @@ const gymnasiumContentOfferings: Record<string, Record<string, {
   readonly stages: readonly GymnasiumStageOffering[]
   readonly durationModels: readonly KnownDurationModel[]
 }>> = GYMNASIUM_CONTENT_OFFERINGS
+
+export type CurriculumOfferingSource =
+  | { readonly mode: 'catalog'; readonly catalog: RuntimeCurriculumCatalog }
+  | { readonly mode: 'repository' }
+  | { readonly mode: 'unavailable' }
+
+export const resolveCurriculumOfferingSource = (
+  state: RuntimeCurriculumCatalogState,
+): CurriculumOfferingSource => {
+  if (state.mode === 'package') return { mode: 'catalog', catalog: state.catalog }
+  if (state.mode === 'repository') return { mode: 'repository' }
+  return { mode: 'unavailable' }
+}
 
 export const DEFAULT_DURATION_MODEL: KnownDurationModel = 'G9'
 
@@ -53,8 +70,19 @@ export const getDurationModelOptions = (
 export const getOfferedGymnasiumDurationModels = (
   landscapeId?: string | null,
   jurisdiction?: string | null,
+  source: CurriculumOfferingSource = { mode: 'repository' },
 ): readonly KnownDurationModel[] => {
   if (!landscapeId) return []
+  if (source.mode === 'unavailable') return []
+  if (source.mode === 'catalog') {
+    const catalogJurisdiction = jurisdiction?.trim()
+    if (!catalogJurisdiction) return []
+    return KNOWN_DURATION_MODELS.filter((durationModel) => source.catalog.offerings.some((offering) => (
+      offering.landscapeId === landscapeId
+      && offering.scope.jurisdiction === catalogJurisdiction
+      && normalizeDurationModel(offering.scope.durationModel) === durationModel
+    )))
+  }
   const normalizedJurisdiction = normalizeJurisdictionCode(jurisdiction)
   if (!normalizedJurisdiction) return []
   return gymnasiumDurationOfferings[landscapeId]?.[normalizedJurisdiction] ?? []
@@ -68,8 +96,26 @@ export interface GymnasiumStageSelection {
 export const getOfferedGymnasiumStages = (
   landscapeId?: string | null,
   jurisdiction?: string | null,
+  source: CurriculumOfferingSource = { mode: 'repository' },
 ): readonly GymnasiumStageOffering[] => {
   if (!landscapeId) return []
+  if (source.mode === 'unavailable') return []
+  if (source.mode === 'catalog') {
+    const catalogJurisdiction = jurisdiction?.trim()
+    if (!catalogJurisdiction) return []
+    const stages = new Set<GymnasiumStageOffering>()
+    source.catalog.offerings.forEach((offering) => {
+      if (
+        offering.landscapeId !== landscapeId
+        || offering.scope.jurisdiction !== catalogJurisdiction
+      ) return
+      const stage = offering.scope.stage
+      if (stage === 'SekI' || stage === 'SekII' || stage === 'CrossStage') {
+        stages.add(stage)
+      }
+    })
+    return ['SekI', 'SekII', 'CrossStage'].filter((stage) => stages.has(stage as GymnasiumStageOffering)) as GymnasiumStageOffering[]
+  }
   const normalizedJurisdiction = normalizeJurisdictionCode(jurisdiction)
   if (!normalizedJurisdiction) return []
   return gymnasiumContentOfferings[landscapeId]?.[normalizedJurisdiction]?.stages ?? []
@@ -79,8 +125,9 @@ export const isGymnasiumSubjectOfferedForStageSelection = (
   landscapeId: string,
   jurisdiction: string | null | undefined,
   stageSelection: GymnasiumStageSelection,
+  source: CurriculumOfferingSource = { mode: 'repository' },
 ) => {
-  const offeredStages = getOfferedGymnasiumStages(landscapeId, jurisdiction)
+  const offeredStages = getOfferedGymnasiumStages(landscapeId, jurisdiction, source)
   if (offeredStages.length === 0) return false
   if (stageSelection.sek1Selected && stageSelection.sek2Selected) {
     return offeredStages.includes('CrossStage')

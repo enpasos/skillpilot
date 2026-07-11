@@ -5,11 +5,14 @@ import {
 } from '../utils/runtimeCurriculumCatalog'
 
 let cachedCatalogState: Promise<RuntimeCurriculumCatalogState> | null = null
+const ALLOW_REPOSITORY_FALLBACK = import.meta.env.MODE !== 'package-consumer'
 
 const loadCatalogState = (): Promise<RuntimeCurriculumCatalogState> => {
   if (!cachedCatalogState) {
     const apiBase = (import.meta.env.VITE_API_BASE ?? '').trim().replace(/\/+$/u, '')
-    cachedCatalogState = loadRuntimeCurriculumCatalog(fetch, apiBase)
+    cachedCatalogState = loadRuntimeCurriculumCatalog(fetch, apiBase, {
+      allowRepositoryFallback: ALLOW_REPOSITORY_FALLBACK,
+    })
   }
   return cachedCatalogState
 }

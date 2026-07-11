@@ -124,6 +124,12 @@ paketlokalen fachlichen Payloadschemas und verändern daher weder das geschlosse
   folgen mit DPK-011.
 - `embedded-fragment` bleibt bis zur vollständigen fachübergreifenden Closure- und
   Consumer-Lane fail-closed.
-- Das sichere Provisionieren allein beweist noch keinen checkout-unabhängigen
-  SkillPilot-Betrieb. Diesen Nachweis liefern erst die Runtime-Umschaltung und der
-  hermetische Package-only-Smoke-Test aus DPK-006c/007.
+- Der checkout-unabhängige Betrieb ist seit DPK-007 durch denselben Loader- und
+  Storepfad nachgewiesen: eine package-only SkillPilot-Assembly besteht 15
+  Funktionsprüfungen einschließlich realem React-/Chromium-Fluss und
+  Catalog-404-Fail-closed-Fall. Sie läuft mit `--clearenv`, fester
+  Environment-Allowlist und nur Loopback in einem checkout-verdeckten Namespace;
+  der Datei-/Netzwerk-Trace des vollständigen Prozessbaums beobachtet keine
+  fachliche Repository-Poison-Lane. Die evaluator-gesteuerte frische Attestation
+  und ihre Assembly-/Evidence-Bindung sind unter
+  [Curriculum Package Readiness](../qa-ci/curriculum-package-readiness.md) beschrieben.

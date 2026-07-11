@@ -12,6 +12,7 @@
     "policy",
     "evaluator",
     "input",
+    "consumerEvidence",
     "classification",
     "dimensions",
     "decision",
@@ -22,7 +23,7 @@
       "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json"
     },
     "reportFormatVersion": {
-      "const": "1.0"
+      "const": "1.1"
     },
     "scope": {
       "const": "json-full-standalone-v1"
@@ -67,7 +68,7 @@
           "const": "skillpilot-json-package-readiness"
         },
         "version": {
-          "const": "1.2.0"
+          "const": "1.3.0"
         },
         "jsonschemaVersion": {
           "const": "4.26.0"
@@ -85,11 +86,12 @@
             "catalog.offline-schema-catalog",
             "standalone.hard-reference-closure",
             "standalone.content-digest",
-            "publication.redistribution-cleared"
+            "publication.redistribution-cleared",
+            "consumer.hermetic-package-only"
           ]
         },
         "completeForPolicy": {
-          "const": false
+          "type": "boolean"
         }
       }
     },
@@ -147,6 +149,142 @@
           ],
           "minLength": 1,
           "maxLength": 180
+        }
+      }
+    },
+    "consumerEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reportName",
+        "bytes",
+        "sha256",
+        "schemaSha256",
+        "status",
+        "provenance",
+        "runnerScriptBytes",
+        "runnerScriptSha256",
+        "runnerExitCode",
+        "runnerTimedOut",
+        "freshReport",
+        "assemblyBytes",
+        "assemblySha256",
+        "evidenceBundleBytes",
+        "evidenceBundleSha256"
+      ],
+      "properties": {
+        "reportName": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "schemaSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "status": {
+          "enum": [
+            "not-provided",
+            "not-evaluated",
+            "external-unattested",
+            "accepted",
+            "rejected"
+          ]
+        },
+        "provenance": {
+          "enum": [
+            "none",
+            "external-unattested",
+            "self-executed"
+          ]
+        },
+        "runnerScriptBytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "runnerScriptSha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "runnerExitCode": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": -255,
+          "maximum": 255
+        },
+        "runnerTimedOut": {
+          "type": "boolean"
+        },
+        "freshReport": {
+          "type": "boolean"
+        },
+        "assemblyBytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "assemblySha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidenceBundleBytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "evidenceBundleSha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },

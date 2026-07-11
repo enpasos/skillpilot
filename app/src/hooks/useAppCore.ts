@@ -15,7 +15,7 @@ import { applyGoalPlacementProjection } from '../utils/goalPlacementProjection'
 import { getDisplayFiltersForLandscapeSelection } from '../utils/landscapeFilterOptions'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { normalizeLearnerProjectedEntries } from '../utils/learnerTreeProjection'
-import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
+import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from '../utils/curriculumDisplay'
 import { getStoredLandscapeIdForRole, normalizeLearnerLandscapeId } from '../utils/learnerProfile'
 import {
   applyMatchedCompositionRouteGoalProjection,
@@ -431,9 +431,20 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       offeringId?: string
     }>()
     graphSourceLandscapeEntries.forEach((entry) => {
+      const rootLandscapeId = runtimeCatalogState.mode === 'package'
+        ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId)
+        : undefined
       const scope = deriveRuntimeCompositionScope({
         landscapeId: entry.meta.landscapeId,
-        landscapeMeta: entry.meta,
+        rootLandscapeId,
+        scopeEnabled: runtimeCatalogState.mode === 'package'
+          || isRepositoryGymnasiumFramework(entry.meta.frameworkId),
+        catalogJurisdictions: runtimeCatalogState.mode === 'package'
+          ? runtimeCatalogState.catalog.offerings
+              .filter((offering) => offering.landscapeId === entry.meta.landscapeId)
+              .map((offering) => offering.scope.jurisdiction)
+              .filter((jurisdiction): jurisdiction is string => typeof jurisdiction === 'string')
+          : undefined,
         activeFilter,
         learnerPersonalCurriculum,
       })
@@ -586,6 +597,9 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
         [entry],
         deriveRuntimeGoalPlacementFilters({
           landscapeId: entry.meta.landscapeId,
+          rootLandscapeId: runtimeCatalogState.mode === 'package'
+            ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, entry.meta.landscapeId)
+            : undefined,
           activeFilter,
           learnerPersonalCurriculum,
         }),
@@ -623,6 +637,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     learnerPersonalCurriculum,
     loadingMatchedCompositionViews,
     role,
+    runtimeCatalogState,
     runtimeCompositionRequests,
   ])
 

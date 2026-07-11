@@ -8,7 +8,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { ConfirmModal } from '../components/ConfirmModal'
 import { BadgeCheck, Trophy } from 'lucide-react'
-import { getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
+import { CANONICAL_GYMNASIUM_ROOT_ID, getCurriculumDisplayTitle } from '../utils/curriculumDisplay'
 import { getCurriculaChampionCopy } from '../utils/curriculaChampionCopy'
 import { getCurriculaViewCopy } from '../utils/curriculaViewCopy'
 
@@ -84,8 +84,6 @@ interface DeregisterCurriculumGroup {
 type ValidationStatus = 'idle' | 'checking' | 'valid' | 'invalid'
 type ChampionFilter = 'with' | 'without' | 'all'
 type CategoryFilter = 'all' | 'school' | 'uni' | 'other'
-
-const CANONICAL_GYMNASIUM_ROOT_ID = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 
 const maturityOrder: MaturityLevel[] = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7']
 
