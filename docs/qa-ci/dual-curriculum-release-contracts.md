@@ -27,6 +27,6 @@ The gate runs in `./run_ci.sh`, the main GitHub CI workflow, and the subject-exp
 
 ## Deliberate boundary
 
-The initial field registry contains the critical mapping families and ordering decisions needed to freeze the contract. It is not yet a claim that every field in today's Mathematik export is covered. DPK-004 compiles the existing Mathematik package into the new release model and extends the closed registry until real field coverage is complete. DPK-005 then builds the first standalone JSON package; the ontology package, isolated reverse compiler, and real equivalence evidence follow in DPK-008 and DPK-009.
+The initial field registry contained only the critical mapping families and ordering decisions needed to freeze the contract. DPK-004 subsequently compiled the real Mathematik state and closed all observed Runtime and publication fields. DPK-005a now binds every package file to that semantic identity and pins the complete offline schema set; DPK-005b builds the first standalone JSON package. The ontology package, isolated reverse compiler, and real equivalence evidence follow in DPK-008 and DPK-009.
 
 The positive release and equivalence JSON files under `contracts/curriculum-package/v1/fixtures/dual-release/valid/` contain synthetic hashes and counts. They test the contract and must never be published as curriculum evidence.

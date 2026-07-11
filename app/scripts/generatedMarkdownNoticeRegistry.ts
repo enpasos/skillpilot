@@ -66,6 +66,19 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   },
   {
     artifactPaths: [
+      'docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.md',
+    ],
+    generatedBy: 'scripts/generate_curriculum_source_verification_review.py',
+    role: 'Hash-bound Mathematik source-text verification status and human review queue summary.',
+    sourceOfTruth: [
+      'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json',
+      'contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json',
+      'curricula/DE/Gymnasium/input/',
+    ],
+    regenerateWith: 'python3 -B scripts/generate_curriculum_source_verification_review.py --update',
+  },
+  {
+    artifactPaths: [
       'docs/qa-ci/status/mem-sparql-consistency-audit.md',
       'docs/qa-ci/status/mem-sparql-consistency-audit.json',
     ],

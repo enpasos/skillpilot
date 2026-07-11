@@ -23,6 +23,8 @@ on:
       - 'app/scripts/auditSubjectExportSourceLinks.ts'
       - 'app/scripts/buildSubjectExportPublicationIndex.ts'
       - 'app/scripts/buildSkillpilotExportPackage.ts'
+      - 'app/scripts/deterministicZip32.ts'
+      - 'app/scripts/testDeterministicZip32.ts'
       - 'app/scripts/buildM5SubjectExportPackages.ts'
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
@@ -51,6 +53,8 @@ on:
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
+      - 'scripts/generate_curriculum_package_redistribution_review.py'
+      - 'scripts/generate_curriculum_source_verification_review.py'
       - 'scripts/validate_curriculum_dual_release_contracts.py'
       - 'scripts/compile_curriculum_release_model.py'
       - 'scripts/validate_curriculum_release_model.py'
@@ -66,6 +70,8 @@ on:
       - 'app/scripts/auditSubjectExportSourceLinks.ts'
       - 'app/scripts/buildSubjectExportPublicationIndex.ts'
       - 'app/scripts/buildSkillpilotExportPackage.ts'
+      - 'app/scripts/deterministicZip32.ts'
+      - 'app/scripts/testDeterministicZip32.ts'
       - 'app/scripts/buildM5SubjectExportPackages.ts'
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
@@ -94,6 +100,8 @@ on:
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
+      - 'scripts/generate_curriculum_package_redistribution_review.py'
+      - 'scripts/generate_curriculum_source_verification_review.py'
       - 'scripts/validate_curriculum_dual_release_contracts.py'
       - 'scripts/compile_curriculum_release_model.py'
       - 'scripts/validate_curriculum_release_model.py'
@@ -126,6 +134,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Test deterministic ZIP32 writer
+        run: npm run test:deterministic-zip32
 
       - name: Use Python
         uses: actions/setup-python@v6

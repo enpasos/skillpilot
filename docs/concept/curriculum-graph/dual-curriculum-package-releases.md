@@ -575,6 +575,8 @@ Solange der Builder ZIP32 schreibt, setzt `packageFormatVersion: 1.x` feste Ober
 
 Lizenz und Entstehungsprovenienz dürfen nicht in einem Feld vermischt werden. Für veröffentlichte Assets werden mindestens `licenseExpression`, `provenanceClass` und `redistributionStatus` (`allowed`, `review-required`, `prohibited`) getrennt geführt. `review-required` und `prohibited` blockieren den öffentlichen Release. Die heutige Kategorie `goal-visualization-ai-generated-curated` beschreibt Herkunft und Kuratierung, erteilt aber für sich keine Weiterverbreitungslizenz.
 
+Ein technisch untersuchbarer Staging-Kandidat darf offene Entscheidungen explizit als `review-required` mit `licenseExpression: null` führen. Das ist ein gültiger Vertragszustand, aber niemals Publikationsbereitschaft: Der separate Readiness-Check `publication.redistribution-cleared` muss scheitern und der Kandidat bleibt `not-ready-incomplete`. So werden technische Paket-, Loader- und Roundtrip-Arbeiten nicht durch erfundene Rechtebehauptungen erkauft.
+
 Jeder Identifier aus einer SPDX-artigen `licenseExpression` muss über `licenseDocuments` auf ein im Paket inventarisiertes Lizenzartefakt aufgelöst werden. `NONE`, `NOASSERTION`, nicht auflösbare Identifier und verwaiste Lizenztexte sind im öffentlichen Standalone-Profil nicht zulässig.
 
 Ein kleiner Curriculum-BOM im Release-Index inventarisiert verwendete Schemas, Transformations-/Validatorversionen, FWU Core und SkillPilot-Profil, Quellenkollektionen sowie Asset- und Lizenzklassen.
@@ -610,7 +612,7 @@ Die gemeinsame Schnittstelle besteht aus versionierten Schemas, der Feldsemantik
 
 ### Phase 0 – Verträge festschreiben
 
-Implementierungsstand: DPK-004 schließt P0 fachlich und technisch ab. Der reale Kandidat `0.1.0-conformance.2` unter Publikationsprofil `1.1.0` kompiliert 111 logische und 756 binäre Inhaltsrecords mit dem gemeinsamen Digest `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60`. Die gezielte QS und das vollständige Repository-CI sind grün. DPK-005 beginnt anschließend P1 mit der ZIP-Materialisierung.
+Implementierungsstand: DPK-004 schließt P0 fachlich und technisch ab. Der reale Kandidat `0.1.0-conformance.2` unter Publikationsprofil `1.1.0` kompiliert 111 logische und 756 binäre Inhaltsrecords mit dem gemeinsamen Digest `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60`. DPK-005a hat anschließend die semantische File-Bindung, den vollständigen 22-Schema-Offlinetrust, fünf package-local Semantic Contracts, den sicheren deterministischen ZIP32-Baustein und die fail-closed Human-Review-Gates umgesetzt. Die Source-Verification reduziert 9.977 SourceGoals maschinell auf 479 offene Entscheidungen; 756 Bildrechte und drei Nicht-Binärklassen bleiben ebenfalls bewusst offen. DPK-005b materialisiert als Nächstes das reale ZIP, ohne diese offenen Gates als Freigaben umzudeuten.
 
 Ergebnisse:
 

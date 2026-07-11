@@ -2,7 +2,7 @@
 
 DPK-004 compiles the real German Gymnasium Mathematik authoring state into a strict, unpacked release model. DPK-004a established the Runtime portion; DPK-004b adds authoritative publication evidence. Together they are the executable bridge between repository-specific sources and the later `full-standalone-v1` JSON ZIP.
 
-Current result: `passed`. For DPK-004b, the real profile, fixtures, independent validation, 47 production/adversarial cases, byte-identical double build, and the complete repository `./run_ci.sh` pass. The P0 content scope is complete, and DPK-005 is next.
+Current result: `passed`. For DPK-004b, the real profile, fixtures, independent validation, 47 production/adversarial cases, byte-identical double build, and the complete repository `./run_ci.sh` pass. The P0 content scope is complete. DPK-005a has since closed package trust and human-review gates; DPK-005b is the next materialization step.
 
 ## At a Glance
 
@@ -15,7 +15,7 @@ Current result: `passed`. For DPK-004b, the real profile, fixtures, independent 
 | Is publication evidence part of semantic identity? | Yes: mappings, official sources, source-goal references, and quality evidence are four normalized logical artifacts in the same `contentDigest`. |
 | Is publication evidence in the Runtime closure? | No: all four package roles declare `runtimeRequired: false`; the closure contains 2,402 Runtime definitions and 18,815 references, with zero publication roles. |
 | Is publication quality honestly releasable? | No: 136 active goal visualizations are human-approved, 620 active reviews remain open, and one atomic goal has no active visualization, so the evidence artifact reports `publicationStatus: not-ready`. |
-| Are image files copied into this output? | No. DPK-004a reads and hashes them; DPK-005 materializes them in the ZIP. |
+| Are image files copied into this output? | No. DPK-004a reads and hashes them; DPK-005b materializes them in the ZIP. |
 | Is this output a standalone package? | No. It deliberately reports `conformance-model-only-not-a-package`. Manifest, schema catalog, licenses, complete inventory, checksums, archive safety, and the hermetic consumer gate follow later. |
 
 The short implementation workboard and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md). The target architecture is [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
@@ -95,7 +95,7 @@ The mapping artifact is compiled from authoritative review decisions, not from t
 
 Source evidence covers 31 collections, 55 official documents, 9,977 reviewed source-aligned goal records, and 16 jurisdictions. A hash-bound role table classifies 52 actual curriculum documents as Core `Lehrplan` and three official implementation/restriction/profile documents as application-level `OfficialSourceDocument`; unknown, unused, or mismatched roles fail closed. Source goals conservatively use the generic Core `Curriculares Element`, while source-to-canonical edges use Core `CE-Verweis`. Exact/partial match type is the narrow mapping extension. Quality evidence is application-only and publishes 754 semantic-atomicity decisions, 754 memory-goal decisions, 64 active-card decisions, and 756 active visualization decisions—2,328 decisions in total—plus one explicit missing-visualization scope record.
 
-`sourceText` is the reviewed authored wording carried by the extraction/review lane, not a claim that every value is a verbatim PDF quotation. The release compiler preserves and hashes that wording exactly after the declared boundary-whitespace projection. Some retained inputs still contain OCR/transliteration debt, and 484 source-goal wordings are not self-verifiable as contiguous text in their authored passage carrier. A dedicated source-verification QA lane remains required before release promotion; DPK-004 proves lossless package projection, not independent PDF quotation certification.
+`sourceText` is the reviewed authored wording carried by the extraction/review lane, not a claim that every value is a verbatim PDF quotation. The release compiler preserves and hashes that wording exactly after the declared boundary-whitespace projection. The DPK-005a source-verification lane now proves 9,493 contiguous authored-carrier matches and five additional, replayable PDF-projection matches. The remaining 479 fingerprint-bound records require human classification. No machine match is a human or legal approval; DPK-004 proves lossless package projection, not independent quotation certification.
 
 Strict scalar validation also exposed real PDF/OCR residue in source extraction: C0 controls and unpaired UTF-16 surrogates were corrected at the authoring source. The compiler rejects such unsafe values fail-closed; it does not sanitize them into a different release meaning.
 
@@ -141,7 +141,8 @@ The complete DPK-004 gate is green: the real `0.1.0-conformance.2` model under p
 
 | Step | Remaining outcome |
 | --- | --- |
-| DPK-005 | Materialize the completed model and all required binary assets as a safe, fully inventoried `full-standalone-v1` JSON ZIP with package-local schemas and licenses. |
+| DPK-005a | Completed: semantic file bindings, 22-schema offline trust, deterministic ZIP32 primitive, redistribution ledger, and source-verification queue. |
+| DPK-005b | Materialize the completed model and all required binary assets as a safe, fully inventoried `full-standalone-v1` JSON ZIP with package-local schemas and explicit pending-review states. |
 | DPK-006–007 | Load only from the package and prove SkillPilot operation without the curriculum source tree or `app/public` fallback. |
 | DPK-008–009 | Produce the Core-first FWU-OWL variant, reconstruct the JSON model in isolation, and issue the real dual-release equivalence proof. |
 

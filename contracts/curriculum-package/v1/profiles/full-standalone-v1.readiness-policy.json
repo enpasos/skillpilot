@@ -9,16 +9,16 @@
     "releaseProfile": "full-standalone-v1",
     "manifestSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+      "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
     },
     "releaseProfileContract": {
       "id": "full-standalone-v1",
-      "sha256": "87e606ec466b7ec0d82c0fb3943d116fd4f1689ff90524a07afffe103ec6d07f"
+      "sha256": "b9b1a04e6ffd1d797213267698ed0dfbe52f4a036bd12bcfae35103891a73e02"
     }
   },
   "reportSchema": {
     "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json",
-    "sha256": "558b3b81b13fe74d1dd935a858b365279be1825ddb2f0a391b746ae816f5ea42"
+    "sha256": "b5b3142a76a13f7e1128637d984def45ec0f347552e02cf6c5130591ed883f8d"
   },
   "evaluator": {
     "name": "skillpilot-json-package-readiness",
@@ -81,6 +81,10 @@
     },
     {
       "id": "standalone.content-digest",
+      "blocking": true
+    },
+    {
+      "id": "publication.redistribution-cleared",
       "blocking": true
     },
     {

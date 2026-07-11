@@ -4,12 +4,12 @@
   "description": "Self-contained JSON curriculum package profile. Every hard runtime dependency must resolve inside the package; external source URLs remain non-runtime metadata.",
   "manifestSchema": {
     "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-    "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+    "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
   },
   "trustedContractSchemas": [
     {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+      "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
     },
     {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
@@ -18,6 +18,104 @@
     {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
       "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+      "sha256": "1c70e16a87d729d0fbf44130e70871adfe675f7a5746d3b1fcd44f2586075695"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+      "sha256": "87459d64185f4a35da3e9898ee613a312e9ba5710beaa543b8f1f0d6a0aea277"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+      "sha256": "1b1acf12a343f36e61c675ed96a05db5cc98dab0b34a2d09aea0438f83e2d6cd"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",
+      "sha256": "b21fdb79de6f56533305698b989a5a36ab582885f5836ad665a0563ed5c1c07e"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+      "sha256": "8b37b9b0e1eb0b3d7594139bae9e90f87a0bdda579fbe92d5b9822449b998c6e"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+      "sha256": "dd5e77689686710a801ae01eb7947fce6b0d84154936e5b4ed15cc650c170723"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",
+      "sha256": "3f7159eb41ab4c12337e0b76f7e3bacaa3ac36404e8293c0c240cc2d3b6ec6ba"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",
+      "sha256": "67034e9b1737650ec7fc6d81c8d58aa355b54226f8445e9c118ceb33a83bf425"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+      "sha256": "a05f266142af45df932b74dc67de9d451d8fbe4e466bf5a781bbc65c5fb04f85"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",
+      "sha256": "47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+      "sha256": "1f7c205414eeb311941792009573fd80d1c2eadac73e02472eeb13dc193cd803"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+      "sha256": "30168d9084086855896f02325591fe0ceda5e49d6065b0b72fdfb74c167fba61"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+      "sha256": "e12475ff9c143a722a63684d398a0db761fc5a5eb2eca4fc83d9a89d69418d7b"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+      "sha256": "e125e54cb618b0b1e803d7aec2c7b92d28124ea6ba781bc594c2b0c0fdf0bff1"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+      "sha256": "d288daad8669f3cbbaf608beb16b5013a36af093030fbe5ee52580a48494d430"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+      "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "sha256": "b0af9c02d7bb60517db59788c88c4f36aed3533c31d30287dc3e59988761e701"
+    },
+    {
+      "id": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+      "sha256": "db42009b4241cfa03f0b350c8d5e7f62e4a08cdc322f5ee2a079ad315d2e339f"
+    }
+  ],
+  "semanticContractBindings": [
+    {
+      "bindingName": "semanticNormalForm",
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json"
+    },
+    {
+      "bindingName": "fieldSemanticsRegistry",
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json"
+    },
+    {
+      "bindingName": "definitionDigestProfile",
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json"
+    },
+    {
+      "bindingName": "curriculumOntologyProfile",
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json"
+    },
+    {
+      "bindingName": "publicationEvidenceProfile",
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json"
     }
   ],
   "compatibility": {
@@ -51,7 +149,7 @@
     "licenseDocuments": 1024
   },
   "redistributionPolicy": {
-    "allFilesMustBeAllowed": true
+    "readyRequiresAllFilesAllowed": true
   },
   "licensePolicy": {
     "requireDocumentForEveryIdentifier": true,
@@ -68,6 +166,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "runtime-catalog"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
       ]
     },
     {
@@ -77,6 +184,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "dependency-closure"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json"
       ]
     },
     {
@@ -86,6 +202,30 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "migration-aliases"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json"
+      ]
+    },
+    {
+      "role": "semantic-content-index",
+      "minimum": 1,
+      "maximum": 1,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json"
       ]
     },
     {
@@ -94,6 +234,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "canonical-landscape"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json"
       ]
     },
     {
@@ -103,6 +252,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "composition-view-index"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json"
       ]
     },
     {
@@ -111,6 +269,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "composition-view"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json"
       ]
     },
     {
@@ -120,6 +287,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "card-index"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json"
       ]
     },
     {
@@ -128,6 +304,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "card-deck"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json"
       ]
     },
     {
@@ -137,6 +322,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "resource-index"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json"
       ]
     },
     {
@@ -146,7 +340,11 @@
       "mediaTypes": [
         "image/jpeg",
         "image/png"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "binary-resource"
+      },
+      "validationSchemaIds": []
     },
     {
       "role": "embedded-goal-dependency",
@@ -154,14 +352,15 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
-      ]
-    },
-    {
-      "role": "external-dependency-declaration",
-      "minimum": 0,
-      "runtimeRequired": "forbidden",
-      "mediaTypes": [
-        "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "embedded-goal-dependency"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json"
       ]
     },
     {
@@ -170,6 +369,15 @@
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "source-to-canonical-mappings"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"
       ]
     },
     {
@@ -179,6 +387,15 @@
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "official-source-index"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json"
       ]
     },
     {
@@ -188,6 +405,15 @@
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "source-goal-reference-index"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json"
       ]
     },
     {
@@ -195,9 +421,16 @@
       "minimum": 0,
       "runtimeRequired": "forbidden",
       "mediaTypes": [
-        "application/json",
-        "application/x-ndjson",
-        "text/markdown"
+        "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "allowedNormalizationRoles": [
+          "release-quality-evidence"
+        ]
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json"
       ]
     },
     {
@@ -207,6 +440,12 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json"
       ]
     },
     {
@@ -215,6 +454,29 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/schema+json"
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
+    },
+    {
+      "role": "semantic-contract",
+      "minimum": 5,
+      "maximum": 5,
+      "runtimeRequired": "required",
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": [
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+        "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json"
       ]
     },
     {
@@ -224,7 +486,11 @@
       "runtimeRequired": "required",
       "mediaTypes": [
         "application/json"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
     },
     {
       "role": "license",
@@ -232,7 +498,11 @@
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "text/plain"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
     },
     {
       "role": "package-documentation",
@@ -241,26 +511,38 @@
       "mediaTypes": [
         "text/markdown",
         "text/plain"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
     },
     {
       "role": "validation-report",
       "minimum": 0,
-      "maximum": 1,
+      "maximum": 100,
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "application/json"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
     },
     {
       "role": "provenance-report",
       "minimum": 0,
-      "maximum": 1,
+      "maximum": 100,
       "runtimeRequired": "forbidden",
       "mediaTypes": [
         "application/json",
         "text/markdown"
-      ]
+      ],
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "validationSchemaIds": []
     }
   ]
 }

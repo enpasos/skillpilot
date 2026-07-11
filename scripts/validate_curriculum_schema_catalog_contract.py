@@ -27,6 +27,7 @@ from validate_curriculum_package_contracts import (
     Diagnostic,
     DuplicateJsonKeyError,
     NonFiniteJsonConstantError,
+    NORMATIVE_SCHEMA_FILES,
     TRUSTED_SCHEMA_BINDINGS,
     expect_exact_keys,
     expect_object,
@@ -48,7 +49,7 @@ FIXTURE_RELATIVE_DIR = Path("fixtures/schema-catalog")
 SCHEMA_CATALOG_PACKAGE_PATH = "schemas/catalog.json"
 TRUSTED_SCHEMA_PACKAGE_PATHS = {
     schema_id: f"schemas/{filename}"
-    for _binding_name, (schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
+    for schema_id, filename in NORMATIVE_SCHEMA_FILES
 }
 
 MAX_CATALOG_BYTES = 1024 * 1024
@@ -1374,7 +1375,7 @@ def main() -> int:
     catalog_path = valid_dir / "catalog.json"
     trusted_schema_paths = {
         schema_id: contract_dir / filename
-        for _binding_name, (schema_id, filename) in TRUSTED_SCHEMA_BINDINGS.items()
+        for schema_id, filename in NORMATIVE_SCHEMA_FILES
     }
     try:
         try:

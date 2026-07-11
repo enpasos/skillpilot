@@ -61,6 +61,15 @@ python3 -B scripts/validate_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --release-root "${OUTPUT_A}"
 
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --check \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_package_redistribution_review.py \
+  --self-test \
+  --release-root "${OUTPUT_A}"
+python3 -B scripts/generate_curriculum_source_verification_review.py --check
+python3 -B scripts/generate_curriculum_source_verification_review.py --self-test
+
 python3 -B scripts/compile_curriculum_release_model.py \
   --profile "${PROFILE}" \
   --output "${OUTPUT_B}"

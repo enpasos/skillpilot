@@ -81,6 +81,7 @@ STANDALONE_CHECK_IDS = [
     "standalone.hard-reference-closure",
     "standalone.content-digest",
 ]
+PUBLICATION_CHECK_IDS = ["publication.redistribution-cleared"]
 CONSUMER_CHECK_IDS = ["consumer.hermetic-package-only"]
 REQUIRED_CHECK_IDS = [
     *INPUT_CHECK_IDS,
@@ -88,12 +89,14 @@ REQUIRED_CHECK_IDS = [
     *CONTRACT_CHECK_IDS,
     *CATALOG_CHECK_IDS,
     *STANDALONE_CHECK_IDS,
+    *PUBLICATION_CHECK_IDS,
     *CONSUMER_CHECK_IDS,
 ]
 IMPLEMENTED_CHECK_IDS = [
     *INPUT_CHECK_IDS,
     *IDENTITY_CHECK_IDS,
     *CONTRACT_CHECK_IDS,
+    *PUBLICATION_CHECK_IDS,
 ]
 EVALUATOR_COMPLETE_FOR_POLICY = IMPLEMENTED_CHECK_IDS == REQUIRED_CHECK_IDS
 
@@ -1127,15 +1130,27 @@ def derive_decision(
         status, reason = "unsupported", "UNSUPPORTED_TARGET_CONTRACT"
     elif dialect != "full-standalone-v1-candidate":
         status, reason = "invalid", "INPUT_INVALID"
-    elif any(check["result"] == "fail" for check in checks):
+    elif any(
+        checks_by_id[check_id]["result"] == "fail"
+        for check_id in [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS]
+    ):
         status, reason = "invalid", "TARGET_CONTRACT_INVALID"
+    elif any(
+        checks_by_id[check_id]["result"] == "fail"
+        for check_id in PUBLICATION_CHECK_IDS
+    ):
+        status, reason = "not-ready-incomplete", "REDISTRIBUTION_REVIEW_REQUIRED"
+    elif any(check["result"] == "fail" for check in checks):
+        status, reason = "not-ready-incomplete", "REQUIRED_GATES_FAILED"
+    elif any(check["result"] != "pass" for check in checks):
+        status, reason = "not-ready-incomplete", "REQUIRED_GATES_NOT_EVALUATED"
+    elif EVALUATOR_COMPLETE_FOR_POLICY:
+        status, reason = "ready", "CHECK_PASSED"
     else:
-        # This evaluator intentionally withholds ready. The remaining policy
-        # checks are not implemented and are emitted as not-evaluated.
         status, reason = "not-ready-incomplete", "REQUIRED_GATES_NOT_EVALUATED"
     return {
         "status": status,
-        "standaloneProfileReady": False,
+        "standaloneProfileReady": status == "ready",
         "primaryReasonCode": reason,
         "blockingCheckIds": derive_blockers(checks),
     }
@@ -1179,7 +1194,7 @@ def evaluate_loaded_input(
 
     if not input_safe:
         mark_checks(
-            [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
             "not-applicable",
             "INPUT_INVALID",
             "No readiness interpretation is permitted after input-safety failure.",
@@ -1192,7 +1207,7 @@ def evaluate_loaded_input(
             "Recognized legacy subject export; legacy validity cannot establish full-standalone-v1 readiness.",
         )
         mark_checks(
-            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
             "not-applicable",
             "LEGACY_TARGET_CHECK_NOT_APPLICABLE",
             "Target-contract check is not applied to a recognized legacy artifact.",
@@ -1223,7 +1238,7 @@ def evaluate_loaded_input(
             "Later contract checks are not applied to an incoherent target claim.",
         )
         mark_checks(
-            [*CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [*CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
             "not-applicable",
             "INCOHERENT_TARGET_CONTRACT",
             "Later readiness gates are not applied to an incoherent target claim.",
@@ -1236,7 +1251,7 @@ def evaluate_loaded_input(
             "Input does not declare the supported full-standalone-v1 target contract.",
         )
         mark_checks(
-            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
             "not-applicable",
             "UNSUPPORTED_TARGET_CONTRACT",
             "Target-contract check is not applicable to an unsupported contract.",
@@ -1315,6 +1330,34 @@ def evaluate_loaded_input(
                     else "Finished ZIP inventory, contract copies, hashes, checksums, and actual archive limits match.",
                 )
 
+        if schema_issues:
+            record(
+                PUBLICATION_CHECK_IDS[0],
+                "not-evaluated",
+                "MANIFEST_SCHEMA_BLOCKED",
+                "Redistribution clearance is not evaluated for a schema-invalid manifest.",
+            )
+        else:
+            uncleared_paths = sorted(
+                record_value.get("path", "<unknown>")
+                for record_value in manifest.get("files", [])
+                if isinstance(record_value, dict)
+                and record_value.get("redistributionStatus") != "allowed"
+            )
+            record(
+                PUBLICATION_CHECK_IDS[0],
+                "fail" if uncleared_paths else "pass",
+                "REDISTRIBUTION_REVIEW_REQUIRED"
+                if uncleared_paths
+                else "CHECK_PASSED",
+                (
+                    "Redistribution is not cleared for: "
+                    + ", ".join(uncleared_paths[:5])
+                )
+                if uncleared_paths
+                else "Every distributed file is explicitly cleared for redistribution.",
+            )
+
         for check_id, code, message in (
             (
                 "catalog.runtime-catalog",
@@ -1392,6 +1435,9 @@ def evaluate_loaded_input(
             "standaloneCompleteness": aggregate_dimension(
                 checks_by_id, STANDALONE_CHECK_IDS
             ),
+            "publicationReadiness": aggregate_dimension(
+                checks_by_id, PUBLICATION_CHECK_IDS
+            ),
             "consumerOperability": aggregate_dimension(
                 checks_by_id, CONSUMER_CHECK_IDS
             ),
@@ -1461,6 +1507,9 @@ def validate_report_semantics(
         "catalogCompleteness": aggregate_dimension(checks_by_id, CATALOG_CHECK_IDS),
         "standaloneCompleteness": aggregate_dimension(
             checks_by_id, STANDALONE_CHECK_IDS
+        ),
+        "publicationReadiness": aggregate_dimension(
+            checks_by_id, PUBLICATION_CHECK_IDS
         ),
         "consumerOperability": aggregate_dimension(checks_by_id, CONSUMER_CHECK_IDS),
     }
@@ -1592,13 +1641,9 @@ def build_target_zip(
         record["bytes"] = len(payload)
         record["sha256"] = sha256_bytes(payload)
 
-    for binding_name, (_schema_id, schema_hash, _schema_bytes) in (
-        contracts.trusted_schema_metadata.items()
-    ):
-        manifest["contractBindings"][binding_name]["sha256"] = schema_hash
-    manifest["contractBindings"]["releaseProfile"][
-        "sha256"
-    ] = contracts.profile_sha256
+    for binding in manifest["contractBindings"].values():
+        binding_path = binding["path"]
+        binding["sha256"] = sha256_bytes(payloads[binding_path])
     manifest_bytes = stable_json(manifest).encode("utf-8")
     checksum_lines = [
         f"{sha256_bytes(payload)}  {root}/{relative}"
@@ -1697,6 +1742,44 @@ def run_fixture_suite() -> None:
     target_report = reports_by_id.get("formal-contract-is-still-incomplete")
     if target_report is None:
         raise ReadinessError("Readiness fixtures must include exact target candidate")
+
+    review_required_manifest = copy.deepcopy(
+        load_trusted_json(FIXTURE_DIR / "target-contract-only.manifest.json")
+    )
+    review_required_record = review_required_manifest["files"][3]
+    review_required_record["redistributionStatus"] = "review-required"
+    review_required_record["licenseExpression"] = None
+    review_required_bytes = stable_json(review_required_manifest).encode("utf-8")
+    review_required_report = evaluate_loaded_input(
+        LoadedInput(
+            kind="manifest",
+            name="review-required-target.manifest.json",
+            path=FIXTURE_DIR / "target-contract-only.manifest.json",
+            bytes=len(review_required_bytes),
+            sha256=sha256_bytes(review_required_bytes),
+            manifest=review_required_manifest,
+            manifest_bytes=review_required_bytes,
+            archive_root=review_required_manifest["archiveRoot"],
+            errors=[],
+        ),
+        contracts,
+    )
+    review_checks = {
+        check["id"]: check for check in review_required_report["checks"]
+    }
+    if (
+        review_required_report["decision"]["status"] != "not-ready-incomplete"
+        or review_required_report["decision"]["primaryReasonCode"]
+        != "REDISTRIBUTION_REVIEW_REQUIRED"
+        or review_checks["contract.manifest-schema"]["result"] != "pass"
+        or review_checks["contract.profile-roles"]["result"] != "pass"
+        or review_checks[PUBLICATION_CHECK_IDS[0]]["result"] != "fail"
+    ):
+        raise ReadinessError(
+            "Review-required redistribution was misclassified as a contract error"
+        )
+    print("PASS redistribution review is valid-but-not-ready")
+
     forged_ready = copy.deepcopy(target_report)
     forged_ready["decision"]["status"] = "ready"
     forged_ready["decision"]["standaloneProfileReady"] = True

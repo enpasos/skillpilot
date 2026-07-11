@@ -46,6 +46,8 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Test deterministic ZIP32 writer
+        run: npm run test:deterministic-zip32
       - name: Lint
         run: npm run lint
       - name: Build
