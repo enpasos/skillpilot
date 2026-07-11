@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/installed-package-record.schema.json",
+  "title": "SkillPilot installed curriculum package record v1",
+  "description": "Immutable receipt binding one extracted content-addressed package object to its validator-v2 report.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "installRecordFormatVersion",
+    "outerZipSha256",
+    "outerZipBytes",
+    "manifestSha256",
+    "closureDigest",
+    "definitionIndexDigest",
+    "packageId",
+    "packageVersion",
+    "releaseId",
+    "contentDigest",
+    "archiveRoot",
+    "validationReportSha256"
+  ],
+  "properties": {
+    "installRecordFormatVersion": {
+      "const": "1.0"
+    },
+    "outerZipSha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "outerZipBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3500000000
+    },
+    "manifestSha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "closureDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "definitionIndexDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "packageId": {
+      "$ref": "#/$defs/packageId"
+    },
+    "packageVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "archiveRoot": {
+      "$ref": "#/$defs/portablePathSegment"
+    },
+    "validationReportSha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    }
+  }
+}

@@ -11,6 +11,8 @@ This page is the entry point for repeatable production and export pipelines. Kee
 
 - [Curriculum Graph](curriculum-graph.md)
   Pipeline notes for curriculum graph production.
+- [Curriculum Package Provisioning](curriculum-package-provisioning.md)
+  Secure quarantine, content-addressed installation, CAS activation, and rollback for JSON runtime packages.
 - [Exam Example](exam-example.md)
   Pipeline notes for exam example production.
 - [Sek-I Mathematics Exam](seki-math-exam.md)
