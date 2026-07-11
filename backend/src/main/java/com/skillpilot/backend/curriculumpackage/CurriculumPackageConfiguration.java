@@ -1,6 +1,8 @@
 package com.skillpilot.backend.curriculumpackage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.landscape.GoalMappingService;
+import com.skillpilot.backend.landscape.LandscapeService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,5 +41,27 @@ public class CurriculumPackageConfiguration {
     @Bean
     CurriculumRuntimeSnapshotProvider curriculumRuntimeSnapshotProvider(JsonCurriculumPackageLoader loader) {
         return new CurriculumRuntimeSnapshotProvider(loader);
+    }
+
+    @Bean
+    PackageCurriculumDomainState packageCurriculumDomainState(
+            CurriculumRuntimeSnapshotProvider snapshotProvider,
+            CurriculumPackageArtifactReader artifactReader,
+            ObjectMapper objectMapper) {
+        return PackageCurriculumDomainState.load(
+                snapshotProvider.current(), artifactReader, objectMapper);
+    }
+
+    @Bean
+    GoalMappingService packageGoalMappingService(PackageCurriculumDomainState domainState) {
+        return new GoalMappingService(domainState.mappingState());
+    }
+
+    @Bean
+    LandscapeService packageLandscapeService(
+            ObjectMapper objectMapper,
+            GoalMappingService goalMappingService,
+            PackageCurriculumDomainState domainState) {
+        return new LandscapeService(objectMapper, goalMappingService, domainState);
     }
 }

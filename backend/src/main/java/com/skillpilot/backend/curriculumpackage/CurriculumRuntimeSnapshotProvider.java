@@ -22,8 +22,14 @@ public final class CurriculumRuntimeSnapshotProvider {
         return snapshot;
     }
 
-    /** A failed reload never changes the previously active snapshot. */
-    public synchronized CurriculumRuntimeSnapshot reload() {
+    /**
+     * A failed reload never changes the previously active snapshot.
+     *
+     * <p>Package activation is currently a process-start boundary. This method intentionally stays
+     * package-private until a coordinator can publish the snapshot and every derived service state
+     * as one generation.
+     */
+    synchronized CurriculumRuntimeSnapshot reload() {
         CurriculumRuntimeSnapshot candidate = loader.load();
         active.set(candidate);
         return candidate;

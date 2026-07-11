@@ -3,6 +3,8 @@ package com.skillpilot.backend.curriculumpackage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.landscape.GoalMappingService;
+import com.skillpilot.backend.landscape.LandscapeService;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Assumptions;
@@ -61,5 +63,51 @@ class ProvisionedCurriculumPackageConformanceTest {
                 .singleElement()
                 .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
         assertThat(snapshot.definitionCount()).isEqualTo(2402);
+
+        PackageCurriculumDomainState domainState = PackageCurriculumDomainState.load(
+                snapshot,
+                new CurriculumPackageArtifactReader(reader),
+                mapper);
+        assertThat(domainState.generationSha256()).isEqualTo(snapshot.generationSha256());
+        assertThat(domainState.landscapes()).hasSize(1);
+        assertThat(domainState.landscapeIdByGoalId()).hasSize(1079);
+        assertThat(domainState.mappingState().packageStates()).singleElement().satisfies(state -> {
+            assertThat(state.mappingCollectionCount()).isEqualTo(31);
+            assertThat(state.decisionCount()).isEqualTo(10_021);
+            assertThat(state.mappingEdgeCount()).isEqualTo(33_382);
+            assertThat(state.sourceCollectionCount()).isEqualTo(31);
+            assertThat(state.sourceDocumentCount()).isEqualTo(55);
+        });
+        assertThat(domainState.mappingState().mappingsBySourceGoalId()).hasSize(9_977);
+        assertThat(domainState.mappingState().sourceLandscapesById()).hasSize(31);
+        assertThat(domainState.mappingState().mappings())
+                .allSatisfy(mapping -> assertThat(mapping.sourceFile())
+                        .startsWith("package:org.skillpilot.curriculum.de.gymnasium.mathematik/"));
+
+        GoalMappingService mappingService = new GoalMappingService(domainState.mappingState());
+        String sourceGoalWithFanout = domainState.mappingState().mappingsBySourceGoalId().entrySet().stream()
+                .filter(entry -> entry.getValue().size() > 1)
+                .findFirst()
+                .orElseThrow()
+                .getKey();
+        assertThat(mappingService.findByLegacyGoalId(sourceGoalWithFanout)).isEmpty();
+        assertThat(mappingService.findAllByLegacyGoalId(sourceGoalWithFanout)).hasSizeGreaterThan(1);
+
+        LandscapeService landscapeService = new LandscapeService(mapper, mappingService, domainState);
+        assertThat(landscapeService.getOverview("de", true).getSummaries())
+                .extracting(summary -> summary.getCurriculumId())
+                .containsExactly("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+        assertThat(domainState.mappingState().sourceLandscapesById().values())
+                .extracting(metadata -> metadata.jurisdiction())
+                .containsOnly(
+                        "DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV",
+                        "DE-NI", "DE-NW", "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH");
+        assertThat(landscapeService.getClosure("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced").getFirst()
+                .getGoals().stream()
+                .filter(goal -> goal.getId().equals("bfc4fe23-bfa4-4836-9bd2-793f4305d682"))
+                .findFirst()
+                .orElseThrow()
+                .getApplicability())
+                .isNull();
     }
 }

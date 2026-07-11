@@ -72,16 +72,73 @@ final class CurriculumPackageTestFixture {
                 .resolve(archiveRoot);
 
         Map<String, byte[]> artifacts = new LinkedHashMap<>();
-        artifacts.put("data/canonical/landscape.json", jsonBytes(Map.of(
-                "landscapeId", landscapeId,
-                "goals", List.of(Map.of("id", "goal-" + spec.suffix(), "title", "Fixture goal")))));
+        artifacts.put("data/canonical/landscape.json", jsonBytes(Map.ofEntries(
+                Map.entry("landscapeId", landscapeId),
+                Map.entry("locale", "de-DE"),
+                Map.entry("frameworkId", "fixture-framework"),
+                Map.entry("subject", "Fixture subject"),
+                Map.entry("country", "DE"),
+                Map.entry("schoolType", "Gymnasium"),
+                Map.entry("goals", List.of(Map.of(
+                        "id", "goal-" + spec.suffix(),
+                        "title", "Fixture goal",
+                        "applicability", Map.of("jurisdiction", List.of("DE-HE"))))))));
         if (spec.moduleLandscapeId() != null) {
-            artifacts.put("data/canonical/module.landscape.json", jsonBytes(Map.of(
-                    "landscapeId", spec.moduleLandscapeId(),
-                    "goals", List.of(Map.of(
+            artifacts.put("data/canonical/module.landscape.json", jsonBytes(Map.ofEntries(
+                    Map.entry("landscapeId", spec.moduleLandscapeId()),
+                    Map.entry("locale", "de-DE"),
+                    Map.entry("frameworkId", "fixture-framework"),
+                    Map.entry("subject", "Fixture subject module"),
+                    Map.entry("goals", List.of(Map.of(
                             "id", "module-goal-" + spec.suffix(),
-                            "title", "Module fixture goal")))));
+                            "title", "Module fixture goal"))))));
         }
+        String sourceCollectionId = "source-collection-" + spec.suffix();
+        String sourceLandscapeId = "source-landscape-" + spec.suffix();
+        String sourceGoalId = "source-goal-" + spec.suffix();
+        String mappingCollectionId = "mapping-collection-" + spec.suffix();
+        artifacts.put("data/sources/source-index.json", jsonBytes(Map.ofEntries(
+                Map.entry("$schema", "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json"),
+                Map.entry("sourceIndexFormatVersion", "1.0"),
+                Map.entry("targetLandscapeId", landscapeId),
+                Map.entry("sourceCollectionCount", 1),
+                Map.entry("sourceDocumentCount", 1),
+                Map.entry("collections", List.of(Map.ofEntries(
+                        Map.entry("sourceCollectionId", sourceCollectionId),
+                        Map.entry("sourceLandscapeId", sourceLandscapeId),
+                        Map.entry("jurisdiction", "DE-BY"),
+                        Map.entry("subject", "Fixture subject"),
+                        Map.entry("stage", "SekI"),
+                        Map.entry("documentCount", 1),
+                        Map.entry("documents", List.of(Map.ofEntries(
+                                Map.entry("sourceDocumentId", sourceCollectionId + ":core"),
+                                Map.entry("sourceKey", "core"),
+                                Map.entry("title", "Fixture curriculum source"),
+                                Map.entry("role", "binding-core"),
+                                Map.entry("semanticType", "curriculum"),
+                                Map.entry("official", true),
+                                Map.entry("url", "https://example.org/curriculum/" + spec.suffix()))))))))));
+        artifacts.put("data/mappings/source-to-canonical.json", jsonBytes(Map.ofEntries(
+                Map.entry("$schema", "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"),
+                Map.entry("mappingFormatVersion", "1.0"),
+                Map.entry("targetLandscapeId", landscapeId),
+                Map.entry("mappingCollectionCount", 1),
+                Map.entry("decisionCount", 1),
+                Map.entry("mappingEdgeCount", 1),
+                Map.entry("collections", List.of(Map.ofEntries(
+                        Map.entry("mappingCollectionId", mappingCollectionId),
+                        Map.entry("sourceCollectionId", sourceCollectionId),
+                        Map.entry("sourceLandscapeId", sourceLandscapeId),
+                        Map.entry("targetLandscapeId", landscapeId),
+                        Map.entry("jurisdiction", "DE-BY"),
+                        Map.entry("subject", "Fixture subject"),
+                        Map.entry("stage", "SekI"),
+                        Map.entry("inputDecisionCount", 1),
+                        Map.entry("mappingEdgeCount", 1),
+                        Map.entry("edges", List.of(Map.of(
+                                "sourceGoalId", sourceGoalId,
+                                "canonicalGoalId", "goal-" + spec.suffix(),
+                                "matchType", "exact")))))))));
         List<Map<String, Object>> viewIndexEntries = new ArrayList<>();
         viewIndexEntries.add(Map.of(
                         "viewId", viewId,
@@ -279,6 +336,8 @@ final class CurriculumPackageTestFixture {
                 Map.entry("data/runtime/migration-aliases.json", "migration-aliases"),
                 Map.entry("data/runtime/dependency-closure.json", "dependency-closure"),
                 Map.entry("data/runtime/catalog.json", "runtime-catalog"),
+                Map.entry("data/mappings/source-to-canonical.json", "mapping"),
+                Map.entry("data/sources/source-index.json", "source-index"),
                 Map.entry("metadata/audit.json", "audit-report"),
                 Map.entry("assets/fixture.png", "binary-asset")));
         if (spec.moduleLandscapeId() != null) {
@@ -300,10 +359,15 @@ final class CurriculumPackageTestFixture {
             } else if (role.equals("audit-report")) {
                 semanticBinding = Map.of("kind", "excluded-generated");
             } else {
+                String normalizationRole = switch (role) {
+                    case "mapping" -> "source-to-canonical-mappings";
+                    case "source-index" -> "official-source-index";
+                    default -> role;
+                };
                 semanticBinding = Map.of(
                         "kind", "logical-artifact",
                         "logicalId", "fixture:" + path,
-                        "normalizationRole", role);
+                        "normalizationRole", normalizationRole);
             }
             manifestFiles.add(Map.ofEntries(
                     Map.entry("path", path),
@@ -311,7 +375,11 @@ final class CurriculumPackageTestFixture {
                     Map.entry("mediaType", path.endsWith(".json") ? "application/json" : "image/png"),
                     Map.entry("bytes", artifact.getValue().length),
                     Map.entry("sha256", CurriculumPackageFileReader.sha256(artifact.getValue())),
-                    Map.entry("runtimeRequired", !path.equals("metadata/audit.json")),
+                    Map.entry(
+                            "runtimeRequired",
+                            !path.equals("metadata/audit.json")
+                                    && !path.equals("data/mappings/source-to-canonical.json")
+                                    && !path.equals("data/sources/source-index.json")),
                     Map.entry("semanticBinding", semanticBinding),
                     Map.entry("licenseExpression", "Apache-2.0"),
                     Map.entry("provenanceClass", "software-contract"),
@@ -348,7 +416,9 @@ final class CurriculumPackageTestFixture {
         report.put("counts", Map.of(
                 "archiveEntries", artifacts.size() + 2,
                 "manifestFiles", artifacts.size(),
-                "logicalArtifacts", 8,
+                "logicalArtifacts", roles.values().stream()
+                        .filter(role -> !role.equals("binary-asset") && !role.equals("audit-report"))
+                        .count(),
                 "binaryResources", 1));
         report.put("diagnostics", List.of());
         report.put("diagnosticsTruncated", false);
