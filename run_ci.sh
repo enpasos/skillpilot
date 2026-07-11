@@ -59,6 +59,9 @@ npm run validate:graph
 echo "--> Testing Package Landscape Model Parity"
 npm run test:package-landscape-model
 
+echo "--> Testing Runtime Curriculum Catalog Consumer"
+npm run test:runtime-curriculum-catalog
+
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 

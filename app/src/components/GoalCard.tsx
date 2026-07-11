@@ -13,6 +13,8 @@ import { getGoalCardCopy } from '../utils/goalCardCopy'
 import { getAudienceGoalTitle } from '../utils/treeProjectionRuntime'
 import { splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
+import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
+import { resolveGoalResourceHref } from '../utils/runtimeCurriculumCatalog'
 
 interface GoalCardProps {
   goal: Goal
@@ -664,6 +666,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   isFrontier = false
 }) => {
   const { language } = useLanguage()
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getGoalCardCopy(localizedLanguage)
   const handleChange = onMasteryChange ?? (() => { })
@@ -687,11 +690,21 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     ? copy.activeActionReveal
     : copy.activeActionSelect
   const { provenance, helpfulLinks, visualizationLinks } = extractSourceMetadata(goal)
+  const resolveRuntimeLink = React.useCallback((link: GoalSourceLink): GoalSourceLink | null => {
+    const url = resolveGoalResourceHref(runtimeCatalogState, goal, link, () => link.url)
+    return url ? { ...link, url } : null
+  }, [goal, runtimeCatalogState])
+  const resolvedHelpfulLinks = helpfulLinks
+    .map(resolveRuntimeLink)
+    .filter((link): link is GoalSourceLink => Boolean(link))
+  const resolvedVisualizationLinks = visualizationLinks
+    .map(resolveRuntimeLink)
+    .filter((link): link is GoalSourceLink => Boolean(link))
   const [sourceRationale, setSourceRationale] = React.useState<GoalSourceRationaleItem | null>(null)
   const [isSourceRationaleOpen, setIsSourceRationaleOpen] = React.useState(false)
   const displayTitle = useRawGoalTitles ? goal.title : getAudienceGoalTitle(goal)
-  const learningMaterialLinks = helpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
-  const primaryVisualization = visualizationLinks.find((link) => normalize(link.role) === 'primary') ?? visualizationLinks[0]
+  const learningMaterialLinks = resolvedHelpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
+  const primaryVisualization = resolvedVisualizationLinks.find((link) => normalize(link.role) === 'primary') ?? resolvedVisualizationLinks[0]
   const sourceLinkLabel = provenance.sourceTitle || copy.coursePageFallback
   const displayDescription = stripLegacyAttributionLines(goal.description, Boolean(provenance.sourceUrl))
   const examDataForDisplay = isRenderableExamData(goal.examData) ? goal.examData : undefined

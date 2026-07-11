@@ -25,6 +25,14 @@ import {
 } from '../utils/compositionViewRuntime'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
+import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
+import {
+  findRuntimeRootLandscapeId,
+  resolveExplicitRuntimeOfferingId,
+  resolveRuntimeApiHref,
+  resolveRuntimeOfferingId,
+  selectRuntimeLandscapeId,
+} from '../utils/runtimeCurriculumCatalog'
 
 type Role = 'learner' | 'trainer' | 'explorer'
 const DEFAULT_ACTIVE_FILTER = 'all'
@@ -100,6 +108,48 @@ const normalizeActiveFilter = (
 
 const getFilterParams = (params: URLSearchParams) => splitFilterIds(params.getAll('f'))
 
+const hasExplicitPersonalCurriculumScope = (value?: string | null): boolean => {
+  if (!value) return false
+  try {
+    const parsed = JSON.parse(value)
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return false
+    const nested = (parsed as Record<string, unknown>).personalCurriculum
+    const config = nested && typeof nested === 'object' && !Array.isArray(nested)
+      ? nested as Record<string, unknown>
+      : parsed as Record<string, unknown>
+    return Object.values(config).some((entry) => {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return false
+      const record = entry as Record<string, unknown>
+      return record.selected === true
+        || (typeof record.filterId === 'string' && record.filterId.trim().length > 0)
+        || (typeof record.durationModel === 'string' && record.durationModel.trim().length > 0)
+    })
+  } catch {
+    return false
+  }
+}
+
+const readPersonalCurriculumOfferingId = (
+  value: string | null | undefined,
+  landscapeId: string,
+): string | undefined => {
+  if (!value) return undefined
+  try {
+    const parsed = JSON.parse(value)
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return undefined
+    const nested = (parsed as Record<string, unknown>).personalCurriculum
+    const config = nested && typeof nested === 'object' && !Array.isArray(nested)
+      ? nested as Record<string, unknown>
+      : parsed as Record<string, unknown>
+    const entry = config[landscapeId]
+    if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return undefined
+    const offeringId = (entry as Record<string, unknown>).offeringId
+    return typeof offeringId === 'string' && offeringId.trim().length > 0 ? offeringId.trim() : undefined
+  } catch {
+    return undefined
+  }
+}
+
 const replaceFilterDimension = ({
   currentFilter,
   nextFilter,
@@ -141,6 +191,7 @@ const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => 
 export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOptions & { skillpilotId: string }) {
   const navigate = useNavigate()
   const location = useLocation()
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
   // Fix: useParams only works inside a Route. Since useAppCore is called in App (outside Routes),
   // we must parse the URL manually using matchPath.
   const match = matchPath({ path: '/:view/:goalId?' }, location.pathname)
@@ -168,6 +219,12 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
     return normalizeLandscapeIdForRole(searchParams.get('l') || getStoredLandscapeIdForRole(role), role)
   })
+
+  useEffect(() => {
+    if (runtimeCatalogState.mode !== 'package') return
+    const normalized = selectRuntimeLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
+    if (normalized !== selectedLandscapeId) setSelectedLandscapeId(normalized)
+  }, [runtimeCatalogState, selectedLandscapeId])
 
   useEffect(() => {
     if (pendingSearchRef.current === currentSearchString) {
@@ -213,9 +270,15 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const [learnerPersonalCurriculum, setLearnerPersonalCurriculum] = React.useState<string | null>(null)
   const [matchedCompositionViewsByLandscapeId, setMatchedCompositionViewsByLandscapeId] = React.useState<Record<string, Record<string, unknown>>>({})
   const [loadingMatchedCompositionViews, setLoadingMatchedCompositionViews] = React.useState(false)
+  const [compositionViewError, setCompositionViewError] = React.useState<Error | null>(null)
 
   const [learnerGraphRefreshToken, setLearnerGraphRefreshToken] = React.useState(0)
-  const { landscapeEntries, loadingLandscapes, landscapeError } = useLandscapes(selectedLandscapeId, language)
+  const runtimeCatalogReady = runtimeCatalogState.mode === 'package' || runtimeCatalogState.mode === 'repository'
+  const {
+    landscapeEntries,
+    loadingLandscapes,
+    landscapeError: loadedLandscapeError,
+  } = useLandscapes(selectedLandscapeId, language, { enabled: runtimeCatalogReady })
   const {
     learnerScopedLandscapeEntries,
     loadingLearnerScopedLandscapes,
@@ -224,7 +287,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     selectedLandscapeId,
     language,
     skillpilotId,
-    { enabled: role === 'learner', refreshToken: learnerGraphRefreshToken },
+    { enabled: role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken },
   )
   const showLearnerTools = role !== 'explorer'
 
@@ -362,8 +425,11 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     return () => controller.abort()
   }, [learnerGraphRefreshToken, role, skillpilotId])
 
-  const runtimeCompositionScopes = useMemo(() => {
-    const scopes = new Map<string, ReturnType<typeof deriveRuntimeCompositionScope>>()
+  const runtimeCompositionRequests = useMemo(() => {
+    const requests = new Map<string, {
+      scope: ReturnType<typeof deriveRuntimeCompositionScope>
+      offeringId?: string
+    }>()
     graphSourceLandscapeEntries.forEach((entry) => {
       const scope = deriveRuntimeCompositionScope({
         landscapeId: entry.meta.landscapeId,
@@ -371,27 +437,83 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
         activeFilter,
         learnerPersonalCurriculum,
       })
-      if (scope) {
-        scopes.set(entry.meta.landscapeId, scope)
+      if (runtimeCatalogState.mode === 'package') {
+        const catalogLandscape = runtimeCatalogState.catalog.landscapes.find(
+          (candidate) => candidate.landscapeId === entry.meta.landscapeId,
+        )
+        if (!catalogLandscape) return
+        const hasOfferings = runtimeCatalogState.catalog.offerings.some(
+          (candidate) => candidate.landscapeId === entry.meta.landscapeId,
+        )
+        if (!hasOfferings && !catalogLandscape.defaultOfferingId) return
+        const requestedScope = scope && hasExplicitPersonalCurriculumScope(learnerPersonalCurriculum)
+          ? Object.entries(scope).reduce<Record<string, string>>((result, [key, value]) => {
+              if (key !== 'landscapeId' && typeof value === 'string' && value.length > 0) {
+                result[key] = value
+              }
+              return result
+            }, {})
+          : null
+        const queryOfferingId = entry.meta.landscapeId === selectedLandscapeId
+          ? new URLSearchParams(currentSearchString).get('offering')
+          : null
+        const configuredOfferingId = queryOfferingId
+          ?? readPersonalCurriculumOfferingId(learnerPersonalCurriculum, entry.meta.landscapeId)
+        const explicitOfferingId = configuredOfferingId
+          ? resolveExplicitRuntimeOfferingId(
+              runtimeCatalogState.catalog,
+              entry.meta.landscapeId,
+              configuredOfferingId,
+            )
+          : undefined
+        requests.set(entry.meta.landscapeId, {
+          scope,
+          offeringId: configuredOfferingId
+            ? explicitOfferingId
+            : resolveRuntimeOfferingId(
+                runtimeCatalogState.catalog,
+                entry.meta.landscapeId,
+                requestedScope,
+              ),
+        })
+        return
+      }
+      if (runtimeCatalogState.mode === 'repository' && scope) {
+        requests.set(entry.meta.landscapeId, { scope })
       }
     })
-    return scopes
-  }, [activeFilter, graphSourceLandscapeEntries, learnerPersonalCurriculum])
+    return requests
+  }, [activeFilter, currentSearchString, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId])
 
   useEffect(() => {
-    if (role !== 'learner' || runtimeCompositionScopes.size === 0) {
+    if (role !== 'learner' || runtimeCompositionRequests.size === 0) {
       setMatchedCompositionViewsByLandscapeId((current) =>
         Object.keys(current).length === 0 ? current : {},
       )
       setLoadingMatchedCompositionViews(false)
+      setCompositionViewError(null)
       return
     }
 
     const controller = new AbortController()
     const signal = controller.signal
     setLoadingMatchedCompositionViews(true)
+    setCompositionViewError(null)
     void Promise.all(
-      Array.from(runtimeCompositionScopes.entries()).map(async ([landscapeId, scope]) => {
+      Array.from(runtimeCompositionRequests.entries()).map(async ([landscapeId, request]) => {
+        if (runtimeCatalogState.mode === 'package') {
+          if (!request.offeringId) {
+            throw new Error(`No catalog offering matches the selected scope for ${landscapeId}`)
+          }
+          const href = `/api/ui/composition-views/offerings/${encodeURIComponent(request.offeringId)}`
+          const res = await fetch(resolveRuntimeApiHref(runtimeCatalogState.apiBase, href), { signal })
+          if (!res.ok) {
+            throw new Error(`Failed to load catalog offering ${request.offeringId} (${res.status})`)
+          }
+          const data = await res.json()
+          return [landscapeId, normalizeCompositionView(data)] as const
+        }
+        const scope = request.scope
         if (!scope) return null
         const params = new URLSearchParams({
           landscapeId: scope.landscapeId,
@@ -425,16 +547,18 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
         })
         setMatchedCompositionViewsByLandscapeId(next)
         setLoadingMatchedCompositionViews(false)
+        setCompositionViewError(null)
       })
       .catch((error) => {
         if (signal.aborted) return
         console.warn('[useAppCore] Failed to load matching composition views', error)
         setMatchedCompositionViewsByLandscapeId({})
         setLoadingMatchedCompositionViews(false)
+        setCompositionViewError(error instanceof Error ? error : new Error('Failed to load composition view'))
       })
 
     return () => controller.abort()
-  }, [role, runtimeCompositionScopes])
+  }, [role, runtimeCatalogState, runtimeCompositionRequests])
 
   const effectiveMatchedCompositionViewsByLandscapeId = useMemo(
     () => matchedCompositionViewsByLandscapeId,
@@ -442,7 +566,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   )
 
   const projectedLandscapeEntries = useMemo(() => {
-    const compositionManagedLandscapeIds = new Set(runtimeCompositionScopes.keys())
+    const compositionManagedLandscapeIds = new Set(runtimeCompositionRequests.keys())
     const rawEntriesWithMatchedCompositionView = graphSourceLandscapeEntries.filter((entry) =>
       !!effectiveMatchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
     )
@@ -499,7 +623,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     learnerPersonalCurriculum,
     loadingMatchedCompositionViews,
     role,
-    runtimeCompositionScopes,
+    runtimeCompositionRequests,
   ])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
@@ -541,11 +665,14 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     if (role !== 'learner') return
     const routeGoalLandscapeId = routeGoal?.landscapeId
     if (!goalId || !routeGoalLandscapeId) return
-    if (selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) return
+    const selectedIsRuntimeRoot = runtimeCatalogState.mode === 'package'
+      ? runtimeCatalogState.catalog.rootLandscapeIds.includes(selectedLandscapeId)
+      : selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    if (selectedIsRuntimeRoot) return
     if (goalIndexAll.has(goalId)) return
     if (routeGoalLandscapeId === selectedLandscapeId) return
     setSelectedLandscapeId(routeGoalLandscapeId)
-  }, [goalId, goalIndexAll, role, routeGoal?.landscapeId, selectedLandscapeId])
+  }, [goalId, goalIndexAll, role, routeGoal?.landscapeId, runtimeCatalogState, selectedLandscapeId])
 
   const currentGoal = useMemo(() => {
     if (goalId) {
@@ -742,8 +869,19 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
 
   return {
     landscapeEntries,
-    loadingLandscapes: loadingLandscapes || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes),
-    landscapeError,
+    loadingLandscapes:
+      runtimeCatalogState.mode === 'loading'
+      || loadingLandscapes
+      || (role === 'learner' && !!selectedLandscapeId && loadingLearnerScopedLandscapes)
+      || (role === 'learner' && runtimeCompositionRequests.size > 0 && loadingMatchedCompositionViews),
+    landscapeError:
+      (runtimeCatalogState.mode === 'unavailable' ? runtimeCatalogState.error : null)
+      ?? compositionViewError
+      ?? loadedLandscapeError,
+    runtimeCatalogState,
+    runtimeRootLandscapeId: runtimeCatalogState.mode === 'package'
+      ? findRuntimeRootLandscapeId(runtimeCatalogState.catalog, selectedLandscapeId)
+      : undefined,
     showLearnerTools,
     selectedLandscapeId,
     currentRouteGoalId: goalId ?? '',

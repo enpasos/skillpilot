@@ -95,7 +95,7 @@ public final class CurriculumCatalogService {
                             descriptor.resourceId(),
                             descriptor.landscapeId(),
                             descriptor.ownerGoalId(),
-                            descriptor.resourceKind(),
+                            descriptor.catalogResourceKind(),
                             descriptor.delivery(),
                             descriptor.mediaType(),
                             descriptor.publicUrl(),

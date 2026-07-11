@@ -18,6 +18,7 @@
     "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py",
     "validate:graph": "tsx scripts/validateGraph.ts",
     "test:package-landscape-model": "tsx scripts/testPackageLandscapeModelParity.ts",
+    "test:runtime-curriculum-catalog": "tsx scripts/testRuntimeCurriculumCatalog.ts",
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
     "validate:learner-goal-selection": "tsx scripts/validateLearnerGoalSelection.ts",
