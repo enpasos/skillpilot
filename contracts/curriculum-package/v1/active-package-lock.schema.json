@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/active-package-lock.schema.json",
+  "title": "SkillPilot active curriculum package lock v1",
+  "description": "Closed, deterministic selection of exact content-addressed installed curriculum packages. Entries are additionally required to be strictly ordered by packageId.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lockFormatVersion",
+    "packages"
+  ],
+  "properties": {
+    "lockFormatVersion": {
+      "const": "1.0"
+    },
+    "packages": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/packageLockEntry"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "packageLockEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageId",
+        "packageVersion",
+        "releaseId",
+        "outerZipSha256",
+        "manifestSha256",
+        "contentDigest",
+        "archiveRoot",
+        "closureDigest",
+        "definitionIndexDigest",
+        "installRecordSha256"
+      ],
+      "properties": {
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "releaseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "outerZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "archiveRoot": {
+          "$ref": "#/$defs/portablePathSegment"
+        },
+        "closureDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "definitionIndexDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "installRecordSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

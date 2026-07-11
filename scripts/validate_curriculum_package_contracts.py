@@ -35,6 +35,35 @@ SCHEMA_CATALOG_SCHEMA_ID = (
 PROFILE_ID = "full-standalone-v1"
 JSONSCHEMA_VERSION = "4.26.0"
 
+# These schemas describe the external package-store/provisioning protocol. They
+# are intentionally not package-local payload schemas and therefore must never
+# be added to NORMATIVE_SCHEMA_FILES or full-standalone-v1 trustedContractSchemas.
+OPERATIONAL_SCHEMA_FILES = {
+    "fullPackageValidationReport": (
+        "https://skillpilot.com/schemas/curriculum-package/v1/"
+        "full-package-validation-report.schema.json",
+        "full-package-validation-report.schema.json",
+    ),
+    "installedPackageRecord": (
+        "https://skillpilot.com/schemas/curriculum-package/v1/"
+        "installed-package-record.schema.json",
+        "installed-package-record.schema.json",
+    ),
+    "activePackageLock": (
+        "https://skillpilot.com/schemas/curriculum-package/v1/"
+        "active-package-lock.schema.json",
+        "active-package-lock.schema.json",
+    ),
+}
+PROVISIONER_GATE_IDS = (
+    "inventory",
+    "runtimeCatalog",
+    "offlineSchemaCatalog",
+    "hardReferenceClosure",
+    "contentDigest",
+    "assetBytes",
+)
+
 TRUSTED_SCHEMA_BINDINGS = {
     "manifestSchema": (MANIFEST_SCHEMA_ID, SCHEMA_FILENAME),
     "runtimeCatalogSchema": (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
@@ -1248,6 +1277,317 @@ def validate_manifest(
     return sorted(diagnostics)
 
 
+def load_operational_schema_validators(
+    contract_dir: Path,
+) -> dict[str, Draft202012Validator]:
+    validators: dict[str, Draft202012Validator] = {}
+    for binding_name, (expected_id, filename) in OPERATIONAL_SCHEMA_FILES.items():
+        path = contract_dir / filename
+        schema = expect_object(load_json(path), str(path))
+        Draft202012Validator.check_schema(schema)
+        if schema.get("$id") != expected_id:
+            raise ContractDefinitionError(
+                f"Operational schema {filename} has unexpected $id {schema.get('$id')!r}"
+            )
+        validators[binding_name] = Draft202012Validator(schema)
+    return validators
+
+
+def operational_schema_diagnostics(
+    document: Any,
+    validator: Draft202012Validator,
+    code: str,
+) -> list[Diagnostic]:
+    return [
+        Diagnostic(code, schema_location(error), error.message)
+        for error in sorted(
+            validator.iter_errors(document),
+            key=lambda item: (
+                tuple(str(part) for part in item.absolute_path),
+                tuple(str(part) for part in item.absolute_schema_path),
+                item.message,
+            ),
+        )
+    ]
+
+
+def expected_release_id(document: dict[str, Any]) -> str | None:
+    package_id = document.get("packageId")
+    package_version = document.get("packageVersion")
+    if isinstance(package_id, str) and isinstance(package_version, str):
+        return f"{package_id}@{package_version}"
+    return None
+
+
+def validate_full_package_validation_report(
+    report: Any,
+    validator: Draft202012Validator,
+) -> list[Diagnostic]:
+    diagnostics = operational_schema_diagnostics(
+        report,
+        validator,
+        "FULL_VALIDATION_REPORT_SCHEMA",
+    )
+    if diagnostics or not isinstance(report, dict):
+        return sorted(diagnostics)
+
+    package = report["package"]
+    expected_id = expected_release_id(package)
+    if expected_id is not None and package.get("releaseId") != expected_id:
+        diagnostics.append(
+            Diagnostic(
+                "FULL_REPORT_RELEASE_ID_MISMATCH",
+                "/package/releaseId",
+                f"Expected {expected_id!r}",
+            )
+        )
+
+    counts = report["counts"]
+    if report["status"] == "valid" and (
+        counts["archiveEntries"] != counts["manifestFiles"] + 2
+        or counts["logicalArtifacts"] > counts["manifestFiles"]
+        or counts["binaryResources"] > counts["manifestFiles"]
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "FULL_REPORT_COUNTS_INCONSISTENT",
+                "/counts",
+                "Valid report counts must bind manifest files plus the two excluded ZIP entries",
+            )
+        )
+
+    if report["status"] != "error":
+        diagnostic_rows = report["diagnostics"]
+        canonical_rows = sorted(
+            diagnostic_rows,
+            key=lambda item: (
+                item["gate"],
+                item["code"],
+                item["location"],
+                item["message"],
+            ),
+        )
+        if diagnostic_rows != canonical_rows:
+            diagnostics.append(
+                Diagnostic(
+                    "FULL_REPORT_DIAGNOSTIC_ORDER",
+                    "/diagnostics",
+                    "Diagnostics must use canonical gate/code/location/message order",
+                )
+            )
+        for gate_name in PROVISIONER_GATE_IDS:
+            gate = report["gates"][gate_name]
+            displayed = [
+                row["code"] for row in diagnostic_rows if row["gate"] == gate_name
+            ]
+            displayed_codes = sorted(set(displayed))
+            if gate["diagnosticCodes"] != displayed_codes:
+                diagnostics.append(
+                    Diagnostic(
+                        "FULL_REPORT_GATE_CODES_MISMATCH",
+                        f"/gates/{gate_name}/diagnosticCodes",
+                        "Gate diagnostic codes differ from displayed diagnostic evidence",
+                    )
+                )
+            if report["diagnosticsTruncated"]:
+                count_matches = gate["diagnosticCount"] >= len(displayed)
+            else:
+                count_matches = gate["diagnosticCount"] == len(displayed)
+            if not count_matches:
+                diagnostics.append(
+                    Diagnostic(
+                        "FULL_REPORT_GATE_COUNT_MISMATCH",
+                        f"/gates/{gate_name}/diagnosticCount",
+                        "Gate diagnostic count differs from displayed diagnostic evidence",
+                    )
+                )
+    return sorted(diagnostics)
+
+
+def validate_installed_package_record(
+    record: Any,
+    validator: Draft202012Validator,
+) -> list[Diagnostic]:
+    diagnostics = operational_schema_diagnostics(
+        record,
+        validator,
+        "INSTALLED_PACKAGE_RECORD_SCHEMA",
+    )
+    if diagnostics or not isinstance(record, dict):
+        return sorted(diagnostics)
+    expected_id = expected_release_id(record)
+    if record.get("releaseId") != expected_id:
+        diagnostics.append(
+            Diagnostic(
+                "INSTALL_RECORD_RELEASE_ID_MISMATCH",
+                "/releaseId",
+                f"Expected {expected_id!r}",
+            )
+        )
+    return sorted(diagnostics)
+
+
+def validate_active_package_lock(
+    lock: Any,
+    validator: Draft202012Validator,
+) -> list[Diagnostic]:
+    diagnostics = operational_schema_diagnostics(
+        lock,
+        validator,
+        "ACTIVE_PACKAGE_LOCK_SCHEMA",
+    )
+    if diagnostics or not isinstance(lock, dict):
+        return sorted(diagnostics)
+    package_ids: list[str] = []
+    for index, entry in enumerate(lock["packages"]):
+        package_id = entry["packageId"]
+        package_ids.append(package_id)
+        expected_id = expected_release_id(entry)
+        if entry.get("releaseId") != expected_id:
+            diagnostics.append(
+                Diagnostic(
+                    "ACTIVE_LOCK_RELEASE_ID_MISMATCH",
+                    f"/packages/{index}/releaseId",
+                    f"Expected {expected_id!r}",
+                )
+            )
+    for package_id, count in Counter(package_ids).items():
+        if count > 1:
+            diagnostics.append(
+                Diagnostic(
+                    "ACTIVE_LOCK_PACKAGE_ID_DUPLICATE",
+                    "/packages",
+                    f"packageId {package_id!r} occurs {count} times",
+                )
+            )
+    if package_ids != sorted(package_ids) or any(
+        left >= right for left, right in zip(package_ids, package_ids[1:])
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "ACTIVE_LOCK_PACKAGE_ORDER",
+                "/packages",
+                "Package entries must be strictly ordered by packageId",
+            )
+        )
+    return sorted(diagnostics)
+
+
+INSTALL_REPORT_BINDINGS = {
+    "outerZipSha256": ("input", "sha256"),
+    "outerZipBytes": ("input", "bytes"),
+    "manifestSha256": ("package", "manifestSha256"),
+    "closureDigest": ("package", "closureDigest"),
+    "definitionIndexDigest": ("package", "definitionIndexDigest"),
+    "packageId": ("package", "packageId"),
+    "packageVersion": ("package", "packageVersion"),
+    "releaseId": ("package", "releaseId"),
+    "contentDigest": ("package", "contentDigest"),
+    "archiveRoot": ("package", "archiveRoot"),
+}
+LOCK_INSTALL_BINDINGS = (
+    "packageId",
+    "packageVersion",
+    "releaseId",
+    "outerZipSha256",
+    "manifestSha256",
+    "contentDigest",
+    "archiveRoot",
+    "closureDigest",
+    "definitionIndexDigest",
+)
+
+
+def binding_code(prefix: str, field: str) -> str:
+    snake = re.sub(r"(?<!^)(?=[A-Z])", "_", field).upper()
+    return f"{prefix}_{snake}_MISMATCH"
+
+
+def validate_package_provisioner_bundle(
+    report: Any,
+    report_bytes: bytes,
+    install_record: Any,
+    install_record_bytes: bytes,
+    active_lock: Any,
+    validators: dict[str, Draft202012Validator],
+) -> list[Diagnostic]:
+    diagnostics = [
+        *validate_full_package_validation_report(
+            report, validators["fullPackageValidationReport"]
+        ),
+        *validate_installed_package_record(
+            install_record, validators["installedPackageRecord"]
+        ),
+        *validate_active_package_lock(active_lock, validators["activePackageLock"]),
+    ]
+    if diagnostics:
+        return sorted(diagnostics)
+
+    if report["status"] != "valid":
+        diagnostics.append(
+            Diagnostic(
+                "PROVISIONER_REPORT_NOT_VALID",
+                "/status",
+                "Only a validator-v2 report with status valid is installable",
+            )
+        )
+        return sorted(diagnostics)
+
+    report_sha256 = hashlib.sha256(report_bytes).hexdigest()
+    if install_record["validationReportSha256"] != report_sha256:
+        diagnostics.append(
+            Diagnostic(
+                "INSTALL_VALIDATION_REPORT_SHA256_MISMATCH",
+                "/validationReportSha256",
+                "Install record does not bind the exact validation-report bytes",
+            )
+        )
+    for field, (report_section, report_field) in INSTALL_REPORT_BINDINGS.items():
+        if install_record[field] != report[report_section][report_field]:
+            diagnostics.append(
+                Diagnostic(
+                    binding_code("INSTALL_REPORT", field),
+                    f"/{field}",
+                    f"Install record {field} differs from validator-v2 evidence",
+                )
+            )
+
+    matching_entries = [
+        entry
+        for entry in active_lock["packages"]
+        if entry["packageId"] == install_record["packageId"]
+    ]
+    if len(matching_entries) != 1:
+        diagnostics.append(
+            Diagnostic(
+                "LOCK_INSTALL_ENTRY_CARDINALITY",
+                "/packages",
+                "Active lock must contain exactly one entry for the installed packageId",
+            )
+        )
+        return sorted(diagnostics)
+    entry = matching_entries[0]
+    install_sha256 = hashlib.sha256(install_record_bytes).hexdigest()
+    if entry["installRecordSha256"] != install_sha256:
+        diagnostics.append(
+            Diagnostic(
+                "LOCK_INSTALL_RECORD_SHA256_MISMATCH",
+                "/packages/0/installRecordSha256",
+                "Active lock does not bind the exact install-record bytes",
+            )
+        )
+    for field in LOCK_INSTALL_BINDINGS:
+        if entry[field] != install_record[field]:
+            diagnostics.append(
+                Diagnostic(
+                    binding_code("LOCK_INSTALL", field),
+                    f"/packages/0/{field}",
+                    f"Active lock {field} differs from the installed-package record",
+                )
+            )
+    return sorted(diagnostics)
+
+
 def decode_json_pointer_token(token: str) -> str:
     return token.replace("~1", "/").replace("~0", "~")
 
@@ -1622,6 +1962,351 @@ def validate_fixture_suite(
     return valid_count, invalid_count, failures
 
 
+def fixture_json_bytes(value: Any) -> bytes:
+    return (
+        json.dumps(value, ensure_ascii=False, indent=2, separators=(",", ": ")) + "\n"
+    ).encode("utf-8")
+
+
+def pointer_value(document: Any, pointer: str) -> Any:
+    if not pointer.startswith("/"):
+        raise ContractDefinitionError(
+            f"Fixture JSON pointer must start with '/': {pointer!r}"
+        )
+    current = document
+    for raw_token in pointer[1:].split("/"):
+        token = decode_json_pointer_token(raw_token)
+        if isinstance(current, list):
+            current = current[int(token)]
+        elif isinstance(current, dict):
+            current = current[token]
+        else:
+            raise ContractDefinitionError(
+                f"Fixture pointer cannot traverse {token!r}"
+            )
+    return current
+
+
+def apply_provisioner_mutation(
+    documents: dict[str, dict[str, Any]], mutation: Any
+) -> None:
+    data = expect_object(mutation, "package-provisioner fixture mutation")
+    document_name = data.get("document")
+    operation = data.get("operation")
+    if document_name not in documents:
+        raise ContractDefinitionError(
+            f"Unknown package-provisioner fixture document {document_name!r}"
+        )
+    document = documents[document_name]
+    if operation in {"remove-pointer", "set-pointer"}:
+        expect_exact_keys(
+            data,
+            {"document", "operation", "pointer"}
+            if operation == "remove-pointer"
+            else {"document", "operation", "pointer", "value"},
+            "package-provisioner fixture mutation",
+        )
+        pointer = data.get("pointer")
+        if not isinstance(pointer, str):
+            raise ContractDefinitionError(f"{operation} requires a string pointer")
+        parent, token = pointer_parent(document, pointer)
+        if operation == "remove-pointer":
+            if isinstance(parent, list):
+                del parent[int(token)]
+            elif isinstance(parent, dict):
+                del parent[token]
+            else:
+                raise ContractDefinitionError(
+                    f"Fixture pointer cannot remove {token!r}"
+                )
+        elif isinstance(parent, list):
+            parent[int(token)] = copy.deepcopy(data.get("value"))
+        elif isinstance(parent, dict):
+            parent[token] = copy.deepcopy(data.get("value"))
+        else:
+            raise ContractDefinitionError(f"Fixture pointer cannot set {token!r}")
+        return
+    if operation == "append-array-item":
+        expect_exact_keys(
+            data,
+            {"document", "operation", "pointer", "value"},
+            "package-provisioner fixture mutation",
+        )
+        pointer = data.get("pointer")
+        if not isinstance(pointer, str):
+            raise ContractDefinitionError("append-array-item requires a string pointer")
+        target = pointer_value(document, pointer)
+        if not isinstance(target, list):
+            raise ContractDefinitionError(
+                f"append-array-item target is not an array: {pointer!r}"
+            )
+        target.append(copy.deepcopy(data.get("value")))
+        return
+    raise ContractDefinitionError(
+        f"Unknown package-provisioner fixture mutation operation: {operation!r}"
+    )
+
+
+def validate_package_provisioner_raw_fixtures(
+    fixture_root: Path,
+    verbose: bool,
+) -> tuple[int, list[str]]:
+    raw_dir = fixture_root / "raw-invalid"
+    expectations_path = raw_dir / "expectations.json"
+    expectations = expect_object(load_json(expectations_path), str(expectations_path))
+    expect_exact_keys(
+        expectations,
+        {"fixtureFormatVersion", "cases"},
+        str(expectations_path),
+    )
+    if expectations.get("fixtureFormatVersion") != 1:
+        raise ContractDefinitionError(
+            f"Unsupported package-provisioner raw fixture format in {expectations_path}"
+        )
+    cases = expectations.get("cases")
+    if not isinstance(cases, list) or not cases:
+        raise ContractDefinitionError(
+            f"Package-provisioner raw fixture suite {expectations_path} must contain cases"
+        )
+
+    passed = 0
+    failures: list[str] = []
+    referenced: set[Path] = set()
+    seen_ids: set[str] = set()
+    for index, raw_case in enumerate(cases):
+        case = expect_object(raw_case, f"{expectations_path}.cases[{index}]")
+        expected_code = case.get("expectedErrorCode")
+        expected_keys = {"id", "path", "expectedErrorCode"}
+        if expected_code == "JSON_DUPLICATE_KEY":
+            expected_keys.add("expectedDuplicateKey")
+        expect_exact_keys(case, expected_keys, f"{expectations_path}.cases[{index}]")
+        case_id = case.get("id")
+        relative_path = case.get("path")
+        if (
+            not isinstance(case_id, str)
+            or not case_id
+            or case_id in seen_ids
+            or not isinstance(relative_path, str)
+            or not path_is_safe(relative_path)
+            or "/" in relative_path
+            or expected_code not in {"JSON_DUPLICATE_KEY", "JSON_SYNTAX"}
+        ):
+            raise ContractDefinitionError(
+                f"Malformed package-provisioner raw fixture at index {index}"
+            )
+        seen_ids.add(case_id)
+        path = (raw_dir / relative_path).resolve()
+        if path.parent != raw_dir.resolve():
+            raise ContractDefinitionError(
+                f"Package-provisioner raw fixture escapes its directory: {relative_path!r}"
+            )
+        referenced.add(path)
+        try:
+            parse_json_text(path.read_text(encoding="utf-8"))
+        except DuplicateJsonKeyError as error:
+            actual_code = "JSON_DUPLICATE_KEY"
+            actual_value = error.key
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            actual_code = "JSON_SYNTAX"
+            actual_value = None
+        except NonFiniteJsonConstantError as error:
+            actual_code = "JSON_NONFINITE_CONSTANT"
+            actual_value = error.constant
+        else:
+            failures.append(
+                f"Package-provisioner raw fixture {case_id!r} unexpectedly parsed"
+            )
+            continue
+        expected_value = case.get("expectedDuplicateKey")
+        if actual_code != expected_code or (
+            expected_code == "JSON_DUPLICATE_KEY" and actual_value != expected_value
+        ):
+            failures.append(
+                f"Package-provisioner raw fixture {case_id!r} expected "
+                f"{expected_code}/{expected_value!r}, got {actual_code}/{actual_value!r}"
+            )
+        else:
+            passed += 1
+            if verbose:
+                print(f"PASS provisioner raw-invalid {case_id}: {actual_code}")
+    actual = {
+        path.resolve()
+        for path in raw_dir.glob("*.raw.json")
+    }
+    if actual != referenced:
+        failures.append(
+            "Package-provisioner raw fixture inventory differs from expectations: "
+            f"unreferenced={sorted(path.name for path in actual - referenced)}, "
+            f"missing={sorted(path.name for path in referenced - actual)}"
+        )
+    return passed, failures
+
+
+def validate_package_provisioner_fixture_suite(
+    contract_dir: Path,
+    validators: dict[str, Draft202012Validator],
+    verbose: bool,
+) -> tuple[int, int, list[str]]:
+    fixture_root = contract_dir / "fixtures" / "package-provisioner"
+    valid_dir = fixture_root / "valid"
+    suite_path = fixture_root / "invalid" / "contract-cases.json"
+    document_paths = {
+        "fullPackageValidationReport": valid_dir / "full-package-validation-report.json",
+        "installedPackageRecord": valid_dir / "installed-package-record.json",
+        "activePackageLock": valid_dir / "active-package-lock.json",
+    }
+    documents: dict[str, dict[str, Any]] = {}
+    raw_bytes: dict[str, bytes] = {}
+    for name, path in document_paths.items():
+        raw = path.read_bytes()
+        document = expect_object(parse_json_text(raw.decode("utf-8")), str(path))
+        if fixture_json_bytes(document) != raw:
+            raise ContractDefinitionError(
+                f"Valid package-provisioner fixture is not canonical fixture JSON: {path}"
+            )
+        documents[name] = document
+        raw_bytes[name] = raw
+
+    failures: list[str] = []
+    valid_diagnostics = validate_package_provisioner_bundle(
+        documents["fullPackageValidationReport"],
+        raw_bytes["fullPackageValidationReport"],
+        documents["installedPackageRecord"],
+        raw_bytes["installedPackageRecord"],
+        documents["activePackageLock"],
+        validators,
+    )
+    valid_count = 0
+    if valid_diagnostics:
+        failures.append(
+            "Valid package-provisioner bundle failed: "
+            + "; ".join(
+                f"{item.code} {item.location}: {item.message}"
+                for item in valid_diagnostics
+            )
+        )
+    else:
+        valid_count = len(document_paths)
+        if verbose:
+            for name in document_paths:
+                print(f"PASS provisioner valid {name}")
+
+    suite = expect_object(load_json(suite_path), str(suite_path))
+    expect_exact_keys(
+        suite,
+        {"fixtureFormatVersion", "baseDocuments", "cases"},
+        str(suite_path),
+    )
+    if suite.get("fixtureFormatVersion") != 1:
+        raise ContractDefinitionError(
+            f"Unsupported package-provisioner fixture format in {suite_path}"
+        )
+    expected_base = {
+        name: f"../valid/{path.name}"
+        for name, path in document_paths.items()
+    }
+    if suite.get("baseDocuments") != expected_base:
+        raise ContractDefinitionError(
+            "Package-provisioner fixture baseDocuments do not name the exact valid fixture set"
+        )
+    cases = suite.get("cases")
+    if not isinstance(cases, list) or not cases:
+        raise ContractDefinitionError(
+            f"Package-provisioner fixture suite {suite_path} must contain cases"
+        )
+
+    invalid_count = 0
+    seen_ids: set[str] = set()
+    for index, raw_case in enumerate(cases):
+        case = expect_object(raw_case, f"{suite_path}.cases[{index}]")
+        expect_exact_keys(
+            case,
+            {"id", "validation", "mutations", "expectedErrorCodes"},
+            f"{suite_path}.cases[{index}]",
+        )
+        case_id = case.get("id")
+        validation = case.get("validation")
+        mutations = case.get("mutations")
+        expected_codes = case.get("expectedErrorCodes")
+        if (
+            not isinstance(case_id, str)
+            or not case_id
+            or case_id in seen_ids
+            or validation
+            not in {
+                "full-package-validation-report",
+                "installed-package-record",
+                "active-package-lock",
+                "bundle",
+            }
+            or not isinstance(mutations, list)
+            or not mutations
+            or not isinstance(expected_codes, list)
+            or not expected_codes
+            or not all(isinstance(code, str) and code for code in expected_codes)
+        ):
+            raise ContractDefinitionError(
+                f"Malformed or duplicate package-provisioner fixture case at index {index}"
+            )
+        seen_ids.add(case_id)
+        candidate = copy.deepcopy(documents)
+        for mutation in mutations:
+            apply_provisioner_mutation(candidate, mutation)
+        candidate_bytes = {
+            name: fixture_json_bytes(document)
+            for name, document in candidate.items()
+        }
+        if validation == "full-package-validation-report":
+            diagnostics = validate_full_package_validation_report(
+                candidate["fullPackageValidationReport"],
+                validators["fullPackageValidationReport"],
+            )
+        elif validation == "installed-package-record":
+            diagnostics = validate_installed_package_record(
+                candidate["installedPackageRecord"],
+                validators["installedPackageRecord"],
+            )
+        elif validation == "active-package-lock":
+            diagnostics = validate_active_package_lock(
+                candidate["activePackageLock"],
+                validators["activePackageLock"],
+            )
+        else:
+            diagnostics = validate_package_provisioner_bundle(
+                candidate["fullPackageValidationReport"],
+                candidate_bytes["fullPackageValidationReport"],
+                candidate["installedPackageRecord"],
+                candidate_bytes["installedPackageRecord"],
+                candidate["activePackageLock"],
+                validators,
+            )
+        actual_codes = {item.code for item in diagnostics}
+        expected_code_set = set(expected_codes)
+        if actual_codes != expected_code_set:
+            failures.append(
+                f"Package-provisioner invalid fixture {case_id!r} expected "
+                f"{sorted(expected_code_set)}, got {sorted(actual_codes)}: "
+                + "; ".join(
+                    f"{item.code} {item.location}: {item.message}"
+                    for item in diagnostics
+                )
+            )
+        else:
+            invalid_count += 1
+            if verbose:
+                print(
+                    f"PASS provisioner invalid {case_id}: "
+                    + ", ".join(sorted(actual_codes))
+                )
+    raw_count, raw_failures = validate_package_provisioner_raw_fixtures(
+        fixture_root,
+        verbose,
+    )
+    invalid_count += raw_count
+    failures.extend(raw_failures)
+    return valid_count, invalid_count, failures
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -1682,6 +2367,28 @@ def main() -> int:
             profile_bytes,
             args.verbose,
         )
+        if (valid_count, invalid_count) != (1, 61):
+            raise ContractDefinitionError(
+                "Existing package-manifest fixture coverage drifted; expected exactly "
+                f"1 valid and 61 invalid cases, found {valid_count}/{invalid_count}"
+            )
+        operational_validators = load_operational_schema_validators(contract_dir)
+        (
+            provisioner_valid_count,
+            provisioner_invalid_count,
+            provisioner_failures,
+        ) = validate_package_provisioner_fixture_suite(
+            contract_dir,
+            operational_validators,
+            args.verbose,
+        )
+        if (provisioner_valid_count, provisioner_invalid_count) != (3, 23):
+            raise ContractDefinitionError(
+                "Operational package-provisioner fixture coverage drifted; expected "
+                "exactly 3 valid documents and 23 invalid cases, found "
+                f"{provisioner_valid_count}/{provisioner_invalid_count}"
+            )
+        failures.extend(provisioner_failures)
     except ContractDefinitionError as error:
         print(f"FAIL curriculum package contract definition: {error}", file=sys.stderr)
         return 1
@@ -1700,7 +2407,9 @@ def main() -> int:
     print(
         "Curriculum package contract validation passed: "
         f"trusted schema/profile, {valid_count} valid fixture(s), "
-        f"{invalid_count} invalid fixture case(s)."
+        f"{invalid_count} invalid fixture case(s); operational package-provisioner "
+        f"schemas, {provisioner_valid_count} valid document(s), "
+        f"{provisioner_invalid_count} invalid case(s)."
     )
     return 0
 

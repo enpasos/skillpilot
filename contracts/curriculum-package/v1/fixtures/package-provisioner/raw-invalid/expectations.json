@@ -1,0 +1,22 @@
+{
+  "fixtureFormatVersion": 1,
+  "cases": [
+    {
+      "id": "validation-report-duplicate-key",
+      "path": "duplicate-key.validation-report.raw.json",
+      "expectedErrorCode": "JSON_DUPLICATE_KEY",
+      "expectedDuplicateKey": "validatorId"
+    },
+    {
+      "id": "install-record-trailing-token",
+      "path": "trailing-token.install-record.raw.json",
+      "expectedErrorCode": "JSON_SYNTAX"
+    },
+    {
+      "id": "active-lock-duplicate-key",
+      "path": "duplicate-key.active-lock.raw.json",
+      "expectedErrorCode": "JSON_DUPLICATE_KEY",
+      "expectedDuplicateKey": "lockFormatVersion"
+    }
+  ]
+}
