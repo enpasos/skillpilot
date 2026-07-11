@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Evaluate JSON curriculum-package readiness without upgrading legacy exports.
 
-The evaluator is deliberately conservative.  Its current implementation can
-establish input, manifest-contract, and finished-ZIP inventory facts, while the
-catalog, semantic closure, content-digest, and hermetic-consumer gates remain
-unevaluated.  Consequently this evaluator version can never emit ``ready``.
+The evaluator is deliberately conservative.  It establishes input,
+manifest-contract, and finished-ZIP inventory facts itself.  For a safe,
+contract-conformant full-standalone ZIP it delegates the catalog, semantic
+closure, and content-digest gates to the independent package validator in a
+separate bounded process.  The hermetic-consumer gate remains unevaluated, so
+this evaluator version can never emit ``ready``.
 """
 
 from __future__ import annotations
@@ -13,6 +15,7 @@ import argparse
 import copy
 import hashlib
 import json
+import os
 import re
 import stat
 import struct
@@ -50,7 +53,7 @@ REPORT_SCHEMA_ID = (
     "package-readiness-report.schema.json"
 )
 EVALUATOR_NAME = "skillpilot-json-package-readiness"
-EVALUATOR_VERSION = "1.0.0"
+EVALUATOR_VERSION = "1.1.0"
 JSONSCHEMA_VERSION = "4.26.0"
 POLICY_ID = "full-standalone-v1-readiness-v1"
 POLICY_SCOPE = "json-full-standalone-v1"
@@ -96,6 +99,8 @@ IMPLEMENTED_CHECK_IDS = [
     *INPUT_CHECK_IDS,
     *IDENTITY_CHECK_IDS,
     *CONTRACT_CHECK_IDS,
+    *CATALOG_CHECK_IDS,
+    *STANDALONE_CHECK_IDS,
     *PUBLICATION_CHECK_IDS,
 ]
 EVALUATOR_COMPLETE_FOR_POLICY = IMPLEMENTED_CHECK_IDS == REQUIRED_CHECK_IDS
@@ -133,6 +138,27 @@ ZIP_EOCD_SIGNATURE = b"PK\x05\x06"
 ZIP64_EOCD_SIGNATURE = b"PK\x06\x06"
 ZIP64_LOCATOR_SIGNATURE = b"PK\x06\x07"
 
+FULL_VALIDATOR_PATH = SCRIPT_DIR / "validate_full_standalone_curriculum_package.py"
+FULL_VALIDATOR_ID = "skillpilot-full-standalone-package-validator-v1"
+FULL_VALIDATOR_REPORT_FORMAT_VERSION = 1
+FULL_VALIDATOR_GATE_IDS = [
+    "inventory",
+    "runtimeCatalog",
+    "offlineSchemaCatalog",
+    "hardReferenceClosure",
+    "contentDigest",
+    "assetBytes",
+]
+FULL_VALIDATOR_GATE_TO_CHECK = {
+    "runtimeCatalog": "catalog.runtime-catalog",
+    "offlineSchemaCatalog": "catalog.offline-schema-catalog",
+    "hardReferenceClosure": "standalone.hard-reference-closure",
+    "contentDigest": "standalone.content-digest",
+}
+FULL_VALIDATOR_EXIT_BY_STATUS = {"valid": 0, "invalid": 1, "error": 2}
+FULL_VALIDATOR_TIMEOUT_SECONDS = 30 * 60
+MAX_FULL_VALIDATOR_REPORT_BYTES = 2 * 1024 * 1024
+
 
 class ReadinessError(RuntimeError):
     """Raised when trusted contracts or derived report semantics are invalid."""
@@ -140,6 +166,10 @@ class ReadinessError(RuntimeError):
 
 class DuplicateJsonKeyError(ValueError):
     """Raised when JSON contains an ambiguous duplicate object key."""
+
+
+class FullValidatorProcessError(RuntimeError):
+    """Raised when the independent validator cannot yield trustworthy evidence."""
 
 
 @dataclass
@@ -1076,6 +1106,440 @@ def check_zip_inventory(
     return issues
 
 
+def nonnegative_integer(value: Any) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
+
+
+def validate_full_validator_report(
+    report: dict[str, Any],
+    loaded: LoadedInput,
+    returncode: int,
+) -> None:
+    """Reject forged, stale, or structurally ambiguous validator evidence."""
+
+    exact_keys(
+        report,
+        {
+            "reportFormatVersion",
+            "validatorId",
+            "status",
+            "input",
+            "package",
+            "counts",
+            "gates",
+            "diagnostics",
+            "diagnosticsTruncated",
+        },
+        "independent validator report",
+    )
+    if (
+        report.get("reportFormatVersion") != FULL_VALIDATOR_REPORT_FORMAT_VERSION
+        or report.get("validatorId") != FULL_VALIDATOR_ID
+    ):
+        raise FullValidatorProcessError(
+            "Independent validator report identity/version differs"
+        )
+    status_value = report.get("status")
+    if not isinstance(status_value, str) or status_value not in {"valid", "invalid"}:
+        raise FullValidatorProcessError(
+            "Independent validator did not return a validation outcome"
+        )
+    if FULL_VALIDATOR_EXIT_BY_STATUS[status_value] != returncode:
+        raise FullValidatorProcessError(
+            "Independent validator exit code and report status differ"
+        )
+
+    input_value = report.get("input")
+    if not isinstance(input_value, dict):
+        raise FullValidatorProcessError("Independent validator input binding is malformed")
+    exact_keys(input_value, {"path", "bytes", "sha256"}, "validator input binding")
+    if input_value != {
+        "path": str(loaded.path.resolve()),
+        "bytes": loaded.bytes,
+        "sha256": loaded.sha256,
+    }:
+        raise FullValidatorProcessError(
+            "Independent validator report is not bound to the evaluated ZIP bytes"
+        )
+
+    manifest = loaded.manifest or {}
+    package_value = report.get("package")
+    if not isinstance(package_value, dict):
+        raise FullValidatorProcessError("Independent validator package binding is malformed")
+    exact_keys(
+        package_value,
+        {"archiveRoot", "releaseId", "packageId", "packageVersion", "contentDigest"},
+        "validator package binding",
+    )
+    expected_package = {
+        "archiveRoot": loaded.archive_root,
+        "releaseId": manifest.get("releaseId"),
+        "packageId": manifest.get("packageId"),
+        "packageVersion": manifest.get("packageVersion"),
+        "contentDigest": manifest.get("contentDigest"),
+    }
+    if package_value != expected_package:
+        raise FullValidatorProcessError(
+            "Independent validator report is not bound to the evaluated manifest identity"
+        )
+
+    counts = report.get("counts")
+    if not isinstance(counts, dict):
+        raise FullValidatorProcessError("Independent validator counts are malformed")
+    exact_keys(
+        counts,
+        {"archiveEntries", "manifestFiles", "logicalArtifacts", "binaryResources"},
+        "validator counts",
+    )
+    if any(not nonnegative_integer(value) for value in counts.values()):
+        raise FullValidatorProcessError(
+            "Independent validator counts must be non-negative integers"
+        )
+
+    diagnostics_truncated = report.get("diagnosticsTruncated")
+    if not isinstance(diagnostics_truncated, bool):
+        raise FullValidatorProcessError(
+            "Independent validator diagnosticsTruncated flag is malformed"
+        )
+    diagnostics = report.get("diagnostics")
+    if not isinstance(diagnostics, list) or len(diagnostics) > 500:
+        raise FullValidatorProcessError(
+            "Independent validator diagnostics are malformed or unbounded"
+        )
+    diagnostic_tuples: list[tuple[str, str, str, str]] = []
+    displayed_by_gate: dict[str, list[str]] = {
+        gate: [] for gate in FULL_VALIDATOR_GATE_IDS
+    }
+    for index, diagnostic in enumerate(diagnostics):
+        if not isinstance(diagnostic, dict):
+            raise FullValidatorProcessError(
+                f"Independent validator diagnostic {index} is not an object"
+            )
+        exact_keys(
+            diagnostic,
+            {"gate", "code", "location", "message"},
+            f"validator diagnostic {index}",
+        )
+        gate = diagnostic.get("gate")
+        code = diagnostic.get("code")
+        location = diagnostic.get("location")
+        message = diagnostic.get("message")
+        if (
+            gate not in FULL_VALIDATOR_GATE_IDS
+            or not isinstance(code, str)
+            or not code
+            or len(code) > 200
+            or not isinstance(location, str)
+            or not location
+            or len(location) > 2000
+            or not isinstance(message, str)
+            or not message
+            or len(message) > 800
+        ):
+            raise FullValidatorProcessError(
+                f"Independent validator diagnostic {index} has invalid fields"
+            )
+        diagnostic_tuples.append((gate, code, location, message))
+        displayed_by_gate[gate].append(code)
+    if diagnostic_tuples != sorted(diagnostic_tuples):
+        raise FullValidatorProcessError(
+            "Independent validator diagnostics are not in canonical order"
+        )
+
+    gates = report.get("gates")
+    if (
+        not isinstance(gates, dict)
+        or len(gates) != len(FULL_VALIDATOR_GATE_IDS)
+        or set(gates) != set(FULL_VALIDATOR_GATE_IDS)
+    ):
+        raise FullValidatorProcessError(
+            "Independent validator gate set/order differs from the bound protocol"
+        )
+    all_gates_passed = True
+    for gate in FULL_VALIDATOR_GATE_IDS:
+        gate_value = gates.get(gate)
+        if not isinstance(gate_value, dict):
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} is malformed"
+            )
+        exact_keys(
+            gate_value,
+            {"status", "diagnosticCount", "diagnosticCodes"},
+            f"validator gate {gate}",
+        )
+        gate_status = gate_value.get("status")
+        diagnostic_count = gate_value.get("diagnosticCount")
+        diagnostic_codes = gate_value.get("diagnosticCodes")
+        if not isinstance(gate_status, str) or gate_status not in {
+            "passed",
+            "failed",
+            "not-evaluated",
+        }:
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} has an unknown status"
+            )
+        if not nonnegative_integer(diagnostic_count):
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} has an invalid diagnostic count"
+            )
+        if not isinstance(diagnostic_codes, list) or any(
+            not isinstance(code, str) or not code or len(code) > 200
+            for code in diagnostic_codes
+        ):
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} has malformed diagnostic codes"
+            )
+        if diagnostic_codes != sorted(set(diagnostic_codes)):
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} diagnostic codes are not canonical"
+            )
+        displayed_codes = sorted(set(displayed_by_gate[gate]))
+        if diagnostic_codes != displayed_codes:
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} diagnostic codes differ from evidence"
+            )
+        displayed_count = len(displayed_by_gate[gate])
+        if diagnostics_truncated:
+            if diagnostic_count < displayed_count:
+                raise FullValidatorProcessError(
+                    f"Independent validator gate {gate} undercounts displayed diagnostics"
+                )
+        elif diagnostic_count != displayed_count:
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} diagnostic count differs from evidence"
+            )
+        if gate_status == "failed" and diagnostic_count == 0:
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} failed without diagnostics"
+            )
+        if gate_status in {"passed", "not-evaluated"} and (
+            diagnostic_count != 0 or diagnostic_codes
+        ):
+            raise FullValidatorProcessError(
+                f"Independent validator gate {gate} has diagnostics despite {gate_status}"
+            )
+        all_gates_passed = all_gates_passed and gate_status == "passed"
+    expected_status = "valid" if all_gates_passed else "invalid"
+    if status_value != expected_status:
+        raise FullValidatorProcessError(
+            "Independent validator package status is not derived from its gates"
+        )
+
+
+def read_full_validator_report(path: Path) -> dict[str, Any]:
+    try:
+        metadata = path.lstat()
+        if not stat.S_ISREG(metadata.st_mode) or stat.S_ISLNK(metadata.st_mode):
+            raise FullValidatorProcessError(
+                "Independent validator report is not a regular non-symlink file"
+            )
+        if metadata.st_size > MAX_FULL_VALIDATOR_REPORT_BYTES:
+            raise FullValidatorProcessError(
+                "Independent validator report exceeds its byte limit"
+            )
+        with path.open("rb") as handle:
+            raw = handle.read(MAX_FULL_VALIDATOR_REPORT_BYTES + 1)
+    except OSError as error:
+        raise FullValidatorProcessError(
+            f"Cannot read independent validator report: {error}"
+        ) from error
+    if len(raw) > MAX_FULL_VALIDATOR_REPORT_BYTES or len(raw) != metadata.st_size:
+        raise FullValidatorProcessError(
+            "Independent validator report changed during bounded reading"
+        )
+    try:
+        value = parse_json_bytes(raw, "independent full-standalone validator report")
+        validate_json_shape(value, "independent full-standalone validator report")
+    except ReadinessError as error:
+        raise FullValidatorProcessError(str(error)) from error
+    if not isinstance(value, dict):
+        raise FullValidatorProcessError(
+            "Independent validator report JSON root is not an object"
+        )
+    return value
+
+
+def run_full_validator_process(
+    loaded: LoadedInput,
+    *,
+    validator_path: Path = FULL_VALIDATOR_PATH,
+    timeout_seconds: float = FULL_VALIDATOR_TIMEOUT_SECONDS,
+) -> dict[str, Any]:
+    """Run the independent validator without importing it or trusting stdout."""
+
+    if (
+        loaded.kind != "zip"
+        or loaded.sha256 is None
+        or loaded.manifest is None
+        or loaded.archive_root is None
+        or loaded.errors
+    ):
+        raise FullValidatorProcessError(
+            "Independent validator requires a safely preflighted ZIP candidate"
+        )
+    if timeout_seconds <= 0:
+        raise FullValidatorProcessError("Independent validator timeout must be positive")
+    validator_path = validator_path.absolute()
+    try:
+        validator_metadata = validator_path.lstat()
+    except OSError as error:
+        raise FullValidatorProcessError(
+            f"Independent validator is unavailable: {error}"
+        ) from error
+    if not stat.S_ISREG(validator_metadata.st_mode) or stat.S_ISLNK(
+        validator_metadata.st_mode
+    ):
+        raise FullValidatorProcessError(
+            "Independent validator must be a regular non-symlink file"
+        )
+    validator_path = validator_path.resolve()
+
+    validator_environment = os.environ.copy()
+    for variable in ("PYTHONHOME", "PYTHONPATH", "PYTHONSTARTUP"):
+        validator_environment.pop(variable, None)
+    validator_environment["PYTHONDONTWRITEBYTECODE"] = "1"
+    with tempfile.TemporaryDirectory(
+        prefix="skillpilot-full-validator-report."
+    ) as temporary_name:
+        report_path = Path(temporary_name) / "validator-report.json"
+        command = [
+            sys.executable,
+            "-B",
+            str(validator_path),
+            "--zip",
+            str(loaded.path.resolve()),
+            "--contracts-dir",
+            str(CONTRACT_DIR.resolve()),
+            "--report",
+            str(report_path),
+        ]
+        try:
+            completed = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                env=validator_environment,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+                timeout=timeout_seconds,
+            )
+        except subprocess.TimeoutExpired as error:
+            raise FullValidatorProcessError(
+                f"Independent validator exceeded {timeout_seconds:g} seconds"
+            ) from error
+        except OSError as error:
+            raise FullValidatorProcessError(
+                f"Cannot start independent validator: {error}"
+            ) from error
+        if completed.returncode == FULL_VALIDATOR_EXIT_BY_STATUS["error"]:
+            raise FullValidatorProcessError(
+                "Independent validator reported an operational error"
+            )
+        if completed.returncode not in {
+            FULL_VALIDATOR_EXIT_BY_STATUS["valid"],
+            FULL_VALIDATOR_EXIT_BY_STATUS["invalid"],
+        }:
+            raise FullValidatorProcessError(
+                f"Independent validator returned unexpected exit code {completed.returncode}"
+            )
+        report = read_full_validator_report(report_path)
+        validate_full_validator_report(report, loaded, completed.returncode)
+
+    try:
+        final_metadata = loaded.path.lstat()
+        if not stat.S_ISREG(final_metadata.st_mode) or stat.S_ISLNK(final_metadata.st_mode):
+            raise FullValidatorProcessError(
+                "Evaluated ZIP is no longer a regular non-symlink file"
+            )
+        final_bytes, final_sha256 = sha256_file_bounded(loaded.path, loaded.bytes)
+    except (OSError, ReadinessError) as error:
+        raise FullValidatorProcessError(
+            f"Cannot rebind evaluated ZIP after validation: {error}"
+        ) from error
+    if (
+        final_bytes != loaded.bytes
+        or final_metadata.st_size != loaded.bytes
+        or final_sha256 != loaded.sha256
+    ):
+        raise FullValidatorProcessError(
+            "Evaluated ZIP bytes changed during independent validation"
+        )
+    return report
+
+
+def map_full_validator_gates(
+    report: dict[str, Any],
+) -> dict[str, tuple[str, str, str]]:
+    mapped: dict[str, tuple[str, str, str]] = {}
+    gates = report["gates"]
+    failure_codes = {
+        "runtimeCatalog": "RUNTIME_CATALOG_INVALID",
+        "offlineSchemaCatalog": "OFFLINE_SCHEMA_CATALOG_INVALID",
+        "hardReferenceClosure": "HARD_REFERENCE_CLOSURE_INVALID",
+        "contentDigest": "CONTENT_DIGEST_INVALID",
+    }
+    not_evaluated_codes = {
+        "runtimeCatalog": "RUNTIME_CATALOG_NOT_EVALUATED",
+        "offlineSchemaCatalog": "OFFLINE_SCHEMA_CATALOG_NOT_EVALUATED",
+        "hardReferenceClosure": "HARD_REFERENCE_CLOSURE_NOT_EVALUATED",
+        "contentDigest": "CONTENT_DIGEST_NOT_EVALUATED",
+    }
+    for validator_gate, check_id in FULL_VALIDATOR_GATE_TO_CHECK.items():
+        gate = gates[validator_gate]
+        status_value = gate["status"]
+        if status_value == "passed":
+            mapped[check_id] = (
+                "pass",
+                "CHECK_PASSED",
+                f"Independent full-standalone validator gate {validator_gate} passed.",
+            )
+        elif status_value == "failed":
+            diagnostic_codes = ", ".join(gate["diagnosticCodes"][:10]) or "unlisted"
+            mapped[check_id] = (
+                "fail",
+                failure_codes[validator_gate],
+                f"Independent validator gate {validator_gate} failed with "
+                f"{gate['diagnosticCount']} diagnostic(s): {diagnostic_codes}.",
+            )
+        else:
+            mapped[check_id] = (
+                "not-evaluated",
+                not_evaluated_codes[validator_gate],
+                f"Independent validator gate {validator_gate} was not evaluated.",
+            )
+    return mapped
+
+
+def evaluate_full_validator_gates(
+    loaded: LoadedInput,
+    *,
+    validator_path: Path = FULL_VALIDATOR_PATH,
+    timeout_seconds: float = FULL_VALIDATOR_TIMEOUT_SECONDS,
+) -> dict[str, tuple[str, str, str]]:
+    try:
+        report = run_full_validator_process(
+            loaded,
+            validator_path=validator_path,
+            timeout_seconds=timeout_seconds,
+        )
+        return map_full_validator_gates(report)
+    except (FullValidatorProcessError, ReadinessError) as error:
+        message = (
+            "Independent full-standalone validation produced no trustworthy "
+            "evidence: "
+            + truncate_fragment(str(error), 1200)
+        )
+        return {
+            check_id: (
+                "not-evaluated",
+                "INDEPENDENT_VALIDATOR_UNAVAILABLE",
+                message,
+            )
+            for check_id in FULL_VALIDATOR_GATE_TO_CHECK.values()
+        }
+
+
 def make_check(
     check_id: str,
     result: str,
@@ -1358,34 +1822,38 @@ def evaluate_loaded_input(
                 else "Every distributed file is explicitly cleared for redistribution.",
             )
 
-        for check_id, code, message in (
-            (
-                "catalog.runtime-catalog",
-                "RUNTIME_CATALOG_GATE_NOT_IMPLEMENTED",
-                "Runtime-catalog semantic validation is not implemented by this evaluator version.",
-            ),
-            (
-                "catalog.offline-schema-catalog",
-                "OFFLINE_SCHEMA_GATE_NOT_IMPLEMENTED",
-                "Offline schema-catalog closure validation is not implemented by this evaluator version.",
-            ),
-            (
-                "standalone.hard-reference-closure",
-                "CLOSURE_GATE_NOT_IMPLEMENTED",
-                "Transitive hard-reference closure is not yet evaluated.",
-            ),
-            (
-                "standalone.content-digest",
-                "CONTENT_DIGEST_GATE_NOT_IMPLEMENTED",
-                "The semantic content digest is declared but not yet computed and verified.",
-            ),
-            (
-                "consumer.hermetic-package-only",
-                "HERMETIC_CONSUMER_GATE_NOT_IMPLEMENTED",
-                "The package-only SkillPilot consumer smoke test is not yet implemented.",
-            ),
+        validator_check_ids = [
+            *CATALOG_CHECK_IDS,
+            *STANDALONE_CHECK_IDS,
+        ]
+        if loaded.kind != "zip":
+            mark_checks(
+                validator_check_ids,
+                "not-evaluated",
+                "PAYLOAD_NOT_PROVIDED",
+                "A standalone manifest cannot prove package-local catalog, closure, or content-digest gates.",
+            )
+        elif any(
+            checks_by_id[check_id]["result"] != "pass"
+            for check_id in [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS]
         ):
-            record(check_id, "not-evaluated", code, message)
+            mark_checks(
+                validator_check_ids,
+                "not-evaluated",
+                "INDEPENDENT_VALIDATOR_BLOCKED",
+                "The independent validator is not run until target-contract and finished-ZIP inventory checks pass.",
+            )
+        else:
+            mapped_gates = evaluate_full_validator_gates(loaded)
+            for check_id in validator_check_ids:
+                result, code, message = mapped_gates[check_id]
+                record(check_id, result, code, message)
+        record(
+            "consumer.hermetic-package-only",
+            "not-evaluated",
+            "HERMETIC_CONSUMER_GATE_NOT_IMPLEMENTED",
+            "The package-only SkillPilot consumer smoke test is not yet implemented.",
+        )
     else:
         raise ReadinessError(f"Unhandled safe manifest dialect {dialect!r}")
 
@@ -1558,6 +2026,44 @@ def assert_semantic_rejection(
         print(f"PASS readiness semantic guard rejects {label}")
     else:
         raise ReadinessError(f"Semantic guard accepted {label}")
+
+
+def assert_full_validator_report_rejection(
+    report: dict[str, Any],
+    loaded: LoadedInput,
+    returncode: int,
+    label: str,
+) -> None:
+    try:
+        validate_full_validator_report(report, loaded, returncode)
+    except (FullValidatorProcessError, ReadinessError):
+        print(f"PASS independent validator report guard rejects {label}")
+    else:
+        raise ReadinessError(
+            f"Independent validator report guard accepted {label}"
+        )
+
+
+def assert_full_validator_process_not_evaluated(
+    loaded: LoadedInput,
+    validator_path: Path,
+    label: str,
+    *,
+    timeout_seconds: float = 5,
+) -> None:
+    mapped = evaluate_full_validator_gates(
+        loaded,
+        validator_path=validator_path,
+        timeout_seconds=timeout_seconds,
+    )
+    if set(mapped) != set(FULL_VALIDATOR_GATE_TO_CHECK.values()) or any(
+        result != "not-evaluated" or code != "INDEPENDENT_VALIDATOR_UNAVAILABLE"
+        for result, code, _message in mapped.values()
+    ):
+        raise ReadinessError(
+            f"Independent validator process failure was not mapped safely: {label}"
+        )
+    print(f"PASS independent validator process maps to not-evaluated: {label}")
 
 
 def assert_policy_rejection(
@@ -1908,20 +2414,180 @@ def run_fixture_suite() -> None:
 
         target_zip = temp_dir / "target.zip"
         build_target_zip(target_zip, contracts)
-        target_zip_report = evaluate_loaded_input(
-            load_zip_input(target_zip, contracts.profile), contracts
-        )
+        target_loaded = load_zip_input(target_zip, contracts.profile)
+        target_zip_report = evaluate_loaded_input(target_loaded, contracts)
+        target_checks = {
+            check["id"]: check for check in target_zip_report["checks"]
+        }
         if (
             target_zip_report["decision"]["status"] != "not-ready-incomplete"
-            or next(
-                check
-                for check in target_zip_report["checks"]
-                if check["id"] == "contract.inventory-bytes"
-            )["result"]
-            != "pass"
+            or target_checks["contract.inventory-bytes"]["result"] != "pass"
         ):
             raise ReadinessError("Generated safe target ZIP failed inventory validation")
         print("PASS generated safe target ZIP inventory")
+
+        validator_report = {
+            "reportFormatVersion": FULL_VALIDATOR_REPORT_FORMAT_VERSION,
+            "validatorId": FULL_VALIDATOR_ID,
+            "status": "invalid",
+            "input": {
+                "path": str(target_loaded.path.resolve()),
+                "bytes": target_loaded.bytes,
+                "sha256": target_loaded.sha256,
+            },
+            "package": {
+                "archiveRoot": target_loaded.archive_root,
+                "releaseId": target_loaded.manifest.get("releaseId"),
+                "packageId": target_loaded.manifest.get("packageId"),
+                "packageVersion": target_loaded.manifest.get("packageVersion"),
+                "contentDigest": target_loaded.manifest.get("contentDigest"),
+            },
+            "counts": {
+                "archiveEntries": len(target_loaded.manifest["files"]) + 2,
+                "manifestFiles": len(target_loaded.manifest["files"]),
+                "logicalArtifacts": 0,
+                "binaryResources": 0,
+            },
+            "gates": {
+                "inventory": {
+                    "status": "passed",
+                    "diagnosticCount": 0,
+                    "diagnosticCodes": [],
+                },
+                "runtimeCatalog": {
+                    "status": "failed",
+                    "diagnosticCount": 1,
+                    "diagnosticCodes": ["SELF_TEST_RUNTIME_INVALID"],
+                },
+                "offlineSchemaCatalog": {
+                    "status": "passed",
+                    "diagnosticCount": 0,
+                    "diagnosticCodes": [],
+                },
+                "hardReferenceClosure": {
+                    "status": "not-evaluated",
+                    "diagnosticCount": 0,
+                    "diagnosticCodes": [],
+                },
+                "contentDigest": {
+                    "status": "failed",
+                    "diagnosticCount": 1,
+                    "diagnosticCodes": ["SELF_TEST_DIGEST_INVALID"],
+                },
+                "assetBytes": {
+                    "status": "passed",
+                    "diagnosticCount": 0,
+                    "diagnosticCodes": [],
+                },
+            },
+            "diagnostics": [
+                {
+                    "gate": "contentDigest",
+                    "code": "SELF_TEST_DIGEST_INVALID",
+                    "location": "/contentDigest",
+                    "message": "self-test digest failure",
+                },
+                {
+                    "gate": "runtimeCatalog",
+                    "code": "SELF_TEST_RUNTIME_INVALID",
+                    "location": "/runtimeCatalog",
+                    "message": "self-test runtime-catalog failure",
+                },
+            ],
+            "diagnosticsTruncated": False,
+        }
+        validator_returncode = FULL_VALIDATOR_EXIT_BY_STATUS["invalid"]
+        validate_full_validator_report(
+            validator_report, target_loaded, validator_returncode
+        )
+        structured_validator = temp_dir / "validator-structured-report.py"
+        structured_validator.write_text(
+            "import pathlib, sys\n"
+            "report = pathlib.Path(sys.argv[sys.argv.index('--report') + 1])\n"
+            f"report.write_text({stable_json(validator_report)!r}, encoding='utf-8')\n"
+            "raise SystemExit(1)\n",
+            encoding="utf-8",
+        )
+        mapped_validator_checks = evaluate_full_validator_gates(
+            target_loaded, validator_path=structured_validator
+        )
+        if {
+            check_id: result
+            for check_id, (result, _code, _message) in mapped_validator_checks.items()
+        } != {
+            "catalog.runtime-catalog": "fail",
+            "catalog.offline-schema-catalog": "pass",
+            "standalone.hard-reference-closure": "not-evaluated",
+            "standalone.content-digest": "fail",
+        }:
+            raise ReadinessError(
+                "Independent validator gate statuses were not mapped exactly"
+            )
+        print("PASS independent validator structured gate mapping")
+
+        forged_validator_reports: list[tuple[str, dict[str, Any], int]] = []
+        forged_identity = copy.deepcopy(validator_report)
+        forged_identity["validatorId"] = "forged-validator"
+        forged_validator_reports.append(
+            ("validator identity", forged_identity, validator_returncode)
+        )
+        forged_artifact_binding = copy.deepcopy(validator_report)
+        forged_artifact_binding["input"]["sha256"] = "0" * 64
+        forged_validator_reports.append(
+            ("artifact hash binding", forged_artifact_binding, validator_returncode)
+        )
+        forged_gate_set = copy.deepcopy(validator_report)
+        forged_gate_set["gates"].pop("contentDigest")
+        forged_validator_reports.append(
+            ("incomplete gate set", forged_gate_set, validator_returncode)
+        )
+        forged_gate_evidence = copy.deepcopy(validator_report)
+        forged_gate_evidence["gates"]["runtimeCatalog"] = {
+            "status": "failed",
+            "diagnosticCount": 0,
+            "diagnosticCodes": [],
+        }
+        forged_validator_reports.append(
+            ("failure without diagnostics", forged_gate_evidence, validator_returncode)
+        )
+        forged_exit_binding = copy.deepcopy(validator_report)
+        forged_validator_reports.append(
+            (
+                "exit/report mismatch",
+                forged_exit_binding,
+                1 if validator_returncode == 0 else 0,
+            )
+        )
+        for label, forged_report, returncode in forged_validator_reports:
+            assert_full_validator_report_rejection(
+                forged_report,
+                target_loaded,
+                returncode,
+                label,
+            )
+
+        no_report_validator = temp_dir / "validator-no-report.py"
+        no_report_validator.write_text("raise SystemExit(0)\n", encoding="utf-8")
+        assert_full_validator_process_not_evaluated(
+            target_loaded, no_report_validator, "successful exit without report"
+        )
+        unexpected_exit_validator = temp_dir / "validator-unexpected-exit.py"
+        unexpected_exit_validator.write_text(
+            "raise SystemExit(17)\n", encoding="utf-8"
+        )
+        assert_full_validator_process_not_evaluated(
+            target_loaded, unexpected_exit_validator, "unexpected exit code"
+        )
+        timeout_validator = temp_dir / "validator-timeout.py"
+        timeout_validator.write_text(
+            "import time\ntime.sleep(30)\n", encoding="utf-8"
+        )
+        assert_full_validator_process_not_evaluated(
+            target_loaded,
+            timeout_validator,
+            "bounded timeout",
+            timeout_seconds=0.05,
+        )
 
         unsafe_legacy_zip = temp_dir / "unsafe-legacy.zip"
         root = legacy_manifest()["archiveRoot"]
@@ -2009,7 +2675,8 @@ def run_fixture_suite() -> None:
     print(
         "Curriculum package readiness self-test passed: "
         f"{len(seen_ids)} manifest fixture(s), 4 policy-tamper cases, "
-        "5 report-forgery cases, 3 raw JSON cases, 7 adversarial ZIPs, "
+        "5 readiness-report forgeries, 5 validator-report forgeries, "
+        "3 validator-process failures, 3 raw JSON cases, 7 adversarial ZIPs, "
         "2 early-limit inputs, and exit matrix."
     )
 

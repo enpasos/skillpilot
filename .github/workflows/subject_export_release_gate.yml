@@ -25,6 +25,8 @@ on:
       - 'app/scripts/buildSkillpilotExportPackage.ts'
       - 'app/scripts/deterministicZip32.ts'
       - 'app/scripts/testDeterministicZip32.ts'
+      - 'app/scripts/buildFullStandaloneCurriculumPackage.ts'
+      - 'app/scripts/testFullStandaloneCurriculumPackageBuilder.ts'
       - 'app/scripts/buildM5SubjectExportPackages.ts'
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
@@ -53,6 +55,7 @@ on:
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
+      - 'scripts/validate_full_standalone_curriculum_package.py'
       - 'scripts/generate_curriculum_package_redistribution_review.py'
       - 'scripts/generate_curriculum_source_verification_review.py'
       - 'scripts/validate_curriculum_dual_release_contracts.py'
@@ -72,6 +75,8 @@ on:
       - 'app/scripts/buildSkillpilotExportPackage.ts'
       - 'app/scripts/deterministicZip32.ts'
       - 'app/scripts/testDeterministicZip32.ts'
+      - 'app/scripts/buildFullStandaloneCurriculumPackage.ts'
+      - 'app/scripts/testFullStandaloneCurriculumPackageBuilder.ts'
       - 'app/scripts/buildM5SubjectExportPackages.ts'
       - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
       - 'app/scripts/runSubjectExportReleaseGate.ts'
@@ -100,6 +105,7 @@ on:
       - 'scripts/validate_curriculum_runtime_catalog_contract.py'
       - 'scripts/validate_curriculum_schema_catalog_contract.py'
       - 'scripts/evaluate_curriculum_package_readiness.py'
+      - 'scripts/validate_full_standalone_curriculum_package.py'
       - 'scripts/generate_curriculum_package_redistribution_review.py'
       - 'scripts/generate_curriculum_source_verification_review.py'
       - 'scripts/validate_curriculum_dual_release_contracts.py'
@@ -138,6 +144,9 @@ jobs:
       - name: Test deterministic ZIP32 writer
         run: npm run test:deterministic-zip32
 
+      - name: Test full standalone curriculum package builder
+        run: npm run test:full-standalone-package-builder
+
       - name: Use Python
         uses: actions/setup-python@v6
         with:
@@ -153,6 +162,7 @@ jobs:
           python -B scripts/validate_curriculum_runtime_catalog_contract.py
           python -B scripts/validate_curriculum_schema_catalog_contract.py
           python -B scripts/evaluate_curriculum_package_readiness.py --self-test
+          python -B scripts/validate_full_standalone_curriculum_package.py --self-test
           python -B scripts/validate_curriculum_dual_release_contracts.py
           bash scripts/run_curriculum_release_model_conformance.sh
 

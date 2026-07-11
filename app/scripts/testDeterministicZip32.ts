@@ -246,7 +246,17 @@ try {
     }),
     /maxEntries must be a safe integer/u,
   )
-  for (const unsafePath of ['/absolute.txt', '../escape.txt', 'root/../escape.txt', 'root\\escape.txt']) {
+  for (const unsafePath of [
+    '/absolute.txt',
+    '../escape.txt',
+    'root/../escape.txt',
+    'root\\escape.txt',
+    'root/CON.txt',
+    'root/trailing.',
+    'root/trailing ',
+    'C:/drive.txt',
+    'root/alternate:data.txt',
+  ]) {
     assert.throws(
       () => createDeterministicZip32(
         [entryFromBuffer(unsafePath, Buffer.from('unsafe\n', 'utf8'))],
@@ -256,6 +266,30 @@ try {
       /Unsafe ZIP entry path/u,
     )
   }
+  for (const collision of [
+    ['root/Case.txt', 'root/case.txt'],
+    ['root/é.txt', 'root/e\u0301.txt'],
+  ]) {
+    assert.throws(
+      () => createDeterministicZip32(
+        collision.map((path) => entryFromBuffer(path, Buffer.from(`${path}\n`, 'utf8'))),
+        timestamp,
+        resolve(tempRoot, 'portable-collision.zip'),
+      ),
+      /Portable ZIP path collision/u,
+    )
+  }
+  assert.throws(
+    () => createDeterministicZip32(
+      [
+        entryFromBuffer('root/file', Buffer.from('file\n', 'utf8')),
+        entryFromBuffer('root/file/child.txt', Buffer.from('child\n', 'utf8')),
+      ],
+      timestamp,
+      resolve(tempRoot, 'prefix-collision.zip'),
+    ),
+    /ancestor of another entry/u,
+  )
   assert.throws(
     () => createDeterministicZip32(
       [{
@@ -359,7 +393,7 @@ try {
   assertNoTemporaryOutput(driftOutput)
 
   assert.ok(existsSync(firstZip) && existsSync(secondZip), 'successful atomic outputs exist')
-  console.log('Deterministic ZIP32 self-test passed: 3 entries, 22 structural and adversarial guarantees.')
+  console.log('Deterministic ZIP32 self-test passed: 3 entries, 30 structural and adversarial guarantees.')
 } finally {
   rmSync(tempRoot, { recursive: true, force: true })
 }
