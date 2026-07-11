@@ -1,0 +1,747 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/source-verification-review.schema.json",
+  "title": "SkillPilot source verification review v1",
+  "description": "Closed, hash-bound evidence and human-review ledger for checking whether authored sourceGoal.sourceText values occur contiguously in authored passage carriers or in a reproducible text projection of the bound official PDF. Machine matches are evidence only and never human approvals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reviewFormatVersion",
+    "reviewId",
+    "scope",
+    "verificationPolicy",
+    "extractorEvidence",
+    "sourceCollections",
+    "machineVerification",
+    "pdfProjectionMatchRecords",
+    "humanReviewRecords",
+    "summary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-verification-review.schema.json"
+    },
+    "reviewFormatVersion": {
+      "const": "1.0"
+    },
+    "reviewId": {
+      "const": "de-gymnasium-mathematik-source-verification-v1"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packageId",
+        "targetLandscapeId",
+        "publicationEvidenceProfileId",
+        "publicationEvidenceProfileVersion",
+        "publicationEvidenceProfilePath",
+        "publicationEvidenceProfileSha256",
+        "sourceGoalIdentity"
+      ],
+      "properties": {
+        "packageId": {
+          "const": "org.skillpilot.curriculum.de.gymnasium.mathematik"
+        },
+        "targetLandscapeId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "publicationEvidenceProfileId": {
+          "const": "de-gymnasium-mathematik-publication-evidence-v1"
+        },
+        "publicationEvidenceProfileVersion": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "publicationEvidenceProfilePath": {
+          "const": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json"
+        },
+        "publicationEvidenceProfileSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourceGoalIdentity": {
+          "const": "mappingCollectionId+sourceGoalId"
+        }
+      }
+    },
+    "verificationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unicodeNormalization",
+        "whitespaceNormalization",
+        "sourceTextField",
+        "passageCarrierFields",
+        "matchMode",
+        "carrierPrecedence",
+        "pdfFallback",
+        "machineMatchesAreHumanApprovals",
+        "evidenceBoundary"
+      ],
+      "properties": {
+        "unicodeNormalization": {
+          "const": "NFC"
+        },
+        "whitespaceNormalization": {
+          "const": "collapse-each-unicode-whitespace-run-to-U+0020-and-trim"
+        },
+        "sourceTextField": {
+          "const": "sourceText"
+        },
+        "passageCarrierFields": {
+          "const": [
+            "text",
+            "rawText",
+            "extractedText",
+            "title"
+          ]
+        },
+        "matchMode": {
+          "const": "case-sensitive-contiguous-substring-after-normalization"
+        },
+        "carrierPrecedence": {
+          "const": "first-matching-field-in-policy-order"
+        },
+        "pdfFallback": {
+          "const": "only-after-no-authored-passage-carrier-match"
+        },
+        "machineMatchesAreHumanApprovals": {
+          "const": false
+        },
+        "evidenceBoundary": {
+          "const": "PDF matches are recorded only as hashes, sizes and match positions from an ephemeral deterministic pdftotext projection; extracted PDF text is never committed. Source-PDF bytes and projection metadata are hash-bound. A normal check proves ledger consistency, while replaying extraction is required to independently prove the PDF match. A matching projection is machine provenance evidence, not a human assertion that sourceText is an exact legal quotation."
+        }
+      }
+    },
+    "extractorEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "extractor",
+        "recordedVersion",
+        "invocation",
+        "projectionFormat",
+        "replayPolicy",
+        "projections"
+      ],
+      "properties": {
+        "extractor": {
+          "const": "pdftotext"
+        },
+        "recordedVersion": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "invocation": {
+          "const": [
+            "pdftotext",
+            "-layout",
+            "{sourcePdfPath}",
+            "-"
+          ]
+        },
+        "projectionFormat": {
+          "const": "Ephemeral UTF-8 bytes; NFC; each Unicode whitespace run collapsed to U+0020; trimmed; one trailing LF; only byte count, character count and SHA-256 are committed"
+        },
+        "replayPolicy": {
+          "const": "No extracted PDF text is committed. A normal check validates source-PDF bytes, projection metadata and ledger consistency but cannot independently prove PDF matches. --replay-pdf-evidence reruns the recorded invocation in memory and requires identical projection hashes, sizes and match records; the replay version is reported but need not equal the recorded version."
+        },
+        "projections": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/pdfProjection"
+          }
+        }
+      }
+    },
+    "sourceCollections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/sourceCollection"
+      }
+    },
+    "machineVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceCollectionCount",
+        "sourceExtractionCount",
+        "sourceDocumentReferenceCount",
+        "uniqueSourcePdfPathCount",
+        "sourceGoalCount",
+        "carrierVerifiedCount",
+        "pdfProjectionVerifiedCount",
+        "pendingHumanReviewCount",
+        "automaticHumanApprovalCount",
+        "sourceGoalSetSha256",
+        "carrierEvidenceSetSha256",
+        "pdfMatchEvidenceSetSha256",
+        "pendingEvidenceSetSha256"
+      ],
+      "properties": {
+        "sourceCollectionCount": {
+          "$ref": "#/$defs/count"
+        },
+        "sourceExtractionCount": {
+          "$ref": "#/$defs/count"
+        },
+        "sourceDocumentReferenceCount": {
+          "$ref": "#/$defs/count"
+        },
+        "uniqueSourcePdfPathCount": {
+          "$ref": "#/$defs/count"
+        },
+        "sourceGoalCount": {
+          "$ref": "#/$defs/count"
+        },
+        "carrierVerifiedCount": {
+          "$ref": "#/$defs/count"
+        },
+        "pdfProjectionVerifiedCount": {
+          "$ref": "#/$defs/count"
+        },
+        "pendingHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "automaticHumanApprovalCount": {
+          "const": 0
+        },
+        "sourceGoalSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "carrierEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "pdfMatchEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "pendingEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "pdfProjectionMatchRecords": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/pdfProjectionMatchRecord"
+      }
+    },
+    "humanReviewRecords": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/humanReviewRecord"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "machineVerifiedCount",
+        "humanReviewRecordCount",
+        "pendingHumanReviewCount",
+        "completedHumanReviewCount",
+        "acceptedHumanReviewCount",
+        "rejectedHumanReviewCount",
+        "fullyVerified",
+        "humanReviewRequired"
+      ],
+      "properties": {
+        "machineVerifiedCount": {
+          "$ref": "#/$defs/count"
+        },
+        "humanReviewRecordCount": {
+          "$ref": "#/$defs/count"
+        },
+        "pendingHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "completedHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "acceptedHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "rejectedHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "fullyVerified": {
+          "type": "boolean"
+        },
+        "humanReviewRequired": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "nullableNonBlankText": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "sourceDocumentEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceDocumentKey",
+        "sourcePdfPath",
+        "sourcePdfBytes",
+        "sourcePdfSha256",
+        "official"
+      ],
+      "properties": {
+        "sourceDocumentKey": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourcePdfPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourcePdfBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "sourcePdfSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "official": {
+          "type": "boolean"
+        }
+      }
+    },
+    "pdfProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourcePdfSha256",
+        "sourcePdfBytes",
+        "sourcePdfPaths",
+        "projectionBytes",
+        "projectionSha256",
+        "normalizedCharacterCount"
+      ],
+      "properties": {
+        "sourcePdfSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourcePdfBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "sourcePdfPaths": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/repositoryPath"
+          }
+        },
+        "projectionBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "projectionSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "normalizedCharacterCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        }
+      }
+    },
+    "sourceCollection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingCollectionId",
+        "sourceExtractionPath",
+        "sourceExtractionSha256",
+        "extractionId",
+        "passageCount",
+        "sourceGoalCount",
+        "sourceGoalSetSha256",
+        "sourceDocuments",
+        "carrierVerifiedCount",
+        "pdfProjectionVerifiedCount",
+        "pendingHumanReviewCount",
+        "carrierEvidenceSetSha256",
+        "pdfMatchEvidenceSetSha256",
+        "pendingEvidenceSetSha256"
+      ],
+      "properties": {
+        "mappingCollectionId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceExtractionPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourceExtractionSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "extractionId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "passageCount": {
+          "$ref": "#/$defs/count"
+        },
+        "sourceGoalCount": {
+          "$ref": "#/$defs/count"
+        },
+        "sourceGoalSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourceDocuments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "$ref": "#/$defs/sourceDocumentEvidence"
+          }
+        },
+        "carrierVerifiedCount": {
+          "$ref": "#/$defs/count"
+        },
+        "pdfProjectionVerifiedCount": {
+          "$ref": "#/$defs/count"
+        },
+        "pendingHumanReviewCount": {
+          "$ref": "#/$defs/count"
+        },
+        "carrierEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "pdfMatchEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "pendingEvidenceSetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "humanDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reviewer",
+        "reviewedAt",
+        "rationale",
+        "verifiedSourceText"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending-human-review",
+            "verified-verbatim",
+            "verified-normalized-transcription",
+            "reviewed-paraphrase",
+            "rejected"
+          ]
+        },
+        "reviewer": {
+          "$ref": "#/$defs/nullableNonBlankText"
+        },
+        "reviewedAt": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rationale": {
+          "$ref": "#/$defs/nullableNonBlankText"
+        },
+        "verifiedSourceText": {
+          "$ref": "#/$defs/nullableNonBlankText"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "pending-human-review"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "reviewer": {
+                "type": "null"
+              },
+              "reviewedAt": {
+                "type": "null"
+              },
+              "rationale": {
+                "type": "null"
+              },
+              "verifiedSourceText": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "reviewer": {
+                "$ref": "#/$defs/nonBlankText"
+              },
+              "reviewedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "rationale": {
+                "$ref": "#/$defs/nonBlankText"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "verified-verbatim",
+                  "verified-normalized-transcription"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "verifiedSourceText": {
+                "$ref": "#/$defs/nonBlankText"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "reviewed-paraphrase",
+                  "rejected"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "verifiedSourceText": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "pdfProjectionMatchRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingCollectionId",
+        "sourceGoalId",
+        "sourceTextSha256",
+        "passageId",
+        "passageCarrierSha256",
+        "sourceDocumentKey",
+        "sourcePdfPath",
+        "sourcePdfSha256",
+        "verificationMethod",
+        "projectionSha256",
+        "normalizedMatchStart",
+        "normalizedMatchEnd",
+        "matchEvidenceSha256"
+      ],
+      "properties": {
+        "mappingCollectionId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceGoalId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceTextSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "passageId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "passageCarrierSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourceDocumentKey": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourcePdfPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourcePdfSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "verificationMethod": {
+          "const": "pdf-projection-contiguous-normalized"
+        },
+        "projectionSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "normalizedMatchStart": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "normalizedMatchEnd": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "matchEvidenceSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "humanReviewRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingCollectionId",
+        "sourceGoalId",
+        "sourceText",
+        "sourceTextSha256",
+        "passageId",
+        "passageCarrierSha256",
+        "sourceDocumentKey",
+        "sourcePdfPath",
+        "sourcePdfSha256",
+        "sourceRef",
+        "locator",
+        "machineDisposition",
+        "reviewEvidenceSha256",
+        "decision"
+      ],
+      "properties": {
+        "mappingCollectionId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceGoalId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceText": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourceTextSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "passageId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "passageCarrierSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourceDocumentKey": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sourcePdfPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourcePdfSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/nullableNonBlankText"
+        },
+        "locator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourcePage",
+            "sourceLine"
+          ],
+          "properties": {
+            "sourcePage": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "sourceLine": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000000
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "machineDisposition": {
+          "const": "no-contiguous-match-in-authored-carriers-or-bound-pdf-projection"
+        },
+        "reviewEvidenceSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "decision": {
+          "$ref": "#/$defs/humanDecision"
+        }
+      }
+    }
+  }
+}

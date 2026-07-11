@@ -80,7 +80,8 @@
             "contract.target-values",
             "contract.trusted-bindings",
             "contract.profile-roles",
-            "contract.inventory-bytes"
+            "contract.inventory-bytes",
+            "publication.redistribution-cleared"
           ]
         },
         "completeForPolicy": {
@@ -180,6 +181,7 @@
         "contractConformance",
         "catalogCompleteness",
         "standaloneCompleteness",
+        "publicationReadiness",
         "consumerOperability"
       ],
       "properties": {
@@ -193,6 +195,9 @@
           "$ref": "#/$defs/checkResult"
         },
         "standaloneCompleteness": {
+          "$ref": "#/$defs/checkResult"
+        },
+        "publicationReadiness": {
           "$ref": "#/$defs/checkResult"
         },
         "consumerOperability": {

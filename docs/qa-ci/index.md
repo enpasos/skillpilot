@@ -30,6 +30,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 These pages describe durable manual or semi-automated review processes. Their ledgers or configs are the source of truth; generated status pages are not.
 
+- [Curriculum Package Human Review Gates](curriculum-package-human-review-gates.md)
+  Central release checklist for visualization quality, redistribution rights, source-text verification, ontology semantics, and stable promotion.
 - [Semantic Atomicity Review](semantic-atomicity-review.md)
   Review process for deciding whether technical content leaves are semantically atomic.
 - [Requires Review Process](requires-review-process.md)
@@ -56,6 +58,8 @@ These files are generated snapshots or queues. Do not edit them as source of tru
   Generated snapshot consumed by the dashboard.
 - [Curriculum Source Coverage Audit](status/curriculum-source-coverage-audit.md)
   Generated source-coverage status across configured curriculum evidence.
+- [Mathematik Source Verification](status/source-verification-de-gymnasium-mathematik-v1.md)
+  Generated report for 9,498 machine-verified source texts and the remaining 479 fingerprint-bound human reviews.
 - [MEM SPARQL Consistency Audit Status](status/mem-sparql-consistency-audit.md)
   Generated live endpoint comparison report.
 - [MEM SPARQL Consistency Review Issues](status/mem-sparql-consistency-review-issues.md)

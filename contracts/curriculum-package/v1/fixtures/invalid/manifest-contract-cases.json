@@ -182,11 +182,17 @@
         }
       ],
       "expectedErrorCodes": [
+        "ARCHIVE_PATH_LIMIT",
+        "ARCHIVE_PATH_LIMIT",
+        "ARCHIVE_PATH_LIMIT",
         "ARCHIVE_PATH_LIMIT"
       ],
       "expectedLocations": {
         "ARCHIVE_PATH_LIMIT": [
-          "/files/3/path"
+          "/files/3/path",
+          "/files/22/path",
+          "/files/23/path",
+          "/files/25/path"
         ]
       }
     },
@@ -228,7 +234,10 @@
             "runtimeRequired": false,
             "licenseExpression": "CC-BY-4.0",
             "provenanceClass": "skillpilot-authored",
-            "redistributionStatus": "allowed"
+            "redistributionStatus": "allowed",
+            "semanticBinding": {
+              "kind": "excluded-generated"
+            }
           }
         }
       ],
@@ -318,19 +327,28 @@
       ]
     },
     {
-      "id": "non-redistributable-source-metadata",
-      "description": "Every distributed file must be cleared, including non-runtime source metadata.",
+      "id": "pending-with-license-expression",
+      "description": "Review-required redistribution uses null instead of a pseudo or apparently cleared license expression.",
       "mutations": [
         {
           "operation": "set-file-field",
-          "role": "license",
+          "role": "binary-asset",
           "field": "redistributionStatus",
           "value": "review-required"
         }
       ],
       "expectedErrorCodes": [
-        "REDISTRIBUTION_NOT_ALLOWED"
-      ]
+        "MANIFEST_SCHEMA",
+        "UNCLEARED_LICENSE_EXPRESSION_FORBIDDEN"
+      ],
+      "expectedLocations": {
+        "MANIFEST_SCHEMA": [
+          "/files/19/licenseExpression"
+        ],
+        "UNCLEARED_LICENSE_EXPRESSION_FORBIDDEN": [
+          "/files/19/licenseExpression"
+        ]
+      }
     },
     {
       "id": "malformed-license-expression",
@@ -704,7 +722,11 @@
             "runtimeRequired": true,
             "licenseExpression": "CC-BY-4.0",
             "provenanceClass": "ai-generated-curated",
-            "redistributionStatus": "allowed"
+            "redistributionStatus": "allowed",
+            "semanticBinding": {
+              "kind": "binary-resource",
+              "resourceId": "generated-{index}"
+            }
           }
         }
       ],
@@ -729,7 +751,10 @@
             "runtimeRequired": false,
             "licenseExpression": "Apache-2.0",
             "provenanceClass": "generated-metadata",
-            "redistributionStatus": "allowed"
+            "redistributionStatus": "allowed",
+            "semanticBinding": {
+              "kind": "excluded-generated"
+            }
           }
         }
       ],
@@ -786,6 +811,242 @@
           "/licenseDocuments"
         ]
       }
+    },
+    {
+      "id": "missing-semantic-content-index-role",
+      "description": "Every package requires exactly one content index without including that index in itself.",
+      "mutations": [
+        {
+          "operation": "remove-files-by-role",
+          "role": "semantic-content-index"
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_ROLE_CARDINALITY"
+      ]
+    },
+    {
+      "id": "missing-semantic-binding",
+      "description": "Every manifest file declares its semantic digest disposition.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/files/3/semanticBinding"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA",
+        "SEMANTIC_BINDING_KIND_MISMATCH"
+      ],
+      "expectedLocations": {
+        "MANIFEST_SCHEMA": [
+          "/files/3"
+        ],
+        "SEMANTIC_BINDING_KIND_MISMATCH": [
+          "/files/3/semanticBinding"
+        ]
+      }
+    },
+    {
+      "id": "wrong-semantic-binding-kind",
+      "description": "A logical runtime artifact cannot claim generated exclusion.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "canonical-landscape",
+          "field": "semanticBinding",
+          "value": {
+            "kind": "excluded-generated"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "SEMANTIC_BINDING_KIND_MISMATCH"
+      ],
+      "expectedLocations": {
+        "SEMANTIC_BINDING_KIND_MISMATCH": [
+          "/files/3/semanticBinding"
+        ]
+      }
+    },
+    {
+      "id": "wrong-semantic-normalization-role",
+      "description": "Role-to-normalization mapping is closed and cannot be package-selected.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/files/3/semanticBinding/normalizationRole",
+          "value": "composition-view"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SEMANTIC_NORMALIZATION_ROLE_MISMATCH"
+      ],
+      "expectedLocations": {
+        "SEMANTIC_NORMALIZATION_ROLE_MISMATCH": [
+          "/files/3/semanticBinding/normalizationRole"
+        ]
+      }
+    },
+    {
+      "id": "dependency-closure-validation-schema-missing",
+      "description": "Every normative JSON role declares its exact offline validation schema.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/files/1/validationSchemaId"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_REQUIRED"
+      ],
+      "expectedLocations": {
+        "VALIDATION_SCHEMA_REQUIRED": [
+          "/files/1/validationSchemaId"
+        ]
+      }
+    },
+    {
+      "id": "dependency-closure-validation-schema-wrong",
+      "description": "Normative payload roles cannot select another packaged schema.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/files/1/validationSchemaId",
+          "value": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "VALIDATION_SCHEMA_MISMATCH"
+      ],
+      "expectedLocations": {
+        "VALIDATION_SCHEMA_MISMATCH": [
+          "/files/1/validationSchemaId"
+        ]
+      }
+    },
+    {
+      "id": "allowed-license-expression-null",
+      "description": "Cleared redistribution requires a real license expression.",
+      "mutations": [
+        {
+          "operation": "set-file-field",
+          "role": "binary-asset",
+          "field": "licenseExpression",
+          "value": null
+        }
+      ],
+      "expectedErrorCodes": [
+        "ALLOWED_LICENSE_EXPRESSION_REQUIRED",
+        "MANIFEST_SCHEMA"
+      ],
+      "expectedLocations": {
+        "ALLOWED_LICENSE_EXPRESSION_REQUIRED": [
+          "/files/19/licenseExpression"
+        ],
+        "MANIFEST_SCHEMA": [
+          "/files/19/licenseExpression"
+        ]
+      }
+    },
+    {
+      "id": "semantic-contract-binding-missing",
+      "description": "The named semantic contract binding set is closed and mandatory.",
+      "mutations": [
+        {
+          "operation": "remove-pointer",
+          "pointer": "/contractBindings/semanticNormalForm"
+        }
+      ],
+      "expectedErrorCodes": [
+        "MANIFEST_SCHEMA"
+      ]
+    },
+    {
+      "id": "semantic-contract-binding-path-missing",
+      "description": "Every semantic contract binding resolves to one semantic-contract record.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contractBindings/semanticNormalForm/path",
+          "value": "schemas/profiles/missing.profile.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SEMANTIC_CONTRACT_BINDING_FILE_MISSING"
+      ],
+      "expectedLocations": {
+        "SEMANTIC_CONTRACT_BINDING_FILE_MISSING": [
+          "/contractBindings/semanticNormalForm/path"
+        ]
+      }
+    },
+    {
+      "id": "semantic-contract-binding-hash-mismatch",
+      "description": "The named binding and its packaged file record must have the same hash.",
+      "mutations": [
+        {
+          "operation": "set-pointer",
+          "pointer": "/contractBindings/semanticNormalForm/sha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SEMANTIC_CONTRACT_BINDING_FILE_HASH_MISMATCH"
+      ],
+      "expectedLocations": {
+        "SEMANTIC_CONTRACT_BINDING_FILE_HASH_MISMATCH": [
+          "/contractBindings/semanticNormalForm/sha256"
+        ]
+      }
+    },
+    {
+      "id": "semantic-contract-binding-schema-mismatch",
+      "description": "Each named semantic contract uses its role-specific schema.",
+      "mutations": [
+        {
+          "operation": "set-file-field-by-path",
+          "path": "schemas/profiles/semantic-normal-form-v1.profile.json",
+          "field": "validationSchemaId",
+          "value": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json"
+        }
+      ],
+      "expectedErrorCodes": [
+        "SEMANTIC_CONTRACT_BINDING_SCHEMA_MISMATCH"
+      ],
+      "expectedLocations": {
+        "SEMANTIC_CONTRACT_BINDING_SCHEMA_MISMATCH": [
+          "/contractBindings/semanticNormalForm/path"
+        ]
+      }
+    },
+    {
+      "id": "validation-report-count-limit",
+      "description": "Generated validation evidence is plural but remains bounded.",
+      "mutations": [
+        {
+          "operation": "append-numbered-files",
+          "count": 101,
+          "pathPrefix": "metadata/validation/generated-",
+          "pathSuffix": ".json",
+          "file": {
+            "role": "validation-report",
+            "mediaType": "application/json",
+            "bytes": 1,
+            "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "runtimeRequired": false,
+            "semanticBinding": {
+              "kind": "excluded-generated"
+            },
+            "licenseExpression": "Apache-2.0",
+            "provenanceClass": "generated-metadata",
+            "redistributionStatus": "allowed"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "PROFILE_ROLE_CARDINALITY"
+      ]
     }
   ]
 }

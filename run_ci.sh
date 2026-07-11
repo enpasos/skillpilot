@@ -122,6 +122,8 @@ npm run deploy:assets
 echo "--> Checking Goal Visualization Runtime Assets"
 npm run check:goal-visualization-assets
 
+echo "--> Testing Deterministic ZIP32 Writer"
+npm run test:deterministic-zip32
 
 
 echo "--> Running Lint & Build"

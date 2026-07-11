@@ -528,6 +528,8 @@ SkillPilot runtime code should consume versioned package manifests and artifact 
 
 The first public contract profile is `full-standalone-v1`. Compiled release goals carry an explicit `semanticKind`; ontology tooling must not derive Core semantics from titles or subject-specific ID patterns. Public stable releases are authenticated by a trusted signature over an external release index that binds both package variants and their equivalence evidence.
 
+Package validity and publication permission stay separate. `review-required` records use `licenseExpression: null`, remain usable for technical staging tests, and must fail the redistribution-readiness gate. Never infer a license from provider, provenance, AI-generation, or curation labels. Human decisions for image quality, redistribution, or source verification are hash-bound; content drift makes them stale. Machine source-text matches reduce the manual queue but never count as human or legal approvals, and complete extracted official-PDF text must not be committed merely as verification evidence.
+
 Reference:
 
 * `docs/concept/curriculum-graph/dual-curriculum-package-releases.md`

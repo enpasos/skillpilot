@@ -8,10 +8,7 @@ import {
   readSync,
   readFileSync,
   readdirSync,
-  renameSync,
-  rmSync,
   statSync,
-  writeSync,
   writeFileSync,
 } from 'node:fs'
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
@@ -21,6 +18,10 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
+import {
+  createDeterministicZip32,
+  type DeterministicZip32Entry,
+} from './deterministicZip32'
 
 type JsonValue =
   | null
@@ -46,13 +47,7 @@ type CliOptions = {
 
 type PublicationProfile = 'release'
 
-type PackageEntry = {
-  packagePath: string
-  content?: Buffer
-  sourcePath?: string
-  bytes: number
-  sha256: string
-  crc32: number
+type PackageEntry = DeterministicZip32Entry & {
   category: string
   licenseCategory: string
 }
@@ -141,7 +136,6 @@ const GOAL_VISUALIZATION_LICENSE_CATEGORY = 'goal-visualization-ai-generated-cur
 const GOAL_VISUALIZATION_INDEX_PATH = 'data/resources/goal-visualizations.json'
 const MAX_GOAL_VISUALIZATION_BYTES = 64 * 1024 * 1024
 const MAX_GOAL_VISUALIZATION_TOTAL_BYTES = 8 * 1024 * 1024 * 1024
-const ZIP32_MAX_VALUE = 0xffffffff
 
 const SUBJECT_PRESETS: Record<string, SubjectPreset> = {
   biologie: {
@@ -1847,159 +1841,6 @@ const stateFromMappingPath = (absolutePath: string) => {
   return match?.[1]
 }
 
-const writeBufferFully = (descriptor: number, content: Buffer) => {
-  let offset = 0
-  while (offset < content.length) {
-    const written = writeSync(descriptor, content, offset, content.length - offset)
-    if (written <= 0) throw new Error('Failed to make progress while writing ZIP output.')
-    offset += written
-  }
-}
-
-const writePackageEntryContent = (descriptor: number, entry: PackageEntry) => {
-  if (entry.content) {
-    writeBufferFully(descriptor, entry.content)
-    return
-  }
-  if (!entry.sourcePath) {
-    throw new Error(`Package entry has neither content nor source path: ${entry.packagePath}`)
-  }
-  const sourceDescriptor = openSync(entry.sourcePath, 'r')
-  const chunk = Buffer.allocUnsafe(8 * 1024 * 1024)
-  const hash = createHash('sha256')
-  let copied = 0
-  let checksum = 0
-  try {
-    while (true) {
-      const read = readSync(sourceDescriptor, chunk, 0, chunk.length, null)
-      if (read === 0) break
-      const data = chunk.subarray(0, read)
-      hash.update(data)
-      checksum = crc32(data, checksum) >>> 0
-      writeBufferFully(descriptor, data)
-      copied += read
-    }
-  } finally {
-    closeSync(sourceDescriptor)
-  }
-  if (copied !== entry.bytes) {
-    throw new Error(`Source file changed while writing ZIP entry ${entry.packagePath}: ${copied} != ${entry.bytes} bytes.`)
-  }
-  const actualSha256 = hash.digest('hex')
-  if (actualSha256 !== entry.sha256 || checksum !== entry.crc32) {
-    throw new Error(`Source file changed while writing ZIP entry ${entry.packagePath}: checksum mismatch.`)
-  }
-}
-
-const createZip = (entries: PackageEntry[], mtime: Date, outputPath: string) => {
-  const sortedEntries = [...entries].sort((left, right) => compareCodeUnits(left.packagePath, right.packagePath))
-  if (sortedEntries.length > 0xffff) {
-    throw new Error(`ZIP32 supports at most 65535 entries, got ${sortedEntries.length}.`)
-  }
-  const namedEntries = sortedEntries.map((entry) => ({
-    entry,
-    name: Buffer.from(entry.packagePath, 'utf8'),
-  }))
-  namedEntries.forEach(({ entry, name }) => {
-    if (name.length > 0xffff) throw new Error(`ZIP entry name is too long: ${entry.packagePath}`)
-    if (entry.bytes > ZIP32_MAX_VALUE) throw new Error(`ZIP entry exceeds the ZIP32 size limit: ${entry.packagePath}`)
-  })
-
-  const centralSize = namedEntries.reduce((sum, { name }) => sum + 46 + name.length, 0)
-  const centralOffset = namedEntries.reduce((sum, { entry, name }) => sum + 30 + name.length + entry.bytes, 0)
-  const totalSize = centralOffset + centralSize + 22
-  if (centralOffset > ZIP32_MAX_VALUE || centralSize > ZIP32_MAX_VALUE || totalSize > ZIP32_MAX_VALUE) {
-    throw new Error(`ZIP would exceed the supported ZIP32 size limit (${totalSize} > ${ZIP32_MAX_VALUE} bytes).`)
-  }
-
-  const centralParts: Buffer[] = []
-  let offset = 0
-  const { dosTime, dosDate } = toDosDateTime(mtime)
-  const temporaryPath = `${outputPath}.tmp-${process.pid}`
-  rmSync(temporaryPath, { force: true })
-  const descriptor = openSync(temporaryPath, 'w')
-  try {
-    namedEntries.forEach(({ entry, name }) => {
-      const localHeader = Buffer.alloc(30)
-      localHeader.writeUInt32LE(0x04034b50, 0)
-      localHeader.writeUInt16LE(20, 4)
-      localHeader.writeUInt16LE(0x0800, 6)
-      localHeader.writeUInt16LE(0, 8)
-      localHeader.writeUInt16LE(dosTime, 10)
-      localHeader.writeUInt16LE(dosDate, 12)
-      localHeader.writeUInt32LE(entry.crc32, 14)
-      localHeader.writeUInt32LE(entry.bytes, 18)
-      localHeader.writeUInt32LE(entry.bytes, 22)
-      localHeader.writeUInt16LE(name.length, 26)
-      localHeader.writeUInt16LE(0, 28)
-      writeBufferFully(descriptor, localHeader)
-      writeBufferFully(descriptor, name)
-      writePackageEntryContent(descriptor, entry)
-
-      const centralHeader = Buffer.alloc(46)
-      centralHeader.writeUInt32LE(0x02014b50, 0)
-      centralHeader.writeUInt16LE(20, 4)
-      centralHeader.writeUInt16LE(20, 6)
-      centralHeader.writeUInt16LE(0x0800, 8)
-      centralHeader.writeUInt16LE(0, 10)
-      centralHeader.writeUInt16LE(dosTime, 12)
-      centralHeader.writeUInt16LE(dosDate, 14)
-      centralHeader.writeUInt32LE(entry.crc32, 16)
-      centralHeader.writeUInt32LE(entry.bytes, 20)
-      centralHeader.writeUInt32LE(entry.bytes, 24)
-      centralHeader.writeUInt16LE(name.length, 28)
-      centralHeader.writeUInt16LE(0, 30)
-      centralHeader.writeUInt16LE(0, 32)
-      centralHeader.writeUInt16LE(0, 34)
-      centralHeader.writeUInt16LE(0, 36)
-      centralHeader.writeUInt32LE((0o100644 << 16) >>> 0, 38)
-      centralHeader.writeUInt32LE(offset, 42)
-      centralParts.push(centralHeader, name)
-      offset += localHeader.length + name.length + entry.bytes
-    })
-
-    const centralDirectory = Buffer.concat(centralParts)
-    writeBufferFully(descriptor, centralDirectory)
-    const endOfCentralDirectory = Buffer.alloc(22)
-    endOfCentralDirectory.writeUInt32LE(0x06054b50, 0)
-    endOfCentralDirectory.writeUInt16LE(0, 4)
-    endOfCentralDirectory.writeUInt16LE(0, 6)
-    endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 8)
-    endOfCentralDirectory.writeUInt16LE(sortedEntries.length, 10)
-    endOfCentralDirectory.writeUInt32LE(centralSize, 12)
-    endOfCentralDirectory.writeUInt32LE(centralOffset, 16)
-    endOfCentralDirectory.writeUInt16LE(0, 20)
-    writeBufferFully(descriptor, endOfCentralDirectory)
-  } catch (error) {
-    closeSync(descriptor)
-    rmSync(temporaryPath, { force: true })
-    throw error
-  }
-  closeSync(descriptor)
-  const writtenBytes = statSync(temporaryPath).size
-  if (writtenBytes !== totalSize) {
-    rmSync(temporaryPath, { force: true })
-    throw new Error(`ZIP byte count mismatch after streaming write: ${writtenBytes} != ${totalSize}.`)
-  }
-  rmSync(outputPath, { force: true })
-  renameSync(temporaryPath, outputPath)
-  return writtenBytes
-}
-
-const toDosDateTime = (date: Date) => {
-  const year = Math.max(1980, date.getUTCFullYear())
-  const month = date.getUTCMonth() + 1
-  const day = date.getUTCDate()
-  const hours = date.getUTCHours()
-  const minutes = date.getUTCMinutes()
-  const seconds = Math.floor(date.getUTCSeconds() / 2)
-
-  return {
-    dosTime: (hours << 11) | (minutes << 5) | seconds,
-    dosDate: ((year - 1980) << 9) | (month << 5) | day,
-  }
-}
-
 const addEntry = (entriesByPath: Map<string, PackageEntry>, entry: PackageEntry) => {
   const existing = entriesByPath.get(entry.packagePath)
   if (existing) {
@@ -2811,7 +2652,7 @@ const main = () => {
 
   mkdirSync(options.outputDir, { recursive: true })
   const zipPath = resolve(options.outputDir, `${archiveRoot}.zip`)
-  const zipBytes = createZip([...entriesByPath.values()], packageDate, zipPath)
+  const zipBytes = createDeterministicZip32([...entriesByPath.values()], packageDate, zipPath)
   const zipSha256 = sha256File(zipPath)
   const releaseReportPath = resolve(options.outputDir, `${archiveRoot}-release-report.md`)
   writeFileSync(releaseReportPath, buildReleaseReport({

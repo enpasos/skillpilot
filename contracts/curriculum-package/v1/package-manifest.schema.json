@@ -81,7 +81,12 @@
         "manifestSchema",
         "releaseProfile",
         "runtimeCatalogSchema",
-        "schemaCatalogSchema"
+        "schemaCatalogSchema",
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
       ],
       "properties": {
         "manifestSchema": {
@@ -94,6 +99,21 @@
           "$ref": "#/$defs/contractBinding"
         },
         "schemaCatalogSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticNormalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "definitionDigestProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "curriculumOntologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "publicationEvidenceProfile": {
           "$ref": "#/$defs/contractBinding"
         }
       }
@@ -189,6 +209,7 @@
         "bytes",
         "sha256",
         "runtimeRequired",
+        "semanticBinding",
         "licenseExpression",
         "provenanceClass",
         "redistributionStatus"
@@ -215,11 +236,21 @@
         "runtimeRequired": {
           "type": "boolean"
         },
+        "semanticBinding": {
+          "$ref": "#/$defs/semanticBinding"
+        },
         "licenseExpression": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 500,
-          "pattern": "^\\S(?:.*\\S)?$"
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "pattern": "^\\S(?:.*\\S)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "provenanceClass": {
           "enum": [
@@ -241,7 +272,106 @@
         "validationSchemaId": {
           "$ref": "#/$defs/schemaId"
         }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "allowed"
+              }
+            },
+            "required": [
+              "redistributionStatus"
+            ]
+          },
+          "then": {
+            "properties": {
+              "licenseExpression": {
+                "type": "string"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "licenseExpression": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "semanticBinding": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/logicalArtifactBinding"
+        },
+        {
+          "$ref": "#/$defs/binaryResourceBinding"
+        },
+        {
+          "$ref": "#/$defs/excludedGeneratedBinding"
+        }
+      ]
+    },
+    "logicalArtifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "logicalId",
+        "normalizationRole"
+      ],
+      "properties": {
+        "kind": {
+          "const": "logical-artifact"
+        },
+        "logicalId": {
+          "$ref": "#/$defs/semanticIdentifier"
+        },
+        "normalizationRole": {
+          "$ref": "#/$defs/artifactRole"
+        }
       }
+    },
+    "binaryResourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "resourceId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "binary-resource"
+        },
+        "resourceId": {
+          "$ref": "#/$defs/semanticIdentifier"
+        }
+      }
+    },
+    "excludedGeneratedBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "const": "excluded-generated"
+        }
+      }
+    },
+    "artifactRole": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "semanticIdentifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
     },
     "schemaId": {
       "type": "string",

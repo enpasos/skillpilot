@@ -25,12 +25,12 @@
     "manifestSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
       "path": "schemas/package-manifest.schema.json",
-      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e"
+      "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
     },
     "releaseProfile": {
       "id": "full-standalone-v1",
       "path": "schemas/profiles/full-standalone-v1.profile.json",
-      "sha256": "87e606ec466b7ec0d82c0fb3943d116fd4f1689ff90524a07afffe103ec6d07f"
+      "sha256": "b9b1a04e6ffd1d797213267698ed0dfbe52f4a036bd12bcfae35103891a73e02"
     },
     "runtimeCatalogSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
@@ -41,6 +41,31 @@
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
       "path": "schemas/schema-catalog.schema.json",
       "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+    },
+    "semanticNormalForm": {
+      "id": "semantic-normal-form-v1",
+      "path": "schemas/profiles/semantic-normal-form-v1.profile.json",
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+    },
+    "fieldSemanticsRegistry": {
+      "id": "skillpilot-fwu-field-semantics-v1",
+      "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+      "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+    },
+    "definitionDigestProfile": {
+      "id": "canonical-definition-record-v1",
+      "path": "schemas/profiles/canonical-definition-record-v1.profile.json",
+      "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+    },
+    "curriculumOntologyProfile": {
+      "id": "de-gymnasium-mathematik-v1",
+      "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "sha256": "628a438fdc167f01cced70f131530ad8eceda65a04b2619f28d65f46803b5c0b"
+    },
+    "publicationEvidenceProfile": {
+      "id": "de-gymnasium-mathematik-publication-evidence-v1",
+      "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "sha256": "6e25556fe4c1db75efc84368788613b7be7be3cb506f7b7fa6cf5fcceead40d5"
     }
   },
   "files": [
@@ -54,7 +79,12 @@
       "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0:catalog",
+        "normalizationRole": "runtime-catalog"
+      }
     },
     {
       "path": "data/runtime/dependency-closure.json",
@@ -65,7 +95,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0:closure",
+        "normalizationRole": "dependency-closure"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json"
     },
     {
       "path": "data/runtime/migration-aliases.json",
@@ -76,7 +112,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0:migrations",
+        "normalizationRole": "migration-aliases"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json"
     },
     {
       "path": "data/canonical/mathematik.landscape.json",
@@ -87,7 +129,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "skillpilot-authored",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "fixture-mathematik",
+        "normalizationRole": "canonical-landscape"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json"
     },
     {
       "path": "data/views/index.json",
@@ -98,7 +146,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "fixture-mathematik:views",
+        "normalizationRole": "composition-view-index"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json"
     },
     {
       "path": "data/views/de-he-gk.view.json",
@@ -109,7 +163,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "skillpilot-authored",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "de-he-gk",
+        "normalizationRole": "composition-view"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json"
     },
     {
       "path": "data/views/de-he-lk.view.json",
@@ -120,7 +180,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "skillpilot-authored",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "de-he-lk",
+        "normalizationRole": "composition-view"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json"
     },
     {
       "path": "data/cards/card-index.json",
@@ -131,7 +197,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "fixture-mathematik:cards",
+        "normalizationRole": "card-index"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json"
     },
     {
       "path": "data/cards/de_gymnasium_math_analysis_core.de.json",
@@ -142,7 +214,13 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "skillpilot-authored",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "de_gymnasium_math_analysis_core.de@de-DE",
+        "normalizationRole": "card-deck"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json"
     },
     {
       "path": "data/resources/resource-index.json",
@@ -153,30 +231,42 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "generated-metadata",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "logical-artifact",
+        "logicalId": "fixture-mathematik:resources",
+        "normalizationRole": "resource-index"
+      },
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json"
     },
     {
       "path": "schemas/catalog.json",
       "role": "schema-catalog",
       "mediaType": "application/json",
-      "bytes": 1781,
-      "sha256": "18e63848e03ce5fccd60951e10f08beeb9294300ad580ef06969b93dba3624c1",
+      "bytes": 8321,
+      "sha256": "e765677e6255ce6e3253548593aa41eb0ee0f7dedaef8c24e8a1518a153011fb",
       "runtimeRequired": true,
       "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/package-manifest.schema.json",
       "role": "schema",
       "mediaType": "application/schema+json",
-      "bytes": 6577,
-      "sha256": "4b20dbfa19ecea0349fe17c33e76e8fd608fcce88c1b7cc1c66431b4c42c887e",
+      "bytes": 9632,
+      "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d",
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/runtime-catalog.schema.json",
@@ -187,7 +277,10 @@
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/schema-catalog.schema.json",
@@ -198,7 +291,10 @@
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/fixture-document.schema.json",
@@ -209,7 +305,10 @@
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/fixture-shared.schema.json",
@@ -220,18 +319,24 @@
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "schemas/profiles/full-standalone-v1.profile.json",
       "role": "release-profile",
       "mediaType": "application/json",
-      "bytes": 6153,
-      "sha256": "87e606ec466b7ec0d82c0fb3943d116fd4f1689ff90524a07afffe103ec6d07f",
+      "bytes": 16840,
+      "sha256": "b9b1a04e6ffd1d797213267698ed0dfbe52f4a036bd12bcfae35103891a73e02",
       "runtimeRequired": true,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "software-contract",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "licenses/CC-BY-4.0.txt",
@@ -242,7 +347,10 @@
       "runtimeRequired": false,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "third-party",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "licenses/Apache-2.0.txt",
@@ -253,7 +361,10 @@
       "runtimeRequired": false,
       "licenseExpression": "Apache-2.0",
       "provenanceClass": "third-party",
-      "redistributionStatus": "allowed"
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      }
     },
     {
       "path": "assets/goal-visualizations/example-goal.png",
@@ -264,6 +375,366 @@
       "runtimeRequired": true,
       "licenseExpression": "CC-BY-4.0",
       "provenanceClass": "ai-generated-curated",
+      "redistributionStatus": "allowed",
+      "semanticBinding": {
+        "kind": "binary-resource",
+        "resourceId": "example-goal"
+      }
+    },
+    {
+      "path": "metadata/semantic-content-index.json",
+      "role": "semantic-content-index",
+      "mediaType": "application/json",
+      "bytes": 256,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000009",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "generated-metadata",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/profiles/semantic-normal-form-v1.profile.json",
+      "role": "semantic-contract",
+      "mediaType": "application/json",
+      "bytes": 3877,
+      "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+      "role": "semantic-contract",
+      "mediaType": "application/json",
+      "bytes": 719933,
+      "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/profiles/canonical-definition-record-v1.profile.json",
+      "role": "semantic-contract",
+      "mediaType": "application/json",
+      "bytes": 2222,
+      "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "role": "semantic-contract",
+      "mediaType": "application/json",
+      "bytes": 22916,
+      "sha256": "628a438fdc167f01cced70f131530ad8eceda65a04b2619f28d65f46803b5c0b",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+      "role": "semantic-contract",
+      "mediaType": "application/json",
+      "bytes": 38711,
+      "sha256": "6e25556fe4c1db75efc84368788613b7be7be3cb506f7b7fa6cf5fcceead40d5",
+      "runtimeRequired": true,
+      "validationSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/dependency-closure.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 15989,
+      "sha256": "1c70e16a87d729d0fbf44130e70871adfe675f7a5746d3b1fcd44f2586075695",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/migration-aliases.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 9926,
+      "sha256": "87459d64185f4a35da3e9898ee613a312e9ba5710beaa543b8f1f0d6a0aea277",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/compiled-landscape.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 15872,
+      "sha256": "1b1acf12a343f36e61c675ed96a05db5cc98dab0b34a2d09aea0438f83e2d6cd",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/composition-view-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 2723,
+      "sha256": "b21fdb79de6f56533305698b989a5a36ab582885f5836ad665a0563ed5c1c07e",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/composition-view.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 4320,
+      "sha256": "8b37b9b0e1eb0b3d7594139bae9e90f87a0bdda579fbe92d5b9822449b998c6e",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/card-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 2218,
+      "sha256": "dd5e77689686710a801ae01eb7947fce6b0d84154936e5b4ed15cc650c170723",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/card-deck.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 2305,
+      "sha256": "3f7159eb41ab4c12337e0b76f7e3bacaa3ac36404e8293c0c240cc2d3b6ec6ba",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/resource-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 6006,
+      "sha256": "67034e9b1737650ec7fc6d81c8d58aa355b54226f8445e9c118ceb33a83bf425",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/semantic-content-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 4278,
+      "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/embedded-goal-dependency.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 4735,
+      "sha256": "a05f266142af45df932b74dc67de9d451d8fbe4e466bf5a781bbc65c5fb04f85",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/source-to-canonical-mappings.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 3765,
+      "sha256": "47e8e8ad0b81eedd2bed46b98f82a6cc27402fd2caa88d97542ba1353a808b91",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/official-source-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 3977,
+      "sha256": "1f7c205414eeb311941792009573fd80d1c2eadac73e02472eeb13dc193cd803",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/source-goal-reference-index.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 6048,
+      "sha256": "30168d9084086855896f02325591fe0ceda5e49d6065b0b72fdfb74c167fba61",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/release-quality-evidence.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 11974,
+      "sha256": "e12475ff9c143a722a63684d398a0db761fc5a5eb2eca4fc83d9a89d69418d7b",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/semantic-normalization-profile.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 11352,
+      "sha256": "e125e54cb618b0b1e803d7aec2c7b92d28124ea6ba781bc594c2b0c0fdf0bff1",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/field-semantics-registry.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 34294,
+      "sha256": "d288daad8669f3cbbaf608beb16b5013a36af093030fbe5ee52580a48494d430",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/definition-digest-profile.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 5674,
+      "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/curriculum-ontology-profile.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 21304,
+      "sha256": "b0af9c02d7bb60517db59788c88c4f36aed3533c31d30287dc3e59988761e701",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
+      "redistributionStatus": "allowed"
+    },
+    {
+      "path": "schemas/publication-evidence-projection.schema.json",
+      "role": "schema",
+      "mediaType": "application/schema+json",
+      "bytes": 18195,
+      "sha256": "db42009b4241cfa03f0b350c8d5e7f62e4a08cdc322f5ee2a079ad315d2e339f",
+      "runtimeRequired": true,
+      "semanticBinding": {
+        "kind": "excluded-generated"
+      },
+      "licenseExpression": "Apache-2.0",
+      "provenanceClass": "software-contract",
       "redistributionStatus": "allowed"
     }
   ]

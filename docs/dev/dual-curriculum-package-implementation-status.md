@@ -1,14 +1,14 @@
 # Dual Curriculum Package Implementation Status
 
-- Stand: 2026-07-10
+- Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
-- Abgeschlossene Phase: `P0 – Verträge und vollständiges Mathematik-Release-Modell`
-- Nächste Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Schritt: `DPK-005 – Mathematik-JSON-Paket nach full-standalone-v1 bauen und strikt validieren`
-- Letzter fachlich abgeschlossener Schritt: `DPK-004b / DPK-004 – Publikations-Evidenz und vollständige Mathematik-Conformance`
-- Solider Ausgangsstand: `DPK-004b / DPK-004`, vollständiges `./run_ci.sh` am 2026-07-10 grün
-- Abschluss-Gate für den DPK-004b-Commit: gezielte QS und vollständiges `./run_ci.sh` grün
-- Blocker: keine
+- Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
+- Nächster Schritt: `DPK-005b – vollständiges Mathematik-JSON-Paket materialisieren und paketlokal strikt validieren`
+- Letzter fachlich abgeschlossener Schritt: `DPK-005a – Package-Trust, deterministisches ZIP und ehrliche Human-Review-Gates`
+- Solider Ausgangsstand: `DPK-005a`, gezielte Vertrags-/Readiness-/Review-/ZIP-QS und vollständiges `./run_ci.sh` am 2026-07-11 grün
+- Abschluss-Gate für den DPK-005a-Commit: gezielte QS und vollständiges `./run_ci.sh` grün
+- Technische Blocker: keine
+- Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
 Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdokument bleibt die Quelle für Zielarchitektur und endgültige Abnahmekriterien; Git-Historie und CI-Artefakte ersetzen ein langes Umsetzungstagebuch.
 
@@ -17,7 +17,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen; DPK-005 beginnt P1 |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `not_started` | Mathematik package-only laden |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-005b: reales ZIP bauen und vollständig prüfen |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -25,6 +25,31 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | P6 | Trennung von Curriculum-Erstellung und SkillPilot-Software | `not_started` | Software benötigt keinen produktiven Curriculum-Quellbaum |
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
+
+## Abgeschlossener Teilschritt: DPK-005a
+
+DPK-005a schließt die Vertrauens-, Archiv- und Review-Grundlage zwischen dem entpackten DPK-004-Modell und dem realen JSON-Paket:
+
+- jeder Manifest-Record besitzt genau eine explizite semantische Bindungsart: logisches Artefakt mit `logicalId` und `normalizationRole`, Binärressource mit `resourceId` oder bewusst ausgeschlossene generierte Paketmechanik;
+- `full-standalone-v1` pinnt jetzt alle 22 normativen Payload-Schemas, verlangt deren vollständigen Offline-Schema-Katalog, bindet fünf paketlokale Semantic Contracts und schreibt je Rolle die exakten zulässigen `validationSchemaId`-Werte vor;
+- `semantic-content-index` ist eine eigene verpflichtende Singleton-Rolle; Build-/Validierungsprovenienz bleibt mehrfach inventarisierbar, aber ausdrücklich außerhalb der fachlichen Normalform;
+- der Readiness-Gate trennt Vertragsgültigkeit und Publikationsrecht: offene oder verbotene Redistribution bleibt ein formal darstellbarer Staging-Kandidat, führt aber fail-closed zu `not-ready-incomplete` über `publication.redistribution-cleared`; beschädigte Identitäts-/Vertragsclaims bleiben `invalid`;
+- der aus dem Legacy-Exporter extrahierte Streaming-ZIP32-Writer erzeugt byteidentische bestehende Exporte, sortiert deterministisch, schreibt ausschließlich STORE-Einträge mit fixer UTC-DOS-Zeit und 0644, erzwingt alle ZIP32-/Profilgrenzen und lehnt unsichere Pfade, Mehrdeutigkeit, Symlinks, Nicht-Dateien, Source-Drift, Data Descriptors, Extras und ZIP64 ab;
+- ein Redistribution-Ledger bindet alle 756 realen Bilder und alle 23 Nicht-Binärrollen. Nur die exakte Root-`LICENSE`-gebundene Softwarevertragsklasse ist automatisch Apache-2.0; 756 Bilder, davon sechs nutzerbereitgestellte Erzeugungsbehauptungen, und drei Artefaktklassen bleiben ehrlich offen;
+- eine Source-Verification-Lane reduziert die offene Textprüfung reproduzierbar von 9.977 auf 479 Datensätze: 9.493 Texte liegen zusammenhängend in authored Passage-Carriern, fünf weitere in einer hashgebundenen, nur temporär erzeugten `pdftotext -layout`-Projektion. Kein Maschinentreffer wird als Human-Freigabe gezählt und kein vollständiger extrahierter amtlicher PDF-Text wird neu versioniert;
+- abgeschlossene Source-Entscheidungen sind an `reviewEvidenceSha256` gebunden; Text-, Passage-, PDF- oder Locator-Drift macht sie stale. Die [zentrale Human-Review-Liste](../qa-ci/curriculum-package-human-review-gates.md) trennt fachliche Bildprüfung, Bild-/Datenrechte, Source-Text-Prüfung, Ontologie-Sign-off und Stable-Promotion.
+
+Gezielte QS:
+
+- Manifest/Profile: eine gültige Fixture und 61 exakt erwartete Negativfälle;
+- Offline-Schema-Katalog: vollständiger 22-Schema-Trustsatz, 34 Negativ- und 12 Bindingfälle ohne Remote-Fetch;
+- Readiness: fünf Dialekt-Fixtures, Redistribution-Fall, Policy-/Report-Forgery, sieben adversariale ZIPs und 10-fache Exitmatrix;
+- Redistribution: realer Check plus 17 fail-closed Mutationen;
+- Source Verification: realer Check, acht Mutationen, Duplicate-Key-/stale-Review-Nachweis und optionaler bytegleicher Replay aller neun PDF-Projektionen;
+- ZIP32: Golden Bytes, echter byteidentischer Latein-Alt/Neu-Export und 22 Struktur-/Safety-Garantien;
+- vollständiges `./run_ci.sh` auf dem final dokumentierten Stand grün.
+
+Bewusste Grenze: DPK-005a erzeugt noch nicht das rund 1,7-GB-Mathematik-ZIP. DPK-005b materialisiert das vollständige Inventar und validiert den realen Kandidaten; offene Human-Gates dürfen dessen technische Tests nicht verhindern, aber weiterhin keine öffentliche Promotion erlauben.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -230,6 +255,7 @@ Abnahme:
 | DPK-003 | Core-first Feld-/RDF-Semantik, versionierte Normalform mit Inhaltsindex sowie externe Äquivalenz- und Dual-Release-Verträge eingeführt | 5 gültige Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests und 8 Raw-JSON-Fälle; vollständiges `./run_ci.sh` lokal, Exit 0 | 2026-07-10 |
 | DPK-004a | Reales Mathematik-Authoring verlustfrei in ein striktes, entpacktes Runtime-Release-Modell mit typisierter Fixpunkt-Closure, Semantic-Kind-Ledger, Migration, Ressourcenbindung und gemeinsamem `contentDigest` kompiliert | Reales Profil: 1.079 Ziele, 88 Views, 12 Decks/128 Karten, 825 Ressourcenlinks einschließlich 756 gehashter Bilder; 0 ungelöste harte Referenzen, externe Runtime-Abhängigkeiten und Definitionskonflikte; 5 Fixture-Dokumente/8 Mutationen, Compilerprobe, 25 Selbsttests, sicherer Doppelbuild und vollständiges `./run_ci.sh`, Exit 0 | 2026-07-10 |
 | DPK-004b / DPK-004 | Autoritative Mappings, Quellen, SourceGoal-Belege und ehrliche Quality-Evidence als vier digest-relevante, nicht runtime-erforderliche Publikationsartefakte ergänzt; P0 damit fachlich und technisch vollständig | 10.021 Mapping-Entscheidungen/33.382 Kanten, 9.977 Source Goals, 2.328 Quality-Entscheidungen plus 1 explizite Bildlücke, 111+756 Inhaltsrecords; 9 gültige Fixture-Dokumente, 22 Negativfälle, 47 Produktions-/Adversarialtests; gezielte QS und vollständiges `./run_ci.sh` grün | 2026-07-10 |
+| DPK-005a | Paketweite semantische File-Bindings, kompletter Offline-Trustsatz, deterministischer sicherer ZIP32-Writer sowie Rechte- und Source-Verification-Gates eingeführt | 1/61 Manifestfälle, 22 Schemas, 34+12 Katalogfälle, komplette Readiness-Adversarialmatrix, 756 Asset-/23 Rollenbindungen, 9.493+5 maschinelle Source-Treffer/479 Humanqueue, 22 ZIP-Garantien; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -241,7 +267,9 @@ Abnahme:
 | DPK-004 | P0 | Closure-, Ownership-, Konflikt- und Migrationsverträge; vollständige Mathematik-Conformance-Kompilation in das neue Release-Modell | DPK-002–DPK-003 | `complete` |
 | DPK-004a | P0 | Entpacktes Runtime-Modell mit strikten Payload-Schemas, Semantic-Kind-Ledger, Fixpunkt-Closure, Migration, Ressourcenbindung und realer Mathematik-Kompilation | DPK-002–DPK-003 | `complete` |
 | DPK-004b | P0 | Mapping-, Quellen- und Quality-Felder vollständig als Runtime-, Publikations-Evidenz oder Authoring-only klassifizieren und in die Mathematik-Conformance aufnehmen | DPK-004a | `complete` |
-| DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen, strikt validieren und die offene Source-Verification-QA-Schuld als maschinenlesbares Release-Gate führen | DPK-002–DPK-004 | `not_started` |
+| DPK-005 | P1 | Mathematik-JSON-Paket nach `full-standalone-v1` bauen, strikt validieren und Human-Review-Schuld als maschinenlesbare Release-Gates führen | DPK-002–DPK-004 | `in_progress` |
+| DPK-005a | P1 | Package-Trust, File-Semantik, deterministisches ZIP32 sowie Redistribution-/Source-Review-Lanes | DPK-002–DPK-004 | `complete` |
+| DPK-005b | P1 | Vollständiges reales Mathematik-Inventar und ZIP materialisieren, paketlokal validieren und reproduzieren | DPK-005a | `in_progress` |
 | DPK-006 | P1 | Manifestbasierter Backend-Package-Loader mit lokalem Store und Lock | DPK-005 | `not_started` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
@@ -262,6 +290,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-003 | Dual-Release-Validator: 5 positive Dokumente, 17 Registry-Einträge, 54 semantische Mutationstests, 8 Raw-JSON-Fälle; Schema-, Digest-, Trust-, Cross-Binding-, Doku-, Workflow- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-004a | Strikte Schema-/Profil-/Ledger-/Core-Pin-Prüfung; reale Mathematik-Kompilation mit exakten Umfangsgates; 5 Fixture-Dokumente/8 Mutationen; Compilerprobe; 25 unabhängige Selbsttests; sichere Output-Promotion; unabhängige Digest-, Feldabdeckungs-, Referenz-, Closure-, Ownership-, Konflikt-, Migrations-, Index- und Ressourcenprüfung; bytegleicher Doppelbuild | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
 | DPK-004b / DPK-004 | Compiler plus unabhängiger Validator; 9 gültige Fixture-Dokumente, 22 Negativfälle und 47 Produktions-/Adversarialtests; Mapping-Truth-/Raw-/Legacy-Differenzen, Source-Joins/Lineage, Core-Term-Trust, Source-Semantik-Overclaims, unabhängig abgeleitete Quality-Status, stabile Schlüssel, 454 Registry-Regeln, 111+756 Inhaltsrecords, 0 Publikationsrollen in der Runtime-Closure und bytegleicher Doppelbuild | `./run_ci.sh`, lokal, 2026-07-10, Exit 0 | `passed` |
+| DPK-005a | Manifest 1/61; vollständiger 22-Schema-Katalog 1/34 + 12 Bindings; Readiness einschließlich Redistribution; 756 Bild-/23 Rollen-Lizenzbindungen und 17 Mutationen; Source Verification 9.493+5+479, 8 Mutationen und PDF-Replay; ZIP32 Golden-/Safety-/Legacy-Bytegleichheit; Doku-, Workflow-, Lint-, TypeScript- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

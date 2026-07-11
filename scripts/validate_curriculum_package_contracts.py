@@ -10,7 +10,7 @@ import json
 import re
 import sys
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from importlib.metadata import PackageNotFoundError, version as distribution_version
 from pathlib import Path
@@ -40,11 +40,81 @@ TRUSTED_SCHEMA_BINDINGS = {
     "runtimeCatalogSchema": (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
     "schemaCatalogSchema": (SCHEMA_CATALOG_SCHEMA_ID, SCHEMA_CATALOG_SCHEMA_FILENAME),
 }
-BOOTSTRAP_VALIDATION_SCHEMAS = {
-    "runtime-catalog": RUNTIME_CATALOG_SCHEMA_ID,
-    "schema-catalog": SCHEMA_CATALOG_SCHEMA_ID,
+NORMATIVE_SCHEMA_FILES = (
+    (MANIFEST_SCHEMA_ID, SCHEMA_FILENAME),
+    (RUNTIME_CATALOG_SCHEMA_ID, RUNTIME_CATALOG_SCHEMA_FILENAME),
+    (SCHEMA_CATALOG_SCHEMA_ID, SCHEMA_CATALOG_SCHEMA_FILENAME),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json", "dependency-closure.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json", "migration-aliases.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json", "compiled-landscape.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json", "composition-view-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json", "composition-view.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json", "card-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json", "card-deck.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json", "resource-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json", "semantic-content-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json", "embedded-goal-dependency.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json", "source-to-canonical-mappings.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json", "official-source-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json", "source-goal-reference-index.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json", "release-quality-evidence.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json", "semantic-normalization-profile.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json", "field-semantics-registry.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json", "definition-digest-profile.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json", "curriculum-ontology-profile.schema.json"),
+    ("https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json", "publication-evidence-projection.schema.json"),
+)
+NORMATIVE_SCHEMA_IDS = {schema_id for schema_id, _filename in NORMATIVE_SCHEMA_FILES}
+
+SEMANTIC_CONTRACT_BINDINGS = (
+    (
+        "semanticNormalForm",
+        "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+    ),
+    (
+        "fieldSemanticsRegistry",
+        "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+    ),
+    (
+        "definitionDigestProfile",
+        "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+    ),
+    (
+        "curriculumOntologyProfile",
+        "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+    ),
+    (
+        "publicationEvidenceProfile",
+        "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+    ),
+)
+
+ROLE_SEMANTIC_CONTRACTS = {
+    "runtime-catalog": ("logical-artifact", ("runtime-catalog",), (RUNTIME_CATALOG_SCHEMA_ID,)),
+    "dependency-closure": ("logical-artifact", ("dependency-closure",), ("https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",)),
+    "migration-aliases": ("logical-artifact", ("migration-aliases",), ("https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",)),
+    "semantic-content-index": ("excluded-generated", (), ("https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",)),
+    "canonical-landscape": ("logical-artifact", ("canonical-landscape",), ("https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",)),
+    "composition-view-index": ("logical-artifact", ("composition-view-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",)),
+    "composition-view": ("logical-artifact", ("composition-view",), ("https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",)),
+    "card-index": ("logical-artifact", ("card-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",)),
+    "card-deck": ("logical-artifact", ("card-deck",), ("https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",)),
+    "resource-index": ("logical-artifact", ("resource-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",)),
+    "binary-asset": ("binary-resource", (), ()),
+    "embedded-goal-dependency": ("logical-artifact", ("embedded-goal-dependency",), ("https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",)),
+    "mapping": ("logical-artifact", ("source-to-canonical-mappings",), ("https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json",)),
+    "source-index": ("logical-artifact", ("official-source-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",)),
+    "source-goal-reference-index": ("logical-artifact", ("source-goal-reference-index",), ("https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",)),
+    "quality-evidence": ("logical-artifact", ("release-quality-evidence",), ("https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",)),
+    "schema-catalog": ("excluded-generated", (), (SCHEMA_CATALOG_SCHEMA_ID,)),
+    "schema": ("excluded-generated", (), ()),
+    "semantic-contract": ("excluded-generated", (), tuple(item[1] for item in SEMANTIC_CONTRACT_BINDINGS)),
+    "release-profile": ("excluded-generated", (), ()),
+    "license": ("excluded-generated", (), ()),
+    "package-documentation": ("excluded-generated", (), ()),
+    "validation-report": ("excluded-generated", (), ()),
+    "provenance-report": ("excluded-generated", (), ()),
 }
-NON_JSON_VALIDATION_SCHEMA_ROLES = {"binary-asset", "license", "package-documentation"}
 
 SAFE_PATH_RE = re.compile(r"^[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$")
 WINDOWS_RESERVED_NAMES = {
@@ -191,6 +261,7 @@ def validate_trusted_contract(
             "description",
             "manifestSchema",
             "trustedContractSchemas",
+            "semanticContractBindings",
             "compatibility",
             "inventoryPolicy",
             "archiveLimits",
@@ -213,15 +284,13 @@ def validate_trusted_contract(
         )
 
     expected_trusted_schemas: list[dict[str, str]] = []
-    for binding_name, (schema_id, _filename) in TRUSTED_SCHEMA_BINDINGS.items():
-        trusted_path = trusted_schema_paths.get(binding_name)
-        if trusted_path is None:
-            raise ContractDefinitionError(f"Missing trusted schema path for {binding_name}")
+    for schema_id, filename in NORMATIVE_SCHEMA_FILES:
+        trusted_path = schema_path.parent / filename
         trusted_schema = expect_object(load_json(trusted_path), str(trusted_path))
         Draft202012Validator.check_schema(trusted_schema)
         if trusted_schema.get("$id") != schema_id:
             raise ContractDefinitionError(
-                f"Trusted schema {binding_name} has unexpected $id {trusted_schema.get('$id')!r}"
+                f"Trusted schema {filename} has unexpected $id {trusted_schema.get('$id')!r}"
             )
         expected_trusted_schemas.append(
             {"id": schema_id, "sha256": file_sha256(trusted_path)}
@@ -229,7 +298,19 @@ def validate_trusted_contract(
     trusted_schemas = profile.get("trustedContractSchemas")
     if trusted_schemas != expected_trusted_schemas:
         raise ContractDefinitionError(
-            "Profile trustedContractSchemas must be the closed trusted manifest/runtime/schema-catalog set"
+            "Profile trustedContractSchemas must be the complete ordered normative schema set"
+        )
+
+    expected_semantic_contracts = [
+        {
+            "bindingName": binding_name,
+            "validationSchemaId": validation_schema_id,
+        }
+        for binding_name, validation_schema_id in SEMANTIC_CONTRACT_BINDINGS
+    ]
+    if profile.get("semanticContractBindings") != expected_semantic_contracts:
+        raise ContractDefinitionError(
+            "Profile semanticContractBindings must be the closed ordered DPK-005a contract set"
         )
 
     compatibility = expect_object(profile.get("compatibility"), "profile.compatibility")
@@ -301,8 +382,10 @@ def validate_trusted_contract(
     redistribution_policy = expect_object(
         profile.get("redistributionPolicy"), "profile.redistributionPolicy"
     )
-    if redistribution_policy != {"allFilesMustBeAllowed": True}:
-        raise ContractDefinitionError("full-standalone-v1 must clear every distributed file")
+    if redistribution_policy != {"readyRequiresAllFilesAllowed": True}:
+        raise ContractDefinitionError(
+            "full-standalone-v1 must defer redistribution clearance to readiness"
+        )
 
     license_policy = expect_object(profile.get("licensePolicy"), "profile.licensePolicy")
     if license_policy != {
@@ -317,9 +400,24 @@ def validate_trusted_contract(
     roles: dict[str, dict[str, Any]] = {}
     for index, raw_rule in enumerate(raw_roles):
         rule = expect_object(raw_rule, f"profile.roles[{index}]")
-        allowed_keys = {"role", "minimum", "maximum", "runtimeRequired", "mediaTypes"}
+        allowed_keys = {
+            "role",
+            "minimum",
+            "maximum",
+            "runtimeRequired",
+            "mediaTypes",
+            "semanticBinding",
+            "validationSchemaIds",
+        }
         unknown_keys = set(rule) - allowed_keys
-        missing_keys = {"role", "minimum", "runtimeRequired", "mediaTypes"} - set(rule)
+        missing_keys = {
+            "role",
+            "minimum",
+            "runtimeRequired",
+            "mediaTypes",
+            "semanticBinding",
+            "validationSchemaIds",
+        } - set(rule)
         if unknown_keys or missing_keys:
             raise ContractDefinitionError(
                 f"profile.roles[{index}] malformed; missing={sorted(missing_keys)}, "
@@ -348,7 +446,43 @@ def validate_trusted_contract(
             isinstance(media_type, str) and media_type for media_type in media_types
         ):
             raise ContractDefinitionError(f"Invalid mediaTypes for profile role {role}")
+        semantic_binding = rule.get("semanticBinding")
+        validation_schema_ids = rule.get("validationSchemaIds")
+        if not isinstance(semantic_binding, dict) or not isinstance(
+            validation_schema_ids, list
+        ):
+            raise ContractDefinitionError(
+                f"Role {role} needs semanticBinding and validationSchemaIds"
+            )
+        if len(validation_schema_ids) != len(set(validation_schema_ids)) or any(
+            not isinstance(schema_id, str) or schema_id not in NORMATIVE_SCHEMA_IDS
+            for schema_id in validation_schema_ids
+        ):
+            raise ContractDefinitionError(
+                f"Role {role} has an unknown or duplicate validation schema"
+            )
         roles[role] = rule
+
+    if set(roles) != set(ROLE_SEMANTIC_CONTRACTS):
+        raise ContractDefinitionError(
+            "Profile role set differs from the closed DPK-005a artifact set"
+        )
+    for role, (kind, normalization_roles, validation_schema_ids) in (
+        ROLE_SEMANTIC_CONTRACTS.items()
+    ):
+        expected_binding = {"kind": kind}
+        if kind == "logical-artifact":
+            expected_binding["allowedNormalizationRoles"] = list(
+                normalization_roles
+            )
+        if roles[role]["semanticBinding"] != expected_binding:
+            raise ContractDefinitionError(
+                f"Role {role} semantic-binding policy differs from the trusted contract"
+            )
+        if roles[role]["validationSchemaIds"] != list(validation_schema_ids):
+            raise ContractDefinitionError(
+                f"Role {role} validation-schema policy differs from the trusted contract"
+            )
 
     release_profile_rule = roles.get("release-profile")
     if release_profile_rule is None or (
@@ -357,6 +491,16 @@ def validate_trusted_contract(
         or release_profile_rule.get("runtimeRequired") != "required"
     ):
         raise ContractDefinitionError("The release-profile role must be required exactly once")
+
+    semantic_contract_rule = roles.get("semantic-contract")
+    if semantic_contract_rule is None or (
+        semantic_contract_rule.get("minimum") != len(SEMANTIC_CONTRACT_BINDINGS)
+        or semantic_contract_rule.get("maximum") != len(SEMANTIC_CONTRACT_BINDINGS)
+        or semantic_contract_rule.get("runtimeRequired") != "required"
+    ):
+        raise ContractDefinitionError(
+            "The semantic-contract role must bind every named contract exactly once"
+        )
 
     return roles
 
@@ -509,6 +653,61 @@ def validate_contract_binding(
                 "CONTRACT_BINDING_FILE_ROLE_MISMATCH",
                 f"{location}/path",
                 f"Bound file must use role {expected_role!r}",
+            )
+        )
+    return diagnostics
+
+
+def validate_semantic_contract_binding(
+    binding_name: str,
+    expected_validation_schema_id: str,
+    manifest: dict[str, Any],
+    files_by_path: dict[str, list[dict[str, Any]]],
+) -> list[Diagnostic]:
+    diagnostics: list[Diagnostic] = []
+    bindings = manifest.get("contractBindings")
+    if not isinstance(bindings, dict):
+        return diagnostics
+    binding = bindings.get(binding_name)
+    if not isinstance(binding, dict):
+        return diagnostics
+    location = f"/contractBindings/{binding_name}"
+    binding_path = binding.get("path")
+    matching_files = (
+        files_by_path.get(binding_path, []) if isinstance(binding_path, str) else []
+    )
+    if len(matching_files) != 1:
+        diagnostics.append(
+            Diagnostic(
+                "SEMANTIC_CONTRACT_BINDING_FILE_MISSING",
+                f"{location}/path",
+                "Semantic contract binding must resolve to exactly one file record",
+            )
+        )
+        return diagnostics
+    record = matching_files[0]
+    if record.get("sha256") != binding.get("sha256"):
+        diagnostics.append(
+            Diagnostic(
+                "SEMANTIC_CONTRACT_BINDING_FILE_HASH_MISMATCH",
+                f"{location}/sha256",
+                "Semantic contract binding hash differs from its file record",
+            )
+        )
+    if record.get("role") != "semantic-contract":
+        diagnostics.append(
+            Diagnostic(
+                "SEMANTIC_CONTRACT_BINDING_FILE_ROLE_MISMATCH",
+                f"{location}/path",
+                "Semantic contract binding must use role 'semantic-contract'",
+            )
+        )
+    if record.get("validationSchemaId") != expected_validation_schema_id:
+        diagnostics.append(
+            Diagnostic(
+                "SEMANTIC_CONTRACT_BINDING_SCHEMA_MISMATCH",
+                f"{location}/path",
+                f"Semantic contract must use {expected_validation_schema_id!r}",
             )
         )
     return diagnostics
@@ -744,46 +943,111 @@ def validate_manifest(
                     f"Role {role!r} allows {rule['mediaTypes']}",
                 )
             )
+        binding = record.get("semanticBinding")
+        expected_binding = rule["semanticBinding"]
+        expected_kind = expected_binding["kind"]
+        actual_kind = binding.get("kind") if isinstance(binding, dict) else None
+        if actual_kind != expected_kind:
+            diagnostics.append(
+                Diagnostic(
+                    "SEMANTIC_BINDING_KIND_MISMATCH",
+                    f"/files/{index}/semanticBinding",
+                    f"Role {role!r} requires semantic binding kind {expected_kind!r}",
+                )
+            )
+        elif expected_kind == "logical-artifact":
+            allowed_normalization_roles = expected_binding[
+                "allowedNormalizationRoles"
+            ]
+            if binding.get("normalizationRole") not in allowed_normalization_roles:
+                diagnostics.append(
+                    Diagnostic(
+                        "SEMANTIC_NORMALIZATION_ROLE_MISMATCH",
+                        f"/files/{index}/semanticBinding/normalizationRole",
+                        f"Role {role!r} allows {allowed_normalization_roles}",
+                    )
+                )
         validation_schema_id = record.get("validationSchemaId")
-        expected_validation_schema_id = BOOTSTRAP_VALIDATION_SCHEMAS.get(role)
-        if expected_validation_schema_id is not None:
+        allowed_validation_schema_ids = rule["validationSchemaIds"]
+        if allowed_validation_schema_ids:
             if validation_schema_id is None:
                 diagnostics.append(
                     Diagnostic(
                         "VALIDATION_SCHEMA_REQUIRED",
                         f"/files/{index}/validationSchemaId",
-                        f"Role {role!r} requires its trusted bootstrap validation schema",
+                        f"Normative JSON role {role!r} requires a role-specific validation schema",
                     )
                 )
-            elif validation_schema_id != expected_validation_schema_id:
+            elif validation_schema_id not in allowed_validation_schema_ids:
                 diagnostics.append(
                     Diagnostic(
                         "VALIDATION_SCHEMA_MISMATCH",
                         f"/files/{index}/validationSchemaId",
-                        f"Role {role!r} must use {expected_validation_schema_id!r}",
+                        f"Role {role!r} allows {allowed_validation_schema_ids!r}",
                     )
                 )
-        media_type = record.get("mediaType")
-        if validation_schema_id is not None and (
-            role in NON_JSON_VALIDATION_SCHEMA_ROLES
-            or (isinstance(media_type, str) and media_type.startswith("text/"))
-        ):
+        elif validation_schema_id is not None:
             diagnostics.append(
                 Diagnostic(
                     "VALIDATION_SCHEMA_FORBIDDEN",
                     f"/files/{index}/validationSchemaId",
-                    "Binary and text artifacts cannot declare a JSON validation schema",
+                    f"Role {role!r} is non-normative or validated by its bootstrap contract",
                 )
             )
-        if (
-            profile["redistributionPolicy"]["allFilesMustBeAllowed"]
-            and record.get("redistributionStatus") != "allowed"
+        redistribution_status = record.get("redistributionStatus")
+        license_expression = record.get("licenseExpression")
+        if redistribution_status == "allowed" and not isinstance(
+            license_expression, str
         ):
             diagnostics.append(
                 Diagnostic(
-                    "REDISTRIBUTION_NOT_ALLOWED",
-                    f"/files/{index}/redistributionStatus",
-                    "Every distributed file must have redistributionStatus 'allowed'",
+                    "ALLOWED_LICENSE_EXPRESSION_REQUIRED",
+                    f"/files/{index}/licenseExpression",
+                    "Redistribution status 'allowed' requires a real non-empty license expression",
+                )
+            )
+        elif redistribution_status in {"review-required", "prohibited"} and (
+            license_expression is not None
+        ):
+            diagnostics.append(
+                Diagnostic(
+                    "UNCLEARED_LICENSE_EXPRESSION_FORBIDDEN",
+                    f"/files/{index}/licenseExpression",
+                    "Uncleared redistribution must use null, never a pseudo-license expression",
+                )
+            )
+
+    logical_binding_positions: dict[tuple[str, str], list[int]] = defaultdict(list)
+    binary_binding_positions: dict[str, list[int]] = defaultdict(list)
+    for index, record in enumerate(files):
+        role = record.get("role")
+        binding = record.get("semanticBinding")
+        if not isinstance(role, str) or not isinstance(binding, dict):
+            continue
+        if binding.get("kind") == "logical-artifact" and isinstance(
+            binding.get("logicalId"), str
+        ):
+            logical_binding_positions[(role, binding["logicalId"])].append(index)
+        elif binding.get("kind") == "binary-resource" and isinstance(
+            binding.get("resourceId"), str
+        ):
+            binary_binding_positions[binding["resourceId"]].append(index)
+    for identity, positions in sorted(logical_binding_positions.items()):
+        if len(positions) > 1:
+            diagnostics.append(
+                Diagnostic(
+                    "SEMANTIC_LOGICAL_ID_DUPLICATE",
+                    "/files",
+                    f"Logical artifact identity {identity!r} occurs at {positions}",
+                )
+            )
+    for resource_id, positions in sorted(binary_binding_positions.items()):
+        if len(positions) > 1:
+            diagnostics.append(
+                Diagnostic(
+                    "SEMANTIC_RESOURCE_ID_DUPLICATE",
+                    "/files",
+                    f"Binary resource identity {resource_id!r} occurs at {positions}",
                 )
             )
 
@@ -969,6 +1233,15 @@ def validate_manifest(
             files_by_path,
         )
     )
+    for binding_name, validation_schema_id in SEMANTIC_CONTRACT_BINDINGS:
+        diagnostics.extend(
+            validate_semantic_contract_binding(
+                binding_name,
+                validation_schema_id,
+                manifest,
+                files_by_path,
+            )
+        )
     return sorted(diagnostics)
 
 
@@ -1082,6 +1355,14 @@ def apply_mutation(manifest: dict[str, Any], mutation: Any) -> None:
         for index in range(count):
             record = copy.deepcopy(template)
             record["path"] = f"{path_prefix}{index:04d}{path_suffix}"
+            semantic_binding = record.get("semanticBinding")
+            if isinstance(semantic_binding, dict):
+                for identity_field in ("logicalId", "resourceId"):
+                    identity = semantic_binding.get(identity_field)
+                    if isinstance(identity, str):
+                        semantic_binding[identity_field] = identity.replace(
+                            "{index}", f"{index:04d}"
+                        )
             manifest["files"].append(record)
         return
     if operation == "append-numbered-license-documents":
