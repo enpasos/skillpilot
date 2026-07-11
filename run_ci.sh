@@ -125,6 +125,9 @@ npm run check:goal-visualization-assets
 echo "--> Testing Deterministic ZIP32 Writer"
 npm run test:deterministic-zip32
 
+echo "--> Testing Full Standalone Curriculum Package Builder"
+npm run test:full-standalone-package-builder
+
 
 echo "--> Running Lint & Build"
 npm run lint
@@ -139,6 +142,7 @@ python3 -B scripts/validate_curriculum_package_contracts.py
 python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
 python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
+python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
 python3 -B scripts/validate_curriculum_dual_release_contracts.py
 bash scripts/run_curriculum_release_model_conformance.sh
 python3 scripts/validate_schemas.py

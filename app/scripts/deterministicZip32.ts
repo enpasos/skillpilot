@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto'
 import {
   closeSync,
+  constants,
   fstatSync,
   lstatSync,
   openSync,
@@ -35,10 +36,12 @@ const ZIP32_MAX_ENTRY_COUNT = 0xffff
 const ZIP32_MAX_VALUE = 0xffffffff
 const ZIP32_MAX_PATH_BYTES = 0xffff
 const SHA256_PATTERN = /^[a-f0-9]{64}$/u
+const WINDOWS_RESERVED_SEGMENT = /^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\..*)?$/iu
 
 const compareCodeUnits = (left: string, right: string) => (left < right ? -1 : left > right ? 1 : 0)
 
 const assertSafeArchivePath = (packagePath: string) => {
+  const segments = packagePath.split('/')
   if (
     packagePath.startsWith('/')
     || packagePath.includes('\\')
@@ -46,7 +49,15 @@ const assertSafeArchivePath = (packagePath: string) => {
       const codePoint = character.codePointAt(0) ?? 0
       return codePoint < 0x20 || codePoint === 0x7f
     })
-    || packagePath.split('/').some((segment) => segment === '' || segment === '.' || segment === '..')
+    || segments.some((segment) => (
+      segment === ''
+      || segment === '.'
+      || segment === '..'
+      || segment.includes(':')
+      || segment.endsWith('.')
+      || segment.endsWith(' ')
+      || WINDOWS_RESERVED_SEGMENT.test(segment)
+    ))
   ) {
     throw new Error(`Unsafe ZIP entry path: ${packagePath}`)
   }
@@ -103,16 +114,18 @@ const writePackageEntryContent = (descriptor: number, entry: DeterministicZip32E
   if (!entry.sourcePath) {
     throw new Error(`Package entry has neither content nor source path: ${entry.packagePath}`)
   }
-  if (!lstatSync(entry.sourcePath).isFile()) {
+  const before = lstatSync(entry.sourcePath)
+  if (!before.isFile() || before.isSymbolicLink()) {
     throw new Error(`ZIP source must be a regular non-symlink file: ${entry.packagePath}`)
   }
-  const sourceDescriptor = openSync(entry.sourcePath, 'r')
+  const sourceDescriptor = openSync(entry.sourcePath, constants.O_RDONLY | constants.O_NOFOLLOW)
   const chunk = Buffer.allocUnsafe(8 * 1024 * 1024)
   const hash = createHash('sha256')
   let copied = 0
   let checksum = 0
   try {
-    if (!fstatSync(sourceDescriptor).isFile()) {
+    const opened = fstatSync(sourceDescriptor)
+    if (!opened.isFile() || opened.dev !== before.dev || opened.ino !== before.ino) {
       throw new Error(`ZIP source must remain a regular file: ${entry.packagePath}`)
     }
     while (true) {
@@ -126,6 +139,15 @@ const writePackageEntryContent = (descriptor: number, entry: DeterministicZip32E
     }
   } finally {
     closeSync(sourceDescriptor)
+  }
+  const after = lstatSync(entry.sourcePath)
+  if (
+    !after.isFile()
+    || after.isSymbolicLink()
+    || after.dev !== before.dev
+    || after.ino !== before.ino
+  ) {
+    throw new Error(`ZIP source identity changed while reading entry: ${entry.packagePath}`)
   }
   if (copied !== entry.bytes) {
     throw new Error(
@@ -201,6 +223,21 @@ export const createDeterministicZip32 = (
     index > 0 && entry.packagePath === sortedEntries[index - 1].packagePath
   ))
   if (duplicatePath) throw new Error(`Duplicate ZIP entry path: ${duplicatePath.packagePath}`)
+
+  const portablePaths = new Map<string, string>()
+  sortedEntries.forEach((entry) => {
+    const key = entry.packagePath.normalize('NFC').toLowerCase()
+    const existing = portablePaths.get(key)
+    if (existing) throw new Error(`Portable ZIP path collision: ${existing} and ${entry.packagePath}`)
+    portablePaths.set(key, entry.packagePath)
+  })
+  portablePaths.forEach((packagePath, key) => {
+    const segments = key.split('/')
+    for (let length = 1; length < segments.length; length += 1) {
+      const ancestor = portablePaths.get(segments.slice(0, length).join('/'))
+      if (ancestor) throw new Error(`ZIP file path is an ancestor of another entry: ${ancestor} and ${packagePath}`)
+    }
+  })
 
   const namedEntries = sortedEntries.map((entry) => ({
     entry,

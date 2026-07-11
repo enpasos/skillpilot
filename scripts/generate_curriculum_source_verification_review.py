@@ -1253,13 +1253,23 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="rerun pdftotext in memory and require identical hashes and match records",
     )
+    parser.add_argument(
+        "--ledger",
+        default=LEDGER_REL,
+        help="repository-relative source-verification ledger path",
+    )
+    parser.add_argument(
+        "--report",
+        default=REPORT_REL,
+        help="repository-relative generated Markdown report path",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    ledger_path = output_path(LEDGER_REL)
-    report_path = output_path(REPORT_REL)
+    ledger_path = output_path(args.ledger)
+    report_path = output_path(args.report)
     existing: dict[str, Any] | None = None
     if ledger_path.exists():
         existing = require_object(read_json(ledger_path), "source verification ledger")
@@ -1296,7 +1306,7 @@ def main() -> int:
         return 0
 
     if existing is None:
-        raise VerificationError(f"Missing ledger {LEDGER_REL}; run --update")
+        raise VerificationError(f"Missing ledger {args.ledger}; run --update")
     recorded_version = require_nonblank(
         existing.get("extractorEvidence", {}).get("recordedVersion"),
         "extractorEvidence.recordedVersion",

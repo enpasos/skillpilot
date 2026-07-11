@@ -1,0 +1,100 @@
+{
+  "fixtureFormatVersion": 1,
+  "cases": [
+    {
+      "id": "unsafe-path",
+      "kind": "unsafe-path",
+      "expectedCode": "ZIP_PATH_UNSAFE"
+    },
+    {
+      "id": "duplicate-path",
+      "kind": "duplicate-path",
+      "expectedCode": "ZIP_PATH_DUPLICATE"
+    },
+    {
+      "id": "portable-collision",
+      "kind": "portable-collision",
+      "expectedCode": "ZIP_PORTABLE_PATH_COLLISION"
+    },
+    {
+      "id": "prefix-collision",
+      "kind": "prefix-collision",
+      "expectedCode": "ZIP_PREFIX_COLLISION"
+    },
+    {
+      "id": "symlink",
+      "kind": "symlink",
+      "expectedCode": "ZIP_NON_REGULAR_ENTRY"
+    },
+    {
+      "id": "special-file",
+      "kind": "special-file",
+      "expectedCode": "ZIP_NON_REGULAR_ENTRY"
+    },
+    {
+      "id": "nested-path",
+      "kind": "nested-path",
+      "expectedCode": "NESTED_ARCHIVE_PATH"
+    },
+    {
+      "id": "nested-magic",
+      "kind": "nested-magic",
+      "expectedCode": "NESTED_ARCHIVE_MAGIC"
+    },
+    {
+      "id": "compression-ratio",
+      "kind": "compression-ratio",
+      "expectedCode": "ZIP_ENTRY_RATIO_LIMIT"
+    },
+    {
+      "id": "multiple-roots",
+      "kind": "multiple-roots",
+      "expectedCode": "ZIP_ARCHIVE_ROOT_COUNT"
+    },
+    {
+      "id": "duplicate-manifest-key",
+      "kind": "duplicate-manifest-key",
+      "expectedCode": "JSON_DUPLICATE_KEY"
+    },
+    {
+      "id": "checksum-mismatch",
+      "kind": "checksum-mismatch",
+      "expectedCode": "SHA256SUMS_MISMATCH"
+    },
+    {
+      "id": "zip64-extra",
+      "kind": "zip64-extra",
+      "expectedCode": "ZIP64_FORBIDDEN"
+    },
+    {
+      "id": "entry-count-limit",
+      "kind": "entry-count-limit",
+      "expectedCode": "ZIP_PREFLIGHT_FAILED"
+    },
+    {
+      "id": "outer-size-limit",
+      "kind": "outer-size-limit",
+      "expectedCode": "ZIP_PREFLIGHT_FAILED"
+    },
+    {
+      "id": "local-central-mismatch",
+      "kind": "local-central-mismatch",
+      "expectedCode": "ZIP_LOCAL_CENTRAL_MISMATCH"
+    },
+    {
+      "id": "symlink-input",
+      "kind": "symlink-input",
+      "expectedCode": "ZIP_PREFLIGHT_FAILED"
+    },
+    {
+      "id": "missing-manifest-prerequisites",
+      "kind": "missing-manifest-prerequisites",
+      "expectedCode": "MANIFEST_MISSING"
+    },
+    {
+      "id": "json-depth-limit",
+      "kind": "json-depth-limit",
+      "expectedCode": "MANIFEST_READ_INVALID"
+    }
+  ]
+}

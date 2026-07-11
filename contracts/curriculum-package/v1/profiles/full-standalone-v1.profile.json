@@ -4,12 +4,12 @@
   "description": "Self-contained JSON curriculum package profile. Every hard runtime dependency must resolve inside the package; external source URLs remain non-runtime metadata.",
   "manifestSchema": {
     "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-    "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
+    "sha256": "b9589f40cc19a995e66cf7ddbdaa80a8e12ea223c78bd6cd21028fba2bcd3d5c"
   },
   "trustedContractSchemas": [
     {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
-      "sha256": "dd228b7df7be3a213ff51f7e291d600cf08b5e06a102b6fff69d79dfe5a7d20d"
+      "sha256": "b9589f40cc19a995e66cf7ddbdaa80a8e12ea223c78bd6cd21028fba2bcd3d5c"
     },
     {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
@@ -135,6 +135,9 @@
     "outerZipBytes": 3500000000,
     "entryCount": 60000,
     "genericEntryBytes": 1000000000,
+    "jsonEntryBytes": 67108864,
+    "jsonMaxDepth": 128,
+    "jsonMaxNodes": 5000000,
     "goalVisualizationBytes": 67108864,
     "imageLaneBytes": 3000000000,
     "totalUncompressedBytes": 8000000000,

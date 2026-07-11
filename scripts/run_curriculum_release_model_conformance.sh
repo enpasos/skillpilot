@@ -6,6 +6,13 @@ PROFILE="contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-releas
 OUTPUT_BASE="tmp/curriculum-release-model"
 OUTPUT_A="${OUTPUT_BASE}/mathematik-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-b"
+PACKAGE_OUTPUT="${OUTPUT_BASE}/full-standalone-package"
+PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.2-json"
+PACKAGE_ZIP="${PACKAGE_OUTPUT}/${PACKAGE_ARCHIVE_ROOT}.zip"
+PACKAGE_BUILD_REPORT="${PACKAGE_OUTPUT}/build-summary.json"
+PACKAGE_VALIDATION_REPORT="${PACKAGE_OUTPUT}/full-package-validation-report.json"
+PACKAGE_READINESS_REPORT="${PACKAGE_OUTPUT}/readiness-report.json"
+EXPECTED_CONTENT_DIGEST="sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60"
 CORE_REPOSITORY="https://github.com/FWU-DE/lehrplan-ontologie.git"
 CORE_COMMIT="8aa5bce4a5366807d46f18650e31db98f9bfe35d"
 CORE_CHECKOUT="tmp/lehrplan-ontologie"
@@ -76,4 +83,28 @@ python3 -B scripts/compile_curriculum_release_model.py \
 
 diff -qr "${OUTPUT_A}" "${OUTPUT_B}"
 
-echo "Curriculum release-model conformance passed: independent validation and byte-identical double build."
+rm -rf -- "${PACKAGE_OUTPUT}"
+mkdir -p "${PACKAGE_OUTPUT}"
+npm --prefix app run --silent export:full-standalone-package -- \
+  --release-root "${OUTPUT_A}" \
+  --output-dir "${PACKAGE_OUTPUT}" \
+  --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
+  --zip \
+  --expect-entry-count 913 \
+  --expect-manifest-file-count 911 \
+  --expect-binary-asset-count 756 \
+  --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
+  > "${PACKAGE_BUILD_REPORT}"
+
+python3 -B scripts/validate_full_standalone_curriculum_package.py \
+  --zip "${PACKAGE_ZIP}" \
+  --report "${PACKAGE_VALIDATION_REPORT}"
+
+python3 -B scripts/evaluate_curriculum_package_readiness.py \
+  --zip "${PACKAGE_ZIP}" \
+  --report "${PACKAGE_READINESS_REPORT}" \
+  --expect-status not-ready-incomplete \
+  --compact \
+  >/dev/null
+
+echo "Curriculum release-model conformance passed: independent model validation, byte-identical model build, reproducible real ZIP, independent full-package validation, and honest incomplete readiness."
