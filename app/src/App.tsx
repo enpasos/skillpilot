@@ -189,21 +189,25 @@ const App: React.FC = () => {
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
   const selectedLandscapeId = core.selectedLandscapeId
   const canRenderAnonymousExplorer = isExplorerRoute && !!selectedLandscapeId
-  const needsCanonicalGymnasiumSetupClosure = Boolean(
-    currentLandscapeEntry
-    && currentLandscapeEntry.meta.frameworkId?.startsWith('canonical-gymnasium')
-    && core.selectedLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID,
+  const setupClosureRootLandscapeId = core.runtimeCatalogState.mode === 'package'
+    ? core.runtimeRootLandscapeId
+    : (
+        currentLandscapeEntry?.meta.frameworkId?.startsWith('canonical-gymnasium')
+          ? CANONICAL_GYMNASIUM_ROOT_ID
+          : undefined
+      )
+  const needsSetupLandscapeClosure = Boolean(
+    setupClosureRootLandscapeId
+    && core.selectedLandscapeId !== setupClosureRootLandscapeId,
   )
   const {
     landscapeEntries: canonicalGymnasiumSetupLandscapeEntries,
   } = useLandscapes(
-    CANONICAL_GYMNASIUM_ROOT_ID,
+    setupClosureRootLandscapeId,
     language,
-    { enabled: needsCanonicalGymnasiumSetupClosure },
+    { enabled: needsSetupLandscapeClosure },
   )
-  const setupRootLandscapeId = needsCanonicalGymnasiumSetupClosure
-    ? CANONICAL_GYMNASIUM_ROOT_ID
-    : core.selectedLandscapeId
+  const setupRootLandscapeId = setupClosureRootLandscapeId ?? core.selectedLandscapeId
 
   useEffect(() => {
     const storedId = localStorage.getItem('skillpilot_id')
@@ -290,14 +294,14 @@ const App: React.FC = () => {
         compatibilityOnly: entry.meta.compatibilityOnly,
       })
 
-      const setupLandscapeEntries = needsCanonicalGymnasiumSetupClosure && canonicalGymnasiumSetupLandscapeEntries.length > 0
+      const setupLandscapeEntries = needsSetupLandscapeClosure && canonicalGymnasiumSetupLandscapeEntries.length > 0
         ? canonicalGymnasiumSetupLandscapeEntries
         : landscapeEntries
       const setupGoalIndex = new Map(
         setupLandscapeEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)),
       )
-      const currentEntry = needsCanonicalGymnasiumSetupClosure
-        ? setupLandscapeEntries.find((entry) => entry.meta.landscapeId === CANONICAL_GYMNASIUM_ROOT_ID) ?? null
+      const currentEntry = needsSetupLandscapeClosure
+        ? setupLandscapeEntries.find((entry) => entry.meta.landscapeId === setupClosureRootLandscapeId) ?? null
         : currentLandscapeEntry
       if (!currentEntry) {
         return setupLandscapeEntries.map(toSummary)
@@ -331,7 +335,8 @@ const App: React.FC = () => {
       canonicalGymnasiumSetupLandscapeEntries,
       currentLandscapeEntry,
       landscapeEntries,
-      needsCanonicalGymnasiumSetupClosure,
+      needsSetupLandscapeClosure,
+      setupClosureRootLandscapeId,
     ],
   )
 

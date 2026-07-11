@@ -59,6 +59,7 @@ export function useFlashcardSetStatus(
   skillpilotId: string,
   reloadSignal = 0,
   language: 'de' | 'en' = 'de',
+  resolveDeckSource?: (goal: UiGoal, language: 'de' | 'en') => string | undefined,
 ) {
   const [status, setStatus] = useState<FlashcardSetStatus | null>(null)
 
@@ -71,7 +72,8 @@ export function useFlashcardSetStatus(
         return
       }
 
-      const source = resolveSource(goal, language)
+      const source = resolveDeckSource?.(goal, language)
+        ?? (resolveDeckSource ? undefined : resolveSource(goal, language))
       if (!source) {
         setStatus(null)
         return
@@ -174,7 +176,7 @@ export function useFlashcardSetStatus(
     return () => {
       cancelled = true
     }
-  }, [goal, language, reloadSignal, skillpilotId])
+  }, [goal, language, reloadSignal, resolveDeckSource, skillpilotId])
 
   return status
 }

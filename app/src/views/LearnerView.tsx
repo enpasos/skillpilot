@@ -49,6 +49,8 @@ import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { requestChatStart } from '../utils/chatStart'
+import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
+import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
 import {
   buildDirectChildrenMap,
   buildVisibleChildrenMap,
@@ -119,53 +121,6 @@ const isGoalVisualizationLink = (link: ResourceLink): boolean => {
   const type = normalizeGoalVisualizationLinkType(link?.type)
   const resourceType = normalizeGoalVisualizationLinkType(link?.resourceType)
   return type === 'goal-visualization' || resourceType === 'goal-visualization'
-}
-
-const getAiAssetOrigin = (): string => {
-  const apiBase = (import.meta.env.VITE_API_BASE ?? '').trim()
-  if (apiBase) {
-    try {
-      return new URL(apiBase).origin
-    } catch {
-      // Fall back to the current app origin if local configuration is malformed.
-    }
-  }
-  return typeof window === 'undefined' ? '' : window.location.origin
-}
-
-const toAbsoluteAiImageUrl = (url: string): string => {
-  const trimmed = (url ?? '').trim()
-  if (!trimmed) return trimmed
-  if (/^https?:\/\//i.test(trimmed)) return trimmed
-  const origin = getAiAssetOrigin()
-  if (!origin) return trimmed
-
-  const rootRelative = trimmed.startsWith('/') ? trimmed : `/${trimmed}`
-  if (rootRelative.startsWith('/assets/')) {
-    return `${origin}/ai-assets${rootRelative.substring('/assets'.length)}`
-  }
-  if (rootRelative.startsWith('/ai-assets/')) {
-    return `${origin}${rootRelative}`
-  }
-  return `${origin}/ai-assets${rootRelative.startsWith('/') ? rootRelative : `/${rootRelative}`}`
-}
-
-const pickGoalVisualizationUrl = (goal: UiGoal): string | null => {
-  const visualizationLinks = Array.isArray(goal.resourceLinks)
-    ? goal.resourceLinks.filter(isGoalVisualizationLink)
-    : []
-  if (visualizationLinks.length === 0) {
-    return null
-  }
-
-  const primaryVisualization = visualizationLinks.find((link) => (
-    normalizeGoalVisualizationLinkType(link.role) === 'primary'
-  ))
-  const rawUrl = (primaryVisualization ?? visualizationLinks[0]).url
-  if (!rawUrl || !rawUrl.trim()) {
-    return null
-  }
-  return toAbsoluteAiImageUrl(rawUrl)
 }
 
 const goalIdsKey = (goalIds: Iterable<string>) => (
@@ -367,6 +322,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const reportedLoadErrorsRef = useRef<Set<string>>(new Set())
 
   const { language, setLanguage } = useLanguage();
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
   const t = useTranslation();
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
@@ -437,18 +393,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [landscapeId, learnerData?.selectedCurriculum, onLandscapeChange, rootLandscapeId])
 
   const getSrsSource = useCallback((goal: UiGoal) => {
-    const extendedData = goal.extendedData as {
-      vocabularySource?: string
-      vocabularySourceEn?: string
-    } | undefined
-    const sourceDe = typeof extendedData?.vocabularySource === 'string'
-      ? extendedData.vocabularySource
-      : undefined
-    const sourceEn = typeof extendedData?.vocabularySourceEn === 'string'
-      ? extendedData.vocabularySourceEn
-      : undefined
-    return language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
-  }, [language])
+    return resolveGoalDeckHref(runtimeCatalogState, goal, localizedLanguage, () => {
+      const extendedData = goal.extendedData as {
+        vocabularySource?: string
+        vocabularySourceEn?: string
+      } | undefined
+      const sourceDe = typeof extendedData?.vocabularySource === 'string' ? extendedData.vocabularySource : undefined
+      const sourceEn = typeof extendedData?.vocabularySourceEn === 'string' ? extendedData.vocabularySourceEn : undefined
+      return localizedLanguage === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
+    })
+  }, [localizedLanguage, runtimeCatalogState])
 
   const srsGoals = useMemo(() => {
     return Array.from(goalIndexAll.values()).filter((goal) => {
@@ -458,12 +412,13 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
   }, [goalIndexAll, landscapeId, getSrsSource])
 
-  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, language)
+  const srsMasteryByGoal = useSrsMastery(srsGoals, skillpilotId, srsMasteryTick, localizedLanguage, getSrsSource)
   const currentFlashcardSetStatus = useFlashcardSetStatus(
     currentGoal?.tags?.some((tag) => tag.startsWith('srs-deck')) ? currentGoal : null,
     skillpilotId,
     srsReloadCounter,
-    language,
+    localizedLanguage,
+    getSrsSource,
   )
   const currentFlashcardVerificationComplete =
     Boolean(currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 && currentFlashcardSetStatus.verifiedPending === 0)
@@ -717,14 +672,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
     const title = getLearnerGoalTitle(goal)
-    const visualizationUrl = pickGoalVisualizationUrl(goal)
-    const visualizationBlock = visualizationUrl
+    const hasVisualization = Array.isArray(goal.resourceLinks) && goal.resourceLinks.some(isGoalVisualizationLink)
+    const cockpitLink = hasVisualization
       ? [
           '',
           localizedLanguage === 'en'
-            ? `Goal visualization for ${title}:`
-            : `Lernziel-Visualisierung für ${title}:`,
-          `![Goal visualization](${visualizationUrl})`,
+            ? `Cockpit view for ${title}:`
+            : `Cockpit-Ansicht für ${title}:`,
+          `https://skillpilot.com/?l=${encodeURIComponent(goal.landscapeId ?? landscapeId)}&goal=${encodeURIComponent(goal.id)}`,
         ].join('\n')
       : ''
     if (localizedLanguage === 'en') {
@@ -732,7 +687,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         `Active learning goal: ${goal.id} - ${title}`,
         `Flashcard verification batch size: ${batchSize}`,
         '',
-        visualizationBlock,
+        cockpitLink,
         'Please start hard flashcard verification for this active memorization goal.',
         `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`,
       ].join('\n')
@@ -741,11 +696,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       `Aktives Lernziel: ${goal.id} - ${title}`,
       `Batchgröße für die Kartenprüfung: ${batchSize}`,
       '',
-      visualizationBlock,
+      cockpitLink,
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
       `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`,
     ].join('\n')
-  }, [getLearnerGoalTitle, localizedLanguage])
+  }, [getLearnerGoalTitle, landscapeId, localizedLanguage])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
     const chatWindow = window.open('', '_blank')

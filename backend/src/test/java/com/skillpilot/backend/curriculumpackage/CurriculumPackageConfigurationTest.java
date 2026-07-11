@@ -150,6 +150,7 @@ class CurriculumPackageConfigurationTest {
                             .filteredOn(resource -> resource.delivery().equals("external"))
                             .singleElement()
                             .satisfies(resource -> {
+                                assertThat(resource.resourceKind()).isEqualTo("external-tool");
                                 assertThat(resource.href()).isEqualTo("https://example.org/tool/alpha");
                                 assertThat(resource.runtimeRequired()).isFalse();
                                 assertThat(resource.bytes()).isNull();

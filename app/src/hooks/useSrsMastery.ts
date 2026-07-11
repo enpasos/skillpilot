@@ -27,6 +27,7 @@ type ClientStateSnapshot = {
 }
 
 type SrsMasteryMap = Record<string, number>
+export type SrsDeckSourceResolver = (goal: UiGoal, language: 'de' | 'en') => string | undefined
 
 const SRS_TAG_PREFIX = 'srs-deck'
 const parseNextReview = (value: unknown): number => {
@@ -52,6 +53,7 @@ export function useSrsMastery(
   skillpilotId: string,
   reloadSignal = 0,
   language: 'de' | 'en' = 'de',
+  resolveDeckSource?: SrsDeckSourceResolver,
 ) {
   const [masteryByGoal, setMasteryByGoal] = useState<SrsMasteryMap>({})
   const [timerTick, setTimerTick] = useState(0)
@@ -124,13 +126,10 @@ export function useSrsMastery(
         vocabularySource?: string
         vocabularySourceEn?: string
       } | undefined
-      const sourceDe = typeof extendedData?.vocabularySource === 'string'
-        ? extendedData.vocabularySource
-        : undefined
-      const sourceEn = typeof extendedData?.vocabularySourceEn === 'string'
-        ? extendedData.vocabularySourceEn
-        : undefined
-      const source = language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
+      const sourceDe = typeof extendedData?.vocabularySource === 'string' ? extendedData.vocabularySource : undefined
+      const sourceEn = typeof extendedData?.vocabularySourceEn === 'string' ? extendedData.vocabularySourceEn : undefined
+      const source = resolveDeckSource?.(goal, language)
+        ?? (resolveDeckSource ? undefined : (language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)))
       if (typeof source !== 'string' || source.length === 0) {
         continue
       }
@@ -218,7 +217,7 @@ export function useSrsMastery(
         setTimerTick((prev) => prev + 1)
       }, delay)
     }
-  }, [goals, loadDeck, loadClientState, skillpilotId, language])
+  }, [goals, loadDeck, loadClientState, skillpilotId, language, resolveDeckSource])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
