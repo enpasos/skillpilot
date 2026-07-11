@@ -52,6 +52,33 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.decksByKey()).hasSize(12);
         assertThat(snapshot.resourcesById()).hasSize(825);
         assertThat(snapshot.resourcesByPublicUrl()).hasSize(756);
+        long cardCount = snapshot.decksByKey().values().stream().mapToLong(deck -> {
+            try {
+                return mapper.readTree(deck.json()).path("cards").size();
+            } catch (java.io.IOException error) {
+                throw new AssertionError("real package deck is not readable JSON", error);
+            }
+        }).sum();
+        assertThat(cardCount).isEqualTo(128);
+        assertThat(snapshot.resourcesById().values())
+                .filteredOn(resource -> resource.delivery().equals("embedded"))
+                .hasSize(756);
+        assertThat(snapshot.resourcesById().values().stream()
+                        .filter(resource -> resource.delivery().equals("embedded"))
+                        .map(CurriculumRuntimeSnapshot.ResourceDescriptor::artifact)
+                        .mapToLong(CurriculumRuntimeSnapshot.Artifact::bytes)
+                        .sum())
+                .isEqualTo(1_695_291_325L);
+        assertThat(snapshot.resourcesById().values().stream()
+                        .filter(resource -> resource.delivery().equals("embedded"))
+                        .filter(resource -> resource.mediaType().equals("image/jpeg"))
+                        .count())
+                .isEqualTo(748);
+        assertThat(snapshot.resourcesById().values().stream()
+                        .filter(resource -> resource.delivery().equals("embedded"))
+                        .filter(resource -> resource.mediaType().equals("image/png"))
+                        .count())
+                .isEqualTo(8);
         assertThat(snapshot.artifactsByKey()).hasSize(911);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
@@ -104,6 +131,55 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(domainState.mappingState().mappings())
                 .allSatisfy(mapping -> assertThat(mapping.sourceFile())
                         .startsWith("package:org.skillpilot.curriculum.de.gymnasium.mathematik/"));
+
+        PackageCurriculumResourceState resources = PackageCurriculumResourceState.load(
+                snapshot,
+                domainState,
+                new CurriculumPackageArtifactReader(reader));
+        assertThat(resources.generationSha256()).isEqualTo(snapshot.generationSha256());
+        assertThat(resources.deckHrefs()).hasSize(12);
+        assertThat(resources.resourceHrefs()).hasSize(825);
+        var germanDeck = resources.resolveDeck(
+                        "org.skillpilot.curriculum.de.gymnasium.mathematik",
+                        "0.1.0-conformance.2",
+                        "de_gymnasium_math_seki_core",
+                        "de-DE")
+                .orElseThrow();
+        try {
+            assertThat(mapper.readTree(germanDeck.bytes()).path("cards")).hasSize(14);
+        } catch (java.io.IOException error) {
+            throw new AssertionError("real package deck is not readable JSON", error);
+        }
+        var memoryGoal = domainState.landscapes().getFirst().getGoals().stream()
+                .filter(goal -> goal.getTags() != null
+                        && goal.getTags().contains("srs-deck:de_gymnasium_math_seki_core"))
+                .findFirst()
+                .orElseThrow();
+        assertThat(resources.resolveGoalDeck(
+                        memoryGoal.getId(),
+                        String.valueOf(memoryGoal.getExtendedData().get("vocabularySource"))))
+                .isPresent();
+        assertThat(resources.resolveGoalDeck(
+                        memoryGoal.getId(),
+                        String.valueOf(memoryGoal.getExtendedData().get("vocabularySourceEn"))))
+                .get()
+                .extracting(PackageCurriculumResourceState.ResolvedArtifact::filename)
+                .isEqualTo("de_gymnasium_math_flashcards_seki_core.en.json");
+        var embeddedResource = snapshot.resourcesById().values().stream()
+                .filter(resource -> resource.delivery().equals("embedded"))
+                .findFirst()
+                .orElseThrow();
+        var image = resources.resolveResource(
+                        embeddedResource.packageId(),
+                        "0.1.0-conformance.2",
+                        embeddedResource.resourceId())
+                .orElseThrow();
+        assertThat(image.bytes()).hasSize(Math.toIntExact(embeddedResource.artifact().bytes()));
+        assertThat(CurriculumPackageFileReader.sha256(image.bytes()))
+                .isEqualTo(embeddedResource.artifact().sha256());
+        assertThat(snapshot.resourcesById().values())
+                .filteredOn(resource -> resource.delivery().equals("external"))
+                .hasSize(69);
 
         GoalMappingService mappingService = new GoalMappingService(domainState.mappingState());
         String sourceGoalWithFanout = domainState.mappingState().mappingsBySourceGoalId().entrySet().stream()

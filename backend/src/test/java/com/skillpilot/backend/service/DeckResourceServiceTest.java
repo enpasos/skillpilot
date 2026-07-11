@@ -1,10 +1,16 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.core.io.Resource;
@@ -80,5 +86,30 @@ class DeckResourceServiceTest {
         Resource resource = service.resolveDeckResource("/data/not-a-deck.json");
 
         assertThat(resource).isNull();
+    }
+
+    @Test
+    void packageModeResolvesOnlyGoalBoundSnapshotDecks() throws Exception {
+        PackageCurriculumResourceState state = mock(PackageCurriculumResourceState.class);
+        PackageCurriculumResourceState.ResolvedArtifact artifact =
+                new PackageCurriculumResourceState.ResolvedArtifact(
+                        "{\"cards\":[]}".getBytes(StandardCharsets.UTF_8),
+                        "application/json",
+                        "deck.de.json",
+                        "a".repeat(64),
+                        "/api/ui/curriculum-resources/packages/org.example/1.0.0/decks/deck/de-DE");
+        when(state.resolveGoalDeck("goal-1", "data/cards/deck.de.json"))
+                .thenReturn(Optional.of(artifact));
+        DeckResourceService service = new DeckResourceService(state);
+
+        Resource resource = service.resolveDeckResource("goal-1", "data/cards/deck.de.json");
+
+        assertThat(resource).isNotNull();
+        assertThat(resource.getFilename()).isEqualTo("deck.de.json");
+        assertThat(resource.getContentAsString(StandardCharsets.UTF_8)).isEqualTo("{\"cards\":[]}");
+        assertThat(service.resolveDeckResource("data/cards/deck.de.json")).isNull();
+        assertThat(service.resolveDeckResource("goal-2", "data/cards/deck.de.json")).isNull();
+        verify(state).resolveGoalDeck("goal-1", "data/cards/deck.de.json");
+        verify(state).resolveGoalDeck("goal-2", "data/cards/deck.de.json");
     }
 }

@@ -1,5 +1,6 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.curriculumpackage.PackageCurriculumResourceState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,12 +13,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DeckResourceService {
 
     private static final Logger log = LoggerFactory.getLogger(DeckResourceService.class);
@@ -27,16 +27,39 @@ public class DeckResourceService {
     private static final long INDEX_REFRESH_INTERVAL_MS = 2_000L;
 
     private final LandscapeProperties landscapeProperties;
+    private final PackageCurriculumResourceState packageResourceState;
     private final Object deckIndexLock = new Object();
     private volatile Map<String, Path> deckIndex = Collections.emptyMap();
     private volatile long deckIndexUpdatedAt = 0L;
     private volatile String indexedRoot = "";
 
     public DeckResourceService(LandscapeProperties landscapeProperties) {
-        this.landscapeProperties = landscapeProperties;
+        this.landscapeProperties = java.util.Objects.requireNonNull(landscapeProperties, "landscapeProperties");
+        this.packageResourceState = null;
+    }
+
+    public DeckResourceService(PackageCurriculumResourceState packageResourceState) {
+        this.landscapeProperties = null;
+        this.packageResourceState = java.util.Objects.requireNonNull(packageResourceState, "packageResourceState");
     }
 
     public Resource resolveDeckResource(String vocabularySource) {
+        if (packageResourceState != null) {
+            return null;
+        }
+        return resolveRepositoryDeckResource(vocabularySource);
+    }
+
+    public Resource resolveDeckResource(String goalId, String vocabularySource) {
+        if (packageResourceState == null) {
+            return resolveRepositoryDeckResource(vocabularySource);
+        }
+        return packageResourceState.resolveGoalDeck(goalId, vocabularySource)
+                .map(DeckResourceService::asResource)
+                .orElse(null);
+    }
+
+    private Resource resolveRepositoryDeckResource(String vocabularySource) {
         String normalized = normalizeDeckPath(vocabularySource);
         if (normalized == null) {
             return null;
@@ -57,6 +80,15 @@ public class DeckResourceService {
             return classPathResource;
         }
         return null;
+    }
+
+    private static Resource asResource(PackageCurriculumResourceState.ResolvedArtifact artifact) {
+        return new ByteArrayResource(artifact.bytes(), "package deck " + artifact.href()) {
+            @Override
+            public String getFilename() {
+                return artifact.filename();
+            }
+        };
     }
 
     private String normalizeDeckPath(String vocabularySource) {

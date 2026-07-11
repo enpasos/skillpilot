@@ -64,7 +64,7 @@ final class CurriculumPackageTestFixture {
         String offeringId = "offering-" + spec.suffix();
         String deckId = "deck-" + spec.suffix();
         String resourceId = "resource-" + spec.suffix();
-        String publicUrl = "/assets/fixture-" + spec.suffix() + ".png";
+        String publicUrl = "/assets/goal-visualizations/fixture-" + spec.suffix() + ".png";
         String externalResourceId = "external-resource-" + spec.suffix();
         String externalUrl = spec.externalUrlScheme() + "://example.org/tool/" + spec.suffix();
         Path packageRoot = storeRoot.resolve("objects/sha256")
@@ -364,9 +364,12 @@ final class CurriculumPackageTestFixture {
                     case "source-index" -> "official-source-index";
                     default -> role;
                 };
+                String logicalId = role.equals("card-deck")
+                        ? deckId + "@de-DE"
+                        : "fixture:" + path;
                 semanticBinding = Map.of(
                         "kind", "logical-artifact",
-                        "logicalId", "fixture:" + path,
+                        "logicalId", logicalId,
                         "normalizationRole", normalizationRole);
             }
             manifestFiles.add(Map.ofEntries(

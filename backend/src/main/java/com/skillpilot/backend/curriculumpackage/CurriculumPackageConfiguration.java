@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.service.CompositionViewService;
+import com.skillpilot.backend.service.DeckResourceService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,14 +55,30 @@ public class CurriculumPackageConfiguration {
     }
 
     @Bean
+    PackageCurriculumResourceState packageCurriculumResourceState(
+            CurriculumRuntimeSnapshotProvider snapshotProvider,
+            PackageCurriculumDomainState domainState,
+            CurriculumPackageArtifactReader artifactReader) {
+        return PackageCurriculumResourceState.load(
+                snapshotProvider.current(), domainState, artifactReader);
+    }
+
+    @Bean
+    DeckResourceService packageDeckResourceService(PackageCurriculumResourceState resourceState) {
+        return new DeckResourceService(resourceState);
+    }
+
+    @Bean
     CurriculumCatalogService curriculumCatalogService(
             CurriculumRuntimeSnapshotProvider snapshotProvider,
-            PackageCurriculumDomainState domainState) {
+            PackageCurriculumDomainState domainState,
+            PackageCurriculumResourceState resourceState) {
         CurriculumRuntimeSnapshot snapshot = snapshotProvider.current();
-        if (!snapshot.generationSha256().equals(domainState.generationSha256())) {
+        if (!snapshot.generationSha256().equals(domainState.generationSha256())
+                || !snapshot.generationSha256().equals(resourceState.generationSha256())) {
             throw new CurriculumPackageException("Catalog and package domain generations differ");
         }
-        return new CurriculumCatalogService(snapshot);
+        return new CurriculumCatalogService(snapshot, resourceState);
     }
 
     @Bean
