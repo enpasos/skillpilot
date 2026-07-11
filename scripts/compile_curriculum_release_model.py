@@ -533,6 +533,140 @@ def compact_iri_terms(value: Any, prefix: str) -> list[str]:
     return sorted(result)
 
 
+def verify_ontology_registry_order_alignment(
+    ontology_profile: Mapping[str, Any], registry_value: Mapping[str, Any]
+) -> None:
+    """Bind positioned ontology mappings to their authoritative registry lanes.
+
+    The ontology profile explains why a field is represented in Core or in the
+    application vocabulary.  The field registry is the executable authority
+    for the concrete membership class, owner/value predicates, and position
+    predicate.  Requiring both views to agree prevents a plausible-looking
+    profile typo from silently changing reverse-compilation semantics.
+    """
+
+    def membership_terms(value: Any) -> set[str]:
+        terms: set[str] = set()
+
+        def visit(node: Any) -> None:
+            if isinstance(node, dict):
+                for child in node.values():
+                    visit(child)
+            elif isinstance(node, list):
+                for child in node:
+                    visit(child)
+            elif isinstance(node, str) and re.fullmatch(
+                r"[a-z][a-z0-9-]*:[A-Za-z_][A-Za-z0-9._-]*", node
+            ):
+                terms.add(node)
+
+        visit(value)
+        return terms
+
+    ordered_lanes: list[dict[str, Any]] = []
+    for entry in registry_value.get("entries", []):
+        if entry.get("classification") != "ordered-list":
+            continue
+        membership = (
+            entry.get("rdfMapping", {}).get("construction", {}).get("membership")
+        )
+        if not isinstance(membership, dict):
+            raise CompilationError(
+                f"Ordered field-registry lane lacks membership construction: {entry.get('entryId')}"
+            )
+        lane = {
+            "entryId": entry.get("entryId"),
+            "pathPattern": entry.get("pathPattern"),
+            "membershipClass": membership.get("membershipClass"),
+            "ownerPredicate": membership.get("ownerPredicate"),
+            "valuePredicate": membership.get("valuePredicate"),
+            "positionPredicate": membership.get("positionPredicate"),
+        }
+        if not all(isinstance(value, str) and value for value in lane.values()):
+            raise CompilationError(
+                f"Malformed ordered field-registry lane: {entry.get('entryId')}"
+            )
+        lane["terms"] = membership_terms(membership)
+        ordered_lanes.append(lane)
+
+    if not ordered_lanes:
+        raise CompilationError("Field registry declares no ordered reconstruction lanes")
+
+    lanes_by_id = {lane["entryId"]: lane for lane in ordered_lanes}
+    if len(lanes_by_id) != len(ordered_lanes):
+        raise CompilationError("Field registry has duplicate ordered lane IDs")
+    all_position_terms = {lane["positionPredicate"] for lane in ordered_lanes}
+    mappings = ontology_profile["mappings"]
+
+    lane_bindings = {
+        "contains": ("goal.contains",),
+        "requires": ("goal.requires",),
+        "visualReferences": ("goal.resource-links",),
+        "compositionViews": ("view.root-nodes", "view.children"),
+        "memoryCards": ("card-deck.cards",),
+        "assessments": ("goal.scoring-steps", "goal.exam-covered-goals"),
+        "authoredOrder": (
+            "landscape.goals",
+            "goal.contains",
+            "goal.requires",
+            "goal.resource-links",
+            "view.root-nodes",
+            "view.children",
+            "card-deck.cards",
+            "goal.scoring-steps",
+        ),
+    }
+
+    for mapping_name, entry_ids in lane_bindings.items():
+        missing_ids = [entry_id for entry_id in entry_ids if entry_id not in lanes_by_id]
+        if missing_ids:
+            raise CompilationError(
+                f"Ontology mapping {mapping_name} references missing ordered registry lanes: "
+                + ", ".join(missing_ids)
+            )
+        matched = [lanes_by_id[entry_id] for entry_id in entry_ids]
+        rule = mappings[mapping_name]
+        source_paths = set(rule["sourcePaths"])
+        uncovered = [
+            lane["entryId"]
+            for lane in matched
+            if not any(
+                lane["pathPattern"] == source_path
+                or lane["pathPattern"].startswith(source_path.rstrip("/") + "/")
+                for source_path in source_paths
+            )
+        ]
+        if uncovered:
+            raise CompilationError(
+                f"Ontology mapping {mapping_name} does not cover registry lane paths: "
+                + ", ".join(uncovered)
+            )
+        declared = set(rule["coreTerms"]) | set(rule["applicationTerms"])
+        expected_positions = {lane["positionPredicate"] for lane in matched}
+        declared_positions = declared & all_position_terms
+        if mapping_name == "authoredOrder":
+            if declared != expected_positions:
+                raise CompilationError(
+                    "Ontology mapping authoredOrder must declare exactly the registry's "
+                    f"lane-specific position predicates; expected {sorted(expected_positions)}, "
+                    f"found {sorted(declared)}"
+                )
+            continue
+        if declared_positions != expected_positions:
+            raise CompilationError(
+                f"Ontology mapping {mapping_name} position predicates differ from the field registry; "
+                f"expected {sorted(expected_positions)}, found {sorted(declared_positions)}"
+            )
+        if mapping_name in {"contains", "requires", "visualReferences"}:
+            required_terms = set().union(*(lane["terms"] for lane in matched))
+            missing_terms = sorted(required_terms - declared)
+            if missing_terms:
+                raise CompilationError(
+                    f"Ontology mapping {mapping_name} disagrees with field-registry carrier terms: "
+                    + ", ".join(missing_terms)
+                )
+
+
 def verify_ontology_profile_trust(
     build_profile: Mapping[str, Any],
     ontology_profile: Mapping[str, Any],
@@ -565,6 +699,8 @@ def verify_ontology_profile_trust(
         or namespaces.get("sp") != compatibility["skillpilotProfileIri"]
     ):
         raise CompilationError("Application-vocabulary namespace binding is inconsistent")
+
+    verify_ontology_registry_order_alignment(ontology_profile, registry_value)
 
     terms = core_terms(ontology_profile)
     registry_core_terms = compact_iri_terms(registry_value, "lp")

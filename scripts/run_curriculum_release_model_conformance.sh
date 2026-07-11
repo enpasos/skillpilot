@@ -7,7 +7,7 @@ OUTPUT_BASE="tmp/curriculum-release-model"
 OUTPUT_A="${OUTPUT_BASE}/mathematik-a"
 OUTPUT_B="${OUTPUT_BASE}/mathematik-b"
 PACKAGE_OUTPUT="${OUTPUT_BASE}/full-standalone-package"
-PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.2-json"
+PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json"
 PACKAGE_ZIP="${PACKAGE_OUTPUT}/${PACKAGE_ARCHIVE_ROOT}.zip"
 PACKAGE_BUILD_REPORT="${PACKAGE_OUTPUT}/build-summary.json"
 PACKAGE_VALIDATION_REPORT="${PACKAGE_OUTPUT}/full-package-validation-report.json"
@@ -19,7 +19,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60"
+EXPECTED_CONTENT_DIGEST="sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
 CORE_REPOSITORY="https://github.com/FWU-DE/lehrplan-ontologie.git"
 CORE_COMMIT="8aa5bce4a5366807d46f18650e31db98f9bfe35d"
 CORE_CHECKOUT="tmp/lehrplan-ontologie"
@@ -107,9 +107,9 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 913 \
-  --expect-manifest-file-count 911 \
-  --expect-binary-asset-count 756 \
+  --expect-entry-count 914 \
+  --expect-manifest-file-count 912 \
+  --expect-binary-asset-count 757 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"
 

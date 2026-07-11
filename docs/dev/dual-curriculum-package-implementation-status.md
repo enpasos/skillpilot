@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P2 – Core-first Ontologieformat vorbereiten`
-- Nächster Umsetzungsschritt: `DPK-007a – Mathematik-Content-Freeze mit letzter fehlender Visualisierung und unveränderlichem Kandidat 0.1.0-conformance.3`
-- Letzter vollständig abgeschlossener Schritt: `DPK-007 – hermetischer Package-only Mathematik-Smoke`
-- Solider Ausgangsstand: `DPK-007`
-- Abschluss-Gate für DPK-007: package-only Frontend und schlanke Java-Runtime, 15/15 reale Consumer-Prüfungen, checkout-freier bwrap-/strace-Nachweis, vollständige Readiness-Bindung und `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-008 – Core-first FWU-OWL-Paket und isolierter Reverse Compiler`
+- Letzter vollständig abgeschlossener Schritt: `DPK-007a – Mathematik-Content-Freeze 0.1.0-conformance.3`
+- Solider Ausgangsstand: `DPK-007a`
+- Abschluss-Gate für DPK-007a: letzte Visualisierung importiert, Core-/Registry-Lanes ausgerichtet, unveränderlicher `.3`-Kandidat unabhängig validiert und `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -18,13 +18,36 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
 | P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `complete` | abgeschlossen |
-| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `in_progress` | Content-Freeze `.3`, danach Mathematik ohne Original-JSON rekonstruieren |
+| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `in_progress` | DPK-008: Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
 | P5 | Signierter Package-Betrieb und Veröffentlichungskatalog | `not_started` | atomare Stable-Promotion und Rollback |
 | P6 | Trennung von Curriculum-Erstellung und SkillPilot-Software | `not_started` | Software benötigt keinen produktiven Curriculum-Quellbaum |
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
+
+## Abgeschlossener Teilschritt: DPK-007a
+
+DPK-007a beseitigt die letzte technische Inhaltslücke vor dem Ontologieexport. Die fachlich und technisch geprüfte Visualisierung für `f40fcaf7-c630-589c-9f48-6c9e69da0b9d` ist als 757. aktives Bild importiert. Der Atomic-Scope umfasst 754 Ziele; keines ist mehr ohne Bild. Die Human-Freigabe bleibt davon getrennt: 136 Visualisierungen sind freigegeben und 621 warten weiterhin auf Review.
+
+Der unveränderliche Input für DPK-008 ist:
+
+| Bindung | Wert |
+| --- | --- |
+| JSON-Paket | `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip` |
+| fachlicher `contentDigest` | `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101` |
+| ZIP | 1.738.161.217 Byte; SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9` |
+| Manifest | SHA-256 `32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe` |
+| Inventar | 914 ZIP-Einträge; 912 Manifestrecords; 111 logische und 757 binäre Inhaltsrecords |
+| Bilder | 757 eingebettet, zusammen 1.696.390.279 Byte; 69 externe Ressourcen; 826 Ressourcenlinks/-records insgesamt |
+| Closure | 2.403 Definitionen; 18.820 Referenzen; `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121` |
+| Definitionsindex | `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d` |
+
+Ontologie- und Publikationsprofil sind auf `1.1.1` angehoben. Ihre Core-Positions- und SkillPilot-Order-Lanes werden durch Compiler und unabhängigen Validator gegen die Feldregistry geprüft. Die Registry selbst bleibt mit 454 Einträgen und SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48` unverändert. Gezielte Mutationen beweisen, dass ein veraltetes `containedGoal` oder ein Predicate in der falschen Lane fail-closed scheitert.
+
+Das vollständige CI-Gate deckte zusätzlich eine bereits reviewte Saarland-Zuordnung auf, deren Einheitskreisziel noch nicht in den DE-SL-CrossStage-Views lag. Die GK- und LK-Views enthalten dieses Ziel jetzt explizit; damit sind wieder alle 9.977 Mathematik-Source-Goals in den vorgesehenen Bundesland-Views abgedeckt und Mathematik bleibt auf M6.
+
+Der Kandidat ist technisch vollständig und operabel, aber nicht publikationsbereit. Er bleibt `not-ready-incomplete`, weil 621 fachliche Visualisierungsreviews, 757 Bildrechte plus drei Nicht-Binärklassen (760 Redistribution-Entscheidungen insgesamt) und 479 Source-Text-Entscheidungen offen sind. Sechs Bildrecords enthalten eine nutzerbereitgestellte Erzeugungsbehauptung; auch diese ist keine Rechtefreigabe.
 
 ## Abgeschlossener Teilschritt: DPK-005a
 
@@ -252,7 +275,7 @@ Qualitätsnachweis:
 - externe `assembly-manifest.json` und `evidence-bundle-manifest.json`; lokal bleiben die verifizierten Bäume erhalten, CI lädt Reports, beide Manifeste und das Evidence-Bundle für 14 Tage hoch, nicht aber die große Assembly;
 - Package-/Repository-Provider-, Poison- und Spring-Kontexttests, TypeScript, Lint, Diff-Gates und vollständiges `./run_ci.sh` grün.
 
-Bewusste Grenze: Das letzte noch bildlose Mathematikziel wird vor Beginn des Ontologie-Paketexports technisch ergänzt. Da dies Resource-Index, Quality-Evidence, `contentDigest`, ZIP-Identität und alle späteren Variantenhashes ändert, erhält der eingefrorene Kandidat die neue unveränderliche Version `0.1.0-conformance.3`. Fachliche Bildfreigabe, Bild-/Datenrechte und Source-Text-Review bleiben menschliche Release-Gates.
+Die damalige technische Bildlücke ist in DPK-007a geschlossen. Resource-Index, Quality-Evidence, `contentDigest`, ZIP-Identität und die späteren Variantenbindungen verwenden seitdem ausschließlich den unveränderlichen Kandidaten `0.1.0-conformance.3`. Fachliche Bildfreigabe, Bild-/Datenrechte und Source-Text-Review bleiben menschliche Release-Gates.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -282,7 +305,7 @@ Realer Publikationsnachweis:
 
 Die Feldregistry umfasst 454 Regeln: 323 Runtime-Regeln, 130 Regeln für die vier Publikationsnormalformen und einen historischen generischen Eintrag. Eine hashgebundene Rollentabelle typisiert 52 tatsächliche Curriculum-Dokumente als Core-`Lehrplan` und drei amtliche Zusatzdokumente als `sp:OfficialSourceDocument`; unbekannte, ungenutzte oder widersprüchliche Rollen scheitern fail-closed. Source Goals verwenden konservativ Core-`Curriculares Element`, Source→Canonical-Kanten Core-`CE-Verweis`; nur `exact`/`partial` benötigt eine kleine SkillPilot-Erweiterung. Quality-Evidence bleibt vollständig Anwendungsevidenz und erzeugt keine falschen Core-Aussagen.
 
-Der reale Kandidat `org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.2` verwendet das Publikationsprofil `1.1.0`. Sein Inhaltsindex umfasst 111 logische Artefakte plus 756 Binärrecords und ergibt:
+Der historische DPK-004b-Kandidat `org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.2` verwendete das damalige Publikationsprofil `1.1.0`. Sein Inhaltsindex umfasste 111 logische Artefakte plus 756 Binärrecords und ergab:
 
 `sha256:3b44444b50b41f45ec1cb12d4d912a4524effe9d560d539788cfe36d4d7ffc60`
 
@@ -468,6 +491,8 @@ Abnahme:
 | DPK-006c-d | Decks, Karten und Bilder ziel-, paket-, versions- und generationsgebunden aufgelöst; Package-Modus ohne Repository-, Classpath- oder Static-Data-Fallback | Resolver-/Binding-/Tamper-/Routing-/Cache-/Modus-Gates; reale Probe mit 12 Decks/128 Karten, 756 Bildern und 69 externen Ressourcen; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-e | Frontend strikt zwischen Package-, Repository- und Fehlerzustand getrennt und auf katalogisierte Roots, exakte Offerings, Decks, Bilder und externe Ressourcen umgestellt | TypeScript-Adapter-/Negativmatrix; Backend-API-Kette; Modus-/Fallback-Gates; TypeScript/ESLint; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006c-f | Quellenanzeige generationgebunden aus paketierter SourceGoal-Evidenz; keine eingebetteten fachlichen Indizes | State-/API-/Frontend-Negativmatrix; reale 31/55/9.977/33.382/869-Probe; Build-/Precache-Gates; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-007 | Hermetischen Package-only Mathematik-Consumer einschließlich echter Browserdarstellung und checkout-freiem Trace umgesetzt | 15/15 reale Consumer-Prüfungen, fünf unbeobachtete Poison-Lanes, 29 Fälschungsfälle; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-007a | Letzte Visualisierung technisch importiert, Core-/Registry-Lanes ausgerichtet und unveränderlichen `.3`-Kandidaten eingefroren | 914/912/757, Digest-/ZIP-/Manifest-/Closure-Pins, Profilalignment-Mutationen; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -493,7 +518,7 @@ Abnahme:
 | DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `complete` |
 | DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `complete` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `complete` |
-| DPK-007a | P2 | Letzte fehlende Mathematik-Visualisierung technisch importieren und unveränderlichen `.3`-Content-Freeze erzeugen | DPK-007 | `not_started` |
+| DPK-007a | P2 | Letzte fehlende Mathematik-Visualisierung technisch importieren und unveränderlichen `.3`-Content-Freeze erzeugen | DPK-007 | `complete` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005, DPK-007a | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
 | DPK-010 | P4 | Physik-Closure und fachübergreifende Profile | DPK-004, DPK-009 | `not_started` |
@@ -523,6 +548,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-006c-e | Frontend-Katalogadapter und Modustrennung; Root-/Offering-/Deck-/Resource-Resolver samt Negativmatrix; Backend-API-Kette und Controller-Modus; TypeScript, ESLint, Doku- und Workflow-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006c-f | SourceGoal-Evidence-State und 200/204/400/404-API; Generation-/Cache-/Hash-/Count-/Crossref-/Order-/Optionalitäts-Gates; Frontend-Discovery und Lazy-Fetch; kein großer Build-/Precache-Index; reale 31/55/9.977/33.382/869-Probe | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-007 | Source-spezifische Quality-Provider; Catalog-only Frontend/Runtime; echter React-/Chromium-Fluss und 404-Fail-closed; evaluator-gesteuerte Runner-Attestation; bwrap-/strace-Isolation; fünf Poison-Lanes; 29 Consumer-Fälschungen, Output-Destruktions- und Replay-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-007a | Letzter Bildimport; 754/754 Atomic-Scope-Abdeckung; 914/912/757-Paketfreeze; Profile `1.1.1`; unveränderte 454-Einträge-Registry und Core-/Order-Lane-Mutationen; unabhängige Modell-/ZIP-/Readiness-Prüfung | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 

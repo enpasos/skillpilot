@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-07-09T13:30:29.767Z
+Generated: 2026-07-11T19:23:43.363Z
 Rules version: curriculum-quality-v4
 
 ## Summary
@@ -254,7 +254,7 @@ Rules version: curriculum-quality-v4
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Oberstufe (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 274 | 74 | 200 | 27% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SH - Mathematik Sekundarstufe I (Schleswig-Holstein, Fachanforderungen 2024 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 346 | 129 | 217 | 37% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SL - Mathematik Gymnasiale Oberstufe (Saarland, GOS 2014/2019 Source-Extraction) | DE-SL | 3/3 URL; local cache 0/3 | 3/3 | - | 23 | 743 | 0 | 743 | 0% | - |  |
-| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 178 | 640 | 22% | - |  |
+| Mathematik (Gymnasium, DE) | DE-SL - Mathematik Sekundarstufe I (Saarland, Gymnasium G9 2023-2026 Source-Extraction) | DE-SL | 5/5 URL; local cache 0/5 | 3/3 | - | 37 | 818 | 176 | 642 | 22% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Jahrgangsstufen 11/12 (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 31 | 243 | 0 | 243 | 0% | - |  |
 | Mathematik (Gymnasium, DE) | DE-SN - Mathematik Sekundarstufe I (Sachsen, Lehrplan Gymnasium 2019 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 47 | 327 | 75 | 252 | 23% | - |  |
 | Mathematik (Gymnasium, DE) | DE-ST - Mathematik Qualifikationsphase (Sachsen-Anhalt, Fachlehrplan Gymnasium 2019 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 15 | 188 | 0 | 188 | 0% | - |  |

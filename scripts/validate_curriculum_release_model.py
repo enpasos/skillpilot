@@ -496,6 +496,134 @@ def collect_compact_iri_terms(value: Any, prefix: str) -> list[str]:
     return sorted(result)
 
 
+def validate_ontology_registry_order_alignment(
+    ontology_profile: Mapping[str, Any], registry_value: Mapping[str, Any]
+) -> None:
+    """Independently prove profile/registry agreement for ordered RDF lanes."""
+
+    def collect_membership_terms(value: Any) -> set[str]:
+        result: set[str] = set()
+
+        def visit(node: Any) -> None:
+            if isinstance(node, Mapping):
+                for child in node.values():
+                    visit(child)
+            elif isinstance(node, list):
+                for child in node:
+                    visit(child)
+            elif isinstance(node, str):
+                if re.fullmatch(
+                    r"[a-z][a-z0-9-]*:[A-Za-z_][A-Za-z0-9._-]*", node
+                ):
+                    result.add(node)
+
+        visit(value)
+        return result
+
+    ordered_lanes: list[dict[str, Any]] = []
+    for entry in registry_value.get("entries", []):
+        if entry.get("classification") != "ordered-list":
+            continue
+        membership = (
+            entry.get("rdfMapping", {}).get("construction", {}).get("membership")
+        )
+        require(
+            isinstance(membership, dict),
+            f"Ordered field-registry lane lacks membership construction: {entry.get('entryId')}",
+        )
+        lane = {
+            "entryId": entry.get("entryId"),
+            "pathPattern": entry.get("pathPattern"),
+            "membershipClass": membership.get("membershipClass"),
+            "ownerPredicate": membership.get("ownerPredicate"),
+            "valuePredicate": membership.get("valuePredicate"),
+            "positionPredicate": membership.get("positionPredicate"),
+        }
+        require(
+            all(isinstance(value, str) and bool(value) for value in lane.values()),
+            f"Malformed ordered field-registry lane: {entry.get('entryId')}",
+        )
+        lane["terms"] = collect_membership_terms(membership)
+        ordered_lanes.append(lane)
+
+    require(ordered_lanes, "Field registry declares no ordered reconstruction lanes")
+    lanes_by_id = {lane["entryId"]: lane for lane in ordered_lanes}
+    require(
+        len(lanes_by_id) == len(ordered_lanes),
+        "Field registry has duplicate ordered lane IDs",
+    )
+    all_position_terms = {lane["positionPredicate"] for lane in ordered_lanes}
+    mappings = ontology_profile["mappings"]
+
+    lane_bindings = {
+        "contains": ("goal.contains",),
+        "requires": ("goal.requires",),
+        "visualReferences": ("goal.resource-links",),
+        "compositionViews": ("view.root-nodes", "view.children"),
+        "memoryCards": ("card-deck.cards",),
+        "assessments": ("goal.scoring-steps", "goal.exam-covered-goals"),
+        "authoredOrder": (
+            "landscape.goals",
+            "goal.contains",
+            "goal.requires",
+            "goal.resource-links",
+            "view.root-nodes",
+            "view.children",
+            "card-deck.cards",
+            "goal.scoring-steps",
+        ),
+    }
+
+    for mapping_name, entry_ids in lane_bindings.items():
+        missing_ids = [entry_id for entry_id in entry_ids if entry_id not in lanes_by_id]
+        require(
+            not missing_ids,
+            f"Ontology mapping {mapping_name} references missing ordered registry lanes: "
+            + ", ".join(missing_ids),
+        )
+        matched = [lanes_by_id[entry_id] for entry_id in entry_ids]
+        rule = mappings[mapping_name]
+        source_paths = set(rule["sourcePaths"])
+        uncovered = [
+            lane["entryId"]
+            for lane in matched
+            if not any(
+                lane["pathPattern"] == source_path
+                or lane["pathPattern"].startswith(source_path.rstrip("/") + "/")
+                for source_path in source_paths
+            )
+        ]
+        require(
+            not uncovered,
+            f"Ontology mapping {mapping_name} does not cover registry lane paths: "
+            + ", ".join(uncovered),
+        )
+        declared = set(rule["coreTerms"]) | set(rule["applicationTerms"])
+        expected_positions = {lane["positionPredicate"] for lane in matched}
+        declared_positions = declared & all_position_terms
+        if mapping_name == "authoredOrder":
+            require(
+                declared == expected_positions,
+                "Ontology mapping authoredOrder must declare exactly the registry's "
+                f"lane-specific position predicates; expected {sorted(expected_positions)}, "
+                f"found {sorted(declared)}",
+            )
+            continue
+        require(
+            declared_positions == expected_positions,
+            f"Ontology mapping {mapping_name} position predicates differ from the field registry; "
+            f"expected {sorted(expected_positions)}, found {sorted(declared_positions)}",
+        )
+        if mapping_name in {"contains", "requires", "visualReferences"}:
+            required_terms = set().union(*(lane["terms"] for lane in matched))
+            missing_terms = sorted(required_terms - declared)
+            require(
+                not missing_terms,
+                f"Ontology mapping {mapping_name} disagrees with field-registry carrier terms: "
+                + ", ".join(missing_terms),
+            )
+
+
 def validate_ontology_profile_trust(
     build_profile: Mapping[str, Any],
     ontology_profile: Mapping[str, Any],
@@ -535,6 +663,8 @@ def validate_ontology_profile_trust(
         == compatibility["skillpilotProfileIri"],
         "Application-vocabulary namespace binding is inconsistent",
     )
+
+    validate_ontology_registry_order_alignment(ontology_profile, registry_value)
 
     terms = collect_core_terms(ontology_profile)
     registry_core_terms = collect_compact_iri_terms(registry_value, "lp")
@@ -5448,6 +5578,32 @@ def run_adversarial_self_tests(
         ),
     )
 
+    wrong_contains_value = copy.deepcopy(context.ontology_profile)
+    contains_terms = wrong_contains_value["mappings"]["contains"]["applicationTerms"]
+    contains_terms[contains_terms.index("sp:containsGoal")] = "sp:containedGoal"
+    expect_rejection(
+        "ontology-profile-contained-goal-predicate",
+        lambda: validate_ontology_registry_order_alignment(
+            wrong_contains_value, context.registry_value
+        ),
+    )
+
+    wrong_contains_position = copy.deepcopy(context.registry_value)
+    wrong_contains_lane = next(
+        entry
+        for entry in wrong_contains_position["entries"]
+        if entry["entryId"] == "goal.contains"
+    )
+    wrong_contains_lane["rdfMapping"]["construction"]["membership"][
+        "positionPredicate"
+    ] = "sp:order"
+    expect_rejection(
+        "ontology-profile-position-predicate-lane-drift",
+        lambda: validate_ontology_registry_order_alignment(
+            context.ontology_profile, wrong_contains_position
+        ),
+    )
+
     unknown_core_registry = copy.deepcopy(context.registry_value)
     unknown_core_mapping = next(
         mapping
@@ -5769,9 +5925,10 @@ def run_adversarial_self_tests(
             "decisions"
         ]
     }
-    visual_scope_lane["missingGoalIds"][0] = next(
-        iter(sorted(atomic_decision_ids & visual_decision_ids))
+    visual_scope_lane["missingGoalIds"].append(
+        next(iter(sorted(atomic_decision_ids & visual_decision_ids)))
     )
+    visual_scope_lane["missingGoalCount"] += 1
     expect_rejection(
         "quality-visual-scope-drift",
         lambda: validate_publication_evidence_integrity(
@@ -6172,7 +6329,7 @@ def run_adversarial_self_tests(
             incomplete_catalog, model["runtimeCatalog"], "adversarial runtime catalog"
         ),
     )
-    require(len(passed) == 47, f"Expected 47 adversarial cases, got {len(passed)}")
+    require(len(passed) == 49, f"Expected 49 adversarial cases, got {len(passed)}")
     return passed
 
 

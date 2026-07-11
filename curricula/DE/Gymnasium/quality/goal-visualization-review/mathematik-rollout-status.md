@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-09T18:59:37.773Z
+Generated: 2026-07-11T18:42:22.424Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,11 +18,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1079 |
 | Atomare Ziele im Visualisierungs-Scope | 756 |
-| Ziele mit primaerem Visualisierungslink | 755 |
-| Coverage | 99.9% |
+| Ziele mit primaerem Visualisierungslink | 756 |
+| Coverage | 100.0% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 188 |
-| Offene Provider-Deferred-Ziele | 1 |
+| Review-Ledger-Dateien | 189 |
+| Offene Provider-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -34,7 +34,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `approved` | 18 |
-| `pilot` | 737 |
+| `pilot` | 738 |
 
 ## Ledger Decisions
 
@@ -44,7 +44,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 586 |
-| `accepted_pilot_after_regeneration` | 142 |
+| `accepted_pilot_after_regeneration` | 143 |
 | `accepted_pilot_after_resume` | 5 |
 | `accepted_pilot_after_second_regeneration` | 11 |
 | `accepted_pilot_after_third_regeneration` | 5 |
@@ -67,7 +67,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-188.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-189.md` |
 | Latest ledger status | - |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
@@ -80,15 +80,13 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 1 Provider-Deferred-Ziel(e).
+- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
 
 ## Quality Queues
 
 ### Open Provider Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 148 | `f40fcaf7-c630-589c-9f48-6c9e69da0b9d` | Bisektionsverfahren zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
+Keine Eintraege.
 
 ### Open Provider Quota
 
@@ -155,10 +153,10 @@ Keine Eintraege.
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt
 ```
 
-Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
+After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
 
 ## Sources
 
