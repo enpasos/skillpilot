@@ -1,6 +1,7 @@
 package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.service.CompositionViewService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,5 +28,12 @@ public class RepositoryCurriculumConfiguration {
             ObjectMapper objectMapper,
             GoalMappingService goalMappingService) {
         return new LandscapeService(properties, objectMapper, goalMappingService);
+    }
+
+    @Bean
+    CompositionViewService repositoryCompositionViewService(
+            LandscapeProperties properties,
+            ObjectMapper objectMapper) {
+        return new CompositionViewService(properties, objectMapper);
     }
 }

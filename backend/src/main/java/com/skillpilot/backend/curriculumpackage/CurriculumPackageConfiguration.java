@@ -3,6 +3,7 @@ package com.skillpilot.backend.curriculumpackage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.service.CompositionViewService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,6 +51,34 @@ public class CurriculumPackageConfiguration {
             ObjectMapper objectMapper) {
         return PackageCurriculumDomainState.load(
                 snapshotProvider.current(), artifactReader, objectMapper);
+    }
+
+    @Bean
+    CurriculumCatalogService curriculumCatalogService(
+            CurriculumRuntimeSnapshotProvider snapshotProvider,
+            PackageCurriculumDomainState domainState) {
+        CurriculumRuntimeSnapshot snapshot = snapshotProvider.current();
+        if (!snapshot.generationSha256().equals(domainState.generationSha256())) {
+            throw new CurriculumPackageException("Catalog and package domain generations differ");
+        }
+        return new CurriculumCatalogService(snapshot);
+    }
+
+    @Bean
+    PackageCompositionViewState packageCompositionViewState(
+            CurriculumRuntimeSnapshotProvider snapshotProvider,
+            PackageCurriculumDomainState domainState,
+            ObjectMapper objectMapper) {
+        CurriculumRuntimeSnapshot snapshot = snapshotProvider.current();
+        if (!snapshot.generationSha256().equals(domainState.generationSha256())) {
+            throw new CurriculumPackageException("Composition views and package domain generations differ");
+        }
+        return PackageCompositionViewState.load(snapshot, objectMapper);
+    }
+
+    @Bean
+    CompositionViewService packageCompositionViewService(PackageCompositionViewState viewState) {
+        return new CompositionViewService(viewState);
     }
 
     @Bean

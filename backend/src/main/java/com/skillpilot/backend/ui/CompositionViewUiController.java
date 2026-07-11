@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,14 @@ public class CompositionViewUiController {
         }
 
         return ResponseEntity.ok(matchedView);
+    }
+
+    @GetMapping("/offerings/{offeringId}")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ResponseEntity<Map<String, Object>> resolveOffering(@PathVariable String offeringId) {
+        Map<String, Object> resolvedView = compositionViewService.findOfferingById(offeringId);
+        return resolvedView == null
+                ? ResponseEntity.notFound().build()
+                : ResponseEntity.ok(resolvedView);
     }
 }

@@ -2,6 +2,7 @@ package com.skillpilot.backend.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,10 +18,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-@Service
 public class CompositionViewService {
 
     private static final Path COMPOSITION_VIEW_ROOT = Path.of("DE", "Gymnasium", "composition-views");
@@ -38,10 +37,18 @@ public class CompositionViewService {
 
     private final LandscapeProperties properties;
     private final ObjectMapper objectMapper;
+    private final PackageCompositionViewState packageState;
 
     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {
-        this.properties = properties;
-        this.objectMapper = objectMapper;
+        this.properties = Objects.requireNonNull(properties, "properties");
+        this.objectMapper = Objects.requireNonNull(objectMapper, "objectMapper");
+        this.packageState = null;
+    }
+
+    public CompositionViewService(PackageCompositionViewState packageState) {
+        this.properties = null;
+        this.objectMapper = null;
+        this.packageState = Objects.requireNonNull(packageState, "packageState");
     }
 
     public record CompositionStructureResolution(
@@ -259,6 +266,9 @@ public class CompositionViewService {
         if (!StringUtils.hasText(landscapeId)) {
             return null;
         }
+        if (packageState != null) {
+            return packageState.resolveDocument(landscapeId.trim(), requestedScope);
+        }
 
         Path baseDir = Path.of(properties.getDirectory()).resolve(COMPOSITION_VIEW_ROOT);
         if (!Files.isDirectory(baseDir)) {
@@ -315,6 +325,9 @@ public class CompositionViewService {
             return null;
         }
         String normalizedViewId = viewId.trim();
+        if (packageState != null) {
+            return packageState.findViewDocumentById(normalizedViewId);
+        }
         if (normalizedViewId.startsWith("merged:")) {
             List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring("merged:".length()).split("\\+"))
                     .map(String::trim)
@@ -334,6 +347,26 @@ public class CompositionViewService {
                     sourceViews);
         }
         return findSingleViewById(normalizedViewId);
+    }
+
+    public Map<String, Object> findOfferingById(String offeringId) {
+        if (packageState == null || !StringUtils.hasText(offeringId)) {
+            return null;
+        }
+        return packageState.resolveOfferingDocument(offeringId.trim());
+    }
+
+    public Map<String, Object> findDefaultView(String landscapeId) {
+        if (packageState == null || !StringUtils.hasText(landscapeId)) {
+            return null;
+        }
+        return packageState.resolveDefaultDocument(landscapeId.trim());
+    }
+
+    public boolean isAuthoritativeForLandscape(String landscapeId) {
+        return packageState != null
+                && StringUtils.hasText(landscapeId)
+                && packageState.isManagedLandscape(landscapeId.trim());
     }
 
     private Map<String, Object> findSingleViewById(String viewId) {

@@ -580,24 +580,29 @@ public class CurriculaService {
             return Collections.emptySet();
         }
 
-        if (learner != null
-                && curriculumId.equals(learner.getSelectedCurriculum())
-                && learner.getPersonalCurriculum() != null
-                && !learner.getPersonalCurriculum().isBlank()) {
-            String rootFilterId = resolveRootFilterId(curriculumId, learner.getPersonalCurriculum());
+        if (learner != null && curriculumId.equals(learner.getSelectedCurriculum())) {
+            String personalCurriculumJson = learner.getPersonalCurriculum() == null
+                            || learner.getPersonalCurriculum().isBlank()
+                    ? "{}"
+                    : learner.getPersonalCurriculum();
+            String rootFilterId = resolveRootFilterId(curriculumId, personalCurriculumJson);
             Set<String> filteredAtomicIds = learnerService.getFilteredAtomicGoalIds(
                     curriculumId,
-                    learner.getPersonalCurriculum(),
+                    personalCurriculumJson,
                     topicId,
                     false);
+            String compositionLandscapeId = resolveCompositionLandscapeId(curriculumId, topicId);
+            boolean authoritativeComposition = compositionViewService != null
+                    && compositionViewService.isAuthoritativeForLandscape(compositionLandscapeId);
             Set<String> learnerFacingAtomicIds = resolveLearnerFacingAtomicIds(
                     curriculumId,
                     topicId,
-                    learner.getPersonalCurriculum(),
+                    personalCurriculumJson,
                     filteredAtomicIds);
             if (topicId != null
                     && HESSEN_FILTER_ID.equals(rootFilterId)
-                    && isCanonicalGymnasiumLandscape(curriculumId)) {
+                    && isCanonicalGymnasiumLandscape(curriculumId)
+                    && (!authoritativeComposition || !learnerFacingAtomicIds.isEmpty())) {
                 Set<String> legacyEquivalentAtomicIds = resolveHessenEquivalentCanonicalAtomicIds(
                         topicId,
                         learnerFacingAtomicIds.isEmpty() ? filteredAtomicIds : learnerFacingAtomicIds);
@@ -607,6 +612,9 @@ public class CurriculaService {
             }
             if (!learnerFacingAtomicIds.isEmpty()) {
                 return learnerFacingAtomicIds;
+            }
+            if (authoritativeComposition) {
+                return Collections.emptySet();
             }
             if (!filteredAtomicIds.isEmpty() || topicId != null) {
                 return filteredAtomicIds;
@@ -654,12 +662,20 @@ public class CurriculaService {
             return Collections.emptySet();
         }
 
-        Map<String, String> requestedScope = deriveRuntimeCompositionScope(compositionLandscapeId, personalCurriculumJson);
-        if (requestedScope.isEmpty()) {
-            return Collections.emptySet();
+        Map<String, Map<String, Object>> personalConfig = parsePersonalCurriculumConfig(personalCurriculumJson);
+        boolean useDefaultOffering = compositionViewService.isAuthoritativeForLandscape(compositionLandscapeId)
+                && (personalConfig == null || personalConfig.isEmpty());
+        Map<String, Object> matchedView;
+        if (useDefaultOffering) {
+            matchedView = compositionViewService.findDefaultView(compositionLandscapeId);
+        } else {
+            Map<String, String> requestedScope =
+                    deriveRuntimeCompositionScope(compositionLandscapeId, personalCurriculumJson);
+            if (requestedScope.isEmpty()) {
+                return Collections.emptySet();
+            }
+            matchedView = compositionViewService.findMatchingView(compositionLandscapeId, requestedScope);
         }
-
-        Map<String, Object> matchedView = compositionViewService.findMatchingView(compositionLandscapeId, requestedScope);
         if (matchedView == null) {
             return Collections.emptySet();
         }
@@ -668,7 +684,7 @@ public class CurriculaService {
         collectAtomicGoalIdsFromCompositionViewNodeList(matchedView.get("rootNodes"), learnerFacingAtomicIds);
         learnerFacingAtomicIds.retainAll(filteredAtomicIds);
         if (topicId != null && !topicId.isBlank()) {
-            learnerFacingAtomicIds.retainAll(collectAtomicGoalIds(topicId));
+            learnerFacingAtomicIds.retainAll(collectGoalAndDescendantIds(topicId));
         }
         return learnerFacingAtomicIds;
     }
@@ -840,10 +856,19 @@ public class CurriculaService {
             }
             switch (kindText) {
                 case "structure" -> collectAtomicGoalIdsFromCompositionViewNodeList(node.get("children"), atomicIds);
-                case "canonicalSubtree", "goalEntry" -> {
+                case "canonicalSubtree" -> {
                     Object goalId = node.get("goalId");
                     if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
                         atomicIds.addAll(collectAtomicGoalIds(goalIdText));
+                    }
+                }
+                case "goalEntry" -> {
+                    Object goalId = node.get("goalId");
+                    if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
+                        LearningGoal goal = resolveGoal(goalIdText);
+                        if (goal != null) {
+                            atomicIds.add(goal.getId());
+                        }
                     }
                 }
                 case "landscapeEntry" -> {
@@ -1022,6 +1047,26 @@ public class CurriculaService {
         Set<String> atomic = new HashSet<>();
         collectAtomicGoalIds(rootGoalId, atomic, new HashSet<>());
         return atomic;
+    }
+
+    private Set<String> collectGoalAndDescendantIds(String rootGoalId) {
+        Set<String> goalIds = new LinkedHashSet<>();
+        collectGoalAndDescendantIds(rootGoalId, goalIds, new HashSet<>());
+        return goalIds;
+    }
+
+    private void collectGoalAndDescendantIds(String goalRef, Set<String> goalIds, Set<String> visiting) {
+        LearningGoal goal = resolveGoal(goalRef);
+        if (goal == null || !visiting.add(goal.getId())) {
+            return;
+        }
+        goalIds.add(goal.getId());
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                collectGoalAndDescendantIds(childRef, goalIds, visiting);
+            }
+        }
+        visiting.remove(goal.getId());
     }
 
     private void collectAtomicGoalIds(String goalRef, Set<String> atomic, Set<String> visiting) {
