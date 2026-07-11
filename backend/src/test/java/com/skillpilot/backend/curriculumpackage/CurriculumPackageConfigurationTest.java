@@ -7,6 +7,7 @@ import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.RepositoryCurriculumConfiguration;
+import com.skillpilot.backend.service.CompositionViewService;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
@@ -40,8 +41,11 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).doesNotHaveBean(CurriculumPackageArtifactReader.class);
                     assertThat(context).doesNotHaveBean(CurriculumRuntimeSnapshotProvider.class);
                     assertThat(context).doesNotHaveBean(PackageCurriculumDomainState.class);
+                    assertThat(context).doesNotHaveBean(PackageCompositionViewState.class);
+                    assertThat(context).doesNotHaveBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
+                    assertThat(context).hasSingleBean(CompositionViewService.class);
                 });
     }
 
@@ -74,8 +78,11 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).hasSingleBean(CurriculumPackageArtifactReader.class);
                     assertThat(context).hasSingleBean(CurriculumRuntimeSnapshotProvider.class);
                     assertThat(context).hasSingleBean(PackageCurriculumDomainState.class);
+                    assertThat(context).hasSingleBean(PackageCompositionViewState.class);
+                    assertThat(context).hasSingleBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
+                    assertThat(context).hasSingleBean(CompositionViewService.class);
                     assertThat(context.getBean(CurriculumRuntimeSnapshotProvider.class)
                             .current().packages()).hasSize(1);
                     PackageCurriculumDomainState domainState =
@@ -104,6 +111,42 @@ class CurriculumPackageConfigurationTest {
                     assertThat(landscapeService.getClosure("landscape-alpha").get(0)
                             .getGoals().get(0).getApplicability().get("jurisdiction"))
                             .containsExactly("DE-HE");
+                    var catalog = context.getBean(CurriculumCatalogService.class).getCatalog();
+                    assertThat(catalog.generationSha256()).isEqualTo(domainState.generationSha256());
+                    assertThat(catalog.rootLandscapeIds()).containsExactly("landscape-alpha");
+                    assertThat(catalog.landscapes())
+                            .extracting(entry -> entry.defaultOfferingId())
+                            .containsExactly("offering-alpha");
+                    assertThat(catalog.offerings())
+                            .extracting(entry -> entry.offeringId())
+                            .containsExactly("offering-alpha");
+                    CompositionViewService compositionViews = context.getBean(CompositionViewService.class);
+                    assertThat(compositionViews.isAuthoritativeForLandscape("landscape-alpha")).isTrue();
+                    assertThat(compositionViews.findMatchingView(
+                                    "landscape-alpha",
+                                    java.util.Map.of("schoolForm", "Gymnasium", "courseProfile", "GK")))
+                            .extracting(view -> view.get("viewId"))
+                            .isEqualTo("view-alpha");
+                    assertThat(compositionViews.findOfferingById("offering-alpha"))
+                            .extracting(view -> view.get("viewId"))
+                            .isEqualTo("view-alpha");
+                    assertThat(compositionViews.findDefaultView("landscape-alpha"))
+                            .extracting(view -> view.get("viewId"))
+                            .isEqualTo("view-alpha");
+                    assertThat(compositionViews.findMatchingView(
+                                    "landscape-alpha",
+                                    java.util.Map.of("schoolForm", "Gymnasium", "courseProfile", "GK+LK")))
+                            .isNull();
+                    assertThat(compositionViews.findViewById("merged:view-alpha+view-alpha-secondary"))
+                            .isNull();
+                    try {
+                        String catalogJson = context.getBean(ObjectMapper.class).writeValueAsString(catalog);
+                        assertThat(catalogJson)
+                                .doesNotContain("artifactPath")
+                                .doesNotContain(store.root().toString());
+                    } catch (Exception e) {
+                        throw new AssertionError(e);
+                    }
                 });
     }
 

@@ -64,6 +64,27 @@ class ProvisionedCurriculumPackageConformanceTest {
                 .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
         assertThat(snapshot.definitionCount()).isEqualTo(2402);
 
+        PackageCompositionViewState compositionViews = PackageCompositionViewState.load(snapshot, mapper);
+        assertThat(compositionViews.generationSha256()).isEqualTo(snapshot.generationSha256());
+        assertThat(compositionViews.viewsById()).hasSize(88);
+        assertThat(compositionViews.offeringsById()).hasSize(88);
+        assertThat(compositionViews.defaultOfferingsByLandscapeId())
+                .containsOnlyKeys("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+        snapshot.offeringsById().values().forEach(offering -> {
+            PackageCompositionViewState.ResolvedView byId =
+                    compositionViews.resolveOffering(offering.offeringId());
+            PackageCompositionViewState.ResolvedView byScope =
+                    compositionViews.resolve(offering.landscapeId(), offering.scope());
+            assertThat(byId).isNotNull().isEqualTo(byScope);
+            assertThat(byId.sourceViewIds()).containsExactlyElementsOf(offering.viewIds());
+        });
+        assertThat(compositionViews.resolve(
+                        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+                        java.util.Map.of("schoolForm", "Gymnasium", "courseProfile", "GK+LK")))
+                .isNull();
+        assertThat(compositionViews.findViewById("merged:de-de-gym-math-gk+de-de-gym-math-lk"))
+                .isNull();
+
         PackageCurriculumDomainState domainState = PackageCurriculumDomainState.load(
                 snapshot,
                 new CurriculumPackageArtifactReader(reader),

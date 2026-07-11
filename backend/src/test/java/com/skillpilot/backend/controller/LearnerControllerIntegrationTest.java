@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
+import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
@@ -24,6 +25,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
@@ -121,6 +123,7 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_PHYSICS_CLUSTER_ID = "65ddd780-0323-45d1-8f94-5e31bf28da23";
     private static final String CANONICAL_PHYSICS_E3_CLUSTER_ID = "287739a3-6143-55d0-abe7-1a08889e9b49";
     private static final String CANONICAL_PHYSICS_E2_CLUSTER_ID = "9340e894-bb0d-45a4-91f2-b90a63ad50a8";
+    private static final String CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID = "4dc9a094-66d7-4d4d-9436-134aabe48f39";
     private static final String CANONICAL_PHYSICS_CONSERVATION_CLUSTER_ID = "e9d616d8-685f-4129-a36f-dae7a280bae7";
     private static final String CANONICAL_PHYSICS_DIAGRAMS_ID = "ce431132-dfc4-42c2-aff6-bd72035190f8";
     private static final String CANONICAL_PHYSICS_UNIFORM_MOTION_ID = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
@@ -548,7 +551,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void registerChampionKeepsLegacyEquivalentPhysicsTotalsForHessenView() {
+    void registerChampionUsesLearnerFacingLegacyEquivalentPhysicsTotalsForHessenView() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum("""
@@ -569,7 +572,7 @@ public class LearnerControllerIntegrationTest {
                         CANONICAL_PHYSICS_ROOT_ID));
 
         assertThat(response.champion().masteredCount()).isEqualTo(1);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(229);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(189);
     }
 
     @Test
@@ -791,7 +794,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
-    void getLearnerStateHttpTurnsMixedLegacyE2PlanAndMasteryIntoCanonicalNewtonFrontier() throws Exception {
+    void getLearnerStateHttpTurnsMixedLegacyE2PlanAndMasteryIntoOpaqueCanonicalNewtonFrontier() throws Exception {
         String responseBody = getLearnerStateBody(
                 List.of(
                         LEGACY_PHYSICS_E2_CLUSTER_ID,
@@ -808,13 +811,35 @@ public class LearnerControllerIntegrationTest {
         assertThat(planned.get(0).path("id").asText()).isEqualTo(CANONICAL_PHYSICS_E2_CLUSTER_ID);
         assertThat(root.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
-                .contains(CANONICAL_PHYSICS_FIRST_LAW_ID)
+                .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
                 .doesNotContain(
+                        CANONICAL_PHYSICS_FIRST_LAW_ID,
                         LEGACY_PHYSICS_ACCELERATED_ID,
                         LEGACY_PHYSICS_E2_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_ENERGY_CLUSTER_ID,
                         LEGACY_BAYERN_PHYSICS_MOMENTUM_CLUSTER_ID);
-        assertThat(jsonIds(frontier)).contains(CANONICAL_PHYSICS_FIRST_LAW_ID);
+        assertThat(jsonIds(frontier))
+                .contains(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID)
+                .doesNotContain(CANONICAL_PHYSICS_FIRST_LAW_ID);
+
+        learnerService.setActiveGoal(learnerId, CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+        var masteryUpdate = learnerService.setMastery(
+                learnerId,
+                new MasteryUpdateRequest(
+                        Map.of(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID, 1.0),
+                        CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID));
+
+        assertThat(masteryUpdate.saved()).isTrue();
+        assertThat(masteryUpdate.savedGoalId()).isEqualTo(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+        assertThat(masteryUpdate.activeGoal()).isNull();
+        assertThat(masteryUpdate.frontier())
+                .extracting(goal -> goal.id())
+                .doesNotContain(CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId))
+                .filteredOn(mastery -> CANONICAL_PHYSICS_NEWTON_AXIOMS_CLUSTER_ID.equals(mastery.getGoalKey()))
+                .singleElement()
+                .extracting(Mastery::getValue)
+                .isEqualTo(1.0);
     }
 
     @Test
@@ -5715,7 +5740,7 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
                 { "DE-HE", "GK", "672", "680" },
-                { "DE-HE", "LK", "779", "787" },
+                { "DE-HE", "LK", "777", "785" },
                 { "DE-RP", "GK", "553", "559" },
                 { "DE-RP", "LK", "650", "656" },
                 { "DE-SH", "GK", "581", "587" },

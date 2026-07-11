@@ -1869,8 +1869,13 @@ public class LearnerService {
 
         double masteryValue = masteryEntry.getValue();
 
-        // Prevent mastery on Cluster Goals (goals that contain other goals)
-        com.skillpilot.backend.landscape.LearningGoal def = landscapeService.getGoalDefinition(effectiveGoalId);
+        // A composition-view goalEntry can intentionally project a canonical cluster as
+        // one opaque learner-facing leaf. Validate the projected definition first so
+        // every atomic frontier option can also be completed.
+        com.skillpilot.backend.landscape.LearningGoal def = visibleGoals.get(effectiveGoalId);
+        if (def == null) {
+            def = landscapeService.getGoalDefinition(effectiveGoalId);
+        }
         if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Cannot set mastery on cluster goals. Select an atomic goal first.");
@@ -1911,7 +1916,7 @@ public class LearnerService {
         if (curriculumId == null || curriculumId.isBlank()) {
             return storedPlannedGoals;
         }
-        Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
+        Map<String, LearningGoal> structuralGoals = getStructuralGoals(curriculumId);
         return normalizePlannedGoalIdsForVisibleGoals(storedPlannedGoals, structuralGoals, true);
     }
 
@@ -1936,7 +1941,7 @@ public class LearnerService {
                 .filter(id -> id != null && !id.isBlank())
                 .collect(Collectors.toSet());
         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
-            Map<String, LearningGoal> structuralGoals = getFilteredGoals(learner.getSelectedCurriculum(), "{}");
+            Map<String, LearningGoal> structuralGoals = getStructuralGoals(learner.getSelectedCurriculum());
             saneTargetIds = new LinkedHashSet<>(normalizePlannedGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds),
                     structuralGoals, true));
         }
@@ -1959,7 +1964,7 @@ public class LearnerService {
             String curriculumId = learner.getSelectedCurriculum();
             if (curriculumId != null) {
                 Map<String, LearningGoal> allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-                Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
+                Map<String, LearningGoal> structuralGoals = getStructuralGoals(curriculumId);
                 List<String> newPlannedIds = new ArrayList<>(normalizedTargetIds);
                 String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
                 boolean activeGoalOutOfScope = activeGoalId != null
@@ -2686,23 +2691,23 @@ public class LearnerService {
                 createSelectionConfig(economicsSelected, economicsCourseFilterId));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
-        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_HISTORY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GERMAN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ENGLISH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_LATIN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_SPANISH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GREEK_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHINESE_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MUSIC_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID, "{}"));
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getStructuralGoals(CANONICAL_GYMNASIUM_ROOT_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_MATH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_PHYSICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_HISTORY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_GERMAN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_ENGLISH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_FRENCH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_LATIN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_SPANISH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_GREEK_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CHINESE_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_MUSIC_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();
@@ -2842,12 +2847,12 @@ public class LearnerService {
         personalCurriculumConfig.put(CANONICAL_GYMNASIUM_FRENCH_ID, createSelectionConfig(frenchSelected, null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
-        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getStructuralGoals(CANONICAL_GYMNASIUM_ROOT_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_MATH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_PHYSICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_FRENCH_ID));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();
@@ -2953,27 +2958,27 @@ public class LearnerService {
                 createSelectionConfig(czechSelected, czechSelected ? DEFAULT_COURSE_FILTER_ID : null));
 
         String personalCurriculumJson = writePersonalCurriculumConfig(personalCurriculumConfig);
-        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getFilteredGoals(CANONICAL_GYMNASIUM_ROOT_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MATH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_PHYSICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CHINESE_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_HISTORY_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GERMAN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ENGLISH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_GREEK_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_LATIN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_MUSIC_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_FRENCH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_SPANISH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_ITALIAN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_RUSSIAN_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_POLISH_ID, "{}"));
-        structuralGoals.putAll(getFilteredGoals(CANONICAL_GYMNASIUM_CZECH_ID, "{}"));
+        Map<String, LearningGoal> structuralGoals = new LinkedHashMap<>(getStructuralGoals(CANONICAL_GYMNASIUM_ROOT_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_MATH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_PHYSICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CHEMISTRY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_BIOLOGY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CHINESE_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_INFORMATICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_HISTORY_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_GERMAN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_ENGLISH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_GREEK_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_ECONOMICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_POLITICS_ECONOMICS_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_LATIN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_MUSIC_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_FRENCH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_SPANISH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_ITALIAN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_RUSSIAN_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_POLISH_ID));
+        structuralGoals.putAll(getStructuralGoals(CANONICAL_GYMNASIUM_CZECH_ID));
         List<String> normalizedPlannedGoalIds = normalizeCutoverPlannedGoalIds(storedPlannedGoals, structuralGoals).stream()
                 .filter(structuralGoals::containsKey)
                 .toList();
@@ -3290,7 +3295,7 @@ public class LearnerService {
         // 2. Get Unfiltered Goals (for structural traversal / scope calculation)
         // We need the FULL structure to find descendants, even if the parent is
         // filtered out.
-        Map<String, LearningGoal> allStructuralGoals = getFilteredGoals(curriculumId, "{}");
+        Map<String, LearningGoal> allStructuralGoals = getStructuralGoals(curriculumId);
 
         Map<String, Double> masteryMap = getMastery(skillpilotId);
         // Optimistic mode: apply filters first, then evaluate requires/mastery
@@ -3861,7 +3866,7 @@ public class LearnerService {
         Map<String, LearningGoal> structuralGoals = Collections.emptyMap();
         if (curriculumId != null) {
             allGoals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-            structuralGoals = getFilteredGoals(curriculumId, "{}");
+            structuralGoals = getStructuralGoals(curriculumId);
         }
         List<FrontierGoal> sequentialAutopilotSearchAtomic = frontierAtomic;
         if (sequentialAutopilotAnchorGoalId != null
@@ -4053,7 +4058,7 @@ public class LearnerService {
             Map<String, Double> effectiveMastery = computeEffectiveMastery(allGoals, mastery);
             Map<String, LearningGoal> structuralForExpansion = structuralGoals;
             if (structuralForExpansion == null || structuralForExpansion.isEmpty()) {
-                structuralForExpansion = getFilteredGoals(curriculumId, "{}");
+                structuralForExpansion = getStructuralGoals(curriculumId);
             }
             Set<String> scopeForExpansion = scope;
             if (scopeForExpansion == null || scopeForExpansion.isEmpty()) {
@@ -5156,13 +5161,21 @@ public class LearnerService {
                     .map(LearningGoal::getId)
                     .collect(Collectors.toCollection(LinkedHashSet::new));
         }
-        Set<String> atomicIds = new LinkedHashSet<>();
-        collectVisibleAtomicGoalIds(topicId, filteredGoals, atomicIds, new HashSet<>());
-        return atomicIds;
+        Set<String> structuralTopicGoalIds = new LinkedHashSet<>();
+        collectStructuralGoalAndDescendantIds(topicId, structuralTopicGoalIds, new HashSet<>());
+        return filteredGoals.values().stream()
+                .filter(goal -> structuralTopicGoalIds.contains(goal.getId()))
+                .filter(goal -> goal.getContains() == null || goal.getContains().isEmpty())
+                .map(LearningGoal::getId)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson) {
         return getFilteredGoals(curriculumId, personalCurriculumJson, false);
+    }
+
+    private Map<String, LearningGoal> getStructuralGoals(String curriculumId) {
+        return getFilteredGoals(curriculumId, "{}", true);
     }
 
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson,
@@ -5281,60 +5294,98 @@ public class LearnerService {
                 || curriculumId.isBlank()
                 || allGoals == null
                 || allGoals.isEmpty()
-                || config == null
-                || config.isEmpty()
                 || closure == null
                 || closure.isEmpty()) {
             return allGoals;
         }
+        boolean authoritativeCurriculum = compositionViewService.isAuthoritativeForLandscape(curriculumId);
+        if ((config == null || config.isEmpty()) && !authoritativeCurriculum) {
+            return allGoals;
+        }
+        Map<String, Map<String, Object>> effectiveConfig =
+                config == null ? Collections.emptyMap() : config;
 
-        LinkedHashSet<String> referencedGoalIds = new LinkedHashSet<>();
+        LinkedHashMap<String, Boolean> referencedGoals = new LinkedHashMap<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
+        boolean authoritativeCandidateSeen = authoritativeCurriculum;
+        boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
+        if (defaultCurriculumViewRequested) {
+            Map<String, Object> defaultView = compositionViewService.findDefaultView(curriculumId);
+            if (defaultView != null && !defaultView.isEmpty()) {
+                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
+            }
+            authoritativeCandidateSeen = true;
+        }
         for (LearningLandscape landscape : closure) {
-            if (!isCompositionViewCandidate(curriculumId, landscape, config)) {
+            if (!isCompositionViewCandidate(curriculumId, landscape, effectiveConfig)) {
                 continue;
             }
-            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), config);
+            boolean authoritative = compositionViewService.isAuthoritativeForLandscape(landscape.getLandscapeId());
+            authoritativeCandidateSeen |= authoritative;
+            if (defaultCurriculumViewRequested && landscape.getLandscapeId().equals(curriculumId)) {
+                continue;
+            }
+            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), effectiveConfig);
             if (requestedScope.isEmpty()) {
-                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                if (!authoritative) {
+                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                }
                 continue;
             }
             Map<String, Object> matchedView =
                     compositionViewService.findMatchingView(landscape.getLandscapeId(), requestedScope);
             if (matchedView == null || matchedView.isEmpty()) {
-                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                if (!authoritative) {
+                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                }
                 continue;
             }
-            LinkedHashSet<String> landscapeReferencedGoalIds = new LinkedHashSet<>();
-            collectCompositionViewGoalReferences(matchedView.get("rootNodes"), landscapeReferencedGoalIds);
-            if (landscapeReferencedGoalIds.isEmpty()) {
-                addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+            LinkedHashMap<String, Boolean> landscapeReferencedGoals = new LinkedHashMap<>();
+            collectCompositionViewGoalReferences(matchedView.get("rootNodes"), landscapeReferencedGoals);
+            if (landscapeReferencedGoals.isEmpty()) {
+                if (!authoritative) {
+                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                }
             } else {
-                referencedGoalIds.addAll(landscapeReferencedGoalIds);
+                landscapeReferencedGoals.forEach((goalId, includeDescendants) ->
+                        referencedGoals.merge(goalId, includeDescendants, (left, right) -> left || right));
             }
         }
 
-        if (referencedGoalIds.isEmpty() && fallbackGoalIds.isEmpty()) {
-            return allGoals;
+        if (referencedGoals.isEmpty() && fallbackGoalIds.isEmpty()) {
+            return authoritativeCandidateSeen ? Collections.emptyMap() : allGoals;
         }
 
         LinkedHashSet<String> visibleGoalIds = new LinkedHashSet<>();
-        for (String referencedGoalId : referencedGoalIds) {
-            collectCompositionGoalAndDescendants(referencedGoalId, allGoals, visibleGoalIds, new HashSet<>());
-        }
+        referencedGoals.forEach((referencedGoalId, includeDescendants) -> {
+            if (includeDescendants) {
+                collectCompositionGoalAndDescendants(referencedGoalId, allGoals, visibleGoalIds, new HashSet<>());
+            } else {
+                String exactGoalId = resolveGoalRef(referencedGoalId, allGoals);
+                if (exactGoalId != null && allGoals.containsKey(exactGoalId)) {
+                    visibleGoalIds.add(exactGoalId);
+                }
+            }
+        });
         visibleGoalIds.addAll(fallbackGoalIds);
         if (visibleGoalIds.isEmpty()) {
-            return allGoals;
+            return authoritativeCandidateSeen ? Collections.emptyMap() : allGoals;
         }
         addCompositionAncestors(allGoals, visibleGoalIds);
 
         Map<String, LearningGoal> scopedGoals = new LinkedHashMap<>();
         for (Map.Entry<String, LearningGoal> entry : allGoals.entrySet()) {
             if (visibleGoalIds.contains(entry.getKey())) {
-                scopedGoals.put(entry.getKey(), entry.getValue());
+                LearningGoal scopedGoal = entry.getValue();
+                if (Boolean.FALSE.equals(referencedGoals.get(entry.getKey()))) {
+                    scopedGoal = objectMapper.convertValue(scopedGoal, LearningGoal.class);
+                    scopedGoal.setContains(Collections.emptyList());
+                    scopedGoal.setType("atomic");
+                }
+                scopedGoals.put(entry.getKey(), scopedGoal);
             }
         }
-        return scopedGoals.isEmpty() ? allGoals : scopedGoals;
+        return scopedGoals.isEmpty() && !authoritativeCandidateSeen ? allGoals : scopedGoals;
     }
 
     private void addFilteredLandscapeGoalIds(
@@ -5495,7 +5546,7 @@ public class LearnerService {
     }
 
     @SuppressWarnings("unchecked")
-    private void collectCompositionViewGoalReferences(Object rawNodes, Set<String> goalIds) {
+    private void collectCompositionViewGoalReferences(Object rawNodes, Map<String, Boolean> goals) {
         if (!(rawNodes instanceof List<?> nodeList)) {
             return;
         }
@@ -5508,11 +5559,12 @@ public class LearnerService {
                 continue;
             }
             switch (kindText) {
-                case "structure" -> collectCompositionViewGoalReferences(node.get("children"), goalIds);
+                case "structure" -> collectCompositionViewGoalReferences(node.get("children"), goals);
                 case "canonicalSubtree", "goalEntry" -> {
                     Object goalId = node.get("goalId");
                     if (goalId instanceof String goalIdText && !goalIdText.isBlank()) {
-                        goalIds.add(goalIdText);
+                        boolean includeDescendants = "canonicalSubtree".equals(kindText);
+                        goals.merge(goalIdText, includeDescendants, (left, right) -> left || right);
                     }
                 }
                 case "landscapeEntry" -> {
@@ -5524,7 +5576,7 @@ public class LearnerService {
                                     .filter(goal -> goal.getTags() != null && goal.getTags().contains("root"))
                                     .findFirst()
                                     .map(LearningGoal::getId)
-                                    .ifPresent(goalIds::add);
+                                    .ifPresent(goalId -> goals.merge(goalId, true, (left, right) -> left || right));
                         }
                     }
                 }
@@ -5660,6 +5712,29 @@ public class LearnerService {
             }
         }
         visiting.remove(goalId);
+    }
+
+    private void collectStructuralGoalAndDescendantIds(
+            String goalRef,
+            Set<String> goalIds,
+            Set<String> visiting) {
+        if (goalRef == null || goalRef.isBlank()) {
+            return;
+        }
+        LearningGoal goal = landscapeService.getGoalDefinition(goalRef);
+        if (goal == null && goalRef.contains(":")) {
+            goal = landscapeService.getGoalDefinition(goalRef.substring(goalRef.indexOf(':') + 1));
+        }
+        if (goal == null || !visiting.add(goal.getId())) {
+            return;
+        }
+        goalIds.add(goal.getId());
+        if (goal.getContains() != null) {
+            for (String childRef : goal.getContains()) {
+                collectStructuralGoalAndDescendantIds(childRef, goalIds, visiting);
+            }
+        }
+        visiting.remove(goal.getId());
     }
 
     private boolean matchesCourseFilter(LearningGoal goal, String filterId) {
@@ -6158,7 +6233,7 @@ public class LearnerService {
         String curriculumId = learner.getSelectedCurriculum();
         Map<String, LearningGoal> goals = Collections.emptyMap();
         if (curriculumId != null && !curriculumId.isBlank()) {
-            goals = getFilteredGoals(curriculumId, "{}");
+            goals = getStructuralGoals(curriculumId);
         }
         final Set<String> goalIds = goals.isEmpty() ? Collections.emptySet() : new HashSet<>(goals.keySet());
         return masteryRepository.findByLearner_SkillpilotId(skillpilotId)
