@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { ClassSession, StudentMapping, TrainerClassCurriculumConfig } from '../trainerTypes'
 import {
@@ -13,6 +14,7 @@ import {
   getOfferedGymnasiumDurationModels,
   isGymnasiumSubjectOfferedForStageSelection,
   normalizeOfferedDurationModel,
+  resolveCurriculumOfferingSource,
 } from '../utils/durationModel'
 import { getDisplayCourseProfileFilters, getDisplayFiltersForSelection } from '../utils/filterLabels'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
@@ -31,6 +33,11 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   const { language } = useLanguage()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const copy = getClassSetupCopy(localizedLanguage)
+  const runtimeCatalogState = useRuntimeCurriculumCatalog()
+  const offeringSource = useMemo(
+    () => resolveCurriculumOfferingSource(runtimeCatalogState),
+    [runtimeCatalogState],
+  )
   const rootLandscape = useMemo(
     () => (rootLandscapeId ? landscapes.find((entry) => entry.meta.landscapeId === rootLandscapeId) ?? null : null),
     [landscapes, rootLandscapeId],
@@ -75,14 +82,25 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   const stageSelection = getGlobalStageScopeSelection(curriculumConfig)
   const shouldRestrictSubjectsToOfferedContent =
     Boolean(rootLandscape)
-    && normalizeJurisdictionCode(selectedRootFilter) !== null
+    && (
+      offeringSource.mode === 'catalog'
+        ? offeringSource.catalog.offerings.some(
+          (offering) => offering.scope.jurisdiction === selectedRootFilter.trim(),
+        )
+        : normalizeJurisdictionCode(selectedRootFilter) !== null
+    )
   const selectableSubjectLandscapes = useMemo(
     () => shouldRestrictSubjectsToOfferedContent
       ? subjectLandscapes.filter((entry) =>
-        isGymnasiumSubjectOfferedForStageSelection(entry.meta.landscapeId, selectedRootFilter, stageSelection),
+        isGymnasiumSubjectOfferedForStageSelection(
+          entry.meta.landscapeId,
+          selectedRootFilter,
+          stageSelection,
+          offeringSource,
+        ),
       )
       : subjectLandscapes,
-    [selectedRootFilter, shouldRestrictSubjectsToOfferedContent, stageSelection, subjectLandscapes],
+    [offeringSource, selectedRootFilter, shouldRestrictSubjectsToOfferedContent, stageSelection, subjectLandscapes],
   )
   const stageScopeOptions = useMemo(
     () => getGlobalStageScopeOptions(localizedLanguage),
@@ -90,9 +108,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   )
   const offeredDurationModels = useMemo(
     () => stageSelection.sek1Selected
-      ? getOfferedGymnasiumDurationModels(selectedLandscapeId, selectedRootFilter)
+      ? getOfferedGymnasiumDurationModels(selectedLandscapeId, selectedRootFilter, offeringSource)
       : [],
-    [selectedLandscapeId, selectedRootFilter, stageSelection.sek1Selected],
+    [offeringSource, selectedLandscapeId, selectedRootFilter, stageSelection.sek1Selected],
   )
   const durationModelOptions = useMemo(
     () => getDurationModelOptions(localizedLanguage, offeredDurationModels),

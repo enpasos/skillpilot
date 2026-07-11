@@ -10,7 +10,7 @@ import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
-import { CANONICAL_GYMNASIUM_ROOT_ID } from './utils/curriculumDisplay'
+import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
 import {
   getLearnerPathToken,
   getStoredLandscapeIdForRole,
@@ -19,17 +19,9 @@ import {
 
 type Role = 'learner' | 'trainer' | 'explorer'
 
-const PUBLIC_PATHS = new Set([
-  '/curricula',
-  '/privacy',
-  '/imprint',
-  '/legal',
-  '/whitepaper',
-  '/quickstart',
+const IS_PACKAGE_CONSUMER_BUILD = import.meta.env.MODE === 'package-consumer'
+const REPOSITORY_AUTHORING_PATHS = [
   '/users',
-  '/stats',
-  '/successes',
-  '/start',
   '/workbench',
   '/flashcard-editor',
   '/graph-editor',
@@ -39,6 +31,18 @@ const PUBLIC_PATHS = new Set([
   '/goal-visualization-qa',
   '/quality-dashboard',
   '/curriculum-mapping-workbench',
+]
+const PUBLIC_PATHS = new Set([
+  '/curricula',
+  '/privacy',
+  '/imprint',
+  '/legal',
+  '/whitepaper',
+  '/quickstart',
+  '/stats',
+  '/successes',
+  '/start',
+  ...(IS_PACKAGE_CONSUMER_BUILD ? [] : REPOSITORY_AUTHORING_PATHS),
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -53,19 +57,21 @@ const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
 const WhitepaperView = lazy(() => import('./views/WhitepaperView').then((module) => ({ default: module.WhitepaperView })))
 const StoryView = lazy(() => import('./views/StoryView').then((module) => ({ default: module.StoryView })))
-const UsersView = lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
+const UsersView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
-const Abi26MatheStartView = lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
-const WorkbenchView = lazy(() => import('./views/WorkbenchView').then((module) => ({ default: module.WorkbenchView })))
-const FlashcardEditorView = lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
-const GraphEditorView = lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
-const CanonicalClusterEditorView = lazy(() => import('./views/CanonicalClusterEditorView').then((module) => ({ default: module.CanonicalClusterEditorView })))
-const CompositionViewEditorView = lazy(() => import('./views/CompositionViewEditorView').then((module) => ({ default: module.CompositionViewEditorView })))
-const SemanticAtomicityReviewView = lazy(() => import('./views/SemanticAtomicityReviewView').then((module) => ({ default: module.SemanticAtomicityReviewView })))
-const GoalVisualizationQaView = lazy(() => import('./views/GoalVisualizationQaView').then((module) => ({ default: module.GoalVisualizationQaView })))
-const CurriculumQualityDashboardView = lazy(() => import('./views/CurriculumQualityDashboardView').then((module) => ({ default: module.CurriculumQualityDashboardView })))
-const CurriculumMappingWorkbenchView = lazy(() => import('./views/CurriculumMappingWorkbenchView').then((module) => ({ default: module.CurriculumMappingWorkbenchView })))
+const Abi26MatheStartView = IS_PACKAGE_CONSUMER_BUILD
+  ? () => null
+  : lazy(() => import('./views/Abi26MatheStartView').then((module) => ({ default: module.Abi26MatheStartView })))
+const WorkbenchView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/WorkbenchView').then((module) => ({ default: module.WorkbenchView })))
+const FlashcardEditorView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/FlashcardEditorView').then((module) => ({ default: module.FlashcardEditorView })))
+const GraphEditorView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/GraphEditorView').then((module) => ({ default: module.GraphEditorView })))
+const CanonicalClusterEditorView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/CanonicalClusterEditorView').then((module) => ({ default: module.CanonicalClusterEditorView })))
+const CompositionViewEditorView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/CompositionViewEditorView').then((module) => ({ default: module.CompositionViewEditorView })))
+const SemanticAtomicityReviewView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/SemanticAtomicityReviewView').then((module) => ({ default: module.SemanticAtomicityReviewView })))
+const GoalVisualizationQaView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/GoalVisualizationQaView').then((module) => ({ default: module.GoalVisualizationQaView })))
+const CurriculumQualityDashboardView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/CurriculumQualityDashboardView').then((module) => ({ default: module.CurriculumQualityDashboardView })))
+const CurriculumMappingWorkbenchView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/CurriculumMappingWorkbenchView').then((module) => ({ default: module.CurriculumMappingWorkbenchView })))
 
 const normalizeText = (text: string) => text.replace(/\s+/g, ' ').trim()
 
@@ -192,7 +198,7 @@ const App: React.FC = () => {
   const setupClosureRootLandscapeId = core.runtimeCatalogState.mode === 'package'
     ? core.runtimeRootLandscapeId
     : (
-        currentLandscapeEntry?.meta.frameworkId?.startsWith('canonical-gymnasium')
+        isRepositoryGymnasiumFramework(currentLandscapeEntry?.meta.frameworkId)
           ? CANONICAL_GYMNASIUM_ROOT_ID
           : undefined
       )
@@ -620,23 +626,42 @@ const App: React.FC = () => {
             <Route path="/imprint" element={<ImprintView />} />
             <Route path="/curricula" element={<CurriculaView />} />
             <Route path="/stats" element={<StatsView />} />
-            <Route path="/users" element={<UsersView />} />
             <Route path="/successes" element={<SuccessView />} />
             <Route path="/quickstart/:lang?" element={<StoryView />} />
-            <Route path="/workbench" element={<WorkbenchView />} />
-            <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
-            <Route path="/graph-editor" element={<GraphEditorView />} />
-            <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
-            <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
-            <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
-            <Route path="/goal-visualization-qa" element={<GoalVisualizationQaView />} />
-            <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
-            <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
-            <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
-            <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+            {!IS_PACKAGE_CONSUMER_BUILD && (
+              <>
+                <Route path="/users" element={<UsersView />} />
+                <Route path="/workbench" element={<WorkbenchView />} />
+                <Route path="/flashcard-editor" element={<FlashcardEditorView />} />
+                <Route path="/graph-editor" element={<GraphEditorView />} />
+                <Route path="/canonical-cluster-editor" element={<CanonicalClusterEditorView />} />
+                <Route path="/composition-view-editor" element={<CompositionViewEditorView />} />
+                <Route path="/semantic-atomicity-review" element={<SemanticAtomicityReviewView />} />
+                <Route path="/goal-visualization-qa" element={<GoalVisualizationQaView />} />
+                <Route path="/quality-dashboard" element={<CurriculumQualityDashboardView />} />
+                <Route path="/curriculum-mapping-workbench" element={<CurriculumMappingWorkbenchView />} />
+              </>
+            )}
+            {!IS_PACKAGE_CONSUMER_BUILD && (
+              <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+            )}
+            {!IS_PACKAGE_CONSUMER_BUILD && (
+              <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+            )}
           </Routes>
         </>
       </Suspense>
+    )
+  }
+
+  if (core.runtimeCatalogState.mode === 'unavailable') {
+    return (
+      <div
+        className="min-h-screen bg-app-gradient text-slate-100 p-6"
+        data-testid="runtime-catalog-error"
+      >
+        Fehler beim Laden der Lernlandschaften: {core.runtimeCatalogState.error.message}
+      </div>
     )
   }
 
@@ -864,8 +889,12 @@ const App: React.FC = () => {
         <Route path="/imprint" element={<ImprintView />} />
         <Route path="/quickstart/:lang?" element={<StoryView />} />
         <Route path="/whitepaper/:lang?" element={<WhitepaperView />} />
-        <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
-        <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+        {!IS_PACKAGE_CONSUMER_BUILD && (
+          <Route path="/start/abi26-he-mathe-k1" element={<Abi26MatheStartView />} />
+        )}
+        {!IS_PACKAGE_CONSUMER_BUILD && (
+          <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
+        )}
 
         <Route path="/" element={<Navigate to={role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'} replace />} />
         </Routes>

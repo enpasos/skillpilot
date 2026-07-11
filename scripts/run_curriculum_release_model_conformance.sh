@@ -12,6 +12,8 @@ PACKAGE_ZIP="${PACKAGE_OUTPUT}/${PACKAGE_ARCHIVE_ROOT}.zip"
 PACKAGE_BUILD_REPORT="${PACKAGE_OUTPUT}/build-summary.json"
 PACKAGE_VALIDATION_REPORT="${PACKAGE_OUTPUT}/full-package-validation-report.json"
 PACKAGE_READINESS_REPORT="${PACKAGE_OUTPUT}/readiness-report.json"
+PACKAGE_CONSUMER_SMOKE_REPORT="${PACKAGE_OUTPUT}/package-consumer-smoke-report.json"
+PACKAGE_CONSUMER_SMOKE_WORK="${OUTPUT_BASE}/package-consumer-smoke"
 PACKAGE_STORE="${OUTPUT_BASE}/provisioned-store"
 PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
@@ -154,13 +156,6 @@ if any(gate.get("status") != "passed" for gate in report.get("gates", {}).values
     raise SystemExit("real package validator report does not pass every gate")
 PY
 
-python3 -B scripts/evaluate_curriculum_package_readiness.py \
-  --zip "${PACKAGE_ZIP}" \
-  --report "${PACKAGE_READINESS_REPORT}" \
-  --expect-status not-ready-incomplete \
-  --compact \
-  >/dev/null
-
 python3 -B scripts/provision_curriculum_package.py install \
   --store "${PACKAGE_STORE}" \
   --zip "${PACKAGE_ZIP}" \
@@ -218,4 +213,46 @@ if len(packages) != 1 or packages[0].get("outerZipSha256") != build.get("zipSha2
     raise SystemExit("provisioner active lock does not select the built ZIP")
 PY
 
-echo "Curriculum release-model conformance passed: independent model validation, byte-identical model build, reproducible real ZIP, independent full-package validation, secure content-addressed provisioning/activation, and honest incomplete readiness."
+python3 -B scripts/evaluate_curriculum_package_readiness.py \
+  --zip "${PACKAGE_ZIP}" \
+  --consumer-smoke-store "${PACKAGE_STORE}" \
+  --consumer-smoke-work-dir "${PACKAGE_CONSUMER_SMOKE_WORK}" \
+  --consumer-smoke-report "${PACKAGE_CONSUMER_SMOKE_REPORT}" \
+  --report "${PACKAGE_READINESS_REPORT}" \
+  --expect-status not-ready-incomplete \
+  --compact \
+  >/dev/null
+
+python3 -B - "${PACKAGE_CONSUMER_SMOKE_REPORT}" "${PACKAGE_READINESS_REPORT}" <<'PY'
+import json
+import sys
+
+smoke, readiness = [json.load(open(path, encoding="utf-8")) for path in sys.argv[1:]]
+if smoke.get("status") != "passed" or smoke.get("summary") != {
+    "required": 15,
+    "passed": 15,
+    "failed": 0,
+    "notRun": 0,
+}:
+    raise SystemExit("real package consumer smoke did not pass its closed 15-check set")
+checks = {check["id"]: check for check in readiness.get("checks", [])}
+consumer = checks.get("consumer.hermetic-package-only") or {}
+if consumer.get("result") != "pass":
+    raise SystemExit("readiness report did not accept the hermetic consumer proof")
+consumer_evidence = readiness.get("consumerEvidence") or {}
+if consumer_evidence.get("status") != "accepted":
+    raise SystemExit("readiness report did not bind the consumer-smoke evidence")
+if consumer_evidence.get("provenance") != "self-executed" or not consumer_evidence.get("freshReport"):
+    raise SystemExit("readiness report did not self-execute fresh consumer evidence")
+if not readiness.get("evaluator", {}).get("completeForPolicy"):
+    raise SystemExit("readiness evaluator did not complete the full policy")
+if consumer_evidence.get("assemblySha256") != smoke.get("application", {}).get("assemblySha256"):
+    raise SystemExit("readiness report assembly binding differs from consumer report")
+if consumer_evidence.get("evidenceBundleSha256") != smoke.get("evidenceBundle", {}).get("sha256"):
+    raise SystemExit("readiness report evidence-tree binding differs from consumer report")
+decision = readiness.get("decision") or {}
+if decision.get("status") != "not-ready-incomplete" or decision.get("standaloneProfileReady") is not False:
+    raise SystemExit("open human publication gates were incorrectly overridden by consumer operability")
+PY
+
+echo "Curriculum release-model conformance passed: independent model validation, byte-identical model build, reproducible real ZIP, independent full-package validation, secure provisioning/activation, hermetic package-only SkillPilot consumer, and honest human-gated readiness."

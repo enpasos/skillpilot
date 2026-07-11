@@ -8,7 +8,7 @@ The current subject ZIPs remain useful, reproducible handoff and roundtrip artif
 
 | Status | Meaning |
 | --- | --- |
-| `ready` | Every blocking check in the versioned policy passed. This status is unavailable until all package, catalog, closure, digest, and hermetic-consumer checks are implemented. |
+| `ready` | Every blocking check in the versioned policy passed. Evaluator `1.3.0` implements the complete check set; open publication/Human-Gates still prevent this status for the current Mathematik candidate. |
 | `not-ready-incomplete` | The artifact consistently declares the target contract, but one or more completeness, publication, or consumer checks are not implemented or have not passed. Open redistribution review belongs here and is not disguised as a malformed manifest. |
 | `not-ready-legacy` | The artifact does not claim the target contract and belongs to the legacy subject-export lane. A green legacy validation does not change this status. |
 | `unsupported` | The artifact makes a complete, internally recognizable target claim for a contract or compatibility version this evaluator does not support. It is never treated as legacy. |
@@ -26,6 +26,7 @@ python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
 python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
 python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
+python3 -B scripts/run_package_consumer_smoke.py --self-test
 python3 -B scripts/generate_curriculum_package_redistribution_review.py --check
 python3 -B scripts/generate_curriculum_source_verification_review.py --check
 ```
@@ -48,11 +49,20 @@ python3 -B scripts/validate_full_standalone_curriculum_package.py \
 
 python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --zip tmp/curriculum-release-model/full-standalone-package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.2-json.zip \
+  --consumer-smoke-store tmp/curriculum-release-model/provisioned-store \
+  --consumer-smoke-work-dir tmp/curriculum-release-model/package-consumer-smoke \
+  --consumer-smoke-report tmp/curriculum-release-model/full-standalone-package/package-consumer-smoke-report.json \
   --report tmp/curriculum-release-model/full-standalone-package/readiness-report.json \
   --expect-status not-ready-incomplete
 ```
 
-The Builder CLI is implemented in [buildFullStandaloneCurriculumPackage.ts](../../app/scripts/buildFullStandaloneCurriculumPackage.ts); finished archives are checked by the implementation-independent [full package validator](../../scripts/validate_full_standalone_curriculum_package.py). The evaluator invokes that validator independently again and accepts its v2 report only when validator identity, archive hash and byte length, manifest hash, package identity, closure and definition-index digests, complete gate set, evidence and process exit agree. Evaluator `1.2.0` derives those bindings independently from the evaluated ZIP; a report cannot substitute a different extracted manifest while replaying evidence for an older archive.
+This example assumes that the exact ZIP has already been securely provisioned and activated in the named store. `scripts/run_curriculum_release_model_conformance.sh` performs the complete build, validation, provisioning, activation, consumer, and readiness sequence.
+
+The Builder CLI is implemented in [buildFullStandaloneCurriculumPackage.ts](../../app/scripts/buildFullStandaloneCurriculumPackage.ts); finished archives are checked by the implementation-independent [full package validator](../../scripts/validate_full_standalone_curriculum_package.py). The evaluator invokes that validator independently again and accepts its v2 report only when validator identity, archive hash and byte length, manifest hash, package identity, closure and definition-index digests, complete gate set, evidence and process exit agree. Evaluator `1.3.0` derives those bindings independently from the evaluated ZIP; a report cannot substitute a different extracted manifest while replaying evidence for an older archive.
+
+The operational [package-consumer smoke report schema](../../contracts/curriculum-package/v1/package-consumer-smoke-report.schema.json) is external to the curriculum ZIP and therefore does not change its semantic digest or package-local schema inventory. The runner assembles a same-origin, runtime-catalog-only frontend with `publicDir: false` and a slim backend. Build gates reject embedded curriculum UUIDs, repository-owned offering policy, authoring/QA chunks, and static fachliche payloads. The finished assembly runs with `bubblewrap --clearenv`, a fixed environment allowlist, hidden checkout, loopback-only networking, and a read-only provisioned store. `strace -f -yy` records the complete Python, Java, HTTP-probe, Node, and Chromium process tree. A real Playwright 1.59.1/Chromium path renders package-derived goal text through catalog, closure, and composition view; a separate Catalog-404 path must render the stable fail-closed UI marker without any landscape/view fallback request.
+
+The canonical consumer report binds the exact ZIP and package identity, manifest/content/closure/definition digests, complete one-package lock and generation, policy-pinned runner and six helpers, frontend/backend/configuration hashes, complete assembly and evidence trees, trace hash, five ordered poison sentinels, and 15 ordered functional checks. The readiness evaluator executes the exact pinned runner itself, requires a fresh private report and successful process outcome, and independently re-digests the retained assembly and evidence trees before atomically persisting output. Report and work targets reject `..`, symlink parents or destinations, hardlink aliases and overlap with ZIP, store, each other, or the protected ontology checkout before any mutation. The evaluator rejects stale, replayed, reordered, noncanonical, partially passing, externally supplied, or otherwise forged evidence.
 
 Classify a finished legacy subject ZIP without treating the expected non-ready result as a command failure:
 
@@ -62,7 +72,7 @@ python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --expect-status not-ready-legacy
 ```
 
-Use `--report <path>` to persist the JSON report. `--expect-status` returns zero only for that exact status; a mismatch has its own exit code. This lets the current release gate assert `not-ready-legacy` without turning a non-ready result into a standalone release approval.
+Use `--report <path>` to persist the JSON report. `--consumer-smoke-store` enables evaluator-managed execution; `--consumer-smoke-report` then names the atomic persistence target for the fresh report. Without a store, a pre-existing consumer report is only `external-unattested` metadata and cannot satisfy the gate. `--consumer-smoke-work-dir` optionally retains the independently verified assembly and evidence trees below repository `tmp/`; without it they remain private and ephemeral. `--expect-status` returns zero only for that exact status; a mismatch has its own exit code. This lets the current release gate assert `not-ready-legacy` without turning a non-ready result into a standalone release approval.
 
 Stable evaluator exits:
 
@@ -98,8 +108,8 @@ DPK-004b has since added mapping, source, and quality publication evidence. DPK-
 
 DPK-005b now wraps that model as a real ZIP with 913 entries, including 911 manifest-inventoried files and all 756 image assets. The Builder performs a byte-identical internal double build; the independent validator verifies the finished archive rather than trusting the plan. The conformance wrapper persists its build summary, full-package validation report and readiness report under `tmp/curriculum-release-model/full-standalone-package/`.
 
-DPK-006a consumes a content-addressed store through an exact multi-package lock. Java accepts only validator-v2 evidence, rebinds lock, install record, report, manifest, closure and definition index, and rehashes every manifest-inventoried file before atomically publishing an immutable runtime snapshot. DPK-006b now creates that store through deterministic quarantine, safe streaming extraction, exact file/directory-tree verification, immutable promotion and explicit CAS activation/rollback. Package-mode startup fails when the lock is absent or invalid; these components do not scan, select `latest`, or fall back to repository, classpath or network data.
+DPK-006a consumes a content-addressed store through an exact multi-package lock. Java accepts only validator-v2 evidence, rebinds lock, install record, report, manifest, closure and definition index, and rehashes every manifest-inventoried file before atomically publishing an immutable runtime snapshot. DPK-006b creates that store through deterministic quarantine, safe streaming extraction, exact file/directory-tree verification, immutable promotion and explicit CAS activation/rollback. Package-mode startup fails when the lock is absent or invalid; these components do not scan, select `latest`, or fall back to repository, classpath or network data. DPK-006c routes landscapes, mappings, views, offerings, decks, images and source evidence exclusively through that generation.
 
-This is a technically valid staging package, not a publication approval. Its open redistribution records deliberately produce `not-ready-incomplete`. DPK-006c/007 must still prove that the complete SkillPilot application uses no curriculum source tree or `app/public` fallback; the explicit [human publication gates](curriculum-package-human-review-gates.md) remain open. Existing Subject Export ZIPs remain `not-ready-legacy`. The current program checkpoint and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
+DPK-007 now proves the complete package-only path against the real 1.7-GB Mathematik package: all 15 functional checks pass, a dynamically selected curriculum yields 213 package-closure frontier goals, and no checkout, static data poison lane, or external network access is observed. The same readiness report still returns `not-ready-incomplete`, because 881 manifest files remain `review-required`; consumer operability cannot override redistribution or other human publication gates. Existing Subject Export ZIPs remain `not-ready-legacy`. The current program checkpoint and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md).
 
 The legacy subject-package validator executes this evaluator for every finished ZIP and stores the canonical, ZIP-hash-bound reports under `tmp/exports/readiness/`. Validation reports, publication indexes, and the final legacy release-gate report derive their target status from those files instead of inserting a constant status.

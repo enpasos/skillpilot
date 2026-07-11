@@ -5,8 +5,11 @@ The evaluator is deliberately conservative.  It establishes input,
 manifest-contract, and finished-ZIP inventory facts itself.  For a safe,
 contract-conformant full-standalone ZIP it delegates the catalog, semantic
 closure, and content-digest gates to the independent package validator in a
-separate bounded process.  The hermetic-consumer gate remains unevaluated, so
-this evaluator version can never emit ``ready``.
+separate bounded process.  The package-only consumer gate is established only
+when this evaluator executes the repository-pinned smoke runner itself.  A
+caller-supplied report path is an optional persistence destination, never a
+trust source.  External reports remain visible as unattested metadata but
+cannot make the consumer gate pass.
 """
 
 from __future__ import annotations
@@ -17,6 +20,8 @@ import hashlib
 import json
 import os
 import re
+import secrets
+import signal
 import stat
 import struct
 import subprocess
@@ -46,14 +51,19 @@ MANIFEST_SCHEMA_PATH = CONTRACT_DIR / "package-manifest.schema.json"
 PROFILE_PATH = CONTRACT_DIR / "profiles" / "full-standalone-v1.profile.json"
 POLICY_PATH = CONTRACT_DIR / "profiles" / "full-standalone-v1.readiness-policy.json"
 REPORT_SCHEMA_PATH = CONTRACT_DIR / "package-readiness-report.schema.json"
+CONSUMER_REPORT_SCHEMA_PATH = CONTRACT_DIR / "package-consumer-smoke-report.schema.json"
 FIXTURE_DIR = CONTRACT_DIR / "fixtures" / "readiness"
 
 REPORT_SCHEMA_ID = (
     "https://skillpilot.com/schemas/curriculum-package/v1/"
     "package-readiness-report.schema.json"
 )
+CONSUMER_REPORT_SCHEMA_ID = (
+    "https://skillpilot.com/schemas/curriculum-package/v1/"
+    "package-consumer-smoke-report.schema.json"
+)
 EVALUATOR_NAME = "skillpilot-json-package-readiness"
-EVALUATOR_VERSION = "1.2.0"
+EVALUATOR_VERSION = "1.3.0"
 JSONSCHEMA_VERSION = "4.26.0"
 POLICY_ID = "full-standalone-v1-readiness-v1"
 POLICY_SCOPE = "json-full-standalone-v1"
@@ -102,8 +112,9 @@ IMPLEMENTED_CHECK_IDS = [
     *CATALOG_CHECK_IDS,
     *STANDALONE_CHECK_IDS,
     *PUBLICATION_CHECK_IDS,
+    *CONSUMER_CHECK_IDS,
 ]
-EVALUATOR_COMPLETE_FOR_POLICY = IMPLEMENTED_CHECK_IDS == REQUIRED_CHECK_IDS
+EVALUATOR_IMPLEMENTATION_COMPLETE = IMPLEMENTED_CHECK_IDS == REQUIRED_CHECK_IDS
 
 # Stable process semantics. argparse retains its conventional exit code 2 for
 # CLI usage errors; every evaluator outcome has a disjoint code.
@@ -159,6 +170,36 @@ FULL_VALIDATOR_EXIT_BY_STATUS = {"valid": 0, "invalid": 1, "error": 2}
 FULL_VALIDATOR_TIMEOUT_SECONDS = 30 * 60
 MAX_FULL_VALIDATOR_REPORT_BYTES = 2 * 1024 * 1024
 MAX_FULL_VALIDATOR_BINDING_JSON_BYTES = 64 * 1024 * 1024
+MAX_CONSUMER_REPORT_BYTES = 16 * 1024 * 1024
+CONSUMER_RUNNER_PATH = SCRIPT_DIR / "run_package_consumer_smoke.py"
+CONSUMER_RUNNER_TIMEOUT_SECONDS = 30 * 60
+CONSUMER_RUNNER_ID = "skillpilot-package-consumer-smoke"
+CONSUMER_RUNNER_VERSION = "1.0.0"
+CONSUMER_API_VERSION = "0.1.0"
+FUNCTIONAL_CHECK_IDS = [
+    "app-shell.served",
+    "catalog.package-discovery",
+    "catalog.root-landscape-resolved",
+    "landscape.transitive-runtime-closure",
+    "offering.default-resolved",
+    "composition-view.resolved",
+    "learning.frontier-computed",
+    "cards.deck-loaded",
+    "cards.verified-recall-loaded",
+    "resources.goal-visualization-bytes",
+    "migration.aliases-loaded",
+    "source-evidence.goal-lookup",
+    "fallback.legacy-route-rejected",
+    "fallback.repository-data-unavailable",
+    "fallback.raw-data-route-rejected",
+]
+POISON_SENTINEL_IDS = [
+    "repository.curricula",
+    "repository.app-public-data",
+    "repository.app-source-data",
+    "repository.docs-quality-status",
+    "repository.backend-static-data",
+]
 
 
 class ReadinessError(RuntimeError):
@@ -186,6 +227,50 @@ class LoadedInput:
     errors: list[str]
 
 
+@dataclass
+class LoadedConsumerReport:
+    name: str
+    bytes: int | None
+    sha256: str | None
+    report: dict[str, Any] | None
+    errors: list[str]
+
+
+@dataclass
+class ConsumerEvidenceContext:
+    provenance: str
+    loaded_report: LoadedConsumerReport | None
+    runner_script_bytes: int | None
+    runner_script_sha256: str | None
+    runner_exit_code: int | None
+    runner_timed_out: bool
+    fresh_report: bool
+    assembly_bytes: int | None
+    assembly_sha256: str | None
+    evidence_bundle_bytes: int | None
+    evidence_bundle_sha256: str | None
+    execution_errors: list[str]
+
+    @property
+    def complete_for_policy(self) -> bool:
+        return bool(
+            EVALUATOR_IMPLEMENTATION_COMPLETE
+            and self.provenance == "self-executed"
+            and self.loaded_report is not None
+            and self.loaded_report.report is not None
+            and not self.loaded_report.errors
+            and self.runner_script_bytes is not None
+            and self.runner_script_sha256 is not None
+            and self.runner_exit_code is not None
+            and not self.runner_timed_out
+            and self.fresh_report
+            and self.assembly_bytes is not None
+            and self.assembly_sha256 is not None
+            and self.evidence_bundle_bytes is not None
+            and self.evidence_bundle_sha256 is not None
+        )
+
+
 @dataclass(frozen=True)
 class TrustedContracts:
     manifest_schema: dict[str, Any]
@@ -193,9 +278,11 @@ class TrustedContracts:
     roles: dict[str, dict[str, Any]]
     policy: dict[str, Any]
     report_schema: dict[str, Any]
+    consumer_report_schema: dict[str, Any]
     manifest_schema_sha256: str
     profile_sha256: str
     report_schema_sha256: str
+    consumer_report_schema_sha256: str
     trusted_schema_metadata: dict[str, tuple[str, str, int]]
     manifest_schema_bytes: int
     profile_bytes: int
@@ -226,6 +313,43 @@ def sha256_file_bounded(path: Path, limit: int) -> tuple[int, str]:
                 raise ReadinessError(f"Input grew beyond the {limit}-byte limit")
             digest.update(chunk)
     return count, digest.hexdigest()
+
+
+def digest_consumer_tree(root: Path) -> tuple[int, str]:
+    """Digest a report-external runner tree without absolute path material."""
+
+    if root.is_symlink() or not root.is_dir():
+        raise ReadinessError(f"Consumer evidence tree is unavailable: {root.name}")
+    files: list[Path] = []
+    for path in sorted(
+        root.rglob("*"), key=lambda item: item.relative_to(root).as_posix()
+    ):
+        if path.is_symlink():
+            raise ReadinessError(
+                f"Consumer evidence tree contains a symlink: {path.relative_to(root)}"
+            )
+        if path.is_file():
+            files.append(path)
+        elif not path.is_dir():
+            raise ReadinessError(
+                f"Consumer evidence tree contains a non-regular entry: {path.relative_to(root)}"
+            )
+    if not files:
+        raise ReadinessError(f"Consumer evidence tree is empty: {root.name}")
+    digest = hashlib.sha256()
+    total_bytes = 0
+    for path in files:
+        relative = path.relative_to(root).as_posix()
+        file_bytes = path.stat().st_size
+        file_sha256 = sha256_file(path)
+        total_bytes += file_bytes
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(str(file_bytes).encode("ascii"))
+        digest.update(b"\0")
+        digest.update(file_sha256.encode("ascii"))
+        digest.update(b"\n")
+    return total_bytes, digest.hexdigest()
 
 
 def reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -312,10 +436,12 @@ def validate_policy_contract(
     profile: dict[str, Any],
     policy: dict[str, Any],
     report_schema: dict[str, Any],
+    consumer_report_schema: dict[str, Any],
     *,
     manifest_schema_sha256: str,
     profile_sha256: str,
     report_schema_sha256: str,
+    consumer_report_schema_sha256: str,
 ) -> None:
     exact_keys(
         policy,
@@ -325,6 +451,8 @@ def validate_policy_contract(
             "scope",
             "target",
             "reportSchema",
+            "consumerSmokeReportSchema",
+            "consumerSmokeRunner",
             "evaluator",
             "statusVocabulary",
             "checkResultVocabulary",
@@ -382,6 +510,26 @@ def validate_policy_contract(
         raise ReadinessError("Readiness policy report-schema binding is stale")
     if report_schema.get("$id") != REPORT_SCHEMA_ID:
         raise ReadinessError("Unexpected readiness-report schema $id")
+    consumer_report_binding = policy.get("consumerSmokeReportSchema")
+    if consumer_report_binding != {
+        "id": CONSUMER_REPORT_SCHEMA_ID,
+        "sha256": consumer_report_schema_sha256,
+    }:
+        raise ReadinessError("Readiness policy consumer-report schema binding is stale")
+    if consumer_report_schema.get("$id") != CONSUMER_REPORT_SCHEMA_ID:
+        raise ReadinessError("Unexpected consumer-smoke-report schema $id")
+    consumer_runner_binding = policy.get("consumerSmokeRunner")
+    expected_runner_binding = {
+        "id": CONSUMER_RUNNER_ID,
+        "version": CONSUMER_RUNNER_VERSION,
+        "path": "scripts/run_package_consumer_smoke.py",
+        "bytes": CONSUMER_RUNNER_PATH.stat().st_size,
+        "sha256": sha256_file(CONSUMER_RUNNER_PATH),
+    }
+    if consumer_runner_binding != expected_runner_binding:
+        raise ReadinessError(
+            "Readiness policy consumer runner binding is stale or the pinned runner changed"
+        )
 
     expected_evaluator = {
         "name": EVALUATOR_NAME,
@@ -395,17 +543,28 @@ def validate_policy_contract(
     if policy.get("checkResultVocabulary") != CHECK_RESULT_VOCABULARY:
         raise ReadinessError("Readiness policy check-result vocabulary differs")
 
-    expected_checks = [{"id": check_id, "blocking": True} for check_id in REQUIRED_CHECK_IDS]
+    expected_checks = [
+        {"id": check_id, "blocking": True} for check_id in REQUIRED_CHECK_IDS
+    ]
     if policy.get("requiredChecks") != expected_checks:
-        raise ReadinessError("Readiness policy check set/order differs from evaluator v1")
+        raise ReadinessError(
+            "Readiness policy check set/order differs from evaluator v1"
+        )
 
     try:
-        report_statuses = report_schema["properties"]["decision"]["properties"]["status"]["enum"]
+        report_statuses = report_schema["properties"]["decision"]["properties"][
+            "status"
+        ]["enum"]
         report_results = report_schema["$defs"]["checkResult"]["enum"]
         report_evaluator = report_schema["properties"]["evaluator"]["properties"]
     except (KeyError, TypeError) as error:
-        raise ReadinessError("Readiness-report schema lacks policy-bound fields") from error
-    if report_statuses != STATUS_VOCABULARY or report_results != CHECK_RESULT_VOCABULARY:
+        raise ReadinessError(
+            "Readiness-report schema lacks policy-bound fields"
+        ) from error
+    if (
+        report_statuses != STATUS_VOCABULARY
+        or report_results != CHECK_RESULT_VOCABULARY
+    ):
         raise ReadinessError("Readiness-report schema vocabulary differs from policy")
     if (
         report_evaluator.get("name", {}).get("const") != EVALUATOR_NAME
@@ -414,10 +573,101 @@ def validate_policy_contract(
         != JSONSCHEMA_VERSION
         or report_evaluator.get("implementedCheckIds", {}).get("const")
         != IMPLEMENTED_CHECK_IDS
-        or report_evaluator.get("completeForPolicy", {}).get("const")
-        is not EVALUATOR_COMPLETE_FOR_POLICY
+        or report_evaluator.get("completeForPolicy") != {"type": "boolean"}
     ):
         raise ReadinessError("Readiness-report schema evaluator binding differs")
+    try:
+        consumer_runner_schema = consumer_report_schema["properties"]["runner"]
+        consumer_runner = consumer_runner_schema["properties"]
+        consumer_report_version = consumer_report_schema["properties"][
+            "reportFormatVersion"
+        ]
+        consumer_application_schema = consumer_report_schema["$defs"][
+            "applicationBinding"
+        ]
+        consumer_application = consumer_application_schema["properties"]
+        consumer_evidence_bundle_schema = consumer_report_schema["$defs"][
+            "evidenceBundleBinding"
+        ]
+        consumer_evidence_bundle = consumer_evidence_bundle_schema["properties"]
+        functional_prefix = consumer_report_schema["properties"]["functionalChecks"][
+            "prefixItems"
+        ]
+        poison_prefix = consumer_report_schema["$defs"]["isolationEvidence"][
+            "properties"
+        ]["poisonSentinels"]["prefixItems"]
+    except (KeyError, TypeError) as error:
+        raise ReadinessError(
+            "Consumer-smoke-report schema lacks policy-bound identities"
+        ) from error
+    if (
+        consumer_runner.get("id", {}).get("const") != CONSUMER_RUNNER_ID
+        or consumer_runner.get("version", {}).get("const") != CONSUMER_RUNNER_VERSION
+        or consumer_report_version.get("const") != 1
+        or consumer_application.get("consumerApiVersion", {}).get("const")
+        != CONSUMER_API_VERSION
+        or set(consumer_evidence_bundle) != {"bytes", "sha256"}
+        or not {"scriptBytes", "scriptSha256"}.issubset(
+            set(consumer_runner_schema.get("required", []))
+        )
+        or not {"assemblyBytes", "assemblySha256"}.issubset(
+            set(consumer_application_schema.get("required", []))
+        )
+        or set(consumer_evidence_bundle_schema.get("required", []))
+        != {"bytes", "sha256"}
+    ):
+        raise ReadinessError("Consumer-smoke-report identity binding differs")
+
+    def closed_prefix_ids(
+        prefix: Any,
+        definitions: dict[str, Any],
+        description: str,
+    ) -> list[str]:
+        if not isinstance(prefix, list):
+            raise ReadinessError(f"{description} is not a closed prefix array")
+        identifiers: list[str] = []
+        for item in prefix:
+            if not isinstance(item, dict) or set(item) != {"$ref"}:
+                raise ReadinessError(f"{description} contains an unbound prefix item")
+            reference = item["$ref"]
+            if not isinstance(reference, str) or not reference.startswith("#/$defs/"):
+                raise ReadinessError(
+                    f"{description} contains an external prefix reference"
+                )
+            definition = definitions.get(reference.removeprefix("#/$defs/"))
+            if not isinstance(definition, dict):
+                raise ReadinessError(f"{description} references an unknown definition")
+            identifier = (
+                definition.get("properties", {}).get("id", {}).get("const")
+                if isinstance(definition.get("properties"), dict)
+                else None
+            )
+            if not isinstance(identifier, str):
+                raise ReadinessError(f"{description} lacks an exact ID binding")
+            identifiers.append(identifier)
+        return identifiers
+
+    definitions = consumer_report_schema.get("$defs")
+    if not isinstance(definitions, dict):
+        raise ReadinessError("Consumer-smoke-report schema definitions are malformed")
+    if (
+        closed_prefix_ids(
+            functional_prefix,
+            definitions,
+            "Consumer functional-check schema",
+        )
+        != FUNCTIONAL_CHECK_IDS
+    ):
+        raise ReadinessError("Consumer functional-check schema differs from evaluator")
+    if (
+        closed_prefix_ids(
+            poison_prefix,
+            definitions,
+            "Consumer poison-sentinel schema",
+        )
+        != POISON_SENTINEL_IDS
+    ):
+        raise ReadinessError("Consumer poison-sentinel schema differs from evaluator")
 
 
 def trusted_contracts() -> TrustedContracts:
@@ -434,13 +684,18 @@ def trusted_contracts() -> TrustedContracts:
     profile = load_trusted_json(PROFILE_PATH)
     policy = load_trusted_json(POLICY_PATH)
     report_schema = load_trusted_json(REPORT_SCHEMA_PATH)
+    consumer_report_schema = load_trusted_json(CONSUMER_REPORT_SCHEMA_PATH)
     Draft202012Validator.check_schema(manifest_schema)
     Draft202012Validator.check_schema(report_schema)
+    Draft202012Validator.check_schema(consumer_report_schema)
 
     try:
         trusted_schema_paths = {
             binding_name: CONTRACT_DIR / filename
-            for binding_name, (_schema_id, filename) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
+            for binding_name, (
+                _schema_id,
+                filename,
+            ) in package_contracts.TRUSTED_SCHEMA_BINDINGS.items()
         }
         roles = package_contracts.validate_trusted_contract(
             manifest_schema,
@@ -449,12 +704,20 @@ def trusted_contracts() -> TrustedContracts:
             PROFILE_PATH,
             trusted_schema_paths,
         )
-    except (package_contracts.ContractDefinitionError, KeyError, TypeError, ValueError) as error:
-        raise ReadinessError(f"Trusted package contract is inconsistent: {error}") from error
+    except (
+        package_contracts.ContractDefinitionError,
+        KeyError,
+        TypeError,
+        ValueError,
+    ) as error:
+        raise ReadinessError(
+            f"Trusted package contract is inconsistent: {error}"
+        ) from error
 
     manifest_schema_sha256 = sha256_file(MANIFEST_SCHEMA_PATH)
     profile_sha256 = sha256_file(PROFILE_PATH)
     report_schema_sha256 = sha256_file(REPORT_SCHEMA_PATH)
+    consumer_report_schema_sha256 = sha256_file(CONSUMER_REPORT_SCHEMA_PATH)
     trusted_schema_metadata = {
         binding_name: (
             package_contracts.TRUSTED_SCHEMA_BINDINGS[binding_name][0],
@@ -468,9 +731,11 @@ def trusted_contracts() -> TrustedContracts:
         profile,
         policy,
         report_schema,
+        consumer_report_schema,
         manifest_schema_sha256=manifest_schema_sha256,
         profile_sha256=profile_sha256,
         report_schema_sha256=report_schema_sha256,
+        consumer_report_schema_sha256=consumer_report_schema_sha256,
     )
     return TrustedContracts(
         manifest_schema=manifest_schema,
@@ -478,18 +743,18 @@ def trusted_contracts() -> TrustedContracts:
         roles=roles,
         policy=policy,
         report_schema=report_schema,
+        consumer_report_schema=consumer_report_schema,
         manifest_schema_sha256=manifest_schema_sha256,
         profile_sha256=profile_sha256,
         report_schema_sha256=report_schema_sha256,
+        consumer_report_schema_sha256=consumer_report_schema_sha256,
         trusted_schema_metadata=trusted_schema_metadata,
         manifest_schema_bytes=MANIFEST_SCHEMA_PATH.stat().st_size,
         profile_bytes=PROFILE_PATH.stat().st_size,
     )
 
 
-def unavailable_input(
-    *, kind: str, path: Path, size: int, error: str
-) -> LoadedInput:
+def unavailable_input(*, kind: str, path: Path, size: int, error: str) -> LoadedInput:
     return LoadedInput(
         kind=kind,
         name=path.name,
@@ -501,6 +766,558 @@ def unavailable_input(
         archive_root=None,
         errors=[error],
     )
+
+
+def load_consumer_report(path: Path) -> LoadedConsumerReport:
+    observed_bytes: int | None = None
+    observed_sha256: str | None = None
+    try:
+        metadata = path.lstat()
+        if not stat.S_ISREG(metadata.st_mode) or stat.S_ISLNK(metadata.st_mode):
+            return LoadedConsumerReport(
+                path.name,
+                None,
+                None,
+                None,
+                ["consumer smoke report is not a regular non-symlink file"],
+            )
+        if metadata.st_size > MAX_CONSUMER_REPORT_BYTES:
+            return LoadedConsumerReport(
+                path.name,
+                metadata.st_size,
+                None,
+                None,
+                [f"consumer smoke report exceeds {MAX_CONSUMER_REPORT_BYTES} bytes"],
+            )
+        raw = path.read_bytes()
+        if len(raw) != metadata.st_size:
+            raise ReadinessError("Consumer smoke report changed while being read")
+        observed_bytes = len(raw)
+        observed_sha256 = sha256_bytes(raw)
+        parsed = parse_json_bytes(raw, str(path))
+        validate_json_shape(parsed, str(path))
+        if not isinstance(parsed, dict):
+            raise ReadinessError("Consumer smoke report must be a JSON object")
+        canonical = (
+            json.dumps(parsed, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+        ).encode("utf-8")
+        if canonical != raw:
+            raise ReadinessError("Consumer smoke report is not canonical JSON")
+        final = path.lstat()
+        if (
+            not stat.S_ISREG(final.st_mode)
+            or stat.S_ISLNK(final.st_mode)
+            or final.st_size != metadata.st_size
+        ):
+            raise ReadinessError(
+                "Consumer smoke report metadata changed while being read"
+            )
+        return LoadedConsumerReport(
+            path.name,
+            observed_bytes,
+            observed_sha256,
+            parsed,
+            [],
+        )
+    except (OSError, ReadinessError, ValueError) as error:
+        return LoadedConsumerReport(
+            path.name,
+            observed_bytes,
+            observed_sha256,
+            None,
+            [str(error)],
+        )
+
+
+def no_consumer_evidence() -> ConsumerEvidenceContext:
+    return ConsumerEvidenceContext(
+        provenance="none",
+        loaded_report=None,
+        runner_script_bytes=None,
+        runner_script_sha256=None,
+        runner_exit_code=None,
+        runner_timed_out=False,
+        fresh_report=False,
+        assembly_bytes=None,
+        assembly_sha256=None,
+        evidence_bundle_bytes=None,
+        evidence_bundle_sha256=None,
+        execution_errors=[],
+    )
+
+
+def external_consumer_evidence(path: Path) -> ConsumerEvidenceContext:
+    return ConsumerEvidenceContext(
+        provenance="external-unattested",
+        loaded_report=load_consumer_report(path),
+        runner_script_bytes=None,
+        runner_script_sha256=None,
+        runner_exit_code=None,
+        runner_timed_out=False,
+        fresh_report=False,
+        assembly_bytes=None,
+        assembly_sha256=None,
+        evidence_bundle_bytes=None,
+        evidence_bundle_sha256=None,
+        execution_errors=[],
+    )
+
+
+def lexical_absolute_output_path(destination: Path, description: str) -> Path:
+    raw_path = Path(destination)
+    if ".." in raw_path.parts:
+        raise ReadinessError(f"{description} path must not contain '..'")
+    absolute = Path(os.path.abspath(os.fspath(raw_path)))
+    if not absolute.is_absolute() or absolute.name in {"", ".", ".."}:
+        raise ReadinessError(f"{description} path is invalid")
+    return absolute
+
+
+def preflight_atomic_output_path(destination: Path, description: str) -> Path:
+    """Reject lexical parent/final symlinks before any expensive work starts."""
+
+    absolute = lexical_absolute_output_path(destination, description)
+    no_follow = getattr(os, "O_NOFOLLOW", None)
+    directory_flag = getattr(os, "O_DIRECTORY", None)
+    if no_follow is None or directory_flag is None:
+        raise ReadinessError(
+            f"{description} requires no-follow directory-descriptor support"
+        )
+
+    directory_flags = (
+        os.O_RDONLY
+        | no_follow
+        | directory_flag
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    parent_fd = os.open(absolute.anchor, directory_flags)
+    try:
+        for component in absolute.parts[1:-1]:
+            try:
+                metadata = os.stat(
+                    component,
+                    dir_fd=parent_fd,
+                    follow_symlinks=False,
+                )
+            except FileNotFoundError:
+                return absolute
+            if stat.S_ISLNK(metadata.st_mode):
+                raise ReadinessError(
+                    f"{description} parent has a symlink component: {component}"
+                )
+            if not stat.S_ISDIR(metadata.st_mode):
+                raise ReadinessError(
+                    f"{description} parent component is not a directory: {component}"
+                )
+            next_fd = os.open(component, directory_flags, dir_fd=parent_fd)
+            os.close(parent_fd)
+            parent_fd = next_fd
+        try:
+            metadata = os.stat(
+                absolute.name,
+                dir_fd=parent_fd,
+                follow_symlinks=False,
+            )
+        except FileNotFoundError:
+            return absolute
+        if stat.S_ISLNK(metadata.st_mode) or not stat.S_ISREG(metadata.st_mode):
+            raise ReadinessError(
+                f"{description} destination must be a regular non-symlink file"
+            )
+        return absolute
+    finally:
+        os.close(parent_fd)
+
+
+def paths_share_inode(first: Path, second: Path) -> bool:
+    try:
+        first_metadata = first.stat(follow_symlinks=False)
+        second_metadata = second.stat(follow_symlinks=False)
+    except FileNotFoundError:
+        return False
+    return (
+        first_metadata.st_dev == second_metadata.st_dev
+        and first_metadata.st_ino == second_metadata.st_ino
+    )
+
+
+def validate_output_disjointness(
+    destination: Path,
+    description: str,
+    *,
+    input_zip: Path | None,
+    package_store: Path | None,
+    other_outputs: tuple[Path, ...] = (),
+) -> Path:
+    candidate = preflight_atomic_output_path(destination, description)
+    if input_zip is not None:
+        input_actual = input_zip.resolve(strict=True)
+        if candidate == input_actual or paths_share_inode(candidate, input_actual):
+            raise ReadinessError(f"{description} must differ from the input ZIP")
+    if package_store is not None:
+        store_actual = package_store.resolve(strict=True)
+        if candidate == store_actual or store_actual in candidate.parents:
+            raise ReadinessError(f"{description} must be outside the package store")
+    for other in other_outputs:
+        other_candidate = preflight_atomic_output_path(other, "Other report output")
+        if candidate == other_candidate or paths_share_inode(candidate, other_candidate):
+            raise ReadinessError(f"{description} must differ from other report outputs")
+    return candidate
+
+
+def atomic_write_output_bytes(
+    destination: Path,
+    payload: bytes,
+    description: str,
+) -> None:
+    """Atomically write below a no-follow dirfd chain, creating safe parents."""
+
+    if not isinstance(payload, bytes):
+        raise ReadinessError(f"{description} payload must be bytes")
+    absolute = lexical_absolute_output_path(destination, description)
+    no_follow = getattr(os, "O_NOFOLLOW", None)
+    directory_flag = getattr(os, "O_DIRECTORY", None)
+    if no_follow is None or directory_flag is None:
+        raise ReadinessError(
+            f"{description} requires no-follow directory-descriptor support"
+        )
+    directory_flags = (
+        os.O_RDONLY
+        | no_follow
+        | directory_flag
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    parent_fd = os.open(absolute.anchor, directory_flags)
+    temporary_name: str | None = None
+    try:
+        for component in absolute.parts[1:-1]:
+            if component in {"", ".", ".."}:
+                raise ReadinessError(
+                    f"{description} has an unsafe lexical parent component"
+                )
+            try:
+                metadata = os.stat(
+                    component,
+                    dir_fd=parent_fd,
+                    follow_symlinks=False,
+                )
+            except FileNotFoundError:
+                try:
+                    os.mkdir(component, mode=0o755, dir_fd=parent_fd)
+                except FileExistsError:
+                    pass
+                metadata = os.stat(
+                    component,
+                    dir_fd=parent_fd,
+                    follow_symlinks=False,
+                )
+            if stat.S_ISLNK(metadata.st_mode):
+                raise ReadinessError(
+                    f"{description} parent has a symlink component: {component}"
+                )
+            if not stat.S_ISDIR(metadata.st_mode):
+                raise ReadinessError(
+                    f"{description} parent component is not a directory: {component}"
+                )
+            next_fd = os.open(component, directory_flags, dir_fd=parent_fd)
+            os.close(parent_fd)
+            parent_fd = next_fd
+
+        final_name = absolute.name
+        try:
+            final_metadata = os.stat(
+                final_name,
+                dir_fd=parent_fd,
+                follow_symlinks=False,
+            )
+        except FileNotFoundError:
+            final_metadata = None
+        if final_metadata is not None and (
+            stat.S_ISLNK(final_metadata.st_mode)
+            or not stat.S_ISREG(final_metadata.st_mode)
+        ):
+            raise ReadinessError(
+                f"{description} destination must be a regular non-symlink file"
+            )
+
+        temporary_fd: int | None = None
+        for _attempt in range(20):
+            candidate = f".{final_name}.{secrets.token_hex(12)}.tmp"
+            try:
+                temporary_fd = os.open(
+                    candidate,
+                    os.O_WRONLY
+                    | os.O_CREAT
+                    | os.O_EXCL
+                    | no_follow
+                    | getattr(os, "O_CLOEXEC", 0),
+                    0o600,
+                    dir_fd=parent_fd,
+                )
+            except FileExistsError:
+                continue
+            temporary_name = candidate
+            break
+        if temporary_fd is None or temporary_name is None:
+            raise ReadinessError(f"Cannot allocate temporary {description} file")
+        try:
+            with os.fdopen(temporary_fd, "wb") as handle:
+                temporary_fd = None
+                handle.write(payload)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(
+                temporary_name,
+                final_name,
+                src_dir_fd=parent_fd,
+                dst_dir_fd=parent_fd,
+            )
+            temporary_name = None
+            os.fsync(parent_fd)
+        finally:
+            if temporary_fd is not None:
+                os.close(temporary_fd)
+    finally:
+        if temporary_name is not None:
+            try:
+                os.unlink(temporary_name, dir_fd=parent_fd)
+            except FileNotFoundError:
+                pass
+        os.close(parent_fd)
+
+
+def atomic_persist_consumer_report(source: Path, destination: Path) -> None:
+    atomic_write_output_bytes(
+        destination,
+        source.read_bytes(),
+        "Consumer smoke report",
+    )
+
+
+def validate_consumer_work_directory(path: Path) -> Path:
+    """Return one normalized, non-symlink work path strictly below repo tmp/."""
+
+    tmp_root = (REPO_ROOT / "tmp").absolute()
+    try:
+        tmp_metadata = tmp_root.lstat()
+    except FileNotFoundError as error:
+        raise ReadinessError("Repository tmp/ directory is unavailable") from error
+    if stat.S_ISLNK(tmp_metadata.st_mode) or not stat.S_ISDIR(tmp_metadata.st_mode):
+        raise ReadinessError("Repository tmp/ must be a non-symlink directory")
+    candidate = Path(os.path.abspath(os.fspath(path)))
+    try:
+        relative = candidate.relative_to(tmp_root)
+    except ValueError as error:
+        raise ReadinessError(
+            "Consumer smoke work directory must be below repository tmp/"
+        ) from error
+    if not relative.parts:
+        raise ReadinessError(
+            "Repository tmp/ itself cannot be the consumer smoke work directory"
+        )
+
+    cursor = tmp_root
+    for index, segment in enumerate(relative.parts):
+        cursor = cursor / segment
+        try:
+            metadata = cursor.lstat()
+        except FileNotFoundError:
+            continue
+        if stat.S_ISLNK(metadata.st_mode):
+            raise ReadinessError(
+                f"Consumer smoke work directory has a symlink component: {cursor}"
+            )
+        if not stat.S_ISDIR(metadata.st_mode):
+            description = "path" if index == len(relative.parts) - 1 else "parent"
+            raise ReadinessError(
+                f"Consumer smoke work directory {description} is not a directory: {cursor}"
+            )
+    return candidate
+
+
+def execute_consumer_runner(
+    zip_path: Path,
+    store_path: Path,
+    contracts: TrustedContracts,
+    persist_report_path: Path | None,
+    *,
+    runner_path: Path = CONSUMER_RUNNER_PATH,
+    timeout_seconds: float = CONSUMER_RUNNER_TIMEOUT_SECONDS,
+    expected_runner_binding: dict[str, Any] | None = None,
+    persistent_work_dir: Path | None = None,
+) -> ConsumerEvidenceContext:
+    """Execute one exactly pinned runner and capture only its fresh private report."""
+
+    runner_metadata = runner_path.lstat()
+    if stat.S_ISLNK(runner_metadata.st_mode) or not stat.S_ISREG(runner_metadata.st_mode):
+        raise ReadinessError("Pinned consumer runner is not a regular file")
+    runner = runner_path.resolve(strict=True)
+    runner_binding = {
+        "id": CONSUMER_RUNNER_ID,
+        "version": CONSUMER_RUNNER_VERSION,
+        "path": "scripts/run_package_consumer_smoke.py",
+        "bytes": runner_metadata.st_size,
+        "sha256": sha256_file(runner),
+    }
+    expected = expected_runner_binding or contracts.policy.get("consumerSmokeRunner")
+    if runner_binding != expected:
+        raise ReadinessError("Consumer smoke runner differs from its trusted pin")
+
+    store_metadata = store_path.lstat()
+    if stat.S_ISLNK(store_metadata.st_mode) or not stat.S_ISDIR(store_metadata.st_mode):
+        raise ReadinessError("Consumer smoke store must be a regular directory")
+    store = store_path.resolve(strict=True)
+
+    private_root = REPO_ROOT / "tmp"
+    private_root.mkdir(parents=True, exist_ok=True)
+    private_root_metadata = private_root.lstat()
+    if stat.S_ISLNK(private_root_metadata.st_mode) or not stat.S_ISDIR(
+        private_root_metadata.st_mode
+    ):
+        raise ReadinessError("Repository tmp/ must be a non-symlink directory")
+    with tempfile.TemporaryDirectory(
+        prefix="readiness-consumer-", dir=private_root
+    ) as temp_name:
+        private = Path(temp_name)
+        os.chmod(private, 0o700)
+        fresh_report_path = private / "fresh-consumer-smoke-report.json"
+        work_dir = (
+            validate_consumer_work_directory(persistent_work_dir)
+            if persistent_work_dir is not None
+            else private / "runner-work"
+        )
+        if persistent_work_dir is not None:
+            zip_absolute = Path(os.path.abspath(os.fspath(zip_path)))
+            store_absolute = Path(os.path.abspath(os.fspath(store)))
+            if work_dir == store_absolute or (
+                work_dir in store_absolute.parents
+                or store_absolute in work_dir.parents
+            ):
+                raise ReadinessError(
+                    "Consumer smoke work directory must not overlap the package store"
+                )
+            if work_dir == zip_absolute or work_dir in zip_absolute.parents:
+                raise ReadinessError(
+                    "Consumer smoke work directory must not contain the input ZIP"
+                )
+            if persist_report_path is not None:
+                persisted_absolute = Path(
+                    os.path.abspath(os.fspath(persist_report_path))
+                )
+                if work_dir == persisted_absolute or work_dir in persisted_absolute.parents:
+                    raise ReadinessError(
+                        "Persisted consumer report must be outside the retained runner work directory"
+                    )
+        log_path = private / "runner.log"
+        command = [
+            sys.executable,
+            "-B",
+            str(runner),
+            "--zip",
+            str(zip_path.resolve(strict=True)),
+            "--store",
+            str(store),
+            "--report",
+            str(fresh_report_path),
+            "--work-dir",
+            str(work_dir),
+        ]
+        environment = dict(os.environ)
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        timed_out = False
+        exit_code: int | None = None
+        execution_errors: list[str] = []
+        with log_path.open("wb") as log_handle:
+            process = subprocess.Popen(
+                command,
+                cwd=REPO_ROOT,
+                env=environment,
+                stdin=subprocess.DEVNULL,
+                stdout=log_handle,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+            )
+            try:
+                exit_code = process.wait(timeout=timeout_seconds)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                execution_errors.append(
+                    f"Pinned consumer runner exceeded {timeout_seconds:g} seconds"
+                )
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                process.wait()
+
+        assembly_binding: tuple[int, str] | None = None
+        evidence_bundle_binding: tuple[int, str] | None = None
+        try:
+            assembly_binding = digest_consumer_tree(work_dir / "assembly")
+        except ReadinessError as error:
+            execution_errors.append(str(error))
+        try:
+            evidence_bundle_binding = digest_consumer_tree(
+                work_dir / "evidence-bundle"
+            )
+        except ReadinessError as error:
+            execution_errors.append(str(error))
+
+        loaded_report = (
+            load_consumer_report(fresh_report_path)
+            if fresh_report_path.exists()
+            else None
+        )
+        fresh = bool(
+            loaded_report is not None
+            and loaded_report.report is not None
+            and not loaded_report.errors
+        )
+        if loaded_report is None:
+            execution_errors.append("Pinned consumer runner emitted no report")
+        elif loaded_report.errors:
+            execution_errors.extend(loaded_report.errors[:5])
+        if exit_code not in {0, 1} and not timed_out:
+            execution_errors.append(
+                f"Pinned consumer runner exited with unexpected status {exit_code}"
+            )
+        if (
+            fresh
+            and loaded_report is not None
+            and loaded_report.report is not None
+            and not loaded_report.errors
+            and persist_report_path is not None
+        ):
+            atomic_persist_consumer_report(fresh_report_path, persist_report_path)
+            assert loaded_report is not None
+            loaded_report.name = persist_report_path.name
+
+        return ConsumerEvidenceContext(
+            provenance="self-executed",
+            loaded_report=loaded_report,
+            runner_script_bytes=runner_binding["bytes"],
+            runner_script_sha256=runner_binding["sha256"],
+            runner_exit_code=exit_code,
+            runner_timed_out=timed_out,
+            fresh_report=fresh,
+            assembly_bytes=(
+                assembly_binding[0] if assembly_binding is not None else None
+            ),
+            assembly_sha256=(
+                assembly_binding[1] if assembly_binding is not None else None
+            ),
+            evidence_bundle_bytes=(
+                evidence_bundle_binding[0]
+                if evidence_bundle_binding is not None
+                else None
+            ),
+            evidence_bundle_sha256=(
+                evidence_bundle_binding[1]
+                if evidence_bundle_binding is not None
+                else None
+            ),
+            execution_errors=execution_errors,
+        )
 
 
 def load_manifest_input(path: Path, manifest_limit: int) -> LoadedInput:
@@ -617,7 +1434,9 @@ def read_zip_entry_bounded(
                 break
             count += len(chunk)
             if count > limit:
-                raise ReadinessError(f"ZIP entry {info.filename!r} exceeded bounded read")
+                raise ReadinessError(
+                    f"ZIP entry {info.filename!r} exceeded bounded read"
+                )
             chunks.append(chunk)
     return b"".join(chunks)
 
@@ -655,9 +1474,7 @@ def load_zip_input(path: Path, profile: dict[str, Any]) -> LoadedInput:
         )
 
     try:
-        hashed_bytes, outer_sha256 = sha256_file_bounded(
-            path, limits["outerZipBytes"]
-        )
+        hashed_bytes, outer_sha256 = sha256_file_bounded(path, limits["outerZipBytes"])
     except ReadinessError as error:
         return unavailable_input(
             kind="zip", path=path, size=path.stat().st_size, error=str(error)
@@ -683,7 +1500,9 @@ def load_zip_input(path: Path, profile: dict[str, Any]) -> LoadedInput:
                 errors.append(f"ZIP contains more than {limits['entryCount']} entries")
             if len(names) != len(set(names)):
                 errors.append("ZIP contains duplicate entry names")
-            portable_names = [package_contracts.portable_path_key(name) for name in names]
+            portable_names = [
+                package_contracts.portable_path_key(name) for name in names
+            ]
             if len(portable_names) != len(set(portable_names)):
                 errors.append("ZIP contains portable path collisions")
             if any(not package_contracts.path_is_safe(name) for name in names):
@@ -701,9 +1520,13 @@ def load_zip_input(path: Path, profile: dict[str, Any]) -> LoadedInput:
                 len(info.filename.encode("utf-8")) > limits["archivePathBytes"]
                 for info in infos
             ):
-                errors.append("ZIP contains an entry path above the portable byte limit")
+                errors.append(
+                    "ZIP contains an entry path above the portable byte limit"
+                )
             if any(info.file_size > limits["genericEntryBytes"] for info in infos):
-                errors.append("ZIP contains an entry above the generic uncompressed limit")
+                errors.append(
+                    "ZIP contains an entry above the generic uncompressed limit"
+                )
             total_uncompressed = sum(info.file_size for info in infos)
             total_compressed = sum(info.compress_size for info in infos)
             if total_uncompressed > limits["totalUncompressedBytes"]:
@@ -736,7 +1559,10 @@ def load_zip_input(path: Path, profile: dict[str, Any]) -> LoadedInput:
                 errors.append("ZIP must contain exactly one archive root")
             else:
                 archive_root = next(iter(roots))
-                if not package_contracts.path_is_safe(archive_root) or "/" in archive_root:
+                if (
+                    not package_contracts.path_is_safe(archive_root)
+                    or "/" in archive_root
+                ):
                     errors.append("ZIP archive root is not portable")
             manifest_names = [
                 name for name in names if name.endswith("/metadata/manifest.json")
@@ -745,7 +1571,9 @@ def load_zip_input(path: Path, profile: dict[str, Any]) -> LoadedInput:
                 f"{archive_root}/metadata/manifest.json" if archive_root else None
             )
             if len(manifest_names) != 1 or manifest_names[0] != expected_manifest_name:
-                errors.append("ZIP must contain exactly one manifest below its archive root")
+                errors.append(
+                    "ZIP must contain exactly one manifest below its archive root"
+                )
             else:
                 manifest_info = archive.getinfo(manifest_names[0])
                 if manifest_info.file_size > manifest_limits["manifestBytes"]:
@@ -898,11 +1726,14 @@ def canonical_contract_diagnostics(
     )
     target_codes = {"RELEASE_ID_MISMATCH", "SOFTWARE_RANGE_INVALID", "PROFILE_MISMATCH"}
     target = [item for item in diagnostics if item.code in target_codes]
-    bindings = [item for item in diagnostics if item.code.startswith("CONTRACT_BINDING_")]
+    bindings = [
+        item for item in diagnostics if item.code.startswith("CONTRACT_BINDING_")
+    ]
     profile = [
         item
         for item in diagnostics
-        if item.code not in target_codes and not item.code.startswith("CONTRACT_BINDING_")
+        if item.code not in target_codes
+        and not item.code.startswith("CONTRACT_BINDING_")
     ]
     return [], target, bindings, profile
 
@@ -1044,7 +1875,9 @@ def check_zip_inventory(
                     issues.append(f"{path}: byte count differs from manifest")
                 if digest != record.get("sha256"):
                     issues.append(f"{path}: SHA-256 differs from manifest")
-                if limits["nestedArchivesAllowed"] is False and archive_magic(content_prefix):
+                if limits["nestedArchivesAllowed"] is False and archive_magic(
+                    content_prefix
+                ):
                     issues.append(f"{path}: nested archive content is forbidden")
                 if record.get("role") == "binary-asset":
                     actual_image_bytes += byte_count
@@ -1060,9 +1893,9 @@ def check_zip_inventory(
                         issues.append(f"missing {binding_name} package binding")
                         continue
                     path = binding.get("path")
-                    if not isinstance(path, str) or actual_hashes.get(path) != binding.get(
-                        "sha256"
-                    ):
+                    if not isinstance(path, str) or actual_hashes.get(
+                        path
+                    ) != binding.get("sha256"):
                         issues.append(
                             f"{binding_name} package-local bytes differ from trusted binding"
                         )
@@ -1084,7 +1917,8 @@ def check_zip_inventory(
                     issues.extend(checksum_issues)
                     manifest_name = f"{root}/metadata/manifest.json"
                     expected_checksums = {
-                        f"{root}/{path}": digest for path, digest in actual_hashes.items()
+                        f"{root}/{path}": digest
+                        for path, digest in actual_hashes.items()
                     }
                     expected_checksums[manifest_name] = sha256_bytes(
                         loaded.manifest_bytes or b""
@@ -1118,11 +1952,15 @@ def expected_full_validator_package_binding(loaded: LoadedInput) -> dict[str, An
     closure_digest: str | None = None
     definition_index_digest: str | None = None
     files = manifest.get("files")
-    closure_records = [
-        record
-        for record in files
-        if isinstance(record, dict) and record.get("role") == "dependency-closure"
-    ] if isinstance(files, list) else []
+    closure_records = (
+        [
+            record
+            for record in files
+            if isinstance(record, dict) and record.get("role") == "dependency-closure"
+        ]
+        if isinstance(files, list)
+        else []
+    )
     if loaded.kind == "zip" and len(closure_records) == 1:
         relative_path = closure_records[0].get("path")
         if not isinstance(relative_path, str) or not loaded.archive_root:
@@ -1178,6 +2016,305 @@ def expected_full_validator_package_binding(loaded: LoadedInput) -> dict[str, An
     }
 
 
+def consumer_report_binding(
+    evidence: ConsumerEvidenceContext,
+    contracts: TrustedContracts,
+    status: str,
+) -> dict[str, Any]:
+    loaded_report = evidence.loaded_report
+    return {
+        "reportName": loaded_report.name if loaded_report is not None else None,
+        "bytes": loaded_report.bytes if loaded_report is not None else None,
+        "sha256": loaded_report.sha256 if loaded_report is not None else None,
+        "schemaSha256": contracts.consumer_report_schema_sha256,
+        "status": status,
+        "provenance": evidence.provenance,
+        "runnerScriptBytes": evidence.runner_script_bytes,
+        "runnerScriptSha256": evidence.runner_script_sha256,
+        "runnerExitCode": evidence.runner_exit_code,
+        "runnerTimedOut": evidence.runner_timed_out,
+        "freshReport": evidence.fresh_report,
+        "assemblyBytes": evidence.assembly_bytes,
+        "assemblySha256": evidence.assembly_sha256,
+        "evidenceBundleBytes": evidence.evidence_bundle_bytes,
+        "evidenceBundleSha256": evidence.evidence_bundle_sha256,
+    }
+
+
+def validate_consumer_report_semantics(
+    report: dict[str, Any],
+    loaded: LoadedInput,
+    contracts: TrustedContracts,
+) -> None:
+    errors = list(
+        islice(
+            Draft202012Validator(contracts.consumer_report_schema).iter_errors(report),
+            MAX_SCHEMA_DIAGNOSTICS,
+        )
+    )
+    if errors:
+        error = errors[0]
+        location = "/" + "/".join(str(item) for item in error.absolute_path)
+        raise ReadinessError(
+            "Consumer smoke report schema failure at "
+            f"{location}: {truncate_fragment(error.message)}"
+        )
+
+    input_binding = report["input"]
+    package_binding = expected_full_validator_package_binding(loaded)
+    expected_input = {
+        "name": loaded.name,
+        "bytes": loaded.bytes,
+        "sha256": loaded.sha256,
+        **package_binding,
+    }
+    if input_binding != expected_input:
+        raise ReadinessError(
+            "Consumer smoke report is not exactly bound to the evaluated ZIP and package"
+        )
+    if input_binding["releaseId"] != (
+        f"{input_binding['packageId']}@{input_binding['packageVersion']}"
+    ):
+        raise ReadinessError("Consumer smoke report releaseId binding is incoherent")
+
+    activation = report["activation"]
+    if activation["packageCount"] != 1:
+        raise ReadinessError(
+            "Single-package consumer evidence must bind exactly one active lock entry"
+        )
+    if activation["activeLockSha256"] == "0" * 64:
+        raise ReadinessError("Consumer smoke active-lock hash is a placeholder")
+    active_lock_bytes = (
+        json.dumps(
+            activation["activeLock"],
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n"
+    ).encode("utf-8")
+    if activation["activeLockBytes"] != len(active_lock_bytes) or activation[
+        "activeLockSha256"
+    ] != sha256_bytes(active_lock_bytes):
+        raise ReadinessError(
+            "Consumer smoke active-lock byte length/hash differs from the inline canonical lock"
+        )
+    if activation["activeLockSha256"] != activation["generationSha256"]:
+        raise ReadinessError(
+            "Consumer smoke generation must equal the exact active package-lock SHA-256"
+        )
+    selected = activation["selectedPackage"]
+    if activation["activeLock"]["packages"] != [selected]:
+        raise ReadinessError(
+            "Consumer smoke selected package differs from the exact inline active lock"
+        )
+    expected_selected = {
+        "packageId": input_binding["packageId"],
+        "packageVersion": input_binding["packageVersion"],
+        "releaseId": input_binding["releaseId"],
+        "outerZipSha256": input_binding["sha256"],
+        "manifestSha256": input_binding["manifestSha256"],
+        "contentDigest": input_binding["contentDigest"],
+        "archiveRoot": input_binding["archiveRoot"],
+        "closureDigest": input_binding["closureDigest"],
+        "definitionIndexDigest": input_binding["definitionIndexDigest"],
+    }
+    for field, expected in expected_selected.items():
+        if selected.get(field) != expected:
+            raise ReadinessError(
+                f"Consumer smoke active-lock package binding differs for {field}"
+            )
+    if selected["releaseId"] != f"{selected['packageId']}@{selected['packageVersion']}":
+        raise ReadinessError("Consumer smoke selected lock releaseId is incoherent")
+    if selected["installRecordSha256"] == "0" * 64:
+        raise ReadinessError("Consumer smoke install-record hash is a placeholder")
+
+    application = report["application"]
+    if application["consumerApiVersion"] != CONSUMER_API_VERSION:
+        raise ReadinessError(
+            "Consumer smoke report uses an unexpected curriculum-consumer API version"
+        )
+    application_hashes = [
+        report["runner"]["scriptSha256"],
+        application["frontendSha256"],
+        application["backendSha256"],
+        application["configurationSha256"],
+        application["assemblySha256"],
+        report["evidenceBundle"]["sha256"],
+    ]
+    if len(set(application_hashes)) != len(application_hashes) or any(
+        value == "0" * 64 for value in application_hashes
+    ):
+        raise ReadinessError(
+            "Consumer smoke runner/application/evidence artifacts need distinct non-placeholder hashes"
+        )
+    functional_checks = report["functionalChecks"]
+    if [item["id"] for item in functional_checks] != FUNCTIONAL_CHECK_IDS:
+        raise ReadinessError(
+            "Consumer smoke functional checks differ from the closed required order"
+        )
+    if report["status"] == "passed" and any(
+        item["evidenceSha256"] == "0" * 64 for item in functional_checks
+    ):
+        raise ReadinessError(
+            "Consumer smoke functional evidence contains a placeholder hash"
+        )
+    summary = report["summary"]
+    expected_summary = {
+        "required": len(FUNCTIONAL_CHECK_IDS),
+        "passed": sum(item["result"] == "passed" for item in functional_checks),
+        "failed": sum(item["result"] == "failed" for item in functional_checks),
+        "notRun": sum(item["result"] == "not-run" for item in functional_checks),
+    }
+    if summary != expected_summary:
+        raise ReadinessError(
+            "Consumer smoke summary is not derived from functional checks"
+        )
+    poison_sentinels = report["isolation"]["poisonSentinels"]
+    if report["isolation"]["filesystemTraceSha256"] == "0" * 64:
+        raise ReadinessError("Consumer smoke filesystem trace hash is a placeholder")
+    if [item["id"] for item in poison_sentinels] != POISON_SENTINEL_IDS:
+        raise ReadinessError(
+            "Consumer smoke poison sentinels differ from the closed required order"
+        )
+    diagnostics = report["diagnostics"]
+    if diagnostics != sorted(
+        diagnostics, key=lambda item: (item["code"], item["message"])
+    ):
+        raise ReadinessError("Consumer smoke diagnostics are not canonically ordered")
+
+
+def evaluate_consumer_report(
+    evidence: ConsumerEvidenceContext,
+    loaded: LoadedInput,
+    contracts: TrustedContracts,
+) -> tuple[str, str, str, dict[str, Any]]:
+    loaded_report = evidence.loaded_report
+    if evidence.provenance == "external-unattested":
+        return (
+            "not-evaluated",
+            "CONSUMER_SMOKE_REPORT_UNATTESTED",
+            "An external consumer smoke report is not a trust source. Provide "
+            "--consumer-smoke-store so the evaluator executes its pinned runner.",
+            consumer_report_binding(evidence, contracts, "external-unattested"),
+        )
+    if evidence.provenance != "self-executed":
+        return (
+            "not-evaluated",
+            "CONSUMER_SMOKE_REPORT_NOT_PROVIDED",
+            "No package-only SkillPilot consumer smoke run was requested.",
+            consumer_report_binding(evidence, contracts, "not-provided"),
+        )
+    if evidence.runner_timed_out or loaded_report is None:
+        detail = "; ".join(evidence.execution_errors[:5]) or "no fresh report"
+        return (
+            "not-evaluated",
+            "CONSUMER_SMOKE_RUNNER_UNAVAILABLE",
+            "The pinned consumer smoke runner yielded no attested report: " + detail,
+            consumer_report_binding(evidence, contracts, "not-evaluated"),
+        )
+    policy_runner = contracts.policy["consumerSmokeRunner"]
+    if (
+        evidence.runner_script_bytes != policy_runner["bytes"]
+        or evidence.runner_script_sha256 != policy_runner["sha256"]
+    ):
+        return (
+            "fail",
+            "CONSUMER_SMOKE_RUNNER_UNTRUSTED",
+            "The executed consumer smoke runner differs from the trusted policy pin.",
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    if loaded_report is None:
+        return (
+            "not-evaluated",
+            "CONSUMER_SMOKE_REPORT_NOT_PROVIDED",
+            "No package-only SkillPilot consumer smoke report was provided.",
+            consumer_report_binding(evidence, contracts, "not-provided"),
+        )
+    if loaded_report.errors or loaded_report.report is None:
+        return (
+            "fail",
+            "CONSUMER_SMOKE_REPORT_INVALID",
+            "Consumer smoke evidence could not be loaded safely: "
+            + "; ".join(loaded_report.errors[:5]),
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    try:
+        validate_consumer_report_semantics(
+            loaded_report.report,
+            loaded,
+            contracts,
+        )
+    except (ReadinessError, FullValidatorProcessError) as error:
+        return (
+            "fail",
+            "CONSUMER_SMOKE_REPORT_INVALID",
+            "Consumer smoke evidence failed closed validation: "
+            + truncate_fragment(str(error), 1200),
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    if (
+        loaded_report.report["runner"]["scriptBytes"]
+        != evidence.runner_script_bytes
+        or loaded_report.report["runner"]["scriptSha256"]
+        != evidence.runner_script_sha256
+    ):
+        return (
+            "fail",
+            "CONSUMER_SMOKE_RUNNER_BINDING_INVALID",
+            "The fresh report does not bind the exact pinned runner bytes.",
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    application = loaded_report.report["application"]
+    evidence_bundle = loaded_report.report["evidenceBundle"]
+    if (
+        application["assemblyBytes"] != evidence.assembly_bytes
+        or application["assemblySha256"] != evidence.assembly_sha256
+    ):
+        return (
+            "fail",
+            "CONSUMER_SMOKE_ASSEMBLY_BINDING_INVALID",
+            "The fresh report differs from the evaluator-recomputed final assembly tree.",
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    if (
+        evidence_bundle["bytes"] != evidence.evidence_bundle_bytes
+        or evidence_bundle["sha256"] != evidence.evidence_bundle_sha256
+    ):
+        return (
+            "fail",
+            "CONSUMER_SMOKE_EVIDENCE_BUNDLE_BINDING_INVALID",
+            "The fresh report differs from the evaluator-recomputed evidence tree.",
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    expected_exit = 0 if loaded_report.report["status"] == "passed" else 1
+    if evidence.runner_exit_code != expected_exit:
+        return (
+            "fail",
+            "CONSUMER_SMOKE_RUNNER_EXIT_MISMATCH",
+            "Pinned runner exit status and fresh report status differ.",
+            consumer_report_binding(evidence, contracts, "rejected"),
+        )
+    if loaded_report.report["status"] != "passed":
+        return (
+            "fail",
+            "HERMETIC_CONSUMER_SMOKE_FAILED",
+            "The bound package-only consumer smoke report did not pass.",
+            consumer_report_binding(evidence, contracts, "accepted"),
+        )
+    isolation = loaded_report.report["isolation"]
+    application = loaded_report.report["application"]
+    return (
+        "pass",
+        "CHECK_PASSED",
+        "Bound package-only consumer smoke passed all 15 functional checks; "
+        f"generation={loaded_report.report['activation']['generationSha256']}, "
+        f"frontend={application['frontendSha256']}, "
+        f"trace={isolation['filesystemTraceSha256']}.",
+        consumer_report_binding(evidence, contracts, "accepted"),
+    )
+
+
 def validate_full_validator_report(
     report: dict[str, Any],
     loaded: LoadedInput,
@@ -1219,7 +2356,9 @@ def validate_full_validator_report(
 
     input_value = report.get("input")
     if not isinstance(input_value, dict):
-        raise FullValidatorProcessError("Independent validator input binding is malformed")
+        raise FullValidatorProcessError(
+            "Independent validator input binding is malformed"
+        )
     exact_keys(input_value, {"path", "bytes", "sha256"}, "validator input binding")
     if input_value != {
         "path": str(loaded.path.resolve()),
@@ -1232,7 +2371,9 @@ def validate_full_validator_report(
 
     package_value = report.get("package")
     if not isinstance(package_value, dict):
-        raise FullValidatorProcessError("Independent validator package binding is malformed")
+        raise FullValidatorProcessError(
+            "Independent validator package binding is malformed"
+        )
     exact_keys(
         package_value,
         {
@@ -1448,7 +2589,9 @@ def run_full_validator_process(
             "Independent validator requires a safely preflighted ZIP candidate"
         )
     if timeout_seconds <= 0:
-        raise FullValidatorProcessError("Independent validator timeout must be positive")
+        raise FullValidatorProcessError(
+            "Independent validator timeout must be positive"
+        )
     validator_path = validator_path.absolute()
     try:
         validator_metadata = validator_path.lstat()
@@ -1518,7 +2661,9 @@ def run_full_validator_process(
 
     try:
         final_metadata = loaded.path.lstat()
-        if not stat.S_ISREG(final_metadata.st_mode) or stat.S_ISLNK(final_metadata.st_mode):
+        if not stat.S_ISREG(final_metadata.st_mode) or stat.S_ISLNK(
+            final_metadata.st_mode
+        ):
             raise FullValidatorProcessError(
                 "Evaluated ZIP is no longer a regular non-symlink file"
             )
@@ -1597,8 +2742,7 @@ def evaluate_full_validator_gates(
     except (FullValidatorProcessError, ReadinessError) as error:
         message = (
             "Independent full-standalone validation produced no trustworthy "
-            "evidence: "
-            + truncate_fragment(str(error), 1200)
+            "evidence: " + truncate_fragment(str(error), 1200)
         )
         return {
             check_id: (
@@ -1651,6 +2795,7 @@ def derive_blockers(checks: list[dict[str, Any]]) -> list[str]:
 def derive_decision(
     dialect: str,
     checks: list[dict[str, Any]],
+    complete_for_policy: bool,
 ) -> dict[str, Any]:
     checks_by_id = {check["id"]: check for check in checks}
     input_result = checks_by_id[INPUT_CHECK_IDS[0]]["result"]
@@ -1670,15 +2815,14 @@ def derive_decision(
     ):
         status, reason = "invalid", "TARGET_CONTRACT_INVALID"
     elif any(
-        checks_by_id[check_id]["result"] == "fail"
-        for check_id in PUBLICATION_CHECK_IDS
+        checks_by_id[check_id]["result"] == "fail" for check_id in PUBLICATION_CHECK_IDS
     ):
         status, reason = "not-ready-incomplete", "REDISTRIBUTION_REVIEW_REQUIRED"
     elif any(check["result"] == "fail" for check in checks):
         status, reason = "not-ready-incomplete", "REQUIRED_GATES_FAILED"
     elif any(check["result"] != "pass" for check in checks):
         status, reason = "not-ready-incomplete", "REQUIRED_GATES_NOT_EVALUATED"
-    elif EVALUATOR_COMPLETE_FOR_POLICY:
+    elif complete_for_policy:
         status, reason = "ready", "CHECK_PASSED"
     else:
         status, reason = "not-ready-incomplete", "REQUIRED_GATES_NOT_EVALUATED"
@@ -1693,14 +2837,26 @@ def derive_decision(
 def evaluate_loaded_input(
     loaded: LoadedInput,
     contracts: TrustedContracts,
+    consumer_evidence: ConsumerEvidenceContext | None = None,
 ) -> dict[str, Any]:
     manifest = loaded.manifest
     policy = contracts.policy
     dialect, markers = classify_manifest(manifest, policy)
-    blocking_by_id = {
-        item["id"]: item["blocking"] for item in policy["requiredChecks"]
-    }
+    blocking_by_id = {item["id"]: item["blocking"] for item in policy["requiredChecks"]}
     checks_by_id: dict[str, dict[str, Any]] = {}
+    evidence = consumer_evidence or no_consumer_evidence()
+    complete_for_policy = evidence.complete_for_policy
+    consumer_binding = consumer_report_binding(
+        evidence,
+        contracts,
+        "not-provided"
+        if evidence.provenance == "none"
+        else (
+            "external-unattested"
+            if evidence.provenance == "external-unattested"
+            else "not-evaluated"
+        ),
+    )
 
     def record(check_id: str, result: str, code: str, message: str) -> None:
         if check_id in checks_by_id:
@@ -1709,9 +2865,7 @@ def evaluate_loaded_input(
             check_id, result, code, message, blocking_by_id
         )
 
-    def mark_checks(
-        check_ids: list[str], result: str, code: str, message: str
-    ) -> None:
+    def mark_checks(check_ids: list[str], result: str, code: str, message: str) -> None:
         for check_id in check_ids:
             record(check_id, result, code, message)
 
@@ -1728,7 +2882,14 @@ def evaluate_loaded_input(
 
     if not input_safe:
         mark_checks(
-            [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [
+                *IDENTITY_CHECK_IDS,
+                *CONTRACT_CHECK_IDS,
+                *CATALOG_CHECK_IDS,
+                *STANDALONE_CHECK_IDS,
+                *PUBLICATION_CHECK_IDS,
+                *CONSUMER_CHECK_IDS,
+            ],
             "not-applicable",
             "INPUT_INVALID",
             "No readiness interpretation is permitted after input-safety failure.",
@@ -1741,7 +2902,13 @@ def evaluate_loaded_input(
             "Recognized legacy subject export; legacy validity cannot establish full-standalone-v1 readiness.",
         )
         mark_checks(
-            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [
+                *CONTRACT_CHECK_IDS,
+                *CATALOG_CHECK_IDS,
+                *STANDALONE_CHECK_IDS,
+                *PUBLICATION_CHECK_IDS,
+                *CONSUMER_CHECK_IDS,
+            ],
             "not-applicable",
             "LEGACY_TARGET_CHECK_NOT_APPLICABLE",
             "Target-contract check is not applied to a recognized legacy artifact.",
@@ -1760,7 +2927,9 @@ def evaluate_loaded_input(
         record(
             "contract.manifest-schema",
             "fail" if schema_diagnostics else "not-applicable",
-            "MANIFEST_SCHEMA_INVALID" if schema_diagnostics else "INCOHERENT_TARGET_CONTRACT",
+            "MANIFEST_SCHEMA_INVALID"
+            if schema_diagnostics
+            else "INCOHERENT_TARGET_CONTRACT",
             format_diagnostics(schema_diagnostics)
             if schema_diagnostics
             else "Target schema is not applied as an identity upgrade.",
@@ -1772,7 +2941,12 @@ def evaluate_loaded_input(
             "Later contract checks are not applied to an incoherent target claim.",
         )
         mark_checks(
-            [*CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [
+                *CATALOG_CHECK_IDS,
+                *STANDALONE_CHECK_IDS,
+                *PUBLICATION_CHECK_IDS,
+                *CONSUMER_CHECK_IDS,
+            ],
             "not-applicable",
             "INCOHERENT_TARGET_CONTRACT",
             "Later readiness gates are not applied to an incoherent target claim.",
@@ -1785,7 +2959,13 @@ def evaluate_loaded_input(
             "Input does not declare the supported full-standalone-v1 target contract.",
         )
         mark_checks(
-            [*CONTRACT_CHECK_IDS, *CATALOG_CHECK_IDS, *STANDALONE_CHECK_IDS, *PUBLICATION_CHECK_IDS, *CONSUMER_CHECK_IDS],
+            [
+                *CONTRACT_CHECK_IDS,
+                *CATALOG_CHECK_IDS,
+                *STANDALONE_CHECK_IDS,
+                *PUBLICATION_CHECK_IDS,
+                *CONSUMER_CHECK_IDS,
+            ],
             "not-applicable",
             "UNSUPPORTED_TARGET_CONTRACT",
             "Target-contract check is not applicable to an unsupported contract.",
@@ -1881,13 +3061,8 @@ def evaluate_loaded_input(
             record(
                 PUBLICATION_CHECK_IDS[0],
                 "fail" if uncleared_paths else "pass",
-                "REDISTRIBUTION_REVIEW_REQUIRED"
-                if uncleared_paths
-                else "CHECK_PASSED",
-                (
-                    "Redistribution is not cleared for: "
-                    + ", ".join(uncleared_paths[:5])
-                )
+                "REDISTRIBUTION_REVIEW_REQUIRED" if uncleared_paths else "CHECK_PASSED",
+                ("Redistribution is not cleared for: " + ", ".join(uncleared_paths[:5]))
                 if uncleared_paths
                 else "Every distributed file is explicitly cleared for redistribution.",
             )
@@ -1918,12 +3093,30 @@ def evaluate_loaded_input(
             for check_id in validator_check_ids:
                 result, code, message = mapped_gates[check_id]
                 record(check_id, result, code, message)
-        record(
-            "consumer.hermetic-package-only",
-            "not-evaluated",
-            "HERMETIC_CONSUMER_GATE_NOT_IMPLEMENTED",
-            "The package-only SkillPilot consumer smoke test is not yet implemented.",
-        )
+        if loaded.kind != "zip":
+            record(
+                "consumer.hermetic-package-only",
+                "not-evaluated",
+                "PAYLOAD_NOT_PROVIDED",
+                "A standalone manifest cannot prove package-only consumer operability.",
+            )
+        elif any(
+            checks_by_id[check_id]["result"] != "pass"
+            for check_id in [*IDENTITY_CHECK_IDS, *CONTRACT_CHECK_IDS]
+        ):
+            record(
+                "consumer.hermetic-package-only",
+                "not-evaluated",
+                "CONSUMER_SMOKE_BLOCKED",
+                "Consumer evidence is not applied until target-contract and finished-ZIP inventory checks pass.",
+            )
+        else:
+            result, code, message, consumer_binding = evaluate_consumer_report(
+                evidence,
+                loaded,
+                contracts,
+            )
+            record("consumer.hermetic-package-only", result, code, message)
     else:
         raise ReadinessError(f"Unhandled safe manifest dialect {dialect!r}")
 
@@ -1932,9 +3125,14 @@ def evaluate_loaded_input(
             f"Evaluator check coverage differs; missing={sorted(set(REQUIRED_CHECK_IDS) - set(checks_by_id))}"
         )
     checks = [checks_by_id[check_id] for check_id in REQUIRED_CHECK_IDS]
+    complete_for_policy = bool(
+        complete_for_policy
+        and consumer_binding["status"] in {"accepted", "rejected"}
+        and checks_by_id[CONSUMER_CHECK_IDS[0]]["result"] in {"pass", "fail"}
+    )
     report = {
         "$schema": REPORT_SCHEMA_ID,
-        "reportFormatVersion": "1.0",
+        "reportFormatVersion": "1.1",
         "scope": policy["scope"],
         "policy": {
             "id": policy["policyId"],
@@ -1946,7 +3144,7 @@ def evaluate_loaded_input(
             "version": EVALUATOR_VERSION,
             "jsonschemaVersion": JSONSCHEMA_VERSION,
             "implementedCheckIds": IMPLEMENTED_CHECK_IDS,
-            "completeForPolicy": EVALUATOR_COMPLETE_FOR_POLICY,
+            "completeForPolicy": complete_for_policy,
         },
         "input": {
             "kind": loaded.kind,
@@ -1958,6 +3156,7 @@ def evaluate_loaded_input(
             else None,
             "archiveRoot": loaded.archive_root,
         },
+        "consumerEvidence": consumer_binding,
         "classification": {
             "manifestDialect": dialect,
             "targetMarkers": markers,
@@ -1967,9 +3166,7 @@ def evaluate_loaded_input(
             "contractConformance": aggregate_dimension(
                 checks_by_id, CONTRACT_CHECK_IDS
             ),
-            "catalogCompleteness": aggregate_dimension(
-                checks_by_id, CATALOG_CHECK_IDS
-            ),
+            "catalogCompleteness": aggregate_dimension(checks_by_id, CATALOG_CHECK_IDS),
             "standaloneCompleteness": aggregate_dimension(
                 checks_by_id, STANDALONE_CHECK_IDS
             ),
@@ -1980,7 +3177,7 @@ def evaluate_loaded_input(
                 checks_by_id, CONSUMER_CHECK_IDS
             ),
         },
-        "decision": derive_decision(dialect, checks),
+        "decision": derive_decision(dialect, checks, complete_for_policy),
         "checks": checks,
     }
     validate_report_semantics(report, contracts)
@@ -2011,12 +3208,27 @@ def validate_report_semantics(
     }
     if report["policy"] != expected_policy:
         raise ReadinessError("Readiness report policy binding is stale or forged")
+    consumer_evidence = report["consumerEvidence"]
+    expected_complete_for_policy = bool(
+        EVALUATOR_IMPLEMENTATION_COMPLETE
+        and consumer_evidence["provenance"] == "self-executed"
+        and consumer_evidence["freshReport"]
+        and not consumer_evidence["runnerTimedOut"]
+        and consumer_evidence["runnerScriptBytes"] is not None
+        and consumer_evidence["runnerScriptSha256"] is not None
+        and consumer_evidence["runnerExitCode"] is not None
+        and consumer_evidence["assemblyBytes"] is not None
+        and consumer_evidence["assemblySha256"] is not None
+        and consumer_evidence["evidenceBundleBytes"] is not None
+        and consumer_evidence["evidenceBundleSha256"] is not None
+        and consumer_evidence["status"] in {"accepted", "rejected"}
+    )
     expected_evaluator = {
         "name": EVALUATOR_NAME,
         "version": EVALUATOR_VERSION,
         "jsonschemaVersion": JSONSCHEMA_VERSION,
         "implementedCheckIds": IMPLEMENTED_CHECK_IDS,
-        "completeForPolicy": EVALUATOR_COMPLETE_FOR_POLICY,
+        "completeForPolicy": expected_complete_for_policy,
     }
     if report["evaluator"] != expected_evaluator:
         raise ReadinessError("Readiness report evaluator binding is stale or forged")
@@ -2024,7 +3236,9 @@ def validate_report_semantics(
     checks = report["checks"]
     check_ids = [check["id"] for check in checks]
     if check_ids != REQUIRED_CHECK_IDS:
-        raise ReadinessError("Readiness report check multiset/order differs from policy")
+        raise ReadinessError(
+            "Readiness report check multiset/order differs from policy"
+        )
     if any(check["blocking"] is not True for check in checks):
         raise ReadinessError("Readiness report changed policy blocking semantics")
     if any(
@@ -2033,12 +3247,80 @@ def validate_report_semantics(
     ):
         raise ReadinessError("Unimplemented readiness check cannot claim pass")
     if checks[0]["result"] == "pass" and (
-        report["input"]["sha256"] is None
-        or report["input"]["manifestSha256"] is None
+        report["input"]["sha256"] is None or report["input"]["manifestSha256"] is None
     ):
-        raise ReadinessError("Input-integrity pass requires artifact and manifest hashes")
+        raise ReadinessError(
+            "Input-integrity pass requires artifact and manifest hashes"
+        )
 
     checks_by_id = {check["id"]: check for check in checks}
+    if consumer_evidence["schemaSha256"] != contracts.consumer_report_schema_sha256:
+        raise ReadinessError("Readiness report consumer schema binding is stale")
+    consumer_result = checks_by_id[CONSUMER_CHECK_IDS[0]]["result"]
+    evidence_status = consumer_evidence["status"]
+    provenance = consumer_evidence["provenance"]
+    if provenance in {"none", "external-unattested"} and any(
+        consumer_evidence[field] is not None
+        for field in (
+            "runnerScriptBytes",
+            "runnerScriptSha256",
+            "runnerExitCode",
+            "assemblyBytes",
+            "assemblySha256",
+            "evidenceBundleBytes",
+            "evidenceBundleSha256",
+        )
+    ):
+        raise ReadinessError("Unattested consumer evidence carries runner execution claims")
+    if provenance in {"none", "external-unattested"} and (
+        consumer_evidence["runnerTimedOut"] or consumer_evidence["freshReport"]
+    ):
+        raise ReadinessError("Unattested consumer evidence carries fresh-run claims")
+    if provenance == "self-executed" and (
+        consumer_evidence["runnerScriptBytes"]
+        != contracts.policy["consumerSmokeRunner"]["bytes"]
+        or consumer_evidence["runnerScriptSha256"]
+        != contracts.policy["consumerSmokeRunner"]["sha256"]
+    ):
+        raise ReadinessError("Self-executed consumer evidence differs from runner pin")
+    if evidence_status in {"accepted", "rejected"} and provenance != "self-executed":
+        raise ReadinessError("Evaluated consumer evidence is not self-executed")
+    if evidence_status == "accepted" and not consumer_evidence["freshReport"]:
+        raise ReadinessError("Accepted consumer evidence is not a fresh canonical report")
+    if evidence_status == "external-unattested" and provenance != "external-unattested":
+        raise ReadinessError("External evidence status/provenance differs")
+    if evidence_status == "not-provided" and any(
+        consumer_evidence[field] is not None
+        for field in ("reportName", "bytes", "sha256")
+    ):
+        raise ReadinessError("Missing consumer evidence carries forged report metadata")
+    if evidence_status == "accepted" and any(
+        consumer_evidence[field] is None for field in ("reportName", "bytes", "sha256")
+    ):
+        raise ReadinessError(
+            "Accepted consumer evidence lacks exact report-byte bindings"
+        )
+    if evidence_status == "accepted" and consumer_result not in {"pass", "fail"}:
+        raise ReadinessError(
+            "Accepted consumer evidence is not reflected as an evaluated gate"
+        )
+    if consumer_result == "pass" and evidence_status != "accepted":
+        raise ReadinessError("Consumer pass lacks accepted self-executed evidence")
+    if consumer_result == "pass" and not expected_complete_for_policy:
+        raise ReadinessError("Consumer pass lacks complete self-executed tree evidence")
+    if evidence_status == "rejected" and consumer_result != "fail":
+        raise ReadinessError(
+            "Rejected consumer evidence is not reflected as a failed gate"
+        )
+    if evidence_status == "not-provided" and consumer_result not in {
+        "not-applicable",
+        "not-evaluated",
+    }:
+        raise ReadinessError(
+            "Missing consumer evidence is reflected as an evaluated gate"
+        )
+    if evidence_status == "external-unattested" and consumer_result != "not-evaluated":
+        raise ReadinessError("External unattested evidence affected the consumer gate")
     expected_dimensions = {
         "inputIntegrity": aggregate_dimension(checks_by_id, INPUT_CHECK_IDS),
         "contractConformance": aggregate_dimension(checks_by_id, CONTRACT_CHECK_IDS),
@@ -2054,17 +3336,23 @@ def validate_report_semantics(
     if report["dimensions"] != expected_dimensions:
         raise ReadinessError("Readiness dimensions are not derived from bound checks")
     expected_decision = derive_decision(
-        report["classification"]["manifestDialect"], checks
+        report["classification"]["manifestDialect"],
+        checks,
+        report["evaluator"]["completeForPolicy"],
     )
     if report["decision"] != expected_decision:
-        raise ReadinessError("Readiness decision is not derived exactly from checks/dialect")
-    if report["decision"]["status"] == "ready" or report["decision"][
-        "standaloneProfileReady"
-    ]:
-        raise ReadinessError("This incomplete evaluator version cannot emit ready")
+        raise ReadinessError(
+            "Readiness decision is not derived exactly from checks/dialect"
+        )
 
 
-def evaluate_path(path: Path, kind: str) -> dict[str, Any]:
+def evaluate_path(
+    path: Path,
+    kind: str,
+    consumer_report_path: Path | None = None,
+    consumer_store_path: Path | None = None,
+    consumer_work_dir: Path | None = None,
+) -> dict[str, Any]:
     contracts = trusted_contracts()
     if not path.is_file():
         raise ReadinessError(f"Input is not a regular file: {path}")
@@ -2074,15 +3362,41 @@ def evaluate_path(path: Path, kind: str) -> dict[str, Any]:
         )
     else:
         loaded = load_zip_input(path, contracts.profile)
-    return evaluate_loaded_input(loaded, contracts)
+    if consumer_work_dir is not None and consumer_store_path is None:
+        raise ReadinessError(
+            "Consumer smoke work directory requires evaluator-managed runner execution"
+        )
+    if consumer_store_path is not None:
+        if kind != "zip":
+            raise ReadinessError("Consumer smoke runner requires a finished ZIP")
+        if consumer_report_path is not None:
+            validate_output_disjointness(
+                consumer_report_path,
+                "Consumer smoke report",
+                input_zip=path,
+                package_store=consumer_store_path,
+            )
+        evidence = execute_consumer_runner(
+            path,
+            consumer_store_path,
+            contracts,
+            consumer_report_path,
+            persistent_work_dir=consumer_work_dir,
+        )
+    elif consumer_report_path is not None:
+        evidence = external_consumer_evidence(consumer_report_path)
+    else:
+        evidence = no_consumer_evidence()
+    return evaluate_loaded_input(loaded, contracts, evidence)
 
 
 def stable_json(value: Any, pretty: bool = True) -> str:
     if pretty:
         return json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-    return json.dumps(
-        value, ensure_ascii=False, separators=(",", ":"), sort_keys=True
-    ) + "\n"
+    return (
+        json.dumps(value, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+        + "\n"
+    )
 
 
 def assert_semantic_rejection(
@@ -2109,9 +3423,7 @@ def assert_full_validator_report_rejection(
     except (FullValidatorProcessError, ReadinessError):
         print(f"PASS independent validator report guard rejects {label}")
     else:
-        raise ReadinessError(
-            f"Independent validator report guard accepted {label}"
-        )
+        raise ReadinessError(f"Independent validator report guard accepted {label}")
 
 
 def assert_full_validator_process_not_evaluated(
@@ -2147,9 +3459,11 @@ def assert_policy_rejection(
             contracts.profile,
             policy,
             contracts.report_schema,
+            contracts.consumer_report_schema,
             manifest_schema_sha256=contracts.manifest_schema_sha256,
             profile_sha256=contracts.profile_sha256,
             report_schema_sha256=contracts.report_schema_sha256,
+            consumer_report_schema_sha256=contracts.consumer_report_schema_sha256,
         )
     except ReadinessError:
         print(f"PASS readiness policy guard rejects {label}")
@@ -2191,8 +3505,12 @@ def build_target_zip(
     *,
     nested_magic_role: str | None = None,
     duplicate_normalized_checksum: bool = False,
+    review_required: bool = False,
 ) -> None:
     manifest = load_trusted_json(FIXTURE_DIR / "target-contract-only.manifest.json")
+    if review_required:
+        manifest["files"][3]["redistributionStatus"] = "review-required"
+        manifest["files"][3]["licenseExpression"] = None
     root = manifest["archiveRoot"]
     trusted_payloads_by_path = {
         manifest["contractBindings"][binding_name]["path"]: (
@@ -2209,6 +3527,13 @@ def build_target_zip(
             payload = PROFILE_PATH.read_bytes()
         elif record["role"] == "license":
             payload = b"Apache License 2.0 fixture\n"
+        elif record["role"] == "dependency-closure":
+            payload = stable_json(
+                {
+                    "closureDigest": "sha256:" + "1" * 64,
+                    "definitionIndexDigest": "sha256:" + "2" * 64,
+                }
+            ).encode("utf-8")
         else:
             payload = stable_json({"fixtureRole": record["role"]}).encode("utf-8")
         if nested_magic_role == record["role"]:
@@ -2241,6 +3566,102 @@ def build_target_zip(
         ),
     }
     write_zip(path, entries)
+
+
+def passing_consumer_report(
+    loaded: LoadedInput,
+    runner_binding: dict[str, Any],
+) -> dict[str, Any]:
+    package_binding = expected_full_validator_package_binding(loaded)
+    input_binding = {
+        "name": loaded.name,
+        "bytes": loaded.bytes,
+        "sha256": loaded.sha256,
+        **package_binding,
+    }
+    selected_package = {
+        "packageId": input_binding["packageId"],
+        "packageVersion": input_binding["packageVersion"],
+        "releaseId": input_binding["releaseId"],
+        "outerZipSha256": input_binding["sha256"],
+        "manifestSha256": input_binding["manifestSha256"],
+        "contentDigest": input_binding["contentDigest"],
+        "archiveRoot": input_binding["archiveRoot"],
+        "closureDigest": input_binding["closureDigest"],
+        "definitionIndexDigest": input_binding["definitionIndexDigest"],
+        "installRecordSha256": "4" * 64,
+    }
+    active_lock = {
+        "lockFormatVersion": "1.0",
+        "packages": [selected_package],
+    }
+    active_lock_bytes = stable_json(active_lock).encode("utf-8")
+    active_lock_sha256 = sha256_bytes(active_lock_bytes)
+    return {
+        "$schema": CONSUMER_REPORT_SCHEMA_ID,
+        "reportFormatVersion": 1,
+        "runner": {
+            "id": CONSUMER_RUNNER_ID,
+            "version": CONSUMER_RUNNER_VERSION,
+            "scriptBytes": runner_binding["bytes"],
+            "scriptSha256": runner_binding["sha256"],
+        },
+        "status": "passed",
+        "input": input_binding,
+        "activation": {
+            "activeLockBytes": len(active_lock_bytes),
+            "activeLockSha256": active_lock_sha256,
+            "activeLock": active_lock,
+            "generationSha256": active_lock_sha256,
+            "packageCount": 1,
+            "selectedPackage": selected_package,
+        },
+        "application": {
+            "consumer": "SkillPilot",
+            "consumerApiVersion": CONSUMER_API_VERSION,
+            "frontendBytes": len(b"self-test frontend artifact"),
+            "frontendSha256": sha256_bytes(b"self-test frontend artifact"),
+            "backendBytes": len(b"self-test backend artifact"),
+            "backendSha256": sha256_bytes(b"self-test backend artifact"),
+            "configurationBytes": len(b"self-test configuration artifact"),
+            "configurationSha256": sha256_bytes(b"self-test configuration artifact"),
+            "assemblyBytes": len(b"self-test final runtime assembly"),
+            "assemblySha256": sha256_bytes(b"self-test final runtime assembly"),
+        },
+        "evidenceBundle": {
+            "bytes": len(b"self-test external evidence bundle"),
+            "sha256": sha256_bytes(b"self-test external evidence bundle"),
+        },
+        "isolation": {
+            "mechanism": "self-test-isolated-process",
+            "hermetic": True,
+            "sourceCheckoutAccessible": False,
+            "repositoryMountAccessible": False,
+            "networkPolicy": "loopback-only",
+            "packageStoreReadOnly": True,
+            "filesystemTraceBytes": len(b"self-test filesystem trace"),
+            "filesystemTraceSha256": sha256_bytes(b"self-test filesystem trace"),
+            "poisonSentinels": [
+                {"id": sentinel_id, "result": "not-observed"}
+                for sentinel_id in POISON_SENTINEL_IDS
+            ],
+        },
+        "functionalChecks": [
+            {
+                "id": check_id,
+                "result": "passed",
+                "evidenceSha256": hashlib.sha256(check_id.encode("utf-8")).hexdigest(),
+            }
+            for check_id in FUNCTIONAL_CHECK_IDS
+        ],
+        "summary": {
+            "required": len(FUNCTIONAL_CHECK_IDS),
+            "passed": len(FUNCTIONAL_CHECK_IDS),
+            "failed": 0,
+            "notRun": 0,
+        },
+        "diagnostics": [],
+    }
 
 
 def run_fixture_suite() -> None:
@@ -2298,13 +3719,14 @@ def run_fixture_suite() -> None:
         ):
             raise ReadinessError(f"Fixture {case_id} primary reason differs")
         expected_results = raw_case.get("expectedResults")
-        if not isinstance(expected_results, dict) or list(expected_results) != REQUIRED_CHECK_IDS:
+        if (
+            not isinstance(expected_results, dict)
+            or list(expected_results) != REQUIRED_CHECK_IDS
+        ):
             raise ReadinessError(
                 f"Fixture {case_id} must pin every check result in policy order"
             )
-        actual_results = {
-            check["id"]: check["result"] for check in report["checks"]
-        }
+        actual_results = {check["id"]: check["result"] for check in report["checks"]}
         if actual_results != expected_results:
             raise ReadinessError(
                 f"Fixture {case_id} check results differ: {actual_results!r}"
@@ -2340,9 +3762,7 @@ def run_fixture_suite() -> None:
         ),
         contracts,
     )
-    review_checks = {
-        check["id"]: check for check in review_required_report["checks"]
-    }
+    review_checks = {check["id"]: check for check in review_required_report["checks"]}
     if (
         review_required_report["decision"]["status"] != "not-ready-incomplete"
         or review_required_report["decision"]["primaryReasonCode"]
@@ -2394,6 +3814,20 @@ def run_fixture_suite() -> None:
     assert_semantic_rejection(
         forged_input_hash, contracts, "input-integrity pass without artifact hash"
     )
+    forged_policy_hash = copy.deepcopy(target_report)
+    forged_policy_hash["policy"]["sha256"] = "0" * 64
+    assert_semantic_rejection(
+        forged_policy_hash,
+        contracts,
+        "readiness policy hash binding",
+    )
+    forged_consumer_schema_hash = copy.deepcopy(target_report)
+    forged_consumer_schema_hash["consumerEvidence"]["schemaSha256"] = "0" * 64
+    assert_semantic_rejection(
+        forged_consumer_schema_hash,
+        contracts,
+        "consumer-evidence schema hash binding",
+    )
 
     for field in ("manifestDialect", "targetRuntimeReadiness"):
         malformed_legacy = legacy_manifest()
@@ -2434,13 +3868,27 @@ def run_fixture_suite() -> None:
     )
     malformed_report = evaluate_loaded_input(loaded, contracts)
     if malformed_report["decision"]["status"] != "invalid":
-        raise ReadinessError("Malformed target did not produce structured invalid report")
+        raise ReadinessError(
+            "Malformed target did not produce structured invalid report"
+        )
     print("PASS malformed target produces structured invalid report")
 
     for label, mutation in (
         (
             "report-schema hash drift",
             lambda policy: policy["reportSchema"].update({"sha256": "0" * 64}),
+        ),
+        (
+            "consumer-report-schema hash drift",
+            lambda policy: policy["consumerSmokeReportSchema"].update(
+                {"sha256": "0" * 64}
+            ),
+        ),
+        (
+            "consumer-runner hash drift",
+            lambda policy: policy["consumerSmokeRunner"].update(
+                {"sha256": "0" * 64}
+            ),
         ),
         (
             "evaluator version drift",
@@ -2461,6 +3909,28 @@ def run_fixture_suite() -> None:
 
     with tempfile.TemporaryDirectory(prefix="skillpilot-readiness-") as temp_name:
         temp_dir = Path(temp_name)
+        tree_fixture = temp_dir / "tree-digest-fixture"
+        (tree_fixture / "nested").mkdir(parents=True)
+        (tree_fixture / "a.txt").write_bytes(b"alpha")
+        (tree_fixture / "nested/b.txt").write_bytes(b"beta")
+        expected_tree_digest = hashlib.sha256()
+        for relative, payload in (
+            ("a.txt", b"alpha"),
+            ("nested/b.txt", b"beta"),
+        ):
+            expected_tree_digest.update(relative.encode("utf-8"))
+            expected_tree_digest.update(b"\0")
+            expected_tree_digest.update(str(len(payload)).encode("ascii"))
+            expected_tree_digest.update(b"\0")
+            expected_tree_digest.update(sha256_bytes(payload).encode("ascii"))
+            expected_tree_digest.update(b"\n")
+        if digest_consumer_tree(tree_fixture) != (
+            9,
+            expected_tree_digest.hexdigest(),
+        ):
+            raise ReadinessError("Canonical consumer tree digest differs")
+        print("PASS consumer assembly/evidence tree digest is canonical")
+
         raw_invalid_cases = {
             "duplicate-key": b'{"packageId":"a","packageId":"b"}\n',
             "nonfinite": b'{"value":NaN}\n',
@@ -2486,15 +3956,777 @@ def run_fixture_suite() -> None:
         build_target_zip(target_zip, contracts)
         target_loaded = load_zip_input(target_zip, contracts.profile)
         target_zip_report = evaluate_loaded_input(target_loaded, contracts)
-        target_checks = {
-            check["id"]: check for check in target_zip_report["checks"]
-        }
+        target_checks = {check["id"]: check for check in target_zip_report["checks"]}
         if (
             target_zip_report["decision"]["status"] != "not-ready-incomplete"
             or target_checks["contract.inventory-bytes"]["result"] != "pass"
         ):
-            raise ReadinessError("Generated safe target ZIP failed inventory validation")
+            raise ReadinessError(
+                "Generated safe target ZIP failed inventory validation"
+            )
         print("PASS generated safe target ZIP inventory")
+
+        runner_binding = contracts.policy["consumerSmokeRunner"]
+        passing_smoke = passing_consumer_report(target_loaded, runner_binding)
+        passing_smoke_path = temp_dir / "package-consumer-smoke-report.json"
+        passing_smoke_path.write_text(stable_json(passing_smoke), encoding="utf-8")
+        loaded_smoke = load_consumer_report(passing_smoke_path)
+        unattested_report = evaluate_loaded_input(
+            target_loaded,
+            contracts,
+            external_consumer_evidence(passing_smoke_path),
+        )
+        unattested_checks = {
+            check["id"]: check for check in unattested_report["checks"]
+        }
+        if (
+            unattested_checks[CONSUMER_CHECK_IDS[0]]["result"] != "not-evaluated"
+            or unattested_report["consumerEvidence"]["status"]
+            != "external-unattested"
+            or unattested_report["evaluator"]["completeForPolicy"]
+        ):
+            raise ReadinessError("A canned external consumer report became trusted")
+        print("PASS canned external consumer report remains unattested")
+
+        fake_store = temp_dir / "fake-consumer-store"
+        fake_store.mkdir()
+
+        def fake_runner_binding(path: Path) -> dict[str, Any]:
+            return {
+                "id": CONSUMER_RUNNER_ID,
+                "version": CONSUMER_RUNNER_VERSION,
+                "path": "scripts/run_package_consumer_smoke.py",
+                "bytes": path.stat().st_size,
+                "sha256": sha256_file(path),
+            }
+
+        with tempfile.TemporaryDirectory(
+            prefix="readiness-workdir-self-test-", dir=REPO_ROOT / "tmp"
+        ) as work_parent_name:
+            work_parent = Path(work_parent_name)
+            valid_retained_work = work_parent / "retained-runner-work"
+            existing_directory = work_parent / "existing-directory"
+            existing_directory.mkdir()
+            non_directory = work_parent / "not-a-directory"
+            non_directory.write_bytes(b"not a directory")
+            symlink_component = work_parent / "symlink-component"
+            symlink_component.symlink_to(existing_directory, target_is_directory=True)
+
+            for label, unsafe_path in (
+                ("outside repository tmp", temp_dir / "outside-work"),
+                ("repository tmp root", REPO_ROOT / "tmp"),
+                ("symlink component", symlink_component / "child"),
+                ("non-directory", non_directory),
+                ("non-directory parent", non_directory / "child"),
+            ):
+                try:
+                    validate_consumer_work_directory(unsafe_path)
+                except ReadinessError:
+                    pass
+                else:
+                    raise ReadinessError(
+                        f"Unsafe persistent consumer work directory was accepted: {label}"
+                    )
+            if validate_consumer_work_directory(
+                valid_retained_work
+            ) != valid_retained_work.absolute() or validate_consumer_work_directory(
+                existing_directory
+            ) != existing_directory.absolute():
+                raise ReadinessError("Safe persistent consumer work directory changed")
+            print("PASS retained consumer work directory path policy fails closed")
+
+            output_victim = work_parent / "output-victim"
+            output_victim.mkdir()
+            output_link = work_parent / "output-link"
+            output_link.symlink_to(output_victim, target_is_directory=True)
+            for description, writer, linked_destination in (
+                (
+                    "consumer report",
+                    lambda destination: atomic_persist_consumer_report(
+                        passing_smoke_path, destination
+                    ),
+                    output_link / "consumer-report.json",
+                ),
+                (
+                    "readiness report",
+                    lambda destination: atomic_write_output_bytes(
+                        destination,
+                        b"readiness\n",
+                        "Readiness report",
+                    ),
+                    output_link / "readiness-report.json",
+                ),
+            ):
+                try:
+                    writer(linked_destination)
+                except ReadinessError:
+                    pass
+                else:
+                    raise ReadinessError(
+                        f"{description} followed a symlink parent"
+                    )
+                if (output_victim / linked_destination.name).exists():
+                    raise ReadinessError(
+                        f"{description} wrote through a rejected symlink parent"
+                    )
+
+            protected_target = output_victim / "protected.json"
+            protected_target.write_bytes(b"protected\n")
+            for description, writer, symlink_name in (
+                (
+                    "consumer report",
+                    lambda destination: atomic_persist_consumer_report(
+                        passing_smoke_path, destination
+                    ),
+                    "consumer-final-link.json",
+                ),
+                (
+                    "readiness report",
+                    lambda destination: atomic_write_output_bytes(
+                        destination,
+                        b"readiness\n",
+                        "Readiness report",
+                    ),
+                    "readiness-final-link.json",
+                ),
+            ):
+                final_link = work_parent / symlink_name
+                final_link.symlink_to(protected_target)
+                try:
+                    writer(final_link)
+                except ReadinessError:
+                    pass
+                else:
+                    raise ReadinessError(
+                        f"{description} followed a symlink destination"
+                    )
+                if protected_target.read_bytes() != b"protected\n":
+                    raise ReadinessError(
+                        f"{description} changed a symlink destination target"
+                    )
+
+            safe_consumer_output = work_parent / "created/consumer/report.json"
+            atomic_persist_consumer_report(
+                passing_smoke_path,
+                safe_consumer_output,
+            )
+            safe_readiness_output = work_parent / "created/readiness/report.json"
+            atomic_write_output_bytes(
+                safe_readiness_output,
+                b"first\n",
+                "Readiness report",
+            )
+            atomic_write_output_bytes(
+                safe_readiness_output,
+                b"second\n",
+                "Readiness report",
+            )
+            if (
+                safe_consumer_output.read_bytes() != passing_smoke_path.read_bytes()
+                or safe_readiness_output.read_bytes() != b"second\n"
+                or list((work_parent / "created").rglob("*.tmp"))
+            ):
+                raise ReadinessError(
+                    "Safe atomic report output did not create/replace cleanly"
+                )
+            print(
+                "PASS consumer/readiness outputs reject parent/final symlinks and write atomically"
+            )
+
+            fake_store_marker = fake_store / "store-marker"
+            fake_store_marker.write_bytes(b"protected store bytes")
+            output_zip_alias = work_parent / "output-zip-alias.json"
+            output_zip_alias.symlink_to(target_zip)
+            output_store_alias = work_parent / "output-store-alias"
+            output_store_alias.symlink_to(fake_store, target_is_directory=True)
+            target_zip_before = target_zip.read_bytes()
+            for description, unsafe_output in (
+                ("equal input ZIP", target_zip),
+                ("below package store", fake_store / "report.json"),
+                ("symlink aliases input ZIP", output_zip_alias),
+                ("parent symlink aliases package store", output_store_alias / "report.json"),
+            ):
+                try:
+                    validate_output_disjointness(
+                        unsafe_output,
+                        "Self-test report",
+                        input_zip=target_zip,
+                        package_store=fake_store,
+                    )
+                except ReadinessError:
+                    pass
+                else:
+                    raise ReadinessError(
+                        f"Destructive report output was accepted: {description}"
+                    )
+            if (
+                target_zip.read_bytes() != target_zip_before
+                or fake_store_marker.read_bytes() != b"protected store bytes"
+                or (fake_store / "report.json").exists()
+            ):
+                raise ReadinessError("Report-output preflight corrupted ZIP/store")
+            print(
+                "PASS consumer/readiness outputs are disjoint from ZIP/store and aliases"
+            )
+
+            observed_work_marker = temp_dir / "observed-runner-work.txt"
+            failing_runner = temp_dir / "consumer-runner-failure.py"
+            failing_runner.write_text(
+                "import pathlib, sys\n"
+                "work = pathlib.Path(sys.argv[sys.argv.index('--work-dir') + 1])\n"
+                f"pathlib.Path({str(observed_work_marker)!r}).write_text(str(work), encoding='utf-8')\n"
+                "(work / 'assembly').mkdir(parents=True, exist_ok=True)\n"
+                "(work / 'assembly/runtime.bin').write_bytes(b'assembly')\n"
+                "(work / 'evidence-bundle').mkdir(parents=True, exist_ok=True)\n"
+                "(work / 'evidence-bundle/evidence.json').write_bytes(b'evidence')\n"
+                "raise SystemExit(17)\n",
+                encoding="utf-8",
+            )
+            fake_binding = fake_runner_binding(failing_runner)
+            overlap_store = work_parent / "overlap-store"
+            overlap_store.mkdir()
+            contained_zip = work_parent / "contained-input.zip"
+            contained_zip.write_bytes(target_zip.read_bytes())
+            for label, guarded_zip, guarded_store, guarded_work, guarded_report in (
+                (
+                    "work inside package store",
+                    target_zip,
+                    overlap_store,
+                    overlap_store / "runner-work",
+                    None,
+                ),
+                (
+                    "work contains package store",
+                    target_zip,
+                    overlap_store,
+                    work_parent,
+                    None,
+                ),
+                (
+                    "work contains input ZIP",
+                    contained_zip,
+                    fake_store,
+                    work_parent,
+                    None,
+                ),
+                (
+                    "persisted report inside work",
+                    target_zip,
+                    fake_store,
+                    valid_retained_work,
+                    valid_retained_work / "consumer-report.json",
+                ),
+            ):
+                try:
+                    execute_consumer_runner(
+                        guarded_zip,
+                        guarded_store,
+                        contracts,
+                        guarded_report,
+                        runner_path=failing_runner,
+                        timeout_seconds=2,
+                        expected_runner_binding=fake_binding,
+                        persistent_work_dir=guarded_work,
+                    )
+                except ReadinessError:
+                    pass
+                else:
+                    raise ReadinessError(
+                        f"Destructive retained-work overlap was accepted: {label}"
+                    )
+            print("PASS retained consumer work cannot overlap trusted inputs/outputs")
+
+            default_execution = execute_consumer_runner(
+                target_zip,
+                fake_store,
+                contracts,
+                None,
+                runner_path=failing_runner,
+                timeout_seconds=2,
+                expected_runner_binding=fake_binding,
+            )
+            default_work = Path(
+                observed_work_marker.read_text(encoding="utf-8")
+            )
+            if default_work.exists():
+                raise ReadinessError("Default private consumer work directory was retained")
+
+            failed_execution = execute_consumer_runner(
+                target_zip,
+                fake_store,
+                contracts,
+                None,
+                runner_path=failing_runner,
+                timeout_seconds=2,
+                expected_runner_binding=fake_binding,
+                persistent_work_dir=valid_retained_work,
+            )
+            if (
+                Path(observed_work_marker.read_text(encoding="utf-8"))
+                != valid_retained_work
+                or not (valid_retained_work / "assembly/runtime.bin").is_file()
+                or not (
+                    valid_retained_work / "evidence-bundle/evidence.json"
+                ).is_file()
+                or failed_execution.assembly_bytes != len(b"assembly")
+                or failed_execution.evidence_bundle_bytes != len(b"evidence")
+            ):
+                raise ReadinessError(
+                    "Explicit consumer work directory was not retained and recomputed"
+                )
+            print(
+                "PASS default consumer work is private/ephemeral and explicit safe work is retained"
+            )
+
+        failed_result, _code, _message, _binding = evaluate_consumer_report(
+            failed_execution, target_loaded, contracts
+        )
+        if (
+            failed_result != "not-evaluated"
+            or failed_execution.runner_exit_code != 17
+            or failed_execution.complete_for_policy
+        ):
+            raise ReadinessError("Runner failure became trusted consumer evidence")
+        print("PASS pinned-runner failure remains not evaluated")
+
+        timeout_runner = temp_dir / "consumer-runner-timeout.py"
+        timeout_runner.write_text(
+            "import time\ntime.sleep(30)\n", encoding="utf-8"
+        )
+        timed_out_execution = execute_consumer_runner(
+            target_zip,
+            fake_store,
+            contracts,
+            None,
+            runner_path=timeout_runner,
+            timeout_seconds=0.05,
+            expected_runner_binding=fake_runner_binding(timeout_runner),
+        )
+        timed_out_result, _code, _message, _binding = evaluate_consumer_report(
+            timed_out_execution, target_loaded, contracts
+        )
+        if (
+            timed_out_result != "not-evaluated"
+            or not timed_out_execution.runner_timed_out
+            or timed_out_execution.complete_for_policy
+        ):
+            raise ReadinessError("Runner timeout became trusted consumer evidence")
+        print("PASS pinned-runner timeout is bounded and remains not evaluated")
+
+        canned_runner = temp_dir / "consumer-runner-canned-copy.py"
+        canned_runner.write_text(
+            "import pathlib, shutil, sys\n"
+            "destination = pathlib.Path(sys.argv[sys.argv.index('--report') + 1])\n"
+            f"shutil.copyfile({str(passing_smoke_path)!r}, destination)\n",
+            encoding="utf-8",
+        )
+        persisted_canned_output = temp_dir / "persisted-consumer-report.json"
+        persisted_canned_output.write_bytes(b"pre-existing canned bytes\n")
+        canned_execution = execute_consumer_runner(
+            target_zip,
+            fake_store,
+            contracts,
+            persisted_canned_output,
+            runner_path=canned_runner,
+            timeout_seconds=2,
+            expected_runner_binding=fake_runner_binding(canned_runner),
+        )
+        canned_result, _code, _message, canned_binding = evaluate_consumer_report(
+            canned_execution, target_loaded, contracts
+        )
+        if canned_result != "fail" or canned_binding["status"] != "rejected":
+            raise ReadinessError("An unpinned runner laundered a canned report")
+        if persisted_canned_output.read_bytes() != passing_smoke_path.read_bytes():
+            raise ReadinessError("Fresh canonical runner output was not atomically persisted")
+        print(
+            "PASS unpinned runner cannot launder canned consumer evidence; "
+            "fresh output persistence replaces the requested destination"
+        )
+
+        self_executed_smoke = ConsumerEvidenceContext(
+            provenance="self-executed",
+            loaded_report=loaded_smoke,
+            runner_script_bytes=runner_binding["bytes"],
+            runner_script_sha256=runner_binding["sha256"],
+            runner_exit_code=0,
+            runner_timed_out=False,
+            fresh_report=True,
+            assembly_bytes=passing_smoke["application"]["assemblyBytes"],
+            assembly_sha256=passing_smoke["application"]["assemblySha256"],
+            evidence_bundle_bytes=passing_smoke["evidenceBundle"]["bytes"],
+            evidence_bundle_sha256=passing_smoke["evidenceBundle"]["sha256"],
+            execution_errors=[],
+        )
+        smoke_report = evaluate_loaded_input(
+            target_loaded, contracts, self_executed_smoke
+        )
+        smoke_checks = {check["id"]: check for check in smoke_report["checks"]}
+        if (
+            smoke_checks[CONSUMER_CHECK_IDS[0]]["result"] != "pass"
+            or smoke_report["consumerEvidence"]["status"] != "accepted"
+            or smoke_report["consumerEvidence"]["sha256"]
+            != sha256_file(passing_smoke_path)
+            or not smoke_report["evaluator"]["completeForPolicy"]
+        ):
+            raise ReadinessError(
+                "Valid bound package-only consumer evidence did not pass"
+            )
+        print("PASS bound hermetic package-only consumer evidence")
+
+        review_gated_zip = temp_dir / "review-gated-target-package.zip"
+        build_target_zip(review_gated_zip, contracts, review_required=True)
+        review_gated_loaded = load_zip_input(review_gated_zip, contracts.profile)
+        if review_gated_loaded.errors:
+            raise ReadinessError("Review-gated target ZIP failed safe preflight")
+        review_gated_smoke_path = temp_dir / "review-gated-consumer-report.json"
+        review_gated_smoke_path.write_text(
+            stable_json(passing_consumer_report(review_gated_loaded, runner_binding)),
+            encoding="utf-8",
+        )
+        review_gated_report = evaluate_loaded_input(
+            review_gated_loaded,
+            contracts,
+            ConsumerEvidenceContext(
+                provenance="self-executed",
+                loaded_report=load_consumer_report(review_gated_smoke_path),
+                runner_script_bytes=runner_binding["bytes"],
+                runner_script_sha256=runner_binding["sha256"],
+                runner_exit_code=0,
+                runner_timed_out=False,
+                fresh_report=True,
+                assembly_bytes=passing_smoke["application"]["assemblyBytes"],
+                assembly_sha256=passing_smoke["application"]["assemblySha256"],
+                evidence_bundle_bytes=passing_smoke["evidenceBundle"]["bytes"],
+                evidence_bundle_sha256=passing_smoke["evidenceBundle"]["sha256"],
+                execution_errors=[],
+            ),
+        )
+        review_gated_checks = {
+            check["id"]: check for check in review_gated_report["checks"]
+        }
+        if (
+            review_gated_checks[CONSUMER_CHECK_IDS[0]]["result"] != "pass"
+            or review_gated_checks[PUBLICATION_CHECK_IDS[0]]["result"] != "fail"
+            or review_gated_report["decision"]["status"] != "not-ready-incomplete"
+            or review_gated_report["decision"]["primaryReasonCode"]
+            != "REDISTRIBUTION_REVIEW_REQUIRED"
+        ):
+            raise ReadinessError(
+                "A passing consumer proof overrode an open human publication gate"
+            )
+        print("PASS consumer gate can pass without overriding open human release gates")
+
+        def rewrite_active_lock(
+            value: dict[str, Any],
+            field: str,
+            replacement: Any,
+        ) -> None:
+            activation = value["activation"]
+            activation["selectedPackage"][field] = replacement
+            activation["activeLock"]["packages"][0][field] = replacement
+            rewritten = stable_json(activation["activeLock"]).encode("utf-8")
+            activation["activeLockBytes"] = len(rewritten)
+            activation["activeLockSha256"] = sha256_bytes(rewritten)
+            activation["generationSha256"] = sha256_bytes(rewritten)
+
+        def append_second_lock_package(value: dict[str, Any]) -> None:
+            activation = value["activation"]
+            second = copy.deepcopy(activation["selectedPackage"])
+            second["packageId"] = "org.skillpilot.fixture-second"
+            second["releaseId"] = f"{second['packageId']}@{second['packageVersion']}"
+            activation["activeLock"]["packages"].append(second)
+            activation["packageCount"] = 2
+            rewritten = stable_json(activation["activeLock"]).encode("utf-8")
+            activation["activeLockBytes"] = len(rewritten)
+            activation["activeLockSha256"] = sha256_bytes(rewritten)
+            activation["generationSha256"] = sha256_bytes(rewritten)
+
+        consumer_mutations: list[tuple[str, Any]] = [
+            (
+                "outer ZIP substitution",
+                lambda value: value["input"].update({"sha256": "9" * 64}),
+            ),
+            (
+                "manifest substitution",
+                lambda value: value["input"].update({"manifestSha256": "9" * 64}),
+            ),
+            (
+                "closure substitution",
+                lambda value: value["input"].update(
+                    {"closureDigest": "sha256:" + "9" * 64}
+                ),
+            ),
+            (
+                "definition-index substitution",
+                lambda value: value["input"].update(
+                    {"definitionIndexDigest": "sha256:" + "9" * 64}
+                ),
+            ),
+            (
+                "content-digest substitution",
+                lambda value: value["input"].update(
+                    {"contentDigest": "sha256:" + "9" * 64}
+                ),
+            ),
+            (
+                "generation/lock mismatch",
+                lambda value: value["activation"].update(
+                    {"generationSha256": "9" * 64}
+                ),
+            ),
+            (
+                "active lock hash substitution",
+                lambda value: value["activation"].update(
+                    {
+                        "activeLockSha256": "9" * 64,
+                        "generationSha256": "9" * 64,
+                    }
+                ),
+            ),
+            (
+                "active lock byte-count substitution",
+                lambda value: value["activation"].update(
+                    {"activeLockBytes": value["activation"]["activeLockBytes"] + 1}
+                ),
+            ),
+            (
+                "internally coherent lock package substitution",
+                lambda value: rewrite_active_lock(
+                    value,
+                    "definitionIndexDigest",
+                    "sha256:" + "9" * 64,
+                ),
+            ),
+            (
+                "multiple-package lock",
+                append_second_lock_package,
+            ),
+            (
+                "selected package substitution",
+                lambda value: value["activation"]["selectedPackage"].update(
+                    {"outerZipSha256": "9" * 64}
+                ),
+            ),
+            (
+                "source checkout visibility",
+                lambda value: value["isolation"].update(
+                    {"sourceCheckoutAccessible": True}
+                ),
+            ),
+            (
+                "install-record hash placeholder",
+                lambda value: rewrite_active_lock(
+                    value,
+                    "installRecordSha256",
+                    "0" * 64,
+                ),
+            ),
+            (
+                "functional failure hidden by pass",
+                lambda value: value["functionalChecks"][0].update({"result": "failed"}),
+            ),
+            (
+                "functional check reordering",
+                lambda value: value["functionalChecks"].reverse(),
+            ),
+            (
+                "functional check duplication",
+                lambda value: value["functionalChecks"][0].update(
+                    {"id": value["functionalChecks"][1]["id"]}
+                ),
+            ),
+            (
+                "functional evidence placeholder",
+                lambda value: value["functionalChecks"][0].update(
+                    {"evidenceSha256": "0" * 64}
+                ),
+            ),
+            (
+                "poison sentinel observed",
+                lambda value: value["isolation"]["poisonSentinels"][0].update(
+                    {"result": "observed"}
+                ),
+            ),
+            (
+                "poison sentinel reordering",
+                lambda value: value["isolation"]["poisonSentinels"].reverse(),
+            ),
+            (
+                "consumer API substitution",
+                lambda value: value["application"].update(
+                    {"consumerApiVersion": "9.9.9"}
+                ),
+            ),
+            (
+                "runner script hash substitution",
+                lambda value: value["runner"].update({"scriptSha256": "9" * 64}),
+            ),
+            (
+                "runner script byte-count substitution",
+                lambda value: value["runner"].update(
+                    {"scriptBytes": value["runner"]["scriptBytes"] + 1}
+                ),
+            ),
+            (
+                "application hash placeholder",
+                lambda value: value["application"].update({"frontendSha256": "0" * 64}),
+            ),
+            (
+                "application hash collision",
+                lambda value: value["application"].update(
+                    {
+                        "backendSha256": value["application"]["frontendSha256"],
+                    }
+                ),
+            ),
+            (
+                "final assembly hash substitution",
+                lambda value: value["application"].update(
+                    {"assemblySha256": "9" * 64}
+                ),
+            ),
+            (
+                "final assembly byte-count substitution",
+                lambda value: value["application"].update(
+                    {"assemblyBytes": value["application"]["assemblyBytes"] + 1}
+                ),
+            ),
+            (
+                "evidence bundle hash substitution",
+                lambda value: value["evidenceBundle"].update(
+                    {"sha256": "9" * 64}
+                ),
+            ),
+            (
+                "evidence bundle byte-count substitution",
+                lambda value: value["evidenceBundle"].update(
+                    {"bytes": value["evidenceBundle"]["bytes"] + 1}
+                ),
+            ),
+            (
+                "filesystem trace placeholder",
+                lambda value: value["isolation"].update(
+                    {"filesystemTraceSha256": "0" * 64}
+                ),
+            ),
+        ]
+        for label, mutation in consumer_mutations:
+            forged = copy.deepcopy(passing_smoke)
+            mutation(forged)
+            forged_path = temp_dir / (
+                "forged-consumer-"
+                + re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")
+                + ".json"
+            )
+            forged_path.write_text(stable_json(forged), encoding="utf-8")
+            result, _code, _message, binding = evaluate_consumer_report(
+                ConsumerEvidenceContext(
+                    provenance="self-executed",
+                    loaded_report=load_consumer_report(forged_path),
+                    runner_script_bytes=runner_binding["bytes"],
+                    runner_script_sha256=runner_binding["sha256"],
+                    runner_exit_code=0,
+                    runner_timed_out=False,
+                    fresh_report=True,
+                    assembly_bytes=passing_smoke["application"]["assemblyBytes"],
+                    assembly_sha256=passing_smoke["application"]["assemblySha256"],
+                    evidence_bundle_bytes=passing_smoke["evidenceBundle"]["bytes"],
+                    evidence_bundle_sha256=passing_smoke["evidenceBundle"]["sha256"],
+                    execution_errors=[],
+                ),
+                target_loaded,
+                contracts,
+            )
+            if result != "fail" or binding["status"] != "rejected":
+                raise ReadinessError(f"Consumer evidence forgery was accepted: {label}")
+        print(
+            "PASS consumer evidence rejects "
+            f"{len(consumer_mutations)} binding/isolation/functional forgeries"
+        )
+        forged_exit_evidence = copy.copy(self_executed_smoke)
+        forged_exit_evidence.runner_exit_code = 1
+        forged_exit_result, _code, _message, forged_exit_binding = (
+            evaluate_consumer_report(
+                forged_exit_evidence,
+                target_loaded,
+                contracts,
+            )
+        )
+        if (
+            forged_exit_result != "fail"
+            or forged_exit_binding["status"] != "rejected"
+        ):
+            raise ReadinessError("Runner exit/report mismatch was accepted")
+        print("PASS consumer evidence binds the pinned runner exit status")
+
+        with zipfile.ZipFile(target_zip) as archive:
+            replay_entries = {
+                info.filename: archive.read(info)
+                for info in reversed(archive.infolist())
+            }
+        replay_zip = temp_dir / "repacked-target-package.zip"
+        write_zip(replay_zip, replay_entries)
+        replay_loaded = load_zip_input(replay_zip, contracts.profile)
+        if replay_loaded.errors or replay_loaded.sha256 == target_loaded.sha256:
+            raise ReadinessError("Replay fixture is not a distinct safe target ZIP")
+        replay_result, _code, _message, replay_binding = evaluate_consumer_report(
+            self_executed_smoke,
+            replay_loaded,
+            contracts,
+        )
+        if replay_result != "fail" or replay_binding["status"] != "rejected":
+            raise ReadinessError(
+                "Consumer evidence replay against a repacked ZIP passed"
+            )
+        print("PASS consumer evidence replay against a distinct safe ZIP is rejected")
+
+        noncanonical_smoke_path = temp_dir / "noncanonical-consumer-report.json"
+        noncanonical_smoke_path.write_text(
+            stable_json(passing_smoke, pretty=False),
+            encoding="utf-8",
+        )
+        noncanonical_loaded = load_consumer_report(noncanonical_smoke_path)
+        if (
+            not noncanonical_loaded.errors
+            or noncanonical_loaded.bytes != noncanonical_smoke_path.stat().st_size
+            or noncanonical_loaded.sha256 != sha256_file(noncanonical_smoke_path)
+        ):
+            raise ReadinessError(
+                "Noncanonical consumer evidence was accepted or lost its byte binding"
+            )
+        print("PASS noncanonical consumer evidence is rejected with exact byte binding")
+
+        ambiguous_smoke_path = temp_dir / "ambiguous-consumer-report.json"
+        ambiguous_smoke_path.write_bytes(b'{"status":"passed","status":"failed"}\n')
+        ambiguous_readiness = evaluate_loaded_input(
+            target_loaded,
+            contracts,
+            ConsumerEvidenceContext(
+                provenance="self-executed",
+                loaded_report=load_consumer_report(ambiguous_smoke_path),
+                runner_script_bytes=runner_binding["bytes"],
+                runner_script_sha256=runner_binding["sha256"],
+                runner_exit_code=1,
+                runner_timed_out=False,
+                fresh_report=False,
+                assembly_bytes=None,
+                assembly_sha256=None,
+                evidence_bundle_bytes=None,
+                evidence_bundle_sha256=None,
+                execution_errors=[],
+            ),
+        )
+        ambiguous_checks = {
+            check["id"]: check for check in ambiguous_readiness["checks"]
+        }
+        if (
+            ambiguous_checks[CONSUMER_CHECK_IDS[0]]["result"] != "fail"
+            or ambiguous_readiness["consumerEvidence"]["status"] != "rejected"
+        ):
+            raise ReadinessError(
+                "Ambiguous consumer evidence did not fail structurally"
+            )
+        print("PASS ambiguous consumer evidence yields a structured failed gate")
 
         validator_report = {
             "reportFormatVersion": FULL_VALIDATOR_REPORT_FORMAT_VERSION,
@@ -2611,9 +4843,15 @@ def run_fixture_suite() -> None:
             ("closure digest binding", forged_closure_binding, validator_returncode)
         )
         forged_definition_binding = copy.deepcopy(validator_report)
-        forged_definition_binding["package"]["definitionIndexDigest"] = "sha256:" + "0" * 64
+        forged_definition_binding["package"]["definitionIndexDigest"] = (
+            "sha256:" + "0" * 64
+        )
         forged_validator_reports.append(
-            ("definition index binding", forged_definition_binding, validator_returncode)
+            (
+                "definition index binding",
+                forged_definition_binding,
+                validator_returncode,
+            )
         )
         forged_gate_set = copy.deepcopy(validator_report)
         forged_gate_set["gates"].pop("contentDigest")
@@ -2651,16 +4889,12 @@ def run_fixture_suite() -> None:
             target_loaded, no_report_validator, "successful exit without report"
         )
         unexpected_exit_validator = temp_dir / "validator-unexpected-exit.py"
-        unexpected_exit_validator.write_text(
-            "raise SystemExit(17)\n", encoding="utf-8"
-        )
+        unexpected_exit_validator.write_text("raise SystemExit(17)\n", encoding="utf-8")
         assert_full_validator_process_not_evaluated(
             target_loaded, unexpected_exit_validator, "unexpected exit code"
         )
         timeout_validator = temp_dir / "validator-timeout.py"
-        timeout_validator.write_text(
-            "import time\ntime.sleep(30)\n", encoding="utf-8"
-        )
+        timeout_validator.write_text("import time\ntime.sleep(30)\n", encoding="utf-8")
         assert_full_validator_process_not_evaluated(
             target_loaded,
             timeout_validator,
@@ -2680,9 +4914,12 @@ def run_fixture_suite() -> None:
 
         reserved_zip = temp_dir / "reserved.zip"
         build_legacy_zip(reserved_zip, {f"{root}/CON.txt": b"x"})
-        if evaluate_loaded_input(
-            load_zip_input(reserved_zip, contracts.profile), contracts
-        )["decision"]["status"] != "invalid":
+        if (
+            evaluate_loaded_input(
+                load_zip_input(reserved_zip, contracts.profile), contracts
+            )["decision"]["status"]
+            != "invalid"
+        ):
             raise ReadinessError("Reserved ZIP path was accepted")
         print("PASS reserved ZIP path rejected")
 
@@ -2691,17 +4928,23 @@ def run_fixture_suite() -> None:
             prefix_zip,
             {f"{root}/data/file": b"x", f"{root}/data/file/child": b"y"},
         )
-        if evaluate_loaded_input(
-            load_zip_input(prefix_zip, contracts.profile), contracts
-        )["decision"]["status"] != "invalid":
+        if (
+            evaluate_loaded_input(
+                load_zip_input(prefix_zip, contracts.profile), contracts
+            )["decision"]["status"]
+            != "invalid"
+        ):
             raise ReadinessError("ZIP prefix collision was accepted")
         print("PASS ZIP file/directory prefix collision rejected")
 
         nested_path_zip = temp_dir / "nested-path.zip"
         build_legacy_zip(nested_path_zip, {f"{root}/data/archive.zip": b"not a zip"})
-        if evaluate_loaded_input(
-            load_zip_input(nested_path_zip, contracts.profile), contracts
-        )["decision"]["status"] != "invalid":
+        if (
+            evaluate_loaded_input(
+                load_zip_input(nested_path_zip, contracts.profile), contracts
+            )["decision"]["status"]
+            != "invalid"
+        ):
             raise ReadinessError("Nested archive path was accepted")
         print("PASS nested archive path rejected")
 
@@ -2731,14 +4974,19 @@ def run_fixture_suite() -> None:
 
         ratio_zip = temp_dir / "ratio.zip"
         build_legacy_zip(ratio_zip, {f"{root}/data/zeros.bin": b"0" * (1024 * 1024)})
-        if evaluate_loaded_input(
-            load_zip_input(ratio_zip, contracts.profile), contracts
-        )["decision"]["status"] != "invalid":
+        if (
+            evaluate_loaded_input(
+                load_zip_input(ratio_zip, contracts.profile), contracts
+            )["decision"]["status"]
+            != "invalid"
+        ):
             raise ReadinessError("Compression-ratio bomb was accepted")
         print("PASS compression-ratio bomb rejected")
 
         tiny_limit_profile = copy.deepcopy(contracts.profile)
-        tiny_limit_profile["archiveLimits"]["outerZipBytes"] = target_zip.stat().st_size - 1
+        tiny_limit_profile["archiveLimits"]["outerZipBytes"] = (
+            target_zip.stat().st_size - 1
+        )
         oversized = load_zip_input(target_zip, tiny_limit_profile)
         if not oversized.errors or oversized.sha256 is not None:
             raise ReadinessError("Outer ZIP size did not fail before hashing")
@@ -2753,8 +5001,9 @@ def run_fixture_suite() -> None:
 
     print(
         "Curriculum package readiness self-test passed: "
-        f"{len(seen_ids)} manifest fixture(s), 4 policy-tamper cases, "
-        "5 readiness-report forgeries, 8 validator-report forgeries, "
+        f"{len(seen_ids)} manifest fixture(s), 6 policy-tamper cases, "
+        "7 readiness-report forgeries, 8 validator-report forgeries, "
+        f"{len(consumer_mutations)} consumer-report forgeries, "
         "3 validator-process failures, 3 raw JSON cases, 7 adversarial ZIPs, "
         "2 early-limit inputs, and exit matrix."
     )
@@ -2774,6 +5023,38 @@ def status_exit_code(status_value: str) -> int:
 
 def run_exit_matrix(temp_dir: Path, unsafe_legacy_zip: Path) -> None:
     script = Path(__file__).resolve()
+    help_result = subprocess.run(
+        [sys.executable, "-B", str(script), "--help"],
+        cwd=REPO_ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    normalized_help = " ".join(help_result.stdout.split())
+    if (
+        help_result.returncode != EXIT_READY
+        or "--consumer-smoke-work-dir" not in normalized_help
+        or "below repository tmp/" not in normalized_help
+    ):
+        raise ReadinessError("CLI help does not document retained consumer work")
+    print("PASS readiness CLI help documents retained consumer work")
+    report_victim = temp_dir / "readiness-report-victim"
+    report_victim.mkdir()
+    report_parent_link = temp_dir / "readiness-report-parent-link"
+    report_parent_link.symlink_to(report_victim, target_is_directory=True)
+    protected_manifest = temp_dir / "protected-input.manifest.json"
+    protected_manifest.write_bytes((FIXTURE_DIR / "legacy.manifest.json").read_bytes())
+    protected_manifest_before = protected_manifest.read_bytes()
+    protected_manifest_link = temp_dir / "protected-input-link.json"
+    protected_manifest_link.symlink_to(protected_manifest)
+    external_consumer_input = temp_dir / "external-consumer-input.json"
+    external_consumer_input.write_bytes(b'{"external":"consumer"}\n')
+    external_consumer_before = external_consumer_input.read_bytes()
+    output_guard_store = temp_dir / "output-guard-store"
+    output_guard_store.mkdir()
+    output_guard_store_marker = output_guard_store / "marker"
+    output_guard_store_marker.write_bytes(b"store marker\n")
     cases = [
         (
             "legacy-default",
@@ -2804,7 +5085,11 @@ def run_exit_matrix(temp_dir: Path, unsafe_legacy_zip: Path) -> None:
         ),
         (
             "partial-invalid",
-            ["--manifest", str(FIXTURE_DIR / "partial-target.manifest.json"), "--compact"],
+            [
+                "--manifest",
+                str(FIXTURE_DIR / "partial-target.manifest.json"),
+                "--compact",
+            ],
             EXIT_INVALID,
         ),
         (
@@ -2848,6 +5133,76 @@ def run_exit_matrix(temp_dir: Path, unsafe_legacy_zip: Path) -> None:
             ["--manifest", str(temp_dir / "missing.json"), "--compact"],
             EXIT_INTERNAL_ERROR,
         ),
+        (
+            "readiness-report-symlink-parent",
+            [
+                "--manifest",
+                str(FIXTURE_DIR / "legacy.manifest.json"),
+                "--report",
+                str(report_parent_link / "readiness.json"),
+                "--compact",
+            ],
+            EXIT_INTERNAL_ERROR,
+        ),
+        (
+            "readiness-report-equals-input",
+            [
+                "--manifest",
+                str(protected_manifest),
+                "--report",
+                str(protected_manifest),
+                "--compact",
+            ],
+            EXIT_INTERNAL_ERROR,
+        ),
+        (
+            "readiness-report-symlink-aliases-input",
+            [
+                "--manifest",
+                str(protected_manifest),
+                "--report",
+                str(protected_manifest_link),
+                "--compact",
+            ],
+            EXIT_INTERNAL_ERROR,
+        ),
+        (
+            "readiness-report-below-store",
+            [
+                "--zip",
+                str(unsafe_legacy_zip),
+                "--consumer-smoke-store",
+                str(output_guard_store),
+                "--report",
+                str(output_guard_store / "readiness.json"),
+                "--compact",
+            ],
+            EXIT_INTERNAL_ERROR,
+        ),
+        (
+            "readiness-report-equals-external-consumer-input",
+            [
+                "--zip",
+                str(unsafe_legacy_zip),
+                "--consumer-smoke-report",
+                str(external_consumer_input),
+                "--report",
+                str(external_consumer_input),
+                "--compact",
+            ],
+            EXIT_INTERNAL_ERROR,
+        ),
+        (
+            "consumer-work-without-store",
+            [
+                "--zip",
+                str(unsafe_legacy_zip),
+                "--consumer-smoke-work-dir",
+                str(REPO_ROOT / "tmp/readiness-cli-work"),
+                "--compact",
+            ],
+            2,
+        ),
         ("cli-usage", [], 2),
     ]
     for label, arguments, expected in cases:
@@ -2862,6 +5217,15 @@ def run_exit_matrix(temp_dir: Path, unsafe_legacy_zip: Path) -> None:
             raise ReadinessError(
                 f"Exit matrix {label}: {completed.returncode} != {expected}"
             )
+    if (report_victim / "readiness.json").exists():
+        raise ReadinessError("CLI readiness report wrote through a symlink parent")
+    if (
+        protected_manifest.read_bytes() != protected_manifest_before
+        or external_consumer_input.read_bytes() != external_consumer_before
+        or output_guard_store_marker.read_bytes() != b"store marker\n"
+        or (output_guard_store / "readiness.json").exists()
+    ):
+        raise ReadinessError("CLI report preflight corrupted an input/store")
     print(f"PASS readiness exit matrix ({len(cases)} cases)")
 
 
@@ -2869,9 +5233,38 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     inputs = parser.add_mutually_exclusive_group(required=True)
     inputs.add_argument("--manifest", type=Path, help="Evaluate a manifest JSON file")
-    inputs.add_argument("--zip", dest="zip_path", type=Path, help="Evaluate a finished ZIP")
-    inputs.add_argument("--self-test", action="store_true", help="Run readiness fixtures")
-    parser.add_argument("--report", type=Path, help="Also write the JSON report to this path")
+    inputs.add_argument(
+        "--zip", dest="zip_path", type=Path, help="Evaluate a finished ZIP"
+    )
+    inputs.add_argument(
+        "--self-test", action="store_true", help="Run readiness fixtures"
+    )
+    parser.add_argument(
+        "--report", type=Path, help="Also write the JSON report to this path"
+    )
+    parser.add_argument(
+        "--consumer-smoke-report",
+        type=Path,
+        help=(
+            "Persist the freshly self-executed consumer report here when "
+            "--consumer-smoke-store is set; without a store the existing file "
+            "is recorded only as external unattested metadata"
+        ),
+    )
+    parser.add_argument(
+        "--consumer-smoke-store",
+        type=Path,
+        help="Provisioned store used by the evaluator's repository-pinned smoke runner",
+    )
+    parser.add_argument(
+        "--consumer-smoke-work-dir",
+        type=Path,
+        help=(
+            "Retain the evaluator-verified runner assembly and evidence trees at "
+            "this exact non-symlink directory below repository tmp/; requires "
+            "--consumer-smoke-store and --zip"
+        ),
+    )
     parser.add_argument(
         "--expect-status",
         choices=STATUS_VOCABULARY,
@@ -2879,8 +5272,24 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--compact", action="store_true", help="Print compact JSON")
     args = parser.parse_args()
-    if args.self_test and (args.report is not None or args.expect_status is not None or args.compact):
+    if args.self_test and (
+        args.report is not None
+        or args.consumer_smoke_report is not None
+        or args.consumer_smoke_store is not None
+        or args.consumer_smoke_work_dir is not None
+        or args.expect_status is not None
+        or args.compact
+    ):
         parser.error("--self-test cannot be combined with report/status/output options")
+    if args.consumer_smoke_report is not None and args.zip_path is None:
+        parser.error("--consumer-smoke-report requires --zip")
+    if args.consumer_smoke_store is not None and args.zip_path is None:
+        parser.error("--consumer-smoke-store requires --zip")
+    if (
+        args.consumer_smoke_work_dir is not None
+        and args.consumer_smoke_store is None
+    ):
+        parser.error("--consumer-smoke-work-dir requires --consumer-smoke-store")
     return args
 
 
@@ -2892,11 +5301,42 @@ def main() -> int:
             return EXIT_READY
         kind = "manifest" if args.manifest is not None else "zip"
         path = (args.manifest or args.zip_path).resolve()
-        report = evaluate_path(path, kind)
+        if args.report is not None:
+            other_outputs = (
+                (args.consumer_smoke_report,)
+                if args.consumer_smoke_report is not None
+                else ()
+            )
+            validate_output_disjointness(
+                args.report,
+                "Readiness report",
+                input_zip=path,
+                package_store=args.consumer_smoke_store,
+                other_outputs=other_outputs,
+            )
+        if args.consumer_smoke_work_dir is not None and args.report is not None:
+            retained_work = validate_consumer_work_directory(
+                args.consumer_smoke_work_dir
+            )
+            readiness_output = Path(os.path.abspath(os.fspath(args.report)))
+            if retained_work == readiness_output or retained_work in readiness_output.parents:
+                raise ReadinessError(
+                    "Readiness report must be outside the retained runner work directory"
+                )
+        report = evaluate_path(
+            path,
+            kind,
+            args.consumer_smoke_report,
+            args.consumer_smoke_store,
+            args.consumer_smoke_work_dir,
+        )
         output = stable_json(report, pretty=not args.compact)
         if args.report is not None:
-            args.report.parent.mkdir(parents=True, exist_ok=True)
-            args.report.write_text(output, encoding="utf-8")
+            atomic_write_output_bytes(
+                args.report,
+                output.encode("utf-8"),
+                "Readiness report",
+            )
         sys.stdout.write(output)
         status_value = report["decision"]["status"]
         if args.expect_status is not None:

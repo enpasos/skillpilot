@@ -2,7 +2,7 @@
 
 DPK-004 compiles the real German Gymnasium Mathematik authoring state into a strict, unpacked release model. DPK-004a established the Runtime portion; DPK-004b adds authoritative publication evidence. Together they are the executable bridge between repository-specific sources and the later `full-standalone-v1` JSON ZIP.
 
-Current result: DPK-004 through DPK-006b are `passed`: the real profile, fixtures, independent validation, 47 production/adversarial cases, byte-identical model and ZIP builds, finished-package gates, secure content-addressed provisioning/CAS activation and the real Java Store-/Snapshot-Consumer pass. Runtime-Service cutover and the hermetic whole-application smoke remain DPK-006c/007.
+Current result: DPK-004 through DPK-007 are `passed`: the real profile, fixtures, independent validation, 47 production/adversarial cases, byte-identical model and ZIP builds, finished-package gates, secure content-addressed provisioning/CAS activation, package-authoritative Runtime services and the hermetic whole-application consumer pass.
 
 ## At a Glance
 
@@ -16,7 +16,7 @@ Current result: DPK-004 through DPK-006b are `passed`: the real profile, fixture
 | Is publication evidence in the Runtime closure? | No: all four package roles declare `runtimeRequired: false`; the closure contains 2,402 Runtime definitions and 18,815 references, with zero publication roles. |
 | Is publication quality honestly releasable? | No: 136 active goal visualizations are human-approved, 620 active reviews remain open, and one atomic goal has no active visualization, so the evidence artifact reports `publicationStatus: not-ready`. |
 | Are image files copied into this output? | Not into the DPK-004 model directory. The DPK-005b companion ZIP materializes all 756 byte-bound images. |
-| Is this output a standalone package? | The DPK-004 directory deliberately remains `conformance-model-only-not-a-package`. DPK-005b derives a structurally valid `full-standalone-v1` ZIP from it; DPK-006a/006b safely provision, activate and load it, while DPK-006c/007 still need to prove hermetic whole-application consumption. |
+| Is this output a standalone package? | The DPK-004 directory deliberately remains `conformance-model-only-not-a-package`. DPK-005b derives a structurally valid `full-standalone-v1` ZIP from it; DPK-006a–c safely provision, activate, load and serve it, and DPK-007 proves hermetic whole-application consumption. |
 
 The short implementation workboard and remaining sequence are maintained in [Dual Curriculum Package Implementation Status](../dev/dual-curriculum-package-implementation-status.md). The target architecture is [Dual Curriculum Package Releases](../concept/curriculum-graph/dual-curriculum-package-releases.md).
 
@@ -127,7 +127,7 @@ python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
 ```
 
-The focused gate combines those fixtures, the two output-symlink attacks, the pinned Core checkout, the real-model validator, a byte-identical second model build, exactly one real Builder invocation whose ZIP materialization internally builds twice, the independent finished-ZIP report, and an exact `not-ready-incomplete` Readiness assertion:
+The focused gate combines those fixtures, destructive output-path attacks, the pinned Core checkout, the real-model validator, a byte-identical second model build, exactly one real Builder invocation whose ZIP materialization internally builds twice, independent finished-ZIP validation, secure provisioning and activation, and an exact `not-ready-incomplete` Readiness assertion. The evaluator runs the policy-pinned consumer itself: a real React/Chromium flow and Catalog-404 fail-closed case execute in the checkout-hidden namespace, while retained assembly/evidence manifests allow independent tree-digest verification:
 
 ```bash
 bash scripts/run_curriculum_release_model_conformance.sh
@@ -139,16 +139,14 @@ For a step-complete checkpoint, targeted conformance checks are followed by the 
 ./run_ci.sh
 ```
 
-The complete gate is green through DPK-006a: the real `0.1.0-conformance.2` model under publication profile `1.1.0`, all fixtures and adversarial cases, deterministic model and ZIP builds, Finished-ZIP validation, read-only Store-/Snapshot-Consumer tests, and repository-wide `./run_ci.sh` pass. Generated models, ZIPs, stores and reports remain under `tmp/` and are not committed.
+The complete gate is green through DPK-007: the real `0.1.0-conformance.2` model under publication profile `1.1.0`, all fixtures and adversarial cases, deterministic model and ZIP builds, Finished-ZIP validation, provisioning/activation, package-authoritative services, the hermetic browser consumer, and repository-wide `./run_ci.sh` pass. Generated models, ZIPs, stores, reports, assembly, and evidence trees remain under `tmp/` and are not committed.
 
 ## What Remains
 
 | Step | Remaining outcome |
 | --- | --- |
-| DPK-005a | Completed: semantic file bindings, 22-schema offline trust, deterministic ZIP32 primitive, redistribution ledger, and source-verification queue. |
-| DPK-005b | Technical implementation complete; finish the full repository CI gate and commit the safe, reproducible, independently validated JSON-package step. |
-| DPK-006a | Bind validator-v2 evidence to ZIP, manifest, closure and definition index; rehash the complete manifest inventory and publish one immutable Runtime snapshot. |
-| DPK-006c–007 | Route all fachliche Runtime services through the safely provisioned package and prove SkillPilot operation without the curriculum source tree or `app/public` fallback. |
-| DPK-008–009 | Produce the Core-first FWU-OWL variant, reconstruct the JSON model in isolation, and issue the real dual-release equivalence proof. |
+| DPK-007a | Import the final missing Mathematik visualization and freeze immutable candidate `0.1.0-conformance.3`. |
+| DPK-008 | Produce and independently validate the Core-first FWU-OWL package, then reconstruct a valid JSON package in isolation without the original ZIP or source checkout. |
+| DPK-009 | Compare the reconstructed normal form and binary assets, issue the real equivalence report, and bind the reproducible variant pair. |
 
-Until those gates pass, the existing Subject Export ZIP remains `not-ready-legacy`; the new DPK-005b ZIP is a `not-ready-incomplete` staging candidate, not a public release; and the DPK-004 directory itself remains a non-installable conformance model.
+The existing Subject Export ZIP remains `not-ready-legacy`. Candidate `.2` is technically operable but remains a `not-ready-incomplete` staging artifact because its Human-Gates are open; the dual JSON/FWU release does not exist until DPK-008/009 pass. The DPK-004 directory itself remains a non-installable conformance model.

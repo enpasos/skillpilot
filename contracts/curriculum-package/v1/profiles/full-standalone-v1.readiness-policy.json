@@ -18,11 +18,22 @@
   },
   "reportSchema": {
     "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-readiness-report.schema.json",
-    "sha256": "e8e0425523d014a582cc2a9093902db20a359ba8549773ef6b44934eaf9448dc"
+    "sha256": "fa07fcf6152182eba09235cf5ed509f2e941d3959b578f1399c6f077a96e65a4"
+  },
+  "consumerSmokeReportSchema": {
+    "id": "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report.schema.json",
+    "sha256": "948060cb5fb9128edc81d9b2a3554325ebb840a19f537638cf0a30488b74987d"
+  },
+  "consumerSmokeRunner": {
+    "id": "skillpilot-package-consumer-smoke",
+    "version": "1.0.0",
+    "path": "scripts/run_package_consumer_smoke.py",
+    "bytes": 57546,
+    "sha256": "7c8f38cae758950cb1512e186a1df8bc2cdf292287bd1158c62f956d3f2511c0"
   },
   "evaluator": {
     "name": "skillpilot-json-package-readiness",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "jsonschemaVersion": "4.26.0"
   },
   "statusVocabulary": [

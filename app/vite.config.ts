@@ -4,6 +4,7 @@ import path from 'node:path'
 import { existsSync, promises as fs } from 'node:fs'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { promisify } from 'node:util'
+import { fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -11,7 +12,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
 const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
-const APP_ROOT = process.cwd()
+const APP_ROOT = fileURLToPath(new URL('.', import.meta.url))
 const REPO_ROOT = path.resolve(APP_ROOT, '..')
 const CURRICULA_ROOT = path.resolve(REPO_ROOT, 'curricula')
 const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'canonical')
@@ -29,6 +30,105 @@ const QUALITY_STATUS_ROOT = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status')
 const QUALITY_STATUS_PATH = path.resolve(REPO_ROOT, 'docs', 'qa-ci', 'status', 'curriculum-quality-status.json')
 const PUBLIC_DATA_ROOT = path.resolve(APP_ROOT, 'public', 'data')
 const execFileAsync = promisify(execFile)
+
+const PACKAGE_CONSUMER_SOURCE_REPLACEMENTS = new Map([
+  [
+    path.resolve(APP_ROOT, 'src', 'generated', 'gymnasiumDurationOfferings'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'gymnasiumDurationOfferings.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'curriculumDisplay'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'curriculumDisplay.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'trainerLandscapeContext'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'trainerLandscapeContext.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'abi26MatheCampaign'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'abi26MatheCampaign.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'repositoryGoalSourceRationales'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'goalSourceRationalesUnavailable.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'canonicalGymnasiumCutoverApi'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'canonicalGymnasiumCutoverApi.ts'),
+  ],
+  [
+    path.resolve(APP_ROOT, 'src', 'utils', 'jurisdictionMetadata'),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'jurisdictionMetadata.ts'),
+  ],
+])
+const PACKAGE_CONSUMER_REPOSITORY_VIEW_MODULES = [
+  'UsersView',
+  'WorkbenchView',
+  'FlashcardEditorView',
+  'GraphEditorView',
+  'CanonicalClusterEditorView',
+  'CompositionViewEditorView',
+  'SemanticAtomicityReviewView',
+  'GoalVisualizationQaView',
+  'CurriculumQualityDashboardView',
+  'CurriculumMappingWorkbenchView',
+] as const
+for (const name of PACKAGE_CONSUMER_REPOSITORY_VIEW_MODULES) {
+  PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
+    path.resolve(APP_ROOT, 'src', 'views', name),
+    path.resolve(APP_ROOT, 'src', 'packageConsumer', 'repositoryUnavailableViews.ts'),
+  )
+}
+
+const stripModuleExtension = (value: string): string => value.replace(/\.(?:[cm]?[jt]sx?)$/u, '')
+const splitModuleSpecifier = (value: string): { path: string; suffix: string } => {
+  const suffixIndex = value.search(/[?#]/u)
+  return suffixIndex < 0
+    ? { path: value, suffix: '' }
+    : { path: value.slice(0, suffixIndex), suffix: value.slice(suffixIndex) }
+}
+const normalizeModulePath = (value: string): string => {
+  const { path: modulePath } = splitModuleSpecifier(value.replace(/^\0/u, ''))
+  return stripModuleExtension(path.normalize(modulePath))
+}
+const PACKAGE_CONSUMER_FORBIDDEN_MODULES = new Set([
+  ...PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.keys(),
+])
+
+const createPackageConsumerSourcePolicyPlugin = (mode: string): Plugin | null => {
+  if (mode !== 'package-consumer') return null
+  return {
+    name: 'skillpilot-package-consumer-source-policy',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (!importer || (!source.startsWith('.') && !path.isAbsolute(source))) return null
+      const importerPath = splitModuleSpecifier(importer).path
+      const { path: sourcePath, suffix } = splitModuleSpecifier(source)
+      const candidate = normalizeModulePath(
+        path.isAbsolute(sourcePath) ? sourcePath : path.resolve(path.dirname(importerPath), sourcePath),
+      )
+      const replacement = PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.get(candidate)
+      return replacement ? `${replacement}${suffix}` : null
+    },
+    moduleParsed(moduleInfo) {
+      const normalized = normalizeModulePath(moduleInfo.id)
+      if (PACKAGE_CONSUMER_FORBIDDEN_MODULES.has(normalized)) {
+        this.error(`Repository-only module entered package-consumer graph: ${moduleInfo.id}`)
+      }
+    },
+    generateBundle(_options, bundle) {
+      for (const output of Object.values(bundle)) {
+        if (output.type !== 'chunk') continue
+        for (const moduleId of Object.keys(output.modules)) {
+          const normalized = normalizeModulePath(moduleId)
+          if (PACKAGE_CONSUMER_FORBIDDEN_MODULES.has(normalized)) {
+            this.error(`Repository-only module entered package-consumer chunk: ${moduleId}`)
+          }
+        }
+      }
+    },
+  }
+}
 
 type LocalSourcePdf = {
   absolutePath: string
@@ -1976,6 +2076,20 @@ const escapeHtmlAttribute = (value: string): string =>
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
 
+const resolvePackageBuildTime = async (commit: string): Promise<string> => {
+  const sourceDateEpoch = process.env.SOURCE_DATE_EPOCH?.trim()
+  if (sourceDateEpoch && /^\d+$/u.test(sourceDateEpoch)) {
+    const milliseconds = Number(sourceDateEpoch) * 1000
+    if (Number.isSafeInteger(milliseconds)) return new Date(milliseconds).toISOString()
+  }
+  if (commit !== 'unknown') {
+    const committedAt = await readGitText(['show', '-s', '--format=%cI', commit])
+    const milliseconds = Date.parse(committedAt)
+    if (Number.isFinite(milliseconds)) return new Date(milliseconds).toISOString()
+  }
+  return new Date(0).toISOString()
+}
+
 const createSkillpilotBuildVersion = async (mode: string): Promise<SkillpilotBuildVersion> => {
   const envCommit = process.env.GITHUB_SHA
     || process.env.VERCEL_GIT_COMMIT_SHA
@@ -1989,7 +2103,9 @@ const createSkillpilotBuildVersion = async (mode: string): Promise<SkillpilotBui
   const status = await readGitText(['status', '--porcelain'])
   const dirty = status.length > 0
   const shortCommit = commit === 'unknown' ? 'unknown' : commit.slice(0, 12)
-  const buildTime = new Date().toISOString()
+  const buildTime = mode === 'package-consumer'
+    ? await resolvePackageBuildTime(commit)
+    : new Date().toISOString()
 
   return {
     app: 'skillpilot',
@@ -2902,11 +3018,16 @@ const deckEditorDevPlugin = {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
+  const env = loadEnv(mode, APP_ROOT, '')
+  const packageConsumerBuild = mode === 'package-consumer'
   const apiTarget = env.VITE_API_BASE || 'https://skillpilot.com'
 
   return {
+    define: packageConsumerBuild
+      ? { 'import.meta.env.VITE_API_BASE': JSON.stringify('') }
+      : undefined,
     plugins: [
+      createPackageConsumerSourcePolicyPlugin(mode),
       createBuildVersionPlugin(mode),
       react(),
       tailwindcss(),

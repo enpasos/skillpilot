@@ -146,6 +146,9 @@ export const isLegacyHessenGymnasiumLower = (curriculumId?: string | null) =>
 export const isLegacyBavariaGymnasium = (curriculumId?: string | null) =>
   !!curriculumId && LEGACY_BAVARIA_GYMNASIUM_IDS.has(curriculumId)
 
+export const isRepositoryGymnasiumFramework = (frameworkId?: string | null) =>
+  Boolean(frameworkId?.startsWith('canonical-gymnasium'))
+
 export const isCompatibilityOnlyCurriculum = (
   curriculumId?: string | null,
   compatibilityOnly?: boolean | null,

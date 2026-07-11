@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { X, ChevronDown, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
 import type { LegacyCutoverPreviewItem } from '../utils/legacyCutover'
 import {
@@ -14,6 +15,7 @@ import {
     getOfferedGymnasiumDurationModels,
     isGymnasiumSubjectOfferedForStageSelection,
     normalizeOfferedDurationModel,
+    resolveCurriculumOfferingSource,
 } from '../utils/durationModel'
 import {
     formatJurisdictionScopedTitle,
@@ -100,6 +102,20 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const setupCopy = getPersonalCurriculumSetupCopy(localizedLanguage)
     const retirementCopy = setupCopy.retirement
     const compatibilityCopy = setupCopy.compatibility
+    const runtimeCatalogState = useRuntimeCurriculumCatalog()
+    const offeringSource = React.useMemo(
+        () => resolveCurriculumOfferingSource(runtimeCatalogState),
+        [runtimeCatalogState],
+    )
+    const isScopedSetupRoot = rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        || (
+            offeringSource.mode === 'catalog'
+            && !!rootLandscapeId
+            && offeringSource.catalog.rootLandscapeIds.includes(rootLandscapeId)
+        )
+    const catalogRootHasOfferings = offeringSource.mode === 'catalog'
+        && !!rootLandscapeId
+        && offeringSource.catalog.offerings.some((offering) => offering.landscapeId === rootLandscapeId)
     const computedInitial = React.useMemo(() => {
         const initial: PersonalCurriculumConfig = {}
         const hasExplicitInitialConfig = Object.keys(initialConfig).length > 0
@@ -122,18 +138,20 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 initial[landscapeId] = value
             }
         })
-        if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
+        if (isScopedSetupRoot) {
             const stageScoped = applyDefaultGlobalStageScope(initial).config
-            const rootConfig = { ...stageScoped[rootLandscapeId] }
-            delete rootConfig.durationModel
-            stageScoped[rootLandscapeId] = {
-                ...rootConfig,
-                selected: rootConfig.selected ?? true,
+            if (rootLandscapeId) {
+                const rootConfig = { ...stageScoped[rootLandscapeId] }
+                if (!catalogRootHasOfferings) delete rootConfig.durationModel
+                stageScoped[rootLandscapeId] = {
+                    ...rootConfig,
+                    selected: rootConfig.selected ?? true,
+                }
             }
             return stageScoped
         }
         return initial
-    }, [availableLandscapes, initialConfig, rootLandscapeId])
+    }, [availableLandscapes, catalogRootHasOfferings, initialConfig, isScopedSetupRoot, rootLandscapeId])
 
     const initialExpanded = React.useMemo(() => {
         const next = new Set<string>()
@@ -229,7 +247,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const setDurationModel = (landscapeId: string, durationModel: string) => {
         const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
-        const offeredDurationModels = getOfferedGymnasiumDurationModels(landscapeId, rootJurisdiction)
+        const offeredDurationModels = getOfferedGymnasiumDurationModels(
+            landscapeId,
+            rootJurisdiction,
+            offeringSource,
+        )
         const normalizedDurationModel = normalizeOfferedDurationModel(durationModel, offeredDurationModels)
         if (!normalizedDurationModel) return
         setConfig(prev => ({
@@ -243,18 +265,22 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     }
 
     const normalizeDurationScopes = (draft: PersonalCurriculumConfig): PersonalCurriculumConfig => {
-        if (rootLandscapeId !== CANONICAL_GYMNASIUM_ROOT_ID) {
+        if (!isScopedSetupRoot || !rootLandscapeId) {
             return draft
         }
 
         const stageSelection = getGlobalStageScopeSelection(draft)
         const rootJurisdiction = draft[rootLandscapeId]?.filterId
-        const hasJurisdictionScope = normalizeJurisdictionCode(rootJurisdiction) !== null
+        const hasJurisdictionScope = offeringSource.mode === 'catalog'
+            ? Boolean(rootJurisdiction?.trim()) && offeringSource.catalog.offerings.some(
+                (offering) => offering.scope.jurisdiction === rootJurisdiction?.trim(),
+            )
+            : normalizeJurisdictionCode(rootJurisdiction) !== null
         const shouldApplyDurationScope = stageSelection.sek1Selected
         const shouldRestrictToOfferedContent = hasJurisdictionScope
         const next: PersonalCurriculumConfig = { ...draft }
         const rootConfig = { ...next[rootLandscapeId] }
-        delete rootConfig.durationModel
+        if (!catalogRootHasOfferings) delete rootConfig.durationModel
         next[rootLandscapeId] = {
             ...rootConfig,
             selected: rootConfig.selected ?? true,
@@ -262,7 +288,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
         Object.entries(next).forEach(([landscapeId, value]) => {
             if (
-                landscapeId === rootLandscapeId
+                (landscapeId === rootLandscapeId && !catalogRootHasOfferings)
                 || landscapeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
                 || landscapeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2
             ) {
@@ -270,12 +296,17 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
 
             const offeredDurationModels = value.selected && shouldApplyDurationScope
-                ? getOfferedGymnasiumDurationModels(landscapeId, rootJurisdiction)
+                ? getOfferedGymnasiumDurationModels(landscapeId, rootJurisdiction, offeringSource)
                 : []
             if (
                 shouldRestrictToOfferedContent
                 && value.selected
-                && !isGymnasiumSubjectOfferedForStageSelection(landscapeId, rootJurisdiction, stageSelection)
+                && !isGymnasiumSubjectOfferedForStageSelection(
+                    landscapeId,
+                    rootJurisdiction,
+                    stageSelection,
+                    offeringSource,
+                )
             ) {
                 const withoutDurationModel = { ...value, selected: false }
                 delete withoutDurationModel.durationModel
@@ -368,11 +399,22 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const globalStageSelection = getGlobalStageScopeSelection(config)
     const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
     const shouldRestrictChildrenToOfferedContent =
-        rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        && normalizeJurisdictionCode(rootJurisdiction) !== null
+        isScopedSetupRoot
+        && (
+            offeringSource.mode === 'catalog'
+                ? Boolean(rootJurisdiction?.trim()) && offeringSource.catalog.offerings.some(
+                    (offering) => offering.scope.jurisdiction === rootJurisdiction?.trim(),
+                )
+                : normalizeJurisdictionCode(rootJurisdiction) !== null
+        )
     const displayedPrimaryChildrenLandscapes = shouldRestrictChildrenToOfferedContent
         ? primaryChildrenLandscapes.filter((landscape) =>
-            isGymnasiumSubjectOfferedForStageSelection(landscape.landscapeId, rootJurisdiction, globalStageSelection),
+            isGymnasiumSubjectOfferedForStageSelection(
+                landscape.landscapeId,
+                rootJurisdiction,
+                globalStageSelection,
+                offeringSource,
+            ),
         )
         : primaryChildrenLandscapes
 
@@ -380,10 +422,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
         const globalStageSelection = getGlobalStageScopeSelection(config)
-        const shouldShowGlobalStageScope = isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+        const shouldShowGlobalStageScope = isRoot && isScopedSetupRoot
         const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
-        const offeredDurationModels = !isRoot && rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID && globalStageSelection.sek1Selected && isSelected
-            ? getOfferedGymnasiumDurationModels(landscape.landscapeId, rootJurisdiction)
+        const durationScopeTarget = (!isRoot || catalogRootHasOfferings) && isScopedSetupRoot
+        const offeredDurationModels = durationScopeTarget && globalStageSelection.sek1Selected && isSelected
+            ? getOfferedGymnasiumDurationModels(landscape.landscapeId, rootJurisdiction, offeringSource)
             : []
         const durationModelOptions = getDurationModelOptions(localizedLanguage, offeredDurationModels)
         const shouldShowDurationModelControls = durationModelOptions.length > 0

@@ -52,6 +52,7 @@ echo "Running Frontend CI (app)"
 echo "=========================================="
 cd "${PROJECT_ROOT}/app"
 npm ci
+npx playwright install chromium
 
 echo "--> Running Graph Validation"
 npm run validate:graph
@@ -61,6 +62,9 @@ npm run test:package-landscape-model
 
 echo "--> Testing Runtime Curriculum Catalog Consumer"
 npm run test:runtime-curriculum-catalog
+
+echo "--> Testing Curriculum Offering Sources"
+npm run test:curriculum-offering-source
 
 echo "--> Testing Package Goal Source Evidence Consumer"
 npm run test:package-goal-source-evidence
@@ -141,6 +145,7 @@ npm run test:full-standalone-package-builder
 echo "--> Running Lint & Build"
 npm run lint
 npm run build
+npm run check:goal-source-rationales:build-artifact
 cd "${PROJECT_ROOT}"
 
 echo "--> Running Schema Validation"
@@ -153,6 +158,7 @@ python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
 python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
 python3 -B scripts/provision_curriculum_package.py self-test
+python3 -B scripts/run_package_consumer_smoke.py --self-test
 python3 -B scripts/validate_curriculum_dual_release_contracts.py
 bash scripts/run_curriculum_release_model_conformance.sh
 export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"

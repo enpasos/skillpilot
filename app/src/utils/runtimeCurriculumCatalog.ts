@@ -562,12 +562,19 @@ export const resolveGoalResourceHref = (
 export const loadRuntimeCurriculumCatalog = async (
   fetcher: typeof fetch,
   apiBase = '',
+  { allowRepositoryFallback = true }: { allowRepositoryFallback?: boolean } = {},
 ): Promise<RuntimeCurriculumCatalogState> => {
   const normalizedBase = apiBase.trim().replace(/\/+$/u, '')
   const url = normalizedBase ? `${normalizedBase}/api/ui/curriculum-catalog` : '/api/ui/curriculum-catalog'
   try {
     const response = await fetcher(url, { cache: 'no-store', headers: { Accept: 'application/json' } })
-    if (response.status === 404) return { mode: 'repository' }
+    if (response.status === 404 && allowRepositoryFallback) return { mode: 'repository' }
+    if (response.status === 404) {
+      return {
+        mode: 'unavailable',
+        error: new Error('Curriculum catalog request failed (404); package-consumer mode requires it'),
+      }
+    }
     if (!response.ok) return { mode: 'unavailable', error: new Error(`Curriculum catalog request failed (${response.status})`) }
     const catalog = parseRuntimeCurriculumCatalog(await response.json())
     return { mode: 'package', catalog, apiBase: normalizedBase }

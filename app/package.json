@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run generate:gymnasium-duration-offerings && npm run deploy:assets && tsc -b && vite build",
+    "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "visualization:prepare": "node ../scripts/prepare_goal_visualization.mjs",
@@ -19,6 +20,7 @@
     "validate:graph": "tsx scripts/validateGraph.ts",
     "test:package-landscape-model": "tsx scripts/testPackageLandscapeModelParity.ts",
     "test:runtime-curriculum-catalog": "tsx scripts/testRuntimeCurriculumCatalog.ts",
+    "test:curriculum-offering-source": "tsx scripts/testCurriculumOfferingSource.ts",
     "test:package-goal-source-evidence": "tsx scripts/testPackageGoalSourceEvidence.ts",
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
@@ -158,6 +160,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "playwright": "1.59.1",
     "tailwindcss": "^4.2.0",
     "tsx": "^4.20.6",
     "typescript": "~5.9.3",
