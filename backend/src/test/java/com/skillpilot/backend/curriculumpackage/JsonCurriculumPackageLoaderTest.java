@@ -57,11 +57,57 @@ class JsonCurriculumPackageLoaderTest {
                 .isEqualTo("tool");
         assertThat(snapshot.resourcesById().get(expected.externalResourceId()).catalogResourceKind())
                 .isEqualTo("external-tool");
+        CurriculumRuntimeSnapshot.Artifact auditArtifact = snapshot.artifactsByKey().get(
+                new CurriculumRuntimeSnapshot.ArtifactKey("org.example.alpha", "metadata/audit.json"));
+        assertThat(snapshot.artifactsByKey()).hasSize(11);
+        assertThat(auditArtifact.runtimeRequired()).isFalse();
+        assertThat(auditArtifact.semanticBindingKind()).isEqualTo("excluded-generated");
+        assertThat(auditArtifact.licenseExpression()).isEqualTo("Apache-2.0");
+        assertThat(auditArtifact.provenanceClass()).isEqualTo("software-contract");
+        assertThat(auditArtifact.redistributionStatus()).isEqualTo("allowed");
+        assertThat(snapshot.artifactsByRole().get("binary-asset"))
+                .singleElement()
+                .satisfies(artifact -> {
+                    assertThat(artifact.resourceId()).isEqualTo(expected.resourceId());
+                    assertThat(artifact.runtimeRequired()).isTrue();
+                });
         assertThat(snapshot.definitionCount()).isEqualTo(1);
         assertThat(snapshot.landscapesById()).isUnmodifiable();
         assertThat(snapshot.rootLandscapeIds()).isUnmodifiable();
         assertThat(snapshot.resourcesById().get(expected.resourceId()).artifact().getClass().getMethods())
                 .noneMatch(method -> method.getReturnType().equals(Path.class));
+        assertThat(snapshot.artifactsByKey()).isUnmodifiable();
+        assertThat(snapshot.artifactsByRole()).isUnmodifiable();
+    }
+
+    @Test
+    void readsOnlySnapshotBoundArtifactsAndReverifiesEveryAccess() throws Exception {
+        CurriculumPackageTestFixture fixture = new CurriculumPackageTestFixture(objectMapper);
+        CurriculumPackageTestFixture.TestStore store = fixture.create(
+                tempDir.resolve("store"),
+                CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        CurriculumRuntimeSnapshot snapshot = loader(store.root(), "0.1.0").load();
+        CurriculumPackageArtifactReader reader = new CurriculumPackageArtifactReader(
+                new CurriculumPackageFileReader());
+        CurriculumRuntimeSnapshot.ArtifactKey key = new CurriculumRuntimeSnapshot.ArtifactKey(
+                "org.example.alpha", "assets/fixture.png");
+
+        assertThat(reader.readVerified(snapshot, key, 4)).containsExactly(1, 2, 3, 4);
+        assertThatThrownBy(() -> reader.readVerified(snapshot, key, 3))
+                .isInstanceOf(CurriculumPackageException.class)
+                .hasMessageContaining("caller byte limit");
+        assertThatThrownBy(() -> reader.readVerified(
+                snapshot,
+                new CurriculumRuntimeSnapshot.ArtifactKey("org.example.alpha", "assets/missing.png"),
+                4))
+                .isInstanceOf(CurriculumPackageException.class)
+                .hasMessageContaining("not part of the active snapshot");
+
+        Files.write(store.packages().getFirst().packageRoot().resolve("assets/fixture.png"),
+                new byte[] {4, 3, 2, 1});
+        assertThatThrownBy(() -> reader.readVerified(snapshot, key, 4))
+                .isInstanceOf(CurriculumPackageException.class)
+                .hasMessageContaining("SHA-256 drift");
     }
 
     @Test

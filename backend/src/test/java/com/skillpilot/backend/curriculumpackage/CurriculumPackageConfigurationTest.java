@@ -26,6 +26,7 @@ class CurriculumPackageConfigurationTest {
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean(CurriculumPackageRepository.class);
+                    assertThat(context).doesNotHaveBean(CurriculumPackageArtifactReader.class);
                     assertThat(context).doesNotHaveBean(CurriculumRuntimeSnapshotProvider.class);
                 });
     }
@@ -46,6 +47,7 @@ class CurriculumPackageConfigurationTest {
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).hasSingleBean(CurriculumPackageRepository.class);
+                    assertThat(context).hasSingleBean(CurriculumPackageArtifactReader.class);
                     assertThat(context).hasSingleBean(CurriculumRuntimeSnapshotProvider.class);
                     assertThat(context.getBean(CurriculumRuntimeSnapshotProvider.class)
                             .current().packages()).hasSize(1);

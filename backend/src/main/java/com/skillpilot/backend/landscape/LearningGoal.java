@@ -1,8 +1,13 @@
 package com.skillpilot.backend.landscape;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LearningGoal {
     private String id;
@@ -11,7 +16,7 @@ public class LearningGoal {
     private String titleEn;
     private String description;
     private String descriptionEn;
-    private boolean core;
+    private Boolean core;
     private double weight;
     private List<String> tags;
     private DimensionTags dimensionTags;
@@ -24,6 +29,14 @@ public class LearningGoal {
     private List<String> competencyRefs;
     private java.util.Map<String, Object> extendedData;
     private ReleaseMetadata release;
+    private String courseLevel;
+    private String themenfeld;
+    private List<String> leitideen;
+    private List<String> kompetenzen;
+    private ExperimentData experimentData;
+    private String phase;
+    private Boolean semanticAtomic;
+    private String semanticKind;
     // Explicit node type ("atomic" | "cluster"), optional for backward compatibility
     private String type;
     // Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility
@@ -93,11 +106,18 @@ public class LearningGoal {
         this.descriptionEn = descriptionEn;
     }
 
+    @JsonIgnore
     public boolean isCore() {
+        return Boolean.TRUE.equals(core);
+    }
+
+    @JsonGetter("core")
+    public Boolean getCore() {
         return core;
     }
 
-    public void setCore(boolean core) {
+    @JsonSetter("core")
+    public void setCore(Boolean core) {
         this.core = core;
     }
 
@@ -179,6 +199,70 @@ public class LearningGoal {
 
     public void setCompetencyRefs(List<String> competencyRefs) {
         this.competencyRefs = competencyRefs;
+    }
+
+    public String getCourseLevel() {
+        return courseLevel;
+    }
+
+    public void setCourseLevel(String courseLevel) {
+        this.courseLevel = courseLevel;
+    }
+
+    public String getThemenfeld() {
+        return themenfeld;
+    }
+
+    public void setThemenfeld(String themenfeld) {
+        this.themenfeld = themenfeld;
+    }
+
+    public List<String> getLeitideen() {
+        return leitideen;
+    }
+
+    public void setLeitideen(List<String> leitideen) {
+        this.leitideen = leitideen;
+    }
+
+    public List<String> getKompetenzen() {
+        return kompetenzen;
+    }
+
+    public void setKompetenzen(List<String> kompetenzen) {
+        this.kompetenzen = kompetenzen;
+    }
+
+    public ExperimentData getExperimentData() {
+        return experimentData;
+    }
+
+    public void setExperimentData(ExperimentData experimentData) {
+        this.experimentData = experimentData;
+    }
+
+    public String getPhase() {
+        return phase;
+    }
+
+    public void setPhase(String phase) {
+        this.phase = phase;
+    }
+
+    public Boolean getSemanticAtomic() {
+        return semanticAtomic;
+    }
+
+    public void setSemanticAtomic(Boolean semanticAtomic) {
+        this.semanticAtomic = semanticAtomic;
+    }
+
+    public String getSemanticKind() {
+        return semanticKind;
+    }
+
+    public void setSemanticKind(String semanticKind) {
+        this.semanticKind = semanticKind;
     }
 
     public String getType() {

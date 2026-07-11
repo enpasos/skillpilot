@@ -15,6 +15,11 @@ public class CurriculumPackageConfiguration {
     }
 
     @Bean
+    CurriculumPackageArtifactReader curriculumPackageArtifactReader(CurriculumPackageFileReader fileReader) {
+        return new CurriculumPackageArtifactReader(fileReader);
+    }
+
+    @Bean
     CurriculumPackageRepository curriculumPackageRepository(
             CurriculumPackageProperties properties,
             ObjectMapper objectMapper,

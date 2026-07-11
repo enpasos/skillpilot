@@ -218,6 +218,8 @@ public class LandscapeService {
         boolean english = "en".equals(lang);
 
         LearningLandscape copy = new LearningLandscape();
+        copy.setSchema(original.getSchema());
+        copy.setLandscapeFormatVersion(original.getLandscapeFormatVersion());
         copy.setLandscapeId(original.getLandscapeId());
         copy.setLocale(original.getLocale());
         copy.setCountry(original.getCountry());
@@ -225,6 +227,8 @@ public class LandscapeService {
         copy.setSchoolType(original.getSchoolType());
         copy.setSubject(original.getSubject());
         copy.setFrameworkId(original.getFrameworkId());
+        copy.setCompatibilityOnly(original.getCompatibilityOnly());
+        copy.setLegacyHiddenByDefault(original.getLegacyHiddenByDefault());
         copy.setFilters(original.getFilters());
         copy.setProgramUnits(original.getProgramUnits());
         copy.setGoalPlacements(original.getGoalPlacements());
@@ -250,7 +254,7 @@ public class LandscapeService {
                 LearningGoal gc = new LearningGoal();
                 gc.setId(g.getId());
                 gc.setShortKey(g.getShortKey());
-                gc.setCore(g.isCore());
+                gc.setCore(g.getCore());
                 gc.setWeight(g.getWeight());
                 gc.setTags(g.getTags());
                 gc.setDimensionTags(g.getDimensionTags());
@@ -263,6 +267,14 @@ public class LandscapeService {
                 gc.setCompetencyRefs(g.getCompetencyRefs());
                 gc.setExtendedData(g.getExtendedData());
                 gc.setRelease(g.getRelease());
+                gc.setCourseLevel(g.getCourseLevel());
+                gc.setThemenfeld(g.getThemenfeld());
+                gc.setLeitideen(g.getLeitideen());
+                gc.setKompetenzen(g.getKompetenzen());
+                gc.setExperimentData(g.getExperimentData());
+                gc.setPhase(g.getPhase());
+                gc.setSemanticAtomic(g.getSemanticAtomic());
+                gc.setSemanticKind(g.getSemanticKind());
                 gc.setType(g.getType());
                 gc.setNodeKind(g.getNodeKind());
                 gc.setExamData(localizeExamData(g.getExamData(), lang));
@@ -590,6 +602,7 @@ public class LandscapeService {
 
         ExamData copy = new ExamData();
         copy.setReviewStatus(original.getReviewStatus());
+        copy.setReviewNote(original.getReviewNote());
         copy.setCoveredGoalIds(original.getCoveredGoalIds());
         copy.setCoveredStrands(original.getCoveredStrands());
         copy.setDemandLevels(original.getDemandLevels());
@@ -1197,14 +1210,20 @@ public class LandscapeService {
 
     public boolean isCompatibilityOnlyLandscape(String landscapeId) {
         ensureFresh();
+        LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
         return landscapeId != null
-                && (COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
+                && (Boolean.TRUE.equals(landscape != null ? landscape.getCompatibilityOnly() : null)
+                        || COMPATIBILITY_ONLY_LANDSCAPE_IDS.contains(landscapeId)
                         || sourceLandscapeJurisdictionById.containsKey(landscapeId)
                         || isLegacyBavariaGymnasiumLandscape(landscapeId));
     }
 
     public boolean isLegacyHiddenByDefaultLandscape(String landscapeId) {
-        return landscapeId != null && LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS.contains(landscapeId);
+        ensureFresh();
+        LearningLandscape landscape = landscapeId == null ? null : cachedById.get(landscapeId);
+        return landscapeId != null
+                && (Boolean.TRUE.equals(landscape != null ? landscape.getLegacyHiddenByDefault() : null)
+                        || LEGACY_HIDDEN_BY_DEFAULT_LANDSCAPE_IDS.contains(landscapeId));
     }
 
     private boolean isLegacyBavariaGymnasiumLandscape(String landscapeId) {

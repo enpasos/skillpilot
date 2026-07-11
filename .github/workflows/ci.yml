@@ -75,6 +75,8 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Test package landscape model parity
+        run: npm run test:package-landscape-model
       - name: Validate View Filters
         run: npm run validate:view-filters
       - name: Check Source Landscape Registry

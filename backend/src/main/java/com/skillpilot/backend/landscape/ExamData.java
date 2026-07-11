@@ -1,11 +1,14 @@
 package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExamData {
     private String reviewStatus;
+    private String reviewNote;
     private List<String> coveredGoalIds;
     private List<String> coveredStrands;
     private List<String> demandLevels;
@@ -22,6 +25,14 @@ public class ExamData {
 
     public void setReviewStatus(String reviewStatus) {
         this.reviewStatus = reviewStatus;
+    }
+
+    public String getReviewNote() {
+        return reviewNote;
+    }
+
+    public void setReviewNote(String reviewNote) {
+        this.reviewNote = reviewNote;
     }
 
     public List<String> getCoveredGoalIds() {
