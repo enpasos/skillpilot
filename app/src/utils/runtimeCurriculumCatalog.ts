@@ -1,4 +1,4 @@
-export const RUNTIME_CURRICULUM_CATALOG_API_VERSION = '1.1'
+export const RUNTIME_CURRICULUM_CATALOG_API_VERSION = '1.2'
 
 export type RuntimeScope = Readonly<Record<string, string>>
 
@@ -69,6 +69,23 @@ export interface RuntimeCatalogResource {
   sha256?: string
 }
 
+export interface RuntimeCatalogSourceEvidenceGoal {
+  goalId: string
+  jurisdictions: readonly string[]
+}
+
+export interface RuntimeCatalogSourceEvidence {
+  packageId: string
+  packageVersion: string
+  targetLandscapeId: string
+  sourceCollectionCount: number
+  sourceDocumentCount: number
+  sourceGoalCount: number
+  mappingEdgeCount: number
+  goals: readonly RuntimeCatalogSourceEvidenceGoal[]
+  href: string
+}
+
 export interface RuntimeCurriculumCatalog {
   catalogApiVersion: typeof RUNTIME_CURRICULUM_CATALOG_API_VERSION
   generationSha256: string
@@ -79,6 +96,7 @@ export interface RuntimeCurriculumCatalog {
   offerings: readonly RuntimeCatalogOffering[]
   decks: readonly RuntimeCatalogDeck[]
   resources: readonly RuntimeCatalogResource[]
+  sourceEvidence: readonly RuntimeCatalogSourceEvidence[]
 }
 
 export type RuntimeCurriculumCatalogState =
@@ -103,6 +121,7 @@ const SHA256_PATTERN = /^[a-f0-9]{64}$/u
 const CONTENT_DIGEST_PATTERN = /^sha256:[a-f0-9]{64}$/u
 const LOCALE_PATTERN = /^[a-z]{2,3}(?:-[A-Z][a-z]{3})?(?:-[A-Z]{2}|-[0-9]{3})?$/u
 const MEDIA_TYPE_PATTERN = /^[a-z0-9!#$&^_.+-]+\/[a-z0-9!#$&^_.+-]+$/u
+const JURISDICTION_PATTERN = /^DE-[A-Z]{2}$/u
 
 const asRecord = (value: unknown, label: string): Record<string, unknown> => {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -197,7 +216,7 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
     if (!CONTENT_DIGEST_PATTERN.test(contentDigest)) throw new Error(`packages[${index}].contentDigest is invalid`)
     return Object.freeze({
       packageId: asId(item.packageId, `packages[${index}].packageId`),
-      packageVersion: asString(item.packageVersion, `packages[${index}].packageVersion`),
+      packageVersion: asId(item.packageVersion, `packages[${index}].packageVersion`),
       releaseId: asString(item.releaseId, `packages[${index}].releaseId`),
       contentDigest,
       capabilities: Object.freeze(readStringArray(item.capabilities, `packages[${index}].capabilities`)),
@@ -375,6 +394,62 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
   assertUnique(resources.map((entry) => entry.resourceId), 'resource IDs')
   assertUnique(resources.map((entry) => `${entry.landscapeId}\u0000${entry.ownerGoalId}\u0000${entry.publicUrl ?? entry.resourceId}`), 'resource goal bindings')
 
+  const sourceEvidence = asArray(root.sourceEvidence, 'sourceEvidence').map((entry, index): RuntimeCatalogSourceEvidence => {
+    const item = asRecord(entry, `sourceEvidence[${index}]`)
+    const packageId = asId(item.packageId, `sourceEvidence[${index}].packageId`)
+    const packageVersion = asId(item.packageVersion, `sourceEvidence[${index}].packageVersion`)
+    const targetLandscapeId = asId(item.targetLandscapeId, `sourceEvidence[${index}].targetLandscapeId`)
+    if (
+      packageById.get(packageId)?.packageVersion !== packageVersion
+      || landscapeById.get(targetLandscapeId)?.packageId !== packageId
+    ) {
+      throw new Error(`sourceEvidence[${index}] has an invalid package binding`)
+    }
+
+    const readCount = (field: string): number => {
+      const value = readNullableNumber(item[field], `sourceEvidence[${index}].${field}`)
+      if (value === undefined || value < 1) throw new Error(`sourceEvidence[${index}].${field} must be positive`)
+      return value
+    }
+    const goals = asArray(item.goals, `sourceEvidence[${index}].goals`).map((entryGoal, goalIndex): RuntimeCatalogSourceEvidenceGoal => {
+      const goal = asRecord(entryGoal, `sourceEvidence[${index}].goals[${goalIndex}]`)
+      const jurisdictions = readStringArray(
+        goal.jurisdictions,
+        `sourceEvidence[${index}].goals[${goalIndex}].jurisdictions`,
+      )
+      if (jurisdictions.length === 0 || jurisdictions.some((value) => !JURISDICTION_PATTERN.test(value))) {
+        throw new Error(`sourceEvidence[${index}].goals[${goalIndex}].jurisdictions is invalid`)
+      }
+      return Object.freeze({
+        goalId: asId(goal.goalId, `sourceEvidence[${index}].goals[${goalIndex}].goalId`),
+        jurisdictions: Object.freeze(jurisdictions),
+      })
+    })
+    if (goals.length === 0) throw new Error(`sourceEvidence[${index}].goals must not be empty`)
+    assertUnique(goals.map((goal) => goal.goalId), `sourceEvidence[${index}] goal IDs`)
+
+    const href = asString(item.href, `sourceEvidence[${index}].href`)
+    const expectedHref = `/api/ui/curriculum-source-evidence/packages/${packageId}/${packageVersion}/goals`
+    if (href !== expectedHref) throw new Error(`sourceEvidence[${index}].href is invalid`)
+
+    return Object.freeze({
+      packageId,
+      packageVersion,
+      targetLandscapeId,
+      sourceCollectionCount: readCount('sourceCollectionCount'),
+      sourceDocumentCount: readCount('sourceDocumentCount'),
+      sourceGoalCount: readCount('sourceGoalCount'),
+      mappingEdgeCount: readCount('mappingEdgeCount'),
+      goals: Object.freeze(goals),
+      href,
+    })
+  })
+  assertUnique(
+    sourceEvidence.map((entry) => `${entry.packageId}\u0000${entry.packageVersion}\u0000${entry.targetLandscapeId}`),
+    'source-evidence identities',
+  )
+  assertUnique(sourceEvidence.map((entry) => entry.packageId), 'source-evidence package IDs')
+
   return Object.freeze({
     catalogApiVersion: RUNTIME_CURRICULUM_CATALOG_API_VERSION,
     generationSha256,
@@ -385,6 +460,7 @@ export const parseRuntimeCurriculumCatalog = (raw: unknown): RuntimeCurriculumCa
     offerings: Object.freeze(offerings),
     decks: Object.freeze(decks),
     resources: Object.freeze(resources),
+    sourceEvidence: Object.freeze(sourceEvidence),
   })
 }
 

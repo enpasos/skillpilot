@@ -1,54 +1,35 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { basename, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-interface RuntimeIndexBuildConfig {
+interface RepositoryCompatibilityIndex {
   label: string
-  sourceIndexPath: string
-  assetFilePattern: RegExp
+  publicIndexPath: string
+  builtPublicIndexPath: string
+  legacyBundledAssetPattern: RegExp
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
-
 const buildAssetsDir = 'backend/src/main/resources/static/assets'
-const runtimeIndexes: RuntimeIndexBuildConfig[] = [
+const builtServiceWorkerPath = 'backend/src/main/resources/static/sw.js'
+
+const repositoryCompatibilityIndexes: readonly RepositoryCompatibilityIndex[] = [
   {
     label: 'Mathematik',
-    sourceIndexPath: 'app/src/data/goal-source-rationales-math-public.json',
-    assetFilePattern: /^goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json$/u,
+    publicIndexPath: 'app/public/data/goal-source-rationales-math-public.json',
+    builtPublicIndexPath: 'backend/src/main/resources/static/data/goal-source-rationales-math-public.json',
+    legacyBundledAssetPattern: /^goal-source-rationales-math-public-[A-Za-z0-9_-]+\.json$/u,
   },
   {
     label: 'Physik',
-    sourceIndexPath: 'app/src/data/goal-source-rationales-physics-public.json',
-    assetFilePattern: /^goal-source-rationales-physics-public-[A-Za-z0-9_-]+\.json$/u,
+    publicIndexPath: 'app/public/data/goal-source-rationales-physics-public.json',
+    builtPublicIndexPath: 'backend/src/main/resources/static/data/goal-source-rationales-physics-public.json',
+    legacyBundledAssetPattern: /^goal-source-rationales-physics-public-[A-Za-z0-9_-]+\.json$/u,
   },
 ]
 
-function absolutePath(repoPath: string): string {
-  return resolve(repoRoot, repoPath)
-}
-
-function readJson(repoPath: string): Record<string, unknown> {
-  return JSON.parse(readFileSync(absolutePath(repoPath), 'utf8')) as Record<string, unknown>
-}
-
-function asRecord(value: unknown): Record<string, unknown> {
-  return value && typeof value === 'object' && !Array.isArray(value)
-    ? value as Record<string, unknown>
-    : {}
-}
-
-function readItems(payload: Record<string, unknown>): unknown[] {
-  return Array.isArray(payload.items) ? payload.items : []
-}
-
-function collectBuiltJsFiles(assetsDir: string): string[] {
-  return readdirSync(assetsDir)
-    .filter((fileName) => fileName.endsWith('.js'))
-    .map((fileName) => resolve(assetsDir, fileName))
-    .filter((filePath) => statSync(filePath).isFile())
-}
+const absolutePath = (repoPath: string): string => resolve(repoRoot, repoPath)
 
 const failures: string[] = []
 const absoluteAssetsDir = absolutePath(buildAssetsDir)
@@ -57,57 +38,73 @@ if (!existsSync(absoluteAssetsDir)) {
   failures.push(`${buildAssetsDir}: missing build assets directory; run npm run build first`)
 }
 
-runtimeIndexes.forEach((config) => {
-  if (!existsSync(absolutePath(config.sourceIndexPath))) {
-    failures.push(`${config.sourceIndexPath}: missing source-rationale source index`)
+const builtAssetNames = existsSync(absoluteAssetsDir)
+  ? readdirSync(absoluteAssetsDir).sort((left, right) => left.localeCompare(right, 'en'))
+  : []
+const builtJsFiles = builtAssetNames
+  .filter((fileName) => fileName.endsWith('.js'))
+  .map((fileName) => absolutePath(`${buildAssetsDir}/${fileName}`))
+  .filter((filePath) => statSync(filePath).isFile())
+const builtJsContents = builtJsFiles.map((filePath) => ({
+  filePath,
+  content: readFileSync(filePath, 'utf8'),
+}))
+const builtServiceWorker = existsSync(absolutePath(builtServiceWorkerPath))
+  ? readFileSync(absolutePath(builtServiceWorkerPath), 'utf8')
+  : null
+if (builtServiceWorker === null) {
+  failures.push(`${builtServiceWorkerPath}: missing built service worker; run npm run build first`)
+}
+
+repositoryCompatibilityIndexes.forEach((config) => {
+  const publicPath = absolutePath(config.publicIndexPath)
+  const builtPublicPath = absolutePath(config.builtPublicIndexPath)
+  if (!existsSync(publicPath)) {
+    failures.push(`${config.publicIndexPath}: missing repository compatibility index`)
+    return
+  }
+  if (!existsSync(builtPublicPath)) {
+    failures.push(`${config.builtPublicIndexPath}: missing repository compatibility copy`)
+    return
+  }
+  if (!readFileSync(publicPath).equals(readFileSync(builtPublicPath))) {
+    failures.push(`${config.builtPublicIndexPath}: differs from ${config.publicIndexPath}`)
+  }
+
+  const legacyBundledAssets = builtAssetNames.filter((fileName) => (
+    config.legacyBundledAssetPattern.test(fileName)
+  ))
+  if (legacyBundledAssets.length > 0) {
+    failures.push(
+      `${buildAssetsDir}: ${config.label} source rationale must not be bundled as hashed JSON assets: ${legacyBundledAssets.join(', ')}`,
+    )
+  }
+
+  const publicRuntimePath = `/data/${basename(config.publicIndexPath)}`
+  if (!builtJsContents.some(({ content }) => content.includes(publicRuntimePath))) {
+    failures.push(
+      `${buildAssetsDir}: no lazy repository compatibility module references ${publicRuntimePath}`,
+    )
+  }
+  if (builtServiceWorker?.includes(publicRuntimePath) || builtServiceWorker?.includes(basename(config.publicIndexPath))) {
+    failures.push(`${builtServiceWorkerPath}: must not precache repository source rationale ${publicRuntimePath}`)
   }
 })
 
-if (failures.length === 0) {
-  const builtJsFiles = collectBuiltJsFiles(absoluteAssetsDir)
-
-  runtimeIndexes.forEach((config) => {
-    const assetFiles = readdirSync(absoluteAssetsDir)
-      .filter((fileName) => config.assetFilePattern.test(fileName))
-      .sort((left, right) => left.localeCompare(right, 'en'))
-
-    if (assetFiles.length !== 1) {
-      failures.push(
-        `${buildAssetsDir}: expected exactly one built ${config.label} goal-source-rationale JSON asset, found ${assetFiles.length}`,
-      )
-      return
-    }
-
-    const sourceIndex = readJson(config.sourceIndexPath)
-    const builtAssetPath = `${buildAssetsDir}/${assetFiles[0]}`
-    const builtIndex = readJson(builtAssetPath)
-
-    const sourceItems = readItems(sourceIndex)
-    const builtItems = readItems(builtIndex)
-    const sourceSummary = JSON.stringify(asRecord(sourceIndex.summary))
-    const builtSummary = JSON.stringify(asRecord(builtIndex.summary))
-
-    if (sourceItems.length !== builtItems.length) {
-      failures.push(`${builtAssetPath}: item count differs from ${config.sourceIndexPath}`)
-    }
-    if (sourceSummary !== builtSummary) {
-      failures.push(`${builtAssetPath}: summary differs from ${config.sourceIndexPath}`)
-    }
-
-    const publicAssetPath = `/assets/${assetFiles[0]}`
-    const jsReferenceCount = builtJsFiles
-      .filter((filePath) => readFileSync(filePath, 'utf8').includes(publicAssetPath))
-      .length
-
-    if (jsReferenceCount === 0) {
-      failures.push(`${buildAssetsDir}: no built JS file references ${publicAssetPath}`)
-    }
-  })
+const inlinedPayloadFiles = builtJsContents
+  .filter(({ content }) => content.includes('"sourceRationaleStatus"'))
+  .map(({ filePath }) => basename(filePath))
+if (inlinedPayloadFiles.length > 0) {
+  failures.push(
+    `${buildAssetsDir}: source-rationale payload data was inlined into JavaScript: ${inlinedPayloadFiles.join(', ')}`,
+  )
 }
 
 if (failures.length > 0) {
   console.error(failures.join('\n'))
   process.exitCode = 1
 } else {
-  console.log('Goal source-rationale build artifact check passed.')
+  console.log(
+    'Goal source-rationale build check passed: package mode has no bundled JSON index; repository compatibility remains lazy and public-only.',
+  )
 }

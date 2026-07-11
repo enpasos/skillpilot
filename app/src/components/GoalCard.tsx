@@ -1,8 +1,6 @@
 import React from 'react'
 import { Check, FileSearch, Send, Target, X } from 'lucide-react'
 import type { UiGoal as Goal } from '../goalTypes'
-import sourceRationaleMathPublicUrl from '../data/goal-source-rationales-math-public.json?url'
-import sourceRationalePhysicsPublicUrl from '../data/goal-source-rationales-physics-public.json?url'
 
 import { MasteryBar } from './MasteryBar'
 import { isCompleteMastery, isMastered } from '../goalUiUtils'
@@ -11,10 +9,16 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { formatApplicabilityDimensionLabel, formatFilterValueLabel } from '../utils/filterLabels'
 import { getGoalCardCopy } from '../utils/goalCardCopy'
 import { getAudienceGoalTitle } from '../utils/treeProjectionRuntime'
-import { splitFilterIds } from '../utils/goalFilters'
-import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { resolveGoalResourceHref } from '../utils/runtimeCurriculumCatalog'
+import {
+  loadPackageGoalSourceEvidence,
+  resolvePackageGoalSourceEvidenceRequest,
+} from '../utils/packageGoalSourceEvidence'
+import type {
+  GoalMemSparqlRoute,
+  GoalSourceRationaleItem,
+} from '../utils/sourceRationaleTypes'
 
 interface GoalCardProps {
   goal: Goal
@@ -64,64 +68,11 @@ type GoalProvenance = {
   sourceLicenseUrl?: string
 }
 
-type GoalSourceDocument = {
-  title?: string
-  url?: string
-  path?: string
-}
-
-type GoalClassicSourceRoute = {
-  jurisdiction?: string
-  sourceRef?: string
-  sourceText?: string
-  parentBulletText?: string
-  sourceExtractionPath?: string
-  sourceDocument?: GoalSourceDocument
-  matchType?: string
-  rationale?: string
-}
-
-type GoalMemSparqlRoute = {
-  status?: string
-  jurisdiction?: string
-  endpoint?: string
-  graphIri?: string
-  planIri?: string
-  planLabel?: string
-  yearLabel?: string
-  goalIri?: string
-  goalLabel?: string
-  notes?: string
-}
-
-type GoalSourceRationaleItem = {
-  goal?: {
-    id?: string
-    title?: string
-    description?: string
-    pathTitles?: string[]
-  }
-  classicSourceRoute?: GoalClassicSourceRoute
-  alternateClassicSourceRoutes?: GoalClassicSourceRoute[]
-  memSparqlRoute?: GoalMemSparqlRoute
-}
-
 type ApplicabilityGroup = {
   dimension: string
   values: string[]
 }
 
-const SOURCE_RATIONALE_PAYLOAD_SOURCES = [
-  {
-    assetUrl: sourceRationaleMathPublicUrl,
-    publicPath: '/data/goal-source-rationales-math-public.json',
-    statusPath: 'docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json',
-  },
-  {
-    assetUrl: sourceRationalePhysicsPublicUrl,
-    publicPath: '/data/goal-source-rationales-physics-public.json',
-  },
-]
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 const PROGRAM_UNIT_KIND_TAG_PREFIX = 'program-unit:'
 const PROGRAM_UNIT_ANCHOR_TAG = 'program-unit:anchor'
@@ -141,180 +92,9 @@ const readString = (value: unknown): string | undefined => {
   return trimmed.length > 0 ? trimmed : undefined
 }
 
-const readStringArray = (value: unknown): string[] => (
-  Array.isArray(value)
-    ? value.filter((entry): entry is string => typeof entry === 'string' && entry.trim().length > 0)
-    : []
-)
-
 const isRenderableExamData = (examData: Goal['examData']): boolean => {
   const status = String(examData?.reviewStatus ?? '').trim().toLowerCase()
   return status.length === 0 || status === 'released'
-}
-
-const decodeCommonHtmlEntities = (value?: string): string => (
-  (value ?? '')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim()
-)
-
-const normalizeSourceRationaleItem = (rawItem: unknown): GoalSourceRationaleItem | null => {
-  const item = asRecord(rawItem)
-  const rawGoal = asRecord(item?.goal)
-  const goalId = readString(rawGoal?.id)
-  if (!item || !rawGoal || !goalId) return null
-
-  const rawClassicRoute = asRecord(item.classicSourceRoute)
-  const rawAlternateClassicRoutes = Array.isArray(item.alternateClassicSourceRoutes)
-    ? item.alternateClassicSourceRoutes
-    : []
-  const rawMemRoute = asRecord(item.memSparqlRoute)
-
-  const normalizeClassicRoute = (rawRoute: Record<string, unknown> | null): GoalClassicSourceRoute | undefined => {
-    if (!rawRoute) return undefined
-    const rawRouteSourceDocument = asRecord(rawRoute.sourceDocument)
-    return {
-      jurisdiction: normalizeJurisdictionCode(readString(rawRoute.jurisdiction)) ?? undefined,
-      sourceRef: readString(rawRoute.sourceRef),
-      sourceText: readString(rawRoute.sourceText),
-      parentBulletText: readString(rawRoute.parentBulletText),
-      sourceExtractionPath: readString(rawRoute.sourceExtractionPath),
-      sourceDocument: rawRouteSourceDocument
-        ? {
-            title: readString(rawRouteSourceDocument.title),
-            url: readString(rawRouteSourceDocument.url),
-            path: readString(rawRouteSourceDocument.path),
-          }
-        : undefined,
-      matchType: readString(rawRoute.matchType),
-      rationale: readString(rawRoute.rationale),
-    }
-  }
-
-  return {
-    goal: {
-      id: goalId,
-      title: readString(rawGoal.title),
-      description: readString(rawGoal.description),
-      pathTitles: readStringArray(rawGoal.pathTitles),
-    },
-    classicSourceRoute: normalizeClassicRoute(rawClassicRoute),
-    alternateClassicSourceRoutes: rawAlternateClassicRoutes
-      .map((rawRoute) => normalizeClassicRoute(asRecord(rawRoute)))
-      .filter((route): route is GoalClassicSourceRoute => Boolean(route)),
-    memSparqlRoute: rawMemRoute
-      ? {
-          status: readString(rawMemRoute.status),
-          jurisdiction: normalizeJurisdictionCode(readString(rawMemRoute.jurisdiction)) ?? undefined,
-          endpoint: readString(rawMemRoute.endpoint),
-          graphIri: readString(rawMemRoute.graphIri),
-          planIri: readString(rawMemRoute.planIri),
-          planLabel: readString(rawMemRoute.planLabel),
-          yearLabel: readString(rawMemRoute.yearLabel),
-          goalIri: readString(rawMemRoute.goalIri),
-          goalLabel: decodeCommonHtmlEntities(readString(rawMemRoute.goalLabel)),
-          notes: readString(rawMemRoute.notes),
-        }
-      : undefined,
-  }
-}
-
-const selectSourceRationaleForFilter = (
-  item: GoalSourceRationaleItem | undefined,
-  activeFilter?: string,
-): GoalSourceRationaleItem | null => {
-  if (!item?.goal?.id) return null
-
-  const activeJurisdiction = splitFilterIds(activeFilter)
-    .map((filterId) => normalizeJurisdictionCode(filterId))
-    .find((jurisdiction) => !!jurisdiction)
-  const usableMemRoute = item.memSparqlRoute?.status === 'mem_sparql_consistent'
-    ? item.memSparqlRoute
-    : undefined
-  if (!activeJurisdiction) {
-    return {
-      ...item,
-      memSparqlRoute: usableMemRoute,
-    }
-  }
-
-  const routes = [
-    item.classicSourceRoute,
-    ...(item.alternateClassicSourceRoutes ?? []),
-  ].filter((route): route is GoalClassicSourceRoute => Boolean(route))
-  const selectedClassicRoute = routes.find((route) => normalizeJurisdictionCode(route.jurisdiction) === activeJurisdiction)
-
-  if (!selectedClassicRoute) {
-    return null
-  }
-
-  const memRouteJurisdiction = normalizeJurisdictionCode(usableMemRoute?.jurisdiction)
-  const memRouteMatchesFilter = Boolean(usableMemRoute)
-    && (
-      memRouteJurisdiction === activeJurisdiction
-      || (!memRouteJurisdiction && normalizeJurisdictionCode(selectedClassicRoute.jurisdiction) === activeJurisdiction)
-    )
-
-  return {
-    ...item,
-    classicSourceRoute: selectedClassicRoute,
-    memSparqlRoute: memRouteMatchesFilter ? usableMemRoute : undefined,
-  }
-}
-
-let sourceRationaleIndexPromise: Promise<Map<string, GoalSourceRationaleItem>> | null = null
-
-const loadSourceRationalePayload = async (
-  source: typeof SOURCE_RATIONALE_PAYLOAD_SOURCES[number],
-): Promise<Record<string, unknown> | null> => {
-  for (const sourceUrl of [source.assetUrl, source.publicPath]) {
-    try {
-      const publicResponse = await fetch(sourceUrl)
-      if (publicResponse.ok) return asRecord(await publicResponse.json())
-    } catch {
-      // Try the next source; source rationales are optional UI metadata.
-    }
-  }
-
-  if (!source.statusPath) return null
-
-  const params = new URLSearchParams({ path: source.statusPath })
-  const localResponse = await fetch(`/__quality-dashboard/file?${params.toString()}`)
-  if (!localResponse.ok) return null
-  return asRecord(await localResponse.json())
-}
-
-const loadSourceRationalePayloads = async (): Promise<Record<string, unknown>[]> => {
-  const payloads = await Promise.all(
-    SOURCE_RATIONALE_PAYLOAD_SOURCES.map((source) => loadSourceRationalePayload(source)),
-  )
-  return payloads.filter((payload): payload is Record<string, unknown> => payload !== null)
-}
-
-const loadSourceRationaleIndex = (): Promise<Map<string, GoalSourceRationaleItem>> => {
-  if (!sourceRationaleIndexPromise) {
-    sourceRationaleIndexPromise = loadSourceRationalePayloads()
-      .then((payloads) => {
-        const index = new Map<string, GoalSourceRationaleItem>()
-        payloads.forEach((payload) => {
-          const rawItems = Array.isArray(payload.items) ? payload.items : []
-          rawItems.forEach((rawItem) => {
-            const item = normalizeSourceRationaleItem(rawItem)
-            if (item?.goal?.id && !index.has(item.goal.id)) index.set(item.goal.id, item)
-          })
-        })
-        return index
-      })
-      .catch(() => new Map())
-  }
-
-  return sourceRationaleIndexPromise
 }
 
 const buildMemSparqlQuery = (route?: GoalMemSparqlRoute): string => {
@@ -702,6 +482,15 @@ export const GoalCard: React.FC<GoalCardProps> = ({
     .filter((link): link is GoalSourceLink => Boolean(link))
   const [sourceRationale, setSourceRationale] = React.useState<GoalSourceRationaleItem | null>(null)
   const [isSourceRationaleOpen, setIsSourceRationaleOpen] = React.useState(false)
+  const [isSourceRationaleLoading, setIsSourceRationaleLoading] = React.useState(false)
+  const sourceRationaleLoadToken = React.useRef(0)
+  const packageSourceEvidenceRequest = React.useMemo(
+    () => resolvePackageGoalSourceEvidenceRequest(runtimeCatalogState, goal, activeFilter),
+    [activeFilter, goal, runtimeCatalogState],
+  )
+  const hasSourceRationale = runtimeCatalogState.mode === 'package'
+    ? Boolean(packageSourceEvidenceRequest)
+    : Boolean(sourceRationale)
   const displayTitle = useRawGoalTitles ? goal.title : getAudienceGoalTitle(goal)
   const learningMaterialLinks = resolvedHelpfulLinks.filter(isLearningMaterialLink).slice(0, 3)
   const primaryVisualization = resolvedVisualizationLinks.find((link) => normalize(link.role) === 'primary') ?? resolvedVisualizationLinks[0]
@@ -742,19 +531,50 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
   React.useEffect(() => {
     let cancelled = false
+    sourceRationaleLoadToken.current += 1
     setSourceRationale(null)
     setIsSourceRationaleOpen(false)
+    setIsSourceRationaleLoading(false)
 
-    void loadSourceRationaleIndex().then((index) => {
-      if (!cancelled) {
-        setSourceRationale(selectSourceRationaleForFilter(index.get(goal.id), activeFilter))
-      }
-    })
+    if (runtimeCatalogState.mode === 'repository') {
+      void import('../utils/repositoryGoalSourceRationales')
+        .then(({ loadRepositoryGoalSourceRationale }) => loadRepositoryGoalSourceRationale(goal.id, activeFilter))
+        .then((item) => {
+          if (!cancelled) setSourceRationale(item)
+        })
+        .catch(() => {
+          if (!cancelled) setSourceRationale(null)
+        })
+    }
 
     return () => {
       cancelled = true
     }
-  }, [activeFilter, goal.id])
+  }, [activeFilter, goal.id, runtimeCatalogState.mode])
+
+  const handleOpenSourceRationale = React.useCallback(() => {
+    if (runtimeCatalogState.mode === 'repository') {
+      if (sourceRationale) setIsSourceRationaleOpen(true)
+      return
+    }
+    if (runtimeCatalogState.mode !== 'package' || !packageSourceEvidenceRequest || isSourceRationaleLoading) return
+    if (sourceRationale) {
+      setIsSourceRationaleOpen(true)
+      return
+    }
+
+    const loadToken = sourceRationaleLoadToken.current + 1
+    sourceRationaleLoadToken.current = loadToken
+    setIsSourceRationaleLoading(true)
+    void loadPackageGoalSourceEvidence(fetch, packageSourceEvidenceRequest, goal)
+      .then((item) => {
+        if (sourceRationaleLoadToken.current !== loadToken) return
+        setIsSourceRationaleLoading(false)
+        if (!item) return
+        setSourceRationale(item)
+        setIsSourceRationaleOpen(true)
+      })
+  }, [goal, isSourceRationaleLoading, packageSourceEvidenceRequest, runtimeCatalogState.mode, sourceRationale])
 
   // Determine Status Icon
   let StatusIcon = Target
@@ -795,11 +615,13 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           )}
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          {sourceRationale && (
+          {hasSourceRationale && (
             <button
               type="button"
-              onClick={() => setIsSourceRationaleOpen(true)}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-sky-600 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-sky-300"
+              onClick={handleOpenSourceRationale}
+              disabled={isSourceRationaleLoading}
+              aria-busy={isSourceRationaleLoading}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-sky-600 disabled:cursor-wait disabled:opacity-60 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-sky-300"
               title={copy.sourceRationaleTooltip}
               aria-label={copy.sourceRationaleTooltip}
             >

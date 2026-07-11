@@ -132,6 +132,50 @@ class ProvisionedCurriculumPackageConformanceTest {
                 .allSatisfy(mapping -> assertThat(mapping.sourceFile())
                         .startsWith("package:org.skillpilot.curriculum.de.gymnasium.mathematik/"));
 
+        PackageSourceEvidenceState sourceEvidence = PackageSourceEvidenceState.load(
+                snapshot,
+                domainState,
+                new CurriculumPackageArtifactReader(reader),
+                mapper);
+        assertThat(sourceEvidence.generationSha256()).isEqualTo(snapshot.generationSha256());
+        assertThat(sourceEvidence.catalogEntries()).singleElement().satisfies(entry -> {
+            assertThat(entry.targetLandscapeId())
+                    .isEqualTo("68a8ac50-f5f5-4e24-8aa9-5e408ca01ced");
+            assertThat(entry.sourceCollectionCount()).isEqualTo(31);
+            assertThat(entry.sourceDocumentCount()).isEqualTo(55);
+            assertThat(entry.sourceGoalCount()).isEqualTo(9_977);
+            assertThat(entry.mappingEdgeCount()).isEqualTo(33_382);
+            assertThat(entry.goals()).hasSize(869);
+            assertThat(entry.href()).isEqualTo(
+                    "/api/ui/curriculum-source-evidence/packages/"
+                            + "org.skillpilot.curriculum.de.gymnasium.mathematik/"
+                            + "0.1.0-conformance.2/goals");
+        });
+        var exactBavarianMapping = domainState.mappingState().mappings().stream()
+                .filter(mapping -> "exact".equals(mapping.matchType()))
+                .filter(mapping -> "DE-BY".equals(domainState.mappingState()
+                        .sourceLandscapesById()
+                        .get(mapping.sourceLandscapeId())
+                        .jurisdiction()))
+                .findFirst()
+                .orElseThrow();
+        var exactBavarianEvidence = sourceEvidence.lookup(
+                "org.skillpilot.curriculum.de.gymnasium.mathematik",
+                "0.1.0-conformance.2",
+                exactBavarianMapping.canonicalGoalId(),
+                snapshot.generationSha256(),
+                "DE-BY");
+        assertThat(exactBavarianEvidence.status())
+                .isEqualTo(PackageSourceEvidenceState.LookupStatus.FOUND);
+        assertThat(exactBavarianEvidence.evidence().matchType()).isEqualTo("exact");
+        assertThat(exactBavarianEvidence.evidence().jurisdiction()).isEqualTo("DE-BY");
+        assertThat(exactBavarianEvidence.evidence().sourceGoal().sourceGoalId()).isNotBlank();
+        assertThat(exactBavarianEvidence.evidence().sourceDocument().url()).startsWith("https://");
+        assertThat(mapper.valueToTree(exactBavarianEvidence.evidence()).toString())
+                .doesNotContain(store.toString())
+                .doesNotContain("data/sources/")
+                .doesNotContain("data/mappings/");
+
         PackageCurriculumResourceState resources = PackageCurriculumResourceState.load(
                 snapshot,
                 domainState,

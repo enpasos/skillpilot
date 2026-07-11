@@ -20,7 +20,7 @@ const GOAL_ID = 'sentinel-goal'
 const RESOURCE_ID = 'sentinel-resource'
 
 const fixture = () => ({
-  catalogApiVersion: '1.1',
+  catalogApiVersion: '1.2',
   generationSha256: 'a'.repeat(64),
   packages: [{
     packageId: PACKAGE_ID,
@@ -115,6 +115,17 @@ const fixture = () => ({
       sha256: null,
     },
   ],
+  sourceEvidence: [{
+    packageId: PACKAGE_ID,
+    packageVersion: '1.2.3',
+    targetLandscapeId: ROOT_ID,
+    sourceCollectionCount: 1,
+    sourceDocumentCount: 1,
+    sourceGoalCount: 1,
+    mappingEdgeCount: 1,
+    goals: [{ goalId: GOAL_ID, jurisdictions: ['DE-HE'] }],
+    href: `/api/ui/curriculum-source-evidence/packages/${PACKAGE_ID}/1.2.3/goals`,
+  }],
 })
 
 const clone = <T>(value: T): T => structuredClone(value)
@@ -162,6 +173,25 @@ assert.equal(
   ),
   'https://example.org/tool',
 )
+assert.deepEqual(parsed.sourceEvidence[0]?.goals, [{ goalId: GOAL_ID, jurisdictions: ['DE-HE'] }])
+
+const optionalEvidenceFixture = fixture()
+optionalEvidenceFixture.packages.push({
+  ...clone(optionalEvidenceFixture.packages[0]),
+  packageId: 'org.example.without-source-evidence',
+  releaseId: 'org.example.without-source-evidence@1.2.3',
+})
+optionalEvidenceFixture.landscapes.push({
+  ...clone(optionalEvidenceFixture.landscapes[0]),
+  packageId: 'org.example.without-source-evidence',
+  landscapeId: 'sentinel-root-without-source-evidence',
+  defaultOfferingId: undefined,
+})
+optionalEvidenceFixture.rootLandscapeIds.push('sentinel-root-without-source-evidence')
+assert.equal(parseRuntimeCurriculumCatalog(optionalEvidenceFixture).sourceEvidence.length, 1)
+const noEvidenceFixture = fixture()
+noEvidenceFixture.sourceEvidence = []
+assert.deepEqual(parseRuntimeCurriculumCatalog(noEvidenceFixture).sourceEvidence, [])
 
 let repositoryFallbackCalls = 0
 assert.equal(
@@ -191,6 +221,15 @@ const invalidCases: Array<[string, (candidate: ReturnType<typeof fixture>) => vo
   ['unsafe embedded href', (candidate) => { candidate.resources[0].href = '/api/ui/curriculum-resources/packages/../poison' }],
   ['wrong resource owner binding', (candidate) => { candidate.resources.push({ ...clone(candidate.resources[0]), resourceId: 'other', publicUrl: candidate.resources[0].publicUrl }) }],
   ['unknown view', (candidate) => { candidate.offerings[0].resolution.viewIds = ['unknown-view'] }],
+  ['unsafe source-evidence href', (candidate) => { candidate.sourceEvidence[0].href = '/api/ui/curriculum-source-evidence/packages/../poison/goals' }],
+  ['invalid source-evidence jurisdiction', (candidate) => { candidate.sourceEvidence[0].goals[0].jurisdictions = ['HE'] }],
+  ['duplicate source-evidence goal', (candidate) => { candidate.sourceEvidence[0].goals.push(clone(candidate.sourceEvidence[0].goals[0])) }],
+  ['duplicate source-evidence package', (candidate) => {
+    candidate.sourceEvidence.push({
+      ...clone(candidate.sourceEvidence[0]),
+      targetLandscapeId: MODULE_ID,
+    })
+  }],
 ]
 invalidCases.forEach(([label, mutate]) => {
   const candidate = fixture()

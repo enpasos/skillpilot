@@ -44,6 +44,7 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).doesNotHaveBean(PackageCurriculumDomainState.class);
                     assertThat(context).doesNotHaveBean(PackageCompositionViewState.class);
                     assertThat(context).doesNotHaveBean(PackageCurriculumResourceState.class);
+                    assertThat(context).doesNotHaveBean(PackageSourceEvidenceState.class);
                     assertThat(context).doesNotHaveBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
@@ -83,6 +84,7 @@ class CurriculumPackageConfigurationTest {
                     assertThat(context).hasSingleBean(PackageCurriculumDomainState.class);
                     assertThat(context).hasSingleBean(PackageCompositionViewState.class);
                     assertThat(context).hasSingleBean(PackageCurriculumResourceState.class);
+                    assertThat(context).hasSingleBean(PackageSourceEvidenceState.class);
                     assertThat(context).hasSingleBean(CurriculumCatalogService.class);
                     assertThat(context).hasSingleBean(GoalMappingService.class);
                     assertThat(context).hasSingleBean(LandscapeService.class);
@@ -117,7 +119,7 @@ class CurriculumPackageConfigurationTest {
                             .getGoals().get(0).getApplicability().get("jurisdiction"))
                             .containsExactly("DE-HE");
                     var catalog = context.getBean(CurriculumCatalogService.class).getCatalog();
-                    assertThat(catalog.catalogApiVersion()).isEqualTo("1.1");
+                    assertThat(catalog.catalogApiVersion()).isEqualTo("1.2");
                     assertThat(catalog.generationSha256()).isEqualTo(domainState.generationSha256());
                     assertThat(catalog.rootLandscapeIds()).containsExactly("landscape-alpha");
                     assertThat(catalog.landscapes())
@@ -154,6 +156,21 @@ class CurriculumPackageConfigurationTest {
                                 assertThat(resource.href()).isEqualTo("https://example.org/tool/alpha");
                                 assertThat(resource.runtimeRequired()).isFalse();
                                 assertThat(resource.bytes()).isNull();
+                            });
+                    assertThat(catalog.sourceEvidence())
+                            .singleElement()
+                            .satisfies(evidence -> {
+                                assertThat(evidence.targetLandscapeId()).isEqualTo("landscape-alpha");
+                                assertThat(evidence.sourceCollectionCount()).isOne();
+                                assertThat(evidence.sourceDocumentCount()).isOne();
+                                assertThat(evidence.sourceGoalCount()).isOne();
+                                assertThat(evidence.mappingEdgeCount()).isOne();
+                                assertThat(evidence.goals())
+                                        .singleElement()
+                                        .satisfies(goal -> {
+                                            assertThat(goal.goalId()).isEqualTo("goal-alpha");
+                                            assertThat(goal.jurisdictions()).containsExactly("DE-BY");
+                                        });
                             });
                     assertThat(objectMapper.writeValueAsString(catalog))
                             .doesNotContain(store.root().toString())

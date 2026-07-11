@@ -15,7 +15,8 @@ public record CurriculumCatalogResponse(
         List<ViewEntry> views,
         List<OfferingEntry> offerings,
         List<DeckEntry> decks,
-        List<ResourceEntry> resources) {
+        List<ResourceEntry> resources,
+        List<SourceEvidenceEntry> sourceEvidence) {
 
     public CurriculumCatalogResponse {
         packages = List.copyOf(packages);
@@ -25,6 +26,7 @@ public record CurriculumCatalogResponse(
         offerings = List.copyOf(offerings);
         decks = List.copyOf(decks);
         resources = List.copyOf(resources);
+        sourceEvidence = List.copyOf(sourceEvidence);
     }
 
     public record PackageEntry(
@@ -118,6 +120,27 @@ public record CurriculumCatalogResponse(
             boolean runtimeRequired,
             Long bytes,
             String sha256) {
+    }
+
+    public record SourceEvidenceEntry(
+            String packageId,
+            String packageVersion,
+            String targetLandscapeId,
+            int sourceCollectionCount,
+            int sourceDocumentCount,
+            int sourceGoalCount,
+            int mappingEdgeCount,
+            List<SourceEvidenceGoalEntry> goals,
+            String href) {
+        public SourceEvidenceEntry {
+            goals = List.copyOf(goals);
+        }
+    }
+
+    public record SourceEvidenceGoalEntry(String goalId, List<String> jurisdictions) {
+        public SourceEvidenceGoalEntry {
+            jurisdictions = List.copyOf(jurisdictions);
+        }
     }
 
     private static <K, V> Map<K, V> immutableOrderedMap(Map<K, V> source) {
