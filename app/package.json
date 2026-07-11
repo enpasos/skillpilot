@@ -17,6 +17,7 @@
     "visualization:check-prompt-appends": "node ../scripts/check_goal_visualization_prompt_appends.mjs",
     "deploy:assets": "./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py",
     "validate:graph": "tsx scripts/validateGraph.ts",
+    "test:package-landscape-model": "tsx scripts/testPackageLandscapeModelParity.ts",
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
     "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
     "validate:learner-goal-selection": "tsx scripts/validateLearnerGoalSelection.ts",

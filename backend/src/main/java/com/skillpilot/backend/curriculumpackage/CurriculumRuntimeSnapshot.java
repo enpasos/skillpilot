@@ -17,6 +17,8 @@ public final class CurriculumRuntimeSnapshot {
     private final Map<DeckKey, DeckDescriptor> decksByKey;
     private final Map<String, ResourceDescriptor> resourcesById;
     private final Map<String, ResourceDescriptor> resourcesByPublicUrl;
+    private final Map<ArtifactKey, Artifact> artifactsByKey;
+    private final Map<String, List<Artifact>> artifactsByRole;
     private final Map<String, String> migrationAliasesJsonByPackageId;
     private final int definitionCount;
 
@@ -30,6 +32,7 @@ public final class CurriculumRuntimeSnapshot {
             Map<DeckKey, DeckDescriptor> decksByKey,
             Map<String, ResourceDescriptor> resourcesById,
             Map<String, ResourceDescriptor> resourcesByPublicUrl,
+            Map<ArtifactKey, Artifact> artifactsByKey,
             Map<String, String> migrationAliasesJsonByPackageId,
             int definitionCount) {
         this.generationSha256 = generationSha256;
@@ -41,6 +44,8 @@ public final class CurriculumRuntimeSnapshot {
         this.decksByKey = immutableOrderedMap(decksByKey);
         this.resourcesById = immutableOrderedMap(resourcesById);
         this.resourcesByPublicUrl = immutableOrderedMap(resourcesByPublicUrl);
+        this.artifactsByKey = immutableOrderedMap(artifactsByKey);
+        this.artifactsByRole = indexArtifactsByRole(this.artifactsByKey);
         this.migrationAliasesJsonByPackageId = immutableOrderedMap(migrationAliasesJsonByPackageId);
         this.definitionCount = definitionCount;
     }
@@ -81,6 +86,16 @@ public final class CurriculumRuntimeSnapshot {
         return resourcesByPublicUrl;
     }
 
+    /** Complete manifest inventory, including non-runtime publication evidence. */
+    public Map<ArtifactKey, Artifact> artifactsByKey() {
+        return artifactsByKey;
+    }
+
+    /** Immutable manifest artifacts grouped by package role in manifest order. */
+    public Map<String, List<Artifact>> artifactsByRole() {
+        return artifactsByRole;
+    }
+
     public Map<String, String> migrationAliasesJsonByPackageId() {
         return migrationAliasesJsonByPackageId;
     }
@@ -119,6 +134,9 @@ public final class CurriculumRuntimeSnapshot {
         }
     }
 
+    public record ArtifactKey(String packageId, String relativePath) {
+    }
+
     public static final class Artifact {
         private final InstalledCurriculumPackage installedPackage;
         private final String relativePath;
@@ -126,6 +144,15 @@ public final class CurriculumRuntimeSnapshot {
         private final String mediaType;
         private final long bytes;
         private final String sha256;
+        private final boolean runtimeRequired;
+        private final String semanticBindingKind;
+        private final String logicalId;
+        private final String normalizationRole;
+        private final String resourceId;
+        private final String validationSchemaId;
+        private final String licenseExpression;
+        private final String provenanceClass;
+        private final String redistributionStatus;
 
         Artifact(
                 InstalledCurriculumPackage installedPackage,
@@ -133,13 +160,31 @@ public final class CurriculumRuntimeSnapshot {
                 String role,
                 String mediaType,
                 long bytes,
-                String sha256) {
+                String sha256,
+                boolean runtimeRequired,
+                String semanticBindingKind,
+                String logicalId,
+                String normalizationRole,
+                String resourceId,
+                String validationSchemaId,
+                String licenseExpression,
+                String provenanceClass,
+                String redistributionStatus) {
             this.installedPackage = installedPackage;
             this.relativePath = relativePath;
             this.role = role;
             this.mediaType = mediaType;
             this.bytes = bytes;
             this.sha256 = sha256;
+            this.runtimeRequired = runtimeRequired;
+            this.semanticBindingKind = semanticBindingKind;
+            this.logicalId = logicalId;
+            this.normalizationRole = normalizationRole;
+            this.resourceId = resourceId;
+            this.validationSchemaId = validationSchemaId;
+            this.licenseExpression = licenseExpression;
+            this.provenanceClass = provenanceClass;
+            this.redistributionStatus = redistributionStatus;
         }
 
         InstalledCurriculumPackage installedPackage() {
@@ -168,6 +213,42 @@ public final class CurriculumRuntimeSnapshot {
 
         public String sha256() {
             return sha256;
+        }
+
+        public boolean runtimeRequired() {
+            return runtimeRequired;
+        }
+
+        public String semanticBindingKind() {
+            return semanticBindingKind;
+        }
+
+        public String logicalId() {
+            return logicalId;
+        }
+
+        public String normalizationRole() {
+            return normalizationRole;
+        }
+
+        public String resourceId() {
+            return resourceId;
+        }
+
+        public String validationSchemaId() {
+            return validationSchemaId;
+        }
+
+        public String licenseExpression() {
+            return licenseExpression;
+        }
+
+        public String provenanceClass() {
+            return provenanceClass;
+        }
+
+        public String redistributionStatus() {
+            return redistributionStatus;
         }
     }
 
@@ -247,5 +328,16 @@ public final class CurriculumRuntimeSnapshot {
 
     private static <K, V> Map<K, V> immutableOrderedMap(Map<K, V> source) {
         return Collections.unmodifiableMap(new LinkedHashMap<>(source));
+    }
+
+    private static Map<String, List<Artifact>> indexArtifactsByRole(
+            Map<ArtifactKey, Artifact> artifactsByKey) {
+        Map<String, List<Artifact>> mutable = new LinkedHashMap<>();
+        for (Artifact artifact : artifactsByKey.values()) {
+            mutable.computeIfAbsent(artifact.role(), ignored -> new java.util.ArrayList<>()).add(artifact);
+        }
+        Map<String, List<Artifact>> immutable = new LinkedHashMap<>();
+        mutable.forEach((role, artifacts) -> immutable.put(role, List.copyOf(artifacts)));
+        return Collections.unmodifiableMap(immutable);
     }
 }

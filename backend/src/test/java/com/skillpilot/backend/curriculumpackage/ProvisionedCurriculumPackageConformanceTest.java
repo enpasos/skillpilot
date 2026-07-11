@@ -50,6 +50,16 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.decksByKey()).hasSize(12);
         assertThat(snapshot.resourcesById()).hasSize(825);
         assertThat(snapshot.resourcesByPublicUrl()).hasSize(756);
+        assertThat(snapshot.artifactsByKey()).hasSize(911);
+        assertThat(snapshot.artifactsByRole().get("mapping"))
+                .singleElement()
+                .satisfies(artifact -> {
+                    assertThat(artifact.runtimeRequired()).isFalse();
+                    assertThat(artifact.normalizationRole()).isEqualTo("source-to-canonical-mappings");
+                });
+        assertThat(snapshot.artifactsByRole().get("quality-evidence"))
+                .singleElement()
+                .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
         assertThat(snapshot.definitionCount()).isEqualTo(2402);
     }
 }

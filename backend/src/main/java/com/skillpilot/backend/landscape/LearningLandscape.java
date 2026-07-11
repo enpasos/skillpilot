@@ -1,12 +1,17 @@
 package com.skillpilot.backend.landscape;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LearningLandscape {
+    @JsonProperty("$schema")
+    private String schema;
+    private String landscapeFormatVersion;
     @JsonProperty("landscapeId")
     @JsonAlias("id")
     private String landscapeId;
@@ -20,11 +25,31 @@ public class LearningLandscape {
     private String country;
     private String region;
     private String schoolType;
+    private Boolean compatibilityOnly;
+    private Boolean legacyHiddenByDefault;
     private List<LandscapeFilter> filters;
     private List<ProgramUnit> programUnits;
     private List<GoalPlacement> goalPlacements;
     private List<CompetencyCatalogEntry> competencyCatalog;
     private List<LearningGoal> goals;
+
+    @JsonProperty("$schema")
+    public String getSchema() {
+        return schema;
+    }
+
+    @JsonProperty("$schema")
+    public void setSchema(String schema) {
+        this.schema = schema;
+    }
+
+    public String getLandscapeFormatVersion() {
+        return landscapeFormatVersion;
+    }
+
+    public void setLandscapeFormatVersion(String landscapeFormatVersion) {
+        this.landscapeFormatVersion = landscapeFormatVersion;
+    }
 
     public String getLandscapeId() {
         return landscapeId;
@@ -113,6 +138,22 @@ public class LearningLandscape {
 
     public void setSchoolType(String schoolType) {
         this.schoolType = schoolType;
+    }
+
+    public Boolean getCompatibilityOnly() {
+        return compatibilityOnly;
+    }
+
+    public void setCompatibilityOnly(Boolean compatibilityOnly) {
+        this.compatibilityOnly = compatibilityOnly;
+    }
+
+    public Boolean getLegacyHiddenByDefault() {
+        return legacyHiddenByDefault;
+    }
+
+    public void setLegacyHiddenByDefault(Boolean legacyHiddenByDefault) {
+        this.legacyHiddenByDefault = legacyHiddenByDefault;
     }
 
     public List<LandscapeFilter> getFilters() {

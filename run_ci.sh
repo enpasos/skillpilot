@@ -56,6 +56,9 @@ npm ci
 echo "--> Running Graph Validation"
 npm run validate:graph
 
+echo "--> Testing Package Landscape Model Parity"
+npm run test:package-landscape-model
+
 echo "--> Running View-Filter Validation"
 npm run validate:view-filters
 

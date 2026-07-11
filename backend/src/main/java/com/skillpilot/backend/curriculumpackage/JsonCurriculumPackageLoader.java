@@ -69,6 +69,8 @@ public final class JsonCurriculumPackageLoader {
         Map<CurriculumRuntimeSnapshot.DeckKey, CurriculumRuntimeSnapshot.DeckDescriptor> decks = new LinkedHashMap<>();
         Map<String, CurriculumRuntimeSnapshot.ResourceDescriptor> resources = new LinkedHashMap<>();
         Map<String, CurriculumRuntimeSnapshot.ResourceDescriptor> resourcesByPublicUrl = new LinkedHashMap<>();
+        Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts =
+                new LinkedHashMap<>();
         Map<String, String> aliases = new LinkedHashMap<>();
         Map<String, DefinitionBinding> definitions = new HashMap<>();
 
@@ -96,6 +98,8 @@ public final class JsonCurriculumPackageLoader {
                             "resource publicUrl");
                 }
             });
+            loaded.artifacts().forEach((key, artifact) ->
+                    CurriculumRuntimeSnapshot.putUnique(artifacts, key, artifact, "package artifact"));
             CurriculumRuntimeSnapshot.putUnique(
                     aliases,
                     installedPackage.lockEntry().packageId(),
@@ -126,6 +130,7 @@ public final class JsonCurriculumPackageLoader {
                 decks,
                 resources,
                 resourcesByPublicUrl,
+                artifacts,
                 aliases,
                 definitions.size());
     }
@@ -157,6 +162,8 @@ public final class JsonCurriculumPackageLoader {
             throw failure("Manifest file count differs from validator-v2 evidence for " + lock.releaseId());
         }
         Set<String> verifiedPaths = new HashSet<>();
+        Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts =
+                buildArtifactInventory(installedPackage, files);
         ManifestFile catalogFile = exactlyOneRole(files, "runtime-catalog");
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema", RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
@@ -253,6 +260,7 @@ public final class JsonCurriculumPackageLoader {
                 offerings,
                 decks,
                 resources,
+                artifacts,
                 aliasesJson,
                 definitions);
     }
@@ -336,12 +344,62 @@ public final class JsonCurriculumPackageLoader {
             if (runtimeRequired == null || !runtimeRequired.isBoolean()) {
                 throw failure(context + ".runtimeRequired must be boolean");
             }
-            ManifestFile file = new ManifestFile(path, role, mediaType, bytes, sha256, runtimeRequired.booleanValue());
+            JsonNode semanticBinding = requiredObject(node, "semanticBinding", context);
+            String semanticBindingKind = requiredText(semanticBinding, "kind", context + ".semanticBinding");
+            String logicalId = null;
+            String normalizationRole = null;
+            String resourceId = null;
+            if (semanticBindingKind.equals("logical-artifact")) {
+                logicalId = requiredText(semanticBinding, "logicalId", context + ".semanticBinding");
+                normalizationRole = requiredText(
+                        semanticBinding, "normalizationRole", context + ".semanticBinding");
+            } else if (semanticBindingKind.equals("binary-resource")) {
+                resourceId = requiredText(semanticBinding, "resourceId", context + ".semanticBinding");
+            } else if (!semanticBindingKind.equals("excluded-generated")) {
+                throw failure(context + ".semanticBinding.kind is unsupported: " + semanticBindingKind);
+            }
+            JsonNode licenseNode = node.get("licenseExpression");
+            if (licenseNode == null || (!licenseNode.isNull() && !licenseNode.isTextual())) {
+                throw failure(context + ".licenseExpression must be a string or null");
+            }
+            String licenseExpression = licenseNode.isTextual() ? licenseNode.textValue() : null;
+            if (licenseExpression != null && licenseExpression.isBlank()) {
+                throw failure(context + ".licenseExpression must not be blank");
+            }
+            ManifestFile file = new ManifestFile(
+                    path,
+                    role,
+                    mediaType,
+                    bytes,
+                    sha256,
+                    runtimeRequired.booleanValue(),
+                    semanticBindingKind,
+                    logicalId,
+                    normalizationRole,
+                    resourceId,
+                    optionalText(node, "validationSchemaId"),
+                    licenseExpression,
+                    requiredText(node, "provenanceClass", context),
+                    requiredText(node, "redistributionStatus", context));
             if (files.putIfAbsent(path, file) != null) {
                 throw failure("Duplicate manifest path: " + path);
             }
         }
         return files;
+    }
+
+    private Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> buildArtifactInventory(
+            InstalledCurriculumPackage installedPackage,
+            Map<String, ManifestFile> files) {
+        Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> result =
+                new LinkedHashMap<>();
+        for (ManifestFile file : files.values()) {
+            CurriculumRuntimeSnapshot.Artifact artifact = artifact(installedPackage, file);
+            CurriculumRuntimeSnapshot.ArtifactKey key = new CurriculumRuntimeSnapshot.ArtifactKey(
+                    installedPackage.lockEntry().packageId(), file.path());
+            CurriculumRuntimeSnapshot.putUnique(result, key, artifact, "package artifact path");
+        }
+        return result;
     }
 
     private List<DefinitionRecord> validateClosure(JsonNode closure, CurriculumPackageLock.Entry lock) {
@@ -795,7 +853,16 @@ public final class JsonCurriculumPackageLoader {
                 file.role(),
                 file.mediaType(),
                 file.bytes(),
-                file.sha256());
+                file.sha256(),
+                file.runtimeRequired(),
+                file.semanticBindingKind(),
+                file.logicalId(),
+                file.normalizationRole(),
+                file.resourceId(),
+                file.validationSchemaId(),
+                file.licenseExpression(),
+                file.provenanceClass(),
+                file.redistributionStatus());
     }
 
     private ManifestFile requiredRole(Map<String, ManifestFile> files, String path, String role) {
@@ -1028,7 +1095,15 @@ public final class JsonCurriculumPackageLoader {
             String mediaType,
             long bytes,
             String sha256,
-            boolean runtimeRequired) {
+            boolean runtimeRequired,
+            String semanticBindingKind,
+            String logicalId,
+            String normalizationRole,
+            String resourceId,
+            String validationSchemaId,
+            String licenseExpression,
+            String provenanceClass,
+            String redistributionStatus) {
     }
 
     private record CatalogArtifact(String landscapeId, String path) {
@@ -1048,6 +1123,7 @@ public final class JsonCurriculumPackageLoader {
             Map<String, CurriculumRuntimeSnapshot.OfferingDescriptor> offerings,
             Map<CurriculumRuntimeSnapshot.DeckKey, CurriculumRuntimeSnapshot.DeckDescriptor> decks,
             Map<String, CurriculumRuntimeSnapshot.ResourceDescriptor> resources,
+            Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts,
             String migrationAliasesJson,
             List<DefinitionRecord> definitions) {
     }

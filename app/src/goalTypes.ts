@@ -38,6 +38,8 @@ export interface UiGoal {
   extendedData?: Record<string, unknown>
   examData?: import('./landscapeTypes').ExamData
   experimentData?: import('./landscapeTypes').ExperimentData
+  semanticAtomic?: boolean
+  semanticKind?: import('./landscapeTypes').SemanticKind
   /** Explicit node type ("atomic" | "cluster"), optional for backward compatibility. */
   type?: 'atomic' | 'cluster'
   /** Explicit node kind ("exam" | "tutor" | "memory"), optional for backward compatibility. */
@@ -76,15 +78,15 @@ export function convertLearningGoal(
     landscapeId: origin?.landscapeId,
     title: goal.title,
     description: goal.description,
-    phase: (dim?.phase as PhaseCode) ?? 'GLOBAL',
-    themenfeld: dim?.topicCode ?? '',
+    phase: (dim?.phase as PhaseCode) ?? (goal.phase as PhaseCode) ?? 'GLOBAL',
+    themenfeld: dim?.topicCode ?? goal.themenfeld ?? '',
     area: dim?.area ?? '',
     level: demandLevelToNumber(dim?.demandLevel ?? ''),
     core: inferredCore,
     weight: goal.weight,
     tags,
-    leitideen: (dim?.guidingIdeas as Leitidee[]) ?? [],
-    kompetenzen: dim?.processCompetencies ?? [],
+    leitideen: (dim?.guidingIdeas as Leitidee[]) ?? (goal.leitideen as Leitidee[]) ?? [],
+    kompetenzen: dim?.processCompetencies ?? goal.kompetenzen ?? [],
     sourceRef: goal.sourceRef ?? '',
     requires: goal.requires ?? [],
     contains: goal.contains ?? [],
@@ -97,6 +99,8 @@ export function convertLearningGoal(
     extendedData: goal.extendedData,
     examData: goal.examData,
     experimentData: goal.experimentData,
+    semanticAtomic: goal.semanticAtomic,
+    semanticKind: goal.semanticKind,
     type: nodeType,
     nodeKind
   }

@@ -291,13 +291,31 @@ final class CurriculumPackageTestFixture {
         for (Map.Entry<String, byte[]> artifact : artifacts.entrySet()) {
             String path = artifact.getKey();
             writeBytes(packageRoot.resolve(path), artifact.getValue());
-            manifestFiles.add(Map.of(
-                    "path", path,
-                    "role", roles.get(path),
-                    "mediaType", path.endsWith(".json") ? "application/json" : "image/png",
-                    "bytes", artifact.getValue().length,
-                    "sha256", CurriculumPackageFileReader.sha256(artifact.getValue()),
-                    "runtimeRequired", !path.equals("metadata/audit.json")));
+            String role = roles.get(path);
+            Map<String, Object> semanticBinding;
+            if (role.equals("binary-asset")) {
+                semanticBinding = Map.of(
+                        "kind", "binary-resource",
+                        "resourceId", resourceId);
+            } else if (role.equals("audit-report")) {
+                semanticBinding = Map.of("kind", "excluded-generated");
+            } else {
+                semanticBinding = Map.of(
+                        "kind", "logical-artifact",
+                        "logicalId", "fixture:" + path,
+                        "normalizationRole", role);
+            }
+            manifestFiles.add(Map.ofEntries(
+                    Map.entry("path", path),
+                    Map.entry("role", role),
+                    Map.entry("mediaType", path.endsWith(".json") ? "application/json" : "image/png"),
+                    Map.entry("bytes", artifact.getValue().length),
+                    Map.entry("sha256", CurriculumPackageFileReader.sha256(artifact.getValue())),
+                    Map.entry("runtimeRequired", !path.equals("metadata/audit.json")),
+                    Map.entry("semanticBinding", semanticBinding),
+                    Map.entry("licenseExpression", "Apache-2.0"),
+                    Map.entry("provenanceClass", "software-contract"),
+                    Map.entry("redistributionStatus", "allowed")));
         }
 
         Map<String, Object> manifest = new LinkedHashMap<>();

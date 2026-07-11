@@ -1,5 +1,14 @@
 export type DemandLevel = 'AB1' | 'AB2' | 'AB3'
 
+export type SemanticKind =
+  | 'curricularAtomic'
+  | 'curricularArea'
+  | 'programStructure'
+  | 'practiceAssessment'
+  | 'memory'
+  | 'orientation'
+  | 'runtimeSupport'
+
 export type ProgramUnitKind =
   | 'program'
   | 'stage'
@@ -63,6 +72,8 @@ export interface ExamData {
    * Missing means legacy data; explicit non-released statuses block hard-check use.
    */
   reviewStatus?: 'draft' | 'needs_review' | 'released' | string
+  /** Optional human review rationale carried by the release package. */
+  reviewNote?: string
   /** Canonical goal IDs covered by this assessment package. */
   coveredGoalIds?: string[]
   /** Human-readable or canonical strand labels covered by this assessment package. */
@@ -135,6 +146,9 @@ export interface LearningGoal {
   themenfeld?: string
   leitideen?: string[]
   kompetenzen?: string[]
+  phase?: string
+  semanticAtomic?: boolean
+  semanticKind?: SemanticKind
   requires: string[]
   contains: string[]
   examples?: string[]
@@ -153,6 +167,8 @@ export interface LearningGoal {
 }
 
 export interface LearningLandscape {
+  $schema?: string
+  landscapeFormatVersion?: string
   landscapeId: string
   locale: string
   /** Human-readable subject name, e.g. "Mathematik", "Physik". */

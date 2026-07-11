@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P1 – JSON-Paket als hermetischer Runtime-Input`
-- Nächster Umsetzungsschritt: `DPK-006c – Runtime-Services und Ressourcenresolver auf den Package-Snapshot umstellen`
-- Letzter vollständig abgeschlossener Schritt: `DPK-006b – sicherer ZIP-Provisioner und atomare Aktivierung`
-- Solider Ausgangsstand: `DPK-006b`
-- Abschluss-Gate für DPK-006b: 38 adversariale Garantien, reale Mathematik-Provisionierung/Java-Loaderprobe und vollständiges `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-006c-b – Landschafts- und Mapping-Services auf das Package-Inventar umstellen`
+- Letzter vollständig abgeschlossener Schritt: `DPK-006c-a – vollständiges Runtime-Artefaktinventar und DTO-Parität`
+- Solider Ausgangsstand: `DPK-006c-a`
+- Abschluss-Gate für DPK-006c-a: 911 reale Manifestartefakte, sichere Reverify-Fassade, Modellparität und vollständiges `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -17,7 +17,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | Phase | Angestrebtes Ergebnis | Status | Nächster Gate |
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
-| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c/007: Runtime-Services umstellen und hermetisch konsumieren |
+| P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `in_progress` | DPK-006c-b–f/007: Services, Frontend und Smoke-Test umstellen |
 | P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `not_started` | Mathematik ohne Original-JSON rekonstruieren |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
@@ -118,6 +118,23 @@ Qualitätsnachweis:
 - vollständiges `./run_ci.sh` auf dem final dokumentierten Stand grün.
 
 Bewusste Grenze: Der Store ist nun vertrauenswürdig provisioniert und aktivierbar, aber die bisherigen Landschafts-, View-, Deck-, Mapping- und Asset-Services lesen noch nicht durchgängig aus dem Snapshot. Diese Umschaltung ist DPK-006c. Erst DPK-007 beweist den kompletten Backend-/Frontend-Betrieb in einer Umgebung ohne Curriculum-Checkout und statische fachliche Fallbacks. Publisher-Signaturen bleiben DPK-011; offene menschliche Freigaben werden durch technische Installation nicht ersetzt.
+
+## Abgeschlossener Teilschritt: DPK-006c-a
+
+DPK-006c-a vervollständigt den read-only Snapshot als alleinige Grundlage für die nachfolgenden Service-Umschaltungen. Er enthält jetzt jedes der 911 manifestinventarisierten realen Mathematikartefakte, nicht nur die Runtime-Katalogrollen. Damit sind auch nicht runtime-erforderliche, aber für Mapping, Quellenanzeige, Quality-Evidenz und späteren Ontologie-Roundtrip benötigte Rollen generationgebunden auffindbar. Jeder Record bewahrt Rolle, MIME-Type, Länge, SHA-256, Runtime-Pflicht, semantische Bindungsart, `logicalId`/`normalizationRole` beziehungsweise `resourceId`, Validierungsschema sowie Lizenz-, Provenienz- und Redistributionsstatus.
+
+Eine eigene package-only Artefaktfassade akzeptiert ausschließlich einen Schlüssel aus genau diesem unveränderlichen Snapshot. Sie traversiert wieder über den sicheren Store-Reader und prüft bei jedem Zugriff Dateityp, Dateiidentität, Bytegrenze, Länge und SHA-256 erneut. Weder absolute Storepfade noch beliebige relative Pfade werden nach außen gegeben. Das synthetische Store-Fixture führt nun dieselben semantischen Manifestbindungen wie ein reales Paket, sodass Tests die Vertrauenskette nicht über einen schwächeren Sondervertrag umgehen.
+
+Die Java-/TypeScript-Modelle bewahren außerdem den geschlossenen Landscape-Vertrag verlustfrei: `$schema`, `landscapeFormatVersion`, Compatibility-Flags, `phase`, `courseLevel`, `themenfeld`, `leitideen`, `kompetenzen`, Experimentdaten, `semanticKind`, `semanticAtomic` und `examData.reviewNote`. Ein fehlendes `core` bleibt von explizitem `false` unterscheidbar; das bestehende boolesche `isCore()`-Verhalten bleibt kompatibel. Auch die lokalisierte API-Kopie erhält diese Felder.
+
+Qualitätsnachweis:
+
+- Package-Modellsuite einschließlich absent-vs.-false, Semantic-/Experiment-/Review-Roundtrip und unveränderlichem Artefaktindex grün;
+- adversariale Artefaktleseproben für unbekannte Keys, zu enge Bytegrenzen und Hashdrift grün;
+- reale 1,7-GB-Store-Probe mit exakt 911 Artefakten sowie expliziter Mapping-/Quality-Evidence-Bindung grün;
+- TypeScript, ESLint, Diff-Gates und vollständiges `./run_ci.sh` grün.
+
+Bewusste Grenze: DPK-006c-a stellt die vertrauenswürdige Datenebene bereit, ändert aber noch keine fachlichen Service-Endpunkte. Landschaften und Mappings folgen in DPK-006c-b, exakte Katalog-/View-Auflösung in DPK-006c-c, Decks und Bilder in DPK-006c-d, Frontend und paketierte Quellenanzeige in DPK-006c-e/f. Der hermetische Gesamtnachweis bleibt DPK-007.
 
 ## Abgeschlossener Teilschritt: DPK-004b
 
@@ -327,6 +344,7 @@ Abnahme:
 | DPK-005b | Vollständigen `full-standalone-v1`-Builder und unabhängigen Finished-ZIP-Validator umgesetzt; der reale Gate bindet 913 ZIP-Einträge, 911 Manifestdateien, 756 Bilder und den erwarteten Inhaltsdigest und klassifiziert offene Rechte ehrlich als `not-ready-incomplete` | Builder-/Validator-Selftests, Real-Plan, Finished-ZIP-Validierung und vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006a | Read-only Backend-Consumer für einen exakt gepinnten, vorvalidierten content-adressierten Store mit Validator-v2-Trustkette und unveränderlichem Runtime-Snapshot | 29 fokussierte Backend-Tests; Validator v2 mit 28 Garantien; Readiness 1.2 mit acht Report-Fälschungen; reale 1,7-GB-Loaderprobe; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-006b | Sicheren Quarantäne-/Streaming-Provisioner, immutable content-addressed Store, externe Betriebsverträge sowie atomare CAS-Aktivierung und Rollback umgesetzt | Operational 3/23; Provisioner 38 Garantien; reale 1,7-GB-Install-/Verify-/Activate-Strecke und echter Java-Loader; vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-006c-a | Vollständiges manifestgebundenes Runtime-Artefaktinventar, erneut verifizierende Lesefassade und verlustfreie Java-/TypeScript-Modellparität eingeführt | 911 reale Artefakte; absent-vs.-false-/Semantic-/Experiment-/Review-Tests; Limit-/Unknown-Key-/Hashdrift-Proben; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -345,6 +363,12 @@ Abnahme:
 | DPK-006a | P1 | Exakten vorvalidierten Store read-only laden und atomaren unveränderlichen Runtime-Snapshot aufbauen | DPK-005 | `complete` |
 | DPK-006b | P1 | ZIP sicher provisionieren, content-adressiert promoten sowie Lock per CAS aktivieren und zurückrollen | DPK-006a | `complete` |
 | DPK-006c | P1 | Landschafts-, View-, Deck-, Mapping- und Asset-Services ohne Fallback auf den Snapshot umstellen | DPK-006b | `in_progress` |
+| DPK-006c-a | P1 | Vollständiges Manifestinventar, sichere Artefaktfassade und Runtime-Modellparität | DPK-006b | `complete` |
+| DPK-006c-b | P1 | Landschafts- und Mapping-Services ausschließlich aus dem Snapshot bedienen | DPK-006c-a | `in_progress` |
+| DPK-006c-c | P1 | Exakten Runtime-Katalog und Offering-/Composition-View-Auflösung bereitstellen | DPK-006c-b | `not_started` |
+| DPK-006c-d | P1 | Paket- und generationsgebundene Deck-/Bildauflösung ohne Classpath-Fallback | DPK-006c-c | `not_started` |
+| DPK-006c-e | P1 | Frontend auf katalogisierte Roots, Offerings und Ressourcen umstellen | DPK-006c-d | `not_started` |
+| DPK-006c-f | P1 | Paketgebundene Quellenanzeige statt eingebrannter fachlicher Daten | DPK-006c-e | `not_started` |
 | DPK-007 | P1 | Package-only Mathematik-Smoke-Test einschließlich Views, Karten und Bildern | DPK-006 | `not_started` |
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005 | `not_started` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
@@ -368,6 +392,7 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-005b | Builder- und unabhängiger Validator-Selftest; Real-Paket 913/911/756 plus Digest; Finished-ZIP-, Readiness-, Code-, Workflow- und Doku-Integration | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006a | 29 Backend-Package-Tests; Report-v2-Replay-/Tamper-/Path-/Conflict-Gates; Validator 28; Readiness 1.2; Builder; reale Paket-/Loaderprobe; Doku- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-006b | Operational Contracts 3/23; Provisioner-Selftest 38; Crash-/Poison-/Permission-/Replay-/CAS-/Rollback-/Multi-Package-Gates; realer Build→Validator→Store→Activate→Java-Loader; Workflow-, Doku- und Diff-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-006c-a | Package-Modellparität; vollständiger Artefaktindex; Unknown-Key-/Limit-/Hashdrift-Gates; reales Inventar 911 einschließlich Mapping/Quality; TypeScript, ESLint, Doku und Diff | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 
