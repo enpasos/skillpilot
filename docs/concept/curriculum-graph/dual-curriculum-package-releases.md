@@ -151,7 +151,7 @@ Der externe `release.json`-Vertrag bindet beide Varianten:
   "contracts": {
     "packageFormatVersion": "1.0",
     "runtimeContractVersion": "1.0",
-    "supportedSkillpilotSoftware": ">=1.0.0 <2.0.0",
+    "supportedSkillpilotSoftware": ">=0.1.0 <1.0.0",
     "ontologyProfileVersion": "1.0",
     "fwuCoreIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
     "fwuCoreCommit": "<commit>"
@@ -486,7 +486,7 @@ Der maschinenlesbare Bericht hält mindestens fest:
 Empfohlen werden vier generische Bausteine:
 
 1. **`CurriculumPackageRepository`**  
-   Findet installierte Pakete, liest Manifeste und verwaltet einen gepinnten Installations-Lock.
+   Liest read-only genau den aktiven Mehrpaket-Lock und löst dessen content-adressierte, bereits provisionierte Objekte auf. Es entdeckt keine Verzeichnisse, wählt kein `latest` und schreibt keinen Lock.
 
 2. **`JsonCurriculumPackageLoader`**  
    Validiert ein Paket, baut daraus das interne `LearningLandscape`-Modell und liefert Root-Katalog, Goal-Index, Views, Mappings und Dependencies.
@@ -496,6 +496,10 @@ Empfohlen werden vier generische Bausteine:
 
 4. **`CurriculumActivationService`**  
    Installiert in ein temporäres/content-adressiertes Verzeichnis, validiert vollständig und schaltet anschließend atomar auf einen neuen Lock. Der vorherige Lock bleibt als Rollback erhalten.
+
+DPK-006a implementiert die read-only Hälfte der ersten beiden Bausteine als fail-closed Store-Reader und unveränderlichen, atomar austauschbaren Runtime-Snapshot. Der Validatorreport v2 bindet Outer ZIP, Manifest, Closure und Definition-Index; der Loader hasht zusätzlich jede manifestinventarisierte Datei. Die schreibende Quarantäne-/Extraktions-/Aktivierungshälfte bleibt absichtlich DPK-006b, die Service- und Resource-Resolver-Umschaltung DPK-006c. `embedded-fragment` bleibt im ersten Consumer bis zur fachübergreifenden Closure-Lane explizit nicht unterstützt und wird abgewiesen.
+
+Der erste read-only Consumer-Stand aus DPK-006a lädt absichtlich nur katalogisierte `root`- und `module`-Landschaften. `embedded-fragment` sowie die Capability `embeddedDependencies` werden bis zur vollständigen Fragment-Validierung und Runtime-Auflösung ausdrücklich fail-closed abgewiesen. Das ist eine begrenzte Implementierungsstufe, keine Einschränkung des Paketformats; Pakete mit eingebetteter Fremdziel-Closure werden erst nach diesem Ausbau aktivierbar.
 
 ### Ablösung heutiger Kopplungen
 
@@ -540,6 +544,8 @@ Folgende Versions- und Kompatibilitätsachsen werden getrennt behandelt:
 - **`supportedSkillpilotSoftware`**: expliziter SemVer-Bereich kompatibler SkillPilot-Versionen;
 - **`ontologyProfileVersion`**: RDF/OWL-Abbildung;
 - **FWU-Core-IRI, Commit und Datei-SHA**: exakt gebundene Ontologieabhängigkeit.
+
+Die hierfür konfigurierte `skillpilot.curriculum.consumer-version` bezeichnet die stabile Version der fachlichen Consumer-API. Sie ist bewusst unabhängig von einer Gradle-Artefaktversion oder einem Build-Qualifier wie `SNAPSHOT`. Der aktuelle Consumer deklariert deshalb `0.1.0`; reale Conformance-Pakete verwenden den ehrlichen Bereich `>=0.1.0 <1.0.0`. Ein abweichender Wert ist ein expliziter Kompatibilitätstest und kein stiller Versions-Override.
 
 Amtliche Geltungsinformationen wie `effectiveFrom`, `effectiveTo`, `sourceRevision` und Rechts-/Quellenstand werden separat geführt. Sie ersetzen keine technische Vertrags- oder Paketversion.
 
@@ -634,7 +640,7 @@ Abnahme:
 
 ### Phase 1 – JSON-Paket als hermetischer Runtime-Input
 
-Implementierungsstand: Die Paketmaterialisierung und unabhängige Finished-ZIP-Prüfung aus DPK-005b sind technisch umgesetzt. DPK-006/007 bleiben offen: Erst der manifestbasierte Loader und der Package-only Smoke-Test dürfen belegen, dass die Software weder den Curriculum-Quellbaum noch `app/public` als fachlichen Fallback verwendet. Auch ein technisch valides Paket ist vor Abschluss der menschlichen Rechte- und Fachreviews kein veröffentlichbarer Release.
+Implementierungsstand: Paketmaterialisierung und unabhängige Finished-ZIP-Prüfung aus DPK-005b sowie der read-only Store-/Snapshot-Consumer aus DPK-006a sind technisch umgesetzt. DPK-006b/006c/007 bleiben offen: Erst sichere Provisionierung, die Umschaltung aller fachlichen Runtime-Services und der hermetische Package-only Smoke-Test dürfen belegen, dass die Software weder den Curriculum-Quellbaum noch `app/public` als fachlichen Fallback verwendet. Auch ein technisch valides Paket ist vor Abschluss der menschlichen Rechte- und Fachreviews kein veröffentlichbarer Release.
 
 Ergebnisse:
 

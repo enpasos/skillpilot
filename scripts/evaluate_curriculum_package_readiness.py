@@ -53,7 +53,7 @@ REPORT_SCHEMA_ID = (
     "package-readiness-report.schema.json"
 )
 EVALUATOR_NAME = "skillpilot-json-package-readiness"
-EVALUATOR_VERSION = "1.1.0"
+EVALUATOR_VERSION = "1.2.0"
 JSONSCHEMA_VERSION = "4.26.0"
 POLICY_ID = "full-standalone-v1-readiness-v1"
 POLICY_SCOPE = "json-full-standalone-v1"
@@ -139,8 +139,8 @@ ZIP64_EOCD_SIGNATURE = b"PK\x06\x06"
 ZIP64_LOCATOR_SIGNATURE = b"PK\x06\x07"
 
 FULL_VALIDATOR_PATH = SCRIPT_DIR / "validate_full_standalone_curriculum_package.py"
-FULL_VALIDATOR_ID = "skillpilot-full-standalone-package-validator-v1"
-FULL_VALIDATOR_REPORT_FORMAT_VERSION = 1
+FULL_VALIDATOR_ID = "skillpilot-full-standalone-package-validator-v2"
+FULL_VALIDATOR_REPORT_FORMAT_VERSION = 2
 FULL_VALIDATOR_GATE_IDS = [
     "inventory",
     "runtimeCatalog",
@@ -158,6 +158,7 @@ FULL_VALIDATOR_GATE_TO_CHECK = {
 FULL_VALIDATOR_EXIT_BY_STATUS = {"valid": 0, "invalid": 1, "error": 2}
 FULL_VALIDATOR_TIMEOUT_SECONDS = 30 * 60
 MAX_FULL_VALIDATOR_REPORT_BYTES = 2 * 1024 * 1024
+MAX_FULL_VALIDATOR_BINDING_JSON_BYTES = 64 * 1024 * 1024
 
 
 class ReadinessError(RuntimeError):
@@ -1110,6 +1111,73 @@ def nonnegative_integer(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool) and value >= 0
 
 
+def expected_full_validator_package_binding(loaded: LoadedInput) -> dict[str, Any]:
+    """Independently derive the report-v2 package binding from evaluated ZIP bytes."""
+
+    manifest = loaded.manifest or {}
+    closure_digest: str | None = None
+    definition_index_digest: str | None = None
+    files = manifest.get("files")
+    closure_records = [
+        record
+        for record in files
+        if isinstance(record, dict) and record.get("role") == "dependency-closure"
+    ] if isinstance(files, list) else []
+    if loaded.kind == "zip" and len(closure_records) == 1:
+        relative_path = closure_records[0].get("path")
+        if not isinstance(relative_path, str) or not loaded.archive_root:
+            raise FullValidatorProcessError(
+                "Cannot derive independent dependency-closure report binding"
+            )
+        archive_path = f"{loaded.archive_root}/{relative_path}"
+        try:
+            with zipfile.ZipFile(loaded.path) as archive:
+                info = archive.getinfo(archive_path)
+                raw = read_zip_entry_bounded(
+                    archive,
+                    info,
+                    MAX_FULL_VALIDATOR_BINDING_JSON_BYTES,
+                )
+            parsed = parse_json_bytes(raw, archive_path)
+            validate_json_shape(parsed, archive_path)
+        except (
+            OSError,
+            KeyError,
+            RuntimeError,
+            ValueError,
+            zipfile.BadZipFile,
+            ReadinessError,
+        ) as error:
+            raise FullValidatorProcessError(
+                f"Cannot derive independent dependency-closure report binding: {error}"
+            ) from error
+        if isinstance(parsed, dict):
+            raw_closure_digest = parsed.get("closureDigest")
+            raw_definition_index_digest = parsed.get("definitionIndexDigest")
+            closure_digest = (
+                raw_closure_digest if isinstance(raw_closure_digest, str) else None
+            )
+            definition_index_digest = (
+                raw_definition_index_digest
+                if isinstance(raw_definition_index_digest, str)
+                else None
+            )
+    return {
+        "archiveRoot": loaded.archive_root,
+        "releaseId": manifest.get("releaseId"),
+        "packageId": manifest.get("packageId"),
+        "packageVersion": manifest.get("packageVersion"),
+        "contentDigest": manifest.get("contentDigest"),
+        "manifestSha256": (
+            sha256_bytes(loaded.manifest_bytes)
+            if loaded.manifest_bytes is not None
+            else None
+        ),
+        "closureDigest": closure_digest,
+        "definitionIndexDigest": definition_index_digest,
+    }
+
+
 def validate_full_validator_report(
     report: dict[str, Any],
     loaded: LoadedInput,
@@ -1162,22 +1230,24 @@ def validate_full_validator_report(
             "Independent validator report is not bound to the evaluated ZIP bytes"
         )
 
-    manifest = loaded.manifest or {}
     package_value = report.get("package")
     if not isinstance(package_value, dict):
         raise FullValidatorProcessError("Independent validator package binding is malformed")
     exact_keys(
         package_value,
-        {"archiveRoot", "releaseId", "packageId", "packageVersion", "contentDigest"},
+        {
+            "archiveRoot",
+            "releaseId",
+            "packageId",
+            "packageVersion",
+            "contentDigest",
+            "manifestSha256",
+            "closureDigest",
+            "definitionIndexDigest",
+        },
         "validator package binding",
     )
-    expected_package = {
-        "archiveRoot": loaded.archive_root,
-        "releaseId": manifest.get("releaseId"),
-        "packageId": manifest.get("packageId"),
-        "packageVersion": manifest.get("packageVersion"),
-        "contentDigest": manifest.get("contentDigest"),
-    }
+    expected_package = expected_full_validator_package_binding(loaded)
     if package_value != expected_package:
         raise FullValidatorProcessError(
             "Independent validator report is not bound to the evaluated manifest identity"
@@ -2435,13 +2505,7 @@ def run_fixture_suite() -> None:
                 "bytes": target_loaded.bytes,
                 "sha256": target_loaded.sha256,
             },
-            "package": {
-                "archiveRoot": target_loaded.archive_root,
-                "releaseId": target_loaded.manifest.get("releaseId"),
-                "packageId": target_loaded.manifest.get("packageId"),
-                "packageVersion": target_loaded.manifest.get("packageVersion"),
-                "contentDigest": target_loaded.manifest.get("contentDigest"),
-            },
+            "package": expected_full_validator_package_binding(target_loaded),
             "counts": {
                 "archiveEntries": len(target_loaded.manifest["files"]) + 2,
                 "manifestFiles": len(target_loaded.manifest["files"]),
@@ -2535,6 +2599,21 @@ def run_fixture_suite() -> None:
         forged_artifact_binding["input"]["sha256"] = "0" * 64
         forged_validator_reports.append(
             ("artifact hash binding", forged_artifact_binding, validator_returncode)
+        )
+        forged_manifest_binding = copy.deepcopy(validator_report)
+        forged_manifest_binding["package"]["manifestSha256"] = "0" * 64
+        forged_validator_reports.append(
+            ("manifest hash binding", forged_manifest_binding, validator_returncode)
+        )
+        forged_closure_binding = copy.deepcopy(validator_report)
+        forged_closure_binding["package"]["closureDigest"] = "sha256:" + "0" * 64
+        forged_validator_reports.append(
+            ("closure digest binding", forged_closure_binding, validator_returncode)
+        )
+        forged_definition_binding = copy.deepcopy(validator_report)
+        forged_definition_binding["package"]["definitionIndexDigest"] = "sha256:" + "0" * 64
+        forged_validator_reports.append(
+            ("definition index binding", forged_definition_binding, validator_returncode)
         )
         forged_gate_set = copy.deepcopy(validator_report)
         forged_gate_set["gates"].pop("contentDigest")
@@ -2675,7 +2754,7 @@ def run_fixture_suite() -> None:
     print(
         "Curriculum package readiness self-test passed: "
         f"{len(seen_ids)} manifest fixture(s), 4 policy-tamper cases, "
-        "5 readiness-report forgeries, 5 validator-report forgeries, "
+        "5 readiness-report forgeries, 8 validator-report forgeries, "
         "3 validator-process failures, 3 raw JSON cases, 7 adversarial ZIPs, "
         "2 early-limit inputs, and exit matrix."
     )

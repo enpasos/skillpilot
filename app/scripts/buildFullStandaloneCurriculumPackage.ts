@@ -1502,7 +1502,7 @@ export const createFullStandalonePackagePlan = (
     curriculumEdition,
     contentDigest: semanticIndex.contentDigest,
     archiveRoot,
-    supportedSkillpilotSoftware: options.supportedSkillpilotSoftware ?? '>=1.0.0 <2.0.0',
+    supportedSkillpilotSoftware: options.supportedSkillpilotSoftware ?? '>=0.1.0 <1.0.0',
     licenseDocuments,
     contractBindings: {
       manifestSchema: { id: manifestSchema.id, path: manifestSchema.packagePath, sha256: manifestSchema.sha256 },
@@ -1730,7 +1730,7 @@ const usage = () => `Usage:
 
 Optional:
   --archive-root <portable-segment>
-  --supported-skillpilot-software ">=1.0.0 <2.0.0"
+  --supported-skillpilot-software ">=0.1.0 <1.0.0"
   --redistribution-review <repository-relative-path>
   --source-verification-review <repository-relative-path>
   --source-verification-report <repository-relative-path>

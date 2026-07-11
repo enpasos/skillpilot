@@ -41,6 +41,12 @@ spring:
             clientSecret: ${GITHUB_CLIENT_SECRET}
 
 skillpilot:
+  curriculum:
+    source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}
+    consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}
+    packages:
+      store-directory: ${SKILLPILOT_CURRICULUM_PACKAGE_STORE:../tmp/curriculum-package-store}
+      active-lock: ${SKILLPILOT_CURRICULUM_PACKAGE_LOCK:locks/active.json}
   landscapes:
     directory: ../curricula
   ai:

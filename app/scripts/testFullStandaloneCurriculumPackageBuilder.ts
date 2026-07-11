@@ -452,6 +452,11 @@ try {
     fixtureOnly: true,
   } as const
   const plan = createFullStandalonePackagePlan(fixturePlanOptions)
+  assert.equal(
+    plan.manifest.supportedSkillpilotSoftware,
+    '>=0.1.0 <1.0.0',
+    'default package range accepts the stable curriculum-consumer API version 0.1.0',
+  )
   assert.equal(plan.entries.length, 48, 'fixture package entry count')
   assert.equal(manifestFiles(plan).length, plan.entries.length - 2, 'manifest excludes only itself and SHA256SUMS')
   assert.equal(plan.publicationReady, false, 'pending review remains non-public')
