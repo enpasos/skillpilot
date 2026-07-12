@@ -9,7 +9,10 @@ OUTPUT_B="${OUTPUT_BASE}/mathematik-b"
 PACKAGE_OUTPUT="${OUTPUT_BASE}/full-standalone-package"
 PACKAGE_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json"
 PACKAGE_ZIP="${PACKAGE_OUTPUT}/${PACKAGE_ARCHIVE_ROOT}.zip"
-PACKAGE_BUILD_REPORT="${PACKAGE_OUTPUT}/build-summary.json"
+# Keep the shell-owned stdout target outside the Builder's atomically replaced
+# output directory. Otherwise the open report file can be renamed into and
+# removed with the Builder backup during promotion.
+PACKAGE_BUILD_REPORT="${OUTPUT_BASE}/full-standalone-package-build-summary.json"
 PACKAGE_VALIDATION_REPORT="${PACKAGE_OUTPUT}/full-package-validation-report.json"
 PACKAGE_READINESS_REPORT="${PACKAGE_OUTPUT}/readiness-report.json"
 PACKAGE_CONSUMER_SMOKE_REPORT="${PACKAGE_OUTPUT}/package-consumer-smoke-report.json"

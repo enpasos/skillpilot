@@ -3,10 +3,10 @@
 - Stand: 2026-07-11
 - Zielbild: [Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie](../concept/curriculum-graph/dual-curriculum-package-releases.md)
 - Aktive Phase: `P2 – Core-first Ontologieformat vorbereiten`
-- Nächster Umsetzungsschritt: `DPK-008c – unabhängige Finished-FWU-OWL-Paket-QS`
-- Letzter vollständig abgeschlossener Schritt: `DPK-008b – paketgetriebener Core-first FWU-OWL-Exporter`
-- Solider Ausgangsstand: `DPK-008b`
-- Abschluss-Gate für DPK-008b: strikter TypeScript-/Selftest-Gate, realer atomarer Doppelbuild mit 819/817/757/32/111, 824.052 RDF-Tripeln, einer Core-Fallback-Area, byteidentischen 2.362.113.998-Byte-ZIPs und `./run_ci.sh` grün
+- Nächster Umsetzungsschritt: `DPK-008d – isolierter Reverse Compiler zum installierbaren JSON-Runtime-ZIP`
+- Letzter vollständig abgeschlossener Schritt: `DPK-008c – unabhängige Finished-FWU-OWL-Paket-QS`
+- Solider Ausgangsstand: `DPK-008c`
+- Abschluss-Gate für DPK-008c: 40 begrenzte Validator-Garantien, exakt gepinnte Offline-Toolchain, realer schema-valider Report mit 18/18 bestandenen Gates, SHACL 0/0, OWL 2 DL, HermiT konsistent/0 unerfüllbar und `./run_ci.sh` grün
 - Technische Blocker: keine
 - Public-Release-Gates: [konkrete menschliche Reviewliste](../qa-ci/curriculum-package-human-review-gates.md)
 
@@ -18,7 +18,7 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 | --- | --- | --- | --- |
 | P0 | Versionierte, ausführbar geprüfte Paket-, Profil- und Äquivalenzverträge samt vollständigem Mathematik-Conformance-Modell | `complete` | abgeschlossen |
 | P1 | JSON-Paket als hermetischer SkillPilot-Runtime-Input | `complete` | abgeschlossen |
-| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `in_progress` | DPK-008c: fertiges FWU-OWL-ZIP unabhängig validieren |
+| P2 | Fachübergreifendes Core-first Ontologieformat mit Reverse Compiler | `in_progress` | DPK-008d: FWU-OWL isoliert zum installierbaren JSON-ZIP zurückübersetzen |
 | P3 | Gemeinsamer `contentDigest` und Dual-Release-Gate | `not_started` | Manipulationen beider Varianten sicher erkennen |
 | P4 | Generalisierung über Mathematik hinaus | `not_started` | Physik und ein sprachliches Fach bestehen |
 | P5 | Signierter Package-Betrieb und Veröffentlichungskatalog | `not_started` | atomare Stable-Promotion und Rollback |
@@ -26,11 +26,32 @@ Diese Seite ist das kurze, gepflegte Workboard für die Umsetzung. Das Konzeptdo
 
 Statuswerte: `not_started`, `in_progress`, `complete`, `blocked`, `deferred`. Es ist höchstens ein Schritt gleichzeitig `in_progress`.
 
+## Abgeschlossener Teilschritt: DPK-008c
+
+DPK-008c validiert das fertige FWU-OWL-ZIP ausschließlich aus veröffentlichten Bytes und Repository-Trust-Roots, ohne Import des Exporters. ZIP, Quell-JSON, Reproduzierbarkeits-Peer, ROBOT und Evidenz werden über no-follow Dateideskriptoren, vollständige Dateiidentitäten und Vor-/Nachhashes gebunden. JSON erhält vor dem Parsen Byte-, Tiefen- und Knotengrenzen. Der Validator prüft Manifest, Profil, Support-, Lizenz-, Schema-, Registry-, Core-, Segment-, Bundle-, Binärsidecar- und Reproduzierbarkeitsverträge erneut und erzeugt einen externen schema-validen Report mit achtzehn fest geordneten Gates. pySHACL, ROBOT und HermiT arbeiten netzfrei auf privaten, hashgebundenen Eingabekopien.
+
+Der abschließende Core-Audit hat außerdem eine bislang opaque Kompetenzreferenz korrigiert: Registry-`competency-entry`-Ziele werden nun direkt auf die katalogisierten Kompetenzressourcen projiziert. Exakte Regressionstests decken sowohl `competencyRefs` als auch das kompatible `kompetenzen` ab. Dadurch entfallen 162 künstliche Value-Carrier; das fachliche JSON und sein `contentDigest` bleiben unverändert, der bereinigte RDF-Graph umfasst 823.890 Tripel.
+
+Der reale `.3`-Lauf besteht alle 18 Gates ohne Diagnose:
+
+| Merkmal | Wert |
+| --- | --- |
+| FWU-OWL-ZIP und Peer | je 2.362.017.770 Byte; SHA-256 `cce674652ed569b06a2f6369c826c29585e44ef9a4d51521bf8d99eabe7c92ac` |
+| FWU-OWL-Manifest | SHA-256 `b33cdcc4eb4751998289a41d3d7fc5a1b4df968355d1cfe6be426171e1ca8bba` |
+| Inventar | 819 ZIP-Einträge; 817 Manifestrecords; 757 Binärressourcen mit 1.696.390.279 Byte; 32 Reverse-Support-Dateien |
+| Semantik | acht Segmente; 823.890 RDF-Tripel; 111 logische Artefakte; 454 Registry-Einträge; eine additive Core-Fallback-Area |
+| Ontologie-QS | pySHACL 0.30.1: 0 Violations/0 Warnings; ROBOT 1.9.10: OWL 2 DL; HermiT 1.4.5.456: konsistent/0 unerfüllbare benannte Klassen |
+| Gemeinsamer Inhalt | `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101` |
+
+`scripts/run_curriculum_fwu_owl_package_conformance.sh` ist der schwere reale Release-Gate. Die normale lokale und gehostete CI provisioniert und verifiziert die exakte Toolchain und führt den auf 40 Garantien begrenzten Validator-Selftest aus, nicht den 2,36-GB-/HermiT-Lauf. Der dabei aufgedeckte Java-Sandbox-Fallback ist ebenfalls geschlossen: der hermetische JSON-Consumer bindet das exakt gepinnte Corretto-JDK per stabilem read-only FD nach dem Repository-Masking ein und besteht real wieder 15/15 Checks ohne Host-Java-Fallback.
+
+DPK-008c ist damit abgeschlossen. DPK-008d muss das validierte FWU-Paket nun ohne Original-JSON und ohne Exportercode in ein unabhängig validierbares, installierbares JSON-Runtime-ZIP rekonstruieren.
+
 ## Abgeschlossener Teilschritt: DPK-008b
 
 DPK-008b implementiert den paketgetriebenen Core-first Exporter als generische TypeScript-Toolchain. Er liest die 111 logischen Artefakte und 757 Binärressourcen ausschließlich aus dem unabhängig validierten, eingefrorenen `.3`-JSON-Paket, gleicht jeden beobachteten Wert gegen die 454-Einträge-Feldregistry ab und schreibt acht kanonisch sortierte, deduplizierte N-Triples-Segmente. Present-empty bleibt über `sp:fieldState` von missing unterscheidbar; geordnete Werte behalten explizite Memberships und Positionen. Der Compiler projiziert fachliche Ziele, Bereiche, didaktische Voraussetzungen, Program Units, Placements und Kompetenzachsen so weit wie möglich in den gepinnten FWU-Core. Anwendungsterme bleiben auf nachgewiesene Runtime-, Roundtrip-, Packaging- und Evidenzlücken begrenzt.
 
-Die Deklarationslane wird vor dem RDF-to-OWL-Parsing aus der exakten Registry-/Anwendungsontologie-Union sowie 16 Core-/externen Bootstrap-Properties abgeleitet. Cross-Kind-Punning innerhalb und zwischen diesen Mengen scheitert. Exakte Tests decken die 526 Deklarationen, `sp:fieldState`, alle drei `sp:referenceRole`-Rollen, Core-Area-/Atomic-Typen, authored und additive BFO-Parthood sowie das dreigliedrige `LP_0000554`-Referenzmuster ab. Die korrigierten Shapes vergleichen `goalSemanticKind` RDF-termgenau als `xsd:string`; ein vollständiger diagnostischer Lauf über den realen 824.052-Tripel-Graphen meldet `sh:conforms true`. Die formale, exporterunabhängige SHACL-/OWL-/HermiT-Attestation folgt bewusst erst in DPK-008c.
+Die Deklarationslane wird vor dem RDF-to-OWL-Parsing aus der exakten Registry-/Anwendungsontologie-Union sowie 16 Core-/externen Bootstrap-Properties abgeleitet. Cross-Kind-Punning innerhalb und zwischen diesen Mengen scheitert. Exakte Tests decken die 526 Deklarationen, `sp:fieldState`, alle drei `sp:referenceRole`-Rollen, Core-Area-/Atomic-Typen, authored und additive BFO-Parthood sowie das dreigliedrige `LP_0000554`-Referenzmuster ab. Die korrigierten Shapes vergleichen `goalSemanticKind` RDF-termgenau als `xsd:string`; der inzwischen bereinigte reale Graph umfasst 823.890 Tripel. Die formale, exporterunabhängige SHACL-/OWL-/HermiT-Attestation ist in DPK-008c abgeschlossen.
 
 Der Builder validiert Paketprofil, Schemakatalog und Manifest intern mit Draft 2020-12, bindet Repository-Trust-Roots sowie die Source-JSON-Identität bytegenau und prüft Quell-ZIP und alle Source-Dateien gegen Drift. Inventar, Lizenzdokumente und Redistributionstatus sind geschlossen. Primär- und Peer-Paket entstehen in einer privaten Run-Staging-Area; nur zwei vollständig materialisierte, byteidentische Builds werden als ganzes Verzeichnis atomar promotet, wobei ein vorhandener letzter guter Stand bis dahin erhalten bleibt.
 
@@ -39,13 +60,13 @@ Der reale Mathematikbuild hat folgenden unveränderlichen technischen Stand:
 | Merkmal | Wert |
 | --- | --- |
 | FWU-OWL-ZIP | `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.fwu-owl.zip` |
-| ZIP und Reproduzierbarkeits-Peer | je 2.362.113.998 Byte; SHA-256 `54b07d8a4ff29432f2d0cfe08d2846cc90a4c6eb180f709173de5b1a50485b73` |
-| FWU-OWL-Manifest | SHA-256 `00430d02b9be87d8b42c2df7e4c4757d464a81e48cdbaf98fca71896d920785c` |
+| ZIP und Reproduzierbarkeits-Peer | je 2.362.017.770 Byte; SHA-256 `cce674652ed569b06a2f6369c826c29585e44ef9a4d51521bf8d99eabe7c92ac` |
+| FWU-OWL-Manifest | SHA-256 `b33cdcc4eb4751998289a41d3d7fc5a1b4df968355d1cfe6be426171e1ca8bba` |
 | Inventar | 819 ZIP-Einträge; 817 Manifestrecords; 757 Binärressourcen; 32 Reverse-Support-Dateien |
-| Semantik | 111 logische Artefakte; 454 Registry-Einträge; 824.052 RDF-Tripel; eine additive Core-Fallback-Area |
+| Semantik | 111 logische Artefakte; 454 Registry-Einträge; 823.890 RDF-Tripel; eine additive Core-Fallback-Area |
 | Gemeinsamer Inhalt | `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101` |
 
-DPK-008b ist damit als Exporter-/Materialisierungsschritt abgeschlossen. DPK-008c muss das fertige ZIP ohne Import von Exportercode nochmals strukturell und ontologisch prüfen und einen externen, schema-validen 18-Gate-Report erzeugen; erst DPK-008d rekonstruiert daraus isoliert ein installierbares JSON-Runtime-Paket.
+DPK-008b ist damit als Exporter-/Materialisierungsschritt abgeschlossen. DPK-008c prüft das fertige ZIP inzwischen ohne Exportercode strukturell und ontologisch mit einem externen schema-validen 18-Gate-Report; DPK-008d rekonstruiert daraus als Nächstes isoliert ein installierbares JSON-Runtime-Paket.
 
 ## Abgeschlossener Teilschritt: DPK-008a
 
@@ -523,7 +544,8 @@ Abnahme:
 | DPK-007 | Hermetischen Package-only Mathematik-Consumer einschließlich echter Browserdarstellung und checkout-freiem Trace umgesetzt | 15/15 reale Consumer-Prüfungen, fünf unbeobachtete Poison-Lanes, 29 Fälschungsfälle; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-007a | Letzte Visualisierung technisch importiert, Core-/Registry-Lanes ausgerichtet und unveränderlichen `.3`-Kandidaten eingefroren | 914/912/757, Digest-/ZIP-/Manifest-/Closure-Pins, Profilalignment-Mutationen; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 | DPK-008a | Geschlossenen FWU-OWL-Vertragskern mit gepinnten Core-/Profil-/Shapes-/Schema-Trust-Roots und externem 18-Gate-Report definiert | 96 FWU-OWL- und 61 Dual-Release-Mutationen, Raw-JSON-Fälle und vollständiges `./run_ci.sh` grün | 2026-07-11 |
-| DPK-008b | Generischen Core-first Exporter und atomaren reproduzierbaren FWU-OWL-ZIP-Builder auf dem eingefrorenen `.3`-JSON-Paket umgesetzt | 819/817/757/32/111, 824.052 RDF-Tripel, byteidentisches Buildpaar, TypeScript-/Compiler-/ZIP-Gates und vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-008b | Generischen Core-first Exporter und atomaren reproduzierbaren FWU-OWL-ZIP-Builder auf dem eingefrorenen `.3`-JSON-Paket umgesetzt | 819/817/757/32/111, nach Core-Referenzkorrektur 823.890 RDF-Tripel, byteidentisches Buildpaar, TypeScript-/Compiler-/ZIP-Gates und vollständiges `./run_ci.sh` grün | 2026-07-11 |
+| DPK-008c | Unabhängigen Finished-FWU-OWL-Validator samt gepinnter Offline-Ontologie-Toolchain und direkter Kompetenzressourcen-Projektion umgesetzt | 40 Selftest-Garantien; realer schema-valider 18/18-Report für 819/817/8/823.890/111/454/757; SHACL 0/0, OWL 2 DL, HermiT konsistent/0 unerfüllbar; hermetischer JSON-Consumer 15/15; vollständiges `./run_ci.sh` grün | 2026-07-11 |
 
 ## Verbleibende Roadmap
 
@@ -553,8 +575,8 @@ Abnahme:
 | DPK-008 | P2 | FWU-OWL-Manifest/-Profil, Ontologie-Exporter und Reverse Compiler auf Paketverträge umstellen | DPK-003–DPK-005, DPK-007a | `in_progress` |
 | DPK-008a | P2 | Geschlossenes FWU-OWL-Manifest, Paketprofil und externes Validierungsreport-Format | DPK-007a | `complete` |
 | DPK-008b | P2 | Paketgetriebenen Core-first Exporter und reproduzierbares FWU-OWL-ZIP implementieren | DPK-008a | `complete` |
-| DPK-008c | P2 | Unabhängige RDF-, SHACL-, OWL-2-DL- und HermiT-Paket-QS vervollständigen | DPK-008b | `in_progress` |
-| DPK-008d | P2 | Isolierten Reverse Compiler zum installierbaren JSON-Runtime-ZIP implementieren | DPK-008c | `not_started` |
+| DPK-008c | P2 | Unabhängige RDF-, SHACL-, OWL-2-DL- und HermiT-Paket-QS vervollständigen | DPK-008b | `complete` |
+| DPK-008d | P2 | Isolierten Reverse Compiler zum installierbaren JSON-Runtime-ZIP implementieren | DPK-008c | `in_progress` |
 | DPK-009 | P3 | Semantischer Digest, Äquivalenzreport und reproduzierbares Variantenpaar | DPK-008 | `not_started` |
 | DPK-010 | P4 | Physik-Closure und fachübergreifende Profile | DPK-004, DPK-009 | `not_started` |
 | DPK-011 | P5 | Signierter Release-Index, Distributionskatalog und atomare Promotion nur bei geschlossenen Visualisierungs- und Source-Verification-Gates | DPK-009–DPK-010 | `not_started` |
@@ -585,7 +607,8 @@ Die IDs strukturieren solide, einzeln commitbare Schritte. Sie ersetzen nicht di
 | DPK-007 | Source-spezifische Quality-Provider; Catalog-only Frontend/Runtime; echter React-/Chromium-Fluss und 404-Fail-closed; evaluator-gesteuerte Runner-Attestation; bwrap-/strace-Isolation; fünf Poison-Lanes; 29 Consumer-Fälschungen, Output-Destruktions- und Replay-Gates | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-007a | Letzter Bildimport; 754/754 Atomic-Scope-Abdeckung; 914/912/757-Paketfreeze; Profile `1.1.1`; unveränderte 454-Einträge-Registry und Core-/Order-Lane-Mutationen; unabhängige Modell-/ZIP-/Readiness-Prüfung | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 | DPK-008a | FWU-OWL-Verträge: eine positive Fixture, zwei frühe nicht-erfolgreiche Receipts, 96 fail-closed Mutationen, zwei Raw-JSON-Fälle, 14 Rollen, 12 Bindungen, 18 Gates, 510+16 geschlossene Deklarationen, extern gepinnte Core-/Katalog-/Profil-/Shapes-/Schema-/Semantik-Trust-Roots sowie 61 getrennte Dual-Contract-Mutationen | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
-| DPK-008b | TypeScript-Selftest für 454 Registry-Einträge, 526 Deklarationen, Core-Projektionen, Feldzustände, Referenzrollen, Punning- und Pfad-/Integritätsguards; realer atomarer Doppelbuild 819/817/757/32/111 mit 824.052 Tripeln, byteidentischen 2.362.113.998-Byte-ZIPs, direktem ZIP-/Manifest-/Checksum-Inventarcheck und diagnostisch grünem SHACL-/OWL-2-DL-Lauf | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-008b | TypeScript-Selftest für 454 Registry-Einträge, 526 Deklarationen, Core-Projektionen, Feldzustände, Referenzrollen, Punning- und Pfad-/Integritätsguards; realer atomarer Doppelbuild 819/817/757/32/111, nach direkter Kompetenzressourcen-Korrektur 823.890 Tripel und byteidentische 2.362.017.770-Byte-ZIPs | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
+| DPK-008c | 40 Validator-Sicherheits-/Semantikgarantien; exakte jsonschema-/pySHACL-/RDFLib-/owlrl-/ROBOT-/Corretto-Pins; realer 18/18-Report mit SHACL 0/0, OWL 2 DL, HermiT konsistent/0 unerfüllbar, 757 bytegeprüften Sidecars und byteidentischem Peer; Java-FD-Sandbox-Selftest und realer Consumer 15/15 | `./run_ci.sh`, lokal, 2026-07-11, Exit 0 | `passed` |
 
 Rohlogs und temporäre Artefakte bleiben unter `tmp/` oder in CI-Artefakten und werden nicht in dieser Seite dupliziert.
 
