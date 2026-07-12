@@ -589,7 +589,7 @@ class SemanticContext {
     const targetKind = optionalString(dependency.targetKind)
     if (targetKind === 'goal') return this.goalIris.get(value) ?? fail(`Unknown goal reference ${value} in ${entry.entryId}.`)
     if (targetKind === 'landscape') return this.landscapeIris.get(value) ?? fail(`Unknown landscape reference ${value} in ${entry.entryId}.`)
-    if (targetKind === 'competency') return this.competencyIris.get(value) ?? fail(`Unknown competency reference ${value} in ${entry.entryId}.`)
+    if (targetKind === 'competency-entry') return this.competencyIris.get(value) ?? fail(`Unknown competency reference ${value} in ${entry.entryId}.`)
     if (targetKind === 'resource') return this.resourceIris.get(value) ?? fallbackIri
     return fallbackIri
   }

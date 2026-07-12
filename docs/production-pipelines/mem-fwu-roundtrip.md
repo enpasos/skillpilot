@@ -18,16 +18,19 @@ DPK-005b first materialized that model as a real `full-standalone-v1` staging ZI
 
 DPK-007a now freezes the exact JSON input for DPK-008 as `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`. The ZIP contains 914 entries and 912 manifest records; it is 1,738,161,217 bytes with SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, while its manifest has SHA-256 `32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe`. Its 111 logical and 757 binary records share `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`; the 757 embedded images total 1,696,390,279 bytes. The runtime closure contains 2,403 definitions and 18,820 references with closure digest `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121` and definition-index digest `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
 
-Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. DPK-008b now materializes candidate `.3` through that contract as a reproducible Core-first FWU-OWL package. Primary and peer are each 2,362,113,998 bytes with SHA-256 `54b07d8a4ff29432f2d0cfe08d2846cc90a4c6eb180f709173de5b1a50485b73`; the manifest SHA-256 is `00430d02b9be87d8b42c2df7e4c4757d464a81e48cdbaf98fca71896d920785c`. Its 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 824,052 RDF triples across the fixed eight segments. DPK-008c/d next add the independent finished-package ontology gate and isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
+Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. DPK-008b materializes candidate `.3` through that contract as a reproducible Core-first FWU-OWL package. After correcting `competency-entry` targets to use the cataloged Core competency resources directly, primary and peer are each 2,362,017,770 bytes with SHA-256 `cce674652ed569b06a2f6369c826c29585e44ef9a4d51521bf8d99eabe7c92ac`; the manifest SHA-256 is `b33cdcc4eb4751998289a41d3d7fc5a1b4df968355d1cfe6be426171e1ca8bba`. Its 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 823,890 RDF triples across the fixed eight segments. DPK-008c now independently validates that finished package through all eighteen structural, semantic, SHACL, OWL 2 DL, HermiT, sidecar, and reproducibility gates. DPK-008d next adds the isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
 
 Accordingly, two lanes coexist temporarily:
 
 - the commands below continue to exercise the already working legacy semantic OWL pilot;
 - `scripts/run_curriculum_release_model_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`;
 - `scripts/validate_curriculum_fwu_owl_package_contracts.py` validates the DPK-008a ontology-package contracts independently of the DPK-008b exporter;
-- `npm --prefix app run export:fwu-owl-package -- ...` builds the current primary and reproducibility-peer FWU-OWL packages atomically under `tmp/curriculum-release-model/fwu-owl-package/`.
+- `npm --prefix app run export:fwu-owl-package -- ...` builds the current primary and reproducibility-peer FWU-OWL packages atomically under `tmp/curriculum-release-model/fwu-owl-package/`;
+- `scripts/validate_fwu_owl_curriculum_package.py` validates finished FWU-OWL bytes independently and emits the external schema-valid receipt;
+- `scripts/provision_pinned_robot.sh` and `scripts/check_curriculum_fwu_owl_validation_tools.py` provision and verify the exact offline ontology toolchain;
+- `scripts/run_curriculum_fwu_owl_package_conformance.sh` rebuilds the frozen JSON/FWU pair and executes the heavyweight real 18-gate validation.
 
-They must not be presented as the final dual-release roundtrip until DPK-008c/d and DPK-009 independently validate the FWU package, reconstruct JSON without the source package, and compare both variants.
+They must not be presented as the final dual-release roundtrip until DPK-008d and DPK-009 reconstruct JSON without the source package and compare both variants.
 
 ## Roundtrip Contract
 
@@ -246,7 +249,29 @@ Selected image entries are extracted in argument-size-bounded batches (one batch
 
 ## Commands
 
-Run commands from `app/`.
+### Production finished-package gate
+
+Run the bounded tool and validator checks from the repository root:
+
+```bash
+python3 -m pip install -r scripts/curriculum_fwu_owl_validation_requirements.txt
+bash scripts/provision_pinned_robot.sh
+python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+  --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+```
+
+The provisioning command is the only command in this set allowed to download ROBOT. The checker and finished-ZIP validator are network-free and require exact direct pins: `jsonschema 4.26.0`, `pySHACL 0.30.1`, `RDFLib 7.6.0`, `owlrl 7.6.2`, `ROBOT 1.9.10`, HermiT `1.4.5.456`, and the repository-pinned Amazon Corretto runtime.
+
+The complete real release-conformance lane is:
+
+```bash
+bash scripts/run_curriculum_fwu_owl_package_conformance.sh
+```
+
+It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI; ordinary CI verifies the tools and runs the bounded 40-guarantee selftest.
+
+The following commands exercise the legacy reference pilot and run from `app/`.
 
 ### 1. Build the current subject package
 
@@ -317,6 +342,8 @@ The final package-file comparison reads the original package's exact `SHA256SUMS
 
 ## Output
 
+The production DPK-008c output is under `tmp/curriculum-release-model/fwu-owl-package/` and `tmp/curriculum-release-model/fwu-owl-validation/`. Its external report, rather than the legacy slim-pilot files below, is the authoritative finished-FWU-OWL package receipt.
+
 Default base directory:
 
 `tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/`
@@ -363,7 +390,7 @@ The semantic reconstruction must pass all existing landscape, mapping, source, v
 - all verified sidecars are materialized into the reconstructed package-assets tree;
 - missing, malformed, unsafe, duplicate, or orphaned resources fail the run.
 
-The independent ontology gate merges `skillpilot-mem-fwu-profile.ttl`, `bundle.nt`, and the catalog-resolved core import, then requires the complete import closure to satisfy OWL 2 DL. HermiT consistency reasoning is an additional release gate.
+For the production package, DPK-008c independently attests all eighteen gates against the finished ZIP: archive/manifest/profile/inventory/binding/catalog/index/registry checks, strict ordered RDF and exact bundle construction, Core/profile bindings, SHACL with zero violations and warnings, OWL 2 DL, HermiT consistency with zero unsatisfiable named classes, all binary sidecars, and byte-identical reproducibility. The older slim-pilot ontology gate remains useful regression evidence: it merges `skillpilot-mem-fwu-profile.ttl`, `bundle.nt`, and the catalog-resolved core import, then requires the complete import closure to satisfy OWL 2 DL. HermiT consistency reasoning remains an additional gate there as well.
 
 The semantic, technical, package-validation, ROBOT-DL, and optional HermiT outputs jointly form the evidence. Semantic and OWL reports are bound to `slim/manifest.json`; technical and package-validation reports record and stability-check their input/output hashes directly. Those recorded hashes must agree for the artifacts they share. Do not infer validity from timestamps or copy old counts into this document after source changes.
 

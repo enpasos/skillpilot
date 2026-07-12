@@ -23,6 +23,42 @@ trap on_error ERR
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${PROJECT_ROOT}"
 
+ensure_pinned_java() {
+  local required_java_version
+  local required_corretto_version
+  local current_java_version_output
+  local corretto_tools_dir
+  local corretto_install_dir
+  local corretto_archive
+
+  required_java_version="$(tr -d '[:space:]' < "${PROJECT_ROOT}/.java-version")"
+  required_corretto_version="$(tr -d '[:space:]' < "${PROJECT_ROOT}/.corretto-version")"
+  current_java_version_output="$(java -version 2>&1 || true)"
+  if ! printf '%s\n' "${current_java_version_output}" | grep -Fq "version \"${required_java_version}\"" \
+    || ! printf '%s\n' "${current_java_version_output}" | grep -Fq "Corretto-${required_corretto_version}"; then
+    echo "Aktuelle Java-Version entspricht nicht Amazon Corretto ${required_corretto_version}; verwende lokalen CI-Download."
+    corretto_tools_dir="${PROJECT_ROOT}/tmp/ci-tools"
+    corretto_install_dir="${corretto_tools_dir}/amazon-corretto-${required_corretto_version}"
+    corretto_archive="${corretto_tools_dir}/amazon-corretto-${required_corretto_version}-linux-x64.tar.gz"
+    mkdir -p "${corretto_install_dir}"
+    if [ ! -x "${corretto_install_dir}/bin/java" ]; then
+      curl -fsSL "https://corretto.aws/downloads/resources/${required_corretto_version}/amazon-corretto-${required_corretto_version}-linux-x64.tar.gz" -o "${corretto_archive}"
+      tar -xzf "${corretto_archive}" --strip-components=1 -C "${corretto_install_dir}"
+    fi
+    export JAVA_HOME="${corretto_install_dir}"
+    export PATH="${JAVA_HOME}/bin:${PATH}"
+    current_java_version_output="$(java -version 2>&1 || true)"
+  fi
+  if ! printf '%s\n' "${current_java_version_output}" | grep -Fq "version \"${required_java_version}\"" \
+    || ! printf '%s\n' "${current_java_version_output}" | grep -Fq "Corretto-${required_corretto_version}"; then
+    echo "Abbruch: Amazon Corretto ${required_corretto_version} ist erforderlich (.java-version/.corretto-version)." >&2
+    echo "Aktuelle Java-Version:" >&2
+    printf '%s\n' "${current_java_version_output}" >&2
+    exit 1
+  fi
+  printf '%s\n' "${current_java_version_output}"
+}
+
 REQUIRED_NODE_VERSION="$(tr -d '[:space:]' < .nvmrc)"
 if [ -n "${NVM_DIR:-}" ] && [ -s "${NVM_DIR}/nvm.sh" ]; then
   # shellcheck source=/dev/null
@@ -152,11 +188,19 @@ npm run check:goal-source-rationales:build-artifact
 cd "${PROJECT_ROOT}"
 
 echo "--> Running Schema Validation"
-# Ensure jsonschema is installed (suppress output if already present)
-pip3 install -q "jsonschema==4.26.0" || echo "Warning: Failed to install pinned jsonschema, validation will fail if the required version is unavailable."
+python3 -m pip install -q -r scripts/curriculum_fwu_owl_validation_requirements.txt
+ensure_pinned_java
+bash -n \
+  scripts/provision_pinned_robot.sh \
+  scripts/run_curriculum_release_model_conformance.sh \
+  scripts/run_curriculum_fwu_owl_package_conformance.sh
+bash scripts/provision_pinned_robot.sh
+python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+  --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
 echo "--> Validating Curriculum Package Contracts"
 python3 -B scripts/validate_curriculum_package_contracts.py
 python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
+python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
 python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
 python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
@@ -188,32 +232,6 @@ echo ""
 echo "=========================================="
 echo "Running Backend CI (backend)"
 echo "=========================================="
-REQUIRED_JAVA_VERSION="$(tr -d '[:space:]' < .java-version)"
-REQUIRED_CORRETTO_VERSION="$(tr -d '[:space:]' < .corretto-version)"
-CURRENT_JAVA_VERSION_OUTPUT="$(java -version 2>&1 || true)"
-if ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "version \"${REQUIRED_JAVA_VERSION}" \
-  || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_CORRETTO_VERSION}"; then
-  echo "Aktuelle Java-Version entspricht nicht Amazon Corretto ${REQUIRED_CORRETTO_VERSION}; verwende lokalen CI-Download."
-  CORRETTO_TOOLS_DIR="${PROJECT_ROOT}/tmp/ci-tools"
-  CORRETTO_INSTALL_DIR="${CORRETTO_TOOLS_DIR}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}"
-  CORRETTO_ARCHIVE="${CORRETTO_TOOLS_DIR}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}-linux-x64.tar.gz"
-  mkdir -p "${CORRETTO_INSTALL_DIR}"
-  if [ ! -x "${CORRETTO_INSTALL_DIR}/bin/java" ]; then
-    curl -fsSL "https://corretto.aws/downloads/resources/${REQUIRED_CORRETTO_VERSION}/amazon-corretto-${REQUIRED_CORRETTO_VERSION}-linux-x64.tar.gz" -o "${CORRETTO_ARCHIVE}"
-    tar -xzf "${CORRETTO_ARCHIVE}" --strip-components=1 -C "${CORRETTO_INSTALL_DIR}"
-  fi
-  export JAVA_HOME="${CORRETTO_INSTALL_DIR}"
-  export PATH="${JAVA_HOME}/bin:${PATH}"
-  CURRENT_JAVA_VERSION_OUTPUT="$(java -version 2>&1 || true)"
-fi
-if ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "version \"${REQUIRED_JAVA_VERSION}" \
-  || ! printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" | grep -Fq "Corretto-${REQUIRED_CORRETTO_VERSION}"; then
-  echo "Abbruch: Amazon Corretto ${REQUIRED_CORRETTO_VERSION} ist erforderlich (.java-version/.corretto-version)." >&2
-  echo "Aktuelle Java-Version:" >&2
-  printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}" >&2
-  exit 1
-fi
-printf '%s\n' "${CURRENT_JAVA_VERSION_OUTPUT}"
 cd "${PROJECT_ROOT}/backend"
 chmod +x gradlew
 # Run backend check in a CI-like, isolated Gradle home to avoid stale local state.

@@ -518,6 +518,7 @@ const landscapeDocument: JsonObject = {
       contains: [],
       requires: [],
       competencyRefs: ['PROCESS.K1'],
+      kompetenzen: ['PROCESS.K2'],
       dimensionTags: {
         guidingIdeas: ['L1'],
         processCompetencies: ['K1'],
@@ -541,6 +542,11 @@ const landscapeDocument: JsonObject = {
       dimension: 'process-competency',
       id: 'PROCESS.K1',
       label: 'Mathematisch argumentieren',
+    },
+    {
+      dimension: 'process-competency',
+      id: 'PROCESS.K2',
+      label: 'Probleme mathematisch lösen',
     },
   ],
 }
@@ -847,6 +853,37 @@ const testSemanticCompiler = () => {
     1,
     'Present-empty competencyRefs state was emitted for a missing or non-empty field',
   )
+
+  const competencyMembershipCases = [
+    {
+      entryId: 'goal.competency-refs',
+      valuePredicate: 'https://skillpilot.de/ns/roundtrip#goalCompetencyRefsValue',
+      competencyId: 'PROCESS.K1',
+    },
+    {
+      entryId: 'goal.kompetenzen',
+      valuePredicate: 'https://skillpilot.de/ns/roundtrip#goalKompetenzenValue',
+      competencyId: 'PROCESS.K2',
+    },
+  ] as const
+  for (const { entryId, valuePredicate, competencyId } of competencyMembershipCases) {
+    const membership = `${goal('atom-parented')}/membership/${entryId}/0`
+    const competencyEntry = `${landscapeIri}/competency/${competencyId}`
+    const opaqueValue = `${goal('atom-parented')}/value/${entryId}/0`
+    assert(
+      landscape.includes(triple(membership, valuePredicate, competencyEntry)),
+      `${entryId} membership does not target its competency-entry resource`,
+    )
+    assertEqual(
+      landscape.split(` <${valuePredicate}> `).length - 1,
+      1,
+      `${entryId} emitted an unexpected competency membership target`,
+    )
+    assert(
+      !landscape.includes(`<${opaqueValue}>`),
+      `${entryId} emitted an opaque value-label carrier instead of its competency-entry target`,
+    )
+  }
 
   const processReference = `${goal('atom-parented')}/core-reference/PROCESS.K1`
   const guidingReference = `${goal('atom-parented')}/core-reference/GUIDING.L1`

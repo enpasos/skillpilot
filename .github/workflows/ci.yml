@@ -148,12 +148,23 @@ jobs:
       - name: Install pinned package-consumer browser
         run: npx playwright install --with-deps chromium
       - name: Install Python dependencies
-        run: pip install jsonschema==4.26.0
+        run: python -m pip install -r ../scripts/curriculum_fwu_owl_validation_requirements.txt
+      - name: Verify pinned FWU-OWL validation tools
+        run: |
+          cd ..
+          bash -n \
+            scripts/provision_pinned_robot.sh \
+            scripts/run_curriculum_release_model_conformance.sh \
+            scripts/run_curriculum_fwu_owl_package_conformance.sh
+          bash scripts/provision_pinned_robot.sh
+          python -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+            --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
       - name: Validate Curriculum Package Contracts
         run: |
           cd ..
           python -B scripts/validate_curriculum_package_contracts.py
           python -B scripts/validate_curriculum_fwu_owl_package_contracts.py
+          python -B scripts/validate_fwu_owl_curriculum_package.py --self-test
           python -B scripts/validate_curriculum_runtime_catalog_contract.py
           python -B scripts/validate_curriculum_schema_catalog_contract.py
           python -B scripts/evaluate_curriculum_package_readiness.py --self-test
@@ -172,6 +183,8 @@ jobs:
           path: |
             tmp/curriculum-release-model/full-standalone-package/*report*.json
             tmp/curriculum-release-model/full-standalone-package/provision-*.json
+            tmp/curriculum-release-model/full-standalone-package-build-summary.json
+            tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
             tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
             tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
             tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/

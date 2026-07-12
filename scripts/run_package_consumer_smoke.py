@@ -21,11 +21,15 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = REPO_ROOT / "scripts/run_package_consumer_smoke.py"
 APP_ROOT = REPO_ROOT / "app"
 BACKEND_ROOT = REPO_ROOT / "backend"
+JAVA_VERSION_PATH = REPO_ROOT / ".java-version"
+CORRETTO_VERSION_PATH = REPO_ROOT / ".corretto-version"
 SCHEMA_PATH = REPO_ROOT / "contracts/curriculum-package/v1/package-consumer-smoke-report.schema.json"
 REPORT_SCHEMA_ID = "https://skillpilot.com/schemas/curriculum-package/v1/package-consumer-smoke-report.schema.json"
 RUNNER_ID = "skillpilot-package-consumer-smoke"
 RUNNER_VERSION = "1.0.0"
 CONSUMER_API_VERSION = "0.1.0"
+SANDBOX_JAVA_HOME = "/opt/skillpilot-jdk"
+SANDBOX_TOOL_DIRECTORY = "/opt/skillpilot-host-tools"
 FUNCTIONAL_CHECK_IDS = (
     "app-shell.served",
     "catalog.package-discovery",
@@ -183,6 +187,138 @@ def require_tool(name: str) -> str:
     if not resolved:
         raise SmokeFailure(f"Required hermetic consumer tool is unavailable: {name}")
     return str(Path(resolved).resolve())
+
+
+def read_version_pin(path: Path) -> str:
+    assert_no_symlink_components(path)
+    try:
+        value = read_regular_bytes(path).decode("utf-8").strip()
+    except OSError as error:
+        raise SmokeFailure(f"Version pin cannot be read: {path}: {error}") from error
+    except UnicodeDecodeError as error:
+        raise SmokeFailure(f"Version pin is not UTF-8: {path}") from error
+    if not value or not re.fullmatch(r"[0-9A-Za-z.+_-]+", value):
+        raise SmokeFailure(f"Version pin is empty or malformed: {path}")
+    return value
+
+
+def inspect_java_runtime_layout(executable: Path) -> dict[str, Any]:
+    """Resolve one conventional JDK home and bind its exact filesystem identity."""
+
+    try:
+        canonical = executable.resolve(strict=True)
+    except OSError as error:
+        raise SmokeFailure(f"Java executable cannot be resolved: {executable}: {error}") from error
+    if canonical.name != "java" or canonical.parent.name != "bin":
+        raise SmokeFailure(
+            f"Java executable must have the conventional <jdk>/bin/java layout: {canonical}"
+        )
+    java_home = canonical.parent.parent
+    for path in (java_home, canonical.parent, canonical):
+        assert_no_symlink_components(path)
+    home_metadata = java_home.stat(follow_symlinks=False)
+    bin_metadata = canonical.parent.stat(follow_symlinks=False)
+    java_metadata = canonical.stat(follow_symlinks=False)
+    if not stat.S_ISDIR(home_metadata.st_mode) or not stat.S_ISDIR(bin_metadata.st_mode):
+        raise SmokeFailure(f"Java home/bin layout is not made of real directories: {canonical}")
+    if not stat.S_ISREG(java_metadata.st_mode) or java_metadata.st_mode & 0o111 == 0:
+        raise SmokeFailure(f"Java launcher is not a regular executable: {canonical}")
+    return {
+        "executable": canonical,
+        "home": java_home,
+        "homeIdentity": (home_metadata.st_dev, home_metadata.st_ino),
+        "javaIdentity": (java_metadata.st_dev, java_metadata.st_ino),
+    }
+
+
+def validate_pinned_java_runtime(executable: Path) -> dict[str, Any]:
+    runtime = inspect_java_runtime_layout(executable)
+    expected_java = read_version_pin(JAVA_VERSION_PATH)
+    expected_corretto = read_version_pin(CORRETTO_VERSION_PATH)
+    release_path = runtime["home"] / "release"
+    assert_no_symlink_components(release_path)
+    try:
+        release_text = read_regular_bytes(release_path).decode("utf-8")
+    except OSError as error:
+        raise SmokeFailure(f"JDK release metadata cannot be read: {release_path}: {error}") from error
+    except UnicodeDecodeError as error:
+        raise SmokeFailure(f"JDK release metadata is not UTF-8: {release_path}") from error
+    release_values: dict[str, str] = {}
+    for line in release_text.splitlines():
+        if "=" not in line:
+            continue
+        name, value = line.split("=", 1)
+        release_values[name] = value.strip().strip('"')
+    if (
+        release_values.get("JAVA_VERSION") != expected_java
+        or release_values.get("IMPLEMENTOR") != "Amazon.com Inc."
+        or release_values.get("IMPLEMENTOR_VERSION") != f"Corretto-{expected_corretto}"
+    ):
+        raise SmokeFailure(
+            "Resolved Java home does not match .java-version/.corretto-version release metadata"
+        )
+    result = subprocess.run(
+        [str(runtime["executable"]), "-version"],
+        env={"HOME": "/nonexistent", "LANG": "C", "LC_ALL": "C", "TZ": "UTC"},
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        timeout=30,
+        check=False,
+    )
+    version_match = re.search(r'\bversion\s+"([^"]+)"', result.stdout)
+    corretto_match = re.search(r"\bCorretto-([0-9A-Za-z.+_-]+)", result.stdout)
+    if (
+        result.returncode != 0
+        or version_match is None
+        or corretto_match is None
+        or version_match.group(1) != expected_java
+        or corretto_match.group(1) != expected_corretto
+    ):
+        raise SmokeFailure(
+            "Resolved Java launcher does not match the repository's exact Amazon Corretto pins"
+        )
+    runtime["javaVersion"] = expected_java
+    runtime["correttoVersion"] = expected_corretto
+    return runtime
+
+
+def open_java_runtime_fds(runtime: dict[str, Any]) -> tuple[int, int]:
+    """Open the JDK tree and launcher without following mutable path aliases."""
+
+    directory_flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    file_flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
+    home_fd = os.open(runtime["home"], directory_flags)
+    bin_fd: int | None = None
+    java_fd: int | None = None
+    try:
+        if (os.fstat(home_fd).st_dev, os.fstat(home_fd).st_ino) != runtime["homeIdentity"]:
+            raise SmokeFailure("Java home changed before its sandbox bind")
+        bin_fd = os.open("bin", directory_flags, dir_fd=home_fd)
+        java_fd = os.open("java", file_flags, dir_fd=bin_fd)
+        java_metadata = os.fstat(java_fd)
+        if (
+            not stat.S_ISREG(java_metadata.st_mode)
+            or java_metadata.st_mode & 0o111 == 0
+            or (java_metadata.st_dev, java_metadata.st_ino) != runtime["javaIdentity"]
+        ):
+            raise SmokeFailure("Java launcher changed before its sandbox bind")
+        result = (home_fd, java_fd)
+        home_fd = -1
+        java_fd = None
+        return result
+    finally:
+        if bin_fd is not None:
+            os.close(bin_fd)
+        if java_fd is not None:
+            os.close(java_fd)
+        if home_fd >= 0:
+            os.close(home_fd)
 
 
 def absolute_without_resolving(path: Path) -> Path:
@@ -564,10 +700,16 @@ def copy_playwright_runtime(assembly: Path) -> tuple[str, str, tuple[int, str]]:
     return version, sandbox_executable.as_posix(), digest_tree(assembly / "playwright")
 
 
-def build_backend_assembly(work: Path, assembly: Path) -> tuple[int, str]:
+def build_backend_assembly(
+    work: Path,
+    assembly: Path,
+    java_runtime: dict[str, Any],
+) -> tuple[int, str]:
     build_directory = work / "backend-build"
     classpath_path = work / "backend-runtime-classpath.txt"
     env = dict(os.environ)
+    env["JAVA_HOME"] = str(java_runtime["home"])
+    env["PATH"] = f"{java_runtime['home']}/bin:{env.get('PATH', '')}"
     env["SKILLPILOT_BACKEND_BUILD_DIR"] = str(build_directory)
     run_command(
         [
@@ -643,6 +785,7 @@ def runtime_configuration() -> dict[str, Any]:
 
 SANDBOX_ENVIRONMENT = {
     "HOME": "/tmp",
+    "JAVA_HOME": SANDBOX_JAVA_HOME,
     "LANG": "C.UTF-8",
     "LC_ALL": "C.UTF-8",
     "LOGNAME": "skillpilot",
@@ -660,73 +803,119 @@ def execute_sandbox(
     assembly: Path,
     store: Path,
     evidence_bundle: Path,
-    java_path: str,
+    java_runtime: dict[str, Any],
     node_path: str,
 ) -> int:
     repository = str(REPO_ROOT)
-    sandbox_path = ":".join(dict.fromkeys((str(Path(java_path).parent), str(Path(node_path).parent), "/usr/bin", "/bin")))
-    command = [
-        require_tool("bwrap"),
-        "--clearenv",
-        "--die-with-parent",
-        "--new-session",
-        "--unshare-user",
-        "--unshare-pid",
-        "--unshare-net",
-        "--unshare-ipc",
-        "--unshare-uts",
-        "--ro-bind",
-        "/",
-        "/",
-        "--tmpfs",
-        "/opt",
-        "--ro-bind",
-        str(assembly),
-        "/opt/skillpilot-runtime",
-        "--ro-bind",
-        str(store),
-        "/opt/curriculum-store",
-        "--bind",
-        str(evidence_bundle),
-        "/opt/runtime-output",
-        # Mask the checkout only after establishing the explicitly allowed
-        # bind mounts whose source directories happen to live below tmp/.
-        "--tmpfs",
-        repository,
-        "--tmpfs",
-        "/tmp",
-        "--proc",
-        "/proc",
-        "--dev",
-        "/dev",
-        "--chdir",
-        "/tmp",
-    ]
-    for name, value in (*sorted(SANDBOX_ENVIRONMENT.items()), ("PATH", sandbox_path)):
-        command.extend(("--setenv", name, value))
-    command.extend([
-        "strace",
-        "-f",
-        "-qq",
-        "-yy",
-        "-s",
-        "4096",
-        "-e",
-        "trace=%file,%network",
-        "-o",
-        "/opt/runtime-output/filesystem.strace",
-        "python3",
-        "/opt/skillpilot-runtime/package_consumer_sandbox_entry.py",
-    ])
-    result = subprocess.run(
-        command,
-        cwd=REPO_ROOT,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        timeout=750,
-        check=False,
-    )
+    node_executable = Path(node_path)
+    python_executable = Path(require_tool("python3"))
+    strace_executable = Path(require_tool("strace"))
+    for name, executable in (
+        ("node", node_executable),
+        ("python3", python_executable),
+        ("strace", strace_executable),
+    ):
+        assert_no_symlink_components(executable)
+        metadata = executable.stat(follow_symlinks=False)
+        if executable.name != name and name != "python3":
+            raise SmokeFailure(f"Resolved {name} executable has an unexpected basename: {executable}")
+        if not stat.S_ISREG(metadata.st_mode) or metadata.st_mode & 0o111 == 0:
+            raise SmokeFailure(f"Resolved {name} tool is not a regular executable: {executable}")
+
+    # Keep PATH closed: the sandbox can resolve only the FD-bound JDK plus the
+    # two exact host-tool symlinks below. In particular, /usr/bin/java can
+    # never become a compatibility fallback for classes built by the pinned JDK.
+    sandbox_path = f"{SANDBOX_JAVA_HOME}/bin:{SANDBOX_TOOL_DIRECTORY}"
+    java_home_fd, java_executable_fd = open_java_runtime_fds(java_runtime)
+    try:
+        command = [
+            require_tool("bwrap"),
+            "--clearenv",
+            "--die-with-parent",
+            "--new-session",
+            "--unshare-user",
+            "--unshare-pid",
+            "--unshare-net",
+            "--unshare-ipc",
+            "--unshare-uts",
+            "--ro-bind",
+            "/",
+            "/",
+            "--tmpfs",
+            "/opt",
+            "--ro-bind",
+            str(assembly),
+            "/opt/skillpilot-runtime",
+            "--ro-bind",
+            str(store),
+            "/opt/curriculum-store",
+            "--bind",
+            str(evidence_bundle),
+            "/opt/runtime-output",
+            # Preserve allowed package inputs first, then hide both the checkout
+            # and /tmp. The JDK is mounted afterwards from already-open FDs, so
+            # a Corretto installation below the masked checkout remains usable.
+            "--tmpfs",
+            repository,
+            "--tmpfs",
+            "/tmp",
+            "--ro-bind-fd",
+            str(java_home_fd),
+            SANDBOX_JAVA_HOME,
+            "--ro-bind-fd",
+            str(java_executable_fd),
+            f"{SANDBOX_JAVA_HOME}/bin/java",
+            "--dir",
+            SANDBOX_TOOL_DIRECTORY,
+            "--symlink",
+            str(node_executable),
+            f"{SANDBOX_TOOL_DIRECTORY}/node",
+            "--symlink",
+            str(python_executable),
+            f"{SANDBOX_TOOL_DIRECTORY}/python3",
+            "--proc",
+            "/proc",
+            "--dev",
+            "/dev",
+            "--chdir",
+            "/tmp",
+        ]
+        for name, value in (*sorted(SANDBOX_ENVIRONMENT.items()), ("PATH", sandbox_path)):
+            command.extend(("--setenv", name, value))
+        command.extend([
+            str(strace_executable),
+            "-f",
+            "-qq",
+            "-yy",
+            "-s",
+            "4096",
+            "-e",
+            "trace=%file,%network",
+            "-o",
+            "/opt/runtime-output/filesystem.strace",
+            str(python_executable),
+            "/opt/skillpilot-runtime/package_consumer_sandbox_entry.py",
+        ])
+        result = subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=750,
+            check=False,
+            pass_fds=(java_home_fd, java_executable_fd),
+        )
+        if (
+            (os.fstat(java_home_fd).st_dev, os.fstat(java_home_fd).st_ino)
+            != java_runtime["homeIdentity"]
+            or (os.fstat(java_executable_fd).st_dev, os.fstat(java_executable_fd).st_ino)
+            != java_runtime["javaIdentity"]
+        ):
+            raise SmokeFailure("FD-bound Java runtime changed during sandbox execution")
+    finally:
+        os.close(java_executable_fd)
+        os.close(java_home_fd)
     safe_atomic_write(evidence_bundle / "sandbox.log", result.stdout.encode())
     return result.returncode
 
@@ -983,6 +1172,9 @@ def validate_report(report: dict[str, Any]) -> None:
 
 def self_test() -> None:
     verify_pinned_helpers()
+    pinned_runtime = validate_pinned_java_runtime(Path(require_tool("java")))
+    if pinned_runtime["executable"] != pinned_runtime["home"] / "bin/java":
+        raise SmokeFailure("Pinned Java layout did not resolve to one exact JDK home")
     root = REPO_ROOT / "tmp/package-consumer-smoke-self-test"
     prepare_empty_directory(root)
     try:
@@ -1171,6 +1363,96 @@ def self_test() -> None:
             raise SmokeFailure("Known tmp/lehrplan-ontologie checkout was not protected")
         print("PASS runner rejects ZIP/store/report/work aliases before any mutation")
 
+        bad_java = root / "bad-java-layout/launcher/java"
+        bad_java.parent.mkdir(parents=True)
+        bad_java.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+        bad_java.chmod(0o755)
+        try:
+            inspect_java_runtime_layout(bad_java)
+        except SmokeFailure:
+            pass
+        else:
+            raise SmokeFailure("Non-conventional Java home layout was accepted")
+
+        # The fixture deliberately lives below the checkout path that bwrap
+        # masks. Only the already-open home/launcher FDs can carry it across
+        # that boundary; PATH contains no host directory to fall back to.
+        masked_java_home = root / "masked-checkout-jdk"
+        masked_java = masked_java_home / "bin/java"
+        masked_java.parent.mkdir(parents=True)
+        masked_java.write_text("#!/bin/sh\nprintf '%s\\n' fd-bound-java\n", encoding="utf-8")
+        masked_java.chmod(0o755)
+        try:
+            validate_pinned_java_runtime(masked_java)
+        except SmokeFailure:
+            pass
+        else:
+            raise SmokeFailure("Unpinned Java runtime was accepted")
+        masked_runtime = inspect_java_runtime_layout(masked_java)
+        masked_home_fd, masked_java_fd = open_java_runtime_fds(masked_runtime)
+        try:
+            masked_command = [
+                require_tool("bwrap"),
+                "--clearenv",
+                "--die-with-parent",
+                "--new-session",
+                "--unshare-user",
+                "--unshare-pid",
+                "--ro-bind",
+                "/",
+                "/",
+                "--tmpfs",
+                "/opt",
+                "--tmpfs",
+                str(REPO_ROOT),
+                "--tmpfs",
+                "/tmp",
+                "--ro-bind-fd",
+                str(masked_home_fd),
+                SANDBOX_JAVA_HOME,
+                "--ro-bind-fd",
+                str(masked_java_fd),
+                f"{SANDBOX_JAVA_HOME}/bin/java",
+                "--proc",
+                "/proc",
+                "--dev",
+                "/dev",
+                "--chdir",
+                "/tmp",
+                "--setenv",
+                "PATH",
+                f"{SANDBOX_JAVA_HOME}/bin",
+                "/bin/sh",
+                "-c",
+                (
+                    'test ! -e "$1" && '
+                    f'test "$(command -v java)" = "{SANDBOX_JAVA_HOME}/bin/java" && '
+                    'test "$(java)" = fd-bound-java && '
+                    f'test "$({SANDBOX_JAVA_HOME}/bin/java)" = fd-bound-java'
+                ),
+                "java-fd-bind-self-test",
+                str(masked_java),
+            ]
+            masked_result = subprocess.run(
+                masked_command,
+                cwd=REPO_ROOT,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                timeout=30,
+                check=False,
+                pass_fds=(masked_home_fd, masked_java_fd),
+            )
+        finally:
+            os.close(masked_java_fd)
+            os.close(masked_home_fd)
+        if masked_result.returncode != 0:
+            raise SmokeFailure(
+                "FD-bound Java was not executable after checkout masking or used a host fallback: "
+                + masked_result.stdout[-1000:]
+            )
+        print("PASS masked-checkout Java executes only through stable read-only FD bind")
+
         bwrap_trace = root / "capability.strace"
         capability_code = (
             "import errno,os,socket;"
@@ -1260,7 +1542,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
 
     require_tool("bwrap")
     require_tool("strace")
-    java_path = require_tool("java")
+    java_runtime = validate_pinned_java_runtime(Path(require_tool("java")))
     node_path = require_tool("node")
     helper_bindings = verify_pinned_helpers()
     runner_binding = sha256_file(RUNNER_PATH)
@@ -1273,7 +1555,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
     frontend_binding = build_frontend(frontend)
     assembly = work / "assembly"
     assembly.mkdir()
-    backend_binding = build_backend_assembly(work, assembly)
+    backend_binding = build_backend_assembly(work, assembly, java_runtime)
     shutil.copytree(frontend, assembly / "frontend-classpath/static")
     for helper in (
         "scripts/package_consumer_smoke_http.py",
@@ -1312,7 +1594,7 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
 
     evidence_bundle = work / "evidence-bundle"
     evidence_bundle.mkdir()
-    sandbox_status = execute_sandbox(assembly, store, evidence_bundle, java_path, node_path)
+    sandbox_status = execute_sandbox(assembly, store, evidence_bundle, java_runtime, node_path)
 
     # Re-bind every immutable input after the isolated execution. Any change,
     # including a lock/store/ZIP/helper/assembly TOCTOU, invalidates the proof.
@@ -1325,6 +1607,8 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
         raise SmokeFailure("Runtime assembly changed during consumer execution")
     if sha256_file(RUNNER_PATH) != runner_binding or verify_pinned_helpers() != helper_bindings:
         raise SmokeFailure("Runner or pinned helper changed during consumer execution")
+    if validate_pinned_java_runtime(java_runtime["executable"]) != java_runtime:
+        raise SmokeFailure("Pinned Java runtime changed during consumer execution")
 
     report = build_report(
         input_binding=input_binding,
