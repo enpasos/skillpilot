@@ -100,11 +100,133 @@
   },
   "declarationPolicy": {
     "segmentId": "declarations",
-    "vocabularySource": "fieldSemanticsRegistry",
+    "vocabularySources": [
+      "fieldSemanticsRegistry",
+      "applicationOntologyProfile"
+    ],
     "requireEveryUsedApplicationTermDeclared": true,
-    "classSources": ["membershipClass", "resourceClass", "recordClass"],
-    "objectPropertySources": ["iri-object-predicates", "owner-predicates", "value-predicates-with-iri-object"],
-    "datatypePropertySources": ["typed-literal-predicates", "language-literal-predicates", "canonical-json-literal-predicates"],
+    "fieldSemanticsRegistryVocabulary": {
+      "classSources": ["membershipClass", "resourceClass", "recordClass"],
+      "objectPropertySources": ["iri-object-predicates", "owner-predicates", "value-predicates-with-iri-object"],
+      "datatypePropertySources": ["typed-literal-predicates", "language-literal-predicates", "canonical-json-literal-predicates"],
+      "expectedClassCount": 66,
+      "expectedObjectPropertyCount": 108,
+      "expectedDatatypePropertyCount": 311,
+      "expectedTermCount": 485
+    },
+    "applicationOntologyVocabulary": {
+      "sourceBinding": "applicationProfilePolicy",
+      "verification": "exact-explicit-lists-equal-pinned-ontology-rdf-type-declarations",
+      "classes": [
+        "https://skillpilot.de/ns/roundtrip#ActiveCardDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#AssessmentData",
+        "https://skillpilot.de/ns/roundtrip#BinaryResource",
+        "https://skillpilot.de/ns/roundtrip#Card",
+        "https://skillpilot.de/ns/roundtrip#CardDeck",
+        "https://skillpilot.de/ns/roundtrip#CardMembership",
+        "https://skillpilot.de/ns/roundtrip#CompositionNode",
+        "https://skillpilot.de/ns/roundtrip#CompositionView",
+        "https://skillpilot.de/ns/roundtrip#ContainsMembership",
+        "https://skillpilot.de/ns/roundtrip#GoalMembership",
+        "https://skillpilot.de/ns/roundtrip#GoalPlacement",
+        "https://skillpilot.de/ns/roundtrip#GoalVisualizationDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#GoalVisualizationEvidence",
+        "https://skillpilot.de/ns/roundtrip#LearningGoal",
+        "https://skillpilot.de/ns/roundtrip#LearningLandscape",
+        "https://skillpilot.de/ns/roundtrip#MappingCollection",
+        "https://skillpilot.de/ns/roundtrip#MemoryCardEvidence",
+        "https://skillpilot.de/ns/roundtrip#MemoryGoal",
+        "https://skillpilot.de/ns/roundtrip#MemoryGoalDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#OfficialSourceCollection",
+        "https://skillpilot.de/ns/roundtrip#OfficialSourceDocument",
+        "https://skillpilot.de/ns/roundtrip#OrientationGoal",
+        "https://skillpilot.de/ns/roundtrip#PositionedMembership",
+        "https://skillpilot.de/ns/roundtrip#PracticeAssessmentGoal",
+        "https://skillpilot.de/ns/roundtrip#ProgramStructureGoal",
+        "https://skillpilot.de/ns/roundtrip#ProgramUnit",
+        "https://skillpilot.de/ns/roundtrip#QualityEvidence",
+        "https://skillpilot.de/ns/roundtrip#RequiresMembership",
+        "https://skillpilot.de/ns/roundtrip#Resource",
+        "https://skillpilot.de/ns/roundtrip#ResourceLink",
+        "https://skillpilot.de/ns/roundtrip#RuntimeSupportGoal",
+        "https://skillpilot.de/ns/roundtrip#ScoringStep",
+        "https://skillpilot.de/ns/roundtrip#SemanticAtomicityDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#SemanticAtomicityEvidence",
+        "https://skillpilot.de/ns/roundtrip#SkillPilotPackage",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalClassification",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalCollection",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalLineage",
+        "https://skillpilot.de/ns/roundtrip#SourceLocator"
+      ],
+      "objectProperties": [
+        "https://skillpilot.de/ns/roundtrip#cardValue",
+        "https://skillpilot.de/ns/roundtrip#compositionGoal",
+        "https://skillpilot.de/ns/roundtrip#containsGoal",
+        "https://skillpilot.de/ns/roundtrip#hasCard",
+        "https://skillpilot.de/ns/roundtrip#hasCompositionChild",
+        "https://skillpilot.de/ns/roundtrip#hasContainsMembership",
+        "https://skillpilot.de/ns/roundtrip#hasGoalMembership",
+        "https://skillpilot.de/ns/roundtrip#hasOfficialSourceDocument",
+        "https://skillpilot.de/ns/roundtrip#hasRequiresMembership",
+        "https://skillpilot.de/ns/roundtrip#hasResourceLink",
+        "https://skillpilot.de/ns/roundtrip#hasScoringStep",
+        "https://skillpilot.de/ns/roundtrip#hasSourceGoal",
+        "https://skillpilot.de/ns/roundtrip#membershipGoal",
+        "https://skillpilot.de/ns/roundtrip#referencesResource",
+        "https://skillpilot.de/ns/roundtrip#requiredGoal",
+        "https://skillpilot.de/ns/roundtrip#stepValue"
+      ],
+      "datatypeProperties": [
+        "https://skillpilot.de/ns/roundtrip#byteLength",
+        "https://skillpilot.de/ns/roundtrip#fieldState",
+        "https://skillpilot.de/ns/roundtrip#goalSemanticKind",
+        "https://skillpilot.de/ns/roundtrip#mediaType",
+        "https://skillpilot.de/ns/roundtrip#order",
+        "https://skillpilot.de/ns/roundtrip#publicReference",
+        "https://skillpilot.de/ns/roundtrip#referenceRole",
+        "https://skillpilot.de/ns/roundtrip#resourceId",
+        "https://skillpilot.de/ns/roundtrip#sha256",
+        "https://skillpilot.de/ns/roundtrip#skillpilotId"
+      ],
+      "expectedClassCount": 39,
+      "expectedObjectPropertyCount": 16,
+      "expectedDatatypePropertyCount": 10,
+      "expectedTermCount": 65
+    },
+    "applicationVocabularyUnion": {
+      "sameKindDuplicatesDeduplicated": true,
+      "crossKindPunningAllowed": false,
+      "expectedClassCount": 84,
+      "expectedObjectPropertyCount": 108,
+      "expectedDatatypePropertyCount": 318,
+      "expectedTermCount": 510
+    },
+    "parserBootstrapProperties": {
+      "purpose": "declare-non-application-predicates-before-standalone-rdf-to-owl-parsing",
+      "verification": "exact-property-kinds-verified-against-pinned-core-or-fixed-external-vocabulary",
+      "objectProperties": [
+        "http://purl.obolibrary.org/obo/BFO_0000051",
+        "https://w3id.org/lehrplan/ontology/LP_0000024",
+        "https://w3id.org/lehrplan/ontology/LP_0000026",
+        "https://w3id.org/lehrplan/ontology/LP_0000041",
+        "https://w3id.org/lehrplan/ontology/LP_0000047",
+        "https://w3id.org/lehrplan/ontology/LP_0000537",
+        "https://w3id.org/lehrplan/ontology/LP_0000812",
+        "https://w3id.org/lehrplan/ontology/LP_0030051",
+        "https://w3id.org/lehrplan/ontology/LP_0030056",
+        "https://w3id.org/lehrplan/ontology/LP_0030057",
+        "https://w3id.org/lehrplan/ontology/LP_0030071",
+        "https://w3id.org/lehrplan/ontology/LP_0030072"
+      ],
+      "datatypeProperties": [
+        "https://schema.org/contentUrl",
+        "https://w3id.org/lehrplan/ontology/LP_0000344",
+        "https://w3id.org/lehrplan/ontology/LP_0000460",
+        "https://w3id.org/lehrplan/ontology/LP_0000463"
+      ],
+      "expectedPropertyCount": 16
+    },
+    "expectedDeclarationTripleCount": 526,
     "undeclaredEntitiesAllowed": false,
     "objectDataPropertyPunningAllowed": false,
     "wholePackageJsonCarrierVocabularyAllowed": false
@@ -165,8 +287,8 @@
     "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
     "packagePath": "skillpilot-curriculum-profile.ttl",
     "mediaType": "text/turtle",
-    "bytes": 5298,
-    "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+    "bytes": 5427,
+    "sha256": "22358a2aa96c16250d0f73fe6683fe6a0bda501b776dd6376a04b1980728e05a"
   },
   "shapesPolicy": {
     "shapesIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl",
@@ -175,8 +297,8 @@
     "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-shapes-1.0.0.ttl",
     "packagePath": "ontology/shapes.ttl",
     "mediaType": "text/turtle",
-    "bytes": 6103,
-    "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59",
+    "bytes": 6187,
+    "sha256": "cd139efa68fc1f127529b271f8cd69b759f214196e674c3ab6e3120cbfda6b15",
     "inference": "none",
     "executableConstraintsAllowed": false,
     "warningPolicy": "fail"
@@ -250,15 +372,15 @@
         "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
         "packagePath": "schemas/fwu-owl-package-manifest.schema.json",
         "bytes": 28406,
-        "sha256": "15e0f4a487e03d3c2786bf5099f84cc3b9bc4a565a4e351a860de2b3abce7941"
+        "sha256": "a5451890d2f047bd5d15cd8728087d0b59041ae231a2b671d2c4df176ae16edb"
       },
       {
         "bindingName": "packageProfileSchema",
         "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
         "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-profile.schema.json",
         "packagePath": "schemas/fwu-owl-package-profile.schema.json",
-        "bytes": 37728,
-        "sha256": "13f1afbb48e41ee166b7beb2a7acf49b32fc5d6d6179e1a6c855637b2f5b7589"
+        "bytes": 43596,
+        "sha256": "4c4de75c2b5fd147d07b8ca35d827a090ea4a6065189104472150e670621ee59"
       },
       {
         "bindingName": "validationReportSchema",

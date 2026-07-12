@@ -141,6 +141,9 @@ npm run test:deterministic-zip32
 echo "--> Testing Full Standalone Curriculum Package Builder"
 npm run test:full-standalone-package-builder
 
+echo "--> Testing Core-first FWU-OWL Curriculum Package Builder"
+npm run typecheck:fwu-owl-package-builder
+npm run test:fwu-owl-package-builder
 
 echo "--> Running Lint & Build"
 npm run lint

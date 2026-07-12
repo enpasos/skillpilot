@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.fwu-owl-scripts.tsbuildinfo"
+  },
+  "include": [
+    "scripts/buildFwuOwlCurriculumPackage.ts",
+    "scripts/deterministicZip32.ts",
+    "scripts/fwuOwlFieldRegistry.ts",
+    "scripts/fwuOwlNTriples.ts",
+    "scripts/fwuOwlPackageSource.ts",
+    "scripts/fwuOwlSemanticCompiler.ts",
+    "scripts/testFwuOwlCurriculumPackageBuilder.ts"
+  ]
+}
