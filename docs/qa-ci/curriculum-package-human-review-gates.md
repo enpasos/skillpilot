@@ -10,7 +10,7 @@ Diese Seite ist die zentrale, kurze Arbeitsliste für Entscheidungen, die die To
 | HR-002 Bildrechte | 757 Einzelentscheidungen, davon 6 mit nutzerbereitgestellter Erzeugungsbehauptung | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
 | HR-003 Rechte der Nicht-Binärartefakte | 3 Klassenentscheidungen | öffentliche Weiterverbreitung | dasselbe Redistribution-Ledger |
 | HR-004 Source-Text-Verifikation | 479 Einzelentscheidungen | Quellen-QA/Promotion | `curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json` |
-| HR-005 Core-first Ontologie-Sign-off | nach DPK-008 aus dem Extension-/Coverage-Report zu bestimmen | Ontologie-Promotion | künftiger DPK-008-Report |
+| HR-005 Core-first Ontologie-Sign-off | 1 hashgebundene fachlich-ontologische und rechtliche Expertenfreigabe für exaktes FWU-Paket, Reverse-Receipt, Profil und Registry | Ontologie-Promotion | DPK-008c-FWU-Receipt und DPK-008d-Reverse-Receipt |
 | HR-006 Signatur- und Stable-Promotion | 1 Trust-/Release-Entscheidung je Releasegruppe | öffentlicher `stable`-Release | künftiger DPK-011-Release-Index |
 
 Die Gates sind unabhängig. Ein fachlich korrektes Bild kann rechtlich ungeklärt sein; eine geklärte Lizenz ersetzt keine mathematische Prüfung. Ebenso ist eine technisch reproduzierbare Textübereinstimmung keine rechtliche Freigabe eines Zitats.
@@ -67,15 +67,25 @@ Jede abgeschlossene Entscheidung benötigt Reviewer, Zeitstempel und Begründung
 
 ## HR-005 – Core-first Ontologie-Sign-off
 
-Dieses Gate wird erst nach dem technischen DPK-008-Export konkret befüllt. Zu prüfen sind dann insbesondere:
+Erforderlich ist eine hashgebundene fachlich-ontologische und rechtliche Expertenfreigabe des exakten DPK-008c-FWU-Pakets, des DPK-008d-Reverse-Receipts sowie von Profil und Registry. Der aktuelle technische Prüfgegenstand bindet:
+
+- FWU-OWL-ZIP: 2.362.455.128 Byte, SHA-256 `abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94`;
+- FWU-OWL-Manifest: SHA-256 `29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3`;
+- rekonstruiertes JSON-ZIP: 1.737.571.471 Byte, SHA-256 `7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195`;
+- rekonstruiertes JSON-Manifest: SHA-256 `8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0`;
+- DPK-008d-Reverse-Receipt: 12.185 Byte, SHA-256 `94035f2d88e2c2b7588f13f01cb44b917c83900b9f839c66558ea7eae585884f`;
+- DPK-008d-Evidenzmanifest: 3.483 Byte, SHA-256 `31c256ff612aa7a346fb0792c83b109d4bc01df52fdc36e98a8c717bf9b8eafc`; exakt 20 Dateien mit Inventardigest `8483f5ce428cc54cca1353668370ae09f32f51166af6a3235a2ff19ccb88ea1e`;
+- die 454-Einträge-Registry mit SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48` sowie die im FWU-Receipt bytegebundenen Core-, Anwendungsprofil- und Shapes-Dateien.
+
+Zu bestätigen sind insbesondere:
 
 - ob jeder verwendete FWU-Core-Term semantisch passt und nicht nur ähnlich benannt ist;
-- ob jede SkillPilot-Erweiterung eine nachgewiesene Core-Lücke schließt;
-- ob die CC-BY-SA-4.0-Angabe des generierten FWU-Gesamtmodells die separat gebündelte Core-Komponente tatsächlich abdeckt und welche Attribution-/Share-Alike-Pflichten für deren Redistribution gelten;
+- ob jede SkillPilot-Erweiterung eine nachgewiesene Core-Lücke schließt und auf das wirklich notwendige Maß begrenzt bleibt;
+- welche Lizenz-, Attributions- und Share-Alike-Pflichten für die gebündelte Core-Komponente und das generierte Gesamtmodell gelten und ob die derzeitige CC-BY-SA-4.0-Angabe diese Pflichten korrekt abbildet;
 - ob registrierte kanonische JSON-Literale eng begrenzt bleiben und keine versteckte Komplettkopie des JSON-Pakets bilden;
 - ob Source-, Goal-, Programm-, Placement-, Kompetenzachsen- und Composition-View-Semantik sauber getrennt bleiben.
 
-Der technische Roundtrip, SHACL-/OWL-Test und identische Digest sind notwendig, ersetzen dieses semantische Sign-off aber nicht.
+Der technisch verlustfreie isolierte Reverse-Lauf mit 111/111 Normalform-Oracles, byteidentischen Bildern, zwei unabhängig validierten JSON-Paketen und gebundener Hermetik-Evidenz ist notwendig, aber keine menschliche Semantik- oder Rechtefreigabe. Ebenso ersetzen SHACL, OWL 2 DL, HermiT und der identische `contentDigest` dieses Sign-off nicht.
 Bis zu dieser Entscheidung trägt die Core-Datei im FWU-OWL-Manifest bewusst `licenseExpression: null` und `redistributionStatus: review-required`; technische Validität darf diesen offenen Rechtsstatus nicht zu `allowed` umdeuten.
 
 ## HR-006 – Signatur und Stable-Promotion

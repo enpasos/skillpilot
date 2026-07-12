@@ -549,6 +549,34 @@ const landscapeDocument: JsonObject = {
       label: 'Probleme mathematisch lösen',
     },
   ],
+  programUnits: [
+    {
+      id: 'fixture-unit-a',
+      kind: 'module',
+      label: 'Testmodul A',
+      order: 0,
+    },
+    {
+      id: 'fixture-unit-b',
+      kind: 'module',
+      label: 'Testmodul B',
+      order: 1,
+    },
+  ],
+  goalPlacements: [
+    {
+      context: { durationModel: 'G9' },
+      goalId: 'atom-parented',
+      relation: 'primary',
+      unitId: 'fixture-unit-a',
+    },
+    {
+      context: { durationModel: 'G8' },
+      goalId: 'atom-parented',
+      relation: 'secondary',
+      unitId: 'fixture-unit-a',
+    },
+  ],
 }
 
 const semanticDocuments: readonly {
@@ -794,6 +822,37 @@ const testSemanticCompiler = () => {
     )
   }
   assertEqual(first.segments.declarations.tripleCount, 526, 'Declaration segment count changed')
+  const landscapeRdf = first.segments.landscape.content.toString('utf8')
+  const placementA = '/placement/atom-parented%40fixture-unit-a%400'
+  const placementB = '/placement/atom-parented%40fixture-unit-a%401'
+  assert(
+    landscapeRdf.includes(
+      `${placementA}> <https://skillpilot.de/ns/roundtrip#placementUnit> "fixture-unit-a"`,
+    ),
+    'First placement did not retain its unit-specific RDF identity',
+  )
+  assert(
+    landscapeRdf.includes(
+      `${placementB}> <https://skillpilot.de/ns/roundtrip#placementUnit> "fixture-unit-a"`,
+    ),
+    'Second same-goal/same-unit placement did not retain an index-specific RDF identity',
+  )
+  assert(
+    landscapeRdf.includes(
+      `${placementA}> <https://skillpilot.de/ns/roundtrip#placementContext> "{\\"durationModel\\":\\"G9\\"}"`,
+    ),
+    'First same-goal/same-unit placement lost its G9 context',
+  )
+  assert(
+    landscapeRdf.includes(
+      `${placementB}> <https://skillpilot.de/ns/roundtrip#placementContext> "{\\"durationModel\\":\\"G8\\"}"`,
+    ),
+    'Second same-goal/same-unit placement lost its G8 context',
+  )
+  assert(
+    !landscapeRdf.includes('/placement/atom-parented%40unit>'),
+    'Placement RDF identities still collapse distinct unitId records',
+  )
   assertEqual(
     fwuOwlSemanticCompilationDigest(first),
     fwuOwlSemanticCompilationDigest(second),

@@ -18,7 +18,9 @@ DPK-005b first materialized that model as a real `full-standalone-v1` staging ZI
 
 DPK-007a now freezes the exact JSON input for DPK-008 as `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`. The ZIP contains 914 entries and 912 manifest records; it is 1,738,161,217 bytes with SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, while its manifest has SHA-256 `32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe`. Its 111 logical and 757 binary records share `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`; the 757 embedded images total 1,696,390,279 bytes. The runtime closure contains 2,403 definitions and 18,820 references with closure digest `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121` and definition-index digest `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
 
-Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. DPK-008b materializes candidate `.3` through that contract as a reproducible Core-first FWU-OWL package. After correcting `competency-entry` targets to use the cataloged Core competency resources directly, primary and peer are each 2,362,017,770 bytes with SHA-256 `cce674652ed569b06a2f6369c826c29585e44ef9a4d51521bf8d99eabe7c92ac`; the manifest SHA-256 is `b33cdcc4eb4751998289a41d3d7fc5a1b4df968355d1cfe6be426171e1ca8bba`. Its 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 823,890 RDF triples across the fixed eight segments. DPK-008c now independently validates that finished package through all eighteen structural, semantic, SHACL, OWL 2 DL, HermiT, sidecar, and reproducibility gates. DPK-008d next adds the isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
+Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. DPK-008b materializes candidate `.3` through that contract as a reproducible Core-first FWU-OWL package, and DPK-008c validates the finished carrier through all eighteen structural, semantic, SHACL, OWL 2 DL, HermiT, sidecar, and reproducibility gates. The first DPK-008d reverse oracle exposed a forward Placement collision caused by reading the nonexistent `programUnitId`; Placement resources are now keyed by the exact `goalId@unitId@index`, so repeated placements of one goal, including repeated placements in the same unit, cannot overwrite one another. The corrected primary and peer are each 2,362,455,128 bytes with SHA-256 `abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94`; the manifest SHA-256 is `29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3`. Their 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 824,452 RDF triples across the fixed eight segments.
+
+DPK-008d now reconstructs an independently valid JSON package from that FWU package alone. The output is 1,737,571,471 bytes with SHA-256 `7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195`; its manifest SHA-256 is `8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0`. It contains 911 ZIP entries, 909 manifest records, 910 checksum rows, all 111 logical artifacts, and 757 binary resources totaling 1,696,390,279 bytes. All 111 normalized hash oracles and every binary byte binding pass, and the package retains the shared `contentDigest`. Candidate `.3` nevertheless remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
 
 Accordingly, two lanes coexist temporarily:
 
@@ -29,8 +31,12 @@ Accordingly, two lanes coexist temporarily:
 - `scripts/validate_fwu_owl_curriculum_package.py` validates finished FWU-OWL bytes independently and emits the external schema-valid receipt;
 - `scripts/provision_pinned_robot.sh` and `scripts/check_curriculum_fwu_owl_validation_tools.py` provision and verify the exact offline ontology toolchain;
 - `scripts/run_curriculum_fwu_owl_package_conformance.sh` rebuilds the frozen JSON/FWU pair and executes the heavyweight real 18-gate validation.
+- `scripts/reconstruct_json_curriculum_package_from_fwu_owl.py` is the standalone registry-inverting reverse compiler and never imports the forward exporter;
+- `scripts/run_fwu_owl_reverse_compiler_hermetic.py` executes two host-root-free, networkless builds and binds the host-owned traces, minimal Runtime closure, tools, outputs, and independent validator receipts;
+- `scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py` validates the external reverse receipt, including nested receipts, actual ZIP/manifest/index bytes, the exact evidence inventory and independently derived trace/Runtime findings;
+- `scripts/run_curriculum_fwu_owl_reverse_conformance.sh` runs the complete finished-FWU validation and the heavyweight isolated reverse double build.
 
-They must not be presented as the final dual-release roundtrip until DPK-008d and DPK-009 reconstruct JSON without the source package and compare both variants.
+The isolated reconstruction is complete, but it must not yet be presented as the final public dual-release verdict. DPK-009 still has to compare original and reconstructed normal forms as two post-build oracles, run both hermetic consumers, prove two complete variant pairs reproducible, and emit the normative equivalence report and release index.
 
 ## Roundtrip Contract
 
@@ -41,7 +47,7 @@ SkillPilot subject ZIP, including goal-visualization images
   -> comparison with the original ZIP as validation oracle
 ```
 
-The original ZIP is used only after reconstruction to compare semantic fields and image bytes. The reverse transformation reads `bundle.nt` and the sidecars next to it; it does not read JSON or image content from the original ZIP to reconstruct the result.
+The original ZIP is used only after reconstruction to compare semantic fields and image bytes. The production reverse transformation reads the eight manifest-bound asserted RDF segments and their sidecars; it does not read JSON or image content from the original ZIP to reconstruct the result. `bundle.nt` is independently checked as their byte-exact derived concatenation, but it is not a second reconstruction authority.
 
 The roundtrip is semantic, not layout- or byte-identical for every generated metadata file. A separate technical carrier lane remains available for a byte-oriented package check.
 
@@ -259,6 +265,9 @@ bash scripts/provision_pinned_robot.sh
 python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
   --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
 python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
 ```
 
 The provisioning command is the only command in this set allowed to download ROBOT. The checker and finished-ZIP validator are network-free and require exact direct pins: `jsonschema 4.26.0`, `pySHACL 0.30.1`, `RDFLib 7.6.0`, `owlrl 7.6.2`, `ROBOT 1.9.10`, HermiT `1.4.5.456`, and the repository-pinned Amazon Corretto runtime.
@@ -269,7 +278,15 @@ The complete real release-conformance lane is:
 bash scripts/run_curriculum_fwu_owl_package_conformance.sh
 ```
 
-It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI; ordinary CI verifies the tools and runs the bounded 40-guarantee selftest.
+It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI; ordinary CI verifies the tools and runs the bounded 40-guarantee finished-package-validator selftest.
+
+The complete real reverse-conformance lane is:
+
+```bash
+bash scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+```
+
+It first requires the exact corrected FWU package and its clean 18-gate receipt, then executes two private reverse builds. The runner starts each `bubblewrap --clearenv` namespace without a Host-Root, mounts only Input, pinned tools and narrow root-owned Python/native-library roots read-only, unshares the network and traces the Entry/Core process tree from a host-side tracer that is invisible through sandbox `/proc`. Python runs with `-I -S`. The Rawtrace audit derives and rehashes the exact Runtime files actually opened, including ELF loader dependencies. Each reconstructed ZIP is checked by the implementation-independent full-package validator v2; only byte-identical outputs with clean receipts pass. The external validator parses the 18-gate input receipt, both 6-gate output receipts, compiler reports and probes, rederives the filtered Entry/Core trace from the host Rawtrace, derives the Runtime file set and reopens ZIP central directory, manifest, `SHA256SUMS` and Semantic Content Index. The wrapper writes its report to `tmp/curriculum-release-model/fwu-owl-reverse/reverse-compilation-report.json`, with an exact 20-file evidence inventory below the adjacent evidence directory. The bounded CI lanes cover 31 reverse-compiler guarantees, 21 hermetic-runner guarantees, and the reverse-report contract's 53 semantic mutations, 6 raw-JSON rejection cases and 10 consistently rehashed evidence attacks.
 
 The following commands exercise the legacy reference pilot and run from `app/`.
 
@@ -342,7 +359,9 @@ The final package-file comparison reads the original package's exact `SHA256SUMS
 
 ## Output
 
-The production DPK-008c output is under `tmp/curriculum-release-model/fwu-owl-package/` and `tmp/curriculum-release-model/fwu-owl-validation/`. Its external report, rather than the legacy slim-pilot files below, is the authoritative finished-FWU-OWL package receipt.
+The complete production wrapper writes DPK-008c/DPK-008d output below `tmp/curriculum-release-model/fwu-owl-package/`, `tmp/curriculum-release-model/fwu-owl-validation/`, and `tmp/curriculum-release-model/fwu-owl-reverse/`. The focused DPK-008d completion run reuses the final independently validated 18/18 carrier and writes its hardened receipt below `tmp/curriculum-release-model/fwu-owl-reverse-final-hardened/`. These receipts, rather than the legacy slim-pilot files below, are authoritative for the forward carrier and isolated reconstruction.
+
+The corrected FWU input is bound to 2,362,455,128 bytes, SHA-256 `abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94`, manifest SHA-256 `29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3`, and 824,452 RDF triples. The reconstructed JSON output is bound to 1,737,571,471 bytes, SHA-256 `7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195`, manifest SHA-256 `8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0`, 911 ZIP entries, 909 manifest records, and 910 checksum rows.
 
 Default base directory:
 
@@ -390,7 +409,7 @@ The semantic reconstruction must pass all existing landscape, mapping, source, v
 - all verified sidecars are materialized into the reconstructed package-assets tree;
 - missing, malformed, unsafe, duplicate, or orphaned resources fail the run.
 
-For the production package, DPK-008c independently attests all eighteen gates against the finished ZIP: archive/manifest/profile/inventory/binding/catalog/index/registry checks, strict ordered RDF and exact bundle construction, Core/profile bindings, SHACL with zero violations and warnings, OWL 2 DL, HermiT consistency with zero unsatisfiable named classes, all binary sidecars, and byte-identical reproducibility. The older slim-pilot ontology gate remains useful regression evidence: it merges `skillpilot-mem-fwu-profile.ttl`, `bundle.nt`, and the catalog-resolved core import, then requires the complete import closure to satisfy OWL 2 DL. HermiT consistency reasoning remains an additional gate there as well.
+For the production package, DPK-008c independently attests all eighteen gates against the finished ZIP: archive/manifest/profile/inventory/binding/catalog/index/registry checks, strict ordered RDF and exact bundle construction, Core/profile bindings, SHACL with zero violations and warnings, OWL 2 DL, HermiT consistency with zero unsatisfiable named classes, all binary sidecars, and byte-identical reproducibility. DPK-008d adds 111/111 normalized logical-artifact oracles, exact binary-byte parity, a clean independent validator-v2 receipt for each of two byte-identical reconstructed packages, and an evidence-rehashing external receipt. That external gate reads the host-owned trace itself, must derive zero forbidden reads and network attempts, reconstructs the exact Runtime closure from traced opens plus kernel-loaded ELF dependencies, and binds compiler report, probe, sandbox log, output tree, validator log and the complete evidence manifest. The older slim-pilot ontology gate remains useful regression evidence: it merges `skillpilot-mem-fwu-profile.ttl`, `bundle.nt`, and the catalog-resolved core import, then requires the complete import closure to satisfy OWL 2 DL. HermiT consistency reasoning remains an additional gate there as well.
 
 The semantic, technical, package-validation, ROBOT-DL, and optional HermiT outputs jointly form the evidence. Semantic and OWL reports are bound to `slim/manifest.json`; technical and package-validation reports record and stability-check their input/output hashes directly. Those recorded hashes must agree for the artifacts they share. Do not infer validity from timestamps or copy old counts into this document after source changes.
 
@@ -421,6 +440,10 @@ These are not all candidates for the FWU core. Composition views, learning runti
 - JPEG and PNG files are stored without recompression in the reproducible subject ZIP.
 - RDF segment writers use bounded synchronous buffers and file statistics instead of ignoring stream backpressure or reading finished files back into memory.
 - The semantic importer builds one reverse IRI index. Structural checks therefore resolve incoming reference edges in constant time instead of repeatedly scanning the complete graph.
+- Production Placement resources use `goalId@unitId@index`. `unitId` is the authored field; the explicit index also preserves two otherwise equal goal/unit placements with different relations or contexts.
+- Registry-directed scalar recovery distinguishes finite decimal numbers, explicit `null`, absent fields, and text. It never infers these states from lexical similarity alone.
+- A resource with `delivery: external` intentionally has no `artifactPath`; only embedded resources participate in the binary-sidecar join.
+- Dependency-closure definitions recover all non-singleton logical paths. Standard singleton roles use their contract paths even when omitted from that definition list; an exact redundant singleton binding is accepted, while a conflicting path fails closed.
 - Image sidecars are batch-extracted per phase instead of spawning one `unzip` process per image; every extracted file is still verified independently before use.
 - Generated path lists use code-unit ordering rather than locale-dependent collation.
 - The deterministic ZIP writer streams uncompressed entries to disk and hashes the finished file without buffering the full archive. It uses ZIP32 and fails before writing if entry count, file size, offsets, or total archive size exceed supported limits.
