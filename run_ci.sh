@@ -193,7 +193,8 @@ ensure_pinned_java
 bash -n \
   scripts/provision_pinned_robot.sh \
   scripts/run_curriculum_release_model_conformance.sh \
-  scripts/run_curriculum_fwu_owl_package_conformance.sh
+  scripts/run_curriculum_fwu_owl_package_conformance.sh \
+  scripts/run_curriculum_fwu_owl_reverse_conformance.sh
 bash scripts/provision_pinned_robot.sh
 python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
   --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
@@ -201,6 +202,9 @@ echo "--> Validating Curriculum Package Contracts"
 python3 -B scripts/validate_curriculum_package_contracts.py
 python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
 python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
+python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
 python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
 python3 -B scripts/validate_curriculum_schema_catalog_contract.py
 python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test

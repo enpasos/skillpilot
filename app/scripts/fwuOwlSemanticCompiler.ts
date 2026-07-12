@@ -397,7 +397,10 @@ class SemanticContext {
         return `${state.rootIri}/program-unit/${idSegment(stringValue(data.id, 'program-unit id'))}`
       }
       if (segments[0] === 'goalPlacements' && data) {
-        const id = `${optionalString(data.goalId) ?? segments.at(-1)}@${optionalString(data.programUnitId) ?? 'unit'}`
+        const goalId = optionalString(data.goalId) ?? 'goal'
+        const unitId = optionalString(data.unitId) ?? 'unit'
+        const position = segments[1] ?? 'placement'
+        const id = `${goalId}@${unitId}@${position}`
         return `${state.rootIri}/placement/${idSegment(id)}`
       }
     }

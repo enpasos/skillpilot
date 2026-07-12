@@ -141,14 +141,14 @@ expected_counts = {
     "zipEntries": 819,
     "manifestFiles": 817,
     "rdfSegments": 8,
-    "rdfTriples": 823890,
+    "rdfTriples": 824452,
     "logicalArtifacts": 111,
     "fieldRegistryEntries": 454,
     "binaryResources": 757,
     "binaryBytes": 1696390279,
 }
-expected_zip = "cce674652ed569b06a2f6369c826c29585e44ef9a4d51521bf8d99eabe7c92ac"
-expected_manifest = "b33cdcc4eb4751998289a41d3d7fc5a1b4df968355d1cfe6be426171e1ca8bba"
+expected_zip = "abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94"
+expected_manifest = "29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3"
 expected_content = "sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
 
 if report.get("status") != "valid" or report.get("diagnostics") != []:
@@ -162,7 +162,7 @@ if report.get("counts") != expected_counts:
     raise SystemExit(f"unexpected FWU-OWL validation counts: {report.get('counts')!r}")
 input_binding = report.get("input", {})
 if (
-    input_binding.get("bytes") != 2362017770
+    input_binding.get("bytes") != 2362455128
     or input_binding.get("sha256") != expected_zip
     or input_binding.get("manifestSha256") != expected_manifest
 ):
