@@ -8,6 +8,7 @@ import copy
 import hashlib
 import json
 import math
+import re
 import sys
 import unicodedata
 from collections import Counter
@@ -199,8 +200,33 @@ APPLICATION_PROFILE_POLICY = {
     "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
     "packagePath": "skillpilot-curriculum-profile.ttl",
     "mediaType": "text/turtle",
-    "bytes": 5298,
-    "sha256": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9",
+    "bytes": 5427,
+    "sha256": "22358a2aa96c16250d0f73fe6683fe6a0bda501b776dd6376a04b1980728e05a",
+}
+PARSER_BOOTSTRAP_POLICY = {
+    "purpose": "declare-non-application-predicates-before-standalone-rdf-to-owl-parsing",
+    "verification": "exact-property-kinds-verified-against-pinned-core-or-fixed-external-vocabulary",
+    "objectProperties": [
+        "http://purl.obolibrary.org/obo/BFO_0000051",
+        "https://w3id.org/lehrplan/ontology/LP_0000024",
+        "https://w3id.org/lehrplan/ontology/LP_0000026",
+        "https://w3id.org/lehrplan/ontology/LP_0000041",
+        "https://w3id.org/lehrplan/ontology/LP_0000047",
+        "https://w3id.org/lehrplan/ontology/LP_0000537",
+        "https://w3id.org/lehrplan/ontology/LP_0000812",
+        "https://w3id.org/lehrplan/ontology/LP_0030051",
+        "https://w3id.org/lehrplan/ontology/LP_0030056",
+        "https://w3id.org/lehrplan/ontology/LP_0030057",
+        "https://w3id.org/lehrplan/ontology/LP_0030071",
+        "https://w3id.org/lehrplan/ontology/LP_0030072",
+    ],
+    "datatypeProperties": [
+        "https://schema.org/contentUrl",
+        "https://w3id.org/lehrplan/ontology/LP_0000344",
+        "https://w3id.org/lehrplan/ontology/LP_0000460",
+        "https://w3id.org/lehrplan/ontology/LP_0000463",
+    ],
+    "expectedPropertyCount": 16,
 }
 SHAPES_POLICY = {
     "shapesIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl",
@@ -209,8 +235,8 @@ SHAPES_POLICY = {
     "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-shapes-1.0.0.ttl",
     "packagePath": "ontology/shapes.ttl",
     "mediaType": "text/turtle",
-    "bytes": 6103,
-    "sha256": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59",
+    "bytes": 6187,
+    "sha256": "cd139efa68fc1f127529b271f8cd69b759f214196e674c3ab6e3120cbfda6b15",
     "inference": "none",
     "executableConstraintsAllowed": False,
     "warningPolicy": "fail",
@@ -399,6 +425,8 @@ def validate_static_trust_roots() -> list[Diagnostic]:
             f"<{APPLICATION_PROFILE_POLICY['requiredImports'][0]}>",
             "sp:LearningGoal a owl:Class",
             "sp:RequiresMembership a owl:Class",
+            "sp:fieldState a owl:DatatypeProperty",
+            "sp:referenceRole a owl:DatatypeProperty",
         )
         if any(token not in text for token in required) or any(token in text for token in ("sp:PackageFile", "sp:textLine", "sp:lineText")):
             diagnostics.append(Diagnostic("TRUST_ROOT_ONTOLOGY", str(APPLICATION_ONTOLOGY_PATH), "Application ontology identity/import/stable vocabulary differs"))
@@ -474,6 +502,165 @@ def binding_matches(record: dict[str, Any] | None, binding: dict[str, Any], name
     )
 
 
+def derive_registry_application_vocabulary() -> dict[str, list[str]]:
+    registry = load_json(FIELD_SEMANTICS_REGISTRY_PATH)
+    namespace = registry.get("namespaceBindings", {}).get("sp")
+    if namespace != "https://skillpilot.de/ns/roundtrip#":
+        raise ValueError("field registry application namespace differs")
+    classes: set[str] = set()
+    object_properties: set[str] = set()
+    datatype_properties: set[str] = set()
+    observed: set[str] = set()
+
+    def add(target: set[str], value: Any) -> None:
+        if isinstance(value, str) and value.startswith("sp:"):
+            target.add(namespace + value.removeprefix("sp:"))
+
+    def observe(value: Any) -> None:
+        if isinstance(value, str) and value.startswith("sp:"):
+            observed.add(namespace + value.removeprefix("sp:"))
+        elif isinstance(value, dict):
+            for child in value.values():
+                observe(child)
+        elif isinstance(value, list):
+            for child in value:
+                observe(child)
+
+    def construction_terms(construction: Any) -> None:
+        if construction is None:
+            return
+        if not isinstance(construction, dict):
+            raise ValueError("registry construction is not an object")
+        add(classes, construction.get("resourceClass"))
+        add(classes, construction.get("recordClass"))
+        add(object_properties, construction.get("ownerPredicate"))
+        object_mapping = construction.get("objectMapping")
+        if object_mapping in {"typed-literal", "language-literal"}:
+            add(datatype_properties, construction.get("predicate"))
+        elif object_mapping in {"iri-reference", "resource"}:
+            add(object_properties, construction.get("predicate"))
+        elif object_mapping in {"positioned-membership", "rdf-list"}:
+            add(object_properties, construction.get("predicate"))
+            membership = construction.get("membership")
+            if not isinstance(membership, dict):
+                raise ValueError("registry membership construction is missing")
+            add(classes, membership.get("membershipClass"))
+            add(object_properties, membership.get("ownerPredicate"))
+            add(object_properties, membership.get("valuePredicate"))
+            add(datatype_properties, membership.get("positionPredicate"))
+            projection = membership.get("coreProjection")
+            if isinstance(projection, dict):
+                add(classes, projection.get("resourceClass"))
+                add(object_properties, projection.get("ownerPredicate"))
+                add(object_properties, projection.get("valuePredicate"))
+        else:
+            raise ValueError(f"unsupported registry object mapping {object_mapping!r}")
+
+    for entry in registry.get("entries", []):
+        mapping = entry.get("rdfMapping", {}) if isinstance(entry, dict) else {}
+        observe(mapping)
+        construction_terms(mapping.get("construction"))
+        construction_terms(mapping.get("fallbackConstruction"))
+        canonical = mapping.get("canonicalJsonLiteral")
+        if isinstance(canonical, dict):
+            add(datatype_properties, canonical.get("predicate"))
+    classified = classes | object_properties | datatype_properties
+    if observed != classified:
+        raise ValueError("field registry has unclassified application vocabulary")
+    if classes & (object_properties | datatype_properties) or object_properties & datatype_properties:
+        raise ValueError("field registry application vocabulary has cross-kind punning")
+    return {
+        "classes": sorted(classes),
+        "objectProperties": sorted(object_properties),
+        "datatypeProperties": sorted(datatype_properties),
+    }
+
+
+def derive_pinned_application_ontology_vocabulary() -> dict[str, list[str]]:
+    text = APPLICATION_ONTOLOGY_PATH.read_text(encoding="utf-8")
+    result = {"classes": [], "objectProperties": [], "datatypeProperties": []}
+    keys = {
+        "Class": "classes",
+        "ObjectProperty": "objectProperties",
+        "DatatypeProperty": "datatypeProperties",
+    }
+    pattern = re.compile(
+        r"^sp:([A-Za-z][A-Za-z0-9_-]*)\s+a\s+owl:(Class|ObjectProperty|DatatypeProperty)\b",
+        re.MULTILINE,
+    )
+    for local_name, ontology_kind in pattern.findall(text):
+        result[keys[ontology_kind]].append(
+            "https://skillpilot.de/ns/roundtrip#" + local_name
+        )
+    for values in result.values():
+        values.sort()
+        if len(values) != len(set(values)):
+            raise ValueError("application ontology has duplicate vocabulary declarations")
+    return result
+
+
+def expected_declaration_policy() -> dict[str, Any]:
+    registry = derive_registry_application_vocabulary()
+    ontology = derive_pinned_application_ontology_vocabulary()
+    registry_policy = {
+        "classSources": ["membershipClass", "resourceClass", "recordClass"],
+        "objectPropertySources": [
+            "iri-object-predicates",
+            "owner-predicates",
+            "value-predicates-with-iri-object",
+        ],
+        "datatypePropertySources": [
+            "typed-literal-predicates",
+            "language-literal-predicates",
+            "canonical-json-literal-predicates",
+        ],
+        "expectedClassCount": len(registry["classes"]),
+        "expectedObjectPropertyCount": len(registry["objectProperties"]),
+        "expectedDatatypePropertyCount": len(registry["datatypeProperties"]),
+        "expectedTermCount": sum(len(values) for values in registry.values()),
+    }
+    ontology_policy = {
+        "sourceBinding": "applicationProfilePolicy",
+        "verification": "exact-explicit-lists-equal-pinned-ontology-rdf-type-declarations",
+        **ontology,
+        "expectedClassCount": len(ontology["classes"]),
+        "expectedObjectPropertyCount": len(ontology["objectProperties"]),
+        "expectedDatatypePropertyCount": len(ontology["datatypeProperties"]),
+        "expectedTermCount": sum(len(values) for values in ontology.values()),
+    }
+    union = {
+        key: set(registry[key]) | set(ontology[key])
+        for key in ("classes", "objectProperties", "datatypeProperties")
+    }
+    if union["classes"] & (union["objectProperties"] | union["datatypeProperties"]) or union["objectProperties"] & union["datatypeProperties"]:
+        raise ValueError("application vocabulary union has cross-kind punning")
+    union_policy = {
+        "sameKindDuplicatesDeduplicated": True,
+        "crossKindPunningAllowed": False,
+        "expectedClassCount": len(union["classes"]),
+        "expectedObjectPropertyCount": len(union["objectProperties"]),
+        "expectedDatatypePropertyCount": len(union["datatypeProperties"]),
+        "expectedTermCount": sum(len(values) for values in union.values()),
+    }
+    return {
+        "segmentId": "declarations",
+        "vocabularySources": [
+            "fieldSemanticsRegistry",
+            "applicationOntologyProfile",
+        ],
+        "requireEveryUsedApplicationTermDeclared": True,
+        "fieldSemanticsRegistryVocabulary": registry_policy,
+        "applicationOntologyVocabulary": ontology_policy,
+        "applicationVocabularyUnion": union_policy,
+        "parserBootstrapProperties": PARSER_BOOTSTRAP_POLICY,
+        "expectedDeclarationTripleCount": union_policy["expectedTermCount"]
+        + PARSER_BOOTSTRAP_POLICY["expectedPropertyCount"],
+        "undeclaredEntitiesAllowed": False,
+        "objectDataPropertyPunningAllowed": False,
+        "wholePackageJsonCarrierVocabularyAllowed": False,
+    }
+
+
 def validate_profile(profile: dict[str, Any]) -> list[Diagnostic]:
     diagnostics: list[Diagnostic] = []
     roles = profile.get("roles", [])
@@ -496,6 +683,8 @@ def validate_profile(profile: dict[str, Any]) -> list[Diagnostic]:
         diagnostics.append(Diagnostic("PROFILE_SEGMENT_ORDER", "/rdfPolicy/segmentOrder", "Normative segment order differs"))
     if tuple(profile.get("validationGates", [])) != GATES:
         diagnostics.append(Diagnostic("PROFILE_GATE_VOCABULARY", "/validationGates", "Validation gate vocabulary/order differs"))
+    if profile.get("declarationPolicy") != expected_declaration_policy():
+        diagnostics.append(Diagnostic("PROFILE_DECLARATION_POLICY", "/declarationPolicy", "Declaration vocabulary union/bootstrap policy differs from its pinned sources"))
     if tuple(profile.get("contractPolicy", {}).get("requiredBindings", [])) != EXPECTED_BINDINGS:
         diagnostics.append(Diagnostic("PROFILE_CONTRACT_POLICY", "/contractPolicy/requiredBindings", "Required binding order differs"))
     if profile.get("coreBindingPolicy") != CORE_POLICY:
@@ -1310,6 +1499,9 @@ def run_mutations(fixture: dict[str, Any], schemas: dict[str, dict[str, Any]], v
     case("profile-json-policy", "PROFILE_SCHEMA", lambda value: value["profile"]["jsonPolicy"].update({"duplicateObjectKeys": "allow"}))
     case("profile-checksum-policy", "PROFILE_SCHEMA", lambda value: value["profile"]["checksumPolicy"].update({"selfEntryAllowed": True}))
     case("profile-declaration-policy", "PROFILE_SCHEMA", lambda value: value["profile"]["declarationPolicy"].update({"undeclaredEntitiesAllowed": True}))
+    case("profile-application-vocabulary-substitution", "PROFILE_DECLARATION_POLICY", lambda value: value["profile"]["declarationPolicy"]["applicationOntologyVocabulary"]["classes"].__setitem__(0, "https://skillpilot.de/ns/roundtrip#AttackerClass"))
+    case("profile-parser-bootstrap-kind", "PROFILE_SCHEMA", lambda value: value["profile"]["declarationPolicy"]["parserBootstrapProperties"]["objectProperties"].__setitem__(0, "https://w3id.org/lehrplan/ontology/LP_0000344"))
+    case("profile-declaration-count", "PROFILE_SCHEMA", lambda value: value["profile"]["declarationPolicy"].update({"expectedDeclarationTripleCount": 524}))
     case("profile-core-projection", "PROFILE_SCHEMA", lambda value: value["profile"]["coreProjectionPolicy"].update({"additionalTitleProjectionAuthoritativeForReverse": True}))
     case("profile-fallback-area", "PROFILE_CORE_PROJECTION", lambda value: value["profile"]["coreProjectionPolicy"]["unscopedAtomicAreaPolicy"].update({"authoritativeForReverse": True}))
     case("profile-schema-catalog", "PROFILE_SCHEMA", lambda value: value["profile"]["schemaCatalogPolicy"].update({"remoteResolutionAllowed": True}))

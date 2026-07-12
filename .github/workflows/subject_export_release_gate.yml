@@ -155,6 +155,12 @@ jobs:
       - name: Test full standalone curriculum package builder
         run: npm run test:full-standalone-package-builder
 
+      - name: Typecheck Core-first FWU-OWL package builder
+        run: npm run typecheck:fwu-owl-package-builder
+
+      - name: Test Core-first FWU-OWL package builder
+        run: npm run test:fwu-owl-package-builder
+
       - name: Use Python
         uses: actions/setup-python@v6
         with:

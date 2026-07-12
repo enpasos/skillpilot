@@ -50,6 +50,10 @@ jobs:
         run: npm run test:deterministic-zip32
       - name: Test full standalone curriculum package builder
         run: npm run test:full-standalone-package-builder
+      - name: Typecheck Core-first FWU-OWL package builder
+        run: npm run typecheck:fwu-owl-package-builder
+      - name: Test Core-first FWU-OWL package builder
+        run: npm run test:fwu-owl-package-builder
       - name: Test runtime curriculum catalog consumer
         run: npm run test:runtime-curriculum-catalog
       - name: Test curriculum offering sources

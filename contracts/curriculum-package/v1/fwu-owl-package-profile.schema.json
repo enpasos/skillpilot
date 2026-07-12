@@ -130,6 +130,10 @@
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
     },
+    "applicationVocabularyIri": {
+      "type": "string",
+      "pattern": "^https://skillpilot\\.de/ns/roundtrip#[A-Za-z][A-Za-z0-9_-]*$"
+    },
     "packageRelativePath": {
       "type": "string",
       "minLength": 1,
@@ -428,46 +432,183 @@
       "additionalProperties": false,
       "required": [
         "segmentId",
-        "vocabularySource",
+        "vocabularySources",
         "requireEveryUsedApplicationTermDeclared",
-        "classSources",
-        "objectPropertySources",
-        "datatypePropertySources",
+        "fieldSemanticsRegistryVocabulary",
+        "applicationOntologyVocabulary",
+        "applicationVocabularyUnion",
+        "parserBootstrapProperties",
+        "expectedDeclarationTripleCount",
         "undeclaredEntitiesAllowed",
         "objectDataPropertyPunningAllowed",
         "wholePackageJsonCarrierVocabularyAllowed"
       ],
       "properties": {
         "segmentId": { "const": "declarations" },
-        "vocabularySource": { "const": "fieldSemanticsRegistry" },
+        "vocabularySources": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "fieldSemanticsRegistry" },
+            { "const": "applicationOntologyProfile" }
+          ],
+          "items": false
+        },
         "requireEveryUsedApplicationTermDeclared": { "const": true },
-        "classSources": {
-          "type": "array",
-          "prefixItems": [
-            { "const": "membershipClass" },
-            { "const": "resourceClass" },
-            { "const": "recordClass" }
+        "fieldSemanticsRegistryVocabulary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "classSources",
+            "objectPropertySources",
+            "datatypePropertySources",
+            "expectedClassCount",
+            "expectedObjectPropertyCount",
+            "expectedDatatypePropertyCount",
+            "expectedTermCount"
           ],
-          "items": false
+          "properties": {
+            "classSources": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "membershipClass" },
+                { "const": "resourceClass" },
+                { "const": "recordClass" }
+              ],
+              "items": false
+            },
+            "objectPropertySources": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "iri-object-predicates" },
+                { "const": "owner-predicates" },
+                { "const": "value-predicates-with-iri-object" }
+              ],
+              "items": false
+            },
+            "datatypePropertySources": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "typed-literal-predicates" },
+                { "const": "language-literal-predicates" },
+                { "const": "canonical-json-literal-predicates" }
+              ],
+              "items": false
+            },
+            "expectedClassCount": { "const": 66 },
+            "expectedObjectPropertyCount": { "const": 108 },
+            "expectedDatatypePropertyCount": { "const": 311 },
+            "expectedTermCount": { "const": 485 }
+          }
         },
-        "objectPropertySources": {
-          "type": "array",
-          "prefixItems": [
-            { "const": "iri-object-predicates" },
-            { "const": "owner-predicates" },
-            { "const": "value-predicates-with-iri-object" }
+        "applicationOntologyVocabulary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sourceBinding",
+            "verification",
+            "classes",
+            "objectProperties",
+            "datatypeProperties",
+            "expectedClassCount",
+            "expectedObjectPropertyCount",
+            "expectedDatatypePropertyCount",
+            "expectedTermCount"
           ],
-          "items": false
+          "properties": {
+            "sourceBinding": { "const": "applicationProfilePolicy" },
+            "verification": { "const": "exact-explicit-lists-equal-pinned-ontology-rdf-type-declarations" },
+            "classes": {
+              "type": "array",
+              "minItems": 39,
+              "maxItems": 39,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/applicationVocabularyIri" }
+            },
+            "objectProperties": {
+              "type": "array",
+              "minItems": 16,
+              "maxItems": 16,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/applicationVocabularyIri" }
+            },
+            "datatypeProperties": {
+              "type": "array",
+              "minItems": 10,
+              "maxItems": 10,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/applicationVocabularyIri" }
+            },
+            "expectedClassCount": { "const": 39 },
+            "expectedObjectPropertyCount": { "const": 16 },
+            "expectedDatatypePropertyCount": { "const": 10 },
+            "expectedTermCount": { "const": 65 }
+          }
         },
-        "datatypePropertySources": {
-          "type": "array",
-          "prefixItems": [
-            { "const": "typed-literal-predicates" },
-            { "const": "language-literal-predicates" },
-            { "const": "canonical-json-literal-predicates" }
+        "applicationVocabularyUnion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sameKindDuplicatesDeduplicated",
+            "crossKindPunningAllowed",
+            "expectedClassCount",
+            "expectedObjectPropertyCount",
+            "expectedDatatypePropertyCount",
+            "expectedTermCount"
           ],
-          "items": false
+          "properties": {
+            "sameKindDuplicatesDeduplicated": { "const": true },
+            "crossKindPunningAllowed": { "const": false },
+            "expectedClassCount": { "const": 84 },
+            "expectedObjectPropertyCount": { "const": 108 },
+            "expectedDatatypePropertyCount": { "const": 318 },
+            "expectedTermCount": { "const": 510 }
+          }
         },
+        "parserBootstrapProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "purpose",
+            "verification",
+            "objectProperties",
+            "datatypeProperties",
+            "expectedPropertyCount"
+          ],
+          "properties": {
+            "purpose": { "const": "declare-non-application-predicates-before-standalone-rdf-to-owl-parsing" },
+            "verification": { "const": "exact-property-kinds-verified-against-pinned-core-or-fixed-external-vocabulary" },
+            "objectProperties": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "http://purl.obolibrary.org/obo/BFO_0000051" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000024" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000026" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000041" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000047" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000537" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000812" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0030051" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0030056" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0030057" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0030071" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0030072" }
+              ],
+              "items": false
+            },
+            "datatypeProperties": {
+              "type": "array",
+              "prefixItems": [
+                { "const": "https://schema.org/contentUrl" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000344" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000460" },
+                { "const": "https://w3id.org/lehrplan/ontology/LP_0000463" }
+              ],
+              "items": false
+            },
+            "expectedPropertyCount": { "const": 16 }
+          }
+        },
+        "expectedDeclarationTripleCount": { "const": 526 },
         "undeclaredEntitiesAllowed": { "const": false },
         "objectDataPropertyPunningAllowed": { "const": false },
         "wholePackageJsonCarrierVocabularyAllowed": { "const": false }
@@ -636,9 +777,9 @@
         },
         "packagePath": { "const": "skillpilot-curriculum-profile.ttl" },
         "mediaType": { "const": "text/turtle" },
-        "bytes": { "const": 5298 },
+        "bytes": { "const": 5427 },
         "sha256": {
-          "const": "3d4f46025d73ab4aa1fb2a7b7cca833600a527942660f6b9c107fe6a483a24d9"
+          "const": "22358a2aa96c16250d0f73fe6683fe6a0bda501b776dd6376a04b1980728e05a"
         }
       }
     },
@@ -671,9 +812,9 @@
         },
         "packagePath": { "const": "ontology/shapes.ttl" },
         "mediaType": { "const": "text/turtle" },
-        "bytes": { "const": 6103 },
+        "bytes": { "const": 6187 },
         "sha256": {
-          "const": "3893771228f8fc8f13feebed6adc9156047d1fefcb9fd8275269dd15b0712d59"
+          "const": "cd139efa68fc1f127529b271f8cd69b759f214196e674c3ab6e3120cbfda6b15"
         },
         "inference": { "const": "none" },
         "executableConstraintsAllowed": { "const": false },

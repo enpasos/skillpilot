@@ -18,15 +18,16 @@ DPK-005b first materialized that model as a real `full-standalone-v1` staging ZI
 
 DPK-007a now freezes the exact JSON input for DPK-008 as `skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`. The ZIP contains 914 entries and 912 manifest records; it is 1,738,161,217 bytes with SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, while its manifest has SHA-256 `32f732fc553fd39a462280eba7b2fa94367af34b3882ec6115a94948da4b1ebe`. Its 111 logical and 757 binary records share `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`; the 757 embedded images total 1,696,390,279 bytes. The runtime closure contains 2,403 definitions and 18,820 references with closure digest `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121` and definition-index digest `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
 
-Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a now supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. They require the fixed eight-segment RDF order, a derived-only byte-concatenated `bundle.nt`, pinned Core/profile/shapes/definition-digest and contract bindings, a bound semantic content index, closed reverse-build support, sidecar hashes, eighteen named validation gates and a byte-identical double build. DPK-008b must next materialize candidate `.3` through that contract; DPK-008c/d add the independent ontology gate and isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
+Ontology and publication profiles are `1.1.1`. Their Core position and SkillPilot authored-order lanes are checked against the unchanged 454-entry field registry, SHA-256 `2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48`. DPK-008a supplies the closed `fwu-owl-v1` inner manifest, package profile and validation-report contracts. DPK-008b now materializes candidate `.3` through that contract as a reproducible Core-first FWU-OWL package. Primary and peer are each 2,362,113,998 bytes with SHA-256 `54b07d8a4ff29432f2d0cfe08d2846cc90a4c6eb180f709173de5b1a50485b73`; the manifest SHA-256 is `00430d02b9be87d8b42c2df7e4c4757d464a81e48cdbaf98fca71896d920785c`. Its 819 entries contain 817 manifest records, 757 binary sidecars, 32 reverse-support files and 824,052 RDF triples across the fixed eight segments. DPK-008c/d next add the independent finished-package ontology gate and isolated reverse compiler. Candidate `.3` remains honestly `not-ready-incomplete`: all 754 atomic visualization-scope goals have images, but 621 image reviews, 760 redistribution decisions, and 479 source-text decisions remain human gates.
 
 Accordingly, two lanes coexist temporarily:
 
 - the commands below continue to exercise the already working legacy semantic OWL pilot;
 - `scripts/run_curriculum_release_model_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`;
-- `scripts/validate_curriculum_fwu_owl_package_contracts.py` validates the DPK-008a ontology-package contracts independently of any exporter.
+- `scripts/validate_curriculum_fwu_owl_package_contracts.py` validates the DPK-008a ontology-package contracts independently of the DPK-008b exporter;
+- `npm --prefix app run export:fwu-owl-package -- ...` builds the current primary and reproducibility-peer FWU-OWL packages atomically under `tmp/curriculum-release-model/fwu-owl-package/`.
 
-They must not be presented as the final dual-release roundtrip until DPK-008/009 connect frozen candidate `.3` to the Core-first ontology package and compare the isolated reverse compilation.
+They must not be presented as the final dual-release roundtrip until DPK-008c/d and DPK-009 independently validate the FWU package, reconstruct JSON without the source package, and compare both variants.
 
 ## Roundtrip Contract
 
@@ -59,7 +60,7 @@ The manifest must contain a non-empty Git commit hash and canonical repository-r
 
 The profile always imports the canonical W3ID ontology IRI. The OASIS XML catalog `catalog-v001.xml` resolves that IRI to `ontology/lehrplan-core.owl`, so ontology tooling uses the pinned local copy without changing the ontology's identity. The manifest records the canonical import, catalog, bound commit, and core checksum.
 
-`declarations.nt` declares the classes and property kinds used by the data in the same RDF graph as `bundle.nt`. This matters for RDF-to-OWL parsers: a later OWL merge cannot retroactively reinterpret unknown predicates that were initially parsed as annotation properties. The richer domains, ranges, subclass axioms, and equivalences still come from the application profile and imported FWU core.
+`declarations.nt` declares the classes and property kinds used by the data in the same RDF graph as `bundle.nt`. This matters for RDF-to-OWL parsers: a later OWL merge cannot retroactively reinterpret unknown predicates that were initially parsed as annotation properties. The closed v1 policy takes the exact same-kind union of 485 registry-derived declarations and all 65 declarations from the byte-pinned application ontology, yielding 510 application declarations, then adds 16 explicitly typed Core/external parser-bootstrap properties. The resulting segment therefore contains exactly 526 declaration triples. `sp:fieldState` preserves a present empty collection without carrying its content; `sp:referenceRole` types application-level competency-axis references. Null values in the real candidate are either canonical-JSON literals or explicitly excluded generated fields. The richer domains, ranges, subclass axioms, and equivalences still come from the application profile and imported FWU core.
 
 This binding is currently necessary because [FWU-DE/lehrplan-ontologie#9](https://github.com/FWU-DE/lehrplan-ontologie/pull/9) added `LP_0000554` to the merged source module while the generated `lp*.ttl/owl` release artifacts in the same upstream checkout have not yet been regenerated with that term. The pipeline fails early if the expected core contract is unavailable instead of silently falling back to an older ontology release.
 
@@ -68,7 +69,7 @@ This binding is currently necessary because [FWU-DE/lehrplan-ontologie#9](https:
 | SkillPilot meaning | Primary representation | Application fallback or extension |
 | --- | --- | --- |
 | Atomic curricular goal with a named curricular area parent | `LP_0000336` Fachbezogene Kompetenzspezifikation | `sp:LearningGoal` + `sp:AtomicGoal` preserve the runtime graph-node distinction |
-| Otherwise curricular but currently unscoped atomic goal | not forced into `LP_0000336`, whose Core restriction requires a `LP_0000349` area | `sp:UnscopedCurricularGoal`; this is an explicit migration queue, not an anonymous Core-area assertion |
+| Curricular atomic goal without an authored curricular-area parent | `LP_0000336` plus membership in the single deterministic package-generated `LP_0000349` fallback area | the authored graph remains parentless; the additive Core projection has no SkillPilot goal ID and is ignored during reconstruction |
 | Curricular cluster | `LP_0000349` CE-Bereich | `sp:LearningGoal` + `sp:ClusterGoal` |
 | K1–K6 catalog entry | `LP_0030265` Prozessbezogener Kompetenzbereich (Bistas), core title/number, and mathematics subject | `sp:CompetencyCatalogEntry` preserves the catalog role |
 | Authored goal-to-K1–K6 link | reified `LP_0030065` CE-Verweis via `LP_0030071` / `LP_0030072` for curricular goals | direct `sp:competencyRef` is the runtime/unscoped export fallback and remains a legacy importer fallback |
@@ -136,7 +137,7 @@ The Core requires every projected `LP_0000336` atomic competency to have a named
 
 ### OWL-safe literals and source quarantine
 
-Compact JSON metadata is serialized as `xsd:string`. A private `sp:json` datatype is deliberately not used because arbitrary custom datatypes made the otherwise valid graph fail the OWL 2 DL profile.
+Compact JSON metadata is serialized as `xsd:string`. A private `sp:json` datatype is deliberately not used because arbitrary custom datatypes made the otherwise valid graph fail the OWL 2 DL profile. The values in the closed SHACL `goalSemanticKind` enumeration are likewise written explicitly as `xsd:string`, so they compare equal to the compiler's typed literals in standards-strict SHACL implementations.
 
 Before an ordinary RDF literal is written, the exporter rejects XML/RDF-unsafe control characters, U+FFFE/U+FFFF, and unpaired UTF-16 surrogates. Official source evidence is not silently cleaned. If a complete source-goal record contains such OCR/PDF extraction artifacts:
 
