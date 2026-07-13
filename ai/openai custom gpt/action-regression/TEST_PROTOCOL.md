@@ -2,7 +2,7 @@
 
 ## 1. Ziel und Aussagegrenzen
 
-Der Primärtest ist `RUN_CHAIN`: Der reale SkillPilot-Endpunkt gibt ein frisches, nicht erratbares und serverseitig signiertes JSON-Tupel zurück. Die unmittelbar folgende Action soll genau dieses Tupel an den Verifier senden.
+Der Primärtest für das aktuelle Supportticket ist die Turn-Grenze: `RUN_RETAIN` ruft ein frisches, nicht erratbares und serverseitig signiertes JSON-Tupel ab; das unmittelbar folgende `RECALL_RETAIN` im selben Chat soll einen daraus gelesenen Wert ohne neue Action wiederverwenden. `RUN_CHAIN` ist der entscheidende positive Kontrollfall: Innerhalb desselben Assistant-Turns soll genau dasselbe Antwortformat unverändert an den Verifier weitergegeben werden.
 
 Der direkte öffentliche Control-Test belegt vor der GPT-Messung, dass derselbe Endpunkt den unveränderten positiven Pfad ausführt und eine einzelne schema-konforme Proof-Mutation ablehnt. Die lokalen Java-Tests decken weitere Mutationen und fehlerhafte Schemata ab. Die angehängte, vom Endpunkt ausgelieferte OpenAPI-Datei bindet den exakten Action-Vertrag. Getestet wird anschließend ChatGPT, nicht die Prozessisolation des Spring-Backends.
 
@@ -11,8 +11,9 @@ Die Ergebnisse werden getrennt bewertet:
 1. **Aufrufreihenfolge:** Wurden Probe und Verifier in der verlangten Reihenfolge und Häufigkeit aufgerufen?
 2. **Wertintegrität:** War der Verifier-Request wohlgeformt und das signierte Tupel unverändert (`proof_valid=true`)?
 3. **Finalformat:** Entspricht die sichtbare Chatantwort exakt dem verlangten Text?
+4. **Cross-Turn-Verfügbarkeit:** Wird ein Wert aus dem erfolgreichen Action-Ergebnis nach genau einer Nutzer-Turn-Grenze im selben kurzen Chat wiederverwendet?
 
-Ein korrekter Token mit Zusatztext ist eine Finalformat-Abweichung, kein Result-Handoff-Fehler. `proof_valid=true` belegt ein gültig signiertes Tupel am Verifier, aber nicht, welcher interne OpenAI-Bestandteil es weitergegeben hat. Frische IDs, die bei Handlerstart vergebene `request_sequence`, Startzeitpunkte, ein enger Zeitraum und ausgeschlossener Parallelverkehr sichern die Zuordnung zum Lauf ab. Die Reihenfolge der fertig geschriebenen Logzeilen allein ist bei Parallelität kein Startreihenfolge-Beweis.
+Ein korrekter Token mit Zusatztext ist eine Finalformat-Abweichung, kein Result-Handoff-Fehler. `proof_valid=true` belegt ein gültig signiertes Tupel am Verifier, aber nicht, welcher interne OpenAI-Bestandteil es weitergegeben hat. Frische IDs, die bei Handlerstart vergebene `request_sequence`, Startzeitpunkte, ein enger Zeitraum und ausgeschlossener Parallelverkehr sichern die Zuordnung zum Lauf ab. Die Reihenfolge der fertig geschriebenen Logzeilen allein ist bei Parallelität kein Startreihenfolge-Beweis. `RETAIN_READY` beweist seinerseits keine dauerhafte interne Speicherung; `RETAIN_MISSING` belegt die sichtbare Nichtverwendung im Folgeturn, nicht die interne Ursache.
 
 ## 2. Vorbedingungen dokumentieren
 
@@ -145,7 +146,7 @@ Bestehenskriterien:
 
 Jeden zusätzlichen, wiederholten oder umgekehrt angeordneten Aufruf als Aufrufreihenfolge-Abweichung erfassen. Ein `probe_verification_rejected` belegt einen Verifier-Versuch, aber keinen wohlgeformten Verifier-Aufruf.
 
-## 8. Test C – Retention, optional
+## 8. Test C – Cross-Turn-Retention
 
 Im selben frischen Chat nacheinander senden:
 
@@ -161,18 +162,20 @@ Danach:
 RECALL_RETAIN
 ```
 
-Erwartet: `RETAIN token=<Token aus dem ersten Serverlog>`. Beim zweiten Turn darf kein neuer Serveraufruf stattfinden. Nicht mit der unmittelbaren Chain-Statistik vermischen.
+Erwartet: `RETAIN token=<Token aus dem ersten Serverlog>`. Beim zweiten Turn darf kein neuer Serveraufruf stattfinden. Tatsächlich beobachtetes Fehlersignal: `RETAIN_MISSING`.
+
+Dieser Paarlauf ist der Primärreproducer für das Cross-Turn-Ticket. Mindestens fünfmal in jeweils einem frischen Chat wiederholen. `RUN_RETAIN` und `RECALL_RETAIN` gehören dabei immer zum selben Chat und müssen ohne Zwischenmeldung direkt aufeinander folgen. Nicht mit der unmittelbaren Chain-Statistik vermischen.
 
 ## 9. Umfang und Ergebnismatrix
 
 Mindestens fünf, besser zehn frische Chats je Primärtest und verfügbarer Vergleichsstufe. Modi zeitlich verschachteln, statt alle Läufe eines Modus nacheinander auszuführen. So wird eine gestaffelte Bereitstellung weniger leicht mit einem Moduseffekt verwechselt.
 
-| Gewählte Stufe | Auto-Switch | sichtbare Kennzeichnung | Quota/Fallback | `RUN_SINGLE` | `RUN_CHAIN` |
-|---|---|---|---|---:|---:|
-| Instant | aus | | | /10 | /10 |
-| Medium | aus/n/a | | | /10 | /10 |
-| High | aus/n/a | | | /10 | /10 |
-| Extra High | aus/n/a | | | /10 | /10 |
+| Gewählte Stufe | Auto-Switch | sichtbare Kennzeichnung | Quota/Fallback | `RUN_SINGLE` | `RUN_CHAIN` | `RUN_RETAIN` -> `RECALL_RETAIN` |
+|---|---|---|---|---:|---:|---:|
+| Instant | aus | | | /10 | /10 | /10 |
+| Medium | aus/n/a | | | /10 | /10 | /10 |
+| High | aus/n/a | | | /10 | /10 | /10 |
+| Extra High | aus/n/a | | | /10 | /10 | /10 |
 
 Pro Lauf erfassen:
 
@@ -184,6 +187,7 @@ Pro Lauf erfassen:
 - Probe-/Verifier-Status, Bytes, SHA-256, Fehlercode und `proof_valid`
 - exakte sichtbare Antwort
 - `call_order_pass`, `value_integrity_pass` und `final_format_pass`
+- beim Retention-Paar: beide exakten Nachrichten, Bestätigung derselben Conversation-ID, Zeitabstand und zusätzliche Action beim Recall ja/nein
 
 ## 10. Fehlerklassifikation
 
@@ -200,6 +204,9 @@ Pro Lauf erfassen:
 | `probe_verified`, `proof_valid=false` | Wohlgeformtes Tupel kam an, war unter dem aktiven Prozessschlüssel aber nicht gültig signiert |
 | `proof_valid=true`, finale Antwort falsch | Aufrufkette und Wertetransport bestanden; nachfolgende Auswertung oder Finalformat wich ab |
 | zusätzliche/doppelte/umgeordnete Calls | Aufrufreihenfolge-/Retry-Abweichung; Wertintegrität separat bewerten |
+| `RUN_RETAIN` ergibt `RETAIN_READY`, direktes `RECALL_RETAIN` ergibt `RETAIN_MISSING` | Vorheriger Action-Wert wurde im sichtbaren Folgeverhalten nicht verwendet; weder interne Löschung noch Compression oder GPT-5.6-Kausalität sind damit bewiesen |
+| `RECALL_RETAIN` gibt einen falschen Wert aus | Cross-Turn-Wertintegrität wich vom protokollierten Action-Ergebnis ab; interne Fehlerstelle offen |
+| `RECALL_RETAIN` löst entgegen den Instructions eine Action aus | Cross-Turn-Instruktions-/Toolwahlabweichung; getrennt von Wertverfügbarkeit klassifizieren |
 | Minimaltests bestehen, SkillPilot Coach scheitert | Nichtminimalen Faktor wie Auth, Schema-/Responsegröße, Instructions oder Session-Flow separat untersuchen |
 
 Keine Klasse allein beweist eine GPT-5.6-Ursache. Dafür sind Modusvergleich, sichtbare Routinghinweise und OpenAIs interne Traces nötig.

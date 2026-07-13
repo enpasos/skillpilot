@@ -3046,6 +3046,8 @@ export default defineConfig(({ mode }) => {
           // This ensures OAuth redirect to /curricula makes a real network request
           navigateFallbackDenylist: [
             /^\/.*\.pdf$/,
+            /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
+            /^\/api\/action-regression(?:\/|$)/,
             /^\/curricula\?auth_success/,
             /^\/oauth2/,
             /^\/login/,
