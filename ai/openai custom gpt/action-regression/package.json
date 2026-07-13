@@ -1,0 +1,14 @@
+{
+  "name": "@skillpilot/custom-gpt-action-regression",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Control tooling for the Spring-hosted Custom GPT Action result-handoff reproducer.",
+  "engines": {
+    "node": ">=20.20.2 <21"
+  },
+  "scripts": {
+    "control": "node control.mjs",
+    "test": "node --test control.test.mjs"
+  }
+}
