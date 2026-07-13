@@ -4,10 +4,17 @@ import ReactMarkdown from 'react-markdown'
 import { CurriculumDropdown } from './CurriculumDropdown'
 import { ThemeToggle } from './ThemeToggle'
 import type { LandscapeSummary } from './CurriculumDropdown'
-import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, LockKeyhole, UserPlus, Trash2 } from 'lucide-react'
+import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Compass, Wrench, ExternalLink, KeyRound, LockKeyhole, UserPlus, Trash2, Bot, Copy } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
+type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
+
+interface ClaudeLaunchFallback {
+  prompt: string
+  webUrl: string
+  desktopUrl: string | null
+}
 
 interface SessionSetupProps {
   role: Role | null
@@ -24,6 +31,16 @@ import { AudioPlayer } from './AudioPlayer'
 import { getLegalWaiverCopy } from '../utils/legalWaiverCopy'
 import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
 import { requestChatStart } from '../utils/chatStart'
+import {
+  CLAUDE_COACH_BETA_ENABLED,
+  getSafeClaudeDesktopUrl,
+  getSafeClaudeInstallUrl,
+  getSafeClaudeWebUrl,
+  requestClaudeConnectionStatus,
+  requestClaudeConnectStart,
+  requestClaudeDisconnect,
+  requestClaudeLaunch,
+} from '../utils/claudeCoach'
 import {
   deleteLocalSkillpilotLogin,
   listLocalSkillpilotLogins,
@@ -88,6 +105,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [legalChecked, setLegalChecked] = useState(false)
   const [chatPromptCopyState, setChatPromptCopyState] = useState<'idle' | 'failed'>('idle')
   const [chatStartLoading, setChatStartLoading] = useState(false)
+  const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
+  const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
+  const [claudeLaunchFallback, setClaudeLaunchFallback] = useState<ClaudeLaunchFallback | null>(null)
+  const [claudePromptCopied, setClaudePromptCopied] = useState(false)
+  const claudeActionLoading = claudeActionState === 'connecting'
+    || claudeActionState === 'launching'
+    || claudeActionState === 'disconnecting'
 
   const curriculumPanelCopy = React.useMemo(() => {
     if (role === 'trainer') {
@@ -127,6 +151,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setHasCheckedId(false)
     setChatPromptCopyState('idle')
     setChatStartLoading(false)
+    setClaudeActionState('idle')
+    setClaudeInstallFallbackUrl(null)
+    setClaudeLaunchFallback(null)
+    setClaudePromptCopied(false)
     setLocalLoginStatus('idle')
     setLocalLoginError('')
     if (clearSkillpilotId) {
@@ -330,6 +358,152 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       }
       setChatPromptCopyState('failed')
     }
+  }
+
+  const getClaudeStartContext = () => {
+    const effectiveId = sanitizeSkillpilotId(skillpilotId)
+    if (!effectiveId) return null
+    const normalizedLandscapeId = persistLearnerStart(effectiveId)
+    if (!normalizedLandscapeId) return null
+    return { effectiveId, normalizedLandscapeId }
+  }
+
+  const handleConnectClaude = async () => {
+    const context = getClaudeStartContext()
+    if (!context) return
+
+    const connectWindow = window.open('', '_blank')
+    setClaudeActionState('connecting')
+    setClaudeInstallFallbackUrl(null)
+    setClaudeLaunchFallback(null)
+    setClaudePromptCopied(false)
+    try {
+      const result = await requestClaudeConnectStart({
+        skillpilotId: context.effectiveId,
+        language,
+        selectedCurriculum: context.normalizedLandscapeId,
+        client: 'web-start',
+      })
+
+      const installUrl = getSafeClaudeInstallUrl(result.installUrl)
+      if (!installUrl) {
+        throw new Error('Invalid Claude connector install URL')
+      }
+
+      if (connectWindow) {
+        connectWindow.opener = null
+        connectWindow.location.href = installUrl
+        setClaudeActionState('install-opened')
+        return
+      }
+
+      const openedWindow = window.open(installUrl, '_blank', 'noopener,noreferrer')
+      if (openedWindow) {
+        setClaudeActionState('install-opened')
+      } else {
+        setClaudeInstallFallbackUrl(installUrl)
+        setClaudeActionState('fallback')
+      }
+    } catch {
+      connectWindow?.close()
+      setClaudeActionState('failed')
+    }
+  }
+
+  const copyClaudePrompt = async (prompt: string) => {
+    if (!navigator.clipboard?.writeText) return false
+    try {
+      await navigator.clipboard.writeText(prompt)
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  const handleLaunchClaude = async () => {
+    const context = getClaudeStartContext()
+    if (!context) return
+
+    const claudeWindow = window.open('', '_blank')
+    setClaudeActionState('launching')
+    setClaudeInstallFallbackUrl(null)
+    setClaudeLaunchFallback(null)
+    setClaudePromptCopied(false)
+    try {
+      const status = await requestClaudeConnectionStatus(context.effectiveId)
+      if (!status.connected) {
+        const connection = await requestClaudeConnectStart({
+          skillpilotId: context.effectiveId,
+          language,
+          selectedCurriculum: context.normalizedLandscapeId,
+          client: 'web-start',
+        })
+        const installUrl = getSafeClaudeInstallUrl(connection.installUrl)
+        if (!installUrl) throw new Error('Invalid Claude connector install URL')
+        if (claudeWindow) {
+          claudeWindow.opener = null
+          claudeWindow.location.href = installUrl
+          setClaudeActionState('install-opened')
+        } else {
+          setClaudeInstallFallbackUrl(installUrl)
+          setClaudeActionState('fallback')
+        }
+        return
+      }
+
+      const result = await requestClaudeLaunch({
+        skillpilotId: context.effectiveId,
+        language,
+        selectedCurriculum: context.normalizedLandscapeId,
+        client: 'web-start',
+      })
+      const webUrl = getSafeClaudeWebUrl(result.webUrl) ?? 'https://claude.ai/new'
+      const desktopUrl = getSafeClaudeDesktopUrl(result.desktopUrl)
+      setClaudeLaunchFallback({ prompt: result.prompt, webUrl, desktopUrl })
+      const promptCopied = await copyClaudePrompt(result.prompt)
+      setClaudePromptCopied(promptCopied)
+
+      if (claudeWindow) {
+        claudeWindow.opener = null
+        claudeWindow.location.href = webUrl
+        setClaudeActionState('launched')
+        return
+      }
+
+      const openedWindow = window.open(webUrl, '_blank', 'noopener,noreferrer')
+      if (openedWindow) {
+        setClaudeActionState('launched')
+        return
+      }
+
+      setClaudeActionState(promptCopied ? 'fallback-copied' : 'fallback')
+    } catch {
+      claudeWindow?.close()
+      setClaudeActionState('failed')
+    }
+  }
+
+  const handleDisconnectClaude = async () => {
+    const effectiveId = sanitizeSkillpilotId(skillpilotId)
+    if (!effectiveId) return
+    setClaudeActionState('disconnecting')
+    setClaudeInstallFallbackUrl(null)
+    setClaudeLaunchFallback(null)
+    setClaudePromptCopied(false)
+    try {
+      await requestClaudeDisconnect(effectiveId)
+      setClaudeActionState('disconnected')
+    } catch {
+      setClaudeActionState('failed')
+    }
+  }
+
+  const handleCopyClaudeFallback = async () => {
+    if (!claudeLaunchFallback) return
+    const launchWindowWasOpened = claudeActionState === 'launched'
+    const copied = await copyClaudePrompt(claudeLaunchFallback.prompt)
+    setClaudePromptCopied(copied)
+    setClaudeActionState(launchWindowWasOpened ? 'launched' : copied ? 'fallback-copied' : 'fallback')
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -808,7 +982,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
                       <div>
                         <h2 className="text-base font-bold text-text-primary">{t.startPage.login.startStepTitle}</h2>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">{t.startPage.login.startStepText}</p>
+                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                          {CLAUDE_COACH_BETA_ENABLED
+                            ? t.startPage.login.startStepTextWithClaude
+                            : t.startPage.login.startStepText}
+                        </p>
                       </div>
                     </div>
 
@@ -824,9 +1002,160 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <MessageCircle size={16} />
-                        {t.startPage.login.openChatGpt}
+                        {CLAUDE_COACH_BETA_ENABLED
+                          ? t.startPage.login.openChatGptProvider
+                          : t.startPage.login.openChatGpt}
                         <ExternalLink size={14} />
                       </button>
+                      {CLAUDE_COACH_BETA_ENABLED && (
+                        <div className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20">
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <Bot size={17} className="text-violet-600 dark:text-violet-300" />
+                                <p className="text-sm font-semibold text-text-primary">
+                                  {t.startPage.login.claudeBetaTitle}
+                                </p>
+                                <span className="rounded-full bg-violet-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-800 dark:bg-violet-900 dark:text-violet-200">
+                                  {t.startPage.login.claudeBetaBadge}
+                                </span>
+                              </div>
+                              <p className="mt-1 text-xs leading-relaxed text-text-secondary">
+                                {t.startPage.login.claudeBetaHint}
+                              </p>
+                              <p className="mt-1 text-[11px] leading-relaxed text-violet-800 dark:text-violet-200">
+                                {t.startPage.login.claudeAdultsOnly}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="grid gap-2 sm:grid-cols-2">
+                            <button
+                              type="button"
+                              onClick={handleConnectClaude}
+                              disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId || claudeActionLoading}
+                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-400 bg-white px-3 py-2 text-xs font-semibold text-violet-800 transition-colors hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-violet-200 dark:hover:bg-violet-950"
+                            >
+                              <KeyRound size={14} />
+                              {claudeActionState === 'connecting'
+                                ? t.startPage.login.claudeConnecting
+                                : t.startPage.login.claudeConnect}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={handleLaunchClaude}
+                              disabled={!sanitizeSkillpilotId(skillpilotId) || !selectedLandscapeId || claudeActionLoading}
+                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-600 bg-violet-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-violet-500 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                              <Bot size={14} />
+                              {claudeActionState === 'launching'
+                                ? t.startPage.login.claudeStarting
+                                : t.startPage.login.claudeStart}
+                              <ExternalLink size={12} />
+                            </button>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={handleDisconnectClaude}
+                            disabled={!sanitizeSkillpilotId(skillpilotId) || claudeActionLoading}
+                            className="inline-flex min-h-8 items-center gap-1.5 text-[11px] font-semibold text-violet-800 underline decoration-violet-300 underline-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:text-violet-200"
+                          >
+                            <Trash2 size={12} />
+                            {claudeActionState === 'disconnecting'
+                              ? t.startPage.login.claudeDisconnecting
+                              : t.startPage.login.claudeDisconnect}
+                          </button>
+
+                          <div aria-live="polite" className="space-y-2">
+                            {claudeActionState === 'install-opened' && (
+                              <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
+                                {t.startPage.login.claudeInstallOpened}
+                              </p>
+                            )}
+                            {claudeActionState === 'launched' && (
+                              <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
+                                {claudePromptCopied
+                                  ? t.startPage.login.claudeLaunched
+                                  : t.startPage.login.claudeLaunchedCopyFailed}
+                              </p>
+                            )}
+                            {claudeActionState === 'disconnected' && (
+                              <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                                {t.startPage.login.claudeDisconnected}
+                              </p>
+                            )}
+                            {claudeInstallFallbackUrl && (
+                              <a
+                                href={claudeInstallFallbackUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs font-semibold text-violet-700 underline hover:text-violet-600 dark:text-violet-300"
+                              >
+                                {t.startPage.login.claudeInstallFallback}
+                                <ExternalLink size={12} />
+                              </a>
+                            )}
+                            {claudeLaunchFallback && (
+                              claudeActionState === 'fallback'
+                              || claudeActionState === 'fallback-copied'
+                              || (claudeActionState === 'launched' && !claudePromptCopied)
+                            ) && (
+                              <div className="space-y-2 rounded-lg border border-violet-200 bg-white/80 p-3 dark:border-violet-800 dark:bg-slate-950/60">
+                                <p className="text-xs leading-relaxed text-text-secondary">
+                                  {claudeActionState === 'launched'
+                                    ? t.startPage.login.claudeClipboardFallbackHint
+                                    : t.startPage.login.claudeFallbackHint}
+                                </p>
+                                <textarea
+                                  readOnly
+                                  value={claudeLaunchFallback.prompt}
+                                  onFocus={event => event.currentTarget.select()}
+                                  aria-label={t.startPage.login.claudeCopyPrompt}
+                                  className="min-h-20 w-full resize-y rounded-lg border border-border-color bg-slate-50 p-2 text-xs text-text-primary dark:bg-slate-900"
+                                />
+                                <div className="flex flex-wrap gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={handleCopyClaudeFallback}
+                                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
+                                  >
+                                    <Copy size={13} />
+                                    {t.startPage.login.claudeCopyPrompt}
+                                  </button>
+                                  <a
+                                    href={claudeLaunchFallback.webUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
+                                  >
+                                    {t.startPage.login.claudeOpenWeb}
+                                    <ExternalLink size={12} />
+                                  </a>
+                                  {claudeLaunchFallback.desktopUrl && (
+                                    <a
+                                      href={claudeLaunchFallback.desktopUrl}
+                                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-violet-400 px-3 py-1.5 text-xs font-semibold text-violet-800 hover:bg-violet-100 dark:text-violet-200 dark:hover:bg-violet-950"
+                                    >
+                                      {t.startPage.login.claudeOpenApp}
+                                      <ExternalLink size={12} />
+                                    </a>
+                                  )}
+                                </div>
+                                {claudeActionState === 'fallback-copied' && (
+                                  <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                                    {t.startPage.login.claudePromptCopied}
+                                  </p>
+                                )}
+                              </div>
+                            )}
+                            {claudeActionState === 'failed' && (
+                              <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
+                                {t.startPage.login.claudeFailed}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )}
                       <div>
                         <button
                           type="submit"

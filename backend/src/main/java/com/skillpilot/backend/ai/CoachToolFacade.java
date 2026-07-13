@@ -1,0 +1,367 @@
+package com.skillpilot.backend.ai;
+
+import com.skillpilot.backend.api.ActiveGoalRequest;
+import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationRequest;
+import com.skillpilot.backend.api.ScopeRequest;
+import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.api.UpdateCurriculumRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallAnswerResponse;
+import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultResponse;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
+import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.service.LearnerService;
+import java.time.Instant;
+import java.util.Map;
+import java.util.Set;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+/**
+ * Provider-neutral application boundary for learning-coach tool adapters.
+ *
+ * <p>The facade owns the tool workflow and state-machine guards. Transport and
+ * provider-specific response rendering stay in the calling adapter.</p>
+ */
+@Service
+public class CoachToolFacade {
+
+    public record RedeemedCoachSession(
+            String sessionToken,
+            Instant expiresAt,
+            String skillpilotId,
+            UnifiedLearnerStateResponse state) {
+    }
+
+    public enum MasteryStatus {
+        UPDATED,
+        BAD_REQUEST,
+        CONFLICT
+    }
+
+    public record MasteryResult(
+            MasteryStatus status,
+            MasteryUpdateResponse update,
+            UnifiedLearnerStateResponse state,
+            String error) {
+
+        static MasteryResult updated(MasteryUpdateResponse update) {
+            return new MasteryResult(MasteryStatus.UPDATED, update, null, null);
+        }
+
+        static MasteryResult badRequest(String error) {
+            return new MasteryResult(MasteryStatus.BAD_REQUEST, null, null, error);
+        }
+
+        static MasteryResult conflict(UnifiedLearnerStateResponse state) {
+            return new MasteryResult(MasteryStatus.CONFLICT, null, state, null);
+        }
+    }
+
+    private final LearnerService learnerService;
+    private final ChatSessionService chatSessionService;
+
+    public CoachToolFacade(LearnerService learnerService, ChatSessionService chatSessionService) {
+        this.learnerService = learnerService;
+        this.chatSessionService = chatSessionService;
+    }
+
+    public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    public UnifiedLearnerStateResponse setScope(String skillpilotId, ScopeRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setScope(skillpilotId, request.goalIds());
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    public UnifiedLearnerStateResponse setActiveGoal(String skillpilotId, ActiveGoalRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+        boolean redirect = Boolean.TRUE.equals(request.redirect());
+        if (!"setActiveGoal".equals(requiredAction)) {
+            if (allowsActiveGoalRedirect(requiredAction) && redirect) {
+                // Explicit learner redirect while an active goal is locked.
+            } else if (requiredAction != null) {
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "Required action is " + requiredAction + ". Follow stateMachine.requiredAction.");
+            }
+        }
+        learnerService.setActiveGoal(skillpilotId, request.goalId());
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    public MasteryResult setMastery(String skillpilotId, MasteryUpdateRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+
+        String validationError = validateMasteryRequest(request);
+        if (validationError != null) {
+            return MasteryResult.badRequest(validationError);
+        }
+        MasteryUpdateRequest effectiveRequest = normalizeMasteryRequest(request);
+
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+        if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
+            // Recovery path for a conversation that selected a goal but did not persist
+            // it before attempting the mastery write.
+            if ("setActiveGoal".equals(requiredAction)) {
+                String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
+                if (selectedGoalId != null && !selectedGoalId.isBlank()) {
+                    try {
+                        learnerService.setActiveGoal(skillpilotId, selectedGoalId);
+                        state = learnerService.getLearnerState(skillpilotId);
+                        requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
+                    } catch (ResponseStatusException exception) {
+                        if (HttpStatus.CONFLICT.equals(exception.getStatusCode())
+                                || HttpStatus.BAD_REQUEST.equals(exception.getStatusCode())) {
+                            return MasteryResult.conflict(learnerService.getLearnerState(skillpilotId));
+                        }
+                        throw exception;
+                    }
+                }
+            }
+            if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
+                return MasteryResult.conflict(state);
+            }
+        }
+
+        try {
+            return MasteryResult.updated(learnerService.setMastery(skillpilotId, effectiveRequest));
+        } catch (ResponseStatusException exception) {
+            if (HttpStatus.CONFLICT.equals(exception.getStatusCode())) {
+                return MasteryResult.conflict(learnerService.getLearnerState(skillpilotId));
+            }
+            throw exception;
+        }
+    }
+
+    public VerifiedRecallPromptResponse startVerifiedRecall(
+            String skillpilotId,
+            String language,
+            VerifiedRecallStartRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecall(skillpilotId, language, request);
+    }
+
+    public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
+            String skillpilotId,
+            String language,
+            VerifiedRecallAnswerRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getVerifiedRecallAnswer(skillpilotId, language, request);
+    }
+
+    public VerifiedRecallResultResponse recordVerifiedRecallResult(
+            String skillpilotId,
+            String language,
+            VerifiedRecallResultRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.recordVerifiedRecallResult(skillpilotId, language, request);
+    }
+
+    public UnifiedLearnerStateResponse setCurriculum(String skillpilotId, UpdateCurriculumRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    public UnifiedLearnerStateResponse setPersonalization(String skillpilotId, PersonalizationRequest request) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
+        return learnerService.getLearnerState(skillpilotId);
+    }
+
+    public RedeemedCoachSession redeemStartCode(String startCode, String language) {
+        ChatSessionService.RedeemedSession session = chatSessionService.redeemStartCode(startCode, language);
+        return new RedeemedCoachSession(
+                session.chatSessionToken(),
+                session.expiresAt(),
+                session.skillpilotId(),
+                withoutSkillpilotId(learnerService.getLearnerState(session.skillpilotId())));
+    }
+
+    public UnifiedLearnerStateResponse getSessionState(String sessionToken) {
+        return withoutSkillpilotId(learnerService.getLearnerState(resolveSessionLearnerId(sessionToken)));
+    }
+
+    public UnifiedLearnerStateResponse setSessionScope(String sessionToken, ScopeRequest request) {
+        return withoutSkillpilotId(setScope(resolveSessionLearnerId(sessionToken), request));
+    }
+
+    public UnifiedLearnerStateResponse setSessionActiveGoal(String sessionToken, ActiveGoalRequest request) {
+        return withoutSkillpilotId(setActiveGoal(resolveSessionLearnerId(sessionToken), request));
+    }
+
+    public MasteryResult setSessionMastery(String sessionToken, MasteryUpdateRequest request) {
+        MasteryResult result = setMastery(resolveSessionLearnerId(sessionToken), request);
+        if (result.status() != MasteryStatus.CONFLICT || result.state() == null) {
+            return result;
+        }
+        return MasteryResult.conflict(withoutSkillpilotId(result.state()));
+    }
+
+    public VerifiedRecallPromptResponse startSessionVerifiedRecall(
+            String sessionToken,
+            String language,
+            VerifiedRecallStartRequest request) {
+        String skillpilotId = resolveSessionLearnerId(sessionToken);
+        return withoutSkillpilotId(learnerService.startVerifiedRecall(skillpilotId, language, request));
+    }
+
+    public VerifiedRecallAnswerResponse getSessionVerifiedRecallAnswer(
+            String sessionToken,
+            String language,
+            VerifiedRecallAnswerRequest request) {
+        String skillpilotId = resolveSessionLearnerId(sessionToken);
+        return learnerService.getVerifiedRecallAnswer(skillpilotId, language, request);
+    }
+
+    public VerifiedRecallResultResponse recordSessionVerifiedRecallResult(
+            String sessionToken,
+            String language,
+            VerifiedRecallResultRequest request) {
+        String skillpilotId = resolveSessionLearnerId(sessionToken);
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return withoutSkillpilotId(learnerService.recordVerifiedRecallResult(skillpilotId, language, request));
+    }
+
+    public UnifiedLearnerStateResponse setSessionCurriculum(String sessionToken, UpdateCurriculumRequest request) {
+        return withoutSkillpilotId(setCurriculum(resolveSessionLearnerId(sessionToken), request));
+    }
+
+    public UnifiedLearnerStateResponse setSessionPersonalization(
+            String sessionToken,
+            PersonalizationRequest request) {
+        return withoutSkillpilotId(setPersonalization(resolveSessionLearnerId(sessionToken), request));
+    }
+
+    private String resolveSessionLearnerId(String sessionToken) {
+        String skillpilotId = chatSessionService.resolveSkillpilotId(sessionToken);
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return skillpilotId;
+    }
+
+    private String validateMasteryRequest(MasteryUpdateRequest request) {
+        if (request == null) {
+            return "setMastery requires a goalId.";
+        }
+        boolean hasMasteryMap = request.mastery() != null && !request.mastery().isEmpty();
+        if (!hasMasteryMap) {
+            if (request.goalId() == null || request.goalId().isBlank()) {
+                return "setMastery requires a goalId.";
+            }
+            return null;
+        }
+        if (request.mastery().size() != 1) {
+            return "setMastery accepts exactly one mastery update at a time.";
+        }
+        Map.Entry<String, Double> entry = request.mastery().entrySet().iterator().next();
+        if (entry.getKey() == null || entry.getKey().isBlank()) {
+            return "setMastery requires a non-empty goal ID in mastery.";
+        }
+        if (!isValidMasteryValue(entry.getValue())) {
+            return "setMastery value must be between 0.0 and 1.0.";
+        }
+        return null;
+    }
+
+    private MasteryUpdateRequest normalizeMasteryRequest(MasteryUpdateRequest request) {
+        if (request.mastery() != null && !request.mastery().isEmpty()) {
+            return request;
+        }
+        return new MasteryUpdateRequest(Map.of(request.goalId(), 1.0), request.goalId());
+    }
+
+    private boolean isValidMasteryValue(Double value) {
+        return value != null && !value.isNaN() && !value.isInfinite() && value >= 0.0 && value <= 1.0;
+    }
+
+    private boolean allowsMasteryWrite(String requiredAction) {
+        return "setMastery".equals(requiredAction) || "teachActiveGoal".equals(requiredAction);
+    }
+
+    private boolean allowsActiveGoalRedirect(String requiredAction) {
+        return allowsMasteryWrite(requiredAction) || "chooseMemoryMode".equals(requiredAction);
+    }
+
+    private String extractGoalIdFromMasteryRequest(MasteryUpdateRequest request) {
+        if (request == null) {
+            return null;
+        }
+        if (request.goalId() != null && !request.goalId().isBlank()) {
+            return request.goalId().trim();
+        }
+        if (request.mastery() != null && request.mastery().size() == 1) {
+            String key = request.mastery().keySet().iterator().next();
+            if (key != null && !key.isBlank()) {
+                return key.trim();
+            }
+        }
+        return null;
+    }
+
+    private UnifiedLearnerStateResponse withoutSkillpilotId(UnifiedLearnerStateResponse state) {
+        if (state == null) {
+            return null;
+        }
+        return new UnifiedLearnerStateResponse(
+                null,
+                state.curriculum(),
+                state.frontier(),
+                state.goals(),
+                state.nextAllowedActions(),
+                state.activeFilters(),
+                Set.of(),
+                state.learningState(),
+                state.activeGoal(),
+                state.stateMachine());
+    }
+
+    private VerifiedRecallPromptResponse withoutSkillpilotId(VerifiedRecallPromptResponse response) {
+        if (response == null) {
+            return null;
+        }
+        return new VerifiedRecallPromptResponse(
+                response.status(),
+                response.instruction(),
+                null,
+                response.goalId(),
+                response.goalTitle(),
+                response.totalCards(),
+                response.verifiedCards(),
+                response.pendingCards(),
+                response.eligibleCards(),
+                response.blockedCards(),
+                response.nextEligibleAt(),
+                response.batchSize(),
+                response.cards(),
+                response.cardId(),
+                response.prompt(),
+                response.category());
+    }
+
+    private VerifiedRecallResultResponse withoutSkillpilotId(VerifiedRecallResultResponse response) {
+        if (response == null) {
+            return null;
+        }
+        return new VerifiedRecallResultResponse(
+                response.savedCardId(),
+                response.passed(),
+                response.verifiedCards(),
+                response.pendingCards(),
+                response.masterySaved(),
+                response.masteryGoalId(),
+                response.instruction(),
+                withoutSkillpilotId(response.next()));
+    }
+}

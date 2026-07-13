@@ -66,11 +66,14 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         }
 
         // The Custom GPT action regression probe has its own byte-accurate audit log.
-        // Wrapping it here would duplicate the evidence and redact the deliberately
-        // synthetic token that the regression test needs to compare.
+        // MCP responses can contain an entire learner state inside a JSON-RPC text
+        // field, which cannot be safely redacted as ordinary nested JSON. Neither
+        // endpoint is therefore body-logged by this general-purpose filter.
         String requestUri = request.getRequestURI();
         if (requestUri.equals("/api/action-regression")
-                || requestUri.startsWith("/api/action-regression/")) {
+                || requestUri.startsWith("/api/action-regression/")
+                || requestUri.equals("/api/claude/mcp")
+                || requestUri.startsWith("/api/claude/mcp/")) {
             filterChain.doFilter(request, response);
             return;
         }

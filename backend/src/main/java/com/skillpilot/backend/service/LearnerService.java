@@ -1785,7 +1785,7 @@ public class LearnerService {
                     "mastery must contain exactly one goal update.");
         }
 
-        Learner learner = learnerRepository.findById(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         Map<String, LearningGoal> visibleGoals = Collections.emptyMap();
@@ -4646,7 +4646,8 @@ public class LearnerService {
 
     @Transactional
     public void setActiveGoal(String skillpilotId, String goalId) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         if (goalId == null || goalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "goalId must not be empty.");

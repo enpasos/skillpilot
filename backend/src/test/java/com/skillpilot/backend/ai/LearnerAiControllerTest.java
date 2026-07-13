@@ -56,7 +56,9 @@ class LearnerAiControllerTest {
     void setUp() {
         learnerService = mock(LearnerService.class);
         chatSessionService = mock(ChatSessionService.class);
-        controller = new LearnerAiController(learnerService, chatSessionService);
+        controller = new LearnerAiController(
+                learnerService,
+                new CoachToolFacade(learnerService, chatSessionService));
 
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setScheme("https");

@@ -263,6 +263,7 @@ class LearnerServiceCrossSubjectPilotTest {
         learner.setPersonalCurriculum("{}");
 
         when(learnerRepository.findById(LEARNER_ID)).thenReturn(Optional.of(learner));
+        when(learnerRepository.findBySkillpilotIdForUpdate(LEARNER_ID)).thenReturn(Optional.of(learner));
         when(learnerRepository.existsById(LEARNER_ID)).thenReturn(true);
         when(learnerRepository.save(org.mockito.ArgumentMatchers.any(Learner.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));

@@ -48,15 +48,15 @@ import java.util.regex.Pattern;
 public class LearnerAiController {
 
     private final LearnerService learnerService;
-    private final ChatSessionService chatSessionService;
+    private final CoachToolFacade coachToolFacade;
     private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
 
     @Value("${skillpilot.public-base-url:https://skillpilot.com}")
     private String publicBaseUrl;
 
-    public LearnerAiController(LearnerService learnerService, ChatSessionService chatSessionService) {
+    public LearnerAiController(LearnerService learnerService, CoachToolFacade coachToolFacade) {
         this.learnerService = learnerService;
-        this.chatSessionService = chatSessionService;
+        this.coachToolFacade = coachToolFacade;
     }
 
     @ExceptionHandler(ChatSessionService.ChatSessionExpiredException.class)
@@ -91,17 +91,14 @@ public class LearnerAiController {
     @GetMapping("/learners/{skillpilotId}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getLearnerState(@PathVariable String skillpilotId) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+        return withAbsoluteExamAssetUrls(coachToolFacade.getLearnerState(skillpilotId));
     }
 
     @PostMapping("/learners/{skillpilotId}/scope")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
 
     public UnifiedLearnerStateResponse setScope(@PathVariable String skillpilotId, @RequestBody ScopeRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setScope(skillpilotId, request.goalIds());
-        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+        return withAbsoluteExamAssetUrls(coachToolFacade.setScope(skillpilotId, request));
     }
 
     @PostMapping("/learners/{skillpilotId}/active-goal")
@@ -111,28 +108,7 @@ public class LearnerAiController {
             parseValue = true)))
     public UnifiedLearnerStateResponse setActiveGoal(@PathVariable String skillpilotId,
             @Valid @RequestBody ActiveGoalRequest request) {
-        return setActiveGoalForLearner(skillpilotId, request, false);
-    }
-
-    private UnifiedLearnerStateResponse setActiveGoalForLearner(
-            String skillpilotId,
-            ActiveGoalRequest request,
-            boolean hideSkillpilotId) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
-        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
-        boolean redirect = Boolean.TRUE.equals(request.redirect());
-        if (!"setActiveGoal".equals(requiredAction)) {
-            if (allowsActiveGoalRedirect(requiredAction) && redirect) {
-                // Allow explicit user redirect while an active goal is locked.
-            } else if (requiredAction != null) {
-                throw new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.CONFLICT,
-                        "Required action is " + requiredAction + ". Follow stateMachine.requiredAction.");
-            }
-        }
-        learnerService.setActiveGoal(skillpilotId, request.goalId());
-        return prepareLearnerState(skillpilotId, hideSkillpilotId);
+        return prepareLearnerState(coachToolFacade.setActiveGoal(skillpilotId, request), false);
     }
 
     @PostMapping("/learners/{skillpilotId}/mastery")
@@ -140,7 +116,7 @@ public class LearnerAiController {
     public org.springframework.http.ResponseEntity<?> setMastery(
             @PathVariable String skillpilotId,
             @RequestBody(required = false) MasteryUpdateRequest request) {
-        return setMasteryForLearner(skillpilotId, request, false);
+        return masteryResponse(coachToolFacade.setMastery(skillpilotId, request), false);
     }
 
     @PostMapping("/chat-start/redeem")
@@ -149,21 +125,21 @@ public class LearnerAiController {
             @PathVariable String lang,
             @RequestBody RedeemStartCodeRequest request,
             HttpServletRequest servletRequest) {
-        ChatSessionService.RedeemedSession session = chatSessionService.redeemStartCode(
+        CoachToolFacade.RedeemedCoachSession session = coachToolFacade.redeemStartCode(
                 request == null ? null : request.startCode(),
                 lang);
         markAiTraceSkillpilotId(servletRequest, session.skillpilotId());
         return RedeemStartCodeResponse.fromState(
-                session.chatSessionToken(),
+                session.sessionToken(),
                 session.expiresAt(),
-                prepareLearnerState(session.skillpilotId(), true),
+                prepareLearnerState(session.state(), true),
                 resolveBaseUrl());
     }
 
     @GetMapping("/sessions/{chatSessionToken}/state")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse getSessionState(@PathVariable String chatSessionToken) {
-        return prepareLearnerState(resolveSessionLearnerId(chatSessionToken), true);
+        return prepareLearnerState(coachToolFacade.getSessionState(chatSessionToken), true);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/scope")
@@ -171,10 +147,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionScope(
             @PathVariable String chatSessionToken,
             @RequestBody ScopeRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setScope(skillpilotId, request.goalIds());
-        return prepareLearnerState(skillpilotId, true);
+        return prepareLearnerState(coachToolFacade.setSessionScope(chatSessionToken, request), true);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/active-goal")
@@ -185,7 +158,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionActiveGoal(
             @PathVariable String chatSessionToken,
             @Valid @RequestBody ActiveGoalRequest request) {
-        return setActiveGoalForLearner(resolveSessionLearnerId(chatSessionToken), request, true);
+        return prepareLearnerState(coachToolFacade.setSessionActiveGoal(chatSessionToken, request), true);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/mastery")
@@ -193,7 +166,7 @@ public class LearnerAiController {
     public org.springframework.http.ResponseEntity<?> setSessionMastery(
             @PathVariable String chatSessionToken,
             @RequestBody(required = false) MasteryUpdateRequest request) {
-        return setMasteryForLearner(resolveSessionLearnerId(chatSessionToken), request, true);
+        return masteryResponse(coachToolFacade.setSessionMastery(chatSessionToken, request), true);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/start")
@@ -205,8 +178,7 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        return withoutSkillpilotId(learnerService.startVerifiedRecall(skillpilotId, lang, request));
+        return coachToolFacade.startSessionVerifiedRecall(chatSessionToken, lang, request);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/answer")
@@ -218,8 +190,7 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallAnswerRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
+        return coachToolFacade.getSessionVerifiedRecallAnswer(chatSessionToken, lang, request);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/verified-recall/result")
@@ -231,9 +202,7 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String chatSessionToken,
             @RequestBody VerifiedRecallResultRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return withoutSkillpilotId(learnerService.recordVerifiedRecallResult(skillpilotId, lang, request));
+        return coachToolFacade.recordSessionVerifiedRecallResult(chatSessionToken, lang, request);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/curriculum")
@@ -241,10 +210,7 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionCurriculum(
             @PathVariable String chatSessionToken,
             @RequestBody UpdateCurriculumRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
-        return prepareLearnerState(skillpilotId, true);
+        return prepareLearnerState(coachToolFacade.setSessionCurriculum(chatSessionToken, request), true);
     }
 
     @PostMapping("/sessions/{chatSessionToken}/personalization")
@@ -252,134 +218,21 @@ public class LearnerAiController {
     public UnifiedLearnerStateResponse setSessionPersonalization(
             @PathVariable String chatSessionToken,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
-        String skillpilotId = resolveSessionLearnerId(chatSessionToken);
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
-        return prepareLearnerState(skillpilotId, true);
+        return prepareLearnerState(coachToolFacade.setSessionPersonalization(chatSessionToken, request), true);
     }
 
-    private org.springframework.http.ResponseEntity<?> setMasteryForLearner(
-            String skillpilotId,
-            MasteryUpdateRequest request,
+    private org.springframework.http.ResponseEntity<?> masteryResponse(
+            CoachToolFacade.MasteryResult result,
             boolean hideSkillpilotId) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-
-        org.springframework.http.ResponseEntity<?> validationError = validateAiMasteryRequest(request);
-        if (validationError != null) {
-            return validationError;
-        }
-        MasteryUpdateRequest effectiveRequest = normalizeAiMasteryRequest(request);
-
-        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
-        String requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
-        if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
-            // Recovery path:
-            // If the conversation already selected a goal but the backend active goal was
-            // not persisted, allow /mastery to auto-lock that goal first.
-            if ("setActiveGoal".equals(requiredAction)) {
-                String selectedGoalId = extractGoalIdFromMasteryRequest(effectiveRequest);
-                if (selectedGoalId != null && !selectedGoalId.isBlank()) {
-                    try {
-                        learnerService.setActiveGoal(skillpilotId, selectedGoalId);
-                        state = learnerService.getLearnerState(skillpilotId);
-                        requiredAction = state.stateMachine() != null ? state.stateMachine().requiredAction() : null;
-                    } catch (org.springframework.web.server.ResponseStatusException e) {
-                        if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())
-                                || org.springframework.http.HttpStatus.BAD_REQUEST.equals(e.getStatusCode())) {
-                            UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
-                            return org.springframework.http.ResponseEntity
-                                    .status(org.springframework.http.HttpStatus.CONFLICT)
-                                    .body(prepareLearnerState(conflictState, hideSkillpilotId));
-                        }
-                        throw e;
-                    }
-                }
-            }
-            if (requiredAction != null && !allowsMasteryWrite(requiredAction)) {
-                return org.springframework.http.ResponseEntity
-                        .status(org.springframework.http.HttpStatus.CONFLICT)
-                        .body(prepareLearnerState(state, hideSkillpilotId));
-            }
-        }
-
-        try {
-            MasteryUpdateResponse response = learnerService.setMastery(skillpilotId, effectiveRequest);
-            return org.springframework.http.ResponseEntity.ok(withAbsoluteExamAssetUrls(response));
-        } catch (org.springframework.web.server.ResponseStatusException e) {
-            if (org.springframework.http.HttpStatus.CONFLICT.equals(e.getStatusCode())) {
-                UnifiedLearnerStateResponse conflictState = learnerService.getLearnerState(skillpilotId);
-                return org.springframework.http.ResponseEntity
-                        .status(org.springframework.http.HttpStatus.CONFLICT)
-                        .body(prepareLearnerState(conflictState, hideSkillpilotId));
-            }
-            throw e;
-        }
-    }
-
-    private org.springframework.http.ResponseEntity<?> validateAiMasteryRequest(MasteryUpdateRequest request) {
-        if (request == null) {
-            return badMasteryRequest("setMastery requires a goalId.");
-        }
-        boolean hasMasteryMap = request.mastery() != null && !request.mastery().isEmpty();
-        if (!hasMasteryMap) {
-            if (request.goalId() == null || request.goalId().isBlank()) {
-                return badMasteryRequest("setMastery requires a goalId.");
-            }
-            return null;
-        }
-        if (request.mastery().size() != 1) {
-            return badMasteryRequest("setMastery accepts exactly one mastery update at a time.");
-        }
-        Map.Entry<String, Double> entry = request.mastery().entrySet().iterator().next();
-        if (entry.getKey() == null || entry.getKey().isBlank()) {
-            return badMasteryRequest("setMastery requires a non-empty goal ID in mastery.");
-        }
-        Double value = entry.getValue();
-        if (!isValidMasteryValue(value)) {
-            return badMasteryRequest("setMastery value must be between 0.0 and 1.0.");
-        }
-        return null;
-    }
-
-    private MasteryUpdateRequest normalizeAiMasteryRequest(MasteryUpdateRequest request) {
-        if (request.mastery() != null && !request.mastery().isEmpty()) {
-            return request;
-        }
-        return new MasteryUpdateRequest(Map.of(request.goalId(), 1.0), request.goalId());
-    }
-
-    private boolean isValidMasteryValue(Double value) {
-        return value != null && !value.isNaN() && !value.isInfinite() && value >= 0.0 && value <= 1.0;
-    }
-
-    private org.springframework.http.ResponseEntity<?> badMasteryRequest(String message) {
-        return org.springframework.http.ResponseEntity
-                .status(org.springframework.http.HttpStatus.BAD_REQUEST)
-                .body(Map.of("error", message));
-    }
-
-    private boolean allowsMasteryWrite(String requiredAction) {
-        return "setMastery".equals(requiredAction) || "teachActiveGoal".equals(requiredAction);
-    }
-
-    private boolean allowsActiveGoalRedirect(String requiredAction) {
-        return allowsMasteryWrite(requiredAction) || "chooseMemoryMode".equals(requiredAction);
-    }
-
-    private String extractGoalIdFromMasteryRequest(MasteryUpdateRequest request) {
-        if (request == null) {
-            return null;
-        }
-        if (request.goalId() != null && !request.goalId().isBlank()) {
-            return request.goalId().trim();
-        }
-        if (request.mastery() != null && request.mastery().size() == 1) {
-            String key = request.mastery().keySet().iterator().next();
-            if (key != null && !key.isBlank()) {
-                return key.trim();
-            }
-        }
-        return null;
+        return switch (result.status()) {
+            case UPDATED -> org.springframework.http.ResponseEntity.ok(withAbsoluteExamAssetUrls(result.update()));
+            case BAD_REQUEST -> org.springframework.http.ResponseEntity
+                    .status(org.springframework.http.HttpStatus.BAD_REQUEST)
+                    .body(Map.of("error", result.error()));
+            case CONFLICT -> org.springframework.http.ResponseEntity
+                    .status(org.springframework.http.HttpStatus.CONFLICT)
+                    .body(prepareLearnerState(result.state(), hideSkillpilotId));
+        };
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/start")
@@ -391,8 +244,7 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody(required = false) VerifiedRecallStartRequest request) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.startVerifiedRecall(skillpilotId, lang, request);
+        return coachToolFacade.startVerifiedRecall(skillpilotId, lang, request);
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/answer")
@@ -404,8 +256,7 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody VerifiedRecallAnswerRequest request) {
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return learnerService.getVerifiedRecallAnswer(skillpilotId, lang, request);
+        return coachToolFacade.getVerifiedRecallAnswer(skillpilotId, lang, request);
     }
 
     @PostMapping("/learners/{skillpilotId}/verified-recall/result")
@@ -417,17 +268,14 @@ public class LearnerAiController {
             @PathVariable String lang,
             @PathVariable String skillpilotId,
             @RequestBody VerifiedRecallResultRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        return learnerService.recordVerifiedRecallResult(skillpilotId, lang, request);
+        return coachToolFacade.recordVerifiedRecallResult(skillpilotId, lang, request);
     }
 
     @PostMapping("/learners/{skillpilotId}/curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public UnifiedLearnerStateResponse setCurriculum(@PathVariable String skillpilotId,
             @RequestBody UpdateCurriculumRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
-        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
+        return withAbsoluteExamAssetUrls(coachToolFacade.setCurriculum(skillpilotId, request));
     }
 
     @PostMapping("/learners/{skillpilotId}/personalization")
@@ -435,25 +283,13 @@ public class LearnerAiController {
 
     public UnifiedLearnerStateResponse setPersonalization(@PathVariable String skillpilotId,
             @RequestBody com.skillpilot.backend.api.PersonalizationRequest request) {
-        learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
-        return withAbsoluteExamAssetUrls(learnerService.getLearnerState(skillpilotId));
-    }
-
-    private String resolveSessionLearnerId(String chatSessionToken) {
-        String skillpilotId = chatSessionService.resolveSkillpilotId(chatSessionToken);
-        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
-        return skillpilotId;
+        return withAbsoluteExamAssetUrls(coachToolFacade.setPersonalization(skillpilotId, request));
     }
 
     private void markAiTraceSkillpilotId(HttpServletRequest request, String skillpilotId) {
         if (request != null && skillpilotId != null && !skillpilotId.isBlank()) {
             request.setAttribute(RequestLoggingFilter.AI_TRACE_SKILLPILOT_ID_ATTRIBUTE, skillpilotId);
         }
-    }
-
-    private UnifiedLearnerStateResponse prepareLearnerState(String skillpilotId, boolean hideSkillpilotId) {
-        return prepareLearnerState(learnerService.getLearnerState(skillpilotId), hideSkillpilotId);
     }
 
     private UnifiedLearnerStateResponse prepareLearnerState(
@@ -474,48 +310,10 @@ public class LearnerAiController {
                 state.goals(),
                 state.nextAllowedActions(),
                 state.activeFilters(),
-                state.copySources(),
+                java.util.Set.of(),
                 state.learningState(),
                 state.activeGoal(),
                 state.stateMachine());
-    }
-
-    private VerifiedRecallPromptResponse withoutSkillpilotId(VerifiedRecallPromptResponse response) {
-        if (response == null) {
-            return null;
-        }
-        return new VerifiedRecallPromptResponse(
-                response.status(),
-                response.instruction(),
-                null,
-                response.goalId(),
-                response.goalTitle(),
-                response.totalCards(),
-                response.verifiedCards(),
-                response.pendingCards(),
-                response.eligibleCards(),
-                response.blockedCards(),
-                response.nextEligibleAt(),
-                response.batchSize(),
-                response.cards(),
-                response.cardId(),
-                response.prompt(),
-                response.category());
-    }
-
-    private VerifiedRecallResultResponse withoutSkillpilotId(VerifiedRecallResultResponse response) {
-        if (response == null) {
-            return null;
-        }
-        return new VerifiedRecallResultResponse(
-                response.savedCardId(),
-                response.passed(),
-                response.verifiedCards(),
-                response.pendingCards(),
-                response.masterySaved(),
-                response.masteryGoalId(),
-                response.instruction(),
-                withoutSkillpilotId(response.next()));
     }
 
     private UnifiedLearnerStateResponse withAbsoluteExamAssetUrls(UnifiedLearnerStateResponse state) {
