@@ -4,11 +4,41 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 class RequestLoggingFilterTest {
 
     private final RequestLoggingFilter filter = new RequestLoggingFilter(new ObjectMapper());
+
+    @Test
+    void actionRegressionRouteBypassesTheGeneralCachingAndRedactingLogger() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest(
+                "POST",
+                "/api/action-regression/v1/verify");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        MockFilterChain chain = new MockFilterChain();
+
+        filter.doFilter(request, response, chain);
+
+        assertThat(chain.getRequest()).isSameAs(request);
+        assertThat(chain.getResponse()).isSameAs(response);
+    }
+
+    @Test
+    void similarlyPrefixedRouteStillUsesTheGeneralRequestLogger() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest(
+                "POST",
+                "/api/action-regressionevil/v1/verify");
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        MockFilterChain chain = new MockFilterChain();
+
+        filter.doFilter(request, response, chain);
+
+        assertThat(chain.getRequest()).isNotSameAs(request);
+        assertThat(chain.getResponse()).isNotSameAs(response);
+    }
 
     @Test
     void sanitizeUriForOperationalLogRedactsLearnerAndSessionPathSegments() {

@@ -65,6 +65,16 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             return;
         }
 
+        // The Custom GPT action regression probe has its own byte-accurate audit log.
+        // Wrapping it here would duplicate the evidence and redact the deliberately
+        // synthetic token that the regression test needs to compare.
+        String requestUri = request.getRequestURI();
+        if (requestUri.equals("/api/action-regression")
+                || requestUri.startsWith("/api/action-regression/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // Skip response wrapping for SSE endpoints - they need to stay open!
         if (request.getRequestURI().contains("/updates/")) {
             logger.debug("Skipping response logging for SSE endpoint: {}", request.getRequestURI());

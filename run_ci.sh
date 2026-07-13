@@ -84,6 +84,12 @@ if [[ "${CURRENT_NODE_VERSION}" != "${REQUIRED_NODE_PREFIX}" && "${CURRENT_NODE_
 fi
 
 echo "=========================================="
+echo "Running Custom GPT Action Regression CI"
+echo "=========================================="
+npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
+npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
+
+echo "=========================================="
 echo "Running Frontend CI (app)"
 echo "=========================================="
 cd "${PROJECT_ROOT}/app"

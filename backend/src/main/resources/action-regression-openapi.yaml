@@ -1,0 +1,173 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SkillPilot Custom GPT Action Regression Probe",
+    "version": "1.0.0",
+    "description": "Minimal stateless API for observing Custom GPT Action result handoff and chaining."
+  },
+  "servers": [
+    {
+      "url": __ACTION_REGRESSION_SERVER_URL__
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/v1/probe": {
+      "get": {
+        "operationId": "createRegressionProbe",
+        "summary": "Return one fresh signed probe tuple.",
+        "x-openai-isConsequential": false,
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "A fresh probe tuple.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Regression-Request-Id": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Probe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/verify": {
+      "post": {
+        "operationId": "verifyRegressionProbe",
+        "summary": "Verify an unchanged signed probe tuple.",
+        "x-openai-isConsequential": false,
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Probe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Whether the tuple is unchanged and authentic.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerificationResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is not exactly one valid probe tuple.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "The request body exceeds 4096 bytes.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The request media type is not application/json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Probe": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "probe_id",
+          "token",
+          "proof"
+        ],
+        "properties": {
+          "probe_id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "token": {
+            "type": "string",
+            "pattern": "^SPREG-[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{16}$"
+          },
+          "proof": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{32}$"
+          }
+        }
+      },
+      "VerificationResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ok",
+          "probe_id",
+          "proof_valid"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "probe_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "proof_valid": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
