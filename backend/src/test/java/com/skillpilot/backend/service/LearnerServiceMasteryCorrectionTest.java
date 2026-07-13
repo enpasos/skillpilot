@@ -75,6 +75,7 @@ class LearnerServiceMasteryCorrectionTest {
         existingMastery = new Mastery(learner, GOAL_ID, 1.0);
 
         when(learnerRepository.findById(LEARNER_ID)).thenReturn(Optional.of(learner));
+        when(learnerRepository.findBySkillpilotIdForUpdate(LEARNER_ID)).thenReturn(Optional.of(learner));
         when(learnerRepository.existsById(LEARNER_ID)).thenReturn(true);
         when(learnerRepository.save(any(Learner.class))).thenAnswer(invocation -> invocation.getArgument(0));
         when(goalMappingService.getAllMappings()).thenReturn(List.of());

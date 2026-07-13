@@ -92,7 +92,7 @@ public class ActionRegressionService {
         auditLogger.log(event);
     }
 
-    Probe issueProbe() {
+    public Probe issueProbe() {
         String probeId = UUID.randomUUID().toString();
         StringBuilder token = new StringBuilder("SPREG-");
         for (int index = 0; index < 16; index++) {
@@ -127,9 +127,7 @@ public class ActionRegressionService {
         String probeIdValue = probeId.textValue();
         String tokenValue = token.textValue();
         String proofValue = proof.textValue();
-        if (!PROBE_ID_PATTERN.matcher(probeIdValue).matches()
-                || !TOKEN_PATTERN.matcher(tokenValue).matches()
-                || !PROOF_PATTERN.matcher(proofValue).matches()) {
+        if (!isValidVerification(probeIdValue, tokenValue, proofValue)) {
             return null;
         }
         return new VerificationInput(probeIdValue, tokenValue, proofValue);
@@ -140,6 +138,13 @@ public class ActionRegressionService {
         return MessageDigest.isEqual(
                 expected.getBytes(StandardCharsets.US_ASCII),
                 input.proof().getBytes(StandardCharsets.US_ASCII));
+    }
+
+    public boolean verifyProbe(String probeId, String token, String proof) {
+        if (!isValidVerification(probeId, token, proof)) {
+            throw new IllegalArgumentException("Probe ID, token or proof has an invalid format.");
+        }
+        return verify(new VerificationInput(probeId, token, proof));
     }
 
     byte[] probeJson(Probe probe) {
@@ -253,7 +258,16 @@ public class ActionRegressionService {
         }
     }
 
-    record Probe(String probeId, String token, String proof) {
+    private static boolean isValidVerification(String probeId, String token, String proof) {
+        return probeId != null
+                && token != null
+                && proof != null
+                && PROBE_ID_PATTERN.matcher(probeId).matches()
+                && TOKEN_PATTERN.matcher(token).matches()
+                && PROOF_PATTERN.matcher(proof).matches();
+    }
+
+    public record Probe(String probeId, String token, String proof) {
     }
 
     record VerificationInput(String probeId, String token, String proof) {

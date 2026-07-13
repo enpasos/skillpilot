@@ -16,6 +16,26 @@ logging:
 spring:
   application:
     name: skillpilot-backend
+  ai:
+    mcp:
+      server:
+        enabled: ${skillpilot.claude.mcp.enabled:false}
+        protocol: STATELESS
+        name: skillpilot-claude-mcp
+        version: 0.1.0
+        type: SYNC
+        instructions: >-
+          When getCoachContext is available, call it first. Follow state.stateMachine.requiredAction,
+          pass backend IDs unchanged, and reload the context instead of relying on old tool results.
+          When getCoachContext returns a language, answer in that language; otherwise continue in the
+          user's language. Never ask for or expose a permanent SkillPilot ID or an OAuth credential.
+        capabilities:
+          resource: false
+          tool: true
+          prompt: false
+          completion: false
+        streamable-http:
+          mcp-endpoint: /api/claude/mcp
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:skillpilot}
     username: ${POSTGRES_USER:skillpilot}
@@ -41,6 +61,23 @@ spring:
             clientSecret: ${GITHUB_CLIENT_SECRET}
 
 skillpilot:
+  public-base-url: ${SKILLPILOT_PUBLIC_BASE_URL:https://skillpilot.com}
+  claude:
+    enabled: ${SKILLPILOT_CLAUDE_ENABLED:false}
+    secure-cookie: ${SKILLPILOT_CLAUDE_SECURE_COOKIE:true}
+    binding-ttl: ${SKILLPILOT_CLAUDE_BINDING_TTL:PT5M}
+    launch-ttl: ${SKILLPILOT_CLAUDE_LAUNCH_TTL:PT5M}
+    mcp-url: ${SKILLPILOT_CLAUDE_MCP_URL:https://skillpilot.com/api/claude/mcp}
+    mcp:
+      enabled: ${SKILLPILOT_CLAUDE_MCP_ENABLED:${SKILLPILOT_CLAUDE_ENABLED:false}}
+      regression-enabled: ${SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED:false}
+    oauth:
+      # Claude's hosted clients identify themselves with this CIMD URL. Override
+      # only if Anthropic changes the published client metadata document.
+      client-id: ${SKILLPILOT_CLAUDE_OAUTH_CLIENT_ID:https://claude.ai/oauth/mcp-oauth-client-metadata}
+      protected-resource-metadata: ${SKILLPILOT_CLAUDE_RESOURCE_METADATA:https://skillpilot.com/api/claude/oauth/protected-resource}
+      access-token-ttl: ${SKILLPILOT_CLAUDE_ACCESS_TOKEN_TTL:PT1H}
+      refresh-token-ttl: ${SKILLPILOT_CLAUDE_REFRESH_TOKEN_TTL:P30D}
   curriculum:
     source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}
     consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}

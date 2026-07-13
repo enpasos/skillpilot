@@ -3048,6 +3048,7 @@ export default defineConfig(({ mode }) => {
             /^\/.*\.pdf$/,
             /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
             /^\/api\/action-regression(?:\/|$)/,
+            /^\/api\/claude\/oauth(?:\/|$)/,
             /^\/curricula\?auth_success/,
             /^\/oauth2/,
             /^\/login/,
