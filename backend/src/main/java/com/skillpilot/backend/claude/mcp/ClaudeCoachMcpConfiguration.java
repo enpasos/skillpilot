@@ -12,6 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(
         name = {"skillpilot.claude.enabled", "skillpilot.claude.mcp.enabled"},
         havingValue = "true")
+@ConditionalOnProperty(
+        name = "skillpilot.claude.mcp.coach-enabled",
+        havingValue = "true",
+        matchIfMissing = true)
 public class ClaudeCoachMcpConfiguration {
 
     @Bean

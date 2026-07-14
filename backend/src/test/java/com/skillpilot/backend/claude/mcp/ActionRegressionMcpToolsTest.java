@@ -2,6 +2,7 @@ package com.skillpilot.backend.claude.mcp;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,12 +24,14 @@ class ActionRegressionMcpToolsTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private ActionRegressionService regressionService;
+    private ActionRegressionAuditLogger auditLogger;
     private ActionRegressionMcpTools tools;
 
     @BeforeEach
     void setUp() {
         regressionService = mock(ActionRegressionService.class);
-        tools = new ActionRegressionMcpTools(regressionService);
+        auditLogger = mock(ActionRegressionAuditLogger.class);
+        tools = new ActionRegressionMcpTools(regressionService, auditLogger);
     }
 
     @Test
@@ -46,6 +49,20 @@ class ActionRegressionMcpToolsTest {
                 new ActionRegressionMcpTools.RegressionVerification(true, PROBE_ID, true));
         verify(regressionService).issueProbe();
         verify(regressionService).verifyProbe(PROBE_ID, TOKEN, PROOF);
+        verify(auditLogger).logClaudeMcpProbeIssued(PROBE_ID, TOKEN, PROOF);
+        verify(auditLogger).logClaudeMcpProbeVerified(PROBE_ID, TOKEN, PROOF, true);
+    }
+
+    @Test
+    void auditsARejectedProofWithoutChangingTheToolResult() {
+        when(regressionService.verifyProbe(PROBE_ID, TOKEN, PROOF)).thenReturn(false);
+
+        ActionRegressionMcpTools.RegressionVerification verification = tools.verifyRegressionProbe(
+                PROBE_ID, TOKEN, PROOF);
+
+        assertThat(verification).isEqualTo(
+                new ActionRegressionMcpTools.RegressionVerification(false, PROBE_ID, false));
+        verify(auditLogger).logClaudeMcpProbeVerified(PROBE_ID, TOKEN, PROOF, false);
     }
 
     @Test

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reproducible baseline for Claude MCP tool-result handoff, same-turn chaining and cross-turn retention.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://skillpilot.com/claude/mcp-regression">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <title>Claude MCP cross-turn baseline · SkillPilot</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5c667a;
+      --line: #dce2eb;
+      --surface: #ffffff;
+      --soft: #f5f7fa;
+      --accent: #78543a;
+      --accent-dark: #5e3e29;
+      --good: #18794e;
+      --warn: #9a6700;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--soft);
+      color: var(--ink);
+      font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 42px auto;
+      padding: clamp(24px, 5vw, 54px);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 18px 50px rgb(31 45 76 / 9%);
+    }
+    h1 {
+      max-width: 850px;
+      margin: 8px 0 14px;
+      font-size: clamp(2rem, 5vw, 3.35rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+    h2 { margin: 0 0 12px; font-size: 1.08rem; }
+    p { margin: 0 0 14px; }
+    a { color: var(--accent-dark); text-underline-offset: 3px; }
+    code {
+      padding: 0.12em 0.35em;
+      border-radius: 5px;
+      background: #edf1f7;
+      color: #172033;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    .eyebrow {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .lede { max-width: 830px; color: var(--muted); font-size: 1.08rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px; }
+    .badge {
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 0.83rem;
+      font-weight: 650;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 18px 0;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+    .wide { grid-column: 1 / -1; }
+    ol, ul { margin: 0; padding-left: 1.3rem; }
+    li + li { margin-top: 8px; }
+    .matrix { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .matrix th, .matrix td { padding: 11px 10px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .matrix th { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .matrix td:first-child { white-space: nowrap; }
+    .pass { color: var(--good); font-weight: 700; }
+    .note {
+      padding: 12px 14px;
+      border-left: 4px solid var(--warn);
+      border-radius: 5px;
+      background: #fff8e6;
+      color: #644b0c;
+      font-size: 0.92rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 9px 15px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button:hover { background: var(--accent-dark); }
+    .button.secondary { background: white; color: var(--accent-dark); }
+    footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    @media (max-width: 720px) {
+      main { width: min(100% - 20px, 980px); margin: 10px auto; border-radius: 14px; }
+      .grid { grid-template-columns: 1fr; }
+      .wide { grid-column: auto; }
+      .matrix { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">SkillPilot · Controlled Claude baseline</p>
+  <h1>Does Claude retain and reuse MCP tool results?</h1>
+  <p class="lede">This protocol checks fresh result handoff, same-turn chaining and cross-turn reuse with random signed markers. It establishes a Claude baseline before any real SkillPilot coaching workflow is tested.</p>
+
+  <div class="badges" aria-label="Test properties">
+    <span class="badge">Claude custom connector</span>
+    <span class="badge">Streamable HTTP MCP</span>
+    <span class="badge">OAuth protected</span>
+    <span class="badge">Synthetic markers</span>
+    <span class="badge">No real learner data</span>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Isolated setup</h2>
+      <ol>
+        <li>Use a dedicated adult Claude test account and a blank SkillPilot test learner. Do not bind a production learner.</li>
+        <li>Use SkillPilot's normal Claude OAuth flow to add the connector under Claude's <strong>Customize &gt; Connectors</strong>.</li>
+        <li>Run the isolated server configuration with <code>SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=false</code> and <code>SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=true</code>.</li>
+        <li>Open the <a href="https://raw.githubusercontent.com/enpasos/skillpilot/main/ai/claude/mcp-regression/CLAUDE_INSTRUCTIONS.md" rel="external">raw test instructions</a>, copy everything including the start/end markers, and paste it unchanged as the first message of every fresh measured chat. Expect <code>TEST_READY</code> without a tool call.</li>
+        <li>Enable SkillPilot for that conversation through <strong>+ &gt; Connectors</strong>. Confirm that the connector exposes exactly <code>createRegressionProbe</code> and <code>verifyRegressionProbe</code>. Stop if any coach tool is visible.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>What this does not test</h2>
+      <ul>
+        <li>It does not call a Custom GPT Action or use an OpenAPI Action schema.</li>
+        <li>It does not test learner state, coaching quality or write operations.</li>
+        <li>It does not expose the SkillPilot ID or OAuth credentials to the model.</li>
+        <li>The public REST health check confirms the shared synthetic service only; it does not replace the authenticated MCP run in Claude.</li>
+      </ul>
+    </section>
+
+    <section class="card wide">
+      <h2>Test matrix</h2>
+      <table class="matrix">
+        <thead>
+          <tr><th>Fresh chat</th><th>User messages</th><th>What is verified</th><th>Success result</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Single</td>
+            <td><code>RUN_SINGLE</code></td>
+            <td>Claude reads fields from a fresh MCP tool result.</td>
+            <td><code>SINGLE probe_id=&lt;uuid&gt; token=&lt;token&gt;</code></td>
+          </tr>
+          <tr>
+            <td>Chain</td>
+            <td><code>RUN_CHAIN</code></td>
+            <td>Claude passes all three fields unchanged to the verifier in the same assistant turn.</td>
+            <td class="pass"><code>CHAIN_PASS</code></td>
+          </tr>
+          <tr>
+            <td>Recall</td>
+            <td><code>RUN_RETAIN</code>, then <code>RECALL_RETAIN</code></td>
+            <td>After the next user turn, Claude reproduces the stored tuple without another tool call.</td>
+            <td><code>RETAIN probe_id=… token=… proof=…</code></td>
+          </tr>
+          <tr>
+            <td>Verify</td>
+            <td><code>RUN_RETAIN</code>, then <code>VERIFY_RETAIN</code></td>
+            <td>The backend objectively validates the exact retained tuple after the user-turn boundary.</td>
+            <td class="pass"><code>VERIFY_PASS</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">Run Recall and Verify in two separate fresh chats, each immediately after its own <code>RUN_RETAIN</code>. Do not restart Spring Boot between issuing and verifying a probe.</p>
+    </section>
+
+    <section class="card wide">
+      <h2>How to interpret the baseline</h2>
+      <p>If Single and Chain pass, MCP dispatch and same-turn result handoff work. If Verify also passes in a separate two-turn run, Claude retained the complete signed MCP result across that immediate user-turn boundary. That is the minimum baseline needed before testing the real coach.</p>
+      <p>A pass is evidence for this controlled conversation and Claude configuration, not a guarantee that arbitrarily old tool results survive context selection or compaction. The coach must still be able to reload current backend state.</p>
+      <p class="note">After the measured block, restore <code>SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=true</code> and <code>SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=false</code>, restart Spring Boot, and confirm in a fresh chat that the regression tools are gone.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/enpasos/skillpilot/blob/main/ai/claude/mcp-regression/TEST_PROTOCOL.md" rel="external">Full test protocol</a>
+        <a class="button secondary" href="https://github.com/enpasos/skillpilot/tree/main/ai/claude/mcp-regression" rel="external">Source materials</a>
+        <a class="button secondary" href="/api/action-regression/healthz">Synthetic API health</a>
+        <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" rel="external">Claude connector help</a>
+        <a href="/api/claude/oauth/protected-resource">MCP resource metadata</a>
+        <a href="/openai/custom-gpt-action-regression">OpenAI Action comparison</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>This Claude test uses the same synthetic probe generator as the public Action control, but reaches it through authenticated MCP tools. OAuth is transport authorization; the generated probe values are not credentials.</footer>
+</main>
+</body>
+</html>

@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -31,6 +34,51 @@ public class ActionRegressionAuditLogger {
     ActionRegressionAuditLogger(ObjectMapper objectMapper, Consumer<String> sink) {
         this.objectMapper = objectMapper;
         this.sink = sink;
+    }
+
+    /**
+     * Records a probe returned through Claude's MCP transport without writing
+     * the reusable token or proof to the log.
+     */
+    public void logClaudeMcpProbeIssued(String probeId, String token, String proof) {
+        Map<String, Object> event = privacySafeClaudeMcpEvent("probe_issued", probeId, token, proof);
+        log(event);
+    }
+
+    /**
+     * Records a probe verification through Claude's MCP transport. Hashing the
+     * markers permits create/verify correlation while keeping their values out
+     * of application logs.
+     */
+    public void logClaudeMcpProbeVerified(
+            String probeId,
+            String token,
+            String proof,
+            boolean proofValid) {
+        Map<String, Object> event = privacySafeClaudeMcpEvent("probe_verified", probeId, token, proof);
+        event.put("verify_called", true);
+        event.put("proof_valid", proofValid);
+        log(event);
+    }
+
+    private static Map<String, Object> privacySafeClaudeMcpEvent(
+            String eventName,
+            String probeId,
+            String token,
+            String proof) {
+        Map<String, Object> event = new LinkedHashMap<>();
+        event.put("ts", Instant.now().toString());
+        event.put("event", eventName);
+        event.put("service", "skillpilot-action-regression");
+        event.put("transport", "claude-mcp");
+        event.put("probe_id", probeId);
+        event.put("token_sha256", markerHash(token));
+        event.put("proof_sha256", markerHash(proof));
+        return event;
+    }
+
+    private static String markerHash(String marker) {
+        return ActionRegressionService.sha256Hex(marker.getBytes(StandardCharsets.UTF_8));
     }
 
     void log(Map<String, ?> event) {
