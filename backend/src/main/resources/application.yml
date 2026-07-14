@@ -70,6 +70,7 @@ skillpilot:
     mcp-url: ${SKILLPILOT_CLAUDE_MCP_URL:https://skillpilot.com/api/claude/mcp}
     mcp:
       enabled: ${SKILLPILOT_CLAUDE_MCP_ENABLED:${SKILLPILOT_CLAUDE_ENABLED:false}}
+      coach-enabled: ${SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED:true}
       regression-enabled: ${SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED:false}
     oauth:
       # Claude's hosted clients identify themselves with this CIMD URL. Override

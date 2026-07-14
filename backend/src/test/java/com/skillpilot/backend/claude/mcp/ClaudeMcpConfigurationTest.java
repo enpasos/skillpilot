@@ -1,5 +1,6 @@
 package com.skillpilot.backend.claude.mcp;
 
+import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.tool.ToolCallbackProvider;
@@ -12,6 +13,7 @@ class ClaudeMcpConfigurationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
             .withBean(ActionRegressionService.class, () -> mock(ActionRegressionService.class))
+            .withBean(ActionRegressionAuditLogger.class, () -> mock(ActionRegressionAuditLogger.class))
             .withUserConfiguration(ClaudeMcpConfiguration.class);
 
     @Test
@@ -23,9 +25,22 @@ class ClaudeMcpConfigurationTest {
     }
 
     @Test
-    void registersOnlyWhenExplicitlyEnabled() {
+    void doesNotRegisterWhenOnlyTheMcpFlagsAreEnabled() {
         contextRunner
                 .withPropertyValues(
+                        "skillpilot.claude.mcp.enabled=true",
+                        "skillpilot.claude.mcp.regression-enabled=true")
+                .run(context -> {
+                    assertThat(context).doesNotHaveBean(ActionRegressionMcpTools.class);
+                    assertThat(context).doesNotHaveBean(ToolCallbackProvider.class);
+                });
+    }
+
+    @Test
+    void registersOnlyWhenMasterAndMcpFlagsAreEnabled() {
+        contextRunner
+                .withPropertyValues(
+                        "skillpilot.claude.enabled=true",
                         "skillpilot.claude.mcp.enabled=true",
                         "skillpilot.claude.mcp.regression-enabled=true")
                 .run(context -> {

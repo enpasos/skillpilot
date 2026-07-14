@@ -3047,6 +3047,7 @@ export default defineConfig(({ mode }) => {
           navigateFallbackDenylist: [
             /^\/.*\.pdf$/,
             /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
+            /^\/claude\/mcp-regression(?:\/|$)/,
             /^\/api\/action-regression(?:\/|$)/,
             /^\/api\/claude\/oauth(?:\/|$)/,
             /^\/curricula\?auth_success/,

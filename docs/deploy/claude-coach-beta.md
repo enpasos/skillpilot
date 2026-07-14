@@ -50,6 +50,7 @@ Spring-Boot-Runtime-Konfiguration und gehören im Produktivbetrieb in das
 | `VITE_CLAUDE_BETA_ENABLED` | `true` | Zeigt die Claude-Buttons; erfordert einen neuen Frontend-Build. Ohne Wert ist die UI verborgen. |
 | `SKILLPILOT_CLAUDE_ENABLED` | `true` | Master-Schalter für UI-Routen, OAuth, Tokenprüfung und Coach-Tools. |
 | `SKILLPILOT_CLAUDE_MCP_ENABLED` | `true` | Schaltet den Spring-AI-MCP-Transport ein; erbt ohne eigenen Wert vom Master-Schalter. |
+| `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED` | `true` | Exponiert die echten Lernstands- und Coach-Tools. Für einen isolierten synthetischen Regressionstest vorübergehend auf `false` setzen. |
 | `SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED` | `false` | Exponiert nur bei gezielten Regressionstests zusätzlich die synthetischen Probe-Tools; im Coach-Betrieb ausgeschaltet lassen. |
 | `SKILLPILOT_PUBLIC_BASE_URL` | `https://skillpilot.com` | Öffentlicher OAuth-Issuer. |
 | `SKILLPILOT_CLAUDE_MCP_URL` | `https://skillpilot.com/api/claude/mcp` | Öffentliche MCP-Resource/Audience. |
@@ -205,12 +206,20 @@ können zusätzlich Freigaben durch Owner erforderlich sein.
    Git-Stand markieren. Die Liquibase-Erweiterung ist additiv.
 2. Backend mit beiden Runtime-Flags `true`, aber Frontend-Flag noch `false`
    deployen. Discovery, OAuth-Challenge und MCP-Transport prüfen.
-3. Einen eigenen volljährigen Test-Lerner und ein eigenes Claude-Testkonto
-   verwenden. Verbindung, Consent, Lesen und eine bestätigte Schreibaktion testen.
-4. Notebook-zu-Mobile-Wechsel mit demselben Claude-Konto prüfen.
-5. Erst danach mit `VITE_CLAUDE_BETA_ENABLED=true` neu bauen und die Beta-UI
-   freischalten. ChatGPT parallel mit dem RegressionGPT und einem normalen
-   SkillPilot-Start gegenprüfen.
+3. Für das kontrollierte Testfenster mit `VITE_CLAUDE_BETA_ENABLED=true` neu
+   bauen, damit der browsergebundene OAuth-Start über den normalen UI-Button
+   erfolgen kann. Das Flag ist global; außerhalb des Testfensters wieder
+   deaktivieren, solange die Beta noch nicht allgemein angeboten werden soll.
+4. Vor echten Coach-Tools mit einem leeren Test-Lernstand und einem volljährigen
+   Claude-Testkonto den isolierten MCP-Regressionslauf ausführen: Coach-Tools
+   aus, synthetische Regressionstools an. Die öffentliche Kurzfassung liegt unter
+   `/claude/mcp-regression`, das vollständige Protokoll unter
+   `ai/claude/mcp-regression/TEST_PROTOCOL.md`.
+5. Regressionstools wieder ausschalten, Coach-Tools einschalten und mit demselben
+   Testkonto Verbindung, Consent, Lesen und eine bestätigte Schreibaktion testen.
+6. Notebook-zu-Mobile-Wechsel mit demselben Claude-Konto prüfen.
+7. Erst danach entscheiden, ob die Beta-UI aktiviert bleibt. ChatGPT parallel
+   mit dem RegressionGPT und einem normalen SkillPilot-Start gegenprüfen.
 
 ## Smoke-Test
 
@@ -244,6 +253,37 @@ curl -sS -o /dev/null -D - \
 
 Erwartung beim dritten Aufruf: `401` und ein `WWW-Authenticate`-Header mit
 `resource_metadata="https://skillpilot.com/api/claude/oauth/protected-resource"`.
+
+### Isolierter Claude-MCP-Basistest
+
+Vor dem ersten echten Coach-Aufruf nur die synthetischen Werkzeuge exponieren:
+
+```text
+--skillpilot.claude.mcp.coach-enabled=false
+--skillpilot.claude.mcp.regression-enabled=true
+```
+
+Nach dem Neustart einen leeren Test-Lernstand über den normalen OAuth-Fluss
+verbinden. Die Schritte `RUN_SINGLE`, `RUN_CHAIN`, `RUN_RETAIN` plus
+`RECALL_RETAIN` und der backend-bestätigte Lauf `RUN_RETAIN` plus
+`VERIFY_RETAIN` stehen auf
+`https://skillpilot.com/claude/mcp-regression`. Der letzte Lauf gilt nur dann
+als bestanden, wenn der Verifier `proof_valid=true` liefert und die
+privacy-sicheren Auditereignisse für denselben `probe_id` identische Token- und
+Proof-Hashes enthalten. Zwischen den beiden RETAIN-Turns den Prozess nicht neu
+starten.
+
+Danach den normalen Werkzeugumfang wiederherstellen und neu starten:
+
+```text
+--skillpilot.claude.mcp.coach-enabled=true
+--skillpilot.claude.mcp.regression-enabled=false
+```
+
+Bereits offene Claude-Chats können Tool-Metadaten zwischenspeichern; die
+anschließende Coach-Abnahme deshalb in einem frischen Chat durchführen. Das
+vollständige Evidenz- und Cleanup-Protokoll steht in
+`ai/claude/mcp-regression/TEST_PROTOCOL.md`.
 
 Optional den UI-Start mit einer reinen Test-ID prüfen. Die Cookie-Datei enthält
 einen kurzlebigen Secret-Wert und wird deshalb sofort gelöscht:

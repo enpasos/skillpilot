@@ -1,6 +1,7 @@
 package com.skillpilot.backend.claude.mcp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
@@ -14,9 +15,13 @@ import org.springframework.ai.tool.annotation.ToolParam;
 public final class ActionRegressionMcpTools {
 
     private final ActionRegressionService regressionService;
+    private final ActionRegressionAuditLogger auditLogger;
 
-    ActionRegressionMcpTools(ActionRegressionService regressionService) {
+    ActionRegressionMcpTools(
+            ActionRegressionService regressionService,
+            ActionRegressionAuditLogger auditLogger) {
         this.regressionService = regressionService;
+        this.auditLogger = auditLogger;
     }
 
     @Tool(
@@ -25,6 +30,7 @@ public final class ActionRegressionMcpTools {
                     + "Call this first, then pass all returned fields unchanged to verifyRegressionProbe.")
     public RegressionProbe createRegressionProbe() {
         ActionRegressionService.Probe probe = regressionService.issueProbe();
+        auditLogger.logClaudeMcpProbeIssued(probe.probeId(), probe.token(), probe.proof());
         return new RegressionProbe(probe.probeId(), probe.token(), probe.proof());
     }
 
@@ -38,6 +44,7 @@ public final class ActionRegressionMcpTools {
             @ToolParam(description = "The exact token returned by createRegressionProbe") String token,
             @ToolParam(description = "The exact proof returned by createRegressionProbe") String proof) {
         boolean valid = regressionService.verifyProbe(probe_id, token, proof);
+        auditLogger.logClaudeMcpProbeVerified(probe_id, token, proof, valid);
         return new RegressionVerification(valid, probe_id, valid);
     }
 

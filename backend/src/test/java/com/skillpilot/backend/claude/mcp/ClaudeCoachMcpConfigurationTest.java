@@ -1,5 +1,6 @@
 package com.skillpilot.backend.claude.mcp;
 
+import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
@@ -51,9 +52,23 @@ class ClaudeCoachMcpConfigurationTest {
     }
 
     @Test
+    void coachProviderCanBeSuppressedForAnIsolatedRegressionRun() {
+        contextRunner
+                .withPropertyValues(
+                        "skillpilot.claude.enabled=true",
+                        "skillpilot.claude.mcp.enabled=true",
+                        "skillpilot.claude.mcp.coach-enabled=false")
+                .run(context -> {
+                    assertThat(context).doesNotHaveBean(ClaudeCoachMcpTools.class);
+                    assertThat(context).doesNotHaveBean(ToolCallbackProvider.class);
+                });
+    }
+
+    @Test
     void coachAndRegressionUseSeparateCallbackProviders() {
         new ApplicationContextRunner()
                 .withBean(ActionRegressionService.class, () -> mock(ActionRegressionService.class))
+                .withBean(ActionRegressionAuditLogger.class, () -> mock(ActionRegressionAuditLogger.class))
                 .withBean(CoachToolFacade.class, () -> mock(CoachToolFacade.class))
                 .withBean(ClaudeCoachConnectionService.class, () -> mock(ClaudeCoachConnectionService.class))
                 .withUserConfiguration(ClaudeMcpConfiguration.class, ClaudeCoachMcpConfiguration.class)

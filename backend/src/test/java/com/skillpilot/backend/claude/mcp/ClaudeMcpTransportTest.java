@@ -26,6 +26,8 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.stream.StreamSupport;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -33,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         classes = ClaudeMcpTransportTest.TestApplication.class,
         webEnvironment = org.springframework.boot.test.context.SpringBootTest.WebEnvironment.MOCK)
 @TestPropertySource(properties = {
+        "skillpilot.claude.enabled=true",
         "skillpilot.claude.mcp.enabled=true",
         "skillpilot.claude.mcp.regression-enabled=true"
 })
@@ -42,6 +45,8 @@ class ClaudeMcpTransportTest {
     private static final String PROTOCOL_VERSION = "2025-11-25";
     @Autowired
     private WebApplicationContext applicationContext;
+    @Autowired
+    private ActionRegressionAuditLogger auditLogger;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -125,6 +130,15 @@ class ClaudeMcpTransportTest {
         assertThat(verification.path("ok").asBoolean()).isTrue();
         assertThat(verification.path("probe_id").asText()).isEqualTo(probe.path("probe_id").asText());
         assertThat(verification.path("proof_valid").asBoolean()).isTrue();
+        verify(auditLogger).logClaudeMcpProbeIssued(
+                probe.path("probe_id").asText(),
+                probe.path("token").asText(),
+                probe.path("proof").asText());
+        verify(auditLogger).logClaudeMcpProbeVerified(
+                probe.path("probe_id").asText(),
+                probe.path("token").asText(),
+                probe.path("proof").asText(),
+                true);
     }
 
     private MvcResult postJson(String json) throws Exception {
@@ -157,11 +171,16 @@ class ClaudeMcpTransportTest {
     static class TestApplication {
 
         @Bean
-        ActionRegressionService actionRegressionService() {
+        ActionRegressionAuditLogger actionRegressionAuditLogger() {
+            return mock(ActionRegressionAuditLogger.class);
+        }
+
+        @Bean
+        ActionRegressionService actionRegressionService(ActionRegressionAuditLogger auditLogger) {
             ObjectMapper mapper = new ObjectMapper();
             return new ActionRegressionService(
                     mapper,
-                    new ActionRegressionAuditLogger(mapper),
+                    auditLogger,
                     "https://regression.example.test",
                     "claude-mcp-transport-test");
         }
