@@ -25,10 +25,13 @@ spring:
         version: 0.1.0
         type: SYNC
         instructions: >-
-          When getCoachContext is available, call it first. Follow state.stateMachine.requiredAction,
-          pass backend IDs unchanged, and reload the context instead of relying on old tool results.
-          When getCoachContext returns a language, answer in that language; otherwise continue in the
-          user's language. Never ask for or expose a permanent SkillPilot ID or an OAuth credential.
+          Follow the user's explicit request and the descriptions of the currently available tools.
+          When getCoachContext is available and the request is a coaching task, call it first and
+          follow state.stateMachine.requiredAction. After changing coach state, reload the context
+          before making another coaching decision. Preserve backend-provided fields unchanged when
+          passing them between tools. When getCoachContext returns a language, answer in that language;
+          otherwise continue in the user's language. Never ask for or expose a permanent SkillPilot ID
+          or an OAuth credential.
         capabilities:
           resource: false
           tool: true

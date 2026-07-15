@@ -264,14 +264,16 @@ Vor dem ersten echten Coach-Aufruf nur die synthetischen Werkzeuge exponieren:
 ```
 
 Nach dem Neustart einen leeren Test-Lernstand über den normalen OAuth-Fluss
-verbinden. Die Schritte `RUN_SINGLE`, `RUN_CHAIN`, `RUN_RETAIN` plus
-`RECALL_RETAIN` und der backend-bestätigte Lauf `RUN_RETAIN` plus
-`VERIFY_RETAIN` stehen auf
-`https://skillpilot.com/claude/mcp-regression`. Der letzte Lauf gilt nur dann
-als bestanden, wenn der Verifier `proof_valid=true` liefert und die
+verbinden. Die transparenten Einzelprompts für einen unmittelbaren Aufruf, die
+Übergabe im selben Turn und die backend-bestätigte Übergabe über die nächste
+Nutzernachricht stehen auf `https://skillpilot.com/claude/mcp-regression`. Die
+Prompt-Datei ist eine Anleitung für die testende Person und wird nicht als
+dauerhaftes Protokoll vollständig in Claude eingefügt. Der Cross-Turn-Lauf gilt
+nur dann als bestanden, wenn der Verifier `proof_valid=true` liefert und die
 privacy-sicheren Auditereignisse für denselben `probe_id` identische Token- und
-Proof-Hashes enthalten. Zwischen den beiden RETAIN-Turns den Prozess nicht neu
-starten.
+Proof-Hashes enthalten. Zwischen den beiden Cross-Turn-Nachrichten den Prozess
+nicht neu starten. Eine Ablehnung des Testauftrags wird als Policy-Refusal und
+nicht als Retention-Fehler erfasst.
 
 Danach den normalen Werkzeugumfang wiederherstellen und neu starten:
 
