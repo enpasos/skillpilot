@@ -47,6 +47,7 @@ jobs:
         run: npm --prefix "ai/openai custom gpt/action-regression" test
 
   frontend-ci:
+    name: Application frontend CI
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -64,28 +65,25 @@ jobs:
         run: npm ci
       - name: Test deterministic ZIP32 writer
         run: npm run test:deterministic-zip32
-      - name: Test full standalone curriculum package builder
-        run: npm run test:full-standalone-package-builder
-      - name: Typecheck Core-first FWU-OWL package builder
-        run: npm run typecheck:fwu-owl-package-builder
-      - name: Test Core-first FWU-OWL package builder
-        run: npm run test:fwu-owl-package-builder
+      - name: Test package landscape model parity
+        run: npm run test:package-landscape-model
       - name: Test runtime curriculum catalog consumer
         run: npm run test:runtime-curriculum-catalog
       - name: Test curriculum offering sources
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer
         run: npm run test:package-goal-source-evidence
+      - name: Test learner goal selection
+        run: npm run validate:learner-goal-selection
+      - name: Check GPT system instruction lengths
+        run: npm run check:gpt-system-instruction-lengths
       - name: Lint
         run: npm run lint
-      - name: Build
-        run: npm run build
-      - name: Build package-only consumer frontend
-        run: npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend
-      - name: Check Goal Source Rationale Build Artifact
-        run: npm run check:goal-source-rationales:build-artifact
+      - name: Build application without regenerating curriculum assets
+        run: npm run build:application
 
   graph-validation:
+    name: Curriculum CI
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -103,14 +101,6 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
-      - name: Test package landscape model parity
-        run: npm run test:package-landscape-model
-      - name: Test runtime curriculum catalog consumer
-        run: npm run test:runtime-curriculum-catalog
-      - name: Test curriculum offering sources
-        run: npm run test:curriculum-offering-source
-      - name: Test package goal source evidence consumer
-        run: npm run test:package-goal-source-evidence
       - name: Validate View Filters
         run: npm run validate:view-filters
       - name: Check Source Landscape Registry
@@ -123,6 +113,14 @@ jobs:
         run: npm run check:german-seki-composition-views
       - name: Check generated History Sek-I Composition Views
         run: npm run check:history-seki-composition-views
+      - name: Check Canonical Math Scope Coverage
+        run: npm run check:canonical-math-scope-coverage
+      - name: Check Gymnasium G8/G9 Duration Readiness Report
+        run: npm run check:gymnasium-duration-readiness
+      - name: Check Mathematics G8/G9 Duration Policy Readiness
+        run: npm run check:math-duration-policy-readiness
+      - name: Check M6 G8/G9 Duration Policy Readiness
+        run: npm run check:m6-duration-policy-readiness
       - name: Check Gymnasium Duration Offerings
         run: npm run check:gymnasium-duration-offerings
       - name: Check Curriculum Source Coverage
@@ -149,6 +147,22 @@ jobs:
         run: npm run validate:composition-views
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
+      - name: Prepare generated curriculum runtime assets
+        run: npm run prepare:runtime-assets
+      - name: Check goal visualization runtime assets
+        run: npm run check:goal-visualization-assets
+      - name: Test full standalone curriculum package builder
+        run: npm run test:full-standalone-package-builder
+      - name: Typecheck Core-first FWU-OWL package builder
+        run: npm run typecheck:fwu-owl-package-builder
+      - name: Test Core-first FWU-OWL package builder
+        run: npm run test:fwu-owl-package-builder
+      - name: Build integrated application artifact
+        run: npm run build:application
+      - name: Build package-only consumer frontend
+        run: npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend
+      - name: Check Goal Source Rationale Build Artifact
+        run: npm run check:goal-source-rationales:build-artifact
       - name: Set up Python
         uses: actions/setup-python@v6
         with:

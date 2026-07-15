@@ -13,42 +13,27 @@ The workflow ignores documentation-only and temporary changes (`README.md`, `AGE
 
 ## Jobs
 
-### 1. `frontend-ci`
+### 1. `action-regression-ci`
 
-Purpose: validate frontend source quality and buildability (`app/`).
+Purpose: validate the Spring-hosted Custom GPT Action regression control client.
 
-Steps:
+### 2. `frontend-ci` — application logic
 
-1. `npm ci`
-2. `npm run lint`
-3. `npm run build`
+Purpose: validate fixture-based frontend application behavior, source quality, and buildability (`app/`) without regenerating curriculum assets.
 
-### 2. `graph-validation`
+This includes the package/runtime adapters, learner-goal selection, GPT instruction limits, the deterministic ZIP primitive, ESLint, and `npm run build:application`.
 
-Purpose: validate curriculum graph/data integrity and schema constraints.
+`build:application` deliberately compiles and builds only the application against the committed runtime assets. The normal production command `npm run build` remains integrated and first prepares curriculum runtime assets.
 
-Steps:
+### 3. `graph-validation` — curriculum
 
-1. `npm ci` (in `app/`)
-2. `npm run validate:graph`
-3. `npm run validate:view-filters`
-4. `npm run check:he-math-duration-projection`
-5. `npm run quality:source-coverage-audit:check`
-6. `npm run check:generated-doc-notices`
-7. `npm run check:generated-status-registry`
-8. `npm run check:docs-links`
-9. `npm run check:docs-indexes`
-10. `npm run validate:composition-views`
-11. `npm run quality:memory-card-review:check:all`
-12. `python scripts/validate_schemas.py`
-13. `python scripts/validate_goal_ids_uuid.py`
-14. `python scripts/validate_hessen_upper_secondary_archive_paths.py`
-15. `python scripts/validate_hessen_upper_secondary_legacy_refs.py`
-16. `python scripts/validate_chemistry_exam_pipeline.py`
-17. `python scripts/validate_hessen_lower_secondary_archive_paths.py`
-18. `python scripts/validate_hessen_lower_secondary_legacy_refs.py`
-19. `python scripts/validate_bavaria_gymnasium_archive_paths.py`
-20. `python scripts/validate_bavaria_gymnasium_legacy_refs.py`
+Purpose: validate curriculum graph/data integrity, generated artifacts, package builders, hermetic package consumption, schema contracts, and release conformance.
+
+The job contains the graph, view, placement, source, review, asset, package, schema, archive, and legacy-reference gates. It also builds the closed package-only frontend and runs the real package consumer with the repository hidden. This is the suite that prevents curriculum packages from reading repository fallback data.
+
+Pushes and pull requests always run both the application and curriculum jobs. The split is for ownership, diagnosis, and faster local iteration; it is not a path-based permission to skip a suite.
+
+The local and hosted curriculum paths intentionally run the same scope/readiness and goal-source-rationale gates, so a local curriculum result cannot diverge merely because the two checklists differ.
 
 The graph rule catalog is documented in:
 
@@ -100,7 +85,7 @@ npm run quality:mem-sparql-consistency
 
 This writes the MEM audit and review-queue artifacts under `docs/qa-ci/status/`. It is not part of the blocking CI workflow because the MEM endpoint is external and currently exposes concrete curriculum data only for some configured jurisdictions. See `docs/qa-ci/mem-sparql-consistency-runbook.md` for the operational workflow.
 
-### 3. `backend-ci`
+### 4. `backend-ci` — application logic
 
 Purpose: validate backend (`backend/`) via Gradle checks.
 
@@ -117,11 +102,16 @@ All CI jobs must pass for a successful workflow run.
 From repository root:
 
 ```bash
-bash run_ci.sh
+./run_ci.sh
+./run_ci.sh all
+./run_ci.sh application
+./run_ci.sh curriculum
 ```
 
-This runs:
+With no argument, `all` remains the default and the final repository gate. The separate modes are:
 
-1. app checks (`validate:graph`, `validate:view-filters`, `check:he-math-duration-projection`, `quality:source-coverage-audit:check`, `check:generated-doc-notices`, `check:generated-status-registry`, `check:docs-links`, `check:docs-indexes`, `validate:composition-views`, `quality:memory-card-review:check:all`, `lint`, `build`)
-2. repo-level data checks (`validate_schemas.py`, `validate_goal_ids_uuid.py`, `validate_hessen_upper_secondary_archive_paths.py`, `validate_hessen_upper_secondary_legacy_refs.py`, `validate_chemistry_exam_pipeline.py`, `validate_hessen_lower_secondary_archive_paths.py`, `validate_hessen_lower_secondary_legacy_refs.py`, `validate_bavaria_gymnasium_archive_paths.py`, `validate_bavaria_gymnasium_legacy_refs.py`)
-3. backend checks (`./gradlew clean check --no-daemon`)
+- `application`: Custom GPT Action regression, fixture-based frontend application logic, GPT instruction limits, lint, application-only build, and isolated Gradle backend checks.
+- `curriculum`: graph/data/review/asset gates, curriculum package builders, the hash-bound hermetic package consumer, schemas, and release conformance.
+- `all`: each check from both suites exactly once, sharing dependency and tool setup where possible.
+
+Unknown or multiple suite arguments fail with exit code 2. Do not infer the suite from changed paths: cross-cutting changes must still finish with `./run_ci.sh` or `./run_ci.sh all`.

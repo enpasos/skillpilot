@@ -75,12 +75,21 @@ SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 # Update them intentionally whenever one of the named helpers changes.
 PINNED_HELPER_SHA256 = {
     "app/scripts/buildPackageConsumerFrontend.ts": "376b6f26df3a502c7b702f8a30761123e9a911862fb49f08cf89109c9e3f630c",
-    "app/vite.config.ts": "ce91d3202d5c4d0f06a0f8bec7b93be6769f495af42635fd8b66b4749311d749",
+    "app/vite.config.ts": "b0e9d80887401b2497e9a9affdb7c152b5c6d810f8834c273992203ee36ed315",
+    "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
+    "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
+    "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",
     "scripts/package_consumer_browser_smoke.cjs": "b5fae928700ba0092a599a854322598a228be8716e84407f1a0d2b4a62a47b05",
     "scripts/package_consumer_runtime.init.gradle": "e084d70053a16a9a499a3cab7e807035d9179ee0f318f26318de798f096b470b",
     "scripts/package_consumer_sandbox_entry.py": "32c348c4912271f3773705477bd4f2d86ad332ed2a68a92498188f45879499d3",
     "scripts/package_consumer_smoke_http.py": "d9617437722a6a651f35f1e8e614e98db4569e97d9ff519a9e10d2c70101acbb",
 }
+
+BACKEND_CLASSPATH_RESOURCES = (
+    "backend/src/main/resources/action-regression-openapi.yaml",
+    "backend/src/main/resources/action-regression-report.html",
+    "backend/src/main/resources/claude-mcp-regression-report.html",
+)
 
 
 class SmokeFailure(RuntimeError):
@@ -467,6 +476,30 @@ def verify_pinned_helpers() -> dict[str, dict[str, Any]]:
     return bindings
 
 
+def copy_backend_classpath_resources(classes_target: Path) -> None:
+    resource_root = Path("backend/src/main/resources")
+    for relative in BACKEND_CLASSPATH_RESOURCES:
+        relative_path = Path(relative)
+        try:
+            classpath_path = relative_path.relative_to(resource_root)
+        except ValueError as error:
+            raise SmokeFailure(f"Backend classpath resource is outside its source root: {relative}") from error
+        if classpath_path.is_absolute() or ".." in classpath_path.parts:
+            raise SmokeFailure(f"Backend classpath resource has an unsafe target path: {relative}")
+        if relative not in PINNED_HELPER_SHA256:
+            raise SmokeFailure(f"Backend classpath resource is not pinned: {relative}")
+        source = REPO_ROOT / relative_path
+        assert_no_symlink_components(source)
+        _size, actual_hash = sha256_file(source)
+        if actual_hash != PINNED_HELPER_SHA256[relative]:
+            raise SmokeFailure(f"Backend classpath resource differs from its pin: {relative}")
+        target = classes_target / classpath_path
+        if target.exists():
+            raise SmokeFailure(f"Backend classpath resource collides with a compiled output: {classpath_path}")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+
+
 def assert_safe_work_directory(path: Path) -> None:
     lexical = absolute_without_resolving(path)
     tmp_root = absolute_without_resolving(REPO_ROOT / "tmp")
@@ -728,6 +761,7 @@ def build_backend_assembly(
     if not classes.is_dir():
         raise SmokeFailure(f"Backend compilation produced no main classes: {classes}")
     shutil.copytree(classes, assembly / "classes")
+    copy_backend_classpath_resources(assembly / "classes")
     dependency_root = assembly / "deps"
     dependency_root.mkdir()
     seen_names: dict[str, str] = {}
@@ -1185,6 +1219,25 @@ def self_test() -> None:
         second = digest_tree(root)
         if first != second or first[0] != 9 or not SHA256_PATTERN.fullmatch(first[1]):
             raise SmokeFailure("Runtime tree digest is not deterministic")
+        classpath_fixture = root / "backend-classpath"
+        classpath_fixture.mkdir()
+        copy_backend_classpath_resources(classpath_fixture)
+        expected_classpath_files = {
+            Path(relative).relative_to("backend/src/main/resources").as_posix()
+            for relative in BACKEND_CLASSPATH_RESOURCES
+        }
+        observed_classpath_files = {
+            path.relative_to(classpath_fixture).as_posix()
+            for path in classpath_fixture.rglob("*")
+            if path.is_file()
+        }
+        if observed_classpath_files != expected_classpath_files:
+            raise SmokeFailure("Hermetic backend classpath resource allowlist did not copy its exact file set")
+        for relative in BACKEND_CLASSPATH_RESOURCES:
+            classpath_path = Path(relative).relative_to("backend/src/main/resources")
+            if (classpath_fixture / classpath_path).read_bytes() != (REPO_ROOT / relative).read_bytes():
+                raise SmokeFailure(f"Pinned backend classpath resource was not copied unchanged: {relative}")
+        print("PASS pinned backend classpath resources are copied into the hermetic assembly")
         if not trace_has_external_network('connect(1, {sin_addr=inet_addr("203.0.113.1")}, 16) = 0'):
             raise SmokeFailure("External network trace was not detected")
         if trace_has_external_network('connect(1, {sin_addr=inet_addr("203.0.113.1")}, 16) = -1 ENETUNREACH'):
