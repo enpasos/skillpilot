@@ -28,6 +28,7 @@ import java.util.stream.StreamSupport;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,6 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(properties = {
         "skillpilot.claude.enabled=true",
         "skillpilot.claude.mcp.enabled=true",
+        "skillpilot.claude.mcp.coach-enabled=false",
         "skillpilot.claude.mcp.regression-enabled=true"
 })
 class ClaudeMcpTransportTest {
@@ -99,7 +101,28 @@ class ClaudeMcpTransportTest {
                 .orElseThrow();
         assertThat(verifyTool.path("inputSchema").path("properties").fieldNames())
                 .toIterable()
-                .containsExactlyInAnyOrder("probe_id", "token", "proof");
+                .containsExactlyInAnyOrder("probe_id", "sample_marker", "integrity_tag");
+        assertThat(verifyTool.path("description").asText())
+                .contains("inert synthetic sample data")
+                .doesNotContain("token", "proof");
+    }
+
+    @Test
+    void publicRegressionStatusMatchesTheEffectiveToolRegistration() throws Exception {
+        MvcResult result = mockMvc.perform(get(ClaudeMcpRegressionStatusController.STATUS_PATH))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        JsonNode body = objectMapper.readTree(result.getResponse().getContentAsByteArray());
+        assertThat(body.path("status").asText()).isEqualTo("ready");
+        assertThat(body.path("claude_enabled").asBoolean()).isTrue();
+        assertThat(body.path("mcp_enabled").asBoolean()).isTrue();
+        assertThat(body.path("coach_tools_enabled").asBoolean()).isFalse();
+        assertThat(body.path("regression_tools_enabled").asBoolean()).isTrue();
+        assertThat(body.path("regression_tools_ready").asBoolean()).isTrue();
+        assertThat(StreamSupport.stream(body.path("registered_regression_tools").spliterator(), false)
+                .map(JsonNode::asText))
+                .containsExactly("createRegressionProbe", "verifyRegressionProbe");
     }
 
     @Test
@@ -116,8 +139,11 @@ class ClaudeMcpTransportTest {
         JsonNode probe = toolTextJson(createBody);
         assertThat(probe.path("probe_id").asText())
                 .matches("^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$");
-        assertThat(probe.path("token").asText()).matches("^SPREG-[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{16}$");
-        assertThat(probe.path("proof").asText()).matches("^[0-9a-f]{32}$");
+        assertThat(probe.path("sample_marker").asText())
+                .matches("^SPREG-[ABCDEFGHJKLMNPQRSTUVWXYZ23456789]{16}$");
+        assertThat(probe.path("integrity_tag").asText()).matches("^[0-9a-f]{32}$");
+        assertThat(probe.has("token")).isFalse();
+        assertThat(probe.has("proof")).isFalse();
 
         JsonNode verifyRequest = objectMapper.createObjectNode()
                 .put("jsonrpc", "2.0")
@@ -132,15 +158,15 @@ class ClaudeMcpTransportTest {
         JsonNode verification = toolTextJson(verifyBody);
         assertThat(verification.path("ok").asBoolean()).isTrue();
         assertThat(verification.path("probe_id").asText()).isEqualTo(probe.path("probe_id").asText());
-        assertThat(verification.path("proof_valid").asBoolean()).isTrue();
+        assertThat(verification.path("integrity_valid").asBoolean()).isTrue();
         verify(auditLogger).logClaudeMcpProbeIssued(
                 probe.path("probe_id").asText(),
-                probe.path("token").asText(),
-                probe.path("proof").asText());
+                probe.path("sample_marker").asText(),
+                probe.path("integrity_tag").asText());
         verify(auditLogger).logClaudeMcpProbeVerified(
                 probe.path("probe_id").asText(),
-                probe.path("token").asText(),
-                probe.path("proof").asText(),
+                probe.path("sample_marker").asText(),
+                probe.path("integrity_tag").asText(),
                 true);
     }
 
@@ -170,7 +196,7 @@ class ClaudeMcpTransportTest {
             SecurityAutoConfiguration.class,
             OAuth2ClientAutoConfiguration.class
     })
-    @Import(ClaudeMcpConfiguration.class)
+    @Import({ClaudeMcpConfiguration.class, ClaudeMcpRegressionStatusController.class})
     static class TestApplication {
 
         @Bean

@@ -136,7 +136,7 @@
 <main>
   <p class="eyebrow">SkillPilot · Controlled Claude baseline</p>
   <h1>Does Claude retain and reuse MCP tool results?</h1>
-  <p class="lede">This protocol checks fresh result handoff, same-turn chaining and cross-turn reuse with random signed markers. It establishes a Claude baseline before any real SkillPilot coaching workflow is tested.</p>
+  <p class="lede">This protocol checks fresh result handoff, same-turn chaining and cross-turn reuse with inert synthetic sample data. It establishes a Claude baseline before any real SkillPilot coaching workflow is tested.</p>
 
   <div class="badges" aria-label="Test properties">
     <span class="badge">Claude custom connector</span>
@@ -185,13 +185,13 @@
             <td>Chain</td>
             <td>Test B prompt</td>
             <td>Claude passes all three fields unchanged to the verifier in the same assistant turn.</td>
-            <td class="pass"><code>ok=true</code>, <code>proof_valid=true</code></td>
+            <td class="pass"><code>ok=true</code>, <code>integrity_valid=true</code></td>
           </tr>
           <tr>
             <td>Cross-turn</td>
             <td>Test C first prompt, then Test C second prompt</td>
             <td>The backend objectively validates the exact prior tool result after the user-turn boundary.</td>
-            <td class="pass"><code>ok=true</code>, <code>proof_valid=true</code></td>
+            <td class="pass"><code>ok=true</code>, <code>integrity_valid=true</code></td>
           </tr>
         </tbody>
       </table>
@@ -206,6 +206,7 @@
       <div class="actions">
         <a class="button" href="https://github.com/enpasos/skillpilot/blob/main/ai/claude/mcp-regression/TEST_PROTOCOL.md" rel="external">Full test protocol</a>
         <a class="button secondary" href="https://github.com/enpasos/skillpilot/tree/main/ai/claude/mcp-regression" rel="external">Source materials</a>
+        <a class="button secondary" href="/claude/mcp-regression/status.json">MCP regression status</a>
         <a class="button secondary" href="/api/action-regression/healthz">Synthetic API health</a>
         <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" rel="external">Claude connector help</a>
         <a href="/api/claude/oauth/protected-resource">MCP resource metadata</a>

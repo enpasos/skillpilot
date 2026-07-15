@@ -11,10 +11,11 @@ production SkillPilot MCP connector:
 2. exact handoff to a second tool in the same assistant turn;
 3. backend-attested use of that result after the immediately following user turn.
 
-The probe contains only random synthetic markers. The legacy fields named `token`
-and `proof` are not OAuth credentials, learner data, or authorization values and
-cannot grant access to anything. `proof_valid=true` is produced by the backend only
-when the complete tuple is unchanged.
+The MCP adapter exposes only `probe_id`, `sample_marker`, and `integrity_tag` as
+inert synthetic test data. These values contain no credentials, secrets, account
+data, or learner data and grant no access. `integrity_valid=true` is produced by the
+backend only when the complete sample is unchanged. The shared OpenAI REST reproducer
+keeps its existing wire schema; the safe names here are specific to Claude MCP.
 
 A pass demonstrates the observed behavior in the recorded Claude surface and model.
 It does not guarantee that future models, long conversations, or context compaction
@@ -35,6 +36,9 @@ behave identically.
 - Confirm that SkillPilot offers exactly `createRegressionProbe` and
   `verifyRegressionProbe`. If a coach tool is visible, reload the connector metadata
   or stop: the server is not in the isolated configuration.
+- Before opening Claude, check `/claude/mcp-regression/status.json`. Continue only
+  when `status="ready"`, `regression_tools_ready=true`, and
+  `registered_regression_tools` contains exactly those two tool names.
 - If Claude asks for tool approval, approve only those two named regression tools.
   Manual approval is valid; record whether it occurred. Never approve an unexpected
   tool.
@@ -79,7 +83,7 @@ In particular, never restart Spring Boot between the two messages of Test C: the
 regression HMAC key is generated at process start.
 
 Keep a terminal ready to capture the privacy-safe MCP audit. It records probe IDs but
-only SHA-256 hashes of tokens and proofs:
+only SHA-256 hashes of the two synthetic sample fields:
 
 ```bash
 sudo journalctl -u skillpilot --since '<UTC block start>' -o cat \
@@ -90,9 +94,10 @@ sudo journalctl -u skillpilot --since '<UTC block start>' -o cat \
 
 Expected events are `probe_issued` and, for Tests B and C, `probe_verified`, all with
 `service="skillpilot-action-regression"`, `transport="claude-mcp"`, `probe_id`,
-`token_sha256`, and `proof_sha256`. Verification also records
-`verify_called=true` and `proof_valid`. Raw tokens and proofs must not appear in this
-audit.
+`token_sha256`, and `proof_sha256`. Those stable internal audit names correspond to
+the MCP fields `sample_marker` and `integrity_tag`; they are not exposed in Claude's
+tool schema. Verification also records `verify_called=true` and `proof_valid`. Raw
+sample markers and integrity tags must not appear in this audit.
 
 ## Test A: immediate result
 
@@ -100,8 +105,9 @@ Start a fresh chat, enable SkillPilot, and paste only the **Test A** prompt from
 `CLAUDE_INSTRUCTIONS.md`.
 
 Pass only when the tool trace and MCP audit show exactly one
-`createRegressionProbe`, no verifier call, and Claude accurately displays the
-returned `probe_id`, `token`, and `proof`. Natural explanatory prose is allowed.
+`createRegressionProbe`, no verifier call, and Claude accurately names the returned
+fields `probe_id`, `sample_marker`, and `integrity_tag` without copying their values
+into ordinary prose. Natural explanatory prose is allowed.
 
 ## Test B: same-turn chain
 
@@ -110,7 +116,7 @@ Start another fresh chat, enable SkillPilot, and paste only the **Test B** promp
 Pass only when the same assistant turn contains exactly one
 `createRegressionProbe`, followed by exactly one `verifyRegressionProbe`, with all
 three arguments unchanged. The verifier result must contain `ok=true`,
-`proof_valid=true`, and the same `probe_id`. The MCP audit must contain matching
+`integrity_valid=true`, and the same `probe_id`. The MCP audit must contain matching
 `probe_issued` then `probe_verified` events with equal hashes and
 `proof_valid=true`.
 
@@ -125,15 +131,16 @@ two consecutive user messages with no intervening request.
 Pass only when:
 
 - the first turn calls `createRegressionProbe` exactly once;
-- its ordinary assistant prose does not duplicate `probe_id`, `token`, or `proof`,
+- its ordinary assistant prose does not duplicate `probe_id`, `sample_marker`, or
+  `integrity_tag`,
   while the normal tool trace remains visible to the tester;
 - the second turn calls only `verifyRegressionProbe` with the unchanged tuple from
   the immediately preceding tool result;
 - no second `createRegressionProbe` is called;
-- the verifier result contains `ok=true`, `proof_valid=true`, and the original
+- the verifier result contains `ok=true`, `integrity_valid=true`, and the original
   `probe_id`;
-- the two matching MCP audit events have the same probe ID, token hash, and proof
-  hash, with `proof_valid=true`.
+- the two matching MCP audit events have the same probe ID, sample-marker hash, and
+  integrity-tag hash, with audit field `proof_valid=true`.
 
 This is the strongest result: the backend, rather than Claude's prose, attests that
 the synthetic MCP result survived unchanged across the user-turn boundary.
@@ -148,7 +155,7 @@ sequence did not run; it is not a retention failure.
 First run A-C once. If the setup is correct, repeat each test five times in a new
 chat per run. Test C always needs its own two-message pair.
 
-| Run | UTC | Model/settings | Surface | Test | Tool sequence | `proof_valid` | Result |
+| Run | UTC | Model/settings | Surface | Test | Tool sequence | `integrity_valid` | Result |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 |  |  |  | Immediate |  | n/a |  |
 | 02 |  |  |  | Same-turn |  |  |  |

@@ -42,7 +42,7 @@ class ActionRegressionMcpToolsTest {
 
         ActionRegressionMcpTools.RegressionProbe probe = tools.createRegressionProbe();
         ActionRegressionMcpTools.RegressionVerification verification = tools.verifyRegressionProbe(
-                probe.probeId(), probe.token(), probe.proof());
+                probe.probeId(), probe.sampleMarker(), probe.integrityTag());
 
         assertThat(probe).isEqualTo(new ActionRegressionMcpTools.RegressionProbe(PROBE_ID, TOKEN, PROOF));
         assertThat(verification).isEqualTo(
@@ -81,20 +81,30 @@ class ActionRegressionMcpToolsTest {
         JsonNode verifySchema = objectMapper.readTree(verify.getToolDefinition().inputSchema());
         assertThat(verifySchema.path("properties").fieldNames())
                 .toIterable()
-                .containsExactlyInAnyOrder("probe_id", "token", "proof");
+                .containsExactlyInAnyOrder("probe_id", "sample_marker", "integrity_tag");
         assertThat(verifySchema.path("required")).extracting(JsonNode::asText)
-                .containsExactlyInAnyOrder("probe_id", "token", "proof");
+                .containsExactlyInAnyOrder("probe_id", "sample_marker", "integrity_tag");
+
+        assertThat(create.getToolDefinition().description())
+                .contains("inert synthetic sample", "no learner or account data", "no authorization action")
+                .doesNotContain("signed", "token", "proof");
+        assertThat(verify.getToolDefinition().description())
+                .contains("inert synthetic sample data", "no learner or account data", "authorization")
+                .doesNotContain("token", "proof");
 
         JsonNode createResult = objectMapper.readTree(create.call("{}"));
         assertThat(createResult.path("probe_id").asText()).isEqualTo(PROBE_ID);
-        assertThat(createResult.path("token").asText()).isEqualTo(TOKEN);
-        assertThat(createResult.path("proof").asText()).isEqualTo(PROOF);
+        assertThat(createResult.path("sample_marker").asText()).isEqualTo(TOKEN);
+        assertThat(createResult.path("integrity_tag").asText()).isEqualTo(PROOF);
+        assertThat(createResult.has("token")).isFalse();
+        assertThat(createResult.has("proof")).isFalse();
 
         JsonNode verifyResult = objectMapper.readTree(verify.call(objectMapper.writeValueAsString(
                 new ActionRegressionMcpTools.RegressionProbe(PROBE_ID, TOKEN, PROOF))));
         assertThat(verifyResult.path("ok").asBoolean()).isTrue();
         assertThat(verifyResult.path("probe_id").asText()).isEqualTo(PROBE_ID);
-        assertThat(verifyResult.path("proof_valid").asBoolean()).isTrue();
+        assertThat(verifyResult.path("integrity_valid").asBoolean()).isTrue();
+        assertThat(verifyResult.has("proof_valid")).isFalse();
     }
 
     private ToolCallback callbackNamed(ToolCallback[] callbacks, String name) {
