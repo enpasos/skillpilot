@@ -1,134 +1,10 @@
 name: Subject Export Release Gate
 
 on:
-  workflow_dispatch:
-    inputs:
-      audit_source_links:
-        description: 'Run live official-source URL reachability checks.'
-        required: false
-        default: false
-        type: boolean
-      strict_source_links:
-        description: 'Fail the gate if live official-source URL checks find broken links.'
-        required: false
-        default: false
-        type: boolean
   push:
     branches: [ main ]
-    paths:
-      - '.github/workflows/subject_export_release_gate.yml'
-      - '.corretto-version'
-      - '.java-version'
-      - '.nvmrc'
-      - 'app/package-lock.json'
-      - 'app/package.json'
-      - 'app/scripts/auditSubjectExportSourceLinks.ts'
-      - 'app/scripts/buildSubjectExportPublicationIndex.ts'
-      - 'app/scripts/buildSkillpilotExportPackage.ts'
-      - 'app/scripts/deterministicZip32.ts'
-      - 'app/scripts/testDeterministicZip32.ts'
-      - 'app/scripts/buildFullStandaloneCurriculumPackage.ts'
-      - 'app/scripts/testFullStandaloneCurriculumPackageBuilder.ts'
-      - 'app/scripts/buildM5SubjectExportPackages.ts'
-      - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
-      - 'app/scripts/runSubjectExportReleaseGate.ts'
-      - 'app/scripts/validateSubjectExportPackages.ts'
-      - 'contracts/curriculum-package/**'
-      - 'app/scripts/generateCurriculumQualityStatus.ts'
-      - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
-      - 'app/scripts/memoryCardReview.ts'
-      - 'app/scripts/runMemoryCardReviewConfigs.ts'
-      - 'app/public/data/**'
-      - 'app/public/assets/goal-visualizations/mathematik/**'
-      - 'curricula/DE/Gymnasium/canonical/**'
-      - 'curricula/DE/Gymnasium/composition-views/**'
-      - 'curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_*.json'
-      - 'curricula/DE/Gymnasium/input/**/source-extraction/**'
-      - 'curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/**'
-      - 'curricula/DE/Gymnasium/mapping/**'
-      - 'curricula/DE/Gymnasium/provenance/**'
-      - 'curricula/DE/Gymnasium/quality/**'
-      - 'docs/landscape-runtime.schema.json'
-      - 'docs/qa-ci/status/curriculum-quality-status.json'
-      - 'docs/qa-ci/status/curriculum-quality-status.md'
-      - 'docs/qa-ci/status/memory-card-review-*.md'
-      - 'docs/production-pipelines/skillpilot-subject-export-package.md'
-      - 'docs/production-pipelines/curriculum-package-provisioning.md'
-      - 'scripts/validate_curriculum_package_contracts.py'
-      - 'scripts/curriculum_package_validation_requirements.txt'
-      - 'scripts/provision_pinned_fwu_ontology.sh'
-      - 'scripts/validate_curriculum_runtime_catalog_contract.py'
-      - 'scripts/validate_curriculum_schema_catalog_contract.py'
-      - 'scripts/evaluate_curriculum_package_readiness.py'
-      - 'scripts/validate_full_standalone_curriculum_package.py'
-      - 'scripts/provision_curriculum_package.py'
-      - 'scripts/test_curriculum_package_provisioner.py'
-      - 'scripts/run_package_consumer_smoke.py'
-      - 'scripts/configure_github_bubblewrap.sh'
-      - 'scripts/generate_curriculum_package_redistribution_review.py'
-      - 'scripts/generate_curriculum_source_verification_review.py'
-      - 'scripts/compile_curriculum_release_model.py'
-      - 'scripts/validate_curriculum_release_model.py'
-      - 'scripts/validate_curriculum_release_model_fixtures.py'
-      - 'scripts/run_curriculum_release_model_conformance.sh'
   pull_request:
     branches: [ main ]
-    paths:
-      - '.github/workflows/subject_export_release_gate.yml'
-      - '.corretto-version'
-      - '.java-version'
-      - '.nvmrc'
-      - 'app/package-lock.json'
-      - 'app/package.json'
-      - 'app/scripts/auditSubjectExportSourceLinks.ts'
-      - 'app/scripts/buildSubjectExportPublicationIndex.ts'
-      - 'app/scripts/buildSkillpilotExportPackage.ts'
-      - 'app/scripts/deterministicZip32.ts'
-      - 'app/scripts/testDeterministicZip32.ts'
-      - 'app/scripts/buildFullStandaloneCurriculumPackage.ts'
-      - 'app/scripts/testFullStandaloneCurriculumPackageBuilder.ts'
-      - 'app/scripts/buildM5SubjectExportPackages.ts'
-      - 'app/scripts/checkM5SubjectExportPackageReproducibility.ts'
-      - 'app/scripts/runSubjectExportReleaseGate.ts'
-      - 'app/scripts/validateSubjectExportPackages.ts'
-      - 'contracts/curriculum-package/**'
-      - 'app/scripts/generateCurriculumQualityStatus.ts'
-      - 'app/scripts/memoryCardReviewConfigDiscovery.ts'
-      - 'app/scripts/memoryCardReview.ts'
-      - 'app/scripts/runMemoryCardReviewConfigs.ts'
-      - 'app/public/data/**'
-      - 'app/public/assets/goal-visualizations/mathematik/**'
-      - 'curricula/DE/Gymnasium/canonical/**'
-      - 'curricula/DE/Gymnasium/composition-views/**'
-      - 'curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_*.json'
-      - 'curricula/DE/Gymnasium/input/**/source-extraction/**'
-      - 'curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/**'
-      - 'curricula/DE/Gymnasium/mapping/**'
-      - 'curricula/DE/Gymnasium/provenance/**'
-      - 'curricula/DE/Gymnasium/quality/**'
-      - 'docs/landscape-runtime.schema.json'
-      - 'docs/qa-ci/status/curriculum-quality-status.json'
-      - 'docs/qa-ci/status/curriculum-quality-status.md'
-      - 'docs/qa-ci/status/memory-card-review-*.md'
-      - 'docs/production-pipelines/skillpilot-subject-export-package.md'
-      - 'docs/production-pipelines/curriculum-package-provisioning.md'
-      - 'scripts/validate_curriculum_package_contracts.py'
-      - 'scripts/curriculum_package_validation_requirements.txt'
-      - 'scripts/provision_pinned_fwu_ontology.sh'
-      - 'scripts/validate_curriculum_runtime_catalog_contract.py'
-      - 'scripts/validate_curriculum_schema_catalog_contract.py'
-      - 'scripts/evaluate_curriculum_package_readiness.py'
-      - 'scripts/validate_full_standalone_curriculum_package.py'
-      - 'scripts/provision_curriculum_package.py'
-      - 'scripts/test_curriculum_package_provisioner.py'
-      - 'scripts/run_package_consumer_smoke.py'
-      - 'scripts/configure_github_bubblewrap.sh'
-      - 'scripts/generate_curriculum_package_redistribution_review.py'
-      - 'scripts/generate_curriculum_source_verification_review.py'
-      - 'scripts/compile_curriculum_release_model.py'
-      - 'scripts/validate_curriculum_release_model.py'
-      - 'scripts/validate_curriculum_release_model_fixtures.py'
-      - 'scripts/run_curriculum_release_model_conformance.sh'
 
 permissions:
   contents: read
@@ -146,116 +22,44 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Use Node.js
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: app/package-lock.json
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Install package-consumer isolation tools
-        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
-
-      - name: Enable and verify bubblewrap isolation
-        run: bash ../scripts/configure_github_bubblewrap.sh
-
-      - name: Install pinned package-consumer browser
-        run: npx playwright install --with-deps chromium
-
-      - name: Test deterministic ZIP32 writer
-        run: npm run test:deterministic-zip32
-
-      - name: Test full standalone curriculum package builder
-        run: npm run test:full-standalone-package-builder
-
       - name: Use Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.10'
-
-      - name: Use Java for package-consumer validation
-        uses: actions/setup-java@v5
-        with:
-          distribution: corretto
-          java-version-file: .java-version
-
-      - name: Use exact production Corretto build
-        run: |
-          set -euo pipefail
-          corretto_version="$(tr -d '[:space:]' < ../.corretto-version)"
-          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
-          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
-          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
-          mkdir -p "${install_dir}"
-          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
-          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
-          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
-          "${install_dir}/bin/java" -version
-
-      - name: Install Python dependencies
+      - name: Install package validation dependencies
         run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
-
-      - name: Verify curriculum JSON conformance scripts
-        run: |
-          cd ..
-          bash -n \
-            scripts/provision_pinned_fwu_ontology.sh \
-            scripts/run_curriculum_release_model_conformance.sh
-
-      - name: Validate curriculum package contracts
+      - name: Check memory-card reviews
+        run: npm run quality:memory-card-review:check:all
+      - name: Exercise bounded subject export and reproducibility
         env:
-          SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
+          SOURCE_DATE_EPOCH: '315532800'
         run: |
-          cd ..
-          python -B scripts/validate_curriculum_package_contracts.py
-          python -B scripts/validate_curriculum_runtime_catalog_contract.py
-          python -B scripts/validate_curriculum_schema_catalog_contract.py
-          python -B scripts/evaluate_curriculum_package_readiness.py --self-test
-          python -B scripts/validate_full_standalone_curriculum_package.py --self-test
-          python -B scripts/provision_curriculum_package.py self-test
-          bash scripts/run_curriculum_release_model_conformance.sh
-
-      - name: Run subject export release gate
-        env:
-          AUDIT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.audit_source_links == true && 'true' || 'false' }}
-          STRICT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.strict_source_links == true && 'true' || 'false' }}
+          npm run test:deterministic-zip32
+          npm run export:subject-package -- \
+            --subject Latein \
+            --version 0.0.0-ci \
+            --output-dir tmp/subject-export-bounded-a
+          npm run export:subject-package -- \
+            --subject Latein \
+            --version 0.0.0-ci \
+            --output-dir tmp/subject-export-bounded-b
+          cmp \
+            ../tmp/subject-export-bounded-a/skillpilot-de-gymnasium-latein-v0.0.0-ci.zip \
+            ../tmp/subject-export-bounded-b/skillpilot-de-gymnasium-latein-v0.0.0-ci.zip
+          npm run export:subject-packages:validate -- \
+            --zip ../tmp/subject-export-bounded-a/skillpilot-de-gymnasium-latein-v0.0.0-ci.zip \
+            --report-dir ../tmp/subject-export-bounded-a/validation
+      - name: Verify committed quality status
         run: |
-          args=()
-          if [ "$AUDIT_SOURCE_LINKS" = "true" ]; then
-            args+=(--audit-source-links)
-          fi
-          if [ "$STRICT_SOURCE_LINKS" = "true" ]; then
-            args+=(--strict-source-links)
-          fi
-          npm run export:subject-release-gate:ci -- "${args[@]}"
-
-      - name: Upload release-gate reports
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: subject-export-release-gate-reports
-          path: |
-            tmp/exports/*-release-report.md
-            tmp/exports/m5-subject-export-summary.json
-            tmp/exports/m5-subject-export-summary.md
-            tmp/exports/validation/subject-export-package-validation-report.json
-            tmp/exports/validation/subject-export-package-validation-report.md
-            tmp/exports/readiness/*-readiness-report.json
-            tmp/exports/link-audit/subject-export-source-link-audit.json
-            tmp/exports/link-audit/subject-export-source-link-audit.md
-            tmp/exports/reproducibility/m5-export-reproducibility-report.json
-            tmp/exports/reproducibility/m5-export-reproducibility-report.md
-            tmp/exports/publication/subject-export-publication-index.json
-            tmp/exports/publication/subject-export-publication-index.md
-            tmp/exports/release-gate/subject-export-release-gate-report.json
-            tmp/exports/release-gate/subject-export-release-gate-report.md
-            tmp/curriculum-release-model/full-standalone-package/*report*.json
-            tmp/curriculum-release-model/full-standalone-package/provision-*.json
-            tmp/curriculum-release-model/full-standalone-package-build-summary.json
-            tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/
+          npm run quality:memory-card-review:report:all
+          npm run quality:curriculum-status
+          git diff --exit-code -- ../docs/qa-ci/status
+          test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"

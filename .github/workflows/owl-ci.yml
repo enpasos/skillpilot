@@ -1,7 +1,20 @@
-name: Optional FWU-OWL CI
+name: Optional Package, FWU-OWL and Roundtrip CI
 
 on:
   workflow_dispatch:
+    inputs:
+      audit_source_links:
+        description: 'Run live official-source URL reachability checks.'
+        required: false
+        default: false
+        type: boolean
+      strict_source_links:
+        description: 'Fail if live official-source URL checks find broken links.'
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: '17 3 * * 1'
 
 permissions:
   contents: read
@@ -11,8 +24,82 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  package-ci:
+    name: Full standalone JSON package CI
+    runs-on: ubuntu-latest
+    env:
+      SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install Node dependencies
+        run: npm --prefix app ci
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Set up pinned Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - name: Install isolation and archive tools
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
+      - name: Enable and verify bubblewrap isolation
+        run: bash scripts/configure_github_bubblewrap.sh
+      - name: Install pinned package-consumer browser
+        working-directory: app
+        run: npx playwright install --with-deps chromium
+      - name: Install package validation dependencies
+        run: python -m pip install -r scripts/curriculum_package_validation_requirements.txt
+      - name: Validate full standalone curriculum package
+        run: |
+          bash -n \
+            scripts/run_curriculum_release_model_conformance.sh \
+            scripts/run_curriculum_full_package_conformance.sh
+          bash scripts/run_curriculum_full_package_conformance.sh
+      - name: Load real package through the backend
+        working-directory: backend
+        env:
+          SKILLPILOT_CONFORMANCE_PACKAGE_STORE: ${{ github.workspace }}/tmp/curriculum-release-model/provisioned-store
+        run: |
+          ./gradlew test \
+            --tests 'com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest'
+      - name: Upload package evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: optional-full-package-evidence
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            tmp/curriculum-release-model/full-standalone-package/*report*.json
+            tmp/curriculum-release-model/full-standalone-package/provision-*.json
+            tmp/curriculum-release-model/full-standalone-package-build-summary.json
+            tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
+            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
+            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/
+
   fwu-owl-ci:
-    name: Optional FWU-OWL and roundtrip CI
+    name: FWU-OWL and roundtrip CI
     runs-on: ubuntu-latest
     env:
       SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
@@ -103,3 +190,62 @@ jobs:
             tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/owl-validation-report.md
             tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/semantic-reconstructed/semantic-reconstruction-report.json
             tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/semantic-reconstructed/semantic-reconstruction-report.md
+
+  subject-export-release-gate:
+    name: Full subject export release gate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Use Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Install package validation dependencies
+        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Run full subject export release gate
+        env:
+          AUDIT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.audit_source_links == true && 'true' || 'false' }}
+          STRICT_SOURCE_LINKS: ${{ github.event_name == 'workflow_dispatch' && inputs.strict_source_links == true && 'true' || 'false' }}
+        run: |
+          args=()
+          if [ "$AUDIT_SOURCE_LINKS" = "true" ]; then
+            args+=(--audit-source-links)
+          fi
+          if [ "$STRICT_SOURCE_LINKS" = "true" ]; then
+            args+=(--strict-source-links)
+          fi
+          npm run export:subject-release-gate:ci -- "${args[@]}"
+      - name: Upload subject export evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: optional-subject-export-release-evidence
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            tmp/exports/*-release-report.md
+            tmp/exports/m5-subject-export-summary.json
+            tmp/exports/m5-subject-export-summary.md
+            tmp/exports/validation/subject-export-package-validation-report.json
+            tmp/exports/validation/subject-export-package-validation-report.md
+            tmp/exports/readiness/*-readiness-report.json
+            tmp/exports/link-audit/subject-export-source-link-audit.json
+            tmp/exports/link-audit/subject-export-source-link-audit.md
+            tmp/exports/reproducibility/m5-export-reproducibility-report.json
+            tmp/exports/reproducibility/m5-export-reproducibility-report.md
+            tmp/exports/publication/subject-export-publication-index.json
+            tmp/exports/publication/subject-export-publication-index.md
+            tmp/exports/release-gate/subject-export-release-gate-report.json
+            tmp/exports/release-gate/subject-export-release-gate-report.md

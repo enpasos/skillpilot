@@ -45,7 +45,7 @@ npm --prefix app run export:full-standalone-package -- \
   --expect-entry-count 914 \
   --expect-manifest-file-count 912 \
   --expect-binary-asset-count 757 \
-  --expect-content-digest sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101
+  --expect-content-digest sha256:f867f79d44fc2ead12cb4b6d4a4c15c741eb26e369c430d7776dd7e032f45dbb
 
 python3 -B scripts/validate_full_standalone_curriculum_package.py \
   --zip tmp/curriculum-release-model/full-standalone-package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip \
@@ -60,7 +60,7 @@ python3 -B scripts/evaluate_curriculum_package_readiness.py \
   --expect-status not-ready-incomplete
 ```
 
-This example assumes that the exact ZIP has already been securely provisioned and activated in the named store. `scripts/run_curriculum_release_model_conformance.sh` performs the complete build, validation, provisioning, activation, consumer, and readiness sequence.
+This example assumes that the exact ZIP has already been securely provisioned and activated in the named store. `scripts/run_curriculum_full_package_conformance.sh` performs the complete build, validation, provisioning, activation, consumer, and readiness sequence; the ordinary release-model wrapper intentionally stops before materializing the 1.7-GB package.
 
 The Builder CLI is implemented in [buildFullStandaloneCurriculumPackage.ts](../../app/scripts/buildFullStandaloneCurriculumPackage.ts); finished archives are checked by the implementation-independent [full package validator](../../scripts/validate_full_standalone_curriculum_package.py). The evaluator invokes that validator independently again and accepts its v2 report only when validator identity, archive hash and byte length, manifest hash, package identity, closure and definition-index digests, complete gate set, evidence and process exit agree. Evaluator `1.3.0` derives those bindings independently from the evaluated ZIP; a report cannot substitute a different extracted manifest while replaying evidence for an older archive.
 

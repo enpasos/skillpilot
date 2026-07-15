@@ -82,7 +82,7 @@ Before compiling payloads, the compiler proves that `tmp/lehrplan-ontologie` is 
 
 `dependency-closure.json` inventories typed Runtime definitions and every schema-classified Runtime reference. Identical definitions can be deduplicated by canonical definition digest; the same stable identity with a different definition is a hard conflict. Publication evidence is deliberately not seeded or traversed: evidence about a goal must roundtrip and affect the content digest, but it must not become a navigation dependency. The initial Mathematik release has no predecessor, so `migration-aliases.json` uses an explicit `initial` baseline and an empty rule set. Later releases must compare against a pinned stable baseline and use the registered migration relation and mastery/history policy for every identity change.
 
-`semantic-content-index.json` is package-path-neutral. It binds 111 normalized logical records—including all four publication artifacts—and 757 image binary records into one deterministic `contentDigest`; generated digest fields are excluded through the versioned normalization contract to avoid self-reference. For `0.1.0-conformance.3` the result is `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`. The closure digest is `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121`; the definition-index digest is `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
+`semantic-content-index.json` is package-path-neutral. It binds 111 normalized logical records—including all four publication artifacts—and 757 image binary records into one deterministic `contentDigest`; generated digest fields are excluded through the versioned normalization contract to avoid self-reference. For the current `0.1.0-conformance.3` authoring state the result is `sha256:f867f79d44fc2ead12cb4b6d4a4c15c741eb26e369c430d7776dd7e032f45dbb`. The older DPK-007a/008 release freeze remains bound to its historical digest and must be supplied as a frozen artifact rather than rebuilt from current sources. The closure digest is `sha256:7e7d704a9c5e17fbe24f6ac881b44b41ae930f5ac945e69738b753c98b999121`; the definition-index digest is `sha256:4e99bba1d71d26b94bc23f4ea8251ff4dd3df15a5c63006b7564f7f69948c57d`.
 
 ## Publication Evidence
 
@@ -127,11 +127,21 @@ python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
 ```
 
-The focused JSON gate combines those fixtures, destructive output-path attacks, the lightweight pinned-Core provenance binding recorded by the JSON profile, the real-model validator, a byte-identical second model build, exactly one real Builder invocation whose ZIP materialization internally builds twice, independent finished-ZIP validation, secure provisioning and activation, and an exact `not-ready-incomplete` Readiness assertion. The evaluator runs the policy-pinned consumer itself: a real React/Chromium flow and Catalog-404 fail-closed case execute in the checkout-hidden namespace, while retained assembly/evidence manifests allow independent tree-digest verification. It does not generate RDF, run ROBOT, validate OWL, invoke a reasoner, or perform an ontology roundtrip; those operations live in `./run_ci.sh owl`:
+The required focused JSON gate combines those fixtures, destructive output-path attacks, the lightweight pinned-Core provenance binding recorded by the JSON profile, the real-model validator, current redistribution/source review bindings, and a byte-identical second model build. It deliberately stops before real ZIP materialization:
 
 ```bash
 bash scripts/run_curriculum_release_model_conformance.sh
 ```
+
+The optional full-package gate starts with that same release-model proof, then performs the real 1.7-GB Builder invocation, independent finished-ZIP validation, secure provisioning and activation, and an exact `not-ready-incomplete` Readiness assertion. The evaluator runs the policy-pinned consumer itself: a real React/Chromium flow and Catalog-404 fail-closed case execute in the checkout-hidden namespace, while retained assembly/evidence manifests allow independent tree-digest verification:
+
+```bash
+bash scripts/run_curriculum_full_package_conformance.sh
+# or
+./run_ci.sh package
+```
+
+It does not generate RDF, run ROBOT, validate OWL, invoke a reasoner, or perform an ontology roundtrip; those operations live in `./run_ci.sh owl`. The scheduled/manual optional GitHub workflow runs the full package gate and the bounded OWL/roundtrip lane together.
 
 The wrapper is strict by default: every referenced, locally retained source PDF
 must be a regular non-symlink file and its real bytes are hashed. Clean hosted
@@ -146,13 +156,13 @@ as an explicit argument to its internal source-verification preflight. This
 hosted mode verifies committed metadata and all derived repository evidence; it
 is not a replacement for the strict local PDF or replay checks.
 
-For a step-complete checkpoint, targeted conformance checks are followed by the full repository gate:
+For a required per-commit checkpoint, targeted conformance checks are followed by the normal repository gate:
 
 ```bash
 ./run_ci.sh
 ```
 
-The complete gate is green through DPK-007a: the real `0.1.0-conformance.3` model under ontology/publication profiles `1.1.1`, the profile/registry lane-alignment mutations, all fixtures and adversarial cases, deterministic model and ZIP builds, Finished-ZIP validation, provisioning/activation, package-authoritative services, the hermetic browser consumer, and repository-wide `./run_ci.sh` pass. Generated models, ZIPs, stores, reports, assembly, and evidence trees remain under `tmp/` and are not committed.
+The required gate covers the real `0.1.0-conformance.3` model, profile/registry lane-alignment mutations, all fixtures and adversarial cases, and deterministic model builds. The optional package gate additionally covers deterministic ZIP builds, Finished-ZIP validation, provisioning/activation, package-authoritative services, and the hermetic browser consumer. Generated models, ZIPs, stores, reports, assembly, and evidence trees remain under `tmp/` and are not committed.
 
 ## What Remains
 

@@ -22,7 +22,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
+EXPECTED_CONTENT_DIGEST="sha256:f867f79d44fc2ead12cb4b6d4a4c15c741eb26e369c430d7776dd7e032f45dbb"
 cd "${ROOT_DIR}"
 
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
@@ -108,6 +108,11 @@ python3 -B scripts/compile_curriculum_release_model.py \
   --output "${OUTPUT_B}"
 
 diff -qr "${OUTPUT_A}" "${OUTPUT_B}"
+
+if [[ "${SKILLPILOT_FULL_PACKAGE_CONFORMANCE:-false}" != "true" ]]; then
+  echo "Curriculum release-model conformance passed: independent model validation, current review bindings, and byte-identical model builds."
+  exit 0
+fi
 
 python3 -B - "${PACKAGE_STORE}" <<'PY'
 import sys

@@ -4,8 +4,9 @@ set -euo pipefail
 ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
 OUTPUT_BASE="tmp/curriculum-release-model"
 JSON_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json"
-JSON_PACKAGE="${OUTPUT_BASE}/full-standalone-package/${JSON_ARCHIVE_ROOT}.zip"
-JSON_STORE="${OUTPUT_BASE}/provisioned-store"
+DEFAULT_JSON_PACKAGE="${OUTPUT_BASE}/full-standalone-package/${JSON_ARCHIVE_ROOT}.zip"
+JSON_PACKAGE="${SKILLPILOT_FROZEN_JSON_PACKAGE:-${DEFAULT_JSON_PACKAGE}}"
+JSON_STORE="${OUTPUT_BASE}/fwu-owl-frozen-json-store"
 JSON_SHA256="403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9"
 JSON_SOURCE_ROOT="${JSON_STORE}/objects/sha256/${JSON_SHA256}/${JSON_ARCHIVE_ROOT}"
 FWU_ARCHIVE_ROOT="skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.fwu-owl"
@@ -15,6 +16,8 @@ FWU_PEER="${FWU_OUTPUT}/reproducibility-peer/${FWU_ARCHIVE_ROOT}.zip"
 VALIDATION_ROOT="${OUTPUT_BASE}/fwu-owl-validation"
 FWU_BUILD_REPORT="${VALIDATION_ROOT}/fwu-owl-build-summary.json"
 VALIDATION_REPORT="${VALIDATION_ROOT}/fwu-owl-package-validation-report.json"
+JSON_INSTALL_REPORT="${VALIDATION_ROOT}/frozen-json-install-report.json"
+JSON_VERIFY_REPORT="${VALIDATION_ROOT}/frozen-json-verify-report.json"
 VALIDATION_EVIDENCE="${VALIDATION_ROOT}/evidence"
 VALIDATION_WORK="${VALIDATION_ROOT}/work"
 TOOLS_REPORT="${VALIDATION_ROOT}/tools-report.json"
@@ -59,17 +62,36 @@ ensure_pinned_java() {
   fi
 }
 
-ensure_pinned_java
+# This is a frozen, versioned FWU candidate. Never rebuild its JSON input from
+# the current checkout: doing so can silently combine a newer semantic model
+# with the old DPK-008 hashes below.
+if [[ -L "${JSON_PACKAGE}" || ! -f "${JSON_PACKAGE}" ]]; then
+  cat >&2 <<EOF
+Frozen DPK-007a JSON package is missing:
+  ${JSON_PACKAGE}
 
-# The FWU package is always derived from a freshly validated, provisioned and
-# hermetically consumed JSON candidate. This wrapper is intentionally the
-# heavyweight release-conformance lane and is not part of ordinary CI.
-bash scripts/run_curriculum_release_model_conformance.sh
-
-if [[ ! -f "${JSON_PACKAGE}" || ! -d "${JSON_SOURCE_ROOT}" ]]; then
-  echo "Fresh JSON conformance package or its verified store object is missing." >&2
+Restore the exact archived package with SHA-256 ${JSON_SHA256}, or point
+SKILLPILOT_FROZEN_JSON_PACKAGE at that regular ZIP file. This wrapper will not
+rebuild the frozen input from the current checkout.
+EOF
   exit 1
 fi
+
+OBSERVED_JSON_SHA256="$(sha256sum -- "${JSON_PACKAGE}" | awk '{print $1}')"
+if [[ "${OBSERVED_JSON_SHA256}" != "${JSON_SHA256}" ]]; then
+  cat >&2 <<EOF
+Refusing JSON package with the wrong frozen identity:
+  path:     ${JSON_PACKAGE}
+  expected: ${JSON_SHA256}
+  observed: ${OBSERVED_JSON_SHA256}
+
+Restore the exact DPK-007a archive, or set SKILLPILOT_FROZEN_JSON_PACKAGE to
+its path. The current source tree must not be used to recreate this candidate.
+EOF
+  exit 1
+fi
+
+ensure_pinned_java
 
 bash scripts/provision_pinned_robot.sh
 if [[ -L "${VALIDATION_ROOT}" || ( -e "${VALIDATION_ROOT}" && ! -d "${VALIDATION_ROOT}" ) ]]; then
@@ -78,6 +100,55 @@ if [[ -L "${VALIDATION_ROOT}" || ( -e "${VALIDATION_ROOT}" && ! -d "${VALIDATION
 fi
 rm -rf -- "${VALIDATION_ROOT}"
 mkdir -m 0700 -p -- "${VALIDATION_ROOT}"
+
+python3 -B scripts/provision_curriculum_package.py install \
+  --store "${JSON_STORE}" \
+  --zip "${JSON_PACKAGE}" \
+  > "${JSON_INSTALL_REPORT}"
+
+python3 -B scripts/provision_curriculum_package.py verify \
+  --store "${JSON_STORE}" \
+  --outer-sha256 "${JSON_SHA256}" \
+  > "${JSON_VERIFY_REPORT}"
+
+python3 -B - \
+  "${JSON_INSTALL_REPORT}" \
+  "${JSON_VERIFY_REPORT}" \
+  "${JSON_SOURCE_ROOT}" \
+  "${JSON_SHA256}" \
+  "${EXPECTED_CONTENT_DIGEST}" <<'PY'
+import json
+from pathlib import Path
+import sys
+
+install_path, verify_path, source_root = map(Path, sys.argv[1:4])
+expected_sha, expected_content = sys.argv[4:]
+install = json.loads(install_path.read_text(encoding="utf-8"))
+verify = json.loads(verify_path.read_text(encoding="utf-8"))
+expected_release = (
+    "org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.3"
+)
+
+if install.get("status") != "passed" or install.get("operation") != "install":
+    raise SystemExit("frozen JSON package installation did not pass")
+if install.get("outerZipSha256") != expected_sha:
+    raise SystemExit("frozen JSON installation report changed the outer ZIP identity")
+if install.get("contentDigest") != expected_content:
+    raise SystemExit("frozen JSON installation report changed the content digest")
+if install.get("releaseId") != expected_release:
+    raise SystemExit("frozen JSON installation report changed the release identity")
+if verify.get("status") != "passed" or verify.get("operation") != "verify":
+    raise SystemExit("frozen JSON package verification did not pass")
+if verify.get("outerZipSha256") != expected_sha:
+    raise SystemExit("frozen JSON verification report changed the outer ZIP identity")
+if verify.get("releaseId") != expected_release:
+    raise SystemExit("frozen JSON verification report changed the release identity")
+if verify.get("manifestFiles") != 912:
+    raise SystemExit("frozen JSON verification report changed the manifest file count")
+if not source_root.is_dir() or source_root.is_symlink():
+    raise SystemExit(f"verified frozen JSON source root is unavailable: {source_root}")
+PY
+
 python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
   --report "${TOOLS_REPORT}" \
   >/dev/null

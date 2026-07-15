@@ -25,17 +25,19 @@ cd "${PROJECT_ROOT}"
 
 usage() {
   cat <<'EOF'
-Usage: ./run_ci.sh [all|application|curriculum|owl|full]
+Usage: ./run_ci.sh [all|application|curriculum|package|owl|full]
 
 Suites:
   all          Run required application and curriculum CI (default).
   application  Run Custom GPT, frontend application-logic, and backend checks.
-  curriculum   Run curriculum graph, data, JSON package, schema, and consumer checks.
+  curriculum   Run curriculum graph, data, schemas, and release-model checks.
+  package      Run the optional real 1.7 GB JSON package and consumer checks.
   owl          Run optional FWU-OWL, reasoner, and semantic roundtrip checks.
-  full         Run application, curriculum, and optional FWU-OWL checks.
+  full         Run application, curriculum, package, and optional FWU-OWL checks.
 
 Use the default required suite before committing or deploying cross-cutting
 changes. Run the optional OWL suite when FWU-OWL or roundtrip code changes.
+Run the package suite for package, provisioning, or package-consumer changes.
 EOF
 }
 
@@ -47,6 +49,7 @@ fi
 CI_SUITE="${1:-all}"
 RUN_APPLICATION=false
 RUN_CURRICULUM=false
+RUN_PACKAGE=false
 RUN_OWL=false
 case "${CI_SUITE}" in
   all)
@@ -59,12 +62,16 @@ case "${CI_SUITE}" in
   curriculum)
     RUN_CURRICULUM=true
     ;;
+  package)
+    RUN_PACKAGE=true
+    ;;
   owl)
     RUN_OWL=true
     ;;
   full)
     RUN_APPLICATION=true
     RUN_CURRICULUM=true
+    RUN_PACKAGE=true
     RUN_OWL=true
     ;;
   -h|--help)
@@ -288,7 +295,8 @@ run_curriculum_schema_ci() {
   ensure_pinned_java_once
   bash -n \
     scripts/provision_pinned_fwu_ontology.sh \
-    scripts/run_curriculum_release_model_conformance.sh
+    scripts/run_curriculum_release_model_conformance.sh \
+    scripts/run_curriculum_full_package_conformance.sh
   echo "--> Validating Curriculum Package Contracts"
   python3 -B scripts/validate_curriculum_package_contracts.py
   python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
@@ -297,8 +305,8 @@ run_curriculum_schema_ci() {
   python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
   python3 -B scripts/provision_curriculum_package.py self-test
   python3 -B scripts/run_package_consumer_smoke.py --self-test
-  bash scripts/run_curriculum_release_model_conformance.sh
-  export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
+  SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
+    bash scripts/run_curriculum_release_model_conformance.sh
   python3 scripts/validate_schemas.py
   echo "--> Validating Curriculum Goal IDs (UUIDs)"
   python3 scripts/validate_goal_ids_uuid.py
@@ -316,6 +324,27 @@ run_curriculum_schema_ci() {
   SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_archive_paths.py
   echo "--> Validating Bavaria Gymnasium Legacy References"
   SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_legacy_refs.py
+}
+
+run_package_ci() {
+  cd "${PROJECT_ROOT}"
+  echo ""
+  echo "=========================================="
+  echo "Running Optional Full Curriculum Package CI"
+  echo "=========================================="
+  python3 -m pip install -q -r scripts/curriculum_package_validation_requirements.txt
+  ensure_pinned_java_once
+  bash -n \
+    scripts/provision_pinned_fwu_ontology.sh \
+    scripts/run_curriculum_release_model_conformance.sh \
+    scripts/run_curriculum_full_package_conformance.sh
+  bash scripts/run_curriculum_full_package_conformance.sh
+  export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
+  (
+    cd backend
+    ./gradlew test \
+      --tests 'com.skillpilot.backend.curriculumpackage.ProvisionedCurriculumPackageConformanceTest'
+  )
 }
 
 run_owl_ci() {
@@ -394,7 +423,7 @@ echo "Installing Frontend CI Dependencies"
 echo "=========================================="
 cd "${PROJECT_ROOT}/app"
 npm ci
-if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+if [[ "${RUN_PACKAGE}" == "true" ]]; then
   npx playwright install chromium
 fi
 
@@ -410,6 +439,9 @@ fi
 
 if [[ "${RUN_CURRICULUM}" == "true" ]]; then
   run_curriculum_schema_ci
+fi
+if [[ "${RUN_PACKAGE}" == "true" ]]; then
+  run_package_ci
 fi
 if [[ "${RUN_OWL}" == "true" ]]; then
   run_owl_ci
