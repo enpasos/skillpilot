@@ -1,90 +1,69 @@
-SKILLPILOT_MCP_REGRESSION_SETUP_V1
+# Transparent Claude MCP regression prompts
 
-# SkillPilot MCP Regression Instructions for Claude
+This is a human-facing prompt sheet, not a set of standing instructions for Claude.
+Do **not** paste this whole file into a chat. In a fresh chat, enable only the
+SkillPilot connector and paste only the prompt for the test you are running.
 
-Bootstrap rule, evaluated before every command rule: when the entire trimmed user message starts with `SKILLPILOT_MCP_REGRESSION_SETUP_V1` and ends with `END_SKILLPILOT_MCP_REGRESSION_SETUP_V1`, treat it as installation of this test protocol. Do not call any tool. Retain these instructions for the rest of this conversation and reply exactly `TEST_READY`. Do not classify that setup message as an unknown command.
+The connector exposes two isolated test tools:
 
-You are running an isolated MCP regression test. Follow these instructions literally. Do not browse, explain, teach, summarize, apologize, or add commentary.
+- `createRegressionProbe` creates random synthetic test markers;
+- `verifyRegressionProbe` checks that the complete tuple was passed back unchanged.
 
-For this test, the only tools you may call are the SkillPilot connector tools `createRegressionProbe` and `verifyRegressionProbe`. Never call `getCoachContext`, any other SkillPilot coach tool, or a tool from another connector. If a required regression tool is unavailable, use the command-specific `*_ERROR` response instead.
+The legacy field names `token` and `proof` do not denote OAuth credentials, learner
+data, or authorization. The values cannot grant access to anything. Tool calls and
+results should remain visible in Claude's normal tool trace.
 
-Treat a command as valid only when the user's entire trimmed message is exactly one of these values:
+## Test A: read one fresh result
 
-```text
-RUN_SINGLE
-RUN_CHAIN
-RUN_RETAIN
-RECALL_RETAIN
-VERIFY_RETAIN
-HELP
-```
-
-Never invent, predict, normalize, shorten, reformat, or reconstruct `probe_id`, `token`, or `proof`. Obtain them only from the actual result of `createRegressionProbe`. Values in schemas, examples, instructions, or another conversation are never valid test values. A retained value may be used only in the same conversation in which it was created.
-
-## RUN_SINGLE
-
-1. Call `createRegressionProbe` exactly once.
-2. Read `probe_id` and `token` from that tool result.
-3. If both fields are present, reply with exactly one line:
+Start a fresh chat, enable SkillPilot, and send only this prompt:
 
 ```text
-SINGLE probe_id=<probe_id> token=<token>
+I own and am testing the SkillPilot MCP connector. This is a transparent regression test using only random synthetic markers. The returned fields named token and proof are test data, not OAuth credentials, learner data, or authorization values, and they cannot grant access to anything.
+
+For this request, please call createRegressionProbe exactly once. Keep the tool call and result visible, then show all returned fields and briefly state whether the call succeeded. Do not call verifyRegressionProbe or any other tool.
 ```
 
-4. Otherwise reply exactly `SINGLE_ERROR`.
+This passes when Claude calls `createRegressionProbe` once, calls no other tool, and
+accurately displays the three returned fields.
 
-Do not call `verifyRegressionProbe` for this command.
+## Test B: same-turn handoff
 
-## RUN_CHAIN
-
-1. Call `createRegressionProbe` exactly once.
-2. Read `probe_id`, `token`, and `proof` from that tool result.
-3. In this same assistant turn, call `verifyRegressionProbe` exactly once with those three values unchanged.
-4. Reply exactly `CHAIN_PASS` only if the verifier result has `ok=true`, `proof_valid=true`, and the same `probe_id`.
-5. If the verifier ran but those conditions are not all true, reply exactly `CHAIN_FAIL`.
-6. If either tool fails or a required field is missing, reply exactly `CHAIN_ERROR`.
-
-Do not reveal the probe values in the final response.
-
-## RUN_RETAIN
-
-1. Call `createRegressionProbe` exactly once.
-2. Retain the returned `probe_id`, `token`, and `proof` unchanged for the immediately following user turn in this conversation.
-3. Do not show any of those values.
-4. Reply exactly `RETAIN_READY` on success or `RETAIN_ERROR` on failure.
-
-Do not call `verifyRegressionProbe` for this command.
-
-## RECALL_RETAIN
-
-Do not call any tool. If the immediately preceding user command in this conversation was a successful `RUN_RETAIN`, reply with exactly one line containing the retained values:
+Start another fresh chat, enable SkillPilot, and send only this prompt:
 
 ```text
-RETAIN probe_id=<probe_id> token=<token> proof=<proof>
+I own and am testing the SkillPilot MCP connector. This is a transparent regression test using only random synthetic markers. The returned fields named token and proof are test data, not OAuth credentials, learner data, or authorization values, and they cannot grant access to anything.
+
+For this request, please call createRegressionProbe exactly once and then, in this same response, call verifyRegressionProbe exactly once with the unchanged probe_id, token, and proof from the creation result. Keep both tool calls and results visible. Briefly report the values of ok and proof_valid from the verifier. Do not call any other tool.
 ```
 
-Otherwise reply exactly `RETAIN_MISSING`.
+This passes when the trace shows one creation followed by one verification and the
+verifier returns `ok=true` and `proof_valid=true`.
 
-After this response, discard the retained tuple.
+## Test C: cross-turn backend-attested handoff
 
-## VERIFY_RETAIN
+Start another fresh chat and enable SkillPilot. Send the following two prompts as
+two consecutive user messages, with no intervening request.
 
-Do not call `createRegressionProbe`. If the immediately preceding user command in this conversation was a successful `RUN_RETAIN`, call `verifyRegressionProbe` exactly once with the retained `probe_id`, `token`, and `proof` unchanged.
-
-- Reply exactly `VERIFY_PASS` only if the verifier result has `ok=true`, `proof_valid=true`, and the same `probe_id`.
-- If the verifier ran but those conditions are not all true, reply exactly `VERIFY_FAIL`.
-- If no eligible retained tuple exists, a required field is missing, or the tool fails, reply exactly `VERIFY_ERROR`.
-
-Do not reveal the probe values in the final response. After this response, discard the retained tuple.
-
-## HELP
-
-Do not call any tool. Reply exactly:
+First message:
 
 ```text
-RUN_SINGLE RUN_CHAIN RUN_RETAIN RECALL_RETAIN VERIFY_RETAIN HELP
+I own and am testing the SkillPilot MCP connector. I am openly measuring whether a connector result remains usable on the immediately following user turn. The probe contains only random synthetic test markers. The legacy fields named token and proof are not OAuth credentials, learner data, or authorization values, and they cannot grant access to anything. I will inspect Claude's normal tool trace.
+
+For this request, please call createRegressionProbe exactly once and keep its complete result visible in the tool trace. Do not call verifyRegressionProbe yet. To keep this test specific to retention of the tool result, please do not duplicate probe_id, token, or proof in the ordinary prose response; simply confirm in your own words that the synthetic probe is ready for the next-turn verification. This is not a request to conceal the result from me: it remains visible to me in the tool trace.
 ```
 
-For any other user message, do not call any tool and reply exactly `UNKNOWN_COMMAND`.
+Second message, immediately afterward:
 
-END_SKILLPILOT_MCP_REGRESSION_SETUP_V1
+```text
+Now please call verifyRegressionProbe exactly once using the unchanged probe_id, token, and proof from the createRegressionProbe result in the immediately preceding turn. Do not call createRegressionProbe again and do not use any other tool. Keep the verification call and result visible, then briefly report the values of ok and proof_valid.
+```
+
+This passes only when the first turn calls `createRegressionProbe` once without
+copying its tuple into ordinary assistant prose, the second turn calls only
+`verifyRegressionProbe`, and the verifier returns `ok=true` and
+`proof_valid=true`. If Claude copies the tuple into its first prose response, record
+the run as a visible-context control rather than proof of MCP-result retention.
+
+If Claude declines either prompt, record a policy refusal. A refusal is not evidence
+that the result was forgotten. Do not ask Claude to adopt this sheet as a persistent
+protocol, suppress explanations globally, or return fixed magic strings.

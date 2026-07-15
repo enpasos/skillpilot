@@ -153,7 +153,7 @@
         <li>Use a dedicated adult Claude test account and a blank SkillPilot test learner. Do not bind a production learner.</li>
         <li>Use SkillPilot's normal Claude OAuth flow to add the connector under Claude's <strong>Customize &gt; Connectors</strong>.</li>
         <li>Run the isolated server configuration with <code>SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=false</code> and <code>SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=true</code>.</li>
-        <li>Open the <a href="https://raw.githubusercontent.com/enpasos/skillpilot/main/ai/claude/mcp-regression/CLAUDE_INSTRUCTIONS.md" rel="external">raw test instructions</a>, copy everything including the start/end markers, and paste it unchanged as the first message of every fresh measured chat. Expect <code>TEST_READY</code> without a tool call.</li>
+        <li>Open the <a href="https://raw.githubusercontent.com/enpasos/skillpilot/main/ai/claude/mcp-regression/CLAUDE_INSTRUCTIONS.md" rel="external">transparent prompt sheet</a>. It is for the human tester: do not paste the whole file or ask Claude to adopt standing instructions. Copy only the prompt for the current test into a fresh chat.</li>
         <li>Enable SkillPilot for that conversation through <strong>+ &gt; Connectors</strong>. Confirm that the connector exposes exactly <code>createRegressionProbe</code> and <code>verifyRegressionProbe</code>. Stop if any coach tool is visible.</li>
       </ol>
     </section>
@@ -177,36 +177,30 @@
         <tbody>
           <tr>
             <td>Single</td>
-            <td><code>RUN_SINGLE</code></td>
-            <td>Claude reads fields from a fresh MCP tool result.</td>
-            <td><code>SINGLE probe_id=&lt;uuid&gt; token=&lt;token&gt;</code></td>
+            <td>Test A prompt</td>
+            <td>Claude reads and openly displays one fresh MCP tool result.</td>
+            <td>One visible <code>createRegressionProbe</code> result</td>
           </tr>
           <tr>
             <td>Chain</td>
-            <td><code>RUN_CHAIN</code></td>
+            <td>Test B prompt</td>
             <td>Claude passes all three fields unchanged to the verifier in the same assistant turn.</td>
-            <td class="pass"><code>CHAIN_PASS</code></td>
+            <td class="pass"><code>ok=true</code>, <code>proof_valid=true</code></td>
           </tr>
           <tr>
-            <td>Recall</td>
-            <td><code>RUN_RETAIN</code>, then <code>RECALL_RETAIN</code></td>
-            <td>After the next user turn, Claude reproduces the stored tuple without another tool call.</td>
-            <td><code>RETAIN probe_id=… token=… proof=…</code></td>
-          </tr>
-          <tr>
-            <td>Verify</td>
-            <td><code>RUN_RETAIN</code>, then <code>VERIFY_RETAIN</code></td>
-            <td>The backend objectively validates the exact retained tuple after the user-turn boundary.</td>
-            <td class="pass"><code>VERIFY_PASS</code></td>
+            <td>Cross-turn</td>
+            <td>Test C first prompt, then Test C second prompt</td>
+            <td>The backend objectively validates the exact prior tool result after the user-turn boundary.</td>
+            <td class="pass"><code>ok=true</code>, <code>proof_valid=true</code></td>
           </tr>
         </tbody>
       </table>
-      <p class="note">Run Recall and Verify in two separate fresh chats, each immediately after its own <code>RUN_RETAIN</code>. Do not restart Spring Boot between issuing and verifying a probe.</p>
+      <p class="note">Keep all tool activity visible. Do not restart Spring Boot between the two Test C messages. A policy refusal means the measurement did not run; it is not evidence of forgotten data.</p>
     </section>
 
     <section class="card wide">
       <h2>How to interpret the baseline</h2>
-      <p>If Single and Chain pass, MCP dispatch and same-turn result handoff work. If Verify also passes in a separate two-turn run, Claude retained the complete signed MCP result across that immediate user-turn boundary. That is the minimum baseline needed before testing the real coach.</p>
+      <p>If Single and Chain pass, MCP dispatch and same-turn result handoff work. If Cross-turn also passes in a separate two-message run without the tuple being copied into ordinary assistant prose, the backend attests that Claude reused the complete MCP result across that immediate user-turn boundary. That is the minimum baseline needed before testing the real coach.</p>
       <p>A pass is evidence for this controlled conversation and Claude configuration, not a guarantee that arbitrarily old tool results survive context selection or compaction. The coach must still be able to reload current backend state.</p>
       <p class="note">After the measured block, restore <code>SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=true</code> and <code>SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=false</code>, restart Spring Boot, and confirm in a fresh chat that the regression tools are gone.</p>
       <div class="actions">

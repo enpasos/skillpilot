@@ -77,9 +77,12 @@ class ClaudeMcpTransportTest {
         assertThat(initializeBody.path("result").path("serverInfo").path("name").asText())
                 .isEqualTo("skillpilot-claude-mcp");
         assertThat(initializeBody.path("result").path("instructions").asText())
-                .contains("call it first")
+                .contains("Follow the user's explicit request")
                 .contains("state.stateMachine.requiredAction")
+                .contains("Preserve backend-provided fields unchanged")
                 .contains("Never ask for or expose a permanent SkillPilot ID");
+        assertThat(initializeBody.path("result").path("instructions").asText())
+                .doesNotContain("instead of relying on old tool results");
         assertThat(initialize.getResponse().getHeader("Mcp-Session-Id")).isNull();
 
         JsonNode listBody = jsonBody(postJson("""
