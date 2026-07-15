@@ -30,6 +30,7 @@ RUNNER_VERSION = "1.0.0"
 CONSUMER_API_VERSION = "0.1.0"
 SANDBOX_JAVA_HOME = "/opt/skillpilot-jdk"
 SANDBOX_PYTHON_HOME = "/opt/skillpilot-python"
+SANDBOX_PYTHON_LIBRARY_DIRECTORY = f"{SANDBOX_PYTHON_HOME}/lib"
 SANDBOX_TOOL_DIRECTORY = "/opt/skillpilot-host-tools"
 FUNCTIONAL_CHECK_IDS = (
     "app-shell.served",
@@ -928,6 +929,7 @@ SANDBOX_ENVIRONMENT = {
     "JAVA_HOME": SANDBOX_JAVA_HOME,
     "LANG": "C.UTF-8",
     "LC_ALL": "C.UTF-8",
+    "LD_LIBRARY_PATH": SANDBOX_PYTHON_LIBRARY_DIRECTORY,
     "LOGNAME": "skillpilot",
     "PWD": "/tmp",
     "PYTHONDONTWRITEBYTECODE": "1",
@@ -1136,9 +1138,19 @@ def self_test_fd_bound_host_runtimes(
             sandbox_python,
             f"{SANDBOX_TOOL_DIRECTORY}/python3",
         ]
+        python_home = Path(python_runtime["home"])
+        python_home_masked_separately = (
+            not python_home.is_relative_to("/opt")
+            and python_home not in {Path("/"), Path("/usr")}
+        )
+        if python_home_masked_separately:
+            command.extend(("--tmpfs", str(python_home)))
         for runtime in (python_runtime, node_runtime):
             executable = Path(runtime["executable"])
-            if not executable.is_relative_to("/opt"):
+            hidden_by_python_home = (
+                python_home_masked_separately and executable.is_relative_to(python_home)
+            )
+            if not executable.is_relative_to("/opt") and not hidden_by_python_home:
                 command.extend(("--ro-bind", "/dev/null", str(executable)))
         command.extend([
             "--proc",
@@ -1154,6 +1166,9 @@ def self_test_fd_bound_host_runtimes(
             "PYTHONHOME",
             SANDBOX_PYTHON_HOME,
             "--setenv",
+            "LD_LIBRARY_PATH",
+            SANDBOX_PYTHON_LIBRARY_DIRECTORY,
+            "--setenv",
             "PYTHONDONTWRITEBYTECODE",
             "1",
             "/bin/sh",
@@ -1168,6 +1183,11 @@ def self_test_fd_bound_host_runtimes(
             (
                 "import hashlib,json,sys;"
                 f"assert sys.prefix == {SANDBOX_PYTHON_HOME!r};"
+                "maps=open('/proc/self/maps',encoding='utf-8').read().splitlines();"
+                "mapped=[line.rsplit(None,1)[-1] for line in maps "
+                "if '/libpython' in line and '.so' in line];"
+                f"expected={f'{SANDBOX_PYTHON_LIBRARY_DIRECTORY}/'!r};"
+                "assert all(path.startswith(expected) for path in mapped),mapped;"
                 "assert hashlib.sha256(json.dumps({'ok': True}).encode()).hexdigest()"
             ),
             f"if (process.execPath !== {sandbox_node!r}) process.exit(1)",
