@@ -278,7 +278,7 @@ The complete real release-conformance lane is:
 bash scripts/run_curriculum_fwu_owl_package_conformance.sh
 ```
 
-It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI; ordinary CI verifies the tools and runs the bounded 40-guarantee finished-package-validator selftest.
+It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI. The manually dispatched OWL workflow and `./run_ci.sh owl` verify the pinned tools, run the bounded 40-guarantee finished-package-validator selftest, and exercise the focused semantic plus OWL/HermiT roundtrips.
 
 The complete real reverse-conformance lane is:
 

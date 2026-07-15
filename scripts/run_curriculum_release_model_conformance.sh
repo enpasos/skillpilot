@@ -23,20 +23,17 @@ PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
 EXPECTED_CONTENT_DIGEST="sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
-CORE_REPOSITORY="https://github.com/FWU-DE/lehrplan-ontologie.git"
-CORE_COMMIT="8aa5bce4a5366807d46f18650e31db98f9bfe35d"
-CORE_CHECKOUT="tmp/lehrplan-ontologie"
-
 cd "${ROOT_DIR}"
+
+# The normative JSON release model records the exact FWU Core provenance used
+# by the optional ontology projection. Verify that small trust binding here;
+# RDF generation, ROBOT, OWL validation, reasoning, and roundtrips remain in
+# the optional OWL suite.
+bash scripts/provision_pinned_fwu_ontology.sh
 
 python3 -B scripts/validate_curriculum_release_model_fixtures.py
 python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
-
-if [[ ! -e "${CORE_CHECKOUT}" ]]; then
-  git clone --no-checkout --quiet "${CORE_REPOSITORY}" "${CORE_CHECKOUT}"
-  git -C "${CORE_CHECKOUT}" checkout --detach --quiet "${CORE_COMMIT}"
-fi
 
 OUTPUT_SAFETY_ROOT="$(mktemp -d "${ROOT_DIR}/tmp/curriculum-release-model-output-safety.XXXXXX")"
 cleanup_output_safety_root() {

@@ -127,7 +127,7 @@ python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
 ```
 
-The focused gate combines those fixtures, destructive output-path attacks, the pinned Core checkout, the real-model validator, a byte-identical second model build, exactly one real Builder invocation whose ZIP materialization internally builds twice, independent finished-ZIP validation, secure provisioning and activation, and an exact `not-ready-incomplete` Readiness assertion. The evaluator runs the policy-pinned consumer itself: a real React/Chromium flow and Catalog-404 fail-closed case execute in the checkout-hidden namespace, while retained assembly/evidence manifests allow independent tree-digest verification:
+The focused JSON gate combines those fixtures, destructive output-path attacks, the lightweight pinned-Core provenance binding recorded by the JSON profile, the real-model validator, a byte-identical second model build, exactly one real Builder invocation whose ZIP materialization internally builds twice, independent finished-ZIP validation, secure provisioning and activation, and an exact `not-ready-incomplete` Readiness assertion. The evaluator runs the policy-pinned consumer itself: a real React/Chromium flow and Catalog-404 fail-closed case execute in the checkout-hidden namespace, while retained assembly/evidence manifests allow independent tree-digest verification. It does not generate RDF, run ROBOT, validate OWL, invoke a reasoner, or perform an ontology roundtrip; those operations live in `./run_ci.sh owl`:
 
 ```bash
 bash scripts/run_curriculum_release_model_conformance.sh
