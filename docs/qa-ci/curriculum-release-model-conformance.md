@@ -141,9 +141,10 @@ GitHub workflows explicitly set
 missing PDF may fall back to the byte count and SHA-256 already bound by the
 committed source-verification ledger. A present file is always hashed, and a
 changed file, symlink, directory, missing ledger binding, update, or PDF replay
-still fails closed. This hosted mode verifies committed metadata and all
-derived repository evidence; it is not a replacement for the strict local PDF
-or replay checks.
+still fails closed. The full-standalone package builder forwards the same mode
+as an explicit argument to its internal source-verification preflight. This
+hosted mode verifies committed metadata and all derived repository evidence; it
+is not a replacement for the strict local PDF or replay checks.
 
 For a step-complete checkpoint, targeted conformance checks are followed by the full repository gate:
 

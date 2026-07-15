@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url'
 import {
   createFullStandalonePackagePlan,
   materializeFullStandalonePackage,
+  sourceVerificationCheckerArguments,
   type FullStandaloneManifestFile,
 } from './buildFullStandaloneCurriculumPackage'
 
@@ -445,6 +446,48 @@ const manifestFiles = (plan: ReturnType<typeof createFullStandalonePackagePlan>)
 )
 
 try {
+  const sourceVerificationBaseArguments = [
+    '--check',
+    '--ledger', 'quality/source-verification.json',
+    '--report', 'docs/source-verification.md',
+  ]
+  assert.deepEqual(
+    sourceVerificationCheckerArguments(
+      'quality/source-verification.json',
+      'docs/source-verification.md',
+      undefined,
+    ),
+    sourceVerificationBaseArguments,
+    'source verification remains strict by default',
+  )
+  assert.deepEqual(
+    sourceVerificationCheckerArguments(
+      'quality/source-verification.json',
+      'docs/source-verification.md',
+      'strict',
+    ),
+    sourceVerificationBaseArguments,
+    'explicit strict source verification adds no fallback argument',
+  )
+  assert.deepEqual(
+    sourceVerificationCheckerArguments(
+      'quality/source-verification.json',
+      'docs/source-verification.md',
+      'committed-bindings',
+    ),
+    [...sourceVerificationBaseArguments, '--allow-missing-source-pdfs'],
+    'hosted CI source verification forwards the committed-binding fallback',
+  )
+  assert.throws(
+    () => sourceVerificationCheckerArguments(
+      'quality/source-verification.json',
+      'docs/source-verification.md',
+      'unexpected',
+    ),
+    /Unsupported SKILLPILOT_SOURCE_PDF_MODE/iu,
+    'unknown source-verification modes fail closed',
+  )
+
   const fixturePlanOptions = {
     repositoryRoot: fixtureRepositoryRoot,
     releaseRoot,
