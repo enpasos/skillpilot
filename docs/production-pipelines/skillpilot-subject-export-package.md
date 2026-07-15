@@ -125,7 +125,7 @@ npm run export:subject-package:trace-source -- \
 
 ## CI Release Gate
 
-The required GitHub Actions workflow `.github/workflows/subject_export_release_gate.yml` is a bounded per-commit gate: it regenerates and checks the configured memory-card and curriculum quality reports, then builds, validates, and byte-compares two small Latin subject exports. It therefore exercises the real exporter and validator without materializing the multi-gigabyte Mathematics and Physics ZIPs. The complete reproducible publication gate runs weekly and on manual dispatch as the independent `Full subject export release gate` job in `.github/workflows/owl-ci.yml`. Locally, run the same full pipeline with:
+Real subject packages belong exclusively to the package lane; ordinary per-commit CI does not materialize a package for any subject. The required Curriculum CI validates source code, contracts, curriculum models, reviews, and committed quality status. The complete reproducible publication gate runs weekly and on manual dispatch as the independent `Full subject export release gate` job in `.github/workflows/owl-ci.yml`. Locally, run the same full pipeline with:
 
 ```bash
 cd app
@@ -139,7 +139,7 @@ cd app
 npm run export:subject-release-gate:ci
 ```
 
-The CI-parity command used by the optional full job runs the release gate with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if the regenerated curriculum quality status or configured memory-card review reports differ from the committed files, if a configured memory-card review ledger fails `quality:memory-card-review:check`, or if the release package would be built from a dirty source tree.
+The CI-parity command used by the optional Package CI runs the release gate with `--enforce-committed-quality-status --enforce-clean-source-tree`. That makes the gate fail if the regenerated curriculum quality status or configured memory-card review reports differ from the committed files, if a configured memory-card review ledger fails `quality:memory-card-review:check`, or if the release package would be built from a dirty source tree.
 
 For a publication candidate, include the live source-link audit in the release gate:
 

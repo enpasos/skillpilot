@@ -27,9 +27,9 @@ This includes the package/runtime adapters, learner-goal selection, GPT instruct
 
 ### 3. `graph-validation` — curriculum
 
-Purpose: validate curriculum graph/data integrity, generated artifacts, package builders, hermetic package consumption, schema contracts, and release conformance.
+Purpose: validate curriculum graph/data integrity, generated artifacts, package contracts and self-tests, schemas, and deterministic release-model conformance.
 
-The job contains the graph, view, placement, source, review, asset, package, schema, archive, and legacy-reference gates. It also builds the closed package-only frontend and runs the real package consumer with the repository hidden. This is the suite that prevents curriculum packages from reading repository fallback data.
+The job contains the graph, view, placement, source, review, asset, schema, archive, and legacy-reference gates. It builds the package-only frontend and exercises the package builder, validator, provisioner, Readiness evaluator, and consumer through bounded self-tests, but it does not materialize or consume a real curriculum ZIP. Those production-boundary checks belong exclusively to the optional Package CI.
 
 Pushes and pull requests always run both the application and curriculum jobs. The split is for ownership, diagnosis, and faster local iteration; it is not a path-based permission to skip a suite.
 
@@ -37,7 +37,7 @@ The local and hosted curriculum paths intentionally run the same scope/readiness
 
 ### Optional package, subject-export, and FWU-OWL workflow
 
-`.github/workflows/owl-ci.yml` runs weekly and can be started manually; it is not run for every push or pull request. Separate fresh runners cover the real 1.7-GB standalone JSON package and hermetic consumer, the full reproducible subject-export release gate, and the Core-first FWU-OWL/roundtrip lane. The required per-commit subject-export workflow still builds, validates, and byte-compares a bounded Latin package, so exporter drift is caught without producing the multi-gigabyte Mathematics and Physics packages. SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.
+`.github/workflows/owl-ci.yml` is the single optional Package CI. It runs weekly and can be started manually; it is not run for every push or pull request. Separate fresh runners cover the real 1.7-GB standalone JSON package and hermetic consumer, all real subject-export packages, and the Core-first FWU-OWL/roundtrip lane. Ordinary per-commit CI materializes no real curriculum package for any subject; it validates code, contracts, models, reviews, schemas, and committed status instead. SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.
 
 The real 2.36-GB FWU-OWL release-conformance wrappers remain explicit release operations rather than ordinary CI. The optional workflow syntax-checks them but uses bounded contract tests and the focused roundtrip lane.
 
