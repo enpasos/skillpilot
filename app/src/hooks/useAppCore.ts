@@ -26,6 +26,7 @@ import {
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
+import { shouldSyncRouteStateToUrl } from '../utils/rootRoutePolicy'
 import {
   findRuntimeRootLandscapeId,
   resolveExplicitRuntimeOfferingId,
@@ -178,6 +179,7 @@ const replaceFilterDimension = ({
 interface AppCoreOptions {
   role: Role
   setLearnerMeta: (meta: { lastUpdated: string }) => void
+  enabled?: boolean
 }
 
 const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => {
@@ -188,10 +190,15 @@ const normalizeLandscapeIdForRole = (landscapeId: string | null, role: Role) => 
   return normalizeLearnerLandscapeId(landscapeId)
 }
 
-export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOptions & { skillpilotId: string }) {
+export function useAppCore({
+  role,
+  setLearnerMeta,
+  skillpilotId,
+  enabled = true,
+}: AppCoreOptions & { skillpilotId: string }) {
   const navigate = useNavigate()
   const location = useLocation()
-  const runtimeCatalogState = useRuntimeCurriculumCatalog()
+  const runtimeCatalogState = useRuntimeCurriculumCatalog({ enabled })
   // Fix: useParams only works inside a Route. Since useAppCore is called in App (outside Routes),
   // we must parse the URL manually using matchPath.
   const match = matchPath({ path: '/:view/:goalId?' }, location.pathname)
@@ -203,6 +210,10 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   const currentSearchString = location.search.startsWith('?') ? location.search.slice(1) : location.search
 
   const replaceSearchParamsIfNeeded = useCallback((next: URLSearchParams) => {
+    if (!shouldSyncRouteStateToUrl(location.pathname)) {
+      pendingSearchRef.current = null
+      return
+    }
     const nextString = next.toString()
     if (nextString === currentSearchString) {
       pendingSearchRef.current = null
@@ -213,7 +224,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     }
     pendingSearchRef.current = nextString
     setSearchParams(next, { replace: true })
-  }, [currentSearchString, setSearchParams])
+  }, [currentSearchString, location.pathname, setSearchParams])
 
   // Manage selectedLandscapeId state here
   const [selectedLandscapeId, setSelectedLandscapeId] = React.useState<string>(() => {
@@ -278,7 +289,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     landscapeEntries,
     loadingLandscapes,
     landscapeError: loadedLandscapeError,
-  } = useLandscapes(selectedLandscapeId, language, { enabled: runtimeCatalogReady })
+  } = useLandscapes(selectedLandscapeId, language, { enabled: enabled && runtimeCatalogReady })
   const {
     learnerScopedLandscapeEntries,
     loadingLearnerScopedLandscapes,
@@ -287,7 +298,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     selectedLandscapeId,
     language,
     skillpilotId,
-    { enabled: role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken },
+    { enabled: enabled && role === 'learner' && runtimeCatalogReady, refreshToken: learnerGraphRefreshToken },
   )
   const showLearnerTools = role !== 'explorer'
 
@@ -298,7 +309,11 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
     activeFilter,
     setActiveFilter,
     refreshMastery,
-  } = useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId })
+  } = useLearnerProgress({
+    landscapeEntries,
+    selectedLandscapeId,
+    skillpilotId: enabled ? skillpilotId : '',
+  })
 
   const graphSourceLandscapeEntries = useMemo(() => {
     if (role !== 'learner') {
@@ -395,7 +410,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
   }, [activeFilter, currentLandscapeEntry, currentSearchString, replaceSearchParamsIfNeeded, setActiveFilter])
 
   useEffect(() => {
-    if (role !== 'learner' || !skillpilotId) {
+    if (!enabled || role !== 'learner' || !skillpilotId) {
       setLearnerPersonalCurriculum(null)
       return
     }
@@ -423,7 +438,7 @@ export function useAppCore({ role, setLearnerMeta, skillpilotId }: AppCoreOption
       })
 
     return () => controller.abort()
-  }, [learnerGraphRefreshToken, role, skillpilotId])
+  }, [enabled, learnerGraphRefreshToken, role, skillpilotId])
 
   const runtimeCompositionRequests = useMemo(() => {
     const requests = new Map<string, {

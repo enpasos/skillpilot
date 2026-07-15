@@ -69,6 +69,8 @@ jobs:
         run: npm run test:package-landscape-model
       - name: Test runtime curriculum catalog consumer
         run: npm run test:runtime-curriculum-catalog
+      - name: Test root route policy
+        run: npm run test:root-route-policy
       - name: Test curriculum offering sources
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer

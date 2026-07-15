@@ -165,6 +165,9 @@ run_application_frontend_ci() {
   echo "--> Testing Runtime Curriculum Catalog Consumer"
   npm run test:runtime-curriculum-catalog
 
+  echo "--> Testing Root Route Policy"
+  npm run test:root-route-policy
+
   echo "--> Testing Curriculum Offering Sources"
   npm run test:curriculum-offering-source
 

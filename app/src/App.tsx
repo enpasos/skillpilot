@@ -12,6 +12,11 @@ import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
 import {
+  isRootRoute,
+  shouldRenderSessionSetup,
+  shouldRunApplicationCore,
+} from './utils/rootRoutePolicy'
+import {
   getLearnerPathToken,
   getStoredLandscapeIdForRole,
   normalizeLearnerLandscapeId,
@@ -191,10 +196,20 @@ const App: React.FC = () => {
     normalizedPath === '/explorer' ||
     normalizedPath.startsWith('/explorer/')
 
-  const core = useAppCore({ role: role || 'explorer', setLearnerMeta, skillpilotId: sanitizedSkillpilotId })
+  const core = useAppCore({
+    role: role || 'explorer',
+    setLearnerMeta,
+    skillpilotId: sanitizedSkillpilotId,
+    enabled: shouldRunApplicationCore(normalizedPath),
+  })
   const { currentLandscapeEntry, landscapeEntries, selectionGoalIndexAll } = core
   const selectedLandscapeId = core.selectedLandscapeId
   const canRenderAnonymousExplorer = isExplorerRoute && !!selectedLandscapeId
+  const renderSessionSetup = shouldRenderSessionSetup({
+    pathname: normalizedPath,
+    hasActiveSession,
+    canRenderAnonymousExplorer,
+  })
   const setupClosureRootLandscapeId = core.runtimeCatalogState.mode === 'package'
     ? core.runtimeRootLandscapeId
     : (
@@ -654,6 +669,60 @@ const App: React.FC = () => {
     )
   }
 
+  const handleSessionStart = (
+    id: string,
+    landscapeId?: string,
+    forceRole?: Role,
+    forceGoalId?: string,
+  ) => {
+    const activeRole = forceRole || role
+    if (!activeRole) return
+    const sanitizedId = sanitizeSkillpilotId(id)
+    setSkillpilotId(sanitizedId)
+    setHasSession(true)
+    setRole(activeRole) // Explicitly set role to avoid redirect race
+    localStorage.setItem('skillpilot_id', sanitizedId)
+    localStorage.setItem('skillpilot_role', activeRole)
+    const effectiveLandscapeId = activeRole === 'trainer'
+      ? landscapeId
+      : normalizeLearnerLandscapeId(landscapeId)
+    if (effectiveLandscapeId) {
+      setPendingLandscapeId(effectiveLandscapeId)
+      core.setSelectedLandscapeId(effectiveLandscapeId)
+    }
+    const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
+    // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
+    const params = new URLSearchParams(location.search)
+    const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''
+    const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
+
+    if (activeRole === 'learner') {
+      if (deepLinkGoal) {
+        navigate(`/learner/${deepLinkGoal}${search}`)
+      } else {
+        navigate(`/learner${search}`)
+      }
+    } else if (activeRole === 'trainer') {
+      navigate(`/trainer${search}`)
+    } else {
+      navigate(`/explorer${search}`)
+    }
+  }
+
+  const sessionSetupElement = (
+    <SessionSetup
+      role={role}
+      setRole={setRole}
+      skillpilotId={sanitizedSkillpilotId}
+      setSkillpilotId={setSkillpilotId}
+      onStart={handleSessionStart}
+    />
+  )
+
+  if (isRootRoute(normalizedPath)) {
+    return sessionSetupElement
+  }
+
   if (core.runtimeCatalogState.mode === 'unavailable') {
     return (
       <div
@@ -665,70 +734,15 @@ const App: React.FC = () => {
     )
   }
 
-  if (hasActiveSession && normalizedPath === '/' && !pendingLandscapeId) {
-    const params = new URLSearchParams(location.search)
-    const rawFallbackLandscapeId = params.get('l') || selectedLandscapeId || getStoredLandscapeIdForRole(role)
-    const fallbackLandscapeId = normalizeLearnerLandscapeId(rawFallbackLandscapeId)
-    if (fallbackLandscapeId && params.get('l') !== fallbackLandscapeId) {
-      params.set('l', fallbackLandscapeId)
-    }
-    if (fallbackLandscapeId) {
-      const nextSearch = params.toString()
-      const targetPath = role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'
-      return <Navigate to={`${targetPath}${nextSearch ? `?${nextSearch}` : ''}`} replace />
-    }
+  if (!hasActiveSession && isSetupOnlyRoleRoute) {
+    return <Navigate to="/" replace />
   }
 
-  if (!hasActiveSession) {
-    if (isSetupOnlyRoleRoute) {
-      return <Navigate to="/" replace />
-    }
+  if (renderSessionSetup) {
+    return sessionSetupElement
+  }
 
-    if (!canRenderAnonymousExplorer) {
-      return (
-        <SessionSetup
-          role={role}
-          setRole={setRole}
-          skillpilotId={sanitizedSkillpilotId}
-          setSkillpilotId={setSkillpilotId}
-          onStart={(id, landscapeId, forceRole, forceGoalId) => {
-            const activeRole = forceRole || role
-            if (!activeRole) return
-            const sanitizedId = sanitizeSkillpilotId(id)
-            setSkillpilotId(sanitizedId)
-            setHasSession(true)
-            setRole(activeRole) // Explicitly set role to avoid redirect race
-            localStorage.setItem('skillpilot_id', sanitizedId)
-            localStorage.setItem('skillpilot_role', activeRole)
-            const effectiveLandscapeId = activeRole === 'trainer'
-              ? landscapeId
-              : normalizeLearnerLandscapeId(landscapeId)
-            if (effectiveLandscapeId) {
-              setPendingLandscapeId(effectiveLandscapeId)
-              core.setSelectedLandscapeId(effectiveLandscapeId)
-            }
-            const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
-            // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
-            const params = new URLSearchParams(location.search)
-            const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''
-            const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
-
-            if (activeRole === 'learner') {
-              if (deepLinkGoal) {
-                navigate(`/learner/${deepLinkGoal}${search}`)
-              } else {
-                navigate(`/learner${search}`)
-              }
-            } else if (activeRole === 'trainer') {
-              navigate(`/trainer${search}`)
-            } else {
-              navigate(`/explorer${search}`)
-            }
-          }}
-        />
-      )
-    }
-  } else if (!core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId && isExplorerRoute) {
+  if (hasActiveSession && !core.selectedLandscapeId && !core.loadingLandscapes && !pendingLandscapeId && isExplorerRoute) {
     return <Navigate to="/" replace />
   }
 
@@ -739,48 +753,7 @@ const App: React.FC = () => {
       return <Navigate to="/" replace />
     }
 
-    return (
-      <SessionSetup
-        role={role}
-        setRole={setRole}
-        skillpilotId={sanitizedSkillpilotId}
-        setSkillpilotId={setSkillpilotId}
-        onStart={(id, landscapeId, forceRole, forceGoalId) => {
-          const activeRole = forceRole || role
-          if (!activeRole) return
-          const sanitizedId = sanitizeSkillpilotId(id)
-          setSkillpilotId(sanitizedId)
-          setHasSession(true)
-          setRole(activeRole) // Explicitly set role to avoid redirect race
-          localStorage.setItem('skillpilot_id', sanitizedId)
-          localStorage.setItem('skillpilot_role', activeRole)
-          const effectiveLandscapeId = activeRole === 'trainer'
-            ? landscapeId
-            : normalizeLearnerLandscapeId(landscapeId)
-          if (effectiveLandscapeId) {
-            setPendingLandscapeId(effectiveLandscapeId)
-            core.setSelectedLandscapeId(effectiveLandscapeId)
-          }
-          const search = effectiveLandscapeId ? `?l=${effectiveLandscapeId}` : ''
-          // Fallback to URL if not passed explicitly (for manual clicks). The route token is a goal id only.
-          const params = new URLSearchParams(location.search)
-          const routeGoalId = routeGoalToken && routeGoalToken !== sanitizedId ? routeGoalToken : ''
-          const deepLinkGoal = forceGoalId || params.get('goal') || params.get('g') || routeGoalId
-
-          if (activeRole === 'learner') {
-            if (deepLinkGoal) {
-              navigate(`/learner/${deepLinkGoal}${search}`)
-            } else {
-              navigate(`/learner${search}`)
-            }
-          } else if (activeRole === 'trainer') {
-            navigate(`/trainer${search}`)
-          } else {
-            navigate(`/explorer${search}`)
-          }
-        }}
-      />
-    )
+    return sessionSetupElement
   }
 
   if (core.loadingLandscapes) {
@@ -896,7 +869,7 @@ const App: React.FC = () => {
           <Route path="/start/:campaignId" element={<Abi26MatheStartView />} />
         )}
 
-        <Route path="/" element={<Navigate to={role === 'learner' ? '/learner' : role === 'trainer' ? '/trainer' : '/explorer'} replace />} />
+        <Route path="/" element={null} />
         </Routes>
       </>
     </Suspense>
