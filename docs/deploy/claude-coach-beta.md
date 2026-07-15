@@ -268,12 +268,20 @@ verbinden. Die transparenten Einzelprompts für einen unmittelbaren Aufruf, die
 Übergabe im selben Turn und die backend-bestätigte Übergabe über die nächste
 Nutzernachricht stehen auf `https://skillpilot.com/claude/mcp-regression`. Die
 Prompt-Datei ist eine Anleitung für die testende Person und wird nicht als
-dauerhaftes Protokoll vollständig in Claude eingefügt. Der Cross-Turn-Lauf gilt
-nur dann als bestanden, wenn der Verifier `proof_valid=true` liefert und die
-privacy-sicheren Auditereignisse für denselben `probe_id` identische Token- und
-Proof-Hashes enthalten. Zwischen den beiden Cross-Turn-Nachrichten den Prozess
-nicht neu starten. Eine Ablehnung des Testauftrags wird als Policy-Refusal und
-nicht als Retention-Fehler erfasst.
+dauerhaftes Protokoll vollständig in Claude eingefügt. Die Claude-MCP-Werkzeuge
+verwenden dafür ausschließlich die harmlosen Felder `probe_id`, `sample_marker`
+und `integrity_tag`; das OpenAI-REST-Schema bleibt unverändert. Der Cross-Turn-Lauf
+gilt nur dann als bestanden, wenn der Verifier `integrity_valid=true` liefert und
+die privacy-sicheren Auditereignisse für denselben `probe_id` identische Hashes
+enthalten. Zwischen den beiden Cross-Turn-Nachrichten den Prozess nicht neu
+starten. Eine Ablehnung des Testauftrags wird als Policy-Refusal und nicht als
+Retention-Fehler erfasst.
+
+Vor dem erneuten Laden des Connectors muss
+`https://skillpilot.com/claude/mcp-regression/status.json` den Status `ready`,
+`regression_tools_ready=true` und genau die beiden registrierten Regressionstools
+melden. Der Endpunkt veröffentlicht nur effektive Feature-Schalter und Toolnamen,
+keine OAuth-, Lernenden- oder Signaturdaten.
 
 Danach den normalen Werkzeugumfang wiederherstellen und neu starten:
 
