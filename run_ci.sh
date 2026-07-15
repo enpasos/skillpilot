@@ -23,6 +23,50 @@ trap on_error ERR
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${PROJECT_ROOT}"
 
+usage() {
+  cat <<'EOF'
+Usage: ./run_ci.sh [all|application|curriculum]
+
+Suites:
+  all          Run application and curriculum CI (default).
+  application  Run Custom GPT, frontend application-logic, and backend checks.
+  curriculum   Run curriculum graph, data, package, schema, and conformance checks.
+
+The separate suites are diagnostic shortcuts. Use the default full suite as the
+final gate before committing or deploying cross-cutting changes.
+EOF
+}
+
+if (( $# > 1 )); then
+  usage >&2
+  exit 2
+fi
+
+CI_SUITE="${1:-all}"
+RUN_APPLICATION=false
+RUN_CURRICULUM=false
+case "${CI_SUITE}" in
+  all)
+    RUN_APPLICATION=true
+    RUN_CURRICULUM=true
+    ;;
+  application)
+    RUN_APPLICATION=true
+    ;;
+  curriculum)
+    RUN_CURRICULUM=true
+    ;;
+  -h|--help)
+    usage
+    exit 0
+    ;;
+  *)
+    echo "Unknown CI suite: ${CI_SUITE}" >&2
+    usage >&2
+    exit 2
+    ;;
+esac
+
 ensure_pinned_java() {
   local required_java_version
   local required_corretto_version
@@ -59,6 +103,14 @@ ensure_pinned_java() {
   printf '%s\n' "${current_java_version_output}"
 }
 
+PINNED_JAVA_READY=false
+ensure_pinned_java_once() {
+  if [[ "${PINNED_JAVA_READY}" != "true" ]]; then
+    ensure_pinned_java
+    PINNED_JAVA_READY=true
+  fi
+}
+
 REQUIRED_NODE_VERSION="$(tr -d '[:space:]' < .nvmrc)"
 if [ -n "${NVM_DIR:-}" ] && [ -s "${NVM_DIR}/nvm.sh" ]; then
   # shellcheck source=/dev/null
@@ -83,183 +135,242 @@ if [[ "${CURRENT_NODE_VERSION}" != "${REQUIRED_NODE_PREFIX}" && "${CURRENT_NODE_
   exit 1
 fi
 
-echo "=========================================="
-echo "Running Custom GPT Action Regression CI"
-echo "=========================================="
-npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
-npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
+run_action_regression_ci() {
+  echo "=========================================="
+  echo "Running Custom GPT Action Regression CI"
+  echo "=========================================="
+  npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
+  npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
+}
+
+run_application_frontend_ci() {
+  echo "=========================================="
+  echo "Running Frontend Application Logic CI"
+  echo "=========================================="
+
+  echo "--> Testing Package Landscape Model Parity"
+  npm run test:package-landscape-model
+
+  echo "--> Testing Runtime Curriculum Catalog Consumer"
+  npm run test:runtime-curriculum-catalog
+
+  echo "--> Testing Curriculum Offering Sources"
+  npm run test:curriculum-offering-source
+
+  echo "--> Testing Package Goal Source Evidence Consumer"
+  npm run test:package-goal-source-evidence
+
+  echo "--> Running Learner Goal Selection Validation"
+  npm run validate:learner-goal-selection
+
+  echo "--> Checking GPT System Instruction Lengths"
+  npm run check:gpt-system-instruction-lengths
+
+  echo "--> Testing Deterministic ZIP32 Writer"
+  npm run test:deterministic-zip32
+}
+
+run_curriculum_frontend_ci() {
+  echo "=========================================="
+  echo "Running Curriculum Data and Package CI"
+  echo "=========================================="
+
+  echo "--> Running Graph Validation"
+  npm run validate:graph
+
+  echo "--> Running View-Filter Validation"
+  npm run validate:view-filters
+
+  echo "--> Checking Source Landscape Registry"
+  npm run check:source-landscape-registry
+
+  echo "--> Running Hessen Math G8/G9 Projection Check"
+  npm run check:he-math-duration-projection
+
+  echo "--> Checking generated Math G8/G9 Composition Views"
+  npm run check:math-duration-composition-views
+
+  echo "--> Checking generated German Sek-I Composition Views"
+  npm run check:german-seki-composition-views
+
+  echo "--> Checking generated History Sek-I Composition Views"
+  npm run check:history-seki-composition-views
+
+  echo "--> Checking Canonical Math Scope Coverage"
+  npm run check:canonical-math-scope-coverage
+
+  echo "--> Checking Gymnasium G8/G9 Duration Readiness Report"
+  npm run check:gymnasium-duration-readiness
+
+  echo "--> Checking Mathematics G8/G9 Duration Policy Readiness"
+  npm run check:math-duration-policy-readiness
+
+  echo "--> Checking M6 G8/G9 Duration Policy Readiness"
+  npm run check:m6-duration-policy-readiness
+
+  echo "--> Checking generated Gymnasium Duration Offerings"
+  npm run check:gymnasium-duration-offerings
+
+  echo "--> Running Curriculum Source Coverage Check"
+  npm run quality:source-coverage-audit:check
+
+  echo "--> Checking Goal Source Rationale Runtime Index"
+  npm run check:goal-source-rationales:math-public
+
+  echo "--> Checking Goal Source Rationale All-Relevant Report"
+  npm run check:goal-source-rationales:math-all-relevant
+
+  echo "--> Checking Goal Source Rationale Coverage Report"
+  npm run check:goal-source-rationale-coverage
+
+  echo "--> Checking Goal Source Rationale Gap Issues"
+  npm run check:goal-source-rationale-gap-issues
+
+  echo "--> Checking Goal Source Rationale Mapping Batch 01"
+  npm run check:goal-source-rationale-mapping-batch-01
+
+  echo "--> Checking Generated Documentation Notices"
+  npm run check:generated-doc-notices
+
+  echo "--> Checking Generated Status Registry"
+  npm run check:generated-status-registry
+
+  echo "--> Checking Documentation Links"
+  npm run check:docs-links
+
+  echo "--> Checking Documentation Index Coverage"
+  npm run check:docs-indexes
+
+  echo "--> Running Composition-View Validation"
+  npm run validate:composition-views
+
+  echo "--> Running Memory-Card Review Check"
+  npm run quality:memory-card-review:check:all
+
+  echo "--> Preparing Generated Runtime Assets"
+  npm run prepare:runtime-assets
+
+  echo "--> Checking Goal Visualization Runtime Assets"
+  npm run check:goal-visualization-assets
+
+  echo "--> Testing Full Standalone Curriculum Package Builder"
+  npm run test:full-standalone-package-builder
+
+  echo "--> Testing Core-first FWU-OWL Curriculum Package Builder"
+  npm run typecheck:fwu-owl-package-builder
+  npm run test:fwu-owl-package-builder
+}
+
+run_frontend_quality_gate() {
+  echo "--> Running Frontend Lint & Application Build"
+  npm run lint
+  npm run build:application
+  if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+    npm run check:goal-source-rationales:build-artifact
+  fi
+}
+
+run_curriculum_schema_ci() {
+  cd "${PROJECT_ROOT}"
+  echo "--> Running Curriculum Schema and Release Conformance"
+  python3 -m pip install -q -r scripts/curriculum_fwu_owl_validation_requirements.txt
+  ensure_pinned_java_once
+  bash -n \
+    scripts/provision_pinned_robot.sh \
+    scripts/run_curriculum_release_model_conformance.sh \
+    scripts/run_curriculum_fwu_owl_package_conformance.sh \
+    scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+  bash scripts/provision_pinned_robot.sh
+  python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+    --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+  echo "--> Validating Curriculum Package Contracts"
+  python3 -B scripts/validate_curriculum_package_contracts.py
+  python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
+  python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+  python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
+  python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+  python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+  python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
+  python3 -B scripts/validate_curriculum_schema_catalog_contract.py
+  python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
+  python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
+  python3 -B scripts/provision_curriculum_package.py self-test
+  python3 -B scripts/run_package_consumer_smoke.py --self-test
+  python3 -B scripts/validate_curriculum_dual_release_contracts.py
+  bash scripts/run_curriculum_release_model_conformance.sh
+  export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
+  python3 scripts/validate_schemas.py
+  echo "--> Validating Curriculum Goal IDs (UUIDs)"
+  python3 scripts/validate_goal_ids_uuid.py
+  echo "--> Validating Hessen Upper-Secondary Archive Paths"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_archive_paths.py
+  echo "--> Validating Hessen Upper-Secondary Legacy References"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
+  echo "--> Validating Hessen Chemistry Exam Pipeline"
+  python3 scripts/validate_chemistry_exam_pipeline.py
+  echo "--> Validating Hessen Lower-Secondary Archive Paths"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_archive_paths.py
+  echo "--> Validating Hessen Lower-Secondary Legacy References"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_legacy_refs.py
+  echo "--> Validating Bavaria Gymnasium Archive Paths"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_archive_paths.py
+  echo "--> Validating Bavaria Gymnasium Legacy References"
+  SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_legacy_refs.py
+}
+
+run_backend_ci() {
+  echo ""
+  echo "=========================================="
+  echo "Running Backend Application Logic CI"
+  echo "=========================================="
+  ensure_pinned_java_once
+  cd "${PROJECT_ROOT}/backend"
+  chmod +x gradlew
+  # Run backend check in a CI-like, isolated Gradle home to avoid stale local state.
+  # This makes local results closer to GitHub Actions (fresh workspace behavior).
+  export GRADLE_USER_HOME="$(pwd)/.gradle-ci"
+  export SKILLPILOT_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/backend-ci-build-$$"
+  if [[ "${SKILLPILOT_BACKEND_BUILD_DIR}" != "${PROJECT_ROOT}/tmp/backend-ci-build-"* ]]; then
+    echo "Abbruch: unerwartetes Backend-CI-Build-Verzeichnis: ${SKILLPILOT_BACKEND_BUILD_DIR}" >&2
+    exit 1
+  fi
+  rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
+  echo "Backend CI build dir: ${SKILLPILOT_BACKEND_BUILD_DIR}"
+  ./gradlew --stop >/dev/null 2>&1 || true
+  ./gradlew clean check --no-daemon --no-watch-fs
+  rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
+  cd "${PROJECT_ROOT}"
+}
+
+if [[ "${RUN_APPLICATION}" == "true" ]]; then
+  run_action_regression_ci
+fi
 
 echo "=========================================="
-echo "Running Frontend CI (app)"
+echo "Installing Frontend CI Dependencies"
 echo "=========================================="
 cd "${PROJECT_ROOT}/app"
 npm ci
-npx playwright install chromium
-
-echo "--> Running Graph Validation"
-npm run validate:graph
-
-echo "--> Testing Package Landscape Model Parity"
-npm run test:package-landscape-model
-
-echo "--> Testing Runtime Curriculum Catalog Consumer"
-npm run test:runtime-curriculum-catalog
-
-echo "--> Testing Curriculum Offering Sources"
-npm run test:curriculum-offering-source
-
-echo "--> Testing Package Goal Source Evidence Consumer"
-npm run test:package-goal-source-evidence
-
-echo "--> Running View-Filter Validation"
-npm run validate:view-filters
-
-echo "--> Checking Source Landscape Registry"
-npm run check:source-landscape-registry
-
-echo "--> Running Hessen Math G8/G9 Projection Check"
-npm run check:he-math-duration-projection
-
-echo "--> Checking generated Math G8/G9 Composition Views"
-npm run check:math-duration-composition-views
-
-echo "--> Checking generated German Sek-I Composition Views"
-npm run check:german-seki-composition-views
-
-echo "--> Checking generated History Sek-I Composition Views"
-npm run check:history-seki-composition-views
-
-echo "--> Checking Canonical Math Scope Coverage"
-npm run check:canonical-math-scope-coverage
-
-echo "--> Checking Gymnasium G8/G9 Duration Readiness Report"
-npm run check:gymnasium-duration-readiness
-
-echo "--> Checking Mathematics G8/G9 Duration Policy Readiness"
-npm run check:math-duration-policy-readiness
-
-echo "--> Checking M6 G8/G9 Duration Policy Readiness"
-npm run check:m6-duration-policy-readiness
-
-echo "--> Checking generated Gymnasium Duration Offerings"
-npm run check:gymnasium-duration-offerings
-
-echo "--> Running Curriculum Source Coverage Check"
-npm run quality:source-coverage-audit:check
-
-echo "--> Checking Generated Documentation Notices"
-npm run check:generated-doc-notices
-
-echo "--> Checking Generated Status Registry"
-npm run check:generated-status-registry
-
-echo "--> Checking GPT System Instruction Lengths"
-npm run check:gpt-system-instruction-lengths
-
-echo "--> Checking Documentation Links"
-npm run check:docs-links
-
-echo "--> Checking Documentation Index Coverage"
-npm run check:docs-indexes
-
-echo "--> Running Composition-View Validation"
-npm run validate:composition-views
-
-echo "--> Running Memory-Card Review Check"
-npm run quality:memory-card-review:check:all
-
-echo "--> Running Learner Goal Selection Validation"
-npm run validate:learner-goal-selection
-
-echo "--> Deploying Generated Runtime Assets"
-npm run deploy:assets
-
-echo "--> Checking Goal Visualization Runtime Assets"
-npm run check:goal-visualization-assets
-
-echo "--> Testing Deterministic ZIP32 Writer"
-npm run test:deterministic-zip32
-
-echo "--> Testing Full Standalone Curriculum Package Builder"
-npm run test:full-standalone-package-builder
-
-echo "--> Testing Core-first FWU-OWL Curriculum Package Builder"
-npm run typecheck:fwu-owl-package-builder
-npm run test:fwu-owl-package-builder
-
-echo "--> Running Lint & Build"
-npm run lint
-npm run build
-npm run check:goal-source-rationales:build-artifact
-cd "${PROJECT_ROOT}"
-
-echo "--> Running Schema Validation"
-python3 -m pip install -q -r scripts/curriculum_fwu_owl_validation_requirements.txt
-ensure_pinned_java
-bash -n \
-  scripts/provision_pinned_robot.sh \
-  scripts/run_curriculum_release_model_conformance.sh \
-  scripts/run_curriculum_fwu_owl_package_conformance.sh \
-  scripts/run_curriculum_fwu_owl_reverse_conformance.sh
-bash scripts/provision_pinned_robot.sh
-python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
-  --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
-echo "--> Validating Curriculum Package Contracts"
-python3 -B scripts/validate_curriculum_package_contracts.py
-python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
-python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
-python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
-python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
-python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
-python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
-python3 -B scripts/validate_curriculum_schema_catalog_contract.py
-python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
-python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
-python3 -B scripts/provision_curriculum_package.py self-test
-python3 -B scripts/run_package_consumer_smoke.py --self-test
-python3 -B scripts/validate_curriculum_dual_release_contracts.py
-bash scripts/run_curriculum_release_model_conformance.sh
-export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
-python3 scripts/validate_schemas.py
-echo "--> Validating Curriculum Goal IDs (UUIDs)"
-python3 scripts/validate_goal_ids_uuid.py
-echo "--> Validating Hessen Upper-Secondary Archive Paths"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_archive_paths.py
-echo "--> Validating Hessen Upper-Secondary Legacy References"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_upper_secondary_legacy_refs.py
-echo "--> Validating Hessen Chemistry Exam Pipeline"
-python3 scripts/validate_chemistry_exam_pipeline.py
-echo "--> Validating Hessen Lower-Secondary Archive Paths"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_archive_paths.py
-echo "--> Validating Hessen Lower-Secondary Legacy References"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_hessen_lower_secondary_legacy_refs.py
-echo "--> Validating Bavaria Gymnasium Archive Paths"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_archive_paths.py
-echo "--> Validating Bavaria Gymnasium Legacy References"
-SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_legacy_refs.py
-
-echo ""
-echo "=========================================="
-echo "Running Backend CI (backend)"
-echo "=========================================="
-cd "${PROJECT_ROOT}/backend"
-chmod +x gradlew
-# Run backend check in a CI-like, isolated Gradle home to avoid stale local state.
-# This makes local results closer to GitHub Actions (fresh workspace behavior).
-export GRADLE_USER_HOME="$(pwd)/.gradle-ci"
-export SKILLPILOT_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/backend-ci-build-$$"
-if [[ "${SKILLPILOT_BACKEND_BUILD_DIR}" != "${PROJECT_ROOT}/tmp/backend-ci-build-"* ]]; then
-  echo "Abbruch: unerwartetes Backend-CI-Build-Verzeichnis: ${SKILLPILOT_BACKEND_BUILD_DIR}" >&2
-  exit 1
+if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+  npx playwright install chromium
 fi
-rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
-echo "Backend CI build dir: ${SKILLPILOT_BACKEND_BUILD_DIR}"
-./gradlew --stop >/dev/null 2>&1 || true
-./gradlew clean check --no-daemon --no-watch-fs
-rm -rf "${SKILLPILOT_BACKEND_BUILD_DIR}"
-cd "${PROJECT_ROOT}"
+
+if [[ "${RUN_APPLICATION}" == "true" ]]; then
+  run_application_frontend_ci
+fi
+if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+  run_curriculum_frontend_ci
+fi
+run_frontend_quality_gate
+
+if [[ "${RUN_CURRICULUM}" == "true" ]]; then
+  run_curriculum_schema_ci
+fi
+if [[ "${RUN_APPLICATION}" == "true" ]]; then
+  run_backend_ci
+fi
 
 echo ""
 echo "=========================================="
-echo "CI RESULT: PASSED"
+echo "CI RESULT: PASSED (${CI_SUITE})"
 echo "=========================================="
