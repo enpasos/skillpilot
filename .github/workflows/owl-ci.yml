@@ -14,6 +14,8 @@ jobs:
   fwu-owl-ci:
     name: Optional FWU-OWL and roundtrip CI
     runs-on: ubuntu-latest
+    env:
+      SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -48,6 +50,8 @@ jobs:
           "${install_dir}/bin/java" -version
       - name: Install isolation and archive tools
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
+      - name: Enable and verify bubblewrap isolation
+        run: bash scripts/configure_github_bubblewrap.sh
       - name: Install FWU-OWL validation dependencies
         run: python -m pip install -r scripts/curriculum_fwu_owl_validation_requirements.txt
       - name: Provision pinned FWU ontology and ROBOT
