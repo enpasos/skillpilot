@@ -34385,7 +34385,7 @@
     {
       "id": "47c515c9-2174-58c7-a844-6865fc67c243",
       "title": "Aufgabe 6 (Jahrgangsstufe 6, 6 BE)",
-      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 6 bearbeiten: Pi als Kreisverhältnis deuten, Prozent- und Diagrammaussagen prüfen, Spiegelungen ausführen und einfache Muster fortsetzen.",
+      "description": "Die lernende Person kann eine freigegebene Prüfungsaufgabe der Jahrgangsstufe 6 bearbeiten: Pi als Kreisverhältnis deuten, einen prozentualen Anteil berechnen, eine abgeschnittene Achse kritisch beurteilen, Spiegelungen ausführen und einfache Muster fortsetzen.",
       "weight": 1,
       "tags": [
         "GK",
@@ -34415,7 +34415,7 @@
           "DE-TH"
         ]
       },
-      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/draft_v1.md#task-6",
+      "sourceRef": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/draft_v2.md#task-6",
       "dimensionTags": {
         "framework": "canonical-gymnasium-math",
         "demandLevel": "AB3",
@@ -34438,6 +34438,7 @@
       "contains": [],
       "requires": [
         "8a691345-3216-522c-a898-d65e8e94db28",
+        "71d43fcc-d787-4874-ae4a-2336364e9c0a",
         "72b6bfa5-8e34-4029-8f85-0277207c485e",
         "0c2ddfcd-1399-41ad-aaed-4f061812602a",
         "acbb7e26-f85f-405b-a3e5-affa6add6711",
@@ -34449,9 +34450,10 @@
       "nodeKind": "exam",
       "examData": {
         "reviewStatus": "released",
-        "reviewNote": "released after simulated internal review on 2026-06-28 for J6",
+        "reviewNote": "released after simulated internal review on 2026-06-28 for J6; v2 percentage rendering and truncated-axis comparison revised after didactic review on 2026-07-15",
         "coveredGoalIds": [
           "8a691345-3216-522c-a898-d65e8e94db28",
+          "71d43fcc-d787-4874-ae4a-2336364e9c0a",
           "72b6bfa5-8e34-4029-8f85-0277207c485e",
           "0c2ddfcd-1399-41ad-aaed-4f061812602a",
           "acbb7e26-f85f-405b-a3e5-affa6add6711",
@@ -34468,17 +34470,17 @@
           "AB2",
           "AB3"
         ],
-        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/draft_v1.md",
-        "taskContent": "Beim Schulfest werden runde Buttons hergestellt. Jeder Button hat einen Durchmesser von $6 cm$.\n\nAußerdem wird ausgewertet, wie viele angemeldete Kinder beim Workshop erschienen sind.\n\n| Gruppe | angemeldet | erschienen |\n| --- | ---: | ---: |\n| A | 20 | 18 |\n| B | 25 | 20 |\n| C | 15 | 12 |\n\n1. Berechne den Umfang eines Buttons mit $\\pi = 3.14$. Erkläre, warum $\\pi$ als Verhältnis von Umfang zu Durchmesser verstanden werden kann. (2 BE)\n2. Prüfe die Aussage: \"Insgesamt sind $85 %$ der angemeldeten Kinder erschienen.\" Ein Balkendiagramm beginnt auf der y-Achse erst bei $10$ statt bei $0$. Beurteile, warum das problematisch sein kann. (2 BE)\n3. Ein Buttonmotiv hat die Punkte $A(1|2)$, $B(3|2)$, $C(2|4)$ und wird an der Geraden $x=3$ gespiegelt. Gib die Bildpunkte an. Eine Deko-Reihe nutzt $6, 10, 14, ...$ kleine Sterne. Nenne die nächsten zwei Zahlen und die Regel. (2 BE)",
-        "solutionContent": "Umfang: $U = \\pi \\cdot d = 3.14 \\cdot 6 = 18.84$, also etwa $18.84 cm$. $\\pi$ beschreibt bei jedem Kreis das Verhältnis $U : d$.\n\nInsgesamt erschienen $18 + 20 + 12 = 50$ von $20 + 25 + 15 = 60$ Kindern. $50/60 = 5/6 = 83.3 %$. Die Aussage $85 %$ ist nicht korrekt. Wenn die y-Achse erst bei $10$ beginnt, wirken Unterschiede zwischen den Gruppen größer als sie sind.\n\nSpiegelung an $x=3$: $A'(5|2)$, $B'(3|2)$, $C'(4|4)$. Die nächsten Zahlen sind $18$ und $22$; jedes Mal kommen $4$ Sterne dazu.",
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/mathematik/seki/j6/draft_v2.md",
+        "taskContent": "Beim Schulfest werden runde Buttons hergestellt. Jeder Button hat einen Durchmesser von $6 cm$.\n\nAußerdem wird ausgewertet, wie viele angemeldete Kinder beim Workshop erschienen sind.\n\n| Gruppe | angemeldet | erschienen |\n| --- | ---: | ---: |\n| A | 20 | 18 |\n| B | 25 | 20 |\n| C | 15 | 12 |\n\n1. Berechne den Umfang eines Buttons mit $\\pi = 3.14$. Erkläre, warum $\\pi$ als Verhältnis von Umfang zu Durchmesser verstanden werden kann. (2 BE)\n2. Bestimme, wie viel Prozent der angemeldeten Kinder insgesamt erschienen sind. Runde auf ganze Prozent. Das folgende Säulendiagramm vergleicht die Gesamtzahlen $60$ (angemeldet) und $50$ (erschienen), beginnt auf der y-Achse aber erst bei $40$:\n\n   ```text\n   60 | █\n   55 | █\n   50 | █     █\n   45 | █     █\n   40 +-------------\n        angem. ersch.\n   ```\n\n   Erkläre, welchen falschen Eindruck diese Darstellung erzeugen kann. (2 BE)\n3. Ein Buttonmotiv hat die Punkte $A(1|2)$, $B(3|2)$, $C(2|4)$ und wird an der Geraden $x=3$ gespiegelt. Gib die Bildpunkte an. Eine Deko-Reihe nutzt $6, 10, 14, ...$ kleine Sterne. Nenne die nächsten zwei Zahlen und die Regel. (2 BE)",
+        "solutionContent": "Umfang: $U = \\pi \\cdot d = 3.14 \\cdot 6 = 18.84$, also etwa $18.84 cm$. $\\pi$ beschreibt bei jedem Kreis das Verhältnis $U : d$.\n\nInsgesamt erschienen $18 + 20 + 12 = 50$ von $20 + 25 + 15 = 60$ Kindern. $50/60 = 5/6 \\approx 0{,}833$, also rund $83$ Prozent. Beginnt die Achse erst bei $40$, sind die sichtbaren Säulen nur $20$ beziehungsweise $10$ Einheiten hoch. Dadurch kann $60$ fälschlich wie das Doppelte von $50$ wirken. Tatsächlich sind $50$ fünf Sechstel von $60$ und nur $10$ weniger. Für einen fairen Mengenvergleich sollte die Achse bei $0$ beginnen.\n\nSpiegelung an $x=3$: $A'(5|2)$, $B'(3|2)$, $C'(4|4)$. Die nächsten Zahlen sind $18$ und $22$; jedes Mal kommen $4$ Sterne dazu.",
         "scoring": {
           "maxPoints": 6,
           "passingPoints": 3,
           "steps": [
             {
-              "id": "j6_released_v1_6",
+              "id": "j6_released_v2_6",
               "points": 6,
-              "description": "Pi als Kreisverhältnis deuten, Prozent- und Diagrammaussagen prüfen, Spiegelungen ausführen und einfache Muster fortsetzen."
+              "description": "Pi als Kreisverhältnis deuten, einen prozentualen Anteil berechnen, eine abgeschnittene Achse kritisch beurteilen, Spiegelungen ausführen und einfache Muster fortsetzen."
             }
           ]
         }
