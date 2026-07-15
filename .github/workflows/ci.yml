@@ -149,6 +149,12 @@ jobs:
         run: npm run validate:composition-views
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
+      - name: Verify committed curriculum quality status
+        run: |
+          npm run quality:memory-card-review:report:all
+          npm run quality:curriculum-status
+          git diff --exit-code -- ../docs/qa-ci/status
+          test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
       - name: Prepare generated curriculum runtime assets
         run: npm run prepare:runtime-assets
       - name: Check goal visualization runtime assets

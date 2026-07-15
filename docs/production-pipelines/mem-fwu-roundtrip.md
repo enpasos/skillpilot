@@ -30,7 +30,7 @@ Accordingly, two lanes coexist temporarily:
 - `npm --prefix app run export:fwu-owl-package -- ...` builds the current primary and reproducibility-peer FWU-OWL packages atomically under `tmp/curriculum-release-model/fwu-owl-package/`;
 - `scripts/validate_fwu_owl_curriculum_package.py` validates finished FWU-OWL bytes independently and emits the external schema-valid receipt;
 - `scripts/provision_pinned_robot.sh` and `scripts/check_curriculum_fwu_owl_validation_tools.py` provision and verify the exact offline ontology toolchain;
-- `scripts/run_curriculum_fwu_owl_package_conformance.sh` rebuilds the frozen JSON/FWU pair and executes the heavyweight real 18-gate validation.
+- `scripts/run_curriculum_fwu_owl_package_conformance.sh` consumes the exact frozen JSON artifact, rebuilds its FWU carrier, and executes the heavyweight real 18-gate validation.
 - `scripts/reconstruct_json_curriculum_package_from_fwu_owl.py` is the standalone registry-inverting reverse compiler and never imports the forward exporter;
 - `scripts/run_fwu_owl_reverse_compiler_hermetic.py` executes two host-root-free, networkless builds and binds the host-owned traces, minimal Runtime closure, tools, outputs, and independent validator receipts;
 - `scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py` validates the external reverse receipt, including nested receipts, actual ZIP/manifest/index bytes, the exact evidence inventory and independently derived trace/Runtime findings;
