@@ -302,6 +302,28 @@ const fail = (message: string): never => {
   throw new Error(message)
 }
 
+export const sourceVerificationCheckerArguments = (
+  ledgerRepositoryPath: string,
+  reportRepositoryPath: string,
+  mode: string | undefined,
+): string[] => {
+  const args = [
+    '--check',
+    '--ledger', ledgerRepositoryPath,
+    '--report', reportRepositoryPath,
+  ]
+  switch (mode ?? 'strict') {
+    case 'strict':
+      return args
+    case 'committed-bindings':
+      return [...args, '--allow-missing-source-pdfs']
+    default:
+      return fail(
+        `Unsupported SKILLPILOT_SOURCE_PDF_MODE: ${mode}. Expected one of: strict, committed-bindings.`,
+      )
+  }
+}
+
 const objectValue = (value: unknown, label: string): JsonObject => {
   if (value === null || Array.isArray(value) || typeof value !== 'object') fail(`${label} must be an object.`)
   return value as JsonObject
@@ -1134,11 +1156,11 @@ export const createFullStandalonePackagePlan = (
     runTrustedProcess(
       repositoryRoot,
       SOURCE_VERIFICATION_CHECKER_PATH,
-      [
-        '--check',
-        '--ledger', repositoryRelativePath(repositoryRoot, sourceVerificationReviewPath as string, 'source-verification review'),
-        '--report', repositoryRelativePath(repositoryRoot, sourceVerificationReportPath as string, 'source-verification report'),
-      ],
+      sourceVerificationCheckerArguments(
+        repositoryRelativePath(repositoryRoot, sourceVerificationReviewPath as string, 'source-verification review'),
+        repositoryRelativePath(repositoryRoot, sourceVerificationReportPath as string, 'source-verification report'),
+        process.env.SKILLPILOT_SOURCE_PDF_MODE,
+      ),
       'source-verification checker',
     )
     runTrustedProcess(
