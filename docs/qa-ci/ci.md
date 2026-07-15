@@ -35,9 +35,9 @@ Pushes and pull requests always run both the application and curriculum jobs. Th
 
 The local and hosted curriculum paths intentionally run the same scope/readiness and goal-source-rationale gates, so a local curriculum result cannot diverge merely because the two checklists differ.
 
-### Optional FWU-OWL workflow
+### Optional package, subject-export, and FWU-OWL workflow
 
-`.github/workflows/owl-ci.yml` is a manually started workflow and is not run for every push or pull request. It covers the Core-first FWU-OWL builder and contracts, the bounded reverse-compiler tests, the semantic MEM/FWU roundtrip, and OWL 2 DL plus HermiT validation. These checks protect the optional interchange format; SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.
+`.github/workflows/owl-ci.yml` runs weekly and can be started manually; it is not run for every push or pull request. Separate fresh runners cover the real 1.7-GB standalone JSON package and hermetic consumer, the full reproducible subject-export release gate, and the Core-first FWU-OWL/roundtrip lane. The required per-commit subject-export workflow still builds, validates, and byte-compares a bounded Latin package, so exporter drift is caught without producing the multi-gigabyte Mathematics and Physics packages. SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.
 
 The real 2.36-GB FWU-OWL release-conformance wrappers remain explicit release operations rather than ordinary CI. The optional workflow syntax-checks them but uses bounded contract tests and the focused roundtrip lane.
 
@@ -114,6 +114,7 @@ From repository root:
 ./run_ci.sh all
 ./run_ci.sh application
 ./run_ci.sh curriculum
+./run_ci.sh package
 ./run_ci.sh owl
 ./run_ci.sh full
 ```
@@ -121,11 +122,12 @@ From repository root:
 With no argument, `all` remains the default required repository gate. The modes are:
 
 - `application`: Custom GPT Action regression, fixture-based frontend application logic, GPT instruction limits, lint, application-only build, and isolated Gradle backend checks.
-- `curriculum`: graph/data/review/asset gates, the JSON curriculum package builder, the hash-bound hermetic package consumer, schemas, and JSON release conformance.
+- `curriculum`: graph/data/review/asset gates, schemas, and deterministic JSON release-model conformance; it does not materialize the real 1.7-GB ZIP.
+- `package`: optional real standalone JSON ZIP, independent package validation, secure provisioning/activation, Readiness evaluation, and the hash-bound hermetic package consumer.
 - `owl`: optional FWU-OWL builder/contracts, reverse-compiler tests, semantic MEM/FWU roundtrip, and OWL 2 DL/HermiT validation.
-- `all`: every required application and curriculum check exactly once, sharing dependency and tool setup where possible; OWL is intentionally excluded.
-- `full`: `all` plus the optional OWL checks.
+- `all`: every required application and curriculum check exactly once, sharing dependency and tool setup where possible; package materialization and OWL are intentionally excluded.
+- `full`: `all` plus the optional real package and OWL checks.
 
-Unknown or multiple suite arguments fail with exit code 2. Do not infer the required suite from changed paths: cross-cutting runtime changes must still finish with `./run_ci.sh` or `./run_ci.sh all`. Use `owl` or `full` when FWU-OWL, ontology, or roundtrip code changes.
+Unknown or multiple suite arguments fail with exit code 2. Do not infer the required suite from changed paths: cross-cutting runtime changes must still finish with `./run_ci.sh` or `./run_ci.sh all`. Use `package` for package/provisioning/consumer changes and `owl` for ontology or roundtrip changes; `full` runs both optional lanes.
 
-Splitting OWL does not remove the largest cost from `curriculum`: the real 1.7-GB JSON standalone package and its hermetic Spring/browser consumer remain required because they exercise SkillPilot's production package boundary.
+The real package, reproducible subject exports, and OWL/roundtrip checks share the optional scheduled/manual GitHub workflow. Bounded builder, validator, provisioner, Readiness, consumer, and generated-status checks remain required per commit, while multi-gigabyte production-boundary exercises are kept out of ordinary commit CI.

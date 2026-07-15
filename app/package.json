@@ -105,7 +105,7 @@
     "test:fwu-owl-package-builder": "tsx scripts/testFwuOwlCurriculumPackageBuilder.ts",
     "typecheck:fwu-owl-package-builder": "tsc -p tsconfig.fwu-owl-scripts.json --pretty false",
     "export:fwu-owl-package": "tsx scripts/buildFwuOwlCurriculumPackage.ts",
-    "check:full-standalone-mathematik-plan": "tsx scripts/buildFullStandaloneCurriculumPackage.ts --release-root tmp/curriculum-release-model/mathematik-a --output-dir tmp/full-standalone-package --plan-only --expect-entry-count 914 --expect-manifest-file-count 912 --expect-binary-asset-count 757 --expect-content-digest sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101",
+    "check:full-standalone-mathematik-plan": "tsx scripts/buildFullStandaloneCurriculumPackage.ts --release-root tmp/curriculum-release-model/mathematik-a --output-dir tmp/full-standalone-package --plan-only --expect-entry-count 914 --expect-manifest-file-count 912 --expect-binary-asset-count 757 --expect-content-digest sha256:f867f79d44fc2ead12cb4b6d4a4c15c741eb26e369c430d7776dd7e032f45dbb",
     "export:subject-package": "tsx scripts/buildSkillpilotExportPackage.ts",
     "export:subject-provenance-audit": "tsx scripts/buildSubjectProvenanceAuditPackage.ts",
     "export:subject-packages:validate": "tsx scripts/validateSubjectExportPackages.ts",

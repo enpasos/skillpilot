@@ -187,8 +187,6 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
       - name: Enable and verify bubblewrap isolation
         run: bash ../scripts/configure_github_bubblewrap.sh
-      - name: Install pinned package-consumer browser
-        run: npx playwright install --with-deps chromium
       - name: Install Python dependencies
         run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
       - name: Verify curriculum JSON conformance scripts
@@ -209,21 +207,8 @@ jobs:
           python -B scripts/validate_full_standalone_curriculum_package.py --self-test
           python -B scripts/provision_curriculum_package.py self-test
           python -B scripts/run_package_consumer_smoke.py --self-test
-          bash scripts/run_curriculum_release_model_conformance.sh
-      - name: Upload curriculum-package conformance evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: curriculum-package-conformance-evidence
-          if-no-files-found: warn
-          retention-days: 14
-          path: |
-            tmp/curriculum-release-model/full-standalone-package/*report*.json
-            tmp/curriculum-release-model/full-standalone-package/provision-*.json
-            tmp/curriculum-release-model/full-standalone-package-build-summary.json
-            tmp/curriculum-release-model/package-consumer-smoke/assembly-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle-manifest.json
-            tmp/curriculum-release-model/package-consumer-smoke/evidence-bundle/
+          SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
+            bash scripts/run_curriculum_release_model_conformance.sh
       - name: Validate Schemas
         run: cd .. && python scripts/validate_schemas.py
       - name: Validate Curriculum Goal IDs (UUIDs)

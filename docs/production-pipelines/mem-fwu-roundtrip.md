@@ -25,7 +25,7 @@ DPK-008d now reconstructs an independently valid JSON package from that FWU pack
 Accordingly, two lanes coexist temporarily:
 
 - the commands below continue to exercise the already working legacy semantic OWL pilot;
-- `scripts/run_curriculum_release_model_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`;
+- `scripts/run_curriculum_full_package_conformance.sh` builds and validates the new JSON staging ZIP under `tmp/curriculum-release-model/full-standalone-package/`; the ordinary release-model wrapper stops before ZIP materialization;
 - `scripts/validate_curriculum_fwu_owl_package_contracts.py` validates the DPK-008a ontology-package contracts independently of the DPK-008b exporter;
 - `npm --prefix app run export:fwu-owl-package -- ...` builds the current primary and reproducibility-peer FWU-OWL packages atomically under `tmp/curriculum-release-model/fwu-owl-package/`;
 - `scripts/validate_fwu_owl_curriculum_package.py` validates finished FWU-OWL bytes independently and emits the external schema-valid receipt;
@@ -278,7 +278,7 @@ The complete real release-conformance lane is:
 bash scripts/run_curriculum_fwu_owl_package_conformance.sh
 ```
 
-It writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI. The manually dispatched OWL workflow and `./run_ci.sh owl` verify the pinned tools, run the bounded 40-guarantee finished-package-validator selftest, and exercise the focused semantic plus OWL/HermiT roundtrips.
+The wrapper is bound to the frozen DPK-007a JSON artifact and never rebuilds that artifact from the current authoring tree. Restore the exact archived ZIP at its documented default path, or set `SKILLPILOT_FROZEN_JSON_PACKAGE` to that ZIP; its frozen SHA-256 is checked before provisioning. The wrapper writes the external receipt to `tmp/curriculum-release-model/fwu-owl-validation/fwu-owl-package-validation-report.json`, the hash-bound ontology evidence below `tmp/curriculum-release-model/fwu-owl-validation/evidence/`, and the tool receipt to `tmp/curriculum-release-model/fwu-owl-validation/tools-report.json`. This heavyweight 2.36-GB/HermiT lane is deliberately not part of ordinary CI. The scheduled/manual optional workflow uses separate fresh runners for the current real JSON package gate, the bounded FWU-OWL/roundtrip checks, and the full subject-export gate. Locally, `./run_ci.sh package` and `./run_ci.sh owl` keep those concerns selectable, while `./run_ci.sh full` runs both.
 
 The complete real reverse-conformance lane is:
 
