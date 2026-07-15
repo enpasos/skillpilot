@@ -1,0 +1,101 @@
+name: Optional FWU-OWL CI
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fwu-owl-ci:
+    name: Optional FWU-OWL and roundtrip CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install Node dependencies
+        run: npm --prefix app ci
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Set up pinned Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+      - name: Use exact production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < .corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - name: Install isolation and archive tools
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace zip unzip
+      - name: Install FWU-OWL validation dependencies
+        run: python -m pip install -r scripts/curriculum_fwu_owl_validation_requirements.txt
+      - name: Provision pinned FWU ontology and ROBOT
+        run: |
+          bash -n \
+            scripts/provision_pinned_fwu_ontology.sh \
+            scripts/provision_pinned_robot.sh \
+            scripts/run_curriculum_fwu_owl_package_conformance.sh \
+            scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+          bash scripts/provision_pinned_fwu_ontology.sh
+          bash scripts/provision_pinned_robot.sh
+          python -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+            --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+      - name: Test Core-first FWU-OWL package builder
+        run: |
+          npm --prefix app run typecheck:fwu-owl-package-builder
+          npm --prefix app run test:fwu-owl-package-builder
+      - name: Prepare current curriculum runtime assets
+        run: npm --prefix app run prepare:runtime-assets
+      - name: Build and validate Mathematics subject package
+        run: |
+          npm --prefix app run export:subject-package -- --subject Mathematik --version 0.1.0
+          npm --prefix app run export:subject-packages:validate -- \
+            --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+      - name: Run semantic MEM/FWU roundtrip
+        run: npm --prefix app run roundtrip:mem-fwu:semantic
+      - name: Run OWL 2 DL and HermiT roundtrip validation
+        env:
+          ROBOT_JAR: ${{ github.workspace }}/tmp/tools/robot.jar
+        run: npm --prefix app run roundtrip:mem-fwu:owl:reason
+      - name: Run bounded FWU-OWL and reverse-compiler contracts
+        run: |
+          python -B scripts/validate_curriculum_fwu_owl_package_contracts.py
+          python -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+          python -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
+          python -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+          python -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+          python -B scripts/validate_curriculum_dual_release_contracts.py
+      - name: Upload FWU-OWL evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: optional-fwu-owl-evidence
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+            tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/owl-validation-report.json
+            tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/owl-validation-report.md
+            tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/semantic-reconstructed/semantic-reconstruction-report.json
+            tmp/roundtrip/mem-fwu/skillpilot-de-gymnasium-mathematik-v0.1.0/slim/semantic-reconstructed/semantic-reconstruction-report.md

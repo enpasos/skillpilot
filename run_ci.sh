@@ -25,15 +25,17 @@ cd "${PROJECT_ROOT}"
 
 usage() {
   cat <<'EOF'
-Usage: ./run_ci.sh [all|application|curriculum]
+Usage: ./run_ci.sh [all|application|curriculum|owl|full]
 
 Suites:
-  all          Run application and curriculum CI (default).
+  all          Run required application and curriculum CI (default).
   application  Run Custom GPT, frontend application-logic, and backend checks.
-  curriculum   Run curriculum graph, data, package, schema, and conformance checks.
+  curriculum   Run curriculum graph, data, JSON package, schema, and consumer checks.
+  owl          Run optional FWU-OWL, reasoner, and semantic roundtrip checks.
+  full         Run application, curriculum, and optional FWU-OWL checks.
 
-The separate suites are diagnostic shortcuts. Use the default full suite as the
-final gate before committing or deploying cross-cutting changes.
+Use the default required suite before committing or deploying cross-cutting
+changes. Run the optional OWL suite when FWU-OWL or roundtrip code changes.
 EOF
 }
 
@@ -45,6 +47,7 @@ fi
 CI_SUITE="${1:-all}"
 RUN_APPLICATION=false
 RUN_CURRICULUM=false
+RUN_OWL=false
 case "${CI_SUITE}" in
   all)
     RUN_APPLICATION=true
@@ -55,6 +58,14 @@ case "${CI_SUITE}" in
     ;;
   curriculum)
     RUN_CURRICULUM=true
+    ;;
+  owl)
+    RUN_OWL=true
+    ;;
+  full)
+    RUN_APPLICATION=true
+    RUN_CURRICULUM=true
+    RUN_OWL=true
     ;;
   -h|--help)
     usage
@@ -256,9 +267,6 @@ run_curriculum_frontend_ci() {
   echo "--> Testing Full Standalone Curriculum Package Builder"
   npm run test:full-standalone-package-builder
 
-  echo "--> Testing Core-first FWU-OWL Curriculum Package Builder"
-  npm run typecheck:fwu-owl-package-builder
-  npm run test:fwu-owl-package-builder
 }
 
 run_frontend_quality_gate() {
@@ -272,31 +280,20 @@ run_frontend_quality_gate() {
 
 run_curriculum_schema_ci() {
   cd "${PROJECT_ROOT}"
-  echo "--> Running Curriculum Schema and Release Conformance"
-  python3 -m pip install -q -r scripts/curriculum_fwu_owl_validation_requirements.txt
+  echo "--> Running Curriculum JSON Schema and Release Conformance"
+  python3 -m pip install -q -r scripts/curriculum_package_validation_requirements.txt
   ensure_pinned_java_once
   bash -n \
-    scripts/provision_pinned_robot.sh \
-    scripts/run_curriculum_release_model_conformance.sh \
-    scripts/run_curriculum_fwu_owl_package_conformance.sh \
-    scripts/run_curriculum_fwu_owl_reverse_conformance.sh
-  bash scripts/provision_pinned_robot.sh
-  python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
-    --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+    scripts/provision_pinned_fwu_ontology.sh \
+    scripts/run_curriculum_release_model_conformance.sh
   echo "--> Validating Curriculum Package Contracts"
   python3 -B scripts/validate_curriculum_package_contracts.py
-  python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
-  python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
-  python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
-  python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
-  python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
   python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
   python3 -B scripts/validate_curriculum_schema_catalog_contract.py
   python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
   python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
   python3 -B scripts/provision_curriculum_package.py self-test
   python3 -B scripts/run_package_consumer_smoke.py --self-test
-  python3 -B scripts/validate_curriculum_dual_release_contracts.py
   bash scripts/run_curriculum_release_model_conformance.sh
   export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
   python3 scripts/validate_schemas.py
@@ -316,6 +313,49 @@ run_curriculum_schema_ci() {
   SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_archive_paths.py
   echo "--> Validating Bavaria Gymnasium Legacy References"
   SKILLPILOT_DISABLE_RG=1 python3 scripts/validate_bavaria_gymnasium_legacy_refs.py
+}
+
+run_owl_ci() {
+  cd "${PROJECT_ROOT}"
+  echo ""
+  echo "=========================================="
+  echo "Running Optional FWU-OWL and Roundtrip CI"
+  echo "=========================================="
+  python3 -m pip install -q -r scripts/curriculum_fwu_owl_validation_requirements.txt
+  ensure_pinned_java_once
+  bash -n \
+    scripts/provision_pinned_fwu_ontology.sh \
+    scripts/provision_pinned_robot.sh \
+    scripts/run_curriculum_fwu_owl_package_conformance.sh \
+    scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+  bash scripts/provision_pinned_fwu_ontology.sh
+  bash scripts/provision_pinned_robot.sh
+  python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+    --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+
+  cd "${PROJECT_ROOT}/app"
+  echo "--> Testing Core-first FWU-OWL Curriculum Package Builder"
+  npm run typecheck:fwu-owl-package-builder
+  npm run test:fwu-owl-package-builder
+  echo "--> Preparing current curriculum runtime assets for roundtrip input"
+  npm run prepare:runtime-assets
+  echo "--> Building and validating the Mathematics subject package for roundtrip tests"
+  npm run export:subject-package -- --subject Mathematik --version 0.1.0
+  npm run export:subject-packages:validate -- \
+    --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+  echo "--> Running semantic MEM/FWU roundtrip"
+  npm run roundtrip:mem-fwu:semantic
+  echo "--> Running OWL 2 DL and HermiT roundtrip validation"
+  ROBOT_JAR="${PROJECT_ROOT}/tmp/tools/robot.jar" npm run roundtrip:mem-fwu:owl:reason
+
+  cd "${PROJECT_ROOT}"
+  echo "--> Running bounded FWU-OWL contract and reverse-compiler self-tests"
+  python3 -B scripts/validate_curriculum_fwu_owl_package_contracts.py
+  python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+  python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py --self-test
+  python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+  python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+  python3 -B scripts/validate_curriculum_dual_release_contracts.py
 }
 
 run_backend_ci() {
@@ -361,10 +401,15 @@ fi
 if [[ "${RUN_CURRICULUM}" == "true" ]]; then
   run_curriculum_frontend_ci
 fi
-run_frontend_quality_gate
+if [[ "${RUN_APPLICATION}" == "true" || "${RUN_CURRICULUM}" == "true" ]]; then
+  run_frontend_quality_gate
+fi
 
 if [[ "${RUN_CURRICULUM}" == "true" ]]; then
   run_curriculum_schema_ci
+fi
+if [[ "${RUN_OWL}" == "true" ]]; then
+  run_owl_ci
 fi
 if [[ "${RUN_APPLICATION}" == "true" ]]; then
   run_backend_ci

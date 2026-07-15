@@ -35,6 +35,14 @@ Pushes and pull requests always run both the application and curriculum jobs. Th
 
 The local and hosted curriculum paths intentionally run the same scope/readiness and goal-source-rationale gates, so a local curriculum result cannot diverge merely because the two checklists differ.
 
+### Optional FWU-OWL workflow
+
+`.github/workflows/owl-ci.yml` is a manually started workflow and is not run for every push or pull request. It covers the Core-first FWU-OWL builder and contracts, the bounded reverse-compiler tests, the semantic MEM/FWU roundtrip, and OWL 2 DL plus HermiT validation. These checks protect the optional interchange format; SkillPilot's production runtime consumes the JSON curriculum package and does not require OWL.
+
+The real 2.36-GB FWU-OWL release-conformance wrappers remain explicit release operations rather than ordinary CI. The optional workflow syntax-checks them but uses bounded contract tests and the focused roundtrip lane.
+
+The required JSON release-model gate still verifies the exact FWU Core commit and file hash recorded as provenance in its build profile. That small checkout/trust check is not an OWL test: it creates no RDF, runs neither ROBOT nor HermiT, and performs no ontology validation or roundtrip.
+
 The graph rule catalog is documented in:
 
 - `docs/qa-ci/graph-validation-rules.md`
@@ -106,12 +114,18 @@ From repository root:
 ./run_ci.sh all
 ./run_ci.sh application
 ./run_ci.sh curriculum
+./run_ci.sh owl
+./run_ci.sh full
 ```
 
-With no argument, `all` remains the default and the final repository gate. The separate modes are:
+With no argument, `all` remains the default required repository gate. The modes are:
 
 - `application`: Custom GPT Action regression, fixture-based frontend application logic, GPT instruction limits, lint, application-only build, and isolated Gradle backend checks.
-- `curriculum`: graph/data/review/asset gates, curriculum package builders, the hash-bound hermetic package consumer, schemas, and release conformance.
-- `all`: each check from both suites exactly once, sharing dependency and tool setup where possible.
+- `curriculum`: graph/data/review/asset gates, the JSON curriculum package builder, the hash-bound hermetic package consumer, schemas, and JSON release conformance.
+- `owl`: optional FWU-OWL builder/contracts, reverse-compiler tests, semantic MEM/FWU roundtrip, and OWL 2 DL/HermiT validation.
+- `all`: every required application and curriculum check exactly once, sharing dependency and tool setup where possible; OWL is intentionally excluded.
+- `full`: `all` plus the optional OWL checks.
 
-Unknown or multiple suite arguments fail with exit code 2. Do not infer the suite from changed paths: cross-cutting changes must still finish with `./run_ci.sh` or `./run_ci.sh all`.
+Unknown or multiple suite arguments fail with exit code 2. Do not infer the required suite from changed paths: cross-cutting runtime changes must still finish with `./run_ci.sh` or `./run_ci.sh all`. Use `owl` or `full` when FWU-OWL, ontology, or roundtrip code changes.
+
+Splitting OWL does not remove the largest cost from `curriculum`: the real 1.7-GB JSON standalone package and its hermetic Spring/browser consumer remain required because they exercise SkillPilot's production package boundary.

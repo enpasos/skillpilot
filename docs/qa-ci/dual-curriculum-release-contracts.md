@@ -23,7 +23,10 @@ python3 -B scripts/validate_curriculum_dual_release_contracts.py
 
 The validator requires `jsonschema==4.26.0`, rejects duplicate JSON keys, non-finite numbers, invalid Unicode and RDF/XML-unsafe controls, validates all schemas and positive fixtures, recomputes logical/binary records and the aggregate semantic content digest, verifies trusted file hashes and cross-document bindings, and executes a mutation matrix. Mutations cover lost order, ambiguous registry paths, inconsistent missing/null semantics, unsafe or broad JSON carriers, stale contracts, forged content records/digests, incomplete field and role coverage, mismatched graph or image evidence, substituted ontology/package reports, non-isolated reconstruction, non-hermetic consumers, non-reproducible builds, report substitution, and unverified stable promotion.
 
-The gate runs in `./run_ci.sh`, the main GitHub CI workflow, and the subject-export release workflow.
+The gate belongs to the optional ontology lane. Run it through `./run_ci.sh owl`
+or `./run_ci.sh full`; GitHub runs it only in the manually dispatched
+`.github/workflows/owl-ci.yml` workflow. The required application/curriculum
+CI and the automatic subject-export workflow intentionally omit it.
 
 ## Deliberate boundary
 
