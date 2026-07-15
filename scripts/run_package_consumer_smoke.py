@@ -29,6 +29,7 @@ RUNNER_ID = "skillpilot-package-consumer-smoke"
 RUNNER_VERSION = "1.0.0"
 CONSUMER_API_VERSION = "0.1.0"
 SANDBOX_JAVA_HOME = "/opt/skillpilot-jdk"
+SANDBOX_PYTHON_HOME = "/opt/skillpilot-python"
 SANDBOX_TOOL_DIRECTORY = "/opt/skillpilot-host-tools"
 FUNCTIONAL_CHECK_IDS = (
     "app-shell.served",
@@ -328,6 +329,111 @@ def open_java_runtime_fds(runtime: dict[str, Any]) -> tuple[int, int]:
             os.close(java_fd)
         if home_fd >= 0:
             os.close(home_fd)
+
+
+def inspect_python_runtime_layout() -> dict[str, Any]:
+    """Bind the running CPython prefix, including its standard library."""
+
+    try:
+        executable = Path(sys.executable).resolve(strict=True)
+        home = Path(sys.base_prefix).resolve(strict=True)
+        executable_relative = executable.relative_to(home)
+    except (OSError, ValueError) as error:
+        raise SmokeFailure(
+            "Running Python must resolve below its base prefix for sandbox binding"
+        ) from error
+    for path in (home, executable.parent, executable):
+        assert_no_symlink_components(path)
+    home_metadata = home.stat(follow_symlinks=False)
+    executable_metadata = executable.stat(follow_symlinks=False)
+    if not stat.S_ISDIR(home_metadata.st_mode):
+        raise SmokeFailure(f"Python base prefix is not a real directory: {home}")
+    if not stat.S_ISREG(executable_metadata.st_mode) or executable_metadata.st_mode & 0o111 == 0:
+        raise SmokeFailure(f"Python launcher is not a regular executable: {executable}")
+    return {
+        "executable": executable,
+        "executableRelative": executable_relative,
+        "home": home,
+        "homeIdentity": (home_metadata.st_dev, home_metadata.st_ino),
+        "executableIdentity": (executable_metadata.st_dev, executable_metadata.st_ino),
+    }
+
+
+def inspect_host_executable(name: str, executable: Path) -> dict[str, Any]:
+    try:
+        canonical = executable.resolve(strict=True)
+    except OSError as error:
+        raise SmokeFailure(f"{name} executable cannot be resolved: {executable}: {error}") from error
+    assert_no_symlink_components(canonical)
+    metadata = canonical.stat(follow_symlinks=False)
+    if canonical.name != name:
+        raise SmokeFailure(f"Resolved {name} executable has an unexpected basename: {canonical}")
+    if not stat.S_ISREG(metadata.st_mode) or metadata.st_mode & 0o111 == 0:
+        raise SmokeFailure(f"Resolved {name} tool is not a regular executable: {canonical}")
+    return {
+        "executable": canonical,
+        "executableIdentity": (metadata.st_dev, metadata.st_ino),
+    }
+
+
+def open_runtime_tree_fds(runtime: dict[str, Any], label: str) -> tuple[int, int]:
+    """Open one runtime tree and its launcher without mutable path aliases."""
+
+    directory_flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    file_flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
+    home_fd = os.open(runtime["home"], directory_flags)
+    current_fd: int | None = None
+    executable_fd: int | None = None
+    try:
+        if (os.fstat(home_fd).st_dev, os.fstat(home_fd).st_ino) != runtime["homeIdentity"]:
+            raise SmokeFailure(f"{label} runtime home changed before its sandbox bind")
+        current_fd = os.dup(home_fd)
+        for component in runtime["executableRelative"].parts[:-1]:
+            next_fd = os.open(component, directory_flags, dir_fd=current_fd)
+            os.close(current_fd)
+            current_fd = next_fd
+        executable_fd = os.open(
+            runtime["executableRelative"].name,
+            file_flags,
+            dir_fd=current_fd,
+        )
+        metadata = os.fstat(executable_fd)
+        if (
+            not stat.S_ISREG(metadata.st_mode)
+            or metadata.st_mode & 0o111 == 0
+            or (metadata.st_dev, metadata.st_ino) != runtime["executableIdentity"]
+        ):
+            raise SmokeFailure(f"{label} launcher changed before its sandbox bind")
+        result = (home_fd, executable_fd)
+        home_fd = -1
+        executable_fd = None
+        return result
+    finally:
+        if current_fd is not None:
+            os.close(current_fd)
+        if executable_fd is not None:
+            os.close(executable_fd)
+        if home_fd >= 0:
+            os.close(home_fd)
+
+
+def open_host_executable_fd(runtime: dict[str, Any], label: str) -> int:
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
+    descriptor = os.open(runtime["executable"], flags)
+    metadata = os.fstat(descriptor)
+    if (
+        not stat.S_ISREG(metadata.st_mode)
+        or metadata.st_mode & 0o111 == 0
+        or (metadata.st_dev, metadata.st_ino) != runtime["executableIdentity"]
+    ):
+        os.close(descriptor)
+        raise SmokeFailure(f"{label} executable changed before its sandbox bind")
+    return descriptor
 
 
 def absolute_without_resolving(path: Path) -> Path:
@@ -825,6 +931,7 @@ SANDBOX_ENVIRONMENT = {
     "LOGNAME": "skillpilot",
     "PWD": "/tmp",
     "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHOME": SANDBOX_PYTHON_HOME,
     "TMPDIR": "/tmp",
     "TZ": "UTC",
     "USER": "skillpilot",
@@ -838,30 +945,35 @@ def execute_sandbox(
     store: Path,
     evidence_bundle: Path,
     java_runtime: dict[str, Any],
-    node_path: str,
+    python_runtime: dict[str, Any],
+    node_runtime: dict[str, Any],
+    strace_runtime: dict[str, Any],
 ) -> int:
     repository = str(REPO_ROOT)
-    node_executable = Path(node_path)
-    python_executable = Path(require_tool("python3"))
-    strace_executable = Path(require_tool("strace"))
-    for name, executable in (
-        ("node", node_executable),
-        ("python3", python_executable),
-        ("strace", strace_executable),
-    ):
-        assert_no_symlink_components(executable)
-        metadata = executable.stat(follow_symlinks=False)
-        if executable.name != name and name != "python3":
-            raise SmokeFailure(f"Resolved {name} executable has an unexpected basename: {executable}")
-        if not stat.S_ISREG(metadata.st_mode) or metadata.st_mode & 0o111 == 0:
-            raise SmokeFailure(f"Resolved {name} tool is not a regular executable: {executable}")
+    sandbox_python = (
+        Path(SANDBOX_PYTHON_HOME) / python_runtime["executableRelative"]
+    ).as_posix()
+    sandbox_node = f"{SANDBOX_TOOL_DIRECTORY}/node"
+    sandbox_strace = f"{SANDBOX_TOOL_DIRECTORY}/strace"
 
     # Keep PATH closed: the sandbox can resolve only the FD-bound JDK plus the
-    # two exact host-tool symlinks below. In particular, /usr/bin/java can
-    # never become a compatibility fallback for classes built by the pinned JDK.
+    # exact FD-bound Python and Node launchers below. In particular,
+    # /usr/bin/java can never become a compatibility fallback for classes built
+    # by the pinned JDK, and setup-python/setup-node paths remain usable even
+    # when GitHub's /opt/hostedtoolcache is hidden.
     sandbox_path = f"{SANDBOX_JAVA_HOME}/bin:{SANDBOX_TOOL_DIRECTORY}"
-    java_home_fd, java_executable_fd = open_java_runtime_fds(java_runtime)
+    descriptors: list[int] = []
     try:
+        java_home_fd, java_executable_fd = open_java_runtime_fds(java_runtime)
+        descriptors.extend((java_home_fd, java_executable_fd))
+        python_home_fd, python_executable_fd = open_runtime_tree_fds(
+            python_runtime, "Python"
+        )
+        descriptors.extend((python_home_fd, python_executable_fd))
+        node_executable_fd = open_host_executable_fd(node_runtime, "Node")
+        descriptors.append(node_executable_fd)
+        strace_executable_fd = open_host_executable_fd(strace_runtime, "strace")
+        descriptors.append(strace_executable_fd)
         command = [
             require_tool("bwrap"),
             "--clearenv",
@@ -899,13 +1011,22 @@ def execute_sandbox(
             "--ro-bind-fd",
             str(java_executable_fd),
             f"{SANDBOX_JAVA_HOME}/bin/java",
+            "--ro-bind-fd",
+            str(python_home_fd),
+            SANDBOX_PYTHON_HOME,
+            "--ro-bind-fd",
+            str(python_executable_fd),
+            sandbox_python,
             "--dir",
             SANDBOX_TOOL_DIRECTORY,
+            "--ro-bind-fd",
+            str(node_executable_fd),
+            sandbox_node,
+            "--ro-bind-fd",
+            str(strace_executable_fd),
+            sandbox_strace,
             "--symlink",
-            str(node_executable),
-            f"{SANDBOX_TOOL_DIRECTORY}/node",
-            "--symlink",
-            str(python_executable),
+            sandbox_python,
             f"{SANDBOX_TOOL_DIRECTORY}/python3",
             "--proc",
             "/proc",
@@ -917,7 +1038,7 @@ def execute_sandbox(
         for name, value in (*sorted(SANDBOX_ENVIRONMENT.items()), ("PATH", sandbox_path)):
             command.extend(("--setenv", name, value))
         command.extend([
-            str(strace_executable),
+            sandbox_strace,
             "-f",
             "-qq",
             "-yy",
@@ -927,7 +1048,7 @@ def execute_sandbox(
             "trace=%file,%network",
             "-o",
             "/opt/runtime-output/filesystem.strace",
-            str(python_executable),
+            f"{SANDBOX_TOOL_DIRECTORY}/python3",
             "/opt/skillpilot-runtime/package_consumer_sandbox_entry.py",
         ])
         result = subprocess.run(
@@ -938,20 +1059,138 @@ def execute_sandbox(
             stderr=subprocess.STDOUT,
             timeout=750,
             check=False,
-            pass_fds=(java_home_fd, java_executable_fd),
+            pass_fds=tuple(descriptors),
         )
         if (
             (os.fstat(java_home_fd).st_dev, os.fstat(java_home_fd).st_ino)
             != java_runtime["homeIdentity"]
             or (os.fstat(java_executable_fd).st_dev, os.fstat(java_executable_fd).st_ino)
             != java_runtime["javaIdentity"]
+            or (os.fstat(python_home_fd).st_dev, os.fstat(python_home_fd).st_ino)
+            != python_runtime["homeIdentity"]
+            or (
+                os.fstat(python_executable_fd).st_dev,
+                os.fstat(python_executable_fd).st_ino,
+            )
+            != python_runtime["executableIdentity"]
+            or (os.fstat(node_executable_fd).st_dev, os.fstat(node_executable_fd).st_ino)
+            != node_runtime["executableIdentity"]
+            or (
+                os.fstat(strace_executable_fd).st_dev,
+                os.fstat(strace_executable_fd).st_ino,
+            )
+            != strace_runtime["executableIdentity"]
         ):
-            raise SmokeFailure("FD-bound Java runtime changed during sandbox execution")
+            raise SmokeFailure("FD-bound host runtime changed during sandbox execution")
     finally:
-        os.close(java_executable_fd)
-        os.close(java_home_fd)
+        for descriptor in reversed(descriptors):
+            os.close(descriptor)
     safe_atomic_write(evidence_bundle / "sandbox.log", result.stdout.encode())
     return result.returncode
+
+
+def self_test_fd_bound_host_runtimes(
+    python_runtime: dict[str, Any],
+    node_runtime: dict[str, Any],
+) -> None:
+    """Prove Python/Node still start after their host launch paths are hidden."""
+
+    sandbox_python = (
+        Path(SANDBOX_PYTHON_HOME) / python_runtime["executableRelative"]
+    ).as_posix()
+    sandbox_node = f"{SANDBOX_TOOL_DIRECTORY}/node"
+    descriptors: list[int] = []
+    try:
+        python_home_fd, python_executable_fd = open_runtime_tree_fds(
+            python_runtime, "Python"
+        )
+        descriptors.extend((python_home_fd, python_executable_fd))
+        node_executable_fd = open_host_executable_fd(node_runtime, "Node")
+        descriptors.append(node_executable_fd)
+        command = [
+            require_tool("bwrap"),
+            "--clearenv",
+            "--die-with-parent",
+            "--new-session",
+            "--unshare-user",
+            "--unshare-pid",
+            "--ro-bind",
+            "/",
+            "/",
+            "--tmpfs",
+            "/opt",
+            "--tmpfs",
+            "/tmp",
+            "--ro-bind-fd",
+            str(python_home_fd),
+            SANDBOX_PYTHON_HOME,
+            "--ro-bind-fd",
+            str(python_executable_fd),
+            sandbox_python,
+            "--dir",
+            SANDBOX_TOOL_DIRECTORY,
+            "--ro-bind-fd",
+            str(node_executable_fd),
+            sandbox_node,
+            "--symlink",
+            sandbox_python,
+            f"{SANDBOX_TOOL_DIRECTORY}/python3",
+        ]
+        for runtime in (python_runtime, node_runtime):
+            executable = Path(runtime["executable"])
+            if not executable.is_relative_to("/opt"):
+                command.extend(("--ro-bind", "/dev/null", str(executable)))
+        command.extend([
+            "--proc",
+            "/proc",
+            "--dev",
+            "/dev",
+            "--chdir",
+            "/tmp",
+            "--setenv",
+            "PATH",
+            SANDBOX_TOOL_DIRECTORY,
+            "--setenv",
+            "PYTHONHOME",
+            SANDBOX_PYTHON_HOME,
+            "--setenv",
+            "PYTHONDONTWRITEBYTECODE",
+            "1",
+            "/bin/sh",
+            "-c",
+            (
+                '! test -x "$1" && ! test -x "$2" && '
+                'python3 -c "$3" && node -e "$4"'
+            ),
+            "host-runtime-fd-bind-self-test",
+            str(python_runtime["executable"]),
+            str(node_runtime["executable"]),
+            (
+                "import hashlib,json,sys;"
+                f"assert sys.prefix == {SANDBOX_PYTHON_HOME!r};"
+                "assert hashlib.sha256(json.dumps({'ok': True}).encode()).hexdigest()"
+            ),
+            f"if (process.execPath !== {sandbox_node!r}) process.exit(1)",
+        ])
+        result = subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=30,
+            check=False,
+            pass_fds=tuple(descriptors),
+        )
+        if result.returncode != 0:
+            raise SmokeFailure(
+                "FD-bound Python/Node did not survive host-path masking: "
+                + result.stdout[-1000:]
+            )
+    finally:
+        for descriptor in reversed(descriptors):
+            os.close(descriptor)
+    print("PASS masked host Python and Node execute only through stable read-only FD binds")
 
 
 def trace_has_external_network(trace: str) -> bool:
@@ -1207,6 +1446,8 @@ def validate_report(report: dict[str, Any]) -> None:
 def self_test() -> None:
     verify_pinned_helpers()
     pinned_runtime = validate_pinned_java_runtime(Path(require_tool("java")))
+    python_runtime = inspect_python_runtime_layout()
+    node_runtime = inspect_host_executable("node", Path(require_tool("node")))
     if pinned_runtime["executable"] != pinned_runtime["home"] / "bin/java":
         raise SmokeFailure("Pinned Java layout did not resolve to one exact JDK home")
     root = REPO_ROOT / "tmp/package-consumer-smoke-self-test"
@@ -1506,6 +1747,8 @@ def self_test() -> None:
             )
         print("PASS masked-checkout Java executes only through stable read-only FD bind")
 
+        self_test_fd_bound_host_runtimes(python_runtime, node_runtime)
+
         bwrap_trace = root / "capability.strace"
         capability_code = (
             "import errno,os,socket;"
@@ -1594,9 +1837,10 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
     prepare_empty_directory(work)
 
     require_tool("bwrap")
-    require_tool("strace")
     java_runtime = validate_pinned_java_runtime(Path(require_tool("java")))
-    node_path = require_tool("node")
+    python_runtime = inspect_python_runtime_layout()
+    node_runtime = inspect_host_executable("node", Path(require_tool("node")))
+    strace_runtime = inspect_host_executable("strace", Path(require_tool("strace")))
     helper_bindings = verify_pinned_helpers()
     runner_binding = sha256_file(RUNNER_PATH)
     selected, input_binding, lock_bytes = selected_package_binding(store, zip_path)
@@ -1647,7 +1891,15 @@ def main(argv: Iterable[str] = sys.argv[1:]) -> int:
 
     evidence_bundle = work / "evidence-bundle"
     evidence_bundle.mkdir()
-    sandbox_status = execute_sandbox(assembly, store, evidence_bundle, java_runtime, node_path)
+    sandbox_status = execute_sandbox(
+        assembly,
+        store,
+        evidence_bundle,
+        java_runtime,
+        python_runtime,
+        node_runtime,
+        strace_runtime,
+    )
 
     # Re-bind every immutable input after the isolated execution. Any change,
     # including a lock/store/ZIP/helper/assembly TOCTOU, invalidates the proof.
