@@ -1,7 +1,7 @@
 package com.skillpilot.backend.claude.mcp;
 
 import org.springframework.ai.tool.ToolCallbackProvider;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,18 +28,27 @@ public class ClaudeMcpRegressionStatusController {
     private final boolean mcpEnabled;
     private final boolean coachToolsEnabled;
     private final boolean regressionToolsEnabled;
+    private final List<String> invalidBooleanProperties;
     private final List<ToolCallbackProvider> toolProviders;
 
     public ClaudeMcpRegressionStatusController(
-            @Value("${skillpilot.claude.enabled:false}") boolean claudeEnabled,
-            @Value("${skillpilot.claude.mcp.enabled:false}") boolean mcpEnabled,
-            @Value("${skillpilot.claude.mcp.coach-enabled:true}") boolean coachToolsEnabled,
-            @Value("${skillpilot.claude.mcp.regression-enabled:false}") boolean regressionToolsEnabled,
+            Environment environment,
             List<ToolCallbackProvider> toolProviders) {
-        this.claudeEnabled = claudeEnabled;
-        this.mcpEnabled = mcpEnabled;
-        this.coachToolsEnabled = coachToolsEnabled;
-        this.regressionToolsEnabled = regressionToolsEnabled;
+        BooleanProperty claude = booleanProperty(environment, "skillpilot.claude.enabled", false);
+        BooleanProperty mcp = booleanProperty(environment, "skillpilot.claude.mcp.enabled", false);
+        BooleanProperty coach = booleanProperty(environment, "skillpilot.claude.mcp.coach-enabled", true);
+        BooleanProperty regression = booleanProperty(
+                environment, "skillpilot.claude.mcp.regression-enabled", false);
+
+        this.claudeEnabled = claude.value();
+        this.mcpEnabled = mcp.value();
+        this.coachToolsEnabled = coach.value();
+        this.regressionToolsEnabled = regression.value();
+        this.invalidBooleanProperties = java.util.stream.Stream.of(claude, mcp, coach, regression)
+                .filter(property -> !property.valid())
+                .map(BooleanProperty::name)
+                .sorted()
+                .toList();
         this.toolProviders = List.copyOf(toolProviders);
     }
 
@@ -55,6 +64,7 @@ public class ClaudeMcpRegressionStatusController {
         boolean regressionReady = claudeEnabled
                 && mcpEnabled
                 && regressionToolsEnabled
+                && invalidBooleanProperties.isEmpty()
                 && registeredRegressionTools.containsAll(REGRESSION_TOOLS);
 
         Map<String, Object> body = new LinkedHashMap<>();
@@ -64,6 +74,8 @@ public class ClaudeMcpRegressionStatusController {
         body.put("coach_tools_enabled", coachToolsEnabled);
         body.put("regression_tools_enabled", regressionToolsEnabled);
         body.put("regression_tools_ready", regressionReady);
+        body.put("configuration_valid", invalidBooleanProperties.isEmpty());
+        body.put("invalid_boolean_properties", invalidBooleanProperties);
         body.put("registered_tool_count", registeredTools.size());
         body.put("registered_regression_tools", List.copyOf(registeredRegressionTools));
 
@@ -71,5 +83,26 @@ public class ClaudeMcpRegressionStatusController {
                 .cacheControl(CacheControl.noStore())
                 .header("X-Content-Type-Options", "nosniff")
                 .body(body);
+    }
+
+    private static BooleanProperty booleanProperty(
+            Environment environment,
+            String name,
+            boolean defaultValue) {
+        String rawValue = environment.getProperty(name);
+        if (rawValue == null) {
+            return new BooleanProperty(name, defaultValue, true);
+        }
+        String normalized = rawValue.trim();
+        if ("true".equalsIgnoreCase(normalized)) {
+            return new BooleanProperty(name, true, true);
+        }
+        if ("false".equalsIgnoreCase(normalized)) {
+            return new BooleanProperty(name, false, true);
+        }
+        return new BooleanProperty(name, defaultValue, false);
+    }
+
+    private record BooleanProperty(String name, boolean value, boolean valid) {
     }
 }
