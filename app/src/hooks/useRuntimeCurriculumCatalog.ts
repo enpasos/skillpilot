@@ -17,10 +17,17 @@ const loadCatalogState = (): Promise<RuntimeCurriculumCatalogState> => {
   return cachedCatalogState
 }
 
-export const useRuntimeCurriculumCatalog = (): RuntimeCurriculumCatalogState => {
+interface RuntimeCurriculumCatalogOptions {
+  enabled?: boolean
+}
+
+export const useRuntimeCurriculumCatalog = (
+  { enabled = true }: RuntimeCurriculumCatalogOptions = {},
+): RuntimeCurriculumCatalogState => {
   const [state, setState] = useState<RuntimeCurriculumCatalogState>({ mode: 'loading' })
 
   useEffect(() => {
+    if (!enabled) return
     let active = true
     void loadCatalogState().then((next) => {
       if (active) setState(next)
@@ -28,7 +35,7 @@ export const useRuntimeCurriculumCatalog = (): RuntimeCurriculumCatalogState => 
     return () => {
       active = false
     }
-  }, [])
+  }, [enabled])
 
   return state
 }
