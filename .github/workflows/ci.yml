@@ -183,6 +183,8 @@ jobs:
           "${install_dir}/bin/java" -version
       - name: Install package-consumer isolation tools
         run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
+      - name: Enable and verify bubblewrap isolation
+        run: bash ../scripts/configure_github_bubblewrap.sh
       - name: Install pinned package-consumer browser
         run: npx playwright install --with-deps chromium
       - name: Install Python dependencies
@@ -194,6 +196,8 @@ jobs:
             scripts/provision_pinned_fwu_ontology.sh \
             scripts/run_curriculum_release_model_conformance.sh
       - name: Validate Curriculum Package Contracts
+        env:
+          SKILLPILOT_SOURCE_PDF_MODE: committed-bindings
         run: |
           cd ..
           python -B scripts/validate_curriculum_package_contracts.py

@@ -10,9 +10,11 @@ The lane deliberately distinguishes three things:
 
 Neither machine outcome is a human approval.  Normal checks bind source PDF
 bytes and projection metadata, but honestly do not independently prove the
-five PDF matches.  ``--replay-pdf-evidence`` re-extracts projections only in
-memory and requires identical hashes, sizes, match records, and review queue.
-No extracted PDF text is committed.
+five PDF matches.  ``--allow-missing-source-pdfs`` is an explicit clean-CI
+mode: only PDFs that are actually absent may use their already committed
+byte-count/SHA-256 binding; every present PDF is still hashed.  Updates and
+``--replay-pdf-evidence`` always require the real PDFs.  No extracted PDF text
+is committed.
 """
 
 from __future__ import annotations
@@ -146,26 +148,96 @@ def require_nonblank(value: Any, label: str) -> str:
     return value
 
 
-def repo_file(relative_path: str) -> Path:
+def repo_path(relative_path: str, *, root: Path = REPO_ROOT) -> tuple[Path, Path]:
     require_nonblank(relative_path, "repository path")
     if relative_path.startswith("/") or "\\" in relative_path:
         raise VerificationError(f"Unsafe repository path {relative_path!r}")
     parts = Path(relative_path).parts
     if any(part in {"", ".", ".."} for part in parts):
         raise VerificationError(f"Unsafe repository path {relative_path!r}")
-    unresolved = REPO_ROOT / relative_path
+    unresolved = root / relative_path
     if unresolved.is_symlink():
         raise VerificationError(f"Repository input must not be a symlink: {relative_path}")
     candidate = unresolved.resolve()
     try:
-        candidate.relative_to(REPO_ROOT.resolve())
+        candidate.relative_to(root.resolve())
     except ValueError as error:
         raise VerificationError(f"Repository path escapes checkout: {relative_path}") from error
+    return unresolved, candidate
+
+
+def repo_file(relative_path: str) -> Path:
+    unresolved, candidate = repo_path(relative_path)
     if not candidate.is_file() or candidate.is_symlink():
         raise VerificationError(
             f"Repository input must be a regular non-symlink file: {relative_path}"
         )
     return candidate
+
+
+def validate_recorded_pdf_binding(
+    binding: dict[str, Any], relative_path: str, label: str
+) -> dict[str, Any]:
+    if binding.get("sourcePdfPath") != relative_path:
+        raise VerificationError(
+            f"{label} path does not match source extraction: "
+            f"{binding.get('sourcePdfPath')!r} != {relative_path!r}"
+        )
+    source_pdf_bytes = binding.get("sourcePdfBytes")
+    if (
+        not isinstance(source_pdf_bytes, int)
+        or isinstance(source_pdf_bytes, bool)
+        or source_pdf_bytes < 1
+    ):
+        raise VerificationError(f"{label}.sourcePdfBytes must be a positive integer")
+    source_pdf_sha = binding.get("sourcePdfSha256")
+    if not isinstance(source_pdf_sha, str) or re.fullmatch(
+        r"sha256:[0-9a-f]{64}", source_pdf_sha
+    ) is None:
+        raise VerificationError(f"{label}.sourcePdfSha256 must be a lowercase SHA-256")
+    if binding.get("official") is not True:
+        raise VerificationError(f"{label}.official must be true")
+    return {
+        "sourcePdfPath": relative_path,
+        "sourcePdfBytes": source_pdf_bytes,
+        "sourcePdfSha256": source_pdf_sha,
+        "official": True,
+    }
+
+
+def source_pdf_binding(
+    relative_path: str,
+    *,
+    allow_missing: bool,
+    recorded_binding: dict[str, Any] | None,
+    root: Path = REPO_ROOT,
+) -> dict[str, Any]:
+    unresolved, candidate = repo_path(relative_path, root=root)
+    if candidate.is_file() and not candidate.is_symlink():
+        return {
+            "sourcePdfPath": relative_path,
+            "sourcePdfBytes": candidate.stat().st_size,
+            "sourcePdfSha256": sha256_file(candidate),
+            "official": True,
+        }
+    if unresolved.exists() or candidate.exists():
+        raise VerificationError(
+            f"Repository input must be a regular non-symlink file: {relative_path}"
+        )
+    if not allow_missing:
+        raise VerificationError(
+            f"Repository input must be a regular non-symlink file: {relative_path}"
+        )
+    if recorded_binding is None:
+        raise VerificationError(
+            "Missing source PDF has no exact committed ledger binding: "
+            f"{relative_path}"
+        )
+    return validate_recorded_pdf_binding(
+        recorded_binding,
+        relative_path,
+        f"committed source-PDF binding for {relative_path}",
+    )
 
 
 def output_path(relative_path: str) -> Path:
@@ -403,6 +475,41 @@ def decision_map(existing: dict[str, Any] | None) -> dict[tuple[str, str], dict[
     return result
 
 
+def source_document_binding_map(
+    existing: dict[str, Any] | None,
+) -> dict[tuple[str, str, str], dict[str, Any]]:
+    if existing is None:
+        return {}
+    result: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for collection_index, raw_collection in enumerate(existing.get("sourceCollections", [])):
+        collection = require_object(
+            raw_collection, f"sourceCollections[{collection_index}]"
+        )
+        collection_id = require_nonblank(
+            collection.get("mappingCollectionId"), "mappingCollectionId"
+        )
+        for document_index, raw_document in enumerate(collection.get("sourceDocuments", [])):
+            document = require_object(
+                raw_document,
+                f"sourceCollections[{collection_index}].sourceDocuments[{document_index}]",
+            )
+            document_key = require_nonblank(
+                document.get("sourceDocumentKey"), "sourceDocumentKey"
+            )
+            pdf_path = require_nonblank(document.get("sourcePdfPath"), "sourcePdfPath")
+            key = (collection_id, document_key, pdf_path)
+            if key in result:
+                raise VerificationError(
+                    f"Duplicate committed source-PDF binding {key!r}"
+                )
+            result[key] = validate_recorded_pdf_binding(
+                document,
+                pdf_path,
+                f"committed source-PDF binding {key!r}",
+            )
+    return result
+
+
 def initial_decision() -> dict[str, Any]:
     return {
         "status": PENDING_STATUS,
@@ -467,7 +574,12 @@ def build_review(
     existing: dict[str, Any] | None,
     extract_projections: bool,
     recorded_version: str,
+    allow_missing_source_pdfs: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
+    if extract_projections and allow_missing_source_pdfs:
+        raise VerificationError(
+            "PDF projection extraction cannot use committed bindings for missing PDFs"
+        )
     profile_path = repo_file(PROFILE_REL)
     profile = require_object(read_json(profile_path), "publication evidence profile")
     if profile.get("profileId") != PROFILE_ID:
@@ -493,6 +605,9 @@ def build_review(
         raise VerificationError(f"Duplicate mapping collection IDs {duplicate_mapping_ids!r}")
 
     preserved_decisions = decision_map(existing)
+    committed_pdf_bindings = (
+        source_document_binding_map(existing) if allow_missing_source_pdfs else {}
+    )
     existing_projections: dict[str, dict[str, Any]] = {}
     existing_pdf_matches: dict[tuple[str, str], dict[str, Any]] = {}
     if not extract_projections:
@@ -548,18 +663,19 @@ def build_review(
             pdf_rel = require_nonblank(document.get("path"), f"sourceDocument[{key}].path")
             if Path(pdf_rel).suffix.lower() != ".pdf":
                 raise VerificationError(f"Source document is not a PDF: {pdf_rel}")
-            pdf_path = repo_file(pdf_rel)
             if document.get("official") is not True:
                 raise VerificationError(f"Source document is not marked official: {pdf_rel}")
-            pdf_sha = sha256_file(pdf_path)
+            binding_key = (collection_id, key, pdf_rel)
+            binding = source_pdf_binding(
+                pdf_rel,
+                allow_missing=allow_missing_source_pdfs,
+                recorded_binding=committed_pdf_bindings.get(binding_key),
+            )
             documents[key] = document
             document_evidence.append(
                 {
                     "sourceDocumentKey": key,
-                    "sourcePdfPath": pdf_rel,
-                    "sourcePdfBytes": pdf_path.stat().st_size,
-                    "sourcePdfSha256": pdf_sha,
-                    "official": True,
+                    **binding,
                 }
             )
             all_pdf_paths.add(pdf_rel)
@@ -680,7 +796,17 @@ def build_review(
 
     candidate_pdf_paths: dict[str, set[str]] = defaultdict(set)
     representative_pdf_paths: dict[str, str] = {}
+    source_pdf_bytes_by_sha: dict[str, int] = {}
     for collection in collection_work:
+        for document in collection["sourceDocuments"]:
+            pdf_sha = document["sourcePdfSha256"]
+            pdf_bytes = document["sourcePdfBytes"]
+            previous_bytes = source_pdf_bytes_by_sha.setdefault(pdf_sha, pdf_bytes)
+            if previous_bytes != pdf_bytes:
+                raise VerificationError(
+                    "Conflicting byte counts for identical source-PDF hash "
+                    f"{pdf_sha}: {previous_bytes} != {pdf_bytes}"
+                )
         for miss in collection["misses"]:
             goal_evidence = miss["goalEvidence"]
             sha = goal_evidence["sourcePdfSha256"]
@@ -692,18 +818,18 @@ def build_review(
     projection_text_by_pdf_sha: dict[str, str] = {}
     for pdf_sha in sorted(candidate_pdf_paths):
         representative_rel = representative_pdf_paths[pdf_sha]
-        representative_path = repo_file(representative_rel)
-        actual_sha = sha256_file(representative_path)
-        if actual_sha != pdf_sha:
-            raise VerificationError(
-                f"Source PDF hash drift for {representative_rel}: {actual_sha} != {pdf_sha}"
-            )
         structural_binding = {
             "sourcePdfSha256": pdf_sha,
-            "sourcePdfBytes": representative_path.stat().st_size,
+            "sourcePdfBytes": source_pdf_bytes_by_sha[pdf_sha],
             "sourcePdfPaths": sorted(candidate_pdf_paths[pdf_sha]),
         }
         if extract_projections:
+            representative_path = repo_file(representative_rel)
+            actual_sha = sha256_file(representative_path)
+            if actual_sha != pdf_sha:
+                raise VerificationError(
+                    f"Source PDF hash drift for {representative_rel}: {actual_sha} != {pdf_sha}"
+                )
             payload = extract_pdf_projection(representative_path)
             decoded = payload.decode("utf-8")
             projection_text_by_pdf_sha[pdf_sha] = decoded[:-1]
@@ -1241,6 +1367,111 @@ def self_test(expected: dict[str, Any]) -> None:
     )
     assert_detected("projection hash drift", projection_drift)
 
+    self_test_root = REPO_ROOT / "tmp"
+    self_test_root.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        prefix="source-verification-pdf-mode.", dir=self_test_root
+    ) as raw_temp_root:
+        temp_root = Path(raw_temp_root)
+        pdf_rel = "source.pdf"
+        recorded_binding = {
+            "sourcePdfPath": pdf_rel,
+            "sourcePdfBytes": 123,
+            "sourcePdfSha256": "sha256:" + "1" * 64,
+            "official": True,
+        }
+
+        try:
+            source_pdf_binding(
+                pdf_rel,
+                allow_missing=False,
+                recorded_binding=recorded_binding,
+                root=temp_root,
+            )
+        except VerificationError:
+            pass
+        else:
+            raise VerificationError(
+                "Self-test failed: strict mode accepted a missing source PDF"
+            )
+
+        try:
+            source_pdf_binding(
+                pdf_rel,
+                allow_missing=True,
+                recorded_binding=None,
+                root=temp_root,
+            )
+        except VerificationError:
+            pass
+        else:
+            raise VerificationError(
+                "Self-test failed: clean-CI mode accepted a missing source PDF "
+                "without a committed binding"
+            )
+
+        fallback_binding = source_pdf_binding(
+            pdf_rel,
+            allow_missing=True,
+            recorded_binding=recorded_binding,
+            root=temp_root,
+        )
+        if fallback_binding != recorded_binding:
+            raise VerificationError(
+                "Self-test failed: clean-CI mode changed the committed PDF binding"
+            )
+
+        manipulated_payload = b"manipulated present source PDF"
+        (temp_root / pdf_rel).write_bytes(manipulated_payload)
+        present_binding = source_pdf_binding(
+            pdf_rel,
+            allow_missing=True,
+            recorded_binding=recorded_binding,
+            root=temp_root,
+        )
+        if present_binding["sourcePdfSha256"] != sha256_bytes(manipulated_payload):
+            raise VerificationError(
+                "Self-test failed: clean-CI mode did not hash a present source PDF"
+            )
+        if present_binding["sourcePdfSha256"] == recorded_binding["sourcePdfSha256"]:
+            raise VerificationError(
+                "Self-test failed: committed binding masked a manipulated present PDF"
+            )
+
+        (temp_root / pdf_rel).unlink()
+        (temp_root / pdf_rel).mkdir()
+        try:
+            source_pdf_binding(
+                pdf_rel,
+                allow_missing=True,
+                recorded_binding=recorded_binding,
+                root=temp_root,
+            )
+        except VerificationError:
+            pass
+        else:
+            raise VerificationError(
+                "Self-test failed: clean-CI mode accepted a non-regular source PDF"
+            )
+
+        symlink_rel = "source-link.pdf"
+        (temp_root / "source-target.pdf").write_bytes(b"synthetic")
+        (temp_root / symlink_rel).symlink_to("source-target.pdf")
+        symlink_binding = {**recorded_binding, "sourcePdfPath": symlink_rel}
+        try:
+            source_pdf_binding(
+                symlink_rel,
+                allow_missing=True,
+                recorded_binding=symlink_binding,
+                root=temp_root,
+            )
+        except VerificationError:
+            pass
+        else:
+            raise VerificationError(
+                "Self-test failed: clean-CI mode accepted a source-PDF symlink"
+            )
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -1252,6 +1483,14 @@ def parse_args() -> argparse.Namespace:
         "--replay-pdf-evidence",
         action="store_true",
         help="rerun pdftotext in memory and require identical hashes and match records",
+    )
+    parser.add_argument(
+        "--allow-missing-source-pdfs",
+        action="store_true",
+        help=(
+            "clean-CI mode: for PDFs that are absent, use the exact byte-count/SHA-256 "
+            "binding in the committed ledger; present PDFs are still hashed"
+        ),
     )
     parser.add_argument(
         "--ledger",
@@ -1268,6 +1507,11 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.allow_missing_source_pdfs and (args.update or args.replay_pdf_evidence):
+        raise VerificationError(
+            "--allow-missing-source-pdfs is forbidden with --update and "
+            "--replay-pdf-evidence; both require the real PDFs"
+        )
     ledger_path = output_path(args.ledger)
     report_path = output_path(args.report)
     existing: dict[str, Any] | None = None
@@ -1315,6 +1559,7 @@ def main() -> int:
         existing=existing,
         extract_projections=False,
         recorded_version=recorded_version,
+        allow_missing_source_pdfs=args.allow_missing_source_pdfs,
     )
     diagnostics = compare_review(existing, expected)
     expected_report = render_report(expected, context).encode("utf-8")
@@ -1332,8 +1577,8 @@ def main() -> int:
         self_test(expected)
         print(
             "source-verification self-test passed "
-            "(8 fail-closed mutations, duplicate raw JSON key and stale completed review "
-            "detected)"
+            "(8 ledger mutations, duplicate raw JSON key, stale completed review and "
+            "6 source-PDF mode guarantees checked)"
         )
     else:
         print(

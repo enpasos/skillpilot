@@ -25,6 +25,21 @@ PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
 EXPECTED_CONTENT_DIGEST="sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
 cd "${ROOT_DIR}"
 
+SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
+SOURCE_VERIFICATION_ARGS=()
+case "${SOURCE_PDF_MODE}" in
+  strict)
+    ;;
+  committed-bindings)
+    SOURCE_VERIFICATION_ARGS+=(--allow-missing-source-pdfs)
+    ;;
+  *)
+    echo "Unsupported SKILLPILOT_SOURCE_PDF_MODE: ${SOURCE_PDF_MODE}" >&2
+    echo "Expected one of: strict, committed-bindings" >&2
+    exit 2
+    ;;
+esac
+
 # The normative JSON release model records the exact FWU Core provenance used
 # by the optional ontology projection. Verify that small trust binding here;
 # RDF generation, ROBOT, OWL validation, reasoning, and roundtrips remain in
@@ -81,8 +96,12 @@ python3 -B scripts/generate_curriculum_package_redistribution_review.py \
 python3 -B scripts/generate_curriculum_package_redistribution_review.py \
   --self-test \
   --release-root "${OUTPUT_A}"
-python3 -B scripts/generate_curriculum_source_verification_review.py --check
-python3 -B scripts/generate_curriculum_source_verification_review.py --self-test
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --check \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
+python3 -B scripts/generate_curriculum_source_verification_review.py \
+  --self-test \
+  "${SOURCE_VERIFICATION_ARGS[@]}"
 
 python3 -B scripts/compile_curriculum_release_model.py \
   --profile "${PROFILE}" \

@@ -133,6 +133,18 @@ The focused JSON gate combines those fixtures, destructive output-path attacks, 
 bash scripts/run_curriculum_release_model_conformance.sh
 ```
 
+The wrapper is strict by default: every referenced, locally retained source PDF
+must be a regular non-symlink file and its real bytes are hashed. Clean hosted
+checkouts do not contain the deliberately gitignored official PDFs, so the
+GitHub workflows explicitly set
+`SKILLPILOT_SOURCE_PDF_MODE=committed-bindings`. In that mode only an actually
+missing PDF may fall back to the byte count and SHA-256 already bound by the
+committed source-verification ledger. A present file is always hashed, and a
+changed file, symlink, directory, missing ledger binding, update, or PDF replay
+still fails closed. This hosted mode verifies committed metadata and all
+derived repository evidence; it is not a replacement for the strict local PDF
+or replay checks.
+
 For a step-complete checkpoint, targeted conformance checks are followed by the full repository gate:
 
 ```bash
