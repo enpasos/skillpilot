@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -33,23 +33,23 @@ Beschreibung: Die lernende Person kann Vielfachheiten von Nullstellen beurteilen
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show the factorized function `f(x)=(x+1)^2(x-2)^3` only as a formula header.
-- Use exactly two large side-by-side local zoom panels at the x-axis, and do not add a full central/global graph:
-  - at `x=-1`, label `Vielfachheit 2` and show the graph touching the x-axis and turning around;
-  - at `x=2`, label `Vielfachheit 3` and show the graph crossing the x-axis with a flattened S-shape.
-- Add two short rule cards:
-  - `gerade Vielfachheit: beruehrt`;
-  - `ungerade Vielfachheit: schneidet`.
-- Make every marked zero lie exactly on the x-axis.
-- The local panel at `x=-1` may be a simple parabola-like touch; the local panel at `x=2` may be a simple cubic-like crossing.
+- Zeige als Formelüberschrift exakt `f(x) = (x+1)²(x-2)³`.
+- Zeige darunter genau zwei getrennte lokale Zoomfelder an der x-Achse, keinen vollständigen Gesamtgraphen.
+- Linkes Zoomfeld bei `x = -1`, beschriftet mit `Vielfachheit 2`:
+  - Zeichne eine nach unten geöffnete, parabelförmige Berührung.
+  - Der Berührpunkt liegt exakt auf der x-Achse bei `(-1|0)`.
+  - Alle anderen sichtbaren Teile dieser lokalen Kurve liegen unterhalb der x-Achse.
+  - Beschrifte: `gerade Vielfachheit: berührt`.
+- Rechtes Zoomfeld bei `x = 2`, beschriftet mit `Vielfachheit 3`:
+  - Zeichne eine abgeflachte, von links unten nach rechts oben verlaufende S-Kurve.
+  - Sie schneidet die x-Achse exakt bei `(2|0)`.
+  - Beschrifte: `ungerade Vielfachheit: schneidet`.
 
 Vermeiden:
 
-- Do not draw a complete graph of `f(x)` across both zeros; local behavior only.
-- Do not make the double zero at `x=-1` cross the x-axis.
-- Do not make the triple zero at `x=2` just touch and turn around.
-- Do not swap the labels `gerade` and `ungerade`.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Die doppelte Nullstelle bei -1 darf niemals oberhalb der x-Achse berührt oder geschnitten werden.
+- Die dreifache Nullstelle bei 2 darf nicht nur berühren oder von oben nach unten verlaufen.
+- Keine zusätzlichen Nullstellen, kein globaler Graph, keine Logos, Wasserzeichen oder Zielgruppenhinweise.
 ```
 
 ## Review-Notiz

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `0e8417d7-effb-5314-93ba-a571b01726ce.jpg`
 
 ## Zweck
@@ -18,50 +18,15 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Infografik-Design im Cartoon-Stil auf hellblauem Hintergrund. Der Hintergrund ist mit mehreren großen, weichen, weißen Wolkenformen verziert.
+Ein klares, lehrreiches Infografik-Design auf einem hellblauen Hintergrund mit subtilen, wolkenähnlichen, noch helleren blauen Formen. Oben mittig steht der schwarze, fettgedruckte Titel "Produkt aus Polynom und Exponentialfunktion integrieren". Darunter sind drei vertikale, abgerundete Rechtecktafeln horizontal nebeneinander angeordnet und gleichmäßig verteilt. Jede Tafel hat einen hellblauen Kopfbereich und einen weißen Hauptbereich, umrandet von einer dünnen schwarzen Linie.
 
-Oben links steht in schwarzer, serifenloser Schrift das Wort "Mathematik".
-Zentral oben, innerhalb einer großen weißen Wolkenform, befindet sich der Haupttitel in großer, fetter, schwarzer, serifenloser Schrift: "Integrale bei verknüpften Exponential- und ganzrationalen Funktionen: Beispiel f(x) = x*e^x".
+Die linke Tafel hat im Kopfbereich ein Symbol, das eine aufgerollte Schriftrolle oder ein Blatt Papier mit einem blauen Stift zeigt, der darauf schreibt. Der Text im Kopfbereich lautet "Stammfunktion finden". Im weißen Hauptbereich befindet sich oben ein hellblaues, abgerundetes Rechteck mit dem fettgedruckten Text "Funktion f(x)". Darunter steht die mathematische Notation "f(x) = x ⋅ eˣ". Ein großer, geschwungener hellblauer Pfeil zeigt von dieser Funktion nach unten, mit dem Text "∫ ...dx" daneben, der den Integrationsprozess symbolisiert. Unter dem Pfeil befindet sich ein weiteres hellblaues, abgerundetes Rechteck mit dem fettgedruckten Text "Stammfunktion F(x)". Darunter steht die mathematische Notation "F(x) = (x − 1) ⋅ eˣ".
 
-Darunter sind drei horizontal angeordnete, abgerundete weiße Rechtecke (Karten) zu sehen, die jeweils einen hellblauen Header haben.
+Die mittlere Tafel hat im Kopfbereich ein Symbol, das eine Lupe mit einem dunkelgrauen Rahmen und einer klaren Linse zeigt. Der Text im Kopfbereich lautet "Durch Ableiten prüfen". Im weißen Hauptbereich sind vertikal gestapelt die mathematischen Gleichungen zu sehen:
+"F'(x) = [(x − 1) ⋅ eˣ]'"
+"= eˣ + (x − 1) ⋅ eˣ"
+"= x ⋅ eˣ = f(x)"
+Unter diesen Gleichungen befindet sich ein großes grünes Häkchen-Symbol. Daneben steht der fettgedruckte Text "Stimmt!". Darunter ist die mathematische Notation "F'(x) = f(x)" zu sehen.
 
-**Linke Karte:**
-Der hellblaue Header enthält den schwarzen Text "1. Funktion & Stammfunktion".
-Im weißen Bereich der Karte ist oben eine hellbraune Schriftrolle mit schwarzer Umrandung abgebildet. Ein blauer Stift mit schwarzer Spitze schreibt auf der Schriftrolle. Auf der Schriftrolle steht in schwarzer Schrift: "Funktion f(x): f(x) = x · e^x".
-Darunter ist ein großes, schwarzes Integralzeichen "∫" gefolgt von "...dx" zu sehen.
-Eine geschwungene, hellblaue Pfeillinie zeigt vom Integralzeichen nach unten.
-Ganz unten auf der Karte ist eine weitere hellbraune Schriftrolle mit schwarzer Umrandung abgebildet. Darauf steht in schwarzer Schrift: "Stammfunktion F(x): F(x) = (x - 1) · e^x".
-
-**Mittlere Karte:**
-Der hellblaue Header enthält den schwarzen Text "2. Der Ableitungsnachweis (Probe)".
-Im weißen Bereich der Karte ist oben eine Sprechblase mit schwarzer Umrandung zu sehen. Darin steht in schwarzer Schrift: "Ist F'(x) = f(x)?".
-Rechts neben der Sprechblase befindet sich eine Lupe mit grauem Griff und schwarzer Umrandung, die auf die Sprechblase gerichtet ist.
-Darunter sind mehrere Zeilen mathematischer Gleichungen in schwarzer Schrift, linksbündig angeordnet:
-"F'(x) = [(x - 1) · e^x]'"
-" = [(x - 1)' · e^x] + [(x - 1) · (e^x)']"
-" = [1 · e^x] + [(x - 1) · e^x]"
-" = e^x + (x · e^x - 1 · e^x)"
-" = e^x + x·e^x - e^x = x · e^x"
-Links neben den Gleichungen ist ein kleiner blauer Stift mit einem Fragezeichen darüber und einer geschwungenen Linie "f_n" daneben abgebildet.
-Unter den Gleichungen zeigt ein hellblauer Pfeil nach rechts.
-Rechts neben dem Pfeil steht in schwarzer Schrift: "Stimmt! F'(x) = f(x)".
-Rechts neben diesem Text ist ein großes, grünes Häkchen-Symbol.
-
-**Rechte Karte:**
-Der hellblaue Header enthält den schwarzen Text "3. Das Bestimmte Integral & Fläche".
-Im weißen Bereich der Karte ist oben links ein einfaches, graues Taschenrechner-Symbol mit orangefarbenen Tasten abgebildet.
-Darunter sind mehrere Zeilen mathematischer Gleichungen in schwarzer Schrift, linksbündig angeordnet:
-"∫₀¹ x · e^x dx = [F(x)]₀¹"
-" = [(x - 1) · e^x]₀¹"
-" = [(1 - 1) · e¹] - [(0 - 1) · e⁰]"
-" = [0 · e] - [-1 · 1]"
-" = 0 - (-1) = 1" (Die Zahl "1" am Ende ist mit einem hellgelben Hintergrund hervorgehoben).
-Rechts neben diesen Gleichungen ist ein kartesisches Koordinatensystem dargestellt. Die x- und y-Achsen sind schwarze Linien mit Pfeilspitzen. Die x-Achse ist mit "x" beschriftet, die y-Achse mit "y". Der Ursprung ist mit "0" markiert.
-Eine schwarze Kurve, die die Funktion y = x · e^x darstellt, beginnt am Ursprung (0|0) und steigt nach rechts oben an.
-Die Fläche unter dieser Kurve von x=0 bis x=1 ist gelb schattiert. Eine gestrichelte schwarze Linie markiert x=1 vertikal.
-Ein roter Punkt befindet sich am Ursprung (0|0), und ein weiterer roter Punkt auf der Kurve bei x=1.
-Der Punkt (0|0) ist neben dem Ursprung explizit beschriftet. Der Punkt (1|e) ist neben dem roten Punkt bei x=1 beschriftet.
-Auf der y-Achse ist ein Teilstich mit "e" beschriftet, und auf der x-Achse ein Teilstich mit "1".
-Innerhalb der gelb schattierten Fläche steht in großer, fetter, schwarzer Schrift "A = 1". Ein schwarzer Pfeil zeigt von unten auf diese Beschriftung.
-Unterhalb des Koordinatensystems steht in schwarzer Schrift: "Fläche unter der Kurve von x=0 bis x=1 beträgt exakt 1."
+Die rechte Tafel hat im Kopfbereich ein Symbol, das einen Taschenrechner mit einem dunkelgrauen Gehäuse und hellgrauen Tasten zeigt, dessen kleines Display sichtbar ist. Der Text im Kopfbereich lautet "Das bestimmte Integral". Im weißen Hauptbereich steht oben die mathematische Notation "∫₀¹ x ⋅ eˣ dx = [F(x)]₀¹ = 1". Darunter ist ein kartesisches Koordinatensystem mit schwarzer x- und y-Achse dargestellt. Die y-Achse ist mit "y" beschriftet und hat einen Teilstich bei "e". Die x-Achse ist mit "x" beschriftet und hat einen Teilstich bei "1". Eine schwarze Kurve, beschriftet mit "y = x ⋅ eˣ", beginnt am Ursprung und steigt nach rechts oben an. Die Fläche unter dieser Kurve von x=0 bis x=1 ist hellorange/gelb schattiert und enthält den fettgedruckten Text "A = 1". Eine vertikale schwarze Linie verbindet den Punkt x=1 auf der x-Achse mit der Kurve. Unter dem Diagramm steht der Text "Fläche unter der Kurve von x=0 bis x=1 beträgt exakt 1.". Alle Texte und mathematischen Notationen sind in schwarzer Farbe gehalten.
 ```

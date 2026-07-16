@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `410221ed-540c-5daf-8c42-d8dd12e9100a.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/410221ed-540c-5daf-8c42-d8dd12e9100a/410221ed-540c-5daf-8c42-d8dd12e9100a.jpg`
@@ -19,31 +19,32 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Stichprobenumfang für vorgegebene Konfidenzniveaus planen (LK)
+Titel: Stichprobenumfang für vorgegebene Konfidenzniveaus planen
 Beschreibung: Die lernende Person kann auf Grundlage der Sigma-Regeln für vorgegebene Konfidenzniveaus und gewünschte Genauigkeit den benötigten Stichprobenumfang berechnen oder abschätzen und die Planung im Kontext begründen.
 
 Zusatzanweisung:
-Additional correction for the sample-size planning visualization:
+Pflichtinhalt:
 
-- Do not include technical IDs, filenames, watermarks, or product names in the image.
-- Focus on the planning idea: larger sample size `n` means smaller standard error and therefore a narrower confidence interval.
-- Show two side-by-side intervals with the same observed center `h`, for example:
-  - `n=100`: wide interval
-  - `n=400`: about half as wide
-- If a formula is shown, use a correct conservative planning formula for proportions:
-  - `n >= z^2 / (4*e^2)` for the worst case `p*(1-p) <= 1/4`
-  - Example for 95% confidence and accuracy `e=0.05`: `n approx 385`
-- Do not show `n approx (z/e)^2` without the factor `1/4`.
-- If the full formula would make the image crowded, omit formulas and show only the qualitative relation `n larger -> interval narrower`.
-- Do not imply that changing `n` changes the true probability `p`; only the estimation precision changes.
+- Gestalte eine ruhige, klar gegliederte Infografik zur Planung eines Stichprobenumfangs.
+- Zeige links ein breites Konfidenzintervall mit der Beschriftung `n = 100` und rechts ein etwa halb so breites Intervall mit der Beschriftung `n = 400`.
+- Beide Intervalle müssen denselben Mittelpunkt haben; nur ihre Breite unterscheidet sich.
+- Zeige darunter separat und groß genug lesbar die korrekte konservative Planungsformel `n >= z^2 / (4 e^2)`.
+- Ergänze als einziges Zahlenbeispiel: `95 % Konfidenz, e = 0,05: n ungefähr 385`.
+- Nutze nur die kurzen Labels `breites Intervall`, `schmales Intervall`, `weniger präzise` und `präziser`.
+
+Vermeiden:
+
+- Keine überlappenden Beschriftungen, keine geschweiften Klammern unter Diagrammen und keine kleinen Textzeilen an Achsen.
+- Keine zusätzliche Variable `h`, keine konkurrierende Formel und keine falsche Behauptung über den wahren Anteil.
+- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

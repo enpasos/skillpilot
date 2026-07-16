@@ -31,38 +31,22 @@ Titel: Brüche erweitern, kürzen und vergleichen
 Beschreibung: Die lernende Person kann Brüche erweitern, kürzen, in äquivalente Darstellungen überführen und zum Größenvergleich geeignete Strategien auswählen.
 
 Zusatzanweisung:
-Korrigiere die bestehende Visualisierung gezielt.
+Use case: scientific-educational
+Asset type: didactic mathematics infographic
+Primary request: Make one precise arrow-cleanup edit while preserving the existing three-panel composition, colors, typography, fractions, formulas, labels and decorative background.
 
-Erhalte den hellblauen Cartoon-Stil, das breite 16:9-Layout, den Titel und die drei Spalten "Erweitern", "Kürzen" und "Vergleichen".
+Required content:
+- In the left "Erweitern" panel, keep 2/3 on the left, 4/6 on the right, the large horizontal right-pointing transformation arrow, and the clearly directed outer top and bottom arcs labelled ×2.
+- Remove only the two short inward-curving arrows immediately to the right of the numerator 2 and denominator 3, together with their two adjacent local ×2 labels. These two short arrows currently end near the center without reaching 4 or 6. Do not replace them.
+- In the middle "Kürzen" panel, keep 4/6 on the left, 2/3 on the right, the large horizontal right-pointing transformation arrow, and the clearly directed outer top and bottom arcs labelled ÷2.
+- Remove only the two short inward-curving arrows immediately to the right of the numerator 4 and denominator 6, together with their two adjacent local ÷2 labels. These two short arrows currently end near the center without reaching 2 or 3. Do not replace them.
+- Keep the right comparison panel mathematically exact: 2/3 becomes 4/6 and 4/6 < 5/6.
 
-Fachliche Pflichtkorrekturen:
-- In der Spalte "Vergleichen" muss der Vergleich lauten: "4/6 < 5/6".
-- Das Zeichen muss eindeutig ein Kleiner-als-Zeichen sein, weil vier Sechstel kleiner als fünf Sechstel sind.
-- Falls die Darstellung oben "2/3 ? 5/6" zeigt, darf sie bleiben; die Umformung darunter muss aber eindeutig zeigen: "2/3 -> 4/6 < 5/6".
-
-Pfeilkorrekturen:
-- In der Spalte "Erweitern" soll nur der Vorwärtsweg gezeigt werden: "2/3 -> 4/6" mit "×2" bei Zähler und Nenner.
-- Entferne den großen Rückweg-Bogen von "4/6" zurück zu "2/3".
-- In der Spalte "Kürzen" soll nur der Vorwärtsweg gezeigt werden: "4/6 -> 2/3" mit "÷2" bei Zähler und Nenner.
-- Entferne den großen Rückweg-Bogen von "2/3" zurück zu "4/6".
-- Entferne alle großen gebogenen Pfeile komplett.
-- Entferne auch die Beschriftungen, die zu diesen gebogenen Pfeilen gehören, falls dadurch die Darstellung ruhiger und eindeutiger wird.
-- Die einzige große Verbindung zwischen den Brüchen soll jeweils der gerade blaue Pfeil in der Mitte sein, jeweils von links nach rechts.
-- In "Erweitern" darf kein Pfeilkopf von rechts zurück nach links zeigen.
-- In "Kürzen" darf kein Pfeilkopf von rechts zurück nach links zeigen.
-- Besonders wichtig: In der Spalte "Kürzen" darf unter den Brüchen kein gebogener Pfeil von "2/3" zurück zu "4/6" stehen.
-- Es dürfen in den Spalten "Erweitern" und "Kürzen" überhaupt keine gebogenen Pfeile oberhalb oder unterhalb der Brüche stehen.
-
-Was unverändert bleiben soll:
-- Die Grundidee "Erweitern" und "Kürzen" als äquivalente Bruchdarstellungen bleibt erhalten.
-- Die Strategie "Hauptnenner suchen & vergleichen" bleibt erhalten.
-- Alle Brüche und Rechenschritte müssen gut lesbar bleiben.
-
-Gestalterische und sprachliche Vorgaben:
-- Alle deutschen Umlaute korrekt schreiben.
-- Keine internen Anweisungen im Bild.
-- Keine technischen IDs, keine Dateinamen, keine Produktnamen, keine Schulformlabels, keine lokalen oder internen Pfade.
-- Keine falschen Vergleichszeichen, keine doppelten Rückweg-Pfeile, keine widersprüchlichen Markierungen.
+Avoid:
+- no arrow whose destination is unclear
+- no new arrows, fractions, calculations or labels
+- no changes to any number, operation sign, inequality, umlaut or existing explanatory sentence
+- no technical identifiers, filenames, internal paths, product or platform names, course labels, logos, brands or watermarks
 ```
 
 ## Review-Notiz

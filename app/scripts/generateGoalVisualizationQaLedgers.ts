@@ -2,10 +2,16 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import {
+  emptyGoalVisualizationAiReview,
+  normalizeGoalVisualizationAiReview,
+  type GoalVisualizationAiReviewFields,
+  type GoalVisualizationQaYesNo,
+} from './goalVisualizationQaModel'
 
-type YesNo = 'yes' | 'no'
+type YesNo = GoalVisualizationQaYesNo
 
-interface GoalVisualizationQaRecord {
+interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields {
   goalId: string
   title: string
   description: string
@@ -132,6 +138,7 @@ const createDefaultRecord = (row: Omit<GoalVisualizationQaRecord,
   | 'chatGptNotes'
   | 'humanReviewedAt'
   | 'humanReviewer'
+  | keyof GoalVisualizationAiReviewFields
 >): GoalVisualizationQaRecord => ({
   ...row,
   umlautsCorrectChatGpt: 'no',
@@ -144,6 +151,7 @@ const createDefaultRecord = (row: Omit<GoalVisualizationQaRecord,
   chatGptNotes: '',
   humanReviewedAt: null,
   humanReviewer: '',
+  ...emptyGoalVisualizationAiReview(),
 } as GoalVisualizationQaRecord)
 
 const normalizeExistingRecord = (
@@ -170,6 +178,7 @@ const normalizeExistingRecord = (
       ? existing.humanReviewedAt.trim()
       : null,
     humanReviewer: normalizeText(existing.humanReviewer),
+    ...normalizeGoalVisualizationAiReview(existing, current.assetSha256),
   } as GoalVisualizationQaRecord
 }
 
@@ -240,7 +249,27 @@ const buildLedgers = (subjects: Set<string> | null): GoalVisualizationQaLedger[]
     })
 }
 
-const serializeLedger = (ledger: GoalVisualizationQaLedger): string => `${JSON.stringify(ledger, null, 2)}\n`
+const serializeLedger = (ledger: GoalVisualizationQaLedger): string => {
+  const records = ledger.records.map((record) => {
+    if (
+      record.aiApproved === 'no'
+      && !record.aiApprovedAssetSha256
+      && record.aiReviewedAt === null
+      && !record.aiReviewer
+      && !record.aiNotes
+    ) {
+      const legacyCompatibleRecord: Partial<GoalVisualizationQaRecord> = { ...record }
+      delete legacyCompatibleRecord.aiApproved
+      delete legacyCompatibleRecord.aiApprovedAssetSha256
+      delete legacyCompatibleRecord.aiReviewedAt
+      delete legacyCompatibleRecord.aiReviewer
+      delete legacyCompatibleRecord.aiNotes
+      return legacyCompatibleRecord
+    }
+    return record
+  })
+  return `${JSON.stringify({ ...ledger, records }, null, 2)}\n`
+}
 
 const main = () => {
   const args = parseArgs()

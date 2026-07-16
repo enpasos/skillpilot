@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -33,23 +33,18 @@ Beschreibung: Die lernende Person kann trigonometrische Modelle mit ganzrational
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show two side-by-side model cards with the same axes:
-  - left: a sine curve labelled `periodisch`;
-  - right: the cubic polynomial `p(x)=x^3-x` labelled `nicht periodisch`.
-- On the sine card, mark repeated zeros at `-pi`, `0`, and `pi`, and mark one full period with one clean horizontal arrow from `-pi` to `pi`.
-- On the polynomial card, mark exactly three zeros at the curve-axis crossings `x=-1`, `x=0`, and `x=1`; every red zero marker must lie directly on the curve and on the x-axis.
-- On the polynomial card, show long-term behavior with one downward arrow on the far left and one upward arrow on the far right.
-- Add a small comparison table with four rows: `Periode`, `Symmetrie`, `Nullstellen`, `Langfristig`.
-- Keep the table entries short, such as `wiederholt sich` versus `waechst/faellt`.
+- Erstelle eine übersichtliche Vergleichsinfografik für `f(x) = sin(x)` und `p(x) = x^3 - x`.
+- Zeige links eine korrekte Sinuskurve mit den Aussagen `periodisch` und `beschränkt: -1 <= f(x) <= 1`.
+- Zeige rechts den korrekten kubischen Graphen von `p(x) = x^3 - x` mit den Nullstellen `-1`, `0`, `1`, links fallend gegen minus unendlich und rechts steigend gegen plus unendlich.
+- Beschrifte den Polynomteil mit `nicht periodisch` und `unbeschränkt`.
+- Ergänze als eindeutigen Schlusssatz: `Langfristig ist p unbeschränkt: p(x) geht gegen -unendlich für x gegen -unendlich und gegen +unendlich für x gegen +unendlich.`
+- Nutze zwei klar getrennte Bereiche und ausreichend große Schrift.
 
 Vermeiden:
 
-- Do not make the polynomial curve periodic or wave-like.
-- Do not add any red zero marker that is not an actual curve-axis crossing.
-- Do not show more or fewer than three polynomial zeros for `p(x)=x^3-x`.
-- Do not show a sine curve that grows without bound.
-- Do not label both models as valid for all long-term predictions.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine Aussage über begrenztes Wachstum oder begrenzten Verfall beim Polynom.
+- Keine vertauschten Endverhalten, keine falschen Nullstellen und keine zusätzliche Funktion.
+- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

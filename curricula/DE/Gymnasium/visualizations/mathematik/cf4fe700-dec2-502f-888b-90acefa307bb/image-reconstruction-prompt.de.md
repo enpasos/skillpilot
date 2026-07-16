@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `cf4fe700-dec2-502f-888b-90acefa307bb.jpg`
 
 ## Zweck
@@ -18,22 +18,25 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein didaktisches Diagramm auf einem hellbeigen Hintergrund. Oben mittig steht der schwarze, fette Titel: "Informationen aus Darstellungen entnehmen".
+Ein didaktisches Diagramm auf einem hellbeigen Hintergrund, das die Analyse eines Graphen darstellt. Oben mittig steht der fette schwarze Titel "Informationen aus einem Graphen ablesen".
 
-Auf der linken Seite befindet sich ein Koordinatensystem mit einem hellgrauen Gitter. Die dicken schwarzen Achsen sind mit Pfeilen versehen und beschriftet: die vertikale Achse mit 'y' und die horizontale Achse mit 'x'. Die y-Achse hat Markierungen und Zahlen von 0 bis 6 (0, 1, 2, 3, 4, 5, 6). Die x-Achse hat Markierungen und Zahlen von 0 bis 3 (0, 1, 2, 3).
+Auf der linken Seite befindet sich ein Koordinatensystem mit einer hellgrauen Gitterstruktur. Die schwarze x-Achse ist horizontal mit einem Pfeil nach rechts und dem Label 'x'. Die schwarze y-Achse ist vertikal mit einem Pfeil nach oben und dem Label 'y'. Der Ursprung ist mit "0" beschriftet. Die x-Achse hat schwarze Markierungen bei "0", "1", "2", "3". Die y-Achse hat schwarze Markierungen bei "0", "1", "2", "3", "4", "5", "6".
 
-Eine dicke blaue Linie, die eine lineare Funktion darstellt, verläuft durch die Punkte (0,1) und (2,5). Diese beiden Punkte sind jeweils mit einem kleinen blauen Kreis markiert.
+Eine dicke blaue Linie verläuft durch das Koordinatensystem. Sie beginnt am Punkt (0|1) auf der y-Achse und steigt bis zum Punkt (2|5). Beide Punkte sind mit kleinen blauen Kreisen auf der Linie markiert.
+Oberhalb des Koordinatensystems, leicht rechts der y-Achse, steht der schwarze Text "Informationen entnehmen".
 
-Mehrere Beschriftungen sind mit dünnen schwarzen Linien oder Pfeilen mit dem Graphen verbunden:
-1.  Unterhalb des Punktes (0,1) befindet sich ein weißes, abgerundetes Rechteck mit schwarzem Rand, das den Text "y-Achsenabschnitt: 1" enthält. Ein dünner schwarzer, gebogener Pfeil zeigt von diesem Textfeld zum Punkt (0,1).
-2.  Rechts vom Punkt (2,5) befindet sich ein weißes, abgerundetes Rechteck mit schwarzem Rand, das den Text "Punkt: (2|5)" enthält. Eine dünne schwarze Linie verbindet dieses Textfeld mit dem Punkt (2,5).
-3.  Ein Steigungsdreieck ist eingezeichnet: Eine horizontale schwarze Linie verläuft von (0,1) nach (2,1), darunter steht die Beschriftung "+2". Eine vertikale schwarze Linie verläuft von (2,1) nach (2,5), links davon steht die Beschriftung "+4". Am Punkt (2,1) ist ein kleines schwarzes Quadrat eingezeichnet, das einen rechten Winkel symbolisiert.
-4.  Rechts neben dem Steigungsdreieck befindet sich ein weißes, abgerundetes Rechteck mit schwarzem Rand, das den Text "Steigung: 2" enthält. Ein dünner schwarzer, gebogener Pfeil zeigt von der vertikalen Linie des Steigungsdreiecks zu diesem Textfeld.
+Ein rechtwinkliges Steigungsdreieck ist unterhalb der blauen Linie eingezeichnet. Es wird gebildet durch eine vertikale schwarze Linie vom Punkt (2|5) nach unten zum Punkt (2|1) auf der Höhe von y=1, und eine horizontale schwarze Linie vom Punkt (0|1) nach rechts zum Punkt (2|1). Der rechte Winkel ist am Punkt (2|1) mit einem kleinen Quadrat markiert.
+Entlang der vertikalen Seite des Dreiecks steht "Δy = 4". Entlang der horizontalen Seite steht "Δx = 2".
+Die Koordinaten der relevanten Punkte sind ebenfalls beschriftet: "(0|1)" am Startpunkt der Linie auf der y-Achse, "(2|1)" am unteren rechten Eckpunkt des Steigungsdreiecks und "(2|5)" am oberen Endpunkt der Linie.
+Rechts oberhalb des Steigungsdreiecks ist die Steigungsberechnung in schwarzem Text dargestellt: "m = Δy / Δx = 4 / 2 = 2".
 
-Auf der rechten Seite des Bildes sind drei vertikal angeordnete, weiße, abgerundete Rechtecke mit schwarzem Rand zu sehen. Jedes dieser Felder wird von einem dicken, blau schattierten Pfeil von links angesteuert:
-1.  Das obere Feld enthält den Text "Startwert (y-Achsenabschnitt): 1". Ein dicker, blau schattierter Pfeil zeigt von der oberen linken Seite des Diagramms (aus der Nähe des Punktes (2,5) und seiner Beschriftung "Punkt: (2|5)") nach rechts oben zu diesem Feld.
-2.  Das mittlere Feld enthält den Text "Änderungsrate (Steigung): 2". Ein dicker, blau schattierter Pfeil zeigt von dem Textfeld "Steigung: 2" auf der linken Seite direkt nach rechts zu diesem Feld.
-3.  Das untere Feld enthält den Text "Funktionswert bei x=2: 5". Ein dicker, blau schattierter Pfeil zeigt von der unteren linken Seite des Diagramms (aus der Nähe des Punktes (0,1) und seiner Beschriftung "y-Achsenabschnitt: 1") nach rechts unten zu diesem Feld.
+Auf der rechten Seite des Bildes sind drei vertikal gestapelte, abgerundete weiße Rechtecke mit dicken schwarzen Umrissen.
+Das oberste Rechteck enthält den fetten schwarzen Text "y-Achsenabschnitt: 1".
+Das mittlere Rechteck enthält den fetten schwarzen Text "Steigung: 2".
+Das unterste Rechteck enthält den fetten schwarzen Text "Punkt bei x = 2: (2|5)".
 
-Der Stil ist klar, lehrreich und hat leicht skizzierte Umrisse für die Textfelder und Pfeile.
+Drei geschwungene, hellblaue Pfeile mit schwarzen Umrissen verbinden die linke Diagrammhälfte mit den rechten Informationsboxen.
+Der oberste Pfeil zeigt von der blauen Linie am y-Achsenabschnitt (Punkt (0|1)) zur Box "y-Achsenabschnitt: 1".
+Der mittlere Pfeil zeigt von der Steigungsberechnung "m = Δy / Δx = 4 / 2 = 2" zur Box "Steigung: 2".
+Der unterste Pfeil zeigt vom Punkt (2|5) auf der blauen Linie zur Box "Punkt bei x = 2: (2|5)".
 ```

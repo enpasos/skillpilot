@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `1511b39a-4094-5450-a755-4a3ad3339733.jpg`
 
 ## Zweck
@@ -18,30 +18,52 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, lehrreiches Infografik-Design im Cartoon-Stil mit einer hellen, pastellfarbenen Farbpalette auf einem hellbeigen Hintergrund.
+Ein detailliertes, lehrreiches Infografik-Bild im Cartoon-Stil auf einem hellbeigen Hintergrund.
 
-Oben mittig steht der Titel "Einfache Extremwertprobleme lösen" in großer, fetter, dunkelgrauer serifenloser Schrift.
+Oben mittig steht der große, fette, schwarze Titel: 'Einfache Extremwertprobleme lösen'.
 
-Darunter, von links nach rechts, sind drei Hauptschritte in hellblauen, abgerundeten Rechtecken mit dunkelblauem Rand angeordnet. Dunkelgraue Pfeile verbinden diese Schritte.
+Darunter befindet sich eine horizontale Prozessleiste mit drei abgerundeten, hellbeigen Rechtecken mit schwarzem Rand, die durch zwei braune Pfeile mit schwarzem Rand verbunden sind, die nach rechts zeigen.
+Das linke Rechteck enthält den schwarzen Text '1. Sachsituation verstehen'.
+Das mittlere Rechteck enthält den schwarzen Text '2. Mathematisch modellieren & lösen'.
+Das rechte Rechteck enthält den schwarzen Text '3. Ergebnis interpretieren'.
 
-**Schritt 1: "1. Sachsituation verstehen"**
-Ein nachdenklicher Cartoon-Mann mit Strohhut, grüner Latzhose und grünen Stiefeln steht auf grünem Gras, die Hand am Kinn. Über seinem Kopf schwebt eine hellblaue Gedankenblase mit einem dunkelgrauen Fragezeichen und einem braunen Holzzaun-Symbol. Rechts von ihm zeigt eine weiße Sprechblase mit dunkelblauem Rand auf ihn, darin steht der schwarze Text: "Beispiel: Maximale Fläche bei gegebener Zaunlänge". Unter dem Mann befindet sich ein rechteckiges Hochbeet mit brauner Erde und einem hellbraunen Holzrahmen auf dem Gras. Unter dem Hochbeet ist ein hellblaues Rechteck mit einem rechtwinkligen Symbol unten rechts dargestellt, beschriftet mit einem schwarzen 'x' entlang der unteren Kante und einem schwarzen 'y' entlang der rechten Kante. Rechts neben diesem Rechteck steht ein braunes Holzzaun-Symbol. Darunter befindet sich eine weiße Sprechblase mit dunkelblauem Rand, die den schwarzen Text "Gegeben: Zaunlänge L" enthält.
+Der linke Bereich des Bildes, unter '1. Sachsituation verstehen', zeigt einen nachdenklichen Cartoon-Bauern, der nach rechts blickt. Er trägt einen Strohhut, ein rot-kariertes Hemd, eine blaue Latzhose und braune Stiefel, seine rechte Hand am Kinn. Über seinem Kopf schwebt eine weiße Gedankenblase mit schwarzem Rand, die eine isometrische Zeichnung eines rechteckigen, eingezäunten Bereichs mit einer Ziegelwand als eine Seite und einem Fragezeichen daneben enthält.
+Unter dem Bauern ist eine isometrische Darstellung eines rechteckigen Grundstücks zu sehen. Die Rückseite ist eine rote Ziegelwand. Die anderen drei Seiten sind mit Holzzäunen (Pfosten und zwei horizontale Holzlatten) umgeben. Der Boden ist braune Erde mit wellenförmigen Linien. Die beiden kurzen Zaunseiten sind mit 'x' beschriftet, die lange Zaunseite mit 'y'.
+Darunter befindet sich ein weißes, abgerundetes Rechteck mit schwarzem Rand. Es enthält den schwarzen Text:
+'Gegeben:
+Zaunlänge = 20 m'
+Rechts neben 'Zaunlänge = 20 m' ist ein kleines Zaun-Symbol (Holzpfosten mit Drahtgeflecht) abgebildet. Eine horizontale Linie trennt den oberen vom unteren Teil.
+'Goal:
+Maximale Fläche an der Wand'
 
-Ein dunkelgrauer Pfeil zeigt von Schritt 1 zu Schritt 2.
+Der mittlere Bereich des Bildes, unter '2. Mathematisch modellieren & lösen', zeigt eine große schwarze Tafel mit einem braunen Holzrahmen. Auf der Tafel sind weiße Texte und Diagramme zu sehen:
+Oben links auf der Tafel steht 'Nebenbedingung:' gefolgt von '2x + y = 20'.
+Darunter steht 'Zielfunktion (Fläche):' gefolgt von 'A(x, y) = x · y'.
+Darunter steht 'Einsetzen:' gefolgt von:
+'y = 20 - 2x'
+'A(x) = x · (20 - 2x)'
+'= 20x - 2x²'
+Ein weißer Pfeil zeigt von der Zeile 'y = 20 - 2x' zur Zeile 'A(x) = x · (20 - 2x)'.
+Darunter steht 'Ableitung & Nullstelle:' gefolgt von:
+'A'(x) = 20 - 4x = 0
+⇒ 4x = 20
+⇒ xmax = 5'
+Rechts auf der Tafel ist ein Koordinatensystem mit einer X-Achse, die mit 'x' beschriftet ist, und einer Y-Achse, die mit 'A(x)' beschriftet ist. Eine orangefarbene, nach unten geöffnete Parabel ist eingezeichnet, deren Scheitelpunkt bei x=5 liegt. Eine gestrichelte horizontale Linie führt vom Scheitelpunkt zur Y-Achse bei '50'. Eine gestrichelte vertikale Linie führt vom Scheitelpunkt zur X-Achse bei '5'. Über dem Scheitelpunkt steht das orangefarbene Wort 'Maximum'.
+Unter dem Koordinatensystem liegt ein grauer Taschenrechner mit einem weißen Display, das die Zahl '5' anzeigt. Der Taschenrechner hat schwarze Tasten mit weißen Zahlen/Symbolen und einige orangefarbene Tasten.
+Unter dem Taschenrechner, auf der Tafel, ist ein weißes, abgerundetes Rechteck mit schwarzem Rand. Es enthält den schwarzen Text:
+'Lösung:
+xmax = 5 m
+ymax = 20 - 2(5) = 10 m
+Amax = 5 · 10 = 50 m²'
+Am unteren Rand der Tafel liegen ein weißes Kreidestück und ein schwarzer Tafellöscher.
 
-**Schritt 2: "2. Mathematisch modellieren & lösen"**
-Ein großes, dunkelgraues Rechteck, das einen Tafel darstellt, mit einem hellbraunen Holzrahmen.
-Oben links auf der Tafel steht in weißer Schrift: "Hauptbedingung (Ziel): A(x,y) = x · y (Fläche max.)".
-Oben rechts auf der Tafel steht in weißer Schrift: "Zielfunktion (eine Variable): A(x) = x · (L - 2x)".
-Mittig links auf der Tafel steht in weißer Schrift: "Nebenbedingung: 2x + y = L (Zaunlänge konstant)".
-Mittig rechts auf der Tafel sind eine graue Taschenrechner-Ikone mit grünem Display und farbigen Tasten (orange, rot, grün) sowie ein gelber parabelförmiger Graph mit einer gestrichelten weißen vertikalen Symmetrieachse und einem Maximumpunkt dargestellt. Ein geschwungener dunkelgrauer Pfeil auf der Tafel zeigt von der "Nebenbedingung" zur "Zielfunktion".
-Unter der Tafel sind drei weiße Sprechblasen mit dunkelblauem Rand angeordnet, die durch dunkelgraue Linien mit der Tafel verbunden sind.
-Die linke Sprechblase enthält den schwarzen Text: "Zielkting: A * (L - 2x)".
-Die mittlere Sprechblase enthält den schwarzen Text: "Ableitung & Nullstelle: A'(x) = L - 4x = 0 ⇒ x_max".
-Die rechte Sprechblase enthält den schwarzen Text: "Lösung: x_max berechnen".
-
-Ein dunkelgrauer Pfeil zeigt von Schritt 2 zu Schritt 3.
-
-**Schritt 3: "3. Ergebnis interpretieren"**
-Der gleiche Cartoon-Mann wie in Schritt 1, aber jetzt selbstbewusst lächelnd mit den Händen in die Hüften gestemmt, steht auf grünem Gras. Links von ihm befindet sich ein rechteckiges Hochbeet mit brauner Erde und einem hellbraunen Holzrahmen auf dem Gras. Das Hochbeet ist beschriftet mit einem schwarzen 'x' entlang einer kurzen Seite und einem schwarzen 'y' entlang beider langen Seiten. Über dem Mann zeigt eine weiße Sprechblase mit dunkelblauem Rand auf ihn, darin steht der schwarze Text: "Optimale Abmessungen: x_max und y_max für maximale Fläche". Unter dem Hochbeet befindet sich eine weiße Sprechblase mit dunkelblauem Rand, die den schwarzen Text "Im Kontext: Die ideale Zaunaufteilung für die größte Fläche ist gefunden." enthält. Rechts neben dieser Sprechblase ist ein großes grünes Häkchen-Symbol in einem dunkelgrauen Kreis dargestellt.
+Der rechte Bereich des Bildes, unter '3. Ergebnis interpretieren', zeigt einen selbstbewussten Cartoon-Bauern, der nach links blickt und die Hände in die Hüften stemmt. Er trägt die gleiche Kleidung wie der erste Bauer.
+Rechts neben dem Bauern ist eine isometrische Darstellung desselben eingezäunten Bereichs zu sehen. Der Boden ist mit dem weißen Text 'Maximale Fläche: 50 m²' beschriftet. Die beiden kurzen Zaunseiten sind mit 'Xmax = 5 m' beschriftet, die lange Zaunseite mit 'Ymax = 10 m'.
+Darunter befindet sich ein weißes, abgerundetes Rechteck mit schwarzem Rand. Es enthält den schwarzen Text:
+'Im Kontext:
+Die ideale Zaunaufteilung
+für die größte Fläche (50 m²)
+an der Wand ist gefunden
+mit x=5 m und y=10 m.'
+Rechts neben diesem Text ist ein großes, grünes Häkchen-Symbol abgebildet.
 ```

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,23 +32,22 @@ Beschreibung: Die lernende Person kann bestimmte Integrale mithilfe von Interval
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Intervalladditivitaet und Linearitaet von Integralen nutzen.
-- Verwende genau f(x)=x+1.
-- Intervalladditivitaet auf [0,4] mit Trennpunkt 2:
-  integral_0^4 f(x) dx = integral_0^2 f(x) dx + integral_2^4 f(x) dx.
-  integral_0^2 (x+1) dx = 4.
-  integral_2^4 (x+1) dx = 8.
-  Summe = 12.
-- Linearitaet auf [0,2]:
-  integral_0^2 (2f(x)+1) dx = 2*integral_0^2 f(x) dx + integral_0^2 1 dx
-  = 2*4 + 2 = 10.
-- Ergebnisbox: Zerlegen nach Intervallen und Ausklammern/Summieren von Funktionen sind erlaubte Integralregeln.
+- Erstelle eine aufgeräumte, fachlich exakte Cartoon-Lernillustration mit zwei klar getrennten Bereichen: `Intervalladditivität` und `Linearität`.
+- Zeige links das allgemeine Gesetz genau als `∫_a^c f(x) dx = ∫_a^b f(x) dx + ∫_b^c f(x) dx` und visualisiere die Zerlegung einer Fläche an der Stelle `b` mit zwei verschiedenfarbigen Teilflächen.
+- Zeige darunter das korrekte Beispiel für `f(x) = x + 1`: `∫₀² f(x) dx = 4`, `∫₂⁴ f(x) dx = 8` und `∫₀⁴ f(x) dx = 12`.
+- Schreibe vor dem unteren Beispiel keine Einleitung. Beginne dort direkt mit der sauberen Zeile `f(x) = x + 1`; entferne das bisherige verstümmelte Wort vollständig.
+- Zeige rechts das Linearitätsgesetz genau als `∫_a^b (λf(x) + μg(x)) dx = λ∫_a^b f(x) dx + μ∫_a^b g(x) dx`.
+- Ergänze als kurzes korrektes Beispiel `∫₀² (2f(x) + 1) dx = 2∫₀² f(x) dx + ∫₀² 1 dx = 10` für `f(x) = x + 1`.
+- Falls `f(x) = x + 1` grafisch gezeigt wird, muss die Gerade die y-Achse bei `(0|1)` schneiden und bei `x = 2` den Wert 3 haben. Die Fläche von 0 bis 2 ist dann ein Trapez mit Inhalt 4, kein Dreieck mit Spitze im Ursprung.
+- Verwende gut lesbare mathematische Typografie, wenige klare Beschriftungen und großzügigen Weißraum.
 
 Vermeiden:
-- Nicht 4+8 als 14 ausgeben; richtig ist 12.
-- Bei der Linearitaet den konstanten Anteil 1 nicht vergessen; integral_0^2 1 dx = 2.
-- Keine falsche Schreibweise der Grenzen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Den bisherigen verstümmelten Text zur Fläche oder andere unleserliche Textartefakte.
+- Jedes Wort oder Zeichen unmittelbar vor der unteren Zeile `f(x) = x + 1`.
+- Mehrfach wiederholte Ergebnisboxen, unnötige Sätze oder uneindeutige Pfeile.
+- Falsche Integrationsgrenzen, falsche Summen oder eine grafische Fläche, die den Formeln widerspricht.
+- Eine als `f(x) = x + 1` beschriftete Gerade durch den Ursprung.
+- Technische IDs, Dateinamen, interne Pfade, Logos, Marken, Wasserzeichen, Plattformnamen oder Schulform- und Kurslabels.
 ```
 
 ## Review-Notiz

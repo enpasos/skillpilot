@@ -184,6 +184,8 @@ curricula/DE/Gymnasium/quality/goal-visualization-review/
 
 The review note must record accepted assets, rejected/regenerated assets, visible mathematical issues, and validation checks. Keep `reviewStatus: "pilot"` in canonical JSON until the asset has passed the intended release review.
 
+The subject QA ledgers can additionally record an explicit AI review. `aiApproved: "yes"` is valid only when `aiApprovedAssetSha256` exactly matches the record's current `assetSha256`; replacing the image therefore invalidates the AI approval. `aiReviewedAt`, `aiReviewer`, and `aiNotes` describe that hash-bound review. The older `umlautsCorrectChatGpt` and `contentApprovedChatGpt` fields remain available as triage and compatibility data and are not promoted automatically. AI approval is useful technical and subject-matter review evidence, but it never replaces `humanApproved` as the `M7` or release gate.
+
 ## Low-Friction Manual Provider Workflow
 
 When using a manual image provider such as Nano Banana Pro, do not hand-build filenames, folders, or JSON links.

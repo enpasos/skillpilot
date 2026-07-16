@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `377282dc-80b0-5bbf-bef2-a9f22e3919c1.jpg`
 
 ## Zweck
@@ -18,15 +18,37 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein hellblaues Hintergrundbild mit einem großen, zentrierten Titel in Schwarz: "Implikation und Äquivalenz unterscheiden".
+Ein farbenfrohes, lehrreiches Diagramm im Cartoon-Stil mit dicken schwarzen Umrissen und abgerundeten Ecken. Der Hintergrund ist hellblau mit subtilen, wolkenartigen Formen in Weiß.
 
-Darunter sind drei vertikale, abgerundete Paneele angeordnet.
+Oben mittig steht in großer, fetter, schwarzer Schrift der Titel: "Implikation, Umkehrung, Kontraposition, Äquivalenz".
 
-Das linke Paneel hat einen grünen Rahmen und einen hellgrünen Hintergrund. Der Titel oben lautet: "Implikation: A → B". Darunter befinden sich zwei Rechtecke. Das linke Rechteck hat einen blauen Rahmen und enthält den Text "A: n ist durch 4 teilbar". Das rechte Rechteck hat einen grünen Rahmen und enthält den Text "B: n ist gerade". Eine dicke grüne Pfeilspitze zeigt von links nach rechts zwischen den Rechtecken. Über dem Pfeil ist ein grünes Häkchen-Symbol. Unter diesen Elementen steht eine lächelnde Zeichentrickfigur mit hellbraunem Haar und einem grünen Langarmshirt. Er zeigt mit dem rechten Zeigefinger nach oben und mit dem linken Zeigefinger nach vorne unten. Über seinem Kopf schwebt eine weiße Gedankenblase mit schwarzem Rand, die ein gelbes lachendes Smiley-Gesicht und den Text "Gilt immer." enthält.
+Darunter sind vier vertikal ausgerichtete, rechteckige Paneele nebeneinander angeordnet. Jedes Paneel hat einen farbigen Hintergrund und einen dunkleren farbigen Rahmen.
 
-Das mittlere Paneel hat einen orangefarbenen Rahmen und einen hellorangen Hintergrund. Der Titel oben lautet: "Umkehrung: B → A?". Darunter befinden sich zwei Rechtecke. Das linke Rechteck hat einen grünen Rahmen und enthält den Text "B: n ist gerade". Das rechte Rechteck hat einen blauen Rahmen und enthält den Text "A: n ist durch 4 teilbar". Eine dicke orangefarbene Pfeilspitze zeigt von links nach rechts zwischen den Rechtecken. Über dem Pfeil ist ein rotes 'X'-Symbol. Unter diesen Elementen steht eine besorgt aussehende Zeichentrickfigur mit hellbraunem Haar und einem grünen Langarmshirt. Er zeigt mit dem rechten Zeigefinger nach oben und hält in der linken Hand eine kleine weiße Karte mit dem Text "n = 2" und einem roten 'X' über der Ziffer '4'. Über seinem Kopf schwebt eine weiße Gedankenblase mit schwarzem Rand, die ein gelbes, fragendes Smiley-Gesicht und den Text "Gilt nicht immer! Gegenbeispiel: n = 2" enthält.
+**Paneel 1: Implikation (Grün)**
+*   **Titelbereich:** Ein hellgrünes Feld mit dunkelgrünem Rahmen und dem fetten schwarzen Text "Implikation".
+*   **Obere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "A: n ist durch 4 teilbar" und darunter "B: n ist gerade".
+*   **Hauptaussage:** Darunter steht in großer, fetter, schwarzer Schrift "A ⇒ B", gefolgt von einem großen grünen Häkchen (✓).
+*   **Unterer Bereich:** Ein hellgrünes Feld mit dunkelgrünem Rahmen. Links oben ist eine weiße Gedankenblase mit dem schwarzen Text "4, 8, 12...". Darunter befindet sich eine Lupe mit schwarzem Griff, die nach rechts zeigt. Ein schwarzer Pfeil zeigt von der Lupe nach rechts. Rechts davon ist ein weiteres hellgrünes Feld mit dunkelgrünem Rahmen, das den schwarzen Text "Gerade Zahlen" und darunter "(2, 4, 6, 8...)" enthält. Die Lupe und der Pfeil stellen visuell die Verbindung von den durch 4 teilbaren Zahlen zu den geraden Zahlen dar.
 
-Das rechte Paneel hat einen blauen Rahmen und einen hellblauen Hintergrund. Der Titel oben lautet: "Äquivalenz: A ↔ B". Darunter steht der Untertitel "nur wenn beide Richtungen gelten". Darunter befinden sich zwei Rechtecke. Das linke Rechteck hat einen blauen Rahmen und enthält den Text "A: n ist durch 4 teilbar". Das rechte Rechteck hat einen orangefarbenen Rahmen und enthält den Text "B: n ist gerade". Zwischen den Rechtecken sind zwei Pfeile vertikal übereinander angeordnet. Der obere Pfeil ist ein dicker orangefarbener Pfeil, der nach links zeigt, mit einem roten 'X'-Symbol darüber. Der untere Pfeil ist ein dicker grüner Pfeil, der nach rechts zeigt, mit einem grünen Häkchen-Symbol darüber. Unter diesen Elementen schütteln sich zwei lächelnde Zeichentrickfiguren die Hände. Die linke Figur hat hellbraunes Haar und ein hellblaues Langarmshirt. Die rechte Figur hat hellorangefarbenes Haar und ein orangefarbenes Langarmshirt. Über ihren Köpfen sind zwei weiße Sprechblasen mit schwarzem Rand. Die obere Sprechblase (von der linken Figur) enthält den Text "A → B gilt. (Grün)". Die untere Sprechblase (von der rechten Figur) enthält den Text "B → A gilt nicht! (Rot)". Unter der Szene steht der Text "Äquivalenz? Nein." in Schwarz, wobei "Nein." in Rot geschrieben ist, gefolgt von einem gelben traurigen Smiley-Gesicht.
+**Paneel 2: Kontraposition (Blau)**
+*   **Titelbereich:** Ein hellblaues Feld mit dunkelblauem Rahmen und dem fetten schwarzen Text "Kontraposition".
+*   **Obere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "A: n ist durch 4 teilbar" und darunter "B: n ist gerade".
+*   **Hauptaussage:** Darunter steht in großer, fetter, schwarzer Schrift "¬B ⇒ ¬A", gefolgt von einem großen grünen Häkchen (✓).
+*   **Unterer Bereich:** Ein hellblaues Feld mit dunkelblauem Rahmen. Ein schwarzer Pfeil zeigt von unterhalb der Hauptaussage nach unten und dann nach rechts. Rechts neben dem horizontalen Teil des Pfeils befindet sich ein weißes Feld mit schwarzem Rand, das den schwarzen Text "gleichbedeutend mit A ⇒ B" enthält. Darunter sind zwei hellblaue Felder mit dunkelblauem Rahmen nebeneinander angeordnet, verbunden durch einen schwarzen Doppelpfeil (⇒). Das linke Feld enthält den schwarzen Text "Nicht gerade" und darunter "(1, 3, 5, ...)". Das rechte Feld enthält den schwarzen Text "Nicht durch" und darunter "4 teilbar" und "(1, 2, 3, 5, 6, 7...)".
 
-Der Stil ist klar, cartoonhaft und didaktisch, mit deutlichen Linien und flächigen Farben.
+**Paneel 3: Umkehrung (Orange)**
+*   **Titelbereich:** Ein hellorangefarbenes Feld mit dunkelorangefarbenem Rahmen und dem fetten schwarzen Text "Umkehrung".
+*   **Obere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "A: n ist durch 4 teilbar" und darunter "B: n ist gerade".
+*   **Hauptaussage:** Darunter steht in großer, fetter, schwarzer Schrift "B ⇒ A", gefolgt von einem großen roten Kreuz (X).
+*   **Mittlere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "Gegenbeispiel:" und darunter "n = 2".
+*   **Unterer Bereich:** Ein hellorangefarbenes Feld mit dunkelorangefarbenem Rahmen. Links ist eine große orangefarbene Ziffer "2" mit einem kleinen schwarzen Fragezeichen (?) darüber und rechts davon. Ein schwarzer Pfeil zeigt von der "2?" nach rechts. Rechts davon ist ein hellorangefarbenes Feld mit dunkelorangefarbenem Rahmen, das den schwarzen Text "Durch 4" und darunter "teilbar (X)" enthält. Ein großes rotes Kreuz (X) ist über dem Wort "teilbar" platziert, um die Falschheit der Aussage zu kennzeichnen.
+
+**Paneel 4: Äquivalenz (Lila)**
+*   **Titelbereich:** Ein hellviolettes Feld mit dunkelviolettem Rahmen und dem fetten schwarzen Text "Äquivalenz".
+*   **Obere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "A: n ist durch 4 teilbar" und darunter "B: n ist gerade".
+*   **Hauptaussage:** Darunter steht in großer, fetter, schwarzer Schrift "A ⇔ B", gefolgt von einem großen roten Kreuz (X).
+*   **Mittlere Sprechblase:** Eine weiße Sprechblase mit schwarzem Rand, die nach unten zeigt, enthält den schwarzen Text: "nur wenn beide" und darunter "Richtungen gelten".
+*   **Unterer Bereich:** Ein hellviolettes Feld mit dunkelviolettem Rahmen, das vertikal in zwei Hälften geteilt ist.
+    *   **Linke Hälfte:** Oben ist eine kleine weiße Wolke mit dem schwarzen Text "n = 2". Darunter ein gelbes Smiley-Gesicht (😊) mit dem schwarzen Text "Gerade" daneben. Darunter ein rotes wütendes Gesicht (😡) mit dem schwarzen Text "Nicht durch" und darunter "4 teilbar" daneben.
+    *   **Rechte Hälfte:** Oben ist eine kleine weiße Wolke mit dem schwarzen Text "n = 4". Darunter zwei grüne Smiley-Gesichter (😊) nebeneinander. Rechts neben dem ersten grünen Smiley steht der schwarze Text "Gerade". Rechts neben dem zweiten grünen Smiley steht der schwarze Text "Durch 4" und darunter "teilbar". Darunter, in kleinerer schwarzer Schrift, steht "(gilt nicht für alle n)".
 ```

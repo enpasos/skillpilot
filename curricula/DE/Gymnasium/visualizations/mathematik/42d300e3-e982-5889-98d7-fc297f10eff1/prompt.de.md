@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `42d300e3-e982-5889-98d7-fc297f10eff1.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/42d300e3-e982-5889-98d7-fc297f10eff1/42d300e3-e982-5889-98d7-fc297f10eff1.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,35 +31,16 @@ Titel: Einfluss von n und p auf Binomialverteilungen analysieren
 Beschreibung: Die lernende Person kann anhand von Histogrammen untersuchen, wie sich die Parameter n und p auf Lage, Streuung und Symmetrie binomialverteilter Zufallsgrößen auswirken, und entsprechende Vergleiche an Beispielen begründen.
 
 Zusatzanweisung:
-Keep all stochastic examples mathematically simple and correct.
-Use only small, checkable numbers.
+Correct and simplify the German educational infographic about how n and p affect binomial distributions. Keep discrete histograms and use German decimal commas.
 
-Allowed example for random variables:
-- Two fair coin tosses with outcomes ZZ, ZK, KZ, KK where K = Kopf and Z = Zahl.
-- Random variable X = number of heads (Kopf).
-- Mapping: ZZ -> 0, ZK -> 1, KZ -> 1, KK -> 2.
-- Distribution: P(X=0)=1/4, P(X=1)=1/2, P(X=2)=1/4; sum = 1.
+Top comparison, fixed n=4: show p=0,25 on the left and p=0,75 on the right as mirrored discrete histograms. State exactly: "p steigt: Der Erwartungswert μ = n·p wandert nach rechts." Also state: "Bei p=0,25 und p=0,75 ist die Streuung gleich groß; die Formen sind gespiegelt."
 
-Allowed example for expectation, variance, standard deviation:
-- Use the same distribution X = number of heads in two fair coin tosses.
-- E(X) = 0*1/4 + 1*1/2 + 2*1/4 = 1.
-- Var(X) = (0-1)^2*1/4 + (1-1)^2*1/2 + (2-1)^2*1/4 = 1/2.
-- sigma = sqrt(1/2) approx 0.71.
+Bottom comparison, fixed p=0,5: show n=4 with center μ=2 and n=8 with center μ=4 as symmetric discrete histograms. Replace the incomplete sentence with these complete statements:
+"n steigt: μ = n·p steigt."
+"Die absolute Streuung σ = √(n·p·(1−p)) steigt."
+"Die relative Streuung σ/n sinkt."
 
-Allowed example for Bernoulli chains:
-- Success / failure, independent trials.
-- n = 4, p = 0.5, q = 0.5.
-- P(exactly 2 successes) = C(4,2) * 0.5^2 * 0.5^2 = 6/16 = 3/8.
-
-Allowed facts about binomial distributions:
-- P(X=k) = C(n,k) * p^k * (1-p)^(n-k).
-- Increasing p shifts the distribution to the right.
-- Increasing n creates more possible k values; the center is near n*p.
-- For n=4, p=0.5, probabilities are 1/16, 4/16, 6/16, 4/16, 1/16.
-
-If a histogram or bar chart is shown, bar heights must match the displayed table.
-All probabilities in a table must add to 1.
-Avoid dense tiny formulas and invented values.
+Do not use the incomplete phrase "Mitte verschiebt sich mit". Every histogram bar must remain discrete and nonnegative. No technical identifiers, file names, logos, watermarks, brands, platform names, or course labels.
 ```
 
 ## Review-Notiz

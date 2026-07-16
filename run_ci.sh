@@ -181,6 +181,10 @@ run_application_frontend_ci() {
   echo "--> Testing Package Goal Source Evidence Consumer"
   npm run test:package-goal-source-evidence
 
+  echo "--> Testing Goal Visualization QA Approval Model"
+  npm run test:goal-visualization-qa-status
+  npm run test:goal-visualization-qa-model
+
   echo "--> Running Learner Goal Selection Validation"
   npm run validate:learner-goal-selection
 

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg`
 
 ## Zweck
@@ -18,30 +18,34 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein hellblaues Hintergrundbild im Cartoon-Stil mit dicken schwarzen Umrissen. Oben mittig befindet sich ein großes, abgerundetes weißes Rechteck mit dem schwarzen, fetten Text "Erweiterte Integrationsregeln anwenden (LK)".
+Ein freundliches, handgezeichnetes, lehrreiches Cartoon-Bild mit dicken schwarzen Umrissen und weichen Pastellfarben auf hellblauem Hintergrund.
 
-Darunter sind drei weitere abgerundete Rechtecke angeordnet. Links ein orange-beiges Rechteck mit dem Titel "Lineare Klammerpotenz" in schwarzem, fettem Text. Darin ist eine dunkle, gerahmte Schultafel mit braunem Holzrahmen und einem kleinen weißen Kreide-Radiergummi unten rechts. Auf der Tafel steht in weißer Schrift:
-"∫ (2x+1)³ dx"
-"⇒ = (2x+1)⁴ / 8"
-Unter der Tafel steht "Check:" neben einer Lupe mit braunem Griff. Darunter ist eine weiße Wolkenform mit dem Text "Ableitung von (2x+1)⁴ / 8". Darunter folgen zwei Zeilen mathematischer Notation, jeweils beginnend mit einem schwarzen Pfeil nach rechts:
-"⇒ = 1/8 ⋅ 4 ⋅ (2x+1)³ ⋅ 2"
-"⇒ = (2x+1)³"
-Am Ende der letzten Zeile ist ein grünes Häkchen-Symbol. Eine geschwungene, gepunktete schwarze Linie mit kleinen Kreisen und einem Pfeil führt vom Häkchen nach oben links zur oberen rechten Ecke der Schultafel.
+Oben mittig befindet sich ein großes, horizontales, abgerundetes Rechteck mit weißer Füllung und dickem schwarzem Rand. Darin steht zentriert der schwarze, fette Text in einer leicht abgerundeten Sans-Serif-Schrift: "Erweiterte Integrationsregeln anwenden".
 
-Rechts befindet sich ein hellviolettes Rechteck mit dem Titel "Form f'(x) ⋅ e^f(x)" in schwarzem, fettem Text. Darin ist ebenfalls eine dunkle, gerahmte Schultafel mit braunem Holzrahmen und einem kleinen weißen Kreide-Radiergummi unten rechts. Auf der Tafel steht in weißer Schrift:
-"f(x) = x² + 1, f'(x) = 2x"
-"∫ 2x ⋅ e^(x²+1) dx"
-"⇒ = e^(x²+1)"
-Unter der Tafel steht "Check:" neben einer Lupe mit braunem Griff. Darunter ist eine weiße Wolkenform mit dem Text "Ableitung von e^(x²+1)". Darunter folgen zwei Zeilen mathematischer Notation, jeweils beginnend mit einem schwarzen Pfeil nach rechts:
-"⇒ = e^(x²+1) ⋅ 2x"
-"⇒ = 2x ⋅ e^(x²+1)"
-Am Ende der letzten Zeile ist ein grünes Häkchen-Symbol. Eine geschwungene, gepunktete schwarze Linie mit kleinen Kreisen und einem Pfeil führt vom Häkchen nach oben rechts zur oberen linken Ecke der Schultafel.
+Direkt unterhalb des Titels sind zwei große, vertikale, abgerundete Rechtecke nebeneinander angeordnet.
 
-Zwischen dem orange-beigen und dem hellvioletten Rechteck, auf Höhe der Schultafeln, zeigt ein großer, dicker, handgezeichneter, hellblauer Pfeil mit schwarzem Umriss von links nach rechts.
+Das linke Rechteck hat eine hellorange Füllung und einen dicken schwarzen Rand. Oben steht der schwarze, fette Text "Lineare Klammerpotenz" in einer leicht abgerundeten Sans-Serif-Schrift. Darunter ist eine dunkelgraue Tafel mit einem dünnen braunen Holzrahmen abgebildet. Auf der Tafel steht in weißer Kreideschrift:
+∫ (2x+1)^3 dx
+⇒ = (2x+1)^4 / 8 + C
+Unter der Tafel befindet sich links eine Lupe mit braunem Griff und grauem Rahmen. Rechts daneben steht der fette schwarze Text "Check:". Darunter ist eine weiße, wolkenförmige Sprechblase mit dickem schwarzem Rand. In der Sprechblase steht der schwarze Text: "Ableitung von (2x+1)^4 / 8 + C".
+Darunter folgen zwei Zeilen mit mathematischen Ableitungsschritten, jeweils eingeleitet durch einen schwarzen Pfeil nach rechts:
+⇒ = 1/8 ⋅ 4 ⋅ (2x+1)^3 ⋅ 2
+⇒ = (2x+1)^3
+Rechts neben der letzten Zeile ist ein grünes Häkchen in einem weißen Kreis mit dickem schwarzem Rand. Ein geschwungener schwarzer Pfeil mit kleinen Kreisen (o o o) führt vom Häkchen nach oben links zur Tafel, um die Überprüfung zu symbolisieren.
 
-Unten mittig, leicht überlappend mit den unteren Rändern der beiden größeren Rechtecke, ist ein hellgrünes, abgerundetes Rechteck mit dem Titel "Ergebnisbox" in schwarzem, fettem Text. Darin sind zwei Zeilen Text, jede beginnend mit einem gelben Glühbirnen-Symbol mit schwarzem Umriss:
-Glühbirne "Innere Ableitung erkennen!"
-Glühbirne "Rückwärts zur passenden Stammfunktion gehen."
+Das rechte Rechteck hat eine hellviolette Füllung und einen dicken schwarzen Rand. Oben steht der schwarze, fette Text "Form f'(x) ⋅ e^(f(x))" in einer leicht abgerundeten Sans-Serif-Schrift. Darunter ist eine dunkelgraue Tafel mit einem dünnen braunen Holzrahmen abgebildet. Auf der Tafel steht in weißer Kreideschrift:
+f(x) = x^2+1, f'(x) = 2x
+∫ 2x ⋅ e^(x^2+1) dx
+⇒ = e^(x^2+1) + C
+Unter der Tafel befindet sich links eine Lupe mit braunem Griff und grauem Rahmen. Rechts daneben steht der fette schwarze Text "Check:". Darunter ist eine weiße, wolkenförmige Sprechblase mit dickem schwarzem Rand. In der Sprechblase steht der schwarze Text: "Ableitung von e^(x^2+1) + C".
+Darunter folgen zwei Zeilen mit mathematischen Ableitungsschritten, jeweils eingeleitet durch einen schwarzen Pfeil nach rechts:
+⇒ = e^(x^2+1) ⋅ 2x
+⇒ = 2x ⋅ e^(x^2+1)
+Rechts neben der letzten Zeile ist ein grünes Häkchen in einem weißen Kreis mit dickem schwarzem Rand. Ein geschwungener schwarzer Pfeil mit kleinen Kreisen (o o o) führt vom Häkchen nach oben links zur Tafel, um die Überprüfung zu symbolisieren.
 
-Alle Texte sind in einer runden, fetten, cartoonartigen Schriftart gehalten.
+Mittig unter den beiden großen Rechtecken ist ein kleineres, horizontales, abgerundetes Rechteck mit hellgrüner Füllung und dickem schwarzem Rand. Oben steht der schwarze, fette Text "Ergebnisbox" in einer leicht abgerundeten Sans-Serif-Schrift. Darin sind zwei Aufzählungspunkte. Jeder Punkt beginnt mit einer gelben Glühbirne mit weißem Glühfaden und schwarzem Rand. Die Texte der Aufzählungspunkte sind schwarz und in Sans-Serif-Schrift:
+- Innere Ableitung erkennen!
+- Rückwärts zur passenden Stammfunktion gehen.
+
+Ein großer, stilisierter, handgezeichneter Pfeil mit dickem schwarzem Umriss und hellgrauer Füllung zeigt von der rechten Seite des linken hellorangen Rechtecks zur linken Seite des rechten hellvioletten Rechtecks. Der Pfeil verläuft leicht oberhalb der "Ergebnisbox".
 ```

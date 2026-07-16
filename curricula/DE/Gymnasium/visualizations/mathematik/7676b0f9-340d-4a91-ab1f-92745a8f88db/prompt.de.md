@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,20 @@ Titel: Irrationalität von Wurzelzahlen begründen und reelle Zahlen einordnen
 Beschreibung: Die lernende Person kann das Grundprinzip eines indirekten Beweises am Beispiel der Irrationalität einer Quadratwurzel nachvollziehen, die Erweiterung von rationalen zu reellen Zahlen begründen und irrationale Zahlen fachsprachlich einordnen.
 
 Zusatzanweisung:
-Create a focused classroom cartoon infographic only about proving irrationality of sqrt(2) and classifying real numbers. Left side: indirect proof steps: Assume sqrt(2)=p/q with p,q natural, q not 0, gcd(p,q)=1. Then p^2=2q^2, so p is even. Write p=2k, then q^2=2k^2, so q is even. Contradiction: p and q would both be even, not reduced. Conclusion: sqrt(2) is irrational. Right side: number line with sqrt(2) between 1 and 2 and nested sets N subset Z subset Q subset R, with sqrt(2) in R\Q. Do not include Heron iteration, root term addition, multiplication/division rules, or variable absolute values. Keep text sparse and legible. No watermark.
+Pflichtinhalt:
+- Korrigiere die bestehende Lernillustration behutsam und erhalte den anschaulichen Cartoon-Stil sowie den korrekten Widerspruchsbeweis.
+- Der Beweis zeigt klar: Annahme `√2 = p/q` in vollständig gekürzter Form; daraus `p² = 2q²`, also `p` gerade; mit `p = 2k` folgt `q² = 2k²`, also `q` gerade; dies widerspricht der vollständig gekürzten Darstellung.
+- Zeige als Schlussfolgerung `√2 ∉ ℚ` und ordne irrationale Zahlen in `ℝ \ ℚ` ein.
+- Schreibe die Dezimalnäherung ausschließlich mit deutschem Dezimalkomma: `√2 ≈ 1,414…`.
+- Ersetze die vorhandene Schreibweise in der Lupe buchstabengetreu. In der Lupe muss sichtbar `√2 ≈ 1,414…` stehen; zwischen 1 und 414 ist ein Komma, niemals ein Punkt.
+- Alle Symbole, Brüche und Mengenzeichen müssen eindeutig und groß lesbar sein.
+
+Vermeiden:
+- Den Dezimalpunkt `1.414` oder gemischte Dezimalnotation.
+- Einen Punkt direkt nach der 1 in der Dezimalnäherung.
+- Änderungen, die den korrekten Paritätsbeweis verfälschen oder Schritte auslassen.
+- Zusätzliche Beispiele, überladene Textblöcke, abgeschnittene Wörter oder unklare Mengendiagramme.
+- Technische IDs, Dateinamen, interne Pfade, Logos, Marken, Wasserzeichen, Plattformnamen oder Schulform- und Kurslabels.
 ```
 
 ## Review-Notiz

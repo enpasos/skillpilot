@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `7d37513b-fa1a-54cc-9e2a-9279a381f0f0.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/7d37513b-fa1a-54cc-9e2a-9279a381f0f0/7d37513b-fa1a-54cc-9e2a-9279a381f0f0.jpg`
@@ -19,40 +19,32 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Transformationsargumente für Flächen und Volumina nutzen (LK)
+Titel: Transformationsargumente für Flächen und Volumina nutzen
 Beschreibung: Die lernende Person kann vektorielle Transformationsargumente auf räumliche Konfigurationen anwenden und daraus Folgerungen für Flächen- oder Volumenberechnungen begründet ableiten.
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Transformationsargumente fuer Volumen nutzen.
-- Zeige links einen Einheitswuerfel mit Volumen 1.
-- Zeige rechts den Bildkoerper als Spat mit Kantenvektoren:
-  a=(2,0,0),
-  b=(0,3,0),
-  c=(0,0,4).
-- Transformationsmatrix:
-  A=diag(2,3,4).
-- Rechnung:
-  det(A)=2*3*4=24.
-  V_Bild=|det(A)|*V_Einheitswuerfel=24*1=24.
-- Deutung:
-  Laengen werden in x-, y- und z-Richtung mit 2, 3 und 4 skaliert.
-  Das Volumen wird mit dem Betrag der Determinante multipliziert.
+
+- Erstelle eine reduzierte Infografik zur Volumenänderung durch eine lineare Transformation.
+- Zeige links einen Einheitswürfel mit `V = 1` und rechts einen Quader mit Kantenlängen `2`, `3` und `4`.
+- Zeige dazwischen exakt die Diagonalmatrix `A = diag(2, 3, 4)`.
+- Rechne gut sichtbar: `det(A) = 2 · 3 · 4 = 24` und `V_neu = |det(A)| · V_alt = 24`.
+- Verwende als Überschrift des Erklärungskastens exakt `Deutung`.
+- Ergänze dort nur: `Der Betrag der Determinante ist der Volumenfaktor.`
 
 Vermeiden:
-- Nicht die Volumenveraenderung als 2+3+4=9 angeben.
-- Nicht das Vorzeichen der Determinante als negatives Volumen deuten.
-- Nicht Flaeche und Volumen verwechseln.
-- Nicht zufaellige schiefe Kanten ohne passende Determinantenrechnung zeigen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+
+- Keine falschen Kantenlängen, kein anderes Volumen und keine zusätzlichen Matrizen.
+- Das Wort `Deutung` muss korrekt geschrieben sein; keine Varianten oder Fantasiewörter.
+- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

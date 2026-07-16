@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `2c4830e6-a8d5-48d0-9202-3b7d18a419c2.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/2c4830e6-a8d5-48d0-9202-3b7d18a419c2/2c4830e6-a8d5-48d0-9202-3b7d18a419c2.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,21 @@ Titel: Terme im Bereich rationaler Zahlen äquivalent umformen
 Beschreibung: Die lernende Person kann Terme im Bereich rationaler Zahlen mit Rechengesetzen äquivalent umformen und ihre Umformungen nachvollziehbar begründen.
 
 Zusatzanweisung:
-Verwende kurze, fachlich sichere Sek-I-Beispiele. Für Sachsituationen: eine Variable klar definieren, etwa n steht für Anzahl oder x für eine gesuchte Größe, und daraus einen passenden Term bilden. Für Termumformungen: nur einfache korrekte Äquivalenzen wie 3x+2x=5x oder 2(a+3)=2a+6; keine komplizierten Brüche, keine langen Gleichungsketten, keine technischen IDs.
+Pflichtinhalt:
+
+- Erstelle eine sehr reduzierte Infografik mit drei waagerechten, klar getrennten Karten.
+- Zeige ausschließlich diese drei Gleichungen und exakt die jeweils rechts daneben stehende Bezeichnung:
+  - `2(a + 3) = 2a + 6` — `Distributivgesetz`
+  - `3x + 2x = 5x` — `gleichartige Terme zusammenfassen`
+  - `4a - a = 3a` — `Koeffizienten zusammenfassen`
+- Ergänze oben den Merksatz: `Äquivalent bedeutet: gleicher Wert bei jeder zulässigen Einsetzung.`
+- Verwende gut lesbare große Schrift, einfache farbige Karten und viel freien Raum.
+
+Vermeiden:
+
+- Keine Würfel, Klötze, Algebra-Plättchen, Waagen oder anderen Mengenbilder; die Gleichungen und Beschriftungen allein sind ausreichend.
+- Keine weiteren Rechengesetze, keine zusätzlichen Gleichungen und keine abweichenden Variablen.
+- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

@@ -19,32 +19,32 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Stil und Präzision verbessern (LK)
+Titel: Stil und Präzision verbessern
 Beschreibung: Die lernende Person kann eine Ausarbeitung sprachlich überarbeiten, Mehrdeutigkeiten vermeiden und die Argumentation formal präzisieren.
 
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show a mathematical text revision with improved precision.
-- Before sentence: "Die Funktion wird groesser."
-- Improved sentence: "Auf `[0;4]` ist `f` streng monoton steigend."
-- Add margin notes: "Intervall genannt", "Fachbegriff praezise", "Mehrdeutigkeit entfernt".
-- Include a small rising straight-line graph as visual support.
+- Erzeuge einen klaren Vorher-Nachher-Vergleich mit dem Titel exakt `Stil und Präzision verbessern` und ohne Klammerzusatz.
+- Links steht als einziger Satz exakt `Die Funktion wird größer.`
+- Rechts steht als einziger mathematischer Satz exakt `Auf [0; 4] ist f streng monoton steigend.`
+- Nutze rechts die drei Randnotizen exakt: `Intervall genannt`, `Fachbegriff präzise`, `Mehrdeutigkeit entfernt`.
+- Ergänze rechts nur einen kleinen steigenden Geradengraphen.
+- Alle Umlaute und Satzzeichen müssen exakt, groß und gut lesbar sein.
 
 Vermeiden:
 
-- Do not use an imprecise final sentence.
-- Do not draw a falling graph next to "steigend".
-- Do not add unrelated advanced notation.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine Abkürzung oder Kennzeichnung einer Kursart, Zielgruppe oder Schulstufe im Titel oder anderswo.
+- Keine Umschrift von Umlauten, keine zusätzlichen Sätze und keine fallende Kurve.
+- Keine Logos, Wasserzeichen oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

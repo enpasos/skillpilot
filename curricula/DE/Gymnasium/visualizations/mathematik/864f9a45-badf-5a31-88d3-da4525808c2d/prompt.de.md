@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,22 +31,22 @@ Titel: Produkt- und Kettenregel an Beispielen überprüfen
 Beschreibung: Die lernende Person kann Produkt- und Kettenregel an konkreten Beispielen durch Ausmultiplizieren, alternative Ableitungswege oder numerisch-grafische Kontrollen überprüfen und die Regelstruktur erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a new scientific-educational infographic titled "Produkt- und Kettenregel überprüfen". Use two side-by-side panels, and in each panel compare the rule-based derivative with a genuinely independent expansion route.
 
-- Show two verification panels: product rule and chain rule.
-- Product rule example: `f(x)=x*e^x`, derivative `f'(x)=1*e^x + x*e^x`.
-- Add a check by alternative route or product structure: `u=x`, `v=e^x`, `u'v+uv'`.
-- Chain rule example: `g(x)=e^(2x)`, derivative `g'(x)=2e^(2x)`.
-- Add a small graph/numeric check note: "Steigung passt zum Ableitungsterm".
-- Include the rule templates `Produktregel` and `Kettenregel` as labels, not as dense formal theorem text.
+Left panel, product rule:
+f(x) = (x + 1) · x²
+Rule route: f'(x) = 1 · x² + (x + 1) · 2x = 3x² + 2x
+Check by expanding: f(x) = x³ + x² → f'(x) = 3x² + 2x
+Finish with a visible equality check between both results.
 
-Vermeiden:
+Right panel, chain rule:
+g(x) = (2x + 1)³
+Rule route: g'(x) = 3(2x + 1)² · 2 = 6(2x + 1)²
+Check by expanding: g(x) = 8x³ + 12x² + 6x + 1
+Then g'(x) = 24x² + 24x + 6 = 6(2x + 1)²
+Finish with a visible equality check between both results.
 
-- Do not write `(x*e^x)' = 1*e^x` and forget the second term.
-- Do not write `(e^(2x))' = e^(2x)` and forget the factor `2`.
-- Do not make the image a long algebra worksheet.
-- Do not introduce unrelated quotient rule content.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+Use arrows labelled "Regelweg" and "Kontrollweg durch Ausmultiplizieren". Every coefficient, exponent and equality must be exact. No graph, logos, brands, watermarks or unrelated text.
 ```
 
 ## Review-Notiz

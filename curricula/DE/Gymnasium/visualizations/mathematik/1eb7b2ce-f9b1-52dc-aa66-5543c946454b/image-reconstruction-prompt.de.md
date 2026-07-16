@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `1eb7b2ce-f9b1-52dc-aa66-5543c946454b.jpg`
 
 ## Zweck
@@ -18,22 +18,32 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Cartoon-Stil, sauber, lehrreich, Infografik-Stil. Heller blauer Hintergrund mit subtilen, hellblauen geometrischen Formen wie Punkten, Quadraten, Kreisen und Rauten.
+Ein freundliches, lehrreiches Cartoon-Bild auf weißem Hintergrund. Oben mittig steht der Titel in schwarzer, fetter, serifenloser Schrift: 'Digitale Werkzeuge zur Analyse von Funktionen nutzen'.
 
-Oben zentriert steht in fettem schwarzem Text der Titel: "Digitale Werkzeuge zur Analyse von Funktionen nutzen".
+Das Bild ist in drei horizontale Abschnitte unterteilt, die von links nach rechts durch dicke, hellblaue Pfeile verbunden sind.
 
-Die Szene zeigt drei Abschnitte von links nach rechts, verbunden durch hellblaue Pfeile.
+**Abschnitt 1 (links):**
+Unten links steht die Beschriftung in schwarzer, fetter, serifenloser Schrift: '1. Funktionseingabe & Graph erzeugen'.
+Ein lächelnder Cartoon-Junge mit braunen Haaren, hellbrauner Haut und einem grünen Langarmshirt sowie blauen Hosen ist zu sehen. Er blickt leicht nach rechts und hält in seiner linken Hand ein graues Tablet, das leicht zum Betrachter geneigt ist.
+Über dem Kopf des Jungen schwebt eine hellblaue Sprechblase mit schwarzem Umriss, die den schwarzen Text 'f(x) = x³ - 3x + 1' enthält.
+Das Tablet in seiner Hand hat einen dunklen grauen Rahmen und einen weißen Bildschirm. Auf dem Bildschirm ist ein schwarzes kartesisches Koordinatensystem mit x- und y-Achsen und Pfeilen für die positiven Richtungen sowie dem Ursprung '0' dargestellt. Unter dem Graphenbereich befindet sich ein weißes Eingabefeld mit dem schwarzen Text 'f(x) = ...'. Darunter ist ein hellblauer Button mit schwarzem Umriss und dem schwarzen Text 'Graph erstellen' platziert.
 
-**Abschnitt 1:**
-Links steht ein lächelnder Junge mit braunen Haaren, einem hellblauen Langarmshirt und weißem Kragen. Er hält ein silbernes Tablet in seiner linken Hand und zeigt mit seiner rechten Hand auf ein größeres, dunkelgraues Tablet im Hochformat. Auf dem Bildschirm des großen Tablets ist ein weißer Hintergrund mit einem schwarzen kartesischen Koordinatensystem (x- und y-Achsen mit Pfeilen) zu sehen. Unter dem Bildschirm befindet sich ein hellblauer, abgerundeter Knopf mit der schwarzen Aufschrift "Graph erstellen". Eine weiße Sprechblase kommt vom großen Tablet und enthält den schwarzen Text "f(x) = x³ - 3x + 1". Eine kleinere weiße Sprechblase kommt von der Hand des Jungen und enthält den schwarzen Text "f(x) = ...". Unter diesem Abschnitt steht in fettem schwarzem Text: "1. Funktionseingabe & Graph erzeugen".
+**Abschnitt 2 (Mitte):**
+Unten mittig steht die Beschriftung in schwarzer, fetter, serifenloser Schrift: '2. Automatische Analyse (Nullstellen & Extremstellen)'.
+Ein dunkles graues Tablet mit einem schwarzen Rahmen und einem weißen Bildschirm ist zentral dargestellt. Auf dem Bildschirm ist ein schwarzes kartesisches Koordinatensystem mit x- und y-Achsen, Pfeilen und dem Ursprung '0' zu sehen. Die x-Achse ist mit 'x' beschriftet und zeigt Teilstriche bei -1, 0, 1 sowie die Werte -1,88, 0,35, 1,53. Die y-Achse ist mit 'y' beschriftet und zeigt einen Teilstrich bei 3.
+Eine schwarze, geschwungene Kurve, die eine kubische Funktion darstellt, ist auf dem Koordinatensystem gezeichnet.
+Ein grüner Punkt markiert den Hochpunkt der Kurve bei ungefähr x=-1, y=3. Darüber steht in grüner Schrift: 'Hochpunkt (H)' und '(-1|3)'.
+Ein violetter Punkt markiert den Tiefpunkt der Kurve bei ungefähr x=1, y=-1. Darunter steht in violetter Schrift: 'Tiefpunkt (T)' und '(1|-1)'.
+Drei rote Punkte markieren die Nullstellen der Kurve auf der x-Achse. Links unterhalb der x-Achse steht in roter Schrift: 'Nullstellen', gefolgt von 'x₁ ≈ -1,88', 'x₂ ≈ 0,35', 'x₃ ≈ 1,53'. Diese Werte entsprechen den x-Koordinaten der roten Punkte.
+Oben rechts auf dem Bildschirm, leicht überlappend, ist eine Lupe mit einem grauen Rahmen, einem blauen Zahnradsymbol im Inneren und einem braunen Griff abgebildet.
 
-Ein hellblauer Pfeil zeigt nach rechts.
-
-**Abschnitt 2:**
-In der Mitte befindet sich ein dunkelgraues Tablet im Hochformat. Der Bildschirm zeigt einen weißen Hintergrund mit einem schwarzen kartesischen Koordinatensystem. Ein blauer Graph einer kubischen Funktion "y = x³ - 3x + 1" ist eingezeichnet. Oben auf dem Bildschirm steht in blauem Text "y = x³ - 3x + 1". Ein grüner Kreis markiert den Hochpunkt (lokales Maximum) bei (-1, 3), mit einer grünen Linie, die zu dem grünen Text "Hochpunkt (Max)" und darunter "(-1, 3)" führt. Ein violetter Kreis markiert den Tiefpunkt (lokales Minimum) bei (1, -1), mit einer violetten Linie, die zu dem violetten Text "Tiefpunkt (Min)" und darunter "(1, -1)" führt. Drei rote Kreise markieren die Nullstellen (x-Achsenabschnitte). Eine rote Linie führt vom linken roten Kreis zu dem roten Text "Nullstellen" und darunter: "x₁ ≈ -1.88", "x₂ ≈ 0.35", "x₃ ≈ 1.53". Eine Lupe mit einem dunkelgrauen Griff und einem hellblauen Rahmen, die ein Zahnradsymbol in ihrem Glas zeigt, ist über dem oberen rechten Teil des Tablet-Bildschirms positioniert. Unter diesem Abschnitt steht in fettem schwarzem Text: "2. Automatische Analyse (Nullstellen & Extremstellen)".
-
-Ein hellblauer Pfeil zeigt nach rechts.
-
-**Abschnitt 3:**
-Rechts sitzt ein nachdenklicher oder leicht besorgter Junge mit braunen Haaren, einem hellblauen Langarmshirt und weißem Kragen. Seine rechte Hand ist am Kinn. In seiner linken Hand hält er ein weißes Blatt Papier mit einem handgezeichneten blauen Graphen (ähnlich der kubischen Funktion) und einen gelben Bleistift. Hinter ihm steht ein dunkelgraues Tablet im Hochformat. Der Bildschirm zeigt einen weißen Hintergrund mit einem schwarzen kartesischen Koordinatensystem und einem blauen Graphen der Funktion "y = x³ - 3x + 1". Oben auf dem Bildschirm steht in blauem Text "y = x³ - 3x + 1". Über dem Kopf des Jungen schwebt eine große weiße Gedankenblase. Darin befindet sich links ein kleines dunkelgraues Tablet mit einem weißen Bildschirm, der den Text anzeigt: "x₁ ≈ -1.88", "HP(-1,3)", "x₂ ≈ -1.3", "x₃ ≈ 1.53". Rechts davon ist ein hellblaues "<"-Symbol. Daneben ist ein handgezeichneter blauer Graph zu sehen. Unter dem handgezeichneten Graphen steht in schwarzem Text "Plausibel?". Rechts von "Plausibel?" ist ein grünes Häkchen-Symbol. Links vom kleinen Tablet in der Gedankenblase ist ein schwarzes Fragezeichen-Symbol. Unter dem Tablet und dem Jungen steht in schwarzem Text: "Plausibel? (Vergleich mit Skizze/Vorwissen)". Unter diesem Abschnitt steht in fettem schwarzem Text: "3. Kritische Prüfung der Ergebnisse".
+**Abschnitt 3 (rechts):**
+Unten rechts steht die Beschriftung in schwarzer, fetter, serifenloser Schrift: '3. Plausibel? (Vergleich mit Skizze/Vorwissen)'.
+Ein lächelnder Cartoon-Junge mit braunen Haaren, hellbrauner Haut und einem grünen Langarmshirt sowie blauen Hosen ist zu sehen. Er blickt direkt zum Betrachter.
+In seiner linken Hand hält er ein dunkles graues Tablet, das leicht zum Betrachter geneigt ist. Der Bildschirm zeigt ein schwarzes kartesisches Koordinatensystem mit x- und y-Achsen und eine schwarze, geschwungene Kurve, ähnlich der in Abschnitt 2, jedoch ohne spezifische Beschriftungen oder Punkte.
+In seiner rechten Hand hält er ein weißes Blatt Papier, das ebenfalls leicht zum Betrachter geneigt ist. Auf dem Papier ist eine handgezeichnete schwarze Skizze derselben Funktion mit x- und y-Achsen zu sehen.
+Über dem Kopf des Jungen schwebt eine schwarze Gedankenblase, die drei kleine Bilder nebeneinander enthält:
+Links in der Gedankenblase ist ein kleines dunkles graues Tablet mit einem schwarzen Graphen (x- und y-Achsen, Kurve) zu sehen, daneben ein grüner Haken.
+In der Mitte der Gedankenblase ist ein kleines dunkles graues Tablet mit einem schwarzen Graphen (x- und y-Achsen, Kurve und drei rote Punkte auf der x-Achse) zu sehen. Darunter steht der schwarze Text 'Plausibel?'.
+Rechts in der Gedankenblase ist ein kleines weißes Blatt Papier mit einer handgezeichneten schwarzen Graphenskizze (x- und y-Achsen, Kurve) zu sehen, daneben ein grüner Haken.
 ```

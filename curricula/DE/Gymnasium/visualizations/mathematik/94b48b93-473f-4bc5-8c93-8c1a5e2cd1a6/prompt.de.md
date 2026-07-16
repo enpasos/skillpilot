@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,16 +31,25 @@ Titel: Vektoren als Orts- und Verschiebungsvektoren deuten
 Beschreibung: Die lernende Person kann Vektoren in Tupeldarstellung als Orts- oder Verschiebungsvektoren deuten und ihre geometrische Bedeutung in einfachen Situationen erklären.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Use exactly two panels in a 2D coordinate plane.
-- Left panel: "Ortsvektor". Draw axes with unit ticks. Mark the point P(3|2) exactly at x = 3 and y = 2. Draw the arrow from O(0|0) to P(3|2). Show exactly: p = (3, 2).
-- Right panel: "Verschiebungsvektor". Draw two green arrows with the same displacement: A(1|1) to B(4|3), and C(5|1) to D(8|3). Mark the horizontal change as +3 and the vertical change as +2.
-- Main contrast: Ortsvektor starts at the origin; Verschiebungsvektor may start anywhere but keeps direction and length.
+Pflichtinhalt:
 
-Avoid:
-- Do not place P(3|2) at x = 4 or y = 3.
-- Do not use a 3D coordinate system for this goal.
-- Do not show extra formulas beyond p = (3, 2) and v = (3, 2).
+- Erstelle eine klare Infografik mit genau zwei getrennten zweidimensionalen Koordinatensystemen und gut sichtbaren Einheitsgittern.
+- Links unter der Überschrift `Ortsvektor`:
+  - Markiere `O(0|0)` und `P(3|2)` exakt.
+  - Zeichne genau einen Pfeil von O nach P.
+  - Beschrifte ihn mit `p = (3, 2)`.
+- Rechts unter der Überschrift `Verschiebungsvektor`:
+  - Zeichne genau zwei parallele, gleich lange Pfeile.
+  - Der erste verläuft exakt von `A(1|1)` nach `B(4|3)`.
+  - Der zweite verläuft exakt von `C(2|3)` nach `D(5|5)`.
+  - Beschrifte beide gemeinsam mit `v = (3, 2)` und zeige einmal `+3` waagerecht sowie `+2` senkrecht.
+- Ergänze kurz: `Ortsvektor: Start im Ursprung.` und `Verschiebungsvektor: gleicher Weg, freier Startpunkt.`
+
+Vermeiden:
+
+- Keine abweichenden Punktkoordinaten und keine Pfeile mit anderer Länge oder Richtung.
+- Kein dreidimensionales Koordinatensystem, keine zusätzlichen Vektoren und keine überlagernden Sprechblasen.
+- Keine Logos, Wasserzeichen oder Zielgruppenhinweise.
 ```
 
 ## Review-Notiz

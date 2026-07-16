@@ -725,7 +725,9 @@ Geprueft wird:
 - Jedes Ziel im Scope muss einen primaeren `goal-visualization`-Link mit `resourceType: "image"` haben.
 - Fuer jeden aktiven Link muss ein QA-Datensatz mit passender `goalId` und `imageUrl` existieren.
 - Der `assetSha256` im QA-Datensatz muss zum aktuellen Public Asset passen. Dadurch werden alte Freigaben nach einem Bildwechsel automatisch stale.
+- Eine AI-Freigabe ist explizit und bildgebunden: `aiApproved: "yes"` gilt nur, wenn `aiApprovedAssetSha256` exakt dem aktuellen `assetSha256` entspricht. `aiReviewedAt`, `aiReviewer` und `aiNotes` dokumentieren die Prüfung. Ein Bildwechsel setzt diese Evidenz zurück.
 - Die Human-Freigabe ist das Release-Gate: `humanApproved: "yes"` und kein offenes `humanIssueIdentified: "yes"`.
+- `Approved AI` ist zusätzliche technische und fachliche Prüfevidenz, ersetzt aber niemals die Human-Freigabe als `M7`- oder Release-Gate.
 - Eine aktuelle Human-Freigabe ueberstimmt aeltere ChatGPT-Triagewerte. Die Felder `umlautsCorrectChatGpt` und `contentApprovedChatGpt` bleiben als Triage- und Arbeitsmetriken sichtbar, sind aber nach Human-Freigabe nicht das harte Release-Gate.
 
 Metriken:
@@ -736,6 +738,7 @@ Metriken:
 - `qaRecords`: Datensaetze im Fach-QA-Ledger.
 - `missingRecords`, `staleRecords`, `duplicateRecords`, `missingAssets`: technische Ledger-/Asset-Schulden.
 - `chatGptReady`, `chatGptOpen`: ChatGPT-Triagezustand.
+- `aiApproved`, `aiNotApproved`: explizite, zum aktuellen Asset-Hash passende AI-Freigabe beziehungsweise noch fehlende oder stale AI-Freigabe.
 - `humanApproved`, `humanNotApproved`, `humanIssues`: menschliche Freigabe und offene menschliche Fehlerhinweise.
 
 Status:

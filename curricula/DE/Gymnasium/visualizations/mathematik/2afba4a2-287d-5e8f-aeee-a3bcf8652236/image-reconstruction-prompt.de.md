@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `2afba4a2-287d-5e8f-aeee-a3bcf8652236.jpg`
 
 ## Zweck
@@ -18,21 +18,15 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Diagramm auf hellblauem Hintergrund, das das Konzept des Integrals als Bestand und Flächeninhalt erklärt.
+Ein klares, lehrreiches Vektorgrafik-Diagramm auf weißem Hintergrund. Oben mittig steht der Titel in fetter schwarzer Schrift: 'Integral als Bestand und Flächeninhalt'.
 
-Oben mittig steht der Titel in fetter, dunkelblauer Schrift: "Integral als Bestand und Flächeninhalt verstehen".
+Darunter sind zwei Hauptbereiche nebeneinander angeordnet.
 
-Darunter, horizontal ausgerichtet, befinden sich zwei Hauptbereiche, verbunden durch einen hellblauen Pfeil mit schwarzer Umrandung, der nach rechts zeigt.
+Der linke Bereich ist mit dem Untertitel 'Änderungsrate & Fläche' in fetter schwarzer Schrift überschrieben. Darunter befindet sich ein Koordinatensystem. Die horizontale Achse ist mit einem Pfeil nach rechts versehen und mit 'Zeit t (Minuten)' beschriftet. Die vertikale Achse ist mit einem Pfeil nach oben versehen und mit 'Rate r(t) in L/min' beschriftet. Beide Achsen beginnen bei 0. Auf der horizontalen Achse sind Markierungen und Zahlen bei 0, 1, 2, 3. Auf der vertikalen Achse sind Markierungen und Zahlen bei 0, 1, 2, 3. Eine horizontale rote Linie verläuft von den Koordinaten (0,2) bis (3,2). Oberhalb und leicht rechts dieser Linie steht in roter Schrift 'r(t) = 2'. Der Bereich unter dieser roten Linie, begrenzt durch die x-Achse und die vertikale Linie bei x=3, ist orange schattiert. Eine gestrichelte schwarze vertikale Linie verbindet den Punkt (3,0) mit dem Punkt (3,2). Innerhalb des orange schattierten Bereichs steht in schwarzer Schrift 'Flächeninhalt'. Unterhalb dieses Diagramms steht die mathematische Formel in schwarzer Schrift: '∫₀³ 2 dt = 6 Liter'.
 
-Der linke Bereich beginnt mit einem abgerundeten Rechteck mit schwarzem Rand und weißer Füllung, das den Text "Änderungsrate & Fläche" in fetter, dunkelblauer Schrift enthält. Darunter ist ein Koordinatensystem dargestellt. Die horizontale Achse ist mit "t" am rechten Ende und "tim (minuten)" darunter beschriftet. Die vertikale Achse ist mit "r(t)" am oberen Ende und "rate (Liter/min)" vertikal daneben beschriftet. Beide Achsen beginnen bei 0. Die horizontale Achse hat Markierungen bei 0, 1, 2, 3. Die vertikale Achse hat Markierungen bei 0, 1, 2. Eine horizontale rote Linie verläuft von (0,2) bis (3,2). Oberhalb dieser Linie, leicht rechts versetzt, steht in roter Schrift "r(t) = 2". Der Bereich unter dieser roten Linie, von x=0 bis x=3, ist hellorange gefüllt. In der Mitte dieses orangefarbenen Rechtecks steht in dunkelblauer Schrift "Flächeninhalt". Ein geschwungener schwarzer Pfeil zeigt von diesem Text nach oben zur roten Linie. Unterhalb des Koordinatensystems steht die mathematische Gleichung in dunkelblauer Schrift: "∫₀³ 2 dt = [2t]₀³ = 2*3 - 2*0 = 6 Liter".
-
-Der rechte Bereich beginnt mit einem abgerundeten Rechteck mit schwarzem Rand und weißer Füllung, das den Text "Bestandsrekonstruktion im Tank-Kontext" in fetter, dunkelblauer Schrift enthält. Darunter sind drei transparente zylindrische Glasbehälter horizontal angeordnet und durch hellblaue Pfeile mit schwarzer Umrandung verbunden.
-Der erste Behälter links ist mit "Anfangsbestand (t=0)" darüber beschriftet und enthält eine geringe Menge hellblauer Flüssigkeit am Boden. Darunter steht "B(0) = 5 Liter" in dunkelblauer Schrift.
-Der mittlere Behälter enthält etwa die Hälfte seiner Kapazität an hellblauer Flüssigkeit. Ein silberner Wasserhahn mit blauem Griff ist darüber positioniert, aus dem ein Strom hellblauen Wassers in den Behälter fließt. Über dem Wasserhahn steht "Zuflussrate r(t) = 2 L/min (0 ≤ t ≤ 3)" in dunkelblauer Schrift. Der Wasserstrom ist mit zwei kleinen, geschwungenen Pfeilen versehen, die die Fließrichtung anzeigen.
-Der dritte Behälter rechts ist mit "Endbestand (t=3)" darüber beschriftet und enthält eine größere Menge hellblauer Flüssigkeit, die fast bis zum Rand reicht. Darunter steht "B(3) = 11 Liter" in dunkelblauer Schrift.
-Unterhalb der Behälter verbindet eine geschweifte Klammer den ersten und dritten Behälter. Darunter steht "Zuwachs des Bestands = 6 Liter" in dunkelblauer Schrift. Darunter folgt die Gleichung in dunkelblauer Schrift: "B(3) = B(0) + ∫₀³ r(t) dt = 5 + 6 = 11 Liter".
-
-Im unteren linken Bereich befindet sich eine weiße, wolkenförmige Denkblase mit schwarzem Rand, die den Text "Integral als orientierter Flächeninhalt" in fetter, dunkelblauer Schrift enthält. Ein kleiner Kreis verbindet die Denkblase mit der Integralberechnung im linken oberen Bereich.
-
-Im unteren rechten Bereich ist eine abgerundete Rechteckbox mit schwarzem Rand und weißer Füllung, beschriftet mit "Ergebnisbox:" in dunkelblauer Schrift oben links. Innerhalb der Box sind von links nach rechts folgende Elemente: ein kleines Symbol eines transparenten zylindrischen Glasbehälters mit hellblauer Flüssigkeit am Boden; der Text "Integral = Zuwachs des Bestands" in dunkelblauer Schrift; ein kleines Symbol eines Koordinatensystems mit einer horizontalen roten Linie und einer darunter liegenden, diagonal schraffierten orangefarbenen Fläche; der Text "= Flächeninhalt unter der Rate" in dunkelblauer Schrift; und ein blauer Kreis mit einem weißen Pluszeichen darin, umrandet von Schwarz.
+Der rechte Bereich ist mit dem Untertitel 'Bestandsrekonstruktion im Tank-Kontext' in fetter schwarzer Schrift überschrieben. Darüber sind drei Zeilen Text in schwarzer Schrift angeordnet: 'Zuflussrate', 'r(t) = 2 L/min', '(0 ≤ t ≤ 3 Minuten)'. Darunter sind drei zylindrische Glasbehälter (Tanks) horizontal nebeneinander dargestellt, jeweils mit schwarzer Umrandung.
+Der erste Tank links enthält hellblaues Wasser, das etwa ein Drittel des Behälters füllt. Darunter steht in schwarzer Schrift: 'Anfangsbestand (t=0)' und 'B(0) = 5 Liter'. Ein hellblauer Pfeil zeigt von diesem Tank nach rechts zum mittleren Tank.
+Der mittlere Tank enthält ebenfalls hellblaues Wasser, das etwa ein Drittel des Behälters füllt. Von oben fließt ein hellblauer Wasserstrahl aus einem grauen Wasserhahn mit Griff in den Tank, wobei kleine Wellen auf der Wasseroberfläche sichtbar sind. Unterhalb dieses Tanks befindet sich eine schwarze geschweifte Klammer, die den Text 'Zuwachs des Bestands = 6 Liter' in schwarzer Schrift umschließt. Ein hellblauer Pfeil zeigt von diesem Tank nach rechts zum dritten Tank.
+Der dritte Tank rechts enthält hellblaues Wasser, das etwa zwei Drittel des Behälters füllt. Darunter steht in schwarzer Schrift: 'Endbestand (t=3)' und 'B(3) = 11 Liter'.
+Unterhalb der Tank-Diagramme steht die mathematische Formel in schwarzer Schrift: 'B(3) = B(0) + ∫₀³ r(t) dt = 5 + 6 = 11 Liter'.
 ```

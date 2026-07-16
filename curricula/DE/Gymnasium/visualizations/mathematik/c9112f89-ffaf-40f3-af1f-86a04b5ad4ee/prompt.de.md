@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `c9112f89-ffaf-40f3-af1f-86a04b5ad4ee.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/c9112f89-ffaf-40f3-af1f-86a04b5ad4ee/c9112f89-ffaf-40f3-af1f-86a04b5ad4ee.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,30 @@ Titel: Variablen in Termen, Gleichungen und Formeln verwenden und deuten
 Beschreibung: Die lernende Person kann Variablen in Termen, Gleichungen und Formeln auch als Parameter verwenden, ihre Bedeutung fachsprachlich erklären und passenden Situationen zuordnen.
 
 Zusatzanweisung:
-Erzeuge genau drei schlichte Karten ohne Waage und ohne gezählte Objektstapel. Karte 1: Term 2n+5, darunter n = Anzahl Tickets, 2 = Preis pro Ticket, 5 = Grundgebühr. Karte 2: Gleichung 2x+3=9, darunter x = unbekannte Zahl, Gleichheitszeichen bedeutet beide Seiten gleich groß. Karte 3: Formel A=a·h, darunter A = Fläche, a = Breite, h = Höhe. Keine Einheiten oder Gegenstände direkt in algebraischen Termen, keine langen Texte, keine technischen IDs.
+Pflichtinhalt:
+
+- Erstelle eine sehr reduzierte Infografik mit genau drei gleich großen Textkarten und ohne Bildsymbole.
+- Karte 1 trägt die Überschrift `Term` und zeigt exakt:
+  - `2n + 5`
+  - `n = Anzahl Tickets`
+  - `2 = Preis pro Ticket`
+  - `5 = Grundgebühr`
+- Karte 2 trägt die Überschrift `Gleichung` und zeigt exakt:
+  - `2x + 3 = 9`
+  - `x = unbekannte Zahl`
+  - `Links und rechts steht derselbe Wert.`
+- Karte 3 trägt die Überschrift `Formel` und zeigt exakt:
+  - `A = a · h`
+  - `A = Fläche`
+  - `a = Breite`
+  - `h = Höhe`
+- Nutze große, gut lesbare Schrift und ruhige farbige Karten.
+
+Vermeiden:
+
+- Keine Icons, Piktogramme, Figuren, Gegenstände, Schilder, Ladesymbole oder dekorativen Buchstabenfolgen.
+- Keine weiteren Formeln, keine Einheiten und keine zusätzlichen Textzeilen.
+- Keine Logos, Wasserzeichen oder Zielgruppenhinweise.
 ```
 
 ## Review-Notiz

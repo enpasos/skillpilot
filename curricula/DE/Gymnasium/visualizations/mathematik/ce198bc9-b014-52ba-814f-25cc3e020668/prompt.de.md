@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `ce198bc9-b014-52ba-814f-25cc3e020668.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,30 +31,9 @@ Titel: Einfache inverse Matrizen bestimmen
 Beschreibung: Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Inverse einer einfachen 2x2-Matrix bestimmen und pruefen.
-- Verwende exakt:
-  A = [ [2, 1],
-        [1, 1] ].
-- Zeige den Determinantencheck:
-  det(A) = 2*1 - 1*1 = 1, also ist A invertierbar.
-- Verwende exakt:
-  A^-1 = [ [1, -1],
-           [-1, 2] ].
-- Zeige die Probe:
-  A*A^-1 =
-  [ [2*1 + 1*(-1), 2*(-1) + 1*2],
-    [1*1 + 1*(-1), 1*(-1) + 1*2] ]
-  = [ [1, 0],
-      [0, 1] ].
-- Deutung:
-  Eine Matrix und ihre Inverse ergeben bei der Multiplikation die Einheitsmatrix.
+Correct the visible German explanatory sentence and keep all matrix calculations exact. Use A = [[2,1],[1,1]], det(A)=1, A⁻¹ = [[1,−1],[−1,2]], and verify A · A⁻¹ = [[1,0],[0,1]]. The explanatory sentence must read exactly: "Matrix und Inverse ergeben multipliziert die Einheitsmatrix." Prefer the clearer heading "Inverse bestimmen und prüfen". Do not duplicate words. No logos, watermarks, or course labels.
 
-Vermeiden:
-- Die Vorzeichen in A^-1 nicht vertauschen.
-- Nicht det(A)=0 schreiben.
-- Nicht A*A^-1=[0,1;1,0] oder eine andere Matrix als die Einheitsmatrix angeben.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Targeted text correction: delete the explanatory speech bubble completely. Do not render that sentence anywhere. Retain only the heading and the exact matrix equations; this avoids any duplicated word while preserving the full mathematical explanation.
 ```
 
 ## Review-Notiz
