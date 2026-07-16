@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/4285d84a-2c9a-4d51-8250-8bed4daf2d2e/4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,30 +31,7 @@ Titel: Ionen als Ladungsträger erklären
 Beschreibung: Die lernende Person kann Ionenbildung beschreiben, Kationen und Anionen unterscheiden und ihre Rolle als Ladungsträger in Lösungen fachlich erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Ionen tragen Ladung`.
-- Show sodium chloride dissolving in water:
-  - left: `NaCl-Kristall` with alternating `Na+` and `Cl-`.
-  - middle: separated hydrated `Na+` and `Cl-` in water.
-  - right: two electrodes connected to a small battery.
-- In the right panel, show ion movement only:
-  - `Na+` arrows point to the `Minuspol (-)`.
-  - `Cl-` arrows point to the `Pluspol (+)`.
-- Add labels:
-  - `Kation: positiv`
-  - `Anion: negativ`
-  - `Strom in der Loesung: Ionenbewegung`
-- Water molecules may be simplified but must be bent if drawn.
-
-Vermeiden:
-
-- Do not draw electrons moving through the solution.
-- Do not reverse the ion movement directions.
-- Do not show neutral NaCl molecules floating as pairs.
-- Do not let the electrodes touch.
-- Do not include gas bubbles or electrode reactions in this image.
+Korrigiere ausschließlich Sprache und Klarheit der vorhandenen Teilchenvisualisierung, ohne die korrekte Ionenbewegung zu verändern. Zeige Na⁺ als Kation auf dem Weg zum Minuspol und Cl⁻ als Anion auf dem Weg zum Pluspol. Die rechte Überschrift muss exakt „Strom in der Lösung“ lauten, mit kleingeschriebenem „in“ und echtem Umlaut. Beschrifte außerdem korrekt „Kation“, „Anion“, „Minuspol“ und „Pluspol“. Keine Ersatzschreibweisen mit oe. Keine Logos, keine Wasserzeichen, keine technischen Kennungen.
 ```
 
 ## Review-Notiz

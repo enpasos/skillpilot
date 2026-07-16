@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `a530ee7d-1002-5f02-ae05-a9d46410ac78.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/a530ee7d-1002-5f02-ae05-a9d46410ac78/a530ee7d-1002-5f02-ae05-a9d46410ac78.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,7 @@ Titel: Energieumsatz mit Bindungsänderungen erklären
 Beschreibung: Die lernende Person kann Energieänderungen bei chemischen Reaktionen qualitativ mit dem Spalten und Bilden chemischer Bindungen erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Bindungen und Energie`.
-- Use the simple reaction `H2 + Cl2 -> 2 HCl`.
-- Show the left side:
-  - `H-H` bond and `Cl-Cl` bond being split.
-  - label `Bindungen spalten: Energie hinein`.
-- Show the right side:
-  - two `H-Cl` bonds forming.
-  - label `Bindungen bilden: Energie nach aussen`.
-- Include a central balance or summary card:
-  - `Bilanz entscheidet: exotherm oder endotherm`.
-- Use arrows only for the two energy directions: into bond breaking, out from bond forming.
-
-Vermeiden:
-
-- Do not show bond breaking as releasing energy.
-- Do not show bond forming as requiring energy.
-- Do not use unbalanced equations.
-- Do not add unrelated reactions or exact bond-energy numbers.
+Rekonstruiere das Bild als drei streng getrennte, von links nach rechts gelesene Teilchenfelder. Feld 1 „Ausgangsstoffe“ enthält exakt ein H–H-Molekül und exakt ein Cl–Cl-Molekül, sonst keine Atome. Pfeil 1 heißt „Bindungen spalten: Energie hinein“. Feld 2 „freie Atome“ enthält exakt zwei einzelne H-Atome und exakt zwei einzelne Cl-Atome; zwischen diesen vier Atomen darf keine Bindungslinie stehen. Pfeil 2 heißt „Bindungen bilden: Energie nach außen“. Feld 3 „Produkte“ enthält exakt zwei H–Cl-Moleküle, sonst nichts. Darunter steht exakt „H₂ + Cl₂ → 2 HCl“. Zähle vor Ausgabe: auf jeder Stufe insgesamt zwei H- und zwei Cl-Atome. Entferne alle zusätzlichen, schwebenden oder bereits vorzeitig gebundenen Teilchen.
 ```
 
 ## Review-Notiz

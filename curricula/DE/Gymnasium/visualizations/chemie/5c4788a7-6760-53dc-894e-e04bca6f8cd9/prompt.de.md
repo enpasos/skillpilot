@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `5c4788a7-6760-53dc-894e-e04bca6f8cd9.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/5c4788a7-6760-53dc-894e-e04bca6f8cd9/5c4788a7-6760-53dc-894e-e04bca6f8cd9.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,7 @@ Titel: Gasverhalten mit dem kinetischen Teilchenmodell deuten
 Beschreibung: Die lernende Person kann Druck, Temperatur und Volumen von Gasen mit einem kinetischen Teilchenmodell qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Gasverhalten im Teilchenmodell`.
-- Show one closed gas container with many separated particles and short motion arrows.
-- Show three qualitative mini-panels with clear labels:
-  1. `Druck p`: particles collide with the wall; wall-collision marks show pressure.
-  2. `Temperatur T`: warmer gas has longer motion arrows, labelled `schneller im Mittel`.
-  3. `Volumen V`: smaller container at same particle count has more frequent wall collisions.
-- Use only qualitative statements; no numerical gas law calculation.
-- Keep particles far apart compared with liquids or solids.
-
-Vermeiden:
-
-- Do not show particles expanding in size when heated.
-- Do not show particles stuck together like a liquid.
-- Do not write `p · V = T` or any incomplete gas-law formula.
-- Do not draw attractive forces as the main reason for gas pressure.
-- Do not add arrows between panels unless the source and target are clearly labelled.
+Edit the supplied educational infographic while preserving its clear landscape layout and friendly flat-cartoon style. Completely replace the two side-by-side mini-containers in the “Volumen V” panel; do not keep that faulty comparison. Instead show one sealed transparent syringe or piston cylinder containing gas particles. A large inward arrow moves the piston and visibly reduces the available volume while the system stays closed. Add the exact labels “geschlossen: n konstant” and “V kleiner → Wandstöße häufiger → p größer”. Because only one closed system is shown, there must be no before/after particle-count mismatch. Keep the pressure panel as wall impacts and the temperature panel as higher mean particle speed. Use correct German spelling and concise labels. Do not add unrelated decoration.
 ```
 
 ## Review-Notiz

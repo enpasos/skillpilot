@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `fd309753-4d48-5570-a4ec-09dfeb20ff9c.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/fd309753-4d48-5570-a4ec-09dfeb20ff9c/fd309753-4d48-5570-a4ec-09dfeb20ff9c.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,7 @@ Titel: Saure und basische Lösungen auf Teilchenebene deuten
 Beschreibung: Die lernende Person kann saure und basische Lösungen auf der Teilchenebene durch das Vorhandensein von Oxonium- bzw. Hydroxid-Ionen charakterisieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Saeure und Base als Teilchen`.
-- Show two separated beaker panels:
-  1. `saure Loesung`: many water molecules plus highlighted `H3O+` ions and `Cl-` spectator ions. Show one small proton-transfer inset: `HCl + H2O -> H3O+ + Cl-`.
-  2. `basische Loesung`: water molecules plus highlighted `OH-` ions and `Na+` spectator ions. Label the key particle `OH-`.
-- Draw `H3O+` as oxygen with three hydrogens and a plus sign; draw `OH-` as oxygen-hydrogen with a minus sign.
-- If arrows appear, use only one arrow from `HCl` to `H2O` in the inset to indicate proton transfer, and the equation arrow left-to-right.
-- Visible learner text must be limited to title, panel labels, ion labels, and the one short equation.
-
-Vermeiden:
-
-- Do not label free `H+` as the main particle in water; use `H3O+`.
-- Do not show acid and base neutralizing in this image.
-- Do not mix up `H3O+` and `OH-` between panels.
-- Do not draw random plus/minus charges on water molecules.
+Letzter Präzisionsversuch: Entferne alle bisherigen Ionen und Teilchen vollständig und zeichne neu. Linkes Becherglas: genau zwei rote Kreise „H₃O⁺“ und genau zwei grüne Kreise „Cl⁻“, insgesamt vier geladene Kreise, keine weiteren Kreise oder Moleküle. Rechtes Becherglas: genau zwei violette Kreise „Na⁺“ und genau zwei blaue Kreise „OH⁻“, insgesamt vier geladene Kreise, keine weiteren Kreise oder Moleküle. Unter jedem Becherglas steht „2 positive Ionen = 2 negative Ionen“. Verwende vier große, weit voneinander entfernte Symbole pro Becherglas, damit man sie sofort zählen kann. Säure/saure Lösung/basische Lösung korrekt mit Umlauten. Keine Wasserteilchen, keine Dekoration im Flüssigkeitsraum.
 ```
 
 ## Review-Notiz

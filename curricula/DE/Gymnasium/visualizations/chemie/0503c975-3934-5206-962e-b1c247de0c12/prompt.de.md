@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `0503c975-3934-5206-962e-b1c247de0c12.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/0503c975-3934-5206-962e-b1c247de0c12/0503c975-3934-5206-962e-b1c247de0c12.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,30 +31,7 @@ Titel: Fossilen CO2-Anstieg mit dem Kohlenstoffkreislauf begründen
 Beschreibung: Die lernende Person kann den fossilen CO2-Anstieg mit dem Kreislauf von Kohlenstoffatomen und der Nutzung fossiler Brennstoffe fachlich begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Fossiler CO2-Anstieg`.
-- Draw exactly four labeled carbon stores:
-  - `Atmosphaere: CO2`
-  - `Pflanzen und Tiere`
-  - `Boden`
-  - `Fossiler Kohlenstoff`
-- Draw exactly four main arrows and no other material-flow arrows:
-  - green arrow `Photosynthese`: from `Atmosphaere: CO2` down to `Pflanzen und Tiere`.
-  - red arrow `Atmung und Zersetzung`: from `Pflanzen und Tiere` up to `Atmosphaere: CO2`.
-  - brown arrow `Millionen Jahre`: from `Boden` down to `Fossiler Kohlenstoff`.
-  - thick red arrow `Verbrennung`: from `Fossiler Kohlenstoff` up to `Atmosphaere: CO2`.
-- Put small `C` markers on the arrows to show that carbon atoms move between stores.
-- Add one small visual cue near the atmosphere: `zusaetzlicher Zufluss`.
-
-Vermeiden:
-
-- Do not draw any arrow from the atmosphere into soil or fossil carbon.
-- Do not draw duplicate respiration arrows or ambiguous curved arrows.
-- Do not draw arrows without a clear source and target.
-- Do not imply that carbon atoms are created, destroyed, or changed into oxygen.
-- Do not add numeric ppm values, ozone holes, or unrelated climate mechanisms.
+Korrigiere das Referenzbild mit minimalen Änderungen. Entferne aus dem gesamten Bereich außerhalb der Speicher alle einzelnen runden „C“-Marker. Insbesondere dürfen auf dem Photosynthesepfeil, neben „zusätzlicher Zufluss“, auf den roten Rückpfeilen und in der Atmosphäre keine isolierten C-Kreise stehen. In der Atmosphäre und auf dem eintretenden Verbrennungsfluss dürfen nur vollständige CO₂-Moleküle erscheinen. Einzelne C-Marker sind ausschließlich innerhalb der vier klar abgegrenzten Speicher „Pflanzen und Tiere“, „Boden“ und „Fossiler Kohlenstoff“ zulässig. Behalte alle korrekten deutschen Beschriftungen mit Umlauten und die korrekten Pfeilrichtungen bei. Der zusätzliche rote Fluss muss eindeutig vom fossilen Kohlenstoff über „Verbrennung“ zur „Atmosphäre: CO₂“ führen; der kurze Kreislauf führt über „Photosynthese“ zu Pflanzen und über „Atmung und Zersetzung“ als CO₂ zurück.
 ```
 
 ## Review-Notiz

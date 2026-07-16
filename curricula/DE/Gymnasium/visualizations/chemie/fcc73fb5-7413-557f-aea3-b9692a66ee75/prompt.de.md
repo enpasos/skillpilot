@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `fcc73fb5-7413-557f-aea3-b9692a66ee75.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/fcc73fb5-7413-557f-aea3-b9692a66ee75/fcc73fb5-7413-557f-aea3-b9692a66ee75.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,21 +31,7 @@ Titel: Stoffe und Eigenschaften beschreiben
 Beschreibung: Die lernende Person kann Stoffe anhand von Eigenschaftsmerkmalen beschreiben und ordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Stoffe nach Eigenschaften ordnen`.
-- Show four sample cards on a clean bench: `Salz`, `Eisen`, `Wasser`, `Oel`.
-- Each card shows only observable property cues: `Farbe`, `Aggregatzustand`, `Loeslichkeit`, `Magnetisch`.
-- Make the examples correct: salt is a white solid and soluble in water; iron is a grey solid and magnetic; water is a clear liquid; oil is a yellowish liquid and forms a separate layer on water.
-- Add a small sorting table with rows for the four substances and columns for the four property cues. Use icons or check marks, not long text.
-- Visible learner text must be limited to the title, sample names, property labels, and table labels.
-
-Vermeiden:
-
-- Do not claim that oil dissolves in water.
-- Do not show water as magnetic or iron as soluble in water.
-- Do not draw molecular structures, formulas, reactions, hazard symbols, or long explanatory text.
+Korrigiere die Stofftabelle fachlich präzise. Verwende konkrete Stoffe statt unzulässiger Verallgemeinerungen: „Eisen“, „Wasser“, „Speiseöl“ und „Natriumchlorid (Kochsalz)“. Benenne die Spalte ausdrücklich „Löslichkeit in Wasser“. Für Natriumchlorid: weiß, fest, in Wasser löslich, nicht magnetisch. Für Eisen, Wasser und Speiseöl müssen Farbe, Aggregatzustand, Löslichkeit in Wasser und Magnetismus plausibel bleiben. Keine pauschale Zeile nur mit „Salz“.
 ```
 
 ## Review-Notiz
