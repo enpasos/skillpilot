@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `c9e01667-24c4-56a2-8cf4-dfb6c360d7b9.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/c9e01667-24c4-56a2-8cf4-dfb6c360d7b9/c9e01667-24c4-56a2-8cf4-dfb6c360d7b9.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,18 @@ Titel: Rationale Zahlen an der Zahlengeraden darstellen und ordnen
 Beschreibung: Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, an der Zahlengeraden darstellen, begründet ordnen und Beziehungen zwischen natürlichen, ganzen und rationalen Zahlen erläutern.
 
 Zusatzanweisung:
-Do not include any technical IDs, filenames, database IDs, project names, watermarks, logos, or QR codes. Keep all visible German text short and correctly spelled. Use only simple, verifiable mathematics. For rectangle area, show equal unit squares and explain area as rows times columns. For fractions, use clear partitioned wholes, number line positions, and quotient interpretation without contradictions. For decimal conversion, use exact examples such as 1/2 = 0,5; 3/4 = 0,75; 1/5 = 0,2. For rational numbers on a number line, keep negative and positive ordering correct. For density of rational numbers, show that between two fractions another fraction can be found, for example between 1/2 and 3/4 lies 5/8. Avoid saying there is a next rational number.
+Überarbeite die vorhandene Mengen-Infografik behutsam und korrigiere die Einordnung der Dezimalzahl.
+
+Pflichtinhalt:
+- Zeige die echte Inklusionskette „ℕ ⊂ ℤ ⊂ ℚ“ als drei klar verschachtelte Mengen.
+- Platziere −1,5 ausschließlich im Bereich „ℚ ohne ℤ“.
+- Platziere passende Beispiele wie −2 und 0 in ℤ sowie 1 und 3 in ℕ, ohne Mehrfachkopien derselben Zahl.
+- Nutze auf Wunsch eine Zahlengerade, deren Markierungen dieselbe Mengenzuordnung bestätigen.
+
+Vermeiden:
+- −1,5 darf nicht innerhalb von ℤ oder ℕ stehen.
+- Keine Dezimalpunkte und keine widersprüchliche Verschachtelung.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

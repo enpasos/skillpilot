@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `3d9530ef-8355-59fc-b8c1-afe42cf9e888.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/3d9530ef-8355-59fc-b8c1-afe42cf9e888/3d9530ef-8355-59fc-b8c1-afe42cf9e888.jpg`
@@ -19,36 +19,30 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Mit der Normalverteilung rechnen (LK)
+Titel: Mit der Normalverteilung rechnen
 Beschreibung: Die lernende Person kann Wahrscheinlichkeiten normalverteilter Zufallsgrößen in Sachzusammenhängen mit digitalen Werkzeugen oder näherungsweise über Flächen unter der Dichte bestimmen und inverse Fragestellungen zu Grenzen oder Parametern systematisch lösen.
 
 Zusatzanweisung:
-Additional mathematical constraints for this batch:
+Pflichtinhalt:
+- Überarbeite das Referenzbild und bewahre die drei Bereiche Grundlagen, Wahrscheinlichkeiten/Inverse und Anwendung/Näherung.
+- Verwende ausschließlich Dezimalkommas: `0,5`, `44,5` und `55,5`.
+- Behalte die Stetigkeitskorrektur korrekt: `P(45≤X≤55) ≈ P(44,5≤Y≤55,5)`.
+- Mathematische Symbole μ, σ und Integralgrenzen müssen sauber lesbar bleiben.
 
-- Do not include technical IDs in the image.
-- Prefer one clear diagram with correct labels over many small formulas.
-- For normal density, show a smooth symmetric bell curve centered at `mu`. The curve approaches the x-axis but does not cross it.
-- If the density formula is shown, use `f(x)=1/(sigma*sqrt(2*pi))*exp(-0.5*((x-mu)/sigma)^2)`.
-- Never present `f(x)` as a point probability. For continuous variables, emphasize area under the curve: `P(a <= X <= b) = integral_a^b f(x) dx`.
-- Mark `sigma` horizontally as a distance from `mu` to `mu+sigma` or from `mu-sigma` to `mu`, never as vertical height.
-- For calculating with a normal distribution, a safe example is `X ~ N(100, 15^2)` and the central interval `85 <= X <= 115`, interpreted as roughly one standard deviation around the mean.
-- For the distribution function, use `F(x)=P(X <= x)`. For continuous variables, show `F(x)=integral_{-infinity}^x f(t) dt` as shaded area to the left of `x`.
-- For discrete vs continuous variables, use this contrast:
-  - discrete: separate bars, `P(X=k)` can be positive
-  - continuous: smooth density curve, `P(X=x)=0`, probabilities are areas over intervals
-- For recognizing approximately normal situations, use conditions such as many small independent influences, unimodal bell shape, approximate symmetry, and no hard boundary near the typical values.
-- For binomial normal approximation, use `X ~ B(n,p)`, `mu=n*p`, `sigma=sqrt(n*p*(1-p))`. State the rule of thumb `n*p >= 5` and `n*(1-p) >= 5` only if it fits clearly.
-- If a binomial approximation example is shown, use `X ~ B(100,0.5)` approximated by `Y ~ N(50,25)`, and show continuity correction such as `P(45 <= X <= 55) approx P(44.5 <= Y <= 55.5)`.
-- For Poisson as a limit, show `X_n ~ B(n,p_n)`, `n*p_n -> lambda`, `p_n -> 0`, and the result `P(X=k)=e^{-lambda}*lambda^k/k!`.
-- For Poisson context, use rare independent events in a fixed interval with constant average rate `lambda`; do not use a normal bell curve for the Poisson distribution.
+Vermeiden:
+- Keine Dezimalpunkte.
+- Keine Änderung der Verteilungen, Flächen oder Grenzwerte.
+- Keine neuen Näherungsregeln.
+
+Korrekturhinweis: Der Titel enthält keine Klammer oder Kursbezeichnung. Schreibe exakt `P(44,5 ≤ Y ≤ 55,5)`. Auf der x-Achse liegen räumlich richtig geordnet 40, 44,5, 50, 55,5, 60.
 ```
 
 ## Review-Notiz

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `5dbf149c-d335-552c-a918-768a12e09201.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/5dbf149c-d335-552c-a918-768a12e09201/5dbf149c-d335-552c-a918-768a12e09201.jpg`
@@ -19,34 +19,23 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Normalverteilung zur Modellierung von Messdaten verwenden (LK)
+Titel: Normalverteilung zur Modellierung von Messdaten verwenden
 Beschreibung: Die lernende Person kann annähernd normalverteilte Messdaten mithilfe der Normalverteilung modellieren, aus Mittelwert und Standardabweichung Wahrscheinlichkeiten für Bereiche bestimmen und die Angemessenheit des Modells diskutieren.
 
 Zusatzanweisung:
-Required content:
+Pflichtinhalt: Behalte die Glockenkurve mit μ = 170 und σ = 6. Markiere als zentralen Bereich ausschließlich das Intervall von 164 bis 176 und beschrifte es mit „μ − σ“ und „μ + σ“ sowie ungefähr 68 %. Die Bereiche außerhalb müssen deutlich heller oder unmarkiert bleiben. Zeige zusätzlich den rechten Randbereich x > 182, also oberhalb von μ + 2σ, als klar getrennten kleinen Bereich.
 
-- Show the normal distribution as a model for measurement data.
-- Use a simple height measurement context with `mu = 170 cm` and `sigma = 6 cm`.
-- Draw a bell curve centered at `170 cm`.
-- Mark the interval `164 cm` to `176 cm` as `mu +/- sigma`.
-- State `ca. 68 %` in this interval.
-- Mark a second example range `X > 182 cm` as above `mu + 2 sigma` and label it as a small upper tail.
-- Include one short German model-check note: normal model is plausible for many measurement errors or biological measurements, but must be checked against data.
+Vermeiden: „μ ± 0“, eine fast vollständig eingefärbte Kurve, Dezimalpunkte, falsche Intervallgrenzen oder ein rechter Randbereich, der schon bei 176 beginnt.
 
-Avoid:
-
-- Do not label `mu +/- sigma` as 95 %.
-- Do not put the mean away from the center of the bell curve.
-- Do not claim all data are normal distributed.
-- Do not include technical IDs, filenames, watermarks, platform names, or product names.
+Korrekturhinweis für die letzte Fassung: Beschrifte die linke Grenze bei 164 separat und exakt mit `μ − σ`; beschrifte die rechte Grenze bei 176 separat und exakt mit `μ + σ`. Das letzte Zeichen beider Beschriftungen ist das griechische Klein-Sigma `σ`, identisch zu dem gut lesbaren Zeichen in `σ = 6 cm` unter der Achse. Verwende dort niemals den lateinischen Buchstaben o oder die Ziffer 0. Falls das Zeichen in einer großen Flächenbeschriftung nicht zuverlässig gelingt, lasse diese Zusatzbeschriftung weg und setze nur die beiden korrekten Grenzlabels direkt über 164 und 176.
 ```
 
 ## Review-Notiz

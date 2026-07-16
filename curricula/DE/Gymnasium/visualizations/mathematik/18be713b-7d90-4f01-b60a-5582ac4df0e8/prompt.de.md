@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/18be713b-7d90-4f01-b60a-5582ac4df0e8/18be713b-7d90-4f01-b60a-5582ac4df0e8.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,30 +31,18 @@ Titel: Schnittwinkel zwischen geometrischen Objekten berechnen
 Beschreibung: Die lernende Person kann die Größe des Schnittwinkels zwischen zwei sich schneidenden geometrischen Objekten berechnen und das Ergebnis geometrisch deuten.
 
 Zusatzanweisung:
+Überarbeite im vorhandenen Bild nur die rechte Deutungsbox, damit sie nicht mehr wie eine widersprüchliche Durchstreichung wirkt.
+
 Pflichtinhalt:
-- Thema: Schnittwinkel zwischen zwei sich schneidenden geometrischen Objekten berechnen.
-- Hauptbeispiel: zwei Geraden schneiden sich im Ursprung.
-  g: X=(0; 0; 0)+s*(1; 0; 0).
-  h: X=(0; 0; 0)+t*(1; 1; 0).
-  Richtungsvektoren:
-  v=(1;0;0), w=(1;1;0).
-- Berechnung:
-  v*w=1.
-  |v|=1, |w|=sqrt(2).
-  cos(phi)=|v*w|/(|v|*|w|)=1/sqrt(2).
-  phi=45 Grad.
-- Zeige eine 3D- oder Koordinaten-Skizze mit beiden Geraden und dem kleineren Schnittwinkel phi=45 Grad am Schnittpunkt.
-- Kleine Merkhilfe:
-  Bei Geraden nutzt man Richtungsvektoren.
-  Bei Ebenen nutzt man Normalenvektoren und den kleineren Winkel.
-- Deutung:
-  Der Schnittwinkel ist der kleinere Winkel zwischen den Objekten.
+- Zeige dort zwei sauber beschriftete benachbarte Winkel: „kleiner Schnittwinkel α=45°“ und „Nebenwinkel 135°“.
+- Hebe 45° positiv hervor und kennzeichne 135° nur mit dem Text „nicht der kleinere Winkel“.
+- Entferne das rote Kreuz und jede zusätzliche Zahl 90° aus dieser Deutungsbox.
+- Erhalte die korrekte Skalarproduktrechnung und die große zentrale Winkelzeichnung unverändert.
 
 Vermeiden:
-- Nicht den stumpfen Winkel 135 Grad als Schnittwinkel angeben.
-- Nicht phi=90 Grad schreiben.
-- Nicht v*w=0 behaupten.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein rotes Durchstreichkreuz, kein 90°-Label und keine unbeschriftete zweite Lösung.
+- Keine Änderung des Ergebnisses α=45°.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T14:07:56.057Z",
+  "generatedAt": "2026-07-16T15:52:12.008Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -12,23 +12,24 @@
   "summary": {
     "totalGoals": 1079,
     "atomicGoalsInScope": 756,
-    "goalsWithPrimaryVisualization": 746,
-    "coveragePercent": 98.7,
+    "goalsWithPrimaryVisualization": 733,
+    "coveragePercent": 97,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "approved": 18,
-      "pilot": 728
+      "pilot": 715
     },
     "linkedVisualizationReviewStatuses": {
       "approved": 18,
-      "pilot": 728
+      "pilot": 715
     },
-    "reviewLedgerFiles": 202,
+    "reviewLedgerFiles": 206,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
       "accepted_context_visualization": 2,
       "accepted_pilot": 599,
+      "accepted_pilot_after_fresh_ai_review": 88,
       "accepted_pilot_after_provider_retry": 2,
       "accepted_pilot_after_regeneration": 159,
       "accepted_pilot_after_resume": 5,
@@ -40,7 +41,7 @@
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
-      "deferred_provider_limitation": 20,
+      "deferred_provider_limitation": 33,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -52,16 +53,16 @@
       "sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c": 1,
       "sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6": 1
     },
-    "openProviderDeferredGoals": 8,
+    "openProviderDeferredGoals": 21,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 2,
-    "linkedWithoutAcceptedReview": 15,
+    "linkedWithoutAcceptedReview": 11,
     "acceptedReviewWithoutLink": 2
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-202.md",
-    "latestLedgerStatus": "accepted_pilot_after_provider_retry",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-206.md",
+    "latestLedgerStatus": "completed_with_5_deferred_provider_limitations",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -77,6 +78,13 @@
         "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
         "decision": "deferred_provider_limitation",
         "notes": "All three candidates corrected the maximum from 41 m to 21 m, but none placed h(0)=h(4)=1 consistently on its explicit vertical scale. The active link and canonical, public and backend asset copies were removed."
+      },
+      {
+        "batch": "204",
+        "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
+        "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Previous active SHA-256 `2194f6769d8d770d4de9cef2b6e61a8073ba35982cea7680abe63d3efd3c8fb5` was withdrawn. Drei gezielte Kandidaten koppeln die beschrifteten Koordinaten nicht korrekt an die gezeichneten Rechteck-Eckpunkte. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
       },
       {
         "batch": "197",
@@ -100,6 +108,48 @@
         "notes": "All three attempts retained an extra closing parenthesis in the trigonometric polar form despite increasingly explicit formula constraints. The active link and all deployed image copies were removed."
       },
       {
+        "batch": "205",
+        "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
+        "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Versuche erzeugen keine durchgängig konsistent beschrifteten kongruenten, vergrößerten und verkleinerten Dreiecke. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "205",
+        "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
+        "title": "Konvergenz und Grenzen numerischer Verfahren reflektieren",
+        "decision": "deferred_provider_limitation",
+        "notes": "Auch der dritte gezielte Kandidat enthält eine fachlich falsche Verfahrensgrenze: Divergenz des Verfahrens bedeutet nicht, dass keine Lösung existiert. Kein Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "205",
+        "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
+        "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Versuche vertauschen Bezeichner oder mischen deutsche Dezimalkommas mit Dezimalpunkten. Kein vollständig konsistenter Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "205",
+        "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
+        "title": "Laufzeit tabellarisch näherungsweise bestimmen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Der Provider hält weder das Dezimalkomma in der Modellformel noch die korrekte tabellarische Zuordnung stabil ein. Nach drei Versuchen ist kein Kandidat importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "205",
+        "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+        "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Kandidaten enthalten entweder ein Titelartefakt, inkonsistente Dezimalnotation oder eine Übergangsmatrix, die nicht zu den berechneten Zuständen passt. Kein Kandidat ist importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "205",
+        "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
+        "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Kandidaten zeigen die numerisch richtigen Newton-Schritte, koppeln den markierten positiven Nullstellenpunkt aber nicht an den tatsächlichen Schnitt von f(x)=x²−2 mit der x-Achse. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
         "batch": "193",
         "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
         "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
@@ -121,11 +171,53 @@
         "notes": "The first two attempts wrongly framed zero as a boundary case; the final attempt added a false +1 badge to the n = 2 example. The active link and all deployed image copies were removed."
       },
       {
+        "batch": "206",
+        "goalId": "52758ed0-cba8-5583-9e69-906d2e7c7843",
+        "title": "Prognose- und Konfidenzintervalle im Kontext interpretieren",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Kandidaten behalten trotz eindeutiger Textvorgabe mindestens den Dezimalpunkt in h=0.52. Ein typografisch regelkonformes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "206",
+        "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
+        "title": "Punkt-Gerade-Abstände im Raum bestimmen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei gezielte Kandidaten enthalten weiterhin 0.5 in der Projektionsrechnung. Die fachlich richtige Rechnung wird damit typografisch nicht zuverlässig erzeugt. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "206",
+        "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "title": "Punkte und Vektoren im Raum koordinatisieren",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei strukturell vereinfachte Kandidaten ordnen die Komponenten von Punkt und Vektor nicht konsistent den x-, y- und z-Achsenrichtungen zu. Die Zeichnungen bleiben fachlich irreführend. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "206",
+        "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
+        "title": "Regula falsi zur Nullstellennäherung anwenden",
+        "decision": "deferred_provider_limitation",
+        "notes": "Drei Kandidaten koppeln die korrekten Regula-falsi-Werte nicht an eine geometrisch maßstäbliche Zeichnung; besonders die Lage von 4/3 und √2 bleibt sichtbar falsch. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
+        "batch": "206",
+        "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
+        "title": "Satz des Thales begründen und anwenden",
+        "decision": "deferred_provider_limitation",
+        "notes": "Nach drei Kandidaten ist entweder die Begründung unvollständig oder die Gleichheitsmarkierung falsch. Der letzte Versuch behauptet durch identische Striche zusätzlich falsche Chordengleichheiten. The active link and canonical, public, and backend image copies were removed."
+      },
+      {
         "batch": "192",
         "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
         "title": "Teilungsverhältnisse bei Strecken untersuchen",
         "decision": "deferred_provider_limitation",
         "notes": "No candidate was fully correct. Attempts 1 and 2 visibly placed `T` around one third of the diagonal despite the stated one-quarter ratio. Attempt 3 corrected the geometry by dividing a cuboid edge into four parts, but introduced the grammatically incorrect visible heading `Innere Teilungsverhältnis`. The active link and all deployed asset copies were removed."
+      },
+      {
+        "batch": "203",
+        "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
+        "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Three generated candidates still placed the allegedly supplementary same-side interior angles on opposite sides of the transversal, thereby drawing alternate interior angles. The active link and canonical, public, and backend image copies were removed."
       }
     ],
     "openProviderQuota": [],
@@ -536,39 +628,11 @@
         "latestDecision": "accepted_after_regeneration"
       },
       {
-        "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
-        "title": "Ereignisse als Mengen verknüpfen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/71d1fd4d-8471-5f25-94a0-4c531a74783c/71d1fd4d-8471-5f25-94a0-4c531a74783c.jpg",
-        "latestDecision": "correction_open_provider_credit_exhausted"
-      },
-      {
-        "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
-        "title": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.jpg",
-        "latestDecision": "correction_open_provider_credit_exhausted"
-      },
-      {
         "goalId": "701b3942-9f70-548e-9d02-a34b7e64aa17",
         "title": "Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/701b3942-9f70-548e-9d02-a34b7e64aa17/701b3942-9f70-548e-9d02-a34b7e64aa17.jpg",
         "latestDecision": "accepted"
-      },
-      {
-        "goalId": "4fc77ab5-90aa-4aa7-941f-6c807dde54fe",
-        "title": "Volumen von schiefen Prismen und Pyramiden plausibilisieren",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/4fc77ab5-90aa-4aa7-941f-6c807dde54fe/4fc77ab5-90aa-4aa7-941f-6c807dde54fe.jpg",
-        "latestDecision": "correction_open_provider_credit_exhausted"
-      },
-      {
-        "goalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
-        "title": "Wahrscheinlichkeiten anhand von Termen vergleichen",
-        "reviewStatus": "pilot",
-        "url": "/assets/goal-visualizations/mathematik/d8305a49-6d45-52aa-ab88-9163c3b9f198/d8305a49-6d45-52aa-ab88-9163c3b9f198.jpg",
-        "latestDecision": "correction_open_provider_credit_exhausted"
       }
     ],
     "acceptedReviewWithoutLink": [
@@ -2238,14 +2302,6 @@
       "url": "/assets/goal-visualizations/mathematik/2b497114-66ce-5f38-9b4d-dd17a2f4088f/2b497114-66ce-5f38-9b4d-dd17a2f4088f.jpg"
     },
     {
-      "goalId": "121e3fdf-54d2-4d46-bc2d-f6e725f10f41",
-      "title": "Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen",
-      "phase": "J7",
-      "area": "Geometry",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/121e3fdf-54d2-4d46-bc2d-f6e725f10f41/121e3fdf-54d2-4d46-bc2d-f6e725f10f41.jpg"
-    },
-    {
       "goalId": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
       "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
       "phase": "Q2",
@@ -3198,14 +3254,6 @@
       "url": "/assets/goal-visualizations/mathematik/aa14d9e4-5790-5d94-a245-2ff9a70bf633/aa14d9e4-5790-5d94-a245-2ff9a70bf633.jpg"
     },
     {
-      "goalId": "2041f4ec-620d-4a20-9922-6ebf16f8f8fa",
-      "title": "Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen",
-      "phase": "J9",
-      "area": "Geometry",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/2041f4ec-620d-4a20-9922-6ebf16f8f8fa/2041f4ec-620d-4a20-9922-6ebf16f8f8fa.jpg"
-    },
-    {
       "goalId": "6833664b-bd8b-44a2-95bc-c0b78ff89e31",
       "title": "Kongruente und ähnliche Figuren erkennen und Eigenschaften geometrischer Abbildungen beschreiben",
       "phase": "J9",
@@ -3252,14 +3300,6 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1b888f4c-df57-52a9-9551-b2b692e929fa/1b888f4c-df57-52a9-9551-b2b692e929fa.jpg"
-    },
-    {
-      "goalId": "3bfc2747-03e2-57db-b13f-01f78835eefd",
-      "title": "Konvergenz und Grenzen numerischer Verfahren reflektieren",
-      "phase": "E",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/3bfc2747-03e2-57db-b13f-01f78835eefd/3bfc2747-03e2-57db-b13f-01f78835eefd.jpg"
     },
     {
       "goalId": "c66cb27b-8199-58fb-95f4-6314c0c2d07b",
@@ -3430,28 +3470,12 @@
       "url": "/assets/goal-visualizations/mathematik/5ab17678-bba7-4e6b-9aff-5a909e24d40e/5ab17678-bba7-4e6b-9aff-5a909e24d40e.jpg"
     },
     {
-      "goalId": "0408ac7f-0530-5de5-b248-cf581c9b5a17",
-      "title": "Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell)",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/0408ac7f-0530-5de5-b248-cf581c9b5a17/0408ac7f-0530-5de5-b248-cf581c9b5a17.jpg"
-    },
-    {
       "goalId": "1462c189-8679-5f32-bf58-6e81e99e4635",
       "title": "Laplace-Wahrscheinlichkeiten ohne Zurücklegen (hypergeometrisch)",
       "phase": "Q3",
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/1462c189-8679-5f32-bf58-6e81e99e4635/1462c189-8679-5f32-bf58-6e81e99e4635.jpg"
-    },
-    {
-      "goalId": "fc34449a-fbf4-574c-884f-ecdf48b42d2e",
-      "title": "Laufzeit tabellarisch näherungsweise bestimmen",
-      "phase": "J8",
-      "area": "Arithmetic",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/fc34449a-fbf4-574c-884f-ecdf48b42d2e/fc34449a-fbf4-574c-884f-ecdf48b42d2e.jpg"
     },
     {
       "goalId": "6fc9246a-9448-4cdb-b627-cf20ea1c65d3",
@@ -3660,14 +3684,6 @@
       "area": "Lineare Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/b5062446-332f-4a67-aaf7-3bfa3e5aded9/b5062446-332f-4a67-aaf7-3bfa3e5aded9.jpg"
-    },
-    {
-      "goalId": "0de1e45c-aea9-5e53-932a-027dcf509efa",
-      "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
-      "phase": "Q2",
-      "area": "LinearAlgebra",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/0de1e45c-aea9-5e53-932a-027dcf509efa/0de1e45c-aea9-5e53-932a-027dcf509efa.jpg"
     },
     {
       "goalId": "33c6e64c-5955-5b07-85d4-74a97b19dd56",
@@ -3972,14 +3988,6 @@
       "area": "Algebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/e131c594-c45e-5718-9f33-7ae39ddc82ad/e131c594-c45e-5718-9f33-7ae39ddc82ad.jpg"
-    },
-    {
-      "goalId": "0c7bbd3f-0a04-4f0e-888b-40ab7841fb76",
-      "title": "Newton-Verfahren zur Nullstellennäherung anwenden",
-      "phase": "E",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76/0c7bbd3f-0a04-4f0e-888b-40ab7841fb76.jpg"
     },
     {
       "goalId": "a4246bef-647c-582f-aaa5-8ccd3120e7ef",
@@ -4502,14 +4510,6 @@
       "url": "/assets/goal-visualizations/mathematik/269675a9-13cd-4a3a-ab75-63794f5c9710/269675a9-13cd-4a3a-ab75-63794f5c9710.jpg"
     },
     {
-      "goalId": "52758ed0-cba8-5583-9e69-906d2e7c7843",
-      "title": "Prognose- und Konfidenzintervalle im Kontext interpretieren",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/52758ed0-cba8-5583-9e69-906d2e7c7843/52758ed0-cba8-5583-9e69-906d2e7c7843.jpg"
-    },
-    {
       "goalId": "f85419c4-63ac-5d6d-b73b-fcb12a0ff89f",
       "title": "Prognoseintervalle für relative Häufigkeiten bestimmen",
       "phase": "Q3",
@@ -4566,14 +4566,6 @@
       "url": "/assets/goal-visualizations/mathematik/990d7514-c4c3-485e-907e-91687676a8cc/990d7514-c4c3-485e-907e-91687676a8cc.jpg"
     },
     {
-      "goalId": "3256476b-ec65-4038-9f5a-a8808fbcf207",
-      "title": "Punkt-Gerade-Abstände im Raum bestimmen",
-      "phase": "Q2",
-      "area": "LinearAlgebra",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/3256476b-ec65-4038-9f5a-a8808fbcf207/3256476b-ec65-4038-9f5a-a8808fbcf207.jpg"
-    },
-    {
       "goalId": "66a96282-340d-5220-91a6-cc97e2ec2220",
       "title": "Punkt-Normalen-Form einer Ebene aufstellen",
       "phase": "Q2",
@@ -4628,14 +4620,6 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/57f6d5e4-7c24-4e70-9cf6-737f01d79914/57f6d5e4-7c24-4e70-9cf6-737f01d79914.jpg"
-    },
-    {
-      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
-      "title": "Punkte und Vektoren im Raum koordinatisieren",
-      "phase": "Q2",
-      "area": "LinearAlgebra",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/075f1ef2-6860-4b20-9df2-878157eb395e/075f1ef2-6860-4b20-9df2-878157eb395e.jpg"
     },
     {
       "goalId": "25593605-5e13-55cc-9a05-8f3d737e15e9",
@@ -4870,14 +4854,6 @@
       "url": "/assets/goal-visualizations/mathematik/0bd7dc9b-c7f9-52e6-b374-a019edfd821c/0bd7dc9b-c7f9-52e6-b374-a019edfd821c.jpg"
     },
     {
-      "goalId": "47400de4-b0e4-5bb6-a1bd-bd2beee616bb",
-      "title": "Regula falsi zur Nullstellennäherung anwenden",
-      "phase": "E",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/47400de4-b0e4-5bb6-a1bd-bd2beee616bb/47400de4-b0e4-5bb6-a1bd-bd2beee616bb.jpg"
-    },
-    {
       "goalId": "4d55ba50-8d67-560c-a10f-cccff4728c40",
       "title": "Reihen als Folgen von Partialsummen beschreiben (LK)",
       "phase": "Q4",
@@ -5012,14 +4988,6 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/80956a2c-5811-4021-863e-95675bec31f5/80956a2c-5811-4021-863e-95675bec31f5.jpg"
-    },
-    {
-      "goalId": "36728db8-da44-4add-97b8-0fdd7cfd9c41",
-      "title": "Satz des Thales begründen und anwenden",
-      "phase": "J8",
-      "area": "Geometry",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/36728db8-da44-4add-97b8-0fdd7cfd9c41/36728db8-da44-4add-97b8-0fdd7cfd9c41.jpg"
     },
     {
       "goalId": "3e4032bd-4d8c-4e72-bfdd-64a34df053c9",
@@ -6316,14 +6284,6 @@
       "area": "LinearAlgebra",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/bda6a659-9640-53a5-8be0-24705ab623ef/bda6a659-9640-53a5-8be0-24705ab623ef.jpg"
-    },
-    {
-      "goalId": "fc047e6e-5d6d-460f-99fc-ade3a23b9a8e",
-      "title": "Winkelbeziehungen in Figuren beschreiben und für geometrische Argumentationen nutzen",
-      "phase": "J7",
-      "area": "Geometry",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e/fc047e6e-5d6d-460f-99fc-ade3a23b9a8e.jpg"
     },
     {
       "goalId": "5dabf0b3-89b1-59a6-ae57-014f92becd3b",

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,19 @@ Titel: Modell gezielt anpassen
 Beschreibung: Die lernende Person kann ein Modell gezielt anpassen (z. B. Parameter ändern, zusätzliche Bedingungen ergänzen) und die Änderung nachvollziehbar begründen.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show a model being adjusted after new information appears.
-- Original model card:
-  - "K(x) = 15 + 2x"
-  - "2 Euro pro Saft"
-- New condition card:
-  - "Rabatt: ab 20 Säften nur 1,80 Euro pro Saft"
-- Adjusted model note:
-  - "Parameter anpassen"
-  - "Begründung: Preis hat sich geändert"
-- Add process arrow: "Modell -> neue Bedingung -> angepasstes Modell".
+Pflichtinhalt:
+- Erzeuge eine neue Infografik zur gezielten Modellanpassung mit dem Kontext Getränkebestellung.
+- Ausgangsmodell: `K(x)=15+2x` für x Getränke.
+- Neue Bedingung: `Ab dem 20. Getränk kosten weitere Getränke 1,80 Euro.`
+- Angepasstes stetiges Modell: `K(x)=15+2x` für `0≤x≤20`; `K(x)=55+1,80·(x−20)` für `x>20`.
+- Zeige im Graphen einen Knick bei `(20|55)` und erkläre: Bis 20 bleibt der alte Preis, danach wächst der Gesamtpreis langsamer.
 
-Visual guidance:
-- Use a school kiosk planning board with a clear before/after layout.
-- Keep the adjusted-model note conceptual; do not build a complex piecewise formula.
+Vermeiden:
+- Nicht den Preisparameter für alle x global von 2 auf 1,80 ändern.
+- Kein Sprung an x=20.
+- Keine Dezimalpunkte oder zusätzlichen Bedingungen.
 
-Avoid:
-- Do not claim the old model is still fully valid.
-- Do not use English text.
-- Do not add a wrong final calculation.
+Korrekturhinweis: Der Knickpunkt liegt sichtbar bei `(20 | 55)`. Die waagerechte Hilfslinie durch den Knick ist an der y-Achse mit 55 beschriftet, niemals mit 45 oder 50. Beide Geraden treffen sich dort.
 ```
 
 ## Review-Notiz

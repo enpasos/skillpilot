@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,18 +31,18 @@ Titel: Quantoren richtig interpretieren
 Beschreibung: Die lernende Person kann Aussagen mit „für alle“/„es gibt“ in Worten und Symbolen deuten, verneinen und durch Beispiele bzw. Gegenbeispiele prüfen.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show two cards for quantifiers:
-  - "fuer alle" / "∀": "∀ n in N: n + 1 > n" with a check mark
-  - "es gibt" / "∃": "∃ n in N: n^2 = 9" with example "n = 3"
-- Show one small negation reminder:
-  - "Nicht fuer alle" means "Es gibt ein Gegenbeispiel".
-- Keep the visual focused on language-to-symbol translation.
+Erstelle eine neue, logisch exakte Lerninfografik zum Verneinen quantifizierter Aussagen.
 
-Avoid:
-- Do not claim that n^2 = 9 holds for all natural numbers.
-- Do not use negative natural-number examples.
-- Do not add advanced predicate-logic notation beyond ∀ and ∃.
+Pflichtinhalt:
+- Zeige exakt die beiden Äquivalenzen „¬(∀x: P(x)) ⇔ ∃x: ¬P(x)“ und „¬(∃x: P(x)) ⇔ ∀x: ¬P(x)“.
+- Verdeutliche die erste Regel mit einer kleinen Gruppe von Figuren: „Nicht alle tragen einen Hut“ bedeutet „Mindestens eine Person trägt keinen Hut“.
+- Verdeutliche die zweite Regel getrennt: „Niemand trägt einen Hut“ bedeutet „Alle tragen keinen Hut“.
+- Negationszeichen und Quantoren müssen groß, scharf und eindeutig lesbar sein.
+
+Vermeiden:
+- Keine Aussage „¬∃x P(x) ⇔ ∃x ¬P(x)“ und keine fehlende Negation hinter einem Existenzquantor.
+- Keine Vermischung der beiden Regeln.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

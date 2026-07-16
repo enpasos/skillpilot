@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,23 +31,11 @@ Titel: Nebenbedingungen berücksichtigen
 Beschreibung: Die lernende Person kann Nebenbedingungen und Definitionsbereiche im Modell berücksichtigen (z. B. x ≥ 0, ganzzahlig) und deren Auswirkungen auf mögliche Lösungen einschätzen.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show bus planning for 73 people.
-- Variables and condition:
-  - "b = Anzahl Busse"
-  - "30 · b >= 73"
-  - "b ist eine natürliche Zahl"
-  - "b >= 0"
-- Add note: "Nur ganze Busse sind möglich."
+Pflichtinhalt: Behalte den Bus-Kontext und korrigiere die Nebenbedingungen vollständig. Für 73 Fahrgäste und 30 Plätze pro Bus muss „30b ≥ 73“ und „b ∈ ℕ“ stehen. Daraus folgt rechnerisch „b ≥ 2,43“, also ist die kleinste zulässige ganze Zahl „b = 3“. Markiere b = 2 als unzulässig und b = 3 sowie größere natürliche Zahlen als zulässig.
 
-Visual guidance:
-- Use a simple bus icon and a checklist of side conditions.
-- Make the inequality and the natural-number condition central.
+Vermeiden: b = −1, ein einzelnes freischwebendes Ungleichheitszeichen, Dezimalpunkte, negative Buszahlen oder eine Aussage, nach der zwei Busse genügen.
 
-Avoid:
-- Do not write b = 2 as the answer.
-- Do not allow fractional buses.
-- Do not use English text.
+Korrekturhinweis: Zeige nur `30b ≥ 73`, `b ≥ 73/30 ≈ 2,43`, `b ∈ ℕ`, daher `b = 3` als kleinste Lösung. Führe b = −1 überhaupt nicht auf.
 ```
 
 ## Review-Notiz

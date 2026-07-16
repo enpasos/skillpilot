@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `44dba16e-2e86-56be-974b-a62093ef9211.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/44dba16e-2e86-56be-974b-a62093ef9211/44dba16e-2e86-56be-974b-a62093ef9211.jpg`
@@ -19,30 +19,23 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Normalverteilung als Approximation binomialer Modelle (LK)
+Titel: Normalverteilung als Approximation binomialer Modelle
 Beschreibung: Die lernende Person kann Histogramme binomialverteilter Zufallsgrößen bei hinreichend großer Standardabweichung durch eine Normalverteilung approximieren, die Näherung fachlich begründen und den Bezug zu den Sigma-Regeln deuten.
 
 Zusatzanweisung:
-Additional correction for the binomial normal approximation visualization:
+Pflichtinhalt: Behalte die bestehende Visualisierung zur Normalapproximation einer Binomialverteilung. Verwende ausschließlich deutsche Dezimalkommas. Die Stetigkeitskorrektur muss exakt die Grenzen „44,5“ und „55,5“ zeigen; der Erfolgsparameter muss als „p = 0,5“ erscheinen. Mittelwert, Standardabweichung, schattierter Bereich und Formeln müssen rechnerisch zusammenpassen.
 
-- Do not include technical IDs in the image.
-- Focus only on normal approximation of a binomial model.
-- Use the concrete example `X ~ B(100, 0.5)`.
-- Show `mu = n*p = 50` and `sigma = sqrt(n*p*(1-p)) = 5`.
-- The normal approximation should be `Y ~ N(50, 25)`.
-- The condition should be stated as `n*p >= 5` and `n*(1-p) >= 5` or as "n large enough"; do not write that the condition is a "large standard deviation".
-- If a sigma arrow is drawn, it must be horizontal from `mu=50` to `mu+sigma=55` only, or from `mu-sigma=45` to `mu=50` only. Do not draw one arrow from 45 to 55 and label it `sigma`.
-- If the central one-sigma interval is shown, label it as `[mu-sigma, mu+sigma] = [45,55]`, not as a single sigma distance.
-- Show continuity correction clearly: `P(45 <= X <= 55) approx P(44.5 <= Y <= 55.5)`.
-- Do not mix in Poisson distribution on this image.
+Vermeiden: 44.5, 55.5 oder 0.5, vertauschte Grenzen, fehlende Stetigkeitskorrektur oder eine Schattierung außerhalb des angegebenen Intervalls.
+
+Korrekturhinweis für die letzte Fassung: Schreibe in der Binomialnotation exakt `X ~ B(100; 0,5)` mit Semikolon und deutschem Dezimalkomma. Im gesamten Bild ist die Zeichenfolge `0.5` verboten. Schreibe die Korrekturgrenzen exakt `44,5` und `55,5` und markiere den stetigen Bereich sichtbar nur zwischen diesen beiden Grenzen. Kopiere keine Dezimalpunkte aus der Vorlage.
 ```
 
 ## Review-Notiz

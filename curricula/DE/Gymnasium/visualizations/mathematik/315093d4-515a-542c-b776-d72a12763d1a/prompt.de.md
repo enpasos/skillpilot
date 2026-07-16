@@ -19,47 +19,30 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Reihendarstellung der eulerschen Zahl angeben (LK)
+Titel: Reihendarstellung der eulerschen Zahl angeben
 Beschreibung: Die lernende Person kann die Reihendarstellung der eulerschen Zahl $e$ angeben und in den Taylorpolynom-Kontext einordnen.
 
 Zusatzanweisung:
+Korrigiere im vorhandenen Bild nur den einen falsch gerundeten Tabellenwert.
+
 Pflichtinhalt:
-
-Show the series representation of Euler's number `e` in the Taylor-polynomial context.
-Use a table-and-formula layout, not a graph.
-
-Use exactly these formulas:
-- `e = e^1`
-- `e = sum_{k=0}^{infty} 1/k!`
-- `e = 1 + 1 + 1/2! + 1/3! + 1/4! + ...`
-
-Use a partial-sum table with exactly these rows:
-- `S_0 = 1`
-- `S_1 = 2`
-- `S_2 = 2.5`
-- `S_3 = 2.667`
-- `S_4 = 2.708`
-- `e ≈ 2.718`
-
-Add one short note: `Taylorreihe von e^x bei x=0, eingesetzt x=1`.
+- Ersetze in der Zeile k=4 exakt „S₄ ≈ 2,7084“ durch „S₄ ≈ 2,7083“.
+- Erhalte „1/4! ≈ 0,0417“ als gerundeten Summanden und alle anderen Zeilen unverändert.
+- Erhalte die Reihe e=Σ von k=0 bis unendlich über 1/k! und „e≈2,7183“.
+- Verwende weiterhin ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-
-Do not use a graph.
-Do not write alternating signs.
-Do not use `1/2`, `1/3`, `1/4` without factorial signs for the series terms.
-Do not claim a finite partial sum is exactly equal to `e`.
-Do not write `e = 2.667` or `e = 2.708`; only the infinite series equals `e`.
-Do not add arrows or leader lines.
-Do not write audience or subject labels such as `Gymnasium`, `Mathematik`, `Schule`, or `Klasse`.
+- Im Tabellenfeld S₄ darf nicht 2,7084 stehen.
+- Keine Änderung anderer Partialsummen oder Formeln.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz
