@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,10 @@ Titel: Stehende elektromagnetische Wellen
 Beschreibung: Die lernende Person kann stehende elektromagnetische Wellen im eindimensionalen Fall qualitativ beschreiben und Beispiele für Resonatoren benennen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Stehende EM-Welle`.
-- Show a one-dimensional resonator: two parallel reflecting plates or mirrors at the left and right ends.
-- Between the ends, draw a stationary sinusoidal electric-field pattern with nodes at both ends and one antinode in the center.
-- Label the end nodes `Knoten` and the central antinode `Bauch`.
-- Add the label `Resonator` near the two reflecting ends.
-- Add a small note `kein Transport nach rechts` to make clear it is not a travelling wave.
-- Use no propagation arrows, no current arrows, and no force arrows.
-- Visible learner text must be limited to the title, `Resonator`, `Knoten`, `Bauch`, and `kein Transport nach rechts`.
-
-Vermeiden:
-
-- Do not draw a travelling wave with a rightward propagation arrow.
-- Do not show unequal node spacing.
-- Do not draw electric-field arrows along the propagation direction.
-- Do not draw a mechanical rope or water wave as the main object.
-- Do not add formulas, internal instructions, or production guidance.
+Use case: scientific-educational
+Primary request: Preserve the standing electromagnetic wave, nodes, antinodes and counter-propagating-wave construction, but correct the energy-transport statement.
+Text correction (verbatim): replace the directional claim with "kein Nettoenergietransport".
+Constraints: The resulting standing wave must have stationary nodes and antinodes and no net time-averaged energy transport. Do not claim merely that transport is absent in one direction. No logos or watermarks.
 ```
 
 ## Review-Notiz

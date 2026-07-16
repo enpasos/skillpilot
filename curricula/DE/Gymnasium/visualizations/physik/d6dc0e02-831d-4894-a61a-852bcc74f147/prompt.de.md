@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,41 +31,14 @@ Titel: Modellierung und Idealisierung von Bewegungen
 Beschreibung: Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeit-Gesetzen modellieren und die Rolle von Idealisierungen wie Massepunkt und Reibungsfreiheit reflektieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show modelling and idealisation of motion as a clean three-step comparison.
-
-Title: `Bewegungen modellieren und idealisieren`
-
-Use three numbered panels without arrows between panels:
-
-1. `Reale Bewegung`
-- show a small rolling ball with slightly scattered measured positions
-- label `Messstreuung`, `Reibung moeglich`, `ausgedehnter Koerper`
-
-2. `Idealisierung`
-- replace the ball by one dot labelled `Massepunkt`
-- label `reibungsfrei`, `gerade Bahn`, `Start bei s=0`
-
-3. `Modellgesetz`
-- show one simple law for uniform motion:
-  `s(t) = v * t`
-- use example table:
-  `t/s | 0 | 1 | 2 | 3`
-  `s/m | 0 | 2 | 4 | 6`
-- show a straight `t-s` graph through `(0,0)`, `(1,2)`, `(2,4)`, `(3,6)`
-
-Reflection note:
-- `Modell erklaert Wesentliches, laesst Details weg.`
-
-Vermeiden:
-
-Do not draw force arrows.
-Do not draw motion arrows.
-Do not mix accelerated-motion data into the uniform-motion model.
-Do not claim a model is the real situation.
-Do not add equations that contradict `s(t)=v*t`.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use case: scientific-educational
+Primary request: Create a sparse four-panel workflow for a thrown ball with no technical calculation and no invented labels.
+Panel 1 "Wirklichkeit": real ball, wind lines and the labels "ausgedehnter Körper" and "Luftwiderstand".
+Panel 2 "Idealisierung": one point on a parabola and the exact labels "Massepunkt" and "Luftwiderstand vernachlässigt".
+Panel 3 "Vorhersage": one smooth parabolic curve only.
+Panel 4 "Vergleich mit Messung": overlay the same curve with plausible measurement dots, then one arrow to the exact label "Modellrevision".
+Required concluding text: "Ein Modell erklärt Wesentliches, lässt Details weg. Abweichung möglich."
+Constraints: Use only the quoted German labels as visible text. No data table, axis label, numerical value, equation or additional factor name. Proofread every visible word. No logos or watermarks.
 ```
 
 ## Review-Notiz

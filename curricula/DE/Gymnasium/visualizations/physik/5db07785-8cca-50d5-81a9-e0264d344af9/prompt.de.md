@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,22 @@ Titel: Struktur und Alter des Universums
 Beschreibung: Die lernende Person kann größere Strukturen wie Galaxien beschreiben und qualitative Aussagen zu Größe und Alter des Universums machen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Create a new German cartoon infographic titled `Struktur und Alter des Universums`. Do not imitate a temporal arrow from stars to galaxies to clusters.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Struktur und Alter des Universums`.
-- Show a scale hierarchy from small to large: `Sterne`, `Galaxie`, `Galaxienhaufen`, `Kosmisches Netz`.
-- The hierarchy should be visual, with nested or side-by-side scale panels, not a dense text list.
-- Add a simple age timeline labelled `13,8 Mrd Jahre` from early universe to today.
-- Show the cosmic web as many galaxies connected in filament-like structures with large voids between them.
-- Use no motion arrows. If a timeline arrow is used, it must be a single horizontal time arrow from early universe to today.
-- Visible learner text must be limited to the title, `Sterne`, `Galaxie`, `Galaxienhaufen`, `Kosmisches Netz`, `13,8 Mrd Jahre`, and `heute`.
+Use two visually independent panels with no connecting arrow between them.
 
-Vermeiden:
+Panel `Struktur heute`:
+- Show a nested spatial zoom, not a time sequence: `Stern in einer Galaxie`, `Galaxienhaufen`, `kosmisches Netz`.
+- Use bracket-like zoom frames or concentric scope frames, not chronological arrows.
+- Make clear that stars are parts of galaxies, galaxies are parts of groups or clusters, and clusters form nodes of the cosmic web.
 
-- Do not show the universe as a single solar system.
-- Do not imply that galaxies are evenly spread like a regular grid.
-- Do not draw expansion or motion arrows between galaxies.
-- Do not use unsupported exact sizes or too many numeric values.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Panel `Kosmische Zeit`:
+- Use a separate horizontal timeline from `Urknall` on the left to `heute` on the right.
+- Label the present age exactly `Alter heute: etwa 13,8 Milliarden Jahre`.
+- A small expansion graphic may widen along this timeline, but do not reuse the spatial hierarchy icons as successive evolutionary stages.
+
+Use correct German decimal comma, spelling, and sparse legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

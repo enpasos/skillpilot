@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,20 @@ Titel: Bändermodell und Dotierung
 Beschreibung: Die lernende Person kann das qualitative Bändermodell für Leiter und Halbleiter beschreiben und erklären, wie Dotierung die Leitfähigkeit beeinflusst.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a four-panel German energy-band infographic titled `Bändermodell und Dotierung`. Never write `Baendermodell` or `Luecke`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Baendermodell und Dotierung`.
-- Use four simple vertical energy-band mini-panels with a shared upward energy direction but no arrowheads.
-- Panel `Leiter`: show `Valenzband` and `Leitungsband` overlapping, with no band gap.
-- Panel `Halbleiter`: show `Valenzband` below `Leitungsband` with a small gap labelled `kleine Luecke`.
-- Panel `n-Dotierung`: show a donor level just below the conduction band, labelled `Donator nahe Leitungsband`.
-- Panel `p-Dotierung`: show an acceptor level just above the valence band, labelled `Akzeptor nahe Valenzband`.
-- Keep the band drawings as clean horizontal rectangles or lines; do not add particle-motion arrows.
-- Visible learner text must be limited to the title, `Leiter`, `Halbleiter`, `n-Dotierung`, `p-Dotierung`, `Valenzband`, `Leitungsband`, `kleine Luecke`, `Donator nahe Leitungsband`, and `Akzeptor nahe Valenzband`.
+Panels:
+- `Leiter`: valence and conduction bands overlap.
+- `intrinsischer Halbleiter`: full valence band, empty conduction band and a small labeled `Bandlücke`.
+- `n-Dotierung`: a `Donatorniveau` lies just below the conduction band; show an electron easily excited into the conduction band.
+- `p-Dotierung`: an `Akzeptorniveau` lies just above the valence band; show an electron entering it and a hole left in the valence band.
 
-Vermeiden:
+Use one upward energy axis and consistent band positions. Use correct German spelling and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 
-- Do not place the donor level near the valence band.
-- Do not place the acceptor level near the conduction band.
-- Do not show a large band gap for a semiconductor.
-- Do not show separated bands for a metal conductor.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Critical p-doping correction: draw a minus-marked electron initially in the valence band, an upward arrow from that electron to the acceptor level, and a plus-marked hole remaining in the valence band at the electron's starting position. Never draw an arrow from a hole into the acceptor level. If this transition cannot be drawn unambiguously, omit the transition arrow and show only the occupied acceptor level plus the hole in the valence band.
+
+Final simplification for the p-doping panel: draw no arrow at all. Show one minus-marked electron sitting on the acceptor level and one plus-marked hole remaining inside the valence band. Keep these two symbols spatially separate and do not connect them with any line.
 ```
 
 ## Review-Notiz

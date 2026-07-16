@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,29 +31,17 @@ Titel: Reversible und irreversible Vorgänge unterscheiden
 Beschreibung: Die lernende Person kann reversible und irreversible thermodynamische Vorgänge an Beispielen unterscheiden und Konsequenzen für die Energieumwandlung beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image as a clear German cartoon comparison titled `Reversibel und irreversibel`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German comparison infographic titled `Reversible und irreversible Vorgaenge unterscheiden`.
-- Use two columns:
-  - Left: `reversibel`
-    - example: slow, quasi-static piston compression shown only as a clean cylinder with piston positions `1` and `2`
-    - labels: `Gleichgewichtszustaende`, `umkehrbar ohne bleibende Aenderung`
-  - Right: `irreversibel`
-    - example: gas expansion into vacuum or mixing of two gases
-    - labels: `spontan`, `nicht vollstaendig rueckgaengig ohne Aufwand`
-- Show `Anfang` and `Ende` states in each column as pfeilfreie paired mini-panels with clear labels only.
-- Add note: `Irreversibilitaet begrenzt nutzbare Energieumwandlung`.
+Mandatory scientific distinction:
+- Left: an idealized reversible process, labeled `idealisiert und quasistatisch`, `ohne Entropieerzeugung`, and `vollständig umkehrbar`.
+- Right: an irreversible process such as free expansion or friction, labeled `Entropie wird erzeugt` and `nicht vollständig rückgängig`.
+- Do not imply that ordinary real processes are perfectly reversible.
+- In the reversible panel, use one unambiguous double-headed arrow between two equilibrium states. Do not place contradictory one-way arrows around the same piston.
+- If a concluding sentence is shown, spell it exactly `Irreversibilität begrenzt nutzbare Energieumwandlung`.
+- Spell the plural exactly `Gleichgewichtszustände`. The malformed spelling `Gleichgewichtszustäende` is forbidden. If exact spelling is uncertain, omit this label rather than misspell it.
 
-Vermeiden:
-
-- Do not draw process direction arrows.
-- Do not draw sand piles, loose material, broken parts, spilled particles, or anything that looks like a lasting material change in the reversible column.
-- Do not draw a piston leaving the cylinder in the reversible column.
-- Do not claim that energy is destroyed in irreversible processes.
-- Do not show the irreversible example as automatically returning to the initial state.
-- Do not use a heat-flow arrow unless the hot and cold bodies are clearly labelled.
-- Do not confuse reversible with simply "can be repeated".
+Use correct German umlauts, including `Gleichgewichtszustände` and `rückgängig`; never use ae/oe/ue substitutions. Keep visible text sparse. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

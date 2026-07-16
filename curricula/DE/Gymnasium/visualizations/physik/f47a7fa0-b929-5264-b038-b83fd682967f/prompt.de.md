@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,12 @@ Titel: Ultraschall in Medizin und Technik
 Beschreibung: Ultraschallortung und Bildgebung als Anwendung mechanischer Wellen. Reflexion, Laufzeit und Auflösung qualitativ einordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Visualisiere Ultraschall in Medizin und Technik praxisnah: Ultraschallkopf auf Haut, Gewebeschicht darunter, Echoauswertung daneben.
-- Zeichne im Gewebe genau zwei markierte Weg-Pfeile:
-  - einen blauen Pfeil "Senden" vom Ultraschallkopf senkrecht nach unten bis zu einer Grenzflaeche,
-  - einen gruenen Pfeil "Echo" von genau dieser Grenzflaeche senkrecht nach oben zurueck zum Ultraschallkopf.
-- Die beiden Pfeile muessen auf derselben geraden Linie liegen und ihre Pfeilrichtungen muessen eindeutig gegensaetzlich sein.
-- Weitere Grenzflaechen duerfen sichtbar sein, aber dort keine zusaetzlichen Weg-Pfeile mit Pfeilspitzen zeichnen.
-- Zeige daneben eine einfache Echo-Zeit-Kurve mit zwei Peaks: "Echo 1" frueher, "Echo 2" spaeter.
-- Beschrifte qualitativ "kuerzere Laufzeit" beim fruehen Echo und "laengere Laufzeit" beim spaeteren Echo.
-
-Vermeiden:
-
-- Keine mehrfachen oder schraeg laufenden Sendeimpuls-Pfeile.
-- Keine zusaetzlichen Pfeile mit unklarer Quelle oder falschem Ziel.
-- Kein Bild, in dem der Ultraschallstrahl als Lichtstrahl oder bunte Zickzacklinie dargestellt wird.
-- Keine rein textliche Infokarte; die medizinische Situation und die Echoauswertung muessen visuell erkennbar sein.
+Use case: scientific-educational
+Primary request: Rebuild the layout as three non-overlapping panels so reflection, travel time and spatial resolution are all explicit and correct. Do not let one panel hide another.
+Panel 1, "Reflexion": Show a transducer above two horizontal boundary surfaces at visibly different depths. A short emitted pulse travels downward. Draw two separate reflected paths back to the transducer, one from the shallow boundary and one from the deep boundary. Label both reflected paths "Echo".
+Panel 2, "Laufzeit": Show a time-amplitude graph with exactly two distinct echo peaks. Label the earlier peak "Echo 1: kurze Laufzeit" and connect it to the shallow boundary. Label the later peak "Echo 2: lange Laufzeit" and connect it to the deep boundary. Echo 1 must be left of Echo 2.
+Panel 3, "Auflösung": Use the same two closely spaced reflectors in two rows. For "kurzer Puls" show two narrow, clearly separated peaks and label "getrennt erkennbar". For "langer Puls" show one broad overlapping double response and label "nicht getrennt". Add exactly once: "Kürzerer Puls → bessere Auflösung".
+Constraints: Keep all three panels fully visible with generous spacing. Echo order must match reflector depth. The short-pulse peaks must be narrower than the long-pulse response. Use correct German spelling. No logos or watermarks.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,7 @@ Titel: Thomson’sche Schwingungsgleichung nutzen
 Beschreibung: Die lernende Person kann mithilfe der Thomson’schen Gleichung die Eigenfrequenz eines idealisierten LC-Schwingkreises berechnen und Größenabhängigkeiten qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Thomson-Gleichung nutzen`.
-- Use a clean plain background with no decorative arrows and no unrelated symbols.
-- Make it visual-first: show one ideal LC circuit with a capacitor labelled `C` and a coil labelled `L`.
-- Add the formula `f_0 = 1 / (2 pi sqrt(L C))` clearly and correctly.
-- Show two small comparison panels:
-  `kleines L, kleines C: f_0 gross` with a dense short-wave signal trace;
-  `grosses L, grosses C: f_0 klein` with a wider slow signal trace.
-- Use only smooth signal curves without arrowheads.
-- Do not show current direction in the circuit.
-- Visible learner text must be limited to the title, `L`, `C`, `f_0 = 1 / (2 pi sqrt(L C))`, `kleines L, kleines C: f_0 gross`, and `grosses L, grosses C: f_0 klein`.
-
-Vermeiden:
-
-- Do not write `f_0 = 2 pi sqrt(L C)` or any inverted wrong version.
-- Do not imply that increasing `L` or `C` increases the eigenfrequency.
-- Do not draw current arrows, voltage arrows, energy-flow arrows, or process arrows.
-- Do not draw a battery as a permanent active source in the ideal oscillator.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Create a fresh German educational infographic for the ideal LC oscillator. Render f₀ = 1/(2π√(LC)) exactly. Show two qualitative comparisons: „kleines L, kleines C → große Eigenfrequenz“ and „großes L, großes C → kleine Eigenfrequenz“. Add arrows showing that increasing L or C lowers f₀. Use the exact spellings „groß“, „großes“ and „größer“ wherever needed; never use gross/grosses/groesser. Keep all formula symbols and radicals fully visible.
 ```
 
 ## Review-Notiz

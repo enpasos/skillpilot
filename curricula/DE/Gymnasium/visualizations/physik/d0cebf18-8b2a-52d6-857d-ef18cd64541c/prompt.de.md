@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,32 +31,19 @@ Titel: Entropie E15: Wärmekraftmaschinen und Carnot-Grenze
 Beschreibung: Die lernende Person erklärt, warum maximale Effizienz nur im reversiblen Grenzfall erreichbar ist (Carnot-Idee), und verknüpft Wirkungsgradgrenzen mit Entropiebilanzen von heißem und kaltem Reservoir.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image while preserving its correct thermodynamic balances. The title must be exactly `Wärmekraftmaschinen und Carnot-Grenze`; never write `Waermekraftmaschinen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Waermekraftmaschinen und Carnot-Grenze`.
-- Use formula and balance cards, not a flow-arrow engine diagram.
-- Show the energy balance: `Q_h = W + Q_c`.
-- Show the efficiency definition: `eta = W / Q_h`.
-- Show the Carnot limit: `eta_max = 1 - T_c / T_h`.
-- Use one checked numeric example:
-  - `T_h = 600 K`
-  - `T_c = 300 K`
-  - `eta_C = 1 - 300/600 = 0,50`
-- Add entropy-balance idea for the reversible limit:
-  - `reversibel: Q_h / T_h = Q_c / T_c`
-  - `real: zusaetzliche Entropieerzeugung`
-- Add conclusion: `Maximale Effizienz nur im reversiblen Grenzfall`.
-- Strict arrow rule: no arrows anywhere in the image. Use tables and cards only.
+Keep these relations exact and legible:
+- `Q_h = W + Q_c`
+- `η = W/Q_h`
+- `η_C = 1 − T_c/T_h`, with temperatures in Kelvin and `η ≤ η_C`
+- reversible limit: `Q_h/T_h = Q_c/T_c`
+- real heat engine: `Q_c/T_c − Q_h/T_h > 0` because entropy is produced.
 
-Vermeiden:
+For `T_h = 600 K` and `T_c = 300 K`, show `η_C = 0,50 = 50 %`. Use the Greek letter η, not the word eta or a Latin n. Use correct German umlauts and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 
-- Do not draw heat-flow arrows, work arrows, cycle arrows, or connector arrows.
-- Do not show a machine with `Q_c = 0`.
-- Do not claim `eta = 100%` for a heat engine between two reservoirs.
-- Do not use Celsius in the Carnot formula.
-- Do not write `eta_max = 1 - T_h / T_c`.
-- Do not claim real machines can exceed the Carnot limit.
+Critical typography correction: write the title by copying these exact characters: `Wärmekraftmaschinen und Carnot-Grenze`. The third character is `ä`; the sequence `ae` must not appear anywhere. Every efficiency symbol must be the Greek `η`; omit explanatory prose if needed rather than spelling it as `eta` or drawing a Latin `n`.
 ```
 
 ## Review-Notiz

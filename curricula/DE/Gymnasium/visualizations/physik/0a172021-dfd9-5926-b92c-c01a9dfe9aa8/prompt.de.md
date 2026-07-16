@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `0a172021-dfd9-5926-b92c-c01a9dfe9aa8.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/0a172021-dfd9-5926-b92c-c01a9dfe9aa8/0a172021-dfd9-5926-b92c-c01a9dfe9aa8.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,29 +31,16 @@ Titel: Planetenkonstellationen und Sichtbarkeit modellieren
 Beschreibung: Die lernende Person kann Planetenkonstellationen mithilfe von Zeichnungen oder Simulationen beschreiben, mit Sichtbarkeit am Nachthimmel verbinden und Schleifenbahnen historisch einordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving its useful cartoon composition and scientific meaning.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Planetenkonstellationen und Sichtbarkeit`.
-- If a reference image is provided, preserve the three-panel layout, geometry, object order, and line-of-sight segments exactly; improve only style, color, and polish.
-- Use three clearly separated visual panels. Do not merge the panels into one continuous orbit drawing.
-- Panel 1: `Opposition`. Draw only the straight order `Sonne - Erde - aeusserer Planet` on one line. Add `ganze Nacht sichtbar`.
-- Panel 2: `innerer Planet`. Draw `Sonne` and `Erde`; place the `innerer Planet` near the Sun direction as seen from Earth. Add `Daemmerung`.
-- Panel 3: `scheinbare Schleifenbahn`. Draw only an apparent loop track on the sky, clearly separate from the geometric panels.
-- Keep `Sonne`, `Erde`, `innerer Planet`, and `aeusserer Planet` labels next to the corresponding objects.
-- Use line-of-sight segments only from Earth to the selected planet; no arrowheads are needed on those line-of-sight segments.
-- Visible learner text must be limited to the title and the labels listed above.
+Mandatory correction:
+- Every visible German word must use proper spelling and real umlauts.
+- Write exactly `äußerer Planet`; never write `aeusserer Planet`.
+- Keep the Sun, Earth, inner and outer planet positions and the observation/retrograde-loop idea coherent.
+- In each panel, label each object at most once. In particular, write `Sonne` only once in the opposition panel; do not duplicate a label above and below the same object.
+- For the inner planet, show a clear elongation away from the Sun as seen from Earth, not an exact conjunction, so `Dämmerung` is plausible.
 
-Vermeiden:
-
-- Do not draw a planet physically looping on its orbit around the Sun.
-- Do not put Earth at the center of the main model.
-- Do not swap the opposition order; it must be `Sonne - Erde - aeusserer Planet`.
-- Do not show an inner planet at opposition.
-- Do not put the outer planet above, below, or on the Sun side of Earth in the opposition panel.
-- Do not use arrows that make planets move backward physically around the Sun.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Visible text must be short and legible. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

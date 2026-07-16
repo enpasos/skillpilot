@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,37 +31,14 @@ Titel: Ersten Hauptsatz in Prozessen quantitativ bilanzieren
 Beschreibung: Die lernende Person kann für einfache Gasprozesse Energiegrößen konsistent bilanzieren (Q, W, ΔU) und den ersten Hauptsatz rechnerisch anwenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving its existing energy-balance sign convention and useful process diagram.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Erster Hauptsatz: Energie bilanzieren`.
-- Use this sign convention explicitly:
-  - `W = Arbeit des Gases`
-  - `Delta U = Q - W`
-- Show three balance cards:
-  - `Q > 0: Waerme wird dem Gas zugefuehrt`
-  - `W > 0: Gas verrichtet Arbeit bei Expansion`
-  - `Delta U: Aenderung der inneren Energie`
-- Add one checked example:
-  - `Q = 500 J`
-  - `W = 200 J`
-  - `Delta U = 500 J - 200 J = 300 J`
-- Add a small note: `Vorzeichenkonvention immer mit angeben`.
-- Strict arrow rule: no arrows anywhere in the image. Use balance cards and text boxes only.
-- Use a plain background with no decorative icons.
-- Do not use arrow-like symbols, arrow-shaped highlights, circular arrow icons, lightning icons, flame icons, cycle symbols, or direction markers.
-- Make this a text-only formula-card infographic.
-- Do not draw gas containers, pistons, thermometers, heaters, flames, particles, springs, checkmark icons, or any physical apparatus.
+Mandatory correction:
+- Use correct German umlauts everywhere.
+- Write `Wärme`, `zugeführt`, and `Änderung`; never use `Waerme`, `zugefuehrt`, or `Aenderung`.
+- Keep Q, W, ΔU and the displayed first-law equation mutually consistent. Do not silently change the sign convention used in the reference.
 
-Vermeiden:
-
-- Do not mix sign conventions.
-- Do not write both `Delta U = Q - W` and `Delta U = Q + W` in the same image.
-- Do not draw heat-flow arrows, piston arrows, process arrows, or formula-flow arrows.
-- Do not draw decorative arrows or circular arrows inside the `W` or `Delta U` cards.
-- Do not use thermometer-up symbols or any visual claim that `Q > 0` always means temperature increases.
-- Do not include p-V diagrams in this image.
-- Do not use decorative formulas beyond the listed balance.
+Keep visible text short and legible. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,39 +31,7 @@ Titel: Optimierungen in Sportsituationen physikalisch begründen
 Beschreibung: Die lernende Person kann Optimierungsvorschläge für Sportsituationen fachlich begründen und auf einfache Modelle stützen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show a didactic sports optimization board for a long jump model, without force arrows.
-
-Main scene: `Weitsprung optimieren`
-- draw one athlete taking off from a marked takeoff line and landing in sand
-- show two plain dashed center-of-mass flight curves without arrowheads
-- label the shorter curve `kleinere Startgeschwindigkeit`
-- label the longer curve `groessere Startgeschwindigkeit`
-- show the longer curve landing farther than the shorter curve
-
-Model notes:
-- `Modell: gleiche Absprunghoehe und gleiche Landhoehe`
-- `groessere Startgeschwindigkeit fuehrt zu groesserer Weite`
-- `passender Absprungwinkel, keine Kraftpfeile`
-
-Small table:
-- column headers `Vorschlag` and `physikalische Begruendung`
-- row 1: `Anlauf stabil` | `Startgeschwindigkeit kontrollieren`
-- row 2: `Absprungwinkel passend` | `Hoehe und Weite abwaegen`
-- row 3: `Landung aktiv` | `keine Strecke verschenken`
-
-Vermeiden:
-
-Regeneration correction: draw no arrows and no arrowheads anywhere in the sports scene. The dashed curves must end with plain round landing marks or star landing marks, never with a downward arrow, pointer, wedge, or arrowhead.
-Do not draw any force arrows.
-Do not draw arrowheads on the flight curves.
-Do not draw arrow characters such as `->` in visible text.
-Do not draw relation arrows between labels unless the source and target are unambiguous.
-Do not show the longer curve landing nearer than the shorter curve.
-Do not imply that only one factor determines sports performance.
-Do not use exact numeric optimum angles.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Create a fresh German educational cartoon infographic about physically justified optimization in a long-jump situation. Show two comparable trajectories whose start speeds or takeoff angles differ, with clear axes and no invented precision. Add exactly three distinct recommendations: „Anlaufgeschwindigkeit kontrolliert erhöhen“, „Absprungwinkel anpassen“, and „Körperhaltung für sichere Landung optimieren“. For each, name the physical reason in one short phrase. Do not repeat any row, recommendation or sentence.
 ```
 
 ## Review-Notiz

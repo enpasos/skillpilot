@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,18 @@ Titel: Historische Entwicklung der Atommodelle und Modellgrenzen fachlich einord
 Beschreibung: Die lernende Person kann an der historischen Entwicklung der Atommodelle spezifische Eigenschaften und Grenzen naturwissenschaftlicher Modelle fachlich herausarbeiten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a German historical timeline titled `Atommodelle: Fortschritt und Grenzen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Atommodelle: Entwicklung und Grenzen`.
-- Show a clean horizontal timeline with four model cards in chronological order: `Dalton`, `Thomson`, `Rutherford`, `Bohr`.
-- Use simple icons:
-  - `Dalton`: solid sphere.
-  - `Thomson`: positive sphere with embedded small negative dots.
-  - `Rutherford`: tiny central nucleus with mostly empty space.
-  - `Bohr`: nucleus with three allowed circular orbits.
-- Under each card add a short red stamp `Grenze`.
-- Add a final small card labelled `Orbitalmodell` showing a diffuse probability cloud, not a circular orbit.
-- Use timeline connectors as plain short line segments without arrowheads.
-- Visible learner text must be limited to the title, `Dalton`, `Thomson`, `Rutherford`, `Bohr`, `Orbitalmodell`, and `Grenze`.
+Each model must show one concise idea and one concrete limitation; do not use empty `Grenze` stamps.
+- `Dalton`: `unteilbare Kugeln`; limitation `keine innere Struktur und keine Ladungen`.
+- `Thomson`: `Elektronen in positiver Masse`; limitation `kein kompakter Atomkern`.
+- `Rutherford`: `kleiner positiver Kern, große Hülle`; limitation `erklärt Stabilität und Linienspektren nicht`.
+- `Bohr`: `quantisierte Energieniveaus`; limitation `nur für wasserstoffähnliche Atome gut`.
+- Optional final panel `Orbitalmodell`: use the short, unbroken wording `Elektronenwolke: Wahrscheinlichkeiten statt Bahnen`; present it as the improved quantum model, not a tiny planet system. Never hyphenate or split the word `Wahrscheinlichkeiten`.
 
-Vermeiden:
-
-- Do not put the models in the wrong historical order.
-- Do not draw the orbital model as fixed circular electron tracks.
-- Do not use arrows that imply a false physical motion.
-- Do not add long explanatory text, dates, internal instructions, or production guidance.
+Use arrows only for historical succession, not to imply that atoms physically transform between models. Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+Do not print a generic stamp, badge, or standalone word `Grenze` anywhere in the panels. The concrete limitation sentence itself is sufficient; the word `Grenzen` may appear only in the main title.
 ```
 
 ## Review-Notiz

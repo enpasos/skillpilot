@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,7 @@ Titel: Bohr’sche Postulate und Quantisierung
 Beschreibung: Die lernende Person kann die Bohr’schen Postulate formulieren und das Konzept der Quantisierung der Bahnen und Energieniveaus qualitativ erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Bohr-Modell: erlaubte Bahnen`.
-- Show a simple Bohr atom with a nucleus and exactly three circular allowed orbits labelled `n = 1`, `n = 2`, and `n = 3`.
-- Put electron dots only on the circular allowed orbits, never between two orbits.
-- Show one clear downward transition arrow from orbit `n = 3` to orbit `n = 2`.
-- From that transition, show one small photon wave leaving the atom labelled `Photon`.
-- Add a small caption inside the image: `nur bestimmte Energien`.
-- Visible learner text must be limited to the title, `n = 1`, `n = 2`, `n = 3`, `Photon`, and `nur bestimmte Energien`.
-
-Vermeiden:
-
-- Do not draw spiral electron paths.
-- Do not show continuous orbit radii or electrons between allowed orbits.
-- Do not draw arrows that miss their source or target orbit.
-- Do not add quantum numbers beyond n = 1, n = 2, n = 3.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh German educational infographic about the Bohr postulates using hydrogen only. Draw exactly one proton in the nucleus and exactly one electron on one permitted circular orbit; do not draw any additional electrons. Show stationary states with E_n = −13,6 eV/n² and angular-momentum quantization L = nℏ. If numerical energies are printed, use exactly E₁ = −13,6 eV, E₂ = −3,4 eV and E₃ = −1,51 eV, each once and next to its correct level; never duplicate E₂ on the n = 3 orbit. In a second small panel show one electron transition between two levels and one photon with hf = |ΔE|. State that no radiation is emitted while the electron remains in a stationary state. Keep nucleus charge and electron count consistent.
 ```
 
 ## Review-Notiz

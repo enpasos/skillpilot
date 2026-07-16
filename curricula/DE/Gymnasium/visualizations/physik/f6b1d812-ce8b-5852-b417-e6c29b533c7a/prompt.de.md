@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,12 @@ Titel: Messunsicherheiten angeben
 Beschreibung: Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show how to write a measured value with uncertainty.
-
-Main visual:
-- draw a ruler segment from `12,0 cm` to `12,6 cm`
-- mark the measured position at `12,3 cm`
-- draw a bracket interval from `12,2 cm` to `12,4 cm`
-- label the interval `Unsicherheitsbereich`
-
-Formula box:
-- write exactly: `l = (12,3 +/- 0,1) cm`
-- add `Messwert +/- Unsicherheit`
-
-Small checklist:
-- `Einheit angeben`
-- `Unsicherheit gleich genau wie letzte Stelle`
-- `Intervall: 12,2 cm bis 12,4 cm`
-
-Vermeiden:
-
-Do not write a bare value without unit.
-Do not use inconsistent decimal places such as `12,30 +/- 0,1 cm`.
-Do not make the interval asymmetric.
-Do not use percent uncertainty.
-Do not draw physical arrows unrelated to the ruler.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use case: scientific-educational
+Primary request: Recreate the measurement-uncertainty infographic with a scale whose visible resolution is fully consistent with the stated uncertainty.
+Required scale: Draw a ruler section from 12,0 cm to 12,6 cm with tick marks only every 0,1 cm; do not draw any finer subdivisions between adjacent labelled ticks. Highlight the measured position 12,3 cm and the uncertainty interval from 12,2 cm to 12,4 cm.
+Required notation: Render exactly "ℓ = (12,3 ± 0,1) cm". Label 12,3 cm as "Messwert", 0,1 cm as "Unsicherheit", and the highlighted span as "Unsicherheitsbereich".
+Required explanation: Add "Intervall: 12,2 cm bis 12,4 cm". State that the ruler division is 0,1 cm so the displayed uncertainty and last decimal place are consistent.
+Constraints: German decimal commas only. The interval endpoints, highlighted span, tick spacing and formula must agree exactly. No finer tick marks, no logos and no watermarks.
 ```
 
 ## Review-Notiz

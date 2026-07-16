@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,12 @@ Titel: Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für Mo
 Beschreibung: Die lernende Person kann die Bedeutung von Flammenfärbung, Linienspektren und Spektralanalyse für die Entwicklung von Modellen diskreter Energiezustände der Elektronen in der Atomhülle fachlich interpretieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Flammenfaerbung und Spektralanalyse`.
-- Use three practical panels with no connecting arrows.
-- Panel `Flamme`: show two simple flame-test samples side by side, one yellow flame labelled `Na` and one red flame labelled `Li`.
-- Panel `Spektrum`: show two black spectrum strips with discrete vertical lines; the `Na` strip has a dominant yellow line, the `Li` strip has a dominant red line.
-- Panel `Energieniveaus`: show a small energy-level diagram with two downward transition arrows ending exactly on lower levels and two matching photon waves.
-- Add a small label `diskrete Energien` in the energy-level panel.
-- Visible learner text must be limited to the title, `Flamme`, `Spektrum`, `Energieniveaus`, `Na`, `Li`, and `diskrete Energien`.
-
-Vermeiden:
-
-- Do not show the spectrum strips as continuous rainbows.
-- Do not swap the dominant Na yellow line and Li red line.
-- Do not draw transition arrows that miss their source or target energy level.
-- Do not draw chemical reaction equations or unrelated laboratory text.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use case: scientific-educational
+Primary request: Recreate the link from flame colour and line spectra to discrete atomic energy levels with a fully consistent level diagram and flawless German spelling.
+Required title: Write exactly "Flammenfärbung und Spektralanalyse".
+Required structure: Left: one coloured flame labelled "Flamme". Middle: a black strip labelled "Linienspektrum" with exactly two narrow coloured emission lines, one yellow and one red. Right: exactly three and only three horizontal energy levels labelled bottom-to-top E₁, E₂, E₃. No fourth line and no unlabelled line.
+Required transitions: Draw exactly two downward arrows: yellow from E₃ to E₂ and red from E₂ to E₁. Each arrow must start and end exactly on its labelled levels. State "ΔE = h·f" once.
+Constraints: The exact title is "Flammenfärbung und Spektralanalyse"; copy it character for character. Do not use any other title. Do not imply a continuous spectrum. Proofread every visible word. No logos or watermarks.
 ```
 
 ## Review-Notiz

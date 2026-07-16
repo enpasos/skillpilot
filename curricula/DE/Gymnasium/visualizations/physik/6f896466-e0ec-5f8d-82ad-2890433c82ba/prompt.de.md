@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: gemini-3-pro-image
-- Status: accepted
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
 - Quellbild: `6f896466-e0ec-5f8d-82ad-2890433c82ba.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/6f896466-e0ec-5f8d-82ad-2890433c82ba/6f896466-e0ec-5f8d-82ad-2890433c82ba.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,10 @@ Titel: Sterntypen und Entwicklung
 Beschreibung: Die lernende Person kann Lebenszyklen verschiedener Sterntypen beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Sterntypen und Entwicklung`.
-- Use a clean two-branch flowchart, not a cluttered star field.
-- Upper branch labelled `sonnenaehnlicher Stern`: `Hauptreihe` -> `Roter Riese` -> `Planetarischer Nebel` -> `Weisser Zwerg`.
-- Lower branch labelled `massereicher Stern`: `Hauptreihe` -> `Roter Ueberriese` -> `Supernova` -> `Neutronenstern / Schwarzes Loch`.
-- Use straight left-to-right arrows only.
-- Make the two branches visibly separate so no arrow jumps to the wrong endpoint.
-- Visible learner text must be limited to the title and the branch/stage labels listed above.
-
-Vermeiden:
-
-- Do not show a white dwarf after a supernova on the massive-star branch.
-- Do not show a black hole endpoint on the sun-like branch.
-- Do not draw cyclic evolution arrows.
-- Do not use an HR diagram unless the temperature axis is correct; a flowchart is safer.
-- Do not add extra arrows; every arrow must connect directly adjacent stages in the correct branch.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use case: scientific-educational
+Primary request: Recreate the two-path stellar-evolution overview with flawless German spelling and minimal text.
+Required visible labels, written exactly and only as follows: "Sterntypen und Entwicklung", "sonnenähnlicher Stern", "Hauptreihe", "Roter Riese", "Planetarischer Nebel", "Weißer Zwerg", "massereicher Stern", "Roter Überriese", "Supernova", "Neutronenstern", "Schwarzes Loch".
+Constraints: Show a physically plausible upper path from a Sun-like main-sequence star through red giant and planetary nebula to white dwarf. Show a separate lower path from a massive main-sequence star through red supergiant and supernova, branching only to neutron star or black hole. Use proper German umlauts and ß. Proofread every visible word. No extra text, logos or watermarks.
 ```
 
 ## Review-Notiz

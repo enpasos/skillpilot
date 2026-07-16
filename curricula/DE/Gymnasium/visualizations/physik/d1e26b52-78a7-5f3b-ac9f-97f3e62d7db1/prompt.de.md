@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,16 @@ Titel: Interferometer verstehen
 Beschreibung: Die lernende Person kann Funktionsweise eines Interferometers erläutern und Auswertungen durchführen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as an optically exact German Michelson-interferometer infographic titled `Interferometer verstehen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Interferometer verstehen`.
-- Show a simple Michelson interferometer layout from above: one laser source, one half-silvered beam splitter at 45 degrees, two mirrors at right angles, and one detector/screen.
-- Draw exactly two light paths with no arrowheads: one arm from the beam splitter to the upper mirror and back to the beam splitter, one arm from the beam splitter to the right mirror and back to the beam splitter, then one combined line from the beam splitter to the detector.
-- Use continuous colored lines for the paths; do not use dotted return paths.
-- Mark the two arm lengths as `s1` and `s2`.
-- Add a small formula card exactly as: `Delta s = |s1 - s2|`.
-- Add a second small card exactly as: `helle Streifen: Delta s = m*lambda`.
-- Visible learner text must be limited to the title, `Laser`, `Strahlteiler`, `Spiegel`, `Detektor`, `s1`, `s2`, `Delta s = |s1 - s2|`, and `helle Streifen: Delta s = m*lambda`.
+Mandatory optical layout:
+- One monochromatic red laser beam enters a 45-degree beam splitter.
+- One red beam travels upward to mirror 1 and back; one red beam travels rightward to mirror 2 and back.
+- Both returning beams meet again at the beam splitter and leave together toward one detector below it.
+- Every outbound and return path must connect continuously to the correct mirror, beam splitter, and detector. Use only red shades for the single wavelength; no rainbow spectrum and no diverging colored fan.
 
-Vermeiden:
-
-- Do not draw more than two interferometer arms.
-- Do not draw rays that miss the beam splitter, mirror, or detector.
-- Do not draw crossed paths that imply light passing through a mirror.
-- Do not use arrowheads on light paths.
-- Do not draw any return path that ends away from the beam splitter.
-- Do not use the double-slit formula instead of path difference.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Define `s₁` and `s₂` as the one-way distances from beam splitter to the two mirrors. Write exactly `Δs = 2 · |s₁ − s₂|`. Add `hell: Δs = m · λ` and `dunkel: Δs = (m + 1/2) · λ`. Use sparse, correctly spelled German labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

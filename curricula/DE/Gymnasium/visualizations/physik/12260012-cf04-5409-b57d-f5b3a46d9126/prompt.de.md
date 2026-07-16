@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,51 +31,7 @@ Titel: Freier Fall mit Luftreibung und Grenzgeschwindigkeit
 Beschreibung: Die lernende Person kann den freien Fall mit Luftreibung qualitativ und mithilfe einfacher Modelle beschreiben und den Begriff der Grenzgeschwindigkeit erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show falling with air resistance and terminal velocity.
-
-Title: `Fall mit Luftreibung`
-
-Use three vertical stages for one falling object:
-
-Stage 1: `Start`
-- object falling downward
-- draw two vertical force arrows on the object:
-  - downward arrow labelled `F_G`
-  - short upward arrow labelled `F_Luft`
-- downward arrow longer than upward arrow
-- label `a nach unten`
-
-Stage 2: `schneller`
-- same object falling downward
-- draw two vertical force arrows:
-  - downward `F_G`
-  - longer upward `F_Luft`
-- downward arrow still slightly longer than upward arrow
-- label `a kleiner`
-
-Stage 3: `Grenzgeschwindigkeit`
-- same object falling downward
-- draw exactly two equal-length vertical force arrows:
-  - downward `F_G`
-  - upward `F_Luft`
-- label `F_G = F_Luft`
-- label `v = konstant`
-
-Formula note:
-- `F_res -> 0`
-- `Grenzgeschwindigkeit: keine weitere Beschleunigung`
-
-Vermeiden:
-
-Do not draw air resistance downward.
-Do not make `F_Luft` larger than `F_G` at terminal velocity.
-Do not draw horizontal force arrows.
-Do not add extra motion arrows beyond the stage labels.
-Do not claim that gravity disappears.
-Do not label terminal velocity as zero velocity.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Create a fresh German educational cartoon infographic with exactly three successive stages of a fall from rest through air. Stage 1 must state v = 0 and F_Luft = 0 while weight F_G points downward. Stage 2 must show 0 < F_Luft < F_G and downward acceleration. Stage 3 must show F_Luft = F_G, a = 0 and constant terminal velocity v_G. Keep the upward drag arrow smaller than weight in stage 2 and equal in stage 3. Add a small velocity-time graph approaching a horizontal asymptote. Do not show nonzero drag at the instant of release.
 ```
 
 ## Review-Notiz

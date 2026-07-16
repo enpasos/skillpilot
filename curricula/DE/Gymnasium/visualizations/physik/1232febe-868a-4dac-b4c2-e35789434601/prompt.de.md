@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,40 +31,9 @@ Titel: Unfallphysik: Kraftstoß und Knautschzone
 Beschreibung: Anwendung des Impulses auf Verkehrsunfälle. Zusammenhang zwischen Kraftstoß und Verletzungsrisiko; Bedeutung von Knautschzonen und Sicherheitsabständen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show why a crumple zone reduces force by increasing stopping time for the same impulse.
-
-Title: `Kraftstoß und Knautschzone`
-
-Use two side-by-side force-time diagrams, not a dramatic crash scene.
-
-Left panel: `kurze Stoppzeit`
-- horizontal axis `t/s`, vertical axis `F/N`
-- rectangle width `Δt = 0,05 s`
-- rectangle height `F = 100000 N`
-- label area `J = 5000 N s`
-
-Right panel: `Knautschzone`
-- horizontal axis `t/s`, vertical axis `F/N`
-- rectangle width `Δt = 0,20 s`
-- rectangle height `F = 25000 N`
-- label area `J = 5000 N s`
-
-Conclusion box:
-- `gleiche Impulsänderung Δp`
-- `groessere Δt -> kleinere mittlere Kraft`
-- `J = F_mittel * Δt`
-
-Vermeiden:
-
-Do not draw collision-force arrows.
-Do not draw a visible car arrow unless it is clearly decorative and not used as data.
-Do not make the two impulse areas different.
-Do not make the crumple-zone force larger than the short-stop force.
-Do not claim that the crumple zone reduces momentum change; it increases stopping time.
-Do not use graphic injury imagery.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use case: scientific-educational
+Primary request: Preserve the existing crash-safety comparison and formulas, but correct the German label to read exactly "größere Δt".
+Constraints: Keep the relation J = F · Δt, the longer stopping time and the reduced average force physically consistent. Use correct German typography throughout. No extra text, logos or watermarks.
 ```
 
 ## Review-Notiz

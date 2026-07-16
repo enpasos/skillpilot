@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,35 +31,16 @@ Titel: Entropie E16: Ordnung, Information und Zeitpfeil
 Beschreibung: Die lernende Person formuliert präzise, was Entropie nicht ist (kein vages Unordnungsmaß), und erklärt den Zeitpfeil statistisch: lokale Entropieabnahme ist möglich, wenn die Umgebung stärker zunimmt (offene Systeme, z. B. Kühlschrank).
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image as a scientifically exact German cartoon infographic titled `Entropie und Zeitpfeil`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Ordnung, Information und Zeitpfeil`.
-- Show three precise message cards:
-  1. `Entropie ist kein vages Unordnungswort`
-  2. `Statistisch: mehr Mikrozustaende sind wahrscheinlicher`
-  3. `Zeitpfeil: Delta S_ges > 0 bei realen Prozessen`
-- Include an open-system example as text-only balance:
-  - `Kuehlschrank: Delta S_System < 0`
-  - `Umgebung: groessere Zunahme`
-  - `Delta S_System + Delta S_Umgebung = Delta S_ges > 0`
-- Add a small static comparison with labelled boxes:
-  - `lokale Ordnung moeglich`
-  - `Umgebung nimmt mehr Entropie auf`
-- Add conclusion: `Lokale Entropieabnahme ist erlaubt, wenn die Umgebung staerker zunimmt`.
-- Strict arrow rule: no arrows anywhere in the image. Use text cards and static symbols only.
+Show the statistical statement without ambiguity:
+- On the left, a rare macroscopic arrangement labeled `Makrozustand mit wenigen möglichen Mikrozuständen`.
+- On the right, an equilibrium-like arrangement labeled `Makrozustand mit vielen möglichen Mikrozuständen`.
+- A clear time arrow points from left to right and is labeled `wahrscheinlicher`.
+- Do not claim that an individual microstate is more probable merely because there are more microstates. The greater probability belongs to the macrostate containing more compatible microstates.
+- Add a small refrigerator cartoon that clearly separates system and surroundings: `lokal: Entropie kann sinken`, `Umgebung: Entropie steigt stärker`, and `Entropie gesamt steigt`.
 
-Vermeiden:
-
-- Do not write simply `Entropie = Unordnung`.
-- Do not claim local entropy decrease is impossible.
-- Do not claim the total entropy of an isolated system can decrease.
-- Do not draw time arrows, process arrows, heat arrows, or cycle arrows.
-- Do not show a refrigerator with misleading heat-flow arrows.
-- Do not use vague slogans without the total-entropy condition.
-- Do not use a minus sign between system and environment.
-- Do not write `Delta S_System - Delta S_Umgebung`.
-- Do not write `!= Delta S_ges > 0` or any inequality/equation that breaks the additive entropy balance.
+Use proper German spelling and umlauts. Keep visible text sparse and large. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

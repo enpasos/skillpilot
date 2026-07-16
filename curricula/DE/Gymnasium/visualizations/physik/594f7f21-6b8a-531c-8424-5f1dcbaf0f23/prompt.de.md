@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -28,42 +28,19 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Potenzielle Energie und Potential
-Beschreibung: Die lernende Person kann potenzielle Energie über ein Potential beschreiben, einfache Fälle (z. B. im Gravitationsfeld) berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.
+Beschreibung: Die lernende Person kann potenzielle Energie über ein Potential beschreiben, einfache Fälle (z. B. im Gravitationsfeld) berechnen und die Abhängigkeit von Lage und Bezugssystem erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image as a physically consistent German cartoon infographic titled `Potenzielle Energie und Potential`.
 
-Show potential as potential energy per mass in a simple gravitational field.
+Mandatory correction of the reference level:
+- Draw a horizontal ground/reference plane at the bottom labeled exactly `Bezugsebene: h = 0 m`.
+- Draw the ball above it at a vertical height labeled exactly `h = 3 m`.
+- A compact two-row comparison must agree with the drawing: at the reference plane `h = 0 m` and `E_pot = 0 J`; at the ball `h = 3 m` and `E_pot = m · g · 3 m`.
+- Show `E_pot = m · g · h` and make clear that changing the reference plane changes the numerical potential energy, while energy differences remain physically relevant.
+- Do not label the ball h = 0 and do not label the bottom h = 3 m.
 
-Title: `Potenzielle Energie und Potential`
-
-Main visual:
-- show one ball at height `h = 3 m` above a horizontal reference level
-- use a vertical bracket from the reference level exactly to the ball level
-- label `m = 2 kg`
-- label `g = 10 N/kg`
-
-Formula panel:
-- `Phi = g * h`
-- `E_pot = m * Phi`
-- `Phi = 30 J/kg`
-- `E_pot = 60 J`
-
-Reference-level comparison:
-- small table with two rows:
-  - `Bezugsebene unten: h = 3 m, Phi = 30 J/kg`
-  - `Bezugsebene am Ball: h = 0 m, Phi = 0 J/kg`
-- note `Potentialwerte haengen von der Bezugsebene ab`
-
-Vermeiden:
-
-Do not draw electric charges or electric fields.
-Do not draw force arrows.
-Do not draw motion arrows.
-Do not make `Phi` equal to `E_pot`; keep units `J/kg` for `Phi` and `J` for `E_pot`.
-Do not let the height bracket start or end at the wrong level.
-Do not claim that absolute potential values are independent of the chosen reference level.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use correct German spelling and sparse, legible labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

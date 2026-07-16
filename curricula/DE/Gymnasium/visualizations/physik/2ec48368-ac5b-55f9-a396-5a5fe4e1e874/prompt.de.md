@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,14 @@ Titel: Tunneleffekt und Rastertunnelmikroskop
 Beschreibung: Die lernende Person kann den Tunneleffekt qualitativ beschreiben und Aufbau, Funktionsprinzip sowie Anwendungen eines Rastertunnelmikroskops erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving the scientifically useful tunnel-effect and scanning-probe composition.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Tunneleffekt im Rastertunnelmikroskop`.
-- Use two coordinated visual parts.
-- Left part: draw a potential barrier graph with a decaying wavefunction entering and continuing weakly through the barrier; label it `Barriere` and `Tunneln`.
-- The wavefunction must be a curve, not a particle path, and it must not jump over the barrier.
-- Right part: show an STM tip very close above a surface, a tiny glowing tunnel gap, a current meter labelled `I`, and a simple height map image.
-- Use no electron trajectory arrows and no path lines across the gap.
-- If any arrow is used, it may only be a short vertical distance marker labelled `Abstand`; it must connect the tip-surface gap directly.
-- Visible learner text must be limited to the title, `Barriere`, `Tunneln`, `STM-Spitze`, `Oberflaeche`, `Abstand`, `I`, and `Hoehenkarte`.
+Mandatory correction:
+- Use proper German umlauts everywhere.
+- Write `Oberfläche` and `Höhenkarte`; never write `Oberflaeche` or `Hoehenkarte`.
+- Keep the tip very close to, but not touching, the sample; show a tunneling-current signal and a corresponding surface-height map without claiming direct optical imaging.
 
-Vermeiden:
-
-- Do not draw electrons flying over the barrier.
-- Do not draw a classical path through the barrier.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Keep visible text short and legible. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

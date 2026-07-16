@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,14 @@ Titel: Kern und Hülle des Atoms qualitativ beschreiben
 Beschreibung: Die lernende Person kann Kern und Hülle des Atoms qualitativ beschreiben und Größenordnungen im Atom modellhaft einordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Erhalte die fachlich richtige Darstellung mit exakt 2 Protonen, 2 Neutronen und 2 Elektronen sowie die gut lesbare Neutralitätsbilanz.
 
-Show a qualitative model of an atom with nucleus and shell.
-Use one large simplified atom diagram plus one scale note.
+Entferne alle Beschriftungspfeile für die Hülle. Setze stattdessen das Wort „Atomhülle“ ohne Pfeil groß in die freie blaue Fläche oben links, deutlich weit vom Kern entfernt. Beschrifte den kleinen Teilchencluster direkt darunter mit „Kern“, ebenfalls ohne Pfeil. Verwende eine kleine Legende mit Farbpunkten statt mehrerer sich kreuzender Pfeile: „Proton (+)“, „Neutron“, „Elektron (−)“.
 
-Atom model:
-- small central nucleus labelled `Kern`
-- nucleus contains red `Protonen (+)` and gray `Neutronen`
-- surrounding region labelled `Hülle`
-- several small blue electron dots labelled `Elektronen (-)` in the shell region
-- make the shell region much larger than the nucleus
-- electron dots must have no arrowheads, no trails, and no local motion arrows
+Die Bilanz muss fehlerfrei und exakt lauten:
+„2 positive Ladungen + 2 negative Ladungen = insgesamt neutral“.
 
-Scale note:
-- `Modell: Kern sehr klein, Hülle sehr groß`
-- `Atom ist überwiegend leerer Raum`
-
-Vermeiden:
-
-Do not draw electrons inside the nucleus.
-Do not draw protons or neutrons in the shell.
-Do not make nucleus and shell similar size.
-Do not use planet-style orbit labels as if exact electron paths were known.
-Do not add nuclear radiation symbols; this goal is only nucleus and shell.
-Do not use any arrowheads in the atom diagram.
-Use plain label pointer lines only, without arrowheads.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Der Hinweis „nicht maßstabsgerecht“ steht separat unter dem Modell. Keine doppelten Wörter, keine überlagerten Buchstaben, keine irreführenden Linien.
 ```
 
 ## Review-Notiz

@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `ad62f563-4fee-5399-8d9c-03a214658aa9.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/ad62f563-4fee-5399-8d9c-03a214658aa9/ad62f563-4fee-5399-8d9c-03a214658aa9.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -28,25 +28,18 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Experimentelle Untersuchungen fachgerecht dokumentieren
-Beschreibung: Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer fachlichen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.
+Beschreibung: Die lernende Person kann Beobachtungen, Messwerte, Auswertungsschritte und Ergebnisse einer physikalischen Untersuchung in einem strukturierten Protokoll oder einer fachtypischen Darstellung nachvollziehbar dokumentieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a visual German educational infographic titled `Experiment fachgerecht dokumentieren` using one coherent spring experiment.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Untersuchung dokumentieren`.
-- Show an open lab notebook or tablet page surrounded by a small experiment sketch, a data table, a graph, and a highlighted result box.
-- Use four notebook section labels: `Aufbau`, `Beobachtung`, `Messwerte`, `Ergebnis`.
-- The `Aufbau` sketch must show a simple spring-and-mass setup with a ruler next to the spring. Do not draw any electric circuit in this image.
-- The `Messwerte` table should look structured with columns and rows, but use simple placeholder marks instead of exact numbers. The graph should have clear axes and plotted points but no numeric values, so table and graph cannot contradict each other.
-- Keep this visual and artifact-focused; the notebook should be the central object.
-- Visible learner text must be limited to the title and the four section labels.
+Panel 1 `Aufbau`: show a vertical spring with a ruler and hanging masses. Label the measured quantities `Kraft F` and `Dehnung s`.
 
-Vermeiden:
+Panel 2 `Messwerte`: show an exact table with columns `F in N` and `s in cm` and the four rows `0 | 0`, `1 | 2`, `2 | 4`, `3 | 6`. These must be real numbers with units, not check marks.
 
-- Do not draw batteries, lamps, switches, wires, current arrows, or any electric circuit.
-- Do not write a numeric table that contradicts the plotted graph.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Panel 3 `Auswertung`: show a coordinate graph whose horizontal axis is `F in N` and vertical axis is `s in cm`; plot precisely the four table points on a straight line through the origin. Add `Steigung: 2 cm/N` and `Ergebnis: s ist proportional zu F`.
+
+Make the correspondence from setup to table to graph visually explicit. Do not add data that contradict the table. Use correct German text and legible axes. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

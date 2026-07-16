@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,15 @@ Titel: Charakteristisches Röntgenspektrum mit Energieniveaus der Atomhülle erk
 Beschreibung: Die lernende Person kann das charakteristische Röntgenspektrum mithilfe von Energieniveaus der Atomhülle erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Bewahre die fachlich richtige Darstellung von K- und L-Schale, Elektronenlücke und den Übergängen Kα sowie Kβ bei. Korrigiere ausschließlich die sichtbare Sprache und halte alle Energierichtungen konsistent.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Charakteristisches Roentgenspektrum`.
-- Use two panels.
-- Left panel `Atomhülle`: show three horizontal inner-shell energy levels labelled `K`, `L`, and `M`, with `K` lowest, `L` above it, and `M` above `L`.
-- Show a small empty marker on the `K` level labelled `Luecke`.
-- Draw one downward transition arrow exactly from `L` to `K` labelled `K_alpha`.
-- Draw one downward transition arrow exactly from `M` to `K` labelled `K_beta`.
-- Show two short outgoing photon waves beside those transitions labelled `Roentgenphoton`.
-- Right panel `Spektrum`: show a graph with horizontal axis `E` and vertical axis `Intensitaet`, a smooth bremsstrahlung background, and two sharp peaks labelled `K_alpha` and `K_beta`.
-- Visible learner text must be limited to the title, `Atomhülle`, `K`, `L`, `M`, `Luecke`, `K_alpha`, `K_beta`, `Roentgenphoton`, `Spektrum`, `E`, and `Intensitaet`.
+Verwende exakt die Wörter:
+- „Röntgenphoton“
+- „Lücke in der K-Schale“
+- „Elektronenübergang“
+- „charakteristisches Röntgenspektrum“
 
-Vermeiden:
-
-- Do not reverse the transitions from K upward to L or M.
-- Do not place `K` above `L` or `M`.
-- Do not draw transition arrows that start or end between levels.
-- Do not show only a continuous spectrum without sharp characteristic peaks.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Kα muss den Übergang von der L- zur K-Schale zeigen; Kβ einen Übergang aus einer weiter außen liegenden Schale zur K-Schale. Das ausgesandte Photon hat jeweils die Energiedifferenz der Niveaus. Keine Ersatzschreibweisen wie „Roentgen“ oder „Luecke“, keine neuen Formeln.
 ```
 
 ## Review-Notiz

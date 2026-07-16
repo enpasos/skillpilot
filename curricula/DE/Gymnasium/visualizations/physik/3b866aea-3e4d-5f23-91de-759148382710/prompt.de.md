@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,18 @@ Titel: Bahnformen quantitativ bestimmen
 Beschreibung: Die lernende Person kann Bahnradien und Umlaufzeiten geladener Teilchen in homogenen Feldern berechnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Baue die Infografik als eindeutige quantitative Darstellung einer geladenen Teilchenbahn im homogenen Magnetfeld auf.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Bahnformen in Feldern berechnen`.
-- Show one clean main panel for a charged particle in a homogeneous magnetic field.
-- Represent the homogeneous magnetic field into the image plane with repeated `x` symbols and label it only `B homogen`.
-- The `x` symbols are the complete field-direction convention for `B homogen`.
-- Show a circular particle track without arrowheads.
-- Mark the center `M` and draw one plain radius segment from `M` to the circular track; label the segment `r`.
-- Show exactly these two formula cards: `r = m*v/(|q|*B)` and `T = 2*pi*m/(|q|*B)`.
-- Add one small pfeilfreie check card: `groesseres B: kleinerer r`.
-- Do not draw velocity arrows, force arrows, orbit-direction arrows, or comparison arrows.
-- Visible learner text must be limited to the title, `B homogen`, `x`, `M`, `r`, the two formulas, and the check card.
+Zeige eine positive Ladung q > 0, die sich mit einem klaren Geschwindigkeitspfeil v nach rechts bewegt. Das Magnetfeld B zeigt mit gleichmäßig verteilten Kreuzsymbolen in die Bildebene. Am Startpunkt zeigt der Kraftpfeil F_L nach oben. Die anschließende Kreisbahn krümmt sich deshalb nach oben. Alle drei Richtungen müssen räumlich eindeutig zusammenpassen.
 
-Vermeiden:
+Zeige gut lesbar die korrekte Beziehung:
+„r = m·v / (|q|·B)“
 
-- Do not draw a spiral track for a constant-speed particle in a uniform magnetic field.
-- Use only `x` symbols for the field direction.
-- Do not use damaged formulas, extra parentheses, missing parentheses, or changed denominators.
-- Do not draw Lorentz-force arrows, velocity arrows, orbit-direction arrows, or relationship arrows.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Daneben zwei knappe Vergleiche:
+- „größeres m oder v → größerer Radius“
+- „größeres |q| oder B → kleinerer Radius“
+
+Verwende exakt „größeres“ mit ß. Keine widersprüchlichen Pfeile, keine perspektivische Verzerrung, keine zusätzliche Herleitung.
 ```
 
 ## Review-Notiz

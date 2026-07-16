@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,19 @@ Titel: Entropie E04: Makroskopische Definition (Clausius)
 Beschreibung: Die lernende Person nutzt die Definition $dS = \frac{\delta Q_{\mathrm{rev}}}{T}$ und erklärt, warum zur Berechnung von $\Delta S$ ein reversibler Ersatzweg verwendet werden darf (weil $S$ eine Zustandsgröße ist).
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image while preserving the exact Clausius definition. Title: `Clausius-Definition der Entropie`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Clausius-Definition der Entropie`.
-- Main formula exactly: `dS = delta Q_rev / T`.
-- Add a second formula line: `Delta S = Integral delta Q_rev / T`.
-- Show two state points `A` and `B`.
-- Show a real path as grey dashed curve labelled `realer Weg` and a separate blue smooth curve labelled `reversibler Ersatzweg`.
-- The curves must have no arrowheads.
-- Axes, paths, labels, icons, and decorations must have no arrowheads. Use plain axis lines and pfeilfreie curves only.
-- Add note: `S ist Zustandsgroesse: Delta S haengt nur von A und B ab`.
-- Add warning badge: `Q_rev fuer die Berechnung, nicht beliebiges Q`.
+Write exactly:
+- `dS = δQ_rev/T`
+- `ΔS = ∫_A^B δQ_rev/T`
+- `Q_rev für die Berechnung, nicht beliebiges Q`
+- `S ist eine Zustandsgröße`
+- `ΔS hängt nur von Zustand A und Zustand B ab`.
 
-Vermeiden:
+Show a dashed `realer Weg` and a solid `reversibler Ersatzweg` connecting the same states A and B, making clear that the reversible path is used to calculate the state-function change. Never write `fuer`, `Zustandsgroesse`, or `haengt`. Use correct German spelling and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 
-- Do not write `dS = Q/T` without `rev`.
-- Do not write `delta S` for the infinitesimal definition; use `dS`.
-- Do not draw arrows on the paths or axes.
-- Do not draw decorative arrows, flow arrows, waveform arrows, or arrow-like icons.
-- Do not imply that entropy depends on the chosen path.
-- Do not put temperature in Celsius in the denominator.
+Critical spelling correction: copy the complete advisory sentence exactly as `Q_rev für die Berechnung, nicht beliebiges Q`. It must contain `für`, never `fuer`. If exact reproduction is uncertain, omit this advisory box entirely; do not transliterate the umlaut.
 ```
 
 ## Review-Notiz

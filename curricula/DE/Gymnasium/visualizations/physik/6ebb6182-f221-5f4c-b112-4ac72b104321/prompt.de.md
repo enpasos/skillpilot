@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,17 @@ Titel: Minkowski-Diagramme nutzen
 Beschreibung: Die lernende Person kann Minkowski-Diagramme zur Veranschaulichung relativistischer Effekte einsetzen und einfache Aussagen über Gleichzeitigkeit und Weltlinien treffen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a mathematically exact German Minkowski diagram titled `Minkowski-Diagramm`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Minkowski-Diagramm`.
-- Draw one clean coordinate diagram with vertical axis `ct` and horizontal axis `x`; the axes meet at one origin.
-- Show two light lines through the origin at exactly 45 degrees, forming a symmetric light cone; label them `Licht`.
-- Show one vertical straight worldline through the origin labelled `ruhender Beobachter`.
-- Show one straight worldline from the origin tilted to the right but still inside the light cone labelled `bewegter Beobachter`.
-- Add two event points on one horizontal dashed line labelled `gleichzeitig hier`.
-- Add one separate tilted dashed line labelled `gleichzeitig dort` to show that simultaneity can depend on the reference frame.
-- Use arrowheads only on the positive coordinate axes; all worldlines and dashed simultaneity lines must have no arrowheads.
-- Visible learner text must be limited to the title, `ct`, `x`, `Licht`, `ruhender Beobachter`, `bewegter Beobachter`, `gleichzeitig hier`, and `gleichzeitig dort`.
+Mandatory geometry and labels:
+- Horizontal axis `x`, vertical axis `ct`.
+- Two light rays through the origin at exactly +45° and −45°, labeled `Licht`.
+- The `ruhender Beobachter` must lie on the vertical worldline x = 0, coincident with the ct axis. Never place this label on a light ray.
+- Draw one straight green moving-observer worldline `ct′` through the origin into the future light cone. It must be steep and closer to the vertical ct axis than to the horizontal x axis; it must never lie outside or below the +45° light ray. Place `bewegter Beobachter` beside this steep timelike line.
+- Simplify simultaneity to exactly two lines through the origin: the horizontal x axis labeled `gleichzeitig im Ruhesystem`, and one shallow tilted red dashed x′ line inside the angle between x and the +45° light ray, labeled `gleichzeitig im bewegten System`. Do not add extra intersecting dashed lines.
 
-Vermeiden:
-
-- Do not draw any worldline outside the light cone.
-- Do not draw curved worldlines.
-- Do not draw light lines at any angle other than 45 degrees.
-- Do not put arrowheads on worldlines or simultaneity lines.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Use sparse, correctly spelled German labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

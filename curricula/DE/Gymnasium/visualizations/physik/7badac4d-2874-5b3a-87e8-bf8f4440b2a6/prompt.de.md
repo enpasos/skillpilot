@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,17 @@ Titel: Leiter, Nichtleiter und Halbleiter
 Beschreibung: Die lernende Person kann Leiter, Nichtleiter und Halbleiter anhand ihrer Leitfähigkeit unterscheiden und Beispiele aus Technik und Alltag zuordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Create a new clean German cartoon infographic titled `Leiter, Halbleiter und Nichtleiter` based on energy-band diagrams, not incomplete lamp circuits.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Leiter, Nichtleiter, Halbleiter`.
-- Use three side-by-side comparison panels with the same test setup in every panel: one battery, one material sample, one lamp, and wires forming a closed test circuit.
-- Panel `Leiter`: sample is copper, lamp bright, many yellow charge dots inside the copper sample.
-- Panel `Nichtleiter`: sample is plastic or glass, lamp off, almost no charge dots.
-- Panel `Halbleiter`: sample is silicon, lamp dim or controllable, medium number of charge dots.
-- Every panel must contain a visible battery. The conductor panel must not show a lamp without a battery.
-- Absolutely no arrows anywhere in the image: no current arrows, no electron arrows, no motion arrows, no label arrows.
-- Communicate conductivity only through lamp brightness and number of charge dots.
-- Visible learner text must be limited to the title, `Leiter`, `Nichtleiter`, `Halbleiter`, `viele freie Ladungstraeger`, `kaum freie Ladungstraeger`, and `steuerbar`.
+Use three equal panels with the same vertical energy direction:
+- `Leiter`: valence and conduction states overlap or a band is partially filled; show many mobile electrons and label `viele freie Ladungsträger`.
+- `Halbleiter`: show a small forbidden gap E_g; one electron is excited by a small arrow labeled `Wärme, Licht oder Steuerung`, leaving one hole; label `Leitfähigkeit steuerbar`.
+- `Nichtleiter`: show a large forbidden gap E_g and no excited carriers at ordinary conditions; label `kaum freie Ladungsträger`.
 
-Vermeiden:
+Use the same colors and band conventions in all panels. Do not show a semiconductor as a lamp that glows without a controlling cause. Do not draw electrical circuits.
 
-- Do not draw arrowheads or arrow symbols.
-- Do not show an insulator with a bright lamp.
-- Do not show a conductor with no battery.
-- Do not show a conductor with no mobile charges.
-- Do not show a semiconductor as always fully conducting or always fully blocking.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

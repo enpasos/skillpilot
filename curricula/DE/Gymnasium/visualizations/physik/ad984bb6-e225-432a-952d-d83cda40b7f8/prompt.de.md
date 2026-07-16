@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,7 @@ Titel: Newtons 3. Axiom (Wechselwirkungsprinzip)
 Beschreibung: Die lernende Person kann das Wechselwirkungsprinzip formulieren und an Beispielen erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show Newton's third law as a force pair between two different bodies.
-
-Title: `Wechselwirkungsprinzip`
-
-Main scene:
-- show two ice skaters facing each other and pushing with their hands
-- draw exactly two force arrows:
-  - arrow 1 starts on skater A and points left, labelled `Kraft von B auf A`
-  - arrow 2 starts on skater B and points right, labelled `Kraft von A auf B`
-- both force arrows must have equal length and opposite directions
-- put the arrows on different skaters, not on the same skater
-
-Formula and statement:
-- `F_AB = - F_BA`
-- `gleich gross, entgegengesetzt gerichtet`
-- `Kraeftepaar wirkt auf zwei verschiedene Koerper`
-
-Vermeiden:
-
-Do not draw both force arrows on the same body.
-Do not draw unequal lengths for the two force arrows.
-Do not draw both arrows in the same direction.
-Do not use action/reaction arrows as motion arrows.
-Do not add extra force arrows, velocity arrows, or acceleration arrows.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Create a fresh German educational cartoon infographic for Newton’s third law. Show two skaters pushing each other and place one force arrow on each different person: F_A→B and F_B→A must be equal in length, opposite in direction and act simultaneously. State F_A→B = −F_B→A and „gleich groß, entgegengesetzt gerichtet, an verschiedenen Körpern“. Do not confuse action-reaction with balanced forces on one body. Use the letter ß in „groß“ and no substitute spelling.
 ```
 
 ## Review-Notiz

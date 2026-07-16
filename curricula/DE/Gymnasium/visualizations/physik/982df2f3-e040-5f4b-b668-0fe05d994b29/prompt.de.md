@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `982df2f3-e040-5f4b-b668-0fe05d994b29.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/982df2f3-e040-5f4b-b668-0fe05d994b29/982df2f3-e040-5f4b-b668-0fe05d994b29.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,37 +27,21 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Himmelskoerper des Sonnensystems fachlich klassifizieren
-Beschreibung: Die lernende Person kann Himmelskoerper des Sonnensystems anhand fachlicher Eigenschaften, Bahnparameter und recherchierter Daten klassifizieren und Schlussfolgerungen praesentieren.
+Titel: Himmelskoerper des Sonnensystems physikalisch klassifizieren
+Beschreibung: Die lernende Person kann Himmelskoerper des Sonnensystems anhand physikalischer Eigenschaften, Bahnparameter und recherchierter Daten klassifizieren und Schlussfolgerungen praesentieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a clean German educational infographic titled `Himmelskörper im Sonnensystem klassifizieren`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Himmelskoerper klassifizieren`.
-- If a reference image is provided, preserve the card layout and especially the comet geometry exactly: in the comet card the Sun is on the left, the comet nucleus is to its right, and the tail extends further right, away from the Sun.
-- Show five classification cards with icons and short criteria:
-  `Planet`: `rund`, `um die Sonne`, `Bahn freigeraeumt`.
-  `Zwergplanet`: `rund`, `um die Sonne`, `Bahn nicht freigeraeumt`.
-  `Mond`: `umkreist Planet`.
-  `Asteroid`: `klein`, `felsig`.
-  `Komet`: `Eis/Staub`, `Schweif weg von Sonne`.
-- Add a small data strip with columns `Groesse`, `Bahn`, `Zusammensetzung`.
-- Use no decorative Sun near the comet except the explicit small Sun at the left side of the `Komet` card.
-- For the `Komet` card, the tail must extend away from the Sun: Sun left, comet head center, tail to the right.
-- Visible learner text must be limited to the title and the labels listed above.
+Show five visually distinct categories with concise, physically accurate criteria:
 
-Vermeiden:
+- `Planet`: umkreist die Sonne, annähernd rund, Bahnumgebung freigeräumt. Example: `Erde: a = 1 AE; e = 0,017`.
+- `Zwergplanet`: umkreist die Sonne, annähernd rund, Bahnumgebung nicht freigeräumt. Example: `Ceres: a = 2,77 AE; e = 0,08`.
+- `Mond`: umkreist einen Planeten oder Zwergplaneten.
+- `Asteroid`: kleiner Körper, häufig felsig oder metallisch; Bahnform und Bahnneigung sind verschieden. Do not claim all asteroids are identical.
+- `Komet`: eisreicher Kleinkörper; bei Sonnennähe Koma und Schweif; oft stark exzentrische Bahn. Example: `Halley: e ≈ 0,97`.
 
-- Do not classify a moon as a planet.
-- Do not classify Pluto as a normal planet.
-- Do not show a comet tail pointing toward the Sun; if the tail direction is not unambiguous, draw no tail.
-- Do not place a Sun icon inside or directly behind the comet tail.
-- Do not place any Sun icon above or right of the comet.
-- Do not draw the asteroid belt as a solid wall or as a planet orbit.
-- Do not use arrows in the classification cards except a small moon orbit cue around a planet.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Use a simple orbit sketch to communicate what the parameters mean and add the small legend `a: große Halbachse` and `e: Exzentrizität`. Use correct German umlauts, especially `Himmelskörper`, `Größe` and `freigeräumt`. Do not include technical identifiers, filenames, brands, platform names, school labels, watermarks, or invented numerical data.
 ```
 
 ## Review-Notiz

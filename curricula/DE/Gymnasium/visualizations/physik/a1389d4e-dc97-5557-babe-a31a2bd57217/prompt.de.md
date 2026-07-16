@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,7 @@ Titel: Energie gespeicherter Magnetfelder
 Beschreibung: Die lernende Person kann die Feldenergie einer Spule bestimmen und technische Anwendungen begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Energie im Magnetfeld einer Spule`.
-- Show a coil connected to a simple DC source and a switch; keep the circuit direction-free with no current arrows.
-- Around and inside the coil, show a calm glowing magnetic-field region labelled `Magnetfeld`.
-- Add a visual energy container or shaded region near the coil labelled `gespeicherte Energie`.
-- Show one clean formula card with exactly: `W = 1/2 * L * I^2`.
-- Show a second small card with exactly: `groesseres I -> mehr W`.
-- Visible learner text must be limited to the title, `Spule L`, `Magnetfeld`, `gespeicherte Energie`, `W = 1/2 * L * I^2`, and `groesseres I -> mehr W`.
-
-Vermeiden:
-
-- Do not draw energy-flow arrows, force arrows, electron arrows, or current-direction arrows.
-- Do not confuse the magnetic-field energy formula with capacitor energy `1/2*C*U^2`.
-- Do not write `B^2` formulas unless they are correct and secondary; prefer only `W = 1/2 * L * I^2`.
-- Do not draw a bar magnet instead of a coil field.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh German educational infographic about energy stored in a magnetic field. Use two independent panels and draw no switches anywhere. In the first panel, show exactly one visibly closed loop containing a battery, resistor and inductor in series, with current I; draw the magnetic field inside the coil and state W_mag = ½ L I². In the second panel, show a separate visibly closed loop containing only the inductor and a resistor or lamp, with no battery and no open wire end; the collapsing field transfers its energy and the lamp briefly glows. Every loop must be closed by continuous connected wires. Never show an open circuit together with persistent current or stored magnetic field. Use correct German spelling and unambiguous connected wires.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,13 @@ Titel: Klassische Wellen, klassische Teilchen und Quantenobjekte am Doppelspalt 
 Beschreibung: Die lernende Person kann am Doppelspalt klassische Wellen, klassische Teilchen und Quantenobjekte vergleichen und unterschiedliche Vorhersagen fuer Musterbildung und Einzelereignisse fachlich unterscheiden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Überarbeite die Infografik zu einem klaren Vergleich in drei gleich großen Spalten:
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Doppelspalt: Welle, Teilchen, Quantenobjekt`.
-- Use three side-by-side panels with the same double-slit screen setup.
-- Panel `klassische Welle`: show wavefronts reaching both slits and an interference stripe pattern on the screen.
-- Panel `klassisches Teilchen`: show many small dots in front of the slits and two broad dot bands on the screen.
-- Panel `Quantenobjekt`: show individual detection dots on the screen that together form an interference stripe pattern.
-- Use no arrows anywhere in the image.
-- Use no single deterministic path through either slit.
-- Visible learner text must be limited to the title, `klassische Welle`, `klassisches Teilchen`, `Quantenobjekt`, `Doppelspalt`, and `Schirm`.
+1. „Klassische Welle“: eine Wellenfront trifft auf einen Doppelspalt; dahinter überlagern sich die Wellen und am Schirm entstehen deutlich abwechselnde helle und dunkle Interferenzstreifen.
+2. „Klassische Teilchen“: viele kleine Kugeln fliegen geradlinig durch die beiden Spalte; am Schirm entstehen genau zwei breite Häufungen ohne feine Interferenzstreifen.
+3. „Quantenobjekte“: einzelne punktförmige Treffer erscheinen nacheinander. Viele gesammelte Einzeltreffer bilden am Schirm ein unübersehbares Muster aus mehreren abwechselnden dichten und dünnen Streifen.
 
-Vermeiden:
-
-- Do not show classical particles forming an interference pattern.
-- Do not show quantum objects as tracked paths from slit to screen.
-- Do not draw arrows, path lines, trajectory lines, or ray lines.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Die dritte Spalte muss gleichzeitig Einzeltreffer und das daraus entstehende Interferenzmuster zeigen. Quantenobjekte dürfen nicht wie klassische Kugeln mit vorgegebener Bahn gezeichnet werden. Keine überzähligen Spalte, keine langen Texte.
 ```
 
 ## Review-Notiz

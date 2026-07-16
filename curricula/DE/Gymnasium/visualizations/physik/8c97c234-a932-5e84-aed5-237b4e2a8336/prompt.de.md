@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,7 @@ Titel: Komplementarität und Delayed-choice-Experiment
 Beschreibung: Die lernende Person kann an einem Delayed-choice-Experiment die Komplementarität von Wellen- und Teilchenaspekt erläutern und damit verbundene erkenntnistheoretische Fragen beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Delayed Choice: Messanordnung entscheidet`.
-- Use two side-by-side panels with clean simplified Mach-Zehnder-style geometry.
-- Show optical arms as thin straight setup lines without arrowheads; they represent possible arms, not a tracked photon path.
-- Left panel `zweiter Strahlteiler fehlt`: do not draw a crossing or second beam splitter near the outputs. Show two separate output detectors and an event strip with two example events: event A has D1 click and D2 silent; event B has D1 silent and D2 click. Label this panel `Weg-Info`.
-- Right panel `zweiter Strahlteiler eingesetzt`: show the second beam splitter inserted. Show an interference output with D1 bright and D2 dark. Label this panel `Interferenz`.
-- Add a small clock or switch icon near the second beam splitter labelled `spaete Wahl`.
-- Use no particle dots moving along the arms, no arrowheads, no path arrows, no ray arrows, and no label pointer arrows.
-- Visible learner text must be limited to the title, `zweiter Strahlteiler fehlt`, `Weg-Info`, `A`, `B`, `zweiter Strahlteiler eingesetzt`, `Interferenz`, `spaete Wahl`, `D1`, and `D2`.
-
-Vermeiden:
-
-- Do not show both D1 and D2 clicking in the same single event.
-- Do not show the photon choosing one path before the final measurement setup is chosen.
-- Do not show both which-way information and interference in the same panel.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Create a fresh, precise German educational cartoon infographic of a delayed-choice Mach-Zehnder experiment in two panels. Both panels show a photon entering the first beam splitter and travelling along two possible paths. Panel A: second beam splitter present, equal path phases recombine coherently so one output detector is bright and the other dark; label interference, no screen pattern. Panel B: second beam splitter absent, the two paths end at separate detectors and reveal path information with 50/50 outcomes; label Weginformation. Show that the choice is made only after the photon passed the first beam splitter, but do not imply retrocausal signalling. Keep detector symbols and results consistent with the drawn optical paths.
 ```
 
 ## Review-Notiz

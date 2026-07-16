@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,37 +31,10 @@ Titel: Kräfte und Trägheit qualitativ erklären
 Beschreibung: Die lernende Person kann Änderungen von Bewegungszuständen durch Kräfte erklären und Trägheit qualitativ beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show a three-panel qualitative mechanics infographic about force changing motion and inertia.
-
-Panel 1: `keine Kraftaenderung`
-- show a low-friction cart with evenly spaced ghost positions
-- label `gleichfoermig weiter`
-- do not draw a force arrow in this panel
-
-Panel 2: `Kraft aendert Bewegung`
-- show a hand pushing a cart to the right
-- draw exactly one red force arrow starting on the cart and pointing right
-- label the arrow `Kraft`
-- show the cart positions getting farther apart to the right
-
-Panel 3: `Traegheit`
-- show a small cart that has just stopped at a wall on its right side
-- show a loose ball on the cart continuing to move to the right
-- draw exactly one green motion arrow starting at the ball and pointing right, labelled `Bewegung bleibt zunaechst`
-- label `Traegheit: Koerper behaelt Bewegung zunaechst bei`
-
-Vermeiden:
-
-Do not draw force arrows that start away from the affected object.
-Do not draw opposite force arrows unless both are explicitly labelled and needed.
-Do not draw a bus, car, driver, or passenger.
-Do not draw a person leaning during braking.
-Do not claim that force is needed to keep uniform motion.
-Do not draw more than one motion arrow in the inertia panel.
-The inertia-panel motion arrow must start at the ball and point right.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Use case: scientific-educational
+Primary request: Preserve the existing inertia and force comparison, but correct the condition for uniform straight-line motion.
+Text correction (verbatim): use "keine resultierende Kraft" and optionally the compact equation "ΣF = 0". Do not use "keine Kraftänderung".
+Constraints: Make clear that a constant nonzero resultant force changes velocity, whereas zero resultant force preserves rest or uniform straight-line motion. No extra topics, logos or watermarks.
 ```
 
 ## Review-Notiz

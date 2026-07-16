@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,12 @@ Titel: De-Broglie-Wellen
 Beschreibung: Die lernende Person kann die De-Broglie-Hypothese formulieren, die De-Broglie-Wellenlänge berechnen und die Wellen-Natur von Teilchen qualitativ begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `De-Broglie-Wellen`.
-- Show two horizontal electron wave packets side by side.
-- Left packet: label `kleiner Impuls p`, show an electron dot embedded in a wave with a visibly long wavelength.
-- Right packet: label `groesserer Impuls p`, show an electron dot embedded in a wave with a visibly short wavelength.
-- Add a small neutral diffraction-pattern inset with concentric rings labelled `Beugungsmuster`.
-- Add one compact formula box with exactly `lambda = h / p`.
-- Use no propagation arrows and no collision arrows.
-- Visible learner text must be limited to the title, `kleiner Impuls p`, `groesserer Impuls p`, `Beugungsmuster`, and `lambda = h / p`.
-
-Vermeiden:
-
-- Do not show larger momentum with a larger wavelength.
-- Do not write `lambda = p / h`.
-- Do not label the particle as a photon.
-- Do not make the two wavelengths visually identical.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use case: scientific-educational
+Primary request: Preserve the de Broglie comparison while correcting German spelling and maintaining the inverse relation.
+Required equation: Render exactly "λ = h / p".
+Required comparison: At left show a particle with smaller momentum p and a visibly longer associated wavelength. At right show a particle with larger momentum p and a visibly shorter associated wavelength.
+Required wording: Write exactly "größerer Impuls p" with ö and ß.
+Constraints: Keep propagation directions aligned and avoid suggesting that the drawn sinusoid is a literal material trajectory. Proofread every visible word. No logos or watermarks.
 ```
 
 ## Review-Notiz

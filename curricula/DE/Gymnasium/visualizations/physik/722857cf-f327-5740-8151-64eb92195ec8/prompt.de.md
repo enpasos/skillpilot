@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,10 @@ Titel: Mechanische Energieformen qualitativ unterscheiden
 Beschreibung: Die lernende Person kann mechanische Energieformen unterscheiden und einfache Energieumwandlungen qualitativ beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Show mechanical energy forms with clear examples and a simple qualitative energy-conversion scene.
-
-Top row: three labelled examples
-- `Lageenergie`: ball high on a shelf
-- `Bewegungsenergie`: rolling ball with small motion blur but no arrow
-- `Spannenergie`: compressed spring
-- no arrows or arrow-like annotation marks in the top row
-
-Bottom row: `Energieumwandlung bei der Schaukel`
-- draw three numbered swing positions: `1` left high, `2` bottom low, `3` right high
-- below each position draw two small bars:
-  - high positions: `Lageenergie gross`, `Bewegungsenergie klein`
-  - bottom position: `Lageenergie klein`, `Bewegungsenergie gross`
-- use numbers only for sequence; do not draw chevrons or arrows
-
-Vermeiden:
-
-Do not show energy disappearing.
-Do not show highest kinetic energy at the highest swing position.
-Do not show highest potential energy at the lowest swing position.
-Do not draw force arrows on the swing or ball.
-Do not draw any arrowheads anywhere in the image.
-Do not draw loose decorative arrows or arrow-like sketches.
-Do not confuse spring energy with electrical energy.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Use case: scientific-educational
+Primary request: Recreate a clean comparison of mechanical energy forms and one swing-based qualitative energy conversion, using bar lengths instead of adjectives.
+Required visible labels, written exactly and only as follows: "Mechanische Energieformen", "Lageenergie", "Bewegungsenergie", "Spannenergie", "Energieumwandlung bei der Schaukel". Do not write the words "gross", "groß", "klein", "hoch" or "niedrig" anywhere.
+Constraints: Show a raised object for gravitational potential energy, a moving object for kinetic energy and a compressed or stretched spring for elastic energy. For the swing, show three positions. Under each position place two clearly labeled horizontal bars: "Lageenergie" and "Bewegungsenergie". At both turning points the Lageenergie bar is long and the Bewegungsenergie bar is short; at the lowest point the Lageenergie bar is short and the Bewegungsenergie bar is long. Keep the paired bar totals equal across all three positions. Proofread every visible word. No extra explanatory sentence, formulas, logos or watermarks.
 ```
 
 ## Review-Notiz
