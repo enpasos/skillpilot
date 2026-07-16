@@ -19,42 +19,31 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)
+Titel: Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen
 Beschreibung: Die lernende Person kann Abbildungsmatrizen für Parallelprojektionen auf beliebige Ursprungsebenen im $\mathbb{R}^3$ untersuchen und bestimmen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Parallelprojektion auf eine Ursprungsebene im dreidimensionalen Raum mit einer Matrix darstellen.
-- Verwende die Parallelprojektion auf die xy-Ebene entlang der z-Richtung.
-- Zeige die Projektionsmatrix exakt:
-  P_xy = [ [1, 0, 0],
-           [0, 1, 0],
-           [0, 0, 0] ].
-- Zeige die Wirkung auf einen Punkt:
-  A = (2, -1, 3).
-  A' = P_xy * [2; -1; 3] = [2; -1; 0], also A'=(2,-1,0).
-- Visualisiere:
-  Die xy-Ebene als Ebene z=0.
-  Punkt A oberhalb oder unterhalb der Ebene.
-  Ein Projektionspfeil parallel zur z-Achse von A nach A'.
-- Zeige eine zweite kurze Deutung:
-  x und y bleiben gleich; z wird auf 0 gesetzt.
-  Alle Punkte mit gleichen x- und y-Koordinaten landen auf demselben Bildpunkt.
+Überarbeite die gezeigte Infografik fachlich exakt und behalte die klare Dreiteilung bei.
 
-Vermeiden:
-- Nicht orthogonal auf eine Gerade projizieren; hier wird auf die xy-Ebene projiziert.
-- Nicht auf die yz- oder xz-Ebene projizieren.
-- Nicht A'=(0,-1,3) oder A'=(2,0,3) angeben; korrekt ist A'=(2,-1,0).
-- Der Projektionspfeil muss parallel zur z-Achse wirken.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Pflichtinhalt unverändert:
+- E: x + y + z = 0, n = (1, 1, 1), d = (0, 0, 1).
+- P = I − d·nᵀ/(n·d), n·d = 1.
+- P = [[1, 0, 0], [0, 1, 0], [−1, −1, 0]].
+- A = (2, −1, 3), P·A = A′ = (2, −1, −1).
+- Probe 2 − 1 − 1 = 0 und Kontrolle P² = P.
+- Die schräge Ebene geht durch den Ursprung; der Projektionspfeil von A zu A′ ist parallel zur z-Achse und zu d.
+
+Gezielte Korrektur: Entferne alle Zuordnungspfeile zwischen den Karten n = (1, 1, 1), d = (0, 0, 1) und den Buchstaben in der allgemeinen Formel. Sie waren vertauscht und sind nicht nötig. Zeige n und d stattdessen als zwei ruhige, eindeutig beschriftete Karten direkt unter der Formel. Keine zusätzlichen Pfeile oder Zuordnungen.
+
+Keine Projektion nur auf eine Koordinatenebene, keine Zielgruppenangabe, Logos, Wasserzeichen oder Metadaten.
 ```
 
 ## Review-Notiz

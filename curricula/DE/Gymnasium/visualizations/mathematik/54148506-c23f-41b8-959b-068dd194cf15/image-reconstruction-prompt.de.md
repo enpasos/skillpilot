@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `54148506-c23f-41b8-959b-068dd194cf15.jpg`
 
 ## Zweck
@@ -18,14 +18,33 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein hellgrüner Hintergrund mit schwachen, halbtransparenten Umrissen von Zahnrädern, Bleistiften und Divisionssymbolen. Oben mittig steht in schwarzer, fetter Schrift der Titel: "Einfache multiplikative Gleichungen durch Umkehroperationen lösen". Darunter sind drei vertikale, rechteckige Paneele mit abgerundeten Ecken und hellblauem Rand nebeneinander angeordnet. Jedes Paneel hat einen weißen Hintergrund.
+Ein farbenfrohes, lehrreiches Cartoon-Bild im klaren Stil, mit einem hellgrünen Hintergrund, der schwache, halbtransparente Umrisse von Zahnrädern und Bleistiften zeigt. Oben mittig steht der Titel "Einfache multiplikative Gleichungen durch Umkehroperationen lösen" in dunkelgrüner, fetter, serifenloser Schrift.
+
+Das Bild ist in drei vertikale, nebeneinanderliegende Paneele unterteilt, die jeweils einen hellblauen Rahmen mit abgerundeten Ecken haben und einen weißen Hintergrund im Inneren aufweisen.
 
 **Linkes Paneel:**
-Oben in einem hellblauen, abgerundeten Rechteck steht: "Gleichung: a ⋅ [ ] = b". Darunter ist eine graue Balkenwaage abgebildet. Auf der linken Waagschale liegen ein roter Würfel mit der Zahl "3" und daneben ein hellblauer Würfel mit leeren eckigen Klammern "[ ]". Auf der rechten Waagschale liegt ein gelber Würfel mit der Zahl "12". Eine cartoonartige, lächelnde Hand zeigt von links auf den roten Würfel auf der linken Waagschale. Unter der Waage steht in einem hellblauen, abgerundeten Rechteck: "Beispiel: 3 ⋅ [ ] = 12". Darunter führt ein hellblauer Pfeil nach unten. Über dem Pfeil schwebt eine weiße Denkblase mit dem Text "Umkehroperation: Geteilt durch 3". Links neben dem Pfeil ist ein hellblauer Würfel mit einem weißen Fragezeichen "?" abgebildet. Rechts neben dem Würfel steht der Text "12 : 3". Darunter, mittig, ist ein hellblau umrandetes Rechteck mit dem Text "[ ] = 4". Rechts daneben befindet sich ein großes, grünes Häkchen. Ganz unten in einem hellblauen, abgerundeten Rechteck steht: "Lösung: [ ] = 4".
+Oben befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Gleichung: a ⋅ [ ] = b" in schwarzer Schrift. Darunter ist eine graue Balkenwaage abgebildet. Auf der linken Waagschale liegen ein roter Würfel mit der Zahl "3" und ein blauer Würfel mit der Aufschrift "[ ]" nebeneinander, was eine Multiplikation symbolisiert. Auf der rechten Waagschale liegt ein gelber Würfel mit der Zahl "12". Eine Cartoon-Hand mit einem lächelnden Gesicht am Handgelenk zeigt von links auf den roten Würfel.
+Unter der Waage befindet sich ein weiteres hellblaues, abgerundetes Rechteck mit der Aufschrift "Beispiel: 3 ⋅ [ ] = 12" in schwarzer Schrift.
+Ein dicker, hellblauer Pfeil zeigt von der Mitte des Paneels nach unten. Rechts neben dem Pfeil schwebt eine weiße Denkblase mit hellblauem Rand, die den Text "Umkehroperation: Geteilt durch 3" enthält.
+Darunter zeigt dieselbe Cartoon-Hand von links auf einen blauen Würfel mit einem Fragezeichen "?". Rechts daneben steht der Text "= 12 : 3 = 4" in schwarzer Schrift.
+Weiter unten ist ein weißes, abgerundetes Rechteck mit schwarzem Rand zu sehen, das den Text "[ ] = 4" enthält. Rechts daneben ist ein großer, grüner Haken abgebildet.
+Ganz unten im Paneel befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Lösung: [ ] = 4" in schwarzer Schrift.
 
 **Mittleres Paneel:**
-Oben in einem hellblauen, abgerundeten Rechteck steht: "Gleichung: [ ] : a = b". Darunter ist eine Anordnung von Würfeln und mathematischen Symbolen zu sehen. Oben links ist ein hellblauer Würfel mit einem weißen Fragezeichen "?". Direkt darunter ist ein roter Würfel mit der Zahl "5". Zwischen diesen beiden Würfeln, leicht nach links versetzt, befindet sich ein Doppelpunkt ":". Rechts davon steht ein Gleichheitszeichen "=". Rechts vom Gleichheitszeichen ist ein gelber Würfel mit der Zahl "4". Eine cartoonartige Hand zeigt von links auf den oberen hellblauen Würfel. Unter dieser Anordnung steht in einem hellblauen, abgerundeten Rechteck: "Beispiel: [ ] : 5 = 4". Darunter führt ein hellblauer Pfeil nach unten. Über dem Pfeil schwebt eine weiße Denkblase mit dem Text "Umkehroperation: Mal 5". Links neben dem Pfeil ist ein hellblauer Würfel mit einem weißen Fragezeichen "?" abgebildet. Rechts neben dem Würfel steht der Text "4 ⋅ 5". Darunter, mittig, ist ein hellblau umrandetes Rechteck mit dem Text "[ ] = 20". Rechts daneben befindet sich ein großes, grünes Häkchen. Ganz unten in einem hellblauen, abgerundeten Rechteck steht: "Lösung: [ ] = 20".
+Oben befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Gleichung: [ ] : a = b" in schwarzer Schrift. Darunter zeigt eine Cartoon-Hand mit einem lächelnden Gesicht am Handgelenk von links auf eine Anordnung von Würfeln. Oben ist ein blauer Würfel mit einem Fragezeichen "?" zu sehen. Darunter, leicht versetzt, ein roter Würfel mit der Zahl "5". Zwischen den beiden Würfeln sind zwei schwarze Punkte vertikal angeordnet, die eine Division symbolisieren. Rechts davon steht ein Gleichheitszeichen "=" und ein gelber Würfel mit der Zahl "4".
+Unter dieser Darstellung befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Beispiel: [ ] : 5 = 4" in schwarzer Schrift.
+Ein dicker, hellblauer Pfeil zeigt von der Mitte des Paneels nach unten. Rechts neben dem Pfeil schwebt eine weiße Denkblase mit hellblauem Rand, die den Text "Umkehroperation: Mal 5" enthält.
+Darunter zeigt dieselbe Cartoon-Hand von links auf einen blauen Würfel mit einem Fragezeichen "?". Rechts daneben steht der Text "= 4 ⋅ 5 = 20" in schwarzer Schrift.
+Weiter unten ist ein weißes, abgerundetes Rechteck mit schwarzem Rand zu sehen, das den Text "[ ] = 20" enthält. Rechts daneben ist ein großer, grüner Haken abgebildet.
+Ganz unten im Paneel befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Lösung: [ ] = 20" in schwarzer Schrift.
 
 **Rechtes Paneel:**
-Oben in einem hellblauen, abgerundeten Rechteck steht: "Gleichung: a : [ ] = b". Darunter ist eine Anordnung von Würfeln und mathematischen Symbolen zu sehen. Oben ist ein gelber Würfel mit der Zahl "30". Darunter befindet sich eine horizontale Divisionslinie. Unter dieser Linie ist ein hellblauer Würfel mit einem weißen Fragezeichen "?". Rechts von dieser Divisionsstruktur steht ein Gleichheitszeichen "=". Rechts vom Gleichheitszeichen ist ein roter Würfel mit der Zahl "6". Eine cartoonartige Hand zeigt von links auf den oberen gelben Würfel. Unter dieser Anordnung steht in einem hellblauen, abgerundeten Rechteck: "Beispiel: 30 : [ ] = 6". Darunter führt ein hellblauer Pfeil nach unten. Über dem Pfeil schwebt eine weiße Denkblase mit dem Text "Umkehroperation: Geteilt durch 6". Links neben dem Pfeil ist ein hellblauer Würfel mit einem weißen Fragezeichen "?" abgebildet. Rechts neben dem Würfel steht der Text "30 : 6". Darunter, mittig, ist ein hellblau umrandetes Rechteck mit dem Text "[ ] = 5". Rechts daneben befindet sich ein großes, grünes Häkchen. Ganz unten in einem hellblauen, abgerundeten Rechteck steht: "Lösung: [ ] = 5".
+Oben befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Gleichung: a : [ ] = b" in schwarzer Schrift. Darunter zeigt eine Cartoon-Hand mit einem lächelnden Gesicht am Handgelenk von links auf eine Bruchdarstellung. Oben ist ein gelber Würfel mit der Zahl "30" zu sehen. Darunter, durch einen horizontalen Strich getrennt, ein blauer Würfel mit einem Fragezeichen "?", was eine Division symbolisiert. Rechts davon steht ein Gleichheitszeichen "=" und ein roter Würfel mit der Zahl "6".
+Unter dieser Darstellung befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Beispiel: 30 : [ ] = 6" in schwarzer Schrift.
+Ein dicker, hellblauer Pfeil zeigt von der Mitte des Paneels nach unten. Rechts neben dem Pfeil schwebt eine weiße Denkblase mit hellblauem Rand, die den Text "Umkehroperation: Geteilt durch 6" enthält.
+Darunter zeigt dieselbe Cartoon-Hand von links auf einen blauen Würfel mit einem Fragezeichen "?". Rechts daneben steht der Text "= 30 : 6 = 5" in schwarzer Schrift.
+Weiter unten ist ein weißes, abgerundetes Rechteck mit schwarzem Rand zu sehen, das den Text "[ ] = 5" enthält. Rechts daneben ist ein großer, grüner Haken abgebildet.
+Ganz unten im Paneel befindet sich ein hellblaues, abgerundetes Rechteck mit der Aufschrift "Lösung: [ ] = 5" in schwarzer Schrift.
+
+Alle farbigen, dreidimensionalen Würfel haben leichte Abschrägungen und schwarze Umrisse. Die Schrift ist durchgehend klar und serifenlos.
 ```

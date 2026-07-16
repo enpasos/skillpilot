@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,23 +32,19 @@ Beschreibung: Die lernende Person kann Integrale bei verknüpften Exponential- u
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Integral von f(x) = x*e^x.
-- Der Titel oder die Hauptueberschrift darf nur f(x) = x*e^x nennen, niemals f'(x) = x*e^x.
-- Zeige als Funktion: f(x) = x*e^x.
-- Zeige als Stammfunktion: F(x) = (x - 1)*e^x.
-- Zeige den Ableitungsnachweis:
-  F'(x) = 1*e^x + (x - 1)*e^x = x*e^x.
-- Zeige das bestimmte Integral:
-  integral_0^1 x*e^x dx = [(x - 1)*e^x]_0^1 = 0 - (-1) = 1.
-- Visualisiere rechts die positive Flaeche unter y = x*e^x von x=0 bis x=1 mit Label A = 1.
-- Markiere optional (0|0) und (1|e).
+- Bewahre Hauptüberschrift, Dreikartenlayout, Karte 1 und Karte 3 vollständig unverändert.
+- Ändere in Karte 2 ausschließlich den Gleichungsblock; entferne jede redundante oder doppelte Zeile.
+- Zeige genau diese drei Zeilen, jeweils nur einmal:
+  1. "F′(x) = [(x − 1) · eˣ]′"
+  2. "= eˣ + (x − 1) · eˣ"
+  3. "= x · eˣ = f(x)"
+- Darunter bleiben das grüne Häkchen und genau einmal "Stimmt! F′(x) = f(x)".
 
 Vermeiden:
-- Niemals im Titel oder bei der Ausgangsfunktion f'(x)=x*e^x schreiben.
-- Keine falsche Stammfunktion.
-- Keine falsche Auswertung bei x=0.
-- Keine Naeherung statt des exakten Integralwerts 1.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine wiederholte Zeile "= x · eˣ" und keine alleinstehende falsche Aussage "F′(x) = eˣ".
+- Keine zusätzlichen Zwischenrechnungen, Sternchen oder Artefakte in Exponenten.
+- Keine Änderungen an Funktion, Stammfunktion, Integralgrenzen, Ergebnis oder Graph.
+- Keine technischen IDs, Marken, Logos, Kurs- oder Schulbezeichnungen.
 ```
 
 ## Review-Notiz

@@ -15,6 +15,7 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
+import { isGoalVisualizationAiApproved } from './goalVisualizationQaModel'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -730,6 +731,11 @@ interface GoalVisualizationQaRecord {
   assetSha256: string
   umlautsCorrectChatGpt: 'yes' | 'no'
   contentApprovedChatGpt: 'yes' | 'no'
+  aiApproved?: 'yes' | 'no'
+  aiApprovedAssetSha256?: string
+  aiReviewedAt?: string | null
+  aiReviewer?: string
+  aiNotes?: string
   humanApproved: 'yes' | 'no'
   humanIssueIdentified: 'yes' | 'no'
   humanIssueDescription: string
@@ -3129,6 +3135,8 @@ function evaluateGoalVisualizationQa(
   let humanIssues = 0
   let chatGptReady = 0
   let chatGptOpen = 0
+  let aiApproved = 0
+  let aiNotApproved = 0
   const details: string[] = []
 
   const recordsByGoalAndUrl = new Map<string, GoalVisualizationQaRecord>()
@@ -3177,6 +3185,12 @@ function evaluateGoalVisualizationQa(
       chatGptOpen += 1
     }
 
+    if (isGoalVisualizationAiApproved(record)) {
+      aiApproved += 1
+    } else {
+      aiNotApproved += 1
+    }
+
     if (record.humanIssueIdentified === 'yes') {
       humanIssues += 1
       if (details.length < 30) {
@@ -3221,6 +3235,8 @@ function evaluateGoalVisualizationQa(
       currentRecords: relevantGoals.length - missingLinks - missingRecords - staleRecords - missingAssets,
       chatGptReady,
       chatGptOpen,
+      aiApproved,
+      aiNotApproved,
       humanApproved,
       humanNotApproved,
       humanIssues,

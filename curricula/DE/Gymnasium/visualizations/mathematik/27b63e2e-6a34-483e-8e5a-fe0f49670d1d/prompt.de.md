@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `27b63e2e-6a34-483e-8e5a-fe0f49670d1d.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/27b63e2e-6a34-483e-8e5a-fe0f49670d1d/27b63e2e-6a34-483e-8e5a-fe0f49670d1d.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,17 @@ Titel: Wachstums- und Abklingvorgänge exponentiell modellieren und Ergebnisse i
 Beschreibung: Die lernende Person kann realitätsnahe Wachstums- und Abklingvorgänge graphisch und rechnerisch mit geeigneten exponentiellen Modellen beschreiben, Modellannahmen variieren, Grenzen des Modells benennen und Ergebnisse im Sachzusammenhang kritisch bewerten.
 
 Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic about exponential modelling and model critique. Context: Ein Medikament im Blut halbiert sich alle 4 Stunden. Show model M(t) = 80 * 0.5^(t/4), with t in Stunden. Show table rows exactly: t=0 -> 80 mg, t=4 -> 40 mg, t=8 -> 20 mg, t=12 -> 10 mg. Show a decreasing curved graph through these points. Add a small box titled Modell bewerten with exactly three bullets: passt nur naeherungsweise, Dosis und Koerper koennen abweichen, negative Werte sind unmoeglich. Keep all text German, readable, and mathematically correct.
+Ersetze die bisherige Darstellung vollständig durch eine fachlich exakte Infografik zu einem Abklingmodell.
+
+Kontext: Zu Beginn sind 80 mg eines Stoffes vorhanden; die Menge halbiert sich alle 4 Stunden. Schreibe die Modellformel groß und exakt als „M(t) = 80 · 0,5^(t/4)“. Der gesamte Exponent muss eindeutig „t/4“ sein.
+
+Zeige eine Wertetabelle mit exakt diesen Paaren:
+„t in h:       0     4     8     12“
+„M(t) in mg:  80    40    20     10“
+
+Zeige daneben einen fallenden Exponentialgraphen durch die vier markierten Punkte „(0|80)“, „(4|40)“, „(8|20)“ und „(12|10)“. Beide Achsen beginnen bei 0; die Kurve bleibt oberhalb der Zeitachse.
+
+Schreibe unten: „Annahme: konstante Halbwertszeit von 4 h.“ und „Modellgrenze: reale Bedingungen können die Abnahme verändern.“ Keine andere Modellformel, kein verschachtelter Bruch und keine zusätzlichen Messwerte.
 ```
 
 ## Review-Notiz

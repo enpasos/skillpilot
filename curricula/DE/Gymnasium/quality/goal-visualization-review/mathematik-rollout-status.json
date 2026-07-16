@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-11T18:42:22.424Z",
+  "generatedAt": "2026-07-16T14:07:56.057Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -12,31 +12,35 @@
   "summary": {
     "totalGoals": 1079,
     "atomicGoalsInScope": 756,
-    "goalsWithPrimaryVisualization": 756,
-    "coveragePercent": 100,
+    "goalsWithPrimaryVisualization": 746,
+    "coveragePercent": 98.7,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
       "approved": 18,
-      "pilot": 738
+      "pilot": 728
     },
     "linkedVisualizationReviewStatuses": {
       "approved": 18,
-      "pilot": 738
+      "pilot": 728
     },
-    "reviewLedgerFiles": 189,
+    "reviewLedgerFiles": 202,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
       "accepted_context_visualization": 2,
-      "accepted_pilot": 586,
-      "accepted_pilot_after_regeneration": 143,
+      "accepted_pilot": 599,
+      "accepted_pilot_after_provider_retry": 2,
+      "accepted_pilot_after_regeneration": 159,
       "accepted_pilot_after_resume": 5,
-      "accepted_pilot_after_second_regeneration": 11,
-      "accepted_pilot_after_third_regeneration": 5,
-      "accepted_pilot_after_user_review_correction": 42,
+      "accepted_pilot_after_second_attempt": 9,
+      "accepted_pilot_after_second_regeneration": 15,
+      "accepted_pilot_after_third_attempt": 3,
+      "accepted_pilot_after_third_regeneration": 6,
+      "accepted_pilot_after_user_review_correction": 43,
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
-      "deferred_provider_limitation": 11,
+      "correction_open_provider_credit_exhausted": 4,
+      "deferred_provider_limitation": 20,
       "not_attempted_after_quota_block": 4,
       "rejected_after_review_regenerated": 7,
       "rejected_after_second_regeneration": 1,
@@ -48,16 +52,16 @@
       "sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c": 1,
       "sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6": 1
     },
-    "openProviderDeferredGoals": 0,
+    "openProviderDeferredGoals": 8,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
-    "regularUnlinkedGoals": 0,
-    "linkedWithoutAcceptedReview": 11,
-    "acceptedReviewWithoutLink": 0
+    "regularUnlinkedGoals": 2,
+    "linkedWithoutAcceptedReview": 15,
+    "acceptedReviewWithoutLink": 2
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-189.md",
-    "latestLedgerStatus": null,
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-202.md",
+    "latestLedgerStatus": "accepted_pilot_after_provider_retry",
     "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
     "resumeFileExists": false,
     "resumeGoalIds": [],
@@ -66,7 +70,64 @@
     "promptAppendFiles": 6
   },
   "qualityQueues": {
-    "openProviderDeferred": [],
+    "openProviderDeferred": [
+      {
+        "batch": "194",
+        "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
+        "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
+        "decision": "deferred_provider_limitation",
+        "notes": "All three candidates corrected the maximum from 41 m to 21 m, but none placed h(0)=h(4)=1 consistently on its explicit vertical scale. The active link and canonical, public and backend asset copies were removed."
+      },
+      {
+        "batch": "197",
+        "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
+        "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Three produced candidates remained visibly inconsistent: eight instead of ten listed pairs, then six balls for a five-element ground set, then malformed pair labels with duplicated numerals. The active link and all deployed image copies were removed."
+      },
+      {
+        "batch": "197",
+        "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
+        "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
+        "decision": "deferred_provider_limitation",
+        "notes": "Attempts 1 and 2 rendered the wrong double-factorial denominator `(n−k)!!`; the final fresh candidate corrected the calculation but visibly placed six balls in the ground-set urn labelled `n = 5`. The active link and all deployed image copies were removed."
+      },
+      {
+        "batch": "197",
+        "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
+        "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
+        "decision": "deferred_provider_limitation",
+        "notes": "All three attempts retained an extra closing parenthesis in the trigonometric polar form despite increasingly explicit formula constraints. The active link and all deployed image copies were removed."
+      },
+      {
+        "batch": "193",
+        "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
+        "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
+        "decision": "deferred_provider_limitation",
+        "notes": "Three targeted attempts remained mathematically misleading: attempts 1 and 2 opened the e<0 shift downward, while attempt 3 put the e=0 vertex below the x-axis. The active link and canonical, public and backend asset copies were removed."
+      },
+      {
+        "batch": "195",
+        "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
+        "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
+        "decision": "deferred_provider_limitation",
+        "notes": "Three attempts remained visually misleading: missing curve assignments and inaccurate tails, then a false parameter label, then a green curve with a nonzero value at x = 0. The active link and all deployed image copies were removed."
+      },
+      {
+        "batch": "195",
+        "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
+        "title": "Plausibilität mit Beispielen testen",
+        "decision": "deferred_provider_limitation",
+        "notes": "The first two attempts wrongly framed zero as a boundary case; the final attempt added a false +1 badge to the n = 2 example. The active link and all deployed image copies were removed."
+      },
+      {
+        "batch": "192",
+        "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
+        "title": "Teilungsverhältnisse bei Strecken untersuchen",
+        "decision": "deferred_provider_limitation",
+        "notes": "No candidate was fully correct. Attempts 1 and 2 visibly placed `T` around one third of the diagonal despite the stated one-quarter ratio. Attempt 3 corrected the geometry by dividing a cuboid edge into four parts, but introduced the grammatically incorrect visible heading `Innere Teilungsverhältnis`. The active link and all deployed asset copies were removed."
+      }
+    ],
     "openProviderQuota": [],
     "rejectedNotLinked": [
       {
@@ -392,6 +453,13 @@
         "title": "Charakteristische Punkte trigonometrischer Funktionen mit Symmetrie bestimmen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The corrected image removes the thick extra vertical arrow from the midline to the minimum line. The right dashed amplitude marker now spans exactly from the midline `y=1` to the minimum line `y=-1`, matching amplitude `A=2`. The function `f(x)=2 sin(x)+1`, the midline, maximum line, minimum line, period marker, and symmetry markers remain coherent."
+      },
+      {
+        "batch": "191",
+        "goalId": "f40fcaf7-c630-589c-9f48-6c9e69da0b9d",
+        "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The accepted image explicitly names the root approximation and visualizes two actual bisections as equal interval halves. Starting from the sign change on `[1; 2]`, the first row retains `[1; 1,5]` after `f(1,5)=0,25>0`; the second row retains `[1,25; 1,5]` after `f(1,25)=−0,4375<0`. The final statement `1,25 < √2 < 1,5` is correct and does not claim a false decimal precision. Full-resolution inspection found no wrong value, sign, interval endpoint, split direction, duplicate label, malformed word, or visible technical identifier. This is a technical pilot acceptance; human mathematical, accessibility, and rights approval remains open."
       }
     ]
   },
@@ -468,14 +536,57 @@
         "latestDecision": "accepted_after_regeneration"
       },
       {
+        "goalId": "71d1fd4d-8471-5f25-94a0-4c531a74783c",
+        "title": "Ereignisse als Mengen verknüpfen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/71d1fd4d-8471-5f25-94a0-4c531a74783c/71d1fd4d-8471-5f25-94a0-4c531a74783c.jpg",
+        "latestDecision": "correction_open_provider_credit_exhausted"
+      },
+      {
+        "goalId": "f7879354-1a82-4195-8e3c-a339a820439c",
+        "title": "Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/f7879354-1a82-4195-8e3c-a339a820439c/f7879354-1a82-4195-8e3c-a339a820439c.jpg",
+        "latestDecision": "correction_open_provider_credit_exhausted"
+      },
+      {
         "goalId": "701b3942-9f70-548e-9d02-a34b7e64aa17",
         "title": "Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK)",
         "reviewStatus": "pilot",
         "url": "/assets/goal-visualizations/mathematik/701b3942-9f70-548e-9d02-a34b7e64aa17/701b3942-9f70-548e-9d02-a34b7e64aa17.jpg",
         "latestDecision": "accepted"
+      },
+      {
+        "goalId": "4fc77ab5-90aa-4aa7-941f-6c807dde54fe",
+        "title": "Volumen von schiefen Prismen und Pyramiden plausibilisieren",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/4fc77ab5-90aa-4aa7-941f-6c807dde54fe/4fc77ab5-90aa-4aa7-941f-6c807dde54fe.jpg",
+        "latestDecision": "correction_open_provider_credit_exhausted"
+      },
+      {
+        "goalId": "d8305a49-6d45-52aa-ab88-9163c3b9f198",
+        "title": "Wahrscheinlichkeiten anhand von Termen vergleichen",
+        "reviewStatus": "pilot",
+        "url": "/assets/goal-visualizations/mathematik/d8305a49-6d45-52aa-ab88-9163c3b9f198/d8305a49-6d45-52aa-ab88-9163c3b9f198.jpg",
+        "latestDecision": "correction_open_provider_credit_exhausted"
       }
     ],
-    "acceptedReviewWithoutLink": []
+    "acceptedReviewWithoutLink": [
+      {
+        "batch": "092",
+        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+        "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
+        "decision": "accepted_pilot",
+        "notes": "The image correctly compares small and large sample size at fixed `alpha`: larger `n` gives narrower distributions relative to the parameter difference, lower `beta`, and higher power under the shown alternative."
+      },
+      {
+        "batch": "106",
+        "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93",
+        "title": "Kettenlinien und Glockenkurven untersuchen (LK)",
+        "decision": "accepted_pilot",
+        "notes": "The image correctly separates catenary and Gaussian panels. It shows `c(x)=cosh(x)=(e^x+e^(-x))/2` as a symmetric U-shaped curve with minimum `c(0)=1`, and `g(x)=e^(-x^2/2)` as a symmetric bell curve with maximum `g(0)=1` and symmetry axis `x=0`. Parameter notes distinguish catenary stretch/sag from Gaussian width/spread."
+      }
+    ]
   },
   "visualizedGoals": [
     {
@@ -1148,7 +1259,7 @@
       "phase": "E",
       "area": "Analysis",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.png"
+      "url": "/assets/goal-visualizations/mathematik/f40fcaf7-c630-589c-9f48-6c9e69da0b9d/f40fcaf7-c630-589c-9f48-6c9e69da0b9d.jpg"
     },
     {
       "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
@@ -1421,14 +1532,6 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4/3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4.jpg"
-    },
-    {
-      "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
-      "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK)",
-      "phase": "Q4",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/dc12f281-f161-572b-a973-8405ae9b2498/dc12f281-f161-572b-a973-8405ae9b2498.jpg"
     },
     {
       "goalId": "28cdee95-3c8e-5760-a68a-405b7f9c6cbf",
@@ -2839,14 +2942,6 @@
       "url": "/assets/goal-visualizations/mathematik/9189339d-1788-406c-a1a4-e0e6b851c4ea/9189339d-1788-406c-a1a4-e0e6b851c4ea.jpg"
     },
     {
-      "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
-      "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/ae483d98-54e0-5985-96d2-fc1351d22e4f/ae483d98-54e0-5985-96d2-fc1351d22e4f.jpg"
-    },
-    {
       "goalId": "377282dc-80b0-5bbf-bef2-a9f22e3919c1",
       "title": "Implikation und Äquivalenz unterscheiden",
       "phase": "Q4",
@@ -2991,14 +3086,6 @@
       "url": "/assets/goal-visualizations/mathematik/496f16a0-c031-5753-b988-d6cd3cab595e/496f16a0-c031-5753-b988-d6cd3cab595e.jpg"
     },
     {
-      "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93",
-      "title": "Kettenlinien und Glockenkurven untersuchen (LK)",
-      "phase": "Q1",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/05946a6a-b41e-5cec-8a39-237f889f4d93/05946a6a-b41e-5cec-8a39-237f889f4d93.jpg"
-    },
-    {
       "goalId": "591cb948-f313-5b1c-a9cb-3df8162eeb8b",
       "title": "Kettenschlüsse nachvollziehen und bilden",
       "phase": "Q4",
@@ -3037,22 +3124,6 @@
       "area": "Geometry",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/d1352ce0-9502-5039-9af6-318fe385b6fd/d1352ce0-9502-5039-9af6-318fe385b6fd.jpg"
-    },
-    {
-      "goalId": "1b67aeb4-2a55-531f-94da-283b4e3df5f1",
-      "title": "Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/1b67aeb4-2a55-531f-94da-283b4e3df5f1/1b67aeb4-2a55-531f-94da-283b4e3df5f1.jpg"
-    },
-    {
-      "goalId": "70efdec0-110c-5564-849b-bc05cfff0f6a",
-      "title": "Kombinationen ohne Zurücklegen mit Fakultäten berechnen",
-      "phase": "Q3",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/70efdec0-110c-5564-849b-bc05cfff0f6a/70efdec0-110c-5564-849b-bc05cfff0f6a.jpg"
     },
     {
       "goalId": "8b635349-abc3-59e7-af93-ec28940bf690",
@@ -3101,14 +3172,6 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/22b66c1e-50b1-505f-a388-c39131a4e1c3/22b66c1e-50b1-505f-a388-c39131a4e1c3.jpg"
-    },
-    {
-      "goalId": "4f64f771-20ba-581a-86ba-bcdb1759e4d2",
-      "title": "Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/4f64f771-20ba-581a-86ba-bcdb1759e4d2/4f64f771-20ba-581a-86ba-bcdb1759e4d2.jpg"
     },
     {
       "goalId": "77d607e0-0244-55ca-ba0f-214baa94b8de",
@@ -4175,14 +4238,6 @@
       "url": "/assets/goal-visualizations/mathematik/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464/ea8e3dfb-7fd7-5d49-ae07-01864e6aa464.jpg"
     },
     {
-      "goalId": "5bced7dc-6557-4af1-9e70-d87f850d3b7f",
-      "title": "Parameter quadratischer Funktionen in Scheitelpunktform deuten",
-      "phase": "J9",
-      "area": "Analysis",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/5bced7dc-6557-4af1-9e70-d87f850d3b7f/5bced7dc-6557-4af1-9e70-d87f850d3b7f.jpg"
-    },
-    {
       "goalId": "895a60ea-606a-4e77-a5af-ecc13d68e8fb",
       "title": "Parameter trigonometrischer Funktionen deuten",
       "phase": "J10",
@@ -4239,14 +4294,6 @@
       "url": "/assets/goal-visualizations/mathematik/be18cef8-ad5b-56d4-9ecf-9ba45bad211e/be18cef8-ad5b-56d4-9ecf-9ba45bad211e.jpg"
     },
     {
-      "goalId": "e7350739-c89f-5c7b-b4d1-717d6a767298",
-      "title": "Parameteruntersuchungen mit Exponentialfunktionen (LK)",
-      "phase": "Q1",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/e7350739-c89f-5c7b-b4d1-717d6a767298/e7350739-c89f-5c7b-b4d1-717d6a767298.jpg"
-    },
-    {
       "goalId": "6947245e-6bd7-52d7-9bc2-0c60cfa447c5",
       "title": "Parameterwerte aus vorgegebenen Funktionseigenschaften bestimmen",
       "phase": "E",
@@ -4285,14 +4332,6 @@
       "area": "Analysis",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/7f11ffe0-7c43-4507-9101-50374a60b0e8/7f11ffe0-7c43-4507-9101-50374a60b0e8.jpg"
-    },
-    {
-      "goalId": "1e164a09-0a2b-55ab-b927-08a4a278f72b",
-      "title": "Plausibilität mit Beispielen testen",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/1e164a09-0a2b-55ab-b927-08a4a278f72b/1e164a09-0a2b-55ab-b927-08a4a278f72b.jpg"
     },
     {
       "goalId": "a41761f2-8ba8-5af4-87c1-eb5e4ab1d020",
@@ -5509,14 +5548,6 @@
       "area": "Arithmetic",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562/f2d4a7de-57c3-5749-bbb4-6cd4b57b7562.jpg"
-    },
-    {
-      "goalId": "5d9c156b-e5a4-5e91-9da3-22e858eb1f8e",
-      "title": "Teilungsverhältnisse bei Strecken untersuchen",
-      "phase": "Q4",
-      "area": "",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e/5d9c156b-e5a4-5e91-9da3-22e858eb1f8e.jpg"
     },
     {
       "goalId": "f2a12269-6bcb-564a-9fdb-45cfdbd704fc",

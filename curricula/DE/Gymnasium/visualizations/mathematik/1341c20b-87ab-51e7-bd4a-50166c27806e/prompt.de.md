@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -33,22 +33,24 @@ Beschreibung: Die lernende Person kann Produkte, Summen und Verkettungen aus gan
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show a sorting board for function structures before differentiating.
-- Include three examples with colored brackets:
-  - Sum: `f(x)=x^2 + e^x`, labeled "Summe".
-  - Product: `g(x)=x^2 * e^x`, labeled "Produkt".
-  - Chain: `h(x)=e^(2x+1)`, labeled "Verkettung".
-- For the product example, label factors `u(x)=x^2` and `v(x)=e^x`.
-- For the chain example, label outer function `e^u` and inner function `u=2x+1`.
-- Add a note: "Erst Struktur erkennen, dann Regel waehlen".
+- Erstelle eine reduzierte Sortiertafel mit genau drei klar getrennten Textkarten: `Summe`, `Produkt`, `Verkettung`.
+- Karte `Summe` zeigt exakt `f(x) = x² + eˣ` und darunter `zwei Summanden`.
+- Karte `Produkt` zeigt diese drei Definitionen jeweils in einer eigenen Zeile und ohne Zeichen zwischen den ersten beiden Zeilen:
+  - `u(x) = x²`
+  - `v(x) = eˣ`
+  - `g(x) = u(x) · v(x) = x² · eˣ`
+- Karte `Verkettung` zeigt exakt:
+  - `innen: u(x) = 2x + 1`
+  - `außen: F(u) = eᵘ`
+  - `h(x) = F(u(x)) = e^(2x+1)`
+- Ergänze unten exakt: `Erst Struktur erkennen, dann Regel wählen.`
+- Nutze große Schrift, farbliche Klammern und viel freien Raum.
 
 Vermeiden:
 
-- Do not calculate long derivatives in this image.
-- Do not classify `x^2 * e^x` as a sum.
-- Do not classify `e^(2x+1)` as a simple product.
-- Do not mix up inner and outer function in the chain example.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Verbinde niemals `u(x) = x²` und `v(x) = eˣ` durch ein Multiplikationszeichen oder Gleichheitszeichen.
+- Keine ausgerechneten Ableitungen, keine Zahnräder, Glühbirnen oder dekorativen Symbole.
+- Keine Logos, Wasserzeichen oder Zielgruppenhinweise.
 ```
 
 ## Review-Notiz

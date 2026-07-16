@@ -19,35 +19,29 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden (LK)
+Titel: Hauptsatz der Differential- und Integralrechnung mit anschaulichem Stetigkeitsbegriff begründen und anwenden
 Beschreibung: Die lernende Person kann den Hauptsatz der Differential- und Integralrechnung unter Verwendung eines anschaulichen Stetigkeitsbegriffs begründen und in Integralzusammenhängen anwenden.
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Hauptsatz mit anschaulichem Stetigkeitsbegriff begruenden und anwenden.
-- Verwende eine kontinuierliche Randfunktion f(t)=t+1.
-- Definiere A(x)=integral_0^x f(t) dt.
-- Zeige eine Zoom-Idee bei x=2:
-  Auf einem sehr kleinen Intervall [2, 2+h] ist f(t) fast konstant nahe f(2)=3.
-  Zusaetzliche Flaeche ist ungefaehr f(2)*h = 3h.
-  Deshalb ist (A(2+h)-A(2))/h ungefaehr 3 und im Grenzfall genau A'(2)=3.
-- Zeige rechts die Anwendung:
-  A'(2)=f(2)=3.
-- Ergebnisbox: Stetigkeit macht den schmalen Flaechenstreifen lokal wie ein Rechteck; daher A'(x)=f(x).
+- Bewahre das klare Zweispaltenlayout, alle korrekten Formeln, den Flächenstreifen, die Lupe und das lineare Beispiel der Vorlage unverändert.
+- Ändere die linke Bereichsüberschrift exakt zu "Anschauliche Begründung mit Stetigkeit".
+- Ergänze nahe der schattierten Fläche gut lesbar exakt "A(x) = ∫₀ˣ f(t) dt".
+- Ergänze nahe dem vergrößerten Streifen kurz und exakt "f stetig: lokal fast konstant".
+- Alle bereits korrekten sichtbaren Formeln bleiben exakt erhalten: "ΔA ≈ f(x) · h", "ΔA / h ≈ f(x)", "h → 0: A′(x) = f(x)", "f(t) = t + 1", "f(2) = 3", "A′(2) = 3".
 
 Vermeiden:
-- Nicht behaupten, dass die Naeherung fuer grosses h exakt ist.
-- Kein Sprunggraph; f soll sichtbar stetig sein.
-- A'(2) nicht als A(2) verwechseln.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine weiteren Änderungen an Geometrie, Farben, Zahlen oder Variablen.
+- Keine doppelten Wörter, langen Sätze, Kurs- oder Schulbezeichnungen.
+- Keine technischen IDs, Marken, Logos oder Benutzeroberflächenbegriffe.
 ```
 
 ## Review-Notiz

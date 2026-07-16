@@ -75,6 +75,10 @@ jobs:
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer
         run: npm run test:package-goal-source-evidence
+      - name: Test goal visualization QA approval model
+        run: |
+          npm run test:goal-visualization-qa-status
+          npm run test:goal-visualization-qa-model
       - name: Test learner goal selection
         run: npm run validate:learner-goal-selection
       - name: Check GPT system instruction lengths

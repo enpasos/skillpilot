@@ -19,33 +19,32 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Strategien optimieren (LK)
+Titel: Strategien optimieren
 Beschreibung: Die lernende Person kann Optimierungen vorschlagen (z. B. Umformungen, geeignetere Werkzeuge, bessere Darstellung) und deren Effekt erläutern.
 
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Optimierung einer mathematischen Arbeitsstrategie zeigen, kein allgemeiner Business-Workflow.
-- Split-Screen-Vergleich:
-- Links "Umweg": langer, unuebersichtlicher Rechenweg mit mehreren gestrichenen Schritten.
-- Rechts "Besser": kuerzerer Weg mit geeigneter Darstellung, z. B. klarer Graph plus kleine Tabelle.
-- Einfaches Optimierungsbeispiel mit Flaechenfunktion "A(x)" und Graph mit sichtbar markiertem Maximum.
-- Kurzer Hinweis "Darstellung wechseln".
-- Kernaussage: Eine bessere Darstellung oder ein passendes Werkzeug macht die Loesungsstrategie klarer.
+- Erzeuge einen sehr reduzierten Vergleich mit dem Titel exakt `Strategien optimieren`.
+- Links `Umweg`: Zeige die korrekte Flächenfunktion `A(x) = 100x - 2x^2` und darunter höchstens drei saubere Rechenschritte: `A'(x) = 100 - 4x`, `A'(x) = 0`, `x = 25`.
+- Rechts `Besser`: Zeige dieselbe nach unten geöffnete Parabel und markiere ihren Scheitel eindeutig mit `Maximum: x = 25, A = 1250`.
+- Zwischen beiden Feldern steht exakt `Darstellung wechseln`.
+- Kernaussage unten: `Ein passender Graph macht das Maximum sofort sichtbar.`
+- Verwende keine Geräte; der Graph steht auf einer neutralen Tafel.
 
 Vermeiden:
 
-- Kein falscher Maximalwert und keine erfundene exakte Loesung.
-- Keine komplizierten Formeln, keine Matrizenrechnung, kein zufaelliger Programmcode.
-- Keine generischen Buerosymbole ohne mathematischen Bezug.
+- Keine durchgestrichenen falschen Zwischenschritte, kein englischer Text und keine erfundenen Wörter.
+- Keine zusätzlichen Formeln, Tabellen, Figuren oder Geräte.
+- Keine Logos, Markenformen, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

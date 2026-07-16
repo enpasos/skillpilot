@@ -117,7 +117,7 @@ The current rule catalog is versioned as `curriculum-quality-v4`.
 | `CQR-201` | `M4` | Terminal autonomy goals have `examData`. |
 | `CQR-301` | `M5` | Semantic atomicity review ledgers for content leaf goals are complete, current, and resolved. |
 | `CQR-302` | `M6` | Memory-card review ledgers explicitly decide whether ordinary atomic goals justify memorization support; every kept primary card must trace to such a goal-level decision, every memory deck must remain traceable, and configured learner-facing views must expose the referenced memory nodes. Missing review configuration blocks `M6`, but not `M5`. |
-| `CQR-303` | `M7` | Goal-visualization QA ledgers under `curricula/DE/Gymnasium/quality/goal-visualization-qa/` match the active asset hashes, every ordinary atomic goal has a primary visualization link, and every active image is human-approved with no open human issue. A current human approval is the release gate and overrides older ChatGPT triage values. |
+| `CQR-303` | `M7` | Goal-visualization QA ledgers under `curricula/DE/Gymnasium/quality/goal-visualization-qa/` match the active asset hashes, every ordinary atomic goal has a primary visualization link, and every active image is human-approved with no open human issue. Hash-bound `Approved AI` evidence is tracked separately and never replaces human approval as the release gate; older ChatGPT fields remain compatibility triage. |
 | `CQR-401` | `M5` | At least one learner-facing composition view exists for the curriculum. |
 | `CQR-501` | `M5` | Applicability warnings are split into active, accepted-current, and obsolete-accepted counts. |
 

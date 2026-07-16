@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -33,43 +33,21 @@ Beschreibung: Die lernende Person kann einfache trigonometrische Gleichungen wie
 Zusatzanweisung:
 Pflichtinhalt:
 
-- Show the equation `sin(x)=1/2`.
-- Unit circle: mark the two solutions in `[0,2pi]`: `x=pi/6` and `x=5pi/6`.
-- Graph panel: horizontal line `y=1/2` crossing the sine curve at the same two points in `[0,2pi]`.
-- Write the general solution: `x = pi/6 + 2k*pi` or `x = 5pi/6 + 2k*pi`, `k in Z`.
-- Add a note: "zwei Loesungen pro Periode bei -1 <= k <= 1".
+- Erstelle eine klare Infografik zur Gleichung `sin(x) = 1/2`.
+- Zeige links einen korrekten Einheitskreis mit einer horizontalen Linie bei `y = 1/2` und exakt den beiden Winkeln `pi/6` und `5pi/6`.
+- Zeige rechts ausschließlich eine gerade horizontale Winkel-Zahlengerade von `0` bis `2pi`; markiere darauf exakt `pi/6` und `5pi/6`.
+- Zeige keine Sinuskurve und keinen Funktionsgraphen.
+- Zeige die allgemeine Lösung exakt als `x = pi/6 + 2m pi` oder `x = 5pi/6 + 2m pi`, `m in Z`.
+- Ergänze separat diese drei korrekten Regeln:
+  - `Für -1 < k < 1: zwei Lösungen pro Periode.`
+  - `Für k = 1 oder k = -1: eine Lösung pro Periode.`
+  - `Für |k| > 1: keine reelle Lösung.`
 
 Vermeiden:
 
-- Do not show only one solution.
-- Do not put the second solution at `7pi/6` for `sin(x)=1/2`.
-- Do not use degrees instead of radians.
-- Do not omit the `+ 2k*pi` in the general solution.
-- Do not include technical IDs, filenames, watermarks, or brand names.
-
-Regeneration-Zusatz:
-
-- In the graph panel, both solution points must lie on the horizontal line `y=1/2`.
-- The two graph intersections in `[0,2pi]` must be before `pi`: first at `pi/6`, second at `5pi/6`.
-- Do not draw any solution point below the x-axis.
-- Keep the unit-circle solutions in quadrant I and quadrant II only.
-- The graph panel should show no orange point near `3pi/2` for this equation.
-
-Zweite Regeneration:
-
-- Do not draw a full sine curve.
-- Use a large unit circle and a simple horizontal number line from `0` to `2pi`.
-- On the number line, place solution markers only at `pi/6` and `5pi/6`, both before `pi`.
-- Mark `pi/2` between `pi/6` and `5pi/6`, and mark `pi` after `5pi/6`.
-- Show the general solution in a formula box: `x = pi/6 + 2k*pi` or `x = 5pi/6 + 2k*pi`, `k in Z`.
-
-Dritte Regeneration:
-
-- Do not write a long general-solution formula.
-- Instead, show a short text box exactly: "In [0;2pi]: pi/6 und 5pi/6".
-- Show a second short text box exactly: "Weitere Loesungen: jeweils +2pi".
-- Keep the unit circle and number line.
-- Do not write `2k*p`, `2kp`, or any symbol that could be confused with `2k*pi`.
+- Kein Wellenbild, keine Sinuskurve und keine zweite Periode im Intervall von 0 bis 2pi.
+- Behaupte niemals zwei Lösungen pro Periode für `k = 1` oder `k = -1`.
+- Keine Dezimalnäherungen, keine widersprüchlichen Winkel, keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

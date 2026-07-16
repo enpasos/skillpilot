@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/eb2cecd6-5dca-5a2e-988b-a29b24c20345/eb2cecd6-5dca-5a2e-988b-a29b24c20345.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,27 +31,26 @@ Titel: Testkennzahlen und Testvariablen bestimmen
 Beschreibung: Die lernende Person kann für Hypothesentests bei Anteilen eine geeignete Zufallsgröße definieren, deren Verteilung unter der Nullhypothese angeben und zu Beobachtungen passende Testkennzahlen bestimmen.
 
 Zusatzanweisung:
-Additional mathematical constraints for this batch:
+Pflichtinhalt:
 
-- Do not include technical IDs in the image.
-- Keep examples small, consistent, and readable.
-- For additional continuous distributions, show only one clear example such as a uniform distribution on `[0,10]` or an exponential waiting-time density. Emphasize that probabilities are areas under a density curve, not heights.
-- For hypothesis tests, use the standard logic:
-  - formulate `H0` as the baseline assumption
-  - formulate `H1` as the alternative to be supported by the data
-  - choose a test variable before observing data
-  - define a rejection region for `H0`
-  - compare the observed test statistic with the rejection region
-  - make a decision in context
-- Safe binomial test example: quality-control check with `n=20` items and `X = number of defective items`.
-- One-sided right-tail example: `H0: p <= 0.10`, `H1: p > 0.10`. Large values of `X` speak against `H0`; the rejection region is on the right.
-- Avoid exact numeric critical values unless they are internally consistent. It is acceptable to write a schematic rejection region such as `X >= k`.
-- If alpha is shown, label it as the probability of rejecting `H0` although `H0` is true: type I error.
-- If beta is shown, label it as the probability of not rejecting `H0` although `H1` is true: type II error.
-- Do not draw alpha and beta as the same area under the same distribution. Use two curves or clearly separate true states if both are shown.
-- A test statistic/test variable is a rule such as `X = number of successes/defects`, not the final decision itself.
-- Avoid saying that a non-rejection "proves H0"; use "H0 nicht verwerfen" or "Daten reichen nicht gegen H0".
-- Avoid using normal-density diagrams for binomial tests unless the approximation is explicitly stated.
+- Erstelle eine streng reduzierte Infografik ohne Diagramme und ohne Symbole.
+- Zeige oben vier reine Textkarten, jeweils ohne Bild oder Icon:
+  1. `H0: p <= 0,10` und `H1: p > 0,10`
+  2. `X = Anzahl fehlerhafter Teile unter 20 geprüften Teilen`
+  3. `Unter H0: X ~ B(20; 0,10)`
+  4. `Beobachtet: x_beob = 5`
+- Zeige darunter genau einen horizontalen Streifen ganzzahliger Felder: blau `0, 1, 2, 3, 4`, dann eine deutliche Trennlinie, rot `5, 6, 7, ..., 20`.
+- Beschrifte die Trennlinie exakt mit `kritische Grenze zwischen 4 und 5`.
+- Beschrifte den roten Teil exakt mit `Ablehnungsbereich: X >= 5`.
+- Markiere das rote Feld `5` mit `x_beob = 5` und zeige darunter `H0 verwerfen`.
+
+Vermeiden:
+
+- Absolut keine Kurve, keine Glockenform, kein Koordinatensystem, kein Säulendiagramm und keine Wahrscheinlichkeitshöhen.
+- Verwende ausschließlich das normale Zeichen `X`; kein überstrichenes X und keine andere Testvariable.
+- Die 5 muss das erste rote Feld sein. Keine widersprüchliche Grenze oder Entscheidung.
+- Keine Zahnräder, Waagen, Augen, Hände oder sonstigen Icons.
+- Keine Logos, Wasserzeichen, Zielgruppenhinweise oder dekorativen Schriftfragmente.
 ```
 
 ## Review-Notiz

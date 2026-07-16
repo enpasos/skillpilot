@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,22 +32,20 @@ Beschreibung: Die lernende Person kann das bestimmte Integral als Bestandsgröß
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Integral als Bestand und als Flaecheninhalt verstehen.
-- Verwende einen einfachen Tank-Kontext:
-  Anfangsbestand B(0)=5 Liter.
-  Zuflussrate r(t)=2 Liter pro Minute fuer 0 <= t <= 3.
-- Zeige links ein Koordinatensystem mit r(t)=2 als waagerechte Linie von t=0 bis t=3.
-- Schattiere das Rechteck unter r(t) von 0 bis 3.
-- Rechnung:
-  integral_0^3 r(t) dt = 3 * 2 = 6 Liter.
-  B(3) = B(0) + integral_0^3 r(t) dt = 5 + 6 = 11 Liter.
-- Ergebnisbox: Integral = Zuwachs des Bestands = Flaecheninhalt unter der Rate.
+- Überarbeite die Vorlage zu einer sauberen, gut lesbaren Infografik mit Rate-und-Fläche links und Tankbestand rechts.
+- Sichtbare Überschrift exakt: "Integral als Bestand und Flächeninhalt".
+- Linkes Diagramm: horizontale Achse exakt "Zeit t (Minuten)", vertikale Achse exakt "Rate r(t) in L/min".
+- Zeige die konstante Rate "r(t) = 2" von t = 0 bis t = 3 und die korrekt schattierte positive Fläche darunter.
+- Zeige unter dem Diagramm exakt "∫₀³ 2 dt = 6 Liter".
+- Rechts: Anfangsbestand "B(0) = 5 Liter", Zuflussrate "2 L/min für 3 Minuten", Zuwachs "6 Liter", Endbestand "B(3) = 11 Liter".
+- Abschlussformel exakt: "B(3) = B(0) + ∫₀³ r(t) dt = 5 + 6 = 11 Liter".
+- Die sichtbaren Wasserstände müssen vom Anfangs- zum Endbestand klar ansteigen.
 
 Vermeiden:
-- Das Integral nicht als Endbestand 6 deuten; der Endbestand ist 11 Liter.
-- Keine negative Flaeche in diesem Beispiel.
-- Keine falschen Einheiten: Rate in Liter pro Minute, Integral in Liter.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein verstümmeltes Wort an der Zeitachse; insbesondere muss dort vollständig "Zeit t (Minuten)" stehen.
+- Keine inkonsistenten Einheiten, falschen Wasserstände oder zusätzlichen Rechenschritte.
+- Keine langen Ergebnisboxen oder dekorativen Symbole ohne didaktische Funktion.
+- Keine technischen IDs, Marken, Logos, Kurs- oder Schulbezeichnungen.
 ```
 
 ## Review-Notiz

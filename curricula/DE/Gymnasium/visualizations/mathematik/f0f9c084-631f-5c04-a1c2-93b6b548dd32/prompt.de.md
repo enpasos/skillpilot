@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,11 @@ Titel: Probe durch Einsetzen durchführen
 Beschreibung: Die lernende Person kann Ergebnisse durch Einsetzen in Ausgangsgleichungen oder -bedingungen überprüfen und Abweichungen erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Make one precise spelling correction to the referenced infographic and preserve every equation, arrow and visual element.
 
-- Zeige eine Probe durch Einsetzen in eine Ausgangsgleichung.
-- Ausgangsgleichung: "3x + 2 = 14".
-- Loesungskarte: "x = 4".
-- Einsetzen in drei getrennten Zeilen:
-- Zeile 1: "3*4 = 12".
-- Zeile 2: "12 + 2 = 14".
-- Zeile 3: "14 = 14" mit gruenem Haken.
-- Optional daneben eine kleine Fehlerkarte: "x = 5" fuehrt zu "3*5 + 2 = 17 != 14" mit rotem Kreuz.
-- Kurze Schlusskarte: "Probe stimmt: x = 4 passt".
-- Alle Zahlen und Rechenschritte muessen gut lesbar sein.
+Replace "Probe stiimmt nicht!" with exactly "Probe stimmt nicht!". The word "stimmt" must contain exactly one i after st.
 
-Vermeiden:
-
-- Keine falsche Probe und kein falsches Ergebnis.
-- Niemals "3*4 + 2 = 12" schreiben.
-- Kein Wechsel der Ausgangsgleichung waehrend der Probe.
-- Keine komplizierten Gleichungen, keine Brueche, keine Tool-Oberflaeche.
-- Keine langen Erklaertexte.
+Keep 3x + 2 = 14, the correct check with x = 4, and the failed check with x = 5 unchanged. No logos, brands, watermarks or additional text.
 ```
 
 ## Review-Notiz

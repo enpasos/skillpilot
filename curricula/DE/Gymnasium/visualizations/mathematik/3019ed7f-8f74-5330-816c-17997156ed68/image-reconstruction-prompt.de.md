@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro
 - Quellbild: `3019ed7f-8f74-5330-816c-17997156ed68.jpg`
 
 ## Zweck
@@ -18,17 +18,34 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, pädagogisches Diagramm auf hellblauem Hintergrund. Ein großes, weißes Rechteck mit abgerundeten Ecken und einem dünnen blauen Rand umschließt den gesamten Inhalt. Oben mittig steht der Haupttitel in fetter, schwarzer, serifenloser Schrift: "Ergebnisse strukturiert präsentieren".
+Ein sauberes, modernes, pädagogisches Infografik-Design mit flachen Elementen und subtilen Schatten. Der Hintergrund ist ein sanftes Hellblau mit einem leichten Farbverlauf von oben nach unten. Im Vordergrund befindet sich ein großes, weißes, abgerundetes Rechteck mit einem dünnen hellblauen Rand.
 
-Darunter sind vier vertikale Abschnitte, jeweils als weißes Rechteck mit abgerundeten Ecken und einem farbigen Rand dargestellt, horizontal von links nach rechts angeordnet. Jeder Abschnitt hat eine farbige Titelleiste mit weißem Text. Zwischen den Abschnitten befinden sich hellblaue Pfeile mit weißer Umrandung, die von links nach rechts zeigen und einen Prozessfluss darstellen.
+Oben mittig im weißen Bereich steht der Titel in fetter, schwarzer, serifenloser Schrift: "Ergebnisse strukturiert präsentieren".
 
-Der erste Abschnitt (ganz links) hat eine blaue Titelleiste mit dem Text "Fragestellung" und einen blauen Rand. Im Inhalt befindet sich eine schwarze, wolkenförmige Sprechblase mit dem schwarzen Text "Wie gross ist die Fläche?". Darunter ist ein hellblau gefülltes Rechteck mit schwarzem Rand. Oberhalb dieses Rechtecks steht "6 m" in schwarzer Schrift, und rechts davon "4 m" in schwarzer Schrift. Innerhalb des hellblauen Rechtecks sind drei schwarze Fragezeichen verteilt.
+Darunter sind vier vertikale Säulen oder Abschnitte horizontal angeordnet und gleichmäßig voneinander beabstandet. Jede Säule besteht aus einem farbigen Kopfbereich und einem darunterliegenden weißen Inhaltsbereich, die durch kurze, farblich passende Linien verbunden sind. Pfeile verbinden die Inhaltsbereiche der benachbarten Säulen von links nach rechts, um einen Ablauf darzustellen.
 
-Der zweite Abschnitt hat eine orange Titelleiste mit dem Text "Vorgehen" und einen orangefarbenen Rand. Im Inhalt steht der schwarze Text "Rechnung:". Darunter, in fetter schwarzer Schrift, "6 m × 4 m". Darunter ist ein kleines, graues Taschenrechner-Symbol mit schwarzen Tasten und Display. Ein schwarzer, nach oben gebogener Pfeil zeigt vom Taschenrechner auf den Text "6 m × 4 m".
+**Säule 1 (links):**
+Der Kopfbereich ist ein mittelblaues abgerundetes Rechteck mit weißer Schrift "Fragestellung".
+Der weiße Inhaltsbereich zeigt oben eine Gedankenblase mit schwarzem Umriss und weißer Füllung, aus der links drei kleine Kreise als Gedankenblasen-Fortsetzung herausragen. Darin steht in schwarzer, serifenloser Schrift: "Wie groß ist die Fläche?".
+Darunter ist ein Rechteck mit schwarzem Umriss und hellblauer Füllung dargestellt. Die obere Seite ist mit "6 m" beschriftet, die rechte Seite mit "4 m", beides in schwarzer Schrift. Im Inneren des Rechtecks sind drei schwarze Fragezeichen ("?") verteilt.
+Ein hellblauer Pfeil mit weißem Umriss zeigt vom rechten Rand dieses Inhaltsbereichs nach rechts zur nächsten Säule.
 
-Der dritte Abschnitt hat eine grüne Titelleiste mit dem Text "Ergebnis" und einen grünen Rand. Im Inhalt befindet sich ein großes, leuchtend gelbes Rechteck mit abgerundeten Ecken und einem sanften grünen Leuchten darum. Darin steht in fetter schwarzer Schrift "24 m²". Darunter ist eine kleine, grüne, sprechblasenartige Form mit grünem Rand, die den schwarzen Text "Berechnete Fläche" enthält.
+**Säule 2:**
+Der Kopfbereich ist ein leuchtend orangefarbenes abgerundetes Rechteck mit weißer Schrift "Vorgehen".
+Der weiße Inhaltsbereich zeigt oben mittig in schwarzer, serifenloser Schrift "Rechnung:", gefolgt von "6 m × 4 m" in fetter, schwarzer, serifenloser Schrift.
+Darunter ist ein kleiner, einfacher Taschenrechner (grauer Körper, schwarze Tasten, weißer Bildschirm) abgebildet. Ein schwarzer, gekrümmter Pfeil zeigt vom Taschenrechner nach oben zum Text "6 m × 4 m".
+Ein orangefarbener Pfeil mit weißem Umriss zeigt vom rechten Rand dieses Inhaltsbereichs nach rechts zur nächsten Säule.
 
-Der vierte Abschnitt (ganz rechts) hat eine violette Titelleiste mit dem Text "Interpretation" und einen violetten Rand. Im Inhalt steht der schwarze Text "Die Fläche beträgt 24 Quadratmeter.". Darunter befindet sich ein violettes Häkchen-Symbol mit schwarzer Umrandung. Daneben ist eine kleine, violette, sprechblasenartige Form mit violettem Rand, die den schwarzen Text "Antwort auf die Frage." enthält.
+**Säule 3:**
+Der Kopfbereich ist ein mittelgrünes abgerundetes Rechteck mit weißer Schrift "Ergebnis".
+Der weiße Inhaltsbereich zeigt mittig ein auffälliges, leuchtend gelbes abgerundetes Rechteck mit dünnem schwarzem Umriss und einem subtilen Leuchteffekt. Darin steht in großer, fetter, schwarzer, serifenloser Schrift: "24 m²".
+Darunter befindet sich eine kleinere mittelgrüne Beschriftung in einem abgerundeten Rechteck mit dünnem schwarzem Umriss, das durch ein kleines grünes Dreieck nach oben mit dem gelben Ergebnis-Rechteck verbunden ist. Darin steht in schwarzer, serifenloser Schrift: "Berechnete Fläche".
+Ein gelber Pfeil mit weißem Umriss zeigt vom rechten Rand dieses Inhaltsbereichs nach rechts zur nächsten Säule.
 
-Die drei Pfeile, die die Hauptabschnitte verbinden, sind hellblau mit weißer Umrandung und zeigen nach rechts. Jeder Pfeil hat einen leicht dunkleren blauen Schatten. Der Stil ist sauber, modern und leicht cartoonhaft, mit klaren Linien und gut lesbaren Schriften.
+**Säule 4 (rechts):**
+Der Kopfbereich ist ein mittelviolettes abgerundetes Rechteck mit weißer Schrift "Interpretation".
+Der weiße Inhaltsbereich zeigt oben linksbündig in schwarzer, serifenloser Schrift: "Die Fläche beträgt 24 Quadratmeter.".
+Darunter ist ein großes, violettes Häkchen (Tick-Symbol) mit schwarzem Umriss abgebildet. Rechts daneben befindet sich eine kleine mittelviolette Beschriftung in einem abgerundeten Rechteck mit dünnem schwarzem Umriss, das durch ein kleines violettes Dreieck nach links mit dem Häkchen verbunden ist. Darin steht in schwarzer, serifenloser Schrift: "Antwort auf die Frage.".
+
+Alle Texte sind klar lesbar und die mathematische Notation ist exakt wiedergegeben. Die Pfeile stellen den Fortschritt von einer Phase zur nächsten dar.
 ```

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,21 +31,20 @@ Titel: Polynomdivision zur Nullstellensuche anwenden
 Beschreibung: Die lernende Person kann ganzrationale Funktionen mithilfe von Polynomdivision faktorisieren, Nullstellen aus linearen Faktoren ablesen und Ergebnisse durch Einsetzen überprüfen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a fresh, clean scientific-educational infographic titled "Polynomdivision zur Nullstellensuche".
 
-- Show polynomial division as a clear algebra workspace with exactly this example:
-  `p(x)=x^3-6x^2+11x-6`.
-- Show the known zero check `p(1)=0`, then divide by `(x-1)`.
-- Show the factorization result `p(x)=(x-1)(x-2)(x-3)`.
-- Mark the readable zeros in three colored circles: `x=1`, `x=2`, `x=3`.
-- Add a small verification note: `Einsetzen prueft das Ergebnis`.
+Use p(x) = x³ − 6x² + 11x − 6 and first show p(1) = 1 − 6 + 11 − 6 = 0.
 
-Vermeiden:
+Show the division result:
+(x³ − 6x² + 11x − 6) : (x − 1) = x² − 5x + 6.
 
-- Do not invent extra zeros or non-integer roots.
-- Do not change signs in the polynomial or factors.
-- Do not turn the task into quadratic formula work; the visual focus is polynomial division and factor reading.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+Under it, show the subtraction stages as aligned rows. The first intermediate remainder must be exactly "−5x² + 11x − 6". The next subtraction is "−(−5x² + 5x)" and produces "6x − 6". The final subtraction is "−(6x − 6)" and produces remainder "0".
+
+Finish with:
+p(x) = (x − 1)(x² − 5x + 6) = (x − 1)(x − 2)(x − 3)
+Nullstellen: x = 1, x = 2, x = 3.
+
+Every term, sign and exponent must be exact. The constant term −6 must remain visible in the dividend and first intermediate remainder. No decorative algebra fragments, logos, brands, watermarks or unrelated text.
 ```
 
 ## Review-Notiz

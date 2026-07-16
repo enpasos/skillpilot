@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: pilot
 - Quellbild: `474fe553-d868-50d9-a19b-761e64f21c0d.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/474fe553-d868-50d9-a19b-761e64f21c0d/474fe553-d868-50d9-a19b-761e64f21c0d.jpg`
@@ -19,45 +19,34 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Kleinen Satz von Fermat beweisen (LK)
+Titel: Kleinen Satz von Fermat beweisen
 Beschreibung: Die lernende Person kann den kleinen Satz von Fermat formulieren, beweisen und seine Aussage in modular-arithmetischen Beispielen deuten.
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Kleinen Satz von Fermat formulieren, beweisen und deuten.
-- Formulierung:
-  Ist p prim und p teilt a nicht, dann gilt a^(p-1) ≡ 1 mod p.
-- Beispiel:
-  p = 5, a = 2.
-  2^4 = 16 und 16 ≡ 1 mod 5.
-  Schreibe die finale Zeile exakt als Kongruenz: 2^4 ≡ 1 (mod 5).
-- Beweisidee als kurze strukturierte Skizze:
-  Die Restklassen 1, 2, ..., p-1 werden durch Multiplikation mit a modulo p nur permutiert.
-  Daher gilt a*1, a*2, ..., a*(p-1) ≡ 1, 2, ..., p-1 modulo p in anderer Reihenfolge.
-  Produkte vergleichen:
-  a^(p-1)*(p-1)! ≡ (p-1)! mod p.
-  Weil p die Zahl (p-1)! nicht teilt, darf man kuerzen.
-  Also a^(p-1) ≡ 1 mod p.
-- Visualisierung:
-  Ein Kreis nur der Nichtnull-Restklassen modulo 5 mit Pfeilen fuer Multiplikation mit 2:
-  1 -> 2 -> 4 -> 3 -> 1.
-  Der Rest 0 darf in diesem Permutationskreis nicht vorkommen.
+- Erstelle eine fachlich exakte, aufgeräumte Cartoon-Lernübersicht mit drei Bereichen: `Satz`, `Beweisidee` und `Beispiel`.
+- Formuliere den Satz mit nur den Variablen `p` und `a`: `Ist p eine Primzahl und teilt p die Zahl a nicht, dann gilt a^(p−1) ≡ 1 (mod p).`
+- Zeige in der Beweisidee die Nichtnullreste `1, 2, …, p−1`. Multiplikation mit `a` permutiert diese Reste modulo `p`.
+- Zeige genau die Produktkongruenz `a^(p−1) · (p−1)! ≡ (p−1)! (mod p)`.
+- Erkläre knapp: `Da p die Zahl (p−1)! nicht teilt, darf gekürzt werden.` Danach folgt `a^(p−1) ≡ 1 (mod p)`.
+- Zeige als Beispiel ausschließlich `p = 5`, `a = 2`, die Restabbildung `1→2, 2→4, 3→1, 4→3` und `2⁴ = 16 ≡ 1 (mod 5)`.
+- Ersetze im Beispiel das Kreisrad durch eine kleine, eindeutig lesbare Zweispaltentabelle. Überschriften: `x` und `2x mod 5`. Zeilen exakt: `1 | 2`, `2 | 4`, `3 | 1`, `4 | 3`. So ist jede der vier Abbildungen sichtbar und keine fehlt.
+- Alle Variablen, Exponenten, Fakultäten, Kongruenzzeichen und Klammern müssen groß und eindeutig lesbar sein.
 
 Vermeiden:
-- Nicht fuer zusammengesetztes p formulieren.
-- Die Voraussetzung p teilt a nicht nicht weglassen.
-- Im Beispiel nicht Gleichheit mit Kongruenz verwechseln: nicht "16 = 1 mod 5", sondern "16 ≡ 1 mod 5".
-- Nicht 2^5 ≡ 1 mod 5 als Hauptsatz schreiben; das waere hier nicht die Standardform.
-- Im Restklassenkreis fuer die Multiplikation mit 2 modulo 5 keinen Knoten 0 zeigen; nur 1, 2, 3, 4.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Die Variable `d`; verwende durchgehend ausschließlich `a` als die zu potenzierende Zahl.
+- Verstümmelte Teilbarkeitszeichen oder Aussagen wie `p teilt a`.
+- Eine falsche rechte Produktseite, insbesondere `(p−2)!`, oder falsches Kürzen.
+- Ein unvollständiges Kreisrad oder eine Restabbildung mit weniger als den vier Tabellenzeilen.
+- Kurs- oder Schulformzusätze im Titel, zusätzliche Beweisvarianten, technische IDs, Dateinamen, interne Pfade, Logos, Marken, Wasserzeichen oder Plattformnamen.
 ```
 
 ## Review-Notiz

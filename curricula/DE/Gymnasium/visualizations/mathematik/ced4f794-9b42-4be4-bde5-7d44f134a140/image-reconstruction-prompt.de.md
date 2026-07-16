@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Quellbild: `ced4f794-9b42-4be4-bde5-7d44f134a140.jpg`
 
 ## Zweck
@@ -18,20 +18,26 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein klares, modernes, lehrbuchartiges Infografik-Design mit einem sauberen, weißen Hintergrund und schwarzen Umrissen für alle Diagramme und Textfelder. Der Stil ist flach und leicht cartoonhaft, mit präzisen Linien und sanften Pastellfarben.
+Ein klares, didaktisches Diagramm im Stil einer Präsentationsfolie mit einem hellblauen Hintergrund auf der linken Seite und einem hellgrünen Hintergrund auf der rechten Seite, vertikal geteilt in der Mitte.
 
-Ganz oben, zentriert auf einem hellblauen Hintergrundbalken, steht der Haupttitel in großer, fetter, schwarzer serifenloser Schrift: "Hauptsatz der Differential- und Integralrechnung". Darunter befindet sich eine dünne schwarze horizontale Linie. Direkt unter der Linie, ebenfalls zentriert auf dem hellblauen Hintergrundbalken, steht der Untertitel in kleinerer, schwarzer serifenloser Schrift: "Begründung mit anschaulichem Stetigkeitsbegriff und Anwendung (LK)".
+Oben zentriert steht der schwarze Titel in großer Schrift: "Hauptsatz der Differential- und Integralrechnung".
 
-Unterhalb des Untertitels ist die Seite in zwei Hauptbereiche unterteilt.
+Der linke, hellblaue Bereich enthält oben links den schwarzen Untertitel: "Anschauliche Begründung mit Stetigkeit".
+Darunter befindet sich ein Koordinatensystem mit einer horizontalen Achse, beschriftet mit 't' nach rechts, und einer vertikalen Achse, beschriftet mit 'y' nach oben. Der Ursprung ist mit '0' markiert. Eine sanft ansteigende, blaue Kurve, beschriftet mit `f(t)` darüber, beginnt am Ursprung und verläuft nach rechts oben. Die Fläche unter dieser Kurve von '0' bis 'x' ist hellblau schattiert. Auf der t-Achse sind die Punkte 'x' und 'x+h' markiert. Eine gestrichelte vertikale Linie führt von 'x' zur Kurve, und eine weitere gestrichelte vertikale Linie führt von 'x+h' zur Kurve. Zwischen 'x' und 'x+h' auf der t-Achse ist ein horizontaler Doppelpfeil mit der Beschriftung 'h' platziert. Unter dem Koordinatensystem steht die mathematische Formel: `A(x) = \int_0^x f(t) dt`.
+Ein ovaler, gestrichelter Kreis umgibt den Bereich der Kurve und der schattierten Fläche zwischen 'x' und 'x+h', der vergrößert wird.
+Rechts neben diesem Diagramm ist eine graue Lupe mit schwarzem Rand und Griff, der nach unten rechts zeigt, abgebildet. Die Lupe vergrößert den Bereich des ovalen Kreises. Im Inneren der Lupe ist ein hellblaues Rechteck zu sehen. Links neben dem Rechteck zeigt ein vertikaler Pfeil nach oben, beschriftet mit `f(x)`. Unter dem Rechteck ist ein horizontaler Doppelpfeil mit der Beschriftung 'h' platziert. Rechts neben dem Rechteck steht der Text: `ΔA ≈ f(x) ⋅ h`. Darunter steht: `f stetig: lokal fast konstant`.
+Unterhalb der Lupe und des ersten Diagramms stehen zwei weitere mathematische Zeilen:
+`ΔA / h ≈ f(x)`
+`h → 0: A'(x) = f(x)`
 
-Der linke Bereich hat einen hellblauen Hintergrund und ist überschrieben mit einem zentrierten, fetten, schwarzen serifenlosen Text: "Begründung & Anschaulichkeit".
-In diesem Bereich befindet sich ein Diagramm mit einem schwarzen Koordinatensystem. Die horizontale Achse ist mit 't' und einem Pfeil beschriftet, die vertikale Achse mit 'y' und einem Pfeil. Eine blaue, diagonale Linie repräsentiert die Funktion f(t) = t+1, mit der Beschriftung "f(t) = t+1" oberhalb und rechts der Linie. Eine hellblaue Fläche ist unter der Kurve von t=0 bis zu einem variablen Punkt x schattiert und mit "A(x)" beschriftet, wobei ein schwarzer, gekrümmter Pfeil von "A(x)" zur Fläche zeigt. Eine vertikale gestrichelte Linie ist bei x=2 eingezeichnet und mit "x=2" beschriftet. Eine weitere vertikale gestrichelte Linie ist bei t=2+h eingezeichnet. Zwischen x=2 und t=2+h befindet sich ein schmaler, hellgrün schattierter Rechteckstreifen, dessen Breite auf der t-Achse mit 'h' markiert ist. Die t-Achse ist zusätzlich mit den Werten '2' und '2+h' beschriftet. Ein kleiner, hellgelber Kreis ist auf der oberen Kante des hellgrünen Rechtecks bei t=2 zentriert.
-Rechts neben diesem Diagramm, überlappend mit dem hellblauen Hintergrund, ist eine große Lupe mit einem dicken schwarzen Rand dargestellt. Entlang des linken Randes der Lupe steht vertikal und leicht gedreht der Text "ZOOM-IDE". Ein dicker schwarzer Pfeil zeigt vom gelben Kreis im ersten Diagramm zur Lupe. Innerhalb der Lupe ist der hellgrüne Rechteckstreifen vergrößert dargestellt. Er hat eine hellgrüne Füllung und eine leicht abgerundete, hellblaue Kappe oben, die die Krümmung der Funktion andeutet. Die Breite des Rechtecks ist unten mit 'h' beschriftet. Links neben dem Rechteck ist eine vertikale Doppelpfeillinie mit der Beschriftung "≈ f(2) = 3" zu sehen. Rechts neben dem Rechteck steht der Text "Zusätzliche Fläche ≈ f(2)·h = 3h", wobei ein Pfeil auf das Rechteck zeigt. Über der Lupe schwebt eine Sprechblase mit dem Text "f(t) fast konstant nahe f(2) = 3 (Stetigkeit!)".
-Unterhalb des ersten Diagramms, auf dem hellblauen Hintergrund, befindet sich eine mathematische Ableitung. Die erste Zeile lautet: "ΔA = A(2+h) - A(2) ≈ 3h". Darunter, eingeleitet von einem grünen Pfeil, steht die Gleichung: "A(2+h) - A(2) / h ≈ 3". Darunter, eingeleitet von einem grünen Pfeil, steht "h → 0", gefolgt von einem weiteren grünen Pfeil, dann "Grenzfall:", und schließlich ein hellgelbes Rechteck mit schwarzem Umriss, das den Text "A'(2) = 3" enthält.
+Der rechte, hellgrüne Bereich enthält oben links den schwarzen Titel: "Anwendung".
+Darunter befindet sich ein weiteres Koordinatensystem mit einer horizontalen Achse, beschriftet mit 't' nach rechts, und einer vertikalen Achse, beschriftet mit 'y' nach oben. Der Ursprung ist mit '0' markiert. Auf der y-Achse ist der Wert '1' markiert. Auf der t-Achse ist der Wert '2' markiert. Eine blaue, gerade Linie verläuft durch den Punkt (0,1) und einen blauen Punkt bei (2,3). Vom blauen Punkt bei (2,3) führen gestrichelte Linien zur '2' auf der t-Achse und zu einem Punkt auf der y-Achse, der mit `f(2)` beschriftet ist. Rechts neben der Linie steht die Formel: `f(t) = t + 1`.
+Unter diesem Diagramm stehen die folgenden schwarzen Textzeilen:
+`f(t) = t + 1`
+`f(2) = 3`
+`Nach dem Hauptsatz:`
+`A'(2) = f(2)`
+`A'(2) = 3`
 
-Der rechte Bereich hat einen hellgrünen Hintergrund und ist überschrieben mit einem zentrierten, fetten, schwarzen serifenlosen Text: "Anwendung".
-In diesem Bereich befindet sich ein weiteres Diagramm mit einem schwarzen Koordinatensystem. Die horizontale Achse ist mit 't' und einem Pfeil beschriftet, die vertikale Achse mit 'y' und einem Pfeil. Eine blaue, diagonale Linie repräsentiert die Funktion f(t) = t+1, mit der Beschriftung "f(t) = t+1" oberhalb und rechts der Linie. Eine vertikale gestrichelte Linie führt von x=2 auf der t-Achse bis zur Funktion. Eine horizontale gestrichelte Linie führt von diesem Punkt auf der Funktion zur y-Achse. Die t-Achse ist mit "x=2" beschriftet, und die y-Achse ist an der entsprechenden Stelle mit "f(2)" beschriftet.
-Unter diesem Diagramm befindet sich ein hellblaues Rechteck mit schwarzem Umriss, das den Text "Nach dem Hauptsatz: A'(2) = f(2)" enthält. Rechts daneben zeigt ein grüner Pfeil auf ein hellgelbes Rechteck mit schwarzem Umriss, das den Text "A'(2) = 3" enthält. Über dem hellgelben Rechteck ist ein grünes Häkchen-Symbol platziert.
-
-Ganz unten rechts auf der Seite befindet sich eine "Ergebnisbox". Sie hat einen hellblauen Kopfbereich mit dem zentrierten, fetten, schwarzen serifenlosen Text "Ergebnisbox". Darunter ist ein großes, hellgelbes Rechteck mit einem dicken schwarzen Umriss, das den folgenden Text enthält: "Fazit: Die Stetigkeit von f(x) sorgt dafür, dass ein schmaler Flächenstreifen lokal wie lokal wie ein Rechteck wirkt. Dadurch gilt für die Ableitung der Flächenfunktion: A'(x) = f(x)." Das Wort "Fazit:" ist fett gedruckt.
+Alle Texte sind in einer klaren, serifenlosen Schriftart gehalten.
 ```

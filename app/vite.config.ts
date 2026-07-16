@@ -589,12 +589,39 @@ const isGoalVisualizationQaHumanApproved = (record: Record<string, unknown>): bo
   qaYesNoField(record, 'humanApproved', 'approvedHuman') === 'yes'
   && qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') !== 'yes'
 
+const normalizeQaAssetHash = (value: unknown): string =>
+  typeof value === 'string' ? value.trim() : ''
+
+const isGoalVisualizationQaAiApproved = (record: Record<string, unknown>): boolean => {
+  if (normalizeQaYesNo(record.aiApproved) !== 'yes') return false
+  const currentHash = normalizeQaAssetHash(record.assetSha256)
+  const approvedHash = normalizeQaAssetHash(record.aiApprovedAssetSha256)
+  return Boolean(currentHash && approvedHash && currentHash === approvedHash)
+}
+
+const goalVisualizationQaAiStatus = (record: Record<string, unknown>): 'approved' | 'rejected' | 'open' | 'stale' => {
+  const currentHash = normalizeQaAssetHash(record.assetSha256)
+  const reviewedHash = normalizeQaAssetHash(record.aiApprovedAssetSha256)
+  if (!currentHash || !reviewedHash) return normalizeQaYesNo(record.aiApproved) === 'yes' ? 'stale' : 'open'
+  if (currentHash !== reviewedHash) return 'stale'
+  if (normalizeQaYesNo(record.aiApproved) === 'yes') return 'approved'
+  if (typeof record.aiReviewedAt === 'string' && record.aiReviewedAt.trim()) return 'rejected'
+  return 'open'
+}
+
+const isGoalVisualizationQaAiRejected = (record: Record<string, unknown>): boolean =>
+  goalVisualizationQaAiStatus(record) === 'rejected'
+
+const isGoalVisualizationQaAiStale = (record: Record<string, unknown>): boolean =>
+  goalVisualizationQaAiStatus(record) === 'stale'
+
 const isGoalVisualizationQaOpen = (record: Record<string, unknown>): boolean =>
   qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') === 'yes'
   || qaYesNoField(record, 'humanApproved', 'approvedHuman') !== 'yes'
 
 const goalVisualizationQaCounts = (ledger: Record<string, unknown>): Record<string, number> => {
   const records = Array.isArray(ledger.records) ? ledger.records.map(asRecord) : []
+  const aiReviewScope = records.filter((record) => !isGoalVisualizationQaHumanApproved(record))
   return {
     all: records.length,
     open: records.filter(isGoalVisualizationQaOpen).length,
@@ -602,6 +629,13 @@ const goalVisualizationQaCounts = (ledger: Record<string, unknown>): Record<stri
       qaYesNoField(record, 'umlautsCorrectChatGpt', 'umlauteRichtigChatGpt') === 'yes').length,
     contentApprovedChatGpt: records.filter((record) =>
       qaYesNoField(record, 'contentApprovedChatGpt', 'inhaltlichApprovedChatGpt') === 'yes').length,
+    aiApproved: aiReviewScope.filter(isGoalVisualizationQaAiApproved).length,
+    aiRejected: aiReviewScope.filter(isGoalVisualizationQaAiRejected).length,
+    aiReviewed: aiReviewScope.filter((record) =>
+      isGoalVisualizationQaAiApproved(record) || isGoalVisualizationQaAiRejected(record)).length,
+    aiReviewScope: aiReviewScope.length,
+    aiOpen: aiReviewScope.filter((record) => goalVisualizationQaAiStatus(record) === 'open').length,
+    aiStale: aiReviewScope.filter(isGoalVisualizationQaAiStale).length,
     humanApproved: records.filter((record) =>
       isGoalVisualizationQaHumanApproved(record)).length,
     humanIssueIdentified: records.filter((record) =>

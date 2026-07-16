@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `c9a897ca-a0a2-5895-bbc4-23b20840c548.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/c9a897ca-a0a2-5895-bbc4-23b20840c548/c9a897ca-a0a2-5895-bbc4-23b20840c548.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,19 @@ Titel: Poisson-Verteilung als Modell seltener Ereignisse nutzen
 Beschreibung: Die lernende Person kann die Poisson-Verteilung als Näherung der Binomialverteilung für seltene Ereignisse motivieren, Situationen pro Zeit- oder Flächeneinheit modellieren, Parameter bestimmen und zugehörige Wahrscheinlichkeiten in konkreten Beispielen berechnen.
 
 Zusatzanweisung:
-Required content:
+Create a fresh, simple scientific-educational infographic titled "Poisson-Verteilung: seltene Ereignisse modellieren".
 
-- Show the Poisson distribution as a model for rare events per fixed time interval.
-- Use one simple example: average `lambda = 2` bus arrivals per 10 minutes.
-- State the model formula cleanly: `P(X=k) = e^(-lambda) * lambda^k / k!`.
-- Compute one example exactly enough: `P(X=0) = e^(-2) approx 0.135`.
-- Show a small bar chart for `k = 0, 1, 2, 3, 4` with approximate values:
-  - `0: 0.135`
-  - `1: 0.271`
-  - `2: 0.271`
-  - `3: 0.180`
-  - `4: 0.090`
-- Include one model-check note: suitable for rare, roughly independent events at a constant average rate.
+Left card: a bus stop and the exact context "Im Mittel λ = 2 Ankünfte pro 10 Minuten". Below it show the general formula P(X = k) = e^(−λ) · λ^k / k!.
 
-Avoid:
+Middle card titled "Kein Bus in 10 Minuten". Show exactly:
+P(X = 0) = e^(−2) · 2⁰ / 0! = e^(−2) ≈ 13,5 %.
 
-- Do not use Poisson for common events without saying they are rare per interval.
-- Do not make the bars sum to exactly 1 if only `k=0..4` are shown.
-- Do not confuse `lambda` with probability `p`.
-- Do not include technical IDs, filenames, watermarks, platform names, or product names.
+Right card: a bar chart for k = 0, 1, 2, 3, 4. Label the bars only with these percentages in order:
+13,5 %; 27,1 %; 27,1 %; 18,0 %; 9,0 %.
+
+Bottom model check: "Konstante Rate und annähernd unabhängige Ereignisse."
+
+Use German decimal commas everywhere. Use a centered multiplication dot, never a comma, between factors. No decimal point may appear. Every probability, exponent and factorial must be exact. No logos, brands, watermarks or unrelated text.
 ```
 
 ## Review-Notiz

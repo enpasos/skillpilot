@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AlertTriangle, CheckCircle2, Clipboard, Copy, FileText, Home, Image, RefreshCw, Save, Search, XCircle } from 'lucide-react'
+import { AlertTriangle, BadgeCheck, CheckCircle2, Clipboard, Copy, FileText, Home, Image, RefreshCw, Save, Search, XCircle } from 'lucide-react'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { requestJson } from '../utils/authoring/authoringClient'
+import { aiApprovalStatus, isAiApprovedForCurrentAsset } from '../utils/goalVisualizationQaStatus'
 
 type YesNo = 'yes' | 'no'
-type FilterKey = 'all' | 'queue' | 'human_approved' | 'human_issue' | 'chatgpt_open'
+type HumanDecision = 'open' | 'ok' | 'nok'
+type FilterKey = 'all' | 'queue' | 'ai_approved' | 'ai_rejected' | 'ai_open' | 'ai_stale' | 'human_approved' | 'human_issue' | 'chatgpt_open'
 
 interface QaRecord {
   goalId: string
@@ -21,6 +23,11 @@ interface QaRecord {
   assetSha256: string
   umlautsCorrectChatGpt: YesNo
   contentApprovedChatGpt: YesNo
+  aiApproved?: YesNo
+  aiApprovedAssetSha256?: string
+  aiReviewedAt?: string | null
+  aiReviewer?: string
+  aiNotes?: string
   humanApproved: YesNo
   humanIssueIdentified: YesNo
   humanIssueDescription: string
@@ -78,9 +85,9 @@ type ReconstructionPromptState =
 
 const COPY = {
   de: {
-    title: 'Goal-Visualization QS',
-    subtitle: 'Fachbezogene Review-Liste für erzeugte Lernzielbilder.',
-    workbench: 'Workbench',
+    title: 'Lernzielvisualisierungen – QS',
+    subtitle: 'Fachbezogene Prüfliste für erzeugte Lernzielbilder.',
+    workbench: 'Arbeitsbereich',
     backHome: 'Startseite',
     subject: 'Fachliste',
     refresh: 'Neu laden',
@@ -101,21 +108,33 @@ const COPY = {
     saved: (count: number) => `${count} Änderung(en) gespeichert.`,
     filters: {
       all: 'Alle',
-      queue: 'Offen',
-      human_approved: 'Human approved',
+      queue: 'Human-Arbeitsliste',
+      ai_approved: 'Approved AI',
+      ai_rejected: 'KI-geprüft: NOK',
+      ai_open: 'KI-Prüfung offen',
+      ai_stale: 'KI-Freigabe veraltet',
+      human_approved: 'Human-freigegeben',
       human_issue: 'Fehler markiert',
-      chatgpt_open: 'ChatGPT offen',
+      chatgpt_open: 'Alte ChatGPT-Prüfung offen',
     },
     labels: {
-      umlaute: 'Umlaute richtig (ChatGPT)',
-      content: 'Inhaltlich approved (ChatGPT)',
-      humanApproved: 'Approved (Human)',
-      humanIssue: 'Fehler identifiziert (Human)',
-      humanDescription: 'Fehlerbeschreibung (Human)',
-      yes: 'yes',
-      no: 'no',
-      path: 'Pfad',
-      goalId: 'Goal ID',
+      umlaute: 'Umlaute korrekt (alte ChatGPT-Prüfung)',
+      content: 'Inhalt korrekt (alte ChatGPT-Prüfung)',
+      aiApproved: 'Approved AI',
+      aiRejected: 'KI-Prüfung: NOK',
+      aiCorrectionOpen: 'Korrektur offen',
+      aiOpen: 'KI-Prüfung offen',
+      aiStale: 'KI-Freigabe veraltet',
+      aiCurrentAsset: 'für das aktuelle Bild',
+      humanApproved: 'Human-Prüfung',
+      humanDescription: 'Fehlerbeschreibung',
+      open: 'Offen',
+      ok: 'OK',
+      nok: 'NOK',
+      yes: 'Ja',
+      no: 'Nein',
+      path: 'Landschaftspfad',
+      goalId: 'Lernziel-ID',
     },
     placeholders: {
       humanDescription: 'Fehler konkret beschreiben: Was ist falsch, wo im Bild, wie soll es fachlich richtig aussehen?',
@@ -147,7 +166,11 @@ const COPY = {
     saved: (count: number) => `${count} change(s) saved.`,
     filters: {
       all: 'All',
-      queue: 'Open',
+      queue: 'Human open',
+      ai_approved: 'Approved AI',
+      ai_rejected: 'AI reviewed: NOK',
+      ai_open: 'AI open',
+      ai_stale: 'AI stale',
       human_approved: 'Human approved',
       human_issue: 'Issue marked',
       chatgpt_open: 'ChatGPT open',
@@ -155,9 +178,17 @@ const COPY = {
     labels: {
       umlaute: 'Umlauts correct (ChatGPT)',
       content: 'Content approved (ChatGPT)',
+      aiApproved: 'Approved AI',
+      aiRejected: 'AI review: NOK',
+      aiCorrectionOpen: 'correction open',
+      aiOpen: 'AI review open',
+      aiStale: 'AI approval stale',
+      aiCurrentAsset: 'for current image',
       humanApproved: 'Approved (Human)',
-      humanIssue: 'Issue identified (Human)',
       humanDescription: 'Issue description (Human)',
+      open: 'open',
+      ok: 'OK',
+      nok: 'NOK',
       yes: 'yes',
       no: 'no',
       path: 'Path',
@@ -171,7 +202,17 @@ const COPY = {
   },
 } as const
 
-const filterKeys: FilterKey[] = ['queue', 'all', 'human_issue', 'human_approved', 'chatgpt_open']
+const filterKeys: FilterKey[] = [
+  'queue',
+  'ai_open',
+  'ai_approved',
+  'ai_rejected',
+  'ai_stale',
+  'human_issue',
+  'human_approved',
+  'chatgpt_open',
+  'all',
+]
 
 const statusBadgeClass = (value: YesNo) =>
   value === 'yes'
@@ -181,12 +222,27 @@ const statusBadgeClass = (value: YesNo) =>
 const isHumanApprovedFinal = (record: QaRecord): boolean =>
   record.humanApproved === 'yes' && record.humanIssueIdentified !== 'yes'
 
+const humanDecisionStatus = (record: QaRecord): HumanDecision => {
+  if (record.humanIssueIdentified === 'yes') return 'nok'
+  if (record.humanApproved === 'yes') return 'ok'
+  return 'open'
+}
+
 const isChatGptOpen = (record: QaRecord): boolean =>
   !isHumanApprovedFinal(record)
   && (record.umlautsCorrectChatGpt !== 'yes' || record.contentApprovedChatGpt !== 'yes')
 
 const isQaOpen = (record: QaRecord): boolean =>
   record.humanIssueIdentified === 'yes' || record.humanApproved !== 'yes'
+
+const isAiReviewOpen = (record: QaRecord): boolean =>
+  !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'open'
+
+const isAiReviewApproved = (record: QaRecord): boolean =>
+  !isHumanApprovedFinal(record) && isAiApprovedForCurrentAsset(record)
+
+const isAiReviewRejected = (record: QaRecord): boolean =>
+  !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'rejected'
 
 const imageSrcForRecord = (record: QaRecord, reloadToken: number): string => {
   const separator = record.imageUrl.includes('?') ? '&' : '?'
@@ -241,8 +297,7 @@ const buildCodexPrompt = (
     : []),
   '',
   'Human Review:',
-  `- Approved (Human): ${record.humanApproved}`,
-  `- Fehler identifiziert (Human): ${record.humanIssueIdentified}`,
+  `- Human-Prüfung: ${humanDecisionStatus(record) === 'ok' ? 'OK' : humanDecisionStatus(record) === 'nok' ? 'NOK' : 'Offen'}`,
   `- Fehlerbeschreibung: ${record.humanIssueDescription || '(leer; falls kein konkreter Fehler beschrieben ist, zuerst visuell prüfen und nur bei klarem Befund korrigieren)'}`,
   '',
   'Erwarteter Ablauf:',
@@ -315,9 +370,15 @@ export const GoalVisualizationQaView: React.FC = () => {
     const chatgptOpen = records.filter(isChatGptOpen).length
     const humanIssue = records.filter((record) => record.humanIssueIdentified === 'yes').length
     const humanApproved = records.filter(isHumanApprovedFinal).length
+    const aiApproved = records.filter(isAiReviewApproved).length
+    const aiRejected = records.filter(isAiReviewRejected).length
     return {
       all: records.length,
       queue: records.filter(isQaOpen).length,
+      ai_approved: aiApproved,
+      ai_rejected: aiRejected,
+      ai_open: records.filter(isAiReviewOpen).length,
+      ai_stale: records.filter((record) => !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'stale').length,
       human_approved: humanApproved,
       human_issue: humanIssue,
       chatgpt_open: chatgptOpen,
@@ -329,6 +390,10 @@ export const GoalVisualizationQaView: React.FC = () => {
     return records.filter((record) => {
       const matchesFilter = filter === 'all'
         || (filter === 'queue' && isQaOpen(record))
+        || (filter === 'ai_approved' && isAiReviewApproved(record))
+        || (filter === 'ai_rejected' && isAiReviewRejected(record))
+        || (filter === 'ai_open' && isAiReviewOpen(record))
+        || (filter === 'ai_stale' && !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'stale')
         || (filter === 'human_approved' && isHumanApprovedFinal(record))
         || (filter === 'human_issue' && record.humanIssueIdentified === 'yes')
         || (filter === 'chatgpt_open' && isChatGptOpen(record))
@@ -517,7 +582,7 @@ export const GoalVisualizationQaView: React.FC = () => {
               >
                 {ledgers.map((ledger) => (
                   <option key={ledger.path} value={ledger.path}>
-                    {subjectLabel(ledger.subject)} · {ledger.counts.all} Bilder
+                    {subjectLabel(ledger.subject)} · {ledger.counts.all} Bilder · KI geprüft {(ledger.counts.aiApproved ?? 0) + (ledger.counts.aiRejected ?? 0)}/{ledger.counts.aiReviewScope ?? ledger.counts.open} · OK {ledger.counts.aiApproved ?? 0}
                   </option>
                 ))}
               </select>
@@ -587,6 +652,7 @@ export const GoalVisualizationQaView: React.FC = () => {
           ) : null}
 
           {visibleRecords.map((record) => {
+            const aiStatus = aiApprovalStatus(record)
             const reconstructionState = reconstructionPrompts[reconstructionPromptKey(record)]
             const alternativePrompt = reconstructionState?.status === 'loaded'
               ? { path: reconstructionState.path, prompt: reconstructionState.prompt }
@@ -615,9 +681,47 @@ export const GoalVisualizationQaView: React.FC = () => {
                       <h2 className="text-xl font-semibold text-text-primary">{record.title}</h2>
                       <p className="mt-2 text-sm leading-relaxed text-text-secondary">{record.description}</p>
                     </div>
-                    <span className="shrink-0 rounded-full border border-border-color px-3 py-1 text-xs font-mono text-text-secondary">
-                      {subjectLabel(record.subject)}
-                    </span>
+                    <div className="flex shrink-0 flex-col items-start gap-2 md:items-end">
+                      <span className="rounded-full border border-border-color px-3 py-1 text-xs font-mono text-text-secondary">
+                        {subjectLabel(record.subject)}
+                      </span>
+                      {aiStatus !== 'open' || !isHumanApprovedFinal(record) ? (
+                        <span
+                          className={`inline-flex items-center gap-2 rounded-lg border-2 px-3 py-2 text-xs font-bold uppercase tracking-wider shadow-sm ${aiStatus === 'approved'
+                            ? 'rotate-[-1deg] border-emerald-500 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200'
+                            : aiStatus === 'rejected'
+                              ? 'border-rose-400 bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-200'
+                            : aiStatus === 'stale'
+                              ? 'border-amber-400 bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-200'
+                              : 'border-slate-300 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-300'
+                          }`}
+                          title={aiStatus === 'approved' || aiStatus === 'rejected'
+                            ? [
+                              `${copy.labels.aiApproved}: ${record.aiApprovedAssetSha256}`,
+                              record.aiReviewer,
+                              record.aiReviewedAt,
+                              record.aiNotes,
+                            ].filter(Boolean).join(' · ')
+                            : undefined}
+                        >
+                          {aiStatus === 'approved' ? <BadgeCheck size={18} /> : aiStatus === 'stale' ? <AlertTriangle size={18} /> : <XCircle size={18} />}
+                          <span>
+                            {aiStatus === 'approved'
+                              ? `${copy.labels.aiApproved} · ${copy.labels.aiCurrentAsset}`
+                              : aiStatus === 'rejected'
+                                ? `${copy.labels.aiRejected} · ${copy.labels.aiCorrectionOpen}`
+                              : aiStatus === 'stale'
+                                ? copy.labels.aiStale
+                                : copy.labels.aiOpen}
+                          </span>
+                        </span>
+                      ) : null}
+                      {(aiStatus === 'approved' || aiStatus === 'rejected') && (record.aiReviewer || record.aiReviewedAt) ? (
+                        <span className="max-w-64 truncate text-[11px] text-text-secondary">
+                          {[record.aiReviewer, record.aiReviewedAt].filter(Boolean).join(' · ')}
+                        </span>
+                      ) : null}
+                    </div>
                   </div>
 
                   <dl className="mt-3 grid grid-cols-1 gap-2 text-xs text-text-secondary md:grid-cols-2">
@@ -634,51 +738,39 @@ export const GoalVisualizationQaView: React.FC = () => {
                   <div className="mt-4 grid grid-cols-1 gap-2 md:grid-cols-2">
                     <span className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold ${statusBadgeClass(record.umlautsCorrectChatGpt)}`}>
                       {record.umlautsCorrectChatGpt === 'yes' ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
-                      {copy.labels.umlaute}: {record.umlautsCorrectChatGpt}
+                      {copy.labels.umlaute}: {record.umlautsCorrectChatGpt === 'yes' ? copy.labels.yes : copy.labels.no}
                     </span>
                     <span className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold ${statusBadgeClass(record.contentApprovedChatGpt)}`}>
                       {record.contentApprovedChatGpt === 'yes' ? <CheckCircle2 size={16} /> : <XCircle size={16} />}
-                      {copy.labels.content}: {record.contentApprovedChatGpt}
+                      {copy.labels.content}: {record.contentApprovedChatGpt === 'yes' ? copy.labels.yes : copy.labels.no}
                     </span>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <div className="mt-4">
                     <label className="block">
                       <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.labels.humanApproved}</span>
                       <select
-                        value={record.humanApproved}
+                        value={humanDecisionStatus(record)}
                         onChange={(event) => {
-                          const value = event.target.value === 'yes' ? 'yes' : 'no'
+                          const value: HumanDecision = event.target.value === 'ok'
+                            ? 'ok'
+                            : event.target.value === 'nok'
+                              ? 'nok'
+                              : 'open'
                           updateRecord(record.goalId, record.imageUrl, (current) => ({
                             ...current,
-                            humanApproved: value,
-                            humanIssueIdentified: value === 'yes' ? 'no' : current.humanIssueIdentified,
-                            humanIssueDescription: value === 'yes' ? '' : current.humanIssueDescription,
+                            humanApproved: value === 'ok' ? 'yes' : 'no',
+                            humanIssueIdentified: value === 'nok' ? 'yes' : 'no',
+                            humanIssueDescription: value === 'ok' || value === 'open'
+                              ? ''
+                              : current.humanIssueDescription,
                           }))
                         }}
                         className="mt-1 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm text-text-primary dark:bg-slate-950"
                       >
-                        <option value="no">{copy.labels.no}</option>
-                        <option value="yes">{copy.labels.yes}</option>
-                      </select>
-                    </label>
-
-                    <label className="block">
-                      <span className="text-xs font-semibold uppercase tracking-wide text-text-secondary">{copy.labels.humanIssue}</span>
-                      <select
-                        value={record.humanIssueIdentified}
-                        onChange={(event) => {
-                          const value = event.target.value === 'yes' ? 'yes' : 'no'
-                          updateRecord(record.goalId, record.imageUrl, (current) => ({
-                            ...current,
-                            humanIssueIdentified: value,
-                            humanApproved: value === 'yes' ? 'no' : current.humanApproved,
-                          }))
-                        }}
-                        className="mt-1 w-full rounded-lg border border-border-color bg-white px-3 py-2 text-sm text-text-primary dark:bg-slate-950"
-                      >
-                        <option value="no">{copy.labels.no}</option>
-                        <option value="yes">{copy.labels.yes}</option>
+                        <option value="open">{copy.labels.open}</option>
+                        <option value="ok">{copy.labels.ok}</option>
+                        <option value="nok">{copy.labels.nok}</option>
                       </select>
                     </label>
                   </div>
@@ -694,8 +786,8 @@ export const GoalVisualizationQaView: React.FC = () => {
                         updateRecord(record.goalId, record.imageUrl, (current) => ({
                           ...current,
                           humanIssueDescription: nextDescription,
-                          humanIssueIdentified: nextDescription.trim() ? 'yes' : current.humanIssueIdentified,
                           humanApproved: nextDescription.trim() ? 'no' : current.humanApproved,
+                          humanIssueIdentified: nextDescription.trim() ? 'yes' : current.humanIssueIdentified,
                         }))
                       }}
                       placeholder={copy.placeholders.humanDescription}

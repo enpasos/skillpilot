@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,27 +31,11 @@ Titel: Eigene Abbildungen modellieren und interpretieren
 Beschreibung: Die lernende Person kann zu gegebenen geometrischen Anforderungen (z. B. Spiegelung an einer schrägen Geraden, Streckung in einer beliebigen Richtung) passende Abbildungsmatrizen konstruieren, testen und im Kontext begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Eine eigene lineare Abbildung aus geometrischen Anforderungen modellieren und interpretieren.
-- Modelliere eine Spiegelung an der Geraden y=x in der Ebene.
-- Zeige die geometrische Anforderung:
-  Punkte werden an y=x gespiegelt; x- und y-Koordinate tauschen die Rollen.
-- Zeige die Matrix exakt:
-  M = [ [0, 1],
-        [1, 0] ].
-- Teste zwei Punkte:
-  P = (3,1) wird zu P' = (1,3).
-  Q = (-2,4) wird zu Q' = (4,-2).
-- Zeige einen kurzen Modellierungscheck:
-  Punkt R = (2,2) liegt auf y=x und bleibt fest: R'=(2,2).
-  Die Strecke von P zu P' steht senkrecht auf der Spiegelachse y=x und hat ihren Mittelpunkt auf y=x.
-- Visualisiere ein Koordinatensystem mit der Spiegelachse y=x, den Ausgangspunkten und Bildpunkten.
+Rebuild the coordinate diagram so every plotted point exactly matches its label. Demonstrate reflection across the line y = x using the matrix [[0,1],[1,0]]. Plot P(3|1) and P′(1|3), Q(−2|4) and Q′(4|−2), plus the fixed point R(2|2). Use a square coordinate grid with equal axis scales, draw y = x clearly, and connect each original point to its reflected point in a visually unambiguous way. Include the rule (x|y) → (y|x). No extra point values, logos, watermarks, or course labels.
 
-Vermeiden:
-- Nicht an der x-Achse oder y-Achse spiegeln.
-- Nicht P'=(3,-1) oder P'=(-3,1) angeben; korrekt ist P'=(1,3).
-- Nicht eine Drehung oder Streckung statt einer Spiegelung zeigen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+Targeted plotting correction: place every dot by counting grid units from the origin, not merely near its label. Q must be exactly two squares left and four squares up from the origin; Q′ must be exactly four squares right and two squares down. P must be three squares right and one square up; P′ one square right and three squares up; R exactly two squares right and two squares up on y=x. Use a clearly marked origin and integer ticks from −4 through 4 so these positions are visually verifiable.
+
+Final reconstruction instruction: discard the previous layout and create a minimal two-panel infographic with no hands, speech bubbles, decorative sketches or perspective. The right panel must be one large square Cartesian grid from −4 to 4 on both axes with equal-sized cells. Draw and label only five dots: P at grid intersection (3|1), P′ at (1|3), Q at (−2|4), Q′ at (4|−2), and R at (2|2). The red diagonal y=x must pass through the origin and R. Do not move dots to make labels fit; place labels beside the exact intersections. The left panel shows only the coordinate-swap rule and matrix. Mathematical coordinate accuracy is more important than decoration.
 ```
 
 ## Review-Notiz

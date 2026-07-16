@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/0d21097c-09bf-5375-8c56-34ce8dc5bc35/0d21097c-09bf-5375-8c56-34ce8dc5bc35.jpg`
@@ -19,37 +19,27 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Erweiterte Integrationsregeln anwenden (LK)
+Titel: Erweiterte Integrationsregeln anwenden
 Beschreibung: Die lernende Person kann Integrale von Funktionen der Form $(ax+b)^r$ für $r\in\mathbb{Q}\setminus\{-1\}$ sowie von Funktionen der Form $g(x)=f'(x)\cdot e^{f(x)}$ mithilfe passender Regeln berechnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-- Thema: Erweiterte Integrationsregeln anwenden (LK).
-- Zeige zwei getrennte Regelkarten:
+Correct the two indefinite-integral results in the German educational infographic while preserving the clear two-panel cartoon structure. Render exactly:
 
-1. Lineare Klammerpotenz:
-  integral (2x+1)^3 dx = (2x+1)^4 / 8.
-  Check: Ableitung von (2x+1)^4 / 8 ist (2x+1)^3.
+"∫ (2x+1)³ dx = (2x+1)⁴ / 8 + C"
+and
+"∫ 2x · e^(x²+1) dx = e^(x²+1) + C".
 
-2. Form f'(x)*e^(f(x)):
-  f(x)=x^2+1, f'(x)=2x.
-  integral 2x*e^(x^2+1) dx = e^(x^2+1).
-  Check: Ableitung von e^(x^2+1) ist 2x*e^(x^2+1).
+Make "+ C" large and clearly part of each final antiderivative. Keep the derivative checks, but ensure they verify the displayed integrands. Use the heading "Erweiterte Integrationsregeln anwenden" without a course label. No technical identifiers, file names, logos, watermarks, brands, platform names, or course labels.
 
-- Ergebnisbox: Innere Ableitung erkennen; rueckwaerts zur passenden Stammfunktion gehen.
-
-Vermeiden:
-- Bei (2x+1)^3 nicht durch 4 allein teilen; richtig ist durch 8.
-- Nicht e^(x^2+1) mit zusaetzlichem Faktor 1/2 versehen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+In every derivative check, the derivative of the integration constant must be treated as zero. Never carry "+ C" into a derivative result or intermediate derivative line. The right-hand check must end exactly with "2x · e^(x²+1)"; the left-hand check must end exactly with "(2x+1)³". The symbol "+ C" may appear only in the two antiderivative formulas, nowhere in either derivative calculation.
 ```
 
 ## Review-Notiz
