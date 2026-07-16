@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,22 +31,20 @@ Titel: Exponentielle, lineare und quadratische Modelle vergleichen
 Beschreibung: Die lernende Person kann exponentielle Wachstums- oder Zerfallsmodelle mit linearen und quadratischen Modellen vergleichen, typische Verlaufsunterschiede benennen und die Modellwahl im Kontext begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Erzeuge die drei Modellvergleiche fachlich neu. Achsen, Punkte und Tabellenwerte müssen exakt zusammenpassen.
 
-- Compare three model types side by side using the same time axis `t`.
-- Linear model: `L(t)=20+5t`, straight line, equal additive increase `+5`.
-- Quadratic model: `Q(t)=20+t^2`, parabola opening upward, increasing differences.
-- Exponential model: `E(t)=20*1,4^t`, curved growth with equal factor `1,4`.
-- Include a small table for `t=0,1,2`: linear `20,25,30`; quadratic `20,21,24`; exponential `20,28,39,2`.
-- Add a context decision note: "Modellwahl nach Verlauf und Kontext begruenden".
+Pflichtinhalt:
+- Titel: „Lineare, quadratische und exponentielle Modelle vergleichen“.
+- Drei gleich große Felder mit je einer kleinen Wertetabelle und einem Koordinatensystem.
+- Linear L(t) = 20 + 5t mit (0|20), (1|25), (2|30).
+- Quadratisch Q(t) = 20 + t² mit (0|20), (1|21), (2|24).
+- Exponentiell E(t) = 20 · 1,4^t mit (0|20), (1|28), (2|39,2).
+- In jedem Diagramm liegt t = 0 exakt auf der vertikalen Achse; die drei markierten Punkte müssen an den richtigen Koordinaten liegen.
+- Ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-
-- Do not draw all three models as straight lines.
-- Do not give the exponential model equal additive differences.
-- Do not label the quadratic curve as exponential growth.
-- Do not claim one model is always best without context.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine verschobenen Nullpunkte oder widersprüchlichen Achsenmarken.
+- Keine glatten Kurven durch falsche Punkte, keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

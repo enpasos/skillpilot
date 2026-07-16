@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `491e0858-e977-516e-a339-1cc2f9e9690f.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/491e0858-e977-516e-a339-1cc2f9e9690f/491e0858-e977-516e-a339-1cc2f9e9690f.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,19 @@ Titel: Flächenformeln ebener Figuren durch Zerlegen und Ergänzen herleiten
 Beschreibung: Die lernende Person kann die Flächenformeln für Parallelogramm, Dreieck und Trapez ausgehend vom Rechteck mithilfe von Zerlegen und Ergänzen herleiten und begründen.
 
 Zusatzanweisung:
-Do not include any technical IDs, platform names, UUIDs, file names, database identifiers, watermarks, signatures, or hidden labels anywhere in the image. Keep all mathematical notation large, sparse, and easy to inspect. Prefer one central worked example over many tiny examples. Ensure dimensions, units, unit conversions, area formulas, volume formulas, and surface-area formulas are mathematically correct. Distinguish clearly between length units, square units, and cubic units. For cuboids, use V = length * width * height and surface area = 2*(lw + lh + wh). For area derivations, show decomposition or completion with matching pieces, not just a memorized formula.
+Erzeuge die Herleitung der Flächenformeln fachlich neu. Beim Trapez müssen die parallelen Seiten korrekt benannt sein.
+
+Pflichtinhalt:
+- Titel: „Flächenformeln durch Zerlegen und Ergänzen herleiten“.
+- Drei Felder: Parallelogramm, Dreieck, Trapez.
+- Parallelogramm: abgeschnittenes Dreieck wird an die andere Seite verschoben; Ergebnis Rechteck mit A = g · h.
+- Dreieck: ein kongruentes Dreieck ergänzt zum Parallelogramm; A = 1/2 · g · h.
+- Trapez: ausschließlich die beiden parallelen horizontalen Seiten heißen a und c; h steht senkrecht zwischen ihnen; durch Verdoppeln entsteht ein Parallelogramm mit Grundseite a + c; A = 1/2 · (a + c) · h.
+- Klare Schnitt- oder Verschiebepfeile und rechtwinklige Höhenmarkierungen.
+
+Vermeiden:
+- a oder c niemals an einer schrägen, nicht parallelen Seite platzieren.
+- Keine falschen Formeln, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

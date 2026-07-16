@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/78238608-aaaa-4d12-a9de-54f325e9cf6f/78238608-aaaa-4d12-a9de-54f325e9cf6f.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,20 @@ Titel: Graphverlauf exponentieller Funktionen der Form $b\cdot a^x$ anhand von $
 Beschreibung: Die lernende Person kann für exponentielle Funktionen der Form $b\cdot a^x$ den Verlauf des Graphen anhand der Parameter $a$ und $b$ beschreiben, insbesondere y-Achsenabschnitt, asymptotisches Verhalten und Monotonieverhalten begründen und passende Veranschaulichungen auch mit digitalen Werkzeugen nutzen.
 
 Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic about graph shape of f(x)=b*a^x. Show two clean panels. Left panel title: a > 1. Use f(x)=3*2^x. Show y-axis intercept f(0)=3 and an increasing curve approaching y=0 to the left. Labels: b=3 ist Startwert, wachsend, Asymptote y=0. Right panel title: 0 < a < 1. Use g(x)=3*0.5^x. Show y-axis intercept g(0)=3 and a decreasing curve approaching y=0 to the right. Labels: b=3 ist Startwert, fallend, Asymptote y=0. Avoid negative y-values. Keep all text German, readable, and mathematically correct.
+Korrigiere ausschließlich die Dezimalschreibweise und bewahre die korrekten Exponentialgraphen.
+
+Pflichtinhalt:
+- Titel: „Exponentialfunktionen anhand von Term und Graph unterscheiden“.
+- Wachstum: f(x) = 3 · 2^x mit steigender positiver Kurve.
+- Zerfall: g(x) = 3 · 0,5^x mit einem gut sichtbaren Multiplikationspunkt zwischen 3 und 0,5 und mit fallender positiver Kurve.
+- Beide Graphen schneiden die y-Achse bei 3.
+- Erkläre knapp: Basis größer als 1 bedeutet Wachstum; Basis zwischen 0 und 1 bedeutet Zerfall.
+- Ausschließlich deutsche Dezimalkommas.
+
+Vermeiden:
+- Niemals „3, 0,5^x“ oder ein Komma zwischen Vorfaktor und Potenz schreiben; dort muss exakt „3 · 0,5^x“ stehen.
+- Kein „0.5“ mit Dezimalpunkt.
+- Keine linearen Graphen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

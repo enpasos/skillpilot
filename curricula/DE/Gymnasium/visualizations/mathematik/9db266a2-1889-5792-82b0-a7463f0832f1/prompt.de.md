@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,22 +31,19 @@ Titel: Exponentialfunktionen in e-Schreibweise umformen
 Beschreibung: Die lernende Person kann Exponentialfunktionen zwischen Darstellungen mit beliebiger Basis und der Standardbasis e umformen und den Wachstumsfaktor beziehungsweise Wachstumsparameter aus der jeweils anderen Darstellung bestimmen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Korrigiere die uneinheitliche Variablenbezeichnung und bewahre die korrekten Umformungen.
 
-- Show the identity `a^x = e^(ln(a)*x)`.
-- Use one concrete example: `2^x = e^(ln(2)*x)`.
-- Label `ln(2) approx 0,693` as "Wachstumsparameter".
-- Show the reverse conversion: `e^(0,3x) = (e^0,3)^x`, `e^0,3 approx 1,35`.
-- Include a small conversion arrow between "Basis b" and "e-Schreibweise".
-- Keep all displayed formulas short and legible.
+Pflichtinhalt:
+- Titel: „Exponentialterme zwischen Basis- und e-Schreibweise umformen“.
+- Überschrift der allgemeinen Basis exakt: „Basis a“.
+- Zeige a^x = e^(ln(a) · x) für a > 0.
+- Beispiel: 2^x = e^(ln(2) · x).
+- Rückrichtung: e^(0,3x) = (e^0,3)^x ≈ 1,35^x.
+- Ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-
-- Do not write `2^x = e^(2x)`.
-- Do not confuse `ln(2)` with `log_2(e)`.
-- Do not turn `e^(0,3x)` into `0,3^x`.
-- Do not omit parentheses around exponents where needed.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Kein Wechsel zwischen Basis a und Basis b.
+- Keine falschen Näherungswerte, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c/82bce6e8-7dc7-501a-a4f6-df8a3b905e3c.jpg`
@@ -19,36 +19,30 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Gütefunktion und Teststärke untersuchen (LK)
+Titel: Gütefunktion und Teststärke untersuchen
 Beschreibung: Die lernende Person kann für einen Hypothesentest die Operationscharakteristik beziehungsweise Gütefunktion grafisch darstellen oder skizzieren, Wahrscheinlichkeiten für das Beibehalten bzw. Verwerfen der Nullhypothese in Abhängigkeit vom wahren Wert der Trefferwahrscheinlichkeit p beschreiben und den Einfluss von Stichprobenumfang und Signifikanzniveau diskutieren.
 
 Zusatzanweisung:
-Third correction for the power-function visualization:
+Korrigiere Rechtschreibung, Dezimalzeichen und Titel, ohne die fachlich korrekte Teststärke-Grafik zu verändern.
 
-- Do not include technical IDs in the image.
-- Use very little text.
-- Use ASCII labels only: `alpha`, `beta`, `p0`, `p1`. Do not use Greek letters.
-- Do not write any full sentence at the bottom.
-- Do not write `alpha alpha`, `alpha beta`, `p0 <= alpha`, or any comparison between parameter `p0` and `alpha`.
-- Show one clean coordinate diagram:
-  - x-axis label: `wahres p`
-  - y-axis label: `G(p)=P_p(H0 verwerfen)`
-  - increasing S-shaped curve from near 0 to near 1
-  - vertical marker at `p0=0.10`
-  - vertical marker at `p1>0.10`
-- Near `p0`, write exactly: `G(p0) <= alpha`.
-- At `p1`, split the vertical range into two clearly labeled parts:
-  - lower part from `0` to `G(p1)`: `Teststaerke = G(p1) = 1 - beta`
-  - upper part from `G(p1)` to `1`: `beta = 1 - G(p1)`
-- Optional small side note only: `groesseres n -> steilere Kurve`.
+Pflichtinhalt:
+- Titel: „Gütefunktion und Teststärke eines Binomialtests deuten“.
+- Zeige G(p) = Pₚ(H₀ verwerfen), G(p₁) = 1 − β und G(p₀) ≤ α.
+- Verwende p₀ = 0,10 mit deutschem Dezimalkomma.
+- Beschrifte korrekt „größeres n“ und „Teststärke“.
+- Zeige plausibel: Größeres n führt bei gleicher Alternative zu höherer Teststärke, während das Signifikanzniveau bei p₀ begrenzt bleibt.
+
+Vermeiden:
+- Kein Kurslabel im Titel, kein „groesseres“, kein „Teststaerke“, kein „0.10“.
+- Keine falschen Wahrscheinlichkeitsaussagen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

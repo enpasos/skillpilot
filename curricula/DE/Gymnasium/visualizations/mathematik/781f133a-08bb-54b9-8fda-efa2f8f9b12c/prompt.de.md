@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,20 +31,18 @@ Titel: Exponentialen Wachstum und Zerfall deuten
 Beschreibung: Die lernende Person kann Wachstums- und Zerfallsprozesse anhand von Tabellen, Graphen und Kontextbeschreibungen erkennen, typische Merkmale benennen und passende Exponentialfunktionen zuordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Korrigiere die sichtbare Sprache, ohne die mathematisch korrekten Beispiele zu verändern.
 
-- Show growth and decay side by side with table, graph, and context.
-- Growth example: bacteria count `100, 200, 400` for `t=0,1,2`, labeled "Faktor 2".
-- Decay example: remaining medicine `80, 40, 20` for `t=0,1,2`, labeled "Faktor 0,5".
-- Growth graph must rise and curve upward; decay graph must fall toward zero but stay positive.
-- Include a small note: "Gleicher Faktor pro Zeitschritt".
+Pflichtinhalt:
+- Titel exakt: „Exponentielles Wachstum und exponentiellen Zerfall deuten“.
+- Wachstum: B(t) = 100 · 2^t mit den Werten 100, 200, 400 für t = 0, 1, 2.
+- Zerfall: M(t) = 80 · 0,5^t mit den Werten 80, 40, 20 für t = 0, 1, 2.
+- Verdeutliche im lockeren Cartoonstil: Faktor größer als 1 bedeutet Wachstum, Faktor zwischen 0 und 1 bedeutet Zerfall.
+- Ausschließlich deutsches Dezimalkomma.
 
 Vermeiden:
-
-- Do not draw a straight line for exponential growth or decay.
-- Do not let the decay graph cross below zero.
-- Do not mix up growth factor `2` and decay factor `0,5`.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Nicht „Exponentialen Wachstum“ schreiben.
+- Keine abweichenden Werte, keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

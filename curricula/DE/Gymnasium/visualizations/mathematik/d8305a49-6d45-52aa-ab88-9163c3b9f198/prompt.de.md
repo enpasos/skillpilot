@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `d8305a49-6d45-52aa-ab88-9163c3b9f198.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/d8305a49-6d45-52aa-ab88-9163c3b9f198/d8305a49-6d45-52aa-ab88-9163c3b9f198.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,24 +31,24 @@ Titel: Wahrscheinlichkeiten anhand von Termen vergleichen
 Beschreibung: Die lernende Person kann vorgegebene oder selbst bestimmte Wahrscheinlichkeitsterme vergleichen, ihre Bedeutung im Zufallskontext erläutern und die größere Wahrscheinlichkeit begründen.
 
 Zusatzanweisung:
+Baue das Baumdiagramm fachlich vollständig neu auf. Die korrekten Rechnungen bleiben unverändert.
+
 Pflichtinhalt:
-- Thema: Wahrscheinlichkeitsterme vergleichen.
-- Kontext: Urne mit 3 roten und 2 blauen Kugeln, zwei Ziehungen ohne Zuruecklegen.
-- Vergleiche zwei Ereignisse:
-  A: zweimal rot.
-  B: genau eine rote Kugel.
-- Terme:
-  P(A) = (3/5)*(2/4) = 6/20 = 0.30
-  P(B) = (3/5)*(2/4) + (2/5)*(3/4) = 12/20 = 0.60
-- Begruendung:
-  Bei B gibt es zwei Reihenfolgen: rot-blau und blau-rot.
-- Ergebnisbox: P(B) > P(A), genau eine rote Kugel ist wahrscheinlicher.
+- Startknoten ausschließlich als Text: „3 R, 2 B“ und „zwei Ziehungen ohne Zurücklegen“.
+- Vollständiger zweistufiger Baum mit genau vier Endpfaden:
+  1. R mit 3/5, danach R mit 2/4.
+  2. R mit 3/5, danach B mit 2/4.
+  3. B mit 2/5, danach R mit 3/4.
+  4. B mit 2/5, danach B mit 1/4.
+- Hebe für Ereignis A ausschließlich den Pfad R → R hervor und zeige exakt „P(A) = 3/5 · 2/4 = 3/10“.
+- Hebe für Ereignis B genau die beiden Pfade R → B und B → R hervor und zeige exakt „P(B) = 3/5 · 2/4 + 2/5 · 3/4 = 3/5“.
+- Abschluss exakt: „P(B) > P(A)“ und „zwei passende Reihenfolgen statt einer“.
+- Alle vier Pfade müssen vollständig sichtbar, getrennt, ungekreuzt und den Rechnungen eindeutig zugeordnet sein.
 
 Vermeiden:
-- Nicht mit Zuruecklegen rechnen.
-- Keine falschen Nenner nach der ersten Ziehung; der zweite Nenner ist 4.
-- Keine falsche Summenwahrscheinlichkeit.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein verkürzter Baum und insbesondere kein fehlender Pfad R → B.
+- Kein Gefäß, keine Kugelillustration, keine Dezimalzahlen und keine zusätzlichen Ereignisse.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

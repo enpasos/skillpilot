@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,29 +31,21 @@ Titel: Zentrische Streckungen am Koordinatenursprung mit Matrizen darstellen
 Beschreibung: Die lernende Person kann Abbildungsmatrizen zentrischer Streckungen am Koordinatenursprung bestimmen, untersuchen und die Wirkung auf Bildpunkte berechnen.
 
 Zusatzanweisung:
+Baue das Koordinatenbild vollständig neu und maßstäblich auf. Verwende ein quadratisches Einheitsraster, bei dem eine Einheit auf x- und y-Achse dieselbe sichtbare Länge hat.
+
 Pflichtinhalt:
-- Thema: Zentrische Streckung am Koordinatenursprung mit einer Matrix darstellen.
-- Verwende eine zweidimensionale Streckung mit Zentrum O=(0,0) und Faktor k=2.
-- Zeige die Matrix exakt:
-  Z = [ [2, 0],
-        [0, 2] ].
-- Zeige die Wirkung:
-  Jeder Punkt wird vom Ursprung aus auf derselben Halbgeraden doppelt so weit nach aussen verschoben.
-- Teste zwei Punkte:
-  P=(1,2) wird zu P'=(2,4).
-  Q=(-2,1) wird zu Q'=(-4,2).
-- Visualisiere:
-  Koordinatensystem mit Ursprung O.
-  Strahlen O->P->P' und O->Q->Q'.
-  Markiere, dass die Abstaende vom Ursprung jeweils verdoppelt werden.
-- Deutung:
-  Der Ursprung bleibt Fixpunkt: Z*0=0.
+- Markiere den Ursprung O = (0; 0).
+- Markiere P = (1; 2) und P′ = (2; 4). Beide liegen auf demselben Strahl vom Ursprung im ersten Quadranten; P liegt sichtbar genau in der Mitte zwischen O und P′.
+- Markiere Q = (−2; 1) und Q′ = (−4; 2). Beide liegen auf demselben Strahl vom Ursprung im zweiten Quadranten; Q liegt sichtbar genau in der Mitte zwischen O und Q′.
+- Das Raster und die Achsenskalierung müssen die vier Koordinaten exakt tragen. Jeder Punkt liegt genau auf seinem passenden Gitterkreuz.
+- Zeige die Matrix Z = [[2,0],[0,2]] sowie die beiden korrekten Rechnungen Z·(1,2)ᵀ = (2,4)ᵀ und Z·(−2,1)ᵀ = (−4,2)ᵀ.
+- Ergänze knapp: „Streckungsfaktor k = 2“ und „O bleibt Fixpunkt“.
 
 Vermeiden:
-- Nicht eine Verschiebung darstellen; das Zentrum muss der Ursprung bleiben.
-- Nicht nur x oder nur y strecken; beide Koordinaten werden mit 2 multipliziert.
-- Nicht P'=(1,4) oder Q'=(-4,1) angeben.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine schematische oder nicht maßstäbliche Punktlage, keine Punkte zwischen Gitterkreuzen.
+- Kein Punkt Q oder Q′ unterhalb der x-Achse.
+- Keine dekorativen Pfeile, die eine andere Richtung oder Länge behaupten.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

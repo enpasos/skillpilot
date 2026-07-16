@@ -19,37 +19,34 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Zahlbereichserweiterung zu komplexen Zahlen begründen (LK)
+Titel: Zahlbereichserweiterung zu komplexen Zahlen begründen
 Beschreibung: Die lernende Person kann erklären, warum die reellen Zahlen zu den komplexen Zahlen erweitert werden, und die fachliche sowie kulturhistorische Bedeutung dieser Erweiterung einordnen.
 
 Zusatzanweisung:
+Korrigiere ausschließlich die Reihenfolge der Zahlbereiche auf der Leiter; erhalte die übrigen fachlich korrekten Bildteile.
+
 Pflichtinhalt:
-- Thema: Zahlbereichserweiterung zu komplexen Zahlen begruenden.
-- Zeige eine Zahlbereichsleiter:
-  natuerliche Zahlen -> ganze Zahlen -> rationale Zahlen -> reelle Zahlen -> komplexe Zahlen.
-- Zentraler Anlass:
-  Die Gleichung x^2 + 1 = 0 hat in R keine Loesung.
-  Mit i^2 = -1 hat sie in C die Loesungen x = i und x = -i.
-- Zeige die komplexe Ebene:
-  horizontale Achse Re, vertikale Achse Im.
-  Markiere i bei (0,1) und -i bei (0,-1).
-- Kurz einordnen:
-  Komplexe Zahlen erweitern den Zahlbereich, damit Gleichungen wie x^2 + 1 = 0 loesbar werden.
-  Sie sind wichtig fuer Algebra, Schwingungen und Elektrotechnik.
+- Die fünf Stufen stehen von unten nach oben exakt in dieser Reihenfolge:
+  1. „Natürliche Zahlen (ℕ)“
+  2. „Ganze Zahlen (ℤ)“
+  3. „Rationale Zahlen (ℚ)“
+  4. „Reelle Zahlen (ℝ)“
+  5. „Komplexe Zahlen (ℂ)“
+- Damit zeigt die Leiter exakt die Inklusionskette ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ.
+- Die Gleichung x² + 1 = 0 bleibt in ℝ als unlösbar und in ℂ mit x = i sowie x = −i als lösbar dargestellt.
 
 Vermeiden:
-- Nicht behaupten, i sei eine reelle Zahl.
-- Nicht i = -1 schreiben; korrekt ist i^2 = -1.
-- Nicht nur eine einzelne Loesung i zeigen; auch -i nennen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Auf keinen Fall „Reelle Zahlen“ unter „Ganze Zahlen“ platzieren.
+- Keine Änderung der korrekten Gleichung, Lösungen oder komplexen Ebene.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz
