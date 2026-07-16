@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,24 +32,14 @@ Beschreibung: Die lernende Person kann einfache geometrische Körper mithilfe vo
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Laengen- und Winkelbeziehungen einfacher Koerper untersuchen.
-- Verwende einen Quader mit Kantenlaengen:
-  Laenge 4 cm, Breite 3 cm, Hoehe 2 cm.
-- Zeige zwei Rechenfenster:
-  1. Flaechendiagonale der Grundflaeche:
-     d_G = sqrt(4^2 + 3^2) = 5 cm.
-  2. Raumdiagonale:
-     d_R = sqrt(4^2 + 3^2 + 2^2) = sqrt(29) cm approx 5.39 cm.
-- Markiere an einer Ecke drei paarweise senkrechte Kanten mit rechten Winkeln:
-  Laenge, Breite und Hoehe stehen paarweise orthogonal.
-- Zeige die Grundflaeche als Rechteck 4 cm mal 3 cm und die Raumdiagonale als Linie von einem unteren Eckpunkt zum gegenueberliegenden oberen Eckpunkt.
+- Überarbeite das Referenzbild und bewahre Quader, Flächendiagonale und Raumdiagonale.
+- Schreibe die Näherung exakt `√29 cm ≈ 5,39 cm`.
+- Behalte `d_G=√(4²+3²)=5 cm` und `d_R=√(4²+3²+2²)=√29 cm` korrekt.
 
 Vermeiden:
-- Nicht die Raumdiagonale als sqrt(4^2+3^2)=5 cm berechnen; das ist nur die Flaechendiagonale.
-- Nicht die Hoehe 2 cm im zweiten Schritt vergessen.
-- Nicht einen schiefen Koerper zeichnen; es ist ein rechtwinkliger Quader.
-- Nicht Winkelwerte wie 45 Grad ohne Berechnung erfinden.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein Dezimalpunkt.
+- Keine Änderung an Längen, rechten Winkeln oder Diagonalen.
+- Keine zusätzlichen Berechnungen.
 ```
 
 ## Review-Notiz

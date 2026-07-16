@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `d668c22d-caeb-5e91-8980-721c931a2bcf.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/d668c22d-caeb-5e91-8980-721c931a2bcf/d668c22d-caeb-5e91-8980-721c931a2bcf.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,17 +32,16 @@ Beschreibung: Die lernende Person kann typische Fehlinterpretationen bei Diagram
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Zeige ein Balkendiagramm mit y-Skala 0, 10, 20, 30, 40.
-- Ein Balken reicht genau bis 40.
-- Daneben steht eine Schueler-Sprechblase: "Das sind 50."
-- Darunter die Korrektur: "Skala pruefen: 4 Schritte mal 10 = 40".
-- Zeige eine zweite, klarere Darstellungsidee: "Skala bei 0 starten" mit kleinem Haken.
-- Alle Beschriftungen deutsch und gut lesbar.
+- Erzeuge eine neue Infografik mit demselben Vergleichswertpaar A=45 und B=47.
+- Links: irreführendes Balkendiagramm mit abgeschnittener y-Achse von 40 bis 50; die Differenz wirkt übertrieben groß.
+- Mitte: Erklärung `Die abgeschnittene Achse übertreibt den visuellen Unterschied.`
+- Rechts: klarere Darstellung mit y-Achse von 0 bis 50, vollständigen Achsenwerten und Balken 45 und 47; der relative Unterschied wirkt angemessen klein.
+- Ergänze knapp: `Achsenbeginn und Skalierung immer prüfen.`
 
 Vermeiden:
-
-- Keine anderen Endwerte, kein Balken bis 50, keine unklare Skala.
+- Das Ausgangsdiagramm darf nicht schon bei 0 beginnen.
+- Beide Diagramme dürfen nicht dieselbe Skalierung haben.
+- Keine unbeschrifteten Achsen oder falschen Balkenhöhen.
 ```
 
 ## Review-Notiz

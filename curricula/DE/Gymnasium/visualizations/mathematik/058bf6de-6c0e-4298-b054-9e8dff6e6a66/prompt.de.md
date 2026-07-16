@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `058bf6de-6c0e-4298-b054-9e8dff6e6a66.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/058bf6de-6c0e-4298-b054-9e8dff6e6a66/058bf6de-6c0e-4298-b054-9e8dff6e6a66.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,15 @@ Titel: Lineare Gleichungen und Verhältnisgleichungen lösen, prüfen und Lösba
 Beschreibung: Die lernende Person kann lineare Gleichungen und Verhältnisgleichungen mit verschiedenen Verfahren lösen, Lösungen durch Einsetzen prüfen und Fragen der Lösbarkeit und Lösungsvielfalt fachsprachlich beschreiben.
 
 Zusatzanweisung:
-Verwende kurze, fachlich sichere Beispiele. Für lineare Gleichungen: 2x+3=11 -> 2x=8 -> x=4 und Probe 2·4+3=11. Für Verhältnisgleichungen: 3/4 = x/20 -> x=15, mit Probe. Für Prozentrechnung: Ausgangspreis 80 EUR, 25% Rabatt = 20 EUR, neuer Preis 60 EUR, danach 10% Aufschlag auf 60 EUR = 6 EUR, Endpreis 66 EUR; Prozente immer auf den jeweils aktuellen Grundwert beziehen. Für Kongruenz: nur SSS, SWS, WSW sauber benennen; keine falschen Scheinkriterien. Für besondere Dreiecke: gleichseitig 60°/60°/60°, gleichschenklig mit zwei gleichen Seiten und gleichen Basiswinkeln, rechtwinklig mit 90°. Kein Geodreieck zum Winkelmessen, keine technischen IDs.
+Pflichtinhalt:
+- Überarbeite das Referenzbild und erhalte die drei Bereiche Lösen, Prüfen sowie Lösbarkeit und Lösungsvielfalt.
+- Ersetze die fehlerhafte Schreibweise exakt durch `Fachsprache`.
+- Behalte die korrekten Beispiele `2x+3=11`, `3/4=x/20`, `0x=5` und `0x=0`.
+
+Vermeiden:
+- Keine Schreibweise `Facnsprache`.
+- Keine Änderung der Lösungen x=4 und x=15.
+- Keine neuen Rechenbeispiele.
 ```
 
 ## Review-Notiz

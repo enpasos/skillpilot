@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,39 +32,16 @@ Beschreibung: Die lernende Person kann den Kosinussatz in einem allgemeinen Drei
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-Derive the cosine rule with a coordinate argument. Prefer algebra cards over a detailed geometric construction.
-
-Use exactly this setup:
-- `A=(0|0)`
-- `B=(c|0)`
-- `C=(b*cos(alpha) | b*sin(alpha))`
-- side names:
-  - `a = |BC|`
-  - `b = |CA|`
-  - `c = |AB|`
-  - `alpha` is the angle at `A`
-
-Show the derivation:
-- `a^2 = (b*cos(alpha)-c)^2 + (b*sin(alpha))^2`
-- `a^2 = b^2*cos^2(alpha) - 2bc*cos(alpha) + c^2 + b^2*sin^2(alpha)`
-- `sin^2(alpha)+cos^2(alpha)=1`
-- final: `a^2 = b^2 + c^2 - 2bc*cos(alpha)`
-
-Add one special-case note:
-- `alpha=90° => cos(alpha)=0 => a^2=b^2+c^2`
-- Show this special case as a formula-only note. Do not draw a second right-triangle inset for the special case.
+- Überarbeite das Referenzbild und bewahre Dreieck, Koordinatenansatz und korrekte Herleitung.
+- Zeige die Überschrift `Trigonometrische Identität` genau einmal über `sin²(α)+cos²(α)=1`.
+- Behalte `a²=b²+c²−2bc·cos(α)` und den Spezialfall `α=90°` korrekt.
 
 Vermeiden:
+- Keine doppelte Überschrift.
+- Keine Veränderung von Seitenbezeichnungen, Koordinaten oder Vorzeichen.
+- Keine zusätzliche Formel.
 
-Do not draw projection segments unless they exactly match the coordinate formulas.
-Do not swap the side names `a`, `b`, `c`.
-Do not put `alpha` at any vertex except `A`.
-Do not write `+ 2bc*cos(alpha)`; the sign must be negative.
-Do not omit the squared sine/cosine identity.
-Do not add arrows or leader lines between formulas.
-Do not add any additional small triangle whose side labels could conflict with the coordinate setup.
-Do not write audience or subject labels such as `Gymnasium`, `Mathematik`, `Schule`, or `Klasse`.
+Korrekturhinweis: Die Zwischenüberschrift `Trigonometrische Identität` darf genau einmal vorkommen. Prüfe das gesamte Bild auf doppelte Wörter.
 ```
 
 ## Review-Notiz
