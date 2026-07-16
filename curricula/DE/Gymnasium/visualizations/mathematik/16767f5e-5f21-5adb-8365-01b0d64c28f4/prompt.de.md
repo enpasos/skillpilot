@@ -19,59 +19,31 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Euklidische Algorithmen digital nachvollziehen (LK)
+Titel: Euklidische Algorithmen digital nachvollziehen
 Beschreibung: Die lernende Person kann eine Implementierung euklidischer Algorithmen in Tabellenkalkulation oder Programmierumgebung nachvollziehen.
 
 Zusatzanweisung:
+Überarbeite nur die sichtbare Beschriftung und bewahre den korrekten Ablauf des euklidischen Algorithmus.
+
 Pflichtinhalt:
-- Thema: Euklidische Algorithmen digital nachvollziehen.
-- Zeige eine Tabellenkalkulations- oder Programmierumgebung mit demselben Beispiel:
-  ggT(252,105).
-
-Darstellung:
-- Keine Pfeile zeichnen.
-- Keine Übergangspfeile, keine gebogenen Pfeile, keine Zuordnungspfeile.
-- Zeige links eine Tabelle und rechts Pseudocode.
-- Verknüpfe Tabelle und Code nur über gleiche Farben oder Überschriften, nicht über Pfeile.
-
-Tabelle mit Spalten:
-- Schritt
-- a
-- b
-- q=floor(a/b)
-- r=a mod b
-
-Zeige genau diese Tabellenzeilen:
-- 0 | a=252 | b=105 | q=2 | r=42
-- 1 | a=105 | b=42 | q=2 | r=21
-- 2 | a=42 | b=21 | q=2 | r=0
-
-Pseudocode exakt:
-while b != 0:
-  r = a mod b
-  a = b
-  b = r
-return a
-
-Ergebnis exakt:
-- r=0 beendet die Schleife.
-- Rückgabe: a=21
+- Titel: „Euklidischen Algorithmus digital nachvollziehen“.
+- Zeige die Divisionen 252 = 2 · 105 + 42, 105 = 2 · 42 + 21 und 42 = 2 · 21 + 0.
+- Ergebnis: ggT(252; 105) = 21.
+- Ein kleiner, gut lesbarer Pseudocode darf den wiederholten Restschritt zeigen.
+- Nutze deutsche mathematische Schreibweise und klare Pfeile zwischen den Schritten.
 
 Vermeiden:
-- Nicht nach r=0 noch eine weitere Tabellenzeile mit Division durch 0 zeigen.
-- Nicht q=3 in der ersten Zeile schreiben; korrekt ist q=2.
-- Nicht a und b gleichzeitig falsch aktualisieren; nach Schritt 0 wird aus (252,105) das Paar (105,42).
-- Nicht Ergebnis 0 ausgeben; zurückgegeben wird a=21.
-- Keine Pfeile.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein Schulform- oder Kurslabel im Bild.
+- Keine veränderten Zahlen oder zusätzlichen Algorithmen.
+- Keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

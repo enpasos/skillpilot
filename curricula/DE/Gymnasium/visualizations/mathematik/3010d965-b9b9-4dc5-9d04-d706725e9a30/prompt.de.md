@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `3010d965-b9b9-4dc5-9d04-d706725e9a30.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/3010d965-b9b9-4dc5-9d04-d706725e9a30/3010d965-b9b9-4dc5-9d04-d706725e9a30.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,7 +31,19 @@ Titel: Exponentielle Zunahme und Abnahme beschreiben und von linearem Wachstum a
 Beschreibung: Die lernende Person kann die charakteristischen Merkmale exponentieller Zunahme und Abnahme beschreiben, veranschaulichen und exponentielles Wachstum begründet von linearem Wachstum unterscheiden.
 
 Zusatzanweisung:
-Do not include any technical identifiers in the image. Create a German educational infographic comparing linear and exponential growth and decay. Use three clean mini panels. Panel 1 title: Linear. Table x: 0,1,2,3 and y: 5,8,11,14. Label: gleiche Differenz +3. Panel 2 title: Exponentielle Zunahme. Table x: 0,1,2,3 and y: 5,10,20,40. Label: gleicher Faktor 2. Panel 3 title: Exponentielle Abnahme. Table x: 0,1,2,3 and y: 80,40,20,10. Label: gleicher Faktor 0.5. Show simple line or curve sketches that match the tables. Avoid saying exponential growth has a constant difference. Keep all text German, readable, and mathematically correct.
+Korrigiere ausschließlich die Dezimalschreibweise und erhalte die drei korrekten Modelltypen.
+
+Pflichtinhalt:
+- Drei klar getrennte Felder: linear, exponentielles Wachstum, exponentieller Zerfall.
+- Linear: f(x) = 2x + 1.
+- Wachstum: g(x) = 2 · 1,5^x.
+- Zerfall: h(x) = 4 · 0,5^x.
+- In allen Formeln und Beschriftungen ausschließlich deutsche Dezimalkommas.
+- Die zugehörigen Kurven müssen qualitativ korrekt sein: Gerade, steigende Exponentialkurve, fallende positive Exponentialkurve.
+
+Vermeiden:
+- Kein „0.5“ und kein „1.5“ mit Dezimalpunkt.
+- Keine zusätzlichen Kurventypen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,22 +31,18 @@ Titel: Exponentialfunktionen für Wachstums- und Zerfallsvorgänge nutzen
 Beschreibung: Die lernende Person kann Exponentialfunktionen zur Beschreibung begrenzter und unbegrenzter Wachstums- und Zerfallsvorgänge verwenden und Ergebnisse im Kontext deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Korrigiere die Darstellung auf eine einzige, übersichtliche Wachstumsreihe und eine einzige Zerfallsreihe.
 
-- Show two practical exponential models side by side: growth and decay.
-- Growth model: `B(t)=50*1,6^t`, table `50, 80, 128`, labeled "Faktor 1,6 pro Schritt".
-- Decay model: `R(t)=200*0,75^t`, table `200, 150, 112,5`, labeled "Faktor 0,75 pro Schritt".
-- Draw both graphs curved: growth rises faster and faster; decay falls toward zero and remains positive.
-- Add a small interpretation note: "gleicher Faktor, nicht gleicher Unterschied".
-- Include one warning bubble comparing to a straight-line model and mark it as not suitable.
+Pflichtinhalt:
+- Titel: „Exponentialfunktionen für Wachstum und Zerfall verwenden“.
+- Wachstum: B(t) = 50 · 1,6^t; genau eine Wertreihe mit B(0) = 50, B(1) = 80, B(2) = 128.
+- Zerfall: R(t) = 200 · 0,75^t; genau eine Wertreihe mit R(0) = 200, R(1) = 150, R(2) = 112,5.
+- Ergänze die verständliche Deutung: „Der Bestand wächst mit konstantem Faktor.“ und „Der Rest wird immer kleiner, aber langsamer.“
+- Ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-
-- Do not make the growth graph linear.
-- Do not use equal additive differences in the tables.
-- Do not make the decay graph negative.
-- Do not label `0,75` as growth above 1.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+- Keine doppelte Wertreihe, kein unvollständiger oder grammatisch falscher Satz.
+- Keine zusätzlichen Funktionen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,23 +31,20 @@ Titel: Grenzen der Werkzeugnutzung benennen
 Beschreibung: Die lernende Person kann Grenzen digitaler Werkzeuge benennen (z. B. Definitionsbereich, numerische Näherung, Mehrdeutigkeit) und geeignete Sicherungen wählen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Bewahre die fachlich korrekten Beispiele und stelle jede Dezimalzahl mit deutschem Komma dar.
 
-- Zeige Grenzen digitaler Werkzeuge als drei Warnkarten.
-- Karte 1 "Definitionsbereich": Term "1/(x-2)", Warnung "x != 2".
-- Karte 2 "Naeherung": "sqrt(2) ≈ 1,414", Warnung "nicht exakt".
-- Karte 3 "Mehrdeutigkeit": "sin(x)=0,5" im Intervall "[0; pi]"; zeichne eine saubere Sinuskurve von "0" bis "pi", eine horizontale Linie "y=0,5" und exakt zwei Schnittpunkte mit Labels "pi/6" und "5pi/6".
-- Unten eine Sicherungskarte: "Domain pruefen, Intervall angeben, Ergebnis deuten".
-- Der visuelle Kern: Tools helfen, aber man muss Bedingungen und Grenzen pruefen.
+Pflichtinhalt:
+- Titel: „Gleichungen digital lösen und Ergebnisse prüfen“.
+- Definitionsmenge: 1/(x − 2), daher x ≠ 2.
+- Mittlere Textkarte ohne Lupe oder Graph: schreibe in einer einzigen großen Zeile exakt „x² = 2  ⇒  x = ±√2 ≈ ±1,414…“. Beide ±-Zeichen sind Pflicht.
+- Rechte Textkarte ohne Sinusgraph: schreibe exakt „sin(x) = 0,5 im Intervall [0; π]  ⇒  x = π/6 oder x = 5π/6“.
+- Zeige knapp die Prüfschritte Definitionsmenge, numerische Kontrolle und vollständige Lösungsmenge.
+- Ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-
-- Keine Aussage, dass "sqrt(2)=1,414" exakt ist.
-- Keine Division durch null als erlaubt darstellen.
-- Keine einzige Loesung fuer "sin(x)=0,5" im Intervall "[0; pi]".
-- Ursprung "0" und rechter Randpunkt "pi" duerfen nicht als Loesungen markiert werden.
-- Die zwei Loesungen muessen links und rechts symmetrisch um "pi/2" liegen.
-- Keine unlesbaren Taschenrechneranzeigen.
+- Kein Sinusdiagramm und keine horizontale Linie; dadurch darf nirgendwo y = 0.5 entstehen.
+- Keine fehlende negative Lösung bei x² = 2 und keine fehlende zweite Sinuslösung.
+- Keine falsche Gleichheit statt Näherungszeichen, technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

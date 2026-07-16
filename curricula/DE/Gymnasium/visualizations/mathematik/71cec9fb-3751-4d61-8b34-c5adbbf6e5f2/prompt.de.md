@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,22 +31,18 @@ Titel: Warum Mathematik? – Denken, Muster & Zukunft
 Beschreibung: Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Überarbeite die vorhandene Infografik behutsam und erhalte Aufbau, Farbwelt und die vier Themenfelder.
 
-- Big-Picture-Orientierungsbild fuer Mathematik in der Oberstufe.
-- Vier verbundene Panels:
-- Panel 1: Smartphone-Route oder Algorithmus-Symbol, Label "Algorithmen".
-- Panel 2: Klima- oder Wetterdatenkurve, Label "Daten".
-- Panel 3: medizinische oder wissenschaftliche Datentabelle, Label "Auswerten".
-- Panel 4: Modellgraph fuer Wachstum und Risiko, Label "Modelle".
-- Zentrale Bildidee: Mathematisches Denken strukturiert reale Probleme, Daten, Modelle und Entscheidungen.
-- Ruhig, klar, geeignet fuer eine Lernzielkarte im Cockpit.
+Pflichtinhalt:
+- Sämtlicher sichtbarer Text muss korrektes, natürliches Deutsch sein.
+- Im Feld zu Modellen verwende ausschließlich die kurzen Beschriftungen „Wachstum“, „z. B. Population und Bakterien“, „Risiko“ und „z. B. Investitionen“.
+- Die vier Hauptfelder sollen weiterhin „Algorithmen“, „Daten“, „Auswerten“ und „Modelle“ heißen.
+- Erhalte die Kernbotschaft „Mathematisches Denken strukturiert“.
 
 Vermeiden:
-
-- Keine erfundenen komplizierten Formeln, keine unlesbaren Gleichungen.
-- Keine Science-Fiction-Dekoration.
-- Keine langen Texte, keine englischen Labels.
+- Keine englischen Abkürzungen oder englischen Beispielwörter.
+- Keine Mischsprache, keine erfundenen Wörter und keine zusätzlichen Textblöcke.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -19,45 +19,31 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Grenzprozesse und Grenzmatrizen interpretieren (LK)
+Titel: Grenzprozesse und Grenzmatrizen interpretieren
 Beschreibung: Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.
 
 Zusatzanweisung:
+Korrigiere die Dezimalschreibweise und entferne das Kurslabel, ohne das Markov-Beispiel zu verändern.
+
 Pflichtinhalt:
-- Thema: Grenzprozess und Grenzmatrix einer Markov-Kette interpretieren.
-- Verwende die spaltenstochastische Matrix:
-  M =
-    [0.8  0.3
-     0.2  0.7]
-  Spalten "von" A, B; Zeilen "nach" A, B.
-- Zeige:
-  M^n fuer grosse n naehert sich der Grenzmatrix G.
-  G =
-    [0.6  0.6
-     0.4  0.4]
-- Deutung der Grenzmatrix:
-  Beide Spalten sind gleich.
-  Unabhaengig vom Startzustand entsteht langfristig der stabile Zustand (0.6, 0.4)^T.
-- Zeige zwei Startbeispiele:
-  Start A: v_0=(1,0)^T, langfristig G*v_0=(0.6,0.4)^T.
-  Start B: v_0=(0,1)^T, langfristig G*v_0=(0.6,0.4)^T.
-- Optional klein:
-  M^10 ist schon nahe bei G.
+- Titel: „Langfristiges Verhalten einer Markov-Kette deuten“.
+- Übergangsmatrix M = [[0,8; 0,3], [0,2; 0,7]]; die Spalten summieren sich jeweils zu 1.
+- Stationärer Vektor g = (0,6; 0,4)ᵀ und korrekt M · g = g.
+- Veranschauliche, dass wiederholtes Anwenden gegen 60 % im ersten und 40 % im zweiten Zustand führt.
+- Hinweis „Gleiche Spalten!“ darf nur bei der Grenzmatrix [[0,6; 0,6], [0,4; 0,4]] stehen.
+- Ausschließlich deutsche Dezimalkommas.
 
 Vermeiden:
-- Die Grenzmatrix nicht als Nullmatrix oder Einheitsmatrix darstellen.
-- Die Spalten von G nicht unterschiedlich machen; beide Spalten muessen (0.6,0.4)^T sein.
-- Nicht behaupten, der Grenzzustand haenge hier noch vom Startzustand ab.
-- Spalten "von" und Zeilen "nach" nicht vertauschen.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Kein Kurslabel im Titel, keine Dezimalpunkte, keine falschen Zeilensummen als Begründung.
+- Keine technischen Kennungen, Marken, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz
