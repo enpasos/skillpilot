@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-06T04:37:56.939Z
+Generated: 2026-07-16T19:18:30.570Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -18,32 +18,36 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 473 |
 | Atomare Ziele im Visualisierungs-Scope | 377 |
-| Ziele mit primaerem Visualisierungslink | 78 |
-| Coverage | 20.7% |
+| Ziele mit primaerem Visualisierungslink | 77 |
+| Coverage | 20.4% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 15 |
-| Offene Provider-Deferred-Ziele | 0 |
+| Review-Ledger-Dateien | 16 |
+| Offene Provider-Deferred-Ziele | 1 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 299 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 75 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 78 |
+| `accepted` | 45 |
+| `pilot` | 32 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
+| `accepted_corrected_candidate` | 32 |
+| `accepted_current` | 43 |
 | `accepted_pilot` | 59 |
 | `accepted_pilot_after_regeneration` | 13 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 2 |
+| `deferred_provider_limitation` | 1 |
 | `rejected_after_user_review_replaced` | 2 |
 | `rejected_regenerated` | 33 |
 
@@ -51,8 +55,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-015.md` |
-| Latest ledger status | `completed_with_user_review_correction` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-016.md` |
+| Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-chemie-batch-015.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -70,7 +74,9 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 ### Open Provider Deferred
 
-Keine Eintraege.
+| Batch | Goal ID | Title | Decision |
+| --- | --- | --- | --- |
+| 016 | `16a80de2-b5e0-5467-a9b3-5860730d7d8b` | Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten | `deferred_provider_limitation` |
 
 ### Open Provider Quota
 
@@ -91,7 +97,40 @@ Keine Eintraege.
 
 ### Linked Without Accepted Review
 
-Keine Eintraege.
+| Goal ID | Title | Link status | Latest ledger decision |
+| --- | --- | --- | --- |
+| `e0e201bd-a1fd-5985-ab08-fd24c8655f3d` | Alkalimetalle und ihre Verbindungen charakterisieren | `accepted` | `accepted_current` |
+| `13d4f336-ab16-54a7-9479-c920b458f385` | Allgemeine Sicherheitsregeln im Chemielabor anwenden | `accepted` | `accepted_current` |
+| `dd3fc8fe-2316-5fbc-b569-00651c83bc81` | Atomare Masseneinheit und Grammbezug einordnen | `accepted` | `accepted_current` |
+| `e45c0022-ac0d-5c83-b433-5f68655e382f` | Avogadro-Konstante als Teilchenzahlbezug nutzen | `accepted` | `accepted_current` |
+| `1e5a4b89-69f1-5379-811e-c8ec76faad2a` | Avogadro-These fuer Gasvolumina erlaeutern | `accepted` | `accepted_current` |
+| `17fe22c4-1248-5f37-9d0c-52ee4571d09f` | Bedeutung von Redoxreaktionen erörtern | `accepted` | `accepted_current` |
+| `542822de-cb96-56cf-a487-0fc3b5820f57` | Chemie in Gesellschaft und Berufsfeldern einordnen | `accepted` | `accepted_current` |
+| `49b13b33-34b7-5e4e-861c-b21082cb9922` | Chemische Daten dokumentieren und deuten | `pilot` | `accepted_corrected_candidate` |
+| `f660c91a-fa14-5010-94cf-068d785c7fd2` | Chemische Erkenntniswege einordnen | `pilot` | `accepted_corrected_candidate` |
+| `95dc0ee5-a0af-5682-af32-d66e36fbeb50` | Chemische Fach- und Symbolsprache ebenengerecht verwenden | `pilot` | `accepted_corrected_candidate` |
+| `91238ba1-5c63-50c7-a4fd-9bbe492c6b61` | Chemische Fragestellungen hypothesengeleitet untersuchen | `accepted` | `accepted_current` |
+| `1df17884-96ae-57d7-9da9-dbebd082596f` | Chemische Handlungsoptionen kriteriengeleitet bewerten | `pilot` | `accepted_corrected_candidate` |
+| `277a3c20-6082-5a95-be08-c1e386efe79b` | Chemische Modelle nutzen und kritisch vergleichen | `pilot` | `accepted_corrected_candidate` |
+| `8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566` | Chemische Reaktionen von physikalischen Vorgängen unterscheiden | `pilot` | `accepted_corrected_candidate` |
+| `1f354a60-be44-512b-8f8b-f67c8c456035` | Chemische Sachverhalte fachlich diskutieren | `accepted` | `accepted_current` |
+| `e7c363d4-e02d-4895-8750-ba62c2eb63fe` | Chemische Symbole und Formeln sicher nutzen | `accepted` | `accepted_current` |
+| `4dab7d52-5b89-52ab-a425-17a7707f44c8` | CO2-Bilanz und Reaktionswärme von Brennstoffen vergleichen | `accepted` | `accepted_current` |
+| `9b5d6326-d27c-4ece-8c72-debda705464a` | Dalton-Modell und Modellcharakter erläutern | `pilot` | `accepted_corrected_candidate` |
+| `1f5ee84f-245a-5a1e-a260-f960f26523e9` | Duengemittel chemisch einordnen | `pilot` | `accepted_corrected_candidate` |
+| `7a36f2a2-a97e-5a0b-a6e1-a80f72137640` | Eigenschaften von Wasser strukturbezogen erklären | `pilot` | `accepted_corrected_candidate` |
+| `11bea4c6-7b8a-47e0-8293-2eb1ce34cf66` | Einfache Reaktionsgleichungen ableiten | `accepted` | `accepted_current` |
+| `22133f29-ef02-4408-8f8d-2bbea3275d91` | Einfache Redoxgleichungen mit Oxidationszahlen erstellen | `accepted` | `accepted_current` |
+| `fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3` | Einfache Verbrennungsvorgänge chemisch deuten | `accepted` | `accepted_current` |
+| `b3c9c4b8-5575-5200-86cf-26c14ebcc3d8` | Einflüsse auf naturwissenschaftliches Wissen bewerten | `accepted` | `accepted_current` |
+| `70b12d1c-abaf-45c6-ae9e-b571e9cbc126` | Elektrolyse einfacher Salze deuten | `accepted` | `accepted_current` |
+| `42a84bca-d27e-581f-a43a-eee424f0504d` | Elemente, Verbindungen und Gemische unterscheiden | `accepted` | `accepted_current` |
+| `542d88e9-4cd3-5f90-bd20-b50ab030d72a` | Energieprofile chemischer Reaktionen deuten | `accepted` | `accepted_current` |
+| `f5efab9d-2c61-44ea-b36a-87f873b51fd8` | Energiestufenmodell und Elektronenverteilung anwenden | `accepted` | `accepted_current` |
+| `9198b4cf-e454-562f-83f0-b1b74e68765d` | Energieträger kriteriengeleitet bewerten | `pilot` | `accepted_corrected_candidate` |
+| `a530ee7d-1002-5f02-ae05-a9d46410ac78` | Energieumsatz mit Bindungsänderungen erklären | `pilot` | `accepted_corrected_candidate` |
+
+Weitere 45 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 

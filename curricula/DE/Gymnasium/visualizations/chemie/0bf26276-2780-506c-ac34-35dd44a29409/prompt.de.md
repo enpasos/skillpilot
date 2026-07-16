@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `0bf26276-2780-506c-ac34-35dd44a29409.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/0bf26276-2780-506c-ac34-35dd44a29409/0bf26276-2780-506c-ac34-35dd44a29409.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,7 @@ Titel: pH-Werte in Alltag, Technik und Biologie erörtern
 Beschreibung: Die lernende Person kann die Bedeutung saurer und basischer Lösungen in Alltag, Technik und biologischen Systemen erörtern und Folgen von pH-Wert-Änderungen fachlich abschätzen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `pH-Werte einschaetzen`.
-- Show a central pH scale from `0` to `14` with `sauer` on the left, `neutral` at `7`, and `alkalisch` on the right.
-- Add three small real-world context cards connected to the correct scale region:
-  1. `Zitronensaft pH 2`: left acidic region.
-  2. `Wasser pH 7`: neutral center.
-  3. `Seifenloesung pH 10`: right alkaline region.
-- Add one consequence icon for each: tooth/enamel caution near acidic, fish/water balance near neutral biological systems, gloves/cleaning caution near alkaline.
-- Use arrows only from each context card to its correct pH range.
-- Visible learner text must be limited to title, scale labels, the three example labels, and short caution labels `Zahnschmelz`, `Lebensraum`, `Hautschutz`.
-
-Vermeiden:
-
-- Do not imply that any pH change is harmless.
-- Do not place lemon juice near neutral or soap solution in the acidic range.
-- Do not use extreme laboratory acids/bases or accident imagery.
-- Do not add long explanatory text.
+Überarbeite die vorhandene pH-Infografik nur so weit wie nötig und korrigiere alle sichtbaren deutschen Wörter zu sauberer Standardorthografie mit echten Umlauten. Der Titel muss exakt „pH-Werte einschätzen“ lauten. Die drei Beispiele müssen exakt heißen: „Zitronensaft, pH 2“, „Wasser, pH 7“ und „Seifenlösung, pH 10“. Die Pfeile müssen jeweils auf 2, 7 und 10 der korrekt von 0 bis 14 geordneten Skala zeigen. Beschrifte die Bereiche korrekt mit „sauer“, „neutral“ und „alkalisch“. Behalte die plausiblen Folgen Zahnschmelz, Lebensraum und Hautschutz bei. Keine Ersatzschreibweisen mit ae, oe oder ue; keine zusätzlichen Werte.
 ```
 
 ## Review-Notiz

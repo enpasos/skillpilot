@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/1f5ee84f-245a-5a1e-a260-f960f26523e9/1f5ee84f-245a-5a1e-a260-f960f26523e9.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,7 @@ Titel: Duengemittel chemisch einordnen
 Beschreibung: Die lernende Person kann Duengemittel als chemische Salz- und Ionenquellen einordnen und einfache Nutzen-Risiko-Bezuege beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Düngemittel chemisch einordnen`.
-- Show a fertilizer bag pouring salts into soil, with dissolved ions shown near plant roots.
-- Show exactly three nutrient-ion cards:
-  - `Nitrat: NO3-`
-  - `Ammonium: NH4+`
-  - `Phosphat: PO4^3-`
-- Add two balanced use/risk panels:
-  - `Nutzen: Nährstoffe für Pflanzenwachstum`
-  - `Risiko: Auswaschung ins Grundwasser`
-- Use arrows only from fertilizer salt to dissolved ions and from ions to plant roots.
-
-Vermeiden:
-
-- Do not change ion charges.
-- Do not write nitrate as `NO2-`.
-- Do not write ammonium as `NH3+`.
-- Do not imply that fertilizer is always harmless.
-- Do not draw ions moving from roots back into the fertilizer bag.
+Korrigiere das Referenzbild mit minimalen Änderungen. Entferne den oberen rechten Risikokasten, der Nitrat, Ammonium und Phosphat gemeinsam mit einem Pfeil zum Grundwasser zeigt; diese Pauschaldarstellung ist falsch. Ersetze ihn durch einen klaren Kasten „Risiken bei Überdüngung“ mit genau zwei getrennten Zeilen: „Nitrat → Auswaschung ins Grundwasser“ und „Phosphat → Abschwemmung in Oberflächengewässer“. Ammonium darf nicht als direkt ins Grundwasser ausgewaschen gezeigt werden; es bleibt an Bodenpartikel gebunden und kann erst nach „Umwandlung zu Nitrat“ mobil werden. Im Hauptbild muss weiterhin ausschließlich NO₃⁻ im Grundwasser erscheinen; PO₄³⁻ gelangt durch Abschwemmung oder Erosion ins Oberflächengewässer. Alle Formeln und Ladungen exakt, echte deutsche Umlaute, keine zusätzlichen Ionenpfade.
 ```
 
 ## Review-Notiz

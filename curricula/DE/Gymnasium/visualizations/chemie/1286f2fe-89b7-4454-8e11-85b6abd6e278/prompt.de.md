@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/1286f2fe-89b7-4454-8e11-85b6abd6e278/1286f2fe-89b7-4454-8e11-85b6abd6e278.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,7 @@ Titel: Exotherme und endotherme Reaktionen unterscheiden
 Beschreibung: Die lernende Person kann exotherme und endotherme Reaktionen unterscheiden und typische Beispiele dem Energieumsatz fachlich zuordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Exotherm oder endotherm?`.
-- Use a two-panel comparison:
-  - left panel `exotherm`: products are drawn lower on an energy diagram than reactants; an arrow labelled `Energie nach aussen`; example `Verbrennung`; thermometer rises.
-  - right panel `endotherm`: products are drawn higher on an energy diagram than reactants; an arrow labelled `Energie hinein`; example `Brausetablette kalt`; thermometer falls.
-- Energy axes must point upward and be labelled `Energie`.
-- Keep the level difference visually clear: exotherm releases energy, endotherm absorbs energy.
-- Keep visible text limited to the title, panel labels, axis labels, examples, and energy-arrow labels.
-
-Vermeiden:
-
-- Do not reverse the energy levels.
-- Do not show exotherm as cooling or endotherm as warming.
-- Do not add exact energy numbers.
-- Do not draw extra arrows that could be read as reaction direction or heat flow in the wrong direction.
+Überarbeite die vorhandene zweigeteilte Infografik fachlich exakt. Links „exotherm“: Edukte auf höherem Energieniveau, Produkte auf niedrigerem Energieniveau, ein nach außen gerichteter Energiepfeil und das Beispiel Verbrennung. Rechts „endotherm“: Edukte auf niedrigerem Energieniveau, Produkte auf höherem Energieniveau, ein hinein gerichteter Energiepfeil und ein abkühlendes Reaktionsgemisch als Beispiel. In jedem Energiediagramm darf „Edukte“ genau einmal und „Produkte“ genau einmal stehen. Entferne insbesondere die doppelte Beschriftung „Edukte“ im rechten Diagramm. Schreibe exakt „Energie nach außen“ mit echtem ß. Halte Energieniveaus, Pfeilrichtungen und Thermometerfarben widerspruchsfrei. Keine zusätzlichen Kurven oder Beschriftungen.
 ```
 
 ## Review-Notiz

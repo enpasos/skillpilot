@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `7a36f2a2-a97e-5a0b-a6e1-a80f72137640.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/7a36f2a2-a97e-5a0b-a6e1-a80f72137640/7a36f2a2-a97e-5a0b-a6e1-a80f72137640.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,7 @@ Titel: Eigenschaften von Wasser strukturbezogen erklären
 Beschreibung: Die lernende Person kann besondere Eigenschaften von Wasser aus dem Bau des Wasser-Moleküls und den Wechselwirkungen zwischen Wasser-Molekülen erklären und daraus die Bedeutung von Wasser für Lebewesen begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Warum Wasser besonders ist`.
-- Main panel: draw several water molecules with correct bent geometry, not linear. Each molecule has one larger oxygen atom and two smaller hydrogen atoms.
-- Label one molecule only: `O delta-` near oxygen and `H delta+` near each hydrogen.
-- Show hydrogen bonds as dashed lines only from an `H delta+` of one molecule to an `O delta-` of a neighboring molecule. Label the dashed line `Wasserstoffbruecke`.
-- Add two small real-world consequence insets: a rounded water droplet with surface tension and a dissolving salt crystal with water molecules orienting oxygen toward positive ions and hydrogen toward negative ions.
-- Visible learner text must be limited to title, charge labels, `Wasserstoffbruecke`, `Oberflaechenspannung`, and `Loesungsmittel`.
-
-Vermeiden:
-
-- Do not draw water molecules as straight H-O-H lines.
-- Do not draw dashed hydrogen bonds between two hydrogens or two oxygens.
-- Do not draw hydrogen bonds as solid covalent bonds.
-- Do not claim that water molecules are ionic or that hydrogen bonds are full chemical bonds.
-- Do not add long explanatory text or unrelated biological scenes.
+Completely replace the main molecular network with one simple, unambiguous two-molecule diagram. Draw exactly two large bent water molecules side by side. Each has one blue O δ− sphere and exactly two white H δ+ spheres. Orient one H δ+ of the left molecule toward the O δ− of the right molecule. Draw exactly one short dotted line only across that gap, from the edge of that white H δ+ sphere to the edge of the neighboring blue O δ− sphere. Put the label “Wasserstoffbrücke: H δ+ ··· O δ−” directly below it. No other dotted lines are allowed anywhere in the main diagram, and no dotted line may touch two oxygen atoms. Retain side examples only if every small water molecule is exactly one oxygen plus two hydrogens. Use correct German spelling and highly legible labels.
 ```
 
 ## Review-Notiz

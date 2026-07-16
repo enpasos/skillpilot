@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `95dc0ee5-a0af-5682-af32-d66e36fbeb50.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/95dc0ee5-a0af-5682-af32-d66e36fbeb50/95dc0ee5-a0af-5682-af32-d66e36fbeb50.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,7 @@ Titel: Chemische Fach- und Symbolsprache ebenengerecht verwenden
 Beschreibung: Die lernende Person kann zwischen Alltags- und Fachsprache übersetzen, Stoff- und Teilchenebene unterscheiden sowie Nomenklatur, Symbole und Formelsprache zur Beschreibung von Atomen, Molekülen, Ionen, Teilchenänderungen und Wechselwirkungen sachgerecht nutzen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Sprache und Symbole verbinden`.
-- Show a three-level translation board for the same example `Wasser`:
-  1. `Alltag`: `Wasser`
-  2. `Stoffebene`: clear liquid in a beaker, label `farblos, fluessig`
-  3. `Teilchenebene`: several bent water molecules, label `H2O-Molekuele`
-- Add a small symbol card: `2 H2 + O2 -> 2 H2O` labelled `Reaktionsgleichung ausgeglichen`.
-- Use arrows only from Alltag to Stoffebene to Teilchenebene to Symbolsprache, in that order.
-- Visible learner text must be limited to title, the level labels, `Wasser`, `farblos, fluessig`, `H2O-Molekuele`, and the equation label.
-
-Vermeiden:
-
-- Do not draw water molecules as linear.
-- Do not mix up atom symbols and molecule formulas.
-- Do not show an unbalanced equation.
-- Do not claim that the beaker itself is a molecule.
+Rebuild the supplied educational infographic as a clear four-stage translation between levels, with no conceptual jump. Use these exact panel headings and contents: “Alltag” with the word “Wasser”; “Stoffebene” with a beaker and the text “farblos, flüssig”; “Teilchenebene” with several correct H₂O molecules, each exactly one O and two H, and the exact label “H₂O-Moleküle”; “Formelsprache” with the formula “H₂O”. The word “Moleküle” must contain ü, never “Molekuele”. Connect the four panels with simple arrows. Do not append a formation reaction to the water description. Use correct German spelling, correct subscripts and no malformed molecular drawings.
 ```
 
 ## Review-Notiz
