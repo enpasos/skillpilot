@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/af1c3116-5b55-55f5-86da-8c2cfe2c550c/af1c3116-5b55-55f5-86da-8c2cfe2c550c.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,30 +27,27 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Gesundheitsrisiken fachlicher Technologien beurteilen
-Beschreibung: Die lernende Person kann Gesundheitsrisiken und Sicherheitsfragen bei fachlich-technischen Anwendungen, einschliesslich digitaler Technologien, fachlich begruenden und Handlungsoptionen ableiten.
+Titel: Gesundheitsrisiken physikalischer Technologien beurteilen
+Beschreibung: Die lernende Person kann Gesundheitsrisiken und Sicherheitsfragen bei physikalisch-technischen Anwendungen, einschliesslich digitaler Technologien, fachlich begruenden und Handlungsoptionen ableiten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a balanced German safety infographic titled `Gesundheitsrisiken beurteilen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Risiken beurteilen`.
-- Show three neutral technology cards: `Röntgen`, `Laser`, `Funk`.
-- For each card, show one simple protective measure: `Abschirmung` for `Röntgen`, `Schutzbrille` for `Laser`, `Abstand` for `Funk`.
-- Show a central decision board with three criteria: `Dosis`, `Nutzen`, `Schutzmaßnahme`.
-- If arrows are used, each technology card may point only to the central decision board. No radiation, beam, or wave arrow may point at a person's eye or body.
-- Show one calm person outside the hazard area, not crossed by beams or rays.
-- Visible learner text must be limited to the title and the listed labels.
+Use the central reasoning chain `Quelle → Exposition oder Dosis → mögliche Wirkung → passende Schutzmaßnahme` and three compact examples:
+- `Laser`: enclosure/beam stop plus `Schutzbrille passend zu Wellenlänge und optischer Dichte`; never show a generic universal safety glass.
+- `Ionisierende Strahlung`: assess dose; show the three controls `Zeit verkürzen`, `Abstand vergrößern`, `Abschirmung nutzen`.
+- `Funkfelder`: assess `Feldstärke, Dauer und Grenzwerte`; show distance as only one factor, not as a complete risk judgment by itself.
 
-Vermeiden:
+Use only these short German protection labels in the examples:
+- Laser: `Einhausen und Strahlfänger` and `Schutzbrille passend zu Wellenlänge und optischer Dichte`.
+- Ionisierende Strahlung: `Zeit verkürzen`, `Abstand vergrößern`, `Abschirmung nutzen`.
+- Funkfelder: `Feldstärke, Dauer und Grenzwerte prüfen`, then `Exposition verringern` and `Grenzwerte einhalten`; distance may appear only as one way to reduce exposure.
+Do not use English words, pseudo-English phrases, or invented medical claims.
 
-- Do not show a laser beam entering an eye or body.
-- Do not show X-rays or radiation passing through an unprotected person.
-- Do not show panic, injury, fire, mutation, or horror imagery.
-- Do not claim that every technology is unsafe or that every technology is safe.
-- Do not draw many physical rays or field arrows; use protective symbols instead.
-- Do not make the image a text-only poster.
-- Do not add long explanatory text, internal instructions, or production guidance.
+For the possible effect of radio-frequency fields, write exactly `thermische Wirkung bei hoher Exposition`. Do not label heating itself as scientifically disputed and do not show a brain-damage, cancer, or illness icon. If uncertainty is mentioned, separate it as `weitere Wirkungen: Evidenz prüfen` without claiming that such harm exists.
+
+Make clear that benefit and risk require evidence-based comparison, not alarmist icons. Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

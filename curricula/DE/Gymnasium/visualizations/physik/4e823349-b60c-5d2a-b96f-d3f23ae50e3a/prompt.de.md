@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `4e823349-b60c-5d2a-b96f-d3f23ae50e3a.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/4e823349-b60c-5d2a-b96f-d3f23ae50e3a/4e823349-b60c-5d2a-b96f-d3f23ae50e3a.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,15 @@ Titel: Sonnenaktivitaet und Weltraumwetter fachlich beurteilen
 Beschreibung: Die lernende Person kann Zusammenhaenge zwischen solarem Magnetfeld, Sonnenflecken, Aktivitaetsphasen und Weltraumwetter recherchieren, pruefen und fachlich diskutieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving its useful Sun, magnetic-field, sunspot-cycle, and space-weather composition.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Sonnenaktivitaet beurteilen`.
-- Show the Sun with `Magnetfeld`, `Sonnenflecken`, and one `Ausbruch`.
-- Show a plasma cloud or disturbance travelling from `Sonne` toward `Erde`; the direction arrow must point from Sun to Earth.
-- At Earth, show a magnetosphere shield and three effect icons labelled `Polarlicht`, `Satellit`, `Stromnetz`.
-- Add one small evidence strip: `Fleckenzahl` with a wave-like activity curve labelled `Aktivitaetszyklus`.
-- Visible learner text must be limited to the title and the labels listed above.
+Mandatory correction:
+- Use proper German umlauts everywhere.
+- Write `Sonnenaktivität` and `Aktivitätszyklus`; never write `Sonnenaktivitaet` or `Aktivitaetszyklus`.
+- To eliminate the repeated spelling failure, do not use the word `Aktivitätszyklus` anywhere in this attempt. Keep the cycle graph, but label its horizontal axis only `Zeit` and its vertical axis `Fleckenzahl`. The title `Sonnenaktivität und Weltraumwetter` already communicates the topic.
+- Do not imply that every solar event necessarily causes severe effects on Earth; present space weather as a possible consequence of enhanced activity.
 
-Vermeiden:
-
-- Do not draw the disturbance arrow from Earth to the Sun.
-- Do not imply that every solar flare always hits Earth.
-- Do not show magnetic field lines ending randomly in space; keep them as loops near the Sun or around Earth.
-- Do not make the magnetosphere point toward the Sun backwards; it should face the incoming disturbance on the Sun side.
-- Do not present effects as guaranteed disasters.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Keep visible text short and legible. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

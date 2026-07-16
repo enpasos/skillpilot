@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,45 +31,11 @@ Titel: Teilchenmodell für Temperaturänderungen nutzen
 Beschreibung: Die lernende Person kann Temperaturänderungen und einfache Wärmevorgänge mithilfe des Teilchenmodells qualitativ erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Rebuild the comparison as a simple flat two-dimensional diagram so the particle count can be verified visually.
 
-Show temperature change with the particle model.
-Use two side-by-side particle boxes with the same substance and exactly the same number of particles.
-Keep the particle count very small and easy to verify.
+Draw two identical sealed rectangles of exactly the same size. In each rectangle draw exactly twelve identical blue particles arranged at the same twelve positions. At `20 °C`, give each particle a short motion arrow in varied directions. At `80 °C`, keep the particles at the same positions but give each one a longer motion arrow in varied directions. There must be exactly twelve particles in each panel, no particles outside the rectangles, and no change in spacing, volume, particle size, or particle count.
 
-Left box:
-- label `kalt`
-- `20 °C`
-- exactly `4` blue particles, no more and no fewer
-- arrange them as the four corners of a small square in a compact group
-- short blue motion strokes without arrowheads
-- label `geringere mittlere Bewegungsenergie`
-
-Right box:
-- label `warm`
-- `60 °C`
-- exactly `4` red particles, no more and no fewer
-- arrange them as the four corners of a larger square in a looser group
-- longer red motion strokes without arrowheads
-- label `größere mittlere Bewegungsenergie`
-
-Add a rule card:
-- `Temperatur steigt`
-- `Teilchen bewegen sich im Mittel schneller`
-- `Abstand kann größer werden`
-
-Vermeiden:
-
-Do not add or remove particles between cold and warm panels.
-Do not show more particles in the cold box than in the warm box.
-Do not show fewer particles in the warm box than in the cold box.
-Do not draw a fifth particle in either box.
-Do not draw any extra bubbles, decorative circles, or background particles.
-Do not show all particles moving in exactly one shared direction.
-Do not show chemical reactions, flames inside the substance, or phase change.
-Do not imply that individual particles have a measured temperature label.
-Do not draw arrows from one panel to the other; use plain text `Erwärmen` between the panels if needed.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Keep only the statements `höhere Temperatur → größere mittlere kinetische Energie` and `Bei festem Volumen bleibt der mittlere Teilchenabstand ungefähr gleich.` Use correct German umlauts. Do not draw open boxes, perspective side walls, expansion, technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

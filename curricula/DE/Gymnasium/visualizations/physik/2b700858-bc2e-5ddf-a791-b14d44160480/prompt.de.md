@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `2b700858-bc2e-5ddf-a791-b14d44160480.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/2b700858-bc2e-5ddf-a791-b14d44160480/2b700858-bc2e-5ddf-a791-b14d44160480.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,16 @@ Titel: Astronomische Beobachtungsmethoden
 Beschreibung: Die lernende Person kann Astronomie als Beobachtungswissenschaft beschreiben und Teleskope sowie Spektroskopie als zentrale Zugänge zu astronomischen Objekten erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image as a physically exact German cartoon infographic titled `Astronomische Beobachtungsmethoden`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Astronomische Beobachtungsmethoden`.
-- Show a night-sky source on the left, then instruments on Earth on the right. Light arrows must always point from the sky object to the instrument or detector, never the other way around.
-- Include a telescope panel labeled `Teleskop` where light from a star or galaxy is collected by a mirror or lens and reaches a detector labeled `Detektor`.
-- Include a spectroscopy panel labeled `Spektrum` where collected starlight is split by a prism or grating into a horizontal color band in the order red, orange, yellow, green, blue, violet.
-- Add a few dark absorption lines on the spectrum and the label `Linien`.
-- Use only simple labels: `Licht sammeln`, `Teleskop`, `Detektor`, `Spektrum`, `Linien`.
-- Keep the scene visual and instrument-focused, with minimal text.
+Replace the implausible telescope rays with a clean refracting-telescope ray diagram:
+- A distant star sends parallel rays into the objective lens.
+- The objective focuses them at one focal plane inside the telescope.
+- The eyepiece then sends orderly, nearly parallel rays toward the observer's eye.
+- Rays must follow straight segments between optical elements and must not cross chaotically.
+- In a separate small spectroscopy panel, show starlight dispersed into a spectrum with dark absorption lines.
 
-Vermeiden:
-
-- Do not draw arrows from telescope or detector toward the star.
-- Do not reverse the color order of the spectrum.
-- Do not show astronauts touching or sampling a distant star.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use sparse, correctly spelled German labels such as `Teleskop`, `Objektiv`, `Brennebene`, `Okular`, and `Spektrum`. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

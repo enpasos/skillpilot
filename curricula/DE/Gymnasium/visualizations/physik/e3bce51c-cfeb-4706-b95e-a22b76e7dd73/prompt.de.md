@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `e3bce51c-cfeb-4706-b95e-a22b76e7dd73.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e3bce51c-cfeb-4706-b95e-a22b76e7dd73/e3bce51c-cfeb-4706-b95e-a22b76e7dd73.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,28 +31,17 @@ Titel: Flächenladungsdichte nutzen
 Beschreibung: Die lernende Person kann die Flächenladungsdichte als Ladung pro Fläche definieren und sie zur Beschreibung geladener Platten im Kondensatormodell verwenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a precise German infographic titled `Flächenladungsdichte`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Flächenladungsdichte`.
-- Show one flat rectangular conducting plate viewed slightly in perspective.
-- Distribute identical `+` charge symbols evenly across the visible plate surface.
-- Mark the plate area with a clean bracket or shaded patch labelled `A`.
-- Add a charge label `Q` for the total charge on the plate.
-- Add one large formula card exactly as: `sigma = Q/A`.
-- Add a small unit tag exactly as: `C/m^2`.
-- Add a tiny zoom bubble showing that the charges belong to the surface, not the plate volume.
-- If arrows are used, use only pointer arrows from labels to the plate surface; every pointer arrow must end on the charged surface.
-- Visible learner text must be limited to the title, `A`, `Q`, `sigma = Q/A`, `C/m^2`, and `Oberfläche`.
+Show one uniformly positively charged rectangular plate. Make the aggregate quantities unmistakable:
+- A dimension bracket along the full plate outline or full pair of side lengths labeled `A = gesamte Fläche`.
+- One brace enclosing all charge symbols on the plate labeled `Q = gesamte Ladung auf A`.
+- Never point A or Q at a single charge symbol.
+- Write exactly `σ = Q/A` and unit `C/m²`.
+- A small comparison may show that doubling Q at fixed A doubles σ, or doubling A at fixed Q halves σ, but add no inconsistent numbers.
 
-Vermeiden:
-
-- Do not put charge symbols floating away from the plate.
-- Do not show charge density as charge per length or charge per volume.
-- Do not draw field arrows unless they are necessary and correct.
-- Do not write `rho = Q/V` or `lambda = Q/l`.
-- Do not add capacitor-plate field derivations in this image.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use correct German spelling and sparse labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

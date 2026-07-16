@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,7 @@ Titel: GPS und Relativitätstheorie
 Beschreibung: Anwendung der Zeitdilatation im Alltag: Warum Navigationssysteme ohne die Korrekturen der speziellen (und allgemeinen) Relativitätstheorie nicht funktionieren würden.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `GPS und Relativitaet`.
-- Show Earth with one ground receiver and three satellites.
-- Draw exactly three straight signal lines, each starting at one satellite and ending at the ground receiver.
-- Put one central comparison card next to the satellites, not next to the Earth clock.
-- On that card, write exactly: `Satellitenuhr: Bewegung langsamer, Hoehe schneller`.
-- Show a separate ground clock labelled `Erd-Uhr als Vergleich`.
-- Show the receiver display labelled `Korrektur -> Position passt`.
-- Do not draw any curved arrows, label arrows, clock arrows, or decorative arrows. The only arrows may be the three signal-line arrowheads pointing toward the receiver.
-- Visible learner text must be limited to the title, `Satellitenuhr: Bewegung langsamer, Hoehe schneller`, `Erd-Uhr als Vergleich`, and `Korrektur -> Position passt`.
-
-Vermeiden:
-
-- Do not place `Hoehe schneller` beside the Earth clock.
-- Do not show signals travelling from the receiver to the satellites.
-- Do not show curved or bouncing signal paths.
-- Do not give exact microsecond values or formulas.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh German educational infographic titled „GPS und Relativitätstheorie“. Compare satellite and ground clocks: special relativity due to satellite motion makes the satellite clock about 7 µs per day slower; general relativity in weaker gravity makes it about 45 µs per day faster; the net effect is about 38 µs per day faster and must be corrected for accurate positioning. Show that timing errors would accumulate into position errors. Use correct umlauts and the exact word „Relativitätstheorie“; no ae/oe/ue substitute spellings.
 ```
 
 ## Review-Notiz

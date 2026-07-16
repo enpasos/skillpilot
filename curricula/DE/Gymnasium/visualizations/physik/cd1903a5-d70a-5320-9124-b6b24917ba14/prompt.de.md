@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,14 @@ Titel: Zustandsgrößen und ideales Gasgesetz anwenden
 Beschreibung: Die lernende Person kann Zustandsgrößen (p, V, T, n) mit SI-Einheiten sicher verwenden und das ideale Gasgesetz pV = nRT zur Berechnung fehlender Größen anwenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Correct the existing German educational infographic while preserving the correct ideal-gas law, SI units, and worked rearrangement.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Zustandsgroessen und ideales Gasgesetz anwenden`.
-- Show one simple gas container without force arrows, motion arrows, pressure arrows, or piston arrows.
-- Show the central formula exactly as:
-  - `p V = n R T`
-- Show a unit table:
-  - `p` = Druck, `Pa`
-  - `V` = Volumen, `m^3`
-  - `n` = Stoffmenge, `mol`
-  - `T` = Temperatur, `K`
-  - `R = 8,314 J/(mol K)`
-- Add a short check card:
-  - `Temperatur immer in Kelvin`
-  - `SI-Einheiten einsetzen`
-  - `fehlende Groesse umstellen`
-- Optional example may show `p = nRT/V`, but do not include a long calculation.
-- Strict arrow rule: no arrows anywhere in the image.
+Visible title: `Zustandsgrößen und ideales Gasgesetz`.
+Show `pV = nRT`, with `p in Pa`, `V in m³`, `n in mol`, `T in K`, and `R = 8,314 J/(mol·K)`.
+Show one coherent example: `n = 1,00 mol`, `T = 300 K`, `V = 0,0249 m³`, then `p = nRT/V ≈ 1,00 · 10⁵ Pa`.
+Use the exact phrase `fehlende Größe berechnen` and the correct spelling `Größe` everywhere. Keep decimal commas and units exact.
 
-Vermeiden:
-
-- Do not use Celsius inside `pV = nRT`.
-- Do not write `R = 8,314 Pa`.
-- Do not draw pressure arrows unless every arrow clearly acts perpendicular to a wall; safer: draw no arrows.
-- Do not show a liquid, spring, or non-gas system.
-- Do not include decorative formulas beyond the listed formula and unit table.
+Do not change the physical relationship, omit absolute temperature, or mix litres with cubic metres in the substitution. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

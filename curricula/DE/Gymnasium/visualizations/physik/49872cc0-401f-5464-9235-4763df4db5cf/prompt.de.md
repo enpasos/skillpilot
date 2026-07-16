@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,15 @@ Titel: Kernreaktionen, Spaltung und Fusion
 Beschreibung: Die lernende Person kann wesentliche Kernreaktionen wie Spaltung und Fusion qualitativ beschreiben und deren energetische und sicherheitstechnische Aspekte diskutieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image as a scientifically exact German cartoon comparison titled `Kernspaltung und Kernfusion`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Kernreaktionen: Spaltung und Fusion`.
-- Use two clearly separated panels.
-- Left panel `Spaltung`: show one heavy nucleus hit by one incoming neutron and splitting into exactly two medium nuclei plus two or three outgoing neutrons and released energy.
-- In the fission panel, arrows may only point from the incoming neutron into the heavy nucleus and from the split point outward to the two medium nuclei, outgoing neutrons, and energy.
-- Right panel `Fusion`: show exactly two light nuclei moving toward each other and merging into one larger nucleus plus released energy.
-- In the fusion panel, arrows may only point from the two light nuclei toward the combined nucleus and from the combined nucleus toward released energy.
-- Do not show a free neutron product in the fusion panel.
-- Add small neutral safety/use icons: `Kettenreaktion kontrollieren` near fission and `hohe Temperatur` near fusion.
-- Visible learner text must be limited to the title, `Spaltung`, `Fusion`, `Neutron`, `Energie`, `Kettenreaktion kontrollieren`, and `hohe Temperatur`.
+Mandatory particle conservation:
+- Fusion panel: use a strict left-to-right equation layout. Before the arrow, show exactly two clusters: deuterium containing exactly two disks (one proton, one neutron) plus tritium containing exactly three disks (one proton, two neutrons). After the arrow, show exactly one helium-4 cluster containing exactly four disks in a simple 2-by-2 arrangement (two protons, two neutrons), plus exactly one single free neutron disk, plus an energy arrow. No second free neutron and no fifth disk inside helium-4. The visible nucleon count must be 5 before and 5 after.
+- Fission panel: show one neutron entering a heavy nucleus, followed by two medium-sized fragments, three emitted neutrons, and energy. Do not invent exact isotope labels unless every proton and neutron count is visibly correct.
+- Use distinct colors for protons and neutrons and include a tiny legend `Proton` / `Neutron`.
+- Do not add decorative particle circles or atom icons that could be mistaken for reaction products.
 
-Vermeiden:
-
-- Do not show fission as two nuclei merging.
-- Do not show fusion as one nucleus splitting.
-- Do not draw any product neutron in the fusion panel.
-- Do not draw product arrows with wrong direction.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Keep visible German text sparse and correctly spelled. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

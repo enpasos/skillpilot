@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,7 @@ Titel: Wellenfunktion und Wahrscheinlichkeitsdeutung
 Beschreibung: Die lernende Person kann qualitativ erläutern, wie das Quadrat der quantenmechanischen Wellenfunktion als Maß für die Wahrscheinlichkeit dient, ein Quantenobjekt in einem Raumbereich anzutreffen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Wellenfunktion und Wahrscheinlichkeit`.
-- Use one horizontal position axis labelled `x`.
-- Top graph: draw a smooth blue wave labelled `Psi(x)`.
-- Bottom graph: draw the corresponding non-negative probability-density curve labelled `|Psi(x)|^2`; it must stay at or above the baseline everywhere.
-- Mark a small interval on the x-axis with two vertical boundary lines labelled `x1` and `x2`, and shade the area under `|Psi(x)|^2` between those two lines.
-- Label the shaded region `Wahrscheinlichkeit im Bereich`.
-- Add a small screen strip with detection dots denser where `|Psi(x)|^2` is higher.
-- Use no particle trajectory arrows and no path lines.
-- Visible learner text must be limited to the title, `x`, `Psi(x)`, `|Psi(x)|^2`, `x1`, `x2`, and `Wahrscheinlichkeit im Bereich`.
-
-Vermeiden:
-
-- Do not draw negative values for `|Psi(x)|^2`.
-- Do not imply a definite path for the quantum object.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh, mathematically exact German educational infographic about the probability interpretation of a wavefunction. Use the simple example ψ(x) = sin(x) from 0 to 2π. In the upper graph draw sin(x), including its positive and negative lobes and nodes at 0, π and 2π. Directly below, aligned to the same x positions, draw |ψ(x)|² = sin²(x), always nonnegative, with maxima at π/2 and 3π/2 and nodes at 0, π and 2π. Connect matching positions with subtle guide lines. State that |ψ|² is probability density and probabilities come from area under it. No mismatched curve geometry and no extra equations.
 ```
 
 ## Review-Notiz

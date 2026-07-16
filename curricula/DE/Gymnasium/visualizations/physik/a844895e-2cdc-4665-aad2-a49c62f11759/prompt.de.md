@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,29 +31,17 @@ Titel: Mechanische und elektromagnetische Schwingungen vergleichen
 Beschreibung: Die lernende Person kann mechanische und elektromagnetische Schwingungen anhand von Rückstellwirkung, charakteristischen Größen und periodischer Energieumwandlung vergleichen und zentrale Analogien fachlich benennen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Retain the successful four phase snapshots and energy bars for the spring–mass oscillator and the LC circuit. Remove the incorrect outer analogy statements at the bottom.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Mechanische und elektromagnetische Schwingungen`.
-- Use a clean two-panel comparison, visual-first, with no decorative formulas and no decorative arrows.
-- Left panel: show a horizontal spring-mass oscillator on a straight rail, labelled `Federpendel`.
-- Right panel: show an LC circuit labelled `LC-Kreis`.
-- Do not show any motion path, dotted trajectory, curved path, arrowhead, or force arrow in either panel.
-- Add small energy bars in the left panel labelled `E_Feder` and `E_kin`.
-- Add small energy bars in the right panel labelled `E_C` and `E_L`.
-- Below the panels, show a compact analogy table with three rows:
-  `Auslenkung x` paired with `Ladung q`;
-  `Geschwindigkeit v` paired with `Stromstaerke I`;
-  `Federenergie / kinetische Energie` paired with `Kondensatorenergie / Spulenenergie`.
-- Use a centered `entspricht` label between the two columns; do not use arrowheads for the analogy.
-- Visible learner text must be limited to the title, `Federpendel`, `LC-Kreis`, `Auslenkung x`, `Ladung q`, `Geschwindigkeit v`, `Stromstaerke I`, `Federenergie / kinetische Energie`, `Kondensatorenergie / Spulenenergie`, `entspricht`, `E_Feder`, `E_kin`, `E_C`, and `E_L`.
+The only analogy mapping text may be one central box with exactly:
+`x ↔ q`
+`v ↔ I`
+`m ↔ L`
+`D ↔ 1/C`
 
-Vermeiden:
+Never pair velocity with mass, current with inductance, displacement with force, or charge with voltage using a double arrow. Keep the periodic energy exchange correct: spring potential ↔ kinetic and capacitor electric ↔ coil magnetic, with alternating maxima and constant total energy in the ideal case. Use the exact spelling `Stromstärke`.
 
-- Do not draw force arrows, velocity arrows, current arrows, motion-path arrows, curved trajectory arrows, or energy-flow arrows.
-- Do not imply that displacement equals current or that velocity equals charge.
-- Do not mix the labels between the mechanical and electromagnetic panels.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Do not add other analogy lines, technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

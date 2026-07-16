@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,15 @@ Titel: Dämpfungsverhalten klassifizieren
 Beschreibung: Die lernende Person kann gedämpfte Schwingungen mit Exponentialansätzen beschreiben und Parameter deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving the three scientifically useful damping cases and their curves.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Daempfung klassifizieren`.
-- Show one coordinate graph with horizontal axis `t` and vertical axis `x(t)`.
-- Draw three clearly different cases:
-  - `schwach gedaempft`: oscillating curve with exponentially decreasing envelope.
-  - `kritisch`: fastest return to zero without overshoot.
-  - `stark gedaempft`: slow return to zero without overshoot.
-- Label the dashed envelope `e^(-delta*t)` for the weakly damped case.
-- Add a small parameter card: `groessere Daempfung -> weniger Schwingungen`.
-- Use no arrows inside the curves; axis arrowheads are allowed.
-- Visible learner text must be limited to the title, axis labels, the three case labels, `e^(-delta*t)`, and the parameter card.
+Mandatory correction:
+- Use proper German umlauts everywhere.
+- Write `Dämpfung`, never `Daempfung`.
+- Use three clearly separated, fully labeled mini-graphs rather than unexplained overlaid curves: `Schwingfall` with a decaying oscillation inside envelopes `±A₀ · e^(−δt)`; `aperiodischer Grenzfall` returning to zero fastest without overshoot; `Kriechfall` returning more slowly without overshoot.
+- Do not leave any extra curve unlabeled. Do not use an asterisk as a multiplication sign in the exponent.
 
-Vermeiden:
-
-- Do not show critically or strongly damped cases crossing below zero.
-- Do not show the weakly damped amplitude growing.
-- Do not draw process arrows, force arrows, or decorative arrows.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Keep visible text short and legible. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

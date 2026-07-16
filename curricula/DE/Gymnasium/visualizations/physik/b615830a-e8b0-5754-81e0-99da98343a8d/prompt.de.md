@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,35 +31,16 @@ Titel: Signifikante Stellen korrekt verwenden
 Beschreibung: Die lernende Person kann signifikante Stellen in Rechenergebnissen korrekt bestimmen und konsistent anwenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Correct the existing German educational infographic while preserving its mathematically correct examples about significant figures.
 
-Show significant figures with a simple table and one rounding example.
+Visible title: `Signifikante Stellen korrekt verwenden`.
+Show these exact examples and explanations:
+- `3,20` has `3 signifikante Stellen`; the trailing zero after the decimal comma counts.
+- `0,045` has `2 signifikante Stellen`; leading zeros do not count.
+- `1200` is ambiguous without further notation; add `Schreibweise klären: 1,2 · 10³ oder 1,200 · 10³`.
+- Addition example `12,3 + 0,45 = 12,75 → 12,8`, rounded to the least precise decimal place.
 
-Top title: `Signifikante Stellen`
-
-Table columns:
-- `Wert`
-- `signifikante Stellen`
-- `Hinweis`
-
-Rows:
-- `3,20 m` | `3` | `Endnull nach Komma zaehlt`
-- `0,045 m` | `2` | `Fuehrende Nullen zaehlen nicht`
-- `1200 m` | `unklar ohne Zusatz` | `Schreibweise klaeren`
-
-Rounding box:
-- write `4,56 cm + 1,2 cm = 5,8 cm`
-- label `auf eine Nachkommastelle gerundet`
-
-Vermeiden:
-
-Do not claim that leading zeros are significant.
-Do not claim that `3,20` has only two significant figures.
-Do not claim that `0,045` has three significant figures.
-Do not present `1200` as definitely two, three, or four significant figures without notation.
-Do not use complex scientific notation examples.
-Do not draw physical arrows.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use the exact spellings `zählt`, `Führende Nullen zählen nicht`, and `Schreibweise klären`. Use German decimal commas. Do not change the calculations. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

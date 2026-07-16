@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,33 +31,7 @@ Titel: Auftrieb mit dem archimedischen Prinzip erklären
 Beschreibung: Die lernende Person kann Auftrieb in Wasser und Luft mithilfe des archimedischen Prinzips qualitativ erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-Explain buoyancy with the Archimedes principle in water and air.
-Use two clear panels:
-
-Panel 1 `Wasser`:
-- object partly or fully immersed in water
-- displaced water volume shown as a lightly shaded region next to the object
-- one blue upward arrow on the object labelled `Auftrieb`
-- one gray downward arrow on the object labelled `Gewicht`
-- rule text: `Auftrieb = Gewicht der verdrängten Flüssigkeit`
-
-Panel 2 `Luft`:
-- balloon or light object in air
-- displaced air volume shown as a dashed outline around the object
-- one blue upward arrow on the object labelled `Auftrieb durch verdrängte Luft`
-- one gray downward arrow on the object labelled `Gewicht`
-- rule text: `auch Luft übt Auftrieb aus`
-
-Vermeiden:
-
-Do not draw sideward force arrows.
-Do not draw more than the two force arrows per panel.
-Do not make the upward arrow start from nowhere; it must act on the object from the surrounding fluid or air.
-Do not show pressure arrows unless they are necessary; prefer the simple force pair.
-Do not imply that only floating objects have buoyancy; immersed objects also experience buoyancy.
-Do not write audience or subject labels such as `Gymnasium`, `Physik`, `Schule`, or `Klasse`.
+Create a fresh German educational infographic of Archimedes’ principle using a fully submerged solid cube, so the displaced volume is unambiguous. Show the cube completely below the water surface in an overflow vessel and collect displaced water whose volume equals the cube volume V. Draw weight F_G downward and buoyant force F_A upward, with F_A = ρ_Flüssigkeit · g · V_verdrängt. State „V_verdrängt = V_Körper bei vollständigem Eintauchen“. Do not draw a partly submerged body with a full-volume displacement claim.
 ```
 
 ## Review-Notiz

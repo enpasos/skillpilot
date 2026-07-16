@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,7 @@ Titel: Methode: Lösungsansatz für DGL (Exponentialfunktion)
 Beschreibung: Die lernende Person kann bei einfachen physikalischen Differenzialgleichungen (z. B. RC-Entladung) einen Exponentialansatz wählen und die Lösung durch Ableiten überprüfen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Exponentialansatz pruefen`.
-- Use three numbered cards arranged left to right without connector arrows.
-- Card 1 must show exactly the differential equation `y' = -k*y`. The right-hand side must contain plain `y` without a prime mark.
-- Card 1 also shows a small decreasing curve approaching zero from above.
-- Card 2 must show exactly the Ansatz `y = A*e^(-k*t)`.
-- Card 3 must show exactly the derivative check `y' = -k*A*e^(-k*t) = -k*y` and a check mark.
-- Add a small RC example tag: `U_C(t) = U0*e^(-t/(R*C))`.
-- Do not draw any curved, decorative, or connector arrows. Axis arrowheads in the tiny curve are allowed.
-- Visible learner text must be limited to the title, card numbers, the displayed equations, `Ansatz`, `Probe`, and the check mark.
-
-Vermeiden:
-
-- Do not put a prime mark on the `y` after `-k*`.
-- Do not show an increasing exponential for `y' = -k*y`.
-- Do not use the wrong derivative sign.
-- Do not add connector arrows, decorative arrows, long explanatory text, internal instructions, or production guidance.
+Create a new, uncluttered German educational infographic focused only on the mathematical method. Present y(t) = C · e^(kt), derive y′(t) = k · C · e^(kt) = k · y(t), and show the substitution check in three aligned steps. Add the complete example U_C(t) = U₀ · e^(−t/(RC)) and a matching decreasing graph starting at U₀. Label U₀ only as Anfangsspannung U₀ and k = −1/(RC). Do not draw an electrical circuit or switch. Keep every exponent, denominator, axis and label fully inside the canvas; no cropped formula and no label „Anfangsspannung (C)“.
 ```
 
 ## Review-Notiz

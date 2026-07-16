@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,16 @@ Titel: Koinzidenznachweis einzelner Photonen
 Beschreibung: Die lernende Person kann die Koinzidenzmethode zum Nachweis einzelner Photonen qualitativ erklären und damit die Unteilbarkeit von Photonen in Beispielen wie Mach-Zehnder-Interferometer oder PET-Anwendungen begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Retain the correct optical setup from the reference: pump laser to nonlinear crystal; `Idler` downward to the herald detector; `Signal` horizontally to one 50:50 beam splitter and then to D₁ and D₂.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Koinzidenznachweis einzelner Photonen`.
-- Show a simple optical apparatus with a single-photon source, a neutral 50:50 beam splitter, two neutral unlit detectors `D1` and `D2`, and a coincidence counter.
-- Use only straight optical guide lines without arrowheads; do not show a moving photon dot in the apparatus.
-- Detector clicks must appear only in the event strip, not in the main apparatus.
-- Event strip: show exactly three separated time slots. In every time slot exactly one detector clicks and the other detector is silent.
-- For each time slot, the coincidence counter must show `keine Koinzidenz`.
-- Add the compact label `ein Photon: ein Klick`.
-- Visible learner text must be limited to the title, `Quelle`, `50:50`, `D1`, `D2`, `Koinzidenz`, `keine Koinzidenz`, and `ein Photon: ein Klick`.
+Replace all three electronic displays on the right with three plain white result cards. The cards contain only these exact short lines:
+`H & D₁`
+`H & D₂`
+`H & D₁ & D₂ ≈ 0`
 
-Vermeiden:
+Here `H` is defined once beside the herald detector as `H = Herald`. Do not put the word `Koinzidenz` inside any display, do not invent count numbers, and do not add garbled text. Keep `g²(0) < 0,5` and the sentence `Ein einzelnes Photon wird nicht gleichzeitig an D₁ und D₂ registriert.`
 
-- Do not show one photon being divided into two half-photons.
-- Do not show a moving photon dot or tracked photon path.
-- Do not show simultaneous detector clicks for one single photon.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Do not change the now-correct signal and idler paths. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

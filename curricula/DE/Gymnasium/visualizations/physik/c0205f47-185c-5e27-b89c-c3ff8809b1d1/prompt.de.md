@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,7 @@ Titel: Resonanzkurven analysieren
 Beschreibung: Die lernende Person kann Resonanzkurven für unterschiedliche Dämpfungen qualitativ und quantitativ diskutieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Resonanzkurven analysieren`.
-- Show one clean graph with horizontal axis `Anregungsfrequenz f` and vertical axis `Amplitude`.
-- Draw three resonance curves:
-  - `kleine Daempfung`: tall narrow peak.
-  - `mittlere Daempfung`: lower and wider peak.
-  - `grosse Daempfung`: low broad peak.
-- Mark the resonance frequency near the peak region with a vertical dashed line labelled `f_res`.
-- Add a small note card `starke Daempfung: breite, niedrige Kurve`.
-- Use arrowheads only on graph axes if needed.
-- Visible learner text must be limited to the title, axis labels, the three damping labels, `f_res`, and the note card.
-
-Vermeiden:
-
-- Do not show damping increasing the peak height.
-- Do not draw unrelated wave propagation or spring-force diagrams.
-- Do not add arrows between curves.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh, quantitatively honest German educational infographic of resonance curves. Use one coordinate system with amplitude versus driving frequency. Draw a weakly damped curve that is tall and narrow and a strongly damped curve that is lower and broader. Mark the undamped natural frequency f₀ with a vertical reference line. Mark the actual resonance maximum of each damped curve separately: for weak damping it is approximately at f₀, while stronger damping shifts the maximum slightly below f₀. Add the explicit note „f_res ≈ f₀ nur bei schwacher Dämpfung“. Do not force all peaks to the identical frequency.
 ```
 
 ## Review-Notiz

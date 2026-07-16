@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `ba16948b-5e07-54af-b77b-776e677c6906.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/ba16948b-5e07-54af-b77b-776e677c6906/ba16948b-5e07-54af-b77b-776e677c6906.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,22 +31,11 @@ Titel: Gravitationswellen und elektromagnetische Wellen vergleichen
 Beschreibung: Die lernende Person kann Gemeinsamkeiten und Unterschiede elektromagnetischer Wellen und Gravitationswellen qualitativ beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Retain the successful two-column comparison, the binary-mass grid, the laser interferometer, the correctly perpendicular E and B field depiction, the propagation direction k, and the central common-facts box.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Wellen aus dem All vergleichen`.
-- Use two horizontal rows with the same left-to-right direction from cosmic source to detector.
-- Top row: `elektromagnetische Welle`. Show a star or antenna-like cosmic source sending a light/radio-style wave to a telescope or dish. The arrow must point from source to detector.
-- Bottom row: `Gravitationswelle`. Show two compact objects merging, spacetime-like ripples spreading outward, and an L-shaped detector. The arrow must point from source to detector.
-- Show electromagnetic waves as colored transverse waves; show gravitational waves as grey-blue spacetime ripples, not as colored light.
-- Add a small comparison badge in the center with the two short labels `Signal` and `Information`.
-- Visible learner text must be limited to the title, `elektromagnetische Welle`, `Gravitationswelle`, `Signal`, and `Information`.
+Correct the electromagnetic source label to exactly `Quelle: beschleunigte Ladungen` and show it exactly once. Remove the duplicated word. Keep the field explanation `gekoppelte elektrische und magnetische Felder` and the central text `Gemeinsam: transversal; im Vakuum Ausbreitung mit c`.
 
-Vermeiden:
-
-- Do not draw detector arrows pointing back to the source.
-- Do not depict gravitational waves as sound waves or as a second colored light spectrum.
-- Do not add formulas, speed claims, long explanatory text, internal instructions, or production guidance.
+Check all visible text for duplication or malformed words. Do not change the physics, add extra waves, technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

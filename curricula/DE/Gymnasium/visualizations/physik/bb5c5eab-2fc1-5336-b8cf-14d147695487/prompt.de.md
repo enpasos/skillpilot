@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: gemini-3-pro-image
-- Status: accepted
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
 - Quellbild: `bb5c5eab-2fc1-5336-b8cf-14d147695487.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/bb5c5eab-2fc1-5336-b8cf-14d147695487/bb5c5eab-2fc1-5336-b8cf-14d147695487.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,18 @@ Titel: Strahlungsrisiken mit physikalischen Größen beurteilen
 Beschreibung: Die lernende Person kann Strahlungsrisiken anhand physikalischer Größen wie Dosis, Aktivität und Abschirmung fachlich beurteilen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a visual German educational decision diagram titled `Strahlungsrisiken physikalisch beurteilen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Strahlungsrisiken beurteilen`.
-- Show a radiation source, a shield, distance spacing, and a person with dosimeter in one practical scene.
-- Use straight arrows from source toward the person; arrows must become fewer/weaker after the shield and with greater distance.
-- Add three small measurement cards: `Aktivitaet A`, `Dosis H`, and `Abschirmung`.
-- Add two unit tags: `Bq` near `Aktivitaet A`, `Sv` near `Dosis H`.
-- Add one compact relation card exactly as: `Risiko: A, H, Abstand, Abschirmung`.
-- Visible learner text must be limited to the title, `Aktivitaet A`, `Dosis H`, `Abschirmung`, `Abstand`, `Bq`, `Sv`, and `Risiko: A, H, Abstand, Abschirmung`.
+At the center show `Risiko der Exposition`. Feed into it five clearly separate factors:
+1. `Aktivität A in Bq`: decays per second, a source property.
+2. `Strahlenart und Energie`: influence penetration and biological weighting.
+3. `Geometrie und Abstand`: determine how much radiation reaches the body.
+4. `Expositionszeit und Abschirmung`.
+5. `Aufgenommene Dosis D in Gy` and `Äquivalentdosis H = D · w_R in Sv`.
 
-Vermeiden:
+Make the key conclusion visually prominent: `Aktivität allein bestimmt das Risiko nicht.` Show one simple comparison in which the same activity produces different dose due to different distance or shielding, without inventing numerical dose values.
 
-- Do not imply that activity alone equals biological risk.
-- Do not imply that distance or shielding increases exposure.
-- Do not show a fake universal risk formula or arbitrary threshold numbers.
-- Do not mix up `Bq`, `Gy`, and `Sv`.
-- Do not draw curved or impossible radiation arrows; every arrow must run from source toward target through the scene.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use the exact spelling `Aktivität` and correct units. Do not equate becquerel directly with sievert. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

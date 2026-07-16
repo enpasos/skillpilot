@@ -8,8 +8,8 @@
 
 ## Generator
 
-- Provider: gemini-3-pro-image
-- Status: accepted
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
 - Quellbild: `b3f3f4f7-b5cc-40e1-b57a-3d93649baa61.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/b3f3f4f7-b5cc-40e1-b57a-3d93649baa61/b3f3f4f7-b5cc-40e1-b57a-3d93649baa61.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,20 @@ Titel: Elementare Bestandteile der Materie mit Strukturmodellen ordnen
 Beschreibung: Die lernende Person kann elementare Bestandteile der Materie mit einfachen Strukturmodellen ordnen und Quarks, Leptonen sowie ihre Rolle als Bausteine der Materie qualitativ einordnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Create a new German hierarchy infographic titled `Bausteine der Materie`. Use containment brackets or tree connectors, never decay arrows.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Bestandteile der Materie ordnen`.
-- Use a clear zoom-chain layout from left to right.
-- Show an `Atom` with an `Atomkern` and an `Elektron`.
-- From the `Atomkern`, zoom to `Proton` and `Neutron`.
-- From `Proton` and `Neutron`, zoom to a small `Quarks` group.
-- Separately place `Elektron` in a `Leptonen` group, not inside the quark zoom.
-- Add one simple organizer line exactly as: `Materie: Quarks + Leptonen`.
-- Visible learner text must be limited to the title, `Atom`, `Atomkern`, `Elektron`, `Proton`, `Neutron`, `Quarks`, `Leptonen`, and `Materie: Quarks + Leptonen`.
+Mandatory hierarchy:
+- `Atom` contains `Atomkern` and `Elektronenhülle`.
+- `Atomkern` contains `Protonen` and `Neutronen`.
+- One `Proton` expands to exactly three quarks labeled `u u d`.
+- One `Neutron` expands to exactly three quarks labeled `u d d`.
+- One `Elektron` connects to the category `Lepton` and is explicitly shown as elementary, with no smaller constituents in this model.
+- At the bottom, group `Quarks` and `Leptonen` under `elementare Materieteilchen`.
 
-Vermeiden:
+The final bottom grouping is mandatory: draw one connector from the `Quarks` category and a separate connector from the `Leptonen` category into the same parent box `elementare Materieteilchen`. The electron-to-lepton branch must visibly reach this shared parent; do not leave it disconnected at the side. Use the plural label `Leptonen` for the category while the pictured particle remains `Elektron`.
 
-- Do not show electrons as being made of quarks.
-- Do not show protons or neutrons as elementary particles without internal quarks.
-- Do not draw a circular dependency where quarks contain atoms.
-- Do not add detailed charge tables, mass numbers, or unrelated formulas.
-- Do not draw unclear arrows; every visible arrow must point from a larger structure to its component or zoom target.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Do not show an atom or nucleus transforming into particles; show only part-of and category relationships. Use consistent colors for u quarks, d quarks, electrons, protons, and neutrons. Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

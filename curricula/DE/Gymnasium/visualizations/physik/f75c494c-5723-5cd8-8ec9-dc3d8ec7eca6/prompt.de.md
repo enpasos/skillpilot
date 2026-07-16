@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,22 @@ Titel: Wie funktionieren Solarzellen und Lichtsensoren?
 Beschreibung: Einstieg in die Quantenphysik über Alltagsanwendungen: Die lernende Person kann die Funktionsidee von Solarzellen und Lichtsensoren beschreiben und offene Fragen formulieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a two-panel German semiconductor infographic titled `Solarzelle und Lichtsensor`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Solarzelle und Lichtsensor`.
-- Use two practical panels:
-  - Panel `Solarzelle`: sunlight shown as small yellow photon dots reaching a solar cell; the solar cell is connected to a glowing lamp or a simple meter, with no switch symbol.
-  - Panel `Lichtsensor`: a small sensor chip receives light and an indicator LED glows; show this as a compact device, not as a drawn circuit diagram.
-- Add a simple microscopic inset in the solar-cell panel: one photon dot in a semiconductor layer, one separated dot labelled `Elektron`, and one separated dot labelled `Loch`.
-- Add a small question mark icon labelled `offene Frage` near the microscopic inset.
-- Use no current-direction arrows and no switch symbols anywhere.
-- Visible learner text must be limited to the title, `Solarzelle`, `Lichtsensor`, `Photon`, `Elektron`, `Loch`, and `offene Frage`.
+Panel `Solarzelle`:
+- Show a cross-section with `p-Schicht`, `Sperrschicht` and `n-Schicht` plus front and back contacts.
+- A photon creates exactly one labeled `Elektron-Loch-Paar` in or near the depletion region.
+- Show the internal electric field separating the pair: electron toward the n-side, hole toward the p-side.
+- Connect the two contacts through an external load and label `Photospannung treibt Strom im äußeren Stromkreis`.
 
-Vermeiden:
+Panel `Lichtsensor`:
+- Show a reverse-biased photodiode with the same physical chain `Licht → Elektron-Loch-Paare → Photostrom → elektrisches Signal`.
+- Show a meter or output trace increasing with light; do not use a glowing LED as the explanation of the sensor output.
 
-- Do not draw an open switch together with a glowing LED.
-- Do not draw detailed external circuit diagrams.
-- Do not claim that heat alone creates the electric current.
-- Do not draw incorrect battery symbols as the solar cell output source.
-- Do not show brand logos, product names, formulas, internal instructions, or production guidance.
+Keep p/n sides, charge motion and all wires consistent. Use correct German spelling and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+
+Critical carrier-direction correction for both panels: draw one internal electric-field arrow from the n-side toward the p-side. Draw every generated electron moving toward the n-side and every generated hole moving toward the p-side. Do not use horizontal carrier arrows inside the depletion region. For the solar-cell load, either show conventional current from the p contact through the load to the n contact or omit external direction arrows. For the reverse-biased sensor, connect `+` to n and `−` to p and show the resulting photocurrent as an electrical output.
 ```
 
 ## Review-Notiz

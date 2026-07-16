@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `d1306bda-35ff-53e9-9458-3cbc128874d8.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/d1306bda-35ff-53e9-9458-3cbc128874d8/d1306bda-35ff-53e9-9458-3cbc128874d8.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -28,29 +28,15 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Zyklotron und Strahlentherapie fachlich bewerten
-Beschreibung: Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit fachlichen Kriterien bewerten.
+Beschreibung: Die lernende Person kann das Funktionsprinzip des Zyklotrons auf Strahlentherapien beziehen und Nutzen sowie Risiken medizinischer Anwendungen mit physikalischen Kriterien bewerten.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Zyklotron und Therapie`.
-- Use two visual panels.
-- Left panel `Zyklotron`: show two D-shaped electrodes labelled `D-Elektroden`, a central ion source labelled `Ionenquelle`, a clean outward spiral particle path without orbit-direction arrows, and repeated `x` symbols labelled `B` for a magnetic field into the page.
-- A beam line may leave the cyclotron toward the right panel. If it has an arrowhead, it must point from the cyclotron to the treatment target. Label it `Ionenstrahl`.
-- Right panel `Therapieplanung`: show a patient silhouette with a small target spot labelled `Tumor`, a simple collimator, and the ion beam ending at the target spot.
-- Add three small evaluation tags: `Nutzen`, `Risiko`, `Dosisplanung`.
-- Visible learner text must be limited to the title and the labels listed above.
-
-Vermeiden:
-
-- Do not draw magnetic-field arrows in the page plane.
-- Do not put arrowheads on the circular or spiral path.
-- Do not show the beam missing the target.
-- Do not show gore, fear imagery, or unsafe treatment drama.
-- Do not add force arrows, voltage arrows, or current arrows.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Use case: scientific-educational
+Primary request: Create a fresh, technically correct overview of a cyclotron and its medical beam application.
+Required cyclotron geometry: Show two D-shaped electrodes separated by one straight gap in a uniform magnetic field perpendicular to the drawing plane. A positive charged particle begins near the centre and follows successive semicircular arcs that alternate between the two electrodes and grow in radius. Connect the arcs into one continuous outward spiral-like trajectory made of half-circles.
+Acceleration constraint: Mark acceleration only at each crossing of the central gap, driven by an alternating voltage. Inside each electrode the particle follows a semicircle at approximately constant speed. Do not draw concentric full circles.
+Application: Show extraction of the outer beam toward a clearly localized treatment target, with surrounding healthy tissue visually spared. Keep the medical claim qualitative.
+Constraints: Use minimal correct German labels, no logos or watermarks.
 ```
 
 ## Review-Notiz

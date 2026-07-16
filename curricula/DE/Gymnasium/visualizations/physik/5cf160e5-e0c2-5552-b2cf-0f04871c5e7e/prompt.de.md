@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `5cf160e5-e0c2-5552-b2cf-0f04871c5e7e.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e/5cf160e5-e0c2-5552-b2cf-0f04871c5e7e.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,22 @@ Titel: Astronomische Einheit aus Beobachtungsdaten bestimmen
 Beschreibung: Die lernende Person kann die Astronomische Einheit als Entfernungsmaß im Sonnensystem erklaeren und eine Methode zu ihrer Bestimmung aus Fachtexten und Beobachtungsdaten rekonstruieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Erstelle eine neue klare Infografik des vereinfachten Modells mit Sonne, Venus und Erde bei unterer Konjunktion.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Astronomische Einheit bestimmen`.
-- Show a simple measurement-to-model layout with three parts:
-  1. `Beobachtung`: two separated observing positions look toward a planet silhouette in front of the Sun disk.
-  2. `Messwert`: a small angle card labelled `Parallaxe p`.
-  3. `Modell`: a top-down triangle with `Sonne`, `Erde`, and `Planet`; mark the distance `Sonne-Erde = 1 AE`.
-- Draw line-of-sight segments only from the observing positions toward the Sun/planet disk; no arrowheads are needed on sight lines.
-- Add one compact relation card: `groesserer Abstand -> kleinere Parallaxe`.
-- Visible learner text must be limited to the title and the labels listed above.
+Zwischen Erde und Venus müssen zwei deutlich getrennte, gerade Radar-Pfeile stehen:
+- oberer Pfeil von Erde zu Venus, beschriftet „Radarimpuls“;
+- unterer Pfeil von Venus zurück zur Erde, beschriftet „Echo“.
 
-Vermeiden:
+Die gemessene Zeit „Δt = 277 s“ gehört sichtbar zu diesem Hin-und-Rückweg. Der Abstand Erde–Venus heißt d, der Erde–Sonne-Abstand ist zunächst „?“, der Venusbahnradius „0,723 AE“.
 
-- Do not show Earth at the center of the Solar System.
-- Do not make the observing lines point from the Sun to the observers.
-- Do not invent exact numerical values for the astronomical unit.
-- Do not draw random orbital arrows; if an orbit arc appears, it must not imply a wrong direction or wrong ordering.
-- Do not imply that parallax is caused by the planet physically jumping.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Rechenweg exakt:
+„d = c·Δt / 2“
+„d ≈ 4,15·10¹⁰ m“
+„d = 1 AE − 0,723 AE = 0,277 AE“
+„1 AE = d / 0,277“
+„1 AE ≈ 1,50·10¹¹ m“
+
+Schreibe „Sonne“ korrekt. Keine zusammengefasste Einweg-Pfeildarstellung und keine zusätzliche Methode.
 ```
 
 ## Review-Notiz

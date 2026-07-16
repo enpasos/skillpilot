@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,29 +31,7 @@ Titel: Fahrraddynamik mit Kreiselwirkung erklären
 Beschreibung: Die lernende Person kann Stabilität und Lenkverhalten von Fahrrädern mit Drehmomenten und Kreiselwirkung qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon infographic titled `Fahrraddynamik mit Kreiselwirkung erklären`.
-- Make it visual-first: at least two thirds of the image area must be an illustration, not cards or text blocks.
-- Show a calm cartoon scene of an upright bicycle with rider, plus a large inset view of the front wheel and fork. The bicycle is static and balanced.
-- Highlight both wheels and the inset wheel with soft colored rings or translucent halos only. These rings must have no arrowheads and no direction marks.
-- Add a small visual cutaway of the front wheel as a rotating wheel on an axle, but without spin arrows or motion trails.
-- Add only three short labels placed close to the illustration, not inside large cards:
-  - `rotierende Räder`
-  - `Kreiselwirkung`
-  - `auch Geometrie und Nachlauf`
-- Strict arrow rule: no arrows, arrowheads, direction symbols, curved arcs, circular direction marks, motion trails, pointer lines, connectors, flow lines, or path marks anywhere in the image. Use static illustration and nearby labels only.
-- Visible learner text must be limited to the title and the three listed labels. Do not add cards, notes, warnings, checklists, instructions, or production guidance.
-
-Vermeiden:
-
-- Do not draw wheel spin arrows, steering arrows, tilt arrows, torque arrows, or path arrows.
-- Do not claim a bicycle is stable only because of the gyroscopic effect.
-- Do not show a force arrow unless its source and target are exact; safer: no arrows.
-- Do not show a bicycle leaning opposite to the described effect.
-- Do not include mathematical formulas in this image.
-- Do not create a text-card layout.
+Create a new German educational infographic. First panel: front wheel in three-quarter perspective with visible axle and L exactly along the axle; include a correct vector inset with L_alt upward, τ and ΔL parallel right, L_neu diagonal, and dL/dt = τ. Second panel: a bicycle begins to lean. Third panel must use this exact statement: „Zunächst in Richtung der Neigung lenken: Der Aufstandspunkt gelangt wieder unter den Schwerpunkt.“ Never write „gegen die Neigung lenken“. Then show the rider returning upright. End with „Kreiselwirkung ist ein Beitrag, nicht die einzige Ursache der Stabilität.“ Keep the steering and lean arrows mutually consistent and never draw L in the wheel plane.
 ```
 
 ## Review-Notiz

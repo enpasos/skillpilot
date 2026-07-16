@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,14 @@ Titel: Relativitätspostulate und Experimente
 Beschreibung: Die lernende Person kann die Relativitätspostulate formulieren, das Relativitätsprinzip erläutern und die Rolle von Experimenten wie dem Michelson-Morley-Versuch qualitativ beschreiben.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Correct the existing German educational infographic while retaining the useful comparison of the two relativity postulates and the Michelson–Morley experiment.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Relativitaet: zwei Postulate`.
-- Use two coordinated panels.
-- Panel `Relativitaetsprinzip`: show two laboratories, one on a platform at rest and one in a smoothly moving train, both performing the same mechanics experiment with identical result icons.
-- Panel `Lichtgeschwindigkeit`: show a light pulse measured in both labs with the same value label `c`.
-- Add a small Michelson-Morley-style interferometer inset with a beam splitter and two perpendicular arms; show light paths as setup lines with small arrowheads from splitter to mirrors and back, and label `kein Aetherwind`.
-- Use arrows only for the light paths in the interferometer; every arrow must lie exactly on an arm of the interferometer.
-- Visible learner text must be limited to the title, `Relativitaetsprinzip`, `bewegtes Labor`, `ruhendes Labor`, `gleiche Gesetze`, `Lichtgeschwindigkeit c`, and `kein Aetherwind`.
+Use the exact visible title `Relativitätspostulate und Experimente`.
+Use the exact labels `Relativitätsprinzip`, `Lichtgeschwindigkeit c konstant`, `Michelson–Morley-Experiment`, `kein Ätherwind nachgewiesen` and `c = 299 792 458 m/s`.
 
-Vermeiden:
+Show two inertial frames moving uniformly and a simple interferometer with two perpendicular light paths. Do not claim that the experiment alone proves all of special relativity; present it as experimental evidence against a detectable stationary luminiferous ether. Use correct German umlauts everywhere and never write `Relativitaet` or `Aetherwind`.
 
-- Do not imply that one inertial frame is absolutely at rest.
-- Do not show different values for the speed of light.
-- Do not draw light arrows that miss the mirrors or beam splitter.
-- Do not add formulas, long explanatory text, internal instructions, or production guidance.
+Do not include technical identifiers, filenames, brands, platform names, school labels, watermarks, or portraits.
 ```
 
 ## Review-Notiz

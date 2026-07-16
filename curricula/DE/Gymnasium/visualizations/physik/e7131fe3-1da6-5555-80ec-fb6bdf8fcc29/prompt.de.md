@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,7 @@ Titel: Doppler-Effekt in der Medizin
 Beschreibung: Nutzung von Ultraschall und Doppler-Effekt zur Messung von Strömungsgeschwindigkeiten (z. B. Blutfluss). Frequenzverschiebung bei bewegtem Sender/Empfänger.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Doppler-Ultraschall in der Medizin`.
-- Make it visual-first: show an ultrasound probe aimed at a blood vessel with red blood cells inside.
-- Draw exactly one blood-flow arrow inside the vessel pointing to the right, labelled `Blutfluss v`.
-- Show the ultrasound beam as a soft cone from the probe to the vessel, without arrowheads.
-- Next to the scene, show a compact frequency display with two peaks labelled `f_0` and `f_Echo`; mark the distance between them as `Delta f`.
-- Add the short note `Frequenzverschiebung zeigt Geschwindigkeit`.
-- Do not draw formulas for the Doppler shift.
-- Visible learner text must be limited to the title, `Blutfluss v`, `f_0`, `f_Echo`, `Delta f`, and `Frequenzverschiebung zeigt Geschwindigkeit`.
-
-Vermeiden:
-
-- Do not draw ultrasound-ray arrows.
-- Do not draw a blood-flow arrow outside the vessel or pointing away from the red blood cells.
-- Do not show the frequency peaks overlapping with no shift.
-- Do not draw a heart ECG as the main concept; this is a Doppler-ultrasound image.
-- Do not add formulas, explanatory cards, internal instructions, or production guidance.
+Create a fresh German medical Doppler-ultrasound infographic with one internally consistent direction. Place the probe above a slanted blood vessel and aim the ultrasound beam into it. Draw blood moving toward the probe along the vessel; therefore label the received echo frequency f_echo > f₀ and a positive frequency shift. Show the outgoing wave and reflected echo, plus Δf = 2f₀v cos(θ)/c. State „Bewegung zum Schallkopf → höhere Echo-Frequenz“. Do not draw flow away from the probe with a higher frequency.
 ```
 
 ## Review-Notiz

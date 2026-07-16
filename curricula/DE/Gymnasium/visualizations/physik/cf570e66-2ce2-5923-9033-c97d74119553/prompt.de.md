@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,30 +31,11 @@ Titel: Drehmoment beschreiben
 Beschreibung: Die lernende Person kann das Drehmoment als Maß für die Drehwirkung einer Kraft definieren, berechnen und an einfachen Hebel- und Alltagsbeispielen anwenden.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Drehmoment beschreiben`.
-- Show one simple lever diagram:
-  - pivot point on the left labelled `Drehachse`
-  - horizontal lever to the right
-  - force applied at the right end, perpendicular downward
-  - exactly one force arrow labelled `Kraft F`: tail starts at the force application point on the lever, arrowhead points vertically downward
-  - a distance bracket from pivot to force application labelled `Hebelarm r`
-- Show formulas:
-  - `M = F * r` for perpendicular force
-  - `allgemein: M = F * r_perp`
-  - `Einheit: N m`
-- Add a note: `Groesserer Hebelarm -> groessere Drehwirkung`.
-
-Vermeiden:
-
-- Do not draw more than one force arrow.
-- Do not draw a force arrow that starts at the pivot.
-- Do not draw the force arrow along the lever.
-- Do not draw a distance bracket to the wrong point.
-- Do not draw a circular rotation arrow unless it is clearly only a qualitative Drehwirkung symbol and not a force direction.
-- Do not write `M = F / r`.
+Use case: scientific-educational
+Primary request: Preserve the intuitive lever comparison while correcting German spelling and keeping the torque geometry exact.
+Required content: Show the same perpendicular force F applied to the same lever at two different perpendicular distances r⊥ from the pivot. Label M = F·r⊥. The longer lever arm must visibly produce the larger torque.
+Required wording: Write exactly "Größerer Hebelarm" and "größere Drehwirkung".
+Constraints: Measure r⊥ from the pivot to the force line of action, not merely to an arbitrary point. Use ä and ß correctly throughout. No logos or watermarks.
 ```
 
 ## Review-Notiz

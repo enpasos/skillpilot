@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,37 +31,17 @@ Titel: Auf- und Entladen eines Kondensators
 Beschreibung: Die lernende Person kann die elektrische Stromstärke definieren, den zeitlichen Verlauf der Stromstärke beim Auf- und Entladen eines Kondensators qualitativ beschreiben und den Einfluss von Widerstand und Kapazität diskutieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Überarbeite die bestehende Infografik grundlegend, behalte aber den klaren, freundlichen Cartoon-Stil und die ruhige Farbpalette bei.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Auf- und Entladen eines Kondensators`.
-- Make it visual-first: show an RC circuit on the left and a current-time graph on the right.
-- Circuit illustration:
-  - battery, resistor labelled `R`, and capacitor labelled `C`
-  - no switch component at all
-  - the circuit is a continuous closed loop with no gap anywhere in the wire
-  - capacitor plates show `+` and `-` charges building up
-  - no current direction arrows anywhere in the circuit
-- Graph:
-  - vertical axis labelled `|I|`
-  - horizontal axis labelled `t`
-  - axes are plain lines without arrowheads
-  - draw one smooth decreasing exponential curve from high `|I|` at `t = 0` toward `0`
-  - label the curve `|I| fällt`
-- Add one small relation label: `τ = R · C`.
-- Add one small influence label: `größeres R oder C: langsamer`.
-- Visible learner text must be limited to the title, `R`, `C`, `+`, `-`, `|I|`, `t`, `|I| fällt`, `τ = R · C`, and `größeres R oder C: langsamer`.
+Zeige Laden und Entladen eindeutig als zwei getrennte Schalterzustände:
+- „Laden“: Spannungsquelle, Widerstand und Kondensator bilden den Ladekreis. Der konventionelle Strompfeil zeigt von der positiven Quelle zum Kondensator.
+- „Entladen“: Die Spannungsquelle ist sichtbar vom Kreis getrennt; Kondensator und Widerstand bilden einen geschlossenen Entladekreis. Der konventionelle Strompfeil zeigt durch den Widerstand in entgegengesetzter Richtung zum Ladestrom.
 
-Vermeiden:
+Ergänze darunter zwei fachlich richtige, klar beschriftete Zeitverläufe mit gemeinsamer Zeitachse t:
+- Kondensatorspannung U_C: beim Laden exponentiell von 0 gegen U₀, beim Entladen exponentiell von U₀ gegen 0.
+- Stromstärke I: beim Laden positiv und gegen 0 abklingend, beim Entladen negativ und gegen 0 abklingend.
 
-- Do not draw current arrows, electron-flow arrows, conventional-current arrows, or path arrows.
-- Do not draw pointer arrows to the curve.
-- Do not draw arrowheads on graph axes.
-- Do not draw any switch, open contact, gap, broken wire, or disconnected circuit.
-- Do not draw a rising current curve for charging.
-- Do not label voltage as current.
-- Do not write `τ = R / C` or `τ = C / R`.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Der Umschalter, beide geschlossenen Stromwege und alle Pfeilrichtungen müssen geometrisch eindeutig sein. Verwende exakt die deutschen Wörter „Laden“, „Entladen“, „Spannung“ und „Stromstärke“. Keine zusätzlichen Formeln oder dekorativen Bauteile.
 ```
 
 ## Review-Notiz

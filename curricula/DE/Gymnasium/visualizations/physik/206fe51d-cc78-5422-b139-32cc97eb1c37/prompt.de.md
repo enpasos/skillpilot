@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,7 @@ Titel: Hertzsprung-Russell-Diagramm (HRD)
 Beschreibung: Zustandsdiagramm der Sterne (Leuchtkraft vs. Temperatur) zur Einordnung der Sternentwicklung (Hauptreihe, Rote Riesen, Weiße Zwerge).
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Hertzsprung-Russell-Diagramm`.
-- Show one large clean HRD scatter plot, not a fantasy star map.
-- Vertical axis: `Leuchtkraft` increasing upward.
-- Horizontal axis: `Temperatur`; the left side is labelled `heiss/blau`, the right side is labelled `kuehl/rot`.
-- Show the `Hauptreihe` as a diagonal band from upper left to lower right.
-- Show `Rote Riesen` as a cluster in the upper right.
-- Show `Weisse Zwerge` as a cluster in the lower left.
-- Use blue-white-yellow-red star dots that match the temperature side: blue/white left, red/orange right.
-- Use arrowheads only on graph axes if needed. Do not draw evolution arrows between star groups.
-- Visible learner text must be limited to the title, axis labels, `heiss/blau`, `kuehl/rot`, `Hauptreihe`, `Rote Riesen`, and `Weisse Zwerge`.
-
-Vermeiden:
-
-- Do not make temperature increase to the right in a normal numeric-graph way without explaining the HRD convention.
-- Do not place red giants low on the diagram.
-- Do not place white dwarfs high on the diagram.
-- Do not draw arrows implying a single simple star-evolution path.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a fresh German educational infographic of a Hertzsprung-Russell diagram. The vertical axis is luminosity increasing upward. The horizontal axis is surface temperature with hot blue stars on the left and cool red stars on the right; make the reversed direction unmistakable by values such as 30 000 K at left and 3 000 K at right or an arrow labelled Temperatur nimmt nach links zu. Place Hauptreihe diagonally from upper left to lower right, Riesen above it and Weiße Zwerge below it. Keep all regions, stars and labels consistent with these axes. Use correct German spelling and no contradictory arrow.
 ```
 
 ## Review-Notiz

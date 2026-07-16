@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,7 @@ Titel: Planetenbewegungen deuten
 Beschreibung: Die lernende Person kann Planetenbewegungen im Gravitationsfeld qualitativ beschreiben und die Rolle der Zentripetalkraft für Umlaufbahnen erläutern.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German educational infographic about interpreting planetary motion in a gravitational field.
-- Main diagram: a star or sun labelled `M` at the center/focus region and a planet labelled `m` on an orbit.
-- Draw a smooth elliptical or nearly circular orbit without arrowheads.
-- Draw exactly one physical force arrow: it starts at the planet `m` and points directly toward `M`, labelled `F_G = F_z`.
-- Optional: draw one velocity arrow `v` starting at the planet and tangent to the orbit. If drawn, it must be exactly tangent, not radial.
-- Formula note:
-  - `F_G liefert die Zentripetalkraft`
-  - `F_z = m*v^2/r`
-  - `F_G = G*M*m/r^2`
-- Add note: `ohne tangentiale Kraft bleibt die Richtung der Bewegung durch die Anziehung gekruemmt`.
-
-Vermeiden:
-
-- Do not draw a real outward centrifugal force.
-- Do not draw the gravitational force tangentially along the orbit.
-- Do not put the force arrow anywhere except starting at the planet and pointing to `M`.
-- Do not add arrowheads on the orbit curve.
-- Do not place `M` at a random point unrelated to the force direction.
+Create a fresh German educational cartoon infographic of a planet on an elliptical orbit with the Sun at one focus. At two different orbit positions draw velocity vectors tangent to the path and gravitational-force vectors directed from the planet toward the Sun. Explain that gravity continuously changes the velocity vector and that the planet moves faster near the Sun and slower farther away. Include F_G = G M m / r², but do not write F_G = F_z for the elliptical orbit and do not draw the force tangent to the path. Keep the geometry and vector directions precise.
 ```
 
 ## Review-Notiz

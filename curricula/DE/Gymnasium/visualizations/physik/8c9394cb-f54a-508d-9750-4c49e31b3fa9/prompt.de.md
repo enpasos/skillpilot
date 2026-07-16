@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,11 @@ Titel: Lorentzkraft auf freie Ladungen
 Beschreibung: Die lernende Person kann die Lorentzkraft auf freie bewegte Ladungen mit F_L = q * v * B * sin(alpha) berechnen, die Richtung mit der Drei-Finger-Regel bestimmen und grundlegende Bahnformen deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Erhalte die korrekte Formel „F_L = q·(v × B)“, die Betragsform und die richtigen Kraftpfeile für positive und negative Ladung.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Lorentzkraft auf freie Ladungen`.
-- Make it visual-first: show a single positive moving charge `+q` in a homogeneous magnetic field.
-- Represent the magnetic field into the page only with `x` cross symbols labelled `B in die Zeichenebene`; these cross symbols have no arrowheads.
-- Draw exactly one velocity arrow `v` from the charge to the right.
-- Draw exactly one force arrow `F_L` from the charge upward.
-- These two arrows, `v` and `F_L`, are the only arrows in the entire image.
-- Add the compact rule note `positive Ladung: v x B = F_L`.
-- Add the formula `F_L = q * v * B * sin(alpha)`.
-- Visible learner text must be limited to the title, `+q`, `B in die Zeichenebene`, `v`, `F_L`, `positive Ladung: v x B = F_L`, and the formula.
+Das Magnetfeld wird ausschließlich durch gleichmäßig verteilte Kreuzsymbole „×“ als Richtung in die Bildebene dargestellt. Entferne den diagonalen schwarzen Pfeil und jede zusätzliche B-Pfeildarstellung aus dem Hauptfeld. Es darf kein B-Pfeil schräg nach oben zeigen, weil das den Kreuzsymbolen widerspricht.
 
-Vermeiden:
-
-- Do not draw `F_L` downward or along `v`.
-- Do not draw a negative charge or compare two charges.
-- Do not draw hand icons, finger-rule diagrams, electric-field arrows, current arrows, circular path arrows, pointer arrows, or decorative arrows.
-- Do not show the magnetic field with arrowheads; use only cross symbols.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Im Hauptbild: positive Ladung, v nach rechts, F_L nach oben. Im kleinen Vergleich: negative Ladung, v nach rechts, F_L nach unten. Die Drei-Finger-Regel darf bleiben, wenn sie dieselben drei Richtungen zeigt. Keine zusätzlichen Bahnkurven und keine widersprüchliche Feldrichtung.
 ```
 
 ## Review-Notiz

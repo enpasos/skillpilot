@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,30 +31,11 @@ Titel: Entropie E07: Entropieänderung idealer Gase
 Beschreibung: Die lernende Person berechnet die Entropieänderung eines idealen Gases bei einfachen Zustandsänderungen, insbesondere isotherm: $\Delta S = nR\ln\!\left(\frac{V_2}{V_1}\right)$, und ordnet die Größen $n, R, V, T$ physikalisch ein.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create a German infographic titled `Entropieaenderung idealer Gase`.
-- Main formula exactly: `Delta S = n R ln(V_2/V_1)`.
-- State conditions: `isotherm`, `ideales Gas`.
-- Show a simple piston diagram with two volumes:
-  - left labelled `V_1`
-  - right labelled `V_2`
-  - use `V_2 > V_1`
-- Add sign conclusion: `Expansion: V_2 > V_1, daher Delta S > 0`.
-- Add variable legend: `n Stoffmenge`, `R Gaskonstante`, `V Volumen`, `T Temperatur`.
-- The piston diagram may use a simple comparison mark, but no process arrows.
-- Strict arrow rule: no arrows anywhere in the image. Use side-by-side states and text only.
-
-Vermeiden:
-
-- Do not write `ln(V_1/V_2)`.
-- Do not omit the natural logarithm `ln`.
-- Do not use `log10`.
-- Do not imply temperature changes in the isothermal formula.
-- Do not draw arrows on the volume path or piston motion.
-- Do not draw connector arrows, process arrows, decorative arrows, or `->` text.
-- Do not put a negative sign for expansion.
+Use case: scientific-educational
+Primary request: Recreate an isothermal ideal-gas expansion with a visibly conserved amount of gas and correct German spelling.
+Required title: Write exactly "Entropieänderung idealer Gase".
+Required content: Show exactly twelve identical gas particles in state 1 at volume V₁ and exactly the same twelve particles in state 2 at larger volume V₂, with V₂ > V₁ and constant temperature T. Render exactly "ΔS = nR ln(V₂/V₁) > 0". Add "mehr mögliche Anordnungen" for the larger volume.
+Constraints: The number of drawn particles must be twelve in both cylinders; do not use different dot counts to represent multiplicity. Do not imply that entropy is conserved in this expansion. Use ä correctly and proofread every visible word. No logos or watermarks.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,19 @@ Titel: Linearbeschleuniger modellieren
 Beschreibung: Die lernende Person kann lineare Beschleunigerketten klassisch modellieren und den Übergang zu relativistischen Korrekturen bei sehr hohen Geschwindigkeiten begründen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image while preserving the useful linear-accelerator sequence.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Linearbeschleuniger modellieren`.
-- Show a straight beamline from left to right through several aligned drift tubes.
-- Show a particle source on the left and a detector on the right.
-- In the gaps between drift tubes, show alternating labels `+` and `-` on neighboring tube ends.
-- Use at most one straight beam arrow from the source through the tube chain to the detector. If drawn, the arrow must stay on the beamline and point left to right.
-- Show an energy-step card: `Delta E = q*U pro Spalt` and `E_kin steigt stufenweise`.
-- Show a small step graph with horizontal axis `Spalte` and vertical axis `E_kin`; the steps must increase from left to right.
-- Add a small note card: `bei sehr grossem v: relativistische Korrektur`.
-- Visible learner text must be limited to the title, `Quelle`, `Driftroehren`, `Detektor`, `+`, `-`, `Delta E = q*U pro Spalt`, `E_kin`, `Spalte`, `E_kin steigt stufenweise`, and the relativistic note.
+Mandatory correction and precision:
+- Replace the malformed phrase `sehr grossem v` with exactly `bei v nahe c: relativistische Korrektur nötig`.
+- Show a charged particle receiving an acceleration impulse only in the gaps between drift tubes; inside an ideal drift tube the electric field is shielded.
+- Show the alternating voltage changing polarity at the correct rhythm, and drift tubes becoming longer as classical particle speed increases.
+- Do not show the particle exceeding c.
+- Write `Driftröhren` with ö; never write `Driftroehren`.
+- Avoid the physically contradictory static picture of alternating tube signs with every gap arrow pointing right at once. Instead, use three small chronological snapshots `1`, `2`, `3`. In each snapshot show only the currently crossed gap: left tube `+`, right tube `−`, one rightward electric-field arrow in that gap, and the positive particle crossing it. Between snapshots state `Polarität wechselt mit Hochfrequenz`; the same physical tubes reverse polarity before the particle reaches the next gap. Below, a separate overview row may show successively longer shielded drift tubes and the stepwise particle-energy increase, but it must not show electric-field arrows inside tubes or simultaneous same-direction fields in adjacent gaps.
+- Write the energy gain exactly `ΔE = q · U pro Spalt`; do not use `Delta` or an asterisk.
 
-Vermeiden:
-
-- Do not draw curved particle paths in the linear accelerator.
-- Do not draw force arrows or decorative arrows.
-- Do not show kinetic energy decreasing along the accelerator.
-- Do not imply that the speed can exceed `c`.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use correct German spelling and sparse, legible text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

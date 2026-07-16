@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,25 +31,17 @@ Titel: Bindungsenergie und Massendefekt
 Beschreibung: Die lernende Person kann Bindungsenergie pro Nukleon und Massendefekt qualitativ erklären und in einfachen Fällen die bei Kernreaktionen freigesetzte Energie berechnen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a precise German infographic titled `Massendefekt und Bindungsenergie`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Massendefekt und Bindungsenergie`.
-- Use a balance-scale or before-after visual.
-- Left side `freie Nukleonen`: show separated protons and neutrons with total mass labelled `m frei`.
-- Right side `gebundener Kern`: show the same nucleons bound together with a smaller mass labelled `m Kern`.
-- Show a small released-energy glow between them labelled `Bindungsenergie`.
-- Add the compact relation `Delta m c^2 = E_B`.
-- If using an arrow, it may only be a single clear process arrow from `freie Nukleonen` to `gebundener Kern`.
-- Add a small curve inset `E_B pro Nukleon` with a peak around medium-mass nuclei; do not label exact nuclides.
-- Visible learner text must be limited to the title, `freie Nukleonen`, `gebundener Kern`, `m frei`, `m Kern`, `Bindungsenergie`, `Delta m c^2 = E_B`, and `E_B pro Nukleon`.
+Use a consistent particle key everywhere:
+- Proton: red circle labeled `p⁺` or `+`.
+- Neutron: blue circle labeled `n⁰` or `0`; a neutron must never carry a minus sign.
+- Do not swap these colors or charges between free nucleons and the bound nucleus.
 
-Vermeiden:
+Show `freie Nukleonen` and `gebundener Kern` with the correct comparison `m_frei > m_Kern`. Write exactly `Δm = m_frei − m_Kern > 0` and `E_B = Δm · c²`. If a balance is shown, the heavier free-nucleon side must be lower. A small binding-energy curve may show `E_B/A` against `Massenzahl A` with a broad maximum near Eisen/Nickel, without invented numeric values.
 
-- Do not make the bound nucleus mass larger than the free-nucleon mass.
-- Do not confuse mass defect with mass loss by ordinary material removal.
-- Do not draw random reaction arrows.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Use correct German spelling and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

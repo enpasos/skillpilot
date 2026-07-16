@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,30 +31,7 @@ Titel: Wirbelströme und Waltenhofen-Pendel
 Beschreibung: Induktion in massiven Leitern. Anwendung als Wirbelstrombremse und Vermeidung durch Blechpakete in Transformatoren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Wirbelstroeme am Waltenhofen-Pendel`.
-- Show exactly one main scene: a Waltenhofen pendulum with one massive metal plate partly inside the blue shaded air gap of a horseshoe magnet.
-- Show the magnet poles as `N` and `S`.
-- Label the blue shaded gap `Magnetfeld`, but do not draw any magnetic-field direction.
-- Draw exactly two straight arrows in the whole image:
-  `Bewegung`: a blue arrow above the metal plate pointing right into the magnet gap;
-  `Bremskraft`: a red arrow below the metal plate pointing left, directly opposite to the movement.
-- Keep the words `Bewegung` and `Bremskraft` far apart so the labels do not touch or overlap.
-- On the massive metal plate, show orange closed oval contour loops labelled `Wirbelstroeme`. These loops must be plain closed lines with no arrowheads, no triangular tips, and no direction marks.
-- Do not include a slotted plate comparison in this version.
-- Visible learner text must be limited to the title, `N`, `S`, `Magnetfeld`, `Bewegung`, `Bremskraft`, and `Wirbelstroeme`.
-
-Vermeiden:
-
-- Do not draw cross symbols `x`, dot symbols, B-field arrows, or magnetic-field direction marks.
-- Do not draw arrowheads, triangular tips, or direction markers on the orange eddy-current loops.
-- Do not draw curved motion arrows, pendulum path arrows, or decorative arrows.
-- Do not overlap the labels `Bewegung` and `Bremskraft`.
-- Do not make the braking-force arrow point in the same direction as the motion arrow.
-- Do not draw current arrows, electron arrows, energy-flow arrows, or extra force arrows.
-- Do not add formulas, explanatory cards, internal instructions, or production guidance.
+Create a fresh German educational comparison infographic of a Waltenhofen pendulum in a magnetic field. Left: a solid conducting plate crosses the magnet gap, supports large closed eddy-current loops and is strongly braked by Lenz’s law. Right: an otherwise comparable slotted plate interrupts the current loops and is only weakly braked. Use clearly different swing amplitudes after the same release and label „massive Platte: starke Wirbelströme“ versus „geschlitzte Platte: kleinere Wirbelströme“. Add a small note that laminated cores use the same interruption principle. Keep magnet poles and force direction plausible.
 ```
 
 ## Review-Notiz

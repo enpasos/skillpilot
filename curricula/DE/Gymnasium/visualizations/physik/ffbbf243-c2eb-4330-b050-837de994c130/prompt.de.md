@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,28 +31,20 @@ Titel: Elektromagnetische Felder im Maxwell-Ueberblick beschreiben
 Beschreibung: Die lernende Person kann Ursache und Struktur elektromagnetischer Felder anhand zentraler Aussagen der Maxwell-Gleichungen im Überblick beschreiben, ohne die Gleichungen formal herzuleiten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a mathematically and visually precise four-panel German infographic titled `Maxwell-Überblick`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Maxwell-Ueberblick`.
-- Use a clean four-quadrant visual overview.
-- The entire image must be arrow-free: no arrowheads, no current arrows, no electron arrows, no force arrows, no process arrows, and no field-line arrows.
-- Quadrant 1: `Ladungen erzeugen E-Felder`, show one `+` charge and one `-` charge with smooth electric field lines between them, without arrowheads.
-- Quadrant 2: `B-Feldlinien sind geschlossen`, show only complete concentric closed oval loops, like rings, with no magnet and no open curve ends.
-- Quadrant 3: `Aenderung von B koppelt E`, show a coil with a blue changing-field glow `Delta B` and a golden glow ring `E`, with no direction marks.
-- Quadrant 4: `Strom oder Delta E koppelt B`, show a straight wire and capacitor plates with blue closed circular loops around them, without any arrow on the wire or loops.
-- Keep all field patterns visually clear and closed where they represent magnetic field lines.
-- Visible learner text must be limited to the title, `Ladungen erzeugen E-Felder`, `B-Feldlinien sind geschlossen`, `Aenderung von B koppelt E`, `Strom oder Delta E koppelt B`, `Delta B`, `Delta E`, `E`, and `B`.
+Panel 1, electric Gauss law: charges are sources and sinks of electric field lines. Write `∮ E · dA = Q_ein/ε₀`.
 
-Vermeiden:
+Panel 2, magnetic Gauss law: draw only closed magnetic-field loops with no endpoints. Write `∮ B · dA = 0`.
 
-- Do not draw a bar magnet in the closed B-field quadrant.
-- Do not draw open-ended magnetic-field curves anywhere.
-- Do not draw field-line arrowheads anywhere.
-- Do not draw current arrows, electron arrows, force arrows, or process arrows.
-- Do not write the full Maxwell equations.
-- Do not show magnetic monopoles as isolated `N` or `S` charges.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Panel 3, Faraday induction: show a loop pierced by a visibly time-changing magnetic flux `dΦ_B/dt`; around that same flux draw one closed circulating electric-field loop with arrows. Write `∮ E · dl = −dΦ_B/dt`. Do not substitute a coil picture that fails to show the circulating E field.
+
+Panel 4, Ampère-Maxwell law: show two subexamples—current I in a straight wire with closed B loops, and a charging parallel-plate capacitor. Between the capacitor plates show electric flux changing with time and one continuous closed B loop encircling the gap. Write `∮ B · dl = μ₀(I + ε₀ dΦ_E/dt)`. Never use `ΔE` as a substitute for electric-flux change, and never draw broken B-field lines at the capacitor.
+
+Use sparse, correctly spelled German labels and exact symbols. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+
+Critical correction for the electric Gauss panel: avoid a complicated dipole. Instead show two separate small examples: radial E-field arrows pointing outward from an isolated positive charge, and radial E-field arrows pointing inward toward an isolated negative charge. No electric-field arrow may point outward from a negative charge. Keep the other three panels as specified above.
 ```
 
 ## Review-Notiz

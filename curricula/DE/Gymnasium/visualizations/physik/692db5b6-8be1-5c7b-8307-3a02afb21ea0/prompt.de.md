@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,7 @@ Titel: Ein- und Ausschaltvorgänge analysieren
 Beschreibung: Die lernende Person kann zeitliche Verläufe bei der Spule beschreiben und Begriffe Selbstinduktion/Induktivität quantifizieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Ein- und Ausschaltvorgaenge an der Spule`.
-- Show one simple circuit with battery, switch, resistor, and a coil labelled `Spule L`; do not draw current arrows.
-- Show two graph panels with shared horizontal axis `t` and vertical axis `I`.
-- Panel `Einschalten`: draw `I(t)` starting at `0`, rising steeply at first, then flattening smoothly toward `I_max`.
-- Panel `Ausschalten`: draw `I(t)` starting at `I_max`, decreasing smoothly and exponentially toward `0`.
-- Add a small formula card with exactly: `tau = L/R`.
-- Add a small formula card with exactly: `U_ind = -L * dI/dt`.
-- Visible learner text must be limited to the title, `Spule L`, `Einschalten`, `Ausschalten`, `t`, `I`, `0`, `I_max`, `tau = L/R`, and `U_ind = -L * dI/dt`.
-
-Vermeiden:
-
-- Do not draw an S-shaped or logistic current curve.
-- Do not make either current curve jump instantly.
-- Do not make the switch-on graph decrease or the switch-off graph increase.
-- Do not draw current arrows, voltage arrows, electron arrows, magnetic-field arrows, or force arrows.
-- Do not show an AC sine wave.
-- Do not add long explanatory text, internal instructions, or production guidance.
+Create a new German educational infographic with two completely separate circuit diagrams, not a shared or ambiguous switch. Left: a battery, resistor and inductor connected in one closed loop labelled Einschalten, with I(t) = I_max(1 − e^(−t/τ)). Right: no battery at all; resistor and inductor alone are connected end-to-end in one visibly closed loop labelled Entladen, with I(t) = I₀e^(−t/τ). Put a current arrow around each closed loop and τ = L/R below. Every wire must visibly connect; do not draw any open switch, loose terminal, shorted battery or broken discharge path.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,20 @@ Titel: Differentialgleichung des elektromagnetischen Schwingkreises mit Ansatz l
 Beschreibung: Die lernende Person kann die Differentialgleichung eines idealisierten elektromagnetischen Schwingkreises mit einem geeigneten Ansatz lösen und die Lösungen im Hinblick auf Periodendauer, Frequenz und Energieumlagerung deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image as a mathematically exact German infographic titled `Elektromagnetischen Schwingkreis lösen`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `LC-Differentialgleichung loesen`.
-- Use a clean board-style layout with an LC circuit on the left and the mathematical solution on the right.
-- Show the equation exactly as `q''(t) + 1/(L C) * q(t) = 0`.
-- Show the Ansatz exactly as `q(t) = q_0 cos(omega t)`.
-- Show the result exactly as `omega = 1 / sqrt(L C)`.
-- Next to the equations, show one smooth cosine graph labelled `q(t)` with axes `t` and `q`, both without arrowheads.
-- Add small capacitor/coil energy bars below the graph labelled `E_C` and `E_L`, with alternating high/low bars to suggest energy exchange.
-- Do not use process arrows between equation, Ansatz, and result.
-- Visible learner text must be limited to the title, `q''(t) + 1/(L C) * q(t) = 0`, `q(t) = q_0 cos(omega t)`, `omega = 1 / sqrt(L C)`, `q(t)`, `t`, `q`, `E_C`, and `E_L`.
+Keep these equations exact and legible:
+- `q̈ + 1/(LC) · q = 0`
+- `q(t) = Q₀ · cos(ωt + φ)`
+- `ω = 1/√(LC)` and `T = 2π√(LC)`.
 
-Vermeiden:
+Replace ambiguous energy bars with one shared-axis graph labeled `Energie` and `t`:
+- `E_C = E₀ · cos²(ωt)` and `E_L = E₀ · sin²(ωt)` as complementary nonnegative curves.
+- `E_gesamt = E₀` as one horizontal constant line.
+- At every time, the two component energies must sum to the constant total; their maxima alternate periodically.
 
-- Do not write the differential equation with a minus sign before `1/(L C) * q(t)`.
-- Do not write `omega = sqrt(L C)` or `omega = L C`.
-- Do not draw current arrows, voltage arrows, force arrows, process arrows, or energy-flow arrows.
-- Do not draw a damped, growing, triangular, square, or sawtooth curve.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Write `lösen` with ö; never write `loesen`. Use correct notation and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz

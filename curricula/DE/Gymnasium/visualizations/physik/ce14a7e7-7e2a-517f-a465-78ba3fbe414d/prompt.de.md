@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `ce14a7e7-7e2a-517f-a465-78ba3fbe414d.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/ce14a7e7-7e2a-517f-a465-78ba3fbe414d/ce14a7e7-7e2a-517f-a465-78ba3fbe414d.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,27 +31,11 @@ Titel: Sehschwaechen mit dem Linse-Schirm-Modell untersuchen
 Beschreibung: Die lernende Person kann Kurz- und Weitsichtigkeit mit dem Linse-Schirm-Modell experimentell untersuchen und Ergebnisse mit Vorhersagen der Linsengleichung vergleichen.
 
 Zusatzanweisung:
-Pflichtinhalt:
-
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Sehschwaechen im Linse-Schirm-Modell`.
-- Use three simple side-by-side lab-model panels with a lens, a vertical screen, and only two thin ray paths per panel.
-- Panel `scharf`: two incoming paths meet exactly on the screen.
-- Panel `kurzsichtig`: two incoming paths meet before the screen; add a small correction lens labeled `Minuslinse` before the main lens, and show the corrected focus on the screen in a small inset or overlay.
-- Panel `weitsichtig`: two incoming paths would meet behind the screen; add a small correction lens labeled `Pluslinse` before the main lens, and show the corrected focus on the screen in a small inset or overlay.
-- Use focus dots to mark `vor Schirm`, `auf Schirm`, and `hinter Schirm`.
-- Visible learner text must be limited to the title, panel labels, `Minuslinse`, `Pluslinse`, `vor Schirm`, `auf Schirm`, and `hinter Schirm`.
-
-Vermeiden:
-
-- Do not swap the corrections: Kurzsichtigkeit needs `Minuslinse`, Weitsichtigkeit needs `Pluslinse`.
-- Do not show the focus behind the screen for Kurzsichtigkeit.
-- Do not show the focus before the screen for Weitsichtigkeit.
-- Do not draw rays starting from the screen or eye.
-- Do not add arrowheads to ray paths.
-- Do not draw many extra rays or decorative ray bundles.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Use case: scientific-educational
+Primary request: Create a geometrically exact three-panel lens-screen comparison without any correction-lens diagrams.
+Required title: Write exactly "Sehschwächen mit dem Linse-Schirm-Modell untersuchen".
+Use one fixed vertical screen position in every panel. Panel "normalsichtig": all rays meet exactly on the screen line. Panel "kurzsichtig": all rays meet clearly to the left of the screen. Panel "weitsichtig": rays are still converging where they cross the screen and meet only clearly to the right of the screen; continue them as dashed extensions beyond the screen to the focus.
+Constraints: The yellow focus marker must lie at the actual intersection of all rays. Do not draw any second lens, correction lens or correction inset. Use only the labels "normalsichtig", "kurzsichtig", "weitsichtig", "auf dem Schirm", "vor dem Schirm" and "hinter dem Schirm". Use proper German umlauts and proofread every word. No logos or watermarks.
 ```
 
 ## Review-Notiz

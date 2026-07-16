@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,23 +31,16 @@ Titel: Das Messproblem in der Quantenphysik
 Beschreibung: Erkenntnis, dass Messung kein passives Ablesen ist, sondern den Zustand des Systems präpariert oder verändert (Kollaps der Wellenfunktion). Abgrenzung zur klassischen Messunsicherheit.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Retain the successful central before/after measurement panels, the broad probability distribution, the localized result, and the notation `|ψ(x)|²`.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Quantenmessung: Zustand wird festgelegt`.
-- Use two side-by-side comparison panels.
-- Left panel `vor der Messung`: show a broad probability cloud or broad `|Psi|^2` distribution around a small detector region.
-- Right panel `nach der Messung`: show one localized detector spot and a narrow prepared state at that position.
-- Add a small separate contrast inset `klassisch`: a thermometer reading an already existing value, labelled `passiv ablesen`.
-- Add a small separate contrast inset `quanten`: the detector changes/prepares the state, labelled `Messung veraendert`.
-- Use no path arrows, no particle trajectory, and no ray arrows.
-- Visible learner text must be limited to the title, `vor der Messung`, `nach der Messung`, `|Psi|^2`, `Detektor`, `klassisch`, `passiv ablesen`, `quanten`, and `Messung veraendert`.
+Remove both decorative corner insets entirely. The only explanatory text must be:
+`vor der Messung`
+`nach der Messung`
+`Vorhersage: Wahrscheinlichkeitsverteilung`
+`Einzelmessung: ein Ergebnis`
+`Die Messung verändert den Zustand.`
 
-Vermeiden:
-
-- Do not show a definite path before measurement.
-- Do not imply that the particle simply had a hidden classical position all along.
-- Do not add formulas beyond `|Psi|^2`, long explanatory text, internal instructions, or production guidance.
+Keep the measured position labelled `xₘ`. The word `verändert` must always contain `ä`; never use an `ae` replacement anywhere. Do not add interpretation claims, technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,42 +31,17 @@ Titel: Elastische Stöße im Schwerpunktsystem analysieren
 Beschreibung: Die lernende Person kann elastische Stöße im Schwerpunktsystem analysieren, Relativgeschwindigkeiten vor und nach dem Stoß verknüpfen und Ergebnisse ins Laborsystem zurücktransformieren.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Use case: scientific-educational.
+Regenerate the complete image while preserving the correct equal-mass elastic-collision calculation. Title: `Stoß im Schwerpunktsystem`.
 
-Show elastic collision analysis in the center-of-mass frame using signed velocity tables.
+Show exactly:
+- In `Schwerpunktsystem S*`, before: `v_A* = +1 m/s`, `v_B* = −1 m/s`; after: `v_A* = −1 m/s`, `v_B* = +1 m/s`.
+- `Relativgeschwindigkeit kehrt ihr Vorzeichen um`.
+- Under `Rücktransformation ins Laborsystem`, use `v_S = +2 m/s`; before A/B are `3 m/s` and `1 m/s`, after A/B are `1 m/s` and `3 m/s`.
 
-Title: `Stoß im Schwerpunktsystem`
+Write `Rücktransformation` with ü; never write `Ruecktransformation`. Remove decorative question marks or check icons. Use correct notation and sparse text. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 
-Use a clean worksheet layout with no physical arrows.
-
-Top row:
-- label `Schwerpunktsystem S*`
-- table with columns `vorher` and `nachher`
-- row `v_A*`: `+1 m/s` before, `-1 m/s` after
-- row `v_B*`: `-1 m/s` before, `+1 m/s` after
-- note `Relativgeschwindigkeit kehrt ihr Vorzeichen um`
-- formula `v_rel,nach* = - v_rel,vor*`
-
-Bottom row:
-- label `Ruecktransformation ins Laborsystem`
-- show `v_S = +2 m/s`
-- table with columns `vorher` and `nachher`
-- row `v_A = v_A* + v_S`: `3 m/s` before, `1 m/s` after
-- row `v_B = v_B* + v_S`: `1 m/s` before, `3 m/s` after
-
-Visual cue:
-- show two colored dots A and B beside each table, but do not use arrows
-- signed values must carry the direction information
-
-Vermeiden:
-
-Do not draw physical arrows.
-Do not draw force arrows.
-Do not mix up the starred center-of-mass velocities with lab velocities.
-Do not write `v_rel,nach* = v_rel,vor*`; the sign must flip.
-Do not use unequal masses in this example.
-Do not make the lab transformation subtract `v_S`.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Critical motion correction: take rightward as positive. Before the collision, A is on the left and its arrow points right; B is on the right and its arrow points left, so the two arrows point toward one another. After the collision, A points left and B points right, so the two arrows point away from one another. The drawn arrows must agree with the signed velocities.
 ```
 
 ## Review-Notiz

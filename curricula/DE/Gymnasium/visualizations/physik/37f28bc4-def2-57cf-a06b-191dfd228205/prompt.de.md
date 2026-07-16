@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,28 +31,15 @@ Titel: Selbstinduktion und Induktivität
 Beschreibung: Die lernende Person kann die Selbstinduktion an einer Spule (Ein- und Ausschaltverzögerung) phänomenologisch beschreiben und die Induktivität als charakteristische Eigenschaft der Spule erklären.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Regenerate the complete image while preserving the self-induction lesson structure.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Selbstinduktion und Induktivitaet`.
-- Make it visual-first: show a simple circuit with battery, switch, lamp, and coil labelled `Spule mit L`.
-- Show three lamp snapshots labelled `Schalter geschlossen`, `Lampe dimm`, and `Lampe hell`.
-- Next to the circuit, show one clean graph with horizontal axis `t` and vertical axis `I`, both without arrowheads.
-- Draw one switch-on current curve that starts at `I = 0`, rises steeply at first, then flattens smoothly toward a horizontal final value. This must be a concave-down saturating curve, not an S-curve.
-- Label the curve `I steigt verzoegert`.
-- Add the formula exactly as plain text: `U_ind = -L * Delta I / Delta t`.
-- Do not place any icon, coil drawing, or extra symbol inside that formula.
-- Do not show the direction of current or induced voltage.
-- Visible learner text must be limited to the title, `Spule mit L`, `Schalter geschlossen`, `Lampe dimm`, `Lampe hell`, `t`, `I`, `I = 0`, `I steigt verzoegert`, and `U_ind = -L * Delta I / Delta t`.
+Mandatory correction:
+- Wherever the text says `Schalter geschlossen`, draw one horizontal conductive switch bar physically joining both contact dots with no gap at all. An angled bar hovering above the second contact is open and is forbidden in this panel.
+- If an open switch is shown elsewhere, label it `Schalter offen` and keep it in a clearly separate moment.
+- Show that current through an inductor rises with delay after closing and falls with delay after opening; graph axes and arrows must agree with that sequence.
+- In the lower open-switch panel, do not draw a sustained current around a permanently broken loop and do not show a steadily lit series lamp. A brief small spark at the opening contact may indicate the induced voltage; the adjacent current graph must decay from its initial value toward zero.
 
-Vermeiden:
-
-- Do not draw an S-shaped or logistic current curve.
-- Do not make the current jump instantly to its final value.
-- Do not make the current graph decrease in the switch-on example.
-- Do not draw current arrows, voltage arrows, electron arrows, magnetic-field arrows, or force arrows.
-- Do not draw an AC sine wave for this switch-on delay example.
-- Do not add explanatory cards, internal instructions, or production guidance.
+Use correct German spelling and sparse, legible labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
 ```
 
 ## Review-Notiz
