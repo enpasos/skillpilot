@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -28,27 +28,14 @@ Rahmen:
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
 Titel: Wellenphänomene: Brechung, Reflexion, Beugung
-Beschreibung: Die lernende Person kann Brechung, Reflexion und Beugung als charakteristische Wellenphänomene beschreiben und mithilfe von Beispielen (z. B. Wellenwanne) qualitativ deuten.
+Beschreibung: Die lernende Person kann Brechung, Reflexion und Beugung als charakteristische Wellenphänomene beschreiben und mithilfe von Beispielen (z. B. Wellenwanne) qualitativ deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Edit the supplied infographic while preserving the already correct refraction and diffraction panels.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Reflexion, Brechung, Beugung`.
-- Use three clear side-by-side wave-tank panels with water wavefronts, not light-ray diagrams.
-- Panel `Reflexion`: show parallel wavefronts meeting a straight wall and reflected parallel wavefronts leaving symmetrically; use no arrows and no angle labels.
-- Panel `Brechung`: show a boundary between `schnell` and `langsam`; wavefront spacing must be smaller in the slow region, and the wavefront pattern must bend at the boundary.
-- Panel `Beugung`: show parallel wavefronts passing through a narrow gap and becoming semicircular wavefronts behind the gap.
-- Use wavefront curves and spacing to show the effects visually.
-- Visible learner text must be limited to the title, `Reflexion`, `Brechung`, `Beugung`, `schnell`, and `langsam`.
+Correct only the reflection geometry: the reflecting boundary is vertical, so the normal at the point of incidence must be a horizontal dashed line perpendicular to that boundary. Both the incident and reflected propagation directions must make equal angles with this horizontal normal. Place the label `Normale` on that horizontal dashed line. Wavefronts remain perpendicular to their propagation arrows. Remove every vertical dashed line incorrectly presented as the normal.
 
-Vermeiden:
-
-- Do not draw ray arrows, propagation arrows, current arrows, or force arrows.
-- Do not make wavelength larger in the `langsam` medium.
-- Do not show diffraction as straight wavefronts continuing unchanged after a narrow gap.
-- Do not draw a mirror law with visibly wrong angles.
-- Do not add formulas, explanatory cards, internal instructions, or production guidance.
+Keep the exact German labels, the correct bending toward the normal in the slower medium, the closer wavefront spacing below the interface, and the semicircular diffraction wavefronts. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz
