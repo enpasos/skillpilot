@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,24 +31,11 @@ Titel: Modellverbesserungen vorschlagen
 Beschreibung: Die lernende Person kann Verbesserungen am Modell vorschlagen (z. B. zusätzliche Einflussgrößen, andere Funktionswahl) und deren Wirkung qualitativ beschreiben.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show improving a simple model by adding a relevant influence.
-- Start card: "Altes Modell: Preis = 2 * km"
-- Improvement card: "Neues Modell: Preis = Grundpreis + 2 * km"
-- Add improvement notes:
-  - "Grundpreis ergänzen"
-  - "bessere Nähe zur Realität"
-  - "Annahme prüfen"
+Pflichtinhalt: Behalte den anschaulichen Taxi-Kontext und den Vergleich von altem und verbessertem Modell. Zeichne genau zwei Modellgeraden: eine rote alte Gerade y = 2x durch den Ursprung und eine grüne verbesserte Gerade y = Grundpreis + 2x mit derselben Steigung und positivem y-Achsenabschnitt. Beschrifte beide eindeutig und halte Text und Grafik konsistent.
 
-Visual guidance:
-- Use a taxi context with old model on the left and improved model on the right.
-- Use an arrow labeled "Modell verbessern".
+Vermeiden: doppelte oder geisterhafte grüne Linien, unterschiedliche Steigungen, zusätzliche Kurven, Dezimalpunkte oder widersprüchliche Legenden.
 
-Avoid:
-- Do not solve with concrete numbers.
-- Do not add extra variables beyond Grundpreis and km.
-- Do not use English text.
-- Do not make the old model look mathematically invalid; it is just less realistic.
+Korrekturhinweis: Im rechten Koordinatensystem darf genau eine einzige grüne Gerade sichtbar sein. Entferne jede zweite blasse, parallele oder geisterhafte grüne Linie vollständig.
 ```
 
 ## Review-Notiz

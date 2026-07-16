@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T14:07:56.057Z
+Generated: 2026-07-16T15:52:12.008Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,15 +18,15 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1079 |
 | Atomare Ziele im Visualisierungs-Scope | 756 |
-| Ziele mit primaerem Visualisierungslink | 746 |
-| Coverage | 98.7% |
+| Ziele mit primaerem Visualisierungslink | 733 |
+| Coverage | 97.0% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 202 |
-| Offene Provider-Deferred-Ziele | 8 |
+| Review-Ledger-Dateien | 206 |
+| Offene Provider-Deferred-Ziele | 21 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 2 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 15 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
 | Akzeptierende Review-Entscheidung ohne Link | 2 |
 
 ## Linked Review Status
@@ -34,7 +34,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `approved` | 18 |
-| `pilot` | 728 |
+| `pilot` | 715 |
 
 ## Ledger Decisions
 
@@ -44,6 +44,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_after_regeneration` | 8 |
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 599 |
+| `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_regeneration` | 159 |
 | `accepted_pilot_after_resume` | 5 |
@@ -55,7 +56,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
-| `deferred_provider_limitation` | 20 |
+| `deferred_provider_limitation` | 33 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
@@ -71,8 +72,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-202.md` |
-| Latest ledger status | `accepted_pilot_after_provider_retry` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-206.md` |
+| Latest ledger status | `completed_with_5_deferred_provider_limitations` |
 | Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
 | Resume file exists | no |
 | Resume goals | 0 |
@@ -93,13 +94,27 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
+| 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
 | 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
 | 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
 | 197 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_provider_limitation` |
+| 205 | `2041f4ec-620d-4a20-9922-6ebf16f8f8fa` | Kongruente sowie maßstäblich vergrößerte und verkleinerte Figuren zeichnen und begründen | `deferred_provider_limitation` |
+| 205 | `3bfc2747-03e2-57db-b13f-01f78835eefd` | Konvergenz und Grenzen numerischer Verfahren reflektieren | `deferred_provider_limitation` |
+| 205 | `0408ac7f-0530-5de5-b248-cf581c9b5a17` | Laplace-Wahrscheinlichkeiten mit Zurücklegen (Binomialmodell) | `deferred_provider_limitation` |
+| 205 | `fc34449a-fbf4-574c-884f-ecdf48b42d2e` | Laufzeit tabellarisch näherungsweise bestimmen | `deferred_provider_limitation` |
+| 205 | `0de1e45c-aea9-5e53-932a-027dcf509efa` | Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK) | `deferred_provider_limitation` |
+| 205 | `0c7bbd3f-0a04-4f0e-888b-40ab7841fb76` | Newton-Verfahren zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
 | 193 | `5bced7dc-6557-4af1-9e70-d87f850d3b7f` | Parameter quadratischer Funktionen in Scheitelpunktform deuten | `deferred_provider_limitation` |
 | 195 | `e7350739-c89f-5c7b-b4d1-717d6a767298` | Parameteruntersuchungen mit Exponentialfunktionen (LK) | `deferred_provider_limitation` |
 | 195 | `1e164a09-0a2b-55ab-b927-08a4a278f72b` | Plausibilität mit Beispielen testen | `deferred_provider_limitation` |
+| 206 | `52758ed0-cba8-5583-9e69-906d2e7c7843` | Prognose- und Konfidenzintervalle im Kontext interpretieren | `deferred_provider_limitation` |
+| 206 | `3256476b-ec65-4038-9f5a-a8808fbcf207` | Punkt-Gerade-Abstände im Raum bestimmen | `deferred_provider_limitation` |
+| 206 | `075f1ef2-6860-4b20-9df2-878157eb395e` | Punkte und Vektoren im Raum koordinatisieren | `deferred_provider_limitation` |
+| 206 | `47400de4-b0e4-5bb6-a1bd-bd2beee616bb` | Regula falsi zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
+| 206 | `36728db8-da44-4add-97b8-0fdd7cfd9c41` | Satz des Thales begründen und anwenden | `deferred_provider_limitation` |
 | 192 | `5d9c156b-e5a4-5e91-9da3-22e858eb1f8e` | Teilungsverhältnisse bei Strecken untersuchen | `deferred_provider_limitation` |
+
+Weitere 1 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -157,11 +172,7 @@ Weitere 23 Eintraege stehen in der JSON-Begleitdatei.
 | `4af3dfb9-7e15-5da5-8b86-0aac6c80e266` | Einfache geometrische Figuren beschreiben | `pilot` | `accepted_after_regeneration` |
 | `250daae6-58fd-59e4-8a11-f994e789ee47` | Einfache Parametertransformationen in Funktionsuntersuchungen nutzen | `pilot` | `accepted_after_regeneration` |
 | `82597dfb-0ec6-4a77-abaf-e1d6bdd12041` | Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen | `pilot` | `accepted_after_regeneration` |
-| `71d1fd4d-8471-5f25-94a0-4c531a74783c` | Ereignisse als Mengen verknüpfen | `pilot` | `correction_open_provider_credit_exhausted` |
-| `f7879354-1a82-4195-8e3c-a339a820439c` | Erwartungswert und Standardabweichung binomialverteilter Zufallsgrößen bestimmen und deuten | `pilot` | `correction_open_provider_credit_exhausted` |
 | `701b3942-9f70-548e-9d02-a34b7e64aa17` | Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK) | `pilot` | `accepted` |
-| `4fc77ab5-90aa-4aa7-941f-6c807dde54fe` | Volumen von schiefen Prismen und Pyramiden plausibilisieren | `pilot` | `correction_open_provider_credit_exhausted` |
-| `d8305a49-6d45-52aa-ab88-9163c3b9f198` | Wahrscheinlichkeiten anhand von Termen vergleichen | `pilot` | `correction_open_provider_credit_exhausted` |
 
 ### Accepted Review Without Link
 

@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,18 @@ Titel: Sachzusammenhänge mit Wendestellen modellieren
 Beschreibung: Die lernende Person kann Sachzusammenhänge mit Wendestellen durch geeignete ganzrationale Funktionen modellieren und die Bedingungen fachlich deuten.
 
 Zusatzanweisung:
+Korrigiere im vorhandenen Bild ausschließlich die zwei fehlerhaften Achsenbeschriftungen.
+
 Pflichtinhalt:
-
-Show modeling with an inflection point in a real-world context.
-Use exactly this example:
-- context: smooth transition of a road ramp
-- model: `r(x) = 0.1*(x - 3)^3 + 2`
-- inflection point: `W(3|2)`
-- derivative facts: `r''(x) = 0.6*(x - 3)`, so `r''(3) = 0`
-- curvature changes sign at `x = 3`
-
-Use an S-shaped curve with the inflection point `W(3|2)` marked. Add a condition table:
-`r(3)=2`, `r''(3)=0`, and `r''` changes from negative to positive.
+- Ersetze den Tick „3,“ exakt durch „3“.
+- Ersetze den Tick „5,“ exakt durch „5“.
+- Erhalte die Funktion „r(x)=0,1·(x−3)³+2“, den Wendepunkt W(3|2), den Graphen und die Bedingungen unverändert.
+- Alle übrigen Dezimalzahlen behalten deutsche Dezimalkommas.
 
 Vermeiden:
-
-Do not show a local maximum or local minimum at `W`.
-Do not draw the curve as a parabola.
-Do not move `W` away from `(3|2)`.
-Do not write `r'(3)=0`; the key condition here is the second derivative.
-Do not add arrows unless they are coordinate-axis arrowheads.
+- Keine nachgestellten Kommas an ganzen Achsenwerten.
+- Keine Änderung von Funktion, Wendepunkt oder Krümmungswechsel.
+- Keine technischen Metadaten, Logos oder Wasserzeichen.
 ```
 
 ## Review-Notiz
