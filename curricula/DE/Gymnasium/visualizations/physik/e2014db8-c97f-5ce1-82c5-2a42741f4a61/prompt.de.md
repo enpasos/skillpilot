@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e2014db8-c97f-5ce1-82c5-2a42741f4a61/e2014db8-c97f-5ce1-82c5-2a42741f4a61.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,28 +31,13 @@ Titel: Exoplanetensuche und Habitabilitaet quellenkritisch beurteilen
 Beschreibung: Die lernende Person kann Methoden der Exoplanetensuche vergleichen, Lebensbedingungen mit der Erde abgleichen und digitale Quellen zu Habitabilitaet quellenkritisch auswerten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Correct the existing German educational infographic while keeping its useful sections for transit, radial velocity, direct imaging, habitable zone, and source criticism.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Exoplaneten kritisch pruefen`.
-- Show three clearly separated method cards:
-  `Transit`: planet passes in front of star; the light curve has one small dip during the transit.
-  `Radialgeschwindigkeit`: star wobbles around a barycenter; spectrum alternates `rot/blau`.
-  `Direktbild`: star light is blocked by a coronagraph mask, faint planet appears beside it.
-- Add a `habitable Zone` ring around a star with a planet inside it, plus a caution tag `nicht automatisch Leben`.
-- Add a source-check card with `Quelle`, `Messfehler`, `Bestaetigung`.
-- Arrows may only show measurement workflow from method to data card, not physical cause in a wrong direction.
-- Visible learner text must be limited to the title and the labels listed above.
+In the transit panel, label the horizontal axis `Zeit` and the vertical axis `relative Helligkeit`. Show a single physically plausible shallow dip during the transit.
 
-Vermeiden:
+In the radial-velocity spectrum, wavelength must increase from left to right. Label the short-wavelength side on the LEFT `blau` and the long-wavelength side on the RIGHT `rot`. Show `Blauverschiebung` as a line shift to the left and `Rotverschiebung` as a line shift to the right. Never reverse these labels.
 
-- Do not show a transit when the planet is beside the star instead of in front of it.
-- Do not draw a light curve that gets brighter during transit.
-- Do not imply that a planet in the habitable zone definitely has life.
-- Do not reverse redshift and blueshift in the radial-velocity method.
-- Do not show the planet orbiting Earth.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Keep the conclusions cautious: a habitable zone means liquid water may be possible under suitable conditions, not proof of life. Keep all German umlauts correct. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

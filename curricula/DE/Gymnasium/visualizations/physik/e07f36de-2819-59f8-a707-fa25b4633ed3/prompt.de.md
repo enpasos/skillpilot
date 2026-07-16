@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `e07f36de-2819-59f8-a707-fa25b4633ed3.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e07f36de-2819-59f8-a707-fa25b4633ed3/e07f36de-2819-59f8-a707-fa25b4633ed3.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,26 +31,11 @@ Titel: Parallaxe, Dopplereffekt und Sternspektren auswerten
 Beschreibung: Die lernende Person kann Sternentfernungen mit trigonometrischer Parallaxe bestimmen, Geschwindigkeiten abschaetzen und Spektralklassen sowie Dopplerverschiebungen fachlich auswerten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a fresh, geometrically exact German astronomy infographic titled `Parallaxe, Dopplereffekt und Sternspektren` with three clean panels.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Sternmessungen auswerten`.
-- Use three clearly separated panels:
-  1. `Parallaxe`: show `Erde Januar` and `Erde Juli` on opposite sides of the Sun, with two sight lines to one nearby `Stern` against fixed `Hintergrundsterne`. Label the angle `p`.
-  2. `Doppler`: show two spectrum strips with the same dark absorption-line pattern. `Stern entfernt sich` must have lines shifted toward `rot`; `Stern naehert sich` must have lines shifted toward `blau`.
-  3. `Spektralklasse`: show a temperature colour strip `O B A F G K M` ordered from `heiss/blau` on the left to `kuehl/rot` on the right.
-- Sight lines must not have arrowheads. If velocity arrows appear, they must point from the star toward/away from the observer consistently with the red/blue shift labels.
-- Visible learner text must be limited to the title and the labels listed above.
+In the parallax panel, use this strict construction. Place `Erde Januar` at the top left, `Sonne` directly below it at the midpoint, and `Erde Juli` directly below the Sun. Draw a single vertical double-headed dimension arrow all the way from the January Earth to the July Earth and label that full arrow `2 AE`. Separately draw a shorter bracket only from the January Earth to the Sun and label it `1 AE`. Do not place `2 AE` beside only half of the baseline. Place one nearby `Stern` to the right. Draw sight lines from both Earth positions to that same star and a dashed centre line from the Sun to it. At the star, show the full angle between both Earth sight lines as `2p`, and one half-angle between the dashed centre line and one sight line as `p`. Add exactly `d(pc) = 1 / p(arcsec)`.
 
-Vermeiden:
-
-- Do not reverse redshift and blueshift.
-- Do not make blue longer-wavelength than red.
-- Do not draw observation lines from the star back to Earth as physical light arrows.
-- Do not place the nearby star among the background stars so that the parallax angle is unreadable.
-- Do not invent exact distances or velocities.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+In the Doppler panel, wavelength increases left to right from `blau` to `rot`; recession shifts absorption lines right, approach shifts them left. In the stellar-spectrum panel write `heiß: Maximum bei kürzerer Wellenlänge` and `kühl: Maximum bei längerer Wellenlänge` exactly. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz

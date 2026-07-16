@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Physik; dieser Kontext dient nur der Stil- und Anspruchswahl und soll nicht als Bildtext erscheinen.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -27,46 +27,16 @@ Rahmen:
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
 
-Titel: Erhaltung der mechanischen Energie tiefer verstehen (LK)
+Titel: Erhaltung der mechanischen Energie tiefer verstehen
 Beschreibung: Die lernende Person kann die Energieerhaltung aus den Newtonschen Axiomen herleiten und die Voraussetzungen dieser Herleitung benennen. Ausgangspunkt ist die Grundgleichung der Mechanik, die mit der Geschwindigkeit skalar multipliziert wird. Dabei ist für die kinetische Energie eine konstante Masse vorausgesetzt. Für konservative Kräfte wird die Kraft als Gradient eines Potenzials aufgefasst, sodass sich der entsprechende Term als Zeitableitung der potenziellen Energie schreiben lässt. Auf diese Weise gelangt die lernende Person zur Erhaltung der mechanischen Energie.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Correct the existing advanced German mechanics infographic while preserving its valid energy-conservation derivation.
 
-Show the derivation idea for conservation of mechanical energy from Newton's equation.
+Visible title: `Erhaltung der mechanischen Energie`.
+Show a mass moving in a conservative potential, with `F = −dE_pot/dx`, `m a = F`, `dE_kin/dt = m v a`, and the resulting `d(E_kin + E_pot)/dt = 0`. Make clear that this conclusion applies when only conservative forces do work.
 
-Title: `Mechanische Energie herleiten`
-
-Use a formula ladder, not a motion scene.
-
-Formula ladder:
-- `m * a = F_cons`
-- `m * a · v = F_cons · v`
-- `d/dt (1/2 * m * v^2) = F_cons · v`
-- `F_cons = - grad E_pot`
-- `F_cons · v = - dE_pot/dt`
-- `d/dt (E_kin + E_pot) = 0`
-- `E_mech = E_kin + E_pot = konstant`
-
-Assumptions box:
-- `konstante Masse`
-- `Inertialsystem`
-- `nur konservative Kraefte`
-
-Visual style:
-- clean academic blackboard or worksheet
-- use downward step connectors only between consecutive formula lines
-- no physical arrows and no object scene
-
-Vermeiden:
-
-Do not draw force arrows.
-Do not write `F_cons = + grad E_pot`; the minus sign is required.
-Do not omit `konstante Masse`.
-Do not claim the result holds with friction or non-conservative forces.
-Do not confuse `E_kin` and `E_pot`.
-Do not write `d/dt(E_kin + E_pot) = E_mech`.
-Do not write audience or school labels such as `Gymnasium`, `Schule`, or `Klasse`.
+Use the exact spellings `Kräfte`, `konservative Kräfte`, and `mechanische Energie`. Never write `Kraefte`. Keep signs and derivatives unchanged and mathematically correct. Do not include technical identifiers, filenames, brands, platform names, school labels, watermarks, or extra derivations.
 ```
 
 ## Review-Notiz

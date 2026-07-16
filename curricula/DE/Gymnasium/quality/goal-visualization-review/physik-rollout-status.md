@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-05T23:59:04.324Z
+Generated: 2026-07-16T18:05:48.481Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -18,11 +18,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
 | Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 425 |
-| Coverage | 99.5% |
+| Ziele mit primaerem Visualisierungslink | 407 |
+| Coverage | 95.3% |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 73 |
-| Offene Provider-Deferred-Ziele | 2 |
+| Review-Ledger-Dateien | 74 |
+| Offene Provider-Deferred-Ziele | 20 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -33,8 +33,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 136 |
-| `pilot` | 289 |
+| `accepted` | 82 |
+| `pilot` | 325 |
 
 ## Ledger Decisions
 
@@ -42,6 +42,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | `accepted_pilot` | 280 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
+| `accepted_pilot_after_fresh_ai_review` | 275 |
+| `accepted_pilot_after_fresh_ai_review_correction` | 132 |
 | `accepted_pilot_after_provider_limitation_revisit` | 3 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
@@ -50,16 +52,16 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 9 |
 | `blocked_provider_quota` | 1 |
-| `deferred_provider_limitation` | 8 |
+| `deferred_provider_limitation` | 26 |
 | `provider_temporary_failure_retried` | 1 |
 | `rejected_after_user_review_replaced` | 8 |
-| `rejected_regenerated` | 121 |
+| `rejected_regenerated` | 227 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-073.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-074.md` |
 | Latest ledger status | `completed` |
 | Resume file | `tmp/goal-visualization-physik-batch-073.resume.txt` |
 | Resume file exists | no |
@@ -72,7 +74,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 2 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 20 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -80,8 +82,26 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| 074 | `8fbae050-c5c9-52b6-9983-2c366e9c8ade` | Aktive und saltatorische Signalleitung physikalisch erklaeren | `deferred_provider_limitation` |
+| 074 | `9678afc1-44ca-54fb-b280-29336d45a928` | Aussenohr als Frequenzfilter und Richtungshoeren deuten | `deferred_provider_limitation` |
+| 074 | `ec7a0a68-730b-5c94-ac72-a937508f8303` | Bahn- und Winkelgeschwindigkeit | `deferred_provider_limitation` |
+| 074 | `e19fccd7-6a35-5c9e-86e1-dcca76481e9c` | Elektrische Dipolfelder mit dem EKG verknuepfen | `deferred_provider_limitation` |
+| 074 | `6e79ef4a-2666-5f7a-885c-b175954506f8` | Entropie E05: Einheiten und Bedeutung von S | `deferred_provider_limitation` |
+| 074 | `b1ad9493-acca-5366-9ecd-4b7bf7edaf4a` | Geiger-Mueller-Zaehler funktional erklaeren | `deferred_provider_limitation` |
+| 074 | `f67550ac-df22-5a3e-8172-f04642efca64` | HR-Diagramm quantitativ für Sternentwicklung nutzen | `deferred_provider_limitation` |
+| 074 | `9dba2826-b179-59f0-8d91-5916079e5abe` | Huygens'sches Prinzip und Elementarwellen | `deferred_provider_limitation` |
+| 074 | `1a037489-3c95-540b-8cae-0acd360358ee` | Induktion durch Änderung des magnetischen Flusses | `deferred_provider_limitation` |
+| 074 | `50877233-7abf-54df-b347-6d3224678fc9` | Kernspaltung und Kernfusion qualitativ beschreiben | `deferred_provider_limitation` |
+| 074 | `a6e48b88-51ed-5942-bdb8-8d2192652e0d` | Ladungsphänomene und Reibungselektrizität | `deferred_provider_limitation` |
+| 074 | `0f6b798b-594e-5480-8c5f-95e2486a4d85` | Magnetische Felder und Feldlinienbilder | `deferred_provider_limitation` |
+| 074 | `7df923a0-6470-595e-8cea-53126fad9506` | Materiekreislauf und Elemententstehung in Sternen deuten | `deferred_provider_limitation` |
+| 074 | `71b51afd-c71b-506f-8128-d6de36b509d1` | Optische Risiken und Lasersicherheit beurteilen | `deferred_provider_limitation` |
+| 074 | `db47ac91-7bb0-5ba3-b39d-e2d6fc98396e` | Ruhepotential durch Ladungs- und Konzentrationsunterschiede modellieren | `deferred_provider_limitation` |
+| 074 | `f06c581a-7157-584e-a692-99bcd613cff9` | Schallinterferenz und Frequenzspektren analysieren | `deferred_provider_limitation` |
 | 073 | `0dd1e39c-8557-5a4e-b467-caae964fff67` | Solarmodule in Schaltungen experimentell untersuchen | `deferred_provider_limitation` |
+| 074 | `4a7cbe83-b694-57d3-85ce-1eeca418daaf` | Spektrum elektromagnetischer Wellen | `deferred_provider_limitation` |
 | 073 | `d36727cc-ce42-51a3-9425-41afb0b9acdd` | Transistor und einfache Schaltungen | `deferred_provider_limitation` |
+| 074 | `a12fddce-0215-58d9-bd91-21be8a960d25` | Zerfallsgesetze anwenden | `deferred_provider_limitation` |
 
 ### Open Provider Quota
 

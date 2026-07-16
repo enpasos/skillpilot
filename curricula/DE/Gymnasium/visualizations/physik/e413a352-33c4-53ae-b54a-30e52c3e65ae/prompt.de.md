@@ -9,7 +9,7 @@
 ## Generator
 
 - Provider: Google Gemini / Nano Banana Pro
-- Status: accepted
+- Status: pilot
 - Quellbild: `e413a352-33c4-53ae-b54a-30e52c3e65ae.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/e413a352-33c4-53ae-b54a-30e52c3e65ae/e413a352-33c4-53ae-b54a-30e52c3e65ae.jpg`
 
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,28 +31,15 @@ Titel: Frequenzabhaengige Schaltungen und Filter untersuchen
 Beschreibung: Die lernende Person kann das frequenzabhaengige Verhalten von Hochpass, Tiefpass, Bandpass oder Bandfilter experimentell oder rechnerisch untersuchen und graphisch darstellen.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Create a fresh German educational infographic titled `Frequenzabhängige Schaltungen und Filter` with exactly three equal vertical columns and no other panels.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Frequenzfilter untersuchen`.
-- Show a simple experiment chain from left to right: `Generator` -> `Filter` -> `Oszilloskop`. All chain arrows, if drawn, must point left to right.
-- Show one graph with horizontal axis `f` and vertical axis `A`.
-- In the graph, draw exactly three labelled response curves:
-  - `Tiefpass`: high at low `f`, then decreasing after a cutoff.
-  - `Hochpass`: low at low `f`, then increasing toward a plateau.
-  - `Bandpass`: low at low and high `f`, with one clear middle peak.
-- Mark one vertical dashed line labelled `f_g` for a cutoff frequency.
-- Visible learner text must be limited to the title and the labels listed above.
+Column 1 is `Tiefpass`: a correct RC low-pass circuit and one response curve high at low frequency and falling after a marked `f_g`.
 
-Vermeiden:
+Column 2 is `Hochpass`: a correct RC high-pass circuit and one response curve low at low frequency, rising around `f_g`, and high at high frequency.
 
-- Do not use time `t` as the graph axis; the horizontal axis must be frequency `f`.
-- Do not reverse Hochpass and Tiefpass curves.
-- Do not draw oscillating time signals as the main graph.
-- Do not draw more than three filter curves.
-- Do not draw arrows from the oscilloscope back to the generator.
-- Do not make the image a text-only poster.
-- Do not add internal instructions or production guidance.
+Column 3 is `Bandpass`: a simple combined filter block and one bell-shaped response curve. Under the curve, place three ordered marks from left to right: `f_u`, `f₀`, `f_o`. The curve peaks exactly at `f₀`. Write exactly `f_u < f₀ < f_o` and exactly `Bandbreite Δf = f_o − f_u`. Use `Amplitude` vertically and `Frequenz f` horizontally.
+
+Count the columns before finishing: one Tiefpass, one Hochpass, one Bandpass, total three. Never duplicate any column. Do not include technical identifiers, filenames, brands, platform names, school labels, or watermarks.
 ```
 
 ## Review-Notiz
