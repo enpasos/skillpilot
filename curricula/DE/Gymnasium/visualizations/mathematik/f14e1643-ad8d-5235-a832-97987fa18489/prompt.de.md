@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: Google Gemini / Nano Banana Pro
 - Status: pilot
 - Quellbild: `f14e1643-ad8d-5235-a832-97987fa18489.jpg`
 - Public Asset: `/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg`
@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,27 +31,9 @@ Titel: Null- und Alternativhypothesen formulieren
 Beschreibung: Die lernende Person kann zu Anteilsfragestellungen eine Nullhypothese und eine passende rechts-, links- oder zweiseitige Alternativhypothese für einen binomialen Signifikanztest formulieren und den Parameter p identifizieren.
 
 Zusatzanweisung:
-Additional mathematical constraints for this batch:
+Pflichtinhalt: Behalte die übersichtliche Darstellung der drei Hypothesentest-Arten und ihre korrekten Formeln. Verwende für jeden Kontext eine passende x-Achsenbeschriftung: beim rechtsseitigen Defekttest „X = Anzahl Defekte“, beim linksseitigen Zustimmungstest „X = Anzahl Zustimmungen“, beim zweiseitigen Würfeltest „X = Anzahl Sechsen“. Ablehnungsbereiche, Pfeile und Hypothesen müssen zur jeweiligen Testart passen.
 
-- Do not include technical IDs in the image.
-- Keep examples small, consistent, and readable.
-- For additional continuous distributions, show only one clear example such as a uniform distribution on `[0,10]` or an exponential waiting-time density. Emphasize that probabilities are areas under a density curve, not heights.
-- For hypothesis tests, use the standard logic:
-  - formulate `H0` as the baseline assumption
-  - formulate `H1` as the alternative to be supported by the data
-  - choose a test variable before observing data
-  - define a rejection region for `H0`
-  - compare the observed test statistic with the rejection region
-  - make a decision in context
-- Safe binomial test example: quality-control check with `n=20` items and `X = number of defective items`.
-- One-sided right-tail example: `H0: p <= 0.10`, `H1: p > 0.10`. Large values of `X` speak against `H0`; the rejection region is on the right.
-- Avoid exact numeric critical values unless they are internally consistent. It is acceptable to write a schematic rejection region such as `X >= k`.
-- If alpha is shown, label it as the probability of rejecting `H0` although `H0` is true: type I error.
-- If beta is shown, label it as the probability of not rejecting `H0` although `H1` is true: type II error.
-- Do not draw alpha and beta as the same area under the same distribution. Use two curves or clearly separate true states if both are shown.
-- A test statistic/test variable is a rule such as `X = number of successes/defects`, not the final decision itself.
-- Avoid saying that a non-rejection "proves H0"; use "H0 nicht verwerfen" or "Daten reichen nicht gegen H0".
-- Avoid using normal-density diagrams for binomial tests unless the approximation is explicitly stated.
+Vermeiden: dieselbe Achsenbeschriftung in allen drei Feldern, vertauschte Ablehnungsseiten, zusätzliche Formeln, Dezimalpunkte oder unpassende Sachkontexte.
 ```
 
 ## Review-Notiz

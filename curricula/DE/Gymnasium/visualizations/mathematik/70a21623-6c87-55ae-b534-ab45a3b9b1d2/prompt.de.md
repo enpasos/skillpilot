@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,24 +32,18 @@ Beschreibung: Die lernende Person kann Bisektionsverfahren, Newton-Verfahren und
 
 Zusatzanweisung:
 Pflichtinhalt:
-
-- Show three method lanes comparing convergence toward `sqrt(2)`:
-  - `Bisektion`: intervals halve steadily;
-  - `Regula falsi`: secant steps move toward the root;
-  - `Newton`: tangent steps approach quickly when the start is good.
-- Use a small table with columns `Voraussetzung`, `Schritt`, `Tempo`, `Risiko`.
-- Keep entries short:
-  - Bisektion: `Vorzeichenwechsel`, `halbiert`, `sicher, langsam`, `robust`;
-  - Regula falsi: `Vorzeichenwechsel`, `Sekante`, `mittel`, `einseitig moeglich`;
-  - Newton: `Startwert + Ableitung`, `Tangente`, `oft schnell`, `Startwert kritisch`.
-- Avoid exact long decimal sequences; the image is about comparison.
+- Erzeuge eine neue, tabellenbasierte Vergleichsinfografik für `f(x)=x²−2` und die Nullstelle `√2`.
+- Bisektion mit Startintervall `[1;2]`: `[1;2] → [1;1,5] → [1,25;1,5]`; Voraussetzung Vorzeichenwechsel; robust, aber linear und eher langsam.
+- Regula falsi: erste Näherungen `1,333…` und `1,4`; Voraussetzung Vorzeichenwechsel; meist schneller, kann einseitig stagnieren.
+- Newton mit `x₀=1,5`: `x₁≈1,4167`, `x₂≈1,4142`; benötigt Ableitung und geeigneten Startwert; nahe der Nullstelle sehr schnell.
+- Vergleiche Rechenaufwand, Voraussetzung, Tempo und Risiko in klaren Zeilen.
 
 Vermeiden:
+- Keine komplexen Iterationsgraphen mit mehrfach oder falsch beschrifteten Punkten.
+- Keine Gleichsetzung von Tempo und garantierter Sicherheit.
+- Keine Dezimalpunkte.
 
-- Do not claim Newton is always fastest or always safe.
-- Do not claim bisection needs derivatives.
-- Do not claim Regula falsi loses the enclosing sign-change interval.
-- Do not include technical IDs, filenames, watermarks, or brand names.
+Korrekturhinweis: Beschreibe Regula falsi als `meist schneller als Bisektion, aber weiterhin typischerweise linear`. Schreibe niemals `schneller als linear`.
 ```
 
 ## Review-Notiz

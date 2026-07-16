@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -31,26 +31,16 @@ Titel: Modell vollständig notieren
 Beschreibung: Die lernende Person kann das Modell vollständig und verständlich notieren (Definitionen, Variablen, Einheiten, Bedingungen), sodass es bearbeitbar ist.
 
 Zusatzanweisung:
-Required mathematical layout:
-- Show a clean "Modellkarte" for a simple water tank filling situation.
-- The model card must contain exactly these core parts:
-  - "Variable: t = Zeit in min"
-  - "Funktion: h(t) = Wasserhöhe in cm"
-  - "Einheit: cm"
-  - "Bedingung: 0 ≤ h(t) ≤ 100"
-- Add a visual checklist with "Definitionen", "Einheiten", "Bedingungen".
+Pflichtinhalt:
+- Überarbeite das Referenzbild und bewahre Wassertank, Modellkarte und Vollständigkeits-Check.
+- Notiere ein wirklich bearbeitbares vollständiges Modell: `t = Zeit in min`, `h(t) = Wasserhöhe in cm`, `h(t)=20+2t`, `0≤t≤40`.
+- Ergänze den daraus folgenden Wertebereich `20≤h(t)≤100`.
+- Die Checkliste soll Definitionen, Einheiten, Gleichung und Bedingungen enthalten.
 
-Visual guidance:
-- Use a water tank icon next to a clear model card.
-- Keep the focus on complete notation, not on solving.
-- Use a clean plain background and large readable labels.
-- Use correct German spelling with umlauts where needed.
-
-Avoid:
-- Do not add extra formulas, extra variables, or numerical calculations.
-- Do not use English text.
-- Do not include decorative background equations or tiny pseudo-text.
-- Do not write "Wasserhoehe"; write "Wasserhöhe".
+Vermeiden:
+- Keine reine Benennung von h(t) ohne funktionale Gleichung.
+- Keine widersprüchlichen Definitions- oder Wertebereiche.
+- Keine zusätzliche Funktion.
 ```
 
 ## Review-Notiz

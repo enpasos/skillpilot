@@ -19,10 +19,10 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
 - Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
 - Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
 - Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
@@ -32,24 +32,15 @@ Beschreibung: Die lernende Person kann die Wurzeldefinition auf Kubikwurzeln anw
 
 Zusatzanweisung:
 Pflichtinhalt:
-- Thema: Kubikwurzeln mit der Wurzeldefinition bestimmen.
-- Zeige die Definition:
-  cubert(a) = b bedeutet b^3 = a.
-- Beispiele:
-  cubert(27) = 3, denn 3^3 = 27.
-  cubert(-8) = -2, denn (-2)^3 = -8.
-  cubert(50) liegt zwischen 3 und 4, denn 3^3=27 und 4^3=64.
-- Naeherung:
-  cubert(50) ungefaehr 3.7, denn 3.7^3 ungefaehr 50.7.
-- Zeige eine kleine Zahlenlinie oder Wuerfelgroessen-Visualisierung fuer 27, 50, 64.
-- Deutung:
-  Gesucht ist die Zahl, deren dritte Potenz den Radikanden ergibt.
+- Überarbeite das Referenzbild und bewahre Definition, positives Beispiel, negatives Beispiel und Näherung.
+- Schreibe beim negativen Beispiel klar: `∛(−8)=−2, denn (−2)³=−8. Kubikwurzeln negativer Zahlen sind reell definiert.`
+- Beschrifte den Zahlenstrahl korrekt mit `3 = ∛27`, `∛50` zwischen 3 und 4 und `4 = ∛64`.
+- Nutze `∛50 ≈ 3,7` mit Dezimalkomma.
 
 Vermeiden:
-- Kubikwurzel nicht mit Quadratwurzel verwechseln.
-- cubert(-8) nicht als nicht definiert oder +2 angeben; korrekt ist -2.
-- cubert(50) nicht exakt als 3.7 behaupten, sondern nur naeherungsweise.
-- Keine technischen IDs, keine Produktnamen, keine Wasserzeichen.
+- Keine doppelte Negation wie `NICHT nicht definiert`.
+- Keine verstümmelten Endpunktbeschriftungen.
+- Keine Verwechslung mit Quadratwurzeln.
 ```
 
 ## Review-Notiz
