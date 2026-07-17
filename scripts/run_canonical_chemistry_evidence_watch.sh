@@ -12,6 +12,7 @@ if [[ ! -f "$BASELINE_PATH" ]]; then
   exit 2
 fi
 
+python3 scripts/canonical_chemistry_evidence_watch.py self-test
 python3 scripts/canonical_chemistry_evidence_watch.py render-status
 python3 scripts/canonical_chemistry_evidence_watch.py render-delta
 python3 scripts/canonical_chemistry_evidence_watch.py check-delta

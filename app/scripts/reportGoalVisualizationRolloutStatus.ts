@@ -1,7 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
-import { dirname, relative, resolve, sep } from 'node:path'
+import { basename, dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, LearningLandscape } from '../src/landscapeTypes'
+import type { LearningLandscape } from '../src/landscapeTypes'
+import { isOrdinaryAtomicGoalForVisualization } from '../../scripts/goal_visualization_scope.mjs'
 
 type ReviewDecision =
   | 'accepted_pilot'
@@ -19,6 +20,7 @@ type ReviewDecision =
 
 interface Args {
   checkMode: boolean
+  requireCoverage: boolean
   subject: string
   landscapePath: string
   reviewDirPath: string
@@ -50,6 +52,7 @@ interface ReviewDecisionRow {
 interface ReviewLedger {
   batch: string
   path: string
+  reviewDate: string
   status: string | null
   decisions: ReviewDecisionRow[]
 }
@@ -87,6 +90,8 @@ interface GoalVisualizationRolloutReport {
     atomicGoalsInScope: number
     goalsWithPrimaryVisualization: number
     coveragePercent: number
+    goalsAccountedForByAssetOrDeferred: number
+    accountedCoveragePercent: number
     releaseApprovedVisualizationCount: number
     reviewStatusCounts: Record<string, number>
     linkedVisualizationReviewStatuses: Record<string, number>
@@ -96,6 +101,7 @@ interface GoalVisualizationRolloutReport {
     openProviderQuotaGoals: number
     blockedProviderQuotaLedgers: number
     regularUnlinkedGoals: number
+    coverageGatePassed: boolean
     linkedWithoutAcceptedReview: number
     acceptedReviewWithoutLink: number
   }
@@ -103,11 +109,7 @@ interface GoalVisualizationRolloutReport {
     latestLedger: string | null
     latestLedgerStatus: string | null
     resumeFile: string
-    resumeFileExists: boolean
-    resumeGoalIds: string[]
     promptAppendDir: string
-    promptAppendDirExists: boolean
-    promptAppendFiles: number
   }
   qualityQueues: {
     openProviderDeferred: ReviewDecisionRow[]
@@ -198,6 +200,7 @@ function parseArgs(argv: string[]): Args {
   const defaults = getSubjectDefaults(subject)
   const args: Args = {
     checkMode: false,
+    requireCoverage: false,
     subject,
     landscapePath: defaults.landscapePath,
     reviewDirPath: defaultReviewDirPath,
@@ -210,6 +213,10 @@ function parseArgs(argv: string[]): Args {
   argv.forEach((arg) => {
     if (arg === '--check') {
       args.checkMode = true
+      return
+    }
+    if (arg === '--require-coverage') {
+      args.requireCoverage = true
       return
     }
     if (arg.startsWith('--subject=')) {
@@ -260,22 +267,7 @@ function sortedRecord(record: Record<string, number>): Record<string, number> {
   return Object.fromEntries(Object.entries(record).sort(([left], [right]) => left.localeCompare(right)))
 }
 
-function hasChildren(goal: LearningGoal): boolean {
-  return Array.isArray(goal.contains) && goal.contains.length > 0
-}
-
-function isAtomicVisualizationGoal(goal: LearningGoal): boolean {
-  const tags = goal.tags ?? []
-  return !hasChildren(goal)
-    && goal.nodeKind !== 'memory'
-    && goal.nodeKind !== 'exam'
-    && goal.nodeKind !== 'tutor'
-    && goal.examData === undefined
-    && !tags.includes('memorization')
-    && !tags.some((tag) => tag.startsWith('srs-deck:'))
-}
-
-function primaryVisualizationLink(goal: LearningGoal, subject: string) {
+function primaryVisualizationLink(goal: LearningLandscape['goals'][number], subject: string) {
   return (goal.resourceLinks ?? []).find((link) => {
     return link.type === 'goal-visualization'
       && link.resourceType === 'image'
@@ -289,26 +281,37 @@ function parseLedgerStatus(text: string): string | null {
   return match?.[1] ?? null
 }
 
+function parseLedgerReviewDate(text: string, fileName: string): string {
+  const metadataDate = text.match(/^(?:Review date|Date):\s*(\d{4}-\d{2}-\d{2})\s*$/imu)?.[1]
+  return metadataDate ?? fileName.match(/(\d{4}-\d{2}-\d{2})/u)?.[1] ?? ''
+}
+
 function parseReviewLedger(path: string, subject: string): ReviewLedger {
   const text = readFileSync(resolveRepoPath(path), 'utf8')
-  const batch = path.match(new RegExp(`${escapeRegExp(subject)}-batch-(\\d+)\\.md$`))?.[1] ?? path
+  const fileName = basename(path)
+  const batch = fileName.match(new RegExp(`${escapeRegExp(subject)}-batch-(\\d+)\\.md$`))?.[1]
+    ?? fileName.replace(/\.md$/u, '')
   const decisions: ReviewDecisionRow[] = []
 
   text.split(/\r?\n/).forEach((line) => {
-    const match = line.match(/^\|\s*`([0-9a-f-]+)`\s*\|\s*([^|]+?)\s*\|\s*`([^`]+)`\s*\|\s*(.*?)\s*\|$/i)
-    if (!match) return
+    const identityMatch = line.match(/^\|\s*`([0-9a-f-]+)`\s*\|\s*([^|]+?)\s*\|/i)
+    if (!identityMatch) return
+    const codeCells = Array.from(line.matchAll(/`([^`]+)`/g), (match) => match[1])
+    const decision = codeCells.slice(1).find(isReviewDecision)
+    if (!decision) return
     decisions.push({
       batch,
-      goalId: match[1],
-      title: match[2].trim(),
-      decision: match[3].trim(),
-      notes: match[4].trim(),
+      goalId: identityMatch[1],
+      title: identityMatch[2].trim(),
+      decision,
+      notes: line.split('|').at(-2)?.trim() ?? '',
     })
   })
 
   return {
     batch,
     path,
+    reviewDate: parseLedgerReviewDate(text, fileName),
     status: parseLedgerStatus(text),
     decisions,
   }
@@ -317,12 +320,16 @@ function parseReviewLedger(path: string, subject: string): ReviewLedger {
 function loadReviewLedgers(reviewDirPath: string, subject: string): ReviewLedger[] {
   const absoluteReviewDirPath = resolveRepoPath(reviewDirPath)
   if (!existsSync(absoluteReviewDirPath)) return []
-  const ledgerPattern = new RegExp(`^${escapeRegExp(subject)}-batch-\\d+\\.md$`)
+  const ledgerPattern = new RegExp(`^${escapeRegExp(subject)}-.+\\.md$`)
 
   return readdirSync(absoluteReviewDirPath)
-    .filter((name) => ledgerPattern.test(name))
-    .sort()
+    .filter((name) => ledgerPattern.test(name) && name !== `${subject}-rollout-status.md`)
     .map((name) => parseReviewLedger(`${reviewDirPath}/${name}`, subject))
+    .filter((ledger) => ledger.decisions.length > 0)
+    .sort((left, right) => (
+      left.reviewDate.localeCompare(right.reviewDate)
+      || basename(left.path).localeCompare(basename(right.path), 'en', { numeric: true })
+    ))
 }
 
 function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
@@ -330,7 +337,14 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
   ledgers.forEach((ledger) => {
     const latestByGoalInLedger = new Map<string, ReviewDecisionRow>()
     ledger.decisions.forEach((decision) => {
+      // These rows explicitly document a superseded asset; the replacement's
+      // own accepted row is the current evidence and may live in another
+      // ledger on the same review date.
+      if (/^rejected.*(?:then_)?replaced$/u.test(decision.decision)) return
       const previousDecision = latestByGoalInLedger.get(decision.goalId)
+      // Correction ledgers commonly list the accepted final asset first and
+      // rejected intermediate candidates afterwards. Keep the accepted final
+      // disposition inside one ledger regardless of table row order.
       if (!previousDecision || !isAcceptedDecision(previousDecision.decision) || isAcceptedDecision(decision.decision)) {
         latestByGoalInLedger.set(decision.goalId, decision)
       }
@@ -342,23 +356,12 @@ function latestDecisionRows(ledgers: ReviewLedger[]): ReviewDecisionRow[] {
   return Array.from(latestByGoal.values()).sort((left, right) => left.title.localeCompare(right.title))
 }
 
-function isAcceptedDecision(decision: string | null | undefined): boolean {
-  return decision?.startsWith('accepted_pilot') === true
+export function isReviewDecision(decision: string | null | undefined): boolean {
+  return /^(?:accepted(?:_|$)|rejected(?:_|$)|deferred_provider_limitation$|blocked_provider_quota$|not_(?:generated|requested|attempted)|correction_open_|provider_temporary_)/u.test(decision ?? '')
 }
 
-function readResumeGoalIds(path: string): string[] {
-  const absolutePath = resolveRepoPath(path)
-  if (!existsSync(absolutePath)) return []
-  return readFileSync(absolutePath, 'utf8')
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0 && !line.startsWith('#'))
-}
-
-function countPromptAppendFiles(path: string): number {
-  const absolutePath = resolveRepoPath(path)
-  if (!existsSync(absolutePath)) return 0
-  return readdirSync(absolutePath).filter((name) => name.endsWith('.md')).length
+export function isAcceptedDecision(decision: string | null | undefined): boolean {
+  return decision?.startsWith('accepted') === true
 }
 
 function percent(count: number, total: number): number {
@@ -367,7 +370,7 @@ function percent(count: number, total: number): number {
 
 function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutReport {
   const landscape = readJson<LearningLandscape>(args.landscapePath)
-  const atomicGoals = landscape.goals.filter(isAtomicVisualizationGoal)
+  const atomicGoals = landscape.goals.filter(isOrdinaryAtomicGoalForVisualization)
   const visualizedGoals: GoalVisualizationRow[] = atomicGoals.flatMap((goal) => {
     const link = primaryVisualizationLink(goal, args.subject)
     if (!link) return []
@@ -387,7 +390,6 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
   const latestDecisionByGoalId = new Map(latestDecisions.map((row) => [row.goalId, row]))
   const reviewStatusCounts = sortedRecord(countBy(visualizedGoals.map((row) => row.reviewStatus)))
   const decisionCounts = sortedRecord(countBy(decisions.map((row) => row.decision)))
-  const openProviderDeferred = latestDecisions.filter((row) => row.decision === 'deferred_provider_limitation')
   const openProviderQuota = latestDecisions.filter((row) => {
     return row.decision === 'blocked_provider_quota'
       || row.decision === 'not_generated_provider_quota'
@@ -396,12 +398,16 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
   const rejectedNotLinked = decisions.filter((row) => row.decision === 'rejected_not_linked')
   const userReviewCorrections = decisions.filter((row) => row.decision === 'accepted_pilot_after_user_review_correction')
   const latestLedger = ledgers.at(-1)
-  const resumeGoalIds = readResumeGoalIds(args.currentResumeFilePath)
-  const promptAppendDirPath = resolveRepoPath(args.currentPromptAppendDirPath)
   const releaseApprovedVisualizationCount = visualizedGoals.filter((row) => {
     return row.reviewStatus === 'released' || row.reviewStatus === 'release_approved'
   }).length
   const linkedGoalIds = new Set(visualizedGoals.map((row) => row.goalId))
+  const atomicGoalIds = new Set(atomicGoals.map((goal) => goal.id))
+  const openProviderDeferred = latestDecisions.filter((row) => {
+    return row.decision === 'deferred_provider_limitation'
+      && atomicGoalIds.has(row.goalId)
+      && !linkedGoalIds.has(row.goalId)
+  })
   const openProviderDeferredGoalIds = new Set(openProviderDeferred.map((row) => row.goalId))
   const regularUnlinkedGoals = atomicGoals.filter((goal) => {
     return !linkedGoalIds.has(goal.id) && !openProviderDeferredGoalIds.has(goal.id)
@@ -416,8 +422,11 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     latestDecision: latestDecisionByGoalId.get(row.goalId)?.decision ?? null,
   }))
   const acceptedReviewWithoutLink = latestDecisions.filter((row) => {
-    return isAcceptedDecision(row.decision) && !linkedGoalIds.has(row.goalId)
+    return isAcceptedDecision(row.decision)
+      && atomicGoalIds.has(row.goalId)
+      && !linkedGoalIds.has(row.goalId)
   })
+  const goalsAccountedForByAssetOrDeferred = linkedGoalIds.size + openProviderDeferredGoalIds.size
 
   return {
     schemaVersion: 1,
@@ -435,6 +444,8 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       atomicGoalsInScope: atomicGoals.length,
       goalsWithPrimaryVisualization: visualizedGoals.length,
       coveragePercent: Number(percent(visualizedGoals.length, atomicGoals.length).toFixed(1)),
+      goalsAccountedForByAssetOrDeferred,
+      accountedCoveragePercent: Number(percent(goalsAccountedForByAssetOrDeferred, atomicGoals.length).toFixed(1)),
       releaseApprovedVisualizationCount,
       reviewStatusCounts,
       linkedVisualizationReviewStatuses: reviewStatusCounts,
@@ -444,6 +455,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       openProviderQuotaGoals: openProviderQuota.length,
       blockedProviderQuotaLedgers: ledgers.filter((ledger) => ledger.status?.includes('blocked_provider_quota')).length,
       regularUnlinkedGoals: regularUnlinkedGoals.length,
+      coverageGatePassed: regularUnlinkedGoals.length === 0,
       linkedWithoutAcceptedReview: linkedWithoutAcceptedReview.length,
       acceptedReviewWithoutLink: acceptedReviewWithoutLink.length,
     },
@@ -451,11 +463,7 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
       latestLedger: latestLedger ? latestLedger.path : null,
       latestLedgerStatus: latestLedger?.status ?? null,
       resumeFile: args.currentResumeFilePath,
-      resumeFileExists: existsSync(resolveRepoPath(args.currentResumeFilePath)),
-      resumeGoalIds,
       promptAppendDir: args.currentPromptAppendDirPath,
-      promptAppendDirExists: existsSync(promptAppendDirPath),
-      promptAppendFiles: countPromptAppendFiles(args.currentPromptAppendDirPath),
     },
     qualityQueues: {
       openProviderDeferred,
@@ -546,7 +554,6 @@ function renderLinkedReviewMismatchRows(rows: LinkedReviewMismatchRow[], maxRows
 function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   const { summary } = report
   const defaults = getSubjectDefaults(report.request.subject)
-  const hasCurrentResumeWork = report.currentBatch.resumeFileExists && report.currentBatch.resumeGoalIds.length > 0
   const lines: string[] = [`# ${defaults.displayName} Goal Visualization Rollout Status`, '']
   pushGeneratedMarkdownNotice(lines, report, defaults)
   lines.push(`Generated: ${report.generatedAt}`)
@@ -562,6 +569,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
       ['Atomare Ziele im Visualisierungs-Scope', summary.atomicGoalsInScope],
       ['Ziele mit primaerem Visualisierungslink', summary.goalsWithPrimaryVisualization],
       ['Coverage', `${summary.coveragePercent.toFixed(1)}%`],
+      ['Durch Asset oder Provider-Deferred dokumentierte Ziele', summary.goalsAccountedForByAssetOrDeferred],
+      ['Dokumentierte Coverage', `${summary.accountedCoveragePercent.toFixed(1)}%`],
+      ['Coverage-Gate', summary.coverageGatePassed ? 'bestanden' : 'nicht bestanden'],
       ['Release-approved Visualisierungen', summary.releaseApprovedVisualizationCount],
       ['Review-Ledger-Dateien', summary.reviewLedgerFiles],
       ['Offene Provider-Deferred-Ziele', summary.openProviderDeferredGoals],
@@ -594,12 +604,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
     [
       ['Latest ledger', report.currentBatch.latestLedger ? `\`${report.currentBatch.latestLedger}\`` : '-'],
       ['Latest ledger status', report.currentBatch.latestLedgerStatus ? `\`${report.currentBatch.latestLedgerStatus}\`` : '-'],
-      ['Resume file', `\`${report.currentBatch.resumeFile}\``],
-      ['Resume file exists', report.currentBatch.resumeFileExists ? 'yes' : 'no'],
-      ['Resume goals', report.currentBatch.resumeGoalIds.length],
-      ['Prompt append dir', `\`${report.currentBatch.promptAppendDir}\``],
-      ['Prompt append dir exists', report.currentBatch.promptAppendDirExists ? 'yes' : 'no'],
-      ['Prompt append files', report.currentBatch.promptAppendFiles],
+      ['Configured resume file', `\`${report.currentBatch.resumeFile}\``],
+      ['Configured prompt append dir', `\`${report.currentBatch.promptAppendDir}\``],
     ],
   ))
   lines.push('')
@@ -607,9 +613,8 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   lines.push('- Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.')
   lines.push('- Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.')
-  if (hasCurrentResumeWork) {
-    lines.push(`- Im aktuellen Resume stehen ${report.currentBatch.resumeGoalIds.length} Ziel(e); der naechste produktive Schritt ist ein spaeterer Resume-Lauf, sobald Provider-Kapazitaet verfuegbar ist.`)
-  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+  lines.push('- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.')
+  if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
     lines.push(`- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur ${summary.openProviderDeferredGoals} Provider-Deferred-Ziel(e).`)
   } else {
     lines.push('- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.')
@@ -637,25 +642,17 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('### Accepted Review Without Link')
   lines.push('')
   lines.push(...renderDecisionRows(report.consistency.acceptedReviewWithoutLink, 30))
-  lines.push(hasCurrentResumeWork ? '## Next Command When Quota Is Available' : '## Next Command')
+  lines.push('## Next Command')
   lines.push('')
   lines.push('```bash')
-  if (hasCurrentResumeWork) {
-    lines.push('npm --prefix app run visualization:generate:nano-banana:batch -- \\')
-    lines.push(`  --file ${report.currentBatch.resumeFile} \\`)
-    lines.push('  --continue-on-error \\')
-    lines.push('  --no-import \\')
-    lines.push(`  --prompt-append-dir=${report.currentBatch.promptAppendDir}`)
-  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+  if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
     lines.push(`npm --prefix app run visualization:plan-batch -- --count 6 --landscape ${report.request.landscapePath} --output tmp/goal-visualization-${report.request.subject}-next-batch.txt --include-deferred`)
   } else {
     lines.push(`npm --prefix app run visualization:plan-batch -- --count 6 --landscape ${report.request.landscapePath} --output tmp/goal-visualization-${report.request.subject}-next-batch.txt`)
   }
   lines.push('```')
   lines.push('')
-  if (hasCurrentResumeWork) {
-    lines.push('After generated candidates exist: inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
-  } else if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
+  if (summary.regularUnlinkedGoals === 0 && summary.openProviderDeferredGoals > 0) {
     lines.push('Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.')
   } else {
     lines.push('After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.')
@@ -669,6 +666,14 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push(`- Prompt append dir: \`${report.request.currentPromptAppendDirPath}\``)
   lines.push('')
   return `${lines.join('\n')}\n`
+}
+
+export function coverageGateFailure(report: {
+  request: { subject: string }
+  summary: { regularUnlinkedGoals: number }
+}): string | null {
+  if (report.summary.regularUnlinkedGoals === 0) return null
+  return `${report.request.subject}: coverage gate failed: ${report.summary.regularUnlinkedGoals} ordinary atomic goal(s) have neither a primary visualization nor a current deferred_provider_limitation decision.`
 }
 
 function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void {
@@ -690,6 +695,8 @@ function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void 
     } else if (readFileSync(markdownPath, 'utf8') !== renderedMarkdown) {
       failures.push(`${args.outputMarkdownPath} is stale. Run: ${regenerateCommand}`)
     }
+    const coverageFailure = args.requireCoverage ? coverageGateFailure(report) : null
+    if (coverageFailure) failures.push(coverageFailure)
     if (failures.length > 0) {
       console.error(failures.join('\n'))
       process.exit(1)
@@ -704,6 +711,11 @@ function writeOrCheck(args: Args, report: GoalVisualizationRolloutReport): void 
   writeFileSync(resolveRepoPath(args.outputMarkdownPath), renderedMarkdown)
   console.log(`Wrote ${repoRelative(resolveRepoPath(args.outputJsonPath))}`)
   console.log(`Wrote ${repoRelative(resolveRepoPath(args.outputMarkdownPath))}`)
+  const coverageFailure = args.requireCoverage ? coverageGateFailure(report) : null
+  if (coverageFailure) {
+    console.error(coverageFailure)
+    process.exit(1)
+  }
 }
 
 function main(): void {
@@ -715,4 +727,7 @@ function main(): void {
   writeOrCheck(args, report)
 }
 
-main()
+const invokedScriptPath = process.argv[1] ? resolve(process.argv[1]) : ''
+if (invokedScriptPath === fileURLToPath(import.meta.url)) {
+  main()
+}

@@ -13,6 +13,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = REPO_ROOT / "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json"
+CANONICAL_CHEMISTRY_PATH = (
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json"
+)
+RAW_HASH_MODE = "raw-bytes-v1"
+CANONICAL_EVIDENCE_HASH_MODE = "canonical-evidence-json-v1"
 
 
 def load_json(path: Path) -> dict:
@@ -26,6 +31,46 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(65536), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def canonical_evidence_payload(data: dict) -> bytes:
+    """Return the canonical Chemistry contract without presentation-only images."""
+    for goal in data.get("goals", []):
+        if not isinstance(goal, dict):
+            continue
+        links = goal.get("resourceLinks")
+        if not isinstance(links, list):
+            continue
+        evidence_links = [
+            link
+            for link in links
+            if not (
+                isinstance(link, dict)
+                and link.get("type") == "goal-visualization"
+            )
+        ]
+        if evidence_links:
+            goal["resourceLinks"] = evidence_links
+        else:
+            goal.pop("resourceLinks", None)
+    return json.dumps(
+        data,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+
+
+def hash_mode(rel_path: str) -> str:
+    if rel_path == CANONICAL_CHEMISTRY_PATH:
+        return CANONICAL_EVIDENCE_HASH_MODE
+    return RAW_HASH_MODE
+
+
+def watched_sha256(rel_path: str, path: Path) -> str:
+    if hash_mode(rel_path) == CANONICAL_EVIDENCE_HASH_MODE:
+        return hashlib.sha256(canonical_evidence_payload(load_json(path))).hexdigest()
+    return sha256(path)
 
 
 def short_hash(value: str | None) -> str:
@@ -76,12 +121,15 @@ def declared_ref_count(target: dict) -> int:
 def current_record(rel_path: str) -> dict[str, str | bool | None]:
     path = REPO_ROOT / rel_path
     exists = path.exists()
-    return {
+    record: dict[str, str | bool | None] = {
         "relativePath": rel_path,
         "exists": exists,
-        "sha256": sha256(path) if exists else None,
+        "sha256": watched_sha256(rel_path, path) if exists else None,
         "lastModifiedUtc": format_mtime_utc(path) if exists else None,
     }
+    if hash_mode(rel_path) != RAW_HASH_MODE:
+        record["hashMode"] = hash_mode(rel_path)
+    return record
 
 
 def display_record(rel_path: str) -> dict[str, str | bool]:
@@ -112,6 +160,8 @@ def diff_records(manifest: dict, baseline: dict) -> tuple[dict, list[str], list[
         current = current_records[rel_path]
         if (
             baseline_record.get("exists") != current.get("exists")
+            or baseline_record.get("hashMode", RAW_HASH_MODE)
+            != current.get("hashMode", RAW_HASH_MODE)
             or baseline_record.get("sha256") != current.get("sha256")
         ):
             changed_paths.append(rel_path)
@@ -130,7 +180,7 @@ def capture_baseline() -> None:
     watched_files = [current_record(rel_path) for rel_path in unique_watch_paths(manifest)]
 
     baseline = {
-        "version": 1,
+        "version": 2,
         "updatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "manifestVersion": manifest.get("version"),
         "manifestUpdatedAt": manifest.get("updatedAt"),
@@ -184,6 +234,7 @@ def render_status() -> str:
     lines.append(f"- Unique watched files: `{len(unique_records)}`")
     lines.append(f"- Existing watched files: `{len(existing_unique_records)}/{len(unique_records)}`")
     lines.append(f"- Missing watched files: `{len(missing_unique_records)}`")
+    lines.append(f"- Canonical Chemistry hash mode: `{CANONICAL_EVIDENCE_HASH_MODE}` (excludes `goal-visualization` presentation metadata)")
     lines.append("")
     lines.append("## Watch kinds")
     lines.append("")
@@ -292,6 +343,7 @@ def render_delta() -> str:
     lines.append("")
     lines.append("- A file-level delta is a maintenance signal, not an automatic rollout reopen.")
     lines.append("- Reopen remains gated by the documented reopen rules in the watch manifest.")
+    lines.append("- The canonical Chemistry hash excludes `goal-visualization` resource links and JSON formatting; those are presentation metadata covered by the visualization QA lane.")
     lines.append("")
     lines.append("## Changed files")
     lines.append("")
@@ -379,11 +431,50 @@ def check_delta() -> None:
         sys.exit(1)
 
 
+def self_test() -> None:
+    base = {
+        "goals": [
+            {
+                "id": "goal-a",
+                "title": "Fachlicher Vertrag",
+                "resourceLinks": [
+                    {"type": "curriculum", "url": "https://example.invalid/source"}
+                ],
+            }
+        ]
+    }
+    with_visualization = json.loads(json.dumps(base))
+    with_visualization["goals"][0]["resourceLinks"].append(
+        {"type": "goal-visualization", "url": "/assets/example.png"}
+    )
+    changed_semantics = json.loads(json.dumps(base))
+    changed_semantics["goals"][0]["title"] = "Geaenderter fachlicher Vertrag"
+    changed_source = json.loads(json.dumps(base))
+    changed_source["goals"][0]["resourceLinks"][0]["url"] = "https://example.invalid/other"
+
+    base_hash = hashlib.sha256(canonical_evidence_payload(base)).hexdigest()
+    visualization_hash = hashlib.sha256(
+        canonical_evidence_payload(with_visualization)
+    ).hexdigest()
+    semantic_hash = hashlib.sha256(
+        canonical_evidence_payload(changed_semantics)
+    ).hexdigest()
+    source_hash = hashlib.sha256(canonical_evidence_payload(changed_source)).hexdigest()
+
+    if base_hash != visualization_hash:
+        raise AssertionError("goal-visualization metadata must not reopen the evidence watch")
+    if base_hash == semantic_hash:
+        raise AssertionError("canonical goal semantics must remain watched")
+    if base_hash == source_hash:
+        raise AssertionError("non-visual source links must remain watched")
+    print("Canonical Chemistry evidence-watch self-test passed.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Render and check the canonical Chemistry evidence watch.")
     parser.add_argument(
         "command",
-        choices=("capture-baseline", "render-status", "render-delta", "check-delta"),
+        choices=("capture-baseline", "render-status", "render-delta", "check-delta", "self-test"),
     )
     args = parser.parse_args()
 
@@ -395,6 +486,8 @@ def main() -> None:
         write_delta()
     elif args.command == "check-delta":
         check_delta()
+    elif args.command == "self-test":
+        self_test()
 
 
 if __name__ == "__main__":

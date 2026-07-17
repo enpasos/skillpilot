@@ -53,6 +53,7 @@ function usage() {
     '  --prompt-append-file <path> Shared extra provider instruction read from a UTF-8 text/Markdown file.',
     '  --prompt-append-dir <path>  Directory with per-goal prompt append files named <goal-id>.md or <goal-id>.txt.',
     '  --reference-image <path>    Shared reference image input forwarded to the provider.',
+    '  --skip-reconstruction-prompt Skip reconstruction-prompt generation for pre-review candidates.',
     '  plus shared single-goal options such as --aspect-ratio, --image-size, --mime-type, --prompt-append.',
   ].join('\n')
 }
@@ -107,6 +108,9 @@ function buildForwardedArgs(args, goal) {
   }
   if (getBooleanArg(args, 'no-import')) {
     forwarded.push('--no-import')
+  }
+  if (getBooleanArg(args, 'skip-reconstruction-prompt')) {
+    forwarded.push('--skip-reconstruction-prompt')
   }
 
   return forwarded

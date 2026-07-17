@@ -1,6 +1,6 @@
 # Canonical Gymnasium Chemistry Evidence Watch Delta
 
-Snapshot: `2026-05-27T16:01:36Z`
+Snapshot: `2026-07-16T22:58:04Z`
 
 This file is generated from:
 
@@ -10,7 +10,7 @@ This file is generated from:
 
 ## Headline
 
-- Baseline snapshot: `2026-05-27T15:59:55Z`
+- Baseline snapshot: `2026-07-16T22:56:58Z`
 - Current watched files: `137`
 - Unchanged watched files: `137`
 - Changed watched files: `0`
@@ -21,6 +21,7 @@ This file is generated from:
 
 - A file-level delta is a maintenance signal, not an automatic rollout reopen.
 - Reopen remains gated by the documented reopen rules in the watch manifest.
+- The canonical Chemistry hash excludes `goal-visualization` resource links and JSON formatting; those are presentation metadata covered by the visualization QA lane.
 
 ## Changed files
 

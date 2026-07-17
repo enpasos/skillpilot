@@ -1,0 +1,36 @@
+# Lernzielvisualisierung: Lebensmittelauswahl chemisch und nachhaltig bewerten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `47582f06-d724-5da9-acc6-16c91ab94f67`
+- Titel: Lebensmittelauswahl chemisch und nachhaltig bewerten
+- Beschreibung: Die lernende Person kann verschiedene Möglichkeiten der Lebensmittelauswahl anhand chemischer Zusammensetzung, Ausgewogenheit, Nachhaltigkeit und Klimabezug vergleichen und dabei wissenschaftliche Erkenntnisse, tradiertes Wissen sowie Ernährungstrends reflektieren.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
+- Quellbild: `47582f06-d724-5da9-acc6-16c91ab94f67.jpg`
+- Public Asset: `/assets/goal-visualizations/chemie/47582f06-d724-5da9-acc6-16c91ab94f67/47582f06-d724-5da9-acc6-16c91ab94f67.jpg`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Lebensmittelauswahl chemisch und nachhaltig bewerten
+Beschreibung: Die lernende Person kann verschiedene Möglichkeiten der Lebensmittelauswahl anhand chemischer Zusammensetzung, Ausgewogenheit, Nachhaltigkeit und Klimabezug vergleichen und dabei wissenschaftliche Erkenntnisse, tradiertes Wissen sowie Ernährungstrends reflektieren.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

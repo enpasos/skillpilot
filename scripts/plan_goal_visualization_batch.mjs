@@ -10,6 +10,10 @@ import {
   readLandscape,
   toProjectPath,
 } from './goal_visualization_common.mjs'
+import {
+  isOrdinaryAtomicGoalForVisualization,
+  normalizeGoalVisualizationSubject,
+} from './goal_visualization_scope.mjs'
 
 function usage() {
   return [
@@ -31,42 +35,67 @@ function hasVisualization(goal) {
   })
 }
 
-function hasChildren(goal) {
-  return Array.isArray(goal.contains) && goal.contains.length > 0
+function reviewDate(content, fileName) {
+  const metadataDate = content.match(/^(?:Review date|Date):\s*(\d{4}-\d{2}-\d{2})\s*$/imu)?.[1]
+  return metadataDate ?? fileName.match(/(\d{4}-\d{2}-\d{2})/u)?.[1] ?? ''
 }
 
-function isAtomicVisualizationGoal(goal) {
-  const tags = goal.tags ?? []
-  return !hasChildren(goal)
-    && goal.nodeKind !== 'memory'
-    && goal.nodeKind !== 'exam'
-    && goal.nodeKind !== 'tutor'
-    && goal.examData === undefined
-    && !tags.includes('memorization')
-    && !tags.some((tag) => tag.startsWith('srs-deck:'))
+function reviewDisposition(cells) {
+  for (const cell of cells) {
+    const value = cell.replace(/^`|`$/gu, '').trim().toLowerCase()
+    if (value === 'deferred_provider_limitation') return 'deferred_provider_limitation'
+    if (value === 'accepted' || value.startsWith('accepted_') || value === 'approved') return 'accepted'
+    if (
+      value.startsWith('rejected')
+      || value.startsWith('imported')
+      || value.startsWith('withdrawn')
+      || value.startsWith('removed')
+    ) {
+      return 'other_final'
+    }
+  }
+  return null
 }
 
-function readDeferredGoalIds() {
+function readDeferredGoalIds(subject) {
   const reviewDir = path.join(ROOT_DIR, 'curricula/DE/Gymnasium/quality/goal-visualization-review')
   if (!fs.existsSync(reviewDir)) {
     return new Set()
   }
 
-  const deferredIds = new Set()
-  for (const entry of fs.readdirSync(reviewDir, { withFileTypes: true })) {
-    if (!entry.isFile() || !entry.name.endsWith('.md')) continue
+  const files = fs.readdirSync(reviewDir, { withFileTypes: true })
+    .filter((entry) => (
+      entry.isFile()
+      && entry.name.startsWith(`${subject}-`)
+      && entry.name.endsWith('.md')
+      && entry.name !== `${subject}-rollout-status.md`
+    ))
+    .map((entry) => {
+      const content = fs.readFileSync(path.join(reviewDir, entry.name), 'utf-8')
+      return { name: entry.name, content, date: reviewDate(content, entry.name) }
+    })
+    .sort((left, right) => (
+      left.date.localeCompare(right.date)
+      || left.name.localeCompare(right.name, 'en', { numeric: true })
+    ))
 
-    const content = fs.readFileSync(path.join(reviewDir, entry.name), 'utf-8')
-    const rowPattern = /^\|\s*`(?<goalId>[^`]+)`\s*\|[^\n]*\|\s*`deferred_provider_limitation`\s*\|/gm
-    for (const match of content.matchAll(rowPattern)) {
-      const goalId = match.groups?.goalId?.trim()
-      if (goalId) {
-        deferredIds.add(goalId)
-      }
+  const latestDispositionByGoal = new Map()
+  for (const { content } of files) {
+    for (const line of content.split(/\r?\n/u)) {
+      if (!/^\s*\|/u.test(line)) continue
+      const cells = line.split('|').slice(1, -1).map((cell) => cell.trim())
+      const goalId = cells[0]?.replace(/^`|`$/gu, '').trim() ?? ''
+      if (!/^[0-9a-f]{8}-[0-9a-f-]{27,}$/iu.test(goalId)) continue
+      const disposition = reviewDisposition(cells.slice(1))
+      if (disposition) latestDispositionByGoal.set(goalId, disposition)
     }
   }
 
-  return deferredIds
+  return new Set(
+    [...latestDispositionByGoal.entries()]
+      .filter(([, disposition]) => disposition === 'deferred_provider_limitation')
+      .map(([goalId]) => goalId),
+  )
 }
 
 function main() {
@@ -85,13 +114,16 @@ function main() {
 
   const phase = getStringArg(args, 'phase')
   const outputPath = path.resolve(ROOT_DIR, getStringArg(args, 'output', 'tmp/goal-visualization-next-batch.txt') ?? 'tmp/goal-visualization-next-batch.txt')
-  const includeDeferred = getBooleanArg(args, 'include-deferred')
-  const deferredGoalIds = includeDeferred ? new Set() : readDeferredGoalIds()
-
   const landscape = readLandscape(landscapePath)
+  const subject = normalizeGoalVisualizationSubject(landscape.subject)
+  if (!subject) {
+    throw new Error('Landscape has no subject; cannot resolve subject-specific review evidence.')
+  }
+  const includeDeferred = getBooleanArg(args, 'include-deferred')
+  const deferredGoalIds = includeDeferred ? new Set() : readDeferredGoalIds(subject)
   const selected = (landscape.goals ?? [])
     .filter((goal) => goal.type === 'atomic')
-    .filter(isAtomicVisualizationGoal)
+    .filter(isOrdinaryAtomicGoalForVisualization)
     .filter((goal) => !phase || goal.phase === phase)
     .filter((goal) => !hasVisualization(goal))
     .filter((goal) => !deferredGoalIds.has(goal.id))

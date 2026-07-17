@@ -6,12 +6,18 @@ import {
   emptyGoalVisualizationAiReview,
   normalizeGoalVisualizationAiReview,
   type GoalVisualizationAiReviewFields,
+  type GoalVisualizationAssetStateFields,
+  type GoalVisualizationMissingReason,
   type GoalVisualizationQaYesNo,
 } from './goalVisualizationQaModel'
+import {
+  isOrdinaryAtomicGoalForVisualization,
+  normalizeGoalVisualizationSubject,
+} from '../../scripts/goal_visualization_scope.mjs'
 
 type YesNo = GoalVisualizationQaYesNo
 
-interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields {
+interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields, GoalVisualizationAssetStateFields {
   goalId: string
   title: string
   description: string
@@ -49,11 +55,21 @@ const repoRoot = path.resolve(scriptDir, '../..')
 const canonicalRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const canonicalAssetRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/visualizations')
 const qaRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/quality/goal-visualization-qa')
+const reviewRoot = path.join(repoRoot, 'curricula/DE/Gymnasium/quality/goal-visualization-review')
 
 const toPosixPath = (value: string): string => value.split(path.sep).join('/')
 const repoRelative = (absolutePath: string): string => toPosixPath(path.relative(repoRoot, absolutePath))
 const normalizeText = (value: unknown): string => String(value ?? '').replace(/\s+/g, ' ').trim()
 const normalizeYesNo = (value: unknown): YesNo => value === 'yes' ? 'yes' : 'no'
+
+const configuredQaSubjects = (): Set<string> => new Set(
+  existsSync(qaRoot)
+    ? readdirSync(qaRoot, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && entry.name.endsWith('.qa.json'))
+      .map((entry) => entry.name.slice(0, -'.qa.json'.length))
+      .filter(Boolean)
+    : [],
+)
 
 const parseArgs = (argv = process.argv.slice(2)): Record<string, string | boolean> => {
   const args: Record<string, string | boolean> = {}
@@ -90,6 +106,64 @@ const collectFiles = (directory: string, predicate: (fileName: string) => boolea
     }
   }
   return result
+}
+
+type ReviewDisposition = 'accepted' | 'deferred_provider_limitation' | 'other_final'
+
+const reviewDate = (content: string, fileName: string): string => {
+  const metadataDate = content.match(/^(?:Review date|Date):\s*(\d{4}-\d{2}-\d{2})\s*$/imu)?.[1]
+  if (metadataDate) return metadataDate
+  return fileName.match(/(\d{4}-\d{2}-\d{2})/u)?.[1] ?? ''
+}
+
+const reviewDisposition = (cells: string[]): ReviewDisposition | null => {
+  for (const cell of cells) {
+    const value = cell.replace(/^`|`$/gu, '').trim().toLowerCase()
+    if (value === 'deferred_provider_limitation') return 'deferred_provider_limitation'
+    if (value === 'accepted' || value.startsWith('accepted_') || value === 'approved') return 'accepted'
+    if (value.startsWith('imported') || value.startsWith('withdrawn') || value.startsWith('removed')) {
+      return 'other_final'
+    }
+  }
+  return null
+}
+
+/**
+ * Review ledgers are append-only evidence. Only the newest final disposition
+ * for a goal decides whether a currently missing image is provider-deferred;
+ * an older deferral must not survive a later accepted replacement.
+ */
+const latestReviewDispositionByGoal = (subject: string): Map<string, ReviewDisposition> => {
+  const files = collectFiles(
+    reviewRoot,
+    (fileName) => fileName.startsWith(`${subject}-`) && fileName.endsWith('.md'),
+  ).map((absolutePath) => {
+    const content = readFileSync(absolutePath, 'utf8')
+    return {
+      absolutePath,
+      content,
+      date: reviewDate(content, path.basename(absolutePath)),
+    }
+  }).sort((left, right) => (
+    left.date.localeCompare(right.date)
+    || path.basename(left.absolutePath).localeCompare(path.basename(right.absolutePath), 'en', { numeric: true })
+  ))
+
+  const dispositionByGoal = new Map<string, ReviewDisposition>()
+  files.forEach(({ content }) => {
+    content.split(/\r?\n/u).forEach((line) => {
+      if (!/^\s*\|/u.test(line)) return
+      const cells = line
+        .split('|')
+        .slice(1, -1)
+        .map((cell) => cell.trim())
+      const goalId = cells[0]?.replace(/^`|`$/gu, '').trim() ?? ''
+      if (!/^[0-9a-f]{8}-[0-9a-f-]{27,}$/iu.test(goalId)) return
+      const disposition = reviewDisposition(cells.slice(1))
+      if (disposition) dispositionByGoal.set(goalId, disposition)
+    })
+  })
+  return dispositionByGoal
 }
 
 const hashFile = (absolutePath: string): string => {
@@ -158,7 +232,12 @@ const normalizeExistingRecord = (
   current: GoalVisualizationQaRecord,
   existing: (Partial<GoalVisualizationQaRecord> & Record<string, unknown>) | undefined,
 ): GoalVisualizationQaRecord => {
-  if (!existing || existing.assetSha256 !== current.assetSha256) {
+  if (
+    current.visualizationState !== 'available'
+    || !current.assetSha256
+    || !existing
+    || existing.assetSha256 !== current.assetSha256
+  ) {
     return current
   }
 
@@ -183,42 +262,59 @@ const normalizeExistingRecord = (
 }
 
 const buildLedgers = (subjects: Set<string> | null): GoalVisualizationQaLedger[] => {
+  const selectedSubjects = subjects ?? configuredQaSubjects()
   const rowsBySubject = new Map<string, GoalVisualizationQaRecord[]>()
+  const dispositionBySubject = new Map<string, Map<string, ReviewDisposition>>()
   const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/iu.test(fileName)).sort()
 
   for (const absoluteLandscapePath of canonicalFiles) {
     const landscape = JSON.parse(readFileSync(absoluteLandscapePath, 'utf8')) as Record<string, unknown>
     if (typeof landscape.landscapeId !== 'string' || !Array.isArray(landscape.goals)) continue
+    const landscapeSubject = normalizeGoalVisualizationSubject(landscape.subject)
+    if (!landscapeSubject || !selectedSubjects.has(landscapeSubject)) continue
 
     for (const rawGoal of landscape.goals) {
-      if (!rawGoal || typeof rawGoal !== 'object' || Array.isArray(rawGoal)) continue
+      if (!isOrdinaryAtomicGoalForVisualization(rawGoal)) continue
       const goal = rawGoal as Record<string, unknown>
       const goalId = normalizeText(goal.id)
       if (!goalId) continue
       const links = Array.isArray(goal.resourceLinks) ? goal.resourceLinks.filter(isGoalVisualizationLink) : []
-      for (const link of links) {
-        if (link.role && link.role !== 'primary') continue
-        const imageUrl = normalizeText(link.url)
-        const subject = subjectFromImageUrl(imageUrl)
-        if (!subject || (subjects && !subjects.has(subject))) continue
-        const publicAssetPath = publicAssetPathFromUrl(imageUrl)
-        const canonicalAssetPath = canonicalAssetPathFromUrl(imageUrl)
-        const row = createDefaultRecord({
-          goalId,
-          title: normalizeText(goal.title),
-          description: normalizeText(goal.description),
-          subject,
-          landscapeId: normalizeText(landscape.landscapeId),
-          landscapePath: repoRelative(absoluteLandscapePath),
-          imageUrl,
-          publicAssetPath: repoRelative(publicAssetPath),
-          canonicalAssetPath: canonicalAssetPath ? repoRelative(canonicalAssetPath) : '',
-          assetSha256: hashFile(publicAssetPath),
-        })
-        const rows = rowsBySubject.get(subject) ?? []
-        rows.push(row)
-        rowsBySubject.set(subject, rows)
+      const primaryLink = links.find((link) => !link.role || link.role === 'primary')
+      const imageUrl = primaryLink ? normalizeText(primaryLink.url) : ''
+      const linkedSubject = subjectFromImageUrl(imageUrl)
+      const subject = landscapeSubject || linkedSubject
+      const visualizationState = primaryLink ? 'available' as const : 'missing' as const
+      let missingReason: GoalVisualizationMissingReason = ''
+      if (!primaryLink) {
+        let dispositions = dispositionBySubject.get(subject)
+        if (!dispositions) {
+          dispositions = latestReviewDispositionByGoal(subject)
+          dispositionBySubject.set(subject, dispositions)
+        }
+        missingReason = dispositions.get(goalId) === 'deferred_provider_limitation'
+          ? 'deferred_provider_limitation'
+          : 'no_primary_link'
       }
+
+      const publicAssetPath = imageUrl ? publicAssetPathFromUrl(imageUrl) : ''
+      const canonicalAssetPath = imageUrl ? canonicalAssetPathFromUrl(imageUrl) : ''
+      const row = createDefaultRecord({
+        goalId,
+        title: normalizeText(goal.title),
+        description: normalizeText(goal.description),
+        subject,
+        landscapeId: normalizeText(landscape.landscapeId),
+        landscapePath: repoRelative(absoluteLandscapePath),
+        visualizationState,
+        missingReason,
+        imageUrl,
+        publicAssetPath: publicAssetPath ? repoRelative(publicAssetPath) : '',
+        canonicalAssetPath: canonicalAssetPath ? repoRelative(canonicalAssetPath) : '',
+        assetSha256: publicAssetPath ? hashFile(publicAssetPath) : '',
+      })
+      const rows = rowsBySubject.get(subject) ?? []
+      rows.push(row)
+      rowsBySubject.set(subject, rows)
     }
   }
 
@@ -233,7 +329,7 @@ const buildLedgers = (subjects: Set<string> | null): GoalVisualizationQaLedger[]
       records.forEach((record) => {
         const key = `${record.goalId}\n${record.imageUrl}`
         const existing = existingByGoalAndUrl.get(key)
-        deduped.set(key, normalizeExistingRecord(record, existing))
+        deduped.set(record.goalId, normalizeExistingRecord(record, existing))
       })
       return {
         schemaVersion: 1,
@@ -280,12 +376,12 @@ const main = () => {
       ? args.subject
       : ''
   const subjects = rawSubjects
-    ? new Set(rawSubjects.split(',').map((entry) => entry.trim()).filter(Boolean))
+    ? new Set(rawSubjects.split(',').map(normalizeGoalVisualizationSubject).filter(Boolean))
     : null
 
   const ledgers = buildLedgers(subjects)
   if (ledgers.length === 0) {
-    throw new Error('No goal visualization links found for the selected subject scope.')
+    throw new Error('No ordinary atomic goals found for the selected goal-visualization subject scope.')
   }
 
   mkdirSync(qaRoot, { recursive: true })

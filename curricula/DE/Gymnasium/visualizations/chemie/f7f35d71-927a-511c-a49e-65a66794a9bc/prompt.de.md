@@ -1,0 +1,36 @@
+# Lernzielvisualisierung: Enzymreaktionen und Hemmung modellieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `f7f35d71-927a-511c-a49e-65a66794a9bc`
+- Titel: Enzymreaktionen und Hemmung modellieren
+- Beschreibung: Die lernende Person kann Enzymreaktionen mit einer einfachen Modellvorstellung darstellen und Enzyme als Biokatalysatoren einschließlich Hemmung beschreiben.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro
+- Status: pilot
+- Quellbild: `f7f35d71-927a-511c-a49e-65a66794a9bc.jpg`
+- Public Asset: `/assets/goal-visualizations/chemie/f7f35d71-927a-511c-a49e-65a66794a9bc/f7f35d71-927a-511c-a49e-65a66794a9bc.jpg`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Enzymreaktionen und Hemmung modellieren
+Beschreibung: Die lernende Person kann Enzymreaktionen mit einer einfachen Modellvorstellung darstellen und Enzyme als Biokatalysatoren einschließlich Hemmung beschreiben.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T18:05:48.481Z
+Generated: 2026-07-16T22:32:19.362Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -17,9 +17,12 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Metric | Value |
 | --- | --- |
 | Alle Ziele in der Landschaft | 588 |
-| Atomare Ziele im Visualisierungs-Scope | 427 |
-| Ziele mit primaerem Visualisierungslink | 407 |
+| Atomare Ziele im Visualisierungs-Scope | 426 |
+| Ziele mit primaerem Visualisierungslink | 406 |
 | Coverage | 95.3% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 426 |
+| Dokumentierte Coverage | 100.0% |
+| Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 74 |
 | Offene Provider-Deferred-Ziele | 20 |
@@ -34,7 +37,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 82 |
-| `pilot` | 325 |
+| `pilot` | 324 |
 
 ## Ledger Decisions
 
@@ -63,17 +66,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-074.md` |
 | Latest ledger status | `completed` |
-| Resume file | `tmp/goal-visualization-physik-batch-073.resume.txt` |
-| Resume file exists | no |
-| Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
-| Prompt append dir exists | yes |
-| Prompt append files | 3 |
+| Configured resume file | `tmp/goal-visualization-physik-batch-073.resume.txt` |
+| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
 ## Interpretation
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 20 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
