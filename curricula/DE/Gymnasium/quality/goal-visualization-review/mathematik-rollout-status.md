@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T15:52:12.008Z
+Generated: 2026-07-16T22:32:19.370Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -17,24 +17,27 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | Metric | Value |
 | --- | --- |
 | Alle Ziele in der Landschaft | 1079 |
-| Atomare Ziele im Visualisierungs-Scope | 756 |
-| Ziele mit primaerem Visualisierungslink | 733 |
-| Coverage | 97.0% |
+| Atomare Ziele im Visualisierungs-Scope | 754 |
+| Ziele mit primaerem Visualisierungslink | 730 |
+| Coverage | 96.8% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 754 |
+| Dokumentierte Coverage | 100.0% |
+| Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 206 |
-| Offene Provider-Deferred-Ziele | 21 |
+| Review-Ledger-Dateien | 216 |
+| Offene Provider-Deferred-Ziele | 24 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 2 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
-| Akzeptierende Review-Entscheidung ohne Link | 2 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
+| Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
 | `approved` | 18 |
-| `pilot` | 715 |
+| `pilot` | 712 |
 
 ## Ledger Decisions
 
@@ -42,50 +45,47 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | `accepted` | 2 |
 | `accepted_after_regeneration` | 8 |
+| `accepted_after_user_issue_correction` | 8 |
 | `accepted_context_visualization` | 2 |
-| `accepted_pilot` | 599 |
+| `accepted_pilot` | 603 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_regeneration` | 159 |
 | `accepted_pilot_after_resume` | 5 |
-| `accepted_pilot_after_second_attempt` | 9 |
+| `accepted_pilot_after_second_attempt` | 13 |
 | `accepted_pilot_after_second_regeneration` | 15 |
-| `accepted_pilot_after_third_attempt` | 3 |
+| `accepted_pilot_after_third_attempt` | 5 |
 | `accepted_pilot_after_third_regeneration` | 6 |
-| `accepted_pilot_after_user_review_correction` | 43 |
+| `accepted_pilot_after_user_review_correction` | 45 |
 | `accepted_user_supplied_replacement` | 1 |
 | `blocked_provider_quota` | 5 |
 | `correction_open_provider_credit_exhausted` | 4 |
-| `deferred_provider_limitation` | 33 |
+| `deferred_provider_limitation` | 36 |
 | `not_attempted_after_quota_block` | 4 |
 | `rejected_after_review_regenerated` | 7 |
 | `rejected_after_second_regeneration` | 1 |
+| `rejected_after_user_followup_then_replaced` | 1 |
 | `rejected_after_user_review_replaced` | 5 |
 | `rejected_not_linked` | 4 |
 | `rejected_regenerate` | 22 |
-| `rejected_regenerated` | 75 |
+| `rejected_regenerated` | 80 |
 | `rejected_removed` | 1 |
-| `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` | 1 |
-| `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` | 1 |
 
 ## Current Batch
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-206.md` |
-| Latest ledger status | `completed_with_5_deferred_provider_limitations` |
-| Resume file | `tmp/goal-visualization-batch-076.resume.txt` |
-| Resume file exists | no |
-| Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
-| Prompt append dir exists | yes |
-| Prompt append files | 6 |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-207.md` |
+| Latest ledger status | `completed_with_one_deferred_provider_limitation` |
+| Configured resume file | `tmp/goal-visualization-batch-076.resume.txt` |
+| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
 
 ## Interpretation
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 24 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -93,8 +93,11 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
+| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | `deferred_provider_limitation` | `deferred_provider_limitation` |
+| mathematik-ai-correction-shard-1 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | `deferred_provider_limitation` | `deferred_provider_limitation` |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
 | 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
+| 207 | `1801c759-d92d-5bfb-a44f-cfd2455d207b` | Funktionsgleichungen aus Graphen bestimmen | `deferred_provider_limitation` |
 | 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
 | 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
 | 197 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_provider_limitation` |
@@ -110,11 +113,8 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | 206 | `52758ed0-cba8-5583-9e69-906d2e7c7843` | Prognose- und Konfidenzintervalle im Kontext interpretieren | `deferred_provider_limitation` |
 | 206 | `3256476b-ec65-4038-9f5a-a8808fbcf207` | Punkt-Gerade-Abstände im Raum bestimmen | `deferred_provider_limitation` |
 | 206 | `075f1ef2-6860-4b20-9df2-878157eb395e` | Punkte und Vektoren im Raum koordinatisieren | `deferred_provider_limitation` |
-| 206 | `47400de4-b0e4-5bb6-a1bd-bd2beee616bb` | Regula falsi zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
-| 206 | `36728db8-da44-4add-97b8-0fdd7cfd9c41` | Satz des Thales begründen und anwenden | `deferred_provider_limitation` |
-| 192 | `5d9c156b-e5a4-5e91-9da3-22e858eb1f8e` | Teilungsverhältnisse bei Strecken untersuchen | `deferred_provider_limitation` |
 
-Weitere 1 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 4 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -154,40 +154,25 @@ Keine Eintraege.
 | 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
 | 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
 
-Weitere 23 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 25 Eintraege stehen in der JSON-Begleitdatei.
 
 ## Review/Link Consistency
 
 ### Linked Without Accepted Review
 
-| Goal ID | Title | Link status | Latest ledger decision |
-| --- | --- | --- | --- |
-| `fb7a4fa0-03b5-53b4-bd86-608480b748a1` | Betrag eines Vektors im Raum bestimmen | `pilot` | `sha256:04944d3d20874dd63733194ca561e4dcabd6a998836f097c3d9971a344a6c21c` |
-| `a075ae99-7669-563d-807a-f91b119c020a` | Brüche erweitern, kürzen und vergleichen | `pilot` | `accepted_after_regeneration` |
-| `15512e77-31e3-5222-8a6b-84791618e5ce` | Bruchterme addieren und subtrahieren | `pilot` | `sha256:d9599bbad18ea11df1bfdaff26807625bba94bf222e3a514e1f0a8646ec73cd6` |
-| `a7c2aa01-4942-597f-a65f-ebb913d0019b` | Chinesischen Restsatz formulieren und Voraussetzungen prüfen (LK) | `pilot` | `accepted` |
-| `3016ec37-1c2e-47db-83f5-e767923bc97e` | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `pilot` | `accepted_user_supplied_replacement` |
-| `2345ae25-5805-4c72-b830-32e63cc6262a` | Dichte als abgeleitete Größe verwenden | `pilot` | `accepted_after_regeneration` |
-| `ef1524f1-0b2f-59f7-a001-5ab3e3dececb` | Eigenschaften geometrischer Figuren begründen | `pilot` | `accepted_after_regeneration` |
-| `4af3dfb9-7e15-5da5-8b86-0aac6c80e266` | Einfache geometrische Figuren beschreiben | `pilot` | `accepted_after_regeneration` |
-| `250daae6-58fd-59e4-8a11-f994e789ee47` | Einfache Parametertransformationen in Funktionsuntersuchungen nutzen | `pilot` | `accepted_after_regeneration` |
-| `82597dfb-0ec6-4a77-abaf-e1d6bdd12041` | Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen | `pilot` | `accepted_after_regeneration` |
-| `701b3942-9f70-548e-9d02-a34b7e64aa17` | Konstruktiven Beweis des chinesischen Restsatzes erläutern (LK) | `pilot` | `accepted` |
+Keine Eintraege.
 
 ### Accepted Review Without Link
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| 092 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `accepted_pilot` |
-| 106 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | Kettenlinien und Glockenkurven untersuchen (LK) | `accepted_pilot` |
+Keine Eintraege.
 
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json --output tmp/goal-visualization-mathematik-next-batch.txt --include-deferred
 ```
 
-After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
 
 ## Sources
 

@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T19:18:30.570Z
+Generated: 2026-07-16T22:32:23.925Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -17,16 +17,19 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Metric | Value |
 | --- | --- |
 | Alle Ziele in der Landschaft | 473 |
-| Atomare Ziele im Visualisierungs-Scope | 377 |
-| Ziele mit primaerem Visualisierungslink | 77 |
-| Coverage | 20.4% |
+| Atomare Ziele im Visualisierungs-Scope | 376 |
+| Ziele mit primaerem Visualisierungslink | 269 |
+| Coverage | 71.5% |
+| Durch Asset oder Provider-Deferred dokumentierte Ziele | 376 |
+| Dokumentierte Coverage | 100.0% |
+| Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 16 |
-| Offene Provider-Deferred-Ziele | 1 |
+| Review-Ledger-Dateien | 17 |
+| Offene Provider-Deferred-Ziele | 107 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 299 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 75 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 0 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -34,7 +37,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 45 |
-| `pilot` | 32 |
+| `pilot` | 224 |
 
 ## Ledger Decisions
 
@@ -42,12 +45,13 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | `accepted_corrected_candidate` | 32 |
 | `accepted_current` | 43 |
+| `accepted_new_candidate` | 192 |
 | `accepted_pilot` | 59 |
 | `accepted_pilot_after_regeneration` | 13 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 2 |
-| `deferred_provider_limitation` | 1 |
+| `deferred_provider_limitation` | 107 |
 | `rejected_after_user_review_replaced` | 2 |
 | `rejected_regenerated` | 33 |
 
@@ -55,20 +59,17 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-016.md` |
-| Latest ledger status | `completed` |
-| Resume file | `tmp/goal-visualization-chemie-batch-015.resume.txt` |
-| Resume file exists | no |
-| Resume goals | 0 |
-| Prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction` |
-| Prompt append dir exists | yes |
-| Prompt append files | 1 |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-017.md` |
+| Latest ledger status | `completed_with_provider_limit` |
+| Configured resume file | `tmp/goal-visualization-chemie-batch-015.resume.txt` |
+| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction` |
 
 ## Interpretation
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
-- Der aktuelle Batch hat kein offenes Resume; der naechste produktive Schritt ist die Planung eines neuen Batches.
+- Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 107 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -76,7 +77,28 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| 016 | `16a80de2-b5e0-5467-a9b3-5860730d7d8b` | Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten | `deferred_provider_limitation` |
+| 017 | `96d3f50b-62f7-5db4-8426-43b4a0c26543` | Acetylsalicylsäure aus Schmerztabletten extrahieren und vergleichen | `deferred_provider_limitation` |
+| 017 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `deferred_provider_limitation` |
+| 017 | `4b9810b0-5d3d-59d8-a948-c3f6dd6303c7` | Acidität und Basizität mit induktiven und mesomeren Effekten begründen | `deferred_provider_limitation` |
+| 017 | `4da0839d-ab6d-53c1-ac21-c9872555ae16` | Alkalische Esterhydrolyse mechanistisch vertiefen (LK) | `deferred_provider_limitation` |
+| 017 | `dd58c029-176f-5d99-923e-1c1fda6cf58e` | Alkane, Alkene und Alkine beschreiben | `deferred_provider_limitation` |
+| 017 | `345fdca9-038f-51e2-9bea-b6ac416a734a` | Alkanol-Strukturformeln fachgerecht darstellen | `deferred_provider_limitation` |
+| 017 | `536b48b2-7822-5b7e-9059-ad43400da7e0` | Alkanole benennen | `deferred_provider_limitation` |
+| 017 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
+| 017 | `126c56ef-25ac-57b6-84df-111b79d01b8d` | Antazida und Sodbrennen chemisch bewerten | `deferred_provider_limitation` |
+| 017 | `73547696-e225-5f14-839b-c77f54c32bae` | Antreffwahrscheinlichkeit mit Unbestimmtheit begründen | `deferred_provider_limitation` |
+| 017 | `7b443158-8ca9-5b8e-8328-a8fa56f6e26f` | Arznei- und Koerperpflegemittel herstellen und chemisch erklaeren | `deferred_provider_limitation` |
+| 017 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
+| 017 | `4bdbdf32-3021-5a0a-b412-b611166b2d21` | Benzolstruktur deuten | `deferred_provider_limitation` |
+| 017 | `e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e` | Bindungslängen und Molekülgeometrien modellgestützt begründen | `deferred_provider_limitation` |
+| 017 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
+| 017 | `a76ab487-4663-5005-8454-cb3196f3773b` | Bioethanolproduktion erklären | `deferred_provider_limitation` |
+| 017 | `0278a515-8990-5a1c-8a1b-a03382a144a3` | Biokunststoffe erläutern | `deferred_provider_limitation` |
+| 017 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `deferred_provider_limitation` |
+| 017 | `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `deferred_provider_limitation` |
+| 017 | `98ae3f8e-4800-5ff3-bd2c-89434c006143` | Carbonsäureester und Carbonsäureamide durch Kondensation bilden | `deferred_provider_limitation` |
+
+Weitere 87 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -97,40 +119,7 @@ Keine Eintraege.
 
 ### Linked Without Accepted Review
 
-| Goal ID | Title | Link status | Latest ledger decision |
-| --- | --- | --- | --- |
-| `e0e201bd-a1fd-5985-ab08-fd24c8655f3d` | Alkalimetalle und ihre Verbindungen charakterisieren | `accepted` | `accepted_current` |
-| `13d4f336-ab16-54a7-9479-c920b458f385` | Allgemeine Sicherheitsregeln im Chemielabor anwenden | `accepted` | `accepted_current` |
-| `dd3fc8fe-2316-5fbc-b569-00651c83bc81` | Atomare Masseneinheit und Grammbezug einordnen | `accepted` | `accepted_current` |
-| `e45c0022-ac0d-5c83-b433-5f68655e382f` | Avogadro-Konstante als Teilchenzahlbezug nutzen | `accepted` | `accepted_current` |
-| `1e5a4b89-69f1-5379-811e-c8ec76faad2a` | Avogadro-These fuer Gasvolumina erlaeutern | `accepted` | `accepted_current` |
-| `17fe22c4-1248-5f37-9d0c-52ee4571d09f` | Bedeutung von Redoxreaktionen erörtern | `accepted` | `accepted_current` |
-| `542822de-cb96-56cf-a487-0fc3b5820f57` | Chemie in Gesellschaft und Berufsfeldern einordnen | `accepted` | `accepted_current` |
-| `49b13b33-34b7-5e4e-861c-b21082cb9922` | Chemische Daten dokumentieren und deuten | `pilot` | `accepted_corrected_candidate` |
-| `f660c91a-fa14-5010-94cf-068d785c7fd2` | Chemische Erkenntniswege einordnen | `pilot` | `accepted_corrected_candidate` |
-| `95dc0ee5-a0af-5682-af32-d66e36fbeb50` | Chemische Fach- und Symbolsprache ebenengerecht verwenden | `pilot` | `accepted_corrected_candidate` |
-| `91238ba1-5c63-50c7-a4fd-9bbe492c6b61` | Chemische Fragestellungen hypothesengeleitet untersuchen | `accepted` | `accepted_current` |
-| `1df17884-96ae-57d7-9da9-dbebd082596f` | Chemische Handlungsoptionen kriteriengeleitet bewerten | `pilot` | `accepted_corrected_candidate` |
-| `277a3c20-6082-5a95-be08-c1e386efe79b` | Chemische Modelle nutzen und kritisch vergleichen | `pilot` | `accepted_corrected_candidate` |
-| `8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566` | Chemische Reaktionen von physikalischen Vorgängen unterscheiden | `pilot` | `accepted_corrected_candidate` |
-| `1f354a60-be44-512b-8f8b-f67c8c456035` | Chemische Sachverhalte fachlich diskutieren | `accepted` | `accepted_current` |
-| `e7c363d4-e02d-4895-8750-ba62c2eb63fe` | Chemische Symbole und Formeln sicher nutzen | `accepted` | `accepted_current` |
-| `4dab7d52-5b89-52ab-a425-17a7707f44c8` | CO2-Bilanz und Reaktionswärme von Brennstoffen vergleichen | `accepted` | `accepted_current` |
-| `9b5d6326-d27c-4ece-8c72-debda705464a` | Dalton-Modell und Modellcharakter erläutern | `pilot` | `accepted_corrected_candidate` |
-| `1f5ee84f-245a-5a1e-a260-f960f26523e9` | Duengemittel chemisch einordnen | `pilot` | `accepted_corrected_candidate` |
-| `7a36f2a2-a97e-5a0b-a6e1-a80f72137640` | Eigenschaften von Wasser strukturbezogen erklären | `pilot` | `accepted_corrected_candidate` |
-| `11bea4c6-7b8a-47e0-8293-2eb1ce34cf66` | Einfache Reaktionsgleichungen ableiten | `accepted` | `accepted_current` |
-| `22133f29-ef02-4408-8f8d-2bbea3275d91` | Einfache Redoxgleichungen mit Oxidationszahlen erstellen | `accepted` | `accepted_current` |
-| `fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3` | Einfache Verbrennungsvorgänge chemisch deuten | `accepted` | `accepted_current` |
-| `b3c9c4b8-5575-5200-86cf-26c14ebcc3d8` | Einflüsse auf naturwissenschaftliches Wissen bewerten | `accepted` | `accepted_current` |
-| `70b12d1c-abaf-45c6-ae9e-b571e9cbc126` | Elektrolyse einfacher Salze deuten | `accepted` | `accepted_current` |
-| `42a84bca-d27e-581f-a43a-eee424f0504d` | Elemente, Verbindungen und Gemische unterscheiden | `accepted` | `accepted_current` |
-| `542d88e9-4cd3-5f90-bd20-b50ab030d72a` | Energieprofile chemischer Reaktionen deuten | `accepted` | `accepted_current` |
-| `f5efab9d-2c61-44ea-b36a-87f873b51fd8` | Energiestufenmodell und Elektronenverteilung anwenden | `accepted` | `accepted_current` |
-| `9198b4cf-e454-562f-83f0-b1b74e68765d` | Energieträger kriteriengeleitet bewerten | `pilot` | `accepted_corrected_candidate` |
-| `a530ee7d-1002-5f02-ae05-a9d46410ac78` | Energieumsatz mit Bindungsänderungen erklären | `pilot` | `accepted_corrected_candidate` |
-
-Weitere 45 Eintraege stehen in der JSON-Begleitdatei.
+Keine Eintraege.
 
 ### Accepted Review Without Link
 
@@ -139,10 +128,10 @@ Keine Eintraege.
 ## Next Command
 
 ```bash
-npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json --output tmp/goal-visualization-chemie-next-batch.txt
+npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json --output tmp/goal-visualization-chemie-next-batch.txt --include-deferred
 ```
 
-After planning a batch: create prompt append files, generate candidates with `--no-import`, inspect, reject or regenerate faulty images, import only accepted candidates, deploy assets, update the batch ledger, and run validation.
+Use this only for an intentional provider-limitation revisit. Generated candidates still require full mathematical review before import; otherwise keep the existing deferred ledger decisions.
 
 ## Sources
 

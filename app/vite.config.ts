@@ -19,6 +19,7 @@ const CANONICAL_GYMNASIUM_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium',
 const COMPOSITION_VIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'composition-views')
 const SEMANTIC_ATOMICITY_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'semantic-atomicity')
 const GOAL_VISUALIZATION_QA_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'goal-visualization-qa')
+const GOAL_VISUALIZATION_REVIEW_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'quality', 'goal-visualization-review')
 const GOAL_VISUALIZATION_SOURCE_ROOT = path.resolve(CURRICULA_ROOT, 'DE', 'Gymnasium', 'visualizations')
 const GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_MODEL = 'gemini-2.5-flash'
 const GOAL_VISUALIZATION_RECONSTRUCTION_PROMPT_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models'
@@ -580,6 +581,68 @@ const isGoalVisualizationQaPayload = (value: unknown): boolean => {
     && Array.isArray(record.records)
 }
 
+type GoalVisualizationQaState = 'available' | 'missing'
+
+const goalVisualizationQaState = (record: Record<string, unknown>): GoalVisualizationQaState => {
+  if (record.visualizationState === 'available' || record.visualizationState === 'missing') {
+    return record.visualizationState
+  }
+  return typeof record.imageUrl === 'string' && record.imageUrl.trim() ? 'available' : 'missing'
+}
+
+const goalVisualizationQaMissingReason = (record: Record<string, unknown>): string =>
+  goalVisualizationQaState(record) === 'missing' && typeof record.missingReason === 'string'
+    ? record.missingReason.trim()
+    : ''
+
+const goalVisualizationQaRolloutStatusPath = (subject: string): string | null => {
+  if (!/^[a-z][a-z0-9-]*$/u.test(subject)) return null
+  return path.resolve(GOAL_VISUALIZATION_REVIEW_ROOT, `${subject}-rollout-status.json`)
+}
+
+const enrichGoalVisualizationQaLedger = async (
+  ledger: Record<string, unknown>,
+): Promise<Record<string, unknown>> => {
+  const subject = typeof ledger.subject === 'string' ? ledger.subject.trim() : ''
+  const rolloutStatusPath = goalVisualizationQaRolloutStatusPath(subject)
+  const deferredByGoalId = new Map<string, string>()
+
+  if (rolloutStatusPath && isPathInside(rolloutStatusPath, GOAL_VISUALIZATION_REVIEW_ROOT) && existsSync(rolloutStatusPath)) {
+    const rolloutStatus = asRecord(JSON.parse(await fs.readFile(rolloutStatusPath, 'utf8')))
+    const qualityQueues = asRecord(rolloutStatus.qualityQueues)
+    const deferredEntries = Array.isArray(qualityQueues.openProviderDeferred)
+      ? qualityQueues.openProviderDeferred.map(asRecord)
+      : []
+    for (const entry of deferredEntries) {
+      const goalId = readString(entry.goalId).trim()
+      if (!goalId) continue
+      deferredByGoalId.set(goalId, readString(entry.notes).trim())
+    }
+  }
+
+  const records = Array.isArray(ledger.records) ? ledger.records.map(asRecord) : []
+  return {
+    ...ledger,
+    records: records.map((record) => {
+      const visualizationState = goalVisualizationQaState(record)
+      if (visualizationState !== 'missing') {
+        return { ...record, visualizationState, missingReason: '' }
+      }
+
+      const goalId = readString(record.goalId).trim()
+      const deferredNotes = deferredByGoalId.get(goalId)
+      return {
+        ...record,
+        visualizationState,
+        missingReason: deferredNotes !== undefined
+          ? 'deferred_provider_limitation'
+          : goalVisualizationQaMissingReason(record) || 'no_primary_link',
+        ...(deferredNotes ? { missingNotes: deferredNotes } : {}),
+      }
+    }),
+  }
+}
+
 const normalizeQaYesNo = (value: unknown): 'yes' | 'no' => value === 'yes' ? 'yes' : 'no'
 
 const qaYesNoField = (record: Record<string, unknown>, field: string, legacyField: string): 'yes' | 'no' =>
@@ -621,13 +684,27 @@ const isGoalVisualizationQaOpen = (record: Record<string, unknown>): boolean =>
 
 const goalVisualizationQaCounts = (ledger: Record<string, unknown>): Record<string, number> => {
   const records = Array.isArray(ledger.records) ? ledger.records.map(asRecord) : []
-  const aiReviewScope = records.filter((record) => !isGoalVisualizationQaHumanApproved(record))
+  const availableRecords = records.filter((record) => goalVisualizationQaState(record) === 'available')
+  const missingRecords = records.filter((record) => goalVisualizationQaState(record) === 'missing')
+  const deferredRecords = missingRecords.filter((record) =>
+    goalVisualizationQaMissingReason(record) === 'deferred_provider_limitation')
+  const regularMissingRecords = missingRecords.filter((record) =>
+    goalVisualizationQaMissingReason(record) !== 'deferred_provider_limitation')
+  const aiReviewScope = availableRecords.filter((record) => !isGoalVisualizationQaHumanApproved(record))
   return {
     all: records.length,
-    open: records.filter(isGoalVisualizationQaOpen).length,
-    umlautsCorrectChatGpt: records.filter((record) =>
+    scope: records.length,
+    active: availableRecords.length,
+    missing: missingRecords.length,
+    regularMissing: regularMissingRecords.length,
+    deferred: deferredRecords.length,
+    coveragePercent: records.length > 0
+      ? Math.round((availableRecords.length / records.length) * 1_000) / 10
+      : 0,
+    open: availableRecords.filter(isGoalVisualizationQaOpen).length,
+    umlautsCorrectChatGpt: availableRecords.filter((record) =>
       qaYesNoField(record, 'umlautsCorrectChatGpt', 'umlauteRichtigChatGpt') === 'yes').length,
-    contentApprovedChatGpt: records.filter((record) =>
+    contentApprovedChatGpt: availableRecords.filter((record) =>
       qaYesNoField(record, 'contentApprovedChatGpt', 'inhaltlichApprovedChatGpt') === 'yes').length,
     aiApproved: aiReviewScope.filter(isGoalVisualizationQaAiApproved).length,
     aiRejected: aiReviewScope.filter(isGoalVisualizationQaAiRejected).length,
@@ -636,11 +713,11 @@ const goalVisualizationQaCounts = (ledger: Record<string, unknown>): Record<stri
     aiReviewScope: aiReviewScope.length,
     aiOpen: aiReviewScope.filter((record) => goalVisualizationQaAiStatus(record) === 'open').length,
     aiStale: aiReviewScope.filter(isGoalVisualizationQaAiStale).length,
-    humanApproved: records.filter((record) =>
+    humanApproved: availableRecords.filter((record) =>
       isGoalVisualizationQaHumanApproved(record)).length,
-    humanIssueIdentified: records.filter((record) =>
+    humanIssueIdentified: availableRecords.filter((record) =>
       qaYesNoField(record, 'humanIssueIdentified', 'fehlerIdentifiziertHuman') === 'yes').length,
-    chatGptOpen: records.filter((record) =>
+    chatGptOpen: availableRecords.filter((record) =>
       !isGoalVisualizationQaHumanApproved(record)
       && (
         qaYesNoField(record, 'umlautsCorrectChatGpt', 'umlauteRichtigChatGpt') !== 'yes'
@@ -2346,8 +2423,9 @@ const deckEditorDevPlugin = {
           const ledgers = await Promise.all(files.map(async (filePath) => {
             const absolutePath = resolveGoalVisualizationQaAbsolutePath(filePath)
             if (!absolutePath) return null
-            const ledger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
-            if (!isGoalVisualizationQaPayload(ledger)) return null
+            const rawLedger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+            if (!isGoalVisualizationQaPayload(rawLedger)) return null
+            const ledger = await enrichGoalVisualizationQaLedger(rawLedger)
             return {
               path: filePath,
               subject: String(ledger.subject),
@@ -2372,11 +2450,12 @@ const deckEditorDevPlugin = {
             return
           }
 
-          const ledger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
-          if (!isGoalVisualizationQaPayload(ledger)) {
+          const rawLedger = JSON.parse(await fs.readFile(absolutePath, 'utf8')) as Record<string, unknown>
+          if (!isGoalVisualizationQaPayload(rawLedger)) {
             sendJson(res, 400, { error: 'Invalid goal visualization QA payload.' })
             return
           }
+          const ledger = await enrichGoalVisualizationQaLedger(rawLedger)
 
           sendJson(res, 200, {
             path: toPosixPath(path.relative(REPO_ROOT, absolutePath)),

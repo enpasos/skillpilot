@@ -8,7 +8,8 @@ import { aiApprovalStatus, isAiApprovedForCurrentAsset } from '../utils/goalVisu
 
 type YesNo = 'yes' | 'no'
 type HumanDecision = 'open' | 'ok' | 'nok'
-type FilterKey = 'all' | 'queue' | 'ai_approved' | 'ai_rejected' | 'ai_open' | 'ai_stale' | 'human_approved' | 'human_issue' | 'chatgpt_open'
+type VisualizationState = 'available' | 'missing'
+type FilterKey = 'all' | 'missing_regular' | 'deferred' | 'queue' | 'ai_approved' | 'ai_rejected' | 'ai_open' | 'ai_stale' | 'human_approved' | 'human_issue' | 'chatgpt_open'
 
 interface QaRecord {
   goalId: string
@@ -17,6 +18,9 @@ interface QaRecord {
   subject: string
   landscapeId: string
   landscapePath: string
+  visualizationState?: VisualizationState
+  missingReason?: '' | 'no_primary_link' | 'deferred_provider_limitation' | string
+  missingNotes?: string
   imageUrl: string
   publicAssetPath: string
   canonicalAssetPath: string
@@ -108,6 +112,8 @@ const COPY = {
     saved: (count: number) => `${count} Änderung(en) gespeichert.`,
     filters: {
       all: 'Alle',
+      missing_regular: 'Bild fehlt',
+      deferred: 'Provider-zurückgestellt',
       queue: 'Human-Arbeitsliste',
       ai_approved: 'Approved AI',
       ai_rejected: 'KI-geprüft: NOK',
@@ -135,6 +141,15 @@ const COPY = {
       no: 'Nein',
       path: 'Landschaftspfad',
       goalId: 'Lernziel-ID',
+      targetScope: 'Soll-Scope',
+      activeImages: 'Aktive Bilder',
+      missingRegular: 'Regulär fehlend',
+      deferred: 'Zurückgestellt',
+      coverage: 'Abdeckung',
+      noImage: 'Kein aktives Bild',
+      noPrimaryLink: 'Für dieses Lernziel ist noch kein primäres Visualisierungsbild verknüpft.',
+      deferredProvider: 'Nach mehreren fachlich fehlerhaften Versuchen wurde die Erzeugung vorläufig zurückgestellt.',
+      notReviewable: 'Ohne aktives Bild ist keine Bildprüfung möglich.',
     },
     placeholders: {
       humanDescription: 'Fehler konkret beschreiben: Was ist falsch, wo im Bild, wie soll es fachlich richtig aussehen?',
@@ -166,6 +181,8 @@ const COPY = {
     saved: (count: number) => `${count} change(s) saved.`,
     filters: {
       all: 'All',
+      missing_regular: 'Image missing',
+      deferred: 'Provider deferred',
       queue: 'Human open',
       ai_approved: 'Approved AI',
       ai_rejected: 'AI reviewed: NOK',
@@ -193,6 +210,15 @@ const COPY = {
       no: 'no',
       path: 'Path',
       goalId: 'Goal ID',
+      targetScope: 'Target scope',
+      activeImages: 'Active images',
+      missingRegular: 'Regular missing',
+      deferred: 'Deferred',
+      coverage: 'Coverage',
+      noImage: 'No active image',
+      noPrimaryLink: 'No primary visualization image is linked to this learning goal yet.',
+      deferredProvider: 'Generation was deferred after several technically incorrect provider attempts.',
+      notReviewable: 'An image review is not possible without an active image.',
     },
     placeholders: {
       humanDescription: 'Describe the issue concretely: what is wrong, where in the image, and what should be correct?',
@@ -203,6 +229,8 @@ const COPY = {
 } as const
 
 const filterKeys: FilterKey[] = [
+  'missing_regular',
+  'deferred',
   'queue',
   'ai_open',
   'ai_approved',
@@ -219,8 +247,25 @@ const statusBadgeClass = (value: YesNo) =>
     ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300'
     : 'border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300'
 
+const visualizationState = (record: QaRecord): VisualizationState => {
+  if (record.visualizationState === 'available' || record.visualizationState === 'missing') {
+    return record.visualizationState
+  }
+  return record.imageUrl.trim() ? 'available' : 'missing'
+}
+
+const hasActiveVisualization = (record: QaRecord): boolean => visualizationState(record) === 'available'
+
+const isDeferredVisualization = (record: QaRecord): boolean =>
+  visualizationState(record) === 'missing' && record.missingReason === 'deferred_provider_limitation'
+
+const isRegularMissingVisualization = (record: QaRecord): boolean =>
+  visualizationState(record) === 'missing' && !isDeferredVisualization(record)
+
 const isHumanApprovedFinal = (record: QaRecord): boolean =>
-  record.humanApproved === 'yes' && record.humanIssueIdentified !== 'yes'
+  hasActiveVisualization(record)
+  && record.humanApproved === 'yes'
+  && record.humanIssueIdentified !== 'yes'
 
 const humanDecisionStatus = (record: QaRecord): HumanDecision => {
   if (record.humanIssueIdentified === 'yes') return 'nok'
@@ -229,20 +274,28 @@ const humanDecisionStatus = (record: QaRecord): HumanDecision => {
 }
 
 const isChatGptOpen = (record: QaRecord): boolean =>
-  !isHumanApprovedFinal(record)
+  hasActiveVisualization(record)
+  && !isHumanApprovedFinal(record)
   && (record.umlautsCorrectChatGpt !== 'yes' || record.contentApprovedChatGpt !== 'yes')
 
 const isQaOpen = (record: QaRecord): boolean =>
-  record.humanIssueIdentified === 'yes' || record.humanApproved !== 'yes'
+  hasActiveVisualization(record)
+  && (record.humanIssueIdentified === 'yes' || record.humanApproved !== 'yes')
 
 const isAiReviewOpen = (record: QaRecord): boolean =>
-  !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'open'
+  hasActiveVisualization(record)
+  && !isHumanApprovedFinal(record)
+  && aiApprovalStatus(record) === 'open'
 
 const isAiReviewApproved = (record: QaRecord): boolean =>
-  !isHumanApprovedFinal(record) && isAiApprovedForCurrentAsset(record)
+  hasActiveVisualization(record)
+  && !isHumanApprovedFinal(record)
+  && isAiApprovedForCurrentAsset(record)
 
 const isAiReviewRejected = (record: QaRecord): boolean =>
-  !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'rejected'
+  hasActiveVisualization(record)
+  && !isHumanApprovedFinal(record)
+  && aiApprovalStatus(record) === 'rejected'
 
 const imageSrcForRecord = (record: QaRecord, reloadToken: number): string => {
   const separator = record.imageUrl.includes('?') ? '&' : '?'
@@ -367,33 +420,58 @@ export const GoalVisualizationQaView: React.FC = () => {
 
   const records = useMemo(() => payload?.ledger.records ?? [], [payload?.ledger.records])
   const counts = useMemo(() => {
-    const chatgptOpen = records.filter(isChatGptOpen).length
-    const humanIssue = records.filter((record) => record.humanIssueIdentified === 'yes').length
+    const activeRecords = records.filter(hasActiveVisualization)
+    const chatgptOpen = activeRecords.filter(isChatGptOpen).length
+    const humanIssue = activeRecords.filter((record) => record.humanIssueIdentified === 'yes').length
     const humanApproved = records.filter(isHumanApprovedFinal).length
     const aiApproved = records.filter(isAiReviewApproved).length
     const aiRejected = records.filter(isAiReviewRejected).length
     return {
       all: records.length,
+      missing_regular: records.filter(isRegularMissingVisualization).length,
+      deferred: records.filter(isDeferredVisualization).length,
       queue: records.filter(isQaOpen).length,
       ai_approved: aiApproved,
       ai_rejected: aiRejected,
       ai_open: records.filter(isAiReviewOpen).length,
-      ai_stale: records.filter((record) => !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'stale').length,
+      ai_stale: records.filter((record) =>
+        hasActiveVisualization(record)
+        && !isHumanApprovedFinal(record)
+        && aiApprovalStatus(record) === 'stale').length,
       human_approved: humanApproved,
       human_issue: humanIssue,
       chatgpt_open: chatgptOpen,
     } satisfies Record<FilterKey, number>
   }, [records])
 
+  const coverage = useMemo(() => {
+    const scope = records.length
+    const active = records.filter(hasActiveVisualization).length
+    const deferred = records.filter(isDeferredVisualization).length
+    const missingRegular = records.filter(isRegularMissingVisualization).length
+    return {
+      scope,
+      active,
+      deferred,
+      missingRegular,
+      percent: scope > 0 ? Math.round((active / scope) * 1_000) / 10 : 0,
+    }
+  }, [records])
+
   const visibleRecords = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase()
     return records.filter((record) => {
       const matchesFilter = filter === 'all'
+        || (filter === 'missing_regular' && isRegularMissingVisualization(record))
+        || (filter === 'deferred' && isDeferredVisualization(record))
         || (filter === 'queue' && isQaOpen(record))
         || (filter === 'ai_approved' && isAiReviewApproved(record))
         || (filter === 'ai_rejected' && isAiReviewRejected(record))
         || (filter === 'ai_open' && isAiReviewOpen(record))
-        || (filter === 'ai_stale' && !isHumanApprovedFinal(record) && aiApprovalStatus(record) === 'stale')
+        || (filter === 'ai_stale'
+          && hasActiveVisualization(record)
+          && !isHumanApprovedFinal(record)
+          && aiApprovalStatus(record) === 'stale')
         || (filter === 'human_approved' && isHumanApprovedFinal(record))
         || (filter === 'human_issue' && record.humanIssueIdentified === 'yes')
         || (filter === 'chatgpt_open' && isChatGptOpen(record))
@@ -582,7 +660,7 @@ export const GoalVisualizationQaView: React.FC = () => {
               >
                 {ledgers.map((ledger) => (
                   <option key={ledger.path} value={ledger.path}>
-                    {subjectLabel(ledger.subject)} · {ledger.counts.all} Bilder · KI geprüft {(ledger.counts.aiApproved ?? 0) + (ledger.counts.aiRejected ?? 0)}/{ledger.counts.aiReviewScope ?? ledger.counts.open} · OK {ledger.counts.aiApproved ?? 0}
+                    {subjectLabel(ledger.subject)} · {ledger.counts.active ?? ledger.counts.all}/{ledger.counts.scope ?? ledger.counts.all} {copy.labels.activeImages} · {ledger.counts.coveragePercent ?? 100}% {copy.labels.coverage} · {copy.labels.missingRegular} {ledger.counts.regularMissing ?? 0} · {copy.labels.deferred} {ledger.counts.deferred ?? 0}
                   </option>
                 ))}
               </select>
@@ -608,6 +686,21 @@ export const GoalVisualizationQaView: React.FC = () => {
                 <span>{saving ? copy.saving : copy.save}</span>
               </button>
             </div>
+          </div>
+
+          <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-5">
+            {[
+              { label: copy.labels.targetScope, value: coverage.scope, tone: 'text-slate-700 dark:text-slate-200' },
+              { label: copy.labels.activeImages, value: coverage.active, tone: 'text-emerald-700 dark:text-emerald-300' },
+              { label: copy.labels.missingRegular, value: coverage.missingRegular, tone: 'text-rose-700 dark:text-rose-300' },
+              { label: copy.labels.deferred, value: coverage.deferred, tone: 'text-amber-700 dark:text-amber-300' },
+              { label: copy.labels.coverage, value: `${coverage.percent}%`, tone: 'text-sky-700 dark:text-sky-300' },
+            ].map((metric) => (
+              <div key={metric.label} className="rounded-xl border border-border-color bg-white/80 px-3 py-3 dark:bg-slate-950/50">
+                <div className="text-[11px] font-semibold uppercase tracking-wide text-text-secondary">{metric.label}</div>
+                <div className={`mt-1 text-2xl font-bold ${metric.tone}`}>{metric.value}</div>
+              </div>
+            ))}
           </div>
 
           <div className="mt-4 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
@@ -652,6 +745,56 @@ export const GoalVisualizationQaView: React.FC = () => {
           ) : null}
 
           {visibleRecords.map((record) => {
+            if (!hasActiveVisualization(record)) {
+              const deferred = isDeferredVisualization(record)
+              return (
+                <article
+                  key={`${record.goalId}:missing`}
+                  className={`rounded-2xl border p-4 shadow-sm ${deferred
+                    ? 'border-amber-300 bg-amber-50/80 dark:border-amber-900/70 dark:bg-amber-950/20'
+                    : 'border-rose-200 bg-white/80 dark:border-rose-950/70 dark:bg-slate-900/80'
+                  }`}
+                >
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="min-w-0">
+                      <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wide ${deferred
+                        ? 'border-amber-300 bg-amber-100 text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200'
+                        : 'border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-200'
+                      }`}>
+                        {deferred ? <AlertTriangle size={15} /> : <Image size={15} />}
+                        <span>{deferred ? copy.labels.deferred : copy.labels.noImage}</span>
+                      </div>
+                      <h2 className="mt-3 text-xl font-semibold text-text-primary">{record.title}</h2>
+                      <p className="mt-2 text-sm leading-relaxed text-text-secondary">{record.description}</p>
+                    </div>
+                    <span className="shrink-0 rounded-full border border-border-color px-3 py-1 text-xs font-mono text-text-secondary">
+                      {subjectLabel(record.subject)}
+                    </span>
+                  </div>
+
+                  <div className={`mt-4 rounded-xl border px-4 py-3 text-sm ${deferred
+                    ? 'border-amber-200 bg-white/70 text-amber-900 dark:border-amber-900 dark:bg-slate-950/40 dark:text-amber-100'
+                    : 'border-rose-100 bg-rose-50/60 text-rose-900 dark:border-rose-950 dark:bg-slate-950/40 dark:text-rose-100'
+                  }`}>
+                    <p className="font-semibold">{deferred ? copy.labels.deferredProvider : copy.labels.noPrimaryLink}</p>
+                    {record.missingNotes ? <p className="mt-2 leading-relaxed opacity-90">{record.missingNotes}</p> : null}
+                    <p className="mt-2 text-xs opacity-75">{copy.labels.notReviewable}</p>
+                  </div>
+
+                  <dl className="mt-4 grid grid-cols-1 gap-2 text-xs text-text-secondary md:grid-cols-2">
+                    <div className="min-w-0">
+                      <dt className="font-semibold uppercase tracking-wide">{copy.labels.goalId}</dt>
+                      <dd className="truncate font-mono">{record.goalId}</dd>
+                    </div>
+                    <div className="min-w-0">
+                      <dt className="font-semibold uppercase tracking-wide">{copy.labels.path}</dt>
+                      <dd className="truncate font-mono">{record.landscapePath}</dd>
+                    </div>
+                  </dl>
+                </article>
+              )
+            }
+
             const aiStatus = aiApprovalStatus(record)
             const reconstructionState = reconstructionPrompts[reconstructionPromptKey(record)]
             const alternativePrompt = reconstructionState?.status === 'loaded'

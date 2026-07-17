@@ -200,6 +200,11 @@ run_curriculum_frontend_ci() {
   echo "Running Curriculum Data and Package CI"
   echo "=========================================="
 
+  echo "--> Testing Goal Visualization Scope and Rollout Model"
+  npm run test:goal-visualization-scope
+  npm run test:goal-visualization-rollout-status
+  npm run test:goal-visualization-approval-coverage
+
   echo "--> Running Graph Validation"
   npm run validate:graph
 
@@ -277,6 +282,18 @@ run_curriculum_frontend_ci() {
 
   echo "--> Checking Goal Visualization Runtime Assets"
   npm run check:goal-visualization-assets
+
+  echo "--> Checking Goal Visualization QA Freshness"
+  npm run check:goal-visualization-qa -- --subjects=mathematik,physik,chemie
+
+  echo "--> Checking Goal Visualization Approval Coverage"
+  npm run check:goal-visualization-approval-coverage
+
+  echo "--> Checking Goal Visualization Coverage"
+  npm run check:goal-visualization-rollout-coverage
+  npm run check:goal-visualization-rollout-coverage:physik
+  npm run check:goal-visualization-rollout-coverage:chemie
+  npm run check:goal-visualization-qa-coverage-parity
 
   echo "--> Testing Full Standalone Curriculum Package Builder"
   npm run test:full-standalone-package-builder

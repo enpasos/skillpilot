@@ -79,6 +79,9 @@ jobs:
         run: |
           npm run test:goal-visualization-qa-status
           npm run test:goal-visualization-qa-model
+          npm run test:goal-visualization-scope
+          npm run test:goal-visualization-rollout-status
+          npm run test:goal-visualization-approval-coverage
       - name: Test learner goal selection
         run: npm run validate:learner-goal-selection
       - name: Check GPT system instruction lengths
@@ -163,6 +166,16 @@ jobs:
         run: npm run prepare:runtime-assets
       - name: Check goal visualization runtime assets
         run: npm run check:goal-visualization-assets
+      - name: Check goal visualization QA freshness
+        run: npm run check:goal-visualization-qa -- --subjects=mathematik,physik,chemie
+      - name: Check goal visualization approval coverage
+        run: npm run check:goal-visualization-approval-coverage
+      - name: Check goal visualization rollout coverage
+        run: |
+          npm run check:goal-visualization-rollout-coverage
+          npm run check:goal-visualization-rollout-coverage:physik
+          npm run check:goal-visualization-rollout-coverage:chemie
+          npm run check:goal-visualization-qa-coverage-parity
       - name: Test full standalone curriculum package builder
         run: npm run test:full-standalone-package-builder
       - name: Build integrated application artifact
