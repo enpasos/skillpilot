@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
 - Status: accepted
 - Quellbild: `16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg`
 - Public Asset: `/assets/goal-visualizations/chemie/16a80de2-b5e0-5467-a9b3-5860730d7d8b/16a80de2-b5e0-5467-a9b3-5860730d7d8b.jpg`
@@ -19,7 +19,7 @@
 Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
 
 Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Schulform-, Fach- oder Publikumshinweise als Bildtext.
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
 - Erzeuge eine klare, gut lesbare Infografik im Querformat.
 - Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
 - Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
@@ -31,24 +31,9 @@ Titel: Reaktionen von Alkalimetallen und Alkalimetalloxiden mit Wasser deuten
 Beschreibung: Die lernende Person kann Reaktionen von Alkalimetallen mit Wasser sowie von Alkalimetalloxiden mit Wasser beschreiben und die Bildung alkalischer Loesungen deuten.
 
 Zusatzanweisung:
-Pflichtinhalt:
+Erzeuge eine fachlich konservative, zweigeteilte Lerninfografik ohne zählbare Ionenkugeln. Links muss exakt stehen: „2 Na + 2 H₂O → 2 NaOH + H₂“. Zeige dort Natriummetall, Wasser und ausschließlich auf der Produktseite gasförmigen Wasserstoff H₂. Rechts muss exakt stehen: „Na₂O + H₂O → 2 NaOH“. Zeige dort Natriumoxid und Wasser, aber nirgends Wasserstoff.
 
-- Do not include technical identifiers, filenames, watermarks, platform names, product names, or school/audience labels in the image.
-- Create an appealing German cartoon learning image titled `Alkalische Lösung entsteht`.
-- Show two separate, clearly labelled reaction cards:
-  1. `Natrium + Wasser` with equation `2 Na + 2 H2O -> 2 NaOH + H2`
-  2. `Natriumoxid + Wasser` with equation `Na2O + H2O -> 2 NaOH`
-- Show one beaker after each reaction labelled `alkalisch` with `OH-` ions and a blue indicator strip.
-- Use arrows only inside each reaction card from reactants to products.
-- Keep the sodium-water scene small and safe: tiny sodium piece, shield screen, no person touching it.
-
-Vermeiden:
-
-- Do not write unbalanced reaction equations.
-- Do not write `Na + H2O -> NaOH` without hydrogen gas and coefficients.
-- Do not show acid formation.
-- Do not label `NaOH` as neutral.
-- Do not connect the two reactions with an arrow as if one reaction sequence causes the other.
+Unter beiden Reaktionen steht identisch und gut lesbar: „In Wasser: NaOH → Na⁺ + OH⁻ (Verhältnis 1:1; Lösung elektrisch neutral)“ und „OH⁻ bewirkt die alkalische Reaktion der Lösung“. Zeichne keine einzelnen Na⁺- oder OH⁻-Teilchen in Bechergläsern und keine frei schwebenden Ladungszeichen; die 1:1-Aussage wird ausschließlich durch diese Formel und den Text dargestellt. Alle Indizes und Ladungen müssen korrekt platziert sein. Keine weiteren Reaktionsgleichungen, keine Logos, keine Wasserzeichen.
 ```
 
 ## Review-Notiz

@@ -13,8 +13,10 @@ import {
 
 const DEFAULT_MODEL = 'gemini-2.5-flash'
 const DEFAULT_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models'
-const DEFAULT_QA_DIR = 'curricula/DE/Gymnasium/quality/goal-visualization-qa'
+const DEFAULT_CANONICAL_DIR = 'curricula/DE/Gymnasium/canonical'
 const DEFAULT_TRACE_DIR = 'tmp/goal-visualization-reconstruction-prompts'
+const CANONICAL_VISUALIZATION_ROOT = resolveProjectPath('curricula/DE/Gymnasium/visualizations')
+const allowedImageExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp'])
 
 function usage() {
   return [
@@ -25,7 +27,7 @@ function usage() {
     '  GEMINI_API_KEY or GOOGLE_API_KEY must be set unless --dry-run is used.',
     '',
     'Options:',
-    `  --qa-dir <path>          QA ledger directory. Default: ${DEFAULT_QA_DIR}`,
+    `  --canonical-dir <path>   Canonical landscape directory. Default: ${DEFAULT_CANONICAL_DIR}`,
     '  --subject <slug>        Optional subject filter, e.g. mathematik, physik, chemie.',
     '  --goal <id>             Optional single goal ID filter.',
     '  --limit <n>             Process at most n missing prompts.',
@@ -145,7 +147,7 @@ async function requestReconstructionPrompt({ endpoint, model, apiKey, imagePath 
     }
   }
 
-  const prompt = textParts.join('\n\n').trim()
+  const prompt = normalizeGeneratedPrompt(textParts.join('\n\n'))
   if (!prompt) {
     throw new Error('Gemini prompt reconstruction response did not contain text.')
   }
@@ -153,37 +155,116 @@ async function requestReconstructionPrompt({ endpoint, model, apiKey, imagePath 
   return { payload, prompt }
 }
 
-function collectQaLedgers(qaDir) {
-  const fullDir = resolveProjectPath(qaDir)
+function normalizeGeneratedPrompt(rawPrompt) {
+  const trimmed = rawPrompt.trim()
+  const fenced = trimmed.match(/^```(?:text|markdown)?\s*\n([\s\S]*?)\n```$/iu)
+  const prompt = (fenced?.[1] ?? trimmed).trim()
+  if (prompt.includes('```')) {
+    throw new Error('Generated prompt contains an unexpected Markdown fence.')
+  }
+  return prompt
+}
+
+function collectCanonicalLandscapes(canonicalDir) {
+  const fullDir = resolveProjectPath(canonicalDir)
   return fs
     .readdirSync(fullDir)
-    .filter((name) => name.endsWith('.qa.json'))
+    .filter((name) => name.endsWith('.json'))
     .map((name) => path.join(fullDir, name))
     .sort()
+}
+
+function primaryVisualizationLink(goal) {
+  const links = (goal.resourceLinks ?? []).filter((link) => (
+    link?.type === 'goal-visualization'
+    && link?.resourceType === 'image'
+    && link?.role === 'primary'
+    && typeof link?.url === 'string'
+  ))
+  if (links.length > 1) {
+    throw new Error(`Goal ${goal.id} has multiple primary goal-visualization links.`)
+  }
+  return links[0]
+}
+
+function visualizationAssetLocation(goalId, url) {
+  const prefix = '/assets/goal-visualizations/'
+  if (!url.startsWith(prefix)) {
+    throw new Error(`Goal ${goalId} has a primary visualization URL outside ${prefix}.`)
+  }
+  const assetRelativePath = url.slice(prefix.length)
+  const segments = assetRelativePath.split('/')
+  const subject = segments[0] ?? ''
+  const extension = path.extname(segments[2] ?? '').toLowerCase()
+  if (
+    segments.length !== 3
+    || !/^[a-z0-9][a-z0-9-]*$/u.test(subject)
+    || segments[1] !== goalId
+    || segments[2] !== `${goalId}${extension}`
+    || !allowedImageExtensions.has(extension)
+    || segments.some((segment) => segment === '.' || segment === '..' || segment.includes('\\'))
+  ) {
+    throw new Error(`Goal ${goalId} has an invalid goal-visualization URL schema.`)
+  }
+
+  const imagePath = path.resolve(CANONICAL_VISUALIZATION_ROOT, assetRelativePath)
+  if (!imagePath.startsWith(`${CANONICAL_VISUALIZATION_ROOT}${path.sep}`)) {
+    throw new Error(`Goal ${goalId} resolves outside the canonical visualization root.`)
+  }
+  if (!fs.existsSync(imagePath)) {
+    throw new Error(`Goal ${goalId} is missing its canonical visualization image.`)
+  }
+  const realRoot = fs.realpathSync(CANONICAL_VISUALIZATION_ROOT)
+  const realImagePath = fs.realpathSync(imagePath)
+  const realImageDirectory = fs.realpathSync(path.dirname(imagePath))
+  for (const [label, realPath] of [
+    ['image', realImagePath],
+    ['image directory', realImageDirectory],
+  ]) {
+    if (realPath !== realRoot && !realPath.startsWith(`${realRoot}${path.sep}`)) {
+      throw new Error(`Goal ${goalId} ${label} escapes the canonical visualization root through a symlink.`)
+    }
+  }
+  return { assetRelativePath, imagePath, subject }
 }
 
 function collectRecords(args) {
   const subjectFilter = getStringArg(args, 'subject')
   const goalFilter = getStringArg(args, 'goal')
   const includeExisting = getBooleanArg(args, 'include-existing')
-  const qaDir = getStringArg(args, 'qa-dir', DEFAULT_QA_DIR) ?? DEFAULT_QA_DIR
+  const canonicalDir = getStringArg(args, 'canonical-dir', DEFAULT_CANONICAL_DIR) ?? DEFAULT_CANONICAL_DIR
   const records = []
 
-  for (const ledgerPath of collectQaLedgers(qaDir)) {
-    const ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf-8'))
-    for (const record of ledger.records ?? []) {
-      if (subjectFilter && record.subject !== subjectFilter) continue
-      if (goalFilter && record.goalId !== goalFilter) continue
-      if (!record.canonicalAssetPath || !record.goalId) continue
+  for (const landscapePath of collectCanonicalLandscapes(canonicalDir)) {
+    const landscape = JSON.parse(fs.readFileSync(landscapePath, 'utf-8'))
+    for (const goal of landscape.goals ?? []) {
+      const link = primaryVisualizationLink(goal)
+      if (!link || !goal.id) continue
+      const location = visualizationAssetLocation(goal.id, link.url)
+      if (!location) continue
+      const { subject, imagePath } = location
+      if (subjectFilter && subject !== subjectFilter) continue
+      if (goalFilter && goal.id !== goalFilter) continue
 
-      const imagePath = resolveProjectPath(record.canonicalAssetPath)
       const promptPath = path.join(path.dirname(imagePath), 'image-reconstruction-prompt.de.md')
       const hasPrompt = fs.existsSync(promptPath)
+      if (hasPrompt) {
+        const realRoot = fs.realpathSync(CANONICAL_VISUALIZATION_ROOT)
+        const realPromptPath = fs.realpathSync(promptPath)
+        if (realPromptPath !== realRoot && !realPromptPath.startsWith(`${realRoot}${path.sep}`)) {
+          throw new Error(`Goal ${goal.id} reconstruction prompt escapes the canonical visualization root through a symlink.`)
+        }
+      }
       if (hasPrompt && !includeExisting) continue
 
       records.push({
-        ledgerPath,
-        record,
+        landscapePath,
+        record: {
+          subject,
+          goalId: goal.id,
+          title: goal.title,
+          description: goal.description,
+        },
         imagePath,
         promptPath,
         hasPrompt,

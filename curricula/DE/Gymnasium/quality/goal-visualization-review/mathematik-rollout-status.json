@@ -1,31 +1,33 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-16T22:32:19.370Z",
+  "generatedAt": "2026-07-17T05:43:41.200Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
     "reviewDirPath": "curricula/DE/Gymnasium/quality/goal-visualization-review",
-    "currentResumeFilePath": "tmp/goal-visualization-batch-076.resume.txt",
-    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/batch-076"
+    "currentResumeFilePath": "",
+    "currentPromptAppendDirPath": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "summary": {
     "totalGoals": 1079,
     "atomicGoalsInScope": 754,
-    "goalsWithPrimaryVisualization": 730,
-    "coveragePercent": 96.8,
+    "goalsWithPrimaryVisualization": 731,
+    "coveragePercent": 96.9,
     "goalsAccountedForByAssetOrDeferred": 754,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
+      "accepted": 1,
       "approved": 18,
       "pilot": 712
     },
     "linkedVisualizationReviewStatuses": {
+      "accepted": 1,
       "approved": 18,
       "pilot": 712
     },
-    "reviewLedgerFiles": 216,
+    "reviewLedgerFiles": 217,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
@@ -33,6 +35,7 @@
       "accepted_context_visualization": 2,
       "accepted_pilot": 603,
       "accepted_pilot_after_fresh_ai_review": 88,
+      "accepted_pilot_after_fresh_ai_review_correction": 1,
       "accepted_pilot_after_provider_retry": 2,
       "accepted_pilot_after_regeneration": 159,
       "accepted_pilot_after_resume": 5,
@@ -55,7 +58,7 @@
       "rejected_regenerated": 80,
       "rejected_removed": 1
     },
-    "openProviderDeferredGoals": 24,
+    "openProviderDeferredGoals": 23,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 2,
     "regularUnlinkedGoals": 0,
@@ -64,27 +67,13 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-207.md",
-    "latestLedgerStatus": "completed_with_one_deferred_provider_limitation",
-    "resumeFile": "tmp/goal-visualization-batch-076.resume.txt",
-    "promptAppendDir": "tmp/goal-visualization-prompt-appends/batch-076"
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-208.md",
+    "latestLedgerStatus": "completed",
+    "resumeFile": "",
+    "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
   },
   "qualityQueues": {
     "openProviderDeferred": [
-      {
-        "batch": "mathematik-ai-correction-shard-1",
-        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
-        "title": "`deferred_provider_limitation`",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three attempts corrected the original absolute-spread misconception by using `X/n`, but none simultaneously kept comparable-alpha decision boundaries and unambiguous alpha/beta region labels. The final attempt still pointed `β≈0` into a region right of the decision boundary. The active link and canonical, public, and backend asset copies were removed."
-      },
-      {
-        "batch": "mathematik-ai-correction-shard-1",
-        "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93",
-        "title": "`deferred_provider_limitation`",
-        "decision": "deferred_provider_limitation",
-        "notes": "Three targeted attempts alternated between shifted `μ=0` maxima, a false `k`-effect label, and an unpaired extra catenary branch. The active link and canonical, public, and backend asset copies were removed."
-      },
       {
         "batch": "194",
         "goalId": "dc12f281-f161-572b-a973-8405ae9b2498",
@@ -100,11 +89,18 @@
         "notes": "Previous active SHA-256 `2194f6769d8d770d4de9cef2b6e61a8073ba35982cea7680abe63d3efd3c8fb5` was withdrawn. Drei gezielte Kandidaten koppeln die beschrifteten Koordinaten nicht korrekt an die gezeichneten Rechteck-Eckpunkte. Ein fachlich korrektes Asset ist aus dieser Provider-Runde nicht importierbar. The active link and canonical, public, and backend image copies were removed."
       },
       {
-        "batch": "207",
-        "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
-        "title": "Funktionsgleichungen aus Graphen bestimmen",
+        "batch": "mathematik-ai-correction-shard-1",
+        "goalId": "ae483d98-54e0-5985-96d2-fc1351d22e4f",
+        "title": "Hypothesentests bei verändertem Stichprobenumfang variieren",
         "decision": "deferred_provider_limitation",
-        "notes": "5)`. The image was unlinked and unpublished; regeneration is deferred until provider capacity is available."
+        "notes": "Three attempts corrected the original absolute-spread misconception by using `X/n`, but none simultaneously kept comparable-alpha decision boundaries and unambiguous alpha/beta region labels. The final attempt still pointed `β≈0` into a region right of the decision boundary. The active link and canonical, public, and backend asset copies were removed."
+      },
+      {
+        "batch": "mathematik-ai-correction-shard-1",
+        "goalId": "05946a6a-b41e-5cec-8a39-237f889f4d93",
+        "title": "Kettenlinien und Glockenkurven untersuchen (LK)",
+        "decision": "deferred_provider_limitation",
+        "notes": "Three targeted attempts alternated between shifted `μ=0` maxima, a false `k`-effect label, and an unpaired extra catenary branch. The active link and canonical, public, and backend asset copies were removed."
       },
       {
         "batch": "197",
@@ -298,7 +294,7 @@
         "goalId": "66077296-a8f8-4645-938b-7c3424cb2f14",
         "title": "Wurzelfunktionen graphisch untersuchen",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "3)`. This addresses the reported issue."
+        "notes": "0)\" arrow directly on that point, while keeping `y=sqrt(x)`, `D=[0;∞)`, `W=[0;∞)`, and the points `(1|1)`, `(4|2)`, `(9|3)`. This addresses the reported issue."
       },
       {
         "batch": "041",
@@ -333,7 +329,7 @@
         "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
         "title": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "0,0`, and column sums `1,0`."
+        "notes": "The corrected image keeps the graph/table split, shows all nine directed transitions including `A->A`, `B->B`, `C->C`, `C->B`, and all other zero-probability transitions, and uses source-color-consistent arrows. The table is a `von`/`nach` matrix with source states as columns, target states as rows, values `nach A: 0,0 | 0,4 | 1,0`, `nach B: 0,7 | 0,0 | 0,0`, `nach C: 0,3 | 0,6 | 0,0`, and column sums `1,0`."
       },
       {
         "batch": "136",
@@ -361,12 +357,12 @@
         "goalId": "ebc41c8b-5754-5161-9b07-f4525b9fd9b4",
         "title": "Eigenschaften von Funktionssummen graphisch begründen (LK)",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "6` are correct. No curve, false straight line, or misleading arrow is present."
+        "notes": "The accepted image avoids unreliable continuous curves and instead uses pointwise value columns for `f(x)=x^2`, `g(x)=x`, and `h(x)=f(x)+g(x)`. For `x=1`, the blue segment has value `1`, the green stacked segment has value `1`, and the red top point is labelled `h(1)=2`; the visible height therefore matches the value. For `x=2`, the blue segment is `f(2)=4`, the green stacked segment is `g(2)=2`, and the red top point is `h(2)=6`. The table rows `1 | 1 | 1 | 2` and `2 | 4 | 2 | 6` are correct. No curve, false straight line, or misleading arrow is present."
       },
       {
         "batch": "146",
         "goalId": "2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2",
-        "title": "Ableitungen von Sinus und Kosinus grafisch begruenden",
+        "title": "Ableitungen von Sinus und Kosinus grafisch begründen",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "User-approved replacement imported from `tmp/Gemini_Generated_Image_onggg6onggg6ongg.png`. The image preserves the corrected hint/label layout, keeps the sine and cosine derivative relationship visually aligned, and is considered good enough for the current curated pilot despite the prior stricter tangent-geometry concern. The active `goal-visualization` link now points to the PNG asset."
       },
@@ -387,7 +383,7 @@
       {
         "batch": "150",
         "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
-        "title": "Zusammenhang von f und f' am Graphen beschreiben",
+        "title": "Zusammenhang von f und f′ am Graphen beschreiben",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "Accepted after the second targeted Nano Banana Pro attempt. The blue graph `f(x)=x^3-3x` has a high point at `x=-1` and a low point at `x=1`; the red derivative graph `f'(x)=3x^2-3` is a U-shaped parabola with zeros exactly at `x=-1` and `x=1`. The sign labels match the monotonicity intervals: `f'>0` outside `[-1,1]`, `f'<0` between `-1` and `1`. Visible German text is acceptable."
       },
@@ -396,7 +392,7 @@
         "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
         "title": "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "=4`, and `12/4=3` are coherent, and visible German text uses correct umlauts."
+        "notes": "Accepted after one targeted Nano Banana Pro attempt. The image keeps `a=(4,0)` and `b=(3,2)`, shows the orthogonal projection of `b` onto the direction of `a` ending directly below `b` at `x=3`, and makes the projection length visibly about `3/4` of the full `|a|=4` baseline. The formulas `a*b=4*3+0*2=12`, `|a|=4`, and `12/4=3` are coherent, and visible German text uses correct umlauts."
       },
       {
         "batch": "152",
@@ -410,7 +406,7 @@
         "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
         "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "1)`, matching the algebraic solution `x=1`. Visible German text and umlauts are acceptable."
+        "notes": "Accepted after the second targeted Nano Banana Pro attempt. The red graph `y = 2/(x+1)` now has the correct vertical asymptote `x=-1`, a positive branch for `x>-1`, and a negative branch for `x<-1` in both the individual and combined graph panels. The blue graph `y=1/x` and the red graph meet at `S(1|1)`, matching the algebraic solution `x=1`. Visible German text and umlauts are acceptable."
       },
       {
         "batch": "154",
@@ -431,14 +427,14 @@
         "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
         "title": "Betrag eines Vektors im Raum bestimmen",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "=13` are mutually consistent. Visible German umlauts are correct."
+        "notes": "Accepted after targeted regeneration with a precise geometry reference. The corrected image shows the x-, y-, and z-axes as arrows starting at the common origin `O`; the y-axis is explicitly drawn from `O`. The yellow vector starts at `O` and ends at the rear upper right cuboid corner labelled `P(3|4|12)`. The visible values `x=3`, `y=4`, `z=12`, and `|v|=13` are mutually consistent. Visible German umlauts are correct."
       },
       {
         "batch": "157",
         "goalId": "797ee047-b8dd-45cf-880e-98571a56c690",
         "title": "Bruchgleichungen lösen und als Schnittprobleme deuten",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "1)`, and approaches the x-axis from above to the right. The blue graph `y=1/x` and the algebraic solution `x=1` are coherent. Visible German umlauts are correct."
+        "notes": "Accepted after simplifying the right side to one large shared intersection graph. The red graph `y=2/(x+1)` has vertical asymptote `x=-1`, stays below the x-axis for `x<-1`, stays above the x-axis for `x>-1`, passes through `S(1|1)`, and approaches the x-axis from above to the right. The blue graph `y=1/x` and the algebraic solution `x=1` are coherent. Visible German umlauts are correct."
       },
       {
         "batch": "158",
@@ -529,14 +525,14 @@
         "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
         "title": "Eigenschaften der natürlichen Exponentialfunktion begründen",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "1)`, tangent, derivative note, and value table remain coherent. German spelling and visible notation are correct."
+        "notes": "The corrected image keeps the existing exponential-function poster and reverses the left-side arrow next to `nähert sich 0, bleibt positiv`. The arrow now points toward negative x direction, matching the limit behavior as `x` goes to negative infinity. The curve remains positive and approaches the x-axis from above on the left. The right growth arrow, point `(0|1)`, tangent, derivative note, and value table remain coherent. German spelling and visible notation are correct."
       },
       {
         "batch": "171",
         "goalId": "82597dfb-0ec6-4a77-abaf-e1d6bdd12041",
         "title": "Einheitskreis und Bogenmass für trigonometrische Funktionen nutzen",
         "decision": "accepted_pilot_after_user_review_correction",
-        "notes": "√3/2)`, the angle `α = π/3 = 60°`, the red arc from `0` to `π/3`, and the sine/cosine coordinate annotations remain coherent."
+        "notes": "The corrected image keeps the unit-circle geometry and fixes the label next to the red arc to `Bogenlänge π/3` with a correctly drawn German umlaut. The point `P(1/2 | √3/2)`, the angle `α = π/3 = 60°`, the red arc from `0` to `π/3`, and the sine/cosine coordinate annotations remain coherent."
       },
       {
         "batch": "172",
@@ -2369,6 +2365,14 @@
       "area": "",
       "reviewStatus": "pilot",
       "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg"
+    },
+    {
+      "goalId": "1801c759-d92d-5bfb-a44f-cfd2455d207b",
+      "title": "Funktionsgleichungen aus Graphen bestimmen",
+      "phase": "E",
+      "area": "",
+      "reviewStatus": "accepted",
+      "url": "/assets/goal-visualizations/mathematik/1801c759-d92d-5bfb-a44f-cfd2455d207b/1801c759-d92d-5bfb-a44f-cfd2455d207b.jpg"
     },
     {
       "goalId": "08b80080-4895-55df-8ca6-4e8c5eb0f9f5",

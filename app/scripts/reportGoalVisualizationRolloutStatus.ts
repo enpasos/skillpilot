@@ -41,7 +41,7 @@ interface SubjectDefaults {
   qualityScriptName: string
 }
 
-interface ReviewDecisionRow {
+export interface ReviewDecisionRow {
   batch: string
   goalId: string
   title: string
@@ -134,8 +134,8 @@ const subjectDefaults: Record<string, SubjectDefaults> = {
     displayName: 'Mathematik',
     scopeName: 'DE Gymnasium Mathematik',
     landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
-    currentResumeFilePath: 'tmp/goal-visualization-batch-076.resume.txt',
-    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/batch-076',
+    currentResumeFilePath: '',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17',
     outputJsonPath: `${defaultReviewDirPath}/mathematik-rollout-status.json`,
     outputMarkdownPath: `${defaultReviewDirPath}/mathematik-rollout-status.md`,
     qualityScriptName: 'quality:goal-visualization-rollout-status',
@@ -144,7 +144,7 @@ const subjectDefaults: Record<string, SubjectDefaults> = {
     displayName: 'Physik',
     scopeName: 'DE Gymnasium Physik',
     landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
-    currentResumeFilePath: 'tmp/goal-visualization-physik-batch-073.resume.txt',
+    currentResumeFilePath: '',
     currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2',
     outputJsonPath: `${defaultReviewDirPath}/physik-rollout-status.json`,
     outputMarkdownPath: `${defaultReviewDirPath}/physik-rollout-status.md`,
@@ -154,8 +154,8 @@ const subjectDefaults: Record<string, SubjectDefaults> = {
     displayName: 'Chemie',
     scopeName: 'DE Gymnasium Chemie',
     landscapePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',
-    currentResumeFilePath: 'tmp/goal-visualization-chemie-batch-015.resume.txt',
-    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction',
+    currentResumeFilePath: '',
+    currentPromptAppendDirPath: 'tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17',
     outputJsonPath: `${defaultReviewDirPath}/chemie-rollout-status.json`,
     outputMarkdownPath: `${defaultReviewDirPath}/chemie-rollout-status.md`,
     qualityScriptName: 'quality:goal-visualization-rollout-status:chemie',
@@ -286,6 +286,73 @@ function parseLedgerReviewDate(text: string, fileName: string): string {
   return metadataDate ?? fileName.match(/(\d{4}-\d{2}-\d{2})/u)?.[1] ?? ''
 }
 
+export function splitMarkdownTableRow(line: string): string[] {
+  const cells: string[] = []
+  let cell = ''
+  let codeFenceLength = 0
+  let escaped = false
+
+  const trimmed = line.trim()
+  for (let index = 0; index < trimmed.length; index += 1) {
+    const character = trimmed[index]
+    if (escaped) {
+      cell += character
+      escaped = false
+      continue
+    }
+    if (character === '\\') {
+      cell += character
+      escaped = true
+      continue
+    }
+    if (character === '`') {
+      let runLength = 1
+      while (trimmed[index + runLength] === '`') runLength += 1
+      const run = '`'.repeat(runLength)
+      if (codeFenceLength === 0) {
+        codeFenceLength = runLength
+      } else if (codeFenceLength === runLength) {
+        codeFenceLength = 0
+      }
+      cell += run
+      index += runLength - 1
+      continue
+    }
+    if (character === '|' && codeFenceLength === 0) {
+      cells.push(cell.trim())
+      cell = ''
+      continue
+    }
+    cell += character
+  }
+  cells.push(cell.trim())
+
+  if (cells[0] === '') cells.shift()
+  if (cells.at(-1) === '') cells.pop()
+  return cells
+}
+
+export function parseReviewDecisionRow(line: string, batch: string): ReviewDecisionRow | null {
+  if (!/^\s*\|/u.test(line)) return null
+  const cells = splitMarkdownTableRow(line)
+  const goalId = cells[0]?.match(/^`?([0-9a-f]{8}-[0-9a-f-]{27,})`?$/iu)?.[1]
+  if (!goalId) return null
+  const codeCells = cells.flatMap((cell) => Array.from(cell.matchAll(/`([^`]+)`/g), (match) => match[1]))
+  const decision = codeCells.find(isReviewDecision)
+  if (!decision) return null
+  const fallbackTitle = cells
+    .slice(1)
+    .find((cell) => !Array.from(cell.matchAll(/`([^`]+)`/g), (match) => match[1]).some(isReviewDecision))
+    ?? ''
+  return {
+    batch,
+    goalId,
+    title: fallbackTitle.replace(/^`+|`+$/gu, '').trim(),
+    decision,
+    notes: cells.at(-1)?.trim() ?? '',
+  }
+}
+
 function parseReviewLedger(path: string, subject: string): ReviewLedger {
   const text = readFileSync(resolveRepoPath(path), 'utf8')
   const fileName = basename(path)
@@ -294,18 +361,8 @@ function parseReviewLedger(path: string, subject: string): ReviewLedger {
   const decisions: ReviewDecisionRow[] = []
 
   text.split(/\r?\n/).forEach((line) => {
-    const identityMatch = line.match(/^\|\s*`([0-9a-f-]+)`\s*\|\s*([^|]+?)\s*\|/i)
-    if (!identityMatch) return
-    const codeCells = Array.from(line.matchAll(/`([^`]+)`/g), (match) => match[1])
-    const decision = codeCells.slice(1).find(isReviewDecision)
-    if (!decision) return
-    decisions.push({
-      batch,
-      goalId: identityMatch[1],
-      title: identityMatch[2].trim(),
-      decision,
-      notes: line.split('|').at(-2)?.trim() ?? '',
-    })
+    const decision = parseReviewDecisionRow(line, batch)
+    if (decision) decisions.push(decision)
   })
 
   return {
@@ -370,6 +427,7 @@ function percent(count: number, total: number): number {
 
 function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutReport {
   const landscape = readJson<LearningLandscape>(args.landscapePath)
+  const canonicalTitleByGoalId = new Map(landscape.goals.map((goal) => [goal.id, goal.title]))
   const atomicGoals = landscape.goals.filter(isOrdinaryAtomicGoalForVisualization)
   const visualizedGoals: GoalVisualizationRow[] = atomicGoals.flatMap((goal) => {
     const link = primaryVisualizationLink(goal, args.subject)
@@ -384,7 +442,13 @@ function buildReport(args: Args, generatedAt: string): GoalVisualizationRolloutR
     }]
   }).sort((left, right) => left.title.localeCompare(right.title))
 
-  const ledgers = loadReviewLedgers(args.reviewDirPath, args.subject)
+  const ledgers = loadReviewLedgers(args.reviewDirPath, args.subject).map((ledger) => ({
+    ...ledger,
+    decisions: ledger.decisions.map((decision) => ({
+      ...decision,
+      title: canonicalTitleByGoalId.get(decision.goalId) ?? decision.title,
+    })),
+  }))
   const decisions = ledgers.flatMap((ledger) => ledger.decisions)
   const latestDecisions = latestDecisionRows(ledgers)
   const latestDecisionByGoalId = new Map(latestDecisions.map((row) => [row.goalId, row]))
@@ -604,7 +668,7 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
     [
       ['Latest ledger', report.currentBatch.latestLedger ? `\`${report.currentBatch.latestLedger}\`` : '-'],
       ['Latest ledger status', report.currentBatch.latestLedgerStatus ? `\`${report.currentBatch.latestLedgerStatus}\`` : '-'],
-      ['Configured resume file', `\`${report.currentBatch.resumeFile}\``],
+      ['Configured resume file', report.currentBatch.resumeFile ? `\`${report.currentBatch.resumeFile}\`` : '-'],
       ['Configured prompt append dir', `\`${report.currentBatch.promptAppendDir}\``],
     ],
   ))
@@ -662,7 +726,9 @@ function renderMarkdown(report: GoalVisualizationRolloutReport): string {
   lines.push('')
   lines.push(`- Landscape: \`${report.request.landscapePath}\``)
   lines.push(`- Review ledgers: \`${report.request.reviewDirPath}\``)
-  lines.push(`- Resume file: \`${report.request.currentResumeFilePath}\``)
+  if (report.request.currentResumeFilePath) {
+    lines.push(`- Resume file: \`${report.request.currentResumeFilePath}\``)
+  }
   lines.push(`- Prompt append dir: \`${report.request.currentPromptAppendDirPath}\``)
   lines.push('')
   return `${lines.join('\n')}\n`

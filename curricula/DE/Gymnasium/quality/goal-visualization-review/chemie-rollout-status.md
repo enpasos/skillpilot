@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T22:32:23.925Z
+Generated: 2026-07-17T05:43:44.688Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 473 |
 | Atomare Ziele im Visualisierungs-Scope | 376 |
-| Ziele mit primaerem Visualisierungslink | 269 |
-| Coverage | 71.5% |
+| Ziele mit primaerem Visualisierungslink | 353 |
+| Coverage | 93.9% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 376 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 17 |
-| Offene Provider-Deferred-Ziele | 107 |
+| Review-Ledger-Dateien | 18 |
+| Offene Provider-Deferred-Ziele | 23 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -36,7 +36,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 45 |
+| `accepted` | 129 |
 | `pilot` | 224 |
 
 ## Ledger Decisions
@@ -45,13 +45,13 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | --- | --- |
 | `accepted_corrected_candidate` | 32 |
 | `accepted_current` | 43 |
-| `accepted_new_candidate` | 192 |
+| `accepted_new_candidate` | 276 |
 | `accepted_pilot` | 59 |
 | `accepted_pilot_after_regeneration` | 13 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 3 |
 | `accepted_pilot_after_user_review_correction` | 2 |
-| `deferred_provider_limitation` | 107 |
+| `deferred_provider_limitation` | 130 |
 | `rejected_after_user_review_replaced` | 2 |
 | `rejected_regenerated` | 33 |
 
@@ -59,17 +59,17 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-017.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-018.md` |
 | Latest ledger status | `completed_with_provider_limit` |
-| Configured resume file | `tmp/goal-visualization-chemie-batch-015.resume.txt` |
-| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction` |
+| Configured resume file | - |
+| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17` |
 
 ## Interpretation
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 107 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 23 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -77,28 +77,28 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| 017 | `96d3f50b-62f7-5db4-8426-43b4a0c26543` | Acetylsalicylsäure aus Schmerztabletten extrahieren und vergleichen | `deferred_provider_limitation` |
-| 017 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `deferred_provider_limitation` |
-| 017 | `4b9810b0-5d3d-59d8-a948-c3f6dd6303c7` | Acidität und Basizität mit induktiven und mesomeren Effekten begründen | `deferred_provider_limitation` |
-| 017 | `4da0839d-ab6d-53c1-ac21-c9872555ae16` | Alkalische Esterhydrolyse mechanistisch vertiefen (LK) | `deferred_provider_limitation` |
-| 017 | `dd58c029-176f-5d99-923e-1c1fda6cf58e` | Alkane, Alkene und Alkine beschreiben | `deferred_provider_limitation` |
-| 017 | `345fdca9-038f-51e2-9bea-b6ac416a734a` | Alkanol-Strukturformeln fachgerecht darstellen | `deferred_provider_limitation` |
-| 017 | `536b48b2-7822-5b7e-9059-ad43400da7e0` | Alkanole benennen | `deferred_provider_limitation` |
-| 017 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
-| 017 | `126c56ef-25ac-57b6-84df-111b79d01b8d` | Antazida und Sodbrennen chemisch bewerten | `deferred_provider_limitation` |
-| 017 | `73547696-e225-5f14-839b-c77f54c32bae` | Antreffwahrscheinlichkeit mit Unbestimmtheit begründen | `deferred_provider_limitation` |
-| 017 | `7b443158-8ca9-5b8e-8328-a8fa56f6e26f` | Arznei- und Koerperpflegemittel herstellen und chemisch erklaeren | `deferred_provider_limitation` |
-| 017 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
-| 017 | `4bdbdf32-3021-5a0a-b412-b611166b2d21` | Benzolstruktur deuten | `deferred_provider_limitation` |
-| 017 | `e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e` | Bindungslängen und Molekülgeometrien modellgestützt begründen | `deferred_provider_limitation` |
-| 017 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
-| 017 | `a76ab487-4663-5005-8454-cb3196f3773b` | Bioethanolproduktion erklären | `deferred_provider_limitation` |
-| 017 | `0278a515-8990-5a1c-8a1b-a03382a144a3` | Biokunststoffe erläutern | `deferred_provider_limitation` |
-| 017 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `deferred_provider_limitation` |
-| 017 | `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `deferred_provider_limitation` |
-| 017 | `98ae3f8e-4800-5ff3-bd2c-89434c006143` | Carbonsäureester und Carbonsäureamide durch Kondensation bilden | `deferred_provider_limitation` |
+| 018 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `deferred_provider_limitation` |
+| 018 | `62149f36-87c0-5a2d-8a78-e7d4203f58c2` | Aminosäuren charakterisieren | `deferred_provider_limitation` |
+| 018 | `e5941581-0aba-5354-b4b9-d0249d4538a8` | Azo- und Triphenylmethanfarbstoffe mechanistisch darstellen | `deferred_provider_limitation` |
+| 018 | `f0f67a7a-b06a-50b9-8edc-1f2a0d97520d` | Bindungsverhältnisse aromatischer Systeme modellieren | `deferred_provider_limitation` |
+| 018 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `deferred_provider_limitation` |
+| 018 | `0cf2ffe1-a988-5ffb-ab37-0ac7d58b23dd` | Brennstoffzellen und Verbrennungskraftwerke multiperspektivisch bewerten | `deferred_provider_limitation` |
+| 018 | `bebea164-dfd7-51d9-a54a-7029c78b7f5f` | Fette bewerten | `deferred_provider_limitation` |
+| 018 | `3de28598-672f-5753-8a45-8f559c2f9dc2` | Funktionelle Gruppen qualitativ nachweisen | `deferred_provider_limitation` |
+| 018 | `0b5342b9-512d-573f-90d5-7522aee35efa` | Individuelle Verdauungs- und Resorptionsunterschiede begründen | `deferred_provider_limitation` |
+| 018 | `eb7537dd-d11b-50e9-a6d7-51a78e96fc4e` | Intermolekulare Kräfte vergleichen | `deferred_provider_limitation` |
+| 018 | `950c73c6-4ed1-488a-9267-1142e95e0055` | Ionenbindung und Ionengitter beschreiben | `deferred_provider_limitation` |
+| 018 | `8761cfd2-aa1a-56f1-9272-9cf66ef4b271` | Kohlenhydrate analysieren | `deferred_provider_limitation` |
+| 018 | `360fccb9-896d-5e67-bf5d-5732621604c9` | Nahrungsmittelinhaltsstoffe strukturbezogen einordnen | `deferred_provider_limitation` |
+| 018 | `f4d5a02d-711b-5a6b-a41d-971359c1f64d` | Optische Aktivität und Polarimetrie auswerten | `deferred_provider_limitation` |
+| 018 | `f0f2c5f8-06f1-5774-a176-d96505727acf` | pE/pH- und Pourbaix-Diagramme | `deferred_provider_limitation` |
+| 018 | `197bc2c5-835e-59e7-9263-5684e89799cc` | Peptidbindungen erklären | `deferred_provider_limitation` |
+| 018 | `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `deferred_provider_limitation` |
+| 018 | `02634fdd-c8ba-591a-b240-77129b1bebb8` | Säure-Base-Titrationen planen | `deferred_provider_limitation` |
+| 018 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `deferred_provider_limitation` |
+| 018 | `e56040b5-1da8-5080-b358-086d04922339` | Silikone herstellen und strukturbezogen vergleichen | `deferred_provider_limitation` |
 
-Weitere 87 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 3 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -137,6 +137,5 @@ Use this only for an intentional provider-limitation revisit. Generated candidat
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-chemie-batch-015.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/chemie-batch-015-umlaut-correction`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17`
 
