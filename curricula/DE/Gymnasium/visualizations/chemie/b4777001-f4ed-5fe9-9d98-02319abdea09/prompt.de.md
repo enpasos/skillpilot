@@ -1,0 +1,44 @@
+# Lernzielvisualisierung: Säure-Base-Paare vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `b4777001-f4ed-5fe9-9d98-02319abdea09`
+- Titel: Säure-Base-Paare vergleichen
+- Beschreibung: Die lernende Person kann mithilfe des Brønsted-Modells Reaktionsrichtungen abschätzen, Oxonium- und Hydroxidionen nachweisen und Modellvorstellungen reflektieren.
+
+## Generator
+
+- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Status: accepted
+- Quellbild: `b4777001-f4ed-5fe9-9d98-02319abdea09.jpg`
+- Public Asset: `/assets/goal-visualizations/chemie/b4777001-f4ed-5fe9-9d98-02319abdea09/b4777001-f4ed-5fe9-9d98-02319abdea09.jpg`
+
+## Prompt
+
+```text
+Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+
+Rahmen:
+- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
+- Erzeuge eine klare, gut lesbare Infografik im Querformat.
+- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
+- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
+- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
+- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
+- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+
+Titel: Säure-Base-Paare vergleichen
+Beschreibung: Die lernende Person kann mithilfe des Brønsted-Modells Reaktionsrichtungen abschätzen, Oxonium- und Hydroxidionen nachweisen und Modellvorstellungen reflektieren.
+
+Zusatzanweisung:
+Use case: scientific-educational
+Create a formula-and-text visual without ball models, loose H⁺ particles, balance scales, or indicators. Show exactly these two proton-transfer equations and no altered variants:
+"HCl + H₂O → H₃O⁺ + Cl⁻"
+"CH₃COOH + H₂O ⇌ H₃O⁺ + CH₃COO⁻"
+
+Use brackets or matching colours to identify the conjugate pairs HCl/Cl⁻, H₂O/H₃O⁺ and CH₃COOH/CH₃COO⁻. Beside HCl/Cl⁻ write "starke Säure / sehr schwache korrespondierende Base". Beside CH₃COOH/CH₃COO⁻ write "schwache Säure / stärkere korrespondierende Base". Write exactly "Je stärker eine Säure, desto schwächer ihre korrespondierende Base." and "Die bevorzugte Reaktionsrichtung führt zur schwächeren Säure und zur schwächeren Base." Never add an extra H⁺ on a reactant side. No logos or watermark.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -122,7 +122,7 @@ npm --prefix app run visualization:generate:nano-banana -- \
 
 Use `--skip-reconstruction-prompt` only for explicit debugging; normal generated assets should keep the reconstruction prompt so `/goal-visualization-qa` can offer it as a correction base. The QA workbench also has an on-demand action to create a missing reconstruction prompt for an already imported image.
 
-For older imported images, generate missing reconstruction prompts in controlled batches from the QA ledgers:
+For older imported images, generate missing reconstruction prompts in controlled batches from the active canonical primary links:
 
 ```bash
 npm --prefix app run visualization:generate-reconstruction-prompts -- \
@@ -131,7 +131,7 @@ npm --prefix app run visualization:generate-reconstruction-prompts -- \
   --continue-on-error
 ```
 
-Run with `--dry-run` first to inspect the planned images. The script reads active images from `curricula/DE/Gymnasium/quality/goal-visualization-qa/*.qa.json`, skips existing prompts by default, writes `image-reconstruction-prompt.de.md` beside the canonical source image, and stores provider response traces under `tmp/`.
+Run with `--dry-run` first to inspect the planned images. The script reads active primary links from the canonical landscapes under `curricula/DE/Gymnasium/canonical/`, including linked context or memory images outside the ordinary-atomic QA scope. It validates the exact `<subject>/<goalId>/<goalId>.<ext>` path shape, skips existing prompts by default, writes `image-reconstruction-prompt.de.md` beside the canonical source image, and stores provider response traces under `tmp/`.
 
 The API key must come from `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The generator also reads these variables from a local, ignored `.env.local` or `app/.env.local` file:
 

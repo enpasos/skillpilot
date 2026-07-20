@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T22:32:19.362Z
+Generated: 2026-07-17T05:43:41.247Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -66,7 +66,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | --- | --- |
 | Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-074.md` |
 | Latest ledger status | `completed` |
-| Configured resume file | `tmp/goal-visualization-physik-batch-073.resume.txt` |
+| Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
 ## Interpretation
@@ -118,7 +118,7 @@ Keine Eintraege.
 | 004 | `dd7cdcea-0950-461b-96ac-ce49989fca47` | Licht, Schatten und geradlinige Ausbreitung beschreiben | `accepted_pilot_after_user_review_correction` |
 | 004 | `dd7cdcea-0950-461b-96ac-ce49989fca47` | Licht, Schatten und geradlinige Ausbreitung beschreiben | `accepted_pilot_after_user_review_correction` |
 | 004 | `79cb1695-f985-443a-b93e-27b57ab474b7` | Lichtwege mit dem Strahlenmodell darstellen und vorhersagen | `accepted_pilot_after_user_review_correction` |
-| 024 | `fb73c94b-6a23-5351-8fef-db2c2533e361` | Isochore, isobare und isotherme Zustandsaenderungen berechnen | `accepted_pilot_after_user_review_correction` |
+| 024 | `fb73c94b-6a23-5351-8fef-db2c2533e361` | Isochore, isobare und isotherme Zustandsänderungen berechnen | `accepted_pilot_after_user_review_correction` |
 | 051 | `4c5c7cb1-f238-52c8-b82c-159c6c299c0e` | Energieumwandlung in der Sonne | `accepted_pilot_after_user_review_correction` |
 | 052 | `ea2d5085-4ec1-5e33-87e0-15edcad635bf` | Spektrallinien deuten | `accepted_pilot_after_user_review_correction` |
 | 053 | `4e046c1c-bcc7-5e3c-9f71-f80d69027483` | Standardmodell: Teilchenfamilien | `accepted_pilot_after_user_review_correction` |
@@ -147,6 +147,5 @@ Use this only for an intentional provider-limitation revisit. Generated candidat
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-physik-batch-073.resume.txt`
 - Prompt append dir: `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2`
 

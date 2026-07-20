@@ -4,6 +4,8 @@ import {
   coverageGateFailure,
   isAcceptedDecision,
   isReviewDecision,
+  parseReviewDecisionRow,
+  splitMarkdownTableRow,
 } from './reportGoalVisualizationRolloutStatus'
 
 const acceptedDecisions = [
@@ -46,4 +48,59 @@ assert.match(coverageGateFailure({
   summary: { regularUnlinkedGoals: 3 },
 }) ?? '', /chemie.*3 ordinary atomic goal/u)
 
-console.log('Goal-visualization rollout status passed: accepted vocabulary and coverage gate verified.')
+assert.deepEqual(
+  splitMarkdownTableRow('| `1801c759-d92d-5bfb-a44f-cfd2455d207b` | Titel | `deferred_provider_limitation` | Punkt `B(3|6)` statt `B(2|5)` |'),
+  [
+    '`1801c759-d92d-5bfb-a44f-cfd2455d207b`',
+    'Titel',
+    '`deferred_provider_limitation`',
+    'Punkt `B(3|6)` statt `B(2|5)`',
+  ],
+  'pipes inside inline-code evidence must not split a review-ledger row',
+)
+
+assert.deepEqual(
+  splitMarkdownTableRow('| `id` | Hinweis ``B(3|6)`` statt ``B(2|5)`` |'),
+  ['`id`', 'Hinweis ``B(3|6)`` statt ``B(2|5)``'],
+  'pipes inside multi-backtick code spans must not split a review-ledger row',
+)
+
+assert.deepEqual(
+  parseReviewDecisionRow(
+    '| `1801c759-d92d-5bfb-a44f-cfd2455d207b` | Funktionsgleichungen aus Graphen bestimmen | `deferred_provider_limitation` | Punkt `B(3|6)` statt `B(2|5)` |',
+    '207',
+  ),
+  {
+    batch: '207',
+    goalId: '1801c759-d92d-5bfb-a44f-cfd2455d207b',
+    title: 'Funktionsgleichungen aus Graphen bestimmen',
+    decision: 'deferred_provider_limitation',
+    notes: 'Punkt `B(3|6)` statt `B(2|5)`',
+  },
+)
+
+assert.deepEqual(
+  parseReviewDecisionRow(
+    '| `05946a6a-aaaa-bbbb-cccc-123456789abc` | `deferred_provider_limitation` | Kanonischer Titel | drei Versuche |',
+    'shard-1',
+  ),
+  {
+    batch: 'shard-1',
+    goalId: '05946a6a-aaaa-bbbb-cccc-123456789abc',
+    title: 'Kanonischer Titel',
+    decision: 'deferred_provider_limitation',
+    notes: 'drei Versuche',
+  },
+  'review ledgers may put the decision before the title',
+)
+
+assert.equal(
+  parseReviewDecisionRow(
+    '| Candidate | `tmp/goal-visualizations/1801c759-d92d-5bfb-a44f-cfd2455d207b/generated/candidate.jpg` | `rejected_regenerated` |',
+    '207',
+  ),
+  null,
+  'a UUID embedded in a candidate path must not be parsed as a goal identity',
+)
+
+console.log('Goal-visualization rollout status passed: accepted vocabulary, coverage gate, and ledger parsing verified.')

@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-16T22:32:19.370Z
+Generated: 2026-07-17T05:43:41.200Z
 
 Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
@@ -18,14 +18,14 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | --- | --- |
 | Alle Ziele in der Landschaft | 1079 |
 | Atomare Ziele im Visualisierungs-Scope | 754 |
-| Ziele mit primaerem Visualisierungslink | 730 |
-| Coverage | 96.8% |
+| Ziele mit primaerem Visualisierungslink | 731 |
+| Coverage | 96.9% |
 | Durch Asset oder Provider-Deferred dokumentierte Ziele | 754 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 216 |
-| Offene Provider-Deferred-Ziele | 24 |
+| Review-Ledger-Dateien | 217 |
+| Offene Provider-Deferred-Ziele | 23 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 2 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -36,6 +36,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
+| `accepted` | 1 |
 | `approved` | 18 |
 | `pilot` | 712 |
 
@@ -49,6 +50,7 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | `accepted_context_visualization` | 2 |
 | `accepted_pilot` | 603 |
 | `accepted_pilot_after_fresh_ai_review` | 88 |
+| `accepted_pilot_after_fresh_ai_review_correction` | 1 |
 | `accepted_pilot_after_provider_retry` | 2 |
 | `accepted_pilot_after_regeneration` | 159 |
 | `accepted_pilot_after_resume` | 5 |
@@ -75,17 +77,17 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-207.md` |
-| Latest ledger status | `completed_with_one_deferred_provider_limitation` |
-| Configured resume file | `tmp/goal-visualization-batch-076.resume.txt` |
-| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/batch-076` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-208.md` |
+| Latest ledger status | `completed` |
+| Configured resume file | - |
+| Configured prompt append dir | `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17` |
 
 ## Interpretation
 
 - Die aktuellen Assets sind kuratierte Pilot-Assets; extern release-approved ist noch nichts.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen `deferred_provider_limitation`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 24 Provider-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind nur 23 Provider-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -93,11 +95,10 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 
 | Batch | Goal ID | Title | Decision |
 | --- | --- | --- | --- |
-| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | `deferred_provider_limitation` | `deferred_provider_limitation` |
-| mathematik-ai-correction-shard-1 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | `deferred_provider_limitation` | `deferred_provider_limitation` |
 | 194 | `dc12f281-f161-572b-a973-8405ae9b2498` | Differentialrechnung in Sachzusammenhängen auswählen und anwenden (LK) | `deferred_provider_limitation` |
 | 204 | `121e3fdf-54d2-4d46-bc2d-f6e725f10f41` | Figuren im Koordinatensystem darstellen und Koordinatendarstellungen geometrischen Situationen zuordnen | `deferred_provider_limitation` |
-| 207 | `1801c759-d92d-5bfb-a44f-cfd2455d207b` | Funktionsgleichungen aus Graphen bestimmen | `deferred_provider_limitation` |
+| mathematik-ai-correction-shard-1 | `ae483d98-54e0-5985-96d2-fc1351d22e4f` | Hypothesentests bei verändertem Stichprobenumfang variieren | `deferred_provider_limitation` |
+| mathematik-ai-correction-shard-1 | `05946a6a-b41e-5cec-8a39-237f889f4d93` | Kettenlinien und Glockenkurven untersuchen (LK) | `deferred_provider_limitation` |
 | 197 | `1b67aeb4-2a55-531f-94da-283b4e3df5f1` | Kombinationen mit Binomialkoeffizienten in Anwendungen berechnen | `deferred_provider_limitation` |
 | 197 | `70efdec0-110c-5564-849b-bc05cfff0f6a` | Kombinationen ohne Zurücklegen mit Fakultäten berechnen | `deferred_provider_limitation` |
 | 197 | `4f64f771-20ba-581a-86ba-bcdb1759e4d2` | Komplexe Zahlen in Polarform und Gaußscher Zahlenebene darstellen | `deferred_provider_limitation` |
@@ -113,8 +114,9 @@ Scope: canonical `DE Gymnasium Mathematik`, atomic goal visualizations.
 | 206 | `52758ed0-cba8-5583-9e69-906d2e7c7843` | Prognose- und Konfidenzintervalle im Kontext interpretieren | `deferred_provider_limitation` |
 | 206 | `3256476b-ec65-4038-9f5a-a8808fbcf207` | Punkt-Gerade-Abstände im Raum bestimmen | `deferred_provider_limitation` |
 | 206 | `075f1ef2-6860-4b20-9df2-878157eb395e` | Punkte und Vektoren im Raum koordinatisieren | `deferred_provider_limitation` |
+| 206 | `47400de4-b0e4-5bb6-a1bd-bd2beee616bb` | Regula falsi zur Nullstellennäherung anwenden | `deferred_provider_limitation` |
 
-Weitere 4 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 3 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Open Provider Quota
 
@@ -146,10 +148,10 @@ Keine Eintraege.
 | 139 | `9f9c7ece-b81c-55fa-8073-dd816d7d4778` | Oberflächeninhalte von Körpern berechnen | `accepted_pilot_after_user_review_correction` |
 | 143 | `2331caf2-ccb2-5492-9fc6-48763b848bae` | Winkel messen, zeichnen und fachsprachlich beschreiben | `accepted_pilot_after_user_review_correction` |
 | 144 | `ebc41c8b-5754-5161-9b07-f4525b9fd9b4` | Eigenschaften von Funktionssummen graphisch begründen (LK) | `accepted_pilot_after_user_review_correction` |
-| 146 | `2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2` | Ableitungen von Sinus und Kosinus grafisch begruenden | `accepted_pilot_after_user_review_correction` |
+| 146 | `2411b2e9-75d7-5e8f-8eb4-f37c4ac555c2` | Ableitungen von Sinus und Kosinus grafisch begründen | `accepted_pilot_after_user_review_correction` |
 | 147 | `3401d95d-2191-5929-ac78-4de51d71a6be` | Ableitungen von Sinus- und Kosinusfunktionen anwenden | `accepted_pilot_after_user_review_correction` |
 | 149 | `6b0075bb-f71c-59f6-ab98-fb894568cc26` | Brüche als Zahlen, Anteile und Quotienten deuten | `accepted_pilot_after_user_review_correction` |
-| 150 | `845440ce-f63f-5835-903f-739145ca27bd` | Zusammenhang von f und f' am Graphen beschreiben | `accepted_pilot_after_user_review_correction` |
+| 150 | `845440ce-f63f-5835-903f-739145ca27bd` | Zusammenhang von f und f′ am Graphen beschreiben | `accepted_pilot_after_user_review_correction` |
 | 151 | `3016ec37-1c2e-47db-83f5-e767923bc97e` | Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen | `accepted_pilot_after_user_review_correction` |
 | 152 | `2f565855-bcd6-4da5-bc80-4b72a2d93d50` | Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen | `accepted_pilot_after_user_review_correction` |
 | 153 | `797ee047-b8dd-45cf-880e-98571a56c690` | Bruchgleichungen lösen und als Schnittprobleme deuten | `accepted_pilot_after_user_review_correction` |
@@ -178,6 +180,5 @@ Use this only for an intentional provider-limitation revisit. Generated candidat
 
 - Landscape: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`
 - Review ledgers: `curricula/DE/Gymnasium/quality/goal-visualization-review`
-- Resume file: `tmp/goal-visualization-batch-076.resume.txt`
-- Prompt append dir: `tmp/goal-visualization-prompt-appends/batch-076`
+- Prompt append dir: `tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17`
 

@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini (gemini-2.5-flash)
+- Provider: Manuell aus der geprüften Bildansicht rekonstruiert
 - Quellbild: `1801c759-d92d-5bfb-a44f-cfd2455d207b.jpg`
 
 ## Zweck
@@ -18,33 +18,19 @@ Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptba
 ## Prompt
 
 ```text
-Ein Bild im klaren, pädagogischen Stil, das eine mathematische Erklärung darstellt. Der Hintergrund ist ein hellblauer Himmel mit stilisierten weißen Wolken am oberen Rand und einem hölzernen Zaun oder Geländer am unteren Rand. Im Vordergrund befindet sich eine große, weiße, rechteckige Tafel mit abgerundeten Ecken und schwarzem Rand, die leicht geneigt ist.
+Erstelle eine übersichtliche mathematische Lerninfografik im freundlichen flachen Cartoon-Stil und im Querformat. Verwende einen warmen, sehr hellen cremefarbenen Hintergrund, dunkelblaue Schrift und Achsen, eine breite türkisfarbene Funktionsgerade sowie sparsame orangefarbene Akzente. Der Titel steht genau einmal groß oben: „Funktionsgleichungen aus Graphen bestimmen“.
 
-Über der Tafel steht zentriert in schwarzer Schrift der Titel: "Funktionsgleichung aus Graphen bestimmen".
+Die linke Bildhälfte zeigt ein bewusst reduziertes kartesisches Koordinatendiagramm. Eine dunkelblaue x-Achse verläuft waagerecht mit Pfeil nach rechts, eine dunkelblaue y-Achse senkrecht mit Pfeil nach oben. Zeichne nur die fachlich nötigen Hilfslinien: eine waagerechte Linie mit der Beschriftung „y = 1“, eine waagerechte Linie mit der Beschriftung „y = 5“ und eine senkrechte Linie mit der Beschriftung „x = 2“.
 
-Auf der weißen Tafel steht oben zentriert in schwarzer Schrift der Untertitel: "Funktionsgleichung aus Graph bestimmen".
+Markiere A(0|1) exakt am Schnittpunkt der y-Achse mit der Hilfslinie y = 1. Markiere B(2|5) exakt am Schnittpunkt der senkrechten Hilfslinie x = 2 mit der waagerechten Hilfslinie y = 5. Beide Punkte sind dunkelblaue ausgefüllte Kreise und tragen die Beschriftungen „A(0|1)“ beziehungsweise „B(2|5)“ direkt daneben.
 
-Auf der linken Seite der Tafel ist ein kartesisches Koordinatensystem mit schwarzen Achsen dargestellt. Die y-Achse zeigt nach oben und ist mit "y" beschriftet. Die x-Achse zeigt nach rechts und ist mit "x" beschriftet. Ein Gitter aus hellgrauen Linien bildet Quadrate im gesamten sichtbaren Bereich des Koordinatensystems. Eine hellblaue, gerade Linie verläuft durch das Koordinatensystem.
+Eine einzige breite türkisfarbene Gerade verläuft exakt durch A und B. Zwischen A und B liegt ein orangefarbenes rechtwinkliges Steigungsdreieck: Die waagerechte Seite führt von A nach (2|1), zeigt nach rechts und trägt die Beschriftung „Δx = 2“. Die senkrechte Seite führt von (2|1) nach B, zeigt nach oben und trägt die Beschriftung „Δy = 4“. Punkt B und die senkrechte Dreiecksseite liegen sichtbar auf derselben x = 2-Hilfslinie.
 
-Zwei Punkte auf dieser Linie sind hervorgehoben:
-1. Ein Punkt bei (0,1) ist mit einem hellgrünen Kreis mit schwarzer Umrandung markiert. Links davon befindet sich ein hellgrünes, rechteckiges Feld mit abgerundeten Ecken und schwarzem Rand, das die Beschriftung "A(0|1)" in schwarzer Schrift enthält.
-2. Ein Punkt bei (2,5) ist mit einem hellgrünen Kreis mit schwarzer Umrandung markiert. Rechts davon befindet sich ein hellblaues, rechteckiges Feld mit abgerundeten Ecken und schwarzem Rand, das die Beschriftung "B(2|5)" in schwarzer Schrift enthält.
+Die rechte Bildhälfte enthält drei große, untereinander angeordnete, hellorangefarbene Karten mit abgerundeten Ecken und dunkelblauer Kontur. Darin stehen exakt und gut lesbar:
 
-Zwischen den Punkten A und B ist ein rechtwinkliges Dreieck mit gestrichelten schwarzen Linien gezeichnet. Eine vertikale gestrichelte Linie verläuft von Punkt B nach unten bis zur Höhe von Punkt A (y=1). Eine horizontale gestrichelte Linie verläuft von Punkt A nach rechts bis zur x-Koordinate von Punkt B (x=2). Die Hypotenuse des Dreiecks ist der Abschnitt der hellblauen Linie zwischen A und B. Das Innere dieses Dreiecks ist hellgrün gefüllt.
+„b = 1“
+„m = (5 − 1)/(2 − 0) = 2“ als sauber gesetzter Bruch
+„f(x) = 2x + 1“
 
-Auf der rechten Seite der Tafel sind drei vertikal gestapelte, rechteckige Felder mit abgerundeten Ecken und schwarzem Rand angeordnet. Jedes Feld ist horizontal in zwei Abschnitte unterteilt.
-
-Das oberste Feld ist blau:
-- Der obere Abschnitt ist hellblau und enthält die schwarze Schrift "b = 1".
-- Der untere Abschnitt ist ein etwas dunkleres Blau und enthält die schwarze Schrift "y-Achsenabschnitt".
-- Ein dicker, hellblauer Pfeil zeigt vom Punkt A (0,1) auf der y-Achse zum oberen Abschnitt dieses Feldes ("b = 1").
-
-Das mittlere Feld ist grün:
-- Der obere Abschnitt ist hellgrün und enthält die schwarze mathematische Notation "m = (5 - 1) / (2 - 0) = 2". Der Bruch ist korrekt formatiert.
-- Der untere Abschnitt ist ein etwas dunkleres Grün und enthält die schwarze Schrift "Steigung berechnen".
-- Ein dicker, hellgrüner Pfeil zeigt vom hellgrünen Dreieck im Koordinatensystem zum oberen Abschnitt dieses Feldes ("m = ...").
-
-Das unterste Feld ist orange:
-- Der obere Abschnitt ist hellorange und enthält die schwarze mathematische Notation "f(x) = 2x + 1".
-- Der untere Abschnitt ist ein etwas dunkleres Orange und enthält die schwarze Schrift "Gleichung aufstellen".
+Alle sichtbaren Punktlagen, Hilfslinien, Dreiecksseiten und Rechnungen müssen exakt miteinander übereinstimmen. Keine weiteren Punkte, Geraden, Formeln, Tabellen, dekorativen Pfeile, Logos, Marken oder Wasserzeichen ergänzen.
 ```

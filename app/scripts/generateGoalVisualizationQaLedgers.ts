@@ -152,14 +152,11 @@ const latestReviewDispositionByGoal = (subject: string): Map<string, ReviewDispo
   const dispositionByGoal = new Map<string, ReviewDisposition>()
   files.forEach(({ content }) => {
     content.split(/\r?\n/u).forEach((line) => {
-      if (!/^\s*\|/u.test(line)) return
-      const cells = line
-        .split('|')
-        .slice(1, -1)
-        .map((cell) => cell.trim())
-      const goalId = cells[0]?.replace(/^`|`$/gu, '').trim() ?? ''
-      if (!/^[0-9a-f]{8}-[0-9a-f-]{27,}$/iu.test(goalId)) return
-      const disposition = reviewDisposition(cells.slice(1))
+      const identity = line.match(/^\s*\|\s*`([0-9a-f]{8}-[0-9a-f-]{27,})`\s*\|/iu)
+      if (!identity) return
+      const goalId = identity[1]
+      const codeCells = Array.from(line.matchAll(/`([^`]+)`/gu), (match) => match[1])
+      const disposition = reviewDisposition(codeCells.slice(1))
       if (disposition) dispositionByGoal.set(goalId, disposition)
     })
   })
