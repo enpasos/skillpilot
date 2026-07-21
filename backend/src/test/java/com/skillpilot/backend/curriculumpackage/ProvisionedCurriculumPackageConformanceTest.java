@@ -44,14 +44,14 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.packages().getFirst().packageId())
                 .isEqualTo("org.skillpilot.curriculum.de.gymnasium.mathematik");
         assertThat(snapshot.packages().getFirst().contentDigest())
-                .isEqualTo("sha256:69368add77207a2a302a80826873d2086cfd01fef6a9bacb27951264288a8f54");
+                .isEqualTo("sha256:f97d60d2b2786a33feeb3a29627d37f0cd91daf02dd884e49a977863a70e6882");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
         assertThat(snapshot.viewsById()).hasSize(88);
         assertThat(snapshot.offeringsById()).hasSize(88);
         assertThat(snapshot.decksByKey()).hasSize(12);
-        assertThat(snapshot.resourcesById()).hasSize(826);
-        assertThat(snapshot.resourcesByPublicUrl()).hasSize(757);
+        assertThat(snapshot.resourcesById()).hasSize(803);
+        assertThat(snapshot.resourcesByPublicUrl()).hasSize(734);
         long cardCount = snapshot.decksByKey().values().stream().mapToLong(deck -> {
             try {
                 return mapper.readTree(deck.json()).path("cards").size();
@@ -62,24 +62,24 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(cardCount).isEqualTo(128);
         assertThat(snapshot.resourcesById().values())
                 .filteredOn(resource -> resource.delivery().equals("embedded"))
-                .hasSize(757);
+                .hasSize(734);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .map(CurriculumRuntimeSnapshot.ResourceDescriptor::artifact)
                         .mapToLong(CurriculumRuntimeSnapshot.Artifact::bytes)
                         .sum())
-                .isEqualTo(1_696_390_279L);
+                .isEqualTo(1_604_509_513L);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .filter(resource -> resource.mediaType().equals("image/jpeg"))
                         .count())
-                .isEqualTo(748);
+                .isEqualTo(726);
         assertThat(snapshot.resourcesById().values().stream()
                         .filter(resource -> resource.delivery().equals("embedded"))
                         .filter(resource -> resource.mediaType().equals("image/png"))
                         .count())
-                .isEqualTo(9);
-        assertThat(snapshot.artifactsByKey()).hasSize(913);
+                .isEqualTo(8);
+        assertThat(snapshot.artifactsByKey()).hasSize(890);
         assertThat(snapshot.artifactsByRole().get("mapping"))
                 .singleElement()
                 .satisfies(artifact -> {
@@ -89,7 +89,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.artifactsByRole().get("quality-evidence"))
                 .singleElement()
                 .satisfies(artifact -> assertThat(artifact.runtimeRequired()).isFalse());
-        assertThat(snapshot.definitionCount()).isEqualTo(2403);
+        assertThat(snapshot.definitionCount()).isEqualTo(2380);
 
         PackageCompositionViewState compositionViews = PackageCompositionViewState.load(snapshot, mapper);
         assertThat(compositionViews.generationSha256()).isEqualTo(snapshot.generationSha256());
@@ -182,7 +182,7 @@ class ProvisionedCurriculumPackageConformanceTest {
                 new CurriculumPackageArtifactReader(reader));
         assertThat(resources.generationSha256()).isEqualTo(snapshot.generationSha256());
         assertThat(resources.deckHrefs()).hasSize(12);
-        assertThat(resources.resourceHrefs()).hasSize(826);
+        assertThat(resources.resourceHrefs()).hasSize(803);
         var germanDeck = resources.resolveDeck(
                         "org.skillpilot.curriculum.de.gymnasium.mathematik",
                         "0.1.0-conformance.3",

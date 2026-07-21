@@ -22,7 +22,7 @@ PACKAGE_INSTALL_REPORT="${PACKAGE_OUTPUT}/provision-install.json"
 PACKAGE_VERIFY_REPORT="${PACKAGE_OUTPUT}/provision-verify.json"
 PACKAGE_ACTIVATE_REPORT="${PACKAGE_OUTPUT}/provision-activate.json"
 PACKAGE_STATUS_REPORT="${PACKAGE_OUTPUT}/provision-status.json"
-EXPECTED_CONTENT_DIGEST="sha256:69368add77207a2a302a80826873d2086cfd01fef6a9bacb27951264288a8f54"
+EXPECTED_CONTENT_DIGEST="sha256:f97d60d2b2786a33feeb3a29627d37f0cd91daf02dd884e49a977863a70e6882"
 cd "${ROOT_DIR}"
 
 SOURCE_PDF_MODE="${SKILLPILOT_SOURCE_PDF_MODE:-strict}"
@@ -131,9 +131,9 @@ npm --prefix app run --silent export:full-standalone-package -- \
   --archive-root "${PACKAGE_ARCHIVE_ROOT}" \
   --supported-skillpilot-software ">=0.1.0 <1.0.0" \
   --zip \
-  --expect-entry-count 915 \
-  --expect-manifest-file-count 913 \
-  --expect-binary-asset-count 757 \
+  --expect-entry-count 892 \
+  --expect-manifest-file-count 890 \
+  --expect-binary-asset-count 734 \
   --expect-content-digest "${EXPECTED_CONTENT_DIGEST}" \
   > "${PACKAGE_BUILD_REPORT}"
 

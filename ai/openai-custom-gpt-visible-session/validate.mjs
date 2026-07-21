@@ -7,6 +7,7 @@ import path from 'node:path'
 const root = path.dirname(fileURLToPath(import.meta.url))
 const repositoryRoot = path.resolve(root, '../..')
 const locales = ['de', 'en']
+const legacyTextExtensions = new Set(['.json', '.md', '.ts'])
 const instructionLimit = 8000
 const instructionByteLimit = 7900
 const goalIdPattern = '^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$'
@@ -458,7 +459,10 @@ for (const line of legacyBaseline.split(/\r?\n/).filter(Boolean)) {
   assert.ok(match, `Invalid legacy baseline line: ${line}`)
   const [, expectedHash, relativePath] = match
   const contents = await readFile(path.join(repositoryRoot, relativePath))
-  const actualHash = createHash('sha256').update(contents).digest('hex')
+  const canonicalContents = legacyTextExtensions.has(path.extname(relativePath))
+    ? Buffer.from(contents.toString('utf8').replace(/\r\n/g, '\n'), 'utf8')
+    : contents
+  const actualHash = createHash('sha256').update(canonicalContents).digest('hex')
   assert.equal(actualHash, expectedHash, `Legacy coach source changed unexpectedly: ${relativePath}`)
 }
 
