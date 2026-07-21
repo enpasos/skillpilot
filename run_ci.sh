@@ -159,6 +159,7 @@ run_action_regression_ci() {
   echo "=========================================="
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" ci
   npm --prefix "${PROJECT_ROOT}/ai/openai custom gpt/action-regression" test
+  npm --prefix "${PROJECT_ROOT}/ai/openai-custom-gpt-visible-session" test
 }
 
 run_application_frontend_ci() {
@@ -190,6 +191,9 @@ run_application_frontend_ci() {
 
   echo "--> Checking GPT System Instruction Lengths"
   npm run check:gpt-system-instruction-lengths
+
+  echo "--> Testing Coach Variant Selection"
+  npm run test:coach-variants
 
   echo "--> Testing Deterministic ZIP32 Writer"
   npm run test:deterministic-zip32

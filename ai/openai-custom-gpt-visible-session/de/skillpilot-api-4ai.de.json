@@ -1,0 +1,484 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "SkillPilot Visible Session API (DE)",
+    "version": "0.1.0",
+    "description": "Kompakte deutsche Action-API für den SkillPilot-Lerncoach mit sichtbar weitergetragenem 24-Stunden-Sitzungstoken."
+  },
+  "servers": [
+    {
+      "url": "https://skillpilot.com"
+    }
+  ],
+  "paths": {
+    "/api/ai/de/sessions/{chatSessionToken}/visible/state": {
+      "get": {
+        "operationId": "getVisibleState",
+        "summary": "Aktuellen Lernzustand laden",
+        "description": "Lädt den kompakten Coach-Zustand. relayFooter muss wortgleich die letzte sichtbare Antwortzeile werden.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChatSessionToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/choice": {
+      "post": {
+        "operationId": "applyVisibleChoice",
+        "summary": "Sichtbare nummerierte Auswahl anwenden",
+        "description": "Verwendet nur Auswahlcode und Nummer aus dem letzten sichtbaren Auswahlturn. Löst Lehrplan, Scope oder Ziel serverseitig auf.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChatSessionToken"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleChoiceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/active-goal": {
+      "post": {
+        "operationId": "setVisibleActiveGoal",
+        "summary": "Sichtbar referenziertes Lernziel aktivieren",
+        "description": "Aktiviert nur eine vollständige kanonische Lernziel-UUID, die bereits sichtbar im Chat steht.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChatSessionToken"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleActiveGoalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/mastery": {
+      "post": {
+        "operationId": "setVisibleMastery",
+        "summary": "Mastery für das aktive Lernziel speichern",
+        "description": "Speichert einen Wert nur für die aktive sichtbare Lernziel-UUID und erst nach ausreichender fachlicher Evidenz.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ChatSessionToken"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleMasteryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "parameters": {
+      "ChatSessionToken": {
+        "name": "chatSessionToken",
+        "in": "path",
+        "required": true,
+        "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+        "schema": {
+          "type": "string",
+          "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+        }
+      }
+    },
+    "responses": {
+      "VisibleState": {
+        "description": "Kompakter sichtbarer Coach-Zustand.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "StateConflict": {
+        "description": "Der Ablaufzustand hat sich geändert. Den zurückgegebenen Zustand sichtbar ausgeben und seiner instruction folgen.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "Ungültige sichtbare Auswahl oder Anfrage.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Ungültiges Sitzungstoken oder ungültige Action-Authentifizierung.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "SessionExpired": {
+        "description": "Die Sitzung ist abgelaufen. Keine weitere Action; Neustart über skillpilot.com.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SessionExpiredResponse"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "VisibleChoiceRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "selectionReference",
+          "choiceNumber"
+        ],
+        "properties": {
+          "selectionReference": {
+            "type": "string",
+            "description": "Auswahlcode aus dem letzten sichtbaren Auswahlturn."
+          },
+          "choiceNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Von der lernenden Person gewählte sichtbare Nummer."
+          }
+        }
+      },
+      "VisibleActiveGoalRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Vollständige kanonische Lernziel-UUID, die bereits sichtbar im Chat steht."
+          },
+          "redirect": {
+            "type": "boolean",
+            "default": false,
+            "description": "Nur bei einem ausdrücklichen bewussten Wechsel weg vom aktiven Ziel true."
+          }
+        }
+      },
+      "VisibleMasteryRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "mastery"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Aktive Lernziel-UUID aus dem letzten sichtbaren relayFooter."
+          },
+          "mastery": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Zu speichernder evidenzbasierter Mastery-Wert zwischen 0 und 1."
+          }
+        }
+      },
+      "VisibleCoachStateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "learningState",
+          "requiredAction",
+          "allowedActions",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Exakte letzte sichtbare Antwortzeile. Wortgleich ausgeben und nichts danach schreiben."
+          },
+          "learningState": {
+            "type": "string",
+            "description": "Kompakter aktueller Lernzustand."
+          },
+          "requiredAction": {
+            "type": "string",
+            "description": "Nächster verbindlicher Coach-Schritt. teachActiveGoal bedeutet Dialog, nicht Action."
+          },
+          "curriculum": {
+            "$ref": "#/components/schemas/CurriculumSummary"
+          },
+          "activeGoal": {
+            "$ref": "#/components/schemas/PublicActiveGoal"
+          },
+          "selection": {
+            "$ref": "#/components/schemas/VisibleSelection"
+          },
+          "allowedActions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "getVisibleState",
+                "applyVisibleChoice",
+                "setVisibleActiveGoal",
+                "setVisibleMastery"
+              ]
+            },
+            "description": "Im aktuellen Zustand zulässige operationId-Werte dieser Visible-Session-API; enthält keine Legacy-Action-Namen."
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Kurze verbindliche Folgeanweisung des Backend."
+          }
+        }
+      },
+      "CurriculumSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          }
+        }
+      },
+      "PublicActiveGoal": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Bewusst sichtbare global eindeutige kanonische Lernziel-ID."
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "nodeKind": {
+            "type": "string"
+          },
+          "cockpitUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Vom Backend erzeugter öffentlicher Link zum aktiven Lernziel; exakt verwenden und nie selbst zusammensetzen."
+          },
+          "examData": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "VisibleSelection": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "selectionReference": {
+            "type": "string",
+            "description": "Zeitlich lokaler Auswahlcode; zusammen mit den Optionen sichtbar ausgeben."
+          },
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleChoiceOption"
+            }
+          }
+        }
+      },
+      "VisibleChoiceOption": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "choiceNumber",
+          "label"
+        ],
+        "properties": {
+          "choiceNumber": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Bei Lernzieloptionen sichtbar ausgeben; bei Lehrplan- oder Scope-Auswahl null."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "SessionExpiredResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error",
+          "message",
+          "recovery"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "enum": [
+              "chat_session_expired"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "recovery": {
+            "type": "string",
+            "description": "Neustart über skillpilot.com erklären; keine dauerhafte ID im Chat erfragen."
+          }
+        }
+      }
+    }
+  }
+}

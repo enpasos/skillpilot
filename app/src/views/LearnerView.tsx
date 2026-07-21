@@ -47,8 +47,11 @@ import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
-import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
-import { requestChatStart } from '../utils/chatStart'
+import {
+  buildCoachChatStartUrl,
+  getActiveVisibleSessionLaunchCopy,
+  requestCoachChatStart,
+} from '../coachVariants/coachLaunch'
 import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
@@ -328,6 +331,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const location = useLocation()
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
+  const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(localizedLanguage)
   const bavariaFilterDisplay = import.meta.env.MODE === 'package-consumer'
     ? ''
     : formatFilterDisplayLabel('DE-BY', localizedLanguage)
@@ -708,18 +712,22 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [getLearnerGoalTitle, landscapeId, localizedLanguage])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
+    if (visibleSessionLaunchCopy) {
+      onNotify?.('info', visibleSessionLaunchCopy.verifiedRecallUnavailable)
+      return
+    }
     const chatWindow = window.open('', '_blank')
     let copied = false
     const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
     try {
-      const chatStart = await requestChatStart({
+      const chatStart = await requestCoachChatStart({
         skillpilotId,
         language,
         selectedCurriculum: rootLandscapeId || landscapeId,
         promptContext: buildVerifiedRecallPromptContext(goal, batchSize),
         client: 'verified-recall',
       })
-      const url = getSkillpilotGptUrl(language, chatStart.prompt)
+      const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
         chatWindow.location.href = url
@@ -753,6 +761,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rootLandscapeId,
     skillpilotId,
     verifiedRecallBatchSizeByGoal,
+    visibleSessionLaunchCopy,
   ])
 
   const visibleGoals = useMemo(() => {

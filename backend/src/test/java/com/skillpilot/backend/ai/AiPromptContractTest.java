@@ -9,6 +9,11 @@ import org.junit.jupiter.api.Test;
 
 class AiPromptContractTest {
 
+    private static final Path LEGACY_DE_SPEC = Path.of(
+            "..", "ai", "openai custom gpt", "skillpilot-api-4ai.de.json");
+    private static final Path LEGACY_EN_SPEC = Path.of(
+            "..", "ai", "openai custom gpt", "skillpilot-api-4ai.en.json");
+
     @Test
     void systemInstructionsStayWithinGptBuilderLimit() throws Exception {
         assertSystemInstructionLength(Path.of("..", "ai", "openai custom gpt", "system_instructions.de.md"));
@@ -101,11 +106,11 @@ class AiPromptContractTest {
                 "hart prüfbaren Karten",
                 "status=waiting");
         assertContainsFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                LEGACY_DE_SPEC,
                 "\"masterySaved\"",
                 "kein setMastery");
         assertContainsFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                LEGACY_EN_SPEC,
                 "\"masterySaved\"",
                 "do not call setMastery");
         assertContainsFragments(
@@ -194,7 +199,7 @@ class AiPromptContractTest {
     @Test
     void optimizedActionSchemasExposeSimpleStartupMessageOnly() throws Exception {
         assertContainsFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                LEGACY_DE_SPEC,
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
@@ -202,7 +207,7 @@ class AiPromptContractTest {
                 "\"assistantMessage\"",
                 "Cockpit-Link");
         assertDoesNotContainFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.de.json"),
+                LEGACY_DE_SPEC,
                 "\"activeGoalVisualization\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"assistantNextMessageMarkdown\"",
@@ -210,7 +215,7 @@ class AiPromptContractTest {
                 "\"assistantDisplayInstruction\"",
                 "\"assistantResponsePrefixMarkdown\"");
         assertContainsFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                LEGACY_EN_SPEC,
                 "\"role\"",
                 "\"altText\"",
                 "\"reviewStatus\"",
@@ -218,7 +223,7 @@ class AiPromptContractTest {
                 "\"assistantMessage\"",
                 "Cockpit link");
         assertDoesNotContainFragments(
-                Path.of("..", "ai", "skillpilot-api-4ai.en.json"),
+                LEGACY_EN_SPEC,
                 "\"activeGoalVisualization\"",
                 "\"activeGoalVisualizationMarkdown\"",
                 "\"assistantNextMessageMarkdown\"",

@@ -45,6 +45,8 @@ jobs:
         run: npm --prefix "ai/openai custom gpt/action-regression" ci
       - name: Test Spring-hosted Custom GPT Action control client
         run: npm --prefix "ai/openai custom gpt/action-regression" test
+      - name: Validate Visible Session Custom GPT source contract
+        run: npm --prefix ai/openai-custom-gpt-visible-session test
 
   frontend-ci:
     name: Application frontend CI
@@ -86,6 +88,8 @@ jobs:
         run: npm run validate:learner-goal-selection
       - name: Check GPT system instruction lengths
         run: npm run check:gpt-system-instruction-lengths
+      - name: Test coach variant selection
+        run: npm run test:coach-variants
       - name: Lint
         run: npm run lint
       - name: Build application without regenerating curriculum assets

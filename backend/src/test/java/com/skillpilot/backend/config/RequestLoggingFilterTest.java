@@ -52,6 +52,9 @@ class RequestLoggingFilterTest {
                 "/api/ai/de/sessions/sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q/mastery"))
                 .isEqualTo("/api/ai/de/sessions/<chatSessionToken>/mastery");
         assertThat(filter.sanitizeUriForOperationalLog(
+                "/api/ai/de/sessions/sps_visibleSecret/visible/state"))
+                .isEqualTo("/api/ai/de/sessions/<chatSessionToken>/visible/state");
+        assertThat(filter.sanitizeUriForOperationalLog(
                 "/api/ui/updates/b43a1e45-f05c-4d78-8453-f6fa677dc24c"))
                 .isEqualTo("/api/ui/updates/<skillpilotId>");
     }
@@ -103,6 +106,22 @@ class RequestLoggingFilterTest {
         assertThat(redactedResponse).doesNotContain("sps_72okQebuPsNxJIbjm4F1Fnuttyw7t1qYA9fMo3qPm8Q");
         assertThat(redactedResponse).contains("\"chatSessionToken\":\"<redacted>\"");
         assertThat(redactedResponse).contains("\"assistantMessage\"");
+    }
+
+    @Test
+    void formatBodyForOperationalLogRedactsVisibleRelayFooterToken() {
+        String token = "sps_visibleSecret123";
+        String body = """
+                {
+                  "relayFooter": "— SkillPilot · Sitzung: %s · Lernziel-ID: goal-1",
+                  "activeGoal": {"goalId": "goal-1"}
+                }
+                """.formatted(token);
+
+        String redacted = filter.formatBodyForOperationalLog(body);
+
+        assertThat(redacted).doesNotContain(token);
+        assertThat(redacted).contains("<chatSessionToken>").contains("goal-1");
     }
 
     @Test
@@ -178,6 +197,14 @@ class RequestLoggingFilterTest {
                 .isEqualTo("setMastery");
         assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/verified-recall/start"))
                 .isEqualTo("startVerifiedRecall");
+        assertThat(filter.resolveAiOperationId("GET", "/api/ai/de/sessions/sps_token/visible/state"))
+                .isEqualTo("getVisibleState");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/choice"))
+                .isEqualTo("applyVisibleChoice");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/active-goal"))
+                .isEqualTo("setVisibleActiveGoal");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/mastery"))
+                .isEqualTo("setVisibleMastery");
     }
 
     @Test

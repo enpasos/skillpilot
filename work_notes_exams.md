@@ -90,6 +90,7 @@ Ohne diese Aenderung bleibt das System im Trainer-Modus, selbst wenn die Regeln 
   - `examData` Feld hinzugefügt
 - `activeGoal` liefert `examData` (damit Prüfungsmodus sicher triggert)
 
-- **AI-OpenAPI angepasst**: `ai/skillpilot-api-4ai.json`
+- **AI-OpenAPI angepasst**:
+  `ai/openai custom gpt/skillpilot-api-4ai.{de,en}.json`
   - `examData` Schema ergänzt
   - `FrontierGoal.examData` ergänzt

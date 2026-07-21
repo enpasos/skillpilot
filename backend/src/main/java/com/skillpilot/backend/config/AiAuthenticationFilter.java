@@ -31,7 +31,7 @@ public class AiAuthenticationFilter extends OncePerRequestFilter {
                 boolean hasBearer = authHeader != null && authHeader.startsWith("Bearer ");
                 logger.warn("AI auth failed: method={} path={} hasBearer={} remote={} ua={}",
                         request.getMethod(),
-                        request.getRequestURI(),
+                        sanitizePathForLog(request.getRequestURI()),
                         hasBearer,
                         request.getRemoteAddr(),
                         request.getHeader("User-Agent"));
@@ -41,5 +41,12 @@ public class AiAuthenticationFilter extends OncePerRequestFilter {
         }
 
         filterChain.doFilter(request, response);
+    }
+
+    String sanitizePathForLog(String path) {
+        if (path == null || path.isBlank()) {
+            return "";
+        }
+        return path.replaceAll("(/api/ai/[^/]+/sessions/)[^/]+", "$1<chatSessionToken>");
     }
 }
