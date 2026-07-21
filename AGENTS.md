@@ -771,7 +771,12 @@ SkillPilot provides an **Optimized OpenAPI Specification** designed specifically
 ### 12.2 Setup Guides
 - **Google Gemini:** See `ai/google gem/gemini.md` for the current status notes.
 - **ChatGPT:** See `ai/openai custom gpt/gpt_setup_guide.de.md` and `ai/openai custom gpt/gpt_setup_guide.en.md` for GPT configuration.
-- **OpenAPI Spec:** Use `ai/skillpilot-api-4ai.de.json` or `ai/skillpilot-api-4ai.en.json` for the tool definition.
+- **OpenAPI Specs are package-local:** The legacy Custom GPT uses
+  `ai/openai custom gpt/skillpilot-api-4ai.de.json` or
+  `ai/openai custom gpt/skillpilot-api-4ai.en.json`. The Visible Session package
+  owns separate schemas under `ai/openai-custom-gpt-visible-session/de/` and
+  `ai/openai-custom-gpt-visible-session/en/`. Do not place or treat a
+  `skillpilot-api-4ai.*` file directly below `ai/` as a shared schema.
 
 ## 13. Curriculum Assets & Flashcard Decks
 - **Source of Truth:** Flashcard decks (`*_deck.json`) and other curriculum-related assets must be stored in the same directory as the curriculum JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).

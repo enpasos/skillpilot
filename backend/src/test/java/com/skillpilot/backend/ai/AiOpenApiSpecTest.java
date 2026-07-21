@@ -14,41 +14,45 @@ import org.junit.jupiter.api.Test;
 class AiOpenApiSpecTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final Path LEGACY_DE_SPEC = Path.of(
+            "..", "ai", "openai custom gpt", "skillpilot-api-4ai.de.json");
+    private static final Path LEGACY_EN_SPEC = Path.of(
+            "..", "ai", "openai custom gpt", "skillpilot-api-4ai.en.json");
 
     @Test
     void aiSpecs_doNotExposeInternalReleaseOrLandscapeSchemas() throws Exception {
-        assertSpecIsAiMinimal(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
-        assertSpecIsAiMinimal(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+        assertSpecIsAiMinimal(LEGACY_EN_SPEC);
+        assertSpecIsAiMinimal(LEGACY_DE_SPEC);
     }
 
     @Test
     void aiSpecs_makeMasteryExplicitAndAlwaysAllowable() throws Exception {
-        assertMasteryWriteIsGuardedButAlwaysAllowable(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
-        assertMasteryWriteIsGuardedButAlwaysAllowable(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+        assertMasteryWriteIsGuardedButAlwaysAllowable(LEGACY_EN_SPEC);
+        assertMasteryWriteIsGuardedButAlwaysAllowable(LEGACY_DE_SPEC);
     }
 
     @Test
     void aiSpecs_markAllActionsAlwaysAllowable() throws Exception {
-        assertAllActionsAreAlwaysAllowable(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
-        assertAllActionsAreAlwaysAllowable(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+        assertAllActionsAreAlwaysAllowable(LEGACY_EN_SPEC);
+        assertAllActionsAreAlwaysAllowable(LEGACY_DE_SPEC);
     }
 
     @Test
     void aiSpecs_documentExpiredChatSessionRecovery() throws Exception {
-        assertExpiredSessionResponseIsDocumented(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
-        assertExpiredSessionResponseIsDocumented(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+        assertExpiredSessionResponseIsDocumented(LEGACY_EN_SPEC);
+        assertExpiredSessionResponseIsDocumented(LEGACY_DE_SPEC);
     }
 
     @Test
     void aiSpecs_exposeFlashcardModeAndVerifiedRecallSessionActions() throws Exception {
-        assertFlashcardModeAndVerifiedRecallActions(Path.of("..", "ai", "skillpilot-api-4ai.en.json"));
-        assertFlashcardModeAndVerifiedRecallActions(Path.of("..", "ai", "skillpilot-api-4ai.de.json"));
+        assertFlashcardModeAndVerifiedRecallActions(LEGACY_EN_SPEC);
+        assertFlashcardModeAndVerifiedRecallActions(LEGACY_DE_SPEC);
     }
 
     @Test
     void aiSpecs_keepDescriptionsWithinGptActionLimit() throws Exception {
-        assertDescriptionLengths(Path.of("..", "ai", "skillpilot-api-4ai.en.json"), 300);
-        assertDescriptionLengths(Path.of("..", "ai", "skillpilot-api-4ai.de.json"), 300);
+        assertDescriptionLengths(LEGACY_EN_SPEC, 300);
+        assertDescriptionLengths(LEGACY_DE_SPEC, 300);
     }
 
     private static void assertSpecIsAiMinimal(Path path) throws IOException {

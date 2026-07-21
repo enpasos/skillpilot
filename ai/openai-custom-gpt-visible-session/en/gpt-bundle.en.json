@@ -1,0 +1,24 @@
+{
+  "variant": "visible-session",
+  "locale": "en",
+  "existingGpt": {
+    "id": "g-69a565a532008191a3b994e83d20241c",
+    "url": "https://chatgpt.com/g/g-69a565a532008191a3b994e83d20241c-skillpilot-gpt-english"
+  },
+  "instructions": "system_instructions.md",
+  "knowledge": [
+    "knowledge_docs/visible_session_protocol.md",
+    "knowledge_docs/coaching_and_mastery.md",
+    "knowledge_docs/errors_and_restart.md"
+  ],
+  "action": {
+    "schema": "skillpilot-api-4ai.en.json",
+    "pathPrefix": "/api/ai/en/sessions/{chatSessionToken}/visible",
+    "operationIds": [
+      "getVisibleState",
+      "applyVisibleChoice",
+      "setVisibleActiveGoal",
+      "setVisibleMastery"
+    ]
+  }
+}

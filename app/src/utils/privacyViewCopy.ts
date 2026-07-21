@@ -23,7 +23,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: November 27, 2025',
+        effectiveDate: 'Date: July 21, 2026',
         intro:
           'We appreciate your interest in SkillPilot. Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.',
         sections: [
@@ -51,7 +51,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
           {
             title: '3. Use by AI Assistants (GPTs)',
             paragraphs: [
-              'When you use SkillPilot via an AI assistant (e.g., ChatGPT), the assistant transmits your SkillPilot ID to our interface (API) to retrieve learning goals or save progress. We do not receive any chat logs or personal messages from your conversation with the AI assistant.',
+              'When you use SkillPilot via an AI assistant (e.g., ChatGPT), the assistant uses only a temporary session token at our interface (API) to retrieve learning goals or save progress. Your permanent SkillPilot ID is not transmitted to the assistant. In the Visible Session coach variant, the temporary token is shown in the prepared start message and in the chat and expires after no more than 24 hours. We do not receive any chat logs or personal messages from your conversation with the AI assistant.',
             ],
           },
           {
@@ -74,7 +74,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 27. November 2025',
+        effectiveDate: 'Stand: 21. Juli 2026',
         intro:
           'Wir freuen uns über Ihr Interesse an SkillPilot. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.',
         sections: [
@@ -102,7 +102,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
           {
             title: '3. Nutzung durch KI-Assistenten (GPTs)',
             paragraphs: [
-              'Wenn Sie SkillPilot über einen KI-Assistenten (z.B. ChatGPT) nutzen, übermittelt der Assistent Ihre SkillPilot-ID an unsere Schnittstelle (API), um Lernziele abzurufen oder Fortschritte zu speichern. Wir erhalten dabei keine Chat-Protokolle oder persönlichen Nachrichten aus Ihrer Konversation mit dem KI-Assistenten.',
+              'Wenn Sie SkillPilot über einen KI-Assistenten (z.B. ChatGPT) nutzen, verwendet der Assistent an unserer Schnittstelle (API) ausschließlich ein temporäres Sitzungstoken, um Lernziele abzurufen oder Fortschritte zu speichern. Ihre dauerhafte SkillPilot-ID wird nicht an den Assistenten übermittelt. In der Coach-Variante „Visible Session“ wird das temporäre Token in der vorbereiteten Startnachricht und im Chat angezeigt und ist höchstens 24 Stunden gültig. Wir erhalten dabei keine Chat-Protokolle oder persönlichen Nachrichten aus Ihrer Konversation mit dem KI-Assistenten.',
             ],
           },
           {

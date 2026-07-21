@@ -19,8 +19,11 @@ import { trackCampaignEvent } from '../utils/campaignTracking'
 import { useLanguage } from '../contexts/LanguageContext'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
-import { requestChatStart } from '../utils/chatStart'
-import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
+import {
+  buildCoachChatStartUrl,
+  getActiveVisibleSessionLaunchCopy,
+  requestCoachChatStart,
+} from '../coachVariants/coachLaunch'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -53,6 +56,7 @@ export const Abi26MatheStartView: React.FC = () => {
   const [cockpitUrl, setCockpitUrl] = useState<string>('')
   const [startPrompt, setStartPrompt] = useState('')
   const [startLoading, setStartLoading] = useState(false)
+  const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy('de')
 
   const context = useMemo(
     () => ({
@@ -180,7 +184,7 @@ export const Abi26MatheStartView: React.FC = () => {
     setStartLoading(true)
     let prompt = ''
     try {
-      const chatStart = await requestChatStart({
+      const chatStart = await requestCoachChatStart({
         skillpilotId,
         language: 'de',
         selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
@@ -220,7 +224,7 @@ export const Abi26MatheStartView: React.FC = () => {
     const chatWindow = window.open('', '_blank')
     setStartLoading(true)
     try {
-      const chatStart = await requestChatStart({
+      const chatStart = await requestCoachChatStart({
         skillpilotId,
         language: 'de',
         selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
@@ -228,7 +232,7 @@ export const Abi26MatheStartView: React.FC = () => {
         client: ABI26_CAMPAIGN_SLUG,
       })
       setStartPrompt(chatStart.prompt)
-      const url = getSkillpilotGptUrl('de', chatStart.prompt)
+      const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
         chatWindow.location.href = url
@@ -294,7 +298,8 @@ export const Abi26MatheStartView: React.FC = () => {
           </div>
 
           <p className="mt-5 text-sm text-text-secondary">
-            Cockpit und Chat nutzen denselben anonymen Lernstand. ChatGPT bekommt dafuer nur einen kurzlebigen Startcode.
+            {visibleSessionLaunchCopy?.sharedStateSummary
+              ?? 'Cockpit und Chat nutzen denselben anonymen Lernstand. ChatGPT bekommt dafür nur einen kurzlebigen Startcode.'}
           </p>
           {hasInvalidTrack && (
             <p className="mt-3 rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-900/20 dark:text-amber-200">
@@ -451,7 +456,8 @@ export const Abi26MatheStartView: React.FC = () => {
               SkillPilot Chat öffnen
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-              Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.
+              {visibleSessionLaunchCopy?.sessionDetail
+                ?? 'Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.'}
             </p>
             {startPrompt && (
               <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
@@ -466,7 +472,7 @@ export const Abi26MatheStartView: React.FC = () => {
                 className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
               >
                 <Copy size={14} />
-                Startcode kopieren
+                {visibleSessionLaunchCopy?.copyPrompt ?? 'Startcode kopieren'}
               </button>
               <button
                 type="button"
@@ -482,7 +488,9 @@ export const Abi26MatheStartView: React.FC = () => {
               Im Chat kannst du dir Hinweise geben lassen, Teilaufgaben üben oder ein Foto deiner Rechnung hochladen.
             </p>
             {copiedState === 'prompt' && (
-              <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">Startcode wurde kopiert.</p>
+              <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">
+                {visibleSessionLaunchCopy?.promptCopied ?? 'Startcode wurde kopiert.'}
+              </p>
             )}
           </div>
         )}

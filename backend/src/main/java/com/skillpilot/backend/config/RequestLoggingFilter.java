@@ -279,6 +279,22 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
         if ("POST".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/chat-start/redeem/?$")) {
             return "redeemStartCode";
         }
+        if ("GET".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/state/?$")) {
+            return "getVisibleState";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/choice/?$")) {
+            return "applyVisibleChoice";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/active-goal/?$")) {
+            return "setVisibleActiveGoal";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/mastery/?$")) {
+            return "setVisibleMastery";
+        }
         if ("GET".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/state/?$")) {
             return "getLearnerState";
         }

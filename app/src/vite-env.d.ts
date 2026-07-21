@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_CLAUDE_BETA_ENABLED?: string
+  readonly VITE_SKILLPILOT_COACH_VARIANT?: string
 }
 
 interface ImportMeta {

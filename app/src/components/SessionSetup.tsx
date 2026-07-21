@@ -29,8 +29,11 @@ import { LanguageToggle } from './LanguageToggle'
 import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
 import { getLegalWaiverCopy } from '../utils/legalWaiverCopy'
-import { getSkillpilotGptUrl } from '../utils/skillpilotGpt'
-import { requestChatStart } from '../utils/chatStart'
+import {
+  buildCoachChatStartUrl,
+  getActiveVisibleSessionLaunchCopy,
+  requestCoachChatStart,
+} from '../coachVariants/coachLaunch'
 import {
   CLAUDE_COACH_BETA_ENABLED,
   getSafeClaudeDesktopUrl,
@@ -60,6 +63,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const t = useTranslation()
   const { language } = useLanguage()
   const legalCopy = getLegalWaiverCopy(language === 'en' ? 'en' : 'de')
+  const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
   const isPublicSkillpilot =
     typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
@@ -318,22 +322,21 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setLegalAccepted(true)
   }
 
-  const createChatStartPrompt = async (effectiveId: string) => {
+  const createCoachChatStart = async (effectiveId: string) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
-    if (!sanitizedId) return ''
+    if (!sanitizedId) return null
     const normalizedLandscapeId = persistLearnerStart(sanitizedId)
-    if (!normalizedLandscapeId) return ''
+    if (!normalizedLandscapeId) return null
 
     setChatStartLoading(true)
     setChatPromptCopyState('idle')
     try {
-      const chatStart = await requestChatStart({
+      return await requestCoachChatStart({
         skillpilotId: sanitizedId,
         language,
         selectedCurriculum: normalizedLandscapeId,
         client: 'web-start',
       })
-      return chatStart.prompt
     } finally {
       setChatStartLoading(false)
     }
@@ -344,8 +347,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!effectiveId) return
     const chatWindow = window.open('', '_blank')
     try {
-      const prompt = await createChatStartPrompt(effectiveId)
-      const url = getSkillpilotGptUrl(language, prompt)
+      const chatStart = await createCoachChatStart(effectiveId)
+      if (!chatStart) throw new Error('Missing coach chat start')
+      const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
         chatWindow.location.href = url
@@ -992,8 +996,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
                     <div className="space-y-3">
                       <div className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40">
-                        <p className="font-semibold text-text-primary">{t.startPage.login.startPromptLabel}</p>
-                        <p className="mt-1">{t.startPage.login.startPromptHint}</p>
+                        <p className="font-semibold text-text-primary">
+                          {visibleSessionLaunchCopy?.startPromptLabel ?? t.startPage.login.startPromptLabel}
+                        </p>
+                        <p className="mt-1">
+                          {visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint}
+                        </p>
                       </div>
                       <button
                         type="button"
@@ -1168,7 +1176,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
                       {chatPromptCopyState === 'failed' && (
                         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
-                          {t.startPage.login.startPromptCopyFailed}
+                          {visibleSessionLaunchCopy?.preparationFailed ?? t.startPage.login.startPromptCopyFailed}
                         </p>
                       )}
                     </div>

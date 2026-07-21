@@ -9,6 +9,7 @@
     "build:application": "tsc -b && vite build",
     "build": "npm run prepare:runtime-assets && npm run build:application",
     "build:package-consumer": "tsc -b && tsx scripts/buildPackageConsumerFrontend.ts",
+    "test:coach-variants": "tsx src/coachVariants/visibleSession/visibleSession.test.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "visualization:prepare": "node ../scripts/prepare_goal_visualization.mjs",

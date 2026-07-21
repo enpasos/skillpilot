@@ -6,7 +6,10 @@ SkillPilot nutzt heute fuer den Chat zwischen Lernenden und dem SkillPilot-Backe
 
 - **System Instructions** (Didaktik + Steuerlogik)
 - **Knowledge Files** (Training-Loop, State Machine, Mastery-Regeln, Deep Linking, Fehlerbehandlung)
-- **Actions** (OpenAPI Schema, z. B. `ai/skillpilot-api-4ai.de.json` oder `ai/skillpilot-api-4ai.en.json`) zur Anbindung an das SkillPilot-Backend
+- **Actions** (paketlokales OpenAPI-Schema, z. B.
+  `ai/openai custom gpt/skillpilot-api-4ai.de.json` oder
+  `ai/openai custom gpt/skillpilot-api-4ai.en.json`) zur Anbindung an das
+  SkillPilot-Backend
 
 ChatGPT hat sich stark in Richtung Plattform weiterentwickelt:
 
