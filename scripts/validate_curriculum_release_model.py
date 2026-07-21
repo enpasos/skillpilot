@@ -2897,14 +2897,20 @@ def build_expected_quality_evidence(
         "Goal-visualization QA binding is invalid",
     )
     visual_resources: dict[str, Mapping[str, Any]] = {}
+    visual_resource_owner_ids: set[str] = set()
     for resource in resources:
         if resource.get("resourceKind") != "goal-visualization":
             continue
         goal_id = resource.get("ownerGoalId")
         require(
-            isinstance(goal_id, str) and goal_id not in visual_resources,
+            isinstance(goal_id, str) and goal_id not in visual_resource_owner_ids,
             f"Goal visualization ownership is not one-to-one: {goal_id}",
         )
+        visual_resource_owner_ids.add(goal_id)
+        # Package resources outside the ordinary-atomic CQR-303 scope do not
+        # acquire a release-quality decision merely by carrying an image.
+        if goal_id not in atomic_scope:
+            continue
         visual_resources[goal_id] = resource
     missing_visual_goal_ids = sorted(atomic_scope - set(visual_resources))
     visual_decisions: list[dict[str, Any]] = []
@@ -2921,7 +2927,23 @@ def build_expected_quality_evidence(
         )
         visual_goal_ids.add(goal_id)
         resource = visual_resources.get(goal_id)
-        require(resource is not None, f"No active visualization resource for {goal_id}")
+        if resource is None:
+            require(
+                record.get("visualizationState") == "missing"
+                and record.get("missingReason")
+                in {"deferred_provider_limitation", "no_primary_link"}
+                and record.get("assetSha256") in {None, ""}
+                and record.get("imageUrl") in {None, ""}
+                and record.get("publicAssetPath") in {None, ""}
+                and record.get("canonicalAssetPath") in {None, ""},
+                f"Invalid missing visualization evidence for {goal_id}",
+            )
+            continue
+        require(
+            record.get("visualizationState") == "available"
+            and record.get("missingReason") in {None, ""},
+            f"Active goal visualization is not marked available for {goal_id}",
+        )
         expected_digest = "sha256:" + str(resource["sha256"])
         require(
             record.get("assetSha256") == expected_digest,
@@ -2944,8 +2966,8 @@ def build_expected_quality_evidence(
             {"goalId": goal_id, "assetSha256": expected_digest, "status": status}
         )
     require(
-        visual_goal_ids == set(visual_resources),
-        "Goal-visualization QA does not cover the exact active resource set",
+        visual_goal_ids == atomic_scope,
+        "Goal-visualization QA does not cover the exact atomic scope",
     )
     visual_decisions.sort(key=lambda item: item["goalId"])
     approved_count = sum(
@@ -5343,18 +5365,23 @@ def validate_publication_evidence_integrity(
         and required_deck_ids == primary_deck_ids,
         "Published memory goals/decks do not equal active kept-card evidence",
     )
-    visual_resources = [
+    all_visual_resources = [
         resource
         for resource in model["resources"]
         if resource["resourceKind"] == "goal-visualization"
     ]
     visual_resource_goal_ids = [
-        resource["ownerGoalId"] for resource in visual_resources
+        resource["ownerGoalId"] for resource in all_visual_resources
     ]
     require(
         len(visual_resource_goal_ids) == len(set(visual_resource_goal_ids)),
         "Active visualization resources repeat an owner goal",
     )
+    visual_resources = [
+        resource
+        for resource in all_visual_resources
+        if resource["ownerGoalId"] in atomic_goal_ids
+    ]
     visual_resource_hashes = {
         resource["ownerGoalId"]: "sha256:" + resource["sha256"]
         for resource in visual_resources

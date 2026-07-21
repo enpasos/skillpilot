@@ -42,10 +42,10 @@ npm --prefix app run export:full-standalone-package -- \
   --release-root tmp/curriculum-release-model/mathematik-a \
   --output-dir tmp/curriculum-release-model/full-standalone-package \
   --zip \
-  --expect-entry-count 915 \
-  --expect-manifest-file-count 913 \
-  --expect-binary-asset-count 757 \
-  --expect-content-digest sha256:69368add77207a2a302a80826873d2086cfd01fef6a9bacb27951264288a8f54
+  --expect-entry-count 892 \
+  --expect-manifest-file-count 890 \
+  --expect-binary-asset-count 734 \
+  --expect-content-digest sha256:f97d60d2b2786a33feeb3a29627d37f0cd91daf02dd884e49a977863a70e6882
 
 python3 -B scripts/validate_full_standalone_curriculum_package.py \
   --zip tmp/curriculum-release-model/full-standalone-package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip \
@@ -102,7 +102,7 @@ The runtime catalog likewise uses explicit roots, offered scopes, and view resol
 
 `full-standalone-v1` deliberately separates structural validity from permission to publish. A file with `redistributionStatus: review-required` must use `licenseExpression: null`; it can be represented in a staging candidate, but `publication.redistribution-cleared` fails and the decision remains `not-ready-incomplete`. `allowed` requires a real license expression resolved to an inventoried license document. Provider or provenance labels never grant redistribution rights.
 
-The Mathematik redistribution ledger currently binds all 757 embedded images and all non-binary artifact classes. Only the exact root-`LICENSE`-bound software-contract class is automatically Apache-2.0; 757 images and three other classes remain human review items. Six image records carry a user-provided generation claim, which remains provenance rather than a redistribution grant. The independent source-verification lane proves 9,493 contiguous authored-carrier matches and five additional hash-bound PDF-projection matches without treating either as human approval. Its remaining 479 records are a separate human queue. No complete extracted official-PDF text is committed by that lane.
+The Mathematik redistribution ledger currently binds all 734 embedded images and all non-binary artifact classes. Only the exact root-`LICENSE`-bound software-contract class is automatically Apache-2.0; 734 images and three other classes remain human review items. Six image records carry a user-provided generation claim, which remains provenance rather than a redistribution grant. The independent source-verification lane proves 9,493 contiguous authored-carrier matches and five additional hash-bound PDF-projection matches without treating either as human approval. Its remaining 479 records are a separate human queue. No complete extracted official-PDF text is committed by that lane.
 
 ## Current Implementation Boundary
 

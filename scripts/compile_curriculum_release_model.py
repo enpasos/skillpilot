@@ -2249,12 +2249,18 @@ def compile_release_quality_evidence(
     ):
         raise CompilationError("Goal-visualization QA binding is invalid")
     visual_resources: dict[str, Mapping[str, Any]] = {}
+    visual_resource_owner_ids: set[str] = set()
     for resource in resources:
         if resource.get("resourceKind") != "goal-visualization":
             continue
         goal_id = resource.get("ownerGoalId")
-        if not isinstance(goal_id, str) or goal_id in visual_resources:
+        if not isinstance(goal_id, str) or goal_id in visual_resource_owner_ids:
             raise CompilationError(f"Goal visualization ownership is not one-to-one: {goal_id}")
+        visual_resource_owner_ids.add(goal_id)
+        # Orientation and memory images remain package resources but are outside
+        # the ordinary-atomic CQR-303 visualization review scope.
+        if goal_id not in atomic_scope:
+            continue
         visual_resources[goal_id] = resource
     missing_visual_goal_ids = sorted(atomic_scope - set(visual_resources))
     visual_decisions: list[dict[str, Any]] = []
@@ -2268,7 +2274,26 @@ def compile_release_quality_evidence(
         visual_goal_ids.add(goal_id)
         resource = visual_resources.get(goal_id)
         if resource is None:
-            raise CompilationError(f"Goal-visualization QA has no active resource for {goal_id}")
+            if (
+                record.get("visualizationState") != "missing"
+                or record.get("missingReason")
+                not in {"deferred_provider_limitation", "no_primary_link"}
+                or record.get("assetSha256") not in {None, ""}
+                or record.get("imageUrl") not in {None, ""}
+                or record.get("publicAssetPath") not in {None, ""}
+                or record.get("canonicalAssetPath") not in {None, ""}
+            ):
+                raise CompilationError(
+                    f"Goal-visualization QA has invalid missing-resource evidence for {goal_id}"
+                )
+            continue
+        if (
+            record.get("visualizationState") != "available"
+            or record.get("missingReason") not in {None, ""}
+        ):
+            raise CompilationError(
+                f"Active goal visualization is not marked available for {goal_id}"
+            )
         expected_digest = "sha256:" + str(resource["sha256"])
         if record.get("assetSha256") != expected_digest:
             raise CompilationError(f"Stale goal-visualization QA asset hash for {goal_id}")
@@ -2286,8 +2311,8 @@ def compile_release_quality_evidence(
         visual_decisions.append(
             {"goalId": goal_id, "assetSha256": expected_digest, "status": status}
         )
-    if visual_goal_ids != set(visual_resources):
-        raise CompilationError("Goal-visualization QA does not cover the exact active resource set")
+    if visual_goal_ids != atomic_scope:
+        raise CompilationError("Goal-visualization QA does not cover the exact atomic scope")
     visual_decisions.sort(key=lambda item: item["goalId"])
     approved_count = sum(item["status"] == "human-approved" for item in visual_decisions)
     rejected_count = sum(item["status"] == "rejected" for item in visual_decisions)

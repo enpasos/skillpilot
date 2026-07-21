@@ -6,8 +6,8 @@ Diese Seite ist die zentrale, kurze Arbeitsliste für Entscheidungen, die die To
 
 | Gate | Offener Umfang | Blockiert | Primäre Arbeitsquelle |
 | --- | ---: | --- | --- |
-| HR-001 Fachliche Bildfreigabe | 621 vorhandene Bilder; kein Bild fehlt mehr im 754-Goal-Atomic-Scope | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
-| HR-002 Bildrechte | 757 Einzelentscheidungen, davon 6 mit nutzerbereitgestellter Erzeugungsbehauptung | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
+| HR-001 Fachliche Bildfreigabe | 580 aktive Bilder warten auf Review; 23 von 754 Scope-Zielen sind bewusst providerbedingt zurückgestellt | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
+| HR-002 Bildrechte | 734 Einzelentscheidungen, davon 6 mit nutzerbereitgestellter Erzeugungsbehauptung | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
 | HR-003 Rechte der Nicht-Binärartefakte | 3 Klassenentscheidungen | öffentliche Weiterverbreitung | dasselbe Redistribution-Ledger |
 | HR-004 Source-Text-Verifikation | 479 Einzelentscheidungen | Quellen-QA/Promotion | `curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json` |
 | HR-005 Core-first Ontologie-Sign-off | 1 hashgebundene fachlich-ontologische und rechtliche Expertenfreigabe für exaktes FWU-Paket, Reverse-Receipt, Profil und Registry | Ontologie-Promotion | DPK-008c-FWU-Receipt und DPK-008d-Reverse-Receipt |
@@ -17,7 +17,7 @@ Die Gates sind unabhängig. Ein fachlich korrektes Bild kann rechtlich ungeklär
 
 ## HR-001 – Fachliche Bildfreigabe
 
-Aktuell umfasst die Visualisierungs-QA 757 Entscheidungen und Bilder. Alle 754 Goals des Atomic-Scope haben mindestens ein aktives Bild; es gibt keine technische Bildlücke mehr. 136 aktive Visualisierungen sind menschlich freigegeben, 621 warten auf Review. Die zuletzt technisch importierte Visualisierung für Goal `f40fcaf7-c630-589c-9f48-6c9e69da0b9d` gehört zu dieser offenen Human-Reviewqueue.
+Aktuell umfasst die Visualisierungs-QA alle 754 Goals des Atomic-Scope. Davon haben 731 ein aktives Bild; 23 sind nach wiederholt fachlich fehlerhaften Provider-Ergebnissen als `deferred_provider_limitation` bewusst ohne aktiven Link und ohne veröffentlichtes Asset zurückgestellt. 151 aktive Visualisierungen sind menschlich freigegeben, 580 warten auf Review.
 
 Für jedes neue oder geänderte Bild sind mindestens zu prüfen:
 
@@ -28,7 +28,7 @@ Für jedes neue oder geänderte Bild sind mindestens zu prüfen:
 
 Bereits freigegebene Bilder benötigen nur bei Hash- oder relevanter Metadatenänderung ein neues Review.
 
-## HR-002 – Rechte an 757 Bildern
+## HR-002 – Rechte an 734 Bildern
 
 Jedes eingebettete Bild steht bewusst auf `pending-human-review`, `review-required` und `licenseExpression: null`. Die Herkunftsangabe „AI-generated, SkillPilot-curated“ ist keine Lizenz.
 
@@ -40,7 +40,7 @@ Erforderlich sind je Bild oder über eine belastbare, auf jedes Bild angewandte 
 - Reviewer und Zeitstempel;
 - für die sechs `user-provided-generated-claim`-Fälle zusätzlich eine Rechte-/Uploader-Attestation.
 
-Eine Batchentscheidung darf Arbeit bündeln, muss aber weiterhin alle 757 hashgebundenen Assetrecords eindeutig abdecken. Nicht belegbare Assets werden `prohibited` und müssen vor einem öffentlichen Paket entfernt oder ersetzt werden.
+Eine Batchentscheidung darf Arbeit bündeln, muss aber weiterhin alle 734 hashgebundenen Assetrecords eindeutig abdecken. Nicht belegbare Assets werden `prohibited` und müssen vor einem öffentlichen Paket entfernt oder ersetzt werden.
 
 ## HR-003 – Rechte der Nicht-Binärartefakte
 
@@ -102,7 +102,7 @@ Ein technisch gültiger, aber nicht vertrauenswürdig zugeordneter Signaturnachw
 
 - vollständige, hashgebundene Queue-Erzeugung ohne erfundene Human-Freigaben;
 - 9.498 technische Source-Text-Treffer und 479 exakt abgegrenzte Restfälle;
-- 757 einzeln gebundene Bildrechte-Records und drei disjunkte Nicht-Binärklassen, zusammen 760 offene Redistribution-Entscheidungen;
+- 734 einzeln gebundene Bildrechte-Records und drei disjunkte Nicht-Binärklassen, zusammen 737 offene Redistribution-Entscheidungen;
 - automatische Apache-2.0-Freigabe ausschließlich für den exakten Softwarevertragsbestand;
 - fail-closed Erkennung von fehlenden, obsoleten oder gedrifteten Reviewrecords;
 - strukturell gültige Staging-Kandidaten bleiben bei offenen Rechten `not-ready-incomplete` und können nicht als `ready` promotet werden.
