@@ -13,9 +13,11 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
+import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.http.HttpStatus;
@@ -192,6 +194,17 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse getSessionState(String sessionToken) {
         return withoutSkillpilotId(learnerService.getLearnerState(resolveSessionLearnerId(sessionToken)));
+    }
+
+    /** Read-only catalog access used for explicit mid-session curriculum navigation. */
+    public List<LandscapeSummary> getSessionCurriculumOptions(String sessionToken) {
+        resolveSessionLearnerId(sessionToken);
+        return learnerService.getAvailableBaseCurricula();
+    }
+
+    /** Read-only personalized scope roots for an explicit mid-session focus switch. */
+    public List<com.skillpilot.backend.api.FrontierGoal> getSessionScopeOptions(String sessionToken) {
+        return learnerService.getScopeNavigationOptions(resolveSessionLearnerId(sessionToken));
     }
 
     public UnifiedLearnerStateResponse setSessionScope(String sessionToken, ScopeRequest request) {

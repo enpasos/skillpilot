@@ -1,6 +1,9 @@
 package com.skillpilot.backend.ai.visiblesession;
 
 import com.skillpilot.backend.service.ChatSessionService;
+import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
+import com.skillpilot.backend.api.VerifiedRecallResultRequest;
+import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.extensions.Extension;
 import io.swagger.v3.oas.annotations.extensions.ExtensionProperty;
@@ -81,6 +84,27 @@ public class VisibleSessionAiController {
                 .body(outcome.response());
     }
 
+    @PostMapping("/navigation")
+    @Operation(
+            operationId = "requestVisibleNavigation",
+            summary = "Open a fresh visible navigation choice without mutating learner state",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential",
+                    value = "false",
+                    parseValue = true)))
+    public ResponseEntity<VisibleCoachStateResponse> requestNavigation(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @Valid @RequestBody VisibleNavigationRequest request) {
+        VisibleSessionService.ActionOutcome outcome = visibleSessionService.requestNavigation(
+                chatSessionToken,
+                lang,
+                request);
+        return ResponseEntity.status(outcome.status())
+                .cacheControl(CacheControl.noStore())
+                .body(outcome.response());
+    }
+
     @PostMapping("/active-goal")
     @Operation(
             operationId = "setVisibleActiveGoal",
@@ -121,5 +145,73 @@ public class VisibleSessionAiController {
         return ResponseEntity.status(outcome.status())
                 .cacheControl(CacheControl.noStore())
                 .body(outcome.response());
+    }
+
+    @PostMapping("/verified-recall/start")
+    @Operation(
+            operationId = "startVisibleVerifiedRecall",
+            summary = "Start visible verified recall for the active memory goal",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential",
+                    value = "false",
+                    parseValue = true)))
+    public ResponseEntity<VisibleVerifiedRecallPromptResponse> startVerifiedRecall(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody(required = false) VerifiedRecallStartRequest request) {
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(visibleSessionService.startVerifiedRecall(chatSessionToken, lang, request));
+    }
+
+    @PostMapping("/verified-recall/answer")
+    @Operation(
+            operationId = "getVisibleVerifiedRecallAnswer",
+            summary = "Reveal the expected answer after the learner answered",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential",
+                    value = "false",
+                    parseValue = true)))
+    public ResponseEntity<VisibleVerifiedRecallAnswerResponse> getVerifiedRecallAnswer(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody VerifiedRecallAnswerRequest request) {
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(visibleSessionService.getVerifiedRecallAnswer(chatSessionToken, lang, request));
+    }
+
+    @PostMapping("/verified-recall/result")
+    @Operation(
+            operationId = "recordVisibleVerifiedRecallResult",
+            summary = "Record a visible verified-recall result",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential",
+                    value = "false",
+                    parseValue = true)))
+    public ResponseEntity<VisibleVerifiedRecallResultResponse> recordVerifiedRecallResult(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @RequestBody VerifiedRecallResultRequest request) {
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(visibleSessionService.recordVerifiedRecallResult(chatSessionToken, lang, request));
+    }
+
+    @PostMapping("/exam/evaluation")
+    @Operation(
+            operationId = "getVisibleExamEvaluation",
+            summary = "Load the evaluation material for the active exam after submission",
+            extensions = @Extension(properties = @ExtensionProperty(
+                    name = "x-openai-isConsequential",
+                    value = "false",
+                    parseValue = true)))
+    public ResponseEntity<VisibleExamEvaluationResponse> getExamEvaluation(
+            @PathVariable String lang,
+            @PathVariable String chatSessionToken,
+            @Valid @RequestBody VisibleExamEvaluationRequest request) {
+        return ResponseEntity.ok()
+                .cacheControl(CacheControl.noStore())
+                .body(visibleSessionService.getExamEvaluation(chatSessionToken, lang, request));
     }
 }

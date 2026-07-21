@@ -3833,6 +3833,24 @@ public class LearnerService {
         return getLearnerState(skillpilotId, null);
     }
 
+    /**
+     * Return the same personalized top-level modules used when a learner has no
+     * scope yet. This read model lets coach adapters offer an explicit focus
+     * switch even while another scope or active goal is present.
+     */
+    @Transactional(readOnly = true)
+    public List<FrontierGoal> getScopeNavigationOptions(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return Collections.emptyList();
+        }
+        Map<String, LearningGoal> filteredGoals = getFilteredGoals(
+                curriculumId,
+                learner.getPersonalCurriculum());
+        return getTopLevelModules(curriculumId, filteredGoals);
+    }
+
     private UnifiedLearnerStateResponse getLearnerState(String skillpilotId, String sequentialAutopilotAnchorGoalId) {
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();

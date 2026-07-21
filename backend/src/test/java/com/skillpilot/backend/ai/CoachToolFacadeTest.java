@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.ActiveGoalRequest;
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.StateMachineInfo;
@@ -16,6 +17,7 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.domain.CopySource;
+import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
 import java.time.Instant;
@@ -87,6 +89,28 @@ class CoachToolFacadeTest {
         ordered.verify(learnerService).getLearnerState(skillpilotId);
         ordered.verify(learnerService).setActiveGoal(skillpilotId, goalId);
         ordered.verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void sessionNavigationCatalogReadsResolveTheSessionWithoutMutatingLearnerState() {
+        String skillpilotId = "learner-1";
+        String sessionToken = "session-token";
+        LandscapeSummary curriculum = mock(LandscapeSummary.class);
+        FrontierGoal scope = new FrontierGoal(
+                "scope-1", "Scope", "Beschreibung", "cluster", null, null,
+                List.of(), List.of(), null, null, null, null);
+        when(chatSessionService.resolveSkillpilotId(sessionToken)).thenReturn(skillpilotId);
+        when(learnerService.getAvailableBaseCurricula()).thenReturn(List.of(curriculum));
+        when(learnerService.getScopeNavigationOptions(skillpilotId)).thenReturn(List.of(scope));
+
+        assertThat(facade.getSessionCurriculumOptions(sessionToken)).containsExactly(curriculum);
+        assertThat(facade.getSessionScopeOptions(sessionToken)).containsExactly(scope);
+
+        verify(chatSessionService, org.mockito.Mockito.times(2)).resolveSkillpilotId(sessionToken);
+        verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getAvailableBaseCurricula();
+        verify(learnerService).getScopeNavigationOptions(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 

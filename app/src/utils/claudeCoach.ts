@@ -35,11 +35,9 @@ interface RawClaudeResponse {
   connected?: unknown
 }
 
-const enabledFlagValues = new Set(['1', 'true', 'yes', 'on'])
-
-export const CLAUDE_COACH_BETA_ENABLED = enabledFlagValues.has(
-  (import.meta.env.VITE_CLAUDE_BETA_ENABLED ?? '').trim().toLowerCase(),
-)
+// Keep the Claude integration available in code, but do not offer it as a
+// learner-facing coach option while the beta is paused.
+export const CLAUDE_COACH_BETA_ENABLED = false
 
 const getApiUrl = (skillpilotId: string, action: 'connect-start' | 'launch') => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)

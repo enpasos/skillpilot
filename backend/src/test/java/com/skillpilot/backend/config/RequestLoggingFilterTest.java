@@ -205,6 +205,16 @@ class RequestLoggingFilterTest {
                 .isEqualTo("setVisibleActiveGoal");
         assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/mastery"))
                 .isEqualTo("setVisibleMastery");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/navigation"))
+                .isEqualTo("requestVisibleNavigation");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/verified-recall/start"))
+                .isEqualTo("startVisibleVerifiedRecall");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/verified-recall/answer"))
+                .isEqualTo("getVisibleVerifiedRecallAnswer");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/verified-recall/result"))
+                .isEqualTo("recordVisibleVerifiedRecallResult");
+        assertThat(filter.resolveAiOperationId("POST", "/api/ai/de/sessions/sps_token/visible/exam/evaluation"))
+                .isEqualTo("getVisibleExamEvaluation");
     }
 
     @Test

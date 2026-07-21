@@ -288,12 +288,32 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             return "applyVisibleChoice";
         }
         if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/navigation/?$")) {
+            return "requestVisibleNavigation";
+        }
+        if ("POST".equals(normalizedMethod)
                 && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/active-goal/?$")) {
             return "setVisibleActiveGoal";
         }
         if ("POST".equals(normalizedMethod)
                 && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/mastery/?$")) {
             return "setVisibleMastery";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/verified-recall/start/?$")) {
+            return "startVisibleVerifiedRecall";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/verified-recall/answer/?$")) {
+            return "getVisibleVerifiedRecallAnswer";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/verified-recall/result/?$")) {
+            return "recordVisibleVerifiedRecallResult";
+        }
+        if ("POST".equals(normalizedMethod)
+                && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/visible/exam/evaluation/?$")) {
+            return "getVisibleExamEvaluation";
         }
         if ("GET".equals(normalizedMethod) && normalizedUri.matches(".*/api/ai/[^/]+/sessions/[^/]+/state/?$")) {
             return "getLearnerState";

@@ -2,16 +2,14 @@
 
 ## Principle
 
-No confirmed backend success means no claimed state change. Never say that
-something was loaded, selected, saved, or mastered unless the latest Action
-response confirms it.
+No confirmed backend success means no claimed state change. Honesty takes priority
+over a seemingly smooth flow. When state or persistence is unreliable, do not
+continue structured teaching, mastery assessment, or learning-path decisions.
 
 ## Workflow conflict (`409`)
 
-A `409` can mean that learner state changed or a different step is required first.
-
 1. Reload state exactly once with the visible session token.
-2. Display the new `requiredAction` and any new selection visibly.
+2. Use the new `requiredAction`, `interactionMode`, and any new choice visibly.
 3. Never reuse old selection codes or numbers.
 
 If the conflict remains, stop transparently instead of improvising.
@@ -21,24 +19,26 @@ If the conflict remains, stop transparently instead of improvising.
 On `410` or `chat_session_expired`:
 
 1. call no further Action;
-2. stop structured teaching;
+2. stop teaching immediately;
 3. claim no saved progress;
-4. give the browser restart instruction:
+4. say: “Your SkillPilot session has expired. Please return to skillpilot.com and
+   start the learning coach there again.”
 
-> Your SkillPilot session has expired. Please return to skillpilot.com and start
-> the learning coach there again.
+Do not ask for the SkillPilot ID and do not append the stale session anchor.
 
-Do not ask for the SkillPilot ID. Do not append a session anchor to the expiry turn,
-because the old token must not be presented as valid.
+## Invalid session (`401`)
 
-## Invalid or missing session (`401`)
+Do not guess or repair the token and do not create a substitute profile. Direct the
+learner back to `skillpilot.com`. Also claim no progress after invalid Action
+authentication.
 
-Do not guess, repair the token, or create a substitute profile. Direct the learner
-back to `skillpilot.com` to restart.
+## Validation, schema, and other failures
 
-## Validation and other failures
+For an invalid choice, check visible values. Never invent a learning-goal ID, card
+ID, choice number, or reference. On a schema, 4xx, persistence, or unexpected state
+failure, stop teaching and Actions. Say briefly that learner state cannot currently
+be saved reliably.
 
-For an invalid choice or request, check the visible values. Never invent a UUID,
-choice number, or reference. For a technical failure, say briefly that learner
-state cannot currently be saved reliably.
-
+Forbidden reactions include “it probably worked”, silently continuing, promising
+to save later, or implicitly continuing where the chat stopped. Resume only from a
+new stable state.

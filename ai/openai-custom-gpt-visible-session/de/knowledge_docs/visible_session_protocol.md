@@ -2,80 +2,97 @@
 
 ## Zweck
 
-ChatGPT darf für Folgeaktionen keine Werte voraussetzen, die nur in einem früheren,
-nicht sichtbaren Action-Response standen. Deshalb wird der kleine notwendige
-Dialogzustand sichtbar und wortgleich durch die Unterhaltung getragen.
+Werte aus einem früheren unsichtbaren Action-Response gelten im nächsten User-Turn
+nicht als verfügbar. Deshalb werden nur die für Folgeaktionen benötigten Werte
+sichtbar und wortgleich durch den Dialog getragen:
 
-Die sichtbaren Werte sind:
-
-- das temporäre `sps_...`-Sitzungstoken;
-- der aktuelle Auswahlcode und die dazugehörigen Nummern;
-- die kanonische Lernziel-UUID, sobald ein Ziel aktiv ist.
+* temporäres `sps_...`-Sitzungstoken;
+* aktueller Auswahlcode und sichtbare Nummern;
+* vollständige, global eindeutige SkillPilot-Lernziel-ID des aktiven Ziels;
+* bei Verified Recall die Karten-IDs zusammen mit ihren Prompts.
 
 Die dauerhafte SkillPilot-ID gehört nie in den Chat.
 
-## Start
+## Start und Refresh-Gate
 
-Der erste Benutzertext aus dem Cockpit enthält das vollständige Sitzungstoken. Es
-ist ein 24 Stunden gültiger temporärer Zugriff und muss exakt übernommen werden.
-Es gibt in dieser Variante weder einen Startcode noch `redeemStartCode`.
+Der erste Benutzertext aus dem Cockpit enthält das vollständige, 24 Stunden gültige
+Sitzungstoken. Es gibt weder Startcode noch Einlösung. `getVisibleState` wird sofort
+aufgerufen.
 
-Nach dem ersten Zustandsabruf wird die sichtbare Antwort des Backend als Grundlage
-verwendet. Wichtige Werte müssen in der Assistentenantwort erscheinen, bevor ein
-späterer Turn sie wieder benutzen darf.
+Vor jeder substantiellen Antwort auf einen späteren normalen User-Turn wird der
+Zustand erneut mit `getVisibleState` geladen. Dadurch werden aktives Ziel, Titel,
+Beschreibung, Ressourcen, Fortschritt und Auswahl nach Kontextkompaktierung oder
+Cockpit-Nutzung nicht aus Erinnerung rekonstruiert.
+
+Nur drei Abläufe beginnen ohne diesen Zustandsabruf:
+
+1. Antwort auf eine aktuell sichtbare Auswahl → `applyVisibleChoice`;
+2. vollständige Prüfungsabgabe → `getVisibleExamEvaluation`;
+3. Antworten auf sichtbare Karten → `getVisibleVerifiedRecallAnswer`, danach
+   `recordVisibleVerifiedRecallResult`.
+
+Ihre Parameter müssen bereits im sichtbaren Chat stehen.
 
 ## Pflichtanker
 
-Ohne aktives Ziel ist die letzte Antwortzeile:
+Ohne bzw. mit aktivem Ziel lautet die letzte Antwortzeile:
 
 ```text
 — SkillPilot · Sitzung: <chatSessionToken>
-```
-
-Mit aktivem kanonischem Ziel ist sie:
-
-```text
 — SkillPilot · Sitzung: <chatSessionToken> · Lernziel-ID: <goalId>
 ```
 
-Der Anker ist immer die letzte Zeile. Keine Satzzeichen, Hinweise oder Links folgen
-danach. Nach jeder erfolgreichen Action wird ihr `relayFooter` wortgleich als
-Anker verwendet. Ohne neue Action bleibt der letzte bereits sichtbare Footer
-maßgeblich; er wird nicht rekonstruiert oder verändert.
+Nach jeder erfolgreichen Action wird deren `relayFooter` wortgleich verwendet.
+Ohne neue Action bleibt der letzte sichtbare Footer maßgeblich. Der Anker ist immer
+die letzte Zeile; danach folgen weder Satzzeichen noch Link. Ein Fehlerturn mit
+fehlender, ungültiger oder abgelaufener Sitzung hat keinen Anker.
 
 ## Nummerierte Auswahl
 
-Eine Backend-Auswahl ist zeitlich lokal. Sie gilt nur zusammen mit ihrem
-`selectionReference` und genau der gelieferten Optionsreihenfolge.
-
-Darstellung:
+Eine Auswahl gilt nur zusammen mit `selectionReference` und der gelieferten
+Optionsreihenfolge:
 
 ```text
 Wähle bitte einen Schwerpunkt.
 Auswahlcode: A-1A2B3C4D5E6F
 
-1. Funktionen untersuchen — Lernziel-ID: <UUID>
-2. Gleichungen lösen — Lernziel-ID: <UUID>
+1. Funktionen untersuchen — Lernziel-ID: <vollständige SkillPilot-Lernziel-ID>
+2. Gleichungen lösen — Lernziel-ID: <vollständige SkillPilot-Lernziel-ID>
 ```
 
-Bei Lehrplan- oder Scope-Optionen bleiben interne Kennungen verborgen. Für den
-Folgeschritt reichen `selectionReference` und `choiceNumber`. Niemals Optionen neu
-nummerieren, zusammenfassen oder anhand bloßer Titel erraten.
+Lehrplan-, Personalisierungs-, Scope- und Lernmodusoptionen zeigen keine internen
+Kennungen. Lernzieloptionen zeigen ihre vollständige Lernziel-ID.
 
-Auf die Antwort „2“ folgt `applyVisibleChoice` mit der sichtbar zugehörigen
-`selectionReference` und `choiceNumber=2`. Ist die Antwort mehrdeutig oder bezieht
-sie sich auf eine ältere Auswahl, kurz nachfragen statt eine Action auszuführen.
+Nach einer eindeutigen Einfachauswahl wird `choiceNumber` gesendet. `choiceNumbers`
+ist ausschließlich für eine ausdrücklich vom Backend erlaubte Mehrfachauswahl des
+Lernumfangs bestimmt; es enthält die eindeutigen sichtbaren Nummern in der vom
+Benutzer gewünschten Reihenfolge. Curriculum, Personalisierung, Ziel und Lernmodus
+sind nie Mehrfachauswahlen. `choiceNumber` und `choiceNumbers` werden nicht
+gleichzeitig gesendet.
+
+Trifft die aktuelle User-Nachricht bereits eindeutig und ausdrücklich eine frisch
+gelieferte Option oder gibt es nur eine Option, darf `applyVisibleChoice` noch im
+selben Assistententurn folgen. Bei mehreren offenen Optionen muss die Auswahl mit
+Code sichtbar werden und ein User-Turn abgewartet werden.
+
+Alte Auswahlcodes, Nummern ohne Auswahlcode, neu sortierte Optionen oder aus Titeln
+erratene Werte sind unzulässig. Bei Mehrdeutigkeit wird nachgefragt.
+
+Bei einem spontanen ausdrücklichen Wechselwunsch erzeugt
+`requestVisibleNavigation(target)` zunächst nur eine Auswahl: `curriculum` für
+Lehrplan, `personalization` für Profil, `scope` für Lernumfang und `goal` für Ziel.
+Erst `applyVisibleChoice` verändert danach den Zustand.
 
 ## Direkte Lernzielreferenzen
 
-Kanonische Lernziel-UUIDs dürfen bewusst sichtbar sein. Dadurch kann eine Person
-ein Lernziel eindeutig aus Cockpit, Lernblatt oder PDF adressieren. Eine direkte
-Zielaktion ist nur zulässig, wenn die vollständige UUID bereits sichtbar im Chat
+Kanonische Lernziel-IDs dürfen bewusst sichtbar sein und umfassen auch stabile
+Memorierungsziel-IDs. Eine direkte Ziel-, Mastery-,
+Recall- oder Exam-Action ist nur zulässig, wenn die vollständige ID bereits im Chat
 steht. Titelähnlichkeit reicht nicht.
 
-## Links
+## Links und Geheimnisse
 
-Verwende ausschließlich einen vom letzten erfolgreichen Zustand gelieferten
-`cockpitUrl` wortgleich. Konstruiere keine Links aus IDs. Fehlt ein solcher Link,
-verweise nur auf `https://skillpilot.com`. Sitzungstoken und dauerhafte
-SkillPilot-ID gehören nie in einen Link.
+Nur vom letzten erfolgreichen Response gelieferte URLs werden wortgleich verwendet.
+Links werden nie aus IDs konstruiert und enthalten weder Sitzungstoken noch
+dauerhafte SkillPilot-ID. Das sichtbare Sitzungstoken ist ein zeitlich begrenzter
+Zugriff; es wird außerhalb des Pflichtankers nicht unnötig wiederholt.

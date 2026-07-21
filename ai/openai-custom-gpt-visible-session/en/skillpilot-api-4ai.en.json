@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SkillPilot Visible Session API (EN)",
-    "version": "0.1.0",
-    "description": "Compact English Action API for the SkillPilot Learning Coach with a visibly relayed 24-hour session token."
+    "version": "0.2.0",
+    "description": "Self-contained English Action API for the complete SkillPilot Learning Coach with visibly relayed 24-hour session context."
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/ai/en/sessions/{chatSessionToken}/visible/state": {
       "get": {
         "operationId": "getVisibleState",
-        "summary": "Load current learner state",
-        "description": "Loads compact coach state. Output relayFooter verbatim as the final visible answer line.",
+        "summary": "Load the current visible learner state",
+        "description": "Call before every new substantive ordinary answer turn. relayFooter becomes the final visible answer line verbatim.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -24,7 +24,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "responses": {
@@ -44,7 +51,7 @@
       "post": {
         "operationId": "applyVisibleChoice",
         "summary": "Apply a visible numbered choice",
-        "description": "Uses only the selection code and number from the latest visible selection turn. The server resolves curriculum, scope, or goal.",
+        "description": "Uses only the selection code and number or scope numbers from the latest visible selection turn. The server resolves curriculum, personalization, scope, learning mode, or goal.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -53,7 +60,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -85,11 +99,11 @@
         }
       }
     },
-    "/api/ai/en/sessions/{chatSessionToken}/visible/active-goal": {
+    "/api/ai/en/sessions/{chatSessionToken}/visible/navigation": {
       "post": {
-        "operationId": "setVisibleActiveGoal",
-        "summary": "Activate a visibly referenced learning goal",
-        "description": "Activates only a full canonical learning-goal UUID already visible in the chat.",
+        "operationId": "requestVisibleNavigation",
+        "summary": "Request visible navigation for a switch",
+        "description": "Without changing state, creates a numbered choice for an explicitly requested curriculum, profile, scope, or goal switch.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -98,7 +112,66 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleNavigationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/visible/active-goal": {
+      "post": {
+        "operationId": "setVisibleActiveGoal",
+        "summary": "Activate a visibly referenced learning goal",
+        "description": "Activates only a full globally unique SkillPilot learning-goal ID already visible in the chat.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -134,7 +207,7 @@
       "post": {
         "operationId": "setVisibleMastery",
         "summary": "Save mastery for the active learning goal",
-        "description": "Saves a value only for the active visible learning-goal UUID and only after sufficient subject evidence.",
+        "description": "Saves Mastery 1.0 only for the active visible learning-goal ID and only after sufficient subject evidence.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -143,7 +216,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -174,6 +254,214 @@
           }
         }
       }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/visible/verified-recall/start": {
+      "post": {
+        "operationId": "startVisibleVerifiedRecall",
+        "summary": "Start or continue visible flashcard verification",
+        "description": "Returns a numbered card batch. Every cardId and prompt must be displayed visibly before the follow-up turn.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallPrompt"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/visible/verified-recall/answer": {
+      "post": {
+        "operationId": "getVisibleVerifiedRecallAnswer",
+        "summary": "Load the expected flashcard answer after submission",
+        "description": "Call only after the learner visibly answered this exact cardId. Never output expectedAnswer beforehand.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallAnswer"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/visible/verified-recall/result": {
+      "post": {
+        "operationId": "recordVisibleVerifiedRecallResult",
+        "summary": "Save a graded flashcard result",
+        "description": "Saves passed or failed for a previously visible cardId. The server enforces the daily lock.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallResultRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallResult"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/en/sessions/{chatSessionToken}/visible/exam/evaluation": {
+      "post": {
+        "operationId": "getVisibleExamEvaluation",
+        "summary": "Load the exam solution only after complete submission",
+        "description": "Call only after the complete visible exam submission. solutionContent remains strictly protected until then and is never returned in state.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exact visible temporary session token from the current chat; begins with sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleExamEvaluationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExamEvaluation"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -183,25 +471,53 @@
         "scheme": "bearer"
       }
     },
-    "parameters": {
-      "ChatSessionToken": {
-        "name": "chatSessionToken",
-        "in": "path",
-        "required": true,
-        "description": "Exact visible temporary session token from the current chat; begins with sps_.",
-        "schema": {
-          "type": "string",
-          "pattern": "^sps_[A-Za-z0-9_-]{43}$"
-        }
-      }
-    },
     "responses": {
       "VisibleState": {
-        "description": "Compact visible coach state.",
+        "description": "Complete relay-safe visible coach state.",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallPrompt": {
+        "description": "Flashcard batch to display visibly, or waiting/completion status.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallPromptResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallAnswer": {
+        "description": "Expected answer for a visible card the learner already answered.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallResult": {
+        "description": "Saved card result and next recall status.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallResultResponse"
+            }
+          }
+        }
+      },
+      "ExamEvaluation": {
+        "description": "Protected exam solution and scoring scheme after complete submission.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleExamEvaluationResponse"
             }
           }
         }
@@ -252,8 +568,7 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "selectionReference",
-          "choiceNumber"
+          "selectionReference"
         ],
         "properties": {
           "selectionReference": {
@@ -263,7 +578,17 @@
           "choiceNumber": {
             "type": "integer",
             "minimum": 1,
-            "description": "Visible number chosen by the learner."
+            "description": "Exactly one visible number chosen by the learner; do not send together with choiceNumbers."
+          },
+          "choiceNumbers": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "Only for an explicitly chosen multi-selection of learning scope; otherwise use choiceNumber."
           }
         }
       },
@@ -276,8 +601,10 @@
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Full canonical learning-goal UUID already visible in the chat."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Full globally unique SkillPilot learning-goal ID already visible in the chat."
           },
           "redirect": {
             "type": "boolean",
@@ -286,24 +613,128 @@
           }
         }
       },
+      "VisibleNavigationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "curriculum",
+              "personalization",
+              "scope",
+              "goal"
+            ],
+            "description": "Only the navigation area explicitly requested by the learner."
+          }
+        }
+      },
       "VisibleMasteryRequest": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "goalId",
-          "mastery"
+          "goalId"
         ],
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Active learning-goal UUID from the latest visible relayFooter."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Active learning-goal ID from the latest visible relayFooter; the backend saves 1.0."
+          }
+        }
+      },
+      "VisibleVerifiedRecallStartRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Visible active learning-goal ID of a memorization goal."
           },
-          "mastery": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1,
-            "description": "Evidence-based mastery value to save, from 0 through 1."
+          "batchSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 10,
+            "description": "Number of cards to ask visibly together; use the Cockpit preference, otherwise 10."
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Visible active learning-goal ID."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Exact visible card ID from the most recently asked batch."
+          }
+        }
+      },
+      "VisibleVerifiedRecallResultRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId",
+          "passed"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Visible active learning-goal ID."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Exact visible card ID."
+          },
+          "passed": {
+            "type": "boolean",
+            "description": "Set true only when the visible answer was sufficiently correct without a revealed answer."
+          },
+          "feedback": {
+            "type": "string",
+            "description": "Short subject-specific reason for the grade."
+          }
+        }
+      },
+      "VisibleExamEvaluationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Visible active exam learning-goal ID after complete submission."
           }
         }
       },
@@ -314,6 +745,10 @@
           "relayFooter",
           "learningState",
           "requiredAction",
+          "interactionMode",
+          "resources",
+          "progress",
+          "completion",
           "allowedActions",
           "instruction"
         ],
@@ -330,14 +765,38 @@
             "type": "string",
             "description": "Binding next coach step. teachActiveGoal means dialogue, not an Action."
           },
+          "interactionMode": {
+            "type": "string",
+            "enum": [
+              "selection",
+              "chat",
+              "cockpit",
+              "exam",
+              "verifiedRecall",
+              "complete"
+            ],
+            "description": "Binding output mode; determines the permitted flow before every substantive answer."
+          },
           "curriculum": {
             "$ref": "#/components/schemas/CurriculumSummary"
           },
           "activeGoal": {
             "$ref": "#/components/schemas/PublicActiveGoal"
           },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleResource"
+            }
+          },
           "selection": {
             "$ref": "#/components/schemas/VisibleSelection"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/VisibleProgress"
+          },
+          "completion": {
+            "$ref": "#/components/schemas/VisibleCompletion"
           },
           "allowedActions": {
             "type": "array",
@@ -346,11 +805,16 @@
               "enum": [
                 "getVisibleState",
                 "applyVisibleChoice",
+                "requestVisibleNavigation",
                 "setVisibleActiveGoal",
-                "setVisibleMastery"
+                "setVisibleMastery",
+                "startVisibleVerifiedRecall",
+                "getVisibleVerifiedRecallAnswer",
+                "recordVisibleVerifiedRecallResult",
+                "getVisibleExamEvaluation"
               ]
             },
-            "description": "operationId values from this Visible Session API that are allowed in the current state; never contains legacy Action names."
+            "description": "operationId values from this Visible Session API allowed in the current state."
           },
           "instruction": {
             "type": "string",
@@ -373,10 +837,19 @@
       "PublicActiveGoal": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "goalId",
+          "title",
+          "description",
+          "nodeKind",
+          "cockpitUrl"
+        ],
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
             "description": "Intentionally visible, globally unique canonical learning-goal ID."
           },
           "title": {
@@ -386,7 +859,12 @@
             "type": "string"
           },
           "nodeKind": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "tutor",
+              "memory",
+              "exam"
+            ]
           },
           "cockpitUrl": {
             "type": "string",
@@ -394,18 +872,22 @@
             "description": "Backend-generated public link to the active learning goal; use verbatim and never assemble it yourself."
           },
           "examData": {
-            "type": "object",
-            "additionalProperties": true
+            "$ref": "#/components/schemas/VisibleExamPresentation"
           }
         }
       },
       "VisibleSelection": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "selectionReference",
+          "question",
+          "options"
+        ],
         "properties": {
           "selectionReference": {
             "type": "string",
-            "description": "Time-local selection code; display visibly with the options."
+            "description": "Time-local selection code; display visibly together with the options."
           },
           "question": {
             "type": "string"
@@ -438,8 +920,466 @@
           },
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Display for learning-goal options; null for curriculum or scope choices."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Display for learning-goal options; absent for curriculum, personalization, scope, or mode choices."
+          }
+        }
+      },
+      "VisibleProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic",
+          "scopeCompleted"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "personalized": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scopeCompleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GoalProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "VisibleCompletion": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scopeComplete",
+          "curriculumComplete"
+        ],
+        "properties": {
+          "scopeComplete": {
+            "type": "boolean"
+          },
+          "curriculumComplete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VisibleResource": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "title",
+          "url",
+          "requiresCockpit"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "altText": {
+            "type": "string"
+          },
+          "requiresCockpit": {
+            "type": "boolean",
+            "description": "When true, this individual resource is usable only in the Cockpit; the goal mode separately controls chat teaching."
+          }
+        }
+      },
+      "VisibleExamPresentation": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "taskContent",
+          "hasImage"
+        ],
+        "properties": {
+          "taskContent": {
+            "type": "string",
+            "description": "Localized task block without an IMAGE_PATH marker; output verbatim and normalize only TeX delimiters."
+          },
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Optional maximum score for orientation; solution and scoring scheme remain protected."
+          },
+          "hasImage": {
+            "type": "boolean",
+            "description": "When true, point to the image in the Cockpit; do not render a private backend image in chat."
+          }
+        }
+      },
+      "VisibleExamScoring": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "maxPoints",
+          "passingPoints",
+          "steps"
+        ],
+        "properties": {
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "passingPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleExamScoringStep"
+            }
+          }
+        }
+      },
+      "VisibleExamScoringStep": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "points",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleExamEvaluationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "goalId",
+          "solutionContent",
+          "scoring",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Output verbatim as the final visible answer line."
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "solutionContent": {
+            "type": "string",
+            "description": "Protected localized solution; use for grading only after complete submission."
+          },
+          "scoring": {
+            "$ref": "#/components/schemas/VisibleExamScoring"
+          },
+          "instruction": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cardId",
+          "prompt"
+        ],
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "description": "Display visibly together with the prompt."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Ask visibly without revealing the expected answer."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallState": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "status",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallPromptResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "status",
+          "instruction",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Output verbatim as the final visible answer line."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "instruction",
+          "goalId",
+          "cardId",
+          "prompt",
+          "expectedAnswer"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Output verbatim as the final visible answer line."
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "expectedAnswer": {
+            "type": "string",
+            "description": "Use only after the learner answer is already visible and never output beforehand."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallResultResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "savedCardId",
+          "passed",
+          "verifiedCards",
+          "pendingCards",
+          "masterySaved",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Output verbatim as the final visible answer line."
+          },
+          "savedCardId": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "masterySaved": {
+            "type": "boolean",
+            "description": "When true, the backend has already saved Mastery 1.0 for the memorization goal."
+          },
+          "masteryGoalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "next": {
+            "$ref": "#/components/schemas/VisibleVerifiedRecallState"
           }
         }
       },

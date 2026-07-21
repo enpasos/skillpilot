@@ -47,6 +47,10 @@ class VisibleSessionAiControllerTest {
                 "— SkillPilot · Sitzung: " + token,
                 "READY",
                 "setCurriculum",
+                "selection",
+                null,
+                null,
+                null,
                 null,
                 null,
                 null,
@@ -71,6 +75,10 @@ class VisibleSessionAiControllerTest {
                 new Class<?>[] { String.class, String.class, VisibleChoiceRequest.class },
                 "applyVisibleChoice");
         assertOperationId(
+                "requestNavigation",
+                new Class<?>[] { String.class, String.class, VisibleNavigationRequest.class },
+                "requestVisibleNavigation");
+        assertOperationId(
                 "setActiveGoal",
                 new Class<?>[] { String.class, String.class, VisibleActiveGoalRequest.class },
                 "setVisibleActiveGoal");
@@ -78,6 +86,22 @@ class VisibleSessionAiControllerTest {
                 "setMastery",
                 new Class<?>[] { String.class, String.class, VisibleMasteryRequest.class },
                 "setVisibleMastery");
+        assertOperationId(
+                "startVerifiedRecall",
+                new Class<?>[] { String.class, String.class, com.skillpilot.backend.api.VerifiedRecallStartRequest.class },
+                "startVisibleVerifiedRecall");
+        assertOperationId(
+                "getVerifiedRecallAnswer",
+                new Class<?>[] { String.class, String.class, com.skillpilot.backend.api.VerifiedRecallAnswerRequest.class },
+                "getVisibleVerifiedRecallAnswer");
+        assertOperationId(
+                "recordVerifiedRecallResult",
+                new Class<?>[] { String.class, String.class, com.skillpilot.backend.api.VerifiedRecallResultRequest.class },
+                "recordVisibleVerifiedRecallResult");
+        assertOperationId(
+                "getExamEvaluation",
+                new Class<?>[] { String.class, String.class, VisibleExamEvaluationRequest.class },
+                "getVisibleExamEvaluation");
     }
 
     private void assertOperationId(String methodName, Class<?>[] parameterTypes, String expected) throws Exception {

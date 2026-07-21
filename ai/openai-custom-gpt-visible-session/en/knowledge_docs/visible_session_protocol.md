@@ -2,80 +2,94 @@
 
 ## Purpose
 
-ChatGPT must not assume that a value from an earlier non-visible Action response is
-still available. The small amount of dialogue state needed by later Actions is
-therefore carried visibly and verbatim through the conversation.
+Values from an earlier non-visible Action response are not assumed to survive the
+next user turn. Only values needed by later Actions are therefore carried visibly
+and verbatim through the dialogue:
 
-Visible values are:
-
-- the temporary `sps_...` session token;
-- the current selection code and its numbered options;
-- the canonical learning-goal UUID once a goal is active.
+* temporary `sps_...` session token;
+* current selection code and visible numbers;
+* full globally unique SkillPilot learning-goal ID of the active goal;
+* for Verified Recall, card IDs together with their prompts.
 
 The permanent SkillPilot ID never belongs in the chat.
 
-## Startup
+## Startup and refresh gate
 
-The first user text from the Cockpit contains the full session token. It is a
-temporary 24-hour credential and must be copied exactly. This variant has no start
-code and no `redeemStartCode`.
+The first user text from the Cockpit contains the complete 24-hour session token.
+There is no start code or redemption. Call `getVisibleState` immediately.
 
-After the first state request, the visible backend response becomes the basis for
-the next step. Important values must appear in the assistant answer before a later
-turn may reuse them.
+Before every substantive response to a later ordinary user turn, load state again
+with `getVisibleState`. This prevents active goal, title, description, resources,
+progress, or choices from being reconstructed from memory after context compaction
+or Cockpit use.
+
+Only three flows begin without this state request:
+
+1. reply to a currently visible choice → `applyVisibleChoice`;
+2. complete exam submission → `getVisibleExamEvaluation`;
+3. answers to visible cards → `getVisibleVerifiedRecallAnswer`, followed by
+   `recordVisibleVerifiedRecallResult`.
+
+Their parameters must already be visible in the chat.
 
 ## Mandatory anchor
 
-Without an active goal, the final answer line is:
+Without or with an active goal, the final response line is:
 
 ```text
 — SkillPilot · Session: <chatSessionToken>
-```
-
-With an active canonical goal, it is:
-
-```text
 — SkillPilot · Session: <chatSessionToken> · Learning goal ID: <goalId>
 ```
 
-The anchor is always the final line. No punctuation, note, or link follows it.
-After each successful Action, use its `relayFooter` verbatim as the anchor. Without
-a new Action, the latest already-visible footer remains authoritative; never
-reconstruct or alter it.
+After each successful Action, use its `relayFooter` verbatim. Without a new Action,
+the latest visible footer remains binding. The anchor is always the final line; no
+punctuation or link follows. An error turn with a missing, invalid, or expired
+session has no anchor.
 
-## Numbered selection
+## Numbered choice
 
-A backend selection is local in time. It is valid only with its
-`selectionReference` and the exact supplied option order.
-
-Display pattern:
+A choice is valid only with its `selectionReference` and supplied option order:
 
 ```text
 Please choose a focus.
 Selection code: A-1A2B3C4D5E6F
 
-1. Analyze functions — Learning goal ID: <UUID>
-2. Solve equations — Learning goal ID: <UUID>
+1. Analyze functions — Learning goal ID: <full SkillPilot learning-goal ID>
+2. Solve equations — Learning goal ID: <full SkillPilot learning-goal ID>
 ```
 
-For curriculum or scope options, keep internal identifiers hidden. The follow-up
-step needs only `selectionReference` and `choiceNumber`. Never renumber, merge, or
-infer options from similar titles.
+Curriculum, personalization, scope, and learning-mode choices expose no internal
+identifiers. Learning-goal options show their full learning-goal ID.
 
-After the reply “2”, call `applyVisibleChoice` with the visibly paired
-`selectionReference` and `choiceNumber=2`. If the reply is ambiguous or refers to
-an older selection, ask briefly instead of calling an Action.
+After an unambiguous single choice, send `choiceNumber`. Use `choiceNumbers` only
+for a multi-selection of learning scope explicitly allowed by the backend; it
+contains unique visible numbers in the order selected by the learner. Curriculum,
+personalization, goal, and learning mode are never multi-selections. Never send
+`choiceNumber` and `choiceNumbers` together.
+
+If the current user message already clearly and explicitly matches one freshly
+returned option, or only one option exists, `applyVisibleChoice` may follow in the
+same assistant turn. With several open options, display the choice and code and
+wait for a user turn.
+
+Old selection codes, numbers without a selection code, reordered options, or values
+inferred from titles are forbidden. Ask when ambiguous.
+
+For a spontaneous explicit switch request, `requestVisibleNavigation(target)`
+first creates only a choice: `curriculum` for curriculum, `personalization` for
+profile, `scope` for learning scope, and `goal` for goal. Only the later
+`applyVisibleChoice` mutates state.
 
 ## Direct learning-goal references
 
-Canonical learning-goal UUIDs are intentionally visible. This lets a learner
-address the same goal unambiguously from the Cockpit, a worksheet, or a PDF. A
-direct goal Action is allowed only when the full UUID is already visible in the
-chat. A similar title is not enough.
+Canonical learning-goal IDs are intentionally visible and include stable
+memorization-goal IDs. A direct goal, mastery, recall,
+or exam Action is allowed only when the full ID is already in the chat. A similar
+title is not enough.
 
-## Links
+## Links and secrets
 
-Use only the exact `cockpitUrl` supplied by the latest successful state. Do not
-construct links from IDs. If no such link is available, link only to
-`https://skillpilot.com`. Never put the session token or permanent SkillPilot ID
-in a link.
+Use only URLs supplied by the latest successful response, verbatim. Never build a
+link from IDs and never put the session token or permanent SkillPilot ID in a link.
+The visible token is a time-limited credential and is not repeated unnecessarily
+outside the mandatory anchor.
