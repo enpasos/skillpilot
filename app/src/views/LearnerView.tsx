@@ -52,6 +52,7 @@ import {
   getActiveVisibleSessionLaunchCopy,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
+import { buildVisibleSessionVerifiedRecallInstruction } from '../coachVariants/visibleSession/verifiedRecallPrompt'
 import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
 import { resolveGoalDeckHref } from '../utils/runtimeCurriculumCatalog'
@@ -692,30 +693,32 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         ].join('\n')
       : ''
     if (localizedLanguage === 'en') {
+      const toolInstruction = visibleSessionLaunchCopy
+        ? buildVisibleSessionVerifiedRecallInstruction(localizedLanguage, batchSize)
+        : `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`
       return [
         `Active learning goal: ${goal.id} - ${title}`,
         `Flashcard verification batch size: ${batchSize}`,
         '',
         cockpitLink,
         'Please start hard flashcard verification for this active memorization goal.',
-        `Use the SkillPilot verified-recall tools: call verified-recall/start with batchSize=${batchSize}, ask all returned prompts as one numbered batch, let me answer without help, fetch the expected answers only after I have submitted my answers, then save passed/failed for every card.`,
+        toolInstruction,
       ].join('\n')
     }
+    const toolInstruction = visibleSessionLaunchCopy
+      ? buildVisibleSessionVerifiedRecallInstruction(localizedLanguage, batchSize)
+      : `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`
     return [
       `Aktives Lernziel: ${goal.id} - ${title}`,
       `Batchgröße für die Kartenprüfung: ${batchSize}`,
       '',
       cockpitLink,
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
-      `Nutze die SkillPilot-Werkzeuge für verified recall: rufe verified-recall/start mit batchSize=${batchSize} auf, stelle alle zurückgegebenen Fragen als nummerierten Batch, lass mich ohne Hilfe antworten, rufe die erwarteten Antworten erst nach meinen Antworten ab und speichere danach passed/failed für jede Karte.`,
+      toolInstruction,
     ].join('\n')
-  }, [getLearnerGoalTitle, landscapeId, localizedLanguage])
+  }, [getLearnerGoalTitle, landscapeId, localizedLanguage, visibleSessionLaunchCopy])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
-    if (visibleSessionLaunchCopy) {
-      onNotify?.('info', visibleSessionLaunchCopy.verifiedRecallUnavailable)
-      return
-    }
     const chatWindow = window.open('', '_blank')
     let copied = false
     const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
@@ -761,7 +764,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rootLandscapeId,
     skillpilotId,
     verifiedRecallBatchSizeByGoal,
-    visibleSessionLaunchCopy,
   ])
 
   const visibleGoals = useMemo(() => {

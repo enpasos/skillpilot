@@ -8,6 +8,13 @@ Claude-Beta unverändert funktionieren.
 Die Beta ist standardmäßig vollständig ausgeschaltet. Sie ist derzeit nur für
 volljährige Testpersonen vorgesehen.
 
+> **Aktuelle UI-Pause (seit 21. Juli 2026):** Die Claude-Option ist im Frontend
+> zusätzlich durch den konstanten Release-Gate
+> `CLAUDE_COACH_BETA_ENABLED = false` verborgen. Ein gesetztes
+> `VITE_CLAUDE_BETA_ENABLED` kann sie während dieser Pause nicht einblenden.
+> Backend-, OAuth- und MCP-Sourcen bleiben erhalten. Die spätere Reaktivierung
+> ist eine bewusste Code- und Deploymententscheidung.
+
 ## Architektur
 
 Es gibt **keinen zweiten Serverprozess** und keinen Node-Dienst im Betrieb:
@@ -47,7 +54,7 @@ Spring-Boot-Runtime-Konfiguration und gehören im Produktivbetrieb in das
 
 | Variable | Produktion für Beta | Bedeutung |
 | --- | --- | --- |
-| `VITE_CLAUDE_BETA_ENABLED` | `true` | Zeigt die Claude-Buttons; erfordert einen neuen Frontend-Build. Ohne Wert ist die UI verborgen. |
+| `VITE_CLAUDE_BETA_ENABLED` | derzeit wirkungslos | Historisches Build-Time-Flag. Während der UI-Pause bleibt die Option unabhängig vom Wert verborgen. |
 | `SKILLPILOT_CLAUDE_ENABLED` | `true` | Master-Schalter für UI-Routen, OAuth, Tokenprüfung und Coach-Tools. |
 | `SKILLPILOT_CLAUDE_MCP_ENABLED` | `true` | Schaltet den Spring-AI-MCP-Transport ein; erbt ohne eigenen Wert vom Master-Schalter. |
 | `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED` | `true` | Exponiert die echten Lernstands- und Coach-Tools. Für einen isolierten synthetischen Regressionstest vorübergehend auf `false` setzen. |
@@ -206,10 +213,10 @@ können zusätzlich Freigaben durch Owner erforderlich sein.
    Git-Stand markieren. Die Liquibase-Erweiterung ist additiv.
 2. Backend mit beiden Runtime-Flags `true`, aber Frontend-Flag noch `false`
    deployen. Discovery, OAuth-Challenge und MCP-Transport prüfen.
-3. Für das kontrollierte Testfenster mit `VITE_CLAUDE_BETA_ENABLED=true` neu
-   bauen, damit der browsergebundene OAuth-Start über den normalen UI-Button
-   erfolgen kann. Das Flag ist global; außerhalb des Testfensters wieder
-   deaktivieren, solange die Beta noch nicht allgemein angeboten werden soll.
+3. Vor einem späteren kontrollierten Testfenster zuerst den konstanten UI-Gate
+   in `app/src/utils/claudeCoach.ts` bewusst wieder an eine überprüfte
+   Aktivierungsregel anbinden und neu bauen. Ein
+   `VITE_CLAUDE_BETA_ENABLED=true` allein hebt die aktuelle Pause nicht auf.
 4. Vor echten Coach-Tools mit einem leeren Test-Lernstand und einem volljährigen
    Claude-Testkonto den isolierten MCP-Regressionslauf ausführen: Coach-Tools
    aus, synthetische Regressionstools an. Die öffentliche Kurzfassung liegt unter
@@ -376,8 +383,8 @@ Schneller sicherer Rückweg ohne Auswirkungen auf ChatGPT:
 1. Bei einem Security- oder Datenrisiko sofort
    `SKILLPILOT_CLAUDE_MCP_ENABLED=false` und
    `SKILLPILOT_CLAUDE_ENABLED=false` setzen und Spring Boot neu starten.
-2. `VITE_CLAUDE_BETA_ENABLED=false` setzen, Frontend neu bauen und deployen, damit
-   die Claude-Buttons verschwinden.
+2. Den konstanten Frontend-Release-Gate auf `false` belassen und neu deployen;
+   die Claude-Buttons bleiben damit unabhängig von Build-Time-Flags verborgen.
 3. Den Claude-Änderungscommit mit `git revert <commit>` zurücknehmen und über den
    normalen Deploymentweg ausrollen. Kein `git reset --hard` auf dem Server.
 4. Die additiven Liquibase-Tabellen bei einem normalen Rollback nicht löschen.

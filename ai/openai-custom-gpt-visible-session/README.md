@@ -41,38 +41,47 @@ The corresponding implementation is separated in the same way:
 The variant does not rely on a hidden Action response surviving a later user turn.
 The SkillPilot Cockpit creates a 24-hour `sps_...` chat-session token and places it
 in the first visible user message. The coach repeats that exact token in a compact
-footer on every normal answer. Canonical active-goal UUIDs and all values needed
+footer on every normal answer. Canonical active-goal IDs and all values needed
 by a later Action are also carried in visible conversation text.
 
 The permanent SkillPilot ID never enters ChatGPT. It stays in the Cockpit and the
 SkillPilot backend.
 
-## Runtime contract (Phase 1)
+## Complete runtime contract
 
-The GPT Action schema exposes only:
+Each locale-fixed GPT Action schema exposes exactly nine operations:
 
-1. load current state;
-2. apply a backend-issued numbered choice;
-3. set an active canonical goal by a visibly present UUID;
-4. save mastery after evidence-based coaching.
+1. `getVisibleState` — refresh state before every substantive ordinary user turn;
+2. `applyVisibleChoice` — apply one numbered choice or an explicit multi-scope choice;
+3. `requestVisibleNavigation` — request a non-mutating choice for a curriculum,
+   personalization, scope, or goal switch;
+4. `setVisibleActiveGoal` — activate a visibly present full learning-goal ID;
+5. `setVisibleMastery` — save backend-fixed Mastery 1.0 after evidence;
+6. `startVisibleVerifiedRecall` — obtain a visible card batch;
+7. `getVisibleVerifiedRecallAnswer` — reveal an expected answer only after the
+   learner answered that visible card;
+8. `recordVisibleVerifiedRecallResult` — save the graded card result;
+9. `getVisibleExamEvaluation` — obtain protected solution and scoring only after a
+   complete visible exam submission.
 
-There is deliberately no `redeemStartCode` Action. Curriculum, scope, and normal
-goal selection are resolved through this variant's narrowly defined numbered-
-choice endpoint. The first release does not expose personalization or verified-
-recall wrappers.
+There is deliberately no start-code redemption Action. Curriculum,
+personalization, scope, learning mode, and normal goal selection are resolved by
+relay-safe numbered choices. A spontaneous switch first requests a choice and
+mutates state only after the learner's selection. Exam solutions are absent from
+ordinary state, and Recall card IDs travel visibly with their prompts.
 
 German final footer:
 
 ```text
 — SkillPilot · Sitzung: sps_...
-— SkillPilot · Sitzung: sps_... · Lernziel-ID: 00000000-0000-0000-0000-000000000000
+— SkillPilot · Sitzung: sps_... · Lernziel-ID: <vollständige SkillPilot-Lernziel-ID>
 ```
 
 English final footer:
 
 ```text
 — SkillPilot · Session: sps_...
-— SkillPilot · Session: sps_... · Learning goal ID: 00000000-0000-0000-0000-000000000000
+— SkillPilot · Session: sps_... · Learning goal ID: <full SkillPilot learning-goal ID>
 ```
 
 The second form is used only while the latest successful backend state has an
@@ -106,12 +115,18 @@ No dependencies are required:
 npm test --prefix ai/openai-custom-gpt-visible-session
 ```
 
-The validator checks the GPT Builder instruction limit, required visible-relay
-rules, exact locale-specific API filenames and Phase-1 paths, Action metadata,
-language parity, and the absence of a start-code redemption Action or permanent
-SkillPilot ID in either schema. It also checks that each setup guide names only
-its matching API and that the production legacy sources retain their recorded
-hashes, so an accidental edit cannot silently destroy the rollback variant.
+The validator checks the GPT Builder instruction limit, turn-refresh and visible-
+relay rules, exact locale-specific API filenames and all nine paths, Action
+metadata, typed exam/Recall privacy boundaries, single and multi-scope choices,
+Knowledge coverage, full DE/EN structural parity, and absence of a start-code
+redemption Action or permanent SkillPilot ID. It also protects the retained legacy
+sources with recorded hashes.
+
+For GPT Builder compatibility, every operation defines `chatSessionToken` inline
+with a literal string `name`; the schema deliberately does not use a reusable
+`components.parameters` `$ref`. The Builder currently skips an Action when that
+parameter reference is not dereferenced before its function parser validates the
+entry.
 
 ## Runtime default, rollout, and rollback
 

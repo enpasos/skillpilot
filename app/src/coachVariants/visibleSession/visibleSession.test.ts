@@ -10,7 +10,9 @@ import {
 } from './request'
 import { buildVisibleSessionStartUrl } from './startUrl'
 import { getVisibleSessionLaunchCopy } from './copy'
+import { buildVisibleSessionVerifiedRecallInstruction } from './verifiedRecallPrompt'
 import { resolveCoachVariant } from '../versionSelector'
+import { CLAUDE_COACH_BETA_ENABLED } from '../../utils/claudeCoach'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -61,6 +63,11 @@ assertEqual(
 
 const visibleVariant = resolveCoachVariant('de', {})
 assertEqual(
+  CLAUDE_COACH_BETA_ENABLED,
+  false,
+  'keeps the Claude beta hidden and unavailable in the learner coach UI',
+)
+assertEqual(
   visibleVariant.version,
   'visible-session',
   'defaults to the visible-session variant without deployment variables',
@@ -94,11 +101,17 @@ assert(
   'English rollout copy describes the 24-hour visible session token',
 )
 assert(
-  getVisibleSessionLaunchCopy('de').verifiedRecallUnavailable.includes('Cockpit')
-    && getVisibleSessionLaunchCopy('en').verifiedRecallUnavailable.includes('Cockpit'),
-  'both locales route unsupported verified recall to the Cockpit',
+  buildVisibleSessionVerifiedRecallInstruction('de', 7).includes('startVisibleVerifiedRecall')
+    && buildVisibleSessionVerifiedRecallInstruction('de', 7).includes('batchSize=7')
+    && buildVisibleSessionVerifiedRecallInstruction('de', 7).includes('Karten-ID'),
+  'German Visible Session recall launch carries the exact action, batch size, and visible card IDs',
 )
-
+assert(
+  buildVisibleSessionVerifiedRecallInstruction('en', 4).includes('startVisibleVerifiedRecall')
+    && buildVisibleSessionVerifiedRecallInstruction('en', 4).includes('batchSize=4')
+    && buildVisibleSessionVerifiedRecallInstruction('en', 4).includes('visible card ID'),
+  'English Visible Session recall launch carries the exact action, batch size, and visible card IDs',
+)
 const startUrl = new URL(buildVisibleSessionStartUrl(
   'https://chatgpt.com/g/g-visible-de?existing=kept',
   '  START visible session  ',

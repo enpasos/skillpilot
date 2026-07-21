@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SkillPilot Visible Session API (DE)",
-    "version": "0.1.0",
-    "description": "Kompakte deutsche Action-API für den SkillPilot-Lerncoach mit sichtbar weitergetragenem 24-Stunden-Sitzungstoken."
+    "version": "0.2.0",
+    "description": "Eigenständige deutsche Action-API für den vollständigen SkillPilot-Lerncoach mit sichtbar weitergetragenem 24-Stunden-Sitzungskontext."
   },
   "servers": [
     {
@@ -14,8 +14,8 @@
     "/api/ai/de/sessions/{chatSessionToken}/visible/state": {
       "get": {
         "operationId": "getVisibleState",
-        "summary": "Aktuellen Lernzustand laden",
-        "description": "Lädt den kompakten Coach-Zustand. relayFooter muss wortgleich die letzte sichtbare Antwortzeile werden.",
+        "summary": "Aktuellen sichtbaren Lernzustand laden",
+        "description": "Vor jedem neuen substantiellen normalen Antwortturn aufrufen. relayFooter wird wortgleich die letzte sichtbare Antwortzeile.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -24,7 +24,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "responses": {
@@ -44,7 +51,7 @@
       "post": {
         "operationId": "applyVisibleChoice",
         "summary": "Sichtbare nummerierte Auswahl anwenden",
-        "description": "Verwendet nur Auswahlcode und Nummer aus dem letzten sichtbaren Auswahlturn. Löst Lehrplan, Scope oder Ziel serverseitig auf.",
+        "description": "Verwendet nur Auswahlcode und Nummer oder Scope-Nummern aus dem letzten sichtbaren Auswahlturn. Löst Lehrplan, Personalisierung, Scope, Lernmodus oder Lernziel serverseitig auf.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -53,7 +60,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -85,11 +99,11 @@
         }
       }
     },
-    "/api/ai/de/sessions/{chatSessionToken}/visible/active-goal": {
+    "/api/ai/de/sessions/{chatSessionToken}/visible/navigation": {
       "post": {
-        "operationId": "setVisibleActiveGoal",
-        "summary": "Sichtbar referenziertes Lernziel aktivieren",
-        "description": "Aktiviert nur eine vollständige kanonische Lernziel-UUID, die bereits sichtbar im Chat steht.",
+        "operationId": "requestVisibleNavigation",
+        "summary": "Sichtbare Navigation für einen Wechsel anfordern",
+        "description": "Erzeugt ohne Zustandsänderung eine nummerierte Auswahl für einen ausdrücklich gewünschten Lehrplan-, Profil-, Scope- oder Zielwechsel.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -98,7 +112,66 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleNavigationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VisibleState"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/active-goal": {
+      "post": {
+        "operationId": "setVisibleActiveGoal",
+        "summary": "Sichtbar referenziertes Lernziel aktivieren",
+        "description": "Aktiviert nur eine vollständige global eindeutige SkillPilot-Lernziel-ID, die bereits sichtbar im Chat steht.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -134,7 +207,7 @@
       "post": {
         "operationId": "setVisibleMastery",
         "summary": "Mastery für das aktive Lernziel speichern",
-        "description": "Speichert einen Wert nur für die aktive sichtbare Lernziel-UUID und erst nach ausreichender fachlicher Evidenz.",
+        "description": "Speichert Mastery 1.0 ausschließlich für die aktive sichtbare Lernziel-ID und erst nach ausreichender fachlicher Evidenz.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -143,7 +216,14 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/ChatSessionToken"
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
           }
         ],
         "requestBody": {
@@ -174,6 +254,214 @@
           }
         }
       }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/start": {
+      "post": {
+        "operationId": "startVisibleVerifiedRecall",
+        "summary": "Sichtbare Lernkartenprüfung starten oder fortsetzen",
+        "description": "Liefert einen nummerierten Kartenbatch. Jede cardId und jeder Prompt müssen vor dem Folgeturn sichtbar ausgegeben werden.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallStartRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallPrompt"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/answer": {
+      "post": {
+        "operationId": "getVisibleVerifiedRecallAnswer",
+        "summary": "Erwartete Lernkartenantwort nach Abgabe laden",
+        "description": "Nur nach der sichtbaren Antwort der lernenden Person auf genau diese cardId aufrufen. expectedAnswer vorher nie ausgeben.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallAnswer"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/verified-recall/result": {
+      "post": {
+        "operationId": "recordVisibleVerifiedRecallResult",
+        "summary": "Bewertetes Lernkartenergebnis speichern",
+        "description": "Speichert passed oder failed für eine zuvor sichtbar gestellte cardId. Der Tages-Lock wird serverseitig erzwungen.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleVerifiedRecallResultRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/VerifiedRecallResult"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
+    },
+    "/api/ai/de/sessions/{chatSessionToken}/visible/exam/evaluation": {
+      "post": {
+        "operationId": "getVisibleExamEvaluation",
+        "summary": "Prüfungslösung erst nach vollständiger Abgabe laden",
+        "description": "Nur nach der vollständigen sichtbaren Prüfungsabgabe aufrufen. solutionContent ist bis dahin strikt geschützt und wird nie im State geliefert.",
+        "x-openai-isConsequential": false,
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "chatSessionToken",
+            "in": "path",
+            "required": true,
+            "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
+            "schema": {
+              "type": "string",
+              "pattern": "^sps_[A-Za-z0-9_-]{43}$"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VisibleExamEvaluationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ExamEvaluation"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "409": {
+            "$ref": "#/components/responses/StateConflict"
+          },
+          "410": {
+            "$ref": "#/components/responses/SessionExpired"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -183,25 +471,53 @@
         "scheme": "bearer"
       }
     },
-    "parameters": {
-      "ChatSessionToken": {
-        "name": "chatSessionToken",
-        "in": "path",
-        "required": true,
-        "description": "Exaktes sichtbares temporäres Sitzungstoken aus dem aktuellen Chat; beginnt mit sps_.",
-        "schema": {
-          "type": "string",
-          "pattern": "^sps_[A-Za-z0-9_-]{43}$"
-        }
-      }
-    },
     "responses": {
       "VisibleState": {
-        "description": "Kompakter sichtbarer Coach-Zustand.",
+        "description": "Vollständiger relay-sicherer sichtbarer Coach-Zustand.",
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/VisibleCoachStateResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallPrompt": {
+        "description": "Sichtbar zu stellender Lernkartenbatch oder Warte-/Abschlussstatus.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallPromptResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallAnswer": {
+        "description": "Erwartete Antwort für eine bereits beantwortete sichtbare Karte.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallAnswerResponse"
+            }
+          }
+        }
+      },
+      "VerifiedRecallResult": {
+        "description": "Gespeichertes Kartenergebnis und nächster Recall-Status.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallResultResponse"
+            }
+          }
+        }
+      },
+      "ExamEvaluation": {
+        "description": "Geschützte Prüfungslösung und Bewertungsschema nach vollständiger Abgabe.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VisibleExamEvaluationResponse"
             }
           }
         }
@@ -252,8 +568,7 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "selectionReference",
-          "choiceNumber"
+          "selectionReference"
         ],
         "properties": {
           "selectionReference": {
@@ -263,7 +578,17 @@
           "choiceNumber": {
             "type": "integer",
             "minimum": 1,
-            "description": "Von der lernenden Person gewählte sichtbare Nummer."
+            "description": "Genau eine von der lernenden Person gewählte sichtbare Nummer; nicht zusammen mit choiceNumbers senden."
+          },
+          "choiceNumbers": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "Nur für eine ausdrücklich gewählte Mehrfachauswahl des Lernumfangs; sonst choiceNumber verwenden."
           }
         }
       },
@@ -276,8 +601,10 @@
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Vollständige kanonische Lernziel-UUID, die bereits sichtbar im Chat steht."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Vollständige global eindeutige SkillPilot-Lernziel-ID, die bereits sichtbar im Chat steht."
           },
           "redirect": {
             "type": "boolean",
@@ -286,24 +613,128 @@
           }
         }
       },
+      "VisibleNavigationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "enum": [
+              "curriculum",
+              "personalization",
+              "scope",
+              "goal"
+            ],
+            "description": "Nur der von der lernenden Person ausdrücklich gewünschte Navigationsbereich."
+          }
+        }
+      },
       "VisibleMasteryRequest": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "goalId",
-          "mastery"
+          "goalId"
         ],
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Aktive Lernziel-UUID aus dem letzten sichtbaren relayFooter."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Aktive Lernziel-ID aus dem letzten sichtbaren relayFooter; das Backend speichert 1.0."
+          }
+        }
+      },
+      "VisibleVerifiedRecallStartRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Sichtbare aktive Lernziel-ID eines Memorierungsziels."
           },
-          "mastery": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1,
-            "description": "Zu speichernder evidenzbasierter Mastery-Wert zwischen 0 und 1."
+          "batchSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 10,
+            "description": "Zahl gleichzeitig sichtbar abzufragender Karten; Cockpit-Vorgabe nutzen, sonst 10."
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Sichtbare aktive Lernziel-ID."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Exakte sichtbare Karten-ID aus dem zuletzt gestellten Batch."
+          }
+        }
+      },
+      "VisibleVerifiedRecallResultRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "cardId",
+          "passed"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Sichtbare aktive Lernziel-ID."
+          },
+          "cardId": {
+            "type": "string",
+            "description": "Exakte sichtbare Karten-ID."
+          },
+          "passed": {
+            "type": "boolean",
+            "description": "Nur true, wenn die sichtbare Antwort ohne vorweggenommene Lösung ausreichend korrekt war."
+          },
+          "feedback": {
+            "type": "string",
+            "description": "Kurze fachliche Begründung der Bewertung."
+          }
+        }
+      },
+      "VisibleExamEvaluationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Sichtbare aktive Exam-Lernziel-ID nach vollständiger Abgabe."
           }
         }
       },
@@ -314,6 +745,10 @@
           "relayFooter",
           "learningState",
           "requiredAction",
+          "interactionMode",
+          "resources",
+          "progress",
+          "completion",
           "allowedActions",
           "instruction"
         ],
@@ -330,14 +765,38 @@
             "type": "string",
             "description": "Nächster verbindlicher Coach-Schritt. teachActiveGoal bedeutet Dialog, nicht Action."
           },
+          "interactionMode": {
+            "type": "string",
+            "enum": [
+              "selection",
+              "chat",
+              "cockpit",
+              "exam",
+              "verifiedRecall",
+              "complete"
+            ],
+            "description": "Verbindlicher Ausgabemodus; entscheidet vor jeder inhaltlichen Antwort über den erlaubten Ablauf."
+          },
           "curriculum": {
             "$ref": "#/components/schemas/CurriculumSummary"
           },
           "activeGoal": {
             "$ref": "#/components/schemas/PublicActiveGoal"
           },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleResource"
+            }
+          },
           "selection": {
             "$ref": "#/components/schemas/VisibleSelection"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/VisibleProgress"
+          },
+          "completion": {
+            "$ref": "#/components/schemas/VisibleCompletion"
           },
           "allowedActions": {
             "type": "array",
@@ -346,11 +805,16 @@
               "enum": [
                 "getVisibleState",
                 "applyVisibleChoice",
+                "requestVisibleNavigation",
                 "setVisibleActiveGoal",
-                "setVisibleMastery"
+                "setVisibleMastery",
+                "startVisibleVerifiedRecall",
+                "getVisibleVerifiedRecallAnswer",
+                "recordVisibleVerifiedRecallResult",
+                "getVisibleExamEvaluation"
               ]
             },
-            "description": "Im aktuellen Zustand zulässige operationId-Werte dieser Visible-Session-API; enthält keine Legacy-Action-Namen."
+            "description": "Im aktuellen Zustand zulässige operationId-Werte dieser Visible-Session-API."
           },
           "instruction": {
             "type": "string",
@@ -373,10 +837,19 @@
       "PublicActiveGoal": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "goalId",
+          "title",
+          "description",
+          "nodeKind",
+          "cockpitUrl"
+        ],
         "properties": {
           "goalId": {
             "type": "string",
-            "format": "uuid",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
             "description": "Bewusst sichtbare global eindeutige kanonische Lernziel-ID."
           },
           "title": {
@@ -386,7 +859,12 @@
             "type": "string"
           },
           "nodeKind": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "tutor",
+              "memory",
+              "exam"
+            ]
           },
           "cockpitUrl": {
             "type": "string",
@@ -394,14 +872,18 @@
             "description": "Vom Backend erzeugter öffentlicher Link zum aktiven Lernziel; exakt verwenden und nie selbst zusammensetzen."
           },
           "examData": {
-            "type": "object",
-            "additionalProperties": true
+            "$ref": "#/components/schemas/VisibleExamPresentation"
           }
         }
       },
       "VisibleSelection": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "selectionReference",
+          "question",
+          "options"
+        ],
         "properties": {
           "selectionReference": {
             "type": "string",
@@ -438,8 +920,466 @@
           },
           "goalId": {
             "type": "string",
-            "format": "uuid",
-            "description": "Bei Lernzieloptionen sichtbar ausgeben; bei Lehrplan- oder Scope-Auswahl null."
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "description": "Bei Lernzieloptionen sichtbar ausgeben; bei Lehrplan-, Personalisierungs-, Scope- oder Modusauswahl nicht vorhanden."
+          }
+        }
+      },
+      "VisibleProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic",
+          "scopeCompleted"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "personalized": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/GoalProgress"
+          },
+          "scopeCompleted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "GoalProgress": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "masteredAtomic",
+          "totalAtomic"
+        ],
+        "properties": {
+          "masteredAtomic": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalAtomic": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "VisibleCompletion": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scopeComplete",
+          "curriculumComplete"
+        ],
+        "properties": {
+          "scopeComplete": {
+            "type": "boolean"
+          },
+          "curriculumComplete": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VisibleResource": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "title",
+          "url",
+          "requiresCockpit"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "altText": {
+            "type": "string"
+          },
+          "requiresCockpit": {
+            "type": "boolean",
+            "description": "Bei true ist diese einzelne Ressource nur im Cockpit nutzbar; der Zielmodus entscheidet separat über Chat-Unterricht."
+          }
+        }
+      },
+      "VisibleExamPresentation": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "taskContent",
+          "hasImage"
+        ],
+        "properties": {
+          "taskContent": {
+            "type": "string",
+            "description": "Lokalisierter Aufgabenblock ohne IMAGE_PATH-Marker; wortgetreu ausgeben, nur TeX-Delimiter normalisieren."
+          },
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Optionale maximale Punktzahl zur Orientierung; Lösung und Bewertungsschema bleiben geschützt."
+          },
+          "hasImage": {
+            "type": "boolean",
+            "description": "Bei true auf die Bilddarstellung im Cockpit hinweisen; kein privates Backend-Bild im Chat rendern."
+          }
+        }
+      },
+      "VisibleExamScoring": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "maxPoints",
+          "passingPoints",
+          "steps"
+        ],
+        "properties": {
+          "maxPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "passingPoints": {
+            "type": "number",
+            "minimum": 0
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleExamScoringStep"
+            }
+          }
+        }
+      },
+      "VisibleExamScoringStep": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "points",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleExamEvaluationResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "goalId",
+          "solutionContent",
+          "scoring",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Wortgleich als letzte sichtbare Antwortzeile ausgeben."
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "solutionContent": {
+            "type": "string",
+            "description": "Geschützte lokalisierte Lösung; erst nach vollständiger Abgabe zur Bewertung verwenden."
+          },
+          "scoring": {
+            "$ref": "#/components/schemas/VisibleExamScoring"
+          },
+          "instruction": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cardId",
+          "prompt"
+        ],
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "description": "Zusammen mit dem Prompt sichtbar ausgeben."
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Frage sichtbar stellen, ohne die erwartete Antwort vorwegzunehmen."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallState": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "status",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallPromptResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "status",
+          "instruction",
+          "goalId",
+          "totalCards",
+          "verifiedCards",
+          "pendingCards",
+          "eligibleCards",
+          "blockedCards",
+          "batchSize",
+          "cards"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Wortgleich als letzte sichtbare Antwortzeile ausgeben."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "waiting",
+              "complete"
+            ]
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "goalTitle": {
+            "type": "string"
+          },
+          "totalCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "eligibleCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "blockedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "nextEligibleAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "batchSize": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 20
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VisibleVerifiedRecallCard"
+            }
+          }
+        }
+      },
+      "VisibleVerifiedRecallAnswerResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "instruction",
+          "goalId",
+          "cardId",
+          "prompt",
+          "expectedAnswer"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Wortgleich als letzte sichtbare Antwortzeile ausgeben."
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "cardId": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "expectedAnswer": {
+            "type": "string",
+            "description": "Nur nach der bereits sichtbaren Lernendenantwort verwenden und nie vorher ausgeben."
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "VisibleVerifiedRecallResultResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "relayFooter",
+          "savedCardId",
+          "passed",
+          "verifiedCards",
+          "pendingCards",
+          "masterySaved",
+          "instruction"
+        ],
+        "properties": {
+          "relayFooter": {
+            "type": "string",
+            "description": "Wortgleich als letzte sichtbare Antwortzeile ausgeben."
+          },
+          "savedCardId": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "verifiedCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "pendingCards": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "masterySaved": {
+            "type": "boolean",
+            "description": "Bei true hat das Backend Mastery 1.0 für das Memorierungsziel bereits gespeichert."
+          },
+          "masteryGoalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$"
+          },
+          "instruction": {
+            "type": "string"
+          },
+          "next": {
+            "$ref": "#/components/schemas/VisibleVerifiedRecallState"
           }
         }
       },
