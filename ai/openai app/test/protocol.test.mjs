@@ -50,6 +50,26 @@ test("DE and EN expose isolated, correctly annotated tool and resource contracts
       const tools = (await rpc(baseUrl, contract.locale, "tools/list")).tools;
       assert.equal(tools.length, 6);
       assert.ok(tools.every((tool) => tool.name.endsWith(`_${contract.locale}`)));
+      for (const tool of tools) {
+        assert.ok(tool.title?.trim(), `${tool.name} needs a title`);
+        assert.ok(tool.description?.trim(), `${tool.name} needs a description`);
+        for (const [propertyName, propertySchema] of Object.entries(
+          tool.inputSchema.properties ?? {}
+        )) {
+          assert.ok(
+            propertySchema.description?.trim(),
+            `${tool.name}.${propertyName} needs an input description`
+          );
+        }
+        for (const [propertyName, propertySchema] of Object.entries(
+          tool.outputSchema?.properties ?? {}
+        )) {
+          assert.ok(
+            propertySchema.description?.trim(),
+            `${tool.name}.${propertyName} needs an output description`
+          );
+        }
+      }
 
       const renderTool = tools.find((tool) => tool.name === contract.tools.open.name);
       assert.equal(renderTool._meta.ui.resourceUri, contract.resourceUri);
