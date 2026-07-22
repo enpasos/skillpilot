@@ -124,7 +124,10 @@ testen.
    erst nach Benutzerantwort laden, alle Batch-Ergebnisse vor `next` speichern und
    nach `masterySaved=true` kein `setVisibleMastery` aufrufen.
 10. **Exam:** State enthält keine Lösung. `getVisibleExamEvaluation` darf erst nach
-    vollständiger Abgabe laufen; Mastery nur bei erreichter Punktgrenze.
+    vollständiger Abgabe laufen. Eine fachlich korrekte alternative Lösung in
+    anderer Darstellung muss ohne Musterlösungs-Bias gewertet werden; ausdrücklich
+    verlangte Ergebnisformen bleiben verbindlich. Nach der Abgabe gibt es keine
+    Rückfrage. Mastery nur bei erreichter Punktgrenze.
 11. **Cockpit/Bild:** `interactionMode`, `requiresCockpit`, Bildlink und State-
     Refresh nach Rückkehr prüfen.
 12. **Fortschritt:** Scope- und Curriculum-Abschluss korrekt unterscheiden.

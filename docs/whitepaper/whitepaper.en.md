@@ -225,7 +225,7 @@ The mapping "who is which pseudonym?" stays with the institution/teacher and is 
 
 #### AI Frontend / Provider Choice (Sovereignty)
 
-The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. ChatGPT with the Visible Session architecture is currently the learner-facing reference integration. A separate Claude OAuth/MCP implementation exists in the repository, but it is intentionally disabled and hidden in the UI; it is not an available alternative until its workflow and protected exam-data boundaries are complete and a real end-to-end acceptance test has been recorded.
+The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. ChatGPT with the Visible Session architecture is currently the learner-facing reference integration. A separate Claude OAuth/MCP implementation exists in the repository, now uses the same safe state projection and exam authorization, and also covers personalization. It remains intentionally disabled and hidden in the UI until a complete real end-to-end acceptance run with adult test users has been recorded.
 
 For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
 

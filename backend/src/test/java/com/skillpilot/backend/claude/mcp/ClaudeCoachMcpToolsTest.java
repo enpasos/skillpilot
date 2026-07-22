@@ -2,11 +2,17 @@ package com.skillpilot.backend.claude.mcp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.CoachStateProjection;
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.ScopeRequest;
+import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.claude.oauth.ClaudeOAuthConfiguration;
 import com.skillpilot.backend.domain.CopySource;
+import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
 import java.time.Instant;
 import java.util.List;
@@ -38,13 +44,15 @@ class ClaudeCoachMcpToolsTest {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private CoachToolFacade coachTools;
     private ClaudeCoachConnectionService connectionService;
+    private CoachStateProjection stateProjection;
     private ClaudeCoachMcpTools tools;
 
     @BeforeEach
     void setUp() {
         coachTools = mock(CoachToolFacade.class);
         connectionService = mock(ClaudeCoachConnectionService.class);
-        tools = new ClaudeCoachMcpTools(coachTools, connectionService);
+        stateProjection = new CoachStateProjection("https://skillpilot.test");
+        tools = new ClaudeCoachMcpTools(coachTools, connectionService, stateProjection);
     }
 
     @AfterEach
@@ -106,6 +114,9 @@ class ClaudeCoachMcpToolsTest {
         assertThatThrownBy(() -> tools.setScope(List.of("goal-1")))
                 .isInstanceOf(AccessDeniedException.class)
                 .hasMessageContaining("write scope");
+        assertThatThrownBy(() -> tools.getExamEvaluation("exam-1", "de"))
+                .isInstanceOf(AccessDeniedException.class)
+                .hasMessageContaining("write scope");
         verifyNoInteractions(coachTools, connectionService);
 
         authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
@@ -154,6 +165,120 @@ class ClaudeCoachMcpToolsTest {
         assertThat(request.getValue().mastery()).containsEntry("goal-1", 0.75);
     }
 
+    @Test
+    void projectsMasteryUpdateBeforeReturningItToClaude() throws Exception {
+        authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
+        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        UnifiedLearnerStateResponse unsafeState = stateWithReleasedExam();
+        MasteryUpdateResponse unsafeUpdate = new MasteryUpdateResponse(
+                true,
+                "exam-1",
+                1.0,
+                unsafeState.frontier(),
+                unsafeState.nextAllowedActions(),
+                unsafeState.learningState(),
+                unsafeState.activeGoal(),
+                unsafeState.stateMachine(),
+                unsafeState.goals());
+        when(coachTools.setMastery(eq(SKILLPILOT_ID), any(MasteryUpdateRequest.class)))
+                .thenReturn(new CoachToolFacade.MasteryResult(
+                        CoachToolFacade.MasteryStatus.UPDATED,
+                        unsafeUpdate,
+                        null,
+                        null));
+
+        ClaudeCoachMcpTools.MasteryToolResult result = tools.setMastery("exam-1", 1.0);
+
+        assertThat(result.update().saved()).isTrue();
+        assertThat(result.update().savedGoalId()).isEqualTo("exam-1");
+        assertThat(result.update().savedMastery()).isEqualTo(1.0);
+        String json = objectMapper.writeValueAsString(result);
+        assertThat(json)
+                .contains("Visible task", "maxPoints")
+                .doesNotContain(
+                        "SECRET SOLUTION",
+                        "SECRET RUBRIC",
+                        "SECRET SOURCE",
+                        "solutionContent",
+                        "passingPoints",
+                        "sourceArtifactPath",
+                        "\"steps\"");
+    }
+
+    @Test
+    void normalCoachContextProjectsReleasedExamWithoutSolutionOrRubric() throws Exception {
+        authenticate(ClaudeOAuthConfiguration.READ_SCOPE);
+        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.consumePendingLaunch(SUBJECT)).thenReturn(Optional.empty());
+        when(coachTools.getLearnerState(SKILLPILOT_ID)).thenReturn(stateWithReleasedExam());
+
+        ClaudeCoachMcpTools.CoachContext context = tools.getCoachContext();
+
+        String json = objectMapper.writeValueAsString(context);
+        assertThat(json)
+                .contains("Visible task", "maxPoints")
+                .doesNotContain(
+                        SKILLPILOT_ID,
+                        "copied-learner-secret-id",
+                        "SECRET SOLUTION",
+                        "SECRET RUBRIC",
+                        "passingPoints",
+                        "sourceArtifactPath");
+        assertThat(context.state().activeGoal().examData().getScoring().getMaxPoints()).isEqualTo(10.0);
+    }
+
+    @Test
+    void appliesPersonalizationThroughTheSharedFacade() {
+        authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
+        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(coachTools.setPersonalization(eq(SKILLPILOT_ID), any(PersonalizationRequest.class)))
+                .thenReturn(stateWithSkillpilotId());
+
+        tools.setPersonalization(List.of("scope-1"), List.of("filter-1"));
+
+        ArgumentCaptor<PersonalizationRequest> request = ArgumentCaptor.forClass(PersonalizationRequest.class);
+        verify(coachTools).setPersonalization(eq(SKILLPILOT_ID), request.capture());
+        assertThat(request.getValue().config()).isEmpty();
+        assertThat(request.getValue().goalIds()).containsExactly("scope-1");
+        assertThat(request.getValue().filters()).containsExactly("filter-1");
+    }
+
+    @Test
+    void releasesLocalizedExamEvaluationOnlyThroughTheDedicatedTool() {
+        authenticate(ClaudeOAuthConfiguration.READ_SCOPE, ClaudeOAuthConfiguration.WRITE_SCOPE);
+        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn(SKILLPILOT_ID);
+        CoachToolFacade.ExamScoring scoring = new CoachToolFacade.ExamScoring(
+                10.0,
+                5.0,
+                List.of(new CoachToolFacade.ExamScoringStep("step-1", 10.0, "Rubric")));
+        when(coachTools.getExamEvaluation(
+                eq(SKILLPILOT_ID),
+                any(CoachToolFacade.ExamEvaluationRequest.class)))
+                .thenReturn(new CoachToolFacade.ExamEvaluationResult(
+                        "exam-1",
+                        "Deutsche Lösung $x$",
+                        "English solution $x$",
+                        scoring));
+
+        ClaudeCoachMcpTools.ExamEvaluationToolResult result =
+                tools.getExamEvaluation("exam-1", "en");
+
+        assertThat(result.goalId()).isEqualTo("exam-1");
+        assertThat(result.solutionContent()).isEqualTo("English solution \\(x\\)");
+        assertThat(result.scoring()).isSameAs(scoring);
+        assertThat(result.instruction())
+                .contains("reference only")
+                .contains("equivalent")
+                .contains("specific answer form")
+                .contains("requirements remain binding")
+                .contains("without follow-up questions")
+                .contains("never invent a specific subject error");
+        ArgumentCaptor<CoachToolFacade.ExamEvaluationRequest> request =
+                ArgumentCaptor.forClass(CoachToolFacade.ExamEvaluationRequest.class);
+        verify(coachTools).getExamEvaluation(eq(SKILLPILOT_ID), request.capture());
+        assertThat(request.getValue().goalId()).isEqualTo("exam-1");
+    }
+
     private void authenticate(String... scopes) {
         List<SimpleGrantedAuthority> authorities = java.util.Arrays.stream(scopes)
                 .map(scope -> new SimpleGrantedAuthority("SCOPE_" + scope))
@@ -176,6 +301,49 @@ class ClaudeCoachMcpToolsTest {
                 "learning",
                 null,
                 null);
+    }
+
+    private UnifiedLearnerStateResponse stateWithReleasedExam() {
+        ExamData exam = new ExamData();
+        exam.setReviewStatus("released");
+        exam.setSourceArtifactPath("SECRET SOURCE");
+        exam.setTaskContent("Visible task");
+        exam.setSolutionContent("SECRET SOLUTION");
+        ExamData.Scoring scoring = new ExamData.Scoring();
+        scoring.setMaxPoints(10.0);
+        scoring.setPassingPoints(5.0);
+        ExamData.Step step = new ExamData.Step();
+        step.setId("step-1");
+        step.setPoints(10.0);
+        step.setDescription("SECRET RUBRIC");
+        scoring.setSteps(List.of(step));
+        exam.setScoring(scoring);
+        FrontierGoal active = new FrontierGoal(
+                "exam-1",
+                "Exam",
+                "Solve it",
+                "atomic",
+                "exam",
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                exam);
+        return new UnifiedLearnerStateResponse(
+                SKILLPILOT_ID,
+                null,
+                List.of(active),
+                null,
+                List.of("teachActiveGoal"),
+                List.of(),
+                Set.of(new CopySource(
+                        "copied-learner-secret-id",
+                        Instant.parse("2026-01-01T00:00:00Z"))),
+                "learning",
+                active,
+                new StateMachineInfo("TEACHING", "teachActiveGoal", List.of(), List.of(), active));
     }
 
     private void assertBadMastery(ClaudeCoachMcpTools.MasteryToolResult result, String errorPart) {

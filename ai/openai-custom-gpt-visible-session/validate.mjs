@@ -74,6 +74,24 @@ const expectedBundles = {
     refreshRule: 'Before every substantive answer',
   },
 }
+const expectedExamFairness = {
+  de: {
+    system: 'Gleichwertige Wege zählen voll',
+    requiredForm: 'explizite Antwortformen gelten',
+    reference: 'Referenzlösung',
+    docRequiredForm: 'Aufgabe oder Raster sie ausdrücklich bewertet',
+    noQuestions: 'ohne Rückfragen',
+    schemaReference: 'Referenzlösung',
+  },
+  en: {
+    system: 'Equivalent correct routes earn full credit',
+    requiredForm: 'explicit answer forms remain binding',
+    reference: 'reference solution',
+    docRequiredForm: 'task or rubric explicitly assesses it',
+    noQuestions: 'without follow-up questions',
+    schemaReference: 'reference solution',
+  },
+}
 const knowledgeFragments = {
   'knowledge_docs/visible_session_protocol.md': [
     'getVisibleState',
@@ -235,6 +253,14 @@ for (const locale of locales) {
   }
   assert.ok(instructions.includes(expectedBundle.anchor), `${locale} instructions miss exact anchor`)
   assert.ok(instructions.includes(expectedBundle.refreshRule), `${locale} instructions miss normal-turn refresh gate`)
+  assert.ok(
+    instructions.replace(/\s+/g, ' ').includes(expectedExamFairness[locale].system),
+    `${locale} instructions miss fair exam grading rule`,
+  )
+  assert.ok(
+    instructions.replace(/\s+/g, ' ').includes(expectedExamFairness[locale].requiredForm),
+    `${locale} instructions miss explicitly-required-form rule`,
+  )
   assert.ok(!instructions.includes('redeemStartCode'), `${locale} instructions contain redeemStartCode`)
   assert.ok(!/\buuid\b/i.test(instructions), `${locale} instructions incorrectly require UUID goal IDs`)
 
@@ -244,6 +270,11 @@ for (const locale of locales) {
       assert.ok(knowledge.includes(fragment), `${locale} ${knowledgePath} misses ${fragment}`)
     }
   }
+  const examProctor = await read(`${locale}/knowledge_docs/exam_proctor.md`)
+  const normalizedExamProctor = examProctor.replace(/\s+/g, ' ')
+  assert.ok(normalizedExamProctor.includes(expectedExamFairness[locale].reference), `${locale} exam proctor misses reference-solution rule`)
+  assert.ok(normalizedExamProctor.includes(expectedExamFairness[locale].docRequiredForm), `${locale} exam proctor misses explicitly-required-form rule`)
+  assert.ok(examProctor.includes(expectedExamFairness[locale].noQuestions), `${locale} exam proctor misses no-question exam rule`)
 
   const setupGuide = await read(`${locale}/gpt_setup_guide.md`)
   assert.ok(setupGuide.includes(expectedBundle.gptUrl), `${locale} setup guide misses existing GPT URL`)
@@ -336,6 +367,11 @@ for (const locale of locales) {
   assert.ok(!schemas.VisibleExamPresentation.properties.solutionContent, `${locale} state exam data leaks solutionContent`)
   assert.ok(schemas.VisibleExamEvaluationResponse.properties.solutionContent, `${locale} evaluation misses protected solutionContent`)
   assert.ok(schemas.VisibleExamEvaluationResponse.properties.scoring, `${locale} evaluation misses scoring`)
+  assert.ok(
+    schemas.VisibleExamEvaluationResponse.properties.solutionContent.description
+      .includes(expectedExamFairness[locale].schemaReference),
+    `${locale} evaluation schema misses reference-solution semantics`,
+  )
 
   const expectedAnswerOwners = Object.entries(schemas)
     .filter(([, schema]) => schema.properties?.expectedAnswer)

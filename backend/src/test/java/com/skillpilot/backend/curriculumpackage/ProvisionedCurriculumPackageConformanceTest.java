@@ -44,7 +44,7 @@ class ProvisionedCurriculumPackageConformanceTest {
         assertThat(snapshot.packages().getFirst().packageId())
                 .isEqualTo("org.skillpilot.curriculum.de.gymnasium.mathematik");
         assertThat(snapshot.packages().getFirst().contentDigest())
-                .isEqualTo("sha256:f97d60d2b2786a33feeb3a29627d37f0cd91daf02dd884e49a977863a70e6882");
+                .isEqualTo("sha256:0cada32926f3ff71f815e7b896cbfdaa9ed1b5e5cc62a0c021d1b1f981446fe4");
         assertThat(snapshot.rootLandscapeIds()).hasSize(1);
         assertThat(snapshot.landscapesById()).hasSize(1);
         assertThat(snapshot.viewsById()).hasSize(88);

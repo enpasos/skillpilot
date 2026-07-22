@@ -1,6 +1,7 @@
 package com.skillpilot.backend.ai;
 
 import com.skillpilot.backend.api.ActiveGoalRequest;
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -13,6 +14,7 @@ import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.api.VerifiedRecallResultRequest;
 import com.skillpilot.backend.api.VerifiedRecallResultResponse;
 import com.skillpilot.backend.api.VerifiedRecallStartRequest;
+import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.service.ChatSessionService;
 import com.skillpilot.backend.service.LearnerService;
@@ -65,12 +67,47 @@ public class CoachToolFacade {
         }
     }
 
+    /**
+     * Provider-neutral request for the protected evaluation material of the
+     * currently active exam goal.
+     */
+    public record ExamEvaluationRequest(String goalId) {
+    }
+
+    /**
+     * Released exam evaluation material. It deliberately contains neither a
+     * learner identifier nor provider-specific rendering instructions.
+     */
+    public record ExamEvaluationResult(
+            String goalId,
+            String solutionContent,
+            String solutionContentEn,
+            ExamScoring scoring) {
+    }
+
+    public record ExamScoring(
+            double maxPoints,
+            double passingPoints,
+            List<ExamScoringStep> steps) {
+    }
+
+    public record ExamScoringStep(
+            String id,
+            double points,
+            String description) {
+    }
+
     private final LearnerService learnerService;
     private final ChatSessionService chatSessionService;
+    private final CoachStateProjection coachStateProjection;
 
-    public CoachToolFacade(LearnerService learnerService, ChatSessionService chatSessionService) {
+    public CoachToolFacade(
+            LearnerService learnerService,
+            ChatSessionService chatSessionService,
+            CoachStateProjection coachStateProjection) {
         this.learnerService = learnerService;
         this.chatSessionService = chatSessionService;
+        this.coachStateProjection = coachStateProjection;
     }
 
     public UnifiedLearnerStateResponse getLearnerState(String skillpilotId) {
@@ -171,6 +208,36 @@ public class CoachToolFacade {
         return learnerService.recordVerifiedRecallResult(skillpilotId, language, request);
     }
 
+    /**
+     * Authorizes access to evaluation material for an active, released and
+     * structurally complete exam goal. OAuth/MCP adapters use this ID-based
+     * variant after resolving the authenticated learner outside the model
+     * arguments.
+     */
+    public ExamEvaluationResult getExamEvaluation(
+            String skillpilotId,
+            ExamEvaluationRequest request) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        UnifiedLearnerStateResponse state = learnerService.getLearnerState(skillpilotId);
+        if (request == null || request.goalId() == null || request.goalId().isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "goalId must not be empty.");
+        }
+        FrontierGoal active = activeGoal(state);
+        if (active == null || !request.goalId().equals(active.id()) || !isExamGoal(active)
+                || !coachStateProjection.isExamReadyForHardCheck(active)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "The cited goal is not the active exam goal.");
+        }
+        ExamData exam = active.examData();
+        if (exam.getSolutionContent() == null || exam.getSolutionContent().isBlank()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "The active exam has no released evaluation data.");
+        }
+        return new ExamEvaluationResult(
+                active.id(),
+                exam.getSolutionContent(),
+                exam.getSolutionContentEn(),
+                examScoring(exam.getScoring()));
+    }
+
     public UnifiedLearnerStateResponse setCurriculum(String skillpilotId, UpdateCurriculumRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
@@ -248,6 +315,13 @@ public class CoachToolFacade {
         return withoutSkillpilotId(learnerService.recordVerifiedRecallResult(skillpilotId, language, request));
     }
 
+    /** Session-token adapter for {@link #getExamEvaluation(String, ExamEvaluationRequest)}. */
+    public ExamEvaluationResult getSessionExamEvaluation(
+            String sessionToken,
+            ExamEvaluationRequest request) {
+        return getExamEvaluation(chatSessionService.resolveSkillpilotId(sessionToken), request);
+    }
+
     public UnifiedLearnerStateResponse setSessionCurriculum(String sessionToken, UpdateCurriculumRequest request) {
         return withoutSkillpilotId(setCurriculum(resolveSessionLearnerId(sessionToken), request));
     }
@@ -321,6 +395,32 @@ public class CoachToolFacade {
             }
         }
         return null;
+    }
+
+    private FrontierGoal activeGoal(UnifiedLearnerStateResponse state) {
+        if (state == null) {
+            return null;
+        }
+        if (state.stateMachine() != null && state.stateMachine().activeGoal() != null) {
+            return state.stateMachine().activeGoal();
+        }
+        return state.activeGoal();
+    }
+
+    private boolean isExamGoal(FrontierGoal goal) {
+        return goal != null && ("exam".equals(goal.nodeKind()) || goal.examData() != null);
+    }
+
+    private ExamScoring examScoring(ExamData.Scoring scoring) {
+        if (scoring == null) {
+            return null;
+        }
+        List<ExamScoringStep> steps = scoring.getSteps() == null
+                ? List.of()
+                : scoring.getSteps().stream()
+                        .map(step -> new ExamScoringStep(step.getId(), step.getPoints(), step.getDescription()))
+                        .toList();
+        return new ExamScoring(scoring.getMaxPoints(), scoring.getPassingPoints(), steps);
     }
 
     private UnifiedLearnerStateResponse withoutSkillpilotId(UnifiedLearnerStateResponse state) {

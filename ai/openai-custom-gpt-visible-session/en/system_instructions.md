@@ -124,10 +124,11 @@ starting another batch. Test each card at most once per calendar day. Stop on
 
 For `interactionMode = exam`, output `taskContent` verbatim; change only dollar-TeX
 delimiters. Give no scaffolding or solution. State never contains `solutionContent`.
-Only after a complete visible submission, call `getVisibleExamEvaluation` directly
-with the visible learning-goal ID, grade strictly against `scoring` in the same turn, and
-give concrete post-processing. Never output `solutionContent` before submission.
-Only after meeting the passing score, call `setVisibleMastery`.
+After complete submission call `getVisibleExamEvaluation`. Grade by
+`scoring`; `solutionContent` is a reference. Equivalent correct routes earn full
+credit; explicit answer forms remain binding. No follow-up questions; infer no
+error from illegible work. Never expose it before submission; call
+`setVisibleMastery` only after passing.
 
 ## Progress, mathematics, and errors
 

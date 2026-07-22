@@ -586,9 +586,26 @@ Key principles for Layer C:
 - The LLM **does not own the ground truth** about goals or mastery:
   - it always reads/writes via MCP tools/resources,
   - it respects `requires`/`contains` constraints coming from Layer A.
-- The same MCP interface should be usable by:
-  - conversational UIs (ChatGPT, Voice, …),
-  - other services (z. B. automatische Übungsgeneratoren).
+- The same provider-neutral application behavior should be reusable by
+  conversational UIs and other services. External MCP/Action contracts remain
+  provider-specific because authentication, context recovery, tool schemas,
+  widgets, and retry semantics differ. Do not force them into one universal
+  `submit_turn` or one-size-fits-all schema.
+- Every normal model-facing learner state must pass through the shared safe
+  projection: no permanent SkillPilot ID or copy-source IDs, and no exam solution,
+  passing threshold, source-artifact path, or scoring rubric.
+- Released exam evaluation material is a separate, explicitly authorized backend
+  use case. Provider-hosted chats currently enforce answer-before-evaluation by
+  instruction; a strong submission proof requires a future SkillPilot-controlled
+  widget/cockpit attempt.
+- Exam grading is criterion-based, not an exact match against the released
+  solution. The solution is a non-exclusive reference; subject-correct equivalent
+  results, representations, permitted rounding, explanations, and alternative
+  methods receive equal credit unless the task or rubric explicitly requires a
+  particular answer form; explicit requirements remain binding. Exam submissions
+  are graded conclusively without follow-up questions. Providers identify
+  illegible work as such and score only reliably visible evidence; they must never
+  invent a specific subject error from unreadable handwriting or image content.
 
 In the long run, multiple landscapes (different Fächer, Curricula, Sprachräume) can live in Layer A,  
 while Layer B maintains separate mastery maps per learner and landscape,  
@@ -806,8 +823,14 @@ ChatGPT Visible Session adapter.
   Instructions, seven Knowledge files each, and independent locale-fixed OpenAPI
   schemas. A one-size-fits-all schema is not allowed.
 - **Paused Claude adapter:** the OAuth/MCP implementation remains disabled and is
-  not workflow-parallel or production-ready until personalization, protected exam
-  evaluation, safe state projection, and end-to-end acceptance are complete.
+  not production-ready. Personalization, shared safe state projection, and the
+  protected exam-evaluation use case are implemented; release still requires a
+  complete real adult-only end-to-end acceptance run.
+- **Shared coach boundary:** `CoachToolFacade` owns provider-neutral workflow
+  guards and `CoachStateProjection` owns the normal model-facing allowlist.
+  Provider adapters resolve their own temporary session or OAuth identity and
+  render passgenaue tool responses. See
+  `docs/concept/runtime-workflows/provider-neutral-coach-boundary.md`.
 
 ### 12.2 Setup Guides
 - **Google Gemini:** See `ai/google gem/gemini.md` for the current status notes.

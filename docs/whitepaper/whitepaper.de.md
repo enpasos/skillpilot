@@ -221,7 +221,7 @@ Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkra
 
 #### KI-Frontend / Provider-Wahl (Souveränität)
 
-Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Aktuell ist ChatGPT mit der Visible-Session-Architektur die lernendenseitige Referenzintegration. Eine OAuth-/MCP-Variante für Claude ist als getrennte Implementierung im Repository vorhanden, aber bewusst deaktiviert und in der UI verborgen; sie ist bis zur vollständigen Workflow- und Prüfungsdatengrenze sowie einem echten End-to-End-Acceptance-Test keine verfügbare Alternative.
+Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Aktuell ist ChatGPT mit der Visible-Session-Architektur die lernendenseitige Referenzintegration. Eine OAuth-/MCP-Variante für Claude ist als getrennte Implementierung im Repository vorhanden, nutzt inzwischen dieselbe sichere State-Projektion und Exam-Autorisierung und bildet auch die Personalisierung ab. Sie bleibt bewusst deaktiviert und in der UI verborgen, bis ein vollständiger echter End-to-End-Acceptance-Test mit volljährigen Testpersonen dokumentiert ist.
 
 Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie Tool-Nutzung, Stabilität, Datenschutzgrenzen, Struktur und Didaktik zuverlässig erfüllen.
 
