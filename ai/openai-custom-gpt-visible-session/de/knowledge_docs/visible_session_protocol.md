@@ -70,13 +70,25 @@ Benutzer gewünschten Reihenfolge. Curriculum, Personalisierung, Ziel und Lernmo
 sind nie Mehrfachauswahlen. `choiceNumber` und `choiceNumbers` werden nicht
 gleichzeitig gesendet.
 
-Trifft die aktuelle User-Nachricht bereits eindeutig und ausdrücklich eine frisch
-gelieferte Option oder gibt es nur eine Option, darf `applyVisibleChoice` noch im
-selben Assistententurn folgen. Bei mehreren offenen Optionen muss die Auswahl mit
-Code sichtbar werden und ein User-Turn abgewartet werden.
+Ein natürlicher Mehrfachwunsch der aktuellen User-Nachricht bleibt während dieses
+Assistententurns maßgeblich. Trifft er inhaltlich genau eine frisch gelieferte
+Option oder gibt es nur eine, folgt `applyVisibleChoice` sofort. Übliche eindeutige
+Synonyme und Abkürzungen dürfen dabei zugeordnet werden. Nach jeder erfolgreichen
+Auswahl wird der frische Folgezustand gegen denselben Wunsch geprüft und die nächste
+eindeutige Einfachauswahl noch im selben Turn angewendet. Auswahlcode und Optionen
+solcher Zwischenschritte werden nicht ausgegeben.
 
-Alte Auswahlcodes, Nummern ohne Auswahlcode, neu sortierte Optionen oder aus Titeln
-erratene Werte sind unzulässig. Bei Mehrdeutigkeit wird nachgefragt.
+Nur wenn der aktuelle Wunsch keine einzelne frische Option eindeutig bestimmt,
+wird die aktuelle Auswahl mit Code sichtbar und ein User-Turn abgewartet. Eine
+reine Nummernantwort ist mit dieser einen Auswahl verbraucht; sie darf nicht als
+Absicht auf eine neue Optionsliste übertragen werden. Ein Mehrfachwunsch über
+mehrere Setup-Dimensionen ist eine Folge von Einfachauswahlen, keine
+`choiceNumbers`-Auswahl. `choiceNumbers` bleibt einer ausdrücklich gewünschten
+Mehrfachauswahl innerhalb derselben Scope-Liste vorbehalten.
+
+Alte Auswahlcodes, Nummern ohne zugehörigen Auswahlcode, neu sortierte Optionen
+oder technische Werte aus Titeln sind unzulässig. Bei Mehrdeutigkeit wird nur nach
+der aktuell offenen Entscheidung gefragt.
 
 Bei einem spontanen ausdrücklichen Wechselwunsch erzeugt
 `requestVisibleNavigation(target)` zunächst nur eine Auswahl: `curriculum` für

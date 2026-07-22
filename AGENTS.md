@@ -591,6 +591,12 @@ Key principles for Layer C:
   provider-specific because authentication, context recovery, tool schemas,
   widgets, and retry semantics differ. Do not force them into one universal
   `submit_turn` or one-size-fits-all schema.
+- The strategic conversational core is a SkillPilot-controlled turn orchestrator
+  in the first-party web/backend path. It receives every user turn, reloads safe
+  domain state, runs the bounded tool loop, and treats OpenAI, Anthropic, and later
+  models as replaceable inference providers. Provider-hosted ChatGPT/Claude
+  clients remain optional adapters and distribution channels, not the owner of
+  conversation workflow or learner state.
 - Every normal model-facing learner state must pass through the shared safe
   projection: no permanent SkillPilot ID or copy-source IDs, and no exam solution,
   passing threshold, source-artifact path, or scoring rubric.
@@ -806,7 +812,10 @@ LLM/learning-coach prompts should reinforce that:
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
 uses separate, provider-specific adapters. The current public coach is the
-ChatGPT Visible Session adapter.
+ChatGPT Visible Session adapter. The strategic replacement is the first-party
+orchestrator documented in
+`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`; it is not
+yet the production default.
 
 ### 12.1 Key Features for AI
 
@@ -819,6 +828,11 @@ ChatGPT Visible Session adapter.
 - **Visible cross-turn relay:** only the temporary session token, selection
   reference/numbers, canonical active-goal ID, and Recall card IDs are carried in
   conversation text when a later Action needs them.
+- **Visible same-turn intake:** a natural multi-part request remains active only
+  within the current assistant turn. Fresh uniquely matched selections may chain
+  without displaying intermediate codes; a numbers-only reply is consumed by
+  exactly one visible choice. This is a transition optimization, not a replacement
+  for the first-party orchestrator.
 - **Provider-specific contracts:** German and English Custom GPTs have independent
   Instructions, seven Knowledge files each, and independent locale-fixed OpenAPI
   schemas. A one-size-fits-all schema is not allowed.

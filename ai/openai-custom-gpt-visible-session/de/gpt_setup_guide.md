@@ -99,6 +99,14 @@ Coach rendert keine privaten Backend-Bilder in den Chat.
 Immer mit einem frisch vom Cockpit erzeugten 24-Stunden-Token und einem neuen Chat
 testen.
 
+**Pflichtfall natürliche Benutzerführung:** Im ersten normalen User-Turn schreiben:
+`Ich möchte Mathe in der Oberstufe in Hessen lernen.` Alle durch frische Optionen
+inhaltlich eindeutig bestimmten Schritte müssen ohne sichtbare Zwischencodes im
+selben Assistententurn angewendet werden. Fehlt für „Oberstufe“ eine passende
+Backend-Option, darf der GPT sie nicht als erledigt ausgeben, sondern fragt nur
+nach der aktuell offenen Entscheidung. Eine spätere reine Nummernantwort darf
+genau eine Auswahl beantworten und nicht automatisch die nächste.
+
 1. **Start:** Vorbereitete erste Nachricht absenden. Prüfen, dass
    `getVisibleState` aufgerufen wird und die Antwort als letzte Zeile den exakten
    Token im deutschen Sitzungsanker trägt.
@@ -110,9 +118,9 @@ testen.
 4. **Multi-Scope:** Eine ausdrücklich erlaubte Mehrfachauswahl prüfen. Nur dann
    `choiceNumbers`, niemals zusammen mit `choiceNumber`.
 5. **Navigation/Profil:** Im Unterricht ausdrücklich Lehrplan, GK/LK-Profil,
-   Lernumfang und Ziel wechseln. Erst `requestVisibleNavigation`, dann sichtbare
-   Auswahl, danach `applyVisibleChoice`; bei eindeutiger aktueller Wahl oder genau
-   einer Option darf beides im selben Assistententurn erfolgen.
+   Lernumfang und Ziel wechseln. `requestVisibleNavigation` erzeugt die frische
+   Auswahl; eine eindeutige aktuelle Wahl wird sofort mit `applyVisibleChoice`
+   angewendet, nur eine wirklich offene Wahl wird sichtbar.
 6. **Aktives Ziel:** Prüfen, dass der nächste Anker zusätzlich die kanonische
    Lernziel-ID enthält.
 7. **Unterricht:** Mindestens zwei unabhängige Checks durchführen. Erst danach darf

@@ -1,6 +1,8 @@
 # Konzept: SkillPilot als ChatGPT App (Apps SDK)
 
-Status: Zielbild, nicht die aktuelle Lerncoach-Laufzeitarchitektur.
+Status: optionaler Provider-Kanal, nicht die aktuelle Laufzeitarchitektur und nicht
+der strategische Zustandskern. Die übergeordnete Entscheidung steht in der
+[SkillPilot-eigenen Lerncoach-Zielarchitektur](../../docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md).
 
 ## 1. Kontext
 

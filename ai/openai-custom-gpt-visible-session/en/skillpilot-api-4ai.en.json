@@ -51,7 +51,7 @@
       "post": {
         "operationId": "applyVisibleChoice",
         "summary": "Apply a visible numbered choice",
-        "description": "Uses only the selection code and number or scope numbers from the latest visible selection turn. The server resolves curriculum, personalization, scope, learning mode, or goal.",
+        "description": "Uses only selection code and numbers from the latest visible choice or an immediately preceding Action in the same assistant turn. The server resolves curriculum, personalization, scope, learning mode, or goal.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -573,12 +573,12 @@
         "properties": {
           "selectionReference": {
             "type": "string",
-            "description": "Selection code from the latest visible selection turn."
+            "description": "Selection code from the latest visible choice or the immediately preceding Action in the same assistant turn."
           },
           "choiceNumber": {
             "type": "integer",
             "minimum": 1,
-            "description": "Exactly one visible number chosen by the learner; do not send together with choiceNumbers."
+            "description": "Exactly one visible number or one uniquely identified by the current natural request; do not send with choiceNumbers."
           },
           "choiceNumbers": {
             "type": "array",
@@ -887,7 +887,7 @@
         "properties": {
           "selectionReference": {
             "type": "string",
-            "description": "Time-local selection code; display visibly together with the options."
+            "description": "Time-local selection code; display only when a user follow-up is needed, otherwise forward directly in the same assistant turn."
           },
           "question": {
             "type": "string"

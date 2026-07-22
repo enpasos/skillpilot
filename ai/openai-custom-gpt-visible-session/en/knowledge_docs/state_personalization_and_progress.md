@@ -9,8 +9,10 @@ current. A `selection` and other candidates are not yet active.
 ## Curriculum, personalization, and scope
 
 All setup steps use the time-local numbered `selection` and
-`applyVisibleChoice`. Never display or reconstruct internal curriculum, filter,
-personalization, or scope IDs.
+`applyVisibleChoice`. A natural multi-part request may traverse several freshly
+returned, individually unambiguous single choices within one assistant turn. Show
+only the first genuinely unresolved decision. Never display or reconstruct
+internal curriculum, filter, personalization, or scope IDs.
 
 * Curriculum: exactly one number.
 * Personalization: answer each backend question separately with exactly one number.
@@ -24,9 +26,10 @@ activation. Adopt a new goal after mastery only from the new state.
 
 For an explicit switch request during coaching, after turn refresh call
 `requestVisibleNavigation` with exactly one `target`: `curriculum`,
-`personalization`, `scope`, or `goal`. The Action does not mutate state. Display
-its numbered choice visibly and only then apply it through `applyVisibleChoice`.
-Never infer a switch from a casual remark.
+`personalization`, `scope`, or `goal`. The Action does not mutate state. If the
+explicit request uniquely matches one option, apply it immediately in the same
+turn through `applyVisibleChoice`; otherwise display the numbered choice. Never
+infer a switch from a casual remark.
 
 ## Interaction modes
 

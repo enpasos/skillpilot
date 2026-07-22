@@ -134,8 +134,8 @@ public class VisibleSessionService {
                         language,
                         current,
                         localized(language,
-                                "Die gewünschte Navigation ist geöffnet. Zeige diese Auswahl sichtbar an und frage nach der Nummer, außer die aktuelle Nachricht wählt bereits genau eine Option eindeutig; dann wende diese Option sofort mit applyVisibleChoice an.",
-                                "The requested navigation is open. Show these choices visibly and ask for the number unless the current message already identifies exactly one option unambiguously; then apply it immediately with applyVisibleChoice."),
+                                "Die gewünschte Navigation ist geöffnet. Behandle einen ausdrücklichen natürlichen Mehrfachwunsch im aktuellen Assistententurn als fortgeltende Absicht: Wende einen eindeutigen Treffer sofort mit applyVisibleChoice an und prüfe danach den frischen State erneut. Zeige nur eine wirklich offene Auswahl.",
+                                "The requested navigation is open. Treat an explicit natural multi-part request as standing intent in this assistant turn: apply one unambiguous match immediately with applyVisibleChoice, then inspect the fresh state again. Show only a genuinely unresolved choice."),
                         plan,
                         false,
                         "selection",
@@ -291,8 +291,8 @@ public class VisibleSessionService {
                 language,
                 updated,
                 localized(language,
-                        "Die Auswahl wurde übernommen. Folge jetzt der aktuellen erforderlichen Aktion.",
-                        "The choice was applied. Now follow the current required action."));
+                        "Die Auswahl wurde übernommen. Enthält die aktuelle Nachricht einen fortgeltenden natürlichen Mehrfachwunsch und ist sie keine reine Nummernantwort, wende auch den nächsten eindeutigen Treffer aus dem frischen State sofort an. Sonst folge der aktuellen erforderlichen Aktion.",
+                        "The choice was applied. If the current message contains a standing natural multi-part request and is not a numbers-only reply, immediately apply the next unambiguous match from the fresh state as well. Otherwise follow the current required action."));
     }
 
     public ActionOutcome setActiveGoal(
@@ -1079,8 +1079,8 @@ public class VisibleSessionService {
         }
         return switch (requiredAction) {
             case "setCurriculum", "setScope", "setActiveGoal", "setPersonalization", "chooseMemoryMode" -> localized(language,
-                    "Zeige die nummerierte Auswahl sichtbar an und frage die lernende Person, außer ihre aktuelle Nachricht wählt bereits genau eine Option eindeutig; dann wende diese Option sofort an. Verwende nur Auswahlreferenz und gewählte Nummern.",
-                    "Show the numbered choices visibly and ask the learner unless their current message already identifies exactly one option unambiguously; then apply that option immediately. Use only the selection reference and selected numbers.");
+                    "Behandle einen natürlichen Mehrfachwunsch im aktuellen Assistententurn als fortgeltende Absicht. Wende einen inhaltlich eindeutigen Treffer sofort an und prüfe den frischen Folgezustand erneut; eine reine Nummernantwort gilt nur einmal. Zeige erst eine wirklich offene nummerierte Auswahl. Verwende nur Auswahlreferenz und Nummern.",
+                    "Treat a natural multi-part request as standing intent in this assistant turn. Apply one semantically unambiguous match immediately and inspect the fresh next state again; a numbers-only reply is consumed once. Show only a genuinely unresolved numbered choice. Use only the selection reference and numbers.");
             case "teachActiveGoal", "setMastery" -> localized(language,
                     "Arbeite dialogisch am aktiven Lernziel. Speichere Mastery erst nach ausreichender Evidenz.",
                     "Coach the active learning goal dialogically. Save mastery only after sufficient evidence.");
