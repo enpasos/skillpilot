@@ -97,10 +97,10 @@ npm --prefix app run export:full-standalone-package -- \
   --release-root tmp/curriculum-release-model/mathematik \
   --output-dir tmp/curriculum-release-model/full-standalone-package \
   --zip \
-  --expect-entry-count 892 \
-  --expect-manifest-file-count 890 \
+  --expect-entry-count 893 \
+  --expect-manifest-file-count 891 \
   --expect-binary-asset-count 734 \
-  --expect-content-digest sha256:0cada32926f3ff71f815e7b896cbfdaa9ed1b5e5cc62a0c021d1b1f981446fe4
+  --expect-content-digest sha256:830b0e3b98b5ade7a4efc412fd39feb378e98302367fe57fa6c49e23e50a28c4
 
 python3 -B scripts/validate_full_standalone_curriculum_package.py \
   --zip tmp/curriculum-release-model/full-standalone-package/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip \
