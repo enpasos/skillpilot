@@ -2,10 +2,12 @@
 
 ## Purpose
 
-This protocol establishes a small Claude baseline before testing the SkillPilot
-coach. It uses normal, transparent requests rather than asking Claude to install a
-conversation-long command protocol. It checks three behaviors through the
-production SkillPilot MCP connector:
+This protocol establishes a small Claude baseline before any later SkillPilot
+coach acceptance work. The Claude coach is currently paused and its real coach
+tools must remain disabled; this protocol is for a controlled test deployment
+with synthetic regression tools only. It uses normal, transparent requests rather
+than asking Claude to install a conversation-long command protocol. It checks
+three behaviors through the SkillPilot MCP connector:
 
 1. immediate reading of one fresh tool result;
 2. exact handoff to a second tool in the same assistant turn;
@@ -171,15 +173,16 @@ evidence.
 
 After the measured block:
 
-1. Restore normal coach configuration: set
-   `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=true` and
-   `SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=false` (equivalently
-   `--skillpilot.claude.mcp.coach-enabled=true` and
-   `--skillpilot.claude.mcp.regression-enabled=false`), then restart the normal
-   SkillPilot service.
-2. Open a new Claude chat or reload the connector and confirm that the regression
-   tools are gone and the coach tools are offered. Connector metadata may be cached
-   in an already-open chat, so do not use that chat for the coach test.
+1. Return to the safe paused state: set
+   `SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED=false`,
+   `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED=false`,
+   `SKILLPILOT_CLAUDE_MCP_ENABLED=false`, and
+   `SKILLPILOT_CLAUDE_ENABLED=false`, then restart the normal SkillPilot service.
+2. Confirm that the public regression status no longer reports the synthetic
+   tools as ready and that the learner-facing Claude option remains hidden. Do not
+   expect or require real coach tools in the paused state. Only a separately
+   authorized, isolated acceptance window may enable them after the workflow and
+   exam-data blockers in `docs/deploy/claude-coach-beta.md` are closed.
 3. Keep sanitized evidence under `tmp/claude-mcp-regression/<run-id>/`; do not commit
    it. Delete the dedicated chats later if they are no longer needed.
 4. Verify that the public Custom-GPT regression page and normal ChatGPT path still

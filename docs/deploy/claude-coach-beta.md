@@ -1,12 +1,15 @@
-# Claude-Coach-Beta: Betrieb und Rollout
+# Claude-Coach: pausierte Beta, Test und spätere Reaktivierung
 
-Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem bestehenden
-Custom-GPT-Coach. Beide verwenden dieselbe SkillPilot-Fachlogik und denselben
-Lernstand. Der ChatGPT-Pfad bleibt unabhängig und muss auch bei deaktivierter
-Claude-Beta unverändert funktionieren.
+Status: erhaltene, deaktivierte Implementierung in Entwicklung; derzeit nicht
+lernendenseitig sichtbar und nicht produktionsreif.
 
-Die Beta ist standardmäßig vollständig ausgeschaltet. Sie ist derzeit nur für
-volljährige Testpersonen vorgesehen.
+Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
+[Custom-GPT-Visible-Session-Coach](../../ai/openai-custom-gpt-visible-session/README.md).
+Beide Adapter greifen grundsätzlich auf dieselbe SkillPilot-Fachlogik und denselben
+Lernstand zu. Sie haben aber unterschiedliche Authentifizierungs- und
+Projektionsgrenzen und sind noch nicht workflow-parallel. Der ChatGPT-Pfad bleibt
+unabhängig und muss auch bei vollständig deaktiviertem Claude unverändert
+funktionieren.
 
 > **Aktuelle UI-Pause (seit 21. Juli 2026):** Die Claude-Option ist im Frontend
 > zusätzlich durch den konstanten Release-Gate
@@ -14,6 +17,31 @@ volljährige Testpersonen vorgesehen.
 > `VITE_CLAUDE_BETA_ENABLED` kann sie während dieser Pause nicht einblenden.
 > Backend-, OAuth- und MCP-Sourcen bleiben erhalten. Die spätere Reaktivierung
 > ist eine bewusste Code- und Deploymententscheidung.
+
+Eine Reaktivierung ist zusätzlich durch folgende fachliche und technische Punkte
+blockiert:
+
+- Dem Claude-Adapter fehlt noch die Personalisierungsaktion, obwohl die gemeinsame
+  State Machine `setPersonalization` verlangen kann.
+- Es fehlt die geschützte Prüfungsabgabe/-auswertung der Visible-Session-Variante.
+- `getCoachContext` projiziert derzeit das rohe `FrontierGoal.examData`; dieser Typ
+  kann `solutionContent` und das Scoring enthalten. Vor einer Aktivierung braucht
+  Claude eine explizit sichere State-Projektion und eine erst nach vollständiger
+  Abgabe zugängliche Evaluation.
+- Im Repository liegt ein Testprotokoll, aber noch keine abgeschlossene reale
+  Claude-End-to-End-Acceptance-Evidenz.
+
+Bis diese vier Punkte geschlossen sind, bleiben die echten Claude-Coach-Tools
+ausgeschaltet. Transport- und Regressionstests finden nur in einer isolierten,
+kontrollierten Testumgebung mit synthetischen Daten statt.
+
+## Abgrenzung der Coach-Varianten
+
+| Variante | Kontextbindung | Aktueller Status |
+| --- | --- | --- |
+| ChatGPT Visible Session | sichtbares, höchstens 24 Stunden gültiges `sps_...`-Token im Startprompt und Footer; keine Startcode-Einlösung | aktueller lernendenseitiger Standard |
+| Claude OAuth/MCP | Backend löst ein authentifiziertes OAuth-Subject auf; generischer Prompt ohne sichtbares Sitzungstoken | pausiert, deaktiviert, noch nicht workflow-komplett |
+| Legacy Custom GPT | einmaliger Startcode und anschließendes verborgenes Sitzungstoken | unveränderte koordinierte Rollback-Quelle |
 
 ## Architektur
 
@@ -32,7 +60,7 @@ ausgeliefert. OAuth, MCP und die bisherigen REST-Endpunkte laufen im selben
 Spring-Boot-Prozess. Der bestehende Reverse Proxy muss lediglich alle benötigten
 Pfade unverändert an diesen Prozess weiterleiten.
 
-Produktive öffentliche Endpunkte:
+Bei einer kontrollierten Aktivierung exponierte Endpunkte:
 
 | Zweck | URL |
 | --- | --- |
@@ -44,20 +72,24 @@ Produktive öffentliche Endpunkte:
 | Claude OAuth Callbacks | `https://claude.ai/api/mcp/auth_callback`, `https://claude.com/api/mcp/auth_callback` |
 | UI-Verbindungsstart | `/api/ui/learners/{skillpilotId}/claude/connect-start` |
 | UI-Coach-Start | `/api/ui/learners/{skillpilotId}/claude/launch` |
+| UI-Verbindungsstatus | `GET /api/ui/learners/{skillpilotId}/claude/status` |
 | UI-Verbindung trennen | `DELETE /api/ui/learners/{skillpilotId}/claude/connection` |
 
 ## Feature-Flags und Konfiguration
 
-Das Frontend-Flag ist ein **Build-Time-Flag**. Alle anderen Werte sind
-Spring-Boot-Runtime-Konfiguration und gehören im Produktivbetrieb in das
-`systemd`-Environment beziehungsweise dessen `EnvironmentFile`.
+Es gibt derzeit kein wirksames Frontend-Build-Flag. Die UI ist durch den
+Source-Level-Release-Gate `CLAUDE_COACH_BETA_ENABLED = false` fest verborgen und
+kann nur durch eine bewusste Codeänderung plus Neubau reaktiviert werden. Die
+Backend-Werte sind Spring-Boot-Runtime-Konfiguration und gehören für einen
+kontrollierten Test in das `systemd`-Environment beziehungsweise dessen
+`EnvironmentFile`.
 
-| Variable | Produktion für Beta | Bedeutung |
+| Variable | Sicherer aktueller Wert | Bedeutung |
 | --- | --- | --- |
-| `VITE_CLAUDE_BETA_ENABLED` | derzeit wirkungslos | Historisches Build-Time-Flag. Während der UI-Pause bleibt die Option unabhängig vom Wert verborgen. |
-| `SKILLPILOT_CLAUDE_ENABLED` | `true` | Master-Schalter für UI-Routen, OAuth, Tokenprüfung und Coach-Tools. |
-| `SKILLPILOT_CLAUDE_MCP_ENABLED` | `true` | Schaltet den Spring-AI-MCP-Transport ein; erbt ohne eigenen Wert vom Master-Schalter. |
-| `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED` | `true` | Exponiert die echten Lernstands- und Coach-Tools. Für einen isolierten synthetischen Regressionstest vorübergehend auf `false` setzen. |
+| `VITE_CLAUDE_BETA_ENABLED` | wirkungslos/entfernt lassen | Historisches, nicht mehr ausgewertetes Build-Time-Flag. |
+| `SKILLPILOT_CLAUDE_ENABLED` | `false` | Master-Schalter für UI-Routen, OAuth und Tokenprüfung. Nur in einem autorisierten Testfenster aktivieren. |
+| `SKILLPILOT_CLAUDE_MCP_ENABLED` | `false` | Schaltet den Spring-AI-MCP-Transport ein; erbt ohne eigenen Wert vom Master-Schalter. |
+| `SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED` | bei jedem Test explizit `false` | Die Repository-Voreinstellung ist bei deaktiviertem Master dormant. Echte Coach-Tools erst nach Schließen aller Release-Blocker aktivieren. |
 | `SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED` | `false` | Exponiert nur bei gezielten Regressionstests zusätzlich die synthetischen Probe-Tools; im Coach-Betrieb ausgeschaltet lassen. |
 | `SKILLPILOT_PUBLIC_BASE_URL` | `https://skillpilot.com` | Öffentlicher OAuth-Issuer. |
 | `SKILLPILOT_CLAUDE_MCP_URL` | `https://skillpilot.com/api/claude/mcp` | Öffentliche MCP-Resource/Audience. |
@@ -134,7 +166,8 @@ OAuth-Grants ersetzt.
 3. Das Backend hinterlegt für fünf Minuten einen Pending Launch an der bereits
    autorisierten Verbindung.
 4. Die UI öffnet Claude und kopiert nur den kurzen, generischen Startprompt.
-   Es gibt keinen sichtbaren Startcode und keine SkillPilot-ID im Prompt.
+   Es gibt darin weder ein sichtbares ChatGPT-Sitzungstoken noch eine
+   SkillPilot-ID.
 5. Claude ruft `getCoachContext` auf. Das Backend ordnet das OAuth-Subject dem
    Lernstand zu und verbraucht den für genau diese Verbindung hinterlegten
    Pending Launch.
@@ -163,7 +196,8 @@ Claude-Konto geräteübergreifend zur Verfügung. Für den Wechsel:
    dem Verlauf öffnen;
 3. dort zum Beispiel ein Foto aufnehmen und im bestehenden Chat weiterarbeiten.
 
-Der Gerätewechsel benötigt keinen neuen SkillPilot-Startcode. Er hängt aber von
+Der Gerätewechsel benötigt weder Startcode noch sichtbares ChatGPT-Sitzungstoken.
+Er hängt aber von
 Claude-Konto, Workspace, Chat-Synchronisation und einem dort aktivierten Connector
 ab. Wird ein anderes Claude-Konto verbunden, ersetzt es nach erfolgreichem OAuth
 die vorige Verbindung dieses SkillPilot-Lernstands.
@@ -174,9 +208,10 @@ die vorige Verbindung dieses SkillPilot-Lernstands.
   deshalb nicht als Lernweg für Minderjährige beworben oder freigeschaltet werden.
   Ein späterer minderjährigengerechter Weg über eine eigene SkillPilot-UI und die
   Anthropic API wäre ein separates Produkt- und Safeguard-Projekt.
-- Das Frontend-Flag ist global und keine Alters- oder Nutzer-Allowlist. Es darf
-  deshalb zunächst nur in einer kontrollierten Beta-Umgebung beziehungsweise für
-  einen bewusst abgegrenzten Test mit volljährigen Personen aktiviert werden.
+- Der Source-Level-Release-Gate ist global und keine Alters- oder
+  Nutzer-Allowlist. Eine spätere Aktivierungsregel darf deshalb nur für eine
+  kontrollierte Beta-Umgebung beziehungsweise einen bewusst abgegrenzten Test mit
+  volljährigen Personen geöffnet werden.
 - Die dauerhafte SkillPilot-ID bleibt zwischen SkillPilot-UI und Backend. Sie ist
   weder OAuth-Principal noch MCP-Parameter und wird aus den explizit erlaubten
   Coach-Response-Feldern vollständig weggelassen. Auch `copySources` werden nicht
@@ -207,28 +242,32 @@ Custom Connectors sind derzeit für Free, Pro, Max, Team und Enterprise verfügb
 im Free-Plan ist höchstens ein Custom Connector möglich. Bei Team/Enterprise
 können zusätzlich Freigaben durch Owner erforderlich sein.
 
-## Rollout
+## Reaktivierungs- und Rollout-Gate
 
-1. Vor der ersten Aktivierung Datenbank-Backup erstellen und den bekannten
-   Git-Stand markieren. Die Liquibase-Erweiterung ist additiv.
-2. Backend mit beiden Runtime-Flags `true`, aber Frontend-Flag noch `false`
-   deployen. Discovery, OAuth-Challenge und MCP-Transport prüfen.
-3. Vor einem späteren kontrollierten Testfenster zuerst den konstanten UI-Gate
-   in `app/src/utils/claudeCoach.ts` bewusst wieder an eine überprüfte
-   Aktivierungsregel anbinden und neu bauen. Ein
-   `VITE_CLAUDE_BETA_ENABLED=true` allein hebt die aktuelle Pause nicht auf.
-4. Vor echten Coach-Tools mit einem leeren Test-Lernstand und einem volljährigen
-   Claude-Testkonto den isolierten MCP-Regressionslauf ausführen: Coach-Tools
-   aus, synthetische Regressionstools an. Die öffentliche Kurzfassung liegt unter
+1. Personalisierungsparität implementieren und gegen alle möglichen
+   `stateMachine.requiredAction`-Werte testen.
+2. Eine Claude-sichere State-Projektion sowie eine geschützte
+   Prüfungs-Evaluation nach vollständiger Abgabe implementieren und mit einem
+   Negativtest gegen vorzeitige Lösungsfreigabe absichern.
+3. Vor der ersten kontrollierten Aktivierung Datenbank-Backup erstellen und den
+   bekannten Git-Stand markieren. Die Liquibase-Erweiterung ist additiv.
+4. In einer isolierten Staging-/Testumgebung Master und MCP aktivieren, echte
+   Coach-Tools aber explizit deaktiviert lassen. Discovery, OAuth-Challenge und
+   MCP-Transport prüfen.
+5. Mit einem leeren Test-Lernstand und einem volljährigen Claude-Testkonto den
+   isolierten MCP-Regressionslauf ausführen: Coach-Tools aus, synthetische
+   Regressionstools an. Die öffentliche Kurzfassung liegt unter
    `/claude/mcp-regression`, das vollständige Protokoll unter
    `ai/claude/mcp-regression/TEST_PROTOCOL.md`.
-5. Regressionstools wieder ausschalten, Coach-Tools einschalten und mit demselben
-   Testkonto Verbindung, Consent, Lesen und eine bestätigte Schreibaktion testen.
-6. Notebook-zu-Mobile-Wechsel mit demselben Claude-Konto prüfen.
-7. Erst danach entscheiden, ob die Beta-UI aktiviert bleibt. ChatGPT parallel
-   mit dem RegressionGPT und einem normalen SkillPilot-Start gegenprüfen.
+6. Erst nach Abschluss der Punkte 1 und 2 ein separat autorisiertes
+   Coach-Acceptance-Fenster öffnen: Regressionstools aus, Coach-Tools an; alle
+   Setup-, Navigations-, Mastery-, Recall-, Ressourcen- und Prüfungsabläufe testen.
+7. End-to-End-Evidenz für Web und den vorgesehenen Gerätewechsel festhalten.
+8. Erst danach den Source-Level-Gate in `app/src/utils/claudeCoach.ts` an eine
+   überprüfte Aktivierungsregel anbinden, neu bauen und über eine Beta-Freigabe
+   entscheiden. ChatGPT parallel mit einem normalen Visible-Session-Start prüfen.
 
-## Smoke-Test
+## Smoke-Test für kontrollierte Staging-/Testumgebungen
 
 Voraussetzungen: `curl`, `jq`, eine dedizierte Test-SkillPilot-ID und keine
 Ausgabeumleitung in geteilte CI-Logs.
@@ -290,16 +329,19 @@ Vor dem erneuten Laden des Connectors muss
 melden. Der Endpunkt veröffentlicht nur effektive Feature-Schalter und Toolnamen,
 keine OAuth-, Lernenden- oder Signaturdaten.
 
-Danach den normalen Werkzeugumfang wiederherstellen und neu starten:
+Nach dem isolierten Regressionstest in den sicheren pausierten Zustand
+zurückkehren und neu starten:
 
 ```text
---skillpilot.claude.mcp.coach-enabled=true
+--skillpilot.claude.enabled=false
+--skillpilot.claude.mcp.enabled=false
+--skillpilot.claude.mcp.coach-enabled=false
 --skillpilot.claude.mcp.regression-enabled=false
 ```
 
 Bereits offene Claude-Chats können Tool-Metadaten zwischenspeichern; die
-anschließende Coach-Abnahme deshalb in einem frischen Chat durchführen. Das
-vollständige Evidenz- und Cleanup-Protokoll steht in
+spätere, separat autorisierte Coach-Abnahme deshalb in einem frischen Chat
+durchführen. Das vollständige Evidenz- und Cleanup-Protokoll steht in
 `ai/claude/mcp-regression/TEST_PROTOCOL.md`.
 
 Optional den UI-Start mit einer reinen Test-ID prüfen. Die Cookie-Datei enthält
@@ -338,7 +380,8 @@ npx -y @modelcontextprotocol/inspector@latest
 Im Inspector `Streamable HTTP` und
 `https://skillpilot.com/api/claude/mcp` wählen. Ohne Credential muss der
 Inspector den `401`-Challenge und die beiden Metadata-Dokumente erreichen. Die
-Produktions-Beta akzeptiert absichtlich nur den zugelassenen Claude-CIMD-Client;
+Der kontrollierte Beta-Entwurf akzeptiert absichtlich nur den zugelassenen
+Claude-CIMD-Client;
 ein beliebiger Inspector-OAuth-Client muss den Consent daher nicht abschließen.
 
 Für einen authentifizierten Tool-Test entweder den echten Claude-Testconnector
@@ -384,7 +427,8 @@ Schneller sicherer Rückweg ohne Auswirkungen auf ChatGPT:
    `SKILLPILOT_CLAUDE_MCP_ENABLED=false` und
    `SKILLPILOT_CLAUDE_ENABLED=false` setzen und Spring Boot neu starten.
 2. Den konstanten Frontend-Release-Gate auf `false` belassen und neu deployen;
-   die Claude-Buttons bleiben damit unabhängig von Build-Time-Flags verborgen.
+   die Claude-Buttons bleiben damit unabhängig von historischen Build-Time-Werten
+   verborgen.
 3. Den Claude-Änderungscommit mit `git revert <commit>` zurücknehmen und über den
    normalen Deploymentweg ausrollen. Kein `git reset --hard` auf dem Server.
 4. Die additiven Liquibase-Tabellen bei einem normalen Rollback nicht löschen.

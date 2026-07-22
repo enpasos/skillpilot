@@ -1,10 +1,22 @@
-# SkillPilot Lerncoach: ChatGPT-Start mit Startcode und Session-Token
+# Legacy: SkillPilot Lerncoach mit Startcode und Session-Token
 
-Status: Implementiert als erster Web-Startcode-Flow am 2026-05-19.
+Status: frühere Architektur vom 19. Mai 2026; seit 21. Juli 2026 nicht der
+aktive Custom-GPT-Pfad.
 
-Dieses Dokument beschreibt den Browser-first-Flow fuer den Start des SkillPilot Lerncoachs in ChatGPT. Ziel ist, dass Lernende auf `skillpilot.com` starten, waehrend ChatGPT nur kurzlebige Start- und Session-Schluessel sieht. Die dauerhafte SkillPilot-ID bleibt im Browser und serverseitig im SkillPilot-Backend.
+> Dieses Dokument bleibt als technische Rollback-Referenz erhalten. Der aktuelle
+> Web- und Custom-GPT-Flow ist die
+> [Visible-Session-Architektur](chatgpt-visible-session-flow.md): Das Cockpit
+> erzeugt direkt ein sichtbares, höchstens 24 Stunden gültiges Sitzungstoken; es
+> gibt dort weder Startcode noch Redeem-Action. Die Legacy-Quellen unter
+> `ai/openai custom gpt/` bleiben für einen koordinierten Rollback unverändert.
 
-Implementierungsstand:
+Dieses Dokument beschreibt ausschließlich den früheren Browser-first-Flow für den
+Start des SkillPilot Lerncoachs in ChatGPT. Ziel war, dass Lernende auf
+`skillpilot.com` starten, während ChatGPT nur kurzlebige Start- und
+Session-Schlüssel sieht. Die dauerhafte SkillPilot-ID blieb im Browser und
+serverseitig im SkillPilot-Backend.
+
+Erhaltener Legacy-Implementierungsstand:
 
 - Web-Start und relevante Kampagnenstarts erzeugen Startcodes ueber `/api/ui/learners/{skillpilotId}/chat-start`.
 - Custom-GPT-Actions loesen Startcodes ueber `/api/ai/{lang}/chat-start/redeem` ein.

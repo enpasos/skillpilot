@@ -1,10 +1,10 @@
 # SkillPilot in 5 Minuten starten
 
-**Stand:** 20. Mai 2026
+**Stand:** 21. Juli 2026
 
 SkillPilot begleitet dich Schritt für Schritt durch dein Curriculum. Du startest einen KI-Lerncoach, arbeitest an passenden Lernzielen und verfolgst deinen Fortschritt im Cockpit.
 
-Du brauchst nur einen Browser und einen ChatGPT-Account. Ein kostenloser ChatGPT-Account reicht.
+Du brauchst nur einen Browser und einen ChatGPT-Account. Ein kostenloser ChatGPT-Account kann GPTs nutzen; dort gelten jedoch engere Nutzungslimits, insbesondere auch für Datei- und Bilduploads.
 
 > **Hinweis:** Bitte nutze SkillPilot aktuell im normalen ChatGPT-Chat, nicht im ChatGPT-Voice-Mode. Warum, steht unten in den häufigen Fragen.
 
@@ -16,23 +16,25 @@ Du brauchst nur einen Browser und einen ChatGPT-Account. Ein kostenloser ChatGPT
 2. Klicke auf **Login**.
 3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene SkillPilot-ID eingeben.
 4. Wähle dein Curriculum und klicke auf **SkillPilot Lerncoach starten** oder **Cockpit öffnen**.
-5. Im ChatGPT-Fenster sendest du nur den vorbereiteten Startcode ab. Deine SkillPilot-ID taucht im GPT nicht auf.
+5. Im ChatGPT-Fenster sendest du die vorbereitete Sitzungsnachricht unverändert ab. Sie enthält ein sichtbares, höchstens 24 Stunden gültiges Sitzungstoken, aber nicht deine dauerhafte SkillPilot-ID.
 
 ---
 
 ## Was du dafür brauchst
 
 - einen Browser
-- einen ChatGPT-Account; ein kostenloser Account reicht
+- einen ChatGPT-Account; ein kostenloser Account kann GPTs mit begrenzten Nutzungslimits verwenden
 - keine Registrierung bei SkillPilot mit Name oder E-Mail
 
 ---
 
-## Drei Begriffe, die wichtig sind
+## Vier Begriffe, die wichtig sind
 
 **SkillPilot-ID:** Dein dauerhafter Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern.
 
-**Startcode:** Ein kurzlebiger Code, mit dem der SkillPilot Lerncoach in ChatGPT deine aktuelle Lernsession startet. Die SkillPilot-ID selbst wird nicht an ChatGPT gesendet.
+**Chat-Sitzungstoken:** Ein temporärer Schlüssel mit Präfix `sps_`, den SkillPilot für den Chat erzeugt. Er ist in der Startnachricht und in der letzten Footerzeile der Coach-Antworten sichtbar und läuft spätestens nach 24 Stunden ab. Teile einen noch gültigen Token nicht öffentlich.
+
+**Lernziel-ID:** Eine stabile, global eindeutige Kennung für ein Lernziel. Sie darf sichtbar sein und hilft, ein Lernziel eindeutig anzusprechen; sie ist kein Zugangsschlüssel.
 
 **Cockpit:** Deine Übersicht über Lernziele, Fortschritt und sinnvolle nächste Schritte.
 
@@ -52,7 +54,7 @@ Du brauchst nur einen Browser und einen ChatGPT-Account. Ein kostenloser ChatGPT
 | --- |
 | *Zum Lernen loggst du dich auf der Startseite ein. Das kostet nichts und du musst dich nicht mit Name oder E-Mail registrieren.* |
 
-SkillPilot speichert deinen Lernfortschritt unter einer pseudonymen SkillPilot-ID. Wenn du den Lerncoach startest, erzeugt SkillPilot daraus einen Startcode. Der Startcode ist 5 Minuten gültig. Nach dem Einlösen erhält der Lerncoach in ChatGPT vom Backend eine temporäre Session-ID, die 24 Stunden gültig ist.
+SkillPilot speichert deinen Lernfortschritt unter einer pseudonymen SkillPilot-ID. Wenn du den Lerncoach startest, erzeugt das Backend direkt eine temporäre Chat-Sitzung. Die dauerhafte SkillPilot-ID bleibt im Browser und im Backend; ChatGPT sieht stattdessen nur das sichtbare Sitzungstoken, das spätestens nach 24 Stunden abläuft.
 
 ---
 
@@ -74,29 +76,29 @@ Du hast drei Möglichkeiten:
 
 ## 3) Curriculum wählen und Start vorbereiten
 
-| <img src="../screenshot_03.de.png" alt="Curriculum wählen und SkillPilot Lerncoach oder Cockpit starten" width="700" /> |
-| --- |
-| *Nach dem Login wählst du dein Curriculum. Danach kannst du direkt den SkillPilot Lerncoach starten oder zuerst dein Cockpit öffnen.* |
+Nach dem Login wählst du dein Curriculum. Danach kannst du direkt den SkillPilot Lerncoach starten oder zuerst dein Cockpit öffnen.
 
-Wenn du den Lerncoach startest, öffnet SkillPilot ChatGPT mit einem vorbereiteten Startcode. Die dauerhafte SkillPilot-ID bleibt bei SkillPilot und wird nicht im Chat angezeigt.
+Wenn du den Lerncoach startest, erzeugt SkillPilot eine höchstens 24 Stunden gültige Chat-Sitzung und öffnet ChatGPT mit einer vorbereiteten Nachricht. Darin steht das temporäre Sitzungstoken sichtbar. Die dauerhafte SkillPilot-ID bleibt bei SkillPilot und wird nicht in den Chat übernommen.
 
 ---
 
 ## 4) Lerncoach in ChatGPT starten
 
-| <img src="../screenshot_04.de.png" alt="ChatGPT mit vorbereitetem Startcode für SkillPilot" width="700" /> |
-| --- |
-| *Im ChatGPT-Fenster steht nur der vorbereitete Startcode. Schicke diese Nachricht ab.* |
+Schicke die vorbereitete Sitzungsnachricht unverändert ab. Der SkillPilot Lerncoach lädt damit den aktuellen Lernstand aus dem Backend. Es gibt keinen zusätzlichen Startcode und keinen Einlöseschritt.
 
-Der SkillPilot Lerncoach löst den Startcode beim Backend ein und startet deine Lernsession. Danach arbeitest du im Chat weiter: Du kannst Fragen stellen, Aufgaben bearbeiten, Fotos hochladen oder Text per Diktat eingeben.
+Danach arbeitest du normal im Chat weiter: Du kannst Fragen stellen, Aufgaben bearbeiten, Fotos hochladen oder Text per Diktat eingeben. Jede normale Coach-Antwort endet mit einer kompakten Zeile wie:
+
+```text
+— SkillPilot · Sitzung: sps_...
+```
+
+Bei einem aktiven Ziel steht dort zusätzlich die vollständige Lernziel-ID. Diese technische Footerzeile ist beabsichtigt: Sie trägt die aktuelle Sitzung und das Lernziel zuverlässig zum nächsten Dialogschritt. Ändere sie nicht. Wenn der Coach eine Auswahl braucht, zeigt er nummerierte Optionen; antworte einfach mit der passenden Nummer.
 
 ---
 
 ## 5) Erste Lerneinheit beginnen
 
-| <img src="../screenshot_05.de.png" alt="Einstieg ins Lernziel" width="700" /> |
-| --- |
-| *Der Lerncoach startet mit einem passenden Lernziel und prüft dein Verständnis Schritt für Schritt.* |
+Der Lerncoach startet mit einem passenden Lernziel und prüft dein Verständnis Schritt für Schritt.
 
 | <img src="../comic03.de.png" alt="Mission Control" width="650" /> |
 | --- |
@@ -110,17 +112,7 @@ Der SkillPilot Lerncoach löst den Startcode beim Backend ein und startet deine 
 
 ## 6) So läuft eine Lerneinheit ab
 
-| <img src="../screenshot_06.de.png" alt="Vertiefung und Anwendungscheck" width="700" /> |
-| --- |
-| *SkillPilot fragt nicht nur Definitionen ab, sondern prüft auch Anwendung und Transfer.* |
-
-| <img src="../screenshot_07.de.png" alt="Transfer-Check mit Bild oder Skizze" width="700" /> |
-| --- |
-| *Du kannst Fotos, Aufgabenblätter oder eigene Skizzen hochladen. Der Lerncoach nutzt sie für Feedback.* |
-
-| <img src="../screenshot_08.de.png" alt="Ziel gemeistert und nächste Ziele" width="700" /> |
-| --- |
-| *Wenn ein Lernziel sitzt, wird es als gemeistert markiert. Danach bekommst du sinnvolle nächste Ziele vorgeschlagen.* |
+SkillPilot fragt nicht nur Definitionen ab, sondern prüft auch Anwendung und Transfer. Du kannst Fotos, Aufgabenblätter oder eigene Skizzen hochladen und dazu Feedback erhalten. Wenn ein Lernziel mit ausreichender Evidenz gemeistert ist, speichert der Coach den Fortschritt im Backend und lädt anschließend die sinnvollen nächsten Ziele neu.
 
 ---
 
@@ -160,11 +152,15 @@ Der SkillPilot Lerncoach löst den Startcode beim Backend ein und startet deine 
 
 ### Sieht ChatGPT meine SkillPilot-ID?
 
-Nein. Deine SkillPilot-ID bleibt bei SkillPilot. Für den Start in ChatGPT wird nur ein kurzlebiger Startcode erzeugt. Nach dem Einlösen arbeitet der Lerncoach mit einer temporären Session-ID.
+Nein. Deine dauerhafte SkillPilot-ID bleibt im Browser und bei SkillPilot. ChatGPT sieht nur das temporäre Sitzungstoken und die Lerninformationen, die für den aktuellen Coach-Dialog benötigt werden.
+
+### Warum steht unter jeder Coach-Antwort ein technischer SkillPilot-Footer?
+
+ChatGPT kann Werte aus einem früheren unsichtbaren Backend-Aufruf nicht in jedem späteren Dialogschritt zuverlässig wiederverwenden. Deshalb trägt der Footer das temporäre Sitzungstoken und bei aktivem Ziel die eindeutige Lernziel-ID sichtbar weiter. Das ist technisch notwendig und kein Fehler. Solange das Token noch gültig ist, solltest du den Chat oder Screenshots mit dieser Zeile nicht öffentlich teilen.
 
 ### Brauche ich ChatGPT Plus?
 
-Nein. Ein kostenloser ChatGPT-Account reicht.
+Nein. GPTs sind auch mit einem kostenlosen ChatGPT-Account nutzbar. Wenn du das aktuelle Nutzungslimit erreichst, pausiert der GPT-Zugriff bis zum angezeigten Reset; Datei- und Bilduploads können eigene, strengere Limits haben.
 
 ### Brauche ich einen Computer?
 
@@ -182,7 +178,7 @@ Wenn du keinen lokalen Login gespeichert hast und deine SkillPilot-ID verlierst,
 
 ### Was passiert, wenn die ChatGPT-Session abläuft?
 
-Die Session des Lerncoachs in ChatGPT ist 24 Stunden gültig. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Dann erhält ChatGPT einen neuen Startcode. Gib deine SkillPilot-ID nicht direkt im Chat ein.
+Die Session des Lerncoachs in ChatGPT ist höchstens 24 Stunden gültig und wird durch Nutzung nicht verlängert. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. SkillPilot erzeugt dann ein neues temporäres Sitzungstoken. Gib deine dauerhafte SkillPilot-ID nicht direkt im Chat ein.
 
 ### Kann ich zwischen Cockpit und Lerncoach wechseln?
 

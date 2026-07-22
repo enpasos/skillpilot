@@ -5,7 +5,7 @@ This page groups deployment-facing operational documentation.
 ## Deployment
 
 - [SkillPilot Deployment Process](deployment.md)
-- [Claude-Coach-Beta: Betrieb und Rollout](claude-coach-beta.md)
+- [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
 
 ## Maintenance
 
