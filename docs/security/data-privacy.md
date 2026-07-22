@@ -113,6 +113,19 @@ ChatGPT does not receive:
 - exam solutions in normal state responses;
 - Recall answers before the learner has answered the corresponding visible card.
 
+Normal model-facing state is prepared by the shared `CoachStateProjection`.
+Released active exams contain only task content and maximum points there. Solution,
+passing threshold, source-artifact path, and scoring steps are available only from
+the separately authorized exam-evaluation use case.
+
+For the current provider-hosted chat, this evaluation boundary proves that the
+goal is the active, released, structurally complete exam. It does not independently
+prove that a learner answer was submitted: SkillPilot intentionally receives no
+chat transcript, and the current request contains only the visible goal ID. The
+required answer-before-evaluation sequence is therefore instruction-gated until a
+future SkillPilot-controlled widget or cockpit submission introduces an attempt
+receipt.
+
 Canonical learning-goal IDs are public technical references, not credentials.
 Selection references are short-lived state handles. The session token is the only
 visible value in this set that grants temporary access to the pseudonymous learning
@@ -129,9 +142,11 @@ an authenticated opaque OAuth connection subject to the learner internally.
 Anthropic would hold the OAuth access and refresh credentials as the client, while
 those credentials would not be model prompts, MCP arguments, or tool responses.
 
-This is not currently a production fallback. The Claude coach tools must remain
-disabled until they have workflow parity, a Claude-safe state projection with a
-protected exam-evaluation boundary, and recorded end-to-end acceptance. See the
+This is not currently a production fallback. Claude now uses the same safe normal
+state projection and protected exam-evaluation use case as Visible Session, and
+its retained tool adapter includes personalization. The Claude coach tools remain
+disabled until the complete provider-specific workflow has passed a recorded,
+adult-only end-to-end acceptance run. See the
 [paused Claude runbook](../deploy/claude-coach-beta.md).
 
 ## 3. Data Flow Scenarios

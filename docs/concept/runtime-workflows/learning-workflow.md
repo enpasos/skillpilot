@@ -7,7 +7,11 @@ ChatGPT adapter is the
 [Visible Session flow](chatgpt-visible-session-flow.md): it projects the state
 machine into numbered visible choices, reloads state on every normal substantive
 turn, and keeps only the values needed by later Actions visible in the dialog.
-The retained Claude adapter is currently disabled and is not yet workflow-parallel.
+The retained Claude adapter uses the same safe state projection and protected exam
+authorization, and now covers personalization as well. It remains disabled until
+the complete provider-specific workflow has passed a real adult-only end-to-end
+acceptance run. The shared boundary is documented in
+[Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md).
 
 ## 1. Data Foundation: Landscapes, Structure, and Filters
 SkillPilot starts from curriculum landscapes stored as JSON files under `curricula/`.

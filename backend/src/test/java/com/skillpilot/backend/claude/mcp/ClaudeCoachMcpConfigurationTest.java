@@ -3,6 +3,7 @@ package com.skillpilot.backend.claude.mcp;
 import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
 import java.util.Arrays;
 import java.util.Set;
@@ -18,6 +19,7 @@ class ClaudeCoachMcpConfigurationTest {
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
             .withBean(CoachToolFacade.class, () -> mock(CoachToolFacade.class))
+            .withBean(CoachStateProjection.class, () -> new CoachStateProjection("https://skillpilot.test"))
             .withBean(ClaudeCoachConnectionService.class, () -> mock(ClaudeCoachConnectionService.class))
             .withUserConfiguration(ClaudeCoachMcpConfiguration.class);
 
@@ -42,9 +44,11 @@ class ClaudeCoachMcpConfigurationTest {
                             .contains(
                                     "getCoachContext",
                                     "setScope",
+                                    "setPersonalization",
                                     "setActiveGoal",
                                     "setMastery",
                                     "setCurriculum",
+                                    "getExamEvaluation",
                                     "startVerifiedRecall",
                                     "getVerifiedRecallAnswer",
                                     "recordVerifiedRecallResult");
@@ -70,6 +74,7 @@ class ClaudeCoachMcpConfigurationTest {
                 .withBean(ActionRegressionService.class, () -> mock(ActionRegressionService.class))
                 .withBean(ActionRegressionAuditLogger.class, () -> mock(ActionRegressionAuditLogger.class))
                 .withBean(CoachToolFacade.class, () -> mock(CoachToolFacade.class))
+                .withBean(CoachStateProjection.class, () -> new CoachStateProjection("https://skillpilot.test"))
                 .withBean(ClaudeCoachConnectionService.class, () -> mock(ClaudeCoachConnectionService.class))
                 .withUserConfiguration(ClaudeMcpConfiguration.class, ClaudeCoachMcpConfiguration.class)
                 .withPropertyValues(

@@ -1,6 +1,7 @@
 package com.skillpilot.backend.claude.mcp;
 
 import com.skillpilot.backend.ai.CoachToolFacade;
+import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
@@ -21,8 +22,9 @@ public class ClaudeCoachMcpConfiguration {
     @Bean
     ClaudeCoachMcpTools claudeCoachMcpTools(
             CoachToolFacade coachTools,
-            ClaudeCoachConnectionService connectionService) {
-        return new ClaudeCoachMcpTools(coachTools, connectionService);
+            ClaudeCoachConnectionService connectionService,
+            CoachStateProjection stateProjection) {
+        return new ClaudeCoachMcpTools(coachTools, connectionService, stateProjection);
     }
 
     @Bean

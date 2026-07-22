@@ -19,20 +19,30 @@ Es erhält nur die sichtbare aktive Lernziel-ID. Seine geschützte
 * `IMAGE_PATH` nie ausgeben. Bei `hasImage=true` den exakten Cockpit-Link als
   „Aufgabe im Cockpit mit Bild“ anbieten, sonst „Aufgabe im Cockpit“.
 * Außer kurzem Prüfungsheader, Link und einer Einreichungszeile keinen Zusatztext.
-* Nur bei unleserlicher oder offensichtlich unvollständiger Abgabe nachfragen.
+* Nach der Abgabe ohne Rückfragen abschließend bewerten. Unleserliche Stellen als
+  solche benennen, aber daraus keinen konkreten fachlichen Fehler erfinden.
 
 ## Evaluation nach Abgabe
 
 Nach vollständiger Abgabe direkt `getVisibleExamEvaluation` aufrufen, ohne vorher
-den normalen State zu laden. Im selben Assistententurn:
+den normalen State zu laden. Dann kriteriumsbezogen bewerten:
 
-1. Abgabe mit `solutionContent` vergleichen.
-2. Nach `scoring.steps`, `maxPoints` und `passingPoints` bewerten.
-3. Punkte nur für explizit sichtbare Rechnung, Text, Ergebnis oder Begründung.
-4. Keine Punkte für vermutete Schritte. Verlangte Interpretation ohne sprachliche
-   Deutung erhält für diesen Anteil null Punkte.
-5. Bei mehrteiligen Anforderungen Teilpunkte trennen; keine volle Punktzahl, wenn
-   ein Teil fehlt.
+1. Aufgabenanforderung und jeden Eintrag in `scoring.steps` prüfen.
+   `solutionContent` ist eine Referenzlösung, kein vorgeschriebener Wortlaut und
+   kein exklusiver Lösungsweg.
+2. Jeden fachlich korrekten gleichwertigen Rechenweg, jede gleichwertige
+   Darstellung, zulässige Rundung und eigenständige korrekte Begründung genauso
+   werten wie die Referenzlösung. Ein Standardweg ist nicht automatisch besser.
+3. Direkte mathematische Gleichwertigkeiten sind explizite Evidenz, keine
+   hineininterpretierten Schritte. Form oder Notation nur abwerten, wenn Aufgabe
+   oder Raster sie ausdrücklich bewertet oder die Aussage dadurch falsch oder
+   fachlich mehrdeutig wird.
+4. Punkte nur für explizit erkennbare Rechnung, Text, Ergebnis oder Begründung.
+   Nicht sichtbare notwendige Schritte nicht ergänzen. Zwischenschritte oder einen
+   bestimmten Weg aber nur verlangen, wenn Aufgabe oder Raster das fordert.
+5. Verlangte Interpretation ohne fachliche Deutung erhält für diesen Anteil null
+   Punkte. Bei mehrteiligen Anforderungen Teilpunkte trennen; keine volle
+   Punktzahl, wenn ein geforderter Teil fehlt.
 
 ## Ergebnis und Nachbereitung
 

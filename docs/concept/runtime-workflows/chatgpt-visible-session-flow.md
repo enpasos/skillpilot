@@ -144,7 +144,7 @@ aktuellen Coach-Abläufe ab:
 | `startVisibleVerifiedRecall` | `POST /verified-recall/start` | einen sichtbaren Kartenbatch für ein Memorierungsziel beginnen |
 | `getVisibleVerifiedRecallAnswer` | `POST /verified-recall/answer` | Sollantwort erst nach sichtbarer Lernendenantwort laden |
 | `recordVisibleVerifiedRecallResult` | `POST /verified-recall/result` | fachlich bewertetes Kartenergebnis speichern |
-| `getVisibleExamEvaluation` | `POST /exam/evaluation` | Lösung und Scoring erst nach vollständiger Prüfungsabgabe laden |
+| `getVisibleExamEvaluation` | `POST /exam/evaluation` | Lösung und Scoring instruktionsgestützt erst nach vollständiger sichtbarer Prüfungsabgabe laden |
 
 Die geringere Methodenzahl gegenüber dem Legacy-Schema bedeutet keine geringere
 Workflow-Abdeckung. Setup- und Navigationsschritte sind bewusst in
@@ -152,11 +152,38 @@ Workflow-Abdeckung. Setup- und Navigationsschritte sind bewusst in
 die Backend-Schlüssel, während die Unterhaltung nur Beschriftung, Nummer und
 Auswahlcode tragen muss.
 
-Normale State-Responses enthalten bei Prüfungszielen nur Aufgabentext,
-Maximalpunkte und Bildhinweis, aber niemals Lösung oder Bewertungsraster. Bei
+Normale State-Responses werden durch die gemeinsame providerneutrale
+`CoachStateProjection` vorbereitet. Sie enthalten bei Prüfungszielen nur
+Aufgabentext, Maximalpunkte und Bildhinweis, aber niemals Lösung,
+Bestehensgrenze, Quellpfad oder Bewertungsraster. Die explizite Evaluation
+delegiert an den gemeinsamen, fachlich autorisierten Exam-Use-Case der
+`CoachToolFacade`; das bestehende Visible-Session-Schema bleibt dabei unverändert. Bei
 Verified Recall wird die Sollantwort erst nach der Antwort der lernenden Person
 freigegeben. Memorierungs-Mastery wird vom Backend aus den gespeicherten
 Kartenergebnissen abgeleitet und nicht über `setVisibleMastery` gesetzt.
+
+Der Exam-Use-Case prüft aktives Ziel, Prüfungstyp, Freigabestatus und vollständige
+Evaluationsdaten. Er beweist im heutigen Custom-GPT-Kanal jedoch nicht unabhängig,
+dass zuvor wirklich eine Lernendenantwort abgegeben wurde: Der Backend-Request
+enthält weiterhin nur die sichtbare Lernziel-ID, und SkillPilot erhält bewusst
+kein Chatprotokoll. Die Reihenfolge „sichtbare vollständige Abgabe, danach
+Evaluation“ bleibt deshalb instruktionsgestützt. Ein starker Abgabenbeweis braucht
+später eine direkte SkillPilot-Widget- oder Cockpit-Abgabe mit Attempt-ID.
+
+Die Bewertung ist kriteriums- statt wortlautbezogen. `solutionContent` ist eine
+Referenzlösung, kein exklusiver Lösungsweg. Fachlich gleichwertige Darstellungen,
+zulässige Rundungen, eigene tragfähige Begründungen und korrekte alternative Wege
+erhalten dieselben Punkte, sofern Aufgabe oder Raster keine bestimmte Antwortform
+ausdrücklich verlangt; ausdrückliche Anforderungen bleiben verbindlich. Die Abgabe
+wird ohne Rückfragedialog abschließend bewertet. Eine unleserliche Bild- oder
+Handschriftstelle wird als unleserlich und
+nur anhand sicher erkennbarer Evidenz gewertet; der GPT darf daraus keinen
+bestimmten fachlichen Fehler erfinden.
+
+Die dauerhafte gemeinsame Architekturgrenze und die bewusst zurückgestellten
+Revision-/Idempotenzmechanismen sind unter
+[Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md)
+dokumentiert.
 
 Alle neun Operationen:
 
@@ -250,6 +277,8 @@ Verified Recall, Prüfung, Ablauf und Neustart.
 
 Die Claude-OAuth/MCP-Implementierung ist eine getrennte, derzeit deaktivierte und
 nicht lernendenseitig sichtbare Variante. Sie verwendet keinen sichtbaren
-ChatGPT-Sitzungsfooter, ist aber noch nicht workflow-parallel und deshalb kein
-Fallback des aktuellen Coachs. Der Status und die verbleibenden Release-Blocker
-stehen im [Claude-Coach-Runbook](../../deploy/claude-coach-beta.md).
+ChatGPT-Sitzungsfooter. Gemeinsame Projektion, Personalisierung und
+Exam-Autorisierung sind im Code ergänzt; ohne vollständige reale
+Provider-Acceptance ist Claude dennoch kein Fallback des aktuellen Coachs. Der
+Status und die verbleibenden Release-Gates stehen im
+[Claude-Coach-Runbook](../../deploy/claude-coach-beta.md).

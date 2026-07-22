@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -681,6 +682,16 @@ class VisibleSessionServiceTest {
                         false),
                 List.of());
         when(facade.getSessionState(TOKEN)).thenReturn(activeState);
+        when(facade.getSessionExamEvaluation(
+                TOKEN,
+                new CoachToolFacade.ExamEvaluationRequest(released.id())))
+                .thenReturn(examEvaluation(released));
+        when(facade.getSessionExamEvaluation(
+                TOKEN,
+                new CoachToolFacade.ExamEvaluationRequest("other-goal")))
+                .thenThrow(new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "The cited goal is not the active exam goal."));
 
         VisibleCoachStateResponse active = service.getState(TOKEN, "de");
 
@@ -713,18 +724,57 @@ class VisibleSessionServiceTest {
 
         VisibleExamEvaluationResponse evaluation = service.getExamEvaluation(
                 TOKEN, "de", new VisibleExamEvaluationRequest(released.id()));
-        assertThat(evaluation.solutionContent()).contains("Musterlösung").contains("\\(x=2\\)");
+        assertThat(evaluation.solutionContent())
+                .contains("Musterlösung")
+                .contains("\\(x=2\\)")
+                .contains("https://skillpilot.test/ai-assets/rubric.pdf");
         assertThat(evaluation.scoring().maxPoints()).isEqualTo(10);
         assertThat(evaluation.scoring().steps()).singleElement().satisfies(step -> {
             assertThat(step.id()).isEqualTo("step-1");
             assertThat(step.points()).isEqualTo(10);
         });
+        assertThat(evaluation.instruction())
+                .contains("nur Referenz")
+                .contains("gleichwertige")
+                .contains("bestimmte Antwortform")
+                .contains("Anforderungen bleiben verbindlich")
+                .contains("ohne Rückfrage")
+                .contains("keinen konkreten fachlichen Fehler");
+
+        VisibleExamEvaluationResponse englishEvaluation = service.getExamEvaluation(
+                TOKEN, "en", new VisibleExamEvaluationRequest(released.id()));
+        assertThat(englishEvaluation.instruction())
+                .contains("reference only")
+                .contains("equivalent")
+                .contains("specific answer form")
+                .contains("requirements remain binding")
+                .contains("without follow-up questions")
+                .contains("never invent a specific subject error");
+        verify(facade, times(2)).getSessionExamEvaluation(
+                TOKEN,
+                new CoachToolFacade.ExamEvaluationRequest(released.id()));
 
         assertThatThrownBy(() -> service.getExamEvaluation(
                 TOKEN, "de", new VisibleExamEvaluationRequest("other-goal")))
                 .isInstanceOf(ResponseStatusException.class)
                 .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
                         .isEqualTo(HttpStatus.CONFLICT));
+    }
+
+    @Test
+    void examEvaluationDelegatesBadRequestWithoutASeparateStateRead() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        when(facade.getSessionExamEvaluation(TOKEN, null))
+                .thenThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "goalId must not be empty."));
+        VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        assertThatThrownBy(() -> service.getExamEvaluation(TOKEN, "de", null))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        verify(facade).getSessionExamEvaluation(TOKEN, null);
+        verify(facade, never()).getSessionState(any());
     }
 
     @Test
@@ -735,11 +785,19 @@ class VisibleSessionServiceTest {
         incomplete.examData().setScoring(null);
         UnifiedLearnerStateResponse draftState = state("teachActiveGoal", draft, List.of(draft));
         UnifiedLearnerStateResponse incompleteState = state("teachActiveGoal", incomplete, List.of(incomplete));
-        when(facade.getSessionState(TOKEN)).thenReturn(
-                draftState,
-                draftState,
-                incompleteState,
-                incompleteState);
+        when(facade.getSessionState(TOKEN)).thenReturn(draftState, incompleteState);
+        when(facade.getSessionExamEvaluation(
+                TOKEN,
+                new CoachToolFacade.ExamEvaluationRequest(draft.id())))
+                .thenThrow(new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "The cited goal is not the active exam goal."));
+        when(facade.getSessionExamEvaluation(
+                TOKEN,
+                new CoachToolFacade.ExamEvaluationRequest(incomplete.id())))
+                .thenThrow(new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "The cited goal is not the active exam goal."));
         VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
 
         VisibleCoachStateResponse visibleDraft = service.getState(TOKEN, "de");
@@ -818,7 +876,7 @@ class VisibleSessionServiceTest {
         exam.setSourceArtifactPath("private/source.json");
         exam.setTaskContent("![Material](/assets/exam.png)\n\nBerechne $x$.");
         exam.setTaskContentEn("![Material](/assets/exam.png)\n\nCompute $x$.");
-        exam.setSolutionContent("Musterlösung: $x=2$.");
+        exam.setSolutionContent("Musterlösung: $x=2$. [Anlage](/assets/rubric.pdf)");
         exam.setSolutionContentEn("Solution: $x=2$.");
         ExamData.Scoring scoring = new ExamData.Scoring();
         scoring.setMaxPoints(10);
@@ -848,6 +906,26 @@ class VisibleSessionServiceTest {
                 null,
                 null,
                 exam);
+    }
+
+    private static CoachToolFacade.ExamEvaluationResult examEvaluation(FrontierGoal goal) {
+        ExamData exam = goal.examData();
+        CoachToolFacade.ExamScoring scoring = exam.getScoring() == null
+                ? null
+                : new CoachToolFacade.ExamScoring(
+                        exam.getScoring().getMaxPoints(),
+                        exam.getScoring().getPassingPoints(),
+                        exam.getScoring().getSteps().stream()
+                                .map(step -> new CoachToolFacade.ExamScoringStep(
+                                        step.getId(),
+                                        step.getPoints(),
+                                        step.getDescription()))
+                                .toList());
+        return new CoachToolFacade.ExamEvaluationResult(
+                goal.id(),
+                exam.getSolutionContent(),
+                exam.getSolutionContentEn(),
+                scoring);
     }
 
     private static VerifiedRecallPromptResponse recallPrompt(String goalId, String cardId, String prompt) {

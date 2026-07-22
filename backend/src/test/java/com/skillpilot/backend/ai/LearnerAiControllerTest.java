@@ -58,7 +58,10 @@ class LearnerAiControllerTest {
         chatSessionService = mock(ChatSessionService.class);
         controller = new LearnerAiController(
                 learnerService,
-                new CoachToolFacade(learnerService, chatSessionService));
+                new CoachToolFacade(
+                        learnerService,
+                        chatSessionService,
+                        new CoachStateProjection("https://skillpilot.test")));
 
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setScheme("https");
