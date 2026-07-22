@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (DE)
 
-**Version:** 1.0.18
-**Datum:** April 2026
+**Version:** 1.0.19
+**Datum:** Juli 2026
 **Projekt:** SkillPilot
 
 ---
@@ -200,9 +200,11 @@ Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der L
 
 #### Session-Abschirmung gegenüber dem KI-Frontend
 
-Beim Start des **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der Browser fordert beim SkillPilot-Backend einen kurzlebigen, einmalig nutzbaren **Startcode** an. Nach dem Einlösen arbeitet der Lerncoach nur noch mit einem temporären **Chat-Session-Token**.
+Beim Start des **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Das Cockpit lässt das SkillPilot-Backend direkt ein temporäres, höchstens 24 Stunden gültiges **Chat-Session-Token** erzeugen. Dieses Token steht sichtbar in der vorbereiteten Startnachricht und in einem kompakten Footer jeder normalen Coach-Antwort. Es gibt im aktuellen Ablauf keinen Startcode und keinen Einlöseschritt.
 
-Die Zuordnung `chatSessionToken -> skillpilotId` passiert ausschließlich im SkillPilot-Backend; die aktive SkillPilot-ID liegt nur im Browser und im Backend. Dadurch kann das KI-Frontend Lerncoach-Dialoge und Tool-Ergebnisse nicht mehr der dauerhaften SkillPilot-ID zuordnen. Es erhält weiterhin die didaktisch notwendigen Zustandsdaten der aktuellen Session, aber nicht den stabilen Schlüssel des Lernenden.
+Diese Sichtbarkeit ist ein bewusster Architekturkompromiss: Frühere unsichtbare Action-Ergebnisse stehen einem Custom GPT nach einem weiteren User-Turn nicht zuverlässig zur Verfügung. Deshalb trägt der Dialog nur die Werte sichtbar weiter, die spätere Actions brauchen: Sitzungstoken, zeitlich lokalen Auswahlcode und Nummern sowie vollständige Lernziel- oder Karten-IDs. Interne Curriculum-, Filter- und Scope-Schlüssel bleiben im Backend.
+
+Die Zuordnung `chatSessionToken -> skillpilotId` passiert ausschließlich im SkillPilot-Backend; die aktive SkillPilot-ID liegt nur im Browser und im Backend. Das KI-Frontend erhält weiterhin die didaktisch notwendigen Zustandsdaten der aktuellen Session, aber nicht den stabilen Schlüssel des Lernenden. Das sichtbare Sitzungstoken ist dennoch ein temporärer Bearer-Zugriff und darf bis zu seinem Ablauf nicht über öffentliche Chatfreigaben, Screenshots oder Logs weitergegeben werden.
 
 #### Dialoginhalt ist entkoppelt
 
@@ -217,8 +219,9 @@ Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkra
 
 #### KI-Frontend / Provider-Wahl (Souveränität)
 
-Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt (aktuell: ChatGPT als Referenz-Integration) und unterliegt dessen Betriebs- und Datenschutzrahmen.
-Für Kontexte mit höheren Souveränitätsanforderungen sind alternative KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie die benötigten Eigenschaften (Tool-Nutzung, Stabilität, Struktur, Didaktik) zuverlässig erfüllen.
+Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Aktuell ist ChatGPT mit der Visible-Session-Architektur die lernendenseitige Referenzintegration. Eine OAuth-/MCP-Variante für Claude ist als getrennte Implementierung im Repository vorhanden, aber bewusst deaktiviert und in der UI verborgen; sie ist bis zur vollständigen Workflow- und Prüfungsdatengrenze sowie einem echten End-to-End-Acceptance-Test keine verfügbare Alternative.
+
+Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie Tool-Nutzung, Stabilität, Datenschutzgrenzen, Struktur und Didaktik zuverlässig erfüllen.
 
 ### 4.2 Nachweiskette (Chain of Custody): Integrität & Nachvollziehbarkeit
 

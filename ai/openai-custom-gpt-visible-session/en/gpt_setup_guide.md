@@ -71,6 +71,9 @@ and only paths below `/api/ai/en/...`:
 - `recordVisibleVerifiedRecallResult`
 - `getVisibleExamEvaluation`
 
+All nine operations must contain `"x-openai-isConsequential": false` in the
+schema source. The local package test validates this for every operation.
+
 Builder must accept the schema without a red parameter warning. In every
 operation, the `parameters` entry must directly contain
 `"name": "chatSessionToken"`; it must not use a

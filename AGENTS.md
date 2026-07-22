@@ -723,55 +723,102 @@ Guiding principle:
 
 **Language model / SkillPilot Learning Coach**
 
-- May ask for:
-  - a *nickname* to address the learner in the conversation,
-  - the `skillpilotId` to access their state via tools.
-- For all tool/API calls, the learning coach must use **only the documented pseudonymous/session parameter**, never the nickname or other PII.
+- May ask for a *nickname* to address the learner in the conversation, but must
+  never ask for, display, or receive the permanent `skillpilotId` through an
+  external AI adapter.
+- The current ChatGPT Custom GPT receives only a visible, temporary
+  `chatSessionToken`. It is carried in the prepared first message and in the
+  backend-provided footer; the backend resolves it internally to the learner.
+- The paused Claude/MCP adapter resolves an authenticated opaque OAuth subject
+  internally and has neither `skillpilotId` nor OAuth credentials as model tool
+  parameters.
+- Provider-neutral backend services may use the SkillPilot ID internally after a
+  trusted browser route, session token, or OAuth subject has been resolved. That
+  internal implementation detail must not leak into the external model context.
 
 **User-local (browser / ChatGPT UI)**
 
 - The learner is responsible for:
   - keeping their `skillpilotId` somewhere safe (e.g. in the browser, a notes file),
   - deciding which nickname they share with the learning coach or teacher.
+- A current ChatGPT transcript also contains the temporary Visible Session token.
+  Until it expires, the learner must not publicly share an unredacted transcript,
+  screenshot, or export containing its SkillPilot footer.
 - Local frontends (web GUI, notebooks, etc.) may:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.
 
 ### 11.3 API / Tools conventions
 
-When designing tools (MCP or OpenAPI) on top of this model:
+Distinguish trusted browser/domain APIs from provider-facing AI contracts.
 
-- Use parameters like `skillpilotId` (or clearly document that `learnerId` is a pseudonymous SkillPilot ID).
-- Document explicitly:
-  - “This parameter must be an opaque SkillPilot ID, never a name or e‑mail.”
-- Typical endpoints:
+Trusted browser and internal domain endpoints may use `skillpilotId`, provided it
+is always treated as an opaque pseudonymous access key and never as a name or
+email address. Typical browser/domain endpoints include:
+
   - `POST /learners` → returns a new `skillpilotId` plus initial state,
   - `GET /learners/{skillpilotId}/state` → returns unified state (Curriculum + Frontier + Goals + `stateMachine`),
   - `POST /learners/{skillpilotId}/mastery` → updates mastery and returns **new frontier** immediately,
   - `POST /learners/{skillpilotId}/scope` → sets focus (e.g. "Stochastik") and updates planned goals,
   - `POST /learners/{skillpilotId}/active-goal` → locks the current atomic goal for the learning-coach loop.
 
+Provider-facing contracts must use derived temporary context instead:
+
+- Current ChatGPT: the browser calls
+  `POST /api/ui/learners/{skillpilotId}/visible-chat-start`; the GPT then uses only
+  the nine locale-specific
+  `/api/ai/{lang}/sessions/{chatSessionToken}/visible/...` Actions. Values needed
+  after a user turn are visible in the footer, numbered selection, full canonical
+  goal ID, or Recall card prompt.
+- Paused Claude/MCP: the transport authenticates an OAuth connection subject and
+  resolves it inside the backend. The model never supplies a learner ID.
+- Any new provider adapter must define its own minimum data projection and
+  authentication/context boundary. Do not expose the permanent SkillPilot ID just
+  because an internal facade accepts it.
+
 LLM/learning-coach prompts should reinforce that:
 
 - Nicknames are for **conversation only**.
-- All persistence and tools operate exclusively on the `skillpilotId`.
+- The permanent SkillPilot ID is never requested or exposed by an external AI.
+- Persistence uses only the provider contract's documented temporary session or
+  authenticated subject, which the backend resolves internally.
 
 ---
 
-## 12. AI Agent Integration (Gemini & ChatGPT)
+## 12. AI Agent Integration (ChatGPT Visible Session, Claude/MCP & Gemini)
 
-SkillPilot provides an **Optimized OpenAPI Specification** designed specifically for LLM Agents.
+SkillPilot keeps its learning-state decisions provider-neutral in the backend and
+uses separate, provider-specific adapters. The current public coach is the
+ChatGPT Visible Session adapter.
 
 ### 12.1 Key Features for AI
-- **Lean Initialization:** Agents can call `createLearner()` to get a `skillpilotId` and initial state; curriculum selection then follows via `stateMachine.requiredAction`.
-- **Unified State:** `getLearnerState` returns everything the agent needs (Curriculum info, Rich Frontier, Planned Goals) in one call, reducing token usage and latency.
-- **Rich Frontier:** The frontier response includes goal titles, descriptions, and types, so the agent doesn't need to look them up separately.
-- **Immediate Feedback:** `setMastery` returns the *new* frontier immediately, allowing for a tight "Teach -> Assess -> Next Step" loop.
+
+- **Backend authority:** curriculum, personalization, scope, frontier, active goal,
+  allowed transitions, Mastery, Verified Recall, and exam evaluation remain
+  backend decisions.
+- **Current ChatGPT projection:** nine locale-specific Visible Session Actions
+  consolidate setup and navigation into numbered choices, reload state on normal
+  user turns, and protect Recall answers and exam solutions behind later Actions.
+- **Visible cross-turn relay:** only the temporary session token, selection
+  reference/numbers, canonical active-goal ID, and Recall card IDs are carried in
+  conversation text when a later Action needs them.
+- **Provider-specific contracts:** German and English Custom GPTs have independent
+  Instructions, seven Knowledge files each, and independent locale-fixed OpenAPI
+  schemas. A one-size-fits-all schema is not allowed.
+- **Paused Claude adapter:** the OAuth/MCP implementation remains disabled and is
+  not workflow-parallel or production-ready until personalization, protected exam
+  evaluation, safe state projection, and end-to-end acceptance are complete.
 
 ### 12.2 Setup Guides
 - **Google Gemini:** See `ai/google gem/gemini.md` for the current status notes.
-- **ChatGPT:** See `ai/openai custom gpt/gpt_setup_guide.de.md` and `ai/openai custom gpt/gpt_setup_guide.en.md` for GPT configuration.
-- **OpenAPI Specs are package-local:** The legacy Custom GPT uses
+- **ChatGPT (current):** See
+  `ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md` and
+  `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
+  update the two existing GPTs in place; they do not create new GPTs.
+- **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
+  setup and must stay unchanged so a coordinated rollback does not require Git
+  archaeology.
+- **OpenAPI specs are package-local:** The legacy rollback bundle owns
   `ai/openai custom gpt/skillpilot-api-4ai.de.json` or
   `ai/openai custom gpt/skillpilot-api-4ai.en.json`. The Visible Session package
   owns separate schemas under `ai/openai-custom-gpt-visible-session/de/` and

@@ -9,19 +9,29 @@ GET /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
-Browser and learning-coach tools can use the UI-facing endpoints above. GPT hard-recall tools use session-based AI endpoints; the GPT never receives the permanent SkillPilot ID in the normal flow:
+The browser uses the UI-facing endpoints above. The current Custom GPT uses the
+separate Visible Session endpoints below and never receives the permanent
+SkillPilot ID:
 
 ```
-POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/start
-POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/answer
-POST /api/ai/{lang}/sessions/{chatSessionToken}/verified-recall/result
+POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/start
+POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/answer
+POST /api/ai/{lang}/sessions/{chatSessionToken}/visible/verified-recall/result
 ```
 
-`start` returns the next prompt but not the answer. It may receive `goalId` or use the active goal; `retest: true` can request a fresh card even when all cards are already verified. `answer` returns the expected answer only after the learner has submitted their response. `result` stores `passed`/`failed`, updates SRS scheduling, and returns the next prompt status.
+`start` returns a batch of prompts but no answers. The coach must display every
+`cardId` next to its prompt so the later user turn can address it visibly. Only
+after the learner has answered a visible card may `answer` return the expected
+answer. `result` then stores `passed`/`failed` for exactly that card and updates
+SRS scheduling. Every card in the current batch is recorded before another batch
+starts. If the backend returns `masterySaved=true`, the coach must not also call
+the ordinary mastery Action.
 
 ## Purpose
 - Persist **SRS and verified recall progress** per memorization node (`nodeId`) periodically (e.g., after 20 cards), on-demand, or after learning-coach/GPT hard-recall decisions.
-- Keep the backend **PII-free**. Browser/UI routes use the pseudonymous `skillpilotId`; GPT routes use only a temporary `chatSessionToken`, which the backend resolves internally.
+- Keep the backend **PII-free**. Browser/UI routes use the pseudonymous
+  `skillpilotId`; current GPT routes use only a visible temporary
+  `chatSessionToken`, which the backend resolves internally.
 - Allow later recovery or cross-device continuity via **export/import**.
 
 ## Request

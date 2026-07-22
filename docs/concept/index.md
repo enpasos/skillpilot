@@ -41,7 +41,10 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
 - [Import/Export Workflow](runtime-workflows/import-export-workflow.md)
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
-- [ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)
+- [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
+  Current Custom-GPT runtime, visible cross-turn relay, workflow coverage, and coordinated rollback boundary.
+- [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)
+  Retained rollback architecture; not the current Custom-GPT path.
 
 ## Maintenance
 

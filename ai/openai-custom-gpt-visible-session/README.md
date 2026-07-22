@@ -64,6 +64,10 @@ Each locale-fixed GPT Action schema exposes exactly nine operations:
 9. `getVisibleExamEvaluation` — obtain protected solution and scoring only after a
    complete visible exam submission.
 
+All nine operations in both locale schemas declare
+`x-openai-isConsequential: false`. The package validator checks that declaration
+operation by operation in addition to the schema paths and parameters.
+
 There is deliberately no start-code redemption Action. Curriculum,
 personalization, scope, learning mode, and normal goal selection are resolved by
 relay-safe numbered choices. A spontaneous switch first requests a choice and

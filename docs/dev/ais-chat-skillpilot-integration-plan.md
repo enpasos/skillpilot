@@ -233,15 +233,25 @@ fuer AIS.chat nuetzlich, weil es Tool-Flows stabilisiert:
 
 ### 5. Privacy: Startcode und Session Token
 
-SkillPilot hat bereits einen Browser-first Startcode-Flow:
+> **Architekturhinweis vom 21. Juli 2026:** Dieser Abschnitt beschrieb den
+> damaligen Custom-GPT-Stand. Der aktuelle SkillPilot Custom GPT verwendet die
+> [Visible-Session-Architektur](../concept/runtime-workflows/chatgpt-visible-session-flow.md):
+> Das Cockpit erzeugt direkt ein sichtbares, höchstens 24 Stunden gültiges
+> Sitzungstoken; es gibt keine Startcode-Einlösung. Der Startcode-Flow bleibt nur
+> als Rollback-Architektur erhalten.
+
+Zum Recherchezeitpunkt hatte SkillPilot einen Browser-first Startcode-Flow:
 
 - UI erzeugt kurzlebigen Startcode fuer den Lerncoach.
 - AI loest Startcode ein.
 - Danach nutzt die AI nur ein temporaeres Chat-Session-Token.
 - Die dauerhafte `skillpilotId` wird in AI-Session-Responses verborgen.
 
-Wenn AIS.chat selbst der Chat-Host ist, braucht man nicht exakt denselben
-ChatGPT-Startcode-Flow. Das Muster bleibt aber wertvoll:
+Wenn AIS.chat selbst der Chat-Host ist, sollte es weder den damaligen
+ChatGPT-Startcode-Flow noch den heutigen sichtbaren Relay-Workaround blind
+übernehmen. AIS.chat kann temporären Session- oder OAuth-Kontext in der eigenen
+vertrauenswürdigen Chat-/Tool-Schicht halten. Das zugrunde liegende Muster bleibt
+wertvoll:
 
 - keine stabilen Lern-IDs in Prompts
 - Backend loest temporare Chat-Kontextschluessel intern auf
@@ -276,7 +286,7 @@ Vorteile:
 
 - kleinster Eingriff in AIS.chat
 - SkillPilot-Logik bleibt in einem bereits existierenden Backend
-- Startcode/Session-Token-Pattern kann wiederverwendet werden
+- ein AIS.chat-eigener temporärer Session-/Authentifizierungskontext kann verwendet werden; sichtbarer ChatGPT-Relay ist dort nicht automatisch nötig
 - schnelle Demo moeglich
 
 Nachteile:

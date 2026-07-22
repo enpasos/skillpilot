@@ -74,6 +74,10 @@ und ausschließlich Pfade unter `/api/ai/de/...` anzeigen:
 - `recordVisibleVerifiedRecallResult`
 - `getVisibleExamEvaluation`
 
+Alle neun Operationen müssen in der Schemaquelle
+`"x-openai-isConsequential": false` enthalten. Die lokale Paketprüfung validiert
+dies für jede Operation einzeln.
+
 Der Builder muss das Schema ohne rote Parameterwarnung übernehmen. Insbesondere
 muss bei jeder Operation im `parameters`-Eintrag unmittelbar
 `"name": "chatSessionToken"` stehen; dort darf kein

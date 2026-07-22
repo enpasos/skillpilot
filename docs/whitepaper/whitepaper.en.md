@@ -1,7 +1,7 @@
 # SkillPilot Whitepaper (EN)
 
-**Version:** 1.0.18
-**Date:** April 2026
+**Version:** 1.0.19
+**Date:** July 2026
 **Project:** SkillPilot
 
 ---
@@ -206,9 +206,11 @@ On the server, only technically necessary metadata are stored, e.g., learning pr
 
 #### Session Shielding Toward the AI Frontend
 
-When the **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is no longer passed to ChatGPT. The browser asks the SkillPilot backend for a short-lived, one-time **start code**. After redeeming it, the learning coach works only with a temporary **chat session token**.
+When the **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The cockpit asks the SkillPilot backend to create a temporary **chat session token** directly, valid for no more than 24 hours. This token is visible in the prepared start message and in a compact footer on every normal coach response. The current flow has no start code and no redemption step.
 
-The mapping `chatSessionToken -> skillpilotId` happens exclusively in the SkillPilot backend; the active SkillPilot ID stays in the browser and in the backend. This means the AI frontend can no longer associate learning-coach dialogs and tool results with the permanent SkillPilot ID. It still receives the didactically required state for the current session, but not the learner's stable key.
+That visibility is a deliberate architectural compromise: an earlier hidden Action result is not reliably available to a Custom GPT after another user turn. The dialog therefore carries only the values needed by later Actions visibly across turns: the session token, a short-lived selection reference and numbers, and full learning-goal or card IDs. Internal curriculum, filter, and scope keys stay in the backend.
+
+The mapping `chatSessionToken -> skillpilotId` happens exclusively in the SkillPilot backend; the active SkillPilot ID stays in the browser and backend. The AI frontend still receives the didactically required state for the current session, but not the learner's stable key. The visible session token is nevertheless temporary bearer access and must not be disclosed through public chat shares, screenshots, or logs before it expires.
 
 #### Dialog Content Is Decoupled
 
@@ -223,8 +225,9 @@ The mapping "who is which pseudonym?" stays with the institution/teacher and is 
 
 #### AI Frontend / Provider Choice (Sovereignty)
 
-The learning coach dialog happens in the respective AI frontend (currently: ChatGPT as the reference integration) and is subject to its operational and privacy framework.
-For contexts with higher sovereignty requirements, alternative AI backends up to local models are planned. They must reliably meet the required properties (tool use, stability, structure, didactics).
+The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. ChatGPT with the Visible Session architecture is currently the learner-facing reference integration. A separate Claude OAuth/MCP implementation exists in the repository, but it is intentionally disabled and hidden in the UI; it is not an available alternative until its workflow and protected exam-data boundaries are complete and a real end-to-end acceptance test has been recorded.
+
+For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
 
 ### 4.2 Chain of Custody: Integrity & Traceability
 

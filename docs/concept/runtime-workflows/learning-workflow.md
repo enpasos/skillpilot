@@ -2,6 +2,13 @@
 
 This document describes the runtime workflow from static curricula to learner-specific navigation and mastery updates.
 
+The workflow is provider-neutral inside the backend. The current learner-facing
+ChatGPT adapter is the
+[Visible Session flow](chatgpt-visible-session-flow.md): it projects the state
+machine into numbered visible choices, reloads state on every normal substantive
+turn, and keeps only the values needed by later Actions visible in the dialog.
+The retained Claude adapter is currently disabled and is not yet workflow-parallel.
+
 ## 1. Data Foundation: Landscapes, Structure, and Filters
 SkillPilot starts from curriculum landscapes stored as JSON files under `curricula/`.
 
