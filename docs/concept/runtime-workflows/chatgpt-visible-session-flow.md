@@ -128,6 +128,31 @@ Ihre Parameter müssen bereits vollständig im sichtbaren Dialog stehen. Ein im
 selben Assistententurn frisch gelieferter Wert darf direkt an die nächste Action
 weitergereicht werden.
 
+## Natürliche Mehrfachwünsche innerhalb eines Assistententurns
+
+Eine Formulierung wie „Ich möchte Mathe in der Oberstufe in Hessen lernen“ wird
+innerhalb des aktuellen Assistententurns als fortgeltende Absicht behandelt. Wenn
+der frische Zustand für eine Dimension genau eine inhaltlich passende Option
+enthält, darf der GPT diese Auswahl sofort anwenden, den neuen Zustand laden und
+denselben Wunsch gegen die nächste Auswahl prüfen. Eindeutige Zwischenauswahlen
+und ihre Auswahlcodes werden nicht ausgegeben. Erst die erste wirklich offene
+Entscheidung erzeugt eine sichtbare Rückfrage.
+
+Dieser Ablauf ist auf einen Assistententurn begrenzt. Eine spätere reine
+Nummernantwort beantwortet genau die sichtbare Auswahl, zu der ihr Auswahlcode
+gehört; sie darf nicht automatisch auf eine danach gelieferte Optionsliste
+übertragen werden. Ein Wunsch über mehrere Setup-Dimensionen ist außerdem eine
+Folge von Einfachauswahlen und keine Scope-Mehrfachauswahl über `choiceNumbers`.
+
+Das beseitigt unnötige Zwischenfragen, löst aber nicht jede Formulierung allein
+durch Prompting. Insbesondere kann „Oberstufe“ nur automatisch aufgelöst werden,
+wenn die aktuelle Backend-Auswahl eine passende Stufen- oder Composition-View-
+Option tatsächlich anbietet. Die heutige Visible-Session-Oberfläche bildet diese
+Dimension nicht in jedem Zustand als eigene Option ab. Der GPT darf dann keine
+erfundene Auflösung behaupten, sondern muss bei der ersten echten Lücke stoppen.
+Die strategische Ablösung dieser Host-Abhängigkeit beschreibt die
+[SkillPilot-eigene Lerncoach-Zielarchitektur](skillpilot-owned-coach-architecture.md).
+
 ## Action-Oberfläche und Workflow-Abdeckung
 
 Jede Sprachvariante besitzt ein eigenständiges, fest auf `/de/` beziehungsweise

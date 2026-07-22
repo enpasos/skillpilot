@@ -33,6 +33,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Dual curriculum package implementation status](dev/dual-curriculum-package-implementation-status.md)
 -   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
 -   [Current ChatGPT Visible Session flow](concept/runtime-workflows/chatgpt-visible-session-flow.md)
+-   [SkillPilot-owned learning-coach target architecture](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 
 ## Inside this documentation
 

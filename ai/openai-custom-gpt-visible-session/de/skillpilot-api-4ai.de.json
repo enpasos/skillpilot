@@ -51,7 +51,7 @@
       "post": {
         "operationId": "applyVisibleChoice",
         "summary": "Sichtbare nummerierte Auswahl anwenden",
-        "description": "Verwendet nur Auswahlcode und Nummer oder Scope-Nummern aus dem letzten sichtbaren Auswahlturn. Löst Lehrplan, Personalisierung, Scope, Lernmodus oder Lernziel serverseitig auf.",
+        "description": "Verwendet nur Auswahlcode und Nummern aus der letzten sichtbaren Auswahl oder einer unmittelbar vorherigen Action im selben Assistententurn. Löst Lehrplan, Personalisierung, Scope, Lernmodus oder Lernziel serverseitig auf.",
         "x-openai-isConsequential": false,
         "security": [
           {
@@ -573,12 +573,12 @@
         "properties": {
           "selectionReference": {
             "type": "string",
-            "description": "Auswahlcode aus dem letzten sichtbaren Auswahlturn."
+            "description": "Auswahlcode aus der letzten sichtbaren Auswahl oder der unmittelbar vorherigen Action im selben Assistententurn."
           },
           "choiceNumber": {
             "type": "integer",
             "minimum": 1,
-            "description": "Genau eine von der lernenden Person gewählte sichtbare Nummer; nicht zusammen mit choiceNumbers senden."
+            "description": "Genau eine sichtbare oder vom aktuellen natürlichen Wunsch eindeutig bestimmte Nummer; nicht zusammen mit choiceNumbers senden."
           },
           "choiceNumbers": {
             "type": "array",
@@ -887,7 +887,7 @@
         "properties": {
           "selectionReference": {
             "type": "string",
-            "description": "Zeitlich lokaler Auswahlcode; zusammen mit den Optionen sichtbar ausgeben."
+            "description": "Zeitlich lokaler Auswahlcode; nur bei nötigem User-Folgeturn sichtbar ausgeben, sonst im selben Assistententurn direkt weiterreichen."
           },
           "question": {
             "type": "string"

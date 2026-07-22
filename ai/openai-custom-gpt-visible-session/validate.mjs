@@ -92,6 +92,24 @@ const expectedExamFairness = {
     schemaReference: 'reference solution',
   },
 }
+const expectedNaturalIntake = {
+  de: {
+    system: 'fortgeltende Absicht',
+    protocol: 'frische Folgezustand',
+    state: 'im selben Assistententurn durchlaufen',
+    schema: 'unmittelbar vorherigen Action im selben Assistententurn',
+    guide: 'Ich möchte Mathe in der Oberstufe in Hessen lernen.',
+    numberGuard: 'reine Nummernantwort gilt nur einmal',
+  },
+  en: {
+    system: 'standing intent',
+    protocol: 'fresh next state',
+    state: 'within one assistant turn',
+    schema: 'immediately preceding Action in the same assistant turn',
+    guide: 'I want to learn maths at upper-secondary level in Hesse.',
+    numberGuard: 'numbers-only reply is consumed by one choice',
+  },
+}
 const knowledgeFragments = {
   'knowledge_docs/visible_session_protocol.md': [
     'getVisibleState',
@@ -261,6 +279,14 @@ for (const locale of locales) {
     instructions.replace(/\s+/g, ' ').includes(expectedExamFairness[locale].requiredForm),
     `${locale} instructions miss explicitly-required-form rule`,
   )
+  assert.ok(
+    instructions.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].system),
+    `${locale} instructions miss same-turn natural-intent chaining`,
+  )
+  assert.ok(
+    instructions.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].numberGuard),
+    `${locale} instructions might incorrectly relay a numbers-only reply`,
+  )
   assert.ok(!instructions.includes('redeemStartCode'), `${locale} instructions contain redeemStartCode`)
   assert.ok(!/\buuid\b/i.test(instructions), `${locale} instructions incorrectly require UUID goal IDs`)
 
@@ -270,6 +296,16 @@ for (const locale of locales) {
       assert.ok(knowledge.includes(fragment), `${locale} ${knowledgePath} misses ${fragment}`)
     }
   }
+  const visibleProtocol = await read(`${locale}/knowledge_docs/visible_session_protocol.md`)
+  const stateAndPersonalization = await read(`${locale}/knowledge_docs/state_personalization_and_progress.md`)
+  assert.ok(
+    visibleProtocol.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].protocol),
+    `${locale} visible-session protocol misses fresh same-turn chaining`,
+  )
+  assert.ok(
+    stateAndPersonalization.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].state),
+    `${locale} state protocol misses compound natural-intent handling`,
+  )
   const examProctor = await read(`${locale}/knowledge_docs/exam_proctor.md`)
   const normalizedExamProctor = examProctor.replace(/\s+/g, ' ')
   assert.ok(normalizedExamProctor.includes(expectedExamFairness[locale].reference), `${locale} exam proctor misses reference-solution rule`)
@@ -278,6 +314,10 @@ for (const locale of locales) {
 
   const setupGuide = await read(`${locale}/gpt_setup_guide.md`)
   assert.ok(setupGuide.includes(expectedBundle.gptUrl), `${locale} setup guide misses existing GPT URL`)
+  assert.ok(
+    setupGuide.replace(/\s+/g, ' ').includes(expectedNaturalIntake[locale].guide),
+    `${locale} setup guide misses the natural onboarding acceptance case`,
+  )
   assert.ok(setupGuide.includes(expectedBundle.schema), `${locale} setup guide misses its exact API file`)
   for (const operationId of expectedOperations) {
     assert.ok(setupGuide.includes(operationId), `${locale} setup guide misses ${operationId}`)
@@ -300,6 +340,10 @@ for (const locale of locales) {
   assert.ok(!rawSpec.includes('skillpilotId'), `${locale} schema exposes permanent SkillPilot ID`)
   assert.ok(!rawSpec.includes('curriculumId'), `${locale} schema exposes an internal curriculum ID`)
   assert.ok(!rawSpec.includes('scopeId'), `${locale} schema exposes an internal scope ID`)
+  assert.ok(
+    rawSpec.includes(expectedNaturalIntake[locale].schema),
+    `${locale} schema incorrectly limits choices to a prior visible user turn`,
+  )
   assert.ok(!rawSpec.includes('"nullable"'), `${locale} schema uses OpenAPI 3.0 nullable`)
   assert.ok(!rawSpec.includes('"oneOf"'), `${locale} schema uses Builder-problematic oneOf`)
   assert.ok(!/"format"\s*:\s*"uuid"/i.test(rawSpec), `${locale} schema rejects stable non-UUID goal IDs`)

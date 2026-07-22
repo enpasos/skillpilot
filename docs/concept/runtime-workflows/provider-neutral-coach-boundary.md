@@ -5,6 +5,10 @@ The ChatGPT Visible Session remains the current learner-facing reference
 integration. Claude OAuth/MCP remains disabled until its real acceptance gate is
 complete.
 
+The concrete migration toward a SkillPilot-controlled turn orchestrator is
+specified in
+[SkillPilot-Owned Learning-Coach Architecture](skillpilot-owned-coach-architecture.md).
+
 ## Purpose
 
 SkillPilot owns the learning workflow. A provider-hosted conversation is a user

@@ -72,6 +72,27 @@ class VisibleSessionServiceTest {
     }
 
     @Test
+    void selectionInstructionsKeepNaturalIntentWithinTheCurrentTurnInBothLocales() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        UnifiedLearnerStateResponse choices = state(
+                "setScope",
+                null,
+                List.of(goal("math", "Mathematik", "cluster"), goal("physics", "Physik", "cluster")));
+        when(facade.getSessionState(TOKEN)).thenReturn(choices);
+        VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        VisibleCoachStateResponse german = service.getState(TOKEN, "de");
+        VisibleCoachStateResponse english = service.getState(TOKEN, "en");
+
+        assertThat(german.instruction())
+                .contains("fortgeltende Absicht")
+                .contains("reine Nummernantwort gilt nur einmal");
+        assertThat(english.instruction())
+                .contains("standing intent")
+                .contains("numbers-only reply is consumed once");
+    }
+
+    @Test
     void choose_mapsVisibleNumberToServerSideGoalAndReloadsState() {
         CoachToolFacade facade = mock(CoachToolFacade.class);
         FrontierGoal first = goal("goal-1", "Erstes Ziel");
@@ -96,10 +117,80 @@ class VisibleSessionServiceTest {
         assertThat(outcome.status()).isEqualTo(HttpStatus.OK);
         assertThat(outcome.response().activeGoal().goalId()).isEqualTo(second.id());
         assertThat(outcome.response().relayFooter()).contains(TOKEN).contains(second.id());
+        assertThat(outcome.response().instruction()).contains("fortgeltenden natürlichen Mehrfachwunsch");
         ArgumentCaptor<ActiveGoalRequest> requestCaptor = ArgumentCaptor.forClass(ActiveGoalRequest.class);
         verify(facade).setSessionActiveGoal(eq(TOKEN), requestCaptor.capture());
         assertThat(requestCaptor.getValue().goalId()).isEqualTo(second.id());
         assertThat(requestCaptor.getValue().redirect()).isFalse();
+    }
+
+    @Test
+    void freshChoiceResponsesCanBeRelayedAcrossOneAssistantTurn() {
+        CoachToolFacade facade = mock(CoachToolFacade.class);
+        FrontierGoal mathematics = goal("scope-math", "Mathematik", "cluster");
+        FrontierGoal physics = goal("scope-physics", "Physik", "cluster");
+        LandscapeSummary gymnasium = curriculum(
+                "gymnasium",
+                "Gymnasium (DE)",
+                List.of(filter("DE-BY", "Bayern"), filter("DE-HE", "Hessen")));
+        UnifiedLearnerStateResponse subjectChoices = stateWithDetails(
+                "setScope",
+                null,
+                List.of(mathematics, physics),
+                gymnasium,
+                null,
+                List.of());
+        UnifiedLearnerStateResponse stateChoices = stateWithDetails(
+                "setPersonalization",
+                null,
+                List.of(),
+                gymnasium,
+                null,
+                List.of());
+        FrontierGoal firstGoal = goal("math-first", "Erstes Mathematikziel");
+        UnifiedLearnerStateResponse goalChoices = stateWithDetails(
+                "setActiveGoal",
+                null,
+                List.of(firstGoal),
+                gymnasium,
+                null,
+                List.of());
+        when(facade.getSessionState(TOKEN)).thenReturn(
+                subjectChoices,
+                subjectChoices,
+                stateChoices,
+                stateChoices,
+                goalChoices);
+        VisibleSessionService service = new VisibleSessionService(facade, "https://skillpilot.test");
+
+        VisibleCoachStateResponse initial = service.getState(TOKEN, "de");
+        VisibleSessionService.ActionOutcome afterSubject = service.choose(
+                TOKEN,
+                "de",
+                new VisibleChoiceRequest(initial.selection().selectionReference(), 1));
+
+        assertThat(afterSubject.status()).isEqualTo(HttpStatus.OK);
+        assertThat(afterSubject.response().selection().options())
+                .extracting(VisibleCoachStateResponse.SelectionOption::label)
+                .containsExactly("Bayern", "Hessen");
+        assertThat(afterSubject.response().instruction()).contains("frischen State sofort");
+        assertThat(afterSubject.response().selection().selectionReference())
+                .isNotEqualTo(initial.selection().selectionReference());
+
+        VisibleSessionService.ActionOutcome afterState = service.choose(
+                TOKEN,
+                "de",
+                new VisibleChoiceRequest(afterSubject.response().selection().selectionReference(), 2));
+
+        assertThat(afterState.status()).isEqualTo(HttpStatus.OK);
+        assertThat(afterState.response().selection().options())
+                .extracting(VisibleCoachStateResponse.SelectionOption::label)
+                .containsExactly("Erstes Mathematikziel");
+        ArgumentCaptor<PersonalizationRequest> personalization =
+                ArgumentCaptor.forClass(PersonalizationRequest.class);
+        verify(facade).setSessionPersonalization(eq(TOKEN), personalization.capture());
+        assertThat(personalization.getValue().goalIds()).containsExactly("gymnasium");
+        assertThat(personalization.getValue().filters()).containsExactly("DE-HE");
     }
 
     @Test
@@ -485,7 +576,7 @@ class VisibleSessionServiceTest {
         assertThat(navigation.response().selection().options())
                 .extracting(VisibleCoachStateResponse.SelectionOption::label)
                 .containsExactly("Mathematik", "Physik");
-        assertThat(navigation.response().instruction()).contains("bereits genau eine Option eindeutig");
+        assertThat(navigation.response().instruction()).contains("fortgeltende Absicht");
         verify(facade, never()).setSessionCurriculum(any(), any());
 
         VisibleSessionService.ActionOutcome applied = service.choose(

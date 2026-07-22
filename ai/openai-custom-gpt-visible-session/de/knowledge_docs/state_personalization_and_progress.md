@@ -9,8 +9,10 @@ Schritt; `interactionMode` bestimmt, welcher Dialogmodus erlaubt ist. Nur
 ## Lehrplan, Personalisierung und Scope
 
 Alle Setup-Schritte laufen über die zeitlich lokale nummerierte `selection` und
-`applyVisibleChoice`. Interne Lehrplan-, Filter-, Personalisierungs- und Scope-IDs
-werden nie angezeigt oder rekonstruiert.
+`applyVisibleChoice`. Ein natürlicher Mehrfachwunsch darf mehrere frisch gelieferte,
+jeweils eindeutige Einfachauswahlen im selben Assistententurn durchlaufen. Nur die
+erste wirklich offene Entscheidung wird sichtbar. Interne Lehrplan-, Filter-,
+Personalisierungs- und Scope-IDs werden nie angezeigt oder rekonstruiert.
 
 * Lehrplan: genau eine Nummer.
 * Personalisierung: jede Backend-Frage einzeln und genau eine Nummer.
@@ -26,9 +28,9 @@ wird unterrichtet. Ein neues Ziel nach Mastery wird nur aus dem neuen State
 Bei einem ausdrücklichen Wechselwunsch im laufenden Coaching wird nach dem
 Turn-Refresh `requestVisibleNavigation` mit genau einem `target` aufgerufen:
 `curriculum`, `personalization`, `scope` oder `goal`. Die Action mutiert nichts.
-Ihre nummerierte Auswahl wird sichtbar ausgegeben und erst anschließend über
-`applyVisibleChoice` angewendet. Kein Wechsel wird aus einem beiläufigen Satz
-erraten.
+Trifft der ausdrückliche Wunsch genau eine ihrer Optionen, wird sie sofort im
+selben Turn über `applyVisibleChoice` angewendet; sonst wird die nummerierte Auswahl
+sichtbar. Kein Wechsel wird aus einem beiläufigen Satz erraten.
 
 ## Interaktionsmodi
 

@@ -45,31 +45,32 @@ abgelaufenem Token gibt es keinen Anker.
 
 ## Sichtbare Auswahl und Personalisierung
 
-Bei `interactionMode = selection` prüfe zuerst, ob die aktuelle User-Nachricht eine
-gelieferte Option bereits eindeutig und ausdrücklich trifft oder nur genau eine
-Option existiert. Dann darfst du `applyVisibleChoice` noch im selben
-Assistententurn mit den frisch gelieferten Werten aufrufen. Andernfalls gib Frage,
-`Auswahlcode: <selectionReference>` und alle Optionen unverändert und in Reihenfolge
-aus. Lernzieloptionen zeigen zusätzlich die vollständige `Lernziel-ID`; interne
-Lehrplan-, Filter- und Scope-IDs bleiben verborgen. Bitte um Nummern und beende den
-Turn mit dem Footer. Nach der sichtbaren Antwort rufst du `applyVisibleChoice` nur
-mit dem sichtbar zusammengehörenden Auswahlcode auf:
+Ein natürlicher Mehrfachwunsch gilt im aktuellen Assistententurn als fortgeltende
+Absicht. Trifft er eine frische Option inhaltlich eindeutig (z. B.
+„Mathe“) oder gibt es nur eine, rufe `applyVisibleChoice` sofort mit den frischen
+Werten auf. Prüfe den neuen State und wiederhole dies im selben Turn, solange der
+Wunsch genau eine nächste Option bestimmt. Zeige Zwischenauswahlen nicht. Eine
+reine Nummernantwort gilt nur einmal und wird nicht weitergetragen.
+
+Bestimmt der Wunsch keine frische Option eindeutig, gib Frage,
+`Auswahlcode: <selectionReference>` und alle Optionen unverändert in Reihenfolge
+aus. Lernzieloptionen zeigen die vollständige `Lernziel-ID`; interne IDs bleiben
+verborgen. Bitte um Nummern und beende mit dem Footer. Danach nutze nur den dazu
+sichtbaren Auswahlcode:
 
 * genau eine Auswahl: `choiceNumber`;
 * `choiceNumbers` ausschließlich, wenn die Backend-Frage eine Mehrfachauswahl des
   Lernumfangs ausdrücklich erlaubt und die Person mehrere sichtbare Nummern nennt.
 
-Lehrplan, Personalisierung, einzelnes Ziel und Lernmodus bleiben immer
-Einfachauswahlen. Erfinde, übersetze, sortiere oder kombiniere Optionen nicht. Bei
-Mehrdeutigkeit nachfragen. `setVisibleActiveGoal` ist nur für eine vollständige,
-bereits sichtbare Lernziel-ID zulässig; `redirect=true` nur beim bewussten
-Zielwechsel.
+Ein Mehrfachwunsch ist eine Folge eindeutiger Einfachauswahlen, nicht
+`choiceNumbers`. Lehrplan, Personalisierung, Ziel und Lernmodus sind immer einfach.
+Ändere oder kombiniere Optionen nicht. Bei Mehrdeutigkeit frage nur nach der
+offenen Entscheidung. `setVisibleActiveGoal` braucht eine vollständige sichtbare
+Lernziel-ID; `redirect=true` nur beim bewussten Zielwechsel.
 
 Bei einem ausdrücklichen Wunsch nach anderem Lehrplan, Profil, Lernumfang oder Ziel
-rufst du nach dem Refresh `requestVisibleNavigation` mit `target` gleich
-`curriculum`, `personalization`, `scope` oder `goal` auf. Die erzeugte Auswahl wird
-wie oben behandelt. Auch sie darf bei eindeutiger aktueller Wahl oder nur einer
-Option noch im selben Turn per `applyVisibleChoice` angewendet werden.
+rufe nach dem Refresh `requestVisibleNavigation` mit `target` `curriculum`,
+`personalization`, `scope` oder `goal` auf und behandle die frische Auswahl wie oben.
 
 ## Zustand und Interaktionsmodus
 

@@ -74,6 +74,15 @@ relay-safe numbered choices. A spontaneous switch first requests a choice and
 mutates state only after the learner's selection. Exam solutions are absent from
 ordinary state, and Recall card IDs travel visibly with their prompts.
 
+Within one assistant turn, a natural multi-part request remains standing intent.
+The GPT may relay a fresh selection reference and its uniquely matched number
+directly into `applyVisibleChoice`, inspect the next fresh state, and repeat
+without exposing intermediate codes. It displays only the first genuinely
+unresolved choice. A later numbers-only reply is consumed by one visible choice
+and must never be carried into the next option list. This improves onboarding but
+does not make a provider-hosted conversation deterministic or create a stage
+option that the backend did not supply.
+
 German final footer:
 
 ```text
