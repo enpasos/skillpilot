@@ -142,7 +142,7 @@
     "report:atomic": "tsx scripts/generateAtomicReport.ts",
     "report:applicability": "tsx scripts/compileApplicability.ts",
     "apply:applicability": "tsx scripts/applyApplicability.ts",
-    "mcp:server": "tsx server/mcpServer.ts"
+    "mcp:server": "npm --prefix \"../ai/openai app\" run start"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

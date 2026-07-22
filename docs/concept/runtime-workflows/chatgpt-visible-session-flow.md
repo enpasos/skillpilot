@@ -1,6 +1,8 @@
 # SkillPilot Lerncoach: aktuelle ChatGPT-Visible-Session-Architektur
 
-Status: aktuelle Standardarchitektur seit 21. Juli 2026.
+Status: aktuelle Standard- und Kompatibilitätsarchitektur seit 21. Juli 2026. Sie
+bleibt getrennt rollbackbar, während die provider-gehosteten OpenAI MCP Apps für
+Deutsch und Englisch bis zur Produktionsreife ausgebaut werden.
 
 Dieses Dokument beschreibt den produktseitig aktiven Start- und Dialogfluss der
 beiden bestehenden SkillPilot Custom GPTs für Deutsch und Englisch. Die
@@ -150,8 +152,9 @@ wenn die aktuelle Backend-Auswahl eine passende Stufen- oder Composition-View-
 Option tatsächlich anbietet. Die heutige Visible-Session-Oberfläche bildet diese
 Dimension nicht in jedem Zustand als eigene Option ab. Der GPT darf dann keine
 erfundene Auflösung behaupten, sondern muss bei der ersten echten Lücke stoppen.
-Die strategische Ablösung dieser Host-Abhängigkeit beschreibt die
-[SkillPilot-eigene Lerncoach-Zielarchitektur](skillpilot-owned-coach-architecture.md).
+Die strategische Ablösung des sichtbaren Relay-Mechanismus durch zwei
+provider-gehostete MCP Apps beschreibt die
+[SkillPilot-Lerncoach-Zielarchitektur](skillpilot-owned-coach-architecture.md).
 
 ## Action-Oberfläche und Workflow-Abdeckung
 

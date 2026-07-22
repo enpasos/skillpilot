@@ -1,26 +1,35 @@
 # Provider-Neutral Learning-Coach Boundary
 
-Status: durable target architecture for all SkillPilot learning-coach adapters.
-The ChatGPT Visible Session remains the current learner-facing reference
-integration. Claude OAuth/MCP remains disabled until its real acceptance gate is
-complete.
+Status: durable application and security boundary for all SkillPilot
+learning-coach adapters. The target ChatGPT channel consists of two separate,
+provider-hosted MCP Apps, one for German and one for English. The ChatGPT Visible
+Session remains an independently rollbackable compatibility path until both Apps
+have production authentication, workflow parity and real provider acceptance.
+Claude OAuth/MCP remains disabled until its own acceptance gate is complete.
 
-The concrete migration toward a SkillPilot-controlled turn orchestrator is
-specified in
-[SkillPilot-Owned Learning-Coach Architecture](skillpilot-owned-coach-architecture.md).
+The product decision and migration sequence are specified in the
+[SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
 
 ## Purpose
 
 SkillPilot owns the learning workflow. A provider-hosted conversation is a user
-interface and a non-deterministic tool orchestrator, not the source of truth for
-curriculum, scope, active goal, mastery, Recall state or exam authorization.
+interface and model runtime, not the source of truth for curriculum, scope,
+active goal, mastery, Recall state or exam authorization. The target keeps model
+execution and consumer billing at the provider: a learner uses the provider's
+available free access or fixed-price consumer subscription. SkillPilot does not
+call a metered model API for this channel and does not resell model usage.
+
+This billing rule is architectural, not a promise that every provider plan can
+install or run every App. Plan, workspace, role, surface, regional and product
+restrictions remain provider-controlled and must be verified as separate release
+acceptance cases.
 
 The shared runtime boundary is:
 
 ```text
-ChatGPT Visible Session | Claude MCP | future ChatGPT App | other adapters
-                              |
-          provider-specific authentication and rendering
+OpenAI App DE | OpenAI App EN | Claude MCP | Visible Session fallback
+      |               |              |                    |
+      +------- provider-specific OAuth, tools and UI ------+
                               |
               CoachStateProjection + CoachToolFacade
                               |
@@ -31,6 +40,28 @@ There is no separate integration-gateway process. The logical gateway and the
 core currently run in the same Spring Boot application. A separate service is
 only justified by a future need for independent scaling, deployment or tenant
 isolation.
+
+OpenAI distributes Apps through Plugins in its current product model. That
+distribution wrapper does not change the runtime boundary: ChatGPT hosts and
+bills the model interaction, while the App's MCP server and persistent learning
+state remain SkillPilot services.
+
+## Two OpenAI Apps, One Shared Application Layer
+
+German and English use two separate OpenAI Apps, not a single multilingual App:
+
+- **SkillPilot Coach Deutsch** exposes a German-only tool catalog, descriptions,
+  widget resource, OAuth client and acceptance suite;
+- **SkillPilot Coach English** exposes the corresponding English-only contract
+  with its own registration, rollout and rollback.
+
+There is no public `language` parameter and no model-driven language routing at
+the MCP boundary. This duplicates a small amount of provider configuration but
+removes a failure mode from every learning turn and allows one language to be
+reviewed, released or rolled back without affecting the other. Internal domain
+services, safe projections and fachliche use cases remain shared; external
+contracts do not have to be byte-for-byte or method-for-method identical as long
+as both cover all required workflows.
 
 ## Shared And Provider-Specific Responsibilities
 
@@ -49,6 +80,18 @@ Each provider adapter owns:
 - localization and compact response rendering;
 - provider-specific session, footer, widget or OAuth behavior;
 - instructions for recovering from lost model context.
+
+For the OpenAI Apps, this specifically means:
+
+- model-visible read tools resolve the learner from the authenticated OAuth
+  principal and load current state without a chat-visible session argument;
+- deterministic choices and answer submissions are invoked directly by the
+  widget through app-only tools, rather than depending on the model to copy a
+  technical selection value;
+- short-lived session, choice and receipt references may be returned in tool
+  result `_meta` for the widget, but never in `content`, `structuredContent`, a
+  visible message or model context;
+- the permanent SkillPilot ID is neither a tool argument nor a tool result.
 
 Provider neutrality therefore does not mean one universal external tool schema.
 The common part is the fachliche behavior and security boundary; external tools
@@ -103,7 +146,7 @@ answer before evaluation is requested. The backend cannot independently prove
 that conversational event because it intentionally does not receive the chat
 transcript.
 
-A strong future proof requires a SkillPilot-controlled widget or cockpit flow:
+A strong submission proof uses a direct SkillPilot widget or cockpit flow:
 
 ```text
 startExam -> attemptId
@@ -111,34 +154,54 @@ submitExamAnswer(attemptId, answer) -> submissionReceipt
 getExamEvaluation(attemptId, submissionReceipt)
 ```
 
-Introducing such attempts changes the UI, persistence and privacy boundary and
-is not part of the compatibility hardening described here.
+The OpenAI MCP App widget is a valid host for this flow: the provider embeds the
+UI, but the widget invokes the SkillPilot submission tool directly and the
+backend creates the receipt. The provider model may subsequently load the
+pending submission through a principal-bound, argumentless read operation and
+record a fachliche evaluation. Introducing complete exam attempts still changes
+persistence and privacy behavior and therefore requires its own review and
+acceptance gate; it is not retrofitted into the Visible-Session fallback.
 
 ## Identity, Connection And Coach State
 
-The existing provider bindings remain separate:
+Provider bindings remain separate:
 
 - ChatGPT Visible Session resolves a short-lived, HMAC-stored bearer token to a
   learner;
-- Claude resolves an authenticated opaque OAuth connection subject to a learner.
+- Claude resolves an authenticated opaque OAuth connection subject to a learner;
+- each production OpenAI App resolves its own authenticated opaque OAuth
+  principal to a learner through a separate App connection.
 
-The permanent SkillPilot ID is never a model-provided session argument. A future
-adapter may introduce its own conversation binding, but identity, durable learner
-state, provider conversation and temporary coach workflow must remain distinct
-concepts.
+The permanent SkillPilot ID is never a model-provided session argument. It is
+looked up only behind the authenticated provider binding. Provider identity,
+durable learner state, provider conversation and temporary widget workflow remain
+distinct concepts. Short-lived widget references are capability-scoped to the
+principal and current workflow revision; possession outside that authenticated
+App context must not authorize a different learner or later state.
 
 ## Context Loss And Recovery
 
 Normal turns reload current backend state instead of depending on an older hidden
 tool response. Visible Session does this through `getVisibleState`; Claude uses
-`getCoachContext`. This limits the consequences of host-side context loss but
-does not make a provider-hosted model deterministic: the host still has to invoke
-the appropriate tool.
+`getCoachContext`. Each OpenAI App exposes its own locale-specific, argumentless
+context read. In production that read identifies the learner solely from the
+OAuth principal, then projects fresh backend state. It does not accept a session
+token recovered from conversation text.
 
-Only a SkillPilot-controlled turn orchestrator, such as a future cockpit coach or
-Poe Server Bot adapter, can guarantee receipt and orchestration of every user
-turn. Such an orchestrator belongs above the same shared application boundary and
-is a separate product and privacy decision.
+Result `_meta` is a widget transport for opake references, not cross-turn model
+memory. The widget may retain those references for a direct app-only choice or
+submission call. The next model turn rehydrates fachliche state from SkillPilot;
+it must not require earlier `_meta`, `structuredContent` or a provider
+conversation summary to be intact.
+
+This division removes model mediation from deterministic widget interactions but
+does not claim that every free-form user message is delivered to SkillPilot: the
+provider host still decides when to invoke model-visible tools. Workflows that
+need a hard event proof must use a direct App-widget or cockpit action and a
+server-side receipt. A first-party turn orchestrator remains a possible separate
+product, but it is not the sole target and is incompatible with the current hard
+requirement that SkillPilot must not pay metered model inference for this
+channel.
 
 ## Concurrency And Idempotency
 
@@ -160,17 +223,50 @@ would provide false guarantees.
 
 Global command receipts are also deferred. Custom GPT Actions do not provide a
 reliable transport request ID suitable for deduplication, while a model-generated
-ID can itself be forgotten or changed. New controlled adapters may add revision
-and idempotency once all relevant mutation paths advance one shared state clock
-and the adapter supplies a stable request identity.
+ID can itself be forgotten or changed. An App widget may already use a narrower
+server-issued submission receipt or idempotency key for its own direct operation;
+that does not imply a global revision across every coach mutation. A global
+mechanism may be added only once all relevant paths advance one shared state
+clock and the adapter supplies a stable request identity.
 
 No event-sourcing system or new database migration is required for the current
 shared boundary.
 
+## Executable Prototype And Production Gate
+
+The executable mechanism prototype under [`ai/openai app`](<../../../ai/openai app/README.md>)
+already demonstrates two locale-fixed MCP endpoints, separate widget resources,
+app-only choice and submission calls, hidden result `_meta`, argumentless state
+reads and persistent demo state. It deliberately uses one **no-auth development
+identity per language**. This is sufficient to test protocol mechanics with
+synthetic data, but it is neither account linking nor tenant isolation and must
+not be exposed as a production service.
+
+Production requires both of the following before real learner data is used:
+
+1. a separate OpenAI OAuth binding for each App, resolving the opaque provider
+   principal internally without exposing the permanent SkillPilot ID;
+2. replacement of the prototype store with an adapter to
+   `CoachToolFacade`/`CoachStateProjection` and the existing database-backed
+   domain use cases.
+
+The production gate also includes full workflow parity for curriculum and scope
+selection, active goals, frontier, mastery, Verified Recall and exams; separate
+DE and EN host acceptance; and validation on the intended free and fixed-price
+provider plans. A passing local MCP simulation proves none of those gates by
+itself.
+
 ## Compatibility Rule
 
-Shared hardening must preserve the currently configured Visible-Session routes,
-operation IDs, request bodies, response fields, status codes and DE/EN GPT
-packages. New provider capabilities are additive while their product flags remain
-disabled. A provider adapter is not released merely because its unit tests pass;
-it also needs a real host-specific end-to-end acceptance run.
+Shared hardening must preserve the configured Visible-Session routes, operation
+IDs, request bodies, response fields, status codes and DE/EN GPT packages, as
+well as the older Startcode sources required for rollback. The two OpenAI Apps
+live in their own package and do not overwrite either fallback.
+
+New provider capabilities remain disabled until their release gates pass. An App
+is not released merely because its unit tests or local host simulation pass; it
+needs OAuth, a real host-specific end-to-end acceptance run and provider review.
+Under OpenAI's current distribution model, each App is published as part of a
+Plugin. Permissions, connection behavior and provider availability remain the
+authoritative controls described in
+[Plugins in ChatGPT and Codex](https://help.openai.com/de-de/articles/20001256-plugins-in-chatgpt-and-codex).

@@ -591,19 +591,21 @@ Key principles for Layer C:
   provider-specific because authentication, context recovery, tool schemas,
   widgets, and retry semantics differ. Do not force them into one universal
   `submit_turn` or one-size-fits-all schema.
-- The strategic conversational core is a SkillPilot-controlled turn orchestrator
-  in the first-party web/backend path. It receives every user turn, reloads safe
-  domain state, runs the bounded tool loop, and treats OpenAI, Anthropic, and later
-  models as replaceable inference providers. Provider-hosted ChatGPT/Claude
-  clients remain optional adapters and distribution channels, not the owner of
-  conversation workflow or learner state.
+- The strategic coach channels are provider-hosted MCP Apps so learners can use
+  the model under the provider's free access or fixed-price consumer subscription
+  without SkillPilot paying metered inference costs. The provider owns the free
+  conversational turn and model inference; SkillPilot owns all fachliche state,
+  authorizes every domain mutation, and exposes only passgenaue provider/language
+  adapters. A first-party SkillPilot model orchestrator is not the target while
+  this direct-provider-billing requirement remains hard.
 - Every normal model-facing learner state must pass through the shared safe
   projection: no permanent SkillPilot ID or copy-source IDs, and no exam solution,
   passing threshold, source-artifact path, or scoring rubric.
 - Released exam evaluation material is a separate, explicitly authorized backend
-  use case. Provider-hosted chats currently enforce answer-before-evaluation by
-  instruction; a strong submission proof requires a future SkillPilot-controlled
-  widget/cockpit attempt.
+  use case. Legacy provider-hosted chats enforce answer-before-evaluation only by
+  instruction. Target MCP Apps must use a widget-backed
+  `start -> submit -> receipt -> evaluate -> record` attempt so the backend can
+  prove submission before releasing protected evaluation material.
 - Exam grading is criterion-based, not an exact match against the released
   solution. The solution is a non-exclusive reference; subject-correct equivalent
   results, representations, permitted rounding, explanations, and alternative
@@ -755,6 +757,11 @@ Guiding principle:
 - The paused Claude/MCP adapter resolves an authenticated opaque OAuth subject
   internally and has neither `skillpilotId` nor OAuth credentials as model tool
   parameters.
+- The target OpenAI integration consists of two separately registered MCP Apps,
+  one for German and one for English. In production, each app resolves an
+  authenticated opaque OAuth subject internally. Widget-only session and
+  selection references may be returned in tool-result `_meta`, but must never
+  appear in user-visible content or model-visible `structuredContent`.
 - Provider-neutral backend services may use the SkillPilot ID internally after a
   trusted browser route, session token, or OAuth subject has been resolved. That
   internal implementation detail must not leak into the external model context.
@@ -767,6 +774,9 @@ Guiding principle:
 - A current ChatGPT transcript also contains the temporary Visible Session token.
   Until it expires, the learner must not publicly share an unredacted transcript,
   screenshot, or export containing its SkillPilot footer.
+- The target MCP-App transcript must not contain a session token or technical
+  selection key. Human-readable learning-goal IDs may still be shown when they
+  are intentionally part of the learning product rather than access credentials.
 - Local frontends (web GUI, notebooks, etc.) may:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.
@@ -795,6 +805,11 @@ Provider-facing contracts must use derived temporary context instead:
   goal ID, or Recall card prompt.
 - Paused Claude/MCP: the transport authenticates an OAuth connection subject and
   resolves it inside the backend. The model never supplies a learner ID.
+- Target OpenAI MCP Apps: German and English use separate public tool catalogs,
+  resource URIs, endpoints, registrations, and acceptance tests. Direct widget
+  choices and answer submissions use app-only tools; later model turns reload
+  current state through argumentless read tools whose learner identity comes from
+  OAuth, not conversation memory.
 - Any new provider adapter must define its own minimum data projection and
   authentication/context boundary. Do not expose the permanent SkillPilot ID just
   because an internal facade accepts it.
@@ -808,20 +823,44 @@ LLM/learning-coach prompts should reinforce that:
 
 ---
 
-## 12. AI Agent Integration (ChatGPT Visible Session, Claude/MCP & Gemini)
+## 12. AI Agent Integration (OpenAI MCP Apps, ChatGPT fallback, Claude & Gemini)
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
-uses separate, provider-specific adapters. The current public coach is the
-ChatGPT Visible Session adapter. The strategic replacement is the first-party
-orchestrator documented in
-`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`; it is not
-yet the production default.
+uses separate, provider- and language-specific adapters. The current public coach
+is the ChatGPT Visible Session adapter. The strategic replacement is a
+provider-hosted MCP-App/Plugin architecture documented in
+`docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md`.
+
+The billing boundary is a hard product requirement: the learner uses the model
+under the provider's available free access or fixed-price consumer subscription.
+SkillPilot must not make or relay a metered model-API call for this coach path.
+The provider owns model inference and the free conversational turn; SkillPilot
+owns only the authenticated domain state and deterministic application tools.
+Under the current OpenAI App guidelines, the published OpenAI channel must not
+explicitly target children under 13. Do not infer age from grade or curriculum;
+exclude that age group from this provider channel unless a later authoritative
+provider policy and product review explicitly permit it.
 
 ### 12.1 Key Features for AI
 
 - **Backend authority:** curriculum, personalization, scope, frontier, active goal,
   allowed transitions, Mastery, Verified Recall, and exam evaluation remain
   backend decisions.
+- **Target OpenAI Apps:** maintain two separate external MCP Apps, German and
+  English, with their own tool names, descriptions, widget resources, endpoints,
+  app registrations, plugin packaging, and tests. Sharing internal domain
+  services and widget implementation is allowed; a public `language` switch or
+  one-size-fits-all tool contract is not.
+- **MCP-App state rule:** user-facing labels and released learning content belong
+  in `content` / `structuredContent`; opaque click references belong only in
+  result `_meta`. App-only tools apply selections and persist submissions
+  directly. Authenticated, argumentless read tools rehydrate state after a new
+  turn, reload, or context compaction.
+- **Prototype boundary:** `ai/openai app/` contains an executable two-language
+  Streamable-HTTP MCP Apps mechanism prototype and local host simulation. Its
+  no-auth, single-demo-state store is never production auth. Production must add
+  OpenAI OAuth subject binding and replace the demo store with
+  `CoachToolFacade`/database use cases before real learner data is allowed.
 - **Current ChatGPT projection:** nine locale-specific Visible Session Actions
   consolidate setup and navigation into numbered choices, reload state on normal
   user turns, and protect Recall answers and exam solutions behind later Actions.
@@ -831,8 +870,8 @@ yet the production default.
 - **Visible same-turn intake:** a natural multi-part request remains active only
   within the current assistant turn. Fresh uniquely matched selections may chain
   without displaying intermediate codes; a numbers-only reply is consumed by
-  exactly one visible choice. This is a transition optimization, not a replacement
-  for the first-party orchestrator.
+  exactly one visible choice. This is a fallback optimization, not a replacement
+  for the MCP-App target.
 - **Provider-specific contracts:** German and English Custom GPTs have independent
   Instructions, seven Knowledge files each, and independent locale-fixed OpenAPI
   schemas. A one-size-fits-all schema is not allowed.
@@ -852,6 +891,11 @@ yet the production default.
   `ai/openai-custom-gpt-visible-session/de/gpt_setup_guide.md` and
   `ai/openai-custom-gpt-visible-session/en/gpt_setup_guide.md`. These guides
   update the two existing GPTs in place; they do not create new GPTs.
+- **OpenAI MCP Apps (target prototype):** See `ai/openai app/README.md` and
+  `ai/openai app/TEST_AND_PLUGIN_HANDOFF.md`. Apps are tested in Developer Mode
+  first and are then packaged and published as plugins. Do not create a plugin
+  `.app.json` with a fake placeholder: wait for the real `plugin_asdk_app...` ID
+  assigned to each language-specific app.
 - **ChatGPT (rollback only):** `ai/openai custom gpt/` retains the complete former
   setup and must stay unchanged so a coordinated rollback does not require Git
   archaeology.
