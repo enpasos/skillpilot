@@ -18,23 +18,35 @@ import {
 
 const moduleDir = dirname(fileURLToPath(import.meta.url));
 
-const coachOutputSchema = {
-  locale: z.enum(["de", "en"]),
-  revision: z.number().int().nonnegative(),
-  phase: z.enum(["not-started", "scope-choice", "practice", "awaiting-evaluation", "feedback"]),
-  title: z.string(),
-  summary: z.string(),
-  prompt: z.string().nullable(),
-  choices: z.array(z.object({ label: z.string(), detail: z.string() })),
-  answerLabel: z.string().nullable(),
-  answerPlaceholder: z.string().nullable(),
-  submitLabel: z.string().nullable(),
-  courseLabel: z.string().nullable(),
-  feedback: z.string().nullable(),
-  score: z.number().nullable(),
-  maxScore: z.number().nullable(),
-  passed: z.boolean().nullable()
-};
+function coachOutputSchema(contract) {
+  const description = contract.schemaDescriptions.coachOutput;
+  return {
+    locale: z.enum(["de", "en"]).describe(description.locale),
+    revision: z.number().int().nonnegative().describe(description.revision),
+    phase: z
+      .enum(["not-started", "scope-choice", "practice", "awaiting-evaluation", "feedback"])
+      .describe(description.phase),
+    title: z.string().describe(description.title),
+    summary: z.string().describe(description.summary),
+    prompt: z.string().nullable().describe(description.prompt),
+    choices: z
+      .array(
+        z.object({
+          label: z.string().describe(description.choiceLabel),
+          detail: z.string().describe(description.choiceDetail)
+        })
+      )
+      .describe(description.choices),
+    answerLabel: z.string().nullable().describe(description.answerLabel),
+    answerPlaceholder: z.string().nullable().describe(description.answerPlaceholder),
+    submitLabel: z.string().nullable().describe(description.submitLabel),
+    courseLabel: z.string().nullable().describe(description.courseLabel),
+    feedback: z.string().nullable().describe(description.feedback),
+    score: z.number().nullable().describe(description.score),
+    maxScore: z.number().nullable().describe(description.maxScore),
+    passed: z.boolean().nullable().describe(description.passed)
+  };
+}
 
 const noAuth = [{ type: "noauth" }];
 const readOnly = { readOnlyHint: true, openWorldHint: false, destructiveHint: false };
@@ -95,6 +107,9 @@ function widgetResourceMeta(contract) {
 
 export async function createCoachMcpServer(contract, store) {
   const html = await widgetHtml(contract);
+  const outputSchema = coachOutputSchema(contract);
+  const inputDescription = contract.schemaDescriptions.input;
+  const pendingDescription = contract.schemaDescriptions.pendingOutput;
   const server = new McpServer(
     { name: contract.serverName, version: "0.1.0" },
     { instructions: contract.instructions }
@@ -130,8 +145,16 @@ export async function createCoachMcpServer(contract, store) {
     {
       title: contract.tools.open.title,
       description: contract.tools.open.description,
-      inputSchema: { learning_request: z.string().trim().min(1).max(500).optional() },
-      outputSchema: coachOutputSchema,
+      inputSchema: {
+        learning_request: z
+          .string()
+          .trim()
+          .min(1)
+          .max(500)
+          .optional()
+          .describe(inputDescription.learningRequest)
+      },
+      outputSchema,
       securitySchemes: noAuth,
       annotations: privateWrite,
       _meta: toolMeta(contract.tools.open, {
@@ -155,10 +178,10 @@ export async function createCoachMcpServer(contract, store) {
       title: contract.tools.choose.title,
       description: contract.tools.choose.description,
       inputSchema: {
-        sessionRef: z.string().min(20).max(100),
-        choiceRef: z.string().min(20).max(100)
+        sessionRef: z.string().min(20).max(100).describe(inputDescription.sessionRef),
+        choiceRef: z.string().min(20).max(100).describe(inputDescription.choiceRef)
       },
-      outputSchema: coachOutputSchema,
+      outputSchema,
       securitySchemes: noAuth,
       annotations: privateWrite,
       _meta: toolMeta(contract.tools.choose, { visibility: ["app"] })
@@ -179,11 +202,11 @@ export async function createCoachMcpServer(contract, store) {
       title: contract.tools.submit.title,
       description: contract.tools.submit.description,
       inputSchema: {
-        sessionRef: z.string().min(20).max(100),
-        answer: z.string().trim().min(1).max(4_000),
-        idempotencyKey: z.string().min(20).max(100)
+        sessionRef: z.string().min(20).max(100).describe(inputDescription.sessionRef),
+        answer: z.string().trim().min(1).max(4_000).describe(inputDescription.answer),
+        idempotencyKey: z.string().min(20).max(100).describe(inputDescription.idempotencyKey)
       },
-      outputSchema: coachOutputSchema,
+      outputSchema,
       securitySchemes: noAuth,
       annotations: privateWrite,
       _meta: toolMeta(contract.tools.submit, { visibility: ["app"] })
@@ -208,11 +231,11 @@ export async function createCoachMcpServer(contract, store) {
       description: contract.tools.pending.description,
       inputSchema: {},
       outputSchema: {
-        locale: z.enum(["de", "en"]),
-        task: z.string(),
-        learnerAnswer: z.string(),
-        courseLabel: z.string().nullable(),
-        gradingInstruction: z.string()
+        locale: z.enum(["de", "en"]).describe(pendingDescription.locale),
+        task: z.string().describe(pendingDescription.task),
+        learnerAnswer: z.string().describe(pendingDescription.learnerAnswer),
+        courseLabel: z.string().nullable().describe(pendingDescription.courseLabel),
+        gradingInstruction: z.string().describe(pendingDescription.gradingInstruction)
       },
       securitySchemes: noAuth,
       annotations: readOnly,
@@ -239,10 +262,10 @@ export async function createCoachMcpServer(contract, store) {
       title: contract.tools.evaluate.title,
       description: contract.tools.evaluate.description,
       inputSchema: {
-        score: z.number().min(0).max(2),
-        feedback: z.string().trim().min(1).max(2_000)
+        score: z.number().min(0).max(2).describe(inputDescription.score),
+        feedback: z.string().trim().min(1).max(2_000).describe(inputDescription.feedback)
       },
-      outputSchema: coachOutputSchema,
+      outputSchema,
       securitySchemes: noAuth,
       annotations: privateWrite,
       _meta: toolMeta(contract.tools.evaluate, {
@@ -274,7 +297,7 @@ export async function createCoachMcpServer(contract, store) {
       title: contract.tools.context.title,
       description: contract.tools.context.description,
       inputSchema: {},
-      outputSchema: coachOutputSchema,
+      outputSchema,
       securitySchemes: noAuth,
       annotations: readOnly,
       _meta: toolMeta(contract.tools.context, { visibility: ["model"] })

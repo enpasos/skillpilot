@@ -24,10 +24,17 @@ lokalen Server zeigen. Dabei gelten zwingend:
 - URL nicht weitergeben;
 - No-Auth niemals als Produktionskonfiguration behandeln.
 
-Der Server bindet standardmäßig nur an `127.0.0.1`. Für einen bewusst gestarteten
-Tunnel muss er explizit mit `HOST=0.0.0.0 npm start` gestartet werden.
+Der Server bindet absichtlich nur an `127.0.0.1`. Ein auf demselben Rechner
+laufender HTTPS-Tunnel leitet auf `127.0.0.1:8790` weiter; eine externe Bindung
+über `HOST=0.0.0.0` ist dafür nicht erforderlich.
 
-## 2. Zwei Developer-Mode-Apps anlegen
+Ein kostenloser, nicht reservierter Tunnel kann nach einer Unterbrechung eine
+neue URL erhalten. Antwortet eine zuvor registrierte URL mit `503 no tunnel
+here`, muss die Developer-Mode-App auf die neue URL zeigen oder neu angelegt
+werden. Flüchtige Tunnel-URLs gehören weder in Quellcode noch in ein
+Plugin-Manifest.
+
+## 2. Developer-Mode-Apps gestuft anlegen
 
 In ChatGPT:
 
@@ -35,9 +42,14 @@ In ChatGPT:
 2. **Settings → Plugins** beziehungsweise `chatgpt.com/plugins` öffnen.
 3. Eine App **SkillPilot Coach Deutsch** mit dem öffentlichen DE-MCP-Endpunkt
    anlegen.
-4. Eine zweite App **SkillPilot Coach English** mit dem öffentlichen EN-Endpunkt
-   anlegen.
-5. Beide erzeugten IDs notieren. Sie beginnen mit `plugin_asdk_app`.
+4. Zuerst nur den deutschen End-to-End-Ablauf stabilisieren und abnehmen.
+5. Erst danach eine zweite App **SkillPilot Coach English** mit dem öffentlichen
+   EN-MCP-Endpunkt anlegen und denselben Abnahmelauf separat durchführen.
+
+ChatGPT zeigt in den App-Metadaten unter anderem eine App-ID `asdk_app_…` und
+eine Versions-ID `asdk_app_v_…`. Diese beiden Werte sind Diagnosemetadaten. Für
+das spätere lokale Plugin-Wiring wird dagegen die Kennung aus der Browser-URL
+benötigt; sie beginnt laut OpenAI-Dokumentation mit `plugin_asdk_app_…`.
 
 Die Verfügbarkeit von Installation, Authentifizierung und Nutzung kann laut
 OpenAI von Tarif, Workspace-Einstellungen, Rolle, Oberfläche, Region und
@@ -45,7 +57,7 @@ App-Funktionen abhängen. Deshalb müssen kostenloser Zugang und festes Abo als
 getrennte reale Akzeptanzfälle geprüft werden; aus der Sichtbarkeit des Plugin-
 Verzeichnisses allein folgt noch keine Nutzbarkeit.
 
-## 3. Akzeptanzablauf je Sprache
+## 3. Akzeptanzablauf je aktiver Sprache
 
 1. Neuer Chat ohne alten Kontext.
 2. App explizit auswählen und natürlich formulieren:
@@ -82,20 +94,20 @@ Workspace-internen Plugin-Test** verweist ein korrektes `.app.json` auf die von
 ChatGPT im Developer Mode erzeugte `plugin_asdk_app…`-ID. Deshalb wird kein
 Platzhaltermanifest eingecheckt.
 
-Nach erfolgreichem Developer-Mode-Test die beiden IDs an Codex übergeben. Dann
-wird der Plugin-Creator für zwei getrennte Pakete verwendet:
+Nach erfolgreichem Developer-Mode-Test die `plugin_asdk_app_…`-ID aus der
+Browser-URL an Codex übergeben. Dann wird der Plugin-Creator zunächst nur für
+das abgenommene deutsche Paket verwendet:
 
 ```text
 $plugin-creator create a plugin for SkillPilot Coach Deutsch using
 plugin_asdk_app_<DE-ID>. Include a personal marketplace entry for local testing.
-
-$plugin-creator create a plugin for SkillPilot Coach English using
-plugin_asdk_app_<EN-ID>. Include a personal marketplace entry for local testing.
 ```
 
 Danach werden `.app.json`, `.codex-plugin/plugin.json`, rechtliche Links,
 Screenshots und Installationsmetadaten für den lokalen beziehungsweise internen
-Plugin-Test geprüft.
+Plugin-Test geprüft. Das englische Paket folgt erst nach der separaten
+englischen Developer-Mode-Abnahme und erhält seine eigene
+`plugin_asdk_app_…`-ID.
 
 ### Öffentliche Einreichung ist ein eigener Ablauf
 

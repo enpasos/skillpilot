@@ -7,6 +7,48 @@ export const germanContract = Object.freeze({
   mcpPath: "/mcp/de",
   resourceName: "skillpilot-coach-de-widget",
   resourceUri: "ui://skillpilot-coach-de/coach.html",
+  schemaDescriptions: {
+    input: {
+      learningRequest:
+        "Natürliche Beschreibung dessen, was die lernende Person mit SkillPilot lernen, üben oder fortsetzen möchte. Keine technische Kennung.",
+      sessionRef:
+        "Kurzlebige, opake Sitzungsreferenz aus den privaten Widget-Metadaten des vorherigen SkillPilot-Ergebnisses. Die App übergibt sie unverändert; sie wird weder vom Modell noch von der lernenden Person erzeugt.",
+      choiceRef:
+        "Kurzlebige, opake Referenz der im SkillPilot-Widget angeklickten Option. Die App übernimmt sie unverändert aus den privaten Metadaten der angezeigten Auswahl.",
+      answer: "Vollständige Lösung, die die lernende Person im SkillPilot-Widget eingegeben hat.",
+      idempotencyKey:
+        "Von der App pro Einreichung erzeugter eindeutiger Wiederholungsschlüssel. Bei einem technischen Retry wird derselbe Schlüssel nur mit exakt derselben Lösung erneut verwendet.",
+      score: "Fachlich vergebene Punktzahl zwischen 0 und 2 für die zuvor geladene Lösung.",
+      feedback:
+        "Kurzes, lernförderliches Feedback zur zuvor geladenen Lösung. Fachlich richtige und mathematisch gleichwertige Lösungswege werden unabhängig vom Wortlaut anerkannt."
+    },
+    coachOutput: {
+      locale: "Sprache des deutschen Lerncoach-Vertrags.",
+      revision: "Fortlaufende Revision des serverseitig gespeicherten Lernzustands.",
+      phase: "Aktuelle Phase des Lerncoach-Ablaufs.",
+      title: "Sichtbare Überschrift der aktuellen Lerncoach-Karte.",
+      summary: "Kurze sichtbare Zusammenfassung des aktuellen Lernzustands.",
+      prompt: "Aktuelle Frage oder Aufgabe; null, wenn keine Eingabe erwartet wird.",
+      choices: "Sichtbare fachliche Auswahlmöglichkeiten ohne technische Referenzen.",
+      choiceLabel: "Für die lernende Person sichtbare Bezeichnung einer Auswahlmöglichkeit.",
+      choiceDetail: "Kurze Erläuterung einer sichtbaren Auswahlmöglichkeit.",
+      answerLabel: "Sichtbare Beschriftung des Antwortfelds; null, wenn kein Antwortfeld angezeigt wird.",
+      answerPlaceholder: "Sichtbarer Platzhalter im Antwortfeld; null, wenn kein Antwortfeld angezeigt wird.",
+      submitLabel: "Sichtbare Beschriftung der Schaltfläche zum Einreichen; null, wenn keine Einreichung möglich ist.",
+      courseLabel: "Sichtbare Bezeichnung des ausgewählten Kurses; null, solange noch keine Kurswahl vorliegt.",
+      feedback: "Gespeichertes fachliches Feedback; null, solange noch keine Bewertung vorliegt.",
+      score: "Vergebene Punktzahl; null, solange noch keine Bewertung vorliegt.",
+      maxScore: "Maximal erreichbare Punktzahl; null, solange noch keine Bewertung vorliegt.",
+      passed: "Gibt an, ob die Lösung bestanden ist; null, solange noch keine Bewertung vorliegt."
+    },
+    pendingOutput: {
+      locale: "Sprache des deutschen Lerncoach-Vertrags.",
+      task: "Aufgabe, zu der die lernende Person eine Lösung eingereicht hat.",
+      learnerAnswer: "Vollständige, noch fachlich zu bewertende Lösung der lernenden Person.",
+      courseLabel: "Sichtbare Bezeichnung des ausgewählten Kurses; null, wenn kein Kurs festgelegt ist.",
+      gradingInstruction: "Verbindliche fachliche Anweisung für die Bewertung dieser Lösung."
+    }
+  },
   tools: {
     open: {
       name: "open_skillpilot_coach_de",
