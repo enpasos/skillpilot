@@ -48,6 +48,25 @@ jobs:
       - name: Validate Visible Session Custom GPT source contract
         run: npm --prefix ai/openai-custom-gpt-visible-session test
 
+  openai-mcp-app-ci:
+    name: OpenAI MCP Apps CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: 'ai/openai app/package-lock.json'
+      - name: Install dependencies
+        run: npm --prefix "ai/openai app" ci
+      - name: Test DE and EN MCP App contracts and workflows
+        run: npm --prefix "ai/openai app" test
+      - name: Audit MCP App dependencies
+        run: npm --prefix "ai/openai app" audit --audit-level=moderate
+
   frontend-ci:
     name: Application frontend CI
     runs-on: ubuntu-latest

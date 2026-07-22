@@ -43,8 +43,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
 - [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
-- [SkillPilot-Owned Learning-Coach Architecture](runtime-workflows/skillpilot-owned-coach-architecture.md)
-  Target architecture for a first-party turn orchestrator, natural intent resolution, provider adapters, and staged migration.
+- [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
+  Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
   Current Custom-GPT runtime, visible cross-turn relay, workflow coverage, and coordinated rollback boundary.
 - [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)

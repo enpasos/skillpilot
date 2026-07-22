@@ -1,0 +1,29 @@
+{
+  "name": "skillpilot-openai-mcp-apps",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-widget.mjs",
+    "dev": "npm run build && node --watch server/app-server.mjs",
+    "start": "npm run build && node server/app-server.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck && npm run build && node --test test/*.test.mjs",
+    "test:protocol": "npm run build && node --test test/protocol.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.4",
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@hono/node-server": "2.0.11"
+  }
+}
