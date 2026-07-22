@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 class ExamLatexStorageConventionsTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final String J7_TASK_4_ID = "a157b619-e875-5db6-b26a-607a39de00dc";
 
     @Test
     void examDataMustNotContainOverEscapedLatexDelimiters() throws Exception {
@@ -34,6 +35,33 @@ class ExamLatexStorageConventionsTest {
         assertThat(violations)
                 .withFailMessage("Found over-escaped LaTeX delimiters in examData:\n%s", String.join("\n", violations))
                 .isEmpty();
+    }
+
+    @Test
+    void j7TaskFourMustUseUprightCurrencyTypesetting() throws Exception {
+        Path canonicalMath = resolveCurriculaDir()
+                .resolve("DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
+        JsonNode root = MAPPER.readTree(canonicalMath.toFile());
+        JsonNode task = null;
+        for (JsonNode goal : root.path("goals")) {
+            if (J7_TASK_4_ID.equals(goal.path("id").asText())) {
+                task = goal;
+                break;
+            }
+        }
+
+        assertThat(task).as("canonical J7 Task 4").isNotNull();
+        String taskContent = task.path("examData").path("taskContent").asText();
+        String solutionContent = task.path("examData").path("solutionContent").asText();
+
+        assertThat(taskContent)
+                .contains("$1{,}80\\,\\mathrm{EUR}$")
+                .doesNotContain("$1.80 EUR$");
+        assertThat(solutionContent)
+                .contains("$1{,}80\\,\\mathrm{EUR}$")
+                .contains("81\\,\\mathrm{EUR}")
+                .contains("0\\,\\mathrm{EUR}")
+                .doesNotContain("1.80 EUR", "81 EUR", "0 EUR");
     }
 
     private static void checkFileForViolations(Path file, List<String> violations) {
@@ -89,4 +117,3 @@ class ExamLatexStorageConventionsTest {
         throw new IllegalStateException("Could not locate curricula directory.");
     }
 }
-
