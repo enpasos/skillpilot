@@ -1,6 +1,7 @@
 # ChatGPT-App „SkillPilot Coach Deutsch“: Deployment und Cutover
 
-**Stand:** 22. Juli 2026  
+**Stand:** 23. Juli 2026
+
 **Status:** Implementierung vorhanden; produktive Aktivierung erst nach realem
 OAuth- und Workflow-Acceptance-Test
 
@@ -30,23 +31,48 @@ Der Reverse Proxy muss diese Pfade unverändert an denselben Spring-Boot-Dienst
 weiterleiten. Der produktive App-Eintrag verwendet **Server URL**, nicht den
 Entwicklungstunnel.
 
-## 2. OAuth-Werte aus der App-Verwaltung
+## 2. Discovery-Bootstrap und OAuth-Werte
 
 Die erste Version verwendet einen vorab registrierten öffentlichen OAuth-Client
 mit Authorization Code, PKCE `S256` und `token_endpoint_auth_method=none`.
 SkillPilot unterstützt für diesen Vertrag absichtlich weder offene Dynamic
 Client Registration noch eine erfundene allgemeine Callback-URL.
 
-1. In der ChatGPT-App-Verwaltung den Authentifizierungsmodus für den
-   vordefinierten OAuth-Client wählen.
-2. Die dort angezeigte **Client-ID** unverändert übernehmen.
-3. Die app-spezifische Produktions-Callback-URL der Form
+Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
+Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
+Authorization-Server die app-spezifische Callback-URL. Dafür existiert ein
+expliziter, datenloser Bootstrapmodus:
+
+1. Vollbetrieb deaktiviert lassen und ausschließlich
+   `SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=true` setzen.
+2. Nach dem Restart die vier Discovery-URLs und den konstanten MCP-`401`
+   verifizieren. Der Bootstrap registriert weder Tools noch OAuth-Client,
+   Token-Endpunkte, Lernerdienste oder einen Coach-Health-Contributor.
+3. In der ChatGPT-App-Verwaltung `Server URL`, die produktive MCP-URL und
+   `OAuth` wählen.
+4. Als stabilen, öffentlichen Client-Identifier
+   `skillpilot-chatgpt-de-prod` verwenden und denselben Wert später im
+   SkillPilot-Backend konfigurieren. Es gibt kein Client-Secret.
+5. Die dort angezeigte app-spezifische Produktions-Callback-URL der Form
    `https://chatgpt.com/connector/oauth/{callback_id}` unverändert übernehmen.
-4. Mehrere echte Callback-URLs als kommaseparierte Liste konfigurieren. Keine
+6. Mehrere echte Callback-URLs als kommaseparierte Liste konfigurieren. Keine
    Beispiel- oder Legacy-URL ergänzen, die nicht in der App-Verwaltung steht.
+7. Bootstrap ausschalten und Vollbetrieb mit Client-ID, Callback, OAuth und MCP
+   atomar aktivieren. Der erste Vollbetrieb bleibt read-only.
+
+Der Bootstrap-MCP-Endpunkt weist **jede** Methode und auch beliebige Bearer-
+Werte mit `401` plus `WWW-Authenticate` ab. Authorization-, Token-, Revocation-
+und Introspection-Endpunkte bleiben dabei `404`. Die OpenAI-Dokumentation
+definiert diesen Challenge-/Metadata-Vertrag als Discovery-Mechanismus; ob ein
+konkreter ChatGPT-UI-Build damit seine erweiterten Einstellungen freischaltet,
+wird dennoch praktisch geprüft. Bei einem UI-Fehler wird der Sicherheitsvertrag
+nicht gelockert. Das lokale Rate-Limit und die datensparsame Status-Telemetrie
+schützen bereits diesen öffentlichen Bootstrap-Rand; bei mehreren Instanzen
+bleibt zusätzlich ein gemeinsames Gateway-Limit erforderlich.
 
 Ohne Client-ID oder Callback-Liste bricht der Spring-Start bei aktiviertem
-OpenAI-DE-OAuth absichtlich ab.
+OpenAI-DE-OAuth absichtlich ab. Bootstrap und Vollbetrieb dürfen ebenfalls
+nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.
 
 ## 3. Runtime-Konfiguration
 
@@ -58,6 +84,7 @@ SKILLPILOT_PUBLIC_BASE_URL=https://skillpilot.com
 SKILLPILOT_SIGNING_SECRET=<starker-stabiler-secret-wert>
 
 SKILLPILOT_OPENAI_DE_ENABLED=true
+SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
 SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=true
 SKILLPILOT_OPENAI_DE_MCP_ENABLED=true
 SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
@@ -66,7 +93,7 @@ SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp
 SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oauth/protected-resource
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakter-wert-aus-der-app-verwaltung>
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=skillpilot-chatgpt-de-prod
 SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
 
 SKILLPILOT_OPENAI_DE_SECURE_COOKIE=true
@@ -208,7 +235,8 @@ Anwendungslogs erscheinen.
    Wiederaufnahme nennen.
 3. Verbindung: `Server URL`.
 4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
-5. OAuth mit den in Abschnitt 2 verwendeten Clientdaten konfigurieren.
+5. OAuth mit Client-ID `skillpilot-chatgpt-de-prod`, ohne Client-Secret und mit
+   der in Abschnitt 2 übernommenen Callback-URL konfigurieren.
 6. Nach jeder Vertragsänderung den App-Eintrag neu laden und prüfen, dass genau
    die elf deutschen Produktivwerkzeuge erscheinen; keine Claude-, Regression-
    oder Widget-Testwerkzeuge dürfen sichtbar sein.
@@ -218,6 +246,54 @@ Die erste Version registriert bewusst keine Widget-Ressource und kein
 Transportwerte werden nicht sichtbar ausgegeben.
 
 ## 5. Technischer Smoke-Test
+
+### 5.1 Datenloser Discovery-Bootstrap
+
+Für diesen einmaligen Zustand gilt:
+
+```text
+SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=true
+SKILLPILOT_OPENAI_DE_ENABLED=false
+SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=false
+SKILLPILOT_OPENAI_DE_MCP_ENABLED=false
+SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
+```
+
+Dann:
+
+```bash
+BASE=https://skillpilot.com
+
+curl -fsS "$BASE/.well-known/oauth-protected-resource/api/openai/de/mcp" \
+  | jq -e --arg resource "$BASE/api/openai/de/mcp" \
+      --arg issuer "$BASE/api/openai/de" \
+      '.resource == $resource
+       and (.authorization_servers | index($issuer))'
+
+curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
+  | jq -e --arg issuer "$BASE/api/openai/de" \
+      '.issuer == $issuer
+       and (.code_challenge_methods_supported | index("S256"))
+       and (.token_endpoint_auth_methods_supported | index("none"))'
+
+curl -sS -o /dev/null -D - \
+  -X POST "$BASE/api/openai/de/mcp" \
+  -H 'Content-Type: application/json' \
+  --data '{}' \
+  | sed -n '/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'
+
+for path in oauth2/authorize oauth2/token oauth2/revoke oauth2/introspect; do
+  test "$(curl -sS -o /dev/null -w '%{http_code}' \
+    "$BASE/api/openai/de/$path")" = 404
+done
+```
+
+Erwartung: beide Metadatenabrufe sind gültig, MCP antwortet `401` mit
+`WWW-Authenticate`, und sämtliche OAuth-Protokollendpunkte bleiben `404`.
+`openAiDeCoach` existiert in diesem Zustand absichtlich nicht; die allgemeine
+Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
+
+### 5.2 Vollbetrieb, zunächst read-only
 
 ```bash
 BASE=https://skillpilot.com
@@ -384,7 +460,8 @@ Komfortfunktion und kein Erfolgskriterium für den Launch.
 2. Zuerst `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false`, bei vollständiger
    Abschaltung zusätzlich `SKILLPILOT_OPENAI_DE_MCP_ENABLED=false`,
    `SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=false` und
-   `SKILLPILOT_OPENAI_DE_ENABLED=false` setzen.
+   `SKILLPILOT_OPENAI_DE_ENABLED=false` sowie
+   `SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false` setzen.
 3. App in ChatGPT deaktivieren beziehungsweise die betroffene Version
    zurückziehen.
 4. Bestehende OpenAI-DE-Verbindungen serverseitig widerrufen, falls ein
@@ -400,7 +477,8 @@ Lokaler Code kann weder die echte App-Verwaltung konfigurieren noch Provider-
 Review, Tarifverfügbarkeit oder einen produktiven OAuth-Callback bestätigen.
 Für den ersten realen Lauf werden daher noch benötigt:
 
-- die tatsächliche Client-ID und Callback-URL aus der deutschen App;
+- die in beiden Systemen identische Client-ID `skillpilot-chatgpt-de-prod` und
+  die tatsächliche Callback-URL aus der deutschen App;
 - Deployment des Spring-Boot-Artefakts samt Migration und Environment;
 - Aktualisierung beziehungsweise Neuerstellung der deutschen App-Version mit
   der kanonischen Server URL;

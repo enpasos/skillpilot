@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 /** Observes only status classes and fixed flow names; request data is never recorded. */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 30)
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnExpression(
+        "${skillpilot.openai.de.enabled:false} || "
+                + "${skillpilot.openai.de.bootstrap-enabled:false}")
 public final class OpenAiDeHttpOutcomeTelemetryFilter extends OncePerRequestFilter {
 
     private static final String OPENAI_API_PREFIX = "/api/openai/de/";

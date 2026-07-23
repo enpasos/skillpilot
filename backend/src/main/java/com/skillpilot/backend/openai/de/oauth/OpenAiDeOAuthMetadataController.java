@@ -45,6 +45,12 @@ public class OpenAiDeOAuthMetadataController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> protectedResourceMetadata() {
+        return protectedResourceMetadata(issuer, properties);
+    }
+
+    static Map<String, Object> protectedResourceMetadata(
+            String issuer,
+            OpenAiDeProperties properties) {
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("resource", properties.getMcpUrl());
         metadata.put("authorization_servers", List.of(issuer));
@@ -60,6 +66,10 @@ public class OpenAiDeOAuthMetadataController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> authorizationServerMetadata() {
+        return authorizationServerMetadata(issuer);
+    }
+
+    static Map<String, Object> authorizationServerMetadata(String issuer) {
         String base = OpenAiDeOAuthConfiguration.stripTrailingSlash(issuer);
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("issuer", issuer);

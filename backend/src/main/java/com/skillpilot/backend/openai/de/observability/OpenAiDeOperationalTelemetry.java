@@ -4,12 +4,14 @@ import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.EnumMap;
 import java.util.Map;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
 
 /** Privacy-safe counters for the bounded OpenAI-DE operational event set. */
 @Component
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnExpression(
+        "${skillpilot.openai.de.enabled:false} || "
+                + "${skillpilot.openai.de.bootstrap-enabled:false}")
 public final class OpenAiDeOperationalTelemetry {
 
     public static final String EVENT_METRIC = "skillpilot.openai.de.operational.event";

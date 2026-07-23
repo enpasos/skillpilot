@@ -1,6 +1,7 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 22. Juli 2026  
+**Stand:** 23. Juli 2026
+
 **Status:** deutsche data-only Implementierung lokal abgeschlossen; Deployment,
 echte ChatGPT-OAuth-Acceptance und Cutover ausstehend  
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
@@ -415,8 +416,13 @@ ohne gültige, passende Verbindung möglich.
 
 **Implementierungsstand:** OAuth-/Binding-Code, additive Persistenzmigration,
 PKCE-, Resource-, Refresh-, Revocation- und Isolationstests sind lokal
-abgeschlossen. Echte Client-ID und Callback-URL werden nicht geraten, sondern
-erst aus der App-Verwaltung übernommen.
+abgeschlossen. Ein strikt datenloser Discovery-Bootstrap löst die zirkuläre
+Erstkonfiguration: ChatGPT kann MCP- und OAuth-Metadaten prüfen, bevor die
+app-spezifische Callback-URL bekannt ist. Die öffentliche Client-ID wird von
+SkillPilot stabil als `skillpilot-chatgpt-de-prod` gewählt und identisch in
+beiden Systemen eingetragen; ausschließlich die echte Callback-URL wird aus der
+App-Verwaltung übernommen. Der Bootstrap stellt keine Tools, Token-Endpunkte,
+Lernerdaten oder Coach-Readiness bereit und wird vor dem Vollbetrieb deaktiviert.
 
 ### Etappe 3 – Normaler Lernworkflow
 
@@ -576,11 +582,13 @@ Limiting, privacy-sichere Telemetrie und automatisierte Tests liegen vor. Der
 nächste Schnitt ist nach Abschluss der lokalen Härtung der kontrollierte reale
 Lauf:
 
-1. exakte Client-ID und Callback-URL aus der deutschen App-Verwaltung eintragen;
-2. das Spring-Boot-Artefakt samt additiver Migration deployen;
-3. Protected-Resource-/Authorization-Server-Metadata und HTTP-Challenge am
-   kanonischen HTTPS-Pfad prüfen;
-4. OAuth/PKCE und Kontext-Rehydration mit deaktiviertem Write-Kill-Switch testen;
+1. Discovery-Bootstrap allein aktivieren und den datenlosen `401`-/Metadata-
+   Vertrag an der stabilen Produktions-URL prüfen;
+2. neue deutsche Developer-App mit Client-ID `skillpilot-chatgpt-de-prod`
+   vorbereiten und die echte Callback-URL aus der App-Verwaltung übernehmen;
+3. Bootstrap deaktivieren, Callback konfigurieren und Backend mit OAuth/MCP
+   atomar aktivieren; Schreib-Kill-Switch deaktiviert lassen;
+4. OAuth/PKCE und Kontext-Rehydration im read-only Canary testen;
 5. danach Writes bewusst aktivieren und die vollständige deutsche
    Workflow-Paritätsmatrix durchführen;
 6. erst nach Tarif-, Regions- und Oberflächen-Acceptance die Frontendvariante
