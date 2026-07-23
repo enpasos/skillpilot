@@ -401,23 +401,29 @@ Oberflächen praktisch bestätigt sind.
 
 ## 7. Cockpit-Canary und Cutover
 
-Die Variante ist eine bewusste Entscheidung pro Frontend-Artefakt. Das
-Produktionsskript akzeptiert keinen impliziten Default mehr: Für jedes
-Deployment muss genau einer der Werte `visible-session`, `openai-mcp` oder
-`legacy` ausdrücklich gesetzt werden.
+Die Variante ist eine bewusste Entscheidung pro Frontend-Artefakt. Der stabile
+Produktionseinstieg im Repository-Root setzt die aktuelle Produktentscheidung
+`openai-mcp`; die generische Deployment-Engine akzeptiert weiterhin keinen
+impliziten Default. An der Engine muss für jedes Deployment genau einer der
+Werte `visible-session`, `openai-mcp` oder `legacy` gesetzt sein.
 
-Für den deutschen MCP-Canary beziehungsweise Cutover lautet der vollständige
-Aufruf:
+Für den deutschen MCP-Canary beziehungsweise Cutover ist der stabile
+Produktionsaufruf:
 
 ```bash
-VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh
+./deploy_skillpilot.sh
 ```
 
-Ein Aufruf ohne Variable bricht **vor** Git-Update, Build und Restart ab. Dadurch
-kann ein geplanter MCP-Cutover nicht unbemerkt als Visible-Session-Build
-ausgeliefert werden. Umgekehrt wird `openai-mcp` nirgends als Deployment-Default
-gesetzt; ein normaler oder Rollback-Build muss seine gewünschte Variante ebenso
-explizit nennen.
+Der Einstieg im Repository-Root setzt die produktive Variante bewusst auf
+`openai-mcp` und delegiert an `scripts/deploy.sh`. Die Engine akzeptiert
+weiterhin keinen fehlenden oder ungültigen Variantenwert und bricht dann
+**vor** Git-Update, Build und Restart ab. Dadurch bleibt die Artefaktprüfung
+erhalten, ohne dass beim normalen Deployment jedes Mal eine Buildvariable
+manuell angegeben werden muss. Ein Rollback überschreibt die Variante
+ausdrücklich mit `--coach-variant visible-session` am selben Einstiegspunkt.
+Eine eventuell noch in der Shell vorhandene
+`VITE_SKILLPILOT_COACH_VARIANT`-Variable wird vom Produktionseinstieg bewusst
+ignoriert.
 
 Der Build schreibt die aufgelöste Variante nach
 `backend/src/main/resources/static/version.json` in das Feld `coachVariant` und
@@ -455,7 +461,7 @@ Komfortfunktion und kein Erfolgskriterium für den Launch.
 ## 8. Rollback
 
 1. Frontend ausdrücklich mit
-   `VITE_SKILLPILOT_COACH_VARIANT=visible-session scripts/deploy.sh` bauen und
+   `./deploy_skillpilot.sh --coach-variant visible-session` bauen und
    ausliefern. Die Artefaktprüfung muss `visible-session` bestätigen.
 2. Zuerst `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false`, bei vollständiger
    Abschaltung zusätzlich `SKILLPILOT_OPENAI_DE_MCP_ENABLED=false`,

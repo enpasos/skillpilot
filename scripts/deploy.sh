@@ -15,7 +15,8 @@ require_explicit_coach_variant() {
   if [ -z "${configured_variant}" ]; then
     echo "Abbruch: VITE_SKILLPILOT_COACH_VARIANT muss für jedes Deployment explizit gesetzt sein." >&2
     echo "Erlaubt: visible-session, openai-mcp oder legacy." >&2
-    echo "Für den geplanten deutschen MCP-Cutover: VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh" >&2
+    echo "Produktion regulär über ./deploy_skillpilot.sh ausrollen." >&2
+    echo "Direkter Engine-Aufruf: VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh" >&2
     exit 1
   fi
 

@@ -1,6 +1,44 @@
 # SkillPilot Deployment Process
 
-This document describes the current automated deployment workflow implemented by `scripts/deploy.sh` for Linux servers.
+This document describes the current automated deployment workflow for Linux
+servers. Operators use the stable repository-root entrypoint
+`./deploy_skillpilot.sh`; it delegates to the generic deployment engine
+`scripts/deploy.sh`.
+
+## Stable production entrypoint
+
+The normal production command is:
+
+```bash
+./deploy_skillpilot.sh
+```
+
+The root entrypoint pins `VITE_SKILLPILOT_COACH_VARIANT=openai-mcp`, which is
+the current production architecture for the German coach, and then executes
+`scripts/deploy.sh`. The engine continues to validate the variant before the
+build and again in the local and publicly served frontend artifacts. This keeps
+one operational command without removing the deployment guardrail.
+
+An intentional rollback uses the same entrypoint with an explicit command-line
+option:
+
+```bash
+./deploy_skillpilot.sh --coach-variant visible-session
+```
+
+On the production server, the historical launcher in the operator home
+directory can remain the everyday entrypoint as a symlink to the versioned
+script:
+
+```bash
+ln -s /home/enpasos/skillpilot/deploy_skillpilot.sh \
+  /home/enpasos/deploy_skillpilot.sh
+```
+
+The versioned entrypoint resolves symlinks before locating the repository, so
+running `/home/enpasos/deploy_skillpilot.sh` still executes the checked-in
+deployment engine from `/home/enpasos/skillpilot`. There is no second copy of
+the deployment logic to maintain.
 
 ## Overview
 
@@ -19,7 +57,7 @@ The deployment process currently does all of the following:
 12. Verify the deployed coach variant against the public host.
 13. Run the source-rationale deployment smoke test against the public host.
 
-## The Deployment Script (`scripts/deploy.sh`)
+## The Deployment Engine (`scripts/deploy.sh`)
 
 This is the current automation flow:
 
@@ -117,12 +155,15 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 
 ## Operational notes
 
-- `VITE_SKILLPILOT_COACH_VARIANT` is mandatory for `scripts/deploy.sh` and must
-  be exactly `visible-session`, `openai-mcp`, or `legacy`.
-  - German MCP canary/cutover:
-    `VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh`
-  - Visible Session deployment/rollback:
-    `VITE_SKILLPILOT_COACH_VARIANT=visible-session scripts/deploy.sh`
+- `./deploy_skillpilot.sh` is the normal production entrypoint and always pins
+  `openai-mcp`. Stale ambient `VITE_SKILLPILOT_COACH_VARIANT` values are
+  intentionally ignored.
+- `VITE_SKILLPILOT_COACH_VARIANT` remains mandatory for a direct
+  `scripts/deploy.sh` engine call and must be exactly `visible-session`,
+  `openai-mcp`, or `legacy`.
+  - German MCP deployment: `./deploy_skillpilot.sh`
+  - Visible Session rollback:
+    `./deploy_skillpilot.sh --coach-variant visible-session`
   - The `openai-mcp` build keeps English on its established Visible Session GPT.
 - `git stash` is part of the current script behavior.
   - Operators should be aware that locally modified files will be stashed, not merged or deployed.
