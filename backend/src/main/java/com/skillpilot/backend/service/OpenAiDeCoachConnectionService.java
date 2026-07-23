@@ -125,11 +125,11 @@ public class OpenAiDeCoachConnectionService {
         Optional<OpenAiDeBindingGrant> existingGrant = bindingGrantRepository
                 .findByActiveBrowserSessionHashForUpdate(browserSessionHash);
         if (existingGrant.isPresent()) {
-            if (existingGrant.get().getExpiresAt().isAfter(now)) {
-                throw new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "This browser session already has an open OpenAI-DE connection attempt.");
-            }
+            // A browser may retry after a blocked popup, a cancelled ChatGPT
+            // dialog, or an interrupted redirect. Replace the still-open
+            // one-time grant instead of trapping the browser in a 409 until
+            // its TTL expires. Deleting it first also invalidates any stale
+            // binding cookie before the fresh token is returned.
             bindingGrantRepository.delete(existingGrant.get());
             bindingGrantRepository.flush();
         }

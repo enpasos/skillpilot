@@ -276,6 +276,32 @@ class OpenAiDeOAuthFlowIntegrationTest {
     }
 
     @Test
+    void unauthenticatedAuthorizationRedirectsToConnectStartRegardlessOfAcceptHeader() throws Exception {
+        String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(Map.ofEntries(
+                Map.entry("response_type", "code"),
+                Map.entry("client_id", CLIENT_ID),
+                Map.entry("redirect_uri", CALLBACK),
+                Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
+                Map.entry("state", "accept-header-test"),
+                Map.entry("code_challenge", challenge(VERIFIER)),
+                Map.entry("code_challenge_method", "S256"),
+                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+
+        for (String accept : List.of("application/json", "text/html", "*/*")) {
+            HttpResponse<String> response = get(authorizePath, Map.of(HttpHeaders.ACCEPT, accept));
+
+            assertThat(response.statusCode()).as("Accept %s", accept).isEqualTo(302);
+            assertThat(response.headers().firstValue(HttpHeaders.LOCATION))
+                    .as("Accept %s", accept)
+                    .hasValueSatisfying(location -> assertThat(location)
+                            .endsWith(OpenAiDeOAuthConfiguration.CONNECT_REQUIRED_ENDPOINT));
+        }
+        verify(connectionService, never()).consumeBindingGrant(
+                org.mockito.ArgumentMatchers.anyString(),
+                org.mockito.ArgumentMatchers.anyString());
+    }
+
+    @Test
     void accessTokenAndConnectionActivationRollbackTogetherWhenInitialIntentApplyFails() {
         String suffix = java.util.UUID.randomUUID().toString();
         String learnerId = "rollback-learner-" + suffix;

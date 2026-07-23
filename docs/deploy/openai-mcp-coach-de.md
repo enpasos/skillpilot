@@ -139,6 +139,13 @@ Verbindung; `consumed_at` am Pending Launch bezeichnet die erfolgreiche
 serverseitige Anwendung des Intents. Kein MCP-Toolaufruf konsumiert einen
 Launch.
 
+Ein erneuter Cockpit-Start im selben Browser ersetzt einen noch offenen
+Binding Grant atomar. Damit können abgebrochene Popups, abgebrochene
+ChatGPT-Dialoge und unterbrochene Redirects unmittelbar neu gestartet werden,
+ohne bis zum Ablauf der Binding-TTL in einem HTTP-409-Zustand festzuhängen. Der
+vorherige Einmal-Token wird durch die Ersetzung ungültig; weiterhin existiert
+höchstens ein offener Grant je Browser-Sitzung.
+
 Abgelaufene Binding Grants und Pending Launches werden regelmäßig entfernt.
 `SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS` steuert das Intervall in Millisekunden;
 der Standardwert ist eine Stunde. Eine Verbindung, die bis zum Ablauf der
