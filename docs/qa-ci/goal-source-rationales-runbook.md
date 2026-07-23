@@ -138,7 +138,8 @@ npm run smoke:goal-source-rationales:deployment -- --base-url=http://127.0.0.1:8
 The repository deploy script runs this smoke test after restarting the production service. Override the target host with:
 
 ```bash
-SKILLPILOT_BASE_URL=https://staging.example.org scripts/deploy.sh
+SKILLPILOT_BASE_URL=https://staging.example.org \
+  ./deploy_skillpilot.sh --coach-variant openai-mcp
 ```
 
 This command currently emits the gap-free public runtime subset:

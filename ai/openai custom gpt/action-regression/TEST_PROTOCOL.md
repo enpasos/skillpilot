@@ -39,7 +39,7 @@ Nicht pauschal behaupten, dass intern GPT-5.6 lief. OpenAI dokumentiert derzeit 
 Der Reproducer ist Teil des bestehenden Spring-Boot-4.1-Backends:
 
 ```bash
-scripts/deploy.sh
+./deploy_skillpilot.sh
 ```
 
 Danach die realen Endpunkte prüfen:

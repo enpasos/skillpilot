@@ -90,7 +90,7 @@ Der Client verlangt an allen Schritten exakt HTTP 200, folgt keinen Redirects, p
 Es gibt keinen zusätzlichen Dienst. Der bestehende Ablauf baut das Spring-Boot-JAR und startet den vorhandenen systemd-Dienst `skillpilot` neu:
 
 ```bash
-scripts/deploy.sh
+./deploy_skillpilot.sh
 ```
 
 Danach zuerst prüfen:

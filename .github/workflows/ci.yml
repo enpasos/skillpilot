@@ -47,6 +47,17 @@ jobs:
         run: npm --prefix "ai/openai custom gpt/action-regression" test
       - name: Validate Visible Session Custom GPT source contract
         run: npm --prefix ai/openai-custom-gpt-visible-session test
+      - name: Validate production deployment entrypoint
+        run: |
+          bash -n deploy_skillpilot.sh scripts/deploy.sh
+          ./deploy_skillpilot.sh --help | grep -Fq 'openai-mcp coach'
+          ln -s "${GITHUB_WORKSPACE}/deploy_skillpilot.sh" \
+            "${RUNNER_TEMP}/deploy_skillpilot.sh"
+          "${RUNNER_TEMP}/deploy_skillpilot.sh" --help | grep -Fq 'openai-mcp coach'
+          if ./deploy_skillpilot.sh --coach-variant invalid >/dev/null 2>&1; then
+            echo 'Invalid coach variant was accepted.' >&2
+            exit 1
+          fi
 
   openai-mcp-app-ci:
     name: OpenAI MCP Apps CI
