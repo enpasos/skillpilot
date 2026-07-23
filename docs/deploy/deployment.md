@@ -151,8 +151,10 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment.
 9.  **Deployment smoke tests** check that the public host serves the intended
-    coach variant in both version metadata and HTML before checking the built
-    source-rationale JSON asset.
+    coach variant in both version metadata and HTML. The source-rationale smoke
+    then detects the active curriculum mode: repository deployments must serve
+    the two exact compatibility indexes, while package deployments must expose
+    Catalog API 1.2 and working generation-bound source-evidence routes.
 
 ## Asset deployment details
 

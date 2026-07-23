@@ -1,12 +1,21 @@
-const defaultBaseUrl = 'https://skillpilot.com'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import {
+  parsePackageGoalSourceEvidencePayload,
+  type PackageGoalSourceEvidenceRequest,
+} from '../src/utils/packageGoalSourceEvidence'
+import {
+  parseRuntimeCurriculumCatalog,
+  type RuntimeCatalogSourceEvidence,
+} from '../src/utils/runtimeCurriculumCatalog'
 
-const sourceRationaleAssetPattern = /\/assets\/goal-source-rationales-(math|physics)-public-[A-Za-z0-9_-]+\.json/gu
-const legacySourceRationalePathPattern = /\/data\/goal-source-rationales-[A-Za-z0-9._-]+\.json/gu
-const jsAssetPattern = /(?:src=|url:)"?\/?(assets\/[^"')]+\.js)/gu
+const defaultBaseUrl = 'https://skillpilot.com'
+const catalogPath = '/api/ui/curriculum-catalog'
 
 interface RuntimePayloadConfig {
   id: 'math' | 'physics'
   label: string
+  publicPath: string
   jurisdiction: string
   minimumItemCount: number
   requiredMemPocGoals: string[]
@@ -16,6 +25,7 @@ const runtimePayloads: RuntimePayloadConfig[] = [
   {
     id: 'math',
     label: 'Mathematik',
+    publicPath: '/data/goal-source-rationales-math-public.json',
     jurisdiction: 'DE-BY',
     minimumItemCount: 600,
     requiredMemPocGoals: [
@@ -27,6 +37,7 @@ const runtimePayloads: RuntimePayloadConfig[] = [
   {
     id: 'physics',
     label: 'Physik',
+    publicPath: '/data/goal-source-rationales-physics-public.json',
     jurisdiction: 'DE-HE',
     minimumItemCount: 350,
     requiredMemPocGoals: [],
@@ -37,10 +48,9 @@ interface Options {
   baseUrl: string
 }
 
-interface AssetSearchResult {
-  assetPathsById: Map<RuntimePayloadConfig['id'], string>
-  scannedJsAssetCount: number
-  legacyDataPaths: string[]
+export interface GoalSourceRationaleDeploymentSmokeResult {
+  mode: 'repository' | 'package'
+  resultLines: string[]
 }
 
 function parseArgs(args: string[]): Options {
@@ -59,128 +69,32 @@ function urlFor(baseUrl: string, path: string): string {
   return new URL(path.replace(/^\/+/u, ''), `${baseUrl}/`).toString()
 }
 
-async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url, {
-    headers: {
-      accept: 'text/html,application/javascript,text/javascript,application/json;q=0.9,*/*;q=0.8',
-      'cache-control': 'no-cache',
-    },
-  })
-  if (!response.ok) {
-    throw new Error(`${url}: HTTP ${response.status}`)
-  }
-  return response.text()
-}
-
-async function fetchJson(url: string): Promise<Record<string, unknown>> {
-  const response = await fetch(url, {
-    headers: {
-      accept: 'application/json',
-      'cache-control': 'no-cache',
-    },
-  })
-  if (!response.ok) {
-    throw new Error(`${url}: HTTP ${response.status}`)
-  }
-  const parsed = await response.json() as unknown
-  return asRecord(parsed)
-}
-
 function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === 'object' && !Array.isArray(value)
     ? value as Record<string, unknown>
     : {}
 }
 
-function collectJsAssetPaths(text: string): string[] {
-  const result = new Set<string>()
-  let match: RegExpExecArray | null
-  jsAssetPattern.lastIndex = 0
-  while ((match = jsAssetPattern.exec(text)) !== null) {
-    const assetPath = match[1]
-    if (assetPath) result.add(`/${assetPath}`)
-  }
-  return [...result].sort((left, right) => left.localeCompare(right, 'en'))
-}
-
-function collectSourceRationaleAssetPaths(text: string): Map<RuntimePayloadConfig['id'], string> {
-  const result = new Map<RuntimePayloadConfig['id'], string>()
-  sourceRationaleAssetPattern.lastIndex = 0
-  const matches = text.matchAll(sourceRationaleAssetPattern)
-  for (const match of matches) {
-    const id = match[1]
-    const path = match[0]
-    if ((id === 'math' || id === 'physics') && path) {
-      result.set(id, path)
-    }
-  }
-  return result
-}
-
-function collectLegacySourceRationalePaths(text: string): string[] {
-  const result = new Set<string>()
-  let match: RegExpExecArray | null
-  legacySourceRationalePathPattern.lastIndex = 0
-  while ((match = legacySourceRationalePathPattern.exec(text)) !== null) {
-    const legacyPath = match[0]
-    if (legacyPath) result.add(legacyPath)
-  }
-  return [...result].sort((left, right) => left.localeCompare(right, 'en'))
-}
-
-async function fetchStatus(url: string): Promise<number | string> {
-  try {
-    const response = await fetch(url, {
-      headers: {
-        accept: 'application/json,*/*;q=0.8',
-        'cache-control': 'no-cache',
-      },
-    })
-    return response.status
-  } catch (error) {
-    return error instanceof Error ? error.message : String(error)
-  }
-}
-
-function hasAllRequiredAssets(assetPathsById: Map<RuntimePayloadConfig['id'], string>): boolean {
-  return runtimePayloads.every((config) => assetPathsById.has(config.id))
-}
-
-async function findSourceRationaleAssets(baseUrl: string, seedTexts: string[]): Promise<AssetSearchResult> {
-  const legacyDataPaths = new Set(seedTexts.flatMap(collectLegacySourceRationalePaths))
-  const assetPathsById = new Map<RuntimePayloadConfig['id'], string>()
-
-  seedTexts.forEach((text) => {
-    collectSourceRationaleAssetPaths(text).forEach((path, id) => assetPathsById.set(id, path))
+async function fetchResponse(url: string): Promise<Response> {
+  return fetch(url, {
+    headers: {
+      accept: 'application/json',
+      'cache-control': 'no-cache',
+    },
   })
-
-  if (hasAllRequiredAssets(assetPathsById)) {
-    return {
-      assetPathsById,
-      scannedJsAssetCount: 0,
-      legacyDataPaths: [...legacyDataPaths],
-    }
-  }
-
-  const jsAssetPaths = new Set(seedTexts.flatMap(collectJsAssetPaths))
-  let scannedJsAssetCount = 0
-  for (const jsAssetPath of jsAssetPaths) {
-    const jsText = await fetchText(urlFor(baseUrl, jsAssetPath))
-    scannedJsAssetCount += 1
-    collectLegacySourceRationalePaths(jsText).forEach((legacyPath) => legacyDataPaths.add(legacyPath))
-    collectSourceRationaleAssetPaths(jsText).forEach((path, id) => assetPathsById.set(id, path))
-    if (hasAllRequiredAssets(assetPathsById)) break
-  }
-
-  return {
-    assetPathsById,
-    scannedJsAssetCount,
-    legacyDataPaths: [...legacyDataPaths],
-  }
 }
 
-function validatePayload(config: RuntimePayloadConfig, payload: Record<string, unknown>): string[] {
+async function fetchJson(url: string): Promise<unknown> {
+  const response = await fetchResponse(url)
+  if (!response.ok) {
+    throw new Error(`${url}: HTTP ${response.status}`)
+  }
+  return response.json() as Promise<unknown>
+}
+
+function validateRepositoryPayload(config: RuntimePayloadConfig, rawPayload: unknown): string[] {
   const failures: string[] = []
+  const payload = asRecord(rawPayload)
   const request = asRecord(payload.request)
   const summary = asRecord(payload.summary)
   const items = Array.isArray(payload.items) ? payload.items.map(asRecord) : []
@@ -221,53 +135,99 @@ function validatePayload(config: RuntimePayloadConfig, payload: Record<string, u
   return failures
 }
 
-async function main(): Promise<void> {
-  const options = parseArgs(process.argv.slice(2))
-  const indexHtml = await fetchText(urlFor(options.baseUrl, '/index.html'))
-  let serviceWorker = ''
-  try {
-    serviceWorker = await fetchText(urlFor(options.baseUrl, '/sw.js'))
-  } catch {
-    serviceWorker = ''
+async function smokeRepositoryMode(baseUrl: string): Promise<string[]> {
+  const resultLines: string[] = []
+  for (const config of runtimePayloads) {
+    const assetUrl = urlFor(baseUrl, config.publicPath)
+    const payload = await fetchJson(assetUrl)
+    const failures = validateRepositoryPayload(config, payload)
+    if (failures.length > 0) throw new Error(failures.join('\n'))
+
+    const rawItems = asRecord(payload).items
+    const items = Array.isArray(rawItems) ? rawItems.length : 0
+    resultLines.push(`${config.label} ${assetUrl} items=${items}`)
+  }
+  return resultLines
+}
+
+function evidenceRequest(
+  baseUrl: string,
+  discovery: RuntimeCatalogSourceEvidence,
+  generationSha256: string,
+): PackageGoalSourceEvidenceRequest {
+  const goal = discovery.goals[0]
+  const jurisdiction = goal?.jurisdictions[0]
+  if (!goal || !jurisdiction) {
+    throw new Error(
+      `${discovery.packageId}@${discovery.packageVersion}: source-evidence discovery has no testable goal jurisdiction`,
+    )
   }
 
-  const searchResult = await findSourceRationaleAssets(options.baseUrl, [indexHtml, serviceWorker])
-  const missingConfigs = runtimePayloads.filter((config) => !searchResult.assetPathsById.has(config.id))
-  if (missingConfigs.length > 0) {
-    const details = [
-      `${options.baseUrl}: missing built goal-source-rationale JSON asset(s): ${missingConfigs.map((config) => config.label).join(', ')}`,
-      `scanned JS assets: ${searchResult.scannedJsAssetCount}`,
-    ]
-    if (searchResult.legacyDataPaths.length > 0) {
-      const legacyStatuses = await Promise.all(searchResult.legacyDataPaths.map(async (path) => {
-        const status = await fetchStatus(urlFor(options.baseUrl, path))
-        return `${path} -> ${status}`
-      }))
-      details.push(`legacy /data references found: ${legacyStatuses.join(', ')}`)
-      details.push('deployed app likely still serves an older bundle or a bundle without the Vite asset import')
-    }
-    throw new Error(details.join('\n'))
+  const query = new URLSearchParams({ generation: generationSha256, jurisdiction })
+  const href = `${urlFor(baseUrl, discovery.href)}/${encodeURIComponent(goal.goalId)}?${query.toString()}`
+  return Object.freeze({
+    discovery,
+    generationSha256,
+    goalId: goal.goalId,
+    jurisdiction,
+    href,
+  })
+}
+
+async function smokePackageMode(baseUrl: string, rawCatalog: unknown): Promise<string[]> {
+  const catalog = parseRuntimeCurriculumCatalog(rawCatalog)
+  if (catalog.sourceEvidence.length === 0) {
+    throw new Error(`${urlFor(baseUrl, catalogPath)}: package catalog has no sourceEvidence discovery entries`)
   }
 
   const resultLines: string[] = []
-  for (const config of runtimePayloads) {
-    const assetPath = searchResult.assetPathsById.get(config.id)
-    if (!assetPath) continue
-    const payload = await fetchJson(urlFor(options.baseUrl, assetPath))
-    const failures = validatePayload(config, payload)
-    if (failures.length > 0) {
-      throw new Error(failures.join('\n'))
-    }
-
-    const items = Array.isArray(payload.items) ? payload.items.length : 0
-    resultLines.push(`${config.label} ${urlFor(options.baseUrl, assetPath)} items=${items}`)
+  for (const discovery of catalog.sourceEvidence) {
+    const request = evidenceRequest(baseUrl, discovery, catalog.generationSha256)
+    const rawPayload = await fetchJson(request.href)
+    const payload = parsePackageGoalSourceEvidencePayload(rawPayload, request)
+    resultLines.push(
+      `${payload.packageId}@${payload.packageVersion}`
+      + ` landscape=${payload.targetLandscapeId}`
+      + ` goal=${payload.goalId}`
+      + ` jurisdiction=${payload.jurisdiction}`,
+    )
   }
-
-  console.log(`Deployment smoke check passed: ${resultLines.join('; ')}`)
+  return resultLines
 }
 
-main().catch((error: unknown) => {
-  const message = error instanceof Error ? error.message : String(error)
-  console.error(message)
-  process.exitCode = 1
-})
+export async function runGoalSourceRationaleDeploymentSmoke(
+  baseUrl: string,
+): Promise<GoalSourceRationaleDeploymentSmokeResult> {
+  const normalizedBaseUrl = baseUrl.replace(/\/+$/u, '')
+  const catalogUrl = urlFor(normalizedBaseUrl, catalogPath)
+  const catalogResponse = await fetchResponse(catalogUrl)
+
+  if (catalogResponse.status === 404) {
+    return {
+      mode: 'repository',
+      resultLines: await smokeRepositoryMode(normalizedBaseUrl),
+    }
+  }
+  if (catalogResponse.status !== 200) {
+    throw new Error(`${catalogUrl}: expected HTTP 200 or 404, received HTTP ${catalogResponse.status}`)
+  }
+
+  return {
+    mode: 'package',
+    resultLines: await smokePackageMode(normalizedBaseUrl, await catalogResponse.json()),
+  }
+}
+
+async function main(): Promise<void> {
+  const options = parseArgs(process.argv.slice(2))
+  const result = await runGoalSourceRationaleDeploymentSmoke(options.baseUrl)
+  console.log(`Deployment smoke check passed (${result.mode} mode): ${result.resultLines.join('; ')}`)
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error: unknown) => {
+    const message = error instanceof Error ? error.message : String(error)
+    console.error(message)
+    process.exitCode = 1
+  })
+}

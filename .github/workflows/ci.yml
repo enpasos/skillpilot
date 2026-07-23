@@ -113,6 +113,8 @@ jobs:
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer
         run: npm run test:package-goal-source-evidence
+      - name: Test goal source-rationale deployment smoke modes
+        run: npm run test:goal-source-rationale-deployment-smoke
       - name: Test goal visualization QA approval model
         run: |
           npm run test:goal-visualization-qa-status

@@ -108,6 +108,10 @@ class PackageCurriculumResourceControllerTest {
                 .andExpect(status().isNotFound());
         mockMvc.perform(get("/data/cards/repository-deck.de.json"))
                 .andExpect(status().isNotFound());
+        mockMvc.perform(get("/data/goal-source-rationales-math-public.json"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(get("/data/goal-source-rationales-physics-public.json"))
+                .andExpect(status().isNotFound());
     }
 
     private static PackageCurriculumResourceState.ResolvedArtifact artifact(

@@ -16,6 +16,7 @@ class CurriculumResourceControllerModeTest {
             .withUserConfiguration(
                     AssetController.class,
                     DeckDataController.class,
+                    RepositorySourceRationaleController.class,
                     PackageCurriculumResourceController.class);
 
     @Test
@@ -26,6 +27,7 @@ class CurriculumResourceControllerModeTest {
                     assertThat(context).hasNotFailed();
                     assertThat(context).hasSingleBean(AssetController.class);
                     assertThat(context).hasSingleBean(DeckDataController.class);
+                    assertThat(context).hasSingleBean(RepositorySourceRationaleController.class);
                     assertThat(context).doesNotHaveBean(PackageCurriculumResourceController.class);
                 });
     }
@@ -40,6 +42,7 @@ class CurriculumResourceControllerModeTest {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean(AssetController.class);
                     assertThat(context).doesNotHaveBean(DeckDataController.class);
+                    assertThat(context).doesNotHaveBean(RepositorySourceRationaleController.class);
                     assertThat(context).hasSingleBean(PackageCurriculumResourceController.class);
                 });
     }

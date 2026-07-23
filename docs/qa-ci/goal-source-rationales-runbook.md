@@ -98,32 +98,68 @@ This variant hides SkillPilot goal IDs in the visible explanation, names the lea
 
 ## Runtime Public Index
 
-The Explorer source-rationale button does not call MEM/FWU or the local QA dashboard at render time. The production UI loads a Vite-built JSON asset from `app/src/data` first, so the index is shipped through the same `/assets/...` path family as the application code. A copy is also written to `/data/...` for local direct checks and as a legacy fallback:
+The runtime path depends on the active curriculum source mode.
+
+In repository mode, the Explorer source-rationale button lazily loads the
+reviewed compatibility indexes from two exact public endpoints:
 
 ```text
-/assets/goal-source-rationales-math-public-<hash>.json
 /data/goal-source-rationales-math-public.json
+/data/goal-source-rationales-physics-public.json
 ```
 
-Regenerate the current public Mathematik index with:
+These large JSON indexes remain outside the JavaScript bundle and service-worker
+precache. The repository-only controller exposes exactly these two files; the
+generic deck route must not intercept them.
+
+In package mode, `/data/**` is intentionally unavailable. The UI first discovers
+source-evidence bindings through Catalog API 1.2 at
+`/api/ui/curriculum-catalog` and then loads one generation-bound goal route from
+`/api/ui/curriculum-source-evidence/packages/{packageId}/{packageVersion}/goals/{goalId}`.
+There is no repository or classpath fallback in package mode.
+
+Regenerate both repository compatibility indexes with:
 
 ```bash
-npm run quality:goal-source-rationales:math-public
+npm run quality:goal-source-rationales:public
 ```
 
-Verify that the runtime copies are present, identical, cover the currently source-backed relevant leaf-goal set, and still keep the MEM/FWU showcase goals consistent with:
+This writes:
+
+- `app/public/data/goal-source-rationales-math-public.json`
+- `app/public/data/goal-source-rationales-physics-public.json`
+
+The indexes are repository-mode authoring compatibility artifacts only. Package
+mode discovers and loads source evidence lazily from the active curriculum
+package and never imports these indexes into the JavaScript bundle.
+
+The Mathematik generator emits the gap-free public runtime subset of relevant
+canonical leaf goals with at least one reviewed classic source mapping. It
+prefers `DE-BY` where available so that the configured MEM/FWU Bayern comparison
+remains visible and otherwise falls back to another reviewed classic route.
+
+Verify the Mathematik index content and its MEM/FWU showcase invariants with:
 
 ```bash
 npm run check:goal-source-rationales:math-public
 ```
 
-After `npm run build`, verify that Vite emitted the hashed JSON asset and that the built JavaScript references it:
+After `npm run build`, verify that the repository compatibility files were
+copied byte-identically into the backend static artifact, that the lazy
+repository module references their `/data/...` endpoints, and that neither
+hashed JSON copies nor service-worker precache entries were created:
 
 ```bash
 npm run check:goal-source-rationales:build-artifact
 ```
 
-After deployment, verify the live host in the same shape the browser uses:
+After deployment, verify the live host in the same shape the browser uses. The
+smoke test detects the curriculum source mode from the catalog endpoint:
+
+- catalog `404`: validate both repository compatibility indexes and their
+  payload invariants;
+- Catalog API 1.2: validate every published source-evidence discovery entry
+  with a real, generation-bound goal-evidence request.
 
 ```bash
 npm run smoke:goal-source-rationales:deployment
@@ -141,22 +177,6 @@ The repository deploy script runs this smoke test after restarting the productio
 SKILLPILOT_BASE_URL=https://staging.example.org \
   ./deploy_skillpilot.sh --coach-variant openai-mcp
 ```
-
-This command currently emits the gap-free public runtime subset:
-
-```text
-relevant canonical Mathematik leaf goals with at least one reviewed classic source mapping
-```
-
-The rendered route still prefers `DE-BY` where available so that the configured MEM/FWU Bayern comparison remains visible. If no Bayern route exists for a goal, the generator falls back to another reviewed classic source route.
-
-It writes:
-
-- `app/public/data/goal-source-rationales-math-public.json`
-
-This file is a repository-mode authoring compatibility index only. Package mode discovers and
-loads source evidence lazily from the active curriculum package and never imports this index into
-the JavaScript bundle.
 
 The current index is a scalable runtime step, not the final national coverage promise. It expands the UI from three hand-picked PoC goals to all currently source-backed relevant Mathematik leaf goals that the generator can derive from mapping reviews. Remaining uncovered leaf goals stay in the all-relevant report and gap-issue queue; relation rationales for `requires` and `contains` are still a separate rollout lane.
 
