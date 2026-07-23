@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-07-17T05:43:44.688Z
+Generated: 2026-07-23T08:05:05.770Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 18 |
+| Review-Ledger-Dateien | 19 |
 | Offene Provider-Deferred-Ziele | 23 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
@@ -50,7 +50,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `accepted_pilot_after_regeneration` | 13 |
 | `accepted_pilot_after_second_regeneration` | 3 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 2 |
+| `accepted_pilot_after_user_review_correction` | 3 |
 | `deferred_provider_limitation` | 130 |
 | `rejected_after_user_review_replaced` | 2 |
 | `rejected_regenerated` | 33 |
@@ -59,8 +59,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-batch-018.md` |
-| Latest ledger status | `completed_with_provider_limit` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-user-review-correction-2026-07-23.md` |
+| Latest ledger status | `completed` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17` |
 
@@ -114,6 +114,7 @@ Keine Eintraege.
 | --- | --- | --- | --- |
 | 014 | `1bdaf7f2-ff3b-455a-a7fb-95a44642762a` | Massenerhaltung bei Reaktionen erklären | `accepted_pilot_after_user_review_correction` |
 | 015 | `1f354a60-be44-512b-8f8b-f67c8c456035` | Chemische Sachverhalte fachlich diskutieren | `accepted_pilot_after_user_review_correction` |
+| chemie-user-review-correction-2026-07-23 | `801790f9-be3a-51fe-9b0f-3452c1bba887` | 1. Hauptsatz anwenden | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

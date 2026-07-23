@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-17T05:43:41.200Z",
+  "generatedAt": "2026-07-23T08:05:05.195Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "mathematik",
@@ -27,7 +27,7 @@
       "approved": 18,
       "pilot": 712
     },
-    "reviewLedgerFiles": 217,
+    "reviewLedgerFiles": 218,
     "reviewDecisionCounts": {
       "accepted": 2,
       "accepted_after_regeneration": 8,
@@ -43,7 +43,7 @@
       "accepted_pilot_after_second_regeneration": 15,
       "accepted_pilot_after_third_attempt": 5,
       "accepted_pilot_after_third_regeneration": 6,
-      "accepted_pilot_after_user_review_correction": 45,
+      "accepted_pilot_after_user_review_correction": 46,
       "accepted_user_supplied_replacement": 1,
       "blocked_provider_quota": 5,
       "correction_open_provider_credit_exhausted": 4,
@@ -67,7 +67,7 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-batch-208.md",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-user-review-correction-2026-07-23.md",
     "latestLedgerStatus": "completed",
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/mathematik-final-gap-2026-07-17"
@@ -582,6 +582,13 @@
         "title": "Bisektionsverfahren zur Nullstellennäherung anwenden",
         "decision": "accepted_pilot_after_user_review_correction",
         "notes": "The accepted image explicitly names the root approximation and visualizes two actual bisections as equal interval halves. Starting from the sign change on `[1; 2]`, the first row retains `[1; 1,5]` after `f(1,5)=0,25>0`; the second row retains `[1,25; 1,5]` after `f(1,25)=−0,4375<0`. The final statement `1,25 < √2 < 1,5` is correct and does not claim a false decimal precision. Full-resolution inspection found no wrong value, sign, interval endpoint, split direction, duplicate label, malformed word, or visible technical identifier. This is a technical pilot acceptance; human mathematical, accessibility, and rights approval remains open."
+      },
+      {
+        "batch": "mathematik-user-review-correction-2026-07-23",
+        "goalId": "f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824",
+        "title": "Dreieckskonstruktionen nach Kongruenzsätzen planen, ausführen und ihre Lösbarkeit begründen",
+        "decision": "accepted_pilot_after_user_review_correction",
+        "notes": "The incorrect `WWS` label was replaced by `SsW`; the user inspected and approved the corrected image in chat."
       }
     ]
   },
@@ -1612,7 +1619,7 @@
       "phase": "J7",
       "area": "Geometry",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/mathematik/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.jpg"
+      "url": "/assets/goal-visualizations/mathematik/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.png"
     },
     {
       "goalId": "093397e0-eec8-45bb-9a5a-a24827876df5",
