@@ -9,6 +9,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_ROOT}"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
+SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 
 require_explicit_coach_variant() {
   local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
@@ -82,7 +83,98 @@ ensure_restart_possible() {
   fi
 }
 
+require_public_readiness_configuration() {
+  local timeout_seconds="${SKILLPILOT_DEPLOY_READINESS_TIMEOUT_SECONDS:-180}"
+  local interval_seconds="${SKILLPILOT_DEPLOY_READINESS_INTERVAL_SECONDS:-5}"
+
+  if ! command -v curl >/dev/null 2>&1; then
+    echo "Abbruch: curl wird für die öffentliche Readiness-Prüfung benötigt." >&2
+    exit 1
+  fi
+  if ! command -v python3 >/dev/null 2>&1; then
+    echo "Abbruch: python3 wird für die Readiness-JSON-Prüfung benötigt." >&2
+    exit 1
+  fi
+  if ! [[ "${timeout_seconds}" =~ ^[1-9][0-9]*$ ]]; then
+    echo "Abbruch: SKILLPILOT_DEPLOY_READINESS_TIMEOUT_SECONDS muss eine positive Ganzzahl sein." >&2
+    exit 1
+  fi
+  if ! [[ "${interval_seconds}" =~ ^[1-9][0-9]*$ ]]; then
+    echo "Abbruch: SKILLPILOT_DEPLOY_READINESS_INTERVAL_SECONDS muss eine positive Ganzzahl sein." >&2
+    exit 1
+  fi
+}
+
+wait_for_public_readiness() {
+  local base_url="$1"
+  local readiness_url="${base_url%/}/actuator/health/readiness"
+  local timeout_seconds="${SKILLPILOT_DEPLOY_READINESS_TIMEOUT_SECONDS:-180}"
+  local interval_seconds="${SKILLPILOT_DEPLOY_READINESS_INTERVAL_SECONDS:-5}"
+
+  echo "Warte auf öffentliche Readiness: ${readiness_url}"
+  local started_at="${SECONDS}"
+  local attempt=0
+  local curl_exit_code=0
+  local http_status="000"
+  local response_body=""
+  local raw_response=""
+  local last_excerpt="<keine Antwort>"
+  local status_marker=$'\n__SKILLPILOT_HTTP_STATUS__:'
+  while (( SECONDS - started_at < timeout_seconds )); do
+    attempt=$((attempt + 1))
+    if raw_response="$(
+      curl \
+        --silent \
+        --show-error \
+        --write-out "${status_marker}%{http_code}" \
+        --connect-timeout 5 \
+        --max-time 10 \
+        "${readiness_url}" \
+        2>&1
+    )"; then
+      curl_exit_code=0
+    else
+      curl_exit_code=$?
+    fi
+
+    if [[ "${raw_response}" == *"${status_marker}"* ]]; then
+      http_status="${raw_response##*"${status_marker}"}"
+      response_body="${raw_response%"${status_marker}"*}"
+    else
+      http_status="000"
+      response_body="${raw_response}"
+    fi
+    last_excerpt="$(
+      printf '%s' "${response_body}" \
+        | tr '\r\n' '  ' \
+        | cut -c1-240
+    )"
+    if [ -z "${last_excerpt}" ]; then
+      last_excerpt="<leere Antwort>"
+    fi
+
+    if [ "${curl_exit_code}" -eq 0 ] \
+      && [ "${http_status}" = "200" ] \
+      && printf '%s' "${response_body}" | python3 -c \
+        'import json, sys; body = json.load(sys.stdin); raise SystemExit(0 if body.get("status") == "UP" else 1)' \
+        2>/dev/null; then
+      echo "CHECK public_readiness PASS HTTP 200 nach $((SECONDS - started_at))s (${attempt} Versuche)"
+      return 0
+    fi
+
+    echo "Readiness noch nicht erreicht: curl=${curl_exit_code} HTTP ${http_status:-000} (${attempt}. Versuch)"
+    sleep "${interval_seconds}"
+  done
+
+  echo "CHECK public_readiness FAIL nach ${timeout_seconds}s: ${readiness_url}" >&2
+  echo "Letzte Antwort: curl=${curl_exit_code} HTTP ${http_status}; ${last_excerpt}" >&2
+  echo "Dienststatus zur Diagnose:" >&2
+  systemctl status "${SERVICE_NAME}" --no-pager -l >&2 || true
+  return 1
+}
+
 require_explicit_coach_variant
+require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
 
@@ -135,7 +227,8 @@ if [ -t 0 ]; then
 fi
 sudo systemctl restart "${SERVICE_NAME}"
 
-SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+wait_for_public_readiness "${SMOKE_BASE_URL}"
+
 echo "Prüfe ausgelieferte Coach-Variante..."
 node scripts/verify_frontend_coach_variant.mjs \
   "${SMOKE_BASE_URL}" \

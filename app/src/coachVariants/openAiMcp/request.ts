@@ -44,7 +44,7 @@ interface OpenAiMcpRequestOptions {
 }
 
 const DEFAULT_START_PROMPT =
-  'Verwende SkillPilot Coach Deutsch und starte meine aktuelle Lerneinheit.'
+  'Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.'
 
 const getApiBase = (configured?: string) => {
   const runtimeEnvironment = (import.meta as ImportMeta & {

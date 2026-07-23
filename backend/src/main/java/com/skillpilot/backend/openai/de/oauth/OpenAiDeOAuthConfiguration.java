@@ -124,7 +124,7 @@ public class OpenAiDeOAuthConfiguration {
             Duration refreshTtl = properties.getOauth().getRefreshTokenTtl();
             RegisteredClient client = clientBuilder
                     .clientId(clientId)
-                    .clientName("ChatGPT / SkillPilot Coach Deutsch")
+                    .clientName("ChatGPT / SkillPilot Coach (Deutsch)")
                     .clientAuthenticationMethods(methods -> {
                         methods.clear();
                         methods.add(ClientAuthenticationMethod.NONE);

@@ -129,7 +129,7 @@ class OpenAiDeCoachConnectionServiceTest {
         assertThat(entity.getActiveBrowserSessionHash()).isEqualTo(hmac(BROWSER_SESSION));
         assertThat(result.response().chatgptUrl()).isEqualTo("https://chatgpt.com/");
         assertThat(result.response().prompt())
-                .contains("SkillPilot Coach Deutsch")
+                .contains("SkillPilot Coach (Deutsch)")
                 .doesNotContain(SKILLPILOT_ID)
                 .doesNotContain(result.token());
         assertThat(result.response().toString()).doesNotContain(SKILLPILOT_ID).doesNotContain(result.token());
@@ -255,7 +255,7 @@ class OpenAiDeCoachConnectionServiceTest {
 
         verify(pendingLaunches).save(launch.capture());
         assertThat(response.webUrl()).isEqualTo("https://chatgpt.com/");
-        assertThat(response.prompt()).contains("SkillPilot Coach Deutsch");
+        assertThat(response.prompt()).contains("SkillPilot Coach (Deutsch)");
         assertThat(response.toString()).doesNotContain(SKILLPILOT_ID);
         assertThat(launch.getValue().getConnectionSubject()).isEqualTo(connection.getSubject());
         assertThat(launch.getValue().getLaunchIntentType()).isEqualTo("CURRENT_UNIT");

@@ -127,7 +127,7 @@ public class OpenAiDeOAuthMetadataController {
         visibleScopes.append("</ul>");
 
         StringBuilder form = new StringBuilder();
-        form.append("<p>ChatGPT darf den Lernstand über die App SkillPilot Coach Deutsch lesen und – nach deinen Anweisungen – aktualisieren.</p>")
+        form.append("<p>ChatGPT darf den Lernstand über die App SkillPilot Coach (Deutsch) lesen und – nach deinen Anweisungen – aktualisieren.</p>")
                 .append(visibleScopes)
                 .append("<p>Die SkillPilot-ID und OAuth-Tokens werden nicht als Chat- oder Werkzeugparameter angezeigt.</p>")
                 .append("<form method=\"post\" action=\"")
