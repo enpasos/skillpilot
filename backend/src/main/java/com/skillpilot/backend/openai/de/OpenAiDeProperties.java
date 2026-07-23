@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class OpenAiDeProperties {
 
     private boolean enabled;
+    private boolean bootstrapEnabled;
     private boolean writesEnabled;
     private boolean secureCookie = true;
     private Duration bindingTtl = Duration.ofMinutes(5);
@@ -25,6 +26,14 @@ public class OpenAiDeProperties {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isBootstrapEnabled() {
+        return bootstrapEnabled;
+    }
+
+    public void setBootstrapEnabled(boolean bootstrapEnabled) {
+        this.bootstrapEnabled = bootstrapEnabled;
     }
 
     public boolean isWritesEnabled() {
@@ -161,8 +170,9 @@ public class OpenAiDeProperties {
     public static class OAuth {
 
         private boolean enabled;
-        // Must be copied from the ChatGPT app-management OAuth screen. There
-        // is deliberately no production-looking fallback for either value.
+        // The public client ID is chosen by SkillPilot and entered unchanged in
+        // ChatGPT app management. Redirect URIs must be copied from the
+        // matching ChatGPT app. Neither value receives an implicit fallback.
         private String clientId = "";
         private List<String> redirectUris = new ArrayList<>();
         private String protectedResourceMetadata =

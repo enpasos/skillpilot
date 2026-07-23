@@ -99,6 +99,7 @@ public class OpenAiDeOAuthConfiguration {
     @Bean
     AuthorizationServerSettings openAiDeAuthorizationServerSettings(
             @Value("${skillpilot.public-base-url:https://skillpilot.com}") String publicBaseUrl) {
+        requireHttpsOrigin(publicBaseUrl, "OpenAI-DE public base URL");
         return AuthorizationServerSettings.builder()
                 .issuer(stripTrailingSlash(publicBaseUrl) + ISSUER_PATH)
                 .authorizationEndpoint(AUTHORIZATION_ENDPOINT)
@@ -279,11 +280,19 @@ public class OpenAiDeOAuthConfiguration {
                         .opaqueToken(opaque -> opaque.introspector(introspector))
                         .authenticationEntryPoint((request, response, exception) -> {
                             response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                            response.setHeader(HttpHeaders.WWW_AUTHENTICATE, authenticationChallenge(properties));
+                            response.setHeader(
+                                    HttpHeaders.WWW_AUTHENTICATE,
+                                    authenticationChallengeFor(request.getHeader(HttpHeaders.AUTHORIZATION), properties));
                             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
                             response.getWriter().write("{\"error\":\"authentication_required\"}");
                         }));
         return http.build();
+    }
+
+    public static String discoveryAuthenticationChallenge(OpenAiDeProperties properties) {
+        return "Bearer resource_metadata=\""
+                + stripTrailingSlash(properties.getOauth().getProtectedResourceMetadata())
+                + "\", scope=\"" + READ_SCOPE + " " + WRITE_SCOPE + "\"";
     }
 
     public static String authenticationChallenge(OpenAiDeProperties properties) {
@@ -311,10 +320,18 @@ public class OpenAiDeOAuthConfiguration {
                 + ", error_description=\"" + errorDescription + "\"";
     }
 
+    static String authenticationChallengeFor(
+            String authorizationHeader,
+            OpenAiDeProperties properties) {
+        return hasText(authorizationHeader)
+                ? authenticationChallenge(properties)
+                : discoveryAuthenticationChallenge(properties);
+    }
+
     private static void validateSettings(OpenAiDeProperties properties) {
         if (!hasText(properties.getOauth().getClientId())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.oauth.client-id must be set to the value configured in ChatGPT app management.");
+                    "skillpilot.openai.de.oauth.client-id must be set to the public client ID entered in ChatGPT app management.");
         }
         Set<String> redirectUris = new LinkedHashSet<>();
         for (String value : properties.getOauth().getRedirectUris()) {
@@ -343,7 +360,7 @@ public class OpenAiDeOAuthConfiguration {
         }
     }
 
-    private static void requireHttpsUri(String value, String label) {
+    static void requireHttpsUri(String value, String label) {
         if (!hasText(value)) {
             throw new IllegalStateException(label + " must be configured.");
         }
@@ -356,8 +373,22 @@ public class OpenAiDeOAuthConfiguration {
         } catch (IllegalArgumentException exception) {
             throw new IllegalStateException(label + " must be a valid HTTPS URL.", exception);
         }
-        if (!"https".equalsIgnoreCase(uri.getScheme()) || !hasText(uri.getHost()) || uri.getFragment() != null) {
-            throw new IllegalStateException(label + " must be an absolute HTTPS URL without a fragment.");
+        if (!"https".equalsIgnoreCase(uri.getScheme())
+                || !hasText(uri.getHost())
+                || uri.getUserInfo() != null
+                || uri.getQuery() != null
+                || uri.getFragment() != null) {
+            throw new IllegalStateException(
+                    label + " must be an absolute HTTPS URL without user-info, query, or fragment.");
+        }
+    }
+
+    static void requireHttpsOrigin(String value, String label) {
+        requireHttpsUri(value, label);
+        URI uri = URI.create(value);
+        String path = uri.getRawPath();
+        if (path != null && !path.isEmpty() && !"/".equals(path)) {
+            throw new IllegalStateException(label + " must not contain a path.");
         }
     }
 

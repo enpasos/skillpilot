@@ -120,6 +120,31 @@ class OpenAiDeOAuthConfigurationTest {
                 .withMessageContaining("whitespace");
     }
 
+    @Test
+    void rejectsPublicBaseUrlsThatAreNotHttpsOrigins() {
+        for (String unsafeBaseUrl : List.of(
+                "https://user@skillpilot.test",
+                "https://skillpilot.test/prefix",
+                "https://skillpilot.test?tenant=one")) {
+            assertThatExceptionOfType(IllegalStateException.class)
+                    .as(unsafeBaseUrl)
+                    .isThrownBy(() -> configuration.openAiDeAuthorizationServerSettings(unsafeBaseUrl));
+        }
+    }
+
+    @Test
+    void rejectsQueryInProtocolEndpointConfiguration() {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+        OpenAiDeProperties properties = configuredProperties();
+        properties.getOauth().setProtectedResourceMetadata(
+                "https://skillpilot.test/api/openai/de/oauth/protected-resource?tenant=one");
+
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                .withMessageContaining("protected-resource metadata URL")
+                .withMessageContaining("query");
+    }
+
     private OpenAiDeProperties configuredProperties() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp");

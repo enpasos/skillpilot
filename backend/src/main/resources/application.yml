@@ -75,6 +75,7 @@ skillpilot:
   openai:
     de:
       enabled: ${SKILLPILOT_OPENAI_DE_ENABLED:false}
+      bootstrap-enabled: ${SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED:false}
       writes-enabled: ${SKILLPILOT_OPENAI_DE_WRITES_ENABLED:false}
       secure-cookie: ${SKILLPILOT_OPENAI_DE_SECURE_COOKIE:true}
       binding-ttl: ${SKILLPILOT_OPENAI_DE_BINDING_TTL:PT5M}
@@ -96,8 +97,9 @@ skillpilot:
         request-timeout: PT30S
       oauth:
         enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}
-        # Both values must be copied from the matching ChatGPT app-management
-        # OAuth configuration. Enabling OAuth without them fails startup.
+        # The client ID is the stable public ID selected by SkillPilot and must
+        # be entered identically in ChatGPT app management. Redirect URIs come
+        # from that app's callback display. OAuth fails fast without both.
         client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
         redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
         protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://skillpilot.com/api/openai/de/oauth/protected-resource}

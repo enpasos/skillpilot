@@ -17,7 +17,7 @@ import java.time.Duration;
 import java.util.HexFormat;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -37,7 +37,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE + 20)
-@ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
+@ConditionalOnExpression(
+        "${skillpilot.openai.de.enabled:false} || "
+                + "${skillpilot.openai.de.bootstrap-enabled:false}")
 public final class OpenAiDeRateLimitFilter extends OncePerRequestFilter {
 
     private static final String OVERFLOW_BUCKET = "overflow";
