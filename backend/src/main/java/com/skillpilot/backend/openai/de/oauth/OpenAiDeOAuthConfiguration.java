@@ -45,7 +45,6 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
-import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @Configuration(proxyBeanMethods = false)
@@ -224,6 +223,8 @@ public class OpenAiDeOAuthConfiguration {
         org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer server =
                 new org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer();
         RequestMatcher endpointsMatcher = server.getEndpointsMatcher();
+        RequestMatcher authorizationEndpointMatcher =
+                request -> AUTHORIZATION_ENDPOINT.equals(request.getRequestURI());
 
         http.securityMatcher(request -> endpointsMatcher.matches(request)
                         && !OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH
@@ -254,7 +255,7 @@ public class OpenAiDeOAuthConfiguration {
                 .exceptionHandling(exceptions -> exceptions
                         .defaultAuthenticationEntryPointFor(
                                 new LoginUrlAuthenticationEntryPoint(CONNECT_REQUIRED_ENDPOINT),
-                                new MediaTypeRequestMatcher(MediaType.TEXT_HTML))
+                                authorizationEndpointMatcher)
                         .defaultAuthenticationEntryPointFor(
                                 new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
                                 request -> true))

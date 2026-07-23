@@ -224,18 +224,26 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     @Test
-    void browserSessionCanHaveOnlyOneUnexpiredBindingGrant() {
+    void retryReplacesOpenBindingGrantForTheSameBrowserSession() {
+        OpenAiDeBindingGrant staleGrant = validGrant();
         when(bindingGrants.findByActiveBrowserSessionHashForUpdate(hmac(BROWSER_SESSION)))
-                .thenReturn(Optional.of(validGrant()));
+                .thenReturn(Optional.of(staleGrant));
+        ArgumentCaptor<OpenAiDeBindingGrant> replacement =
+                ArgumentCaptor.forClass(OpenAiDeBindingGrant.class);
 
-        assertThatExceptionOfType(ResponseStatusException.class)
-                .isThrownBy(() -> service.createBindingGrant(
-                        SKILLPILOT_ID,
-                        BROWSER_SESSION,
-                        request("web", "math", null)))
-                .satisfies(exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+        OpenAiDeCoachConnectionService.BindingGrant result = service.createBindingGrant(
+                SKILLPILOT_ID,
+                BROWSER_SESSION,
+                request("web", "math", null));
 
-        verify(bindingGrants, never()).saveAndFlush(any(OpenAiDeBindingGrant.class));
+        verify(bindingGrants).delete(staleGrant);
+        verify(bindingGrants).flush();
+        verify(bindingGrants).saveAndFlush(replacement.capture());
+        assertThat(replacement.getValue()).isNotSameAs(staleGrant);
+        assertThat(replacement.getValue().getActiveBrowserSessionHash()).isEqualTo(hmac(BROWSER_SESSION));
+        assertThat(replacement.getValue().getTokenHash())
+                .isEqualTo(hmac(result.token()))
+                .isNotEqualTo(staleGrant.getTokenHash());
     }
 
     @Test
