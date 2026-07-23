@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
+import com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,7 +197,12 @@ class ClaudeMcpTransportTest {
             SecurityAutoConfiguration.class,
             OAuth2ClientAutoConfiguration.class
     })
-    @Import({ClaudeMcpConfiguration.class, ClaudeMcpRegressionStatusController.class})
+    @Import({
+            SkillPilotStatelessMcpServerFactory.class,
+            ClaudeMcpConfiguration.class,
+            ClaudeMcpServerConfiguration.class,
+            ClaudeMcpRegressionStatusController.class
+    })
     static class TestApplication {
 
         @Bean

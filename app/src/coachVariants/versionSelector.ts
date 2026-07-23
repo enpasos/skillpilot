@@ -2,7 +2,7 @@ import {
   getVisibleSessionGptBaseUrl,
 } from './visibleSession/config'
 
-export type CoachVariantVersion = 'legacy' | 'visible-session'
+export type CoachVariantVersion = 'legacy' | 'visible-session' | 'openai-mcp'
 
 export interface CoachVariantEnvironment {
   readonly VITE_SKILLPILOT_COACH_VARIANT?: string
@@ -11,6 +11,7 @@ export interface CoachVariantEnvironment {
 export type ResolvedCoachVariant =
   | { version: 'legacy' }
   | { version: 'visible-session'; gptBaseUrl: string }
+  | { version: 'openai-mcp'; language: 'de' }
   | { version: 'configuration-error'; requestedVariant: string; message: string }
 
 export const getRequestedCoachVariant = (
@@ -19,6 +20,7 @@ export const getRequestedCoachVariant = (
   const requestedVariant = environment.VITE_SKILLPILOT_COACH_VARIANT?.trim().toLowerCase() ?? ''
   if (!requestedVariant || requestedVariant === 'visible-session') return 'visible-session'
   if (requestedVariant === 'legacy') return 'legacy'
+  if (requestedVariant === 'openai-mcp') return 'openai-mcp'
   return null
 }
 
@@ -37,6 +39,15 @@ export const resolveCoachVariant = (
   }
   if (requestedVariant === 'legacy') {
     return { version: 'legacy' }
+  }
+  if (requestedVariant === 'openai-mcp') {
+    if ((language ?? 'de').trim().toLowerCase().startsWith('en')) {
+      return {
+        version: 'visible-session',
+        gptBaseUrl: getVisibleSessionGptBaseUrl(language),
+      }
+    }
+    return { version: 'openai-mcp', language: 'de' }
   }
 
   return {

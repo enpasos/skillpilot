@@ -6,7 +6,13 @@ export const englishContract = Object.freeze({
     "Use only the English SkillPilot tools exposed by this server. Open the learning coach for a natural learning request without asking for technical IDs or tokens. When the visible widget message requests evaluation of a submitted answer, first load the pending answer and then store exactly one subject-matter evaluation. Accept mathematically equivalent solution paths regardless of wording. After a new turn or whenever conversation context is uncertain, reload the current learning state from SkillPilot.",
   mcpPath: "/mcp/en",
   resourceName: "skillpilot-coach-en-widget",
-  resourceUri: "ui://skillpilot-coach-en/coach.html",
+  resourceUri: "ui://skillpilot-coach-en/coach-v4.html",
+  legacyResourceUris: [
+    "ui://skillpilot-coach-en/coach.html",
+    "ui://skillpilot-coach-en/coach-v2.html",
+    "ui://skillpilot-coach-en/coach-v3.html"
+  ],
+  widgetDomain: "https://coach-en-mcp.skillpilot.com",
   schemaDescriptions: {
     input: {
       learningRequest:
@@ -115,10 +121,11 @@ export const englishContract = Object.freeze({
     submitLabel: "Submit answer",
     awaitingTitle: "Answer submitted",
     awaitingSummary: "Your answer is safely stored and is waiting for subject-matter evaluation.",
+    evaluationRequestLabel: "Evaluate answer now",
     feedbackTitle: "Feedback",
     completeLabel: "Keep learning",
     emptyContext: "The learning coach has not been set up yet.",
-    pendingMessage: "Please evaluate the answer I just submitted in the SkillPilot learning coach.",
+    pendingMessage: "Please load the answer I just submitted in the SkillPilot learning coach, evaluate it for subject-matter correctness, and store the evaluation.",
     selectedContext: "The learner selected {choice}. The current learning state is stored by SkillPilot.",
     submittedContext: "The learner submitted an answer in the SkillPilot widget. The complete answer is stored server-side and is waiting for subject-matter evaluation."
   }

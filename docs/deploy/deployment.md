@@ -5,16 +5,19 @@ This document describes the current automated deployment workflow implemented by
 ## Overview
 
 The deployment process currently does all of the following:
-1.  Check that the target `systemd` service is reachable and that `sudo` can restart it.
-2.  Stash local working-tree changes.
-3.  Pull the latest code from Git.
-4.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
-5.  Deploy **whitepaper assets** into `app/public/whitepaper` and the comic folders.
-6.  Deploy **quickstart/story assets** into `app/public/`.
-7.  Install frontend dependencies and rebuild the React app.
-8.  Build the backend jar.
-9.  Restart the `skillpilot` system service.
-10. Run the source-rationale deployment smoke test against the public host.
+1.  Require an explicit, valid frontend coach variant for this artifact.
+2.  Check that the target `systemd` service is reachable and that `sudo` can restart it.
+3.  Stash local working-tree changes.
+4.  Pull the latest code from Git.
+5.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
+6.  Deploy **whitepaper assets** into `app/public/whitepaper` and the comic folders.
+7.  Deploy **quickstart/story assets** into `app/public/`.
+8.  Install frontend dependencies and rebuild the React app.
+9.  Verify the requested coach variant in the generated backend static `version.json` and `index.html`.
+10. Build the backend jar.
+11. Restart the `skillpilot` system service.
+12. Verify the deployed coach variant against the public host.
+13. Run the source-rationale deployment smoke test against the public host.
 
 ## The Deployment Script (`scripts/deploy.sh`)
 
@@ -30,6 +33,10 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_ROOT}"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
+
+echo "Pruefe explizite Coach-Variante..."
+# The script accepts only visible-session, openai-mcp, or legacy and aborts
+# before Git/build/restart when VITE_SKILLPILOT_COACH_VARIANT is absent.
 
 echo "Pruefe Restart-Voraussetzungen..."
 # The script validates systemctl access and sudo before doing expensive build work.
@@ -60,6 +67,11 @@ npm install
 echo "Baue Anwendung..."
 npm run build
 
+echo "Pruefe Coach-Variante im Frontend-Artefakt..."
+node ../scripts/verify_frontend_coach_variant.mjs \
+  ../backend/src/main/resources/static \
+  "${VITE_SKILLPILOT_COACH_VARIANT}"
+
 cd ../backend
 chmod +x gradlew
 ./gradlew clean build -x test
@@ -68,21 +80,27 @@ cd ..
 echo "Starte Service neu..."
 sudo systemctl restart "${SERVICE_NAME}"
 
-echo "Pruefe Quellenbegruendungs-Smoke-Test..."
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+echo "Pruefe ausgelieferte Coach-Variante..."
+node scripts/verify_frontend_coach_variant.mjs \
+  "${SMOKE_BASE_URL}" \
+  "${VITE_SKILLPILOT_COACH_VARIANT}"
+
+echo "Pruefe Quellenbegruendungs-Smoke-Test..."
 cd app
 npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}"
 ```
 
 ## Why this order?
 
-1.  **Restart preflight first**: The script fails before stashing, copying assets, or building if the current environment cannot reach the `systemd` service or cannot authenticate `sudo`.
-2.  **`git stash` + `git pull`**: The current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
-3.  **Deck/story/whitepaper deployment** must happen before the frontend build so those files are present in `app/public/`.
-4.  **Frontend build** must finish before restart so the web assets are ready.
-5.  **Backend build** produces the updated server artifact.
-6.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
-7.  **Deployment smoke test** checks that the public host serves the built source-rationale JSON asset referenced by the browser bundle.
+1.  **Coach-variant preflight first**: every deploy must state the intended frontend contract; there is no production default that could silently choose Visible Session or MCP.
+2.  **Restart preflight**: the script fails before stashing, copying assets, or building if the current environment cannot reach the `systemd` service or cannot authenticate `sudo`.
+3.  **`git stash` + `git pull`**: the current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
+4.  **Deck/story/whitepaper deployment** must happen before the frontend build so those files are present in `app/public/`.
+5.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
+6.  **Backend build** produces the updated server artifact.
+7.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
+8.  **Deployment smoke tests** check that the public host serves the intended coach variant in both version metadata and HTML before checking the built source-rationale JSON asset.
 
 ## Asset deployment details
 
@@ -99,6 +117,13 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 
 ## Operational notes
 
+- `VITE_SKILLPILOT_COACH_VARIANT` is mandatory for `scripts/deploy.sh` and must
+  be exactly `visible-session`, `openai-mcp`, or `legacy`.
+  - German MCP canary/cutover:
+    `VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh`
+  - Visible Session deployment/rollback:
+    `VITE_SKILLPILOT_COACH_VARIANT=visible-session scripts/deploy.sh`
+  - The `openai-mcp` build keeps English on its established Visible Session GPT.
 - `git stash` is part of the current script behavior.
   - Operators should be aware that locally modified files will be stashed, not merged or deployed.
 - The backend build currently runs with `-x test`.

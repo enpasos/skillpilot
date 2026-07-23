@@ -37,6 +37,17 @@ async function rpc(baseUrl, locale, method, params = {}) {
 }
 
 test("DE and EN expose isolated, correctly annotated tool and resource contracts", async () => {
+  assert.equal(
+    new Set(Object.values(contracts).map((contract) => contract.widgetDomain)).size,
+    Object.keys(contracts).length,
+    "Each language app needs a unique widget domain"
+  );
+  for (const contract of Object.values(contracts)) {
+    const widgetUrl = new URL(contract.widgetDomain);
+    assert.equal(widgetUrl.protocol, "https:");
+    assert.equal(widgetUrl.origin, contract.widgetDomain);
+  }
+
   await withServer(async (baseUrl) => {
     for (const contract of Object.values(contracts)) {
       const initialized = await rpc(baseUrl, contract.locale, "initialize", {
@@ -87,11 +98,24 @@ test("DE and EN expose isolated, correctly annotated tool and resource contracts
       assert.equal(resources.length, 1);
       assert.equal(resources[0].uri, contract.resourceUri);
       assert.equal(resources[0].mimeType, "text/html;profile=mcp-app");
+      assert.equal(resources[0]._meta.ui.domain, contract.widgetDomain);
+      assert.equal(resources[0]._meta["openai/widgetDomain"], contract.widgetDomain);
 
       const read = await rpc(baseUrl, contract.locale, "resources/read", { uri: contract.resourceUri });
       assert.equal(read.contents[0].mimeType, "text/html;profile=mcp-app");
+      assert.equal(read.contents[0]._meta.ui.domain, contract.widgetDomain);
+      assert.equal(read.contents[0]._meta["openai/widgetDomain"], contract.widgetDomain);
       assert.match(read.contents[0].text, /ui\/initialize/);
       assert.doesNotMatch(read.contents[0].text, /<script[^>]+src=/i);
+
+      for (const legacyResourceUri of contract.legacyResourceUris) {
+        const legacyRead = await rpc(baseUrl, contract.locale, "resources/read", {
+          uri: legacyResourceUri
+        });
+        assert.equal(legacyRead.contents[0].uri, legacyResourceUri);
+        assert.equal(legacyRead.contents[0].mimeType, "text/html;profile=mcp-app");
+        assert.equal(legacyRead.contents[0].text, read.contents[0].text);
+      }
     }
   });
 });

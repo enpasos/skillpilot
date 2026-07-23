@@ -2169,6 +2169,7 @@ type SkillpilotBuildVersion = {
   branch: string
   dirty: boolean
   mode: string
+  coachVariant: string
 }
 
 const readGitText = async (args: string[]): Promise<string> => {
@@ -2201,7 +2202,10 @@ const resolvePackageBuildTime = async (commit: string): Promise<string> => {
   return new Date(0).toISOString()
 }
 
-const createSkillpilotBuildVersion = async (mode: string): Promise<SkillpilotBuildVersion> => {
+const createSkillpilotBuildVersion = async (
+  mode: string,
+  coachVariant: string,
+): Promise<SkillpilotBuildVersion> => {
   const envCommit = process.env.GITHUB_SHA
     || process.env.VERCEL_GIT_COMMIT_SHA
     || process.env.COMMIT_SHA
@@ -2227,13 +2231,14 @@ const createSkillpilotBuildVersion = async (mode: string): Promise<SkillpilotBui
     branch,
     dirty,
     mode,
+    coachVariant,
   }
 }
 
-const createBuildVersionPlugin = (mode: string): Plugin => {
+const createBuildVersionPlugin = (mode: string, coachVariant: string): Plugin => {
   let buildVersionPromise: Promise<SkillpilotBuildVersion> | null = null
   const getBuildVersion = () => {
-    buildVersionPromise ??= createSkillpilotBuildVersion(mode)
+    buildVersionPromise ??= createSkillpilotBuildVersion(mode, coachVariant)
     return buildVersionPromise
   }
 
@@ -2244,6 +2249,7 @@ const createBuildVersionPlugin = (mode: string): Plugin => {
       const meta = [
         `<meta name="skillpilot-build-id" content="${escapeHtmlAttribute(version.buildId)}">`,
         `<meta name="skillpilot-build-time" content="${escapeHtmlAttribute(version.buildTime)}">`,
+        `<meta name="skillpilot-coach-variant" content="${escapeHtmlAttribute(version.coachVariant)}">`,
       ].join('\n  ')
 
       if (html.includes('name="skillpilot-build-id"')) {
@@ -3134,6 +3140,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, APP_ROOT, '')
   const packageConsumerBuild = mode === 'package-consumer'
   const apiTarget = env.VITE_API_BASE || 'https://skillpilot.com'
+  const coachVariant = env.VITE_SKILLPILOT_COACH_VARIANT?.trim().toLowerCase()
+    || 'visible-session'
 
   return {
     define: packageConsumerBuild
@@ -3141,7 +3149,7 @@ export default defineConfig(({ mode }) => {
       : undefined,
     plugins: [
       createPackageConsumerSourcePolicyPlugin(mode),
-      createBuildVersionPlugin(mode),
+      createBuildVersionPlugin(mode, coachVariant),
       react(),
       tailwindcss(),
       deckEditorDevPlugin,

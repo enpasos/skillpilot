@@ -23,7 +23,8 @@ for (const contract of Object.values(contracts)) {
       __TOOL_SUBMIT__: JSON.stringify(contract.tools.submit.name),
       __SELECTED_CONTEXT__: JSON.stringify(contract.copy.selectedContext),
       __SUBMITTED_CONTEXT__: JSON.stringify(contract.copy.submittedContext),
-      __PENDING_MESSAGE__: JSON.stringify(contract.copy.pendingMessage)
+      __PENDING_MESSAGE__: JSON.stringify(contract.copy.pendingMessage),
+      __EVALUATION_REQUEST_LABEL__: JSON.stringify(contract.copy.evaluationRequestLabel)
     }
   });
   const bundle = result.outputFiles.find((file) => file.path.endsWith(".js")) || result.outputFiles[0];

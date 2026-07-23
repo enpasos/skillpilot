@@ -1,10 +1,13 @@
 package com.skillpilot.backend.claude.oauth;
 
+import com.skillpilot.backend.oauth.ProviderScopedOAuth2AuthorizationService;
+import com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepository;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
 import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -58,24 +61,33 @@ public class ClaudeOAuthConfiguration {
     public static final String CLAUDE_DOT_COM_CALLBACK = "https://claude.com/api/mcp/auth_callback";
 
     @Bean
-    RegisteredClientRepository claudeRegisteredClientRepository(JdbcOperations jdbcOperations) {
-        return new JdbcRegisteredClientRepository(jdbcOperations);
+    RegisteredClientRepository claudeRegisteredClientRepository(
+            JdbcOperations jdbcOperations,
+            @Value("${skillpilot.claude.oauth.client-id:https://claude.ai/oauth/mcp-oauth-client-metadata}")
+                    String clientId) {
+        return new ProviderScopedRegisteredClientRepository(
+                new JdbcRegisteredClientRepository(jdbcOperations),
+                clientId);
     }
 
     @Bean
     OAuth2AuthorizationService claudeAuthorizationService(
             JdbcOperations jdbcOperations,
-            RegisteredClientRepository registeredClientRepository,
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
             ClaudeCoachConnectionService connectionService) {
         return new ClaudeConnectionAwareAuthorizationService(
-                new JdbcOAuth2AuthorizationService(jdbcOperations, registeredClientRepository),
+                new ProviderScopedOAuth2AuthorizationService(
+                        new JdbcOAuth2AuthorizationService(
+                                jdbcOperations,
+                                new JdbcRegisteredClientRepository(jdbcOperations)),
+                        registeredClientRepository),
                 connectionService);
     }
 
     @Bean
     OAuth2AuthorizationConsentService claudeAuthorizationConsentService(
             JdbcOperations jdbcOperations,
-            RegisteredClientRepository registeredClientRepository) {
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository) {
         return new JdbcOAuth2AuthorizationConsentService(jdbcOperations, registeredClientRepository);
     }
 
@@ -93,7 +105,7 @@ public class ClaudeOAuthConfiguration {
 
     @Bean
     InitializingBean registerClaudeCimdClient(
-            RegisteredClientRepository registeredClientRepository,
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
             @Value("${skillpilot.claude.oauth.client-id:https://claude.ai/oauth/mcp-oauth-client-metadata}") String clientId,
             @Value("${skillpilot.claude.oauth.access-token-ttl:PT1H}") Duration accessTokenTtl,
             @Value("${skillpilot.claude.oauth.refresh-token-ttl:P30D}") Duration refreshTokenTtl) {
@@ -150,7 +162,7 @@ public class ClaudeOAuthConfiguration {
     @Bean
     ClaudeBindingAuthenticationFilter claudeBindingAuthenticationFilter(
             ClaudeCoachConnectionService connectionService,
-            SecurityContextRepository claudeSecurityContextRepository,
+            @Qualifier("claudeSecurityContextRepository") SecurityContextRepository claudeSecurityContextRepository,
             @Value("${skillpilot.claude.secure-cookie:true}") boolean secureCookie) {
         return new ClaudeBindingAuthenticationFilter(
                 connectionService,
@@ -166,10 +178,17 @@ public class ClaudeOAuthConfiguration {
 
     @Bean
     OpaqueTokenIntrospector claudeOpaqueTokenIntrospector(
-            OAuth2AuthorizationService authorizationService,
+            @Qualifier("claudeAuthorizationService") OAuth2AuthorizationService authorizationService,
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
             ClaudeCoachConnectionService connectionService,
+            @Value("${skillpilot.claude.oauth.client-id:https://claude.ai/oauth/mcp-oauth-client-metadata}") String clientId,
             @Value("${skillpilot.claude.mcp-url:https://skillpilot.com/api/claude/mcp}") String mcpUrl) {
-        return new SkillPilotOpaqueTokenIntrospector(authorizationService, connectionService, mcpUrl);
+        return new SkillPilotOpaqueTokenIntrospector(
+                authorizationService,
+                registeredClientRepository,
+                connectionService,
+                clientId,
+                mcpUrl);
     }
 
     @Bean
@@ -183,18 +202,22 @@ public class ClaudeOAuthConfiguration {
     @Order(1)
     SecurityFilterChain claudeAuthorizationServerSecurityFilterChain(
             HttpSecurity http,
-            RegisteredClientRepository registeredClientRepository,
-            OAuth2AuthorizationService authorizationService,
-            OAuth2AuthorizationConsentService consentService,
-            AuthorizationServerSettings authorizationServerSettings,
+            @Qualifier("claudeRegisteredClientRepository") RegisteredClientRepository registeredClientRepository,
+            @Qualifier("claudeAuthorizationService") OAuth2AuthorizationService authorizationService,
+            @Qualifier("claudeAuthorizationConsentService") OAuth2AuthorizationConsentService consentService,
+            @Qualifier("claudeAuthorizationServerSettings") AuthorizationServerSettings authorizationServerSettings,
             ClaudeBindingAuthenticationFilter bindingFilter,
             ClaudeOAuthResourceValidationFilter resourceValidationFilter,
-            SecurityContextRepository claudeSecurityContextRepository,
-            OAuth2TokenGenerator<?> tokenGenerator) throws Exception {
+            @Qualifier("claudeSecurityContextRepository") SecurityContextRepository claudeSecurityContextRepository,
+            @Qualifier("claudeOAuth2TokenGenerator") OAuth2TokenGenerator<?> tokenGenerator) throws Exception {
         org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer authorizationServer =
                 new org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer();
 
-        http.securityMatcher(authorizationServer.getEndpointsMatcher())
+        org.springframework.security.web.util.matcher.RequestMatcher endpointsMatcher =
+                authorizationServer.getEndpointsMatcher();
+        http.securityMatcher(request -> endpointsMatcher.matches(request)
+                        && !"/.well-known/oauth-authorization-server/api/openai/de"
+                                .equals(request.getRequestURI()))
                 .with(authorizationServer, server -> server
                         .registeredClientRepository(registeredClientRepository)
                         .authorizationService(authorizationService)
@@ -225,7 +248,7 @@ public class ClaudeOAuthConfiguration {
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .securityContext(context -> context
                         .securityContextRepository(claudeSecurityContextRepository))
-                .csrf(csrf -> csrf.ignoringRequestMatchers(authorizationServer.getEndpointsMatcher()))
+                .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
                 .exceptionHandling(exceptions -> exceptions
                         .defaultAuthenticationEntryPointFor(
                                 new LoginUrlAuthenticationEntryPoint("/api/claude/oauth/connect-required"),
@@ -249,7 +272,7 @@ public class ClaudeOAuthConfiguration {
     @Order(2)
     SecurityFilterChain claudeMcpSecurityFilterChain(
             HttpSecurity http,
-            OpaqueTokenIntrospector introspector,
+            @Qualifier("claudeOpaqueTokenIntrospector") OpaqueTokenIntrospector introspector,
             @Value("${skillpilot.claude.oauth.protected-resource-metadata:https://skillpilot.com/api/claude/oauth/protected-resource}") String resourceMetadataUrl) throws Exception {
         http.securityMatcher("/api/claude/mcp", "/api/claude/mcp/**")
                 .authorizeHttpRequests(authorize -> authorize

@@ -8,6 +8,7 @@ declare const __TOOL_SUBMIT__: string;
 declare const __SELECTED_CONTEXT__: string;
 declare const __SUBMITTED_CONTEXT__: string;
 declare const __PENDING_MESSAGE__: string;
+declare const __EVALUATION_REQUEST_LABEL__: string;
 
 declare global {
   interface Window {
@@ -32,6 +33,7 @@ let view: CoachView | undefined = window.openai?.toolOutput;
 let metadata: WidgetMetadata = widgetMetadataFromHost(window.openai?.toolResponseMetadata);
 let busy = false;
 let errorMessage = "";
+let statusMessage = "";
 
 bridge.onToolResult(applyToolResult);
 if (view) render();
@@ -42,6 +44,7 @@ function applyToolResult(result: ToolResult): void {
   if (result._meta) metadata = result._meta;
   busy = false;
   errorMessage = result.isError ? visibleError(result) : "";
+  statusMessage = "";
   render();
 }
 
@@ -75,9 +78,14 @@ function cardFor(current: CoachView): HTMLElement {
   }
   if (current.phase === "scope-choice") content.appendChild(choiceList(current));
   if (current.phase === "practice") content.appendChild(answerForm(current));
+  if (current.phase === "awaiting-evaluation") content.appendChild(evaluationAction());
   if (current.phase === "feedback") content.appendChild(feedbackBlock(current));
 
-  const status = textElement("p", "status", busy ? busyText(current.phase) : errorMessage);
+  const status = textElement(
+    "p",
+    "status",
+    busy ? busyText(current.phase) : errorMessage || statusMessage
+  );
   status.dataset.error = String(Boolean(errorMessage));
   status.setAttribute("role", errorMessage ? "alert" : "status");
   content.appendChild(status);
@@ -132,6 +140,20 @@ function feedbackBlock(current: CoachView): HTMLElement {
   return container;
 }
 
+function evaluationAction(): HTMLElement {
+  const button = textElement(
+    "button",
+    "primary",
+    __EVALUATION_REQUEST_LABEL__
+  ) as HTMLButtonElement;
+  button.type = "button";
+  button.disabled = busy;
+  button.addEventListener("click", () => {
+    void requestEvaluation();
+  });
+  return button;
+}
+
 async function selectChoice(index: number, label: string): Promise<void> {
   const sessionRef = metadata.skillpilotApp?.sessionRef;
   const choiceRef = metadata.skillpilotApp?.choiceRefs?.[index];
@@ -139,8 +161,10 @@ async function selectChoice(index: number, label: string): Promise<void> {
   setBusy(true);
   try {
     const result = await bridge.callTool(__TOOL_CHOOSE__, { sessionRef, choiceRef });
-    applyToolResult(result);
-    await bridge.updateModelContext(__SELECTED_CONTEXT__.replace("{choice}", label));
+    await applyAfterModelContext(
+      result,
+      __SELECTED_CONTEXT__.replace("{choice}", label)
+    );
   } catch (error) {
     fail(readError(error));
   }
@@ -157,10 +181,44 @@ async function submitAnswer(answer: string): Promise<void> {
       answer: answer.trim(),
       idempotencyKey: `widget_${crypto.randomUUID()}`
     });
-    applyToolResult(result);
-    await bridge.updateModelContext(__SUBMITTED_CONTEXT__);
-    await bridge.sendUserMessage(__PENDING_MESSAGE__);
+    await applyAfterModelContext(result, __SUBMITTED_CONTEXT__);
   } catch (error) {
+    fail(readError(error));
+  }
+}
+
+async function requestEvaluation(): Promise<void> {
+  setBusy(true);
+  try {
+    const delivery = await bridge.sendFollowUpMessage(__PENDING_MESSAGE__);
+    if (delivery.rejected) {
+      return fail(
+        __SKILLPILOT_LOCALE__ === "de"
+          ? "ChatGPT hat die Bewertungsanfrage abgelehnt."
+          : "ChatGPT rejected the evaluation request."
+      );
+    }
+    busy = false;
+    errorMessage = "";
+    statusMessage = delivery.hostAdvertisedTextMessages
+      ? __SKILLPILOT_LOCALE__ === "de"
+        ? "ChatGPT hat die Bewertungsanfrage über die MCP-Bridge angenommen."
+        : "ChatGPT accepted the evaluation request through the MCP bridge."
+      : __SKILLPILOT_LOCALE__ === "de"
+        ? "ChatGPT hat die Anfrage angenommen, die Nachrichtenfunktion aber nicht angekündigt."
+        : "ChatGPT accepted the request without advertising message support.";
+    render();
+  } catch (error) {
+    fail(readError(error));
+  }
+}
+
+async function applyAfterModelContext(result: ToolResult, context: string): Promise<void> {
+  try {
+    await bridge.updateModelContext(context);
+    applyToolResult(result);
+  } catch (error) {
+    applyToolResult(result);
     fail(readError(error));
   }
 }
@@ -168,12 +226,14 @@ async function submitAnswer(answer: string): Promise<void> {
 function setBusy(value: boolean): void {
   busy = value;
   errorMessage = "";
+  statusMessage = "";
   render();
 }
 
 function fail(message: string): void {
   busy = false;
   errorMessage = message;
+  statusMessage = "";
   render();
 }
 
@@ -191,9 +251,13 @@ function staleText(): string {
 
 function busyText(phase: CoachView["phase"]): string {
   if (__SKILLPILOT_LOCALE__ === "de") {
-    return phase === "scope-choice" ? "Auswahl wird übernommen …" : "Lösung wird gespeichert …";
+    if (phase === "scope-choice") return "Auswahl wird übernommen …";
+    if (phase === "awaiting-evaluation") return "Bewertung wird angefordert …";
+    return "Lösung wird gespeichert …";
   }
-  return phase === "scope-choice" ? "Applying selection …" : "Saving answer …";
+  if (phase === "scope-choice") return "Applying selection …";
+  if (phase === "awaiting-evaluation") return "Requesting evaluation …";
+  return "Saving answer …";
 }
 
 function element(tag: string, className: string): HTMLElement {

@@ -68,14 +68,18 @@ Verzeichnisses allein folgt noch keine Nutzbarkeit.
 5. Erwartung: Aufgabe erscheint ohne zusätzlichen technischen Chat-Turn.
 6. Einen fachlich richtigen, aber anders als eine Musterlösung formulierten Weg
    einreichen.
-7. Erwartung: natürliche sichtbare Bewertungsbitte, danach faire Bewertung und
-   persistiertes Feedback.
-8. Einen neuen normalen User-Turn senden.
-9. Erwartung: Das Modell lädt den aktuellen SkillPilot-Zustand frisch; es fragt
-   nicht nach einer alten ID und fällt nicht auf die Kurswahl zurück.
-10. Chat neu laden und erneut fortsetzen.
-11. Längeren Dialog führen, bis Host-Kontextkompaktierung plausibel ist, und die
-    Schritte 8 bis 10 wiederholen.
+7. Erwartung: Das Widget bestätigt zunächst nur die sichere Einreichung und zeigt
+   **Lösung jetzt bewerten lassen**. Diesen Button anklicken.
+8. Erwartung: Das Widget bestätigt die Annahme durch die MCP-Bridge sichtbar;
+   anschließend erscheinen eine natürliche Bewertungsbitte, faire Bewertung und
+   persistiertes Feedback. Eine Ablehnung durch den Host darf nicht still bleiben.
+   Es ist keine manuell getippte Brückennachricht nötig.
+9. Einen neuen normalen User-Turn senden.
+10. Erwartung: Das Modell lädt den aktuellen SkillPilot-Zustand frisch; es fragt
+    nicht nach einer alten ID und fällt nicht auf die Kurswahl zurück.
+11. Chat neu laden und erneut fortsetzen.
+12. Längeren Dialog führen, bis Host-Kontextkompaktierung plausibel ist, und die
+    Schritte 9 bis 11 wiederholen.
 
 Zusätzlich prüfen:
 
@@ -131,9 +135,16 @@ Der Rückgabewert wird ausschließlich aus `OPENAI_APPS_CHALLENGE` gelesen und a
 reiner Text ausgegeben. Ohne Konfiguration antwortet der Pfad mit 404.
 
 In Produktion erhält jede getrennt eingereichte Sprach-App einen eigenen Host
-und damit eine eigene Challenge-URL. Die Widget-Origin muss ebenfalls je App
-eindeutig sein und wird über `SKILLPILOT_WIDGET_DOMAIN_DE` beziehungsweise
-`SKILLPILOT_WIDGET_DOMAIN_EN` gesetzt.
+und damit eine eigene Challenge-URL. Dieser sprachspezifische Host ist zugleich
+die eindeutige Widget-Origin: `https://coach-de-mcp.skillpilot.com` für Deutsch
+und `https://coach-en-mcp.skillpilot.com` für Englisch. Bei abweichender
+Deployment-Topologie kann die Origin gezielt über
+`SKILLPILOT_WIDGET_DOMAIN_DE` beziehungsweise
+`SKILLPILOT_WIDGET_DOMAIN_EN` überschrieben werden; eine Variable muss im
+Normalfall nicht gesetzt werden. Der Wert muss eine HTTPS-Origin ohne Pfad sein.
+Der Server liefert ihn sowohl als
+`_meta.ui.domain` als auch über den ChatGPT-Kompatibilitätsalias
+`_meta["openai/widgetDomain"]` aus.
 
 ## 6. Review- und Produktgrenzen
 

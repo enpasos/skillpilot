@@ -2,9 +2,15 @@
 
 **Stand:** 22. Juli 2026
 
-**Status:** Zielarchitektur und Diskussionsgrundlage; ein lokaler vertikaler
-ChatGPT-MCP-App-Prototyp ist implementiert, die produktive Backend- und
-OAuth-Anbindung noch nicht.
+**Status:** Deutsche data-only App lokal vollständig an den produktiven
+Spring-Boot-Fachkern und einen eigenen OAuth-/MCP-Vertrag angebunden. Deployment,
+reale ChatGPT-OAuth-Acceptance und Tarifnachweis stehen noch aus. Widget und
+englische App folgen erst nach stabiler deutscher Freigabe.
+
+Der konkrete DE-first-Umsetzungs-, Cutover- und Rollbackplan steht in
+[openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
+erste vollständige Migration erfolgt bewusst **UI-los**; Widgets und die
+englische App folgen erst nach stabiler deutscher Workflow-Parität.
 
 Dieses Dokument ist selbsttragend. Es beschreibt die Entscheidung, ihre harten
 Randbedingungen, den umgesetzten Prototyp, die noch fehlenden Produktionsgrenzen
@@ -17,12 +23,12 @@ Das Modell, der freie Chat und die App-Oberfläche laufen in ChatGPT beziehungsw
 später Claude; Curriculum, Scope, aktives Lernziel, Frontier, Mastery, Recall und
 Prüfungszustand bleiben autoritativ im SkillPilot-Backend.
 
-Für ChatGPT werden **zwei eigenständig registrierte Apps** gebaut:
+Langfristig werden für ChatGPT **zwei eigenständig registrierte Apps** gebaut:
 
 - **SkillPilot Coach Deutsch** mit eigenem MCP-Endpunkt, deutschem Toolvertrag,
-  deutschem Widget und eigener Acceptance Suite;
+  zunächst ohne Widget und mit eigener Acceptance Suite;
 - **SkillPilot Coach English** mit eigenem MCP-Endpunkt, englischem Toolvertrag,
-  englischem Widget und eigener Acceptance Suite.
+  später eigenem Widget und eigener Acceptance Suite.
 
 Beide Apps dürfen dieselben internen SkillPilot-Domain-Services und zunächst auch
 denselben Deployment-Prozess verwenden. Ihre externe Oberfläche wird jedoch nicht
@@ -171,11 +177,20 @@ unnötig technisch und vom Verhalten des Custom-GPT-Hosts abhängig.
 
 Eine MCP App verbessert diese Lage wesentlich:
 
-- fachliche Auswahlen und Einreichungen können direkt im Widget erfolgen;
+- fachliche Auswahlen und Einreichungen können in einer späteren Ausbaustufe
+  direkt im Widget erfolgen;
 - Widget-interne opake Referenzen können in app-exklusiven Metadaten bleiben;
 - der autoritative Zustand lebt im SkillPilot-Backend;
 - modellseitige Tools können nach einem neuen Turn einen frischen sicheren
   Snapshot laden.
+
+Ein isolierter UI-loser MCP-Test am 22. Juli 2026 hat zusätzlich sowohl die
+Same-Turn-Weitergabe als auch die Wiederverwendung ausschließlich strukturierter
+Toolwerte über die nächste Usernachricht hinweg erfolgreich bestätigt. Die
+Custom-GPT-Action-Regression trat in diesem kurzen MCP-Test nicht auf. Das macht
+eine data-only App zum bevorzugten ersten Migrationsschritt, ist aber keine
+Garantie für lange oder kompaktierte Dialoge. Argumentlose Backend-Rehydration
+bleibt deshalb eine verbindliche Produktionsanforderung.
 
 Sie hebt die Providergrenze nicht vollständig auf. Freier Text im Chat erreicht
 zuerst den Provider, und der Provider entscheidet, ob und welches Tool aufgerufen
@@ -190,8 +205,8 @@ Zuverlässigkeit bleibt Teil der Acceptance Suite.
              .---------------------------------.
              | ChatGPT + Plugin-Verzeichnis    |
              |                                 |
-             |  App DE          App EN         |
-             |  Widget DE       Widget EN      |
+             |  App DE          App EN (später)|
+             |  data-only       Widget optional|
              '-----|---------------|-----------'
                    | HTTPS/MCP     | HTTPS/MCP
                    v               v
@@ -208,7 +223,8 @@ Zuverlässigkeit bleibt Teil der Acceptance Suite.
              |                                 |
              | CoachStateSnapshot (pure query) |
              | Offering-/Scope-Resolver        |
-             | Commands + Receipts + Locks     |
+             | Commands + Guards/Locks         |
+             | Receipts (spätere Härtung)      |
              | Recall-/Exam-Grenzen            |
              '----------------|----------------'
                               v
@@ -225,8 +241,20 @@ Claude App/MCP DE + EN -> eigener Provideradapter -> derselbe SafeCoachRuntime
 | Provider-Host | Modell, Chat, Toolauswahl, Darstellung der App | fachlichen Zustand autoritativ festlegen |
 | Sprachspezifische App | lokalisierte Tools, UI, Toolmetadaten und Hostinteraktion | einen Universalvertrag durch Laufzeit-Sprachflags simulieren |
 | Provider Boundary | OAuth, Scopes, Rate Limits, sichere Projektion, Tool-zu-Use-Case-Abbildung | rohe interne DTOs oder Identitäten weiterreichen |
-| SafeCoachRuntime | freigegebene Queries und Commands, frische Revalidierung, Idempotenz | Modellargumente als Berechtigung behandeln |
+| SafeCoachRuntime | freigegebene Queries und Commands, frische Revalidierung und fachliche Transaktionsgrenzen | Modellargumente als Berechtigung behandeln |
 | SkillPilot-Domain | Curriculum, Lernpfad, Mastery, Recall, Exam und Persistenz | vom Chatverlauf als Datenbank abhängen |
+
+Die deutsche Spring-Implementierung schützt die OpenAI-Pfade zusätzlich mit
+einem standardmäßig aktiven, konfigurierbaren Fixed-Window-Limit pro vom Servlet-
+Container normalisierter Clientadresse und getrennten Budgets für MCP, OAuth,
+Cockpit-Starts und Metadata. Der Produktionsproxy muss eingehende Forwarding-
+Header verwerfen beziehungsweise selbst ersetzen und der einzige Netzwerkpfad
+zum Backend sein. Die Adresse landet weder in Logs noch Metrik-Tags. Das ist eine
+wirksame lokale
+Sicherheitsgrenze für eine Instanz. Sobald mehrere Backendinstanzen hinter einem
+Proxy laufen, muss der vertrauenswürdige Reverse Proxy beziehungsweise das API-
+Gateway dasselbe Limit zusätzlich instanzübergreifend durchsetzen; das lokale
+Limit bleibt als zweite Barriere aktiv.
 
 ## 7. Zustand, Identität und sichtbare Daten
 
@@ -237,11 +265,10 @@ Autoritativ im SkillPilot-Backend liegen mindestens:
 - Provider-Verbindung und Lernenden-Zuordnung;
 - Curriculum, Scope und Personalisierung;
 - aktives Lernziel und Frontier;
-- Mastery und fachliche Evidenz;
-- Aufgaben-, Einreichungs- und Bewertungsbelege;
-- Verified-Recall-Batches;
-- Prüfungsversuch, Abgabe und Auswertungsfreigabe;
-- Idempotenz- und Command-Receipts.
+- Mastery und die heute bereits persistierten fachlichen Belege;
+- Aufgaben, Bewertungen und Verified-Recall-Kartenstatus;
+- in der späteren Widget-Härtung zusätzlich Einreichungen, Prüfungsversuche
+  sowie Idempotenz- und Command-Receipts.
 
 Widgetzustand wie aufgeklappte Bereiche oder Texteingabe ist flüchtige UI-
 Darstellung. Er darf den Backendzustand nicht ersetzen. Providerseitiger
@@ -252,7 +279,8 @@ Gesprächskontext ist eine Komfortoptimierung, keine fachliche Quelle.
 | Klasse | Beispiele | Sichtbarkeit |
 | --- | --- | --- |
 | Nutzer- und modellgeeignete Fachinformation | Label, Aufgabenstellung, sicherer Lernstand, Feedback | Chat und/oder Widget; modellseitig nur soweit nötig |
-| Widget-interne Referenz | kurzlebige Session-, Auswahl- oder Draft-Referenz | nur App-Widget; nicht in `content` oder `structuredContent` |
+| Modellgeeignete fachliche Referenz | öffentliche Curriculum-/Lernziel-ID aus einer aktuellen erlaubten Option | nur bei Bedarf in `structuredContent`; nicht unnötig in der sichtbaren Antwort wiederholen |
+| Widget-interne Referenz (später) | kurzlebige Auswahl- oder Draft-Referenz | nur App-Widget; nicht in `content` oder `structuredContent` |
 | Interne Identität und Geheimnis | permanente SkillPilot-ID, OAuth-Token, Datenbankschlüssel | niemals Modell, Chat oder Widgetinhalt |
 
 Öffentliche, fachlich sinnvolle Lernziel-IDs dürfen als Produktreferenz sichtbar
@@ -261,12 +289,14 @@ Transportreferenzen strikt zu unterscheiden.
 
 ### 7.3 Keine sichtbaren technischen Keys
 
-Buttons und Karten übertragen kurzlebige opake Referenzen direkt über den
-MCP-App-Bridge-Aufruf. Lernende sehen „Grundkurs“ oder „Leistungskurs“, nicht
-`choice_...`. Ein technischer Wert darf nie die einzige Information sein, die
-über den Chatverlauf hinweg die Berechtigung oder den fachlichen Zustand beweist.
+In der ersten UI-losen Version zeigt der Chat verständliche Labels. Zugehörige
+fachliche IDs bleiben im `structuredContent` der frisch geladenen erlaubten
+Optionen und werden nicht als Bedienkonzept auf die lernende Person abgewälzt.
+Die IDs sind weder Geheimnis noch Berechtigungsnachweis; jede Mutation wird gegen
+OAuth-Subjekt und aktuellen Backendzustand neu validiert. Ein späteres Widget
+kann Buttons und Karten mit kurzlebigen opaken Referenzen ergänzen.
 
-Für modellseitige Folgen gilt:
+Für die spätere Receipt-Härtung modellseitiger Folgen gilt:
 
 1. Modell ruft einen lesenden Kontext- oder Pending-Submission-Use-Case auf.
 2. Backend löst Identität aus dem OAuth-Zugriff und lädt frischen Zustand.
@@ -326,17 +356,22 @@ deterministisch aufgelöst:
   -> Widgetfrage: Grundkurs oder Leistungskurs?
 ```
 
-Das Modell liefert nutzernahe Facetten, keine internen IDs. Ein
-`CurriculumOfferingResolver` prüft sie gegen den aktuellen Katalog und erzeugt
-kurzlebige, kataloggebundene Auswahlreferenzen. Die Mutation revalidiert diese
-Referenz gegen Kataloggeneration und aktuellen Lernendenzustand.
+In der aktuellen data-only App interpretiert das Modell die natürliche Sprache
+ausschließlich gegen die frisch vom Backend gelieferten Katalogoptionen und
+übergibt deren fachliche IDs strukturiert zurück. Die Mutation revalidiert sie
+gegen Katalog und aktuellen Lernendenzustand. Ein späteres Widget kann diesen
+Schritt mit einem deterministischen `CurriculumOfferingResolver` und
+kurzlebigen, kataloggebundenen Auswahlreferenzen weiter härten.
 
-### 9.3 Commands, Receipts und Concurrency
+### 9.3 Commands, Concurrency und spätere Receipts
 
-Jede fachliche Mutation erhält eine serverseitig erzeugte Command-ID und einen
-kanonischen Request-Hash. Command-Receipt und Domainmutation werden in derselben
-kurzen Transaktion gespeichert. Ein Retry liefert das gespeicherte Ergebnis,
-statt dieselbe Mutation erneut auszuführen.
+Die aktuelle UI-lose deutsche App revalidiert jede Mutation unter den
+bestehenden fachlichen Transaktions- und Lockgrenzen. Viele Übergänge sind
+inhaltlich idempotent; ein allgemeines persistentes Command-Receipt mit
+kanonischem Request-Hash gehört jedoch ausdrücklich zur späteren Härtungsstufe.
+Dann werden Receipt und Domainmutation in derselben kurzen Transaktion
+gespeichert, sodass ein Retry das gespeicherte Ergebnis statt einer zweiten
+Mutation liefert.
 
 Coach, Cockpit und parallele Providergespräche können denselben Lernenden ändern.
 Deshalb erfolgen Mutationen unter derselben fachlichen Lock-/Revision-Grenze und
@@ -351,8 +386,8 @@ Der Provider erhält nur:
 - die gerade nötige Aufgaben- und Bewertungsinformation;
 - einen begrenzten Lernstandssnapshot;
 - freigegebene Ressourcen und backendgenerierte Deep Links;
-- zweckgebundene kurzlebige Receipts, wenn sie für einen Same-Turn-Schritt nötig
-  sind.
+- in einer späteren Härtungsstufe zweckgebundene kurzlebige Receipts, wenn sie
+  für einen Same-Turn-Schritt nötig sind.
 
 Nicht erlaubt sind rohe interne Learner-State-DTOs, permanente Lernenden-IDs,
 OAuth-Tokens, beliebige Dateipfade oder URLs, nicht freigegebene Lösungen und
@@ -394,15 +429,15 @@ End-to-End-Abläufe.
 | Nutzerreise | Produktive Mindestanforderung |
 | --- | --- |
 | Einstieg und Wiederaufnahme | OAuth-Verbindung; aktueller Zustand ohne sichtbaren Token |
-| Natürliche Einrichtung | Fach/Stufe/Region aus Text; nur reale offene Entscheidung als Widgetauswahl |
+| Natürliche Einrichtung | Fach/Stufe/Region aus Text; nur reale offene Entscheidung als verständliche Auswahl, später optional im Widget |
 | Lernpfad und Frontier | frische Backendprojektion; keine Chat-Memory-Autorität |
 | Zielwahl und Ressourcen | gültige Kandidaten; backendgenerierte Links |
 | Erklärung und Aufgabe | alters- und fachgerechte Darstellung; klare Aufgabenfassung |
-| Lösung einreichen | direkte Widgetaktion, persistentes Submission-Receipt |
+| Lösung einreichen | zunächst sichtbare Chatabgabe; später direkte Widgetaktion mit persistentem Submission-Receipt |
 | Bewertung | fachlich gleichwertige Wege anerkennen; keine reine Wortlautprüfung |
 | Mastery | nur nach erlaubter Evidenz; sichtbar und korrigierbar |
-| Verified Recall | serverseitiger Batch, Antwortfreigabe und Result-Receipt |
-| Prüfung | Attempt, explizite Abgabe, erst danach Auswertung; keine lösungslenkende Nachfrage |
+| Verified Recall | serverseitiger Kartenstatus; später zusätzlich Evidence-/Result-Receipt |
+| Prüfung | zunächst sichtbare Chatabgabe und regelgesteuerte Freigabe; später Attempt und explizite Widgetabgabe |
 | Profil-/Curriculumwechsel | Wirkung erklären, validieren und soweit sinnvoll Undo anbieten |
 | Fehler und Quoten | keine Doppelmutation; Zustand bleibt erhalten; Cockpit nutzbar |
 | DE/EN | jede Reise separat in der jeweiligen App abgenommen |
@@ -509,7 +544,56 @@ Der Prototyp:
 
 Diese Lücken dürfen nicht durch Testdaten oder Promptanweisungen kaschiert werden.
 
-## 14. Veröffentlichung als OpenAI-Plugin
+## 14. Implementierter produktionsnaher Spring-Pfad
+
+Der deutsche data-only Vertrag ist direkt im bestehenden Backend implementiert:
+
+```text
+https://skillpilot.com/api/openai/de/mcp
+  -> eigener WebMvcStatelessServerTransport
+  -> eigener McpStatelessSyncServer
+  -> genau elf OpenAI-DE-Werkzeuge
+  -> OAuth-Subjektauflösung und Write-Kill-Switch
+  -> CoachToolFacade / CoachStateProjection
+  -> bestehende SkillPilot-Domain und PostgreSQL
+```
+
+Die allgemeine Spring-AI-MCP-Autokonfiguration bleibt deaktiviert. Eine eigene
+Fabrik erzeugt stattdessen je Provider einen Transport, Server, Router,
+Instructions und eine ausdrückliche Tool-Allowlist. Damit können
+`/api/openai/de/mcp` und `/api/claude/mcp` im selben Prozess laufen, ohne Tools
+oder Verträge zu vermischen. Der OpenAI-Server verwendet native MCP-Ergebnisse
+mit `structuredContent`, `outputSchema`, Annotationen und Security-Metadaten.
+
+Der deutsche Vertrag umfasst:
+
+- argumentlose Kontext-Rehydration und gezielte Navigation;
+- Curriculum, Personalisierung, Scope und aktives Ziel;
+- kontrollierte Mastery-Aktualisierung;
+- vollständigen Verified-Recall-Ablauf;
+- freigegebene Prüfungsgrundlage nach sichtbarer vollständiger Abgabe.
+
+Normale Kontexte werden allowlist-basiert über die gemeinsame sichere Projektion
+erzeugt. Sie enthalten keine permanente Lernenden-ID, OAuth-Tokens oder
+vorzeitige Prüfungslösung. Ein eigener OpenAI-DE-OAuth-Issuer unterstützt einen
+vorab registrierten öffentlichen ChatGPT-Client, Authorization Code mit PKCE
+`S256`, exakte Resource-Bindung, opake rotierende Tokens, Widerruf und eine
+serverseitige Verbindung zum Lernenden. Alle Schreibwerkzeuge besitzen zusätzlich
+einen unabhängigen, standardmäßig deaktivierten Runtime-Kill-Switch.
+
+Das Cockpit besitzt eine getrennte `openai-mcp`-Canary-Variante. Ohne explizites
+Build-Flag bleibt die bestehende Visible-Session-Variante aktiv. Englisch wird
+im neuen Pfad kontrolliert abgewiesen, bis ein eigener Vertrag fertig und
+abgenommen ist.
+
+Noch nicht lokal abschließbar sind die echten Werte aus der ChatGPT-App-
+Verwaltung, das Produktionsdeployment, der reale OAuth-Callback, Langdialog- und
+Kompaktierungstests sowie der Tarif-/Regionsnachweis. Diese Punkte sind
+Release-Gates und keine stillschweigend als erledigt geltenden Codeaufgaben. Das
+Betriebsverfahren steht in
+[openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
+
+## 15. Veröffentlichung als OpenAI-Plugin
 
 OpenAI veröffentlicht Apps inzwischen innerhalb von Plugins. Für SkillPilot ist
 der robuste Zielzuschnitt:
@@ -550,7 +634,7 @@ Scheitert der kostenlose Zugang oder ein erforderlicher fester Tarif, ist die
 harte Geschäftsanforderung für diesen Providerpfad nicht erfüllt – auch wenn die
 Technik im Entwicklermodus funktioniert.
 
-## 15. Lieferplan
+## 16. Lieferplan
 
 ### Phase 0 – Prototyp und Fallbacks
 
@@ -558,44 +642,44 @@ Technik im Entwicklermodus funktioniert.
 - Visible-Session- und Legacy-Quellen getrennt und rollbackfähig halten;
 - keine Vermischung der neuen Appverträge mit Custom-GPT-OpenAPI-Schemas.
 
-**Stand:** lokaler Prototyp vorhanden; Produkt- und Backendgrenzen offen.
+**Stand:** abgeschlossen; Fallbackquellen bleiben getrennt erhalten.
 
-### Phase 1 – Produktiver gemeinsamer Kern
+### Phase 1 – Deutscher produktionsnaher Backendpfad
 
-- reine `CoachStateSnapshot`-Query;
-- Offering-/Scope-Resolver und kataloggebundene Referenzen;
-- atomare Commands, Receipts und gemeinsame Learner-Concurrency-Grenze;
-- sichere, versionierte DTO-Projektionen;
-- OAuth-Subjekt-zu-Lernenden-Abbildung ohne Offenlegung der internen ID.
+- isolierter MCP-Transport im Spring-Boot-Prozess;
+- vollständiger data-only Toolvertrag gegen bestehende Domain-Use-Cases;
+- sichere, kompakte DTO-Projektionen;
+- OAuth-Subjekt-zu-Lernenden-Abbildung ohne Offenlegung der internen ID;
+- standardmäßig deaktivierter Schreib-Kill-Switch und Cockpit-Canary.
 
-**Exit:** zwei authentifizierte Apps laden und ändern denselben autoritativen
-SkillPilot-Zustand ohne sichtbare technische Schlüssel.
+**Stand:** lokal umgesetzt und automatisiert getestet. Externer Exit ist ein
+echter deutscher OAuth-/MCP-Lauf in ChatGPT.
 
-### Phase 2 – Vertikale reale Nutzerreise
+### Phase 2 – Deutsche reale Nutzerreisen
 
 - natürlicher Einstieg „Mathe – Oberstufe – Hessen“;
-- genau eine echte GK-/LK-Auswahl im Widget;
-- aktives Ziel und Frontier;
-- Aufgabe, Einreichungs-Receipt, faire Bewertung und kontrolliertes Mastery-
-  Update;
-- Retry-, Reload-, Parallelchat- und Cross-Learner-Negativtests.
+- fachliche GK-/LK-Auswahl ohne sichtbare technische Schlüssel;
+- aktives Ziel, Frontier, Aufgabe, faire Bewertung und Mastery;
+- Recall und Prüfung;
+- Retry-, Reload-, Langdialog-, Parallelchat- und Cross-Learner-Negativtests;
+- read-only Canary vor Freigabe der Schreibwerkzeuge.
 
-**Exit:** komplette DE- und EN-E2E-Suites in realen Providerhosts.
+**Exit:** komplette deutsche E2E-Suite im realen Providerhost.
 
-### Phase 3 – Workflow-Parität
+### Phase 3 – Widget und zusätzliche Härtung
 
-- Ressourcen und sichere Dateien/Bilder;
-- Profil-, Curriculum- und Zielwechsel;
-- Verified Recall;
-- vollständiger Exam-Attempt-/Submission-/Evaluation-Flow;
-- Export, Löschung, Quoten und Degradation.
+- optionale direkte Auswahl- und Einreichungsaktionen im Widget;
+- serverseitige Submission-/Receipt-Härtung für garantiert auszuführende
+  Schritte;
+- sichere Dateien/Bilder, Export, Löschung, Quoten und Degradation.
 
-**Exit:** alle Must-Nutzerreisen pro App fachlich und technisch abgenommen.
+**Exit:** UI-Funktionen verbessern die Bedienung, ohne den stabilen data-only
+Vertrag oder die Backendautorität zu schwächen.
 
-### Phase 4 – OpenAI-Veröffentlichung und Tarifnachweis
+### Phase 4 – OpenAI-Veröffentlichung, Englisch und Tarifnachweis
 
-- zwei App-/Plugin-Einreichungen;
-- Review und veröffentlichte Versionen;
+- deutsche Veröffentlichung und reale Tarifmatrix;
+- danach eigener englischer Vertrag, App-Eintrag und vollständige Acceptance;
 - reale Tarif-, Regions-, Web- und Mobilmatrix;
 - gestufter Rollout mit getrennten Kill-Switches.
 
@@ -612,7 +696,7 @@ belegt, nicht nur angenommen.
 Claude ist kein Schema-Alias der OpenAI-App. Die Providergrenze bleibt
 passgenau.
 
-## 16. Abnahme- und Go-/No-Go-Gates
+## 17. Abnahme- und Go-/No-Go-Gates
 
 | Gate | Muss vor Pilot/Standard erfüllt sein |
 | --- | --- |
@@ -629,7 +713,7 @@ passgenau.
 | Betrieb | Rate Limits, Observability ohne Geheimnisse, Degradation und Rollback getestet |
 | Distribution | Review bestanden und Nutzbarkeit in Zielregion/-oberfläche/-tarif nachgewiesen |
 
-## 17. Risiken und Gegenmaßnahmen
+## 18. Risiken und Gegenmaßnahmen
 
 | Risiko | Konsequenz | Gegenmaßnahme |
 | --- | --- | --- |
@@ -643,7 +727,7 @@ passgenau.
 | Modell bewertet nur nach Musterwortlaut | korrekte Lösungen werden abgewiesen | allgemeine Äquivalenzregel, kuratierte Alternativlösungen, Human-Rater-Gate |
 | App wird mit vollwertiger Backendintegration verwechselt | verfrühte Freigabe | Prototyplimits sichtbar halten; Security- und Workflow-Gates erzwingen |
 
-## 18. Bewusst verworfene Primärvarianten
+## 19. Bewusst verworfene Primärvarianten
 
 ### SkillPilot-eigener Chat mit SkillPilot-bezahlter Modell-API
 
@@ -669,22 +753,22 @@ Dies ist nutzungsabhängige API-Abrechnung, kein kostenloser oder fester
 Consumerplan, und erhöht Secret-, Support- und Datenschutzrisiken. Es erfüllt die
 Kernanforderung nicht.
 
-## 19. Unmittelbar nächste Schritte
+## 20. Unmittelbar nächste Schritte
 
-1. Den lokalen Prototyp gegen die aktuelle ChatGPT-Developer-Mode-Umgebung über
-   einen öffentlichen HTTPS-Testendpunkt prüfen; DE und EN getrennt verbinden.
-2. Die aktuelle `noauth`-Demo durch OAuth und eine echte
-   Provider-Subjekt-Zuordnung ersetzen.
-3. Den Storeadapter an die bestehenden SkillPilot-Domain-Use-Cases anbinden,
-   zunächst read-only, dann mit einem atomaren Scope-Command.
-4. Den vollständigen vertikalen Ablauf Setup → Kurswahl → Ziel → Aufgabe →
-   Einreichung → Bewertung → Mastery mit Receipts implementieren.
-5. Die Tarif-, Region-, Web-/Mobil- und Reviewfähigkeit früh prüfen, bevor die
-   restlichen Workflows auf diesen Distributionspfad gesetzt werden.
-6. Erst nach erfolgreichem ChatGPT-Pilot denselben Fachkern mit einem
-   Claude-spezifischen App-/MCP-Vertrag verbinden.
+1. Die exakte Client-ID und Callback-URL aus der deutschen ChatGPT-App-Verwaltung
+   in die OpenAI-DE-Konfiguration übernehmen.
+2. Spring-Boot-Artefakt und additive Datenbankmigration mit deaktiviertem
+   Schreib-Kill-Switch deployen.
+3. Metadata, HTTP-Challenge, OAuth/PKCE und die strikte Provider-Toolisolation am
+   kanonischen HTTPS-Endpunkt prüfen.
+4. Read-only Canary, danach den vollständigen deutschen Schreibpilot nach dem
+   Deployment-Runbook durchführen.
+5. Erst nach dokumentierter Workflow-, Tarif-, Regions- und Oberflächen-
+   Acceptance das Cockpit auf `openai-mcp` umschalten.
+6. Danach Widgetverbesserungen entwickeln und erst anschließend den separaten
+   englischen Appvertrag ableiten.
 
-## 20. Referenzen
+## 21. Referenzen
 
 - [Lokaler OpenAI-MCP-App-Prototyp](<../../../ai/openai app/>)
 - [Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md)

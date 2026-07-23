@@ -67,13 +67,25 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
 
         // The Custom GPT action regression probe has its own byte-accurate audit log.
         // MCP responses can contain an entire learner state inside a JSON-RPC text
-        // field, which cannot be safely redacted as ordinary nested JSON. Neither
-        // endpoint is therefore body-logged by this general-purpose filter.
+        // field, which cannot be safely redacted as ordinary nested JSON. OAuth
+        // token/authorization forms can likewise contain codes, verifiers or refresh
+        // tokens. These protocol endpoints are therefore not body-logged here.
         String requestUri = request.getRequestURI();
         if (requestUri.equals("/api/action-regression")
                 || requestUri.startsWith("/api/action-regression/")
                 || requestUri.equals("/api/claude/mcp")
-                || requestUri.startsWith("/api/claude/mcp/")) {
+                || requestUri.startsWith("/api/claude/mcp/")
+                || requestUri.equals("/api/openai/de/mcp")
+                || requestUri.startsWith("/api/openai/de/mcp/")
+                // OAuth token, authorization and revocation requests use form bodies.
+                // Do not pass those credentials through the general JSON body logger.
+                || requestUri.startsWith("/api/claude/oauth")
+                || requestUri.startsWith("/api/openai/de/oauth")
+                // The provider-start body carries a typed learner goal/curriculum
+                // intent. It is not a credential, but it is still learner data and
+                // therefore stays out of the generic request-body log.
+                || (requestUri.startsWith("/api/ui/learners/")
+                        && requestUri.contains("/openai/de/"))) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -409,6 +421,7 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
                 || normalized.contains("learnerid")
                 || normalized.contains("chatsessiontoken")
                 || normalized.contains("startcode")
+                || normalized.equals("promptcontext")
                 || normalized.equals("authorization")
                 || normalized.equals("password")
                 || normalized.endsWith("password")

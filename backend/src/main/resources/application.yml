@@ -19,26 +19,9 @@ spring:
   ai:
     mcp:
       server:
-        enabled: ${skillpilot.claude.mcp.enabled:false}
-        protocol: STATELESS
-        name: skillpilot-claude-mcp
-        version: 0.1.0
-        type: SYNC
-        instructions: >-
-          Follow the user's explicit request and the descriptions of the currently available tools.
-          When getCoachContext is available and the request is a coaching task, call it first and
-          follow state.stateMachine.requiredAction. After changing coach state, reload the context
-          before making another coaching decision. Preserve backend-provided fields unchanged when
-          passing them between tools. When getCoachContext returns a language, answer in that language;
-          otherwise continue in the user's language. Never ask for or expose a permanent SkillPilot ID
-          or an OAuth credential.
-        capabilities:
-          resource: false
-          tool: true
-          prompt: false
-          completion: false
-        streamable-http:
-          mcp-endpoint: /api/claude/mcp
+        # SkillPilot registers one stateless transport and one explicit tool allowlist per
+        # provider/language. Keep Spring AI's singular, context-wide MCP auto-server disabled.
+        enabled: false
   datasource:
     url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:skillpilot}
     username: ${POSTGRES_USER:skillpilot}
@@ -51,10 +34,6 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
-  endpoint:
-    health:
-      probes:
-        enabled: true
   security:
     oauth2:
       client:
@@ -75,6 +54,17 @@ skillpilot:
       enabled: ${SKILLPILOT_CLAUDE_MCP_ENABLED:${SKILLPILOT_CLAUDE_ENABLED:false}}
       coach-enabled: ${SKILLPILOT_CLAUDE_COACH_TOOLS_ENABLED:true}
       regression-enabled: ${SKILLPILOT_CLAUDE_REGRESSION_TOOLS_ENABLED:false}
+      server-name: ${SKILLPILOT_CLAUDE_MCP_SERVER_NAME:skillpilot-claude-mcp}
+      server-version: ${SKILLPILOT_CLAUDE_MCP_SERVER_VERSION:0.1.0}
+      request-timeout: ${SKILLPILOT_CLAUDE_MCP_REQUEST_TIMEOUT:PT30S}
+      instructions: >-
+        Follow the user's explicit request and the descriptions of the currently available tools.
+        When getCoachContext is available and the request is a coaching task, call it first and
+        follow state.stateMachine.requiredAction. After changing coach state, reload the context
+        before making another coaching decision. Preserve backend-provided fields unchanged when
+        passing them between tools. When getCoachContext returns a language, answer in that language;
+        otherwise continue in the user's language. Never ask for or expose a permanent SkillPilot ID
+        or an OAuth credential.
     oauth:
       # Claude's hosted clients identify themselves with this CIMD URL. Override
       # only if Anthropic changes the published client metadata document.
@@ -82,6 +72,37 @@ skillpilot:
       protected-resource-metadata: ${SKILLPILOT_CLAUDE_RESOURCE_METADATA:https://skillpilot.com/api/claude/oauth/protected-resource}
       access-token-ttl: ${SKILLPILOT_CLAUDE_ACCESS_TOKEN_TTL:PT1H}
       refresh-token-ttl: ${SKILLPILOT_CLAUDE_REFRESH_TOKEN_TTL:P30D}
+  openai:
+    de:
+      enabled: ${SKILLPILOT_OPENAI_DE_ENABLED:false}
+      writes-enabled: ${SKILLPILOT_OPENAI_DE_WRITES_ENABLED:false}
+      secure-cookie: ${SKILLPILOT_OPENAI_DE_SECURE_COOKIE:true}
+      binding-ttl: ${SKILLPILOT_OPENAI_DE_BINDING_TTL:PT5M}
+      launch-ttl: ${SKILLPILOT_OPENAI_DE_LAUNCH_TTL:PT5M}
+      mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://skillpilot.com/api/openai/de/mcp}
+      chatgpt-url: ${SKILLPILOT_OPENAI_DE_CHATGPT_URL:https://chatgpt.com/}
+      rate-limit:
+        enabled: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_ENABLED:true}
+        window: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_WINDOW:PT1M}
+        mcp-requests: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_MCP_REQUESTS:120}
+        oauth-requests: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_OAUTH_REQUESTS:60}
+        ui-requests: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_UI_REQUESTS:60}
+        metadata-requests: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_METADATA_REQUESTS:120}
+        max-client-buckets: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_MAX_CLIENT_BUCKETS:10000}
+      mcp:
+        enabled: ${SKILLPILOT_OPENAI_DE_MCP_ENABLED:${SKILLPILOT_OPENAI_DE_ENABLED:false}}
+        server-name: skillpilot-openai-de-mcp
+        server-version: 0.1.0
+        request-timeout: PT30S
+      oauth:
+        enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}
+        # Both values must be copied from the matching ChatGPT app-management
+        # OAuth configuration. Enabling OAuth without them fails startup.
+        client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
+        redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
+        protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://skillpilot.com/api/openai/de/oauth/protected-resource}
+        access-token-ttl: ${SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL:PT1H}
+        refresh-token-ttl: ${SKILLPILOT_OPENAI_DE_REFRESH_TOKEN_TTL:P30D}
   curriculum:
     source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}
     consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}
@@ -98,6 +119,18 @@ skillpilot:
       max-body-chars: ${SKILLPILOT_AI_TRACE_MAX_BODY_CHARS:50000}
   security:
     signing-secret: ${SKILLPILOT_SIGNING_SECRET:default-insecure-secret-change-me}
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      # openAiDeCoach exists only while the provider is enabled. Keep the
+      # readiness group valid for deployments in which that feature is off.
+      validate-group-membership: false
+      group:
+        readiness:
+          include: readinessState,db,openAiDeCoach
 
 
 springdoc:
