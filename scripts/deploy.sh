@@ -10,6 +10,7 @@ cd "${PROJECT_ROOT}"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+SYSTEMCTL_BIN=""
 
 require_explicit_coach_variant() {
   local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
@@ -58,9 +59,10 @@ ensure_restart_possible() {
     echo "Abbruch: systemctl ist in dieser Umgebung nicht verfügbar." >&2
     exit 1
   fi
+  SYSTEMCTL_BIN="$(command -v systemctl)"
 
   local load_state
-  if ! load_state="$(systemctl show "${SERVICE_NAME}" --property=LoadState --value 2>/dev/null)"; then
+  if ! load_state="$("${SYSTEMCTL_BIN}" show "${SERVICE_NAME}" --property=LoadState --value 2>/dev/null)"; then
     echo "Abbruch: systemctl kann den Dienst '${SERVICE_NAME}' in dieser Umgebung nicht lesen." >&2
     echo "Führe das Deployment auf dem Server aus, auf dem der systemd-Dienst läuft." >&2
     exit 1
@@ -71,14 +73,11 @@ ensure_restart_possible() {
     exit 1
   fi
 
-  if [ -t 0 ]; then
-    if ! sudo -v; then
-      echo "Abbruch: sudo-Authentifizierung für den späteren Restart fehlgeschlagen." >&2
-      exit 1
-    fi
-  elif ! sudo -n true 2>/dev/null; then
-    echo "Abbruch: kein interaktives Terminal und keine passwortlose sudo-Berechtigung für den Restart." >&2
-    echo "Starte das Deployment in einer interaktiven Server-Shell oder richte NOPASSWD für systemctl restart ${SERVICE_NAME} ein." >&2
+  if [ "$(id -u)" -ne 0 ] \
+    && ! sudo -k -n -l -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}" >/dev/null 2>&1; then
+    echo "Abbruch: keine passwortlose sudo-Berechtigung für den Restart." >&2
+    echo "Erwartet wird eine enge NOPASSWD-Freigabe für genau diesen Befehl:" >&2
+    echo "  ${SYSTEMCTL_BIN} restart ${SERVICE_NAME}" >&2
     exit 1
   fi
 }
@@ -169,7 +168,7 @@ wait_for_public_readiness() {
   echo "CHECK public_readiness FAIL nach ${timeout_seconds}s: ${readiness_url}" >&2
   echo "Letzte Antwort: curl=${curl_exit_code} HTTP ${http_status}; ${last_excerpt}" >&2
   echo "Dienststatus zur Diagnose:" >&2
-  systemctl status "${SERVICE_NAME}" --no-pager -l >&2 || true
+  "${SYSTEMCTL_BIN}" status "${SERVICE_NAME}" --no-pager -l >&2 || true
   return 1
 }
 
@@ -221,11 +220,11 @@ chmod +x gradlew
 cd ..
 
 echo "Starte Service neu..."
-# sudo timestamp may expire during long builds, so refresh it directly before restart.
-if [ -t 0 ]; then
-  sudo -v
+if [ "$(id -u)" -eq 0 ]; then
+  "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"
+else
+  sudo -n -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"
 fi
-sudo systemctl restart "${SERVICE_NAME}"
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
 

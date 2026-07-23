@@ -44,7 +44,8 @@ the deployment logic to maintain.
 
 The deployment process currently does all of the following:
 1.  Require an explicit, valid frontend coach variant for this artifact.
-2.  Check that the target `systemd` service is reachable and that `sudo` can restart it.
+2.  Check that the target `systemd` service is reachable and that the exact
+    restart command has a passwordless `sudo` grant.
 3.  Stash local working-tree changes.
 4.  Pull the latest code from Git.
 5.  Deploy **curriculum decks** from `curricula/.../json/` into both frontend and backend static data folders.
@@ -78,7 +79,8 @@ echo "Pruefe explizite Coach-Variante..."
 # before Git/build/restart when VITE_SKILLPILOT_COACH_VARIANT is absent.
 
 echo "Pruefe Restart-Voraussetzungen..."
-# The script validates systemctl access and sudo before doing expensive build work.
+# The script validates systemctl access and the command-specific NOPASSWD grant
+# before doing expensive build work.
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Ueberspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
@@ -117,7 +119,7 @@ chmod +x gradlew
 cd ..
 
 echo "Starte Service neu..."
-sudo systemctl restart "${SERVICE_NAME}"
+sudo -n -- "$(command -v systemctl)" restart "${SERVICE_NAME}"
 
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 echo "Warte auf oeffentliche Readiness..."
@@ -136,7 +138,10 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 ## Why this order?
 
 1.  **Coach-variant preflight first**: every deploy must state the intended frontend contract; there is no production default that could silently choose Visible Session or MCP.
-2.  **Restart preflight**: the script fails before stashing, copying assets, or building if the current environment cannot reach the `systemd` service or cannot authenticate `sudo`.
+2.  **Restart preflight**: the script fails before stashing, copying assets, or
+    building if the current environment cannot reach the `systemd` service or
+    lacks a command-specific, passwordless restart grant. It never opens a
+    general `sudo` password prompt.
 3.  **`git stash` + `git pull`**: the current script assumes deployment happens from a possibly dirty working tree and protects the pull by stashing first.
 4.  **Deck/story/whitepaper deployment** must happen before the frontend build so those files are present in `app/public/`.
 5.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
@@ -188,8 +193,16 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - Override with `SKILLPILOT_DEPLOY_READINESS_TIMEOUT_SECONDS=<seconds>` and
     `SKILLPILOT_DEPLOY_READINESS_INTERVAL_SECONDS=<seconds>` when a target
     environment has a different startup profile.
-- Non-interactive deployments need passwortlose `sudo` permission for the restart command.
-  - Otherwise run the script from an interactive server shell so `sudo` can prompt before the build starts.
+- Deployments as `enpasos` need a command-specific, passwordless `sudo` grant
+  for the restart. The script deliberately uses `sudo -n` and never asks for a
+  Linux password:
+
+  ```sudoers
+  enpasos ALL=(root) NOPASSWD: /usr/bin/systemctl restart skillpilot
+  ```
+
+  Confirm the actual binary path on the server with `command -v systemctl`
+  before creating the rule. Do not grant unrestricted passwordless `sudo`.
 
 ## Prerequisites on Server
 
@@ -197,4 +210,5 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 - **Node.js & npm**: Required for installing dependencies and building the frontend.
 - **Java**: Required for the backend Gradle build.
 - **Git**: Required for pulling updates.
-- **Sudo Access**: Required for restarting the system service.
+- **Sudo Access**: A command-specific `NOPASSWD` grant is required for
+  restarting the `skillpilot` system service when deploying as a non-root user.
