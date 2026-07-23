@@ -8,30 +8,19 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro (gemini-3-pro-image)
+- Provider: OpenAI GPT Image (built-in imagegen)
 - Status: pilot
-- Quellbild: `f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.jpg`
-- Public Asset: `/assets/goal-visualizations/mathematik/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.jpg`
+- Quellbild: `f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.png`
+- Public Asset: `/assets/goal-visualizations/mathematik/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824/f6ef3ce8-5264-4f43-a6e9-22f7f8ec8824.png`
 
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
-
-Rahmen:
-- Zielgruppe: Gymnasium Mathematik.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible mathematische Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
-
-Titel: Dreieckskonstruktionen nach Kongruenzsätzen planen, ausführen und ihre Lösbarkeit begründen
-Beschreibung: Die lernende Person kann Aussagen zur Lösbarkeit von Dreieckskonstruktionen formulieren, Kongruenzsätze für Konstruktionen nutzen und Mittelsenkrechten, Höhen, Seitenhalbierende sowie Dreiecke nachvollziehbar konstruieren.
-
-Zusatzanweisung:
-Verwende kurze, fachlich sichere Beispiele. Für Dreieckskonstruktion: SSS mit AB=6 cm, AC=4 cm, BC=5 cm; Konstruktionsplan: Grundseite AB zeichnen, Kreis um A mit Radius 4 cm, Kreis um B mit Radius 5 cm, Schnittpunkt C; Lösbarkeit mit 4+5>6 und |5-4|<6 begründen. Keine Winkelmessung mit Geodreieck. Für lineare Funktionen: y=2x+1, Tabelle x:0,1,2 und y:1,3,5; Graph durch (0|1),(1|3),(2|5), Steigung m=2, y-Achsenabschnitt b=1. Für quadratische Gleichungen: x²-4=0 -> x=−2 oder x=2; Graph schneidet x-Achse bei −2 und 2. Für Funktionswerte: f(x)=2x+1, f(3)=7 und Punkt (3|7). Für Geradengleichung: aus P(0|1) und Q(2|5): m=(5-1)/(2-0)=2, b=1, also y=2x+1. Keine technischen IDs, keine langen Erklärtexte.
+Use case: precise-object-edit
+Asset type: German secondary-school educational infographic
+Input image: edit target
+Primary request: Change exactly one text label on the four yellow congruence-theorem puzzle pieces at the lower left. Replace the label "WWS" on the lower-right puzzle piece with "SsW" (capital S, lowercase s, capital W).
+Constraints: Preserve the original image exactly in all other respects: same landscape composition, typography, German text, drawings, colors, spacing, mathematical values, arrows, people, and every other label. The four puzzle labels after the edit must read exactly "SSS", "SWS", "WSW", and "SsW". Do not alter any other text. No watermark.
 ```
 
 ## Review-Notiz
