@@ -21,9 +21,12 @@ import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 import {
   buildCoachChatStartUrl,
+  coachStartNeedsPromptPaste,
   getActiveVisibleSessionLaunchCopy,
+  isOpenAiMcpCoachActive,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
+import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -57,6 +60,7 @@ export const Abi26MatheStartView: React.FC = () => {
   const [startPrompt, setStartPrompt] = useState('')
   const [startLoading, setStartLoading] = useState(false)
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy('de')
+  const openAiMcpCoachActive = isOpenAiMcpCoachActive('de')
 
   const context = useMemo(
     () => ({
@@ -189,11 +193,21 @@ export const Abi26MatheStartView: React.FC = () => {
         language: 'de',
         selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
         promptContext: buildAbi26StartPrompt(context),
+        launchIntent: openAiMcpCoachActive
+          ? {
+              type: 'ABI26_EXAM',
+              goalId: ABI26_FOCUS_GOAL_BY_LEVEL[courseLevel],
+              courseLevel,
+            }
+          : undefined,
         client: ABI26_CAMPAIGN_SLUG,
       })
       prompt = chatStart.prompt
       setStartPrompt(prompt)
-    } catch {
+    } catch (caught) {
+      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
+        setError(caught.message)
+      }
       setStartLoading(false)
       return
     }
@@ -229,9 +243,20 @@ export const Abi26MatheStartView: React.FC = () => {
         language: 'de',
         selectedCurriculum: ABI26_ROOT_CURRICULUM_ID,
         promptContext: buildAbi26StartPrompt(context),
+        launchIntent: openAiMcpCoachActive
+          ? {
+              type: 'ABI26_EXAM',
+              goalId: ABI26_FOCUS_GOAL_BY_LEVEL[courseLevel],
+              courseLevel,
+            }
+          : undefined,
         client: ABI26_CAMPAIGN_SLUG,
       })
       setStartPrompt(chatStart.prompt)
+      if (coachStartNeedsPromptPaste(chatStart)) {
+        const copied = await copyText(chatStart.prompt)
+        if (copied) setCopiedState('prompt')
+      }
       const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
@@ -239,9 +264,12 @@ export const Abi26MatheStartView: React.FC = () => {
       } else {
         window.open(url, '_blank', 'noopener,noreferrer')
       }
-    } catch {
+    } catch (caught) {
       if (chatWindow) {
         chatWindow.close()
+      }
+      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
+        setError(caught.message)
       }
     } finally {
       setStartLoading(false)
@@ -299,7 +327,9 @@ export const Abi26MatheStartView: React.FC = () => {
 
           <p className="mt-5 text-sm text-text-secondary">
             {visibleSessionLaunchCopy?.sharedStateSummary
-              ?? 'Cockpit und Chat nutzen denselben anonymen Lernstand. ChatGPT bekommt dafür nur einen kurzlebigen Startcode.'}
+              ?? (openAiMcpCoachActive
+                ? 'Cockpit und Chat nutzen denselben anonymen Lernstand. Beim ersten Start verbindest du die SkillPilot-App einmalig mit ChatGPT.'
+                : 'Cockpit und Chat nutzen denselben anonymen Lernstand. ChatGPT bekommt dafür nur einen kurzlebigen Startcode.')}
           </p>
           {hasInvalidTrack && (
             <p className="mt-3 rounded-lg border border-amber-300/40 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-900/20 dark:text-amber-200">
@@ -457,7 +487,9 @@ export const Abi26MatheStartView: React.FC = () => {
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
               {visibleSessionLaunchCopy?.sessionDetail
-                ?? 'Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.'}
+                ?? (openAiMcpCoachActive
+                  ? 'Deine SkillPilot-ID bleibt im Browser. SkillPilot bereitet eine kurze Startnachricht vor; beim ersten Start verbindest du die App einmalig mit ChatGPT.'
+                  : 'Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.')}
             </p>
             {startPrompt && (
               <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
@@ -472,7 +504,8 @@ export const Abi26MatheStartView: React.FC = () => {
                 className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
               >
                 <Copy size={14} />
-                {visibleSessionLaunchCopy?.copyPrompt ?? 'Startcode kopieren'}
+                {visibleSessionLaunchCopy?.copyPrompt
+                  ?? (openAiMcpCoachActive ? 'Startnachricht kopieren' : 'Startcode kopieren')}
               </button>
               <button
                 type="button"
@@ -489,7 +522,8 @@ export const Abi26MatheStartView: React.FC = () => {
             </p>
             {copiedState === 'prompt' && (
               <p className="mt-2 text-xs text-emerald-600 dark:text-emerald-400">
-                {visibleSessionLaunchCopy?.promptCopied ?? 'Startcode wurde kopiert.'}
+                {visibleSessionLaunchCopy?.promptCopied
+                  ?? (openAiMcpCoachActive ? 'Startnachricht wurde kopiert.' : 'Startcode wurde kopiert.')}
               </p>
             )}
           </div>

@@ -27,6 +27,28 @@ class RequestLoggingFilterTest {
     }
 
     @Test
+    void providerCredentialAndLaunchRoutesBypassTheGeneralBodyLogger() throws Exception {
+        for (String path : new String[] {
+                "/api/claude/oauth2/token",
+                "/api/openai/de/oauth2/token",
+                "/api/openai/de/oauth2/revoke",
+                "/api/ui/learners/learner-42/openai/de/connect-start",
+                "/api/ui/learners/learner-42/openai/de/launch"
+        }) {
+            MockHttpServletRequest request = new MockHttpServletRequest("POST", path);
+            request.setContentType("application/x-www-form-urlencoded");
+            request.setContent("refresh_token=must-not-be-logged".getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            MockHttpServletResponse response = new MockHttpServletResponse();
+            MockFilterChain chain = new MockFilterChain();
+
+            filter.doFilter(request, response, chain);
+
+            assertThat(chain.getRequest()).as(path).isSameAs(request);
+            assertThat(chain.getResponse()).as(path).isSameAs(response);
+        }
+    }
+
+    @Test
     void similarlyPrefixedRouteStillUsesTheGeneralRequestLogger() throws Exception {
         MockHttpServletRequest request = new MockHttpServletRequest(
                 "POST",
@@ -82,6 +104,18 @@ class RequestLoggingFilterTest {
         assertThat(redacted).contains("\"skillpilotId\":\"<redacted>\"");
         assertThat(redacted).contains("\"chatSessionToken\":\"<redacted>\"");
         assertThat(redacted).contains("\"prompt\":\"Starte SkillPilot mit Startcode: <startCode>\"");
+    }
+
+    @Test
+    void formatBodyForOperationalLogRedactsLegacyPromptContext() {
+        String redacted = filter.formatBodyForOperationalLog("""
+                {"selectedCurriculum":"math","promptContext":"private learner context"}
+                """);
+
+        assertThat(redacted)
+                .contains("\"selectedCurriculum\":\"math\"")
+                .contains("\"promptContext\":\"<redacted>\"")
+                .doesNotContain("private learner context");
     }
 
     @Test

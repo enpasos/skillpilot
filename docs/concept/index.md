@@ -45,6 +45,10 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
 - [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
   Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
+- [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
+  DE-first implementation, OAuth, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
+- [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
+  Normative mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
   Current Custom-GPT runtime, visible cross-turn relay, workflow coverage, and coordinated rollback boundary.
 - [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)

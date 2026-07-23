@@ -122,6 +122,25 @@ class CoachToolFacadeTest {
     }
 
     @Test
+    void idBasedNavigationCatalogReadsAuthorizeWithoutInventingOptions() {
+        String skillpilotId = "learner-1";
+        LandscapeSummary curriculum = mock(LandscapeSummary.class);
+        FrontierGoal scope = new FrontierGoal(
+                "scope-1", "Scope", "Beschreibung", "cluster", null, null,
+                List.of(), List.of(), null, null, null, null);
+        when(learnerService.getAvailableBaseCurricula()).thenReturn(List.of(curriculum));
+        when(learnerService.getScopeNavigationOptions(skillpilotId)).thenReturn(List.of(scope));
+
+        assertThat(facade.getCurriculumOptions(skillpilotId)).containsExactly(curriculum);
+        assertThat(facade.getScopeOptions(skillpilotId)).containsExactly(scope);
+
+        verify(learnerService, org.mockito.Mockito.times(2)).assertActiveLearnerRouteAccess(skillpilotId);
+        verify(learnerService).getAvailableBaseCurricula();
+        verify(learnerService).getScopeNavigationOptions(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
     void goalIdOnlyMasteryRequestIsNormalizedToFullMastery() {
         String skillpilotId = "learner-1";
         String goalId = "goal-1";

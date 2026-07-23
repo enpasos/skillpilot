@@ -13,6 +13,7 @@ import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.MasteryId;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
@@ -22,6 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,6 +70,9 @@ public class LearnerServiceTest {
     @Autowired
     private PlannedGoalRepository plannedGoalRepository;
 
+    @Autowired
+    private LearnerClientStateRepository learnerClientStateRepository;
+
     private String learnerId;
 
     @BeforeEach
@@ -76,6 +85,8 @@ public class LearnerServiceTest {
 
     @AfterEach
     void tearDown() {
+        learnerClientStateRepository.deleteAll();
+        masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
     }
@@ -373,6 +384,96 @@ public class LearnerServiceTest {
         assertThat(prompt.cards())
                 .extracting(VerifiedRecallPromptCard::cardId)
                 .doesNotHaveDuplicates();
+    }
+
+    @Test
+    void concurrentVerifiedRecallResultsPreserveBothCardUpdates() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        var prompt = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false, 2));
+        assertThat(prompt.cards()).hasSize(2);
+
+        CountDownLatch ready = new CountDownLatch(2);
+        CountDownLatch start = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            var results = prompt.cards().stream()
+                    .map(card -> executor.submit(() -> {
+                        ready.countDown();
+                        assertThat(start.await(10, TimeUnit.SECONDS)).isTrue();
+                        return learnerService.recordVerifiedRecallResult(
+                                learnerId,
+                                "de",
+                                new VerifiedRecallResultRequest(
+                                        SEK1_CORE_FORMULAS_FLASHCARDS_ID,
+                                        card.cardId(),
+                                        true,
+                                        "parallel verified"));
+                    }))
+                    .toList();
+            assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
+            start.countDown();
+            for (Future<?> result : results) {
+                assertThat(result.get(20, TimeUnit.SECONDS)).isNotNull();
+            }
+        } finally {
+            executor.shutdownNow();
+        }
+
+        var restarted = learnerService.startVerifiedRecall(
+                learnerId,
+                "de",
+                new VerifiedRecallStartRequest(null, false, 2));
+        assertThat(restarted.verifiedCards()).isEqualTo(2);
+    }
+
+    @Test
+    void concurrentScopeReplacementNeverMergesTwoExclusiveSelections() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learnerRepository.saveAndFlush(learner);
+        CountDownLatch ready = new CountDownLatch(2);
+        CountDownLatch start = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> first = executor.submit(() -> {
+                ready.countDown();
+                assertThat(start.await(10, TimeUnit.SECONDS)).isTrue();
+                learnerService.setScope(learnerId, List.of(COMPOSITION_J8_SCOPE_ID));
+                return null;
+            });
+            Future<?> second = executor.submit(() -> {
+                ready.countDown();
+                assertThat(start.await(10, TimeUnit.SECONDS)).isTrue();
+                learnerService.setScope(learnerId, List.of(COMPOSITION_J9_SCOPE_ID));
+                return null;
+            });
+            assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
+            start.countDown();
+            first.get(20, TimeUnit.SECONDS);
+            second.get(20, TimeUnit.SECONDS);
+        } finally {
+            executor.shutdownNow();
+        }
+
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(planned -> planned.getGoalId())
+                .singleElement()
+                .isIn(COMPOSITION_J8_SCOPE_ID, COMPOSITION_J9_SCOPE_ID);
     }
 
     @Test

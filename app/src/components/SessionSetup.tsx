@@ -31,9 +31,13 @@ import { AudioPlayer } from './AudioPlayer'
 import { getLegalWaiverCopy } from '../utils/legalWaiverCopy'
 import {
   buildCoachChatStartUrl,
+  coachStartNeedsPromptPaste,
   getActiveVisibleSessionLaunchCopy,
+  isOpenAiMcpCoachActive,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
+import { disconnectOpenAiMcp } from '../coachVariants/openAiMcp/request'
+import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 import {
   CLAUDE_COACH_BETA_ENABLED,
   getSafeClaudeDesktopUrl,
@@ -64,6 +68,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const { language } = useLanguage()
   const legalCopy = getLegalWaiverCopy(language === 'en' ? 'en' : 'de')
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(language)
+  const openAiMcpCoachActive = isOpenAiMcpCoachActive(language)
   const isPublicSkillpilot =
     typeof window !== 'undefined' && /(^|\.)skillpilot\.com$/i.test(window.location.hostname)
   const [selectedLandscapeId, setSelectedLandscapeId] = useState<string>(() => {
@@ -108,6 +113,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   })
   const [legalChecked, setLegalChecked] = useState(false)
   const [chatPromptCopyState, setChatPromptCopyState] = useState<'idle' | 'failed'>('idle')
+  const [chatLaunchPrompt, setChatLaunchPrompt] = useState<string | null>(null)
+  const [chatMcpConnected, setChatMcpConnected] = useState<boolean | null>(null)
   const [chatStartLoading, setChatStartLoading] = useState(false)
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
@@ -154,6 +161,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setAvailableCurricula([])
     setHasCheckedId(false)
     setChatPromptCopyState('idle')
+    setChatLaunchPrompt(null)
+    setChatMcpConnected(null)
     setChatStartLoading(false)
     setClaudeActionState('idle')
     setClaudeInstallFallbackUrl(null)
@@ -349,6 +358,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     try {
       const chatStart = await createCoachChatStart(effectiveId)
       if (!chatStart) throw new Error('Missing coach chat start')
+      if (coachStartNeedsPromptPaste(chatStart)) {
+        setChatLaunchPrompt(chatStart.prompt)
+        setChatMcpConnected(chatStart.connected)
+        try {
+          await navigator.clipboard.writeText(chatStart.prompt)
+          setChatPromptCopyState('idle')
+        } catch {
+          setChatPromptCopyState('failed')
+        }
+      } else {
+        setChatLaunchPrompt(null)
+        setChatMcpConnected(null)
+      }
       const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
@@ -356,10 +378,37 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       } else {
         window.open(url, '_blank', 'noopener,noreferrer')
       }
-    } catch {
+    } catch (caught) {
       if (chatWindow) {
         chatWindow.close()
       }
+      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
+        setError(caught.message)
+        return
+      }
+      setChatPromptCopyState('failed')
+    }
+  }
+
+  const handleCopyChatLaunchPrompt = async () => {
+    if (!chatLaunchPrompt) return
+    try {
+      await navigator.clipboard.writeText(chatLaunchPrompt)
+      setChatPromptCopyState('idle')
+    } catch {
+      setChatPromptCopyState('failed')
+    }
+  }
+
+  const handleDisconnectOpenAiMcp = async () => {
+    const effectiveId = sanitizeSkillpilotId(skillpilotId)
+    if (!effectiveId) return
+    try {
+      await disconnectOpenAiMcp(effectiveId)
+      setChatMcpConnected(false)
+      setChatLaunchPrompt(null)
+      setChatPromptCopyState('idle')
+    } catch {
       setChatPromptCopyState('failed')
     }
   }
@@ -997,10 +1046,14 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     <div className="space-y-3">
                       <div className="rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-950/40">
                         <p className="font-semibold text-text-primary">
-                          {visibleSessionLaunchCopy?.startPromptLabel ?? t.startPage.login.startPromptLabel}
+                          {openAiMcpCoachActive
+                            ? t.startPage.login.openAiMcpTitle
+                            : visibleSessionLaunchCopy?.startPromptLabel ?? t.startPage.login.startPromptLabel}
                         </p>
                         <p className="mt-1">
-                          {visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint}
+                          {openAiMcpCoachActive
+                            ? t.startPage.login.openAiMcpHint
+                            : visibleSessionLaunchCopy?.startPromptHint ?? t.startPage.login.startPromptHint}
                         </p>
                       </div>
                       <button
@@ -1012,9 +1065,47 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <MessageCircle size={16} />
                         {CLAUDE_COACH_BETA_ENABLED
                           ? t.startPage.login.openChatGptProvider
-                          : t.startPage.login.openChatGpt}
+                          : openAiMcpCoachActive
+                            ? t.startPage.login.openAiMcpStart
+                            : t.startPage.login.openChatGpt}
                         <ExternalLink size={14} />
                       </button>
+                      {openAiMcpCoachActive && chatLaunchPrompt && (
+                        <div className="space-y-2 rounded-lg border border-sky-200 bg-sky-50/80 p-3 dark:border-sky-800 dark:bg-sky-950/30">
+                          <p className="text-xs leading-relaxed text-text-secondary">
+                            {chatMcpConnected
+                              ? t.startPage.login.openAiMcpConnectedHint
+                              : t.startPage.login.openAiMcpConnectHint}
+                          </p>
+                          <textarea
+                            readOnly
+                            value={chatLaunchPrompt}
+                            onFocus={event => event.currentTarget.select()}
+                            aria-label={t.startPage.login.openAiMcpCopyPrompt}
+                            className="min-h-20 w-full resize-y rounded-lg border border-border-color bg-white p-2 text-xs text-text-primary dark:bg-slate-900"
+                          />
+                          <div className="flex flex-wrap items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={handleCopyChatLaunchPrompt}
+                              className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-sky-400 px-3 py-1.5 text-xs font-semibold text-sky-800 hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950"
+                            >
+                              <Copy size={13} />
+                              {t.startPage.login.openAiMcpCopyPrompt}
+                            </button>
+                            {chatMcpConnected && (
+                              <button
+                                type="button"
+                                onClick={handleDisconnectOpenAiMcp}
+                                className="inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-sky-800 underline underline-offset-2 dark:text-sky-200"
+                              >
+                                <Trash2 size={12} />
+                                {t.startPage.login.openAiMcpDisconnect}
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      )}
                       {CLAUDE_COACH_BETA_ENABLED && (
                         <div className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20">
                           <div className="flex items-start justify-between gap-3">

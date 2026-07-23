@@ -85,6 +85,28 @@ assertEqual(
   'an explicit legacy selection remains available for a coordinated rollback',
 )
 assertEqual(
+  resolveCoachVariant('de', {
+    VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
+  }).version,
+  'openai-mcp',
+  'allows the isolated German MCP canary variant',
+)
+assertEqual(
+  resolveCoachVariant('en', {
+    VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
+  }).version,
+  'visible-session',
+  'keeps English learners on the established visible-session coach during the German MCP cutover',
+)
+const englishFallbackVariant = resolveCoachVariant('en', {
+  VITE_SKILLPILOT_COACH_VARIANT: 'openai-mcp',
+})
+assert(
+  englishFallbackVariant.version === 'visible-session'
+    && englishFallbackVariant.gptBaseUrl === VISIBLE_SESSION_GPT_URL_EN,
+  'the OpenAI MCP deployment flag preserves the English GPT URL',
+)
+assertEqual(
   resolveCoachVariant('de', { VITE_SKILLPILOT_COACH_VARIANT: 'typo' }).version,
   'configuration-error',
   'fails closed for an unknown variant instead of treating it as rollback',

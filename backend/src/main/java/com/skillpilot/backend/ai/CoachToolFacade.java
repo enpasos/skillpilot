@@ -115,6 +115,18 @@ public class CoachToolFacade {
         return learnerService.getLearnerState(skillpilotId);
     }
 
+    /** Read-only curriculum catalog for authenticated, ID-based coach adapters. */
+    public List<LandscapeSummary> getCurriculumOptions(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getAvailableBaseCurricula();
+    }
+
+    /** Read-only personalized scope roots for authenticated, ID-based coach adapters. */
+    public List<FrontierGoal> getScopeOptions(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getScopeNavigationOptions(skillpilotId);
+    }
+
     public UnifiedLearnerStateResponse setScope(String skillpilotId, ScopeRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
         learnerService.setScope(skillpilotId, request.goalIds());

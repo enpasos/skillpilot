@@ -5,7 +5,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { CompetenceTree } from '../components/CompetenceTree'
 import type { TreeStructureMode } from '../components/CompetenceTree'
 import { PersonalCurriculumSetup } from '../components/PersonalCurriculumSetup'
-import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck } from 'lucide-react'
+import { Settings, Upload, Download, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, Copy } from 'lucide-react'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -48,10 +48,12 @@ import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '
 import { buildGoalContainsClosure } from '../utils/plannedScope'
 import { normalizeLearnerVisibleChildrenMap } from '../utils/learnerTreeProjection'
 import {
-  buildCoachChatStartUrl,
+  deliverCoachChatStart,
   getActiveVisibleSessionLaunchCopy,
+  isOpenAiMcpCoachActive,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
+import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 import { buildVisibleSessionVerifiedRecallInstruction } from '../coachVariants/visibleSession/verifiedRecallPrompt'
 import { requestCanonicalGymnasiumCutover } from '../utils/canonicalGymnasiumCutoverApi'
 import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalog'
@@ -316,6 +318,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
   const [memoryPracticeGoalId, setMemoryPracticeGoalId] = useState<string | null>(null)
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
+  const [verifiedRecallPromptFallback, setVerifiedRecallPromptFallback] = useState<{
+    goalId: string
+    prompt: string
+  } | null>(null)
 
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -333,6 +339,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const localizedLanguage = language === 'en' ? 'en' : 'de'
   const learnerViewCopy = getLearnerViewCopy(localizedLanguage)
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy(localizedLanguage)
+  const openAiMcpCoachActive = isOpenAiMcpCoachActive(localizedLanguage)
   const bavariaFilterDisplay = import.meta.env.MODE === 'package-consumer'
     ? ''
     : formatFilterDisplayLabel('DE-BY', localizedLanguage)
@@ -682,6 +689,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   const buildVerifiedRecallPromptContext = useCallback((goal: UiGoal, batchSize: number) => {
     const title = getLearnerGoalTitle(goal)
+    if (openAiMcpCoachActive) {
+      return `Bitte starte für mein aktuelles Lernziel die harte Kartenprüfung mit einer Batchgröße von ${batchSize}.`
+    }
     const hasVisualization = Array.isArray(goal.resourceLinks) && goal.resourceLinks.some(isGoalVisualizationLink)
     const cockpitLink = hasVisualization
       ? [
@@ -716,54 +726,83 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       'Bitte starte die harte Kartenprüfung für dieses aktive Memorize-Ziel.',
       toolInstruction,
     ].join('\n')
-  }, [getLearnerGoalTitle, landscapeId, localizedLanguage, visibleSessionLaunchCopy])
+  }, [getLearnerGoalTitle, landscapeId, localizedLanguage, openAiMcpCoachActive, visibleSessionLaunchCopy])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
     const chatWindow = window.open('', '_blank')
-    let copied = false
     const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
+    setVerifiedRecallPromptFallback(null)
     try {
       const chatStart = await requestCoachChatStart({
         skillpilotId,
         language,
         selectedCurriculum: rootLandscapeId || landscapeId,
         promptContext: buildVerifiedRecallPromptContext(goal, batchSize),
+        launchIntent: openAiMcpCoachActive
+          ? { type: 'VERIFIED_RECALL', goalId: goal.id, batchSize }
+          : undefined,
         client: 'verified-recall',
       })
-      const url = buildCoachChatStartUrl(chatStart)
-      if (chatWindow) {
-        chatWindow.opener = null
-        chatWindow.location.href = url
-      } else {
-        window.open(url, '_blank', 'noopener,noreferrer')
+      const delivered = await deliverCoachChatStart(
+        chatStart,
+        (url) => {
+          if (chatWindow) {
+            chatWindow.opener = null
+            chatWindow.location.href = url
+          } else {
+            window.open(url, '_blank', 'noopener,noreferrer')
+          }
+        },
+        navigator.clipboard?.writeText
+          ? (prompt) => navigator.clipboard.writeText(prompt)
+          : undefined,
+      )
+      if (delivered.promptFallback) {
+        setVerifiedRecallPromptFallback({ goalId: goal.id, prompt: delivered.promptFallback })
+        onNotify?.(
+          delivered.copied ? 'success' : 'info',
+          delivered.copied
+            ? learnerViewCopy.memoryVerifiedRecallPromptCopied
+            : learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
+        )
       }
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(chatStart.prompt)
-        copied = true
-      }
-    } catch {
+    } catch (caught) {
       if (chatWindow) {
         chatWindow.close()
       }
-      copied = false
+      if (isOpenAiMcpEligibilityDeclinedError(caught)) {
+        onNotify?.('info', caught.message)
+        return
+      }
+      onNotify?.('error', learnerViewCopy.memoryVerifiedRecallLaunchFailed)
     }
-
-    onNotify?.(
-      copied ? 'success' : 'info',
-      copied
-        ? learnerViewCopy.memoryVerifiedRecallPromptCopied
-        : learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
-    )
   }, [
     buildVerifiedRecallPromptContext,
     landscapeId,
     language,
     learnerViewCopy.memoryVerifiedRecallPromptCopied,
     learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
+    learnerViewCopy.memoryVerifiedRecallLaunchFailed,
     onNotify,
+    openAiMcpCoachActive,
     rootLandscapeId,
     skillpilotId,
     verifiedRecallBatchSizeByGoal,
+  ])
+
+  const handleCopyVerifiedRecallPrompt = useCallback(async () => {
+    if (!verifiedRecallPromptFallback) return
+    try {
+      await navigator.clipboard.writeText(verifiedRecallPromptFallback.prompt)
+      onNotify?.('success', learnerViewCopy.memoryVerifiedRecallPromptCopied)
+    } catch {
+      onNotify?.('info', learnerViewCopy.memoryVerifiedRecallPromptCopyFailed)
+    }
+  }, [
+    learnerViewCopy.memoryVerifiedRecallPromptCopied,
+    learnerViewCopy.memoryVerifiedRecallPromptCopyFailed,
+    onNotify,
+    verifiedRecallPromptFallback,
   ])
 
   const visibleGoals = useMemo(() => {
@@ -2626,7 +2665,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                           <span className="rounded-lg bg-white p-2 text-sky-700 shadow-sm dark:bg-slate-900 dark:text-sky-300">
                             <ClipboardCheck size={22} />
                           </span>
-                          <span className="min-w-0 flex-1">
+                          <div className="min-w-0 flex-1">
                             <span className="block text-base font-semibold text-text-primary">
                               {currentFlashcardVerificationComplete
                                 ? learnerViewCopy.memoryVerificationCompleteStatus
@@ -2680,7 +2719,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                                 {learnerViewCopy.memoryVerifyMode}
                               </button>
                             </span>
-                          </span>
+                            {verifiedRecallPromptFallback?.goalId === currentGoal.id && (
+                              <div className="mt-4 space-y-2 rounded-lg border border-sky-200 bg-white/80 p-3 dark:border-sky-800 dark:bg-slate-950/50">
+                                <label className="block text-xs font-semibold text-text-primary">
+                                  {learnerViewCopy.memoryVerifiedRecallPromptFallback}
+                                  <textarea
+                                    readOnly
+                                    value={verifiedRecallPromptFallback.prompt}
+                                    onFocus={event => event.currentTarget.select()}
+                                    className="mt-2 min-h-20 w-full resize-y rounded-lg border border-border-color bg-white p-2 text-xs font-normal text-text-primary dark:bg-slate-900"
+                                  />
+                                </label>
+                                <button
+                                  type="button"
+                                  onClick={handleCopyVerifiedRecallPrompt}
+                                  className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-sky-400 px-3 py-1.5 text-xs font-semibold text-sky-800 hover:bg-sky-100 dark:text-sky-200 dark:hover:bg-sky-950"
+                                >
+                                  <Copy size={13} />
+                                  {learnerViewCopy.memoryVerifiedRecallPromptCopyAction}
+                                </button>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>

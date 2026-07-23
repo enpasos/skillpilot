@@ -23,7 +23,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     ? {
         backToApp: 'Back to App',
         title: 'Privacy Policy',
-        effectiveDate: 'Date: July 21, 2026',
+        effectiveDate: 'Date: July 22, 2026',
         intro:
           'We appreciate your interest in SkillPilot. Protecting your privacy is very important to us. Below we provide detailed information about how we handle your data.',
         sections: [
@@ -49,15 +49,16 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '3. Use by AI Assistants (GPTs)',
+            title: '3. Use with AI Assistants',
             paragraphs: [
-              'When you use SkillPilot via an AI assistant (e.g., ChatGPT), the assistant uses only a temporary session token at our interface (API) to retrieve learning goals or save progress. Your permanent SkillPilot ID is not transmitted to the assistant. In the Visible Session coach variant, the temporary token is shown in the prepared start message and in the chat and expires after no more than 24 hours. We do not receive any chat logs or personal messages from your conversation with the AI assistant.',
+              'SkillPilot currently supports two separate ChatGPT connection variants. In the Visible Session variant, a temporary session token is shown in the prepared start message and in the chat; it expires after no more than 24 hours. In the German OpenAI OAuth/MCP App variant, ChatGPT connects to SkillPilot through an OAuth authorization. The permanent SkillPilot ID remains inside SkillPilot and is not included in the chat, OAuth principal, or MCP tool contract.',
+              'The AI provider receives the learning context and tool results required for coaching, as well as everything you enter or upload in its chat. SkillPilot receives the explicit tool requests and arguments needed to read or update your learning state, but not the complete chat transcript. OAuth credentials, temporary connection data, and provider-side conversation data are processed and retained according to the respective technical purpose and the provider’s own terms.',
             ],
           },
           {
             title: '4. Transfer to Third Parties',
             paragraphs: [
-              'We do not sell your data and do not share it with unauthorized third parties. Our services are hosted on secure servers.',
+              'We do not sell your data and do not share it with unauthorized third parties. When you choose an AI integration, the selected provider processes the conversation and the learning context returned to it under its own privacy and retention terms. Our services are hosted on secure servers.',
             ],
           },
           {
@@ -74,7 +75,7 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
     : {
         backToApp: 'Zurück zur App',
         title: 'Datenschutzerklärung',
-        effectiveDate: 'Stand: 21. Juli 2026',
+        effectiveDate: 'Stand: 22. Juli 2026',
         intro:
           'Wir freuen uns über Ihr Interesse an SkillPilot. Der Schutz Ihrer Privatsphäre ist für uns sehr wichtig. Nachstehend informieren wir Sie ausführlich über den Umgang mit Ihren Daten.',
         sections: [
@@ -100,15 +101,16 @@ export const getPrivacyViewCopy = (language: LabelLanguage): PrivacyViewCopy => 
             ],
           },
           {
-            title: '3. Nutzung durch KI-Assistenten (GPTs)',
+            title: '3. Nutzung mit KI-Assistenten',
             paragraphs: [
-              'Wenn Sie SkillPilot über einen KI-Assistenten (z.B. ChatGPT) nutzen, verwendet der Assistent an unserer Schnittstelle (API) ausschließlich ein temporäres Sitzungstoken, um Lernziele abzurufen oder Fortschritte zu speichern. Ihre dauerhafte SkillPilot-ID wird nicht an den Assistenten übermittelt. In der Coach-Variante „Visible Session“ wird das temporäre Token in der vorbereiteten Startnachricht und im Chat angezeigt und ist höchstens 24 Stunden gültig. Wir erhalten dabei keine Chat-Protokolle oder persönlichen Nachrichten aus Ihrer Konversation mit dem KI-Assistenten.',
+              'SkillPilot unterstützt derzeit zwei getrennte ChatGPT-Verbindungsvarianten. In der Variante „Visible Session“ wird ein temporäres Sitzungstoken in der vorbereiteten Startnachricht und im Chat angezeigt; es ist höchstens 24 Stunden gültig. In der deutschen OpenAI-OAuth/MCP-App-Variante verbindet sich ChatGPT über eine OAuth-Autorisierung mit SkillPilot. Die dauerhafte SkillPilot-ID bleibt innerhalb von SkillPilot und wird weder in den Chat noch in den OAuth-Principal oder den MCP-Toolvertrag aufgenommen.',
+              'Der KI-Anbieter erhält den für das Coaching benötigten Lernkontext und die Toolergebnisse sowie alles, was Sie in dessen Chat eingeben oder hochladen. SkillPilot erhält die ausdrücklichen Toolanfragen und Argumente, die zum Lesen oder Aktualisieren Ihres Lernstands erforderlich sind, jedoch nicht das vollständige Chatprotokoll. OAuth-Zugangsdaten, temporäre Verbindungsdaten und anbieterseitige Konversationsdaten werden entsprechend ihrem jeweiligen technischen Zweck und den Bedingungen des Anbieters verarbeitet und gespeichert.',
             ],
           },
           {
             title: '4. Weitergabe an Dritte',
             paragraphs: [
-              'Wir verkaufen Ihre Daten nicht und geben sie nicht unbefugt an Dritte weiter. Das Hosting unserer Dienste erfolgt auf sicheren Servern.',
+              'Wir verkaufen Ihre Daten nicht und geben sie nicht unbefugt an Dritte weiter. Wenn Sie eine KI-Integration wählen, verarbeitet der ausgewählte Anbieter die Konversation und den an ihn zurückgegebenen Lernkontext nach seinen eigenen Datenschutz- und Aufbewahrungsbedingungen. Das Hosting unserer Dienste erfolgt auf sicheren Servern.',
             ],
           },
           {

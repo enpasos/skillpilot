@@ -10,6 +10,29 @@ cd "${PROJECT_ROOT}"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 
+require_explicit_coach_variant() {
+  local configured_variant="${VITE_SKILLPILOT_COACH_VARIANT:-}"
+  if [ -z "${configured_variant}" ]; then
+    echo "Abbruch: VITE_SKILLPILOT_COACH_VARIANT muss für jedes Deployment explizit gesetzt sein." >&2
+    echo "Erlaubt: visible-session, openai-mcp oder legacy." >&2
+    echo "Für den geplanten deutschen MCP-Cutover: VITE_SKILLPILOT_COACH_VARIANT=openai-mcp scripts/deploy.sh" >&2
+    exit 1
+  fi
+
+  case "${configured_variant}" in
+    visible-session|openai-mcp|legacy)
+      ;;
+    *)
+      echo "Abbruch: ungültige VITE_SKILLPILOT_COACH_VARIANT='${configured_variant}'." >&2
+      echo "Erlaubt: visible-session, openai-mcp oder legacy." >&2
+      exit 1
+      ;;
+  esac
+
+  export VITE_SKILLPILOT_COACH_VARIANT="${configured_variant}"
+  echo "Coach-Variante für diesen Build: ${VITE_SKILLPILOT_COACH_VARIANT}"
+}
+
 require_production_java() {
   local required_java_version
   local required_corretto_version
@@ -58,6 +81,7 @@ ensure_restart_possible() {
   fi
 }
 
+require_explicit_coach_variant
 ensure_restart_possible
 require_production_java
 
@@ -92,6 +116,11 @@ npm install
 echo "Baue Anwendung..."
 npm run build
 
+echo "Prüfe Coach-Variante im Frontend-Artefakt..."
+node ../scripts/verify_frontend_coach_variant.mjs \
+  ../backend/src/main/resources/static \
+  "${VITE_SKILLPILOT_COACH_VARIANT}"
+
 echo "Baue Backend..."
 cd ../backend
 chmod +x gradlew
@@ -105,8 +134,13 @@ if [ -t 0 ]; then
 fi
 sudo systemctl restart "${SERVICE_NAME}"
 
-echo "Prüfe Quellenbegründungs-Smoke-Test..."
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+echo "Prüfe ausgelieferte Coach-Variante..."
+node scripts/verify_frontend_coach_variant.mjs \
+  "${SMOKE_BASE_URL}" \
+  "${VITE_SKILLPILOT_COACH_VARIANT}"
+
+echo "Prüfe Quellenbegründungs-Smoke-Test..."
 cd app
 npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}"
 cd ..

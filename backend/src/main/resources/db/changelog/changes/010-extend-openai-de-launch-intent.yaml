@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010-extend-openai-de-binding-grant-launch-intent
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: openai_de_binding_grant
+        - not:
+            - columnExists:
+                tableName: openai_de_binding_grant
+                columnName: launch_intent_type
+      changes:
+        - addColumn:
+            tableName: openai_de_binding_grant
+            columns:
+              - column:
+                  name: selected_curriculum
+                  type: VARCHAR(255)
+              - column:
+                  name: launch_intent_type
+                  type: VARCHAR(32)
+              - column:
+                  name: launch_goal_id
+                  type: VARCHAR(255)
+              - column:
+                  name: launch_batch_size
+                  type: INTEGER
+              - column:
+                  name: launch_course_level
+                  type: VARCHAR(8)
+
+  - changeSet:
+      id: 010-extend-openai-de-pending-launch-intent
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: openai_de_pending_launch
+        - not:
+            - columnExists:
+                tableName: openai_de_pending_launch
+                columnName: launch_intent_type
+      changes:
+        - addColumn:
+            tableName: openai_de_pending_launch
+            columns:
+              - column:
+                  name: launch_intent_type
+                  type: VARCHAR(32)
+              - column:
+                  name: launch_goal_id
+                  type: VARCHAR(255)
+              - column:
+                  name: launch_batch_size
+                  type: INTEGER
+              - column:
+                  name: launch_course_level
+                  type: VARCHAR(8)

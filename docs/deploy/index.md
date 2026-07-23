@@ -5,6 +5,7 @@ This page groups deployment-facing operational documentation.
 ## Deployment
 
 - [SkillPilot Deployment Process](deployment.md)
+- [ChatGPT-App „SkillPilot Coach Deutsch“: Deployment und Cutover](openai-mcp-coach-de.md)
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
 
 ## Maintenance

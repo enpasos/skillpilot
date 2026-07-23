@@ -22,11 +22,13 @@ import java.time.Duration;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
@@ -39,8 +41,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(
@@ -75,6 +79,10 @@ class ClaudeOAuthFlowIntegrationTest {
 
     @Autowired
     private RegisteredClientRepository registeredClientRepository;
+
+    @Autowired
+    @Qualifier("claudeOpaqueTokenIntrospector")
+    private OpaqueTokenIntrospector tokenIntrospector;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private HttpClient client;
@@ -213,15 +221,24 @@ class ClaudeOAuthFlowIntegrationTest {
                 Map.entry("grant_type", "refresh_token"),
                 Map.entry("client_id", ClaudeOAuthConfiguration.CLAUDE_HOSTED_CLIENT_ID),
                 Map.entry("refresh_token", refreshToken),
+                Map.entry("scope", ClaudeOAuthConfiguration.READ_SCOPE),
                 Map.entry("resource", "https://skillpilot.test/api/claude/mcp")));
         assertThat(refresh.statusCode())
                 .withFailMessage("Refresh response: %s", refresh.body())
                 .isEqualTo(200);
         JsonNode refreshBody = objectMapper.readTree(refresh.body());
-        assertThat(refreshBody.path("access_token").asText()).isNotBlank();
+        String downscopedAccessToken = refreshBody.path("access_token").asText();
+        assertThat(downscopedAccessToken).isNotBlank();
+        assertThat(refreshBody.path("scope").asText()).isEqualTo(ClaudeOAuthConfiguration.READ_SCOPE);
         String rotatedRefreshToken = refreshBody.path("refresh_token").asText();
         assertThat(rotatedRefreshToken).isNotBlank().isNotEqualTo(refreshToken);
         assertThat(refresh.body()).doesNotContain(SKILLPILOT_ID).doesNotContain(CONNECTION_SUBJECT);
+        var downscopedPrincipal = tokenIntrospector.introspect(downscopedAccessToken);
+        assertThat(downscopedPrincipal.getAuthorities())
+                .extracting(GrantedAuthority::getAuthority)
+                .containsExactly("SCOPE_" + ClaudeOAuthConfiguration.READ_SCOPE);
+        assertThat(downscopedPrincipal.<Set<String>>getAttribute("scope"))
+                .containsExactly(ClaudeOAuthConfiguration.READ_SCOPE);
 
         HttpResponse<String> reusedRefresh = postForm("/oauth2/token", List.of(
                 Map.entry("grant_type", "refresh_token"),

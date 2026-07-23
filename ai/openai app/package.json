@@ -9,10 +9,13 @@
   "scripts": {
     "build": "node scripts/build-widget.mjs",
     "dev": "npm run build && node --watch server/app-server.mjs",
+    "dev:regression": "node --watch mcp-regression/app-server.mjs",
     "start": "npm run build && node server/app-server.mjs",
+    "start:regression": "node mcp-regression/app-server.mjs",
     "typecheck": "tsc --noEmit",
     "test": "npm run typecheck && npm run build && node --test test/*.test.mjs",
-    "test:protocol": "npm run build && node --test test/protocol.test.mjs"
+    "test:protocol": "npm run build && node --test test/protocol.test.mjs",
+    "test:regression": "node --test test/mcp-regression.test.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/ext-apps": "1.7.4",

@@ -6,7 +6,13 @@ export const germanContract = Object.freeze({
     "Verwende ausschließlich die deutschen SkillPilot-Werkzeuge dieses Servers. Öffne den Lerncoach bei einer natürlichen Lernabsicht, ohne nach technischen IDs oder Tokens zu fragen. Wenn die sichtbare Widget-Nachricht um Bewertung einer eingereichten Lösung bittet, lade zuerst die ausstehende Lösung und speichere danach genau eine fachliche Bewertung. Akzeptiere mathematisch gleichwertige Lösungswege unabhängig vom Wortlaut. Lade nach einem neuen Turn oder bei unsicherem Gesprächskontext den aktuellen Lernstand frisch aus SkillPilot.",
   mcpPath: "/mcp/de",
   resourceName: "skillpilot-coach-de-widget",
-  resourceUri: "ui://skillpilot-coach-de/coach.html",
+  resourceUri: "ui://skillpilot-coach-de/coach-v4.html",
+  legacyResourceUris: [
+    "ui://skillpilot-coach-de/coach.html",
+    "ui://skillpilot-coach-de/coach-v2.html",
+    "ui://skillpilot-coach-de/coach-v3.html"
+  ],
+  widgetDomain: "https://coach-de-mcp.skillpilot.com",
   schemaDescriptions: {
     input: {
       learningRequest:
@@ -115,10 +121,11 @@ export const germanContract = Object.freeze({
     submitLabel: "Lösung einreichen",
     awaitingTitle: "Lösung eingereicht",
     awaitingSummary: "Deine Lösung ist sicher gespeichert und wartet auf die fachliche Bewertung.",
+    evaluationRequestLabel: "Lösung jetzt bewerten lassen",
     feedbackTitle: "Auswertung",
     completeLabel: "Weiterlernen",
     emptyContext: "Der Lerncoach wurde noch nicht eingerichtet.",
-    pendingMessage: "Bitte bewerte jetzt meine gerade im SkillPilot-Lerncoach eingereichte Lösung.",
+    pendingMessage: "Bitte lade jetzt meine gerade im SkillPilot-Lerncoach eingereichte Lösung, bewerte sie fachlich und speichere die Bewertung.",
     selectedContext: "Die lernende Person hat {choice} ausgewählt. Der aktuelle Lernstand ist im SkillPilot-Backend gespeichert.",
     submittedContext: "Die lernende Person hat eine Lösung im SkillPilot-Widget eingereicht. Die vollständige Lösung ist serverseitig gespeichert und wartet auf die fachliche Bewertung."
   }

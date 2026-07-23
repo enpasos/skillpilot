@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011-bind-openai-de-grants-to-browser-session
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: openai_de_binding_grant
+        - not:
+            - columnExists:
+                tableName: openai_de_binding_grant
+                columnName: browser_session_hash
+      changes:
+        - addColumn:
+            tableName: openai_de_binding_grant
+            columns:
+              - column:
+                  name: browser_session_hash
+                  type: VARCHAR(128)
+              - column:
+                  name: active_browser_session_hash
+                  type: VARCHAR(128)
+        - update:
+            tableName: openai_de_binding_grant
+            columns:
+              - column:
+                  name: browser_session_hash
+                  valueComputed: token_hash
+        - update:
+            tableName: openai_de_binding_grant
+            columns:
+              - column:
+                  name: active_browser_session_hash
+                  valueComputed: token_hash
+            where: consumed_at IS NULL
+        - addNotNullConstraint:
+            tableName: openai_de_binding_grant
+            columnName: browser_session_hash
+            columnDataType: VARCHAR(128)
+        - addUniqueConstraint:
+            tableName: openai_de_binding_grant
+            columnNames: active_browser_session_hash
+            constraintName: uk_openai_de_binding_grant_active_browser
+
+  - changeSet:
+      id: 011-track-openai-de-oauth-expiry
+      author: skillpilot
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: openai_de_connection
+        - not:
+            - columnExists:
+                tableName: openai_de_connection
+                columnName: oauth_expires_at
+      changes:
+        - addColumn:
+            tableName: openai_de_connection
+            columns:
+              - column:
+                  name: oauth_expires_at
+                  type: TIMESTAMP WITH TIME ZONE

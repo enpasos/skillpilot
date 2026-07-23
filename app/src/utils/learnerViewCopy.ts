@@ -29,6 +29,9 @@ export interface LearnerViewCopy {
   memoryPracticeBackAction: string
   memoryVerifiedRecallPromptCopied: string
   memoryVerifiedRecallPromptCopyFailed: string
+  memoryVerifiedRecallPromptFallback: string
+  memoryVerifiedRecallPromptCopyAction: string
+  memoryVerifiedRecallLaunchFailed: string
 }
 
 export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => (
@@ -60,8 +63,11 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerificationCompleteStatus: 'Prüfung bestanden',
         memoryVerificationWaitingStatus: 'Heute keine Karte prüfbar',
         memoryPracticeBackAction: 'Zur Auswahl',
-        memoryVerifiedRecallPromptCopied: 'Startcode für den Lerncoach wurde kopiert.',
-        memoryVerifiedRecallPromptCopyFailed: 'Der Lerncoach wurde geöffnet. Bitte starte dort die harte Kartenprüfung für das aktive Lernziel.',
+        memoryVerifiedRecallPromptCopied: 'Die Startnachricht für den Lerncoach wurde kopiert.',
+        memoryVerifiedRecallPromptCopyFailed: 'Der Lerncoach wurde geöffnet. Kopiere die Startnachricht unten und sende sie dort ab.',
+        memoryVerifiedRecallPromptFallback: 'Startnachricht für den geöffneten Lerncoach',
+        memoryVerifiedRecallPromptCopyAction: 'Startnachricht kopieren',
+        memoryVerifiedRecallLaunchFailed: 'Der Lerncoach konnte nicht geöffnet werden. Bitte versuche es erneut.',
       }
     : {
         activeGoalNotAllowedTitle: 'Action not allowed',
@@ -90,7 +96,10 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerificationCompleteStatus: 'Verification complete',
         memoryVerificationWaitingStatus: 'No card testable today',
         memoryPracticeBackAction: 'Back to choices',
-        memoryVerifiedRecallPromptCopied: 'Learning Coach start code was copied.',
-        memoryVerifiedRecallPromptCopyFailed: 'The Learning Coach was opened. Please start hard flashcard verification for the active goal there.',
+        memoryVerifiedRecallPromptCopied: 'The Learning Coach start message was copied.',
+        memoryVerifiedRecallPromptCopyFailed: 'The Learning Coach was opened. Copy the start message below and send it there.',
+        memoryVerifiedRecallPromptFallback: 'Start message for the opened Learning Coach',
+        memoryVerifiedRecallPromptCopyAction: 'Copy start message',
+        memoryVerifiedRecallLaunchFailed: 'The Learning Coach could not be opened. Please try again.',
       }
 )

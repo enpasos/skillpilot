@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
   registerAppResource,
   registerAppTool,
@@ -87,11 +87,24 @@ async function widgetHtml(contract) {
 }
 
 function widgetResourceMeta(contract) {
-  const domain = process.env[`SKILLPILOT_WIDGET_DOMAIN_${contract.locale.toUpperCase()}`];
+  const variableName = `SKILLPILOT_WIDGET_DOMAIN_${contract.locale.toUpperCase()}`;
+  const configuredDomain = process.env[variableName]?.trim() || contract.widgetDomain;
+  const parsedDomain = new URL(configuredDomain);
+  if (
+    parsedDomain.protocol !== "https:" ||
+    parsedDomain.username ||
+    parsedDomain.password ||
+    parsedDomain.pathname !== "/" ||
+    parsedDomain.search ||
+    parsedDomain.hash
+  ) {
+    throw new Error(`${variableName} must be an HTTPS origin without a path, query, or fragment`);
+  }
+  const domain = parsedDomain.origin;
   const ui = {
     prefersBorder: true,
     csp: { connectDomains: [], resourceDomains: [] },
-    ...(domain ? { domain } : {})
+    domain
   };
   return {
     ui,
@@ -101,8 +114,50 @@ function widgetResourceMeta(contract) {
         : "Interactive SkillPilot learning card for course selection, practice, submission, and feedback.",
     "openai/widgetPrefersBorder": true,
     "openai/widgetCSP": { connect_domains: [], resource_domains: [] },
-    ...(domain ? { "openai/widgetDomain": domain } : {})
+    "openai/widgetDomain": domain
   };
+}
+
+function widgetResourceDescription(contract) {
+  return contract.locale === "de"
+    ? "Interaktive Oberfläche des deutschen SkillPilot-Lerncoachs."
+    : "Interactive interface for the English SkillPilot learning coach.";
+}
+
+function registerLegacyWidgetResources(server, contract, html) {
+  const legacyUris = new Set(contract.legacyResourceUris ?? []);
+  if (legacyUris.size === 0) return;
+
+  const current = new URL(contract.resourceUri);
+  const template = new ResourceTemplate(
+    `${current.protocol}//${current.host}/{file}`,
+    { list: undefined }
+  );
+  server.registerResource(
+    `${contract.resourceName}-legacy-aliases`,
+    template,
+    {
+      title: `${contract.appName} legacy widget aliases`,
+      description: widgetResourceDescription(contract),
+      mimeType: RESOURCE_MIME_TYPE,
+      _meta: widgetResourceMeta(contract)
+    },
+    async (uri) => {
+      if (!legacyUris.has(uri.href)) {
+        throw new Error(`Unknown SkillPilot widget resource: ${uri.href}`);
+      }
+      return {
+        contents: [
+          {
+            uri: uri.href,
+            mimeType: RESOURCE_MIME_TYPE,
+            text: html,
+            _meta: widgetResourceMeta(contract)
+          }
+        ]
+      };
+    }
+  );
 }
 
 export async function createCoachMcpServer(contract, store) {
@@ -121,10 +176,7 @@ export async function createCoachMcpServer(contract, store) {
     contract.resourceUri,
     {
       title: contract.appName,
-      description:
-        contract.locale === "de"
-          ? "Interaktive Oberfläche des deutschen SkillPilot-Lerncoachs."
-          : "Interactive interface for the English SkillPilot learning coach.",
+      description: widgetResourceDescription(contract),
       _meta: widgetResourceMeta(contract)
     },
     async () => ({
@@ -138,6 +190,7 @@ export async function createCoachMcpServer(contract, store) {
       ]
     })
   );
+  registerLegacyWidgetResources(server, contract, html);
 
   registerAppTool(
     server,

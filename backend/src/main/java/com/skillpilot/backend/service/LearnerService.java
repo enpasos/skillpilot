@@ -840,7 +840,7 @@ public class LearnerService {
 
     @Transactional
     public ClientStateResponse upsertClientState(String skillpilotId, String nodeId, ClientStateRequest request) {
-        Learner learner = learnerRepository.findById(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         if (request == null) {
@@ -932,6 +932,8 @@ public class LearnerService {
                     "verified-recall result requires passed=true or passed=false.");
         }
 
+        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         VerifiedRecallContext context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language);
         SrsCard card = findSrsCard(context.cards(), request.cardId());
         if (card == null) {
@@ -1930,7 +1932,7 @@ public class LearnerService {
 
     @Transactional
     public List<String> setPlannedGoals(String skillpilotId, Set<String> goalIds) {
-        Learner learner = learnerRepository.findById(skillpilotId)
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         List<PlannedGoal> existing = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
@@ -2133,6 +2135,8 @@ public class LearnerService {
 
     @Transactional
     public void setCurriculum(String skillpilotId, String curriculumId) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();
         if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2146,7 +2150,6 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     buildCompatibilityOnlyRetirementMessage(effectiveCurriculumId));
         }
-        Learner learner = getLearner(skillpilotId);
         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);
         learner.setSelectedCurriculum(effectiveCurriculumId);
         if (curriculumChanged) {
@@ -2324,7 +2327,8 @@ public class LearnerService {
     @Transactional
     public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds,
             List<String> filters) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         Map<String, Object> finalConfig = normalizePersonalCurriculumPayload(config);
 
@@ -4640,7 +4644,8 @@ public class LearnerService {
 
     @Transactional
     public void setScope(String skillpilotId, List<String> goalIds) {
-        Learner learner = getLearner(skillpilotId);
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null) {
             throw new org.springframework.web.server.ResponseStatusException(

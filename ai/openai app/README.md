@@ -20,7 +20,8 @@ Der vertikale Ablauf ist protokollseitig vollständig:
 4. Das Widget ruft das app-only Auswahltool direkt auf.
 5. Eine Aufgabe erscheint, die Antwort wird persistent eingereicht und aus dem
    sichtbaren beziehungsweise modelllesbaren Status entfernt.
-6. Das Widget bittet in natürlicher Sprache um Bewertung.
+6. Das Widget zeigt nach dem Speichern den Button **Lösung jetzt bewerten
+   lassen**; dessen expliziter Klick sendet die natürliche Bewertungsbitte.
 7. Das Provider-Modell lädt die ausstehende Antwort über ein argumentloses
    Lesetool und speichert die Bewertung.
 8. Ein späterer Turn kann den aktuellen Zustand ohne sichtbares Token und ohne
@@ -112,8 +113,22 @@ Die aktuelle Trennung ist absichtlich:
 | SkillPilot-Store | Antwort, Receipt, Lernzustand | SkillPilot-Server |
 
 Das Widget sendet über `ui/update-model-context` nur eine semantische
-Zusammenfassung. Die sichtbare `ui/message` enthält keine Toolnamen, IDs oder
-Tokens.
+Zusammenfassung. Nach dem sicheren Speichern fordert ein eigener sichtbarer
+Button die fachliche Bewertung an. Dieser explizite Benutzer-Klick verwendet
+mit dem offiziellen MCP-Apps-Client ausschließlich den Standardaufruf
+`ui/message`. Das Widget prüft dabei sowohl die vom Host angekündigte
+Textnachrichten-Fähigkeit als auch `isError` in der Antwort und zeigt Annahme oder
+Ablehnung sichtbar an. Die Nachricht enthält keine Toolnamen, IDs oder Tokens.
+Die Trennung zwischen „speichern“ und „bewerten lassen“ verhindert, dass ein
+hostseitig ignorierter automatischer Follow-up den Ablauf unbemerkt anhält.
+Änderungen am kompilierten Widget erhalten eine neue `ui://`-Resource-URI, damit
+ChatGPT kein veraltetes Bundle aus dem Cache lädt.
+
+Für laufende Developer-Mode-Chats bleiben die bisherigen Template-URIs als
+nicht aufgelistete Lese-Aliase erreichbar. Dadurch kann ein
+bereits gecachter Toolvertrag nach einem Roll-forward trotzdem das aktuelle
+Widget laden. `resources/list` und alle aktuellen Tool-Metadaten veröffentlichen
+weiterhin ausschließlich die neueste URI.
 
 Der momentane No-Auth-Modus besitzt pro Sprache genau einen lokalen
 Entwicklungszustand. Das ist bewusst **nicht mandantenfähig**. Ein öffentlich

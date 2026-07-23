@@ -9,9 +9,19 @@ for (const locale of ["de", "en"]) {
     assert.match(html, /<script>/);
     assert.doesNotMatch(html, /<script[^>]+src=/i);
     assert.doesNotMatch(html, /<link[^>]+rel=["']stylesheet/i);
-    assert.doesNotMatch(html, /serviceWorker|https?:\/\//i);
+    assert.doesNotMatch(html, /serviceWorker/i);
+    assert.doesNotMatch(
+      html,
+      /<(?:script|link|img|iframe|source)[^>]+(?:src|href)=["']https?:\/\//i,
+      "widget must not load external runtime assets"
+    );
     assert.doesNotMatch(html, /spapp_[0-9a-f-]+|choice_[0-9a-f-]+/i);
-    assert.ok(Buffer.byteLength(html) < 30_000, "widget should remain compact");
+    assert.match(html, /ui\/message/);
+    assert.match(html, /MCP-Bridge|MCP bridge/);
+    assert.ok(
+      Buffer.byteLength(html) < 500_000,
+      "widget including the official MCP Apps protocol client should remain bounded"
+    );
   });
 }
 
@@ -20,7 +30,9 @@ test("German and English widgets are compiled as separate artifacts", async () =
   const en = await readFile(new URL("../dist/en/widget.html", import.meta.url), "utf8");
   assert.notEqual(de, en);
   assert.match(de, /choose_skillpilot_path_de/);
+  assert.match(de, /L(?:ösung|\\xF6sung) jetzt bewerten lassen/);
   assert.match(en, /choose_skillpilot_path_en/);
+  assert.match(en, /Evaluate answer now/);
   assert.doesNotMatch(de, /choose_skillpilot_path_en/);
   assert.doesNotMatch(en, /choose_skillpilot_path_de/);
 });
