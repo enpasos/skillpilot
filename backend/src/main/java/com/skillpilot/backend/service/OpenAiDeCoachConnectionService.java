@@ -734,12 +734,12 @@ public class OpenAiDeCoachConnectionService {
     private String launchPrompt(NormalizedLaunch launch) {
         return switch (launch.type()) {
             case CURRENT_UNIT ->
-                    "Verwende die App SkillPilot Coach Deutsch und starte meine aktuelle Lerneinheit.";
+                    "Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.";
             case VERIFIED_RECALL ->
-                    "Verwende die App SkillPilot Coach Deutsch und starte für mein aktuell ausgewähltes Lernziel "
+                    "Verwende die App SkillPilot Coach (Deutsch) und starte für mein aktuell ausgewähltes Lernziel "
                             + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";
             case ABI26_EXAM ->
-                    "Verwende die App SkillPilot Coach Deutsch und starte im Prüfungsmodus mit meiner im Cockpit "
+                    "Verwende die App SkillPilot Coach (Deutsch) und starte im Prüfungsmodus mit meiner im Cockpit "
                             + "ausgewählten Mathematik-Abituraufgabe für den "
                             + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
         };

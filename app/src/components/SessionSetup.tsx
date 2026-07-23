@@ -9,6 +9,7 @@ import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Com
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
+type ChatLaunchIssue = 'none' | 'copy-failed' | 'preparation-failed' | 'popup-blocked' | 'disconnect-failed'
 
 interface ClaudeLaunchFallback {
   prompt: string
@@ -30,8 +31,8 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { AudioPlayer } from './AudioPlayer'
 import { getLegalWaiverCopy } from '../utils/legalWaiverCopy'
 import {
-  buildCoachChatStartUrl,
   coachStartNeedsPromptPaste,
+  deliverCoachChatStart,
   getActiveVisibleSessionLaunchCopy,
   isOpenAiMcpCoachActive,
   requestCoachChatStart,
@@ -112,7 +113,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     return window.localStorage.getItem('skillpilot_legal_waiver_accepted') === 'true'
   })
   const [legalChecked, setLegalChecked] = useState(false)
-  const [chatPromptCopyState, setChatPromptCopyState] = useState<'idle' | 'failed'>('idle')
+  const [chatLaunchIssue, setChatLaunchIssue] = useState<ChatLaunchIssue>('none')
   const [chatLaunchPrompt, setChatLaunchPrompt] = useState<string | null>(null)
   const [chatMcpConnected, setChatMcpConnected] = useState<boolean | null>(null)
   const [chatStartLoading, setChatStartLoading] = useState(false)
@@ -160,7 +161,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setSelectedLandscapeId('')
     setAvailableCurricula([])
     setHasCheckedId(false)
-    setChatPromptCopyState('idle')
+    setChatLaunchIssue('none')
     setChatLaunchPrompt(null)
     setChatMcpConnected(null)
     setChatStartLoading(false)
@@ -195,7 +196,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       if (!localLoginName) {
         setLocalLoginName('Mein SkillPilot')
       }
-      setChatPromptCopyState('idle')
+      setChatLaunchIssue('none')
 
       if (data.availableCurricula) {
         setAvailableCurricula(data.availableCurricula)
@@ -338,7 +339,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!normalizedLandscapeId) return null
 
     setChatStartLoading(true)
-    setChatPromptCopyState('idle')
+    setChatLaunchIssue('none')
     try {
       return await requestCoachChatStart({
         skillpilotId: sanitizedId,
@@ -355,29 +356,38 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return
     const chatWindow = window.open('', '_blank')
+    let popupBlocked = false
     try {
       const chatStart = await createCoachChatStart(effectiveId)
       if (!chatStart) throw new Error('Missing coach chat start')
       if (coachStartNeedsPromptPaste(chatStart)) {
         setChatLaunchPrompt(chatStart.prompt)
         setChatMcpConnected(chatStart.connected)
-        try {
-          await navigator.clipboard.writeText(chatStart.prompt)
-          setChatPromptCopyState('idle')
-        } catch {
-          setChatPromptCopyState('failed')
-        }
       } else {
         setChatLaunchPrompt(null)
         setChatMcpConnected(null)
       }
-      const url = buildCoachChatStartUrl(chatStart)
-      if (chatWindow) {
-        chatWindow.opener = null
-        chatWindow.location.href = url
-      } else {
-        window.open(url, '_blank', 'noopener,noreferrer')
-      }
+
+      const delivered = await deliverCoachChatStart(
+        chatStart,
+        (url) => {
+          if (chatWindow) {
+            chatWindow.opener = null
+            chatWindow.location.href = url
+            return
+          }
+          const openedWindow = window.open(url, '_blank', 'noopener,noreferrer')
+          if (!openedWindow) {
+            popupBlocked = true
+            throw new Error('ChatGPT popup was blocked')
+          }
+        },
+        navigator.clipboard?.writeText
+          ? (prompt) => navigator.clipboard.writeText(prompt)
+          : undefined,
+      )
+      setChatLaunchPrompt(delivered.promptFallback)
+      setChatLaunchIssue('none')
     } catch (caught) {
       if (chatWindow) {
         chatWindow.close()
@@ -386,7 +396,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         setError(caught.message)
         return
       }
-      setChatPromptCopyState('failed')
+      setChatLaunchIssue(popupBlocked ? 'popup-blocked' : 'preparation-failed')
     }
   }
 
@@ -394,9 +404,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!chatLaunchPrompt) return
     try {
       await navigator.clipboard.writeText(chatLaunchPrompt)
-      setChatPromptCopyState('idle')
+      setChatLaunchIssue('none')
     } catch {
-      setChatPromptCopyState('failed')
+      setChatLaunchIssue('copy-failed')
     }
   }
 
@@ -407,9 +417,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       await disconnectOpenAiMcp(effectiveId)
       setChatMcpConnected(false)
       setChatLaunchPrompt(null)
-      setChatPromptCopyState('idle')
+      setChatLaunchIssue('none')
     } catch {
-      setChatPromptCopyState('failed')
+      setChatLaunchIssue('disconnect-failed')
     }
   }
 
@@ -1265,9 +1275,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           {t.startPage.login.cockpitButton}
                         </button>
                       </div>
-                      {chatPromptCopyState === 'failed' && (
+                      {chatLaunchIssue !== 'none' && (
                         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
-                          {visibleSessionLaunchCopy?.preparationFailed ?? t.startPage.login.startPromptCopyFailed}
+                          {chatLaunchIssue === 'copy-failed'
+                            ? t.startPage.login.openAiMcpCopyFailed
+                            : chatLaunchIssue === 'popup-blocked'
+                              ? t.startPage.login.openAiMcpPopupBlocked
+                              : chatLaunchIssue === 'disconnect-failed'
+                                ? t.startPage.login.openAiMcpDisconnectFailed
+                                : visibleSessionLaunchCopy?.preparationFailed
+                                  ?? (openAiMcpCoachActive
+                                    ? t.startPage.login.openAiMcpPreparationFailed
+                                    : t.startPage.login.startPromptCopyFailed)}
                         </p>
                       )}
                     </div>

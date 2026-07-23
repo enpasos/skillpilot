@@ -54,8 +54,9 @@ The deployment process currently does all of the following:
 9.  Verify the requested coach variant in the generated backend static `version.json` and `index.html`.
 10. Build the backend jar.
 11. Restart the `skillpilot` system service.
-12. Verify the deployed coach variant against the public host.
-13. Run the source-rationale deployment smoke test against the public host.
+12. Wait until the public readiness endpoint returns HTTP 200.
+13. Verify the deployed coach variant against the public host.
+14. Run the source-rationale deployment smoke test against the public host.
 
 ## The Deployment Engine (`scripts/deploy.sh`)
 
@@ -119,6 +120,9 @@ echo "Starte Service neu..."
 sudo systemctl restart "${SERVICE_NAME}"
 
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
+echo "Warte auf oeffentliche Readiness..."
+# Polls /actuator/health/readiness until HTTP 200 or the configured timeout.
+
 echo "Pruefe ausgelieferte Coach-Variante..."
 node scripts/verify_frontend_coach_variant.mjs \
   "${SMOKE_BASE_URL}" \
@@ -138,7 +142,12 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 5.  **Frontend build and artifact verification** must both finish before backend build or restart. The verifier compares the requested variant with the build metadata and HTML marker.
 6.  **Backend build** produces the updated server artifact.
 7.  **`systemctl restart`** activates the freshly built frontend/backend bundle.
-8.  **Deployment smoke tests** check that the public host serves the intended coach variant in both version metadata and HTML before checking the built source-rationale JSON asset.
+8.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
+    startup window after `systemctl restart`. A temporary `502` therefore does
+    not produce a false failed deployment.
+9.  **Deployment smoke tests** check that the public host serves the intended
+    coach variant in both version metadata and HTML before checking the built
+    source-rationale JSON asset.
 
 ## Asset deployment details
 
@@ -175,6 +184,10 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - Set `SKILLPILOT_SKIP_GIT_UPDATE=1` only when the exact desired tree is already present on the server, for example after applying a patch manually in an SSH recovery deployment.
 - The post-restart smoke test defaults to `https://skillpilot.com`.
   - Override with `SKILLPILOT_BASE_URL=https://staging.example.org` for another host.
+- The public readiness wait defaults to 180 seconds with a 5-second interval.
+  - Override with `SKILLPILOT_DEPLOY_READINESS_TIMEOUT_SECONDS=<seconds>` and
+    `SKILLPILOT_DEPLOY_READINESS_INTERVAL_SECONDS=<seconds>` when a target
+    environment has a different startup profile.
 - Non-interactive deployments need passwortlose `sudo` permission for the restart command.
   - Otherwise run the script from an interactive server shell so `sudo` can prompt before the build starts.
 
