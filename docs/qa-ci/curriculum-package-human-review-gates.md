@@ -6,7 +6,7 @@ Diese Seite ist die zentrale, kurze Arbeitsliste für Entscheidungen, die die To
 
 | Gate | Offener Umfang | Blockiert | Primäre Arbeitsquelle |
 | --- | ---: | --- | --- |
-| HR-001 Fachliche Bildfreigabe | 580 aktive Bilder warten auf Review; 23 von 754 Scope-Zielen sind bewusst providerbedingt zurückgestellt | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
+| HR-001 Fachliche Bildfreigabe | 576 aktive Bilder warten auf Review; 23 von 754 Scope-Zielen sind bewusst providerbedingt zurückgestellt | fachliche Publikationsreife | `curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json` |
 | HR-002 Bildrechte | 734 Einzelentscheidungen, davon 6 mit nutzerbereitgestellter Erzeugungsbehauptung | öffentliche Weiterverbreitung | `curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json` |
 | HR-003 Rechte der Nicht-Binärartefakte | 3 Klassenentscheidungen | öffentliche Weiterverbreitung | dasselbe Redistribution-Ledger |
 | HR-004 Source-Text-Verifikation | 479 Einzelentscheidungen | Quellen-QA/Promotion | `curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json` |
@@ -17,7 +17,7 @@ Die Gates sind unabhängig. Ein fachlich korrektes Bild kann rechtlich ungeklär
 
 ## HR-001 – Fachliche Bildfreigabe
 
-Aktuell umfasst die Visualisierungs-QA alle 754 Goals des Atomic-Scope. Davon haben 731 ein aktives Bild; 23 sind nach wiederholt fachlich fehlerhaften Provider-Ergebnissen als `deferred_provider_limitation` bewusst ohne aktiven Link und ohne veröffentlichtes Asset zurückgestellt. 151 aktive Visualisierungen sind menschlich freigegeben, 580 warten auf Review.
+Aktuell umfasst die Visualisierungs-QA alle 754 Goals des Atomic-Scope. Davon haben 731 ein aktives Bild; 23 sind nach wiederholt fachlich fehlerhaften Provider-Ergebnissen als `deferred_provider_limitation` bewusst ohne aktiven Link und ohne veröffentlichtes Asset zurückgestellt. 155 aktive Visualisierungen sind menschlich freigegeben, 576 warten auf Review.
 
 Für jedes neue oder geänderte Bild sind mindestens zu prüfen:
 
