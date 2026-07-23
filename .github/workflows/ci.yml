@@ -58,6 +58,12 @@ jobs:
             echo 'Invalid coach variant was accepted.' >&2
             exit 1
           fi
+          if grep -Eq 'sudo[[:space:]]+-v|sudo[[:space:]]+-n[[:space:]]+true' scripts/deploy.sh; then
+            echo 'Deployment must not use a general sudo credential check.' >&2
+            exit 1
+          fi
+          grep -Fq 'sudo -k -n -l -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
+          grep -Fq 'sudo -n -- "${SYSTEMCTL_BIN}" restart "${SERVICE_NAME}"' scripts/deploy.sh
 
   openai-mcp-app-ci:
     name: OpenAI MCP Apps CI
