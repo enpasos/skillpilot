@@ -8,13 +8,13 @@ Current result: DPK-004 through DPK-007a are `passed`: the real profile, fixture
 
 | Question | Current answer |
 | --- | --- |
-| Is real curriculum data compiled? | Yes: 1 Mathematik landscape, 1,079 goals, 88 views, 12 decks, 128 cards, and 826 resource links. |
+| Is real curriculum data compiled? | Yes: 1 Mathematik landscape, 1,079 goals, 88 views, 12 decks, 128 cards, and 803 resource links. |
 | Are runtime payloads strict? | Yes: every compiled runtime role has a closed Draft 2020-12 schema; unknown fields fail. |
 | Is dependency closure explicit? | Yes: typed definitions and schema-registered hard references are closed to a fixed point; the real model has no unresolved hard reference or external runtime dependency. |
-| Are images part of semantic identity? | Yes: all 734 active package images, totaling 1,604,509,513 bytes, contribute byte length and SHA-256 records to the shared `contentDigest`. |
+| Are images part of semantic identity? | Yes: all 734 active package images, totaling 1,603,749,500 bytes, contribute byte length and SHA-256 records to the shared `contentDigest`. |
 | Is publication evidence part of semantic identity? | Yes: mappings, official sources, source-goal references, and quality evidence are four normalized logical artifacts in the same `contentDigest`. |
 | Is publication evidence in the Runtime closure? | No: all four package roles declare `runtimeRequired: false`; the closure contains 2,403 Runtime definitions and 18,820 references, with zero publication roles. |
-| Is publication quality honestly releasable? | No: 731 of 754 atomic scope goals have an active image, 23 are deliberately provider-deferred, and only 151 active visualizations are human-approved; 580 active reviews remain open, so the evidence artifact reports `publicationStatus: not-ready`. |
+| Is publication quality honestly releasable? | No: 731 of 754 atomic scope goals have an active image, 23 are deliberately provider-deferred, and only 155 active visualizations are human-approved; 576 active reviews remain open, so the evidence artifact reports `publicationStatus: not-ready`. |
 | Are image files copied into this output? | Not into the unpacked conformance-model directory. The companion ZIP materializes all 734 byte-bound package images. |
 | Is this output a standalone package? | The unpacked directory deliberately remains `conformance-model-only-not-a-package`. The DPK-007a freeze derives a structurally valid `full-standalone-v1` ZIP; DPK-006a–c safely provision, activate, load and serve it, and DPK-007 proves hermetic whole-application consumption. |
 
@@ -171,4 +171,4 @@ The required gate covers the real `0.1.0-conformance.3` model, profile/registry 
 | DPK-008 | Produce and independently validate the Core-first FWU-OWL package, then reconstruct a valid JSON package in isolation without the original ZIP or source checkout. |
 | DPK-009 | Compare the reconstructed normal form and binary assets, issue the real equivalence report, and bind the reproducible variant pair. |
 
-The existing Subject Export ZIP remains `not-ready-legacy`. The current authoring projection for candidate `.3` is technically operable but remains `not-ready-incomplete`: 580 active fachliche image reviews, 23 provider-deferred visualization gaps, 737 redistribution reviews, and 479 source-text reviews are still open. The historical `.2` candidate was superseded by the immutable `.3` DPK-007a/008 content freeze, whose byte bindings remain historical and are not rebuilt from current authoring sources. The dual JSON/FWU release does not exist until DPK-008/009 pass. The unpacked conformance-model directory itself remains non-installable.
+The existing Subject Export ZIP remains `not-ready-legacy`. The current authoring projection for candidate `.3` is technically operable but remains `not-ready-incomplete`: 576 active fachliche image reviews, 23 provider-deferred visualization gaps, 737 redistribution reviews, and 479 source-text reviews are still open. The historical `.2` candidate was superseded by the immutable `.3` DPK-007a/008 content freeze, whose byte bindings remain historical and are not rebuilt from current authoring sources. The dual JSON/FWU release does not exist until DPK-008/009 pass. The unpacked conformance-model directory itself remains non-installable.
