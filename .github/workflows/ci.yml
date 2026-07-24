@@ -109,6 +109,8 @@ jobs:
         run: npm run test:runtime-curriculum-catalog
       - name: Test root route policy
         run: npm run test:root-route-policy
+      - name: Test service-worker navigation policy
+        run: npm run test:service-worker-navigation-policy
       - name: Test curriculum offering sources
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer
