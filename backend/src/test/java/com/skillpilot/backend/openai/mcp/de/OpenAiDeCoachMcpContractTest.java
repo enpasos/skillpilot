@@ -18,12 +18,14 @@ import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.landscape.ExamData;
+import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
@@ -424,6 +426,58 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void personalizationCanonicalizesAnExactVisibleLabelBeforeMutation() {
+        UnifiedLearnerStateResponse state = personalizationState();
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class)))
+                .thenReturn(state);
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                Map.of(
+                        "goalIds", List.of(),
+                        "filterIds", List.of("Hessen")));
+
+        assertThat(result.isError()).isFalse();
+        ArgumentCaptor<PersonalizationRequest> request =
+                ArgumentCaptor.forClass(PersonalizationRequest.class);
+        verify(coachTools).setPersonalization(eq(LEARNER_ID), request.capture());
+        assertThat(request.getValue().goalIds()).isEmpty();
+        assertThat(request.getValue().filters()).containsExactly("DE-HE");
+        assertThat(request.getValue().config()).isEmpty();
+    }
+
+    @Test
+    void personalizationRejectsUnknownReferencesWithoutMutation() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(personalizationState());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                Map.of(
+                        "goalIds", List.of(),
+                        "filterIds", List.of("Atlantis")));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.content().toString()).contains("ungültig");
+        verify(coachTools, never()).setPersonalization(any(), any());
+    }
+
+    @Test
+    void personalizationRejectsSeveralMutuallyExclusiveOptionsWithoutMutation() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(personalizationState());
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                Map.of(
+                        "goalIds", List.of(),
+                        "filterIds", List.of("Hessen", "Bayern")));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.content().toString()).contains("ungültig");
+        verify(coachTools, never()).setPersonalization(any(), any());
+    }
+
+    @Test
     void expiredLearningSessionReturnsSessionRequiredWithoutAnOauthChallenge() {
         when(identityResolver.resolveSkillpilotId(any()))
                 .thenThrow(new OpenAiDeLearningSessionRequiredException());
@@ -613,6 +667,37 @@ class OpenAiDeCoachMcpContractTest {
                 null,
                 null);
         return state(requiredAction, active);
+    }
+
+    private UnifiedLearnerStateResponse personalizationState() {
+        UnifiedLearnerStateResponse base = normalState("setPersonalization");
+        LandscapeFilter hessen = new LandscapeFilter();
+        hessen.setId("DE-HE");
+        hessen.setLabel("Hessen");
+        LandscapeFilter bayern = new LandscapeFilter();
+        bayern.setId("DE-BY");
+        bayern.setLabel("Bayern");
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-public-id",
+                "Gymnasium (DE)",
+                "",
+                "DE",
+                "DE",
+                "school",
+                null,
+                "de",
+                List.of(hessen, bayern));
+        return new UnifiedLearnerStateResponse(
+                base.skillpilotId(),
+                curriculum,
+                base.frontier(),
+                base.goals(),
+                base.nextAllowedActions(),
+                base.activeFilters(),
+                base.copySources(),
+                base.learningState(),
+                base.activeGoal(),
+                base.stateMachine());
     }
 
     private UnifiedLearnerStateResponse releasedExamState() {

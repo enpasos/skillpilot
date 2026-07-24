@@ -21,7 +21,6 @@ import { formatFilterDisplayLabel } from '../utils/filterLabels'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 import {
   buildCoachChatStartUrl,
-  coachStartNeedsPromptPaste,
   getActiveVisibleSessionLaunchCopy,
   isOpenAiMcpCoachActive,
   requestCoachChatStart,
@@ -253,10 +252,6 @@ export const Abi26MatheStartView: React.FC = () => {
         client: ABI26_CAMPAIGN_SLUG,
       })
       setStartPrompt(chatStart.prompt)
-      if (coachStartNeedsPromptPaste(chatStart)) {
-        const copied = await copyText(chatStart.prompt)
-        if (copied) setCopiedState('prompt')
-      }
       const url = buildCoachChatStartUrl(chatStart)
       if (chatWindow) {
         chatWindow.opener = null
@@ -488,25 +483,26 @@ export const Abi26MatheStartView: React.FC = () => {
             <p className="mt-2 text-sm leading-relaxed text-text-secondary">
               {visibleSessionLaunchCopy?.sessionDetail
                 ?? (openAiMcpCoachActive
-                  ? 'Deine SkillPilot-ID bleibt im Browser. SkillPilot bereitet eine kurze Startnachricht vor; beim ersten Start verbindest du die App einmalig mit ChatGPT.'
+                  ? 'Deine SkillPilot-ID bleibt im Browser. SkillPilot öffnet ChatGPT mit einer passenden Startnachricht; beim ersten Start verbindest du die App einmalig mit ChatGPT.'
                   : 'Deine SkillPilot-ID bleibt im Browser. SkillPilot erzeugt einen kurzlebigen Startcode und öffnet damit den Chat.')}
             </p>
-            {startPrompt && (
+            {startPrompt && !openAiMcpCoachActive && (
               <div className="mt-4 rounded-lg border border-border-color bg-slate-50 p-3 text-xs leading-relaxed text-text-secondary dark:bg-slate-800/40">
                 <pre className="whitespace-pre-wrap font-mono">{startPrompt}</pre>
               </div>
             )}
             <div className="mt-4 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={handleCopyPrompt}
-                disabled={startLoading}
-                className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
-              >
-                <Copy size={14} />
-                {visibleSessionLaunchCopy?.copyPrompt
-                  ?? (openAiMcpCoachActive ? 'Startnachricht kopieren' : 'Startcode kopieren')}
-              </button>
+              {!openAiMcpCoachActive && (
+                <button
+                  type="button"
+                  onClick={handleCopyPrompt}
+                  disabled={startLoading}
+                  className="inline-flex items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:border-sky-400 hover:bg-sky-500"
+                >
+                  <Copy size={14} />
+                  {visibleSessionLaunchCopy?.copyPrompt ?? 'Startcode kopieren'}
+                </button>
+              )}
               <button
                 type="button"
                 onClick={handleGptStartClicked}

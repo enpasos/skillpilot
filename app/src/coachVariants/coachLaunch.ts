@@ -8,6 +8,7 @@ import { requestVisibleChatStart, type VisibleChatStartResponse } from './visibl
 import { buildVisibleSessionStartUrl } from './visibleSession/startUrl'
 import { getVisibleSessionLaunchCopy, type VisibleSessionLaunchCopy } from './visibleSession/copy'
 import {
+  buildOpenAiMcpStartUrl,
   requestOpenAiMcpStart,
   type OpenAiMcpLaunchIntent,
 } from './openAiMcp/request'
@@ -90,13 +91,8 @@ export const buildCoachChatStartUrl = (chatStart: CoachChatStart): string =>
   chatStart.variant === 'visible-session'
     ? buildVisibleSessionStartUrl(chatStart.gptBaseUrl, chatStart.prompt)
     : chatStart.variant === 'openai-mcp'
-      ? chatStart.webUrl
+      ? buildOpenAiMcpStartUrl(chatStart.webUrl, chatStart.prompt)
       : getLegacySkillpilotGptUrl(chatStart.language, chatStart.prompt)
-
-export const coachStartNeedsPromptPaste = (
-  chatStart: CoachChatStart,
-): chatStart is Extract<CoachChatStart, { variant: 'openai-mcp' }> =>
-  chatStart.variant === 'openai-mcp'
 
 export interface DeliveredCoachChatStart {
   promptFallback: string | null
@@ -104,30 +100,16 @@ export interface DeliveredCoachChatStart {
 }
 
 /**
- * Navigates to the provider before attempting the optional clipboard handoff.
- * Clipboard access is a browser convenience and must never turn a successful
- * provider launch into a failed launch.
+ * Opens the provider with the complete start message in the URL. The URL only
+ * carries natural-language launch intent; learner IDs and authorization/session
+ * credentials stay in SkillPilot and the OAuth-bound backend state.
  */
 export const deliverCoachChatStart = async (
   chatStart: CoachChatStart,
   navigate: (url: string) => void,
-  copyText?: (prompt: string) => Promise<void>,
 ): Promise<DeliveredCoachChatStart> => {
   navigate(buildCoachChatStartUrl(chatStart))
-  if (!coachStartNeedsPromptPaste(chatStart)) {
-    return { promptFallback: null, copied: false }
-  }
-
-  if (!copyText) {
-    return { promptFallback: chatStart.prompt, copied: false }
-  }
-
-  try {
-    await copyText(chatStart.prompt)
-    return { promptFallback: chatStart.prompt, copied: true }
-  } catch {
-    return { promptFallback: chatStart.prompt, copied: false }
-  }
+  return { promptFallback: null, copied: false }
 }
 
 export const isOpenAiMcpCoachActive = (language?: string): boolean =>

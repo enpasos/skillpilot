@@ -31,7 +31,8 @@ class OpenAiDeCoachUiControllerTest {
     private static final String SKILLPILOT_ID = "learner-secret-id";
     private static final String BROWSER_SESSION = "spobs_browser-session";
     private static final String PROMPT =
-            "Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.";
+            "Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten "
+                    + "nächsten Schritt fort.";
 
     private OpenAiDeCoachConnectionService connectionService;
     private OpenAiDeProperties properties;

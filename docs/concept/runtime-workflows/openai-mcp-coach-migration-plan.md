@@ -190,9 +190,25 @@ keinen Sprachparameter. Die Namen bleiben technisch eindeutig:
 
 Ein generisches `applyChoice` ist für die UI-lose Version nicht vorgesehen. Das
 Modell verwendet die fachlichen IDs aus dem zuletzt geladenen
-`structuredContent`; bei Unsicherheit lädt es den Zustand erneut. Eine spätere
-Widget-Version darf opake, kurzlebige Choice-Referenzen und app-exklusive Tools
-ergänzen.
+`structuredContent`; bei Unsicherheit lädt es den Zustand erneut. Die
+Mutationsgrenze prüft jede übergebene Referenz nochmals gegen die aktuell
+veröffentlichten Optionen. Als defensive Toleranz darf sie außerdem ein exakt
+passendes, eindeutiges sichtbares Label auf dessen kanonische ID abbilden
+(beispielsweise `Hessen` auf `DE-HE`). Unbekannte oder mehrdeutige Werte werden
+vor jeder Zustandsänderung abgewiesen. Pro Personalisierungsschritt ist genau
+eine der aktuell veröffentlichten Optionen zulässig; Referenzen auf mehrere
+gegenseitig ausschließende Optionen werden ebenfalls ohne Mutation abgewiesen.
+
+Personalisierungsaufrufe des Coaches sind inkrementelle, transaktionale
+Änderungen: Sie erhalten bereits im Cockpit gesetzte Curriculum-, Fach-,
+Stufen- und Kurswerte. Mutation und Projektion des Folgezustands gehören zu
+derselben Transaktion, damit ein Projektionsfehler keine teilweise gespeicherte
+Konfiguration hinterlässt. Vollständige Konfigurationsschreibvorgänge der
+SkillPilot-Weboberfläche behalten dagegen ausdrücklich ihre
+Vollersatzsemantik.
+
+Eine spätere Widget-Version darf opake, kurzlebige Choice-Referenzen und
+app-exklusive Tools ergänzen.
 
 `chooseMemoryMode` braucht kein eigenes Tool: „Im Cockpit üben“ führt zum
 Cockpit-Link, „Mit Lerncoach prüfen“ startet Verified Recall. Ein `retest`-Feld

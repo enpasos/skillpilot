@@ -422,7 +422,7 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. |
+| `Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. |
 | `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context_de` läuft; eindeutige Teile werden übernommen und nur die echte offene Entscheidung, typischerweise GK/LK, bleibt. |
 | `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context_de` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
 | `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
@@ -524,22 +524,23 @@ globale Build-Schalter stellt deshalb nur Deutsch auf MCP um; Englisch bleibt
 ohne Nutzerfehler auf der bisherigen `visible-session`-Variante und der
 bestehenden englischen GPT-URL.
 
-Beim ersten Start erzeugt das Cockpit ein kurzlebiges Browser-Binding, öffnet
-ChatGPT und kopiert eine kurze, natürlichsprachliche Startnachricht. Spezielle
-Starts werden serverseitig als enges, auditierbares Intent-Schema vorbereitet;
-es wird kein freier Instruktionstext aus dem Browser übernommen. Nach
-erfolgreicher Verbindung erzeugen spätere Starts keine sichtbare Session-ID.
-Die dauerhafte SkillPilot-ID bleibt außerhalb von OAuth-Principal, Chat und
-Toolvertrag. Die Startnachricht beschreibt nur den gewünschten Einstieg. Sie
-und der Pending Launch werden nicht einer konkreten Chat-Konversation
-zugeordnet; neue und parallele Chats rehydrieren den bereits vorbereiteten
-Lernstand über OAuth-Principal und aktive serverseitige 24h-Lernsession aus dem
-Backend.
+Beim ersten Start erzeugt das Cockpit ein kurzlebiges Browser-Binding und öffnet
+ChatGPT mit einer kurzen, natürlichsprachlichen Startnachricht im URL-codierten
+`prompt`-Parameter. Der Benutzer muss keinen Text kopieren oder einfügen.
+Spezielle Starts werden serverseitig als enges, auditierbares Intent-Schema
+vorbereitet; es wird kein freier Instruktionstext aus dem Browser übernommen.
+Nach erfolgreicher Verbindung erzeugen spätere Starts keine sichtbare
+Session-ID. Die dauerhafte SkillPilot-ID bleibt außerhalb von OAuth-Principal,
+Chat, URL-Prompt und Toolvertrag. Die Startnachricht beschreibt nur den
+gewünschten Einstieg. Sie und der Pending Launch werden nicht einer konkreten
+Chat-Konversation zugeordnet; neue und parallele Chats rehydrieren den bereits
+vorbereiteten Lernstand über OAuth-Principal und aktive serverseitige
+24h-Lernsession aus dem Backend.
 
-Falls der Browser den Clipboard-Zugriff verweigert oder nicht anbietet, bleibt
-ChatGPT geöffnet. Das Cockpit zeigt die Startnachricht weiterhin in einem
-auswählbaren Textfeld mit eigener Kopieraktion. Clipboard-Zugriff ist damit eine
-Komfortfunktion und kein Erfolgskriterium für den Launch.
+Der Deployment-Canary muss für `CURRENT_UNIT`, `VERIFIED_RECALL` und
+`ABI26_EXAM` zusätzlich prüfen, dass ChatGPT den genau einmal vorhandenen
+`prompt`-Parameter in den Composer übernimmt. Die URL darf weder SkillPilot-ID
+noch Lernziel-ID, Binding Grant, OAuth-Token oder Lernsession-ID enthalten.
 
 ## 8. Rollback
 
