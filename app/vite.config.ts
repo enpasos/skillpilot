@@ -9,6 +9,7 @@ import { defineConfig, loadEnv, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import tailwindcss from '@tailwindcss/vite'
+import { serviceWorkerNavigationFallbackDenylist } from './serviceWorkerNavigationPolicy'
 
 const DECK_FILE_PATTERN = /_deck([._][a-z]{2})?\.json$/i
 const LANDSCAPE_JSON_FILE_PATTERN = /\.json$/i
@@ -3163,20 +3164,9 @@ export default defineConfig(({ mode }) => {
           skipWaiting: true,
           maximumFileSizeToCacheInBytes: 5000000,
           globIgnores: ['**/version.json'],
-          // Exclude patterns from service worker navigation caching
-          // This ensures OAuth redirect to /curricula makes a real network request
-          navigateFallbackDenylist: [
-            /^\/.*\.pdf$/,
-            /^\/openai\/custom-gpt-action-regression(?:\/|$)/,
-            /^\/claude\/mcp-regression(?:\/|$)/,
-            /^\/api\/action-regression(?:\/|$)/,
-            /^\/api\/claude\/oauth(?:\/|$)/,
-            /^\/curricula\?auth_success/,
-            /^\/oauth2/,
-            /^\/login/,
-            /^\/robots\.txt$/,
-            /^\/sitemap\.xml$/
-          ]
+          // Machine endpoints and OAuth redirects must make real network
+          // requests instead of falling back to the cached React application.
+          navigateFallbackDenylist: serviceWorkerNavigationFallbackDenylist,
         },
         manifest: {
           name: 'SkillPilot',

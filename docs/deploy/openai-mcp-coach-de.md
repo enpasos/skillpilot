@@ -241,16 +241,27 @@ Anwendungslogs erscheinen.
 2. Beschreibung exakt:
 
    ```text
-   Persönlicher deutscher SkillPilot-Lerncoach zum Starten und Fortsetzen gespeicherter Lerneinheiten, Auswählen von Lernwegen, Bearbeiten von Aufgaben, Wiederholen von Lernkarten und Nutzen des persönlichen Lernstands. Verwenden, wenn die lernende Person SkillPilot zum Lernen oder Üben auswählt; nicht als allgemeines Nachschlagewerk.
+   Persönlicher deutscher Lerncoach für deinen gespeicherten SkillPilot-Lernstand. Begleitet dich durch Lernziele, Aufgaben und Wiederholungen und hält deinen Fortschritt fest.
    ```
 
 3. Verbindung: `Server URL`.
 4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
 5. OAuth mit Client-ID `skillpilot-chatgpt-de-prod`, ohne Client-Secret und mit
    der in Abschnitt 2 übernommenen Callback-URL konfigurieren.
-6. Nach jeder Vertragsänderung den App-Eintrag neu laden und prüfen, dass genau
-   die elf deutschen Produktivwerkzeuge erscheinen; keine Claude-, Regression-
-   oder Widget-Testwerkzeuge dürfen sichtbar sein.
+6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
+   Serverinstruktionen zuerst das Backend deployen. Danach unter
+   `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
+   ausführen. Prüfen, dass genau die elf deutschen Produktivwerkzeuge
+   erscheinen; keine Claude-, Regression- oder Widget-Testwerkzeuge dürfen
+   sichtbar sein.
+
+Die sichtbare Beschreibung erklärt ausschließlich den Produktnutzen. ChatGPT
+verwendet sie zwar als Signal für die App-Discovery, SkillPilot darf seine
+fachliche Korrektheit oder seinen Arbeitsablauf aber nicht von ihrem Wortlaut
+abhängig machen. Positive und negative Auswahlgrenzen gehören in die
+Werkzeugbeschreibung, werkzeugübergreifende Abläufe in die
+MCP-Serverinstruktionen und verbindliche Autorisierung sowie Zustandsübergänge
+ins Backend.
 
 Der stabile technische Name des Bootstrap-Werkzeugs bleibt
 `get_skillpilot_context_de`. Sein Titel muss
@@ -378,9 +389,11 @@ Abgleich autorisiert sichtbar sind, muss `contractHash` aus
 
 #### Routing-Golden-Prompts
 
-Nach jeder Änderung an Titel, Beschreibung oder Server-Instruktionen den
-App-Eintrag neu laden und jeden Test in einem frischen Chat ausführen. Für jeden
-Fall Toolname, Ergebnis und sichtbare Antwort notieren:
+Nach jeder Änderung an Werkzeugtitel, Werkzeugbeschreibung oder
+Serverinstruktionen zuerst das Backend deployen und anschließend in der
+Developer-Mode-App `Refresh` ausführen. Jeden Test danach in einem frischen Chat
+mit aktivierter App ausführen. Für jeden Fall Toolname, Ergebnis und sichtbare
+Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
