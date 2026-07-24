@@ -6,7 +6,10 @@ import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -15,6 +18,8 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
 public final class OpenAiDeMcpTelemetry {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenAiDeMcpTelemetry.class);
 
     public static final String TOOL_DURATION_METRIC = "skillpilot.openai.de.mcp.tool.duration";
 
@@ -57,11 +62,17 @@ public final class OpenAiDeMcpTelemetry {
             status = result != null && !Boolean.TRUE.equals(result.isError()) ? "success" : "error";
             return result;
         } finally {
-            sample.stop(Timer.builder(TOOL_DURATION_METRIC)
+            String boundedToolName = KNOWN_TOOLS.contains(toolName) ? toolName : UNKNOWN_TOOL;
+            long durationNanos = sample.stop(Timer.builder(TOOL_DURATION_METRIC)
                     .description("Duration and outcome of German OpenAI MCP tool invocations")
-                    .tag("tool", KNOWN_TOOLS.contains(toolName) ? toolName : UNKNOWN_TOOL)
+                    .tag("tool", boundedToolName)
                     .tag("status", status)
                     .register(meterRegistry));
+            LOGGER.info(
+                    "OpenAI-DE MCP tool invocation: tool={} status={} durationMs={}",
+                    boundedToolName,
+                    status,
+                    TimeUnit.NANOSECONDS.toMillis(durationNanos));
         }
     }
 

@@ -123,6 +123,39 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void contextToolIsTheSingleExplicitBootstrapForSkillpilotLearningIntents() {
+        McpSchema.Tool bootstrap = spec(OpenAiDeCoachMcpContract.GET_CONTEXT).tool();
+
+        assertThat(bootstrap.title()).isEqualTo("SkillPilot-Lerncoach starten oder fortsetzen");
+        assertThat(bootstrap.description())
+                .contains("immer zuerst")
+                .contains("SkillPilot Coach (Deutsch)")
+                .contains("lernen, üben")
+                .contains("Lerneinheit starten, fortsetzen oder wiederaufnehmen")
+                .contains("gespeicherten Lernstand")
+                .contains("autoritativen persönlichen SkillPilot-Zustand")
+                .contains("allgemeine Lernberatung")
+                .contains("selbst erstellten Lehrplan")
+                .contains("nicht für allgemeine Fachfragen ohne SkillPilot-Bezug");
+        assertThat(bootstrap.inputSchema())
+                .containsEntry("type", "object")
+                .containsEntry("additionalProperties", false);
+        assertThat(bootstrap.inputSchema().get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties).isEmpty());
+        assertThat(bootstrap.annotations().readOnlyHint()).isTrue();
+        assertThat(bootstrap.annotations().idempotentHint()).isTrue();
+        assertThat(bootstrap.meta().toString())
+                .contains(OpenAiDeCoachMcpContract.READ_SCOPE)
+                .doesNotContain(OpenAiDeCoachMcpContract.WRITE_SCOPE);
+        assertThat(contract.toolSpecifications().stream()
+                        .filter(specification -> specification.tool().description() != null
+                                && specification.tool().description().contains("immer zuerst")))
+                .singleElement()
+                .extracting(specification -> specification.tool().name())
+                .isEqualTo(OpenAiDeCoachMcpContract.GET_CONTEXT);
+    }
+
+    @Test
     void nativeMcpSerializationPublishesOutputSchemaAnnotationsAndOpenAiSecurityMirror() throws Exception {
         String json = new JacksonMcpJsonMapperSupplier().get().writeValueAsString(
                 spec(OpenAiDeCoachMcpContract.SET_SCOPE).tool());
@@ -193,6 +226,9 @@ class OpenAiDeCoachMcpContractTest {
     @Test
     void serverAndExamInstructionsRequireEquivalentSolutionsExplicitCriteriaAndNoExamQuestions() {
         assertThat(contract.serverInstructions())
+                .contains("vor der ersten fachlichen Antwort " + OpenAiDeCoachMcpContract.GET_CONTEXT)
+                .contains("allgemeine Lehrplanübersicht")
+                .contains("erfundenen Lernpfad")
                 .contains("Bewerte fachlich, nicht nach Wortlaut")
                 .contains("alternative Lösungswege")
                 .contains("ausdrücklich verlangte Formate")

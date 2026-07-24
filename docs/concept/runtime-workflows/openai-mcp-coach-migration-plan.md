@@ -20,7 +20,7 @@ bestehenden Custom GPT auch nicht weiter aus. Stattdessen entsteht zunächst ein
 deutsche, UI-lose OpenAI-MCP-App:
 
 ```text
-ChatGPT App „SkillPilot Coach Deutsch"
+ChatGPT App „SkillPilot Coach (Deutsch)"
         |
         | MCP + OAuth Bearer
         v
@@ -176,7 +176,7 @@ keinen Sprachparameter. Die Namen bleiben technisch eindeutig:
 
 | Tool | Aufgabe |
 | --- | --- |
-| `get_skillpilot_context_de()` | Aktuellen kompakten Lernzustand argumentlos laden oder rehydrieren |
+| `get_skillpilot_context_de()` | SkillPilot-Lerncoach bei einer natürlichen SkillPilot-Lernabsicht starten oder fortsetzen sowie den kompakten Lernzustand argumentlos rehydrieren |
 | `get_skillpilot_navigation_de(target)` | Optionen für einen ausdrücklichen Wechsel von Curriculum, Personalisierung, Scope oder Ziel laden |
 | `set_skillpilot_curriculum_de(curriculumId)` | Ein Curriculum aus den aktuell erlaubten Optionen setzen |
 | `set_skillpilot_personalization_de(goalIds, filterIds)` | Kurs- und Profilausprägung setzen |
@@ -201,7 +201,16 @@ wird.
 
 ### 5.1 Context-Ergebnis
 
-`get_skillpilot_context_de()` serialisiert **nicht** den rohen
+`get_skillpilot_context_de()` ist trotz seines stabilen technischen Namens das
+eindeutige Bootstrap-Werkzeug. Wenn die App ausgewählt oder SkillPilot genannt
+wurde und die lernende Person lernen, üben, starten, fortsetzen oder den
+gespeicherten Lernstand verwenden möchte, muss es vor der ersten fachlichen
+Antwort laufen. Eine allgemeine Lehrplanübersicht oder ein frei erfundener
+Lernpfad ist kein zulässiger Ersatz. Dasselbe Werkzeug rehydriert den Zustand
+nach einem neuen Chat, Reload, langem Dialog, möglicher Kontextkompaktierung,
+Unsicherheit oder Konflikt.
+
+Es serialisiert **nicht** den rohen
 `UnifiedLearnerStateResponse`. Der kompakte Vertrag enthält nur:
 
 - Lernzustand, `requiredAction` und Interaktionsmodus;
