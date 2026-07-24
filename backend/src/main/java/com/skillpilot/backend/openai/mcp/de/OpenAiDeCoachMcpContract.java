@@ -69,7 +69,7 @@ public final class OpenAiDeCoachMcpContract {
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation_de";
 
     private static final String SERVER_INSTRUCTIONS = """
-            Du bist der deutsche SkillPilot-Lerncoach. Lade zu Beginn mit get_skillpilot_context_de den aktuellen Backendzustand und befolge requiredAction, interactionMode, instruction und policies. SkillPilot ist die einzige Autorität für Curriculum, Scope, aktives Ziel, Mastery, Recall, Prüfung und Fortschritt. Nutze intern ausschließlich Werte aus dem jüngsten structuredContent; erfinde nichts. Lade bei Unsicherheit, langem Dialog, Reload oder möglicher Kontextkompaktierung erneut. Nach einer Mutation gilt ausschließlich der frische Folgezustand.
+            Du bist der deutsche SkillPilot-Lerncoach. Wenn SkillPilot Coach (Deutsch) für den Chat ausgewählt oder ausdrücklich genannt wurde und die lernende Person lernen, üben, eine Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren Lernstand verwenden möchte, rufe vor der ersten fachlichen Antwort get_skillpilot_context_de auf. Verwende danach den jüngsten structuredContent als alleinige Autorität für Curriculum, Kursprofil, Scope, aktives Ziel, Mastery, Frontier, Aufgabe, Recall, Prüfung, Fortschritt und nächsten Schritt. Ersetze einen fehlenden oder fehlgeschlagenen Aufruf niemals durch eine allgemeine Lehrplanübersicht, allgemeine Lernberatung oder einen erfundenen Lernpfad. Lade den Zustand mit demselben Tool nach Reload, langem Dialog, möglicher Kontextkompaktierung, Unsicherheit oder einem 409-Konflikt erneut. Nach einer Mutation gilt ausschließlich der frische Folgezustand.
 
             Antworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, verwende nur https://skillpilot.com. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.
 
@@ -186,9 +186,16 @@ public final class OpenAiDeCoachMcpContract {
         return List.of(
                 tool(
                         GET_CONTEXT,
-                        "Aktuellen Lernkontext laden",
-                        "Lädt den kompakten aktuellen SkillPilot-Zustand ohne Argumente. Zu Sitzungsbeginn sowie nach "
-                                + "Reload, langem Dialog, Kontextverlust oder Konflikt erneut aufrufen.",
+                        "SkillPilot-Lerncoach starten oder fortsetzen",
+                        "Verwende dieses Tool immer zuerst, wenn die lernende Person die App SkillPilot Coach "
+                                + "(Deutsch) ausgewählt oder SkillPilot genannt hat und lernen, üben, eine "
+                                + "Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren gespeicherten "
+                                + "Lernstand verwenden möchte. Es lädt den autoritativen persönlichen "
+                                + "SkillPilot-Zustand ohne Argumente. Verwende es außerdem nach einem neuen Chat, "
+                                + "Reload, langem Dialog, möglicher Kontextkompaktierung, Kontextverlust oder "
+                                + "Konflikt. Ersetze diesen Aufruf niemals durch allgemeine Lernberatung, einen "
+                                + "selbst erstellten Lehrplan oder erfundene Lernziele. Verwende es nicht für "
+                                + "allgemeine Fachfragen ohne SkillPilot-Bezug.",
                         emptyObjectSchema(),
                         contextSchema(),
                         true,

@@ -341,8 +341,19 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertMcpPayloadDoesNotExposeIdentity(tools, createdConnection.getSubject());
         assertThat(toolNames(tools))
                 .contains(OpenAiDeCoachMcpContract.GET_CONTEXT, OpenAiDeCoachMcpContract.SET_CURRICULUM);
+        JsonNode bootstrapTool = toolDescriptor(tools, OpenAiDeCoachMcpContract.GET_CONTEXT);
+        assertThat(bootstrapTool.path("title").asText())
+                .isEqualTo("SkillPilot-Lerncoach starten oder fortsetzen");
+        assertThat(bootstrapTool.path("description").asText())
+                .contains("immer zuerst")
+                .contains("SkillPilot Coach (Deutsch)")
+                .contains("allgemeine Lernberatung")
+                .contains("nicht für allgemeine Fachfragen ohne SkillPilot-Bezug");
+        assertThat(bootstrapTool.path("inputSchema").path("properties").isEmpty()).isTrue();
+        assertThat(bootstrapTool.path("annotations").path("readOnlyHint").asBoolean()).isTrue();
 
-        HttpResponse<String> initialRead = callTool(accessToken, 2, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
+        HttpResponse<String> initialRead =
+                callTool(accessToken, 2, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
         assertMcpPayloadDoesNotExposeIdentity(initialRead, createdConnection.getSubject());
         JsonNode initialContext = result(initialRead).path("structuredContent");
         assertThat(initialContext.path("requiredAction").asText()).isEqualTo("setCurriculum");
@@ -523,6 +534,16 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .valueStream()
                 .map(tool -> tool.path("name").asText())
                 .toList();
+    }
+
+    private JsonNode toolDescriptor(HttpResponse<String> response, String name) throws Exception {
+        return objectMapper.readTree(response.body())
+                .path("result")
+                .path("tools")
+                .valueStream()
+                .filter(tool -> name.equals(tool.path("name").asText()))
+                .findFirst()
+                .orElseThrow();
     }
 
     private URI localUri(String path) {

@@ -25,7 +25,7 @@ Prüfungszustand bleiben autoritativ im SkillPilot-Backend.
 
 Langfristig werden für ChatGPT **zwei eigenständig registrierte Apps** gebaut:
 
-- **SkillPilot Coach Deutsch** mit eigenem MCP-Endpunkt, deutschem Toolvertrag,
+- **SkillPilot Coach (Deutsch)** mit eigenem MCP-Endpunkt, deutschem Toolvertrag,
   zunächst ohne Widget und mit eigener Acceptance Suite;
 - **SkillPilot Coach English** mit eigenem MCP-Endpunkt, englischem Toolvertrag,
   später eigenem Widget und eigener Acceptance Suite.

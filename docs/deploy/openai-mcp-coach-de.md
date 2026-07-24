@@ -1,4 +1,4 @@
-# ChatGPT-App „SkillPilot Coach Deutsch“: Deployment und Cutover
+# ChatGPT-App „SkillPilot Coach (Deutsch)“: Deployment und Cutover
 
 **Stand:** 23. Juli 2026
 
@@ -237,9 +237,13 @@ Anwendungslogs erscheinen.
 
 ## 4. ChatGPT-App konfigurieren
 
-1. Name: `SkillPilot Coach Deutsch`.
-2. Beschreibung: kurz und deutsch; Lernpfad, Aufgaben, Lernstand und
-   Wiederaufnahme nennen.
+1. Name: `SkillPilot Coach (Deutsch)`.
+2. Beschreibung exakt:
+
+   ```text
+   Persönlicher deutscher SkillPilot-Lerncoach zum Starten und Fortsetzen gespeicherter Lerneinheiten, Auswählen von Lernwegen, Bearbeiten von Aufgaben, Wiederholen von Lernkarten und Nutzen des persönlichen Lernstands. Verwenden, wenn die lernende Person SkillPilot zum Lernen oder Üben auswählt; nicht als allgemeines Nachschlagewerk.
+   ```
+
 3. Verbindung: `Server URL`.
 4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
 5. OAuth mit Client-ID `skillpilot-chatgpt-de-prod`, ohne Client-Secret und mit
@@ -247,6 +251,14 @@ Anwendungslogs erscheinen.
 6. Nach jeder Vertragsänderung den App-Eintrag neu laden und prüfen, dass genau
    die elf deutschen Produktivwerkzeuge erscheinen; keine Claude-, Regression-
    oder Widget-Testwerkzeuge dürfen sichtbar sein.
+
+Der stabile technische Name des Bootstrap-Werkzeugs bleibt
+`get_skillpilot_context_de`. Sein Titel muss
+`SkillPilot-Lerncoach starten oder fortsetzen` lauten. Seine Beschreibung nennt
+positive Routingfälle (SkillPilot auswählen oder nennen; lernen, üben, starten,
+fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
+(keine allgemeine Fachfrage ohne SkillPilot-Bezug). Kein zweites,
+semantisch gleiches Alias-Werkzeug veröffentlichen.
 
 Die erste Version registriert bewusst keine Widget-Ressource und kein
 `outputTemplate`. Auswahl und Coaching bleiben im normalen Chat; technische
@@ -363,6 +375,31 @@ Abgleich autorisiert sichtbar sind, muss `contractHash` aus
   werden, ohne den Nutzer in eine erneute Autorisierung zu schicken.
 - Andere Lernende, fremde Resource-Werte, abgelaufene/revozierte Tokens und
   fehlende Scopes müssen negativ getestet werden.
+
+#### Routing-Golden-Prompts
+
+Nach jeder Änderung an Titel, Beschreibung oder Server-Instruktionen den
+App-Eintrag neu laden und jeden Test in einem frischen Chat ausführen. Für jeden
+Fall Toolname, Ergebnis und sichtbare Antwort notieren:
+
+| Prompt | Erwartung |
+| --- | --- |
+| `Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. |
+| `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context_de` läuft; eindeutige Teile werden übernommen und nur die echte offene Entscheidung, typischerweise GK/LK, bleibt. |
+| `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context_de` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
+| `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
+| `Use SkillPilot Coach (Deutsch) and resume my current lesson.` | Der deutsche Bootstrap bleibt auch bei einem englischen direkten App-Auftrag auffindbar und antwortet anschließend deutsch. |
+
+Die Anwendung schreibt pro Toolaufruf ausschließlich eine begrenzte
+Diagnosezeile mit Toolname, Status und Dauer, beispielsweise:
+
+```text
+OpenAI-DE MCP tool invocation: tool=get_skillpilot_context_de status=success durationMs=42
+```
+
+Lerninhalte, Antworten, Toolargumente, Tokens und Lernendenkennungen dürfen
+darin nicht erscheinen. Für den Live-Test kann die Zeile mit
+`journalctl -u skillpilot` geprüft werden.
 
 ### Stufe B – Schreibpilot
 
