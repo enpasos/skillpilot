@@ -44,7 +44,7 @@ interface OpenAiMcpRequestOptions {
 }
 
 const DEFAULT_START_PROMPT =
-  'Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.'
+  'Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.'
 
 const getApiBase = (configured?: string) => {
   const runtimeEnvironment = (import.meta as ImportMeta & {
@@ -85,8 +85,7 @@ export const getSafeChatGptUrl = (value: unknown): string | null => {
   try {
     const url = new URL(value)
     if (
-      url.protocol !== 'https:'
-      || url.hostname !== 'chatgpt.com'
+      url.origin !== 'https://chatgpt.com'
       || url.username
       || url.password
     ) {
@@ -96,6 +95,20 @@ export const getSafeChatGptUrl = (value: unknown): string | null => {
   } catch {
     return null
   }
+}
+
+export const buildOpenAiMcpStartUrl = (webUrl: unknown, prompt: unknown): string => {
+  const safeWebUrl = getSafeChatGptUrl(webUrl)
+  if (!safeWebUrl) {
+    throw new Error('Invalid ChatGPT start URL')
+  }
+  if (typeof prompt !== 'string' || !prompt.trim()) {
+    throw new Error('Invalid ChatGPT start prompt')
+  }
+
+  const url = new URL('https://chatgpt.com/')
+  url.searchParams.set('prompt', prompt.trim())
+  return url.toString()
 }
 
 const requestJson = async <T>(

@@ -77,6 +77,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
     private static final String PERMANENT_SKILLPILOT_ID = "SP-E2E-PERMANENT-ID-MUST-NOT-LEAK";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
+    private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CLIENT_ID = "chatgpt-e2e-client";
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
@@ -371,10 +372,37 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         Learner persistedAfterWrite = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
         assertThat(persistedAfterWrite.getSelectedCurriculum()).isEqualTo(CURRICULUM_ID);
+        persistedAfterWrite.setPersonalCurriculum("""
+                {
+                  "%s": {"selected": true},
+                  "%s": {"selected": true, "filterId": "GK"}
+                }
+                """.formatted(CURRICULUM_ID, MATHEMATICS_CURRICULUM_ID));
+        learnerRepository.saveAndFlush(persistedAfterWrite);
+
+        HttpResponse<String> personalization = callTool(
+                accessToken,
+                4,
+                OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
+                "{\"goalIds\":[],\"filterIds\":[\"Hessen\"]}");
+        assertMcpPayloadDoesNotExposeIdentity(personalization, createdConnection.getSubject());
+        JsonNode personalizedContext = result(personalization).path("structuredContent");
+        assertThat(personalizedContext.path("requiredAction").asText()).isNotEqualTo("setPersonalization");
+
+        Learner persistedAfterPersonalization =
+                learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        JsonNode personalCurriculum =
+                objectMapper.readTree(persistedAfterPersonalization.getPersonalCurriculum());
+        assertThat(personalCurriculum.path(CURRICULUM_ID).path("filterId").asText())
+                .isEqualTo("DE-HE");
+        assertThat(personalCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("selected").asBoolean())
+                .isTrue();
+        assertThat(personalCurriculum.path(MATHEMATICS_CURRICULUM_ID).path("filterId").asText())
+                .isEqualTo("GK");
 
         HttpResponse<String> persistedRead = callTool(
                 accessToken,
-                4,
+                5,
                 OpenAiDeCoachMcpContract.GET_CONTEXT,
                 "{}");
         assertMcpPayloadDoesNotExposeIdentity(persistedRead, createdConnection.getSubject());

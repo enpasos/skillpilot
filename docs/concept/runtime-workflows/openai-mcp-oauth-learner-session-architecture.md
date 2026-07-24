@@ -243,12 +243,34 @@ OAuth-Autorisierung erforderlich.
 Die sichtbare Nachricht darf ausschließlich die natürliche Lernabsicht
 ausdrücken, beispielsweise:
 
-> Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle
-> Lerneinheit.
+> Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot
+> vorbereiteten nächsten Schritt fort.
 
 Sie enthält keine Identität und keine Autorisierung. Ihr Verlust oder ihre
 Veränderung darf keinen fremden Lernendenzugriff ermöglichen. Das Backend hat
 den Start-Intent bereits vor dem Chat vorbereitet.
+
+Das Cockpit transportiert die vom Backend erzeugte Nachricht URL-codiert im
+`prompt`-Parameter einer zuvor validierten `https://chatgpt.com/`-URL. Der
+Benutzer muss sie nicht über die Zwischenablage übertragen. Pfad,
+Query-Parameter und Fragment aus der konfigurierten Basis-URL werden verworfen;
+SkillPilot öffnet einen neuen normalen Chat und setzt genau einen neuen
+`prompt`-Parameter. Der Parameter ist ausschließlich eine Komfortübergabe an den
+Chat-Composer und keine Identitäts-, Autorisierungs- oder Sitzungsbindung.
+
+Die Nachricht wird passend zum typisierten Start-Intent erzeugt:
+
+- `CURRENT_UNIT` verwendet die kontextneutrale Formulierung „vorbereiteter
+  nächster Schritt“ und passt dadurch auch zu noch offener Personalisierung,
+  Fortsetzung, Übung oder Prüfung;
+- `VERIFIED_RECALL` nennt nur den Zweck und die Kartenanzahl;
+- `ABI26_EXAM` nennt nur Prüfungsmodus und Kursniveau.
+
+SkillPilot-ID, Lernziel-ID, Binding Grant, OAuth-Token und Lernsession-ID dürfen
+in keinem dieser URL-Prompts vorkommen. Da der öffentliche ChatGPT-URL-Vertrag
+providerseitig geändert werden kann, gehört die automatische Vorbelegung in den
+Release-Canary; fachlich und sicherheitstechnisch bleibt der Backendzustand die
+Quelle der Wahrheit.
 
 ## 6. Keine verlässliche Bindung an eine konkrete Chat-Konversation
 

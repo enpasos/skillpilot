@@ -2331,7 +2331,36 @@ public class LearnerService {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
         Map<String, Object> finalConfig = normalizePersonalCurriculumPayload(config);
+        applyPersonalCurriculumMutation(learner, finalConfig, goalIds, filters);
+    }
 
+    /**
+     * Incrementally updates coach-provided personalization while preserving the
+     * learner's existing cockpit configuration. The mutation and the returned
+     * state projection intentionally share one transaction so a projection
+     * failure rolls the mutation back.
+     */
+    @Transactional
+    public UnifiedLearnerStateResponse patchPersonalCurriculum(
+            String skillpilotId,
+            Map<String, Object> config,
+            List<String> goalIds,
+            List<String> filters) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+
+        Map<String, Object> finalConfig = mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        mergePersonalCurriculumPatch(finalConfig, normalizePersonalCurriculumPayload(config));
+        applyPersonalCurriculumMutation(learner, finalConfig, goalIds, filters);
+
+        return getLearnerState(skillpilotId, null);
+    }
+
+    private void applyPersonalCurriculumMutation(
+            Learner learner,
+            Map<String, Object> finalConfig,
+            List<String> goalIds,
+            List<String> filters) {
         java.util.Set<String> targetLandscapes = new java.util.HashSet<>();
         java.util.List<String> effectiveFilters = new java.util.ArrayList<>();
         if (filters != null) {
@@ -2408,7 +2437,34 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Invalid personalization config");
         }
-        eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "PERSONALIZATION_UPDATE"));
+        eventPublisher.publishEvent(
+                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
+    }
+
+    private Map<String, Object> mutablePersonalCurriculumPayload(String personalCurriculumJson) {
+        Map<String, Object> mutable = new LinkedHashMap<>();
+        parsePersonalCurriculumConfig(personalCurriculumJson)
+                .forEach((landscapeId, settings) -> mutable.put(landscapeId, new LinkedHashMap<>(settings)));
+        return mutable;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void mergePersonalCurriculumPatch(Map<String, Object> target, Map<String, Object> patch) {
+        for (Map.Entry<String, Object> entry : patch.entrySet()) {
+            Object currentValue = target.get(entry.getKey());
+            Object patchValue = entry.getValue();
+            if (currentValue instanceof Map<?, ?> currentSettings && patchValue instanceof Map<?, ?> patchSettings) {
+                Map<String, Object> mergedSettings = new LinkedHashMap<>((Map<String, Object>) currentSettings);
+                for (Map.Entry<?, ?> setting : patchSettings.entrySet()) {
+                    if (setting.getKey() instanceof String settingName) {
+                        mergedSettings.put(settingName, setting.getValue());
+                    }
+                }
+                target.put(entry.getKey(), mergedSettings);
+            } else {
+                target.put(entry.getKey(), patchValue);
+            }
+        }
     }
 
     private boolean isSelectedInPersonalCurriculum(Object rawConfig) {

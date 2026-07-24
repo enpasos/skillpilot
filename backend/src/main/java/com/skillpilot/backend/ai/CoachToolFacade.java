@@ -258,8 +258,11 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse setPersonalization(String skillpilotId, PersonalizationRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
-        learnerService.setPersonalCurriculum(skillpilotId, request.config(), request.goalIds(), request.filters());
-        return learnerService.getLearnerState(skillpilotId);
+        return learnerService.patchPersonalCurriculum(
+                skillpilotId,
+                request.config(),
+                request.goalIds(),
+                request.filters());
     }
 
     public RedeemedCoachSession redeemStartCode(String startCode, String language) {

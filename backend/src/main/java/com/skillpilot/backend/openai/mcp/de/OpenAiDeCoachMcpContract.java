@@ -26,9 +26,11 @@ import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -233,8 +235,9 @@ public final class OpenAiDeCoachMcpContract {
                 tool(
                         SET_PERSONALIZATION,
                         "Kursausprägung auswählen",
-                        "Setzt die aktuell erlaubte Personalisierung. Verwende ausschließlich goalIds beziehungsweise "
-                                + "filterIds aus structuredContent; nicht verwendete Liste leer übergeben.",
+                        "Setzt genau eine aktuell erlaubte Personalisierungsoption. Verwende ausschließlich goalIds "
+                                + "beziehungsweise filterIds derselben Option aus structuredContent; nicht verwendete "
+                                + "Liste leer übergeben.",
                         objectSchema(
                                 Map.of(
                                         "goalIds", stringArraySchema(0),
@@ -484,14 +487,7 @@ public final class OpenAiDeCoachMcpContract {
             }
             case "personalization" -> {
                 requiredAction = "setPersonalization";
-                options.addAll(contextProjector.personalizationOptions(rawState.curriculum()));
-                if (options.isEmpty() && rawState.stateMachine() != null
-                        && rawState.stateMachine().goalOptions() != null) {
-                    for (FrontierGoal goal : contextProjector.projectNavigationGoals(
-                            rawState.stateMachine().goalOptions())) {
-                        add(options, contextProjector.goalOption(goal, "personalization"));
-                    }
-                }
+                options.addAll(personalizationOptions(rawState));
             }
             case "scope" -> {
                 requiredAction = "setScope";
@@ -546,11 +542,108 @@ public final class OpenAiDeCoachMcpContract {
         if (goalIds.isEmpty() && filterIds.isEmpty()) {
             throw new IllegalArgumentException("goalIds und filterIds dürfen nicht beide leer sein.");
         }
+        PersonalizationRequest request = resolvePersonalizationRequest(
+                coachTools.getLearnerState(skillpilotId),
+                goalIds,
+                filterIds);
         return contextMutationResult(
                 "Kursausprägung gespeichert; Folgezustand geladen.",
-                coachTools.setPersonalization(
-                        skillpilotId,
-                        new PersonalizationRequest(Map.of(), goalIds, filterIds)));
+                coachTools.setPersonalization(skillpilotId, request));
+    }
+
+    /**
+     * Resolves model-provided references against the currently published options.
+     *
+     * <p>Models normally copy the technical IDs from structured content, but may
+     * occasionally send the equally visible label instead. Accepting an exact,
+     * unambiguous label keeps that harmless variation robust without allowing
+     * arbitrary filter values into the learner configuration.</p>
+     */
+    private PersonalizationRequest resolvePersonalizationRequest(
+            UnifiedLearnerStateResponse state,
+            List<String> submittedGoalIds,
+            List<String> submittedFilterIds) {
+        List<OpenAiDeCoachContext.Option> allowedOptions = personalizationOptions(state);
+        if (allowedOptions.isEmpty()) {
+            throw new IllegalArgumentException("Aktuell sind keine Personalisierungsoptionen verfügbar.");
+        }
+
+        Set<String> canonicalGoalIds = new LinkedHashSet<>();
+        Set<String> canonicalFilterIds = new LinkedHashSet<>();
+        OpenAiDeCoachContext.Option selectedOption = null;
+        List<String> submittedReferences = new ArrayList<>(submittedGoalIds);
+        submittedReferences.addAll(submittedFilterIds);
+        for (String submittedReference : submittedReferences) {
+            List<OpenAiDeCoachContext.Option> matches = allowedOptions.stream()
+                    .filter(option -> matchesPersonalizationReference(option, submittedReference))
+                    .toList();
+            if (matches.size() != 1) {
+                throw new IllegalArgumentException(
+                        "Die Personalisierungsreferenz ist unbekannt oder mehrdeutig.");
+            }
+            OpenAiDeCoachContext.Option match = matches.getFirst();
+            if (selectedOption != null && !selectedOption.equals(match)) {
+                throw new IllegalArgumentException(
+                        "Es darf nur eine Personalisierungsoption gewählt werden.");
+            }
+            selectedOption = match;
+            if (match.goalIds() != null) {
+                canonicalGoalIds.addAll(match.goalIds());
+            }
+            if (match.filterIds() != null) {
+                canonicalFilterIds.addAll(match.filterIds());
+            }
+        }
+        if (canonicalGoalIds.isEmpty() && canonicalFilterIds.isEmpty()) {
+            throw new IllegalArgumentException("Die gewählten Optionen enthalten keine fachlichen Referenzen.");
+        }
+        return new PersonalizationRequest(
+                Map.of(),
+                List.copyOf(canonicalGoalIds),
+                List.copyOf(canonicalFilterIds));
+    }
+
+    private List<OpenAiDeCoachContext.Option> personalizationOptions(UnifiedLearnerStateResponse state) {
+        List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
+        if (state != null) {
+            options.addAll(contextProjector.personalizationOptions(state.curriculum()));
+            if (options.isEmpty() && state.stateMachine() != null
+                    && state.stateMachine().goalOptions() != null) {
+                for (FrontierGoal goal : contextProjector.projectNavigationGoals(
+                        state.stateMachine().goalOptions())) {
+                    add(options, contextProjector.goalOption(goal, "personalization"));
+                }
+            }
+        }
+        return List.copyOf(options);
+    }
+
+    private boolean matchesPersonalizationReference(
+            OpenAiDeCoachContext.Option option,
+            String submittedReference) {
+        String normalized = normalizedReference(submittedReference);
+        if (normalized == null || option == null) {
+            return false;
+        }
+        if (normalized.equals(normalizedReference(option.id()))
+                || normalized.equals(normalizedReference(option.label()))) {
+            return true;
+        }
+        return containsReference(option.goalIds(), normalized)
+                || containsReference(option.filterIds(), normalized);
+    }
+
+    private boolean containsReference(List<String> references, String normalizedReference) {
+        return references != null && references.stream()
+                .map(this::normalizedReference)
+                .anyMatch(normalizedReference::equals);
+    }
+
+    private String normalizedReference(String reference) {
+        if (reference == null || reference.isBlank()) {
+            return null;
+        }
+        return reference.trim().toLowerCase(Locale.ROOT);
     }
 
     private McpSchema.CallToolResult setScope(String skillpilotId, Map<String, Object> arguments) {

@@ -775,7 +775,8 @@ public class OpenAiDeCoachConnectionService {
     private String launchPrompt(NormalizedLaunch launch) {
         return switch (launch.type()) {
             case CURRENT_UNIT ->
-                    "Verwende die App SkillPilot Coach (Deutsch) und starte meine aktuelle Lerneinheit.";
+                    "Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten "
+                            + "nächsten Schritt fort.";
             case VERIFIED_RECALL ->
                     "Verwende die App SkillPilot Coach (Deutsch) und starte für mein aktuell ausgewähltes Lernziel "
                             + "eine harte Kartenprüfung mit " + launch.batchSize() + " Karten.";

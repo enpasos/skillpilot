@@ -1,5 +1,6 @@
 import {
   buildOpenAiMcpEndpoint,
+  buildOpenAiMcpStartUrl,
   getSafeChatGptUrl,
   requestOpenAiMcpStart,
 } from './request'
@@ -24,6 +25,17 @@ const assertRejects = async (operation: () => Promise<unknown>, expectedMessage:
   throw new Error(`expected rejection: ${expectedMessage}`)
 }
 
+const assertThrows = (operation: () => unknown, expectedMessage: string) => {
+  try {
+    operation()
+  } catch (error) {
+    assert(error instanceof Error, 'exception must be an Error')
+    assertEqual(error.message, expectedMessage, 'exception message')
+    return
+  }
+  throw new Error(`expected exception: ${expectedMessage}`)
+}
+
 assertEqual(
   buildOpenAiMcpEndpoint(' learner / 42 ', 'status', 'https://api.example.test/'),
   'https://api.example.test/api/ui/learners/learner%2F42/openai/de/status',
@@ -38,6 +50,33 @@ assertEqual(
   getSafeChatGptUrl('https://chatgpt.example.test/'),
   null,
   'rejects a lookalike launch host',
+)
+const parameterizedStartUrl = new URL(buildOpenAiMcpStartUrl(
+  'https://chatgpt.com/c/example?token=must-not-leak&prompt=stale#learner-id',
+  '  Bitte starte Karten 1 & 2.  ',
+))
+assertEqual(parameterizedStartUrl.origin, 'https://chatgpt.com', 'keeps the validated provider origin')
+assertEqual(parameterizedStartUrl.pathname, '/', 'opens a new normal ChatGPT chat')
+assertEqual(parameterizedStartUrl.searchParams.has('token'), false, 'drops configured query parameters')
+assertEqual(parameterizedStartUrl.searchParams.getAll('prompt').length, 1, 'replaces a stale prompt parameter')
+assertEqual(parameterizedStartUrl.searchParams.get('prompt'), 'Bitte starte Karten 1 & 2.', 'URL-encodes the start prompt')
+assertEqual(parameterizedStartUrl.hash, '', 'drops the configured provider URL fragment')
+assertThrows(
+  () => buildOpenAiMcpStartUrl('https://chatgpt.example.test/', 'Start'),
+  'Invalid ChatGPT start URL',
+)
+assertThrows(
+  () => buildOpenAiMcpStartUrl('https://chatgpt.com:444/', 'Start'),
+  'Invalid ChatGPT start URL',
+)
+assertEqual(
+  new URL(buildOpenAiMcpStartUrl('https://chatgpt.com//lookalike.example/', 'Start')).hostname,
+  'chatgpt.com',
+  'does not reinterpret a provider path as a protocol-relative host',
+)
+assertThrows(
+  () => buildOpenAiMcpStartUrl('https://chatgpt.com/', '   '),
+  'Invalid ChatGPT start prompt',
 )
 
 const disconnectedCalls: Array<{ url: string; init: RequestInit | undefined }> = []
@@ -159,44 +198,22 @@ const recallChatStart: CoachChatStart = {
 }
 
 let navigatedTo = ''
-const copiedDelivery = await deliverCoachChatStart(
-  recallChatStart,
-  (url) => { navigatedTo = url },
-  async () => undefined,
-)
-assertEqual(navigatedTo, 'https://chatgpt.com/', 'navigates before the optional clipboard handoff')
-assertEqual(copiedDelivery.copied, true, 'reports an allowed clipboard write')
-assertEqual(
-  copiedDelivery.promptFallback,
-  recallChatStart.prompt,
-  'keeps the visible prompt available even after copying it',
-)
-
-navigatedTo = ''
-const rejectedClipboardDelivery = await deliverCoachChatStart(
-  recallChatStart,
-  (url) => { navigatedTo = url },
-  async () => { throw new Error('clipboard denied') },
-)
-assertEqual(navigatedTo, 'https://chatgpt.com/', 'keeps the provider launch when clipboard access is denied')
-assertEqual(rejectedClipboardDelivery.copied, false, 'reports a denied clipboard write without throwing')
-assertEqual(
-  rejectedClipboardDelivery.promptFallback,
-  recallChatStart.prompt,
-  'returns a copyable fallback after clipboard denial',
-)
-
-navigatedTo = ''
-const unavailableClipboardDelivery = await deliverCoachChatStart(
+const delivered = await deliverCoachChatStart(
   recallChatStart,
   (url) => { navigatedTo = url },
 )
-assertEqual(navigatedTo, 'https://chatgpt.com/', 'keeps the provider launch without a clipboard API')
-assertEqual(unavailableClipboardDelivery.copied, false, 'reports an unavailable clipboard API')
+const deliveredUrl = new URL(navigatedTo)
+assertEqual(deliveredUrl.origin, 'https://chatgpt.com', 'navigates to the validated provider origin')
 assertEqual(
-  unavailableClipboardDelivery.promptFallback,
+  deliveredUrl.searchParams.get('prompt'),
   recallChatStart.prompt,
-  'returns a copyable fallback when no clipboard API exists',
+  'hands the complete prompt to ChatGPT in the URL',
+)
+assertEqual(delivered.copied, false, 'does not use a clipboard handoff')
+assertEqual(
+  delivered.promptFallback,
+  null,
+  'does not require a visible copy-and-paste fallback',
 )
 
 await assertRejects(

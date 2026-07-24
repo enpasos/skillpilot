@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.VerifiedRecallPromptCard;
@@ -72,6 +74,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private LearnerClientStateRepository learnerClientStateRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private String learnerId;
 
@@ -166,6 +171,62 @@ public class LearnerServiceTest {
         var state = learnerService.getLearnerState(learnerId);
         assertThat(state.nextAllowedActions()).containsExactlyInAnyOrder(
                 "setPersonalization", "setScope", "getFrontier");
+    }
+
+    @Test
+    void patchPersonalCurriculumPreservesExistingCockpitConfigurationAndReturnsUpdatedState() throws Exception {
+        String mathLandscapeId = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
+        String biologyLandscapeId = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """);
+        learnerRepository.saveAndFlush(learner);
+
+        var state = learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of("DE-HE"));
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(config.path(mathLandscapeId).path("filterId").asText()).isEqualTo("GK");
+        assertThat(config.path(biologyLandscapeId).path("filterId").asText()).isEqualTo("ALL");
+        assertThat(state.activeFilters()).contains("DE-HE", "GK", "ALL");
+    }
+
+    @Test
+    void setPersonalCurriculumKeepsFullReplacementSemanticsForCockpitWrites() throws Exception {
+        String obsoleteLandscapeId = "obsolete-landscape";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "obsolete-landscape": {"selected": true, "filterId": "OLD"}
+                }
+                """);
+        learnerRepository.saveAndFlush(learner);
+
+        learnerService.setPersonalCurriculum(
+                learnerId,
+                Map.of(
+                        CANONICAL_GYMNASIUM_ROOT_ID,
+                        Map.of("selected", true, "filterId", "DE-HE")),
+                null,
+                null);
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.has(CANONICAL_GYMNASIUM_ROOT_ID)).isTrue();
+        assertThat(config.has(obsoleteLandscapeId)).isFalse();
     }
 
     @Test

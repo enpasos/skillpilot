@@ -12,6 +12,7 @@ import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.api.VerifiedRecallPromptResponse;
@@ -186,6 +187,34 @@ class CoachToolFacadeTest {
         verify(learnerService).assertActiveLearnerRouteAccess(skillpilotId);
         verify(learnerService).assertWritableLearningSession(skillpilotId);
         verify(learnerService).getLearnerState(skillpilotId);
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void personalizationUsesTheTransactionalIncrementalServiceMutation() {
+        String skillpilotId = "learner-1";
+        PersonalizationRequest request = new PersonalizationRequest(
+                Map.of(),
+                List.of("goal-1"),
+                List.of("DE-HE"));
+        UnifiedLearnerStateResponse updatedState = learnerState(skillpilotId, "setScope");
+        when(learnerService.patchPersonalCurriculum(
+                skillpilotId,
+                request.config(),
+                request.goalIds(),
+                request.filters()))
+                .thenReturn(updatedState);
+
+        UnifiedLearnerStateResponse result = facade.setPersonalization(skillpilotId, request);
+
+        assertThat(result).isSameAs(updatedState);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(skillpilotId);
+        ordered.verify(learnerService).patchPersonalCurriculum(
+                skillpilotId,
+                request.config(),
+                request.goalIds(),
+                request.filters());
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
