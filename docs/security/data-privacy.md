@@ -1,10 +1,13 @@
 # Data Privacy and Storage Concept
 
-Status: updated for the parallel ChatGPT Visible Session and German OpenAI
-OAuth/MCP App architecture on 2026-07-22.
+Status: updated for the rollback-only ChatGPT Visible Session and German OpenAI
+OAuth/MCP App architecture on 2026-07-24.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
+
+The normative identity and session contract for the German App is
+[OpenAI MCP OAuth, learner and 24-hour session binding](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
 
 ## 1. Core Philosophy: Privacy by Design
 
@@ -28,9 +31,10 @@ content**.
 
 Two ChatGPT integrations coexist during migration:
 
-1. **Visible Session:** the current Custom GPT contract and the English
-   fallback. A temporary `sps_...` bearer token is deliberately visible in the
-   prepared message and subsequent state footer.
+1. **Visible Session:** retained Custom-GPT rollback contract and current English
+   fallback. It is not the German OpenAI-MCP contract. A temporary `sps_...`
+   bearer token is deliberately visible in the prepared message and subsequent
+   state footer.
 2. **German OpenAI OAuth/MCP App:** the target German integration. ChatGPT acts
    as OAuth client, then invokes the data-only MCP server embedded in the
    SkillPilot Spring Boot process.
@@ -76,6 +80,8 @@ SkillPilot.
 The backend stores, among other things:
 
 - `Learner`: the permanent pseudonymous learner key;
+- provider-specific active learning sessions, including their absolute expiry
+  and link to the internal learner through the provider connection;
 - `Mastery`: learning-goal mastery keyed by learner and goal;
 - planned goals and learner configuration, including curriculum,
   personalization, scope, active goal, filters, and synchronized client state;
@@ -113,6 +119,8 @@ It stores:
 
 - an opaque OpenAI-DE connection subject linked internally to one learner, plus
   creation, authorization, OAuth-expiry, last-use, and revocation timestamps;
+- a separate active OpenAI-DE learning-session record keyed by that connection
+  subject, with `started_at`, `expires_at`, and no sliding renewal;
 - a short-lived binding grant as an HMAC hash, including expiry, consumption,
   initiating client, selected curriculum, and a narrowly typed launch intent;
 - a short-lived pending launch linked to the connection subject, including
@@ -120,6 +128,12 @@ It stores:
 - OAuth registered-client, authorization, consent, authorization-code, opaque
   access-token, and rotating refresh-token data required by the authorization
   server.
+
+The learning-session row deliberately does not duplicate the learner ID, launch
+intent, or a mutable status history. The learner is resolved through the
+connection subject, the launch intent is applied to authoritative learner state
+before session activation, and session state is derived from row existence,
+`expires_at`, and the connection's authorization/revocation state.
 
 The supported launch intents are deliberately bounded: current unit, Verified
 Recall with goal and batch size, and the reviewed Abi 2026 exam entry with goal
@@ -129,7 +143,10 @@ launch state.
 ChatGPT receives OAuth access and refresh credentials as the OAuth client. They
 are transport credentials between ChatGPT and the SkillPilot authorization/MCP
 endpoints; they are not normal model prompts, MCP tool arguments, or tool
-results. The model-facing MCP contract also contains no permanent SkillPilot ID.
+results. ChatGPT automatically sends the access token in the Authorization
+header of protected MCP requests. The user neither sees nor copies it. The
+model-facing MCP contract also contains no permanent SkillPilot ID or learning
+session identifier.
 
 Through MCP, the provider receives the projected state needed for the current
 workflow, for example curriculum and scope summaries, active goal, progress,
@@ -205,10 +222,13 @@ complete.
 5. After consent, the backend issues an authorization code. The code exchange
    creates short-lived opaque access and rotating refresh credentials.
 6. The pending launch is applied atomically when the connection is successfully
-   authorized, not by an arbitrary later MCP call. The permanent SkillPilot ID
-   never crosses into the provider contract.
-7. Authenticated MCP calls resolve access token to connection subject to learner
-   internally and return only the projected coaching data.
+   authorized, and the separate 24-hour learning-session record is activated
+   only after its intent has been applied to the authoritative learner state,
+   not by an arbitrary later MCP call. The permanent SkillPilot ID never crosses
+   into the provider contract.
+7. Authenticated MCP calls resolve access token to connection subject to
+   learner, require the active non-expired learning session, and return only
+   the projected coaching data.
 
 The pending launch prepares shared backend state; it is not bound to a particular
 ChatGPT conversation. Parallel or later chats rehydrate the authorized learner
@@ -218,7 +238,9 @@ state through MCP.
 
 1. The cockpit checks the connection status for the active SkillPilot learner.
 2. If the authorized connection is active, it creates and applies a short-lived,
-   typed launch request and opens ChatGPT with a natural-language start message.
+   typed launch request, atomically replaces the active 24-hour learning session
+   after applying the intent, and opens ChatGPT with a natural-language start
+   message.
 3. If the connection is missing or revoked, the cockpit returns to the first
    connection flow instead of exposing a learner identifier in the chat.
 4. Clipboard access is only a convenience: the start message remains visible and
@@ -228,8 +250,9 @@ state through MCP.
 
 1. The learner disconnects through the cockpit, or the OAuth client revokes the
    authorization.
-2. SkillPilot marks the corresponding connection revoked and removes its pending
-   launch, OAuth authorization, and consent state.
+2. SkillPilot marks the corresponding connection revoked, removes its active
+   learning-session record, and removes its pending launch, OAuth authorization,
+   and consent state.
 3. Existing access/refresh credentials can no longer resolve an active
    connection. A future launch must establish a new connection.
 
@@ -248,12 +271,20 @@ and currently set to:
 - binding grant: 5 minutes;
 - pending launch: 5 minutes;
 - OAuth access token: 1 hour;
-- rotating refresh token: 30 days.
+- rotating refresh token: 30 days;
+- OpenAI-DE learning session: absolute maximum of 24 hours.
 
 An absolute lifetime is not automatically extended merely by reading a binding
 or pending launch. Scheduled cleanup removes expired binding grants and pending
 launches and revokes abandoned, never-authorized connections. Consumed records
 may remain until their expiry cleanup so replay attempts can be rejected.
+
+The OpenAI-DE learning-session deadline is not extended by MCP requests,
+access-token refresh, browser reload, a new ChatGPT chat, or context
+compaction. Only a new first-party **Lernen starten** action creates a new
+deadline. The OAuth connection may remain refreshable after the learning session
+has expired; in that case learner-specific tools require a new SkillPilot launch
+rather than a new OAuth consent.
 
 Disconnect and OAuth revocation invalidate the provider connection and remove
 the related live authorization/consent and pending-launch data. Connection audit
@@ -308,6 +339,8 @@ remain responsible for preserving access keys and identity mappings.
 - Canonical learning-goal and card IDs are public technical references, not
   credentials. Connection subjects, session tokens, binding values, and OAuth
   credentials are security-sensitive.
+- The OpenAI-DE learning-session record is server-internal. Its key is not a
+  model or user credential and must not be returned in chat or tool arguments.
 - The Visible Session implementation remains an explicit rollback/fallback path;
   retained legacy direct-ID or startcode routes must not be advertised as a
   current provider contract.

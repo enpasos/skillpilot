@@ -19,6 +19,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeBindingGrant;
 import com.skillpilot.backend.domain.OpenAiDeConnection;
+import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.domain.OpenAiDePendingLaunch;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -28,8 +29,10 @@ import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
 import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
+import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import com.skillpilot.backend.repository.OpenAiDePendingLaunchRepository;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
@@ -54,6 +57,7 @@ class OpenAiDeCoachConnectionServiceTest {
 
     private OpenAiDeBindingGrantRepository bindingGrants;
     private OpenAiDeConnectionRepository connections;
+    private OpenAiDeLearningSessionRepository learningSessions;
     private OpenAiDePendingLaunchRepository pendingLaunches;
     private LearnerRepository learners;
     private LearnerService learnerService;
@@ -68,6 +72,7 @@ class OpenAiDeCoachConnectionServiceTest {
     void setUp() {
         bindingGrants = mock(OpenAiDeBindingGrantRepository.class);
         connections = mock(OpenAiDeConnectionRepository.class);
+        learningSessions = mock(OpenAiDeLearningSessionRepository.class);
         pendingLaunches = mock(OpenAiDePendingLaunchRepository.class);
         learners = mock(LearnerRepository.class);
         learnerService = mock(LearnerService.class);
@@ -80,6 +85,7 @@ class OpenAiDeCoachConnectionServiceTest {
         service = new OpenAiDeCoachConnectionService(
                 bindingGrants,
                 connections,
+                learningSessions,
                 pendingLaunches,
                 learners,
                 learnerService,
@@ -271,6 +277,52 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     @Test
+    void connectedLaunchCreatesAnAbsoluteServerSideLearningSessionWithConfiguredTtl() {
+        properties.setLearningSessionTtl(Duration.ofHours(6));
+        OpenAiDeConnection connection = authorizeExistingConnection();
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+        Instant before = Instant.now();
+
+        var response = service.createPendingLaunch(
+                SKILLPILOT_ID,
+                request("web", "math", null));
+
+        Instant after = Instant.now();
+        verify(learningSessions).save(persisted.capture());
+        OpenAiDeLearningSession learningSession = persisted.getValue();
+        assertThat(learningSession.getConnectionSubject()).isEqualTo(connection.getSubject());
+        assertThat(learningSession.getStartedAt()).isBetween(before, after);
+        assertThat(learningSession.getExpiresAt())
+                .isEqualTo(learningSession.getStartedAt().plus(Duration.ofHours(6)))
+                .isEqualTo(response.expiresAt());
+        assertThat(response.toString())
+                .doesNotContain(SKILLPILOT_ID)
+                .doesNotContain(connection.getSubject());
+    }
+
+    @Test
+    void connectedLaunchReplacesTheExistingSessionInsteadOfExtendingItFromItsOldExpiry() {
+        properties.setLearningSessionTtl(Duration.ofHours(24));
+        OpenAiDeConnection connection = authorizeExistingConnection();
+        OpenAiDeLearningSession existing = learningSession(
+                connection.getSubject(),
+                Instant.now().minus(Duration.ofHours(12)),
+                Instant.now().plus(Duration.ofHours(12)));
+        when(learningSessions.findById(connection.getSubject())).thenReturn(Optional.of(existing));
+        Instant before = Instant.now();
+
+        service.createPendingLaunch(SKILLPILOT_ID, request("web", "math", null));
+
+        Instant after = Instant.now();
+        assertThat(existing.getStartedAt()).isBetween(before, after);
+        assertThat(existing.getExpiresAt())
+                .isEqualTo(existing.getStartedAt().plus(Duration.ofHours(24)))
+                .isBefore(before.plus(Duration.ofHours(25)));
+        verify(learningSessions).save(existing);
+    }
+
+    @Test
     void pendingLaunchRejectsMissingOrFalseProviderEligibilityBeforeAnyStateAccess() {
         assertThatExceptionOfType(ResponseStatusException.class)
                 .isThrownBy(() -> service.createPendingLaunch(SKILLPILOT_ID, null))
@@ -350,7 +402,7 @@ class OpenAiDeCoachConnectionServiceTest {
         OpenAiDeConnection current = connection(subject);
         OpenAiDePendingLaunch launch = pendingLaunch(subject, "science", "VERIFIED_RECALL", goalId, 7, null);
         when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
-        when(connections.findById(subject)).thenReturn(Optional.of(current));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(current));
         when(connections.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(SKILLPILOT_ID))
                 .thenReturn(List.of(current));
         when(pendingLaunches
@@ -369,6 +421,54 @@ class OpenAiDeCoachConnectionServiceTest {
         assertThat(current.getOauthExpiresAt()).isAfter(Instant.now());
         assertThat(launch.getConsumedAt()).isNotNull();
         verify(pendingLaunches).save(launch);
+    }
+
+    @Test
+    void firstOAuthTokenStartsLearningSessionOnlyWhenItConsumesAPendingLaunch() {
+        String subject = "spod_new";
+        OpenAiDeConnection current = connection(subject);
+        OpenAiDePendingLaunch launch = pendingLaunch(
+                subject,
+                "math",
+                "CURRENT_UNIT",
+                null,
+                null,
+                null);
+        when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(current));
+        when(connections.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(SKILLPILOT_ID))
+                .thenReturn(List.of(current));
+        when(pendingLaunches
+                        .findFirstByConnectionSubjectAndConsumedAtIsNullAndExpiresAtAfterOrderByCreatedAtDesc(
+                                org.mockito.ArgumentMatchers.eq(subject), any(Instant.class)))
+                .thenReturn(Optional.of(launch));
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        service.markOAuthConnected(subject, futureExpiry());
+
+        verify(learningSessions).save(persisted.capture());
+        assertThat(persisted.getValue().getConnectionSubject()).isEqualTo(subject);
+        assertThat(Duration.between(
+                        persisted.getValue().getStartedAt(),
+                        persisted.getValue().getExpiresAt()))
+                .isEqualTo(Duration.ofHours(24));
+    }
+
+    @Test
+    void oauthAuthorizationWithoutPendingLaunchDoesNotInventALearningSession() {
+        String subject = "spod_new";
+        OpenAiDeConnection current = connection(subject);
+        when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(current));
+        when(connections.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(SKILLPILOT_ID))
+                .thenReturn(List.of(current));
+
+        service.markOAuthConnected(subject, futureExpiry());
+
+        verifyNoInteractions(learningSessions);
+        assertThat(current.getLastAuthorizedAt()).isNotNull();
+        assertThat(current.getOauthExpiresAt()).isAfter(Instant.now());
     }
 
     @Test
@@ -557,7 +657,7 @@ class OpenAiDeCoachConnectionServiceTest {
         OpenAiDeConnection current = connection(subject);
         OpenAiDePendingLaunch launch = pendingLaunch(subject, "math", "VERIFIED_RECALL", goalId, 7, null);
         when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
-        when(connections.findById(subject)).thenReturn(Optional.of(current));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(current));
         when(pendingLaunches
                         .findFirstByConnectionSubjectAndConsumedAtIsNullAndExpiresAtAfterOrderByCreatedAtDesc(
                                 org.mockito.ArgumentMatchers.eq(subject), any(Instant.class)))
@@ -586,7 +686,7 @@ class OpenAiDeCoachConnectionServiceTest {
         OpenAiDeConnection current = connection(subject);
         OpenAiDePendingLaunch launch = pendingLaunch(subject, "science", "VERIFIED_RECALL", goalId, 7, null);
         when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
-        when(connections.findById(subject)).thenReturn(Optional.of(current));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(current));
         when(pendingLaunches
                         .findFirstByConnectionSubjectAndConsumedAtIsNullAndExpiresAtAfterOrderByCreatedAtDesc(
                                 org.mockito.ArgumentMatchers.eq(subject), any(Instant.class)))
@@ -629,6 +729,7 @@ class OpenAiDeCoachConnectionServiceTest {
     void cleanupDeletesExpiredBindingGrantsAndPendingLaunches() {
         ArgumentCaptor<Instant> pendingCutoff = ArgumentCaptor.forClass(Instant.class);
         ArgumentCaptor<Instant> bindingCutoff = ArgumentCaptor.forClass(Instant.class);
+        ArgumentCaptor<Instant> sessionCutoff = ArgumentCaptor.forClass(Instant.class);
         Instant before = Instant.now();
 
         service.cleanupExpiredLaunchState();
@@ -636,8 +737,10 @@ class OpenAiDeCoachConnectionServiceTest {
         Instant after = Instant.now();
         verify(pendingLaunches).deleteByExpiresAtLessThanEqual(pendingCutoff.capture());
         verify(bindingGrants).deleteByExpiresAtLessThanEqual(bindingCutoff.capture());
+        verify(learningSessions).deleteByExpiresAtLessThanEqual(sessionCutoff.capture());
         assertThat(pendingCutoff.getValue()).isBetween(before, after);
         assertThat(bindingCutoff.getValue()).isEqualTo(pendingCutoff.getValue());
+        assertThat(sessionCutoff.getValue()).isEqualTo(pendingCutoff.getValue());
     }
 
     @Test
@@ -704,11 +807,99 @@ class OpenAiDeCoachConnectionServiceTest {
         when(connections.findById(expired.getSubject())).thenReturn(Optional.of(expired));
 
         assertThatExceptionOfType(ResponseStatusException.class)
-                .isThrownBy(() -> service.resolveSkillpilotId(expired.getSubject()))
+                .isThrownBy(() -> service.resolveConnectedSkillpilotId(expired.getSubject()))
                 .satisfies(exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED));
 
         assertThat(expired.getLastUsedAt()).isNull();
         verify(connections, never()).save(expired);
+    }
+
+    @Test
+    void validOauthConnectionResolvesWithoutAnyLearningSessionForTokenIntrospection() {
+        OpenAiDeConnection authorized = connection("spod_authorized");
+        authorized.setLastAuthorizedAt(Instant.now().minusSeconds(60));
+        authorized.setOauthExpiresAt(futureExpiry());
+        when(connections.findById(authorized.getSubject())).thenReturn(Optional.of(authorized));
+
+        assertThat(service.resolveConnectedSkillpilotId(authorized.getSubject())).isEqualTo(SKILLPILOT_ID);
+
+        assertThat(authorized.getLastUsedAt()).isNotNull();
+        verify(connections).save(authorized);
+        verifyNoInteractions(learningSessions);
+    }
+
+    @Test
+    void mcpResolutionRequiresAnUnexpiredLearningSessionWithoutInvalidatingOauth() {
+        OpenAiDeConnection authorized = connection("spod_authorized");
+        authorized.setLastAuthorizedAt(Instant.now().minusSeconds(60));
+        authorized.setOauthExpiresAt(futureExpiry());
+        when(connections.findById(authorized.getSubject())).thenReturn(Optional.of(authorized));
+
+        assertThatExceptionOfType(OpenAiDeLearningSessionRequiredException.class)
+                .isThrownBy(() -> service.resolveActiveLearningSessionSkillpilotId(authorized.getSubject()));
+
+        assertThat(authorized.getLastUsedAt()).isNull();
+        verify(connections, never()).save(authorized);
+    }
+
+    @Test
+    void mcpResolutionRejectsExpiredSessionAndAcceptsCurrentSession() {
+        OpenAiDeConnection authorized = connection("spod_authorized");
+        authorized.setLastAuthorizedAt(Instant.now().minusSeconds(60));
+        authorized.setOauthExpiresAt(futureExpiry());
+        when(connections.findById(authorized.getSubject())).thenReturn(Optional.of(authorized));
+        OpenAiDeLearningSession expired = learningSession(
+                authorized.getSubject(),
+                Instant.now().minus(Duration.ofHours(24)),
+                Instant.now().minusMillis(1));
+        when(learningSessions.findById(authorized.getSubject())).thenReturn(Optional.of(expired));
+
+        assertThatExceptionOfType(OpenAiDeLearningSessionRequiredException.class)
+                .isThrownBy(() -> service.resolveActiveLearningSessionSkillpilotId(authorized.getSubject()));
+
+        OpenAiDeLearningSession active = learningSession(
+                authorized.getSubject(),
+                Instant.now().minusSeconds(30),
+                Instant.now().plusSeconds(30));
+        when(learningSessions.findById(authorized.getSubject())).thenReturn(Optional.of(active));
+
+        assertThat(service.resolveActiveLearningSessionSkillpilotId(authorized.getSubject()))
+                .isEqualTo(SKILLPILOT_ID);
+        assertThat(authorized.getLastUsedAt()).isNotNull();
+        verify(connections).save(authorized);
+    }
+
+    @Test
+    void oauthRefreshChangesCredentialExpiryButNeverLearningSessionExpiry() {
+        String subject = "spod_authorized";
+        OpenAiDeConnection authorized = connection(subject);
+        authorized.setLastAuthorizedAt(Instant.now().minusSeconds(60));
+        authorized.setOauthExpiresAt(Instant.now().plusSeconds(60));
+        when(connections.findLearnerSkillpilotIdBySubject(subject)).thenReturn(Optional.of(SKILLPILOT_ID));
+        when(connections.findBySubjectForUpdate(subject)).thenReturn(Optional.of(authorized));
+        Instant refreshedOauthExpiry = Instant.now().plus(Duration.ofDays(30));
+
+        service.updateOAuthAuthorizationExpiry(subject, refreshedOauthExpiry);
+
+        assertThat(authorized.getOauthExpiresAt()).isEqualTo(refreshedOauthExpiry);
+        verify(connections).save(authorized);
+        verifyNoInteractions(learningSessions);
+    }
+
+    @Test
+    void revokingOauthConnectionDeletesItsLearningSessionInTheSameLifecycle() {
+        OpenAiDeConnection authorized = connection("spod_authorized");
+        authorized.setLastAuthorizedAt(Instant.now().minusSeconds(60));
+        authorized.setOauthExpiresAt(futureExpiry());
+        when(connections.findLearnerSkillpilotIdBySubject(authorized.getSubject()))
+                .thenReturn(Optional.of(SKILLPILOT_ID));
+        when(connections.findBySubjectForUpdate(authorized.getSubject())).thenReturn(Optional.of(authorized));
+
+        service.revokeConnectionSubject(authorized.getSubject());
+
+        assertThat(authorized.getRevokedAt()).isNotNull();
+        verify(learningSessions).deleteAllById(List.of(authorized.getSubject()));
+        verify(pendingLaunches).deleteAllByConnectionSubjectIn(List.of(authorized.getSubject()));
     }
 
     @Test
@@ -718,7 +909,7 @@ class OpenAiDeCoachConnectionServiceTest {
         previous.setLastAuthorizedAt(Instant.now().minusSeconds(30));
         when(connections.findLearnerSkillpilotIdBySubject(current.getSubject()))
                 .thenReturn(Optional.of(SKILLPILOT_ID));
-        when(connections.findById(current.getSubject())).thenReturn(Optional.of(current));
+        when(connections.findBySubjectForUpdate(current.getSubject())).thenReturn(Optional.of(current));
         when(connections.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(SKILLPILOT_ID))
                 .thenReturn(java.util.List.of(previous, current));
 
@@ -754,6 +945,17 @@ class OpenAiDeCoachConnectionServiceTest {
         connection.setLearner(learner);
         connection.setCreatedAt(Instant.now().minusSeconds(10));
         return connection;
+    }
+
+    private OpenAiDeLearningSession learningSession(
+            String connectionSubject,
+            Instant startedAt,
+            Instant expiresAt) {
+        OpenAiDeLearningSession learningSession = new OpenAiDeLearningSession();
+        learningSession.setConnectionSubject(connectionSubject);
+        learningSession.setStartedAt(startedAt);
+        learningSession.setExpiresAt(expiresAt);
+        return learningSession;
     }
 
     private OpenAiDeConnection authorizeExistingConnection() {

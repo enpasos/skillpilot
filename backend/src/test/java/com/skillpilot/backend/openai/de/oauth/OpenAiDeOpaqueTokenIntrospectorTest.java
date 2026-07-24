@@ -3,6 +3,7 @@ package com.skillpilot.backend.openai.de.oauth;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -40,7 +41,8 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
 
         assertThat(principal.<List<String>>getAttribute("aud")).containsExactly(MCP_URL);
         assertThat(principal.getName()).isEqualTo(SUBJECT);
-        verify(fixture.connectionService()).resolveSkillpilotId(SUBJECT);
+        verify(fixture.connectionService()).resolveConnectedSkillpilotId(SUBJECT);
+        verify(fixture.connectionService(), never()).resolveActiveLearningSessionSkillpilotId(SUBJECT);
     }
 
     @Test
@@ -126,7 +128,7 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
                 .build();
         when(authorizations.findByToken(TOKEN, OAuth2TokenType.ACCESS_TOKEN)).thenReturn(authorization);
         when(clients.findByClientId(CLIENT_ID)).thenReturn(client);
-        when(connectionService.resolveSkillpilotId(SUBJECT)).thenReturn("learner-id");
+        when(connectionService.resolveConnectedSkillpilotId(SUBJECT)).thenReturn("learner-id");
         return new Fixture(
                 new OpenAiDeOpaqueTokenIntrospector(
                         authorizations,

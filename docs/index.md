@@ -35,6 +35,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Current ChatGPT Visible Session flow](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 -   [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
+-   [OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](concept/runtime-workflows/openai-mcp-coach-knowledge-parity.md)
 
 ## Inside this documentation

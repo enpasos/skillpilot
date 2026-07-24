@@ -118,7 +118,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
     void setUp() {
         reset(connectionService);
         when(connectionService.consumeBindingGrant(BINDING_GRANT, BROWSER_SESSION)).thenReturn(CONNECTION_SUBJECT);
-        when(connectionService.resolveSkillpilotId(CONNECTION_SUBJECT)).thenReturn(SKILLPILOT_ID);
+        when(connectionService.resolveConnectedSkillpilotId(CONNECTION_SUBJECT)).thenReturn(SKILLPILOT_ID);
         CookieManager cookies = new CookieManager(null, CookiePolicy.ACCEPT_ALL);
         client = HttpClient.newBuilder()
                 .cookieHandler(cookies)

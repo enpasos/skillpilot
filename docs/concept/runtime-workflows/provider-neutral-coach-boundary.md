@@ -9,6 +9,8 @@ Claude OAuth/MCP remains disabled until its own acceptance gate is complete.
 
 The product decision and migration sequence are specified in the
 [SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
+For the German OpenAI App, the normative identity and session contract is
+[OpenAI MCP OAuth, learner and 24-hour session binding](openai-mcp-oauth-learner-session-architecture.md).
 
 ## Purpose
 
@@ -67,7 +69,8 @@ as both cover all required workflows.
 
 The shared application layer owns:
 
-- state-machine authorization and writable-session checks;
+- state-machine authorization and checks for an active, provider-specific
+  learning session;
 - curriculum, personalization, scope, active-goal and mastery use cases;
 - Verified Recall sequencing and persistence;
 - safe normal-state projection;
@@ -84,7 +87,8 @@ Each provider adapter owns:
 For the OpenAI Apps, this specifically means:
 
 - model-visible read tools resolve the learner from the authenticated OAuth
-  principal and load current state without a chat-visible session argument;
+  principal, require the separate active server-side learning session, and load
+  current state without a chat-visible session argument;
 - deterministic choices and answer submissions are invoked directly by the
   widget through app-only tools, rather than depending on the model to copy a
   technical selection value;
@@ -166,18 +170,27 @@ acceptance gate; it is not retrofitted into the Visible-Session fallback.
 
 Provider bindings remain separate:
 
-- ChatGPT Visible Session resolves a short-lived, HMAC-stored bearer token to a
-  learner;
+- the rollback-only ChatGPT Visible Session resolves a short-lived,
+  HMAC-stored bearer token to a learner;
 - Claude resolves an authenticated opaque OAuth connection subject to a learner;
 - each production OpenAI App resolves its own authenticated opaque OAuth
-  principal to a learner through a separate App connection.
+  principal to a learner through a separate App connection and additionally
+  requires an active, absolutely limited 24-hour learning session.
 
 The permanent SkillPilot ID is never a model-provided session argument. It is
 looked up only behind the authenticated provider binding. Provider identity,
-durable learner state, provider conversation and temporary widget workflow remain
-distinct concepts. Short-lived widget references are capability-scoped to the
-principal and current workflow revision; possession outside that authenticated
-App context must not authorize a different learner or later state.
+OAuth connection, 24-hour learning session, durable learner state, provider
+conversation and temporary widget workflow remain distinct concepts. OAuth
+access-token refresh does not extend the learning session. Short-lived widget
+references are capability-scoped to the principal and current workflow
+revision; possession outside that authenticated App context must not authorize a
+different learner or later state.
+
+The current OpenAI MCP contract does not expose a documented stable ChatGPT
+conversation ID. The learning session is therefore scoped to the provider
+connection and learner, not to one exact chat. Parallel or later chats
+rehydrate the same authoritative state; a new first-party **Start learning**
+action replaces the active learning session atomically.
 
 ## Context Loss And Recovery
 
@@ -185,8 +198,9 @@ Normal turns reload current backend state instead of depending on an older hidde
 tool response. Visible Session does this through `getVisibleState`; Claude uses
 `getCoachContext`. Each OpenAI App exposes its own locale-specific, argumentless
 context read. In production that read identifies the learner solely from the
-OAuth principal, then projects fresh backend state. It does not accept a session
-token recovered from conversation text.
+OAuth principal, requires the separate active 24-hour learning session, and
+then projects fresh backend state. It does not accept a session token recovered
+from conversation text.
 
 Result `_meta` is a widget transport for opake references, not cross-turn model
 memory. The widget may retain those references for a direct app-only choice or
@@ -242,13 +256,16 @@ identity per language**. This is sufficient to test protocol mechanics with
 synthetic data, but it is neither account linking nor tenant isolation and must
 not be exposed as a production service.
 
-Production requires both of the following before real learner data is used:
+Production requires all of the following before real learner data is used:
 
 1. a separate OpenAI OAuth binding for each App, resolving the opaque provider
    principal internally without exposing the permanent SkillPilot ID;
 2. replacement of the prototype store with an adapter to
    `CoachToolFacade`/`CoachStateProjection` and the existing database-backed
-   domain use cases.
+   domain use cases;
+3. a separate server-side learning session with an absolute 24-hour lifetime,
+   created or replaced only by a first-party SkillPilot launch and checked by
+   every learner-specific tool.
 
 The production gate also includes full workflow parity for curriculum and scope
 selection, active goals, frontier, mastery, Verified Recall and exams; separate

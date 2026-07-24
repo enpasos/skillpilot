@@ -20,6 +20,7 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
+import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
@@ -79,7 +80,7 @@ public final class OpenAiDeCoachMcpContract {
 
             Bei Verified Recall zeige den vollständigen Fragenbatch und warte auf alle Antworten. Rufe jede Sollantwort erst nach der zugehörigen Lernendenantwort ab, akzeptiere fachlich gleichwertige Formulierungen und speichere jede Karte sofort; passed=true nur bei korrekter Antwort ohne Hilfe. Speichere alle Karten vor dem nächsten Batch, prüfe eine Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery.
 
-            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: wende eindeutige frische Schritte direkt an und frage nur offene Entscheidungen. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
+            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: wende eindeutige frische Schritte direkt an und frage nur offene Entscheidungen. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Token noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
             """;
 
     private final CoachToolFacade coachTools;
@@ -87,6 +88,7 @@ public final class OpenAiDeCoachMcpContract {
     private final OpenAiDeCoachIdentityResolver identityResolver;
     private final OpenAiDeMcpTelemetry telemetry;
     private final OpenAiDeCoachContextProjector contextProjector;
+    private final String sessionStartUrl;
     private final List<McpStatelessServerFeatures.SyncToolSpecification> toolSpecifications;
 
     public OpenAiDeCoachMcpContract(
@@ -100,6 +102,7 @@ public final class OpenAiDeCoachMcpContract {
         this.identityResolver = identityResolver;
         this.telemetry = telemetry;
         this.contextProjector = new OpenAiDeCoachContextProjector(stateProjection, publicBaseUrl);
+        this.sessionStartUrl = normalizePublicBaseUrl(publicBaseUrl);
         this.toolSpecifications = buildToolSpecifications();
     }
 
@@ -402,15 +405,18 @@ public final class OpenAiDeCoachMcpContract {
             boolean writeScope,
             ToolOperation operation) {
         try {
-            if (writeScope) {
-                identityResolver.requireWriteAccess(transportContext);
-            }
             String skillpilotId = identityResolver.resolveSkillpilotId(transportContext);
             if (skillpilotId == null || skillpilotId.isBlank()) {
                 telemetry.recordOperational(Event.UNAUTHORIZED);
                 return SkillPilotMcpToolResults.authenticationRequired(identityResolver.authenticationChallenge());
             }
+            if (writeScope) {
+                identityResolver.requireWriteAccess(transportContext);
+            }
             return operation.apply(skillpilotId, arguments);
+        } catch (OpenAiDeLearningSessionRequiredException exception) {
+            telemetry.recordOperational(Event.SESSION_REQUIRED);
+            return sessionRequiredResult();
         } catch (AuthenticationException exception) {
             telemetry.recordOperational(Event.UNAUTHORIZED);
             return SkillPilotMcpToolResults.authenticationRequired(identityResolver.authenticationChallenge());
@@ -735,6 +741,33 @@ public final class OpenAiDeCoachMcpContract {
                         "stateChanged", false,
                         "reloadContextAtMostOnce", true))
                 .build();
+    }
+
+    private McpSchema.CallToolResult sessionRequiredResult() {
+        String instruction = "Öffne SkillPilot und wähle dort erneut „Lernen starten“. "
+                + "Die OAuth-Verbindung bleibt bestehen; gib keinen Token und keine SkillPilot-ID im Chat ein.";
+        return McpSchema.CallToolResult.builder()
+                .isError(true)
+                .addTextContent("Deine SkillPilot-Lernsession fehlt oder ist abgelaufen. " + instruction)
+                .structuredContent(Map.of(
+                        "status", "session_required",
+                        "code", "SESSION_REQUIRED",
+                        "stateChanged", false,
+                        "oauthConnectionValid", true,
+                        "startUrl", sessionStartUrl,
+                        "instruction", instruction))
+                .build();
+    }
+
+    private String normalizePublicBaseUrl(String publicBaseUrl) {
+        String normalized = publicBaseUrl == null ? "" : publicBaseUrl.trim();
+        if (normalized.isEmpty()) {
+            return "https://skillpilot.com";
+        }
+        while (normalized.endsWith("/")) {
+            normalized = normalized.substring(0, normalized.length() - 1);
+        }
+        return normalized.isEmpty() ? "https://skillpilot.com" : normalized;
     }
 
     private FrontierGoal activeGoal(UnifiedLearnerStateResponse state) {

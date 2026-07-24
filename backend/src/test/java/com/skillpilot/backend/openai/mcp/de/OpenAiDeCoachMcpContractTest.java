@@ -27,6 +27,7 @@ import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import com.skillpilot.backend.mcp.SkillPilotMcpToolResults;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
+import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.json.jackson3.JacksonMcpJsonMapperSupplier;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
@@ -420,6 +421,29 @@ class OpenAiDeCoachMcpContractTest {
             assertThat(option.label()).isEqualTo("Mathematik Hessen");
         });
         verify(coachTools).getCurriculumOptions(LEARNER_ID);
+    }
+
+    @Test
+    void expiredLearningSessionReturnsSessionRequiredWithoutAnOauthChallenge() {
+        when(identityResolver.resolveSkillpilotId(any()))
+                .thenThrow(new OpenAiDeLearningSessionRequiredException());
+
+        McpSchema.CallToolResult result = call(OpenAiDeCoachMcpContract.GET_CONTEXT, Map.of());
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.meta()).isNull();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("status", "session_required")
+                .containsEntry("code", "SESSION_REQUIRED")
+                .containsEntry("stateChanged", false)
+                .containsEntry("oauthConnectionValid", true)
+                .containsEntry("startUrl", "https://skillpilot.test"));
+        assertThat(result.content().toString())
+                .contains("Lernen starten")
+                .doesNotContain(LEARNER_ID, CONNECTION_SECRET, CHALLENGE);
+        verify(coachTools, never()).getLearnerState(any());
+        assertThat(operationalEvents("session_required")).isEqualTo(1);
+        assertThat(operationalEvents("http_401")).isZero();
     }
 
     @Test

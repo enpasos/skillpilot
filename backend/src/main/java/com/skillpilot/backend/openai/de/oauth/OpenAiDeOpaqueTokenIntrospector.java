@@ -74,7 +74,10 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
         }
 
         String subject = authorization.getPrincipalName();
-        connectionService.resolveSkillpilotId(subject);
+        // OAuth validity and the 24-hour learning session intentionally have
+        // separate lifecycles. A missing learning session must not turn an
+        // otherwise valid bearer token into an invalid_token response.
+        connectionService.resolveConnectedSkillpilotId(subject);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         accessTokenScopes.forEach(scope ->

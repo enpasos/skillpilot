@@ -35,7 +35,7 @@ public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoach
         Authentication authentication = requireAuthentication();
         requireAuthority(authentication, "SCOPE_" + OpenAiDeOAuthConfiguration.READ_SCOPE);
         String subject = authentication.getName();
-        return connectionService.resolveSkillpilotId(subject);
+        return connectionService.resolveActiveLearningSessionSkillpilotId(subject);
     }
 
     @Override

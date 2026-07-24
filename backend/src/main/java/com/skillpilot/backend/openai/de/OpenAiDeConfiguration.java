@@ -1,5 +1,6 @@
 package com.skillpilot.backend.openai.de;
 
+import java.time.Duration;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -18,6 +19,16 @@ public class OpenAiDeConfiguration {
                 throw new IllegalStateException(
                         "skillpilot.openai.de.bootstrap-enabled and "
                                 + "skillpilot.openai.de.enabled must not both be true.");
+            }
+            if (properties.getLearningSessionTtl() == null
+                    || properties.getLearningSessionTtl().isZero()
+                    || properties.getLearningSessionTtl().isNegative()) {
+                throw new IllegalStateException(
+                        "skillpilot.openai.de.learning-session-ttl must be positive.");
+            }
+            if (properties.getLearningSessionTtl().compareTo(Duration.ofHours(24)) > 0) {
+                throw new IllegalStateException(
+                        "skillpilot.openai.de.learning-session-ttl must not exceed PT24H.");
             }
         };
     }
