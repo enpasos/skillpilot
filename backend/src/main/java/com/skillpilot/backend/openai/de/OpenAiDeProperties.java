@@ -15,6 +15,7 @@ public class OpenAiDeProperties {
     private boolean secureCookie = true;
     private Duration bindingTtl = Duration.ofMinutes(5);
     private Duration launchTtl = Duration.ofMinutes(5);
+    private Duration learningSessionTtl = Duration.ofHours(24);
     private String mcpUrl = "https://skillpilot.com/api/openai/de/mcp";
     private String chatgptUrl = "https://chatgpt.com/";
     private final OAuth oauth = new OAuth();
@@ -66,6 +67,14 @@ public class OpenAiDeProperties {
 
     public void setLaunchTtl(Duration launchTtl) {
         this.launchTtl = launchTtl;
+    }
+
+    public Duration getLearningSessionTtl() {
+        return learningSessionTtl;
+    }
+
+    public void setLearningSessionTtl(Duration learningSessionTtl) {
+        this.learningSessionTtl = learningSessionTtl;
     }
 
     public String getMcpUrl() {

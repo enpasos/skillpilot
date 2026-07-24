@@ -28,6 +28,7 @@ class OpenAiDeOperationalTelemetryTest {
         assertThat(tags).containsExactlyInAnyOrder(
                 "oauth_failure",
                 "refresh_failure",
+                "session_required",
                 "http_401",
                 "http_403",
                 "http_409",

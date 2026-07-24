@@ -263,6 +263,13 @@ gehören insbesondere:
 
 ## 7. OAuth und Lernendenbindung
 
+Die verbindliche Trennung von automatischem OAuth-Token-Transport,
+First-Party-Browser-Binding, OAuth-Subject-Zuordnung und absoluter
+24h-Lernsession steht in
+[openai-mcp-oauth-learner-session-architecture.md](openai-mcp-oauth-learner-session-architecture.md).
+Bei Widersprüchen ist dieses abgegrenzte Architekturdokument für Identitäts- und
+Sitzungsfragen maßgeblich.
+
 Die bestehende Claude-OAuth-Implementierung dient als technische Vorlage, wird
 aber nicht als OpenAI-Alias verwendet. OpenAI-DE erhält eigene Konfiguration,
 Scopes, Verbindungen, Binding Grants, Tests und Widerrufslogik.
@@ -327,6 +334,7 @@ verständliche SkillPilot-Verbindungsseite, nicht auf einen technischen Fehler.
 | Binding Grant | 5 Minuten, einmalig |
 | Access Token | 30–60 Minuten |
 | Refresh Token | höchstens 30 Tage, rotierend |
+| Lernsession | absolut höchstens 24 Stunden; weder Toolaufruf noch Token-Refresh verlängert sie |
 | Audience/Resource | exakt `https://skillpilot.com/api/openai/de/mcp` |
 | Scopes | getrenntes OpenAI-DE-Read und -Write |
 | PKCE | ausschließlich `S256` |

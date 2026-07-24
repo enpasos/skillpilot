@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
+import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,7 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
                 connections,
                 properties);
         authenticate("spod_subject", OpenAiDeOAuthConfiguration.READ_SCOPE, OpenAiDeOAuthConfiguration.WRITE_SCOPE);
-        when(connections.resolveSkillpilotId("spod_subject")).thenReturn("learner-id");
+        when(connections.resolveActiveLearningSessionSkillpilotId("spod_subject")).thenReturn("learner-id");
 
         assertThat(resolver.resolveSkillpilotId(null)).isEqualTo("learner-id");
         assertThatExceptionOfType(ResponseStatusException.class)
@@ -42,7 +43,23 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
                     assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
                     assertThat(exception.getReason()).contains("vorübergehend deaktiviert");
         });
-        verify(connections).resolveSkillpilotId("spod_subject");
+        verify(connections).resolveActiveLearningSessionSkillpilotId("spod_subject");
+    }
+
+    @Test
+    void authenticatedOauthSubjectStillPropagatesMissingLearningSessionAsSeparateCondition() {
+        OpenAiDeCoachConnectionService connections = mock(OpenAiDeCoachConnectionService.class);
+        OpenAiDeCoachIdentityResolverAdapter resolver = new OpenAiDeCoachIdentityResolverAdapter(
+                connections,
+                properties());
+        authenticate("spod_subject", OpenAiDeOAuthConfiguration.READ_SCOPE);
+        when(connections.resolveActiveLearningSessionSkillpilotId("spod_subject"))
+                .thenThrow(new OpenAiDeLearningSessionRequiredException());
+
+        assertThatExceptionOfType(OpenAiDeLearningSessionRequiredException.class)
+                .isThrownBy(() -> resolver.resolveSkillpilotId(null));
+
+        verify(connections).resolveActiveLearningSessionSkillpilotId("spod_subject");
     }
 
     @Test

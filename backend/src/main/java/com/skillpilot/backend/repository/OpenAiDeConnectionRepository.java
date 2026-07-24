@@ -19,6 +19,7 @@ public interface OpenAiDeConnectionRepository extends JpaRepository<OpenAiDeConn
     @Query("select c from OpenAiDeConnection c where c.subject = :subject")
     Optional<OpenAiDeConnection> findBySubjectForUpdate(@Param("subject") String subject);
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<OpenAiDeConnection>
             findFirstByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtAfterOrderByCreatedAtDesc(
                     String skillpilotId, Instant now);

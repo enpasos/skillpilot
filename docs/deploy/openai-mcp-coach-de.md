@@ -1,6 +1,6 @@
 # ChatGPT-App „SkillPilot Coach (Deutsch)“: Deployment und Cutover
 
-**Stand:** 23. Juli 2026
+**Stand:** 24. Juli 2026
 
 **Status:** Implementierung vorhanden; produktive Aktivierung erst nach realem
 OAuth- und Workflow-Acceptance-Test
@@ -13,6 +13,11 @@ Produktivpfad geschaltet.
 
 Die Architektur- und Migrationsentscheidungen stehen in
 [openai-mcp-coach-migration-plan.md](../concept/runtime-workflows/openai-mcp-coach-migration-plan.md).
+Der verbindliche Identitäts- und Sitzungsablauf steht getrennt in
+[openai-mcp-oauth-learner-session-architecture.md](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
+Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
+Benutzer geben niemals Token oder SkillPilot-ID im Chat ein. Die davon
+unabhängige Lernsession ist serverseitig und absolut auf 24 Stunden begrenzt.
 
 ## 1. Öffentlicher Vertrag
 
@@ -99,6 +104,7 @@ SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
 SKILLPILOT_OPENAI_DE_SECURE_COOKIE=true
 SKILLPILOT_OPENAI_DE_BINDING_TTL=PT5M
 SKILLPILOT_OPENAI_DE_LAUNCH_TTL=PT5M
+SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL=PT24H
 SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS=3600000
 SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL=PT1H
 SKILLPILOT_OPENAI_DE_REFRESH_TOKEN_TTL=P30D
@@ -125,6 +131,16 @@ Einmalverwendung und die OAuth-Gültigkeitsgrenze der Verbindung ab. Erlaubt sin
 `CURRENT_UNIT`, `VERIFIED_RECALL` und `ABI26_EXAM`; ein freies `promptContext`
 gehört ausdrücklich nicht zum OpenAI-MCP-Startvertrag.
 
+Migration `012` ergänzt `openai_de_learning_session` mit genau
+`connection_subject`, `started_at` und `expires_at`.
+`connection_subject` ist zugleich Primärschlüssel und Fremdschlüssel auf
+`openai_de_connection.subject`; Löschen der Verbindung löscht den
+Sitzungsdatensatz kaskadierend. SkillPilot-ID, Start-Intent und Sitzungsstatus
+werden dort nicht dupliziert. Der Lernende wird über die Verbindung aufgelöst,
+der Intent wirkt vor der Aktivierung auf den autoritativen Lernendenzustand,
+und `ACTIVE` beziehungsweise `EXPIRED` ergeben sich aus Verbindung,
+Datensatzexistenz und `expires_at`.
+
 Der Start-Intent ist ein kurzlebiger Auftrag an das Fachbackend, keine Bindung
 an eine bestimmte ChatGPT-Konversation. Bei einer erstmaligen Verbindung
 speichert der Binding Grant den Intent zunächst **ohne** Curriculum oder
@@ -138,6 +154,15 @@ Binding Grant bezeichnet ausschließlich dessen einmaligen Austausch gegen eine
 Verbindung; `consumed_at` am Pending Launch bezeichnet die erfolgreiche
 serverseitige Anwendung des Intents. Kein MCP-Toolaufruf konsumiert einen
 Launch.
+
+Nach erfolgreicher Anwendung des Intents erzeugt beziehungsweise ersetzt
+SkillPilot die serverseitige OpenAI-DE-Lernsession. Ihre absolute Frist wird
+durch `SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL` gesteuert und beträgt
+produktiv `PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder
+parallele Chats verlängern diese Frist nicht. Nach Ablauf bleibt die
+OAuth-Verbindung bestehen; lernendenbezogene Tools liefern
+`SESSION_REQUIRED`, bis der Lernende in SkillPilot erneut **Lernen starten**
+auswählt.
 
 Ein erneuter Cockpit-Start im selben Browser ersetzt einen noch offenen
 Binding Grant atomar. Damit können abgebrochene Popups, abgebrochene
@@ -213,8 +238,8 @@ Infrastruktur-Tags ergänzen; auch diese dürfen keine personenbezogenen Werte
 enthalten.
 
 Der zweite Name ist ein Counter mit genau einem begrenzten Tag `event`. Er
-erfasst ausschließlich `oauth_failure`, `refresh_failure`, `http_401`,
-`http_403`, `http_409`, `http_429`, `timeout`, `replay_rejected`,
+erfasst ausschließlich `oauth_failure`, `refresh_failure`, `session_required`,
+`http_401`, `http_403`, `http_409`, `http_429`, `timeout`, `replay_rejected`,
 `cross_provider_rejected` und `tool_exception`. Es gibt keine dynamischen
 Fehlertexte, Kennungen, Pfade oder Lerninhalte als Tags. Cross-Learner-/IDOR-
 Abwehr wird zusätzlich in negativen Integrationstests geprüft; der MCP-Vertrag
@@ -508,7 +533,8 @@ Die dauerhafte SkillPilot-ID bleibt außerhalb von OAuth-Principal, Chat und
 Toolvertrag. Die Startnachricht beschreibt nur den gewünschten Einstieg. Sie
 und der Pending Launch werden nicht einer konkreten Chat-Konversation
 zugeordnet; neue und parallele Chats rehydrieren den bereits vorbereiteten
-Lernstand über den OAuth-Principal aus dem Backend.
+Lernstand über OAuth-Principal und aktive serverseitige 24h-Lernsession aus dem
+Backend.
 
 Falls der Browser den Clipboard-Zugriff verweigert oder nicht anbietet, bleibt
 ChatGPT geöffnet. Das Cockpit zeigt die Startnachricht weiterhin in einem

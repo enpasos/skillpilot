@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 012-add-openai-de-learning-session
+      author: skillpilot
+      preConditions:
+        # This table is part of the learner-authorization boundary. A missing
+        # prerequisite or an unexpected pre-existing table must stop startup
+        # for inspection instead of silently marking the migration as applied.
+        - onFail: HALT
+        - tableExists:
+            tableName: openai_de_connection
+        - not:
+            - tableExists:
+                tableName: openai_de_learning_session
+      changes:
+        - createTable:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: connection_subject
+                  type: VARCHAR(96)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: started_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_learning_session
+            baseColumnNames: connection_subject
+            constraintName: fk_openai_de_learning_session_connection
+            referencedTableName: openai_de_connection
+            referencedColumnNames: subject
+            onDelete: CASCADE
+        - createIndex:
+            tableName: openai_de_learning_session
+            indexName: idx_openai_de_learning_session_expires
+            columns:
+              - column:
+                  name: expires_at

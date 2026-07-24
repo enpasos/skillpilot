@@ -8,6 +8,7 @@ import com.skillpilot.backend.api.OpenAiDeLaunchResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.OpenAiDeBindingGrant;
 import com.skillpilot.backend.domain.OpenAiDeConnection;
+import com.skillpilot.backend.domain.OpenAiDeLearningSession;
 import com.skillpilot.backend.domain.OpenAiDePendingLaunch;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
@@ -16,6 +17,7 @@ import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
 import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
+import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import com.skillpilot.backend.repository.OpenAiDePendingLaunchRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -30,8 +32,8 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.http.HttpStatus;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -76,6 +78,7 @@ public class OpenAiDeCoachConnectionService {
 
     private final OpenAiDeBindingGrantRepository bindingGrantRepository;
     private final OpenAiDeConnectionRepository connectionRepository;
+    private final OpenAiDeLearningSessionRepository learningSessionRepository;
     private final OpenAiDePendingLaunchRepository pendingLaunchRepository;
     private final LearnerRepository learnerRepository;
     private final LearnerService learnerService;
@@ -88,6 +91,7 @@ public class OpenAiDeCoachConnectionService {
     public OpenAiDeCoachConnectionService(
             OpenAiDeBindingGrantRepository bindingGrantRepository,
             OpenAiDeConnectionRepository connectionRepository,
+            OpenAiDeLearningSessionRepository learningSessionRepository,
             OpenAiDePendingLaunchRepository pendingLaunchRepository,
             LearnerRepository learnerRepository,
             LearnerService learnerService,
@@ -97,6 +101,7 @@ public class OpenAiDeCoachConnectionService {
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
         this.bindingGrantRepository = bindingGrantRepository;
         this.connectionRepository = connectionRepository;
+        this.learningSessionRepository = learningSessionRepository;
         this.pendingLaunchRepository = pendingLaunchRepository;
         this.learnerRepository = learnerRepository;
         this.learnerService = learnerService;
@@ -217,14 +222,14 @@ public class OpenAiDeCoachConnectionService {
         requireProviderEligibilityConfirmation(request);
         NormalizedLaunch launchRequest = normalizeLaunch(request);
         Learner learner = requireLearnerForUpdate(skillpilotId);
+        Instant now = Instant.now();
         OpenAiDeConnection connection = connectionRepository
                 .findFirstByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtAfterOrderByCreatedAtDesc(
-                        learner.getSkillpilotId(), Instant.now())
+                        learner.getSkillpilotId(), now)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.CONFLICT,
                         "ChatGPT is not connected for this learner."));
 
-        Instant now = Instant.now();
         OpenAiDePendingLaunch launch = newPendingLaunch(
                 learner,
                 connection.getSubject(),
@@ -232,19 +237,35 @@ public class OpenAiDeCoachConnectionService {
                 now);
         learner = prepareLaunchState(skillpilotId, learner, launchRequest);
         launch.setLearner(learner);
-        launch.setConsumedAt(Instant.now());
+        launch.setConsumedAt(now);
         pendingLaunchRepository.save(launch);
+        Instant learningSessionExpiresAt = activateLearningSession(connection.getSubject(), now);
 
         return new OpenAiDeLaunchResponse(
                 launchPrompt(launchRequest),
                 properties.getChatgptUrl(),
-                launch.getExpiresAt());
+                learningSessionExpiresAt);
     }
 
     @Transactional
-    public String resolveSkillpilotId(String connectionSubject) {
+    public String resolveConnectedSkillpilotId(String connectionSubject) {
         OpenAiDeConnection connection = authorizedConnection(connectionSubject);
         connection.setLastUsedAt(Instant.now());
+        connectionRepository.save(connection);
+        return connection.getLearner().getSkillpilotId();
+    }
+
+    @Transactional
+    public String resolveActiveLearningSessionSkillpilotId(String connectionSubject) {
+        OpenAiDeConnection connection = authorizedConnection(connectionSubject);
+        Instant now = Instant.now();
+        OpenAiDeLearningSession learningSession = learningSessionRepository
+                .findById(connection.getSubject())
+                .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
+        if (!learningSession.getExpiresAt().isAfter(now)) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
+        connection.setLastUsedAt(now);
         connectionRepository.save(connection);
         return connection.getLearner().getSkillpilotId();
     }
@@ -263,7 +284,13 @@ public class OpenAiDeCoachConnectionService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.UNAUTHORIZED,
                         "Learner for OpenAI-DE connection no longer exists."));
-        OpenAiDeConnection connection = connection(connectionSubject);
+        OpenAiDeConnection connection = connectionRepository.findBySubjectForUpdate(normalizedSubject)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.UNAUTHORIZED,
+                        "Unknown OpenAI-DE connection."));
+        if (connection.getRevokedAt() != null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection has been revoked.");
+        }
         Instant now = Instant.now();
         Instant normalizedExpiry = requireFutureOAuthExpiry(oauthExpiresAt, now);
 
@@ -279,6 +306,7 @@ public class OpenAiDeCoachConnectionService {
             // request or concrete ChatGPT conversation.
             launch.setConsumedAt(Instant.now());
             pendingLaunchRepository.save(launch);
+            activateLearningSession(connection.getSubject(), now);
         }
 
         connection.setLastAuthorizedAt(now);
@@ -353,6 +381,7 @@ public class OpenAiDeCoachConnectionService {
         revokeConnections(expiredConnections, now);
         pendingLaunchRepository.deleteByExpiresAtLessThanEqual(now);
         bindingGrantRepository.deleteByExpiresAtLessThanEqual(now);
+        learningSessionRepository.deleteByExpiresAtLessThanEqual(now);
         connectionRepository.deleteByRevokedAtLessThanEqual(now.minus(REVOKED_CONNECTION_RETENTION));
     }
 
@@ -483,6 +512,18 @@ public class OpenAiDeCoachConnectionService {
         launch.setLaunchBatchSize(launchRequest.batchSize());
         launch.setLaunchCourseLevel(launchRequest.courseLevel());
         return launch;
+    }
+
+    private Instant activateLearningSession(String connectionSubject, Instant startedAt) {
+        OpenAiDeLearningSession learningSession = learningSessionRepository
+                .findById(connectionSubject)
+                .orElseGet(OpenAiDeLearningSession::new);
+        learningSession.setConnectionSubject(connectionSubject);
+        learningSession.setStartedAt(startedAt);
+        Instant expiresAt = startedAt.plus(properties.getLearningSessionTtl());
+        learningSession.setExpiresAt(expiresAt);
+        learningSessionRepository.save(learningSession);
+        return expiresAt;
     }
 
     private NormalizedLaunch launchFrom(OpenAiDeBindingGrant grant) {
@@ -766,6 +807,7 @@ public class OpenAiDeCoachConnectionService {
                 .toList();
         connections.forEach(connection -> connection.setRevokedAt(revokedAt));
         connectionRepository.saveAll(connections);
+        learningSessionRepository.deleteAllById(subjects);
         pendingLaunchRepository.deleteAllByConnectionSubjectIn(subjects);
         subjects.forEach(subject -> {
             jdbcOperations.update("DELETE FROM oauth2_authorization WHERE principal_name = ?", subject);

@@ -47,6 +47,38 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
+    void learningSessionTtlAcceptsTheAbsoluteTwentyFourHourMaximum() {
+        new ApplicationContextRunner()
+                .withUserConfiguration(OpenAiDeConfiguration.class)
+                .withPropertyValues(
+                        "skillpilot.openai.de.enabled=true",
+                        "skillpilot.openai.de.learning-session-ttl=PT24H")
+                .run(context -> {
+                    assertThat(context).hasNotFailed();
+                    assertThat(context.getBean(OpenAiDeProperties.class).getLearningSessionTtl())
+                            .isEqualTo(java.time.Duration.ofHours(24));
+                });
+    }
+
+    @Test
+    void learningSessionTtlRejectsNonPositiveAndMoreThanTwentyFourHours() {
+        for (String invalidTtl : List.of("PT0S", "-PT1S", "PT24H1S")) {
+            new ApplicationContextRunner()
+                    .withUserConfiguration(OpenAiDeConfiguration.class)
+                    .withPropertyValues(
+                            "skillpilot.openai.de.enabled=true",
+                            "skillpilot.openai.de.learning-session-ttl=" + invalidTtl)
+                    .run(context -> {
+                        assertThat(context).hasFailed();
+                        assertThat(context.getStartupFailure())
+                                .hasRootCauseInstanceOf(IllegalStateException.class)
+                                .rootCause()
+                                .hasMessageContaining("learning-session-ttl");
+                    });
+        }
+    }
+
+    @Test
     void enabledOauthFailsFastWithoutAppManagementValues() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = new OpenAiDeProperties();

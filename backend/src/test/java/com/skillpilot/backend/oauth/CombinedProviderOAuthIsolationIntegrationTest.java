@@ -131,7 +131,7 @@ class CombinedProviderOAuthIsolationIntegrationTest {
     @BeforeEach
     void setUp() {
         reset(openAiConnections, claudeConnections);
-        when(openAiConnections.resolveSkillpilotId(OPENAI_SUBJECT)).thenReturn("SP-OPENAI-COMBINED");
+        when(openAiConnections.resolveConnectedSkillpilotId(OPENAI_SUBJECT)).thenReturn("SP-OPENAI-COMBINED");
         when(claudeConnections.resolveSkillpilotId(CLAUDE_SUBJECT)).thenReturn("SP-CLAUDE-COMBINED");
         client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))

@@ -47,6 +47,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
 - [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
   DE-first implementation, OAuth, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
+- [OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+  Normative separation of automatic OAuth token transport, first-party learner binding, opaque provider identity, and the absolute 24-hour learning session.
 - [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
   Normative mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
