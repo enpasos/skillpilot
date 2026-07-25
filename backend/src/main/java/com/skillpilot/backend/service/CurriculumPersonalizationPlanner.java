@@ -35,6 +35,7 @@ public final class CurriculumPersonalizationPlanner {
     static final String FLOW_STATE_CONFIG_KEY = "__skillpilotPersonalizationFlow";
     static final String ROOT_LANDSCAPE_ID_KEY = "rootLandscapeId";
     static final String COMPLETED_OPTION_IDS_KEY = "completedOptionIds";
+    static final String MIGRATION_COMPLETED_KEY = "migrationCompleted";
 
     private CurriculumPersonalizationPlanner() {
     }
@@ -101,6 +102,17 @@ public final class CurriculumPersonalizationPlanner {
                     int max = group.getMaxSelections();
                     if (state.selectedCount() > max) {
                         return PersonalizationPlan.invalid("personalization-cardinality-exceeded");
+                    }
+                    /*
+                     * A legacy cutover may already represent a valid learner
+                     * configuration without values for choices introduced by
+                     * the newer guided flow. The root-scoped migration marker
+                     * suppresses only those prompts. We still evaluate every
+                     * group and collect its navigation options so selected
+                     * authored landscapes remain available at runtime.
+                     */
+                    if (completionState.migrationCompleted()) {
+                        continue;
                     }
 
                     PersonalizationPlan.Option completionOption =
@@ -234,6 +246,34 @@ public final class CurriculumPersonalizationPlanner {
         completedOptionIds.add(option.optionId());
         flowState.put(ROOT_LANDSCAPE_ID_KEY, rootLandscapeId);
         flowState.put(COMPLETED_OPTION_IDS_KEY, List.copyOf(completedOptionIds));
+        personalCurriculum.put(FLOW_STATE_CONFIG_KEY, flowState);
+    }
+
+    /**
+     * Marks a configuration imported by an explicit legacy cutover as already
+     * personalized for exactly one authored root flow.
+     *
+     * <p>This marker never selects curricula, filters, goals, or mastery. It
+     * only prevents a successfully migrated learner from being forced through
+     * choices that did not exist in the source configuration.</p>
+     */
+    static void markMigrationCompleted(
+            Map<String, Object> personalCurriculum,
+            String rootLandscapeId) {
+        if (personalCurriculum == null || blank(rootLandscapeId)) {
+            throw new IllegalArgumentException("A personalization root is required");
+        }
+
+        Map<String, Object> flowState = mutableStringObjectMap(
+                personalCurriculum.get(FLOW_STATE_CONFIG_KEY),
+                "Invalid personalization completion state");
+        Object existingRoot = flowState.get(ROOT_LANDSCAPE_ID_KEY);
+        if (!rootLandscapeId.equals(existingRoot)) {
+            flowState.clear();
+            flowState.put(ROOT_LANDSCAPE_ID_KEY, rootLandscapeId);
+            flowState.put(COMPLETED_OPTION_IDS_KEY, List.of());
+        }
+        flowState.put(MIGRATION_COMPLETED_KEY, true);
         personalCurriculum.put(FLOW_STATE_CONFIG_KEY, flowState);
     }
 
@@ -703,7 +743,7 @@ public final class CurriculumPersonalizationPlanner {
             String rootLandscapeId) {
         Map<String, Object> rawFlowState = config.get(FLOW_STATE_CONFIG_KEY);
         if (rawFlowState == null) {
-            return CompletionState.valid(Set.of());
+            return CompletionState.valid(Set.of(), false);
         }
         Object rawRootLandscapeId = rawFlowState.get(ROOT_LANDSCAPE_ID_KEY);
         if (rawRootLandscapeId == null) {
@@ -712,18 +752,23 @@ public final class CurriculumPersonalizationPlanner {
              * not trusted. Requiring the learner to close the current group
              * again is safer than replaying an unscoped marker.
              */
-            return CompletionState.valid(Set.of());
+            return CompletionState.valid(Set.of(), false);
         }
         if (!(rawRootLandscapeId instanceof String storedRootLandscapeId)
                 || blank(storedRootLandscapeId)) {
             return CompletionState.invalid("personalization-completion-state-invalid");
         }
         if (!rootLandscapeId.equals(storedRootLandscapeId)) {
-            return CompletionState.valid(Set.of());
+            return CompletionState.valid(Set.of(), false);
         }
+        Object rawMigrationCompleted = rawFlowState.get(MIGRATION_COMPLETED_KEY);
+        if (rawMigrationCompleted != null && !(rawMigrationCompleted instanceof Boolean)) {
+            return CompletionState.invalid("personalization-completion-state-invalid");
+        }
+        boolean migrationCompleted = Boolean.TRUE.equals(rawMigrationCompleted);
         Object rawCompletedOptionIds = rawFlowState.get(COMPLETED_OPTION_IDS_KEY);
         if (rawCompletedOptionIds == null) {
-            return CompletionState.valid(Set.of());
+            return CompletionState.valid(Set.of(), migrationCompleted);
         }
         if (!(rawCompletedOptionIds instanceof List<?> values)) {
             return CompletionState.invalid("personalization-completion-state-invalid");
@@ -737,7 +782,7 @@ public final class CurriculumPersonalizationPlanner {
                 return CompletionState.invalid("personalization-completion-state-invalid");
             }
         }
-        return CompletionState.valid(optionIds);
+        return CompletionState.valid(optionIds, migrationCompleted);
     }
 
     private static LearningLandscape resolveExact(
@@ -857,14 +902,15 @@ public final class CurriculumPersonalizationPlanner {
     private record CompletionState(
             boolean valid,
             String problemCode,
-            Set<String> optionIds) {
+            Set<String> optionIds,
+            boolean migrationCompleted) {
 
-        static CompletionState valid(Set<String> optionIds) {
-            return new CompletionState(true, null, Set.copyOf(optionIds));
+        static CompletionState valid(Set<String> optionIds, boolean migrationCompleted) {
+            return new CompletionState(true, null, Set.copyOf(optionIds), migrationCompleted);
         }
 
         static CompletionState invalid(String problemCode) {
-            return new CompletionState(false, problemCode, Set.of());
+            return new CompletionState(false, problemCode, Set.of(), false);
         }
     }
 

@@ -11,6 +11,7 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.GoalMappingService;
+import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.LearningLandscape;
@@ -236,6 +237,13 @@ public class LearnerServiceReproTest {
             landscape.setSubject("Math");
             landscape.setLocale("de-DE");
             landscape.setGoals(List.of(cluster, hidden, visible));
+            LandscapeFilter gkFilter = new LandscapeFilter();
+            gkFilter.setId("GK");
+            gkFilter.setLabel("Grundkurs");
+            LandscapeFilter lkFilter = new LandscapeFilter();
+            lkFilter.setId("LK");
+            lkFilter.setLabel("Leistungskurs");
+            landscape.setFilters(List.of(gkFilter, lkFilter));
 
             when(landscapeService.getById("test-landscape")).thenReturn(landscape);
             when(landscapeService.getClosure("test-landscape")).thenReturn(List.of(landscape));
