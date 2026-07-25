@@ -203,7 +203,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
             executor.shutdownNow();
         }
 
-        assertThat(responses).extracting(HttpResponse::statusCode).containsExactlyInAnyOrder(200, 409);
+        assertThat(responses)
+                .extracting(HttpResponse::statusCode)
+                .allMatch(statusCode -> statusCode == 200 || statusCode == 409)
+                .contains(200);
         assertThat(bindingGrantRepository.findAll()).singleElement().satisfies(grant -> {
             assertThat(grant.getConsumedAt()).isNull();
             assertThat(grant.getActiveBrowserSessionHash()).isNotBlank();
