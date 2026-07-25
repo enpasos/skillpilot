@@ -4,7 +4,7 @@
   "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
   "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
   "packageVersion": "1.0.0",
-  "contentDigest": "sha256:a7df0617f8d9d6b1806d1f2dbbc6e635ad2cd4db193322c126692260764df464",
+  "contentDigest": "sha256:853d2cd25340fa822ea395e2f47c28f22c26588a25832ecb712042de3cb45c5f",
   "contracts": {
     "packageFormatVersion": "1.0",
     "runtimeContractVersion": "1.0",
@@ -24,7 +24,7 @@
     "fwuOwlPackageProfile": {
       "id": "urn:skillpilot:curriculum-package-profile:fwu-owl-v1",
       "version": "1.0.0",
-      "sha256": "93383dda616a9ab98210f279d13594ee4eb3d95394fb9dce71116db4f7512559"
+      "sha256": "8f603133b1692419a0ad2c8c72c830cda4f20417e14f3a6ef677835fcfe0b269"
     },
     "fwuOwlPackageValidationReportSchema": {
       "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
@@ -59,7 +59,7 @@
     "fieldSemanticsRegistry": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
       "version": "1.2.0",
-      "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+      "sha256": "853c8be1bec362e931115ebeb8be3ef29b11b2db3ca89a5084b826dfc1dbb88b"
     },
     "semanticNormalForm": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
@@ -113,22 +113,22 @@
   },
   "normalForms": {
     "json": {
-      "contentIndexSha256": "64dbff77e65a471db2f658e7ffbe78609231bdcff21f623f9434200850eab215",
-      "contentDigest": "sha256:a7df0617f8d9d6b1806d1f2dbbc6e635ad2cd4db193322c126692260764df464",
+      "contentIndexSha256": "2df0895aee9d603cd382ca9496b21dcd296175f4eeee60981f5d2de7eaf4cde0",
+      "contentDigest": "sha256:853d2cd25340fa822ea395e2f47c28f22c26588a25832ecb712042de3cb45c5f",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
     },
     "fwu-owl": {
-      "contentIndexSha256": "64dbff77e65a471db2f658e7ffbe78609231bdcff21f623f9434200850eab215",
-      "contentDigest": "sha256:a7df0617f8d9d6b1806d1f2dbbc6e635ad2cd4db193322c126692260764df464",
+      "contentIndexSha256": "2df0895aee9d603cd382ca9496b21dcd296175f4eeee60981f5d2de7eaf4cde0",
+      "contentDigest": "sha256:853d2cd25340fa822ea395e2f47c28f22c26588a25832ecb712042de3cb45c5f",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
     },
     "reconstructed-json": {
-      "contentIndexSha256": "64dbff77e65a471db2f658e7ffbe78609231bdcff21f623f9434200850eab215",
-      "contentDigest": "sha256:a7df0617f8d9d6b1806d1f2dbbc6e635ad2cd4db193322c126692260764df464",
+      "contentIndexSha256": "2df0895aee9d603cd382ca9496b21dcd296175f4eeee60981f5d2de7eaf4cde0",
+      "contentDigest": "sha256:853d2cd25340fa822ea395e2f47c28f22c26588a25832ecb712042de3cb45c5f",
       "logicalArtifactCount": 4,
       "binaryResourceCount": 1,
       "passed": true
@@ -399,15 +399,15 @@
     "registry": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/skillpilot-fwu-field-semantics-v1.registry.json",
       "version": "1.2.0",
-      "sha256": "2e536c3f8d63e2acf45690375ace69ec0c6a6e92787bc8a16957b80120c4ca48"
+      "sha256": "853c8be1bec362e931115ebeb8be3ef29b11b2db3ca89a5084b826dfc1dbb88b"
     },
     "normalForm": {
       "id": "https://skillpilot.com/contracts/curriculum-package/v1/semantic-normal-form-v1.profile.json",
       "version": "1.0.0",
       "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
     },
-    "registeredFieldCount": 454,
-    "coveredFieldCount": 454,
+    "registeredFieldCount": 455,
+    "coveredFieldCount": 455,
     "entries": [
       {
         "entryId": "card-deck.cards",
@@ -2058,6 +2058,16 @@
         "reverseMapped": true,
         "tested": true,
         "coverageDigest": "55289bf613a1b993a2d0502ba47b370478d0fb0c3a31403512777849a73be10c"
+      },
+      {
+        "entryId": "landscape.personalization-flow",
+        "schemaPathPattern": "/personalizationFlow",
+        "semanticClass": "map",
+        "rdfStrategy": "registered-canonical-json-literal",
+        "forwardMapped": true,
+        "reverseMapped": true,
+        "tested": true,
+        "coverageDigest": "58bca69ee9d8aad174c455a18589aaa173d740525d8ffab76aa471eefb6f7a97"
       },
       {
         "entryId": "landscape.program-units",
@@ -4952,7 +4962,7 @@
     ],
     "uncoveredFields": [],
     "unknownFields": [],
-    "coverageDigest": "53c2a08134b2445b1737073c870024a24fb4ee02bd31dc901327341ac566c817",
+    "coverageDigest": "e6f40fbf9baace601bc90e1ffdf5541547b65ed71545a52910d87443300441b7",
     "passed": true
   },
   "comparisons": {
