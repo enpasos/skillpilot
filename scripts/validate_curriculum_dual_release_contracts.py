@@ -472,7 +472,8 @@ def validate_registry(
                 literal_segments = pattern_segments(str(entry.get("pathPattern")))
             except ValueError:
                 literal_segments = ()
-            if (
+            bounded_application_record = literal_segments == ("personalizationFlow",)
+            if not bounded_application_record and (
                 len(literal_segments) < 3
                 or "*" not in literal_segments[:-1]
                 or literal_segments[-1] in {"*", "**"}

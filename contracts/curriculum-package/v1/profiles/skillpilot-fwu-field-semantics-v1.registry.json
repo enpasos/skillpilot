@@ -2929,7 +2929,9 @@
         "mode": "canonical-json-parse",
         "roundtrip": "exact",
         "onMissing": "error",
-        "onAmbiguous": "error"
+        "onAmbiguous": "error",
+        "requireUniquePositions": true,
+        "requireContiguousPositions": true
       }
     },
     {
@@ -8964,6 +8966,67 @@
         "mode": "scalar-literal",
         "roundtrip": "exact",
         "onMissing": "preserve-missing",
+        "onAmbiguous": "error"
+      }
+    },
+    {
+      "entryId": "landscape.personalization-flow",
+      "artifactRole": "canonical-landscape",
+      "pathPattern": "/personalizationFlow",
+      "classification": "map",
+      "cardinality": {
+        "presence": "required"
+      },
+      "dataType": {
+        "jsonTypes": [
+          "object"
+        ],
+        "format": "none"
+      },
+      "languageSemantics": {
+        "mode": "none"
+      },
+      "presenceSemantics": {
+        "missing": "distinct",
+        "null": "forbidden",
+        "empty": "distinct",
+        "default": {
+          "mode": "none"
+        }
+      },
+      "dynamicMapKeys": {
+        "policy": "enumerated",
+        "allowedKeys": [
+          "stages",
+          "version"
+        ],
+        "keyNormalization": "unicode-code-point-order"
+      },
+      "normalization": {
+        "objectKeyOrder": "unicode-code-point",
+        "arrayOrder": "not-applicable",
+        "duplicateItems": "not-applicable",
+        "unicode": "preserve-code-points",
+        "pathHandling": "not-a-path"
+      },
+      "dependencySemantics": {
+        "mode": "none"
+      },
+      "rdfMapping": {
+        "strategy": "registered-canonical-json-literal",
+        "canonicalJsonLiteral": {
+          "predicate": "sp:personalizationFlowJson",
+          "datatype": "xsd:string",
+          "coreGap": "The bounded learner-entry personalization flow is application runtime orchestration and has no curricular Core equivalent.",
+          "maxBytes": 1048576,
+          "granularity": "single-owner-subtree",
+          "subtreeProjection": "complete-value"
+        }
+      },
+      "reverseMapping": {
+        "mode": "canonical-json-parse",
+        "roundtrip": "exact",
+        "onMissing": "error",
         "onAmbiguous": "error"
       }
     },
