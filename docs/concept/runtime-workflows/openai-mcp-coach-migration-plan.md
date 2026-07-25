@@ -1,6 +1,6 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 23. Juli 2026
+**Stand:** 25. Juli 2026
 
 **Status:** deutsche data-only Implementierung lokal abgeschlossen; Deployment,
 echte ChatGPT-OAuth-Acceptance und Cutover ausstehend  
@@ -179,7 +179,7 @@ keinen Sprachparameter. Die Namen bleiben technisch eindeutig:
 | `get_skillpilot_context_de()` | SkillPilot-Lerncoach bei einer natürlichen SkillPilot-Lernabsicht starten oder fortsetzen sowie den kompakten Lernzustand argumentlos rehydrieren |
 | `get_skillpilot_navigation_de(target)` | Optionen für einen ausdrücklichen Wechsel von Curriculum, Personalisierung, Scope oder Ziel laden |
 | `set_skillpilot_curriculum_de(curriculumId)` | Ein Curriculum aus den aktuell erlaubten Optionen setzen |
-| `set_skillpilot_personalization_de(goalIds, filterIds)` | Kurs- und Profilausprägung setzen |
+| `set_skillpilot_personalization_de(optionId)` | Genau eine aktuell angebotene, opak referenzierte Personalisierungsoption setzen |
 | `set_skillpilot_scope_de(goalIds)` | Lernumfang setzen |
 | `set_skillpilot_active_goal_de(goalId, redirect)` | Erlaubtes Frontier-Ziel aktivieren |
 | `set_skillpilot_mastery_de(goalId)` | Das aktive atomische Nicht-SRS-Ziel nach harter Evidenz mit Mastery `1.0` abschließen |
@@ -188,16 +188,33 @@ keinen Sprachparameter. Die Namen bleiben technisch eindeutig:
 | `record_skillpilot_verified_recall_result_de(goalId, cardId, passed, feedback)` | Recall-Ergebnis speichern |
 | `get_skillpilot_exam_evaluation_de(goalId)` | Freigegebene Lösung und Bewertungsraster erst nach vollständiger Abgabe laden |
 
-Ein generisches `applyChoice` ist für die UI-lose Version nicht vorgesehen. Das
-Modell verwendet die fachlichen IDs aus dem zuletzt geladenen
-`structuredContent`; bei Unsicherheit lädt es den Zustand erneut. Die
-Mutationsgrenze prüft jede übergebene Referenz nochmals gegen die aktuell
-veröffentlichten Optionen. Als defensive Toleranz darf sie außerdem ein exakt
-passendes, eindeutiges sichtbares Label auf dessen kanonische ID abbilden
-(beispielsweise `Hessen` auf `DE-HE`). Unbekannte oder mehrdeutige Werte werden
-vor jeder Zustandsänderung abgewiesen. Pro Personalisierungsschritt ist genau
-eine der aktuell veröffentlichten Optionen zulässig; Referenzen auf mehrere
-gegenseitig ausschließende Optionen werden ebenfalls ohne Mutation abgewiesen.
+Ein generisches `applyChoice` ist für die UI-lose Version nicht vorgesehen. Der
+Personalisierungsplan veröffentlicht für jede aktuell zulässige Auswahl eine
+opake `optionId`. Das Modell übergibt ausschließlich diese ID unverändert; es
+rekonstruiert weder Landschafts- noch Filter-IDs und löst keine sichtbaren Label
+auf. Die Mutationsgrenze erzeugt den Plan unter Zeilensperre erneut und akzeptiert
+genau eine noch aktuelle ID. Unbekannte, veraltete, wiederholte oder mehrdeutige
+Werte werden vor jeder Zustandsänderung abgewiesen.
+
+Die Kardinalität einer Landschaftsauswahl wird pro Gruppe explizit durch
+`minSelections` und `maxSelections` beschrieben und ist nicht auf ein Fach oder
+eine Einzelauswahl festgelegt. Eine nichtleere `LearningLandscape.filters`-Liste
+beschreibt dagegen weiterhin genau **eine lokale Single-Choice-Dimension** der
+betreffenden Landschaft. Daher darf eine einzelne Filterentscheidung höchstens
+eine Filteroption dieser Landschaft setzen. Diese Grenze folgt aus dem heutigen
+Persistenzmodell, nicht aus Namen wie Bundesland, Fach oder Kurs.
+
+Erreicht eine Gruppe ihre Höchstzahl, gilt sie automatisch als abgeschlossen.
+Liegt die Zahl der gewählten Werte dagegen zwischen Minimum und Maximum,
+veröffentlicht der Plan neben den verbleibenden Werten eine opake
+`COMPLETE_GROUP`-Option. Nur diese explizite Protokollaktion beendet die
+Gruppeninstanz vorzeitig; aus einem Benutzertext wie „das reicht“ oder aus dem
+Ausbleiben weiterer Werte darf der Provideradapter keinen Abschluss ableiten.
+Eine optionale Gruppe mit `minSelections = 0` kann auf demselben Weg ohne
+fachliche Auswahl abgeschlossen werden. Der Abschluss wird als reservierter
+Flow-Zustand gespeichert, verändert aber weder Landschafts- noch Filterauswahl.
+Bei dynamischen Gruppen gelten Minimum, Maximum und Abschluss jeweils für die
+konkrete Gruppeninstanz, nicht pauschal für alle ausgewählten Landschaften.
 
 Personalisierungsaufrufe des Coaches sind inkrementelle, transaktionale
 Änderungen: Sie erhalten bereits im Cockpit gesetzte Curriculum-, Fach-,
@@ -215,7 +232,154 @@ Cockpit-Link, „Mit Lerncoach prüfen“ startet Verified Recall. Ein `retest`-
 wird erst veröffentlicht, wenn es vom Backend tatsächlich fachlich ausgewertet
 wird.
 
-### 5.1 Context-Ergebnis
+### 5.1 Expliziter PersonalizationFlow, zentraler Plan und spärliche Persistenz
+
+Die Personalisierung ist keine aus dem sichtbaren Dialog abzuleitende
+Modellheuristik. Eine Curriculumwurzel kann dafür einen versionierten
+`personalizationFlow` deklarieren. Das Backend wertet diese Deklaration zu einem
+zentralen `PersonalizationPlan` aus. Flow und Plan sind die einzigen Autoritäten
+für:
+
+- Stufen, Gruppen und deren deterministische Reihenfolge;
+- Mindest- und Höchstzahl der Auswahlen je Gruppe;
+- die für die aktuelle Dimension zulässigen Optionen;
+- die kanonischen Mutationsziele wie Filter- und Landschafts-IDs;
+- die Entscheidung, ob die Einrichtung abgeschlossen ist.
+
+MCP-Kontext, Navigation, Mutationsvalidierung und Cockpit-Projektion verwenden
+denselben Plan. Er besitzt derzeit drei allgemeine, kombinierbare Quelltypen:
+
+- `landscapeFilters`: die explizit deklarierten Filter genau einer Landschaft;
+- `landscapes`: eine explizit geordnete Menge von Landschaften;
+- `filtersForSelectedLandscapes`: je zuvor gewählter Landschaft deren
+  deklarierte Filter.
+
+Diese Quelltypen sind reine Metadatenoperationen. Der Planer durchläuft weder den
+Kompetenzgraphen noch dessen `contains`- oder `requires`-Kanten. Er leitet
+Personalisierung auch nicht aus Frontier, Applicability, Composition Views,
+Tags, Labeln, Fachnamen, Regionen oder fest codierten IDs ab. Sichtbare,
+lokalisierbare Label dienen ausschließlich der Darstellung. Hessen,
+Mathematik und LK sind nur Daten einer konkreten Flow-Instanz.
+
+Damit ein Provider die Entscheidung ohne Wissen über eine konkrete Domäne
+korrekt führen kann, projiziert der MCP-Kontext neben den opaken Optionen auch
+die aktuelle Entscheidungsfrage beziehungsweise Stufen- und Gruppenlabel sowie
+`minSelections`, `maxSelections` und `selectedCount`. Diese Angaben sind
+Laufzeitdaten des Plans, keine Instruktionen in der öffentlich sichtbaren
+App-Beschreibung. Der Adapter darf weder Kardinalität noch Bedeutung aus
+Labels, früheren Chatnachrichten oder bekannten Curriculumnamen erraten.
+
+Fehlt `personalizationFlow`, besteht für diese Curriculumwurzel keine
+verpflichtende geführte Personalisierung. Existiert ein Flow, ist aber
+syntaktisch oder semantisch ungültig, schlägt die Einrichtung geschlossen fehl:
+Lehren, Frontier-Aktivierung und schreibende Lernaktionen bleiben gesperrt,
+anstatt aus dem Graphen einen vermeintlichen Ersatzablauf zu erraten.
+
+Die Filter-ID wird immer im Namensraum ihrer deklarierenden Landschaft
+aufgelöst; die kanonische Schreibweise stammt aus den Metadaten. Eine
+Filtergruppe hat wegen des heutigen Landschaftsvertrags höchstens
+`maxSelections = 1`. Eine Landschaftsgruppe darf dagegen beliebige ausdrücklich
+deklarierte `minSelections`/`maxSelections` verwenden. Dynamische Filtergruppen
+werden als je eine Gruppeninstanz pro zuvor ausgewählter, tatsächlich gefilterter
+Landschaft ausgewertet.
+
+Für `filtersForSelectedLandscapes` gilt in Flow-Version 1 eine bewusst enge
+Grenze: Werden `filterIds` angegeben, bilden sie ein gemeinsames,
+groß-/kleinschreibungsunabhängig eindeutiges Filtervokabular und jede ID muss in
+jeder Landschaft auflösbar sein, die die referenzierte Vorgängergruppe anbieten
+kann. Unterschiedliche eingeschränkte Listen je Landschaft sind in Version 1
+nicht darstellbar. Bei heterogenen Filtervokabularen wird `filterIds` deshalb
+weggelassen; dann verwendet jede ausgewählte Landschaft ihre eigenen
+deklarierten Filter. Ein ausdrücklich deklarierter Flow muss mindestens eine
+Stufe enthalten, und jede Stufe sowie Gruppe braucht ein nichtleeres sichtbares
+Label. Verstöße machen den gesamten Flow ungültig und lösen keinen stillen
+Fallback aus.
+
+Für die Zustandsmaschine gilt eine harte Priorität: Solange eine erforderliche
+Einrichtungsdimension offen ist, veröffentlicht der Kontext zuerst die
+entsprechende Setup-Aktion wie `setCurriculum`, `setPersonalization` oder
+`setScope`. Lehren, Aufgabengenerierung, automatische Zielaktivierung und
+sonstige Autopilot-Schritte sind dann noch nicht zulässig. Erst nach einer
+gültigen, vollständig projizierten Auswahl wird die Frontier berechnet. Die
+Frontier ist damit Ergebnis der Personalisierung, niemals deren Eingabe oder
+Steuersignal.
+
+Persistiert wird die Personalisierung **spärlich**: Eine Coach-Mutation schreibt
+nur die durch die aktuelle `optionId` adressierte Landschaft und gegebenenfalls
+deren kanonischen Filter, nicht die vollständige erreichbare Landschafts- oder
+Scope-Closure. Der neue Planpfad durchläuft dabei ausdrücklich keine alten,
+fachspezifischen Kompatibilitätsregeln für Filterbezeichnungen. Ein
+fehlender Nachfahr-Eintrag ist deshalb insbesondere **keine dauerhaft
+gespeicherte negative Entscheidung** und nicht gleichbedeutend mit einem
+expliziten `selected: false`. Er darf aber ebenso wenig pauschal als
+ausdrücklich ausgewählt gelten. Im heutigen Projektionsvertrag wird ein
+fehlender Nachfahr nach Beginn einer persönlichen Konfiguration im gefilterten
+Lernzielgraphen zunächst nicht ausgewählt; der `PersonalizationPlan` kann ihn
+weiterhin als offene oder angebotene Auswahl veröffentlichen. Geerbte,
+implizite oder voreingestellte Werte gelten nur, wenn die Metadaten des
+aktuellen Plans sie tatsächlich definieren.
+
+Insbesondere darf das Backend nicht den gesamten fachlichen Abschluss als
+explizit ausgewählt materialisieren, nur damit ein inkrementeller
+Schreibvorgang funktioniert. Die Leseprojektion wertet die spärliche
+Konfiguration zusammen mit den aktuellen Metadaten aus; eine Mutation schreibt
+nur das kanonische Delta. Ältere Datensätze, die beispielsweise nur eine
+Wurzelentscheidung enthalten, werden deshalb als teilweise eingerichteter
+Zustand interpretiert und nicht als ausdrückliche Abwahl sämtlicher
+untergeordneter Landschaften. So können sich Metadaten weiterentwickeln, ohne
+dass vollmaterialisierte Alt-Snapshots die aktuelle Semantik überdecken.
+
+Inkrementelle Coach-Mutationen verändern ausschließlich die im Plan adressierte
+Dimension. Bereits ausdrücklich gewählte parallele Fächer und deren
+Kursausprägungen bleiben erhalten. Die Auswahl von Mathematik LK darf
+beispielsweise Biologie oder ein anderes ausdrücklich gewähltes Fach nicht
+stillschweigend abwählen. Eine exklusive Einzelfachauswahl ist nur zulässig,
+wenn die Metadaten des Plans diese Dimension ausdrücklich als exklusiv
+definieren und die lernende Person diese Auswahl trifft. Der vollständige
+Ersatz einer Konfiguration bleibt ein ausdrücklich davon getrennter
+Cockpit-Workflow.
+
+Jede eingereichte kanonische ID muss genau zu einer aktuellen Planoption passen.
+Mutation und Neuberechnung von Plan und Coach-Kontext liegen in derselben
+Transaktion. Nach jeder Mutation wird deshalb aus dem gespeicherten Delta und
+den aktuellen Metadaten der Folgezustand neu projiziert; der Client darf ihn
+nicht selbst fortschreiben.
+
+Eine Landschaft, die außerhalb der bisherigen Kompetenzgraph-Closure liegt,
+darf nur dann in den Lernzeitkontext aufgenommen werden, wenn sie von einer
+gültigen `landscapes`-Quelle des aktiven Flows ausdrücklich angeboten und im
+persönlichen Zustand ausdrücklich gewählt wurde. Eine beliebige oder alte
+Konfigurationszeile erweitert den Laufzeitkontext nicht. Filter bleiben dabei
+grundsätzlich im Namensraum ihrer deklarierenden Landschaft; eine Projektion
+auf eine übergeordnete Wurzel ist ausschließlich eine separat dokumentierte
+Legacy-Kompatibilität und keine Semantik des neuen Flows.
+
+Weitere unabhängige Personalisierungsachsen werden nicht durch Fach-, Label- oder
+ID-Sonderregeln nachgerüstet. Sie benötigen einen neuen, versionierten
+Flow-Quelltyp samt Schema, Validierung, Persistenzsemantik und neutralen
+Vertragstests. Paketweite `scopeDimensions`/`offeredScopes` können dafür später
+eine zusätzliche autoritative Datenquelle werden; sie dürfen erst verwendet
+werden, wenn Planerzeugung, Mutation und Projektion gemeinsam darauf umgestellt
+sind. Nicht darstellbare Entscheidungen werden bis dahin fail-closed abgewiesen.
+
+Die Architektur ist erst fachübergreifend abgenommen, wenn mindestens folgende
+Fälle ohne Sonderlogik funktionieren:
+
+- Wurzel → erste deklarierte Stufe → Landschaft → lokaler Filter →
+  nächster Setup- oder Lernschritt, auch mit rein synthetischen IDs und Labels;
+- Landschaftsgruppen mit unterschiedlichen `minSelections`/`maxSelections`
+  sowie filterlose Landschaften;
+- Erhaltung bereits explizit und schrittweise gewählter paralleler
+  Landschaften beziehungsweise Fächer;
+- Wiederaufnahme einer älteren, nur teilweise gespeicherten
+  Wurzel-/Nachfahrkonfiguration;
+- atomare Ablehnung veralteter Option-IDs, roher Coach-Konfiguration,
+  überschrittener Kardinalität und landschaftsfremder Filter-IDs ohne teilweise
+  Zustandsänderung;
+- keine Ableitung aus Frontier-Tags und keine fest codierten Label, Fachnamen
+  oder fachlichen IDs in Laufzeitlogik oder Vertragstests.
+
+### 5.2 Context-Ergebnis
 
 `get_skillpilot_context_de()` ist trotz seines stabilen technischen Namens das
 eindeutige Bootstrap-Werkzeug. Wenn die App ausgewählt oder SkillPilot genannt
@@ -233,7 +397,10 @@ Es serialisiert **nicht** den rohen
 - Curriculumtitel, Fach und fachliche öffentliche ID;
 - aktives Ziel mit Titel, Beschreibung, Typ und Cockpit-Link;
 - bei Prüfungen ausschließlich Aufgabe und Maximalpunkte;
-- aktuell erlaubte Optionen mit fachlicher ID, Label und Beschreibung;
+- aktuell erlaubte Optionen mit Label und passender Referenz: opake `optionId`
+  für Personalisierung, fachliche ID nur für bewusst fachliche Navigation;
+- bei einer offenen Personalisierungsgruppe deren Entscheidungslabel,
+  Gruppeninstanz, Minimum, Maximum und bereits gewählte Anzahl;
 - Frontier, relevante Ressourcen und nächste erlaubte Werkzeuge;
 - Scope- und Curriculumfortschritt sowie Abschlussstatus;
 - eine kurze zustandsabhängige Arbeitsanweisung.
@@ -242,6 +409,12 @@ Es serialisiert **nicht** den rohen
 Optionen bleiben in `structuredContent` und werden nicht unnötig in der
 Chatantwort wiederholt. Zielvisualisierungen erscheinen im Chat nur als sicherer
 Cockpit-Deep-Link.
+
+Der opake `optionId`-Vertrag ist zunächst für den produktiven deutschen
+OpenAI-MCP-Adapter umgesetzt. Die pausierte Claude-Integration und die
+isolierte Visible-Session-Rollback-Variante besitzen weiterhin ihre eigenen
+Legacy-Verträge; ihre Existenz ist weder ein Fallback für diesen Flow noch ein
+Beleg dafür, dass sie Mehrfachauswahl und `COMPLETE_GROUP` bereits unterstützen.
 
 ## 6. Migration der bisherigen Knowledge-Dokumente
 

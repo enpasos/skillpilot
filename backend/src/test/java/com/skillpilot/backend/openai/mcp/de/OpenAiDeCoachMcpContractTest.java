@@ -18,6 +18,7 @@ import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -426,25 +427,105 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void personalizationCanonicalizesAnExactVisibleLabelBeforeMutation() {
+    void personalizationNavigationPublishesQuestionAndCardinalityWithoutTechnicalDecisionIds() throws Exception {
         UnifiedLearnerStateResponse state = personalizationState();
+        PersonalizationPlan plan = PersonalizationPlan.selection(
+                "stage-internal-11",
+                "Synthetic stage",
+                "group-internal-23",
+                "Which pathways fit?",
+                "instance-internal-37",
+                1,
+                3,
+                1,
+                List.of(
+                        new PersonalizationPlan.Option(
+                                "po-route-amber",
+                                "stage-internal-11",
+                                "group-internal-23",
+                                "instance-internal-37",
+                                state.curriculum().getCurriculumId(),
+                                state.curriculum().getTitle(),
+                                "route-amber",
+                                "Route Amber"),
+                        new PersonalizationPlan.Option(
+                                "po-finish-pathways",
+                                "stage-internal-11",
+                                "group-internal-23",
+                                "instance-internal-37",
+                                null,
+                                null,
+                                null,
+                                null,
+                                PersonalizationPlan.OptionKind.COMPLETE_GROUP)),
+                List.of());
         when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
+
+        McpSchema.CallToolResult result = call(
+                OpenAiDeCoachMcpContract.GET_NAVIGATION,
+                Map.of("target", "personalization"));
+        OpenAiDeCoachMcpContract.NavigationResult navigation =
+                (OpenAiDeCoachMcpContract.NavigationResult) result.structuredContent();
+        assertMatchesOutputSchema(OpenAiDeCoachMcpContract.GET_NAVIGATION, result);
+
+        assertThat(navigation.decision()).isEqualTo(new OpenAiDeCoachContext.Decision(
+                "Synthetic stage",
+                "Which pathways fit?",
+                1,
+                3,
+                1));
+        assertThat(navigation.options()).extracting(OpenAiDeCoachContext.Option::id)
+                .containsExactly("po-route-amber", "po-finish-pathways");
+        assertThat(navigation.instruction())
+                .contains(
+                        "Which pathways fit?",
+                        "Mindestens 1 und höchstens 3",
+                        "bisher ausgewählt: 1",
+                        "Minimum ist erfüllt")
+                .doesNotContain(
+                        "stage-internal-11",
+                        "group-internal-23",
+                        "instance-internal-37");
+
+        JsonNode decision = objectMapper.valueToTree(navigation).path("decision");
+        assertThat(decision.has("stageId")).isFalse();
+        assertThat(decision.has("groupId")).isFalse();
+        assertThat(decision.has("groupInstanceId")).isFalse();
+    }
+
+    @Test
+    void personalizationForwardsTheExactOpaqueOptionIdWithoutReconstructingItsVisibleLabel() {
+        UnifiedLearnerStateResponse state = personalizationState();
+        PersonalizationPlan plan = new PersonalizationPlan(
+                PersonalizationPlan.Stage.SELECTION,
+                List.of(new PersonalizationPlan.Option(
+                        "po-hessen",
+                        "jurisdiction",
+                        "jurisdiction",
+                        "jurisdiction:curriculum-public-id",
+                        "curriculum-public-id",
+                        "Gymnasium (DE)",
+                        "DE-HE",
+                        "Hessen")),
+                List.of());
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getPersonalizationPlan(LEARNER_ID)).thenReturn(plan);
         when(coachTools.setPersonalization(eq(LEARNER_ID), any(PersonalizationRequest.class)))
                 .thenReturn(state);
 
         McpSchema.CallToolResult result = call(
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                Map.of(
-                        "goalIds", List.of(),
-                        "filterIds", List.of("Hessen")));
+                Map.of("optionId", "po-hessen"));
 
         assertThat(result.isError()).isFalse();
         ArgumentCaptor<PersonalizationRequest> request =
                 ArgumentCaptor.forClass(PersonalizationRequest.class);
         verify(coachTools).setPersonalization(eq(LEARNER_ID), request.capture());
         assertThat(request.getValue().goalIds()).isEmpty();
-        assertThat(request.getValue().filters()).containsExactly("DE-HE");
+        assertThat(request.getValue().filters()).isEmpty();
         assertThat(request.getValue().config()).isEmpty();
+        assertThat(request.getValue().optionId()).isEqualTo("po-hessen");
     }
 
     @Test

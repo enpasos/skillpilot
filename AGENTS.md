@@ -609,6 +609,32 @@ Key principles for Layer C:
   backend derives the learner and current learning session from that token.
   Because ChatGPT exposes no stable conversation identifier for this contract,
   the current learning session is connection-wide rather than chat-specific.
+- Guided curriculum personalization is an explicitly authored entry protocol,
+  not a projection of the competence graph:
+  - a curriculum root may declare a versioned top-level `personalizationFlow`;
+  - stages, groups, order, cardinalities, landscapes, and filter sources come
+    only from that flow and the referenced landscape metadata;
+  - `contains`, `requires`, frontier, applicability, composition views, tags,
+    labels, subject names, jurisdictions, and hard-coded IDs must never invent
+    a personalization decision;
+  - an absent flow means no mandatory guided personalization; a malformed
+    authored flow fails closed;
+  - provider adapters submit the currently published opaque `optionId`
+    unchanged. Labels are presentation only and are never mutation keys;
+  - if a group has met its minimum but not its maximum, the plan publishes an
+    opaque `COMPLETE_GROUP` action; only this action, or reaching the maximum,
+    closes that concrete group instance. Optional groups use the same action
+    to close with zero selected values;
+  - provider projections expose the current decision label plus
+    `minSelections`, `maxSelections`, and `selectedCount`; adapters must not
+    infer cardinality or completion from labels or transcript wording;
+  - mutations re-resolve the active flow under the learner row lock and persist
+    only the selected landscape plus its exact authored filter;
+  - a selected landscape outside the old graph closure is usable only when a
+    valid active flow explicitly offered it. Arbitrary persisted configuration
+    must never expand the runtime landscape set.
+  Neutral, synthetic multi-stage contract tests are required so a concrete
+  Hessen, Mathematik, or course-profile example cannot become runtime logic.
 - Every normal model-facing learner state must pass through the shared safe
   projection: no permanent SkillPilot ID or copy-source IDs, and no exam solution,
   passing threshold, source-artifact path, or scoring rubric.
@@ -873,10 +899,13 @@ provider policy and product review explicitly permit it.
   services and widget implementation is allowed; a public `language` switch or
   one-size-fits-all tool contract is not.
 - **MCP-App state rule:** user-facing labels and released learning content belong
-  in `content` / `structuredContent`; opaque click references belong only in
-  result `_meta`. App-only tools apply selections and persist submissions
-  directly. Authenticated, argumentless read tools rehydrate state after a new
-  turn, reload, or context compaction.
+  in `content` / `structuredContent`. In the UI-less coach, a currently valid
+  opaque personalization `optionId` may also be model-visible in
+  `structuredContent`, but must not be repeated in the transcript; the model
+  passes it unchanged to the narrow mutation tool. Widget-only click references
+  remain in result `_meta` and app-only tools apply them directly. Authenticated,
+  argumentless read tools rehydrate state after a new turn, reload, or context
+  compaction.
 - **OpenAI identity/session rule:** OAuth identifies the opaque connection and
   authorizes the transport. An independent, absolute 24-hour server-side
   learning session authorizes learner tools. Only a first-party `Lernen starten`

@@ -272,6 +272,7 @@ public class LandscapeService {
         copy.setCompatibilityOnly(original.getCompatibilityOnly());
         copy.setLegacyHiddenByDefault(original.getLegacyHiddenByDefault());
         copy.setFilters(original.getFilters());
+        copy.setPersonalizationFlow(original.getPersonalizationFlow());
         copy.setProgramUnits(original.getProgramUnits());
         copy.setGoalPlacements(original.getGoalPlacements());
         copy.setCompetencyCatalog(original.getCompetencyCatalog());

@@ -202,7 +202,8 @@ class CoachToolFacadeTest {
                 skillpilotId,
                 request.config(),
                 request.goalIds(),
-                request.filters()))
+                request.filters(),
+                request.optionId()))
                 .thenReturn(updatedState);
 
         UnifiedLearnerStateResponse result = facade.setPersonalization(skillpilotId, request);
@@ -214,7 +215,26 @@ class CoachToolFacadeTest {
                 skillpilotId,
                 request.config(),
                 request.goalIds(),
-                request.filters());
+                request.filters(),
+                request.optionId());
+        verifyNoMoreInteractions(chatSessionService, learnerService);
+    }
+
+    @Test
+    void personalizationRejectsRawConfigBeforeCallingTheMutationService() {
+        String skillpilotId = "learner-1";
+        PersonalizationRequest request = new PersonalizationRequest(
+                Map.of("landscape-1", Map.of("selected", true)),
+                List.of("goal-1"),
+                List.of("DE-HE"));
+
+        assertThatThrownBy(() -> facade.setPersonalization(skillpilotId, request))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(
+                                ((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(HttpStatus.BAD_REQUEST));
+
+        verify(learnerService).assertWritableLearningSession(skillpilotId);
         verifyNoMoreInteractions(chatSessionService, learnerService);
     }
 
