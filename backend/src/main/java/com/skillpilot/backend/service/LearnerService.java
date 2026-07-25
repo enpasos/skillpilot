@@ -68,6 +68,7 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.LearnerDataDTO;
 import com.skillpilot.backend.api.LearningModeOption;
 import com.skillpilot.backend.api.MasteryEntryDTO;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.SignedLearnerDataDTO;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.VerifiedRecallAnswerRequest;
@@ -2180,6 +2181,9 @@ public class LearnerService {
 
         List<String> storedPlannedGoals = getStoredPlannedGoals(skillpilotId);
         CanonicalGymnasiumCutoverPlan plan = buildCanonicalGymnasiumCutoverPlan(learner, storedPlannedGoals);
+        recordSatisfiedPersonalizationGroupCompletions(
+                CANONICAL_GYMNASIUM_ROOT_ID,
+                plan.personalCurriculumConfig());
         String personalCurriculumJson = writePersonalCurriculumConfig(plan.personalCurriculumConfig());
 
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
@@ -2346,14 +2350,223 @@ public class LearnerService {
             Map<String, Object> config,
             List<String> goalIds,
             List<String> filters) {
+        return patchPersonalCurriculum(skillpilotId, config, goalIds, filters, null);
+    }
+
+    @Transactional
+    public UnifiedLearnerStateResponse patchPersonalCurriculum(
+            String skillpilotId,
+            Map<String, Object> config,
+            List<String> goalIds,
+            List<String> filters,
+            String optionId) {
+        if (config != null && !config.isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Coach personalization accepts only current option references; raw config is not supported");
+        }
+
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
 
+        PersonalizationPlan.Option selectedOption =
+                requireCurrentPersonalizationOption(buildPersonalizationPlan(learner), optionId, goalIds, filters);
         Map<String, Object> finalConfig = mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
-        mergePersonalCurriculumPatch(finalConfig, normalizePersonalCurriculumPayload(config));
-        applyPersonalCurriculumMutation(learner, finalConfig, goalIds, filters);
+        applyCurrentPersonalizationOption(learner, finalConfig, selectedOption);
 
         return getLearnerState(skillpilotId, null);
+    }
+
+    /**
+     * Revalidates a coach selection against the current metadata-derived stage
+     * while the learner row is locked by {@link #patchPersonalCurriculum}.
+     *
+     * <p>This service-level check is authoritative. Provider adapters must pass
+     * the opaque option ID unchanged and must not resolve labels. The check
+     * prevents stale, replayed, ambiguous, cross-curriculum and parallel
+     * mutations from changing the learner configuration.</p>
+     */
+    private PersonalizationPlan.Option requireCurrentPersonalizationOption(
+            PersonalizationPlan currentPlan,
+            String submittedOptionId,
+            List<String> submittedGoalIds,
+            List<String> submittedFilterIds) {
+        if (currentPlan == null || !currentPlan.valid()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The authored personalization flow is invalid");
+        }
+        if (!currentPlan.required() || currentPlan.options().isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "Personalization is complete or the submitted option is no longer current");
+        }
+
+        if (submittedOptionId != null && !submittedOptionId.isBlank()) {
+            List<PersonalizationPlan.Option> matches = currentPlan.options().stream()
+                    .filter(Objects::nonNull)
+                    .filter(option -> submittedOptionId.trim().equals(option.optionId()))
+                    .toList();
+            if (matches.size() != 1) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "The personalization option is stale or unknown; reload the current context");
+            }
+            return matches.getFirst();
+        }
+
+        // Legacy compatibility path for already deployed adapters. Only exact
+        // landscape IDs are accepted; competence-goal aliases are deliberately
+        // forbidden because graph structure is not a personalization protocol.
+        Set<String> submittedLandscapeIds = new LinkedHashSet<>();
+        for (String reference : normalizedReferences(submittedGoalIds)) {
+            LearningLandscape landscape = landscapeService.getById(reference);
+            if (landscape != null) {
+                submittedLandscapeIds.add(landscape.getLandscapeId());
+                continue;
+            }
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Unknown personalization landscape reference");
+        }
+        if (submittedLandscapeIds.size() > 1) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A personalization option must target exactly one landscape");
+        }
+
+        List<String> submittedFilters = normalizedReferences(submittedFilterIds);
+        if (submittedLandscapeIds.isEmpty() && submittedFilters.isEmpty()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A current personalization option is required");
+        }
+
+        List<PersonalizationPlan.Option> matches = currentPlan.options().stream()
+                .filter(Objects::nonNull)
+                .filter(option -> submittedLandscapeIds.isEmpty()
+                        || submittedLandscapeIds.contains(option.landscapeId()))
+                .filter(option -> {
+                    if (submittedFilters.isEmpty()) {
+                        return option.filterId() == null || option.filterId().isBlank();
+                    }
+                    return option.filterId() != null
+                            && submittedFilters.stream()
+                                    .allMatch(filter -> option.filterId().equalsIgnoreCase(filter));
+                })
+                .toList();
+        if (matches.size() != 1) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The personalization option is stale, unknown or ambiguous; reload the current context");
+        }
+        return matches.getFirst();
+    }
+
+    /**
+     * Persists one already revalidated authored plan option without passing it
+     * through curriculum-specific compatibility rules.
+     *
+     * <p>A value option persists its selected landscape and optional filter
+     * exactly as authored. A group-completion option persists only reserved
+     * flow progress and never creates fachliche configuration. This path
+     * deliberately knows nothing about subjects, jurisdictions, duration
+     * models, course profiles, labels, or graph relationships.</p>
+     */
+    private void applyCurrentPersonalizationOption(
+            Learner learner,
+            Map<String, Object> finalConfig,
+            PersonalizationPlan.Option option) {
+        if (learner == null || option == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A valid authored personalization option is required");
+        }
+
+        if (option.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP) {
+            try {
+                CurriculumPersonalizationPlanner.recordGroupCompletion(
+                        finalConfig,
+                        learner.getSelectedCurriculum(),
+                        option);
+            } catch (IllegalArgumentException ex) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "The authored personalization completion is no longer valid");
+            }
+            learner.setLearningState(LearningState.FRONTIER);
+            persistPersonalCurriculum(learner, finalConfig);
+            return;
+        }
+
+        if (option.kind() != PersonalizationPlan.OptionKind.VALUE
+                || option.landscapeId() == null
+                || option.landscapeId().isBlank()) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A valid authored personalization value option is required");
+        }
+
+        LearningLandscape landscape = landscapeService.getById(option.landscapeId());
+        if (landscape == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.CONFLICT,
+                    "The authored personalization landscape is no longer available");
+        }
+
+        String canonicalFilterId = null;
+        if (option.filterId() != null && !option.filterId().isBlank()) {
+            canonicalFilterId =
+                    CurriculumPersonalizationPlanner.canonicalFilterId(landscape, option.filterId());
+            if (!option.filterId().equals(canonicalFilterId)) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "The authored personalization option is no longer available");
+            }
+        }
+
+        Object existingSettings = finalConfig.get(option.landscapeId());
+        Map<String, Object> settings = existingSettings instanceof Map<?, ?> existingMap
+                ? new LinkedHashMap<>((Map<String, Object>) existingMap)
+                : new LinkedHashMap<>();
+        settings.put("selected", true);
+        if (canonicalFilterId != null) {
+            settings.put("filterId", canonicalFilterId);
+            // durationModel is a legacy storage alias. An explicitly authored
+            // flow always persists the declared filter field and cannot retain
+            // both representations.
+            settings.remove("durationModel");
+        }
+        finalConfig.put(option.landscapeId(), settings);
+
+        learner.setLearningState(LearningState.FRONTIER);
+        persistPersonalCurriculum(learner, finalConfig);
+    }
+
+    private void persistPersonalCurriculum(Learner learner, Map<String, Object> finalConfig) {
+        try {
+            String json = objectMapper.writeValueAsString(finalConfig);
+            learner.setPersonalCurriculum(json);
+            learnerRepository.save(learner);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "Invalid personalization config");
+        }
+        eventPublisher.publishEvent(
+                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
+    }
+
+    private List<String> normalizedReferences(List<String> references) {
+        if (references == null || references.isEmpty()) {
+            return List.of();
+        }
+        return references.stream()
+                .filter(Objects::nonNull)
+                .map(String::trim)
+                .filter(reference -> !reference.isBlank())
+                .distinct()
+                .toList();
     }
 
     private void applyPersonalCurriculumMutation(
@@ -2361,84 +2574,121 @@ public class LearnerService {
             Map<String, Object> finalConfig,
             List<String> goalIds,
             List<String> filters) {
-        java.util.Set<String> targetLandscapes = new java.util.HashSet<>();
-        java.util.List<String> effectiveFilters = new java.util.ArrayList<>();
+        Set<String> targetLandscapes = new LinkedHashSet<>();
+        List<String> effectiveFilters = new ArrayList<>();
         if (filters != null) {
-            effectiveFilters.addAll(filters);
+            filters.stream()
+                    .filter(Objects::nonNull)
+                    .map(String::trim)
+                    .filter(filter -> !filter.isBlank())
+                    .forEach(effectiveFilters::add);
         }
 
-        if (goalIds != null) { // Only process if goalIds is not null
+        if (goalIds != null) {
             for (String gid : goalIds) {
-                if (gid == null || gid.isBlank())
+                if (gid == null || gid.isBlank()) {
                     continue;
+                }
+                String submittedId = gid.trim();
 
-                // 1. Is it a Landscape ID?
-                if (landscapeService.getById(gid) != null) {
-                    targetLandscapes.add(gid);
+                if (landscapeService.getById(submittedId) != null) {
+                    targetLandscapes.add(submittedId);
                     continue;
                 }
 
-                // 2. Is it a Goal ID?
-                String landscapeId = landscapeService.getLandscapeIdForGoal(gid);
+                String landscapeId = landscapeService.getLandscapeIdForGoal(submittedId);
                 if (landscapeId != null) {
                     targetLandscapes.add(landscapeId);
                     continue;
                 }
 
-                // 3. Fallback: Treat as filter if NOT explicitly provided in filters list?
-                // Ideally, we trust the explicit list. But for backward compat, maybe keeps?
-                // Let's assume strict separation now given tool change.
-                // But if GPT mixes them in goalIds despite instructions, we should catch them.
-                effectiveFilters.add(gid);
+                // Backward-compatible input shape; validation below still requires
+                // the value to be declared by the selected landscape.
+                effectiveFilters.add(submittedId);
             }
         }
 
         learner.setLearningState(LearningState.FRONTIER);
 
-        // If we have filters but no specific landscapes, apply to current (Root)
         if (targetLandscapes.isEmpty() && !effectiveFilters.isEmpty()) {
             String current = learner.getSelectedCurriculum();
-            if (current != null) {
+            if (current != null && !current.isBlank()) {
                 targetLandscapes.add(current);
             }
         }
 
-        // Apply configuration
-        for (String landscapeId : targetLandscapes) {
-            Map<String, Object> settings = (Map<String, Object>) finalConfig.getOrDefault(landscapeId, new HashMap<>());
-            settings.put("selected", true);
-            String durationModel = effectiveFilters.stream()
-                    .map(this::normalizeFilterId)
-                    .filter(DURATION_MODEL_FILTER_IDS::contains)
-                    .findFirst()
-                    .orElse(null);
-            String primaryFilter = effectiveFilters.stream()
-                    .map(this::normalizeFilterId)
-                    .filter(filter -> filter != null && !DURATION_MODEL_FILTER_IDS.contains(filter))
-                    .findFirst()
-                    .orElse(null);
-            if (primaryFilter != null && !primaryFilter.isBlank()) {
-                settings.put("filterId", primaryFilter);
+        if (!effectiveFilters.isEmpty() && targetLandscapes.size() != 1) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.BAD_REQUEST,
+                    "A personalization option must target exactly one landscape");
+        }
+
+        String resolvedFilterId = null;
+        String resolvedDurationModel = null;
+        if (!effectiveFilters.isEmpty()) {
+            LearningLandscape targetLandscape = landscapeService.getById(targetLandscapes.iterator().next());
+            if (targetLandscape == null) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Unknown personalization landscape");
             }
-            if (durationModel != null) {
-                settings.put("durationModel", durationModel);
+
+            Set<String> resolvedOptions = new LinkedHashSet<>();
+            for (String submittedFilter : effectiveFilters) {
+                String canonicalFilter =
+                        CurriculumPersonalizationPlanner.canonicalFilterId(targetLandscape, submittedFilter);
+                String legacyDurationModel = usesLegacyStructuredFilterSemantics(targetLandscape)
+                        ? normalizeDurationModelScope(submittedFilter)
+                        : null;
+                if (canonicalFilter == null && legacyDurationModel == null) {
+                    throw new ResponseStatusException(
+                            org.springframework.http.HttpStatus.BAD_REQUEST,
+                            "The personalization option is not declared by the target landscape");
+                }
+                if (legacyDurationModel != null
+                        && (canonicalFilter == null
+                                || DURATION_MODEL_FILTER_IDS.contains(normalizeFilterId(canonicalFilter)))) {
+                    resolvedOptions.add("durationModel:" + legacyDurationModel);
+                } else {
+                    resolvedOptions.add("filterId:" + canonicalFilter);
+                }
+            }
+            if (resolvedOptions.size() > 1) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Exactly one authored personalization option is allowed per mutation");
+            }
+
+            String resolvedOption = resolvedOptions.iterator().next();
+            int separator = resolvedOption.indexOf(':');
+            if (resolvedOption.startsWith("durationModel:")) {
+                resolvedDurationModel = resolvedOption.substring(separator + 1);
+            } else {
+                resolvedFilterId = resolvedOption.substring(separator + 1);
+            }
+        }
+
+        for (String landscapeId : targetLandscapes) {
+            LearningLandscape landscape = landscapeService.getById(landscapeId);
+            if (landscape == null) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "Unknown personalization landscape");
+            }
+            Object existingSettings = finalConfig.get(landscapeId);
+            Map<String, Object> settings = existingSettings instanceof Map<?, ?> existingMap
+                    ? new LinkedHashMap<>((Map<String, Object>) existingMap)
+                    : new LinkedHashMap<>();
+            settings.put("selected", true);
+            if (resolvedDurationModel != null) {
+                settings.put("durationModel", resolvedDurationModel);
+            } else if (resolvedFilterId != null) {
+                settings.put("filterId", resolvedFilterId);
             }
             finalConfig.put(landscapeId, settings);
         }
 
-        try {
-            String json = objectMapper.writeValueAsString(finalConfig);
-            learner.setPersonalCurriculum(json);
-            if (isSelectedInPersonalCurriculum(finalConfig.get(CANONICAL_GYMNASIUM_ROOT_ID))) {
-                learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-            }
-            learnerRepository.save(learner);
-        } catch (Exception e) {
-            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Invalid personalization config");
-        }
-        eventPublisher.publishEvent(
-                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
+        persistPersonalCurriculum(learner, finalConfig);
     }
 
     private Map<String, Object> mutablePersonalCurriculumPayload(String personalCurriculumJson) {
@@ -2446,25 +2696,6 @@ public class LearnerService {
         parsePersonalCurriculumConfig(personalCurriculumJson)
                 .forEach((landscapeId, settings) -> mutable.put(landscapeId, new LinkedHashMap<>(settings)));
         return mutable;
-    }
-
-    @SuppressWarnings("unchecked")
-    private void mergePersonalCurriculumPatch(Map<String, Object> target, Map<String, Object> patch) {
-        for (Map.Entry<String, Object> entry : patch.entrySet()) {
-            Object currentValue = target.get(entry.getKey());
-            Object patchValue = entry.getValue();
-            if (currentValue instanceof Map<?, ?> currentSettings && patchValue instanceof Map<?, ?> patchSettings) {
-                Map<String, Object> mergedSettings = new LinkedHashMap<>((Map<String, Object>) currentSettings);
-                for (Map.Entry<?, ?> setting : patchSettings.entrySet()) {
-                    if (setting.getKey() instanceof String settingName) {
-                        mergedSettings.put(settingName, setting.getValue());
-                    }
-                }
-                target.put(entry.getKey(), mergedSettings);
-            } else {
-                target.put(entry.getKey(), patchValue);
-            }
-        }
     }
 
     private boolean isSelectedInPersonalCurriculum(Object rawConfig) {
@@ -3233,6 +3464,67 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
                     "Failed to serialize personal curriculum config.");
         }
+    }
+
+    /**
+     * Migrated configurations already contain the learner's complete legacy
+     * choices. Persist any authored group-completion steps that are therefore
+     * currently available, without inventing or selecting a value.
+     *
+     * <p>The loop is deliberately metadata-driven: it knows neither subjects
+     * nor jurisdictions. It stops as soon as the authored flow requires a real
+     * learner choice. Normal personalization mutations never use this helper,
+     * so new multi-selection flows still require an explicit completion
+     * action.</p>
+     */
+    private void recordSatisfiedPersonalizationGroupCompletions(
+            String rootLandscapeId,
+            Map<String, Object> config) {
+        if (rootLandscapeId == null || rootLandscapeId.isBlank() || config == null) {
+            return;
+        }
+
+        for (int step = 0; step < 256; step++) {
+            PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                    rootLandscapeId,
+                    landscapeService::getById,
+                    parsePersonalCurriculumConfig(writePersonalCurriculumConfig(config)));
+            if (!plan.valid()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Migrated personal curriculum does not satisfy the authored personalization flow.");
+            }
+            if (!plan.required()) {
+                return;
+            }
+
+            List<PersonalizationPlan.Option> completionOptions = plan.options().stream()
+                    .filter(Objects::nonNull)
+                    .filter(option -> option.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                    .toList();
+            if (completionOptions.isEmpty()) {
+                return;
+            }
+            if (completionOptions.size() != 1) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Authored personalization flow exposes ambiguous completion actions.");
+            }
+            try {
+                CurriculumPersonalizationPlanner.recordGroupCompletion(
+                        config,
+                        rootLandscapeId,
+                        completionOptions.getFirst());
+            } catch (IllegalArgumentException ex) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Failed to persist migrated personalization progress.");
+            }
+        }
+
+        throw new ResponseStatusException(
+                org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                "Authored personalization flow did not converge during migration.");
     }
 
     private boolean isAtomicGoal(LearningGoal goal) {
@@ -4048,29 +4340,44 @@ public class LearnerService {
             nextAllowedActions.add("setCurriculum");
         }
         List<String> activeFilters = new ArrayList<>();
-        boolean personalizationRequired = false;
+        PersonalizationPlan personalizationPlan = PersonalizationPlan.complete(List.of());
         if (curriculumId != null) {
-            // Extract active filters from ALL configured landscapes (Aggregation)
-            // This handles the case where personalization is on a child subject (e.g. Math
-            // LK)
-            // but the user is viewing the parent (Overview).
             try {
                 String json = learner.getPersonalCurriculum();
                 if (json != null && !json.isBlank()) {
                     Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(json);
+                    Set<String> currentLandscapeIds = resolveRuntimeLandscapes(
+                                    curriculumId,
+                                    landscapeService.getById(curriculumId),
+                                    config)
+                            .stream()
+                            .map(LearningLandscape::getLandscapeId)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.toCollection(LinkedHashSet::new));
                     for (Map.Entry<String, Map<String, Object>> configEntry : config.entrySet()) {
+                        if (!currentLandscapeIds.contains(configEntry.getKey())) {
+                            continue;
+                        }
                         Map<String, Object> landscapeConfig = configEntry.getValue();
+                        if (Boolean.FALSE.equals(landscapeConfig.get("selected"))) {
+                            continue;
+                        }
                         Object filterObj = landscapeConfig.get("filterId");
                         if (filterObj instanceof String) {
-                            String f = (String) filterObj;
-                            if (!activeFilters.contains(f)) {
+                            LearningLandscape declaringLandscape =
+                                    landscapeService.getById(configEntry.getKey());
+                            String f = canonicalConfiguredFilterId(declaringLandscape, filterObj);
+                            if (f != null && !activeFilters.contains(f)) {
                                 activeFilters.add(f);
                             }
                         }
                         Object durationModelObj = landscapeConfig.get("durationModel");
                         if (durationModelObj instanceof String) {
                             String durationModel = normalizeFilterId((String) durationModelObj);
-                            if (!CANONICAL_GYMNASIUM_ROOT_ID.equals(configEntry.getKey())
+                            LearningLandscape declaringLandscape =
+                                    landscapeService.getById(configEntry.getKey());
+                            if (usesLegacyStructuredFilterSemantics(declaringLandscape)
+                                    && !curriculumId.equals(configEntry.getKey())
                                     && DURATION_MODEL_FILTER_IDS.contains(durationModel)
                                     && !activeFilters.contains(durationModel)) {
                                 activeFilters.add(durationModel);
@@ -4081,9 +4388,10 @@ public class LearnerService {
             } catch (Exception e) {
                 // Ignore parsing errors
             }
-
-            personalizationRequired = needsPersonalization(frontier, activeFilters);
+            personalizationPlan = buildPersonalizationPlan(learner);
         }
+        boolean personalizationRequired =
+                personalizationPlan.required() || !personalizationPlan.valid();
 
         activeGoalId = maybeAutoActivateFrontierGoal(
                 learner,
@@ -4100,8 +4408,10 @@ public class LearnerService {
         boolean activeGoalIsMemory = isMemoryFrontierGoal(activeGoal);
 
         if (curriculumId != null) {
-            nextAllowedActions.add("setPersonalization");
-            if (!personalizationRequired) {
+            if (personalizationPlan.required()) {
+                nextAllowedActions.add("setPersonalization");
+            }
+            if (personalizationPlan.valid() && !personalizationRequired) {
                 nextAllowedActions.add("setScope");
                 nextAllowedActions.add("getFrontier");
                 if (activeGoalId != null && !activeGoalId.isBlank() && !activeGoalMastered) {
@@ -4147,7 +4457,7 @@ public class LearnerService {
         }
 
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
-                activeGoalMastered, learningState, activeFilters, scopeExpansionOptions);
+                activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
         return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
                 new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
@@ -4415,8 +4725,10 @@ public class LearnerService {
 
     private StateMachineInfo buildStateMachineInfo(String curriculumId, List<FrontierGoal> frontier,
             List<FrontierGoal> frontierAtomic, FrontierGoal activeGoal, boolean activeGoalMastered,
-            LearningState learningState, List<String> activeFilters, List<FrontierGoal> scopeExpansionOptions) {
-        String state = curriculumId == null ? "SETUP" : learningState.name();
+            LearningState learningState, boolean personalizationRequired, List<FrontierGoal> scopeExpansionOptions) {
+        String state = curriculumId == null
+                ? "SETUP"
+                : personalizationRequired ? "PERSONALIZATION" : learningState.name();
         String requiredAction = "getFrontier";
         List<FrontierGoal> goalOptions = Collections.emptyList();
         List<com.skillpilot.backend.landscape.LandscapeSummary> curriculumOptions = Collections.emptyList();
@@ -4424,15 +4736,14 @@ public class LearnerService {
         if (curriculumId == null) {
             requiredAction = "setCurriculum";
             curriculumOptions = getAvailableBaseCurricula();
+        } else if (personalizationRequired) {
+            requiredAction = "setPersonalization";
         } else if (activeGoal != null && !activeGoalMastered && isMemoryFrontierGoal(activeGoal)) {
             requiredAction = "chooseMemoryMode";
             goalOptions = List.of(activeGoal);
         } else if (activeGoal != null && !activeGoalMastered) {
             requiredAction = "teachActiveGoal";
             goalOptions = List.of(activeGoal);
-        } else if (needsPersonalization(frontier, activeFilters)) {
-            requiredAction = "setPersonalization";
-            goalOptions = frontier;
         } else if (!frontierAtomic.isEmpty()) {
             requiredAction = "setActiveGoal";
             goalOptions = frontierAtomic;
@@ -4629,23 +4940,6 @@ public class LearnerService {
             }
         }
         return parentMap;
-    }
-
-    private boolean needsPersonalization(List<FrontierGoal> frontier, List<String> activeFilters) {
-        if (activeFilters != null && !activeFilters.isEmpty()) {
-            return false;
-        }
-        for (FrontierGoal goal : frontier) {
-            if (goal.tags() == null) {
-                continue;
-            }
-            for (String tag : goal.tags()) {
-                if ("GK".equals(tag) || "LK".equals(tag)) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     private com.skillpilot.backend.api.GoalStats computeAtomicStats(Map<String, LearningGoal> goals,
@@ -5072,6 +5366,28 @@ public class LearnerService {
         return landscapeService.getOverview("de", includeCompatibility).getSummaries();
     }
 
+    @Transactional(readOnly = true)
+    public PersonalizationPlan getPersonalizationPlan(String skillpilotId) {
+        Learner learner = learnerRepository.findById(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        return buildPersonalizationPlan(learner);
+    }
+
+    private PersonalizationPlan buildPersonalizationPlan(Learner learner) {
+        if (learner == null) {
+            return PersonalizationPlan.complete(List.of());
+        }
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null || curriculumId.isBlank()) {
+            return PersonalizationPlan.complete(List.of());
+        }
+
+        return CurriculumPersonalizationPlanner.plan(
+                curriculumId,
+                landscapeService::getById,
+                parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
+    }
+
     @Transactional
     public void materializeCanonicalMasteryFromExactMappings(String skillpilotId) {
         if (skillpilotId == null || skillpilotId.isBlank()) {
@@ -5260,26 +5576,23 @@ public class LearnerService {
 
     private Map<String, LearningGoal> getFilteredGoals(String curriculumId, String personalCurriculumJson,
             boolean ignoreCourseFilters) {
-        List<LearningLandscape> closure = landscapeService.getClosure(curriculumId);
         LearningLandscape root = landscapeService.getById(curriculumId);
-        if (root != null && closure.stream().noneMatch(l -> l.getLandscapeId().equals(root.getLandscapeId()))) {
-            closure = new ArrayList<>(closure);
-            closure.add(root);
-        }
-
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
+        List<LearningLandscape> runtimeLandscapes =
+                resolveRuntimeLandscapes(curriculumId, root, config);
 
         String rootFilterId = null;
         String rootDurationModel = null;
+        boolean legacyRootFilters = usesLegacyStructuredFilterSemantics(root);
         if (!config.isEmpty()) {
             Map<String, Object> rootConfig = config.get(curriculumId);
             if (rootConfig != null) {
                 Object rootFilterObj = rootConfig.get("filterId");
                 if (rootFilterObj instanceof String) {
-                    rootFilterId = normalizeFilterId((String) rootFilterObj);
+                    rootFilterId = canonicalConfiguredFilterId(root, rootFilterObj);
                 }
                 Object rootDurationObj = rootConfig.get("durationModel");
-                if (rootDurationObj instanceof String) {
+                if (legacyRootFilters && rootDurationObj instanceof String) {
                     rootDurationModel = normalizeFilterId((String) rootDurationObj);
                 }
             }
@@ -5288,10 +5601,13 @@ public class LearnerService {
         Map<String, Set<String>> mappedCanonicalGoalIdsByState = new HashMap<>();
         Map<String, Boolean> canonicalStateCoverageCache = new HashMap<>();
         Map<String, LearningGoal> allGoals = new LinkedHashMap<>();
-        for (LearningLandscape l : closure) {
+        for (LearningLandscape l : runtimeLandscapes) {
             // Filter by landscape selection
-            // Default to selected if no config exists, or if explicitly selected
-            boolean isSelected = true;
+            // With a sparse personalization configuration, descendants are active
+            // only when explicitly selected. The root remains active unless it is
+            // explicitly disabled.
+            boolean isRoot = l.getLandscapeId().equals(curriculumId);
+            boolean isSelected = config.isEmpty() || isRoot;
             String filterId = null;
             String durationModel = null;
 
@@ -5299,30 +5615,16 @@ public class LearnerService {
                 Map<String, Object> landscapeConfig = config.get(l.getLandscapeId());
                 if (landscapeConfig != null) {
                     Object selectedObj = landscapeConfig.get("selected");
-                    if (selectedObj instanceof Boolean) {
-                        isSelected = (Boolean) selectedObj;
-                    }
+                    isSelected = isRoot
+                            ? !Boolean.FALSE.equals(selectedObj)
+                            : Boolean.TRUE.equals(selectedObj);
                     Object filterObj = landscapeConfig.get("filterId");
                     if (filterObj instanceof String) {
-                        filterId = normalizeFilterId((String) filterObj);
+                        filterId = canonicalConfiguredFilterId(l, filterObj);
                     }
                     Object durationObj = landscapeConfig.get("durationModel");
-                    if (durationObj instanceof String) {
+                    if (usesLegacyStructuredFilterSemantics(l) && durationObj instanceof String) {
                         durationModel = normalizeFilterId((String) durationObj);
-                    }
-                } else {
-                    // If config exists but this landscape is not in it, assume not selected (unless
-                    // it's root?)
-                    // For now, let's assume if config exists, we respect it strictly.
-                    // But wait, the frontend sends config for ALL available landscapes.
-                    // So if it's missing, it's safe to assume not selected or just default.
-                    // Let's assume default is selected for safety if not specified?
-                    // No, personalization usually means restriction.
-                    // If config is present, we only include what's in config.
-                    isSelected = false;
-                    // Exception: The root curriculum itself should probably always be included?
-                    if (l.getLandscapeId().equals(curriculumId)) {
-                        isSelected = true;
                     }
                 }
             }
@@ -5335,14 +5637,21 @@ public class LearnerService {
             if (filterId != null && !filterId.isBlank()) {
                 effectiveFilterIds.add(filterId);
             }
-            if (rootFilterId != null && !rootFilterId.isBlank() && !l.getLandscapeId().equals(curriculumId)
+            if (rootFilterId != null
+                    && legacyRootFilters
+                    && isStateFilterId(normalizeFilterId(rootFilterId))
+                    && !l.getLandscapeId().equals(curriculumId)
                     && !effectiveFilterIds.contains(rootFilterId)) {
                 effectiveFilterIds.add(rootFilterId);
             }
-            if (durationModel != null && DURATION_MODEL_FILTER_IDS.contains(durationModel)
+            if (usesLegacyStructuredFilterSemantics(l)
+                    && durationModel != null
+                    && DURATION_MODEL_FILTER_IDS.contains(durationModel)
                     && !effectiveFilterIds.contains(durationModel)) {
                 effectiveFilterIds.add(durationModel);
-            } else if (rootDurationModel != null && DURATION_MODEL_FILTER_IDS.contains(rootDurationModel)
+            } else if (legacyRootFilters
+                    && rootDurationModel != null
+                    && DURATION_MODEL_FILTER_IDS.contains(rootDurationModel)
                     && !l.getLandscapeId().equals(curriculumId)
                     && !effectiveFilterIds.contains(rootDurationModel)) {
                 effectiveFilterIds.add(rootDurationModel);
@@ -5359,9 +5668,90 @@ public class LearnerService {
             }
         }
         if (!ignoreCourseFilters) {
-            return applyCompositionViewScope(curriculumId, allGoals, config, closure);
+            return applyCompositionViewScope(curriculumId, allGoals, config, runtimeLandscapes);
         }
         return allGoals;
+    }
+
+    /**
+     * Resolves the landscapes that may contribute goals to the current learner
+     * runtime.
+     *
+     * <p>The competence-graph closure remains the compatibility baseline.
+     * Additionally, a landscape can enter the runtime only when all of the
+     * following hold:</p>
+     *
+     * <ol>
+     *   <li>the root curriculum has a valid authored personalization flow,</li>
+     *   <li>the validated plan exposes the landscape as an authored option, and</li>
+     *   <li>the learner configuration marks that exact landscape as selected.</li>
+     * </ol>
+     *
+     * <p>This deliberately does not inspect goal IDs, {@code contains},
+     * {@code requires}, subjects, regions, course labels, or other
+     * curriculum-specific conventions. Unknown or unrelated configuration
+     * entries therefore cannot inject a runtime landscape.</p>
+     */
+    private List<LearningLandscape> resolveRuntimeLandscapes(
+            String curriculumId,
+            LearningLandscape root,
+            Map<String, Map<String, Object>> config) {
+        LinkedHashMap<String, LearningLandscape> resolved = new LinkedHashMap<>();
+        List<LearningLandscape> graphClosure = landscapeService.getClosure(curriculumId);
+        if (graphClosure != null) {
+            for (LearningLandscape landscape : graphClosure) {
+                addRuntimeLandscape(resolved, landscape);
+            }
+        }
+        addRuntimeLandscape(resolved, root);
+
+        if (root == null
+                || root.getPersonalizationFlow() == null
+                || config == null
+                || config.isEmpty()) {
+            return List.copyOf(resolved.values());
+        }
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                curriculumId,
+                landscapeService::getById,
+                config);
+        if (!plan.valid()) {
+            return List.copyOf(resolved.values());
+        }
+
+        for (PersonalizationPlan.Option option : plan.navigationOptions()) {
+            if (option == null
+                    || option.landscapeId() == null
+                    || option.landscapeId().isBlank()
+                    || resolved.containsKey(option.landscapeId())) {
+                continue;
+            }
+            Map<String, Object> landscapeConfig = config.get(option.landscapeId());
+            if (landscapeConfig == null
+                    || !Boolean.TRUE.equals(landscapeConfig.get("selected"))) {
+                continue;
+            }
+            LearningLandscape selectedLandscape =
+                    landscapeService.getById(option.landscapeId());
+            if (selectedLandscape != null
+                    && option.landscapeId().equals(selectedLandscape.getLandscapeId())) {
+                addRuntimeLandscape(resolved, selectedLandscape);
+            }
+        }
+        return List.copyOf(resolved.values());
+    }
+
+    private void addRuntimeLandscape(
+            Map<String, LearningLandscape> target,
+            LearningLandscape landscape) {
+        if (target == null
+                || landscape == null
+                || landscape.getLandscapeId() == null
+                || landscape.getLandscapeId().isBlank()) {
+            return;
+        }
+        target.putIfAbsent(landscape.getLandscapeId(), landscape);
     }
 
     private Map<String, LearningGoal> applyCompositionViewScope(
@@ -5727,27 +6117,30 @@ public class LearnerService {
     private boolean matchesFilter(LearningGoal goal, LearningLandscape landscape, String filterId,
             boolean ignoreCourseFilters,
             Map<String, Set<String>> mappedCanonicalGoalIdsByState, Map<String, Boolean> canonicalStateCoverageCache) {
+        String authoredFilterId = filterId == null ? null : filterId.trim();
         String normalizedFilterId = normalizeFilterId(filterId);
         if (normalizedFilterId == null || normalizedFilterId.isBlank()) {
             return true;
         }
-        if ("ALL".equals(normalizedFilterId)) {
-            return true;
-        }
-        if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
-            if (ignoreCourseFilters) {
+        if (usesLegacyStructuredFilterSemantics(landscape)) {
+            if ("ALL".equals(normalizedFilterId)) {
                 return true;
             }
-            return matchesCourseFilter(goal, normalizedFilterId);
+            if (COURSE_FILTER_IDS.contains(normalizedFilterId)) {
+                if (ignoreCourseFilters) {
+                    return true;
+                }
+                return matchesCourseFilter(goal, normalizedFilterId);
+            }
+            if (isStateFilterId(normalizedFilterId)) {
+                return matchesStateFilter(goal, landscape, normalizedFilterId, mappedCanonicalGoalIdsByState,
+                        canonicalStateCoverageCache);
+            }
+            if (DURATION_MODEL_FILTER_IDS.contains(normalizedFilterId)) {
+                return matchesDurationModelFilter(goal, normalizedFilterId);
+            }
         }
-        if (isStateFilterId(normalizedFilterId)) {
-            return matchesStateFilter(goal, landscape, normalizedFilterId, mappedCanonicalGoalIdsByState,
-                    canonicalStateCoverageCache);
-        }
-        if (DURATION_MODEL_FILTER_IDS.contains(normalizedFilterId)) {
-            return matchesDurationModelFilter(goal, normalizedFilterId);
-        }
-        return matchesTagFilter(goal, normalizedFilterId);
+        return matchesTagFilter(goal, authoredFilterId);
     }
 
     private boolean isStateFilterId(String filterId) {
@@ -5998,9 +6391,23 @@ public class LearnerService {
         return frameworkId != null && frameworkId.startsWith("canonical-gymnasium");
     }
 
+    private boolean usesLegacyStructuredFilterSemantics(LearningLandscape landscape) {
+        return isCanonicalGymnasiumLandscape(landscape);
+    }
+
     private boolean matchesTagFilter(LearningGoal goal, String filterId) {
         List<String> tags = goal.getTags();
-        return tags == null || tags.isEmpty() || tags.contains(filterId);
+        return tags == null
+                || tags.isEmpty()
+                || tags.stream().anyMatch(tag -> tag != null && tag.equalsIgnoreCase(filterId));
+    }
+
+    private String canonicalConfiguredFilterId(LearningLandscape landscape, Object rawFilterId) {
+        if (!(rawFilterId instanceof String submitted) || submitted.isBlank()) {
+            return null;
+        }
+        String canonical = CurriculumPersonalizationPlanner.canonicalFilterId(landscape, submitted);
+        return canonical;
     }
 
     private String normalizeDurationModelTag(String value) {

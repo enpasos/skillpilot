@@ -14,6 +14,8 @@ import com.skillpilot.backend.api.VerifiedRecallStartRequest;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.MasteryId;
+import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningLandscape;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -23,6 +25,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
@@ -77,6 +80,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private LandscapeService landscapeService;
 
     private String learnerId;
 
@@ -200,6 +206,109 @@ public class LearnerServiceTest {
         assertThat(config.path(mathLandscapeId).path("filterId").asText()).isEqualTo("GK");
         assertThat(config.path(biologyLandscapeId).path("filterId").asText()).isEqualTo("ALL");
         assertThat(state.activeFilters()).contains("DE-HE", "GK", "ALL");
+    }
+
+    @Test
+    void patchPersonalCurriculumInitializesAnEmptyCanonicalRootForHessen() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(null);
+        learnerRepository.saveAndFlush(learner);
+
+        var state = learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of("DE-HE"));
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("selected").asBoolean()).isTrue();
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(state.activeFilters()).contains("DE-HE");
+    }
+
+    @Test
+    void patchPersonalCurriculumAcceptsFullCockpitConfigurationForHessen() throws Exception {
+        Map<String, Object> fullCockpitConfig = new LinkedHashMap<>();
+        for (LearningLandscape landscape : landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID)) {
+            Map<String, Object> settings = new LinkedHashMap<>();
+            settings.put("selected", true);
+            if (landscape.getFilters() != null && !landscape.getFilters().isEmpty()) {
+                settings.put("filterId", landscape.getFilters().getFirst().getId());
+            }
+            fullCockpitConfig.put(landscape.getLandscapeId(), settings);
+        }
+        fullCockpitConfig.putIfAbsent(
+                CANONICAL_GYMNASIUM_ROOT_ID,
+                new LinkedHashMap<>(Map.of("selected", true)));
+
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(objectMapper.writeValueAsString(fullCockpitConfig));
+        learnerRepository.saveAndFlush(learner);
+
+        var state = learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of("DE-HE"));
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(config.size()).isEqualTo(fullCockpitConfig.size());
+        assertThat(state.activeFilters()).contains("DE-HE");
+    }
+
+    @Test
+    void patchPersonalCurriculumAcceptsLegacyLandscapeConfigurationForHessen() throws Exception {
+        String legacyConfiguration = """
+                {
+                  "24f2ca0f-b94a-444e-bb70-677cb6f85c02": {"selected": false},
+                  "bbbf39f3-4a5b-46cf-9edd-48f2c54ae0da": {"selected": true},
+                  "2796fc7b-ba9d-446f-8f26-711dd6d8a9a3": {"selected": true, "filterId": "LK"},
+                  "obsolete-landscape": {"selected": "true", "filterId": 17}
+                }
+                """;
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(legacyConfiguration);
+        learner.setActiveGoalId("legacy-goal-that-no-longer-exists");
+        learnerRepository.saveAndFlush(learner);
+
+        var state = learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of("DE-HE"));
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(config.path("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3").path("filterId").asText())
+                .isEqualTo("LK");
+        assertThat(updated.getActiveGoalId()).isNull();
+        assertThat(state.activeFilters()).contains("DE-HE", "LK");
+    }
+
+    @Test
+    void patchPersonalCurriculumRecoversFromMalformedStoredConfigurationForHessen() throws Exception {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("{not-valid-json");
+        learnerRepository.saveAndFlush(learner);
+
+        var state = learnerService.patchPersonalCurriculum(
+                learnerId,
+                Map.of(),
+                List.of(),
+                List.of("DE-HE"));
+
+        Learner updated = learnerRepository.findById(learnerId).orElseThrow();
+        JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(state.activeFilters()).contains("DE-HE");
     }
 
     @Test

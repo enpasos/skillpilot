@@ -6,10 +6,10 @@ import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearningModeOption;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.ExamData;
-import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LandscapeSummary;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -32,13 +32,26 @@ final class OpenAiDeCoachContextProjector {
     }
 
     OpenAiDeCoachContext project(UnifiedLearnerStateResponse rawState) {
+        return project(rawState, PersonalizationPlan.complete(List.of()));
+    }
+
+    OpenAiDeCoachContext project(
+            UnifiedLearnerStateResponse rawState,
+            PersonalizationPlan personalizationPlan) {
         UnifiedLearnerStateResponse state = stateProjection.project(rawState);
         if (state == null) {
             return null;
         }
         FrontierGoal activeGoal = activeGoal(state);
         String requiredAction = requiredAction(state);
-        List<OpenAiDeCoachContext.Option> options = stateOptions(state, requiredAction, activeGoal);
+        List<OpenAiDeCoachContext.Option> options = stateOptions(
+                state,
+                requiredAction,
+                activeGoal,
+                personalizationPlan);
+        OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
+                ? personalizationDecision(personalizationPlan)
+                : null;
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
         boolean examHasImage = hasExamImage(activeGoal);
@@ -49,13 +62,14 @@ final class OpenAiDeCoachContextProjector {
                 curriculum(state.curriculum()),
                 activeGoal(state.curriculum(), activeGoal),
                 options,
+                decision,
                 goals(state.frontier()),
                 resources(state.curriculum(), activeGoal),
                 nextAllowedTools(requiredAction, activeGoal),
                 progress(state.goals()),
                 completion,
                 policies(interactionMode, examHasImage),
-                instruction(requiredAction, activeGoal, options, completion, examHasImage));
+                instruction(requiredAction, activeGoal, options, decision, completion, examHasImage));
     }
 
     List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
@@ -91,22 +105,84 @@ final class OpenAiDeCoachContextProjector {
                 null);
     }
 
-    List<OpenAiDeCoachContext.Option> personalizationOptions(LandscapeSummary curriculum) {
-        if (curriculum == null || curriculum.getFilters() == null) {
+    List<OpenAiDeCoachContext.Option> personalizationOptions(
+            PersonalizationPlan plan,
+            String rootLandscapeId) {
+        if (plan == null || !plan.required() || plan.options().isEmpty()) {
             return List.of();
         }
+        return personalizationOptions(plan.options(), rootLandscapeId);
+    }
+
+    List<OpenAiDeCoachContext.Option> personalizationNavigationOptions(
+            PersonalizationPlan plan,
+            String rootLandscapeId) {
+        if (plan == null || plan.navigationOptions().isEmpty()) {
+            return List.of();
+        }
+        return personalizationOptions(plan.navigationOptions(), rootLandscapeId);
+    }
+
+    OpenAiDeCoachContext.Decision personalizationDecision(PersonalizationPlan plan) {
+        if (plan == null
+                || !plan.valid()
+                || !plan.required()
+                || blank(plan.stageLabel())
+                || blank(plan.groupLabel())
+                || plan.minSelections() < 0
+                || plan.maxSelections() < plan.minSelections()
+                || plan.selectedCount() < 0
+                || plan.selectedCount() > plan.maxSelections()) {
+            return null;
+        }
+        return new OpenAiDeCoachContext.Decision(
+                compact(plan.stageLabel()),
+                compact(plan.groupLabel()),
+                plan.minSelections(),
+                plan.maxSelections(),
+                plan.selectedCount());
+    }
+
+    private List<OpenAiDeCoachContext.Option> personalizationOptions(
+            List<PersonalizationPlan.Option> source,
+            String rootLandscapeId) {
         List<OpenAiDeCoachContext.Option> options = new ArrayList<>();
-        for (LandscapeFilter filter : curriculum.getFilters()) {
-            if (filter == null || blank(filter.getId())) {
+        for (PersonalizationPlan.Option option : source) {
+            if (option == null) {
                 continue;
             }
-            options.add(new OpenAiDeCoachContext.Option(
+            if (option.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP) {
+                add(options, new OpenAiDeCoachContext.Option(
+                        "personalization",
+                        option.optionId(),
+                        "Auswahl abschließen",
+                        "Schließt nur die aktuelle Auswahlgruppe ab und übernimmt keine weitere fachliche Option.",
+                        List.of(),
+                        List.of(),
+                        null));
+                continue;
+            }
+            String landscapeId = option.landscapeId();
+            if (blank(landscapeId)) {
+                continue;
+            }
+            boolean selectionOnly = blank(option.filterId());
+            boolean rootOption = landscapeId.equals(rootLandscapeId);
+            String landscapeLabel = fallback(option.landscapeLabel(), landscapeId);
+            String filterLabel = selectionOnly
+                    ? null
+                    : fallback(option.filterLabel(), option.filterId());
+            add(options, new OpenAiDeCoachContext.Option(
                     "personalization",
-                    filter.getId(),
-                    fallback(filter.getLabel(), filter.getId()),
+                    option.optionId(),
+                    selectionOnly
+                            ? landscapeLabel
+                            : rootOption
+                            ? filterLabel
+                            : landscapeLabel + " – " + filterLabel,
                     null,
                     List.of(),
-                    List.of(filter.getId()),
+                    List.of(),
                     null));
         }
         return List.copyOf(options);
@@ -115,7 +191,8 @@ final class OpenAiDeCoachContextProjector {
     private List<OpenAiDeCoachContext.Option> stateOptions(
             UnifiedLearnerStateResponse state,
             String requiredAction,
-            FrontierGoal activeGoal) {
+            FrontierGoal activeGoal,
+            PersonalizationPlan personalizationPlan) {
         StateMachineInfo machine = state.stateMachine();
         if (machine == null || blank(requiredAction)) {
             return List.of();
@@ -130,12 +207,10 @@ final class OpenAiDeCoachContextProjector {
                 }
             }
             case "setPersonalization" -> {
-                options.addAll(personalizationOptions(state.curriculum()));
-                if (options.isEmpty() && machine.goalOptions() != null) {
-                    for (FrontierGoal item : machine.goalOptions()) {
-                        add(options, goalOption(item, "personalization"));
-                    }
-                }
+                String rootLandscapeId = state.curriculum() == null
+                        ? null
+                        : state.curriculum().getCurriculumId();
+                options.addAll(personalizationOptions(personalizationPlan, rootLandscapeId));
             }
             case "setScope", "setActiveGoal" -> {
                 String kind = "setScope".equals(requiredAction) ? "scope" : "goal";
@@ -376,6 +451,7 @@ final class OpenAiDeCoachContextProjector {
             String requiredAction,
             FrontierGoal goal,
             List<OpenAiDeCoachContext.Option> options,
+            OpenAiDeCoachContext.Decision decision,
             OpenAiDeCoachContext.Completion completion,
             boolean examHasImage) {
         if (goal == null && completion.curriculumComplete()) {
@@ -409,7 +485,8 @@ final class OpenAiDeCoachContextProjector {
             return "Es ist keine weitere Backend-Aktion erforderlich. Lade bei Zweifel den aktuellen Kontext neu.";
         }
         return switch (requiredAction) {
-            case "setCurriculum", "setPersonalization", "setScope", "setActiveGoal", "chooseMemoryMode" ->
+            case "setPersonalization" -> personalizationInstruction(decision, options);
+            case "setCurriculum", "setScope", "setActiveGoal", "chooseMemoryMode" ->
                     options.isEmpty()
                             ? "Für den erforderlichen Schritt sind keine sicheren Optionen vorhanden. Lade den Kontext neu."
                             : "Behandle einen natürlichen Mehrfachwunsch in diesem Assistententurn als fortgeltende Absicht. "
@@ -422,6 +499,54 @@ final class OpenAiDeCoachContextProjector {
                             + "veränderten Kontext und nachdem alle Aspekte des Ziels geprüft sind.";
             default -> "Folge ausschließlich der angezeigten erforderlichen Aktion und lade danach den Kontext neu.";
         };
+    }
+
+    String personalizationInstruction(
+            OpenAiDeCoachContext.Decision decision,
+            List<OpenAiDeCoachContext.Option> options) {
+        if (decision == null || options == null || options.isEmpty()) {
+            return "Für die erforderliche Personalisierungsentscheidung fehlen sichere, vollständig beschriebene "
+                    + "Optionen. Lade den Kontext neu und erfinde weder die offene Frage noch mögliche Antworten.";
+        }
+
+        int minimum = decision.minSelections();
+        int maximum = decision.maxSelections();
+        int selected = decision.selectedCount();
+        String cardinality;
+        if (minimum == 0 && maximum == 0) {
+            cardinality = "Keine weitere Auswahl ist vorgesehen";
+        } else if (minimum == 0) {
+            cardinality = maximum == 1
+                    ? "Höchstens eine Auswahl ist möglich"
+                    : "Höchstens " + maximum + " Auswahlen sind möglich";
+        } else if (minimum == maximum) {
+            cardinality = minimum == 1
+                    ? "Genau eine Auswahl ist erforderlich"
+                    : "Genau " + minimum + " Auswahlen sind erforderlich";
+        } else {
+            cardinality = "Mindestens " + minimum + " und höchstens " + maximum
+                    + " Auswahlen sind vorgesehen";
+        }
+
+        String progress;
+        if (selected < minimum) {
+            int remaining = minimum - selected;
+            progress = remaining == 1
+                    ? "Es fehlt noch mindestens eine Auswahl."
+                    : "Es fehlen noch mindestens " + remaining + " Auswahlen.";
+        } else if (selected < maximum) {
+            progress = "Das Minimum ist erfüllt. Weitere veröffentlichte Optionen dürfen gewählt werden. Falls eine "
+                    + "Abschlussoption angeboten wird, darf die Auswahl stattdessen beendet werden.";
+        } else {
+            progress = "Die Höchstzahl ist erreicht; wähle keine weitere Option. Falls eine Abschlussoption "
+                    + "angeboten wird, verwende jetzt ausschließlich diese.";
+        }
+
+        return "Die aktuell offene Auswahlfrage im Entscheidungsschritt „" + decision.stageLabel() + "“ lautet „"
+                + decision.groupLabel() + "“. " + cardinality + "; bisher ausgewählt: " + selected + ". "
+                + progress + " Übernimm ausschließlich eine veröffentlichte Options-ID unverändert. Wende einen "
+                + "inhaltlich eindeutigen Wunsch direkt an und frage nur nach, wenn die offene Auswahl tatsächlich "
+                + "mehrdeutig ist.";
     }
 
     private boolean hasExamImage(FrontierGoal goal) {

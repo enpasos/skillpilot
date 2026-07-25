@@ -12,6 +12,7 @@ public record OpenAiDeCoachContext(
         Curriculum curriculum,
         ActiveGoal activeGoal,
         List<Option> options,
+        Decision decision,
         List<Goal> frontier,
         List<Resource> resources,
         List<String> nextAllowedTools,
@@ -55,6 +56,21 @@ public record OpenAiDeCoachContext(
             List<String> goalIds,
             List<String> filterIds,
             String action) {
+    }
+
+    /**
+     * User-facing metadata for the currently open authored decision.
+     *
+     * <p>Technical stage, group, instance, landscape and filter identifiers
+     * are deliberately not part of this projection.</p>
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record Decision(
+            String stageLabel,
+            String groupLabel,
+            int minSelections,
+            int maxSelections,
+            int selectedCount) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

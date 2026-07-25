@@ -24,6 +24,8 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.data.jpa.autoconfigure.DataJpaRepositoriesAutoConfiguration;
 import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
+import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
+import org.springframework.boot.liquibase.autoconfigure.LiquibaseAutoConfiguration;
 import org.springframework.boot.security.oauth2.client.autoconfigure.OAuth2ClientAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -217,8 +219,10 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
 
     @SpringBootConfiguration
     @EnableAutoConfiguration(exclude = {
+            DataSourceAutoConfiguration.class,
             HibernateJpaAutoConfiguration.class,
             DataJpaRepositoriesAutoConfiguration.class,
+            LiquibaseAutoConfiguration.class,
             OAuth2ClientAutoConfiguration.class
     })
     @Import({

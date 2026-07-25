@@ -28,6 +28,7 @@ public class LearningLandscape {
     private Boolean compatibilityOnly;
     private Boolean legacyHiddenByDefault;
     private List<LandscapeFilter> filters;
+    private PersonalizationFlow personalizationFlow;
     private List<ProgramUnit> programUnits;
     private List<GoalPlacement> goalPlacements;
     private List<CompetencyCatalogEntry> competencyCatalog;
@@ -162,6 +163,14 @@ public class LearningLandscape {
 
     public void setFilters(List<LandscapeFilter> filters) {
         this.filters = filters;
+    }
+
+    public PersonalizationFlow getPersonalizationFlow() {
+        return personalizationFlow;
+    }
+
+    public void setPersonalizationFlow(PersonalizationFlow personalizationFlow) {
+        this.personalizationFlow = personalizationFlow;
     }
 
     public List<ProgramUnit> getProgramUnits() {

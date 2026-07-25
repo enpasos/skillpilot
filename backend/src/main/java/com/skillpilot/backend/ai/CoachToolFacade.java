@@ -4,6 +4,7 @@ import com.skillpilot.backend.api.ActiveGoalRequest;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.MasteryUpdateResponse;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
 import com.skillpilot.backend.api.ScopeRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -119,6 +120,12 @@ public class CoachToolFacade {
     public List<LandscapeSummary> getCurriculumOptions(String skillpilotId) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
         return learnerService.getAvailableBaseCurricula();
+    }
+
+    /** Metadata-driven next personalization stage for the selected curriculum. */
+    public PersonalizationPlan getPersonalizationPlan(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getPersonalizationPlan(skillpilotId);
     }
 
     /** Read-only personalized scope roots for authenticated, ID-based coach adapters. */
@@ -258,11 +265,20 @@ public class CoachToolFacade {
 
     public UnifiedLearnerStateResponse setPersonalization(String skillpilotId, PersonalizationRequest request) {
         learnerService.assertWritableLearningSession(skillpilotId);
+        if (request == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personalization request is required.");
+        }
+        if (request.config() != null && !request.config().isEmpty()) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Coach personalization accepts only current option references; raw config is not supported.");
+        }
         return learnerService.patchPersonalCurriculum(
                 skillpilotId,
                 request.config(),
                 request.goalIds(),
-                request.filters());
+                request.filters(),
+                request.optionId());
     }
 
     public RedeemedCoachSession redeemStartCode(String startCode, String language) {
