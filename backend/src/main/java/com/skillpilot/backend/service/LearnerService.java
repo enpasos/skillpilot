@@ -2184,6 +2184,9 @@ public class LearnerService {
         recordSatisfiedPersonalizationGroupCompletions(
                 CANONICAL_GYMNASIUM_ROOT_ID,
                 plan.personalCurriculumConfig());
+        CurriculumPersonalizationPlanner.markMigrationCompleted(
+                plan.personalCurriculumConfig(),
+                CANONICAL_GYMNASIUM_ROOT_ID);
         String personalCurriculumJson = writePersonalCurriculumConfig(plan.personalCurriculumConfig());
 
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);

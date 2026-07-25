@@ -171,41 +171,48 @@ public class LearnerServiceTest {
     @Transactional
     void getLearnerState_returnsStandardActions_whenCurriculumSelected() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-        learner.setSelectedCurriculum("TEST_CURRICULUM");
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
+                }
+                """));
         learnerRepository.save(learner);
 
         var state = learnerService.getLearnerState(learnerId);
         assertThat(state.nextAllowedActions()).containsExactlyInAnyOrder(
-                "setPersonalization", "setScope", "getFrontier");
+                "setScope", "getFrontier");
     }
 
     @Test
-    void patchPersonalCurriculumPreservesExistingCockpitConfigurationAndReturnsUpdatedState() throws Exception {
+    void patchPersonalCurriculumRejectsAStaleSelectionWithoutChangingCockpitConfiguration() throws Exception {
         String mathLandscapeId = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-        String biologyLandscapeId = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String physicsLandscapeId = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
-                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "GK"}
                 }
                 """);
         learnerRepository.saveAndFlush(learner);
 
-        var state = learnerService.patchPersonalCurriculum(
-                learnerId,
-                Map.of(),
-                List.of(),
-                List.of("DE-HE"));
+        assertThatThrownBy(() -> learnerService.patchPersonalCurriculum(
+                        learnerId,
+                        Map.of(),
+                        List.of(),
+                        List.of("DE-HE")))
+                .isInstanceOf(ResponseStatusException.class)
+                .hasMessageContaining("stale");
 
         Learner updated = learnerRepository.findById(learnerId).orElseThrow();
         JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
-        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
+        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("ALL");
         assertThat(config.path(mathLandscapeId).path("filterId").asText()).isEqualTo("GK");
-        assertThat(config.path(biologyLandscapeId).path("filterId").asText()).isEqualTo("ALL");
-        assertThat(state.activeFilters()).contains("DE-HE", "GK", "ALL");
+        assertThat(config.path(physicsLandscapeId).path("filterId").asText()).isEqualTo("GK");
     }
 
     @Test
@@ -229,7 +236,7 @@ public class LearnerServiceTest {
     }
 
     @Test
-    void patchPersonalCurriculumAcceptsFullCockpitConfigurationForHessen() throws Exception {
+    void patchPersonalCurriculumRejectsAStaleFilterForCompleteCockpitConfiguration() throws Exception {
         Map<String, Object> fullCockpitConfig = new LinkedHashMap<>();
         for (LearningLandscape landscape : landscapeService.getClosure(CANONICAL_GYMNASIUM_ROOT_ID)) {
             Map<String, Object> settings = new LinkedHashMap<>();
@@ -248,17 +255,16 @@ public class LearnerServiceTest {
         learner.setPersonalCurriculum(objectMapper.writeValueAsString(fullCockpitConfig));
         learnerRepository.saveAndFlush(learner);
 
-        var state = learnerService.patchPersonalCurriculum(
-                learnerId,
-                Map.of(),
-                List.of(),
-                List.of("DE-HE"));
+        assertThatThrownBy(() -> learnerService.patchPersonalCurriculum(
+                        learnerId,
+                        Map.of(),
+                        List.of(),
+                        List.of("DE-HE")))
+                .isInstanceOf(ResponseStatusException.class);
 
         Learner updated = learnerRepository.findById(learnerId).orElseThrow();
         JsonNode config = objectMapper.readTree(updated.getPersonalCurriculum());
-        assertThat(config.path(CANONICAL_GYMNASIUM_ROOT_ID).path("filterId").asText()).isEqualTo("DE-HE");
         assertThat(config.size()).isEqualTo(fullCockpitConfig.size());
-        assertThat(state.activeFilters()).contains("DE-HE");
     }
 
     @Test
@@ -289,7 +295,7 @@ public class LearnerServiceTest {
         assertThat(config.path("2796fc7b-ba9d-446f-8f26-711dd6d8a9a3").path("filterId").asText())
                 .isEqualTo("LK");
         assertThat(updated.getActiveGoalId()).isNull();
-        assertThat(state.activeFilters()).contains("DE-HE", "LK");
+        assertThat(state.activeFilters()).contains("DE-HE");
     }
 
     @Test
@@ -346,7 +352,7 @@ public class LearnerServiceTest {
         learner.setPersonalCurriculum("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
                 """);
@@ -398,13 +404,12 @@ public class LearnerServiceTest {
     void getLearnerState_offersNextCompositionYearWhenCurrentYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
-                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                 }
-                """);
+                """));
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J8_SCOPE_ID));
 
@@ -431,12 +436,12 @@ public class LearnerServiceTest {
     void getLearnerState_requiresMemoryModeChoiceForActiveFlashcardGoal() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
                   "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                 }
-                """);
+                """));
         learner.setActiveGoalId(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
@@ -470,7 +475,7 @@ public class LearnerServiceTest {
         learner.setPersonalCurriculum("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                   "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                 }
                 """);
@@ -764,13 +769,12 @@ public class LearnerServiceTest {
     void getLearnerState_doesNotOfferSeparateSekOneCapstoneAfterFinalCompositionYearScopeIsComplete() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
-        learner.setPersonalCurriculum("""
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
                 {
                   "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
-                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
-                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
                 }
-                """);
+                """));
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(COMPOSITION_J10_SCOPE_ID));
 
@@ -858,6 +862,29 @@ public class LearnerServiceTest {
                     new MasteryUpdateRequest(Map.of(nextGoal.id(), 1.0), nextGoal.id()));
         }
         throw new AssertionError("Scope did not complete within " + maxIterations + " mastery updates.");
+    }
+
+    @SuppressWarnings("unchecked")
+    private String completedPersonalizationConfig(String json) {
+        try {
+            Map<String, Object> config = objectMapper.readValue(json, Map.class);
+            Map<String, Object> flowState = new LinkedHashMap<>();
+            flowState.put(
+                    CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                    CANONICAL_GYMNASIUM_ROOT_ID);
+            flowState.put(
+                    CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                    List.of());
+            flowState.put(
+                    CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                    true);
+            config.put(
+                    CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                    flowState);
+            return objectMapper.writeValueAsString(config);
+        } catch (Exception exception) {
+            throw new AssertionError("Invalid test personalization fixture", exception);
+        }
     }
 
     private static LearningGoal goal(String id, List<String> requires, List<String> contains) {
