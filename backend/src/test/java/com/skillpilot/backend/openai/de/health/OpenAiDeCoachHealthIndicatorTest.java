@@ -56,6 +56,62 @@ class OpenAiDeCoachHealthIndicatorTest {
     }
 
     @Test
+    void reportsUpForPinnedPublicClientWithNoAssertionReplayCache() {
+        OpenAiDeProperties properties = publicSecureProperties();
+
+        var health = new OpenAiDeCoachHealthIndicator(
+                properties,
+                Optional.of(contract()),
+                true,
+                true).health();
+
+        assertThat(health.getStatus()).isEqualTo(Status.UP);
+        assertThat(health.getDetails())
+                .containsEntry("publicClientConfigured", true)
+                .containsEntry("privateKeyJwtConfigured", false)
+                .containsEntry("clientAssertionReplayCacheConfigured", false)
+                .containsEntry("secureConfigurationValid", true);
+    }
+
+    @Test
+    void reportsDownForProtocolUrlsWithQueryFragmentOrWhitespace() {
+        for (String unsafeRedirect : List.of(
+                "https://chatgpt.com/connector/oauth/callback?tenant=one",
+                "https://chatgpt.com/connector/oauth/callback#fragment",
+                " https://chatgpt.com/connector/oauth/callback")) {
+            OpenAiDeProperties properties = publicSecureProperties();
+            properties.getOauth().setRedirectUris(List.of(unsafeRedirect));
+
+            var health = new OpenAiDeCoachHealthIndicator(
+                    properties,
+                    Optional.of(contract()),
+                    true,
+                    true).health();
+
+            assertThat(health.getStatus()).as(unsafeRedirect).isEqualTo(Status.DOWN);
+            assertThat(health.getDetails())
+                    .containsEntry("redirectUrisConfigured", false)
+                    .containsEntry("secureRedirectUrisConfigured", false);
+        }
+
+        OpenAiDeProperties properties = publicSecureProperties();
+        properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp?tenant=one");
+        properties.getOauth().setProtectedResourceMetadata(
+                "https://skillpilot.test/api/openai/de/oauth/protected-resource#fragment");
+
+        var health = new OpenAiDeCoachHealthIndicator(
+                properties,
+                Optional.of(contract()),
+                true,
+                true).health();
+
+        assertThat(health.getStatus()).isEqualTo(Status.DOWN);
+        assertThat(health.getDetails())
+                .containsEntry("mcpUrlHttps", false)
+                .containsEntry("protectedResourceMetadataHttps", false);
+    }
+
+    @Test
     void reportsDownWhenProviderBoundaryRateLimitIsDisabledOrInvalid() {
         OpenAiDeProperties properties = readyProperties();
         properties.getRateLimit().setEnabled(false);
@@ -97,7 +153,7 @@ class OpenAiDeCoachHealthIndicatorTest {
     }
 
     @Test
-    void reportsDownWhenMtlsEdgeSecureModeIsDisabled() {
+    void reportsUpForTlsAndOauthWhenMtlsEdgeIsDisabled() {
         OpenAiDeProperties properties = secureProperties();
         properties.getMtlsEdge().setEnabled(false);
 
@@ -107,14 +163,14 @@ class OpenAiDeCoachHealthIndicatorTest {
                 true,
                 false).health();
 
-        assertThat(health.getStatus()).isEqualTo(Status.DOWN);
+        assertThat(health.getStatus()).isEqualTo(Status.UP);
         assertThat(health.getDetails())
                 .containsEntry("secureMode", true)
-                .containsEntry("secureConfigurationValid", false)
+                .containsEntry("secureConfigurationValid", true)
                 .containsEntry("mtlsEdgeEnabled", false)
                 .containsEntry(
                         "secureConfigurationViolations",
-                        List.of("mtls-edge.enabled"));
+                        List.of());
     }
 
     @Test
@@ -126,8 +182,10 @@ class OpenAiDeCoachHealthIndicatorTest {
         runner.withPropertyValues(
                         "skillpilot.openai.de.enabled=true",
                         "skillpilot.openai.de.security.secure-mode=true",
+                        "skillpilot.openai.de.oauth.enabled=true",
                         "skillpilot.openai.de.oauth.client-authentication-method=private_key_jwt",
                         "skillpilot.openai.de.oauth.client-id=https://chatgpt.com/oauth/skillpilot/client.json",
+                        "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
                         "skillpilot.openai.de.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
                         "skillpilot.openai.de.oauth.client-assertion-signing-algorithm=RS256",
                         "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=10000",
@@ -162,6 +220,16 @@ class OpenAiDeCoachHealthIndicatorTest {
         properties.getOauth().setClientJwkSetUri("https://chatgpt.com/oauth/jwks.json");
         properties.getOauth().setClientAssertionSigningAlgorithm("RS256");
         properties.getOauth().setClientAssertionReplayCacheSize(10_000);
+        properties.getMtlsEdge().setEnabled(true);
+        properties.getMtlsEdge().setTrustedProxies(List.of("127.0.0.1", "::1"));
+        return properties;
+    }
+
+    private static OpenAiDeProperties publicSecureProperties() {
+        OpenAiDeProperties properties = readyProperties();
+        properties.getSecurity().setSecureMode(true);
+        properties.getOauth().setClientAuthenticationMethod("none");
+        properties.getOauth().setClientAssertionReplayCacheSize(0);
         properties.getMtlsEdge().setEnabled(true);
         properties.getMtlsEdge().setTrustedProxies(List.of("127.0.0.1", "::1"));
         return properties;

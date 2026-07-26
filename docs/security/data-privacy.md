@@ -115,16 +115,17 @@ expires absolutely after at most 24 hours; use does not extend it.
 The backend keeps this provider lane separate from the Visible Session tables
 and Claude connection records.
 
-The protected `/api/openai/de/mcp` endpoint and its subpaths additionally
-require OpenAI-connector mTLS at the edge. The edge validates the OpenAI CA
-chain, the `clientAuth` extended key usage, and the exact DNS SAN
-`mtls.prod.connectors.openai.com`. The authorization server accepts only the
-configured HTTPS CIMD client identity, same-origin JWKS, and a valid
-`private_key_jwt`, together with PKCE S256 and exact redirect URI, resource,
-audience, and scopes. Open DCR and client authentication method `none` are not
-production modes. mTLS identifies OpenAI's connector infrastructure and CIMD
-identifies the accepted OAuth client contract; neither alone proves the
-learner-visible App name.
+The protected `/api/openai/de/mcp` endpoint and its subpaths use normal
+server-authenticated HTTPS and require a valid OAuth access token. The
+authorization server accepts only the configured OAuth client profile, always
+together with PKCE S256 and exact client ID, redirect URI, resource, audience,
+and scopes. The production baseline is a pre-registered public client with
+authentication method `none`; an optional stronger profile uses an HTTPS CIMD
+identity, same-origin JWKS, and `private_key_jwt`. Open DCR is not a production
+mode. Optional mTLS may later identify OpenAI's connector infrastructure
+exclusively at the MCP edge; it is not required by the current compatibility
+mode. The public-client profile does not cryptographically authenticate the
+OAuth client, and neither profile alone proves the learner-visible App name.
 
 It stores:
 
@@ -225,10 +226,12 @@ complete.
    yet applying it, creates a short-lived one-time binding grant, stores its
    hash, and sets the raw value only as a protected browser cookie.
 4. ChatGPT starts OAuth 2.1 authorization with PKCE and exact resource binding.
-   The authorization server also requires the configured HTTPS CIMD client
-   identity and verifies its `private_key_jwt` against the same-origin JWKS.
-   The protected MCP request path separately requires the validated
-   OpenAI-connector mTLS identity.
+   The authorization server also requires the exact configured client profile:
+   the pre-registered public client with `none`, or optionally the HTTPS CIMD
+   client whose `private_key_jwt` is verified against the same-origin JWKS.
+   The protected MCP request path separately requires the valid, exactly
+   resource- and scope-bound OAuth access token. Optional mTLS can later add a
+   path-scoped OpenAI-connector identity check.
    The authorization request can consume only the matching, unexpired browser
    binding and creates an opaque connection subject plus pending launch. The
    exact resource is retained with the authorization and checked again during
@@ -363,6 +366,8 @@ remain responsible for preserving access keys and identity mappings.
 
 Before a production-App cutover, the privacy notice shown in the cockpit, this
 data inventory, provider disclosures, age/guardian policy, retention
-configuration, real revocation behavior, edge mTLS validation, and exact
-CIMD/`private_key_jwt` client binding must be reviewed together against the
-deployed OpenAI App version.
+configuration, real revocation behavior, and exact OAuth-client-profile
+binding must be reviewed together against the deployed OpenAI App version. If
+the optional edge-mTLS hardening is enabled, its path scoping and fail-closed
+validation are included in that review. For the optional stronger OAuth
+profile this includes the CIMD/`private_key_jwt` validation.

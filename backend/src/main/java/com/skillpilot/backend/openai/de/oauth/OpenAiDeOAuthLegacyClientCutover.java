@@ -12,8 +12,9 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.transaction.support.TransactionOperations;
 
 /**
- * One-way, allowlist-scoped migration from former public OpenAI-DE OAuth
- * clients to the CIMD/private_key_jwt client.
+ * Optional one-way, allowlist-scoped migration from former public OpenAI-DE
+ * OAuth clients when an installation explicitly switches to a
+ * CIMD/private_key_jwt client.
  *
  * <p>The migration deliberately does not discover candidates by provider
  * naming conventions or authentication method. It touches only exact client

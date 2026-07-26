@@ -11,13 +11,16 @@ wirksam sein muss: in Server-Instruktionen, frischen zustandsabhängigen Policie
 engen Toolbeschreibungen oder Backendguards.
 
 Dieses Dokument beschreibt fachliches Verhalten, nicht die
-Transportauthentisierung. Für mTLS, die exakte CIMD-Client-ID,
-`private_key_jwt`, Callback-/Resource-/Scope-Allowlisten und die 24h-
-Lernsession sind
+Transportauthentisierung. Für den TLS/OAuth-Basisschutz, die optionale
+fail-closed mTLS-Härtung am MCP-Rand, das konfigurierte OAuth-Profil
+(vorregistrierter Public Client mit
+Token-Endpunkt-Authentisierung `none` oder optional CIMD mit
+`private_key_jwt` und Same-Origin-JWKS), exakte
+Client-ID-/Callback-/Resource-/Scope-Allowlisten und die 24h-Lernsession sind
 [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md) und
 [OAuth-, Lernenden- und 24h-Sitzungsbindung](openai-mcp-oauth-learner-session-architecture.md)
-maßgeblich. Insbesondere attestiert mTLS die OpenAI-Connector-Infrastruktur und
-nicht den sichtbaren App-Namen.
+maßgeblich. Insbesondere attestiert optionales mTLS die
+OpenAI-Connector-Infrastruktur und nicht den sichtbaren App-Namen.
 
 Normative Quellen der bisherigen Variante:
 

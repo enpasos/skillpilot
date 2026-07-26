@@ -4,11 +4,13 @@
 
 **Status:** Die deutsche data-only App ist der aktuelle deutsche Architekturpfad
 und im Spring-Boot-Fachkern integriert. Die sichere Produktionsbindung aus
-OpenAI-Connector-mTLS sowie exakter CIMD-Identität mit `private_key_jwt` ist
-implementiert; Aktivierung am Produktiv-Edge, erneute Verbindung und positive
-End-to-End-Abnahme bleiben operative Release-Gates. Visible Session ist nur
-Rollback beziehungsweise möglicher englischer Übergang. Widget und englische App
-folgen erst nach stabiler deutscher Freigabe.
+OpenAI-Connector-mTLS sowie exakt vorregistriertem OAuth-Client ist
+implementiert; als Basisprofil dient ein Public Client mit `none` und PKCE,
+optional steht CIMD mit `private_key_jwt` bereit. Aktivierung am
+Produktiv-Edge, erneute Verbindung und positive End-to-End-Abnahme bleiben
+operative Release-Gates. Visible Session ist nur Rollback beziehungsweise
+möglicher englischer Übergang. Widget und englische App folgen erst nach
+stabiler deutscher Freigabe.
 
 Der konkrete DE-first-Umsetzungs-, Cutover- und Rollbackplan steht in
 [openai-mcp-coach-migration-plan.md](openai-mcp-coach-migration-plan.md). Die
@@ -331,10 +333,11 @@ Produktiv wird die App per OAuth 2.1 gemäß MCP-Autorisierung angebunden:
 2. Der MCP-Resource-Server veröffentlicht Protected-Resource-Metadaten.
 3. Der SkillPilot-Authorization-Server veröffentlicht seine OAuth-/OIDC-
    Discovery-Daten.
-4. Als `client_id` wird ausschließlich die exakte HTTPS-CIMD-URL akzeptiert.
-   SkillPilot validiert das CIMD-Dokument, den same-origin JWKS und eine
-   `private_key_jwt`-Client-Assertion. Offene DCR und Clientauthentisierung
-   `none` sind keine Produktionsmodi.
+4. Als `client_id` wird ausschließlich der exakt vorregistrierte Client
+   akzeptiert. Das Basisprofil verwendet einen Public Client mit `none` und
+   zwingendem PKCE. Optional validiert SkillPilot eine HTTPS-CIMD-ID, den
+   same-origin JWKS und eine `private_key_jwt`-Client-Assertion. Offene DCR und
+   ein stiller Wechsel des konfigurierten Profils sind keine Produktionsmodi.
 5. Der Provider führt Authorization Code mit PKCE S256, exakter Redirect-URI,
    Resource und Scopes aus.
 6. ChatGPT verwaltet Access- und Refresh-Token und überträgt den Access Token
@@ -348,9 +351,11 @@ Produktiv wird die App per OAuth 2.1 gemäß MCP-Autorisierung angebunden:
    24h-Lernsession. Token-Refresh, Reload und Toolaufruf verlängern deren
    absolute Frist nicht.
 
-mTLS identifiziert die OpenAI-Connector-Infrastruktur; CIMD bindet den
-akzeptierten OAuth-Clientvertrag. Keiner der beiden Mechanismen attestiert für
-sich allein kryptografisch den sichtbaren Namen der App.
+mTLS identifiziert die OpenAI-Connector-Infrastruktur; die exakte
+Vorregistrierung bindet den akzeptierten OAuth-Clientvertrag. CIMD mit
+`private_key_jwt` kann diese Bindung optional kryptografisch verstärken.
+Keiner dieser Mechanismen attestiert für sich allein kryptografisch den
+sichtbaren Namen der App.
 
 Die interne permanente SkillPilot-ID wird nicht zurückgegeben. Kurzlebige
 Widgetreferenzen sind zusätzlich an Provider, OAuth-Subjekt, Appvariante, Zweck
@@ -614,13 +619,15 @@ Der deutsche Vertrag umfasst:
 Normale Kontexte werden allowlist-basiert über die gemeinsame sichere Projektion
 erzeugt. Sie enthalten keine permanente Lernenden-ID, OAuth-Tokens oder
 vorzeitige Prüfungslösung. Ein eigener OpenAI-DE-OAuth-Issuer unterstützt einen
-exakten HTTPS-CIMD-Client mit same-origin JWKS, `private_key_jwt`,
-Authorization Code mit PKCE `S256`, exakter Redirect- und Resource-Bindung,
-opaken rotierenden Tokens, Widerruf und einer
+exakt vorregistrierten Public Client mit `none`, Authorization Code mit PKCE
+`S256`, exakter Redirect- und Resource-Bindung, opaken rotierenden Tokens,
+Widerruf und einer
 serverseitigen Verbindung zum Lernenden. Die davon getrennte aktive Lernsession
 ist absolut auf 24 Stunden begrenzt und wird von jedem lernendenbezogenen Tool
-geprüft. Alle Schreibwerkzeuge besitzen zusätzlich einen unabhängigen,
-standardmäßig deaktivierten Runtime-Kill-Switch.
+geprüft. Optional kann derselbe Issuer eine HTTPS-CIMD-Client-ID mit
+same-origin JWKS und `private_key_jwt` verwenden. Alle Schreibwerkzeuge
+besitzen zusätzlich einen unabhängigen, standardmäßig deaktivierten
+Runtime-Kill-Switch.
 
 Das Cockpit verwendet für Deutsch die getrennte `openai-mcp`-Variante.
 Visible Session bleibt nur der koordinierte Custom-GPT-Rollback und mögliche
@@ -628,9 +635,10 @@ englische Übergang. Englisch wird im neuen Pfad kontrolliert abgewiesen, bis ei
 eigener Vertrag fertig und abgenommen ist.
 
 Die App läuft im ChatGPT-Entwicklermodus. Vor einer öffentlichen Freigabe bleiben
-die sichere Edge-Aktivierung, ein Reconnect auf den CIMD-Clientvertrag,
-positive und negative mTLS-/Clientbindungsprüfungen, Langdialog- und
-Kompaktierungstests sowie der Tarif-/Regionsnachweis Release-Gates. Das
+die sichere Edge-Aktivierung, ein Reconnect auf den ausgewählten
+OAuth-Clientvertrag, positive und negative mTLS-/Clientbindungsprüfungen,
+Langdialog- und Kompaktierungstests sowie der Tarif-/Regionsnachweis
+Release-Gates. Das
 Betriebsverfahren steht in
 [openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
 
@@ -696,8 +704,8 @@ Technik im Entwicklermodus funktioniert.
 - standardmäßig deaktivierter Schreib-Kill-Switch und Cockpit-Canary.
 
 **Stand:** implementiert, automatisiert getestet und im deutschen Entwicklermodus
-integriert. Externer Exit ist der sichere mTLS-/CIMD-Cutover mit erneut
-verbundener App und vollständigem deutschen End-to-End-Lauf.
+integriert. Externer Exit ist der sichere mTLS-/OAuth-Clientprofil-Cutover mit
+erneut verbundener App und vollständigem deutschen End-to-End-Lauf.
 
 ### Phase 2 – Deutsche reale Nutzerreisen
 
@@ -801,8 +809,10 @@ Kernanforderung nicht.
 
 1. OpenAI-Connector-mTLS ausschließlich am deutschen MCP-Pfad aktivieren und
    mit Positiv- und Negativtests prüfen.
-2. Den exakten HTTPS-CIMD-Client mit same-origin JWKS und `private_key_jwt`
-   produktiv aktivieren; offene DCR und `none` geschlossen halten.
+2. Den exakt vorregistrierten Public Client mit `none`, PKCE und exakten
+   Redirect-URIs produktiv aktivieren; offene DCR geschlossen halten. Falls
+   das optionale stärkere Profil gewählt wird, stattdessen HTTPS-CIMD,
+   same-origin JWKS und `private_key_jwt` aktivieren.
 3. Die App erneut verbinden und Metadata, OAuth/PKCE, exakte Redirect-,
    Resource-/Audience- und Scope-Bindung sowie Client- und Toolisolation prüfen.
 4. Read-only Canary, danach den vollständigen deutschen Schreibpilot nach dem

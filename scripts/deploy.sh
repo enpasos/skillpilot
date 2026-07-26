@@ -36,6 +36,25 @@ require_explicit_coach_variant() {
   echo "Coach-Variante für diesen Build: ${VITE_SKILLPILOT_COACH_VARIANT}"
 }
 
+require_openai_mtls_deploy_policy() {
+  if [ "${VITE_SKILLPILOT_COACH_VARIANT}" != "openai-mcp" ]; then
+    return
+  fi
+
+  case "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" in
+    true)
+      echo "OpenAI-MCP-Transport: TLS + OAuth + mTLS-Härtung"
+      ;;
+    false)
+      echo "OpenAI-MCP-Transport: TLS + OAuth (mTLS-Härtung deaktiviert)"
+      ;;
+    *)
+      echo "Abbruch: SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED muss true oder false sein." >&2
+      exit 1
+      ;;
+  esac
+}
+
 require_production_java() {
   local required_java_version
   local required_corretto_version
@@ -173,6 +192,7 @@ wait_for_public_readiness() {
 }
 
 require_explicit_coach_variant
+require_openai_mtls_deploy_policy
 require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
@@ -217,7 +237,23 @@ echo "Baue Backend..."
 cd ../backend
 chmod +x gradlew
 ./gradlew clean build -x test
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+  echo "Prüfe fokussierte OpenAI-Security-Verträge vor dem Service-Restart..."
+  ./gradlew test \
+    --tests com.skillpilot.backend.openai.de.OpenAiDeSecureModeConfigurationTest \
+    --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfigurationTest \
+    --tests com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthDiscoveryBootstrapIntegrationTest \
+    --tests com.skillpilot.backend.openai.de.oauth.OpenAiDePublicOAuthContextIntegrationTest \
+    --tests com.skillpilot.backend.openai.de.security.OpenAiDeMtlsEdgeFilterTest
+fi
 cd ..
+
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
+  && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
+  echo "Prüfe OpenAI-mTLS-Sicherheitsgrenze vor dem Service-Restart..."
+  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+    ./scripts/verify_openai_mtls_edge.sh --pre-restart
+fi
 
 echo "Starte Service neu..."
 if [ "$(id -u)" -eq 0 ]; then
@@ -228,7 +264,8 @@ fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
 
-if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ] \
+  && [ "${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:-false}" = "true" ]; then
   echo "Prüfe produktive OpenAI-mTLS-Sicherheitsgrenze..."
   SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
     ./scripts/verify_openai_mtls_edge.sh --runtime

@@ -90,10 +90,14 @@ For the OpenAI Apps, this specifically means:
   edge that validates the OpenAI connector mTLS chain, `clientAuth` EKU and the
   exact SAN `mtls.prod.connectors.openai.com`; this identifies OpenAI connector
   infrastructure, not the visible name of a particular App;
-- the authorization server accepts only the exact HTTPS CIMD client identity,
-  validates its same-origin JWKS and `private_key_jwt`, and enforces PKCE S256,
-  the exact redirect URI, resource and scopes; open DCR and client
-  authentication `none` are not production modes;
+- the authorization server accepts one explicitly configured OAuth client
+  profile: either the exact pre-registered public client with token-endpoint
+  authentication `none`, exact redirect URI and PKCE S256, or the optional
+  stronger HTTPS CIMD identity with same-origin JWKS and validated
+  `private_key_jwt`; both profiles enforce the exact registered client ID,
+  redirect URI, resource/audience and scopes, while only the
+  `private_key_jwt` profile cryptographically authenticates the OAuth client;
+  open DCR is not offered;
 - model-visible read tools resolve the learner from the authenticated OAuth
   principal, require the separate active server-side learning session, and load
   current state without a chat-visible session argument;
@@ -268,19 +272,26 @@ The German Spring Boot path now implements the data-only contract against the
 existing database-backed domain use cases. Its secure production boundary
 requires all of the following:
 
-1. OpenAI-connector mTLS at the German MCP edge only;
-2. an exact HTTPS CIMD identity with same-origin JWKS and validated
-   `private_key_jwt`, exact redirect URI, resource/audience and scopes, plus
-   Authorization Code with PKCE S256;
+1. server-authenticated TLS at the German MCP edge, with OpenAI-connector mTLS
+   retained as an optional later hardening mode on the MCP resource only;
+2. one explicitly configured OAuth client profile: either the exact
+   pre-registered public client using token-endpoint authentication `none`, the
+   exact redirect URI and Authorization Code with PKCE S256, or the optional
+   stronger exact HTTPS CIMD identity with same-origin JWKS and validated
+   `private_key_jwt`; both profiles enforce the exact resource/audience and
+   scopes, and open DCR remains disabled;
 3. resolution of the opaque provider principal internally without exposing the
    permanent SkillPilot ID;
 4. a separate server-side learning session with an absolute 24-hour lifetime,
    created or replaced only by a first-party SkillPilot launch and checked by
    every learner-specific tool.
 
-Neither mTLS nor CIMD alone cryptographically attests the user-visible App name.
-Their combination constrains the OpenAI connector path and the accepted OAuth
-client contract.
+Neither mTLS nor either OAuth client profile cryptographically attests the
+user-visible App name. The current TLS plus strict OAuth baseline constrains
+the accepted token, resource and scope contract. Optional mTLS additionally
+constrains the network caller to OpenAI connector infrastructure; optional CIMD
+with `private_key_jwt` adds a cryptographic client assertion beyond the
+public-client baseline.
 
 The production gate also includes full workflow parity for curriculum and scope
 selection, active goals, frontier, mastery, Verified Recall and exams; separate

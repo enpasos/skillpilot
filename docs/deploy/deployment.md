@@ -150,12 +150,14 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 8.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment.
-9.  **OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant. It verifies
-    the separately installed local verifier service and loopback listeners,
-    expects public MCP access without an OpenAI client certificate to fail with
-    `403`, and expects both OAuth discovery endpoints to remain public with
-    `200`. The normal deploy does not install or remove the privileged nginx
-    boundary; see
+9.  **Optional OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant
+    only when mTLS hardening is explicitly enabled. It verifies the separately
+    installed local verifier service and loopback listeners, expects public MCP
+    access without an OpenAI client certificate to fail with `403`, and expects
+    both OAuth discovery endpoints to remain public with `200`. In the normal
+    TLS/OAuth compatibility mode this gate is skipped; MCP access without an
+    OAuth token must still fail. The normal deploy does not install or remove
+    the privileged nginx boundary; see
     [openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md).
 10. **Deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML. The source-rationale smoke

@@ -2,9 +2,10 @@
 
 **Stand:** 26. Juli 2026
 
-**Status:** deutsche data-only MCP-App ist der aktuelle ChatGPT-Pfad; die
-produktive Härtung der Clientbindung mit mTLS, CIMD und `private_key_jwt` wird
-vor der allgemeinen Freigabe fail-closed ausgerollt und abgenommen
+**Status:** deutsche data-only MCP-App ist der aktuelle ChatGPT-Pfad;
+serverauthentisiertes TLS und das fail-closed geprüfte OAuth-Clientprofil bilden
+die aktuelle Betriebsbasis. OpenAI-mTLS bleibt als spätere, separat
+abzunehmende Härtungsoption erhalten.
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
 providergehostete MCP-App wiederherstellen, ohne sichtbare technische Schlüssel
 und ohne von Custom-GPT-Action-Retention abhängig zu sein.
@@ -23,18 +24,18 @@ deutsche, UI-lose OpenAI-MCP-App:
 ```text
 ChatGPT App „SkillPilot Coach (Deutsch)"
         |
-        | OpenAI-Connector-mTLS + OAuth Bearer
+        | TLS + OAuth Bearer
         v
 Nginx / https://skillpilot.com/api/openai/de/mcp
         |
-        | geprüfte interne mTLS-Header, nur über Loopback
+        | interner Proxyweg, nur über Loopback
         v
 Spring Boot
         |
         +-- isolierter OpenAI-DE-MCP-Transport und Toolvertrag
         +-- OAuth Authorization Server
-        |     +-- exakte HTTPS-CIMD-client_id
-        |     +-- private_key_jwt gegen gepinntes gleich-originiges JWKS
+        |     +-- vorregistrierter Public Client: exakte client_id + none + PKCE
+        |     +-- optional: HTTPS-CIMD + private_key_jwt + gleich-originiges JWKS
         |     +-- exakte Callback-, Resource- und Scope-Allowlist
         +-- OAuth-Subject-/Lernendenbindung und absolute 24h-Lernsession
         +-- CoachStateProjection
@@ -101,10 +102,13 @@ gegen Identität, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
 8. **Funktionsparität statt Methodenparität:** Entscheidend sind vollständige
    Lernabläufe, nicht identische alte HTTP-Operationen.
 9. **Getrennte Sicherheitsbindungen:** mTLS identifiziert die
-   OpenAI-Connector-Infrastruktur, CIMD plus `private_key_jwt` die
-   konfigurierte stabile ChatGPT-OAuth-Clientidentität, OAuth den autorisierten
-   Principal und die serverseitige 24h-Lernsession die aktuelle fachliche
-   Nutzung. Keine Schicht ersetzt eine andere.
+   OpenAI-Connector-Infrastruktur, das aktive OAuth-Profil den exakt
+   vorregistrierten Clientvertrag, OAuth den autorisierten Principal und die
+   serverseitige 24h-Lernsession die aktuelle fachliche Nutzung. Das
+   Basisprofil verwendet die öffentliche Client-ID mit `none` und PKCE, ohne
+   den Client kryptografisch zu authentisieren; optional ergänzt CIMD plus
+   `private_key_jwt` einen kryptografischen Clientnachweis. Keine Schicht
+   ersetzt eine andere.
 
 ## 4. Zieltopologie
 
@@ -147,12 +151,17 @@ Produktividentität und wird nicht zwischen ChatGPT und Spring geschaltet.
 ### 4.2 Sicherheits- und Fachgrenze
 
 Nginx und Spring bilden gemeinsam die Transport- und Sicherheitsgrenze; Spring
-bleibt die Fachgrenze. Nginx verlangt ausschließlich am MCP-Pfad ein gültiges
-OpenAI-Clientzertifikat und prüft CA-Kette, `clientAuth`, Gültigkeit und den
-exakten SAN `mtls.prod.connectors.openai.com`. Spring akzeptiert die daraus
+bleibt die Fachgrenze. Die aktuelle Betriebsbasis verwendet
+serverauthentisiertes TLS bis Nginx und verpflichtet Spring bei jedem
+MCP-Aufruf zur vollständigen OAuth-Prüfung. Discovery, Authorization, Token und
+Browser-Binding bleiben normal browserfähig.
+
+OpenAI-mTLS ist eine spätere optionale Härtung. Wird sie aktiviert, prüft Nginx
+am MCP-Ressourcenpfad Clientzertifikat, CA-Kette, `clientAuth`, Gültigkeit und
+den exakten SAN `mtls.prod.connectors.openai.com`; Spring akzeptiert die daraus
 abgeleiteten internen Header nur vom explizit konfigurierten numerischen
-Trusted Proxy. Discovery, Authorization, Token und Browser-Binding bleiben
-ohne Clientzertifikat erreichbar.
+Trusted Proxy. Für eine dauerhaft saubere Trennung vom Web-Cockpit ist dafür
+ein eigener MCP-Hostname beziehungsweise TLS-vHost vorzuziehen.
 
 Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
 `CoachStateProjection`. Er:
@@ -166,19 +175,23 @@ Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
   Schülerantworten.
 
 Der MCP-Endpunkt ist ausschließlich über den dafür vorgesehenen stabilen HTTPS-
-Origin und den mTLS-geschützten Proxy erreichbar. Der Spring-Port ist auf
+Origin und den OAuth-geschützten Proxy erreichbar. Der Spring-Port ist auf
 Loopback gebunden und darf nicht öffentlich exponiert werden. Andere
 Backendendpunkte und interne Identitäten werden dadurch nicht freigegeben.
 Falls später aus echten Betriebsgründen eine Prozesstrennung erforderlich wird,
 kann sie hinter unveränderter öffentlicher URL erfolgen.
 
 mTLS attestiert die OpenAI-Connector-Infrastruktur, nicht den sichtbaren
-App-Namen. Die zusätzliche app-spezifische Eingrenzung geschieht am
-Authorization Server über die exakt konfigurierte HTTPS-CIMD-Client-ID,
-`private_key_jwt`, das gleich-originige JWKS sowie exakte Callback-, Resource-
-und Scope-Allowlisten. Ohne eine ausdrückliche Provider-Garantie ist auch dies
-keine kryptografische Attestation des Anzeigenamens gegenüber jeder anderen App
-derselben Provider-Infrastruktur. Die verbindliche Detailarchitektur steht in
+App-Namen. Die zusätzliche Eingrenzung geschieht am Authorization Server über
+die exakt vorregistrierte Client-ID sowie exakte Callback-, Resource- und
+Scope-Allowlisten. Im Basisprofil wird der Public-Client-Code-Flow mit `none`
+und PKCE verwendet. Die öffentliche Client-ID ist dabei kein kryptografischer
+Clientnachweis; PKCE schützt die Code-Einlösung. Optional ergänzt CIMD mit
+`private_key_jwt` und gleich-originigem JWKS einen kryptografischen
+Clientnachweis. Ohne eine ausdrückliche Provider-Garantie ist auch das stärkere
+Profil keine kryptografische Attestation des Anzeigenamens gegenüber jeder
+anderen App derselben Provider-Infrastruktur. Die verbindliche
+Detailarchitektur steht in
 [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md).
 
 ### 4.3 Stabile öffentliche URLs
@@ -494,13 +507,16 @@ Scopes, Verbindungen, Binding Grants, Tests und Widerrufslogik.
 ### 7.1 Verbindungsablauf
 
 1. Der App-Autor konfiguriert für die produktive Verbindung die exakte
-   HTTPS-CIMD-Client-ID, deren gleich-originige JWKS-URL, den asymmetrischen
-   Signaturalgorithmus und die in ChatGPT angezeigten exakten Callback-URIs.
-   SkillPilot veröffentlicht keinen offenen DCR-Endpunkt und akzeptiert im
-   sicheren Betrieb weder `none` noch einen frei wählbaren Client.
-2. Vor dem sicheren Vollbetrieb verlangt der Edge ausschließlich für
-   `/api/openai/de/mcp` ein gültiges OpenAI-Clientzertifikat. Browserfähige
-   OAuth- und Discovery-Endpunkte bleiben davon ausgenommen.
+   vorregistrierte Client-ID und die in ChatGPT angezeigten exakten
+   Callback-URIs. Das Basisprofil verwendet `none` mit PKCE `S256`. Optional
+   werden stattdessen die exakte HTTPS-CIMD-Client-ID, deren gleich-originige
+   JWKS-URL und ein asymmetrischer Signaturalgorithmus für `private_key_jwt`
+   konfiguriert. SkillPilot veröffentlicht keinen offenen DCR-Endpunkt und
+   akzeptiert keinen frei wählbaren Client oder stillen Profil-Fallback.
+2. Die aktuelle Betriebsbasis verwendet TLS und OAuth. Wird OpenAI-mTLS später
+   als Härtung aktiviert, gilt die Clientzertifikatsprüfung ausschließlich für
+   die MCP-Ressource; browserfähige OAuth- und Discovery-Endpunkte bleiben
+   davon ausgenommen.
 3. Der Nutzer wählt im SkillPilot-Cockpit „Mit ChatGPT verbinden“. Vor jedem
    Backendstart muss der Browser ausdrücklich bestätigen, dass die für das
    OpenAI-Konto geltende Mindestalterregel erfüllt ist und bei unter
@@ -521,11 +537,12 @@ Scopes, Verbindungen, Binding Grants, Tests und Widerrufslogik.
    autorisierte Verbindung und einen Pending Launch an; der Lernstand bleibt
    weiterhin unverändert.
 8. Authorization Code mit PKCE `S256` verbindet das OpenAI-App-Subjekt mit dem
-   Lernenden. Beim Token-Austausch authentisiert sich der konfigurierte
-   ChatGPT-OAuth-Client zusätzlich mit einer signierten
-   `private_key_jwt`-Assertion. SkillPilot prüft Signatur, `kid`, Algorithmus,
-   `iss`, `sub`, Audience, Ablauf und einmaliges `jti` gegen das konfigurierte
-   JWKS. Erst bei erfolgreicher Ausgabe des ersten Access Tokens wendet
+   Lernenden. Im Basisprofil tauscht der vorregistrierte Public Client den Code
+   ohne Client-Secret mit Authentisierungsmethode `none` aus. Im optionalen
+   stärkeren Profil authentisiert er sich zusätzlich mit einer signierten
+   `private_key_jwt`-Assertion; SkillPilot prüft dann Signatur, `kid`,
+   Algorithmus, `iss`, `sub`, Audience, Ablauf und einmaliges `jti` gegen das
+   konfigurierte JWKS. Erst bei erfolgreicher Ausgabe des ersten Access Tokens wendet
    SkillPilot den Pending Launch unter Learner- und Datensatz-Lock an.
    Tokenpersistenz, Intent-Anwendung und Autorisierungsmarkierung committen oder
    rollen gemeinsam zurück.
@@ -567,11 +584,11 @@ verständliche SkillPilot-Verbindungsseite, nicht auf einen technischen Fehler.
 | Audience/Resource | exakt `https://skillpilot.com/api/openai/de/mcp` |
 | Scopes | getrenntes OpenAI-DE-Read und -Write |
 | PKCE | ausschließlich `S256` |
-| OAuth-Client | exakte HTTPS-CIMD-Client-ID; kein offenes DCR |
-| Token-Endpunkt-Clientauthentisierung | ausschließlich `private_key_jwt` |
-| Client-JWKS | exakt konfigurierte HTTPS-URL derselben Origin wie die CIMD-Client-ID |
+| OAuth-Client | exakte vorregistrierte Client-ID; kein offenes DCR |
+| Token-Endpunkt-Clientauthentisierung | Basisprofil `none` mit PKCE; optional `private_key_jwt` |
+| Client-JWKS | nur im optionalen CIMD-Profil: exakt konfigurierte HTTPS-URL derselben Origin wie die CIMD-Client-ID |
 | Redirect-URI | exakte produktive Allowlist |
-| MCP-Netzwerkclient | OpenAI-Connector-mTLS mit CA-Kette, `clientAuth` und exaktem SAN |
+| MCP-Netzwerkclient | TLS und OAuth; optional später OpenAI-mTLS mit CA-Kette, `clientAuth` und exaktem SAN |
 
 Der `resource`-Wert wird bei Authorization- und Token-Request exakt und ohne
 Trimmen oder Slash-Normalisierung verglichen. Spring speichert ihn im
@@ -588,8 +605,9 @@ zur technischen Fehlerkorrelation verwendet werden.
 Der MCP-Host veröffentlicht Protected-Resource-Metadaten. Spring liefert
 ungültige oder fehlende Autorisierung als standardkonforme
 `WWW-Authenticate`-Challenge einschließlich `_meta["mcp/www_authenticate"]`
-zurück. Ein öffentlicher MCP-Aufruf ohne gültiges OpenAI-Clientzertifikat
-erreicht diese Tokenprüfung nicht und wird bereits am Edge mit `403`
+zurück. Im TLS/OAuth-Basismodus erreicht ein Aufruf ohne Bearer Token diese
+Prüfung und erhält `401`. Nur bei später aktivierter mTLS-Härtung wird ein
+Aufruf ohne gültiges OpenAI-Clientzertifikat bereits am Edge mit `403`
 abgewiesen.
 
 ## 8. Vollständige Workflow-Parität
@@ -662,9 +680,9 @@ ausgerollt. Die fachliche Acceptance wird weiter vervollständigt.
   herauslösen, ohne Claude und OpenAI datenbankseitig zu vermischen;
 - OpenAI-DE-Verbindung, Binding Grant, Scopes, Token und Widerruf implementieren;
 - Resource/Audience-, PKCE-, Replay-, Cross-Learner- und Expiry-Tests ergänzen;
-- mTLS ausschließlich am MCP-Rand, HTTPS-CIMD-Client-ID,
-  `private_key_jwt`, gleich-originiges JWKS und exakte Redirect-Allowlist
-  fail-closed ergänzen;
+- mTLS ausschließlich am MCP-Rand, das Basisprofil aus vorregistrierter
+  Client-ID, `none`, PKCE und exakter Redirect-Allowlist sowie optional das
+  stärkere CIMD-/`private_key_jwt`-Profil fail-closed ergänzen;
 - Cockpit-Aktion „Mit ChatGPT verbinden“ hinter Feature Flag bereitstellen.
 
 **Exit:** Zwei Testlernende sind strikt getrennt; kein fachlicher Toolaufruf ist
@@ -672,16 +690,17 @@ ohne gültige, passende Verbindung möglich.
 
 **Implementierungsstand:** OAuth-/Binding-Code, additive Persistenzmigration,
 PKCE-, Resource-, Refresh-, Revocation- und Isolationstests sind implementiert.
-Der bisherige öffentliche `none`-Client ist nur noch ein zu entfernender
-Legacyzustand. Der sichere Produktivvertrag verlangt die exakte von ChatGPT
-veröffentlichte HTTPS-CIMD-Client-ID, `private_key_jwt`, das exakt konfigurierte
-gleich-originige JWKS, exakte Callback-URIs sowie das mTLS-Gate am MCP-Rand. Ein
+Der sichere Produktivvertrag unterstützt den exakt vorregistrierten Public
+Client mit `none`, PKCE und exakten Callback-URIs als Basisprofil. Optional
+kann eine von ChatGPT veröffentlichte HTTPS-CIMD-Client-ID mit
+`private_key_jwt` und exakt konfiguriertem gleich-originigem JWKS gewählt
+werden. Beide Profile verlangen das mTLS-Gate am MCP-Rand. Ein
 strikt datenloser Discovery-Bootstrap bleibt nur für die zirkuläre
 Erstkonfiguration verfügbar: Er stellt keine Tools, Token-Endpunkte,
 Lernerdaten oder Coach-Readiness bereit und wird vor dem Vollbetrieb
-deaktiviert. Der einmalige Legacy-Cutover widerruft nur ausdrücklich
-allowlistete Altclients und deren Tokens, Consents, Verbindungen,
-Lernsessions und Pending Launches.
+deaktiviert. Ein einmaliger Clientwechsel widerruft nur ausdrücklich
+allowlistete Altclients und deren Tokens, Consents, Verbindungen, Lernsessions
+und Pending Launches; das Basisprofil ist selbst kein Legacyzustand.
 
 ### Etappe 3 – Normaler Lernworkflow
 
@@ -750,7 +769,7 @@ sofort aktivierbarer Rückfallpfad.
 Frontendpfad. `visible-session` bleibt als isolierter Rollback erhalten und ist
 keine produktive Referenzarchitektur mehr. Die allgemeine Freigabe des
 MCP-Pfads setzt zusätzlich den vollständig abgenommenen sicheren
-mTLS-/CIMD-/`private_key_jwt`-Cutover voraus.
+mTLS- und OAuth-Clientprofil-Cutover voraus.
 
 ### Etappe 7 – Optionale UI
 
@@ -842,26 +861,27 @@ Dialogs nicht blockieren.
 
 ## 12. Nächster ausführbarer Schnitt
 
-Der deutsche MCP-Pfad ist funktional ausgerollt. Der nächste kontrollierte
-Schnitt ist der produktive Sicherheits-Cutover, ohne Änderung der
-Lernziel-, Mastery-, Curriculum- oder Coach-Semantik:
+Der deutsche MCP-Pfad wird zunächst auf der TLS/OAuth-Betriebsbasis funktional
+stabilisiert. Der nächste kontrollierte Schnitt ändert keine Lernziel-,
+Mastery-, Curriculum- oder Coach-Semantik:
 
 1. Datenbank und aktive Nginx-Konfiguration sichern;
-2. exakte HTTPS-CIMD-Client-ID, gleich-originige JWKS-URL, produktive
-   Callback-URI und die ausdrücklich zu entfernenden Legacy-Client-IDs
-   festhalten;
-3. die gepinnte OpenAI-mTLS-CA, den lokalen Zertifikatsprüfer und das
-   ausschließlich am MCP-Pfad wirksame Nginx-Gate einmalig privilegiert
-   installieren;
-4. Secure-Mode-Werte für mTLS, `private_key_jwt`, CIMD/JWKS, Callback,
-   Resource, Scopes und einmalige Legacy-Allowlist setzen;
-5. Bootstrap deaktivieren, Backend auf Loopback binden, normal deployen und
+2. ausgewähltes OAuth-Profil, exakte vorregistrierte Client-ID, produktive
+   Callback-URI und die bei einem tatsächlichen Clientwechsel ausdrücklich zu
+   entfernenden Altclient-IDs festhalten; für das optionale stärkere Profil
+   zusätzlich CIMD- und gleich-originige JWKS-URL dokumentieren;
+3. Secure-Mode-Werte für das ausgewählte Clientverfahren, Client-ID, Callback,
+   Resource und Scopes setzen; beim optionalen stärkeren Profil
+   zusätzlich CIMD/JWKS und `private_key_jwt`, bei einem Clientwechsel
+   einmalig die Altclient-Allowlist;
+4. Bootstrap deaktivieren, Backend auf Loopback binden, normal deployen und
    die fail-closed Runtime-Gates ausführen;
-6. die App einmal neu verbinden; OAuth/PKCE, Token-Austausch,
+5. die App einmal neu verbinden; OAuth/PKCE, Token-Austausch,
    Kontext-Rehydration und Read-/Write-Scope über die echte ChatGPT-App
    abnehmen;
-7. die Legacy-Allowlist nach erfolgreichem Cutover aus dem Environment
-   entfernen und die vollständige Workflow-Paritätsmatrix weiterführen.
+6. eine verwendete Altclient-Allowlist nach erfolgreichem Cutover aus dem
+   Environment entfernen und die vollständige Workflow-Paritätsmatrix
+   weiterführen.
 
 Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
 [openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
@@ -870,7 +890,7 @@ Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
 
 - [OpenAI: Plugin authentication und OAuth-Metadaten](https://developers.openai.com/plugins/build/auth)
 - [OpenAI: Client identification](https://developers.openai.com/plugins/build/auth#client-identification)
-- [OpenAI: Client registration mit CIMD und `private_key_jwt`](https://developers.openai.com/plugins/build/auth#client-registration)
+- [OpenAI: Client registration und Authentisierung](https://developers.openai.com/plugins/build/auth#client-registration)
 - [OpenAI: Mutual TLS](https://developers.openai.com/plugins/build/auth#mutual-tls-mtls)
 - [OpenAI: Resource-/Audience-Bindung](https://developers.openai.com/plugins/build/auth#echo-the-resource-parameter-throughout-the-oauth-flow)
 - [Data-only Apps ohne eigene UI](https://learn.chatgpt.com/docs/build-app#app-building-model)
