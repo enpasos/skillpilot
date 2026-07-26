@@ -112,13 +112,14 @@ public class OpenAiDeProperties {
     }
 
     /**
-     * Fail-closed production profile for the OpenAI-DE provider boundary.
+     * Fail-closed OAuth and provider baseline for the OpenAI-DE boundary.
      *
      * <p>Every normally activated provider instance must satisfy all secure-mode
-     * invariants before the application starts. Isolated component tests must
-     * load their components without activating the normal provider
-     * configuration; setting this property to {@code false} is not a runtime
-     * escape hatch.</p>
+     * invariants before the application starts. Optional transport-client
+     * hardening such as the mTLS edge is validated fail-closed when enabled,
+     * but is not part of this baseline. Isolated component tests must load
+     * their components without activating the normal provider configuration;
+     * setting this property to {@code false} is not a runtime escape hatch.</p>
      */
     public static class Security {
 
@@ -133,7 +134,14 @@ public class OpenAiDeProperties {
         }
     }
 
-    /** Configuration of the trusted reverse-proxy boundary for OpenAI mTLS. */
+    /**
+     * Optional trusted reverse-proxy boundary for OpenAI mTLS.
+     *
+     * <p>When enabled, the MCP resource is available only through a proxy peer
+     * from the exact trusted-proxy list and only with verified OpenAI client
+     * certificate headers. When disabled, normal server-authenticated TLS and
+     * the mandatory OAuth resource-server checks remain active.</p>
+     */
     public static class MtlsEdge {
 
         private boolean enabled;
@@ -235,10 +243,10 @@ public class OpenAiDeProperties {
     public static class OAuth {
 
         private boolean enabled;
-        // In the production private_key_jwt mode this is the exact HTTPS CIMD
-        // metadata-document URL supplied by ChatGPT. The legacy "none" binding
-        // remains only for isolated component tests that do not activate the
-        // normal OpenAI-DE provider.
+        // With a pre-registered public client this is the exact opaque client ID
+        // entered in ChatGPT app management. In the optional private_key_jwt
+        // profile it is the exact HTTPS CIMD metadata-document URL supplied by
+        // ChatGPT.
         private String clientId = "";
         private List<String> redirectUris = new ArrayList<>();
         private String clientAuthenticationMethod = "none";
@@ -308,12 +316,12 @@ public class OpenAiDeProperties {
         }
 
         /**
-         * Exact former OpenAI-DE OAuth client IDs that may be removed during
-         * the one-way switch to CIMD/private_key_jwt.
+         * Exact former OpenAI-DE public-client IDs that may be removed during
+         * an explicit switch to a different configured client.
          *
          * <p>The list is deliberately empty by default. A configured entry is
-         * eligible for removal only when the persisted client still uses the
-         * legacy public-client authentication method {@code none}.</p>
+         * eligible for removal only when the persisted client uses the public
+         * client authentication method {@code none}.</p>
          */
         public List<String> getLegacyClientIds() {
             return legacyClientIds;

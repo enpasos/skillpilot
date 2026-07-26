@@ -3,9 +3,10 @@
 **Stand:** 26. Juli 2026
 
 **Status:** Der deutsche MCP-Coach ist der aktuelle ChatGPT-Produktpfad. Die
-verschärfte Clientbindung wird erst nach erfolgreichem
-mTLS-/CIMD-/`private_key_jwt`-Cutover und erneutem Workflow-Acceptance-Test
-allgemein freigegeben.
+Clientbindung wird nach vollständiger Prüfung des ausgewählten
+OAuth-Clientprofils und erneutem Workflow-Acceptance-Test allgemein
+freigegeben. OpenAI-mTLS ist eine optionale spätere Härtung und keine
+Voraussetzung für den produktiven Kompatibilitätsmodus.
 
 Dieses Runbook aktiviert den deutschen, zunächst UI-losen MCP-Lerncoach. Der
 MCP-Server, OAuth-Authorization-Server und die SkillPilot-Fachlogik laufen im
@@ -40,16 +41,21 @@ Entwicklungstunnel.
 
 ## 2. Discovery-Bootstrap und OAuth-Werte
 
-Der Produktivvertrag verwendet Authorization Code, PKCE `S256`, eine feste
-HTTPS-CIMD-Client-ID und `private_key_jwt`. SkillPilot akzeptiert damit nicht
-nur ein gültiges Benutzer-Token, sondern verlangt beim Token- und
-Revocation-Endpunkt zusätzlich den kryptografischen Nachweis der exakt
-konfigurierten stabilen ChatGPT-OAuth-Clientidentität. Dies ist ohne eine
-ausdrückliche Provider-Garantie keine eindeutige Attestation des sichtbaren
-App-Namens gegenüber jeder anderen App derselben Infrastruktur. SkillPilot
-unterstützt für diesen Vertrag
-absichtlich weder offene Dynamic Client Registration noch eine erfundene
-allgemeine Callback-URL.
+Der Produktivvertrag verwendet Authorization Code mit PKCE `S256`, eine exakt
+vorregistrierte Client-ID, eine exakte Callback-Allowlist sowie die feste
+MCP-Resource und feste Scopes. Das produktive Basisprofil ist ein Public
+Client mit `token_endpoint_auth_method=none`; es verwendet bewusst kein
+Client-Secret. Optional kann ein Deployment eine feste HTTPS-CIMD-Client-ID
+mit gleich-originiger JWKS und `private_key_jwt` als stärkeres Profil
+auswählen. Beide Profile setzen normales serverauthentisiertes HTTPS und die
+vollständige OAuth-Prüfung voraus. Optionales OpenAI-mTLS kann später
+ausschließlich den MCP-Rand zusätzlich härten. SkillPilot veröffentlicht
+absichtlich keine offene Dynamic Client Registration und akzeptiert keine
+erfundene allgemeine Callback-URL.
+Die öffentliche Client-ID des Basisprofils ist dabei kein Geheimnis und kein
+kryptografischer Clientnachweis. Die Registrierung begrenzt Client-ID und
+Callback; PKCE schützt die Einlösung des Authorization Codes. Erst das
+optionale `private_key_jwt` authentisiert den OAuth-Client kryptografisch.
 
 Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
 Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
@@ -63,16 +69,19 @@ expliziter, datenloser Bootstrapmodus:
    Token-Endpunkte, Lernerdienste oder einen Coach-Health-Contributor.
 3. In der ChatGPT-App-Verwaltung `Server URL`, die produktive MCP-URL und
    `OAuth` wählen.
-4. Die von ChatGPT in der Verwaltung für diese Verbindung angezeigte
-   HTTPS-CIMD-Metadaten-URL und deren öffentliche JWKS-URL unverändert
-   übernehmen. Keine URL raten oder aus dem sichtbaren App-Namen ableiten.
+4. Die für diese Verbindung angezeigte beziehungsweise bereitgestellte
+   Client-ID unverändert übernehmen. Für das Basisprofil ist dies die feste
+   Public-Client-ID. Nur wenn das optionale stärkere Profil ausdrücklich
+   gewählt wird, zusätzlich die HTTPS-CIMD- und gleich-originige JWKS-URL
+   unverändert übernehmen. Keine Werte raten oder aus dem sichtbaren App-Namen
+   ableiten.
 5. Die dort angezeigte app-spezifische Produktions-Callback-URL der Form
    `https://chatgpt.com/connector/oauth/{callback_id}` unverändert übernehmen.
 6. Mehrere echte Callback-URLs als kommaseparierte Liste konfigurieren. Keine
    Beispiel- oder Legacy-URL ergänzen, die nicht in der App-Verwaltung steht.
-7. Bootstrap ausschalten und Vollbetrieb mit CIMD-Client-ID, JWKS-URL,
-   `private_key_jwt`, Callback, OAuth und MCP atomar aktivieren. Der erste
-   Vollbetrieb bleibt read-only.
+7. Bootstrap ausschalten und Vollbetrieb mit dem ausgewählten Clientprofil,
+   Callback, OAuth und MCP atomar aktivieren. Der erste Vollbetrieb
+   bleibt read-only.
 
 Der Bootstrap-MCP-Endpunkt weist **jede** Methode und auch beliebige Bearer-
 Werte mit `401` plus `WWW-Authenticate` ab. Authorization-, Token-, Revocation-
@@ -92,12 +101,13 @@ nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.
 
 Für den sicheren Cutover werden Code und additive Liquibase-Migration zunächst
 mit deaktivierter Schreibfunktion bereitgestellt. Danach folgt ein read-only
-Canary. Vor dem ersten sicheren Vollbetrieb muss die privilegierte, einmalige
-mTLS-Edge-Installation nach
-[openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md) abgeschlossen sein. Das
-normale `./deploy_skillpilot.sh` installiert weder CA-Dateien noch
-Nginx-Konfiguration, prüft die aktive Schutzschicht aber bei jedem
-`openai-mcp`-Deployment und bricht bei einer Lücke ab.
+Canary. Der produktive Kompatibilitätsmodus verwendet normales
+serverauthentisiertes HTTPS am Reverse Proxy und verpflichtendes OAuth/PKCE mit
+exakter Resource-/Audience- und Scope-Prüfung. Die optionale, privilegierte
+mTLS-Edge-Installation ist getrennt in
+[openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md) beschrieben. Das normale
+`./deploy_skillpilot.sh` prüft die mTLS-Laufzeitgrenze nur, wenn diese Härtung
+ausdrücklich aktiviert ist.
 
 ```text
 SERVER_ADDRESS=127.0.0.1
@@ -110,21 +120,29 @@ SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
 SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=true
 SKILLPILOT_OPENAI_DE_MCP_ENABLED=true
 SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
-SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
-SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
+SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=false
+
+# Erst nach separater, optionaler mTLS-Edge-Installation:
+# SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=true
+# SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES=127.0.0.1,::1
 
 SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp
 SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oauth/protected-resource
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=private_key_jwt
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-https-cimd-metadaten-url-dieser-app>
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI=<exakte-https-jwks-url-derselben-cimd-origin>
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM=RS256
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE=10000
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=none
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-vorregistrierte-public-client-id>
 SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
-# Nur einmalig beim Cutover; danach wieder entfernen:
-SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
+
+# Optionales alternatives Profil statt der drei Public-Client-Zeilen:
+# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=private_key_jwt
+# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-https-cimd-metadaten-url-dieser-app>
+# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI=<exakte-https-jwks-url-derselben-cimd-origin>
+# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM=RS256
+# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE=10000
+
+# Nur bei einem tatsächlichen Client-ID-Wechsel, einmalig und danach entfernen:
+# SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
 
 SKILLPILOT_OPENAI_DE_SECURE_COOKIE=true
 SKILLPILOT_OPENAI_DE_BINDING_TTL=PT5M
@@ -152,33 +170,39 @@ auslösen. Erst nach bestandenem read-only Canary wird der Schalter bewusst auf
 
 Der normale aktivierte Provider startet ausschließlich im sicheren
 Clientmodus; es gibt keinen produktiven `secure-mode=false`-Schalter. Der
-sichere Clientmodus prüft zusätzlich:
+sichere Clientmodus prüft profilübergreifend die exakte Client-ID,
+Redirect-Allowlist, Resource, Scopes und PKCE `S256`. Offene DCR und ein
+stiller Profil-Fallback bleiben unzulässig. Nur bei ausdrücklich aktivierter
+mTLS-Härtung werden zusätzlich numerisch konfigurierte Trusted Proxies und die
+fail-closed Edge-Bestätigung verlangt.
 
-- `client_id` ist eine absolute HTTPS-URL zu einem Metadatendokument;
+Im Basisprofil ist `none` das erwartete Authentisierungsverfahren eines
+vorregistrierten Public Clients. Ein Client-Secret, eine JWKS-URL oder eine
+Client Assertion gehören nicht in dieses Profil.
+
+Nur im optionalen `private_key_jwt`-Profil prüft SkillPilot zusätzlich:
+
+- `client_id` ist eine absolute HTTPS-CIMD-URL;
 - die JWKS-URL ist HTTPS und hat exakt dieselbe Origin wie die CIMD-URL;
 - Client Assertions sind mit dem konfigurierten asymmetrischen Algorithmus
   signiert und enthalten `kid`, `jti` und `exp`;
 - `iss` und `sub` entsprechen der registrierten CIMD-Client-ID, die Audience
   passt zum SkillPilot-Authorization-Server, und jedes `jti` wird nur einmal
-  akzeptiert;
-- Redirect-URIs stimmen exakt mit der produktiven Allowlist überein.
+  akzeptiert.
 
-Vor Cutover und Clientregistrierung ruft der Start das CIMD-Dokument per HTTPS
-ohne Redirects mit kurzen Timeouts und harter Größenbegrenzung ab. Erwartet
-werden 2xx, JSON-Content-Type und ein JSON-Objekt mit exakter `client_id`,
+Für dieses optionale Profil ruft der Start das CIMD-Dokument per HTTPS ohne
+Redirects mit kurzen Timeouts und harter Größenbegrenzung ab. Erwartet werden
+2xx, JSON-Content-Type und ein JSON-Objekt mit exakter `client_id`,
 nichtleerem `client_name`, allen konfigurierten Redirect-URIs, der exakt
 gepinnten gleich-originigen `jwks_uri` und `private_key_jwt`. Netzwerkfehler,
-abweichende Metadaten und jeder DCR-/`none`-Fallback brechen den Start ab.
+abweichende Metadaten oder ein Fallback auf `none` brechen dieses Profil ab.
 
-`none` ist im sicheren Vollbetrieb unzulässig. Für den einmaligen Cutover wird
-keine offene Suche nach beliebigen Public Clients durchgeführt. Stattdessen
-werden ausschließlich die in
-`SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS` exakt genannten alten
-Client-IDs akzeptiert. SkillPilot prüft, dass jeder gefundene Altclient
-tatsächlich nur `none` verwendet, und entfernt in einer Transaktion dessen
-Authorizations, Consents, Verbindungen, Pending Launches und Lernsessions.
-Anschließend muss ausschließlich der konfigurierte CIMD-Client mit
-`private_key_jwt` lesbar sein; andernfalls bricht der Start ab.
+Die Legacy-Client-Allowlist ist nicht Bestandteil des Basisprofils. Sie wird
+nur bei einem tatsächlichen Client-ID-Wechsel verwendet. SkillPilot entfernt
+dann ausschließlich für die exakt genannten Altclients deren Authorizations,
+Consents, registrierte Clientzeilen, Verbindungen, Pending Launches und
+Lernsessions. Anschließend muss nur der neu konfigurierte Client lesbar sein;
+andernfalls bricht der Start ab.
 
 Vor diesem Cutover ist ein Datenbank-Backup Pflicht. Die Einstellung ist
 idempotent für bereits entfernte IDs, soll aber nach dem erfolgreichen
@@ -277,9 +301,10 @@ setzt Readiness nicht auf `DOWN`.
 
 Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
 `mcpEnabled`, `oauthEnabled`, `writesEnabled`, `secureMode`,
-`mtlsEdgeEnabled`, `privateKeyJwtConfigured`, `clientIdConfigured`,
-`redirectUrisConfigured`, `contractToolCount`, `contractHash`,
-`rateLimitEnabled` und `rateLimitConfigured`. Der
+`mtlsEdgeEnabled`, `clientAuthenticationMethod`, `publicClientConfigured`,
+`privateKeyJwtConfigured`, `clientIdConfigured`, `redirectUrisConfigured`,
+`contractToolCount`, `contractHash`, `rateLimitEnabled` und
+`rateLimitConfigured`. Der
 `contractHash` ist ein deterministischer SHA-256-Hash über Serverinstruktionen
 und öffentliche Tooldeskriptoren. Client-ID, Callback-URLs, MCP-URL, Tokens,
 SkillPilot-IDs und Lerninhalte werden nicht ausgegeben. Health-Details dürfen
@@ -334,10 +359,11 @@ Anwendungslogs erscheinen.
 
 3. Verbindung: `Server URL`.
 4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
-5. OAuth mit der in Abschnitt 2 übernommenen CIMD-Client-ID und Callback-URL
-   konfigurieren. Der SkillPilot-Metadatenvertrag kündigt ausschließlich
-   `private_key_jwt` an; es gibt weder ein manuell geteiltes Client-Secret noch
-   einen offenen DCR-Endpunkt.
+5. OAuth mit der in Abschnitt 2 übernommenen Client-ID und Callback-URL
+   konfigurieren. Der SkillPilot-Metadatenvertrag kündigt ausschließlich das
+   serverseitig ausgewählte Profil an: im Basisprofil `none`, im optionalen
+   stärkeren Profil `private_key_jwt`. Es gibt weder ein manuell geteiltes
+   Client-Secret noch einen offenen DCR-Endpunkt.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
@@ -418,6 +444,7 @@ Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
 ```bash
 BASE=https://skillpilot.com
 MANAGEMENT_BASE=http://127.0.0.1:8080
+AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-none}"
 
 curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
   | jq -e '.status == "UP"'
@@ -434,13 +461,11 @@ curl -fsS "$BASE/.well-known/oauth-protected-resource/api/openai/de/mcp" \
        and (.scopes_supported | index("skillpilot.openai.de.write"))'
 
 curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
-  | jq -e --arg issuer "$BASE/api/openai/de" \
+  | jq -e --arg issuer "$BASE/api/openai/de" --arg auth "$AUTH_METHOD" \
       '.issuer == $issuer
        and (.code_challenge_methods_supported | index("S256"))
-       and (.token_endpoint_auth_methods_supported == ["private_key_jwt"])
-       and (.token_endpoint_auth_signing_alg_values_supported | index("RS256"))
-       and (.registration_endpoint | not)
-       and (.client_id_metadata_document_supported == true)'
+       and (.token_endpoint_auth_methods_supported == [$auth])
+       and (.registration_endpoint | not)'
 
 curl -sS -o /dev/null -D - \
   -X POST "$BASE/api/openai/de/mcp" \
@@ -450,18 +475,26 @@ curl -sS -o /dev/null -D - \
   | sed -n '/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'
 ```
 
-Erwartung beim letzten Aufruf: `403`. Der Request besitzt kein
-OpenAI-Clientzertifikat und wird deshalb bereits am mTLS-Edge abgewiesen, bevor
-das Backend einen Bearer Token prüft. Ein mTLS-verifizierter Aufruf aus
-ChatGPT ohne oder mit ungültigem Token muss danach `401` und einen
-`WWW-Authenticate`-Header mit der OpenAI-DE-Resource-Metadata-URL liefern. Ein
-gültiges Token ohne Schreibscope muss stattdessen
-`error="insufficient_scope"` erhalten. Diese beiden hinter dem mTLS-Gate
-liegenden Fälle werden über die verbundene ChatGPT-App beziehungsweise den
-Edge-Integrationstest geprüft, nicht durch ein öffentliches `curl` ohne
-Clientzertifikat. Token, Cookies, Authorization Codes, SkillPilot-IDs und
-vollständige Schülerantworten dürfen nicht in geteilte Logs oder Tickets
-kopiert werden.
+Beim optionalen `private_key_jwt`-Profil zusätzlich:
+
+```bash
+curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
+  | jq -e \
+      '(.token_endpoint_auth_signing_alg_values_supported | index("RS256"))
+       and (.client_id_metadata_document_supported == true)'
+```
+
+Erwartung beim letzten Aufruf im TLS/OAuth-Kompatibilitätsmodus: `401` mit
+einem `WWW-Authenticate`-Header, der auf die
+OpenAI-DE-Resource-Metadata-URL verweist. Ein gültiges Token ohne
+Schreibscope muss stattdessen `error="insufficient_scope"` erhalten.
+
+Nur bei aktivierter optionaler mTLS-Härtung ist für den öffentlichen Aufruf
+ohne OpenAI-Clientzertifikat bereits am Edge `403` zu erwarten. Der
+mTLS-verifizierte Aufruf aus ChatGPT ohne oder mit ungültigem Token muss
+dahinter weiterhin `401` liefern. Token, Cookies, Authorization Codes,
+SkillPilot-IDs und vollständige Schülerantworten dürfen nicht in geteilte Logs
+oder Tickets kopiert werden.
 
 `MANAGEMENT_BASE` bezeichnet den internen beziehungsweise geschützten
 Managementzugang; Actuator darf dafür nicht ungefiltert über den öffentlichen
@@ -640,14 +673,16 @@ Review, Tarifverfügbarkeit oder einen produktiven OAuth-Callback bestätigen.
 Für den sicheren Cutover des bereits aktuellen MCP-Produktpfads werden daher
 noch benötigt:
 
-- Übernahme der exakten CIMD-Metadaten-URL, JWKS-URL und tatsächlichen
-  Callback-URL aus der deutschen App;
-- einmalige privilegierte mTLS-Edge-Installation und Nachweis, dass der
-  Backendport nur über den vertrauenswürdigen Proxy erreichbar ist;
+- Übernahme der exakten vorregistrierten Client-ID und tatsächlichen
+  Callback-URL aus der deutschen App; beim optionalen stärkeren Profil
+  zusätzlich CIMD-Metadaten-URL und gleich-originige JWKS-URL;
+- Nachweis, dass der Backendport nicht direkt aus dem Internet erreichbar ist;
+  eine einmalige privilegierte mTLS-Edge-Installation ist eine getrennt
+  geplante optionale Härtung;
 - Datenbank-Backup, Deployment des Spring-Boot-Artefakts samt Migration und
   atomarer Environment-Umstellung;
 - Aktualisierung der deutschen App-Version mit der kanonischen Server-URL und
   anschließende erneute OAuth-Autorisierung;
 - dokumentierte positive und negative End-to-End-Evidenz aus ChatGPT;
 - erst danach Freigabe der Schreibfunktion und allgemeine Freigabe des
-  verschärften Produktpfads.
+  Produktpfads.

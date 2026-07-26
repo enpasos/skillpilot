@@ -193,7 +193,7 @@ In addition, other learning modes are needed for "doing" skills. **In later stag
 
 ## 4. Trust Architecture: Security & Integrity
 
-### 4.1 Data Approach: Security & Privacy by Design
+### 4.1 Data Approach: Security, Privacy & Sovereignty by Design
 
 A central pillar of SkillPilot is **data separation**.
 
@@ -201,20 +201,17 @@ A central pillar of SkillPilot is **data separation**.
 
 #### Pseudonym Instead of Identity
 
-The **SkillPilot server** knows learners only as a pseudonym (`skillpilotId`).
-On the server, only technically necessary metadata are stored, e.g., learning progress in the graph.
+Learning states are managed under a **pseudonymous SkillPilot ID**. SkillPilot does not require a learner's real-world identity. It stores the data needed for learning state, navigation, and traceability.
 
 #### Session Shielding Toward the AI Frontend
 
-When the German **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The current reference path is the ChatGPT app **SkillPilot Coach (Deutsch)** over OAuth/MCP. After the one-time OAuth grant, the SkillPilot backend binds the authorized OAuth subject server-side to a learning session valid for no more than 24 hours. Neither the SkillPilot ID nor a session credential needs to appear in the chat.
+When the German **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The current reference path is the ChatGPT app **SkillPilot Coach (Deutsch)**. Learners authorize access once; the SkillPilot backend associates that grant with the correct learner on the server and opens a learning session valid for no more than 24 hours. Neither the SkillPilot ID nor a session credential needs to appear in the chat.
 
-The MCP client connection is secured independently: mTLS identifies the OpenAI connector infrastructure, while the allowlisted CIMD client identity authenticates to the token endpoint with `private_key_jwt`. Exact redirect URI, resource/audience, and scopes are checked. This binds access to the configured OAuth client; it does not attest the human-visible app name.
-
-The former Visible Session architecture with a visible `sps_` token remains only as a separate rollback path and currently for the English coach. It is no longer the German reference architecture.
+The backend connection is secured independently through several layers: SkillPilot accepts access only through the model provider's controlled integration path. Every request is tied to the learner's authorization, limited to the permissions required, and time-bounded by a short-lived learning session.
 
 #### Dialog Content Is Decoupled
 
-The dialog content (learning-coach conversations) is decoupled from the SkillPilot server, keeping the central data store minimal.
+SkillPilot does not store the complete learning-coach chat history. The backend processes only the purpose-bound information needed for learning state, navigation, and authorized actions, keeping the central data store limited.
 
 **Recommendation for educational institutions:**
 Clear guidelines on which data should not be shared in learning-coach chats (sensitive personal data) and how learners are supported safely.
@@ -225,7 +222,7 @@ The mapping "who is which pseudonym?" stays with the institution/teacher and is 
 
 #### AI Frontend / Provider Choice (Sovereignty)
 
-The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. The German ChatGPT app over OAuth/MCP is currently the learner-facing reference integration. Visible Session remains for English and as a rollback path. A separate Claude OAuth/MCP implementation exists in the repository, but remains intentionally disabled and hidden in the UI until a complete real end-to-end acceptance run with adult test users has been recorded.
+The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. The German ChatGPT app is currently the learner-facing reference integration. Further provider integrations are kept separate and released only after a complete end-to-end acceptance test and a review of their privacy boundaries.
 
 For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
 
@@ -233,9 +230,9 @@ For contexts with higher sovereignty requirements, further AI backends up to loc
 
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
-- Learning-coach instances authenticate to the backend.
-- Write access for progress updates is granted only to **authorized actors** (current German path: the admitted MCP/OAuth client, a valid OAuth subject, and an active server-side learning session with the required scopes).
-- The permanent SkillPilot ID is not returned in AI session responses; existing response fields are blanked or set to `null` there.
+- SkillPilot accepts learning-progress changes only through admitted and authenticated integrations.
+- Write access applies only with the learner's authorization, within an active short-lived learning session, and limited to the specific operation.
+- The permanent pseudonymous identifier is not disclosed to the AI frontend.
 
 #### Signed Exports
 

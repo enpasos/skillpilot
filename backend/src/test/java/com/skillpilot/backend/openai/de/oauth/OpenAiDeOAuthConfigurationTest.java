@@ -13,8 +13,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.UnaryOperator;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.InitializingBean;
@@ -24,6 +26,9 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
 class OpenAiDeOAuthConfigurationTest {
 
@@ -38,16 +43,16 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void disabledOauthDoesNotCreateRegistrationInitializer() {
+    void disabledProviderDoesNotCreateRegistrationInitializer() {
         new ApplicationContextRunner()
                 .withUserConfiguration(OpenAiDeConfiguration.class, OpenAiDeOAuthConfiguration.class)
                 .withPropertyValues(
                         secureProviderPropertiesWith(
-                                "skillpilot.openai.de.oauth.enabled=false"))
+                                "skillpilot.openai.de.enabled=false"))
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     assertThat(context).doesNotHaveBean("openAiDeClientRegistrationInitializer");
-                    assertThat(context).hasSingleBean(OpenAiDeProperties.class);
+                    assertThat(context).doesNotHaveBean(OpenAiDeProperties.class);
                 });
     }
 
@@ -87,8 +92,10 @@ class OpenAiDeOAuthConfigurationTest {
         String[] baseline = new String[] {
             "skillpilot.openai.de.enabled=true",
             "skillpilot.openai.de.security.secure-mode=true",
+            "skillpilot.openai.de.oauth.enabled=true",
             "skillpilot.openai.de.oauth.client-authentication-method=private_key_jwt",
             "skillpilot.openai.de.oauth.client-id=https://chatgpt.com/oauth/skillpilot/client.json",
+            "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
             "skillpilot.openai.de.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
             "skillpilot.openai.de.oauth.client-assertion-signing-algorithm=RS256",
             "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=10000",
@@ -128,7 +135,15 @@ class OpenAiDeOAuthConfigurationTest {
     void registersExactlyConfiguredPublicPkceClient() throws Exception {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredProperties();
-        when(clients.findByClientId("chatgpt-app-client-id")).thenReturn(null);
+        AtomicReference<RegisteredClient> persisted = new AtomicReference<>();
+        when(clients.findByClientId("chatgpt-app-client-id"))
+                .thenAnswer(invocation -> persisted.get());
+        doAnswer(invocation -> {
+                    persisted.set(invocation.getArgument(0));
+                    return null;
+                })
+                .when(clients)
+                .save(any(RegisteredClient.class));
         ArgumentCaptor<RegisteredClient> saved = ArgumentCaptor.forClass(RegisteredClient.class);
 
         configuration.registerOpenAiDeClient(clients, properties).afterPropertiesSet();
@@ -147,7 +162,36 @@ class OpenAiDeOAuthConfigurationTest {
                 OpenAiDeOAuthConfiguration.WRITE_SCOPE,
                 OpenAiDeOAuthConfiguration.OFFLINE_SCOPE);
         assertThat(client.getClientSettings().isRequireProofKey()).isTrue();
+        assertThat(client.getClientSettings().isRequireAuthorizationConsent()).isTrue();
+        assertThat(client.getTokenSettings().getAccessTokenFormat())
+                .isEqualTo(OAuth2TokenFormat.REFERENCE);
+        assertThat(client.getTokenSettings().getAccessTokenTimeToLive())
+                .isEqualTo(properties.getOauth().getAccessTokenTtl());
+        assertThat(client.getTokenSettings().getRefreshTokenTimeToLive())
+                .isEqualTo(properties.getOauth().getRefreshTokenTtl());
         assertThat(client.getTokenSettings().isReuseRefreshTokens()).isFalse();
+    }
+
+    @Test
+    void publicClientDoesNotRequirePrivateKeyJwtReplayCache() throws Exception {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+        OpenAiDeProperties properties = configuredProperties();
+        properties.getOauth().setClientAssertionReplayCacheSize(0);
+        AtomicReference<RegisteredClient> persisted = new AtomicReference<>();
+        when(clients.findByClientId("chatgpt-app-client-id"))
+                .thenAnswer(invocation -> persisted.get());
+        doAnswer(invocation -> {
+                    persisted.set(invocation.getArgument(0));
+                    return null;
+                })
+                .when(clients)
+                .save(any(RegisteredClient.class));
+
+        configuration.registerOpenAiDeClient(clients, properties).afterPropertiesSet();
+
+        assertThat(persisted.get()).isNotNull();
+        assertThat(persisted.get().getClientAuthenticationMethods())
+                .containsExactly(ClientAuthenticationMethod.NONE);
     }
 
     @Test
@@ -177,6 +221,60 @@ class OpenAiDeOAuthConfigurationTest {
         assertThat(client.getClientSettings().getTokenEndpointAuthenticationSigningAlgorithm())
                 .isEqualTo(SignatureAlgorithm.RS256);
         assertThat(client.getClientSettings().isRequireProofKey()).isTrue();
+        assertThat(client.getTokenSettings().getAccessTokenFormat())
+                .isEqualTo(OAuth2TokenFormat.REFERENCE);
+        assertThat(client.getTokenSettings().getAccessTokenTimeToLive())
+                .isEqualTo(properties.getOauth().getAccessTokenTtl());
+        assertThat(client.getTokenSettings().getRefreshTokenTimeToLive())
+                .isEqualTo(properties.getOauth().getRefreshTokenTtl());
+        assertThat(client.getTokenSettings().isReuseRefreshTokens()).isFalse();
+    }
+
+    @Test
+    void startupRefusesPersistedTokenPolicyTampering() {
+        OpenAiDeProperties properties = configuredProperties();
+        Duration accessTtl = properties.getOauth().getAccessTokenTtl();
+        Duration refreshTtl = properties.getOauth().getRefreshTokenTtl();
+
+        for (TokenSettings tamperedSettings : List.of(
+                tokenSettings(OAuth2TokenFormat.SELF_CONTAINED, accessTtl, refreshTtl, false),
+                tokenSettings(
+                        OAuth2TokenFormat.REFERENCE,
+                        accessTtl.plusSeconds(1),
+                        refreshTtl,
+                        false),
+                tokenSettings(
+                        OAuth2TokenFormat.REFERENCE,
+                        accessTtl,
+                        refreshTtl.plusSeconds(1),
+                        false),
+                tokenSettings(OAuth2TokenFormat.REFERENCE, accessTtl, refreshTtl, true))) {
+            assertPersistedRegistrationTamperingRejected(
+                    properties,
+                    client -> RegisteredClient.from(client)
+                            .tokenSettings(tamperedSettings)
+                            .build());
+        }
+    }
+
+    @Test
+    void startupRefusesPersistedPrivateJwtKeyBindingTampering() {
+        OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
+
+        assertPersistedRegistrationTamperingRejected(
+                properties,
+                client -> RegisteredClient.from(client)
+                        .clientSettings(privateJwtClientSettings(
+                                "https://chatgpt.com/oauth/other-jwks.json",
+                                SignatureAlgorithm.RS256))
+                        .build());
+        assertPersistedRegistrationTamperingRejected(
+                properties,
+                client -> RegisteredClient.from(client)
+                        .clientSettings(privateJwtClientSettings(
+                                properties.getOauth().getClientJwkSetUri(),
+                                SignatureAlgorithm.RS512))
+                        .build());
     }
 
     @Test
@@ -296,16 +394,65 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void rejectsQueryInProtocolEndpointConfiguration() {
+    void rejectsQueryOrFragmentInProtocolEndpointConfiguration() {
+        for (String unsafeMetadataUrl : List.of(
+                "https://skillpilot.test/api/openai/de/oauth/protected-resource?tenant=one",
+                "https://skillpilot.test/api/openai/de/oauth/protected-resource#fragment")) {
+            RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+            OpenAiDeProperties properties = configuredProperties();
+            properties.getOauth().setProtectedResourceMetadata(unsafeMetadataUrl);
+
+            assertThatExceptionOfType(IllegalStateException.class)
+                    .as(unsafeMetadataUrl)
+                    .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                    .withMessageContaining("protected-resource metadata URL")
+                    .withMessageContaining("query");
+        }
+    }
+
+    private void assertPersistedRegistrationTamperingRejected(
+            OpenAiDeProperties properties,
+            UnaryOperator<RegisteredClient> tamper) {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
-        OpenAiDeProperties properties = configuredProperties();
-        properties.getOauth().setProtectedResourceMetadata(
-                "https://skillpilot.test/api/openai/de/oauth/protected-resource?tenant=one");
+        AtomicReference<RegisteredClient> persisted = new AtomicReference<>();
+        String clientId = properties.getOauth().getClientId();
+        when(clients.findByClientId(clientId)).thenAnswer(invocation -> persisted.get());
+        doAnswer(invocation -> {
+                    RegisteredClient saved = invocation.getArgument(0);
+                    persisted.set(tamper.apply(saved));
+                    return null;
+                })
+                .when(clients)
+                .save(any(RegisteredClient.class));
 
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
-                .withMessageContaining("protected-resource metadata URL")
-                .withMessageContaining("query");
+                .withMessageContaining("key binding")
+                .withMessageContaining("token policy");
+    }
+
+    private static TokenSettings tokenSettings(
+            OAuth2TokenFormat accessTokenFormat,
+            Duration accessTtl,
+            Duration refreshTtl,
+            boolean reuseRefreshTokens) {
+        return TokenSettings.builder()
+                .accessTokenFormat(accessTokenFormat)
+                .accessTokenTimeToLive(accessTtl)
+                .refreshTokenTimeToLive(refreshTtl)
+                .reuseRefreshTokens(reuseRefreshTokens)
+                .build();
+    }
+
+    private static ClientSettings privateJwtClientSettings(
+            String jwkSetUrl,
+            SignatureAlgorithm signingAlgorithm) {
+        return ClientSettings.builder()
+                .requireProofKey(true)
+                .requireAuthorizationConsent(true)
+                .jwkSetUrl(jwkSetUrl)
+                .tokenEndpointAuthenticationSigningAlgorithm(signingAlgorithm)
+                .build();
     }
 
     private OpenAiDeProperties configuredProperties() {

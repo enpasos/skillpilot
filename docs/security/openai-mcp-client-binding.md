@@ -1,7 +1,7 @@
 # OpenAI-MCP: Bindung an den zugelassenen Client
 
 **Stand:** 26. Juli 2026  
-**Status:** verbindliche Sicherheitsarchitektur für `SkillPilot Coach (Deutsch)`
+**Status:** verbindlicher Basisschutz; mTLS ist eine optionale spätere Härtung
 
 ## 1. Schutzziel
 
@@ -9,8 +9,7 @@ Die SkillPilot-ID bleibt das vom Lernenden verwahrte Geheimnis, an dem sein
 Lernstand hängt. Dieses Dokument behandelt ein davon unabhängiges Schutzziel:
 
 > Ein fremder Client darf die lernendenbezogenen OpenAI-DE-MCP-APIs nicht
-> nutzen, auch wenn er den öffentlichen Serververtrag kennt oder sich eine
-> eigene OAuth-Clientregistrierung anlegen möchte.
+> nutzen, auch wenn er den öffentlichen Serververtrag kennt.
 
 Die Schutzgrenze verändert weder SkillPilot-ID noch Lernziel-, Mastery-,
 Curriculum- oder Coach-Semantik.
@@ -19,31 +18,58 @@ Curriculum- oder Coach-Semantik.
 
 | Bindung | Zweck | Verbindlicher Mechanismus |
 | --- | --- | --- |
-| OpenAI-Connector-Infrastruktur → MCP-Rand | Nur der von OpenAI betriebene Connector erreicht den eigentlichen MCP-Endpunkt | mTLS mit der veröffentlichten OpenAI-CA-Kette, `clientAuth` und exaktem SAN `mtls.prod.connectors.openai.com` |
-| stabile ChatGPT-OAuth-Clientidentität → Authorization Server | Nur der fest konfigurierte, kryptografisch nachgewiesene ChatGPT-OAuth-Client kann Codes gegen Token tauschen oder Token widerrufen | exakte HTTPS-CIMD-`client_id`, `private_key_jwt`, öffentliche JWKS derselben Origin und exakte Redirect-Allowlist |
+| Transport → SkillPilot-Rand | Vertraulichkeit und Serverauthentisierung für alle öffentlichen SkillPilot-Endpunkte | normales HTTPS/TLS am Reverse Proxy |
+| konfigurierte OAuth-Clientregistrierung → Authorization Server | Der Code-Flow wird nur für die vorregistrierte Client-ID und Redirect-Allowlist zugelassen; im Basisprofil ist die öffentliche Client-ID selbst kein kryptografischer Identitätsnachweis | eines der beiden in Abschnitt 4 beschriebenen, explizit konfigurierten Clientprofile; immer exakte Client-ID, exakte Redirect-Allowlist und Authorization Code mit PKCE `S256` |
 | Access Token → SkillPilot-MCP-Resource | Ein Token gilt nur für diesen Resource Server, den registrierten Client und die erlaubten Operationen | aktive Introspektion einschließlich Ablauf/Widerruf, exaktes `resource`/`aud`, Scope und registrierte Client-ID |
 | OAuth-Subject → SkillPilot-Lernender | Der autorisierte Provider-Principal wird serverseitig einem Lernenden zugeordnet | einmaliger First-Party-Browser-Binding-Grant; keine ID im Chat oder Toolargument |
 | Lernender → aktuelle Coach-Nutzung | Ein alter OAuth-Login allein schaltet den Lernstand nicht unbegrenzt frei | serverseitige, absolut auf 24 Stunden begrenzte Lernsession |
+| OpenAI-Connector-Infrastruktur → MCP-Rand | Optionale zusätzliche Identifikation der OpenAI-Connector-Infrastruktur | ausschließlich bei aktivierter Härtung: verifiziertes mTLS mit OpenAI-CA-Kette, `clientAuth` und exaktem SAN `mtls.prod.connectors.openai.com` |
 
-Keine einzelne Zeile ersetzt eine andere. Insbesondere authentisiert mTLS die
-OpenAI-Connector-Infrastruktur, aber nicht den Lernenden; OAuth authentisiert
-und autorisiert den Client und den Principal, ersetzt aber nicht die
-24h-Lernsession.
+Keine einzelne Zeile ersetzt eine andere. OAuth bindet Principal, Resource und
+Token an die konfigurierte Clientregistrierung; im Basisprofil authentisiert
+die öffentliche Client-ID den Client jedoch nicht kryptografisch. OAuth
+ersetzt außerdem nicht die 24h-Lernsession. Optionales mTLS authentisiert die
+OpenAI-Connector-Infrastruktur am Netzrand, aber weder den Lernenden noch
+automatisch die sichtbare SkillPilot-App.
 
-## 3. MCP-Rand: mTLS
+## 3. Produktiver Kompatibilitätsmodus: TLS und OAuth
 
-Nur der eigentliche MCP-Pfad
+SkillPilot läuft produktiv zunächst mit normalem serverauthentisiertem HTTPS.
+Für den eigentlichen MCP-Pfad
 
 ```text
 /api/openai/de/mcp
 /api/openai/de/mcp/**
 ```
 
-verlangt ein OpenAI-Clientzertifikat. Discovery, Authorization, Token, Callback
-und Browser-Binding bleiben ohne Clientzertifikat erreichbar, weil Browser den
-OAuth-Ablauf sonst nicht abschließen könnten.
+ist ein gültiges OAuth-Access-Token zwingend. Der Resource Server prüft
+Resource/Audience, Scopes, Clientregistrierung, Tokenstatus, Providerbindung
+und die aktive 24h-Lernsession. Ohne Token bleibt der MCP-Pfad geschlossen.
+Discovery, Authorization, Token, Callback und Browser-Binding bleiben über
+normales HTTPS erreichbar, damit Browser den OAuth-Ablauf abschließen können.
 
-Der Reverse Proxy akzeptiert den MCP-Aufruf nur, wenn:
+Port 8787 und lokale Verifier-Ports dürfen nicht öffentlich erreichbar sein.
+Der Reverse Proxy terminiert TLS und leitet ausschließlich die vorgesehenen
+Pfade an den Backendprozess weiter.
+
+### 3.1 Bewusste Restannahme im Kompatibilitätsmodus
+
+Normales TLS authentisiert den SkillPilot-Server gegenüber dem Client, nicht
+umgekehrt. Ein fremder Client, der ein gültiges, korrekt gebundenes
+OAuth-Access-Token erlangt, wird im Basisschutz daher nicht allein anhand
+seiner Netzwerkidentität abgewiesen. Diese Restannahme ist für den
+Kompatibilitätsmodus ausdrücklich dokumentiert und wird durch kurze Token- und
+Lernsessions, exakte Audience-/Scope-Prüfung, Widerruf und Protokollierung
+begrenzt.
+
+### 3.2 Optionale spätere Härtung: OpenAI-mTLS
+
+mTLS kann später ausschließlich für den eigentlichen MCP-Pfad aktiviert
+werden. Discovery, Authorization, Token, Callback und Browser-Binding dürfen
+kein OpenAI-Clientzertifikat verlangen.
+
+Wenn diese Härtung aktiviert ist, akzeptiert der Reverse Proxy den MCP-Aufruf
+nur, wenn:
 
 1. ein Clientzertifikat präsentiert wird;
 2. es bis zur veröffentlichten OpenAI-Root-CA über die separat gepinnte
@@ -58,41 +84,78 @@ nach erfolgreicher Prüfung selbst. Spring akzeptiert diese Header nur von
 explizit konfigurierten numerischen Proxy-Adressen. Port 8787 und der lokale
 Verifier-Port dürfen nicht öffentlich erreichbar sein.
 
-Die deploybare Umsetzung und CA-Rotation stehen in
+Die optionale deploybare Umsetzung und CA-Rotation stehen in
 [openai-mcp-edge-mtls.md](../deploy/openai-mcp-edge-mtls.md).
 
-## 4. Stabile ChatGPT-OAuth-Clientbindung und app-spezifische Eingrenzung
+Die Härtung wird fail-closed betrieben: Ist sie konfiguriert, aber Zertifikat,
+Proxyvertrauen oder Headerprüfung fehlen, startet der OpenAI-DE-Provider nicht
+beziehungsweise der MCP-Aufruf wird abgewiesen. Eine fehlerhafte
+mTLS-Konfiguration fällt niemals still auf den TLS-Basisschutz zurück.
 
-Im sicheren Produktionsmodus gilt:
+## 4. Unterstützte OAuth-Clientprofile
 
-- `client_id` ist die exakte HTTPS-URL des von ChatGPT veröffentlichten und
-  für diese Verbindung konfigurierten Client-ID-Metadatendokuments (CIMD);
-- SkillPilot lädt die öffentliche JWKS von der konfigurierten HTTPS-URL
-  derselben Origin;
-- der Token-Endpunkt akzeptiert ausschließlich `private_key_jwt`;
+SkillPilot unterstützt genau zwei sichere, bewusst ausgewählte Profile. Ein
+Deployment konfiguriert genau eines davon. In beiden Profilen sind offene
+Dynamic Client Registration, ungeprüfte Redirect-URIs und ein stiller
+Fallback auf einen anderen Client unzulässig.
+
+### 4.1 Verbindliches Basisprofil: vorregistrierter Public Client
+
+Dieses Profil ist der produktive Mindestvertrag:
+
+- die Client-ID ist ein fester, vorab registrierter, nicht geheimer Wert;
+- der Token-Endpunkt verwendet
+  `token_endpoint_auth_method=none`;
+- es gibt kein Client-Secret;
+- Authorization Code mit PKCE `S256` ist zwingend;
+- jede erlaubte Redirect-URI ist exakt vorregistriert;
+- Resource/Audience und Scopes werden exakt geprüft;
+- der MCP-Rand ist über normales HTTPS erreichbar und verlangt ein gültiges,
+  passend gebundenes OAuth-Access-Token.
+
+`none` bedeutet hier nicht „anonymer Client“. Es bezeichnet den
+standardkonformen Public-Client-Code-Flow ohne Client-Secret. Die Client-ID ist
+dabei öffentlich und kein Besitznachweis. Die statische Registrierung und die
+exakte Callback-Allowlist begrenzen den akzeptierten Vertrag; PKCE bindet die
+Einlösung des Authorization Codes an den passenden Code Verifier aus dem
+Authorization Request, nicht kryptografisch an eine eindeutig identifizierte
+App. Optionales OpenAI-mTLS kann diese Grenze später um eine
+Netzwerkidentifikation der OpenAI-Connector-Infrastruktur ergänzen.
+
+### 4.2 Optionales stärkeres Profil: CIMD mit `private_key_jwt`
+
+Wenn ChatGPT für die konkrete Verbindung eine stabile HTTPS-CIMD-Identität
+bereitstellt und das Deployment dieses Profil ausdrücklich auswählt, kann
+SkillPilot zusätzlich kryptografische Clientauthentisierung verwenden:
+
+- `client_id` ist die exakt konfigurierte HTTPS-CIMD-URL;
+- die öffentliche JWKS-URL ist HTTPS und hat dieselbe Origin;
+- der Token- und Revocation-Endpunkt akzeptiert ausschließlich
+  `private_key_jwt`;
 - die Client Assertion muss mit dem konfigurierten asymmetrischen Algorithmus
-  signiert sein und mindestens `iss`, `sub`, `aud`, `exp`, `jti` und `kid`
-  korrekt enthalten;
-- `iss` und `sub` müssen der exakten CIMD-Client-ID entsprechen;
-- `aud` muss den SkillPilot-Authorization-Server adressieren;
+  signiert sein und mindestens `iss`, `sub`, `aud`, `exp` und `jti` sowie
+  einen nichtleeren `kid`-Header korrekt enthalten;
+- `iss` und `sub` entsprechen der exakten CIMD-Client-ID;
+- `aud` adressiert den SkillPilot-Authorization-Server;
 - `jti` wird innerhalb des Assertion-Zeitfensters nur einmal akzeptiert;
-- Redirect-URIs müssen exakt in der produktiven Allowlist stehen;
-- offene Dynamic Client Registration wird nicht veröffentlicht oder
-  akzeptiert;
-- `none` und allgemeine Client-Secrets sind im Secure Mode unzulässig.
+- CIMD-Dokument, JWKS und Redirect-Allowlist werden beim Start fail-closed
+  validiert.
 
-Damit genügt weder eine beliebige SkillPilot-ID noch ein selbst registrierter
-OAuth-Client, um Token für den Produktivvertrag zu erhalten.
+Dieses Profil verstärkt die OAuth-Clientbindung, ist aber keine Voraussetzung
+für das sichere Basisprofil. ChatGPT dokumentiert ausdrücklich beide
+Clientauthentisierungsmethoden: `private_key_jwt`, wenn der Authorization
+Server sie unterstützt und dieses Profil gewählt ist, andernfalls `none` für
+einen Public Client mit PKCE.
 
-Diese Aussage darf nicht weiter ausgelegt werden: mTLS weist die
-OpenAI-Connector-Infrastruktur nach; CIMD und `private_key_jwt` weisen die
-Kontrolle über die konfigurierte stabile ChatGPT-OAuth-Clientidentität nach.
-Ohne eine vom Provider ausdrücklich zugesicherte app-eindeutige Attestation
-beweisen diese Merkmale nicht kryptografisch den Anzeigenamen
-„SkillPilot Coach (Deutsch)“ gegenüber jeder anderen App auf derselben
-Provider-Infrastruktur. Die exakte Callback-, Resource- und Scope-Allowlist
-grenzt den konkreten SkillPilot-Vertrag ein, ersetzt aber keine solche
-Provider-Attestation.
+### 4.3 Reichweite der Aussage
+
+Optionales mTLS weist die OpenAI-Connector-Infrastruktur nach. Das optionale
+`private_key_jwt` weist zusätzlich die Kontrolle über die konfigurierte
+CIMD-Clientidentität nach. Ohne eine ausdrückliche Provider-Garantie beweist
+keines dieser Verfahren kryptografisch den sichtbaren Anzeigenamen
+„SkillPilot Coach (Deutsch)“ gegenüber jeder anderen App derselben
+Provider-Infrastruktur. Im Basisprofil ist die feste `client_id` eine
+Registrierungsreferenz und kein kryptografischer Besitznachweis.
 
 ## 5. Resource- und Tokenbindung
 
@@ -109,7 +172,7 @@ exakt an diese Audience. Der MCP Resource Server prüft bei jedem Aufruf:
 - erwarteten Aussteller;
 - exakte Resource/Audience ohne tolerierte Varianten;
 - erforderlichen Read- oder Write-Scope;
-- registrierte Clientidentität;
+- konfigurierte Clientregistrierung (`client_id`);
 - aktive, nicht widerrufene Providerverbindung;
 - aktive 24h-Lernsession.
 
@@ -120,95 +183,114 @@ Identitätsargument entgegen.
 
 Der normale OpenAI-DE-Provider kann nur im Secure Mode starten. Ein explizites
 `false` ist bei aktiviertem Provider keine Ausweichkonfiguration, sondern ein
-Startfehler. Unsichere Legacy-Bindings dürfen nur in isolierten
+Startfehler. Unsichere Testbindungen dürfen nur in isolierten
 Komponententests geladen werden, die den normalen Provider nicht aktivieren.
 
-Vor Cutover und Clientregistrierung lädt SkillPilot bei jedem sicheren Start
-das konfigurierte CIMD-Dokument neu: per HTTPS, ohne Redirects, mit kurzen
-Verbindungs-/Request-Timeouts und harter Größenbegrenzung. Akzeptiert werden
-nur 2xx, ein JSON-Content-Type und ein JSON-Objekt, das die gepinnten Werte
-bestätigt. Der Start bricht ab, wenn eine der folgenden Bedingungen fehlt:
+Gemeinsam für beide Profile prüft der sichere Start:
 
-- `private_key_jwt`;
-- gültige HTTPS-CIMD-Client-ID und gleich-originige HTTPS-JWKS;
-- asymmetrischer Signaturalgorithmus und Replay-Schutz;
-- mTLS-Edge und mindestens eine explizite numerische Trusted-Proxy-Adresse;
-- exakte Redirect-URIs, Resource und OAuth-Konfiguration.
+- Client-ID und Redirect-Allowlist sind nicht leer;
+- Redirect-URIs, MCP-Resource und OAuth-Endpunkte sind exakte HTTPS-Werte;
+- Authorization Code mit PKCE `S256` ist erforderlich;
+- genau das konfigurierte Clientauthentisierungsverfahren wird veröffentlicht;
+- offene DCR wird nicht veröffentlicht.
 
-Das CIMD-Dokument muss zusätzlich eine zum Dokument identische `client_id`,
-einen nichtleeren `client_name`, sämtliche konfigurierten Redirect-URIs, die
-exakt gepinnte gleich-originige `jwks_uri` und `private_key_jwt` veröffentlichen.
-Offene DCR, `none`, Redirect-Following oder ein stiller Fallback sind nicht
-zulässig.
+Für das Basisprofil muss die feste Client-ID vorregistriert sein und
+`none` darf weder Client-Secret noch JWKS-Konfiguration enthalten.
 
-Der Modus ist absichtlich kein stilles Best-Effort-Feature. Ein öffentlich
-erreichbarer MCP-Endpunkt mit nur halb aktivierter Clientbindung gilt als nicht
-betriebsbereit.
+Für das optionale stärkere Profil kommen die CIMD-, JWKS-, Assertion- und
+Replay-Prüfungen aus Abschnitt 4.2 hinzu. Das CIMD-Dokument wird per HTTPS,
+ohne Redirects, mit kurzen Timeouts und harter Größenbegrenzung geladen.
+Netzwerkfehler, abweichende Metadaten oder ein Fallback auf `none` brechen
+dieses Profil ab.
+
+Nur wenn die optionale mTLS-Härtung aktiviert ist, prüft der sichere Start
+zusätzlich:
+
+- mindestens eine explizite numerische Trusted-Proxy-Adresse ist gesetzt;
+- die interne Zertifikatsbestätigung wird ausschließlich von diesen Proxys
+  akzeptiert;
+- fehlende oder widersprüchliche mTLS-Konfiguration führt zum Startfehler;
+- ein stiller Rückfall auf den TLS-Basisschutz ist ausgeschlossen.
 
 Der `jti`-Replay-Schutz für `private_key_jwt` ist in der aktuellen
 Ein-Instanz-Architektur pro Backendprozess gespeichert und hart begrenzt. Vor
-einer horizontalen Skalierung muss er durch einen atomaren, gemeinsam genutzten
-TTL-Speicher ersetzt werden; mehrere unabhängige Prozess-Caches wären kein
-ausreichender clusterweiter Replay-Schutz.
+einer horizontalen Skalierung muss er durch einen atomaren, gemeinsam
+genutzten TTL-Speicher ersetzt werden.
 
-## 7. Einmaliger Cutover vom Legacy-Client
+## 7. Clientwechsel und Widerruf
 
-Der frühere öffentliche `none`-Client darf nach dem Cutover keine
-wiederverwendbaren Token behalten. Der sichere Start akzeptiert deshalb nur
-eine explizite Allowlist ehemaliger OpenAI-DE-Client-IDs und entfernt für genau
-diese Clients transaktional und idempotent:
+Das Basisprofil mit einem vorregistrierten Public Client ist kein
+„Legacy-Modus“. Eine Legacy-Cutover-Allowlist ist nur dann nötig, wenn die
+konfigurierte Client-ID tatsächlich gewechselt wird, etwa beim Umstieg auf
+CIMD.
 
-1. zugehörige OAuth Authorizations einschließlich Access-/Refresh-Token und
-   Codes;
+Für einen solchen einmaligen Wechsel entfernt SkillPilot ausschließlich die
+explizit allowlisteten alten Clientregistrierungen und deren:
+
+1. OAuth Authorizations einschließlich Access-/Refresh-Token und Codes;
 2. Consents;
-3. die registrierten Legacy-Clients;
-4. nur die zu diesen Principals gehörenden OpenAI-DE-Verbindungen,
-   Lernsessions und Pending Launches.
+3. die alte registrierte Clientzeile;
+4. Providerverbindungen, Lernsessions und Pending Launches.
 
-Andere Provider und nicht allowlistete Clients bleiben unberührt. Nach diesem
-Schritt müssen betroffene Lernende die neue App einmal neu autorisieren. Ein
-Rollback auf den alten Client reaktiviert keine alten Token.
+Andere Provider und nicht allowlistete Clients bleiben unberührt. Betroffene
+Lernende autorisieren den neuen Client einmal neu. Ein Rollback auf die alte
+Client-ID reaktiviert keine widerrufenen Token.
 
 ## 8. Betriebs- und Negativtests
 
-Vor Freigabe müssen mindestens folgende Fälle objektiv scheitern:
+Vor Freigabe müssen gemeinsam für beide Profile mindestens folgende Fälle
+objektiv scheitern:
 
-- direkter Internetzugriff auf MCP ohne Clientzertifikat;
-- fremdes, selbstsigniertes oder anders ausgestelltes Zertifikat;
-- korrekt verkettetes Zertifikat mit falschem SAN oder ohne `clientAuth`;
-- gefälschte interne mTLS-Header über den öffentlichen Rand;
 - direkte Umgehung des Proxys zu Port 8787;
-- Token Request mit `none`, Client Secret oder fremder Client-ID;
-- ungültige, abgelaufene oder wiederverwendete Client Assertion;
-- falsche Redirect-URI;
+- MCP-Aufruf ohne Access Token;
+- Token Request mit fremder Client-ID;
+- falsche Redirect-URI oder fehlender PKCE-Nachweis;
 - fehlende oder falsche Resource/Audience;
 - fehlender Scope;
 - revoziertes/abgelaufenes Token oder abgelaufene Lernsession.
 
-Positiv wird der komplette OAuth- und MCP-Ablauf ausschließlich über die
-verbundene produktive ChatGPT-App getestet, weil nur die
-OpenAI-Connector-Infrastruktur das passende Clientzertifikat und den privaten
-Schlüssel der veröffentlichten CIMD-/JWKS-Identität besitzt.
+Profilabhängig gilt zusätzlich:
+
+- Basisprofil: Client-Secret, JWKS- oder Assertion-Konfiguration wird
+  abgelehnt;
+- CIMD-Profil: `none`, Client Secret, ungültige/abgelaufene/wiederverwendete
+  Assertion und abweichende CIMD-/JWKS-Metadaten werden abgelehnt.
+
+Wenn die optionale mTLS-Härtung aktiviert ist, müssen zusätzlich scheitern:
+
+- direkter Internetzugriff auf MCP ohne Clientzertifikat;
+- fremdes, selbstsigniertes oder anders ausgestelltes Zertifikat;
+- korrekt verkettetes Zertifikat mit falschem SAN oder ohne `clientAuth`;
+- gefälschte interne mTLS-Header über den öffentlichen Rand.
+
+Positiv wird der komplette OAuth- und MCP-Ablauf über die verbundene
+produktive ChatGPT-App getestet. Bei aktivierter mTLS-Härtung wird zusätzlich
+der vollständige Zertifikatspfad objektiv geprüft.
 
 ## 9. Vertrauensgrenze und Restannahmen
 
-Die Kombination verhindert einen fremden Netzwerk- oder OAuth-Client. Sie
-schützt nicht gegen:
+Der Basisschutz schließt anonyme und unzureichend autorisierte Zugriffe auf den
+MCP-Rand aus. Er ist jedoch keine kryptografische Attestation genau der
+sichtbaren SkillPilot-App. Er schützt nicht gegen:
 
 - eine Kompromittierung des SkillPilot-Hosts oder Reverse Proxys;
-- eine Kompromittierung der zugelassenen OpenAI-Connector-Infrastruktur;
 - den Verlust einer SkillPilot-ID durch den Lernenden;
 - eine absichtlich vom Lernenden autorisierte Nutzung über die zugelassene
-  ChatGPT-OAuth-Clientidentität;
+  ChatGPT-OAuth-Clientregistrierung;
+- einen fremden Client, der ein gültiges, passend gebundenes OAuth-Token
+  kontrolliert;
 - eine andere App derselben Provider-Infrastruktur, falls der Provider keine
   app-eindeutige kryptografische Attestation garantiert.
 
-Diese Risiken benötigen jeweils andere Kontrollen und dürfen nicht durch
-zusätzliche technische Schlüssel im Chat kompensiert werden.
+Optionales mTLS reduziert den dritten Punkt auf Zugriffe aus der zugelassenen
+OpenAI-Connector-Infrastruktur, beweist aber weiterhin nicht automatisch den
+sichtbaren App-Namen. Diese Risiken benötigen jeweils andere Kontrollen und
+dürfen nicht durch zusätzliche technische Schlüssel im Chat kompensiert
+werden.
 
 ## 10. Normative Provider-Referenzen
 
 - [OpenAI: Client identification](https://developers.openai.com/plugins/build/auth#client-identification)
-- [OpenAI: Client registration mit CIMD und `private_key_jwt`](https://developers.openai.com/plugins/build/auth#client-registration)
+- [OpenAI: Client registration und Authentisierung](https://developers.openai.com/plugins/build/auth#client-registration)
 - [OpenAI: Mutual TLS](https://developers.openai.com/plugins/build/auth#mutual-tls-mtls)
 - [OpenAI: Resource-/Audience-Bindung](https://developers.openai.com/plugins/build/auth#echo-the-resource-parameter-throughout-the-oauth-flow)

@@ -189,7 +189,7 @@ Ergänzend braucht es weitere Lernmodi für „Doing“-Skills. **In weiteren Au
 
 ## 4. Vertrauensarchitektur: Security & Integrity
 
-### 4.1 Datenansatz: Privacy by Design & Souveränität
+### 4.1 Datenansatz: Sicherheit, Datenschutz & Souveränität by Design
 
 Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**.
 
@@ -197,20 +197,17 @@ Ein zentraler Pfeiler von SkillPilot ist **Datentrennung**.
 
 #### Pseudonym statt Identität
 
-Der **SkillPilot-Server** kennt Lernende ausschließlich als Pseudonym (`skillpilotId`).
-Auf dem Server werden nur technisch notwendige Metadaten gespeichert, z.B. der Lernfortschritt im Graphen.
+Lernstände werden unter einer **pseudonymen SkillPilot-ID** geführt. Eine Klaridentität ist für die Nutzung von SkillPilot nicht erforderlich. Gespeichert werden die für Lernstand, Navigation und Nachvollziehbarkeit benötigten Daten.
 
 #### Session-Abschirmung gegenüber dem KI-Frontend
 
-Beim Start des deutschen **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der aktuelle Produktweg ist die ChatGPT-App **SkillPilot Coach (Deutsch)** über OAuth/MCP. Nach der einmaligen OAuth-Freigabe bindet das SkillPilot-Backend den autorisierten OAuth-Subject serverseitig an eine höchstens 24 Stunden gültige Lernsession. Weder die SkillPilot-ID noch ein Sitzungsschlüssel müssen im Chat erscheinen.
+Beim Start des deutschen **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der aktuelle Produktweg ist die ChatGPT-App **SkillPilot Coach (Deutsch)**. Lernende autorisieren den Zugriff einmalig; das SkillPilot-Backend ordnet diese Freigabe serverseitig dem richtigen Lernenden zu und eröffnet eine höchstens 24 Stunden gültige Lernsession. Weder die SkillPilot-ID noch ein Sitzungsschlüssel müssen im Chat erscheinen.
 
-Die Verbindung des MCP-Clients zum Backend wird unabhängig davon abgesichert: mTLS identifiziert die OpenAI-Connector-Infrastruktur; die zugelassene CIMD-Clientidentität weist sich am Token-Endpunkt mit `private_key_jwt` aus. Exakte Redirect-URI, Resource/Audience und Scopes werden geprüft. Diese Kombination ist eine Bindung an den konfigurierten OAuth-Client, aber keine Attestierung des für Menschen sichtbaren App-Namens.
-
-Die frühere Visible-Session-Architektur mit sichtbarem `sps_`-Token bleibt nur als getrennte Rollbackvariante und derzeit für den englischen Coach erhalten. Sie ist nicht mehr die deutsche Referenzarchitektur.
+Die Verbindung zum Backend wird unabhängig davon mehrschichtig abgesichert: SkillPilot akzeptiert nur Zugriffe über den kontrollierten Integrationsweg des Modellanbieters. Jeder Zugriff ist an die Freigabe der lernenden Person gebunden, auf die benötigten Rechte begrenzt und durch eine kurzlebige Lernsession zeitlich eingeschränkt.
 
 #### Dialoginhalt ist entkoppelt
 
-Der Dialoginhalt (Lerncoach-Gespräche) ist vom SkillPilot-Server entkoppelt. So bleibt der zentrale Datenbestand minimal.
+SkillPilot speichert keinen vollständigen Lerncoach-Chatverlauf. Das Backend verarbeitet nur die zweckgebundenen Angaben, die für Lernstand, Navigation und freigegebene Aktionen benötigt werden. So bleibt der zentrale Datenbestand begrenzt.
 
 **Empfehlung für Bildungsinstitutionen:**
 Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
@@ -221,7 +218,7 @@ Die Zuordnung „Wer ist welches Pseudonym?“ liegt bei der Institution/Lehrkra
 
 #### KI-Frontend / Provider-Wahl (Souveränität)
 
-Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Aktuell ist die deutsche ChatGPT-App über OAuth/MCP die lernendenseitige Referenzintegration. Die Visible-Session-Variante bleibt für Englisch und als Rollback erhalten. Eine OAuth-/MCP-Variante für Claude ist als getrennte Implementierung im Repository vorhanden, bleibt aber bewusst deaktiviert und in der UI verborgen, bis ein vollständiger echter End-to-End-Acceptance-Test mit volljährigen Testpersonen dokumentiert ist.
+Der Lerncoach-Dialog findet im jeweiligen KI-Frontend statt und unterliegt dessen Betriebs- und Datenschutzrahmen. Aktuell ist die deutsche ChatGPT-App die lernendenseitige Referenzintegration. Weitere Provider-Integrationen werden getrennt geführt und erst nach einem vollständigen End-to-End-Akzeptanztest sowie einer Prüfung der Datenschutzgrenzen freigegeben.
 
 Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends bis hin zu lokalen Modellen vorgesehen. Voraussetzung ist, dass sie Tool-Nutzung, Stabilität, Datenschutzgrenzen, Struktur und Didaktik zuverlässig erfüllen.
 
@@ -229,9 +226,9 @@ Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends
 
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
-- Lerncoach-Instanzen authentisieren sich gegenüber dem Backend.
-- Schreibrechte für Fortschritts-Updates erhalten nur **autorisierte Akteure** (aktueller deutscher Pfad: zugelassener MCP-/OAuth-Client, gültiger OAuth-Subject und aktive serverseitige Lernsession mit passenden Scopes).
-- Die dauerhafte SkillPilot-ID wird in AI-Session-Responses nicht ausgegeben; vorhandene Response-Felder werden dort leer bzw. `null` gehalten.
+- Lernfortschrittsänderungen akzeptiert SkillPilot nur über zugelassene und authentisierte Integrationen.
+- Schreibrechte gelten nur mit Freigabe der lernenden Person, innerhalb einer aktiven kurzlebigen Lernsession und begrenzt auf den jeweiligen Vorgang.
+- Die dauerhafte pseudonyme Kennung wird dem KI-Frontend nicht offengelegt.
 
 #### Signierte Exporte
 

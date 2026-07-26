@@ -84,12 +84,13 @@ skillpilot:
       mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://skillpilot.com/api/openai/de/mcp}
       chatgpt-url: ${SKILLPILOT_OPENAI_DE_CHATGPT_URL:https://chatgpt.com/}
       security:
-        # Mirrors provider activation. An explicit false override is rejected
-        # by startup validation whenever the normal provider is enabled.
+        # Mandatory OAuth/provider safety baseline. It mirrors provider
+        # activation; an explicit false override is rejected at startup.
         secure-mode: ${SKILLPILOT_OPENAI_DE_ENABLED:false}
       mtls-edge:
-        # Production enables this together with the nginx mTLS edge. It is off
-        # by default so local direct MCP and integration tests remain usable.
+        # Optional transport-client hardening for the MCP resource only.
+        # Disabled means normal server-authenticated TLS plus mandatory OAuth.
+        # If enabled, startup validates the trusted proxy boundary fail-closed.
         enabled: ${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:false}
         # Exact numeric proxy peers only. The normal single-host deployment
         # reaches Spring from nginx via loopback.
@@ -109,20 +110,22 @@ skillpilot:
         request-timeout: PT30S
       oauth:
         enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}
-        # An activated normal provider must use private_key_jwt. In that mode client-id is the
-        # exact HTTPS CIMD metadata-document URL supplied by ChatGPT and the
-        # JWK Set URL is pinned to the same origin. The "none" default is only
-        # for disabled configuration and isolated component tests; secure
-        # provider startup rejects it.
+        # Supported production profiles:
+        # - pre-registered public client: exact opaque client-id plus "none";
+        # - CIMD client: exact HTTPS metadata-document client-id plus
+        #   private_key_jwt and a same-origin pinned JWK Set URL.
+        # Both profiles additionally require exact redirects, PKCE S256, and
+        # resource/audience and scope validation. The OpenAI mTLS edge is an
+        # optional additional hardening layer for the MCP resource.
         client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
         redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
         client-authentication-method: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:none}
         client-jwk-set-uri: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI:}
         client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
         client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}
-        # Comma-separated, exact former OpenAI-DE client IDs. In secure mode
-        # only persisted clients from this allowlist that still use "none" are
-        # revoked and removed during the transactional startup cutover.
+        # Comma-separated, exact former OpenAI-DE public-client IDs. Only
+        # persisted clients from this allowlist that still use "none" are
+        # revoked and removed during an explicit client cutover.
         legacy-client-ids: ${SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS:}
         protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://skillpilot.com/api/openai/de/oauth/protected-resource}
         access-token-ttl: ${SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL:PT1H}

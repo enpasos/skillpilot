@@ -22,10 +22,19 @@ public final class OpenAiDeSecureModeValidation {
 
     public static Result inspect(OpenAiDeProperties properties) {
         boolean secureMode = properties.getSecurity().isSecureMode();
-        boolean privateKeyJwt = "private_key_jwt".equals(normalizedAuthenticationMethod(properties));
-        boolean cimdHttpsDocument = isHttpsDocumentUri(properties.getOauth().getClientId());
-        boolean jwksHttpsSameOrigin = isHttpsDocumentUri(properties.getOauth().getClientJwkSetUri())
-                && sameOrigin(
+        boolean oauthEnabled = properties.getOauth().isEnabled();
+        String authenticationMethod = normalizedAuthenticationMethod(properties);
+        boolean publicClient = "none".equals(authenticationMethod);
+        boolean privateKeyJwt = "private_key_jwt".equals(authenticationMethod);
+        boolean clientAuthenticationSupported = publicClient || privateKeyJwt;
+        boolean clientIdConfigured = hasText(properties.getOauth().getClientId());
+        List<String> redirectUris = properties.getOauth().getRedirectUris();
+        boolean redirectUrisConfigured = redirectUris != null
+                && !redirectUris.isEmpty()
+                && redirectUris.stream().allMatch(OpenAiDeSecureModeValidation::isStrictHttpsUri);
+        boolean cimdHttpsDocument = isStrictHttpsDocumentUri(properties.getOauth().getClientId());
+        boolean jwksHttpsSameOrigin = isStrictHttpsDocumentUri(properties.getOauth().getClientJwkSetUri())
+                && haveSameStrictHttpsOrigin(
                         properties.getOauth().getClientId(),
                         properties.getOauth().getClientJwkSetUri());
         boolean asymmetricAlgorithm = ASYMMETRIC_JWS_ALGORITHMS.contains(
@@ -41,18 +50,38 @@ public final class OpenAiDeSecureModeValidation {
         List<String> violations = new ArrayList<>();
         addViolation(violations, secureMode, "security.secure-mode");
         if (secureMode) {
-            addViolation(violations, privateKeyJwt, "oauth.client-authentication-method");
-            addViolation(violations, cimdHttpsDocument, "oauth.client-id-cimd-document");
-            addViolation(violations, jwksHttpsSameOrigin, "oauth.client-jwk-set-uri-same-origin");
-            addViolation(violations, asymmetricAlgorithm, "oauth.client-assertion-signing-algorithm");
-            addViolation(violations, replayCacheConfigured, "oauth.client-assertion-replay-cache-size");
-            addViolation(violations, mtlsEdgeEnabled, "mtls-edge.enabled");
-            addViolation(violations, trustedProxiesConfigured, "mtls-edge.trusted-proxies");
+            addViolation(violations, oauthEnabled, "oauth.enabled");
+            addViolation(
+                    violations,
+                    clientAuthenticationSupported,
+                    "oauth.client-authentication-method");
+            addViolation(violations, clientIdConfigured, "oauth.client-id");
+            addViolation(violations, redirectUrisConfigured, "oauth.redirect-uris");
+            if (privateKeyJwt) {
+                addViolation(violations, cimdHttpsDocument, "oauth.client-id-cimd-document");
+                addViolation(violations, jwksHttpsSameOrigin, "oauth.client-jwk-set-uri-same-origin");
+                addViolation(
+                        violations,
+                        asymmetricAlgorithm,
+                        "oauth.client-assertion-signing-algorithm");
+                addViolation(
+                        violations,
+                        replayCacheConfigured,
+                        "oauth.client-assertion-replay-cache-size");
+            }
+            if (mtlsEdgeEnabled) {
+                addViolation(violations, trustedProxiesConfigured, "mtls-edge.trusted-proxies");
+            }
         }
 
         return new Result(
                 secureMode,
+                oauthEnabled,
+                clientAuthenticationSupported,
+                publicClient,
                 privateKeyJwt,
+                clientIdConfigured,
+                redirectUrisConfigured,
                 cimdHttpsDocument,
                 jwksHttpsSameOrigin,
                 asymmetricAlgorithm,
@@ -69,6 +98,10 @@ public final class OpenAiDeSecureModeValidation {
         }
     }
 
+    private static boolean hasText(String value) {
+        return value != null && !value.isBlank();
+    }
+
     private static String normalizedAuthenticationMethod(OpenAiDeProperties properties) {
         String value = properties.getOauth().getClientAuthenticationMethod();
         return value == null ? "" : value.trim().toLowerCase(Locale.ROOT);
@@ -79,19 +112,40 @@ public final class OpenAiDeSecureModeValidation {
         return value == null ? "" : value.trim().toUpperCase(Locale.ROOT);
     }
 
-    private static boolean isHttpsDocumentUri(String value) {
-        if (value == null || value.isBlank()) {
+    /**
+     * Returns whether {@code value} is an exact, absolute HTTPS URL suitable
+     * for a protocol endpoint.
+     *
+     * <p>Protocol endpoint values are deliberately stricter than general web
+     * links: surrounding whitespace, user-info, query strings, and fragments
+     * are rejected.</p>
+     */
+    public static boolean isStrictHttpsUri(String value) {
+        if (!hasText(value) || !value.equals(value.trim())) {
+            return false;
+        }
+        try {
+            URI uri = URI.create(value);
+            return "https".equalsIgnoreCase(uri.getScheme())
+                    && uri.getHost() != null
+                    && !uri.getHost().isBlank()
+                    && uri.getUserInfo() == null
+                    && uri.getQuery() == null
+                    && uri.getFragment() == null;
+        } catch (IllegalArgumentException exception) {
+            return false;
+        }
+    }
+
+    /** Returns whether {@code value} is a strict HTTPS URL for a document. */
+    public static boolean isStrictHttpsDocumentUri(String value) {
+        if (!isStrictHttpsUri(value)) {
             return false;
         }
         try {
             URI uri = URI.create(value);
             String path = uri.getRawPath();
-            return "https".equalsIgnoreCase(uri.getScheme())
-                    && uri.getHost() != null
-                    && !uri.getHost().isBlank()
-                    && uri.getUserInfo() == null
-                    && uri.getFragment() == null
-                    && path != null
+            return path != null
                     && !path.isBlank()
                     && !"/".equals(path);
         } catch (IllegalArgumentException exception) {
@@ -99,8 +153,9 @@ public final class OpenAiDeSecureModeValidation {
         }
     }
 
-    private static boolean sameOrigin(String first, String second) {
-        if (!isHttpsDocumentUri(first) || !isHttpsDocumentUri(second)) {
+    /** Returns whether two strict HTTPS documents share the same origin. */
+    public static boolean haveSameStrictHttpsOrigin(String first, String second) {
+        if (!isStrictHttpsDocumentUri(first) || !isStrictHttpsDocumentUri(second)) {
             return false;
         }
         try {
@@ -153,7 +208,12 @@ public final class OpenAiDeSecureModeValidation {
 
     public record Result(
             boolean secureMode,
+            boolean oauthEnabled,
+            boolean clientAuthenticationSupported,
+            boolean publicClient,
             boolean privateKeyJwt,
+            boolean clientIdConfigured,
+            boolean redirectUrisConfigured,
             boolean cimdHttpsDocument,
             boolean jwksHttpsSameOrigin,
             boolean asymmetricAlgorithm,
