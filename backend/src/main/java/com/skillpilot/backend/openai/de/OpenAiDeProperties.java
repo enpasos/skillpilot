@@ -18,6 +18,8 @@ public class OpenAiDeProperties {
     private Duration learningSessionTtl = Duration.ofHours(24);
     private String mcpUrl = "https://skillpilot.com/api/openai/de/mcp";
     private String chatgptUrl = "https://chatgpt.com/";
+    private final Security security = new Security();
+    private final MtlsEdge mtlsEdge = new MtlsEdge();
     private final OAuth oauth = new OAuth();
     private final RateLimit rateLimit = new RateLimit();
 
@@ -93,12 +95,66 @@ public class OpenAiDeProperties {
         this.chatgptUrl = chatgptUrl;
     }
 
+    public Security getSecurity() {
+        return security;
+    }
+
+    public MtlsEdge getMtlsEdge() {
+        return mtlsEdge;
+    }
+
     public OAuth getOauth() {
         return oauth;
     }
 
     public RateLimit getRateLimit() {
         return rateLimit;
+    }
+
+    /**
+     * Fail-closed production profile for the OpenAI-DE provider boundary.
+     *
+     * <p>Every normally activated provider instance must satisfy all secure-mode
+     * invariants before the application starts. Isolated component tests must
+     * load their components without activating the normal provider
+     * configuration; setting this property to {@code false} is not a runtime
+     * escape hatch.</p>
+     */
+    public static class Security {
+
+        private boolean secureMode;
+
+        public boolean isSecureMode() {
+            return secureMode;
+        }
+
+        public void setSecureMode(boolean secureMode) {
+            this.secureMode = secureMode;
+        }
+    }
+
+    /** Configuration of the trusted reverse-proxy boundary for OpenAI mTLS. */
+    public static class MtlsEdge {
+
+        private boolean enabled;
+        private List<String> trustedProxies = new ArrayList<>(List.of("127.0.0.1", "::1"));
+
+        public boolean isEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(boolean enabled) {
+            this.enabled = enabled;
+        }
+
+        public List<String> getTrustedProxies() {
+            return trustedProxies;
+        }
+
+        public void setTrustedProxies(List<String> trustedProxies) {
+            this.trustedProxies =
+                    trustedProxies == null ? new ArrayList<>() : new ArrayList<>(trustedProxies);
+        }
     }
 
     /**
@@ -179,11 +235,17 @@ public class OpenAiDeProperties {
     public static class OAuth {
 
         private boolean enabled;
-        // The public client ID is chosen by SkillPilot and entered unchanged in
-        // ChatGPT app management. Redirect URIs must be copied from the
-        // matching ChatGPT app. Neither value receives an implicit fallback.
+        // In the production private_key_jwt mode this is the exact HTTPS CIMD
+        // metadata-document URL supplied by ChatGPT. The legacy "none" binding
+        // remains only for isolated component tests that do not activate the
+        // normal OpenAI-DE provider.
         private String clientId = "";
         private List<String> redirectUris = new ArrayList<>();
+        private String clientAuthenticationMethod = "none";
+        private String clientJwkSetUri = "";
+        private String clientAssertionSigningAlgorithm = "RS256";
+        private int clientAssertionReplayCacheSize = 10_000;
+        private List<String> legacyClientIds = new ArrayList<>();
         private String protectedResourceMetadata =
                 "https://skillpilot.com/api/openai/de/oauth/protected-resource";
         private Duration accessTokenTtl = Duration.ofHours(1);
@@ -211,6 +273,55 @@ public class OpenAiDeProperties {
 
         public void setRedirectUris(List<String> redirectUris) {
             this.redirectUris = redirectUris == null ? new ArrayList<>() : new ArrayList<>(redirectUris);
+        }
+
+        public String getClientAuthenticationMethod() {
+            return clientAuthenticationMethod;
+        }
+
+        public void setClientAuthenticationMethod(String clientAuthenticationMethod) {
+            this.clientAuthenticationMethod = clientAuthenticationMethod;
+        }
+
+        public String getClientJwkSetUri() {
+            return clientJwkSetUri;
+        }
+
+        public void setClientJwkSetUri(String clientJwkSetUri) {
+            this.clientJwkSetUri = clientJwkSetUri;
+        }
+
+        public String getClientAssertionSigningAlgorithm() {
+            return clientAssertionSigningAlgorithm;
+        }
+
+        public void setClientAssertionSigningAlgorithm(String clientAssertionSigningAlgorithm) {
+            this.clientAssertionSigningAlgorithm = clientAssertionSigningAlgorithm;
+        }
+
+        public int getClientAssertionReplayCacheSize() {
+            return clientAssertionReplayCacheSize;
+        }
+
+        public void setClientAssertionReplayCacheSize(int clientAssertionReplayCacheSize) {
+            this.clientAssertionReplayCacheSize = clientAssertionReplayCacheSize;
+        }
+
+        /**
+         * Exact former OpenAI-DE OAuth client IDs that may be removed during
+         * the one-way switch to CIMD/private_key_jwt.
+         *
+         * <p>The list is deliberately empty by default. A configured entry is
+         * eligible for removal only when the persisted client still uses the
+         * legacy public-client authentication method {@code none}.</p>
+         */
+        public List<String> getLegacyClientIds() {
+            return legacyClientIds;
+        }
+
+        public void setLegacyClientIds(List<String> legacyClientIds) {
+            this.legacyClientIds =
+                    legacyClientIds == null ? new ArrayList<>() : new ArrayList<>(legacyClientIds);
         }
 
         public String getProtectedResourceMetadata() {

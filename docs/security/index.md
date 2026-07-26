@@ -6,6 +6,12 @@ This page groups security and privacy documentation.
 
 - [Data Privacy and Storage Concept](data-privacy.md)
 
+## OpenAI MCP
+
+- [OpenAI MCP Client Binding](openai-mcp-client-binding.md)
+- [OpenAI MCP OAuth, Learner, and 24h Session Architecture](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+- [OpenAI MCP mTLS Edge Deployment](../deploy/openai-mcp-edge-mtls.md)
+
 ## Maintenance
 
 - Add durable security, privacy, or compliance notes here.

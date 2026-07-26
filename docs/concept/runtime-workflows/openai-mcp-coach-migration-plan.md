@@ -1,9 +1,10 @@
 # Migration des SkillPilot-Coaches zur OpenAI-MCP-App
 
-**Stand:** 25. Juli 2026
+**Stand:** 26. Juli 2026
 
-**Status:** deutsche data-only Implementierung lokal abgeschlossen; Deployment,
-echte ChatGPT-OAuth-Acceptance und Cutover ausstehend  
+**Status:** deutsche data-only MCP-App ist der aktuelle ChatGPT-Pfad; die
+produktive Härtung der Clientbindung mit mTLS, CIMD und `private_key_jwt` wird
+vor der allgemeinen Freigabe fail-closed ausgerollt und abgenommen
 **Ziel:** den ursprünglichen deutschen GPT-Lerncoach funktional als
 providergehostete MCP-App wiederherstellen, ohne sichtbare technische Schlüssel
 und ohne von Custom-GPT-Action-Retention abhängig zu sein.
@@ -22,16 +23,20 @@ deutsche, UI-lose OpenAI-MCP-App:
 ```text
 ChatGPT App „SkillPilot Coach (Deutsch)"
         |
-        | MCP + OAuth Bearer
+        | OpenAI-Connector-mTLS + OAuth Bearer
         v
-https://skillpilot.com/api/openai/de/mcp
+Nginx / https://skillpilot.com/api/openai/de/mcp
         |
-        | Reverse Proxy auf denselben öffentlichen Backenddienst
+        | geprüfte interne mTLS-Header, nur über Loopback
         v
 Spring Boot
         |
         +-- isolierter OpenAI-DE-MCP-Transport und Toolvertrag
-        +-- OAuth / OpenAI-DE-Verbindung / Autorisierung
+        +-- OAuth Authorization Server
+        |     +-- exakte HTTPS-CIMD-client_id
+        |     +-- private_key_jwt gegen gepinntes gleich-originiges JWKS
+        |     +-- exakte Callback-, Resource- und Scope-Allowlist
+        +-- OAuth-Subject-/Lernendenbindung und absolute 24h-Lernsession
         +-- CoachStateProjection
         +-- CoachToolFacade
         +-- LearnerService / Curriculum / Datenbank
@@ -95,6 +100,11 @@ gegen Identität, Zustandsmaschine und aktuelle fachliche Optionen geprüft.
    Teil des produktiven Toolkatalogs.
 8. **Funktionsparität statt Methodenparität:** Entscheidend sind vollständige
    Lernabläufe, nicht identische alte HTTP-Operationen.
+9. **Getrennte Sicherheitsbindungen:** mTLS identifiziert die
+   OpenAI-Connector-Infrastruktur, CIMD plus `private_key_jwt` die
+   konfigurierte stabile ChatGPT-OAuth-Clientidentität, OAuth den autorisierten
+   Principal und die serverseitige 24h-Lernsession die aktuelle fachliche
+   Nutzung. Keine Schicht ersetzt eine andere.
 
 ## 4. Zieltopologie
 
@@ -136,8 +146,16 @@ Produktividentität und wird nicht zwischen ChatGPT und Spring geschaltet.
 
 ### 4.2 Sicherheits- und Fachgrenze
 
-Spring ist Transport-, Sicherheits- und Fachgrenze. Der eigene OpenAI-DE-Adapter
-liegt unmittelbar an `CoachToolFacade` und `CoachStateProjection`. Er:
+Nginx und Spring bilden gemeinsam die Transport- und Sicherheitsgrenze; Spring
+bleibt die Fachgrenze. Nginx verlangt ausschließlich am MCP-Pfad ein gültiges
+OpenAI-Clientzertifikat und prüft CA-Kette, `clientAuth`, Gültigkeit und den
+exakten SAN `mtls.prod.connectors.openai.com`. Spring akzeptiert die daraus
+abgeleiteten internen Header nur vom explizit konfigurierten numerischen
+Trusted Proxy. Discovery, Authorization, Token und Browser-Binding bleiben
+ohne Clientzertifikat erreichbar.
+
+Der eigene OpenAI-DE-Adapter liegt unmittelbar an `CoachToolFacade` und
+`CoachStateProjection`. Er:
 
 - validiert bei **jedem** Aufruf Token, Issuer, Audience, Ablauf und Scope;
 - löst das opake OpenAI-Verbindungssubjekt serverseitig auf den Lernenden auf;
@@ -148,10 +166,20 @@ liegt unmittelbar an `CoachToolFacade` und `CoachStateProjection`. Er:
   Schülerantworten.
 
 Der MCP-Endpunkt ist ausschließlich über den dafür vorgesehenen stabilen HTTPS-
-Origin öffentlich erreichbar. Andere Backendendpunkte und interne Identitäten
-werden dadurch nicht freigegeben. Falls später aus echten Betriebsgründen eine
-Prozesstrennung erforderlich wird, kann sie hinter unveränderter öffentlicher URL
-erfolgen.
+Origin und den mTLS-geschützten Proxy erreichbar. Der Spring-Port ist auf
+Loopback gebunden und darf nicht öffentlich exponiert werden. Andere
+Backendendpunkte und interne Identitäten werden dadurch nicht freigegeben.
+Falls später aus echten Betriebsgründen eine Prozesstrennung erforderlich wird,
+kann sie hinter unveränderter öffentlicher URL erfolgen.
+
+mTLS attestiert die OpenAI-Connector-Infrastruktur, nicht den sichtbaren
+App-Namen. Die zusätzliche app-spezifische Eingrenzung geschieht am
+Authorization Server über die exakt konfigurierte HTTPS-CIMD-Client-ID,
+`private_key_jwt`, das gleich-originige JWKS sowie exakte Callback-, Resource-
+und Scope-Allowlisten. Ohne eine ausdrückliche Provider-Garantie ist auch dies
+keine kryptografische Attestation des Anzeigenamens gegenüber jeder anderen App
+derselben Provider-Infrastruktur. Die verbindliche Detailarchitektur steht in
+[OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md).
 
 ### 4.3 Stabile öffentliche URLs
 
@@ -465,36 +493,48 @@ Scopes, Verbindungen, Binding Grants, Tests und Widerrufslogik.
 
 ### 7.1 Verbindungsablauf
 
-1. Der Nutzer wählt im SkillPilot-Cockpit „Mit ChatGPT verbinden“. Vor jedem
+1. Der App-Autor konfiguriert für die produktive Verbindung die exakte
+   HTTPS-CIMD-Client-ID, deren gleich-originige JWKS-URL, den asymmetrischen
+   Signaturalgorithmus und die in ChatGPT angezeigten exakten Callback-URIs.
+   SkillPilot veröffentlicht keinen offenen DCR-Endpunkt und akzeptiert im
+   sicheren Betrieb weder `none` noch einen frei wählbaren Client.
+2. Vor dem sicheren Vollbetrieb verlangt der Edge ausschließlich für
+   `/api/openai/de/mcp` ein gültiges OpenAI-Clientzertifikat. Browserfähige
+   OAuth- und Discovery-Endpunkte bleiben davon ausgenommen.
+3. Der Nutzer wählt im SkillPilot-Cockpit „Mit ChatGPT verbinden“. Vor jedem
    Backendstart muss der Browser ausdrücklich bestätigen, dass die für das
    OpenAI-Konto geltende Mindestalterregel erfüllt ist und bei unter
    18-Jährigen die Erlaubnis eines Elternteils oder einer erziehungsberechtigten
    Person vorliegt. Die Bestätigung gilt nur für das aktuelle pseudonyme
    SkillPilot-Profil in diesem Browser-Tab; ein Profilwechsel fragt neu.
-2. Das Backend akzeptiert ausschließlich
+4. Das Backend akzeptiert ausschließlich
    `providerEligibilityConfirmed=true`, bevor es Lernzustand liest oder
    verändert. Fehlend oder `false` ergibt `403`. SkillPilot speichert dafür
    weder Geburtsdatum noch Altersprofil; die Angabe ist eine bewusste
    Selbstbestätigung und keine Identitäts- oder Altersverifikation.
-3. SkillPilot erzeugt einen einmaligen, nur gehasht gespeicherten Binding Grant
+5. SkillPilot erzeugt einen einmaligen, nur gehasht gespeicherten Binding Grant
    und speichert daran den engen typisierten Start-Intent, ohne den Lernstand zu
    verändern.
-4. Der Grant wird für fünf Minuten in einem `HttpOnly`, `Secure`,
+6. Der Grant wird für fünf Minuten in einem `HttpOnly`, `Secure`,
    `SameSite=Lax`-Cookie an den OAuth-Ablauf gebunden.
-5. Beim Austausch des Binding Grants legt SkillPilot eine noch nicht
+7. Beim Austausch des Binding Grants legt SkillPilot eine noch nicht
    autorisierte Verbindung und einen Pending Launch an; der Lernstand bleibt
    weiterhin unverändert.
-6. Authorization Code mit PKCE `S256` verbindet das OpenAI-App-Subjekt mit dem
-   Lernenden. Erst bei erfolgreicher Ausgabe des ersten Access Tokens wendet
+8. Authorization Code mit PKCE `S256` verbindet das OpenAI-App-Subjekt mit dem
+   Lernenden. Beim Token-Austausch authentisiert sich der konfigurierte
+   ChatGPT-OAuth-Client zusätzlich mit einer signierten
+   `private_key_jwt`-Assertion. SkillPilot prüft Signatur, `kid`, Algorithmus,
+   `iss`, `sub`, Audience, Ablauf und einmaliges `jti` gegen das konfigurierte
+   JWKS. Erst bei erfolgreicher Ausgabe des ersten Access Tokens wendet
    SkillPilot den Pending Launch unter Learner- und Datensatz-Lock an.
    Tokenpersistenz, Intent-Anwendung und Autorisierungsmarkierung committen oder
    rollen gemeinsam zurück.
-7. Erst nach erfolgreicher Anwendung erhält der Pending Launch `consumed_at`;
+9. Erst nach erfolgreicher Anwendung erhält der Pending Launch `consumed_at`;
    anschließend wird die Verbindung als autorisiert markiert.
-8. Das opake OpenAI-Subjekt wird OAuth-Principal; die interne SkillPilot-ID
+10. Das opake OpenAI-Subjekt wird OAuth-Principal; die interne SkillPilot-ID
    verlässt das Backend nie. Ein MCP-Toolaufruf liest nur diese Verbindung und
    konsumiert keinen Start-Intent.
-9. Bei erfolgreicher Aktivierung wird eine vorherige deutsche Verbindung
+11. Bei erfolgreicher Aktivierung wird eine vorherige deutsche Verbindung
    kontrolliert widerrufen.
 
 Bei einer bereits autorisierten Verbindung wird der typisierte Intent direkt
@@ -527,6 +567,11 @@ verständliche SkillPilot-Verbindungsseite, nicht auf einen technischen Fehler.
 | Audience/Resource | exakt `https://skillpilot.com/api/openai/de/mcp` |
 | Scopes | getrenntes OpenAI-DE-Read und -Write |
 | PKCE | ausschließlich `S256` |
+| OAuth-Client | exakte HTTPS-CIMD-Client-ID; kein offenes DCR |
+| Token-Endpunkt-Clientauthentisierung | ausschließlich `private_key_jwt` |
+| Client-JWKS | exakt konfigurierte HTTPS-URL derselben Origin wie die CIMD-Client-ID |
+| Redirect-URI | exakte produktive Allowlist |
+| MCP-Netzwerkclient | OpenAI-Connector-mTLS mit CA-Kette, `clientAuth` und exaktem SAN |
 
 Der `resource`-Wert wird bei Authorization- und Token-Request exakt und ohne
 Trimmen oder Slash-Normalisierung verglichen. Spring speichert ihn im
@@ -543,7 +588,9 @@ zur technischen Fehlerkorrelation verwendet werden.
 Der MCP-Host veröffentlicht Protected-Resource-Metadaten. Spring liefert
 ungültige oder fehlende Autorisierung als standardkonforme
 `WWW-Authenticate`-Challenge einschließlich `_meta["mcp/www_authenticate"]`
-zurück.
+zurück. Ein öffentlicher MCP-Aufruf ohne gültiges OpenAI-Clientzertifikat
+erreicht diese Tokenprüfung nicht und wird bereits am Edge mit `403`
+abgewiesen.
 
 ## 8. Vollständige Workflow-Parität
 
@@ -606,8 +653,8 @@ Node-Prototyp- und MCP-Regressionsquellen bleiben getrennt.
 sichtbaren technischen Schlüssel.
 
 **Implementierungsstand:** Spring-Transport, echte Projektion und isolierte
-Tool-Allowlist sind lokal abgeschlossen; der externe Developer-App-Lauf folgt
-nach Deployment.
+Tool-Allowlist sind implementiert und im aktuellen deutschen MCP-Pfad
+ausgerollt. Die fachliche Acceptance wird weiter vervollständigt.
 
 ### Etappe 2 – OpenAI-DE-OAuth
 
@@ -615,20 +662,26 @@ nach Deployment.
   herauslösen, ohne Claude und OpenAI datenbankseitig zu vermischen;
 - OpenAI-DE-Verbindung, Binding Grant, Scopes, Token und Widerruf implementieren;
 - Resource/Audience-, PKCE-, Replay-, Cross-Learner- und Expiry-Tests ergänzen;
+- mTLS ausschließlich am MCP-Rand, HTTPS-CIMD-Client-ID,
+  `private_key_jwt`, gleich-originiges JWKS und exakte Redirect-Allowlist
+  fail-closed ergänzen;
 - Cockpit-Aktion „Mit ChatGPT verbinden“ hinter Feature Flag bereitstellen.
 
 **Exit:** Zwei Testlernende sind strikt getrennt; kein fachlicher Toolaufruf ist
 ohne gültige, passende Verbindung möglich.
 
 **Implementierungsstand:** OAuth-/Binding-Code, additive Persistenzmigration,
-PKCE-, Resource-, Refresh-, Revocation- und Isolationstests sind lokal
-abgeschlossen. Ein strikt datenloser Discovery-Bootstrap löst die zirkuläre
-Erstkonfiguration: ChatGPT kann MCP- und OAuth-Metadaten prüfen, bevor die
-app-spezifische Callback-URL bekannt ist. Die öffentliche Client-ID wird von
-SkillPilot stabil als `skillpilot-chatgpt-de-prod` gewählt und identisch in
-beiden Systemen eingetragen; ausschließlich die echte Callback-URL wird aus der
-App-Verwaltung übernommen. Der Bootstrap stellt keine Tools, Token-Endpunkte,
-Lernerdaten oder Coach-Readiness bereit und wird vor dem Vollbetrieb deaktiviert.
+PKCE-, Resource-, Refresh-, Revocation- und Isolationstests sind implementiert.
+Der bisherige öffentliche `none`-Client ist nur noch ein zu entfernender
+Legacyzustand. Der sichere Produktivvertrag verlangt die exakte von ChatGPT
+veröffentlichte HTTPS-CIMD-Client-ID, `private_key_jwt`, das exakt konfigurierte
+gleich-originige JWKS, exakte Callback-URIs sowie das mTLS-Gate am MCP-Rand. Ein
+strikt datenloser Discovery-Bootstrap bleibt nur für die zirkuläre
+Erstkonfiguration verfügbar: Er stellt keine Tools, Token-Endpunkte,
+Lernerdaten oder Coach-Readiness bereit und wird vor dem Vollbetrieb
+deaktiviert. Der einmalige Legacy-Cutover widerruft nur ausdrücklich
+allowlistete Altclients und deren Tokens, Consents, Verbindungen,
+Lernsessions und Pending Launches.
 
 ### Etappe 3 – Normaler Lernworkflow
 
@@ -643,8 +696,10 @@ der sichtbare Key-/Value-Workaround und ohne Funktionsverlust zum ursprüngliche
 Coach.
 
 **Implementierungsstand:** elf deutsche Werkzeuge, Context-Projektion,
-Knowledge-Verteilung und Cockpit-Canary sind lokal implementiert. Die fachliche
-End-to-End-Acceptance in ChatGPT steht noch aus.
+Knowledge-Verteilung und Cockpit-Start sind ausgerollt. Die fachliche
+End-to-End-Acceptance in ChatGPT läuft weiter; bekannte Workflowabweichungen
+werden allgemein in Zustandsprojektion und Toolkoordination korrigiert, nicht
+durch fallspezifische Curriculumregeln.
 
 ### Etappe 4 – Recall und Prüfung
 
@@ -690,6 +745,12 @@ führt höchstens zu einem frischen Context-Read, nicht zu verlorenem Lernzustan
 
 **Exit:** Die deutsche MCP-App ist der Standardpfad; Visible Session bleibt
 sofort aktivierbarer Rückfallpfad.
+
+**Implementierungsstand:** `openai-mcp` ist der aktuelle deutsche
+Frontendpfad. `visible-session` bleibt als isolierter Rollback erhalten und ist
+keine produktive Referenzarchitektur mehr. Die allgemeine Freigabe des
+MCP-Pfads setzt zusätzlich den vollständig abgenommenen sicheren
+mTLS-/CIMD-/`private_key_jwt`-Cutover voraus.
 
 ### Etappe 7 – Optionale UI
 
@@ -781,34 +842,37 @@ Dialogs nicht blockieren.
 
 ## 12. Nächster ausführbarer Schnitt
 
-Der lokale Implementierungsschnitt ist über den früher geplanten Read-Slice
-hinaus vollständig: getrennte Spring-MCP-Server, deutscher Toolvertrag, OAuth,
-Binding, sichere Projektion, alle elf Workflows, Frontend-Canary, lokales Rate
-Limiting, privacy-sichere Telemetrie und automatisierte Tests liegen vor. Der
-nächste Schnitt ist nach Abschluss der lokalen Härtung der kontrollierte reale
-Lauf:
+Der deutsche MCP-Pfad ist funktional ausgerollt. Der nächste kontrollierte
+Schnitt ist der produktive Sicherheits-Cutover, ohne Änderung der
+Lernziel-, Mastery-, Curriculum- oder Coach-Semantik:
 
-1. Discovery-Bootstrap allein aktivieren und den datenlosen `401`-/Metadata-
-   Vertrag an der stabilen Produktions-URL prüfen;
-2. neue deutsche Developer-App mit Client-ID `skillpilot-chatgpt-de-prod`
-   vorbereiten und die echte Callback-URL aus der App-Verwaltung übernehmen;
-3. Bootstrap deaktivieren, Callback konfigurieren und Backend mit OAuth/MCP
-   atomar aktivieren; Schreib-Kill-Switch deaktiviert lassen;
-4. OAuth/PKCE und Kontext-Rehydration im read-only Canary testen;
-5. danach Writes bewusst aktivieren und die vollständige deutsche
-   Workflow-Paritätsmatrix durchführen;
-6. erst nach Tarif-, Regions- und Oberflächen-Acceptance die Frontendvariante
-   zum Standard machen.
+1. Datenbank und aktive Nginx-Konfiguration sichern;
+2. exakte HTTPS-CIMD-Client-ID, gleich-originige JWKS-URL, produktive
+   Callback-URI und die ausdrücklich zu entfernenden Legacy-Client-IDs
+   festhalten;
+3. die gepinnte OpenAI-mTLS-CA, den lokalen Zertifikatsprüfer und das
+   ausschließlich am MCP-Pfad wirksame Nginx-Gate einmalig privilegiert
+   installieren;
+4. Secure-Mode-Werte für mTLS, `private_key_jwt`, CIMD/JWKS, Callback,
+   Resource, Scopes und einmalige Legacy-Allowlist setzen;
+5. Bootstrap deaktivieren, Backend auf Loopback binden, normal deployen und
+   die fail-closed Runtime-Gates ausführen;
+6. die App einmal neu verbinden; OAuth/PKCE, Token-Austausch,
+   Kontext-Rehydration und Read-/Write-Scope über die echte ChatGPT-App
+   abnehmen;
+7. die Legacy-Allowlist nach erfolgreichem Cutover aus dem Environment
+   entfernen und die vollständige Workflow-Paritätsmatrix weiterführen.
 
 Die exakten Betriebswerte, Smoke-Tests und Rollbackschritte stehen in
 [openai-mcp-coach-de.md](../../deploy/openai-mcp-coach-de.md).
 
 ## 13. Offizielle OpenAI-Grundlagen
 
-- [MCP-Server und Conversation Awareness](https://developers.openai.com/apps-sdk/concepts/mcp-server#why-apps-sdk-standardises-on-mcp)
-- [Server Instructions für Toolkoordination](https://developers.openai.com/apps-sdk/build/mcp-server#add-server-instructions-for-cross-tool-guidance)
-- [OAuth für Apps](https://developers.openai.com/apps-sdk/build/auth)
+- [OpenAI: Plugin authentication und OAuth-Metadaten](https://developers.openai.com/plugins/build/auth)
+- [OpenAI: Client identification](https://developers.openai.com/plugins/build/auth#client-identification)
+- [OpenAI: Client registration mit CIMD und `private_key_jwt`](https://developers.openai.com/plugins/build/auth#client-registration)
+- [OpenAI: Mutual TLS](https://developers.openai.com/plugins/build/auth#mutual-tls-mtls)
+- [OpenAI: Resource-/Audience-Bindung](https://developers.openai.com/plugins/build/auth#echo-the-resource-parameter-throughout-the-oauth-flow)
 - [Data-only Apps ohne eigene UI](https://learn.chatgpt.com/docs/build-app#app-building-model)
-- [Toolresultate und Sichtbarkeit](https://developers.openai.com/apps-sdk/reference#tool-results)
 - [Plugins in ChatGPT und Codex](https://help.openai.com/de-de/articles/20001256-plugins-in-chatgpt-and-codex)
 - [OpenAI-Mindestalter und Elternzustimmung](https://help.openai.com/en/articles/8313401-is-chatgpt-safe-for-all-ages)

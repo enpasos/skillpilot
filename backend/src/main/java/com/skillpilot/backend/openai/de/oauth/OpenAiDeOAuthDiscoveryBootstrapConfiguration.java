@@ -63,11 +63,15 @@ public class OpenAiDeOAuthDiscoveryBootstrapConfiguration {
                 .GET(
                         OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_WELL_KNOWN_PATH,
                         request -> metadataResponse(
-                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(issuer)))
+                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(
+                                        issuer,
+                                        properties)))
                 .GET(
                         OpenAiDeOAuthMetadataController.AUTHORIZATION_SERVER_COMPATIBILITY_PATH,
                         request -> metadataResponse(
-                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(issuer)))
+                                OpenAiDeOAuthMetadataController.authorizationServerMetadata(
+                                        issuer,
+                                        properties)))
                 .build();
     }
 

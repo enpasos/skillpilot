@@ -1,7 +1,7 @@
 # Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches
 
-**Stand:** 22. Juli 2026  
-**Status:** normative Migrationsmatrix für die UI-lose deutsche MCP-App
+**Stand:** 26. Juli 2026
+**Status:** normative Paritätsmatrix für die UI-lose deutsche MCP-App
 
 Die ChatGPT-MCP-App besitzt keine Knowledge-Uploadfläche wie ein Custom GPT.
 Die bisherigen sieben deutschen Knowledge-Dokumente bleiben deshalb als
@@ -9,6 +9,15 @@ fachliche Ausgangsspezifikation erhalten, werden aber nicht zur Laufzeit gesucht
 oder hochgeladen. Jede produktionskritische Regel liegt unmittelbar dort, wo sie
 wirksam sein muss: in Server-Instruktionen, frischen zustandsabhängigen Policies,
 engen Toolbeschreibungen oder Backendguards.
+
+Dieses Dokument beschreibt fachliches Verhalten, nicht die
+Transportauthentisierung. Für mTLS, die exakte CIMD-Client-ID,
+`private_key_jwt`, Callback-/Resource-/Scope-Allowlisten und die 24h-
+Lernsession sind
+[OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md) und
+[OAuth-, Lernenden- und 24h-Sitzungsbindung](openai-mcp-oauth-learner-session-architecture.md)
+maßgeblich. Insbesondere attestiert mTLS die OpenAI-Connector-Infrastruktur und
+nicht den sichtbaren App-Namen.
 
 Normative Quellen der bisherigen Variante:
 

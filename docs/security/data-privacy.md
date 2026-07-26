@@ -1,7 +1,7 @@
 # Data Privacy and Storage Concept
 
-Status: updated for the rollback-only ChatGPT Visible Session and German OpenAI
-OAuth/MCP App architecture on 2026-07-24.
+Status: updated for the current German OpenAI OAuth/MCP App architecture and
+the rollback-only ChatGPT Visible Session on 2026-07-26.
 
 This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
@@ -35,7 +35,7 @@ Two ChatGPT integrations coexist during migration:
    fallback. It is not the German OpenAI-MCP contract. A temporary `sps_...`
    bearer token is deliberately visible in the prepared message and subsequent
    state footer.
-2. **German OpenAI OAuth/MCP App:** the target German integration. ChatGPT acts
+2. **German OpenAI OAuth/MCP App:** the current German integration. ChatGPT acts
    as OAuth client, then invokes the data-only MCP server embedded in the
    SkillPilot Spring Boot process.
 
@@ -114,6 +114,17 @@ expires absolutely after at most 24 hours; use does not extend it.
 
 The backend keeps this provider lane separate from the Visible Session tables
 and Claude connection records.
+
+The protected `/api/openai/de/mcp` endpoint and its subpaths additionally
+require OpenAI-connector mTLS at the edge. The edge validates the OpenAI CA
+chain, the `clientAuth` extended key usage, and the exact DNS SAN
+`mtls.prod.connectors.openai.com`. The authorization server accepts only the
+configured HTTPS CIMD client identity, same-origin JWKS, and a valid
+`private_key_jwt`, together with PKCE S256 and exact redirect URI, resource,
+audience, and scopes. Open DCR and client authentication method `none` are not
+production modes. mTLS identifies OpenAI's connector infrastructure and CIMD
+identifies the accepted OAuth client contract; neither alone proves the
+learner-visible App name.
 
 It stores:
 
@@ -214,6 +225,10 @@ complete.
    yet applying it, creates a short-lived one-time binding grant, stores its
    hash, and sets the raw value only as a protected browser cookie.
 4. ChatGPT starts OAuth 2.1 authorization with PKCE and exact resource binding.
+   The authorization server also requires the configured HTTPS CIMD client
+   identity and verifies its `private_key_jwt` against the same-origin JWKS.
+   The protected MCP request path separately requires the validated
+   OpenAI-connector mTLS identity.
    The authorization request can consume only the matching, unexpired browser
    binding and creates an opaque connection subject plus pending launch. The
    exact resource is retained with the authorization and checked again during
@@ -346,7 +361,8 @@ remain responsible for preserving access keys and identity mappings.
   current provider contract.
 - The paused Claude sources must not be interpreted as an enabled product option.
 
-Before public MCP release, the privacy notice shown in the cockpit, this data
-inventory, provider disclosures, age/guardian policy, retention configuration,
-and real revocation behavior must be reviewed together against the deployed
-OpenAI App version.
+Before a production-App cutover, the privacy notice shown in the cockpit, this
+data inventory, provider disclosures, age/guardian policy, retention
+configuration, real revocation behavior, edge mTLS validation, and exact
+CIMD/`private_key_jwt` client binding must be reviewed together against the
+deployed OpenAI App version.

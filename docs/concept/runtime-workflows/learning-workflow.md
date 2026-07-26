@@ -2,15 +2,17 @@
 
 This document describes the runtime workflow from static curricula to learner-specific navigation and mastery updates.
 
-The workflow is provider-neutral inside the backend. The current learner-facing
-ChatGPT adapter is the
-[Visible Session flow](chatgpt-visible-session-flow.md): it projects the state
-machine into numbered visible choices, reloads state on every normal substantive
-turn, and keeps only the values needed by later Actions visible in the dialog.
-The retained Claude adapter uses the same safe state projection and protected exam
-authorization, and now covers personalization as well. It remains disabled until
-the complete provider-specific workflow has passed a real adult-only end-to-end
-acceptance run. The shared boundary is documented in
+The workflow is provider-neutral inside the backend. The current German
+learner-facing ChatGPT adapter is the
+[OpenAI MCP App](openai-mcp-oauth-learner-session-architecture.md): it reloads
+fresh allowlisted state through OAuth-authenticated, data-only tools. The backend
+resolves the learner and a separate, absolutely expiring 24-hour learning
+session; no SkillPilot ID or session token is carried in chat or tool arguments.
+The [Visible Session flow](chatgpt-visible-session-flow.md) remains only a
+Custom-GPT rollback path and possible English fallback. The retained Claude
+adapter uses the same safe state projection and protected exam authorization,
+but remains disabled until its complete provider-specific workflow has passed a
+real adult-only end-to-end acceptance run. The shared boundary is documented in
 [Provider-Neutral Learning-Coach Boundary](provider-neutral-coach-boundary.md).
 
 ## 1. Data Foundation: Landscapes, Structure, and Filters

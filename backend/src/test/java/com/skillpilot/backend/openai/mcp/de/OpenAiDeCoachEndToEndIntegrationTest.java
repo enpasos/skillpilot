@@ -9,6 +9,7 @@ import com.skillpilot.backend.domain.OpenAiDeBindingGrant;
 import com.skillpilot.backend.domain.OpenAiDeConnection;
 import com.skillpilot.backend.domain.OpenAiDePendingLaunch;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
+import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
 import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
@@ -44,6 +45,8 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 /**
@@ -79,7 +82,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String PERMANENT_SKILLPILOT_ID = "SP-E2E-PERMANENT-ID-MUST-NOT-LEAK";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-    private static final String CLIENT_ID = "chatgpt-e2e-client";
+    private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.clientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
 
@@ -112,6 +115,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private JdbcOperations jdbcOperations;
 
     private HttpClient browser;
+
+    @DynamicPropertySource
+    static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
+        OpenAiDeSecureOAuthTestServer.registerSecureProperties(registry);
+    }
 
     @BeforeEach
     void setUp() {
@@ -317,13 +325,14 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         HttpResponse<String> token = postForm(
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                List.of(
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                         Map.entry("grant_type", "authorization_code"),
                         Map.entry("client_id", CLIENT_ID),
                         Map.entry("redirect_uri", CALLBACK),
                         Map.entry("code", callbackQuery.get("code")),
                         Map.entry("code_verifier", VERIFIER),
-                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
+                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
         assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
         assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, createdConnection.getSubject());
         String accessToken = objectMapper.readTree(token.body()).path("access_token").asText();
@@ -525,10 +534,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         HttpResponse<String> revocation = postForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
-                List.of(
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                         Map.entry("client_id", CLIENT_ID),
                         Map.entry("token", refreshToken),
-                        Map.entry("token_type_hint", "refresh_token")));
+                        Map.entry("token_type_hint", "refresh_token")),
+                        OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT));
         assertThat(revocation.statusCode()).withFailMessage(revocation.body()).isEqualTo(200);
         assertThat(connectionRepository.findById(createdConnection.getSubject()))
                 .get()
@@ -598,14 +608,17 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     private HttpResponse<String> postMcp(String accessToken, String body) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder(localUri("/api/openai/de/mcp"))
+        HttpRequest.Builder request = OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(
+                HttpRequest.newBuilder(localUri("/api/openai/de/mcp"))
                 .header(HttpHeaders.CONTENT_TYPE, "application/json")
                 .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .header("MCP-Protocol-Version", "2025-11-25")
+                .header("MCP-Protocol-Version", "2025-11-25"));
+        return browser.send(
+                request
                 .POST(HttpRequest.BodyPublishers.ofString(body))
-                .build();
-        return browser.send(request, HttpResponse.BodyHandlers.ofString());
+                .build(),
+                HttpResponse.BodyHandlers.ofString());
     }
 
     private HttpResponse<String> callTool(String accessToken, int id, String toolName, String arguments)

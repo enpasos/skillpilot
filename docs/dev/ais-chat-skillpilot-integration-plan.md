@@ -1,6 +1,7 @@
 # AIS.chat x SkillPilot: interne Integrationsplanung
 
-Status: internes Diskussionspapier, kein Issue, kein Outreach.
+Status: historisches internes Diskussionspapier, kein aktueller deutscher
+OpenAI-MCP-Produktionsvertrag, kein Issue, kein Outreach.
 
 Stand der Recherche: 2026-06-21. Geprueft wurden die lokale Kopie `tmp/ais-chat`
 auf Branch `main` bei Commit `e4eb3d3f` sowie die oeffentliche Repo-Startseite.
@@ -233,12 +234,15 @@ fuer AIS.chat nuetzlich, weil es Tool-Flows stabilisiert:
 
 ### 5. Privacy: Startcode und Session Token
 
-> **Architekturhinweis vom 21. Juli 2026:** Dieser Abschnitt beschrieb den
-> damaligen Custom-GPT-Stand. Der aktuelle SkillPilot Custom GPT verwendet die
-> [Visible-Session-Architektur](../concept/runtime-workflows/chatgpt-visible-session-flow.md):
-> Das Cockpit erzeugt direkt ein sichtbares, höchstens 24 Stunden gültiges
-> Sitzungstoken; es gibt keine Startcode-Einlösung. Der Startcode-Flow bleibt nur
-> als Rollback-Architektur erhalten.
+> **Aktualisierung vom 26. Juli 2026:** Dieser Abschnitt beschreibt den
+> historischen Custom-GPT-Stand zum Recherchezeitpunkt. Der aktuelle deutsche
+> Vertrag ist die
+> [OpenAI-MCP-App mit OAuth- und 24h-Lernsession](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md):
+> ChatGPT transportiert den OAuth-Zugriff automatisch; SkillPilot löst die
+> lernende Person und die separate, absolute 24h-Lernsession serverseitig auf.
+> Weder SkillPilot-ID noch Sitzungstoken erscheinen im Chat oder in
+> Toolargumenten. Visible Session bleibt nur ein Custom-GPT-Rollback und
+> möglicher englischer Übergang.
 
 Zum Recherchezeitpunkt hatte SkillPilot einen Browser-first Startcode-Flow:
 
@@ -248,7 +252,7 @@ Zum Recherchezeitpunkt hatte SkillPilot einen Browser-first Startcode-Flow:
 - Die dauerhafte `skillpilotId` wird in AI-Session-Responses verborgen.
 
 Wenn AIS.chat selbst der Chat-Host ist, sollte es weder den damaligen
-ChatGPT-Startcode-Flow noch den heutigen sichtbaren Relay-Workaround blind
+ChatGPT-Startcode-Flow noch den erhaltenen sichtbaren Relay-Workaround blind
 übernehmen. AIS.chat kann temporären Session- oder OAuth-Kontext in der eigenen
 vertrauenswürdigen Chat-/Tool-Schicht halten. Das zugrunde liegende Muster bleibt
 wertvoll:

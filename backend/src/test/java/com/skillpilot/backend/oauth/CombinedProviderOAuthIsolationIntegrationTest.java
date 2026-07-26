@@ -13,6 +13,7 @@ import com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactory;
 import com.skillpilot.backend.openai.de.OpenAiDeConfiguration;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
+import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachMcpContract;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
 import com.skillpilot.backend.service.ClaudeCoachConnectionService;
@@ -66,6 +67,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -96,7 +99,7 @@ import tools.jackson.databind.json.JsonMapper;
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
 
-    private static final String OPENAI_CLIENT_ID = "chatgpt-combined-test-client";
+    private static final String OPENAI_CLIENT_ID = OpenAiDeSecureOAuthTestServer.clientId();
     private static final String OPENAI_SUBJECT = "openai-combined-subject";
     private static final String CLAUDE_SUBJECT = "claude-combined-subject";
 
@@ -127,6 +130,11 @@ class CombinedProviderOAuthIsolationIntegrationTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private HttpClient client;
+
+    @DynamicPropertySource
+    static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
+        OpenAiDeSecureOAuthTestServer.registerSecureProperties(registry);
+    }
 
     @BeforeEach
     void setUp() {
@@ -197,11 +205,12 @@ class CombinedProviderOAuthIsolationIntegrationTest {
 
         HttpResponse<String> openAiForeignRefresh = postForm(
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                List.of(
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                         Map.entry("grant_type", "refresh_token"),
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("refresh_token", claudeTokens.refreshToken()),
-                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
+                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
         assertInvalidGrant(openAiForeignRefresh);
 
         HttpResponse<String> claudeForeignRefresh = postForm(
@@ -215,10 +224,11 @@ class CombinedProviderOAuthIsolationIntegrationTest {
 
         HttpResponse<String> openAiForeignRevocation = postForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
-                List.of(
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("token", claudeTokens.refreshToken()),
-                        Map.entry("token_type_hint", "refresh_token")));
+                        Map.entry("token_type_hint", "refresh_token")),
+                        OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT));
         assertThat(openAiForeignRevocation.statusCode())
                 .withFailMessage(openAiForeignRevocation.body())
                 .isEqualTo(200);
@@ -313,12 +323,16 @@ class CombinedProviderOAuthIsolationIntegrationTest {
 
     private HttpResponse<String> postMcpRequest(String path, String accessToken, String requestBody)
             throws Exception {
+        HttpRequest.Builder request = HttpRequest.newBuilder(localUri(path))
+                .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                .header("MCP-Protocol-Version", "2025-11-25");
+        if (path.equals("/api/openai/de/mcp")) {
+            OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(request);
+        }
         return client.send(
-                HttpRequest.newBuilder(localUri(path))
-                        .header(HttpHeaders.CONTENT_TYPE, "application/json")
-                        .header(HttpHeaders.ACCEPT, "application/json, text/event-stream")
-                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                        .header("MCP-Protocol-Version", "2025-11-25")
+                request
                         .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                         .build(),
                 HttpResponse.BodyHandlers.ofString());
@@ -371,6 +385,11 @@ class CombinedProviderOAuthIsolationIntegrationTest {
             ClaudeMcpServerConfiguration.class
     })
     static class TestApplication {
+
+        @Bean
+        ObjectMapper objectMapper() {
+            return new ObjectMapper();
+        }
 
         @Bean
         JsonMapper jsonMapper() {
