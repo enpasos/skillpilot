@@ -200,11 +200,20 @@ require_production_java
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
 else
+  deployment_engine_commit_before_pull="$(git rev-parse HEAD)"
+
   echo "Stash local changes..."
   git stash
 
   echo "Hole Updates..."
   git pull
+
+  deployment_engine_commit_after_pull="$(git rev-parse HEAD)"
+  if [ "${deployment_engine_commit_after_pull}" != "${deployment_engine_commit_before_pull}" ]; then
+    echo "Repository wurde aktualisiert; starte die frisch ausgecheckte Deployment-Engine neu."
+    export SKILLPILOT_SKIP_GIT_UPDATE=1
+    exec "${PROJECT_ROOT}/scripts/deploy.sh"
+  fi
 fi
 
 echo "Deploying Vocabulary Decks..."
