@@ -302,6 +302,35 @@ class OpenAiDeCoachConnectionServiceTest {
     }
 
     @Test
+    void connectedLaunchActivatesEveryStillAuthorizedOAuthSubjectForTheSameLearner() {
+        OpenAiDeConnection selected = authorizeExistingConnection();
+        OpenAiDeConnection alsoAuthorized = connection("spod_also_authorized");
+        alsoAuthorized.setLastAuthorizedAt(Instant.now().minusSeconds(30));
+        alsoAuthorized.setOauthExpiresAt(futureExpiry());
+        OpenAiDeConnection expired = connection("spod_expired");
+        expired.setLastAuthorizedAt(Instant.now().minusSeconds(30));
+        expired.setOauthExpiresAt(Instant.now().minusSeconds(1));
+        when(connections.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(SKILLPILOT_ID))
+                .thenReturn(List.of(selected, alsoAuthorized, expired));
+        ArgumentCaptor<OpenAiDeLearningSession> persisted =
+                ArgumentCaptor.forClass(OpenAiDeLearningSession.class);
+
+        service.createPendingLaunch(SKILLPILOT_ID, request("web", "math", null));
+
+        verify(learningSessions, org.mockito.Mockito.times(2)).save(persisted.capture());
+        assertThat(persisted.getAllValues())
+                .extracting(OpenAiDeLearningSession::getConnectionSubject)
+                .containsExactly(selected.getSubject(), alsoAuthorized.getSubject())
+                .doesNotContain(expired.getSubject());
+        assertThat(persisted.getAllValues())
+                .extracting(OpenAiDeLearningSession::getStartedAt)
+                .containsOnly(persisted.getAllValues().getFirst().getStartedAt());
+        assertThat(persisted.getAllValues())
+                .extracting(OpenAiDeLearningSession::getExpiresAt)
+                .containsOnly(persisted.getAllValues().getFirst().getExpiresAt());
+    }
+
+    @Test
     void connectedLaunchReplacesTheExistingSessionInsteadOfExtendingItFromItsOldExpiry() {
         properties.setLearningSessionTtl(Duration.ofHours(24));
         OpenAiDeConnection connection = authorizeExistingConnection();
