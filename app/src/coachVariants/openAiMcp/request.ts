@@ -132,6 +132,31 @@ const requestBody = (input: OpenAiMcpStartInput) => JSON.stringify({
   providerEligibilityConfirmed: input.providerEligibilityConfirmed,
 })
 
+const requestConnectedLaunch = async (
+  input: OpenAiMcpStartInput,
+  apiBase: string,
+  fetchImpl: typeof fetch,
+): Promise<OpenAiMcpStartResponse> => {
+  const launch = await requestJson<OpenAiMcpLaunchResponse>(
+    buildOpenAiMcpEndpoint(input.skillpilotId, 'launch', apiBase),
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: requestBody(input),
+    },
+    fetchImpl,
+  )
+  const webUrl = getSafeChatGptUrl(launch.webUrl)
+  if (!webUrl) throw new Error('Invalid OpenAI MCP response: invalid webUrl')
+  return {
+    prompt: readRequiredString(launch.prompt, 'prompt'),
+    webUrl,
+    expiresAt: readExpiry(launch.expiresAt),
+    connected: true,
+  }
+}
+
 export const requestOpenAiMcpStart = async (
   input: OpenAiMcpStartInput,
   options: OpenAiMcpRequestOptions = {},
@@ -151,24 +176,7 @@ export const requestOpenAiMcpStart = async (
   )
 
   if (status.connected === true) {
-    const launch = await requestJson<OpenAiMcpLaunchResponse>(
-      buildOpenAiMcpEndpoint(input.skillpilotId, 'launch', apiBase),
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: requestBody(input),
-      },
-      fetchImpl,
-    )
-    const webUrl = getSafeChatGptUrl(launch.webUrl)
-    if (!webUrl) throw new Error('Invalid OpenAI MCP response: invalid webUrl')
-    return {
-      prompt: readRequiredString(launch.prompt, 'prompt'),
-      webUrl,
-      expiresAt: readExpiry(launch.expiresAt),
-      connected: true,
-    }
+    return await requestConnectedLaunch(input, apiBase, fetchImpl)
   }
 
   const connection = await requestJson<OpenAiMcpConnectStartResponse>(
@@ -181,6 +189,13 @@ export const requestOpenAiMcpStart = async (
     },
     fetchImpl,
   )
+  // The connection state can change between the status read and this
+  // transaction (for example when a parallel OAuth flow has just completed).
+  // In that case the binding grant is not the learning-session handshake:
+  // create the explicit launch before opening ChatGPT.
+  if (connection.connected === true) {
+    return await requestConnectedLaunch(input, apiBase, fetchImpl)
+  }
   const webUrl = getSafeChatGptUrl(connection.chatgptUrl)
   if (!webUrl) throw new Error('Invalid OpenAI MCP response: invalid chatgptUrl')
   return {

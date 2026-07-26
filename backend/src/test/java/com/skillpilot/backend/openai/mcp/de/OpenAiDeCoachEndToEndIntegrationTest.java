@@ -12,6 +12,7 @@ import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
 import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
+import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
 import com.skillpilot.backend.repository.OpenAiDePendingLaunchRepository;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -98,6 +99,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private OpenAiDeConnectionRepository connectionRepository;
 
     @Autowired
+    private OpenAiDeLearningSessionRepository learningSessionRepository;
+
+    @Autowired
     private OpenAiDePendingLaunchRepository pendingLaunchRepository;
 
     @Autowired
@@ -115,6 +119,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         jdbcOperations.update("DELETE FROM oauth2_authorization");
         pendingLaunchRepository.deleteAllInBatch();
         bindingGrantRepository.deleteAllInBatch();
+        learningSessionRepository.deleteAllInBatch();
         connectionRepository.deleteAllInBatch();
         Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseGet(() -> {
             Learner created = new Learner();
@@ -363,6 +368,40 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialContext.path("requiredAction").asText()).isEqualTo("setCurriculum");
         assertThat(initialContext.path("curriculum").isMissingNode()).isTrue();
 
+        learningSessionRepository.deleteById(createdConnection.getSubject());
+        learningSessionRepository.flush();
+        HttpResponse<String> missingSession =
+                callTool(accessToken, 20, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
+        assertMcpPayloadDoesNotExposeIdentity(missingSession, createdConnection.getSubject());
+        JsonNode missingSessionResult = objectMapper.readTree(missingSession.body()).path("result");
+        assertThat(missingSessionResult.path("isError").asBoolean()).isTrue();
+        assertThat(missingSessionResult.path("structuredContent").path("code").asText())
+                .isEqualTo("SESSION_REQUIRED");
+        long connectionCountBeforeRestart = connectionRepository.count();
+
+        HttpResponse<String> restarted = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/launch",
+                """
+                {"language":"de","client":"openai-de-e2e-restart","providerEligibilityConfirmed":true}
+                """,
+                Map.of());
+
+        assertThat(restarted.statusCode()).withFailMessage(restarted.body()).isEqualTo(200);
+        assertThat(restarted.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, createdConnection.getSubject());
+        assertThat(connectionRepository.count()).isEqualTo(connectionCountBeforeRestart);
+        assertThat(learningSessionRepository.findById(createdConnection.getSubject()))
+                .get()
+                .satisfies(session -> {
+                    assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
+                    assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
+                            .isEqualTo(Duration.ofHours(24));
+                });
+        HttpResponse<String> resumed =
+                callTool(accessToken, 21, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
+        assertMcpPayloadDoesNotExposeIdentity(resumed, createdConnection.getSubject());
+        assertThat(result(resumed).path("structuredContent").path("requiredAction").asText())
+                .isEqualTo("setCurriculum");
+
         HttpResponse<String> write = callTool(
                 accessToken,
                 3,
@@ -472,10 +511,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .orElseThrow();
         assertThat(usedConnection.getLastUsedAt()).isNotNull();
         List<OpenAiDePendingLaunch> launches = pendingLaunchRepository.findAll();
-        assertThat(launches).singleElement().satisfies(launch -> {
-            assertThat(launch.getConnectionSubject()).isEqualTo(createdConnection.getSubject());
-            assertThat(launch.getConsumedAt()).isNotNull();
-        });
+        assertThat(launches)
+                .hasSize(2)
+                .allSatisfy(launch -> {
+                    assertThat(launch.getConnectionSubject()).isEqualTo(createdConnection.getSubject());
+                    assertThat(launch.getConsumedAt()).isNotNull();
+                });
 
         HttpResponse<String> connectedStatus = get(
                 "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");

@@ -156,6 +156,14 @@ starten** führt ein atomares Upsert desselben `connection_subject` aus und
 Version höchstens eine deutsche OpenAI-Lernsession pro Providerverbindung, ohne
 eine zweite Statusquelle neben Verbindung und Ablaufzeit einzuführen.
 
+Falls für denselben Lernenden vorübergehend mehrere noch gültige, nicht
+widerrufene OpenAI-DE-OAuth-Subjects existieren, aktiviert ein ausdrücklicher
+Start dieselbe absolute Frist für jedes dieser Subjects. So hängt der
+Lernstart nicht davon ab, welches weiterhin gültige Subject ChatGPT beim
+nächsten MCP-Aufruf verwendet. Diese Angleichung ist strikt auf Verbindungen
+desselben Lernenden begrenzt; sie überträgt niemals eine Sitzung zwischen
+verschiedenen SkillPilot-IDs.
+
 ### 4.2 Absolute statt gleitende Gültigkeit
 
 Die 24-Stunden-Grenze ist absolut:
@@ -228,7 +236,8 @@ Die einzige unvermeidbare Benutzerinteraktion ist beim ersten Verbinden die
    Lernenden.
 2. SkillPilot wendet den typisierten Start-Intent auf den autoritativen
    Lernendenzustand an und erzeugt beziehungsweise ersetzt erst nach dessen
-   erfolgreicher Anwendung in derselben Transaktion die 24h-Lernsession.
+   erfolgreicher Anwendung in derselben Transaktion die 24h-Lernsession für
+   alle noch gültigen OAuth-Subjects dieses Lernenden.
 3. ChatGPT verwendet seine bestehende OAuth-Verbindung. Ein abgelaufenes Access
    Token wird mit dem Refresh Token erneuert.
 4. Der nächste MCP-Aufruf löst Subject, SkillPilot-ID und Lernsession
@@ -237,6 +246,11 @@ Die einzige unvermeidbare Benutzerinteraktion ist beim ersten Verbinden die
 Der Benutzer muss OAuth nicht täglich neu verbinden. Ein erneuter Consent ist
 nur nach Widerruf, Verbindungswechsel oder nicht mehr erneuerbarer
 OAuth-Autorisierung erforderlich.
+
+Der Browserstart behandelt die Statusprüfung nur als Momentaufnahme. Meldet
+`connect-start`, dass die Verbindung inzwischen bereits besteht, muss der
+Client vor dem Öffnen von ChatGPT noch den normalen `launch`-Schritt
+ausführen. Ein Binding Grant allein ist keine Lernsession.
 
 ### 5.3 Startnachricht
 
@@ -356,6 +370,11 @@ Acceptance-Tests bestehen:
   Cross-Learner-Zugriffe schlagen fehl.
 - Ein späterer Start mit bestehender OAuth-Verbindung benötigt keinen erneuten
   Consent und ersetzt die aktive Lernsession.
+- Der Übergang `status=false` und anschließend `connect-start.connected=true`
+  führt vor dem Öffnen von ChatGPT noch zu `launch`.
+- Sind für denselben Lernenden mehrere gültige OAuth-Subjects vorhanden,
+  akzeptiert der erste MCP-Aufruf jedes dieser Subjects innerhalb derselben
+  neu gestarteten absoluten Frist.
 - Access-Token-Refresh lässt `learningSession.expiresAt` unverändert.
 - Die Migration erzeugt `openai_de_learning_session` ausschließlich mit
   `connection_subject`, `started_at` und `expires_at`; die SkillPilot-ID wird

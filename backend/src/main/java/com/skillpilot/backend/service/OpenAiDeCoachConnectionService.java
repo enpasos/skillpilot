@@ -25,6 +25,7 @@ import java.security.SecureRandom;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -239,7 +240,8 @@ public class OpenAiDeCoachConnectionService {
         launch.setLearner(learner);
         launch.setConsumedAt(now);
         pendingLaunchRepository.save(launch);
-        Instant learningSessionExpiresAt = activateLearningSession(connection.getSubject(), now);
+        Instant learningSessionExpiresAt =
+                activateLearningSessionsForAuthorizedLearnerConnections(learner, connection, now);
 
         return new OpenAiDeLaunchResponse(
                 launchPrompt(launchRequest),
@@ -524,6 +526,23 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setExpiresAt(expiresAt);
         learningSessionRepository.save(learningSession);
         return expiresAt;
+    }
+
+    private Instant activateLearningSessionsForAuthorizedLearnerConnections(
+            Learner learner,
+            OpenAiDeConnection selectedConnection,
+            Instant startedAt) {
+        LinkedHashMap<String, OpenAiDeConnection> activeConnections = new LinkedHashMap<>();
+        activeConnections.put(selectedConnection.getSubject(), selectedConnection);
+        connectionRepository.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(learner.getSkillpilotId())
+                .stream()
+                .filter(connection -> connection.getLastAuthorizedAt() != null)
+                .filter(connection -> connection.getOauthExpiresAt() != null)
+                .filter(connection -> connection.getOauthExpiresAt().isAfter(startedAt))
+                .forEach(connection -> activeConnections.putIfAbsent(connection.getSubject(), connection));
+
+        activeConnections.keySet().forEach(subject -> activateLearningSession(subject, startedAt));
+        return startedAt.plus(properties.getLearningSessionTtl());
     }
 
     private NormalizedLaunch launchFrom(OpenAiDeBindingGrant grant) {

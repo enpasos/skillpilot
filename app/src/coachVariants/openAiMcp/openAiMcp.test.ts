@@ -140,6 +140,41 @@ assert(
   'does not expose a free-form prompt context at the OpenAI launch boundary',
 )
 
+const connectionRaceCalls: Array<{ url: string; init: RequestInit | undefined }> = []
+const connectionRace = await requestOpenAiMcpStart({
+  skillpilotId: 'learner-42',
+  language: 'de',
+  providerEligibilityConfirmed: true,
+  client: 'test',
+}, {
+  fetchImpl: async (input, init) => {
+    const url = String(input)
+    connectionRaceCalls.push({ url, init })
+    if (url.endsWith('/status')) {
+      return new Response(JSON.stringify({ connected: false }), { status: 200 })
+    }
+    if (url.endsWith('/connect-start')) {
+      return new Response(JSON.stringify({
+        chatgptUrl: 'https://chatgpt.com/',
+        prompt: 'Noch kein vollständiger Start.',
+        expiresAt: '2026-07-22T19:55:00Z',
+        connected: true,
+      }), { status: 200 })
+    }
+    return new Response(JSON.stringify({
+      prompt: 'Der serverseitige Lernstart ist vorbereitet.',
+      webUrl: 'https://chatgpt.com/',
+      expiresAt: '2026-07-22T20:00:00Z',
+    }), { status: 200 })
+  },
+})
+assertEqual(connectionRace.connected, true, 'completes a connection that became available during start')
+assertEqual(connectionRace.prompt, 'Der serverseitige Lernstart ist vorbereitet.', 'uses the launch response')
+assertEqual(connectionRaceCalls.length, 3, 'performs the explicit learning-session launch after the race')
+assert(connectionRaceCalls[1]?.url.endsWith('/connect-start'), 'creates the binding grant after a negative status')
+assert(connectionRaceCalls[2]?.url.endsWith('/launch'), 'creates the learning session after connected changes to true')
+assertEqual(connectionRaceCalls[2]?.init?.method, 'POST', 'uses POST for the learning-session launch')
+
 const connectedCalls: Array<{ url: string; init: RequestInit | undefined }> = []
 const connected = await requestOpenAiMcpStart({
   skillpilotId: 'learner-42',
