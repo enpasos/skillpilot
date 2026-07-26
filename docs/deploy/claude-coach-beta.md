@@ -4,7 +4,9 @@ Status: erhaltene, deaktivierte Implementierung in Entwicklung; derzeit nicht
 lernendenseitig sichtbar und nicht produktionsreif.
 
 Diese Runbook-Seite beschreibt den additiven Claude-Coach neben dem aktuellen
-[Custom-GPT-Visible-Session-Coach](../../ai/openai-custom-gpt-visible-session/README.md).
+[deutschen OpenAI-MCP-Coach](openai-mcp-coach-de.md). Der
+[Custom-GPT-Visible-Session-Coach](../../ai/openai-custom-gpt-visible-session/README.md)
+bleibt davon getrennt als Rollback-Quelle erhalten.
 Beide Adapter greifen auf dieselbe SkillPilot-Fachlogik, sichere State-Projektion
 und Exam-Autorisierung zu. Sie haben aber unterschiedliche Authentifizierungs-,
 Werkzeug- und Darstellungsgrenzen. Der ChatGPT-Pfad bleibt
@@ -29,11 +31,11 @@ Die zuvor offenen gemeinsamen Codepunkte sind geschlossen:
 - normale Coach-Responses enthalten weder dauerhafte SkillPilot-ID noch
   `copySources`, Prüfungslösung, Bestehensgrenze oder Scoring-Schritte.
 
-Der Evaluationsaufruf besitzt wie der aktuelle Custom-GPT-Kanal noch keinen
+Der Evaluationsaufruf besitzt wie der ChatGPT-MCP-Kanal noch keinen
 unabhängigen serverseitigen Nachweis einer vorherigen Lernendenabgabe. Da
 SkillPilot kein Chatprotokoll erhält, bleibt die Reihenfolge instruktionsgestützt.
 Ein starker Nachweis erfordert später einen direkten Widget-/Cockpit-Attempt und
-ist keine Voraussetzung für die Verhaltensparität mit Visible Session.
+ist keine Voraussetzung für die fachliche Verhaltensparität.
 
 Offener Release-Blocker ist weiterhin die abgeschlossene reale
 Claude-End-to-End-Acceptance-Evidenz für sämtliche Setup-, Personalisierungs-,
@@ -45,7 +47,8 @@ nur in einer isolierten, kontrollierten Testumgebung mit synthetischen Daten sta
 
 | Variante | Kontextbindung | Aktueller Status |
 | --- | --- | --- |
-| ChatGPT Visible Session | sichtbares, höchstens 24 Stunden gültiges `sps_...`-Token im Startprompt und Footer; keine Startcode-Einlösung | aktueller lernendenseitiger Standard |
+| ChatGPT MCP-App | OpenAI-Connector-mTLS am MCP-Rand; CIMD und `private_key_jwt` für den konfigurierten OAuth-Client; serverseitige OAuth-Subject-Zuordnung und absolute 24h-Lernsession ohne sichtbaren Schlüssel | aktueller deutscher ChatGPT-Pfad; allgemeine Freigabe erst nach sicherem Cutover und Acceptance |
+| ChatGPT Visible Session | sichtbares, höchstens 24 Stunden gültiges `sps_...`-Token im Startprompt und Footer | isolierter Rollback, nicht aktuelle Referenzarchitektur |
 | Claude OAuth/MCP | Backend löst ein authentifiziertes OAuth-Subject auf; generischer Prompt ohne sichtbares Sitzungstoken | Codepfade ergänzt und sicher projiziert; pausiert bis zur echten vollständigen Acceptance |
 | Legacy Custom GPT | einmaliger Startcode und anschließendes verborgenes Sitzungstoken | unveränderte koordinierte Rollback-Quelle |
 
@@ -273,7 +276,8 @@ können zusätzlich Freigaben durch Owner erforderlich sein.
 6. End-to-End-Evidenz für Web und den vorgesehenen Gerätewechsel festhalten.
 7. Erst danach den Source-Level-Gate in `app/src/utils/claudeCoach.ts` an eine
    überprüfte Aktivierungsregel anbinden, neu bauen und über eine Beta-Freigabe
-   entscheiden. ChatGPT parallel mit einem normalen Visible-Session-Start prüfen.
+   entscheiden. ChatGPT parallel über den aktuellen deutschen MCP-App-Pfad
+   prüfen; Visible Session nur als getrennten Rollback-Smoke-Test verwenden.
 
 ## Smoke-Test für kontrollierte Staging-/Testumgebungen
 

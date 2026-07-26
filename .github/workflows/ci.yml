@@ -84,6 +84,20 @@ jobs:
       - name: Audit MCP App dependencies
         run: npm --prefix "ai/openai app" audit --audit-level=moderate
 
+  openai-mtls-edge-ci:
+    name: OpenAI MCP mTLS edge CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Validate installation scripts
+        run: |
+          bash -n \
+            scripts/install_openai_mtls_edge.sh \
+            scripts/verify_openai_mtls_edge.sh
+      - name: Test CA chain, client-auth EKU, exact SAN, and nginx scope
+        run: ./scripts/verify_openai_mtls_edge.sh
+
   frontend-ci:
     name: Application frontend CI
     runs-on: ubuntu-latest

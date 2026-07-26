@@ -83,6 +83,17 @@ skillpilot:
       learning-session-ttl: ${SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL:PT24H}
       mcp-url: ${SKILLPILOT_OPENAI_DE_MCP_URL:https://skillpilot.com/api/openai/de/mcp}
       chatgpt-url: ${SKILLPILOT_OPENAI_DE_CHATGPT_URL:https://chatgpt.com/}
+      security:
+        # Mirrors provider activation. An explicit false override is rejected
+        # by startup validation whenever the normal provider is enabled.
+        secure-mode: ${SKILLPILOT_OPENAI_DE_ENABLED:false}
+      mtls-edge:
+        # Production enables this together with the nginx mTLS edge. It is off
+        # by default so local direct MCP and integration tests remain usable.
+        enabled: ${SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED:false}
+        # Exact numeric proxy peers only. The normal single-host deployment
+        # reaches Spring from nginx via loopback.
+        trusted-proxies: ${SKILLPILOT_OPENAI_DE_MTLS_EDGE_TRUSTED_PROXIES:127.0.0.1,::1}
       rate-limit:
         enabled: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_ENABLED:true}
         window: ${SKILLPILOT_OPENAI_DE_RATE_LIMIT_WINDOW:PT1M}
@@ -98,11 +109,21 @@ skillpilot:
         request-timeout: PT30S
       oauth:
         enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}
-        # The client ID is the stable public ID selected by SkillPilot and must
-        # be entered identically in ChatGPT app management. Redirect URIs come
-        # from that app's callback display. OAuth fails fast without both.
+        # An activated normal provider must use private_key_jwt. In that mode client-id is the
+        # exact HTTPS CIMD metadata-document URL supplied by ChatGPT and the
+        # JWK Set URL is pinned to the same origin. The "none" default is only
+        # for disabled configuration and isolated component tests; secure
+        # provider startup rejects it.
         client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
         redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
+        client-authentication-method: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:none}
+        client-jwk-set-uri: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI:}
+        client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
+        client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}
+        # Comma-separated, exact former OpenAI-DE client IDs. In secure mode
+        # only persisted clients from this allowlist that still use "none" are
+        # revoked and removed during the transactional startup cutover.
+        legacy-client-ids: ${SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS:}
         protected-resource-metadata: ${SKILLPILOT_OPENAI_DE_RESOURCE_METADATA:https://skillpilot.com/api/openai/de/oauth/protected-resource}
         access-token-ttl: ${SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL:PT1H}
         refresh-token-ttl: ${SKILLPILOT_OPENAI_DE_REFRESH_TOKEN_TTL:P30D}

@@ -46,15 +46,17 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
   Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
 - [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
-  DE-first implementation, OAuth, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
+  DE-first implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
 - [OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
-  Normative separation of automatic OAuth token transport, first-party learner binding, opaque provider identity, and the absolute 24-hour learning session.
+  Normative separation of OpenAI-connector mTLS, CIMD plus `private_key_jwt`, automatic OAuth token transport, first-party learner binding, opaque provider identity, and the absolute 24-hour learning session.
+- [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
+  Security source of truth for the mTLS edge, stable CIMD OAuth-client identity, resource and scope binding, learner mapping, and fail-closed cutover.
 - [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
   Normative mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
-  Current Custom-GPT runtime, visible cross-turn relay, workflow coverage, and coordinated rollback boundary.
+  Retained Custom-GPT rollback runtime with visible cross-turn relay; not the current production reference architecture.
 - [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)
-  Retained rollback architecture; not the current Custom-GPT path.
+  Historical retained rollback architecture; not the current ChatGPT path.
 
 ## Maintenance
 

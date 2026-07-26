@@ -1,11 +1,11 @@
 # Provider-Neutral Learning-Coach Boundary
 
 Status: durable application and security boundary for all SkillPilot
-learning-coach adapters. The target ChatGPT channel consists of two separate,
-provider-hosted MCP Apps, one for German and one for English. The ChatGPT Visible
-Session remains an independently rollbackable compatibility path until both Apps
-have production authentication, workflow parity and real provider acceptance.
-Claude OAuth/MCP remains disabled until its own acceptance gate is complete.
+learning-coach adapters. The current German ChatGPT channel is the separate,
+provider-hosted OpenAI MCP App. A corresponding English App remains a separate
+target; Visible Session is only an independently rollbackable Custom-GPT path
+and possible English transition. Claude OAuth/MCP remains disabled until its own
+acceptance gate is complete.
 
 The product decision and migration sequence are specified in the
 [SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
@@ -86,6 +86,14 @@ Each provider adapter owns:
 
 For the OpenAI Apps, this specifically means:
 
+- the protected German MCP endpoint is additionally reachable only through an
+  edge that validates the OpenAI connector mTLS chain, `clientAuth` EKU and the
+  exact SAN `mtls.prod.connectors.openai.com`; this identifies OpenAI connector
+  infrastructure, not the visible name of a particular App;
+- the authorization server accepts only the exact HTTPS CIMD client identity,
+  validates its same-origin JWKS and `private_key_jwt`, and enforces PKCE S256,
+  the exact redirect URI, resource and scopes; open DCR and client
+  authentication `none` are not production modes;
 - model-visible read tools resolve the learner from the authenticated OAuth
   principal, require the separate active server-side learning session, and load
   current state without a chat-visible session argument;
@@ -246,7 +254,7 @@ clock and the adapter supplies a stable request identity.
 No event-sourcing system or new database migration is required for the current
 shared boundary.
 
-## Executable Prototype And Production Gate
+## Prototype And Current German Production Boundary
 
 The executable mechanism prototype under [`ai/openai app`](<../../../ai/openai app/README.md>)
 already demonstrates two locale-fixed MCP endpoints, separate widget resources,
@@ -256,16 +264,23 @@ identity per language**. This is sufficient to test protocol mechanics with
 synthetic data, but it is neither account linking nor tenant isolation and must
 not be exposed as a production service.
 
-Production requires all of the following before real learner data is used:
+The German Spring Boot path now implements the data-only contract against the
+existing database-backed domain use cases. Its secure production boundary
+requires all of the following:
 
-1. a separate OpenAI OAuth binding for each App, resolving the opaque provider
-   principal internally without exposing the permanent SkillPilot ID;
-2. replacement of the prototype store with an adapter to
-   `CoachToolFacade`/`CoachStateProjection` and the existing database-backed
-   domain use cases;
-3. a separate server-side learning session with an absolute 24-hour lifetime,
+1. OpenAI-connector mTLS at the German MCP edge only;
+2. an exact HTTPS CIMD identity with same-origin JWKS and validated
+   `private_key_jwt`, exact redirect URI, resource/audience and scopes, plus
+   Authorization Code with PKCE S256;
+3. resolution of the opaque provider principal internally without exposing the
+   permanent SkillPilot ID;
+4. a separate server-side learning session with an absolute 24-hour lifetime,
    created or replaced only by a first-party SkillPilot launch and checked by
    every learner-specific tool.
+
+Neither mTLS nor CIMD alone cryptographically attests the user-visible App name.
+Their combination constrains the OpenAI connector path and the accepted OAuth
+client contract.
 
 The production gate also includes full workflow parity for curriculum and scope
 selection, active goals, frontier, mastery, Verified Recall and exams; separate
@@ -275,7 +290,7 @@ itself.
 
 ## Compatibility Rule
 
-Shared hardening must preserve the configured Visible-Session routes, operation
+Shared hardening must preserve the configured Visible-Session rollback routes, operation
 IDs, request bodies, response fields, status codes and DE/EN GPT packages, as
 well as the older Startcode sources required for rollback. The two OpenAI Apps
 live in their own package and do not overwrite either fallback.

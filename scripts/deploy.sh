@@ -228,6 +228,12 @@ fi
 
 wait_for_public_readiness "${SMOKE_BASE_URL}"
 
+if [ "${VITE_SKILLPILOT_COACH_VARIANT}" = "openai-mcp" ]; then
+  echo "Prüfe produktive OpenAI-mTLS-Sicherheitsgrenze..."
+  SKILLPILOT_PUBLIC_BASE_URL="${SMOKE_BASE_URL}" \
+    ./scripts/verify_openai_mtls_edge.sh --runtime
+fi
+
 echo "Prüfe ausgelieferte Coach-Variante..."
 node scripts/verify_frontend_coach_variant.mjs \
   "${SMOKE_BASE_URL}" \

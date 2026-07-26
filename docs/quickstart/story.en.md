@@ -1,10 +1,12 @@
 # Start SkillPilot in 5 Minutes
 
-**Status:** July 21, 2026
+**Status:** July 26, 2026
 
 SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
-All you need is a browser and a ChatGPT account. Free ChatGPT accounts can use GPTs, but they have lower usage limits, including potentially stricter limits for file and image uploads.
+> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT app **SkillPilot Coach (Deutsch)** with OAuth/MCP and no visible session token. Visible Session is retained for English and as a rollback path; it is not the current German architecture.
+
+All you need is a browser and a ChatGPT account for which the required GPT or app is available. Availability and usage limits are controlled by ChatGPT.
 
 > **Note:** For now, please use SkillPilot in the normal ChatGPT chat, not in ChatGPT voice mode. The reason is explained below in the frequently asked questions.
 
@@ -23,7 +25,7 @@ All you need is a browser and a ChatGPT account. Free ChatGPT accounts can use G
 ## What You Need
 
 - a browser
-- a ChatGPT account; free accounts can use GPTs subject to limited usage
+- a ChatGPT account for which the required GPT or app is available
 - no SkillPilot registration with name or email address
 
 ---
@@ -32,7 +34,7 @@ All you need is a browser and a ChatGPT account. Free ChatGPT accounts can use G
 
 **SkillPilot ID:** Your permanent key to your learning progress. You can enter it directly or save it as an encrypted local login in your browser.
 
-**Chat session token:** A temporary key with the prefix `sps_` that SkillPilot creates for the chat. It is visible in the start message and the final footer line of coach responses, and expires after no more than 24 hours. Do not share a live token publicly.
+**Chat session token (English fallback only):** A temporary key with the prefix `sps_` that SkillPilot creates for the English Visible Session flow. It is visible in the start message and the final footer line of coach responses, and expires after no more than 24 hours. Do not share a live token publicly.
 
 **Learning goal ID:** A stable, globally unique identifier for a learning goal. It may be visible and makes a goal unambiguous; it is not an access credential.
 
@@ -54,7 +56,7 @@ All you need is a browser and a ChatGPT account. Free ChatGPT accounts can use G
 | --- |
 | *To learn, log in from the homepage. It costs nothing and you do not need to register with a name or email address.* |
 
-SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. When you start the learning coach, the backend creates a temporary chat session directly. The permanent SkillPilot ID stays in the browser and backend; ChatGPT sees only the visible session token, which expires after no more than 24 hours.
+SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. In the current English fallback, starting the English learning coach creates a temporary visible chat session. The permanent SkillPilot ID stays in the browser and backend; ChatGPT sees only the session token, which expires after no more than 24 hours. The current German OAuth/MCP app keeps this session binding server-side instead.
 
 ---
 
@@ -78,7 +80,7 @@ You have three options:
 
 After login, choose your curriculum. Then you can start the SkillPilot Learning Coach directly or open your cockpit first.
 
-When you start the learning coach, SkillPilot creates a chat session valid for no more than 24 hours and opens ChatGPT with a prepared message. The temporary session token is visible in it. The permanent SkillPilot ID stays with SkillPilot and is not copied into the chat.
+When you start the English fallback coach, SkillPilot creates a chat session valid for no more than 24 hours and opens ChatGPT with a prepared message. The temporary session token is visible in it. The permanent SkillPilot ID stays with SkillPilot and is not copied into the chat.
 
 ---
 
@@ -152,15 +154,15 @@ SkillPilot checks not only definitions but also application and transfer. You ca
 
 ### Does ChatGPT See My SkillPilot ID?
 
-No. Your permanent SkillPilot ID stays in the browser and with SkillPilot. ChatGPT sees only the temporary session token and the learning information needed for the current coaching dialog.
+No. Your permanent SkillPilot ID stays in the browser and with SkillPilot. In the English Visible Session fallback, ChatGPT sees only the temporary session token and the learning information needed for the current coaching dialog. The current German OAuth/MCP integration keeps the session binding server-side.
 
 ### Why Does Every Coach Response End With a Technical SkillPilot Footer?
 
-ChatGPT cannot reliably reuse values from an earlier hidden backend call in every later dialog step. The footer therefore carries the temporary session token and, while a goal is active, the unambiguous learning goal ID visibly across turns. This is technically necessary, not an error. While the token is still valid, do not publicly share the chat or screenshots containing that line.
+This footer belongs to the English Visible Session fallback. It carries the temporary session token and, while a goal is active, the unambiguous learning goal ID visibly across turns. While the token is still valid, do not publicly share the chat or screenshots containing that line. The current German OAuth/MCP app does not require this visible relay.
 
 ### Do I Need ChatGPT Plus?
 
-No. GPTs are also available to free ChatGPT accounts. If you reach the current usage limit, GPT access pauses until the reset shown by ChatGPT; file and image uploads can have separate, stricter limits.
+SkillPilot itself does not require a paid subscription. Whether the required GPT or app is available in your ChatGPT plan or workspace, and which usage limits apply, is controlled by ChatGPT.
 
 ### Do I Need a Computer?
 

@@ -66,11 +66,17 @@ public class OpenAiDeOAuthMetadataController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> authorizationServerMetadata() {
-        return authorizationServerMetadata(issuer);
+        return authorizationServerMetadata(issuer, properties);
     }
 
-    static Map<String, Object> authorizationServerMetadata(String issuer) {
+    static Map<String, Object> authorizationServerMetadata(
+            String issuer,
+            OpenAiDeProperties properties) {
         String base = OpenAiDeOAuthConfiguration.stripTrailingSlash(issuer);
+        String clientAuthenticationMethod =
+                OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)
+                        ? OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT
+                        : OpenAiDeOAuthConfiguration.CLIENT_AUTH_NONE;
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("issuer", issuer);
         metadata.put("authorization_endpoint", base + "/oauth2/authorize");
@@ -79,8 +85,16 @@ public class OpenAiDeOAuthMetadataController {
         metadata.put("introspection_endpoint", base + "/oauth2/introspect");
         metadata.put("response_types_supported", List.of("code"));
         metadata.put("grant_types_supported", List.of("authorization_code", "refresh_token"));
-        metadata.put("token_endpoint_auth_methods_supported", List.of("none"));
-        metadata.put("revocation_endpoint_auth_methods_supported", List.of("none"));
+        metadata.put("token_endpoint_auth_methods_supported", List.of(clientAuthenticationMethod));
+        metadata.put("revocation_endpoint_auth_methods_supported", List.of(clientAuthenticationMethod));
+        if (OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)) {
+            metadata.put("client_id_metadata_document_supported", true);
+            metadata.put(
+                    "token_endpoint_auth_signing_alg_values_supported",
+                    List.of(OpenAiDeOAuthConfiguration
+                            .clientAssertionSigningAlgorithm(properties)
+                            .getName()));
+        }
         metadata.put("code_challenge_methods_supported", List.of("S256"));
         metadata.put("scopes_supported", List.of(
                 OpenAiDeOAuthConfiguration.READ_SCOPE,

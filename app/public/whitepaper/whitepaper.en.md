@@ -204,11 +204,11 @@ On the server, only technically necessary metadata are stored, e.g., learning pr
 
 #### Session Shielding Toward the AI Frontend
 
-When the **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The cockpit asks the SkillPilot backend to create a temporary **chat session token** directly, valid for no more than 24 hours. This token is visible in the prepared start message and in a compact footer on every normal coach response. The current flow has no start code and no redemption step.
+When the German **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The current reference path is the ChatGPT app **SkillPilot Coach (Deutsch)** over OAuth/MCP. After the one-time OAuth grant, the SkillPilot backend binds the authorized OAuth subject server-side to a learning session valid for no more than 24 hours. Neither the SkillPilot ID nor a session credential needs to appear in the chat.
 
-That visibility is a deliberate architectural compromise: an earlier hidden Action result is not reliably available to a Custom GPT after another user turn. The dialog therefore carries only the values needed by later Actions visibly across turns: the session token, a short-lived selection reference and numbers, and full learning-goal or card IDs. Internal curriculum, filter, and scope keys stay in the backend.
+The MCP client connection is secured independently: mTLS identifies the OpenAI connector infrastructure, while the allowlisted CIMD client identity authenticates to the token endpoint with `private_key_jwt`. Exact redirect URI, resource/audience, and scopes are checked. This binds access to the configured OAuth client; it does not attest the human-visible app name.
 
-The mapping `chatSessionToken -> skillpilotId` happens exclusively in the SkillPilot backend; the active SkillPilot ID stays in the browser and backend. The AI frontend still receives the didactically required state for the current session, but not the learner's stable key. The visible session token is nevertheless temporary bearer access and must not be disclosed through public chat shares, screenshots, or logs before it expires.
+The former Visible Session architecture with a visible `sps_` token remains only as a separate rollback path and currently for the English coach. It is no longer the German reference architecture.
 
 #### Dialog Content Is Decoupled
 
@@ -223,7 +223,7 @@ The mapping "who is which pseudonym?" stays with the institution/teacher and is 
 
 #### AI Frontend / Provider Choice (Sovereignty)
 
-The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. ChatGPT with the Visible Session architecture is currently the learner-facing reference integration. A separate Claude OAuth/MCP implementation exists in the repository, now uses the same safe state projection and exam authorization, and also covers personalization. It remains intentionally disabled and hidden in the UI until a complete real end-to-end acceptance run with adult test users has been recorded.
+The learning coach dialog happens in the respective AI frontend and is subject to its operational and privacy framework. The German ChatGPT app over OAuth/MCP is currently the learner-facing reference integration. Visible Session remains for English and as a rollback path. A separate Claude OAuth/MCP implementation exists in the repository, but remains intentionally disabled and hidden in the UI until a complete real end-to-end acceptance run with adult test users has been recorded.
 
 For contexts with higher sovereignty requirements, further AI backends up to local models are planned. They must reliably meet the required properties for tool use, stability, privacy boundaries, structure, and didactics.
 
@@ -232,7 +232,7 @@ For contexts with higher sovereignty requirements, further AI backends up to loc
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
 - Learning-coach instances authenticate to the backend.
-- Write access for progress updates is granted only to **authorized actors** (current pattern: the learning coach as the writing actor through a temporary chat session token).
+- Write access for progress updates is granted only to **authorized actors** (current German path: the admitted MCP/OAuth client, a valid OAuth subject, and an active server-side learning session with the required scopes).
 - The permanent SkillPilot ID is not returned in AI session responses; existing response fields are blanked or set to `null` there.
 
 #### Signed Exports

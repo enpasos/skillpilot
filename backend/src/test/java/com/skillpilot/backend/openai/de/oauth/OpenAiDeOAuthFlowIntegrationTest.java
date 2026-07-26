@@ -58,6 +58,8 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(
@@ -86,7 +88,7 @@ class OpenAiDeOAuthFlowIntegrationTest {
     private static final String CONNECTION_SUBJECT = "spod_test-opaque-subject";
     private static final String BINDING_GRANT = "spodb_browser-only-grant";
     private static final String BROWSER_SESSION = "spobs_browser-session";
-    private static final String CLIENT_ID = "chatgpt-test-client";
+    private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.clientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/test-callback";
     private static final String VERIFIER = "a-secure-pkce-verifier-with-more-than-forty-three-characters-123";
 
@@ -113,6 +115,11 @@ class OpenAiDeOAuthFlowIntegrationTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private HttpClient client;
+
+    @DynamicPropertySource
+    static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
+        OpenAiDeSecureOAuthTestServer.registerSecureProperties(registry);
+    }
 
     @BeforeEach
     void setUp() {
@@ -150,10 +157,10 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 .isEqualTo("https://skillpilot.test/api/openai/de/oauth2/authorize");
         assertThat(authorizationMetadata.path("token_endpoint").asText())
                 .isEqualTo("https://skillpilot.test/api/openai/de/oauth2/token");
-        assertThat(authorizationMetadata.path("client_id_metadata_document_supported").isMissingNode()).isTrue();
+        assertThat(authorizationMetadata.path("client_id_metadata_document_supported").asBoolean()).isTrue();
         assertThat(authorizationMetadata.path("registration_endpoint").isMissingNode()).isTrue();
         assertThat(authorizationMetadata.path("token_endpoint_auth_methods_supported"))
-                .anySatisfy(method -> assertThat(method.asText()).isEqualTo("none"));
+                .containsExactly(objectMapper.getNodeFactory().textNode("private_key_jwt"));
         assertThat(registeredClients.findByClientId(CLIENT_ID).getRedirectUris()).containsExactly(CALLBACK);
 
         HttpResponse<String> unauthorizedMcp = postJson("/api/openai/de/mcp", "{}", Map.of());
@@ -228,13 +235,16 @@ class OpenAiDeOAuthFlowIntegrationTest {
         Map<String, String> callbackQuery = parseQuery(callback.getRawQuery());
         assertThat(callbackQuery.get("state")).isEqualTo(externalState);
 
-        HttpResponse<String> token = postForm(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, List.of(
+        HttpResponse<String> token = postForm(
+                OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                 Map.entry("grant_type", "authorization_code"),
                 Map.entry("client_id", CLIENT_ID),
                 Map.entry("redirect_uri", CALLBACK),
                 Map.entry("code", callbackQuery.get("code")),
                 Map.entry("code_verifier", VERIFIER),
-                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
+                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
         assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
         assertThat(token.body()).doesNotContain(SKILLPILOT_ID).doesNotContain(CONNECTION_SUBJECT);
         JsonNode tokenBody = objectMapper.readTree(token.body());
@@ -245,12 +255,15 @@ class OpenAiDeOAuthFlowIntegrationTest {
                 org.mockito.ArgumentMatchers.eq(CONNECTION_SUBJECT),
                 org.mockito.ArgumentMatchers.any(Instant.class));
 
-        HttpResponse<String> refresh = postForm(OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT, List.of(
+        HttpResponse<String> refresh = postForm(
+                OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                 Map.entry("grant_type", "refresh_token"),
                 Map.entry("client_id", CLIENT_ID),
                 Map.entry("refresh_token", refreshToken),
                 Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
-                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
+                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
         assertThat(refresh.statusCode()).withFailMessage(refresh.body()).isEqualTo(200);
         JsonNode refreshBody = objectMapper.readTree(refresh.body());
         String downscopedAccessToken = refreshBody.path("access_token").asText();
@@ -267,10 +280,13 @@ class OpenAiDeOAuthFlowIntegrationTest {
         assertThat(downscopedPrincipal.<List<String>>getAttribute("aud"))
                 .containsExactly("https://skillpilot.test/api/openai/de/mcp");
 
-        HttpResponse<String> revocation = postForm(OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT, List.of(
+        HttpResponse<String> revocation = postForm(
+                OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
+                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
                 Map.entry("client_id", CLIENT_ID),
                 Map.entry("token", rotatedRefreshToken),
-                Map.entry("token_type_hint", "refresh_token")));
+                Map.entry("token_type_hint", "refresh_token")),
+                        OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT));
         assertThat(revocation.statusCode()).withFailMessage(revocation.body()).isEqualTo(200);
         verify(connectionService).revokeConnectionSubject(CONNECTION_SUBJECT);
     }
@@ -379,6 +395,9 @@ class OpenAiDeOAuthFlowIntegrationTest {
         HttpRequest.Builder request = HttpRequest.newBuilder(localUri(path))
                 .header(HttpHeaders.CONTENT_TYPE, "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(body));
+        if (path.startsWith("/api/openai/de/mcp")) {
+            OpenAiDeSecureOAuthTestServer.withVerifiedMtlsEdge(request);
+        }
         headers.forEach(request::header);
         return client.send(request.build(), HttpResponse.BodyHandlers.ofString());
     }
@@ -448,6 +467,11 @@ class OpenAiDeOAuthFlowIntegrationTest {
             OpenAiDeOAuthMetadataController.class
     })
     static class TestApplication {
+
+        @Bean
+        ObjectMapper objectMapper() {
+            return new ObjectMapper();
+        }
 
         @Bean
         OpenAiDeCoachConnectionService openAiDeCoachConnectionService() {

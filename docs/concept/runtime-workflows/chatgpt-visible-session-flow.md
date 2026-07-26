@@ -1,11 +1,11 @@
-# SkillPilot Lerncoach: aktuelle ChatGPT-Visible-Session-Architektur
+# Rollback/Kompatibilität: ChatGPT Visible Session
 
-Status: aktuelle Standard- und Kompatibilitätsarchitektur seit 21. Juli 2026. Sie
-bleibt getrennt rollbackbar, während die provider-gehosteten OpenAI MCP Apps für
-Deutsch und Englisch bis zur Produktionsreife ausgebaut werden.
+Status: getrennt erhaltener Custom-GPT-Rollback- und Kompatibilitätspfad. Er ist
+nicht der aktuelle deutsche Laufzeitvertrag. Englisch kann bis zur Abnahme einer
+eigenen englischen App noch über diesen Übergangspfad laufen.
 
-Dieses Dokument beschreibt den produktseitig aktiven Start- und Dialogfluss der
-beiden bestehenden SkillPilot Custom GPTs für Deutsch und Englisch. Die
+Dieses Dokument beschreibt den erhaltenen Start- und Dialogfluss der
+bestehenden SkillPilot Custom GPTs für Deutsch und Englisch. Die
 Konfiguration wird **Visible Session** genannt, weil alle Werte, die ein späterer
 ChatGPT-Action-Aufruf benötigt, sichtbar durch den Dialog getragen werden.
 
@@ -14,7 +14,15 @@ ein Custom GPT Werte aus einem früheren unsichtbaren Action-Response nach dem
 nächsten User-Turn nicht mehr zuverlässig wiederverwenden kann. Das Backend bleibt
 die Autorität für Lernstand, State Machine, erlaubte Übergänge und Mastery.
 
-Die frühere Startcode-/Redeem-Architektur ist nicht der aktuelle Laufzeitpfad. Sie
+Der aktuelle deutsche Vertrag ist die
+[OpenAI-MCP-App mit OAuth-, Lernenden- und 24h-Sitzungsbindung](openai-mcp-oauth-learner-session-architecture.md).
+Sie löst die lernende Person serverseitig aus dem OAuth-Subjekt auf und verlangt
+zusätzlich eine absolut höchstens 24 Stunden gültige Lernsession. Weder
+SkillPilot-ID noch Sitzungstoken werden im Chat, in Toolargumenten oder
+Toolergebnissen transportiert.
+
+Die frühere Startcode-/Redeem-Architektur ist ebenfalls kein aktueller
+Laufzeitpfad. Sie
 bleibt vollständig als koordinierte Rollback-Variante erhalten und ist in
 [ChatGPT-Startcode-/Session-Flow (Legacy)](chatgpt-startcode-session-flow.md)
 dokumentiert.
@@ -149,7 +157,7 @@ Folge von Einfachauswahlen und keine Scope-Mehrfachauswahl über `choiceNumbers`
 Das beseitigt unnötige Zwischenfragen, löst aber nicht jede Formulierung allein
 durch Prompting. Insbesondere kann „Oberstufe“ nur automatisch aufgelöst werden,
 wenn die aktuelle Backend-Auswahl eine passende Stufen- oder Composition-View-
-Option tatsächlich anbietet. Die heutige Visible-Session-Oberfläche bildet diese
+Option tatsächlich anbietet. Diese Rollback-Oberfläche bildet diese
 Dimension nicht in jedem Zustand als eigene Option ab. Der GPT darf dann keine
 erfundene Auflösung behaupten, sondern muss bei der ersten echten Lücke stoppen.
 Die strategische Ablösung des sichtbaren Relay-Mechanismus durch zwei
@@ -160,7 +168,7 @@ provider-gehostete MCP Apps beschreibt die
 
 Jede Sprachvariante besitzt ein eigenständiges, fest auf `/de/` beziehungsweise
 `/en/` begrenztes OpenAPI-Schema. Die neun Actions bilden die vollständigen
-aktuellen Coach-Abläufe ab:
+Rollback-Coach-Abläufe ab:
 
 | Action | Methode und Suffix unter `/visible` | Aufgabe im Workflow |
 | --- | --- | --- |
@@ -245,18 +253,19 @@ Die Sprachschemata dürfen nicht zusammengeführt oder gegeneinander ausgetausch
 werden. Unter `ai/` gibt es absichtlich kein gemeinsames
 `skillpilot-api-4ai.*`-Fallback.
 
-## Laufzeitwahl, Rollout und Rollback
+## Laufzeitwahl und koordinierter Rückfall
 
-Das Web-Frontend verwendet `visible-session` ohne Coach-spezifische
-Umgebungsvariable als Standard. Die festen URLs der bestehenden deutschen und
-englischen GPTs liegen im sprachspezifischen Frontend-Paket. Die gewöhnlichen
+Der deutsche Web-Start verwendet die `openai-mcp`-Variante. `visible-session`
+darf nur für einen koordinierten Custom-GPT-Rollback oder als vorübergehender
+englischer Fallback aktiviert werden. Die festen URLs der bestehenden deutschen
+und englischen GPTs liegen im sprachspezifischen Frontend-Paket. Die gewöhnlichen
 Produktionsgeheimnisse des Backends, insbesondere Action-API-Key und Signing
 Secret, bleiben davon unberührt und müssen weiterhin korrekt konfiguriert sein.
 
 Ein Rollout erfolgt koordiniert:
 
 1. Backend mit den `/visible/...`-Routen deployen.
-2. Web-Frontend mit der Standardvariante deployen.
+2. Web-Frontend ausdrücklich mit der Rollback-/Fallbackvariante deployen.
 3. Bestehenden deutschen GPT nur mit dem deutschen Visible-Session-Bundle
    aktualisieren.
 4. Bestehenden englischen GPT nur mit dem englischen Bundle aktualisieren.
@@ -307,6 +316,6 @@ Die Claude-OAuth/MCP-Implementierung ist eine getrennte, derzeit deaktivierte un
 nicht lernendenseitig sichtbare Variante. Sie verwendet keinen sichtbaren
 ChatGPT-Sitzungsfooter. Gemeinsame Projektion, Personalisierung und
 Exam-Autorisierung sind im Code ergänzt; ohne vollständige reale
-Provider-Acceptance ist Claude dennoch kein Fallback des aktuellen Coachs. Der
+Provider-Acceptance ist Claude dennoch kein Fallback des deutschen MCP-Coachs. Der
 Status und die verbleibenden Release-Gates stehen im
 [Claude-Coach-Runbook](../../deploy/claude-coach-beta.md).

@@ -150,7 +150,14 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 8.  **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment.
-9.  **Deployment smoke tests** check that the public host serves the intended
+9.  **OpenAI-mTLS runtime gate** runs for the `openai-mcp` variant. It verifies
+    the separately installed local verifier service and loopback listeners,
+    expects public MCP access without an OpenAI client certificate to fail with
+    `403`, and expects both OAuth discovery endpoints to remain public with
+    `200`. The normal deploy does not install or remove the privileged nginx
+    boundary; see
+    [openai-mcp-edge-mtls.md](openai-mcp-edge-mtls.md).
+10. **Deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML. The source-rationale smoke
     then detects the active curriculum mode: repository deployments must serve
     the two exact compatibility indexes, while package deployments must expose
@@ -181,6 +188,9 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
   - Visible Session rollback:
     `./deploy_skillpilot.sh --coach-variant visible-session`
   - The `openai-mcp` build keeps English on its established Visible Session GPT.
+  - Returning to `visible-session` does not automatically uninstall the
+    OpenAI-mTLS verifier, CA files, or nginx snippet. Removal is a separate,
+    privileged security decision.
 - `git stash` is part of the current script behavior.
   - Operators should be aware that locally modified files will be stashed, not merged or deployed.
 - The backend build currently runs with `-x test`.

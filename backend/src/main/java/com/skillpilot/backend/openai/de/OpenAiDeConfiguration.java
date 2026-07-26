@@ -30,6 +30,13 @@ public class OpenAiDeConfiguration {
                 throw new IllegalStateException(
                         "skillpilot.openai.de.learning-session-ttl must not exceed PT24H.");
             }
+            OpenAiDeSecureModeValidation.Result secureMode =
+                    OpenAiDeSecureModeValidation.inspect(properties);
+            if (!secureMode.valid()) {
+                throw new IllegalStateException(
+                        "OpenAI-DE secure mode is incomplete; invalid settings: "
+                                + String.join(", ", secureMode.violations()));
+            }
         };
     }
 }

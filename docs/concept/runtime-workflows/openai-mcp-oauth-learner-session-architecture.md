@@ -1,17 +1,19 @@
 # OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung
 
-**Stand:** 24. Juli 2026  
+**Stand:** 26. Juli 2026
 **Status:** verbindliche Zielarchitektur für den deutschen OpenAI-MCP-Coach
 
 Dieses Dokument ist die fachliche und sicherheitstechnische Quelle der Wahrheit
 für die Identitäts- und Sitzungsbindung der App **SkillPilot Coach (Deutsch)**.
-Es trennt bewusst vier Dinge, die nicht als ein gemeinsamer „Session-Token“
+Es trennt bewusst fünf Dinge, die nicht als ein gemeinsamer „Session-Token“
 behandelt werden dürfen:
 
-1. den öffentlichen OAuth-Client der ChatGPT-App;
-2. die OAuth-Verbindung zwischen ChatGPT-Konto und SkillPilot;
-3. die serverseitige Zuordnung dieser Verbindung zu genau einer SkillPilot-ID;
-4. die davon unabhängige, absolut auf 24 Stunden begrenzte Lernsession.
+1. die per mTLS nachgewiesene OpenAI-Connector-Infrastruktur am MCP-Rand;
+2. die konfigurierte stabile ChatGPT-OAuth-Clientidentität über CIMD und
+   `private_key_jwt`;
+3. die OAuth-Verbindung zwischen ChatGPT-Konto und SkillPilot;
+4. die serverseitige Zuordnung dieser Verbindung zu genau einer SkillPilot-ID;
+5. die davon unabhängige, absolut auf 24 Stunden begrenzte Lernsession.
 
 Der Benutzer kopiert oder übermittelt in diesem Ablauf **keinen** technischen
 Schlüssel. Insbesondere erscheinen weder SkillPilot-ID, OAuth-Token,
@@ -22,7 +24,8 @@ Startnachricht.
 
 | Objekt | Zuständigkeit | Bedeutung | Typische Lebensdauer |
 | --- | --- | --- | --- |
-| OAuth-Client | App-Autor und ChatGPT | Vorab registrierter öffentlicher Client mit exakten Redirect-URIs | App-Version |
+| OpenAI-mTLS-Transport | OpenAI und SkillPilot-Edge | Nachweis, dass der MCP-Aufruf aus der OpenAI-Connector-Infrastruktur kommt | Zertifikatsrotation durch OpenAI |
+| OAuth-Client | App-Autor und ChatGPT | Exakt zugelassenes HTTPS-CIMD-Metadatendokument mit `private_key_jwt`, öffentlichem JWKS und exakten Redirect-URIs | vom Provider veröffentlichte Clientidentität |
 | Binding Grant | SkillPilot und Browser | Einmalige Verknüpfung des angemeldeten SkillPilot-Lernenden mit einem neu beginnenden OAuth-Ablauf | höchstens 5 Minuten |
 | OAuth-Subject / Verbindung | SkillPilot | Opake Provideridentität, die serverseitig auf genau eine SkillPilot-ID zeigt | bis Widerruf |
 | Access Token | ChatGPT und SkillPilot OAuth | Kurzlebige Autorisierung eines MCP-Aufrufs | 30–60 Minuten |
@@ -37,8 +40,16 @@ und die 24h-Lernsession ist kein vom Modell zu transportierender Bearer Token.
 ## 2. Sicherheitsmodell der App-Verbindung
 
 Der deutsche Coach verwendet OAuth 2.1 Authorization Code mit PKCE `S256`.
-ChatGPT ist der OAuth-Client. Nach erfolgreichem Code-Austausch verwaltet
-ChatGPT Access- und Refresh-Token und sendet bei jedem MCP-Aufruf automatisch:
+ChatGPT ist der OAuth-Client. Der produktive Client ist kein frei
+registrierbarer Public Client: Seine `client_id` ist das exakt zugelassene
+HTTPS-CIMD-Metadatendokument der konfigurierten ChatGPT-Clientidentität. Beim Token-Austausch weist
+ChatGPT den Besitz des dazugehörigen privaten Schlüssels mit
+`private_key_jwt` nach; SkillPilot lädt ausschließlich das konfigurierte
+gleichursprüngliche JWKS, prüft Signatur, Algorithmus, `kid`, `iss`, `sub`,
+Audience, Ablauf und einmaliges `jti`.
+
+Nach erfolgreichem Code-Austausch verwaltet ChatGPT Access- und Refresh-Token
+und sendet bei jedem MCP-Aufruf automatisch:
 
 ```http
 Authorization: Bearer <access-token>
@@ -49,23 +60,52 @@ gegeben. SkillPilot prüft bei jedem geschützten MCP-Aufruf mindestens:
 
 - Signatur beziehungsweise Introspektion des opaken Tokens;
 - Aussteller;
+- die erwartete, registrierte CIMD-Clientidentität;
 - exakte Audience/Resource
   `https://skillpilot.com/api/openai/de/mcp`;
 - Ablauf und Widerruf;
 - den für das Tool erforderlichen Read- oder Write-Scope.
 
-Die vorab registrierte `client_id` und PKCE sichern den OAuth-Ablauf eines
-öffentlichen Clients, sind aber kein geheimes App-Passwort. Der produktive
-MCP-Vertrag benötigt deshalb keinen statischen Bearer Token, den der App-Autor
-in ChatGPT hinterlegt. Außer Discovery, Authorization, Token und den für den
-Browser-Binding-Ablauf ausdrücklich freigegebenen Endpunkten sind
-lernendenbezogene Funktionen nur mit gültigem OAuth Access Token erreichbar.
+Offene Dynamic Client Registration ist im Produktionsvertrag nicht
+vorhanden. `none` ist keine zulässige produktive
+Token-Endpunkt-Authentisierung. Client-ID, Redirect-URI, JWKS-Origin,
+Signaturalgorithmus, Resource und Scopes sind Allowlist-Werte, keine frei
+wählbaren Eingaben.
 
-Falls später zusätzlich die Netzwerkidentität „Anfrage kommt von ChatGPT“
-nachgewiesen werden muss, kann die von OpenAI unterstützte mTLS-
-Clientauthentifizierung ergänzt werden. Sie ersetzt weder OAuth noch die
-Lernendenbindung und ist für die hier beschriebene Autorisierung nicht
-Voraussetzung.
+Zusätzlich verlangt der Reverse Proxy ausschließlich für den eigentlichen
+MCP-Verkehr unter `/api/openai/de/mcp` ein gültiges OpenAI-Clientzertifikat.
+Geprüft werden die Kette bis zur OpenAI-Connectors-mTLS-CA, Gültigkeit,
+Extended Key Usage `clientAuth` und der exakte SAN
+`mtls.prod.connectors.openai.com`. Ein einzelnes rotierendes Leaf-Zertifikat
+wird nicht gepinnt. Discovery-, Authorization-, Token- und Browser-Binding-
+Endpunkte bleiben ohne Clientzertifikat erreichbar, weil Browser dort den
+OAuth-Ablauf durchführen.
+
+mTLS identifiziert die OpenAI-Connector-Infrastruktur. CIMD plus
+`private_key_jwt` bindet den OAuth-Ablauf zusätzlich an die konfigurierte
+stabile ChatGPT-OAuth-Clientidentität. Das ist ohne eine ausdrückliche
+Provider-Garantie keine kryptografische Attestation des sichtbaren
+App-Namens gegenüber jeder anderen App derselben Infrastruktur. Exakte
+Callback-, Resource- und Scope-Allowlisten grenzen den SkillPilot-Vertrag
+weiter ein. OAuth bindet anschließend den Benutzer, und die 24h-Lernsession
+erteilt die zeitlich begrenzte fachliche Freigabe. Keine dieser Schichten
+ersetzt eine andere.
+
+Der Backend-Port ist nur auf Loopback gebunden. Der Reverse Proxy entfernt
+eingehende mTLS-Verifikationsheader und setzt interne Header erst nach
+erfolgreicher Zertifikatsprüfung selbst. Damit kann ein fremder Client weder
+den Proxy-Schutz umgehen noch durch selbst gesetzte Header vortäuschen, von
+OpenAI zu stammen.
+
+Der produktive MCP-Vertrag benötigt keinen statischen Bearer Token, den der
+App-Autor in ChatGPT hinterlegt. Außer Discovery, Authorization, Token und den
+für den Browser-Binding-Ablauf ausdrücklich freigegebenen Endpunkten sind
+lernendenbezogene Funktionen nur über die vollständige Kette aus
+mTLS-verifiziertem MCP-Transport und gültigem OAuth Access Token erreichbar.
+
+Die operative Umsetzung, Negativtests und Rotation stehen in
+[OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md) und
+[OpenAI-MCP-mTLS am Edge](../../deploy/openai-mcp-edge-mtls.md).
 
 ## 3. Automatische Lernendenbindung im Browser
 
