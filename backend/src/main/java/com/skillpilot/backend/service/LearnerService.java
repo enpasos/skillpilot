@@ -5899,8 +5899,8 @@ public class LearnerService {
         String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
         String landscapeFilterId = readFilterId(config, landscapeId);
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
-        String stage = inferCompositionStageScope(config);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
+        String stage = inferCompositionStageScope(config, courseProfile);
         String durationModel = resolveDurationModelScope(
                 readScopeValue(config, landscapeId, "durationModel"),
                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
@@ -5991,7 +5991,12 @@ public class LearnerService {
         return COURSE_FILTER_IDS.contains(normalized) ? normalized : null;
     }
 
-    private String inferCompositionStageScope(Map<String, Map<String, Object>> config) {
+    private String inferCompositionStageScope(
+            Map<String, Map<String, Object>> config,
+            String courseProfile) {
+        if (!hasExplicitCompositionStageScope(config) && isUpperSecondaryCourseProfile(courseProfile)) {
+            return "SekII";
+        }
         boolean sek1Selected = readSelectedFlag(config, STAGE_SCOPE_SEK1_ID, true);
         boolean sek2Selected = readSelectedFlag(config, STAGE_SCOPE_SEK2_ID, true);
         if (sek1Selected && sek2Selected) {
@@ -6004,6 +6009,27 @@ public class LearnerService {
             return "SekII";
         }
         return null;
+    }
+
+    private boolean hasExplicitCompositionStageScope(Map<String, Map<String, Object>> config) {
+        return hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK1_ID)
+                || hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK2_ID);
+    }
+
+    private boolean hasExplicitSelectedFlag(
+            Map<String, Map<String, Object>> config,
+            String configId) {
+        if (config == null || config.isEmpty()) {
+            return false;
+        }
+        Map<String, Object> entry = config.get(configId);
+        return entry != null && entry.get("selected") instanceof Boolean;
+    }
+
+    private boolean isUpperSecondaryCourseProfile(String courseProfile) {
+        return "GK".equals(courseProfile)
+                || "LK".equals(courseProfile)
+                || "GK+LK".equals(courseProfile);
     }
 
     private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String configId, boolean defaultValue) {

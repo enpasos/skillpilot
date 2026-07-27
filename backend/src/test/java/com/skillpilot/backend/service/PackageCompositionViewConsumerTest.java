@@ -38,6 +38,85 @@ class PackageCompositionViewConsumerTest {
 
     @Test
     @SuppressWarnings("unchecked")
+    void learnerScopeInfersSekIIFromCourseProfileOnlyWhenStageIsNotExplicit() {
+        LearnerService service = learnerService(
+                mock(LandscapeService.class),
+                mock(CompositionViewService.class));
+
+        for (String courseProfile : List.of("GK", "LK")) {
+            Map<String, String> scope = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                    service,
+                    "deriveCompositionScope",
+                    LANDSCAPE_ID,
+                    Map.of(
+                            LANDSCAPE_ID,
+                            Map.<String, Object>of("selected", true, "filterId", courseProfile)));
+
+            assertThat(scope)
+                    .containsEntry("stage", "SekII")
+                    .containsEntry("courseProfile", courseProfile);
+        }
+
+        Map<String, String> explicitCrossStage = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                service,
+                "deriveCompositionScope",
+                LANDSCAPE_ID,
+                Map.of(
+                        LANDSCAPE_ID,
+                        Map.<String, Object>of("selected", true, "filterId", "LK"),
+                        "__skillpilot_stage_scope_sek1__",
+                        Map.<String, Object>of("selected", true),
+                        "__skillpilot_stage_scope_sek2__",
+                        Map.<String, Object>of("selected", true)));
+
+        assertThat(explicitCrossStage)
+                .containsEntry("stage", "CrossStage")
+                .containsEntry("courseProfile", "LK");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void curriculaScopeInfersSekIIFromCourseProfileOnlyWhenStageIsNotExplicit() {
+        LearningLandscape landscape = landscape();
+        LandscapeService landscapes = mock(LandscapeService.class);
+        when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
+        CurriculaService service = curriculaService(landscapes);
+
+        for (String courseProfile : List.of("GK", "LK")) {
+            Map<String, String> scope = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                    service,
+                    "deriveRuntimeCompositionScope",
+                    LANDSCAPE_ID,
+                    """
+                    {
+                      "package-math": {"selected": true, "filterId": "%s"}
+                    }
+                    """.formatted(courseProfile));
+
+            assertThat(scope)
+                    .containsEntry("stage", "SekII")
+                    .containsEntry("courseProfile", courseProfile);
+        }
+
+        Map<String, String> explicitCrossStage = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                service,
+                "deriveRuntimeCompositionScope",
+                LANDSCAPE_ID,
+                """
+                {
+                  "package-math": {"selected": true, "filterId": "LK"},
+                  "__skillpilot_stage_scope_sek1__": {"selected": true},
+                  "__skillpilot_stage_scope_sek2__": {"selected": true}
+                }
+                """);
+
+        assertThat(explicitCrossStage)
+                .containsEntry("stage", "CrossStage")
+                .containsEntry("courseProfile", "LK");
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
     void learnerFilteringDoesNotFallBackToAllGoalsForUnsupportedPackageScope() {
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
@@ -314,6 +393,19 @@ class PackageCompositionViewConsumerTest {
                 new ObjectMapper(),
                 mock(ApplicationEventPublisher.class),
                 mock(PlatformTransactionManager.class));
+    }
+
+    private static CurriculaService curriculaService(LandscapeService landscapes) {
+        return new CurriculaService(
+                landscapes,
+                mock(MasteryRepository.class),
+                mock(LearnerRepository.class),
+                mock(CurriculumChampionRepository.class),
+                mock(GitHubStatsService.class),
+                mock(LearnerService.class),
+                mock(CompositionViewService.class),
+                new ObjectMapper(),
+                new PackageCurriculumQualitySnapshotProvider());
     }
 
     private static LearningLandscape landscape() {
