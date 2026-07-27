@@ -36,7 +36,11 @@ import {
   isOpenAiMcpCoachActive,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
-import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
+import {
+  confirmOpenAiMcpEligibility,
+  isOpenAiMcpEligibilityDeclinedError,
+  OpenAiMcpEligibilityDeclinedError,
+} from '../coachVariants/openAiMcp/providerEligibility'
 import {
   CLAUDE_COACH_BETA_ENABLED,
   getSafeClaudeDesktopUrl,
@@ -235,9 +239,13 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     }
   }
 
-  const persistLearnerStart = (effectiveId: string) => {
+  const persistLearnerStart = (
+    effectiveId: string,
+    options: { persistCurriculumRemotely?: boolean } = {},
+  ) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
     if (!sanitizedId) return ''
+    const persistCurriculumRemotely = options.persistCurriculumRemotely !== false
 
     localStorage.setItem('skillpilot_id', sanitizedId)
     localStorage.setItem('skillpilot_role', 'learner')
@@ -253,16 +261,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     if (!normalizedLandscapeId) return ''
 
     localStorage.setItem('skillpilot_learner_landscape', normalizedLandscapeId)
-    try {
-      const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-      const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}/curriculum` : `/api/ui/learners/${sanitizedId}/curriculum`
-      fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ curriculumId: normalizedLandscapeId })
-      }).catch(e => console.error('Failed to save curriculum silently', e))
-    } catch (e) {
-      console.error('Failed to initiate save curriculum', e)
+    if (persistCurriculumRemotely) {
+      try {
+        const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
+        const url = apiBase ? `${apiBase}/api/ui/learners/${sanitizedId}/curriculum` : `/api/ui/learners/${sanitizedId}/curriculum`
+        fetch(url, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ curriculumId: normalizedLandscapeId })
+        }).catch(e => console.error('Failed to save curriculum silently', e))
+      } catch (e) {
+        console.error('Failed to initiate save curriculum', e)
+      }
     }
     return normalizedLandscapeId
   }
@@ -328,10 +338,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setLegalAccepted(true)
   }
 
-  const createCoachChatStart = async (effectiveId: string) => {
+  const createCoachChatStart = async (
+    effectiveId: string,
+    providerEligibilityConfirmed?: boolean,
+  ) => {
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
     if (!sanitizedId) return null
-    const normalizedLandscapeId = persistLearnerStart(sanitizedId)
+    // The OpenAI launch endpoint persists the selected curriculum atomically
+    // while issuing the fresh learning session. A parallel fire-and-forget PUT
+    // here can race that transaction and make the first click fail.
+    const normalizedLandscapeId = persistLearnerStart(sanitizedId, {
+      persistCurriculumRemotely: !openAiMcpCoachActive,
+    })
     if (!normalizedLandscapeId) return null
 
     setChatStartLoading(true)
@@ -342,6 +360,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         language,
         selectedCurriculum: normalizedLandscapeId,
         client: 'web-start',
+        providerEligibilityConfirmed,
       })
     } finally {
       setChatStartLoading(false)
@@ -352,24 +371,54 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return
     if (!chatStartInFlightRef.current.tryStart()) return
-    const chatWindow = window.open('', '_blank')
+    let chatWindow: Window | null = null
     let popupBlocked = false
     try {
-      const chatStart = await createCoachChatStart(effectiveId)
+      let providerEligibilityConfirmed: boolean | undefined
+      if (openAiMcpCoachActive) {
+        const eligibilityLanguage = language.trim().toLowerCase().startsWith('en') ? 'en' : 'de'
+        providerEligibilityConfirmed = confirmOpenAiMcpEligibility(
+          eligibilityLanguage,
+          effectiveId,
+        )
+        if (!providerEligibilityConfirmed) {
+          throw new OpenAiMcpEligibilityDeclinedError(eligibilityLanguage)
+        }
+      }
+
+      // The provider confirmation above is synchronous. Opening the placeholder
+      // afterwards keeps this call inside the original user gesture and avoids
+      // leaving a blank tab idle while the confirmation dialog is visible.
+      chatWindow = window.open('', '_blank')
+      if (!chatWindow) {
+        popupBlocked = true
+        throw new Error('ChatGPT popup was blocked')
+      }
+      try {
+        chatWindow.document.title = 'SkillPilot'
+        chatWindow.document.body.textContent = language.trim().toLowerCase().startsWith('en')
+          ? 'SkillPilot is preparing your learning session …'
+          : 'SkillPilot bereitet deine Lernsession vor …'
+      } catch {
+        // The placeholder copy is only a convenience; navigation still works.
+      }
+
+      const chatStart = await createCoachChatStart(effectiveId, providerEligibilityConfirmed)
       if (!chatStart) throw new Error('Missing coach chat start')
       await deliverCoachChatStart(
         chatStart,
         (url) => {
-          if (chatWindow) {
-            chatWindow.opener = null
-            chatWindow.location.href = url
+          if (chatWindow && !chatWindow.closed) {
+            chatWindow.location.replace(url)
+            try {
+              chatWindow.opener = null
+            } catch {
+              // Navigation already succeeded; opener cleanup is best effort.
+            }
             return
           }
-          const openedWindow = window.open(url, '_blank', 'noopener,noreferrer')
-          if (!openedWindow) {
-            popupBlocked = true
-            throw new Error('ChatGPT popup was blocked')
-          }
+          popupBlocked = true
+          throw new Error('ChatGPT popup was blocked')
         },
       )
       setChatLaunchIssue('none')
