@@ -181,13 +181,49 @@ wait_for_public_readiness() {
     fi
 
     echo "Readiness noch nicht erreicht: curl=${curl_exit_code} HTTP ${http_status:-000} (${attempt}. Versuch)"
+
+    # A backend that has already exited cannot become ready without another
+    # systemd start attempt. Detect a crash loop early instead of hiding the
+    # configuration error behind the full public-readiness timeout. Only
+    # non-sensitive unit state is emitted; command lines and environment
+    # variables (which can contain OAuth secrets) are deliberately excluded.
+    if (( attempt >= 2 )); then
+      local unit_state
+      unit_state="$(
+        "${SYSTEMCTL_BIN}" show "${SERVICE_NAME}" \
+          --property=ActiveState \
+          --property=SubState \
+          --property=Result \
+          --property=ExecMainCode \
+          --property=ExecMainStatus \
+          --property=NRestarts \
+          --no-pager \
+          2>/dev/null || true
+      )"
+      if printf '%s\n' "${unit_state}" \
+        | grep -Eq '^(ActiveState=(failed|inactive)|SubState=(failed|dead|auto-restart))$'; then
+        echo "CHECK service_runtime FAIL: systemd meldet einen beendeten Dienst oder Neustart-Loop." >&2
+        printf '%s\n' "${unit_state}" >&2
+        echo "Details: sudo journalctl -u ${SERVICE_NAME} --since '-5 min' --no-pager -l" >&2
+        return 1
+      fi
+    fi
+
     sleep "${interval_seconds}"
   done
 
   echo "CHECK public_readiness FAIL nach ${timeout_seconds}s: ${readiness_url}" >&2
   echo "Letzte Antwort: curl=${curl_exit_code} HTTP ${http_status}; ${last_excerpt}" >&2
-  echo "Dienststatus zur Diagnose:" >&2
-  "${SYSTEMCTL_BIN}" status "${SERVICE_NAME}" --no-pager -l >&2 || true
+  echo "Nicht-sensitiver Dienststatus zur Diagnose:" >&2
+  "${SYSTEMCTL_BIN}" show "${SERVICE_NAME}" \
+    --property=ActiveState \
+    --property=SubState \
+    --property=Result \
+    --property=ExecMainCode \
+    --property=ExecMainStatus \
+    --property=NRestarts \
+    --no-pager >&2 || true
+  echo "Details: sudo journalctl -u ${SERVICE_NAME} --since '-5 min' --no-pager -l" >&2
   return 1
 }
 

@@ -250,7 +250,10 @@ public class OpenAiDeProperties {
         private String clientId = "";
         private String clientSecret = "";
         private List<String> redirectUris = new ArrayList<>();
-        private String clientAuthenticationMethod = "none";
+        // The normal SkillPilot ChatGPT app is a pre-registered confidential
+        // client. Public-client mode must be selected explicitly in isolated
+        // compatibility tests and is rejected by secure production mode.
+        private String clientAuthenticationMethod = "client_secret_basic";
         private String clientJwkSetUri = "";
         private String clientAssertionSigningAlgorithm = "RS256";
         private int clientAssertionReplayCacheSize = 10_000;
