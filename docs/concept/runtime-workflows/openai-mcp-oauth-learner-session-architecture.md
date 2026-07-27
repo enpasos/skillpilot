@@ -96,6 +96,11 @@ jedes fachliche SkillPilot-Tool:
 }
 ```
 
+Das modellseitige Tool-Schema beschreibt dafür nur ein erforderliches
+String-Feld mit der Anweisung zur unveränderten Übernahme. Regex, exakte Länge
+und weitere technische Tokenregeln bleiben absichtlich serverseitig, damit sie
+das LLM nicht zur Rekonstruktion eines opaken Werts verleiten.
+
 Parallel sendet die Connector-Infrastruktur das OAuth Access Token außerhalb
 des Modellkontexts:
 

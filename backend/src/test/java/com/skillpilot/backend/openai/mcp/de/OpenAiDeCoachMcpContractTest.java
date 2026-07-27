@@ -166,6 +166,29 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void modelFacingInputSchemasOmitTechnicalStringValidationDetails() throws Exception {
+        for (McpStatelessServerFeatures.SyncToolSpecification specification : contract.toolSpecifications()) {
+            String inputSchemaJson = objectMapper.writeValueAsString(specification.tool().inputSchema());
+
+            assertThat(inputSchemaJson)
+                    .as("model-facing input schema of %s", specification.tool().name())
+                    .doesNotContain("\"pattern\"", "\"minLength\"", "\"maxLength\"", "\"format\"");
+        }
+
+        McpSchema.Tool contextTool = spec(OpenAiDeCoachMcpContract.GET_CONTEXT).tool();
+        assertThat(contextTool.inputSchema().get("properties"))
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties
+                                .get(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID))
+                        .isInstanceOfSatisfying(Map.class, learningSessionSchema -> assertThat(learningSessionSchema)
+                                .containsEntry("type", "string")
+                                .containsEntry(
+                                        "description",
+                                        "Aus der aktuellen SkillPilot-Startnachricht exakt und unverändert "
+                                                + "übernehmen und bei jedem Tool-Aufruf mitsenden.")
+                                .containsOnlyKeys("type", "description")));
+    }
+
+    @Test
     void nativeMcpSerializationPublishesOutputSchemaAnnotationsAndOpenAiSecurityMirror() throws Exception {
         String json = new JacksonMcpJsonMapperSupplier().get().writeValueAsString(
                 spec(OpenAiDeCoachMcpContract.SET_SCOPE).tool());
