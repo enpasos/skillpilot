@@ -66,6 +66,8 @@ class OpenAiDeCoachConnectionServiceTest {
         learner.setSkillpilotId(SKILLPILOT_ID);
         learner.setSelectedCurriculum("math");
         when(learnerService.getLearner(SKILLPILOT_ID)).thenReturn(learner);
+        when(learnerService.reopenPersonalizationForExplicitLaunch(any(Learner.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
         when(learners.findBySkillpilotIdForUpdate(SKILLPILOT_ID)).thenReturn(Optional.of(learner));
         when(landscapeService.getById("math")).thenReturn(mock(LearningLandscape.class));
     }
