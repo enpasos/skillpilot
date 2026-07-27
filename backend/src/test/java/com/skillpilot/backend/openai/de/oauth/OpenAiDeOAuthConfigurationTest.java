@@ -29,8 +29,14 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 class OpenAiDeOAuthConfigurationTest {
+
+    private static final String TEST_CLIENT_SECRET =
+            "test-client-secret-0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String TEST_SIGNING_SECRET =
+            "7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg";
 
     private final OpenAiDeOAuthConfiguration configuration = new OpenAiDeOAuthConfiguration();
 
@@ -39,6 +45,7 @@ class OpenAiDeOAuthConfigurationTest {
         OpenAiDeProperties properties = new OpenAiDeProperties();
 
         assertThat(properties.getOauth().getClientId()).isEmpty();
+        assertThat(properties.getOauth().getClientSecret()).isEmpty();
         assertThat(properties.getOauth().getRedirectUris()).isEmpty();
     }
 
@@ -57,7 +64,7 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void learningSessionTtlAcceptsTheAbsoluteTwentyFourHourMaximum() {
+    void learningSessionTtlAcceptsExactlyTwentyFourHours() {
         new ApplicationContextRunner()
                 .withUserConfiguration(OpenAiDeConfiguration.class)
                 .withPropertyValues(
@@ -71,12 +78,13 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
-    void learningSessionTtlRejectsNonPositiveAndMoreThanTwentyFourHours() {
-        for (String invalidTtl : List.of("PT0S", "-PT1S", "PT24H1S")) {
+    void learningSessionTtlRejectsAnythingOtherThanTwentyFourHours() {
+        for (String invalidTtl : List.of("PT0S", "-PT1S", "PT1H", "PT23H59M59S", "PT24H1S")) {
             new ApplicationContextRunner()
                     .withUserConfiguration(OpenAiDeConfiguration.class)
                     .withPropertyValues(
                             "skillpilot.openai.de.enabled=true",
+                            "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
                             "skillpilot.openai.de.learning-session-ttl=" + invalidTtl)
                     .run(context -> {
                         assertThat(context).hasFailed();
@@ -91,14 +99,14 @@ class OpenAiDeOAuthConfigurationTest {
     private static String[] secureProviderPropertiesWith(String override) {
         String[] baseline = new String[] {
             "skillpilot.openai.de.enabled=true",
+            "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
             "skillpilot.openai.de.security.secure-mode=true",
             "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-authentication-method=private_key_jwt",
-            "skillpilot.openai.de.oauth.client-id=https://chatgpt.com/oauth/skillpilot/client.json",
+            "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
+            "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
+            "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
             "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
-            "skillpilot.openai.de.oauth.client-assertion-signing-algorithm=RS256",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=10000",
+            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0",
             "skillpilot.openai.de.mtls-edge.enabled=true",
             "skillpilot.openai.de.mtls-edge.trusted-proxies[0]=127.0.0.1"
         };
@@ -195,6 +203,63 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
+    void registersExactlyConfiguredConfidentialPkceClientWithoutPersistingPlaintext()
+            throws Exception {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+        OpenAiDeProperties properties = configuredConfidentialProperties();
+        AtomicReference<RegisteredClient> persisted = new AtomicReference<>();
+        when(clients.findByClientId("skillpilot-chatgpt-de-prod"))
+                .thenAnswer(invocation -> persisted.get());
+        doAnswer(invocation -> {
+                    persisted.set(invocation.getArgument(0));
+                    return null;
+                })
+                .when(clients)
+                .save(any(RegisteredClient.class));
+
+        configuration.registerOpenAiDeClient(clients, properties).afterPropertiesSet();
+
+        RegisteredClient client = persisted.get();
+        assertThat(client).isNotNull();
+        assertThat(client.getClientId()).isEqualTo("skillpilot-chatgpt-de-prod");
+        assertThat(client.getClientAuthenticationMethods())
+                .containsExactly(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);
+        assertThat(client.getClientSecret())
+                .isNotBlank()
+                .isNotEqualTo(TEST_CLIENT_SECRET);
+        assertThat(PasswordEncoderFactories.createDelegatingPasswordEncoder()
+                        .matches(TEST_CLIENT_SECRET, client.getClientSecret()))
+                .isTrue();
+        assertThat(client.getRedirectUris()).containsExactly(
+                "https://chatgpt.com/connector/oauth/app-specific-callback");
+        assertThat(client.getAuthorizationGrantTypes()).containsExactlyInAnyOrder(
+                AuthorizationGrantType.AUTHORIZATION_CODE,
+                AuthorizationGrantType.REFRESH_TOKEN);
+        assertThat(client.getClientSettings().isRequireProofKey()).isTrue();
+        assertThat(client.getClientSettings().isRequireAuthorizationConsent()).isTrue();
+        assertThat(client.getTokenSettings().getAccessTokenFormat())
+                .isEqualTo(OAuth2TokenFormat.REFERENCE);
+    }
+
+    @Test
+    void confidentialClientRejectsMissingShortOrWhitespaceSecret() {
+        RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
+
+        for (String invalidSecret : List.of(
+                "",
+                "too-short",
+                "test-client-secret-0123456789 contains-whitespace")) {
+            OpenAiDeProperties properties = configuredConfidentialProperties();
+            properties.getOauth().setClientSecret(invalidSecret);
+
+            assertThatExceptionOfType(IllegalStateException.class)
+                    .as(invalidSecret)
+                    .isThrownBy(configuration.registerOpenAiDeClient(clients, properties)::afterPropertiesSet)
+                    .withMessageContaining("client-secret");
+        }
+    }
+
+    @Test
     void registersPinnedCimdPrivateKeyJwtClient() throws Exception {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeProperties properties = configuredPrivateKeyJwtProperties();
@@ -278,6 +343,17 @@ class OpenAiDeOAuthConfigurationTest {
     }
 
     @Test
+    void startupRefusesPersistedConfidentialClientSecretTampering() {
+        OpenAiDeProperties properties = configuredConfidentialProperties();
+
+        assertPersistedRegistrationTamperingRejected(
+                properties,
+                client -> RegisteredClient.from(client)
+                        .clientSecret("{noop}different-secret-value-that-is-long-enough")
+                        .build());
+    }
+
+    @Test
     void startupRefusesUnverifiableCimdBeforeCutoverOrClientRegistration() {
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
         OpenAiDeOAuthLegacyClientCutover cutover =
@@ -346,14 +422,14 @@ class OpenAiDeOAuthConfigurationTest {
                 .containsEntry("token_endpoint_auth_methods_supported", List.of("none"))
                 .doesNotContainKey("client_id_metadata_document_supported");
 
-        OpenAiDeProperties secure = configuredPrivateKeyJwtProperties();
+        OpenAiDeProperties secure = configuredConfidentialProperties();
         assertThat(OpenAiDeOAuthMetadataController.authorizationServerMetadata(
                         "https://skillpilot.test/api/openai/de",
                         secure))
-                .containsEntry("token_endpoint_auth_methods_supported", List.of("private_key_jwt"))
-                .containsEntry("revocation_endpoint_auth_methods_supported", List.of("private_key_jwt"))
-                .containsEntry("client_id_metadata_document_supported", true)
-                .containsEntry("token_endpoint_auth_signing_alg_values_supported", List.of("RS256"))
+                .containsEntry("token_endpoint_auth_methods_supported", List.of("client_secret_basic"))
+                .containsEntry("revocation_endpoint_auth_methods_supported", List.of("client_secret_basic"))
+                .containsEntry("code_challenge_methods_supported", List.of("S256"))
+                .doesNotContainKey("client_id_metadata_document_supported")
                 .doesNotContainKey("registration_endpoint");
     }
 
@@ -472,6 +548,15 @@ class OpenAiDeOAuthConfigurationTest {
         properties.getOauth().setClientId("https://chatgpt.com/oauth/skillpilot/client.json");
         properties.getOauth().setClientJwkSetUri("https://chatgpt.com/oauth/jwks.json");
         properties.getOauth().setClientAssertionSigningAlgorithm("RS256");
+        return properties;
+    }
+
+    private OpenAiDeProperties configuredConfidentialProperties() {
+        OpenAiDeProperties properties = configuredProperties();
+        properties.getOauth().setClientAuthenticationMethod("client_secret_basic");
+        properties.getOauth().setClientId("skillpilot-chatgpt-de-prod");
+        properties.getOauth().setClientSecret(TEST_CLIENT_SECRET);
+        properties.getOauth().setClientAssertionReplayCacheSize(0);
         return properties;
     }
 }

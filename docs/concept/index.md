@@ -47,10 +47,10 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   Target architecture for separately registered German and English provider-hosted MCP apps, a shared authoritative SkillPilot domain core, direct provider billing, and staged production gates.
 - [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](runtime-workflows/openai-mcp-coach-migration-plan.md)
   DE-first implementation, workflow parity, staged cutover, rollback, and the direct Spring Boot MCP runtime boundary.
-- [OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
-  Normative separation of the TLS/OAuth baseline, optional OpenAI-connector mTLS hardening, the supported pre-registered public-client and optional CIMD plus `private_key_jwt` OAuth profiles, automatic OAuth token transport, first-party learner binding, opaque provider identity, and the absolute 24-hour learning session.
+- [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+  Normative separation of the fixed confidential OAuth client that authenticates the App and the fresh, automatically transported, absolute 24-hour learning session that addresses the learner.
 - [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
-  Security source of truth for the TLS/OAuth baseline, optional fail-closed mTLS hardening at the MCP edge, exact pre-registered public-client or optional CIMD client binding, resource and scope binding, and learner mapping.
+  Security source of truth for `client_secret_basic`, exact callback/resource/scope binding, optional edge-mTLS hardening, secret lifecycle, and the independent learner-session boundary.
 - [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
   Normative mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)

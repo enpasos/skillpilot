@@ -65,7 +65,7 @@ export const de = {
             openAiMcpHint: "SkillPilot öffnet einen neuen ChatGPT-Chat mit einer zum vorbereiteten nächsten Schritt passenden Startnachricht. Aktiviere dort bei Bedarf die App „SkillPilot Coach (Deutsch)“ und sende die bereits eingetragene Nachricht ab.",
             openAiMcpStart: "SkillPilot-App öffnen",
             openAiMcpConnectedHint: "Die Verbindung ist aktiv. ChatGPT wurde mit der passenden Startnachricht geöffnet.",
-            openAiMcpConnectHint: "Beim ersten App-Aufruf öffnet ChatGPT die einmalige SkillPilot-Autorisierung. Danach kann der Coach deinen Lernstand ohne sichtbaren Schlüssel laden.",
+            openAiMcpConnectHint: "Beim ersten App-Aufruf öffnet ChatGPT die einmalige App-Autorisierung. Bei jedem Start fügt SkillPilot automatisch eine neue, 24 Stunden gültige Lernsession in die Startnachricht ein.",
             openAiMcpPopupBlocked: "ChatGPT konnte nicht automatisch geöffnet werden. Erlaube Pop-ups für SkillPilot und versuche es erneut.",
             openAiMcpPreparationFailed: "Die Verbindung zum Lerncoach konnte gerade nicht vorbereitet werden. Bitte versuche es erneut.",
             openAiMcpDisconnect: "ChatGPT-Verbindung trennen",

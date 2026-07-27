@@ -19,8 +19,12 @@ Die Architektur- und Migrationsentscheidungen stehen in
 Der verbindliche Identitäts- und Sitzungsablauf steht getrennt in
 [openai-mcp-oauth-learner-session-architecture.md](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
 Insbesondere verwaltet ChatGPT OAuth Access- und Refresh-Token automatisch;
-Benutzer geben niemals Token oder SkillPilot-ID im Chat ein. Die davon
-unabhängige Lernsession ist serverseitig und absolut auf 24 Stunden begrenzt.
+Benutzer geben niemals OAuth-Token, OAuth-Client-Secret oder dauerhafte
+SkillPilot-ID im Chat ein. Jeder ausdrückliche Start in SkillPilot erzeugt
+jedoch eine davon unabhängige, absolut 24 Stunden gültige
+`learningSessionId`. SkillPilot trägt diese Referenz automatisch in die
+Startnachricht ein; ChatGPT übergibt sie unverändert an jedes fachliche
+MCP-Werkzeug.
 
 ## 1. Öffentlicher Vertrag
 
@@ -41,21 +45,21 @@ Entwicklungstunnel.
 
 ## 2. Discovery-Bootstrap und OAuth-Werte
 
-Der Produktivvertrag verwendet Authorization Code mit PKCE `S256`, eine exakt
-vorregistrierte Client-ID, eine exakte Callback-Allowlist sowie die feste
-MCP-Resource und feste Scopes. Das produktive Basisprofil ist ein Public
-Client mit `token_endpoint_auth_method=none`; es verwendet bewusst kein
-Client-Secret. Optional kann ein Deployment eine feste HTTPS-CIMD-Client-ID
-mit gleich-originiger JWKS und `private_key_jwt` als stärkeres Profil
-auswählen. Beide Profile setzen normales serverauthentisiertes HTTPS und die
-vollständige OAuth-Prüfung voraus. Optionales OpenAI-mTLS kann später
-ausschließlich den MCP-Rand zusätzlich härten. SkillPilot veröffentlicht
-absichtlich keine offene Dynamic Client Registration und akzeptiert keine
-erfundene allgemeine Callback-URL.
-Die öffentliche Client-ID des Basisprofils ist dabei kein Geheimnis und kein
-kryptografischer Clientnachweis. Die Registrierung begrenzt Client-ID und
-Callback; PKCE schützt die Einlösung des Authorization Codes. Erst das
-optionale `private_key_jwt` authentisiert den OAuth-Client kryptografisch.
+Der Produktivvertrag verwendet Authorization Code mit PKCE `S256` und genau
+einen vorregistrierten **vertraulichen OAuth-Client** für die App
+`SkillPilot Coach (Deutsch)`. Dessen feste Client-ID, langes zufälliges
+Client-Secret, exakte Callback-Allowlist, feste MCP-Resource und feste Scopes
+werden vom App-Autor auf beiden Seiten konfiguriert. ChatGPT authentisiert sich
+am Token-Endpunkt mit `client_secret_basic`; SkillPilot akzeptiert weder
+`none` noch offene Dynamic Client Registration, CIMD oder
+`private_key_jwt` im aktiven Produktivprofil.
+
+Das Secret ist ausschließlich geschützte Konfiguration in ChatGPT und
+SkillPilot. Es gehört weder in Repository, Browser, Startnachricht,
+Toolargumente noch Logs. PKCE bindet zusätzlich den Authorization Code an den
+von ChatGPT erzeugten Verifier. Normales serverauthentisiertes HTTPS bleibt
+Pflicht. Optionales OpenAI-mTLS kann den MCP-Rand später zusätzlich härten,
+ist aber weder App-Identität noch Voraussetzung dieses Vertrags.
 
 Die ChatGPT-Verwaltung prüft die MCP-URL, bevor sie ihre erweiterten OAuth-
 Einstellungen zeigt. Gleichzeitig benötigt der vollständige SkillPilot-
@@ -69,19 +73,17 @@ expliziter, datenloser Bootstrapmodus:
    Token-Endpunkte, Lernerdienste oder einen Coach-Health-Contributor.
 3. In der ChatGPT-App-Verwaltung `Server URL`, die produktive MCP-URL und
    `OAuth` wählen.
-4. Die für diese Verbindung angezeigte beziehungsweise bereitgestellte
-   Client-ID unverändert übernehmen. Für das Basisprofil ist dies die feste
-   Public-Client-ID. Nur wenn das optionale stärkere Profil ausdrücklich
-   gewählt wird, zusätzlich die HTTPS-CIMD- und gleich-originige JWKS-URL
-   unverändert übernehmen. Keine Werte raten oder aus dem sichtbaren App-Namen
-   ableiten.
+4. Eine feste, nur dieser App zugeordnete Client-ID und ein langes zufälliges
+   Client-Secret erzeugen. Dieselben Werte in ChatGPT und SkillPilot
+   konfigurieren; das Secret nie in Dokumentation oder Tickets kopieren.
 5. Die dort angezeigte app-spezifische Produktions-Callback-URL der Form
    `https://chatgpt.com/connector/oauth/{callback_id}` unverändert übernehmen.
 6. Mehrere echte Callback-URLs als kommaseparierte Liste konfigurieren. Keine
    Beispiel- oder Legacy-URL ergänzen, die nicht in der App-Verwaltung steht.
-7. Bootstrap ausschalten und Vollbetrieb mit dem ausgewählten Clientprofil,
-   Callback, OAuth und MCP atomar aktivieren. Der erste Vollbetrieb
-   bleibt read-only.
+7. In ChatGPT als Token-Endpunkt-Authentisierung `client_secret_basic`
+   auswählen. Bootstrap ausschalten und Vollbetrieb mit Client-ID, Secret,
+   Callback, OAuth und MCP atomar aktivieren. Der erste Vollbetrieb bleibt
+   read-only.
 
 Der Bootstrap-MCP-Endpunkt weist **jede** Methode und auch beliebige Bearer-
 Werte mit `401` plus `WWW-Authenticate` ab. Authorization-, Token-, Revocation-
@@ -113,7 +115,8 @@ ausdrücklich aktiviert ist.
 SERVER_ADDRESS=127.0.0.1
 
 SKILLPILOT_PUBLIC_BASE_URL=https://skillpilot.com
-SKILLPILOT_SIGNING_SECRET=<starker-stabiler-secret-wert>
+# Unabhängig vom OAuth-Client-Secret erzeugen, z. B.: openssl rand -hex 32
+SKILLPILOT_SIGNING_SECRET=<mindestens-32-hochentropische-zeichen>
 
 SKILLPILOT_OPENAI_DE_ENABLED=true
 SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
@@ -130,23 +133,15 @@ SKILLPILOT_OPENAI_DE_MCP_URL=https://skillpilot.com/api/openai/de/mcp
 SKILLPILOT_OPENAI_DE_RESOURCE_METADATA=https://skillpilot.com/api/openai/de/oauth/protected-resource
 SKILLPILOT_OPENAI_DE_CHATGPT_URL=https://chatgpt.com/
 
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=none
-SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-vorregistrierte-public-client-id>
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=client_secret_basic
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-feste-client-id-dieser-app>
+SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET=<langes-zufälliges-client-secret>
 SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS=<exakte-callback-url-oder-kommaliste>
-
-# Optionales alternatives Profil statt der drei Public-Client-Zeilen:
-# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD=private_key_jwt
-# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID=<exakte-https-cimd-metadaten-url-dieser-app>
-# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI=<exakte-https-jwks-url-derselben-cimd-origin>
-# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM=RS256
-# SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE=10000
 
 # Nur bei einem tatsächlichen Client-ID-Wechsel, einmalig und danach entfernen:
 # SKILLPILOT_OPENAI_DE_OAUTH_LEGACY_CLIENT_IDS=<exakte-alte-client-id-oder-kommaliste>
 
 SKILLPILOT_OPENAI_DE_SECURE_COOKIE=true
-SKILLPILOT_OPENAI_DE_BINDING_TTL=PT5M
-SKILLPILOT_OPENAI_DE_LAUNCH_TTL=PT5M
 SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL=PT24H
 SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS=3600000
 SKILLPILOT_OPENAI_DE_ACCESS_TOKEN_TTL=PT1H
@@ -170,39 +165,37 @@ auslösen. Erst nach bestandenem read-only Canary wird der Schalter bewusst auf
 
 Der normale aktivierte Provider startet ausschließlich im sicheren
 Clientmodus; es gibt keinen produktiven `secure-mode=false`-Schalter. Der
-sichere Clientmodus prüft profilübergreifend die exakte Client-ID,
-Redirect-Allowlist, Resource, Scopes und PKCE `S256`. Offene DCR und ein
-stiller Profil-Fallback bleiben unzulässig. Nur bei ausdrücklich aktivierter
-mTLS-Härtung werden zusätzlich numerisch konfigurierte Trusted Proxies und die
-fail-closed Edge-Bestätigung verlangt.
+sichere Clientmodus verlangt `client_secret_basic` und prüft die exakte
+Client-ID, das Secret in konstantzeitgeeigneter Form, Redirect-Allowlist,
+Resource, Scopes und PKCE `S256`. Fehlendes Secret, `none`,
+`private_key_jwt`, DCR, CIMD und jeder stille Profil-Fallback brechen den Start
+beziehungsweise den Tokenaustausch fail-closed ab. Nur bei ausdrücklich
+aktivierter mTLS-Härtung werden zusätzlich numerisch konfigurierte Trusted
+Proxies und die fail-closed Edge-Bestätigung verlangt.
 
-Im Basisprofil ist `none` das erwartete Authentisierungsverfahren eines
-vorregistrierten Public Clients. Ein Client-Secret, eine JWKS-URL oder eine
-Client Assertion gehören nicht in dieses Profil.
+Auch `SKILLPILOT_SIGNING_SECRET` ist für den aktivierten OpenAI-DE-Provider
+verpflichtend. Der Prozess bricht den Start ab, wenn der Wert fehlt, dem
+unsicheren Platzhalter entspricht, weniger als 32 Nicht-Leerzeichen enthält
+oder strukturell zu wenig Entropie aufweist. Der Wert wird in dieser Prüfung
+weder protokolliert noch in einer Fehlermeldung wiedergegeben. Er ist ein
+eigenständiges HMAC-Betriebsgeheimnis und darf nicht mit dem OAuth-Client-
+Secret identisch sein.
 
-Nur im optionalen `private_key_jwt`-Profil prüft SkillPilot zusätzlich:
-
-- `client_id` ist eine absolute HTTPS-CIMD-URL;
-- die JWKS-URL ist HTTPS und hat exakt dieselbe Origin wie die CIMD-URL;
-- Client Assertions sind mit dem konfigurierten asymmetrischen Algorithmus
-  signiert und enthalten `kid`, `jti` und `exp`;
-- `iss` und `sub` entsprechen der registrierten CIMD-Client-ID, die Audience
-  passt zum SkillPilot-Authorization-Server, und jedes `jti` wird nur einmal
-  akzeptiert.
-
-Für dieses optionale Profil ruft der Start das CIMD-Dokument per HTTPS ohne
-Redirects mit kurzen Timeouts und harter Größenbegrenzung ab. Erwartet werden
-2xx, JSON-Content-Type und ein JSON-Objekt mit exakter `client_id`,
-nichtleerem `client_name`, allen konfigurierten Redirect-URIs, der exakt
-gepinnten gleich-originigen `jwks_uri` und `private_key_jwt`. Netzwerkfehler,
-abweichende Metadaten oder ein Fallback auf `none` brechen dieses Profil ab.
+Das Client-Secret wird als Betriebsgeheimnis verwaltet: restriktive
+Dateirechte, keine Shell-History, kein Request-/Health-Detail, keine
+Clientausgabe. Bei einer Rotation werden zunächst ChatGPT und SkillPilot
+koordiniert umgestellt, anschließend alle mit dem alten Clientvertrag
+ausgestellten Tokens widerrufen.
 
 Die Legacy-Client-Allowlist ist nicht Bestandteil des Basisprofils. Sie wird
 nur bei einem tatsächlichen Client-ID-Wechsel verwendet. SkillPilot entfernt
-dann ausschließlich für die exakt genannten Altclients deren Authorizations,
-Consents, registrierte Clientzeilen, Verbindungen, Pending Launches und
-Lernsessions. Anschließend muss nur der neu konfigurierte Client lesbar sein;
-andernfalls bricht der Start ab.
+dann ausschließlich für die exakt genannten Altclients deren OAuth-
+Authorizations, Consents, registrierte Clientzeilen sowie Access- und Refresh-
+Tokens. Historische Verbindungs-, Binding-Grant- und Pending-Launch-
+Altartefakte dürfen beim einmaligen Cutover zusätzlich bereinigt werden. Die
+heutigen `openai_de_learning_session`-Datensätze werden durch eine reine
+OAuth-Clientrotation dagegen nicht gelöscht. Anschließend muss nur der neu
+konfigurierte Client lesbar sein; andernfalls bricht der Start ab.
 
 Vor diesem Cutover ist ein Datenbank-Backup Pflicht. Die Einstellung ist
 idempotent für bereits entfernte IDs, soll aber nach dem erfolgreichen
@@ -211,61 +204,49 @@ Refresh-Tokens sowie Autorisierungen sind absichtlich unwiderruflich
 ungültig; ein reines Anwendungs-Rollback stellt sie nicht wieder her. Benutzer
 autorisieren die SkillPilot-App danach einmal neu.
 
-Die Migrationen `009`, `010` und `011` legen neben Verbindung und einmaligem
-Browser-Binding auch den typisierten Start-Intent, die browsergebundene
-Einmalverwendung und die OAuth-Gültigkeitsgrenze der Verbindung ab. Erlaubt sind nur
-`CURRENT_UNIT`, `VERIFIED_RECALL` und `ABI26_EXAM`; ein freies `promptContext`
-gehört ausdrücklich nicht zum OpenAI-MCP-Startvertrag.
+Die aktuelle additive Migration stellt
+`openai_de_learning_session` als eigenständige Startberechtigung bereit. Der
+Datensatz enthält mindestens den Hash der zufälligen `learningSessionId`, die
+interne Lernendenreferenz, `started_at` und `expires_at`. Die dauerhafte
+SkillPilot-ID und der Klartext der Session-ID werden dort nicht dupliziert.
+Alte, ausschließlich über ein OAuth-Subject adressierte Sitzungszeilen sind
+kein Fallback und werden beim Cutover kontrolliert entfernt oder migriert.
 
-Migration `012` ergänzt `openai_de_learning_session` mit genau
-`connection_subject`, `started_at` und `expires_at`.
-`connection_subject` ist zugleich Primärschlüssel und Fremdschlüssel auf
-`openai_de_connection.subject`; Löschen der Verbindung löscht den
-Sitzungsdatensatz kaskadierend. SkillPilot-ID, Start-Intent und Sitzungsstatus
-werden dort nicht dupliziert. Der Lernende wird über die Verbindung aufgelöst,
-der Intent wirkt vor der Aktivierung auf den autoritativen Lernendenzustand,
-und `ACTIVE` beziehungsweise `EXPIRED` ergeben sich aus Verbindung,
-Datensatzexistenz und `expires_at`.
+Der Start-Intent ist ein kurzlebiger Auftrag an das Fachbackend. Bei **jedem**
+Klick auf **Lernen starten** wendet SkillPilot den eng typisierten Intent unter
+Learner-Lock auf den autoritativen Zustand an und erzeugt unmittelbar danach
+eine neue kryptografisch zufällige `learningSessionId`. Auch zwei Starts
+desselben Lernenden erzeugen verschiedene IDs. Die absolute Frist wird durch
+`SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL` gesteuert und beträgt produktiv
+`PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder parallele
+Chats verlängern sie nicht.
 
-Der Start-Intent ist ein kurzlebiger Auftrag an das Fachbackend, keine Bindung
-an eine bestimmte ChatGPT-Konversation. Bei einer erstmaligen Verbindung
-speichert der Binding Grant den Intent zunächst **ohne** Curriculum oder
-Lernziel zu verändern. Erst nachdem der OAuth-Server das erste Access Token
-erfolgreich ausgestellt hat, wendet SkillPilot den Pending Launch unter
-Learner- und Datensatz-Lock an. Access-Token-Persistenz, Intent-Anwendung und
-Autorisierungsmarkierung liegen dabei in derselben Datenbanktransaktion; ein
-Apply-Fehler rollt den gesamten Schritt zurück. Bei einer bereits autorisierten Verbindung wird
-derselbe Intent synchron beim Cockpit-Start angewendet. `consumed_at` am
-Binding Grant bezeichnet ausschließlich dessen einmaligen Austausch gegen eine
-Verbindung; `consumed_at` am Pending Launch bezeichnet die erfolgreiche
-serverseitige Anwendung des Intents. Kein MCP-Toolaufruf konsumiert einen
-Launch.
+Die Session-ID wird einmal automatisch in den URL-codierten Startprompt
+eingetragen und danach von ChatGPT unverändert als Pflichtargument an jedes
+lernendenbezogene Tool weitergegeben. SkillPilot löst ausschließlich den Hash
+auf den Lernenden auf. OAuth allein erzeugt oder wählt keine Lernsession; eine
+Session-ID allein autorisiert keinen MCP-Aufruf. Fehlt einer der beiden
+Nachweise, liefert der Fachvertrag `SESSION_REQUIRED` beziehungsweise einen
+OAuth-Fehler. Ein Fallback vom OAuth-Subject auf einen Lernenden ist
+unzulässig.
 
-Nach erfolgreicher Anwendung des Intents erzeugt beziehungsweise ersetzt
-SkillPilot die serverseitige OpenAI-DE-Lernsession. Ihre absolute Frist wird
-durch `SKILLPILOT_OPENAI_DE_LEARNING_SESSION_TTL` gesteuert und beträgt
-produktiv `PT24H`. MCP-Aufrufe, Access-Token-Refresh, Reload und neue oder
-parallele Chats verlängern diese Frist nicht. Nach Ablauf bleibt die
-OAuth-Verbindung bestehen; lernendenbezogene Tools liefern
-`SESSION_REQUIRED`, bis der Lernende in SkillPilot erneut **Lernen starten**
-auswählt.
+Das Cockpit startet ausschließlich über
+`POST /api/ui/learners/{skillpilotId}/openai/de/launch`. Ein erfolgreicher
+Aufruf wendet den typisierten Start-Intent an und erzeugt genau eine neue
+Lernsession samt Startprompt. Jeder weitere Aufruf erzeugt unabhängig von
+Browser, bestehender App-Autorisierung oder früheren Starts eine neue Session.
+Der `/launch`-Aufruf ist eigenständig und benötigt keinen vorgeschalteten
+Verbindungsstatus oder kurzlebigen Browser-Zwischenzustand.
 
-Ein erneuter Cockpit-Start im selben Browser ersetzt einen noch offenen
-Binding Grant atomar. Damit können abgebrochene Popups, abgebrochene
-ChatGPT-Dialoge und unterbrochene Redirects unmittelbar neu gestartet werden,
-ohne bis zum Ablauf der Binding-TTL in einem HTTP-409-Zustand festzuhängen. Der
-vorherige Einmal-Token wird durch die Ersetzung ungültig; weiterhin existiert
-höchstens ein offener Grant je Browser-Sitzung.
+Abgelaufene oder widerrufene Lernsession-Datensätze werden unabhängig vom
+OAuth-Lebenszyklus abgewiesen und bereinigt. Authorization Codes, Access- und
+Refresh-Tokens sowie Consents folgen ausschließlich ihrem eigenen OAuth-
+Lebenszyklus. Insbesondere erzeugt Tokenausgabe oder Token-Refresh keine
+Lernsession und verlängert keine bestehende. Das Intervall der technischen
+Bereinigung steuert `SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS`; der
+Standardwert ist eine Stunde.
 
-Abgelaufene Binding Grants und Pending Launches werden regelmäßig entfernt.
-`SKILLPILOT_OPENAI_DE_CLEANUP_INTERVAL_MS` steuert das Intervall in Millisekunden;
-der Standardwert ist eine Stunde. Eine Verbindung, die bis zum Ablauf der
-Launch-TTL nie ein erstes Access Token erhalten hat, wird dabei kontrolliert
-widerrufen; zugehörige Pending Launches, Authorization Codes und Consents werden
-gelöscht. Bereits autorisierte Verbindungen werden von dieser Bereinigung nicht
-erfasst.
-
-Jeder Browserstart muss `providerEligibilityConfirmed=true` ausdrücklich
+Jeder `/launch`-Aufruf muss `providerEligibilityConfirmed=true` ausdrücklich
 mitsenden. Fehlt die Bestätigung oder ist sie falsch, weist das Backend den
 Start mit `403` ab. Das Cockpit fragt sie einmal pro Browser-Sitzung ab: Die
 lernende Person bestätigt damit, mindestens 13 Jahre alt zu sein, jede am
@@ -273,7 +254,8 @@ Aufenthaltsort geltende höhere Altersgrenze zu erfüllen und unter 18 die
 Erlaubnis eines Elternteils oder einer erziehungsberechtigten Person zu haben.
 SkillPilot leitet das Alter nicht aus Klassenstufe oder Curriculum ab und
 speichert dafür weder Geburtsdatum noch Altersprofil. Es handelt sich um eine
-bewusste Selbstbestätigung, nicht um eine Identitäts- oder Altersverifikation.
+bewusste Selbstbestätigung, nicht um eine Identitäts- oder Altersverifikation
+und nicht um OAuth-Client- oder Lernendenidentität.
 
 Der Coach-Pfad benötigt **keinen OpenAI-Modell-API-Key**. Modell und Chat werden
 vom ChatGPT-Konto der lernenden Person bereitgestellt; SkillPilot stellt nur
@@ -359,11 +341,10 @@ Anwendungslogs erscheinen.
 
 3. Verbindung: `Server URL`.
 4. MCP-URL: `https://skillpilot.com/api/openai/de/mcp`.
-5. OAuth mit der in Abschnitt 2 übernommenen Client-ID und Callback-URL
-   konfigurieren. Der SkillPilot-Metadatenvertrag kündigt ausschließlich das
-   serverseitig ausgewählte Profil an: im Basisprofil `none`, im optionalen
-   stärkeren Profil `private_key_jwt`. Es gibt weder ein manuell geteiltes
-   Client-Secret noch einen offenen DCR-Endpunkt.
+5. OAuth mit der festen Client-ID, dem dazugehörigen Client-Secret und der
+   exakten Callback-URL konfigurieren. Als Authentisierungsmethode am
+   Token-Endpunkt `client_secret_basic` wählen. DCR, CIMD, `none` und
+   `private_key_jwt` gehören nicht in diese produktive App-Konfiguration.
 6. Nach jeder Änderung an Werkzeugliste, Werkzeugbeschreibungen oder
    Serverinstruktionen zuerst das Backend deployen. Danach unter
    `Einstellungen → Plugins` die Developer-Mode-App öffnen und `Refresh`
@@ -388,8 +369,10 @@ fortsetzen, wiederaufnehmen und Lernstand verwenden) und die negative Grenze
 semantisch gleiches Alias-Werkzeug veröffentlichen.
 
 Die erste Version registriert bewusst keine Widget-Ressource und kein
-`outputTemplate`. Auswahl und Coaching bleiben im normalen Chat; technische
-Transportwerte werden nicht sichtbar ausgegeben.
+`outputTemplate`. Auswahl und Coaching bleiben im normalen Chat. Die
+`learningSessionId` erscheint ausschließlich in der automatisch vorbereiteten
+Startnachricht und wird danach als Toolparameter weitergereicht; sie ist keine
+dauerhafte SkillPilot-ID und kein OAuth-Token.
 
 ## 5. Technischer Smoke-Test
 
@@ -420,7 +403,7 @@ curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
   | jq -e --arg issuer "$BASE/api/openai/de" \
       '.issuer == $issuer
        and (.code_challenge_methods_supported | index("S256"))
-       and (.token_endpoint_auth_methods_supported | index("none"))'
+       and (.token_endpoint_auth_methods_supported | index("client_secret_basic"))'
 
 curl -sS -o /dev/null -D - \
   -X POST "$BASE/api/openai/de/mcp" \
@@ -444,7 +427,7 @@ Readiness des übrigen SkillPilot-Dienstes muss weiterhin `UP` sein.
 ```bash
 BASE=https://skillpilot.com
 MANAGEMENT_BASE=http://127.0.0.1:8080
-AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-none}"
+AUTH_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
 
 curl -fsS "$MANAGEMENT_BASE/actuator/health/readiness" \
   | jq -e '.status == "UP"'
@@ -473,15 +456,7 @@ curl -sS -o /dev/null -D - \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"curl-smoke","version":"1"}}}' \
   | sed -n '/^HTTP\|^[Ww][Ww][Ww]-Authenticate/p'
-```
-
-Beim optionalen `private_key_jwt`-Profil zusätzlich:
-
-```bash
-curl -fsS "$BASE/.well-known/oauth-authorization-server/api/openai/de" \
-  | jq -e \
-      '(.token_endpoint_auth_signing_alg_values_supported | index("RS256"))
-       and (.client_id_metadata_document_supported == true)'
+test "$AUTH_METHOD" = client_secret_basic
 ```
 
 Erwartung beim letzten Aufruf im TLS/OAuth-Kompatibilitätsmodus: `401` mit
@@ -509,9 +484,21 @@ Abgleich autorisiert sichtbar sind, muss `contractHash` aus
 - Fehlende oder verneinte Provider-Altersbestätigung muss bereits am Cockpit-
   Start mit `403` scheitern; eine bestätigte berechtigte Person darf fortfahren.
 - App aus einem frischen Chat verbinden; PKCE, Consent und Callback abschließen.
-- `get_skillpilot_context_de` und alle Navigationsabfragen prüfen.
+- Fehlendes/falsches Client-Secret, falsche Client-ID, falsche Callback-URI und
+  falsche Resource müssen am OAuth-Vertrag scheitern; Secrets dürfen dabei
+  weder in Antwort noch Log erscheinen.
+- In SkillPilot zweimal nacheinander **Lernen starten** und nachweisen, dass
+  zwei verschiedene `learningSessionId`-Werte mit jeweils eigenem absoluten
+  Ablauf entstanden sind.
+- `get_skillpilot_context_de` und alle Navigationsabfragen mit gültigem OAuth
+  und der jeweils richtigen Session-ID prüfen.
+- Dasselbe Access Token ohne Session-ID, mit falscher, abgelaufener oder zu
+  einem anderen Lernenden gehörender Session-ID muss scheitern.
+- Eine gültige Session-ID ohne gültiges OAuth Access Token muss ebenfalls
+  scheitern.
 - Reload, neuer Chat und längerer Dialog müssen den Zustand wieder aus dem
-  Backend laden können.
+  Backend laden können, solange ChatGPT die Session-ID weiter an jedes Tool
+  übergibt.
 - Eine Mutation muss bei deaktiviertem Write-Kill-Switch sicher abgewiesen
   werden, ohne den Nutzer in eine erneute Autorisierung zu schicken.
 - Andere Lernende, fremde Resource-Werte, abgelaufene/revozierte Tokens und
@@ -560,10 +547,11 @@ Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
 Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
 
-- erstmalige, noch unverbundene Sitzung mit Curriculumwechsel: Vor erfolgreicher
-  Ausgabe des ersten Access Tokens darf der Lernstand unverändert bleiben;
-  unmittelbar danach müssen Curriculum und Intent unter Learner-Lock atomar
-  angewendet und der Pending Launch als konsumiert markiert sein;
+- `CURRENT_UNIT`: Ein einzelner Aufruf von
+  `POST /api/ui/learners/{skillpilotId}/openai/de/launch` muss Intent und
+  Lernendenzustand unter Learner-Lock anwenden und genau eine neue Session
+  erzeugen. Das gilt unabhängig davon, ob die App bereits autorisiert ist;
+  OAuth-Tokenausgabe darf daran weder beteiligt sein noch darauf warten;
 - Verified Recall: Ziel und Batchgröße müssen als typisierter Intent ankommen,
   das aktivierte Ziel muss serverseitig als atomares Memory-/SRS-Ziel validiert
   sein;
@@ -571,16 +559,16 @@ Zusätzlich sind die drei Cockpit-Starts separat zu prüfen:
   die bekannten GK-/LK-Kampagnenziele, vorhandene `examData` und den passenden
   Kurs-Tag begrenzt sein;
 - ein erster MCP-Aufruf in einem beliebigen parallelen Chat darf keinen
-  Start-Intent konsumieren oder anwenden; jeder Chat liest lediglich den
-  bereits autorisierten, gemeinsamen Backendzustand neu ein;
-- nach Ablauf der TTL muss die regelmäßige Bereinigung Binding Grants und
-  Pending Launches entfernen sowie abgebrochene, nie autorisierte Verbindungen
-  einschließlich OAuth-Code-Daten widerrufen; autorisierte Verbindungen müssen
-  bestehen bleiben.
+  Start-Intent konsumieren oder anwenden; jeder Chat benötigt die beim
+  expliziten Start erzeugte Session-ID;
+- nach Ablauf der TTL muss die Lernsession unabhängig von OAuth abgewiesen und
+  bereinigt werden; abgelaufene OAuth-Codes und -Tokens werden separat
+  bereinigt, während eine weiterhin gültige App-Autorisierung bestehen bleibt.
 
-In allen drei Fällen darf die sichtbare Startnachricht den Zweck und bei
-Verified Recall die Kartenanzahl nennen, aber weder SkillPilot-ID noch Lernziel-
-ID oder andere technische Schlüssel enthalten.
+In allen drei Fällen enthält die sichtbare Startnachricht genau die neu
+erzeugte `learningSessionId` sowie den fachlichen Startzweck. Sie enthält weder
+dauerhafte SkillPilot-ID, OAuth-Token, Client-Secret noch interne Lernziel-ID.
+Der Benutzer muss die Session-ID weder kopieren noch verändern.
 
 Die App wird erst dann zum Standard, wenn zusätzlich die vorgesehene kostenlose
 und feste Consumer-Abo-Nutzung, Deutschland/EU, Web und die benötigten mobilen
@@ -629,23 +617,27 @@ globale Build-Schalter stellt deshalb nur Deutsch auf MCP um; Englisch bleibt
 ohne Nutzerfehler auf der bisherigen `visible-session`-Variante und der
 bestehenden englischen GPT-URL.
 
-Beim ersten Start erzeugt das Cockpit ein kurzlebiges Browser-Binding und öffnet
-ChatGPT mit einer kurzen, natürlichsprachlichen Startnachricht im URL-codierten
+Bei jedem Start ruft das Cockpit einmal
+`POST /api/ui/learners/{skillpilotId}/openai/de/launch` auf und öffnet ChatGPT
+mit der zurückgegebenen, natürlichsprachlichen Startnachricht im URL-codierten
 `prompt`-Parameter. Der Benutzer muss keinen Text kopieren oder einfügen.
 Spezielle Starts werden serverseitig als enges, auditierbares Intent-Schema
 vorbereitet; es wird kein freier Instruktionstext aus dem Browser übernommen.
-Nach erfolgreicher Verbindung erzeugen spätere Starts keine sichtbare
-Session-ID. Die dauerhafte SkillPilot-ID bleibt außerhalb von OAuth-Principal,
-Chat, URL-Prompt und Toolvertrag. Die Startnachricht beschreibt nur den
-gewünschten Einstieg. Sie und der Pending Launch werden nicht einer konkreten
-Chat-Konversation zugeordnet; neue und parallele Chats rehydrieren den bereits
-vorbereiteten Lernstand über OAuth-Principal und aktive serverseitige
-24h-Lernsession aus dem Backend.
+Jeder erfolgreiche Aufruf erzeugt unabhängig vom App-Autorisierungsstatus eine
+neue `learningSessionId` mit exakt 24 Stunden absoluter Gültigkeit und
+nimmt sie in denselben Prompt auf. Die dauerhafte SkillPilot-ID bleibt
+außerhalb von OAuth-Principal, Chat, URL-Prompt und Toolvertrag. ChatGPT muss
+die Session-ID aus dem Prompt unverändert in **jedem** fachlichen MCP-Aufruf
+mitsenden. Die Session-ID ist nicht an eine Chat-Konversation gebunden; sie
+kann innerhalb ihrer Frist in einem neuen Chat weiterverwendet werden, wird
+aber weder durch Nutzung noch durch OAuth-Refresh verlängert.
 
 Der Deployment-Canary muss für `CURRENT_UNIT`, `VERIFIED_RECALL` und
 `ABI26_EXAM` zusätzlich prüfen, dass ChatGPT den genau einmal vorhandenen
-`prompt`-Parameter in den Composer übernimmt. Die URL darf weder SkillPilot-ID
-noch Lernziel-ID, Binding Grant, OAuth-Token oder Lernsession-ID enthalten.
+`prompt`-Parameter in den Composer übernimmt. Die URL beziehungsweise der
+Prompt darf weder dauerhafte SkillPilot-ID noch Lernziel-ID, OAuth-Token oder
+Client-Secret enthalten; die einmalige
+`learningSessionId` ist darin dagegen ausdrücklich erforderlich.
 
 ## 8. Rollback
 
@@ -673,9 +665,10 @@ Review, Tarifverfügbarkeit oder einen produktiven OAuth-Callback bestätigen.
 Für den sicheren Cutover des bereits aktuellen MCP-Produktpfads werden daher
 noch benötigt:
 
-- Übernahme der exakten vorregistrierten Client-ID und tatsächlichen
-  Callback-URL aus der deutschen App; beim optionalen stärkeren Profil
-  zusätzlich CIMD-Metadaten-URL und gleich-originige JWKS-URL;
+- Konfiguration derselben festen Client-ID und desselben langen zufälligen
+  Client-Secrets in der deutschen App und im SkillPilot-Server sowie Übernahme
+  der tatsächlichen Callback-URL; am Token-Endpunkt muss
+  `client_secret_basic` ausgewählt sein;
 - Nachweis, dass der Backendport nicht direkt aus dem Internet erreichbar ist;
   eine einmalige privilegierte mTLS-Edge-Installation ist eine getrennt
   geplante optionale Härtung;

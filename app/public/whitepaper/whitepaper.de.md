@@ -199,9 +199,9 @@ Lernstände werden unter einer **pseudonymen SkillPilot-ID** geführt. Eine Klar
 
 #### Session-Abschirmung gegenüber dem KI-Frontend
 
-Beim Start des deutschen **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Der aktuelle Produktweg ist die ChatGPT-App **SkillPilot Coach (Deutsch)**. Lernende autorisieren den Zugriff einmalig; das SkillPilot-Backend ordnet diese Freigabe serverseitig dem richtigen Lernenden zu und eröffnet eine höchstens 24 Stunden gültige Lernsession. Weder die SkillPilot-ID noch ein Sitzungsschlüssel müssen im Chat erscheinen.
+Beim Start des deutschen **SkillPilot Lerncoachs** wird die dauerhafte SkillPilot-ID nicht an ChatGPT übergeben. Jeder bewusste Start aus SkillPilot erzeugt stattdessen eine neue, zufällige und 24 Stunden gültige Lernsession. SkillPilot trägt diese automatisch in den vorbereiteten Chat-Start ein; die lernende Person muss keinen technischen Wert kopieren oder verwalten. Das Backend ordnet die kurzlebige Session intern dem richtigen Lernstand zu.
 
-Die Verbindung zum Backend wird unabhängig davon mehrschichtig abgesichert: SkillPilot akzeptiert nur Zugriffe über den kontrollierten Integrationsweg des Modellanbieters. Jeder Zugriff ist an die Freigabe der lernenden Person gebunden, auf die benötigten Rechte begrenzt und durch eine kurzlebige Lernsession zeitlich eingeschränkt.
+Die Verbindung zum Backend wird unabhängig davon mehrschichtig abgesichert: SkillPilot akzeptiert fachliche Zugriffe nur über die zugelassene und authentisierte Coach-App und nur zusammen mit einer gültigen Lernsession. Die App-Freigabe allein eröffnet keinen Lernstand; eine Lernsession allein gewährt keinen Backend-Zugriff. So bleiben Integrationsberechtigung und zeitlich begrenzter Lernkontext bewusst getrennt.
 
 #### Dialoginhalt ist entkoppelt
 
@@ -225,7 +225,7 @@ Für Kontexte mit höheren Souveränitätsanforderungen sind weitere KI-Backends
 Damit Lernstände **portabel** und **prüfbar** bleiben, nutzt SkillPilot ein **Chain-of-Custody**-Pattern.
 
 - Lernfortschrittsänderungen akzeptiert SkillPilot nur über zugelassene und authentisierte Integrationen.
-- Schreibrechte gelten nur mit Freigabe der lernenden Person, innerhalb einer aktiven kurzlebigen Lernsession und begrenzt auf den jeweiligen Vorgang.
+- Schreibrechte gelten nur über die zugelassene Coach-App, innerhalb einer aktiven kurzlebigen Lernsession und begrenzt auf den jeweiligen Vorgang.
 - Die dauerhafte pseudonyme Kennung wird dem KI-Frontend nicht offengelegt.
 
 #### Signierte Exporte

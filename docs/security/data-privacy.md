@@ -7,7 +7,7 @@ This is a technical data-flow and storage description. It does not replace the
 provider's privacy terms or a legal review before a public release.
 
 The normative identity and session contract for the German App is
-[OpenAI MCP OAuth, learner and 24-hour session binding](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
+[OpenAI MCP OAuth App binding and 24-hour learning sessions](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md).
 
 ## 1. Core Philosophy: Privacy by Design
 
@@ -21,8 +21,8 @@ content**.
   permanent SkillPilot ID locally and can optionally save it encrypted with a
   user-chosen password.
 - The permanent SkillPilot ID stays outside the AI chat, OAuth principal, and
-  MCP tool contract. The backend resolves temporary credentials or an opaque
-  connection subject to that ID internally.
+  MCP tool contract. Every explicit UI start creates a separate temporary
+  learning-session reference that the backend resolves to that ID.
 - The AI provider processes the chat, uploads, projected learning context, and
   tool results under the provider account and its terms.
 - SkillPilot does not receive the complete provider chat transcript. It does
@@ -58,15 +58,15 @@ The browser may hold:
   pseudonymous SkillPilot profile for the lifetime of the browser tab;
 - the selected curriculum and other UI preferences;
 - local SRS scheduling state before or between synchronization;
-- a random `HttpOnly` OpenAI browser-session cookie scoped to `/api` and a
-  short-lived one-time `HttpOnly` binding cookie scoped to the OAuth
-  authorization path. Neither value is readable by frontend JavaScript; the
-  backend stores only keyed hashes for their binding comparison.
+- the freshly prepared ChatGPT launch URL. It contains a natural start message
+  with a temporary learning-session reference, but no permanent SkillPilot ID,
+  OAuth token, or client secret.
 
-For a first German OpenAI connection, the browser calls the SkillPilot UI
-endpoint with its permanent SkillPilot ID. The response opens ChatGPT and sets
-the short-lived binding cookie. The permanent ID is not placed in the launch
-message or ChatGPT URL.
+Every German coach start calls a learner-specific SkillPilot UI endpoint with
+the locally active permanent SkillPilot ID. The backend creates a new
+learning-session reference at that exact moment and the response opens ChatGPT
+with the prepared message. The permanent ID is not placed in the launch message
+or ChatGPT URL.
 
 For teacher-led usage, the teacher's browser or institution-controlled storage
 may additionally hold class rosters and the mapping between real names and
@@ -81,7 +81,7 @@ The backend stores, among other things:
 
 - `Learner`: the permanent pseudonymous learner key;
 - provider-specific active learning sessions, including their absolute expiry
-  and link to the internal learner through the provider connection;
+  and direct internal link to the learner;
 - `Mastery`: learning-goal mastery keyed by learner and goal;
 - planned goals and learner configuration, including curriculum,
   personalization, scope, active goal, filters, and synchronized client state;
@@ -95,7 +95,7 @@ connection to the learning state.
 ### C. Visible Session Data
 
 The backend stores a `ChatSession` containing the HMAC hash of the temporary
-token, its learner association, language, creation/expiry/use timestamps, and
+token, its learner association, language, start/expiry/use timestamps, and
 optional revocation metadata. Plaintext `sps_...` tokens are returned only when
 the browser creates the session; they must not be logged.
 
@@ -117,35 +117,29 @@ and Claude connection records.
 
 The protected `/api/openai/de/mcp` endpoint and its subpaths use normal
 server-authenticated HTTPS and require a valid OAuth access token. The
-authorization server accepts only the configured OAuth client profile, always
-together with PKCE S256 and exact client ID, redirect URI, resource, audience,
-and scopes. The production baseline is a pre-registered public client with
-authentication method `none`; an optional stronger profile uses an HTTPS CIMD
-identity, same-origin JWKS, and `private_key_jwt`. Open DCR is not a production
-mode. Optional mTLS may later identify OpenAI's connector infrastructure
-exclusively at the MCP edge; it is not required by the current compatibility
-mode. The public-client profile does not cryptographically authenticate the
-OAuth client, and neither profile alone proves the learner-visible App name.
+authorization server accepts exactly one configured confidential OAuth client,
+authenticated with `client_secret_basic`, together with PKCE S256 and exact
+client ID, redirect URI, resource, audience, and scopes. The client secret is
+stored only in the ChatGPT App configuration and the SkillPilot secret store.
+Open DCR, CIMD, `none`, `private_key_jwt`, and implicit profile fallback are not
+production modes. Optional mTLS may later identify OpenAI's connector
+infrastructure exclusively at the MCP edge; it is defense in depth, not the App
+identity.
 
 It stores:
 
-- an opaque OpenAI-DE connection subject linked internally to one learner, plus
-  creation, authorization, OAuth-expiry, last-use, and revocation timestamps;
-- a separate active OpenAI-DE learning-session record keyed by that connection
-  subject, with `started_at`, `expires_at`, and no sliding renewal;
-- a short-lived binding grant as an HMAC hash, including expiry, consumption,
-  initiating client, selected curriculum, and a narrowly typed launch intent;
-- a short-lived pending launch linked to the connection subject, including
-  expiry/consumption and the same typed intent data;
-- OAuth registered-client, authorization, consent, authorization-code, opaque
-  access-token, and rotating refresh-token data required by the authorization
-  server.
+- the fixed OAuth client registration and the authorization, consent,
+  authorization-code, opaque access-token, and rotating refresh-token data
+  required by the authorization server;
+- a separate learning-session record for every explicit **Lernen starten**,
+  containing only an HMAC/hash of the high-entropy reference, its learner
+  association, `started_at`, `expires_at`, and revocation metadata.
 
-The learning-session row deliberately does not duplicate the learner ID, launch
-intent, or a mutable status history. The learner is resolved through the
-connection subject, the launch intent is applied to authoritative learner state
-before session activation, and session state is derived from row existence,
-`expires_at`, and the connection's authorization/revocation state.
+The learning-session reference is independent of OAuth. OAuth authenticates the
+App; the session addresses the learner selected in SkillPilot. Every fachlicher
+MCP call requires both a valid resource/scope-bound OAuth token and the valid
+session reference. OAuth alone cannot create or select a session, and a session
+alone cannot authorize MCP.
 
 The supported launch intents are deliberately bounded: current unit, Verified
 Recall with goal and batch size, and the reviewed Abi 2026 exam entry with goal
@@ -157,8 +151,10 @@ are transport credentials between ChatGPT and the SkillPilot authorization/MCP
 endpoints; they are not normal model prompts, MCP tool arguments, or tool
 results. ChatGPT automatically sends the access token in the Authorization
 header of protected MCP requests. The user neither sees nor copies it. The
-model-facing MCP contract also contains no permanent SkillPilot ID or learning
-session identifier.
+model-facing MCP contract contains no permanent SkillPilot ID. It does require
+the temporary learning-session reference on every fachlicher tool call. The
+reference is inserted automatically into the launch prompt; the user does not
+copy or manage it.
 
 Through MCP, the provider receives the projected state needed for the current
 workflow, for example curriculum and scope summaries, active goal, progress,
@@ -210,69 +206,56 @@ complete.
    progress, exams, and Recall.
 5. The backend resolves the token to the learner internally.
 
-### Scenario: First German OpenAI OAuth/MCP Connection
+### Scenario: German OpenAI App Connection
 
 1. Before calling the provider, the browser asks the person to confirm that the
    OpenAI minimum-age rules applicable in the person's country are met and that
-   a person under 18 has parent or guardian permission. The confirmation is
-   bound to the current pseudonymous SkillPilot profile for this browser tab.
-   SkillPilot does not derive age from a grade level and does not collect a date
-   of birth.
-2. The browser calls the learner-specific OpenAI-DE `connect-start` endpoint
-   with the explicit confirmation. The backend rejects missing or false
-   confirmation with `403`; this is a self-attestation, not identity-based age
-   verification.
-3. The backend validates the selected curriculum and typed launch intent without
-   yet applying it, creates a short-lived one-time binding grant, stores its
-   hash, and sets the raw value only as a protected browser cookie.
-4. ChatGPT starts OAuth 2.1 authorization with PKCE and exact resource binding.
-   The authorization server also requires the exact configured client profile:
-   the pre-registered public client with `none`, or optionally the HTTPS CIMD
-   client whose `private_key_jwt` is verified against the same-origin JWKS.
-   The protected MCP request path separately requires the valid, exactly
-   resource- and scope-bound OAuth access token. Optional mTLS can later add a
-   path-scoped OpenAI-connector identity check.
-   The authorization request can consume only the matching, unexpired browser
-   binding and creates an opaque connection subject plus pending launch. The
-   exact resource is retained with the authorization and checked again during
-   every access-token introspection, including after refresh; trimming and
-   trailing-slash equivalence are deliberately not accepted.
-5. After consent, the backend issues an authorization code. The code exchange
-   creates short-lived opaque access and rotating refresh credentials.
-6. The pending launch is applied atomically when the connection is successfully
-   authorized, and the separate 24-hour learning-session record is activated
-   only after its intent has been applied to the authoritative learner state,
-   not by an arbitrary later MCP call. The permanent SkillPilot ID never crosses
-   into the provider contract.
-7. Authenticated MCP calls resolve access token to connection subject to
-   learner, require the active non-expired learning session, and return only
-   the projected coaching data.
+   a person under 18 has parent or guardian permission. SkillPilot does not
+   derive age from a grade level and does not collect a date of birth.
+2. ChatGPT starts an OAuth Authorization Code flow with PKCE S256. The SkillPilot
+   authorization server accepts only the fixed confidential client for
+   **SkillPilot Coach (Deutsch)**, authenticates it at the token endpoint with
+   `client_secret_basic`, and validates the exact callback URI, resource, and
+   scopes.
+3. After consent, the backend issues a short-lived authorization code and then
+   resource- and scope-bound access credentials. Open DCR/CIMD registrations and
+   unauthenticated token exchange are not accepted in the production profile.
+4. OAuth establishes only that the approved App may call the German MCP
+   resource. It neither identifies a SkillPilot learner nor creates or selects
+   a learning session.
 
-The pending launch prepares shared backend state; it is not bound to a particular
-ChatGPT conversation. Parallel or later chats rehydrate the authorized learner
-state through MCP.
+### Scenario: Start a German Learning Session
 
-### Scenario: Later German OpenAI App Launch
+1. The learner has an active permanent SkillPilot ID in the first-party browser
+   UI and explicitly selects **Lernen starten**.
+2. At that exact moment the backend creates a fresh, high-entropy learning
+   session, even if the same learner has started another session before. It
+   stores only the HMAC/hash of the reference, its learner association,
+   `started_at`, absolute expiry exactly 24 hours after creation, and optional revocation
+   metadata.
+3. The backend returns a prepared ChatGPT launch message containing the temporary
+   learning-session reference but not the permanent SkillPilot ID, OAuth token,
+   or OAuth client secret. The UI places the message into the ChatGPT launch
+   automatically; the learner does not copy, edit, or manage the reference.
+4. The App sends the reference unchanged with every learner-specific MCP tool
+   call. The backend accepts such a call only when both the OAuth access token
+   and learning session are independently valid.
+5. The backend resolves the session to the permanent learner internally and
+   returns only the projected coaching data. There is no fallback from OAuth
+   subject, provider account, chat, or model context to a learner.
 
-1. The cockpit checks the connection status for the active SkillPilot learner.
-2. If the authorized connection is active, it creates and applies a short-lived,
-   typed launch request, atomically replaces the active 24-hour learning session
-   after applying the intent, and opens ChatGPT with a natural-language start
-   message.
-3. If the connection is missing or revoked, the cockpit returns to the first
-   connection flow instead of exposing a learner identifier in the chat.
-4. Clipboard access is only a convenience: the start message remains visible and
-   copyable in the cockpit if the browser denies clipboard permission.
+Repeated **Lernen starten** actions create distinct, independently expiring
+sessions. A newer session does not silently extend or repurpose an older one.
 
-### Scenario: Disconnect or OAuth Revocation
+### Scenario: App Authorization Revocation
 
-1. The learner disconnects through the cockpit, or the OAuth client revokes the
-   authorization.
-2. SkillPilot marks the corresponding connection revoked, removes its active
-   learning-session record, and removes its pending launch, OAuth authorization,
-   and consent state.
-3. Existing access/refresh credentials can no longer resolve an active
-   connection. A future launch must establish a new connection.
+1. The App authorization is revoked in ChatGPT or invalidated by the SkillPilot
+   operator.
+2. SkillPilot invalidates the App authorization and its access/refresh
+   credentials. Existing learning sessions remain separate records but are
+   unusable through MCP without valid App authorization and expire or can be
+   revoked independently.
+3. Durable pseudonymous learning progress is not deleted by OAuth revocation.
 
 ### Scenario: Progress Review in the Browser Cockpit
 
@@ -286,29 +269,23 @@ because it is the learner's durable SkillPilot access key.
 Default technical lifetimes for the German OpenAI integration are configurable
 and currently set to:
 
-- binding grant: 5 minutes;
-- pending launch: 5 minutes;
 - OAuth access token: 1 hour;
 - rotating refresh token: 30 days;
-- OpenAI-DE learning session: absolute maximum of 24 hours.
-
-An absolute lifetime is not automatically extended merely by reading a binding
-or pending launch. Scheduled cleanup removes expired binding grants and pending
-launches and revokes abandoned, never-authorized connections. Consumed records
-may remain until their expiry cleanup so replay attempts can be rejected.
+- OpenAI-DE learning session: exactly 24 hours from the
+  corresponding **Lernen starten** action.
 
 The OpenAI-DE learning-session deadline is not extended by MCP requests,
 access-token refresh, browser reload, a new ChatGPT chat, or context
-compaction. Only a new first-party **Lernen starten** action creates a new
-deadline. The OAuth connection may remain refreshable after the learning session
-has expired; in that case learner-specific tools require a new SkillPilot launch
-rather than a new OAuth consent.
+compaction. Every new first-party **Lernen starten** action creates a separate
+session with its own deadline. The OAuth connection may remain refreshable after
+a learning session has expired; in that case learner-specific tools require a
+new SkillPilot launch rather than new OAuth consent.
 
-Disconnect and OAuth revocation invalidate the provider connection and remove
-the related live authorization/consent and pending-launch data. Connection audit
-timestamps and the revoked marker remain pseudonymous operational records unless
-the learner record itself is deleted or a separate retention policy removes
-them.
+App-authorization revocation invalidates the live access/refresh credentials and
+authorization/consent data. Session records remain independently governed by
+expiry and revocation, but cannot authorize a request without valid OAuth.
+OAuth-authorization audit timestamps and revoked markers remain pseudonymous
+operational records unless a separate retention policy removes them.
 
 Visible Session tokens expire after at most 24 hours. A future cockpit session
 management view should make all still-active Visible Session credentials
@@ -321,9 +298,9 @@ provides the corresponding SkillPilot ID.
 
 Authorization data and database backups contain credential material and must be
 encrypted, access-controlled, and governed by the production backup-retention
-policy. Plaintext session tokens, binding values, OAuth credentials, request
-bodies, learner answers, and launch secrets must not enter application, reverse
-proxy, trace, or support logs.
+policy. Plaintext learning-session references, OAuth credentials, OAuth client
+secrets, request bodies, learner answers, and launch secrets must not enter
+application, reverse proxy, trace, or support logs.
 
 ## 5. Backup and Recovery
 
@@ -355,10 +332,13 @@ remain responsible for preserving access keys and identity mappings.
   but they still reveal pseudonymous learning context to the provider and must be
   treated as user data.
 - Canonical learning-goal and card IDs are public technical references, not
-  credentials. Connection subjects, session tokens, binding values, and OAuth
-  credentials are security-sensitive.
-- The OpenAI-DE learning-session record is server-internal. Its key is not a
-  model or user credential and must not be returned in chat or tool arguments.
+  credentials. Learning-session references and OAuth credentials are
+  security-sensitive.
+- The temporary OpenAI-DE learning-session reference is automatically carried
+  in the prepared start message and MCP tool arguments. It behaves like a
+  short-lived bearer reference to one pseudonymous learner and must not be
+  shared manually. The permanent SkillPilot ID remains backend-internal to this
+  provider flow.
 - The Visible Session implementation remains an explicit rollback/fallback path;
   retained legacy direct-ID or startcode routes must not be advertised as a
   current provider contract.
@@ -369,5 +349,7 @@ data inventory, provider disclosures, age/guardian policy, retention
 configuration, real revocation behavior, and exact OAuth-client-profile
 binding must be reviewed together against the deployed OpenAI App version. If
 the optional edge-mTLS hardening is enabled, its path scoping and fail-closed
-validation are included in that review. For the optional stronger OAuth
-profile this includes the CIMD/`private_key_jwt` validation.
+validation are included in that review. The production OAuth profile uses the
+fixed confidential client, protected client-secret storage and rotation,
+`client_secret_basic`, exact callback allowlisting, PKCE S256, and exact
+resource/audience and scope validation.

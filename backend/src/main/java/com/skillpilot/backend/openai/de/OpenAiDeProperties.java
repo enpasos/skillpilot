@@ -243,11 +243,12 @@ public class OpenAiDeProperties {
     public static class OAuth {
 
         private boolean enabled;
-        // With a pre-registered public client this is the exact opaque client ID
+        // With a pre-registered client this is the exact opaque client ID
         // entered in ChatGPT app management. In the optional private_key_jwt
         // profile it is the exact HTTPS CIMD metadata-document URL supplied by
         // ChatGPT.
         private String clientId = "";
+        private String clientSecret = "";
         private List<String> redirectUris = new ArrayList<>();
         private String clientAuthenticationMethod = "none";
         private String clientJwkSetUri = "";
@@ -273,6 +274,14 @@ public class OpenAiDeProperties {
 
         public void setClientId(String clientId) {
             this.clientId = clientId;
+        }
+
+        public String getClientSecret() {
+            return clientSecret;
+        }
+
+        public void setClientSecret(String clientSecret) {
+            this.clientSecret = clientSecret;
         }
 
         public List<String> getRedirectUris() {

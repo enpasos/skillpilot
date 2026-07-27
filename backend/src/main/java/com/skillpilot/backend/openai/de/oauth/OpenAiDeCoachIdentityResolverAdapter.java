@@ -13,7 +13,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
-/** Resolves MCP calls exclusively from the bearer-authenticated request. */
+/**
+ * Requires a bearer-authenticated app call and independently resolves the
+ * explicit learning-session argument.
+ */
 @Component
 @ConditionalOnProperty(
         name = {"skillpilot.openai.de.enabled", "skillpilot.openai.de.oauth.enabled"},
@@ -31,11 +34,12 @@ public final class OpenAiDeCoachIdentityResolverAdapter implements OpenAiDeCoach
     }
 
     @Override
-    public String resolveSkillpilotId(McpTransportContext transportContext) {
+    public String resolveSkillpilotId(
+            McpTransportContext transportContext,
+            String learningSessionId) {
         Authentication authentication = requireAuthentication();
         requireAuthority(authentication, "SCOPE_" + OpenAiDeOAuthConfiguration.READ_SCOPE);
-        String subject = authentication.getName();
-        return connectionService.resolveActiveLearningSessionSkillpilotId(subject);
+        return connectionService.resolveActiveLearningSessionSkillpilotId(learningSessionId);
     }
 
     @Override

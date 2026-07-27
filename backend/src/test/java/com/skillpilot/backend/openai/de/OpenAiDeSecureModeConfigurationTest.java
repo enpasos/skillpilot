@@ -7,38 +7,50 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
 class OpenAiDeSecureModeConfigurationTest {
 
+    private static final String TEST_CLIENT_SECRET =
+            "test-client-secret-0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String TEST_SIGNING_SECRET =
+            "7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg";
+
     private final ApplicationContextRunner runner =
             new ApplicationContextRunner().withUserConfiguration(OpenAiDeConfiguration.class);
 
     @Test
-    void secureModeAcceptsPinnedPublicClientAuthentication() {
-        runner.withPropertyValues(validPublicClientSecureProperties())
+    void secureModeAcceptsStaticConfidentialClientAuthentication() {
+        runner.withPropertyValues(validSecureProperties())
                 .run(context -> {
                     assertThat(context).hasNotFailed();
                     OpenAiDeSecureModeValidation.Result status =
                             OpenAiDeSecureModeValidation.inspect(
                                     context.getBean(OpenAiDeProperties.class));
                     assertThat(status.valid()).isTrue();
-                    assertThat(status.publicClient()).isTrue();
+                    assertThat(status.publicClient()).isFalse();
                     assertThat(status.privateKeyJwt()).isFalse();
+                    assertThat(status.clientSecretBasic()).isTrue();
                     assertThat(status.clientIdConfigured()).isTrue();
+                    assertThat(status.clientSecretConfigured()).isTrue();
                 });
     }
 
     @Test
-    void secureModeRejectsUnsupportedClientAuthentication() {
-        runner.withPropertyValues(
-                        securePropertiesWith(
-                                "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic"))
-                .run(context -> assertSecureStartupFailure(
-                        context.getStartupFailure(),
-                        "oauth.client-authentication-method"));
+    void secureModeRejectsPublicPrivateKeyJwtAndUnsupportedClientAuthentication() {
+        for (String authenticationMethod : new String[] {
+                "none", "private_key_jwt", "client_secret_post"
+        }) {
+            runner.withPropertyValues(
+                            securePropertiesWith(
+                                    "skillpilot.openai.de.oauth.client-authentication-method="
+                                            + authenticationMethod))
+                    .run(context -> assertSecureStartupFailure(
+                            context.getStartupFailure(),
+                            "oauth.client-authentication-method"));
+        }
     }
 
     @Test
-    void secureModeRejectsMissingPublicClientId() {
+    void secureModeRejectsMissingConfidentialClientId() {
         runner.withPropertyValues(
-                        publicSecurePropertiesWith(
+                        securePropertiesWith(
                                 "skillpilot.openai.de.oauth.client-id="))
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
@@ -48,7 +60,7 @@ class OpenAiDeSecureModeConfigurationTest {
     @Test
     void secureModeRejectsDisabledOauth() {
         runner.withPropertyValues(
-                        publicSecurePropertiesWith(
+                        securePropertiesWith(
                                 "skillpilot.openai.de.oauth.enabled=false"))
                 .run(context -> assertSecureStartupFailure(
                         context.getStartupFailure(),
@@ -64,12 +76,57 @@ class OpenAiDeSecureModeConfigurationTest {
                 "https://chatgpt.com/connector/oauth/callback#fragment"
         }) {
             runner.withPropertyValues(
-                            publicSecurePropertiesWith(
+                            securePropertiesWith(
                                     "skillpilot.openai.de.oauth.redirect-uris[0]="
                                             + invalidRedirect))
                     .run(context -> assertSecureStartupFailure(
                             context.getStartupFailure(),
                             "oauth.redirect-uris"));
+        }
+    }
+
+    @Test
+    void secureModeRejectsMissingShortOrWhitespaceClientSecret() {
+        for (String invalidSecret : new String[] {
+                "",
+                "too-short",
+                "test-client-secret-0123456789 contains-whitespace"
+        }) {
+            runner.withPropertyValues(
+                            securePropertiesWith(
+                                    "skillpilot.openai.de.oauth.client-secret="
+                                            + invalidSecret))
+                    .run(context -> assertSecureStartupFailure(
+                            context.getStartupFailure(),
+                            "oauth.client-secret"));
+        }
+    }
+
+    @Test
+    void enabledProviderRejectsMissingPlaceholderWhitespaceOrLowEntropySigningSecret() {
+        for (String invalidSecret : new String[] {
+                "",
+                "default-insecure-secret-change-me",
+                "DEFAULT-INSECURE-SECRET-CHANGE-ME",
+                "too-short",
+                "7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0L aEuBiOg",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }) {
+            runner.withPropertyValues(
+                            securePropertiesWith(
+                                    "skillpilot.security.signing-secret=" + invalidSecret))
+                    .run(context -> {
+                        Throwable failure = context.getStartupFailure();
+                        assertThat(failure)
+                                .isNotNull()
+                                .hasRootCauseInstanceOf(IllegalStateException.class);
+                        assertThat(rootCause(failure).getMessage())
+                                .contains("skillpilot.security.signing-secret")
+                                .doesNotContain(
+                                        "default-insecure-secret-change-me",
+                                        "too-short",
+                                        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    });
         }
     }
 
@@ -120,6 +177,7 @@ class OpenAiDeSecureModeConfigurationTest {
     void normalProviderRejectsExplicitSecureModeDowngrade() {
         runner.withPropertyValues(
                         "skillpilot.openai.de.enabled=true",
+                        "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
                         "skillpilot.openai.de.security.secure-mode=false",
                         "skillpilot.openai.de.oauth.client-authentication-method=none",
                         "skillpilot.openai.de.mtls-edge.enabled=false")
@@ -144,27 +202,12 @@ class OpenAiDeSecureModeConfigurationTest {
     private static String[] validSecureProperties() {
         return new String[] {
             "skillpilot.openai.de.enabled=true",
+            "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
             "skillpilot.openai.de.security.secure-mode=true",
             "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-authentication-method=private_key_jwt",
-            "skillpilot.openai.de.oauth.client-id=https://chatgpt.com/oauth/skillpilot/client.json",
-            "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
-            "skillpilot.openai.de.oauth.client-jwk-set-uri=https://chatgpt.com/oauth/jwks.json",
-            "skillpilot.openai.de.oauth.client-assertion-signing-algorithm=RS256",
-            "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=10000",
-            "skillpilot.openai.de.mtls-edge.enabled=true",
-            "skillpilot.openai.de.mtls-edge.trusted-proxies[0]=127.0.0.1",
-            "skillpilot.openai.de.mtls-edge.trusted-proxies[1]=::1"
-        };
-    }
-
-    private static String[] validPublicClientSecureProperties() {
-        return new String[] {
-            "skillpilot.openai.de.enabled=true",
-            "skillpilot.openai.de.security.secure-mode=true",
-            "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-authentication-method=none",
+            "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
             "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
+            "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
             "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
             "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0",
             "skillpilot.openai.de.mtls-edge.enabled=true",
@@ -175,13 +218,6 @@ class OpenAiDeSecureModeConfigurationTest {
 
     private static String[] securePropertiesWith(String override) {
         String[] baseline = validSecureProperties();
-        String[] combined = java.util.Arrays.copyOf(baseline, baseline.length + 1);
-        combined[baseline.length] = override;
-        return combined;
-    }
-
-    private static String[] publicSecurePropertiesWith(String override) {
-        String[] baseline = validPublicClientSecureProperties();
         String[] combined = java.util.Arrays.copyOf(baseline, baseline.length + 1);
         combined[baseline.length] = override;
         return combined;

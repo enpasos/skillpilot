@@ -34,7 +34,7 @@ This project is an invitation to the community to jointly build and bring to lif
 -   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
 -   [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
 -   [Migration des deutschen Lerncoaches zur OpenAI-MCP-App](concept/runtime-workflows/openai-mcp-coach-migration-plan.md)
--   [OpenAI-MCP-App: OAuth-, Lernenden- und 24h-Sitzungsbindung](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+-   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 -   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
 -   [OpenAI-MCP-mTLS am Edge](deploy/openai-mcp-edge-mtls.md)
 -   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)

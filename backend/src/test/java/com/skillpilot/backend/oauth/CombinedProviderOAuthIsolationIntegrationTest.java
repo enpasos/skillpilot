@@ -99,7 +99,7 @@ import tools.jackson.databind.json.JsonMapper;
 })
 class CombinedProviderOAuthIsolationIntegrationTest {
 
-    private static final String OPENAI_CLIENT_ID = OpenAiDeSecureOAuthTestServer.clientId();
+    private static final String OPENAI_CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String OPENAI_SUBJECT = "openai-combined-subject";
     private static final String CLAUDE_SUBJECT = "claude-combined-subject";
 
@@ -133,13 +133,12 @@ class CombinedProviderOAuthIsolationIntegrationTest {
 
     @DynamicPropertySource
     static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
-        OpenAiDeSecureOAuthTestServer.registerSecureProperties(registry);
+        OpenAiDeSecureOAuthTestServer.registerConfidentialSecureProperties(registry);
     }
 
     @BeforeEach
     void setUp() {
         reset(openAiConnections, claudeConnections);
-        when(openAiConnections.resolveConnectedSkillpilotId(OPENAI_SUBJECT)).thenReturn("SP-OPENAI-COMBINED");
         when(claudeConnections.resolveSkillpilotId(CLAUDE_SUBJECT)).thenReturn("SP-CLAUDE-COMBINED");
         client = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(5))
@@ -203,14 +202,13 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                         "claude_security_context_probe").statusCode())
                 .isEqualTo(401);
 
-        HttpResponse<String> openAiForeignRefresh = postForm(
+        HttpResponse<String> openAiForeignRefresh = postOpenAiAuthenticatedForm(
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
+                List.of(
                         Map.entry("grant_type", "refresh_token"),
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("refresh_token", claudeTokens.refreshToken()),
-                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
-                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
+                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
         assertInvalidGrant(openAiForeignRefresh);
 
         HttpResponse<String> claudeForeignRefresh = postForm(
@@ -222,13 +220,12 @@ class CombinedProviderOAuthIsolationIntegrationTest {
                         Map.entry("resource", "https://skillpilot.test/api/claude/mcp")));
         assertInvalidGrant(claudeForeignRefresh);
 
-        HttpResponse<String> openAiForeignRevocation = postForm(
+        HttpResponse<String> openAiForeignRevocation = postOpenAiAuthenticatedForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
-                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
+                List.of(
                         Map.entry("client_id", OPENAI_CLIENT_ID),
                         Map.entry("token", claudeTokens.refreshToken()),
-                        Map.entry("token_type_hint", "refresh_token")),
-                        OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT));
+                        Map.entry("token_type_hint", "refresh_token")));
         assertThat(openAiForeignRevocation.statusCode())
                 .withFailMessage(openAiForeignRevocation.body())
                 .isEqualTo(200);
@@ -343,6 +340,20 @@ class CombinedProviderOAuthIsolationIntegrationTest {
         return client.send(
                 HttpRequest.newBuilder(localUri(path))
                         .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
+                        .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
+                        .build(),
+                HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> postOpenAiAuthenticatedForm(
+            String path,
+            List<Map.Entry<String, String>> parameters) throws Exception {
+        return client.send(
+                HttpRequest.newBuilder(localUri(path))
+                        .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
+                        .header(
+                                HttpHeaders.AUTHORIZATION,
+                                OpenAiDeSecureOAuthTestServer.confidentialBasicAuthorization())
                         .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
                         .build(),
                 HttpResponse.BodyHandlers.ofString());

@@ -38,37 +38,76 @@ import javax.net.ssl.X509TrustManager;
 import org.springframework.test.context.DynamicPropertyRegistry;
 
 /**
- * Test-only HTTPS CIMD/JWKS endpoint and private-key client used by the
- * OpenAI-DE integration tests.
+ * Test-only predefined confidential-client credentials plus a legacy HTTPS
+ * CIMD/JWKS endpoint used by the OpenAI-DE integration tests.
  *
- * <p>This deliberately exercises the production {@code private_key_jwt}
- * path. It is not an insecure-mode switch and is never part of a production
- * runtime artifact.</p>
+ * <p>The static client exercises the production {@code client_secret_basic}
+ * path. The private-key helpers remain only for explicit compatibility tests.
+ * Neither is part of a production runtime artifact.</p>
  */
 public final class OpenAiDeSecureOAuthTestServer {
 
     private static final String KEY_ID = "openai-de-integration-test-key";
     private static final String ASSERTION_TYPE =
             "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
+    private static final String CONFIDENTIAL_CLIENT_ID =
+            "skillpilot-chatgpt-de-confidential-integration-test";
+    private static final String CONFIDENTIAL_CLIENT_SECRET =
+            "test-client-secret-0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String TEST_SIGNING_SECRET =
+            "7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg";
     private static final String PUBLIC_ORIGIN = "https://skillpilot.test";
     private static final List<String> REDIRECT_URIS = List.of(
             "https://chatgpt.com/connector/oauth/test-callback",
             "https://chatgpt.com/connector/oauth/combined-test-callback",
             "https://chatgpt.com/connector/oauth/e2e-callback");
-    private static final Instance INSTANCE = start();
-
     private OpenAiDeSecureOAuthTestServer() {
     }
 
     public static String clientId() {
-        return INSTANCE.baseUrl() + "/client.json";
+        return PrivateKeyJwtInstanceHolder.INSTANCE.baseUrl() + "/client.json";
     }
 
     public static String jwkSetUri() {
-        return INSTANCE.baseUrl() + "/jwks.json";
+        return PrivateKeyJwtInstanceHolder.INSTANCE.baseUrl() + "/jwks.json";
     }
 
+    public static String confidentialClientId() {
+        return CONFIDENTIAL_CLIENT_ID;
+    }
+
+    public static String confidentialClientSecret() {
+        return CONFIDENTIAL_CLIENT_SECRET;
+    }
+
+    public static String confidentialBasicAuthorization() {
+        String credentials = CONFIDENTIAL_CLIENT_ID + ":" + CONFIDENTIAL_CLIENT_SECRET;
+        return "Basic " + Base64.getEncoder()
+                .encodeToString(credentials.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static void registerConfidentialSecureProperties(
+            DynamicPropertyRegistry registry) {
+        registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
+        registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
+        registry.add(
+                "skillpilot.openai.de.oauth.client-authentication-method",
+                () -> OpenAiDeOAuthConfiguration.CLIENT_AUTH_CLIENT_SECRET_BASIC);
+        registry.add(
+                "skillpilot.openai.de.oauth.client-id",
+                OpenAiDeSecureOAuthTestServer::confidentialClientId);
+        registry.add(
+                "skillpilot.openai.de.oauth.client-secret",
+                OpenAiDeSecureOAuthTestServer::confidentialClientSecret);
+        registry.add("skillpilot.openai.de.mtls-edge.enabled", () -> "false");
+    }
+
+    /**
+     * Legacy compatibility profile for tests that deliberately exercise
+     * CIMD/private_key_jwt outside the production confidential-client profile.
+     */
     public static void registerSecureProperties(DynamicPropertyRegistry registry) {
+        registry.add("skillpilot.security.signing-secret", () -> TEST_SIGNING_SECRET);
         registry.add("skillpilot.openai.de.security.secure-mode", () -> "true");
         registry.add(
                 "skillpilot.openai.de.oauth.client-authentication-method",
@@ -123,7 +162,7 @@ public final class OpenAiDeSecureOAuthTestServer {
                             .expirationTime(Date.from(now.plusSeconds(60)))
                             .jwtID(UUID.randomUUID().toString())
                             .build());
-            assertion.sign(new RSASSASigner(INSTANCE.privateKey()));
+            assertion.sign(new RSASSASigner(PrivateKeyJwtInstanceHolder.INSTANCE.privateKey()));
             return assertion.serialize();
         } catch (Exception exception) {
             throw new IllegalStateException("Could not sign the test private_key_jwt assertion.", exception);
@@ -291,6 +330,13 @@ public final class OpenAiDeSecureOAuthTestServer {
 
     private static String base64Url(byte[] value) {
         return Base64.getUrlEncoder().withoutPadding().encodeToString(value);
+    }
+
+    private static final class PrivateKeyJwtInstanceHolder {
+        private static final Instance INSTANCE = start();
+
+        private PrivateKeyJwtInstanceHolder() {
+        }
     }
 
     private record Instance(String baseUrl, RSAPrivateKey privateKey) {

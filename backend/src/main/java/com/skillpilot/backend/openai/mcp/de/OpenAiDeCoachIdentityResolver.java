@@ -3,15 +3,18 @@ package com.skillpilot.backend.openai.mcp.de;
 import io.modelcontextprotocol.common.McpTransportContext;
 
 /**
- * Resolves the authenticated OpenAI connection to one internal learner.
+ * Combines the authenticated OpenAI app connection with one explicit,
+ * short-lived learning session.
  *
- * <p>The permanent learner ID is deliberately available only behind this
- * server-side boundary. It is never accepted as a tool argument or returned in
- * a tool result.</p>
+ * <p>OAuth authorizes the predefined app client. The opaque learning-session
+ * value independently selects the learner for one concrete start. The
+ * permanent learner ID remains behind this server-side boundary.</p>
  */
 public interface OpenAiDeCoachIdentityResolver {
 
-    String resolveSkillpilotId(McpTransportContext transportContext);
+    String resolveSkillpilotId(
+            McpTransportContext transportContext,
+            String learningSessionId);
 
     /** Rejects a mutation unless the current connection has the German write scope. */
     void requireWriteAccess(McpTransportContext transportContext);

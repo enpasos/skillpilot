@@ -3,12 +3,8 @@ package com.skillpilot.backend.openai.de.oauth;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
-import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.time.Instant;
@@ -41,8 +37,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
 
         assertThat(principal.<List<String>>getAttribute("aud")).containsExactly(MCP_URL);
         assertThat(principal.getName()).isEqualTo(SUBJECT);
-        verify(fixture.connectionService()).resolveConnectedSkillpilotId(SUBJECT);
-        verify(fixture.connectionService(), never()).resolveActiveLearningSessionSkillpilotId(SUBJECT);
     }
 
     @Test
@@ -52,7 +46,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
         assertThatExceptionOfType(BadOpaqueTokenException.class)
                 .isThrownBy(() -> fixture.introspector().introspect(TOKEN))
                 .withMessageContaining("protected resource");
-        verifyNoInteractions(fixture.connectionService());
     }
 
     @Test
@@ -62,7 +55,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
         assertThatExceptionOfType(BadOpaqueTokenException.class)
                 .isThrownBy(() -> fixture.introspector().introspect(TOKEN))
                 .withMessageContaining("protected resource");
-        verifyNoInteractions(fixture.connectionService());
     }
 
     @Test
@@ -78,7 +70,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
                         .counter()
                         .count())
                 .isEqualTo(1);
-        verifyNoInteractions(fixture.connectionService());
     }
 
     private Fixture fixture(String resource, boolean includeResource) {
@@ -88,7 +79,6 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
     private Fixture fixture(String resource, boolean includeResource, String authorizationClientId) {
         OAuth2AuthorizationService authorizations = mock(OAuth2AuthorizationService.class);
         RegisteredClientRepository clients = mock(RegisteredClientRepository.class);
-        OpenAiDeCoachConnectionService connectionService = mock(OpenAiDeCoachConnectionService.class);
         SimpleMeterRegistry registry = new SimpleMeterRegistry();
         OpenAiDeOperationalTelemetry telemetry = new OpenAiDeOperationalTelemetry(registry);
         RegisteredClient client = RegisteredClient.withId("registered-client-id")
@@ -128,22 +118,18 @@ class OpenAiDeOpaqueTokenIntrospectorTest {
                 .build();
         when(authorizations.findByToken(TOKEN, OAuth2TokenType.ACCESS_TOKEN)).thenReturn(authorization);
         when(clients.findByClientId(CLIENT_ID)).thenReturn(client);
-        when(connectionService.resolveConnectedSkillpilotId(SUBJECT)).thenReturn("learner-id");
         return new Fixture(
                 new OpenAiDeOpaqueTokenIntrospector(
                         authorizations,
                         clients,
-                        connectionService,
                         telemetry,
                         CLIENT_ID,
                         MCP_URL),
-                connectionService,
                 registry);
     }
 
     private record Fixture(
             OpenAiDeOpaqueTokenIntrospector introspector,
-            OpenAiDeCoachConnectionService connectionService,
             SimpleMeterRegistry registry) {
     }
 }

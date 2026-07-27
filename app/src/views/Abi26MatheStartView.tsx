@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ArrowRight, BookOpenCheck, Copy, ExternalLink, LayoutDashboard, MessageCircle, RefreshCcw, Send } from 'lucide-react'
 import {
@@ -26,6 +26,7 @@ import {
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
 import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
+import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 
 const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
 const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
@@ -58,6 +59,7 @@ export const Abi26MatheStartView: React.FC = () => {
   const [cockpitUrl, setCockpitUrl] = useState<string>('')
   const [startPrompt, setStartPrompt] = useState('')
   const [startLoading, setStartLoading] = useState(false)
+  const gptStartInFlightRef = useRef(createSynchronousInFlightGuard())
   const visibleSessionLaunchCopy = getActiveVisibleSessionLaunchCopy('de')
   const openAiMcpCoachActive = isOpenAiMcpCoachActive('de')
 
@@ -226,6 +228,7 @@ export const Abi26MatheStartView: React.FC = () => {
 
   const handleGptStartClicked = async () => {
     if (!skillpilotId) return
+    if (!gptStartInFlightRef.current.tryStart()) return
     trackCampaignEvent('gpt_start_clicked', {
       start: ABI26_CAMPAIGN_SLUG,
       source: context.source,
@@ -268,6 +271,7 @@ export const Abi26MatheStartView: React.FC = () => {
       }
     } finally {
       setStartLoading(false)
+      gptStartInFlightRef.current.finish()
     }
   }
 

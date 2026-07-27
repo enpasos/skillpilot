@@ -1,6 +1,5 @@
 package com.skillpilot.backend.openai.de.oauth;
 
-import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
 import java.time.Instant;
@@ -22,12 +21,11 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.resource.introspection.BadOpaqueTokenException;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
-/** Validates token activity, provider client, scopes and current connection. */
+/** Validates token activity, predefined app client, audience and scopes. */
 public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
     private final OAuth2AuthorizationService authorizationService;
     private final RegisteredClientRepository registeredClients;
-    private final OpenAiDeCoachConnectionService connectionService;
     private final OpenAiDeOperationalTelemetry telemetry;
     private final String clientId;
     private final String mcpUrl;
@@ -35,13 +33,11 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
     public OpenAiDeOpaqueTokenIntrospector(
             OAuth2AuthorizationService authorizationService,
             RegisteredClientRepository registeredClients,
-            OpenAiDeCoachConnectionService connectionService,
             OpenAiDeOperationalTelemetry telemetry,
             String clientId,
             String mcpUrl) {
         this.authorizationService = authorizationService;
         this.registeredClients = registeredClients;
-        this.connectionService = connectionService;
         this.telemetry = telemetry;
         this.clientId = clientId;
         this.mcpUrl = mcpUrl;
@@ -74,11 +70,6 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
         }
 
         String subject = authorization.getPrincipalName();
-        // OAuth validity and the 24-hour learning session intentionally have
-        // separate lifecycles. A missing learning session must not turn an
-        // otherwise valid bearer token into an invalid_token response.
-        connectionService.resolveConnectedSkillpilotId(subject);
-
         List<GrantedAuthority> authorities = new ArrayList<>();
         accessTokenScopes.forEach(scope ->
                 authorities.add(new SimpleGrantedAuthority("SCOPE_" + scope)));

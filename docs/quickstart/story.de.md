@@ -16,7 +16,7 @@ Du brauchst nur einen Browser und einen ChatGPT-Account, in dessen Tarif oder Wo
 2. Klicke auf **Login**.
 3. Akzeptiere den Hinweis und wähle deinen Login-Weg: neue SkillPilot-ID erstellen, gespeicherten lokalen Login laden oder vorhandene SkillPilot-ID eingeben.
 4. Wähle dein Curriculum und klicke auf **SkillPilot Lerncoach starten** oder **Cockpit öffnen**.
-5. Im ChatGPT-Fenster sendest du die vorbereitete Nachricht ab. Beim ersten Mal verbindest du einmalig die App **SkillPilot Coach (Deutsch)**; SkillPilot-ID und Sitzungsschlüssel bleiben unsichtbar.
+5. Im ChatGPT-Fenster sendest du die vorbereitete Nachricht ab. Beim ersten Mal verbindest du einmalig die App **SkillPilot Coach (Deutsch)**. Deine SkillPilot-ID bleibt unsichtbar; die neue 24‑Stunden-Lernsession ist technisch in der vorbereiteten Nachricht enthalten und wird automatisch weiterverwendet.
 
 ---
 
@@ -32,9 +32,9 @@ Du brauchst nur einen Browser und einen ChatGPT-Account, in dessen Tarif oder Wo
 
 **SkillPilot-ID:** Dein dauerhafter Schlüssel zu deinem Lernfortschritt. Du kannst sie direkt eingeben oder als verschlüsselten lokalen Login in deinem Browser speichern.
 
-**OAuth-Verbindung:** Die einmalige, widerrufbare Verbindung zwischen deinem ChatGPT-Zugang und SkillPilot. Sie berechtigt die deutsche SkillPilot-App, den für dich freigegebenen Backend-Zugang zu verwenden.
+**OAuth-Verbindung:** Die einmalige, widerrufbare Verbindung der deutschen SkillPilot-App mit dem Backend. Sie erlaubt der zugelassenen App den technischen Zugriff, wählt aber noch keinen Lernstand aus.
 
-**Lernsession:** Ein höchstens 24 Stunden gültiger, serverseitiger Lernkontext. Er wird deinem OAuth-Zugang im SkillPilot-Backend zugeordnet und erscheint weder als SkillPilot-ID noch als Sitzungstoken im Chat.
+**Lernsession:** Ein zufälliger, 24 Stunden gültiger Schlüssel für genau den Lernstand, mit dem du auf SkillPilot **Lernen starten** gewählt hast. Bei jedem Start entsteht ein neuer Schlüssel. SkillPilot setzt ihn automatisch in die vorbereitete Nachricht ein; du musst ihn nicht kopieren oder verwalten.
 
 **Lernziel-ID:** Eine stabile, global eindeutige Kennung für ein Lernziel. Sie darf sichtbar sein und hilft, ein Lernziel eindeutig anzusprechen; sie ist kein Zugangsschlüssel.
 
@@ -56,7 +56,7 @@ Du brauchst nur einen Browser und einen ChatGPT-Account, in dessen Tarif oder Wo
 | --- |
 | *Zum Lernen loggst du dich auf der Startseite ein. Das kostet nichts und du musst dich nicht mit Name oder E-Mail registrieren.* |
 
-SkillPilot speichert deinen Lernfortschritt unter einer pseudonymen SkillPilot-ID. Wenn du den deutschen Lerncoach startest, bereitet das Backend eine höchstens 24 Stunden gültige Lernsession vor. Die dauerhafte SkillPilot-ID bleibt im Browser und im Backend. Die App greift über OAuth auf die serverseitig zugeordnete Session zu; ein Schlüssel muss nicht im Chat stehen.
+SkillPilot speichert deinen Lernfortschritt unter einer pseudonymen SkillPilot-ID. Wenn du den deutschen Lerncoach startest, erzeugt das Backend sofort eine neue, 24 Stunden gültige Lernsession und ordnet sie intern diesem Lernstand zu. Die dauerhafte SkillPilot-ID bleibt im Browser und im Backend. SkillPilot setzt die neue Session automatisch in die vorbereitete Chat-Nachricht ein; die App führt sie anschließend bei jedem fachlichen Aufruf mit.
 
 ---
 
@@ -80,15 +80,15 @@ Du hast drei Möglichkeiten:
 
 Nach dem Login wählst du dein Curriculum. Danach kannst du direkt den SkillPilot Lerncoach starten oder zuerst dein Cockpit öffnen.
 
-Wenn du den Lerncoach startest, erzeugt SkillPilot eine höchstens 24 Stunden gültige serverseitige Lernsession und öffnet ChatGPT mit einer vorbereiteten Nachricht. Beim ersten Aufruf fordert ChatGPT dich auf, die App **SkillPilot Coach (Deutsch)** einmalig mit SkillPilot zu verbinden. Die dauerhafte SkillPilot-ID und die Session bleiben bei SkillPilot und werden nicht in den Chat übernommen.
+Jeder Klick auf **Lernen starten** erzeugt sofort eine neue, 24 Stunden gültige Lernsession – auch dann, wenn du mit derselben SkillPilot-ID erneut startest. SkillPilot öffnet ChatGPT mit einer vorbereiteten Nachricht, in der die technische Lernsession automatisch enthalten ist. Du musst sie weder kopieren noch bearbeiten. Beim ersten Aufruf fordert ChatGPT dich auf, die App **SkillPilot Coach (Deutsch)** einmalig mit SkillPilot zu verbinden. Deine dauerhafte SkillPilot-ID bleibt bei SkillPilot und wird nicht in den Chat übernommen.
 
 ---
 
 ## 4) Lerncoach in ChatGPT starten
 
-Schicke die vorbereitete Nachricht ab. Der SkillPilot Lerncoach lädt über die verbundene App den aktuellen Lernstand aus dem Backend. Es gibt keinen Startcode, keinen Einlöseschritt und keinen sichtbaren Sitzungsschlüssel.
+Schicke die vorbereitete Nachricht ab. Der SkillPilot Lerncoach übernimmt die automatisch mitgegebene Lernsession bei jedem fachlichen App-Aufruf und lädt darüber den zugehörigen Lernstand aus dem Backend. Es gibt keinen manuellen Startcode und keinen Einlöseschritt.
 
-Danach arbeitest du normal im Chat weiter: Du kannst Fragen stellen, Aufgaben bearbeiten, Fotos hochladen oder Text per Diktat eingeben. Wenn der Coach eine Auswahl braucht, zeigt er passende Optionen. Technische Auswahlreferenzen und die aktuelle Lernsession verwaltet das Backend; du musst sie nicht kopieren oder sichtbar weitertragen.
+Danach arbeitest du normal im Chat weiter: Du kannst Fragen stellen, Aufgaben bearbeiten, Fotos hochladen oder Text per Diktat eingeben. Wenn der Coach eine Auswahl braucht, zeigt er passende Optionen. Technische Auswahlreferenzen verwaltet das Backend; die vorbereitete Lernsession führt der Coach automatisch in seinen App-Aufrufen mit.
 
 ---
 
@@ -148,11 +148,11 @@ SkillPilot fragt nicht nur Definitionen ab, sondern prüft auch Anwendung und Tr
 
 ### Sieht ChatGPT meine SkillPilot-ID?
 
-Nein. Deine dauerhafte SkillPilot-ID bleibt im Browser und bei SkillPilot. Die verbundene App erhält nur die Lerninformationen, die für den aktuellen Coach-Dialog benötigt werden; die Zuordnung zur höchstens 24 Stunden gültigen Lernsession bleibt serverseitig.
+Nein. Deine dauerhafte SkillPilot-ID bleibt im Browser und bei SkillPilot. Die vorbereitete Chat-Nachricht enthält nur eine neue, zufällige und 24 Stunden gültige Lernsession. Das Backend ordnet sie deiner SkillPilot-ID zu, ohne diese dauerhafte ID an ChatGPT weiterzugeben.
 
 ### Muss ich einen technischen SkillPilot-Footer oder Token mitkopieren?
 
-Nein. Im aktuellen deutschen MCP-/OAuth-Ablauf bleiben die Lernsession und technische Referenzen serverseitig gebunden. Sichtbare Sitzungstoken und Footer gehören nur zur getrennt erhaltenen Visible-Session-Rollbackvariante und sind nicht der normale deutsche Produktweg.
+Nein. SkillPilot trägt die neue Lernsession automatisch in die vorbereitete Startnachricht ein, und der Coach verwendet sie automatisch bei den fachlichen App-Aufrufen. Du musst keinen Wert kopieren, bearbeiten oder erneut eingeben. Die getrennt erhaltene Visible-Session-Rollbackvariante bleibt ein anderer Produktweg.
 
 ### Brauche ich ChatGPT Plus?
 
@@ -174,7 +174,7 @@ Wenn du keinen lokalen Login gespeichert hast und deine SkillPilot-ID verlierst,
 
 ### Was passiert, wenn die ChatGPT-Session abläuft?
 
-Die serverseitige Lernsession ist höchstens 24 Stunden gültig und wird durch Nutzung nicht verlängert. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und starte den Lerncoach erneut. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nicht direkt im Chat ein.
+Die Lernsession ist exakt 24 Stunden gültig und wird durch Nutzung nicht verlängert. Wenn sie abgelaufen ist, gehe zurück zu [skillpilot.com](https://skillpilot.com), lade deinen gespeicherten Zugang oder gib dort deine SkillPilot-ID ein und klicke erneut auf **Lernen starten**. In diesem Augenblick erzeugt SkillPilot eine neue Lernsession und bereitet einen neuen Chat vor. Die OAuth-Verbindung kann dabei weiter gültig bleiben. Gib deine dauerhafte SkillPilot-ID nicht direkt im Chat ein.
 
 ### Kann ich zwischen Cockpit und Lerncoach wechseln?
 

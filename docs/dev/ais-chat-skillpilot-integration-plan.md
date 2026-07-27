@@ -238,11 +238,12 @@ fuer AIS.chat nuetzlich, weil es Tool-Flows stabilisiert:
 > historischen Custom-GPT-Stand zum Recherchezeitpunkt. Der aktuelle deutsche
 > Vertrag ist die
 > [OpenAI-MCP-App mit OAuth- und 24h-Lernsession](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md):
-> ChatGPT transportiert den OAuth-Zugriff automatisch; SkillPilot löst die
-> lernende Person und die separate, absolute 24h-Lernsession serverseitig auf.
-> Weder SkillPilot-ID noch Sitzungstoken erscheinen im Chat oder in
-> Toolargumenten. Visible Session bleibt nur ein Custom-GPT-Rollback und
-> möglicher englischer Übergang.
+> ChatGPT transportiert den OAuth-Zugriff automatisch. Jeder ausdrückliche
+> Start in SkillPilot erzeugt zusätzlich eine neue, absolute 24h-Lernsession,
+> setzt sie automatisch in die vorbereitete Startnachricht ein und verlangt
+> sie danach als Argument jedes fachlichen Tools. Die dauerhafte SkillPilot-ID
+> erscheint weder im Chat noch in Toolargumenten. Visible Session bleibt nur
+> ein Custom-GPT-Rollback und möglicher englischer Übergang.
 
 Zum Recherchezeitpunkt hatte SkillPilot einen Browser-first Startcode-Flow:
 

@@ -6,10 +6,11 @@ Laufzeitvertrag.
 > Dieses Dokument bleibt als technische Rollback-Referenz erhalten. Der aktuelle
 > deutsche Flow ist die
 > [OpenAI-MCP-App mit OAuth- und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
-> Dabei transportiert ChatGPT den OAuth-Zugriff automatisch; SkillPilot löst die
-> lernende Person und die davon getrennte, absolut höchstens 24 Stunden gültige
-> Lernsession serverseitig auf. Weder SkillPilot-ID noch Sitzungs- oder Startcode
-> erscheinen im Chat. Die
+> Dabei transportiert ChatGPT den OAuth-Zugriff automatisch. Jeder ausdrückliche
+> Start in SkillPilot erzeugt eine davon getrennte, absolut höchstens 24 Stunden
+> gültige Lernsession, setzt sie automatisch in die vorbereitete
+> Startnachricht ein und verlangt sie danach als Argument jedes fachlichen
+> Tools. Die dauerhafte SkillPilot-ID erscheint nicht im Chat. Die
 > [Visible-Session-Architektur](chatgpt-visible-session-flow.md) bleibt ein
 > separater Custom-GPT-Rollbackpfad und kann bis zu einer eigenen englischen App
 > noch als englischer Übergangspfad dienen.
@@ -263,7 +264,7 @@ Minimal benoetigte Felder:
 ```text
 code_hash
 learner_skillpilot_id
-created_at
+issued_at
 expires_at
 redeemed_at
 redeemed_session_id
@@ -284,7 +285,7 @@ Minimal benoetigte Felder:
 ```text
 token_hash
 learner_skillpilot_id
-created_at
+started_at
 expires_at
 revoked_at
 last_used_at

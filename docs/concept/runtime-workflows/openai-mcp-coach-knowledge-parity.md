@@ -12,13 +12,12 @@ engen Toolbeschreibungen oder Backendguards.
 
 Dieses Dokument beschreibt fachliches Verhalten, nicht die
 Transportauthentisierung. Für den TLS/OAuth-Basisschutz, die optionale
-fail-closed mTLS-Härtung am MCP-Rand, das konfigurierte OAuth-Profil
-(vorregistrierter Public Client mit
-Token-Endpunkt-Authentisierung `none` oder optional CIMD mit
-`private_key_jwt` und Same-Origin-JWKS), exakte
-Client-ID-/Callback-/Resource-/Scope-Allowlisten und die 24h-Lernsession sind
+fail-closed mTLS-Härtung am MCP-Rand, den fest vorregistrierten vertraulichen
+OAuth-Client mit `client_secret_basic`, die exakten
+Client-ID-/Callback-/Resource-/Scope-Allowlisten und die explizite
+24h-Lernsession sind
 [OpenAI-MCP-Clientbindung](../../security/openai-mcp-client-binding.md) und
-[OAuth-, Lernenden- und 24h-Sitzungsbindung](openai-mcp-oauth-learner-session-architecture.md)
+[OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md)
 maßgeblich. Insbesondere attestiert optionales mTLS die
 OpenAI-Connector-Infrastruktur und nicht den sichtbaren App-Namen.
 
@@ -51,25 +50,28 @@ Normative Quellen der bisherigen Variante:
 | Fortschritt nur frisch, aktueller Scope zuerst, keine Schätzung, Abschluss ohne erfundene Ziele | globale Progress-Policy und Completion-Instruktion | Zahlen und Abschlussstatus stammen ausschließlich aus dem Backend |
 | Mathematik nur mit `\(...\)` und `\[...\]` | Server-Instruktionen und globale Context-Policy | ausgelieferte freigegebene Inhalte werden zusätzlich normalisiert |
 | ohne bestätigten Erfolg keine Speicherung behaupten; Konflikt höchstens einmal neu laden; bei Blockade stoppen | Server-Instruktionen, globale Policy und MCP-Fehlerresultate | Mutationen liefern frischen Zustand; Konflikt- und Authfehler werden explizit signalisiert |
-| keine Tool-/API-/JSON-/Feldnamen, technischen IDs oder Geheimnisse in sichtbaren Antworten | Server-Instruktionen und globale Context-Policy | permanente SkillPilot-ID, OAuth-Subjekt und Token sind weder Toolargumente noch Toolergebnisse |
+| keine Tool-/API-/JSON-/Feldnamen, internen IDs oder Geheimnisse in sichtbaren Antworten; die automatisch transportierte `learningSessionId` nicht erläutern oder verändern | Server-Instruktionen und globale Context-Policy | permanente SkillPilot-ID, OAuth-Token und Client-Secret sind weder Toolargumente noch Toolergebnisse; jedes fachliche Tool verlangt die kurzlebige Session-ID |
 
 ## Bewusst nicht migrierte Relay-Regeln
 
 Die folgenden Regeln waren ausschließlich Kompensation für die
 Custom-GPT-Action-Regression und gehören nicht zur MCP-Zielarchitektur:
 
-- sichtbares `sps_...`-Token, Relay-Footer und sichtbare technische Lernziel- oder
-  Karten-IDs;
+- Relay-Footer sowie sichtbare technische Lernziel-, Auswahl- oder Karten-IDs;
 - `getVisibleState` vor jedem User-Turn und die zugehörigen Ausnahmen;
 - `selectionReference`, `choiceNumber` und `choiceNumbers` als sichtbares
   Transportprotokoll;
-- erneutes Tragen technischer Werte durch Benutzernachrichten;
+- erneutes manuelles Tragen technischer Werte durch Benutzernachrichten;
 - `getVisible*`-/`setVisible*`-Namen und Fehlerlogik des 24-Stunden-Tokens.
 
-Ersetzt werden sie durch argumentloses Rehydrieren zu Sitzungsbeginn, nach
-Mutationen sowie bei Reload, Unsicherheit, langem Dialog oder möglicher
-Kontextkompaktierung. Der kurze MCP-Retentionstest belegt die strukturierte
-Wiederverwendung, macht den Backendzustand aber nicht entbehrlich.
+Das sichtbare Relay-Protokoll wird nicht wieder eingeführt. Davon zu
+unterscheiden ist die aktuelle `learningSessionId`: SkillPilot erzeugt sie bei
+jedem **Lernen starten** neu, trägt sie automatisch genau einmal in die
+Startnachricht ein und ChatGPT muss sie unverändert an jedes fachliche
+MCP-Werkzeug übergeben. Sie ersetzt weder OAuth noch den autoritativen
+Backendzustand. Nach Mutationen sowie bei Reload, Unsicherheit, langem Dialog
+oder möglicher Kontextkompaktierung wird mit derselben noch gültigen Session-ID
+frisch rehydriert.
 
 ## Verbleibende modellseitige Grenzen
 
