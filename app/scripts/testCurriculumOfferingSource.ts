@@ -115,4 +115,42 @@ assert.deepEqual(
   },
 )
 
+for (const courseProfile of ['GK', 'LK'] as const) {
+  assert.deepEqual(
+    deriveRuntimeCompositionScope({
+      landscapeId: 'fixture.root',
+      rootLandscapeId: 'fixture.root',
+      scopeEnabled: true,
+      learnerPersonalCurriculum: JSON.stringify({
+        'fixture.root': { selected: true, filterId: courseProfile },
+      }),
+    }),
+    {
+      landscapeId: 'fixture.root',
+      schoolForm: 'Gymnasium',
+      stage: 'SekII',
+      courseProfile,
+    },
+  )
+}
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: 'fixture.root',
+    rootLandscapeId: 'fixture.root',
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify({
+      'fixture.root': { selected: true, filterId: 'LK' },
+      __skillpilot_stage_scope_sek1__: { selected: true },
+      __skillpilot_stage_scope_sek2__: { selected: true },
+    }),
+  }),
+  {
+    landscapeId: 'fixture.root',
+    schoolForm: 'Gymnasium',
+    stage: 'CrossStage',
+    courseProfile: 'LK',
+  },
+)
+
 console.log('Curriculum offering source self-test passed (catalog-only package mode, repository regression).')

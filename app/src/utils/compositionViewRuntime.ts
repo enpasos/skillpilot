@@ -282,7 +282,23 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
   }
 }
 
-const inferStageFromPersonalCurriculum = (config: PersonalCurriculumConfig): string | undefined => {
+const inferStageFromPersonalCurriculum = (
+  config: PersonalCurriculumConfig,
+  courseProfile?: string,
+): string | undefined => {
+  const hasExplicitStageScope = [
+    GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1,
+    GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2,
+  ].some((configId) => typeof config[configId]?.selected === 'boolean')
+  const normalizedCourseProfile = normalizeComparableToken(courseProfile)
+
+  if (
+    !hasExplicitStageScope
+    && ['GK', 'LK', 'GK+LK'].includes(normalizedCourseProfile)
+  ) {
+    return 'SekII'
+  }
+
   const sek1Selected = config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected ?? true
   const sek2Selected = config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]?.selected ?? true
 
@@ -366,9 +382,9 @@ export const deriveRuntimeCompositionScope = ({
     ?? scopedFilters
       .map((value) => normalizeJurisdictionCode(value))
       .find((value): value is NonNullable<typeof value> => !!value)
-  const stage = inferStageFromPersonalCurriculum(personalCurriculum)
   const courseProfileCandidate = [landscapeFilterId, ...activeFilters].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
+  const stage = inferStageFromPersonalCurriculum(personalCurriculum, courseProfile)
   const durationModel = [
     personalCurriculum[landscapeId]?.durationModel,
     personalCurriculum[rootLandscapeId]?.durationModel,
