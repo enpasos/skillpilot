@@ -3,6 +3,13 @@
 **Stand:** 26. Juli 2026
 **Status:** normative Paritätsmatrix für die UI-lose deutsche MCP-App
 
+Diese Matrix weist nach, **wo** die früheren Regeln technisch wirksam werden
+sollen. Sie ist kein Nachweis, dass das Zusammenspiel von Modell, Tools,
+Zustandsprojektion und Backend bereits dieselbe Endnutzerqualität wie der
+frühere Custom-GPT-Coach erreicht. Die übergreifende Verhaltensaufgabe, Golden
+Journeys und Acceptance-Gates stehen in
+[Verhaltensintegration des deutschen MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md).
+
 Die ChatGPT-MCP-App besitzt keine Knowledge-Uploadfläche wie ein Custom GPT.
 Die bisherigen sieben deutschen Knowledge-Dokumente bleiben deshalb als
 fachliche Ausgangsspezifikation erhalten, werden aber nicht zur Laufzeit gesucht

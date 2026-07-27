@@ -17,6 +17,13 @@ Die übergeordnete Architekturentscheidung ist in
 beschrieben. Dieses Dokument übersetzt sie in eine konkrete, schrittweise
 Migration mit Abnahmekriterien, Cutover und Rollback.
 
+Die technische Migration und die Zuordnung der früheren Regeln sind nicht mit
+sichtbarer Endnutzerparität gleichzusetzen. Das allgemeine Coach-
+Verhaltensmodell, die Golden Journeys, der ehrliche Integrationsstand und die
+modellgestützte End-to-End-Abnahme werden normativ in
+[Verhaltensintegration des deutschen MCP-Lerncoaches](openai-mcp-coach-behavioral-integration.md)
+geführt.
+
 ## 1. Entscheidung
 
 SkillPilot migriert **nicht** den sichtbaren Session-Workaround und baut den
@@ -435,6 +442,15 @@ definieren und die lernende Person diese Auswahl trifft. Der vollständige
 Ersatz einer Konfiguration bleibt ein ausdrücklich davon getrennter
 Cockpit-Workflow.
 
+Kursprofile sind fachbezogene Werte und keine globale Eigenschaft einer
+Lernsession. Mathematik LK und Physik GK müssen daher gleichzeitig abbildbar
+sein. Ein Kursprofil setzt weder die Lernstufe noch G8/G9: „Mathematik LK“
+beantwortet Fach und Mathematik-Kursprofil; ein nur auf Sekundarstufe II
+begrenzter Lernumfang, ein stufenübergreifender Neustart und das Dauer- oder
+Jahrgangsmodell bleiben eigenständige Entscheidungen. Solange eine davon für
+die aktuelle Nutzerabsicht erforderlich und nicht eindeutig bekannt ist,
+bleibt sie als Rückfrage offen.
+
 Jede eingereichte kanonische ID muss genau zu einer aktuellen Planoption passen.
 Mutation und Neuberechnung von Plan und Coach-Kontext liegen in derselben
 Transaktion. Nach jeder Mutation wird deshalb aus dem gespeicherten Delta und
@@ -682,7 +698,9 @@ hochwirksamen Prüfungs- oder Zertifizierungsfällen erneut bewertet werden.
 - die positiven MCP-Testbelege archivieren;
 - keine bestehenden Startpfade ändern.
 
-**Exit:** reproduzierbare Baseline und vollständige Paritätsmatrix.
+**Exit:** reproduzierbare Baseline und vollständige technische
+Regelzuordnung. Die sichtbare Verhaltensparität wird separat über die Golden
+Journeys der Coach-Verhaltensintegration abgenommen.
 
 **Implementierungsstand:** abgeschlossen. Custom-GPT-, Visible-Session-,
 Node-Prototyp- und MCP-Regressionsquellen bleiben getrennt.

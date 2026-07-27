@@ -380,14 +380,19 @@ public class LearnerServiceTest {
     @Test
     @Transactional
     @SuppressWarnings("unchecked")
-    void getFilteredGoals_appliesCanonicalDeCompositionViewWithoutDurationModel() {
+    void getFilteredGoals_appliesCanonicalDeCrossStageCompositionView() {
         Map<String, LearningGoal> filteredGoals = (Map<String, LearningGoal>) ReflectionTestUtils.invokeMethod(
                 learnerService,
                 "getFilteredGoals",
                 CANONICAL_GYMNASIUM_ROOT_ID,
                 """
                         {
-                          "a0e13c56-c25f-4742-9272-3a1a603ee52e": {"selected": true, "filterId": "ALL"},
+                          "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                            "selected": true,
+                            "filterId": "ALL",
+                            "stage": "CrossStage",
+                            "durationModel": "G9"
+                          },
                           "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
                           "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
                         }
@@ -868,6 +873,13 @@ public class LearnerServiceTest {
     private String completedPersonalizationConfig(String json) {
         try {
             Map<String, Object> config = objectMapper.readValue(json, Map.class);
+            Map<String, Object> rootConfig = config.get(CANONICAL_GYMNASIUM_ROOT_ID) instanceof Map<?, ?> rawRoot
+                    ? new LinkedHashMap<>((Map<String, Object>) rawRoot)
+                    : new LinkedHashMap<>();
+            rootConfig.putIfAbsent("selected", true);
+            rootConfig.putIfAbsent("stage", "CrossStage");
+            rootConfig.putIfAbsent("durationModel", "G9");
+            config.put(CANONICAL_GYMNASIUM_ROOT_ID, rootConfig);
             Map<String, Object> flowState = new LinkedHashMap<>();
             flowState.put(
                     CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,

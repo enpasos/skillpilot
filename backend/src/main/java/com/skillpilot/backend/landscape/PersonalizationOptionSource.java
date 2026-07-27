@@ -12,6 +12,8 @@ public class PersonalizationOptionSource {
     private List<String> landscapeIds;
     private String selectedLandscapesFromGroupId;
     private List<String> filterIds;
+    private String scopeKey;
+    private List<PersonalizationScopeValue> values;
 
     public PersonalizationSourceKind getKind() {
         return kind;
@@ -63,5 +65,21 @@ public class PersonalizationOptionSource {
      */
     public void setFilterIds(List<String> filterIds) {
         this.filterIds = filterIds;
+    }
+
+    public String getScopeKey() {
+        return scopeKey;
+    }
+
+    public void setScopeKey(String scopeKey) {
+        this.scopeKey = scopeKey;
+    }
+
+    public List<PersonalizationScopeValue> getValues() {
+        return values;
+    }
+
+    public void setValues(List<PersonalizationScopeValue> values) {
+        this.values = values;
     }
 }

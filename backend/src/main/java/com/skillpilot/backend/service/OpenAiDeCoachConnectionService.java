@@ -157,6 +157,7 @@ public class OpenAiDeCoachConnectionService {
             learnerService.setCurriculum(skillpilotId, launch.selectedCurriculum());
             learner = learnerService.getLearner(skillpilotId);
         }
+        learner = learnerService.reopenPersonalizationForExplicitLaunch(learner);
         if (launch.type() == LaunchIntentType.VERIFIED_RECALL) {
             if (!launch.goalId().equals(learner.getActiveGoalId())) {
                 learnerService.assertWritableLearningSession(skillpilotId);

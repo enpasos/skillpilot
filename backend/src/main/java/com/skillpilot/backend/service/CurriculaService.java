@@ -625,7 +625,7 @@ public class CurriculaService {
         String landscapeFilterId = readFilterId(config, landscapeId);
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
-        String stage = inferStageScope(config, courseProfile);
+        String stage = inferStageScope(config, landscapeId);
         String durationModel = resolveDurationModelScope(
                 readScopeValue(config, landscapeId, "durationModel"),
                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
@@ -702,43 +702,44 @@ public class CurriculaService {
 
     private String inferStageScope(
             Map<String, Map<String, Object>> config,
-            String courseProfile) {
-        if (!hasExplicitStageScope(config) && isUpperSecondaryCourseProfile(courseProfile)) {
-            return "SekII";
+            String landscapeId) {
+        String explicitStage = resolveStageScope(
+                readScopeValue(config, landscapeId, "stage"),
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"));
+        if (explicitStage != null) {
+            return explicitStage;
         }
-        boolean sek1Selected = readSelectedFlag(config, STAGE_SCOPE_SEK1_ID, true);
-        boolean sek2Selected = readSelectedFlag(config, STAGE_SCOPE_SEK2_ID, true);
-        if (sek1Selected && sek2Selected) {
+        Boolean sek1Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK1_ID);
+        Boolean sek2Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK2_ID);
+        if (sek1Selected == null && sek2Selected == null) {
+            return null;
+        }
+        if (Boolean.TRUE.equals(sek1Selected) && Boolean.TRUE.equals(sek2Selected)) {
             return "CrossStage";
         }
-        if (sek1Selected) {
+        if (Boolean.TRUE.equals(sek1Selected)) {
             return "SekI";
         }
-        if (sek2Selected) {
+        if (Boolean.TRUE.equals(sek2Selected)) {
             return "SekII";
         }
         return null;
     }
 
-    private boolean hasExplicitStageScope(Map<String, Map<String, Object>> config) {
-        return hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK1_ID)
-                || hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK2_ID);
-    }
-
-    private boolean hasExplicitSelectedFlag(
-            Map<String, Map<String, Object>> config,
-            String configId) {
-        if (config == null || config.isEmpty()) {
-            return false;
+    private String resolveStageScope(String... candidates) {
+        for (String candidate : candidates) {
+            String normalized = normalize(candidate);
+            if ("SEKI".equals(normalized)) {
+                return "SekI";
+            }
+            if ("SEKII".equals(normalized)) {
+                return "SekII";
+            }
+            if ("CROSSSTAGE".equals(normalized)) {
+                return "CrossStage";
+            }
         }
-        Map<String, Object> entry = config.get(configId);
-        return entry != null && entry.get("selected") instanceof Boolean;
-    }
-
-    private boolean isUpperSecondaryCourseProfile(String courseProfile) {
-        return "GK".equals(courseProfile)
-                || "LK".equals(courseProfile)
-                || "GK+LK".equals(courseProfile);
+        return null;
     }
 
     private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String configId, boolean defaultValue) {
@@ -754,6 +755,20 @@ public class CurriculaService {
             return selectedFlag;
         }
         return defaultValue;
+    }
+
+    private Boolean readSelectedFlagIfPresent(
+            Map<String, Map<String, Object>> config,
+            String configId) {
+        if (config == null || config.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> entry = config.get(configId);
+        if (entry == null || !entry.containsKey("selected")) {
+            return null;
+        }
+        Object selected = entry.get("selected");
+        return selected instanceof Boolean selectedFlag ? selectedFlag : null;
     }
 
     private String normalizeDurationModel(String value) {

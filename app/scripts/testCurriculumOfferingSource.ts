@@ -128,11 +128,83 @@ for (const courseProfile of ['GK', 'LK'] as const) {
     {
       landscapeId: 'fixture.root',
       schoolForm: 'Gymnasium',
-      stage: 'SekII',
       courseProfile,
     },
   )
 }
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: 'fixture.math',
+    rootLandscapeId: 'fixture.root',
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify({
+      'fixture.root': { selected: true, stage: 'SekII' },
+      'fixture.math': { selected: true, filterId: 'LK' },
+      'fixture.physics': { selected: true, filterId: 'GK' },
+    }),
+  }),
+  {
+    landscapeId: 'fixture.math',
+    schoolForm: 'Gymnasium',
+    stage: 'SekII',
+    courseProfile: 'LK',
+  },
+)
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: 'fixture.physics',
+    rootLandscapeId: 'fixture.root',
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify({
+      'fixture.root': { selected: true, stage: 'SekII' },
+      'fixture.math': { selected: true, filterId: 'LK' },
+      'fixture.physics': { selected: true, filterId: 'GK' },
+    }),
+  }),
+  {
+    landscapeId: 'fixture.physics',
+    schoolForm: 'Gymnasium',
+    stage: 'SekII',
+    courseProfile: 'GK',
+  },
+)
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: 'fixture.math',
+    rootLandscapeId: 'fixture.root',
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify({
+      'fixture.root': { selected: true, stage: 'SekI' },
+      'fixture.math': { selected: true, filterId: 'LK' },
+    }),
+  }),
+  {
+    landscapeId: 'fixture.math',
+    schoolForm: 'Gymnasium',
+    stage: 'SekI',
+  },
+)
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: 'fixture.math',
+    rootLandscapeId: 'fixture.root',
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify({
+      'fixture.root': { selected: true, stage: 'CrossStage' },
+      'fixture.math': { selected: true, filterId: 'LK' },
+    }),
+  }),
+  {
+    landscapeId: 'fixture.math',
+    schoolForm: 'Gymnasium',
+    stage: 'CrossStage',
+    courseProfile: 'LK',
+  },
+)
 
 assert.deepEqual(
   deriveRuntimeCompositionScope({

@@ -2472,9 +2472,10 @@ public class LearnerService {
      *
      * <p>A value option persists its selected landscape and optional filter
      * exactly as authored. A group-completion option persists only reserved
-     * flow progress and never creates fachliche configuration. This path
-     * deliberately knows nothing about subjects, jurisdictions, duration
-     * models, course profiles, labels, or graph relationships.</p>
+     * flow progress and never creates fachliche configuration. Course profiles
+     * are persisted per selected subject and remain independent of learning
+     * stage and duration model; they never change goals, graph relationships
+     * or mastery.</p>
      */
     private void applyCurrentPersonalizationOption(
             Learner learner,
@@ -2497,6 +2498,42 @@ public class LearnerService {
                         org.springframework.http.HttpStatus.CONFLICT,
                         "The authored personalization completion is no longer valid");
             }
+            learner.setLearningState(LearningState.FRONTIER);
+            persistPersonalCurriculum(learner, finalConfig);
+            return;
+        }
+
+        if (option.kind() == PersonalizationPlan.OptionKind.SCOPE_VALUE) {
+            if (option.landscapeId() == null
+                    || option.landscapeId().isBlank()
+                    || option.scopeKey() == null
+                    || option.scopeKey().isBlank()
+                    || option.scopeValue() == null
+                    || option.scopeValue().isBlank()) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST,
+                        "A valid authored personalization scope option is required");
+            }
+            LearningLandscape landscape = landscapeService.getById(option.landscapeId());
+            if (landscape == null) {
+                throw new ResponseStatusException(
+                        org.springframework.http.HttpStatus.CONFLICT,
+                        "The authored personalization landscape is no longer available");
+            }
+
+            Object existingSettings = finalConfig.get(option.landscapeId());
+            Map<String, Object> settings = existingSettings instanceof Map<?, ?> existingMap
+                    ? new LinkedHashMap<>((Map<String, Object>) existingMap)
+                    : new LinkedHashMap<>();
+            settings.put("selected", true);
+            /*
+             * Scope values are orthogonal to curriculum filters. In
+             * particular, persisting G8/G9 must preserve an already selected
+             * jurisdiction or course profile instead of replacing it.
+             */
+            settings.put(option.scopeKey(), option.scopeValue());
+            finalConfig.put(option.landscapeId(), settings);
+
             learner.setLearningState(LearningState.FRONTIER);
             persistPersonalCurriculum(learner, finalConfig);
             return;
@@ -2544,6 +2581,30 @@ public class LearnerService {
 
         learner.setLearningState(LearningState.FRONTIER);
         persistPersonalCurriculum(learner, finalConfig);
+    }
+
+    /**
+     * Removes only the legacy migration shortcut when the learner explicitly
+     * starts the coach. Existing selections and mastery remain unchanged.
+     */
+    Learner reopenPersonalizationForExplicitLaunch(Learner learner) {
+        if (learner == null
+                || learner.getSelectedCurriculum() == null
+                || learner.getSelectedCurriculum().isBlank()) {
+            return learner;
+        }
+        Map<String, Object> personalCurriculum =
+                mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
+        if (!CurriculumPersonalizationPlanner.reopenMigratedFlow(
+                personalCurriculum,
+                learner.getSelectedCurriculum())) {
+            return learner;
+        }
+        learner.setPersonalCurriculum(writePersonalCurriculumConfig(personalCurriculum));
+        Learner saved = learnerRepository.save(learner);
+        eventPublisher.publishEvent(
+                new LearnerStateChangedEvent(this, learner.getSkillpilotId(), "PERSONALIZATION_UPDATE"));
+        return saved;
     }
 
     private void persistPersonalCurriculum(Learner learner, Map<String, Object> finalConfig) {
@@ -4377,11 +4438,7 @@ public class LearnerService {
                         Object durationModelObj = landscapeConfig.get("durationModel");
                         if (durationModelObj instanceof String) {
                             String durationModel = normalizeFilterId((String) durationModelObj);
-                            LearningLandscape declaringLandscape =
-                                    landscapeService.getById(configEntry.getKey());
-                            if (usesLegacyStructuredFilterSemantics(declaringLandscape)
-                                    && !curriculumId.equals(configEntry.getKey())
-                                    && DURATION_MODEL_FILTER_IDS.contains(durationModel)
+                            if (DURATION_MODEL_FILTER_IDS.contains(durationModel)
                                     && !activeFilters.contains(durationModel)) {
                                 activeFilters.add(durationModel);
                             }
@@ -4462,7 +4519,18 @@ public class LearnerService {
         StateMachineInfo stateMachine = buildStateMachineInfo(curriculumId, frontier, frontierAtomic, activeGoal,
                 activeGoalMastered, learningState, personalizationRequired, scopeExpansionOptions);
 
-        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, frontier,
+        /*
+         * An unresolved entry-scope decision (for example G8 versus G9) is a
+         * hard navigation boundary. The graph may already have a technically
+         * computable frontier, but exposing it would let clients start
+         * learning in a scope the learner has not selected yet. Keep the
+         * internal graph and mastery untouched and suppress only the projected
+         * frontier until personalization is complete.
+         */
+        List<FrontierGoal> projectedFrontier =
+                personalizationRequired ? Collections.emptyList() : frontier;
+
+        return new UnifiedLearnerStateResponse(learner.getSkillpilotId(), curriculumSummary, projectedFrontier,
                 new LearnerGoals(plannedRich, focusStats.mastered_atomic(), focusStats.total_atomic(),
                         personalizedStats, scopeStats, scopeCompleted),
                 nextAllowedActions, activeFilters,
@@ -5900,7 +5968,7 @@ public class LearnerService {
         String landscapeFilterId = readFilterId(config, landscapeId);
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
-        String stage = inferCompositionStageScope(config, courseProfile);
+        String stage = inferCompositionStageScope(config, landscapeId);
         String durationModel = resolveDurationModelScope(
                 readScopeValue(config, landscapeId, "durationModel"),
                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
@@ -5993,43 +6061,44 @@ public class LearnerService {
 
     private String inferCompositionStageScope(
             Map<String, Map<String, Object>> config,
-            String courseProfile) {
-        if (!hasExplicitCompositionStageScope(config) && isUpperSecondaryCourseProfile(courseProfile)) {
-            return "SekII";
+            String landscapeId) {
+        String explicitStage = resolveStageScope(
+                readScopeValue(config, landscapeId, "stage"),
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "stage"));
+        if (explicitStage != null) {
+            return explicitStage;
         }
-        boolean sek1Selected = readSelectedFlag(config, STAGE_SCOPE_SEK1_ID, true);
-        boolean sek2Selected = readSelectedFlag(config, STAGE_SCOPE_SEK2_ID, true);
-        if (sek1Selected && sek2Selected) {
+        Boolean sek1Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK1_ID);
+        Boolean sek2Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK2_ID);
+        if (sek1Selected == null && sek2Selected == null) {
+            return null;
+        }
+        if (Boolean.TRUE.equals(sek1Selected) && Boolean.TRUE.equals(sek2Selected)) {
             return "CrossStage";
         }
-        if (sek1Selected) {
+        if (Boolean.TRUE.equals(sek1Selected)) {
             return "SekI";
         }
-        if (sek2Selected) {
+        if (Boolean.TRUE.equals(sek2Selected)) {
             return "SekII";
         }
         return null;
     }
 
-    private boolean hasExplicitCompositionStageScope(Map<String, Map<String, Object>> config) {
-        return hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK1_ID)
-                || hasExplicitSelectedFlag(config, STAGE_SCOPE_SEK2_ID);
-    }
-
-    private boolean hasExplicitSelectedFlag(
-            Map<String, Map<String, Object>> config,
-            String configId) {
-        if (config == null || config.isEmpty()) {
-            return false;
+    private String resolveStageScope(String... candidates) {
+        for (String candidate : candidates) {
+            String normalized = normalizeFilterId(candidate);
+            if ("SEKI".equals(normalized)) {
+                return "SekI";
+            }
+            if ("SEKII".equals(normalized)) {
+                return "SekII";
+            }
+            if ("CROSSSTAGE".equals(normalized)) {
+                return "CrossStage";
+            }
         }
-        Map<String, Object> entry = config.get(configId);
-        return entry != null && entry.get("selected") instanceof Boolean;
-    }
-
-    private boolean isUpperSecondaryCourseProfile(String courseProfile) {
-        return "GK".equals(courseProfile)
-                || "LK".equals(courseProfile)
-                || "GK+LK".equals(courseProfile);
+        return null;
     }
 
     private boolean readSelectedFlag(Map<String, Map<String, Object>> config, String configId, boolean defaultValue) {
@@ -6042,6 +6111,20 @@ public class LearnerService {
         }
         Object selected = entry.get("selected");
         return selected instanceof Boolean selectedFlag ? selectedFlag : defaultValue;
+    }
+
+    private Boolean readSelectedFlagIfPresent(
+            Map<String, Map<String, Object>> config,
+            String configId) {
+        if (config == null || config.isEmpty()) {
+            return null;
+        }
+        Map<String, Object> entry = config.get(configId);
+        if (entry == null || !entry.containsKey("selected")) {
+            return null;
+        }
+        Object selected = entry.get("selected");
+        return selected instanceof Boolean selectedFlag ? selectedFlag : null;
     }
 
     @SuppressWarnings("unchecked")

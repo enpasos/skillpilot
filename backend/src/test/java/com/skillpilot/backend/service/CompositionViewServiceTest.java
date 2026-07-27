@@ -214,6 +214,36 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findMatchingView_keepsHessianSekTwoMathLkScopeForBothDurationModels() {
+        CompositionViewService service = createService();
+
+        for (String durationModel : List.of("G8", "G9")) {
+            Map<String, Object> match = service.findMatchingView(
+                    CANONICAL_MATH_ID,
+                    Map.of(
+                            "schoolForm", "Gymnasium",
+                            "jurisdiction", "DE-HE",
+                            "stage", "SekII",
+                            "courseProfile", "LK",
+                            "durationModel", durationModel));
+
+            assertThat(match).as(durationModel + " match").isNotNull();
+            assertThat(match.get("viewId"))
+                    .as(durationModel + " view")
+                    .isEqualTo("de-he-gym-sekii-math-lk")
+                    .isNotIn("de-he-gym-math-lk-g8", "de-he-gym-math-lk-g9");
+
+            @SuppressWarnings("unchecked")
+            Map<String, Object> matchedScope = (Map<String, Object>) match.get("scope");
+            assertThat(matchedScope)
+                    .as(durationModel + " matched scope")
+                    .containsEntry("stage", "SekII")
+                    .containsEntry("courseProfile", "LK")
+                    .doesNotContainEntry("stage", "CrossStage");
+        }
+    }
+
+    @Test
     void findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForGk() {
         CompositionViewService service = createService();
 

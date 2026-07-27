@@ -10,6 +10,7 @@ import com.skillpilot.backend.landscape.LearningLandscape;
 import com.skillpilot.backend.landscape.PersonalizationFlow;
 import com.skillpilot.backend.landscape.PersonalizationGroup;
 import com.skillpilot.backend.landscape.PersonalizationOptionSource;
+import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import com.skillpilot.backend.landscape.PersonalizationSourceKind;
 import com.skillpilot.backend.landscape.PersonalizationStage;
 import java.util.LinkedHashMap;
@@ -477,6 +478,125 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
+    void keepsCourseProfilesPerSubjectAndLeavesStageAndDurationIndependent() {
+        LearningLandscape root = landscape(ROOT_ID, "Gymnasium (DE)");
+        LearningLandscape mathematics = landscape(
+                COBALT_ID,
+                "Mathematik",
+                filter("GK", "Grundkurs"),
+                filter("LK", "Leistungskurs"));
+        LearningLandscape physics = landscape(
+                EMBER_ID,
+                "Physik",
+                filter("GK", "Grundkurs"),
+                filter("LK", "Leistungskurs"));
+        root.setPersonalizationFlow(flow(
+                stage(
+                        "stage-subject",
+                        1,
+                        group(
+                                "group-subject",
+                                1,
+                                2,
+                                2,
+                                landscapes(COBALT_ID, EMBER_ID))),
+                stage(
+                        "stage-course-profile",
+                        2,
+                        group(
+                                "group-course-profile",
+                                1,
+                                1,
+                                1,
+                                filtersForSelectedLandscapes("group-subject"))),
+                stage(
+                        "stage-learning-stage",
+                        3,
+                        group(
+                                "group-learning-stage",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "stage",
+                                        scopeValue("SekI", "Sekundarstufe I"),
+                                        scopeValue("SekII", "Sekundarstufe II"),
+                                        scopeValue("CrossStage", "Sekundarstufe I und II")))),
+                stage(
+                        "stage-duration",
+                        4,
+                        group(
+                                "group-duration",
+                                1,
+                                1,
+                                1,
+                                scopeValues(
+                                        ROOT_ID,
+                                        "durationModel",
+                                        scopeValue("G8", "G8"),
+                                        scopeValue("G9", "G9"))))));
+        List<LearningLandscape> landscapes = List.of(root, mathematics, physics);
+
+        Map<String, Object> unresolvedRoot = new LinkedHashMap<>();
+        unresolvedRoot.put("selected", true);
+        PersonalizationPlan stagePlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                config(
+                        Map.entry(ROOT_ID, unresolvedRoot),
+                        entry(COBALT_ID, true, "LK"),
+                        entry(EMBER_ID, true, "GK")));
+
+        assertThat(stagePlan.valid()).isTrue();
+        assertThat(stagePlan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(stagePlan.groupId()).isEqualTo("group-learning-stage");
+        assertThat(stagePlan.options())
+                .extracting(
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::scopeKey,
+                        PersonalizationPlan.Option::scopeValue)
+                .containsExactly(
+                        tuple(ROOT_ID, "stage", "SekI"),
+                        tuple(ROOT_ID, "stage", "SekII"),
+                        tuple(ROOT_ID, "stage", "CrossStage"));
+
+        Map<String, Object> stageResolvedRoot = new LinkedHashMap<>(unresolvedRoot);
+        stageResolvedRoot.put("stage", "CrossStage");
+        PersonalizationPlan durationPlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                config(
+                        Map.entry(ROOT_ID, stageResolvedRoot),
+                        entry(COBALT_ID, true, "LK"),
+                        entry(EMBER_ID, true, "GK")));
+
+        assertThat(durationPlan.valid()).isTrue();
+        assertThat(durationPlan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(durationPlan.groupId()).isEqualTo("group-duration");
+        assertThat(durationPlan.options())
+                .extracting(
+                        PersonalizationPlan.Option::scopeKey,
+                        PersonalizationPlan.Option::scopeValue)
+                .containsExactly(
+                        tuple("durationModel", "G8"),
+                        tuple("durationModel", "G9"));
+
+        Map<String, Object> completeRoot = new LinkedHashMap<>(stageResolvedRoot);
+        completeRoot.put("durationModel", "G9");
+        PersonalizationPlan complete = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                landscapes,
+                config(
+                        Map.entry(ROOT_ID, completeRoot),
+                        entry(COBALT_ID, true, "LK"),
+                        entry(EMBER_ID, true, "GK")));
+
+        assertThat(complete.valid()).isTrue();
+        assertThat(complete.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+    }
+
+    @Test
     void offersExplicitCompletionAfterTheMinimumAndBeforeTheMaximum() {
         LearningLandscape root = landscape(ROOT_ID, "Orbit");
         LearningLandscape cobalt = landscape(COBALT_ID, "Cobalt");
@@ -912,6 +1032,134 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
+    void offersAuthoredScopeValuesIndependentlyFromLandscapeFilters() {
+        LearningLandscape root = landscape(
+                ROOT_ID,
+                "Orbit",
+                filter("dial-a", "Dial A"),
+                filter("dial-b", "Dial B"));
+        root.setPersonalizationFlow(flow(stage(
+                "stage-entry-scope",
+                1,
+                group(
+                        "group-filter",
+                        1,
+                        1,
+                        1,
+                        landscapeFilters(ROOT_ID)),
+                group(
+                        "group-duration",
+                        2,
+                        1,
+                        1,
+                        scopeValues(
+                                ROOT_ID,
+                                "durationModel",
+                                scopeValue("G8", "G8"),
+                                scopeValue("G9", "G9"))))));
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                config(entry(ROOT_ID, true, "dial-a")));
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(plan.groupId()).isEqualTo("group-duration");
+        assertThat(plan.options())
+                .extracting(
+                        PersonalizationPlan.Option::kind,
+                        PersonalizationPlan.Option::landscapeId,
+                        PersonalizationPlan.Option::filterId,
+                        PersonalizationPlan.Option::scopeKey,
+                        PersonalizationPlan.Option::scopeValue,
+                        PersonalizationPlan.Option::scopeLabel)
+                .containsExactly(
+                        tuple(
+                                PersonalizationPlan.OptionKind.SCOPE_VALUE,
+                                ROOT_ID,
+                                null,
+                                "durationModel",
+                                "G8",
+                                "G8"),
+                        tuple(
+                                PersonalizationPlan.OptionKind.SCOPE_VALUE,
+                                ROOT_ID,
+                                null,
+                                "durationModel",
+                                "G9",
+                                "G9"));
+    }
+
+    @Test
+    void recognizesConfiguredScopeValueAlongsideIndependentFilter() {
+        LearningLandscape root = landscape(
+                ROOT_ID,
+                "Orbit",
+                filter("dial-a", "Dial A"),
+                filter("dial-b", "Dial B"));
+        root.setPersonalizationFlow(flow(stage(
+                "stage-entry-scope",
+                1,
+                group(
+                        "group-filter",
+                        1,
+                        1,
+                        1,
+                        landscapeFilters(ROOT_ID)),
+                group(
+                        "group-duration",
+                        2,
+                        1,
+                        1,
+                        scopeValues(
+                                ROOT_ID,
+                                "durationModel",
+                                scopeValue("G8", "G8"),
+                                scopeValue("G9", "G9"))))));
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                config(entryWithScope(ROOT_ID, true, "dial-a", "durationModel", "G9")));
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+    }
+
+    @Test
+    void migrationCompletionDoesNotSuppressNewRequiredScopeChoice() {
+        LearningLandscape root = landscape(ROOT_ID, "Orbit");
+        root.setPersonalizationFlow(flow(stage(
+                "stage-entry-scope",
+                1,
+                group(
+                        "group-duration",
+                        1,
+                        1,
+                        1,
+                        scopeValues(
+                                ROOT_ID,
+                                "durationModel",
+                                scopeValue("G8", "G8"),
+                                scopeValue("G9", "G9"))))));
+
+        PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                config(
+                        entry(ROOT_ID, true, null),
+                        migrationCompletionEntry()));
+
+        assertThat(plan.valid()).isTrue();
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(plan.groupId()).isEqualTo("group-duration");
+        assertThat(plan.options())
+                .extracting(PersonalizationPlan.Option::scopeValue)
+                .containsExactly("G8", "G9");
+    }
+
+    @Test
     void canonicalizesOnlyAgainstTheDeclaringLandscapeAndPreservesAuthoredSpelling() {
         LearningLandscape cobalt = landscape(
                 COBALT_ID,
@@ -1018,6 +1266,25 @@ class CurriculumPersonalizationPlannerTest {
         return source;
     }
 
+    private static PersonalizationOptionSource scopeValues(
+            String landscapeId,
+            String scopeKey,
+            PersonalizationScopeValue... values) {
+        PersonalizationOptionSource source = new PersonalizationOptionSource();
+        source.setKind(PersonalizationSourceKind.SCOPE_VALUES);
+        source.setLandscapeId(landscapeId);
+        source.setScopeKey(scopeKey);
+        source.setValues(List.of(values));
+        return source;
+    }
+
+    private static PersonalizationScopeValue scopeValue(String value, String label) {
+        PersonalizationScopeValue scopeValue = new PersonalizationScopeValue();
+        scopeValue.setValue(value);
+        scopeValue.setLabel(label);
+        return scopeValue;
+    }
+
     @SafeVarargs
     private static Map<String, Map<String, Object>> config(
             Map.Entry<String, Map<String, Object>>... entries) {
@@ -1038,6 +1305,33 @@ class CurriculumPersonalizationPlannerTest {
             settings.put("filterId", filterId);
         }
         return Map.entry(landscapeId, settings);
+    }
+
+    private static Map.Entry<String, Map<String, Object>> entryWithScope(
+            String landscapeId,
+            boolean selected,
+            String filterId,
+            String scopeKey,
+            String scopeValue) {
+        Map<String, Object> settings = new LinkedHashMap<>();
+        settings.put("selected", selected);
+        if (filterId != null) {
+            settings.put("filterId", filterId);
+        }
+        settings.put(scopeKey, scopeValue);
+        return Map.entry(landscapeId, settings);
+    }
+
+    private static Map.Entry<String, Map<String, Object>> migrationCompletionEntry() {
+        return Map.entry(
+                CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY,
+                Map.of(
+                        CurriculumPersonalizationPlanner.ROOT_LANDSCAPE_ID_KEY,
+                        ROOT_ID,
+                        CurriculumPersonalizationPlanner.COMPLETED_OPTION_IDS_KEY,
+                        List.of(),
+                        CurriculumPersonalizationPlanner.MIGRATION_COMPLETED_KEY,
+                        true));
     }
 
     private static PersonalizationPlan.Option finishOption(PersonalizationPlan plan) {
