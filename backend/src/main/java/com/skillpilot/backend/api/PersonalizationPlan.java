@@ -93,10 +93,41 @@ public record PersonalizationPlan(
             String landscapeLabel,
             String filterId,
             String filterLabel,
+            String scopeKey,
+            String scopeValue,
+            String scopeLabel,
             OptionKind kind) {
 
         public Option {
             kind = kind == null ? OptionKind.VALUE : kind;
+        }
+
+        /**
+         * Compatibility constructor for the original authored option shape.
+         */
+        public Option(
+                String optionId,
+                String stageId,
+                String groupId,
+                String groupInstanceId,
+                String landscapeId,
+                String landscapeLabel,
+                String filterId,
+                String filterLabel,
+                OptionKind kind) {
+            this(
+                    optionId,
+                    stageId,
+                    groupId,
+                    groupInstanceId,
+                    landscapeId,
+                    landscapeLabel,
+                    filterId,
+                    filterLabel,
+                    null,
+                    null,
+                    null,
+                    kind);
         }
 
         /**
@@ -120,6 +151,9 @@ public record PersonalizationPlan(
                     landscapeLabel,
                     filterId,
                     filterLabel,
+                    null,
+                    null,
+                    null,
                     OptionKind.VALUE);
         }
 
@@ -140,6 +174,9 @@ public record PersonalizationPlan(
                     landscapeLabel,
                     filterId,
                     filterLabel,
+                    null,
+                    null,
+                    null,
                     OptionKind.VALUE);
         }
     }
@@ -149,6 +186,11 @@ public record PersonalizationPlan(
          * Selects one authored landscape or filter value.
          */
         VALUE,
+
+        /**
+         * Selects one independently authored scope value, for example G8/G9.
+         */
+        SCOPE_VALUE,
 
         /**
          * Explicitly closes the current group instance once its minimum

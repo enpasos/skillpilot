@@ -16,7 +16,12 @@ import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './person
 const ROOT_TAG = 'root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
 
-type PersonalCurriculumConfig = Record<string, { selected?: boolean; filterId?: string; durationModel?: string }>
+type PersonalCurriculumConfig = Record<string, {
+  selected?: boolean
+  filterId?: string
+  durationModel?: string
+  stage?: string
+}>
 
 export interface RuntimeCompositionScope extends GoalPlacementContext {
   landscapeId: string
@@ -274,6 +279,7 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
         selected: typeof record.selected === 'boolean' ? record.selected : undefined,
         filterId: typeof record.filterId === 'string' ? record.filterId : undefined,
         durationModel: typeof record.durationModel === 'string' ? record.durationModel : undefined,
+        stage: typeof record.stage === 'string' ? record.stage : undefined,
       }
     })
     return config
@@ -282,21 +288,39 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
   }
 }
 
+type RuntimeStageScope = 'SekI' | 'SekII' | 'CrossStage'
+
+const normalizeRuntimeStageScope = (value?: string): RuntimeStageScope | undefined => {
+  const normalized = normalizeComparableToken(value).replace(/[^A-Z0-9]/gu, '')
+  if (normalized === 'SEKI') return 'SekI'
+  if (normalized === 'SEKII') return 'SekII'
+  if (normalized === 'CROSSSTAGE') return 'CrossStage'
+  return undefined
+}
+
 const inferStageFromPersonalCurriculum = (
   config: PersonalCurriculumConfig,
-  courseProfile?: string,
-): string | undefined => {
-  const hasExplicitStageScope = [
+  landscapeId: string,
+  rootLandscapeId: string,
+): RuntimeStageScope | undefined => {
+  const explicitStage = [
+    config[landscapeId]?.stage,
+    config[rootLandscapeId]?.stage,
+  ]
+    .map((value) => normalizeRuntimeStageScope(value))
+    .find((value): value is RuntimeStageScope => !!value)
+
+  if (explicitStage) {
+    return explicitStage
+  }
+
+  const hasLegacyStageScope = [
     GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1,
     GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2,
   ].some((configId) => typeof config[configId]?.selected === 'boolean')
-  const normalizedCourseProfile = normalizeComparableToken(courseProfile)
 
-  if (
-    !hasExplicitStageScope
-    && ['GK', 'LK', 'GK+LK'].includes(normalizedCourseProfile)
-  ) {
-    return 'SekII'
+  if (!hasLegacyStageScope) {
+    return undefined
   }
 
   const sek1Selected = config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected ?? true
@@ -384,7 +408,7 @@ export const deriveRuntimeCompositionScope = ({
       .find((value): value is NonNullable<typeof value> => !!value)
   const courseProfileCandidate = [landscapeFilterId, ...activeFilters].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
-  const stage = inferStageFromPersonalCurriculum(personalCurriculum, courseProfile)
+  const stage = inferStageFromPersonalCurriculum(personalCurriculum, landscapeId, rootLandscapeId)
   const durationModel = [
     personalCurriculum[landscapeId]?.durationModel,
     personalCurriculum[rootLandscapeId]?.durationModel,

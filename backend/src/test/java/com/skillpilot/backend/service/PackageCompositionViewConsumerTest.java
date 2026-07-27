@@ -38,7 +38,7 @@ class PackageCompositionViewConsumerTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    void learnerScopeInfersSekIIFromCourseProfileOnlyWhenStageIsNotExplicit() {
+    void learnerScopeDoesNotInferStageFromSubjectCourseProfile() {
         LearnerService service = learnerService(
                 mock(LandscapeService.class),
                 mock(CompositionViewService.class));
@@ -53,30 +53,40 @@ class PackageCompositionViewConsumerTest {
                             Map.<String, Object>of("selected", true, "filterId", courseProfile)));
 
             assertThat(scope)
-                    .containsEntry("stage", "SekII")
                     .containsEntry("courseProfile", courseProfile);
+            assertThat(scope).doesNotContainKey("stage");
         }
-
-        Map<String, String> explicitCrossStage = (Map<String, String>) ReflectionTestUtils.invokeMethod(
-                service,
-                "deriveCompositionScope",
-                LANDSCAPE_ID,
-                Map.of(
-                        LANDSCAPE_ID,
-                        Map.<String, Object>of("selected", true, "filterId", "LK"),
-                        "__skillpilot_stage_scope_sek1__",
-                        Map.<String, Object>of("selected", true),
-                        "__skillpilot_stage_scope_sek2__",
-                        Map.<String, Object>of("selected", true)));
-
-        assertThat(explicitCrossStage)
-                .containsEntry("stage", "CrossStage")
-                .containsEntry("courseProfile", "LK");
     }
 
     @Test
     @SuppressWarnings("unchecked")
-    void curriculaScopeInfersSekIIFromCourseProfileOnlyWhenStageIsNotExplicit() {
+    void learnerScopePreservesExplicitCrossStageWithEachSubjectCourseProfile() {
+        LearnerService service = learnerService(
+                mock(LandscapeService.class),
+                mock(CompositionViewService.class));
+
+        for (String courseProfile : List.of("GK", "LK")) {
+            Map<String, String> scope = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                    service,
+                    "deriveCompositionScope",
+                    LANDSCAPE_ID,
+                    Map.of(
+                            LANDSCAPE_ID,
+                            Map.<String, Object>of("selected", true, "filterId", courseProfile),
+                            "__skillpilot_stage_scope_sek1__",
+                            Map.<String, Object>of("selected", true),
+                            "__skillpilot_stage_scope_sek2__",
+                            Map.<String, Object>of("selected", true)));
+
+            assertThat(scope)
+                    .containsEntry("stage", "CrossStage")
+                    .containsEntry("courseProfile", courseProfile);
+        }
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void curriculaScopeDoesNotInferStageFromSubjectCourseProfile() {
         LearningLandscape landscape = landscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
@@ -94,25 +104,36 @@ class PackageCompositionViewConsumerTest {
                     """.formatted(courseProfile));
 
             assertThat(scope)
-                    .containsEntry("stage", "SekII")
+                    .containsEntry("courseProfile", courseProfile);
+            assertThat(scope).doesNotContainKey("stage");
+        }
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void curriculaScopePreservesExplicitCrossStageWithEachSubjectCourseProfile() {
+        LearningLandscape landscape = landscape();
+        LandscapeService landscapes = mock(LandscapeService.class);
+        when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
+        CurriculaService service = curriculaService(landscapes);
+
+        for (String courseProfile : List.of("GK", "LK")) {
+            Map<String, String> scope = (Map<String, String>) ReflectionTestUtils.invokeMethod(
+                    service,
+                    "deriveRuntimeCompositionScope",
+                    LANDSCAPE_ID,
+                    """
+                    {
+                      "package-math": {"selected": true, "filterId": "%s"},
+                      "__skillpilot_stage_scope_sek1__": {"selected": true},
+                      "__skillpilot_stage_scope_sek2__": {"selected": true}
+                    }
+                    """.formatted(courseProfile));
+
+            assertThat(scope)
+                    .containsEntry("stage", "CrossStage")
                     .containsEntry("courseProfile", courseProfile);
         }
-
-        Map<String, String> explicitCrossStage = (Map<String, String>) ReflectionTestUtils.invokeMethod(
-                service,
-                "deriveRuntimeCompositionScope",
-                LANDSCAPE_ID,
-                """
-                {
-                  "package-math": {"selected": true, "filterId": "LK"},
-                  "__skillpilot_stage_scope_sek1__": {"selected": true},
-                  "__skillpilot_stage_scope_sek2__": {"selected": true}
-                }
-                """);
-
-        assertThat(explicitCrossStage)
-                .containsEntry("stage", "CrossStage")
-                .containsEntry("courseProfile", "LK");
     }
 
     @Test

@@ -1,10 +1,7 @@
 import type { ClassSession } from '../trainerTypes'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from './curriculumDisplay'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
-import {
-  applyDefaultGlobalStageScope,
-  GLOBAL_STAGE_SCOPE_CONFIG_IDS,
-} from './personalCurriculumStageScope'
+import { applyDefaultGlobalStageScope } from './personalCurriculumStageScope'
 
 const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
@@ -190,11 +187,6 @@ const buildCanonicalGymnasiumPersonalConfig = (
     },
   } satisfies NonNullable<ClassSession['personalConfig']>
   const scoped = applyDefaultGlobalStageScope(initialConfig).config
-
-  if (inferredCourseProfile === 'GK' || inferredCourseProfile === 'LK' || inferredCourseProfile === 'ALL') {
-    scoped[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1] = { selected: false }
-    scoped[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2] = { selected: true }
-  }
 
   return {
     personalConfig: scoped,

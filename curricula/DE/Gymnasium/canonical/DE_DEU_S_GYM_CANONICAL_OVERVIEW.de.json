@@ -163,6 +163,77 @@
             }
           }
         ]
+      },
+      {
+        "id": "stage",
+        "order": 40,
+        "label": "Lernumfang auswählen",
+        "labelEn": "Choose learning scope",
+        "groups": [
+          {
+            "id": "stage",
+            "order": 10,
+            "label": "Welche Lernstufen möchtest du abdecken?",
+            "labelEn": "Which stages do you want to cover?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "scopeValues",
+              "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+              "scopeKey": "stage",
+              "values": [
+                {
+                  "value": "SekI",
+                  "label": "Sekundarstufe I",
+                  "labelEn": "Lower secondary"
+                },
+                {
+                  "value": "SekII",
+                  "label": "Gymnasiale Oberstufe (Sekundarstufe II)",
+                  "labelEn": "Upper secondary"
+                },
+                {
+                  "value": "CrossStage",
+                  "label": "Sekundarstufe I und II",
+                  "labelEn": "Lower and upper secondary"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "durationModel",
+        "order": 50,
+        "label": "Gymnasialdauer auswählen",
+        "labelEn": "Choose duration model",
+        "groups": [
+          {
+            "id": "durationModel",
+            "order": 10,
+            "label": "G8 oder G9?",
+            "labelEn": "G8 or G9?",
+            "minSelections": 1,
+            "maxSelections": 1,
+            "source": {
+              "kind": "scopeValues",
+              "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+              "scopeKey": "durationModel",
+              "values": [
+                {
+                  "value": "G8",
+                  "label": "G8",
+                  "labelEn": "G8"
+                },
+                {
+                  "value": "G9",
+                  "label": "G9",
+                  "labelEn": "G9"
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   },

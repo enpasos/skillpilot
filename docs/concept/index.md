@@ -41,6 +41,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
 - [Import/Export Workflow](runtime-workflows/import-export-workflow.md)
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
+- [Verhaltensintegration des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
+  Normativer Nordstern, allgemeines Coach-Verhaltensmodell, Golden Journeys, objektive Acceptance und Übergabe für neue Chats auf dem Weg von technischer MCP-Migration zu echter Endnutzerparität.
 - [Provider-Neutral Learning-Coach Boundary](runtime-workflows/provider-neutral-coach-boundary.md)
   Shared application, safe projection, exam boundary, context-recovery and concurrency decisions for AI coach adapters.
 - [SkillPilot-Lerncoach: providergehostete MCP-App-Architektur](runtime-workflows/skillpilot-owned-coach-architecture.md)
@@ -52,7 +54,7 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [OpenAI-MCP-Clientbindung](../security/openai-mcp-client-binding.md)
   Security source of truth for `client_secret_basic`, exact callback/resource/scope binding, optional edge-mTLS hardening, secret lifecycle, and the independent learner-session boundary.
 - [Wissens- und Verhaltensparität des deutschen MCP-Lerncoaches](runtime-workflows/openai-mcp-coach-knowledge-parity.md)
-  Normative mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards.
+  Technical mapping from the previous Custom-GPT knowledge package to server instructions, fresh context policies, tool contracts, and backend guards; end-user behavioral parity is tracked separately.
 - [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
   Retained Custom-GPT rollback runtime with visible cross-turn relay; not the current production reference architecture.
 - [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)

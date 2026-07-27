@@ -197,6 +197,17 @@ final class OpenAiDeCoachContextProjector {
                         null));
                 continue;
             }
+            if (option.kind() == PersonalizationPlan.OptionKind.SCOPE_VALUE) {
+                add(options, new OpenAiDeCoachContext.Option(
+                        "personalization",
+                        option.optionId(),
+                        fallback(option.scopeLabel(), option.scopeValue()),
+                        null,
+                        List.of(),
+                        List.of(),
+                        null));
+                continue;
+            }
             String landscapeId = option.landscapeId();
             if (blank(landscapeId)) {
                 continue;

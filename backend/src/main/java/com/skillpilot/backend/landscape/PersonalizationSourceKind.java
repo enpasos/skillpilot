@@ -13,7 +13,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum PersonalizationSourceKind {
     LANDSCAPE_FILTERS("landscapeFilters"),
     LANDSCAPES("landscapes"),
-    FILTERS_FOR_SELECTED_LANDSCAPES("filtersForSelectedLandscapes");
+    FILTERS_FOR_SELECTED_LANDSCAPES("filtersForSelectedLandscapes"),
+    SCOPE_VALUES("scopeValues");
 
     private final String wireValue;
 
