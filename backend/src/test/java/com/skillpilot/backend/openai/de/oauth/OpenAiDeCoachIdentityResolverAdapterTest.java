@@ -27,39 +27,41 @@ class OpenAiDeCoachIdentityResolverAdapterTest {
     }
 
     @Test
-    void readsResolveFromAuthenticatedSubjectWhileWritesRemainDisabled() {
+    void authenticatedClientResolvesTheExplicitLearningSessionWhileWritesRemainDisabled() {
         OpenAiDeCoachConnectionService connections = mock(OpenAiDeCoachConnectionService.class);
         OpenAiDeProperties properties = properties();
         OpenAiDeCoachIdentityResolverAdapter resolver = new OpenAiDeCoachIdentityResolverAdapter(
                 connections,
                 properties);
         authenticate("spod_subject", OpenAiDeOAuthConfiguration.READ_SCOPE, OpenAiDeOAuthConfiguration.WRITE_SCOPE);
-        when(connections.resolveActiveLearningSessionSkillpilotId("spod_subject")).thenReturn("learner-id");
+        String learningSessionId = "sps_explicit-learning-session";
+        when(connections.resolveActiveLearningSessionSkillpilotId(learningSessionId)).thenReturn("learner-id");
 
-        assertThat(resolver.resolveSkillpilotId(null)).isEqualTo("learner-id");
+        assertThat(resolver.resolveSkillpilotId(null, learningSessionId)).isEqualTo("learner-id");
         assertThatExceptionOfType(ResponseStatusException.class)
                 .isThrownBy(() -> resolver.requireWriteAccess(null))
                 .satisfies(exception -> {
                     assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
                     assertThat(exception.getReason()).contains("vorübergehend deaktiviert");
         });
-        verify(connections).resolveActiveLearningSessionSkillpilotId("spod_subject");
+        verify(connections).resolveActiveLearningSessionSkillpilotId(learningSessionId);
     }
 
     @Test
-    void authenticatedOauthSubjectStillPropagatesMissingLearningSessionAsSeparateCondition() {
+    void authenticatedOauthSubjectCannotReplaceTheExplicitLearningSession() {
         OpenAiDeCoachConnectionService connections = mock(OpenAiDeCoachConnectionService.class);
         OpenAiDeCoachIdentityResolverAdapter resolver = new OpenAiDeCoachIdentityResolverAdapter(
                 connections,
                 properties());
         authenticate("spod_subject", OpenAiDeOAuthConfiguration.READ_SCOPE);
-        when(connections.resolveActiveLearningSessionSkillpilotId("spod_subject"))
+        String missingLearningSessionId = "sps_missing-learning-session";
+        when(connections.resolveActiveLearningSessionSkillpilotId(missingLearningSessionId))
                 .thenThrow(new OpenAiDeLearningSessionRequiredException());
 
         assertThatExceptionOfType(OpenAiDeLearningSessionRequiredException.class)
-                .isThrownBy(() -> resolver.resolveSkillpilotId(null));
+                .isThrownBy(() -> resolver.resolveSkillpilotId(null, missingLearningSessionId));
 
-        verify(connections).resolveActiveLearningSessionSkillpilotId("spod_subject");
+        verify(connections).resolveActiveLearningSessionSkillpilotId(missingLearningSessionId);
     }
 
     @Test

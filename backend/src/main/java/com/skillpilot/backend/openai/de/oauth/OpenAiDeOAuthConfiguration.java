@@ -5,7 +5,6 @@ import com.skillpilot.backend.oauth.ProviderScopedRegisteredClientRepository;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.openai.de.OpenAiDeSecureModeValidation;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
-import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
 import java.time.Duration;
@@ -49,6 +48,8 @@ import org.springframework.security.oauth2.server.authorization.token.Delegating
 import org.springframework.security.oauth2.server.authorization.token.OAuth2AccessTokenGenerator;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
@@ -68,7 +69,10 @@ public class OpenAiDeOAuthConfiguration {
     public static final String WRITE_SCOPE = "skillpilot.openai.de.write";
     public static final String OFFLINE_SCOPE = "offline_access";
     public static final String CLIENT_AUTH_NONE = "none";
+    public static final String CLIENT_AUTH_CLIENT_SECRET_BASIC = "client_secret_basic";
     public static final String CLIENT_AUTH_PRIVATE_KEY_JWT = "private_key_jwt";
+    private static final PasswordEncoder CLIENT_SECRET_PASSWORD_ENCODER =
+            PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     public static final String AUTHORIZATION_ENDPOINT = "/api/openai/de/oauth2/authorize";
     public static final String TOKEN_ENDPOINT = "/api/openai/de/oauth2/token";
@@ -90,15 +94,12 @@ public class OpenAiDeOAuthConfiguration {
     @Bean
     OAuth2AuthorizationService openAiDeAuthorizationService(
             JdbcOperations jdbcOperations,
-            @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
-            OpenAiDeCoachConnectionService connectionService) {
-        return new OpenAiDeConnectionAwareAuthorizationService(
-                new ProviderScopedOAuth2AuthorizationService(
-                        new JdbcOAuth2AuthorizationService(
-                                jdbcOperations,
-                                new JdbcRegisteredClientRepository(jdbcOperations)),
-                        registeredClients),
-                connectionService);
+            @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients) {
+        return new ProviderScopedOAuth2AuthorizationService(
+                new JdbcOAuth2AuthorizationService(
+                        jdbcOperations,
+                        new JdbcRegisteredClientRepository(jdbcOperations)),
+                registeredClients);
     }
 
     @Bean
@@ -173,6 +174,9 @@ public class OpenAiDeOAuthConfiguration {
         Duration accessTtl = properties.getOauth().getAccessTokenTtl();
         Duration refreshTtl = properties.getOauth().getRefreshTokenTtl();
         boolean privateKeyJwt = isPrivateKeyJwt(properties);
+        boolean clientSecretBasic = isClientSecretBasic(properties);
+        ClientAuthenticationMethod clientAuthenticationMethod =
+                clientAuthenticationMethod(properties);
         ClientSettings.Builder clientSettings = ClientSettings.builder()
                 .requireProofKey(true)
                 .requireAuthorizationConsent(true);
@@ -184,12 +188,13 @@ public class OpenAiDeOAuthConfiguration {
         }
         RegisteredClient client = clientBuilder
                 .clientId(clientId)
+                .clientSecret(clientSecretBasic
+                        ? encodedClientSecret(existing, properties.getOauth().getClientSecret())
+                        : null)
                 .clientName("ChatGPT / SkillPilot Coach (Deutsch)")
                 .clientAuthenticationMethods(methods -> {
                     methods.clear();
-                    methods.add(privateKeyJwt
-                            ? ClientAuthenticationMethod.PRIVATE_KEY_JWT
-                            : ClientAuthenticationMethod.NONE);
+                    methods.add(clientAuthenticationMethod);
                 })
                 .authorizationGrantTypes(grants -> {
                     grants.clear();
@@ -224,9 +229,7 @@ public class OpenAiDeOAuthConfiguration {
             OpenAiDeProperties properties) {
         boolean privateKeyJwt = isPrivateKeyJwt(properties);
         Set<ClientAuthenticationMethod> expectedAuthenticationMethods =
-                Set.of(privateKeyJwt
-                        ? ClientAuthenticationMethod.PRIVATE_KEY_JWT
-                        : ClientAuthenticationMethod.NONE);
+                Set.of(clientAuthenticationMethod(properties));
         Set<String> expectedRedirectUris = properties.getOauth().getRedirectUris().stream()
                 .map(String::trim)
                 .collect(java.util.stream.Collectors.toUnmodifiableSet());
@@ -242,6 +245,7 @@ public class OpenAiDeOAuthConfiguration {
                 registeredClients.findByClientId(properties.getOauth().getClientId().trim());
         if (persisted == null
                 || !expectedAuthenticationMethods.equals(persisted.getClientAuthenticationMethods())
+                || !clientSecretMatches(persisted, properties)
                 || !expectedRedirectUris.equals(persisted.getRedirectUris())
                 || !expectedGrantTypes.equals(persisted.getAuthorizationGrantTypes())
                 || !expectedScopes.equals(persisted.getScopes())
@@ -275,15 +279,8 @@ public class OpenAiDeOAuthConfiguration {
 
     @Bean
     OpenAiDeBindingAuthenticationFilter openAiDeBindingAuthenticationFilter(
-            OpenAiDeCoachConnectionService connectionService,
-            @Qualifier("openAiDeSecurityContextRepository") SecurityContextRepository contextRepository,
-            OpenAiDeOperationalTelemetry telemetry,
-            OpenAiDeProperties properties) {
-        return new OpenAiDeBindingAuthenticationFilter(
-                connectionService,
-                contextRepository,
-                telemetry,
-                properties.isSecureCookie());
+            @Qualifier("openAiDeSecurityContextRepository") SecurityContextRepository contextRepository) {
+        return new OpenAiDeBindingAuthenticationFilter(contextRepository);
     }
 
     @Bean
@@ -295,13 +292,11 @@ public class OpenAiDeOAuthConfiguration {
     OpaqueTokenIntrospector openAiDeOpaqueTokenIntrospector(
             @Qualifier("openAiDeAuthorizationService") OAuth2AuthorizationService authorizationService,
             @Qualifier("openAiDeRegisteredClientRepository") RegisteredClientRepository registeredClients,
-            OpenAiDeCoachConnectionService connectionService,
             OpenAiDeOperationalTelemetry telemetry,
             OpenAiDeProperties properties) {
         return new OpenAiDeOpaqueTokenIntrospector(
                 authorizationService,
                 registeredClients,
-                connectionService,
                 telemetry,
                 properties.getOauth().getClientId().trim(),
                 properties.getMcpUrl());
@@ -380,7 +375,7 @@ public class OpenAiDeOAuthConfiguration {
                                                 .map(JwtClientAssertionAuthenticationProvider.class::cast)
                                                 .forEach(provider ->
                                                         provider.setJwtDecoderFactory(decoderFactory)));
-                            } else {
+                            } else if (isPublicClient(properties)) {
                                 clientAuthentication
                                         .authenticationConverters(converters -> {
                                             converters.add(0, new OpenAiDePublicRefreshClientAuthenticationConverter());
@@ -478,7 +473,7 @@ public class OpenAiDeOAuthConfiguration {
     private static void validateSettings(OpenAiDeProperties properties) {
         if (!hasText(properties.getOauth().getClientId())) {
             throw new IllegalStateException(
-                    "skillpilot.openai.de.oauth.client-id must be set to the public client ID entered in ChatGPT app management.");
+                    "skillpilot.openai.de.oauth.client-id must be set to the client ID entered in ChatGPT app management.");
         }
         Set<String> redirectUris = new LinkedHashSet<>();
         for (String value : properties.getOauth().getRedirectUris()) {
@@ -492,9 +487,21 @@ public class OpenAiDeOAuthConfiguration {
         }
         redirectUris.forEach(value -> requireHttpsUri(value, "OpenAI-DE OAuth redirect URI"));
         String authenticationMethod = normalizedClientAuthenticationMethod(properties);
-        if (!Set.of(CLIENT_AUTH_NONE, CLIENT_AUTH_PRIVATE_KEY_JWT).contains(authenticationMethod)) {
+        if (!Set.of(
+                        CLIENT_AUTH_NONE,
+                        CLIENT_AUTH_CLIENT_SECRET_BASIC,
+                        CLIENT_AUTH_PRIVATE_KEY_JWT)
+                .contains(authenticationMethod)) {
             throw new IllegalStateException(
-                    "OpenAI-DE client authentication method must be none or private_key_jwt.");
+                    "OpenAI-DE client authentication method must be none, client_secret_basic, or private_key_jwt.");
+        }
+        if (CLIENT_AUTH_CLIENT_SECRET_BASIC.equals(authenticationMethod)
+                && !OpenAiDeSecureModeValidation.isValidClientSecret(
+                        properties.getOauth().getClientSecret())) {
+            throw new IllegalStateException(
+                    "skillpilot.openai.de.oauth.client-secret must contain at least "
+                            + OpenAiDeSecureModeValidation.MINIMUM_CLIENT_SECRET_LENGTH
+                            + " non-whitespace characters for client_secret_basic.");
         }
         if (CLIENT_AUTH_PRIVATE_KEY_JWT.equals(authenticationMethod)) {
             if (properties.getOauth().getClientAssertionReplayCacheSize() <= 0) {
@@ -508,11 +515,12 @@ public class OpenAiDeOAuthConfiguration {
                     properties.getOauth().getClientJwkSetUri(),
                     "OpenAI-DE CIMD client ID and client JWK Set URL");
             clientAssertionSigningAlgorithm(properties);
-            if (normalizedLegacyClientIds(properties)
-                    .contains(properties.getOauth().getClientId().trim())) {
-                throw new IllegalStateException(
-                        "OpenAI-DE current CIMD client ID must not also be listed as a legacy client ID.");
-            }
+        }
+        if (isConfidentialClient(properties)
+                && normalizedLegacyClientIds(properties)
+                        .contains(properties.getOauth().getClientId().trim())) {
+            throw new IllegalStateException(
+                    "OpenAI-DE current confidential client ID must not also be listed as a legacy client ID.");
         }
         requireHttpsUri(properties.getMcpUrl(), "OpenAI-DE MCP resource");
         requireHttpsUri(
@@ -532,6 +540,55 @@ public class OpenAiDeOAuthConfiguration {
 
     static boolean isPrivateKeyJwt(OpenAiDeProperties properties) {
         return CLIENT_AUTH_PRIVATE_KEY_JWT.equals(normalizedClientAuthenticationMethod(properties));
+    }
+
+    static boolean isClientSecretBasic(OpenAiDeProperties properties) {
+        return CLIENT_AUTH_CLIENT_SECRET_BASIC.equals(
+                normalizedClientAuthenticationMethod(properties));
+    }
+
+    static boolean isPublicClient(OpenAiDeProperties properties) {
+        return CLIENT_AUTH_NONE.equals(normalizedClientAuthenticationMethod(properties));
+    }
+
+    static boolean isConfidentialClient(OpenAiDeProperties properties) {
+        return isClientSecretBasic(properties) || isPrivateKeyJwt(properties);
+    }
+
+    private static ClientAuthenticationMethod clientAuthenticationMethod(
+            OpenAiDeProperties properties) {
+        return switch (normalizedClientAuthenticationMethod(properties)) {
+            case CLIENT_AUTH_CLIENT_SECRET_BASIC -> ClientAuthenticationMethod.CLIENT_SECRET_BASIC;
+            case CLIENT_AUTH_PRIVATE_KEY_JWT -> ClientAuthenticationMethod.PRIVATE_KEY_JWT;
+            case CLIENT_AUTH_NONE -> ClientAuthenticationMethod.NONE;
+            default -> throw new IllegalStateException(
+                    "Unsupported OpenAI-DE OAuth client authentication method.");
+        };
+    }
+
+    private static String encodedClientSecret(
+            RegisteredClient existing,
+            String configuredClientSecret) {
+        if (existing != null
+                && hasText(existing.getClientSecret())
+                && CLIENT_SECRET_PASSWORD_ENCODER.matches(
+                        configuredClientSecret,
+                        existing.getClientSecret())) {
+            return existing.getClientSecret();
+        }
+        return CLIENT_SECRET_PASSWORD_ENCODER.encode(configuredClientSecret);
+    }
+
+    private static boolean clientSecretMatches(
+            RegisteredClient persisted,
+            OpenAiDeProperties properties) {
+        if (!isClientSecretBasic(properties)) {
+            return persisted.getClientSecret() == null;
+        }
+        return hasText(persisted.getClientSecret())
+                && CLIENT_SECRET_PASSWORD_ENCODER.matches(
+                        properties.getOauth().getClientSecret(),
+                        persisted.getClientSecret());
     }
 
     static String normalizedClientAuthenticationMethod(OpenAiDeProperties properties) {

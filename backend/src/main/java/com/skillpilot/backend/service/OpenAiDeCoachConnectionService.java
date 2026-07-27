@@ -1,64 +1,48 @@
 package com.skillpilot.backend.service;
 
 import com.skillpilot.backend.api.FrontierGoal;
-import com.skillpilot.backend.api.OpenAiDeConnectStartResponse;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest;
 import com.skillpilot.backend.api.OpenAiDeCoachStartRequest.LaunchIntentType;
 import com.skillpilot.backend.api.OpenAiDeLaunchResponse;
 import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.domain.OpenAiDeBindingGrant;
-import com.skillpilot.backend.domain.OpenAiDeConnection;
 import com.skillpilot.backend.domain.OpenAiDeLearningSession;
-import com.skillpilot.backend.domain.OpenAiDePendingLaunch;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.LearningLandscape;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.repository.LearnerRepository;
-import com.skillpilot.backend.repository.OpenAiDeBindingGrantRepository;
-import com.skillpilot.backend.repository.OpenAiDeConnectionRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
-import com.skillpilot.backend.repository.OpenAiDePendingLaunchRepository;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.regex.Pattern;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * Owns the browser-to-OAuth binding and provider-specific learner connection
- * lifecycle for the German ChatGPT app.
+ * Owns the independently issued learner-session lifecycle for the German
+ * ChatGPT app.
  *
- * <p>The permanent SkillPilot ID is never an OAuth principal. A short-lived,
- * one-time browser grant creates a random OpenAI-DE connection subject which
- * is the only identity visible to the authorization server and MCP layer.</p>
+ * <p>OAuth is deliberately handled outside this service and proves only the
+ * predefined confidential ChatGPT app client. The permanent SkillPilot ID is
+ * never an OAuth principal. Every UI launch creates a fresh, short-lived
+ * learning-session ID that selects the learner on every MCP tool call.</p>
  */
 @Service
 @ConditionalOnProperty(name = "skillpilot.openai.de.enabled", havingValue = "true")
 public class OpenAiDeCoachConnectionService {
 
-    public static final String BINDING_COOKIE_NAME = "skillpilot_openai_de_binding";
-    public static final String BROWSER_SESSION_COOKIE_NAME = "skillpilot_openai_de_browser";
-    public static final String AUTHORIZATION_PATH = "/api/openai/de/oauth2/authorize";
-    public static final String BROWSER_SESSION_COOKIE_PATH = "/api";
-
-    public record BindingGrant(String token, OpenAiDeConnectStartResponse response) {
+    private record IssuedLearningSession(String id, Instant expiresAt) {
     }
 
     private record NormalizedLaunch(
@@ -71,336 +55,77 @@ public class OpenAiDeCoachConnectionService {
     }
 
     private static final String HMAC_ALGORITHM = "HmacSHA256";
+    private static final Pattern LEARNING_SESSION_ID_PATTERN =
+            Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
     private static final String WRITES_DISABLED_MESSAGE =
             "OpenAI-DE state changes are temporarily disabled.";
-    private static final Duration REVOKED_CONNECTION_RETENTION = Duration.ofDays(30);
     private static final String ABI26_GK_GOAL_ID = "53de0639-c08b-53dc-8f70-9b519b7ecbbd";
     private static final String ABI26_LK_GOAL_ID = "68a262fc-43f4-5d23-af30-853870bfd45b";
 
-    private final OpenAiDeBindingGrantRepository bindingGrantRepository;
-    private final OpenAiDeConnectionRepository connectionRepository;
     private final OpenAiDeLearningSessionRepository learningSessionRepository;
-    private final OpenAiDePendingLaunchRepository pendingLaunchRepository;
     private final LearnerRepository learnerRepository;
     private final LearnerService learnerService;
     private final LandscapeService landscapeService;
-    private final JdbcOperations jdbcOperations;
     private final OpenAiDeProperties properties;
     private final SecureRandom secureRandom = new SecureRandom();
     private final byte[] hashSecret;
 
     public OpenAiDeCoachConnectionService(
-            OpenAiDeBindingGrantRepository bindingGrantRepository,
-            OpenAiDeConnectionRepository connectionRepository,
             OpenAiDeLearningSessionRepository learningSessionRepository,
-            OpenAiDePendingLaunchRepository pendingLaunchRepository,
             LearnerRepository learnerRepository,
             LearnerService learnerService,
             LandscapeService landscapeService,
-            JdbcOperations jdbcOperations,
             OpenAiDeProperties properties,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
-        this.bindingGrantRepository = bindingGrantRepository;
-        this.connectionRepository = connectionRepository;
         this.learningSessionRepository = learningSessionRepository;
-        this.pendingLaunchRepository = pendingLaunchRepository;
         this.learnerRepository = learnerRepository;
         this.learnerService = learnerService;
         this.landscapeService = landscapeService;
-        this.jdbcOperations = jdbcOperations;
         this.properties = properties;
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
     }
 
-    public String createBrowserSessionToken() {
-        return generateSecret("spobs_");
-    }
-
+    /**
+     * Starts a new learner session independently of the OAuth app connection.
+     * Every invocation creates exactly one fresh 24-hour learning-session ID.
+     */
     @Transactional
-    public BindingGrant createBindingGrant(
-            String skillpilotId,
-            String rawBrowserSession,
-            OpenAiDeCoachStartRequest request) {
-        requireProviderEligibilityConfirmation(request);
-        NormalizedLaunch launch = normalizeLaunch(request);
-        Learner learner = requireLearner(skillpilotId);
-        validateLaunchDefinition(learner, launch);
-        assertLaunchMutationAllowed(learner, launch);
-        Instant now = Instant.now();
-        String browserSessionHash = requireBrowserSessionHash(rawBrowserSession);
-        Optional<OpenAiDeBindingGrant> existingGrant = bindingGrantRepository
-                .findByActiveBrowserSessionHashForUpdate(browserSessionHash);
-        if (existingGrant.isPresent()) {
-            // A browser may retry after a blocked popup, a cancelled ChatGPT
-            // dialog, or an interrupted redirect. Replace the still-open
-            // one-time grant instead of trapping the browser in a 409 until
-            // its TTL expires. Deleting it first also invalidates any stale
-            // binding cookie before the fresh token is returned.
-            bindingGrantRepository.delete(existingGrant.get());
-            bindingGrantRepository.flush();
-        }
-        String token = generateSecret("spodb_");
-
-        OpenAiDeBindingGrant grant = new OpenAiDeBindingGrant();
-        grant.setTokenHash(hashSecretValue(token));
-        grant.setBrowserSessionHash(browserSessionHash);
-        grant.setActiveBrowserSessionHash(browserSessionHash);
-        grant.setLearner(learner);
-        grant.setCreatedAt(now);
-        grant.setExpiresAt(now.plus(properties.getBindingTtl()));
-        grant.setClient(launch.client());
-        grant.setSelectedCurriculum(launch.selectedCurriculum());
-        grant.setLaunchIntentType(launch.type().name());
-        grant.setLaunchGoalId(launch.goalId());
-        grant.setLaunchBatchSize(launch.batchSize());
-        grant.setLaunchCourseLevel(launch.courseLevel());
-        try {
-            bindingGrantRepository.saveAndFlush(grant);
-        } catch (DataIntegrityViolationException exception) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT,
-                    "This browser session already has an open OpenAI-DE connection attempt.",
-                    exception);
-        }
-
-        boolean alreadyConnected = connectionRepository
-                .existsByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtAfter(
-                        learner.getSkillpilotId(), now);
-        return new BindingGrant(
-                token,
-                new OpenAiDeConnectStartResponse(
-                        properties.getChatgptUrl(),
-                        launchPrompt(launch),
-                        grant.getExpiresAt(),
-                        alreadyConnected));
-    }
-
-    @Transactional
-    public String consumeBindingGrant(String rawToken, String rawBrowserSession) {
-        String token = trimToNull(rawToken);
-        if (token == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing OpenAI-DE binding grant.");
-        }
-        String browserSessionHash = requireBrowserSessionHash(rawBrowserSession);
-        OpenAiDeBindingGrant grant = bindingGrantRepository.findByTokenHashForUpdate(hashSecretValue(token))
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Invalid OpenAI-DE binding grant."));
-        Instant now = Instant.now();
-        if (grant.getConsumedAt() != null) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "OpenAI-DE binding grant has already been used.");
-        }
-        if (!grant.getExpiresAt().isAfter(now)) {
-            throw new ResponseStatusException(HttpStatus.GONE, "OpenAI-DE binding grant has expired.");
-        }
-        if (!secretHashesEqual(grant.getBrowserSessionHash(), browserSessionHash)
-                || !secretHashesEqual(grant.getActiveBrowserSessionHash(), browserSessionHash)) {
-            throw new ResponseStatusException(
-                    HttpStatus.UNAUTHORIZED,
-                    "OpenAI-DE binding grant does not belong to this browser session.");
-        }
-
-        String skillpilotId = grant.getLearner().getSkillpilotId();
-        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Learner for OpenAI-DE binding grant no longer exists."));
-        OpenAiDeConnection connection = newConnection(learner, now);
-        connectionRepository.save(connection);
-
-        NormalizedLaunch launch = launchFrom(grant);
-        pendingLaunchRepository.save(newPendingLaunch(learner, connection.getSubject(), launch, now));
-
-        grant.setConsumedAt(now);
-        grant.setConnectionSubject(connection.getSubject());
-        grant.setActiveBrowserSessionHash(null);
-        bindingGrantRepository.save(grant);
-        return connection.getSubject();
-    }
-
-    @Transactional
-    public OpenAiDeLaunchResponse createPendingLaunch(String skillpilotId, OpenAiDeCoachStartRequest request) {
+    public OpenAiDeLaunchResponse createLaunch(String skillpilotId, OpenAiDeCoachStartRequest request) {
         requireProviderEligibilityConfirmation(request);
         NormalizedLaunch launchRequest = normalizeLaunch(request);
         Learner learner = requireLearnerForUpdate(skillpilotId);
         Instant now = Instant.now();
-        OpenAiDeConnection connection = connectionRepository
-                .findFirstByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtAfterOrderByCreatedAtDesc(
-                        learner.getSkillpilotId(), now)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.CONFLICT,
-                        "ChatGPT is not connected for this learner."));
-
-        OpenAiDePendingLaunch launch = newPendingLaunch(
-                learner,
-                connection.getSubject(),
-                launchRequest,
-                now);
         learner = prepareLaunchState(skillpilotId, learner, launchRequest);
-        launch.setLearner(learner);
-        launch.setConsumedAt(now);
-        pendingLaunchRepository.save(launch);
-        Instant learningSessionExpiresAt =
-                activateLearningSessionsForAuthorizedLearnerConnections(learner, connection, now);
+        IssuedLearningSession learningSession = issueLearningSession(learner, now);
 
         return new OpenAiDeLaunchResponse(
-                launchPrompt(launchRequest),
+                launchPrompt(launchRequest, learningSession.id()),
                 properties.getChatgptUrl(),
-                learningSessionExpiresAt);
+                learningSession.id(),
+                learningSession.expiresAt());
     }
 
     @Transactional
-    public String resolveConnectedSkillpilotId(String connectionSubject) {
-        OpenAiDeConnection connection = authorizedConnection(connectionSubject);
-        connection.setLastUsedAt(Instant.now());
-        connectionRepository.save(connection);
-        return connection.getLearner().getSkillpilotId();
-    }
-
-    @Transactional
-    public String resolveActiveLearningSessionSkillpilotId(String connectionSubject) {
-        OpenAiDeConnection connection = authorizedConnection(connectionSubject);
+    public String resolveActiveLearningSessionSkillpilotId(String rawLearningSessionId) {
+        String learningSessionId = trimToNull(rawLearningSessionId);
+        if (learningSessionId == null
+                || !LEARNING_SESSION_ID_PATTERN.matcher(learningSessionId).matches()) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
         Instant now = Instant.now();
         OpenAiDeLearningSession learningSession = learningSessionRepository
-                .findById(connection.getSubject())
+                .findById(hashSecretValue(learningSessionId))
                 .orElseThrow(OpenAiDeLearningSessionRequiredException::new);
         if (!learningSession.getExpiresAt().isAfter(now)) {
             throw new OpenAiDeLearningSessionRequiredException();
         }
-        connection.setLastUsedAt(now);
-        connectionRepository.save(connection);
-        return connection.getLearner().getSkillpilotId();
-    }
-
-    @Transactional
-    public void markOAuthConnected(String connectionSubject, Instant oauthExpiresAt) {
-        String normalizedSubject = trimToNull(connectionSubject);
-        if (normalizedSubject == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing OpenAI-DE connection subject.");
-        }
-        String skillpilotId = connectionRepository.findLearnerSkillpilotIdBySubject(normalizedSubject)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Unknown OpenAI-DE connection."));
-        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Learner for OpenAI-DE connection no longer exists."));
-        OpenAiDeConnection connection = connectionRepository.findBySubjectForUpdate(normalizedSubject)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Unknown OpenAI-DE connection."));
-        if (connection.getRevokedAt() != null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection has been revoked.");
-        }
-        Instant now = Instant.now();
-        Instant normalizedExpiry = requireFutureOAuthExpiry(oauthExpiresAt, now);
-
-        Optional<OpenAiDePendingLaunch> pendingLaunch = pendingLaunchRepository
-                .findFirstByConnectionSubjectAndConsumedAtIsNullAndExpiresAtAfterOrderByCreatedAtDesc(
-                        connection.getSubject(), now);
-        if (pendingLaunch.isPresent()) {
-            OpenAiDePendingLaunch launch = pendingLaunch.get();
-            learner = prepareLaunchState(skillpilotId, learner, launchFrom(launch));
-            launch.setLearner(learner);
-            // For pending launches, consumed means that the backend state was
-            // applied successfully. It is intentionally unrelated to any MCP
-            // request or concrete ChatGPT conversation.
-            launch.setConsumedAt(Instant.now());
-            pendingLaunchRepository.save(launch);
-            activateLearningSession(connection.getSubject(), now);
-        }
-
-        connection.setLastAuthorizedAt(now);
-        connection.setOauthExpiresAt(normalizedExpiry);
-        connectionRepository.save(connection);
-
-        List<OpenAiDeConnection> replacedConnections = connectionRepository
-                .findAllByLearnerSkillpilotIdAndRevokedAtIsNull(connection.getLearner().getSkillpilotId())
-                .stream()
-                .filter(candidate -> !candidate.getSubject().equals(connection.getSubject()))
-                .filter(candidate -> candidate.getLastAuthorizedAt() != null)
-                .toList();
-        revokeConnections(replacedConnections, now);
-    }
-
-    @Transactional
-    public void updateOAuthAuthorizationExpiry(String connectionSubject, Instant oauthExpiresAt) {
-        String normalizedSubject = trimToNull(connectionSubject);
-        if (normalizedSubject == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing OpenAI-DE connection subject.");
-        }
-        String skillpilotId = connectionRepository.findLearnerSkillpilotIdBySubject(normalizedSubject)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Unknown OpenAI-DE connection."));
-        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Learner for OpenAI-DE connection no longer exists."));
-        OpenAiDeConnection connection = connectionRepository.findBySubjectForUpdate(normalizedSubject)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Unknown OpenAI-DE connection."));
-        if (connection.getRevokedAt() != null || connection.getLastAuthorizedAt() == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection is not active.");
-        }
-        connection.setOauthExpiresAt(requireFutureOAuthExpiry(oauthExpiresAt, Instant.now()));
-        connectionRepository.save(connection);
-    }
-
-    @Transactional
-    public void revokeConnectionSubject(String connectionSubject) {
-        String normalizedSubject = trimToNull(connectionSubject);
-        if (normalizedSubject == null) {
-            return;
-        }
-        Optional<String> skillpilotId = connectionRepository.findLearnerSkillpilotIdBySubject(normalizedSubject);
-        if (skillpilotId.isEmpty()) {
-            return;
-        }
-        learnerRepository.findBySkillpilotIdForUpdate(skillpilotId.get())
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Learner for OpenAI-DE connection no longer exists."));
-        connectionRepository.findBySubjectForUpdate(normalizedSubject)
-                .filter(connection -> connection.getRevokedAt() == null)
-                .ifPresent(connection -> revokeConnections(List.of(connection), Instant.now()));
+        return learningSession.getLearner().getSkillpilotId();
     }
 
     @Scheduled(fixedDelayString = "${skillpilot.openai.de.cleanup-interval-ms:3600000}")
     @Transactional
-    public void cleanupExpiredLaunchState() {
-        Instant now = Instant.now();
-        List<OpenAiDeConnection> abandonedConnections = connectionRepository
-                .findAllByLastAuthorizedAtIsNullAndRevokedAtIsNullAndCreatedAtLessThanEqual(
-                        now.minus(properties.getLaunchTtl()));
-        revokeConnections(abandonedConnections, now);
-        List<OpenAiDeConnection> expiredConnections = new java.util.ArrayList<>(connectionRepository
-                .findAllByLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtIsNull());
-        expiredConnections.addAll(connectionRepository
-                .findAllByLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtLessThanEqual(now));
-        revokeConnections(expiredConnections, now);
-        pendingLaunchRepository.deleteByExpiresAtLessThanEqual(now);
-        bindingGrantRepository.deleteByExpiresAtLessThanEqual(now);
-        learningSessionRepository.deleteByExpiresAtLessThanEqual(now);
-        connectionRepository.deleteByRevokedAtLessThanEqual(now.minus(REVOKED_CONNECTION_RETENTION));
-    }
-
-    @Transactional
-    public void disconnect(String skillpilotId) {
-        Learner learner = requireLearnerForUpdate(skillpilotId);
-        List<OpenAiDeConnection> connections = connectionRepository
-                .findAllByLearnerSkillpilotIdAndRevokedAtIsNull(learner.getSkillpilotId());
-        revokeConnections(connections, Instant.now());
-    }
-
-    @Transactional(readOnly = true)
-    public boolean isConnected(String skillpilotId) {
-        requireLearner(skillpilotId);
-        return connectionRepository
-                .existsByLearnerSkillpilotIdAndLastAuthorizedAtIsNotNullAndRevokedAtIsNullAndOauthExpiresAtAfter(
-                        skillpilotId, Instant.now());
+    public void cleanupExpiredLearningSessions() {
+        learningSessionRepository.deleteByExpiresAtLessThanEqual(Instant.now());
     }
 
     private Learner requireLearner(String skillpilotId) {
@@ -415,40 +140,6 @@ public class OpenAiDeCoachConnectionService {
         Learner learner = requireLearner(skillpilotId);
         return learnerRepository.findBySkillpilotIdForUpdate(learner.getSkillpilotId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Learner not found."));
-    }
-
-    private OpenAiDeConnection authorizedConnection(String subject) {
-        OpenAiDeConnection connection = connection(subject);
-        if (connection.getLastAuthorizedAt() == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection is not authorized.");
-        }
-        if (connection.getOauthExpiresAt() == null || !connection.getOauthExpiresAt().isAfter(Instant.now())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection credentials expired.");
-        }
-        return connection;
-    }
-
-    private OpenAiDeConnection connection(String subject) {
-        String normalized = trimToNull(subject);
-        if (normalized == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing OpenAI-DE connection subject.");
-        }
-        OpenAiDeConnection connection = connectionRepository.findById(normalized)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.UNAUTHORIZED,
-                        "Unknown OpenAI-DE connection."));
-        if (connection.getRevokedAt() != null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "OpenAI-DE connection has been revoked.");
-        }
-        return connection;
-    }
-
-    private OpenAiDeConnection newConnection(Learner learner, Instant now) {
-        OpenAiDeConnection connection = new OpenAiDeConnection();
-        connection.setSubject(generateSecret("spod_"));
-        connection.setLearner(learner);
-        connection.setCreatedAt(now);
-        return connection;
     }
 
     private Learner prepareLaunchState(
@@ -496,73 +187,16 @@ public class OpenAiDeCoachConnectionService {
         }
     }
 
-    private OpenAiDePendingLaunch newPendingLaunch(
-            Learner learner,
-            String connectionSubject,
-            NormalizedLaunch launchRequest,
-            Instant now) {
-        OpenAiDePendingLaunch launch = new OpenAiDePendingLaunch();
-        launch.setId(UUID.randomUUID().toString());
-        launch.setLearner(learner);
-        launch.setConnectionSubject(connectionSubject);
-        launch.setCreatedAt(now);
-        launch.setExpiresAt(now.plus(properties.getLaunchTtl()));
-        launch.setSelectedCurriculum(launchRequest.selectedCurriculum());
-        launch.setClient(launchRequest.client());
-        launch.setLaunchIntentType(launchRequest.type().name());
-        launch.setLaunchGoalId(launchRequest.goalId());
-        launch.setLaunchBatchSize(launchRequest.batchSize());
-        launch.setLaunchCourseLevel(launchRequest.courseLevel());
-        return launch;
-    }
-
-    private Instant activateLearningSession(String connectionSubject, Instant startedAt) {
-        OpenAiDeLearningSession learningSession = learningSessionRepository
-                .findById(connectionSubject)
-                .orElseGet(OpenAiDeLearningSession::new);
-        learningSession.setConnectionSubject(connectionSubject);
+    private IssuedLearningSession issueLearningSession(Learner learner, Instant startedAt) {
+        String learningSessionId = generateSecret("sps_");
+        OpenAiDeLearningSession learningSession = new OpenAiDeLearningSession();
+        learningSession.setTokenHash(hashSecretValue(learningSessionId));
+        learningSession.setLearner(learner);
         learningSession.setStartedAt(startedAt);
         Instant expiresAt = startedAt.plus(properties.getLearningSessionTtl());
         learningSession.setExpiresAt(expiresAt);
         learningSessionRepository.save(learningSession);
-        return expiresAt;
-    }
-
-    private Instant activateLearningSessionsForAuthorizedLearnerConnections(
-            Learner learner,
-            OpenAiDeConnection selectedConnection,
-            Instant startedAt) {
-        LinkedHashMap<String, OpenAiDeConnection> activeConnections = new LinkedHashMap<>();
-        activeConnections.put(selectedConnection.getSubject(), selectedConnection);
-        connectionRepository.findAllByLearnerSkillpilotIdAndRevokedAtIsNull(learner.getSkillpilotId())
-                .stream()
-                .filter(connection -> connection.getLastAuthorizedAt() != null)
-                .filter(connection -> connection.getOauthExpiresAt() != null)
-                .filter(connection -> connection.getOauthExpiresAt().isAfter(startedAt))
-                .forEach(connection -> activeConnections.putIfAbsent(connection.getSubject(), connection));
-
-        activeConnections.keySet().forEach(subject -> activateLearningSession(subject, startedAt));
-        return startedAt.plus(properties.getLearningSessionTtl());
-    }
-
-    private NormalizedLaunch launchFrom(OpenAiDeBindingGrant grant) {
-        return new NormalizedLaunch(
-                grant.getClient(),
-                grant.getSelectedCurriculum(),
-                persistedIntentType(grant.getLaunchIntentType()),
-                grant.getLaunchGoalId(),
-                grant.getLaunchBatchSize(),
-                grant.getLaunchCourseLevel());
-    }
-
-    private NormalizedLaunch launchFrom(OpenAiDePendingLaunch launch) {
-        return new NormalizedLaunch(
-                launch.getClient(),
-                launch.getSelectedCurriculum(),
-                persistedIntentType(launch.getLaunchIntentType()),
-                launch.getLaunchGoalId(),
-                launch.getLaunchBatchSize(),
-                launch.getLaunchCourseLevel());
+        return new IssuedLearningSession(learningSessionId, expiresAt);
     }
 
     private void validateVerifiedRecallGoal(String skillpilotId, String goalId) {
@@ -689,18 +323,6 @@ public class OpenAiDeCoachConnectionService {
         return activeGoal;
     }
 
-    private LaunchIntentType persistedIntentType(String value) {
-        String normalized = trimToNull(value);
-        if (normalized == null) {
-            return LaunchIntentType.CURRENT_UNIT;
-        }
-        try {
-            return LaunchIntentType.valueOf(normalized);
-        } catch (IllegalArgumentException exception) {
-            throw new IllegalStateException("Unknown persisted OpenAI-DE launch intent: " + normalized, exception);
-        }
-    }
-
     private NormalizedLaunch normalizeLaunch(OpenAiDeCoachStartRequest request) {
         String language = trimToNull(request == null ? null : request.language());
         if (language != null && !language.toLowerCase(java.util.Locale.ROOT).startsWith("de")) {
@@ -791,8 +413,8 @@ public class OpenAiDeCoachConnectionService {
         }
     }
 
-    private String launchPrompt(NormalizedLaunch launch) {
-        return switch (launch.type()) {
+    private String launchPrompt(NormalizedLaunch launch, String learningSessionId) {
+        String instruction = switch (launch.type()) {
             case CURRENT_UNIT ->
                     "Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten "
                             + "nächsten Schritt fort.";
@@ -804,6 +426,11 @@ public class OpenAiDeCoachConnectionService {
                             + "ausgewählten Mathematik-Abituraufgabe für den "
                             + ("LK".equals(launch.courseLevel()) ? "Leistungskurs." : "Grundkurs.");
         };
+        return instruction
+                + "\n\nSkillPilot-Lernsession: "
+                + learningSessionId
+                + "\nVerwende diese Lernsession bei jedem SkillPilot-App-Aufruf unverändert im Parameter "
+                + "learningSessionId.";
     }
 
     private String trimAndValidateLength(String value, String field, int maxLength) {
@@ -816,23 +443,6 @@ public class OpenAiDeCoachConnectionService {
 
     private ResponseStatusException badLaunchRequest(String message) {
         return new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
-    }
-
-    private void revokeConnections(List<OpenAiDeConnection> connections, Instant revokedAt) {
-        if (connections.isEmpty()) {
-            return;
-        }
-        List<String> subjects = connections.stream()
-                .map(OpenAiDeConnection::getSubject)
-                .toList();
-        connections.forEach(connection -> connection.setRevokedAt(revokedAt));
-        connectionRepository.saveAll(connections);
-        learningSessionRepository.deleteAllById(subjects);
-        pendingLaunchRepository.deleteAllByConnectionSubjectIn(subjects);
-        subjects.forEach(subject -> {
-            jdbcOperations.update("DELETE FROM oauth2_authorization WHERE principal_name = ?", subject);
-            jdbcOperations.update("DELETE FROM oauth2_authorization_consent WHERE principal_name = ?", subject);
-        });
     }
 
     private String generateSecret(String prefix) {
@@ -850,31 +460,6 @@ public class OpenAiDeCoachConnectionService {
         } catch (Exception exception) {
             throw new IllegalStateException("Could not hash OpenAI-DE credential.", exception);
         }
-    }
-
-    private String requireBrowserSessionHash(String rawBrowserSession) {
-        String browserSession = trimToNull(rawBrowserSession);
-        if (browserSession == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing OpenAI-DE browser session.");
-        }
-        return hashSecretValue(browserSession);
-    }
-
-    private boolean secretHashesEqual(String left, String right) {
-        return left != null
-                && right != null
-                && MessageDigest.isEqual(
-                        left.getBytes(StandardCharsets.US_ASCII),
-                        right.getBytes(StandardCharsets.US_ASCII));
-    }
-
-    private Instant requireFutureOAuthExpiry(Instant oauthExpiresAt, Instant now) {
-        if (oauthExpiresAt == null || !oauthExpiresAt.isAfter(now)) {
-            throw new ResponseStatusException(
-                    HttpStatus.UNAUTHORIZED,
-                    "OpenAI-DE OAuth credentials are missing or expired.");
-        }
-        return oauthExpiresAt;
     }
 
     private String trimToNull(String value) {

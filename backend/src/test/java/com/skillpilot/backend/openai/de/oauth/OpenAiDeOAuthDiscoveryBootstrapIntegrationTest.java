@@ -176,7 +176,8 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
                         OpenAiDeOAuthDiscoveryBootstrapConfiguration.class)
                 .withPropertyValues(
                         "skillpilot.openai.de.bootstrap-enabled=true",
-                        "skillpilot.openai.de.enabled=true")
+                        "skillpilot.openai.de.enabled=true",
+                        "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg")
                 .run(result -> {
                     assertThat(result).hasFailed();
                     assertThat(result.getStartupFailure())

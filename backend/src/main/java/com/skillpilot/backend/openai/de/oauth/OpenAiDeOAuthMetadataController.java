@@ -74,9 +74,7 @@ public class OpenAiDeOAuthMetadataController {
             OpenAiDeProperties properties) {
         String base = OpenAiDeOAuthConfiguration.stripTrailingSlash(issuer);
         String clientAuthenticationMethod =
-                OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)
-                        ? OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT
-                        : OpenAiDeOAuthConfiguration.CLIENT_AUTH_NONE;
+                OpenAiDeOAuthConfiguration.normalizedClientAuthenticationMethod(properties);
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("issuer", issuer);
         metadata.put("authorization_endpoint", base + "/oauth2/authorize");
@@ -107,12 +105,14 @@ public class OpenAiDeOAuthMetadataController {
     @ResponseBody
     public ResponseEntity<String> connectRequired(@RequestParam(required = false) String reason) {
         String detail = "expired".equals(reason)
-                ? "Der Verbindungsstart ist abgelaufen oder wurde bereits verwendet."
-                : "Öffne SkillPilot und starte dort die Verbindung mit ChatGPT.";
+                ? "Die OAuth-Autorisierung der App ist abgelaufen oder nicht mehr gültig."
+                : "Die App SkillPilot Coach (Deutsch) ist noch nicht für den Zugriff auf das SkillPilot-MCP-Backend autorisiert.";
         return htmlPage(
-                "SkillPilot mit ChatGPT verbinden",
+                "SkillPilot-App autorisieren",
                 "<p>" + HtmlUtils.htmlEscape(detail) + "</p>"
-                        + "<p><a class=\"button\" href=\"/\">Zu SkillPilot</a></p>");
+                        + "<p>Diese Autorisierung wählt keinen Lernenden und erzeugt keine Lernsession. "
+                        + "Eine Lernsession entsteht ausschließlich über „Lernen starten“ in SkillPilot.</p>"
+                        + "<p><a class=\"button\" href=\"/\">SkillPilot öffnen</a></p>");
     }
 
     @GetMapping(value = OpenAiDeOAuthConfiguration.CONSENT_ENDPOINT, produces = MediaType.TEXT_HTML_VALUE)
@@ -141,9 +141,12 @@ public class OpenAiDeOAuthMetadataController {
         visibleScopes.append("</ul>");
 
         StringBuilder form = new StringBuilder();
-        form.append("<p>ChatGPT darf den Lernstand über die App SkillPilot Coach (Deutsch) lesen und – nach deinen Anweisungen – aktualisieren.</p>")
+        form.append("<p>Du autorisierst die App SkillPilot Coach (Deutsch), das SkillPilot-MCP-Backend mit den folgenden Berechtigungen aufzurufen.</p>")
                 .append(visibleScopes)
-                .append("<p>Die SkillPilot-ID und OAuth-Tokens werden nicht als Chat- oder Werkzeugparameter angezeigt.</p>")
+                .append("<p>OAuth autorisiert nur die App. Es wählt keinen Lernenden und erzeugt keine Lernsession. "
+                        + "Welche Lerndaten adressiert werden, bestimmt ausschließlich eine separat über „Lernen starten“ "
+                        + "in SkillPilot erzeugte, kurzlebige Lernsession.</p>")
+                .append("<p>Die dauerhafte SkillPilot-ID und OAuth-Zugangsdaten werden weder im Chat noch als Werkzeugparameter angezeigt.</p>")
                 .append("<form method=\"post\" action=\"")
                 .append(OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT)
                 .append("\">")
@@ -156,9 +159,9 @@ public class OpenAiDeOAuthMetadataController {
                     .append("\">");
         }
         form.append(hiddenScopes)
-                .append("<button class=\"button\" type=\"submit\">SkillPilot verbinden</button>")
+                .append("<button class=\"button\" type=\"submit\">App autorisieren</button>")
                 .append("</form>");
-        return htmlPage("ChatGPT mit SkillPilot verbinden", form.toString());
+        return htmlPage("ChatGPT-App für SkillPilot autorisieren", form.toString());
     }
 
     private List<String> splitScopes(String scope) {
@@ -173,9 +176,12 @@ public class OpenAiDeOAuthMetadataController {
 
     private String scopeDescription(String scope) {
         return switch (scope) {
-            case OpenAiDeOAuthConfiguration.READ_SCOPE -> "Lernstand und aktuelle Lernziele lesen";
-            case OpenAiDeOAuthConfiguration.WRITE_SCOPE -> "Lernfortschritt nach Bestätigung aktualisieren";
-            case OpenAiDeOAuthConfiguration.OFFLINE_SCOPE -> "Verbindung auf deinen Geräten aufrechterhalten";
+            case OpenAiDeOAuthConfiguration.READ_SCOPE ->
+                "Daten einer separat gestarteten SkillPilot-Lernsession lesen";
+            case OpenAiDeOAuthConfiguration.WRITE_SCOPE ->
+                "Lernfortschritt einer separat gestarteten Lernsession nach Bestätigung aktualisieren";
+            case OpenAiDeOAuthConfiguration.OFFLINE_SCOPE ->
+                "App-Autorisierung ohne erneute Anmeldung aufrechterhalten";
             default -> HtmlUtils.htmlEscape(scope);
         };
     }

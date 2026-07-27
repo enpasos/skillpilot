@@ -13,8 +13,8 @@ import org.springframework.transaction.support.TransactionOperations;
 
 /**
  * Optional one-way, allowlist-scoped migration from former public OpenAI-DE
- * OAuth clients when an installation explicitly switches to a
- * CIMD/private_key_jwt client.
+ * OAuth clients when an installation explicitly switches to the fixed
+ * confidential {@code client_secret_basic} production client.
  *
  * <p>The migration deliberately does not discover candidates by provider
  * naming conventions or authentication method. It touches only exact client
@@ -37,7 +37,7 @@ final class OpenAiDeOAuthLegacyClientCutover {
     }
 
     void execute(OpenAiDeProperties properties) {
-        if (!OpenAiDeOAuthConfiguration.isPrivateKeyJwt(properties)) {
+        if (!OpenAiDeOAuthConfiguration.isClientSecretBasic(properties)) {
             return;
         }
         List<String> legacyClientIds = OpenAiDeOAuthConfiguration.normalizedLegacyClientIds(properties);
@@ -96,9 +96,6 @@ final class OpenAiDeOAuthLegacyClientCutover {
                     principalName);
             jdbcOperations.update(
                     "DELETE FROM openai_de_pending_launch WHERE connection_subject = ?",
-                    principalName);
-            jdbcOperations.update(
-                    "DELETE FROM openai_de_learning_session WHERE connection_subject = ?",
                     principalName);
         }
 

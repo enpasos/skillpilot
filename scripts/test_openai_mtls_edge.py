@@ -426,11 +426,29 @@ class DeploymentSecurityGateContractTest(unittest.TestCase):
         self.assertIn("OpenAiDeOAuthDiscoveryBootstrapIntegrationTest", script)
         self.assertIn("OpenAiDePublicOAuthContextIntegrationTest", script)
 
-    def test_invalid_oauth_profile_is_rejected_before_runtime_checks(self) -> None:
+    def test_client_secret_basic_profile_reaches_runtime_checks(self) -> None:
         environment = os.environ.copy()
         environment[
             "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD"
         ] = "client_secret_basic"
+        completed = subprocess.run(
+            [
+                str(ROOT / "scripts" / "verify_openai_mtls_edge.sh"),
+                "--runtime",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+            env=environment,
+        )
+        self.assertNotEqual(completed.returncode, 2)
+        self.assertNotIn("CHECK oauth_profile FAIL", completed.stderr)
+
+    def test_unknown_oauth_profile_is_rejected_before_runtime_checks(self) -> None:
+        environment = os.environ.copy()
+        environment[
+            "SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD"
+        ] = "unsupported"
         completed = subprocess.run(
             [
                 str(ROOT / "scripts" / "verify_openai_mtls_edge.sh"),

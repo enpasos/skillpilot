@@ -33,6 +33,8 @@ import org.mockito.ArgumentCaptor;
 class OpenAiDeCoachPersonalizationContractTest {
 
     private static final String LEARNER_ID = "learner-mica";
+    private static final String LEARNING_SESSION_ID =
+            "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String ROOT_ID = "landscape-orbit";
     private static final String FIRST_DESCENDANT_ID = "landscape-cobalt";
     private static final String SECOND_DESCENDANT_ID = "landscape-ember";
@@ -44,7 +46,8 @@ class OpenAiDeCoachPersonalizationContractTest {
     void setUp() {
         coachTools = mock(CoachToolFacade.class);
         OpenAiDeCoachIdentityResolver identityResolver = mock(OpenAiDeCoachIdentityResolver.class);
-        when(identityResolver.resolveSkillpilotId(any())).thenReturn(LEARNER_ID);
+        when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
+                .thenReturn(LEARNER_ID);
         SimpleMeterRegistry meterRegistry = new SimpleMeterRegistry();
         contract = new OpenAiDeCoachMcpContract(
                 coachTools,
@@ -146,6 +149,10 @@ class OpenAiDeCoachPersonalizationContractTest {
     }
 
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {
+        Map<String, Object> requestArguments = new java.util.LinkedHashMap<>(arguments);
+        requestArguments.put(
+                OpenAiDeCoachMcpContract.LEARNING_SESSION_ID,
+                LEARNING_SESSION_ID);
         McpStatelessServerFeatures.SyncToolSpecification specification =
                 contract.toolSpecifications().stream()
                         .filter(candidate -> name.equals(candidate.tool().name()))
@@ -153,7 +160,7 @@ class OpenAiDeCoachPersonalizationContractTest {
                         .orElseThrow();
         return specification.callHandler().apply(
                 McpTransportContext.EMPTY,
-                new McpSchema.CallToolRequest(name, arguments));
+                new McpSchema.CallToolRequest(name, requestArguments));
     }
 
     private static PersonalizationPlan rootFilterPlan() {

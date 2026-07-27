@@ -6,7 +6,7 @@ SOURCE_DIR="${ROOT_DIR}/deploy/openai-mtls"
 MODE="${1:-}"
 BASE_URL="${SKILLPILOT_PUBLIC_BASE_URL:-https://skillpilot.com}"
 BASE_URL="${BASE_URL%/}"
-EXPECTED_CLIENT_AUTHENTICATION_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-none}"
+EXPECTED_CLIENT_AUTHENTICATION_METHOD="${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:-client_secret_basic}"
 INSTALL_DIR="/etc/skillpilot/openai-mtls"
 INSTALLED_ROOT_CA="${INSTALL_DIR}/openai-root-ca.pem"
 INSTALLED_INTERMEDIATE_CA="${INSTALL_DIR}/openai-connectors-mtls-ca.pem"
@@ -25,7 +25,7 @@ case "${MODE}" in
 esac
 
 case "${EXPECTED_CLIENT_AUTHENTICATION_METHOD}" in
-  none|private_key_jwt)
+  client_secret_basic|none|private_key_jwt)
     ;;
   *)
     echo "CHECK oauth_profile FAIL unsupported client authentication method: ${EXPECTED_CLIENT_AUTHENTICATION_METHOD}" >&2

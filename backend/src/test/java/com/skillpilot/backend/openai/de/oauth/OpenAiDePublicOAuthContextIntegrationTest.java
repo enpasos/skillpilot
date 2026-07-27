@@ -23,12 +23,14 @@ import org.springframework.test.context.TestPropertySource;
         "spring.liquibase.enabled=true",
         "spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.yaml",
         "skillpilot.openai.de.enabled=true",
+        "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
         "skillpilot.openai.de.security.secure-mode=true",
         "skillpilot.openai.de.oauth.enabled=true",
-        "skillpilot.openai.de.oauth.client-authentication-method=none",
+        "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
         "skillpilot.openai.de.oauth.client-assertion-replay-cache-size=0",
-        "skillpilot.openai.de.oauth.client-id=chatgpt-public-test-client",
-        "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/public-test-callback",
+        "skillpilot.openai.de.oauth.client-id=chatgpt-confidential-test-client",
+        "skillpilot.openai.de.oauth.client-secret=confidential-test-secret-that-is-longer-than-thirty-two-characters",
+        "skillpilot.openai.de.oauth.redirect-uris=https://chatgpt.com/connector/oauth/confidential-test-callback",
         "skillpilot.openai.de.mtls-edge.enabled=false",
         "skillpilot.openai.de.mcp.enabled=false",
         "skillpilot.openai.de.secure-cookie=false",
@@ -46,14 +48,17 @@ class OpenAiDePublicOAuthContextIntegrationTest {
     private RegisteredClientRepository registeredClients;
 
     @Test
-    void fullContextStartsForPinnedPublicClientWithoutReplayCache() {
+    void secureContextStartsForPinnedConfidentialClientWithoutReplayCache() {
         assertThat(context.getBeansOfType(OpenAiDeJwtClientAssertionValidator.class))
                 .isEmpty();
 
         RegisteredClient client =
-                registeredClients.findByClientId("chatgpt-public-test-client");
+                registeredClients.findByClientId("chatgpt-confidential-test-client");
         assertThat(client).isNotNull();
         assertThat(client.getClientAuthenticationMethods())
-                .containsExactly(ClientAuthenticationMethod.NONE);
+                .containsExactly(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);
+        assertThat(client.getClientSecret())
+                .startsWith("{bcrypt}")
+                .doesNotContain("confidential-test-secret");
     }
 }

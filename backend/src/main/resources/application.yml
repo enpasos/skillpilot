@@ -110,14 +110,14 @@ skillpilot:
         request-timeout: PT30S
       oauth:
         enabled: ${SKILLPILOT_OPENAI_DE_OAUTH_ENABLED:false}
-        # Supported production profiles:
-        # - pre-registered public client: exact opaque client-id plus "none";
-        # - CIMD client: exact HTTPS metadata-document client-id plus
-        #   private_key_jwt and a same-origin pinned JWK Set URL.
-        # Both profiles additionally require exact redirects, PKCE S256, and
-        # resource/audience and scope validation. The OpenAI mTLS edge is an
-        # optional additional hardening layer for the MCP resource.
+        # The production profile is one pre-registered static confidential
+        # client: exact opaque client-id and secret from ChatGPT app management
+        # plus client_secret_basic. Legacy none and private_key_jwt profiles
+        # remain available only outside secure mode. Production additionally
+        # requires exact redirects, PKCE S256, and resource/audience and scope
+        # validation.
         client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
+        client-secret: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET:}
         redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
         client-authentication-method: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:none}
         client-jwk-set-uri: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI:}

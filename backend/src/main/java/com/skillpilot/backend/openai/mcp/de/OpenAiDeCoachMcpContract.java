@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -69,11 +70,17 @@ public final class OpenAiDeCoachMcpContract {
     public static final String GET_RECALL_ANSWER = "get_skillpilot_verified_recall_answer_de";
     public static final String RECORD_RECALL_RESULT = "record_skillpilot_verified_recall_result_de";
     public static final String GET_EXAM_EVALUATION = "get_skillpilot_exam_evaluation_de";
+    public static final String LEARNING_SESSION_ID = "learningSessionId";
+
+    private static final Pattern LEARNING_SESSION_PATTERN =
+            Pattern.compile("^sps_[A-Za-z0-9_-]{43}$");
 
     private static final String SERVER_INSTRUCTIONS = """
             Du bist der deutsche SkillPilot-Lerncoach. Wenn SkillPilot Coach (Deutsch) für den Chat ausgewählt oder ausdrücklich genannt wurde und die lernende Person lernen, üben, eine Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren Lernstand verwenden möchte, rufe vor der ersten fachlichen Antwort get_skillpilot_context_de auf. Verwende danach den jüngsten structuredContent als alleinige Autorität für Curriculum, Kursprofil, Scope, aktives Ziel, Mastery, Frontier, Aufgabe, Recall, Prüfung, Fortschritt und nächsten Schritt. Ersetze einen fehlenden oder fehlgeschlagenen Aufruf niemals durch eine allgemeine Lehrplanübersicht, allgemeine Lernberatung oder einen erfundenen Lernpfad. Lade den Zustand mit demselben Tool nach Reload, langem Dialog, möglicher Kontextkompaktierung, Unsicherheit oder einem 409-Konflikt erneut. Nach einer Mutation gilt ausschließlich der frische Folgezustand.
 
-            Antworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, verwende nur https://skillpilot.com. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.
+            Die Startnachricht aus SkillPilot enthält genau eine kurzlebige SkillPilot-Lernsession. Übernimm diesen Wert unverändert und sende ihn bei ausnahmslos jedem Tool-Aufruf ausschließlich im Argument learningSessionId. Verwende niemals einen Wert aus einer älteren Startnachricht. Die Lernsession darf nicht aus OAuth, Gesprächsinhalten oder anderen IDs abgeleitet werden. Zeige sie in deinen Antworten nicht erneut und bitte die lernende Person nicht, sie abzuschreiben oder erneut einzugeben.
+
+            Antworte auf Deutsch, klar, ermutigend und altersangemessen. Nenne der lernenden Person keine Tool-, API-, JSON- oder Feldnamen und außer der bereits in ihrer Startnachricht enthaltenen Lernsession keine technischen IDs. Gib niemals OAuth-Tokens, Verbindungssubjekte, permanente SkillPilot-IDs oder andere Geheimnisse aus und fordere sie nie an. Verwende Backend-URLs ausschließlich wortgetreu; konstruiere keine Links aus IDs und hänge keine Tokens an. Fehlt ein freigegebener Link, verwende nur https://skillpilot.com. Schreibe Mathematik nur mit \\(...\\) inline oder \\[...\\] abgesetzt, nie mit Dollar-Delimiter.
 
             Führe dialogisch an genau einem bestätigten atomischen Ziel: prüfe kurz Vorwissen, stütze mit kleinen Hinweisen, lasse selbst arbeiten und gib die Lösung der unmittelbar folgenden Aufgabe nicht vor. Bewerte fachlich, nicht nach Wortlaut. Anerkenne gleichwertige korrekte Ergebnisse, Darstellungen, Begründungen und alternative Lösungswege vollständig; ausdrücklich verlangte Formate, Einheiten, Prozentangaben, Begründungen und sonstige Kriterien bleiben bindend. Speichere Mastery nur für das aktive Ziel und erst nach genau zwei unabhängigen Checks oder echtem mehrschrittigem Transfer in verändertem Kontext; prüfe alle Aspekte. Selbsteinschätzung, Wiederholung oder derselbe vorgerechnete Fall reichen nicht. Cluster- und Memorierungsziele werden nie manuell gemeistert.
 
@@ -81,7 +88,7 @@ public final class OpenAiDeCoachMcpContract {
 
             Bei Verified Recall zeige den vollständigen Fragenbatch und warte auf alle Antworten. Rufe jede Sollantwort erst nach der zugehörigen Lernendenantwort ab, akzeptiere fachlich gleichwertige Formulierungen und speichere jede Karte sofort; passed=true nur bei korrekter Antwort ohne Hilfe. Speichere alle Karten vor dem nächsten Batch, prüfe eine Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery.
 
-            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: wende eindeutige frische Schritte direkt an und frage nur offene Entscheidungen. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Token noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
+            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: wende eindeutige frische Schritte direkt an und frage nur offene Entscheidungen. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Lernsession noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
             """;
 
     private final CoachToolFacade coachTools;
@@ -196,7 +203,8 @@ public final class OpenAiDeCoachMcpContract {
                                 + "(Deutsch) ausgewählt oder SkillPilot genannt hat und lernen, üben, eine "
                                 + "Lerneinheit starten, fortsetzen oder wiederaufnehmen oder ihren gespeicherten "
                                 + "Lernstand verwenden möchte. Es lädt den autoritativen persönlichen "
-                                + "SkillPilot-Zustand ohne Argumente. Verwende es außerdem nach einem neuen Chat, "
+                                + "SkillPilot-Zustand für die im Startprompt enthaltene Lernsession. Verwende es "
+                                + "außerdem nach einem neuen Chat, "
                                 + "Reload, langem Dialog, möglicher Kontextkompaktierung, Kontextverlust oder "
                                 + "Konflikt. Ersetze diesen Aufruf niemals durch allgemeine Lernberatung, einen "
                                 + "selbst erstellten Lehrplan oder erfundene Lernziele. Verwende es nicht für "
@@ -362,7 +370,7 @@ public final class OpenAiDeCoachMcpContract {
                 .name(name)
                 .title(title)
                 .description(description)
-                .inputSchema(inputSchema)
+                .inputSchema(withLearningSessionSchema(inputSchema))
                 .outputSchema(outputSchema)
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
@@ -405,9 +413,11 @@ public final class OpenAiDeCoachMcpContract {
             McpTransportContext transportContext,
             Map<String, Object> arguments,
             boolean writeScope,
-            ToolOperation operation) {
+        ToolOperation operation) {
         try {
-            String skillpilotId = identityResolver.resolveSkillpilotId(transportContext);
+            String learningSessionId = requiredLearningSessionId(arguments);
+            String skillpilotId =
+                    identityResolver.resolveSkillpilotId(transportContext, learningSessionId);
             if (skillpilotId == null || skillpilotId.isBlank()) {
                 telemetry.recordOperational(Event.UNAUTHORIZED);
                 return SkillPilotMcpToolResults.authenticationRequired(identityResolver.authenticationChallenge());
@@ -873,6 +883,18 @@ public final class OpenAiDeCoachMcpContract {
         return value;
     }
 
+    private String requiredLearningSessionId(Map<String, Object> arguments) {
+        Object value = arguments.get(LEARNING_SESSION_ID);
+        if (!(value instanceof String text)) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
+        String normalized = text.trim();
+        if (!LEARNING_SESSION_PATTERN.matcher(normalized).matches()) {
+            throw new OpenAiDeLearningSessionRequiredException();
+        }
+        return normalized;
+    }
+
     private String optionalString(Map<String, Object> arguments, String name) {
         Object value = arguments.get(name);
         if (value == null) {
@@ -957,6 +979,42 @@ public final class OpenAiDeCoachMcpContract {
 
     private static Map<String, Object> emptyObjectSchema() {
         return objectSchema(Map.of(), List.of());
+    }
+
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> withLearningSessionSchema(Map<String, Object> inputSchema) {
+        Map<String, Object> properties = new LinkedHashMap<>();
+        Object originalProperties = inputSchema.get("properties");
+        if (originalProperties instanceof Map<?, ?> propertyMap) {
+            propertyMap.forEach((key, value) -> {
+                if (key instanceof String name) {
+                    properties.put(name, value);
+                }
+            });
+        }
+        properties.put(
+                LEARNING_SESSION_ID,
+                Map.of(
+                        "type", "string",
+                        "minLength", 47,
+                        "maxLength", 47,
+                        "pattern", "^sps_[A-Za-z0-9_-]{43}$",
+                        "description",
+                                "Kurzlebige SkillPilot-Lernsession aus der aktuellen Startnachricht. "
+                                        + "Bei jedem Tool-Aufruf unverändert mitsenden."));
+
+        List<String> required = new ArrayList<>();
+        Object originalRequired = inputSchema.get("required");
+        if (originalRequired instanceof List<?> requiredList) {
+            requiredList.stream()
+                    .filter(String.class::isInstance)
+                    .map(String.class::cast)
+                    .forEach(required::add);
+        }
+        if (!required.contains(LEARNING_SESSION_ID)) {
+            required.add(LEARNING_SESSION_ID);
+        }
+        return objectSchema(properties, List.copyOf(required));
     }
 
     private static Map<String, Object> contextSchema() {

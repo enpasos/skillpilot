@@ -43,6 +43,7 @@ import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
 import { dispatchLearnerUiRefresh } from '../utils/learnerUiEvents'
 import { formatFilterDisplayLabel } from '../utils/filterLabels'
+import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import { getLearnerViewCopy } from '../utils/learnerViewCopy'
 import { getNextVisibleLearnerGoalSelection, shouldAutoRevealActiveGoal } from '../utils/learnerGoalSelection'
 import { buildGoalContainsClosure } from '../utils/plannedScope'
@@ -323,6 +324,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null)
   const srsCompletionRef = useRef<Record<string, number>>({})
   const srsCompletionInFlightRef = useRef<Set<string>>(new Set())
+  const verifiedRecallStartInFlightRef = useRef(createSynchronousInFlightGuard())
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
   const forceActiveGoalRevealRef = useRef(false)
@@ -725,6 +727,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [getLearnerGoalTitle, landscapeId, localizedLanguage, openAiMcpCoachActive, visibleSessionLaunchCopy])
 
   const handleStartVerifiedRecall = useCallback(async (goal: UiGoal) => {
+    if (!verifiedRecallStartInFlightRef.current.tryStart()) return
     const chatWindow = window.open('', '_blank')
     const batchSize = verifiedRecallBatchSizeByGoal[goal.id] ?? VERIFIED_RECALL_DEFAULT_BATCH_SIZE
     try {
@@ -758,6 +761,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         return
       }
       onNotify?.('error', learnerViewCopy.memoryVerifiedRecallLaunchFailed)
+    } finally {
+      verifiedRecallStartInFlightRef.current.finish()
     }
   }, [
     buildVerifiedRecallPromptContext,

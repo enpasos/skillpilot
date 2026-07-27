@@ -17,24 +17,15 @@ export type OpenAiMcpLaunchIntent =
 export interface OpenAiMcpStartResponse {
   prompt: string
   webUrl: string
+  learningSessionId: string
   expiresAt: string
   connected: boolean
-}
-
-interface OpenAiMcpStatusResponse {
-  connected?: unknown
-}
-
-interface OpenAiMcpConnectStartResponse {
-  chatgptUrl?: unknown
-  prompt?: unknown
-  expiresAt?: unknown
-  connected?: unknown
 }
 
 interface OpenAiMcpLaunchResponse {
   prompt?: unknown
   webUrl?: unknown
+  learningSessionId?: unknown
   expiresAt?: unknown
 }
 
@@ -43,8 +34,8 @@ interface OpenAiMcpRequestOptions {
   fetchImpl?: typeof fetch
 }
 
-const DEFAULT_START_PROMPT =
-  'Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.'
+const LEARNING_SESSION_PATTERN = /^sps_[A-Za-z0-9_-]{43}$/
+const LEARNING_SESSION_IN_PROMPT_PATTERN = /sps_[A-Za-z0-9_-]{43}/g
 
 const getApiBase = (configured?: string) => {
   const runtimeEnvironment = (import.meta as ImportMeta & {
@@ -53,7 +44,7 @@ const getApiBase = (configured?: string) => {
   return (configured ?? runtimeEnvironment?.VITE_API_BASE ?? '').replace(/\/+$/, '')
 }
 
-const getLearnerPath = (skillpilotId: string, action: 'status' | 'connect-start' | 'launch' | 'connection') => {
+const getLearnerPath = (skillpilotId: string, action: 'launch') => {
   const sanitizedId = sanitizeSkillpilotId(skillpilotId)
   if (!sanitizedId) throw new Error('Missing SkillPilot ID')
   return `/api/ui/learners/${encodeURIComponent(sanitizedId)}/openai/de/${action}`
@@ -61,7 +52,7 @@ const getLearnerPath = (skillpilotId: string, action: 'status' | 'connect-start'
 
 export const buildOpenAiMcpEndpoint = (
   skillpilotId: string,
-  action: 'status' | 'connect-start' | 'launch' | 'connection',
+  action: 'launch',
   apiBase?: string,
 ) => `${getApiBase(apiBase)}${getLearnerPath(skillpilotId, action)}`
 
@@ -78,6 +69,18 @@ const readExpiry = (value: unknown) => {
     throw new Error('Invalid OpenAI MCP response: invalid expiresAt')
   }
   return expiry
+}
+
+const readLearningSession = (value: unknown, prompt: string) => {
+  const learningSessionId = readRequiredString(value, 'learningSessionId')
+  if (!LEARNING_SESSION_PATTERN.test(learningSessionId)) {
+    throw new Error('Invalid OpenAI MCP response: invalid learningSessionId')
+  }
+  const promptSessions = prompt.match(LEARNING_SESSION_IN_PROMPT_PATTERN) ?? []
+  if (promptSessions.length !== 1 || promptSessions[0] !== learningSessionId) {
+    throw new Error('Invalid OpenAI MCP response: prompt learning session mismatch')
+  }
+  return learningSessionId
 }
 
 export const getSafeChatGptUrl = (value: unknown): string | null => {
@@ -132,7 +135,7 @@ const requestBody = (input: OpenAiMcpStartInput) => JSON.stringify({
   providerEligibilityConfirmed: input.providerEligibilityConfirmed,
 })
 
-const requestConnectedLaunch = async (
+const requestLaunch = async (
   input: OpenAiMcpStartInput,
   apiBase: string,
   fetchImpl: typeof fetch,
@@ -149,9 +152,11 @@ const requestConnectedLaunch = async (
   )
   const webUrl = getSafeChatGptUrl(launch.webUrl)
   if (!webUrl) throw new Error('Invalid OpenAI MCP response: invalid webUrl')
+  const prompt = readRequiredString(launch.prompt, 'prompt')
   return {
-    prompt: readRequiredString(launch.prompt, 'prompt'),
+    prompt,
     webUrl,
+    learningSessionId: readLearningSession(launch.learningSessionId, prompt),
     expiresAt: readExpiry(launch.expiresAt),
     connected: true,
   }
@@ -169,56 +174,5 @@ export const requestOpenAiMcpStart = async (
   }
   const fetchImpl = options.fetchImpl ?? fetch
   const apiBase = getApiBase(options.apiBase)
-  const status = await requestJson<OpenAiMcpStatusResponse>(
-    buildOpenAiMcpEndpoint(input.skillpilotId, 'status', apiBase),
-    { method: 'GET', credentials: 'include' },
-    fetchImpl,
-  )
-
-  if (status.connected === true) {
-    return await requestConnectedLaunch(input, apiBase, fetchImpl)
-  }
-
-  const connection = await requestJson<OpenAiMcpConnectStartResponse>(
-    buildOpenAiMcpEndpoint(input.skillpilotId, 'connect-start', apiBase),
-    {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: requestBody(input),
-    },
-    fetchImpl,
-  )
-  // The connection state can change between the status read and this
-  // transaction (for example when a parallel OAuth flow has just completed).
-  // In that case the binding grant is not the learning-session handshake:
-  // create the explicit launch before opening ChatGPT.
-  if (connection.connected === true) {
-    return await requestConnectedLaunch(input, apiBase, fetchImpl)
-  }
-  const webUrl = getSafeChatGptUrl(connection.chatgptUrl)
-  if (!webUrl) throw new Error('Invalid OpenAI MCP response: invalid chatgptUrl')
-  return {
-    prompt: typeof connection.prompt === 'string' && connection.prompt.trim()
-      ? connection.prompt.trim()
-      : DEFAULT_START_PROMPT,
-    webUrl,
-    expiresAt: readExpiry(connection.expiresAt),
-    connected: connection.connected === true,
-  }
-}
-
-export const disconnectOpenAiMcp = async (
-  skillpilotId: string,
-  options: OpenAiMcpRequestOptions = {},
-): Promise<void> => {
-  const fetchImpl = options.fetchImpl ?? fetch
-  const response = await fetchImpl(
-    buildOpenAiMcpEndpoint(skillpilotId, 'connection', options.apiBase),
-    { method: 'DELETE', credentials: 'include' },
-  )
-  if (!response.ok) {
-    const message = (await response.text()).trim()
-    throw new Error(message || `OpenAI MCP disconnect failed (${response.status})`)
-  }
+  return await requestLaunch(input, apiBase, fetchImpl)
 }

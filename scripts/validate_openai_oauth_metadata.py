@@ -145,10 +145,14 @@ def validate_authorization_server(
     token_authentication_methods = metadata.get(
         "token_endpoint_auth_methods_supported"
     )
-    if token_authentication_methods not in (["none"], ["private_key_jwt"]):
+    if token_authentication_methods not in (
+        ["client_secret_basic"],
+        ["none"],
+        ["private_key_jwt"],
+    ):
         raise MetadataValidationError(
             "token_endpoint_auth_methods_supported must be exactly "
-            "['none'] or ['private_key_jwt']"
+            "['client_secret_basic'], ['none'] or ['private_key_jwt']"
         )
     _require_exact_value(
         metadata,
@@ -189,11 +193,11 @@ def validate_authorization_server(
     else:
         if "client_id_metadata_document_supported" in metadata:
             raise MetadataValidationError(
-                "public-client metadata must not advertise CIMD support"
+                "non-CIMD client metadata must not advertise CIMD support"
             )
         if "token_endpoint_auth_signing_alg_values_supported" in metadata:
             raise MetadataValidationError(
-                "public-client metadata must not advertise assertion algorithms"
+                "non-assertion client metadata must not advertise assertion algorithms"
             )
 
 
@@ -207,7 +211,7 @@ def _parse_arguments() -> argparse.Namespace:
     parser.add_argument("--base-url", required=True)
     parser.add_argument(
         "--required-client-authentication-method",
-        choices=("none", "private_key_jwt"),
+        choices=("client_secret_basic", "none", "private_key_jwt"),
     )
     return parser.parse_args()
 

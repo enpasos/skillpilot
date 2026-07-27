@@ -12,22 +12,27 @@ third:
 
 1. **Normal TLS authenticates the SkillPilot server and protects transport.**
    The MCP resource additionally requires a valid OAuth access token.
-2. **OAuth enforces SkillPilot's explicitly configured client registration and
-   grant contract.** The supported baseline is a pre-registered public client
-   with authentication method `none`, exact client ID and callback allowlist,
-   and mandatory PKCE `S256`. Its public client ID is not a credential and does
-   not cryptographically authenticate a client; PKCE protects redemption of
-   the authorization code. An optional stronger profile uses an exact HTTPS
-   CIMD client ID, same-origin JWKS and `private_key_jwt` for cryptographic
-   client authentication. Resource and scopes are exact in both profiles.
-   Neither profile by itself attests the visible app name.
+2. **OAuth authenticates the configured SkillPilot MCP app as a confidential
+   client.** Production accepts exactly one pre-registered client ID, an exact
+   callback allowlist, mandatory PKCE `S256`, and
+   `client_secret_basic` at the token endpoint. The long random client secret
+   is configured only in ChatGPT and SkillPilot and is never written to this
+   repository, documentation, browser storage, or logs. Tokens are restricted
+   to the exact MCP resource/audience and scopes. DCR, CIMD,
+   `private_key_jwt`, and unauthenticated token requests are not part of the
+   active production profile.
 3. **Optional mTLS authenticates the OpenAI connector infrastructure as the
    MCP client.** It does not by itself attest one uniquely named app. If this
    hardening is enabled, only the resource `/api/openai/de/mcp` and its
    subpaths require an OpenAI-managed client certificate.
-4. **OAuth 2.1 authenticates and authorizes the learner.** Discovery,
-   authorization, token, and browser callback endpoints remain reachable
-   without a client certificate.
+4. **A separate SkillPilot learning-session ID selects the learner context.**
+   Every explicit **Lernen starten** action creates a fresh, high-entropy
+   session valid for exactly 24 hours. SkillPilot inserts it automatically into
+   the prepared ChatGPT prompt, and ChatGPT passes it unchanged to every fachlicher
+   MCP tool. OAuth alone never creates or selects a learning session, and a
+   session ID alone never authorizes MCP access. Discovery, authorization,
+   token, and browser callback endpoints remain reachable without a client
+   certificate.
 
 This follows OpenAI's current requirement to validate that the presented leaf
 certificate chains to the published OpenAI Connectors mTLS intermediate CA, is
@@ -64,9 +69,10 @@ locations.
 Do not perform these steps for the normal TLS/OAuth compatibility mode. This
 is a separate privileged hardening operation, not part of the normal
 application deployment. Before changing production, back up the database and
-the active nginx configuration. Record the selected OAuth client profile,
-exact client ID, production callback URL and any exact legacy client IDs. For
-the optional CIMD profile, also record the CIMD and JWKS URLs.
+the active nginx configuration. Record the fixed OAuth client ID, production
+callback URL, resource/audience, scopes, and secret-rotation procedure. Never
+copy the client secret into the runbook, shell history, deployment output, or
+logs.
 
 ```bash
 cd /home/enpasos/skillpilot
@@ -120,22 +126,21 @@ the client certificate.
 The intended first-cutover order is:
 
 1. database and nginx backup;
-2. record the selected client profile, exact client ID, callback, and exact
-   legacy client IDs only if an actual client switch is planned; for the
-   optional stronger profile additionally record CIMD and JWKS;
+2. record the fixed confidential client ID, exact callback, resource/audience,
+   scopes, and secret-rotation procedure;
 3. run the static verification;
 4. install verifier and nginx snippet;
-5. set the secure backend variables; configure the one-time exact legacy
-   client allowlist only for an actual client switch;
+5. set the secure backend variables without printing the client secret;
 6. activate nginx gate and backend together in a maintenance window;
 7. run the privileged `--installed` verification;
-8. reconnect once and run a positive end-to-end test through ChatGPT;
-9. if a legacy-client allowlist was used, remove it from the environment after
-   the successful cutover.
+8. reconnect once and run a positive end-to-end test through ChatGPT that
+   proves both the OAuth client binding and a fresh **Lernen starten** session;
+9. prove the negative cases: OAuth without a learning-session ID and a session
+   ID without OAuth must both be rejected.
 
-Any old tokens, consents, client registrations, and provider connections named
-by a configured cutover allowlist are deliberately removed or revoked. Rolling
-back only the application does not restore them.
+Rotating the confidential client credentials invalidates the old app
+connection and normally requires reconnecting the app. Rolling back only the
+application does not restore revoked tokens or replaced client credentials.
 
 ## Verification modes and deployments
 

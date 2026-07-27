@@ -4,7 +4,7 @@
 
 SkillPilot guides you step by step through your curriculum. You start an AI learning coach, work on suitable learning goals, and track your progress in the cockpit.
 
-> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT app **SkillPilot Coach (Deutsch)** with OAuth/MCP and no visible session token. Visible Session is retained for English and as a rollback path; it is not the current German architecture.
+> **Architecture status:** The English coach currently remains on the separate Visible Session fallback described below. The current German reference integration uses the ChatGPT app **SkillPilot Coach (Deutsch)** with OAuth/MCP and a separate learning-session ID valid for exactly 24 hours. SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. Visible Session is retained for English and as a rollback path; it is not the current German architecture.
 
 All you need is a browser and a ChatGPT account for which the required GPT or app is available. Availability and usage limits are controlled by ChatGPT.
 
@@ -56,7 +56,7 @@ All you need is a browser and a ChatGPT account for which the required GPT or ap
 | --- |
 | *To learn, log in from the homepage. It costs nothing and you do not need to register with a name or email address.* |
 
-SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. In the current English fallback, starting the English learning coach creates a temporary visible chat session. The permanent SkillPilot ID stays in the browser and backend; ChatGPT sees only the session token, which expires after no more than 24 hours. The current German OAuth/MCP app keeps this session binding server-side instead.
+SkillPilot stores your learning progress under a pseudonymous SkillPilot ID. In the current English fallback, starting the English learning coach creates a temporary visible chat session. The permanent SkillPilot ID stays in the browser and backend; ChatGPT sees only the session token, which expires after no more than 24 hours. The current German OAuth/MCP app uses its own separate learning-session ID valid for exactly 24 hours: SkillPilot creates a fresh ID for every explicit UI start, inserts it automatically into the prepared start message, and the coach carries it into every functional tool call. The learner does not copy or manage it.
 
 ---
 
@@ -154,11 +154,11 @@ SkillPilot checks not only definitions but also application and transfer. You ca
 
 ### Does ChatGPT See My SkillPilot ID?
 
-No. Your permanent SkillPilot ID stays in the browser and with SkillPilot. In the English Visible Session fallback, ChatGPT sees only the temporary session token and the learning information needed for the current coaching dialog. The current German OAuth/MCP integration keeps the session binding server-side.
+No. Your permanent SkillPilot ID stays in the browser and with SkillPilot. In the English Visible Session fallback, ChatGPT sees only the temporary session token and the learning information needed for the current coaching dialog. The current German OAuth/MCP integration likewise uses only a separate temporary learning-session ID, inserted automatically into the prepared start message and carried into every functional tool call.
 
 ### Why Does Every Coach Response End With a Technical SkillPilot Footer?
 
-This footer belongs to the English Visible Session fallback. It carries the temporary session token and, while a goal is active, the unambiguous learning goal ID visibly across turns. While the token is still valid, do not publicly share the chat or screenshots containing that line. The current German OAuth/MCP app does not require this visible relay.
+This footer belongs to the English Visible Session fallback. It carries the temporary session token and, while a goal is active, the unambiguous learning goal ID visibly across turns. While the token is still valid, do not publicly share the chat or screenshots containing that line. The current German OAuth/MCP app does not use this response footer; its own short-lived learning-session ID is transported automatically in the prepared start message and as an explicit argument of every functional tool call.
 
 ### Do I Need ChatGPT Plus?
 

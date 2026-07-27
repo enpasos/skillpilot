@@ -1,23 +1,18 @@
 package com.skillpilot.backend.openai.de.oauth;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
-import com.skillpilot.backend.service.OpenAiDeCoachConnectionService;
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
-import org.springframework.web.server.ResponseStatusException;
 
 class OpenAiDeBindingAuthenticationFilterTest {
 
@@ -27,43 +22,37 @@ class OpenAiDeBindingAuthenticationFilterTest {
     }
 
     @Test
-    void consumedBindingRecordsOnlyBoundedReplayEventAndClearsCookie() throws Exception {
-        OpenAiDeCoachConnectionService connectionService = mock(OpenAiDeCoachConnectionService.class);
+    void authorizationRequestCreatesOnlyTechnicalAppPrincipal() throws Exception {
         SecurityContextRepository contextRepository = mock(SecurityContextRepository.class);
-        SimpleMeterRegistry registry = new SimpleMeterRegistry();
-        OpenAiDeOperationalTelemetry telemetry = new OpenAiDeOperationalTelemetry(registry);
-        OpenAiDeBindingAuthenticationFilter filter = new OpenAiDeBindingAuthenticationFilter(
-                connectionService,
-                contextRepository,
-                telemetry,
-                false);
-        MockHttpServletRequest request = new MockHttpServletRequest(
-                "GET",
-                OpenAiDeCoachConnectionService.AUTHORIZATION_PATH);
-        request.setCookies(
-                new Cookie(OpenAiDeCoachConnectionService.BINDING_COOKIE_NAME, "spodb_consumed"),
-                new Cookie(OpenAiDeCoachConnectionService.BROWSER_SESSION_COOKIE_NAME, "spobs_browser"));
+        OpenAiDeBindingAuthenticationFilter filter =
+                new OpenAiDeBindingAuthenticationFilter(contextRepository);
+        MockHttpServletRequest request =
+                new MockHttpServletRequest("GET", OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT);
         MockHttpServletResponse response = new MockHttpServletResponse();
-        when(connectionService.consumeBindingGrant("spodb_consumed", "spobs_browser"))
-                .thenThrow(new ResponseStatusException(HttpStatus.CONFLICT, "private replay detail"));
 
         filter.doFilter(request, response, new MockFilterChain());
 
-        assertThat(response.getRedirectedUrl())
-                .isEqualTo("/api/openai/de/oauth/connect-required?reason=expired");
-        assertThat(response.getHeaders("Set-Cookie"))
-                .anySatisfy(cookie -> assertThat(cookie)
-                        .contains(OpenAiDeCoachConnectionService.BINDING_COOKIE_NAME + "=")
-                        .contains("Max-Age=0"));
-        assertThat(registry.get(OpenAiDeOperationalTelemetry.EVENT_METRIC)
-                        .tag("event", "replay_rejected")
-                        .counter()
-                        .count())
-                .isEqualTo(1);
-        assertThat(registry.getMeters())
-                .allSatisfy(meter -> assertThat(meter.getId().getTags())
-                        .extracting(tag -> tag.getKey())
-                        .containsExactly("event"));
-        verify(connectionService).consumeBindingGrant("spodb_consumed", "spobs_browser");
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        assertThat(authentication).isNotNull();
+        assertThat(authentication.getName()).startsWith("spoa_");
+        assertThat(authentication.getAuthorities())
+                .extracting(Object::toString)
+                .containsExactly(OpenAiDeBindingAuthenticationFilter.CONNECTION_AUTHORITY);
+        verify(contextRepository).saveContext(any(), any(), any());
+    }
+
+    @Test
+    void unrelatedRequestDoesNotCreatePrincipal() throws Exception {
+        SecurityContextRepository contextRepository = mock(SecurityContextRepository.class);
+        OpenAiDeBindingAuthenticationFilter filter =
+                new OpenAiDeBindingAuthenticationFilter(contextRepository);
+
+        filter.doFilter(
+                new MockHttpServletRequest("GET", "/api/openai/de/mcp"),
+                new MockHttpServletResponse(),
+                new MockFilterChain());
+
+        assertThat(SecurityContextHolder.getContext().getAuthentication()).isNull();
+        verify(contextRepository, never()).saveContext(any(), any(), any());
     }
 }

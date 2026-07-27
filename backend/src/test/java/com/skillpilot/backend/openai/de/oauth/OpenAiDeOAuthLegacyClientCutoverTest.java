@@ -86,10 +86,6 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
                         "SELECT COUNT(*) FROM openai_de_pending_launch WHERE connection_subject = ?",
                         "foreign-subject"))
                 .isOne();
-        assertThat(count(
-                        "SELECT COUNT(*) FROM openai_de_learning_session WHERE connection_subject = ?",
-                        "foreign-subject"))
-                .isOne();
     }
 
     @Test
@@ -123,10 +119,6 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
                         "SELECT COUNT(*) FROM openai_de_pending_launch WHERE connection_subject = ?",
                         "first-subject"))
                 .isOne();
-        assertThat(count(
-                        "SELECT COUNT(*) FROM openai_de_learning_session WHERE connection_subject = ?",
-                        "first-subject"))
-                .isOne();
     }
 
     @Test
@@ -152,15 +144,13 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
                         "SELECT COUNT(*) FROM openai_de_pending_launch WHERE connection_subject = ?",
                         subject))
                 .isZero();
-        assertThat(count(
-                        "SELECT COUNT(*) FROM openai_de_learning_session WHERE connection_subject = ?",
-                        subject))
-                .isZero();
     }
 
     private OpenAiDeProperties secureProperties(String... legacyClientIds) {
         OpenAiDeProperties properties = new OpenAiDeProperties();
-        properties.getOauth().setClientAuthenticationMethod("private_key_jwt");
+        properties.getOauth().setClientAuthenticationMethod("client_secret_basic");
+        properties.getOauth().setClientSecret(
+                "test-client-secret-0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         properties.getOauth().setLegacyClientIds(List.of(legacyClientIds));
         return properties;
     }
@@ -194,9 +184,6 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
         jdbc.update(
                 "INSERT INTO openai_de_pending_launch (id, connection_subject) VALUES (?, ?)",
                 "launch-" + subject,
-                subject);
-        jdbc.update(
-                "INSERT INTO openai_de_learning_session (connection_subject) VALUES (?)",
                 subject);
     }
 
@@ -241,12 +228,6 @@ class OpenAiDeOAuthLegacyClientCutoverTest {
                 CREATE TABLE openai_de_pending_launch (
                     id VARCHAR(200) PRIMARY KEY,
                     connection_subject VARCHAR(96) NOT NULL
-                )
-                """);
-        jdbc.execute(
-                """
-                CREATE TABLE openai_de_learning_session (
-                    connection_subject VARCHAR(96) PRIMARY KEY
                 )
                 """);
     }

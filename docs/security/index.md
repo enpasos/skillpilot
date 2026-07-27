@@ -9,7 +9,7 @@ This page groups security and privacy documentation.
 ## OpenAI MCP
 
 - [OpenAI MCP Client Binding](openai-mcp-client-binding.md)
-- [OpenAI MCP OAuth, Learner, and 24h Session Architecture](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+- [OpenAI MCP OAuth App Binding and 24h Learning Sessions](../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 - [OpenAI MCP mTLS Edge Deployment](../deploy/openai-mcp-edge-mtls.md)
 
 ## Maintenance

@@ -4,10 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.domain.OpenAiDeBindingGrant;
-import com.skillpilot.backend.domain.OpenAiDeConnection;
-import com.skillpilot.backend.domain.OpenAiDePendingLaunch;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.repository.LearnerRepository;
@@ -28,10 +26,6 @@ import java.time.Duration;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,9 +46,9 @@ import org.springframework.test.context.TestPropertySource;
 /**
  * Vertical release gate for the German OpenAI coach.
  *
- * <p>The test starts the real application with H2 and drives the public browser-binding, OAuth and
- * MCP HTTP boundaries. Identity mapping, learner workflow services and repositories are deliberately
- * not mocked.</p>
+ * <p>The test starts the real application with H2 and drives the independent public learning-session,
+ * app-only OAuth and MCP HTTP boundaries. Identity mapping, learner workflow services and repositories
+ * are deliberately not mocked.</p>
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -65,7 +59,7 @@ import org.springframework.test.context.TestPropertySource;
         "spring.security.oauth2.client.registration.github.client-id=e2e-test-client",
         "spring.security.oauth2.client.registration.github.client-secret=e2e-test-secret",
         "skillpilot.public-base-url=https://skillpilot.test",
-        "skillpilot.security.signing-secret=openai-de-e2e-signing-secret",
+        "skillpilot.security.signing-secret=7Vh2Kp9Qw4Rx8Mz3Tn6Yc1Fd5Js0LaEuBiOg",
         "skillpilot.claude.enabled=false",
         "skillpilot.openai.de.enabled=true",
         "skillpilot.openai.de.writes-enabled=true",
@@ -82,7 +76,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String PERMANENT_SKILLPILOT_ID = "SP-E2E-PERMANENT-ID-MUST-NOT-LEAK";
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATHEMATICS_CURRICULUM_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
-    private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.clientId();
+    private static final String CLIENT_ID = OpenAiDeSecureOAuthTestServer.confidentialClientId();
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
 
@@ -118,7 +112,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
     @DynamicPropertySource
     static void secureOpenAiDeProperties(DynamicPropertyRegistry registry) {
-        OpenAiDeSecureOAuthTestServer.registerSecureProperties(registry);
+        OpenAiDeSecureOAuthTestServer.registerConfidentialSecureProperties(registry);
     }
 
     @BeforeEach
@@ -148,9 +142,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     @Test
-    void providerEligibilityIsRequiredAtThePublicStartBoundaryBeforePersistence() throws Exception {
+    void providerEligibilityIsRequiredAtLaunchBeforePersistence() throws Exception {
         String path = "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID)
-                + "/openai/de/connect-start";
+                + "/openai/de/launch";
 
         HttpResponse<String> missing = postJson(path, "{\"language\":\"de\"}", Map.of());
         HttpResponse<String> rejected = postJson(
@@ -165,6 +159,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(bindingGrantRepository.count()).isZero();
         assertThat(connectionRepository.count()).isZero();
         assertThat(pendingLaunchRepository.count()).isZero();
+        assertThat(learningSessionRepository.count()).isZero();
 
         HttpResponse<String> accepted = postJson(
                 path,
@@ -172,107 +167,91 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 Map.of());
 
         assertThat(accepted.statusCode()).withFailMessage(accepted.body()).isEqualTo(200);
-        assertThat(bindingGrantRepository.count()).isEqualTo(1);
+        assertThat(learningSessionRepository.count()).isEqualTo(1);
+        assertThat(bindingGrantRepository.count()).isZero();
         assertThat(connectionRepository.count()).isZero();
         assertThat(pendingLaunchRepository.count()).isZero();
     }
 
     @Test
-    void twoTabsInOneBrowserSessionCannotOpenTwoBindingGrants() throws Exception {
+    void everyLaunchCreatesAFreshIndependentTwentyFourHourLearningSession() throws Exception {
         String path = "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID)
-                + "/openai/de/connect-start";
-        HttpResponse<String> status = get(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");
-        String browserSession = responseCookie(status, "skillpilot_openai_de_browser");
-        HttpClient tabTransport = HttpClient.newBuilder()
-                .followRedirects(HttpClient.Redirect.NEVER)
-                .connectTimeout(Duration.ofSeconds(5))
-                .build();
-        CountDownLatch ready = new CountDownLatch(2);
-        CountDownLatch start = new CountDownLatch(1);
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        List<HttpResponse<String>> responses;
-        try {
-            var first = executor.submit(() -> postJson(
-                    tabTransport,
-                    path,
-                    "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
-                    browserSession,
-                    ready,
-                    start));
-            var second = executor.submit(() -> postJson(
-                    tabTransport,
-                    path,
-                    "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
-                    browserSession,
-                    ready,
-                    start));
-            assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
-            start.countDown();
-            responses = List.of(
-                    first.get(20, TimeUnit.SECONDS),
-                    second.get(20, TimeUnit.SECONDS));
-        } finally {
-            executor.shutdownNow();
-        }
+                + "/openai/de/launch";
 
-        assertThat(responses)
-                .extracting(HttpResponse::statusCode)
-                .allMatch(statusCode -> statusCode == 200 || statusCode == 409)
-                .contains(200);
-        assertThat(bindingGrantRepository.findAll()).singleElement().satisfies(grant -> {
-            assertThat(grant.getConsumedAt()).isNull();
-            assertThat(grant.getActiveBrowserSessionHash()).isNotBlank();
-        });
+        HttpResponse<String> first = postJson(
+                path,
+                "{\"language\":\"de\",\"client\":\"first\",\"providerEligibilityConfirmed\":true}",
+                Map.of());
+        HttpResponse<String> second = postJson(
+                path,
+                "{\"language\":\"de\",\"client\":\"second\",\"providerEligibilityConfirmed\":true}",
+                Map.of());
+
+        assertThat(first.statusCode()).withFailMessage(first.body()).isEqualTo(200);
+        assertThat(second.statusCode()).withFailMessage(second.body()).isEqualTo(200);
+        JsonNode firstBody = objectMapper.readTree(first.body());
+        JsonNode secondBody = objectMapper.readTree(second.body());
+        String firstSessionId = firstBody.path("learningSessionId").asText();
+        String secondSessionId = secondBody.path("learningSessionId").asText();
+        assertThat(firstSessionId).startsWith("sps_").hasSize(47);
+        assertThat(secondSessionId)
+                .startsWith("sps_")
+                .hasSize(47)
+                .isNotEqualTo(firstSessionId);
+        assertThat(firstBody.path("prompt").asText()).contains(firstSessionId);
+        assertThat(secondBody.path("prompt").asText()).contains(secondSessionId);
+        assertThat(learningSessionRepository.findAll())
+                .hasSize(2)
+                .allSatisfy(session -> {
+                    assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
+                    assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
+                            .isEqualTo(Duration.ofHours(24));
+                });
+        assertThat(bindingGrantRepository.count()).isZero();
         assertThat(connectionRepository.count()).isZero();
+        assertThat(pendingLaunchRepository.count()).isZero();
     }
 
     @Test
-    void bindingGrantFromOneBrowserSessionIsRejectedInAnotherWithoutConsumption() throws Exception {
+    void removedLegacyUiEndpointsReturnNotFound() throws Exception {
         HttpResponse<String> connectStart = postJson(
                 "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/connect-start",
                 "{\"language\":\"de\",\"providerEligibilityConfirmed\":true}",
                 Map.of());
-        assertThat(connectStart.statusCode()).withFailMessage(connectStart.body()).isEqualTo(200);
-        String bindingGrant = responseCookie(connectStart, "skillpilot_openai_de_binding");
+        HttpResponse<String> status = get(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");
 
-        HttpClient otherBrowser = HttpClient.newBuilder()
-                .followRedirects(HttpClient.Redirect.NEVER)
-                .connectTimeout(Duration.ofSeconds(5))
-                .build();
-        HttpRequest request = HttpRequest.newBuilder(localUri(authorizePath("wrong-browser-state")))
-                .header(
-                        HttpHeaders.COOKIE,
-                        "skillpilot_openai_de_binding=" + bindingGrant
-                                + "; skillpilot_openai_de_browser=spobs_other-browser-session")
-                .GET()
-                .build();
-        HttpResponse<String> authorize = otherBrowser.send(request, HttpResponse.BodyHandlers.ofString());
-
-        assertThat(authorize.statusCode()).isEqualTo(302);
-        assertThat(authorize.headers().firstValue(HttpHeaders.LOCATION))
-                .hasValueSatisfying(location -> assertThat(location).contains("/connect-required?reason=expired"));
-        assertThat(bindingGrantRepository.findAll()).singleElement().satisfies(grant -> {
-            assertThat(grant.getConsumedAt()).isNull();
-            assertThat(grant.getConnectionSubject()).isNull();
-            assertThat(grant.getActiveBrowserSessionHash()).isNotBlank();
-        });
+        assertThat(connectStart.statusCode()).isEqualTo(404);
+        assertThat(status.statusCode()).isEqualTo(404);
+        assertThat(learningSessionRepository.count()).isZero();
+        assertThat(bindingGrantRepository.count()).isZero();
         assertThat(connectionRepository.count()).isZero();
+        assertThat(pendingLaunchRepository.count()).isZero();
     }
 
     @Test
-    void browserBindingOAuthAndMcpPersistLearnerStateWithoutExposingPermanentId() throws Exception {
-        HttpResponse<String> connectStart = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/connect-start",
+    void appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId()
+            throws Exception {
+        HttpResponse<String> launch = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/launch",
                 """
                 {"language":"de","client":"openai-de-e2e","providerEligibilityConfirmed":true}
                 """,
                 Map.of());
-        assertThat(connectStart.statusCode()).withFailMessage(connectStart.body()).isEqualTo(200);
-        assertThat(connectStart.headers().allValues(HttpHeaders.SET_COOKIE))
-                .anySatisfy(cookie -> assertThat(cookie).contains("skillpilot_openai_de_binding="));
-        assertThat(connectStart.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
-        assertThat(bindingGrantRepository.count()).isEqualTo(1);
+        assertThat(launch.statusCode()).withFailMessage(launch.body()).isEqualTo(200);
+        assertThat(launch.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
+        JsonNode launchBody = objectMapper.readTree(launch.body());
+        String initialLearningSessionId = launchBody.path("learningSessionId").asText();
+        assertThat(initialLearningSessionId).startsWith("sps_").hasSize(47);
+        assertThat(launchBody.path("prompt").asText()).contains(initialLearningSessionId);
+        assertThat(learningSessionRepository.findAll())
+                .singleElement()
+                .satisfies(session -> {
+                    assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
+                    assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
+                            .isEqualTo(Duration.ofHours(24));
+                });
+        assertLegacyStateIsEmpty();
 
         String externalState = "chatgpt-e2e-state";
         String authorizePath = OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(List.of(
@@ -293,22 +272,14 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         URI consentUri = URI.create(authorize.headers().firstValue(HttpHeaders.LOCATION).orElseThrow());
         String consentState = parseQuery(consentUri.getRawQuery()).get("state");
         assertThat(consentState).isNotBlank();
-
-        OpenAiDeBindingGrant consumedGrant = bindingGrantRepository.findAll().getFirst();
-        assertThat(consumedGrant.getConsumedAt()).isNotNull();
-        assertThat(consumedGrant.getConnectionSubject()).isNotBlank().isNotEqualTo(PERMANENT_SKILLPILOT_ID);
-        OpenAiDeConnection createdConnection = connectionRepository
-                .findById(consumedGrant.getConnectionSubject())
-                .orElseThrow();
-        assertThat(createdConnection.getLastAuthorizedAt()).isNull();
-        assertThat(connectionRepository.findLearnerSkillpilotIdBySubject(createdConnection.getSubject()))
-                .contains(PERMANENT_SKILLPILOT_ID);
+        assertLegacyStateIsEmpty();
 
         HttpResponse<String> consent = get(consentUri.toString());
         assertThat(consent.statusCode()).isEqualTo(200);
         assertThat(consent.body())
-                .contains("ChatGPT mit SkillPilot verbinden")
-                .doesNotContain(PERMANENT_SKILLPILOT_ID, createdConnection.getSubject());
+                .contains("ChatGPT-App f&uuml;r SkillPilot autorisieren")
+                .contains("OAuth autorisiert nur die App")
+                .doesNotContain(PERMANENT_SKILLPILOT_ID);
 
         HttpResponse<String> approval = postForm(
                 OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT,
@@ -323,40 +294,39 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         Map<String, String> callbackQuery = parseQuery(callback.getRawQuery());
         assertThat(callbackQuery.get("state")).isEqualTo(externalState);
 
-        HttpResponse<String> token = postForm(
+        HttpResponse<String> token = postOpenAiAuthenticatedForm(
                 OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT,
-                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
+                List.of(
                         Map.entry("grant_type", "authorization_code"),
                         Map.entry("client_id", CLIENT_ID),
                         Map.entry("redirect_uri", CALLBACK),
                         Map.entry("code", callbackQuery.get("code")),
                         Map.entry("code_verifier", VERIFIER),
-                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")),
-                        OpenAiDeOAuthConfiguration.TOKEN_ENDPOINT));
+                        Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
         assertThat(token.statusCode()).withFailMessage(token.body()).isEqualTo(200);
-        assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, createdConnection.getSubject());
+        assertThat(token.body()).doesNotContain(PERMANENT_SKILLPILOT_ID);
         String accessToken = objectMapper.readTree(token.body()).path("access_token").asText();
         String refreshToken = objectMapper.readTree(token.body()).path("refresh_token").asText();
         assertThat(accessToken).isNotBlank();
         assertThat(refreshToken).isNotBlank();
 
-        OpenAiDeConnection authorizedConnection = connectionRepository
-                .findById(createdConnection.getSubject())
-                .orElseThrow();
-        assertThat(authorizedConnection.getLastAuthorizedAt()).isNotNull();
-        assertThat(authorizedConnection.getOauthExpiresAt()).isAfter(java.time.Instant.now());
         OAuth2Authorization authorization = authorizationService.findByToken(
                 accessToken,
                 OAuth2TokenType.ACCESS_TOKEN);
         assertThat(authorization).isNotNull();
-        assertThat(authorization.getPrincipalName())
-                .isEqualTo(createdConnection.getSubject())
+        String applicationSubject = authorization.getPrincipalName();
+        assertThat(applicationSubject)
+                .startsWith("spoa_")
+                .doesNotContain(PERMANENT_SKILLPILOT_ID)
                 .isNotEqualTo(PERMANENT_SKILLPILOT_ID);
+        assertThat(authorization.getPrincipalName())
+                .isEqualTo(applicationSubject);
+        assertLegacyStateIsEmpty();
 
         HttpResponse<String> tools = postMcp(accessToken, """
                 {"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}
                 """);
-        assertMcpPayloadDoesNotExposeIdentity(tools, createdConnection.getSubject());
+        assertMcpPayloadDoesNotExposeIdentity(tools, applicationSubject);
         assertThat(toolNames(tools))
                 .contains(OpenAiDeCoachMcpContract.GET_CONTEXT, OpenAiDeCoachMcpContract.SET_CURRICULUM);
         JsonNode bootstrapTool = toolDescriptor(tools, OpenAiDeCoachMcpContract.GET_CONTEXT);
@@ -367,26 +337,45 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .contains("SkillPilot Coach (Deutsch)")
                 .contains("allgemeine Lernberatung")
                 .contains("nicht für allgemeine Fachfragen ohne SkillPilot-Bezug");
-        assertThat(bootstrapTool.path("inputSchema").path("properties").isEmpty()).isTrue();
+        JsonNode bootstrapInputSchema = bootstrapTool.path("inputSchema");
+        assertThat(bootstrapInputSchema
+                        .path("properties")
+                        .path(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID)
+                        .path("type")
+                        .asText())
+                .isEqualTo("string");
+        assertThat(bootstrapInputSchema.path("required").valueStream()
+                        .map(JsonNode::asText)
+                        .toList())
+                .contains(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID);
         assertThat(bootstrapTool.path("annotations").path("readOnlyHint").asBoolean()).isTrue();
 
-        HttpResponse<String> initialRead =
-                callTool(accessToken, 2, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
-        assertMcpPayloadDoesNotExposeIdentity(initialRead, createdConnection.getSubject());
+        HttpResponse<String> initialRead = callTool(
+                accessToken,
+                2,
+                OpenAiDeCoachMcpContract.GET_CONTEXT,
+                "{}",
+                initialLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(initialRead, applicationSubject);
         JsonNode initialContext = result(initialRead).path("structuredContent");
         assertThat(initialContext.path("requiredAction").asText()).isEqualTo("setCurriculum");
         assertThat(initialContext.path("curriculum").isMissingNode()).isTrue();
 
-        learningSessionRepository.deleteById(createdConnection.getSubject());
+        String initialLearningSessionHash = learningSessionRepository.findAll().getFirst().getTokenHash();
+        learningSessionRepository.deleteById(initialLearningSessionHash);
         learningSessionRepository.flush();
-        HttpResponse<String> missingSession =
-                callTool(accessToken, 20, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
-        assertMcpPayloadDoesNotExposeIdentity(missingSession, createdConnection.getSubject());
+        HttpResponse<String> missingSession = callTool(
+                accessToken,
+                20,
+                OpenAiDeCoachMcpContract.GET_CONTEXT,
+                "{}",
+                initialLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(missingSession, applicationSubject);
         JsonNode missingSessionResult = objectMapper.readTree(missingSession.body()).path("result");
         assertThat(missingSessionResult.path("isError").asBoolean()).isTrue();
         assertThat(missingSessionResult.path("structuredContent").path("code").asText())
                 .isEqualTo("SESSION_REQUIRED");
-        long connectionCountBeforeRestart = connectionRepository.count();
+        assertLegacyStateIsEmpty();
 
         HttpResponse<String> restarted = postJson(
                 "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/launch",
@@ -396,18 +385,29 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 Map.of());
 
         assertThat(restarted.statusCode()).withFailMessage(restarted.body()).isEqualTo(200);
-        assertThat(restarted.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, createdConnection.getSubject());
-        assertThat(connectionRepository.count()).isEqualTo(connectionCountBeforeRestart);
-        assertThat(learningSessionRepository.findById(createdConnection.getSubject()))
-                .get()
+        assertThat(restarted.body()).doesNotContain(PERMANENT_SKILLPILOT_ID, applicationSubject);
+        JsonNode restartedBody = objectMapper.readTree(restarted.body());
+        String resumedLearningSessionId = restartedBody.path("learningSessionId").asText();
+        assertThat(resumedLearningSessionId)
+                .startsWith("sps_")
+                .hasSize(47)
+                .isNotEqualTo(initialLearningSessionId);
+        assertThat(restartedBody.path("prompt").asText()).contains(resumedLearningSessionId);
+        assertLegacyStateIsEmpty();
+        assertThat(learningSessionRepository.findAll())
+                .singleElement()
                 .satisfies(session -> {
                     assertThat(session.getStartedAt()).isBeforeOrEqualTo(session.getExpiresAt());
                     assertThat(Duration.between(session.getStartedAt(), session.getExpiresAt()))
                             .isEqualTo(Duration.ofHours(24));
                 });
-        HttpResponse<String> resumed =
-                callTool(accessToken, 21, OpenAiDeCoachMcpContract.GET_CONTEXT, "{}");
-        assertMcpPayloadDoesNotExposeIdentity(resumed, createdConnection.getSubject());
+        HttpResponse<String> resumed = callTool(
+                accessToken,
+                21,
+                OpenAiDeCoachMcpContract.GET_CONTEXT,
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(resumed, applicationSubject);
         assertThat(result(resumed).path("structuredContent").path("requiredAction").asText())
                 .isEqualTo("setCurriculum");
 
@@ -415,8 +415,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 3,
                 OpenAiDeCoachMcpContract.SET_CURRICULUM,
-                "{\"curriculumId\":\"" + CURRICULUM_ID + "\"}");
-        assertMcpPayloadDoesNotExposeIdentity(write, createdConnection.getSubject());
+                "{\"curriculumId\":\"" + CURRICULUM_ID + "\"}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(write, applicationSubject);
         JsonNode writtenContext = result(write).path("structuredContent");
         assertThat(writtenContext.path("curriculum").path("curriculumId").asText())
                 .isEqualTo(CURRICULUM_ID);
@@ -430,8 +431,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 4,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(jurisdictionOptionId));
-        assertMcpPayloadDoesNotExposeIdentity(jurisdiction, createdConnection.getSubject());
+                optionArguments(jurisdictionOptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(jurisdiction, applicationSubject);
         JsonNode jurisdictionContext = result(jurisdiction).path("structuredContent");
         assertThat(jurisdictionContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
         String mathematicsOptionId = optionIdByLabel(jurisdictionContext, "Mathematik");
@@ -453,8 +455,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 5,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(mathematicsOptionId));
-        assertMcpPayloadDoesNotExposeIdentity(subject, createdConnection.getSubject());
+                optionArguments(mathematicsOptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(subject, applicationSubject);
         JsonNode subjectContext = result(subject).path("structuredContent");
         assertThat(subjectContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
         String finishSubjectGroupId = optionIdByLabel(subjectContext, "Auswahl abschließen");
@@ -474,8 +477,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 6,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(finishSubjectGroupId));
-        assertMcpPayloadDoesNotExposeIdentity(finishSubjectGroup, createdConnection.getSubject());
+                optionArguments(finishSubjectGroupId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(finishSubjectGroup, applicationSubject);
         JsonNode profileContext = result(finishSubjectGroup).path("structuredContent");
         assertThat(profileContext.path("requiredAction").asText()).isEqualTo("setPersonalization");
         String courseProfileOptionId =
@@ -485,8 +489,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 7,
                 OpenAiDeCoachMcpContract.SET_PERSONALIZATION,
-                optionArguments(courseProfileOptionId));
-        assertMcpPayloadDoesNotExposeIdentity(courseProfile, createdConnection.getSubject());
+                optionArguments(courseProfileOptionId),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(courseProfile, applicationSubject);
         JsonNode courseContext = result(courseProfile).path("structuredContent");
         assertThat(courseContext.path("requiredAction").asText()).isNotEqualTo("setPersonalization");
         assertThat(courseContext.path("options")).isNotEmpty();
@@ -506,8 +511,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 accessToken,
                 8,
                 OpenAiDeCoachMcpContract.GET_CONTEXT,
-                "{}");
-        assertMcpPayloadDoesNotExposeIdentity(persistedRead, createdConnection.getSubject());
+                "{}",
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(persistedRead, applicationSubject);
         assertThat(result(persistedRead)
                         .path("structuredContent")
                         .path("curriculum")
@@ -515,52 +521,28 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         .asText())
                 .isEqualTo(CURRICULUM_ID);
 
-        OpenAiDeConnection usedConnection = connectionRepository
-                .findById(createdConnection.getSubject())
-                .orElseThrow();
-        assertThat(usedConnection.getLastUsedAt()).isNotNull();
-        List<OpenAiDePendingLaunch> launches = pendingLaunchRepository.findAll();
-        assertThat(launches)
-                .hasSize(2)
-                .allSatisfy(launch -> {
-                    assertThat(launch.getConnectionSubject()).isEqualTo(createdConnection.getSubject());
-                    assertThat(launch.getConsumedAt()).isNotNull();
-                });
+        assertLegacyStateIsEmpty();
+        assertThat(learningSessionRepository.count()).isEqualTo(1);
 
-        HttpResponse<String> connectedStatus = get(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");
-        assertThat(connectedStatus.statusCode()).isEqualTo(200);
-        assertThat(objectMapper.readTree(connectedStatus.body()).path("connected").asBoolean()).isTrue();
-
-        HttpResponse<String> revocation = postForm(
+        HttpResponse<String> revocation = postOpenAiAuthenticatedForm(
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
-                OpenAiDeSecureOAuthTestServer.withClientAssertion(List.of(
+                List.of(
                         Map.entry("client_id", CLIENT_ID),
                         Map.entry("token", refreshToken),
-                        Map.entry("token_type_hint", "refresh_token")),
-                        OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT));
+                        Map.entry("token_type_hint", "refresh_token")));
         assertThat(revocation.statusCode()).withFailMessage(revocation.body()).isEqualTo(200);
-        assertThat(connectionRepository.findById(createdConnection.getSubject()))
+        OAuth2Authorization revokedAuthorization =
+                authorizationService.findByToken(refreshToken, OAuth2TokenType.REFRESH_TOKEN);
+        assertThat(revokedAuthorization).isNotNull();
+        assertThat(revokedAuthorization.getRefreshToken().isInvalidated()).isTrue();
+        assertThat(learningSessionRepository.count())
+                .as("OAuth revocation does not revoke the independent learning session")
+                .isEqualTo(1);
+        assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID))
                 .get()
-                .extracting(OpenAiDeConnection::getRevokedAt)
-                .isNotNull();
-        assertThat(authorizationService.findByToken(accessToken, OAuth2TokenType.ACCESS_TOKEN)).isNull();
-        assertThat(pendingLaunchRepository.count()).isZero();
-
-        HttpResponse<String> disconnectedStatus = get(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/status");
-        assertThat(disconnectedStatus.statusCode()).isEqualTo(200);
-        assertThat(objectMapper.readTree(disconnectedStatus.body()).path("connected").asBoolean()).isFalse();
-
-        HttpResponse<String> reconnect = postJson(
-                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/de/connect-start",
-                "{\"language\":\"de\",\"client\":\"openai-de-reconnect\","
-                        + "\"providerEligibilityConfirmed\":true}",
-                Map.of());
-        assertThat(reconnect.statusCode()).withFailMessage(reconnect.body()).isEqualTo(200);
-        assertThat(bindingGrantRepository.findAll())
-                .filteredOn(grant -> grant.getConsumedAt() == null)
-                .singleElement();
+                .extracting(Learner::getSelectedCurriculum)
+                .isEqualTo(CURRICULUM_ID);
+        assertLegacyStateIsEmpty();
     }
 
     private HttpResponse<String> get(String path) throws Exception {
@@ -577,31 +559,23 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         return browser.send(request.build(), HttpResponse.BodyHandlers.ofString());
     }
 
-    private HttpResponse<String> postJson(
-            HttpClient client,
-            String path,
-            String body,
-            String browserSession,
-            CountDownLatch ready,
-            CountDownLatch start) throws Exception {
-        ready.countDown();
-        if (!start.await(10, TimeUnit.SECONDS)) {
-            throw new IllegalStateException("Parallel browser tabs did not start in time.");
-        }
-        HttpRequest request = HttpRequest.newBuilder(localUri(path))
-                .header(HttpHeaders.CONTENT_TYPE, "application/json")
-                .header(
-                        HttpHeaders.COOKIE,
-                        "skillpilot_openai_de_browser=" + browserSession)
-                .POST(HttpRequest.BodyPublishers.ofString(body))
-                .build();
-        return client.send(request, HttpResponse.BodyHandlers.ofString());
-    }
-
     private HttpResponse<String> postForm(String path, List<Map.Entry<String, String>> parameters)
             throws Exception {
         HttpRequest request = HttpRequest.newBuilder(localUri(path))
                 .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
+                .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
+                .build();
+        return browser.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    private HttpResponse<String> postOpenAiAuthenticatedForm(
+            String path,
+            List<Map.Entry<String, String>> parameters) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder(localUri(path))
+                .header(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded")
+                .header(
+                        HttpHeaders.AUTHORIZATION,
+                        OpenAiDeSecureOAuthTestServer.confidentialBasicAuthorization())
                 .POST(HttpRequest.BodyPublishers.ofString(form(parameters)))
                 .build();
         return browser.send(request, HttpResponse.BodyHandlers.ofString());
@@ -621,32 +595,31 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 HttpResponse.BodyHandlers.ofString());
     }
 
-    private HttpResponse<String> callTool(String accessToken, int id, String toolName, String arguments)
+    private HttpResponse<String> callTool(
+            String accessToken,
+            int id,
+            String toolName,
+            String arguments,
+            String learningSessionId)
             throws Exception {
         return postMcp(accessToken, """
                 {"jsonrpc":"2.0","id":%d,"method":"tools/call","params":{"name":"%s","arguments":%s}}
-                """.formatted(id, toolName, arguments));
+                """.formatted(id, toolName, withLearningSession(arguments, learningSessionId)));
     }
 
-    private String authorizePath(String state) throws Exception {
-        return OpenAiDeOAuthConfiguration.AUTHORIZATION_ENDPOINT + "?" + form(List.of(
-                Map.entry("response_type", "code"),
-                Map.entry("client_id", CLIENT_ID),
-                Map.entry("redirect_uri", CALLBACK),
-                Map.entry("scope", OpenAiDeOAuthConfiguration.READ_SCOPE),
-                Map.entry("state", state),
-                Map.entry("code_challenge", challenge(VERIFIER)),
-                Map.entry("code_challenge_method", "S256"),
-                Map.entry("resource", "https://skillpilot.test/api/openai/de/mcp")));
+    private String withLearningSession(String arguments, String learningSessionId) throws Exception {
+        JsonNode parsed = objectMapper.readTree(arguments);
+        if (!(parsed instanceof ObjectNode objectArguments)) {
+            throw new IllegalArgumentException("MCP tool arguments must be a JSON object.");
+        }
+        objectArguments.put(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID, learningSessionId);
+        return objectMapper.writeValueAsString(objectArguments);
     }
 
-    private String responseCookie(HttpResponse<String> response, String name) {
-        String prefix = name + "=";
-        return response.headers().allValues(HttpHeaders.SET_COOKIE).stream()
-                .filter(header -> header.startsWith(prefix))
-                .map(header -> header.substring(prefix.length(), header.indexOf(';')))
-                .findFirst()
-                .orElseThrow();
+    private void assertLegacyStateIsEmpty() {
+        assertThat(bindingGrantRepository.count()).isZero();
+        assertThat(connectionRepository.count()).isZero();
+        assertThat(pendingLaunchRepository.count()).isZero();
     }
 
     private void assertMcpPayloadDoesNotExposeIdentity(

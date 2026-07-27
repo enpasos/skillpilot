@@ -50,12 +50,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                         ? ""
                         : properties.getOauth().getClientAuthenticationMethod().trim().toLowerCase();
         boolean clientAuthenticationConfigured = secureMode.clientAuthenticationSupported()
-                && (secureMode.publicClient()
-                        || (secureMode.privateKeyJwt()
-                                && secureMode.cimdHttpsDocument()
-                                && secureMode.jwksHttpsSameOrigin()
-                                && secureMode.asymmetricAlgorithm()
-                                && secureMode.replayCacheConfigured()));
+                && secureMode.clientSecretBasic()
+                && secureMode.clientSecretConfigured();
         List<String> redirectUris = properties.getOauth().getRedirectUris();
         boolean redirectUrisConfigured = redirectUris != null
                 && !redirectUris.isEmpty()
@@ -101,6 +97,8 @@ public final class OpenAiDeCoachHealthIndicator implements HealthIndicator {
                         "clientAuthenticationSupported",
                         secureMode.clientAuthenticationSupported())
                 .withDetail("publicClientConfigured", secureMode.publicClient())
+                .withDetail("clientSecretBasicConfigured", secureMode.clientSecretBasic())
+                .withDetail("clientSecretConfigured", secureMode.clientSecretConfigured())
                 .withDetail("privateKeyJwtConfigured", secureMode.privateKeyJwt())
                 .withDetail(
                         "secureRedirectUrisConfigured",

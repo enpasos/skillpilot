@@ -50,6 +50,8 @@ import org.springframework.web.server.ResponseStatusException;
 class OpenAiDeCoachMcpContractTest {
 
     private static final String LEARNER_ID = "permanent-secret-learner-id";
+    private static final String LEARNING_SESSION_ID =
+            "sps_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String CONNECTION_SECRET = "opaque-oauth-subject-secret";
     private static final String CHALLENGE = "Bearer resource_metadata=\"https://skillpilot.test/meta\"";
     private static final String INSUFFICIENT_SCOPE_CHALLENGE =
@@ -65,7 +67,8 @@ class OpenAiDeCoachMcpContractTest {
     void setUp() {
         coachTools = mock(CoachToolFacade.class);
         identityResolver = mock(OpenAiDeCoachIdentityResolver.class);
-        when(identityResolver.resolveSkillpilotId(any())).thenReturn(LEARNER_ID);
+        when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
+                .thenReturn(LEARNER_ID);
         when(identityResolver.authenticationChallenge()).thenReturn(CHALLENGE);
         when(identityResolver.insufficientScopeChallenge()).thenReturn(INSUFFICIENT_SCOPE_CHALLENGE);
         meterRegistry = new SimpleMeterRegistry();
@@ -123,7 +126,9 @@ class OpenAiDeCoachMcpContractTest {
                 .contains(OpenAiDeCoachMcpContract.READ_SCOPE, OpenAiDeCoachMcpContract.WRITE_SCOPE);
         assertThat(spec(OpenAiDeCoachMcpContract.SET_MASTERY).tool().inputSchema().get("properties"))
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
-                        .containsOnlyKeys("goalId"));
+                        .containsOnlyKeys(
+                                "goalId",
+                                OpenAiDeCoachMcpContract.LEARNING_SESSION_ID));
     }
 
     @Test
@@ -145,7 +150,8 @@ class OpenAiDeCoachMcpContractTest {
                 .containsEntry("type", "object")
                 .containsEntry("additionalProperties", false);
         assertThat(bootstrap.inputSchema().get("properties"))
-                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties).isEmpty());
+                .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
+                        .containsOnlyKeys(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID));
         assertThat(bootstrap.annotations().readOnlyHint()).isTrue();
         assertThat(bootstrap.annotations().idempotentHint()).isTrue();
         assertThat(bootstrap.meta().toString())
@@ -560,7 +566,7 @@ class OpenAiDeCoachMcpContractTest {
 
     @Test
     void expiredLearningSessionReturnsSessionRequiredWithoutAnOauthChallenge() {
-        when(identityResolver.resolveSkillpilotId(any()))
+        when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenThrow(new OpenAiDeLearningSessionRequiredException());
 
         McpSchema.CallToolResult result = call(OpenAiDeCoachMcpContract.GET_CONTEXT, Map.of());
@@ -579,6 +585,35 @@ class OpenAiDeCoachMcpContractTest {
         verify(coachTools, never()).getLearnerState(any());
         assertThat(operationalEvents("session_required")).isEqualTo(1);
         assertThat(operationalEvents("http_401")).isZero();
+    }
+
+    @Test
+    void missingLearningSessionReturnsSessionRequiredBeforeResolvingIdentity() {
+        McpSchema.CallToolResult result = callWithoutLearningSession(
+                OpenAiDeCoachMcpContract.GET_CONTEXT,
+                Map.of());
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.meta()).isNull();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "SESSION_REQUIRED")
+                .containsEntry("oauthConnectionValid", true));
+        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
+        verify(coachTools, never()).getLearnerState(any());
+    }
+
+    @Test
+    void malformedLearningSessionReturnsSessionRequiredBeforeResolvingIdentity() {
+        McpSchema.CallToolResult result = callWithoutLearningSession(
+                OpenAiDeCoachMcpContract.GET_CONTEXT,
+                Map.of(OpenAiDeCoachMcpContract.LEARNING_SESSION_ID, "sps_not-valid"));
+
+        assertThat(result.isError()).isTrue();
+        assertThat(result.structuredContent()).isInstanceOfSatisfying(Map.class, content -> assertThat(content)
+                .containsEntry("code", "SESSION_REQUIRED")
+                .containsEntry("stateChanged", false));
+        verify(identityResolver, never()).resolveSkillpilotId(any(), any());
+        verify(coachTools, never()).getLearnerState(any());
     }
 
     @Test
@@ -603,7 +638,7 @@ class OpenAiDeCoachMcpContractTest {
 
     @Test
     void authenticationConflictAndTimeoutUseOnlyBoundedOperationalEvents() {
-        when(identityResolver.resolveSkillpilotId(any()))
+        when(identityResolver.resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID)))
                 .thenThrow(new AuthenticationCredentialsNotFoundException("private authentication detail"));
 
         McpSchema.CallToolResult unauthorized = call(OpenAiDeCoachMcpContract.GET_CONTEXT, Map.of());
@@ -615,7 +650,7 @@ class OpenAiDeCoachMcpContractTest {
 
         org.mockito.Mockito.doReturn(LEARNER_ID)
                 .when(identityResolver)
-                .resolveSkillpilotId(any());
+                .resolveSkillpilotId(any(), eq(LEARNING_SESSION_ID));
         org.mockito.Mockito.doThrow(new ResponseStatusException(HttpStatus.CONFLICT, "private conflict detail"))
                 .when(coachTools)
                 .getLearnerState(LEARNER_ID);
@@ -673,6 +708,16 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     private McpSchema.CallToolResult call(String name, Map<String, Object> arguments) {
+        Map<String, Object> requestArguments = new java.util.LinkedHashMap<>(arguments);
+        requestArguments.put(
+                OpenAiDeCoachMcpContract.LEARNING_SESSION_ID,
+                LEARNING_SESSION_ID);
+        return callWithoutLearningSession(name, requestArguments);
+    }
+
+    private McpSchema.CallToolResult callWithoutLearningSession(
+            String name,
+            Map<String, Object> arguments) {
         return spec(name).callHandler().apply(
                 McpTransportContext.EMPTY,
                 new McpSchema.CallToolRequest(name, arguments));

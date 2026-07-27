@@ -9,7 +9,7 @@ import { Save, ArrowRight, Github, Trophy, ShieldCheck, Send, MessageCircle, Com
 
 type Role = 'learner' | 'trainer' | 'explorer'
 type ClaudeActionState = 'idle' | 'connecting' | 'install-opened' | 'launching' | 'launched' | 'disconnecting' | 'disconnected' | 'fallback' | 'fallback-copied' | 'failed'
-type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked' | 'disconnect-failed'
+type ChatLaunchIssue = 'none' | 'preparation-failed' | 'popup-blocked'
 
 interface ClaudeLaunchFallback {
   prompt: string
@@ -36,7 +36,6 @@ import {
   isOpenAiMcpCoachActive,
   requestCoachChatStart,
 } from '../coachVariants/coachLaunch'
-import { disconnectOpenAiMcp } from '../coachVariants/openAiMcp/request'
 import { isOpenAiMcpEligibilityDeclinedError } from '../coachVariants/openAiMcp/providerEligibility'
 import {
   CLAUDE_COACH_BETA_ENABLED,
@@ -54,6 +53,7 @@ import {
   loadLocalSkillpilotLogin,
   saveLocalSkillpilotLogin,
 } from '../utils/localSkillpilotLogin'
+import { createSynchronousInFlightGuard } from '../utils/synchronousInFlightGuard'
 import { normalizeTrainerLandscapeId } from '../utils/trainerLandscapeContext'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
 import {
@@ -113,8 +113,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   })
   const [legalChecked, setLegalChecked] = useState(false)
   const [chatLaunchIssue, setChatLaunchIssue] = useState<ChatLaunchIssue>('none')
-  const [chatMcpConnected, setChatMcpConnected] = useState<boolean | null>(null)
   const [chatStartLoading, setChatStartLoading] = useState(false)
+  const chatStartInFlightRef = React.useRef(createSynchronousInFlightGuard())
   const [claudeActionState, setClaudeActionState] = useState<ClaudeActionState>('idle')
   const [claudeInstallFallbackUrl, setClaudeInstallFallbackUrl] = useState<string | null>(null)
   const [claudeLaunchFallback, setClaudeLaunchFallback] = useState<ClaudeLaunchFallback | null>(null)
@@ -160,7 +160,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setAvailableCurricula([])
     setHasCheckedId(false)
     setChatLaunchIssue('none')
-    setChatMcpConnected(null)
     setChatStartLoading(false)
     setClaudeActionState('idle')
     setClaudeInstallFallbackUrl(null)
@@ -352,17 +351,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const handleOpenChatGpt = async () => {
     const effectiveId = sanitizeSkillpilotId(skillpilotId)
     if (!effectiveId) return
+    if (!chatStartInFlightRef.current.tryStart()) return
     const chatWindow = window.open('', '_blank')
     let popupBlocked = false
     try {
       const chatStart = await createCoachChatStart(effectiveId)
       if (!chatStart) throw new Error('Missing coach chat start')
-      if (chatStart.variant === 'openai-mcp') {
-        setChatMcpConnected(chatStart.connected)
-      } else {
-        setChatMcpConnected(null)
-      }
-
       await deliverCoachChatStart(
         chatStart,
         (url) => {
@@ -388,18 +382,8 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
         return
       }
       setChatLaunchIssue(popupBlocked ? 'popup-blocked' : 'preparation-failed')
-    }
-  }
-
-  const handleDisconnectOpenAiMcp = async () => {
-    const effectiveId = sanitizeSkillpilotId(skillpilotId)
-    if (!effectiveId) return
-    try {
-      await disconnectOpenAiMcp(effectiveId)
-      setChatMcpConnected(false)
-      setChatLaunchIssue('none')
-    } catch {
-      setChatLaunchIssue('disconnect-failed')
+    } finally {
+      chatStartInFlightRef.current.finish()
     }
   }
 
@@ -1060,25 +1044,6 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             : t.startPage.login.openChatGpt}
                         <ExternalLink size={14} />
                       </button>
-                      {openAiMcpCoachActive && chatMcpConnected !== null && (
-                        <div className="space-y-2 rounded-lg border border-sky-200 bg-sky-50/80 p-3 dark:border-sky-800 dark:bg-sky-950/30">
-                          <p className="text-xs leading-relaxed text-text-secondary">
-                            {chatMcpConnected
-                              ? t.startPage.login.openAiMcpConnectedHint
-                              : t.startPage.login.openAiMcpConnectHint}
-                          </p>
-                          {chatMcpConnected && (
-                            <button
-                              type="button"
-                              onClick={handleDisconnectOpenAiMcp}
-                              className="inline-flex min-h-9 items-center gap-1.5 text-xs font-semibold text-sky-800 underline underline-offset-2 dark:text-sky-200"
-                            >
-                              <Trash2 size={12} />
-                              {t.startPage.login.openAiMcpDisconnect}
-                            </button>
-                          )}
-                        </div>
-                      )}
                       {CLAUDE_COACH_BETA_ENABLED && (
                         <div className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20">
                           <div className="flex items-start justify-between gap-3">
@@ -1242,9 +1207,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
                           {chatLaunchIssue === 'popup-blocked'
                             ? t.startPage.login.openAiMcpPopupBlocked
-                            : chatLaunchIssue === 'disconnect-failed'
-                              ? t.startPage.login.openAiMcpDisconnectFailed
-                              : visibleSessionLaunchCopy?.preparationFailed
+                            : visibleSessionLaunchCopy?.preparationFailed
                                 ?? (openAiMcpCoachActive
                                   ? t.startPage.login.openAiMcpPreparationFailed
                                   : t.startPage.login.startPromptCopyFailed)}

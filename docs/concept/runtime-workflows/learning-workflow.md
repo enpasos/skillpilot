@@ -4,10 +4,14 @@ This document describes the runtime workflow from static curricula to learner-sp
 
 The workflow is provider-neutral inside the backend. The current German
 learner-facing ChatGPT adapter is the
-[OpenAI MCP App](openai-mcp-oauth-learner-session-architecture.md): it reloads
-fresh allowlisted state through OAuth-authenticated, data-only tools. The backend
-resolves the learner and a separate, absolutely expiring 24-hour learning
-session; no SkillPilot ID or session token is carried in chat or tool arguments.
+[OpenAI MCP App](openai-mcp-oauth-learner-session-architecture.md): a fixed
+confidential OAuth client authenticates the App, while every explicit
+**Lernen starten** action creates a fresh, absolutely expiring 24-hour learning
+session for the selected learner. SkillPilot inserts the opaque session ID into
+the ChatGPT start message automatically, and the App must pass it unchanged to
+every learner-specific MCP tool call. The permanent SkillPilot ID remains
+backend-only; OAuth alone neither selects a learner nor creates a learning
+session.
 The [Visible Session flow](chatgpt-visible-session-flow.md) remains only a
 Custom-GPT rollback path and possible English fallback. The retained Claude
 adapter uses the same safe state projection and protected exam authorization,

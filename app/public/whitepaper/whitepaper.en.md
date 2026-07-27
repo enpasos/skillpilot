@@ -203,9 +203,9 @@ Learning states are managed under a **pseudonymous SkillPilot ID**. SkillPilot d
 
 #### Session Shielding Toward the AI Frontend
 
-When the German **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. The current reference path is the ChatGPT app **SkillPilot Coach (Deutsch)**. Learners authorize access once; the SkillPilot backend associates that grant with the correct learner on the server and opens a learning session valid for no more than 24 hours. Neither the SkillPilot ID nor a session credential needs to appear in the chat.
+When the German **SkillPilot Learning Coach** is started, the permanent SkillPilot ID is not passed to ChatGPT. Instead, every deliberate start from SkillPilot creates a new, random learning session valid for exactly 24 hours. SkillPilot places it automatically into the prepared chat start; the learner does not need to copy or manage any technical value. The backend maps the short-lived session to the correct learning state internally.
 
-The backend connection is secured independently through several layers: SkillPilot accepts access only through the model provider's controlled integration path. Every request is tied to the learner's authorization, limited to the permissions required, and time-bounded by a short-lived learning session.
+The backend connection is secured independently through several layers: SkillPilot accepts functional access only through the admitted and authenticated coach app and only together with a valid learning session. App authorization alone does not open a learning state, and a learning session alone does not grant backend access. This keeps integration permission and the time-bounded learning context deliberately separate.
 
 #### Dialog Content Is Decoupled
 
@@ -229,7 +229,7 @@ For contexts with higher sovereignty requirements, further AI backends up to loc
 To keep learning states **portable** and **verifiable**, SkillPilot uses a **chain-of-custody** pattern.
 
 - SkillPilot accepts learning-progress changes only through admitted and authenticated integrations.
-- Write access applies only with the learner's authorization, within an active short-lived learning session, and limited to the specific operation.
+- Write access applies only through the admitted coach app, within an active short-lived learning session, and limited to the specific operation.
 - The permanent pseudonymous identifier is not disclosed to the AI frontend.
 
 #### Signed Exports

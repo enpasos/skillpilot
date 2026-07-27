@@ -65,7 +65,7 @@ export const en = {
             openAiMcpHint: "The German SkillPilot MCP coach is not released for the English interface yet.",
             openAiMcpStart: "Open SkillPilot app",
             openAiMcpConnectedHint: "The connection is active. ChatGPT was opened with the matching start message.",
-            openAiMcpConnectHint: "ChatGPT will open the one-time SkillPilot authorization on the first app call.",
+            openAiMcpConnectHint: "ChatGPT opens the one-time app authorization on first use. Each start automatically includes a new 24-hour learning session in the start message.",
             openAiMcpPopupBlocked: "ChatGPT could not be opened automatically. Allow pop-ups for SkillPilot and try again.",
             openAiMcpPreparationFailed: "The learning coach connection could not be prepared. Please try again.",
             openAiMcpDisconnect: "Disconnect ChatGPT",

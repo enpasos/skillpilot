@@ -15,11 +15,13 @@ nächsten User-Turn nicht mehr zuverlässig wiederverwenden kann. Das Backend bl
 die Autorität für Lernstand, State Machine, erlaubte Übergänge und Mastery.
 
 Der aktuelle deutsche Vertrag ist die
-[OpenAI-MCP-App mit OAuth-, Lernenden- und 24h-Sitzungsbindung](openai-mcp-oauth-learner-session-architecture.md).
-Sie löst die lernende Person serverseitig aus dem OAuth-Subjekt auf und verlangt
-zusätzlich eine absolut höchstens 24 Stunden gültige Lernsession. Weder
-SkillPilot-ID noch Sitzungstoken werden im Chat, in Toolargumenten oder
-Toolergebnissen transportiert.
+[OpenAI-MCP-App mit OAuth-Appbindung und 24h-Lernsession](openai-mcp-oauth-learner-session-architecture.md).
+Sie authentisiert die App über einen festen vertraulichen OAuth-Client und
+verlangt zusätzlich die bei jedem **Lernen starten** neu erzeugte, absolut
+höchstens 24 Stunden gültige Lernsession als Pflichtargument jedes fachlichen
+Tools. SkillPilot setzt diese Session automatisch in die vorbereitete
+Startnachricht ein. Die dauerhafte SkillPilot-ID bleibt ausschließlich im
+Backend; OAuth allein wählt keinen Lernenden.
 
 Die frühere Startcode-/Redeem-Architektur ist ebenfalls kein aktueller
 Laufzeitpfad. Sie

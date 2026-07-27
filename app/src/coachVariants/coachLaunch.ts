@@ -39,6 +39,7 @@ export type CoachChatStart =
       language: 'de'
       prompt: string
       webUrl: string
+      learningSessionId: string
       expiresAt: string
       connected: boolean
     }
@@ -100,9 +101,10 @@ export interface DeliveredCoachChatStart {
 }
 
 /**
- * Opens the provider with the complete start message in the URL. The URL only
- * carries natural-language launch intent; learner IDs and authorization/session
- * credentials stay in SkillPilot and the OAuth-bound backend state.
+ * Opens the provider with the complete start message in the URL. OAuth
+ * authenticates the app independently. The prompt also carries the newly
+ * issued, short-lived learning-session ID so the model can pass it unchanged
+ * with every MCP tool call; the permanent SkillPilot ID remains server-side.
  */
 export const deliverCoachChatStart = async (
   chatStart: CoachChatStart,

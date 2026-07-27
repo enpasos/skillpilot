@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: 013-separate-openai-de-learning-session
+      author: skillpilot
+      preConditions:
+        # Learning sessions are intentionally ephemeral. Replace the former
+        # OAuth-subject-bound table instead of migrating its short-lived rows.
+        - onFail: HALT
+        - tableExists:
+            tableName: learner
+        - tableExists:
+            tableName: openai_de_learning_session
+        - columnExists:
+            tableName: openai_de_learning_session
+            columnName: connection_subject
+      changes:
+        - dropTable:
+            tableName: openai_de_learning_session
+        - createTable:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: token_hash
+                  type: VARCHAR(128)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: learner_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: started_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP WITH TIME ZONE
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: openai_de_learning_session
+            baseColumnNames: learner_id
+            constraintName: fk_openai_de_learning_session_learner
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            onDelete: CASCADE
+        - createIndex:
+            tableName: openai_de_learning_session
+            indexName: idx_openai_de_learning_session_learner
+            columns:
+              - column:
+                  name: learner_id
+        - createIndex:
+            tableName: openai_de_learning_session
+            indexName: idx_openai_de_learning_session_expires
+            columns:
+              - column:
+                  name: expires_at

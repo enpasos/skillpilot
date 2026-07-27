@@ -10,7 +10,7 @@ acceptance gate is complete.
 The product decision and migration sequence are specified in the
 [SkillPilot learning-coach target architecture](skillpilot-owned-coach-architecture.md).
 For the German OpenAI App, the normative identity and session contract is
-[OpenAI MCP OAuth, learner and 24-hour session binding](openai-mcp-oauth-learner-session-architecture.md).
+[OpenAI MCP OAuth App binding and explicit 24-hour learning sessions](openai-mcp-oauth-learner-session-architecture.md).
 
 ## Purpose
 
@@ -86,28 +86,31 @@ Each provider adapter owns:
 
 For the OpenAI Apps, this specifically means:
 
-- the protected German MCP endpoint is additionally reachable only through an
-  edge that validates the OpenAI connector mTLS chain, `clientAuth` EKU and the
-  exact SAN `mtls.prod.connectors.openai.com`; this identifies OpenAI connector
-  infrastructure, not the visible name of a particular App;
-- the authorization server accepts one explicitly configured OAuth client
-  profile: either the exact pre-registered public client with token-endpoint
-  authentication `none`, exact redirect URI and PKCE S256, or the optional
-  stronger HTTPS CIMD identity with same-origin JWKS and validated
-  `private_key_jwt`; both profiles enforce the exact registered client ID,
-  redirect URI, resource/audience and scopes, while only the
-  `private_key_jwt` profile cryptographically authenticates the OAuth client;
-  open DCR is not offered;
-- model-visible read tools resolve the learner from the authenticated OAuth
-  principal, require the separate active server-side learning session, and load
-  current state without a chat-visible session argument;
+- the authorization server accepts exactly one fixed, pre-registered
+  confidential OAuth client for the German App. ChatGPT and SkillPilot hold the
+  same long random client secret, and the token endpoint requires
+  `client_secret_basic`; exact redirect URI, Authorization Code with PKCE S256,
+  resource/audience and scopes are mandatory, while DCR, CIMD,
+  `private_key_jwt` and `none` are closed production profiles;
+- every explicit first-party **Lernen starten** creates a new, high-entropy
+  learning session with an absolute lifetime of exactly 24 hours. Its reference
+  is inserted automatically into the prepared start message and must be sent
+  unchanged by every fachlicher tool;
+- model-visible read and write tools require both the authenticated OAuth App
+  and that valid session reference, then resolve the learner only through the
+  session's backend mapping;
 - deterministic choices and answer submissions are invoked directly by the
   widget through app-only tools, rather than depending on the model to copy a
   technical selection value;
-- short-lived session, choice and receipt references may be returned in tool
-  result `_meta` for the widget, but never in `content`, `structuredContent`, a
-  visible message or model context;
+- short-lived choice and receipt references may be returned in tool result
+  `_meta` for the widget. The learning-session reference is intentionally
+  transported in the prepared start message and fachlichen tool arguments, but
+  requires no manual user handling;
 - the permanent SkillPilot ID is neither a tool argument nor a tool result.
+
+Optional mTLS may later constrain the network caller to OpenAI connector
+infrastructure. It is defense in depth and not the identity of the particular
+SkillPilot App.
 
 Provider neutrality therefore does not mean one universal external tool schema.
 The common part is the fachliche behavior and security boundary; external tools
@@ -185,34 +188,36 @@ Provider bindings remain separate:
 - the rollback-only ChatGPT Visible Session resolves a short-lived,
   HMAC-stored bearer token to a learner;
 - Claude resolves an authenticated opaque OAuth connection subject to a learner;
-- each production OpenAI App resolves its own authenticated opaque OAuth
-  principal to a learner through a separate App connection and additionally
-  requires an active, absolutely limited 24-hour learning session.
+- each production OpenAI App authenticates through its own fixed confidential
+  OAuth client and additionally requires a fresh, first-party created,
+  absolutely limited 24-hour learning session to address the learner.
 
-The permanent SkillPilot ID is never a model-provided session argument. It is
-looked up only behind the authenticated provider binding. Provider identity,
-OAuth connection, 24-hour learning session, durable learner state, provider
-conversation and temporary widget workflow remain distinct concepts. OAuth
-access-token refresh does not extend the learning session. Short-lived widget
-references are capability-scoped to the principal and current workflow
-revision; possession outside that authenticated App context must not authorize a
+The permanent SkillPilot ID is never a model-provided argument. The backend
+looks it up only through the HMAC/hash-bound temporary session. OAuth App
+identity, 24-hour learning session, durable learner state, provider conversation
+and temporary widget workflow remain distinct concepts. OAuth alone neither
+creates nor selects a learner session; a session alone does not authorize MCP.
+OAuth access-token refresh does not extend the learning session. Short-lived
+widget references are capability-scoped to the current authorized workflow
+revision; possession outside that App and session context must not authorize a
 different learner or later state.
 
 The current OpenAI MCP contract does not expose a documented stable ChatGPT
-conversation ID. The learning session is therefore scoped to the provider
-connection and learner, not to one exact chat. Parallel or later chats
-rehydrate the same authoritative state; a new first-party **Start learning**
-action replaces the active learning session atomically.
+conversation ID. The learning session is therefore an explicit application
+capability, not a provider conversation identity. Every first-party
+**Start learning** action creates a different session, even for the same
+learner; sessions expire independently.
 
 ## Context Loss And Recovery
 
 Normal turns reload current backend state instead of depending on an older hidden
 tool response. Visible Session does this through `getVisibleState`; Claude uses
-`getCoachContext`. Each OpenAI App exposes its own locale-specific, argumentless
-context read. In production that read identifies the learner solely from the
-OAuth principal, requires the separate active 24-hour learning session, and
-then projects fresh backend state. It does not accept a session token recovered
-from conversation text.
+`getCoachContext`. Each OpenAI App exposes its own locale-specific context read.
+In production every such call carries the automatically inserted
+learning-session reference, requires valid OAuth independently, resolves the
+learner from the session mapping, and then projects fresh backend state. There
+is no fallback to OAuth subject, provider account or inferred conversation
+identity if the session is absent or expired.
 
 Result `_meta` is a widget transport for opake references, not cross-turn model
 memory. The widget may retain those references for a direct app-only choice or
@@ -272,26 +277,20 @@ The German Spring Boot path now implements the data-only contract against the
 existing database-backed domain use cases. Its secure production boundary
 requires all of the following:
 
-1. server-authenticated TLS at the German MCP edge, with OpenAI-connector mTLS
-   retained as an optional later hardening mode on the MCP resource only;
-2. one explicitly configured OAuth client profile: either the exact
-   pre-registered public client using token-endpoint authentication `none`, the
-   exact redirect URI and Authorization Code with PKCE S256, or the optional
-   stronger exact HTTPS CIMD identity with same-origin JWKS and validated
-   `private_key_jwt`; both profiles enforce the exact resource/audience and
-   scopes, and open DCR remains disabled;
-3. resolution of the opaque provider principal internally without exposing the
+1. server-authenticated TLS at the German MCP edge;
+2. one fixed confidential OAuth client, authenticated at the token endpoint
+   through `client_secret_basic`, with exact callback allowlist, Authorization
+   Code plus PKCE S256, exact resource/audience and scopes; DCR, CIMD,
+   `private_key_jwt` and `none` remain disabled;
+3. a fresh, high-entropy application learning session for every first-party
+   **Lernen starten**, stored only as HMAC/hash and mapped internally to the
    permanent SkillPilot ID;
-4. a separate server-side learning session with an absolute 24-hour lifetime,
-   created or replaced only by a first-party SkillPilot launch and checked by
-   every learner-specific tool.
+4. automatic start-message transport of that reference and independent
+   validation of OAuth plus session on every fachlicher tool.
 
-Neither mTLS nor either OAuth client profile cryptographically attests the
-user-visible App name. The current TLS plus strict OAuth baseline constrains
-the accepted token, resource and scope contract. Optional mTLS additionally
-constrains the network caller to OpenAI connector infrastructure; optional CIMD
-with `private_key_jwt` adds a cryptographic client assertion beyond the
-public-client baseline.
+Optional mTLS additionally constrains the network caller to OpenAI connector
+infrastructure, but does not replace the fixed confidential OAuth client as the
+App identity.
 
 The production gate also includes full workflow parity for curriculum and scope
 selection, active goals, frontier, mastery, Verified Recall and exams; separate
