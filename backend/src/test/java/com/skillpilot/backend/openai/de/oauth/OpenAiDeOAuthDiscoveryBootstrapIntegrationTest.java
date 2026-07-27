@@ -110,7 +110,7 @@ class OpenAiDeOAuthDiscoveryBootstrapIntegrationTest {
         assertThat(authorizationServer.path("issuer").asText())
                 .isEqualTo("https://skillpilot.test/api/openai/de");
         assertThat(authorizationServer.path("token_endpoint_auth_methods_supported"))
-                .anySatisfy(method -> assertThat(method.asText()).isEqualTo("none"));
+                .anySatisfy(method -> assertThat(method.asText()).isEqualTo("client_secret_basic"));
         assertThat(authorizationServer.path("code_challenge_methods_supported"))
                 .anySatisfy(method -> assertThat(method.asText()).isEqualTo("S256"));
         assertThat(authorizationServer.path("registration_endpoint").isMissingNode()).isTrue();
