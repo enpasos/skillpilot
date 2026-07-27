@@ -189,6 +189,49 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
+    void publishesCurrentAndLaterAuthoredDecisionsInFlowOrder() {
+        LearningLandscape root = landscape(
+                ROOT_ID,
+                "Orbit",
+                filter("dial-a", "Dial A"),
+                filter("dial-b", "Dial B"));
+        PersonalizationGroup currentGroup =
+                group("group-setting", 1, 1, 1, landscapeFilters(ROOT_ID));
+        currentGroup.setLabel("Welche Lernumgebung passt?");
+        PersonalizationGroup laterGroupInSameStage =
+                group("group-focus", 2, 1, 1, landscapeFilters(ROOT_ID));
+        laterGroupInSameStage.setLabel("Welcher Schwerpunkt passt?");
+        PersonalizationStage currentStage =
+                stage("stage-entry", 1, laterGroupInSameStage, currentGroup);
+        currentStage.setLabel("Einstieg");
+
+        PersonalizationGroup finalGroup =
+                group("group-format", 1, 1, 1, landscapeFilters(ROOT_ID));
+        finalGroup.setLabel("Welches Zielformat passt?");
+        PersonalizationStage finalStage =
+                stage("stage-final", 2, finalGroup);
+        finalStage.setLabel("Abschluss");
+
+        root.setPersonalizationFlow(flow(finalStage, currentStage));
+
+        PersonalizationPlan plan =
+                CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root), Map.of());
+
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(plan.groupId()).isEqualTo("group-setting");
+        assertThat(plan.pendingDecisions()).containsExactly(
+                new PersonalizationPlan.DecisionPrompt(
+                        "Einstieg",
+                        "Welche Lernumgebung passt?"),
+                new PersonalizationPlan.DecisionPrompt(
+                        "Einstieg",
+                        "Welcher Schwerpunkt passt?"),
+                new PersonalizationPlan.DecisionPrompt(
+                        "Abschluss",
+                        "Welches Zielformat passt?"));
+    }
+
+    @Test
     void normalizesMixedCaseRestrictionsBeforeLabelAndOptionIdentityAreDerived() {
         LearningLandscape root = landscape(
                 ROOT_ID,

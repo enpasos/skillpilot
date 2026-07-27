@@ -525,8 +525,10 @@ Antwort notieren:
 
 | Prompt | Erwartung |
 | --- | --- |
-| `Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. |
-| `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context_de` läuft; eindeutige Teile werden übernommen und nur die echte offene Entscheidung, typischerweise GK/LK, bleibt. |
+| `Verwende die App SkillPilot Coach (Deutsch) und fahre mit dem in SkillPilot vorbereiteten nächsten Schritt fort.` | `get_skillpilot_context_de` läuft vor der ersten fachlichen Antwort. Die Antwort nennt zuerst den bestätigten Einstiegskontext und fragt danach die authored noch offenen Angaben gemeinsam ab. |
+| `Ich möchte Mathe Oberstufe Hessen lernen.` bei ausgewählter App | `get_skillpilot_context_de` läuft; eindeutige Teile werden als bestätigter Kontext genannt und nicht erneut erfragt. Alle aktuell bestimmbaren offenen Angaben werden in einer gemeinsamen Frage angeboten. |
+| Mehrere offene Angaben in einer Nachricht und in umgekehrter Reihenfolge beantworten | Der Coach übernimmt die Mehrfachabsicht unabhängig von der Antwortreihenfolge. Er wendet intern jeweils nur die aktuelle Option an, lädt danach den Plan frisch und löst erst dann die nächste Angabe auf. |
+| Eine Antwort auf eine spätere, nur orientierend angezeigte Frage geben | Keine vorweggenommene oder gespeicherte Option-ID wird geschrieben. Der Coach arbeitet zuerst die aktuelle authored Entscheidung ab und prüft die Angabe anschließend gegen die frisch projizierten Optionen; nur verbleibende Mehrdeutigkeit führt zu einer Rückfrage. |
 | `Lass uns dort weitermachen, wo ich aufgehört habe.` bei ausgewählter App | `get_skillpilot_context_de` lädt den gespeicherten Zustand; kein neuer Lernpfad wird erfunden. |
 | `Erkläre mir allgemein die Mitternachtsformel.` ohne ausgewählte App und ohne SkillPilot-Bezug | SkillPilot wird nicht aufgerufen. |
 | `Use SkillPilot Coach (Deutsch) and resume my current lesson.` | Der deutsche Bootstrap bleibt auch bei einem englischen direkten App-Auftrag auffindbar und antwortet anschließend deutsch. |

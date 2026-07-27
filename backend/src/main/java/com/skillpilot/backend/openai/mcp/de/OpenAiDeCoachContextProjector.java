@@ -52,6 +52,9 @@ final class OpenAiDeCoachContextProjector {
         OpenAiDeCoachContext.Decision decision = "setPersonalization".equals(requiredAction)
                 ? personalizationDecision(personalizationPlan)
                 : null;
+        OpenAiDeCoachContext.Orientation orientation = "setPersonalization".equals(requiredAction)
+                ? personalizationOrientation(state.curriculum(), personalizationPlan)
+                : null;
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
         boolean examHasImage = hasExamImage(activeGoal);
@@ -60,6 +63,7 @@ final class OpenAiDeCoachContextProjector {
                 valueOrEmpty(requiredAction),
                 interactionMode,
                 curriculum(state.curriculum()),
+                orientation,
                 activeGoal(state.curriculum(), activeGoal),
                 options,
                 decision,
@@ -68,8 +72,15 @@ final class OpenAiDeCoachContextProjector {
                 nextAllowedTools(requiredAction, activeGoal),
                 progress(state.goals()),
                 completion,
-                policies(interactionMode, examHasImage),
-                instruction(requiredAction, activeGoal, options, decision, completion, examHasImage));
+                policies(interactionMode, examHasImage, orientation),
+                instruction(
+                        requiredAction,
+                        activeGoal,
+                        options,
+                        decision,
+                        orientation,
+                        completion,
+                        examHasImage));
     }
 
     List<FrontierGoal> projectNavigationGoals(List<FrontierGoal> goals) {
@@ -141,6 +152,30 @@ final class OpenAiDeCoachContextProjector {
                 plan.minSelections(),
                 plan.maxSelections(),
                 plan.selectedCount());
+    }
+
+    OpenAiDeCoachContext.Orientation personalizationOrientation(
+            LandscapeSummary curriculum,
+            PersonalizationPlan plan) {
+        if (plan == null || !plan.valid() || !plan.required()) {
+            return null;
+        }
+        String curriculumLabel = curriculum == null
+                ? null
+                : fallback(curriculum.getTitle(), curriculum.getSubject());
+        String establishedContext = blank(curriculumLabel)
+                ? null
+                : "Du bist im Curriculum „" + compact(curriculumLabel) + "“.";
+        List<OpenAiDeCoachContext.OpenQuestion> openQuestions = plan.pendingDecisions().stream()
+                .filter(prompt -> prompt != null && !blank(prompt.groupLabel()))
+                .map(prompt -> new OpenAiDeCoachContext.OpenQuestion(
+                        compact(fallback(prompt.stageLabel(), prompt.groupLabel())),
+                        compact(prompt.groupLabel())))
+                .toList();
+        if (blank(establishedContext) && openQuestions.isEmpty()) {
+            return null;
+        }
+        return new OpenAiDeCoachContext.Orientation(establishedContext, openQuestions);
     }
 
     private List<OpenAiDeCoachContext.Option> personalizationOptions(
@@ -410,7 +445,10 @@ final class OpenAiDeCoachContextProjector {
         return "chat";
     }
 
-    private List<String> policies(String interactionMode, boolean examHasImage) {
+    private List<String> policies(
+            String interactionMode,
+            boolean examHasImage,
+            OpenAiDeCoachContext.Orientation orientation) {
         List<String> policies = new ArrayList<>(List.of(
                 "Der jüngste SkillPilot-Kontext ist die einzige Autorität. Erfinde keine Ziele, Optionen, Zustände, Fortschrittswerte oder Abläufe.",
                 "Nenne in sichtbaren Antworten keine Tool-, API-, JSON- oder Feldnamen und keine technischen IDs. Fordere niemals OAuth-Tokens oder die dauerhafte SkillPilot-ID an und gib sie nie aus.",
@@ -430,8 +468,18 @@ final class OpenAiDeCoachContextProjector {
             case "verifiedRecall" -> policies.addAll(List.of(
                     "Verified Recall: Zeige den vollständigen Fragenbatch in Reihenfolge und warte auf alle Antworten. Lade jede Sollantwort erst nach der zugehörigen Lernendenantwort.",
                     "Vergleiche fachlich und akzeptiere gleichwertige Formulierungen. Speichere jede Karte sofort; passed=true nur bei richtiger Antwort ohne Hilfe. Speichere den ganzen Batch vor dem nächsten Batch. Prüfe dieselbe Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery."));
-            case "selection" -> policies.add(
-                    "Behandle einen natürlichen Mehrfachwunsch als fortgeltende Absicht. Wende jeden eindeutig bestimmten frischen Schritt direkt an und frage nur die tatsächlich offene Auswahl. Kandidaten sind noch keine aktiven Ziele.");
+            case "selection" -> {
+                policies.add(
+                        "Behandle einen natürlichen Mehrfachwunsch als fortgeltende Absicht. Wende jeden eindeutig bestimmten frischen Schritt direkt an und frage nur die tatsächlich offene Auswahl. Kandidaten sind noch keine aktiven Ziele.");
+                if (orientation != null) {
+                    policies.add(
+                            "Nenne zuerst knapp den bestätigten Einstiegskontext. Frage danach alle als noch offen "
+                                    + "aufgeführten Angaben gemeinsam ab. Die lernende Person darf mehrere Angaben "
+                                    + "in beliebiger Reihenfolge oder nur einen Teil davon nennen. Merke eindeutige "
+                                    + "Angaben als fortgeltende Absicht; speichere trotzdem nur die aktuelle "
+                                    + "veröffentlichte Option und lade vor jedem weiteren Schritt den frischen Kontext.");
+                }
+            }
             case "complete" -> policies.add(
                     "Nenne nur frisch gelieferte Fortschrittswerte und zuerst den aktuellen Lernumfang. Würdige einen Abschluss kurz und biete ausschließlich gelieferte Folgeoptionen an; erfinde keine neuen Ziele.");
             default -> {
@@ -452,6 +500,7 @@ final class OpenAiDeCoachContextProjector {
             FrontierGoal goal,
             List<OpenAiDeCoachContext.Option> options,
             OpenAiDeCoachContext.Decision decision,
+            OpenAiDeCoachContext.Orientation orientation,
             OpenAiDeCoachContext.Completion completion,
             boolean examHasImage) {
         if (goal == null && completion.curriculumComplete()) {
@@ -485,7 +534,7 @@ final class OpenAiDeCoachContextProjector {
             return "Es ist keine weitere Backend-Aktion erforderlich. Lade bei Zweifel den aktuellen Kontext neu.";
         }
         return switch (requiredAction) {
-            case "setPersonalization" -> personalizationInstruction(decision, options);
+            case "setPersonalization" -> personalizationInstruction(decision, options, orientation);
             case "setCurriculum", "setScope", "setActiveGoal", "chooseMemoryMode" ->
                     options.isEmpty()
                             ? "Für den erforderlichen Schritt sind keine sicheren Optionen vorhanden. Lade den Kontext neu."
@@ -504,6 +553,13 @@ final class OpenAiDeCoachContextProjector {
     String personalizationInstruction(
             OpenAiDeCoachContext.Decision decision,
             List<OpenAiDeCoachContext.Option> options) {
+        return personalizationInstruction(decision, options, null);
+    }
+
+    String personalizationInstruction(
+            OpenAiDeCoachContext.Decision decision,
+            List<OpenAiDeCoachContext.Option> options,
+            OpenAiDeCoachContext.Orientation orientation) {
         if (decision == null || options == null || options.isEmpty()) {
             return "Für die erforderliche Personalisierungsentscheidung fehlen sichere, vollständig beschriebene "
                     + "Optionen. Lade den Kontext neu und erfinde weder die offene Frage noch mögliche Antworten.";
@@ -542,11 +598,21 @@ final class OpenAiDeCoachContextProjector {
                     + "angeboten wird, verwende jetzt ausschließlich diese.";
         }
 
-        return "Die aktuell offene Auswahlfrage im Entscheidungsschritt „" + decision.stageLabel() + "“ lautet „"
-                + decision.groupLabel() + "“. " + cardinality + "; bisher ausgewählt: " + selected + ". "
-                + progress + " Übernimm ausschließlich eine veröffentlichte Options-ID unverändert. Wende einen "
-                + "inhaltlich eindeutigen Wunsch direkt an und frage nur nach, wenn die offene Auswahl tatsächlich "
-                + "mehrdeutig ist.";
+        String orientationInstruction = orientation == null
+                ? ""
+                : "Beginne die sichtbare Antwort mit dem in der Orientierung bestätigten Einstiegskontext. Frage "
+                        + "anschließend alle dort als noch offen aufgeführten Angaben gemeinsam und natürlich "
+                        + "formuliert ab, statt sie in einer festen Reihenfolge einzeln zu stellen. Akzeptiere mehrere "
+                        + "Angaben in beliebiger Reihenfolge oder eine Teilantwort und behalte jeden eindeutigen Wert "
+                        + "als fortgeltende Absicht. ";
+        return orientationInstruction
+                + "Die aktuell ausführbare Auswahlfrage im Entscheidungsschritt „" + decision.stageLabel()
+                + "“ lautet „" + decision.groupLabel() + "“. " + cardinality + "; bisher ausgewählt: " + selected
+                + ". " + progress + " Übernimm ausschließlich eine aktuell veröffentlichte Options-ID unverändert. "
+                + "Nach jeder erfolgreichen Auswahl lade den Kontext neu und wende erst dann einen weiteren "
+                + "eindeutigen Teil der fortgeltenden Absicht an. Später aufgeführte Fragen dienen nur der "
+                + "Orientierung und autorisieren keine vorgezogene Mutation. Frage nach der Verarbeitung eindeutiger "
+                + "Angaben nur noch tatsächlich ungeklärte Punkte nach.";
     }
 
     private boolean hasExamImage(FrontierGoal goal) {
