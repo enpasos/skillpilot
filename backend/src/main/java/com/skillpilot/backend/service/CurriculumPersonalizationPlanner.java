@@ -105,15 +105,15 @@ public final class CurriculumPersonalizationPlanner {
                         return PersonalizationPlan.invalid("personalization-cardinality-exceeded");
                     }
                     /*
-                     * A legacy cutover may already represent valid landscape
-                     * and filter choices without authored completion records.
-                     * The root-scoped migration marker suppresses only those
-                     * compatibility prompts. Independent scope dimensions
-                     * added later (for example stage or G8/G9) must remain
-                     * explicit: a migration marker cannot invent their value.
+                     * A legacy cutover may already represent a usable learner
+                     * configuration without authored completion records. Keep
+                     * all later-added prompts suppressed while its migration
+                     * marker remains, so normal state and cutover reads retain
+                     * the established frontier. An explicit coach launch
+                     * removes only this marker and then collects unresolved
+                     * dimensions such as stage or G8/G9.
                      */
-                    if (completionState.migrationCompleted()
-                            && source.getKind() != PersonalizationSourceKind.SCOPE_VALUES) {
+                    if (completionState.migrationCompleted()) {
                         continue;
                     }
 

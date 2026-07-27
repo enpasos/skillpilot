@@ -626,6 +626,12 @@ public class CurriculaService {
         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
         String stage = inferStageScope(config, landscapeId);
+        if (stage == null && courseProfile != null) {
+            // A course profile does not determine the learner's stage. Until the
+            // learner explicitly narrows the stage, use the reviewed CrossStage
+            // composition instead of falling back to the unprojected landscape.
+            stage = "CrossStage";
+        }
         String durationModel = resolveDurationModelScope(
                 readScopeValue(config, landscapeId, "durationModel"),
                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),

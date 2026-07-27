@@ -38,7 +38,7 @@ class PackageCompositionViewConsumerTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    void learnerScopeDoesNotInferStageFromSubjectCourseProfile() {
+    void learnerScopeUsesNeutralCrossStageForSubjectCourseProfileWithoutExplicitStage() {
         LearnerService service = learnerService(
                 mock(LandscapeService.class),
                 mock(CompositionViewService.class));
@@ -53,8 +53,8 @@ class PackageCompositionViewConsumerTest {
                             Map.<String, Object>of("selected", true, "filterId", courseProfile)));
 
             assertThat(scope)
-                    .containsEntry("courseProfile", courseProfile);
-            assertThat(scope).doesNotContainKey("stage");
+                    .containsEntry("courseProfile", courseProfile)
+                    .containsEntry("stage", "CrossStage");
         }
     }
 
@@ -86,7 +86,7 @@ class PackageCompositionViewConsumerTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    void curriculaScopeDoesNotInferStageFromSubjectCourseProfile() {
+    void curriculaScopeUsesNeutralCrossStageForSubjectCourseProfileWithoutExplicitStage() {
         LearningLandscape landscape = landscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getById(LANDSCAPE_ID)).thenReturn(landscape);
@@ -104,8 +104,8 @@ class PackageCompositionViewConsumerTest {
                     """.formatted(courseProfile));
 
             assertThat(scope)
-                    .containsEntry("courseProfile", courseProfile);
-            assertThat(scope).doesNotContainKey("stage");
+                    .containsEntry("courseProfile", courseProfile)
+                    .containsEntry("stage", "CrossStage");
         }
     }
 

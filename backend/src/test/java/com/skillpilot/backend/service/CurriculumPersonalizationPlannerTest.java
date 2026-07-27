@@ -1128,7 +1128,7 @@ class CurriculumPersonalizationPlannerTest {
     }
 
     @Test
-    void migrationCompletionDoesNotSuppressNewRequiredScopeChoice() {
+    void migrationCompletionSuppressesNewScopeChoiceUntilExplicitReopen() {
         LearningLandscape root = landscape(ROOT_ID, "Orbit");
         root.setPersonalizationFlow(flow(stage(
                 "stage-entry-scope",
@@ -1152,9 +1152,29 @@ class CurriculumPersonalizationPlannerTest {
                         migrationCompletionEntry()));
 
         assertThat(plan.valid()).isTrue();
-        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
-        assertThat(plan.groupId()).isEqualTo("group-duration");
-        assertThat(plan.options())
+        assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+
+        Map<String, Object> reopenedConfig = new LinkedHashMap<>();
+        reopenedConfig.putAll(config(
+                entry(ROOT_ID, true, null),
+                migrationCompletionEntry()));
+        assertThat(CurriculumPersonalizationPlanner.reopenMigratedFlow(
+                        reopenedConfig,
+                        ROOT_ID))
+                .isTrue();
+
+        @SuppressWarnings("unchecked")
+        Map<String, Map<String, Object>> plannedConfig =
+                (Map<String, Map<String, Object>>) (Map<?, ?>) reopenedConfig;
+        PersonalizationPlan reopenedPlan = CurriculumPersonalizationPlanner.plan(
+                ROOT_ID,
+                List.of(root),
+                plannedConfig);
+
+        assertThat(reopenedPlan.valid()).isTrue();
+        assertThat(reopenedPlan.stage()).isEqualTo(PersonalizationPlan.Stage.SELECTION);
+        assertThat(reopenedPlan.groupId()).isEqualTo("group-duration");
+        assertThat(reopenedPlan.options())
                 .extracting(PersonalizationPlan.Option::scopeValue)
                 .containsExactly("G8", "G9");
     }

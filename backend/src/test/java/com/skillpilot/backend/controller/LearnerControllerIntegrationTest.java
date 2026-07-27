@@ -455,7 +455,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(288);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(289);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -466,7 +466,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(288);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(289);
                 });
     }
 
@@ -2755,11 +2755,9 @@ public class LearnerControllerIntegrationTest {
                 .containsExactlyInAnyOrder(CANONICAL_MATH_ANALYSIS_CLUSTER_ID, CANONICAL_PHYSICS_CLUSTER_ID);
         assertThat(body.path("stateMachine").path("requiredAction").asText()).isEqualTo("setActiveGoal");
         assertThat(jsonIds(goalOptions))
-                .contains(
-                        CANONICAL_MATH_POWER_FUNCTIONS_ID,
-                        CANONICAL_MATH_FUNCTION_CONCEPT_ID)
+                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_WHY_ID)
                 .doesNotContain(
-                        CANONICAL_MATH_WHY_ID,
+                        CANONICAL_MATH_FUNCTION_CONCEPT_ID,
                         CANONICAL_MATH_CALCULATE_VALUES_ID,
                         CANONICAL_MATH_READ_VALUES_ID,
                         CANONICAL_MATH_SYMMETRY_ID,
@@ -2770,11 +2768,9 @@ public class LearnerControllerIntegrationTest {
                         LEGACY_MATH_READ_VALUES_ID,
                         LEGACY_PHYSICS_WHY_ID);
         assertThat(jsonIds(frontier))
-                .contains(
-                        CANONICAL_MATH_POWER_FUNCTIONS_ID,
-                        CANONICAL_MATH_FUNCTION_CONCEPT_ID)
+                .contains(CANONICAL_MATH_POWER_FUNCTIONS_ID, CANONICAL_MATH_WHY_ID)
                 .doesNotContain(
-                        CANONICAL_MATH_WHY_ID,
+                        CANONICAL_MATH_FUNCTION_CONCEPT_ID,
                         CANONICAL_MATH_CALCULATE_VALUES_ID,
                         CANONICAL_MATH_READ_VALUES_ID,
                         CANONICAL_MATH_SYMMETRY_ID,
@@ -5739,8 +5735,8 @@ public class LearnerControllerIntegrationTest {
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
         String[][] scopes = {
-                { "DE-HE", "GK", "672", "680" },
-                { "DE-HE", "LK", "777", "785" },
+                { "DE-HE", "GK", "673", "681" },
+                { "DE-HE", "LK", "778", "786" },
                 { "DE-RP", "GK", "553", "559" },
                 { "DE-RP", "LK", "650", "656" },
                 { "DE-SH", "GK", "581", "587" },
