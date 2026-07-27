@@ -82,8 +82,9 @@ expliziter, datenloser Bootstrapmodus:
    Beispiel- oder Legacy-URL ergänzen, die nicht in der App-Verwaltung steht.
 7. In ChatGPT als Token-Endpunkt-Authentisierung `client_secret_basic`
    auswählen. Bootstrap ausschalten und Vollbetrieb mit Client-ID, Secret,
-   Callback, OAuth und MCP atomar aktivieren. Der erste Vollbetrieb bleibt
-   read-only.
+   Callback, OAuth, MCP und aktivierten Schreiboperationen atomar aktivieren.
+   Ein read-only Canary ist ein bewusst nicht produktionsbereiter
+   Diagnosezustand.
 
 Der Bootstrap-MCP-Endpunkt weist **jede** Methode und auch beliebige Bearer-
 Werte mit `401` plus `WWW-Authenticate` ab. Authorization-, Token-, Revocation-
@@ -101,9 +102,10 @@ nicht gleichzeitig aktiviert sein; diese Fehlkonfiguration bricht den Start ab.
 
 ## 3. Runtime-Konfiguration
 
-Für den sicheren Cutover werden Code und additive Liquibase-Migration zunächst
-mit deaktivierter Schreibfunktion bereitgestellt. Danach folgt ein read-only
-Canary. Der produktive Kompatibilitätsmodus verwendet normales
+Für den sicheren Cutover können Code und additive Liquibase-Migration zunächst
+in einem getrennten read-only Canary geprüft werden. Der produktive
+Kompatibilitätsmodus benötigt dagegen aktivierte Schreiboperationen und
+verwendet normales
 serverauthentisiertes HTTPS am Reverse Proxy und verpflichtendes OAuth/PKCE mit
 exakter Resource-/Audience- und Scope-Prüfung. Die optionale, privilegierte
 mTLS-Edge-Installation ist getrennt in
@@ -122,7 +124,7 @@ SKILLPILOT_OPENAI_DE_ENABLED=true
 SKILLPILOT_OPENAI_DE_BOOTSTRAP_ENABLED=false
 SKILLPILOT_OPENAI_DE_OAUTH_ENABLED=true
 SKILLPILOT_OPENAI_DE_MCP_ENABLED=true
-SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false
+SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true
 SKILLPILOT_OPENAI_DE_MTLS_EDGE_ENABLED=false
 
 # Erst nach separater, optionaler mTLS-Edge-Installation:
@@ -156,12 +158,13 @@ SKILLPILOT_OPENAI_DE_RATE_LIMIT_METADATA_REQUESTS=120
 SKILLPILOT_OPENAI_DE_RATE_LIMIT_MAX_CLIENT_BUCKETS=10000
 ```
 
-`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false` lässt Discovery, OAuth und lesende
-Werkzeuge zu, blockiert aber alle Lernstandsänderungen zusätzlich zum OAuth-
-Scope. Diese Betriebsabschaltung wird als normale, vorübergehende
-Feature-Fehlermeldung ausgegeben und darf keine erneute OAuth-Verbindung
-auslösen. Erst nach bestandenem read-only Canary wird der Schalter bewusst auf
-`true` gesetzt.
+`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true` ist für den funktionsfähigen
+Produktivcoach verpflichtend. Personalisierung, Navigation, Aufgabenfortschritt
+und Mastery sind fachlich schreibende Vorgänge. Bei `false` funktionieren
+Discovery, OAuth und lesende Werkzeuge weiterhin, aber der Coach bricht beim
+ersten erforderlichen Zustandswechsel mit `503 Service Unavailable` ab. Dieser
+Wert ist deshalb ausschließlich für einen bewusst isolierten read-only Canary
+geeignet. Die Betriebsabschaltung darf keine erneute OAuth-Verbindung auslösen.
 
 Der normale aktivierte Provider startet ausschließlich im sicheren
 Clientmodus; es gibt keinen produktiven `secure-mode=false`-Schalter. Der
@@ -278,8 +281,11 @@ HTTPS verwenden und der erwartete Vertrag mit genau elf Werkzeugen geladen ist.
 Die Readiness-Gruppe enthält zusätzlich den Datenbank-Health-Check `db`; ein
 nicht erreichbarer Persistenzdienst darf daher nicht als einsatzbereiter Coach
 gemeldet werden.
-`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false` ist ein erlaubter Canary-Zustand und
-setzt Readiness nicht auf `DOWN`.
+`SKILLPILOT_OPENAI_DE_WRITES_ENABLED=false` ist ein erlaubter read-only
+Canary-Zustand und setzt die gemeinsame Readiness nicht auf `DOWN`. Ob der
+vollständige Coach produktiv funktionsfähig ist, muss deshalb zusätzlich über
+die Betriebsumgebung beziehungsweise einen separaten Deployment-Preflight
+geprüft werden.
 
 Die Health-Details enthalten ausschließlich nicht geheime Statuswerte, darunter
 `mcpEnabled`, `oauthEnabled`, `writesEnabled`, `secureMode`,
@@ -479,7 +485,12 @@ Abgleich autorisiert sichtbar sind, muss `contractHash` aus
 
 ## 6. Acceptance-Reihenfolge
 
-### Stufe A – read-only Canary
+### Stufe A – isolierter read-only Canary
+
+Diese Stufe dient ausschließlich der gezielten Prüfung von Discovery, OAuth,
+Sitzungsauflösung und lesenden Werkzeugen. Die gemeinsame Readiness bleibt
+dabei absichtlich nutzbar; der Zustand ist dennoch kein funktionsfähiger
+Produktivcoach.
 
 - Fehlende oder verneinte Provider-Altersbestätigung muss bereits am Cockpit-
   Start mit `403` scheitern; eine bestätigte berechtigte Person darf fortfahren.
@@ -531,9 +542,10 @@ Lerninhalte, Antworten, Toolargumente, Tokens und Lernendenkennungen dürfen
 darin nicht erscheinen. Für den Live-Test kann die Zeile mit
 `journalctl -u skillpilot` geprüft werden.
 
-### Stufe B – Schreibpilot
+### Stufe B – funktionsfähiger Schreibpilot
 
 Nach Stufe A `SKILLPILOT_OPENAI_DE_WRITES_ENABLED=true` setzen und neu starten.
+Erst dieser Zustand ist als vollständiger Produktivcoach freizugeben.
 Dann mit einem dedizierten Testlernstand sämtliche Nutzerreisen prüfen:
 
 1. Curriculum und Personalisierung;
