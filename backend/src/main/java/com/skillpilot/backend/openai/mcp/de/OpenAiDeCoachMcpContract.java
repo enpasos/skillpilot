@@ -234,7 +234,9 @@ public final class OpenAiDeCoachMcpContract {
                         "Lehrplan auswählen",
                         "Setzt genau eine curriculumId aus dem jüngsten Kontext oder Navigationsergebnis und gibt den "
                                 + "frischen Folgezustand zurück.",
-                        objectSchema(Map.of("curriculumId", nonEmptyStringSchema()), List.of("curriculumId")),
+                        objectSchema(
+                                Map.of("curriculumId", modelFacingOpaqueReferenceSchema()),
+                                List.of("curriculumId")),
                         contextSchema(),
                         false,
                         true,
@@ -248,7 +250,7 @@ public final class OpenAiDeCoachMcpContract {
                                 + "Übergib ausschließlich die opake optionId aus structuredContent unverändert. "
                                 + "Leite sie niemals aus Bezeichnungen ab.",
                         objectSchema(
-                                Map.of("optionId", nonEmptyStringSchema()),
+                                Map.of("optionId", modelFacingOpaqueReferenceSchema()),
                                 List.of("optionId")),
                         contextSchema(),
                         false,
@@ -260,7 +262,9 @@ public final class OpenAiDeCoachMcpContract {
                         "Lernumfang auswählen",
                         "Ersetzt den Lernumfang durch eine oder mehrere aktuell erlaubte fachliche goalIds und gibt den "
                                 + "frischen Folgezustand zurück.",
-                        objectSchema(Map.of("goalIds", stringArraySchema(1)), List.of("goalIds")),
+                        objectSchema(
+                                Map.of("goalIds", modelFacingOpaqueReferenceArraySchema(1)),
+                                List.of("goalIds")),
                         contextSchema(),
                         false,
                         true,
@@ -273,7 +277,7 @@ public final class OpenAiDeCoachMcpContract {
                                 + "gewünschten Wechsel eines bereits aktiven Ziels.",
                         objectSchema(
                                 Map.of(
-                                        "goalId", nonEmptyStringSchema(),
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
                                         "redirect", booleanSchema()),
                                 List.of("goalId")),
                         contextSchema(),
@@ -289,7 +293,9 @@ public final class OpenAiDeCoachMcpContract {
                                 + "Kontext aufrufen; alle Aspekte des Ziels müssen geprüft sein. Nie für Cluster, "
                                 + "Memorierungs-/SRS-Ziele, Selbsteinschätzung, Nachsprechen oder denselben "
                                 + "vorgerechneten Fall verwenden.",
-                        objectSchema(Map.of("goalId", nonEmptyStringSchema()), List.of("goalId")),
+                        objectSchema(
+                                Map.of("goalId", modelFacingOpaqueReferenceSchema()),
+                                List.of("goalId")),
                         masterySchema(),
                         false,
                         true,
@@ -302,7 +308,7 @@ public final class OpenAiDeCoachMcpContract {
                                 + "zwischen 1 und 20.",
                         objectSchema(
                                 Map.of(
-                                        "goalId", nonEmptyStringSchema(),
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
                                         "batchSize", integerSchema(1, 20)),
                                 List.of("goalId")),
                         recallPromptSchema(),
@@ -316,8 +322,8 @@ public final class OpenAiDeCoachMcpContract {
                         "Lädt die Sollantwort genau einer Karte erst nachdem die lernende Person darauf geantwortet hat.",
                         objectSchema(
                                 Map.of(
-                                        "goalId", nonEmptyStringSchema(),
-                                        "cardId", nonEmptyStringSchema()),
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        "cardId", modelFacingOpaqueReferenceSchema()),
                                 List.of("goalId", "cardId")),
                         recallAnswerSchema(),
                         true,
@@ -330,8 +336,8 @@ public final class OpenAiDeCoachMcpContract {
                         "Speichert für genau eine Karte passed=true nur bei einer korrekten Antwort ohne Hilfe, sonst false.",
                         objectSchema(
                                 Map.of(
-                                        "goalId", nonEmptyStringSchema(),
-                                        "cardId", nonEmptyStringSchema(),
+                                        "goalId", modelFacingOpaqueReferenceSchema(),
+                                        "cardId", modelFacingOpaqueReferenceSchema(),
                                         "passed", booleanSchema(),
                                         "feedback", stringSchema()),
                                 List.of("goalId", "cardId", "passed")),
@@ -345,7 +351,9 @@ public final class OpenAiDeCoachMcpContract {
                         "Prüfungsbewertung laden",
                         "Lädt Lösung und Bewertungsraster ausschließlich für das aktive freigegebene Prüfungsziel und "
                                 + "erst nach einer vollständigen sichtbaren Abgabe. Im Prüfungsmodus niemals nachfragen.",
-                        objectSchema(Map.of("goalId", nonEmptyStringSchema()), List.of("goalId")),
+                        objectSchema(
+                                Map.of("goalId", modelFacingOpaqueReferenceSchema()),
+                                List.of("goalId")),
                         examEvaluationSchema(),
                         true,
                         true,
@@ -996,12 +1004,9 @@ public final class OpenAiDeCoachMcpContract {
                 LEARNING_SESSION_ID,
                 Map.of(
                         "type", "string",
-                        "minLength", 47,
-                        "maxLength", 47,
-                        "pattern", "^sps_[A-Za-z0-9_-]{43}$",
                         "description",
-                                "Kurzlebige SkillPilot-Lernsession aus der aktuellen Startnachricht. "
-                                        + "Bei jedem Tool-Aufruf unverändert mitsenden."));
+                                "Aus der aktuellen SkillPilot-Startnachricht exakt und unverändert übernehmen "
+                                        + "und bei jedem Tool-Aufruf mitsenden."));
 
         List<String> required = new ArrayList<>();
         Object originalRequired = inputSchema.get("required");
@@ -1290,6 +1295,12 @@ public final class OpenAiDeCoachMcpContract {
         return Map.of("type", "string", "minLength", 1);
     }
 
+    private static Map<String, Object> modelFacingOpaqueReferenceSchema() {
+        return Map.of(
+                "type", "string",
+                "description", "Aus dem jüngsten SkillPilot-Ergebnis unverändert übernehmen.");
+    }
+
     private static Map<String, Object> enumStringSchema(String... values) {
         return Map.of("type", "string", "enum", List.of(values));
     }
@@ -1318,6 +1329,15 @@ public final class OpenAiDeCoachMcpContract {
         Map<String, Object> schema = new LinkedHashMap<>();
         schema.put("type", "array");
         schema.put("items", nonEmptyStringSchema());
+        schema.put("uniqueItems", true);
+        schema.put("minItems", minItems);
+        return Map.copyOf(schema);
+    }
+
+    private static Map<String, Object> modelFacingOpaqueReferenceArraySchema(int minItems) {
+        Map<String, Object> schema = new LinkedHashMap<>();
+        schema.put("type", "array");
+        schema.put("items", modelFacingOpaqueReferenceSchema());
         schema.put("uniqueItems", true);
         schema.put("minItems", minItems);
         return Map.copyOf(schema);

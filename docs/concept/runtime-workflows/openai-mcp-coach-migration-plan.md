@@ -236,6 +236,30 @@ bleiben technisch eindeutig:
 | `record_skillpilot_verified_recall_result_de(learningSessionId, goalId, cardId, passed, feedback)` | Recall-Ergebnis speichern |
 | `get_skillpilot_exam_evaluation_de(learningSessionId, goalId)` | Freigegebene Lösung und Bewertungsraster erst nach vollständiger Abgabe laden |
 
+### 5.1 LLM-gerechter Eingabevertrag
+
+Das veröffentlichte MCP-`inputSchema` ist eine Arbeitsanweisung für das Modell,
+nicht die technische Validierungsschicht des Backends. Es enthält deshalb nur
+Informationen, die dem Modell beim richtigen Tool-Aufruf helfen:
+
+- Datentypen, Pflichtfelder und kurze handlungsorientierte Beschreibungen;
+- echte fachliche Auswahlmengen wie `target`;
+- fachlich relevante Zahlen- und Listengrenzen wie `batchSize` oder eine
+  nichtleere, eindeutige `goalIds`-Liste.
+
+Technische Formdetails opaker Referenzen werden nicht an das Modell
+veröffentlicht. Insbesondere enthält das Tool-Schema für `learningSessionId`,
+`curriculumId`, `optionId`, `goalId` und `cardId` keine regulären Ausdrücke und
+keine Mindest- oder Maximallängen. Das Modell soll solche Werte ausschließlich
+aus der aktuellen SkillPilot-Startnachricht beziehungsweise dem jüngsten
+SkillPilot-Ergebnis unverändert übernehmen, nicht selbst konstruieren.
+
+Die Vereinfachung schwächt die Sicherheits- und Datenintegritätsgrenze nicht:
+Das Spring-Backend prüft weiterhin Format, Nichtleere, Gültigkeit,
+Aktualität, Berechtigungen und erlaubte Werte vollständig und lehnt jeden
+ungültigen Aufruf fail-closed ab. Modellvertrag und Servervalidierung bleiben
+damit bewusst getrennt.
+
 Ein generisches `applyChoice` ist für die UI-lose Version nicht vorgesehen. Der
 Personalisierungsplan veröffentlicht für jede aktuell zulässige Auswahl eine
 opake `optionId`. Das Modell übergibt ausschließlich diese ID unverändert; es
