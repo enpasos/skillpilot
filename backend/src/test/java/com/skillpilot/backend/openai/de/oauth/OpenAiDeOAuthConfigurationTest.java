@@ -41,9 +41,11 @@ class OpenAiDeOAuthConfigurationTest {
     private final OpenAiDeOAuthConfiguration configuration = new OpenAiDeOAuthConfiguration();
 
     @Test
-    void defaultsDoNotGuessChatGptClientOrCallback() {
+    void defaultsUseConfidentialAuthenticationButDoNotGuessClientCredentialsOrCallback() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
 
+        assertThat(properties.getOauth().getClientAuthenticationMethod())
+                .isEqualTo("client_secret_basic");
         assertThat(properties.getOauth().getClientId()).isEmpty();
         assertThat(properties.getOauth().getClientSecret()).isEmpty();
         assertThat(properties.getOauth().getRedirectUris()).isEmpty();
@@ -534,6 +536,7 @@ class OpenAiDeOAuthConfigurationTest {
     private OpenAiDeProperties configuredProperties() {
         OpenAiDeProperties properties = new OpenAiDeProperties();
         properties.setMcpUrl("https://skillpilot.test/api/openai/de/mcp");
+        properties.getOauth().setClientAuthenticationMethod("none");
         properties.getOauth().setClientId("chatgpt-app-client-id");
         properties.getOauth().setRedirectUris(List.of(
                 "https://chatgpt.com/connector/oauth/app-specific-callback"));

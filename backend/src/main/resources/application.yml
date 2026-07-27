@@ -119,7 +119,7 @@ skillpilot:
         client-id: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ID:}
         client-secret: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_SECRET:}
         redirect-uris: ${SKILLPILOT_OPENAI_DE_OAUTH_REDIRECT_URIS:}
-        client-authentication-method: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:none}
+        client-authentication-method: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_AUTHENTICATION_METHOD:client_secret_basic}
         client-jwk-set-uri: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_JWK_SET_URI:}
         client-assertion-signing-algorithm: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_SIGNING_ALGORITHM:RS256}
         client-assertion-replay-cache-size: ${SKILLPILOT_OPENAI_DE_OAUTH_CLIENT_ASSERTION_REPLAY_CACHE_SIZE:10000}

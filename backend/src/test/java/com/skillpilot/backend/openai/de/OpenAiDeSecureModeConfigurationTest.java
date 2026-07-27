@@ -205,7 +205,6 @@ class OpenAiDeSecureModeConfigurationTest {
             "skillpilot.security.signing-secret=" + TEST_SIGNING_SECRET,
             "skillpilot.openai.de.security.secure-mode=true",
             "skillpilot.openai.de.oauth.enabled=true",
-            "skillpilot.openai.de.oauth.client-authentication-method=client_secret_basic",
             "skillpilot.openai.de.oauth.client-id=skillpilot-chatgpt-de-prod",
             "skillpilot.openai.de.oauth.client-secret=" + TEST_CLIENT_SECRET,
             "skillpilot.openai.de.oauth.redirect-uris[0]=https://chatgpt.com/connector/oauth/callback",
