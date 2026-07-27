@@ -10,6 +10,7 @@ public record OpenAiDeCoachContext(
         String requiredAction,
         String interactionMode,
         Curriculum curriculum,
+        Orientation orientation,
         ActiveGoal activeGoal,
         List<Option> options,
         Decision decision,
@@ -26,6 +27,25 @@ public record OpenAiDeCoachContext(
             String curriculumId,
             String title,
             String subject) {
+    }
+
+    /**
+     * User-facing orientation for guided setup.
+     *
+     * <p>Only the current decision's options are executable. Later questions
+     * are published here solely so a conversational client can ask for all
+     * missing information together and retain an order-independent answer.</p>
+     */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record Orientation(
+            String establishedContext,
+            List<OpenQuestion> openQuestions) {
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record OpenQuestion(
+            String topic,
+            String question) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

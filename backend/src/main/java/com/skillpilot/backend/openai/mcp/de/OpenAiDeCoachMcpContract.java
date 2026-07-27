@@ -88,7 +88,7 @@ public final class OpenAiDeCoachMcpContract {
 
             Bei Verified Recall zeige den vollständigen Fragenbatch und warte auf alle Antworten. Rufe jede Sollantwort erst nach der zugehörigen Lernendenantwort ab, akzeptiere fachlich gleichwertige Formulierungen und speichere jede Karte sofort; passed=true nur bei korrekter Antwort ohne Hilfe. Speichere alle Karten vor dem nächsten Batch, prüfe eine Karte höchstens einmal pro Tag und speichere keine zusätzliche manuelle Mastery.
 
-            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: wende eindeutige frische Schritte direkt an und frage nur offene Entscheidungen. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Lernsession noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
+            Behandle natürliche Mehrfachwünsche als fortgeltende Absicht: Nenne bei einer offenen Personalisierung zuerst knapp den bestätigten Einstiegskontext und frage danach alle vom jüngsten SkillPilot-Kontext als noch offen aufgeführten Angaben gemeinsam ab. Akzeptiere Antworten mit mehreren Angaben in beliebiger Reihenfolge sowie Teilantworten. Wende jeden eindeutig bestimmten frischen Schritt direkt an, lade danach den Kontext neu und frage anschließend nur noch tatsächlich offene Entscheidungen. Später angekündigte Fragen sind keine vorgezogene Schreibberechtigung; mutiere ausschließlich über eine Option des jeweils jüngsten Kontexts. Behaupte Zustandsänderungen nur nach bestätigtem Erfolg. Bei einem 409-Konflikt lade den Kontext genau einmal neu. Bei SESSION_REQUIRED bleibt OAuth verbunden: bitte die lernende Person, SkillPilot zu öffnen und dort erneut „Lernen starten“ zu wählen; fordere weder Lernsession noch SkillPilot-ID an und verlange keine neue OAuth-Verbindung. Bei Authentifizierungs-, Schema-, Speicher- oder wiederholtem Konfliktfehler stoppe strukturierte Aktionen und sage transparent, dass der Zustand nicht zuverlässig gespeichert werden kann; rate nie, behaupte keinen wahrscheinlichen Erfolg und verspreche kein späteres Speichern.
             """;
 
     private final CoachToolFacade coachTools;
@@ -876,6 +876,27 @@ public final class OpenAiDeCoachMcpContract {
         if (context == null) {
             return "SkillPilot-Kontext ist derzeit nicht verfügbar.";
         }
+        if (context.orientation() != null) {
+            String establishedContext = context.orientation().establishedContext();
+            String openTopics = context.orientation().openQuestions() == null
+                    ? ""
+                    : context.orientation().openQuestions().stream()
+                            .map(OpenAiDeCoachContext.OpenQuestion::topic)
+                            .filter(topic -> topic != null && !topic.isBlank())
+                            .distinct()
+                            .collect(java.util.stream.Collectors.joining(", "));
+            StringBuilder summary = new StringBuilder("SkillPilot-Kontext geladen");
+            if (establishedContext != null && !establishedContext.isBlank()) {
+                summary.append(". ").append(establishedContext.trim());
+            }
+            if (!openTopics.isBlank()) {
+                summary.append(" Noch gemeinsam zu klären: ").append(openTopics).append('.');
+            }
+            String value = summary.toString();
+            return value.endsWith(".") || value.endsWith("!") || value.endsWith("?")
+                    ? value
+                    : value + '.';
+        }
         String goal = context.activeGoal() == null || context.activeGoal().title() == null
                 ? "kein aktives Lernziel"
                 : "aktives Lernziel: " + context.activeGoal().title();
@@ -1028,6 +1049,7 @@ public final class OpenAiDeCoachMcpContract {
         properties.put("requiredAction", stringSchema());
         properties.put("interactionMode", stringSchema());
         properties.put("curriculum", curriculumSchema());
+        properties.put("orientation", orientationSchema());
         properties.put("activeGoal", activeGoalSchema());
         properties.put("options", objectArraySchema(optionSchema()));
         properties.put("decision", decisionSchema());
@@ -1080,6 +1102,22 @@ public final class OpenAiDeCoachMcpContract {
                         "minSelections",
                         "maxSelections",
                         "selectedCount"));
+    }
+
+    private static Map<String, Object> orientationSchema() {
+        return objectSchema(
+                Map.of(
+                        "establishedContext", stringSchema(),
+                        "openQuestions", objectArraySchema(openQuestionSchema())),
+                List.of("openQuestions"));
+    }
+
+    private static Map<String, Object> openQuestionSchema() {
+        return objectSchema(
+                Map.of(
+                        "topic", stringSchema(),
+                        "question", stringSchema()),
+                List.of("topic", "question"));
     }
 
     private static Map<String, Object> masterySchema() {

@@ -147,7 +147,11 @@ public final class CurriculumPersonalizationPlanner {
                                 max,
                                 state.selectedCount(),
                                 pendingValueOptions,
-                                navigationOptions);
+                                navigationOptions,
+                                pendingDecisionPrompts(
+                                        validation.stages(),
+                                        stage.getId(),
+                                        group.getId()));
                     }
 
                     List<PersonalizationPlan.Option> currentOptions =
@@ -163,7 +167,11 @@ public final class CurriculumPersonalizationPlanner {
                             max,
                             state.selectedCount(),
                             currentOptions,
-                            navigationOptions);
+                            navigationOptions,
+                            pendingDecisionPrompts(
+                                    validation.stages(),
+                                    stage.getId(),
+                                    group.getId()));
                 }
                 if (source.getKind() == PersonalizationSourceKind.LANDSCAPES) {
                     selectedLandscapeIdsByGroup.put(group.getId(), List.copyOf(groupLandscapeSelections));
@@ -736,6 +744,39 @@ public final class CurriculumPersonalizationPlanner {
                         .comparing(PersonalizationGroup::getOrder, Comparator.nullsLast(Integer::compareTo))
                         .thenComparing(PersonalizationGroup::getId, Comparator.nullsLast(String::compareTo)))
                 .toList();
+    }
+
+    /**
+     * Returns descriptive labels for the current and all later authored
+     * decisions. These labels help a conversational client ask for several
+     * still-missing facts together without exposing or pre-authorizing any
+     * future option.
+     */
+    private static List<PersonalizationPlan.DecisionPrompt> pendingDecisionPrompts(
+            List<PersonalizationStage> stages,
+            String currentStageId,
+            String currentGroupId) {
+        if (stages == null || blank(currentStageId) || blank(currentGroupId)) {
+            return List.of();
+        }
+
+        List<PersonalizationPlan.DecisionPrompt> prompts = new ArrayList<>();
+        boolean currentReached = false;
+        for (PersonalizationStage stage : stages) {
+            for (PersonalizationGroup group : sortedGroups(stage)) {
+                if (!currentReached
+                        && currentStageId.equals(stage.getId())
+                        && currentGroupId.equals(group.getId())) {
+                    currentReached = true;
+                }
+                if (currentReached) {
+                    prompts.add(new PersonalizationPlan.DecisionPrompt(
+                            firstNonBlank(stage.getLabel(), stage.getId()),
+                            firstNonBlank(group.getLabel(), group.getId())));
+                }
+            }
+        }
+        return List.copyOf(prompts);
     }
 
     private static CompletionState completionState(

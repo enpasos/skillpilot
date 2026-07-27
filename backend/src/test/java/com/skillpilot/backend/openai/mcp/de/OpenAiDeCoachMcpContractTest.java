@@ -189,6 +189,36 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void contextOutputSchemaPublishesOrientationAndOrderedOpenQuestions() {
+        JsonNode contextSchema =
+                objectMapper.valueToTree(spec(OpenAiDeCoachMcpContract.GET_CONTEXT).tool().outputSchema());
+
+        assertThat(contextSchema.at("/properties/orientation/type").asText())
+                .isEqualTo("object");
+        assertThat(contextSchema.at("/properties/orientation/properties/establishedContext/type").asText())
+                .isEqualTo("string");
+        assertThat(contextSchema.at("/properties/orientation/properties/openQuestions/type").asText())
+                .isEqualTo("array");
+        assertThat(contextSchema.at("/properties/orientation/properties/openQuestions/items/type").asText())
+                .isEqualTo("object");
+        assertThat(contextSchema
+                        .at("/properties/orientation/properties/openQuestions/items/properties/topic/type")
+                        .asText())
+                .isEqualTo("string");
+        assertThat(contextSchema
+                        .at("/properties/orientation/properties/openQuestions/items/properties/question/type")
+                        .asText())
+                .isEqualTo("string");
+        JsonNode required = contextSchema
+                .at("/properties/orientation/properties/openQuestions/items/required");
+        assertThat(required.isArray()).isTrue();
+        assertThat(java.util.stream.StreamSupport.stream(required.spliterator(), false)
+                        .map(JsonNode::asText)
+                        .toList())
+                .containsExactly("topic", "question");
+    }
+
+    @Test
     void nativeMcpSerializationPublishesOutputSchemaAnnotationsAndOpenAiSecurityMirror() throws Exception {
         String json = new JacksonMcpJsonMapperSupplier().get().writeValueAsString(
                 spec(OpenAiDeCoachMcpContract.SET_SCOPE).tool());

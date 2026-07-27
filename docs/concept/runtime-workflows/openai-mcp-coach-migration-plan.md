@@ -341,6 +341,30 @@ Laufzeitdaten des Plans, keine Instruktionen in der öffentlich sichtbaren
 App-Beschreibung. Der Adapter darf weder Kardinalität noch Bedeutung aus
 Labels, früheren Chatnachrichten oder bekannten Curriculumnamen erraten.
 
+Für den Einstieg gilt zusätzlich ein allgemeiner UX-Vertrag:
+
+1. Der Coach nennt zuerst knapp den vom Backend bestätigten Einstiegskontext.
+   Bereits feststehende Angaben werden nicht erneut erfragt.
+2. Danach fragt er die im authored Flow noch offenen Angaben gemeinsam ab,
+   soweit sie aus dem aktuellen autoritativen Plan bestimmbar sind. Die
+   sichtbare Reihenfolge ist nur Orientierung; die lernende Person darf mehrere
+   Angaben zusammen und in beliebiger Reihenfolge beantworten.
+3. Spätere Entscheidungsgruppen und ihre sichtbaren Antworten sind in dieser
+   Sammelfrage nur Orientierung. Sie sind keine vorab ausführbaren
+   Mutationsoptionen und ihre technischen Referenzen werden nicht
+   zwischengespeichert oder vorweggenommen.
+4. Das Backend verarbeitet die erkennbare Mehrfachabsicht weiterhin streng
+   sequenziell: genau eine aktuell zulässige Option anwenden, den
+   `PersonalizationPlan` frisch laden und erst danach die nächste Angabe gegen
+   die nun aktuellen Optionen auflösen. Nur tatsächlich mehrdeutige oder nach
+   der Neuprojektion noch offene Angaben werden erneut erfragt.
+
+Damit ist die Benutzerantwort reihenfolgefrei, ohne die Autorität der
+zustandsabhängigen Mutationsschnittstelle aufzuweichen. Bedingte Folgefragen,
+deren Inhalt erst nach einer vorgelagerten Auswahl feststeht, werden als solche
+kenntlich gemacht oder erst nach der frischen Neuprojektion konkretisiert; der
+Coach erfindet dafür keine Optionen.
+
 Fehlt `personalizationFlow`, besteht für diese Curriculumwurzel keine
 verpflichtende geführte Personalisierung. Existiert ein Flow, ist aber
 syntaktisch oder semantisch ungültig, schlägt die Einrichtung geschlossen fehl:
@@ -481,7 +505,10 @@ Es serialisiert **nicht** den rohen
 `content` enthält eine kurze natürliche Zusammenfassung. IDs und strukturierte
 Optionen bleiben in `structuredContent` und werden nicht unnötig in der
 Chatantwort wiederholt. Zielvisualisierungen erscheinen im Chat nur als sicherer
-Cockpit-Deep-Link.
+Cockpit-Deep-Link. Die Zusammenfassung beginnt beim Einstieg mit den
+bestätigten Kontextangaben und führt anschließend die gemeinsam beantwortbaren,
+authored offenen Angaben auf. Sie darf spätere sichtbare Fragen zur Orientierung
+enthalten, macht daraus aber keine vorzeitig gültigen Schreiboptionen.
 
 Der opake `optionId`-Vertrag ist zunächst für den produktiven deutschen
 OpenAI-MCP-Adapter umgesetzt. Die pausierte Claude-Integration und die

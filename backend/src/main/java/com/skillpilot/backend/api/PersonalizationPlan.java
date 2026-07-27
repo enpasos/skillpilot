@@ -22,12 +22,14 @@ public record PersonalizationPlan(
         int selectedCount,
         List<Option> options,
         List<Option> navigationOptions,
+        List<DecisionPrompt> pendingDecisions,
         String problemCode) {
 
     public PersonalizationPlan {
         stage = stage == null ? Stage.INVALID : stage;
         options = options == null ? List.of() : List.copyOf(options);
         navigationOptions = navigationOptions == null ? List.of() : List.copyOf(navigationOptions);
+        pendingDecisions = pendingDecisions == null ? List.of() : List.copyOf(pendingDecisions);
     }
 
     /**
@@ -46,6 +48,7 @@ public record PersonalizationPlan(
                 0,
                 options,
                 navigationOptions,
+                List.of(),
                 null);
     }
 
@@ -154,6 +157,19 @@ public record PersonalizationPlan(
         COMPLETE_GROUP
     }
 
+    /**
+     * Human-facing orientation for one still-open authored decision.
+     *
+     * <p>This is deliberately descriptive only. It exposes neither future
+     * option IDs nor a mutation shortcut; provider adapters must still apply
+     * only the currently valid {@link #options()} and reload the plan after
+     * every successful mutation.</p>
+     */
+    public record DecisionPrompt(
+            String stageLabel,
+            String groupLabel) {
+    }
+
     public static PersonalizationPlan selection(
             String stageId,
             String stageLabel,
@@ -165,6 +181,32 @@ public record PersonalizationPlan(
             int selectedCount,
             List<Option> options,
             List<Option> navigationOptions) {
+        return selection(
+                stageId,
+                stageLabel,
+                groupId,
+                groupLabel,
+                groupInstanceId,
+                minSelections,
+                maxSelections,
+                selectedCount,
+                options,
+                navigationOptions,
+                List.of(new DecisionPrompt(stageLabel, groupLabel)));
+    }
+
+    public static PersonalizationPlan selection(
+            String stageId,
+            String stageLabel,
+            String groupId,
+            String groupLabel,
+            String groupInstanceId,
+            int minSelections,
+            int maxSelections,
+            int selectedCount,
+            List<Option> options,
+            List<Option> navigationOptions,
+            List<DecisionPrompt> pendingDecisions) {
         return new PersonalizationPlan(
                 Stage.SELECTION,
                 stageId,
@@ -177,6 +219,7 @@ public record PersonalizationPlan(
                 selectedCount,
                 options,
                 navigationOptions,
+                pendingDecisions,
                 null);
     }
 
@@ -193,6 +236,7 @@ public record PersonalizationPlan(
                 0,
                 List.of(),
                 navigationOptions,
+                List.of(),
                 null);
     }
 
@@ -207,6 +251,7 @@ public record PersonalizationPlan(
                 0,
                 0,
                 0,
+                List.of(),
                 List.of(),
                 List.of(),
                 problemCode == null || problemCode.isBlank()

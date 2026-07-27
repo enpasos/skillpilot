@@ -8,6 +8,7 @@ import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalStats;
 import com.skillpilot.backend.api.LearnerGoals;
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.landscape.ExamData;
@@ -18,6 +19,63 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class OpenAiDeCoachContextProjectorTest {
+
+    @Test
+    void personalizationOrientationUsesConfirmedCurriculumAndAllAuthoredOpenQuestionsInOrder()
+            throws Exception {
+        OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        LandscapeSummary curriculum = new LandscapeSummary(
+                "curriculum-orbit",
+                "Werkstatt Orbit",
+                "",
+                "DE",
+                "",
+                "continuing-education",
+                "Navigation",
+                "de",
+                List.of());
+        PersonalizationPlan plan = PersonalizationPlan.selection(
+                "stage-entry",
+                "Einstieg",
+                "group-setting",
+                "Welche Lernumgebung passt?",
+                "group-setting:curriculum-orbit",
+                1,
+                1,
+                0,
+                List.of(),
+                List.of(),
+                List.of(
+                        new PersonalizationPlan.DecisionPrompt(
+                                "Einstieg",
+                                "Welche Lernumgebung passt?"),
+                        new PersonalizationPlan.DecisionPrompt(
+                                "Vertiefung",
+                                "Welcher Schwerpunkt passt?"),
+                        new PersonalizationPlan.DecisionPrompt(
+                                "Abschluss",
+                                "Welches Zielformat passt?")));
+
+        OpenAiDeCoachContext.Orientation orientation =
+                projector.personalizationOrientation(curriculum, plan);
+
+        assertThat(orientation.establishedContext())
+                .isEqualTo("Du bist im Curriculum „Werkstatt Orbit“.");
+        assertThat(orientation.openQuestions()).containsExactly(
+                new OpenAiDeCoachContext.OpenQuestion(
+                        "Einstieg",
+                        "Welche Lernumgebung passt?"),
+                new OpenAiDeCoachContext.OpenQuestion(
+                        "Vertiefung",
+                        "Welcher Schwerpunkt passt?"),
+                new OpenAiDeCoachContext.OpenQuestion(
+                        "Abschluss",
+                        "Welches Zielformat passt?"));
+        assertThat(new ObjectMapper().writeValueAsString(orientation))
+                .doesNotContain("Bundesland", "Fach");
+    }
 
     @Test
     void imageExamRemovesPrivatePathAndRequiresExactCockpitLinkBeforeTask() throws Exception {
