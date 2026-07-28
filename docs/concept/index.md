@@ -4,6 +4,8 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 ## Foundations
 
+- [Glossary](glossary.md)
+  Precise definitions of the core SkillPilot terms, with German equivalents and the normative source per term.
 - [Levels of Personalization](levels-of-personalization.md)
   Product-level personalization model.
 

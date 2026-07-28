@@ -44,6 +44,7 @@ This project is an invitation to the community to jointly build and bring to lif
 
 The docs here are organized by intent: concept-level foundations (competence graph and didactics), then runtime workflows, followed by operational topics like pipelines, QA/CI, deployment, developer references, and security.
 
+-   [Glossary of core SkillPilot terms](concept/glossary.md)
 -   [Documentation guidelines](dev/documentation-guidelines.md)
 -   [Quickstart documentation index](quickstart/index.md)
 -   [Whitepaper documentation index](whitepaper/index.md)

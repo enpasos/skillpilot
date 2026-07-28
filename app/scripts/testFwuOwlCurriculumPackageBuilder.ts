@@ -103,7 +103,7 @@ const fwuPackageProfile = readJsonObject(fwuPackageProfilePath)
 const testFieldRegistry = () => {
   const registry = new FwuOwlFieldRegistry(registryValue)
   assertEqual(registry.registryId, 'skillpilot-fwu-field-semantics-v1', 'Registry ID drifted')
-  assertEqual(registry.entries.length, 454, 'Registry entry count drifted')
+  assertEqual(registry.entries.length, 456, 'Registry entry count drifted')
 
   const contractPolicy = fwuPackageProfile.contractPolicy
   assert(
@@ -350,7 +350,7 @@ const testNTriples = () => {
     EXPECTED_APPLICATION_VOCABULARY_SUMMARY,
     'Application vocabulary declaration counts drifted',
   )
-  assertEqual(vocabulary.declarationTriples.length, 485, 'Declaration line count drifted')
+  assertEqual(vocabulary.declarationTriples.length, 487, 'Declaration line count drifted')
   assertEqual(
     [...new Set(vocabulary.declarationTriples)].sort(),
     [...vocabulary.declarationTriples],
@@ -361,11 +361,11 @@ const testNTriples = () => {
     ...vocabulary.objectProperties,
     ...vocabulary.datatypeProperties,
   ])
-  assertEqual(declaredTerms.size, 485, 'Application vocabulary contains punning or duplicates')
+  assertEqual(declaredTerms.size, 487, 'Application vocabulary contains punning or duplicates')
 
   const declarationPolicy = fwuPackageProfile.declarationPolicy
   const packageVocabulary = derivePackageVocabularyDeclarations(registryValue, declarationPolicy)
-  assertEqual(packageVocabulary.declarationTripleCount, 526, 'Package declaration count drifted')
+  assertEqual(packageVocabulary.declarationTripleCount, 528, 'Package declaration count drifted')
   assertEqual(packageVocabulary.parserBootstrapObjectProperties.length, 12, 'Bootstrap object-property count drifted')
   assertEqual(packageVocabulary.parserBootstrapDatatypeProperties.length, 4, 'Bootstrap datatype-property count drifted')
   const declarationLines = new Set(packageVocabulary.declarationTriples)
@@ -781,7 +781,7 @@ const testSemanticCompiler = () => {
   })
 
   assertEqual(first.logicalArtifactCount, 7, 'Compiler logical artifact count changed')
-  assertEqual(first.fieldRegistryEntryCount, 454, 'Compiler registry count changed')
+  assertEqual(first.fieldRegistryEntryCount, 456, 'Compiler registry count changed')
   assert(first.observedRegistryEntryCount > 20, 'Compiler observed too few registry entries')
   assert(first.observationCount > first.observedRegistryEntryCount, 'Compiler coverage did not count instances')
   assertEqual(first.generatedFallbackAreaCount, 1, 'Fallback curricular area policy changed')
@@ -796,9 +796,9 @@ const testSemanticCompiler = () => {
     {
       classCount: 84,
       objectPropertyCount: 108,
-      datatypePropertyCount: 318,
-      termCount: 510,
-      declarationTripleCount: 510,
+      datatypePropertyCount: 320,
+      termCount: 512,
+      declarationTripleCount: 512,
     },
     'Compiler application vocabulary counts changed',
   )
@@ -807,7 +807,7 @@ const testSemanticCompiler = () => {
     ...EXPECTED_APPLICATION_VOCABULARY_SUMMARY,
   }, 'Compiler registry vocabulary counts changed')
   assertEqual(first.parserBootstrapPropertyCount, 16, 'Parser-bootstrap property count changed')
-  assertEqual(first.declarationTripleCount, 526, 'Package declaration count changed')
+  assertEqual(first.declarationTripleCount, 528, 'Package declaration count changed')
 
   for (const segmentId of FWU_OWL_SEGMENT_ORDER) {
     const segment = first.segments[segmentId]
@@ -821,7 +821,7 @@ const testSemanticCompiler = () => {
       `${segmentId} compilation is not deterministic`,
     )
   }
-  assertEqual(first.segments.declarations.tripleCount, 526, 'Declaration segment count changed')
+  assertEqual(first.segments.declarations.tripleCount, 528, 'Declaration segment count changed')
   const landscapeRdf = first.segments.landscape.content.toString('utf8')
   const placementA = '/placement/atom-parented%40fixture-unit-a%400'
   const placementB = '/placement/atom-parented%40fixture-unit-a%401'

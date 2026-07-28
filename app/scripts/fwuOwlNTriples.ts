@@ -99,9 +99,9 @@ export type PackageVocabularyDerivation = Readonly<{
 export const EXPECTED_APPLICATION_VOCABULARY_SUMMARY = Object.freeze({
   classCount: 66,
   objectPropertyCount: 108,
-  datatypePropertyCount: 311,
-  termCount: 485,
-  declarationTripleCount: 485,
+  datatypePropertyCount: 313,
+  termCount: 487,
+  declarationTripleCount: 487,
 })
 
 const RDF_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'

@@ -214,7 +214,7 @@ expected_counts = {
     "rdfSegments": 8,
     "rdfTriples": 824452,
     "logicalArtifacts": 111,
-    "fieldRegistryEntries": 454,
+    "fieldRegistryEntries": 456,
     "binaryResources": 757,
     "binaryBytes": 1696390279,
 }
