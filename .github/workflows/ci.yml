@@ -212,6 +212,8 @@ jobs:
         run: npm run check:docs-links
       - name: Check Documentation Index Coverage
         run: npm run check:docs-indexes
+      - name: Check Terminology
+        run: npm run check:terminology
       - name: Validate Composition Views
         run: npm run validate:composition-views
       - name: Test Composition Projection Roles

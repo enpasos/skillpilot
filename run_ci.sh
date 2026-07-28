@@ -275,6 +275,9 @@ run_curriculum_frontend_ci() {
   echo "--> Checking Documentation Index Coverage"
   npm run check:docs-indexes
 
+  echo "--> Checking Terminology"
+  npm run check:terminology
+
   echo "--> Running Composition-View Validation"
   npm run validate:composition-views
 

@@ -2,7 +2,7 @@
 
 This file documents how to configure a custom GPT in ChatGPT so it can act as the **SkillPilot Learning Coach**.
 
-The goal: a GPT that starts from a browser-generated SkillPilot start code, redeems it into a chat session, guides learners through the SkillPilot competence graph, and updates mastery via `setMastery`.
+The goal: a GPT that starts from a browser-generated SkillPilot start code, redeems it into a chat session, guides learners through the SkillPilot skill graph, and updates mastery via `setMastery`.
 
 ---
 

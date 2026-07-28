@@ -577,6 +577,7 @@ A report, status page, or dashboard file produced by a script. It carries a "do 
 
 ## Maintenance
 
+- `cd app && npm run check:terminology` fails on retired synonyms; add a rule there when a term is consolidated here.
 - Add a term here when it is used across documents and its meaning is not obvious from the code.
 - Keep each entry to a definition plus, where useful, one delimitation; details belong in the linked normative document.
 - If a definition here and in a linked document disagree, the linked document wins and this page must be corrected.

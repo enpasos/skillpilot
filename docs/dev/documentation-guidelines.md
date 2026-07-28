@@ -100,6 +100,25 @@ Runbooks should be short and command-focused. They can link to process docs for 
 - If an old public link exists, keep a compatibility pointer rather than deleting the file.
 - Archive records should say whether they are historical evidence, current process, or source of truth.
 
+## Terminology
+
+[The glossary](../concept/glossary.md) is the source of truth for SkillPilot's core vocabulary. One concept keeps exactly one name, in prose and in identifiers.
+
+Retired synonyms are enforced by CI:
+
+```bash
+cd app
+npm run check:terminology
+```
+
+The rule table lives in `app/scripts/checkTerminology.ts`. Each rule carries the retired wording, what to write instead, and why the term was dropped, so a failure explains itself.
+
+The check scans what is authored and live. Trees that record what was captured at a point in time — retired landscapes, captured source snapshots, build output — are listed as frozen evidence in the same file and are skipped rather than rewritten.
+
+Hash-pinned packages are not exempt. When a rename touches one, update its wording and its pinned digests in the same change, for example `ai/openai-custom-gpt-visible-session/legacy-production-baseline.sha256`, and re-run that package's own validator.
+
+When a term is consolidated, add a rule in the same change that renames the occurrences. That keeps the cleanup from having to be repeated later.
+
 ## Link And Consistency Checks
 
 Before finishing documentation changes:

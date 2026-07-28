@@ -1,6 +1,6 @@
 # J5 Release Candidate
 
-Status: released into canonical curriculum graph
+Status: released into canonical skill graph
 
 Candidate files:
 
@@ -39,7 +39,7 @@ Decision:
 
 ## Promotion Notes
 
-The Markdown package is approved as the J5 release candidate and has been promoted into the canonical curriculum graph.
+The Markdown package is approved as the J5 release candidate and has been promoted into the canonical skill graph.
 
 Post-release finding `J5-REV-03` replaced the Task 1 inventory-number context with a school-festival material context and a finite-list-vs-natural-numbers reasoning prompt. Point totals, covered goals, and assessment placement stayed unchanged.
 
