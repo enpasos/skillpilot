@@ -9,7 +9,7 @@
 Die große Aufgabe ist nicht mehr, einzelne SkillPilot-Funktionen irgendwie über
 MCP erreichbar zu machen. Sie lautet:
 
-> Aus Backend, Kompetenzgraph, Lernzustand, MCP-Vertrag und Provider-Modell
+> Aus Backend, Skill-Graph, Lernzustand, MCP-Vertrag und Provider-Modell
 > wieder einen zusammenhängenden, verlässlichen und für Lernende natürlichen
 > Coach zu bilden.
 
@@ -103,7 +103,7 @@ Bedeutung müssen korrekt sein.
 
 Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
 
-### 4.1 Backend und Kompetenzgraph
+### 4.1 Backend und Skill-Graph
 
 - Der jüngste erfolgreich geladene Backendzustand ist die einzige Autorität.
 - Der Coach erfindet keine Curricula, Ziele, Optionen, Zustände,
@@ -113,7 +113,7 @@ Diese Regeln dürfen durch die Coach-Migration nicht verändert werden:
   wiederverwendet wird.
 - `requires` bestimmt didaktische Voraussetzungen, `contains` die
   Komposition. Ein Motivationsziel ist nur dann Voraussetzung anderer Ziele,
-  wenn der Kompetenzgraph dies tatsächlich ausdrückt.
+  wenn der Skill-Graph dies tatsächlich ausdrückt.
 - Frontier und Empfehlungen werden erst nach korrekt festgelegtem Lernumfang
   und Fokus bestimmt.
 

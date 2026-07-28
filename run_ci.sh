@@ -30,7 +30,7 @@ Usage: ./run_ci.sh [all|application|curriculum|package|owl|full]
 Suites:
   all          Run required application and curriculum CI (default).
   application  Run Custom GPT, frontend application-logic, and backend checks.
-  curriculum   Run curriculum graph, data, schemas, and release-model checks.
+  curriculum   Run skill graph, data, schemas, and release-model checks.
   package      Run the optional real 1.7 GB JSON package and consumer checks.
   owl          Run optional FWU-OWL, reasoner, and semantic roundtrip checks.
   full         Run application, curriculum, package, and optional FWU-OWL checks.

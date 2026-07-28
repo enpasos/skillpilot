@@ -6,9 +6,9 @@
 > **Hinweis für Leser:innen des Aifyer-Konzepts [„KI-Lernbegleitung“](https://aifyer.com/ki-lernbegleitung/):**
 > SkillPilot ist die technische Referenzimplementierung zu diesem Konzept: eine offene Implementierung curriculumsgestützter KI-Lernbegleitung entlang schulischer Lehrpläne. Für das deutsche Gymnasium sind Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Geschichte, Politik und Wirtschaft sowie Wirtschaftswissenschaften bundesweit bis M5 qualitätsgesichert.
 >
-> **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Wissenslandschaften sind bereits mit dem SkillPilot Lerncoach nutzbar; weitere Fächer werden schrittweise ergänzt.
+> **M5** steht für eine automatisiert geprüfte Phase-1-Qualitätssicherung von Quellen, Mapping, Bundesland-Sichten, SkillPilot-Zielen, Graph-Invarianten, Composition Views und technischer QA, ohne offene Fehler. Nun folgt die fachliche Prüfung durch SkillPilot Champions. Die Skill-Landschaften sind bereits mit dem SkillPilot Lerncoach nutzbar; weitere Fächer werden schrittweise ergänzt.
 
-SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
+SkillGraph Processing structures curricula and competence models into dependency-aware skill landscapes that can be validated, explored, and used by humans or AI agents.
 
 ![SkillGraph Processing](docs/whitepaper/SkillPilotProcess.png)
 
@@ -18,9 +18,9 @@ SkillPilot Learning Coach guides learners through those landscapes with frontier
 
 ![SkillPilot Learning Coach](docs/whitepaper/SkillPilotLearningCoach.png)
 
-SkillPilot navigates you through complex learning landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
+SkillPilot navigates you through complex skill landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
 
-This project is an invitation to the community to jointly build and bring to life a secure platform for learning landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
+This project is an invitation to the community to jointly build and bring to life a secure platform for skill landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
 
 ![SkillPilot cartoon](https://enpasos.github.io/skillpilot/comic1/SkillPilot_Comic.en.jpg)
 

@@ -1274,7 +1274,7 @@ function renderPlainMarkdown(report: SourceRationaleReport): string {
   lines.push('')
   lines.push(`Erzeugt: ${report.generatedAt}`)
   lines.push('')
-  lines.push('Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Wissenslandschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.')
+  lines.push('Diese Ansicht ist für Leserinnen und Leser gedacht, die keine SkillPilot-IDs auswerten wollen. Das Lernziel wird deshalb über seinen SkillPilot-Pfad in der Skill-Landschaft benannt. Technische Bezeichner erscheinen nur dort, wo sie für die MEM/FWU-SPARQL-Abfrage notwendig sind.')
   lines.push('')
   lines.push('## Kurzüberblick')
   lines.push('')

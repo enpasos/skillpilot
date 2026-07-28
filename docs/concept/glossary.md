@@ -15,7 +15,7 @@ Two rules explain a large part of the vocabulary below:
 
 ---
 
-## 1. Curricula, landscapes, and provenance
+## 1. Curricula, skill graphs, and provenance
 
 ### Curriculum
 
@@ -23,25 +23,33 @@ Two rules explain a large part of the vocabulary below:
 
 The external, authority-defined body of rules SkillPilot docks onto: a state syllabus, a module handbook, or a standard such as CEFR. The curriculum remains the **normative source**; SkillPilot does not create standards, it makes existing ones operational.
 
-Not the same as the SkillPilot graph derived from it. In the quality dashboard, "Curriculum" is used more narrowly for one canonical landscape file.
+Not the same as the skill graph derived from it. In the quality dashboard, "Curriculum" is used more narrowly for one canonical skill landscape file.
 
-### Learning landscape
+### Skill graph
 
-*DE: Lernlandschaft, Wissenslandschaft* — see [Graph Definition](curriculum-graph/graph-definition.md)
+*DE: Skill-Graph* — see [Graph Definition](curriculum-graph/graph-definition.md)
 
-The versioned, machine-readable **operative model** derived from a curriculum: one `LearningLandscape` JSON file under `curricula/` containing the goals and their relations. A landscape is identified by a `landscapeId` and may be serialized into several locale files that share that ID.
+The versioned, machine-readable **operative model** derived from a curriculum: goals connected by `contains` and `requires`, together with their semantics, validity conditions, and frontier logic. The skill graph is what SkillPilot builds, validates, and navigates; the curriculum stays the normative source above it.
+
+### Skill landscape
+
+*DE: Skill-Landschaft* — see [Graph Definition](curriculum-graph/graph-definition.md)
+
+One delimited, published instance of a skill graph: a single subject-and-school-type unit identified by a `landscapeId`, owned by champions, rated with a maturity level, and shipped as a release package. A skill landscape may be serialized into several locale files that share its ID.
+
+Use *skill graph* when the point is the model, *skill landscape* when the point is **which** one.
 
 ### Canonical landscape
 
 *DE: kanonische Landschaft* — see [Canonical Gymnasium Rollout Policy](curriculum-graph/canonical-gymnasium-rollout.md)
 
-A subject landscape maintained once for a whole school type and reused by all jurisdictions, instead of one separately authored landscape per state. Jurisdiction-specific differences are expressed through applicability and composition views, not by copying goals.
+A skill landscape maintained once for a whole school type and reused by all jurisdictions, instead of one separately authored landscape per state. Jurisdiction-specific differences are expressed through applicability and composition views, not by copying goals.
 
 ### Root curriculum and curriculum manifest
 
 *DE: Wurzelcurriculum, Curriculum-Manifest* — see [Levels of Personalization](levels-of-personalization.md)
 
-A root curriculum is a landscape that is selectable in the UI and valid for champion registration. The set of root curricula is declared explicitly in `curricula/curriculum_manifest.json`; CI fails if the manifest and the computed set of roots disagree.
+A root curriculum is a skill landscape that is selectable in the UI and valid for champion registration. The set of root curricula is declared explicitly in `curricula/curriculum_manifest.json`; CI fails if the manifest and the computed set of roots disagree.
 
 ### Source snapshot
 
@@ -74,13 +82,13 @@ The two equivalent release artifacts of one curriculum release: a JSON runtime p
 
 ---
 
-## 2. The goal graph
+## 2. Inside the skill graph
 
 ### Goal
 
 *DE: Lernziel* — see [Graph Definition §2](curriculum-graph/graph-definition.md)
 
-A node of the curriculum graph: a learnable, assessable competence, usually phrased as "Die lernende Person kann …". Every goal has a stable UUID `id`, a `title`, and a positive `weight`.
+A node of the skill graph: a learnable, assessable competence, usually phrased as "Die lernende Person kann …". Every goal has a stable UUID `id`, a `title`, and a positive `weight`.
 
 A year, semester, module, phase, or track is **not** a goal.
 
@@ -116,7 +124,7 @@ The hierarchy relation: `(p, c)` means parent `p` bundles child `c` in **content
 
 *DE: setzt voraus* — see [Graph Definition §5](curriculum-graph/graph-definition.md)
 
-The prerequisite relation: `(u, v)` means `u` must be satisfied before `v` is approached. It must be acyclic. In mature landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
+The prerequisite relation: `(u, v)` means `u` must be satisfied before `v` is approached. It must be acyclic. In mature skill landscapes it should be authored between **atomic** goals; cluster-level `requires` is a transitional authoring aid or a deliberately universal claim.
 
 ### Effective requires
 
@@ -165,7 +173,7 @@ An atomic goal at which the learner performs independently, typically an exam-mo
 
 The property that a route-relevant atomic goal lies on at least one prerequisite path from a motivation anchor to a terminal autonomy goal. The intended direction of a route is motivation → understanding → memorization where needed → independent application.
 
-A landscape should expose teachable routes, not a loose bag of local dependencies.
+A skill landscape should expose teachable routes, not a loose bag of local dependencies.
 
 ---
 
@@ -223,7 +231,7 @@ The hard recall gate on memorization cards: the coach shows only the prompt, the
 
 *DE: Schichtenmodell* — see [General Goal System and Migration](curriculum-graph/general-goal-system-and-migration.md)
 
-SkillPilot separates five layers that older landscapes still mix:
+SkillPilot separates five layers that older skill landscapes still mix:
 
 | Layer | Holds | Example |
 | --- | --- | --- |
@@ -348,7 +356,7 @@ The four-step narrowing from curriculum to individual mastery: **1** base curric
 
 *DE: Basiscurriculum* — see [Learning Workflow](runtime-workflows/learning-workflow.md)
 
-The authority-defined landscape chosen before learning starts; it provides the full goal universe for that learner.
+The authority-defined skill landscape chosen before learning starts; it provides the full goal universe for that learner.
 
 ### Personal curriculum
 
@@ -360,7 +368,7 @@ The subset of the base curriculum that should currently count as in scope for on
 
 *DE: Personalisierung* — see [Behavioral Integration of the German MCP Coach](runtime-workflows/openai-mcp-coach-behavioral-integration.md)
 
-The authored validity decisions of a learner, such as jurisdiction or course profile. Personalization is never derived from the competence graph: neither `contains` nor `requires` may be read as a personalization decision. Options always come from the most recent backend state and are opaque — an adapter selects one of them by its ID and never constructs an ID of its own.
+The authored validity decisions of a learner, such as jurisdiction or course profile. Personalization is never derived from the skill graph: neither `contains` nor `requires` may be read as a personalization decision. Options always come from the most recent backend state and are opaque — an adapter selects one of them by its ID and never constructs an ID of its own.
 
 Course profiles are stored per subject, so Mathematik LK and Physik GK can coexist.
 
@@ -562,7 +570,8 @@ A report, status page, or dashboard file produced by a script. It carries a "do 
 | `phase` vs program unit | `phase` is compatibility metadata; only an explicit program unit may become a structural node. |
 | QA scope vs learning route | A QA scope is a registered check profile, not a path a learner walks. |
 | CQR vs GVR rules | Content quality review vs structural graph validation. |
-| Curriculum vs landscape | The normative external document vs the versioned operative model derived from it. |
+| Curriculum vs skill graph | The normative external document vs the versioned operative model derived from it. |
+| Skill graph vs skill landscape | The model and its semantics vs one delimited, published instance with a `landscapeId`, a champion, and a maturity level. |
 
 ---
 

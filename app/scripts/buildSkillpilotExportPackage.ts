@@ -2031,7 +2031,7 @@ Package: ${params.packageId}
 Publication profile: ${params.publicationProfile}
 Source commit: ${params.git.commit ?? 'unknown'}
 
-This package contains SkillPilot-authored competence-graph data for German Gymnasium mathematics, including the canonical landscape, learner-facing composition views, state-to-canonical mapping decisions, and source-reference indexes for the official curriculum documents.
+This package contains SkillPilot-authored skill-graph data for German Gymnasium mathematics, including the canonical landscape, learner-facing composition views, state-to-canonical mapping decisions, and source-reference indexes for the official curriculum documents.
 
 Represented mapping jurisdictions:
 

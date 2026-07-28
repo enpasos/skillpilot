@@ -15,7 +15,7 @@ bestimmtes Modell gebundener Coach eingebracht werden. Der passende Beitrag ist
 ein modellagnostischer, backend-autoritativ berechneter Lernnavigationslayer:
 
 - AIS.chat bleibt Chat-, Auth-, Provider-, Budget- und Bundesland-Oberflaeche.
-- Die Lernnavigation bleibt deterministische Backend-Logik: Curriculum-Graph,
+- Die Lernnavigation bleibt deterministische Backend-Logik: Skill-Graph,
   Scope, Frontier, aktives Ziel, Mastery und erlaubte Uebergaenge.
 - Das LLM bekommt nur kompakten Zustand und ruft Tools auf. Es entscheidet nicht
   selbst, welche Ziele freigeschaltet sind oder ob ein Ziel gemeistert ist.
@@ -75,7 +75,7 @@ Kartenebene nicht mehr nur hypothetisch ist.
 
 AIS.chat waere dagegen primaer Navigationsebene:
 
-- aktueller Lernstand als Position im Kompetenzgraphen
+- aktueller Lernstand als Position im Skill-Graphen
 - Zielkontext, Scope und geplante Route
 - berechnete Frontier als naechste sinnvolle Schritte
 - aktives Ziel und erlaubte Uebergaenge
@@ -179,7 +179,7 @@ ebenfalls pro Bundesland/Instanz aktivierbar sein, z. B.:
 
 SkillPilot unterscheidet:
 
-- Layer A: statischer Kompetenzgraph
+- Layer A: statischer Skill-Graph
 - Layer B: individueller Lernstand und Mastery
 - Layer C: LLM-/Tool-Schicht
 
@@ -191,7 +191,7 @@ Der zentrale Grundsatz passt exakt zu AIS.chat-Agentic-Mode:
 Das sollte in AIS.chat als Domain-Service oder externer Tool-Connector
 implementiert werden, nicht als Prompt-only-Pattern.
 
-### 2. Kompetenzgraph als kleine, explizite Semantik
+### 2. Skill-Graph als kleine, explizite Semantik
 
 SkillPilot braucht fuer den Einstieg keine schwere Ontologie:
 
@@ -609,7 +609,7 @@ so lauten:
 
 > AIS.chat hat bereits die Bausteine fuer provideruebergreifende, agentic
 > Custom Chats. Auf einer separat validierten Kartenebene aus Lehrplan- und
-> Kompetenzgraphdaten koennte AIS.chat einen modellagnostischen
+> Skill-Graphdaten koennte AIS.chat einen modellagnostischen
 > Lernnavigationslayer anbieten: Das Backend berechnet Frontier, aktive Ziele
 > und erlaubte Uebergaenge; der Chat-Coach nutzt Tools, um Lernende entlang
 > dieser Struktur zu begleiten. Das LLM bleibt austauschbar; fachliche

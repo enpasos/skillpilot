@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Explicit source of user-selectable curriculum-personalization options.
  *
- * <p>These sources are deliberately independent of the competence graph.
+ * <p>These sources are deliberately independent of the skill graph.
  * Neither {@code contains} nor {@code requires} may be interpreted as a
  * personalization decision.</p>
  */

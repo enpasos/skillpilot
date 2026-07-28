@@ -60,7 +60,7 @@ The strategic objective is not to preserve state-specific duplication forever, b
 
 ### 1. Canonical subject layer first
 
-For each subject, the target state is one canonical competence graph spanning the Gymnasium path from Sekundarstufe I to Abitur readiness.
+For each subject, the target state is one canonical skill graph spanning the Gymnasium path from Sekundarstufe I to Abitur readiness.
 
 This canonical graph should continue to use the existing `LearningLandscape` / `LearningGoal` structure where possible, rather than introducing a completely new graph format.
 

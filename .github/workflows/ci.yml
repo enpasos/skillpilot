@@ -168,6 +168,8 @@ jobs:
         run: npm ci
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Validate Competency Wording
+        run: python -B ../scripts/validate_competency_wording.py
       - name: Validate View Filters
         run: npm run validate:view-filters
       - name: Check Source Landscape Registry

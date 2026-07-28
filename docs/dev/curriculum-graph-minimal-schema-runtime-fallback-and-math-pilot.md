@@ -254,7 +254,7 @@ When the runtime needs a process-competency or capability view, use:
 1. `competencyCatalog` + `competencyRefs`
 2. legacy process metadata such as `dimensionTags.processCompetencies` or `kompetenzen`
 
-The competency tree should be projected. It should not require process nodes to be primary semantic parents in the goal graph.
+The competency tree should be projected. It should not require process nodes to be primary semantic parents in the skill graph.
 
 ## 3. Mastery and frontier
 

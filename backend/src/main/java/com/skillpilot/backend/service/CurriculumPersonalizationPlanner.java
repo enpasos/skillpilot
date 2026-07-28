@@ -25,7 +25,7 @@ import java.util.function.Function;
 /**
  * Evaluates an explicitly authored curriculum-personalization flow.
  *
- * <p>The competence graph is intentionally absent from this implementation.
+ * <p>The skill graph is intentionally absent from this implementation.
  * In particular, {@code contains} and {@code requires} never create user
  * choices. A curriculum without an authored flow has no mandatory guided
  * personalization. A malformed authored flow fails closed.</p>

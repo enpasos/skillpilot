@@ -5811,7 +5811,7 @@ public class LearnerService {
      * Resolves the landscapes that may contribute goals to the current learner
      * runtime.
      *
-     * <p>The competence-graph closure remains the compatibility baseline.
+     * <p>The skill-graph closure remains the compatibility baseline.
      * Additionally, a landscape can enter the runtime only when all of the
      * following hold:</p>
      *

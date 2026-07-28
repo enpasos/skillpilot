@@ -1,10 +1,10 @@
-# SkillPilot Curriculum Graph Specification
+# SkillPilot Skill Graph Specification
 
-This document defines the SkillPilot curriculum graph as a mathematical structure, including its entities, relations, derived semantics (inheritance), and validity constraints.
+This document defines the SkillPilot skill graph as a mathematical structure, including its entities, relations, derived semantics (inheritance), and validity constraints.
 
 The intent is that independent implementations interpret and validate graphs in the same way.
 
-This specification covers the goal graph itself.  
+This specification covers the skill graph itself.  
 Projection contracts for user-facing trees that additionally involve `programUnits`, `goalPlacements`, or competency catalogs are specified separately in `docs/concept/curriculum-graph/view-projection-and-goal-placement.md`.
 Layering, migration strategy, and canonical rollout policy are specified separately in:
 
@@ -14,7 +14,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 > Normative vs implementation: this document is the conceptual/normative definition.  
 > The currently enforced CI validator profile (including rollout severities and runtime rule IDs) is documented in `docs/qa-ci/graph-validation-rules.md`.
 > Legacy serialized metadata such as `phase` may still exist in concrete repositories, but such fields are not part of the canonical graph semantics unless explicitly stated below.
-> This specification also does not define cross-landscape `requires` contracts, learner-facing curriculum bundles, or scope-specific composition-view files; those belong to higher-level composition contracts outside the single-landscape goal graph.
+> This specification also does not define cross-landscape `requires` contracts, learner-facing curriculum bundles, or scope-specific composition-view files; those belong to higher-level composition contracts outside the single-landscape skill graph.
 
 ---
 
@@ -134,7 +134,7 @@ This makes all later references to “atomic” and “cluster” portable acros
 
 ## 3. Relations
 
-The curriculum graph is defined using two primary relations on $G$:
+The skill graph is defined using two primary relations on $G$:
 
 - a hierarchy relation called **Contains**
 - a dependency relation called **Direct Requires**
@@ -286,7 +286,7 @@ In particular:
 
 ## 7. Validity constraints
 
-A SkillPilot curriculum graph is **valid** iff all constraints in this section hold.
+A SkillPilot skill graph is **valid** iff all constraints in this section hold.
 
 ### 7.1 Effective Requires must be acyclic
 
@@ -524,7 +524,7 @@ In a mature atomic-authored landscape, frontier decisions for atomic goals shoul
 
 ## 10. Summary of required validity conditions
 
-A curriculum graph $(G,C,R_d)$ is valid iff:
+A skill graph $(G,C,R_d)$ is valid iff:
 
 1. $Id$ is injective on $G$
 2. $(G,C)$ is acyclic (containment DAG / polyhierarchy; multiple parents allowed)
@@ -545,7 +545,7 @@ Important scope note:
 
 ## 11. Filters and scoped evaluation (Optimistic vs. Pessimistic)
 
-A **filter** restricts the global curriculum graph to a subset of nodes (e.g., *Grade 12* AND *Subject: Mathematics* AND *Track: Advanced*).
+A **filter** restricts the global skill graph to a subset of nodes (e.g., *Grade 12* AND *Subject: Mathematics* AND *Track: Advanced*).
 
 ### 11.1 Filter representation and applicability-backed projection
 
@@ -674,7 +674,7 @@ Such a default tree MUST ensure:
 
 This single-occurrence tree property is a scoped-view projection validity condition, not a base validity condition of the authored full graph.
 
-One reviewed way to satisfy this stronger claim is to compile the default tree from a separate scope-specific composition view whose structure nodes reference canonical subtree roots of the authored goal graph.
+One reviewed way to satisfy this stronger claim is to compile the default tree from a separate scope-specific composition view whose structure nodes reference canonical subtree roots of the authored skill graph.
 
 Such composition-view artifacts remain outside the formal graph object defined in this specification.
 

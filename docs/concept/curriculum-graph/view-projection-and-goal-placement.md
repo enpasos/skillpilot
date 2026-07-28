@@ -14,7 +14,7 @@ Use related documents for adjacent concerns:
 - `docs/dev/curriculum-graph-minimal-schema-runtime-fallback-and-math-pilot.md`
 - `docs/concept/curriculum-graph/graph-definition.md`
 
-These related documents explain the layered model, the transition strategy, and the formal goal graph. This document answers a narrower question:
+These related documents explain the layered model, the transition strategy, and the formal skill graph. This document answers a narrower question:
 
 **How must projection work so that a reader can determine the visible tree from the JSON with simple, documented rules and without reading runtime code?**
 
@@ -87,14 +87,14 @@ Question answered:
 Source of truth:
 
 - a scope-specific composition view file
-- the canonical goal graph
+- the canonical skill graph
 
 This is the preferred learner-facing default tree for views such as:
 
 - `DE-HE / Gymnasium / SekII / Mathematik / LK`
 - `DE-BY / Gymnasium / SekII / Mathematik / LK`
 
-It is not a raw rendering of the goal graph.
+It is not a raw rendering of the skill graph.
 
 It is a compiled tree projection built from explicit composition structure plus canonical subtree expansion.
 
@@ -172,7 +172,7 @@ A view may enrich rendering with badges or filters from other layers, but it sho
 If a repository defines an explicit composition view for a resolved scope, the learner-facing default tree for that scope should be compiled from:
 
 - the composition view file
-- the canonical goal graph
+- the canonical skill graph
 
 In that case:
 
@@ -260,7 +260,7 @@ This compile step must happen early enough that programmatic validation rules ca
 
 ### Learning roles in a compiled composition view
 
-A compiled composition view distinguishes two runtime roles without changing the canonical goal graph:
+A compiled composition view distinguishes two runtime roles without changing the canonical skill graph:
 
 - `target`: a selectable learning target in this learner-facing scope
 - `prerequisiteOnly`: a supporting goal whose global mastery may block or unlock a target, but which is not itself selectable in this scope

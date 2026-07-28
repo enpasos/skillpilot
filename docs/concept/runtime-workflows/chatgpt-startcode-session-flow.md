@@ -97,7 +97,7 @@ Eigenschaften:
    - Wenn eine SkillPilot-ID lokal passwortverschluesselt gespeichert wurde, kann sie mit Name und Passwort geladen werden.
    - Alternativ kann die SkillPilot-ID direkt eingegeben werden.
 3. Der Browser speichert die aktive SkillPilot-ID nur lokal fuer diese Browser-Session. Optional kann sie lokal passwortverschluesselt als benannter Login gesichert werden.
-4. Der Lernende waehlt eine Lernlandschaft bzw. bestaetigt die vorhandene Auswahl. Diese Curriculum-Auswahl wird zur SkillPilot-ID gespeichert.
+4. Der Lernende waehlt eine Skill-Landschaft bzw. bestaetigt die vorhandene Auswahl. Diese Curriculum-Auswahl wird zur SkillPilot-ID gespeichert.
 5. Der Browser bereitet intern eine temporaere Browser-Session vor.
 6. Fuer den Start des SkillPilot Lerncoachs ruft der Browser das Backend auf, um einen eindeutigen Einmal-Startcode zu erzeugen.
 7. Das Backend erzeugt den Startcode, speichert ihn serverseitig gehasht und gibt ihn an den Browser zurueck.
@@ -109,7 +109,7 @@ Eigenschaften:
 Aus Nutzersicht sind sichtbar:
 
 1. **Login**: neue SkillPilot-ID erstellen, gespeicherten Login laden oder SkillPilot-ID eingeben.
-2. **Curriculum**: Lernlandschaft auswaehlen.
+2. **Curriculum**: Skill-Landschaft auswaehlen.
 3. **Start**: Cockpit oeffnen oder SkillPilot Lerncoach mit Startcode starten.
 
 Die technische Session-ID bleibt intern. Der Startcode fuer den SkillPilot Lerncoach wird erklaert, weil er sichtbar im ChatGPT-Startprompt landet.

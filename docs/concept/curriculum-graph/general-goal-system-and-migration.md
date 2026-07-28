@@ -61,7 +61,7 @@ Interpretation:
 
 In practice, this means:
 
-- keep the competence graph as the core
+- keep the skill graph as the core
 - add only a few extra semantic layers where they clearly pay off, especially `programUnits`, `goalPlacements`, and `competencyCatalog`
 - avoid creating rich ontological taxonomies unless they unlock concrete value such as projection, filtering, reporting, interoperability, or safer migration
 - prefer reviewed modeling discipline over theoretical completeness
@@ -225,7 +225,7 @@ This layer defines learner-facing default trees for resolved scopes such as:
 - `DE-HE / Gymnasium / SekII / Mathematik / LK`
 - `DE-BY / Gymnasium / SekII / Mathematik / LK`
 
-It is not part of the canonical goal graph itself.
+It is not part of the canonical skill graph itself.
 
 It is a separate view artifact that answers:
 
@@ -237,7 +237,7 @@ Recommended interpretation:
 
 - a composition view is a separate JSON file or equivalent artifact
 - it may define view-only structure nodes, labels, and order
-- it references reviewed canonical subtree roots from the goal graph
+- it references reviewed canonical subtree roots from the skill graph
 - it must not inline authored atomic goals
 - it must not redefine canonical `requires`
 - it must compile to a single-occurrence tree in the resolved scope
@@ -426,7 +426,7 @@ Examples:
 So the rule is:
 
 - broad capability families live in the competency catalog
-- concrete assessable realizations live in the goal graph
+- concrete assessable realizations live in the skill graph
 
 ## Consequences for the current SkillPilot model
 
@@ -451,7 +451,7 @@ In the target model:
 
 The current canonical math tree with `J5-J10`, `E`, and `Q1-Q4` is still useful as a migration scaffold and learner-facing navigation.
 
-But semantically these are not the right long-term backbone of the goal graph.
+But semantically these are not the right long-term backbone of the skill graph.
 
 They should gradually become:
 
@@ -470,7 +470,7 @@ Nodes such as:
 
 are closer to the durable semantic structure than year or semester wrappers.
 
-These should remain in the goal graph.
+These should remain in the skill graph.
 
 ### 4. Mastery belongs to goals, not to structure
 

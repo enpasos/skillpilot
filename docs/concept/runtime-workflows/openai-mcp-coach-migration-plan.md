@@ -334,7 +334,7 @@ denselben Plan. Er besitzt derzeit drei allgemeine, kombinierbare Quelltypen:
   deklarierte Filter.
 
 Diese Quelltypen sind reine Metadatenoperationen. Der Planer durchläuft weder den
-Kompetenzgraphen noch dessen `contains`- oder `requires`-Kanten. Er leitet
+Skill-Graphen noch dessen `contains`- oder `requires`-Kanten. Er leitet
 Personalisierung auch nicht aus Frontier, Applicability, Composition Views,
 Tags, Labeln, Fachnamen, Regionen oder fest codierten IDs ab. Sichtbare,
 lokalisierbare Label dienen ausschließlich der Darstellung. Hessen,
@@ -457,7 +457,7 @@ Transaktion. Nach jeder Mutation wird deshalb aus dem gespeicherten Delta und
 den aktuellen Metadaten der Folgezustand neu projiziert; der Client darf ihn
 nicht selbst fortschreiben.
 
-Eine Landschaft, die außerhalb der bisherigen Kompetenzgraph-Closure liegt,
+Eine Landschaft, die außerhalb der bisherigen Skill-Graph-Closure liegt,
 darf nur dann in den Lernzeitkontext aufgenommen werden, wenn sie von einer
 gültigen `landscapes`-Quelle des aktiven Flows ausdrücklich angeboten und im
 persönlichen Zustand ausdrücklich gewählt wurde. Eine beliebige oder alte
