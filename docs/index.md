@@ -3,9 +3,9 @@
 [![CI](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/enpasos/skillpilot/actions/workflows/ci.yml)
  
 
-SkillPilot navigates you through complex learning landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
+SkillPilot navigates you through complex skill landscapes, modeling curricula as a dependency graph to provide personalized learning paths and track your mastery.
 
-This project is an invitation to the community to jointly build and bring to life a secure platform for learning landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
+This project is an invitation to the community to jointly build and bring to life a secure platform for skill landscapes—a shared home where learners, educators, curriculum institutions, and supporting AIs alike can thrive.
 
 ![SkillPilot cartoon](https://enpasos.github.io/skillpilot/comic1/SkillPilot_Comic.en.jpg)
 
@@ -42,7 +42,7 @@ This project is an invitation to the community to jointly build and bring to lif
 
 ## Inside this documentation
 
-The docs here are organized by intent: concept-level foundations (competence graph and didactics), then runtime workflows, followed by operational topics like pipelines, QA/CI, deployment, developer references, and security.
+The docs here are organized by intent: concept-level foundations (skill graph and didactics), then runtime workflows, followed by operational topics like pipelines, QA/CI, deployment, developer references, and security.
 
 -   [Glossary of core SkillPilot terms](concept/glossary.md)
 -   [Documentation guidelines](dev/documentation-guidelines.md)

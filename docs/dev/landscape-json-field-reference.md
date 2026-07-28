@@ -53,13 +53,13 @@ top level and per goal for future layers and exports.
 
 ### description
 - Type: string
-- Example: `Lernlandschaft fuer das hessische Kerncurriculum Mathematik (Gymnasiale Oberstufe, Ausgabe 2024).`
+- Example: `Skill-Landschaft fuer das hessische Kerncurriculum Mathematik (Gymnasiale Oberstufe, Ausgabe 2024).`
 - Used by: UI fallback descriptions via `app/src/App.tsx`
 - Status: used
 
 ### descriptionEn
 - Type: string
-- Example: `Learning landscape for the Hessian upper secondary mathematics curriculum (Kerncurriculum 2024).`
+- Example: `Skill landscape for the Hessian upper secondary mathematics curriculum (Kerncurriculum 2024).`
 - Used by: backend curriculum overview APIs and `app/src/views/CurriculaView.tsx`; not part of the current `useLandscapes` closure-hook type
 - Status: used in directory/overview flows, not in the learner/explorer closure hook
 

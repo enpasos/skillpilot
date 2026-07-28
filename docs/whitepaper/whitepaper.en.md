@@ -18,7 +18,7 @@ Quality assurance is anchored in a practice-driven **Champion program** and the 
 
 ### SkillGraph Processing
 
-SkillGraph Processing structures curricula and competence models into dependency-aware learning landscapes that can be validated, explored, and used by humans or AI agents.
+SkillGraph Processing structures curricula and competence models into dependency-aware skill landscapes that can be validated, explored, and used by humans or AI agents.
 
 ![SkillGraph Processing](SkillPilotProcess.png)
 

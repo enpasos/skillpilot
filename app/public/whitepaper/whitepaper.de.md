@@ -18,7 +18,7 @@ Die Qualitätssicherung erfolgt offen: über ein **Champion-Programm** aus der P
 
 ### SkillGraph Processing
 
-SkillGraph Processing strukturiert Curricula und Kompetenzmodelle zu abhängigkeitsbasierten Lernlandschaften, die von Menschen und KI-Agenten validiert, erkundet und genutzt werden können.
+SkillGraph Processing strukturiert Curricula und Kompetenzmodelle zu abhängigkeitsbasierten Skill-Landschaften, die von Menschen und KI-Agenten validiert, erkundet und genutzt werden können.
 
 ![SkillGraph Processing](SkillPilotProcess.de.png)
 

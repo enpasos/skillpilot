@@ -9,9 +9,9 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Levels of Personalization](levels-of-personalization.md)
   Product-level personalization model.
 
-## Curriculum Graph
+## Skill Graph
 
-- [SkillPilot Curriculum Graph Specification](curriculum-graph/graph-definition.md)
+- [SkillPilot Skill Graph Specification](curriculum-graph/graph-definition.md)
   Core graph model and formal vocabulary.
 - [General Goal System and Migration](curriculum-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.

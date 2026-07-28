@@ -1,6 +1,6 @@
 # Node Types
 
-SkillPilot models learning goals as nodes in a competence graph. This document defines the node types currently used.
+SkillPilot models learning goals as nodes in a skill graph. This document defines the node types currently used.
 
 Use this document for node-specific semantics only.  
 Graph relations, placements, and projected view contracts are specified separately in:

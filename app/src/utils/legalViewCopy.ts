@@ -35,7 +35,7 @@ Mit der Nutzung von SkillPilot erkennen Sie die folgenden Punkte an:
 
 ### 1. Keine Garantie für Vollständigkeit der Lernmodelle
 
-* Die in SkillPilot abgebildeten Lernlandschaften, Fähigkeiten und Lernziele sind **Modelle** der Realität.
+* Die in SkillPilot abgebildeten Skill-Landschaften, Fähigkeiten und Lernziele sind **Modelle** der Realität.
 * Es kann sein, dass Lerninhalte **nicht vollständig** oder **nicht ausreichend granular** modelliert sind.
 * Auch wenn in SkillPilot alle angezeigten Teilziele erreicht wurden, bedeutet das **nicht automatisch**, dass das tatsächliche fachliche oder berufliche Lernziel vollständig erreicht ist.
 * SkillPilot **ersetzt keine offiziellen Lehrpläne, Curricula, staatlichen Vorgaben oder anerkannten Bildungsabschlüsse**.
@@ -121,7 +121,7 @@ By using SkillPilot, you acknowledge the following points:
 
 ### 1. No Guarantee for Completeness of Learning Models
 
-* The learning landscapes, skills, and learning goals depicted in SkillPilot are **models** of reality.
+* The skill landscapes, skills, and learning goals depicted in SkillPilot are **models** of reality.
 * It may be that learning content is **not fully** or **not sufficiently granularly** modeled.
 * Even if all displayed sub-goals in SkillPilot have been achieved, this does **not automatically mean** that the actual academic or professional learning goal has been fully achieved.
 * SkillPilot **does not replace official curricula, syllabi, state requirements, or recognized educational qualifications**.

@@ -228,7 +228,7 @@ Handling stays file-based and automatic:
 Current categories:
 
 - `skillpilot-software-apache-2.0`: SkillPilot software/tooling or software-facing schemas.
-- `skillpilot-data-cc-by-4.0`: SkillPilot-authored curriculum graph, views, mappings, dependency declarations, cards, and memory-card review decisions.
+- `skillpilot-data-cc-by-4.0`: SkillPilot-authored skill graph, views, mappings, dependency declarations, cards, and memory-card review decisions.
 - `official-source-provenance-only`: source references, source index records, and source-goal reference material attributable to the original official publishers.
 - `generated-package-metadata`: generated manifest, checksums, package README, license, notice, and legal notes.
 - `goal-visualization-ai-generated-curated`: AI-generated image assets selected and curated by SkillPilot. This provenance category is not an SPDX identifier and does not itself grant CC BY; the per-asset license note remains in `data/resources/goal-visualizations.json`.

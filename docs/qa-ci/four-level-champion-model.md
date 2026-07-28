@@ -16,7 +16,7 @@ This model refines the existing curriculum QA stage logic. The former `Level 1` 
 
 ## Target picture
 
-SkillPilot translates curricula into machine-readable competence graphs. The transition from an AI-derived raw state to a practically reliable QA stage should become scalable without overloading subject experts with graph details, JSON formalities, or technical validation rules.
+SkillPilot translates curricula into machine-readable skill graphs. The transition from an AI-derived raw state to a practically reliable QA stage should become scalable without overloading subject experts with graph details, JSON formalities, or technical validation rules.
 
 For that reason, the QA role is differentiated into four stages:
 

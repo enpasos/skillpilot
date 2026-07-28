@@ -40,7 +40,7 @@ Mit der Nutzung von SkillPilot erkennen Sie die folgenden Punkte an:
 
 ### 1. Keine Garantie für Vollständigkeit der Lernmodelle
 
-* Die in SkillPilot abgebildeten Lernlandschaften, Fähigkeiten und Lernziele sind **Modelle** der Realität.
+* Die in SkillPilot abgebildeten Skill-Landschaften, Fähigkeiten und Lernziele sind **Modelle** der Realität.
 * Es kann sein, dass Lerninhalte **nicht vollständig** oder **nicht ausreichend granular** modelliert sind.
 * Auch wenn in SkillPilot alle angezeigten Teilziele erreicht wurden, bedeutet das **nicht automatisch**, dass das tatsächliche fachliche oder berufliche Lernziel vollständig erreicht ist.
 * SkillPilot **ersetzt keine offiziellen Lehrpläne, Curricula, staatlichen Vorgaben oder anerkannten Bildungsabschlüsse**.

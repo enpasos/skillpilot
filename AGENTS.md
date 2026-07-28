@@ -1,13 +1,13 @@
-# AGENTS.md – Competence Graph Memory & Design Guide
+# AGENTS.md – Skill Graph Memory & Design Guide
 
-This document is the **long-term memory** for SkillPilot, including the competence-graph explorer.  
+This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
 ---
 
 ## 1. Purpose of this project
 
-SkillPilot is a **general open-source learning platform** that models domains as competence graphs.
+SkillPilot is a **general open-source learning platform** that models domains as skill graphs.
 Every landscape should:
 
 1. Represent learning goals as a **DAG of competencies** (cluster + atomic goals).
@@ -28,7 +28,7 @@ All conventions described below are general enough to support other curricula, s
 
 ---
 
-## 2. Mental model of the competence graph
+## 2. Mental model of the skill graph
 
 ### 2.1 Nodes = learning goals
 
@@ -72,7 +72,7 @@ The long-term target model should distinguish four semantic concepts plus one le
 
 Interpretation rules:
 
-- year/semester/module/phase nodes are **not** the durable semantic backbone of the competence graph
+- year/semester/module/phase nodes are **not** the durable semantic backbone of the skill graph
 - broad capability families such as `K1`-`K6` are **not** program units
 - only concrete, assessable process skills become actual goals
 - current `phase` values should increasingly be treated as compatibility/view metadata rather than as the canonical semantic anchor
@@ -231,7 +231,7 @@ For the Hessian *Kerncurriculum Mathematik gymnasiale Oberstufe* this means:
 2. **Content competencies per topic field** – e.g. E.1–E.7, Q1.1–Q4.3.
 3. **Cross-cutting dimensions** – Leitideen (L1–L5), digitale Werkzeuge, etc.
 
-Whatever the framework, interpret it as a **universe of required goals** and encode it as a competence graph using the following strategy.
+Whatever the framework, interpret it as a **universe of required goals** and encode it as a skill graph using the following strategy.
 
 ### 6.1 Structural layers
 
@@ -301,6 +301,16 @@ When adding new goals (especially atomic ones), follow these conventions:
 
    * Use *“Die lernende Person kann …”* style wording.
    * Make them specific enough to be tested in 1–3 tasks.
+   * Formulate competencies around motivation, understanding, reasoning, or
+     purposeful application, problem solving, and construction. Merely looking
+     up a formula and substituting values is not a learning goal.
+   * Do not mention a *Formelsammlung* / *formula sheet* in canonical goal
+     titles or descriptions unless the normative curriculum explicitly makes
+     its use part of the competence. Such a rare exception must be documented
+     with an exact source reference and quote in
+     `scripts/config/competency-wording-exceptions.json`. Source-extraction
+     artifacts may retain the original wording without becoming operative
+     competence formulations.
 
 2. **IDs reflect structure**
 
@@ -492,7 +502,7 @@ We distinguish three levels that should stay conceptually separated:
 
 Layer A contains the **static, curriculum-level description** of a domain:
 
-- A directed acyclic competence graph with:
+- A directed acyclic skill graph with:
   - nodes = learning goals (atomic + cluster),
   - edges:
     - `contains` for structural hierarchy (Themenfelder, Halbjahres-Cluster, etc.),
@@ -569,7 +579,7 @@ Implementation-wise:
 
 ### 10.3 Layer C – LLM-/MCP-Integration
 
-Layer C connects the competence graph and learner states to **LLM-based agents**.
+Layer C connects the skill graph and learner states to **LLM-based agents**.
 The intended architecture:
 
 - An MCP server (or a set of servers) exposes:
@@ -581,7 +591,7 @@ The intended architecture:
     - derive learner-specific frontiers or summaries.
 - MCP clients (e.g. ChatGPT with MCP support) connect to this server.  
   The LLM (e.g. GPT‑5.1) acts as:
-  - navigator on the competence graph (“Welche Ziele passen als nächstes?”),
+  - navigator on the skill graph (“Welche Ziele passen als nächstes?”),
   - didactic assistant (Erklärungen, Aufgaben, Reflexionsfragen),
   - broker between learners/teachers and the underlying data.
 
@@ -614,7 +624,7 @@ Key principles for Layer C:
   Because ChatGPT exposes no stable conversation identifier for this contract,
   the current learning session is connection-wide rather than chat-specific.
 - Guided curriculum personalization is an explicitly authored entry protocol,
-  not a projection of the competence graph:
+  not a projection of the skill graph:
   - a curriculum root may declare a versioned top-level `personalizationFlow`;
   - stages, groups, order, cardinalities, landscapes, and filter sources come
     only from that flow and the referenced landscape metadata;
@@ -775,7 +785,7 @@ The SkillPilot server should treat every learner as a **pseudonymous profile** i
 
 Guiding principle:
 
-- The competence graph knows only **“learner X with skillpilotId …”**, not who that person is in the real world.
+- The skill graph knows only **“learner X with skillpilotId …”**, not who that person is in the real world.
 
 ### 11.2 What lives where?
 

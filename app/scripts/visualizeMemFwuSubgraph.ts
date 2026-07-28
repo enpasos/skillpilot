@@ -589,7 +589,7 @@ const renderHtml = (params: {
     </div>
   </header>
   <main>
-    <h2>Goal Graph</h2>
+    <h2>Skill Graph</h2>
     <p><strong>Blau/solid</strong> = <code>contains</code>, <strong>orange/dashed</strong> = <code>requires</code>. Boxen sind Cluster-Ziele, Ellipsen atomare Ziele.</p>
     <div class="graph">${params.svg}</div>
 

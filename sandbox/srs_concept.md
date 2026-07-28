@@ -5,7 +5,7 @@ SkillPilot currently focuses on **competence mastery** (Understanding/Applicatio
 Vocabulary learning, however, requires **memorization** (Retention), which follows the "Forgetting Curve".
 
 **Objective:**
-enable learners to memorize ~400 vocabulary words efficiently using SRS, seamlessly integrated alongside the existing competence graph, while keeping server costs low and user experience high.
+enable learners to memorize ~400 vocabulary words efficiently using SRS, seamlessly integrated alongside the existing skill graph, while keeping server costs low and user experience high.
 
 ## 2. Approach Analysis: Flashcards vs. AI Tutor
 

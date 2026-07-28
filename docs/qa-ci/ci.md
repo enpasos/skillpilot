@@ -27,7 +27,7 @@ This includes the package/runtime adapters, learner-goal selection, GPT instruct
 
 ### 3. `graph-validation` — curriculum
 
-Purpose: validate curriculum graph/data integrity, generated artifacts, package contracts and self-tests, schemas, and deterministic release-model conformance.
+Purpose: validate skill graph/data integrity, generated artifacts, package contracts and self-tests, schemas, and deterministic release-model conformance.
 
 The job contains the graph, view, placement, source, review, asset, schema, archive, and legacy-reference gates. It builds the package-only frontend and exercises the package builder, validator, provisioner, Readiness evaluator, and consumer through bounded self-tests, but it does not materialize or consume a real curriculum ZIP. Those production-boundary checks belong exclusively to the optional Package CI.
 

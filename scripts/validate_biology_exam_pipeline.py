@@ -298,7 +298,7 @@ def validate_collection_membership(
                 findings,
                 "error",
                 "collection_membership_mismatch",
-                f"Task {task['goalId']} has releaseCollections {actual} but expected {expected} from the curriculum graph.",
+                f"Task {task['goalId']} has releaseCollections {actual} but expected {expected} from the skill graph.",
             )
 
 

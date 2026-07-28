@@ -729,7 +729,7 @@ const App: React.FC = () => {
         className="min-h-screen bg-app-gradient text-slate-100 p-6"
         data-testid="runtime-catalog-error"
       >
-        Fehler beim Laden der Lernlandschaften: {core.runtimeCatalogState.error.message}
+        Fehler beim Laden der Skill-Landschaften: {core.runtimeCatalogState.error.message}
       </div>
     )
   }
@@ -767,7 +767,7 @@ const App: React.FC = () => {
   if (core.landscapeError) {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6">
-        Fehler beim Laden der Lernlandschaften: {core.landscapeError.message}
+        Fehler beim Laden der Skill-Landschaften: {core.landscapeError.message}
       </div>
     )
   }
@@ -776,7 +776,7 @@ const App: React.FC = () => {
   if (core.landscapeEntries.length === 0 && !core.loadingLandscapes && role !== 'trainer') {
     return (
       <div className="min-h-screen bg-app-gradient text-slate-100 p-6 flex items-center justify-center">
-        <p className="text-xl">Keine Lernlandschaften verfügbar.</p>
+        <p className="text-xl">Keine Skill-Landschaften verfügbar.</p>
       </div>
     )
   }

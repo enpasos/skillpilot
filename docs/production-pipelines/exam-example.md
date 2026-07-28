@@ -226,7 +226,7 @@ Typical outputs:
 - `examData.taskContent`
 - `examData.solutionContent`
 - `examData.scoring`
-- stable references from the curriculum graph
+- stable references from the skill graph
 
 See also:
 

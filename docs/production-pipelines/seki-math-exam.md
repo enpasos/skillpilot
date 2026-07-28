@@ -1,7 +1,7 @@
 # Sek-I Mathematics Exam Production Pipeline
 
 This pipeline defines the reviewed production workflow for canonical German Gymnasium mathematics exams in Sekundarstufe I.
-It is intentionally separate from direct curriculum-graph editing: exam drafts are authored, reviewed, and stabilized as Markdown artifacts before they are promoted into `examData`.
+It is intentionally separate from direct skill-graph editing: exam drafts are authored, reviewed, and stabilized as Markdown artifacts before they are promoted into `examData`.
 
 ---
 
@@ -211,7 +211,7 @@ Gate:
 - external-review blockers resolved
 - originality/source hygiene confirmed
 
-### Step 9: Promote into Curriculum Graph
+### Step 9: Promote into Skill Graph
 
 Only after release-candidate status:
 
