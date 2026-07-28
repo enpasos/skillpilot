@@ -34,13 +34,19 @@ export const getAudienceGoalTitle = (
   return title
 }
 
-type PersonalCurriculumConfigLike = Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
+type PersonalCurriculumConfigLike = Record<string, {
+  selected: boolean
+  filterId?: string
+  durationModel?: string
+  stage?: string
+}>
 
 export const buildVisibleChildrenMap = (
   allGoals: Map<string, UiGoal>,
   activeFilter?: string,
   personalConfig?: PersonalCurriculumConfigLike,
   structureMode: TreeStructureMode = 'all',
+  rootLandscapeId?: string,
 ) => {
   const visibleChildrenByParent = new Map<string, string[]>()
   const hasConfig = !!personalConfig && Object.keys(personalConfig).length > 0
@@ -68,7 +74,7 @@ export const buildVisibleChildrenMap = (
       const child = allGoals.get(childId)
       if (!child) return false
 
-      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {})) {
+      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {}, { rootLandscapeId })) {
         return false
       }
 

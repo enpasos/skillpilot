@@ -1,7 +1,7 @@
 import type { ClassSession } from '../trainerTypes'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from './curriculumDisplay'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
-import { applyDefaultGlobalStageScope } from './personalCurriculumStageScope'
+import { synchronizePersonalCurriculumStageScope } from './personalCurriculumStageScope'
 
 const CANONICAL_GYMNASIUM_MATH_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYMNASIUM_PHYSICS_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
@@ -186,7 +186,9 @@ const buildCanonicalGymnasiumPersonalConfig = (
       ...(inferredCourseProfile ? { filterId: inferredCourseProfile } : {}),
     },
   } satisfies NonNullable<ClassSession['personalConfig']>
-  const scoped = applyDefaultGlobalStageScope(initialConfig).config
+  const scoped = synchronizePersonalCurriculumStageScope(initialConfig, {
+    rootLandscapeId: CANONICAL_GYMNASIUM_ROOT_ID,
+  }).config
 
   return {
     personalConfig: scoped,
@@ -217,18 +219,13 @@ export const migrateTrainerClassSession = (session: ClassSession): ClassSession 
       next.personalConfig = canonicalConfig.personalConfig
       next.rootLandscapeId = canonicalConfig.rootLandscapeId
     } else if (session.rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
-      const rootConfig = session.personalConfig[CANONICAL_GYMNASIUM_ROOT_ID]
-      if (rootConfig?.durationModel) {
-        const nextRootConfig = { ...rootConfig }
-        delete nextRootConfig.durationModel
-        next.personalConfig = {
-          ...session.personalConfig,
-          [CANONICAL_GYMNASIUM_ROOT_ID]: {
-            ...nextRootConfig,
-            selected: nextRootConfig?.selected ?? true,
-          },
-        }
-      }
+      next.personalConfig = synchronizePersonalCurriculumStageScope(
+        session.personalConfig,
+        {
+          rootLandscapeId: CANONICAL_GYMNASIUM_ROOT_ID,
+          landscapeId: inferredLandscapeId,
+        },
+      ).config
     }
   }
 

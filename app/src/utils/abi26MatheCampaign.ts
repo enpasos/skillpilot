@@ -1,5 +1,5 @@
 import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
-import { GLOBAL_STAGE_SCOPE_CONFIG_IDS } from './personalCurriculumStageScope'
+import { setGlobalStageScopeSelection } from './personalCurriculumStageScope'
 import { SKILLPILOT_GPT_URL_DE } from './skillpilotGpt'
 
 export type Abi26CourseLevel = 'GK' | 'LK'
@@ -13,7 +13,12 @@ export interface Abi26CampaignContext {
   skillpilotId?: string
 }
 
-export type Abi26PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string }>
+export type Abi26PersonalCurriculumConfig = Record<string, {
+  selected: boolean
+  filterId?: string
+  durationModel?: string
+  stage?: string
+}>
 
 export const ABI26_CAMPAIGN_SLUG = 'abi26-he-mathe-k1'
 export const ABI26_ROOT_CURRICULUM_ID = CANONICAL_GYMNASIUM_ROOT_ID
@@ -109,16 +114,14 @@ export const buildAbi26PersonalCurriculumConfig = (
     selected: true,
     filterId: courseLevel,
   }
-  next[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1] = {
-    ...baseConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1],
-    selected: false,
-  }
-  next[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2] = {
-    ...baseConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2],
-    selected: true,
-  }
-
-  return next
+  return setGlobalStageScopeSelection(
+    next,
+    {
+      sek1Selected: false,
+      sek2Selected: true,
+    },
+    { rootLandscapeId: ABI26_ROOT_CURRICULUM_ID },
+  )
 }
 
 export const buildAbi26CockpitUrl = (context: Abi26CampaignContext) => {

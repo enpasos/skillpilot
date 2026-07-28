@@ -5,10 +5,11 @@ import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalo
 import { CANONICAL_GYMNASIUM_ROOT_ID, isCompatibilityOnlyCurriculum } from '../utils/curriculumDisplay'
 import type { LegacyCutoverPreviewItem } from '../utils/legacyCutover'
 import {
-    applyDefaultGlobalStageScope,
     getGlobalStageScopeSelection,
     GLOBAL_STAGE_SCOPE_CONFIG_IDS,
     getGlobalStageScopeOptions,
+    setGlobalStageScopeSelection,
+    synchronizePersonalCurriculumStageScope,
 } from '../utils/personalCurriculumStageScope'
 import {
     getDurationModelOptions,
@@ -38,6 +39,7 @@ interface PersonalCurriculumConfig {
         selected: boolean
         filterId?: string
         durationModel?: string
+        stage?: string
     }
 }
 
@@ -130,7 +132,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             initial[l.landscapeId] = {
                 selected: existing?.selected ?? defaultSelected,
                 ...(existing?.filterId ? { filterId: existing.filterId } : defaultFilterId ? { filterId: defaultFilterId } : {}),
-                ...(existing?.durationModel ? { durationModel: existing.durationModel } : {})
+                ...(existing?.durationModel ? { durationModel: existing.durationModel } : {}),
+                ...(existing?.stage ? { stage: existing.stage } : {}),
             }
         })
         Object.entries(initialConfig).forEach(([landscapeId, value]) => {
@@ -139,10 +142,11 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             }
         })
         if (isScopedSetupRoot) {
-            const stageScoped = applyDefaultGlobalStageScope(initial).config
+            const stageScoped = synchronizePersonalCurriculumStageScope(initial, {
+                rootLandscapeId,
+            }).config
             if (rootLandscapeId) {
                 const rootConfig = { ...stageScoped[rootLandscapeId] }
-                if (!catalogRootHasOfferings) delete rootConfig.durationModel
                 stageScoped[rootLandscapeId] = {
                     ...rootConfig,
                     selected: rootConfig.selected ?? true,
@@ -151,7 +155,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             return stageScoped
         }
         return initial
-    }, [availableLandscapes, catalogRootHasOfferings, initialConfig, isScopedSetupRoot, rootLandscapeId])
+    }, [availableLandscapes, initialConfig, isScopedSetupRoot, rootLandscapeId])
 
     const initialExpanded = React.useMemo(() => {
         const next = new Set<string>()
@@ -269,7 +273,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             return draft
         }
 
-        const stageSelection = getGlobalStageScopeSelection(draft)
+        const stageSelection = getGlobalStageScopeSelection(draft, {
+            rootLandscapeId,
+        })
         const rootJurisdiction = draft[rootLandscapeId]?.filterId
         const hasJurisdictionScope = offeringSource.mode === 'catalog'
             ? Boolean(rootJurisdiction?.trim()) && offeringSource.catalog.offerings.some(
@@ -277,10 +283,10 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             )
             : normalizeJurisdictionCode(rootJurisdiction) !== null
         const shouldApplyDurationScope = stageSelection.sek1Selected
-        const shouldRestrictToOfferedContent = hasJurisdictionScope
+        const hasStageScope = stageSelection.sek1Selected || stageSelection.sek2Selected
+        const shouldRestrictToOfferedContent = hasJurisdictionScope && hasStageScope
         const next: PersonalCurriculumConfig = { ...draft }
         const rootConfig = { ...next[rootLandscapeId] }
-        if (!catalogRootHasOfferings) delete rootConfig.durationModel
         next[rootLandscapeId] = {
             ...rootConfig,
             selected: rootConfig.selected ?? true,
@@ -313,7 +319,14 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 next[landscapeId] = withoutDurationModel
                 return
             }
-            const normalizedDurationModel = normalizeOfferedDurationModel(value.durationModel, offeredDurationModels)
+            if (!shouldApplyDurationScope) {
+                next[landscapeId] = value
+                return
+            }
+            const normalizedDurationModel = normalizeOfferedDurationModel(
+                value.durationModel ?? rootConfig.durationModel,
+                offeredDurationModels,
+            )
             if (normalizedDurationModel) {
                 next[landscapeId] = {
                     ...value,
@@ -344,8 +357,12 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
 
     const toggleGlobalStageScope = (stageScopeId: string) => {
         setConfig(prev => {
-            const currentSelection = getGlobalStageScopeSelection(prev)
-            const isCurrentlySelected = prev[stageScopeId]?.selected ?? true
+            const currentSelection = getGlobalStageScopeSelection(prev, {
+                rootLandscapeId,
+            })
+            const isCurrentlySelected = stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+                ? currentSelection.sek1Selected
+                : currentSelection.sek2Selected
             const nextSelected = !isCurrentlySelected
 
             if (!nextSelected) {
@@ -357,13 +374,18 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                 }
             }
 
-            const next = {
-                ...prev,
-                [stageScopeId]: {
-                    selected: nextSelected,
+            return setGlobalStageScopeSelection(
+                prev,
+                {
+                    sek1Selected: stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+                        ? nextSelected
+                        : currentSelection.sek1Selected,
+                    sek2Selected: stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2
+                        ? nextSelected
+                        : currentSelection.sek2Selected,
                 },
-            }
-            return next
+                { rootLandscapeId },
+            )
         })
     }
 
@@ -396,10 +418,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         .filter(l => l.landscapeId !== rootLandscapeId)
     const primaryChildrenLandscapes = childrenLandscapes.filter((landscape) => !isCompatibilityOnlyLandscape(landscape))
     const compatibilityChildrenLandscapes = childrenLandscapes.filter((landscape) => isCompatibilityOnlyLandscape(landscape))
-    const globalStageSelection = getGlobalStageScopeSelection(config)
+    const globalStageSelection = getGlobalStageScopeSelection(config, {
+        rootLandscapeId,
+    })
     const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
     const shouldRestrictChildrenToOfferedContent =
         isScopedSetupRoot
+        && (globalStageSelection.sek1Selected || globalStageSelection.sek2Selected)
         && (
             offeringSource.mode === 'catalog'
                 ? Boolean(rootJurisdiction?.trim()) && offeringSource.catalog.offerings.some(
@@ -421,7 +446,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
     const renderNode = (landscape: LandscapeSummary, isRoot: boolean) => {
         const isSelected = config[landscape.landscapeId]?.selected ?? false
         const currentFilter = config[landscape.landscapeId]?.filterId ?? ''
-        const globalStageSelection = getGlobalStageScopeSelection(config)
+        const globalStageSelection = getGlobalStageScopeSelection(config, {
+            rootLandscapeId,
+        })
         const shouldShowGlobalStageScope = isRoot && isScopedSetupRoot
         const rootJurisdiction = rootLandscapeId ? config[rootLandscapeId]?.filterId : undefined
         const durationScopeTarget = (!isRoot || catalogRootHasOfferings) && isScopedSetupRoot
@@ -431,7 +458,8 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
         const durationModelOptions = getDurationModelOptions(localizedLanguage, offeredDurationModels)
         const shouldShowDurationModelControls = durationModelOptions.length > 0
         const currentDurationModel = normalizeOfferedDurationModel(
-            config[landscape.landscapeId]?.durationModel,
+            config[landscape.landscapeId]?.durationModel
+                ?? (isRoot || !rootLandscapeId ? undefined : config[rootLandscapeId]?.durationModel),
             offeredDurationModels,
         )
         const effectiveFilters = getDisplayCourseProfileFilters(landscape.filters, localizedLanguage)
@@ -439,7 +467,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             ? getDisplayFiltersForSelection(effectiveFilters, localizedLanguage)
             : effectiveFilters
         const hasFilters = effectiveFilters.length > 0
-        const showCourseProfileControls = isRoot ? true : globalStageSelection.sek2Selected
+        const showCourseProfileControls = isRoot
+            ? true
+            : !globalStageSelection.sek1Selected || globalStageSelection.sek2Selected
         const showFilterControls = Boolean(hasFilters) && showCourseProfileControls && (isRoot || isSelected)
         const showDetailControls = showFilterControls || shouldShowDurationModelControls
         const isExpandable = isRoot || showDetailControls
@@ -510,7 +540,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                                     {setupCopy.stageLabel}
                                 </div>
                                 {stageScopeOptions.map(option => {
-                                    const checked = config[option.id]?.selected ?? true
+                                    const checked = option.id === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+                                        ? globalStageSelection.sek1Selected
+                                        : globalStageSelection.sek2Selected
                                     return (
                                         <label
                                             key={option.id}

@@ -124,6 +124,7 @@ const hasExplicitPersonalCurriculumScope = (value?: string | null): boolean => {
       return record.selected === true
         || (typeof record.filterId === 'string' && record.filterId.trim().length > 0)
         || (typeof record.durationModel === 'string' && record.durationModel.trim().length > 0)
+        || (typeof record.stage === 'string' && record.stage.trim().length > 0)
     })
   } catch {
     return false

@@ -7,6 +7,7 @@ export interface TrainerClassCurriculumConfigEntry {
   selected: boolean
   filterId?: string
   durationModel?: string
+  stage?: string
 }
 
 export type TrainerClassCurriculumConfig = Record<string, TrainerClassCurriculumConfigEntry>

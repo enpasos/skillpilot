@@ -13,7 +13,10 @@ import { CANONICAL_GYMNASIUM_ROOT_ID } from './curriculumDisplay'
 import { normalizeDurationModel } from './durationModel'
 import { splitFilterIds } from './goalFilters'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
-import { GLOBAL_STAGE_SCOPE_CONFIG_IDS, isCourseProfileFilterId } from './personalCurriculumStageScope'
+import {
+  isCourseProfileFilterId,
+  resolvePersonalCurriculumStageScope,
+} from './personalCurriculumStageScope'
 
 const ROOT_TAG = 'root'
 const SYNTHETIC_PROGRAM_UNIT_TAG = 'synthetic:program-unit'
@@ -290,50 +293,6 @@ const parsePersonalCurriculum = (value?: string | null): PersonalCurriculumConfi
   }
 }
 
-type RuntimeStageScope = 'SekI' | 'SekII' | 'CrossStage'
-
-const normalizeRuntimeStageScope = (value?: string): RuntimeStageScope | undefined => {
-  const normalized = normalizeComparableToken(value).replace(/[^A-Z0-9]/gu, '')
-  if (normalized === 'SEKI') return 'SekI'
-  if (normalized === 'SEKII') return 'SekII'
-  if (normalized === 'CROSSSTAGE') return 'CrossStage'
-  return undefined
-}
-
-const inferStageFromPersonalCurriculum = (
-  config: PersonalCurriculumConfig,
-  landscapeId: string,
-  rootLandscapeId: string,
-): RuntimeStageScope | undefined => {
-  const explicitStage = [
-    config[landscapeId]?.stage,
-    config[rootLandscapeId]?.stage,
-  ]
-    .map((value) => normalizeRuntimeStageScope(value))
-    .find((value): value is RuntimeStageScope => !!value)
-
-  if (explicitStage) {
-    return explicitStage
-  }
-
-  const hasLegacyStageScope = [
-    GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1,
-    GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2,
-  ].some((configId) => typeof config[configId]?.selected === 'boolean')
-
-  if (!hasLegacyStageScope) {
-    return undefined
-  }
-
-  const sek1Selected = config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected ?? true
-  const sek2Selected = config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]?.selected ?? true
-
-  if (sek2Selected && !sek1Selected) return 'SekII'
-  if (sek1Selected && !sek2Selected) return 'SekI'
-  if (sek1Selected && sek2Selected) return 'CrossStage'
-  return undefined
-}
-
 const pushScopedFilter = (filters: string[], value?: string | null) => {
   splitFilterIds(value ?? undefined).forEach((normalized) => {
     if (!normalized || normalized.toLowerCase() === 'all') return
@@ -410,7 +369,10 @@ export const deriveRuntimeCompositionScope = ({
       .find((value): value is NonNullable<typeof value> => !!value)
   const courseProfileCandidate = [landscapeFilterId, ...activeFilters].find((value) => isCourseProfileFilterId(value))
   const courseProfile = normalizeCourseProfileScope(courseProfileCandidate)
-  const stage = inferStageFromPersonalCurriculum(personalCurriculum, landscapeId, rootLandscapeId)
+  const stage = resolvePersonalCurriculumStageScope(personalCurriculum, {
+    landscapeId,
+    rootLandscapeId,
+  })
   const durationModel = [
     personalCurriculum[landscapeId]?.durationModel,
     personalCurriculum[rootLandscapeId]?.durationModel,
@@ -1062,25 +1024,6 @@ export const applyCompositionViewProjection = (
     const projectedGoalById = new Map(goalByIdAcrossEntries)
     strippedGoals.forEach((goal) => projectedGoalById.set(goal.id, goal))
 
-    const stageAnchorGoal = strippedGoals.find((goal) => isStageAnchorGoal(goal, view.scope.stage))
-
-    if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
-      const rootStructure = view.rootNodes[0]
-      const anchoredStageEntry = applyAnchoredProjection({
-        entry,
-        view,
-        strippedGoals,
-        strippedGoalById: projectedGoalById,
-        rootGoalIdByLandscapeId,
-        anchorGoalId: stageAnchorGoal.id,
-        nodes: rootStructure.children,
-        referencedGoalIds,
-      })
-      if (anchoredStageEntry) {
-        return anchoredStageEntry
-      }
-    }
-
     if (authoredRootGoal) {
       const rootProjectionNodes = view.rootNodes.length === 1
         && view.rootNodes[0]?.kind === 'structure'
@@ -1101,6 +1044,25 @@ export const applyCompositionViewProjection = (
       })
       if (anchoredRootEntry) {
         return anchoredRootEntry
+      }
+    }
+
+    const stageAnchorGoal = strippedGoals.find((goal) => isStageAnchorGoal(goal, view.scope.stage))
+
+    if (stageAnchorGoal && view.rootNodes.length === 1 && view.rootNodes[0]?.kind === 'structure') {
+      const rootStructure = view.rootNodes[0]
+      const anchoredStageEntry = applyAnchoredProjection({
+        entry,
+        view,
+        strippedGoals,
+        strippedGoalById: projectedGoalById,
+        rootGoalIdByLandscapeId,
+        anchorGoalId: stageAnchorGoal.id,
+        nodes: rootStructure.children,
+        referencedGoalIds,
+      })
+      if (anchoredStageEntry) {
+        return anchoredStageEntry
       }
     }
 

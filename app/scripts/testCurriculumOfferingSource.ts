@@ -6,7 +6,18 @@ import {
   resolveCurriculumOfferingSource,
 } from '../src/utils/durationModel'
 import { deriveRuntimeCompositionScope } from '../src/utils/compositionViewRuntime'
+import {
+  getGlobalStageScopeSelection,
+  GLOBAL_STAGE_SCOPE_CONFIG_IDS,
+  resolvePersonalCurriculumStageScope,
+  setGlobalStageScopeSelection,
+  synchronizePersonalCurriculumStageScope,
+} from '../src/utils/personalCurriculumStageScope'
 import type { RuntimeCurriculumCatalog } from '../src/utils/runtimeCurriculumCatalog'
+import { migrateTrainerClassSession } from '../src/utils/trainerLandscapeContext'
+
+const canonicalGymnasiumRootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+const canonicalMathId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 
 const catalog: RuntimeCurriculumCatalog = {
   catalogApiVersion: '1.2',
@@ -90,8 +101,211 @@ assert.deepEqual(
 
 const repositorySource = resolveCurriculumOfferingSource({ mode: 'repository' })
 assert.deepEqual(
-  getOfferedGymnasiumDurationModels('68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', 'DE-HE', repositorySource),
+  getOfferedGymnasiumDurationModels(canonicalMathId, 'DE-HE', repositorySource),
   ['G8', 'G9'],
+)
+
+const hessenMathLkUpperSecondary = {
+  [canonicalGymnasiumRootId]: {
+    selected: true,
+    filterId: 'DE-HE',
+    stage: 'SekII',
+    durationModel: 'G9',
+  },
+  [canonicalMathId]: {
+    selected: true,
+    filterId: 'LK',
+    stage: 'CrossStage',
+  },
+  [GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]: { selected: true },
+  [GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]: { selected: true },
+}
+const synchronizedHessenMathLkUpperSecondary =
+  synchronizePersonalCurriculumStageScope(hessenMathLkUpperSecondary, {
+    rootLandscapeId: canonicalGymnasiumRootId,
+    landscapeId: canonicalMathId,
+  })
+
+assert.equal(synchronizedHessenMathLkUpperSecondary.stage, 'SekII')
+assert.equal(synchronizedHessenMathLkUpperSecondary.corrected, true)
+assert.deepEqual(
+  getGlobalStageScopeSelection(
+    synchronizedHessenMathLkUpperSecondary.config,
+    {
+      rootLandscapeId: canonicalGymnasiumRootId,
+      landscapeId: canonicalMathId,
+    },
+  ),
+  {
+    sek1Selected: false,
+    sek2Selected: true,
+  },
+)
+assert.equal(
+  synchronizedHessenMathLkUpperSecondary.config[canonicalGymnasiumRootId]?.stage,
+  'SekII',
+)
+assert.equal(
+  synchronizedHessenMathLkUpperSecondary.config[canonicalGymnasiumRootId]?.durationModel,
+  'G9',
+  'Stage synchronization must retain the canonical duration model.',
+)
+assert.equal(
+  synchronizedHessenMathLkUpperSecondary.config[canonicalMathId]?.stage,
+  undefined,
+  'A stale subject stage must not compete with the authoritative root stage.',
+)
+assert.equal(
+  synchronizedHessenMathLkUpperSecondary.config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected,
+  false,
+)
+assert.equal(
+  synchronizedHessenMathLkUpperSecondary.config[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]?.selected,
+  true,
+)
+
+assert.deepEqual(
+  deriveRuntimeCompositionScope({
+    landscapeId: canonicalMathId,
+    rootLandscapeId: canonicalGymnasiumRootId,
+    scopeEnabled: true,
+    learnerPersonalCurriculum: JSON.stringify(
+      synchronizedHessenMathLkUpperSecondary.config,
+    ),
+  }),
+  {
+    landscapeId: canonicalMathId,
+    schoolForm: 'Gymnasium',
+    jurisdiction: 'DE-HE',
+    stage: 'SekII',
+    courseProfile: 'LK',
+    durationModel: 'G9',
+  },
+)
+
+const unresolvedStageConfig = {
+  [canonicalGymnasiumRootId]: {
+    selected: true,
+    filterId: 'DE-HE',
+  },
+  [GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]: { selected: false },
+  [GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]: { selected: false },
+}
+const synchronizedUnresolvedStage = synchronizePersonalCurriculumStageScope(
+  unresolvedStageConfig,
+  { rootLandscapeId: canonicalGymnasiumRootId },
+)
+assert.equal(synchronizedUnresolvedStage.corrected, false)
+assert.equal(
+  resolvePersonalCurriculumStageScope(
+    synchronizedUnresolvedStage.config,
+    { rootLandscapeId: canonicalGymnasiumRootId },
+  ),
+  undefined,
+)
+assert.deepEqual(
+  getGlobalStageScopeSelection(
+    synchronizedUnresolvedStage.config,
+    { rootLandscapeId: canonicalGymnasiumRootId },
+  ),
+  {
+    sek1Selected: false,
+    sek2Selected: false,
+  },
+  'An unresolved or explicit false/false stage must not become CrossStage.',
+)
+
+assert.deepEqual(
+  getGlobalStageScopeSelection(
+    {
+      [canonicalGymnasiumRootId]: {
+        selected: true,
+        filterId: 'DE-HE',
+      },
+    },
+    { rootLandscapeId: canonicalGymnasiumRootId },
+  ),
+  {
+    sek1Selected: false,
+    sek2Selected: false,
+  },
+  'Missing canonical and legacy stage values must remain unresolved.',
+)
+
+const upperSecondaryFromEmptyConfig = setGlobalStageScopeSelection(
+  {},
+  {
+    sek1Selected: false,
+    sek2Selected: true,
+  },
+  { rootLandscapeId: canonicalGymnasiumRootId },
+)
+assert.deepEqual(
+  upperSecondaryFromEmptyConfig[canonicalGymnasiumRootId],
+  {
+    selected: true,
+    stage: 'SekII',
+  },
+  'A UI stage change must immediately write the canonical root stage.',
+)
+assert.equal(
+  upperSecondaryFromEmptyConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected,
+  false,
+)
+assert.equal(
+  upperSecondaryFromEmptyConfig[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]?.selected,
+  true,
+)
+
+const migratedSubjectStage = synchronizePersonalCurriculumStageScope(
+  {
+    [canonicalMathId]: {
+      selected: true,
+      filterId: 'LK',
+      stage: 'SekII',
+    },
+  },
+  {
+    rootLandscapeId: canonicalGymnasiumRootId,
+    landscapeId: canonicalMathId,
+  },
+).config
+assert.equal(
+  migratedSubjectStage[canonicalGymnasiumRootId]?.stage,
+  'SekII',
+  'A legacy subject stage must migrate to the canonical root.',
+)
+assert.equal(migratedSubjectStage[canonicalMathId]?.stage, undefined)
+
+const migratedTrainerSession = migrateTrainerClassSession({
+  id: 'hessen-math-lk-g9',
+  name: 'Mathematik LK Oberstufe',
+  landscapeId: canonicalMathId,
+  activeFilter: 'DE-HE',
+  rootLandscapeId: canonicalGymnasiumRootId,
+  personalConfig: hessenMathLkUpperSecondary,
+  students: [],
+})
+assert.equal(
+  migratedTrainerSession.personalConfig?.[canonicalGymnasiumRootId]?.stage,
+  'SekII',
+)
+assert.equal(
+  migratedTrainerSession.personalConfig?.[canonicalGymnasiumRootId]?.durationModel,
+  'G9',
+  'Trainer session migration must retain the canonical G9 duration model.',
+)
+assert.equal(
+  migratedTrainerSession.personalConfig?.[canonicalMathId]?.stage,
+  undefined,
+)
+assert.equal(
+  migratedTrainerSession.personalConfig?.[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1]?.selected,
+  false,
+)
+assert.equal(
+  migratedTrainerSession.personalConfig?.[GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2]?.selected,
+  true,
 )
 
 assert.deepEqual(

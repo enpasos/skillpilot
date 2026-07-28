@@ -125,7 +125,12 @@ interface TreeNodeProps {
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
-  personalConfig?: Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
+  personalConfig?: Record<string, {
+    selected: boolean
+    filterId?: string
+    durationModel?: string
+    stage?: string
+  }>
   hasActivePlan?: boolean
   isInPlannedSubtree?: boolean
   activeGoalId?: string
@@ -482,7 +487,13 @@ interface CompetenceTreeProps {
 
   aggregatedPlannedGoals?: Map<string, number>
   totalStudents?: number
-  personalConfig?: Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
+  personalConfig?: Record<string, {
+    selected: boolean
+    filterId?: string
+    durationModel?: string
+    stage?: string
+  }>
+  rootLandscapeId?: string
   activeGoalId?: string
   expandedGoalIds?: Set<string>
   onToggleExpanded?: (goalId: string) => void
@@ -497,6 +508,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   rootGoals,
   activeFilter,
   personalConfig,
+  rootLandscapeId,
   structureMode = 'all',
   audience = 'trainer',
   hideTechnicalStructureUi = false,
@@ -517,8 +529,9 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
       activeFilter,
       personalConfig,
       structureMode,
+      rootLandscapeId,
     ),
-    [activeFilter, personalConfig, props.allGoals, structureMode, visibleChildrenByParentOverride],
+    [activeFilter, personalConfig, props.allGoals, rootLandscapeId, structureMode, visibleChildrenByParentOverride],
   )
   const sortedChildrenByParent = React.useMemo(
     () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals),

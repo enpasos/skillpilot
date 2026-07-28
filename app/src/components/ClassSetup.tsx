@@ -4,10 +4,11 @@ import { useRuntimeCurriculumCatalog } from '../hooks/useRuntimeCurriculumCatalo
 import type { LandscapeEntry } from '../hooks/useLandscapes'
 import type { ClassSession, StudentMapping, TrainerClassCurriculumConfig } from '../trainerTypes'
 import {
-  applyDefaultGlobalStageScope,
   getGlobalStageScopeSelection,
   GLOBAL_STAGE_SCOPE_CONFIG_IDS,
   getGlobalStageScopeOptions,
+  setGlobalStageScopeSelection,
+  synchronizePersonalCurriculumStageScope,
 } from '../utils/personalCurriculumStageScope'
 import {
   getDurationModelOptions,
@@ -58,7 +59,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
   const [selectedRootFilter, setSelectedRootFilter] = useState(() => (
     getDisplayFiltersForSelection(rootLandscape?.meta.filters ?? [], localizedLanguage)[0]?.id ?? 'ALL'
   ))
-  const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() => applyDefaultGlobalStageScope({}).config)
+  const [curriculumConfig, setCurriculumConfig] = useState<TrainerClassCurriculumConfig>(() =>
+    synchronizePersonalCurriculumStageScope({}, { rootLandscapeId }).config
+  )
   const [selectedDurationModel, setSelectedDurationModel] = useState('')
   const [selectedSubjectFilter, setSelectedSubjectFilter] = useState('ALL')
   const [studentNames, setStudentNames] = useState('')
@@ -79,9 +82,12 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     () => getDisplayFiltersForSelection(effectiveRootFilters, localizedLanguage),
     [effectiveRootFilters, localizedLanguage],
   )
-  const stageSelection = getGlobalStageScopeSelection(curriculumConfig)
+  const stageSelection = getGlobalStageScopeSelection(curriculumConfig, {
+    rootLandscapeId,
+  })
   const shouldRestrictSubjectsToOfferedContent =
     Boolean(rootLandscape)
+    && (stageSelection.sek1Selected || stageSelection.sek2Selected)
     && (
       offeringSource.mode === 'catalog'
         ? offeringSource.catalog.offerings.some(
@@ -117,7 +123,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
     [localizedLanguage, offeredDurationModels],
   )
   const normalizedSelectedDurationModel = normalizeOfferedDurationModel(selectedDurationModel, offeredDurationModels)
-  const showCourseProfileControls = stageSelection.sek2Selected && selectedLandscapeFilters.length > 0
+  const showCourseProfileControls =
+    (!stageSelection.sek1Selected || stageSelection.sek2Selected)
+    && selectedLandscapeFilters.length > 0
   const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
   const toApi = (path: string) => (apiBase ? `${apiBase}${path}` : path)
 
@@ -154,8 +162,12 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
 
   const toggleGlobalStageScope = (stageScopeId: string) => {
     setCurriculumConfig((prev) => {
-      const currentSelection = getGlobalStageScopeSelection(prev)
-      const isCurrentlySelected = prev[stageScopeId]?.selected ?? true
+      const currentSelection = getGlobalStageScopeSelection(prev, {
+        rootLandscapeId,
+      })
+      const isCurrentlySelected = stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+        ? currentSelection.sek1Selected
+        : currentSelection.sek2Selected
       const nextSelected = !isCurrentlySelected
 
       if (!nextSelected) {
@@ -167,17 +179,27 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         }
       }
 
-      return {
-        ...prev,
-        [stageScopeId]: {
-          selected: nextSelected,
+      return setGlobalStageScopeSelection(
+        prev,
+        {
+          sek1Selected: stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+            ? nextSelected
+            : currentSelection.sek1Selected,
+          sek2Selected: stageScopeId === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek2
+            ? nextSelected
+            : currentSelection.sek2Selected,
         },
-      }
+        { rootLandscapeId },
+      )
     })
   }
 
   const handleCreate = async (event: React.FormEvent) => {
     event.preventDefault()
+    if (rootLandscape && !stageSelection.sek1Selected && !stageSelection.sek2Selected) {
+      setError(copy.selectStageFirst)
+      return
+    }
     if (!selectedLandscapeId || !selectableSubjectLandscapes.some((entry) => entry.meta.landscapeId === selectedLandscapeId)) {
       setError(copy.selectSubjectFirst)
       return
@@ -206,7 +228,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
         }
       }
 
-      const personalConfig: TrainerClassCurriculumConfig = applyDefaultGlobalStageScope({
+      const personalConfig: TrainerClassCurriculumConfig = synchronizePersonalCurriculumStageScope({
         ...curriculumConfig,
         ...(rootLandscape
           ? {
@@ -221,7 +243,7 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
           filterId: showCourseProfileControls ? normalizeWildcardFilter(selectedSubjectFilter) : undefined,
           ...(normalizedSelectedDurationModel ? { durationModel: normalizedSelectedDurationModel } : {}),
         },
-      }).config
+      }, { rootLandscapeId }).config
 
       const newClass: ClassSession = {
         id: crypto.randomUUID(),
@@ -284,7 +306,9 @@ export const ClassSetup: React.FC<ClassSetupProps> = ({ landscapes, rootLandscap
               <label className="block text-xs uppercase text-text-secondary font-bold mb-1">{copy.stageLabel}</label>
               <div className="flex flex-col gap-2 rounded border border-border-color bg-input-bg/40 p-3">
                 {stageScopeOptions.map((option) => {
-                  const checked = curriculumConfig[option.id]?.selected ?? true
+                  const checked = option.id === GLOBAL_STAGE_SCOPE_CONFIG_IDS.sek1
+                    ? stageSelection.sek1Selected
+                    : stageSelection.sek2Selected
                   return (
                     <label key={option.id} className="flex items-center gap-2 text-text-primary">
                       <input

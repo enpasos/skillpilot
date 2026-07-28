@@ -37,7 +37,7 @@ import {
   loadAbi26CampaignContext,
   saveAbi26CampaignContext,
 } from '../utils/abi26MatheCampaign'
-import { applyDefaultGlobalStageScope } from '../utils/personalCurriculumStageScope'
+import { synchronizePersonalCurriculumStageScope } from '../utils/personalCurriculumStageScope'
 import { trackCampaignEvent } from '../utils/campaignTracking'
 import type { ToastKind } from '../hooks/useToast'
 import { queueToastForNextLoad } from '../hooks/useToast'
@@ -92,7 +92,12 @@ interface LearnerViewProps {
   onLandscapeGoalChange?: (landscapeId: string, goalId: string) => void
 }
 
-type PersonalCurriculumConfig = Record<string, { selected: boolean; filterId?: string; durationModel?: string }>
+type PersonalCurriculumConfig = Record<string, {
+  selected: boolean
+  filterId?: string
+  durationModel?: string
+  stage?: string
+}>
 type PersonalCurriculumPreferences = {
   strategy: 'RANDOM' | 'SEQUENTIAL'
   autoPilot: boolean
@@ -157,9 +162,10 @@ const normalizePersonalConfig = (
       }
     })
     if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
-      const stageScoped = applyDefaultGlobalStageScope(next).config
+      const stageScoped = synchronizePersonalCurriculumStageScope(next, {
+        rootLandscapeId,
+      }).config
       const rootConfig = { ...stageScoped[rootLandscapeId] }
-      delete rootConfig.durationModel
       stageScoped[rootLandscapeId] = {
         ...rootConfig,
         selected: rootConfig.selected ?? true,
@@ -182,29 +188,22 @@ const normalizePersonalConfig = (
     .map((l) => l.landscapeId)
     .filter((id) => id !== rootLandscapeId)
 
-  if (childLandscapeIds.length === 0) {
-    return { config: unwrapped.config, corrected: unwrapped.corrected }
-  }
-
   let corrected = unwrapped.corrected
   let normalized: PersonalCurriculumConfig = { ...unwrapped.config }
-  const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
 
   if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
-    const stageScoped = applyDefaultGlobalStageScope(normalized)
+    const stageScoped = synchronizePersonalCurriculumStageScope(normalized, {
+      rootLandscapeId,
+    })
     normalized = stageScoped.config
     corrected = corrected || stageScoped.corrected
-    const rootConfig = normalized[rootLandscapeId]
-    if (rootConfig?.durationModel) {
-      const nextRootConfig = { ...rootConfig }
-      delete nextRootConfig.durationModel
-      normalized[rootLandscapeId] = {
-        ...nextRootConfig,
-        selected: nextRootConfig.selected ?? true,
-      }
-      corrected = true
-    }
   }
+
+  if (childLandscapeIds.length === 0) {
+    return { config: normalized, corrected }
+  }
+
+  const availableLandscapeIds = new Set(availableLandscapes.map((landscape) => landscape.landscapeId))
 
   availableLandscapes.forEach((landscape) => {
     const current = normalized[landscape.landscapeId]
@@ -268,6 +267,9 @@ const personalCurriculumConfigsEqual = (
       return false
     }
     if ((leftEntry?.durationModel ?? '') !== (rightEntry?.durationModel ?? '')) {
+      return false
+    }
+    if ((leftEntry?.stage ?? '') !== (rightEntry?.stage ?? '')) {
       return false
     }
   }
@@ -538,10 +540,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         effectiveActiveFilter,
         personalConfig,
         learnerStructureMode,
+        rootLandscapeId,
       )
       return normalizeLearnerVisibleChildrenMap(goalIndexAll, baseVisibleChildren)
     },
-    [currentLandscapeHasMatchedCompositionView, effectiveActiveFilter, goalIndexAll, learnerStructureMode, personalConfig],
+    [
+      currentLandscapeHasMatchedCompositionView,
+      effectiveActiveFilter,
+      goalIndexAll,
+      learnerStructureMode,
+      personalConfig,
+      rootLandscapeId,
+    ],
   )
 
   const learnerProjectedParentMap = useMemo(() => {
@@ -2397,6 +2407,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               hideTechnicalStructureUi
               allowClusterPlanning
               personalConfig={personalConfig}
+              rootLandscapeId={rootLandscapeId}
               activeGoalId={effectiveActiveGoalId ?? undefined}
               expandedGoalIds={expandedGoalIds}
               onToggleExpanded={toggleExpandedGoal}

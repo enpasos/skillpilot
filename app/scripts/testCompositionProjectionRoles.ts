@@ -15,6 +15,8 @@ import {
   applyCompositionViewProjection,
   compositionViewExposesGoal,
 } from '../src/utils/compositionViewRuntime'
+import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
+import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 
 const createGoal = (
   id: string,
@@ -465,5 +467,67 @@ prerequisiteOnlyGoalIds.forEach((goalId) => {
     `Projection must preserve prerequisite-only goal ${goalId} for global mastery checks.`,
   )
 })
+
+const [placementProjectedCanonicalMath] = applyGoalPlacementProjection(
+  [canonicalMathEntry],
+  ['DE-HE', 'LK', 'G9'],
+)
+assert.ok(placementProjectedCanonicalMath)
+
+const [compositionProjectedHesseSekundarstufeTwoLk] =
+  applyCompositionViewProjection(
+    [placementProjectedCanonicalMath],
+    hesseSekundarstufeTwoLkView,
+  )
+assert.ok(compositionProjectedHesseSekundarstufeTwoLk)
+
+const [learnerFacingHesseSekundarstufeTwoLk] =
+  normalizeLearnerProjectedEntries([
+    compositionProjectedHesseSekundarstufeTwoLk,
+  ])
+assert.ok(learnerFacingHesseSekundarstufeTwoLk)
+
+const learnerFacingGoalById = new Map(
+  learnerFacingHesseSekundarstufeTwoLk.goals.map((goal) => [goal.id, goal] as const),
+)
+const learnerFacingMathRoot = learnerFacingHesseSekundarstufeTwoLk.goals.find(
+  (goal) => (goal.tags ?? []).includes('root'),
+)
+assert.ok(learnerFacingMathRoot, 'The learner-facing mathematics root must remain present.')
+assert.equal(
+  learnerFacingMathRoot.contains.length,
+  1,
+  'The authored Sekundarstufe II view must replace broad placement fallback siblings.',
+)
+assert.equal(
+  learnerFacingGoalById.get(learnerFacingMathRoot.contains[0])?.title,
+  'Sekundarstufe II (LK)',
+  'Hessen mathematics LK upper secondary must expose the reviewed Sek-II root.',
+)
+
+const canonicalFallbackSiblingIds = [
+  '6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb',
+  'ed631938-ad77-405e-ac25-b06d750b9c05',
+  '4eefbd04-9e49-41ea-a087-9ad6ac71ec5a',
+]
+canonicalFallbackSiblingIds.forEach((goalId) => {
+  assert.equal(
+    learnerFacingMathRoot.contains.includes(goalId),
+    false,
+    `Canonical fallback goal ${goalId} must not remain a direct learner-facing sibling.`,
+  )
+  assert.equal(
+    learnerFacingGoalById.has(goalId),
+    true,
+    `Projection must retain stable canonical goal ${goalId} outside the learner-facing tree.`,
+  )
+})
+assert.equal(
+  learnerFacingMathRoot.contains.some((goalId) =>
+    learnerFacingGoalById.get(goalId)?.title === 'Sekundarstufe I'
+  ),
+  false,
+  'An explicit upper-secondary scope must not expose a Sekundarstufe-I sibling.',
+)
 
 console.log('Composition projection role tests passed.')
